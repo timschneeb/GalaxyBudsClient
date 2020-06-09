@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Galaxy_Buds_Client.ui.element.MuteButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Height="55" Width="55">
+    <Button Background="Transparent" Click="ButtonBase_OnClick">
+        <Button.Template>
+            <ControlTemplate TargetType="{x:Type ButtonBase}">
+                <Border
+                    x:Name="Chrome"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    Margin="0"
+                    Background="{TemplateBinding Background}"
+                    SnapsToDevicePixels="True">
+                    <ContentPresenter
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        Content="{TemplateBinding Content}"
+                        ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        Margin="{TemplateBinding Padding}"
+                        RecognizesAccessKey="True"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Border>
+            </ControlTemplate>
+        </Button.Template>
+        <Grid Name="MainGrid" Height="50" Width="50">
+            <Ellipse Name="Ellipse" Height="50"
+                     Stretch="Uniform" VerticalAlignment="Top" Margin="0,0,0,0" />
+            <Image Name="CenterImage" Source="/Resources/findmygear/unmuted.png" />
+        </Grid>
+    </Button>
+
+</UserControl>

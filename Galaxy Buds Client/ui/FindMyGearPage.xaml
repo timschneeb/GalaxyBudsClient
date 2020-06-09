@@ -45,6 +45,8 @@
                 <Image Name="RightIcon" Source="/Resources/device/right_gray.png" Margin="0,52,160,0" Height="75" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75"/>
                 <Image Name="BatteryIconRight" Source="/Resources/battery/high.png" Height="18" Width="27" Margin="346,52,143,228"/>
                 <element:ScannerButton x:Name="ScannerBtn"  Margin="183,148,183,10" />
+                <element:MuteButton x:Name="LeftMuteBtn" Margin="60,63,401,180" />
+                <element:MuteButton x:Name="RightMuteBtn" Margin="401,63,60,180" />
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" x:Name="EarbudWarningContainer">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />

@@ -39,6 +39,7 @@ namespace Galaxy_Buds_Client.message
         public event EventHandler<ExtendedStatusUpdateParser> ExtendedStatusUpdate;
         public event EventHandler<StatusUpdateParser> StatusUpdate;
         public event EventHandler<UsageReportParser> UsageReport;
+        public event EventHandler<MuteUpdateParser> FindMyGearMuteUpdate;
         public event EventHandler FindMyGearStopped;
 
         public void MessageReceiver(object sender, SPPMessage e)
@@ -88,6 +89,9 @@ namespace Galaxy_Buds_Client.message
                     break;
                 case SPPMessage.MessageIds.MSG_ID_USAGE_REPORT:
                     UsageReport?.Invoke(this, (UsageReportParser)parser);
+                    break;
+                case SPPMessage.MessageIds.MSG_ID_MUTE_EARBUD_STATUS_UPDATED:
+                    FindMyGearMuteUpdate?.Invoke(this, (MuteUpdateParser)parser);
                     break;
             }
         }

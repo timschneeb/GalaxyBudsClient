@@ -42,12 +42,38 @@ namespace Galaxy_Buds_Client.ui
             SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
             SPPMessageHandler.Instance.StatusUpdate += InstanceOnStatusUpdate;
             SPPMessageHandler.Instance.FindMyGearStopped += InstanceOnFindMyGearStopped;
+            SPPMessageHandler.Instance.FindMyGearMuteUpdate += InstanceOnFindMyGearMuteUpdate;
             ScannerBtn.ScanningStatusChanged += ScannerBtnOnScanningStatusChanged;
+            LeftMuteBtn.StatusChanged += LeftMuteBtnOnStatusChanged;
+            RightMuteBtn.StatusChanged += RightMuteBtnOnStatusChanged;
+        }
+
+        private void InstanceOnFindMyGearMuteUpdate(object sender, MuteUpdateParser e)
+        {
+            LeftMuteBtn.SetMuted(e.LeftMuted);
+            RightMuteBtn.SetMuted(e.RightMuted);
+        }
+
+        private void RightMuteBtnOnStatusChanged(object sender, bool e)
+        {
+            BluetoothService.Instance.SendAsync(SPPMessageBuilder.FindMyGear.MuteEarbud(LeftMuteBtn.IsMuted, RightMuteBtn.IsMuted));
+        }
+
+        private void LeftMuteBtnOnStatusChanged(object sender, bool e)
+        {
+            BluetoothService.Instance.SendAsync(SPPMessageBuilder.FindMyGear.MuteEarbud(LeftMuteBtn.IsMuted, RightMuteBtn.IsMuted));
         }
 
         private void InstanceOnFindMyGearStopped(object sender, EventArgs e)
         {
             ScannerBtn.Stop();
+            Dispatcher.Invoke(() =>
+            {
+                LeftMuteBtn.Visibility = Visibility.Hidden;
+                RightMuteBtn.Visibility = Visibility.Hidden;
+                LeftMuteBtn.SetMuted(false);
+                RightMuteBtn.SetMuted(false);
+            });
         }
 
         private void ScannerBtnOnScanningStatusChanged(object sender, bool e)
@@ -55,11 +81,16 @@ namespace Galaxy_Buds_Client.ui
             if (e)
             {
                 BluetoothService.Instance.SendAsync(SPPMessageBuilder.FindMyGear.Start());
+                LeftMuteBtn.Visibility = Visibility.Visible;
+                RightMuteBtn.Visibility = Visibility.Visible;
             }
             else
             {
                 BluetoothService.Instance.SendAsync(SPPMessageBuilder.FindMyGear.Stop());
-
+                LeftMuteBtn.Visibility = Visibility.Hidden;
+                RightMuteBtn.Visibility = Visibility.Hidden;
+                LeftMuteBtn.SetMuted(false);
+                RightMuteBtn.SetMuted(false);
             }
         }
 
@@ -102,6 +133,10 @@ namespace Galaxy_Buds_Client.ui
         public override void OnPageShown()
         {
             LoadingSpinner.Visibility = Visibility.Hidden;
+            LeftMuteBtn.Visibility = Visibility.Hidden;
+            RightMuteBtn.Visibility = Visibility.Hidden;
+            LeftMuteBtn.SetMuted(false);
+            RightMuteBtn.SetMuted(false);
         }
 
         public override void OnPageHidden()

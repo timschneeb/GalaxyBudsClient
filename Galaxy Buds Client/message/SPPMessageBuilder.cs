@@ -127,9 +127,9 @@ namespace Galaxy_Buds_Client.message
             }
             public static SPPMessage MuteEarbud(bool leftMuted, bool rightMuted)
             {
-                byte[] payload = new byte[1];
+                byte[] payload = new byte[2];
                 payload[0] = Convert.ToByte(leftMuted);
-                payload[1] = Convert.ToByte(leftMuted);
+                payload[1] = Convert.ToByte(rightMuted);
                 return new SPPMessage(SPPMessage.MessageIds.MSG_ID_MUTE_EARBUD,
                     SPPMessage.MsgType.Request, payload);
             }

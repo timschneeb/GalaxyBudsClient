@@ -132,6 +132,9 @@
     </Compile>
     <Compile Include="transition\PageTransitionType.cs" />
     <Compile Include="transition\WidthConverter.cs" />
+    <Compile Include="ui\element\MuteButton.xaml.cs">
+      <DependentUpon>MuteButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ui\SettingPage.xaml.cs">
       <DependentUpon>SettingPage.xaml</DependentUpon>
     </Compile>
@@ -229,6 +232,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="transition\PageTransition.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ui\element\MuteButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -357,6 +364,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="InTheHand.Net.Personal.dll" />
+    <Resource Include="Resources\findmygear\muted.png" />
+    <Resource Include="Resources\findmygear\unmuted.png" />
     <Resource Include="Resources\devmode.png" />
     <Resource Include="Resources\findmygear\start_gray.png" />
     <Resource Include="Resources\navigation\next_small_dark.png" />
