@@ -5,7 +5,7 @@ An unofficial Galaxy Buds Manager for Windows
   <img src="screenshots/screencap.gif">
 </p>
 
-This Client is a product of my research on the custom RFComm Serial Protocol the Buds use to receive and send binary (configuration) data. If you are interested in the structure of the protocol and its serial messages, I recommend you to [check my notes out](Galaxy Buds RFComm Protocol.md) which I took while reverse-engineering the whole thing.
+This Client is a product of my research on the custom RFComm Serial Protocol the Buds use to receive and send binary (configuration) data. If you are interested in the structure of the protocol and its serial messages, I recommend you to [check my notes out](GalaxyBudsRFCommProtocol.md) which I took while reverse-engineering the whole thing.
 
 ## Features
 
