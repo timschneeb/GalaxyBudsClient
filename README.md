@@ -9,7 +9,7 @@ This Client is a product of my research on the custom RFComm Serial Protocol the
 
 ## Features
 
-Stuff the **original** Wearable app on Android **can NOT** do:
+**New features** (in addition to the existing ones):
 
 * Display detailed sensor statistics on the dashboard, this includes:
   * Voltage and Current of the in-built ADC (Analog-to-Digital converter) of both Earbuds
@@ -26,8 +26,6 @@ Stuff the **original** Wearable app on Android **can NOT** do:
   * Other sensor data
 * Equalizer: unlock 'Optimize for Dolby' feature<sup>[1]</sup>
 * Touchpad: Combine Volume Up/Down with other options<sup>[2]</sup>
-
-Of course, it has all other features the original Wearable app has too (except Firmware Updates). 
 
 > <sup>[1]</sup> There are actually 10 EQ-Presets, not 5. If a Samsung Android device has Dolby enabled, then another set of presets will be used. It is unknown if those extra presets actually are different from the normal ones, but according to the Wearable app, these presets seem to be optimized for use with Dolby. (Note that the Wearable app will automatically reset this feature once connected to a non-Samsung mobile device (with Dolby disabled) when attempting to switch EQ presets in the app)
 >
