@@ -1,0 +1,82 @@
+﻿<local:BasePage x:Class="Galaxy_Buds_Client.ui.CreditsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Galaxy_Buds_Client.ui"
+             xmlns:element="clr-namespace:Galaxy_Buds_Client.ui.element"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="0,0,0,20" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="1" BorderBrush="#FFEAEAEA" BorderThickness="1"  MinWidth="518" Height="60"
+                VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20">
+            <Grid HorizontalAlignment="Left">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                    <Button x:Name="BackButton" Style="{StaticResource WindowButtonStyle}" 
+                         Click="BackButton_OnClick">
+                        <Image Margin="16 2 16 0" Height="24"
+                           SnapsToDevicePixels="True" Source="/Resources/navigation/back_dark.png">
+                        </Image>
+                    </Button>
+                </Border>
+                <Label Grid.Column="1" Content="Credits" Foreground="#CC000000" VerticalContentAlignment="Center" FontSize="20"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="3" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+            <Grid ClipToBounds="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" CornerRadius="20" x:Name="Telegram" MouseLeftButtonUp="Telegram_OnMouseLeftButtonUp" Style="{StaticResource BorderHoverStyle}">
+                    <Label Margin="20,0" FontSize="16" Content="Telegram" VerticalContentAlignment="Center" Foreground="#CC000000" HorizontalAlignment="Center" />
+                </Border>
+                <Separator Grid.Column="1" Background="LightGray" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                    <Label Margin="20,5" FontSize="16" Content="GitHub" MouseLeftButtonUp="GitHub_OnMouseLeftButtonUp"  VerticalContentAlignment="Center" Foreground="#CC000000" HorizontalAlignment="Center" />
+                </Border>
+                <Separator Grid.Column="3" Background="LightGray" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                <Border Grid.Column="4" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                    <Label Margin="20,5" FontSize="16" Content="Website" MouseLeftButtonUp="Website_OnMouseLeftButtonUp" VerticalContentAlignment="Center" Foreground="#CC000000" HorizontalAlignment="Center" />
+                </Border>
+            </Grid>
+        </Border>
+        <Border Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+            <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+                <Grid ClipToBounds="True" ScrollViewer.CanContentScroll="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                        <element:DetailListItem Text="Developer" TextDetail="@ThePBone (u/TheBone__)" Margin="20,0,20,0"/>
+                    </Border>
+                    <Separator Grid.Row="1" Margin="20,0,20,0" Background="LightGray"/>
+                    <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                        <element:DetailListItem Text="License" TextDetail="GPLv3" Margin="20,0,20,0"/>
+                    </Border>
+                </Grid>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</local:BasePage>

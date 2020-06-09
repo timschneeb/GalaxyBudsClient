@@ -1,0 +1,15 @@
+﻿<Application x:Class="Galaxy_Buds_Client.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Galaxy_Buds_Client"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ui/basewindow/SWStyles.xaml"/>
+                <ResourceDictionary Source="/Styles.xaml"/>
+                <ResourceDictionary Source="/ui/element/Slider.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

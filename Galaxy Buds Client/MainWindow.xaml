@@ -1,0 +1,11 @@
+﻿<basewindow:SWWindow x:Class="Galaxy_Buds_Client.MainWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:transition="clr-namespace:Galaxy_Buds_Client.transition"
+             xmlns:basewindow="clr-namespace:Galaxy_Buds_Client.ui.basewindow"
+             mc:Ignorable="d" MinWidth="570" MinHeight="550" MaxHeight="550"
+             Title="Galaxy Buds Manager" Height="550" Width="700" Background="White" >
+        <transition:PageTransition x:Name="PageControl" TransitionType="SlideAndFade" Margin="0" ClipToBounds="True"/>
+</basewindow:SWWindow>

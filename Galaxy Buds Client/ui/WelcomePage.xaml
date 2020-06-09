@@ -1,0 +1,51 @@
+﻿<local:BasePage x:Class="Galaxy_Buds_Client.ui.WelcomePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Galaxy_Buds_Client.ui"
+             xmlns:element="clr-namespace:Galaxy_Buds_Client.ui.element"
+             mc:Ignorable="d" 
+             d:DesignHeight="525" d:DesignWidth="800">
+    <Grid Margin="0,0,0,20" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="1" BorderBrush="#FFEAEAEA" BorderThickness="1"  MinWidth="518" Height="60"
+                VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20">
+            <Label Margin="20,0" Grid.Column="1" Content="Welcome!" Foreground="#CC000000" VerticalContentAlignment="Center" FontSize="20"/>
+        </Border>
+        <Border Grid.Row="3" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+            <TextBlock Margin="20" Foreground="#CC000000" TextWrapping="Wrap" FontSize="14.2">
+                Hey there! My name is @ThePBone and I'm the developer of this program.<LineBreak/>
+                This Galaxy Buds Manager is <Bold>unofficial</Bold> and not affiliated with Samsung in any way, please keep that in mind.<LineBreak/>
+                While this program can do a lot of things the original Samsung Wearable app on Android can't do, I've still decided to exclude the Firmware OTA Updater for safety reasons. Please use the official one if you happen to need it.<LineBreak/>
+                Initially I only wanted to reverse-engineer their custom Bluetooth RFComm SPP protocol and document it on GitHub, but I still ended up writing a full-fledged client, because I was sick of being forced to use the Wearable app on Android all the time.<LineBreak/>
+                <LineBreak/>
+                This program is designed for use with the <Bold>Samsung Galaxy Buds</Bold>.<LineBreak/>
+                <Underline>It is most likely not compatible with the Galaxy Buds Plus.</Underline>
+            </TextBlock>
+        </Border>
+        <Border Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+            <Grid ClipToBounds="True" ScrollViewer.CanContentScroll="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" CornerRadius="20"/>
+                <Separator Grid.Column="1" Background="LightGray" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Continue_OnMouseLeftButtonUp">
+                    <element:ListItem x:Name="FactoryReset" Text="Continue" SourceImage="/Resources/navigation/next_small_dark.png" Margin="20,0,20,0"/>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</local:BasePage>

@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="Galaxy_Buds_Client.ui.element.ListItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Galaxy_Buds_Client.ui"
+             mc:Ignorable="d" Height="50" x:Name="ListItemHolder">
+    <Grid HorizontalAlignment="Left">
+        <Image Source="{Binding SourceImage,ElementName=ListItemHolder}" Width="45" Margin="9,0,158,0" HorizontalAlignment="Left" />
+        <Label Content="{Binding Text,ElementName=ListItemHolder}" Foreground="#CC000000" Margin="60,0,0,1" FontSize="18" VerticalContentAlignment="Center" />
+    </Grid>
+</UserControl>

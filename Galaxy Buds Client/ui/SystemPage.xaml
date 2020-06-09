@@ -1,0 +1,145 @@
+﻿<local:BasePage x:Class="Galaxy_Buds_Client.ui.SystemPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Galaxy_Buds_Client.ui"
+             xmlns:element="clr-namespace:Galaxy_Buds_Client.ui.element"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="0,0,0,20" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="1" BorderBrush="#FFEAEAEA" BorderThickness="1"  MinWidth="518" Height="60"
+                VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20">
+            <Grid HorizontalAlignment="Left">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                    <Button x:Name="BackButton" Style="{StaticResource WindowButtonStyle}" 
+                         Click="BackButton_OnClick">
+                        <Image Margin="16 2 16 0" Height="24"
+                           SnapsToDevicePixels="True" Source="/Resources/navigation/back_dark.png">
+                        </Image>
+                    </Button>
+                </Border>
+                <Label Grid.Column="1" Content="System Information" Foreground="#CC000000" VerticalContentAlignment="Center" FontSize="20"/>
+                <element:LoadingSpinner Grid.Column="2" x:Name="LoadingSpinner" Height="20" Margin="235,20,-235,18" />
+            </Grid>
+        </Border>
+        <Border Grid.Row="3" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+            <Grid ClipToBounds="True" ScrollViewer.CanContentScroll="True">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                    <element:ListItem x:Name="RunSelfTest" Text="Run self test" SourceImage="/Resources/features/info_gray.png" Margin="20,0,20,0"
+                                    MouseLeftButtonUp="RunSelfTest_OnMouseLeftButtonUp"/>
+                    </Border>
+                <Separator Grid.Column="1" Background="LightGray" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                    <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                    <element:ListItem x:Name="FactoryReset" Text="Factory reset" SourceImage="/Resources/device/neutral_gray.png" Margin="20,0,20,0" 
+                                    MouseLeftButtonUp="FactoryReset_OnMouseLeftButtonUp"/>
+                    </Border>
+                </Grid>
+        </Border>
+        <Border Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+            <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+                <Grid ClipToBounds="True" ScrollViewer.CanContentScroll="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                        <element:DetailListItem x:Name="HwVer" Text="Hardware Version" TextDetail="rev0.0" Margin="20,0,20,0"/>
+                    </Border>
+                    <Separator Grid.Row="1" Margin="20,0,20,0" Background="LightGray"/>
+                    <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                        <element:DetailListItem x:Name="SwVer" Text="Software Version" TextDetail="R170XXU0ASD4" Margin="20,0,20,0"/>
+                    </Border>
+                    <Separator Grid.Row="3" Margin="20,0,20,0" Background="LightGray"/>
+                    <Border Grid.Row="4" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                        <element:DetailListItem x:Name="TouchFwVer" Text="Touch Firmware Version" TextDetail="38" Margin="20,0,20,0"/>
+                    </Border>
+                    <Separator Grid.Row="5" Margin="20,0,20,0" Background="LightGray"/>
+                    <Border Grid.Row="6" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                        <element:DetailListItem x:Name="BtAddr" Text="Bluetooth Address" TextDetail="Left: CC:12:19:90:71:50, Right: CC:12:19:90:09:EA" Margin="20,0,20,0"/>
+                    </Border>
+                    <Separator Grid.Row="7" Margin="20,0,20,0" Background="LightGray"/>
+                    <Border Grid.Row="8" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                        <element:DetailListItem x:Name="SerialNumber" Text="Serial Number" TextDetail="Left: RFAM8001KWZ, Right: RFAM8001QWA" Margin="20,0,20,0"/>
+                    </Border>
+                    <Separator Grid.Row="9" Margin="20,0,20,0" Background="LightGray"/>
+                    <Border Grid.Row="10" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                        <element:DetailListItem x:Name="BuildString" Text="Build Info" TextDetail="Left: RFAM8001KWZ, Right: RFAM8001QWA" Margin="20,0,20,0"/>
+                    </Border>
+                    <Separator Grid.Row="11" Margin="20,0,20,0" Background="LightGray"/>
+                    <Border Grid.Row="12" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                        <element:DetailListItem x:Name="BatteryType" Text="Battery Type" TextDetail="Left: 3V, Right: 0V" Margin="20,0,20,0"/>
+                    </Border>
+                    <Separator Grid.Row="13" Margin="20,0,20,0" Background="LightGray"/>
+                    <Border Grid.Row="14" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                        <element:DetailListItem x:Name="Proximity" Text="Proximity Measurement" TextDetail="Left: 700, Right: 0" Margin="20,0,20,0"/>
+                    </Border>
+                    <Separator Grid.Row="15" Margin="20,0,20,0" Background="LightGray"/>
+                    <Border Grid.Row="16" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                        <element:DetailListItem x:Name="Thermo" Text="Thermistor Measurement" TextDetail="Left: 29.7 °C, Right: 29.7 °C" Margin="20,0,20,0"/>
+                    </Border>
+                    <Separator Grid.Row="17" Margin="20,0,20,0" Background="LightGray"/>
+                    <Border Grid.Row="18" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                        <element:DetailListItem x:Name="Hall" Text="Hall Measurement" TextDetail="Left: 1 1, Right: 1 1" Margin="20,0,20,0"/>
+                    </Border>
+                    <Separator Grid.Row="19" Margin="20,0,20,0" Background="LightGray"/>
+                    <Border Grid.Row="20" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                        <element:DetailListItem x:Name="AdcSoc" Text="ADC SOC" TextDetail="Left: 75.29%, Right: 78.65%" Margin="20,0,20,0"/>
+                    </Border>
+                    <Separator Grid.Row="21" Margin="20,0,20,0" Background="LightGray"/>
+                    <Border Grid.Row="22" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                        <element:DetailListItem x:Name="AdcVoltage" Text="ADC Voltage" TextDetail="Left: 4.14V, Right: 4.11V" Margin="20,0,20,0"/>
+                    </Border>
+                    <Separator Grid.Row="23" Margin="20,0,20,0" Background="LightGray"/>
+                    <Border Grid.Row="24" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                        <element:DetailListItem x:Name="AdcCurrent" Text="ADC Current" TextDetail="Left -5.05mA, Right -5.80mA" Margin="20,0,20,0"/>
+                    </Border>
+                </Grid>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</local:BasePage>
