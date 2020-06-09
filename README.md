@@ -37,7 +37,7 @@ Of course, it has all other features the original Wearable app has too (except F
 
 **This app requires .Net Framework 4.7.2 or higher** ([Download](https://dotnet.microsoft.com/download/dotnet-framework/net472))
 
-You can find a fully automated Setup in the [release section](/releases) of this repo!
+You can find a fully automated Setup in the [release section](https://github.com/ThePBone/GalaxyBudsClient/releases) of this repo!
 
 Designed for the original Galaxy Buds. **Galaxy Buds Plus are unsupported** since I do not own a pair.
 
