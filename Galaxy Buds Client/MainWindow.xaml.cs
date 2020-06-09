@@ -259,6 +259,7 @@ namespace Galaxy_Buds_Client
 
         private void OnClosing(object sender, CancelEventArgs e)
         {
+            BluetoothService.Instance.SendAsync(SPPMessageBuilder.FindMyGear.Stop());
             BluetoothService.Instance.Disconnect();
         }
 
