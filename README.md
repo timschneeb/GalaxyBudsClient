@@ -35,7 +35,8 @@ This Client is a product of my research on the custom RFComm Serial Protocol the
 
 **This app requires .Net Framework 4.7.2 or higher** ([Download](https://dotnet.microsoft.com/download/dotnet-framework/net472))
 
-You can find a fully automated Setup in the [release section](https://github.com/ThePBone/GalaxyBudsClient/releases) of this repo!
+You can [**download**](https://github.com/ThePBone/GalaxyBudsClient/releases) a fully automated Setup in the [**release section**](https://github.com/ThePBone/GalaxyBudsClient/releases) of this repo!
+
 
 Designed for the original Galaxy Buds. **Galaxy Buds Plus are unsupported** since I do not own a pair.
 
