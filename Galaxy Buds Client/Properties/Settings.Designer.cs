@@ -70,5 +70,17 @@ namespace Galaxy_Buds_Client.Properties {
                 this["DevModeWarningShown"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SkippedUpdate {
+            get {
+                return ((string)(this["SkippedUpdate"]));
+            }
+            set {
+                this["SkippedUpdate"] = value;
+            }
+        }
     }
 }

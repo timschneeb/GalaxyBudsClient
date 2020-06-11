@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AutoUpdaterDotNET;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.parser;
 
@@ -33,6 +35,7 @@ namespace Galaxy_Buds_Client.ui
 
         public override void OnPageShown()
         {
+            Version.TextDetail = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
         public override void OnPageHidden()

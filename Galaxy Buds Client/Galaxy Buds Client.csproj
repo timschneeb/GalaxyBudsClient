@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Galaxy_Buds_Client</RootNamespace>
     <AssemblyName>Galaxy Buds Client</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -34,6 +34,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -72,6 +73,9 @@
     <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoUpdater.NET, Version=1.6.0.0, Culture=neutral, PublicKeyToken=501435c91b35f4bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autoupdater.NET.Official.1.6.0\lib\net40\AutoUpdater.NET.dll</HintPath>
+    </Reference>
     <Reference Include="InTheHand.Net.Personal, Version=3.7.1102.0, Culture=neutral, PublicKeyToken=ea38caa273134499, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\InTheHand.Net.Personal.dll</HintPath>
@@ -132,6 +136,9 @@
     </Compile>
     <Compile Include="transition\PageTransitionType.cs" />
     <Compile Include="transition\WidthConverter.cs" />
+    <Compile Include="ui\UpdatePage.xaml.cs">
+      <DependentUpon>UpdatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ui\element\MuteButton.xaml.cs">
       <DependentUpon>MuteButton.xaml</DependentUpon>
     </Compile>
@@ -192,6 +199,9 @@
     </Compile>
     <Compile Include="ui\basewindow\SWWindow.cs" />
     <Compile Include="ui\basewindow\SWWindow.Sizing.cs" />
+    <Compile Include="ui\window\SWMessageWindow.xaml.cs">
+      <DependentUpon>SWMessageWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="util\ByteArrayUtils.cs" />
     <Compile Include="util\CRC16.cs" />
     <Compile Include="util\Hex.cs" />
@@ -211,6 +221,10 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="ui\UpdatePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ui\devmode\DevWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -319,6 +333,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ui\window\SWMessageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -417,8 +435,6 @@
     <Resource Include="Resources\device\right_white.png" />
     <Resource Include="Resources\icon_white.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ui\window\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

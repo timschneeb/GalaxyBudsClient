@@ -16,12 +16,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AutoUpdaterDotNET;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.parser;
 using Galaxy_Buds_Client.transition;
 using Galaxy_Buds_Client.ui;
 using Galaxy_Buds_Client.ui.basewindow;
 using Galaxy_Buds_Client.ui.devmode;
+using Galaxy_Buds_Client.ui.window;
 using InTheHand.Net;
 using InTheHand.Net.Bluetooth;
 
@@ -43,6 +45,7 @@ namespace Galaxy_Buds_Client
         private readonly ConnectionLostPage _connectionLostPage;
         private readonly DeviceSelectPage _deviceSelectPage;
         private readonly SettingPage _settingPage;
+        private readonly UpdatePage _updatePage;
 
         public enum Pages
         {
@@ -62,6 +65,7 @@ namespace Galaxy_Buds_Client
         }
 
         private BluetoothAddress _address;
+        private bool _isManualUpdate;
 
         public MainWindow()
         {
@@ -76,6 +80,7 @@ namespace Galaxy_Buds_Client
             _connectionLostPage = new ConnectionLostPage(this);
             _deviceSelectPage = new DeviceSelectPage(this);
             _settingPage = new SettingPage(this);
+            _updatePage = new UpdatePage(this);
 
             InitializeComponent();
 
@@ -105,9 +110,52 @@ namespace Galaxy_Buds_Client
                 Task.Delay(100).ContinueWith((_) =>
                 {
                     BluetoothService.Instance.Connect(savedAddress);
+                    CheckForUpdates(manual: false);
                 });
                 _address = savedAddress;
             }
+        }
+
+        public void CheckForUpdates(bool manual)
+        {
+            AutoUpdater.Mandatory = true;
+            AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
+            _isManualUpdate = manual;
+            AutoUpdater.Start("https://timschneeberger.me/updater/galaxybudsclient.xml");
+        }
+
+        private void AutoUpdaterOnCheckForUpdateEvent(UpdateInfoEventArgs args)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                if (args.IsUpdateAvailable)
+                {
+
+                    if (args.CurrentVersion == Properties.Settings.Default.SkippedUpdate && !_isManualUpdate)
+                        return;
+
+                    _updatePage.SetInfo(args); 
+                    var x = Properties.Settings.Default.SkippedUpdate;
+                    Console.WriteLine(x);
+                    PageControl.TransitionType = PageTransitionType.Fade;
+                    PageControl.ShowPage(_updatePage);
+                }
+                else if(_isManualUpdate)
+                {
+                    /*SWMessageWindow w = new SWMessageWindow("No updates are available at the moment.\n" +
+                                                            "Please try again later or check and subscribe the GitHub page for updates.")
+                    {
+                        OptionsLabel = {Visibility = Visibility.Hidden}
+                    };
+                    w.ShowDialog();*/
+                    MessageBox.Show("No updates are available at the moment.\n" +
+                                    "Please try again later or check and subscribe the GitHub page for updates.",
+                        "No updates", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
+                _isManualUpdate = false;
+
+            });
         }
 
         private void InstanceOnAnyMessageReceived(object sender, BaseMessageParser e)
@@ -138,6 +186,7 @@ namespace Galaxy_Buds_Client
             var isValid = BluetoothAddress.TryParse(Properties.Settings.Default.RegisteredDevice, out var savedAddress);
             return isValid ? savedAddress : null;
         }
+
 
         private void ConnectionLostPageOnRetryRequested(object sender, EventArgs e)
         {
@@ -220,6 +269,12 @@ namespace Galaxy_Buds_Client
             };
             deregDevice.Style = (Style)FindResource("MenuItemStyle");
             ctxMenu.Items.Add(deregDevice);
+            Menu_AddSeparator(ctxMenu);
+            MenuItem checkUpdateDashboard = new MenuItem();
+            checkUpdateDashboard.Header = "Check for updates";
+            checkUpdateDashboard.Click += delegate { CheckForUpdates(manual: true); };
+            checkUpdateDashboard.Style = (Style)FindResource("MenuItemStyle");
+            ctxMenu.Items.Add(checkUpdateDashboard);
             Menu_AddSeparator(ctxMenu);
             MenuItem credits = new MenuItem();
             credits.Header = "Credits";
@@ -312,10 +367,18 @@ namespace Galaxy_Buds_Client
             }
         }
 
-        public void ReturnToHome()
+        public void ReturnToHome(bool fade = false)
         {
             if (BluetoothService.Instance.IsConnected)
-                GoToPage(Pages.Home, true);
+            {
+                if (fade)
+                {
+                    PageControl.TransitionType = PageTransitionType.Fade;
+                    PageControl.ShowPage(_mainPage);
+                }
+                else
+                    GoToPage(Pages.Home, true);
+            }
             else
             {
                 Dispatcher.Invoke(() =>

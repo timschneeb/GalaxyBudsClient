@@ -67,6 +67,8 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="1"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem Text="Developer" TextDetail="@ThePBone (u/TheBone__)" Margin="20,0,20,0"/>
@@ -74,6 +76,10 @@
                     <Separator Grid.Row="1" Margin="20,0,20,0" Background="LightGray"/>
                     <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem Text="License" TextDetail="GPLv3" Margin="20,0,20,0"/>
+                    </Border>
+                    <Separator Grid.Row="3" Margin="20,0,20,0" Background="LightGray"/>
+                    <Border Grid.Row="4" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                        <element:DetailListItem x:Name="Version" Text="Version" TextDetail="x.x.x.x" Margin="20,0,20,0"/>
                     </Border>
                 </Grid>
             </ScrollViewer>
