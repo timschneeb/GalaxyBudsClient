@@ -1,5 +1,5 @@
 # Galaxy Buds Client
-An unofficial Galaxy Buds Manager for Windows
+An unofficial Galaxy Buds Manager for Windows 
 
 <p align="center">
   <img src="screenshots/screencap.gif">
@@ -33,13 +33,14 @@ This Client is a product of my research on the custom RFComm Serial Protocol the
 
 ## Installation
 
-**This app requires .Net Framework 4.7.2 or higher** ([Download](https://dotnet.microsoft.com/download/dotnet-framework/net472))
+**This app requires .Net Framework 4.6.1 or higher** ([Download](https://dotnet.microsoft.com/download/dotnet-framework/net461))
 
 You can [**download**](https://github.com/ThePBone/GalaxyBudsClient/releases) a fully automated Setup in the [**release section**](https://github.com/ThePBone/GalaxyBudsClient/releases) of this repo!
 
 
 Designed for the original Galaxy Buds. **Galaxy Buds Plus are unsupported** since I do not own a pair.
 
+![Downloads](https://img.shields.io/github/downloads/ThePBone/GalaxyBudsClient/total)
 ___
 
 In case somone wants to donate a buck or two ;-) 
