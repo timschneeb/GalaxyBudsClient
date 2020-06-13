@@ -53,6 +53,8 @@
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="1"/>
                     <RowDefinition Height="50"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
                 <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="FindMyGear_OnMouseLeftButtonUp">
                     <element:ListItem SourceImage="/Resources/features/findmygear_color.png" Text="Find my Earbuds"/>
@@ -70,7 +72,11 @@
                     <element:ListItem SourceImage="/Resources/features/equalizer_gray.png" Text="Equalizer"/>
                 </Border>
                 <Separator Grid.Row="7" Margin="60,0,20,0" Background="LightGray"/>
-                <Border Grid.Row="8" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="System_OnMouseLeftButtonUp">
+                <Border Grid.Row="8" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Advanced_OnMouseLeftButtonUp">
+                    <element:ListItem SourceImage="/Resources/features/advanced_color.png" Text="Advanced Settings"/>
+                </Border>
+                <Separator Grid.Row="9" Margin="60,0,20,0" Background="LightGray"/>
+                <Border Grid.Row="10" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="System_OnMouseLeftButtonUp">
                     <element:ListItem SourceImage="/Resources/features/info_gray.png" Text="System Information"/>
                 </Border>
             </Grid>

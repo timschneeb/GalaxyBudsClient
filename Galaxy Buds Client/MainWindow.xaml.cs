@@ -46,6 +46,8 @@ namespace Galaxy_Buds_Client
         private readonly DeviceSelectPage _deviceSelectPage;
         private readonly SettingPage _settingPage;
         private readonly UpdatePage _updatePage;
+        private readonly AdvancedPage _advancedPage;
+        private readonly UnsupportedFeaturePage _unsupportedFeaturePage;
 
         public enum Pages
         {
@@ -61,7 +63,8 @@ namespace Galaxy_Buds_Client
             NoConnection,
             Welcome,
             DeviceSelect,
-            Settings
+            Settings,
+            Advanced
         }
 
         private BluetoothAddress _address;
@@ -81,6 +84,8 @@ namespace Galaxy_Buds_Client
             _deviceSelectPage = new DeviceSelectPage(this);
             _settingPage = new SettingPage(this);
             _updatePage = new UpdatePage(this);
+            _advancedPage = new AdvancedPage(this);
+            _unsupportedFeaturePage = new UnsupportedFeaturePage(this);
 
             InitializeComponent();
 
@@ -364,7 +369,16 @@ namespace Galaxy_Buds_Client
                 case Pages.Settings:
                     PageControl.ShowPage(_settingPage);
                     break;
+                case Pages.Advanced:
+                    PageControl.ShowPage(_advancedPage);
+                    break;
             }
+        }
+
+        public void ShowUnsupportedFeaturePage(String requiredVersion)
+        {
+            _unsupportedFeaturePage.SetRequiredVersion(requiredVersion);
+            PageControl.ShowPage(_unsupportedFeaturePage);
         }
 
         public void ReturnToHome(bool fade = false)
@@ -408,6 +422,10 @@ namespace Galaxy_Buds_Client
                 case MainPage.ClickEvents.Equalizer:
                     GoToPage(Pages.Equalizer);
                     break;
+                case MainPage.ClickEvents.Advanced:
+                    GoToPage(Pages.Advanced);
+                    break;
+
             }
         }
 

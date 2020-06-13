@@ -44,6 +44,14 @@ namespace Galaxy_Buds_Client.message
             return new SPPMessage(SPPMessage.MessageIds.MSG_ID_GAME_MODE,
                 SPPMessage.MsgType.Request, payload);
         }
+        public static SPPMessage SetSeamlessConnection(bool enable)
+        {
+            byte[] payload = new byte[1];
+            payload[0] = Convert.ToByte(!enable);
+            return new SPPMessage(SPPMessage.MessageIds.MSG_ID_SET_SEAMLESS_CONNECTION,
+                SPPMessage.MsgType.Request, payload);
+        }
+
         public static SPPMessage SetMainConnection(Constants.DeviceInv side)
         {
             byte[] payload = new byte[1];

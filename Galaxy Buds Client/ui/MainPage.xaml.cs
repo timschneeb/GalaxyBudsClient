@@ -30,7 +30,8 @@ namespace Galaxy_Buds_Client.ui
             Touch,
             Ambient,
             System,
-            Equalizer
+            Equalizer,
+            Advanced
         }
         public enum Side
         {
@@ -264,6 +265,11 @@ namespace Galaxy_Buds_Client.ui
         private void Equalizer_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             MainMenuClicked?.Invoke(this, ClickEvents.Equalizer);
+        }
+
+        private void Advanced_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            MainMenuClicked?.Invoke(this, ClickEvents.Advanced);
         }
     }
 }

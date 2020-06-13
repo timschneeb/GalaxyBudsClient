@@ -83,6 +83,7 @@
             MSG_ID_USAGE_REPORT = 64,
             MSG_ID_VOICE_NOTI_STATUS = 164,
             MSG_ID_VOICE_NOTI_STOP = 165,
+            MSG_ID_SET_SEAMLESS_CONNECTION = 175,
 
             MSG_ID_DEBUGMODE_VERSION = 99
         }

@@ -136,6 +136,9 @@
     </Compile>
     <Compile Include="transition\PageTransitionType.cs" />
     <Compile Include="transition\WidthConverter.cs" />
+    <Compile Include="ui\AdvancedPage.xaml.cs">
+      <DependentUpon>AdvancedPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ui\UpdatePage.xaml.cs">
       <DependentUpon>UpdatePage.xaml</DependentUpon>
     </Compile>
@@ -179,6 +182,9 @@
     <Compile Include="ui\DeviceSelectPage.xaml.cs">
       <DependentUpon>DeviceSelectPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ui\UnsupportedFeaturePage.xaml.cs">
+      <DependentUpon>UnsupportedFeaturePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ui\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
@@ -221,6 +227,10 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="ui\AdvancedPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ui\UpdatePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -305,6 +315,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ui\UnsupportedFeaturePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ui\WelcomePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -382,6 +396,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="InTheHand.Net.Personal.dll" />
+    <Resource Include="Resources\features\advanced_color.png" />
+    <Content Include="Resources\features\advanced_light.png" />
     <Resource Include="Resources\findmygear\muted.png" />
     <Resource Include="Resources\findmygear\unmuted.png" />
     <Resource Include="Resources\devmode.png" />

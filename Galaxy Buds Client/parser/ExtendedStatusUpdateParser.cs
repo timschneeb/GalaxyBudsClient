@@ -26,7 +26,7 @@ namespace Galaxy_Buds_Client.parser
         public bool TouchpadLock { set; get; }
         public Constants.TouchOption TouchpadOptionL { set; get; }
         public Constants.TouchOption TouchpadOptionR { set; get; }
-
+        public bool SeamlessConnectionEnabled { set; get; }
         public override void ParseMessage(SPPMessage msg)
         {
             if (msg.Id != HandledType)
@@ -50,12 +50,15 @@ namespace Galaxy_Buds_Client.parser
                 TouchpadLock = Convert.ToBoolean(msg.Payload[12]);
                 TouchpadOptionL = (Constants.TouchOption)((msg.Payload[13] & 0xF0) >> 4);
                 TouchpadOptionR = (Constants.TouchOption)(msg.Payload[13] & 0x0F);
+                SeamlessConnectionEnabled = msg.Payload[14] == 0;
+
             }
             else
             {
                 TouchpadLock = Convert.ToBoolean((msg.Payload[12] & 0xF0) >> 4);
                 TouchpadOptionL = (Constants.TouchOption)(msg.Payload[12] & 0x0F);
                 TouchpadOptionR = (Constants.TouchOption)(msg.Payload[12] & 0x0F);
+                SeamlessConnectionEnabled = msg.Payload[13] == 0;
             }
         }
 

@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "Galaxy Buds Manager (Unofficial)"
-!define PRODUCT_VERSION "1.1"
+!define PRODUCT_VERSION "1.2"
 !define PRODUCT_PUBLISHER "ThePBone"
 !define PRODUCT_WEB_SITE "https://github.com/ThePBone/GalaxyBudsClient"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\Galaxy Buds Client.exe"
@@ -56,6 +56,11 @@ Section "Hauptgruppe" SEC01
   File "Galaxy Buds Client\bin\Release\Galaxy Buds Client.exe.config"
   File "Galaxy Buds Client\bin\Release\InTheHand.Net.Personal.dll"
   File "Galaxy Buds Client\bin\Release\InTheHand.Net.Personal.xml"
+  File "packages\Autoupdater.NET.Official.1.6.0\lib\net40\AutoUpdater.NET.XML"
+  File "packages\Autoupdater.NET.Official.1.6.0\lib\net40\AutoUpdater.NET.dll"
+  File "packages\Autoupdater.NET.Official.1.6.0\lib\net40\AutoUpdater.NET.pdb"
+  
+  
 SectionEnd
 
 Section -AdditionalIcons
@@ -92,6 +97,10 @@ Section Uninstall
   Delete "$INSTDIR\Galaxy Buds Client.exe.config"
   Delete "$INSTDIR\Galaxy Buds Client.pdb"
   Delete "$INSTDIR\Galaxy Buds Client.exe"
+  
+  Delete "$INSTDIR\AutoUpdater.NET.XML"
+  Delete "$INSTDIR\AutoUpdater.NET.pdb"
+  Delete "$INSTDIR\AutoUpdater.NET.dll"
 
   Delete "$DESKTOP\Galaxy Buds Manager.lnk"
   Delete "$SMPROGRAMS\Galaxy Buds Manager\Galaxy Buds Manager.lnk"

@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:transition="clr-namespace:Galaxy_Buds_Client.transition"
              xmlns:basewindow="clr-namespace:Galaxy_Buds_Client.ui.basewindow"
-             mc:Ignorable="d" MinWidth="570" MinHeight="550" MaxHeight="550"
-             Title="Galaxy Buds Manager" Height="550" Width="700" Background="White" >
+             mc:Ignorable="d" MinWidth="570" MinHeight="600" MaxHeight="600"
+             Title="Galaxy Buds Manager" Height="600" Width="700" Background="White" >
         <transition:PageTransition x:Name="PageControl" TransitionType="SlideAndFade" Margin="0" ClipToBounds="True"/>
 </basewindow:SWWindow>
