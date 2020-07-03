@@ -16,6 +16,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
 
@@ -56,7 +58,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <element:DetailListItem Grid.Column="0" Text="Transition" TextDetail="Disable slide transitions" Margin="0,0,211,0" Grid.ColumnSpan="2"/>
+                        <element:DetailListItem Grid.Column="0" Text="Transition" TextDetail="Disable slide transitions" Grid.ColumnSpan="2"/>
                         <element:ToggleSwitch x:Name="TransitionToggle" Grid.Column="2" Width="40" Height="30" ColorOn="Orange" DisableButton="True" />
                     </Grid>
                 </Border>
@@ -70,14 +72,49 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <element:DetailListItem Grid.Column="0" Text="Units" TextDetail="Use Fahrenheit instead of Celsius" Margin="0,0,211,0" Grid.ColumnSpan="2"/>
+                        <element:DetailListItem Grid.Column="0" Text="Units" TextDetail="Use Fahrenheit instead of Celsius" Grid.ColumnSpan="2"/>
                         <element:ToggleSwitch x:Name="FahrenheitToggle" Grid.Column="2" Width="40" Height="30" ColorOn="Orange" DisableButton="True" />
                     </Grid>
                 </Border>
             </Grid>
         </Border>
 
-        <Border Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518" MouseLeftButtonUp="DevMode_OnMouseLeftButtonUp"
+        <Border Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="MinimizedTray_OnMouseLeftButtonUp">
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <element:DetailListItem Grid.Column="0" Text="Minimize to tray" TextDetail="Keep in background instead of terminating the app" Grid.ColumnSpan="2"/>
+                        <element:ToggleSwitch x:Name="MinimizeTrayToggle" Grid.Column="2" Width="40" Height="30" ColorOn="Orange" DisableButton="True" />
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Autostart_OnMouseLeftButtonUp">
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,0,20,10" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <element:DetailListItem Grid.Column="0" Text="Launch on boot" TextDetail="Start minimized on system boot" Grid.ColumnSpan="2"/>
+                        <element:ToggleSwitch x:Name="AutostartToggle" Grid.Column="2" Width="40" Height="30" ColorOn="Orange" DisableButton="True" />
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="7" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518" MouseLeftButtonUp="DevMode_OnMouseLeftButtonUp"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" >
                 <element:ListItem x:Name="DevMode" Text="Enter developer mode" SourceImage="/Resources/devmode.png" 
@@ -85,7 +122,7 @@
             </Border>
         </Border>
 
-        <Border Grid.Row="7" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
+        <Border Grid.Row="9" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Credits_OnMouseLeftButtonUp">
                 <element:ListItem x:Name="Credits" Text="Credits" SourceImage="/Resources/features/info_gray.png" 

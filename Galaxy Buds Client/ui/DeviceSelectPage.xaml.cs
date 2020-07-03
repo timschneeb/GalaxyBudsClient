@@ -1,20 +1,11 @@
 ﻿using InTheHand.Net.Bluetooth;
 using InTheHand.Net.Sockets;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Galaxy_Buds_Client.model.Constants;
 using InTheHand.Net;
 using InTheHand.Windows.Forms;
 using MessageBox = System.Windows.MessageBox;
@@ -29,6 +20,7 @@ namespace Galaxy_Buds_Client.ui
         private MainWindow _mainWindow;
 
         private BluetoothAddress _address = null;
+        private BluetoothDeviceInfo _device = null;
 
         public DeviceSelectPage(MainWindow mainWindow)
         {
@@ -67,9 +59,11 @@ namespace Galaxy_Buds_Client.ui
             }
             BluetoothDeviceInfo device = dlg.SelectedDevice;
             _address = device.DeviceAddress;
+            _device = device;
 
             DevName.TextDetail = device.DeviceName;
             DevAddress.TextDetail = BytesToMacString(_address.ToByteArrayBigEndian(), 0);
+            DevModel.TextDetail = device.DeviceName.Contains("Buds+") ? "Galaxy Buds+ (2020)" : "Galaxy Buds (2019)";
             BottomNavBar.Visibility = Visibility.Visible;
         }
 
@@ -90,11 +84,12 @@ namespace Galaxy_Buds_Client.ui
 
         private void Continue_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (_address == null)
+            if (_address == null || _device == null)
                 MessageBox.Show("Please select a valid device first", "Error", MessageBoxButton.OK,
                     MessageBoxImage.Error);
 
             Properties.Settings.Default.RegisteredDevice = BytesToMacString(_address?.ToByteArrayBigEndian(), 0);
+            Properties.Settings.Default.RegisteredDeviceModel = _device.DeviceName.Contains("Buds+") ? Model.BudsPlus : Model.Buds;
             Properties.Settings.Default.Save();
             _mainWindow.FinalizeSetup();
         }

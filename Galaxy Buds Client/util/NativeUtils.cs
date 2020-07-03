@@ -16,8 +16,8 @@ namespace Galaxy_Buds_Client.util
             NativeUtils.TPM_RETURNCMD = 256;
         }
 
-        [DllImport("user32.dll", CharSet = CharSet.None, ExactSpelling = false)]
-        internal static extern IntPtr PostMessage(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+        [DllImport("user32.dll")]
+        internal static extern bool PostMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = false, SetLastError = true)]
         internal static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);

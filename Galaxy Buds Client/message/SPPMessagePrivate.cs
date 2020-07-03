@@ -12,7 +12,9 @@
         public enum Constants : byte
         {
             SOM = 0xFE,
-            EOM = 0xEE
+            EOM = 0xEE,
+            SOMPlus = 0xFD,
+            EOMPlus = 0xDD
         }
 
         public enum MessageIds : byte
@@ -25,7 +27,6 @@
             MSG_ID_AMBIENT_WEARING_STATUS_UPDATED = 137,
             MSG_ID_CONNECTION_UPDATED = 98,
             MSG_ID_DEBUG_BUILD_INFO = 40,
-            MSG_ID_DEBUG_ERROR = 34,
             MSG_ID_DEBUG_GET_ALL_DATA = 38,
             MSG_ID_DEBUG_GET_PE_RSSI = 35,
             MSG_ID_DEBUG_GET_VERSION = 36,
@@ -85,7 +86,13 @@
             MSG_ID_VOICE_NOTI_STOP = 165,
             MSG_ID_SET_SEAMLESS_CONNECTION = 175,
 
-            MSG_ID_DEBUGMODE_VERSION = 99
+            MSG_ID_ADJUST_SOUND_SYNC = 133,
+            MSG_ID_EXTRA_HIGH_AMBIENT = 150,
+            MSG_ID_DEBUG_SKU = 34,
+            MSG_ID_OUTSIDE_DOUBLE_TAP = 149,
+            MSG_ID_SET_IN_BAND_RINGTONE = 138,
+            MSG_ID_SET_SIDETONE = 139,
+            MSG_ID_VERSION_INFO = 99,
         }
     }
 }

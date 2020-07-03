@@ -56,7 +56,8 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="1"/>
                         <RowDefinition Height="Auto"/>
-
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="DevName" Text="Device Name" TextDetail="No device selected" Margin="20,0,20,0"/>
@@ -64,6 +65,10 @@
                     <Separator Grid.Row="1" Margin="20,0,20,0" Background="LightGray"/>
                     <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="DevAddress" Text="MAC-Address" TextDetail="No device selected" Margin="20,0,20,0"/>
+                    </Border>
+                    <Separator Grid.Row="3" Margin="20,0,20,0" Background="LightGray"/>
+                    <Border Grid.Row="4" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                        <element:DetailListItem x:Name="DevModel" Text="Model" TextDetail="No device selected" Margin="20,0,20,0"/>
                     </Border>
                 </Grid>
             </ScrollViewer>

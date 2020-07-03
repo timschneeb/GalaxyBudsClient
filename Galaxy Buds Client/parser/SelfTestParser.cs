@@ -96,7 +96,7 @@ namespace Galaxy_Buds_Client.parser
             PropertyInfo[] properties = this.GetType().GetProperties();
             foreach (PropertyInfo property in properties)
             {
-                if (property.Name == "HandledType")
+                if (property.Name == "HandledType" || property.Name == "ActiveModel")
                     continue;
 
                 map.Add(property.Name, ((bool)property.GetValue(this)) ? "Pass" : "Fail");

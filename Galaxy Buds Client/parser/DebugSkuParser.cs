@@ -1,32 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Galaxy_Buds_Client.message;
-using Galaxy_Buds_Client.model;
-using Galaxy_Buds_Client.model.Constants;
 
 namespace Galaxy_Buds_Client.parser
 {
-    /*
-     * Mostly unused if (versionOfMR < 2). Refer to ExtendedStatusUpdateParser
-     */
-    class AmbientWearingUpdateParser : BaseMessageParser
+    class DebugSkuParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_AMBIENT_WEARING_STATUS_UPDATED;
+        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_DEBUG_SKU;
 
-        public WearStates WearState { set; get; }
-        public int LeftDetectionCount { set; get; }
-        public int RightDetectionCount { set; get; }
-
+        public char a { set; get; }
+        public char b { set; get; }
+        public char c { set; get; }
+        public char d { set; get; }
         public override void ParseMessage(SPPMessage msg)
         {
             if (msg.Id != HandledType)
                 return;
 
-            WearState = (WearStates) msg.Payload[0];
-            LeftDetectionCount = BitConverter.ToInt16(msg.Payload, 1);
-            RightDetectionCount = BitConverter.ToInt16(msg.Payload, 3);
+            a = (char)msg.Payload[12];
+            b = (char)msg.Payload[13];
+            c = (char)msg.Payload[26];
+            d = (char)msg.Payload[27];
         }
+
         public override Dictionary<String, String> ToStringMap()
         {
             Dictionary<String, String> map = new Dictionary<string, string>();

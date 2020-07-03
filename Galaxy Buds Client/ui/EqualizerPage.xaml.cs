@@ -17,6 +17,8 @@ using System.Windows.Shapes;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.parser;
 using Galaxy_Buds_Client.model;
+using Galaxy_Buds_Client.model.Constants;
+using Galaxy_Buds_Client.Properties;
 using Galaxy_Buds_Client.ui.element;
 
 namespace Galaxy_Buds_Client.ui
@@ -28,25 +30,87 @@ namespace Galaxy_Buds_Client.ui
     {
         private MainWindow _mainWindow;
 
+        private int newPresetValue = -1;
+
         public EqualizerPage(MainWindow mainWindow)
         {
             _mainWindow = mainWindow;
             InitializeComponent();
             SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
+            SPPMessageHandler.Instance.OtherOption += InstanceOnOtherOption;
+        }
+
+        private void InstanceOnOtherOption(object sender, TouchOption.Universal e)
+        {
+            int action;
+            if (e == TouchOption.Universal.OtherL)
+            {
+                if (Settings.Default.LeftCustomAction == -1)
+                    return;
+                action = Settings.Default.LeftCustomAction;
+            }
+            else if (e == TouchOption.Universal.OtherR)
+            {
+                if (Settings.Default.RightCustomAction == -1)
+                    return;
+                action = Settings.Default.RightCustomAction;
+            }
+            else
+            {
+                return;
+            }
+
+            switch ((CustomAction.Actions)action)
+            {
+                case CustomAction.Actions.EnableEqualizer:
+                    Dispatcher.Invoke(() =>
+                    {
+                        EQToggle.Toggle();
+                        UpdateEqualizer();
+                    });
+                    break;
+                case CustomAction.Actions.SwitchEqualizerPreset:
+                    Dispatcher.Invoke(() =>
+                    {
+                        var newVal = PresetSlider.Value + 1;
+                        if (newVal >= 5)
+                            newVal = 0;
+
+                        PresetSlider.Value = newVal;
+                        EQToggle.SetChecked(true);
+                        UpdateEqualizer();
+                    });
+                    break;
+            }
         }
 
         private void InstanceOnExtendedStatusUpdate(object sender, ExtendedStatusUpdateParser e)
         {
             Dispatcher.Invoke(() =>
             {
-                EQToggle.SetChecked(e.EqualizerEnabled);
-                DolbyToggle.SetChecked(e.EqualizerMode < 5);
+                if (BluetoothService.Instance.ActiveModel == Model.Buds)
+                {
+                    EQToggle.SetChecked(e.EqualizerEnabled);
+                    DolbyToggle.SetChecked(e.EqualizerMode < 5);
 
-                int preset = e.EqualizerMode;
-                if (preset >= 5)
-                    preset -= 5;
+                    int preset = e.EqualizerMode;
+                    if (preset >= 5)
+                        preset -= 5;
 
-                UpdateSlider(preset);
+                    UpdateSlider(preset);
+                }
+                else
+                {
+                    EQToggle.SetChecked(e.EqualizerMode != 0);
+                    if (e.EqualizerMode == 0)
+                    {
+                        UpdateSlider(2);
+                    }
+                    else
+                    {
+                        UpdateSlider(e.EqualizerMode - 1);
+                    }
+                }
             });
         }
 
@@ -54,6 +118,14 @@ namespace Galaxy_Buds_Client.ui
         public override void OnPageShown()
         {
             LoadingSpinner.Visibility = Visibility.Hidden;
+            if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+            {
+                DolbyModeBorder.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                DolbyModeBorder.Visibility = Visibility.Visible;
+            }
         }
 
         public override void OnPageHidden()
@@ -79,17 +151,29 @@ namespace Galaxy_Buds_Client.ui
 
         private void PresetSlider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            UpdateSlider((int)PresetSlider.Value);
-            UpdateEqualizer();
+            if (newPresetValue != e.NewValue)
+            {
+                UpdateSlider((int) PresetSlider.Value);
+                UpdateEqualizer();
+            }
+            newPresetValue = -1;
         }
 
         private void UpdateEqualizer()
         {
-            BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetEqualizer(EQToggle.IsChecked, (Constants.EqPreset)PresetSlider.Value, DolbyToggle.IsChecked));
+            if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+            {
+                BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetEqualizer(EQToggle.IsChecked, (EqPreset)PresetSlider.Value, false));
+            }
+            else
+            {
+                BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetEqualizer(EQToggle.IsChecked, (EqPreset)PresetSlider.Value, DolbyToggle.IsChecked));
+            }
         }
 
         private void UpdateSlider(int i)
         {
+            newPresetValue = i;
             PresetSlider.Value = i;
             switch (PresetSlider.Value)
             {

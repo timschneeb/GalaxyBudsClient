@@ -76,7 +76,7 @@
 
             </Grid>
         </Border>
-        <Border Grid.Row="7" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
+        <Border Name="DolbyModeBorder" Grid.Row="7" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="DolbyMode_OnMouseLeftButtonUp">
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10" >

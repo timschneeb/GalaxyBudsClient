@@ -27,12 +27,12 @@ namespace Galaxy_Buds_Client.parser
         }
 
         public override Dictionary<String, String> ToStringMap()
-        {
+        { 
             Dictionary<String, String> map = new Dictionary<string, string>();
             PropertyInfo[] properties = this.GetType().GetProperties();
             foreach (PropertyInfo property in properties)
             {
-                if (property.Name == "HandledType")
+                if (property.Name == "HandledType" || property.Name == "ActiveModel")
                     continue;
 
                 map.Add(property.Name, property.GetValue(this).ToString());

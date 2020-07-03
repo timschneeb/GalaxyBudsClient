@@ -33,7 +33,7 @@
                         </Image>
                     </Button>
                 </Border>
-                <Label Grid.Column="1" Content="Self Test" Foreground="#CC000000" VerticalContentAlignment="Center" FontSize="20"/>
+                <Label Name="Title" Grid.Column="1" Content="Self Test" Foreground="#CC000000" VerticalContentAlignment="Center" FontSize="20"/>
                 <element:LoadingSpinner Grid.Column="3" x:Name="LoadingSpinner" Margin="325,19,-345,19"/>
             </Grid>
         </Border>

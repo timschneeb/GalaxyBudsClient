@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model;
+using Galaxy_Buds_Client.model.Constants;
 
 namespace Galaxy_Buds_Client.parser
 {
@@ -11,16 +12,16 @@ namespace Galaxy_Buds_Client.parser
         public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_SPP_ROLE_STATE;
 
 
-        public Constants.Devices Device { set; get; }
-        public Constants.SppRoleStates SppRoleState { set; get; }
+        public Devices Device { set; get; }
+        public SppRoleStates SppRoleState { set; get; }
 
         public override void ParseMessage(SPPMessage msg)
         {
             if (msg.Id != HandledType)
                 return;
 
-            SppRoleState = (Constants.SppRoleStates) msg.Payload[0];
-            Device = (Constants.Devices) msg.Payload[1];
+            SppRoleState = (SppRoleStates) msg.Payload[0];
+            Device = (Devices) msg.Payload[1];
         }
 
         public override Dictionary<String, String> ToStringMap()
@@ -29,7 +30,7 @@ namespace Galaxy_Buds_Client.parser
             PropertyInfo[] properties = this.GetType().GetProperties();
             foreach (PropertyInfo property in properties)
             {
-                if (property.Name == "HandledType")
+                if (property.Name == "HandledType" || property.Name == "ActiveModel")
                     continue;
 
                 map.Add(property.Name, property.GetValue(this).ToString());

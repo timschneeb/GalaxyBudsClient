@@ -14,9 +14,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="1" BorderBrush="#FFEAEAEA" BorderThickness="1"  MinWidth="518" Height="60"
@@ -41,7 +40,7 @@
             </Grid>
         </Border>
         <Border Grid.Row="3" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,10">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="EnableAmbientBorder_OnMouseLeftButtonUp">
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10" >
                     <Grid.ColumnDefinitions>
@@ -55,8 +54,8 @@
                 </Grid>
             </Border>
         </Border>
-        <Border Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="4" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,10">
             <Grid ClipToBounds="True" ScrollViewer.CanContentScroll="True">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -64,13 +63,13 @@
                 </Grid.RowDefinitions>
                 <Label Content="Ambient Sound Volume" Margin="20,10,20,5" Foreground="#CC000000" FontSize="16" />
                 <Slider Grid.Row="1" Margin="25,0,20,10" TickFrequency="1" Orientation="Horizontal" TickPlacement="BottomRight" Foreground="Orange"
-                        Minimum="0" Maximum="4" Value="0" Style="{StaticResource MaterialDesignSlider}" IsSnapToTickEnabled="True"
+                        Minimum="0" Maximum="3" Value="0" Style="{StaticResource MaterialDesignSlider}" IsSnapToTickEnabled="True"
                         ValueChanged="AmbientVolume_OnValueChanged" x:Name="AmbientVolume"/>
 
             </Grid>
         </Border>
-        <Border Grid.Row="7" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Name="VoiceFocusBorder" Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,10">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="EnableVoiceFocus_OnMouseLeftButtonUp">
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10" >
                     <Grid.ColumnDefinitions>
@@ -84,6 +83,27 @@
                 </Grid>
             </Border>
         </Border>
-
+        <Border Name="ExtraLoudBorder" Grid.Row="6" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+            <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="EnableExtraLoud_OnMouseLeftButtonUp">
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Extra-High Ambient Volume"
+                           Foreground="#CC000000" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <element:ToggleSwitch Grid.Row="0" x:Name="ExtraLoudToggle" Grid.Column="2" Width="40" Height="30" ColorOn="Orange" DisableButton="True" />
+                    <TextBlock Margin="5" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" TextWrapping="Wrap" Foreground="#AA000000" FontSize="16" >
+                        Adds an extra volume level to the Ambient Volume slider
+                    </TextBlock>
+                </Grid>
+            </Border>
+        </Border>
     </Grid>
 </local:BasePage>

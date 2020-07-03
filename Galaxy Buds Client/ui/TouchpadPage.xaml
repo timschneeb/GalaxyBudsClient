@@ -14,7 +14,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="1" BorderBrush="#FFEAEAEA" BorderThickness="1"  MinWidth="518" Height="60"
@@ -39,7 +40,7 @@
             </Grid>
         </Border>
         <Border Grid.Row="3" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,10">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="LockTouchpadBorder_OnMouseLeftButtonUp">
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10" >
                     <Grid.ColumnDefinitions>
@@ -53,8 +54,8 @@
                 </Grid>
             </Border>
         </Border>
-        <Border Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="4" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,10">
             <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
                 <Grid ClipToBounds="True" ScrollViewer.CanContentScroll="True">
                     <Grid.RowDefinitions>
@@ -62,45 +63,37 @@
                         <RowDefinition Height="1"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="LeftOption_OnMouseLeftButtonUp" ContextMenuService.Placement="Bottom">
+                    <Border Name="LeftOptionBorder" Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="LeftOption_OnMouseLeftButtonUp" ContextMenuService.Placement="Bottom">
                         <element:DetailListItem x:Name="LeftOption" Text="Left Action" TextDetail="Unknown, device did not respond" Margin="20,0,20,0" />
-                        <Border.ContextMenu>
-                            <ContextMenu x:Name="LeftTouchMenu" Style="{StaticResource ContextMenuStyle}">
-                                <MenuItem Header="Volume Down" Style="{StaticResource MenuItemStyle}" />
-                                <Separator Style="{StaticResource SeparatorStyle}"/>
-                                <MenuItem Header="Ambient Sound" Style="{StaticResource MenuItemStyle}" />
-                                <Separator Style="{StaticResource SeparatorStyle}"/>
-                                <MenuItem Header="Quick Ambient Sound" Style="{StaticResource MenuItemStyle}" />
-                                <Separator Style="{StaticResource SeparatorStyle}"/>
-                                <MenuItem Header="Voice Assistant (Android only)" Style="{StaticResource MenuItemStyle}" />
-                                <Separator Style="{StaticResource SeparatorStyle}"/>
-                                <MenuItem Header="Spotify SpotOn (Android only)" Style="{StaticResource MenuItemStyle}" />
-                                <!--<Separator Style="{StaticResource SeparatorStyle}"/>
-                                <MenuItem Header="Custom Action" Style="{StaticResource MenuItemStyle}" />-->
-                            </ContextMenu>
-                        </Border.ContextMenu>
                     </Border>
                     <Separator Grid.Row="1" Margin="20,0,20,0" Background="LightGray"/>
-                    <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="RightOption_OnMouseLeftButtonUp" ContextMenuService.Placement="Bottom">
+                    <Border Name="RightOptionBorder" Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="RightOption_OnMouseLeftButtonUp" ContextMenuService.Placement="Bottom">
                         <element:DetailListItem x:Name="RightOption" Text="Right Action" TextDetail="Unknown, device did not respond" Margin="20,0,20,0"/>
-                        <Border.ContextMenu>
-                            <ContextMenu x:Name="RightTouchMenu" Style="{StaticResource ContextMenuStyle}">
-                                <MenuItem Header="Volume Up" Style="{StaticResource MenuItemStyle}" />
-                                    <Separator Style="{StaticResource SeparatorStyle}"/>
-                                <MenuItem Header="Ambient Sound" Style="{StaticResource MenuItemStyle}" />
-                                <Separator Style="{StaticResource SeparatorStyle}"/>
-                                <MenuItem Header="Quick Ambient Sound" Style="{StaticResource MenuItemStyle}" />
-                                <Separator Style="{StaticResource SeparatorStyle}"/>
-                                <MenuItem Header="Voice Assistant (Android only)" Style="{StaticResource MenuItemStyle}" />
-                                <Separator Style="{StaticResource SeparatorStyle}"/>
-                                <MenuItem Header="Spotify SpotOn (Android only)" Style="{StaticResource MenuItemStyle}" />
-                                <!--<Separator Style="{StaticResource SeparatorStyle}"/>
-                                <MenuItem Header="Custom Action" Style="{StaticResource MenuItemStyle}" />-->
-                            </ContextMenu>
-                        </Border.ContextMenu>
                     </Border>
                 </Grid>
             </ScrollViewer>
+        </Border>
+        <Border Name="DoubleTapVolumeBorder" Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,10">
+            <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="DoubleTapVolume_OnMouseLeftButtonUp">
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Double-Tap Earbud Edge"
+                           Foreground="#CC000000" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <element:ToggleSwitch Grid.Row="0" x:Name="DoubleTapVolumeToggle" Grid.Column="2" Width="40" Height="30" ColorOn="Orange" DisableButton="True" />
+                    <TextBlock Margin="5" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" TextWrapping="Wrap" Foreground="#77000000" FontSize="16" >
+                       Double-tap the edge of the left or right earbud to turn the volume down or up.
+                    </TextBlock>
+                </Grid>
+            </Border>
         </Border>
     </Grid>
 </local:BasePage>

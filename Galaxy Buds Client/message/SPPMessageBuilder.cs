@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Galaxy_Buds_Client.model;
+using Galaxy_Buds_Client.model.Constants;
 
 namespace Galaxy_Buds_Client.message
 {
@@ -28,7 +29,7 @@ namespace Galaxy_Buds_Client.message
             return new SPPMessage(SPPMessage.MessageIds.MSG_ID_UPDATE_TIME,
                 SPPMessage.MsgType.Request, payload);
         }
-        public static SPPMessage SetManagerInfo(Constants.ClientDeviceType type = Constants.ClientDeviceType.Samsung, int androidSdkVersion = 29)
+        public static SPPMessage SetManagerInfo(ClientDeviceType type = ClientDeviceType.Samsung, int androidSdkVersion = 29)
         {
             byte[] payload = new byte[3];
             payload[0] = 1;
@@ -37,6 +38,9 @@ namespace Galaxy_Buds_Client.message
             return new SPPMessage(SPPMessage.MessageIds.MSG_ID_MANAGER_INFO,
                 SPPMessage.MsgType.Request, payload);
         }
+        /**
+         * Incomplete
+         */
         public static SPPMessage SetGameMode(int state = 2)
         {
             byte[] payload = new byte[1];
@@ -44,6 +48,9 @@ namespace Galaxy_Buds_Client.message
             return new SPPMessage(SPPMessage.MessageIds.MSG_ID_GAME_MODE,
                 SPPMessage.MsgType.Request, payload);
         }
+        /**
+         * Buds only
+         */
         public static SPPMessage SetSeamlessConnection(bool enable)
         {
             byte[] payload = new byte[1];
@@ -51,26 +58,48 @@ namespace Galaxy_Buds_Client.message
             return new SPPMessage(SPPMessage.MessageIds.MSG_ID_SET_SEAMLESS_CONNECTION,
                 SPPMessage.MsgType.Request, payload);
         }
+        /**
+         * Buds+ only
+         */
+        public static SPPMessage SetAdjustSoundSyncEnabled(bool enable)
+        {
+            byte[] payload = new byte[1];
+            payload[0] = Convert.ToByte(enable);
+            return new SPPMessage(SPPMessage.MessageIds.MSG_ID_ADJUST_SOUND_SYNC,
+                SPPMessage.MsgType.Request, payload);
+        }
 
-        public static SPPMessage SetMainConnection(Constants.DeviceInv side)
+        public static SPPMessage SetMainConnection(DeviceInv side)
         {
             byte[] payload = new byte[1];
             payload[0] = (byte)side;
             return new SPPMessage(SPPMessage.MessageIds.MSG_ID_MAIN_CHANGE,
                 SPPMessage.MsgType.Request, payload);
         }
-        public static SPPMessage SetEqualizer(bool enable, Constants.EqPreset preset, bool dolbyMode)
+        public static SPPMessage SetEqualizer(bool enable, EqPreset preset, bool dolbyMode)
         {
-            int rawPreset = (int)preset;
-            if (!dolbyMode)
-                rawPreset += 5;
+            //Dolby mode has no effect on the Buds+
+            if (BluetoothService.Instance.ActiveModel == Model.Buds)
+            {
+                int rawPreset = (int)preset;
+                if (!dolbyMode)
+                    rawPreset += 5;
 
-            byte[] payload = new byte[2];
-            payload[0] = Convert.ToByte(enable);
-            payload[1] = (byte)rawPreset;
-            return new SPPMessage(SPPMessage.MessageIds.MSG_ID_EQUALIZER,
-                SPPMessage.MsgType.Request, payload);
+                byte[] payload = new byte[2];
+                payload[0] = Convert.ToByte(enable);
+                payload[1] = (byte)rawPreset;
+                return new SPPMessage(SPPMessage.MessageIds.MSG_ID_EQUALIZER,
+                    SPPMessage.MsgType.Request, payload);
+            }
+            else
+            {
+                byte[] payload = new byte[1];
+                payload[0] = !enable ? (byte) 0 : Convert.ToByte(preset + 1);
+                return new SPPMessage(SPPMessage.MessageIds.MSG_ID_EQUALIZER,
+                    SPPMessage.MsgType.Request, payload);
+            }
         }
+
         public static SPPMessage FactoryReset()
         {
             return new SPPMessage(SPPMessage.MessageIds.MSG_ID_RESET,
@@ -86,12 +115,22 @@ namespace Galaxy_Buds_Client.message
                 return new SPPMessage(SPPMessage.MessageIds.MSG_ID_LOCK_TOUCHPAD,
                     SPPMessage.MsgType.Request, payload);
             }
-            public static SPPMessage SetOptions(Constants.TouchOption left, Constants.TouchOption right)
+            public static SPPMessage SetOptions(TouchOption.Universal left, TouchOption.Universal right)
             {
                 byte[] payload = new byte[2];
-                payload[0] = (byte)left;
-                payload[1] = (byte)right;
+                payload[0] = TouchOption.ToRawByte(left);
+                payload[1] = TouchOption.ToRawByte(right);
                 return new SPPMessage(SPPMessage.MessageIds.MSG_ID_SET_TOUCHPAD_OPTION,
+                    SPPMessage.MsgType.Request, payload);
+            }
+            /**
+             * Buds+ only
+             */
+            public static SPPMessage SetOutsideDoubleTapEnabled(bool enable)
+            {
+                byte[] payload = new byte[1];
+                payload[0] = Convert.ToByte(enable);
+                return new SPPMessage(SPPMessage.MessageIds.MSG_ID_OUTSIDE_DOUBLE_TAP,
                     SPPMessage.MsgType.Request, payload);
             }
         }
@@ -105,18 +144,41 @@ namespace Galaxy_Buds_Client.message
                 return new SPPMessage(SPPMessage.MessageIds.MSG_ID_SET_AMBIENT_MODE,
                     SPPMessage.MsgType.Request, payload);
             }
-            public static SPPMessage SetType(Constants.AmbientType type)
+            public static SPPMessage SetVolume(int volume)
+            {
+                byte[] payload = new byte[1];
+                payload[0] = (byte)volume;
+                return new SPPMessage(SPPMessage.MessageIds.MSG_ID_AMBIENT_VOLUME,
+                    SPPMessage.MsgType.Request, payload);
+            }
+            /**
+             * Buds only
+             */
+            public static SPPMessage SetType(AmbientType type)
             {
                 byte[] payload = new byte[1];
                 payload[0] = (byte)type;
                 return new SPPMessage(SPPMessage.MessageIds.MSG_ID_AMBIENT_VOICE_FOCUS,
                     SPPMessage.MsgType.Request, payload);
             }
-            public static SPPMessage SetVolume(int volume)
+            /**
+             * Buds+ only
+             */
+            public static SPPMessage SetExtraHighVolumeEnabled(bool enable)
             {
                 byte[] payload = new byte[1];
-                payload[0] = (byte)volume;
-                return new SPPMessage(SPPMessage.MessageIds.MSG_ID_AMBIENT_VOLUME,
+                payload[0] = Convert.ToByte(enable);
+                return new SPPMessage(SPPMessage.MessageIds.MSG_ID_EXTRA_HIGH_AMBIENT,
+                    SPPMessage.MsgType.Request, payload);
+            }
+            /**
+             * Buds+ only
+             */
+            public static SPPMessage SetSidetoneEnabled(bool enable)
+            {
+                byte[] payload = new byte[1];
+                payload[0] = Convert.ToByte(enable);
+                return new SPPMessage(SPPMessage.MessageIds.MSG_ID_SET_SIDETONE,
                     SPPMessage.MsgType.Request, payload);
             }
         }
@@ -160,14 +222,17 @@ namespace Galaxy_Buds_Client.message
                 return new SPPMessage(SPPMessage.MessageIds.MSG_ID_DEBUG_BUILD_INFO,
                     SPPMessage.MsgType.Request, new byte[0]);
             }
-            public static SPPMessage GetBatteryType()
-            {
-                return new SPPMessage(SPPMessage.MessageIds.MSG_ID_BATTERY_TYPE,
-                    SPPMessage.MsgType.Request, new byte[0]);
-            }
             public static SPPMessage RunSelfTest()
             {
                 return new SPPMessage(SPPMessage.MessageIds.MSG_ID_SELF_TEST,
+                    SPPMessage.MsgType.Request, new byte[0]);
+            }
+            /**
+             * Buds only
+             */
+            public static SPPMessage GetBatteryType()
+            {
+                return new SPPMessage(SPPMessage.MessageIds.MSG_ID_BATTERY_TYPE,
                     SPPMessage.MsgType.Request, new byte[0]);
             }
         }

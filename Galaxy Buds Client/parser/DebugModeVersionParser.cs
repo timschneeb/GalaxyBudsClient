@@ -5,15 +5,16 @@ using System.Security.Principal;
 using System.Text;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model;
+using Galaxy_Buds_Client.model.Constants;
 
 namespace Galaxy_Buds_Client.parser
 {
     class DebugModeVersionParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_DEBUGMODE_VERSION;
+        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_VERSION_INFO;
 
         readonly String[] _swMonth = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" };
-        readonly String[] _swRelVer = { "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+        readonly String[] _swRelVer = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
         readonly String[] _swVer = { "E", "U" };
         readonly String[] _swYear = { "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
 
@@ -46,23 +47,36 @@ namespace Galaxy_Buds_Client.parser
 
         private String VersionDataToString(byte[] payload, int startIndex, String side)
         {
-            int swVarIndex = payload[startIndex];
-            int swYearIndex = (payload[startIndex + 1] & 240) >> 4;
-            int swMonthIndex = payload[startIndex + 1] & 15;
-            byte swRelVerIndex = payload[startIndex + 2];
-
-            String swRelVarString;
-            if (swRelVerIndex <= 15)
+            if (ActiveModel == Model.Buds)
             {
-                swRelVarString = (swRelVerIndex & 255).ToString("X");
+                int swVarIndex = payload[startIndex];
+                int swYearIndex = (payload[startIndex + 1] & 240) >> 4;
+                int swMonthIndex = payload[startIndex + 1] & 15;
+                byte swRelVerIndex = payload[startIndex + 2];
+
+                String swRelVarString;
+                if (swRelVerIndex <= 15)
+                {
+                    swRelVarString = (swRelVerIndex & 255).ToString("X");
+                }
+                else
+                {
+                    swRelVarString = _swRelVer[swRelVerIndex - 16];
+                }
+
+                return side + "170XX" + _swVer[swVarIndex] + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] +
+                       swRelVarString;
             }
             else
             {
-                swRelVarString = _swRelVer[swRelVerIndex - 16];
-            }
+                String swVar = payload[startIndex] == 0 ? "E" : "U";
+                int swYearIndex = (payload[startIndex + 1] & 240) >> 4;
+                int swMonthIndex = payload[startIndex + 1] & 15;
+                byte swRelVerIndex = payload[startIndex + 2];
 
-            return side + "170XX" + _swVer[swVarIndex] + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] +
-                   swRelVarString;
+                return side + "175XX" + swVar + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] +
+                       _swRelVer[swRelVerIndex]; ;
+            }
         }
 
         public override Dictionary<String, String> ToStringMap()
@@ -71,10 +85,18 @@ namespace Galaxy_Buds_Client.parser
             PropertyInfo[] properties = this.GetType().GetProperties();
             foreach (PropertyInfo property in properties)
             {
-                if (property.Name == "HandledType")
+                if (property.Name == "HandledType" || property.Name == "ActiveModel")
                     continue;
 
-                map.Add(property.Name, property.GetValue(this).ToString());
+                var customAttributes = (PostfixAttribute[])property.GetCustomAttributes(typeof(PostfixAttribute), true);
+                if (customAttributes.Length > 0)
+                {
+                    map.Add(property.Name, property.GetValue(this).ToString() + customAttributes[0].Text);
+                }
+                else
+                {
+                    map.Add(property.Name, property.GetValue(this).ToString());
+                }
             }
 
             return map;

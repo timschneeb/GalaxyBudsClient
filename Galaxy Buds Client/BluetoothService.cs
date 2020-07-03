@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Automation;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model;
+using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.util;
 using InTheHand.Net;
 using InTheHand.Net.Sockets;
@@ -33,7 +34,8 @@ namespace Galaxy_Buds_Client
             }
         }
 
-        private static readonly Guid ServiceUuid = new Guid("{00001102-0000-1000-8000-00805f9b34fd}");
+        private static readonly Guid ServiceUuidBuds = new Guid("{00001102-0000-1000-8000-00805f9b34fd}");
+        private static readonly Guid ServiceUuidBudsPlus = new Guid("{00001101-0000-1000-8000-00805F9B34FB}");
 
         private Thread _btservice = null;
 
@@ -50,6 +52,7 @@ namespace Galaxy_Buds_Client
         public event EventHandler<InvalidDataException> InvalidDataException;
         public event EventHandler<PlatformNotSupportedException> PlatformNotSupportedException;
 
+        public Model ActiveModel = Model.BudsPlus;
         public bool IsConnected => cli != null && cli.Connected;
 
         public BluetoothService()
@@ -74,8 +77,11 @@ namespace Galaxy_Buds_Client
             }
         }
 
-        public void Connect(BluetoothAddress macAddress)
+        public void Connect(BluetoothAddress macAddress, Model deviceModel)
         {
+            if (macAddress == null)
+                return;
+
             lock (_btpadlock)
             {
                 CreateClient();
@@ -86,7 +92,9 @@ namespace Galaxy_Buds_Client
                 if (cli.Connected)
                     cli.Close();
 
-                ep = new BluetoothEndPoint(macAddress, ServiceUuid);
+                ep = new BluetoothEndPoint(
+                    macAddress, deviceModel == Model.BudsPlus ? ServiceUuidBudsPlus : ServiceUuidBuds);
+                ActiveModel = deviceModel;
 
                 try
                 {
@@ -99,7 +107,6 @@ namespace Galaxy_Buds_Client
                 {
                     OnSocketException(e);
                 }
-
             }
         }
 
@@ -107,11 +114,8 @@ namespace Galaxy_Buds_Client
         {
             _btservice?.Abort();
             _btservice = null;
-            lock (_btpadlock)
-            {
-                cli?.Close();
-                cli = null;
-            }
+            cli?.Close();
+            cli = null;
         }
 
         public void SendAsync(SPPMessage msg)
@@ -185,7 +189,6 @@ namespace Galaxy_Buds_Client
                         }
                     }
                 }
-
             }
         }
 

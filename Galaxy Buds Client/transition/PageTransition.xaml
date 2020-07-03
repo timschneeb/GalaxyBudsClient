@@ -41,11 +41,11 @@
 
         <!-- Fade -->
 		<Storyboard x:Key="FadeIn" >
-			<DoubleAnimation Duration="0:0:.25" Storyboard.TargetProperty="Opacity" From="0" To="1" />
+			<DoubleAnimation Duration="0:0:.15" Storyboard.TargetProperty="Opacity" From="0" To="1" />
 		</Storyboard>
 
 		<Storyboard x:Key="FadeOut">
-			<DoubleAnimation Duration="0:0:.5" Storyboard.TargetProperty="Opacity" To="0" />
+			<DoubleAnimation Duration="0:0:.25" Storyboard.TargetProperty="Opacity" To="0" />
 		</Storyboard>
 
 		<!-- Slide -->

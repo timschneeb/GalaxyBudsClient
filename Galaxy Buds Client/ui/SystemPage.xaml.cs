@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Galaxy_Buds_Client.message;
+using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.parser;
 
 namespace Galaxy_Buds_Client.ui
@@ -34,6 +35,15 @@ namespace Galaxy_Buds_Client.ui
             SPPMessageHandler.Instance.BatteryTypeResponse += InstanceOnBatteryTypeResponse;
             SPPMessageHandler.Instance.SerialNumberResponse += InstanceOnSerialNumberResponse;
             SPPMessageHandler.Instance.BuildStringResponse += InstanceOnBuildStringResponse;
+            SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
+        }
+
+        private void InstanceOnExtendedStatusUpdate(object sender, ExtendedStatusUpdateParser e)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                ProtocolRevision.TextDetail = $"rev{e.Revision}";
+            });
         }
 
         private void InstanceOnBuildStringResponse(object sender, string e)
@@ -57,6 +67,10 @@ namespace Galaxy_Buds_Client.ui
             Dispatcher.Invoke(() =>
             {
                 BatteryType.TextDetail = $"Left: {e.LeftBatteryType}, Right: {e.RightBatteryType}";
+                if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+                {
+                    BatteryType.TextDetail = "Not specified";
+                }
             });
         }
 

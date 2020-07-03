@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model;
+using Galaxy_Buds_Client.model.Constants;
 
 namespace Galaxy_Buds_Client.parser
 {
@@ -10,24 +11,65 @@ namespace Galaxy_Buds_Client.parser
     {
 
         public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_STATUS_UPDATED;
-        public int EarType { set; get; }
         public int BatteryL { set; get; }
         public int BatteryR { set; get; }
         public bool IsCoupled { set; get; }
-        public Constants.DeviceInv MainConnection { set; get; }
-        public Constants.WearStates WearState { set; get; }
+        public DeviceInv MainConnection { set; get; }
+        public WearStates WearState { set; get; }
+
+        /**
+         * Buds
+         */
+        [Device(Model.Buds)]
+        public int EarType { set; get; }
+
+        /**
+         * Buds+
+         */
+        [Device(Model.BudsPlus)]
+        public int Revision { set; get; }
+        [Device(Model.BudsPlus)]
+        public PlacementStates PlacementL { set; get; }
+        [Device(Model.BudsPlus)]
+        public PlacementStates PlacementR { set; get; }
+        [Device(Model.BudsPlus)]
+        public int BatteryCase { set; get; }
 
         public override void ParseMessage(SPPMessage msg)
         {
             if (msg.Id != HandledType)
                 return;
 
-            EarType = msg.Payload[0];
-            BatteryL = msg.Payload[1];
-            BatteryR = msg.Payload[2];
-            IsCoupled = Convert.ToBoolean(msg.Payload[3]);
-            MainConnection = (Constants.DeviceInv) msg.Payload[4];
-            WearState = (Constants.WearStates) msg.Payload[5];
+            if (ActiveModel == Model.Buds)
+            {
+                EarType = msg.Payload[0];
+                BatteryL = msg.Payload[1];
+                BatteryR = msg.Payload[2];
+                IsCoupled = Convert.ToBoolean(msg.Payload[3]);
+                MainConnection = (DeviceInv) msg.Payload[4];
+                WearState = (WearStates) msg.Payload[5];
+            }
+            else
+            {
+                Revision = msg.Payload[0];
+                BatteryL = msg.Payload[1];
+                BatteryR = msg.Payload[2];
+                IsCoupled = Convert.ToBoolean(msg.Payload[3]);
+                MainConnection = (DeviceInv)msg.Payload[4];
+
+                PlacementL = (PlacementStates)((msg.Payload[5] & 240) >> 4);
+                PlacementR = (PlacementStates)(msg.Payload[5] & 15);
+                if (PlacementL == PlacementStates.Wearing && PlacementR == PlacementStates.Wearing)
+                    WearState = WearStates.Both;
+                else if (PlacementL == PlacementStates.Wearing)
+                    WearState = WearStates.L;
+                else if (PlacementR == PlacementStates.Wearing)
+                    WearState = WearStates.R;
+                else
+                    WearState = WearStates.None;
+
+                BatteryCase = msg.Payload[6];
+            }
         }
 
         public override Dictionary<String, String> ToStringMap()
@@ -36,10 +78,19 @@ namespace Galaxy_Buds_Client.parser
             PropertyInfo[] properties = this.GetType().GetProperties();
             foreach (PropertyInfo property in properties)
             {
-                if (property.Name == "HandledType")
+                if (property.Name == "HandledType" || property.Name == "ActiveModel")
                     continue;
 
-                map.Add(property.Name, property.GetValue(this).ToString());
+                var customAttributes = (DeviceAttribute[])property.GetCustomAttributes(typeof(DeviceAttribute), true);
+
+                if (customAttributes.Length <= 0)
+                {
+                    map.Add(property.Name, property.GetValue(this).ToString());
+                }
+                else if (customAttributes[0].Model == ActiveModel)
+                {
+                    map.Add($"{property.Name} ({customAttributes[0].Model.ToString()})", property.GetValue(this).ToString());
+                }
             }
 
             return map;

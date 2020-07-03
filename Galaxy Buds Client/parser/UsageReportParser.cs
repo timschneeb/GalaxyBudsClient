@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model;
 using Galaxy_Buds_Client.util;

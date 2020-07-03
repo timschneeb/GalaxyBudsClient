@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Galaxy_Buds_Client.message;
+using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.parser;
 
 namespace Galaxy_Buds_Client.ui
@@ -64,6 +65,11 @@ namespace Galaxy_Buds_Client.ui
         
         public override void OnPageShown()
         {
+            if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+                Title.Content = "Self Test (Your device may disconnect)";
+            else
+                Title.Content = "Self Test";
+
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.Info.RunSelfTest());
             LoadingSpinner.Visibility = Visibility.Visible;
             LoadingSpinner.Start();

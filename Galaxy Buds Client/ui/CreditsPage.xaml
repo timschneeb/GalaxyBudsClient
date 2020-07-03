@@ -50,12 +50,12 @@
                     <Label Margin="20,0" FontSize="16" Content="Telegram" VerticalContentAlignment="Center" Foreground="#CC000000" HorizontalAlignment="Center" />
                 </Border>
                 <Separator Grid.Column="1" Background="LightGray" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
-                <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                    <Label Margin="20,5" FontSize="16" Content="GitHub" MouseLeftButtonUp="GitHub_OnMouseLeftButtonUp"  VerticalContentAlignment="Center" Foreground="#CC000000" HorizontalAlignment="Center" />
+                <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="GitHub_OnMouseLeftButtonUp">
+                    <Label Margin="20,5" FontSize="16" Content="GitHub" VerticalContentAlignment="Center" Foreground="#CC000000" HorizontalAlignment="Center" />
                 </Border>
                 <Separator Grid.Column="3" Background="LightGray" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
-                <Border Grid.Column="4" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                    <Label Margin="20,5" FontSize="16" Content="Website" MouseLeftButtonUp="Website_OnMouseLeftButtonUp" VerticalContentAlignment="Center" Foreground="#CC000000" HorizontalAlignment="Center" />
+                <Border Grid.Column="4" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Website_OnMouseLeftButtonUp">
+                    <Label Margin="20,5" FontSize="16" Content="Website" VerticalContentAlignment="Center" Foreground="#CC000000" HorizontalAlignment="Center" />
                 </Border>
             </Grid>
         </Border>

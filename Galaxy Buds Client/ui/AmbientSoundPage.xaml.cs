@@ -17,6 +17,8 @@ using System.Windows.Shapes;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.parser;
 using Galaxy_Buds_Client.model;
+using Galaxy_Buds_Client.model.Constants;
+using Galaxy_Buds_Client.Properties;
 using Galaxy_Buds_Client.ui.element;
 
 namespace Galaxy_Buds_Client.ui
@@ -34,6 +36,54 @@ namespace Galaxy_Buds_Client.ui
             InitializeComponent();
             SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
             SPPMessageHandler.Instance.AmbientEnabledUpdateResponse += InstanceOnAmbientEnabledUpdateResponse;
+            SPPMessageHandler.Instance.OtherOption += InstanceOnOtherOption;
+        }
+
+        private void InstanceOnOtherOption(object sender, TouchOption.Universal e)
+        {
+            int action;
+            if (e == TouchOption.Universal.OtherL)
+            {
+                if (Settings.Default.LeftCustomAction == -1)
+                    return;
+                action = Settings.Default.LeftCustomAction;
+            }
+            else if (e == TouchOption.Universal.OtherR)
+            {
+                if (Settings.Default.RightCustomAction == -1)
+                    return;
+                action = Settings.Default.RightCustomAction;
+            }
+            else
+            {
+                return;
+            }
+
+            switch ((CustomAction.Actions)action)
+            {
+                case CustomAction.Actions.AmbientVolumeUp:
+                    Dispatcher.Invoke(() =>
+                    {
+                        AmbientToggle.SetChecked(true);
+                        BluetoothService.Instance.SendAsync(SPPMessageBuilder.Ambient.SetEnabled(AmbientToggle.IsChecked));
+
+                        AmbientVolume.Value++;
+                        BluetoothService.Instance.SendAsync(
+                            SPPMessageBuilder.Ambient.SetVolume((int) AmbientVolume.Value));
+                    });
+                    break;
+                case CustomAction.Actions.AmbientVolumeDown:
+                    Dispatcher.Invoke(() =>
+                    {
+                        AmbientToggle.SetChecked(true);
+                        BluetoothService.Instance.SendAsync(SPPMessageBuilder.Ambient.SetEnabled(AmbientToggle.IsChecked));
+
+                        AmbientVolume.Value--;
+                        BluetoothService.Instance.SendAsync(
+                                SPPMessageBuilder.Ambient.SetVolume((int) AmbientVolume.Value));
+                    });
+                    break;
+            }
         }
 
         private void InstanceOnAmbientEnabledUpdateResponse(object sender, bool e)
@@ -49,8 +99,17 @@ namespace Galaxy_Buds_Client.ui
             Dispatcher.Invoke(() =>
             {
                 AmbientToggle.SetChecked(e.AmbientSoundEnabled);
-                VoiceFocusToggle.SetChecked(e.AmbientSoundMode == Constants.AmbientType.VoiceFocus);
                 AmbientVolume.Value = e.AmbientSoundVolume;
+
+                if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+                {
+                    ExtraLoudToggle.SetChecked(e.ExtraHighAmbientEnabled);
+                    AmbientVolume.Maximum = e.ExtraHighAmbientEnabled ? 3 : 2;
+                }
+                else
+                {
+                    VoiceFocusToggle.SetChecked(e.AmbientSoundMode == AmbientType.VoiceFocus);
+                }
             });
         }
 
@@ -58,6 +117,17 @@ namespace Galaxy_Buds_Client.ui
         public override void OnPageShown()
         {
             LoadingSpinner.Visibility = Visibility.Hidden;
+            if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+            {
+                VoiceFocusBorder.Visibility = Visibility.Collapsed;
+                ExtraLoudBorder.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                VoiceFocusBorder.Visibility = Visibility.Visible;
+                ExtraLoudBorder.Visibility = Visibility.Collapsed;
+                AmbientVolume.Maximum = 4;
+            }
         }
 
         public override void OnPageHidden()
@@ -79,13 +149,23 @@ namespace Galaxy_Buds_Client.ui
         private void EnableVoiceFocus_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             VoiceFocusToggle.Toggle();
-            var type = VoiceFocusToggle.IsChecked ? Constants.AmbientType.VoiceFocus : Constants.AmbientType.Default;
+            var type = VoiceFocusToggle.IsChecked ? AmbientType.VoiceFocus : AmbientType.Default;
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.Ambient.SetType(type));
         }
 
         private void AmbientVolume_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.Ambient.SetVolume((int)e.NewValue));
+        }
+
+        private void EnableExtraLoud_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ExtraLoudToggle.Toggle();
+            AmbientVolume.Maximum = ExtraLoudToggle.IsChecked ? 3 : 2;
+            if(ExtraLoudToggle.IsChecked || (!ExtraLoudToggle.IsChecked && AmbientVolume.Value >= 3))
+                AmbientVolume.Value = AmbientVolume.Maximum;
+            BluetoothService.Instance.SendAsync(SPPMessageBuilder.Ambient.SetExtraHighVolumeEnabled(ExtraLoudToggle.IsChecked));
+            BluetoothService.Instance.SendAsync(SPPMessageBuilder.Ambient.SetVolume((int)AmbientVolume.Value));
         }
     }
 }

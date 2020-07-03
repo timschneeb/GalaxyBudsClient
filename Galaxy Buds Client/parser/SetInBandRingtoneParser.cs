@@ -1,32 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Galaxy_Buds_Client.message;
-using Galaxy_Buds_Client.model;
-using Galaxy_Buds_Client.model.Constants;
 
 namespace Galaxy_Buds_Client.parser
 {
     /*
-     * Mostly unused if (versionOfMR < 2). Refer to ExtendedStatusUpdateParser
+     * Buds+ only
      */
-    class AmbientWearingUpdateParser : BaseMessageParser
+    class SetInBandRingtoneParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_AMBIENT_WEARING_STATUS_UPDATED;
+        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_SET_IN_BAND_RINGTONE;
 
-        public WearStates WearState { set; get; }
-        public int LeftDetectionCount { set; get; }
-        public int RightDetectionCount { set; get; }
+        public byte Status { set; get; }
 
         public override void ParseMessage(SPPMessage msg)
         {
             if (msg.Id != HandledType)
                 return;
 
-            WearState = (WearStates) msg.Payload[0];
-            LeftDetectionCount = BitConverter.ToInt16(msg.Payload, 1);
-            RightDetectionCount = BitConverter.ToInt16(msg.Payload, 3);
+            Status = msg.Payload[0];
         }
+
         public override Dictionary<String, String> ToStringMap()
         {
             Dictionary<String, String> map = new Dictionary<string, string>();
@@ -36,7 +34,7 @@ namespace Galaxy_Buds_Client.parser
                 if (property.Name == "HandledType" || property.Name == "ActiveModel")
                     continue;
 
-                map.Add(property.Name, property.GetValue(this).ToString());
+                map.Add(property.Name, property.GetValue(this)?.ToString());
             }
 
             return map;

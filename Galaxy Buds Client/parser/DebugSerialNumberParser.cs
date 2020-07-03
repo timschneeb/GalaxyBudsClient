@@ -21,9 +21,9 @@ namespace Galaxy_Buds_Client.parser
             byte[] left = new byte[11];
             byte[] right = new byte[11];
             Array.Copy(msg.Payload, 0, left, 0, 11);
-            Array.Copy(msg.Payload, 12, right, 0, 11);
-            LeftSerialNumber = System.Text.Encoding.ASCII.GetString(left);
-            RightSerialNumber = System.Text.Encoding.ASCII.GetString(right);
+            Array.Copy(msg.Payload, 11, right, 0, 11);
+            LeftSerialNumber = System.Text.Encoding.ASCII.GetString(left, 0, 11);
+            RightSerialNumber = System.Text.Encoding.ASCII.GetString(right, 0, 11);
         }
 
         public override Dictionary<String, String> ToStringMap()
@@ -32,7 +32,7 @@ namespace Galaxy_Buds_Client.parser
             PropertyInfo[] properties = this.GetType().GetProperties();
             foreach (PropertyInfo property in properties)
             {
-                if (property.Name == "HandledType")
+                if (property.Name == "HandledType" || property.Name == "ActiveModel")
                     continue;
 
                 map.Add(property.Name, property.GetValue(this).ToString());

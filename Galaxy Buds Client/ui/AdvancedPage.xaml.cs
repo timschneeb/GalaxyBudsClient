@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.parser;
 using Galaxy_Buds_Client.model;
+using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.ui.element;
 
 namespace Galaxy_Buds_Client.ui
@@ -41,14 +42,30 @@ namespace Galaxy_Buds_Client.ui
         {
             Dispatcher.Invoke(() =>
             {
-                _seamlessSupported = e.VersionOfMR >= 3;
-                SeamlessToggle.SetChecked(e.SeamlessConnectionEnabled);
+                if (BluetoothService.Instance.ActiveModel == Model.Buds)
+                {
+                    _seamlessSupported = e.Revision >= 3;
+                    SeamlessToggle.SetChecked(e.SeamlessConnectionEnabled);
+                }
+                else
+                {
+                    _seamlessSupported = e.Revision >= 11;
+                    SeamlessToggle.SetChecked(e.SeamlessConnectionEnabled);
+                    SidetoneToggle.SetChecked(e.SideToneEnabled);
+                    GamingModeToggle.SetChecked(e.AdjustSoundSync);
+                }
             });
         }
         
         public override void OnPageShown()
         {
             LoadingSpinner.Visibility = Visibility.Hidden;
+            SidetoneBorder.Visibility = BluetoothService.Instance.ActiveModel == Model.Buds
+                ? Visibility.Collapsed
+                : Visibility.Visible;
+            GamingModeBorder.Visibility = BluetoothService.Instance.ActiveModel == Model.Buds
+                ? Visibility.Collapsed
+                : Visibility.Visible;
         }
 
         public override void OnPageHidden()
@@ -72,5 +89,16 @@ namespace Galaxy_Buds_Client.ui
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetSeamlessConnection(SeamlessToggle.IsChecked));
         }
 
+        private void Sidetone_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            SidetoneToggle.Toggle();
+            BluetoothService.Instance.SendAsync(SPPMessageBuilder.Ambient.SetSidetoneEnabled(SidetoneToggle.IsChecked));
+        }
+
+        private void GamingMode_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            GamingModeToggle.Toggle();
+            BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetAdjustSoundSyncEnabled(GamingModeToggle.IsChecked));
+        }
     }
 }

@@ -76,6 +76,9 @@
     <Reference Include="AutoUpdater.NET, Version=1.6.0.0, Culture=neutral, PublicKeyToken=501435c91b35f4bc, processorArchitecture=MSIL">
       <HintPath>..\packages\Autoupdater.NET.Official.1.6.0\lib\net40\AutoUpdater.NET.dll</HintPath>
     </Reference>
+    <Reference Include="Hardcodet.Wpf.TaskbarNotification, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hardcodet.NotifyIcon.Wpf.1.0.8\lib\net451\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
+    </Reference>
     <Reference Include="InTheHand.Net.Personal, Version=3.7.1102.0, Culture=neutral, PublicKeyToken=ea38caa273134499, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\InTheHand.Net.Personal.dll</HintPath>
@@ -111,7 +114,12 @@
     <Compile Include="message\SPPMessageBuilder.cs" />
     <Compile Include="message\SPPMessageHandler.cs" />
     <Compile Include="model\Constants.cs" />
+    <Compile Include="model\CustomAction.cs" />
+    <Compile Include="model\DescriptionAttribute.cs" />
+    <Compile Include="model\DeviceAttribute.cs" />
     <Compile Include="model\PostfixAttribute.cs" />
+    <Compile Include="parser\DebugSkuParser.cs" />
+    <Compile Include="parser\SetInBandRingtoneParser.cs" />
     <Compile Include="parser\SetOtherOptionParser.cs" />
     <Compile Include="parser\MuteUpdateParser.cs" />
     <Compile Include="parser\AmbientWearingUpdateParser.cs" />
@@ -138,6 +146,9 @@
     <Compile Include="transition\WidthConverter.cs" />
     <Compile Include="ui\AdvancedPage.xaml.cs">
       <DependentUpon>AdvancedPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\CustomActionPage.xaml.cs">
+      <DependentUpon>CustomActionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ui\UpdatePage.xaml.cs">
       <DependentUpon>UpdatePage.xaml</DependentUpon>
@@ -208,6 +219,7 @@
     <Compile Include="ui\window\SWMessageWindow.xaml.cs">
       <DependentUpon>SWMessageWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="util\AutoStartHelper.cs" />
     <Compile Include="util\ByteArrayUtils.cs" />
     <Compile Include="util\CRC16.cs" />
     <Compile Include="util\Hex.cs" />
@@ -227,7 +239,15 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="TrayContextStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ui\AdvancedPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ui\CustomActionPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

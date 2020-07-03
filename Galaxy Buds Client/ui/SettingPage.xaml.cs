@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,6 +20,7 @@ using Galaxy_Buds_Client.parser;
 using Galaxy_Buds_Client.model;
 using Galaxy_Buds_Client.ui.devmode;
 using Galaxy_Buds_Client.ui.element;
+using Galaxy_Buds_Client.util;
 
 namespace Galaxy_Buds_Client.ui
 {
@@ -42,6 +44,8 @@ namespace Galaxy_Buds_Client.ui
 
             TransitionToggle.SetChecked(Properties.Settings.Default.DisableSlideTransition);
             FahrenheitToggle.SetChecked(Properties.Settings.Default.UseFahrenheit);
+            MinimizeTrayToggle.SetChecked(Properties.Settings.Default.MinimizeTray);
+            AutostartToggle.SetChecked(AutoStartHelper.Enabled);
         }
 
         public override void OnPageHidden()
@@ -75,12 +79,36 @@ namespace Galaxy_Buds_Client.ui
         {
             Properties.Settings.Default.UseFahrenheit = FahrenheitToggle.IsChecked;
             Properties.Settings.Default.DisableSlideTransition = TransitionToggle.IsChecked;
+            Properties.Settings.Default.MinimizeTray = MinimizeTrayToggle.IsChecked;
             Properties.Settings.Default.Save();
         }
 
         private void DevMode_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             new DevWindow().Show();
+        }
+
+        private void MinimizedTray_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            MinimizeTrayToggle.Toggle();
+            if (!MinimizeTrayToggle.IsChecked && AutostartToggle.IsChecked)
+            {
+                AutostartToggle.Toggle();
+                AutoStartHelper.Enabled = AutostartToggle.IsChecked;
+            }
+            SaveChanges();
+        }
+
+        private void Autostart_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            AutostartToggle.Toggle();
+            if (!MinimizeTrayToggle.IsChecked && AutostartToggle.IsChecked)
+            {
+                MinimizeTrayToggle.Toggle();
+            }
+
+            AutoStartHelper.Enabled = AutostartToggle.IsChecked;
+            SaveChanges();
         }
     }
 }

@@ -49,7 +49,7 @@ namespace Galaxy_Buds_Client.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool DisableSlideTransition {
             get {
                 return ((bool)(this["DisableSlideTransition"]));
@@ -80,6 +80,78 @@ namespace Galaxy_Buds_Client.Properties {
             }
             set {
                 this["SkippedUpdate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Buds")]
+        public global::Galaxy_Buds_Client.model.Constants.Model RegisteredDeviceModel {
+            get {
+                return ((global::Galaxy_Buds_Client.model.Constants.Model)(this["RegisteredDeviceModel"]));
+            }
+            set {
+                this["RegisteredDeviceModel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MinimizeTray {
+            get {
+                return ((bool)(this["MinimizeTray"]));
+            }
+            set {
+                this["MinimizeTray"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LeftCustomActionParameter {
+            get {
+                return ((string)(this["LeftCustomActionParameter"]));
+            }
+            set {
+                this["LeftCustomActionParameter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string RightCustomActionParameter {
+            get {
+                return ((string)(this["RightCustomActionParameter"]));
+            }
+            set {
+                this["RightCustomActionParameter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int LeftCustomAction {
+            get {
+                return ((int)(this["LeftCustomAction"]));
+            }
+            set {
+                this["LeftCustomAction"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int RightCustomAction {
+            get {
+                return ((int)(this["RightCustomAction"]));
+            }
+            set {
+                this["RightCustomAction"] = value;
             }
         }
     }

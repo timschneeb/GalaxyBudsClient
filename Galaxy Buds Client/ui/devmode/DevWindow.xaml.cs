@@ -24,7 +24,7 @@ namespace Galaxy_Buds_Client.ui.devmode
         public DevWindow()
         {
             InitializeComponent();
-            //this.Closing += OnClosing;
+            this.Closing += OnClosing;
 
             BluetoothService.Instance.NewDataAvailable += BluetoothServiceNewDataAvailable;
             BluetoothService.Instance.MessageReceived += BluetoothServiceMessageReceived;
@@ -33,15 +33,6 @@ namespace Galaxy_Buds_Client.ui.devmode
         protected override void OnInitialized(EventArgs e)
         {
             base.OnInitialized(e);
-            if (!Properties.Settings.Default.DevModeWarningShown)
-            {
-                MessageBox.Show("This is the original tool I created to help me reverse-engineer the Bluetooth protocol of the Buds.\n" +
-                                "I still decided to include it in the final version for debugging reasons (and in case someone wanted to play with it).\n" +
-                                "However, be careful when sending custom messages to your Buds and do not send FOTA messages (Firmware Over-The-Air) unless you know what you are doing."
-                    , "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-                Properties.Settings.Default.DevModeWarningShown = true;
-                Properties.Settings.Default.Save();
-            }
         }
 
         private void BluetoothServiceMessageReceived(object sender, SPPMessage e)

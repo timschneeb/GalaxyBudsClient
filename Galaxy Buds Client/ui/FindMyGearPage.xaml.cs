@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model;
+using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.parser;
 using Galaxy_Buds_Client.ui.element;
 
@@ -112,10 +113,10 @@ namespace Galaxy_Buds_Client.ui
                 UpdateBatteryPercentage(p.BatteryL, Side.L);
                 UpdateBatteryPercentage(p.BatteryR, Side.R);
                 DisableEarbudIcon(p.BatteryL <= 0, p.BatteryR <= 0);
-                EarbudWarning(p.WearState == Constants.WearStates.L
-                              || p.WearState == Constants.WearStates.Both,
-                    p.WearState == Constants.WearStates.R
-                    || p.WearState == Constants.WearStates.Both);
+                EarbudWarning(p.WearState == WearStates.L
+                              || p.WearState == WearStates.Both,
+                    p.WearState == WearStates.R
+                    || p.WearState == WearStates.Both);
             }
             else if (parser.GetType() == typeof(StatusUpdateParser))
             {
@@ -123,10 +124,10 @@ namespace Galaxy_Buds_Client.ui
                 UpdateBatteryPercentage(p.BatteryL, Side.L);
                 UpdateBatteryPercentage(p.BatteryR, Side.R);
                 DisableEarbudIcon(p.BatteryL <= 0, p.BatteryR <= 0);
-                EarbudWarning(p.WearState == Constants.WearStates.L
-                              || p.WearState == Constants.WearStates.Both,
-                    p.WearState == Constants.WearStates.R
-                    || p.WearState == Constants.WearStates.Both);
+                EarbudWarning(p.WearState == WearStates.L
+                              || p.WearState == WearStates.Both,
+                    p.WearState == WearStates.R
+                    || p.WearState == WearStates.Both);
             }
         }
 

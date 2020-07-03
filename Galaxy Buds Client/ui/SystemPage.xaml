@@ -86,6 +86,8 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="1"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="HwVer" Text="Hardware Version" TextDetail="rev0.0" Margin="20,0,20,0"/>
@@ -100,42 +102,46 @@
                     </Border>
                     <Separator Grid.Row="5" Margin="20,0,20,0" Background="LightGray"/>
                     <Border Grid.Row="6" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="BtAddr" Text="Bluetooth Address" TextDetail="Left: CC:12:19:90:71:50, Right: CC:12:19:90:09:EA" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="ProtocolRevision" Text="Protocol Revision" TextDetail="rev11" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="7" Margin="20,0,20,0" Background="LightGray"/>
                     <Border Grid.Row="8" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="SerialNumber" Text="Serial Number" TextDetail="Left: RFAM8001KWZ, Right: RFAM8001QWA" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="BtAddr" Text="Bluetooth Address" TextDetail="Left: CC:12:19:90:71:50, Right: CC:12:19:90:09:EA" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="9" Margin="20,0,20,0" Background="LightGray"/>
                     <Border Grid.Row="10" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="BuildString" Text="Build Info" TextDetail="Left: RFAM8001KWZ, Right: RFAM8001QWA" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="SerialNumber" Text="Serial Number" TextDetail="Left: RFAM8001KWZ, Right: RFAM8001QWA" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="11" Margin="20,0,20,0" Background="LightGray"/>
                     <Border Grid.Row="12" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="BatteryType" Text="Battery Type" TextDetail="Left: 3V, Right: 0V" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="BuildString" Text="Build Info" TextDetail="Left: RFAM8001KWZ, Right: RFAM8001QWA" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="13" Margin="20,0,20,0" Background="LightGray"/>
                     <Border Grid.Row="14" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="Proximity" Text="Proximity Measurement" TextDetail="Left: 700, Right: 0" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="BatteryType" Text="Battery Type" TextDetail="Left: 3V, Right: 0V" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="15" Margin="20,0,20,0" Background="LightGray"/>
                     <Border Grid.Row="16" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="Thermo" Text="Thermistor Measurement" TextDetail="Left: 29.7 °C, Right: 29.7 °C" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="Proximity" Text="Proximity Measurement" TextDetail="Left: 700, Right: 0" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="17" Margin="20,0,20,0" Background="LightGray"/>
                     <Border Grid.Row="18" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="Hall" Text="Hall Measurement" TextDetail="Left: 1 1, Right: 1 1" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="Thermo" Text="Thermistor Measurement" TextDetail="Left: 29.7 °C, Right: 29.7 °C" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="19" Margin="20,0,20,0" Background="LightGray"/>
                     <Border Grid.Row="20" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="AdcSoc" Text="ADC SOC" TextDetail="Left: 75.29%, Right: 78.65%" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="Hall" Text="Hall Measurement" TextDetail="Left: 1 1, Right: 1 1" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="21" Margin="20,0,20,0" Background="LightGray"/>
                     <Border Grid.Row="22" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="AdcVoltage" Text="ADC Voltage" TextDetail="Left: 4.14V, Right: 4.11V" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="AdcSoc" Text="ADC SOC" TextDetail="Left: 75.29%, Right: 78.65%" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="23" Margin="20,0,20,0" Background="LightGray"/>
                     <Border Grid.Row="24" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                        <element:DetailListItem x:Name="AdcVoltage" Text="ADC Voltage" TextDetail="Left: 4.14V, Right: 4.11V" Margin="20,0,20,0"/>
+                    </Border>
+                    <Separator Grid.Row="25" Margin="20,0,20,0" Background="LightGray"/>
+                    <Border Grid.Row="26" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="AdcCurrent" Text="ADC Current" TextDetail="Left -5.05mA, Right -5.80mA" Margin="20,0,20,0"/>
                     </Border>
                 </Grid>

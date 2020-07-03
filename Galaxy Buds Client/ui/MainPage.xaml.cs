@@ -1,20 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using Galaxy_Buds_Client.message;
+using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.parser;
 
 namespace Galaxy_Buds_Client.ui
@@ -54,6 +44,8 @@ namespace Galaxy_Buds_Client.ui
             _mainWindow = mainWindow;
             _refreshTimer.Tick += RefreshTimerCallback;
             _refreshTimer.Interval = new TimeSpan(0, 0, 12);
+
+            BatteryCase.Content = "";
 
             SetLoaderVisible(false);
             UpdateDetails(new DebugGetAllDataParser());
@@ -103,11 +95,31 @@ namespace Galaxy_Buds_Client.ui
             {
                 if (_allowGetAllResponse)
                     BluetoothService.Instance.SendAsync(SPPMessageBuilder.Info.GetAllData());
+                Dispatcher.Invoke(() =>
+                {
+                    if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+                    {
+                        ExtendedStatusUpdateParser p = (ExtendedStatusUpdateParser)parser;
+                        BatteryTemperatureLeft.Content = p.PlacementL.ToString();
+                        BatteryTemperatureRight.Content = p.PlacementR.ToString();
+                        BatteryCase.Content = p.BatteryCase <= 0 ? "" : $"Case: {p.BatteryCase}%";
+                    }
+                });
             }
             else if (parser.GetType() == typeof(StatusUpdateParser))
             {
                 if (_allowGetAllResponse)
                     BluetoothService.Instance.SendAsync(SPPMessageBuilder.Info.GetAllData());
+                Dispatcher.Invoke(() =>
+                {
+                    if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+                    {
+                        StatusUpdateParser p = (StatusUpdateParser)parser;
+                        BatteryTemperatureLeft.Content = p.PlacementL.ToString();
+                        BatteryTemperatureRight.Content = p.PlacementR.ToString();
+                        BatteryCase.Content = p.BatteryCase <= 0 ? "" : $"Case: {p.BatteryCase}%";
+                    }
+                });
             }
             else if (parser.GetType() == typeof(DebugGetAllDataParser))
             {
@@ -127,6 +139,11 @@ namespace Galaxy_Buds_Client.ui
             _mainWindow.SetOptionsEnabled(true);
             _allowGetAllResponse = true;
             _refreshTimer.Start();
+
+            if (BluetoothService.Instance.ActiveModel == Model.Buds)
+            {
+                BatteryCase.Content = "";
+            }
         }
 
         public override void OnPageHidden()
@@ -140,17 +157,36 @@ namespace Galaxy_Buds_Client.ui
         {
             BatteryVoltLeft.Content = $"{p.LeftAdcVCell:N}V";
             BatteryVoltRight.Content = $"{p.RightAdcVCell:N}V";
-            BatteryCurrentLeft.Content = $"{p.LeftAdcCurrent:N}mA";
-            BatteryCurrentRight.Content = $"{p.RightAdcCurrent:N}mA";
-            if (Properties.Settings.Default.UseFahrenheit)
+
+            if (BluetoothService.Instance.ActiveModel == Model.Buds)
             {
-                BatteryTemperatureLeft.Content = $"{((9.0 / 5.0) * p.LeftThermistor) + 32:N} °F";
-                BatteryTemperatureRight.Content = $"{((9.0 / 5.0) * p.RightThermistor) + 32:N} °F";
+                BatteryCurrentLeft.Content = $"{p.LeftAdcCurrent:N}mA";
+                BatteryCurrentRight.Content = $"{p.RightAdcCurrent:N}mA";
+
+                if (Properties.Settings.Default.UseFahrenheit)
+                {
+                    BatteryTemperatureLeft.Content = $"{((9.0 / 5.0) * p.LeftThermistor) + 32:N} °F";
+                    BatteryTemperatureRight.Content = $"{((9.0 / 5.0) * p.RightThermistor) + 32:N} °F";
+                }
+                else
+                {
+                    BatteryTemperatureLeft.Content = $"{p.LeftThermistor:N} °C";
+                    BatteryTemperatureRight.Content = $"{p.RightThermistor:N} °C";
+                }
             }
             else
             {
-                BatteryTemperatureLeft.Content = $"{p.LeftThermistor:N} °C";
-                BatteryTemperatureRight.Content = $"{p.RightThermistor:N} °C";
+                //Switch positions for a better layout
+                if (Properties.Settings.Default.UseFahrenheit)
+                {
+                    BatteryCurrentLeft.Content = $"{((9.0 / 5.0) * p.LeftThermistor) + 32:N} °F";
+                    BatteryCurrentRight.Content = $"{((9.0 / 5.0) * p.RightThermistor) + 32:N} °F";
+                }
+                else
+                {
+                    BatteryCurrentLeft.Content = $"{p.LeftThermistor:N} °C";
+                    BatteryCurrentRight.Content = $"{p.RightThermistor:N} °C";
+                }
             }
 
             Visibility leftSide = p.LeftAdcSOC <= 0 ? Visibility.Hidden : Visibility.Visible;

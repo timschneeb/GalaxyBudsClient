@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Galaxy_Buds_Client.model;
+using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.parser;
 
 namespace Galaxy_Buds_Client.message
@@ -35,7 +36,7 @@ namespace Galaxy_Buds_Client.message
         public event EventHandler<GenericResponseParser> GenericResponse;
         public event EventHandler<SelfTestParser> SelfTestResponse;
 
-        public event EventHandler<Constants.TouchOption> OtherOption;
+        public event EventHandler<TouchOption.Universal> OtherOption;
         public event EventHandler<ExtendedStatusUpdateParser> ExtendedStatusUpdate;
         public event EventHandler<StatusUpdateParser> StatusUpdate;
         public event EventHandler<UsageReportParser> UsageReport;

@@ -17,7 +17,11 @@ using System.Windows.Shapes;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.parser;
 using Galaxy_Buds_Client.model;
+using Galaxy_Buds_Client.model.Constants;
+using Galaxy_Buds_Client.Properties;
+using Galaxy_Buds_Client.transition;
 using Galaxy_Buds_Client.ui.element;
+using Galaxy_Buds_Client.util;
 
 namespace Galaxy_Buds_Client.ui
 {
@@ -28,26 +32,15 @@ namespace Galaxy_Buds_Client.ui
     {
         private MainWindow _mainWindow;
 
+        private Devices _lastPressedMenu;
+        private TouchOption.Universal _lastLeftOption;
+        private TouchOption.Universal _lastRightOption;
+
         public TouchpadPage(MainWindow mainWindow)
         {
             _mainWindow = mainWindow;
             InitializeComponent();
             SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
-
-            foreach (var child in LeftTouchMenu.Items)
-            {
-                if (child is MenuItem)
-                {
-                    (child as MenuItem).Click += LeftEventSetter_OnHandlerMenuItem_Click;
-                }
-            }
-            foreach (var child in RightTouchMenu.Items)
-            {
-                if (child is MenuItem)
-                {
-                    (child as MenuItem).Click += RightEventSetter_OnHandlerMenuItem_Click;
-                }
-            }
         }
 
         private void InstanceOnExtendedStatusUpdate(object sender, ExtendedStatusUpdateParser e)
@@ -55,79 +48,181 @@ namespace Galaxy_Buds_Client.ui
             Dispatcher.Invoke(() =>
             {
                 LockToggle.SetChecked(e.TouchpadLock);
-                LeftOption.TextDetail = OptionToString(e.TouchpadOptionL, Constants.Devices.L);
-                RightOption.TextDetail = OptionToString(e.TouchpadOptionR, Constants.Devices.R);
+
+                _lastLeftOption = e.TouchpadOptionL;
+                _lastRightOption = e.TouchpadOptionR;
+
+                LeftOption.TextDetail = OptionToString(e.TouchpadOptionL, Devices.L);
+                RightOption.TextDetail = OptionToString(e.TouchpadOptionR, Devices.R);
+                DoubleTapVolumeToggle.SetChecked(e.OutsideDoubleTap);
             });
         }
 
-        private String OptionToString(Constants.TouchOption b, Constants.Devices d)
+        private ContextMenu GenerateMenu(UIElement target, Devices side)
+        {
+            ContextMenu ctxMenu = new ContextMenu();
+            ctxMenu.Style = (Style)FindResource("ContextMenuStyle");
+            ctxMenu.PlacementTarget = target;
+            ctxMenu.Placement = PlacementMode.Bottom;
+
+            Menu_AddItem(ctxMenu, "Custom Action...",
+                side == Devices.L ? TouchOption.Universal.OtherL : TouchOption.Universal.OtherR, side);
+            Menu_AddSeparator(ctxMenu);
+            Menu_AddItem(ctxMenu, "Volume " + (side == Devices.L ? "Down" : "Up"), TouchOption.Universal.Volume, side);
+            Menu_AddSeparator(ctxMenu);
+            Menu_AddItem(ctxMenu, "Ambient Sound", TouchOption.Universal.AmbientSound, side);
+            Menu_AddSeparator(ctxMenu);
+
+            if (BluetoothService.Instance.ActiveModel == Model.Buds)
+            {
+                Menu_AddItem(ctxMenu, "Quick Ambient Sound", TouchOption.Universal.QuickAmbientSound, side);
+                Menu_AddSeparator(ctxMenu);
+            }
+
+            Menu_AddItem(ctxMenu, "Voice Assistant (Android only)", TouchOption.Universal.VoiceAssistant, side);
+            Menu_AddSeparator(ctxMenu);
+            Menu_AddItem(ctxMenu, "Spotify SpotOn (Android only)", TouchOption.Universal.SpotifySpotOn, side);
+            return ctxMenu;
+        }
+
+        private void Menu_AddItem(ContextMenu c, String header, TouchOption.Universal option, Devices side)
+        {
+            MenuItem m = new MenuItem();
+            m.Header = header;
+            m.Click += delegate
+            {
+                _lastPressedMenu = side;
+                if (side == Devices.L)
+                {
+                    _lastLeftOption = option;
+                }
+                else
+                {
+                    _lastRightOption = option;
+                }
+
+                if (side == Devices.L && option == TouchOption.Universal.OtherL)
+                    _mainWindow.GoToPage(MainWindow.Pages.TouchCustomAction);
+                else if (side == Devices.R && option == TouchOption.Universal.OtherR)
+                    _mainWindow.GoToPage(MainWindow.Pages.TouchCustomAction);
+                else
+                {
+                    if (side == Devices.L)
+                    {
+                        LeftOption.TextDetail = m.Header.ToString();
+                    }
+                    else
+                    {
+                        RightOption.TextDetail = m.Header.ToString();
+                    }
+                }
+
+                BluetoothService.Instance.SendAsync(SPPMessageBuilder.Touch.SetOptions(_lastLeftOption, _lastRightOption));
+            };
+            m.Style = (Style)FindResource("MenuItemStyle");
+            c.Items.Add(m);
+        }
+        private void Menu_AddSeparator(ContextMenu c)
+        {
+            Separator s = new Separator();
+            s.Style = (Style)FindResource("SeparatorStyle");
+            c.Items.Add(s);
+        }
+
+        private String OptionToString(TouchOption.Universal b, Devices d)
         {
             switch (b)
             {
-                case Constants.TouchOption.VoiceAssistant:
+                case TouchOption.Universal.VoiceAssistant:
                     return "Voice Assistant (Android only)";
-                case Constants.TouchOption.QuickAmbientSound:
+                case TouchOption.Universal.QuickAmbientSound:
                     return "Quick Ambient Sound";
-                case Constants.TouchOption.Volume:
-                    return d == Constants.Devices.L ? "Volume Down" : "Volume Up";
-                case Constants.TouchOption.AmbientSound:
+                case TouchOption.Universal.Volume:
+                    return d == Devices.L ? "Volume Down" : "Volume Up";
+                case TouchOption.Universal.AmbientSound:
                     return "Ambient Sound";
-                case Constants.TouchOption.SpotifySpotOn:
+                case TouchOption.Universal.SpotifySpotOn:
                     return "Spotify SpotOn (Android only)";
-                /*case ExtendedStatusUpdateParser.TouchOption.OtherL:
-                    return "Custom Action";
-                case ExtendedStatusUpdateParser.TouchOption.OtherR:
-                    return "Custom Action";*/
+                case TouchOption.Universal.OtherL:
+                    var currentCustomActionL = (Settings.Default.LeftCustomAction == -1) ? (CustomAction)null : 
+                        new CustomAction((CustomAction.Actions) Settings.Default.LeftCustomAction, Settings.Default.LeftCustomActionParameter);
+                    return "Custom Action: " + (currentCustomActionL == null ? "Not set" : currentCustomActionL.ToString());
+                case TouchOption.Universal.OtherR:
+                    var currentCustomActionR = (Settings.Default.RightCustomAction == -1) ? (CustomAction)null :
+                        new CustomAction((CustomAction.Actions)Settings.Default.RightCustomAction, Settings.Default.RightCustomActionParameter);
+                    return "Custom Action: " + (currentCustomActionR == null ? "Not set" : currentCustomActionR.ToString());
             }
 
             return "Unknown";
         }
 
-        private Constants.TouchOption StringToOption(String s, Constants.Devices d)
-        {
-            if (s == "Voice Assistant (Android only)")
-            {
-                return Constants.TouchOption.VoiceAssistant;
-            }
-            else if (s == "Quick Ambient Sound")
-            {
-                return Constants.TouchOption.QuickAmbientSound;
-            }
-            else if (s.StartsWith("Volume"))
-            {
-                return Constants.TouchOption.Volume;
-            }
-            else if (s == "Ambient Sound")
-            {
-                return Constants.TouchOption.AmbientSound;
-            }
-            else if (s == "Spotify SpotOn (Android only)")
-            {
-                return Constants.TouchOption.SpotifySpotOn;
-            }
-            /*else if (s == "Custom Action")
-            {
-                return d == ExtendedStatusUpdateParser.Device.L ?
-                    ExtendedStatusUpdateParser.TouchOption.OtherL : ExtendedStatusUpdateParser.TouchOption.OtherR;
-            }*/
-
-            Console.WriteLine("Touchpad: Unknown Touch Option");
-            return Constants.TouchOption.Volume;
-        }
-
-
         public override void OnPageShown()
         {
             LoadingSpinner.Visibility = Visibility.Hidden;
+            LeftOptionBorder.ContextMenu = GenerateMenu(LeftOptionBorder, Devices.L);
+            RightOptionBorder.ContextMenu = GenerateMenu(RightOptionBorder, Devices.R);
+            DoubleTapVolumeBorder.Visibility = BluetoothService.Instance.ActiveModel == Model.Buds
+                ? Visibility.Collapsed
+                : Visibility.Visible;
+
+            _mainWindow.CustomActionPage.Accept += CustomActionPageOnAccept;
         }
 
         public override void OnPageHidden()
         {
+        }
 
+        private void CustomActionPageOnAccept(object sender, CustomAction e)
+        {
+            String name;
+            if (e == null)
+            {
+                name = "Not set";
+            }
+            else
+            {
+                name = e.ToString();
+            }
+
+            if (_lastPressedMenu == Devices.L)
+            {
+                LeftOption.TextDetail = $"Custom Action: {name}";
+                if (e != null)
+                {
+                    Settings.Default.LeftCustomAction = (int) e.Action;
+                    Settings.Default.LeftCustomActionParameter = e.Parameter;
+                }
+                else
+                {
+                    Settings.Default.RightCustomAction = -1;
+                }
+            }
+            else
+            {
+                RightOption.TextDetail = $"Custom Action: {name}";
+                if (e != null)
+                {
+                    Settings.Default.RightCustomAction = (int) e.Action;
+                    Settings.Default.RightCustomActionParameter = e.Parameter;
+                }
+                else
+                {
+                    Settings.Default.RightCustomAction = -1;
+                }
+            }
+
+            if (e != null)
+            {
+                Settings.Default.MinimizeTray = true;
+                AutoStartHelper.Enabled = true;
+            }
+
+            Settings.Default.Save();
         }
 
         private void BackButton_OnClick(object sender, RoutedEventArgs e)
         {
+            _mainWindow.CustomActionPage.Accept -= CustomActionPageOnAccept;
             _mainWindow.ReturnToHome();
         }
 
@@ -140,38 +235,19 @@ namespace Galaxy_Buds_Client.ui
         private void LeftOption_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Border el = (Border)sender;
-            el.ContextMenu.PlacementTarget = el;
-            el.ContextMenu.Placement = PlacementMode.Bottom;
             el.ContextMenu.IsOpen = true;
         }
 
         private void RightOption_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Border el = (Border)sender;
-            el.ContextMenu.PlacementTarget = el;
-            el.ContextMenu.Placement = PlacementMode.Bottom;
             el.ContextMenu.IsOpen = true;
         }
 
-        private void ChangeTouchpad()
+        private void DoubleTapVolume_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            var left = StringToOption(LeftOption.TextDetail, Constants.Devices.L);
-            var right = StringToOption(RightOption.TextDetail, Constants.Devices.R);
-            BluetoothService.Instance.SendAsync(SPPMessageBuilder.Touch.SetOptions(left, right));
-        }
-
-        private void LeftEventSetter_OnHandlerMenuItem_Click(object sender, RoutedEventArgs e)
-        {  
-            var m = (MenuItem) e.Source;
-            LeftOption.TextDetail = m.Header.ToString();
-            ChangeTouchpad();
-        }
-
-        private void RightEventSetter_OnHandlerMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            var m = (MenuItem)e.Source;
-            RightOption.TextDetail = m.Header.ToString();
-            ChangeTouchpad();
+            DoubleTapVolumeToggle.Toggle();
+            BluetoothService.Instance.SendAsync(SPPMessageBuilder.Touch.SetOutsideDoubleTapEnabled(DoubleTapVolumeToggle.IsChecked));
         }
     }
 }

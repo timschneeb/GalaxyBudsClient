@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "Galaxy Buds Manager (Unofficial)"
-!define PRODUCT_VERSION "1.2"
+!define PRODUCT_VERSION "2.0.0"
 !define PRODUCT_PUBLISHER "ThePBone"
 !define PRODUCT_WEB_SITE "https://github.com/ThePBone/GalaxyBudsClient"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\Galaxy Buds Client.exe"
@@ -39,7 +39,7 @@
 ; MUI end ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "Setup.exe"
+OutFile "Setup_GalaxyBudsManager_${PRODUCT_VERSION}.exe"
 InstallDir "$PROGRAMFILES\Galaxy Buds Manager"
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show
@@ -47,7 +47,7 @@ ShowUnInstDetails show
 
 Section "Hauptgruppe" SEC01
   SetOutPath "$INSTDIR"
-  SetOverwrite ifnewer
+  SetOverwrite on
   File "Galaxy Buds Client\bin\Release\Galaxy Buds Client.exe"
   CreateDirectory "$SMPROGRAMS\Galaxy Buds Manager"
   CreateShortCut "$SMPROGRAMS\Galaxy Buds Manager\Galaxy Buds Manager.lnk" "$INSTDIR\Galaxy Buds Client.exe"
@@ -59,8 +59,9 @@ Section "Hauptgruppe" SEC01
   File "packages\Autoupdater.NET.Official.1.6.0\lib\net40\AutoUpdater.NET.XML"
   File "packages\Autoupdater.NET.Official.1.6.0\lib\net40\AutoUpdater.NET.dll"
   File "packages\Autoupdater.NET.Official.1.6.0\lib\net40\AutoUpdater.NET.pdb"
-  
-  
+  File "Galaxy Buds Client\bin\Release\Hardcodet.Wpf.TaskbarNotification.dll"
+  File "Galaxy Buds Client\bin\Release\Hardcodet.Wpf.TaskbarNotification.xml"
+  File "Galaxy Buds Client\bin\Release\Hardcodet.Wpf.TaskbarNotification.pdb"
 SectionEnd
 
 Section -AdditionalIcons
@@ -101,6 +102,10 @@ Section Uninstall
   Delete "$INSTDIR\AutoUpdater.NET.XML"
   Delete "$INSTDIR\AutoUpdater.NET.pdb"
   Delete "$INSTDIR\AutoUpdater.NET.dll"
+
+  Delete "$INSTDIR\Hardcodet.Wpf.TaskbarNotification.dll"
+  Delete "$INSTDIR\Hardcodet.Wpf.TaskbarNotification.xml"
+  Delete "$INSTDIR\Hardcodet.Wpf.TaskbarNotification.pdb"
 
   Delete "$DESKTOP\Galaxy Buds Manager.lnk"
   Delete "$SMPROGRAMS\Galaxy Buds Manager\Galaxy Buds Manager.lnk"

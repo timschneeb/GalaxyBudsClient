@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.Reflection;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model;
+using Galaxy_Buds_Client.model.Constants;
 
 namespace Galaxy_Buds_Client.parser
 {
     class SetOtherOptionParser : BaseMessageParser
     {
         public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_SET_TOUCHPAD_OTHER_OPTION;
-        public Constants.TouchOption OptionType { set; get; }
+        public TouchOption.Universal OptionType { set; get; }
 
         public override void ParseMessage(SPPMessage msg)
         {
             if (msg.Id != HandledType)
                 return;
 
-            OptionType = (Constants.TouchOption)msg.Payload[0];
+            OptionType = TouchOption.ToUniversal(msg.Payload[0]);
         }
 
         public override Dictionary<String, String> ToStringMap()
@@ -25,7 +26,7 @@ namespace Galaxy_Buds_Client.parser
             PropertyInfo[] properties = this.GetType().GetProperties();
             foreach (PropertyInfo property in properties)
             {
-                if (property.Name == "HandledType")
+                if (property.Name == "HandledType" || property.Name == "ActiveModel")
                     continue;
 
                 map.Add(property.Name, property.GetValue(this).ToString());

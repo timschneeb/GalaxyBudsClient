@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.parser;
 using Galaxy_Buds_Client.util;
 
@@ -48,10 +49,23 @@ namespace Galaxy_Buds_Client.message
                 type = overrideType;
 
             byte[] msg = new byte[TotalPacketSize];
-            msg[0] = (byte) Constants.SOM;
-            msg[1] = (byte) type;
-            msg[2] = (byte) this.Size;
+            
+
+            if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+            {
+                msg[0] = (byte)Constants.SOMPlus;
+                msg[1] = (byte) this.Size;
+                msg[2] = (byte) (type == MsgType.Request ? 0 : 16);
+            }
+            else
+            { 
+                msg[0] = (byte) Constants.SOM;
+                msg[1] = (byte) type;
+                msg[2] = (byte) this.Size;
+            }
+
             msg[3] = (byte) this.Id;
+
             Array.Copy(Payload, 0, msg, 4, Payload.Length);
 
             byte[] crcData = new byte[this.Size - 2];
@@ -60,9 +74,15 @@ namespace Galaxy_Buds_Client.message
             int crc16 = util.CRC16.crc16_ccitt(crcData);
             msg[4 + Payload.Length] = (byte)(crc16 & 255);
             msg[4 + Payload.Length + 1] = (byte) ((crc16 >> 8) & 255);
-            
-            msg[TotalPacketSize - 1] = (byte) Constants.EOM;
-            Console.WriteLine(Hex.Dump(msg));
+
+            if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+            {
+                msg[TotalPacketSize - 1] = (byte)Constants.EOMPlus;
+            }
+            else
+            {
+                msg[TotalPacketSize - 1] = (byte)Constants.EOM;
+            }
 
             return msg;
         }
@@ -79,14 +99,28 @@ namespace Galaxy_Buds_Client.message
                 throw new InvalidDataException("Message too small");
             }
 
-            if(raw[0] != (byte)Constants.SOM)
+            if(raw[0] != (byte)Constants.SOM && BluetoothService.Instance.ActiveModel == Model.Buds)
+            {
+                throw new InvalidDataException("Invalid SOM");
+            }
+            else if (raw[0] != (byte)Constants.SOMPlus && BluetoothService.Instance.ActiveModel == Model.BudsPlus)
             {
                 throw new InvalidDataException("Invalid SOM");
             }
 
-            draft.Type = (MsgType) Convert.ToInt32(raw[1]);
             draft.Id = (MessageIds)Convert.ToInt32(raw[3]);
-            int size = Convert.ToInt32(raw[2]);
+            int size;
+
+            if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+            {
+                size = raw[1] & 1023;
+                draft.Type = (raw[2] & 16) == 0 ? MsgType.Request : MsgType.Response;
+            }
+            else
+            {
+                draft.Type = (MsgType) Convert.ToInt32(raw[1]);
+                size = Convert.ToInt32(raw[2]);
+            }
 
             //Substract Id and CRC from size
             int rawPayloadSize = size - 3;
@@ -115,7 +149,11 @@ namespace Galaxy_Buds_Client.message
                 throw new InvalidDataException("Payload size mismatch");
             }
 
-            if (raw[4 + rawPayloadSize + 2] != (byte)Constants.EOM)
+            if (raw[4 + rawPayloadSize + 2] != (byte)Constants.EOM && BluetoothService.Instance.ActiveModel == Model.Buds)
+            {
+                throw new InvalidDataException("Invalid EOM");
+            }
+            else if (raw[4 + rawPayloadSize + 2] != (byte)Constants.EOMPlus && BluetoothService.Instance.ActiveModel == Model.BudsPlus)
             {
                 throw new InvalidDataException("Invalid EOM");
             }

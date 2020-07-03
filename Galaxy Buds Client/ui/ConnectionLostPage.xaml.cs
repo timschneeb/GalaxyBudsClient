@@ -37,11 +37,13 @@ namespace Galaxy_Buds_Client.ui
         public override void OnPageShown()
         {
             LoadingSpinner.Visibility = Visibility.Hidden;
+            _mainWindow.SetOptionsEnabled(false);
         }
 
         public override void OnPageHidden()
         {
             Reset();
+            _mainWindow.SetOptionsEnabled(true);
         }
 
         public void SetInfo(String info)
@@ -74,7 +76,7 @@ namespace Galaxy_Buds_Client.ui
             Retry.IsEnabled = false;
             Retry.Text = "Connecting...";
 
-            Task.Delay(300).ContinueWith(t =>
+            Task.Delay(50).ContinueWith(t =>
             {
                 RetryRequested?.Invoke(this, null);
             });
