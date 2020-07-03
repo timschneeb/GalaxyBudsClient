@@ -41,9 +41,22 @@ You can [**download**](https://github.com/ThePBone/GalaxyBudsClient/releases) a 
 Designed for the original Galaxy Buds. **Galaxy Buds Plus are unsupported** since I do not own a pair.
 
 ![Downloads](https://img.shields.io/github/downloads/ThePBone/GalaxyBudsClient/total)
-___
 
-In case somone wants to donate a buck or two ;-) 
+Alternatively, you can also use the chocolatey package provided by [@superbonaci](https://github.com/superbonaci):
+
+```
+choco install galaxybudsclient
+```
+
+
+
+## Contributors
+
+* [@superbonaci](https://github.com/superbonaci) - Chocolatey package
+
+
+
+___
 
 Bitcoin: 3EawSB3NfX6JQxKBBFYh6ZwHDWXtJB84Ly
 
