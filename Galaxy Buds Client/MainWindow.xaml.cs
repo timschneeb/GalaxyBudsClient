@@ -90,16 +90,6 @@ namespace Galaxy_Buds_Client
 
             InitializeComponent();
 
-            BluetoothWin32Events.GetInstance().InRange +=
-                delegate (object sender, BluetoothWin32RadioInRangeEventArgs args)
-                {
-                    if (GetRegisteredDevice() != null && GetRegisteredDevice() == args.Device.DeviceAddress)
-                    {
-                        if (!BluetoothService.Instance.IsConnected && _connectionLostPage != null)
-                            ConnectionLostPageOnRetryRequested(this, new EventArgs());
-                    }
-                };
-
             _tbi = new TaskbarIcon();
             Stream iconStream = Application.GetResourceStream(new Uri("pack://application:,,,/Resources/icon_white.ico"))?.Stream;
             _tbi.Icon = new Icon(iconStream);
@@ -140,6 +130,16 @@ namespace Galaxy_Buds_Client
                 });
                 _address = savedAddress;
             }
+            
+            BluetoothWin32Events.GetInstance().InRange +=
+                delegate (object sender, BluetoothWin32RadioInRangeEventArgs args)
+                {
+                    if (GetRegisteredDevice() != null && GetRegisteredDevice() == args.Device.DeviceAddress)
+                    {
+                        if (!BluetoothService.Instance.IsConnected && _connectionLostPage != null)
+                            ConnectionLostPageOnRetryRequested(this, new EventArgs());
+                    }
+                };
         }
 
         private void OnClosing(object sender, CancelEventArgs e)
@@ -261,6 +261,14 @@ namespace Galaxy_Buds_Client
         }
         private void InstanceOnSocketException(object sender, SocketException e)
         {
+            if (PageControl == null)
+                return;
+            if (_connectionLostPage == null)
+                return;
+            if (PageControl.CurrentPage != null && (PageControl.CurrentPage.GetType() == typeof(WelcomePage)
+                                                    || PageControl.CurrentPage.GetType() == typeof(DeviceSelectPage)))
+                return;
+
             if (e != null)
                 try
                 {
@@ -274,30 +282,50 @@ namespace Galaxy_Buds_Client
             GenerateTrayContext();
 
             _connectionLostPage.Reset();
-            if (PageControl.CurrentPage.GetType() != typeof(ConnectionLostPage)
-                && PageControl.CurrentPage.GetType() != typeof(WelcomePage)
-                && PageControl.CurrentPage.GetType() != typeof(DeviceSelectPage))
+            if (PageControl.CurrentPage == null)
             {
                 Dispatcher.Invoke(() =>
-                   {
-                       PageControl.TransitionType = PageTransitionType.Fade;
-                       PageControl.ShowPage(_connectionLostPage);
-                   });
+                {
+                    PageControl.TransitionType = PageTransitionType.Fade;
+                    PageControl.ShowPage(_connectionLostPage);
+                });
+            }
+            else
+            {
+                if (PageControl.CurrentPage.GetType() != typeof(ConnectionLostPage)
+                    && PageControl.CurrentPage.GetType() != typeof(WelcomePage)
+                    && PageControl.CurrentPage.GetType() != typeof(DeviceSelectPage))
+                {
+                    Dispatcher.Invoke(() =>
+                    {
+                        PageControl.TransitionType = PageTransitionType.Fade;
+                        PageControl.ShowPage(_connectionLostPage);
+                    });
+                }
             }
         }
         private void InstanceOnPlatformNotSupportedException(object sender, PlatformNotSupportedException e)
         {
             Dispatcher.Invoke(() =>
             {
-                MessageBox.Show("No bluetooth adapter found.\nPlease enable bluetooth and try again.",
+                var m = MessageBox.Show("No bluetooth adapter found.\nPlease enable bluetooth and try again.",
                         "Galaxy Buds Manager", MessageBoxButton.OK, MessageBoxImage.Error);
-                Close();
+                Environment.Exit(0);
             });
         }
         private void InstanceOnInvalidDataException(object sender, InvalidDataException e)
         {
             Dispatcher.Invoke(() =>
             {
+                if (_mainPage == null)
+                {
+                    Task.Delay(500).ContinueWith(delegate
+                    {
+                        BluetoothService.Instance.Connect(GetRegisteredDevice(), GetRegisteredDeviceModel());
+                    });
+                    return;
+                }
+
                 GenerateTrayContext();
                 BluetoothService.Instance.Disconnect();
                 _mainPage.SetWarning(true, $"Received corrupted data. Reconnecting... ({e.Message})");
