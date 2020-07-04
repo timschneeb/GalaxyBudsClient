@@ -1,6 +1,8 @@
 # Galaxy Buds Client
 An unofficial Galaxy Buds Manager for Windows (Buds/Buds+)
 
+(You can find downloads on the bottom)
+
 <p align="center">
   <img src="screenshots/screencap.gif">
 </p>
