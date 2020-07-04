@@ -76,8 +76,12 @@ namespace Galaxy_Buds_Client.ui
         private void Install_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (AutoUpdater.DownloadUpdate(_args))
-            { 
-                Application.Current.Shutdown();
+            {
+                Application.Current.Dispatcher.Invoke(Application.Current.Shutdown);
+                Task.Delay(50).ContinueWith((task) =>
+                {
+                    System.Diagnostics.Process.GetCurrentProcess().Kill();
+                });
             }
         }
     }
