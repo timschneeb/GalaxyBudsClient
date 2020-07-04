@@ -72,6 +72,13 @@ namespace Galaxy_Buds_Client
 
         public MainWindow()
         {
+            if (Settings.Default.UpdateSettings)
+            {
+                Settings.Default.Upgrade();
+                Settings.Default.UpdateSettings = false;
+                Settings.Default.Save();
+            }
+
             _mainPage = new MainPage(this);
             _systemPage = new SystemPage(this);
             _selfTestPage = new SelfTestPage(this);
