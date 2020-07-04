@@ -95,7 +95,7 @@ namespace Galaxy_Buds_Client
                 {
                     if (GetRegisteredDevice() != null && GetRegisteredDevice() == args.Device.DeviceAddress)
                     {
-                        if (!BluetoothService.Instance.IsConnected)
+                        if (!BluetoothService.Instance.IsConnected && _connectionLostPage != null)
                             ConnectionLostPageOnRetryRequested(this, new EventArgs());
                     }
                 };
@@ -310,8 +310,10 @@ namespace Galaxy_Buds_Client
         }
         private void ConnectionLostPageOnRetryRequested(object sender, EventArgs e)
         {
-            if (PageControl.CurrentPage.GetType() == typeof(WelcomePage)
-                || PageControl.CurrentPage.GetType() == typeof(DeviceSelectPage))
+            if (PageControl == null)
+                return;
+            if (PageControl.CurrentPage != null && (PageControl.CurrentPage.GetType() == typeof(WelcomePage)
+                || PageControl.CurrentPage.GetType() == typeof(DeviceSelectPage)))
                 return;
 
             if (GetRegisteredDevice() == null)
