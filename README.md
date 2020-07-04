@@ -1,5 +1,5 @@
 # Galaxy Buds Client
-An unofficial Galaxy Buds Manager for Windows 
+An unofficial Galaxy Buds Manager for Windows (Buds/Buds+)
 
 <p align="center">
   <img src="screenshots/screencap.gif">
@@ -37,7 +37,7 @@ This Client is a product of my research on the custom RFComm Serial Protocol the
 
 You can [**download**](https://github.com/ThePBone/GalaxyBudsClient/releases) a fully automated Setup in the [**release section**](https://github.com/ThePBone/GalaxyBudsClient/releases) of this repo!
 
-The original **Galaxy Buds (2019)** and **Galaxy Buds Plus** are fully supported**.
+The original **Galaxy Buds (2019)** and **Galaxy Buds Plus** are fully supported.
 
 ![Downloads](https://img.shields.io/github/downloads/ThePBone/GalaxyBudsClient/total)
 
