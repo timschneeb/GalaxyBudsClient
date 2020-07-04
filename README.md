@@ -11,6 +11,8 @@ This Client is a product of my research on the custom RFComm Serial Protocol the
 
 **New features** (in addition to the existing ones):
 
+* Touchpad: Customizable tap-and-hold actions (launch application, toggle equalizer, change ambient volume, ...)<sup>[1]</sup>
+* Systray context menu with battery statistics
 * Display detailed sensor statistics on the dashboard, this includes:
   * Voltage and Current of the in-built ADC (Analog-to-Digital converter) of both Earbuds
   * Temperature of both Earbuds
@@ -24,12 +26,10 @@ This Client is a product of my research on the custom RFComm Serial Protocol the
   * Firmware Build Info (Compile Date, Developer Name)
   * Battery Type
   * Other sensor data
-* Equalizer: unlock 'Optimize for Dolby' feature<sup>[1]</sup>
-* Touchpad: Combine Volume Up/Down with other options<sup>[2]</sup>
+* Equalizer: unlock 'Optimize for Dolby' feature
+* Touchpad: Combine Volume Up/Down with other options<sup>[1]</sup>
 
-> <sup>[1]</sup> There are actually 10 EQ-Presets, not 5. If a Samsung Android device has Dolby enabled, then another set of presets will be used. It is unknown if those extra presets actually are different from the normal ones, but according to the Wearable app, these presets seem to be optimized for use with Dolby. (Note that the Wearable app will automatically reset this feature once connected to a non-Samsung mobile device (with Dolby disabled) when attempting to switch EQ presets in the app)
->
-> <sup>[2]</sup> Note that the Wearable app will automatically reset this feature when attempting to switch Touchpad options in their app
+> <sup>[1]</sup> Note that the Wearable app will automatically reset this feature when attempting to switch Touchpad options in their app
 
 ## Installation
 
@@ -37,8 +37,7 @@ This Client is a product of my research on the custom RFComm Serial Protocol the
 
 You can [**download**](https://github.com/ThePBone/GalaxyBudsClient/releases) a fully automated Setup in the [**release section**](https://github.com/ThePBone/GalaxyBudsClient/releases) of this repo!
 
-
-Designed for the original Galaxy Buds. **Galaxy Buds Plus are unsupported** since I do not own a pair.
+The original **Galaxy Buds (2019)** and **Galaxy Buds Plus** are fully supported**.
 
 ![Downloads](https://img.shields.io/github/downloads/ThePBone/GalaxyBudsClient/total)
 
