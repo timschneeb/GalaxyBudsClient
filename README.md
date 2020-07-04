@@ -1,13 +1,16 @@
 # Galaxy Buds Client
 An unofficial Galaxy Buds Manager for Windows (Buds/Buds+)
 
-(You can find downloads on the bottom)
+(You can find downloads on the [bottom](#installation))
 
 <p align="center">
   <img src="screenshots/screencap.gif">
 </p>
 
-This Client is a product of my research on the custom RFComm Serial Protocol the Buds use to receive and send binary (configuration) data. If you are interested in the structure of the protocol and its serial messages, I recommend you to [check my notes out](GalaxyBudsRFCommProtocol.md) which I took while reverse-engineering the whole thing.
+This Client is a product of my research on the custom RFComm Serial Protocol the Buds use to receive and send binary (configuration) data. If you are interested in the structure of the protocol and its serial messages, I recommend you to check my notes out which I took while reverse-engineering the whole thing:
+
+* [My Buds (2019) Notes](GalaxyBudsRFCommProtocol.md)
+* [My Buds Plus Notes](Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md)
 
 ## Features
 
@@ -35,7 +38,7 @@ This Client is a product of my research on the custom RFComm Serial Protocol the
 
 ## Installation
 
-**This app requires .Net Framework 4.6.1 or higher** ([Download](https://dotnet.microsoft.com/download/dotnet-framework/net461))
+**This app requires [.Net Framework](https://dotnet.microsoft.com/download/dotnet-framework/net461) 4.6.1 or higher**
 
 You can [**download**](https://github.com/ThePBone/GalaxyBudsClient/releases) a fully automated Setup in the [**release section**](https://github.com/ThePBone/GalaxyBudsClient/releases) of this repo!
 
