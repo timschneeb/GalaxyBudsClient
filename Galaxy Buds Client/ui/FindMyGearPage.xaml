@@ -14,8 +14,8 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="1" BorderBrush="#FFEAEAEA" BorderThickness="1"  MinWidth="518" Height="60"
-                VerticalAlignment="Top" Width="518" Background="WhiteSmoke" CornerRadius="20">
+        <Border Grid.Row="1" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1"  MinWidth="518" Height="60"
+                VerticalAlignment="Top" Width="518" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20">
             <Grid HorizontalAlignment="Left">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -28,21 +28,21 @@
                     <Button x:Name="BackButton" Style="{StaticResource WindowButtonStyle}" 
                             Click="BackButton_OnClick">
                         <Image Margin="16 2 16 0" Height="24"
-                               SnapsToDevicePixels="True" Source="/Resources/navigation/back_dark.png">
+                               SnapsToDevicePixels="True" Source="{DynamicResource BackButton}">
                         </Image>
                     </Button>
                 </Border>
-                <Label Grid.Column="1" Content="Find my Earbuds" Foreground="#CC000000" VerticalContentAlignment="Center" FontSize="20"/>
+                <Label Grid.Column="1" Content="Find my Earbuds" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20"/>
                 <element:LoadingSpinner Grid.Column="3" x:Name="LoadingSpinner" Height="20" Margin="259,19,-279,19" />
             </Grid>
         </Border>
 
-        <Border Grid.Row="2" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="300" VerticalAlignment="Top" Width="518" Background="WhiteSmoke" CornerRadius="20" Margin="26,10,26,-296" Grid.RowSpan="2" HorizontalAlignment="Center">
+        <Border Grid.Row="2" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="300" VerticalAlignment="Top" Width="518" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="26,10,26,-296" Grid.RowSpan="2" HorizontalAlignment="Center">
             <Grid HorizontalAlignment="Left" Width="Auto">
                 <Image Name="BatteryIconLeft" Source="/Resources/battery/high.png" Height="18" Width="27" Margin="143,52,346,228" RenderTransformOrigin="-0.352,-1.944"/>
-                <Image Name="LeftIcon" Source="/Resources/device/left_gray.png" Width="75" Height="75" Margin="160,52,281,0" VerticalAlignment="Top"/>
-                <Image Name="RightIcon" Source="/Resources/device/right_gray.png" Margin="0,52,160,0" Height="75" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75"/>
+                <Image Name="LeftIcon" Source="{DynamicResource LeftBudConnected}" Width="75" Height="75" Margin="160,52,281,0" VerticalAlignment="Top"/>
+                <Image Name="RightIcon" Source="{DynamicResource RightBudConnected}" Margin="0,52,160,0" Height="75" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75"/>
                 <Image Name="BatteryIconRight" Source="/Resources/battery/high.png" Height="18" Width="27" Margin="346,52,143,228"/>
                 <element:ScannerButton x:Name="ScannerBtn"  Margin="183,148,183,10" />
                 <element:MuteButton x:Name="LeftMuteBtn" Margin="60,63,401,180" />
@@ -53,7 +53,7 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Image Grid.Column="0" Source="/Resources/warning.png" Height="20"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <Label Grid.Column="1" x:Name="EarbudWarningText" Content="Please remove both earbuds from your ear" Foreground="#CC000000" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <Label Grid.Column="1" x:Name="EarbudWarningText" Content="Please remove both earbuds from your ear" Foreground="{DynamicResource ForegroundTextBrush}" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                 </Grid>
             </Grid>
         </Border>

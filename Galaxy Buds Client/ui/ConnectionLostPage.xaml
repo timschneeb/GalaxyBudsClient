@@ -17,8 +17,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="1" BorderBrush="#FFEAEAEA" BorderThickness="1"  MinWidth="518" Height="60"
-                VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20">
+        <Border Grid.Row="1" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1"  MinWidth="518" Height="60"
+                VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20">
             <Grid HorizontalAlignment="Left">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -27,17 +27,17 @@
                     <ColumnDefinition Width="Auto" />
 
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Margin="20,0,0,0" Content="Unable to establish connection" Foreground="#CC000000" VerticalContentAlignment="Center" FontSize="20"/>
+                <Label Grid.Column="0" Margin="20,0,0,0" Content="Unable to establish connection" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20"/>
             </Grid>
         </Border>
-        <Border Grid.Row="3" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Foreground="#CC000000" TextWrapping="Wrap" Margin="20,20,20,0" FontSize="14">
+                <TextBlock Grid.Row="0" Foreground="{DynamicResource ForegroundTextBrush}" TextWrapping="Wrap" Margin="20,20,20,0" FontSize="14">
                 Unable to establish a connection to your Earbuds.<LineBreak/>
                 <LineBreak/>
                 Please check your Bluetooth settings and make sure your Earbuds are turned on and bonded to this computer.
@@ -45,13 +45,13 @@
                 <LineBreak/>
                 Additional information:
                 </TextBlock>
-                <TextBlock x:Name="AdditionalInfo" Grid.Row="1" Foreground="#CC000000" TextWrapping="Wrap" Margin="20,0,20,20" FontSize="14">
+                <TextBlock x:Name="AdditionalInfo" Grid.Row="1" Foreground="{DynamicResource ForegroundTextBrush}" TextWrapping="Wrap" Margin="20,0,20,20" FontSize="14">
                 Placeholder
                 </TextBlock>
             </Grid>
         </Border>
-        <Border Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518" MouseLeftButtonUp="Retry_OnMouseLeftButtonUp"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518" MouseLeftButtonUp="Retry_OnMouseLeftButtonUp"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                 <Grid>
                     <Grid.ColumnDefinitions>

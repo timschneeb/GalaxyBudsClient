@@ -25,16 +25,16 @@
             </Setter.Value>
         </Setter>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Foreground" Value="{DynamicResource WindowButtonBrush}" />
         <Setter Property="Margin" Value="0,2,3,0"/>
     </Style>
 
-    <Style TargetType="basewindow:SWWindow" x:Key="SWWindowStyle">
+    <Style TargetType="{x:Type basewindow:SWWindow}" x:Key="SWWindowStyle">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="AllowsTransparency" Value="True"/>
         <Setter Property="WindowStyle" Value="None"/>
 
-        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource WindowBorderBrush}"/>
         <Setter Property="MinHeight" Value="320"/>
         <Setter Property="MinWidth" Value="480"/>
         <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>
@@ -58,7 +58,7 @@
                             <DropShadowEffect Opacity="0.5" BlurRadius="4" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
                         </Border.Effect>
                         <Grid Background="Transparent" x:Name="WindowRoot">
-                            <Border Name="mask" CornerRadius="20" BorderBrush="Transparent" BorderThickness="1" Background="White">
+                            <Border Name="mask" CornerRadius="20" BorderBrush="Transparent" BorderThickness="1" Background="{DynamicResource WindowBackgroundBrush}">
                             </Border>
                             <Grid x:Name="LayoutRoot"
                               Background="{TemplateBinding Background}">
@@ -68,11 +68,11 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid.OpacityMask>
-                                    <VisualBrush Visual="{Binding ElementName=mask}"></VisualBrush>
+                                    <VisualBrush Visual="{Binding ElementName=mask}"/>
                                 </Grid.OpacityMask>
 
                                 <!--TitleBar-->
-                                <Grid x:Name="PART_HeaderBar" Background="#F5F5F5">
+                                <Grid x:Name="PART_HeaderBar" Background="{DynamicResource WindowHeaderBrush}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
@@ -89,7 +89,7 @@
                                            VerticalAlignment="Center"
                                            Width="Auto"
                                            Padding="200 0 200 0"
-                                           Foreground="Black"
+                                           Foreground="{DynamicResource ForegroundTextBrush}"
                                            Panel.ZIndex="0"
                                            IsEnabled="{TemplateBinding IsActive}"/>
 
@@ -103,10 +103,10 @@
                                         Width="Auto">
                                         <Label.Style>
                                             <Style TargetType="Label">
-                                                <Setter Property= "Foreground" Value="#222222"/>
+                                                <Setter Property= "Foreground" Value="{DynamicResource WindowButtonBrush}"/>
                                                 <Style.Triggers>
                                                     <Trigger Property ="IsMouseOver" Value="True">
-                                                        <Setter Property= "Foreground" Value="DarkGray"/>
+                                                        <Setter Property="Opacity" Value=".5"/>
                                                     </Trigger>
                                                 </Style.Triggers>
                                             </Style>
@@ -126,10 +126,10 @@
                                             <Image Height="10" Width="10" MaxHeight="10" MaxWidth="10" SnapsToDevicePixels="True">
                                                 <Image.Style>
                                                     <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="/Resources/window/window_minimum_nor.png"/>
+                                                        <Setter Property="Source" Value="{DynamicResource WindowMinimumButton}"/>
                                                         <Style.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="/Resources/window/window_minimum_hover.png"/>
+                                                                <Setter Property="Opacity" Value=".5"/>
                                                             </Trigger>
                                                         </Style.Triggers>
                                                     </Style>
@@ -142,10 +142,10 @@
                                             <Image Height="10" Width="10" MaxHeight="10" MaxWidth="10" >
                                                 <Image.Style>
                                                     <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="/Resources/window/window_close_nor.png"/>
+                                                        <Setter Property="Source" Value="{DynamicResource WindowCloseButton}"/>
                                                         <Style.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="/Resources/window/window_close_hover.png"/>
+                                                                <Setter Property="Opacity" Value=".5"/>
                                                             </Trigger>
                                                         </Style.Triggers>
                                                     </Style>

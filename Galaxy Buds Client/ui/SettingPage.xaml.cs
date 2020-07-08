@@ -46,6 +46,7 @@ namespace Galaxy_Buds_Client.ui
             FahrenheitToggle.SetChecked(Properties.Settings.Default.UseFahrenheit);
             MinimizeTrayToggle.SetChecked(Properties.Settings.Default.MinimizeTray);
             AutostartToggle.SetChecked(AutoStartHelper.Enabled);
+            DarkModeToggle.SetChecked(Properties.Settings.Default.DarkMode);
         }
 
         public override void OnPageHidden()
@@ -56,11 +57,6 @@ namespace Galaxy_Buds_Client.ui
         private void BackButton_OnClick(object sender, RoutedEventArgs e)
         {
             _mainWindow.ReturnToHome();
-        }
-
-        private void Credits_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            _mainWindow.GoToPage(MainWindow.Pages.Credits);
         }
 
         private void Transition_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -80,6 +76,7 @@ namespace Galaxy_Buds_Client.ui
             Properties.Settings.Default.UseFahrenheit = FahrenheitToggle.IsChecked;
             Properties.Settings.Default.DisableSlideTransition = TransitionToggle.IsChecked;
             Properties.Settings.Default.MinimizeTray = MinimizeTrayToggle.IsChecked;
+            Properties.Settings.Default.DarkMode = DarkModeToggle.IsChecked;
             Properties.Settings.Default.Save();
         }
 
@@ -108,6 +105,13 @@ namespace Galaxy_Buds_Client.ui
             }
 
             AutoStartHelper.Enabled = AutostartToggle.IsChecked;
+            SaveChanges();
+        }
+
+        private void DarkMode_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            DarkModeToggle.Toggle();
+            DarkModeHelper.SetState(DarkModeToggle.IsChecked);
             SaveChanges();
         }
     }

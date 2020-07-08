@@ -216,12 +216,10 @@
     </Compile>
     <Compile Include="ui\basewindow\SWWindow.cs" />
     <Compile Include="ui\basewindow\SWWindow.Sizing.cs" />
-    <Compile Include="ui\window\SWMessageWindow.xaml.cs">
-      <DependentUpon>SWMessageWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="util\AutoStartHelper.cs" />
     <Compile Include="util\ByteArrayUtils.cs" />
     <Compile Include="util\CRC16.cs" />
+    <Compile Include="util\DarkModeHelper.cs" />
     <Compile Include="util\Hex.cs" />
     <Compile Include="parser\SoftwareVersionOTAParser.cs" />
     <Compile Include="parser\UsageReportParser.cs" />
@@ -239,7 +237,15 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="TrayContextStyles.xaml">
+    <Resource Include="ui\themes\BrushesDark.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="ui\themes\Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Page Include="ui\themes\TrayContextStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -267,7 +273,7 @@
       <DependentUpon>DevWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Styles.xaml">
+    <Page Include="ui\themes\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -367,10 +373,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ui\window\SWMessageWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -416,6 +418,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="InTheHand.Net.Personal.dll" />
+    <Resource Include="Resources\window\window_close_light.png" />
+    <Resource Include="Resources\window\window_minimum_light.png" />
+    <Resource Include="Resources\features\labs_color.png" />
     <Resource Include="Resources\features\advanced_color.png" />
     <Content Include="Resources\features\advanced_light.png" />
     <Resource Include="Resources\findmygear\muted.png" />
@@ -424,9 +429,7 @@
     <Resource Include="Resources\findmygear\start_gray.png" />
     <Resource Include="Resources\navigation\next_small_dark.png" />
     <Resource Include="Resources\window\window_minimum_nor.png" />
-    <Resource Include="Resources\window\window_minimum_hover.png" />
     <Resource Include="Resources\window\window_close_nor.png" />
-    <Resource Include="Resources\window\window_close_hover.png" />
     <Resource Include="Resources\warning.png" />
     <Resource Include="Resources\findmygear\radar_circle.png" />
     <Resource Include="Resources\findmygear\start_white.png" />

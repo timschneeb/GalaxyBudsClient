@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Galaxy_Buds_Client.message;
@@ -206,20 +207,20 @@ namespace Galaxy_Buds_Client.ui
 
             if (leftSide == Visibility.Visible)
             {
-                LeftIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/device/left_gray.png"));
+                LeftIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["LeftBudConnected"];
             }
             else
             {
-                LeftIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/device/left_gray_dim.png"));
+                LeftIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["LeftBudDisconnected"];
             }
 
             if (rightSide == Visibility.Visible)
             {
-                RightIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/device/right_gray.png"));
+                RightIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["RightBudConnected"];
             }
             else
             {
-                RightIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/device/right_gray_dim.png"));
+                RightIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["RightBudDisconnected"];
             }
         }
 

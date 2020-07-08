@@ -19,8 +19,8 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="1" BorderBrush="#FFEAEAEA" BorderThickness="1"  MinWidth="518" Height="60"
-                VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20">
+        <Border Grid.Row="1" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1"  MinWidth="518" Height="60"
+                VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20">
             <Grid HorizontalAlignment="Left">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -32,16 +32,16 @@
                     <Button x:Name="BackButton" Style="{StaticResource WindowButtonStyle}" 
                          Click="BackButton_OnClick">
                         <Image Margin="16 2 16 0" Height="24"
-                           SnapsToDevicePixels="True" Source="/Resources/navigation/back_dark.png">
+                           SnapsToDevicePixels="True" Source="{DynamicResource BackButton}">
                         </Image>
                     </Button>
                 </Border>
-                <Label Grid.Column="1" Content="Equalizer" Foreground="#CC000000" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241"/>
+                <Label Grid.Column="1" Content="Equalizer" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241"/>
                 <element:LoadingSpinner Grid.Column="3" x:Name="LoadingSpinner" Margin="321,19,-341,19"/>
             </Grid>
         </Border>
-        <Border Grid.Row="3" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="EnableEQ_OnMouseLeftButtonUp">
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10" >
                     <Grid.ColumnDefinitions>
@@ -50,13 +50,13 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Content="Enable Equalizer"
-                           Foreground="#CC000000" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <element:ToggleSwitch x:Name="EQToggle" Grid.Column="2" Width="40" Height="30" ColorOn="Orange" DisableButton="True" />
+                           Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <element:ToggleSwitch x:Name="EQToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
                 </Grid>
             </Border>
         </Border>
-        <Border Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Grid ClipToBounds="True" ScrollViewer.CanContentScroll="True">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -67,17 +67,17 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Mode:" Foreground="#CC000000" FontSize="16" VerticalContentAlignment="Center" />
-                    <Label x:Name="PresetLabel" Grid.Column="1" Content="Bass Boost" Foreground="#AA000000" FontSize="16" VerticalContentAlignment="Center" />
+                    <Label Content="Mode:" Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" VerticalContentAlignment="Center" />
+                    <Label x:Name="PresetLabel" Grid.Column="1" Content="Bass Boost" Foreground="{DynamicResource SubtitleTextAltBrush}" FontSize="16" VerticalContentAlignment="Center" />
                 </Grid>
-                <Slider Grid.Row="1" Margin="25,0,20,10" TickFrequency="1" Orientation="Horizontal" TickPlacement="BottomRight" Foreground="Orange"
+                <Slider Grid.Row="1" Margin="25,0,20,10" TickFrequency="1" Orientation="Horizontal" TickPlacement="BottomRight" Foreground="{DynamicResource SliderBrush}"
                         Minimum="0" Maximum="4" Value="0" Style="{StaticResource MaterialDesignSlider}" IsSnapToTickEnabled="True"
                         x:Name="PresetSlider" ValueChanged="PresetSlider_OnValueChanged"/>
 
             </Grid>
         </Border>
-        <Border Name="DolbyModeBorder" Grid.Row="7" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Name="DolbyModeBorder" Grid.Row="7" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="DolbyMode_OnMouseLeftButtonUp">
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10" >
                     <Grid.ColumnDefinitions>
@@ -86,8 +86,8 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Content="Optimize for use with Dolby"
-                           Foreground="#CC000000" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <element:ToggleSwitch x:Name="DolbyToggle" Grid.Column="2" Width="40" Height="30" ColorOn="Orange" DisableButton="True" />
+                           Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <element:ToggleSwitch x:Name="DolbyToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
                 </Grid>
             </Border>
         </Border>

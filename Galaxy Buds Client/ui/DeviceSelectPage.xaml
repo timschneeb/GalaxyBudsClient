@@ -19,8 +19,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="1" BorderBrush="#FFEAEAEA" BorderThickness="1"  MinWidth="518" Height="60"
-                VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20">
+        <Border Grid.Row="1" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1"  MinWidth="518" Height="60"
+                VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20">
             <Grid HorizontalAlignment="Left">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -32,15 +32,15 @@
                     <Button x:Name="BackButton" Style="{StaticResource WindowButtonStyle}" 
                          Click="BackButton_OnClick">
                         <Image Margin="16 2 16 0" Height="24"
-                           SnapsToDevicePixels="True" Source="/Resources/navigation/back_dark.png">
+                           SnapsToDevicePixels="True" Source="{DynamicResource BackButton}">
                         </Image>
                     </Button>
                 </Border>
-                <Label Grid.Column="1" Content="Select your Galaxy Buds" Foreground="#CC000000" VerticalContentAlignment="Center" FontSize="20"/>
+                <Label Grid.Column="1" Content="Select your Galaxy Buds" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20"/>
             </Grid>
         </Border>
-        <Border Grid.Row="3" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Scan_OnMouseLeftButtonUp">
                 <Grid>
                     <element:ListItem x:Name="Scan" Text="Start device discovery"  SourceImage="/Resources/findmygear/start_gray.png" Margin="20,0,20,0" />
@@ -48,8 +48,8 @@
                 </Grid>
             </Border>
         </Border>
-        <Border Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
                 <Grid ClipToBounds="True" ScrollViewer.CanContentScroll="True">
                     <Grid.RowDefinitions>
@@ -62,19 +62,19 @@
                     <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="DevName" Text="Device Name" TextDetail="No device selected" Margin="20,0,20,0"/>
                     </Border>
-                    <Separator Grid.Row="1" Margin="20,0,20,0" Background="LightGray"/>
+                    <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="DevAddress" Text="MAC-Address" TextDetail="No device selected" Margin="20,0,20,0"/>
                     </Border>
-                    <Separator Grid.Row="3" Margin="20,0,20,0" Background="LightGray"/>
+                    <Separator Grid.Row="3" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="4" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="DevModel" Text="Model" TextDetail="No device selected" Margin="20,0,20,0"/>
                     </Border>
                 </Grid>
             </ScrollViewer>
         </Border>
-        <Border Grid.Row="7" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518" x:Name="BottomNavBar"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="7" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518" x:Name="BottomNavBar"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Grid ClipToBounds="True" ScrollViewer.CanContentScroll="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -82,7 +82,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" CornerRadius="20"/>
-                <Separator Grid.Column="1" Background="LightGray" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                <Separator Grid.Column="1" Background="{DynamicResource BorderSeparatorBrush}" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                 <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Continue_OnMouseLeftButtonUp">
                     <element:ListItem x:Name="FactoryReset" Text="Finish Setup" SourceImage="/Resources/navigation/next_small_dark.png" Margin="20,0,20,0"/>
                 </Border>

@@ -7,8 +7,8 @@
              mc:Ignorable="d" Height="60" x:Name="DetailListItemHolder" >
     <Grid>
         <Label Content="{Binding Text,ElementName=DetailListItemHolder}" 
-               Foreground="#CC000000" FontSize="16" VerticalContentAlignment="Center" Margin="0,0,0,30" />
+               Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" VerticalContentAlignment="Center" Margin="0,0,0,30" />
         <Label Content="{Binding TextDetail,ElementName=DetailListItemHolder}" 
-               Foreground="#77000000" FontSize="14" VerticalContentAlignment="Center" Margin="0,20,0,0" />
+               Foreground="{DynamicResource SubtitleTextBrush}" FontSize="14" VerticalContentAlignment="Center" Margin="0,20,0,0" />
     </Grid>
 </UserControl>

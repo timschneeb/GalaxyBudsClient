@@ -15,17 +15,17 @@ namespace Galaxy_Buds_Client.ui.element
         public static readonly DependencyProperty ColorOnDependencyProperty
             = DependencyProperty.Register(
                 "ColorOn",
-                typeof(Color),
+                typeof(SolidColorBrush),
                 typeof(ToggleSwitch),
-                new PropertyMetadata(Color.FromRgb(130, 190, 125))
+                new PropertyMetadata(new SolidColorBrush(Color.FromRgb(130, 190, 125)), ColorOn_PropertyChangedCallback)
             );
 
         public static readonly DependencyProperty ColorOffDependencyProperty
             = DependencyProperty.Register(
                 "ColorOff",
-                typeof(Color),
+                typeof(SolidColorBrush),
                 typeof(ToggleSwitch),
-                new PropertyMetadata(Color.FromRgb(160, 160, 160))
+                new PropertyMetadata(new SolidColorBrush(Color.FromRgb(160, 160, 160)), ColorOff_PropertyChangedCallback)
             );
 
         public static readonly DependencyProperty DisableButtonDependencyProperty
@@ -36,15 +36,43 @@ namespace Galaxy_Buds_Client.ui.element
                 new PropertyMetadata(false)
             );
 
-        public Color ColorOn
-        {
-            get { return (Color)GetValue(ColorOnDependencyProperty); }
-            set { SetValue(ColorOnDependencyProperty, value); }
+        private static void ColorOff_PropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e) {
+            ToggleSwitch originator = d as ToggleSwitch;
+            if (originator != null)
+            {
+                if (!originator.IsChecked)
+                    originator.Dispatcher.Invoke(() => { originator.Back.Fill = originator.ColorOff; });
+            }
         }
-        public Color ColorOff
+
+        private static void ColorOn_PropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            get { return (Color)GetValue(ColorOffDependencyProperty); }
-            set { SetValue(ColorOffDependencyProperty, value); }
+            ToggleSwitch originator = d as ToggleSwitch;
+            if (originator != null)
+            {
+                if (originator.IsChecked)
+                    originator.Dispatcher.Invoke(() => { originator.Back.Fill = originator.ColorOn; });
+            }
+        }
+
+
+        public SolidColorBrush ColorOn
+        {
+            get { return (SolidColorBrush)GetValue(ColorOnDependencyProperty); }
+            set
+            {
+                SetValue(ColorOnDependencyProperty, value);
+                if (IsChecked)
+                    Dispatcher.Invoke(() => { Back.Fill = ColorOn; });
+            }
+        }
+        public SolidColorBrush ColorOff
+        {
+            get { return (SolidColorBrush)GetValue(ColorOffDependencyProperty); }
+            set
+            {
+                SetValue(ColorOffDependencyProperty, value);
+            }
         }
         public bool DisableButton
         {
@@ -57,7 +85,7 @@ namespace Galaxy_Buds_Client.ui.element
         public ToggleSwitch()
         {
             InitializeComponent();
-            Back.Fill = new SolidColorBrush(ColorOff);
+            Back.Fill = ColorOff;
             IsChecked = false;
             Dot.Margin = new Thickness(-39, 0, 0, 0);
 
@@ -129,12 +157,12 @@ namespace Galaxy_Buds_Client.ui.element
             {
                 if (IsChecked)
                 {
-                    Back.Fill = new SolidColorBrush(ColorOn);
+                    Back.Fill = ColorOn;
                     IsChecked = true;
                 }
                 else
                 {
-                    Back.Fill = new SolidColorBrush(ColorOff);
+                    Back.Fill = ColorOff;
                     IsChecked = false;
                 }
                 PlayAnimation(IsChecked);

@@ -18,35 +18,35 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="1" BorderBrush="#FFEAEAEA" BorderThickness="1"  MinWidth="518" Height="60"
-                VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20">
-            <Label Margin="20,0" Content="Manager update available" Foreground="#CC000000" VerticalContentAlignment="Center" FontSize="20"/>
+        <Border Grid.Row="1" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1"  MinWidth="518" Height="60"
+                VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20">
+            <Label Margin="20,0" Content="Manager update available" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20"/>
         </Border>
-        <Border Grid.Row="3" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Grid Margin="20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <TextBlock Name="Title" Grid.Row="0" FontSize="14" Foreground="#CC000000" FontWeight="Bold" >
+                <TextBlock Name="Title" Grid.Row="0" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" FontWeight="Bold" >
                     Version x.x.x.x of Galaxy Buds Manager has been released
                 </TextBlock>
-                <TextBlock Grid.Row="1" FontSize="14" Foreground="#CC000000" TextWrapping="Wrap">
+                <TextBlock Grid.Row="1" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" TextWrapping="Wrap">
                     The download is fully automated and the update wizard will be launched after it has finished downloading. I highly recommend you to update in order to receive the latest bugfixes and features.<LineBreak/>
                     <LineBreak/>
                     You can view the changelog by clicking on the button below.
                 </TextBlock>
             </Grid>
         </Border>
-        <Border Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518" 
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518" 
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="ViewChangelog_OnMouseLeftButtonUp">
-                <Label Margin="20,5" FontSize="16" Content="View full changelog on GitHub" VerticalContentAlignment="Center" Foreground="#CC000000" HorizontalAlignment="Center" />
+                <Label Margin="20,5" FontSize="16" Content="View full changelog on GitHub" VerticalContentAlignment="Center" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalAlignment="Center" />
             </Border>
         </Border>
-        <Border Grid.Row="7" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="7" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Grid ClipToBounds="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -56,15 +56,15 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" CornerRadius="20" x:Name="Postpone" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Postpone_OnMouseLeftButtonUp">
-                    <Label Margin="20,0" FontSize="16" Content="Remind me later" VerticalContentAlignment="Center" Foreground="#CC000000" HorizontalAlignment="Center" />
+                    <Label Margin="20,0" FontSize="16" Content="Remind me later" VerticalContentAlignment="Center" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalAlignment="Center" />
                 </Border>
-                <Separator Grid.Column="1" Background="LightGray" x:Name="Skip" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                <Separator Grid.Column="1" Background="{DynamicResource BorderSeparatorBrush}" x:Name="Skip" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                 <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Skip_OnMouseLeftButtonUp">
-                    <Label Margin="20,5" FontSize="16" Content="Skip this version" VerticalContentAlignment="Center" Foreground="#CC000000" HorizontalAlignment="Center" />
+                    <Label Margin="20,5" FontSize="16" Content="Skip this version" VerticalContentAlignment="Center" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalAlignment="Center" />
                 </Border>
-                <Separator Grid.Column="3" Background="LightGray" x:Name="Install" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                <Separator Grid.Column="3" Background="{DynamicResource BorderSeparatorBrush}" x:Name="Install" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                 <Border Grid.Column="4" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Install_OnMouseLeftButtonUp">
-                    <Label Margin="20,5" FontWeight="DemiBold" FontSize="16" Content="Install now" VerticalContentAlignment="Center" Foreground="#CC000000" HorizontalAlignment="Center" />
+                    <Label Margin="20,5" FontWeight="DemiBold" FontSize="16" Content="Install now" VerticalContentAlignment="Center" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalAlignment="Center" />
                 </Border>
             </Grid>
         </Border>

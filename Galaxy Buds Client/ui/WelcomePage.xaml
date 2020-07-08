@@ -16,13 +16,13 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="1" BorderBrush="#FFEAEAEA" BorderThickness="1"  MinWidth="518" Height="60"
-                VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20">
-            <Label Margin="20,0" Grid.Column="1" Content="Welcome!" Foreground="#CC000000" VerticalContentAlignment="Center" FontSize="20"/>
+        <Border Grid.Row="1" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1"  MinWidth="518" Height="60"
+                VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20">
+            <Label Margin="20,0" Grid.Column="1" Content="Welcome!" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20"/>
         </Border>
-        <Border Grid.Row="3" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
-            <TextBlock Margin="20" Foreground="#CC000000" TextWrapping="Wrap" FontSize="14.2">
+        <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
+            <TextBlock Margin="20" Foreground="{DynamicResource ForegroundTextBrush}" TextWrapping="Wrap" FontSize="14.2">
                 Hey there! My name is @ThePBone and I'm the developer of this program.<LineBreak/>
                 This Galaxy Buds Manager is <Bold>unofficial</Bold> and not affiliated with Samsung in any way, please keep that in mind.<LineBreak/>
                 While this program can do a lot of things the original Samsung Wearable app on Android can't do, I've still decided to exclude the Firmware OTA Updater for safety reasons. Please use the official one if you happen to need it.<LineBreak/>
@@ -31,8 +31,8 @@
                 This app supports both the <Underline>Buds</Underline> (2019) and <Underline>Buds+</Underline> (2020).
             </TextBlock>
         </Border>
-        <Border Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Grid ClipToBounds="True" ScrollViewer.CanContentScroll="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -40,9 +40,9 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" CornerRadius="20"/>
-                <Separator Grid.Column="1" Background="LightGray" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                <Separator Grid.Column="1" Background="{DynamicResource BorderSeparatorBrush}" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                 <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Continue_OnMouseLeftButtonUp">
-                    <element:ListItem x:Name="FactoryReset" Text="Continue" SourceImage="/Resources/navigation/next_small_dark.png" Margin="20,0,20,0"/>
+                    <element:ListItem Text="Continue" SourceImage="/Resources/navigation/next_small_dark.png" Margin="20,0,20,0"/>
                 </Border>
             </Grid>
         </Border>

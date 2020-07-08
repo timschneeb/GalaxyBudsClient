@@ -17,8 +17,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="1" BorderBrush="#FFEAEAEA" BorderThickness="1"  MinWidth="518" Height="60"
-                VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20">
+        <Border Grid.Row="1" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1"  MinWidth="518" Height="60"
+                VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20">
             <Grid HorizontalAlignment="Left">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -27,18 +27,18 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}"/>
-                <Label Grid.Column="1" Content="Define custom long-press action" Foreground="#CC000000" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241" Grid.ColumnSpan="3" Margin="17,0,-17,0"/>
+                <Label Grid.Column="1" Content="Define custom long-press action" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241" Grid.ColumnSpan="3" Margin="17,0,-17,0"/>
                 <element:LoadingSpinner Grid.Column="3" x:Name="LoadingSpinner" Margin="321,19,-341,19"/>
             </Grid>
         </Border>
-        <Border Grid.Row="3" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,10">
+        <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
             <Border Name="ActionBorder" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Action_OnMouseLeftButtonUp" ContextMenuService.Placement="Bottom">
                 <element:DetailListItem x:Name="Action" Text="Custom Action" TextDetail="Not set" Margin="20,0,20,0" />
             </Border>
         </Border>
-        <Border Grid.Row="4" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,10">
+        <Border Grid.Row="4" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
             <Border CornerRadius="20">
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10" >
                     <Grid.ColumnDefinitions>
@@ -51,8 +51,8 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" Content="Note"
-                           Foreground="#CC000000" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,-4,0,0"/>
-                    <TextBlock Margin="5,26,5,5" Grid.ColumnSpan="2" Grid.Column="0" TextWrapping="Wrap" Foreground="#77000000" FontSize="14" Grid.RowSpan="2" >
+                           Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,-4,0,0"/>
+                    <TextBlock Margin="5,26,5,5" Grid.ColumnSpan="2" Grid.Column="0" TextWrapping="Wrap" Foreground="{DynamicResource SubtitleTextBrush}" FontSize="14" Grid.RowSpan="2" >
                        Custom long-press actions are only available when this app is active in the background. <Underline>It has no effect on Android or other devices.</Underline><LineBreak/>
                        In order to provide consistent support for this feature, this app will automatically start on boot and run in the background.<LineBreak/>
                        You can disable this behaviour in the settings section.
@@ -60,8 +60,8 @@
                 </Grid>
             </Border>
         </Border>
-        <Border Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518" x:Name="BottomNavBar"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518" x:Name="BottomNavBar"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Grid ClipToBounds="True" ScrollViewer.CanContentScroll="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -69,12 +69,12 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Cancel_OnMouseLeftButtonUp">
-                    <Label Content="Cancel" Height="50" Foreground="#CC000000" Margin="20,0,20,0" FontSize="18"
+                    <Label Content="Cancel" Height="50" Foreground="{DynamicResource ForegroundTextBrush}" Margin="20,0,20,0" FontSize="18"
                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
                 </Border>
-                <Separator Grid.Column="1" Background="LightGray" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                <Separator Grid.Column="1" Background="{DynamicResource BorderSeparatorBrush}" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                 <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}"  MouseLeftButtonUp="Apply_OnMouseLeftButtonUp">
-                    <Label Content="Apply" Height="50" Foreground="#CC000000" Margin="20,0,20,0" FontSize="18"
+                    <Label Content="Apply" Height="50" Foreground="{DynamicResource ForegroundTextBrush}" Margin="20,0,20,0" FontSize="18"
                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
                 </Border>
             </Grid>

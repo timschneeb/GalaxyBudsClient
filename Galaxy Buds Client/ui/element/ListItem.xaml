@@ -7,6 +7,6 @@
              mc:Ignorable="d" Height="50" x:Name="ListItemHolder">
     <Grid HorizontalAlignment="Left">
         <Image Source="{Binding SourceImage,ElementName=ListItemHolder}" Width="45" Margin="9,0,158,0" HorizontalAlignment="Left" />
-        <Label Content="{Binding Text,ElementName=ListItemHolder}" Foreground="#CC000000" Margin="60,0,0,1" FontSize="18" VerticalContentAlignment="Center" />
+        <Label Content="{Binding Text,ElementName=ListItemHolder}" Foreground="{DynamicResource ForegroundTextBrush}" Margin="60,0,0,1" FontSize="18" VerticalContentAlignment="Center" />
     </Grid>
 </UserControl>

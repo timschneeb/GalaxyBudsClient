@@ -16,8 +16,8 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="1" BorderBrush="#FFEAEAEA" BorderThickness="1"  MinWidth="518" Height="60"
-                VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20">
+        <Border Grid.Row="1" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1"  MinWidth="518" Height="60"
+                VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20">
             <Grid HorizontalAlignment="Left">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -29,15 +29,15 @@
                     <Button x:Name="BackButton" Style="{StaticResource WindowButtonStyle}" 
                          Click="BackButton_OnClick">
                         <Image Margin="16 2 16 0" Height="24"
-                           SnapsToDevicePixels="True" Source="/Resources/navigation/back_dark.png">
+                           SnapsToDevicePixels="True" Source="{DynamicResource BackButton}">
                         </Image>
                     </Button>
                 </Border>
-                <Label Grid.Column="1" Content="Credits" Foreground="#CC000000" VerticalContentAlignment="Center" FontSize="20"/>
+                <Label Grid.Column="1" Content="Credits" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20"/>
             </Grid>
         </Border>
-        <Border Grid.Row="3" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Grid ClipToBounds="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -47,20 +47,20 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" CornerRadius="20" x:Name="Telegram" MouseLeftButtonUp="Telegram_OnMouseLeftButtonUp" Style="{StaticResource BorderHoverStyle}">
-                    <Label Margin="20,0" FontSize="16" Content="Telegram" VerticalContentAlignment="Center" Foreground="#CC000000" HorizontalAlignment="Center" />
+                    <Label Margin="20,0" FontSize="16" Content="Telegram" VerticalContentAlignment="Center" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalAlignment="Center" />
                 </Border>
-                <Separator Grid.Column="1" Background="LightGray" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                <Separator Grid.Column="1" Background="{DynamicResource BorderSeparatorBrush}" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                 <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="GitHub_OnMouseLeftButtonUp">
-                    <Label Margin="20,5" FontSize="16" Content="GitHub" VerticalContentAlignment="Center" Foreground="#CC000000" HorizontalAlignment="Center" />
+                    <Label Margin="20,5" FontSize="16" Content="GitHub" VerticalContentAlignment="Center" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalAlignment="Center" />
                 </Border>
-                <Separator Grid.Column="3" Background="LightGray" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                <Separator Grid.Column="3" Background="{DynamicResource BorderSeparatorBrush}" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                 <Border Grid.Column="4" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Website_OnMouseLeftButtonUp">
-                    <Label Margin="20,5" FontSize="16" Content="Website" VerticalContentAlignment="Center" Foreground="#CC000000" HorizontalAlignment="Center" />
+                    <Label Margin="20,5" FontSize="16" Content="Website" VerticalContentAlignment="Center" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalAlignment="Center" />
                 </Border>
             </Grid>
         </Border>
-        <Border Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
                 <Grid ClipToBounds="True" ScrollViewer.CanContentScroll="True">
                     <Grid.RowDefinitions>
@@ -73,11 +73,11 @@
                     <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem Text="Developer" TextDetail="@ThePBone (u/TheBone__)" Margin="20,0,20,0"/>
                     </Border>
-                    <Separator Grid.Row="1" Margin="20,0,20,0" Background="LightGray"/>
+                    <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem Text="License" TextDetail="GPLv3" Margin="20,0,20,0"/>
                     </Border>
-                    <Separator Grid.Row="3" Margin="20,0,20,0" Background="LightGray"/>
+                    <Separator Grid.Row="3" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="4" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="Version" Text="Version" TextDetail="x.x.x.x" Margin="20,0,20,0"/>
                     </Border>

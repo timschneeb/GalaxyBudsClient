@@ -17,8 +17,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="1" BorderBrush="#FFEAEAEA" BorderThickness="1"  MinWidth="518" Height="60"
-                VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20">
+        <Border Grid.Row="1" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1"  MinWidth="518" Height="60"
+                VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20">
             <Grid HorizontalAlignment="Left">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -31,25 +31,25 @@
                     <Button x:Name="BackButton" Style="{StaticResource WindowButtonStyle}" 
                          Click="BackButton_OnClick">
                         <Image Margin="16 2 16 0" Height="24"
-                           SnapsToDevicePixels="True" Source="/Resources/navigation/back_dark.png">
+                           SnapsToDevicePixels="True" Source="{DynamicResource BackButton}">
                         </Image>
                     </Button>
                 </Border>
-                <Label Grid.Column="1" Content="Factory Reset" Foreground="#CC000000" VerticalContentAlignment="Center" FontSize="20"/>
+                <Label Grid.Column="1" Content="Factory Reset" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20"/>
                 <element:LoadingSpinner Grid.Column="3" x:Name="LoadingSpinner" Height="20" Margin="285,19,-305,19" />
             </Grid>
         </Border>
-        <Border Grid.Row="3" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
-            <TextBlock Foreground="#CC000000" TextWrapping="Wrap" Margin="15" FontSize="14">
+        <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
+            <TextBlock Foreground="{DynamicResource ForegroundTextBrush}" TextWrapping="Wrap" Margin="15" FontSize="14">
                 Are you sure you want to reset your Earbuds?<LineBreak/>
                 <LineBreak/>
                 After performing a Factory Reset, you'll have to <Bold>manually</Bold> reconnect your Earbuds to the computer.<LineBreak/>
                 Make sure <Bold>both</Bold> Earbuds are <Bold>turned on</Bold> before continuing!
             </TextBlock>
         </Border>
-        <Border Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="#FFFFEBEB" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundWarningBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                 <element:ListItem x:Name="FactoryReset" Text="Confirm factory reset" SourceImage="/Resources/device/neutral_gray.png" Margin="20,0,20,0" 
                                   MouseLeftButtonUp="FactoryReset_OnMouseLeftButtonUp"/>

@@ -16,8 +16,8 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="1" BorderBrush="#FFEAEAEA" BorderThickness="1"  MinWidth="518" Height="60"
-                VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20">
+        <Border Grid.Row="1" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1"  MinWidth="518" Height="60"
+                VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20">
             <Grid HorizontalAlignment="Left">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -29,22 +29,22 @@
                     <Button x:Name="BackButton" Style="{StaticResource WindowButtonStyle}" 
                          Click="BackButton_OnClick">
                         <Image Margin="16 2 16 0" Height="24"
-                           SnapsToDevicePixels="True" Source="/Resources/navigation/back_dark.png">
+                           SnapsToDevicePixels="True" Source="{DynamicResource BackButton}">
                         </Image>
                     </Button>
                 </Border>
-                <Label Name="Title" Grid.Column="1" Content="Self Test" Foreground="#CC000000" VerticalContentAlignment="Center" FontSize="20"/>
+                <Label Name="Title" Grid.Column="1" Content="Self Test" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20"/>
                 <element:LoadingSpinner Grid.Column="3" x:Name="LoadingSpinner" Margin="325,19,-345,19"/>
             </Grid>
         </Border>
-        <Border Grid.Row="3" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Border Grid.Column="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                 <element:ListItem x:Name="SelfTestResult" Text="Waiting for response..." SourceImage="/Resources/features/info_gray.png" Margin="20,0,20,0"/>
             </Border>
         </Border>
-        <Border Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,0">
+        <Border Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
                 <Grid ClipToBounds="True" ScrollViewer.CanContentScroll="True">
                     <Grid.RowDefinitions>
@@ -73,43 +73,43 @@
                     <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="HwVer" Text="Hardware Version" TextDetail="Pass" Margin="20,0,20,0"/>
                     </Border>
-                    <Separator Grid.Row="1" Margin="20,0,20,0" Background="LightGray"/>
+                    <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="SwVer" Text="Software Version" TextDetail="Pass" Margin="20,0,20,0"/>
                     </Border>
-                    <Separator Grid.Row="3" Margin="20,0,20,0" Background="LightGray"/>
+                    <Separator Grid.Row="3" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="4" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="TouchFwVer" Text="Touch Firmware Version" TextDetail="Pass" Margin="20,0,20,0"/>
                     </Border>
-                    <Separator Grid.Row="5" Margin="20,0,20,0" Background="LightGray"/>
+                    <Separator Grid.Row="5" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="6" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="BtAddr" Text="Bluetooth Address" TextDetail="Left: Pass, Right: Pass" Margin="20,0,20,0"/>
                     </Border>
-                    <Separator Grid.Row="7" Margin="20,0,20,0" Background="LightGray"/>
+                    <Separator Grid.Row="7" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="8" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="Proximity" Text="Proximity Measurement" TextDetail="Left: Pass, Right: Pass" Margin="20,0,20,0"/>
                     </Border>
-                    <Separator Grid.Row="9" Margin="20,0,20,0" Background="LightGray"/>
+                    <Separator Grid.Row="9" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="10" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="Thermo" Text="Thermistor Measurement" TextDetail="Left: Pass, Right: Pass" Margin="20,0,20,0"/>
                     </Border>
-                    <Separator Grid.Row="11" Margin="20,0,20,0" Background="LightGray"/>
+                    <Separator Grid.Row="11" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="12" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="AdcSoc" Text="ADC SOC" TextDetail="Left: Pass, Right: Pass" Margin="20,0,20,0"/>
                     </Border>
-                    <Separator Grid.Row="13" Margin="20,0,20,0" Background="LightGray"/>
+                    <Separator Grid.Row="13" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="14" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="AdcVoltage" Text="ADC Voltage" TextDetail="Left: Pass, Right: Pass" Margin="20,0,20,0"/>
                     </Border>
-                    <Separator Grid.Row="15" Margin="20,0,20,0" Background="LightGray"/>
+                    <Separator Grid.Row="15" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="16" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="AdcCurrent" Text="ADC Current" TextDetail="Left: Pass, Right: Pass" Margin="20,0,20,0"/>
                     </Border>
-                    <Separator Grid.Row="17" Margin="20,0,20,0" Background="LightGray"/>
+                    <Separator Grid.Row="17" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="18" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="Hall" Text="Hall Measurement" TextDetail="Left: Pass, Right: Pass" Margin="20,0,20,0"/>
                     </Border>
-                    <Separator Grid.Row="19" Margin="20,0,20,0" Background="LightGray"/>
+                    <Separator Grid.Row="19" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="20" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                         <element:DetailListItem x:Name="Accelerator" Text="Accelerator Measurement" TextDetail="Left: Pass, Right: Pass" Margin="20,0,20,0"/>
                     </Border>

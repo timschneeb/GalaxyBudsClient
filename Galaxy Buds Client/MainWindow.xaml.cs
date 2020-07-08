@@ -17,6 +17,7 @@ using Galaxy_Buds_Client.Properties;
 using Galaxy_Buds_Client.transition;
 using Galaxy_Buds_Client.ui;
 using Galaxy_Buds_Client.ui.basewindow;
+using Galaxy_Buds_Client.util;
 using Hardcodet.Wpf.TaskbarNotification;
 using InTheHand.Net;
 using InTheHand.Net.Bluetooth;
@@ -78,6 +79,8 @@ namespace Galaxy_Buds_Client
                 Settings.Default.UpdateSettings = false;
                 Settings.Default.Save();
             }
+
+            DarkModeHelper.SetState(Settings.Default.DarkMode);
 
             _mainPage = new MainPage(this);
             _systemPage = new SystemPage(this);

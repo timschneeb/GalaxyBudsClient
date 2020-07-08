@@ -18,8 +18,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="1" BorderBrush="#FFEAEAEA" BorderThickness="1"  MinWidth="518" Height="60"
-                VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20">
+        <Border Grid.Row="1" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1"  MinWidth="518" Height="60"
+                VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20">
             <Grid HorizontalAlignment="Left">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -31,16 +31,16 @@
                     <Button x:Name="BackButton" Style="{StaticResource WindowButtonStyle}" 
                          Click="BackButton_OnClick">
                         <Image Margin="16 2 16 0" Height="24"
-                           SnapsToDevicePixels="True" Source="/Resources/navigation/back_dark.png">
+                           SnapsToDevicePixels="True" Source="{DynamicResource BackButton}">
                         </Image>
                     </Button>
                 </Border>
-                <Label Grid.Column="1" Content="Touchpad" Foreground="#CC000000" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241"/>
+                <Label Grid.Column="1" Content="Touchpad" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241"/>
                 <element:LoadingSpinner Grid.Column="3" x:Name="LoadingSpinner" Margin="321,19,-341,19"/>
             </Grid>
         </Border>
-        <Border Grid.Row="3" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,10">
+        <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="LockTouchpadBorder_OnMouseLeftButtonUp">
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10" >
                     <Grid.ColumnDefinitions>
@@ -49,13 +49,13 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Content="Lock Touchpad"
-                           Foreground="#CC000000" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <element:ToggleSwitch x:Name="LockToggle" Grid.Column="2" Width="40" Height="30" ColorOn="Orange" DisableButton="True" />
+                           Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <element:ToggleSwitch x:Name="LockToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
                 </Grid>
             </Border>
         </Border>
-        <Border Grid.Row="4" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,10">
+        <Border Grid.Row="4" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
             <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
                 <Grid ClipToBounds="True" ScrollViewer.CanContentScroll="True">
                     <Grid.RowDefinitions>
@@ -66,15 +66,15 @@
                     <Border Name="LeftOptionBorder" Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="LeftOption_OnMouseLeftButtonUp" ContextMenuService.Placement="Bottom">
                         <element:DetailListItem x:Name="LeftOption" Text="Left Action" TextDetail="Unknown, device did not respond" Margin="20,0,20,0" />
                     </Border>
-                    <Separator Grid.Row="1" Margin="20,0,20,0" Background="LightGray"/>
+                    <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Name="RightOptionBorder" Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="RightOption_OnMouseLeftButtonUp" ContextMenuService.Placement="Bottom">
                         <element:DetailListItem x:Name="RightOption" Text="Right Action" TextDetail="Unknown, device did not respond" Margin="20,0,20,0"/>
                     </Border>
                 </Grid>
             </ScrollViewer>
         </Border>
-        <Border Name="DoubleTapVolumeBorder" Grid.Row="5" BorderBrush="#FFEAEAEA" BorderThickness="1" MinWidth="518"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="WhiteSmoke" CornerRadius="20" Margin="20,0,24,10">
+        <Border Name="DoubleTapVolumeBorder" Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="DoubleTapVolume_OnMouseLeftButtonUp">
                 <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10" >
                     <Grid.ColumnDefinitions>
@@ -87,9 +87,9 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" Content="Double-Tap Earbud Edge"
-                           Foreground="#CC000000" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <element:ToggleSwitch Grid.Row="0" x:Name="DoubleTapVolumeToggle" Grid.Column="2" Width="40" Height="30" ColorOn="Orange" DisableButton="True" />
-                    <TextBlock Margin="5" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" TextWrapping="Wrap" Foreground="#77000000" FontSize="16" >
+                           Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <element:ToggleSwitch Grid.Row="0" x:Name="DoubleTapVolumeToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
+                    <TextBlock Margin="5" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" TextWrapping="Wrap" Foreground="{DynamicResource SubtitleTextBrush}" FontSize="16" >
                        Double-tap the edge of the left or right earbud to turn the volume down or up.
                     </TextBlock>
                 </Grid>

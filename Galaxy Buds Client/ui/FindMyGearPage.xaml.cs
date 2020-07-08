@@ -136,6 +136,7 @@ namespace Galaxy_Buds_Client.ui
             LoadingSpinner.Visibility = Visibility.Hidden;
             LeftMuteBtn.Visibility = Visibility.Hidden;
             RightMuteBtn.Visibility = Visibility.Hidden;
+            RefreshEarbudIcon();
             LeftMuteBtn.SetMuted(false);
             RightMuteBtn.SetMuted(false);
         }
@@ -182,26 +183,51 @@ namespace Galaxy_Buds_Client.ui
                     {
                         if (!l)
                         {
-                            LeftIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/device/left_gray.png"));
+                            LeftIcon.Source = (ImageSource) Application.Current.Resources.MergedDictionaries[0]["LeftBudConnected"];
                             BatteryIconLeft.Visibility = Visibility.Visible;
                         }
                         else
                         {
-                            LeftIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/device/left_gray_dim.png"));
+                            LeftIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["LeftBudDisconnected"];
                             BatteryIconLeft.Visibility = Visibility.Hidden;
                         }
 
                         if (!r)
                         {
-                            RightIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/device/right_gray.png"));
+                            RightIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["RightBudConnected"];
                             BatteryIconRight.Visibility = Visibility.Visible;
                         }
                         else
                         {
-                            RightIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/device/right_gray_dim.png"));
+                            RightIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["RightBudDisconnected"];
                             BatteryIconRight.Visibility = Visibility.Hidden;
                         }
                     });
+        }
+
+        private void RefreshEarbudIcon()
+        {
+            Dispatcher.Invoke(() =>
+            {
+
+                if (LeftIcon.Visibility == Visibility.Visible)
+                {
+                    LeftIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["LeftBudConnected"];
+                }
+                else
+                {
+                    LeftIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["LeftBudDisconnected"];
+                }
+
+                if (RightIcon.Visibility == Visibility.Visible)
+                {
+                    RightIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["RightBudConnected"];
+                }
+                else
+                {
+                    RightIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["RightBudDisconnected"];
+                }
+            });
         }
 
         private void UpdateBatteryPercentage(int p, Side side)
