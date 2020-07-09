@@ -92,14 +92,6 @@ namespace Galaxy_Buds_Client.ui
             m.Click += delegate
             {
                 _lastPressedMenu = side;
-                if (side == Devices.L)
-                {
-                    _lastLeftOption = option;
-                }
-                else
-                {
-                    _lastRightOption = option;
-                }
 
                 if (side == Devices.L && option == TouchOption.Universal.OtherL)
                     _mainWindow.GoToPage(MainWindow.Pages.TouchCustomAction);
@@ -109,15 +101,16 @@ namespace Galaxy_Buds_Client.ui
                 {
                     if (side == Devices.L)
                     {
+                        _lastLeftOption = option;
                         LeftOption.TextDetail = m.Header.ToString();
                     }
                     else
                     {
+                        _lastRightOption = option;
                         RightOption.TextDetail = m.Header.ToString();
                     }
+                    BluetoothService.Instance.SendAsync(SPPMessageBuilder.Touch.SetOptions(_lastLeftOption, _lastRightOption));
                 }
-
-                BluetoothService.Instance.SendAsync(SPPMessageBuilder.Touch.SetOptions(_lastLeftOption, _lastRightOption));
             };
             m.Style = (Style)FindResource("MenuItemStyle");
             c.Items.Add(m);
@@ -181,20 +174,23 @@ namespace Galaxy_Buds_Client.ui
 
             if (_lastPressedMenu == Devices.L)
             {
+                _lastLeftOption = TouchOption.Universal.OtherL;
                 LeftOption.TextDetail = $"Custom Action: {e}";
                 Settings.Default.LeftCustomAction = (int) e.Action;
                 Settings.Default.LeftCustomActionParameter = e.Parameter;
+                BluetoothService.Instance.SendAsync(SPPMessageBuilder.Touch.SetOptions(TouchOption.Universal.OtherL, _lastRightOption));
             }
             else
             {
+                _lastRightOption = TouchOption.Universal.OtherR;
                 RightOption.TextDetail = $"Custom Action: {e}";
                 Settings.Default.RightCustomAction = (int) e.Action;
                 Settings.Default.RightCustomActionParameter = e.Parameter;
+                BluetoothService.Instance.SendAsync(SPPMessageBuilder.Touch.SetOptions(_lastLeftOption, TouchOption.Universal.OtherR));
             }
 
             Settings.Default.MinimizeTray = true;
             AutoStartHelper.Enabled = true;
-
             Settings.Default.Save();
         }
 
