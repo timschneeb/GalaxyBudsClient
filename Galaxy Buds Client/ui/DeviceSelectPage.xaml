@@ -43,7 +43,7 @@
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Scan_OnMouseLeftButtonUp">
                 <Grid>
-                    <element:ListItem x:Name="Scan" Text="Start device discovery"  SourceImage="/Resources/findmygear/start_gray.png" Margin="20,0,20,0" />
+                    <element:ListItem x:Name="Scan" Text="Start device discovery"  SourceImage="{DynamicResource SearchButton}" Margin="20,0,20,0" />
                     <element:LoadingSpinner x:Name="LoadingSpinner" Height="20" Margin="470,15,0,15" HorizontalAlignment="Left" Width="20" />
                 </Grid>
             </Border>
@@ -84,7 +84,7 @@
                 <Border Grid.Column="0" CornerRadius="20"/>
                 <Separator Grid.Column="1" Background="{DynamicResource BorderSeparatorBrush}" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                 <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Continue_OnMouseLeftButtonUp">
-                    <element:ListItem x:Name="FactoryReset" Text="Finish Setup" SourceImage="/Resources/navigation/next_small_dark.png" Margin="20,0,20,0"/>
+                    <element:ListItem Text="Finish Setup" SourceImage="{DynamicResource NextButton}" Margin="20,0,20,0"/>
                 </Border>
             </Grid>
         </Border>

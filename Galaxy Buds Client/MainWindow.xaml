@@ -7,5 +7,5 @@
              xmlns:basewindow="clr-namespace:Galaxy_Buds_Client.ui.basewindow"
              mc:Ignorable="d" MinWidth="570" MinHeight="600" MaxHeight="600"
              Title="Galaxy Buds Manager" Height="600" Width="700" Background="{DynamicResource WindowBackgroundBrush}" >
-        <transition:PageTransition x:Name="PageControl" TransitionType="SlideAndFade" Margin="0" ClipToBounds="True"/>
+        <transition:PageTransition x:Name="PageControl" TransitionType="SlideAndFade" ClipToBounds="True"/>
 </basewindow:SWWindow>

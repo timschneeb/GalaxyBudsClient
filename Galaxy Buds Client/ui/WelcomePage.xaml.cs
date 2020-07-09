@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.parser;
+using Galaxy_Buds_Client.util;
 
 namespace Galaxy_Buds_Client.ui
 {
@@ -33,6 +34,7 @@ namespace Galaxy_Buds_Client.ui
         public override void OnPageShown()
         {
             _mainWindow.SetOptionsEnabled(false);
+            DarkMode.Switch.SetChecked(Properties.Settings.Default.DarkMode);
         }
 
         public override void OnPageHidden()
@@ -42,6 +44,13 @@ namespace Galaxy_Buds_Client.ui
         private void Continue_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             _mainWindow.GoToPage(MainWindow.Pages.DeviceSelect);
+        }
+
+        private void DarkMode_OnSwitchToggled(object sender, bool e)
+        {
+            DarkModeHelper.SetState(e);
+            Properties.Settings.Default.DarkMode = e;
+            Properties.Settings.Default.Save();
         }
     }
 }

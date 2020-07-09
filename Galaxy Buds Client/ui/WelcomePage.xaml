@@ -13,6 +13,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -22,16 +24,22 @@
         </Border>
         <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
-            <TextBlock Margin="20" Foreground="{DynamicResource ForegroundTextBrush}" TextWrapping="Wrap" FontSize="14.2">
+            <TextBlock Margin="20" Foreground="{DynamicResource ForegroundTextDimBrush}" TextWrapping="Wrap" FontSize="14.2">
                 Hey there! My name is @ThePBone and I'm the developer of this program.<LineBreak/>
                 This Galaxy Buds Manager is <Bold>unofficial</Bold> and not affiliated with Samsung in any way, please keep that in mind.<LineBreak/>
                 While this program can do a lot of things the original Samsung Wearable app on Android can't do, I've still decided to exclude the Firmware OTA Updater for safety reasons. Please use the official one if you happen to need it.<LineBreak/>
-                If you are interested what is going on behind the scenes, you can check out my GitHub repository which includes a small reverse-engineering journal I wrote as a memory aid.<LineBreak/>
+                If you are interested in what is going on behind the scenes, you can check out my GitHub repository which includes a small reverse-engineering journal.<LineBreak/>
                 <LineBreak/>
                 This app supports both the <Underline>Buds</Underline> (2019) and <Underline>Buds+</Underline> (2020).
             </TextBlock>
         </Border>
         <Border Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
+            <element:CheckableDetailListItem Text="Dark Mode" TextDetail="Your eyes are already burning? Use a darker color scheme instead!"
+                                             x:Name="DarkMode" SwitchToggled="DarkMode_OnSwitchToggled" />
+
+        </Border>
+        <Border Grid.Row="7" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Grid ClipToBounds="True" ScrollViewer.CanContentScroll="True">
                 <Grid.ColumnDefinitions>
@@ -42,7 +50,7 @@
                 <Border Grid.Column="0" CornerRadius="20"/>
                 <Separator Grid.Column="1" Background="{DynamicResource BorderSeparatorBrush}" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                 <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Continue_OnMouseLeftButtonUp">
-                    <element:ListItem Text="Continue" SourceImage="/Resources/navigation/next_small_dark.png" Margin="20,0,20,0"/>
+                    <element:ListItem Text="Continue" SourceImage="{DynamicResource NextButton}" Margin="20,0,20,0"/>
                 </Border>
             </Grid>
         </Border>
