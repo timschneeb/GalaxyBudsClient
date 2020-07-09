@@ -182,35 +182,18 @@ namespace Galaxy_Buds_Client.ui
             if (_lastPressedMenu == Devices.L)
             {
                 LeftOption.TextDetail = $"Custom Action: {e}";
-                if (e != null)
-                {
-                    Settings.Default.LeftCustomAction = (int) e.Action;
-                    Settings.Default.LeftCustomActionParameter = e.Parameter;
-                }
-                else
-                {
-                    Settings.Default.RightCustomAction = -1;
-                }
+                Settings.Default.LeftCustomAction = (int) e.Action;
+                Settings.Default.LeftCustomActionParameter = e.Parameter;
             }
             else
             {
                 RightOption.TextDetail = $"Custom Action: {e}";
-                if (e != null)
-                {
-                    Settings.Default.RightCustomAction = (int) e.Action;
-                    Settings.Default.RightCustomActionParameter = e.Parameter;
-                }
-                else
-                {
-                    Settings.Default.RightCustomAction = -1;
-                }
+                Settings.Default.RightCustomAction = (int) e.Action;
+                Settings.Default.RightCustomActionParameter = e.Parameter;
             }
 
-            if (e != null)
-            {
-                Settings.Default.MinimizeTray = true;
-                AutoStartHelper.Enabled = true;
-            }
+            Settings.Default.MinimizeTray = true;
+            AutoStartHelper.Enabled = true;
 
             Settings.Default.Save();
         }
