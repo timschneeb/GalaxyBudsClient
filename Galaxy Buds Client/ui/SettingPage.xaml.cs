@@ -68,6 +68,7 @@ namespace Galaxy_Buds_Client.ui
         private void Units_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             FahrenheitToggle.Toggle();
+            BluetoothService.Instance.SendAsync(SPPMessageBuilder.Info.GetAllData());
             SaveChanges();
         }
 
