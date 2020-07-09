@@ -103,7 +103,7 @@ namespace Galaxy_Buds_Client.ui
 
                 if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
                 {
-                    ExtraLoudToggle.SetChecked(e.ExtraHighAmbientEnabled);
+                    ExtraLoud.Switch.SetChecked(e.ExtraHighAmbientEnabled);
                     AmbientVolume.Maximum = e.ExtraHighAmbientEnabled ? 3 : 2;
                 }
                 else
@@ -157,14 +157,13 @@ namespace Galaxy_Buds_Client.ui
         {
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.Ambient.SetVolume((int)e.NewValue));
         }
-
-        private void EnableExtraLoud_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        
+        private void ExtraLoud_OnSwitchToggled(object sender, bool e)
         {
-            ExtraLoudToggle.Toggle();
-            AmbientVolume.Maximum = ExtraLoudToggle.IsChecked ? 3 : 2;
-            if(ExtraLoudToggle.IsChecked || (!ExtraLoudToggle.IsChecked && AmbientVolume.Value >= 3))
+            AmbientVolume.Maximum = e ? 3 : 2;
+            if (e || AmbientVolume.Value >= 3)
                 AmbientVolume.Value = AmbientVolume.Maximum;
-            BluetoothService.Instance.SendAsync(SPPMessageBuilder.Ambient.SetExtraHighVolumeEnabled(ExtraLoudToggle.IsChecked));
+            BluetoothService.Instance.SendAsync(SPPMessageBuilder.Ambient.SetExtraHighVolumeEnabled(e));
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.Ambient.SetVolume((int)AmbientVolume.Value));
         }
     }

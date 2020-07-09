@@ -85,25 +85,8 @@
         </Border>
         <Border Name="ExtraLoudBorder" Grid.Row="6" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
-            <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="EnableExtraLoud_OnMouseLeftButtonUp">
-                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Content="Extra-High Ambient Volume"
-                           Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <element:ToggleSwitch Grid.Row="0" x:Name="ExtraLoudToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
-                    <TextBlock Margin="5" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" TextWrapping="Wrap" Foreground="{DynamicResource SubtitleTextAltBrush}" FontSize="16" >
-                        Adds an extra volume level to the Ambient Volume slider
-                    </TextBlock>
-                </Grid>
-            </Border>
+            <element:CheckableDetailListItem Text="Extra-High Ambient Volume" TextDetail="Adds an extra volume level to the Ambient Volume slider"
+                                             x:Name="ExtraLoud" SwitchToggled="ExtraLoud_OnSwitchToggled" />
         </Border>
     </Grid>
 </local:BasePage>

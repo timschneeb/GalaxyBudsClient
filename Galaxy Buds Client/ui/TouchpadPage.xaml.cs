@@ -54,7 +54,7 @@ namespace Galaxy_Buds_Client.ui
 
                 LeftOption.TextDetail = OptionToString(e.TouchpadOptionL, Devices.L);
                 RightOption.TextDetail = OptionToString(e.TouchpadOptionR, Devices.R);
-                DoubleTapVolumeToggle.SetChecked(e.OutsideDoubleTap);
+                DoubleTapVolume.Switch.SetChecked(e.OutsideDoubleTap);
             });
         }
 
@@ -243,11 +243,10 @@ namespace Galaxy_Buds_Client.ui
             Border el = (Border)sender;
             el.ContextMenu.IsOpen = true;
         }
-
-        private void DoubleTapVolume_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        
+        private void DoubleTapVolume_OnSwitchToggled(object sender, bool e)
         {
-            DoubleTapVolumeToggle.Toggle();
-            BluetoothService.Instance.SendAsync(SPPMessageBuilder.Touch.SetOutsideDoubleTapEnabled(DoubleTapVolumeToggle.IsChecked));
+            BluetoothService.Instance.SendAsync(SPPMessageBuilder.Touch.SetOutsideDoubleTapEnabled(e));
         }
     }
 }

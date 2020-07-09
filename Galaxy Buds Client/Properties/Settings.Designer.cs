@@ -178,5 +178,17 @@ namespace Galaxy_Buds_Client.Properties {
                 this["DarkMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ResumePlaybackOnSensor {
+            get {
+                return ((bool)(this["ResumePlaybackOnSensor"]));
+            }
+            set {
+                this["ResumePlaybackOnSensor"] = value;
+            }
+        }
     }
 }

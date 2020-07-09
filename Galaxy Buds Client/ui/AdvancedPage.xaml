@@ -6,13 +6,14 @@
              xmlns:local="clr-namespace:Galaxy_Buds_Client.ui"
              xmlns:element="clr-namespace:Galaxy_Buds_Client.ui.element"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="800">
 
     <Grid Margin="0,0,0,20" >
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -41,69 +42,23 @@
         </Border>
         <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
-            <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="SeamlessBorder_OnMouseLeftButtonUp">
-                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Content="Seamless Earbud Connection"
-                           Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <element:ToggleSwitch Grid.Row="0" x:Name="SeamlessToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
-                    <TextBlock Margin="5" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" TextWrapping="Wrap" Foreground="{DynamicResource SubtitleTextAltBrush}" FontSize="16" >
-                        Switch quickly to nearby devices without disconnecting your earbuds or turning on pairing mode.
-                    </TextBlock>
-                </Grid>
-            </Border>
+            <element:CheckableDetailListItem Text="Seamless Earbud Connection" TextDetail="Switch quickly to nearby devices without disconnecting your earbuds or turning on pairing mode"
+                                             x:Name="SeamlessConnection" SwitchToggled="SeamlessConnection_OnSwitchToggled" />
         </Border>
-        <Border Name="SidetoneBorder" Grid.Row="4" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+        <Border Name="ResumeSensorBorder" Grid.Row="4" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
-            <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Sidetone_OnMouseLeftButtonUp">
-                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Content="Use Ambient Sound during calls"
-                           Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <element:ToggleSwitch Grid.Row="0" x:Name="SidetoneToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
-                    <TextBlock Margin="5" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" TextWrapping="Wrap" Foreground="{DynamicResource SubtitleTextAltBrush}" FontSize="16" >
-                        Here your own voice more clearly while on the phone
-                    </TextBlock>
-                </Grid>
-            </Border>
+            <element:CheckableDetailListItem Text="Resume/start playback if Buds are worn" TextDetail="Sends a global play/pause state change event when at least one of the proximity sensors is covered (Windows only)"
+                                             x:Name="ResumeSensor" SwitchToggled="ResumeSensor_OnSwitchToggled" />
         </Border>
-        <Border Name="GamingModeBorder"  Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+        <Border Name="SidetoneBorder" Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
+            <element:CheckableDetailListItem Text="Use Ambient Sound during calls" TextDetail="Hear your own voice more clearly while on the phone"
+                                             x:Name="Sidetone" SwitchToggled="Sidetone_OnSwitchToggled" />
+        </Border>
+        <Border Name="GamingModeBorder"  Grid.Row="6" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                  Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
-            <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="GamingMode_OnMouseLeftButtonUp">
-                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Content="Force Gaming Mode"
-                           Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <element:ToggleSwitch Grid.Row="0" x:Name="GamingModeToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
-                    <TextBlock Margin="5" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" TextWrapping="Wrap" Foreground="{DynamicResource SubtitleTextAltBrush}" FontSize="16" >
-                        Minimize latency and adjust audio synchronization
-                    </TextBlock>
-                </Grid>
-            </Border>
+            <element:CheckableDetailListItem Text="Force Gaming Mode" TextDetail="Minimize latency and adjust audio synchronization"
+                                             x:Name="GamingMode" SwitchToggled="GamingMode_OnSwitchToggled" />
         </Border>
     </Grid>
 </local:BasePage>

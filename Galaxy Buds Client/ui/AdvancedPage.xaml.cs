@@ -18,6 +18,7 @@ using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.parser;
 using Galaxy_Buds_Client.model;
 using Galaxy_Buds_Client.model.Constants;
+using Galaxy_Buds_Client.Properties;
 using Galaxy_Buds_Client.ui.element;
 
 namespace Galaxy_Buds_Client.ui
@@ -45,15 +46,16 @@ namespace Galaxy_Buds_Client.ui
                 if (BluetoothService.Instance.ActiveModel == Model.Buds)
                 {
                     _seamlessSupported = e.Revision >= 3;
-                    SeamlessToggle.SetChecked(e.SeamlessConnectionEnabled);
+                    SeamlessConnection.Switch.SetChecked(e.SeamlessConnectionEnabled);
                 }
                 else
                 {
                     _seamlessSupported = e.Revision >= 11;
-                    SeamlessToggle.SetChecked(e.SeamlessConnectionEnabled);
-                    SidetoneToggle.SetChecked(e.SideToneEnabled);
-                    GamingModeToggle.SetChecked(e.AdjustSoundSync);
+                    SeamlessConnection.Switch.SetChecked(e.SeamlessConnectionEnabled);
+                    Sidetone.Switch.SetChecked(e.SideToneEnabled);
+                    GamingMode.Switch.SetChecked(e.AdjustSoundSync);
                 }
+                ResumeSensor.Switch.SetChecked(Settings.Default.ResumePlaybackOnSensor);
             });
         }
         
@@ -77,28 +79,31 @@ namespace Galaxy_Buds_Client.ui
         {
             _mainWindow.ReturnToHome();
         }
-
-        private void SeamlessBorder_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        
+        private void SeamlessConnection_OnSwitchToggled(object sender, bool e)
         {
             if (!_seamlessSupported)
             {
                 _mainWindow.ShowUnsupportedFeaturePage("R170XXU0ATF2 or later");
                 return;
             }
-            SeamlessToggle.Toggle();
-            BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetSeamlessConnection(SeamlessToggle.IsChecked));
+            BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetSeamlessConnection(e));
         }
 
-        private void Sidetone_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void ResumeSensor_OnSwitchToggled(object sender, bool e)
         {
-            SidetoneToggle.Toggle();
-            BluetoothService.Instance.SendAsync(SPPMessageBuilder.Ambient.SetSidetoneEnabled(SidetoneToggle.IsChecked));
+            Settings.Default.ResumePlaybackOnSensor = e;
+            Settings.Default.Save();
         }
 
-        private void GamingMode_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void Sidetone_OnSwitchToggled(object sender, bool e)
         {
-            GamingModeToggle.Toggle();
-            BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetAdjustSoundSyncEnabled(GamingModeToggle.IsChecked));
+            BluetoothService.Instance.SendAsync(SPPMessageBuilder.Ambient.SetSidetoneEnabled(e));
+        }
+
+        private void GamingMode_OnSwitchToggled(object sender, bool e)
+        {
+            BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetAdjustSoundSyncEnabled(e));
         }
     }
 }

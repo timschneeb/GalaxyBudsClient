@@ -104,6 +104,9 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WindowsInput, Version=1.0.4.0, Culture=neutral, PublicKeyToken=9b287f7dc5073cad, processorArchitecture=MSIL">
+      <HintPath>..\packages\InputSimulator.1.0.4.0\lib\net20\WindowsInput.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -149,6 +152,9 @@
     </Compile>
     <Compile Include="ui\CustomActionPage.xaml.cs">
       <DependentUpon>CustomActionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\element\CheckableDetailListItem.xaml.cs">
+      <DependentUpon>CheckableDetailListItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="ui\UpdatePage.xaml.cs">
       <DependentUpon>UpdatePage.xaml</DependentUpon>
@@ -216,6 +222,7 @@
     </Compile>
     <Compile Include="ui\basewindow\SWWindow.cs" />
     <Compile Include="ui\basewindow\SWWindow.Sizing.cs" />
+    <Compile Include="util\AudioPlaybackDetection.cs" />
     <Compile Include="util\AutoStartHelper.cs" />
     <Compile Include="util\ByteArrayUtils.cs" />
     <Compile Include="util\CRC16.cs" />
@@ -245,6 +252,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Resource>
+    <Page Include="ui\element\CheckableDetailListItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ui\themes\TrayContextStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

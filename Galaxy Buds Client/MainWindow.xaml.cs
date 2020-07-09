@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using WindowsInput;
+using WindowsInput.Native;
 using AutoUpdaterDotNET;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model;
@@ -68,6 +70,7 @@ namespace Galaxy_Buds_Client
         private bool _isManualUpdate;
         private bool _restrictOptionsMenu;
         private readonly TaskbarIcon _tbi;
+        private WearStates _previousWearState = WearStates.Both;
 
         public CustomActionPage CustomActionPage => _customActionPage;
 
@@ -268,6 +271,22 @@ namespace Galaxy_Buds_Client
         private void InstanceOnStatusUpdate(object sender, StatusUpdateParser e)
         {
             GenerateTrayContext(e.BatteryL, e.BatteryR, e.BatteryCase);
+
+            if (_previousWearState == WearStates.None && e.WearState != WearStates.None &&
+                Settings.Default.ResumePlaybackOnSensor)
+            {
+                if (!AudioPlaybackDetection.IsWindowsPlayingSound())
+                {
+                    new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.MEDIA_PLAY_PAUSE);
+                    Console.WriteLine(@"[ResumePlaybackOnSensor] All criteria are met; emitting play/pause keypress");
+                }
+                else
+                {
+                    Console.WriteLine(@"[ResumePlaybackOnSensor] Windows appears to playback sound; do not emit a play/pause keypress");
+                }
+            }
+
+            _previousWearState = e.WearState;
         }
         private void InstanceOnSocketException(object sender, SocketException e)
         {
