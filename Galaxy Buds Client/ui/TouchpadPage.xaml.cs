@@ -174,19 +174,14 @@ namespace Galaxy_Buds_Client.ui
 
         private void CustomActionPageOnAccept(object sender, CustomAction e)
         {
-            String name;
             if (e == null)
             {
-                name = "Not set";
-            }
-            else
-            {
-                name = e.ToString();
+                return;
             }
 
             if (_lastPressedMenu == Devices.L)
             {
-                LeftOption.TextDetail = $"Custom Action: {name}";
+                LeftOption.TextDetail = $"Custom Action: {e}";
                 if (e != null)
                 {
                     Settings.Default.LeftCustomAction = (int) e.Action;
@@ -199,7 +194,7 @@ namespace Galaxy_Buds_Client.ui
             }
             else
             {
-                RightOption.TextDetail = $"Custom Action: {name}";
+                RightOption.TextDetail = $"Custom Action: {e}";
                 if (e != null)
                 {
                     Settings.Default.RightCustomAction = (int) e.Action;
