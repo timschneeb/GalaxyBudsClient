@@ -194,5 +194,10 @@ namespace Galaxy_Buds_Client.ui
                     break;
             }
         }
+
+        public void ToggleEqualizer()
+        {
+            EnableEQ_OnMouseLeftButtonUp(this, null);
+        }
     }
 }

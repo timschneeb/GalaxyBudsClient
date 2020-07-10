@@ -73,6 +73,9 @@ namespace Galaxy_Buds_Client
         private bool _restrictOptionsMenu;
         private readonly TaskbarIcon _tbi;
         private WearStates _previousWearState = WearStates.Both;
+        private int _previousTrayBL = -1;
+        private int _previousTrayBR = -1;
+        private int _previousTrayBC = -1;
 
         public CustomActionPage CustomActionPage => _customActionPage;
 
@@ -110,7 +113,9 @@ namespace Galaxy_Buds_Client
             _tbi.Icon = new Icon(iconStream);
             _tbi.ToolTipText = "Galaxy Buds Manager";
             _tbi.TrayLeftMouseDown += Tray_OnTrayLeftMouseDown;
-            GenerateTrayContext();
+            _tbi.TrayContextMenuOpen += TbiOnTrayContextMenuOpen;
+            _tbi.TrayRightMouseDown += TbiOnTrayRightMouseDown;
+            GenerateTrayContext(-1,-1,-1);
 
             SPPMessageHandler.Instance.AnyMessageReceived += InstanceOnAnyMessageReceived;
             SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
@@ -157,6 +162,16 @@ namespace Galaxy_Buds_Client
                 };
         }
 
+        private void TbiOnTrayRightMouseDown(object sender, RoutedEventArgs e)
+        {
+            GenerateTrayContext();
+        }
+
+        private void TbiOnTrayContextMenuOpen(object sender, RoutedEventArgs e)
+        {
+            GenerateTrayContext();
+        }
+
         private void OnClosing(object sender, CancelEventArgs e)
         {
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.FindMyGear.Stop());
@@ -193,8 +208,21 @@ namespace Galaxy_Buds_Client
         /*
          * Tray
          */
-        private void GenerateTrayContext(int bl = -1, int br = -1, int bcase = -1)
+        private void GenerateTrayContext(int? bl = null, int? br = null, int? bcase = null)
         {
+            if (bl != null)
+            {
+                _previousTrayBL = (int) bl;
+            }
+            if (br != null)
+            {
+                _previousTrayBR = (int)br;
+            }
+            if (bcase != null)
+            {
+                _previousTrayBC = (int)bcase;
+            }
+
             Dispatcher.Invoke(() =>
             {
                 ContextMenu ctxMenu = new ContextMenu();
@@ -202,28 +230,28 @@ namespace Galaxy_Buds_Client
 
                 int staticCount = 0;
 
-                if (bl > 0)
+                if (_previousTrayBL > 0)
                 {
                     MenuItem left = new MenuItem();
-                    left.Header = $"Left: {bl}%";
+                    left.Header = $"Left: {_previousTrayBL}%";
                     left.IsEnabled = false;
                     left.Style = (Style)FindResource("SmallMenuItemStyle-Static");
                     ctxMenu.Items.Add(left);
                     staticCount++;
                 }
-                if (br > 0)
+                if (_previousTrayBR > 0)
                 {
                     MenuItem right = new MenuItem();
-                    right.Header = $"Right: {br}%";
+                    right.Header = $"Right: {_previousTrayBR}%";
                     right.IsEnabled = false;
                     right.Style = (Style)FindResource("SmallMenuItemStyle-Static");
                     ctxMenu.Items.Add(right);
                     staticCount++;
                 }
-                if (bcase > 0)
+                if (_previousTrayBC > 0)
                 {
                     MenuItem c = new MenuItem();
-                    c.Header = $"Case: {bcase}%";
+                    c.Header = $"Case: {_previousTrayBC}%";
                     c.IsEnabled = false;
                     c.Style = (Style)FindResource("SmallMenuItemStyle-Static");
                     ctxMenu.Items.Add(c);
@@ -231,7 +259,39 @@ namespace Galaxy_Buds_Client
                 }
 
                 if (staticCount > 0)
+                {
                     Menu_AddSeparator(ctxMenu);
+                    MenuItem touchlockToggle = new MenuItem();
+                    touchlockToggle.Header = _touchpadPage.LockToggle.IsChecked ? "Unlock Touchpad" : "Lock Touchpad";
+                    touchlockToggle.Click += delegate
+                    {
+                        _touchpadPage.ToggleTouchlock();
+                    };
+                    touchlockToggle.Style = (Style)FindResource("SmallMenuItemStyle");
+                    ctxMenu.Items.Add(touchlockToggle);
+
+                    MenuItem equalizerToggle = new MenuItem();
+                    equalizerToggle.Header = _equalizerPage.EQToggle.IsChecked ? "Disable Equalizer" : "Enable Equalizer";
+                    equalizerToggle.Click += delegate
+                    {
+                        _equalizerPage.ToggleEqualizer();
+                    };
+                    equalizerToggle.Style = (Style)FindResource("SmallMenuItemStyle");
+                    ctxMenu.Items.Add(equalizerToggle);
+
+                    MenuItem ambientToggle = new MenuItem();
+                    ambientToggle.Header = _ambientSoundPage.AmbientToggle.IsChecked ? "Disable Ambient Sound" : "Enable Ambient Sound";
+                    ambientToggle.Click += delegate
+                    {
+                        _ambientSoundPage.ToggleAmbient();
+                    };
+                    ambientToggle.Style = (Style)FindResource("SmallMenuItemStyle");
+                    ctxMenu.Items.Add(ambientToggle);
+
+                    Menu_AddSeparator(ctxMenu);
+                }
+
+
 
                 MenuItem quit = new MenuItem();
                 quit.Header = "Quit";
@@ -310,7 +370,7 @@ namespace Galaxy_Buds_Client
                     _connectionLostPage.SetInfo("Failed to gather error information");
                 }
 
-            GenerateTrayContext();
+            GenerateTrayContext(-1,-1,-1);
 
             _connectionLostPage.Reset();
             if (PageControl.CurrentPage == null)
@@ -357,7 +417,7 @@ namespace Galaxy_Buds_Client
                     return;
                 }
 
-                GenerateTrayContext();
+                GenerateTrayContext(-1,-1,-1);
                 BluetoothService.Instance.Disconnect();
                 _mainPage.SetWarning(true, $"Received corrupted data. Reconnecting... ({e.Message})");
                 Task.Delay(500).ContinueWith(delegate
@@ -386,7 +446,7 @@ namespace Galaxy_Buds_Client
                 return;
             }
 
-            GenerateTrayContext();
+            GenerateTrayContext(-1,-1,-1);
             BluetoothService.Instance.Disconnect();
             BluetoothService.Instance.Connect(GetRegisteredDevice(), GetRegisteredDeviceModel());
             if (BluetoothService.Instance.IsConnected)
@@ -490,7 +550,7 @@ namespace Galaxy_Buds_Client
             deregDevice.Header = "Deregister device";
             deregDevice.Click += delegate
             {
-                GenerateTrayContext();
+                GenerateTrayContext(-1, -1, -1);
                 BluetoothService.Instance.Disconnect();
                 Properties.Settings.Default.RegisteredDevice = "";
                 Properties.Settings.Default.RegisteredDeviceModel = Model.NULL;

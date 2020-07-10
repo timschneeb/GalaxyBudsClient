@@ -166,5 +166,10 @@ namespace Galaxy_Buds_Client.ui
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.Ambient.SetExtraHighVolumeEnabled(e));
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.Ambient.SetVolume((int)AmbientVolume.Value));
         }
+
+        public void ToggleAmbient()
+        {
+            EnableAmbientBorder_OnMouseLeftButtonUp(this, null);
+        }
     }
 }

@@ -222,5 +222,10 @@ namespace Galaxy_Buds_Client.ui
         {
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.Touch.SetOutsideDoubleTapEnabled(e));
         }
+
+        public void ToggleTouchlock()
+        {
+            LockTouchpadBorder_OnMouseLeftButtonUp(this, null);
+        }
     }
 }
