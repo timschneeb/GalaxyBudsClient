@@ -1,7 +1,7 @@
 # Galaxy Buds Client
 An unofficial Galaxy Buds Manager for Windows (Buds/Buds+)
 
-(You can find downloads on the [bottom](#installation))
+(You can find downloads in the [release tab](https://github.com/thepbone/galaxybudsclient/releases))
 
 <p align="center">
   <img src="screenshots/screencap.gif">
@@ -17,6 +17,7 @@ This Client is a product of my research on the custom RFComm Serial Protocol the
 **New features** (in addition to the existing ones):
 
 * Touchpad: Customizable tap-and-hold actions (launch application, toggle equalizer, change ambient volume, ...)<sup>[1]</sup>
+* Resume media playback if Buds are worn
 * Systray context menu with battery statistics
 * Display detailed sensor statistics on the dashboard, this includes:
   * Voltage and Current of the in-built ADC (Analog-to-Digital converter) of both Earbuds
