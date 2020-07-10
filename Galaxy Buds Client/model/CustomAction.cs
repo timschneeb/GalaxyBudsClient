@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
 
 namespace Galaxy_Buds_Client.model
 {
@@ -13,9 +14,11 @@ namespace Galaxy_Buds_Client.model
             AmbientVolumeDown,
             [Description("Toggle Equalizer")]
             EnableEqualizer,
-            [Description("Next Equalizer Preset")] 
+            [Description("Next Equalizer Preset")]
             SwitchEqualizerPreset,
-            [Description("Run external program...")]
+            [Description("Press Hotkey...")]
+            Hotkey,
+            [Description("Run External Program...")]
             RunExternalProgram
         }
 
@@ -32,6 +35,8 @@ namespace Galaxy_Buds_Client.model
         {
             if(Action == Actions.RunExternalProgram)
                 return $"{Action.GetDescription()} ({Parameter})";
+            if(Action == Actions.Hotkey && Parameter.Contains(";"))
+                return $"{Action.GetDescription()} ({Parameter.Split(';')[0]})";
             return Action.GetDescription();
         }
     }

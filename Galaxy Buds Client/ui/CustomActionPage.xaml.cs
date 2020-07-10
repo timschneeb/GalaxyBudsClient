@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -6,6 +7,7 @@ using System.Windows.Input;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model;
 using Galaxy_Buds_Client.model.Constants;
+using Galaxy_Buds_Client.ui.dialog;
 using Microsoft.Win32;
 
 namespace Galaxy_Buds_Client.ui
@@ -67,6 +69,15 @@ namespace Galaxy_Buds_Client.ui
                     if (result == true)
                     {
                         _action = new CustomAction(action, dlg.FileName);
+                    }
+                }
+                else if (action == CustomAction.Actions.Hotkey)
+                {
+                    HotkeyRecorder dlg = new HotkeyRecorder();
+                    bool? result = dlg.ShowDialog();
+                    if (result == true)
+                    {
+                        _action = new CustomAction(action, dlg.HotkeyString + ";" + String.Join(",", dlg.HotKeysVirtualCodeRaw));
                     }
                 }
                 else

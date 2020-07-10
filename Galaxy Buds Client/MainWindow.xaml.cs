@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using WindowsInput;
 using WindowsInput.Native;
 using AutoUpdaterDotNET;
@@ -408,33 +410,46 @@ namespace Galaxy_Buds_Client
         }
         private void InstanceOnOtherOption(object sender, TouchOption.Universal e)
         {
-            int action;
             if (e == TouchOption.Universal.OtherL)
             {
                 if (Settings.Default.LeftCustomAction == -1)
                     return;
-                action = Settings.Default.LeftCustomAction;
-                switch ((CustomAction.Actions)action)
-                {
-                    case CustomAction.Actions.RunExternalProgram:
-                        Process.Start(Settings.Default.LeftCustomActionParameter);
-                        break;
-                }
+                PerformCustomAction((CustomAction.Actions)Settings.Default.LeftCustomAction,
+                    Settings.Default.LeftCustomActionParameter);
             }
             else if (e == TouchOption.Universal.OtherR)
             {
                 if (Settings.Default.RightCustomAction == -1)
                     return;
-                action = Settings.Default.RightCustomAction;
-
-                switch ((CustomAction.Actions)action)
-                {
-                    case CustomAction.Actions.RunExternalProgram:
-                        Process.Start(Settings.Default.RightCustomActionParameter);
-                        break;
-                }
+                PerformCustomAction((CustomAction.Actions) Settings.Default.RightCustomAction, 
+                    Settings.Default.RightCustomActionParameter);
             }
         }
+
+        private void PerformCustomAction(CustomAction.Actions action, String parameter)
+        {
+            switch (action)
+            {
+                case CustomAction.Actions.RunExternalProgram:
+                    Process.Start(parameter);
+                    break;
+                case CustomAction.Actions.Hotkey:
+                    if (!parameter.Contains(";"))
+                        return;
+
+                    InputSimulator sim = new InputSimulator();
+                    foreach (var keycode in parameter.Split(';')[1].Split(','))
+                    {
+                        sim.Keyboard.KeyDown((VirtualKeyCode)int.Parse(keycode));
+                    }
+                    foreach (var keycode in parameter.Split(';')[1].Split(','))
+                    {
+                        sim.Keyboard.KeyUp((VirtualKeyCode)int.Parse(keycode));
+                    }
+                    break;
+            }
+        }
+
 
         /*
          * Options

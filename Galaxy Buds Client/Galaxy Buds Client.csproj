@@ -83,6 +83,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\InTheHand.Net.Personal.dll</HintPath>
     </Reference>
+    <Reference Include="MacroLib, Version=1.5.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MacroLib.1.5.6\lib\net46\MacroLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Activities.Presentation" />
     <Reference Include="System.Data" />
@@ -152,6 +155,9 @@
     </Compile>
     <Compile Include="ui\CustomActionPage.xaml.cs">
       <DependentUpon>CustomActionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\dialog\HotkeyRecorder.xaml.cs">
+      <DependentUpon>HotkeyRecorder.xaml</DependentUpon>
     </Compile>
     <Compile Include="ui\element\CheckableDetailListItem.xaml.cs">
       <DependentUpon>CheckableDetailListItem.xaml</DependentUpon>
@@ -227,6 +233,7 @@
     <Compile Include="util\ByteArrayUtils.cs" />
     <Compile Include="util\CRC16.cs" />
     <Compile Include="util\DarkModeHelper.cs" />
+    <Compile Include="util\EnumHelper.cs" />
     <Compile Include="util\Hex.cs" />
     <Compile Include="parser\SoftwareVersionOTAParser.cs" />
     <Compile Include="parser\UsageReportParser.cs" />
@@ -252,6 +259,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Resource>
+    <Page Include="ui\dialog\HotkeyRecorder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ui\element\CheckableDetailListItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
