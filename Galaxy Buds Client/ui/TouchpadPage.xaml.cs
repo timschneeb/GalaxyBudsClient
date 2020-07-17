@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -79,7 +79,7 @@ namespace Galaxy_Buds_Client.ui
                 Menu_AddSeparator(ctxMenu);
             }
 
-            Menu_AddItem(ctxMenu, "Voice Assistant (Android only)", TouchOption.Universal.VoiceAssistant, side);
+            Menu_AddItem(ctxMenu, "Voice Assistant", TouchOption.Universal.VoiceAssistant, side);
             Menu_AddSeparator(ctxMenu);
             Menu_AddItem(ctxMenu, "Spotify SpotOn (Android only)", TouchOption.Universal.SpotifySpotOn, side);
             return ctxMenu;
