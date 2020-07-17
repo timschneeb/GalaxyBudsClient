@@ -65,7 +65,7 @@ namespace Galaxy_Buds_Client.model
         {
             public enum Universal
             {
-                [Description("Voice Assistant (Android only)")]
+                [Description("Voice Assistant")]
                 VoiceAssistant,
                 [Description("Quick Ambient Sound")]
                 QuickAmbientSound,
