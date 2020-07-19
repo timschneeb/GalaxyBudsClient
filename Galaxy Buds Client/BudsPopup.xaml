@@ -6,7 +6,8 @@
 		xmlns:transition="clr-namespace:Galaxy_Buds_Client.transition"
 		xmlns:basewindow="clr-namespace:Galaxy_Buds_Client.ui.basewindow"
 		Title="Buds Popup" Height="250" Width="418" Background="Transparent" 
-		WindowStyle="None" AllowsTransparency="True">
+		WindowStyle="None" AllowsTransparency="True"
+		Loaded="Window_Loaded">
 
 	<Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" Background="{DynamicResource WindowBackgroundBrush}" CornerRadius="20">
 		<Grid>

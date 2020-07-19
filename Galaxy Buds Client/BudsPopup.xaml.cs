@@ -33,5 +33,11 @@ namespace Galaxy_Buds_Client {
         private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
             Close();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e) {
+            Rect workArea = System.Windows.SystemParameters.WorkArea;
+            this.Left = (workArea.Width / 2) - (this.Width / 2) + workArea.Left;
+            this.Top = workArea.Height - this.Height + workArea.Top + 5;
+        }
     }
 }
