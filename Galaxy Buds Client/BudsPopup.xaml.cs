@@ -1,4 +1,5 @@
 ﻿using Galaxy_Buds_Client.model.Constants;
+using Galaxy_Buds_Client.transition;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -24,6 +26,8 @@ namespace Galaxy_Buds_Client {
             if (model == Model.BudsPlus) mod = "+";
             string name = Environment.UserName.Split(' ')[0];
             Greeting.Content = $"{name}'s Galaxy Buds{mod}";
+            Storyboard popup = new PageTransition().Resources["FadeIn"] as Storyboard;
+            if (popup != null) popup.Begin(this);
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
