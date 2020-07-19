@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "Galaxy Buds Manager (Unofficial)"
-!define PRODUCT_VERSION "2.0.2"
+!define PRODUCT_VERSION "2.1.0"
 !define PRODUCT_PUBLISHER "ThePBone"
 !define PRODUCT_WEB_SITE "https://github.com/ThePBone/GalaxyBudsClient"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\Galaxy Buds Client.exe"
@@ -62,6 +62,8 @@ Section "Hauptgruppe" SEC01
   File "Galaxy Buds Client\bin\Release\Hardcodet.Wpf.TaskbarNotification.dll"
   File "Galaxy Buds Client\bin\Release\Hardcodet.Wpf.TaskbarNotification.xml"
   File "Galaxy Buds Client\bin\Release\Hardcodet.Wpf.TaskbarNotification.pdb"
+  File "Galaxy Buds Client\bin\Release\WindowsInput.dll"
+  File "Galaxy Buds Client\bin\Release\WindowsInput.xml"
 SectionEnd
 
 Section -AdditionalIcons
@@ -106,6 +108,9 @@ Section Uninstall
   Delete "$INSTDIR\Hardcodet.Wpf.TaskbarNotification.dll"
   Delete "$INSTDIR\Hardcodet.Wpf.TaskbarNotification.xml"
   Delete "$INSTDIR\Hardcodet.Wpf.TaskbarNotification.pdb"
+  
+  Delete "$INSTDIR\WindowsInput.dll"
+  Delete "$INSTDIR\WindowsInput.xml"
 
   Delete "$DESKTOP\Galaxy Buds Manager.lnk"
   Delete "$SMPROGRAMS\Galaxy Buds Manager\Galaxy Buds Manager.lnk"
