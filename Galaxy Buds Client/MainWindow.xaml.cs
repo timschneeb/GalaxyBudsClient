@@ -77,6 +77,8 @@ namespace Galaxy_Buds_Client
         private int _previousTrayBR = -1;
         private int _previousTrayBC = -1;
 
+        public static bool popupShowing;
+
         public CustomActionPage CustomActionPage => _customActionPage;
 
         public MainWindow()
@@ -143,8 +145,6 @@ namespace Galaxy_Buds_Client
                 PageControl.TransitionType = PageTransitionType.Fade;
                 PageControl.ShowPage(_mainPage);
                 _mainPage.SetLoaderVisible(true);
-                BudsPopup pop = new BudsPopup(BluetoothService.Instance.ActiveModel);
-                pop.Show();
                 Task.Delay(100).ContinueWith((_) =>
                 {
                     BluetoothService.Instance.Connect(savedAddress, GetRegisteredDeviceModel());
@@ -264,6 +264,11 @@ namespace Galaxy_Buds_Client
 
                 if (staticCount > 0)
                 {
+                    if (!popupShowing) {
+                        BudsPopup pop = new BudsPopup(BluetoothService.Instance.ActiveModel);
+                        pop.Show();
+                        popupShowing = true;
+                    }
                     Menu_AddSeparator(ctxMenu);
                     MenuItem touchlockToggle = new MenuItem();
                     touchlockToggle.Header = _touchpadPage.LockToggle.IsChecked ? "Unlock Touchpad" : "Lock Touchpad";

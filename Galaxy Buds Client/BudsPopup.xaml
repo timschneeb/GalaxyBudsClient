@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Galaxy_Buds_Client"
         mc:Ignorable="d"
-        Title="BudsPopup" Height="1080" Width="1920"
+        Title="Galaxy Buds Popup" Height="1080" Width="1920"
 		WindowState="Maximized"
         WindowStyle="None" AllowsTransparency="True" MouseDown="Window_MouseDown">
 	<Window.Background>
