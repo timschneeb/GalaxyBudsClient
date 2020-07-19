@@ -161,7 +161,7 @@ namespace Galaxy_Buds_Client
                     }
                 };
 
-            BudsPopup pop = new BudsPopup();
+            BudsPopup pop = new BudsPopup(Model.Buds);
             pop.Show();
         }
 

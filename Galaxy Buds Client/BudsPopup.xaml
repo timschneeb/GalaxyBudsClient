@@ -14,17 +14,17 @@
 	<Grid>
 		<Grid>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="672*"/>
-				<ColumnDefinition Width="655*"/>
-				<ColumnDefinition Width="672*"/>
+				<ColumnDefinition Width="369*"/>
+				<ColumnDefinition Width="247*"/>
+				<ColumnDefinition Width="369*"/>
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="54*"/>
-				<RowDefinition Height="95*"/>
-				<RowDefinition Height="54*"/>
+				<RowDefinition Height="220*"/>
+				<RowDefinition Height="573*"/>
+				<RowDefinition Height="220*"/>
 			</Grid.RowDefinitions>
 			<Grid Grid.Column="1" Background="#FFF4F4F5" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-				<Label Content="$1's Galaxy Buds$2" FontSize="40" Padding="5,5,0,0"/>
+				<Label Content="$1's Galaxy Buds$2" FontSize="20" Padding="5,5,0,0" Name="Greeting"/>
 			</Grid>
 		</Grid>
 	</Grid>

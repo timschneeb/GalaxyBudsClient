@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Galaxy_Buds_Client.model.Constants;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,8 +18,12 @@ namespace Galaxy_Buds_Client {
     /// Interaction logic for BudsPopup.xaml
     /// </summary>
     public partial class BudsPopup : Window {
-        public BudsPopup() {
+        public BudsPopup(Model model) {
             InitializeComponent();
+            string mod = "";
+            if (model == Model.BudsPlus) mod = "+";
+            string name = Environment.UserName.Split(' ')[0];
+            Greeting.Content = $"{name}'s Galaxy Buds{mod}";
         }
     }
 }
