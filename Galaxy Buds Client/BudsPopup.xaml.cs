@@ -31,6 +31,8 @@ namespace Galaxy_Buds_Client {
 
             Storyboard fadeIn = new PageTransition().Resources["FadeIn"] as Storyboard;
             if (fadeIn != null) fadeIn.Begin(this);
+
+            _ = this.exitPopupAfterDelay();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
@@ -47,6 +49,11 @@ namespace Galaxy_Buds_Client {
             Storyboard fadeOut = new PageTransition().Resources["FadeOut"] as Storyboard;
             if (fadeOut != null) fadeOut.Begin(this);
             Close();
+        }
+
+        private async Task exitPopupAfterDelay() {
+            await Task.Delay(5000);
+            Quit();
         }
     }
 }
