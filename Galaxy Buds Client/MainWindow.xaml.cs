@@ -77,7 +77,7 @@ namespace Galaxy_Buds_Client
         private int _previousTrayBR = -1;
         private int _previousTrayBC = -1;
 
-        public static bool popupShowing;
+        public bool PopupShowing;
 
         public CustomActionPage CustomActionPage => _customActionPage;
 
@@ -264,11 +264,11 @@ namespace Galaxy_Buds_Client
 
                 if (staticCount > 0)
                 {
-                    if (!popupShowing) {
+                    if (!PopupShowing) {
                         BudsPopup pop = new BudsPopup(BluetoothService.Instance.ActiveModel);
                         pop.Show();
                         pop.Activate();
-                        popupShowing = true;
+                        PopupShowing = true;
                     }
                     Menu_AddSeparator(ctxMenu);
                     MenuItem touchlockToggle = new MenuItem();
@@ -383,6 +383,7 @@ namespace Galaxy_Buds_Client
             GenerateTrayContext(-1,-1,-1);
 
             _connectionLostPage.Reset();
+            PopupShowing = false;
             if (PageControl.CurrentPage == null)
             {
                 Dispatcher.Invoke(() =>
