@@ -22,22 +22,31 @@ namespace Galaxy_Buds_Client {
     public partial class BudsPopup : Window {
         public BudsPopup(Model model) {
             InitializeComponent();
+
             string mod = "";
             if (model == Model.BudsPlus) mod = "+";
             string name = Environment.UserName.Split(' ')[0];
+
             Greeting.Content = $"{name}'s Galaxy Buds{mod}";
-            Storyboard popup = new PageTransition().Resources["FadeIn"] as Storyboard;
-            if (popup != null) popup.Begin(this);
+
+            Storyboard fadeIn = new PageTransition().Resources["FadeIn"] as Storyboard;
+            if (fadeIn != null) fadeIn.Begin(this);
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
-            Close();
+            Quit();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            Rect workArea = System.Windows.SystemParameters.WorkArea;
+            Rect workArea = SystemParameters.WorkArea;
             this.Left = (workArea.Width / 2) - (this.Width / 2) + workArea.Left;
             this.Top = workArea.Height - this.Height + workArea.Top + 5;
+        }
+
+        private void Quit() {
+            Storyboard fadeOut = new PageTransition().Resources["FadeOut"] as Storyboard;
+            if (fadeOut != null) fadeOut.Begin(this);
+            Close();
         }
     }
 }
