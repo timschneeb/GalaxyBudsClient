@@ -330,10 +330,8 @@ namespace Galaxy_Buds_Client
                 if (_previousPopupBL > 0) bat++;
                 if (_previousPopupBR > 0) bat++;
                 if (_previousPopupBC > 0) bat++;
-                MessageBox.Show(bat.ToString());
                 if (!PopupShowing && !this.IsActive && bat > 0) {
                     BudsPopup pop = new BudsPopup(BluetoothService.Instance.ActiveModel);
-                    MessageBox.Show(pop.ToString());
                     pop.Show();
                     pop.Activate();
                     //PopupShowing = true;
