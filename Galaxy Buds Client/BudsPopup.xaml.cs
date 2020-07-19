@@ -25,5 +25,9 @@ namespace Galaxy_Buds_Client {
             string name = Environment.UserName.Split(' ')[0];
             Greeting.Content = $"{name}'s Galaxy Buds{mod}";
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
+            Close();
+        }
     }
 }

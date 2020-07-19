@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="BudsPopup" Height="1080" Width="1920"
 		WindowState="Maximized"
-        WindowStyle="None" AllowsTransparency="True">
+        WindowStyle="None" AllowsTransparency="True" MouseDown="Window_MouseDown">
 	<Window.Background>
 		<SolidColorBrush Opacity="0.5" Color="Black"/>
 	</Window.Background>
