@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:transition="clr-namespace:Galaxy_Buds_Client.transition"
              xmlns:basewindow="clr-namespace:Galaxy_Buds_Client.ui.basewindow"
-             Title="Buds Popup" Height="300" Width="400" Background="{DynamicResource WindowBackgroundBrush}" >
+             Title="Buds Popup" Height="250" Width="418" Background="{DynamicResource WindowBackgroundBrush}">
 	<Grid>
 		<Label Content="$1's Galaxy Buds$2" FontSize="20" Padding="15,10,0,0" Name="Greeting" Foreground="{DynamicResource ForegroundTextAltBrush}" />
 		<Image Source="Resources/popup/popup_buds.png" />
