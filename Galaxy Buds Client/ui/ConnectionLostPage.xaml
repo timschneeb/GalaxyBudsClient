@@ -38,7 +38,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Foreground="{DynamicResource ForegroundTextBrush}" TextWrapping="Wrap" Margin="20,20,20,0" FontSize="14">
-                Unable to establish a connection to your earbuds.<LineBreak/>
+                Unable to establish a connection to your Earbuds.<LineBreak/>
                 <LineBreak/>
                 Please check your Bluetooth settings and make sure your Earbuds are turned on and bonded to this computer.
                 You can also register a new pair if needed. In that case, please select "Options > Deregister device".<LineBreak/>
