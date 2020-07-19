@@ -1,13 +1,17 @@
 ﻿<Window x:Class="Galaxy_Buds_Client.BudsPopup"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:transition="clr-namespace:Galaxy_Buds_Client.transition"
-             xmlns:basewindow="clr-namespace:Galaxy_Buds_Client.ui.basewindow"
-             Title="Buds Popup" Height="250" Width="418" Background="{DynamicResource WindowBackgroundBrush}">
-	<Grid>
-		<Label Content="$1's Galaxy Buds$2" FontSize="20" Padding="15,10,0,0" Name="Greeting" Foreground="{DynamicResource ForegroundTextAltBrush}" />
-		<Image Source="Resources/popup/popup_buds.png" />
-	</Grid>
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:transition="clr-namespace:Galaxy_Buds_Client.transition"
+		xmlns:basewindow="clr-namespace:Galaxy_Buds_Client.ui.basewindow"
+		Title="Buds Popup" Height="250" Width="418" Background="Transparent" 
+		WindowStyle="None" AllowsTransparency="True">
+
+	<Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" Background="{DynamicResource WindowBackgroundBrush}" CornerRadius="20">
+		<Grid>
+			<Label Content="Blank's Galaxy Buds" FontSize="20" Padding="15,10,0,0" Name="Greeting" Foreground="{DynamicResource ForegroundTextAltBrush}" />
+			<Image Source="Resources/popup/popup_buds.png" />
+		</Grid>
+	</Border>
 </Window>
