@@ -143,6 +143,8 @@ namespace Galaxy_Buds_Client
                 PageControl.TransitionType = PageTransitionType.Fade;
                 PageControl.ShowPage(_mainPage);
                 _mainPage.SetLoaderVisible(true);
+                BudsPopup pop = new BudsPopup(BluetoothService.Instance.ActiveModel);
+                pop.Show();
                 Task.Delay(100).ContinueWith((_) =>
                 {
                     BluetoothService.Instance.Connect(savedAddress, GetRegisteredDeviceModel());
@@ -161,8 +163,7 @@ namespace Galaxy_Buds_Client
                     }
                 };
 
-            BudsPopup pop = new BudsPopup(Model.Buds);
-            pop.Show();
+            
         }
 
         private void TbiOnTrayRightMouseDown(object sender, RoutedEventArgs e)
