@@ -267,6 +267,7 @@ namespace Galaxy_Buds_Client
                     if (!popupShowing) {
                         BudsPopup pop = new BudsPopup(BluetoothService.Instance.ActiveModel);
                         pop.Show();
+                        pop.Activate();
                         popupShowing = true;
                     }
                     Menu_AddSeparator(ctxMenu);
