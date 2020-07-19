@@ -76,6 +76,9 @@ namespace Galaxy_Buds_Client
         private int _previousTrayBL = -1;
         private int _previousTrayBR = -1;
         private int _previousTrayBC = -1;
+        private int _previousPopupBL = -1;
+        private int _previousPopupBR = -1;
+        private int _previousPopupBC = -1;
 
         public bool PopupShowing;
 
@@ -162,8 +165,6 @@ namespace Galaxy_Buds_Client
                             ConnectionLostPageOnRetryRequested(this, new EventArgs());
                     }
                 };
-
-            
         }
 
         private void TbiOnTrayRightMouseDown(object sender, RoutedEventArgs e)
@@ -264,12 +265,7 @@ namespace Galaxy_Buds_Client
 
                 if (staticCount > 0)
                 {
-                    if (!PopupShowing && !this.IsActive) {
-                        BudsPopup pop = new BudsPopup(BluetoothService.Instance.ActiveModel);
-                        pop.Show();
-                        pop.Activate();
-                        PopupShowing = true;
-                    }
+                    
                     Menu_AddSeparator(ctxMenu);
                     MenuItem touchlockToggle = new MenuItem();
                     touchlockToggle.Header = _touchpadPage.LockToggle.IsChecked ? "Unlock Touchpad" : "Lock Touchpad";
@@ -301,8 +297,6 @@ namespace Galaxy_Buds_Client
                     Menu_AddSeparator(ctxMenu);
                 }
 
-
-
                 MenuItem quit = new MenuItem();
                 quit.Header = "Quit";
                 quit.Click += delegate
@@ -319,6 +313,34 @@ namespace Galaxy_Buds_Client
 
             });
         }
+        // popup
+        private void ShowPopup(int? bl = null, int? br = null, int? bc = null) {
+            
+            if (bl != null) {
+                _previousPopupBL = (int)bl;
+            }
+            if (br != null) {
+                _previousPopupBR = (int)br;
+            }
+            if (bc != null) {
+                _previousPopupBC = (int)bc;
+            }
+            Dispatcher.Invoke(() => {
+                int bat = 0;
+                if (_previousPopupBL > 0) bat++;
+                if (_previousPopupBR > 0) bat++;
+                if (_previousPopupBC > 0) bat++;
+                MessageBox.Show(bat.ToString());
+                if (!PopupShowing && !this.IsActive && bat > 0) {
+                    BudsPopup pop = new BudsPopup(BluetoothService.Instance.ActiveModel);
+                    MessageBox.Show(pop.ToString());
+                    pop.Show();
+                    pop.Activate();
+                    //PopupShowing = true;
+                }
+            });
+        }
+
         private void Tray_OnTrayLeftMouseDown(object sender, RoutedEventArgs e)
         {
             Visibility = Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
@@ -465,6 +487,7 @@ namespace Galaxy_Buds_Client
                 Dispatcher.Invoke(() =>
                 {
                     PageControl.TransitionType = PageTransitionType.Fade;
+                    ShowPopup(3,3,3);
                     PageControl.ShowPage(_mainPage);
                 });
             }
