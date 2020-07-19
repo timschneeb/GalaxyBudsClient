@@ -160,6 +160,9 @@ namespace Galaxy_Buds_Client
                             ConnectionLostPageOnRetryRequested(this, new EventArgs());
                     }
                 };
+
+            BudsPopup pop = new BudsPopup();
+            pop.Show();
         }
 
         private void TbiOnTrayRightMouseDown(object sender, RoutedEventArgs e)
