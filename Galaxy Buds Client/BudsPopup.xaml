@@ -12,6 +12,20 @@
 		<SolidColorBrush Opacity="0.5" Color="Black"/>
 	</Window.Background>
 	<Grid>
-        
-    </Grid>
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="672*"/>
+				<ColumnDefinition Width="655*"/>
+				<ColumnDefinition Width="672*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="54*"/>
+				<RowDefinition Height="95*"/>
+				<RowDefinition Height="54*"/>
+			</Grid.RowDefinitions>
+			<Grid Grid.Column="1" Background="#FFF4F4F5" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+				<Label Content="$1's Galaxy Buds$2" FontSize="40" Padding="5,5,0,0"/>
+			</Grid>
+		</Grid>
+	</Grid>
 </Window>
