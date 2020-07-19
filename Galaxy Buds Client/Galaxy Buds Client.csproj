@@ -444,6 +444,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="InTheHand.Net.Personal.dll" />
+    <Resource Include="Resources\popup\popup_buds.png" />
     <Resource Include="Resources\findmygear\start_lightgray.png" />
     <Resource Include="Resources\navigation\next_small_light.png" />
     <Resource Include="Resources\window\window_close_light.png" />

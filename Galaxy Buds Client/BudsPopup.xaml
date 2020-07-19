@@ -26,6 +26,7 @@
                 Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" VerticalAlignment="Stretch">
 			<Grid Grid.Column="1" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 				<Label Content="$1's Galaxy Buds$2" FontSize="20" Padding="15,10,0,0" Name="Greeting" Foreground="{DynamicResource ForegroundTextAltBrush}" />
+				<Image Source="Resources/popup/popup_buds.png" />
 			</Grid>
 		</Border>
 	</Grid>
