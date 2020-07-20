@@ -12,8 +12,32 @@
 	<Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" Background="{DynamicResource WindowBackgroundBrush}" CornerRadius="20">
 		<Grid>
 			<Label Content="Blank's Galaxy Buds" FontSize="20" Padding="15,10,0,0" Name="Greeting" Foreground="{DynamicResource ForegroundTextAltBrush}" />
-			<Image Source="Resources/popup/popup_buds.png" />
-			<Label Content="battery" Name="Battery" VerticalAlignment="Bottom" Padding="15,0,0,0" Height="24" Foreground="{DynamicResource ForegroundTextAltBrush}"/>
+			<Grid Margin="0,45,0,0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="23*"/>
+					<RowDefinition Height="89*"/>
+					<RowDefinition Height="23*"/>
+					<RowDefinition Height="44*"/>
+					<RowDefinition Height="23*"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="23*"/>
+					<ColumnDefinition Width="103*"/>
+					<ColumnDefinition Width="23*"/>
+					<ColumnDefinition Width="103*"/>
+					<ColumnDefinition Width="23*"/>
+					<ColumnDefinition Width="103*"/>
+					<ColumnDefinition Width="23*"/>
+				</Grid.ColumnDefinitions>
+				<Image Grid.Column="1" Grid.Row="1" Source="{DynamicResource LeftBudConnected}" />
+				<Image Grid.Column="5" Grid.Row="1" Source="{DynamicResource RightBudConnected}" />
+				<Label Grid.Column="1" Grid.Row="3" Name="BatteryL" Foreground="{DynamicResource ForegroundTextAltBrush}"
+					   FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+				<Label Grid.Column="5" Grid.Row="3" Name="BatteryR" Foreground="{DynamicResource ForegroundTextAltBrush}"
+					   FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+				<Label Grid.Column="3" Grid.Row="3" Name="BatteryC" Foreground="{DynamicResource ForegroundTextAltBrush}"
+					   FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+			</Grid>
 		</Grid>
 	</Border>
 </Window>
