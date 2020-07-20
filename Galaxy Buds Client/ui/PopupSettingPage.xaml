@@ -55,7 +55,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" ContextMenuService.Placement="Bottom">
-                        <element:CheckableDetailListItem x:Name="CompactPopup" Text="Compact popup" TextDetail="Hide the header of the popup to save space"
+                        <element:CheckableDetailListItem x:Name="CompactPopup" Text="Compact mode" TextDetail="Hide the header of the popup to save space"
                                                           SwitchToggled="CompactPopup_OnSwitchToggled" />
 
                     </Border>
