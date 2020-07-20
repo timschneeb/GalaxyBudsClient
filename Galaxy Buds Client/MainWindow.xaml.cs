@@ -80,6 +80,10 @@ namespace Galaxy_Buds_Client
         private int _previousPopupBR = -1;
         private int _previousPopupBC = -1;
 
+        private int batLeft;
+        private int batRight;
+        private int batCase;
+
         public bool PopupShowing;
 
         public CustomActionPage CustomActionPage => _customActionPage;
@@ -362,6 +366,7 @@ namespace Galaxy_Buds_Client
         private void InstanceOnStatusUpdate(object sender, StatusUpdateParser e)
         {
             GenerateTrayContext(e.BatteryL, e.BatteryR, e.BatteryCase);
+            batLeft = e.BatteryL; batRight = e.BatteryR; batCase = e.BatteryCase;
 
             if (_previousWearState == WearStates.None && e.WearState != WearStates.None &&
                 Settings.Default.ResumePlaybackOnSensor)
@@ -483,8 +488,8 @@ namespace Galaxy_Buds_Client
             {
                 Dispatcher.Invoke(() =>
                 {
+                    ShowPopup(batLeft, batRight, batCase);
                     PageControl.TransitionType = PageTransitionType.Fade;
-                    ShowPopup(3,3,3);
                     PageControl.ShowPage(_mainPage);
                 });
             }
@@ -497,6 +502,7 @@ namespace Galaxy_Buds_Client
         private void InstanceOnExtendedStatusUpdate(object sender, ExtendedStatusUpdateParser e)
         {
             GenerateTrayContext(e.BatteryL, e.BatteryR, e.BatteryCase);
+            batLeft = e.BatteryL; batRight = e.BatteryR; batCase = e.BatteryCase;
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetManagerInfo());
         }
         private void InstanceOnOtherOption(object sender, TouchOption.Universal e)
