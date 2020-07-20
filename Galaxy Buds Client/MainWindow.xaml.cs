@@ -80,9 +80,7 @@ namespace Galaxy_Buds_Client
         private int _previousPopupBR = -1;
         private int _previousPopupBC = -1;
 
-        private int batLeft;
-        private int batRight;
-        private int batCase;
+        private bool _popupShownCurrentSession;
 
         public bool PopupShowing;
 
@@ -317,7 +315,10 @@ namespace Galaxy_Buds_Client
 
             });
         }
-        // popup
+
+        /*
+         * Popup
+         */
         private void ShowPopup(int? bl = null, int? br = null, int? bc = null) {
             if (bl != null) {
                 _previousPopupBL = (int)bl;
@@ -368,7 +369,6 @@ namespace Galaxy_Buds_Client
         private void InstanceOnStatusUpdate(object sender, StatusUpdateParser e)
         {
             GenerateTrayContext(e.BatteryL, e.BatteryR, e.BatteryCase);
-            batLeft = e.BatteryL; batRight = e.BatteryR; batCase = e.BatteryCase;
 
             if (_previousWearState == WearStates.None && e.WearState != WearStates.None &&
                 Settings.Default.ResumePlaybackOnSensor)
@@ -409,7 +409,10 @@ namespace Galaxy_Buds_Client
             GenerateTrayContext(-1,-1,-1);
 
             _connectionLostPage.Reset();
+
             PopupShowing = false;
+            _popupShownCurrentSession = false;
+
             if (PageControl.CurrentPage == null)
             {
                 Dispatcher.Invoke(() =>
@@ -445,6 +448,8 @@ namespace Galaxy_Buds_Client
         {
             Dispatcher.Invoke(() =>
             {
+                _popupShownCurrentSession = false;
+
                 if (_mainPage == null)
                 {
                     Task.Delay(500).ContinueWith(delegate
@@ -490,7 +495,6 @@ namespace Galaxy_Buds_Client
             {
                 Dispatcher.Invoke(() =>
                 {
-                    ShowPopup(batLeft, batRight, batCase);
                     PageControl.TransitionType = PageTransitionType.Fade;
                     PageControl.ShowPage(_mainPage);
                 });
@@ -503,8 +507,14 @@ namespace Galaxy_Buds_Client
         }
         private void InstanceOnExtendedStatusUpdate(object sender, ExtendedStatusUpdateParser e)
         {
+            //Debounce popup events
+            if (!_popupShownCurrentSession)
+            {
+                ShowPopup(e.BatteryL, e.BatteryR, e.BatteryCase);
+                _popupShownCurrentSession = true;
+            }
+
             GenerateTrayContext(e.BatteryL, e.BatteryR, e.BatteryCase);
-            batLeft = e.BatteryL; batRight = e.BatteryR; batCase = e.BatteryCase;
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetManagerInfo());
         }
         private void InstanceOnOtherOption(object sender, TouchOption.Universal e)
@@ -590,6 +600,7 @@ namespace Galaxy_Buds_Client
             deregDevice.Click += delegate
             {
                 GenerateTrayContext(-1, -1, -1);
+                _popupShownCurrentSession = false;
                 BluetoothService.Instance.Disconnect();
                 Properties.Settings.Default.RegisteredDevice = "";
                 Properties.Settings.Default.RegisteredDeviceModel = Model.NULL;
@@ -741,6 +752,7 @@ namespace Galaxy_Buds_Client
             if (savedAddress != null || GetRegisteredDeviceModel() != Model.NULL)
             {
                 _address = savedAddress;
+                _popupShownCurrentSession = false;
 
                 if (BluetoothService.Instance.IsConnected)
                     BluetoothService.Instance.Disconnect();

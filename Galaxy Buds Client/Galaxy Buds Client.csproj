@@ -114,6 +114,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BluetoothService.cs" />
+    <Compile Include="BudsPopup.xaml.cs">
+      <DependentUpon>BudsPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="message\SPPMessageBuilder.cs" />
     <Compile Include="message\SPPMessageHandler.cs" />
     <Compile Include="model\Constants.cs" />
@@ -256,6 +259,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Resource>
+    <Page Include="BudsPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ui\dialog\HotkeyRecorder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
