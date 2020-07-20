@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media.Animation;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model.Constants;
@@ -34,6 +35,14 @@ namespace Galaxy_Buds_Client.ui.dialog {
             if (fadeIn != null) fadeIn.Begin(this);
 
             _ = this.exitPopupAfterDelay();
+        }
+
+  
+        public void ShowWindowWithoutFocus()
+        {
+            ShowActivated = false;
+            Topmost = true;
+            Show();
         }
 
         private void Instance_StatusUpdate(object sender, parser.StatusUpdateParser e) {

@@ -326,8 +326,7 @@ namespace Galaxy_Buds_Client
                                                   bl,
                                                   br,
                                                   bc);
-                    pop.Show();
-                    pop.Activate();
+                    pop.ShowWindowWithoutFocus();
                 }
             });
         }
