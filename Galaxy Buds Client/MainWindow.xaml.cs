@@ -79,6 +79,7 @@ namespace Galaxy_Buds_Client
         private int _previousTrayBC = -1;
 
         private bool _popupShownCurrentSession;
+        private BudsPopup _previousBudsPopup;
 
         public CustomActionPage CustomActionPage => _customActionPage;
 
@@ -154,20 +155,28 @@ namespace Galaxy_Buds_Client
                 });
                 _address = savedAddress;
             }
-            
-            BluetoothWin32Events.GetInstance().InRange +=
-                delegate (object sender, BluetoothWin32RadioInRangeEventArgs args)
-                {
-                    if (GetRegisteredDevice() != null && GetRegisteredDevice() == args.Device.DeviceAddress)
+
+            try
+            {
+                BluetoothWin32Events.GetInstance().InRange +=
+                    delegate(object sender, BluetoothWin32RadioInRangeEventArgs args)
                     {
-                        if (!BluetoothService.Instance.IsConnected && _connectionLostPage != null)
+                        if (GetRegisteredDevice() != null && GetRegisteredDevice() == args.Device.DeviceAddress)
                         {
-                            //Reset popup flag since we just connected
-                            _popupShownCurrentSession = false;
-                            ConnectionLostPageOnRetryRequested(this, new EventArgs());
+                            if (!BluetoothService.Instance.IsConnected && _connectionLostPage != null)
+                            {
+                                //Reset popup flag since we just connected
+                                _popupShownCurrentSession = false;
+                                ConnectionLostPageOnRetryRequested(this, new EventArgs());
+                            }
                         }
-                    }
-                };
+                    };
+            }
+            catch (Win32Exception e)
+            {
+                Console.WriteLine(@"CRITICAL: Unknown Win32 Bluetooth service error");
+                Console.WriteLine(e);
+            }
         }
 
         private void TbiOnTrayRightMouseDown(object sender, RoutedEventArgs e)
@@ -324,11 +333,14 @@ namespace Galaxy_Buds_Client
             Dispatcher.Invoke(() => {
                 if (!this.IsActive && (bl > 0 || br > 0 || bc > 0) 
                                    && Settings.Default.ConnectionPopupEnabled) {
+                    _previousBudsPopup?.Close();
+
                     BudsPopup pop = new BudsPopup(
                         BluetoothService.Instance.ActiveModel, bl,  br, bc);
                     pop.HideHeader = Settings.Default.ConnectionPopupCompact;
                     pop.PopupPlacement = Settings.Default.ConnectionPopupPosition;
                     pop.ShowWindowWithoutFocus();
+                    _previousBudsPopup = pop;
                 }
             });
         }
@@ -339,12 +351,15 @@ namespace Galaxy_Buds_Client
         public void ShowDemoPopup()
         {
             Dispatcher.Invoke(() => {
+                _previousBudsPopup?.Close();
+
                 BudsPopup pop = new BudsPopup(
                         BluetoothService.Instance.ActiveModel, _previousTrayBL,
                         _previousTrayBR, _previousTrayBC);
                     pop.HideHeader = Settings.Default.ConnectionPopupCompact;
                     pop.PopupPlacement = Settings.Default.ConnectionPopupPosition;
                     pop.ShowWindowWithoutFocus();
+                    _previousBudsPopup = pop;
             });
         }
 

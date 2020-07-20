@@ -147,7 +147,7 @@ namespace Galaxy_Buds_Client.ui.dialog {
             }
         }
 
-        private void Quit() {
+        public void Quit() {
             if (new PageTransition().Resources["FadeOut"] is Storyboard fadeOut)
             {
                 fadeOut.Completed += FadeOut_Completed;
