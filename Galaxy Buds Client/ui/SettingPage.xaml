@@ -6,11 +6,13 @@
              xmlns:local="clr-namespace:Galaxy_Buds_Client.ui"
              xmlns:element="clr-namespace:Galaxy_Buds_Client.ui.element"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="800">
 
     <Grid Margin="0,0,0,20" >
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
@@ -52,7 +54,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="DarkMode_OnMouseLeftButtonUp">
-                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,5,20,0" >
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,3,20,0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
@@ -79,7 +81,7 @@
 
                 <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}"
                         MouseLeftButtonUp="Units_OnMouseLeftButtonUp">
-                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,0,20,5" >
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,0,20,3" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
@@ -101,7 +103,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="MinimizedTray_OnMouseLeftButtonUp">
-                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,5,20,0" >
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,3,20,0" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
@@ -114,7 +116,7 @@
                 </Border>
 
                 <Border Grid.Row="1" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Autostart_OnMouseLeftButtonUp">
-                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,0,20,5" >
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,0,20,3" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
@@ -128,12 +130,24 @@
             </Grid>
         </Border>
 
-        <Border Grid.Row="7" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518" MouseLeftButtonUp="DevMode_OnMouseLeftButtonUp"
+        <Border Grid.Row="7" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
-            <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" >
-                <element:ListItem x:Name="DevMode" Text="Enter developer mode" SourceImage="/Resources/features/labs_color.png" 
-                                  Margin="20,0,20,0" />
-            </Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="PopupSettings_OnMouseLeftButtonUp" >
+                    <element:ListItem x:Name="PopupSettings" Text="Configure connection popup" SourceImage="/Resources/features/notification_color.png" 
+                                      Margin="10,0,30,0" FontSize="18"  />
+                </Border>
+                <Separator Grid.Row="1" Margin="75,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
+                <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="DevMode_OnMouseLeftButtonUp">
+                    <element:ListItem x:Name="DevMode" Text="Enter developer mode" SourceImage="/Resources/features/labs_color.png" 
+                                      Margin="10,0,30,0" FontSize="18" />
+                </Border>
+            </Grid>
         </Border>
     </Grid>
 </local:BasePage>

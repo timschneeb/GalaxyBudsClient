@@ -58,7 +58,7 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <element:ListItem x:Name="Retry" Text="Connect" SourceImage="/Resources/device/neutral_gray.png" Margin="20,0,20,0" />
+                    <element:ListItem  FontSize="18" x:Name="Retry" Text="Connect" SourceImage="/Resources/device/neutral_gray.png" Margin="20,0,20,0" />
                     <element:LoadingSpinner x:Name="LoadingSpinner" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,15,-245,15"/>
                 </Grid>
             </Border>

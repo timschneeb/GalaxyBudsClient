@@ -44,5 +44,14 @@
     <Setting Name="ResumePlaybackOnSensor" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="ConnectionPopupEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ConnectionPopupCompact" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ConnectionPopupPosition" Type="Galaxy_Buds_Client.model.Constants.PopupPlacement" Scope="User">
+      <Value Profile="(Default)">BottomRight</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

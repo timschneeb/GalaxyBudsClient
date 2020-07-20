@@ -114,6 +114,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BluetoothService.cs" />
+    <Compile Include="ui\dialog\BudsPopup.xaml.cs">
+      <DependentUpon>BudsPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="message\SPPMessageBuilder.cs" />
     <Compile Include="message\SPPMessageHandler.cs" />
     <Compile Include="model\Constants.cs" />
@@ -158,6 +161,9 @@
     </Compile>
     <Compile Include="ui\element\CheckableDetailListItem.xaml.cs">
       <DependentUpon>CheckableDetailListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\PopupSettingPage.xaml.cs">
+      <DependentUpon>PopupSettingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ui\UpdatePage.xaml.cs">
       <DependentUpon>UpdatePage.xaml</DependentUpon>
@@ -256,6 +262,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Resource>
+    <Page Include="ui\dialog\BudsPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ui\dialog\HotkeyRecorder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -273,6 +283,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ui\CustomActionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ui\PopupSettingPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
