@@ -21,6 +21,7 @@ using Galaxy_Buds_Client.Properties;
 using Galaxy_Buds_Client.transition;
 using Galaxy_Buds_Client.ui;
 using Galaxy_Buds_Client.ui.basewindow;
+using Galaxy_Buds_Client.ui.dialog;
 using Galaxy_Buds_Client.util;
 using Hardcodet.Wpf.TaskbarNotification;
 using InTheHand.Net;

@@ -114,7 +114,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BluetoothService.cs" />
-    <Compile Include="BudsPopup.xaml.cs">
+    <Compile Include="ui\dialog\BudsPopup.xaml.cs">
       <DependentUpon>BudsPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="message\SPPMessageBuilder.cs" />
@@ -259,7 +259,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Resource>
-    <Page Include="BudsPopup.xaml">
+    <Page Include="ui\dialog\BudsPopup.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
