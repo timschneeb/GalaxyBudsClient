@@ -1,4 +1,5 @@
-﻿using Galaxy_Buds_Client.model.Constants;
+﻿using Galaxy_Buds_Client.message;
+using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.transition;
 using System;
 using System.Collections.Generic;
@@ -36,10 +37,23 @@ namespace Galaxy_Buds_Client {
                 Case.Content = "Case";
             }
 
+            SPPMessageHandler.Instance.StatusUpdate += Instance_StatusUpdate;
+
             Storyboard fadeIn = new PageTransition().Resources["FadeIn"] as Storyboard;
             if (fadeIn != null) fadeIn.Begin(this);
 
             _ = this.exitPopupAfterDelay();
+        }
+
+        private void Instance_StatusUpdate(object sender, parser.StatusUpdateParser e) {
+            Dispatcher.Invoke(() => {
+                BatteryL.Content = $"{e.BatteryL}%";
+                BatteryR.Content = $"{e.BatteryR}%";
+                if (e.ActiveModel == Model.BudsPlus) {
+                    BatteryC.Content = $"{e.BatteryCase}%";
+                    Case.Content = "Case";
+                }
+            });
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
