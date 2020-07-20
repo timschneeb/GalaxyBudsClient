@@ -31,7 +31,10 @@ namespace Galaxy_Buds_Client {
 
             BatteryL.Content = $"{left}%";
             BatteryR.Content = $"{right}%";
-            if (model == Model.BudsPlus) BatteryC.Content = $"{box}%";
+            if (model == Model.BudsPlus) {
+                BatteryC.Content = $"{box}%";
+                Case.Content = "Case";
+            }
 
             Storyboard fadeIn = new PageTransition().Resources["FadeIn"] as Storyboard;
             if (fadeIn != null) fadeIn.Begin(this);

@@ -31,6 +31,8 @@
 				</Grid.ColumnDefinitions>
 				<Image Grid.Column="1" Grid.Row="1" Source="{DynamicResource LeftBudConnected}" />
 				<Image Grid.Column="5" Grid.Row="1" Source="{DynamicResource RightBudConnected}" />
+				<Label Grid.Column="3" Grid.Row="1" Name="Case" Foreground="{DynamicResource ForegroundTextAltBrush}"
+					   FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 				<Label Grid.Column="1" Grid.Row="3" Name="BatteryL" Foreground="{DynamicResource ForegroundTextAltBrush}"
 					   FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 				<Label Grid.Column="5" Grid.Row="3" Name="BatteryR" Foreground="{DynamicResource ForegroundTextAltBrush}"
