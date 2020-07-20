@@ -77,13 +77,8 @@ namespace Galaxy_Buds_Client
         private int _previousTrayBL = -1;
         private int _previousTrayBR = -1;
         private int _previousTrayBC = -1;
-        private int _previousPopupBL = -1;
-        private int _previousPopupBR = -1;
-        private int _previousPopupBC = -1;
 
         private bool _popupShownCurrentSession;
-
-        public bool PopupShowing;
 
         public CustomActionPage CustomActionPage => _customActionPage;
 
@@ -165,7 +160,11 @@ namespace Galaxy_Buds_Client
                     if (GetRegisteredDevice() != null && GetRegisteredDevice() == args.Device.DeviceAddress)
                     {
                         if (!BluetoothService.Instance.IsConnected && _connectionLostPage != null)
+                        {
+                            //Reset popup flag since we just connected
+                            _popupShownCurrentSession = false;
                             ConnectionLostPageOnRetryRequested(this, new EventArgs());
+                        }
                     }
                 };
         }
@@ -320,26 +319,13 @@ namespace Galaxy_Buds_Client
         /*
          * Popup
          */
-        private void ShowPopup(int? bl = null, int? br = null, int? bc = null) {
-            if (bl != null) {
-                _previousPopupBL = (int)bl;
-            }
-            if (br != null) {
-                _previousPopupBR = (int)br;
-            }
-            if (bc != null) {
-                _previousPopupBC = (int)bc;
-            }
+        private void ShowPopup(int bl, int br, int bc) {
             Dispatcher.Invoke(() => {
-                int bat = 0;
-                if (_previousPopupBL > 0) bat++;
-                if (_previousPopupBR > 0) bat++;
-                if (_previousPopupBC > 0) bat++;
-                if (!this.IsActive && bat > 0) {
+                if (!this.IsActive && (bl > 0 || br > 0 || bc > 0)) {
                     BudsPopup pop = new BudsPopup(BluetoothService.Instance.ActiveModel,
-                                                  bl != null ? (int)bl : -1,
-                                                  br != null ? (int)br : -1,
-                                                  bc != null ? (int)bc : -1);
+                                                  bl,
+                                                  br,
+                                                  bc);
                     pop.Show();
                     pop.Activate();
                 }
@@ -411,7 +397,6 @@ namespace Galaxy_Buds_Client
 
             _connectionLostPage.Reset();
 
-            PopupShowing = false;
             _popupShownCurrentSession = false;
 
             if (PageControl.CurrentPage == null)
