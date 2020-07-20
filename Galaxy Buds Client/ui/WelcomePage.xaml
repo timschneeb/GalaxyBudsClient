@@ -50,7 +50,7 @@
                 <Border Grid.Column="0" CornerRadius="20"/>
                 <Separator Grid.Column="1" Background="{DynamicResource BorderSeparatorBrush}" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                 <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Continue_OnMouseLeftButtonUp">
-                    <element:ListItem Text="Continue" SourceImage="{DynamicResource NextButton}" Margin="20,0,20,0"/>
+                    <element:ListItem FontSize="18" Text="Continue" SourceImage="{DynamicResource NextButton}" Margin="20,0,20,0"/>
                 </Border>
             </Grid>
         </Border>

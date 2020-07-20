@@ -52,7 +52,7 @@
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundWarningBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                 <element:ListItem x:Name="FactoryReset" Text="Confirm factory reset" SourceImage="/Resources/device/neutral_gray.png" Margin="20,0,20,0" 
-                                  MouseLeftButtonUp="FactoryReset_OnMouseLeftButtonUp"/>
+                                  FontSize="18" MouseLeftButtonUp="FactoryReset_OnMouseLeftButtonUp"/>
             </Border>
         </Border>
     </Grid>

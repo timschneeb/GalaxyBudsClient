@@ -31,5 +31,9 @@ namespace Galaxy_Buds_Client.util
                 }
             }
         }
+        public static IEnumerable<T> GetValues<T>()
+        {
+            return Enum.GetValues(typeof(T)).Cast<T>();
+        }
     }
 }

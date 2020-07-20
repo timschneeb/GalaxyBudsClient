@@ -9,6 +9,22 @@ namespace Galaxy_Buds_Client.model
 {
     namespace Constants
     {
+        public enum PopupPlacement
+        {
+            [Description("Top left")]
+            TopLeft,
+            [Description("Top center")]
+            TopCenter,
+            [Description("Top right")]
+            TopRight,
+            [Description("Bottom left")]
+            BottomLeft,
+            [Description("Bottom center")]
+            BottomCenter,
+            [Description("Bottom right")]
+            BottomRight,
+        }
+
         public enum Model
         {
             NULL = 0,

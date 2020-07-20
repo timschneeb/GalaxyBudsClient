@@ -115,5 +115,10 @@ namespace Galaxy_Buds_Client.ui
             DarkModeHelper.SetState(DarkModeToggle.IsChecked);
             SaveChanges();
         }
+
+        private void PopupSettings_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            _mainWindow.GoToPage(MainWindow.Pages.SettingsPopup);
+        }
     }
 }

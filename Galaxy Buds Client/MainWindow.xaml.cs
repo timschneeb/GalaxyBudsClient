@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
@@ -9,7 +8,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Input;
 using WindowsInput;
 using WindowsInput.Native;
 using AutoUpdaterDotNET;
@@ -49,6 +47,7 @@ namespace Galaxy_Buds_Client
         private readonly UpdatePage _updatePage;
         private readonly AdvancedPage _advancedPage;
         private readonly UnsupportedFeaturePage _unsupportedFeaturePage;
+        private readonly PopupSettingPage _popupSettingPage;
 
         public enum Pages
         {
@@ -66,6 +65,7 @@ namespace Galaxy_Buds_Client
             Welcome,
             DeviceSelect,
             Settings,
+            SettingsPopup,
             Advanced
         }
 
@@ -108,6 +108,7 @@ namespace Galaxy_Buds_Client
             _updatePage = new UpdatePage(this);
             _advancedPage = new AdvancedPage(this);
             _unsupportedFeaturePage = new UnsupportedFeaturePage(this);
+            _popupSettingPage = new PopupSettingPage(this);
 
             InitializeComponent();
 
@@ -319,15 +320,31 @@ namespace Galaxy_Buds_Client
         /*
          * Popup
          */
-        private void ShowPopup(int bl, int br, int bc) {
+        public void ShowPopup(int bl, int br, int bc) {
             Dispatcher.Invoke(() => {
-                if (!this.IsActive && (bl > 0 || br > 0 || bc > 0)) {
-                    BudsPopup pop = new BudsPopup(BluetoothService.Instance.ActiveModel,
-                                                  bl,
-                                                  br,
-                                                  bc);
+                if (!this.IsActive && (bl > 0 || br > 0 || bc > 0) 
+                                   && Settings.Default.ConnectionPopupEnabled) {
+                    BudsPopup pop = new BudsPopup(
+                        BluetoothService.Instance.ActiveModel, bl,  br, bc);
+                    pop.HideHeader = Settings.Default.ConnectionPopupCompact;
+                    pop.PopupPlacement = Settings.Default.ConnectionPopupPosition;
                     pop.ShowWindowWithoutFocus();
                 }
+            });
+        }
+
+        /**
+         * Only for testing/demo use. Please call ShowPopup instead.
+         */
+        public void ShowDemoPopup()
+        {
+            Dispatcher.Invoke(() => {
+                BudsPopup pop = new BudsPopup(
+                        BluetoothService.Instance.ActiveModel, _previousTrayBL,
+                        _previousTrayBR, _previousTrayBC);
+                    pop.HideHeader = Settings.Default.ConnectionPopupCompact;
+                    pop.PopupPlacement = Settings.Default.ConnectionPopupPosition;
+                    pop.ShowWindowWithoutFocus();
             });
         }
 
@@ -677,6 +694,9 @@ namespace Galaxy_Buds_Client
                     break;
                 case Pages.TouchCustomAction:
                     PageControl.ShowPage(_customActionPage);
+                    break;
+                case Pages.SettingsPopup:
+                    PageControl.ShowPage(_popupSettingPage);
                     break;
             }
         }

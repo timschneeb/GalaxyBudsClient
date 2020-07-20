@@ -21,7 +21,6 @@ namespace Galaxy_Buds_Client.ui.element
                 typeof(String),
                 typeof(ListItem)
             );
-
         public ListItem()
         {
             InitializeComponent();
@@ -34,7 +33,6 @@ namespace Galaxy_Buds_Client.ui.element
             set
             { SetValue(SourceDependencyProperty, value); }
         }
-
         public String Text
         {
             get { return (String)GetValue(TextDependencyProperty); }

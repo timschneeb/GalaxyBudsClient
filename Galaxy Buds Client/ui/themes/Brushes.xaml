@@ -11,8 +11,8 @@
     <SolidColorBrush x:Key="ForegroundTextBrush" Color="#CC000000" />
     <SolidColorBrush x:Key="ForegroundTextAltBrush" Color="#E5000000" />
     <SolidColorBrush x:Key="ForegroundTextDimBrush" Color="#BF000000" />
-    <SolidColorBrush x:Key="SubtitleTextBrush" Color="#77000000" />
-    <SolidColorBrush x:Key="SubtitleTextAltBrush" Color="#AA000000" />
+    <SolidColorBrush x:Key="SubtitleTextBrush" Color="#99000000" />
+    <SolidColorBrush x:Key="SubtitleTextAltBrush" Color="#99000000" />
 
     <!-- Context Menu -->
     <SolidColorBrush x:Key="ContextForegroundBrush" Color="#CC000000" />

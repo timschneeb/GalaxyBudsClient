@@ -58,27 +58,27 @@
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
                 <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="FindMyGear_OnMouseLeftButtonUp">
-                    <element:ListItem SourceImage="/Resources/features/findmygear_color.png" Text="Find my Earbuds"/>
+                    <element:ListItem FontSize="18" SourceImage="/Resources/features/findmygear_color.png" Text="Find my Earbuds"/>
                 </Border>
                 <Separator Grid.Row="1" Margin="60,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                 <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Touchpad_OnMouseLeftButtonUp">
-                    <element:ListItem SourceImage="/Resources/features/touch_color.png" Text="Touchpad"/>
+                    <element:ListItem FontSize="18" SourceImage="/Resources/features/touch_color.png" Text="Touchpad"/>
                 </Border>
                 <Separator Grid.Row="3" Margin="60,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                 <Border Grid.Row="4" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Ambient_OnMouseLeftButtonUp">
-                    <element:ListItem SourceImage="/Resources/features/sound_color.png" Text="Ambient Sound"/>
+                    <element:ListItem FontSize="18" SourceImage="/Resources/features/sound_color.png" Text="Ambient Sound"/>
                 </Border>
                 <Separator Grid.Row="5" Margin="60,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                 <Border Grid.Row="6" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Equalizer_OnMouseLeftButtonUp">
-                    <element:ListItem SourceImage="/Resources/features/equalizer_gray.png" Text="Equalizer"/>
+                    <element:ListItem FontSize="18" SourceImage="/Resources/features/equalizer_gray.png" Text="Equalizer"/>
                 </Border>
                 <Separator Grid.Row="7" Margin="60,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                 <Border Grid.Row="8" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Advanced_OnMouseLeftButtonUp">
-                    <element:ListItem SourceImage="/Resources/features/advanced_color.png" Text="Advanced Settings"/>
+                    <element:ListItem FontSize="18" SourceImage="/Resources/features/advanced_color.png" Text="Advanced Settings"/>
                 </Border>
                 <Separator Grid.Row="9" Margin="60,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                 <Border Grid.Row="10" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="System_OnMouseLeftButtonUp">
-                    <element:ListItem SourceImage="/Resources/features/info_gray.png" Text="System Information"/>
+                    <element:ListItem FontSize="18" SourceImage="/Resources/features/info_gray.png" Text="System Information"/>
                 </Border>
             </Grid>
         </Border>

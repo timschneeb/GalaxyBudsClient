@@ -40,7 +40,7 @@
         <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Border Grid.Column="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                <element:ListItem x:Name="SelfTestResult" Text="Waiting for response..." SourceImage="/Resources/features/info_gray.png" Margin="20,0,20,0"/>
+                <element:ListItem  FontSize="18" x:Name="SelfTestResult" Text="Waiting for response..." SourceImage="/Resources/features/info_gray.png" Margin="20,0,20,0"/>
             </Border>
         </Border>
         <Border Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"

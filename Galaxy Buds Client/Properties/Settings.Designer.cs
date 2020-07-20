@@ -190,5 +190,41 @@ namespace Galaxy_Buds_Client.Properties {
                 this["ResumePlaybackOnSensor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ConnectionPopupEnabled {
+            get {
+                return ((bool)(this["ConnectionPopupEnabled"]));
+            }
+            set {
+                this["ConnectionPopupEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ConnectionPopupCompact {
+            get {
+                return ((bool)(this["ConnectionPopupCompact"]));
+            }
+            set {
+                this["ConnectionPopupCompact"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("BottomRight")]
+        public global::Galaxy_Buds_Client.model.Constants.PopupPlacement ConnectionPopupPosition {
+            get {
+                return ((global::Galaxy_Buds_Client.model.Constants.PopupPlacement)(this["ConnectionPopupPosition"]));
+            }
+            set {
+                this["ConnectionPopupPosition"] = value;
+            }
+        }
     }
 }
