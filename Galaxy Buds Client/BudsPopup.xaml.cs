@@ -20,7 +20,7 @@ namespace Galaxy_Buds_Client {
     /// Interaction logic for BudsPopup.xaml
     /// </summary>
     public partial class BudsPopup : Window {
-        public BudsPopup(Model model) {
+        public BudsPopup(Model model, int left, int right, int box) {
             InitializeComponent();
 
             string mod = "";
@@ -28,6 +28,9 @@ namespace Galaxy_Buds_Client {
             string name = Environment.UserName.Split(' ')[0];
 
             Greeting.Content = $"{name}'s Galaxy Buds{mod}";
+
+            Battery.Content = $"left: {left} right: {right}";
+            if (model == Model.BudsPlus) Battery.Content += $" case: {box}";
 
             Storyboard fadeIn = new PageTransition().Resources["FadeIn"] as Storyboard;
             if (fadeIn != null) fadeIn.Begin(this);

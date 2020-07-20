@@ -13,6 +13,7 @@
 		<Grid>
 			<Label Content="Blank's Galaxy Buds" FontSize="20" Padding="15,10,0,0" Name="Greeting" Foreground="{DynamicResource ForegroundTextAltBrush}" />
 			<Image Source="Resources/popup/popup_buds.png" />
+			<Label Content="battery" Name="Battery" VerticalAlignment="Bottom" Padding="15,0,0,0" Height="24" Foreground="{DynamicResource ForegroundTextAltBrush}"/>
 		</Grid>
 	</Border>
 </Window>
