@@ -76,6 +76,13 @@ namespace Galaxy_Buds_Client
         private int _previousTrayBL = -1;
         private int _previousTrayBR = -1;
         private int _previousTrayBC = -1;
+        private int _previousPopupBL = -1;
+        private int _previousPopupBR = -1;
+        private int _previousPopupBC = -1;
+
+        private int batLeft;
+        private int batRight;
+        private int batCase;
 
         public bool PopupShowing;
 
@@ -162,8 +169,6 @@ namespace Galaxy_Buds_Client
                             ConnectionLostPageOnRetryRequested(this, new EventArgs());
                     }
                 };
-
-            
         }
 
         private void TbiOnTrayRightMouseDown(object sender, RoutedEventArgs e)
@@ -264,12 +269,7 @@ namespace Galaxy_Buds_Client
 
                 if (staticCount > 0)
                 {
-                    if (!PopupShowing && !this.IsActive) {
-                        BudsPopup pop = new BudsPopup(BluetoothService.Instance.ActiveModel);
-                        pop.Show();
-                        pop.Activate();
-                        PopupShowing = true;
-                    }
+                    
                     Menu_AddSeparator(ctxMenu);
                     MenuItem touchlockToggle = new MenuItem();
                     touchlockToggle.Header = _touchpadPage.LockToggle.IsChecked ? "Unlock Touchpad" : "Lock Touchpad";
@@ -301,8 +301,6 @@ namespace Galaxy_Buds_Client
                     Menu_AddSeparator(ctxMenu);
                 }
 
-
-
                 MenuItem quit = new MenuItem();
                 quit.Header = "Quit";
                 quit.Click += delegate
@@ -319,6 +317,33 @@ namespace Galaxy_Buds_Client
 
             });
         }
+        // popup
+        private void ShowPopup(int? bl = null, int? br = null, int? bc = null) {
+            if (bl != null) {
+                _previousPopupBL = (int)bl;
+            }
+            if (br != null) {
+                _previousPopupBR = (int)br;
+            }
+            if (bc != null) {
+                _previousPopupBC = (int)bc;
+            }
+            Dispatcher.Invoke(() => {
+                int bat = 0;
+                if (_previousPopupBL > 0) bat++;
+                if (_previousPopupBR > 0) bat++;
+                if (_previousPopupBC > 0) bat++;
+                if (!this.IsActive && bat > 0) {
+                    BudsPopup pop = new BudsPopup(BluetoothService.Instance.ActiveModel,
+                                                  bl != null ? (int)bl : -1,
+                                                  br != null ? (int)br : -1,
+                                                  bc != null ? (int)bc : -1);
+                    pop.Show();
+                    pop.Activate();
+                }
+            });
+        }
+
         private void Tray_OnTrayLeftMouseDown(object sender, RoutedEventArgs e)
         {
             Visibility = Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
@@ -343,6 +368,7 @@ namespace Galaxy_Buds_Client
         private void InstanceOnStatusUpdate(object sender, StatusUpdateParser e)
         {
             GenerateTrayContext(e.BatteryL, e.BatteryR, e.BatteryCase);
+            batLeft = e.BatteryL; batRight = e.BatteryR; batCase = e.BatteryCase;
 
             if (_previousWearState == WearStates.None && e.WearState != WearStates.None &&
                 Settings.Default.ResumePlaybackOnSensor)
@@ -464,6 +490,7 @@ namespace Galaxy_Buds_Client
             {
                 Dispatcher.Invoke(() =>
                 {
+                    ShowPopup(batLeft, batRight, batCase);
                     PageControl.TransitionType = PageTransitionType.Fade;
                     PageControl.ShowPage(_mainPage);
                 });
@@ -477,6 +504,7 @@ namespace Galaxy_Buds_Client
         private void InstanceOnExtendedStatusUpdate(object sender, ExtendedStatusUpdateParser e)
         {
             GenerateTrayContext(e.BatteryL, e.BatteryR, e.BatteryCase);
+            batLeft = e.BatteryL; batRight = e.BatteryR; batCase = e.BatteryCase;
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetManagerInfo());
         }
         private void InstanceOnOtherOption(object sender, TouchOption.Universal e)
