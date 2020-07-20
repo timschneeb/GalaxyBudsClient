@@ -47,7 +47,11 @@ namespace Galaxy_Buds_Client {
 
         private void Quit() {
             Storyboard fadeOut = new PageTransition().Resources["FadeOut"] as Storyboard;
+            fadeOut.Completed += FadeOut_Completed;
             if (fadeOut != null) fadeOut.Begin(this);
+        }
+
+        private void FadeOut_Completed(object sender, EventArgs e) {
             Close();
         }
 
