@@ -58,6 +58,7 @@ choco install galaxybudsclient
 ## Contributors
 
 * [@superbonaci](https://github.com/superbonaci) - Chocolatey package
+* [@githubcatw](https://github.com/githubcatw) - Connection dialog base
 
 
 
