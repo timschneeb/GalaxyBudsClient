@@ -47,6 +47,7 @@ namespace Galaxy_Buds_Client.ui
             _refreshTimer.Interval = new TimeSpan(0, 0, 12);
 
             BatteryCase.Content = "";
+            CaseLabel.Visibility = Visibility.Hidden;
 
             SetLoaderVisible(false);
             UpdateDetails(new DebugGetAllDataParser());
@@ -103,7 +104,8 @@ namespace Galaxy_Buds_Client.ui
                         ExtendedStatusUpdateParser p = (ExtendedStatusUpdateParser)parser;
                         BatteryTemperatureLeft.Content = p.PlacementL.ToString();
                         BatteryTemperatureRight.Content = p.PlacementR.ToString();
-                        BatteryCase.Content = p.BatteryCase <= 0 ? "" : $"Case: {p.BatteryCase}%";
+                        BatteryCase.Content = p.BatteryCase <= 0 ? "" : $"{p.BatteryCase}%";
+                        CaseLabel.Visibility = p.BatteryCase <= 0 ? Visibility.Hidden : Visibility.Visible;
                     }
                 });
             }
@@ -118,7 +120,9 @@ namespace Galaxy_Buds_Client.ui
                         StatusUpdateParser p = (StatusUpdateParser)parser;
                         BatteryTemperatureLeft.Content = p.PlacementL.ToString();
                         BatteryTemperatureRight.Content = p.PlacementR.ToString();
-                        BatteryCase.Content = p.BatteryCase <= 0 ? "" : $"Case: {p.BatteryCase}%";
+                        BatteryCase.Content = p.BatteryCase <= 0 ? "" : $"{p.BatteryCase}%";
+                        CaseLabel.Visibility = p.BatteryCase <= 0 ? Visibility.Hidden : Visibility.Visible;
+
                     }
                 });
             }
@@ -144,6 +148,7 @@ namespace Galaxy_Buds_Client.ui
             if (BluetoothService.Instance.ActiveModel == Model.Buds)
             {
                 BatteryCase.Content = "";
+                CaseLabel.Visibility = Visibility.Hidden;
             }
         }
 
