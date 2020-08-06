@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.parser;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client.ui
 {
@@ -24,7 +25,7 @@ namespace Galaxy_Buds_Client.ui
     {
         private MainWindow _mainWindow;
 
-        private readonly String Waiting = "Waiting for device response...";
+        private String Waiting => Loc.GetString("system_waiting_for_device");
 
         public FactoryResetPage(MainWindow mainWindow)
         {
@@ -42,13 +43,11 @@ namespace Galaxy_Buds_Client.ui
                 LoadingSpinner.Stop();
                 BackButton.Visibility = Visibility.Visible;
                 FactoryReset.IsEnabled = true;
-                FactoryReset.Text = "Confirm factory reset";
+                FactoryReset.Text = Loc.GetString("factory_confirm");
 
                 if (e != 0)
-                    MessageBox.Show($"Device returned error code: {e}\n" +
-                                    $"Make sure both Earbuds are turned on and reachable.\n" +
-                                    $"You might need to manually reconnect your Earbuds.", "Factory reset failed", 
-                                    MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(string.Format(Loc.GetString("factory_error"), e),
+                        Loc.GetString("factory_error_title"), MessageBoxButton.OK, MessageBoxImage.Error);
 
                 _mainWindow.ReturnToHome();
             });

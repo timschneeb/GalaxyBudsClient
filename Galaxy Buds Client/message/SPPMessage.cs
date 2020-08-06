@@ -3,6 +3,7 @@ using System.IO;
 using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.parser;
 using Galaxy_Buds_Client.util;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client.message
 {
@@ -96,16 +97,16 @@ namespace Galaxy_Buds_Client.message
 
             if(raw.Length < 6)
             {
-                throw new InvalidDataException("Message too small");
+                throw new InvalidDataException(Loc.GetString("sppmsg_too_small"));
             }
 
             if(raw[0] != (byte)Constants.SOM && BluetoothService.Instance.ActiveModel == Model.Buds)
             {
-                throw new InvalidDataException("Invalid SOM");
+                throw new InvalidDataException(Loc.GetString("sppmsg_invalid_som"));
             }
             else if (raw[0] != (byte)Constants.SOMPlus && BluetoothService.Instance.ActiveModel == Model.BudsPlus)
             {
-                throw new InvalidDataException("Invalid SOM");
+                throw new InvalidDataException(Loc.GetString("sppmsg_invalid_som"));
             }
 
             draft.Id = (MessageIds)Convert.ToInt32(raw[3]);
@@ -146,16 +147,16 @@ namespace Galaxy_Buds_Client.message
 
             if (size != draft.Size)
             {
-                throw new InvalidDataException("Payload size mismatch");
+                throw new InvalidDataException(Loc.GetString("sppmsg_size_mismatch"));
             }
 
             if (raw[4 + rawPayloadSize + 2] != (byte)Constants.EOM && BluetoothService.Instance.ActiveModel == Model.Buds)
             {
-                throw new InvalidDataException("Invalid EOM");
+                throw new InvalidDataException(Loc.GetString("sppmsg_invalid_eom"));
             }
             else if (raw[4 + rawPayloadSize + 2] != (byte)Constants.EOMPlus && BluetoothService.Instance.ActiveModel == Model.BudsPlus)
             {
-                throw new InvalidDataException("Invalid EOM");
+                throw new InvalidDataException(Loc.GetString("sppmsg_invalid_eom"));
             }
 
             return draft;

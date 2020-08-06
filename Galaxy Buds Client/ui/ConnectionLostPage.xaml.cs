@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.parser;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client.ui
 {
@@ -51,7 +52,7 @@ namespace Galaxy_Buds_Client.ui
             Dispatcher.Invoke(() =>
             {
                 if (info == "")
-                    info = "None";
+                    info = Loc.GetString("connlost_noinfo");
                 AdditionalInfo.Text = info;
             });
 
@@ -64,7 +65,7 @@ namespace Galaxy_Buds_Client.ui
                 LoadingSpinner.Visibility = Visibility.Hidden;
                 LoadingSpinner.Stop();
                 Retry.IsEnabled = true;
-                Retry.Text = "Connect";
+                Retry.Text = Loc.GetString("connlost_connect");
             });
 
         }
@@ -74,7 +75,7 @@ namespace Galaxy_Buds_Client.ui
             LoadingSpinner.Visibility = Visibility.Visible;
             LoadingSpinner.Start();
             Retry.IsEnabled = false;
-            Retry.Text = "Connecting...";
+            Retry.Text = Loc.GetString("connlost_connecting");
 
             Task.Delay(50).ContinueWith(t =>
             {

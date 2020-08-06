@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using AutoUpdaterDotNET;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client.ui
 {
@@ -30,7 +31,8 @@ namespace Galaxy_Buds_Client.ui
         public void SetInfo(UpdateInfoEventArgs args)
         {
             _args = args;
-            Title.Text = $"Version {args.CurrentVersion} of Galaxy Buds Manager has been released";
+            Title.Text =
+                string.Format(Loc.GetString("updater_newrelease"), args.CurrentVersion);
         }
 
         public override void OnPageShown()

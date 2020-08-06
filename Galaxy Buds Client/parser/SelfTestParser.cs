@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Windows.Forms.VisualStyles;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client.parser
 {
@@ -99,7 +101,8 @@ namespace Galaxy_Buds_Client.parser
                 if (property.Name == "HandledType" || property.Name == "ActiveModel")
                     continue;
 
-                map.Add(property.Name, ((bool)property.GetValue(this)) ? "Pass" : "Fail");
+                map.Add(property.Name, ((bool)property.GetValue(this)) ?
+                    Loc.GetString("selftest_pass") : Loc.GetString("selftest_fail"));
             }
 
             return map;

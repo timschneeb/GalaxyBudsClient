@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.parser;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client.ui
 {
@@ -34,7 +35,7 @@ namespace Galaxy_Buds_Client.ui
 
         private void InstanceOnSwVersionResponse(object sender, string e)
         {
-            Dispatcher.Invoke(() => { CurrentFw.Text = $"Current Firmware version: {e.Remove(0, 1)}"; });
+            Dispatcher.Invoke(() => { CurrentFw.Text = $"{Loc.GetString("unsupported_feature_current_fwver")} {e.Remove(0, 1)}"; });
         }
 
 
@@ -50,7 +51,7 @@ namespace Galaxy_Buds_Client.ui
         {
             Dispatcher.Invoke(() =>
             {
-                RequiredFw.Text = $"Required Firmware version: {e}";
+                RequiredFw.Text = $"{Loc.GetString("unsupported_feature_required_fwver")} {e}";
             });
         }
 

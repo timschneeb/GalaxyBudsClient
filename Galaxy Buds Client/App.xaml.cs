@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client
 {
@@ -23,6 +24,8 @@ namespace Galaxy_Buds_Client
 
         private void App_Startup(object sender, StartupEventArgs e)
         {
+            Loc.Load();
+
             bool startMinimized = false;
             for (int i = 0; i != e.Args.Length; ++i)
             {

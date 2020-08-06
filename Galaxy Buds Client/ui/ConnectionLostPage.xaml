@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Galaxy_Buds_Client.ui"
              xmlns:element="clr-namespace:Galaxy_Buds_Client.ui.element"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="500" d:DesignWidth="700">
     <Grid Margin="0,0,0,20" >
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -27,7 +27,7 @@
                     <ColumnDefinition Width="Auto" />
 
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Margin="20,0,0,0" Content="Unable to establish connection" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20"/>
+                <Label Grid.Column="0" Margin="20,0,0,0" Content="{DynamicResource connlost_header}" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20"/>
             </Grid>
         </Border>
         <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
@@ -38,28 +38,22 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Foreground="{DynamicResource ForegroundTextBrush}" TextWrapping="Wrap" Margin="20,20,20,0" FontSize="14">
-                Unable to establish a connection to your Earbuds.<LineBreak/>
+                <Run Text="{DynamicResource connlost_description_p1}"/><LineBreak/>
                 <LineBreak/>
-                Please check your Bluetooth settings and make sure your Earbuds are turned on and bonded to this computer.
-                You can also register a new pair if needed. In that case, please select "Options > Deregister device".<LineBreak/>
+                <Run Text="{DynamicResource connlost_description_p2}"/>
                 <LineBreak/>
-                Additional information:
+                <LineBreak/>
+                <Run Text="{DynamicResource connlost_description_p3}"/>
                 </TextBlock>
-                <TextBlock x:Name="AdditionalInfo" Grid.Row="1" Foreground="{DynamicResource ForegroundTextBrush}" TextWrapping="Wrap" Margin="20,0,20,20" FontSize="14">
-                Placeholder
-                </TextBlock>
+                <TextBlock x:Name="AdditionalInfo" Grid.Row="1" Foreground="{DynamicResource ForegroundTextBrush}" Text="{DynamicResource connlost_noinfo}" TextWrapping="Wrap" Margin="20,0,20,20" FontSize="14"/>
             </Grid>
         </Border>
         <Border Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518" MouseLeftButtonUp="Retry_OnMouseLeftButtonUp"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <element:ListItem  FontSize="18" x:Name="Retry" Text="Connect" SourceImage="/Resources/device/neutral_gray.png" Margin="20,0,20,0" />
-                    <element:LoadingSpinner x:Name="LoadingSpinner" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,15,-245,15"/>
+                    <element:ListItem  FontSize="18" x:Name="Retry" Text="{DynamicResource connlost_connect}" SourceImage="/Resources/device/neutral_gray.png" Margin="20,0,20,0" />
+                    <element:LoadingSpinner x:Name="LoadingSpinner"  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,15,15,15"/>
                 </Grid>
             </Border>
         </Border>

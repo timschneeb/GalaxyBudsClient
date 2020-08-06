@@ -1,20 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.parser;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client.ui
 {
@@ -24,8 +14,9 @@ namespace Galaxy_Buds_Client.ui
     public partial class SystemPage : BasePage
     {
         private MainWindow _mainWindow;
-
-        private readonly String Waiting = "Waiting for device response...";
+        private String Waiting => Loc.GetString("system_waiting_for_device");
+        private String Left => Loc.GetString("left");
+        private String Right => Loc.GetString("right");
 
         public SystemPage(MainWindow mainWindow)
         {
@@ -58,7 +49,7 @@ namespace Galaxy_Buds_Client.ui
         {
             Dispatcher.Invoke(() =>
             {
-                SerialNumber.TextDetail = $"Left: {e.LeftSerialNumber}, Right: {e.RightSerialNumber}";
+                SerialNumber.TextDetail = $"{Left}: {e.LeftSerialNumber}, {Right}: {e.RightSerialNumber}";
             });
         }
 
@@ -66,10 +57,10 @@ namespace Galaxy_Buds_Client.ui
         {
             Dispatcher.Invoke(() =>
             {
-                BatteryType.TextDetail = $"Left: {e.LeftBatteryType}, Right: {e.RightBatteryType}";
+                BatteryType.TextDetail = $"{Left}: {e.LeftBatteryType}, {Right}: {e.RightBatteryType}";
                 if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
                 {
-                    BatteryType.TextDetail = "Not specified";
+                    BatteryType.TextDetail = Loc.GetString("system_battery_type_unknown");
                 }
             });
         }
@@ -112,13 +103,13 @@ namespace Galaxy_Buds_Client.ui
                 HwVer.TextDetail = e.HardwareVersion;
                 SwVer.TextDetail = e.SoftwareVersion;
                 TouchFwVer.TextDetail = e.TouchSoftwareVersion;
-                BtAddr.TextDetail = $"Left: {e.LeftBluetoothAddress}, Right: {e.RightBluetoothAddress}";
-                Proximity.TextDetail = $"Left: {e.LeftProximity:N}, Right: {e.RightProximity:N}";
-                Thermo.TextDetail = $"Left: {e.LeftThermistor:N} °C, Right: {e.RightThermistor:N} °C";
-                AdcSoc.TextDetail = $"Left: {e.LeftAdcSOC:N}%, Right: {e.RightAdcSOC:N}%";
-                AdcVoltage.TextDetail = $"Left: {e.LeftAdcVCell:N}V, Right: {e.RightAdcVCell:N}V";
-                AdcCurrent.TextDetail = $"Left: {e.LeftAdcCurrent:N}mA, Right: {e.RightAdcCurrent:N}mA";
-                Hall.TextDetail = $"Left: {e.LeftHall}, Right: {e.RightHall}";
+                BtAddr.TextDetail = $"{Left}: {e.LeftBluetoothAddress}, {Right}: {e.RightBluetoothAddress}";
+                Proximity.TextDetail = $"{Left}: {e.LeftProximity:N}, {Right}: {e.RightProximity:N}";
+                Thermo.TextDetail = $"{Left}: {e.LeftThermistor:N} °C, {Right}: {e.RightThermistor:N} °C";
+                AdcSoc.TextDetail = $"{Left}: {e.LeftAdcSOC:N}%, {Right}: {e.RightAdcSOC:N}%";
+                AdcVoltage.TextDetail = $"{Left}: {e.LeftAdcVCell:N}V, {Right}: {e.RightAdcVCell:N}V";
+                AdcCurrent.TextDetail = $"{Left}: {e.LeftAdcCurrent:N}mA, {Right}: {e.RightAdcCurrent:N}mA";
+                Hall.TextDetail = $"{Left}: {e.LeftHall}, {Right}: {e.RightHall}";
             });
         }
 

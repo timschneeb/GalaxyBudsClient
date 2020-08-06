@@ -41,7 +41,7 @@
                         </Image>
                     </Button>
                 </Border>
-                <Label Grid.Column="1" Content="Settings" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241"/>
+                <Label Grid.Column="1" Content="{DynamicResource settings_header}" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241"/>
                 <element:LoadingSpinner Grid.Column="3" x:Name="LoadingSpinner" Margin="321,19,-341,19"/>
             </Grid>
         </Border>
@@ -61,7 +61,7 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <element:DetailListItem Grid.Column="0" Text="Dark Mode" TextDetail="Use a darker color scheme" Grid.ColumnSpan="2"/>
+                        <element:DetailListItem Grid.Column="0" Text="{DynamicResource settings_darkmode}" TextDetail="{DynamicResource settings_darkmode_description}" Grid.ColumnSpan="2"/>
                             <element:ToggleSwitch x:Name="DarkModeToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
                         </Grid>
                 </Border>
@@ -74,13 +74,13 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <element:DetailListItem Grid.Column="0" Text="Transition" TextDetail="Disable slide transitions" Grid.ColumnSpan="2"/>
+                        <element:DetailListItem Grid.Column="0" Text="{DynamicResource settings_transitions}" TextDetail="{DynamicResource settings_transitions_description}" Grid.ColumnSpan="2"/>
                         <element:ToggleSwitch x:Name="TransitionToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
                     </Grid>
                 </Border>
 
                 <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}"
-                        MouseLeftButtonUp="Units_OnMouseLeftButtonUp">
+                        MouseLeftButtonUp="Locale_OnMouseLeftButtonUp">
                     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,0,20,3" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -88,8 +88,9 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <element:DetailListItem Grid.Column="0" Text="Units" TextDetail="Use Fahrenheit instead of Celsius" Grid.ColumnSpan="2"/>
-                        <element:ToggleSwitch x:Name="FahrenheitToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
+                        <element:DetailListItem Grid.Column="0" Text="{DynamicResource settings_localization_disable}" 
+                                                TextDetail="{DynamicResource settings_localization_disable_description}" Grid.ColumnSpan="2"/>
+                        <element:ToggleSwitch x:Name="LocaleToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
                     </Grid>
                 </Border>
             </Grid>
@@ -110,7 +111,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <element:DetailListItem Grid.Column="0" Text="Minimize to tray" TextDetail="Keep in background instead of terminating the app" Grid.ColumnSpan="2"/>
+                        <element:DetailListItem Grid.Column="0" Text="{DynamicResource settings_minimize_tray}" TextDetail="{DynamicResource settings_minimize_tray_description}" Grid.ColumnSpan="2"/>
                         <element:ToggleSwitch x:Name="MinimizeTrayToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
                     </Grid>
                 </Border>
@@ -123,7 +124,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <element:DetailListItem Grid.Column="0" Text="Launch on boot" TextDetail="Start minimized on system boot" Grid.ColumnSpan="2"/>
+                        <element:DetailListItem Grid.Column="0" Text="{DynamicResource settings_autostart}" TextDetail="{DynamicResource settings_autostart_description}" Grid.ColumnSpan="2"/>
                         <element:ToggleSwitch x:Name="AutostartToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
                     </Grid>
                 </Border>
@@ -139,12 +140,12 @@
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
                 <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="PopupSettings_OnMouseLeftButtonUp" >
-                    <element:ListItem x:Name="PopupSettings" Text="Configure connection popup" SourceImage="/Resources/features/notification_color.png" 
+                    <element:ListItem x:Name="PopupSettings" Text="{DynamicResource settings_connpopup}" SourceImage="/Resources/features/notification_color.png" 
                                       Margin="10,0,30,0" FontSize="18"  />
                 </Border>
                 <Separator Grid.Row="1" Margin="75,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                 <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="DevMode_OnMouseLeftButtonUp">
-                    <element:ListItem x:Name="DevMode" Text="Enter developer mode" SourceImage="/Resources/features/labs_color.png" 
+                    <element:ListItem x:Name="DevMode" Text="{DynamicResource settings_devmode}" SourceImage="/Resources/features/labs_color.png" 
                                       Margin="10,0,30,0" FontSize="18" />
                 </Border>
             </Grid>

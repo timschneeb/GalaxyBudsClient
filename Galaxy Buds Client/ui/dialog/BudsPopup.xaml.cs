@@ -8,6 +8,7 @@ using System.Windows.Media.Animation;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.transition;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client.ui.dialog {
     /// <summary>
@@ -45,7 +46,7 @@ namespace Galaxy_Buds_Client.ui.dialog {
             if (model == Model.BudsPlus) mod = "+";
             string name = Environment.UserName.Split(' ')[0];
 
-            Greeting.Content = $"{name}'s Galaxy Buds{mod}";
+            Greeting.Content = string.Format(Loc.GetString("connpopup_title"), name, mod);
             UpdateContent(left, right, box);
             
             SPPMessageHandler.Instance.StatusUpdate += Instance_OnStatusUpdate;

@@ -114,6 +114,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BluetoothService.cs" />
+    <Compile Include="model\LocalizedDescriptionAttribute.cs" />
+    <Compile Include="ui\devmode\TranslatorMode.xaml.cs">
+      <DependentUpon>TranslatorMode.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ui\dialog\BudsPopup.xaml.cs">
       <DependentUpon>BudsPopup.xaml</DependentUpon>
     </Compile>
@@ -249,6 +253,7 @@
     <Compile Include="message\SPPMessagePrivate.cs" />
     <Compile Include="message\SPPMessage.cs" />
     <Compile Include="ui\element\TextBoxMasking.cs" />
+    <Compile Include="util\Localization.cs" />
     <Compile Include="util\NativeUtils.cs" />
     <Compile Include="util\SystemHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -262,6 +267,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Resource>
+    <Page Include="i18N\de.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="i18N\en.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\devmode\TranslatorMode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ui\dialog\BudsPopup.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -424,6 +441,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />

@@ -21,6 +21,7 @@ using Galaxy_Buds_Client.model;
 using Galaxy_Buds_Client.ui.devmode;
 using Galaxy_Buds_Client.ui.element;
 using Galaxy_Buds_Client.util;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client.ui
 {
@@ -43,7 +44,7 @@ namespace Galaxy_Buds_Client.ui
             LoadingSpinner.Visibility = Visibility.Hidden;
 
             TransitionToggle.SetChecked(Properties.Settings.Default.DisableSlideTransition);
-            FahrenheitToggle.SetChecked(Properties.Settings.Default.UseFahrenheit);
+            LocaleToggle.SetChecked(Properties.Settings.Default.ForceEnglish);
             MinimizeTrayToggle.SetChecked(Properties.Settings.Default.MinimizeTray);
             AutostartToggle.SetChecked(AutoStartHelper.Enabled);
             DarkModeToggle.SetChecked(Properties.Settings.Default.DarkMode);
@@ -65,16 +66,16 @@ namespace Galaxy_Buds_Client.ui
             SaveChanges();
         }
 
-        private void Units_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void Locale_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            FahrenheitToggle.Toggle();
-            BluetoothService.Instance.SendAsync(SPPMessageBuilder.Info.GetAllData());
+            LocaleToggle.Toggle();
             SaveChanges();
+            Loc.Load();
         }
 
         private void SaveChanges()
         {
-            Properties.Settings.Default.UseFahrenheit = FahrenheitToggle.IsChecked;
+            Properties.Settings.Default.ForceEnglish = LocaleToggle.IsChecked;
             Properties.Settings.Default.DisableSlideTransition = TransitionToggle.IsChecked;
             Properties.Settings.Default.MinimizeTray = MinimizeTrayToggle.IsChecked;
             Properties.Settings.Default.DarkMode = DarkModeToggle.IsChecked;

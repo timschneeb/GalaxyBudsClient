@@ -226,5 +226,17 @@ namespace Galaxy_Buds_Client.Properties {
                 this["ConnectionPopupPosition"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ForceEnglish {
+            get {
+                return ((bool)(this["ForceEnglish"]));
+            }
+            set {
+                this["ForceEnglish"] = value;
+            }
+        }
     }
 }

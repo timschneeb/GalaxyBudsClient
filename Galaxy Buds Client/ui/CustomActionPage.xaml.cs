@@ -8,6 +8,7 @@ using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model;
 using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.ui.dialog;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 using Microsoft.Win32;
 
 namespace Galaxy_Buds_Client.ui
@@ -60,7 +61,7 @@ namespace Galaxy_Buds_Client.ui
                 if (action == CustomAction.Actions.RunExternalProgram)
                 {
                     OpenFileDialog dlg = new OpenFileDialog();
-                    dlg.Title = "Select executable...";
+                    dlg.Title = Loc.GetString("cact_external_app_dialog_title");
                     dlg.Multiselect = false;
                     dlg.Filter = "Executable Files|*.exe;*.bat;*.cmd;*.pif|" +
                                  "All Files (*.*)|*.*";
@@ -99,7 +100,7 @@ namespace Galaxy_Buds_Client.ui
         {
             LoadingSpinner.Visibility = Visibility.Hidden; 
             ActionBorder.ContextMenu = GenerateMenu(ActionBorder);
-            Action.TextDetail = "Not set";
+            Action.TextDetail = Loc.GetString("touchoption_custom_null");
             _action = null;
         }
 

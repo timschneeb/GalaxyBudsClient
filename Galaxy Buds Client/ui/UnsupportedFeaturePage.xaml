@@ -32,7 +32,7 @@
                         </Image>
                     </Button>
                 </Border>
-                <Label Grid.Column="1" Content="Please update your firmware" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241"/>
+                <Label Grid.Column="1" Content="{DynamicResource unsupported_feature_header}" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241"/>
                 <element:LoadingSpinner Grid.Column="3" x:Name="LoadingSpinner" Margin="321,19,-341,19"/>
             </Grid>
         </Border>
@@ -45,15 +45,17 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <TextBlock Margin="20" Grid.Row="0" Foreground="{DynamicResource ForegroundTextBrush}" TextWrapping="Wrap" FontSize="16">
-                 The Firmware of your Galaxy Buds is too old and does not support this feature.<LineBreak/>
-                 Please update to the latest Firmware using the official Windows updater or using the official Wearable android app.<LineBreak/>
-                 Make sure you close this app if you use the Windows updater. Only one application can talk to the Buds at a time.
+                    <Run Text="{DynamicResource unsupported_feature_description_p1}"/>
+                    <LineBreak />
+                    <Run Text="{DynamicResource unsupported_feature_description_p2}"/>
+                    <LineBreak />
+                    <Run Text="{DynamicResource unsupported_feature_description_p3}"/>
                 </TextBlock>
                 <TextBlock Name="CurrentFw" Margin="20,0,20,5" Grid.Row="1" Foreground="{DynamicResource ForegroundTextBrush}" TextWrapping="Wrap" FontSize="16">
-                    Current Firmware version: Unknown
+                    <Run Text="{DynamicResource unsupported_feature_current_fwver_null}"/>
                 </TextBlock>
                 <TextBlock Name="RequiredFw" Margin="20,0,20,20" Grid.Row="2" Foreground="{DynamicResource ForegroundTextBrush}" TextWrapping="Wrap" FontSize="16">
-                    Required Firmware version: Not specified
+                    <Run Text="{DynamicResource unsupported_feature_required_fwver_null}"/>
                 </TextBlock>
             </Grid>
         </Border>

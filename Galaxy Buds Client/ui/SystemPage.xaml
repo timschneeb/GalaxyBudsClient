@@ -33,7 +33,7 @@
                         </Image>
                     </Button>
                 </Border>
-                <Label Grid.Column="1" Content="System Information" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20"/>
+                <Label Grid.Column="1" Content="{DynamicResource system_header}" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20"/>
                 <element:LoadingSpinner Grid.Column="2" x:Name="LoadingSpinner" Height="20" Margin="235,20,-235,18" />
             </Grid>
         </Border>
@@ -46,12 +46,12 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Border Grid.Column="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                    <element:ListItem x:Name="RunSelfTest" Text="Run self test" SourceImage="/Resources/features/info_gray.png" Margin="20,0,20,0"
+                    <element:ListItem x:Name="RunSelfTest" Text="{DynamicResource system_selftest}" SourceImage="/Resources/features/info_gray.png" Margin="20,0,20,0"
                                       FontSize="18" MouseLeftButtonUp="RunSelfTest_OnMouseLeftButtonUp"/>
                     </Border>
                 <Separator Grid.Column="1" Background="{DynamicResource BorderSeparatorBrush}" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                     <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                    <element:ListItem x:Name="FactoryReset" Text="Factory reset" SourceImage="/Resources/device/neutral_gray.png" Margin="20,0,20,0" 
+                    <element:ListItem x:Name="FactoryReset" Text="{DynamicResource system_factory_reset}" SourceImage="/Resources/device/neutral_gray.png" Margin="20,0,20,0" 
                                       FontSize="18" MouseLeftButtonUp="FactoryReset_OnMouseLeftButtonUp"/>
                     </Border>
                 </Grid>
@@ -90,59 +90,59 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="HwVer" Text="Hardware Version" TextDetail="rev0.0" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="HwVer" Text="{DynamicResource system_hwver}" TextDetail="rev0.0" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="SwVer" Text="Software Version" TextDetail="R170XXU0ASD4" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="SwVer" Text="{DynamicResource system_swver}" TextDetail="R170XXU0ASD4" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="3" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="4" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="TouchFwVer" Text="Touch Firmware Version" TextDetail="38" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="TouchFwVer" Text="{DynamicResource system_touchver}" TextDetail="38" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="5" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="6" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="ProtocolRevision" Text="Protocol Revision" TextDetail="rev11" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="ProtocolRevision" Text="{DynamicResource system_protover}" TextDetail="rev11" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="7" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="8" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="BtAddr" Text="Bluetooth Address" TextDetail="Left: CC:12:19:90:71:50, Right: CC:12:19:90:09:EA" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="BtAddr" Text="{DynamicResource system_btaddr}" TextDetail="Left: CC:12:19:90:71:50, Right: CC:12:19:90:09:EA" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="9" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="10" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="SerialNumber" Text="Serial Number" TextDetail="Left: RFAM8001KWZ, Right: RFAM8001QWA" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="SerialNumber" Text="{DynamicResource system_serial}" TextDetail="Left: RFAM8001KWZ, Right: RFAM8001QWA" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="11" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="12" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="BuildString" Text="Build Info" TextDetail="Left: RFAM8001KWZ, Right: RFAM8001QWA" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="BuildString" Text="{DynamicResource system_build_info}" TextDetail="Left: RFAM8001KWZ, Right: RFAM8001QWA" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="13" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="14" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="BatteryType" Text="Battery Type" TextDetail="Left: 3V, Right: 0V" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="BatteryType" Text="{DynamicResource system_battery_type}" TextDetail="Left: 3V, Right: 0V" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="15" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="16" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="Proximity" Text="Proximity Measurement" TextDetail="Left: 700, Right: 0" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="Proximity" Text="{DynamicResource system_proximity}" TextDetail="Left: 700, Right: 0" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="17" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="18" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="Thermo" Text="Thermistor Measurement" TextDetail="Left: 29.7 °C, Right: 29.7 °C" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="Thermo" Text="{DynamicResource system_thermo}" TextDetail="Left: 29.7 °C, Right: 29.7 °C" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="19" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="20" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="Hall" Text="Hall Measurement" TextDetail="Left: 1 1, Right: 1 1" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="Hall" Text="{DynamicResource system_hall}" TextDetail="Left: 1 1, Right: 1 1" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="21" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="22" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="AdcSoc" Text="ADC SOC" TextDetail="Left: 75.29%, Right: 78.65%" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="AdcSoc" Text="{DynamicResource system_adc_soc}" TextDetail="Left: 75.29%, Right: 78.65%" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="23" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="24" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="AdcVoltage" Text="ADC Voltage" TextDetail="Left: 4.14V, Right: 4.11V" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="AdcVoltage" Text="{DynamicResource system_adc_voltage}" TextDetail="Left: 4.14V, Right: 4.11V" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="25" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="26" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="AdcCurrent" Text="ADC Current" TextDetail="Left -5.05mA, Right -5.80mA" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="AdcCurrent" Text="{DynamicResource system_adc_current}" TextDetail="Left -5.05mA, Right -5.80mA" Margin="20,0,20,0"/>
                     </Border>
                 </Grid>
             </ScrollViewer>

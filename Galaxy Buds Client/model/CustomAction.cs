@@ -8,17 +8,17 @@ namespace Galaxy_Buds_Client.model
     {
         public enum Actions
         {
-            [Description("Ambient Volume Up")]
+            [LocalizedDescription("touchoption_custom_ambient_up")]
             AmbientVolumeUp,
-            [Description("Ambient Volume Down")]
+            [LocalizedDescription("touchoption_custom_ambient_down")]
             AmbientVolumeDown,
-            [Description("Toggle Equalizer")]
+            [LocalizedDescription("touchoption_custom_toggle_eq")]
             EnableEqualizer,
-            [Description("Next Equalizer Preset")]
+            [LocalizedDescription("touchoption_custom_next_eq_preset")]
             SwitchEqualizerPreset,
-            [Description("Press Hotkey...")]
+            [LocalizedDescription("touchoption_custom_trigger_hotkey")]
             Hotkey,
-            [Description("Run External Program...")]
+            [LocalizedDescription("touchoption_custom_external_app")]
             RunExternalProgram
         }
 

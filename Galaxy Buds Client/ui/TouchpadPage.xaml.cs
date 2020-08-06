@@ -22,6 +22,7 @@ using Galaxy_Buds_Client.Properties;
 using Galaxy_Buds_Client.transition;
 using Galaxy_Buds_Client.ui.element;
 using Galaxy_Buds_Client.util;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client.ui
 {
@@ -65,23 +66,27 @@ namespace Galaxy_Buds_Client.ui
             ctxMenu.PlacementTarget = target;
             ctxMenu.Placement = PlacementMode.Bottom;
 
-            Menu_AddItem(ctxMenu, "Custom Action...",
+            Menu_AddItem(ctxMenu, Loc.GetString("touchoption_custom"),
                 side == Devices.L ? TouchOption.Universal.OtherL : TouchOption.Universal.OtherR, side);
             Menu_AddSeparator(ctxMenu);
-            Menu_AddItem(ctxMenu, "Volume " + (side == Devices.L ? "Down" : "Up"), TouchOption.Universal.Volume, side);
+
+            Menu_AddItem(ctxMenu,
+                side == Devices.L ? Loc.GetString("touchoption_volume_down") : Loc.GetString("touchoption_volume_up"),
+                TouchOption.Universal.Volume, side);
             Menu_AddSeparator(ctxMenu);
-            Menu_AddItem(ctxMenu, "Ambient Sound", TouchOption.Universal.AmbientSound, side);
+
+            Menu_AddItem(ctxMenu, Loc.GetString("touchoption_ambientsound"), TouchOption.Universal.AmbientSound, side);
             Menu_AddSeparator(ctxMenu);
 
             if (BluetoothService.Instance.ActiveModel == Model.Buds)
             {
-                Menu_AddItem(ctxMenu, "Quick Ambient Sound", TouchOption.Universal.QuickAmbientSound, side);
+                Menu_AddItem(ctxMenu, Loc.GetString("touchoption_quickambientsound"), TouchOption.Universal.QuickAmbientSound, side);
                 Menu_AddSeparator(ctxMenu);
             }
 
-            Menu_AddItem(ctxMenu, "Voice Assistant (Android only)", TouchOption.Universal.VoiceAssistant, side);
+            Menu_AddItem(ctxMenu, Loc.GetString("touchoption_voice"), TouchOption.Universal.VoiceAssistant, side);
             Menu_AddSeparator(ctxMenu);
-            Menu_AddItem(ctxMenu, "Spotify SpotOn (Android only)", TouchOption.Universal.SpotifySpotOn, side);
+            Menu_AddItem(ctxMenu, Loc.GetString("touchoption_spotify"), TouchOption.Universal.SpotifySpotOn, side);
             return ctxMenu;
         }
 
@@ -127,26 +132,28 @@ namespace Galaxy_Buds_Client.ui
             switch (b)
             {
                 case TouchOption.Universal.VoiceAssistant:
-                    return "Voice Assistant (Android only)";
+                    return Loc.GetString("touchoption_voice");
                 case TouchOption.Universal.QuickAmbientSound:
-                    return "Quick Ambient Sound";
+                    return Loc.GetString("touchoption_quickambientsound");
                 case TouchOption.Universal.Volume:
-                    return d == Devices.L ? "Volume Down" : "Volume Up";
+                    return d == Devices.L ?
+                        Loc.GetString("touchoption_volume_down") : 
+                        Loc.GetString("touchoption_volume_up");
                 case TouchOption.Universal.AmbientSound:
-                    return "Ambient Sound";
+                    return Loc.GetString("touchoption_ambientsound");
                 case TouchOption.Universal.SpotifySpotOn:
-                    return "Spotify SpotOn (Android only)";
+                    return Loc.GetString("touchoption_spotify");
                 case TouchOption.Universal.OtherL:
                     var currentCustomActionL = (Settings.Default.LeftCustomAction == -1) ? (CustomAction)null : 
                         new CustomAction((CustomAction.Actions) Settings.Default.LeftCustomAction, Settings.Default.LeftCustomActionParameter);
-                    return "Custom Action: " + (currentCustomActionL == null ? "Not set" : currentCustomActionL.ToString());
+                    return Loc.GetString("touchoption_custom_prefix") + " " + (currentCustomActionL == null ? Loc.GetString("touchoption_custom_null") : currentCustomActionL.ToString());
                 case TouchOption.Universal.OtherR:
                     var currentCustomActionR = (Settings.Default.RightCustomAction == -1) ? (CustomAction)null :
                         new CustomAction((CustomAction.Actions)Settings.Default.RightCustomAction, Settings.Default.RightCustomActionParameter);
-                    return "Custom Action: " + (currentCustomActionR == null ? "Not set" : currentCustomActionR.ToString());
+                    return Loc.GetString("touchoption_custom_prefix") + " " + (currentCustomActionR == null ? Loc.GetString("touchoption_custom_null") : currentCustomActionR.ToString());
             }
 
-            return "Unknown";
+            return Loc.GetString("touchoption_custom_unknown");
         }
 
         public override void OnPageShown()
@@ -175,7 +182,7 @@ namespace Galaxy_Buds_Client.ui
             if (_lastPressedMenu == Devices.L)
             {
                 _lastLeftOption = TouchOption.Universal.OtherL;
-                LeftOption.TextDetail = $"Custom Action: {e}";
+                LeftOption.TextDetail = $"{Loc.GetString("touchoption_custom_prefix")} {e}";
                 Settings.Default.LeftCustomAction = (int) e.Action;
                 Settings.Default.LeftCustomActionParameter = e.Parameter;
                 BluetoothService.Instance.SendAsync(SPPMessageBuilder.Touch.SetOptions(TouchOption.Universal.OtherL, _lastRightOption));
@@ -183,7 +190,7 @@ namespace Galaxy_Buds_Client.ui
             else
             {
                 _lastRightOption = TouchOption.Universal.OtherR;
-                RightOption.TextDetail = $"Custom Action: {e}";
+                RightOption.TextDetail = $"{Loc.GetString("touchoption_custom_prefix")} {e}";
                 Settings.Default.RightCustomAction = (int) e.Action;
                 Settings.Default.RightCustomActionParameter = e.Parameter;
                 BluetoothService.Instance.SendAsync(SPPMessageBuilder.Touch.SetOptions(_lastLeftOption, TouchOption.Universal.OtherR));

@@ -36,13 +36,13 @@
                         </Image>
                     </Button>
                 </Border>
-                <Label Grid.Column="1" Content="Connection popup" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241"/>
+                <Label Grid.Column="1" Content="{DynamicResource settings_cpopup_header}" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241"/>
                 <element:LoadingSpinner Grid.Column="3" x:Name="LoadingSpinner" Margin="321,19,-341,19"/>
             </Grid>
         </Border>
         <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
-            <element:CheckableDetailListItem Text="Enable popup on connection" TextDetail="Display a small notification popup informing about battery levels when the Buds are connected"
+            <element:CheckableDetailListItem Text="{DynamicResource settings_cpopup_enable}" TextDetail="{DynamicResource settings_cpopup_enable_description}"
                                              x:Name="EnablePopup" SwitchToggled="EnablePopup_OnSwitchToggled"/>
         </Border>
         <Border Grid.Row="4" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
@@ -55,14 +55,15 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" ContextMenuService.Placement="Bottom">
-                        <element:CheckableDetailListItem x:Name="CompactPopup" Text="Compact mode" TextDetail="Hide the header of the popup to save space"
+                        <element:CheckableDetailListItem x:Name="CompactPopup" Text="{DynamicResource settings_cpopup_compact}" TextDetail="{DynamicResource settings_cpopup_compact_description}"
                                                           SwitchToggled="CompactPopup_OnSwitchToggled" />
 
                     </Border>
                     <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="2" x:Name="PositionPopupBorder" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" 
                             MouseLeftButtonUp="PositionPopup_OnMouseLeftButtonUp" ContextMenuService.Placement="Bottom">
-                        <element:DetailListItem x:Name="PositionPopup" Text="Position" TextDetail="Unknown" Margin="20,8,20,8"/>
+                        <element:DetailListItem x:Name="PositionPopup" Text="{DynamicResource settings_cpopup_position}"
+                                                TextDetail="{DynamicResource settings_cpopup_position_placeholder}" Margin="20,8,20,8"/>
                     </Border>
                 </Grid>
             </ScrollViewer>
@@ -71,7 +72,7 @@
         <Border Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="TestPopup_OnMouseLeftButtonUp">
-                <element:ListItem x:Name="TestPopup" Text="Show demo popup" SourceImage="/Resources/features/labs_color.png" 
+                <element:ListItem x:Name="TestPopup" Text="{DynamicResource settings_cpopup_demo}" SourceImage="/Resources/features/labs_color.png" 
                                   Margin="10,0,30,0" FontSize="16" />
             </Border>
         </Border>

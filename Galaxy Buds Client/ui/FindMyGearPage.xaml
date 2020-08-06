@@ -32,7 +32,7 @@
                         </Image>
                     </Button>
                 </Border>
-                <Label Grid.Column="1" Content="Find my Earbuds" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20"/>
+                <Label Grid.Column="1" Content="{DynamicResource fmg_header}" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20"/>
                 <element:LoadingSpinner Grid.Column="3" x:Name="LoadingSpinner" Height="20" Margin="259,19,-279,19" />
             </Grid>
         </Border>
@@ -53,7 +53,7 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Image Grid.Column="0" Source="/Resources/warning.png" Height="20"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <Label Grid.Column="1" x:Name="EarbudWarningText" Content="Please remove both earbuds from your ear" Foreground="{DynamicResource ForegroundTextBrush}" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <Label Grid.Column="1" x:Name="EarbudWarningText" Content="{DynamicResource fmg_warning_both}" Foreground="{DynamicResource ForegroundTextBrush}" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                 </Grid>
             </Grid>
         </Border>

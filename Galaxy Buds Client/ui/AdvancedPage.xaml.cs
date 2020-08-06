@@ -20,6 +20,7 @@ using Galaxy_Buds_Client.model;
 using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.Properties;
 using Galaxy_Buds_Client.ui.element;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client.ui
 {
@@ -84,7 +85,9 @@ namespace Galaxy_Buds_Client.ui
         {
             if (!_seamlessSupported)
             {
-                _mainWindow.ShowUnsupportedFeaturePage("R170XXU0ATF2 or later");
+                _mainWindow.ShowUnsupportedFeaturePage(
+                    string.Format(
+                        Loc.GetString("adv_required_firmware_seamless_connection"), "R170XXU0ATF2"));
                 return;
             }
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetSeamlessConnection(e));

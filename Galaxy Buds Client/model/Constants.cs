@@ -11,17 +11,17 @@ namespace Galaxy_Buds_Client.model
     {
         public enum PopupPlacement
         {
-            [Description("Top left")]
+            [LocalizedDescription("connpopup_placement_tl")]
             TopLeft,
-            [Description("Top center")]
+            [LocalizedDescription("connpopup_placement_tc")]
             TopCenter,
-            [Description("Top right")]
+            [LocalizedDescription("connpopup_placement_tr")]
             TopRight,
-            [Description("Bottom left")]
+            [LocalizedDescription("connpopup_placement_bl")]
             BottomLeft,
-            [Description("Bottom center")]
+            [LocalizedDescription("connpopup_placement_bc")]
             BottomCenter,
-            [Description("Bottom right")]
+            [LocalizedDescription("connpopup_placement_br")]
             BottomRight,
         }
 
@@ -81,15 +81,15 @@ namespace Galaxy_Buds_Client.model
         {
             public enum Universal
             {
-                [Description("Voice Assistant (Android only)")]
+                [LocalizedDescription("touchoption_voice")]
                 VoiceAssistant,
-                [Description("Quick Ambient Sound")]
+                [LocalizedDescription("touchoption_quickambientsound")]
                 QuickAmbientSound,
-                [Description("Volume")]
+                [LocalizedDescription("touchoption_volume")]
                 Volume,
-                [Description("Ambient Sound")]
+                [LocalizedDescription("touchoption_ambientsound")]
                 AmbientSound,
-                [Description("Spotify (Android only)")]
+                [LocalizedDescription("touchoption_spotify")]
                 SpotifySpotOn,
                 OtherL,
                 OtherR

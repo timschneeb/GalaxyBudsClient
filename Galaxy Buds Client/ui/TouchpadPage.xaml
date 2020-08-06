@@ -35,7 +35,7 @@
                         </Image>
                     </Button>
                 </Border>
-                <Label Grid.Column="1" Content="Touchpad" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241"/>
+                <Label Grid.Column="1" Content="{DynamicResource touchpad_header}" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241"/>
                 <element:LoadingSpinner Grid.Column="3" x:Name="LoadingSpinner" Margin="321,19,-341,19"/>
             </Grid>
         </Border>
@@ -48,7 +48,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" Content="Lock Touchpad"
+                    <Label Grid.Column="0" Content="{DynamicResource touchpad_lock}"
                            Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     <element:ToggleSwitch x:Name="LockToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
                 </Grid>
@@ -64,18 +64,18 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Border Name="LeftOptionBorder" Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="LeftOption_OnMouseLeftButtonUp" ContextMenuService.Placement="Bottom">
-                        <element:DetailListItem x:Name="LeftOption" Text="Left Action" TextDetail="Unknown, device did not respond" Margin="20,0,20,0" />
+                        <element:DetailListItem x:Name="LeftOption" Text="{DynamicResource touchpad_left_action}" TextDetail="{DynamicResource touchoption_custom_unknown}" Margin="20,0,20,0" />
                     </Border>
                     <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Name="RightOptionBorder" Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="RightOption_OnMouseLeftButtonUp" ContextMenuService.Placement="Bottom">
-                        <element:DetailListItem x:Name="RightOption" Text="Right Action" TextDetail="Unknown, device did not respond" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="RightOption" Text="{DynamicResource touchpad_right_action}" TextDetail="{DynamicResource touchoption_custom_unknown}" Margin="20,0,20,0"/>
                     </Border>
                 </Grid>
             </ScrollViewer>
         </Border>
         <Border Name="DoubleTapVolumeBorder" Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
-            <element:CheckableDetailListItem Text="Double-Tap Earbud Edge" TextDetail="Double-tap the edge of the left or right earbud to turn the volume down or up"
+            <element:CheckableDetailListItem Text="{DynamicResource touchpad_double_tap_volume}" TextDetail="{DynamicResource touchpad_double_tap_volume_description}"
                                              x:Name="DoubleTapVolume" SwitchToggled="DoubleTapVolume_OnSwitchToggled" />
         </Border>
     </Grid>

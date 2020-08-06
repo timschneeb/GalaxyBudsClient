@@ -36,28 +36,28 @@
                         </Image>
                     </Button>
                 </Border>
-                <Label Grid.Column="1" Content="Advanced Settings" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241"/>
+                <Label Grid.Column="1" Content="{DynamicResource adv_header}" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241"/>
                 <element:LoadingSpinner Grid.Column="3" x:Name="LoadingSpinner" Margin="321,19,-341,19"/>
             </Grid>
         </Border>
         <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
-            <element:CheckableDetailListItem Text="Seamless Earbud Connection" TextDetail="Switch quickly to nearby devices without disconnecting your earbuds or turning on pairing mode"
+            <element:CheckableDetailListItem Text="{DynamicResource adv_seamless}" TextDetail="{DynamicResource adv_seamless_desc}"
                                              x:Name="SeamlessConnection" SwitchToggled="SeamlessConnection_OnSwitchToggled" />
         </Border>
         <Border Name="ResumeSensorBorder" Grid.Row="4" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
-            <element:CheckableDetailListItem Text="Resume/start playback if Buds are worn" TextDetail="Sends a global play/pause state change event when at least one of the proximity sensors is covered (Windows only)"
+            <element:CheckableDetailListItem Text="{DynamicResource adv_resume_playback}" TextDetail="{DynamicResource adv_resume_playback_desc}"
                                              x:Name="ResumeSensor" SwitchToggled="ResumeSensor_OnSwitchToggled" />
         </Border>
         <Border Name="SidetoneBorder" Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
-            <element:CheckableDetailListItem Text="Use Ambient Sound during calls" TextDetail="Hear your own voice more clearly while on the phone"
+            <element:CheckableDetailListItem Text="{DynamicResource adv_sidetone}" TextDetail="{DynamicResource adv_sidetone_desc}"
                                              x:Name="Sidetone" SwitchToggled="Sidetone_OnSwitchToggled" />
         </Border>
         <Border Name="GamingModeBorder"  Grid.Row="6" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                  Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
-            <element:CheckableDetailListItem Text="Force Gaming Mode" TextDetail="Minimize latency and adjust audio synchronization"
+            <element:CheckableDetailListItem Text="{DynamicResource adv_gaming_mode}" TextDetail="{DynamicResource adv_gaming_mode_desc}"
                                              x:Name="GamingMode" SwitchToggled="GamingMode_OnSwitchToggled" />
         </Border>
     </Grid>

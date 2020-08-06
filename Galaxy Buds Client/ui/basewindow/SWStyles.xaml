@@ -95,7 +95,7 @@
 
                                     <Button x:Name="OptionsLabel" Style="{StaticResource WindowButtonStyle}" 
                                           Visibility="Hidden" Height="36" Padding="20 0 0 0" Grid.Column="0" HorizontalAlignment="Left" >
-                                        <Label Content="Options" 
+                                        <Label Content="{DynamicResource optionsmenu_title}" 
                                                FontSize="13"
                                         HorizontalContentAlignment="Left"
                                         VerticalContentAlignment="Center"

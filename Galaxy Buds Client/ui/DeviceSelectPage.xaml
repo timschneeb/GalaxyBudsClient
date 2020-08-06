@@ -36,14 +36,14 @@
                         </Image>
                     </Button>
                 </Border>
-                <Label Grid.Column="1" Content="Select your Galaxy Buds" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20"/>
+                <Label Grid.Column="1" Content="{DynamicResource devsel_header}" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20"/>
             </Grid>
         </Border>
         <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Scan_OnMouseLeftButtonUp">
                 <Grid>
-                    <element:ListItem FontSize="18" x:Name="Scan" Text="Start device discovery"  SourceImage="{DynamicResource SearchButton}" Margin="20,0,20,0" />
+                    <element:ListItem FontSize="18" x:Name="Scan" Text="{DynamicResource devsel_search}"  SourceImage="{DynamicResource SearchButton}" Margin="20,0,20,0" />
                     <element:LoadingSpinner x:Name="LoadingSpinner" Height="20" Margin="470,15,0,15" HorizontalAlignment="Left" Width="20" />
                 </Grid>
             </Border>
@@ -60,15 +60,15 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="DevName" Text="Device Name" TextDetail="No device selected" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="DevName" Text="{DynamicResource devsel_device_name}" TextDetail="{DynamicResource devsel_noselection}" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="DevAddress" Text="MAC-Address" TextDetail="No device selected" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="DevAddress" Text="{DynamicResource devsel_btaddr}" TextDetail="{DynamicResource devsel_noselection}" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="3" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="4" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem x:Name="DevModel" Text="Model" TextDetail="No device selected" Margin="20,0,20,0"/>
+                        <element:DetailListItem x:Name="DevModel" Text="{DynamicResource devsel_model}" TextDetail="{DynamicResource devsel_noselection}" Margin="20,0,20,0"/>
                     </Border>
                 </Grid>
             </ScrollViewer>
@@ -84,7 +84,7 @@
                 <Border Grid.Column="0" CornerRadius="20"/>
                 <Separator Grid.Column="1" Background="{DynamicResource BorderSeparatorBrush}" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                 <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Continue_OnMouseLeftButtonUp">
-                    <element:ListItem  FontSize="18" Text="Finish Setup" SourceImage="{DynamicResource NextButton}" Margin="20,0,20,0"/>
+                    <element:ListItem  FontSize="18" Text="{DynamicResource devsel_footer_continue}" SourceImage="{DynamicResource NextButton}" Margin="20,0,20,0"/>
                 </Border>
             </Grid>
         </Border>

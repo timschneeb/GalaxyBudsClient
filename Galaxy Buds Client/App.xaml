@@ -10,7 +10,9 @@
                 <ResourceDictionary x:Name="WindowStyle" Source="/ui/basewindow/SWStyles.xaml"/>
                 <ResourceDictionary x:Name="MainStyle" Source="/ui/themes/Styles.xaml"/>
                 <ResourceDictionary x:Name="TrayStyle" Source="/ui/themes/TrayContextStyles.xaml"/>
-                <ResourceDictionary Source="/ui/element/Slider.xaml"/>
+                <ResourceDictionary x:Name="SliderStyle" Source="/ui/element/Slider.xaml"/>
+                <ResourceDictionary x:Name="CurrentLocale" Source="/i18N/en.xaml"/>
+                <ResourceDictionary x:Name="FallbackLocale" Source="/i18N/en.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

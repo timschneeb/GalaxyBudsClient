@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 using Galaxy_Buds_Client.model.Constants;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 using InTheHand.Net;
 using InTheHand.Windows.Forms;
 using MessageBox = System.Windows.MessageBox;
@@ -85,7 +86,7 @@ namespace Galaxy_Buds_Client.ui
         private void Continue_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (_address == null || _device == null)
-                MessageBox.Show("Please select a valid device first", "Error", MessageBoxButton.OK,
+                MessageBox.Show(Loc.GetString("devsel_invalid_selection"), Loc.GetString("error"), MessageBoxButton.OK,
                     MessageBoxImage.Error);
 
             Properties.Settings.Default.RegisteredDevice = BytesToMacString(_address?.ToByteArrayBigEndian(), 0);

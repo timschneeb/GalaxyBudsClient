@@ -19,8 +19,10 @@ using Galaxy_Buds_Client.Properties;
 using Galaxy_Buds_Client.transition;
 using Galaxy_Buds_Client.ui;
 using Galaxy_Buds_Client.ui.basewindow;
+using Galaxy_Buds_Client.ui.devmode;
 using Galaxy_Buds_Client.ui.dialog;
 using Galaxy_Buds_Client.util;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 using Hardcodet.Wpf.TaskbarNotification;
 using InTheHand.Net;
 using InTheHand.Net.Bluetooth;
@@ -66,7 +68,9 @@ namespace Galaxy_Buds_Client
             DeviceSelect,
             Settings,
             SettingsPopup,
-            Advanced
+            Advanced,
+            UnsupportedFeature,
+            UpdateAvailable
         }
 
         private BluetoothAddress _address;
@@ -136,6 +140,11 @@ namespace Galaxy_Buds_Client
             OptionsClicked += OnOptionsClicked;
             _mainPage.MainMenuClicked += MainPageOnMainMenuClicked;
             _connectionLostPage.RetryRequested += ConnectionLostPageOnRetryRequested;
+
+            if (Loc.IsTranslatorModeEnabled())
+            {
+                new TranslatorMode(this).Show();
+            }
 
             BluetoothAddress savedAddress = GetRegisteredDevice();
             if (savedAddress == null || GetRegisteredDeviceModel() == Model.NULL)
@@ -250,7 +259,7 @@ namespace Galaxy_Buds_Client
                 if (_previousTrayBL > 0)
                 {
                     MenuItem left = new MenuItem();
-                    left.Header = $"Left: {_previousTrayBL}%";
+                    left.Header = $"{Loc.GetString("left")}: {_previousTrayBL}%";
                     left.IsEnabled = false;
                     left.Style = (Style)FindResource("SmallMenuItemStyle-Static");
                     ctxMenu.Items.Add(left);
@@ -259,7 +268,7 @@ namespace Galaxy_Buds_Client
                 if (_previousTrayBR > 0)
                 {
                     MenuItem right = new MenuItem();
-                    right.Header = $"Right: {_previousTrayBR}%";
+                    right.Header = $"{Loc.GetString("right")}: {_previousTrayBR}%";
                     right.IsEnabled = false;
                     right.Style = (Style)FindResource("SmallMenuItemStyle-Static");
                     ctxMenu.Items.Add(right);
@@ -268,7 +277,7 @@ namespace Galaxy_Buds_Client
                 if (_previousTrayBC > 0)
                 {
                     MenuItem c = new MenuItem();
-                    c.Header = $"Case: {_previousTrayBC}%";
+                    c.Header = $"{Loc.GetString("case")}: {_previousTrayBC}%";
                     c.IsEnabled = false;
                     c.Style = (Style)FindResource("SmallMenuItemStyle-Static");
                     ctxMenu.Items.Add(c);
@@ -280,7 +289,7 @@ namespace Galaxy_Buds_Client
                     
                     Menu_AddSeparator(ctxMenu);
                     MenuItem touchlockToggle = new MenuItem();
-                    touchlockToggle.Header = _touchpadPage.LockToggle.IsChecked ? "Unlock Touchpad" : "Lock Touchpad";
+                    touchlockToggle.Header = _touchpadPage.LockToggle.IsChecked ? Loc.GetString("tray_unlock_touchpad") : Loc.GetString("tray_lock_touchpad");
                     touchlockToggle.Click += delegate
                     {
                         _touchpadPage.ToggleTouchlock();
@@ -289,7 +298,7 @@ namespace Galaxy_Buds_Client
                     ctxMenu.Items.Add(touchlockToggle);
 
                     MenuItem equalizerToggle = new MenuItem();
-                    equalizerToggle.Header = _equalizerPage.EQToggle.IsChecked ? "Disable Equalizer" : "Enable Equalizer";
+                    equalizerToggle.Header = _equalizerPage.EQToggle.IsChecked ? Loc.GetString("tray_disable_eq") : Loc.GetString("tray_enable_eq");
                     equalizerToggle.Click += delegate
                     {
                         _equalizerPage.ToggleEqualizer();
@@ -298,7 +307,7 @@ namespace Galaxy_Buds_Client
                     ctxMenu.Items.Add(equalizerToggle);
 
                     MenuItem ambientToggle = new MenuItem();
-                    ambientToggle.Header = _ambientSoundPage.AmbientToggle.IsChecked ? "Disable Ambient Sound" : "Enable Ambient Sound";
+                    ambientToggle.Header = _ambientSoundPage.AmbientToggle.IsChecked ? Loc.GetString("tray_disable_ambient_sound") : Loc.GetString("tray_enable_ambient_sound");
                     ambientToggle.Click += delegate
                     {
                         _ambientSoundPage.ToggleAmbient();
@@ -310,7 +319,7 @@ namespace Galaxy_Buds_Client
                 }
 
                 MenuItem quit = new MenuItem();
-                quit.Header = "Quit";
+                quit.Header = Loc.GetString("tray_quit");
                 quit.Click += delegate
                 {
                     var prev = Settings.Default.MinimizeTray;
@@ -421,7 +430,7 @@ namespace Galaxy_Buds_Client
                 }
                 catch (NullReferenceException exception)
                 {
-                    _connectionLostPage.SetInfo("Failed to gather error information");
+                    _connectionLostPage.SetInfo(Loc.GetString("connlost_noinfo"));
                 }
 
             GenerateTrayContext(-1,-1,-1);
@@ -456,7 +465,7 @@ namespace Galaxy_Buds_Client
         {
             Dispatcher.Invoke(() =>
             {
-                var m = MessageBox.Show("No bluetooth adapter found.\nPlease enable bluetooth and try again.",
+                var m = MessageBox.Show(Loc.GetString("nobluetoothdev"),
                         "Galaxy Buds Manager", MessageBoxButton.OK, MessageBoxImage.Error);
                 Environment.Exit(0);
             });
@@ -478,7 +487,7 @@ namespace Galaxy_Buds_Client
 
                 GenerateTrayContext(-1,-1,-1);
                 BluetoothService.Instance.Disconnect();
-                _mainPage.SetWarning(true, $"Received corrupted data. Reconnecting... ({e.Message})");
+                _mainPage.SetWarning(true, $"{Loc.GetString("mainpage_corrupt_data")} ({e.Message})");
                 Task.Delay(500).ContinueWith(delegate
                 {
                     BluetoothService.Instance.Connect(GetRegisteredDevice(), GetRegisteredDeviceModel());
@@ -595,14 +604,14 @@ namespace Galaxy_Buds_Client
             if (!_restrictOptionsMenu)
             {
                 MenuItem settingsDashboard = new MenuItem();
-                settingsDashboard.Header = "Settings";
+                settingsDashboard.Header = Loc.GetString("optionsmenu_settings");
                 settingsDashboard.Click += delegate { GoToPage(Pages.Settings); };
                 settingsDashboard.Style = (Style)FindResource("MenuItemStyle");
                 ctxMenu.Items.Add(settingsDashboard);
                 Menu_AddSeparator(ctxMenu);
 
                 MenuItem refreshDashboard = new MenuItem();
-                refreshDashboard.Header = "Refresh dashboard";
+                refreshDashboard.Header = Loc.GetString("optionsmenu_refresh");
                 refreshDashboard.Click += delegate
                 {
                     BluetoothService.Instance.SendAsync(SPPMessageBuilder.Info.GetAllData());
@@ -613,7 +622,7 @@ namespace Galaxy_Buds_Client
             }
 
             MenuItem deregDevice = new MenuItem();
-            deregDevice.Header = "Deregister device";
+            deregDevice.Header = Loc.GetString("optionsmenu_deregister");
             deregDevice.Click += delegate
             {
                 GenerateTrayContext(-1, -1, -1);
@@ -631,7 +640,7 @@ namespace Galaxy_Buds_Client
 
             Menu_AddSeparator(ctxMenu);
             MenuItem checkUpdateDashboard = new MenuItem();
-            checkUpdateDashboard.Header = "Check for updates";
+            checkUpdateDashboard.Header = Loc.GetString("optionsmenu_update");
             checkUpdateDashboard.Click += delegate { CheckForUpdates(manual: true); };
             checkUpdateDashboard.Style = (Style)FindResource("MenuItemStyle");
             ctxMenu.Items.Add(checkUpdateDashboard);
@@ -640,7 +649,7 @@ namespace Galaxy_Buds_Client
             {
                 Menu_AddSeparator(ctxMenu);
                 MenuItem credits = new MenuItem();
-                credits.Header = "Credits";
+                credits.Header = Loc.GetString("optionsmenu_credits");
                 credits.Click += delegate { GoToPage(Pages.Credits); };
                 credits.Style = (Style) FindResource("MenuItemStyle");
                 ctxMenu.Items.Add(credits);
@@ -712,6 +721,12 @@ namespace Galaxy_Buds_Client
                     break;
                 case Pages.SettingsPopup:
                     PageControl.ShowPage(_popupSettingPage);
+                    break;
+                case Pages.UnsupportedFeature:
+                    PageControl.ShowPage(_unsupportedFeaturePage);
+                    break;
+                case Pages.UpdateAvailable:
+                    PageControl.ShowPage(_updatePage);
                     break;
             }
         }
@@ -813,9 +828,8 @@ namespace Galaxy_Buds_Client
                 }
                 else if (_isManualUpdate)
                 {
-                    MessageBox.Show("No updates are available at the moment.\n" +
-                                    "Please try again later or check and subscribe the GitHub page for updates.",
-                        "No updates", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(Loc.GetString("updater_noupdate"),
+                        Loc.GetString("updater_noupdate_title"), MessageBoxButton.OK, MessageBoxImage.Information);
                 }
 
                 _isManualUpdate = false;

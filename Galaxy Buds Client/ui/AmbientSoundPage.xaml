@@ -35,7 +35,7 @@
                         </Image>
                     </Button>
                 </Border>
-                <Label Grid.Column="1" Content="Ambient Sound" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241"/>
+                <Label Grid.Column="1" Content="{DynamicResource as_enable}" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241"/>
                 <element:LoadingSpinner Grid.Column="3" x:Name="LoadingSpinner" Margin="321,19,-341,19"/>
             </Grid>
         </Border>
@@ -48,7 +48,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" Content="Enable Ambient Sound"
+                    <Label Grid.Column="0" Content="{DynamicResource as_enable}"
                            Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     <element:ToggleSwitch x:Name="AmbientToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
                 </Grid>
@@ -61,7 +61,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Label Content="Ambient Sound Volume" Margin="20,10,20,5" Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" />
+                <Label Content="{DynamicResource as_volume}" Margin="20,10,20,5" Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" />
                 <Slider Grid.Row="1" Margin="25,0,20,10" TickFrequency="1" Orientation="Horizontal" TickPlacement="BottomRight" Foreground="{DynamicResource SliderBrush}"
                         Minimum="0" Maximum="3" Value="0" Style="{StaticResource MaterialDesignSlider}" IsSnapToTickEnabled="True"
                         ValueChanged="AmbientVolume_OnValueChanged" x:Name="AmbientVolume"/>
@@ -77,7 +77,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" Content="Voice Focus"
+                    <Label Grid.Column="0" Content="{DynamicResource as_voicefocus}"
                            Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     <element:ToggleSwitch x:Name="VoiceFocusToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
                 </Grid>
@@ -85,7 +85,7 @@
         </Border>
         <Border Name="ExtraLoudBorder" Grid.Row="6" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
-            <element:CheckableDetailListItem Text="Extra-High Ambient Volume" TextDetail="Adds an extra volume level to the Ambient Volume slider"
+            <element:CheckableDetailListItem Text="{DynamicResource as_extrahigh}" TextDetail="{DynamicResource as_extrahigh_description}"
                                              x:Name="ExtraLoud" SwitchToggled="ExtraLoud_OnSwitchToggled" />
         </Border>
     </Grid>

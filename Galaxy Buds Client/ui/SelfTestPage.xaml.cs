@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.parser;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client.ui
 {
@@ -26,7 +27,9 @@ namespace Galaxy_Buds_Client.ui
     {
         private MainWindow _mainWindow;
 
-        private readonly String Waiting = "Waiting for device response...";
+        private String Waiting => Loc.GetString("system_waiting_for_device");
+        private String Left => Loc.GetString("left");
+        private String Right => Loc.GetString("right");
 
         public SelfTestPage(MainWindow mainWindow)
         {
@@ -45,30 +48,30 @@ namespace Galaxy_Buds_Client.ui
                 HwVer.TextDetail = strfy(e.HardwareVersion);
                 SwVer.TextDetail = strfy(e.SoftwareVersion);
                 TouchFwVer.TextDetail = strfy(e.TouchFirmwareVersion);
-                BtAddr.TextDetail = $"Left: {strfy(e.LeftBluetoothAddress)}, Right: {strfy(e.RightBluetoothAddress)}";
-                Proximity.TextDetail = $"Left: {strfy(e.LeftProximity)}, Right: {strfy(e.RightProximity)}";
-                Thermo.TextDetail = $"Left: {strfy(e.LeftThermistor)}, Right: {strfy(e.RightThermistor)}";
-                AdcSoc.TextDetail = $"Left: {strfy(e.LeftAdcSOC)}, Right: {strfy(e.RightAdcSOC)}";
-                AdcVoltage.TextDetail = $"Left: {strfy(e.LeftAdcVCell)}, Right: {strfy(e.RightAdcVCell)}";
-                AdcCurrent.TextDetail = $"Left: {strfy(e.LeftAdcCurrent)}, Right: {strfy(e.RightAdcCurrent)}";
-                Hall.TextDetail = $"Left: {strfy(e.LeftHall)}, Right: {strfy(e.RightHall)}";
-                Accelerator.TextDetail = $"Left: {strfy(e.AllLeftAccelerator)}, Right: {strfy(e.AllRightAccelerator)}";
+                BtAddr.TextDetail = $"{Left}: {strfy(e.LeftBluetoothAddress)}, {Right}: {strfy(e.RightBluetoothAddress)}";
+                Proximity.TextDetail = $"{Left}: {strfy(e.LeftProximity)}, {Right}: {strfy(e.RightProximity)}";
+                Thermo.TextDetail = $"{Left}: {strfy(e.LeftThermistor)}, {Right}: {strfy(e.RightThermistor)}";
+                AdcSoc.TextDetail = $"{Left}: {strfy(e.LeftAdcSOC)}, {Right}: {strfy(e.RightAdcSOC)}";
+                AdcVoltage.TextDetail = $"{Left}: {strfy(e.LeftAdcVCell)}, {Right}: {strfy(e.RightAdcVCell)}";
+                AdcCurrent.TextDetail = $"{Left}: {strfy(e.LeftAdcCurrent)}, {Right}: {strfy(e.RightAdcCurrent)}";
+                Hall.TextDetail = $"{Left}: {strfy(e.LeftHall)}, {Right}: {strfy(e.RightHall)}";
+                Accelerator.TextDetail = $"{Left}: {strfy(e.AllLeftAccelerator)}, {Right}: {strfy(e.AllRightAccelerator)}";
 
-                SelfTestResult.Text = e.AllChecks ? "All checks have passed" : "One or more checks have failed";
+                SelfTestResult.Text = e.AllChecks ? Loc.GetString("selftest_pass_long") : Loc.GetString("selftest_fail_long");
             });
         }
 
         private String strfy(bool b)
         {
-            return b ? "Pass" : "Fail";
+            return b ? Loc.GetString("selftest_pass") : Loc.GetString("selftest_fail");
         }
         
         public override void OnPageShown()
         {
             if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
-                Title.Content = "Self Test (Your device may disconnect)";
+                Title.Content = Loc.GetString("selftest_header_alt");
             else
-                Title.Content = "Self Test";
+                Title.Content = Loc.GetString("selftest_header");
 
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.Info.RunSelfTest());
             LoadingSpinner.Visibility = Visibility.Visible;

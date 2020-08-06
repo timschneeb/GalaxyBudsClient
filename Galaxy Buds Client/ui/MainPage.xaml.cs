@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -35,6 +36,7 @@ namespace Galaxy_Buds_Client.ui
         private readonly DispatcherTimer _refreshTimer = new DispatcherTimer();
         private bool _allowGetAllResponse = false;
         private readonly MainWindow _mainWindow;
+        private DebugGetAllDataParser _lastGetAllDataParser = null;
 
         public MainPage(MainWindow mainWindow)
         {
@@ -159,25 +161,19 @@ namespace Galaxy_Buds_Client.ui
             _refreshTimer.Stop();
         }
 
-        private void UpdateDetails(DebugGetAllDataParser p)
+        private void UpdateTemperature(double left, double right)
         {
-            BatteryVoltLeft.Content = $"{p.LeftAdcVCell:N}V";
-            BatteryVoltRight.Content = $"{p.RightAdcVCell:N}V";
-
             if (BluetoothService.Instance.ActiveModel == Model.Buds)
             {
-                BatteryCurrentLeft.Content = $"{p.LeftAdcCurrent:N}mA";
-                BatteryCurrentRight.Content = $"{p.RightAdcCurrent:N}mA";
-
                 if (Properties.Settings.Default.UseFahrenheit)
                 {
-                    BatteryTemperatureLeft.Content = $"{((9.0 / 5.0) * p.LeftThermistor) + 32:N} °F";
-                    BatteryTemperatureRight.Content = $"{((9.0 / 5.0) * p.RightThermistor) + 32:N} °F";
+                    BatteryTemperatureLeft.Content = $"{((9.0 / 5.0) * left) + 32:N} °F";
+                    BatteryTemperatureRight.Content = $"{((9.0 / 5.0) * right) + 32:N} °F";
                 }
                 else
                 {
-                    BatteryTemperatureLeft.Content = $"{p.LeftThermistor:N} °C";
-                    BatteryTemperatureRight.Content = $"{p.RightThermistor:N} °C";
+                    BatteryTemperatureLeft.Content = $"{left:N} °C";
+                    BatteryTemperatureRight.Content = $"{right:N} °C";
                 }
             }
             else
@@ -185,15 +181,31 @@ namespace Galaxy_Buds_Client.ui
                 //Switch positions for a better layout
                 if (Properties.Settings.Default.UseFahrenheit)
                 {
-                    BatteryCurrentLeft.Content = $"{((9.0 / 5.0) * p.LeftThermistor) + 32:N} °F";
-                    BatteryCurrentRight.Content = $"{((9.0 / 5.0) * p.RightThermistor) + 32:N} °F";
+                    BatteryCurrentLeft.Content = $"{((9.0 / 5.0) * left) + 32:N} °F";
+                    BatteryCurrentRight.Content = $"{((9.0 / 5.0) * right) + 32:N} °F";
                 }
                 else
                 {
-                    BatteryCurrentLeft.Content = $"{p.LeftThermistor:N} °C";
-                    BatteryCurrentRight.Content = $"{p.RightThermistor:N} °C";
+                    BatteryCurrentLeft.Content = $"{left:N} °C";
+                    BatteryCurrentRight.Content = $"{right:N} °C";
                 }
             }
+        }
+
+        private void UpdateDetails(DebugGetAllDataParser p)
+        {
+            _lastGetAllDataParser = p;
+
+            BatteryVoltLeft.Content = $"{p.LeftAdcVCell:N}V";
+            BatteryVoltRight.Content = $"{p.RightAdcVCell:N}V";
+
+            if (BluetoothService.Instance.ActiveModel == Model.Buds)
+            {
+                BatteryCurrentLeft.Content = $"{p.LeftAdcCurrent:N}mA";
+                BatteryCurrentRight.Content = $"{p.RightAdcCurrent:N}mA";
+            }
+
+            UpdateTemperature(p.LeftThermistor, p.RightThermistor);
 
             Visibility leftSide = p.LeftAdcSOC <= 0 ? Visibility.Hidden : Visibility.Visible;
             Visibility rightSide = p.RightAdcSOC <= 0 ? Visibility.Hidden : Visibility.Visible;
@@ -312,6 +324,13 @@ namespace Galaxy_Buds_Client.ui
         private void Advanced_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             MainMenuClicked?.Invoke(this, ClickEvents.Advanced);
+        }
+
+        private void SwitchTempUnits_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Properties.Settings.Default.UseFahrenheit = !Properties.Settings.Default.UseFahrenheit;
+            Properties.Settings.Default.Save();
+            UpdateTemperature(_lastGetAllDataParser.LeftThermistor, _lastGetAllDataParser.RightThermistor);
         }
     }
 }

@@ -20,6 +20,7 @@ using Galaxy_Buds_Client.model;
 using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.Properties;
 using Galaxy_Buds_Client.ui.element;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client.ui
 {
@@ -178,19 +179,19 @@ namespace Galaxy_Buds_Client.ui
             switch (PresetSlider.Value)
             {
                 case 0:
-                    PresetLabel.Content = "Bass Boost";
+                    PresetLabel.Content = Loc.GetString("eq_bass");
                     break;
                 case 1:
-                    PresetLabel.Content = "Soft";
+                    PresetLabel.Content = Loc.GetString("eq_soft");
                     break;
                 case 2:
-                    PresetLabel.Content = "Dynamic";
+                    PresetLabel.Content = Loc.GetString("eq_dynamic");
                     break;
                 case 3:
-                    PresetLabel.Content = "Clear";
+                    PresetLabel.Content = Loc.GetString("eq_clear");
                     break;
                 case 4:
-                    PresetLabel.Content = "Treble Boost";
+                    PresetLabel.Content = Loc.GetString("eq_treble");
                     break;
             }
         }

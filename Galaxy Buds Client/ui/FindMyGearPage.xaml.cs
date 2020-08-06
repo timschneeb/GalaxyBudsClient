@@ -19,6 +19,7 @@ using Galaxy_Buds_Client.model;
 using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.parser;
 using Galaxy_Buds_Client.ui.element;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client.ui
 {
@@ -152,15 +153,15 @@ namespace Galaxy_Buds_Client.ui
             String notice = "";
             if (l && r)
             {
-                notice = "Please remove both earbuds from your ears.";
+                notice = Loc.GetString("fmg_warning_both");
             }
             else if (l)
             {
-                notice = "Please remove the left earbud from your ear.";
+                notice = Loc.GetString("fmg_warning_left");
             }
             else if (r)
             {
-                notice = "Please remove the right earbud from your ear.";
+                notice = Loc.GetString("fmg_warning_right");
             }
 
             if (notice == "")
