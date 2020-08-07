@@ -53,7 +53,9 @@ Alternatively, you can also use the chocolatey package provided by [@superbonaci
 choco install galaxybudsclient
 ```
 
+## Translators
 
+* [@Florize](https://github.com/Florize) - Korean translation
 
 ## Contributors
 
