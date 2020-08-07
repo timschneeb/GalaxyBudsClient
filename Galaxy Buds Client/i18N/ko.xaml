@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <sys:String x:Key="ResourceDictionaryName">Loc-custom</sys:String>
+    <sys:String x:Key="ResourceDictionaryName">Loc-ko</sys:String>
 
     <!-- :::::::: Source code :::::::: -->
 
@@ -91,7 +91,7 @@
     <!-- Welcome page -->
     <sys:String x:Key="welcome_textblock_header">환영합니다!</sys:String>
     <sys:String x:Key="welcome_textblock_p1">
-        안녕하세요! 이 Galaxy Buds Manager는 비공식 프로그램이며, Samsung과 일체의 연관이 없습니다.
+        안녕하세요! 이 Galaxy Buds Manager는 비공식 프로그램이며, Samsung과 일절의 관련이 없습니다.
 		이 프로그램은 공식 Samsung Wearable 앱에서 할 수 없는 여러 가지 것들을 할 수 있지만, 안전을 위해 이어버드 소프트웨어 OTA 업데이트 기능을 제외했습니다. 만약 업데이트가 필요하시다면, 공식 Galaxy Buds Manager를 사용해 주세요.
     </sys:String>
     <sys:String x:Key="welcome_textblock_p2">
@@ -282,7 +282,7 @@
     <sys:String x:Key="adv_sidetone">통화 중 주변 소리 듣기 허용</sys:String>
     <sys:String x:Key="adv_sidetone_desc">통화 중에 내 목소리를 더 또렷하게 들어보세요.</sys:String>
     <sys:String x:Key="adv_gaming_mode">게임 모드</sys:String>
-    <sys:String x:Key="adv_gaming_mode_desc">오디오 지연을 최소화하야, 더 생생하고 싱크가 완벽한 게임 사운드를 즐길 수 있어요. (Samsung 기능)</sys:String>
+    <sys:String x:Key="adv_gaming_mode_desc">오디오 지연을 최소화하여, 더 생생하고 싱크가 완벽한 게임 사운드를 즐길 수 있어요. (Samsung 기능)</sys:String>
 
     <!-- Credits -->
     <sys:String x:Key="credits_header">제작자</sys:String>

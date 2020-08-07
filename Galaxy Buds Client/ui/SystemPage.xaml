@@ -22,8 +22,6 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                     <Button x:Name="BackButton" Style="{StaticResource WindowButtonStyle}" 
@@ -34,27 +32,27 @@
                     </Button>
                 </Border>
                 <Label Grid.Column="1" Content="{DynamicResource system_header}" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20"/>
-                <element:LoadingSpinner Grid.Column="2" x:Name="LoadingSpinner" Height="20" Margin="235,20,-235,18" />
+                <element:LoadingSpinner x:Name="LoadingSpinner" Height="20" Width="20" Margin="416,19,-254,19" Grid.Column="1" />
             </Grid>
         </Border>
         <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Grid ClipToBounds="True" ScrollViewer.CanContentScroll="True">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Border Grid.Column="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                     <element:ListItemCenter x:Name="RunSelfTest" Text="{DynamicResource system_selftest}" SourceImage="/Resources/features/info_gray.png" Margin="20,0,20,0"
                                       FontSize="18" MouseLeftButtonUp="RunSelfTest_OnMouseLeftButtonUp"/>
-                    </Border>
+                </Border>
                 <Separator Grid.Column="1" Background="{DynamicResource BorderSeparatorBrush}" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
-                    <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
+                <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                     <element:ListItemCenter x:Name="FactoryReset" Text="{DynamicResource system_factory_reset}" SourceImage="/Resources/device/neutral_gray.png" Margin="20,0,20,0" 
                                       FontSize="18" MouseLeftButtonUp="FactoryReset_OnMouseLeftButtonUp"/>
-                    </Border>
-                </Grid>
+                </Border>
+            </Grid>
         </Border>
         <Border Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">

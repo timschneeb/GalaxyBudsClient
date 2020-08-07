@@ -47,7 +47,7 @@ namespace Galaxy_Buds_Client.ui
             LocaleBorder.ContextMenu = GenerateMenu(LocaleBorder);
             LocaleSelect.TextDetail = Properties.Settings.Default.CurrentLocale.GetDescription();
 
-            TransitionToggle.SetChecked(Properties.Settings.Default.DisableSlideTransition);
+            TransitionToggle.SetChecked(!Properties.Settings.Default.DisableSlideTransition);
             MinimizeTrayToggle.SetChecked(Properties.Settings.Default.MinimizeTray);
             AutostartToggle.SetChecked(AutoStartHelper.Enabled);
             DarkModeToggle.SetChecked(Properties.Settings.Default.DarkMode);
@@ -122,7 +122,7 @@ namespace Galaxy_Buds_Client.ui
 
         private void SaveChanges()
         {
-            Properties.Settings.Default.DisableSlideTransition = TransitionToggle.IsChecked;
+            Properties.Settings.Default.DisableSlideTransition = !TransitionToggle.IsChecked;
             Properties.Settings.Default.MinimizeTray = MinimizeTrayToggle.IsChecked;
             Properties.Settings.Default.DarkMode = DarkModeToggle.IsChecked;
             Properties.Settings.Default.Save();

@@ -211,7 +211,7 @@
     <sys:String x:Key="settings_darkmode">Dark-Mode</sys:String>
     <sys:String x:Key="settings_darkmode_description">Verwende eine dunkleres Farbschema</sys:String>
     <sys:String x:Key="settings_transitions">Übergang</sys:String>
-    <sys:String x:Key="settings_transitions_description">Schiebeübergang deaktivieren</sys:String>
+    <sys:String x:Key="settings_transitions_description">Schiebeübergang aktivieren</sys:String>
     <sys:String x:Key="settings_localization_disable">Lokalisierung</sys:String>
     <sys:String x:Key="settings_localization_disable_description">Englisch erzwingen (Force english language)</sys:String>
     <sys:String x:Key="settings_minimize_tray">In Taskleiste minimieren</sys:String>
