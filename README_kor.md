@@ -42,11 +42,11 @@ Windows 비공식 Galaxy Buds Manager (Buds/Buds+)
 
 [**여기**](https://github.com/ThePBone/GalaxyBudsClient/releases)에서 전체 설치 파일을 다운로드할 수 있습니다.
 
-정품 **Galaxy Buds (2019)** 와 **Galaxy Buds Plus** 에 대해 모든 기능을 지원합니다.
+정품 **Galaxy Buds (2019)** 와 **Galaxy Buds+ (2020)** 에 대해 모든 기능을 지원합니다.
 
 ![Downloads](https://img.shields.io/github/downloads/ThePBone/GalaxyBudsClient/total)
 
-또는, [@superbonaci](https://github.com/superbonaci) 님이 제공하신 hocolatey 패키지를 사용할 수 있습니다:
+또는, [@superbonaci](https://github.com/superbonaci) 님이 제공하신 Chocolatey 패키지를 사용할 수 있습니다:
 
 ```
 choco install galaxybudsclient
