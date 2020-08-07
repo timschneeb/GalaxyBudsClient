@@ -54,7 +54,7 @@ choco install galaxybudsclient
 
 ## 번역
 
-* [@Florize](https://github.com/Florize) - 한국어 번역
+* [@Florize](https://github.com/Florize) - 한국어, 일본어 번역
 
 ## 기여
 
