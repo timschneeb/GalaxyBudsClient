@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client
@@ -24,6 +25,11 @@ namespace Galaxy_Buds_Client
 
         private void App_Startup(object sender, StartupEventArgs e)
         {
+            if (Loc.IsTranslatorModeEnabled())
+            {
+                Galaxy_Buds_Client.Properties.Settings.Default.CurrentLocale = Locale.custom;
+                Galaxy_Buds_Client.Properties.Settings.Default.Save();
+            }
             Loc.Load();
 
             bool startMinimized = false;

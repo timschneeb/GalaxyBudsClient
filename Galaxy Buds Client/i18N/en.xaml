@@ -34,6 +34,12 @@
     <sys:String x:Key="connpopup_title">{0}'s Galaxy Buds{1}</sys:String>
     <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
 
+    <!-- Placement  (Buds+) -->
+    <sys:String x:Key="placement_disconnected">Disconnected</sys:String>
+    <sys:String x:Key="placement_wearing">Wearing</sys:String>
+    <sys:String x:Key="placement_not_wearing">Idle</sys:String>
+    <sys:String x:Key="placement_in_case">Case</sys:String>
+
     <!-- Touch options -->
     <sys:String x:Key="touchoption_voice">Voice Assistant</sys:String>
     <sys:String x:Key="touchoption_quickambientsound">Quick Ambient Sound</sys:String>

@@ -9,6 +9,18 @@ namespace Galaxy_Buds_Client.model
 {
     namespace Constants
     {
+        public enum Locale
+        {
+            [Description("English")]
+            en,
+            [Description("German")]
+            de,
+            [Description("Korean")]
+            ko,
+
+            [Description("custom_language.xaml")]
+            custom
+        }
         public enum PopupPlacement
         {
             [LocalizedDescription("connpopup_placement_tl")]
@@ -47,9 +59,13 @@ namespace Galaxy_Buds_Client.model
 
         public enum PlacementStates
         {
+            [LocalizedDescription("placement_disconnected")]
             Disconnected = 0,
+            [LocalizedDescription("placement_wearing")]
             Wearing = 1,
+            [LocalizedDescription("placement_not_wearing")]
             Idle = 2,
+            [LocalizedDescription("placement_in_case")]
             Case = 3,
             ClosedCase = 4
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Galaxy_Buds_Client.model.Constants;
 
 namespace Galaxy_Buds_Client.util
 {
@@ -42,7 +43,7 @@ namespace Galaxy_Buds_Client.util
                     Console.WriteLine($@"CRITICAL: String key not found. Resetting to english! ({e.Message})");
                     SetLanguageResourceDictionary($"pack://application:,,,/i18N/en.xaml");
 
-                    Properties.Settings.Default.ForceEnglish = true;
+                    Properties.Settings.Default.CurrentLocale = Locale.en;
                     Properties.Settings.Default.Save();
 
                     try
@@ -61,19 +62,22 @@ namespace Galaxy_Buds_Client.util
 
             public static void Load()
             {
-                if (Properties.Settings.Default.ForceEnglish)
-                {
-                    SetLanguageResourceDictionary($"pack://application:,,,/i18N/en.xaml");
-                }
-                else if (IsTranslatorModeEnabled())
+
+                string lang = Properties.Settings.Default.CurrentLocale.ToString(); //System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToLower();
+
+                if (Properties.Settings.Default.CurrentLocale == Locale.custom && IsTranslatorModeEnabled())
                 {
                     SetLanguageResourceDictionary(GetTranslatorModeFile());
+                    return;
                 }
-                else
+                else if (Properties.Settings.Default.CurrentLocale == Locale.custom && !IsTranslatorModeEnabled())
                 {
-                    string lang = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToLower();
-                    SetLanguageResourceDictionary($"pack://application:,,,/i18N/{lang}.xaml");
+                    lang = Locale.en.ToString();
+                    Properties.Settings.Default.CurrentLocale = Locale.en;
+                    Properties.Settings.Default.Save();
                 }
+
+                SetLanguageResourceDictionary($"pack://application:,,,/i18N/{lang}.xaml");
             }
 
             /// <summary>  
@@ -122,9 +126,9 @@ namespace Galaxy_Buds_Client.util
                         Application.Current.Resources.MergedDictionaries[langDictId] = languageDictionary;
                     }
                 }
-                catch(IOException e)
+                catch (IOException e)
                 {
-                   Console.WriteLine(@"Locale not supported, falling back to english...");
+                    Console.WriteLine(@"Locale not supported, falling back to english...");
                 }
             }
         }

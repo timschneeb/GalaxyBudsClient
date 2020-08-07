@@ -44,7 +44,7 @@
         <Border Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518" 
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,0">
             <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="ViewChangelog_OnMouseLeftButtonUp">
-                <Label Margin="20,5" FontSize="16" Content="{DynamicResource updater_view_changelog}" VerticalContentAlignment="Center" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalAlignment="Center" />
+                <Label Margin="10,5" FontSize="16" Content="{DynamicResource updater_view_changelog}" VerticalContentAlignment="Center" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalAlignment="Center" Width="496" HorizontalContentAlignment="Center" />
             </Border>
         </Border>
         <Border Grid.Row="7" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
@@ -58,15 +58,15 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" CornerRadius="20" x:Name="Postpone" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Postpone_OnMouseLeftButtonUp">
-                    <Label Margin="20,0" FontSize="16" Content="{DynamicResource updater_footer_remindmelater}" VerticalContentAlignment="Center" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalAlignment="Center" />
+                    <Label Margin="20,0,10,0" FontSize="16" Content="{DynamicResource updater_footer_remindmelater}" VerticalContentAlignment="Center" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalAlignment="Center" Width="139" HorizontalContentAlignment="Center" />
                 </Border>
                 <Separator Grid.Column="1" Background="{DynamicResource BorderSeparatorBrush}" x:Name="Skip" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                 <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Skip_OnMouseLeftButtonUp">
-                    <Label Margin="20,5" FontSize="16" Content="{DynamicResource updater_footer_skipversion}" VerticalContentAlignment="Center" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalAlignment="Center" />
+                    <Label Margin="10,5" FontSize="16" Content="{DynamicResource updater_footer_skipversion}" VerticalContentAlignment="Center" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalAlignment="Center" Width="149" HorizontalContentAlignment="Center" />
                 </Border>
                 <Separator Grid.Column="3" Background="{DynamicResource BorderSeparatorBrush}" x:Name="Install" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                 <Border Grid.Column="4" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Install_OnMouseLeftButtonUp">
-                    <Label Margin="20,5" FontWeight="DemiBold" FontSize="16" Content="{DynamicResource updater_footer_install}" VerticalContentAlignment="Center" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalAlignment="Center" />
+                    <Label Margin="10,5,21,5" FontWeight="DemiBold" FontSize="16" Content="{DynamicResource updater_footer_install}" VerticalContentAlignment="Center" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Width="137" />
                 </Border>
             </Grid>
         </Border>

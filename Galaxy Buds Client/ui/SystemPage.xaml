@@ -46,12 +46,12 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Border Grid.Column="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                    <element:ListItem x:Name="RunSelfTest" Text="{DynamicResource system_selftest}" SourceImage="/Resources/features/info_gray.png" Margin="20,0,20,0"
+                    <element:ListItemCenter x:Name="RunSelfTest" Text="{DynamicResource system_selftest}" SourceImage="/Resources/features/info_gray.png" Margin="20,0,20,0"
                                       FontSize="18" MouseLeftButtonUp="RunSelfTest_OnMouseLeftButtonUp"/>
                     </Border>
                 <Separator Grid.Column="1" Background="{DynamicResource BorderSeparatorBrush}" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                     <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                    <element:ListItem x:Name="FactoryReset" Text="{DynamicResource system_factory_reset}" SourceImage="/Resources/device/neutral_gray.png" Margin="20,0,20,0" 
+                    <element:ListItemCenter x:Name="FactoryReset" Text="{DynamicResource system_factory_reset}" SourceImage="/Resources/device/neutral_gray.png" Margin="20,0,20,0" 
                                       FontSize="18" MouseLeftButtonUp="FactoryReset_OnMouseLeftButtonUp"/>
                     </Border>
                 </Grid>

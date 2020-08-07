@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client.ui.devmode
@@ -24,8 +25,10 @@ namespace Galaxy_Buds_Client.ui.devmode
         public TranslatorMode(MainWindow mainWindow)
         {
             _mainWindow = mainWindow;
+
             InitializeComponent();
-            ForceEnglish.IsChecked = Properties.Settings.Default.ForceEnglish;
+
+            Language.SelectedValue = Properties.Settings.Default.CurrentLocale;
             XamlPath.Text = Loc.GetTranslatorModeFile();
         }
 
@@ -40,19 +43,10 @@ namespace Galaxy_Buds_Client.ui.devmode
                 _mainWindow.GoToPage((MainWindow.Pages)Pages.SelectedValue);
             }
         }
-
-        private void ForceEnglish_OnChecked(object sender, RoutedEventArgs e)
-        {
-            if (ForceEnglish.IsChecked != null)
-                Properties.Settings.Default.ForceEnglish = (bool)ForceEnglish.IsChecked;
-            Properties.Settings.Default.Save();
-            Loc.Load();
-        }
-
+        
         private void ReloadXaml_Click(object sender, RoutedEventArgs e)
         {
-            ForceEnglish.IsChecked = false;
-            Properties.Settings.Default.ForceEnglish = false;
+            Properties.Settings.Default.CurrentLocale = (Locale)Language.SelectedValue;
             Properties.Settings.Default.Save();
             Loc.Load();
         }

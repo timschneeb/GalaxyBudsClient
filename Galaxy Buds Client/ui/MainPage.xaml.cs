@@ -6,6 +6,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Galaxy_Buds_Client.message;
+using Galaxy_Buds_Client.model;
 using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.parser;
 
@@ -104,8 +105,8 @@ namespace Galaxy_Buds_Client.ui
                     if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
                     {
                         ExtendedStatusUpdateParser p = (ExtendedStatusUpdateParser)parser;
-                        BatteryTemperatureLeft.Content = p.PlacementL.ToString();
-                        BatteryTemperatureRight.Content = p.PlacementR.ToString();
+                        BatteryTemperatureLeft.Content = p.PlacementL.GetDescription();
+                        BatteryTemperatureRight.Content = p.PlacementR.GetDescription();
                         BatteryCase.Content = p.BatteryCase <= 0 ? "" : $"{p.BatteryCase}%";
                         CaseLabel.Visibility = p.BatteryCase <= 0 ? Visibility.Hidden : Visibility.Visible;
                     }
@@ -120,8 +121,8 @@ namespace Galaxy_Buds_Client.ui
                     if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
                     {
                         StatusUpdateParser p = (StatusUpdateParser)parser;
-                        BatteryTemperatureLeft.Content = p.PlacementL.ToString();
-                        BatteryTemperatureRight.Content = p.PlacementR.ToString();
+                        BatteryTemperatureLeft.Content = p.PlacementL.GetDescription();
+                        BatteryTemperatureRight.Content = p.PlacementR.GetDescription();
                         BatteryCase.Content = p.BatteryCase <= 0 ? "" : $"{p.BatteryCase}%";
                         CaseLabel.Visibility = p.BatteryCase <= 0 ? Visibility.Hidden : Visibility.Visible;
 

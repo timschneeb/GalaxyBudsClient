@@ -35,7 +35,7 @@
                         </Image>
                     </Button>
                 </Border>
-                <Label Grid.Column="1" Content="{DynamicResource as_enable}" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241"/>
+                <Label Grid.Column="1" Content="{DynamicResource as_header}" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241"/>
                 <element:LoadingSpinner Grid.Column="3" x:Name="LoadingSpinner" Margin="321,19,-341,19"/>
             </Grid>
         </Border>

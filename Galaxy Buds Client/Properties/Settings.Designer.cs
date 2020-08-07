@@ -229,13 +229,13 @@ namespace Galaxy_Buds_Client.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ForceEnglish {
+        [global::System.Configuration.DefaultSettingValueAttribute("en")]
+        public global::Galaxy_Buds_Client.model.Constants.Locale CurrentLocale {
             get {
-                return ((bool)(this["ForceEnglish"]));
+                return ((global::Galaxy_Buds_Client.model.Constants.Locale)(this["CurrentLocale"]));
             }
             set {
-                this["ForceEnglish"] = value;
+                this["CurrentLocale"] = value;
             }
         }
     }

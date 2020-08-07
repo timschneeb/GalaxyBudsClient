@@ -53,8 +53,8 @@
     <Setting Name="ConnectionPopupPosition" Type="Galaxy_Buds_Client.model.Constants.PopupPlacement" Scope="User">
       <Value Profile="(Default)">BottomRight</Value>
     </Setting>
-    <Setting Name="ForceEnglish" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+    <Setting Name="CurrentLocale" Type="Galaxy_Buds_Client.model.Constants.Locale" Scope="User">
+      <Value Profile="(Default)">en</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -166,6 +166,9 @@
     <Compile Include="ui\element\CheckableDetailListItem.xaml.cs">
       <DependentUpon>CheckableDetailListItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ui\element\ListItemCenter.xaml.cs">
+      <DependentUpon>ListItemCenter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ui\PopupSettingPage.xaml.cs">
       <DependentUpon>PopupSettingPage.xaml</DependentUpon>
     </Compile>
@@ -275,6 +278,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="i18N\ko.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ui\devmode\TranslatorMode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -288,6 +295,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ui\element\CheckableDetailListItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ui\element\ListItemCenter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
