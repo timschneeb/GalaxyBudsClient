@@ -68,13 +68,14 @@ namespace Galaxy_Buds_Client.ui
             bool first = true;
             foreach (int value in Enum.GetValues(typeof(Locale)))
             {
+                if (value == (int)Locale.custom && !Loc.IsTranslatorModeEnabled())
+                    continue;
+
                 if (!first)
                     Menu_AddSeparator(ctxMenu);
                 else
                     first = false;
 
-                if(value == (int)Locale.custom && !Loc.IsTranslatorModeEnabled())
-                    continue;
                 Menu_AddItem(ctxMenu, (Locale)value);
             }
 

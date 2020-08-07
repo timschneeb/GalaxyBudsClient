@@ -127,6 +127,7 @@ namespace Galaxy_Buds_Client.ui
             {
                 DolbyModeBorder.Visibility = Visibility.Visible;
             }
+            UpdateString();
         }
 
         public override void OnPageHidden()
@@ -176,6 +177,11 @@ namespace Galaxy_Buds_Client.ui
         {
             newPresetValue = i;
             PresetSlider.Value = i;
+            UpdateString();
+        }
+
+        private void UpdateString()
+        {
             switch (PresetSlider.Value)
             {
                 case 0:

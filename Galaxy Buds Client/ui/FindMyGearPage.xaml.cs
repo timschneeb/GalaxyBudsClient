@@ -34,6 +34,9 @@ namespace Galaxy_Buds_Client.ui
             R
         }
 
+        private bool _lastWarningRight = false;
+        private bool _lastWarningLeft = false;
+
         private MainWindow _mainWindow;
 
         public FindMyGearPage(MainWindow mainWindow)
@@ -140,6 +143,7 @@ namespace Galaxy_Buds_Client.ui
             RefreshEarbudIcon();
             LeftMuteBtn.SetMuted(false);
             RightMuteBtn.SetMuted(false);
+            EarbudWarning(_lastWarningLeft, _lastWarningRight);
         }
 
         public override void OnPageHidden()
@@ -150,6 +154,9 @@ namespace Galaxy_Buds_Client.ui
 
         private void EarbudWarning(bool l, bool r)
         {
+            _lastWarningLeft = l;
+            _lastWarningRight = r;
+
             String notice = "";
             if (l && r)
             {

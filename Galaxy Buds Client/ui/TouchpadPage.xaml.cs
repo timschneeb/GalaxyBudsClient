@@ -165,6 +165,9 @@ namespace Galaxy_Buds_Client.ui
                 ? Visibility.Collapsed
                 : Visibility.Visible;
 
+            LeftOption.TextDetail = _lastLeftOption.GetDescription();
+            RightOption.TextDetail = _lastRightOption.GetDescription();
+
             _mainWindow.CustomActionPage.Accept += CustomActionPageOnAccept;
         }
 

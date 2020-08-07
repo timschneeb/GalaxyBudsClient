@@ -39,6 +39,9 @@ namespace Galaxy_Buds_Client.ui
         private readonly MainWindow _mainWindow;
         private DebugGetAllDataParser _lastGetAllDataParser = null;
 
+        private PlacementStates _lastPlacementL = PlacementStates.Disconnected;
+        private PlacementStates _lastPlacementR = PlacementStates.Disconnected;
+
         public MainPage(MainWindow mainWindow)
         {
             InitializeComponent();
@@ -104,9 +107,10 @@ namespace Galaxy_Buds_Client.ui
                 {
                     if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
                     {
-                        ExtendedStatusUpdateParser p = (ExtendedStatusUpdateParser)parser;
-                        BatteryTemperatureLeft.Content = p.PlacementL.GetDescription();
-                        BatteryTemperatureRight.Content = p.PlacementR.GetDescription();
+                        ExtendedStatusUpdateParser p = (ExtendedStatusUpdateParser) parser;
+                        UpdatePlusPlacement(p.PlacementL, p.PlacementR);
+                        _lastPlacementL = p.PlacementL;
+                        _lastPlacementR = p.PlacementR;
                         BatteryCase.Content = p.BatteryCase <= 0 ? "" : $"{p.BatteryCase}%";
                         CaseLabel.Visibility = p.BatteryCase <= 0 ? Visibility.Hidden : Visibility.Visible;
                     }
@@ -120,26 +124,29 @@ namespace Galaxy_Buds_Client.ui
                 {
                     if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
                     {
-                        StatusUpdateParser p = (StatusUpdateParser)parser;
-                        BatteryTemperatureLeft.Content = p.PlacementL.GetDescription();
-                        BatteryTemperatureRight.Content = p.PlacementR.GetDescription();
+                        StatusUpdateParser p = (StatusUpdateParser) parser;
+                        UpdatePlusPlacement(p.PlacementL, p.PlacementR);
+                        _lastPlacementL = p.PlacementL;
+                        _lastPlacementR = p.PlacementR;
                         BatteryCase.Content = p.BatteryCase <= 0 ? "" : $"{p.BatteryCase}%";
                         CaseLabel.Visibility = p.BatteryCase <= 0 ? Visibility.Hidden : Visibility.Visible;
-
                     }
                 });
             }
             else if (parser.GetType() == typeof(DebugGetAllDataParser))
             {
-                var p = (DebugGetAllDataParser)parser;
-                UpdateBatteryPercentage((int)Math.Round(p.LeftAdcSOC), Side.L);
-                UpdateBatteryPercentage((int)Math.Round(p.RightAdcSOC), Side.R);
+                var p = (DebugGetAllDataParser) parser;
+                UpdateBatteryPercentage((int) Math.Round(p.LeftAdcSOC), Side.L);
+                UpdateBatteryPercentage((int) Math.Round(p.RightAdcSOC), Side.R);
 
-                Dispatcher.Invoke(() =>
-                {
-                    UpdateDetails(p);
-                });
+                Dispatcher.Invoke(() => { UpdateDetails(p); });
             }
+        }
+
+        private void UpdatePlusPlacement(PlacementStates l ,PlacementStates r)
+        {
+            BatteryTemperatureLeft.Content = l.GetDescription();
+            BatteryTemperatureRight.Content = r.GetDescription();
         }
 
         public override void OnPageShown()
@@ -153,6 +160,8 @@ namespace Galaxy_Buds_Client.ui
                 BatteryCase.Content = "";
                 CaseLabel.Visibility = Visibility.Hidden;
             }
+
+            UpdatePlusPlacement(_lastPlacementL, _lastPlacementR);
         }
 
         public override void OnPageHidden()
