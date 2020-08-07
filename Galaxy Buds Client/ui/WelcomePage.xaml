@@ -50,7 +50,9 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" CornerRadius="20"/>
+                <Border Name="LocaleBorder" Grid.Column="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Language_OnMouseLeftButtonUp">
+                    <Label FontSize="18" Content="{DynamicResource settings_localization_disable}" Foreground="{DynamicResource ForegroundTextBrush}" Margin="10,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                </Border>
                 <Separator Grid.Column="1" Background="{DynamicResource BorderSeparatorBrush}" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                 <Border Grid.Column="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Continue_OnMouseLeftButtonUp">
                     <element:ListItem FontSize="18" Text="{DynamicResource continue_button}" SourceImage="{DynamicResource NextButton}" Margin="20,0,20,0"/>

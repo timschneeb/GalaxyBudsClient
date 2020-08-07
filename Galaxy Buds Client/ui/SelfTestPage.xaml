@@ -18,12 +18,10 @@
         </Grid.RowDefinitions>
         <Border Grid.Row="1" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1"  MinWidth="518" Height="60"
                 VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20">
-            <Grid HorizontalAlignment="Left">
+            <Grid HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
                     <Button x:Name="BackButton" Style="{StaticResource WindowButtonStyle}" 
@@ -34,7 +32,7 @@
                     </Button>
                 </Border>
                 <Label Name="Title" Grid.Column="1" Content="{DynamicResource selftest_header}" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20"/>
-                <element:LoadingSpinner Grid.Column="3" x:Name="LoadingSpinner" Margin="325,19,-345,19"/>
+                <element:LoadingSpinner Grid.Column="1" x:Name="LoadingSpinner" Width="20" Margin="416,19,19,19"/>
             </Grid>
         </Border>
         <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"

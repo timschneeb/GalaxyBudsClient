@@ -21,7 +21,7 @@
     <!-- Context: SOM = Start of message -->
     <sys:String x:Key="sppmsg_invalid_eom">Ungültige EOM</sys:String>
     <!-- Context: EOM = End of message -->
-    <sys:String x:Key="sppmsg_size_mismatch">Payloadgröße stimmt nicht übereinh</sys:String>
+    <sys:String x:Key="sppmsg_size_mismatch">Payloadgröße stimmt nicht überein</sys:String>
     <sys:String x:Key="sppmsg_tl">Nachricht zu klein</sys:String>
 
     <!-- Connection popup -->
@@ -212,7 +212,7 @@
     <sys:String x:Key="settings_darkmode_description">Verwende eine dunkleres Farbschema</sys:String>
     <sys:String x:Key="settings_transitions">Übergang</sys:String>
     <sys:String x:Key="settings_transitions_description">Schiebeübergang aktivieren</sys:String>
-    <sys:String x:Key="settings_localization_disable">Lokalisierung</sys:String>
+    <sys:String x:Key="settings_localization_disable">Sprache</sys:String>
     <sys:String x:Key="settings_localization_disable_description">Englisch erzwingen (Force english language)</sys:String>
     <sys:String x:Key="settings_minimize_tray">In Taskleiste minimieren</sys:String>
     <sys:String x:Key="settings_minimize_tray_description">In den Hintergrund versetzen statt die App zu beenden</sys:String>

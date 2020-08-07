@@ -213,7 +213,7 @@
     <sys:String x:Key="settings_darkmode_description">Use a darker color scheme</sys:String>
     <sys:String x:Key="settings_transitions">Transition</sys:String>
     <sys:String x:Key="settings_transitions_description">Enable slide transitions</sys:String>
-    <sys:String x:Key="settings_localization_disable">Localization</sys:String>
+    <sys:String x:Key="settings_localization_disable">Language</sys:String>
     <sys:String x:Key="settings_localization_disable_description">Force English language</sys:String>
     <sys:String x:Key="settings_minimize_tray">Minimize to tray</sys:String>
     <sys:String x:Key="settings_minimize_tray_description">Keep in background instead of terminating the app</sys:String>
