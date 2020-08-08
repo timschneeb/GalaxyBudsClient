@@ -17,8 +17,8 @@
 
     <!-- SPP Message Parser --><!-- Translator notice 1. Tech things. -->
     <sys:String x:Key="sppmsg_too_small">Размер пакета слишком мал</sys:String>
-    <sys:String x:Key="sppmsg_invalid_som">Неверное начало пакета</sys:String>
-    <sys:String x:Key="sppmsg_invalid_eom">Неверный конец пакета</sys:String>
+    <sys:String x:Key="sppmsg_invalid_som">Плохое начало пакета</sys:String>
+    <sys:String x:Key="sppmsg_invalid_eom">Плохой конец пакета</sys:String>
     <sys:String x:Key="sppmsg_size_mismatch">Несоответствие размера пакета</sys:String>
     <sys:String x:Key="sppmsg_tl">Размер пакета слишком мал</sys:String>
 
@@ -68,7 +68,7 @@
 
     <!-- Tray context menu -->
     <sys:String x:Key="tray_unlock_touchpad">Разблокировать сенсорную панель</sys:String>
-    <sys:String x:Key="tray_lock_touchpad">Блокировать сенсорную панель</sys:String>
+    <sys:String x:Key="tray_lock_touchpad">Заблокировать сенсорную панель</sys:String>
     <sys:String x:Key="tray_enable_ambient_sound">Включить звуковой фон</sys:String>
     <sys:String x:Key="tray_disable_ambient_sound">Выключить звуковой фон</sys:String>
     <sys:String x:Key="tray_enable_eq">Включить эквалайзер</sys:String>
@@ -83,8 +83,8 @@
 
     <!-- Hotkey Recorder Dialog (Custom action) -->
     <sys:String x:Key="hotrec_title">Запись комбинации клавиш</sys:String>
-    <sys:String x:Key="hotrec_content">Пожалуйста введите комбинацию клавиш (удерживая):</sys:String>
-    <sys:String x:Key="hotrec_empty">Нет</sys:String>
+    <sys:String x:Key="hotrec_content">Пожалуйста, введите комбинацию клавиш:</sys:String><!-- Translator notice 4. It doesn't fit. -->
+    <sys:String x:Key="hotrec_empty">Нет комбинации</sys:String>
 
     <!-- Welcome page -->
     <sys:String x:Key="welcome_textblock_header">Добро пожаловать!</sys:String>
@@ -93,7 +93,7 @@
         Несмотря на расширенный по отношению к оригинальному Samsung Wearable на Android, функционал этой программы, я все же решил исключить утилиту обновления прошивки, ради безопасности. Пожалуйста, воспользуйтесь официальным если он вам понадобится.
     </sys:String>
     <sys:String x:Key="welcome_textblock_p2">
-        Если вам интересно о том что происходит за кулисами, можете посетить мой репозиторий на GitHub. Также там можно найти небольшой журнал по реверс-инжерингу. Можете написать мне сообщение на GitHub или в Telegram @thepbone если у вас возникнут проблемы.  
+        Если вам интересно о том что происходит за кулисами, можете посетить мой репозиторий на GitHub. Также там можно найти небольшой журнал по реверс-инжинирингу. Можете написать мне сообщение на GitHub или в Telegram @thepbone если у вас возникнут проблемы.  
     </sys:String>
     <sys:String x:Key="welcome_textblock_p3">
         Эта программа поддерживает как Buds (2019) так и Buds+ (2020).
@@ -119,15 +119,15 @@
         Вы можете просмотреть историю изменений по нажатию на кнопку ниже.
     </sys:String>
 
-    <sys:String x:Key="updater_view_changelog">Просмотреть историю изменений на GitHub</sys:String><!-- Translator notice 4. It doesn't fit. -->
+    <sys:String x:Key="updater_view_changelog">Просмотреть историю изменений на GitHub</sys:String><!-- Translator notice 5. It doesn't fit. -->
     <sys:String x:Key="updater_footer_remindmelater">Позже</sys:String>
     <sys:String x:Key="updater_footer_skipversion">Пропустить</sys:String>
     <sys:String x:Key="updater_footer_install">Установить</sys:String>
 
-    <sys:String x:Key="updater_noupdate">Сейчас нет доступных обновлений.\n"Пожалуйста попробуйте позже или подпишитесь на мой GitHub для обновлений.</sys:String>
+    <sys:String x:Key="updater_noupdate">Сейчас нет доступных обновлений.\n"Пожалуйста, попробуйте позже или подпишитесь на мой GitHub для обновлений.</sys:String>
 
     <sys:String x:Key="updater_noupdate_title">Обновлений нет</sys:String>
-    <sys:String x:Key="updater_newrelease">Обновление {0} для Galaxy Buds Manager было выпущено</sys:String><!-- Translator notice 5. Similar to notice 2. -->
+    <sys:String x:Key="updater_newrelease">Обновление {0} для Galaxy Buds Manager было выпущено</sys:String><!-- Translator notice 6. Similar to notice 2. -->
 
     <!-- Device selection page (setup) -->
     <sys:String x:Key="devsel_header">Выберите ваши Galaxy Buds</sys:String>
@@ -136,19 +136,19 @@
     <sys:String x:Key="devsel_btaddr">MAC-адрес</sys:String>
     <sys:String x:Key="devsel_model">Модель</sys:String>
     <sys:String x:Key="devsel_noselection">Устройство не выбрано</sys:String>
-    <sys:String x:Key="devsel_invalid_selection">Пожалуйста сначала выберите поддерживаемое устройство</sys:String><!-- Translator notice 6. Looks like a bug. -->
-    <sys:String x:Key="devsel_footer_continue">Завершить</sys:String><!-- Translator notice 7. It doesn't fit. Again. -->
+    <sys:String x:Key="devsel_invalid_selection">Пожалуйста, сначала выберите поддерживаемое устройство</sys:String><!-- Translator notice 7. Looks like a bug. -->
+    <sys:String x:Key="devsel_footer_continue">Завершить</sys:String><!-- Translator notice 8. It doesn't fit. Again. -->
 
     <!-- Unsupported feature page -->
     <sys:String x:Key="unsupported_feature_current_fwver">Текущая версия прошивки:</sys:String>
     <sys:String x:Key="unsupported_feature_required_fwver">Необходимая версия прошивки:</sys:String>
 
-    <sys:String x:Key="unsupported_feature_header">Пожалуйста обновите прошивку</sys:String>
+    <sys:String x:Key="unsupported_feature_header">Пожалуйста, обновите прошивку</sys:String>
     <sys:String x:Key="unsupported_feature_current_fwver_null">Текущая версия прошивки: Неизвестно</sys:String>
     <sys:String x:Key="unsupported_feature_required_fwver_null">Необходимая версия прошивки: Не указано</sys:String>
 
     <sys:String x:Key="unsupported_feature_description_p1">Прошивка ваших Galaxy Buds устарела и не поддерживает эту функцию.</sys:String>
-    <sys:String x:Key="unsupported_feature_description_p2">Пожалуйста обновитесь до последней версии используя официальную утилиту обновлений для Windows или официальное приложение Wearable на Android</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p2">Пожалуйста, обновитесь до последней версии используя официальную утилиту обновлений для Windows или официальное приложение Wearable на Android</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">Убедитесь что вы закрыли эту программу для использования утилиты обновлений для Windows. Только одно приложение за раз может общаться с устройством Buds.</sys:String>
 
 
@@ -168,7 +168,7 @@
     <sys:String x:Key="cact_notice">Предупреждение</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Настраиваемые действия доступны только при условии работы этой программы в фоне.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">Эти настройки невозможно применить к Android или другим устройствам.</sys:String>
-    <sys:String x:Key="cact_notice_content_p3"><!-- Translator notice 8. Some changes. -->
+    <sys:String x:Key="cact_notice_content_p3"><!-- Translator notice 9. Some changes. -->
         Для того чтобы обеспечить работу этой функции, программа будет запускатся вместе с операционной системой и работать в фоне.
         Вы можете отключить автоматический запуск в настройках.
     </sys:String>
@@ -192,7 +192,7 @@
     <sys:String x:Key="system_proximity">Показания датчика приближения</sys:String>
     <sys:String x:Key="system_thermo">Показания термистора</sys:String>
     <sys:String x:Key="system_hall">Показания датчика Холла</sys:String>
-    <sys:String x:Key="system_accel">Статус акселерометра</sys:String><!-- Translator notice 9. Confusion? -->
+    <sys:String x:Key="system_accel">Статус акселерометра</sys:String><!-- Translator notice 10. Confusion? -->
     <!-- Note: system_accel only used on the self-test page -->
     <sys:String x:Key="system_adc_soc">АЦП: Батарея</sys:String>
     
@@ -200,7 +200,7 @@
     <sys:String x:Key="system_adc_current">АЦП: Ток</sys:String>
 
     <sys:String x:Key="selftest_header">Самодиагностика</sys:String>
-    <sys:String x:Key="selftest_header_alt">Самодиагностика (Возможно отключение)</sys:String><!-- Translator notice 10. No fit... -->
+    <sys:String x:Key="selftest_header_alt">Самодиагностика (Возможно отключение)</sys:String><!-- Translator notice 11. No fit... -->
     <sys:String x:Key="selftest_pass">Успешно</sys:String>
     <sys:String x:Key="selftest_fail">Ошибка</sys:String>
     <sys:String x:Key="selftest_pass_long">Все проверки пройдены успешно</sys:String>
@@ -214,7 +214,7 @@
     <sys:String x:Key="settings_transitions">Анимации</sys:String>
     <sys:String x:Key="settings_transitions_description">Включить переходы между слайдами</sys:String>
     <sys:String x:Key="settings_localization_disable">Язык</sys:String>
-    <sys:String x:Key="settings_localization_disable_description">Принудительная установка английского языка</sys:String>
+    <sys:String x:Key="settings_localization_disable_description">Принудительное использование английского языка</sys:String>
     <sys:String x:Key="settings_minimize_tray">Сворачивать в трей</sys:String>
     <sys:String x:Key="settings_minimize_tray_description">Свернуть вместо завершения работы</sys:String>
     <sys:String x:Key="settings_autostart">Запускать на старте</sys:String>
@@ -258,7 +258,7 @@
     <sys:String x:Key="eq_mode">Режим:</sys:String>
     <sys:String x:Key="eq_dolby">Оптимизировать для использования с Dolby</sys:String>
 
-    <sys:String x:Key="eq_bass">Больше низких</sys:String><!-- Translator notice 11. Missing feature? -->
+    <sys:String x:Key="eq_bass">Больше низких</sys:String><!-- Translator notice 12. Missing feature? -->
     <sys:String x:Key="eq_soft">Мягкий</sys:String>
     <sys:String x:Key="eq_dynamic">Динамичный</sys:String>
     <sys:String x:Key="eq_clear">Чистый</sys:String>
