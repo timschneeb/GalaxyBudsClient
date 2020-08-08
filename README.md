@@ -28,7 +28,7 @@ This Client is a product of my research on the custom RFComm Serial Protocol the
 * Display detailed sensor statistics on the dashboard, this includes:
   * Voltage and Current of the in-built ADC (Analog-to-Digital converter) of both Earbuds
   * Temperature of both Earbuds
-  * More precise battery percentage (instead of steps of 5)
+  * More precise battery percentage (instead of steps of 5 percent)
 * Perform a self-test with all on-board components
 * Display various (debug) information, including:
   * Hardware Revision
@@ -41,7 +41,7 @@ This Client is a product of my research on the custom RFComm Serial Protocol the
 * Equalizer: unlock 'Optimize for Dolby' feature
 * Touchpad: Combine Volume Up/Down with other options<sup>[1]</sup>
 
-> <sup>[1]</sup> Note that the Wearable app will automatically reset this feature when attempting to switch Touchpad options in their app
+> <sup>[1]</sup> Note that the Wearable app will automatically reset this feature when attempting to switch Touchpad options on the phone
 
 ## Installation
 
@@ -53,7 +53,7 @@ The original **Galaxy Buds (2019)** and **Galaxy Buds Plus** are fully supported
 
 ![Downloads](https://img.shields.io/github/downloads/ThePBone/GalaxyBudsClient/total)
 
-Alternatively, you can also use the chocolatey package provided by [@superbonaci](https://github.com/superbonaci):
+Alternatively, you can also use the [chocolatey](https://chocolatey.org/courses/getting-started/what-is-chocolatey) package provided by [@superbonaci](https://github.com/superbonaci):
 
 ```
 choco install galaxybudsclient
