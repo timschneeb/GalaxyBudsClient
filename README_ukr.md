@@ -1,70 +1,67 @@
 # Galaxy Buds Client
-An unofficial Galaxy Buds Manager for Windows (Buds/Buds+)
+Неофіційний менеджер Galaxy Buds (Buds/Buds+) для Windows 
 
-
-**This README is also available in [Korean](/README_kor.md)!**
-
-(You can find downloads in the [release tab](https://github.com/thepbone/galaxybudsclient/releases))
+(Ви можете знайти завантаження у розділі [релізів](https://github.com/thepbone/galaxybudsclient/releases))
 
 <p align="center">
   <img src="screenshots/screencap.gif">
 </p>
 
-This Client is a product of my research on the custom RFComm Serial Protocol the Buds use to receive and send binary (configuration) data. If you are interested in the structure of the protocol and its serial messages, I recommend you to check my notes out which I took while reverse-engineering the whole thing:
+Цей клієнт є результатом мого дослідження спеціальної версії послідовного протоколу RFComm, який Buds використовують для отримання та відправки бінарних (конфігураційних) даних. Якщо вас цікавить структура протоколу і його послідовні повідомлення, я рекомендую вам вивчити мої замітки, які я зробив під час реверс-інжинірингу:
 
-* [My Buds (2019) Notes](GalaxyBudsRFCommProtocol.md)
-* [My Buds Plus Notes](Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md)
+* [Нотатки про Buds (2019), англійська](GalaxyBudsRFCommProtocol.md)
+* [Нотатки про Buds Plus, англійська](Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md)
 
-## Features
+## Функції
 
-**New features** (in addition to the existing ones):
+**Нові функції** (в доповнення уже існуючим):
 
-* Touchpad: Customizable tap-and-hold actions (launch application, toggle equalizer, change ambient volume, ...)<sup>[1]</sup>
-* Resume media playback if Buds are worn
-* Systray context menu with battery statistics
-* Display detailed sensor statistics on the dashboard, this includes:
-  * Voltage and Current of the in-built ADC (Analog-to-Digital converter) of both Earbuds
-  * Temperature of both Earbuds
-  * More precise battery percentage (instead of steps of 5)
-* Perform a self-test with all on-board components
-* Display various (debug) information, including:
-  * Hardware Revision
-  * (Touch) Firmware Version
-  * Bluetooth Addresses of both Earbuds
-  * Serial Numbers of both Earbuds
-  * Firmware Build Info (Compile Date, Developer Name)
-  * Battery Type
-  * Other sensor data
-* Equalizer: unlock 'Optimize for Dolby' feature
-* Touchpad: Combine Volume Up/Down with other options<sup>[1]</sup>
+* Сенсорна панель: Налаштованиі дії (натиснути і затримати) для запуску програм, керування еквалайзером, керування гучністю звукового фону, ...<sup>[1]</sup>
+* Відновити програвання коли навушники одягнуті
+* Контекстне меню в системному треї з даними про заряд батареї
+* Відображення розширенних даних сенсорів на головному екрані, що включає:
+  * Вольти і напруга на вбудованому АЦП (Аналого-цифровий перетворювач) обох навушників
+  * Температура обох навушників
+  * Більш точний статус заряду (замість кроків у 5 відсотків)
+* Виконання самодіагностики усіх компонентів на борту
+* Відображення різноманітної інформації (для налагодження), включаючи:
+  * Апаратна версія
+  * (Сенсорна панель) Версія прошивки
+  * Адреса Bluetooth обох навушників
+  * Серійні номери обох навушників
+  * Інформація про збирання (Дата компіляції, Ім'я збиральника)
+  * Тип батареї
+  * Дані інших сенсорів
+* Еквалайзер: розблокуйте функцію 'Оптимізувати для Dolby'
+* Сенсорна панель: Комбінуйте керування гучністю разом з іншими діями<sup>[1]</sup>
 
-> <sup>[1]</sup> Note that the Wearable app will automatically reset this feature when attempting to switch Touchpad options in their app
+> <sup>[1]</sup> Майте на увазі що додаток Wearable автоматично скине налаштування цих функцій при відкритті налаштувань Сенсорної панелі на телефоні
 
-## Installation
+## Встановлення
 
-**This app requires [.Net Framework](https://dotnet.microsoft.com/download/dotnet-framework/net461) 4.6.1 or higher**
+**Ця программа вимагає [.Net Framework](https://dotnet.microsoft.com/download/dotnet-framework/net461) 4.6.1 або новіше**
 
-You can [**download**](https://github.com/ThePBone/GalaxyBudsClient/releases) a fully automated Setup in the [**release section**](https://github.com/ThePBone/GalaxyBudsClient/releases) of this repo!
+Ви можете [**завантажити**](https://github.com/ThePBone/GalaxyBudsClient/releases) повністю автоматичний пакет інсталятора в [**розділі релізів**](https://github.com/ThePBone/GalaxyBudsClient/releases) цього репозиторія!
 
-The original **Galaxy Buds (2019)** and **Galaxy Buds Plus** are fully supported.
+Оригінальні **Galaxy Buds (2019)** та **Galaxy Buds Plus** повністю підтримуються.
 
 ![Downloads](https://img.shields.io/github/downloads/ThePBone/GalaxyBudsClient/total)
 
-Alternatively, you can also use the [chocolatey](https://chocolatey.org/courses/getting-started/what-is-chocolatey) package provided by [@superbonaci](https://github.com/superbonaci):
+Як варіант, ви можете використати пакет [chocolatey](https://chocolatey.org/courses/getting-started/what-is-chocolatey) створений [@superbonaci](https://github.com/superbonaci):
 
 ```
 choco install galaxybudsclient
 ```
 
-## Translators
+## Перекладачі
 
-* [@Florize](https://github.com/Florize) - Korean and Japanese translation
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Russian and Ukrainian translation
+* [@Florize](https://github.com/Florize) - Корейський та Японський переклади
+* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Російський та Український переклади
 
-## Contributors
+## Співучасники
 
-* [@superbonaci](https://github.com/superbonaci) - Chocolatey package
-* [@githubcatw](https://github.com/githubcatw) - Connection dialog base
+* [@superbonaci](https://github.com/superbonaci) - Пакет Chocolatey
+* [@githubcatw](https://github.com/githubcatw) - Створення основи діалогу підключення
 
 
 
