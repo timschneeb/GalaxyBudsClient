@@ -1,11 +1,8 @@
 # Galaxy Buds Client
 An unofficial Galaxy Buds Manager for Windows (Buds/Buds+)
 
+
 **This README is also available in [Korean](/README_kor.md)!**
-
-**This README is also available in [Russian](/README_rus.md)!**
-
-**This README is also available in [Ukrainian](/README_ukr.md)!**
 
 (You can find downloads in the [release tab](https://github.com/thepbone/galaxybudsclient/releases))
 

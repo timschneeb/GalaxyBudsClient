@@ -16,13 +16,13 @@
     <sys:String x:Key="nobluetoothdev">No bluetooth adapter found.\nPlease enable bluetooth and try again.</sys:String>
 
     <!-- SPP Message Parser -->
-    <sys:String x:Key="sppmsg_too_small">Message too small</sys:String>
+    <sys:String x:Key="sppmsg_too_small">Message is too small</sys:String>
     <sys:String x:Key="sppmsg_invalid_som">Invalid SOM</sys:String>
     <!-- Context: SOM = Start of message -->
     <sys:String x:Key="sppmsg_invalid_eom">Invalid EOM</sys:String>
     <!-- Context: EOM = End of message -->
     <sys:String x:Key="sppmsg_size_mismatch">Payload size mismatch</sys:String>
-    <sys:String x:Key="sppmsg_tl">Message too small</sys:String>
+    <sys:String x:Key="sppmsg_tl">Message is too small</sys:String>
 
     <!-- Connection popup -->
     <sys:String x:Key="connpopup_placement_tl">Top left</sys:String>
@@ -128,7 +128,7 @@
 
     <sys:String x:Key="updater_noupdate">No updates are available at the moment.\n"Please try again later or check and subscribe the GitHub page for updates.</sys:String>
     <sys:String x:Key="updater_noupdate_title">No updates</sys:String>
-    <sys:String x:Key="updater_newrelease">Version {0} of Galaxy Buds Manager has been released</sys:String>
+    <sys:String x:Key="updater_newrelease">Update {0} for Galaxy Buds Manager has been released</sys:String>
 
     <!-- Device selection page (setup) -->
     <sys:String x:Key="devsel_header">Select your Galaxy Buds</sys:String>
@@ -192,7 +192,7 @@
     <sys:String x:Key="system_proximity">Proximity Measurement</sys:String>
     <sys:String x:Key="system_thermo">Thermistor Measurement</sys:String>
     <sys:String x:Key="system_hall">Hall Measurement</sys:String>
-    <sys:String x:Key="system_accel">Accelerator Measurement</sys:String>
+    <sys:String x:Key="system_accel">Accelerometer Status</sys:String>
     <!-- Note: system_accel only used on the self-test page -->
     <sys:String x:Key="system_adc_soc">ADC SoC</sys:String>
     <!-- Context: SoC = State of charge (battery percentage) -->
