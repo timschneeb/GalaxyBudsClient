@@ -176,7 +176,7 @@
     <!-- System/Self-Test -->
     <sys:String x:Key="system_header">Про навушники</sys:String>
     <sys:String x:Key="system_selftest">Самодіагностика</sys:String>
-    <sys:String x:Key="system_factory_reset">Скидання налаштувань</sys:String>
+    <sys:String x:Key="system_factory_reset">Скидання</sys:String><!--Translator notice UA-1. NO FIT AGAIN!!!-->
 
     <sys:String x:Key="system_battery_type_unknown">Не вказано</sys:String>
     <sys:String x:Key="system_waiting_for_device">Очікування відповіді...</sys:String>
@@ -270,7 +270,7 @@
     <sys:String x:Key="as_volume">Гучність звукового фона</sys:String>
     <sys:String x:Key="as_voicefocus">Підсилення голосу</sys:String>
     <sys:String x:Key="as_extrahigh">Підсилення звукового фона</sys:String>
-    <sys:String x:Key="as_extrahigh_description">Додає додатковий рівень гучності звукового фона на слайдер</sys:String>
+    <sys:String x:Key="as_extrahigh_description">Додає ще один рівень гучності звукового фона на слайдер</sys:String>
 
     <!-- Advanced page -->
     <sys:String x:Key="adv_header">Розширені налаштування</sys:String>
