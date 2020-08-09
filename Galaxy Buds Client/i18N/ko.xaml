@@ -13,7 +13,7 @@
     <sys:String x:Key="error">오류</sys:String>
     <sys:String x:Key="cancel">취소</sys:String>
     <sys:String x:Key="apply">적용</sys:String>
-    <sys:String x:Key="nobluetoothdev">Bluetooth 송수신 장치를 찾지 못했습니다.\nBluetooth를 켠 후 다시 시도해 주세요.</sys:String>
+    <sys:String x:Key="nobluetoothdev">Bluetooth 송수신 장치를 찾지 못했습니다. \nBluetooth를 켠 후 다시 시도해 주세요.</sys:String>
 
     <!-- SPP Message Parser -->
     <sys:String x:Key="sppmsg_too_small">Message too small</sys:String>
