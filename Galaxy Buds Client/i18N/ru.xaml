@@ -24,9 +24,9 @@
     <sys:String x:Key="sppmsg_tl">Размер пакета слишком мал</sys:String>
 
     <!-- Dark Mode States -->
-    <sys:String x:Key="darkmode_disabled">Off</sys:String>
-    <sys:String x:Key="darkmode_enabled">On</sys:String>
-    <sys:String x:Key="darkmode_system">Use system setting</sys:String>
+    <sys:String x:Key="darkmode_disabled">Выключена</sys:String>
+    <sys:String x:Key="darkmode_enabled">Включена</sys:String>
+    <sys:String x:Key="darkmode_system">Использовать настройки системы</sys:String>
 
     <!-- Connection popup -->
     <sys:String x:Key="connpopup_placement_tl">Сверху слева</sys:String>
@@ -238,8 +238,8 @@
     <sys:String x:Key="settings_cpopup_position">Положение</sys:String>
     <sys:String x:Key="settings_cpopup_position_placeholder">Неизвестно</sys:String>
     <sys:String x:Key="settings_cpopup_demo">Показать демонстрационное уведомление</sys:String>
-    <sys:String x:Key="settings_cpopup_override_title">Override popup title</sys:String>
-    <sys:String x:Key="settings_cpopup_override_title_dialog">Please enter a custom popup title. You can restore the default one by leaving this field empty.</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title">Заменить заголовок уведомления</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title_dialog">Пожалуйста, введите свой заголовок уведомления. Вы можете вернутся к стандартному варианту оставив это поле пустым.</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">Сброс настроек</sys:String>
