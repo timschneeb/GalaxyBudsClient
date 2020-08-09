@@ -19,6 +19,10 @@ namespace Galaxy_Buds_Client.model
             ko,
             [Description("Japanese")]
             ja,
+            [Description("Russian")]
+            ru,
+            [Description("Ukrainian")]
+            ua,
 
             [Description("custom_language.xaml")]
             custom
