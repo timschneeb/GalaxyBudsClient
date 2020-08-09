@@ -7,6 +7,7 @@ using System.Windows.Input;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model;
 using Galaxy_Buds_Client.model.Constants;
+using Galaxy_Buds_Client.Properties;
 using Galaxy_Buds_Client.ui.dialog;
 using Galaxy_Buds_Client.util.DynamicLocalization;
 using Microsoft.Win32;
@@ -23,6 +24,7 @@ namespace Galaxy_Buds_Client.ui
         public event EventHandler<CustomAction> Accept;
 
         private CustomAction _action;
+        public Devices CurrentSide { get; set; }
 
         public CustomActionPage(MainWindow mainWindow)
         {
@@ -100,7 +102,7 @@ namespace Galaxy_Buds_Client.ui
         {
             LoadingSpinner.Visibility = Visibility.Hidden; 
             ActionBorder.ContextMenu = GenerateMenu(ActionBorder);
-            Action.TextDetail = Loc.GetString("touchoption_custom_null");
+
             _action = null;
         }
 
