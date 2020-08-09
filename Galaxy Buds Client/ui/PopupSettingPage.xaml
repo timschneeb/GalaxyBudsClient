@@ -53,6 +53,8 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="1"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" ContextMenuService.Placement="Bottom">
                         <element:CheckableDetailListItem x:Name="CompactPopup" Text="{DynamicResource settings_cpopup_compact}" TextDetail="{DynamicResource settings_cpopup_compact_description}"
@@ -60,7 +62,13 @@
 
                     </Border>
                     <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
-                    <Border Grid.Row="2" x:Name="PositionPopupBorder" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" 
+                    <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" 
+                            MouseLeftButtonUp="OverrideTitle_OnMouseLeftButtonUp" ContextMenuService.Placement="Bottom">
+                        <element:DetailListItem x:Name="OverrideTitle" Text="{DynamicResource settings_cpopup_override_title}"
+                                                TextDetail="{DynamicResource notset}" Margin="20,8,20,8"/>
+                    </Border>
+                    <Separator Grid.Row="3" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
+                    <Border Grid.Row="4" x:Name="PositionPopupBorder" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" 
                             MouseLeftButtonUp="PositionPopup_OnMouseLeftButtonUp" ContextMenuService.Placement="Bottom">
                         <element:DetailListItem x:Name="PositionPopup" Text="{DynamicResource settings_cpopup_position}"
                                                 TextDetail="{DynamicResource settings_cpopup_position_placeholder}" Margin="20,8,20,8"/>

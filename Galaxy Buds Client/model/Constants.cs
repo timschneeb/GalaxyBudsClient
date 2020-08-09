@@ -27,6 +27,18 @@ namespace Galaxy_Buds_Client.model
             [Description("custom_language.xaml")]
             custom
         }
+        public enum DarkMode
+        {
+            [LocalizedDescription("darkmode_disabled")]
+            Light,
+            [LocalizedDescription("darkmode_enabled")]
+            Dark,
+            [LocalizedDescription("darkmode_system")]
+            System,
+
+            Unset
+        }
+
         public enum PopupPlacement
         {
             [LocalizedDescription("connpopup_placement_tl")]

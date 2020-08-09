@@ -13,6 +13,7 @@
     <sys:String x:Key="error">Error</sys:String>
     <sys:String x:Key="cancel">Cancel</sys:String>
     <sys:String x:Key="apply">Apply</sys:String>
+    <sys:String x:Key="notset">Not set</sys:String>
     <sys:String x:Key="nobluetoothdev">No bluetooth adapter found.\nPlease enable bluetooth and try again.</sys:String>
 
     <!-- SPP Message Parser -->
@@ -23,6 +24,11 @@
     <!-- Context: EOM = End of message -->
     <sys:String x:Key="sppmsg_size_mismatch">Payload size mismatch</sys:String>
     <sys:String x:Key="sppmsg_tl">Packet size is too small</sys:String>
+
+    <!-- Dark Mode States -->
+    <sys:String x:Key="darkmode_disabled">Off</sys:String>
+    <sys:String x:Key="darkmode_enabled">On</sys:String>
+    <sys:String x:Key="darkmode_system">Use system setting</sys:String>
 
     <!-- Connection popup -->
     <sys:String x:Key="connpopup_placement_tl">Top left</sys:String>
@@ -232,6 +238,8 @@
     <sys:String x:Key="settings_cpopup_position">Position</sys:String>
     <sys:String x:Key="settings_cpopup_position_placeholder">Unknown</sys:String>
     <sys:String x:Key="settings_cpopup_demo">Show demo popup</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title">Override popup title</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title_dialog">Please enter a custom popup title. You can restore the default one by leaving this field empty.</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">Factory reset</sys:String>
@@ -303,4 +311,5 @@
     <sys:String x:Key="connlost_noinfo">Failed to gather error information</sys:String>
     <sys:String x:Key="connlost_connect">Connect</sys:String>
     <sys:String x:Key="connlost_connecting">Connecting...</sys:String>
+
 </ResourceDictionary>

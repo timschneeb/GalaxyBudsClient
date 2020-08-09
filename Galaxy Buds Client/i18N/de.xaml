@@ -13,6 +13,7 @@
     <sys:String x:Key="error">Fehler</sys:String>
     <sys:String x:Key="cancel">Abbrechen</sys:String>
     <sys:String x:Key="apply">Speichern</sys:String>
+    <sys:String x:Key="notset">Nicht festgelegt</sys:String>
     <sys:String x:Key="nobluetoothdev">Kein Bluetooth-Adapter gefunden\nBitte aktiviere Bluetooth and versuche es noch einmal.</sys:String>
 
     <!-- SPP Message Parser -->
@@ -23,6 +24,11 @@
     <!-- Context: EOM = End of message -->
     <sys:String x:Key="sppmsg_size_mismatch">Payloadgröße stimmt nicht überein</sys:String>
     <sys:String x:Key="sppmsg_tl">Nachricht zu klein</sys:String>
+
+    <!-- Dark Mode States -->
+    <sys:String x:Key="darkmode_disabled">Ausgeschalten</sys:String>
+    <sys:String x:Key="darkmode_enabled">Eingeschalten</sys:String>
+    <sys:String x:Key="darkmode_system">Systemeinstellung verwenden</sys:String>
 
     <!-- Connection popup -->
     <sys:String x:Key="connpopup_placement_tl">Oben links</sys:String>
@@ -231,6 +237,8 @@
     <sys:String x:Key="settings_cpopup_position">Position</sys:String>
     <sys:String x:Key="settings_cpopup_position_placeholder">Unbekannt</sys:String>
     <sys:String x:Key="settings_cpopup_demo">Demo-Popup anzeigen</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title">Popup-Titel überschreiben</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title_dialog">Bitte gebe einen eigenen Popup-Titel ein. Lasse das Feld leer, um den Originaltext wiederherzustellen.</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">Zurücksetzen</sys:String>
