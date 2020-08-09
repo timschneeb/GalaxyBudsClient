@@ -143,7 +143,7 @@
     <sys:String x:Key="devsel_btaddr">MAC-Address</sys:String>
     <sys:String x:Key="devsel_model">Model</sys:String>
     <sys:String x:Key="devsel_noselection">No device selected</sys:String>
-    <sys:String x:Key="devsel_invalid_selection">Please select a valid device first</sys:String>
+    <sys:String x:Key="devsel_invalid_selection">Please select a valid device</sys:String>
     <sys:String x:Key="devsel_footer_continue">Finish Setup</sys:String>
 
     <!-- Unsupported feature page -->
