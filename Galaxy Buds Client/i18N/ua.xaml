@@ -13,6 +13,7 @@
     <sys:String x:Key="error">Помилка</sys:String>
     <sys:String x:Key="cancel">Відміна</sys:String>
     <sys:String x:Key="apply">Застосувати</sys:String>
+    <sys:String x:Key="notset">Не встановлено</sys:String>
     <sys:String x:Key="nobluetoothdev">Адаптер Bluetooth не знайдено.\nБудь ласка, увімкніть Bluetooth і спробуйте ще раз.</sys:String>
 
     <!-- SPP Message Parser --><!-- Translator notice 1. Tech things. -->
@@ -21,6 +22,11 @@
     <sys:String x:Key="sppmsg_invalid_eom">Поганий кінець пакету</sys:String>
     <sys:String x:Key="sppmsg_size_mismatch">Невідповідність розміру пакету</sys:String>
     <sys:String x:Key="sppmsg_tl">Розмір пакету занадто малий</sys:String>
+
+    <!-- Dark Mode States -->
+    <sys:String x:Key="darkmode_disabled">Off</sys:String>
+    <sys:String x:Key="darkmode_enabled">On</sys:String>
+    <sys:String x:Key="darkmode_system">Use system setting</sys:String>
 
     <!-- Connection popup -->
     <sys:String x:Key="connpopup_placement_tl">Згори ліворуч</sys:String>
@@ -232,6 +238,8 @@
     <sys:String x:Key="settings_cpopup_position">Положення</sys:String>
     <sys:String x:Key="settings_cpopup_position_placeholder">Невідомо</sys:String>
     <sys:String x:Key="settings_cpopup_demo">Показати демонстраційне повідомлення</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title">Override popup title</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title_dialog">Please enter a custom popup title. You can restore the default one by leaving this field empty.</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">Скидання налаштувань</sys:String>

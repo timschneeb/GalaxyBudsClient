@@ -64,7 +64,21 @@ namespace Galaxy_Buds_Client.ui
 
             DevName.TextDetail = device.DeviceName;
             DevAddress.TextDetail = BytesToMacString(_address.ToByteArrayBigEndian(), 0);
-            DevModel.TextDetail = device.DeviceName.Contains("Buds+") ? "Galaxy Buds+ (2020)" : "Galaxy Buds (2019)";
+
+            if (device.DeviceName.Contains("Galaxy Buds+"))
+            {
+                DevModel.TextDetail = "Galaxy Buds+ (2020)";
+            }
+            else if (device.DeviceName.Contains("Galaxy Buds"))
+            {
+                DevModel.TextDetail = "Galaxy Buds (2019)";
+            }
+            else
+            {
+                /* Set field to "Unknown". (Yes, I know that's a dirty solution but I'm too lazy right now :$ ) */
+                DevModel.TextDetail = Loc.GetString("settings_cpopup_position_placeholder");
+            }
+
             BottomNavBar.Visibility = Visibility.Visible;
         }
 
@@ -85,9 +99,12 @@ namespace Galaxy_Buds_Client.ui
 
         private void Continue_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (_address == null || _device == null)
+            if (_address == null || _device == null || !_device.DeviceName.Contains("Galaxy Buds"))
+            {
                 MessageBox.Show(Loc.GetString("devsel_invalid_selection"), Loc.GetString("error"), MessageBoxButton.OK,
                     MessageBoxImage.Error);
+                return;
+            }
 
             Properties.Settings.Default.RegisteredDevice = BytesToMacString(_address?.ToByteArrayBigEndian(), 0);
             Properties.Settings.Default.RegisteredDeviceModel = _device.DeviceName.Contains("Buds+") ? Model.BudsPlus : Model.Buds;

@@ -8,7 +8,9 @@ using Galaxy_Buds_Client.parser;
 using Galaxy_Buds_Client.model;
 using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.Properties;
+using Galaxy_Buds_Client.ui.dialog;
 using Galaxy_Buds_Client.util;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client.ui
 {
@@ -57,7 +59,7 @@ namespace Galaxy_Buds_Client.ui
 
             return ctxMenu;
         }
-        
+
         public override void OnPageShown()
         {
             LoadingSpinner.Visibility = Visibility.Hidden;
@@ -65,10 +67,12 @@ namespace Galaxy_Buds_Client.ui
             EnablePopup.Switch.SetChecked(Settings.Default.ConnectionPopupEnabled);
             CompactPopup.Switch.SetChecked(Settings.Default.ConnectionPopupCompact);
             PositionPopup.TextDetail = Settings.Default.ConnectionPopupPosition.GetDescription();
+            OverrideTitle.TextDetail = Settings.Default.ConnectionPopupCustomTitle == "" ?
+                Loc.GetString("notset") : Settings.Default.ConnectionPopupCustomTitle;
         }
 
         public override void OnPageHidden()
-        {}
+        { }
 
 
         private void BackButton_OnClick(object sender, RoutedEventArgs e)
@@ -97,6 +101,20 @@ namespace Galaxy_Buds_Client.ui
         private void TestPopup_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             _mainWindow.ShowDemoPopup();
+        }
+
+        private void OverrideTitle_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var dlg = new InputDialog();
+            dlg.Input.Text = Settings.Default.ConnectionPopupCustomTitle;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            bool? result = dlg.ShowDialog();
+            if (result == true)
+            {
+                OverrideTitle.TextDetail = dlg.Text == "" ? Loc.GetString("notset") : dlg.Text;
+                Settings.Default.ConnectionPopupCustomTitle = dlg.Text;
+                Settings.Default.Save();
+            }
         }
     }
 }

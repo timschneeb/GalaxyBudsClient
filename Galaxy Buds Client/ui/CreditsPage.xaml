@@ -96,11 +96,11 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem Text="{DynamicResource credits_translator}" TextDetail="github.com/Florize (Korean, Japanese)" Margin="20,0,20,0"/>
+                        <element:DetailListItem Text="{DynamicResource credits_translator}" TextDetail="@Florize (Korean, Japanese); @ArthurWolfhound (Russian, Ukrainian)" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem Text="{DynamicResource credits_contributor}" TextDetail="github.com/githubcatw (Connection dialog base)" Margin="20,0,20,0"/>
+                        <element:DetailListItem Text="{DynamicResource credits_contributor}" TextDetail="@githubcatw (Connection dialog base)" Margin="20,0,20,0"/>
                     </Border>
                 </Grid>
             </ScrollViewer>

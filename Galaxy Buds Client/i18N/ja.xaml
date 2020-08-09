@@ -13,6 +13,7 @@
     <sys:String x:Key="error">エラー</sys:String>
     <sys:String x:Key="cancel">キャンセル</sys:String>
     <sys:String x:Key="apply">適用</sys:String>
+    <sys:String x:Key="notset">指定なし</sys:String>
     <sys:String x:Key="nobluetoothdev">Bluetooth 装置が見つかりませんでした。 \nBluetoothを有効にしてからもう一度試してください。</sys:String>
 
     <!-- SPP Message Parser -->
@@ -24,6 +25,11 @@
     <sys:String x:Key="sppmsg_size_mismatch">Payload size mismatch</sys:String>
     <sys:String x:Key="sppmsg_tl">Message too small</sys:String>
 
+    <!-- Dark Mode States -->
+    <sys:String x:Key="darkmode_disabled">OFF</sys:String>
+    <sys:String x:Key="darkmode_enabled">ON</sys:String>
+    <sys:String x:Key="darkmode_system">Use system setting</sys:String>
+
     <!-- Connection popup -->
     <sys:String x:Key="connpopup_placement_tl">左上</sys:String>
     <sys:String x:Key="connpopup_placement_tc">中央上</sys:String>
@@ -34,7 +40,7 @@
     <sys:String x:Key="connpopup_title">{0}の Galaxy Buds{1}</sys:String>
     <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
 	
-	<!-- Placement  (Buds+) -->
+	<!-- Placement (Buds+) -->
     <sys:String x:Key="placement_disconnected">切断</sys:String>
     <sys:String x:Key="placement_wearing">装着</sys:String>
     <sys:String x:Key="placement_not_wearing">待機</sys:String>
@@ -126,7 +132,7 @@
     <sys:String x:Key="updater_footer_skipversion">このﾊﾞｰｼﾞｮﾝをｽｷｯﾌﾟ</sys:String>
     <sys:String x:Key="updater_footer_install">今すぐｲﾝｽﾄｰﾙ</sys:String>
 
-    <sys:String x:Key="updater_noupdate">最新のバージョンです。後でもう一度確認するかGitHubに登録して新たなアップデートを確認しましょう。</sys:String>
+    <sys:String x:Key="updater_noupdate">最新のバージョンです。後でもう一度確認するかGitHubに登録して新しいアップデートを確認しましょう。</sys:String>
     <sys:String x:Key="updater_noupdate_title">アップデートなし</sys:String>
     <sys:String x:Key="updater_newrelease">Galaxy Buds Manager バージョン {0}がリリーズされました！ </sys:String>
 
@@ -232,6 +238,8 @@
     <sys:String x:Key="settings_cpopup_position">表示位置</sys:String>
     <sys:String x:Key="settings_cpopup_position_placeholder">不明</sys:String>
     <sys:String x:Key="settings_cpopup_demo">ポップアップを見る</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title">Override popup title</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title_dialog">Please enter a custom popup title. You can restore the default one by leaving this field empty.</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">イヤホンをリセット</sys:String>

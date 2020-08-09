@@ -13,6 +13,7 @@
     <sys:String x:Key="error">Ошибка</sys:String>
     <sys:String x:Key="cancel">Отмена</sys:String>
     <sys:String x:Key="apply">Применить</sys:String>
+    <sys:String x:Key="notset">Не установлено</sys:String>
     <sys:String x:Key="nobluetoothdev">Адаптер Bluetooth не найден.\nПожалуйста, включите Bluetooth и попробуйте еще раз.</sys:String>
 
     <!-- SPP Message Parser --><!-- Translator notice 1. Tech things. -->
@@ -21,6 +22,11 @@
     <sys:String x:Key="sppmsg_invalid_eom">Плохой конец пакета</sys:String>
     <sys:String x:Key="sppmsg_size_mismatch">Несоответствие размера пакета</sys:String>
     <sys:String x:Key="sppmsg_tl">Размер пакета слишком мал</sys:String>
+
+    <!-- Dark Mode States -->
+    <sys:String x:Key="darkmode_disabled">Off</sys:String>
+    <sys:String x:Key="darkmode_enabled">On</sys:String>
+    <sys:String x:Key="darkmode_system">Use system setting</sys:String>
 
     <!-- Connection popup -->
     <sys:String x:Key="connpopup_placement_tl">Сверху слева</sys:String>
@@ -232,6 +238,8 @@
     <sys:String x:Key="settings_cpopup_position">Положение</sys:String>
     <sys:String x:Key="settings_cpopup_position_placeholder">Неизвестно</sys:String>
     <sys:String x:Key="settings_cpopup_demo">Показать демонстрационное уведомление</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title">Override popup title</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title_dialog">Please enter a custom popup title. You can restore the default one by leaving this field empty.</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">Сброс настроек</sys:String>

@@ -169,13 +169,13 @@ namespace Galaxy_Buds_Client.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool DarkMode {
+        [global::System.Configuration.DefaultSettingValueAttribute("Unset")]
+        public global::Galaxy_Buds_Client.model.Constants.DarkMode DarkMode2 {
             get {
-                return ((bool)(this["DarkMode"]));
+                return ((global::Galaxy_Buds_Client.model.Constants.DarkMode)(this["DarkMode2"]));
             }
             set {
-                this["DarkMode"] = value;
+                this["DarkMode2"] = value;
             }
         }
         
@@ -236,6 +236,30 @@ namespace Galaxy_Buds_Client.Properties {
             }
             set {
                 this["CurrentLocale"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ConnectionPopupCustomTitle {
+            get {
+                return ((string)(this["ConnectionPopupCustomTitle"]));
+            }
+            set {
+                this["ConnectionPopupCustomTitle"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DarkMode {
+            get {
+                return ((bool)(this["DarkMode"]));
+            }
+            set {
+                this["DarkMode"] = value;
             }
         }
     }

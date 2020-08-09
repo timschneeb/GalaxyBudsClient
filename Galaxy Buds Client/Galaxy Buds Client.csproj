@@ -160,6 +160,9 @@
     <Compile Include="ui\CustomActionPage.xaml.cs">
       <DependentUpon>CustomActionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ui\dialog\InputDialog.xaml.cs">
+      <DependentUpon>InputDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ui\dialog\HotkeyRecorder.xaml.cs">
       <DependentUpon>HotkeyRecorder.xaml</DependentUpon>
     </Compile>
@@ -286,11 +289,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="i18N\ru.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="i18N\ua.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ui\devmode\TranslatorMode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ui\dialog\BudsPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ui\dialog\InputDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
