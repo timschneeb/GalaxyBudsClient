@@ -16,13 +16,13 @@
     <sys:String x:Key="nobluetoothdev">No bluetooth adapter found.\nPlease enable bluetooth and try again.</sys:String>
 
     <!-- SPP Message Parser -->
-    <sys:String x:Key="sppmsg_too_small">Message is too small</sys:String>
+    <sys:String x:Key="sppmsg_too_small">Packet size is too small</sys:String>
     <sys:String x:Key="sppmsg_invalid_som">Invalid SOM</sys:String>
     <!-- Context: SOM = Start of message -->
     <sys:String x:Key="sppmsg_invalid_eom">Invalid EOM</sys:String>
     <!-- Context: EOM = End of message -->
     <sys:String x:Key="sppmsg_size_mismatch">Payload size mismatch</sys:String>
-    <sys:String x:Key="sppmsg_tl">Message is too small</sys:String>
+    <sys:String x:Key="sppmsg_tl">Packet size is too small</sys:String>
 
     <!-- Connection popup -->
     <sys:String x:Key="connpopup_placement_tl">Top left</sys:String>
