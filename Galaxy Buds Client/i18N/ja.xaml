@@ -13,7 +13,7 @@
     <sys:String x:Key="error">エラー</sys:String>
     <sys:String x:Key="cancel">キャンセル</sys:String>
     <sys:String x:Key="apply">適用</sys:String>
-    <sys:String x:Key="nobluetoothdev">Bluetooth 装置が見つかりませんでした。\nBluetoothを有効にしてからもう一度試してください。</sys:String>
+    <sys:String x:Key="nobluetoothdev">Bluetooth 装置が見つかりませんでした。 \nBluetoothを有効にしてからもう一度試してください。</sys:String>
 
     <!-- SPP Message Parser -->
     <sys:String x:Key="sppmsg_too_small">Message too small</sys:String>
@@ -159,7 +159,7 @@
     <sys:String x:Key="touchpad_right_action">右</sys:String>
 
     <sys:String x:Key="touchpad_double_tap_volume">イヤホンの端をダブルタップ</sys:String>
-    <sys:String x:Key="touchpad_double_tap_volume_description">左のイヤホンの端をダブルタップすると音量が下がり、右のイヤホンの端をだタップすると音量が上がります。</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">左のイヤホンの端をダブルタップすると音量が下がり、右のイヤホンの端をダブルタップすると音量が上がります。</sys:String>
 
     <!-- Custom touchpad action page -->
     <sys:String x:Key="cact_header">カスタム長押し動作</sys:String>
@@ -297,7 +297,7 @@
     <sys:String x:Key="connlost_description_p1">イヤホンとの接続に失敗しました。</sys:String>
     <sys:String x:Key="connlost_description_p2">
         Bluetoothの設定を確認し、イヤホンがPCとペアリングされているかを確認してください。
-        必要であれば再度ペアリングができます。 再度ペアリングする場合、オプション>デバイスとのペアリングを解除を押してください。
+        必要であれば再度ペアリングができます。 再度ペアリングする場合、オプション>デバイスとのペアリングを解除をしてください。
     </sys:String>
     <sys:String x:Key="connlost_description_p3">追加情報:</sys:String>
     <sys:String x:Key="connlost_noinfo">エラーの情報が読み込めませんでした。</sys:String>
