@@ -126,7 +126,7 @@
     <sys:String x:Key="updater_footer_skipversion">このﾊﾞｰｼﾞｮﾝをｽｷｯﾌﾟ</sys:String>
     <sys:String x:Key="updater_footer_install">今すぐｲﾝｽﾄｰﾙ</sys:String>
 
-    <sys:String x:Key="updater_noupdate">最新のバージョンです。後でもう一度確認するかGitHubに登録して新たなアップデートを確認しましょう。</sys:String>
+    <sys:String x:Key="updater_noupdate">最新のバージョンです。後でもう一度確認するかGitHubに登録して新しいアップデートを確認しましょう。</sys:String>
     <sys:String x:Key="updater_noupdate_title">アップデートなし</sys:String>
     <sys:String x:Key="updater_newrelease">Galaxy Buds Manager バージョン {0}がリリーズされました！ </sys:String>
 
