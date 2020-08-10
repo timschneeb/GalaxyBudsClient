@@ -53,21 +53,24 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="DarkMode_OnMouseLeftButtonUp">
-                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,3,20,0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-
-                        <element:DetailListItem Grid.Column="0" Text="{DynamicResource settings_darkmode}" TextDetail="{DynamicResource settings_darkmode_description}" Grid.ColumnSpan="2"/>
-                            <element:ToggleSwitch x:Name="DarkModeToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
-                        </Grid>
+                <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}"
+                        Name="DarkModeBorder" MouseLeftButtonUp="DarkMode_OnMouseLeftButtonUp">
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,3,20,0"  >
+                        <element:DetailListItem x:Name="DarkModeSelect" Text="{DynamicResource settings_darkmode}"
+                                       TextDetail="{DynamicResource settings_darkmode_description}" Grid.ColumnSpan="2"/>
+                    </Grid>
                 </Border>
 
-                <Border Grid.Row="1" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Transition_OnMouseLeftButtonUp">
+                <Border Grid.Row="1" CornerRadius="20" Style="{StaticResource BorderHoverStyle}"
+                        MouseLeftButtonUp="Locale_OnMouseLeftButtonUp" x:Name="LocaleBorder">
                     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,0" >
+                        <element:DetailListItem Grid.Column="0" Text="{DynamicResource settings_localization_disable}" 
+                                                TextDetail="English" x:Name="LocaleSelect"/>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Transition_OnMouseLeftButtonUp">
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,0,20,3" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
@@ -76,14 +79,6 @@
 
                         <element:DetailListItem Grid.Column="0" Text="{DynamicResource settings_transitions}" TextDetail="{DynamicResource settings_transitions_description}" Grid.ColumnSpan="2"/>
                         <element:ToggleSwitch x:Name="TransitionToggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
-                    </Grid>
-                </Border>
-
-                <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}"
-                        MouseLeftButtonUp="Locale_OnMouseLeftButtonUp" x:Name="LocaleBorder">
-                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,0,20,3" >
-                        <element:DetailListItem Grid.Column="0" Text="{DynamicResource settings_localization_disable}" 
-                                                TextDetail="English" x:Name="LocaleSelect"/>
                     </Grid>
                 </Border>
             </Grid>

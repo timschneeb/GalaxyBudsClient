@@ -13,6 +13,7 @@
     <sys:String x:Key="error">오류</sys:String>
     <sys:String x:Key="cancel">취소</sys:String>
     <sys:String x:Key="apply">적용</sys:String>
+    <sys:String x:Key="notset">설정되지 않음</sys:String>
     <sys:String x:Key="nobluetoothdev">Bluetooth 송수신 장치를 찾지 못했습니다. \nBluetooth를 켠 후 다시 시도해 주세요.</sys:String>
 
     <!-- SPP Message Parser -->
@@ -237,6 +238,7 @@
     <sys:String x:Key="settings_cpopup_position">표시 위치</sys:String>
     <sys:String x:Key="settings_cpopup_position_placeholder">알 수 없음</sys:String>
     <sys:String x:Key="settings_cpopup_demo">팝업 보기</sys:String>
+
     <sys:String x:Key="settings_cpopup_override_title">팝업 타이틀 변경</sys:String>
     <sys:String x:Key="settings_cpopup_override_title_dialog">팝업 타이틀을 입력해 주세요. 공백으로 둘 시 기본 타이틀이 적용됩니다.</sys:String>
 

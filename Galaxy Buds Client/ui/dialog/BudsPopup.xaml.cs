@@ -7,6 +7,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model.Constants;
+using Galaxy_Buds_Client.Properties;
 using Galaxy_Buds_Client.transition;
 using Galaxy_Buds_Client.util.DynamicLocalization;
 
@@ -46,7 +47,11 @@ namespace Galaxy_Buds_Client.ui.dialog {
             if (model == Model.BudsPlus) mod = "+";
             string name = Environment.UserName.Split(' ')[0];
 
-            Greeting.Content = string.Format(Loc.GetString("connpopup_title"), name, mod);
+            string title = Settings.Default.ConnectionPopupCustomTitle == ""
+                ? Loc.GetString("connpopup_title")
+                : Settings.Default.ConnectionPopupCustomTitle;
+
+            Greeting.Content = string.Format(title, name, mod);
             UpdateContent(left, right, box);
             
             SPPMessageHandler.Instance.StatusUpdate += Instance_OnStatusUpdate;

@@ -46,7 +46,7 @@ Windows 비공식 Galaxy Buds Manager (Buds/Buds+)
 
 ![Downloads](https://img.shields.io/github/downloads/ThePBone/GalaxyBudsClient/total)
 
-또는, [@superbonaci](https://github.com/superbonaci) 님이 제공하신 Chocolatey 패키지를 사용할 수 있습니다:
+또는, [@superbonaci](https://github.com/superbonaci) 님이 제공하신 [Chocolatey](https://chocolatey.org/courses/getting-started/what-is-chocolatey) 패키지를 사용할 수 있습니다:
 
 ```
 choco install galaxybudsclient

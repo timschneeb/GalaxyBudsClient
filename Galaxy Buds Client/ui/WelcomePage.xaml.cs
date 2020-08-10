@@ -39,7 +39,13 @@ namespace Galaxy_Buds_Client.ui
         {
             _mainWindow.SetOptionsEnabled(false);
             LocaleBorder.ContextMenu = GenerateMenu(LocaleBorder);
-            DarkMode.Switch.SetChecked(Properties.Settings.Default.DarkMode);
+
+            if (Properties.Settings.Default.DarkMode2 == model.Constants.DarkMode.System)
+                DarkMode.Visibility = Visibility.Collapsed;
+            else
+                DarkMode.Visibility = Visibility.Visible;
+
+            DarkMode.Switch.SetChecked(Properties.Settings.Default.DarkMode2 == model.Constants.DarkMode.Dark);
         }
 
         public override void OnPageHidden()
@@ -53,9 +59,9 @@ namespace Galaxy_Buds_Client.ui
 
         private void DarkMode_OnSwitchToggled(object sender, bool e)
         {
-            DarkModeHelper.SetState(e);
-            Properties.Settings.Default.DarkMode = e;
+            Properties.Settings.Default.DarkMode2 = (DarkMode)Convert.ToInt32(e);
             Properties.Settings.Default.Save();
+            DarkModeHelper.Update();
         }
 
         private void Language_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)

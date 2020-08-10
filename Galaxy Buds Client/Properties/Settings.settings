@@ -38,8 +38,8 @@
     <Setting Name="UpdateSettings" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="DarkMode" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+    <Setting Name="DarkMode2" Type="Galaxy_Buds_Client.model.Constants.DarkMode" Scope="User">
+      <Value Profile="(Default)">Unset</Value>
     </Setting>
     <Setting Name="ResumePlaybackOnSensor" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -55,6 +55,12 @@
     </Setting>
     <Setting Name="CurrentLocale" Type="Galaxy_Buds_Client.model.Constants.Locale" Scope="User">
       <Value Profile="(Default)">en</Value>
+    </Setting>
+    <Setting Name="ConnectionPopupCustomTitle" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DarkMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

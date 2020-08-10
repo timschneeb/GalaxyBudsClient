@@ -96,7 +96,13 @@ namespace Galaxy_Buds_Client
                 Settings.Default.Save();
             }
 
-            DarkModeHelper.SetState(Settings.Default.DarkMode);
+            if (Settings.Default.DarkMode2 == DarkMode.Unset)
+            {
+                Settings.Default.DarkMode2 = (DarkMode)Convert.ToInt32(Settings.Default.DarkMode);
+                Settings.Default.Save();
+            }
+
+            DarkModeHelper.Update();
 
             _mainPage = new MainPage(this);
             _systemPage = new SystemPage(this);
@@ -374,6 +380,8 @@ namespace Galaxy_Buds_Client
 
         private void Tray_OnTrayLeftMouseDown(object sender, RoutedEventArgs e)
         {
+            DarkModeHelper.Update();
+
             Visibility = Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
             if (Visibility == Visibility.Visible)
             {
