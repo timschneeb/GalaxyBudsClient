@@ -124,11 +124,19 @@ namespace Galaxy_Buds_Client.ui
                     {
                         _lastLeftOption = option;
                         LeftOption.TextDetail = m.Header.ToString();
+
+                        Settings.Default.LeftCustomAction = -1;
+                        Settings.Default.LeftCustomActionParameter = "";
+                        Settings.Default.Save();
                     }
                     else
                     {
                         _lastRightOption = option;
                         RightOption.TextDetail = m.Header.ToString();
+
+                        Settings.Default.RightCustomAction = -1;
+                        Settings.Default.RightCustomActionParameter = "";
+                        Settings.Default.Save();
                     }
                     BluetoothService.Instance.SendAsync(SPPMessageBuilder.Touch.SetOptions(_lastLeftOption, _lastRightOption));
                 }
