@@ -59,7 +59,6 @@ namespace Galaxy_Buds_Client.ui
             m.Header = action.GetDescription();
             m.Click += delegate
             {
-                Action.TextDetail = action.GetDescription();
                 if (action == CustomAction.Actions.RunExternalProgram)
                 {
                     OpenFileDialog dlg = new OpenFileDialog();
@@ -87,6 +86,8 @@ namespace Galaxy_Buds_Client.ui
                 {
                     _action = new CustomAction(action);
                 }
+
+                Action.TextDetail = _action.ToLongString();
             };
             m.Style = (Style)FindResource("MenuItemStyle");
             c.Items.Add(m);

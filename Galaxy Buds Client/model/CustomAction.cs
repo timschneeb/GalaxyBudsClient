@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 
 namespace Galaxy_Buds_Client.model
@@ -34,8 +35,17 @@ namespace Galaxy_Buds_Client.model
         public override string ToString()
         {
             if(Action == Actions.RunExternalProgram)
-                return $"{Action.GetDescription()} ({Parameter})";
+                return $"{Path.GetFileName(Parameter)}";
             if(Action == Actions.Hotkey && Parameter.Contains(";"))
+                return $"{Parameter.Split(';')[0]}";
+            return Action.GetDescription();
+        }
+
+        public string ToLongString()
+        {
+            if (Action == Actions.RunExternalProgram)
+                return $"{Action.GetDescription()} ({Path.GetFileName(Parameter)})";
+            if (Action == Actions.Hotkey && Parameter.Contains(";"))
                 return $"{Action.GetDescription()} ({Parameter.Split(';')[0]})";
             return Action.GetDescription();
         }
