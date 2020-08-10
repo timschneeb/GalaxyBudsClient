@@ -27,7 +27,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}"/>
-                <Label Grid.Column="1" Content="{DynamicResource cact_header}" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241" Grid.ColumnSpan="3" Margin="17,0,-17,0"/>
+                <Label Name="Header" Grid.Column="1" Content="{DynamicResource cact_header}" Foreground="{DynamicResource ForegroundTextBrush}" VerticalContentAlignment="Center" FontSize="20" RenderTransformOrigin="0.451,0.241" Grid.ColumnSpan="3" Margin="17,0,-17,0"/>
                 <element:LoadingSpinner Grid.Column="3" x:Name="LoadingSpinner" Margin="321,19,-341,19"/>
             </Grid>
         </Border>

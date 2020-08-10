@@ -103,6 +103,8 @@ namespace Galaxy_Buds_Client.ui
             LoadingSpinner.Visibility = Visibility.Hidden; 
             ActionBorder.ContextMenu = GenerateMenu(ActionBorder);
 
+            Header.Content = $"{Loc.GetString("cact_header")} ({Loc.GetString(CurrentSide == Devices.L ? "left" : "right")})";
+
             _action = null;
         }
 

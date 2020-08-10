@@ -101,6 +101,8 @@ namespace Galaxy_Buds_Client.ui
                 if (side == Devices.L && option == TouchOption.Universal.OtherL)
                 {
                     int act = Settings.Default.LeftCustomAction;
+                    _mainWindow.CustomActionPage.CurrentSide = Devices.L;
+
                     _mainWindow.CustomActionPage.Action.TextDetail = act < 0 ? Loc.GetString("touchoption_custom_null") :
                         new CustomAction((CustomAction.Actions) act,
                             Settings.Default.LeftCustomActionParameter).ToString();
@@ -109,6 +111,8 @@ namespace Galaxy_Buds_Client.ui
                 else if (side == Devices.R && option == TouchOption.Universal.OtherR)
                 {
                     int act = Settings.Default.RightCustomAction;
+                    _mainWindow.CustomActionPage.CurrentSide = Devices.R;
+
                     _mainWindow.CustomActionPage.Action.TextDetail = act < 0 ? Loc.GetString("touchoption_custom_null") :
                         new CustomAction((CustomAction.Actions)act,
                             Settings.Default.RightCustomActionParameter).ToString();
