@@ -111,8 +111,8 @@ namespace Galaxy_Buds_Client.ui
                         UpdatePlusPlacement(p.PlacementL, p.PlacementR);
                         _lastPlacementL = p.PlacementL;
                         _lastPlacementR = p.PlacementR;
-                        BatteryCase.Content = p.BatteryCase <= 0 ? "" : $"{p.BatteryCase}%";
-                        CaseLabel.Visibility = p.BatteryCase <= 0 ? Visibility.Hidden : Visibility.Visible;
+                        BatteryCase.Content = BluetoothService.Instance.ActiveModel == Model.Buds ? "" : $"{p.BatteryCase}%";
+                        CaseLabel.Visibility = BluetoothService.Instance.ActiveModel == Model.Buds ? Visibility.Hidden : Visibility.Visible;
                     }
                 });
             }
@@ -128,8 +128,8 @@ namespace Galaxy_Buds_Client.ui
                         UpdatePlusPlacement(p.PlacementL, p.PlacementR);
                         _lastPlacementL = p.PlacementL;
                         _lastPlacementR = p.PlacementR;
-                        BatteryCase.Content = p.BatteryCase <= 0 ? "" : $"{p.BatteryCase}%";
-                        CaseLabel.Visibility = p.BatteryCase <= 0 ? Visibility.Hidden : Visibility.Visible;
+                        BatteryCase.Content = BluetoothService.Instance.ActiveModel == Model.Buds ? "" : $"{p.BatteryCase}%";
+                        CaseLabel.Visibility = BluetoothService.Instance.ActiveModel == Model.Buds ? Visibility.Hidden : Visibility.Visible;
                     }
                 });
             }
