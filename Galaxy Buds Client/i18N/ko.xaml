@@ -23,6 +23,11 @@
     <!-- Context: EOM = End of message -->
     <sys:String x:Key="sppmsg_size_mismatch">페이로드 크기 불일치</sys:String>
     <sys:String x:Key="sppmsg_tl">패킷 크기가 너무 작음</sys:String>
+	 
+    <!-- Dark Mode States -->
+    <sys:String x:Key="darkmode_disabled">끄기</sys:String>
+    <sys:String x:Key="darkmode_enabled">켜기</sys:String>
+    <sys:String x:Key="darkmode_system">시스템 설정을 사용</sys:String>
 
     <!-- Connection popup -->
     <sys:String x:Key="connpopup_placement_tl">상단 왼쪽</sys:String>
@@ -232,6 +237,8 @@
     <sys:String x:Key="settings_cpopup_position">표시 위치</sys:String>
     <sys:String x:Key="settings_cpopup_position_placeholder">알 수 없음</sys:String>
     <sys:String x:Key="settings_cpopup_demo">팝업 보기</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title">팝업 타이틀 변경</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title_dialog">팝업 타이틀을 입력해 주세요. 공백으로 둘 시 기본 타이틀이 적용됩니다.</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">이어버드 초기화</sys:String>
