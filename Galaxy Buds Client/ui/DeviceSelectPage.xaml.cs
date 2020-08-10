@@ -65,7 +65,12 @@ namespace Galaxy_Buds_Client.ui
             DevName.TextDetail = device.DeviceName;
             DevAddress.TextDetail = BytesToMacString(_address.ToByteArrayBigEndian(), 0);
 
-            if (device.DeviceName.Contains("Galaxy Buds+"))
+            /* We do not support neobeans! */
+            if (device.DeviceName.Contains("Galaxy Buds Live"))
+            {
+                DevModel.TextDetail = Loc.GetString("settings_cpopup_position_placeholder");
+            }
+            else if (device.DeviceName.Contains("Galaxy Buds+"))
             {
                 DevModel.TextDetail = "Galaxy Buds+ (2020)";
             }
@@ -99,7 +104,7 @@ namespace Galaxy_Buds_Client.ui
 
         private void Continue_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (_address == null || _device == null || !_device.DeviceName.Contains("Galaxy Buds"))
+            if (_address == null || _device == null || !_device.DeviceName.Contains("Galaxy Buds") || _device.DeviceName.Contains("Live"))
             {
                 MessageBox.Show(Loc.GetString("devsel_invalid_selection"), Loc.GetString("error"), MessageBoxButton.OK,
                     MessageBoxImage.Error);
