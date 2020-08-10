@@ -23,6 +23,11 @@
     <!-- Context: EOM = End of message -->
     <sys:String x:Key="sppmsg_size_mismatch">Payload size mismatch</sys:String>
     <sys:String x:Key="sppmsg_tl">Message too small</sys:String>
+	 
+    <!-- Dark Mode States -->
+    <sys:String x:Key="darkmode_disabled">OFF</sys:String>
+    <sys:String x:Key="darkmode_enabled">ON</sys:String>
+    <sys:String x:Key="darkmode_system">システムのデフォルト</sys:String>
 
     <!-- Connection popup -->
     <sys:String x:Key="connpopup_placement_tl">左上</sys:String>
@@ -169,7 +174,7 @@
     <sys:String x:Key="cact_notice_content_p1">カスタム長押し動作はプログラムがバックグラウンドで実行されているときだけ有効です。</sys:String>
     <sys:String x:Key="cact_notice_content_p2">Androidデバイスやその以外のデバイスでは無効です。</sys:String>
     <sys:String x:Key="cact_notice_content_p3">
-		この機能の常時的な動作のため、このプログラムはシステムの起動時にバックグラウンドで実行されます。
+	この機能の常時的な動作のため、このプログラムはシステムの起動時にバックグラウンドで実行されます。
         設定でシステム起動時に自動実行をOFFできます。
     </sys:String>
 
@@ -232,6 +237,8 @@
     <sys:String x:Key="settings_cpopup_position">表示位置</sys:String>
     <sys:String x:Key="settings_cpopup_position_placeholder">不明</sys:String>
     <sys:String x:Key="settings_cpopup_demo">ポップアップを見る</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title">ポップアップのタイトルをオーバーライド</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title_dialog">カスタムポップアップタイトルを入力してください。このフィールドを空にすることでデフォルトに戻せます。</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">イヤホンをリセット</sys:String>
