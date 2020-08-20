@@ -105,7 +105,8 @@ namespace Galaxy_Buds_Client.ui
                     BluetoothService.Instance.SendAsync(SPPMessageBuilder.Info.GetAllData());
                 Dispatcher.Invoke(() =>
                 {
-                    if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+                    if (BluetoothService.Instance.ActiveModel == Model.BudsPlus ||
+                        BluetoothService.Instance.ActiveModel == Model.BudsLive)
                     {
                         ExtendedStatusUpdateParser p = (ExtendedStatusUpdateParser) parser;
                         UpdatePlusPlacement(p.PlacementL, p.PlacementR);
@@ -113,6 +114,12 @@ namespace Galaxy_Buds_Client.ui
                         _lastPlacementR = p.PlacementR;
                         BatteryCase.Content = BluetoothService.Instance.ActiveModel == Model.Buds ? "" : $"{p.BatteryCase}%";
                         CaseLabel.Visibility = BluetoothService.Instance.ActiveModel == Model.Buds ? Visibility.Hidden : Visibility.Visible;
+                    }
+
+                    if (BluetoothService.Instance.ActiveModel == Model.BudsLive)
+                    {
+                        ExtendedStatusUpdateParser p = (ExtendedStatusUpdateParser)parser;
+                        AncToggle.SetChecked(p.NoiceCancelling);
                     }
                 });
             }
@@ -122,7 +129,8 @@ namespace Galaxy_Buds_Client.ui
                     BluetoothService.Instance.SendAsync(SPPMessageBuilder.Info.GetAllData());
                 Dispatcher.Invoke(() =>
                 {
-                    if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+                    if (BluetoothService.Instance.ActiveModel == Model.BudsPlus ||
+                        BluetoothService.Instance.ActiveModel == Model.BudsLive)
                     {
                         StatusUpdateParser p = (StatusUpdateParser) parser;
                         UpdatePlusPlacement(p.PlacementL, p.PlacementR);
@@ -160,6 +168,8 @@ namespace Galaxy_Buds_Client.ui
                 BatteryCase.Content = "";
                 CaseLabel.Visibility = Visibility.Hidden;
             }
+
+            UpdateList();
 
             UpdatePlusPlacement(_lastPlacementL, _lastPlacementR);
         }
@@ -291,6 +301,20 @@ namespace Galaxy_Buds_Client.ui
 
         }
 
+        public void UpdateList()
+        {
+            if (BluetoothService.Instance.ActiveModel == Model.BudsLive)
+            {
+                AncBorder.Visibility = Visibility.Visible;
+                AmbientBorder.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                AncBorder.Visibility = Visibility.Hidden;
+                AmbientBorder.Visibility = Visibility.Visible;
+            }
+        }
+
         public void SetWarning(bool visible, String message = "")
         {
             if (message == "")
@@ -341,6 +365,12 @@ namespace Galaxy_Buds_Client.ui
             Properties.Settings.Default.UseFahrenheit = !Properties.Settings.Default.UseFahrenheit;
             Properties.Settings.Default.Save();
             UpdateTemperature(_lastGetAllDataParser.LeftThermistor, _lastGetAllDataParser.RightThermistor);
+        }
+
+        private void Anc_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            AncToggle.Toggle();
+            BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetANC(AncToggle.IsChecked));
         }
     }
 }

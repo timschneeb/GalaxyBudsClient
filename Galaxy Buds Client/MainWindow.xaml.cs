@@ -123,6 +123,9 @@ namespace Galaxy_Buds_Client
 
             InitializeComponent();
 
+            /* TODO: REMOVE THIS v */
+            new DevWindow().Show();
+
             _tbi = new TaskbarIcon();
             Stream iconStream = Application.GetResourceStream(new Uri("pack://application:,,,/Resources/icon_white.ico"))?.Stream;
             _tbi.Icon = new Icon(iconStream);

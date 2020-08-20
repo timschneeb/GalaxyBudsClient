@@ -500,12 +500,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="InTheHand.Net.Personal.dll" />
+    <Resource Include="Resources\features\anc_color.png" />
     <Resource Include="Resources\findmygear\start_lightgray.png" />
     <Resource Include="Resources\navigation\next_small_light.png" />
     <Resource Include="Resources\window\window_close_light.png" />
     <Resource Include="Resources\window\window_minimum_light.png" />
     <Resource Include="Resources\features\labs_color.png" />
     <Resource Include="Resources\features\advanced_color.png" />
+    <Resource Include="Resources\anc_color.png" />
     <Content Include="Resources\features\advanced_light.png" />
     <Resource Include="Resources\findmygear\muted.png" />
     <Resource Include="Resources\findmygear\unmuted.png" />

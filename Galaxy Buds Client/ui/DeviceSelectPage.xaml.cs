@@ -65,10 +65,9 @@ namespace Galaxy_Buds_Client.ui
             DevName.TextDetail = device.DeviceName;
             DevAddress.TextDetail = BytesToMacString(_address.ToByteArrayBigEndian(), 0);
 
-            /* We do not support neobeans yet! */
             if (device.DeviceName.Contains("Galaxy Buds Live"))
             {
-                DevModel.TextDetail = "Galaxy Buds Live (2020) - Development build";
+                DevModel.TextDetail = "Galaxy Buds Live (2020) [Under construction]";
             }
             else if (device.DeviceName.Contains("Galaxy Buds+"))
             {

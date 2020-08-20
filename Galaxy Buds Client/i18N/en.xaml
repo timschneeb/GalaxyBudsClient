@@ -16,6 +16,8 @@
     <sys:String x:Key="notset">Not set</sys:String>
     <sys:String x:Key="nobluetoothdev">No bluetooth adapter found.\nPlease enable bluetooth and try again.</sys:String>
 
+    <sys:String x:Key="anc">Active noise canceling</sys:String>
+
     <!-- SPP Message Parser -->
     <sys:String x:Key="sppmsg_too_small">Packet size is too small</sys:String>
     <sys:String x:Key="sppmsg_invalid_som">Invalid SOM</sys:String>
@@ -289,6 +291,8 @@
     <sys:String x:Key="adv_resume_playback_desc">Sends a global play/pause state change event when at least one of the proximity sensors is covered (Windows only)</sys:String>
     <sys:String x:Key="adv_sidetone">Use Ambient Sound during calls</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Hear your own voice more clearly while on the phone</sys:String>
+    <sys:String x:Key="adv_passthrough">Relieve pressure with ambient sound</sys:String>
+    <sys:String x:Key="adv_passthrough_desc">This can prevent a feeling of stuffiness or compression when you're not using active noise canceling</sys:String>
     <sys:String x:Key="adv_gaming_mode">Gaming Mode</sys:String>
     <sys:String x:Key="adv_gaming_mode_desc">Minimize latency and adjust audio synchronization (Samsung only)</sys:String>
 

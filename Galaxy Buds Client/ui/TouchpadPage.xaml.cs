@@ -75,12 +75,22 @@ namespace Galaxy_Buds_Client.ui
                 TouchOption.Universal.Volume, side);
             Menu_AddSeparator(ctxMenu);
 
-            Menu_AddItem(ctxMenu, Loc.GetString("touchoption_ambientsound"), TouchOption.Universal.AmbientSound, side);
-            Menu_AddSeparator(ctxMenu);
+            if (BluetoothService.Instance.ActiveModel == Model.Buds || BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+            {
+                Menu_AddItem(ctxMenu, Loc.GetString("touchoption_ambientsound"), TouchOption.Universal.AmbientSound,
+                    side);
+                Menu_AddSeparator(ctxMenu);
+            }
 
             if (BluetoothService.Instance.ActiveModel == Model.Buds)
             {
                 Menu_AddItem(ctxMenu, Loc.GetString("touchoption_quickambientsound"), TouchOption.Universal.QuickAmbientSound, side);
+                Menu_AddSeparator(ctxMenu);
+            }
+
+            if (BluetoothService.Instance.ActiveModel == Model.BudsLive)
+            {
+                Menu_AddItem(ctxMenu, Loc.GetString("anc"), TouchOption.Universal.ANC, side);
                 Menu_AddSeparator(ctxMenu);
             }
 
@@ -104,7 +114,7 @@ namespace Galaxy_Buds_Client.ui
                     _mainWindow.CustomActionPage.CurrentSide = Devices.L;
 
                     _mainWindow.CustomActionPage.Action.TextDetail = act < 0 ? Loc.GetString("touchoption_custom_null") :
-                        new CustomAction((CustomAction.Actions) act,
+                        new CustomAction((CustomAction.Actions)act,
                             Settings.Default.LeftCustomActionParameter).ToLongString();
                     _mainWindow.GoToPage(MainWindow.Pages.TouchCustomAction);
                 }
@@ -165,6 +175,8 @@ namespace Galaxy_Buds_Client.ui
                         Loc.GetString("touchoption_volume_up");
                 case TouchOption.Universal.AmbientSound:
                     return Loc.GetString("touchoption_ambientsound");
+                case TouchOption.Universal.ANC:
+                    return Loc.GetString("anc");
                 case TouchOption.Universal.SpotifySpotOn:
                     return Loc.GetString("touchoption_spotify");
                 case TouchOption.Universal.OtherL:
@@ -191,17 +203,18 @@ namespace Galaxy_Buds_Client.ui
 
             if (_lastLeftOption == TouchOption.Universal.OtherL)
             {
-                 LeftOption.TextDetail =
-                     $"{Loc.GetString("touchoption_custom_prefix")} {new CustomAction((CustomAction.Actions)Settings.Default.LeftCustomAction, Settings.Default.LeftCustomActionParameter).ToString()}";
+                LeftOption.TextDetail =
+                    $"{Loc.GetString("touchoption_custom_prefix")} {new CustomAction((CustomAction.Actions)Settings.Default.LeftCustomAction, Settings.Default.LeftCustomActionParameter).ToString()}";
             }
             else
             {
                 LeftOption.TextDetail = OptionToString(_lastLeftOption, Devices.L);
             }
+
             if (_lastRightOption == TouchOption.Universal.OtherR)
             {
                 RightOption.TextDetail =
-                    $"{Loc.GetString("touchoption_custom_prefix")} {new CustomAction((CustomAction.Actions) Settings.Default.RightCustomAction, Settings.Default.RightCustomActionParameter).ToString()}";
+                    $"{Loc.GetString("touchoption_custom_prefix")} {new CustomAction((CustomAction.Actions)Settings.Default.RightCustomAction, Settings.Default.RightCustomActionParameter).ToString()}";
             }
             else
             {
@@ -209,6 +222,16 @@ namespace Galaxy_Buds_Client.ui
             }
 
             _mainWindow.CustomActionPage.Accept += CustomActionPageOnAccept;
+
+
+            if (BluetoothService.Instance.ActiveModel == Model.BudsLive)
+            {
+                DoubleTapVolumeBorder.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                DoubleTapVolumeBorder.Visibility = Visibility.Visible;
+            }
         }
 
         public override void OnPageHidden()
