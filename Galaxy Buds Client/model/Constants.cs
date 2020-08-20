@@ -59,7 +59,8 @@ namespace Galaxy_Buds_Client.model
         {
             NULL = 0,
             Buds = 1,
-            BudsPlus = 2
+            BudsPlus = 2,
+            BudsLive = 3
         }
 
         public enum Color

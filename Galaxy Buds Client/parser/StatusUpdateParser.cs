@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model;
@@ -17,22 +18,18 @@ namespace Galaxy_Buds_Client.parser
         public DeviceInv MainConnection { set; get; }
         public WearStates WearState { set; get; }
 
-        /**
-         * Buds
-         */
+
         [Device(Model.Buds)]
         public int EarType { set; get; }
 
-        /**
-         * Buds+
-         */
-        [Device(Model.BudsPlus)]
+
+        [Device(new Model[] { Model.BudsPlus, Model.BudsLive })]
         public int Revision { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new Model[] { Model.BudsPlus, Model.BudsLive })]
         public PlacementStates PlacementL { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new Model[] { Model.BudsPlus, Model.BudsLive })]
         public PlacementStates PlacementR { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new Model[] { Model.BudsPlus, Model.BudsLive })]
         public int BatteryCase { set; get; }
 
         public override void ParseMessage(SPPMessage msg)
@@ -87,9 +84,9 @@ namespace Galaxy_Buds_Client.parser
                 {
                     map.Add(property.Name, property.GetValue(this).ToString());
                 }
-                else if (customAttributes[0].Model == ActiveModel)
+                else if (customAttributes[0].Models.Contains(ActiveModel))
                 {
-                    map.Add($"{property.Name} ({customAttributes[0].Model.ToString()})", property.GetValue(this).ToString());
+                    map.Add($"{property.Name} ({customAttributes[0]})", property.GetValue(this).ToString());
                 }
             }
 

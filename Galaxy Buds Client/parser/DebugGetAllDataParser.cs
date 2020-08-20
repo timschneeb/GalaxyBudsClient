@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Security.Principal;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Galaxy_Buds_Client.parser
     class DebugGetAllDataParser : BaseMessageParser
     {
         public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_DEBUG_GET_ALL_DATA;
-        
+
         readonly String[] _swMonth = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" };
         readonly String[] _swRelVer = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
         readonly String[] _swVer = { "E", "U" };
@@ -48,47 +49,47 @@ namespace Galaxy_Buds_Client.parser
         public double RightAdcVCell { set; get; }
         [Postfix(Text = "mA")]
         public double RightAdcCurrent { set; get; }
-        
+
         public String LeftHall { set; get; }
         public String RightHall { set; get; }
 
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public short LeftProximityOffset { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public short RightProximityOffset { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public byte MsgVersion { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public short LeftTspAbs { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public short RightTspAbs { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public short LeftTspDiff0 { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public short LeftTspDiff1 { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public short LeftTspDiff2 { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public short RightTspDiff0 { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public short RightTspDiff1 { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public short RightTspDiff2 { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public short LeftPR { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public short RightPR { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public short LeftWD { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public short RightWD { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public byte LeftCradleFlag { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public byte RightCradleFlag { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public byte LeftCradleBatt { set; get; }
-        [Device(Model.BudsPlus)]
+        [Device(new[] { Model.BudsPlus, Model.BudsLive })]
         public byte RightCradleBatt { set; get; }
 
         public override void ParseMessage(SPPMessage msg)
@@ -235,7 +236,7 @@ namespace Galaxy_Buds_Client.parser
                 int swMonthIndex = payload[startIndex + 1] & 15;
                 byte swRelVerIndex = payload[startIndex + 2];
 
-                return side + "175XX" + swVar + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] +
+                return side + (ActiveModel == Model.BudsLive ? "180XX" : "175XX") + swVar + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] +
                        _swRelVer[swRelVerIndex]; ;
             }
         }
@@ -262,9 +263,9 @@ namespace Galaxy_Buds_Client.parser
                 {
                     map.Add(property.Name, property.GetValue(this).ToString() + valuePostfix);
                 }
-                else if (customAttributesB[0].Model == ActiveModel)
+                else if (customAttributesB[0].Models.Contains(ActiveModel))
                 {
-                    map.Add($"{property.Name} ({customAttributesB[0].Model.ToString()})", property.GetValue(this).ToString() + valuePostfix);
+                    map.Add($"{property.Name} ({customAttributesB[0]})", property.GetValue(this).ToString() + valuePostfix);
                 }
             }
 

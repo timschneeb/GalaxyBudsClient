@@ -65,10 +65,10 @@ namespace Galaxy_Buds_Client.ui
             DevName.TextDetail = device.DeviceName;
             DevAddress.TextDetail = BytesToMacString(_address.ToByteArrayBigEndian(), 0);
 
-            /* We do not support neobeans! */
+            /* We do not support neobeans yet! */
             if (device.DeviceName.Contains("Galaxy Buds Live"))
             {
-                DevModel.TextDetail = Loc.GetString("settings_cpopup_position_placeholder");
+                DevModel.TextDetail = "Galaxy Buds Live (2020) - Development build";
             }
             else if (device.DeviceName.Contains("Galaxy Buds+"))
             {
@@ -80,7 +80,7 @@ namespace Galaxy_Buds_Client.ui
             }
             else
             {
-                /* Set field to "Unknown". (Yes, I know that's a dirty solution but I'm too lazy right now :$ ) */
+                /* Set field to "Unknown" */
                 DevModel.TextDetail = Loc.GetString("settings_cpopup_position_placeholder");
             }
 
@@ -104,7 +104,7 @@ namespace Galaxy_Buds_Client.ui
 
         private void Continue_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (_address == null || _device == null || !_device.DeviceName.Contains("Galaxy Buds") || _device.DeviceName.Contains("Live"))
+            if (_address == null || _device == null || !_device.DeviceName.Contains("Galaxy Buds"))
             {
                 MessageBox.Show(Loc.GetString("devsel_invalid_selection"), Loc.GetString("error"), MessageBoxButton.OK,
                     MessageBoxImage.Error);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Galaxy_Buds_Client.model.Constants;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,16 +9,31 @@ namespace Galaxy_Buds_Client.model
 {
     class DeviceAttribute : Attribute
     {
-        private Constants.Model buds;
-
-        public DeviceAttribute(Constants.Model buds)
+        public DeviceAttribute(Model[] models)
         {
-            this.buds = buds;
+            Models = models;
+        }
+        public DeviceAttribute(Model model)
+        {
+            Models = new Model[1];
+            Models[0] = model;
         }
 
-        public Constants.Model Model
+        public override string ToString()
         {
-            get => buds;
+            String str = null;
+            int i = 0;
+            foreach (Model model in Models)
+            {
+                str += model.ToString();
+                if (i < Models.Length - 1)
+                    str += ", ";
+
+                i++;
+            }
+            return str;
         }
+
+        public Model[] Models;
     }
 }
