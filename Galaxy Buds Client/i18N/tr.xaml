@@ -1,0 +1,306 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+ 
+    <sys:String x:Key="ResourceDictionaryName">Loc-tr</sys:String>
+
+    <!-- :::::::: Source code :::::::: -->
+
+    <!-- General -->
+    <sys:String x:Key="left">Sol</sys:String>
+    <sys:String x:Key="right">Sağ</sys:String>
+    <sys:String x:Key="case">Kutu</sys:String>
+    <sys:String x:Key="error">Hata</sys:String>
+    <sys:String x:Key="cancel">İptal</sys:String>
+    <sys:String x:Key="apply">Uygula</sys:String>
+    <sys:String x:Key="nobluetoothdev">Bluetooth adaptörü bulunamadı.\nLütfen bluetooth'u etkinleştirip yeniden deneyin.</sys:String>
+
+    <!-- SPP Message Parser -->
+    <sys:String x:Key="sppmsg_too_small">Mesaj çok küçük</sys:String>
+    <sys:String x:Key="sppmsg_invalid_som">Geçersiz SOM</sys:String>
+    <!-- Context: SOM = Start of message -->
+    <sys:String x:Key="sppmsg_invalid_eom">Geçersiz EOM</sys:String>
+    <!-- Context: EOM = End of message -->
+    <sys:String x:Key="sppmsg_size_mismatch">Payload boyutu uyuşmuyor</sys:String>
+    <sys:String x:Key="sppmsg_tl">Mesaj çok küçük</sys:String>
+
+    <!-- Connection popup -->
+    <sys:String x:Key="connpopup_placement_tl">Sol üst</sys:String>
+    <sys:String x:Key="connpopup_placement_tc">Üst orta</sys:String>
+    <sys:String x:Key="connpopup_placement_tr">Sağ üst</sys:String>
+    <sys:String x:Key="connpopup_placement_bl">Sol alt</sys:String>
+    <sys:String x:Key="connpopup_placement_bc">Alt orta</sys:String>
+    <sys:String x:Key="connpopup_placement_br">Sağ alt</sys:String>
+    <sys:String x:Key="connpopup_title">{0}'s Galaxy Buds{1}</sys:String>
+    <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
+
+    <!-- Placement  (Buds+) -->
+    <sys:String x:Key="placement_disconnected">Bağlı Değil</sys:String>
+    <sys:String x:Key="placement_wearing">Kulakta</sys:String>
+    <sys:String x:Key="placement_not_wearing">Kullanılmıyor</sys:String>
+    <sys:String x:Key="placement_in_case">Kutuda</sys:String>
+
+    <!-- Touch options -->
+    <sys:String x:Key="touchoption_voice">Sesli Asistan</sys:String>
+    <sys:String x:Key="touchoption_quickambientsound">Hızlı Ortam Sesi</sys:String>
+    <sys:String x:Key="touchoption_volume">Ses Düzeyi</sys:String>
+    <sys:String x:Key="touchoption_volume_up">Sesi Artır</sys:String>
+    <sys:String x:Key="touchoption_volume_down">Sesi Azalt</sys:String>
+    <sys:String x:Key="touchoption_ambientsound">Ortam Sesi</sys:String>
+    <sys:String x:Key="touchoption_spotify">Spotify (Sadece Android için)</sys:String>
+    <sys:String x:Key="touchoption_custom">Özel Eylem...</sys:String>
+    <sys:String x:Key="touchoption_custom_null">Ayarlanmamış</sys:String>
+    <sys:String x:Key="touchoption_custom_unknown">Bilinmiyor</sys:String>
+    <sys:String x:Key="touchoption_custom_prefix">Özel Eylem:</sys:String>
+
+    <sys:String x:Key="touchoption_custom_ambient_up">Ortam Sesini Artır</sys:String>
+    <sys:String x:Key="touchoption_custom_ambient_down">Ortam Sesini Azalt</sys:String>
+    <sys:String x:Key="touchoption_custom_toggle_eq">Ekolayzer</sys:String>
+    <sys:String x:Key="touchoption_custom_next_eq_preset">Sıradaki Ekolayzer Önayarı </sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_hotkey">Kısa Yol Tuşu...</sys:String>
+    <sys:String x:Key="touchoption_custom_external_app">Harici Programı Çalıştır...</sys:String>
+
+    <!-- Options menu -->
+    <sys:String x:Key="optionsmenu_title">Seçenekler</sys:String>
+    <sys:String x:Key="optionsmenu_settings">Ayarlar</sys:String>
+    <sys:String x:Key="optionsmenu_refresh">Paneli yenile</sys:String>
+    <sys:String x:Key="optionsmenu_deregister">Cihazı sil</sys:String>
+    <sys:String x:Key="optionsmenu_update">Güncellemeleri kontrol et</sys:String>
+    <sys:String x:Key="optionsmenu_credits">Teşekkürler</sys:String>
+
+    <!-- Tray context menu -->
+    <sys:String x:Key="tray_unlock_touchpad">Dokunmatik Yüzeyi Etkinleştir</sys:String>
+    <sys:String x:Key="tray_lock_touchpad">Dokunmatik Yüzeyi Kilitle</sys:String>
+    <sys:String x:Key="tray_enable_ambient_sound">Ortam Sesini Etkinleştir</sys:String>
+    <sys:String x:Key="tray_disable_ambient_sound">Ortam Sesini Devre Dışı Bırak</sys:String>
+    <sys:String x:Key="tray_enable_eq">Ekolayzeri Etkinleştir</sys:String>
+    <sys:String x:Key="tray_disable_eq">Ekolayzeri Devre Dışı Bırak</sys:String>
+    <sys:String x:Key="tray_quit">Çık</sys:String>
+
+
+    <!-- :::::::: XAML files (static) :::::::: -->
+
+    <!-- General -->
+    <sys:String x:Key="continue_button">Devam</sys:String>
+
+    <!-- Hotkey Recorder Dialog (Custom action) -->
+    <sys:String x:Key="hotrec_title">Kısayol Tuşu Kaydedici</sys:String>
+    <sys:String x:Key="hotrec_content">Lütfen bir tuş kombinasyonu yapın (basılı tutun):</sys:String>
+    <sys:String x:Key="hotrec_empty">Yok</sys:String>
+
+    <!-- Welcome page -->
+    <sys:String x:Key="welcome_textblock_header">Hoş Geldiniz!</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">
+        Merhaba! Lütfen Galaxy Buds Manager uygulamamızın Samsung ile herhangi bir bağlantısı olmadığını unutmayın.
+        Bu uygulama mobil Samsung Wearable uygulamasının yapamadığı bir çok şeyi yapabilir lakin yine de güvenlik sebebiyle OTA güncelleme seçeneğini uygulamaya eklemedik. Eğer buna ihtiyacınız olursa, lütfen orijinal uygulamalardan faydalanın.
+    </sys:String>
+    <sys:String x:Key="welcome_textblock_p2">
+        Sahne arkasında neler döndüğü hakkında bilgi edinmek isterseniz, ufak bir tersine mühendislik macerası içeren GitHub sayfamıza göz atabilirsiniz. Aynı zamanda herhangi bir problemle karşı karşıya kalmanız durumun GitHub veya Telegram @thepbone üzerinden mesaj gönderebilirsiniz.
+    </sys:String>
+    <sys:String x:Key="welcome_textblock_p3">
+        Bu uygulama hem Buds (2019) hem de Buds+ (2020) cihazlarını destekler.
+    </sys:String>
+    <sys:String x:Key="welcome_darkmode">Karanlık Mod</sys:String>
+    <sys:String x:Key="welcome_darkmode_content">Gözleriniz yanmaya mı başladı? Daha karanlık renklerden oluşan temamızı deneyin!</sys:String>
+
+    <!-- Main page -->
+    <sys:String x:Key="mainpage_corrupt_data">Bozulmuş veri bulundu. Tekrar bağlanılıyor...</sys:String>
+    <sys:String x:Key="mainpage_find_my_earbuds">Kulaklıklarımı Bul</sys:String>
+    <sys:String x:Key="mainpage_touchpad">Dokunmatik Yüzey</sys:String>
+    <sys:String x:Key="mainpage_ambient_sound">Ortam Sesi</sys:String>
+    <sys:String x:Key="mainpage_equalizer">Ekolayzer</sys:String>
+    <sys:String x:Key="mainpage_advanced">Gelişmiş Ayarlar</sys:String>
+    <sys:String x:Key="mainpage_system">Sistem Bilgisi</sys:String>
+
+    <!-- Update page -->
+    <sys:String x:Key="updater_header">Manager güncellemesi mevcut</sys:String>
+    <sys:String x:Key="updater_message_p1">
+        İndirme tamamen otomatik olarak gerçekleşir ve tamamlandığında kurulum sihirbazı çalışmaya başlar. En son hata düzeltmelerini ve yeni özellikleri edinmek için, güncellemeleri yapmanız önerilir.
+    </sys:String>
+    <sys:String x:Key="updater_message_p2">
+        Aşağıdaki butona tıklayarak değişim günlüğünü görüntüleyebilirsiniz.
+    </sys:String>
+
+    <sys:String x:Key="updater_view_changelog">GitHub'da tam değişim günlüğünü görüntüle</sys:String>
+    <sys:String x:Key="updater_footer_remindmelater">Sonra hatırlat</sys:String>
+    <sys:String x:Key="updater_footer_skipversion">Bu sürümü atla</sys:String>
+    <sys:String x:Key="updater_footer_install">Şimdi kur</sys:String>
+
+    <sys:String x:Key="updater_noupdate">Şimdilik güncelleme mevcut değil.\n"Lütfen daha sonra deneyin veya güncellemelerden haberdar olmak için GitHub sayfamızı kontrol edip abone olun.</sys:String>
+    <sys:String x:Key="updater_noupdate_title">Güncelleme yok</sys:String>
+    <sys:String x:Key="updater_newrelease">Galaxy Buds Manager'ın {0} Sürümü yayınlandı</sys:String>
+
+    <!-- Device selection page (setup) -->
+    <sys:String x:Key="devsel_header">Galaxy Buds'ınızı seçin</sys:String>
+    <sys:String x:Key="devsel_search">Cihaz aramayı başlat</sys:String>
+    <sys:String x:Key="devsel_device_name">Cihaz Adı</sys:String>
+    <sys:String x:Key="devsel_btaddr">MAC Adresi</sys:String>
+    <sys:String x:Key="devsel_model">Model</sys:String>
+    <sys:String x:Key="devsel_noselection">Cihaz seçilmedi</sys:String>
+    <sys:String x:Key="devsel_invalid_selection">Lütfen ilk önce geçerli bir cihaz seçin</sys:String>
+    <sys:String x:Key="devsel_footer_continue">Kurulumu Bitir</sys:String>
+
+    <!-- Unsupported feature page -->
+    <sys:String x:Key="unsupported_feature_current_fwver">Mevcut Yazılım versiyonu:</sys:String>
+    <sys:String x:Key="unsupported_feature_required_fwver">Gereken Yazılım versiyonu:</sys:String>
+
+    <sys:String x:Key="unsupported_feature_header">Lütfen yazılımınızı güncelleyin</sys:String>
+    <sys:String x:Key="unsupported_feature_current_fwver_null">Mevcut Yazılım versiyonu: Bilinmiyor</sys:String>
+    <sys:String x:Key="unsupported_feature_required_fwver_null">Gereken Yazılım versiyonu: Belirtilmemiş</sys:String>
+
+    <sys:String x:Key="unsupported_feature_description_p1">Galaxy Buds'ınızın yazılımı çok eski ve bu özelliği desteklemiyor.</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p2">Lütfen yazılımınızı resmî Windows Galaxy Buds güncelleştiricisiyle ya da Wearable Android uygulamasıyla güncelleştirin.</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p3">Windows Galaxy Buds güncelleştiricisini kullanacaksınız bu uygulamayı kapatmayı unutmayın. Aynı anda yalnızca bir uygulama kulaklıklarla iletişime geçebilir.</sys:String>
+
+    <!-- Touchpad page -->
+    <sys:String x:Key="touchpad_header">Dokunmatik Yüzey</sys:String>
+    <sys:String x:Key="touchpad_lock">Dokunmatik Yüzeyi Kilitle</sys:String>
+    <sys:String x:Key="touchpad_left_action">Sol Eylem</sys:String>
+    <sys:String x:Key="touchpad_right_action">Sağ Eylem</sys:String>
+
+    <sys:String x:Key="touchpad_double_tap_volume">Kulaklığın kenarına çift dokun</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">Sağ ya da sol kulaklığın kenarına çift dokunarak ses düzeyini kontrol edin</sys:String>
+
+    <!-- Custom touchpad action page -->
+    <sys:String x:Key="cact_header">Özel uzun dokunma eylemi belirleyin</sys:String>
+    <sys:String x:Key="cact_external_app_dialog_title">Neyin çalıştırılacağını seçin...</sys:String>
+    <sys:String x:Key="cact_action">Özel Eylem</sys:String>
+    <sys:String x:Key="cact_notice">Hatırlatma</sys:String>
+    <sys:String x:Key="cact_notice_content_p1">Özel uzun dokunma eylemleri ylnızca bu uygulama en azından arkaplanda çalışıyorsa işe yarar.</sys:String>
+    <sys:String x:Key="cact_notice_content_p2">Android ya da başka cihazlarda etkili değildir.</sys:String>
+    <sys:String x:Key="cact_notice_content_p3">
+        Bu özelliğin sürekli çalışabilir olması için uygulama sistem başlatıldığında arkaplanda çalışmaya başlayacaktır.
+        Bu davranışı ayarlar bölümünden değiştirebilirsiniz.
+    </sys:String>
+
+    <!-- System/Self-Test -->
+    <sys:String x:Key="system_header">Sistem Bilgisi</sys:String>
+    <sys:String x:Key="system_selftest">Testi Başlat</sys:String>
+    <sys:String x:Key="system_factory_reset">Cihazı Sıfırla</sys:String>
+
+    <sys:String x:Key="system_battery_type_unknown">Belirtilmedi</sys:String>
+    <sys:String x:Key="system_waiting_for_device">Tepki bekleniyor...</sys:String>
+
+    <sys:String x:Key="system_hwver">Donanım Versiyonu</sys:String>
+    <sys:String x:Key="system_swver">Yazılım Versiyonu</sys:String>
+    <sys:String x:Key="system_touchver">Touch Firmware Versiyonu</sys:String>
+    <sys:String x:Key="system_protover">Protokol Revizyonu</sys:String>
+    <sys:String x:Key="system_btaddr">Bluetooth Adresi</sys:String>
+    <sys:String x:Key="system_serial">Seri Numarası</sys:String>
+    <sys:String x:Key="system_build_info">Yapı Numarası</sys:String>
+    <sys:String x:Key="system_battery_type">Pil Tipi</sys:String>
+    <sys:String x:Key="system_proximity">Yakınlık Ölçüsü</sys:String>
+    <sys:String x:Key="system_thermo">Termistör Ölçüsü</sys:String>
+    <sys:String x:Key="system_hall">Hall Ölçüsü</sys:String>
+    <sys:String x:Key="system_accel">Accelerator Ölçüsü</sys:String>
+    <!-- Note: system_accel only used on the self-test page -->
+    <sys:String x:Key="system_adc_soc">ADC SoC</sys:String>
+    <!-- Context: SoC = State of charge (battery percentage) -->
+    <sys:String x:Key="system_adc_voltage">ADC Gerilimi</sys:String>
+    <sys:String x:Key="system_adc_current">ADC Akımı</sys:String>
+
+    <sys:String x:Key="selftest_header">Kendi Kendine test</sys:String>
+    <sys:String x:Key="selftest_header_alt">Kendi Kendine Test (Cihazınızın bağlantısı kopabilir)</sys:String>
+    <sys:String x:Key="selftest_pass">Geçti</sys:String>
+    <sys:String x:Key="selftest_fail">Hata</sys:String>
+    <sys:String x:Key="selftest_pass_long">Tüm testlerden geçti</sys:String>
+    <sys:String x:Key="selftest_fail_long">Bir ya da daha fazla testten geçemedi</sys:String>
+
+    <!-- Settings -->
+    <sys:String x:Key="settings_header">Ayarlar</sys:String>
+
+    <sys:String x:Key="settings_darkmode">Karanlık Mod</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Daha koyu bir renk şeması kullan</sys:String>
+    <sys:String x:Key="settings_transitions">Geçişler</sys:String>
+    <sys:String x:Key="settings_transitions_description">Kaydırma geçişlerini etkinleştir</sys:String>
+    <sys:String x:Key="settings_localization_disable">Dil</sys:String>
+    <sys:String x:Key="settings_localization_disable_description">İngilizce diline zorla</sys:String>
+    <sys:String x:Key="settings_minimize_tray">Uygulama tepsisine taşı</sys:String>
+    <sys:String x:Key="settings_minimize_tray_description">Uygulamayı kapatmak yerine arkaplana al</sys:String>
+    <sys:String x:Key="settings_autostart">Bilgisayar açılınca başlat</sys:String>
+    <sys:String x:Key="settings_autostart_description">Küçültülmüş modda başlat</sys:String>
+
+    <sys:String x:Key="settings_connpopup">Bağlantı açılır penceresini ayarla</sys:String>
+    <sys:String x:Key="settings_devmode">Geliştirici moduna gir</sys:String>
+
+    <!-- Settings >>> Connection popup -->
+    <sys:String x:Key="settings_cpopup_header">Bağlantı açılır penceresi</sys:String>
+    <sys:String x:Key="settings_cpopup_enable">Bağlantı açılır penceresini etkinleştir</sys:String>
+    <sys:String x:Key="settings_cpopup_enable_description">Kulaklıklar bağlandığında pil seviyesi hakkında bilgi veren ufak bir açılır pencere görüntüle</sys:String>
+    <sys:String x:Key="settings_cpopup_compact">Kompakt mod</sys:String>
+    <sys:String x:Key="settings_cpopup_compact_description">Alan kazanmak için açılır pencere başlığını gizle</sys:String>
+    <sys:String x:Key="settings_cpopup_position">Konum</sys:String>
+    <sys:String x:Key="settings_cpopup_position_placeholder">Bilinmiyor</sys:String>
+    <sys:String x:Key="settings_cpopup_demo">Deneme açılır penceresini göster</sys:String>
+
+    <!-- Factory reset -->
+    <sys:String x:Key="factory_header">Fabrika ayarlarına döndür</sys:String>
+    <sys:String x:Key="factory_confirm">Sıfırlamayı onayla</sys:String>
+    <sys:String x:Key="factory_error_title">Fabrika ayarlarına dönüş tamamlanamadı</sys:String>
+    <sys:String x:Key="factory_error">
+        Cihazdan alınan hata kodu: {0}\n
+        İki kulaklığınızın da açık ve erişilebilir olduğundan emin olun.\n
+        Kulaklıklarınızı elle bağlamanız gerekebilir.
+    </sys:String>
+    <sys:String x:Key="factory_text_p1">Kulaklıklarınızı sıfırlamak istediğinizden emin misiniz?</sys:String>
+    <sys:String x:Key="factory_text_p2">Fabrika ayarlarına dönüş yapıldıktan sonra kulaklıklarınızı bilgisayara manuel olarak bağlamak zorunda olacaksınız.</sys:String>
+    <sys:String x:Key="factory_text_p3">Devam etmeden önce kulaklıklarınızın açık olduğundan emin olun!</sys:String>
+
+    <!-- Find my Gear -->
+    <sys:String x:Key="fmg_warning_both">Lütfen kulaklıklarınızı kulağınızdan çıkarın.</sys:String>
+    <sys:String x:Key="fmg_warning_left">Lütfen sol kulaklığı kulağınızdan çıkarın.</sys:String>
+    <sys:String x:Key="fmg_warning_right">Lütfen sağ kulaklığı kulağınızdan çıkarın.</sys:String>
+    <sys:String x:Key="fmg_header">Kulaklıklarımı bul</sys:String>
+
+    <!-- Equalizer -->
+    <sys:String x:Key="eq_header">Ekolayzer</sys:String>
+    <sys:String x:Key="eq_enable">Ekolayzeri Etkinleştir</sys:String>
+    <sys:String x:Key="eq_mode">Mod:</sys:String>
+    <sys:String x:Key="eq_dolby">Dolby ile kullanım için optimize et</sys:String>
+
+    <sys:String x:Key="eq_bass">Bas Güçlendirme</sys:String>
+    <sys:String x:Key="eq_soft">Yumuşak</sys:String>
+    <sys:String x:Key="eq_dynamic">Dinamik</sys:String>
+    <sys:String x:Key="eq_clear">Net</sys:String>
+    <sys:String x:Key="eq_treble">Tiz Güçlendirme</sys:String>
+
+    <!-- Ambient sound -->
+    <sys:String x:Key="as_header">Ortam Sesi</sys:String>
+    <sys:String x:Key="as_enable">Ortam Sesini Etkinleştir</sys:String>
+    <sys:String x:Key="as_volume">Ortam Sesi Düzeyi</sys:String>
+    <sys:String x:Key="as_voicefocus">Ses Odağı</sys:String>
+    <sys:String x:Key="as_extrahigh">Ekstra Yüksek Ortam Sesi</sys:String>
+    <sys:String x:Key="as_extrahigh_description">Ortam sesi kaydırma çubuğuna ekstra ses düzeyi imkanı tanır</sys:String>
+
+    <!-- Advanced page -->
+    <sys:String x:Key="adv_header">Gelişmiş Ayarlar</sys:String>
+    <sys:String x:Key="adv_required_firmware_seamless_connection">{0} veya daha sonrası</sys:String>
+    <sys:String x:Key="adv_seamless">Kusursuz Kulaklık Bağlantısı</sys:String>
+    <sys:String x:Key="adv_seamless_desc">Kulaklığınızın bağlantısını kesmeden veya eşleştirme modunu açmadan yakındaki cihazlara hızlıca geçiş yapın.</sys:String>
+    <sys:String x:Key="adv_resume_playback">Kulaklıklar takıldığında başlat ya da devam et</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">En az bir kulaklığın yakınlık sensörü yakınlık algılarsa, genel bir başlat/durdur işlemi gerçekleştirilir (Sadece Windows)</sys:String>
+    <sys:String x:Key="adv_sidetone">Görüşmeler esnasında Ortam Sesini kullan</sys:String>
+    <sys:String x:Key="adv_sidetone_desc">Görüşme esnasında kendinizi daha temiz duymanızı sağlar</sys:String>
+    <sys:String x:Key="adv_gaming_mode">Oyun Modu</sys:String>
+    <sys:String x:Key="adv_gaming_mode_desc">Gecikmeyi minimalize eder ve ses senkronizasyonunu ayarlar (Sadece Samsung için)</sys:String>
+
+    <!-- Credits -->
+    <sys:String x:Key="credits_header">Teşekkürler</sys:String>
+    <sys:String x:Key="credits_developer">Geliştirici</sys:String>
+    <sys:String x:Key="credits_license">Lisans</sys:String>
+    <sys:String x:Key="credits_version">Sürüm</sys:String>
+    <sys:String x:Key="credits_contributor">Katkıda Bulunanlar</sys:String>
+    <sys:String x:Key="credits_translator">Çevirenler</sys:String>
+
+    <!-- Connection lost page -->
+    <sys:String x:Key="connlost_header">Bağlantı sağlanılamadı</sys:String>
+    <sys:String x:Key="connlost_description_p1">Kulaklıklarınzla bilgisayar arasında bağlantı sağlanamadı.</sys:String>
+    <sys:String x:Key="connlost_description_p2">
+        Lütfen Bluetooth ayarlarınızı kontrol edin ve kulaklıklarınızın bilgisayarınıza bağlı olduğundan emin olun.
+        Gerekirse yeni kulaklıklara da bağlanabilirsiniz. Bunun için lütfen "Seçenekler > Cihazı sil" seçeneğini kullanın.
+    </sys:String>
+    <sys:String x:Key="connlost_description_p3">Ek bilgi:</sys:String>
+    <sys:String x:Key="connlost_noinfo">Hata bilgisi toplanılamadı</sys:String>
+    <sys:String x:Key="connlost_connect">Bağla</sys:String>
+    <sys:String x:Key="connlost_connecting">Bağlanılıyor...</sys:String>
+</ResourceDictionary>
