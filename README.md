@@ -62,6 +62,7 @@ choco install galaxybudsclient
 
 * [@Florize](https://github.com/Florize) - Korean and Japanese translation
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Russian and Ukrainian translation
+* [@erenbektas](https://github.com/erenbektas) - Turkish translation
 
 ## Contributors
 
