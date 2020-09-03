@@ -4,11 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Galaxy_Buds_Client.ui"
-             mc:Ignorable="d" Height="60" x:Name="DetailListItemHolder" >
+             mc:Ignorable="d" x:Name="DetailListItemHolder" >
     <Grid>
         <Label Content="{Binding Text,ElementName=DetailListItemHolder}" 
                Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" Height="35" VerticalContentAlignment="Center" Margin="0,0,0,30" />
         <Label Content="{Binding TextDetail,ElementName=DetailListItemHolder}" 
-               Foreground="{DynamicResource SubtitleTextBrush}" FontSize="14" VerticalContentAlignment="Center" Margin="0,25,0,0" />
+               Foreground="{DynamicResource SubtitleTextBrush}" FontSize="14" VerticalContentAlignment="Center" Margin="0,25,0,0"/>
     </Grid>
 </UserControl>
