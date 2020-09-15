@@ -63,7 +63,8 @@ choco install galaxybudsclient
 * [@Florize](https://github.com/Florize) - Korean and Japanese translation
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Russian and Ukrainian translation
 * [@erenbektas](https://github.com/erenbektas) - Turkish translation
-
+* [@kakkk](https://github.com/kakkk) - Chinese translation
+ 
 ## Contributors
 
 * [@superbonaci](https://github.com/superbonaci) - Chocolatey package
