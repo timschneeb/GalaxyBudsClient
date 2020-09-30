@@ -13,7 +13,7 @@
     <sys:String x:Key="error">Hata</sys:String>
     <sys:String x:Key="cancel">İptal</sys:String>
     <sys:String x:Key="apply">Uygula</sys:String>
-    <sys:String x:Key="nobluetoothdev">Bluetooth adaptörü bulunamadı.\nLütfen bluetooth'u etkinleştirip yeniden deneyin.</sys:String>
+    <sys:String x:Key="nobluetoothdev">Bluetooth adaptörü bulunamadı. Lütfen bluetooth'u etkinleştirip yeniden deneyin.</sys:String>
 
     <!-- SPP Message Parser -->
     <sys:String x:Key="sppmsg_too_small">Mesaj çok küçük</sys:String>
@@ -126,7 +126,7 @@
     <sys:String x:Key="updater_footer_skipversion">Bu sürümü atla</sys:String>
     <sys:String x:Key="updater_footer_install">Şimdi kur</sys:String>
 
-    <sys:String x:Key="updater_noupdate">Şimdilik güncelleme mevcut değil.\n"Lütfen daha sonra deneyin veya güncellemelerden haberdar olmak için GitHub sayfamızı kontrol edip abone olun.</sys:String>
+    <sys:String x:Key="updater_noupdate">Şimdilik güncelleme mevcut değil. Lütfen daha sonra deneyin veya güncellemelerden haberdar olmak için GitHub sayfamızı kontrol edip abone olun.</sys:String>
     <sys:String x:Key="updater_noupdate_title">Güncelleme yok</sys:String>
     <sys:String x:Key="updater_newrelease">Galaxy Buds Manager'ın {0} Sürümü yayınlandı</sys:String>
 
@@ -238,8 +238,8 @@
     <sys:String x:Key="factory_confirm">Sıfırlamayı onayla</sys:String>
     <sys:String x:Key="factory_error_title">Fabrika ayarlarına dönüş tamamlanamadı</sys:String>
     <sys:String x:Key="factory_error">
-        Cihazdan alınan hata kodu: {0}\n
-        İki kulaklığınızın da açık ve erişilebilir olduğundan emin olun.\n
+        Cihazdan alınan hata kodu: {0} 
+        İki kulaklığınızın da açık ve erişilebilir olduğundan emin olun. 
         Kulaklıklarınızı elle bağlamanız gerekebilir.
     </sys:String>
     <sys:String x:Key="factory_text_p1">Kulaklıklarınızı sıfırlamak istediğinizden emin misiniz?</sys:String>

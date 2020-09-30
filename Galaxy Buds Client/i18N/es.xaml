@@ -14,7 +14,7 @@
     <sys:String x:Key="cancel">Cancelar</sys:String>
     <sys:String x:Key="apply">Aplicar</sys:String>
     <sys:String x:Key="notset">No establecido</sys:String>
-    <sys:String x:Key="nobluetoothdev">No se encuentra el adaptador bluetooth.\nIntente activar el bluetooth antes de continuar.</sys:String>
+    <sys:String x:Key="nobluetoothdev">No se encuentra el adaptador bluetooth. Intente activar el bluetooth antes de continuar. </sys:String>
 
     <!-- SPP Message Parser -->
     <sys:String x:Key="sppmsg_too_small">Paquete recibido incompleto</sys:String>
@@ -134,7 +134,7 @@
     <sys:String x:Key="updater_footer_skipversion">Descartar actualización</sys:String>
     <sys:String x:Key="updater_footer_install">Instalar ahora</sys:String>
 
-    <sys:String x:Key="updater_noupdate">No se han encontrado actualizaciones disponibles.\n"Por favor inténtelo más tarde o siempre puede suscribirse en la página de GitHub para recibir las últimas actualizaciónes.</sys:String>
+    <sys:String x:Key="updater_noupdate">No se han encontrado actualizaciones disponibles. Por favor inténtelo más tarde o siempre puede suscribirse en la página de GitHub para recibir las últimas actualizaciónes.</sys:String>
     <sys:String x:Key="updater_noupdate_title">No hay actualizaciones</sys:String>
     <sys:String x:Key="updater_newrelease">Actualización {0} para Galaxy Buds Manager disponible</sys:String>
 
@@ -248,9 +248,9 @@
     <sys:String x:Key="factory_confirm">Restablecer auriculares</sys:String>
     <sys:String x:Key="factory_error_title">Algo ha ido mal</sys:String>
     <sys:String x:Key="factory_error">
-        Error: {0}\n
-        Asegurese de que los auriculares estan encendidos y en modo emparejamiento.\n
-        Es posible que sea necesario reconectar los auriculares.
+        Error: {0} 
+        Asegurese de que los auriculares estan encendidos y en modo emparejamiento. 
+        Es posible que sea necesario reconectar los auriculares. 
     </sys:String>
     <sys:String x:Key="factory_text_p1">¿Seguro desea restablecer los auriculares?</sys:String>
     <sys:String x:Key="factory_text_p2">Una vez completado el proceso, tendrá que volver a emparejar manualmente los auriculares.</sys:String>

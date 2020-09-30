@@ -14,7 +14,7 @@
     <sys:String x:Key="cancel">취소</sys:String>
     <sys:String x:Key="apply">적용</sys:String>
     <sys:String x:Key="notset">설정되지 않음</sys:String>
-    <sys:String x:Key="nobluetoothdev">Bluetooth 송수신 장치를 찾지 못했습니다. \nBluetooth를 켠 후 다시 시도해 주세요.</sys:String>
+    <sys:String x:Key="nobluetoothdev">Bluetooth 송수신 장치를 찾지 못했습니다. Bluetooth를 켠 후 다시 시도해 주세요.</sys:String>
 
     <!-- SPP Message Parser -->
     <sys:String x:Key="sppmsg_too_small">패킷 크기가 너무 작음</sys:String>
@@ -247,8 +247,8 @@
     <sys:String x:Key="factory_confirm">이어버드 초기화하기</sys:String>
     <sys:String x:Key="factory_error_title">이어버드 초기화 실패</sys:String>
     <sys:String x:Key="factory_error">
-        디바이스가 오류 코드를 반환했습니다: {0}\n
-        양쪽 이어버드가 서로 가까운 거리에 있고 켜져 있는지 확인하세요.\n
+        디바이스가 오류 코드를 반환했습니다: {0} 
+        양쪽 이어버드가 서로 가까운 거리에 있고 켜져 있는지 확인하세요. 
         이어버드를 수동으로 다시 연결해야 할 수도 있습니다.
     </sys:String>
     <sys:String x:Key="factory_text_p1">이어버드를 초기화하시겠습니까?</sys:String>
