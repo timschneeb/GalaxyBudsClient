@@ -21,6 +21,8 @@ namespace Galaxy_Buds_Client.model
             ko,
             [Description("Japanese")]
             ja,
+            [Description("Chinese")]
+            cn,
             [Description("Russian")]
             ru,
             [Description("Ukrainian")]

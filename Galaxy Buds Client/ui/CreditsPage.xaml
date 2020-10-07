@@ -99,7 +99,7 @@
                         <Grid Margin="20,0,20,0">
                             <Label Content="{DynamicResource credits_translator}" 
                Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" Height="35" VerticalContentAlignment="Center" Margin="0,6,0,46" />
-                            <Label Content="@Florize (Korean, Japanese); @ArthurWolfhound (Russian, Ukrainian);&#10;@erenbektas (Turkish); @efrenbg1 and Andrew Gonza (Spanish)" 
+                            <Label Content="@Florize (Korean, Japanese); @ArthurWolfhound (Russian, Ukrainian);&#10;@erenbektas (Turkish); Andrew Gonza (Spanish); @kakkk (Chinese)" 
                Foreground="{DynamicResource SubtitleTextBrush}" FontSize="14" VerticalContentAlignment="Center" Margin="0,35,0,5"/>
                         </Grid>
                     </Border>
