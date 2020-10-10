@@ -111,7 +111,7 @@ namespace Galaxy_Buds_Client.ui
             }
 
             Properties.Settings.Default.RegisteredDevice = BytesToMacString(_address?.ToByteArrayBigEndian(), 0);
-            Properties.Settings.Default.RegisteredDeviceModel = _device.DeviceName.Contains("Buds+") ? Model.BudsPlus : Model.Buds;
+            Properties.Settings.Default.RegisteredDeviceModel = _device.DeviceName.Contains("Buds+") ? Model.BudsPlus : _device.DeviceName.Contains("Buds Live") ? Model.BudsLive : Model.Buds;
             Properties.Settings.Default.Save();
             _mainWindow.FinalizeSetup();
         }
