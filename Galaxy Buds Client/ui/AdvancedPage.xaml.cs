@@ -38,6 +38,7 @@ namespace Galaxy_Buds_Client.ui
             _mainWindow = mainWindow;
             InitializeComponent();
             SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
+            SPPMessageHandler.Instance.NoiseCancellingUpdated += InstanceOnNoiseCancellingUpdate;
         }
 
         private void InstanceOnExtendedStatusUpdate(object sender, ExtendedStatusUpdateParser e)
@@ -49,26 +50,46 @@ namespace Galaxy_Buds_Client.ui
                     _seamlessSupported = e.Revision >= 3;
                     SeamlessConnection.Switch.SetChecked(e.SeamlessConnectionEnabled);
                 }
-                else
+                else if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
                 {
                     _seamlessSupported = e.Revision >= 11;
                     SeamlessConnection.Switch.SetChecked(e.SeamlessConnectionEnabled);
                     Sidetone.Switch.SetChecked(e.SideToneEnabled);
                     GamingMode.Switch.SetChecked(e.AdjustSoundSync);
                 }
+                else if (BluetoothService.Instance.ActiveModel == Model.BudsLive)
+                {
+                    _seamlessSupported = e.Revision >= 1;
+                    SeamlessConnection.Switch.SetChecked(e.SeamlessConnectionEnabled);
+                    GamingMode.Switch.SetChecked(e.AdjustSoundSync);
+                }
                 ResumeSensor.Switch.SetChecked(Settings.Default.ResumePlaybackOnSensor);
+            });
+        }
+
+        private void InstanceOnNoiseCancellingUpdate(object sender, bool e)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                if (BluetoothService.Instance.ActiveModel == Model.BudsLive)
+                {
+                    NoiseCancelling.Switch.SetChecked(e);
+                }
             });
         }
         
         public override void OnPageShown()
         {
             LoadingSpinner.Visibility = Visibility.Hidden;
-            SidetoneBorder.Visibility = BluetoothService.Instance.ActiveModel == Model.Buds
-                ? Visibility.Collapsed
-                : Visibility.Visible;
+            SidetoneBorder.Visibility = BluetoothService.Instance.ActiveModel == Model.BudsPlus
+                ? Visibility.Visible
+                : Visibility.Collapsed;
             GamingModeBorder.Visibility = BluetoothService.Instance.ActiveModel == Model.Buds
                 ? Visibility.Collapsed
                 : Visibility.Visible;
+            NoiseCancellingBorder.Visibility = BluetoothService.Instance.ActiveModel == Model.BudsLive
+                ? Visibility.Visible
+                : Visibility.Collapsed;
         }
 
         public override void OnPageHidden()
@@ -108,5 +129,10 @@ namespace Galaxy_Buds_Client.ui
         {
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetAdjustSoundSyncEnabled(e));
         }
+
+        private void NoiseCancelling_OnSwitchToggled(object sender, bool e)
+        {
+            BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetActiveNoiseCancellingEnabled(e));
+            }
     }
 }

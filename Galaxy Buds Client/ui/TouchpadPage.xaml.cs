@@ -75,7 +75,11 @@ namespace Galaxy_Buds_Client.ui
                 TouchOption.Universal.Volume, side);
             Menu_AddSeparator(ctxMenu);
 
-            Menu_AddItem(ctxMenu, Loc.GetString("touchoption_ambientsound"), TouchOption.Universal.AmbientSound, side);
+            if (BluetoothService.Instance.ActiveModel == Model.BudsLive)
+                Menu_AddItem(ctxMenu, Loc.GetString("touchoption_noisecancelling"), TouchOption.Universal.NoiseCancelling, side);
+            else
+                Menu_AddItem(ctxMenu, Loc.GetString("touchoption_ambientsound"), TouchOption.Universal.AmbientSound, side);
+
             Menu_AddSeparator(ctxMenu);
 
             if (BluetoothService.Instance.ActiveModel == Model.Buds)
@@ -165,6 +169,8 @@ namespace Galaxy_Buds_Client.ui
                         Loc.GetString("touchoption_volume_up");
                 case TouchOption.Universal.AmbientSound:
                     return Loc.GetString("touchoption_ambientsound");
+                case TouchOption.Universal.NoiseCancelling:
+                    return Loc.GetString("touchoption_noisecancelling");
                 case TouchOption.Universal.SpotifySpotOn:
                     return Loc.GetString("touchoption_spotify");
                 case TouchOption.Universal.OtherL:
@@ -185,9 +191,9 @@ namespace Galaxy_Buds_Client.ui
             LoadingSpinner.Visibility = Visibility.Hidden;
             LeftOptionBorder.ContextMenu = GenerateMenu(LeftOptionBorder, Devices.L);
             RightOptionBorder.ContextMenu = GenerateMenu(RightOptionBorder, Devices.R);
-            DoubleTapVolumeBorder.Visibility = BluetoothService.Instance.ActiveModel == Model.Buds
-                ? Visibility.Collapsed
-                : Visibility.Visible;
+            DoubleTapVolumeBorder.Visibility = BluetoothService.Instance.ActiveModel == Model.BudsPlus
+                ? Visibility.Visible
+                : Visibility.Collapsed;
 
             if (_lastLeftOption == TouchOption.Universal.OtherL)
             {

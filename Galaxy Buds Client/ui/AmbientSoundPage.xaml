@@ -54,7 +54,7 @@
                 </Grid>
             </Border>
         </Border>
-        <Border Grid.Row="4" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+        <Border Name="AmbientSoundVolumeBorder"  Grid.Row="4" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
             <Grid ClipToBounds="True" ScrollViewer.CanContentScroll="True">
                 <Grid.RowDefinitions>

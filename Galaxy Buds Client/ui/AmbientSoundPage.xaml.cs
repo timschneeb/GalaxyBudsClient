@@ -106,7 +106,7 @@ namespace Galaxy_Buds_Client.ui
                     ExtraLoud.Switch.SetChecked(e.ExtraHighAmbientEnabled);
                     AmbientVolume.Maximum = e.ExtraHighAmbientEnabled ? 3 : 2;
                 }
-                else
+                else if (BluetoothService.Instance.ActiveModel == Model.Buds)
                 {
                     VoiceFocusToggle.SetChecked(e.AmbientSoundMode == AmbientType.VoiceFocus);
                 }
@@ -117,16 +117,24 @@ namespace Galaxy_Buds_Client.ui
         public override void OnPageShown()
         {
             LoadingSpinner.Visibility = Visibility.Hidden;
-            if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+            switch (BluetoothService.Instance.ActiveModel)
             {
-                VoiceFocusBorder.Visibility = Visibility.Collapsed;
-                ExtraLoudBorder.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                VoiceFocusBorder.Visibility = Visibility.Visible;
-                ExtraLoudBorder.Visibility = Visibility.Collapsed;
-                AmbientVolume.Maximum = 4;
+                case Model.BudsPlus:
+                    AmbientSoundVolumeBorder.Visibility = Visibility.Visible;
+                    VoiceFocusBorder.Visibility = Visibility.Collapsed;
+                    ExtraLoudBorder.Visibility = Visibility.Visible;
+                    break;
+                case Model.Buds:
+                    AmbientSoundVolumeBorder.Visibility = Visibility.Visible;
+                    VoiceFocusBorder.Visibility = Visibility.Visible;
+                    ExtraLoudBorder.Visibility = Visibility.Collapsed;
+                    AmbientVolume.Maximum = 4;
+                    break;
+                case Model.BudsLive:
+                    AmbientSoundVolumeBorder.Visibility = Visibility.Collapsed;
+                    VoiceFocusBorder.Visibility = Visibility.Collapsed;
+                    ExtraLoudBorder.Visibility = Visibility.Collapsed;
+                    break;
             }
         }
 

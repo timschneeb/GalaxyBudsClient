@@ -65,7 +65,8 @@ namespace Galaxy_Buds_Client.model
         {
             NULL = 0,
             Buds = 1,
-            BudsPlus = 2
+            BudsPlus = 2,
+            BudsLive = 3
         }
 
         public enum Color
@@ -78,7 +79,8 @@ namespace Galaxy_Buds_Client.model
             Red = 263,
             Deep_Blue = 264,
             Olympic = 265,
-            Purple = 266
+            Purple = 266,
+            Mystic_Black = 278
         }
 
         public enum PlacementStates
@@ -129,6 +131,8 @@ namespace Galaxy_Buds_Client.model
                 Volume,
                 [LocalizedDescription("touchoption_ambientsound")]
                 AmbientSound,
+                [LocalizedDescription("touchoption_noisecancelling")]
+                NoiseCancelling,
                 [LocalizedDescription("touchoption_spotify")]
                 SpotifySpotOn,
                 OtherL,
@@ -153,6 +157,15 @@ namespace Galaxy_Buds_Client.model
                 OtherL = 5,
                 OtherR = 6
             }
+            public enum OptionsBudsLive
+            {
+                VoiceAssistant = 1,
+                NoiseCancelling = 2,
+                Volume = 3,
+                SpotifySpotOn = 4,
+                OtherL = 5,
+                OtherR = 6
+            }
             public static byte ToRawByte(Universal uOption)
             {
                 if (BluetoothService.Instance.ActiveModel == Model.Buds)
@@ -164,11 +177,20 @@ namespace Galaxy_Buds_Client.model
                             return (byte)i;
                     }
                 }
-                else
+                else if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
                 {
                     foreach (int i in Enum.GetValues(typeof(OptionsBudsPlus)))
                     {
                         String name = Enum.GetName(typeof(OptionsBudsPlus), i);
+                        if (name == uOption.ToString())
+                            return (byte)i;
+                    }
+                }
+                else if (BluetoothService.Instance.ActiveModel == Model.BudsLive)
+                {
+                    foreach (int i in Enum.GetValues(typeof(OptionsBudsLive)))
+                    {
+                        String name = Enum.GetName(typeof(OptionsBudsLive), i);
                         if (name == uOption.ToString())
                             return (byte)i;
                     }
@@ -189,9 +211,19 @@ namespace Galaxy_Buds_Client.model
                             return (Universal)i;
                     }
                 }
-                else
+                else if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
                 {
                     OptionsBudsPlus opt = (OptionsBudsPlus)iOption;
+                    foreach (int i in Enum.GetValues(typeof(Universal)))
+                    {
+                        String name = Enum.GetName(typeof(Universal), i);
+                        if (name == opt.ToString())
+                            return (Universal)i;
+                    }
+                }
+                else
+                {
+                    OptionsBudsLive opt = (OptionsBudsLive)iOption;
                     foreach (int i in Enum.GetValues(typeof(Universal)))
                     {
                         String name = Enum.GetName(typeof(Universal), i);

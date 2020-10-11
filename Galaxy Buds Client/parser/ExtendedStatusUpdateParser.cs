@@ -94,7 +94,7 @@ namespace Galaxy_Buds_Client.parser
                     }
                 }
             }
-            else
+            else if (ActiveModel == Model.BudsPlus)
             {
                 Revision = msg.Payload[0];
                 EarType = msg.Payload[1];
@@ -122,10 +122,10 @@ namespace Galaxy_Buds_Client.parser
                 AdjustSoundSync = msg.Payload[10] == 1;
                 EqualizerMode = msg.Payload[11];
                 TouchpadLock = Convert.ToBoolean(msg.Payload[12]);
-
+                
                 TouchpadOptionL = TouchOption.ToUniversal((msg.Payload[13] & 240) >> 4);
                 TouchpadOptionR = TouchOption.ToUniversal(msg.Payload[13] & 15);
-
+                
                 OutsideDoubleTap = msg.Payload[14] == 1;
 
                 short leftColor = BitConverter.ToInt16(msg.Payload, 15);
@@ -139,6 +139,43 @@ namespace Galaxy_Buds_Client.parser
                 {
                     SeamlessConnectionEnabled = msg.Payload[21] == 0;
                 }
+            }
+            else if (BluetoothService.Instance.ActiveModel == Model.BudsLive)
+            {
+                Revision = msg.Payload[0];
+                EarType = msg.Payload[1];
+                BatteryL = msg.Payload[2];
+                BatteryR = msg.Payload[3];
+                IsCoupled = Convert.ToBoolean(msg.Payload[4]);
+                MainConnection = (DeviceInv)msg.Payload[5];
+
+                PlacementL = (PlacementStates)((msg.Payload[6] & 240) >> 4);
+                PlacementR = (PlacementStates)(msg.Payload[6] & 15);
+                if (PlacementL == PlacementStates.Wearing && PlacementR == PlacementStates.Wearing)
+                    WearState = WearStates.Both;
+                else if (PlacementL == PlacementStates.Wearing)
+                    WearState = WearStates.L;
+                else if (PlacementR == PlacementStates.Wearing)
+                    WearState = WearStates.R;
+                else
+                    WearState = WearStates.None;
+
+                BatteryCase = msg.Payload[7];
+
+                AdjustSoundSync = msg.Payload[8] == 1;
+                EqualizerMode = msg.Payload[9];
+
+                TouchpadOptionL = TouchOption.ToUniversal((msg.Payload[11] & 240) >> 4);
+                TouchpadOptionR = TouchOption.ToUniversal(msg.Payload[11] & 15);
+                TouchpadLock = Convert.ToBoolean(msg.Payload[12]);
+                
+                short leftColor = BitConverter.ToInt16(msg.Payload, 14);
+                short rightColor = BitConverter.ToInt16(msg.Payload, 16);
+                DeviceColor = (Color)(leftColor != rightColor ? 0 : leftColor);
+
+                SeamlessConnectionEnabled = msg.Payload[19] == 0;
+
+                AmbientSoundEnabled = Convert.ToBoolean(msg.Payload[21]);
             }
         }
 

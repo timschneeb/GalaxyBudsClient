@@ -58,7 +58,7 @@ namespace Galaxy_Buds_Client.ui
             Dispatcher.Invoke(() =>
             {
                 BatteryType.TextDetail = $"{Left}: {e.LeftBatteryType}, {Right}: {e.RightBatteryType}";
-                if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+                if (BluetoothService.Instance.ActiveModel == Model.BudsPlus || BluetoothService.Instance.ActiveModel == Model.BudsLive)
                 {
                     BatteryType.TextDetail = Loc.GetString("system_battery_type_unknown");
                 }

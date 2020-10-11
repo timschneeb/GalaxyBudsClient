@@ -60,5 +60,10 @@
             <element:CheckableDetailListItem Text="{DynamicResource adv_gaming_mode}" TextDetail="{DynamicResource adv_gaming_mode_desc}"
                                              x:Name="GamingMode" SwitchToggled="GamingMode_OnSwitchToggled" />
         </Border>
+        <Border Name="NoiseCancellingBorder"  Grid.Row="6" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
+            <element:CheckableDetailListItem Text="{DynamicResource adv_noise_cancelling}" TextDetail="{DynamicResource adv_noise_cancelling_desc}"
+                                             x:Name="NoiseCancelling" SwitchToggled="NoiseCancelling_OnSwitchToggled" />
+        </Border>
     </Grid>
 </local:BasePage>

@@ -78,10 +78,10 @@ namespace Galaxy_Buds_Client.ui.dialog {
                 BatteryR.Content = $"{br}%";
                 BatteryC.Content = $"{bc}%";
 
-                CaseLabel.Visibility = BluetoothService.Instance.ActiveModel == Model.BudsPlus
+                CaseLabel.Visibility = BluetoothService.Instance.ActiveModel != Model.Buds
                     ? Visibility.Visible
                     : Visibility.Hidden;
-                BatteryC.Visibility = BluetoothService.Instance.ActiveModel == Model.BudsPlus
+                BatteryC.Visibility = BluetoothService.Instance.ActiveModel != Model.Buds
                     ? Visibility.Visible
                     : Visibility.Hidden;
 

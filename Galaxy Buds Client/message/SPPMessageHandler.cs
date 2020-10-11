@@ -43,6 +43,7 @@ namespace Galaxy_Buds_Client.message
         public event EventHandler<MuteUpdateParser> FindMyGearMuteUpdate;
         public event EventHandler<String> SoftwareVersionUpdate;
         public event EventHandler FindMyGearStopped;
+        public event EventHandler<bool> NoiseCancellingUpdated;
 
         public void MessageReceiver(object sender, SPPMessage e)
         {
@@ -94,6 +95,9 @@ namespace Galaxy_Buds_Client.message
                     break;
                 case SPPMessage.MessageIds.MSG_ID_MUTE_EARBUD_STATUS_UPDATED:
                     FindMyGearMuteUpdate?.Invoke(this, (MuteUpdateParser)parser);
+                    break;
+                case SPPMessage.MessageIds.MSG_ID_ANC_STATUS_UPDATED:
+                    NoiseCancellingUpdated?.Invoke(this, ((NoiseCancellingUpdatedParser)parser).Enabled);
                     break;
             }
         }

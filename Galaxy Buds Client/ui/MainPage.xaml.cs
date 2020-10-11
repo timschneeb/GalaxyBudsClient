@@ -105,7 +105,7 @@ namespace Galaxy_Buds_Client.ui
                     BluetoothService.Instance.SendAsync(SPPMessageBuilder.Info.GetAllData());
                 Dispatcher.Invoke(() =>
                 {
-                    if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+                    if (BluetoothService.Instance.ActiveModel == Model.BudsPlus || BluetoothService.Instance.ActiveModel == Model.BudsLive)
                     {
                         ExtendedStatusUpdateParser p = (ExtendedStatusUpdateParser) parser;
                         UpdatePlusPlacement(p.PlacementL, p.PlacementR);
@@ -122,7 +122,7 @@ namespace Galaxy_Buds_Client.ui
                     BluetoothService.Instance.SendAsync(SPPMessageBuilder.Info.GetAllData());
                 Dispatcher.Invoke(() =>
                 {
-                    if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+                    if (BluetoothService.Instance.ActiveModel == Model.BudsPlus || BluetoothService.Instance.ActiveModel == Model.BudsLive)
                     {
                         StatusUpdateParser p = (StatusUpdateParser) parser;
                         UpdatePlusPlacement(p.PlacementL, p.PlacementR);

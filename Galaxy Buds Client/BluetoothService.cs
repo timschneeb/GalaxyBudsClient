@@ -36,6 +36,7 @@ namespace Galaxy_Buds_Client
 
         private static readonly Guid ServiceUuidBuds = new Guid("{00001102-0000-1000-8000-00805f9b34fd}");
         private static readonly Guid ServiceUuidBudsPlus = new Guid("{00001101-0000-1000-8000-00805F9B34FB}");
+        private static readonly Guid ServiceUuidBudsLive = new Guid("{00001101-0000-1000-8000-00805F9B34FB}");
 
         private Thread _btservice = null;
 
@@ -93,7 +94,7 @@ namespace Galaxy_Buds_Client
                     cli.Close();
 
                 ep = new BluetoothEndPoint(
-                    macAddress, deviceModel == Model.BudsPlus ? ServiceUuidBudsPlus : ServiceUuidBuds);
+                    macAddress, deviceModel == Model.Buds ? ServiceUuidBuds : ServiceUuidBudsPlus);
                 ActiveModel = deviceModel;
 
                 try

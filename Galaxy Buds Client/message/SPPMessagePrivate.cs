@@ -93,6 +93,8 @@
             MSG_ID_SET_IN_BAND_RINGTONE = 138,
             MSG_ID_SET_SIDETONE = 139,
             MSG_ID_VERSION_INFO = 99,
+            MSG_ID_ANC_STATUS_UPDATED = 155,
+            MSG_ID_SET_ANC_ENABLED = 152,
         }
     }
 }

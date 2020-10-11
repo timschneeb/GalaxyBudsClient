@@ -237,5 +237,17 @@ namespace Galaxy_Buds_Client.message
             }
         }
 
+        /**
+         * Buds Live only
+         */
+        public static SPPMessage SetActiveNoiseCancellingEnabled(bool enable)
+        {
+            byte[] payload = new byte[1];
+            payload[0] = Convert.ToByte(enable);
+
+            return new SPPMessage(SPPMessage.MessageIds.MSG_ID_SET_ANC_ENABLED,
+                SPPMessage.MsgType.Request, payload);
+        }
+
     }
 }
