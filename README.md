@@ -64,5 +64,5 @@ The original **Galaxy Buds (2019)** and **Galaxy Buds Plus** are fully supported
 * [@superbonaci](https://github.com/superbonaci) - Chocolatey package
 ___
 
-<timschneeberger.me>
+<https://timschneeberger.me>
 
