@@ -147,7 +147,7 @@ namespace Galaxy_Buds_Client
             _mainPage.MainMenuClicked += MainPageOnMainMenuClicked;
             _connectionLostPage.RetryRequested += ConnectionLostPageOnRetryRequested;
 
-            if (!Loc.IsTranslatorModeEnabled())
+            if (Loc.IsTranslatorModeEnabled())
             {
                 new TranslatorMode(this).Show();
             }
