@@ -436,7 +436,7 @@ namespace Galaxy_Buds_Client
                 {
                     _connectionLostPage.SetInfo(e.Message);
                 }
-                catch (NullReferenceException exception)
+                catch (NullReferenceException)
                 {
                     _connectionLostPage.SetInfo(Loc.GetString("connlost_noinfo"));
                 }

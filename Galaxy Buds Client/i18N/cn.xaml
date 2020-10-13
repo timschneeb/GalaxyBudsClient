@@ -14,7 +14,7 @@
     <sys:String x:Key="cancel">取消</sys:String>
     <sys:String x:Key="apply">应用</sys:String>
     <sys:String x:Key="notset">未设置</sys:String>
-    <sys:String x:Key="nobluetoothdev">未找到蓝牙设备\n请开启蓝牙后重试</sys:String>
+    <sys:String x:Key="nobluetoothdev">未找到蓝牙设备 请开启蓝牙后重试</sys:String>
 
     <!-- SPP Message Parser -->
     <sys:String x:Key="sppmsg_too_small">Packet size is too small</sys:String>
@@ -132,7 +132,7 @@
     <sys:String x:Key="updater_footer_skipversion">跳过该版本</sys:String>
     <sys:String x:Key="updater_footer_install">现在安装</sys:String>
 
-    <sys:String x:Key="updater_noupdate">当前未能找到可用更新\n请稍后重试或在GitHub上查找更新</sys:String>
+    <sys:String x:Key="updater_noupdate">当前未能找到可用更新 请稍后重试或在GitHub上查找更新</sys:String>
     <sys:String x:Key="updater_noupdate_title">无更新</sys:String>
     <sys:String x:Key="updater_newrelease">Update {0} for Galaxy Buds Manager has been released</sys:String>
 
@@ -246,8 +246,8 @@
     <sys:String x:Key="factory_confirm">确认恢复出厂设置</sys:String>
     <sys:String x:Key="factory_error_title">恢复出厂设置失败</sys:String>
     <sys:String x:Key="factory_error">
-        Device returned error code: {0}\n
-        Make sure both Earbuds are turned on and reachable.\n
+        Device returned error code: {0} 
+        Make sure both Earbuds are turned on and reachable. 
         You might need to manually reconnect your Earbuds.
     </sys:String>
     <sys:String x:Key="factory_text_p1">是否确定恢复出厂设置？</sys:String>
