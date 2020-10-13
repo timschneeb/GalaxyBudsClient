@@ -16,6 +16,8 @@
     <sys:String x:Key="notset">Nicht festgelegt</sys:String>
     <sys:String x:Key="nobluetoothdev">Kein Bluetooth-Adapter gefunden. Bitte aktiviere Bluetooth and versuche es noch einmal.</sys:String>
 
+    <sys:String x:Key="anc">Aktive Geräuschunterdrückung</sys:String>
+
     <!-- SPP Message Parser -->
     <sys:String x:Key="sppmsg_too_small">Nachricht zu klein</sys:String>
     <sys:String x:Key="sppmsg_invalid_som">Ungültige SOM</sys:String>
@@ -288,6 +290,8 @@
     <sys:String x:Key="adv_resume_playback_desc">Sendet ein Pause/Play-Signal wenn mindestens einer der Näherungsensoren bedeckt ist (nur Windows)</sys:String>
     <sys:String x:Key="adv_sidetone">Bei Anrufen Umgebungston verwenden</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Höre Deine Ihre eigene Stimme klarer, wenn Du telefonierst.</sys:String>
+    <sys:String x:Key="adv_passthrough">Druckentlastung durch Umgebungssound</sys:String>
+    <sys:String x:Key="adv_passthrough_desc">Dadurch kann ein dumpfes Gefühl oder ein Gefühl von Druck vermieden werden, wenn Sie die aktive Geräuschunterdrückung nicht verwenden.</sys:String>
     <sys:String x:Key="adv_gaming_mode">Gaming-Modus</sys:String>
     <sys:String x:Key="adv_gaming_mode_desc">Minimiere die Audioverzögerung für einen lebendigen, synchronisierten Spieleton (nur Samsung)</sys:String>
 
