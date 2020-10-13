@@ -67,7 +67,7 @@ choco install galaxybudsclient
 * [@efrenbg1](https://github.com/efrenbg1) and Andrew Gonza - Spanish translation
  
 ## Contributors
-
+* [@AndriesK](https://github.com/AndriesK) - Buds Live bug fix
 * [@superbonaci](https://github.com/superbonaci) - Chocolatey package
 * [@githubcatw](https://github.com/githubcatw) - Connection dialog base
 
