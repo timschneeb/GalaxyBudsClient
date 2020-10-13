@@ -1,0 +1,21 @@
+name: Sentry release
+
+on:
+  release:  
+    types: [released]
+
+jobs:
+  sentry:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Create Sentry Release
+        uses: getsentry/action-release@v1.1.0
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+        with:
+          environment: 'production'
+          version: ${{ github.event.release.tag_name }}
+
