@@ -74,7 +74,7 @@ namespace Galaxy_Buds_Client.parser
                 int swMonthIndex = payload[startIndex + 1] & 15;
                 byte swRelVerIndex = payload[startIndex + 2];
 
-                return side + "175XX" + swVar + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] +
+                return side + (ActiveModel == Model.BudsLive ? "180XX" : "175XX") + swVar + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] +
                        _swRelVer[swRelVerIndex]; ;
             }
         }

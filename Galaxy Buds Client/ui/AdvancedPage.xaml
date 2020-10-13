@@ -17,6 +17,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="1" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1"  MinWidth="518" Height="60"
@@ -55,7 +56,12 @@
             <element:CheckableDetailListItem Text="{DynamicResource adv_sidetone}" TextDetail="{DynamicResource adv_sidetone_desc}"
                                              x:Name="Sidetone" SwitchToggled="Sidetone_OnSwitchToggled" />
         </Border>
-        <Border Name="GamingModeBorder"  Grid.Row="6" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+        <Border Name="PassthroughBorder" Grid.Row="6" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
+            <element:CheckableDetailListItem Text="{DynamicResource adv_passthrough}" TextDetail="{DynamicResource adv_passthrough_desc}"
+                                             x:Name="Passthrough" SwitchToggled="Passthrough_OnSwitchToggled" />
+        </Border>
+        <Border Name="GamingModeBorder"  Grid.Row="9" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                  Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
             <element:CheckableDetailListItem Text="{DynamicResource adv_gaming_mode}" TextDetail="{DynamicResource adv_gaming_mode_desc}"
                                              x:Name="GamingMode" SwitchToggled="GamingMode_OnSwitchToggled" />

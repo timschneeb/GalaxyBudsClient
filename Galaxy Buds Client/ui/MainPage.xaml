@@ -65,16 +65,23 @@
                     <RowDefinition Height="1"/>
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
-                <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="FindMyGear_OnMouseLeftButtonUp">
-                    <element:ListItem FontSize="18" SourceImage="/Resources/features/findmygear_color.png" Text="{DynamicResource mainpage_find_my_earbuds}"/>
+                <Border Name="AmbientBorder" Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Ambient_OnMouseLeftButtonUp">
+                    <element:ListItem FontSize="18" SourceImage="/Resources/features/sound_color.png" Text="{DynamicResource mainpage_ambient_sound}" />
+                </Border>
+                <Border Name="AncBorder" Visibility="Hidden" Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Anc_OnMouseLeftButtonUp">
+                    <Grid>
+                        <element:ListItem FontSize="18" SourceImage="/Resources/features/anc_color.png" Text="{DynamicResource anc}" />
+                        <element:ToggleSwitch Grid.Row="0" x:Name="AncToggle" Width="Auto" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}"
+                                              DisableButton="True" Margin="461,10,15,10" />
+                    </Grid>
                 </Border>
                 <Separator Grid.Row="1" Margin="60,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
-                <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Touchpad_OnMouseLeftButtonUp">
-                    <element:ListItem FontSize="18" SourceImage="/Resources/features/touch_color.png" Text="{DynamicResource mainpage_touchpad}"/>
+                <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="FindMyGear_OnMouseLeftButtonUp">
+                    <element:ListItem FontSize="18" SourceImage="/Resources/features/findmygear_color.png" Text="{DynamicResource mainpage_find_my_earbuds}"/>
                 </Border>
                 <Separator Grid.Row="3" Margin="60,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
-                <Border Grid.Row="4" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Ambient_OnMouseLeftButtonUp">
-                    <element:ListItem FontSize="18" SourceImage="/Resources/features/sound_color.png" Text="{DynamicResource mainpage_ambient_sound}"/>
+                <Border Grid.Row="4" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Touchpad_OnMouseLeftButtonUp">
+                    <element:ListItem FontSize="18" SourceImage="/Resources/features/touch_color.png" Text="{DynamicResource mainpage_touchpad}"/>
                 </Border>
                 <Separator Grid.Row="5" Margin="60,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                 <Border Grid.Row="6" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" MouseLeftButtonUp="Equalizer_OnMouseLeftButtonUp">

@@ -13,7 +13,7 @@ namespace Galaxy_Buds_Client.message
              typeof(DebugSerialNumberParser), typeof(DebugModeVersionParser), typeof(SppRoleStateParser), typeof(ResetResponseParser),
              typeof(AmbientVoiceFocusParser), typeof(AmbientVolumeParser), typeof(DebugGetAllDataParser), typeof(TouchUpdateParser),
              typeof(AmbientWearingUpdateParser), typeof(MuteUpdateParser), typeof(SetOtherOptionParser),
-             typeof(DebugSkuParser), typeof(SetInBandRingtoneParser)
+             typeof(DebugSkuParser), typeof(SetInBandRingtoneParser), typeof(NoiseReductionModeUpdateParser)
         };
 
         public static BaseMessageParser BuildParser(SPPMessage msg)

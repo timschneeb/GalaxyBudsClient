@@ -65,7 +65,8 @@ namespace Galaxy_Buds_Client.model
         {
             NULL = 0,
             Buds = 1,
-            BudsPlus = 2
+            BudsPlus = 2,
+            BudsLive = 3
         }
 
         public enum Color
@@ -129,6 +130,8 @@ namespace Galaxy_Buds_Client.model
                 Volume,
                 [LocalizedDescription("touchoption_ambientsound")]
                 AmbientSound,
+                [LocalizedDescription("anc")]
+                ANC,
                 [LocalizedDescription("touchoption_spotify")]
                 SpotifySpotOn,
                 OtherL,
@@ -153,6 +156,15 @@ namespace Galaxy_Buds_Client.model
                 OtherL = 5,
                 OtherR = 6
             }
+            public enum OptionsBudsLive
+            {
+                VoiceAssistant = 1,
+                ANC = 2,
+                Volume = 3,
+                SpotifySpotOn = 4,
+                OtherL = 5,
+                OtherR = 6
+            }
             public static byte ToRawByte(Universal uOption)
             {
                 if (BluetoothService.Instance.ActiveModel == Model.Buds)
@@ -164,7 +176,7 @@ namespace Galaxy_Buds_Client.model
                             return (byte)i;
                     }
                 }
-                else
+                else if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
                 {
                     foreach (int i in Enum.GetValues(typeof(OptionsBudsPlus)))
                     {
@@ -173,8 +185,17 @@ namespace Galaxy_Buds_Client.model
                             return (byte)i;
                     }
                 }
+                else
+                {
+                    foreach (int i in Enum.GetValues(typeof(OptionsBudsLive)))
+                    {
+                        String name = Enum.GetName(typeof(OptionsBudsLive), i);
+                        if (name == uOption.ToString())
+                            return (byte)i;
+                    }
+                }
 
-                Console.WriteLine("Warning: TouchOption not translatable");
+                Console.WriteLine(@"ToRawByte: TouchOption not translatable");
                 return 0;
             }
             public static Universal ToUniversal(int iOption)
@@ -189,7 +210,7 @@ namespace Galaxy_Buds_Client.model
                             return (Universal)i;
                     }
                 }
-                else
+                else if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
                 {
                     OptionsBudsPlus opt = (OptionsBudsPlus)iOption;
                     foreach (int i in Enum.GetValues(typeof(Universal)))
@@ -199,8 +220,18 @@ namespace Galaxy_Buds_Client.model
                             return (Universal)i;
                     }
                 }
+                else if (BluetoothService.Instance.ActiveModel == Model.BudsLive)
+                {
+                    OptionsBudsLive opt = (OptionsBudsLive)iOption;
+                    foreach (int i in Enum.GetValues(typeof(Universal)))
+                    {
+                        String name = Enum.GetName(typeof(Universal), i);
+                        if (name == opt.ToString())
+                            return (Universal)i;
+                    }
+                }
 
-                Console.WriteLine("Warning: TouchOption not translatable");
+                Console.WriteLine(@"ToUniversal: TouchOption not translatable");
                 return 0;
             }
         }

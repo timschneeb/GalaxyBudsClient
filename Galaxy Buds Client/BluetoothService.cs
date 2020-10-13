@@ -36,6 +36,7 @@ namespace Galaxy_Buds_Client
 
         private static readonly Guid ServiceUuidBuds = new Guid("{00001102-0000-1000-8000-00805f9b34fd}");
         private static readonly Guid ServiceUuidBudsPlus = new Guid("{00001101-0000-1000-8000-00805F9B34FB}");
+        private static readonly Guid ServiceUuidBudsLive = new Guid("{00001101-0000-1000-8000-00805F9B34FB}");
 
         private Thread _btservice = null;
 
@@ -92,9 +93,23 @@ namespace Galaxy_Buds_Client
                 if (cli.Connected)
                     cli.Close();
 
-                ep = new BluetoothEndPoint(
-                    macAddress, deviceModel == Model.BudsPlus ? ServiceUuidBudsPlus : ServiceUuidBuds);
+                Guid serviceEntry = new Guid();
+                switch (deviceModel)
+                {
+                    case Model.Buds:
+                        serviceEntry = ServiceUuidBuds;
+                        break;
+                    case Model.BudsPlus:
+                        serviceEntry = ServiceUuidBudsPlus;
+                        break;
+                    case Model.BudsLive:
+                        serviceEntry = ServiceUuidBudsLive;
+                        break;
+                }
+
                 ActiveModel = deviceModel;
+
+                ep = new BluetoothEndPoint(macAddress, serviceEntry);
 
                 try
                 {

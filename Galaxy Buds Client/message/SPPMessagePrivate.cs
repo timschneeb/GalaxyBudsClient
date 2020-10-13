@@ -5,7 +5,7 @@
         public enum MsgType : byte
         {
             INVALID = 255,
-            Request = 0, 
+            Request = 0,
             Response = 1
         }
 
@@ -93,6 +93,20 @@
             MSG_ID_SET_IN_BAND_RINGTONE = 138,
             MSG_ID_SET_SIDETONE = 139,
             MSG_ID_VERSION_INFO = 99,
+
+            MSG_ID_CHECK_THE_FIT_OF_EARBUDS = 157,
+            MSG_ID_CHECK_THE_FIT_OF_EARBUDS_REUSLT = 158,
+            MSG_ID_GET_FMM_CONFIG = 173,
+            MSG_ID_NOISE_REDUCTION_MODE_UPDATE = 155,
+            MSG_ID_PASS_THROUGH = 159,
+            MSG_ID_SET_FMM_CONFIG = 172,
+            MSG_ID_SET_NOISE_REDUCTION = 152,
+            MSG_ID_SET_VOICE_WAKE_UP = 151,
+            MSG_ID_TAP_TEST_MODE = 141,
+            MSG_ID_TAP_TEST_MODE_EVENT = 142,
+            MSG_ID_VOICE_WAKE_UP_EVENT = 154,
+            MSG_ID_VOICE_WAKE_UP_LANGUAGE = 153,
+            MSG_ID_VOICE_WAKE_UP_LISTENING_STATUS = 156
         }
     }
 }

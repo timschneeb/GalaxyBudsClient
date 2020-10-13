@@ -1,26 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Galaxy_Buds_Client.message;
-using Galaxy_Buds_Client.parser;
-using Galaxy_Buds_Client.model;
+﻿using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model.Constants;
+using Galaxy_Buds_Client.parser;
 using Galaxy_Buds_Client.Properties;
 using Galaxy_Buds_Client.ui.element;
 using Galaxy_Buds_Client.util.DynamicLocalization;
+using System;
+using System.Windows;
 
 namespace Galaxy_Buds_Client.ui
 {
@@ -47,25 +32,34 @@ namespace Galaxy_Buds_Client.ui
                 if (BluetoothService.Instance.ActiveModel == Model.Buds)
                 {
                     _seamlessSupported = e.Revision >= 3;
-                    SeamlessConnection.Switch.SetChecked(e.SeamlessConnectionEnabled);
                 }
-                else
+                else if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
                 {
                     _seamlessSupported = e.Revision >= 11;
-                    SeamlessConnection.Switch.SetChecked(e.SeamlessConnectionEnabled);
                     Sidetone.Switch.SetChecked(e.SideToneEnabled);
                     GamingMode.Switch.SetChecked(e.AdjustSoundSync);
                 }
+                else if (BluetoothService.Instance.ActiveModel == Model.BudsLive)
+                {
+                    _seamlessSupported = e.Revision >= 11;
+                    Passthrough.Switch.SetChecked(e.RelieveAmbient);
+                    GamingMode.Switch.SetChecked(e.AdjustSoundSync);
+                }
+                SeamlessConnection.Switch.SetChecked(e.SeamlessConnectionEnabled);
+
                 ResumeSensor.Switch.SetChecked(Settings.Default.ResumePlaybackOnSensor);
             });
         }
-        
+
         public override void OnPageShown()
         {
             LoadingSpinner.Visibility = Visibility.Hidden;
-            SidetoneBorder.Visibility = BluetoothService.Instance.ActiveModel == Model.Buds
-                ? Visibility.Collapsed
-                : Visibility.Visible;
+            SidetoneBorder.Visibility = BluetoothService.Instance.ActiveModel == Model.BudsPlus
+                ? Visibility.Visible
+                : Visibility.Collapsed;
+            PassthroughBorder.Visibility = BluetoothService.Instance.ActiveModel == Model.BudsLive
+                ? Visibility.Visible
+                : Visibility.Collapsed;
             GamingModeBorder.Visibility = BluetoothService.Instance.ActiveModel == Model.Buds
                 ? Visibility.Collapsed
                 : Visibility.Visible;
@@ -80,7 +74,7 @@ namespace Galaxy_Buds_Client.ui
         {
             _mainWindow.ReturnToHome();
         }
-        
+
         private void SeamlessConnection_OnSwitchToggled(object sender, bool e)
         {
             if (!_seamlessSupported)
@@ -107,6 +101,11 @@ namespace Galaxy_Buds_Client.ui
         private void GamingMode_OnSwitchToggled(object sender, bool e)
         {
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetAdjustSoundSyncEnabled(e));
+        }
+
+        private void Passthrough_OnSwitchToggled(object sender, bool e)
+        {
+            BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetRelieveAmbient(e));
         }
     }
 }

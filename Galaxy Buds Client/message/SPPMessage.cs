@@ -52,7 +52,7 @@ namespace Galaxy_Buds_Client.message
             byte[] msg = new byte[TotalPacketSize];
             
 
-            if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+            if (BluetoothService.Instance.ActiveModel != Model.Buds)
             {
                 msg[0] = (byte)Constants.SOMPlus;
                 msg[1] = (byte) this.Size;
@@ -76,7 +76,7 @@ namespace Galaxy_Buds_Client.message
             msg[4 + Payload.Length] = (byte)(crc16 & 255);
             msg[4 + Payload.Length + 1] = (byte) ((crc16 >> 8) & 255);
 
-            if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+            if (BluetoothService.Instance.ActiveModel != Model.Buds)
             {
                 msg[TotalPacketSize - 1] = (byte)Constants.EOMPlus;
             }
@@ -104,7 +104,7 @@ namespace Galaxy_Buds_Client.message
             {
                 throw new InvalidDataException(Loc.GetString("sppmsg_invalid_som"));
             }
-            else if (raw[0] != (byte)Constants.SOMPlus && BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+            else if (raw[0] != (byte)Constants.SOMPlus && BluetoothService.Instance.ActiveModel != Model.Buds)
             {
                 throw new InvalidDataException(Loc.GetString("sppmsg_invalid_som"));
             }
@@ -112,7 +112,7 @@ namespace Galaxy_Buds_Client.message
             draft.Id = (MessageIds)Convert.ToInt32(raw[3]);
             int size;
 
-            if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+            if (BluetoothService.Instance.ActiveModel != Model.Buds)
             {
                 size = raw[1] & 1023;
                 draft.Type = (raw[2] & 16) == 0 ? MsgType.Request : MsgType.Response;
@@ -154,7 +154,7 @@ namespace Galaxy_Buds_Client.message
             {
                 throw new InvalidDataException(Loc.GetString("sppmsg_invalid_eom"));
             }
-            else if (raw[4 + rawPayloadSize + 2] != (byte)Constants.EOMPlus && BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+            else if (raw[4 + rawPayloadSize + 2] != (byte)Constants.EOMPlus && BluetoothService.Instance.ActiveModel != Model.Buds)
             {
                 throw new InvalidDataException(Loc.GetString("sppmsg_invalid_eom"));
             }

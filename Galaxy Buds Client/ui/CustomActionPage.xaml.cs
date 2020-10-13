@@ -42,6 +42,11 @@ namespace Galaxy_Buds_Client.ui
             bool first = true;
             foreach (int value in Enum.GetValues(typeof(CustomAction.Actions)))
             {
+                if (BluetoothService.Instance.ActiveModel == Model.BudsLive &&
+                    ((CustomAction.Actions)value == CustomAction.Actions.AmbientVolumeDown ||
+                     (CustomAction.Actions)value == CustomAction.Actions.AmbientVolumeUp))
+                    continue;
+
                 if (!first)
                     Menu_AddSeparator(ctxMenu);
                 else

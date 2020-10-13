@@ -48,9 +48,7 @@ namespace Galaxy_Buds_Client.message
             return new SPPMessage(SPPMessage.MessageIds.MSG_ID_GAME_MODE,
                 SPPMessage.MsgType.Request, payload);
         }
-        /**
-         * Buds only
-         */
+
         public static SPPMessage SetSeamlessConnection(bool enable)
         {
             byte[] payload = new byte[1];
@@ -59,13 +57,43 @@ namespace Galaxy_Buds_Client.message
                 SPPMessage.MsgType.Request, payload);
         }
         /**
-         * Buds+ only
+         * Buds+/Live only
          */
         public static SPPMessage SetAdjustSoundSyncEnabled(bool enable)
         {
             byte[] payload = new byte[1];
             payload[0] = Convert.ToByte(enable);
             return new SPPMessage(SPPMessage.MessageIds.MSG_ID_ADJUST_SOUND_SYNC,
+                SPPMessage.MsgType.Request, payload);
+        }
+        /**
+         * Buds+/Live only
+         */
+        public static SPPMessage SetANC(bool enable)
+        {
+            byte[] payload = new byte[1];
+            payload[0] = Convert.ToByte(enable);
+            return new SPPMessage(SPPMessage.MessageIds.MSG_ID_SET_NOISE_REDUCTION,
+                SPPMessage.MsgType.Request, payload);
+        }
+        /**
+         * Buds Live only
+         */
+        public static SPPMessage SetVoiceWakeUp(bool enable)
+        {
+            byte[] payload = new byte[1];
+            payload[0] = Convert.ToByte(enable);
+            return new SPPMessage(SPPMessage.MessageIds.MSG_ID_SET_VOICE_WAKE_UP,
+                SPPMessage.MsgType.Request, payload);
+        }
+        /**
+         * Buds Live only
+         */
+        public static SPPMessage SetRelieveAmbient(bool enable)
+        {
+            byte[] payload = new byte[1];
+            payload[0] = Convert.ToByte(enable);
+            return new SPPMessage(SPPMessage.MessageIds.MSG_ID_PASS_THROUGH,
                 SPPMessage.MsgType.Request, payload);
         }
 
