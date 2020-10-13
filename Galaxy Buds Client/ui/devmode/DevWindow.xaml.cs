@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -56,6 +57,54 @@ namespace Galaxy_Buds_Client.ui.devmode
                _cache.AddRange(e);
                hexDump.Text = Hex.Dump(_cache.ToArray());
            }));
+        }
+
+        private void MenuParseDump_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog
+            {
+                DefaultExt = ".hex",
+                Filter = "Hex dump|*.hex|All files|*.*"
+            };
+            bool? result = dlg.ShowDialog();
+
+            // Process file dialog box results
+            if (result == true)
+            {
+                try
+                {
+                    ArrayList data = new ArrayList(File.ReadAllBytes(dlg.FileName));
+                    
+                    Dispatcher.BeginInvoke((Action)(() =>
+                    {
+                        _cache.Clear();
+                        _cache.AddRange((byte[])data.ToArray(typeof(byte)));
+                        hexDump.Text = Hex.Dump(_cache.ToArray());
+
+                        do
+                        {
+                            try
+                            {
+                                SPPMessage msg = SPPMessage.DecodeMessage((byte[])data.ToArray(typeof(byte)));
+                                RecvMsgViewHolder holder = new RecvMsgViewHolder(msg);
+                                recvTable.Items.Add(holder);
+
+                                if (msg.TotalPacketSize >= data.Count)
+                                    break;
+                                data.RemoveRange(0, msg.TotalPacketSize);
+                            }
+                            catch (InvalidDataException ex)
+                            {
+                                Console.WriteLine("Error while parsing dump: " + ex.Message);
+                            }
+                        } while (data.Count > 0);
+                    }));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, "Error", ex.Message, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
 
         private void MenuDumpFile_Click(object sender, RoutedEventArgs e)

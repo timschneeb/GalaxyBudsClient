@@ -152,9 +152,6 @@ namespace Galaxy_Buds_Client
                 new TranslatorMode(this).Show();
             }
 
-            /* vvv REMOVE THIS vvv */
-            new DevWindow().Show();
-
             BluetoothAddress savedAddress = GetRegisteredDevice();
             if (savedAddress == null || GetRegisteredDeviceModel() == Model.NULL)
             {
