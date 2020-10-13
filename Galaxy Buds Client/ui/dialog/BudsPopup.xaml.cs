@@ -45,6 +45,8 @@ namespace Galaxy_Buds_Client.ui.dialog {
 
             string mod = "";
             if (model == Model.BudsPlus) mod = "+";
+            else if (model == Model.BudsLive) mod = " Live";
+
             string name = Environment.UserName.Split(' ')[0];
 
             string title = Settings.Default.ConnectionPopupCustomTitle == ""
@@ -78,10 +80,10 @@ namespace Galaxy_Buds_Client.ui.dialog {
                 BatteryR.Content = $"{br}%";
                 BatteryC.Content = $"{bc}%";
 
-                CaseLabel.Visibility = BluetoothService.Instance.ActiveModel == Model.BudsPlus
+                CaseLabel.Visibility = BluetoothService.Instance.ActiveModel != Model.Buds
                     ? Visibility.Visible
                     : Visibility.Hidden;
-                BatteryC.Visibility = BluetoothService.Instance.ActiveModel == Model.BudsPlus
+                BatteryC.Visibility = BluetoothService.Instance.ActiveModel != Model.Buds
                     ? Visibility.Visible
                     : Visibility.Hidden;
 

@@ -163,7 +163,7 @@ namespace Galaxy_Buds_Client.ui
 
         private void UpdateEqualizer()
         {
-            if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+            if (BluetoothService.Instance.ActiveModel != Model.Buds)
             {
                 BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetEqualizer(EQToggle.IsChecked, (EqPreset)PresetSlider.Value, false));
             }

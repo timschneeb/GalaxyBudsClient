@@ -71,5 +71,6 @@ namespace Galaxy_Buds_Client.ui
             };
             Process.Start(psi);
         }
+
     }
 }

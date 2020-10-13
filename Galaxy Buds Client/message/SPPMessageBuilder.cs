@@ -106,7 +106,7 @@ namespace Galaxy_Buds_Client.message
         }
         public static SPPMessage SetEqualizer(bool enable, EqPreset preset, bool dolbyMode)
         {
-            //Dolby mode has no effect on the Buds+
+            //Dolby mode has no effect on the Buds+/Live
             if (BluetoothService.Instance.ActiveModel == Model.Buds)
             {
                 int rawPreset = (int)preset;

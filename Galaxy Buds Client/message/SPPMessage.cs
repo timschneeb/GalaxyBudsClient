@@ -54,7 +54,7 @@ namespace Galaxy_Buds_Client.message
 
             if (BluetoothService.Instance.ActiveModel != Model.Buds)
             {
-                msg[0] = (byte)Constants.SOMPlus;
+                msg[0] = (byte) Constants.SOMPlus;
                 msg[1] = (byte) this.Size;
                 msg[2] = (byte) (type == MsgType.Request ? 0 : 16);
             }

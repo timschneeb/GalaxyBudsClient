@@ -16,7 +16,7 @@
     <sys:String x:Key="notset">Not set</sys:String>
     <sys:String x:Key="nobluetoothdev">No bluetooth adapter found. Please enable bluetooth and try again.</sys:String>
 
-    <sys:String x:Key="anc">Active noise canceling</sys:String>
+    <sys:String x:Key="anc">Active noise cancelling</sys:String>
 
     <!-- SPP Message Parser -->
     <sys:String x:Key="sppmsg_too_small">Packet size is too small</sys:String>
@@ -106,7 +106,7 @@
         If you are interested in what is going on behind the scenes, you can check out my GitHub repository which includes a small reverse-engineering journal. You can also message me on GitHub or on Telegram @thepbone if you happen to run into any issue.
     </sys:String>
     <sys:String x:Key="welcome_textblock_p3">
-        This app supports both the Buds (2019) and Buds+ (2020).
+        This app supports both the Buds (2019), Buds+ (2020) and Buds Live.
     </sys:String>
     <sys:String x:Key="welcome_darkmode">Dark Mode</sys:String>
     <sys:String x:Key="welcome_darkmode_content">Your eyes are already burning? Use a darker color scheme instead!</sys:String>

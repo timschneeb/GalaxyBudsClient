@@ -134,7 +134,7 @@
     <sys:String x:Key="updater_footer_skipversion">Nicht erinnern</sys:String>
     <sys:String x:Key="updater_footer_install">Installieren</sys:String>
 
-    <sys:String x:Key="updater_noupdate">No updates are available at the moment.\n"Please try again later or check and subscribe the GitHub page for updates.</sys:String>
+    <sys:String x:Key="updater_noupdate">Momentan sind keine Updates verfügbar. Bitter versuche es später noch einmal oder abonniere die GitHub-Projektseite.</sys:String>
     <sys:String x:Key="updater_noupdate_title">No updates</sys:String>
     <sys:String x:Key="updater_newrelease">Version {0} des Galaxy Buds Managers wurde veröffentlicht</sys:String>
 
@@ -298,7 +298,7 @@
     <!-- Credits -->
     <sys:String x:Key="credits_header">Credits</sys:String>
     <sys:String x:Key="credits_developer">Entwickler</sys:String>
-    <sys:String x:Key="credits_license">Licenz</sys:String>
+    <sys:String x:Key="credits_license">Lizenz</sys:String>
     <sys:String x:Key="credits_version">Version</sys:String>
     <sys:String x:Key="credits_contributor">Mitwirkende</sys:String>
     <sys:String x:Key="credits_translator">Übersetzer</sys:String>

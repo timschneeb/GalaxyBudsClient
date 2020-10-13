@@ -197,7 +197,7 @@ namespace Galaxy_Buds_Client.ui
             LoadingSpinner.Visibility = Visibility.Hidden;
             LeftOptionBorder.ContextMenu = GenerateMenu(LeftOptionBorder, Devices.L);
             RightOptionBorder.ContextMenu = GenerateMenu(RightOptionBorder, Devices.R);
-            DoubleTapVolumeBorder.Visibility = BluetoothService.Instance.ActiveModel == Model.Buds
+            DoubleTapVolumeBorder.Visibility = BluetoothService.Instance.ActiveModel != Model.BudsPlus
                 ? Visibility.Collapsed
                 : Visibility.Visible;
 
@@ -222,16 +222,6 @@ namespace Galaxy_Buds_Client.ui
             }
 
             _mainWindow.CustomActionPage.Accept += CustomActionPageOnAccept;
-
-
-            if (BluetoothService.Instance.ActiveModel == Model.BudsLive)
-            {
-                DoubleTapVolumeBorder.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                DoubleTapVolumeBorder.Visibility = Visibility.Visible;
-            }
         }
 
         public override void OnPageHidden()
