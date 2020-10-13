@@ -26,6 +26,7 @@ using Galaxy_Buds_Client.util.DynamicLocalization;
 using Hardcodet.Wpf.TaskbarNotification;
 using InTheHand.Net;
 using InTheHand.Net.Bluetooth;
+using Sentry;
 
 namespace Galaxy_Buds_Client
 {
@@ -365,6 +366,18 @@ namespace Galaxy_Buds_Client
          */
         public void ShowDemoPopup()
         {
+            SentrySdk.ConfigureScope(scope =>
+            {
+                scope.AddBreadcrumb("Test-Message", "Note");
+                scope.SetTag("demo-popup", "true");
+                scope.SetExtra("page", PageControl.CurrentPage.Name);
+
+
+                Console.WriteLine("In scope");
+
+                
+            }); 
+
             Dispatcher.Invoke(() => {
                 _previousBudsPopup?.Close();
 
@@ -380,7 +393,6 @@ namespace Galaxy_Buds_Client
 
         private void Tray_OnTrayLeftMouseDown(object sender, RoutedEventArgs e)
         {
-            DarkModeHelper.Update();
 
             Visibility = Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
             if (Visibility == Visibility.Visible)

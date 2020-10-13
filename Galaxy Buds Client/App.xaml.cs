@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.util.DynamicLocalization;
+using Sentry;
 
 namespace Galaxy_Buds_Client
 {
@@ -16,6 +17,8 @@ namespace Galaxy_Buds_Client
     /// </summary>
     public partial class App : Application
     {
+        public object sentry = SentrySdk.Init("https://4591394c5fd747b0ab7f5e81297c094d@o456940.ingest.sentry.io/5462682");
+
         public App()
         {
             SingleInstanceWatcher();
@@ -25,7 +28,7 @@ namespace Galaxy_Buds_Client
 
         private void App_Startup(object sender, StartupEventArgs e)
         {
-            if (Loc.IsTranslatorModeEnabled())
+                if (Loc.IsTranslatorModeEnabled())
             {
                 Galaxy_Buds_Client.Properties.Settings.Default.CurrentLocale = Locale.custom;
                 Galaxy_Buds_Client.Properties.Settings.Default.Save();
