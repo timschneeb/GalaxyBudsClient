@@ -119,7 +119,7 @@ namespace Galaxy_Buds_Client.ui
         public override void OnPageShown()
         {
             LoadingSpinner.Visibility = Visibility.Hidden;
-            if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
+            if (BluetoothService.Instance.ActiveModel != Model.Buds)
             {
                 DolbyModeBorder.Visibility = Visibility.Collapsed;
             }

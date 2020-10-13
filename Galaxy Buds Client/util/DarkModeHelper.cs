@@ -25,8 +25,11 @@ namespace Galaxy_Buds_Client.util
                     break;
                 case DarkMode.System:
                     string RegistryKey = @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize";
-                    int light = (int)Registry.GetValue(RegistryKey, "AppsUseLightTheme", true);
-                    SetDark(light != 1);
+                    object light = Registry.GetValue(RegistryKey, "AppsUseLightTheme", true);
+                    if (light == null)
+                        break;
+
+                    SetDark((int)light != 1);
                     break;
             }
         }

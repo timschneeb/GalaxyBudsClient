@@ -54,7 +54,9 @@ namespace Galaxy_Buds_Client
         public event EventHandler<PlatformNotSupportedException> PlatformNotSupportedException;
 
         public Model ActiveModel = Model.BudsPlus;
-        public bool IsConnected => cli != null && cli.Connected;
+        public bool IsConnected => (cli != null && cli.Connected) || SuppressSocketException;
+
+        public bool SuppressSocketException = false;
 
         public BluetoothService()
         {
@@ -230,9 +232,11 @@ namespace Galaxy_Buds_Client
 
             NewDataAvailable?.Invoke(this, frame);
         }
+
         private void OnSocketException(SocketException e)
         {
-            SocketException?.Invoke(this, e);
+            if(!SuppressSocketException)
+                SocketException?.Invoke(this, e);
         }
     }
 }

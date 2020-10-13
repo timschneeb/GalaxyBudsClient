@@ -10,7 +10,7 @@
         xmlns:constants="clr-namespace:Galaxy_Buds_Client.model.Constants"
         x:Class="Galaxy_Buds_Client.ui.devmode.TranslatorMode"
         mc:Ignorable="d" ResizeMode="NoResize" WindowState="Normal"
-        Title="Translator Mode" Height="366" Width="463">
+        Title="Translator Mode" Height="480" Width="463">
     <Window.Resources>
         <ObjectDataProvider x:Key="pages" MethodName="GetValues"
                             ObjectType="{x:Type System:Enum}">
@@ -22,6 +22,12 @@
                             ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
                 <x:Type TypeName="constants:Locale"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="models" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="constants:Model"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </Window.Resources>
@@ -37,15 +43,23 @@
         <GroupBox Header="Reload XAML" HorizontalAlignment="Left" Height="120" Margin="10,135,0,0" VerticalAlignment="Top" Width="430">
             <Grid HorizontalAlignment="Left" Width="420" Margin="0,0,-2,0">
                 <Button Name="ReloadXaml" Content="Reload" HorizontalAlignment="Left" Margin="341,10,0,0" VerticalAlignment="Top" Width="69" Height="22" Click="ReloadXaml_Click" />
-                <TextBlock HorizontalAlignment="Left" Margin="10,37,0,10" Width="400" TextWrapping="Wrap"><Run Text="Reloads strings. While all strings directly bound to elements within XAML will update instantly, there may still be strings cached within the source code that are not update"/><Run Text="d "/><Run Text="instantly. Don't forget to save before reloading."/></TextBlock>
+                <TextBlock HorizontalAlignment="Left" Margin="10,37,0,10" Width="400" TextWrapping="Wrap"><Run Text="Reloads strings. While all strings directly bound to elements within XAML will update instantly, there may still be strings cached within "/><Run Text="C# variables"/><Run Text=" that are not update"/><Run Text="d "/><Run Text="instantly. Don't forget to save before reloading."/></TextBlock>
                 <TextBox Name="XamlPath" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" IsReadOnly="True" VerticalAlignment="Top" Width="209" />
                 <ComboBox x:Name="Language" HorizontalAlignment="Left" Margin="224,10,0,0" VerticalAlignment="Top" Width="112" ItemsSource="{Binding Source={StaticResource langs}}"/>
 
             </Grid>
         </GroupBox>
-        <GroupBox Header="Exit translator mode" HorizontalAlignment="Left" Height="60" Margin="10,260,0,0" VerticalAlignment="Top" Width="430">
+        <GroupBox Header="Exit translator mode" HorizontalAlignment="Left" Height="60" Margin="10,377,0,0" VerticalAlignment="Top" Width="430">
             <Grid HorizontalAlignment="Left" Width="420" Margin="0,0,-2,0">
                 <TextBlock HorizontalAlignment="Left" Margin="10,10,0,10" Width="400" TextWrapping="Wrap" Text="You can exit this debug mode by deleting the XAML file specified above."/>
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Model" HorizontalAlignment="Left" Height="112" Margin="10,260,0,0" VerticalAlignment="Top" Width="430">
+            <Grid HorizontalAlignment="Left" Width="420" Margin="0,0,-2,0">
+                <TextBlock HorizontalAlignment="Left" Margin="10,37,0,4" Width="400" TextWrapping="Wrap"><Run Text="Override"/><Run Text="s"/><Run Text=" "/><Run Text="current "/><Run Text="device model. This setting may cause connection problems, crashes and inconsistent behavior"/><Run Text=". This"/><Run Text=" model"/><Run Text=" "/><Run Text="setting "/><Run Text="persists until the device is deregistered or"/><Run Text=" changed back. Does not instantly apply."/></TextBlock>
+                <ComboBox x:Name="ModelSel" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="209" ItemsSource="{Binding Source={StaticResource models}}" SelectionChanged="Model_SelectionChanged"/>
+                <CheckBox x:Name="IgnoreConnLost" Content="Ignore connection loss" HorizontalAlignment="Left" Margin="229,13,0,59" VerticalAlignment="Center" Height="16" Width="181" Checked="IgnoreConnLost_Checked"/>
 
             </Grid>
         </GroupBox>

@@ -29,6 +29,7 @@ namespace Galaxy_Buds_Client.ui.devmode
             InitializeComponent();
 
             Language.SelectedValue = Properties.Settings.Default.CurrentLocale;
+            ModelSel.SelectedValue = _mainWindow.GetRegisteredDeviceModel();
             XamlPath.Text = Loc.GetTranslatorModeFile();
         }
 
@@ -49,6 +50,22 @@ namespace Galaxy_Buds_Client.ui.devmode
             Properties.Settings.Default.CurrentLocale = (Locale)Language.SelectedValue;
             Properties.Settings.Default.Save();
             Loc.Load();
+        }
+
+        private void IgnoreConnLost_Checked(object sender, RoutedEventArgs e)
+        {
+            BluetoothService.Instance.SuppressSocketException =
+                IgnoreConnLost.IsChecked == null? false : (bool) IgnoreConnLost.IsChecked;
+        }
+
+        private void Model_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Model? model = (Model?)ModelSel.SelectedValue;
+            if (model == null)
+                model = Model.NULL;
+            BluetoothService.Instance.ActiveModel = (Model)model;
+            Properties.Settings.Default.RegisteredDeviceModel = (Model)model;
+            Properties.Settings.Default.Save();
         }
     }
 }
