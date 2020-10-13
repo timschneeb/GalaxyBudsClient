@@ -96,7 +96,12 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                        <element:DetailListItem Text="{DynamicResource credits_translator}" TextDetail="@Florize (Korean, Japanese); @ArthurWolfhound (Russian, Ukrainian)" Margin="20,0,20,0"/>
+                        <Grid Margin="20,0,20,0">
+                            <Label Content="{DynamicResource credits_translator}" 
+               Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" Height="35" VerticalContentAlignment="Center" Margin="0,6,0,46" />
+                            <Label Content="@Florize (Korean, Japanese); @ArthurWolfhound (Russian, Ukrainian);&#10;@erenbektas (Turkish); Andrew Gonza (Spanish); @kakkk (Chinese)" 
+               Foreground="{DynamicResource SubtitleTextBrush}" FontSize="14" VerticalContentAlignment="Center" Margin="0,35,0,5"/>
+                        </Grid>
                     </Border>
                     <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}">

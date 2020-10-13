@@ -14,7 +14,7 @@
     <sys:String x:Key="cancel">キャンセル</sys:String>
     <sys:String x:Key="apply">適用</sys:String>
     <sys:String x:Key="notset">指定なし</sys:String>
-    <sys:String x:Key="nobluetoothdev">Bluetooth 装置が見つかりませんでした。 \nBluetoothを有効にしてからもう一度試してください。</sys:String>
+    <sys:String x:Key="nobluetoothdev">Bluetooth 装置が見つかりませんでした。Bluetoothを有効にしてからもう一度試してください。</sys:String>
 
     <!-- SPP Message Parser -->
     <sys:String x:Key="sppmsg_too_small">Message too small</sys:String>
@@ -249,8 +249,8 @@
     <sys:String x:Key="factory_confirm">イヤホンをリセットする</sys:String>
     <sys:String x:Key="factory_error_title">イヤホンのリセットに失敗</sys:String>
     <sys:String x:Key="factory_error">
-        デバイスがエラーコードを返しました。: {0}\n
-        両方のイヤホンがお互いに近い距離にあり、すべてオンになっているかを確認してください。\n
+        デバイスがエラーコードを返しました。: {0} 
+        両方のイヤホンがお互いに近い距離にあり、すべてオンになっているかを確認してください。
         イヤバードを手動で再度接続する必要がある可能性があります。
     </sys:String>
     <sys:String x:Key="factory_text_p1">イヤホンをリセットしますか？</sys:String>

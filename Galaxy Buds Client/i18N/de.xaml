@@ -14,7 +14,7 @@
     <sys:String x:Key="cancel">Abbrechen</sys:String>
     <sys:String x:Key="apply">Speichern</sys:String>
     <sys:String x:Key="notset">Nicht festgelegt</sys:String>
-    <sys:String x:Key="nobluetoothdev">Kein Bluetooth-Adapter gefunden\nBitte aktiviere Bluetooth and versuche es noch einmal.</sys:String>
+    <sys:String x:Key="nobluetoothdev">Kein Bluetooth-Adapter gefunden. Bitte aktiviere Bluetooth and versuche es noch einmal.</sys:String>
 
     <!-- SPP Message Parser -->
     <sys:String x:Key="sppmsg_too_small">Nachricht zu klein</sys:String>

@@ -14,7 +14,7 @@
     <sys:String x:Key="cancel">Cancel</sys:String>
     <sys:String x:Key="apply">Apply</sys:String>
     <sys:String x:Key="notset">Not set</sys:String>
-    <sys:String x:Key="nobluetoothdev">No bluetooth adapter found.\nPlease enable bluetooth and try again.</sys:String>
+    <sys:String x:Key="nobluetoothdev">No bluetooth adapter found. Please enable bluetooth and try again.</sys:String>
 
     <sys:String x:Key="anc">Active noise canceling</sys:String>
 
@@ -134,7 +134,7 @@
     <sys:String x:Key="updater_footer_skipversion">Skip this version</sys:String>
     <sys:String x:Key="updater_footer_install">Install now</sys:String>
 
-    <sys:String x:Key="updater_noupdate">No updates are available at the moment.\n"Please try again later or check and subscribe the GitHub page for updates.</sys:String>
+    <sys:String x:Key="updater_noupdate">No updates are available at the moment. Please try again later or check and subscribe the GitHub page for updates.</sys:String>
     <sys:String x:Key="updater_noupdate_title">No updates</sys:String>
     <sys:String x:Key="updater_newrelease">Update {0} for Galaxy Buds Manager has been released</sys:String>
 
@@ -248,9 +248,9 @@
     <sys:String x:Key="factory_confirm">Confirm factory reset</sys:String>
     <sys:String x:Key="factory_error_title">Factory reset failed</sys:String>
     <sys:String x:Key="factory_error">
-        Device returned error code: {0}\n
-        Make sure both Earbuds are turned on and reachable.\n
-        You might need to manually reconnect your Earbuds.
+        Device returned error code: {0} 
+        Make sure both Earbuds are turned on and reachable. 
+        You might need to manually reconnect your Earbuds. 
     </sys:String>
     <sys:String x:Key="factory_text_p1">Are you sure you want to reset your Earbuds?</sys:String>
     <sys:String x:Key="factory_text_p2">After performing a Factory Reset, you'll have to manually reconnect your Earbuds to the computer.</sys:String>

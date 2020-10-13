@@ -14,7 +14,7 @@
     <sys:String x:Key="cancel">Відміна</sys:String>
     <sys:String x:Key="apply">Застосувати</sys:String>
     <sys:String x:Key="notset">Не встановлено</sys:String>
-    <sys:String x:Key="nobluetoothdev">Адаптер Bluetooth не знайдено.\nБудь ласка, увімкніть Bluetooth і спробуйте ще раз.</sys:String>
+    <sys:String x:Key="nobluetoothdev">Адаптер Bluetooth не знайдено. Будь ласка, увімкніть Bluetooth і спробуйте ще раз.</sys:String>
 
     <!-- SPP Message Parser --><!-- Translator notice 1. Tech things. -->
     <sys:String x:Key="sppmsg_too_small">Розмір пакету занадто малий</sys:String>
@@ -130,7 +130,7 @@
     <sys:String x:Key="updater_footer_skipversion">Пропустити</sys:String>
     <sys:String x:Key="updater_footer_install">Встановити</sys:String>
 
-    <sys:String x:Key="updater_noupdate">Зараз немає доступних оновлень.\n"Будь ласка, спробуйте пізніше або підпишіться на мій GitHub для оновлень.</sys:String>
+    <sys:String x:Key="updater_noupdate">Зараз немає доступних оновлень. Будь ласка, спробуйте пізніше або підпишіться на мій GitHub для оновлень.</sys:String>
 
     <sys:String x:Key="updater_noupdate_title">Оновлень немає</sys:String>
     <sys:String x:Key="updater_newrelease">Оновлення {0} для Galaxy Buds Manager було випущене</sys:String><!-- Translator notice 6. Similar to notice 2. -->
@@ -246,8 +246,8 @@
     <sys:String x:Key="factory_confirm">Підтвердіть скидання налаштувань</sys:String>
     <sys:String x:Key="factory_error_title">Скидання налаштувань не вдалося</sys:String>
     <sys:String x:Key="factory_error">
-        Пристрій повернув код помилки: {0}\n
-        Переконайтеся що обидва навушника включені і досяжні.\n
+        Пристрій повернув код помилки: {0} 
+        Переконайтеся що обидва навушника включені і досяжні. 
         Вам може знадобиться повторно підключити навушники вручну.
     </sys:String>
     <sys:String x:Key="factory_text_p1">Ви впевнені що хочете скинути налаштування навушників?</sys:String>
