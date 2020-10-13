@@ -50,12 +50,6 @@ The original **Galaxy Buds (2019)** and **Galaxy Buds Plus** are fully supported
 
 ![Downloads](https://img.shields.io/github/downloads/ThePBone/GalaxyBudsClient/total)
 
-Alternatively, you can also use the [chocolatey](https://chocolatey.org/courses/getting-started/what-is-chocolatey) package provided by [@superbonaci](https://github.com/superbonaci):
-
-```
-choco install galaxybudsclient
-```
-
 ## Translators
 
 * [@Florize](https://github.com/Florize) - Korean and Japanese translation
@@ -66,9 +60,8 @@ choco install galaxybudsclient
  
 ## Contributors
 * [@AndriesK](https://github.com/AndriesK) - Buds Live bug fix
-* [@superbonaci](https://github.com/superbonaci) - Chocolatey package
 * [@githubcatw](https://github.com/githubcatw) - Connection dialog base
-
+* [@superbonaci](https://github.com/superbonaci) - Chocolatey package
 ___
 
 Bitcoin: 3EawSB3NfX6JQxKBBFYh6ZwHDWXtJB84Ly
