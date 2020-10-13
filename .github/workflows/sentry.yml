@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - uses: actions/checkout@v2
       - name: Create Sentry Release
         uses: getsentry/action-release@v1.1.0
         env:
