@@ -30,6 +30,7 @@ namespace Galaxy_Buds_Client.message
         public event EventHandler<string> SwVersionResponse;
         public event EventHandler<BatteryTypeParser> BatteryTypeResponse;
         public event EventHandler<bool> AmbientEnabledUpdateResponse;
+        public event EventHandler<bool> AncEnabledUpdateResponse;
         public event EventHandler<string> BuildStringResponse;
         public event EventHandler<DebugGetAllDataParser> GetAllDataResponse;
         public event EventHandler<DebugSerialNumberParser> SerialNumberResponse;
@@ -94,6 +95,9 @@ namespace Galaxy_Buds_Client.message
                     break;
                 case SPPMessage.MessageIds.MSG_ID_MUTE_EARBUD_STATUS_UPDATED:
                     FindMyGearMuteUpdate?.Invoke(this, (MuteUpdateParser)parser);
+                    break;
+                case SPPMessage.MessageIds.MSG_ID_NOISE_REDUCTION_MODE_UPDATE:
+                    AncEnabledUpdateResponse?.Invoke(this, ((NoiseReductionModeUpdateParser)parser).Enabled);
                     break;
             }
         }

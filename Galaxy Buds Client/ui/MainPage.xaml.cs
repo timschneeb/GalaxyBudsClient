@@ -61,7 +61,13 @@ namespace Galaxy_Buds_Client.ui
             SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
             SPPMessageHandler.Instance.StatusUpdate += InstanceOnStatusUpdate;
             SPPMessageHandler.Instance.GetAllDataResponse += InstanceOnGetAllDataResponse;
+            SPPMessageHandler.Instance.AncEnabledUpdateResponse += Instance_AncEnabledUpdateResponse;
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.Info.GetAllData());
+        }
+
+        private void Instance_AncEnabledUpdateResponse(object sender, bool e)
+        {
+            AncToggle.SetChecked(e);
         }
 
         public void SetLoaderVisible(bool b)
