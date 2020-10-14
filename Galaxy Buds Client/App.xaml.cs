@@ -24,6 +24,13 @@ namespace Galaxy_Buds_Client
 
         public App()
         {
+            if (Settings.Default.UpdateSettings)
+            {
+                Settings.Default.Upgrade();
+                Settings.Default.UpdateSettings = false;
+                Settings.Default.Save();
+            }
+
             SentrySdk.Init(o =>
             {
                 o.Dsn = new Dsn("https://4591394c5fd747b0ab7f5e81297c094d@o456940.ingest.sentry.io/5462682");

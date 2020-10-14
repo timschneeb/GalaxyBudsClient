@@ -90,13 +90,6 @@ namespace Galaxy_Buds_Client
 
         public MainWindow()
         {
-            if (Settings.Default.UpdateSettings)
-            {
-                Settings.Default.Upgrade();
-                Settings.Default.UpdateSettings = false;
-                Settings.Default.Save();
-            }
-
             if (Settings.Default.DarkMode2 == DarkMode.Unset)
             {
                 Settings.Default.DarkMode2 = (DarkMode)Convert.ToInt32(Settings.Default.DarkMode);
