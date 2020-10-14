@@ -42,9 +42,17 @@ namespace Galaxy_Buds_Client
                     sentryEvent.SetExtra("bluetooth-mac", Galaxy_Buds_Client.Properties.Settings.Default.RegisteredDevice);
                     sentryEvent.SetExtra("bluetooth-model", Galaxy_Buds_Client.Properties.Settings.Default.RegisteredDeviceModel.ToString());
                     sentryEvent.SetExtra("bluetooth-connected", BluetoothService.Instance.IsConnected);
-                    sentryEvent.SetExtra("current-page", _mainWindow.PageControl.CurrentPageName);
                     sentryEvent.SetExtra("custom-locale", Galaxy_Buds_Client.Properties.Settings.Default.CurrentLocale.GetDescription());
                     sentryEvent.SetExtra("sw-version", Galaxy_Buds_Client.Properties.Settings.Default.LastSwVersion);
+
+                    if(_mainWindow != null)
+                    {
+                        sentryEvent.SetExtra("current-page", _mainWindow.PageControl.CurrentPageName);
+                    }
+                    else
+                    {
+                        sentryEvent.SetExtra("current-page", "MainWindow is NULL");
+                    }
                     return sentryEvent;
                 };
             });
