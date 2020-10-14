@@ -137,6 +137,7 @@ namespace Galaxy_Buds_Client
             SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
             SPPMessageHandler.Instance.StatusUpdate += InstanceOnStatusUpdate;
             SPPMessageHandler.Instance.OtherOption += InstanceOnOtherOption;
+            SPPMessageHandler.Instance.GetAllDataResponse += Instance_GetAllDataResponse;
             BluetoothService.Instance.MessageReceived += SPPMessageHandler.Instance.MessageReceiver;
             BluetoothService.Instance.InvalidDataException += InstanceOnInvalidDataException;
             BluetoothService.Instance.SocketException += InstanceOnSocketException;
@@ -193,6 +194,12 @@ namespace Galaxy_Buds_Client
                 Console.WriteLine(@"CRITICAL: Unknown Win32 Bluetooth service error");
                 Console.WriteLine(e);
             }
+        }
+
+        private void Instance_GetAllDataResponse(object sender, DebugGetAllDataParser e)
+        {
+            Settings.Default.LastSwVersion = e.SoftwareVersion;
+            Settings.Default.Save();
         }
 
         private void TbiOnTrayRightMouseDown(object sender, RoutedEventArgs e)
@@ -366,18 +373,6 @@ namespace Galaxy_Buds_Client
          */
         public void ShowDemoPopup()
         {
-            SentrySdk.ConfigureScope(scope =>
-            {
-                scope.AddBreadcrumb("Test-Message", "Note");
-                scope.SetTag("demo-popup", "true");
-                scope.SetExtra("page", PageControl.CurrentPage.Name);
-
-
-                Console.WriteLine("In scope");
-
-                
-            }); 
-
             Dispatcher.Invoke(() => {
                 _previousBudsPopup?.Close();
 

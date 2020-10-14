@@ -12,9 +12,10 @@ namespace Galaxy_Buds_Client.transition
 	{
 		Stack<UserControl> pages = new Stack<UserControl>();
 
-		public UserControl CurrentPage { get; set; }
+        public UserControl CurrentPage { get; set; }
+        public String CurrentPageName { get; private set; }
 
-		public static readonly DependencyProperty TransitionTypeProperty = DependencyProperty.Register("TransitionType",
+        public static readonly DependencyProperty TransitionTypeProperty = DependencyProperty.Register("TransitionType",
 			typeof(PageTransitionType),
 			typeof(PageTransition), new PropertyMetadata(PageTransitionType.SlideAndFade));
 
@@ -32,6 +33,7 @@ namespace Galaxy_Buds_Client.transition
 
 		public PageTransition()
 		{
+            CurrentPageName = "NULL";
 			InitializeComponent();
 		}		
 		
@@ -98,12 +100,13 @@ namespace Galaxy_Buds_Client.transition
             {
                 ((BasePage)CurrentPage).OnPageHidden();
             }
+    
+            CurrentPage = sender as UserControl;
+            CurrentPageName = CurrentPage.GetType().Name;
 
-			CurrentPage = sender as UserControl;
-
-            if (CurrentPage.GetType().IsSubclassOf( typeof(BasePage)))
+            if (CurrentPage.GetType().IsSubclassOf(typeof(BasePage)))
             {
-				((BasePage)CurrentPage).OnPageShown();
+                ((BasePage)CurrentPage).OnPageShown();
             }
 		}		
 
