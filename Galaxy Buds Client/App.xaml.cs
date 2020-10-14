@@ -24,11 +24,11 @@ namespace Galaxy_Buds_Client
 
         public App()
         {
-            if (Settings.Default.UpdateSettings)
+            if (Galaxy_Buds_Client.Properties.Settings.Default.UpdateSettings)
             {
-                Settings.Default.Upgrade();
-                Settings.Default.UpdateSettings = false;
-                Settings.Default.Save();
+                Galaxy_Buds_Client.Properties.Settings.Default.Upgrade();
+                Galaxy_Buds_Client.Properties.Settings.Default.UpdateSettings = false;
+                Galaxy_Buds_Client.Properties.Settings.Default.Save();
             }
 
             SentrySdk.Init(o =>
