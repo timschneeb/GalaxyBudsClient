@@ -124,7 +124,7 @@ namespace Galaxy_Buds_Client
             _tbi.TrayLeftMouseDown += Tray_OnTrayLeftMouseDown;
             _tbi.TrayContextMenuOpen += TbiOnTrayContextMenuOpen;
             _tbi.TrayRightMouseDown += TbiOnTrayRightMouseDown;
-            GenerateTrayContext(-1,-1,-1);
+            GenerateTrayContext(-1, -1, -1);
 
             SPPMessageHandler.Instance.AnyMessageReceived += InstanceOnAnyMessageReceived;
             SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
@@ -169,7 +169,7 @@ namespace Galaxy_Buds_Client
             try
             {
                 BluetoothWin32Events.GetInstance().InRange +=
-                    delegate(object sender, BluetoothWin32RadioInRangeEventArgs args)
+                    delegate (object sender, BluetoothWin32RadioInRangeEventArgs args)
                     {
                         if (GetRegisteredDevice() != null && GetRegisteredDevice() == args.Device.DeviceAddress)
                         {
@@ -237,7 +237,7 @@ namespace Galaxy_Buds_Client
             }
             return model;
         }
-        
+
         /*
          * Tray
          */
@@ -245,7 +245,7 @@ namespace Galaxy_Buds_Client
         {
             if (bl != null)
             {
-                _previousTrayBL = (int) bl;
+                _previousTrayBL = (int)bl;
             }
             if (br != null)
             {
@@ -293,7 +293,7 @@ namespace Galaxy_Buds_Client
 
                 if (staticCount > 0)
                 {
-                    
+
                     Menu_AddSeparator(ctxMenu);
                     MenuItem touchlockToggle = new MenuItem();
                     touchlockToggle.Header = _touchpadPage.LockToggle.IsChecked ? Loc.GetString("tray_unlock_touchpad") : Loc.GetString("tray_lock_touchpad");
@@ -313,14 +313,17 @@ namespace Galaxy_Buds_Client
                     equalizerToggle.Style = (Style)FindResource("SmallMenuItemStyle");
                     ctxMenu.Items.Add(equalizerToggle);
 
-                    MenuItem ambientToggle = new MenuItem();
-                    ambientToggle.Header = _ambientSoundPage.AmbientToggle.IsChecked ? Loc.GetString("tray_disable_ambient_sound") : Loc.GetString("tray_enable_ambient_sound");
-                    ambientToggle.Click += delegate
+                    if (BluetoothService.Instance.ActiveModel != Model.BudsLive)
                     {
-                        _ambientSoundPage.ToggleAmbient();
-                    };
-                    ambientToggle.Style = (Style)FindResource("SmallMenuItemStyle");
-                    ctxMenu.Items.Add(ambientToggle);
+                        MenuItem ambientToggle = new MenuItem();
+                        ambientToggle.Header = _ambientSoundPage.AmbientToggle.IsChecked ? Loc.GetString("tray_disable_ambient_sound") : Loc.GetString("tray_enable_ambient_sound");
+                        ambientToggle.Click += delegate
+                        {
+                            _ambientSoundPage.ToggleAmbient();
+                        };
+                        ambientToggle.Style = (Style)FindResource("SmallMenuItemStyle");
+                        ctxMenu.Items.Add(ambientToggle);
+                    }
 
                     Menu_AddSeparator(ctxMenu);
                 }
@@ -345,14 +348,17 @@ namespace Galaxy_Buds_Client
         /*
          * Popup
          */
-        public void ShowPopup(int bl, int br, int bc) {
-            Dispatcher.Invoke(() => {
-                if (!this.IsActive && (bl > 0 || br > 0 || bc > 0) 
-                                   && Settings.Default.ConnectionPopupEnabled) {
+        public void ShowPopup(int bl, int br, int bc)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                if (!this.IsActive && (bl > 0 || br > 0 || bc > 0)
+                                   && Settings.Default.ConnectionPopupEnabled)
+                {
                     _previousBudsPopup?.Close();
 
                     BudsPopup pop = new BudsPopup(
-                        BluetoothService.Instance.ActiveModel, bl,  br, bc);
+                        BluetoothService.Instance.ActiveModel, bl, br, bc);
                     pop.HideHeader = Settings.Default.ConnectionPopupCompact;
                     pop.PopupPlacement = Settings.Default.ConnectionPopupPosition;
                     pop.ShowWindowWithoutFocus();
@@ -366,16 +372,17 @@ namespace Galaxy_Buds_Client
          */
         public void ShowDemoPopup()
         {
-            Dispatcher.Invoke(() => {
+            Dispatcher.Invoke(() =>
+            {
                 _previousBudsPopup?.Close();
 
                 BudsPopup pop = new BudsPopup(
                         BluetoothService.Instance.ActiveModel, _previousTrayBL,
                         _previousTrayBR, _previousTrayBC);
-                    pop.HideHeader = Settings.Default.ConnectionPopupCompact;
-                    pop.PopupPlacement = Settings.Default.ConnectionPopupPosition;
-                    pop.ShowWindowWithoutFocus();
-                    _previousBudsPopup = pop;
+                pop.HideHeader = Settings.Default.ConnectionPopupCompact;
+                pop.PopupPlacement = Settings.Default.ConnectionPopupPosition;
+                pop.ShowWindowWithoutFocus();
+                _previousBudsPopup = pop;
             });
         }
 
@@ -441,7 +448,7 @@ namespace Galaxy_Buds_Client
                     _connectionLostPage.SetInfo(Loc.GetString("connlost_noinfo"));
                 }
 
-            GenerateTrayContext(-1,-1,-1);
+            GenerateTrayContext(-1, -1, -1);
 
             _connectionLostPage.Reset();
 
@@ -493,7 +500,7 @@ namespace Galaxy_Buds_Client
                     return;
                 }
 
-                GenerateTrayContext(-1,-1,-1);
+                GenerateTrayContext(-1, -1, -1);
                 BluetoothService.Instance.Disconnect();
                 _mainPage.SetWarning(true, $"{Loc.GetString("mainpage_corrupt_data")} ({e.Message})");
                 Task.Delay(500).ContinueWith(delegate
@@ -522,7 +529,7 @@ namespace Galaxy_Buds_Client
                 return;
             }
 
-            GenerateTrayContext(-1,-1,-1);
+            GenerateTrayContext(-1, -1, -1);
             BluetoothService.Instance.Disconnect();
             BluetoothService.Instance.Connect(GetRegisteredDevice(), GetRegisteredDeviceModel());
             if (BluetoothService.Instance.IsConnected)
@@ -564,7 +571,7 @@ namespace Galaxy_Buds_Client
             {
                 if (Settings.Default.RightCustomAction == -1)
                     return;
-                PerformCustomAction((CustomAction.Actions) Settings.Default.RightCustomAction, 
+                PerformCustomAction((CustomAction.Actions)Settings.Default.RightCustomAction,
                     Settings.Default.RightCustomActionParameter);
             }
         }
@@ -659,7 +666,7 @@ namespace Galaxy_Buds_Client
                 MenuItem credits = new MenuItem();
                 credits.Header = Loc.GetString("optionsmenu_credits");
                 credits.Click += delegate { GoToPage(Pages.Credits); };
-                credits.Style = (Style) FindResource("MenuItemStyle");
+                credits.Style = (Style)FindResource("MenuItemStyle");
                 ctxMenu.Items.Add(credits);
             }
 
