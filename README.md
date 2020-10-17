@@ -57,6 +57,7 @@ The original **Galaxy Buds (2019)** and **Galaxy Buds Plus** are fully supported
 * [@erenbektas](https://github.com/erenbektas) - Turkish translation
 * [@kakkk](https://github.com/kakkk) - Chinese translation
 * [@efrenbg1](https://github.com/efrenbg1) and Andrew Gonza - Spanish translation
+* [@giovankabisano](https://github.com/giovankabisano) - Indonesian translation
  
 ## Contributors
 * [@AndriesK](https://github.com/AndriesK) - Buds Live bug fix
