@@ -6,7 +6,10 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
+using Galaxy_Buds_Client.model;
 using Galaxy_Buds_Client.model.Constants;
+using Galaxy_Buds_Client.ui.devmode;
 using Galaxy_Buds_Client.util.DynamicLocalization;
 using Sentry;
 
@@ -17,18 +20,61 @@ namespace Galaxy_Buds_Client
     /// </summary>
     public partial class App : Application
     {
-        public object sentry = SentrySdk.Init("https://4591394c5fd747b0ab7f5e81297c094d@o456940.ingest.sentry.io/5462682");
+        private MainWindow _mainWindow;
 
         public App()
         {
+            if (Galaxy_Buds_Client.Properties.Settings.Default.UpdateSettings)
+            {
+                Galaxy_Buds_Client.Properties.Settings.Default.Upgrade();
+                Galaxy_Buds_Client.Properties.Settings.Default.UpdateSettings = false;
+                Galaxy_Buds_Client.Properties.Settings.Default.Save();
+            }
+
+            SentrySdk.Init(o =>
+            {
+                o.Dsn = new Dsn("https://4591394c5fd747b0ab7f5e81297c094d@o456940.ingest.sentry.io/5462682");
+                o.MaxBreadcrumbs = 100;
+#if DEBUG
+                o.Environment = "staging";
+#else
+                o.Environment = "production"; //"beta";
+#endif
+                o.BeforeSend = sentryEvent =>
+                {
+                    sentryEvent.SetTag("bluetooth-mac", Galaxy_Buds_Client.Properties.Settings.Default.RegisteredDevice);
+                    sentryEvent.SetTag("bluetooth-model", Galaxy_Buds_Client.Properties.Settings.Default.RegisteredDeviceModel.ToString());
+                    sentryEvent.SetTag("sw-version", Galaxy_Buds_Client.Properties.Settings.Default.LastSwVersion);
+                    
+                    sentryEvent.SetExtra("bluetooth-mac", Galaxy_Buds_Client.Properties.Settings.Default.RegisteredDevice);
+                    sentryEvent.SetExtra("bluetooth-model", Galaxy_Buds_Client.Properties.Settings.Default.RegisteredDeviceModel.ToString());
+                    sentryEvent.SetExtra("bluetooth-connected", BluetoothService.Instance.IsConnected);
+                    sentryEvent.SetExtra("custom-locale", Galaxy_Buds_Client.Properties.Settings.Default.CurrentLocale.GetDescription());
+                    sentryEvent.SetExtra("sw-version", Galaxy_Buds_Client.Properties.Settings.Default.LastSwVersion);
+
+                    if(_mainWindow != null)
+                    {
+                        sentryEvent.SetExtra("current-page", _mainWindow.PageControl.CurrentPageName);
+                    }
+                    else
+                    {
+                        sentryEvent.SetExtra("current-page", "MainWindow is NULL");
+                    }
+                    return sentryEvent;
+                };
+            });
+            DispatcherUnhandledException += App_DispatcherUnhandledException;
             SingleInstanceWatcher();
         }
 
-        private MainWindow _mainWindow;
+        void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            SentrySdk.CaptureException(e.Exception);
+        }
 
         private void App_Startup(object sender, StartupEventArgs e)
         {
-                if (Loc.IsTranslatorModeEnabled())
+            if (Loc.IsTranslatorModeEnabled())
             {
                 Galaxy_Buds_Client.Properties.Settings.Default.CurrentLocale = Locale.custom;
                 Galaxy_Buds_Client.Properties.Settings.Default.Save();
@@ -36,11 +82,17 @@ namespace Galaxy_Buds_Client
             Loc.Load();
 
             bool startMinimized = false;
+            bool startDevMode = false;
             for (int i = 0; i != e.Args.Length; ++i)
             {
                 if (e.Args[i] == "/StartMinimized")
                 {
                     startMinimized = true;
+                }
+
+                if (e.Args[i] == "/DeveloperMode")
+                {
+                    startDevMode = true;
                 }
             }
 
@@ -50,7 +102,11 @@ namespace Galaxy_Buds_Client
                 mainWindow.Show();
             }
 
-            
+            if (startDevMode)
+            {
+                new DevWindow().Show();
+            }
+
             _mainWindow = mainWindow;
         }
         

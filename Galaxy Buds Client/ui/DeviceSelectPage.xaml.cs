@@ -67,7 +67,7 @@ namespace Galaxy_Buds_Client.ui
 
             if (device.DeviceName.Contains("Galaxy Buds Live"))
             {
-                DevModel.TextDetail = "Galaxy Buds Live (2020) [Under construction]";
+                DevModel.TextDetail = "Galaxy Buds Live (2020)";
             }
             else if (device.DeviceName.Contains("Galaxy Buds+"))
             {

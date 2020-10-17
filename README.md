@@ -1,5 +1,5 @@
 # Galaxy Buds Client
-An unofficial Galaxy Buds Manager for Windows (Buds/Buds+)
+An unofficial Galaxy Buds Manager for Windows (Buds, Buds+, Buds Live)
 
 
 **This README is also available in [Korean](/README_kor.md), [Japanese](/README_jpn.md), [Russian](/README_rus.md) and [Ukrainian](/README_ukr.md)!**
@@ -21,34 +21,29 @@ This Client is a product of my research on the custom RFComm Serial Protocol the
 
 * Touchpad: Customizable tap-and-hold actions (launch application, toggle equalizer, change ambient volume, ...)<sup>[1]</sup>
 * Resume media playback if Buds are worn
-* Systray context menu with battery statistics
+* Tray-bar context menu with battery statistics
 * Display detailed sensor statistics on the dashboard, this includes:
-  * Voltage and Current of the in-built ADC (Analog-to-Digital converter) of both Earbuds
-  * Temperature of both Earbuds
-  * More precise battery percentage (instead of steps of 5 percent)
+  * Voltage, current and temperature of the built-in ADC (Analog-to-Digital converter)
+  * Precise battery percentage (instead of steps of 5 percent)
 * Perform a self-test with all on-board components
 * Display various (debug) information, including:
-  * Hardware Revision
-  * (Touch) Firmware Version
-  * Bluetooth Addresses of both Earbuds
-  * Serial Numbers of both Earbuds
-  * Firmware Build Info (Compile Date, Developer Name)
-  * Battery Type
+  * Hardware/Software/Touch revision
+  * Bluetooth addresses, serial numbers
+  * Firmware build info (compile date, developer name)
+  * Battery type
   * Other sensor data
-* Equalizer: unlock 'Optimize for Dolby' feature
 * Touchpad: Combine Volume Up/Down with other options<sup>[1]</sup>
+* Equalizer: unlock 'Optimize for Dolby' feature<sup>[2]</sup>
 
-> <sup>[1]</sup> Note that the Wearable app will automatically reset this feature when attempting to switch Touchpad options on the phone
+> <sup>[1]</sup> The official Wearable app by Samsung cannot handle these features
+>
+> <sup>[2]</sup> Buds (2019) only
 
-## Installation
+## Installation ![Downloads](https://img.shields.io/github/downloads/ThePBone/GalaxyBudsClient/total)
 
-**This app requires [.Net Framework](https://dotnet.microsoft.com/download/dotnet-framework/net461) 4.6.1 or higher**
+You can [**download**](https://github.com/ThePBone/GalaxyBudsClient/releases) a fully automated Setup executable in the [**release section**](https://github.com/ThePBone/GalaxyBudsClient/releases) of this repository!
 
-You can [**download**](https://github.com/ThePBone/GalaxyBudsClient/releases) a fully automated Setup in the [**release section**](https://github.com/ThePBone/GalaxyBudsClient/releases) of this repo!
-
-The original **Galaxy Buds (2019)** and **Galaxy Buds Plus** are fully supported.
-
-![Downloads](https://img.shields.io/github/downloads/ThePBone/GalaxyBudsClient/total)
+*This app requires [.Net Framework](https://dotnet.microsoft.com/download/dotnet-framework/net461) 4.6.1 or later*
 
 ## Translators
 
@@ -66,4 +61,3 @@ The original **Galaxy Buds (2019)** and **Galaxy Buds Plus** are fully supported
 ___
 
 Check my website out: <https://timschneeberger.me>
-

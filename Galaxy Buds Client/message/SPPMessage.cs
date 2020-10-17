@@ -50,22 +50,22 @@ namespace Galaxy_Buds_Client.message
                 type = overrideType;
 
             byte[] msg = new byte[TotalPacketSize];
-            
+
 
             if (BluetoothService.Instance.ActiveModel != Model.Buds)
             {
-                msg[0] = (byte) Constants.SOMPlus;
-                msg[1] = (byte) this.Size;
-                msg[2] = (byte) (type == MsgType.Request ? 0 : 16);
+                msg[0] = (byte)Constants.SOMPlus;
+                msg[1] = (byte)this.Size;
+                msg[2] = (byte)(type == MsgType.Request ? 0 : 16);
             }
             else
-            { 
-                msg[0] = (byte) Constants.SOM;
-                msg[1] = (byte) type;
-                msg[2] = (byte) this.Size;
+            {
+                msg[0] = (byte)Constants.SOM;
+                msg[1] = (byte)type;
+                msg[2] = (byte)this.Size;
             }
 
-            msg[3] = (byte) this.Id;
+            msg[3] = (byte)this.Id;
 
             Array.Copy(Payload, 0, msg, 4, Payload.Length);
 
@@ -74,7 +74,7 @@ namespace Galaxy_Buds_Client.message
             Array.Copy(Payload, 0, crcData, 1, Payload.Length);
             int crc16 = util.CRC16.crc16_ccitt(crcData);
             msg[4 + Payload.Length] = (byte)(crc16 & 255);
-            msg[4 + Payload.Length + 1] = (byte) ((crc16 >> 8) & 255);
+            msg[4 + Payload.Length + 1] = (byte)((crc16 >> 8) & 255);
 
             if (BluetoothService.Instance.ActiveModel != Model.Buds)
             {
@@ -87,7 +87,7 @@ namespace Galaxy_Buds_Client.message
 
             return msg;
         }
-        
+
         /**
           * Static "constructors" 
           */
@@ -95,17 +95,16 @@ namespace Galaxy_Buds_Client.message
         {
             SPPMessage draft = new SPPMessage();
 
-            if(raw.Length < 6)
+            if (raw.Length < 6)
             {
+                Sentry.SentrySdk.AddBreadcrumb($"Message too small (Length: {raw.Length})", "spp", level: Sentry.Protocol.BreadcrumbLevel.Warning);
                 throw new InvalidDataException(Loc.GetString("sppmsg_too_small"));
             }
 
-            if(raw[0] != (byte)Constants.SOM && BluetoothService.Instance.ActiveModel == Model.Buds)
+            if ((raw[0] != (byte)Constants.SOM && BluetoothService.Instance.ActiveModel == Model.Buds) ||
+                    (raw[0] != (byte)Constants.SOMPlus && BluetoothService.Instance.ActiveModel != Model.Buds))
             {
-                throw new InvalidDataException(Loc.GetString("sppmsg_invalid_som"));
-            }
-            else if (raw[0] != (byte)Constants.SOMPlus && BluetoothService.Instance.ActiveModel != Model.Buds)
-            {
+                Sentry.SentrySdk.AddBreadcrumb($"Invalid SOM (Received: {raw[0]})", "spp", level: Sentry.Protocol.BreadcrumbLevel.Warning);
                 throw new InvalidDataException(Loc.GetString("sppmsg_invalid_som"));
             }
 
@@ -119,18 +118,18 @@ namespace Galaxy_Buds_Client.message
             }
             else
             {
-                draft.Type = (MsgType) Convert.ToInt32(raw[1]);
+                draft.Type = (MsgType)Convert.ToInt32(raw[1]);
                 size = Convert.ToInt32(raw[2]);
             }
 
             //Substract Id and CRC from size
             int rawPayloadSize = size - 3;
             byte[] payload = new byte[rawPayloadSize];
-            
+
             byte[] crcData = new byte[size];
             crcData[0] = raw[3]; //Msg ID
 
-            for(int i = 0; i < rawPayloadSize; i++)
+            for (int i = 0; i < rawPayloadSize; i++)
             {
                 //Start to read at byte 4
                 payload[i] = raw[i + 4];
@@ -147,15 +146,23 @@ namespace Galaxy_Buds_Client.message
 
             if (size != draft.Size)
             {
+                Sentry.SentrySdk.AddBreadcrumb($"Invalid size (Reported: {size}, Calculated: {draft.Size})", "spp", level: Sentry.Protocol.BreadcrumbLevel.Warning);
                 throw new InvalidDataException(Loc.GetString("sppmsg_size_mismatch"));
+            }
+
+            if (draft.CRC16 != 0)
+            {
+                Sentry.SentrySdk.AddBreadcrumb($"CRC checksum failed (ID: {draft.Id}, Size: {draft.Size})", "spp", level: Sentry.Protocol.BreadcrumbLevel.Warning);
             }
 
             if (raw[4 + rawPayloadSize + 2] != (byte)Constants.EOM && BluetoothService.Instance.ActiveModel == Model.Buds)
             {
+                Sentry.SentrySdk.AddBreadcrumb($"Invalid EOM (Received: {raw[4 + rawPayloadSize + 2]})", "spp", level: Sentry.Protocol.BreadcrumbLevel.Warning);
                 throw new InvalidDataException(Loc.GetString("sppmsg_invalid_eom"));
             }
             else if (raw[4 + rawPayloadSize + 2] != (byte)Constants.EOMPlus && BluetoothService.Instance.ActiveModel != Model.Buds)
             {
+                Sentry.SentrySdk.AddBreadcrumb($"Invalid EOM (Received: {raw[4 + rawPayloadSize + 2]})", "spp", level: Sentry.Protocol.BreadcrumbLevel.Warning);
                 throw new InvalidDataException(Loc.GetString("sppmsg_invalid_eom"));
             }
 

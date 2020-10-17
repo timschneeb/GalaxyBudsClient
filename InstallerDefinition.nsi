@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "Galaxy Buds Manager (Unofficial)"
-!define PRODUCT_VERSION "2.3.3.6b"
+!define PRODUCT_VERSION "3.0.0"
 !define PRODUCT_PUBLISHER "ThePBone"
 !define PRODUCT_WEB_SITE "https://github.com/ThePBone/GalaxyBudsClient"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\Galaxy Buds Client.exe"
@@ -55,15 +55,18 @@ Section "Hauptgruppe" SEC01
   File "Galaxy Buds Client\bin\Release\Galaxy Buds Client.pdb"
   File "Galaxy Buds Client\bin\Release\Galaxy Buds Client.exe.config"
   File "Galaxy Buds Client\bin\Release\InTheHand.Net.Personal.dll"
-  File "Galaxy Buds Client\bin\Release\InTheHand.Net.Personal.xml"
-  File "packages\Autoupdater.NET.Official.1.6.0\lib\net40\AutoUpdater.NET.XML"
   File "packages\Autoupdater.NET.Official.1.6.0\lib\net40\AutoUpdater.NET.dll"
   File "packages\Autoupdater.NET.Official.1.6.0\lib\net40\AutoUpdater.NET.pdb"
   File "Galaxy Buds Client\bin\Release\Hardcodet.Wpf.TaskbarNotification.dll"
-  File "Galaxy Buds Client\bin\Release\Hardcodet.Wpf.TaskbarNotification.xml"
   File "Galaxy Buds Client\bin\Release\Hardcodet.Wpf.TaskbarNotification.pdb"
   File "Galaxy Buds Client\bin\Release\WindowsInput.dll"
-  File "Galaxy Buds Client\bin\Release\WindowsInput.xml"
+  File "Galaxy Buds Client\bin\Release\Newtonsoft.Json.dll"
+  File "Galaxy Buds Client\bin\Release\Sentry.dll"
+  File "Galaxy Buds Client\bin\Release\Sentry.pdb"
+  File "Galaxy Buds Client\bin\Release\Sentry.PlatformAbstractions.dll"
+  File "Galaxy Buds Client\bin\Release\Sentry.Protocol.dll"
+  File "Galaxy Buds Client\bin\Release\Sentry.Protocol.pdb"
+  File "Galaxy Buds Client\bin\Release\System.Runtime.InteropServices.RuntimeInformation.dll"
 SectionEnd
 
 Section -AdditionalIcons
@@ -95,22 +98,27 @@ FunctionEnd
 Section Uninstall
   Delete "$INSTDIR\${PRODUCT_NAME}.url"
   Delete "$INSTDIR\uninst.exe"
-  Delete "$INSTDIR\InTheHand.Net.Personal.xml"
   Delete "$INSTDIR\InTheHand.Net.Personal.dll"
   Delete "$INSTDIR\Galaxy Buds Client.exe.config"
   Delete "$INSTDIR\Galaxy Buds Client.pdb"
   Delete "$INSTDIR\Galaxy Buds Client.exe"
   
-  Delete "$INSTDIR\AutoUpdater.NET.XML"
   Delete "$INSTDIR\AutoUpdater.NET.pdb"
   Delete "$INSTDIR\AutoUpdater.NET.dll"
 
   Delete "$INSTDIR\Hardcodet.Wpf.TaskbarNotification.dll"
-  Delete "$INSTDIR\Hardcodet.Wpf.TaskbarNotification.xml"
   Delete "$INSTDIR\Hardcodet.Wpf.TaskbarNotification.pdb"
   
   Delete "$INSTDIR\WindowsInput.dll"
-  Delete "$INSTDIR\WindowsInput.xml"
+  
+  Delete "$INSTDIR\Newtonsoft.Json.dll"
+  Delete "$INSTDIR\Sentry.dll"
+  Delete "$INSTDIR\Sentry.pdb"
+  Delete "$INSTDIR\Sentry.PlatformAbstractions.dll"
+  Delete "$INSTDIR\Sentry.Protocol.dll"
+  Delete "$INSTDIR\Sentry.Protocol.pdb"
+  Delete "$INSTDIR\System.Runtime.InteropServices.RuntimeInformation.dll"
+
 
   Delete "$DESKTOP\Galaxy Buds Manager.lnk"
   Delete "$SMPROGRAMS\Galaxy Buds Manager\Galaxy Buds Manager.lnk"

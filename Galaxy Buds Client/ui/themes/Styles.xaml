@@ -88,7 +88,18 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="SeparatorStyle" TargetType="{x:Type Separator}">
-        <Setter Property="Margin" Value="0,0,25,0"/>
-        <Setter Property="Background" Value="{DynamicResource ContextSeparatorBrush}"/>
+        <Setter Property="Margin" Value="25,0,25,0"/>
+        <Setter Property="Background" Value="{DynamicResource BorderSeparatorBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Separator}">
+                    <Border Background="{DynamicResource BorderSeparatorBrush}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="true"
+                            Height="1"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>
