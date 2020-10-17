@@ -1,5 +1,5 @@
 # Galaxy Buds Client
-Неофіційний менеджер Galaxy Buds (Buds/Buds+) для Windows 
+Неофіційний менеджер для навушників Galaxy Buds (Buds, Buds+, Buds Live) для Windows 
 
 (Ви можете знайти завантаження у розділі [релізів](https://github.com/thepbone/galaxybudsclient/releases))
 
@@ -36,14 +36,14 @@
 * Сенсорна панель: Комбінуйте керування гучністю разом з іншими діями<sup>[1]</sup>
 
 > <sup>[1]</sup> Майте на увазі що додаток Wearable автоматично скине налаштування цих функцій при відкритті налаштувань Сенсорної панелі на телефоні
+>
+> <sup>[2]</sup> Тільки для Buds (2019)
 
 ## Встановлення
 
-**Ця программа вимагає [.Net Framework](https://dotnet.microsoft.com/download/dotnet-framework/net461) 4.6.1 або новіше**
-
 Ви можете [**завантажити**](https://github.com/ThePBone/GalaxyBudsClient/releases) повністю автоматичний пакет інсталятора в [**розділі релізів**](https://github.com/ThePBone/GalaxyBudsClient/releases) цього репозиторія!
 
-Оригінальні **Galaxy Buds (2019)** та **Galaxy Buds Plus** повністю підтримуються.
+*Ця программа вимагає [.Net Framework](https://dotnet.microsoft.com/download/dotnet-framework/net461) 4.6.1 або новіше*
 
 ![Downloads](https://img.shields.io/github/downloads/ThePBone/GalaxyBudsClient/total)
 
@@ -57,15 +57,17 @@ choco install galaxybudsclient
 
 * [@Florize](https://github.com/Florize) - Корейський та Японський переклади
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Російський та Український переклади
+* [@erenbektas](https://github.com/erenbektas) - Турецький переклад
+* [@kakkk](https://github.com/kakkk) - Китайський переклад
+* [@efrenbg1](https://github.com/efrenbg1) разом з Andrew Gonza - Іспанський переклад
 
 ## Співучасники
 
+* [@AndriesK](https://github.com/AndriesK) - Виправлення помилок при роботі з Buds Live
+* [@githubcatw](https://github.com/githubcatw) - Програмна основа для діалогу підключення
 * [@superbonaci](https://github.com/superbonaci) - Пакет Chocolatey
-* [@githubcatw](https://github.com/githubcatw) - Створення основи діалогу підключення
-
-
 
 ___
 
-Bitcoin: 3EawSB3NfX6JQxKBBFYh6ZwHDWXtJB84Ly
+Відвідайте мій сайт: <https://timschneeberger.me>
 
