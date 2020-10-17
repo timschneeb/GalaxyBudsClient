@@ -16,10 +16,14 @@
     <sys:String x:Key="notset">Не встановлено</sys:String>
     <sys:String x:Key="nobluetoothdev">Адаптер Bluetooth не знайдено. Будь ласка, увімкніть Bluetooth і спробуйте ще раз.</sys:String>
 
-    <!-- SPP Message Parser --><!-- Translator notice 1. Tech things. -->
+    <sys:String x:Key="anc">Активне шумозаглушення</sys:String>
+
+    <!-- SPP Message Parser -->
     <sys:String x:Key="sppmsg_too_small">Розмір пакету занадто малий</sys:String>
     <sys:String x:Key="sppmsg_invalid_som">Поганий початок пакету</sys:String>
+    <!-- Context: SOM = Start of message -->
     <sys:String x:Key="sppmsg_invalid_eom">Поганий кінець пакету</sys:String>
+    <!-- Context: EOM = End of message -->
     <sys:String x:Key="sppmsg_size_mismatch">Невідповідність розміру пакету</sys:String>
     <sys:String x:Key="sppmsg_tl">Розмір пакету занадто малий</sys:String>
 
@@ -35,7 +39,7 @@
     <sys:String x:Key="connpopup_placement_bl">Знизу ліворуч</sys:String>
     <sys:String x:Key="connpopup_placement_bc">Знизу по центру</sys:String>
     <sys:String x:Key="connpopup_placement_br">Знизу праворуч</sys:String>
-    <sys:String x:Key="connpopup_title">{0}'s Galaxy Buds{1}</sys:String><!-- Translator notice 2. Difficult to implement. -->
+    <sys:String x:Key="connpopup_title">{0}'s Galaxy Buds{1}</sys:String>
     <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
 
     <!-- Placement  (Buds+) -->
@@ -46,7 +50,7 @@
 
     <!-- Touch options -->
     <sys:String x:Key="touchoption_voice">Голосове керування</sys:String>
-    <sys:String x:Key="touchoption_quickambientsound">Прослухати оточення</sys:String><!-- Translator notice 3. Listen to surroundings. -->
+    <sys:String x:Key="touchoption_quickambientsound">Прослухати оточення</sys:String>
     <sys:String x:Key="touchoption_volume">Гучність</sys:String>
     <sys:String x:Key="touchoption_volume_up">Збільшити гучність</sys:String>
     <sys:String x:Key="touchoption_volume_down">Зменшити гучність</sys:String>
@@ -89,20 +93,20 @@
 
     <!-- Hotkey Recorder Dialog (Custom action) -->
     <sys:String x:Key="hotrec_title">Запис комбінації клавиш</sys:String>
-    <sys:String x:Key="hotrec_content">Будь ласка, введіть комбінацію клавіш:</sys:String><!-- Translator notice 4. It doesn't fit. -->
+    <sys:String x:Key="hotrec_content">Будь ласка, введіть комбінацію клавіш:</sys:String>
     <sys:String x:Key="hotrec_empty">Немає комбінації</sys:String>
 
     <!-- Welcome page -->
     <sys:String x:Key="welcome_textblock_header">Ласкаво просимо!</sys:String>
     <sys:String x:Key="welcome_textblock_p1">
         Вітаю! Цей менеджер для Galaxy Buds не офіційний, тому майте на увазі, що він ніяк не пов'язаний із Samsung.
-        Незважаючи на розширений по відношенню до оригінального Samsung Wearable на Android, функціонал цієї програми, я все ж вирішив виключити утиліту оновлення прошивки, заради безпеки. Будь ласка, скористайтесь офіційним якщо він вам знадобится.
+        Незважаючи на розширений по відношенню до оригінального Samsung Wearable на Android, функціонал цієї програми, я все ж вирішив виключити утиліту оновлення прошивки заради безпеки. Будь ласка, скористайтесь офіційним якщо він вам знадобится.
     </sys:String>
     <sys:String x:Key="welcome_textblock_p2">
         Якщо вам цікаво про те що відбувається за лаштунками, можете відвідати мій репозиторій на GitHub. Також там можна знайти невеликий журнал по реверс-інжинірингу. Можете написати мені повідомлення на GitHub або в Telegram @thepbone якщо у вас з'являться проблеми.  
     </sys:String>
     <sys:String x:Key="welcome_textblock_p3">
-        Ця программа підтримує як Buds (2019) так і Buds+ (2020).
+        Ця программа підтримує Buds (2019), Buds+ (2020) і Buds Live.
     </sys:String>
     <sys:String x:Key="welcome_darkmode">Темна тема</sys:String>
     <sys:String x:Key="welcome_darkmode_content">Ваші очі вже палають? Скористайтесь кольорами потемніше!</sys:String>
@@ -125,7 +129,7 @@
         Ви можете подивитися історію змін нажав на кнопку нижче.
     </sys:String>
 
-    <sys:String x:Key="updater_view_changelog">Подивитися історію змін на GitHub</sys:String><!-- Translator notice 5. It doesn't fit. -->
+    <sys:String x:Key="updater_view_changelog">Подивитися історію змін на GitHub</sys:String>
     <sys:String x:Key="updater_footer_remindmelater">Пізніше</sys:String>
     <sys:String x:Key="updater_footer_skipversion">Пропустити</sys:String>
     <sys:String x:Key="updater_footer_install">Встановити</sys:String>
@@ -133,7 +137,7 @@
     <sys:String x:Key="updater_noupdate">Зараз немає доступних оновлень. Будь ласка, спробуйте пізніше або підпишіться на мій GitHub для оновлень.</sys:String>
 
     <sys:String x:Key="updater_noupdate_title">Оновлень немає</sys:String>
-    <sys:String x:Key="updater_newrelease">Оновлення {0} для Galaxy Buds Manager було випущене</sys:String><!-- Translator notice 6. Similar to notice 2. -->
+    <sys:String x:Key="updater_newrelease">Оновлення {0} для Galaxy Buds Manager було випущене</sys:String>
 
     <!-- Device selection page (setup) -->
     <sys:String x:Key="devsel_header">Оберіть ваші Galaxy Buds</sys:String>
@@ -142,8 +146,8 @@
     <sys:String x:Key="devsel_btaddr">MAC-адреса</sys:String>
     <sys:String x:Key="devsel_model">Модель</sys:String>
     <sys:String x:Key="devsel_noselection">Пристрій не обраний</sys:String>
-    <sys:String x:Key="devsel_invalid_selection">Будь ласка, спочатку оберіть підтримуваний пристрій</sys:String><!-- Translator notice 7. Looks like a bug. -->
-    <sys:String x:Key="devsel_footer_continue">Завершити</sys:String><!-- Translator notice 8. It doesn't fit. Again. -->
+    <sys:String x:Key="devsel_invalid_selection">Будь ласка, спочатку оберіть підтримуваний пристрій</sys:String>
+    <sys:String x:Key="devsel_footer_continue">Завершити</sys:String>
 
     <!-- Unsupported feature page -->
     <sys:String x:Key="unsupported_feature_current_fwver">Поточна версія прошивки:</sys:String>
@@ -156,7 +160,6 @@
     <sys:String x:Key="unsupported_feature_description_p1">Прошивка ваших Galaxy Buds застаріла і не підтримує цю фукнцію.</sys:String>
     <sys:String x:Key="unsupported_feature_description_p2">Будь ласка, оновіться до останньої версії використовуючи офіційну утиліту оновлень для Windows або офіційний додаток Wearable на Android</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">Переконайтесь що ви закрили цю програму для використання офіційної утиліти оновлень для Windows. Тільки одна програма за раз може спілкуватися з пристроєм Buds.</sys:String>
-
 
     <!-- Touchpad page -->
     <sys:String x:Key="touchpad_header">Сенсорна панель</sys:String>
@@ -174,7 +177,7 @@
     <sys:String x:Key="cact_notice">Попередження</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Налаштовані дії доступні лише за умови роботи цієї програми в фоні.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">Ці налаштування неможливо застосувати до Android або інших пристроїв.</sys:String>
-    <sys:String x:Key="cact_notice_content_p3"><!-- Translator notice 9. Some changes. -->
+    <sys:String x:Key="cact_notice_content_p3">
         Для того щоб забезпечити роботу цієї функції, програма буде запускатися разом з операційною системоб і працювати в фоні.
         Ви можете вимкнути автоматичний запуск в налаштуваннях.
     </sys:String>
@@ -182,7 +185,7 @@
     <!-- System/Self-Test -->
     <sys:String x:Key="system_header">Про навушники</sys:String>
     <sys:String x:Key="system_selftest">Самодіагностика</sys:String>
-    <sys:String x:Key="system_factory_reset">Скидання</sys:String><!--Translator notice UA-1. NO FIT AGAIN!!!-->
+    <sys:String x:Key="system_factory_reset">Скидання</sys:String>
 
     <sys:String x:Key="system_battery_type_unknown">Не вказано</sys:String>
     <sys:String x:Key="system_waiting_for_device">Очікування відповіді...</sys:String>
@@ -198,7 +201,7 @@
     <sys:String x:Key="system_proximity">Покази датчика наближення</sys:String>
     <sys:String x:Key="system_thermo">Покази термістора</sys:String>
     <sys:String x:Key="system_hall">Показания датчика Холла</sys:String>
-    <sys:String x:Key="system_accel">Статус акселерометра</sys:String><!-- Translator notice 10. Confusion? -->
+    <sys:String x:Key="system_accel">Статус акселерометра</sys:String>
     <!-- Note: system_accel only used on the self-test page -->
     <sys:String x:Key="system_adc_soc">АЦП: Батарея</sys:String>
     
@@ -206,7 +209,7 @@
     <sys:String x:Key="system_adc_current">АЦП: Напруга</sys:String>
 
     <sys:String x:Key="selftest_header">Самодіагностика</sys:String>
-    <sys:String x:Key="selftest_header_alt">Самодіагностика (Можливе відключення)</sys:String><!-- Translator notice 11. No fit... -->
+    <sys:String x:Key="selftest_header_alt">Самодіагностика (Можливе відключення)</sys:String>
     <sys:String x:Key="selftest_pass">Успішно</sys:String>
     <sys:String x:Key="selftest_fail">Помилка</sys:String>
     <sys:String x:Key="selftest_pass_long">Усі перевірки пройдені успішно</sys:String>
@@ -266,7 +269,7 @@
     <sys:String x:Key="eq_mode">Режим:</sys:String>
     <sys:String x:Key="eq_dolby">Оптимізувати для використання з Dolby</sys:String>
 
-    <sys:String x:Key="eq_bass">Більше низьких</sys:String><!-- Translator notice 12. Missing feature? -->
+    <sys:String x:Key="eq_bass">Більше низьких</sys:String>
     <sys:String x:Key="eq_soft">М'який</sys:String>
     <sys:String x:Key="eq_dynamic">Динамічний</sys:String>
     <sys:String x:Key="eq_clear">Чистий</sys:String>
@@ -289,6 +292,9 @@
     <sys:String x:Key="adv_resume_playback_desc">Відправляє загальносистемну команду відтворення / пауза поки хоча б один з датчиків наближення прикритий (Тільки Windows)</sys:String>
     <sys:String x:Key="adv_sidetone">Фонові звуки під час виклику</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Поліпшення чутності свого голосу під час розмови по телефону</sys:String>
+    
+    <sys:String x:Key="adv_passthrough">Зніміть напругу за допомогою звукового оточення</sys:String>
+    <sys:String x:Key="adv_passthrough_desc">Це може допомогти з відчуттям духоти або тиску коли ви не використовуєте активне шумозаглушення</sys:String>    
     <sys:String x:Key="adv_gaming_mode">Ігровий режим</sys:String>
     <sys:String x:Key="adv_gaming_mode_desc">Зменшити затримку звуку і відкоригувати синхронізацію аудіо (Тільки Samsung)</sys:String>
 
