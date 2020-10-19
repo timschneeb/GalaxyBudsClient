@@ -1,5 +1,5 @@
 # Galaxy Buds Client
-Неофициальный менеджер Galaxy Buds (Buds/Buds+) для Windows 
+Неофициальный менеджер для наушников Galaxy Buds (Buds, Buds+, Buds Live) для Windows 
 
 (Вы можете найти загрузки в разделе [релизов](https://github.com/thepbone/galaxybudsclient/releases))
 
@@ -31,18 +31,18 @@
   * Информация о сборке (Дата компиляции, Имя сборщика)
   * Тип батареи
   * Данные других сенсоров
-* Эквалайзер: разблокируйте функцию 'Оптимизировать для Dolby'
 * Сенсорная панель: Комбинируйте управление громкостью с другими действиями<sup>[1]</sup>
+* Эквалайзер: разблокируйте функцию 'Оптимизировать для Dolby'<sup>[2]</sup> 
 
 > <sup>[1]</sup> Учтите что приложение Wearable автоматически сбросит настройки этих функций при открытии настроек Сенсорной панели на телефоне
+>
+> <sup>[2]</sup> Только для Buds (2019)
 
 ## Установка
 
-**Эта программа требует [.Net Framework](https://dotnet.microsoft.com/download/dotnet-framework/net461) 4.6.1 или новее**
-
 Вы можете [**загрузить**](https://github.com/ThePBone/GalaxyBudsClient/releases) полностью автоматический установочный пакет в [**разделе релизов**](https://github.com/ThePBone/GalaxyBudsClient/releases) этого репозитория!
 
-Оригинальные **Galaxy Buds (2019)** и **Galaxy Buds Plus** полностью поддерживаются.
+*Эта программа требует [.Net Framework](https://dotnet.microsoft.com/download/dotnet-framework/net461) 4.6.1 или новее*
 
 ![Downloads](https://img.shields.io/github/downloads/ThePBone/GalaxyBudsClient/total)
 
@@ -56,15 +56,17 @@ choco install galaxybudsclient
 
 * [@Florize](https://github.com/Florize) - Корейский и Японский переводы
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Русский и Украинский переводы
+* [@erenbektas](https://github.com/erenbektas) - Турецкий перевод
+* [@kakkk](https://github.com/kakkk) - Китайский перевод
+* [@efrenbg1](https://github.com/efrenbg1) вместе с Andrew Gonza - Испанский перевод
 
 ## Соучастники
 
+* [@AndriesK](https://github.com/AndriesK) - Исправление ошибок при работе с Buds Live
+* [@githubcatw](https://github.com/githubcatw) - Програмная основа для диалога подключения
 * [@superbonaci](https://github.com/superbonaci) - Пакет Chocolatey
-* [@githubcatw](https://github.com/githubcatw) - Создание основы диалога подключения
-
-
 
 ___
 
-Bitcoin: 3EawSB3NfX6JQxKBBFYh6ZwHDWXtJB84Ly
+Посетите мой сайт: <https://timschneeberger.me>
 
