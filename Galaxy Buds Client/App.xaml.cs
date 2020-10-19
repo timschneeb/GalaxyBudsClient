@@ -143,7 +143,7 @@ namespace Galaxy_Buds_Client
                     Current.Dispatcher.BeginInvoke((Action)(() =>
                     {
                         // could be set or removed anytime
-                        if (!_mainWindow.Equals(null))
+                        if (_mainWindow != null)
                         {
                             var mw = _mainWindow;
 

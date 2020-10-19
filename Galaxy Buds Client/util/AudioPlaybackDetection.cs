@@ -11,17 +11,26 @@ namespace Galaxy_Buds_Client.util
     {
         public static bool IsWindowsPlayingSound()
         {
-            var enumerator = (IMMDeviceEnumerator) (new MMDeviceEnumerator());
-            var speakers = enumerator.GetDefaultAudioEndpoint(EDataFlow.eRender, ERole.eMultimedia);
-            var meter = (IAudioMeterInformation)speakers.Activate(typeof(IAudioMeterInformation).GUID, 0, IntPtr.Zero);
-            var value = meter.GetPeakValue();
+            try
+            {
+                var enumerator = (IMMDeviceEnumerator)(new MMDeviceEnumerator());
+                var speakers = enumerator.GetDefaultAudioEndpoint(EDataFlow.eRender, ERole.eMultimedia);
+                var meter = (IAudioMeterInformation)speakers.Activate(typeof(IAudioMeterInformation).GUID, 0, IntPtr.Zero);
+                var value = meter.GetPeakValue();
 
-            // this is a bit tricky. 0 is the official "no sound" value
-            // but for example, if you open a video and plays/stops with it (w/o killing the app/window/stream),
-            // the value will not be zero, but something really small (around 1E-09)
-            // so, depending on your context, it is up to you to decide
-            // if you want to test for 0 or for a small value
-            return value > 1E-08;
+                // this is a bit tricky. 0 is the official "no sound" value
+                // but for example, if you open a video and plays/stops with it (w/o killing the app/window/stream),
+                // the value will not be zero, but something really small (around 1E-09)
+                // so, depending on your context, it is up to you to decide
+                // if you want to test for 0 or for a small value
+                return value > 1E-08;
+            }
+            catch (COMException e)
+            {
+                Sentry.SentrySdk.AddBreadcrumb($"{e.GetType().ToString()}: {e.Message}", "isWindowsPlayingSound", level: Sentry.Protocol.BreadcrumbLevel.Error);
+                Console.WriteLine($"IsWindowsPlayingSound: {e.Message}");
+                return true;
+            }
         }
 
         [ComImport, Guid("BCDE0395-E52F-467C-8E3D-C4579291692E")]

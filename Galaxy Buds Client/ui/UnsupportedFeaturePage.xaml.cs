@@ -35,6 +35,8 @@ namespace Galaxy_Buds_Client.ui
 
         private void InstanceOnSwVersionResponse(object sender, string e)
         {
+            if (e == null)
+                return;
             Dispatcher.Invoke(() => { CurrentFw.Text = $"{Loc.GetString("unsupported_feature_current_fwver")} {e.Remove(0, 1)}"; });
         }
 

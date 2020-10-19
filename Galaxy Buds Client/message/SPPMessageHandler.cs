@@ -42,7 +42,6 @@ namespace Galaxy_Buds_Client.message
         public event EventHandler<StatusUpdateParser> StatusUpdate;
         public event EventHandler<UsageReportParser> UsageReport;
         public event EventHandler<MuteUpdateParser> FindMyGearMuteUpdate;
-        public event EventHandler<String> SoftwareVersionUpdate;
         public event EventHandler FindMyGearStopped;
 
         public void MessageReceiver(object sender, SPPMessage e)
