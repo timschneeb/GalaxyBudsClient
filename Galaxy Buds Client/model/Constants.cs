@@ -17,6 +17,8 @@ namespace Galaxy_Buds_Client.model
             de,
             [Description("Spanish")]
             es,
+            [Description("Portuguese")]
+            pt,
             [Description("Korean")]
             ko,
             [Description("Japanese")]
