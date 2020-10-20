@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
- 
+
     <sys:String x:Key="ResourceDictionaryName">Loc-pt</sys:String>
 
     <!-- :::::::: Source code :::::::: -->
@@ -46,7 +46,7 @@
     <sys:String x:Key="placement_disconnected">Desconectado</sys:String>
     <sys:String x:Key="placement_wearing">Utilizando</sys:String>
     <sys:String x:Key="placement_not_wearing">Aguardando</sys:String>
-    <sys:String x:Key="placement_in_case">No case</sys:String>
+    <sys:String x:Key="placement_in_case">Na case</sys:String>
 
     <!-- Touch options -->
     <sys:String x:Key="touchoption_voice">Assistente de voz</sys:String>
@@ -130,8 +130,8 @@
     </sys:String>
 
     <sys:String x:Key="updater_view_changelog">Ver changelog no GitHub</sys:String>
-    <sys:String x:Key="updater_footer_remindmelater">Lembre-me depois</sys:String>
-    <sys:String x:Key="updater_footer_skipversion">Pular essa atualização</sys:String>
+    <sys:String x:Key="updater_footer_remindmelater">Lembrar depois</sys:String>
+    <sys:String x:Key="updater_footer_skipversion">Pular atualização</sys:String>
     <sys:String x:Key="updater_footer_install">Instalar agora</sys:String>
 
     <sys:String x:Key="updater_noupdate">Nenhuma atualização disponível no momento. Por favor, tente novamnete depois ou verifique no repositório do GitHub.</sys:String>
@@ -146,7 +146,7 @@
     <sys:String x:Key="devsel_model">Modelo</sys:String>
     <sys:String x:Key="devsel_noselection">Nenhum dispositivo selecionado</sys:String>
     <sys:String x:Key="devsel_invalid_selection">Por favor, selecione um dispositivo válido</sys:String>
-    <sys:String x:Key="devsel_footer_continue">Finalizar configuração</sys:String>
+    <sys:String x:Key="devsel_footer_continue">Finalizar</sys:String>
 
     <!-- Unsupported feature page -->
     <sys:String x:Key="unsupported_feature_current_fwver">Versão atual do firmware:</sys:String>
@@ -278,7 +278,7 @@
     <sys:String x:Key="as_header">Som ambiente</sys:String>
     <sys:String x:Key="as_enable">Ativar som ambiente</sys:String>
     <sys:String x:Key="as_volume">Volume do som ambiente</sys:String>
-    <sys:String x:Key="as_voicefocus">Foco em voz</sys:String>
+    <sys:String x:Key="as_voicefocus">Focar na voz</sys:String>
     <sys:String x:Key="as_extrahigh">Volume ambiente extra-alto</sys:String>
     <sys:String x:Key="as_extrahigh_description">Adiciona um nível de volume extra ao controle de volume ambiente</sys:String>
 
@@ -288,13 +288,13 @@
     <sys:String x:Key="adv_seamless">Conexão direta de fones de ouvido</sys:String>
     <sys:String x:Key="adv_seamless_desc">Alterne rapidamente para aparelhos próximos sem desconectar seus fones de ouvido nem ativar o modo de pareamento.</sys:String>
     <sys:String x:Key="adv_resume_playback">Continua a reprodução de mídia ao colocar os fones</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">Envia um evento global de reprodução/pausa quando, ao menos, um sensor de proximidade for coberto (apenas Windows)</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Envia um evento global de reprodução/pausa quando, ao menos, um sensor de proximidade for coberto (apenas Windows).</sys:String>
     <sys:String x:Key="adv_sidetone">Ativar o som ambiente durante chamadas</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Ouça melhor sua voz durante chamadas</sys:String>
     <sys:String x:Key="adv_passthrough">Aliviar a pressão com som ambiente</sys:String>
-    <sys:String x:Key="adv_passthrough_desc">Isso pode evitar uma sensação de obstrução ou compressão quando você não está usando o cancelamento de ruído ativo</sys:String>
+    <sys:String x:Key="adv_passthrough_desc">Isso pode evitar uma sensação de obstrução ou compressão quando você não está usando o cancelamento de ruído ativo.</sys:String>
     <sys:String x:Key="adv_gaming_mode">Modo de jogo</sys:String>
-    <sys:String x:Key="adv_gaming_mode_desc">Minimize o atraso de áudio para obter um som de jogo nítido e sincronizado (apenas Samsung)</sys:String>
+    <sys:String x:Key="adv_gaming_mode_desc">Minimize o atraso de áudio para obter um som de jogo nítido e sincronizado (apenas Samsung).</sys:String>
 
     <!-- Credits -->
     <sys:String x:Key="credits_header">Créditos</sys:String>
