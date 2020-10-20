@@ -64,6 +64,8 @@ namespace Galaxy_Buds_Client.util
             {
 
                 string lang = Properties.Settings.Default.CurrentLocale.ToString(); //System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToLower();
+                if (lang.EndsWith("_"))
+                    lang = lang.TrimEnd('_');
 
                 if (Properties.Settings.Default.CurrentLocale == Locale.custom && IsTranslatorModeEnabled())
                 {
