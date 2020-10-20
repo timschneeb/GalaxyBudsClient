@@ -70,7 +70,7 @@
 
     <!-- Options menu -->
     <sys:String x:Key="optionsmenu_title">Opsi</sys:String>
-    <sys:String x:Key="optionsmenu_settings">Aturan</sys:String>
+    <sys:String x:Key="optionsmenu_settings">Pengaturan</sys:String>
     <sys:String x:Key="optionsmenu_refresh">Muat ulang</sys:String>
     <sys:String x:Key="optionsmenu_deregister">Hapus perangkat</sys:String>
     <sys:String x:Key="optionsmenu_update">Periksa pembaruan</sys:String>
@@ -130,7 +130,7 @@
     </sys:String>
 
     <sys:String x:Key="updater_view_changelog">Lihat daftar perubahan lengkap di Github</sys:String>
-    <sys:String x:Key="updater_footer_remindmelater">Ingatkan saya nanti</sys:String>
+    <sys:String x:Key="updater_footer_remindmelater">Ingatkan nanti</sys:String>
     <sys:String x:Key="updater_footer_skipversion">Lewati</sys:String>
     <sys:String x:Key="updater_footer_install">Install sekarang</sys:String>
 
@@ -191,7 +191,7 @@
 
     <sys:String x:Key="system_hwver">Versi Perangkat Keras</sys:String>
     <sys:String x:Key="system_swver">Versi Perangkat Lunak</sys:String>
-    <sys:String x:Key="system_touchver">Veri Firmware Sentuhan</sys:String>
+    <sys:String x:Key="system_touchver">Versi Firmware Sentuhan</sys:String>
     <sys:String x:Key="system_protover">Revisi Protokol</sys:String>
     <sys:String x:Key="system_btaddr">Alamat Bluetooth</sys:String>
     <sys:String x:Key="system_serial">Nomor Seri</sys:String>
