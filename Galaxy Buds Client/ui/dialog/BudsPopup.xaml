@@ -21,8 +21,8 @@
 
             <Label Content="Blank's Galaxy Buds" Grid.Column="1" Grid.Row="1" FontSize="18" Padding="0,0,0,0" Name="Greeting" Foreground="{DynamicResource ForegroundTextAltBrush}" />
 
-            <Image Grid.Column="1" Grid.Row="2" Name="ImageLeft" Height="75" Width="75" Source="{DynamicResource LeftBudConnected}" Margin="44,8,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
-            <Image Grid.Column="1" Grid.Row="2" Name="ImageRight" Height="75" Width="75" Source="{DynamicResource RightBudConnected}" Margin="0,8,44,0" HorizontalAlignment="Right" VerticalAlignment="Top" />
+            <Image Grid.Column="1" Grid.Row="2" Name="ImageLeft" Height="75" Width="75" Source="{DynamicResource LeftBudConnected}" Margin="44,8,203,0" VerticalAlignment="Top" />
+            <Image Grid.Column="1" Grid.Row="2" Name="ImageRight" Height="75" Width="75" Source="{DynamicResource RightBudConnected}" Margin="203,8,44,0" VerticalAlignment="Top" />
 
             <Label Grid.Column="1" Grid.Row="2" Name="BatteryL" Foreground="{DynamicResource ForegroundTextBrush}"
 				   FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Left%" Margin="44,85,0,0" HorizontalContentAlignment="Center" Width="75"/>

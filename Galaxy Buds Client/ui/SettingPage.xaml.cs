@@ -98,6 +98,9 @@ namespace Galaxy_Buds_Client.ui
                 /* Update cached strings */
                 DarkModeBorder.ContextMenu = DarkMode_GenerateMenu(DarkModeBorder);
                 DarkModeSelect.TextDetail = Properties.Settings.Default.DarkMode2.GetDescription();
+
+                if(BluetoothService.Instance.IsConnected)
+                    BluetoothService.Instance.SendAsync(SPPMessageBuilder.Info.GetAllData());
             };
             m.Style = (Style)FindResource("MenuItemStyle");
             c.Items.Add(m);
@@ -142,6 +145,9 @@ namespace Galaxy_Buds_Client.ui
                 Properties.Settings.Default.DarkMode2 = mode;
                 Properties.Settings.Default.Save();
                 DarkModeHelper.Update();
+
+                if (BluetoothService.Instance.IsConnected)
+                    BluetoothService.Instance.SendAsync(SPPMessageBuilder.Info.GetAllData());
             };
             m.Style = (Style)FindResource("MenuItemStyle");
             c.Items.Add(m);

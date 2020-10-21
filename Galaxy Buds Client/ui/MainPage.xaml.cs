@@ -50,7 +50,7 @@ namespace Galaxy_Buds_Client.ui
 
             _mainWindow = mainWindow;
             _refreshTimer.Tick += RefreshTimerCallback;
-            _refreshTimer.Interval = new TimeSpan(0, 0, 12);
+            _refreshTimer.Interval = new TimeSpan(0, 0, 7);
 
             BatteryCase.Content = "";
             CaseLabel.Visibility = Visibility.Hidden;
@@ -248,22 +248,24 @@ namespace Galaxy_Buds_Client.ui
             BatteryPercentageLeft.Visibility = leftSide;
             BatteryPercentageRight.Visibility = rightSide;
 
+            string type = BluetoothService.Instance.ActiveModel == Model.BudsLive ? "Bean" : "Bud";
+
             if (leftSide == Visibility.Visible)
             {
-                LeftIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["LeftBudConnected"];
+                LeftIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0][$"Left{type}Connected"];
             }
             else
             {
-                LeftIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["LeftBudDisconnected"];
+                LeftIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0][$"Left{type}Disconnected"];
             }
 
             if (rightSide == Visibility.Visible)
             {
-                RightIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["RightBudConnected"];
+                RightIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0][$"Right{type}Connected"];
             }
             else
             {
-                RightIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["RightBudDisconnected"];
+                RightIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0][$"Right{type}Disconnected"];
             }
         }
 
@@ -377,6 +379,11 @@ namespace Galaxy_Buds_Client.ui
         {
             AncToggle.Toggle();
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetANC(AncToggle.IsChecked));
+        }
+
+        public void ToggleAnc()
+        {
+            Anc_OnMouseLeftButtonUp(this, null);
         }
     }
 }

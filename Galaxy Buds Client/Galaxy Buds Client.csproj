@@ -536,6 +536,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="InTheHand.Net.Personal.dll" />
+    <Resource Include="Resources\device\left_beans_black.png" />
+    <Resource Include="Resources\device\left_beans_white.png" />
+    <Resource Include="Resources\device\right_beans_black.png" />
+    <Resource Include="Resources\device\right_beans_white.png" />
     <Resource Include="Resources\features\anc_color.png" />
     <Resource Include="Resources\findmygear\start_lightgray.png" />
     <Resource Include="Resources\navigation\next_small_light.png" />
@@ -544,6 +548,10 @@
     <Resource Include="Resources\features\labs_color.png" />
     <Resource Include="Resources\features\advanced_color.png" />
     <Resource Include="Resources\anc_color.png" />
+    <Resource Include="Resources\device\left_beans_dim.png" />
+    <Resource Include="Resources\device\right_beans_dim.png" />
+    <Resource Include="Resources\device\left_beans_black_dim.png" />
+    <Resource Include="Resources\device\right_beans_black_dim.png" />
     <Content Include="Resources\features\advanced_light.png" />
     <Resource Include="Resources\findmygear\muted.png" />
     <Resource Include="Resources\findmygear\unmuted.png" />

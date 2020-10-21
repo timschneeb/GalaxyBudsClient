@@ -189,25 +189,28 @@ namespace Galaxy_Buds_Client.ui
         {
             Dispatcher.Invoke(() =>
                     {
+
+                        string type = BluetoothService.Instance.ActiveModel == Model.BudsLive ? "Bean" : "Bud";
+
                         if (!l)
                         {
-                            LeftIcon.Source = (ImageSource) Application.Current.Resources.MergedDictionaries[0]["LeftBudConnected"];
+                            LeftIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0][$"Left{type}Connected"];
                             BatteryIconLeft.Visibility = Visibility.Visible;
                         }
                         else
                         {
-                            LeftIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["LeftBudDisconnected"];
+                            LeftIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0][$"Left{type}Disconnected"];
                             BatteryIconLeft.Visibility = Visibility.Hidden;
                         }
 
                         if (!r)
                         {
-                            RightIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["RightBudConnected"];
+                            RightIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0][$"Right{type}Connected"];
                             BatteryIconRight.Visibility = Visibility.Visible;
                         }
                         else
                         {
-                            RightIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["RightBudDisconnected"];
+                            RightIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0][$"Right{type}Disconnected"];
                             BatteryIconRight.Visibility = Visibility.Hidden;
                         }
                     });

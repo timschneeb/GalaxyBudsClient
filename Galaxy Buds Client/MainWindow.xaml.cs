@@ -332,6 +332,17 @@ namespace Galaxy_Buds_Client
                         ambientToggle.Style = (Style)FindResource("SmallMenuItemStyle");
                         ctxMenu.Items.Add(ambientToggle);
                     }
+                    if (BluetoothService.Instance.ActiveModel == Model.BudsLive)
+                    {
+                        MenuItem ancToggle = new MenuItem();
+                        ancToggle.Header = _mainPage.AncToggle.IsChecked ? Loc.GetString("tray_disable_anc") : Loc.GetString("tray_enable_anc");
+                        ancToggle.Click += delegate
+                        {
+                            _mainPage.ToggleAnc();
+                        };
+                        ancToggle.Style = (Style)FindResource("SmallMenuItemStyle");
+                        ctxMenu.Items.Add(ancToggle);
+                    }
 
                     Menu_AddSeparator(ctxMenu);
                 }
