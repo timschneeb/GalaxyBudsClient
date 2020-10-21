@@ -56,7 +56,6 @@ namespace Galaxy_Buds_Client.ui
             CaseLabel.Visibility = Visibility.Hidden;
 
             SetLoaderVisible(false);
-            UpdateDetails(new DebugGetAllDataParser());
 
             SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
             SPPMessageHandler.Instance.StatusUpdate += InstanceOnStatusUpdate;
@@ -173,6 +172,21 @@ namespace Galaxy_Buds_Client.ui
             {
                 BatteryCase.Content = "";
                 CaseLabel.Visibility = Visibility.Hidden;
+            }
+
+            /* Initial properties */
+            if (_lastGetAllDataParser == null)
+            {
+                var stub = new DebugGetAllDataParser();
+                stub.LeftAdcCurrent = 0;
+                stub.LeftAdcSOC = 0;
+                stub.LeftAdcVCell = 0;
+                stub.LeftThermistor = 0;
+                stub.RightAdcCurrent = 0;
+                stub.RightAdcSOC = 0;
+                stub.RightAdcVCell = 0;
+                stub.RightThermistor = 0;
+                UpdateDetails(stub);
             }
 
             UpdateList();
