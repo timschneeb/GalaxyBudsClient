@@ -64,6 +64,8 @@ namespace Galaxy_Buds_Client.util
             {
 
                 string lang = Properties.Settings.Default.CurrentLocale.ToString(); //System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToLower();
+                if (lang.EndsWith("_"))
+                    lang = lang.TrimEnd('_');
 
                 if (Properties.Settings.Default.CurrentLocale == Locale.custom && IsTranslatorModeEnabled())
                 {
@@ -91,7 +93,19 @@ namespace Galaxy_Buds_Client.util
                 {
                     // Read in ResourceDictionary File  
                     var languageDictionary = new ResourceDictionary();
-                    languageDictionary.Source = new Uri(inFile);
+
+                    try
+                    {
+                        languageDictionary.Source = new Uri(inFile);
+                    }
+                    catch (System.Windows.Markup.XamlParseException e)
+                    {
+                        MessageBox.Show(
+                            $"XAML Syntax error. Failed to parse language file:\n" +
+                            $"{e.Message}", "Failed to parse language file", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
                     // Remove any previous Localization dictionaries loaded  
                     int langDictId = -1;
                     bool defaultReached = false;

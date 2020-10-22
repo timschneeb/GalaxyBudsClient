@@ -42,7 +42,7 @@
             <Grid HorizontalAlignment="Left" Width="Auto">
                 <Image Name="BatteryIconLeft" Source="/Resources/battery/high.png" Height="18" Width="27" Margin="143,52,346,228" RenderTransformOrigin="-0.352,-1.944"/>
                 <Image Name="LeftIcon" Source="{DynamicResource LeftBudConnected}" Width="75" Height="75" Margin="160,52,281,0" VerticalAlignment="Top"/>
-                <Image Name="RightIcon" Source="{DynamicResource RightBudConnected}" Margin="0,52,160,0" Height="75" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75"/>
+                <Image Name="RightIcon" Source="{DynamicResource RightBudConnected}" Margin="281,52,160,0" Height="75" VerticalAlignment="Top" Width="75"/>
                 <Image Name="BatteryIconRight" Source="/Resources/battery/high.png" Height="18" Width="27" Margin="346,52,143,228"/>
                 <element:ScannerButton x:Name="ScannerBtn"  Margin="183,148,183,10" />
                 <element:MuteButton x:Name="LeftMuteBtn" Margin="60,63,401,180" />

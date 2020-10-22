@@ -184,8 +184,16 @@ namespace Galaxy_Buds_Client
             }
             catch (Win32Exception e)
             {
+                SentrySdk.AddBreadcrumb(e.Message, "bluetoothInRange", level: Sentry.Protocol.BreadcrumbLevel.Error);
                 Console.WriteLine(@"CRITICAL: Unknown Win32 Bluetooth service error");
                 Console.WriteLine(e);
+            }
+            catch (InvalidOperationException e)
+            {
+                SentrySdk.AddBreadcrumb(e.Message, "bluetoothInRange", level: Sentry.Protocol.BreadcrumbLevel.Error);
+                Console.WriteLine(@"CRITICAL: Unknown Win32 Bluetooth service error");
+                Console.WriteLine(e);
+                MessageBox.Show(e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -324,6 +332,17 @@ namespace Galaxy_Buds_Client
                         ambientToggle.Style = (Style)FindResource("SmallMenuItemStyle");
                         ctxMenu.Items.Add(ambientToggle);
                     }
+                    if (BluetoothService.Instance.ActiveModel == Model.BudsLive)
+                    {
+                        MenuItem ancToggle = new MenuItem();
+                        ancToggle.Header = _mainPage.AncToggle.IsChecked ? Loc.GetString("tray_disable_anc") : Loc.GetString("tray_enable_anc");
+                        ancToggle.Click += delegate
+                        {
+                            _mainPage.ToggleAnc();
+                        };
+                        ancToggle.Style = (Style)FindResource("SmallMenuItemStyle");
+                        ctxMenu.Items.Add(ancToggle);
+                    }
 
                     Menu_AddSeparator(ctxMenu);
                 }
@@ -417,7 +436,14 @@ namespace Galaxy_Buds_Client
             {
                 if (!AudioPlaybackDetection.IsWindowsPlayingSound())
                 {
-                    new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.MEDIA_PLAY_PAUSE);
+                    try
+                    {
+                        new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.MEDIA_PLAY_PAUSE);
+                    }
+                    catch (Exception ex)
+                    {
+                        Sentry.SentrySdk.AddBreadcrumb(ex.Message, "inputsimulator", level: Sentry.Protocol.BreadcrumbLevel.Warning);
+                    }
                     Console.WriteLine(@"[ResumePlaybackOnSensor] All criteria are met; emitting play/pause keypress");
                 }
                 else

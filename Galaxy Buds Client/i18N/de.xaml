@@ -83,6 +83,8 @@
     <sys:String x:Key="tray_disable_ambient_sound">Ambient Sound deaktivieren</sys:String>
     <sys:String x:Key="tray_enable_eq">Equalizer einschalten</sys:String>
     <sys:String x:Key="tray_disable_eq">Equalizer ausschalten</sys:String>
+    <sys:String x:Key="tray_enable_anc">Aktive Geräuschunterdrückung aktivieren</sys:String>
+    <sys:String x:Key="tray_disable_anc">Aktive Geräuschunterdrückung deaktivieren</sys:String>
     <sys:String x:Key="tray_quit">Verlassen</sys:String>
 
 

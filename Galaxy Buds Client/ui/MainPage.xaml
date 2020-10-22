@@ -25,7 +25,7 @@
                 <Label Name="BatteryTemperatureLeft" Content="29.4 °C" Margin="0,109,361,35" HorizontalAlignment="Right" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" 
                        MouseLeftButtonUp="SwitchTempUnits_OnMouseLeftButtonUp"/>
                 <Image Name="LeftIcon" Source="{DynamicResource LeftBudConnected}" Width="75" Height="75" Margin="160,52,281,0" VerticalAlignment="Top"/>
-                <Image Name="RightIcon" Source="{DynamicResource RightBudConnected}" Margin="0,52,160,0" Height="75" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75"/>
+                <Image Name="RightIcon" Source="{DynamicResource RightBudConnected}" Margin="281,52,160,0" Height="75" VerticalAlignment="Top"  Width="75"/>
                 <Image Name="BatteryIconRight" Source="/Resources/battery/high.png" Height="18" Width="27" Margin="357,51,132,109"/>
                 <Label Name="BatteryVoltRight" Content="4.56V" Margin="360,71,0,73" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" />
                 <Label Name="BatteryPercentageRight" Content="75%" Margin="381,41,0,102" FontSize="20" HorizontalAlignment="Left" Foreground="{DynamicResource ForegroundTextAltBrush}"/>

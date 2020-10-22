@@ -77,12 +77,14 @@
     <sys:String x:Key="optionsmenu_credits">Credits</sys:String>
 
     <!-- Tray context menu -->
-    <sys:String x:Key="tray_unlock_touchpad">Unlock Touchpad</sys:String>
-    <sys:String x:Key="tray_lock_touchpad">Lock Touchpad</sys:String>
-    <sys:String x:Key="tray_enable_ambient_sound">Enable Ambient Sound</sys:String>
-    <sys:String x:Key="tray_disable_ambient_sound">Disable Ambient Sound</sys:String>
-    <sys:String x:Key="tray_enable_eq">Enable Equalizer</sys:String>
-    <sys:String x:Key="tray_disable_eq">Disable Equalizer</sys:String>
+    <sys:String x:Key="tray_unlock_touchpad">Unlock touchpad</sys:String>
+    <sys:String x:Key="tray_lock_touchpad">Lock touchpad</sys:String>
+    <sys:String x:Key="tray_enable_ambient_sound">Enable ambient sound</sys:String>
+    <sys:String x:Key="tray_disable_ambient_sound">Disable ambient sound</sys:String>
+    <sys:String x:Key="tray_enable_eq">Enable equalizer</sys:String>
+    <sys:String x:Key="tray_disable_eq">Disable equalizer</sys:String>
+    <sys:String x:Key="tray_enable_anc">Enable active noise cancelling</sys:String>
+    <sys:String x:Key="tray_disable_anc">Disable active noise cancelling</sys:String>
     <sys:String x:Key="tray_quit">Quit</sys:String>
 
 

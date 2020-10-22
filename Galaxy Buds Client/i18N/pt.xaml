@@ -1,0 +1,319 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:String x:Key="ResourceDictionaryName">Loc-pt</sys:String>
+
+    <!-- :::::::: Source code :::::::: -->
+
+    <!-- General -->
+    <sys:String x:Key="left">Esquerda</sys:String>
+    <sys:String x:Key="right">Direita</sys:String>
+    <sys:String x:Key="case">Case</sys:String>
+    <sys:String x:Key="error">Erro</sys:String>
+    <sys:String x:Key="cancel">Cancelar</sys:String>
+    <sys:String x:Key="apply">Aplicar</sys:String>
+    <sys:String x:Key="notset">Não definido</sys:String>
+    <sys:String x:Key="nobluetoothdev">Nenhum adaptador Bluetooth encontrado. Por favor, ative o Bluetooth e tente novamente.</sys:String>
+
+    <sys:String x:Key="anc">Cancelamento ativo de ruído</sys:String>
+
+    <!-- SPP Message Parser -->
+    <sys:String x:Key="sppmsg_too_small">O tamanho do pacote é muito pequeno</sys:String>
+    <sys:String x:Key="sppmsg_invalid_som">Invalid SOM</sys:String>
+    <!-- Context: SOM = Start of message -->
+    <sys:String x:Key="sppmsg_invalid_eom">Invalid EOM</sys:String>
+    <!-- Context: EOM = End of message -->
+    <sys:String x:Key="sppmsg_size_mismatch">Payload size mismatch</sys:String>
+    <sys:String x:Key="sppmsg_tl">O tamanho do pacote é muito pequeno</sys:String>
+
+    <!-- Dark Mode States -->
+    <sys:String x:Key="darkmode_disabled">Ativado</sys:String>
+    <sys:String x:Key="darkmode_enabled">Desativado</sys:String>
+    <sys:String x:Key="darkmode_system">Usar configurações do sistema</sys:String>
+
+    <!-- Connection popup -->
+    <sys:String x:Key="connpopup_placement_tl">Superior esquerdo</sys:String>
+    <sys:String x:Key="connpopup_placement_tc">Superior central</sys:String>
+    <sys:String x:Key="connpopup_placement_tr">Superior direito</sys:String>
+    <sys:String x:Key="connpopup_placement_bl">Inferior esquerdo</sys:String>
+    <sys:String x:Key="connpopup_placement_bc">Inferior central</sys:String>
+    <sys:String x:Key="connpopup_placement_br">Inferior direito</sys:String>
+    <sys:String x:Key="connpopup_title">Galaxy Buds{1} de {0}</sys:String>
+    <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
+
+    <!-- Placement  (Buds+) -->
+    <sys:String x:Key="placement_disconnected">Desconectado</sys:String>
+    <sys:String x:Key="placement_wearing">Utilizando</sys:String>
+    <sys:String x:Key="placement_not_wearing">Aguardando</sys:String>
+    <sys:String x:Key="placement_in_case">Na case</sys:String>
+
+    <!-- Touch options -->
+    <sys:String x:Key="touchoption_voice">Assistente de voz</sys:String>
+    <sys:String x:Key="touchoption_quickambientsound">Som ambiente rápido</sys:String>
+    <sys:String x:Key="touchoption_volume">Volume</sys:String>
+    <sys:String x:Key="touchoption_volume_up">Aumentar o volume</sys:String>
+    <sys:String x:Key="touchoption_volume_down">Abaixar o volume</sys:String>
+    <sys:String x:Key="touchoption_ambientsound">Som ambiente</sys:String>
+    <sys:String x:Key="touchoption_spotify">Spotify (apenas Android)</sys:String>
+    <sys:String x:Key="touchoption_custom">Escolher ação...</sys:String>
+    <sys:String x:Key="touchoption_custom_null">Não definido</sys:String>
+    <sys:String x:Key="touchoption_custom_unknown">Desconhecido</sys:String>
+    <sys:String x:Key="touchoption_custom_prefix">Ação personalizada:</sys:String>
+
+    <sys:String x:Key="touchoption_custom_ambient_up">Aumentar o volume do ambiente</sys:String>
+    <sys:String x:Key="touchoption_custom_ambient_down">Abaixar o volume do ambiente</sys:String>
+    <sys:String x:Key="touchoption_custom_toggle_eq">Alternar equalizador</sys:String>
+    <sys:String x:Key="touchoption_custom_next_eq_preset">Próxima predefinição do equalizador</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_hotkey">Pressionar tecla de atalho...</sys:String>
+    <sys:String x:Key="touchoption_custom_external_app">Executar programa externo...</sys:String>
+
+    <!-- Options menu -->
+    <sys:String x:Key="optionsmenu_title">Opções</sys:String>
+    <sys:String x:Key="optionsmenu_settings">Configurações</sys:String>
+    <sys:String x:Key="optionsmenu_refresh">Atualizar</sys:String>
+    <sys:String x:Key="optionsmenu_deregister">Remover dispositivo</sys:String>
+    <sys:String x:Key="optionsmenu_update">Verificar atualizações</sys:String>
+    <sys:String x:Key="optionsmenu_credits">Créditos</sys:String>
+
+    <!-- Tray context menu -->
+    <sys:String x:Key="tray_unlock_touchpad">Desbloquear touchpad</sys:String>
+    <sys:String x:Key="tray_lock_touchpad">Bloquear touchpad</sys:String>
+    <sys:String x:Key="tray_enable_ambient_sound">Ativar som ambiente</sys:String>
+    <sys:String x:Key="tray_disable_ambient_sound">Desativar som ambiente</sys:String>
+    <sys:String x:Key="tray_enable_eq">Ativar equalizador</sys:String>
+    <sys:String x:Key="tray_disable_eq">Desativar equalizador</sys:String>
+    <sys:String x:Key="tray_quit">Sair</sys:String>
+
+
+    <!-- :::::::: XAML files (static) :::::::: -->
+
+    <!-- General -->
+    <sys:String x:Key="continue_button">Continuar</sys:String>
+
+    <!-- Hotkey Recorder Dialog (Custom action) -->
+    <sys:String x:Key="hotrec_title">Gravador de tecla de atalho</sys:String>
+    <sys:String x:Key="hotrec_content">Por favor, pressione as teclas para usar como atalho:</sys:String>
+    <sys:String x:Key="hotrec_empty">Nenhuma tecla</sys:String>
+
+    <!-- Welcome page -->
+    <sys:String x:Key="welcome_textblock_header">Bem vindo!</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">
+        Olá! Esse gerenciador do Galaxy Buds não é oficial e não é afiliado com a Samsung de nenhuma forma, lembre-se disso.
+        Enquanto esse programa pode fazer muitas coisas que o aplicativo oficial da Samsung não pode, decidi excluir as atualizações de firmware via OTA por segurança. Por favor, use o aplicativo oficial se você precisar.
+    </sys:String>
+    <sys:String x:Key="welcome_textblock_p2">
+        Se você estiver interessado no que acontece por trás das cortinas, você pode dar uma olhada no meu repositório no GitHub, que inclui um pequeno diário de engenharia reversa. Você também pode enviar uma mensagem para mim no GitHub ou no Telegram @thepbone se tiver algum problema durante o uso desse programa.
+    </sys:String>
+    <sys:String x:Key="welcome_textblock_p3">
+        Esse programa suporta o Galaxy Buds (2019), Galaxy Buds+ (2020) e o Galaxy Buds Live.
+    </sys:String>
+    <sys:String x:Key="welcome_darkmode">Modo escuro</sys:String>
+    <sys:String x:Key="welcome_darkmode_content">Os seus olhos estão queimando? Use o modo escuro!</sys:String>
+
+    <!-- Main page -->
+    <sys:String x:Key="mainpage_corrupt_data">Dados corrompidos recebidos. Reconectando...</sys:String>
+    <sys:String x:Key="mainpage_find_my_earbuds">Encontre os meus Buds</sys:String>
+    <sys:String x:Key="mainpage_touchpad">Touchpad</sys:String>
+    <sys:String x:Key="mainpage_ambient_sound">Som ambiente</sys:String>
+    <sys:String x:Key="mainpage_equalizer">Equalizador</sys:String>
+    <sys:String x:Key="mainpage_advanced">Configurações avançadas</sys:String>
+    <sys:String x:Key="mainpage_system">Informações do sistema</sys:String>
+
+    <!-- Update page -->
+    <sys:String x:Key="updater_header">Atualização do gerenciador disponível</sys:String>
+    <sys:String x:Key="updater_message_p1">
+        O download é totalmente automático e o guia de atualização será aberto após o término do download. É recomendado atualizar para manter o gerenciador com as últimas novidades e correções.
+    </sys:String>
+    <sys:String x:Key="updater_message_p2">
+        Você pode ver o que está incluso na atualização clicando no botão abaixo.
+    </sys:String>
+
+    <sys:String x:Key="updater_view_changelog">Ver changelog no GitHub</sys:String>
+    <sys:String x:Key="updater_footer_remindmelater">Lembrar depois</sys:String>
+    <sys:String x:Key="updater_footer_skipversion">Pular atualização</sys:String>
+    <sys:String x:Key="updater_footer_install">Instalar agora</sys:String>
+
+    <sys:String x:Key="updater_noupdate">Nenhuma atualização disponível no momento. Por favor, tente novamnete depois ou verifique no repositório do GitHub.</sys:String>
+    <sys:String x:Key="updater_noupdate_title">Nenhuma atualização</sys:String>
+    <sys:String x:Key="updater_newrelease">Atualização {0} para o Gerenciador do Galaxy Buds disponível</sys:String>
+
+    <!-- Device selection page (setup) -->
+    <sys:String x:Key="devsel_header">Selecione o seu Galaxy Buds</sys:String>
+    <sys:String x:Key="devsel_search">Procurar dispositivos</sys:String>
+    <sys:String x:Key="devsel_device_name">Nome do dispositivo</sys:String>
+    <sys:String x:Key="devsel_btaddr">Endereço MAC</sys:String>
+    <sys:String x:Key="devsel_model">Modelo</sys:String>
+    <sys:String x:Key="devsel_noselection">Nenhum dispositivo selecionado</sys:String>
+    <sys:String x:Key="devsel_invalid_selection">Por favor, selecione um dispositivo válido</sys:String>
+    <sys:String x:Key="devsel_footer_continue">Finalizar</sys:String>
+
+    <!-- Unsupported feature page -->
+    <sys:String x:Key="unsupported_feature_current_fwver">Versão atual do firmware:</sys:String>
+    <sys:String x:Key="unsupported_feature_required_fwver">Versão do firmware exigida:</sys:String>
+
+    <sys:String x:Key="unsupported_feature_header">Por favor, atualize o seu firmware</sys:String>
+    <sys:String x:Key="unsupported_feature_current_fwver_null">Versão atual do firmware: desconhecida</sys:String>
+    <sys:String x:Key="unsupported_feature_required_fwver_null">Versão do firmware exigida: não especificada</sys:String>
+
+    <sys:String x:Key="unsupported_feature_description_p1">A versão do firmware do seu Galaxy Buds é muito antiga e não suporta essa funcionalidade.</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p2">Por favor, atualize o seu firmware para a última versão disponível através do atualizador oficial do Windows ou do aplicativo oficial Galaxy Wearable</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p3">Feche esse programa ao usar o atualizador oficial do Windows. Apenas uma aplicação pode se comunicar com o Galaxy Buds por vez.</sys:String>
+
+    <!-- Touchpad page -->
+    <sys:String x:Key="touchpad_header">Touchpad</sys:String>
+    <sys:String x:Key="touchpad_lock">Bloquear Touchpad</sys:String>
+    <sys:String x:Key="touchpad_left_action">Ação esquerda</sys:String>
+    <sys:String x:Key="touchpad_right_action">Ação direita</sys:String>
+
+    <sys:String x:Key="touchpad_double_tap_volume">Toque duplo na borda do Galaxy Buds</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">Dê um toque duplo na borda do fone esquerdo ou direito para aumentar ou diminuir o volume</sys:String>
+
+    <!-- Custom touchpad action page -->
+    <sys:String x:Key="cact_header">Definir ação personalizada de toque longo</sys:String>
+    <sys:String x:Key="cact_external_app_dialog_title">Selecionar executável...</sys:String>
+    <sys:String x:Key="cact_action">Ação personalizada</sys:String>
+    <sys:String x:Key="cact_notice">Aviso</sys:String>
+    <sys:String x:Key="cact_notice_content_p1">Ações personalizadas de toque longo só estarão disponíveis enquanto esse programa estiver sendo executado.</sys:String>
+    <sys:String x:Key="cact_notice_content_p2">Isso não tem nenhum efeito em dispositivos Android ou quaisquer outros.</sys:String>
+    <sys:String x:Key="cact_notice_content_p3">
+        Para manter as ações personalizadas de toque longo funcionando, esse programa irá iniciar automaticamente junto com o computador.
+        Você pode desabilitar esse comportamento nas configurações.
+    </sys:String>
+
+    <!-- System/Self-Test -->
+    <sys:String x:Key="system_header">Informações do sistema</sys:String>
+    <sys:String x:Key="system_selftest">Executar auto-teste</sys:String>
+    <sys:String x:Key="system_factory_reset">Redefinição de fábrica</sys:String>
+
+    <sys:String x:Key="system_battery_type_unknown">Não especificado</sys:String>
+    <sys:String x:Key="system_waiting_for_device">Aguardando resposta...</sys:String>
+
+    <sys:String x:Key="system_hwver">Versão do hardware</sys:String>
+    <sys:String x:Key="system_swver">Versão do software</sys:String>
+    <sys:String x:Key="system_touchver">Versão do firmware de toque</sys:String>
+    <sys:String x:Key="system_protover">Revisão do protocolo</sys:String>
+    <sys:String x:Key="system_btaddr">Endereço Bluetooth</sys:String>
+    <sys:String x:Key="system_serial">Número serial</sys:String>
+    <sys:String x:Key="system_build_info">Informação de versão</sys:String>
+    <sys:String x:Key="system_battery_type">Tipo da bateria</sys:String>
+    <sys:String x:Key="system_proximity">Medição de proximidade</sys:String>
+    <sys:String x:Key="system_thermo">Medição do termostato</sys:String>
+    <sys:String x:Key="system_hall">Medição hall</sys:String>
+    <sys:String x:Key="system_accel">Status do acelerômetro</sys:String>
+    <!-- Note: system_accel only used on the self-test page -->
+    <sys:String x:Key="system_adc_soc">ADC SoC</sys:String>
+    <!-- Context: SoC = State of charge (battery percentage) -->
+    <sys:String x:Key="system_adc_voltage">Tensão ADC</sys:String>
+    <sys:String x:Key="system_adc_current">Corrente ADC</sys:String>
+
+    <sys:String x:Key="selftest_header">Auto-teste</sys:String>
+    <sys:String x:Key="selftest_header_alt">Auto-teste (o seu dispositivo pode desconectar)</sys:String>
+    <sys:String x:Key="selftest_pass">Passou</sys:String>
+    <sys:String x:Key="selftest_fail">Falhou</sys:String>
+    <sys:String x:Key="selftest_pass_long">Todos os testes passaram</sys:String>
+    <sys:String x:Key="selftest_fail_long">Um ou mais testes falhou</sys:String>
+
+    <!-- Settings -->
+    <sys:String x:Key="settings_header">Configurações</sys:String>
+
+    <sys:String x:Key="settings_darkmode">Modo escuro</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Use cores escuras</sys:String>
+    <sys:String x:Key="settings_transitions">Transição</sys:String>
+    <sys:String x:Key="settings_transitions_description">Ativar transições de slide</sys:String>
+    <sys:String x:Key="settings_localization_disable">Idioma</sys:String>
+    <sys:String x:Key="settings_localization_disable_description">Forçar o idioma inglês</sys:String>
+    <sys:String x:Key="settings_minimize_tray">Minimizar para a bandeja</sys:String>
+    <sys:String x:Key="settings_minimize_tray_description">Apenas minimizar, ao invés de fechar o programa</sys:String>
+    <sys:String x:Key="settings_autostart">Iniciar junto com o sistema</sys:String>
+    <sys:String x:Key="settings_autostart_description">Iniciar minimizado ao iniciar com o sistema</sys:String>
+
+    <sys:String x:Key="settings_connpopup">Configuração do popup de conexão</sys:String>
+    <sys:String x:Key="settings_devmode">Entrar no modo de desenvolvedor</sys:String>
+
+    <!-- Settings >>> Connection popup -->
+    <sys:String x:Key="settings_cpopup_header">Popup de conexão</sys:String>
+    <sys:String x:Key="settings_cpopup_enable">Exibir popup ao conectar</sys:String>
+    <sys:String x:Key="settings_cpopup_enable_description">Exibe uma pequena notificação com os níveis de bateria quando conectar ao Galaxy Buds</sys:String>
+    <sys:String x:Key="settings_cpopup_compact">Modo compacto</sys:String>
+    <sys:String x:Key="settings_cpopup_compact_description">Oculta o cabeçalho do popup para economizar espaço</sys:String>
+    <sys:String x:Key="settings_cpopup_position">Posição</sys:String>
+    <sys:String x:Key="settings_cpopup_position_placeholder">Desconhecida</sys:String>
+    <sys:String x:Key="settings_cpopup_demo">Exibir popup de exemplo</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title">Substituir o título no popup</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title_dialog">Por favor, informe um título personalizado. Você pode restaurar o título padrão ao deixar esse campo vazio.</sys:String>
+
+    <!-- Factory reset -->
+    <sys:String x:Key="factory_header">Redefinição de fábrica</sys:String>
+    <sys:String x:Key="factory_confirm">Confirme a redefinição de fábrica</sys:String>
+    <sys:String x:Key="factory_error_title">A redefinição de fábrica falhou</sys:String>
+    <sys:String x:Key="factory_error">
+        O dispositivo retornou o código de erro: {0} 
+        Verifique se os dois fones estão ligados e podem ser encontrados.
+        Talvez seja necessário reconectar os fones manualmente.
+    </sys:String>
+    <sys:String x:Key="factory_text_p1">Você tem certeza que deseja redefinir os seus fones?</sys:String>
+    <sys:String x:Key="factory_text_p2">Após redefinir os seus fones, você precisará reconectá-los manualmente ao computador.</sys:String>
+    <sys:String x:Key="factory_text_p3">Tenha certeza que os dois fones estão ligados antes de continuar!</sys:String>
+
+    <!-- Find my Gear -->
+    <sys:String x:Key="fmg_warning_both">Por favor, remova os dois fones dos seus ouvidos.</sys:String>
+    <sys:String x:Key="fmg_warning_left">Por favor, remova o fone esquerdo do seu ouvido.</sys:String>
+    <sys:String x:Key="fmg_warning_right">Por favor, remova o fone direito do seu ouvido.</sys:String>
+    <sys:String x:Key="fmg_header">Buscar meus fones de ouvido</sys:String>
+
+    <!-- Equalizer -->
+    <sys:String x:Key="eq_header">Equalizador</sys:String>
+    <sys:String x:Key="eq_enable">Ativar equalizador</sys:String>
+    <sys:String x:Key="eq_mode">Modo:</sys:String>
+    <sys:String x:Key="eq_dolby">Otimizar para uso com Dolby</sys:String>
+
+    <sys:String x:Key="eq_bass">Mais graves</sys:String>
+    <sys:String x:Key="eq_soft">Suave</sys:String>
+    <sys:String x:Key="eq_dynamic">Dinâmico</sys:String>
+    <sys:String x:Key="eq_clear">Nítido</sys:String>
+    <sys:String x:Key="eq_treble">Mais agudos</sys:String>
+
+    <!-- Ambient sound -->
+    <sys:String x:Key="as_header">Som ambiente</sys:String>
+    <sys:String x:Key="as_enable">Ativar som ambiente</sys:String>
+    <sys:String x:Key="as_volume">Volume do som ambiente</sys:String>
+    <sys:String x:Key="as_voicefocus">Focar na voz</sys:String>
+    <sys:String x:Key="as_extrahigh">Volume ambiente extra-alto</sys:String>
+    <sys:String x:Key="as_extrahigh_description">Adiciona um nível de volume extra ao controle de volume ambiente</sys:String>
+
+    <!-- Advanced page -->
+    <sys:String x:Key="adv_header">Configurações avançadas</sys:String>
+    <sys:String x:Key="adv_required_firmware_seamless_connection">{0} ou depois</sys:String>
+    <sys:String x:Key="adv_seamless">Conexão direta de fones de ouvido</sys:String>
+    <sys:String x:Key="adv_seamless_desc">Alterne rapidamente para aparelhos próximos sem desconectar seus fones de ouvido nem ativar o modo de pareamento.</sys:String>
+    <sys:String x:Key="adv_resume_playback">Continua a reprodução de mídia ao colocar os fones</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Envia um evento global de reprodução/pausa quando, ao menos, um sensor de proximidade for coberto (apenas Windows).</sys:String>
+    <sys:String x:Key="adv_sidetone">Ativar o som ambiente durante chamadas</sys:String>
+    <sys:String x:Key="adv_sidetone_desc">Ouça melhor sua voz durante chamadas</sys:String>
+    <sys:String x:Key="adv_passthrough">Aliviar a pressão com som ambiente</sys:String>
+    <sys:String x:Key="adv_passthrough_desc">Isso pode evitar uma sensação de obstrução ou compressão quando você não está usando o cancelamento de ruído ativo.</sys:String>
+    <sys:String x:Key="adv_gaming_mode">Modo de jogo</sys:String>
+    <sys:String x:Key="adv_gaming_mode_desc">Minimize o atraso de áudio para obter um som de jogo nítido e sincronizado (apenas Samsung).</sys:String>
+
+    <!-- Credits -->
+    <sys:String x:Key="credits_header">Créditos</sys:String>
+    <sys:String x:Key="credits_developer">Desenvolvedor</sys:String>
+    <sys:String x:Key="credits_license">Licença</sys:String>
+    <sys:String x:Key="credits_version">Versão</sys:String>
+    <sys:String x:Key="credits_contributor">Contribuintes</sys:String>
+    <sys:String x:Key="credits_translator">Tradutores</sys:String>
+
+    <!-- Connection lost page -->
+    <sys:String x:Key="connlost_header">Não foi possível estabelecer uma conexão</sys:String>
+    <sys:String x:Key="connlost_description_p1">Não foi possível conectar com os seus fones de ouvido.</sys:String>
+    <sys:String x:Key="connlost_description_p2">
+        Por favor, verifique suas configurações de Bluetooth e certifique-se de que os seus fones estão ligados e conectados a esse computador.
+        Você pode registrar um novo dispositov, se for preciso. Nesse caso, selecione "Opções > Remover dispositivo".
+    </sys:String>
+    <sys:String x:Key="connlost_description_p3">Informações adicionais:</sys:String>
+    <sys:String x:Key="connlost_noinfo">Falha ao coletar informações de erro</sys:String>
+    <sys:String x:Key="connlost_connect">Conectar</sys:String>
+    <sys:String x:Key="connlost_connecting">Conectando...</sys:String>
+
+</ResourceDictionary>

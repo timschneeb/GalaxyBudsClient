@@ -36,6 +36,10 @@
     <ImageSource x:Key="WindowMinimumButton">/Resources/window/window_minimum_nor.png</ImageSource>
 
     <!-- Images -->
+    <ImageSource x:Key="LeftBeanConnected">/Resources/device/left_beans_white.png</ImageSource>
+    <ImageSource x:Key="RightBeanConnected">/Resources/device/right_beans_white.png</ImageSource>
+    <ImageSource x:Key="LeftBeanDisconnected">/Resources/device/left_beans_dim.png</ImageSource>
+    <ImageSource x:Key="RightBeanDisconnected">/Resources/device/right_beans_dim.png</ImageSource>
     <ImageSource x:Key="LeftBudConnected">/Resources/device/left_gray.png</ImageSource>
     <ImageSource x:Key="RightBudConnected">/Resources/device/right_gray.png</ImageSource>
     <ImageSource x:Key="LeftBudDisconnected">/Resources/device/left_gray_dim.png</ImageSource>

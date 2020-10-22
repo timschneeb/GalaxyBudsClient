@@ -90,26 +90,28 @@ namespace Galaxy_Buds_Client.ui.dialog {
                 BatteryL.Visibility = bl <= 0 ? Visibility.Hidden : Visibility.Visible;
                 BatteryR.Visibility = br <= 0 ? Visibility.Hidden : Visibility.Visible;
 
+                string type = BluetoothService.Instance.ActiveModel == Model.BudsLive ? "Bean" : "Bud";
+
                 if (bl > 0)
                 {
                     ImageLeft.Source =
-                        (ImageSource) Application.Current.Resources.MergedDictionaries[0]["LeftBudConnected"];
+                        (ImageSource) Application.Current.Resources.MergedDictionaries[0][$"Left{type}Connected"];
                 }
                 else
                 {
                     ImageLeft.Source =
-                        (ImageSource) Application.Current.Resources.MergedDictionaries[0]["LeftBudDisconnected"];
+                        (ImageSource) Application.Current.Resources.MergedDictionaries[0][$"Left{type}Disconnected"];
                 }
 
                 if (br > 0)
                 {
                     ImageRight.Source =
-                        (ImageSource) Application.Current.Resources.MergedDictionaries[0]["RightBudConnected"];
+                        (ImageSource) Application.Current.Resources.MergedDictionaries[0][$"Right{type}Connected"];
                 }
                 else
                 {
                     ImageRight.Source =
-                        (ImageSource) Application.Current.Resources.MergedDictionaries[0]["RightBudDisconnected"];
+                        (ImageSource) Application.Current.Resources.MergedDictionaries[0][$"Right{type}Disconnected"];
                 }
             });
         }

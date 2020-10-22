@@ -50,13 +50,12 @@ namespace Galaxy_Buds_Client.ui
 
             _mainWindow = mainWindow;
             _refreshTimer.Tick += RefreshTimerCallback;
-            _refreshTimer.Interval = new TimeSpan(0, 0, 12);
+            _refreshTimer.Interval = new TimeSpan(0, 0, 7);
 
             BatteryCase.Content = "";
             CaseLabel.Visibility = Visibility.Hidden;
 
             SetLoaderVisible(false);
-            UpdateDetails(new DebugGetAllDataParser());
 
             SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
             SPPMessageHandler.Instance.StatusUpdate += InstanceOnStatusUpdate;
@@ -175,6 +174,21 @@ namespace Galaxy_Buds_Client.ui
                 CaseLabel.Visibility = Visibility.Hidden;
             }
 
+            /* Initial properties */
+            if (_lastGetAllDataParser == null)
+            {
+                var stub = new DebugGetAllDataParser();
+                stub.LeftAdcCurrent = 0;
+                stub.LeftAdcSOC = 0;
+                stub.LeftAdcVCell = 0;
+                stub.LeftThermistor = 0;
+                stub.RightAdcCurrent = 0;
+                stub.RightAdcSOC = 0;
+                stub.RightAdcVCell = 0;
+                stub.RightThermistor = 0;
+                UpdateDetails(stub);
+            }
+
             UpdateList();
 
             UpdatePlusPlacement(_lastPlacementL, _lastPlacementR);
@@ -248,22 +262,24 @@ namespace Galaxy_Buds_Client.ui
             BatteryPercentageLeft.Visibility = leftSide;
             BatteryPercentageRight.Visibility = rightSide;
 
+            string type = BluetoothService.Instance.ActiveModel == Model.BudsLive ? "Bean" : "Bud";
+
             if (leftSide == Visibility.Visible)
             {
-                LeftIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["LeftBudConnected"];
+                LeftIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0][$"Left{type}Connected"];
             }
             else
             {
-                LeftIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["LeftBudDisconnected"];
+                LeftIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0][$"Left{type}Disconnected"];
             }
 
             if (rightSide == Visibility.Visible)
             {
-                RightIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["RightBudConnected"];
+                RightIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0][$"Right{type}Connected"];
             }
             else
             {
-                RightIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0]["RightBudDisconnected"];
+                RightIcon.Source = (ImageSource)Application.Current.Resources.MergedDictionaries[0][$"Right{type}Disconnected"];
             }
         }
 
@@ -377,6 +393,11 @@ namespace Galaxy_Buds_Client.ui
         {
             AncToggle.Toggle();
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetANC(AncToggle.IsChecked));
+        }
+
+        public void ToggleAnc()
+        {
+            Anc_OnMouseLeftButtonUp(this, null);
         }
     }
 }
