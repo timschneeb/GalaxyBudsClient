@@ -222,7 +222,7 @@ Message IDs `0xE2` to `0xE5` echo the first 4 or 5 bytes of the outgoing payload
 | Color  | Description                                |
 | ------ | ------------------------------------------ |
 | Pink   | Device (`L` or `R` as an ASCII char)       |
-| Cyan   | Randomized or timestamp                    |
+| Cyan   | BR/EDR and LE RSSI or Timestamp            |
 | Yellow | Origin message ID (0x00 if not applicable) |
 
 ### Unknown actions
