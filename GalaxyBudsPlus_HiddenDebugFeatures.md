@@ -209,11 +209,11 @@ Message IDs `0xE2` to `0xE5` echo the first 4 or 5 bytes of the outgoing payload
 
 ### Generic event
 
-`0xCE` is universally used as an event. Sending this to the earbuds results in an error code. Example responses are attached below.
+`0xF2` is universally used as an event. Sending this to the earbuds results in an error code. Example responses are attached below.
 
 | Message ID  | Type                    |
 | ----------- | ----------------------- |
-| 0xCE (206d) | Response (Receive only) |
+| 0xF2 (242d) | Response (Receive only) |
 
 **Attachment:**
 
