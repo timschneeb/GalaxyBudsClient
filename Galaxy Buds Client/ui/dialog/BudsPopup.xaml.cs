@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -10,6 +12,7 @@ using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.Properties;
 using Galaxy_Buds_Client.transition;
 using Galaxy_Buds_Client.util.DynamicLocalization;
+using Application = System.Windows.Application;
 
 namespace Galaxy_Buds_Client.ui.dialog {
     /// <summary>
@@ -38,10 +41,16 @@ namespace Galaxy_Buds_Client.ui.dialog {
             }
         }
 
+        public EventHandler ClickedEventHandler { get; set; }
+
         public PopupPlacement PopupPlacement { get; set; }
 
-        public BudsPopup(Model model, int left, int right, int box) {
+        private Screen _screen;
+
+        public BudsPopup(Screen screen, Model model, int left, int right, int box) {
             InitializeComponent();
+
+            _screen = screen;
 
             string mod = "";
             if (model == Model.BudsPlus) mod = "+";
@@ -121,11 +130,12 @@ namespace Galaxy_Buds_Client.ui.dialog {
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
+            ClickedEventHandler?.Invoke(this, null);
             Quit();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            Rect workArea = SystemParameters.WorkArea;
+            Rectangle workArea = _screen.WorkingArea;
 
             int padding = 20;
             switch (this.PopupPlacement)
@@ -135,7 +145,7 @@ namespace Galaxy_Buds_Client.ui.dialog {
                     this.Top = workArea.Top + padding;
                     break;
                 case PopupPlacement.TopCenter:
-                    this.Left = (workArea.Width / 2) - (this.Width / 2) + workArea.Left;
+                    this.Left = (workArea.Width / 2f) - (this.Width / 2) + workArea.Left;
                     this.Top = workArea.Top + padding;
                     break;
                 case PopupPlacement.TopRight:
@@ -147,7 +157,7 @@ namespace Galaxy_Buds_Client.ui.dialog {
                     this.Top = (workArea.Height - this.Height) + workArea.Top - padding;
                     break;
                 case PopupPlacement.BottomCenter:
-                    this.Left = (workArea.Width / 2) - (this.Width / 2) + workArea.Left;
+                    this.Left = (workArea.Width / 2f) - (this.Width / 2) + workArea.Left;
                     this.Top = (workArea.Height - this.Height) + workArea.Top - padding;
                     break;
                 case PopupPlacement.BottomRight:

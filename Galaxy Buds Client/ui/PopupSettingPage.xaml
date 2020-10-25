@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Galaxy_Buds_Client.ui"
              xmlns:element="clr-namespace:Galaxy_Buds_Client.ui.element"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="700" d:DesignWidth="800">
 
     <Grid Margin="0,0,0,20" >
         <Grid.RowDefinitions>
@@ -58,20 +58,20 @@
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" ContextMenuService.Placement="Bottom">
                         <element:CheckableDetailListItem x:Name="CompactPopup" Text="{DynamicResource settings_cpopup_compact}" TextDetail="{DynamicResource settings_cpopup_compact_description}"
-                                                          SwitchToggled="CompactPopup_OnSwitchToggled" />
+                                                          SwitchToggled="CompactPopup_OnSwitchToggled" Margin="0,-2,0,2" />
 
                     </Border>
                     <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="2" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" 
-                            MouseLeftButtonUp="OverrideTitle_OnMouseLeftButtonUp" ContextMenuService.Placement="Bottom">
+                            MouseLeftButtonUp="OverrideTitle_OnMouseLeftButtonUp" ContextMenuService.Placement="Bottom" Height="70" VerticalAlignment="Top">
                         <element:DetailListItem x:Name="OverrideTitle" Text="{DynamicResource settings_cpopup_override_title}"
-                                                TextDetail="{DynamicResource notset}" Margin="20,8,20,8"/>
+                                                TextDetail="{DynamicResource notset}" Margin="20,0,20,0"/>
                     </Border>
                     <Separator Grid.Row="3" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="4" x:Name="PositionPopupBorder" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" 
                             MouseLeftButtonUp="PositionPopup_OnMouseLeftButtonUp" ContextMenuService.Placement="Bottom">
                         <element:DetailListItem x:Name="PositionPopup" Text="{DynamicResource settings_cpopup_position}"
-                                                TextDetail="{DynamicResource settings_cpopup_position_placeholder}" Margin="20,8,20,8"/>
+                                                TextDetail="{DynamicResource settings_cpopup_position_placeholder}" Margin="20,0,20,3"/>
                     </Border>
                 </Grid>
             </ScrollViewer>
