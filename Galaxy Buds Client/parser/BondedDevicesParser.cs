@@ -6,9 +6,9 @@ using Galaxy_Buds_Client.model;
 
 namespace Galaxy_Buds_Client.parser
 {
-    class GenericStringParser : BaseMessageParser
+    class BondedDevicesParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.UNKNOWN_214;
+        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.UNK_BONDED_DEVICES;
 
         public String Content { set; get; }
 

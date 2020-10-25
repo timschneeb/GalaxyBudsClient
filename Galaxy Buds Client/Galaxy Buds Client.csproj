@@ -132,7 +132,7 @@
     <Compile Include="BluetoothService.cs" />
     <Compile Include="model\LocalizedDescriptionAttribute.cs" />
     <Compile Include="parser\NoiseReductionModeUpdateParser.cs" />
-    <Compile Include="parser\GenericStringParser.cs" />
+    <Compile Include="parser\BondedDevicesParser.cs" />
     <Compile Include="ui\devmode\TranslatorMode.xaml.cs">
       <DependentUpon>TranslatorMode.xaml</DependentUpon>
     </Compile>
