@@ -98,6 +98,8 @@ namespace Galaxy_Buds_Client.ui.dialog {
 
                 BatteryL.Visibility = bl <= 0 ? Visibility.Hidden : Visibility.Visible;
                 BatteryR.Visibility = br <= 0 ? Visibility.Hidden : Visibility.Visible;
+                BatteryC.Visibility = bc <= 0 ? Visibility.Hidden : Visibility.Visible;
+                CaseLabel.Visibility = bc <= 0 ? Visibility.Hidden : Visibility.Visible;
 
                 string type = BluetoothService.Instance.ActiveModel == Model.BudsLive ? "Bean" : "Bud";
 

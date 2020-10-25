@@ -18,7 +18,7 @@
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Content="{Binding Text,ElementName=CheckableDetailListItemHolder}"
                        Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                <element:ToggleSwitch Grid.Row="0" x:Name="Toggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" />
+                <element:ToggleSwitch Grid.Row="0" x:Name="Toggle" Grid.Column="2" Width="40" Height="30" ColorOff="{DynamicResource ToggleOffBrush}" ColorOn="{DynamicResource ToggleOnBrush}" DisableButton="True" Margin="0,2,0,0" />
                 <TextBlock Margin="5,0,5,5" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" TextWrapping="Wrap" Foreground="{DynamicResource SubtitleTextAltBrush}" FontSize="14" Text="{Binding TextDetail,ElementName=CheckableDetailListItemHolder}"/>
             </Grid>
         </Border>
