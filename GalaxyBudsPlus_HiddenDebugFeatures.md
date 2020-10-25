@@ -38,7 +38,7 @@ It is possible to cause CPU assertion exceptions and force the device to reboot 
 
 | Message ID | Payload | Type    |
 | ---------- | ------- | ------- |
-| 0x50 (80d) | *Empty* | Request |
+| 0x52 (82d) | *Empty* | Request |
 
 Returns one zero-byte as confirmation.
 
@@ -48,7 +48,7 @@ This appears to shut the earbuds completely down, it could also cause a severe c
 
 | Message ID | Payload | Type    |
 | ---------- | ------- | ------- |
-| 0x51 (81d) | *Empty* | Request |
+| 0x53 (83d) | *Empty* | Request |
 
 Returns one zero-byte as confirmation.
 
