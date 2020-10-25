@@ -35,6 +35,7 @@ namespace Galaxy_Buds_Client
             {
                 o.Dsn = new Dsn("https://4591394c5fd747b0ab7f5e81297c094d@o456940.ingest.sentry.io/5462682");
                 o.MaxBreadcrumbs = 100;
+                o.SendDefaultPii = true;
 #if DEBUG
                 o.Environment = "staging";
 #else

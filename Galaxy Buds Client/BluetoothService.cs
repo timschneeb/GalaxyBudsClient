@@ -158,6 +158,9 @@ namespace Galaxy_Buds_Client
                 {
                     lock (_btpadlock)
                     {
+                        if(!cli.Connected)
+                            continue;
+
                         peerStream = cli.GetStream();
                     }
                 }

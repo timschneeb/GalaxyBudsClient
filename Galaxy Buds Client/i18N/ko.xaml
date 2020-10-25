@@ -283,7 +283,7 @@
 
     <!-- Advanced page -->
     <sys:String x:Key="adv_header">고급 설정</sys:String>
-    <sys:String x:Key="adv_required_firmware_seamless_connection">{0} 또는 이후 버전</sys:String>
+    <sys:String x:Key="adv_required_firmware_later">{0} 또는 이후 버전</sys:String>
     <sys:String x:Key="adv_seamless">디바이스간에 간편하게 전환하기</sys:String>
     <sys:String x:Key="adv_seamless_desc">이어버드의 연결을 끊거나 페어링 모드에 들어가지 않고 빠르게 주변에 있는 다른 디바이스로 전환합니다.</sys:String>
     <sys:String x:Key="adv_resume_playback">이어버드 착용 시 재생 재개/시작하기</sys:String>

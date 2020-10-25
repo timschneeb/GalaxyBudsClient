@@ -285,7 +285,7 @@
 
     <!-- Advanced page -->
     <sys:String x:Key="adv_header">Розширені налаштування</sys:String>
-    <sys:String x:Key="adv_required_firmware_seamless_connection">{0} або пізніше</sys:String>
+    <sys:String x:Key="adv_required_firmware_later">{0} або пізніше</sys:String>
     <sys:String x:Key="adv_seamless">Зручне підключення до навушників</sys:String>
     <sys:String x:Key="adv_seamless_desc">Швидко підключайтесь до пристроїв поблизку, не відключаючи навушники і не вмикаючи режим парування</sys:String>
     <sys:String x:Key="adv_resume_playback">Відновити відтворення якщо навушники одягнені</sys:String>

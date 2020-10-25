@@ -20,6 +20,7 @@ using Galaxy_Buds_Client.model;
 using Galaxy_Buds_Client.model.Constants;
 using Galaxy_Buds_Client.Properties;
 using Galaxy_Buds_Client.ui.element;
+using Galaxy_Buds_Client.util.DynamicLocalization;
 
 namespace Galaxy_Buds_Client.ui
 {
@@ -29,6 +30,8 @@ namespace Galaxy_Buds_Client.ui
     public partial class AmbientSoundPage : BasePage
     {
         private MainWindow _mainWindow;
+
+        private bool _extraHighSupported;
 
         public AmbientSoundPage(MainWindow mainWindow)
         {
@@ -103,6 +106,7 @@ namespace Galaxy_Buds_Client.ui
 
                 if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
                 {
+                    _extraHighSupported = e.Revision >= 9;
                     ExtraLoud.Switch.SetChecked(e.ExtraHighAmbientEnabled);
                     AmbientVolume.Maximum = e.ExtraHighAmbientEnabled ? 3 : 2;
                 }
@@ -112,7 +116,6 @@ namespace Galaxy_Buds_Client.ui
                 }
             });
         }
-
 
         public override void OnPageShown()
         {
@@ -160,6 +163,14 @@ namespace Galaxy_Buds_Client.ui
         
         private void ExtraLoud_OnSwitchToggled(object sender, bool e)
         {
+            if (!_extraHighSupported)
+            {
+                _mainWindow.ShowUnsupportedFeaturePage(
+                    string.Format(
+                        Loc.GetString("adv_required_firmware_later"), "R175XXU0ATF2"));
+                return;
+            }
+
             AmbientVolume.Maximum = e ? 3 : 2;
             if (e || AmbientVolume.Value >= 3)
                 AmbientVolume.Value = AmbientVolume.Maximum;

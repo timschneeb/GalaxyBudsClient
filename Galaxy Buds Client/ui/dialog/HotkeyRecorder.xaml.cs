@@ -28,6 +28,10 @@ namespace Galaxy_Buds_Client.ui.dialog
             {
                 bool first = true;
                 StringBuilder sb = new StringBuilder();
+
+                if (Hotkeys == null)
+                    return "null";
+
                 foreach (var key in Hotkeys)
                 {
                     if (!first)

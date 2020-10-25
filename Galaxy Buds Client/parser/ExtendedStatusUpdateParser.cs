@@ -149,10 +149,17 @@ namespace Galaxy_Buds_Client.parser
 
                     short leftColor = BitConverter.ToInt16(msg.Payload, 15);
                     short rightColor = BitConverter.ToInt16(msg.Payload, 17);
-                    DeviceColor = (Color)(leftColor != rightColor ? 0 : leftColor);
+                    DeviceColor = (Color) (leftColor != rightColor ? 0 : leftColor);
 
-                    SideToneEnabled = msg.Payload[19] == 1;
-                    ExtraHighAmbientEnabled = msg.Payload[20] == 1;
+                    if (Revision >= 8)
+                    {
+                        SideToneEnabled = msg.Payload[19] == 1;
+                    }
+
+                    if (Revision >= 9)
+                    {
+                        ExtraHighAmbientEnabled = msg.Payload[20] == 1;
+                    }
 
                     if (Revision >= 11)
                     {

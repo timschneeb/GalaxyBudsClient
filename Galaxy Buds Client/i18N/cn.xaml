@@ -282,7 +282,7 @@
 
     <!-- Advanced page -->
     <sys:String x:Key="adv_header">高级设置</sys:String>
-    <sys:String x:Key="adv_required_firmware_seamless_connection">{0} or later</sys:String>
+    <sys:String x:Key="adv_required_firmware_later">{0} or later</sys:String>
     <sys:String x:Key="adv_seamless">无缝连接</sys:String>
     <sys:String x:Key="adv_seamless_desc"> 快速切换到附近的设备，而无需断开耳机或打开配对模式 </sys:String>
     <sys:String x:Key="adv_resume_playback">Resume/start playback if Buds are worn</sys:String>

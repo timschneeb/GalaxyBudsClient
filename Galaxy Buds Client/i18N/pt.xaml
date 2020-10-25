@@ -284,7 +284,7 @@
 
     <!-- Advanced page -->
     <sys:String x:Key="adv_header">Configurações avançadas</sys:String>
-    <sys:String x:Key="adv_required_firmware_seamless_connection">{0} ou depois</sys:String>
+    <sys:String x:Key="adv_required_firmware_later">{0} ou depois</sys:String>
     <sys:String x:Key="adv_seamless">Conexão direta de fones de ouvido</sys:String>
     <sys:String x:Key="adv_seamless_desc">Alterne rapidamente para aparelhos próximos sem desconectar seus fones de ouvido nem ativar o modo de pareamento.</sys:String>
     <sys:String x:Key="adv_resume_playback">Continua a reprodução de mídia ao colocar os fones</sys:String>

@@ -155,11 +155,11 @@
     <sys:String x:Key="unsupported_feature_required_fwver">Required Firmware version:</sys:String>
 
     <sys:String x:Key="unsupported_feature_header">Please update your firmware</sys:String>
-    <sys:String x:Key="unsupported_feature_current_fwver_null">Current Firmware version: Unknown</sys:String>
-    <sys:String x:Key="unsupported_feature_required_fwver_null">Required Firmware version: Not specified</sys:String>
+    <sys:String x:Key="unsupported_feature_current_fwver_null">Current firmware version: Unknown</sys:String>
+    <sys:String x:Key="unsupported_feature_required_fwver_null">Required firmware version: Not specified</sys:String>
 
-    <sys:String x:Key="unsupported_feature_description_p1">The Firmware of your Galaxy Buds is too old and does not support this feature.</sys:String>
-    <sys:String x:Key="unsupported_feature_description_p2">Please update to the latest Firmware using the official Windows updater or using the official Wearable android app</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p1">The firmware of your earbuds is too old and does not support this feature.</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p2">Please update to the latest firmware using the official Windows or Android updater.</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">Make sure you close this app if you use the Windows updater. Only one application can talk to the Buds at a time.</sys:String>
 
     <!-- Touchpad page -->
@@ -286,7 +286,7 @@
 
     <!-- Advanced page -->
     <sys:String x:Key="adv_header">Advanced Settings</sys:String>
-    <sys:String x:Key="adv_required_firmware_seamless_connection">{0} or later</sys:String>
+    <sys:String x:Key="adv_required_firmware_later">{0} or later</sys:String>
     <sys:String x:Key="adv_seamless">Seamless Earbud Connection</sys:String>
     <sys:String x:Key="adv_seamless_desc">Switch quickly to nearby devices without disconnecting your earbuds or turning on pairing mode</sys:String>
     <sys:String x:Key="adv_resume_playback">Resume/start playback if Buds are worn</sys:String>

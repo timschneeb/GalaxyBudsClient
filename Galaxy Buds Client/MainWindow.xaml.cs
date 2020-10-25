@@ -621,7 +621,20 @@ namespace Galaxy_Buds_Client
             switch (action)
             {
                 case CustomAction.Actions.RunExternalProgram:
-                    Process.Start(parameter);
+                    try
+                    {
+                        Process.Start(parameter);
+                    }
+                    catch (FileNotFoundException ex)
+                    {
+                        MessageBox.Show($"Failed to execute custom long-press action (launch external app).\nFile not found: '{ex.FileName}'",
+                            "Galaxy Buds Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    catch (Win32Exception ex)
+                    {
+                        MessageBox.Show($"Failed to execute custom long-press action (launch external app). Detailed information:\n{ex.Message}",
+                            "Galaxy Buds Manager", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                     break;
                 case CustomAction.Actions.Hotkey:
                     if (!parameter.Contains(";"))

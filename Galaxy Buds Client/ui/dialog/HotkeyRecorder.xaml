@@ -9,7 +9,7 @@
         >
     <Grid>
         <Button Content="{DynamicResource apply}" Margin="0,0,10,10" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Click="Apply_OnClick"/>
-        <Button Content="{DynamicResource cancel}" Margin="0,0,96,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Click="Cancel_OnClick"/>
+        <Button Content="{DynamicResource cancel}" Margin="0,0,96,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Click="Cancel_OnClick" Height="22"/>
         <Label x:Name="KeyString" Content="{DynamicResource hotrec_empty}" Margin="10,40,10,0" VerticalAlignment="Top" Background="#FFE6E6E6"/>
         <Label Content="{DynamicResource hotrec_content}" HorizontalAlignment="Left" Margin="7,7,0,0" VerticalAlignment="Top"/>
     </Grid>

@@ -284,7 +284,7 @@
 
     <!-- Advanced page -->
     <sys:String x:Key="adv_header">Pengaturan Lebih Lanjut</sys:String>
-    <sys:String x:Key="adv_required_firmware_seamless_connection">{0} atau terbaru</sys:String>
+    <sys:String x:Key="adv_required_firmware_later">{0} atau terbaru</sys:String>
     <sys:String x:Key="adv_seamless">Koneksi Earbud Otomatis</sys:String>
     <sys:String x:Key="adv_seamless_desc">Beralih dengan cepat ke perangkat terdekat tanpa melepaskan earbud atau mengaktifkan mode pairing</sys:String>
     <sys:String x:Key="adv_resume_playback">Lanjutkan pemutaran media kembali saat Earbuds digunakan</sys:String>

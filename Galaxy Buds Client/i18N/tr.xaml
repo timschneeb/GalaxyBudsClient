@@ -274,7 +274,7 @@
 
     <!-- Advanced page -->
     <sys:String x:Key="adv_header">Gelişmiş Ayarlar</sys:String>
-    <sys:String x:Key="adv_required_firmware_seamless_connection">{0} veya daha sonrası</sys:String>
+    <sys:String x:Key="adv_required_firmware_later">{0} veya daha sonrası</sys:String>
     <sys:String x:Key="adv_seamless">Kusursuz Kulaklık Bağlantısı</sys:String>
     <sys:String x:Key="adv_seamless_desc">Kulaklığınızın bağlantısını kesmeden veya eşleştirme modunu açmadan yakındaki cihazlara hızlıca geçiş yapın.</sys:String>
     <sys:String x:Key="adv_resume_playback">Kulaklıklar takıldığında başlat ya da devam et</sys:String>

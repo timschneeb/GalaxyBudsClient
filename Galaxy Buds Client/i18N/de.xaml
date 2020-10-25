@@ -285,7 +285,7 @@
 
     <!-- Advanced page -->
     <sys:String x:Key="adv_header">Erweiterte Einstellungen</sys:String>
-    <sys:String x:Key="adv_required_firmware_seamless_connection">{0} oder höher</sys:String>
+    <sys:String x:Key="adv_required_firmware_later">{0} oder höher</sys:String>
     <sys:String x:Key="adv_seamless">Nahtlose Verbindung</sys:String>
     <sys:String x:Key="adv_seamless_desc">Wechseln Sie schnell zu Geräten in der Nähe, ohne die Ohrhörer zu trennen oder den Pairing-Modus zu aktivieren</sys:String>
     <sys:String x:Key="adv_resume_playback">Setze die Wiedergabe fort, wenn die Buds getragen werden</sys:String>

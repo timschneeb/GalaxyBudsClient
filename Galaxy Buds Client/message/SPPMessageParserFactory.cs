@@ -31,6 +31,7 @@ namespace Galaxy_Buds_Client.message
                     {
                         SentrySdk.ConfigureScope(scope =>
                         {
+                            scope.SetTag("msg-data-available", "true");
                             scope.SetExtra("msg-type", msg.Type.ToString());
                             scope.SetExtra("msg-id", msg.Id);
                             scope.SetExtra("msg-size", msg.Size);

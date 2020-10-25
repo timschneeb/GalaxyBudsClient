@@ -282,7 +282,7 @@
 
     <!-- Advanced page -->
     <sys:String x:Key="adv_header">Avanzado</sys:String>
-    <sys:String x:Key="adv_required_firmware_seamless_connection">{0} or later</sys:String>
+    <sys:String x:Key="adv_required_firmware_later">{0} or later</sys:String>
     <sys:String x:Key="adv_seamless">Conexión fácil con auriculares</sys:String>
     <sys:String x:Key="adv_seamless_desc">Cambie rapidamente a los dispositivos cercanos sin desconectar sus auriculares ni activar el modo de vinculación</sys:String>
     <sys:String x:Key="adv_resume_playback">Resumir la reproducción si se coloca los Buds en el oido</sys:String>

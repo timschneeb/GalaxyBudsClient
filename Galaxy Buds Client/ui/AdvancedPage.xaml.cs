@@ -17,6 +17,7 @@ namespace Galaxy_Buds_Client.ui
         private MainWindow _mainWindow;
 
         private bool _seamlessSupported;
+        private bool _sidetoneSupported;
 
         public AdvancedPage(MainWindow mainWindow)
         {
@@ -36,6 +37,7 @@ namespace Galaxy_Buds_Client.ui
                 else if (BluetoothService.Instance.ActiveModel == Model.BudsPlus)
                 {
                     _seamlessSupported = e.Revision >= 11;
+                    _sidetoneSupported = e.Revision >= 8;
                     Sidetone.Switch.SetChecked(e.SideToneEnabled);
                     GamingMode.Switch.SetChecked(e.AdjustSoundSync);
                 }
@@ -81,7 +83,7 @@ namespace Galaxy_Buds_Client.ui
             {
                 _mainWindow.ShowUnsupportedFeaturePage(
                     string.Format(
-                        Loc.GetString("adv_required_firmware_seamless_connection"), "R170XXU0ATF2"));
+                        Loc.GetString("adv_required_firmware_later"), "R170XXU0ATF2"));
                 return;
             }
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.SetSeamlessConnection(e));
@@ -95,6 +97,13 @@ namespace Galaxy_Buds_Client.ui
 
         private void Sidetone_OnSwitchToggled(object sender, bool e)
         {
+            if (!_sidetoneSupported)
+            {
+                _mainWindow.ShowUnsupportedFeaturePage(
+                    string.Format(
+                        Loc.GetString("adv_required_firmware_later"), "R175XXU0ATF2"));
+                return;
+            }
             BluetoothService.Instance.SendAsync(SPPMessageBuilder.Ambient.SetSidetoneEnabled(e));
         }
 
