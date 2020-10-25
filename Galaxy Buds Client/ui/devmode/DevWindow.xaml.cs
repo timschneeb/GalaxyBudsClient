@@ -3,10 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Data;
+using System.Windows.Input;
 using Galaxy_Buds_Client.message;
 using Galaxy_Buds_Client.model;
 using Galaxy_Buds_Client.util;
@@ -31,11 +35,6 @@ namespace Galaxy_Buds_Client.ui.devmode
             BluetoothService.Instance.MessageReceived += BluetoothServiceMessageReceived;
         }
 
-        protected override void OnInitialized(EventArgs e)
-        {
-            base.OnInitialized(e);
-        }
-
         private void BluetoothServiceMessageReceived(object sender, SPPMessage e)
         {
             Dispatcher.BeginInvoke((Action) (() =>
@@ -47,7 +46,12 @@ namespace Galaxy_Buds_Client.ui.devmode
 
         private void OnClosing(object sender, CancelEventArgs e)
         {
-            BluetoothService.Instance.Disconnect();
+            BluetoothService.Instance.NewDataAvailable -= BluetoothServiceNewDataAvailable;
+            BluetoothService.Instance.MessageReceived -= BluetoothServiceMessageReceived;
+
+            _cache.Clear();
+            hexDump.Clear();
+            recvTable.Items.Clear();
         }
 
         private void BluetoothServiceNewDataAvailable(object sender, byte[] e)
@@ -181,5 +185,13 @@ namespace Galaxy_Buds_Client.ui.devmode
             }
         }
 
+        private void CopySelectedCell_OnExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            RecvMsgViewHolder item = (RecvMsgViewHolder)recvTable.SelectedItem;
+            if (item != null)
+            {
+                Clipboard.SetText(item.Payload);
+            }
+        }
     }
 }

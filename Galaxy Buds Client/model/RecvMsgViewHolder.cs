@@ -34,6 +34,8 @@ namespace Galaxy_Buds_Client.model
                 var name = Enum.GetName(t, i);
                 if (name == null)
                     throw new ArgumentNullException();
+                else if(name.StartsWith("UNKNOWN_"))
+                    return $"Unknown ({Convert.ToInt32(i)})";
 
                 return $"{name} ({Convert.ToInt32(i)})";
             }

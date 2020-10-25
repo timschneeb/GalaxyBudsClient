@@ -14,7 +14,7 @@ namespace Galaxy_Buds_Client.message
              typeof(SelfTestParser), typeof(GenericResponseParser), typeof(BatteryTypeParser), typeof(AmbientModeUpdateParser), typeof(DebugBuildInfoParser),
              typeof(DebugSerialNumberParser), typeof(DebugModeVersionParser), typeof(SppRoleStateParser), typeof(ResetResponseParser),
              typeof(AmbientVoiceFocusParser), typeof(AmbientVolumeParser), typeof(DebugGetAllDataParser), typeof(TouchUpdateParser),
-             typeof(AmbientWearingUpdateParser), typeof(MuteUpdateParser), typeof(SetOtherOptionParser),
+             typeof(AmbientWearingUpdateParser), typeof(MuteUpdateParser), typeof(SetOtherOptionParser), typeof(GenericStringParser),
              typeof(DebugSkuParser), typeof(SetInBandRingtoneParser), typeof(NoiseReductionModeUpdateParser)
         };
 

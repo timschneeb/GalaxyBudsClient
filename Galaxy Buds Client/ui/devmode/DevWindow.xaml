@@ -25,6 +25,12 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="Copy" Executed="CopySelectedCell_OnExecuted"/>
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="Q" Modifiers="Control" Command="Copy"/>
+    </Window.InputBindings>
 
     <DockPanel>
         <Menu DockPanel.Dock="Top">
@@ -32,6 +38,9 @@
                 <MenuItem Header="_Dump to file..." Click="MenuDumpFile_Click"/>
                 <MenuItem Header="_Parse dump..." Click="MenuParseDump_Click"/>
                 <MenuItem Header="_Clear" Click="MenuClear_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Copy selected cell" Command="Copy" InputGestureText="Ctrl+Q"/>
             </MenuItem>
         </Menu>
 
