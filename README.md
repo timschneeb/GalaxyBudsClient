@@ -48,7 +48,7 @@ You can [**download**](https://github.com/ThePBone/GalaxyBudsClient/releases) a 
 
 ## Translators
 
-* [@Florize](https://github.com/Florize) - Korean and Japanese translation
+* [@PlasticBrain](https://github.com/fhalfkg) - Korean and Japanese translation
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Russian and Ukrainian translation
 * [@erenbektas](https://github.com/erenbektas) - Turkish translation
 * [@kakkk](https://github.com/kakkk) - Chinese translation
