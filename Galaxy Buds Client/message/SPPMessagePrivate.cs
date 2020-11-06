@@ -118,8 +118,8 @@
             UNK_DEBUG_INFO_1 = 182,
             UNK_CLOSE_A2DP = 187,
             UNK_DEBUG_INFO_2 = 206,
-            UNK_DUMP_BONDED_DEVICES = 214,
-            UNK_BONDED_DEVICES = 216,
+            UNK_DUMP_BONDED_DEVICES = 212,
+            UNK_BONDED_DEVICES = 214,
             UNK_GENERIC_EVENT = 242,
 
             /* Reserved. Auto-generated section */
@@ -241,9 +241,9 @@
             UNKNOWN_209 = 209,
             UNKNOWN_210 = 210,
             UNKNOWN_211 = 211,
-            UNKNOWN_212 = 212,
             UNKNOWN_213 = 213,
             UNKNOWN_215 = 215,
+            UNKNOWN_216 = 216,
             UNKNOWN_217 = 217,
             UNKNOWN_218 = 218,
             UNKNOWN_219 = 219,

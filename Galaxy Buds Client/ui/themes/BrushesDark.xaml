@@ -47,6 +47,7 @@
 
     <!-- Buttons -->
     <ImageSource x:Key="BackButton">/Resources/navigation/back_light.png</ImageSource>
+    <ImageSource x:Key="NextButtonSrc">/Resources/navigation/next_small_light.png</ImageSource>
     <system:Uri x:Key="NextButton">/Resources/navigation/next_small_light.png</system:Uri>
     <system:Uri x:Key="SearchButton">/Resources/findmygear/start_lightgray.png</system:Uri>
    

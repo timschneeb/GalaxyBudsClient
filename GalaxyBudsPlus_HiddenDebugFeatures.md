@@ -7,22 +7,23 @@ All of these messages can be transmitted/received using the built-in data stream
 ## Contents
 
 - [Galaxy Buds+ Debug Features](#galaxy-buds-debug-features)
-    - [Disconnect](#disconnect)
-    - [Manually cause crashes](#manually-cause-crashes)
-    - [Forcefully shutdown](#forcefully-shutdown)
-    - [Firmware debug mode](#firmware-debug-mode)
-    - [Unused pairing mode](#unused-pairing-mode)
-    - [Close A2DP transmission channel](#close-a2dp-transmission-channel)
-    - [Dump Bluetooth bonded list and link-keys](#dump-bluetooth-bonded-list-and-link-keys)
-    - [Debug information](#debug-information)
-        - [0xA9 (MAC, FW version, ...)](#0xa9-mac-fw-version-)
-        - [0xB6 (Unknown)](#0xb6-unknown)
-        - [0xCE (Unknown)](#0xce-unknown)
-        - [Other unknown debug response triggers](#other-unknown-debug-response-triggers)
-    - [Generic event](#generic-event)
-    - [Unknown actions](#unknown-actions)
-        - [0xCF (207d)](#0xcf-207d)
-        - [0xD0 (208d)](#0xd0-208d)
+- [Contents](#contents)
+  - [Disconnect](#disconnect)
+  - [Manually cause crashes](#manually-cause-crashes)
+  - [Forcefully shutdown](#forcefully-shutdown)
+  - [Firmware debug mode](#firmware-debug-mode)
+  - [Unused pairing mode](#unused-pairing-mode)
+  - [Close A2DP transmission channel](#close-a2dp-transmission-channel)
+  - [Dump Bluetooth bonded list and link-keys](#dump-bluetooth-bonded-list-and-link-keys)
+  - [Debug information](#debug-information)
+    - [0xA9 (MAC, FW version, ...)](#0xa9-mac-fw-version-)
+    - [0xB6 (Unknown)](#0xb6-unknown)
+    - [0xCE (Unknown)](#0xce-unknown)
+    - [Other unknown debug response triggers](#other-unknown-debug-response-triggers)
+  - [Generic event](#generic-event)
+  - [Unknown actions](#unknown-actions)
+    - [0xCF (207d)](#0xcf-207d)
+    - [0xD0 (208d)](#0xd0-208d)
 
 ### Disconnect
 
@@ -38,6 +39,7 @@ It is possible to cause CPU assertion exceptions and force the device to reboot 
 
 | Message ID | Payload | Type    |
 | ---------- | ------- | ------- |
+| 0x3D (61d) | *Empty* | Request |
 | 0x52 (82d) | *Empty* | Request |
 
 Returns one zero-byte as confirmation.
@@ -149,7 +151,7 @@ Invoked by:
 
 #### 0xB6 (Unknown)
 
-This message returns two separate messages for both earbuds containing unknown data. Memory table:
+This message returns two separate messages for both earbuds containing unknown data. Also mirrors the out-going payload in a separate message if available. Memory table:
 
 | Index | Description                               | Size     |
 | ----- | ----------------------------------------- | -------- |

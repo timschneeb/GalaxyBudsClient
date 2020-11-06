@@ -12,9 +12,10 @@ An unofficial Galaxy Buds Manager for Windows (Buds, Buds+, Buds Live)
 
 This Client is a product of my research on the custom RFComm Serial Protocol the Buds use to receive and send binary (configuration) data. If you are interested in the structure of the protocol and its serial messages, I recommend you to check my notes out which I took while reverse-engineering the whole thing:
 
-* [My Buds (2019) Notes](GalaxyBudsRFCommProtocol.md)
-* [My Buds Plus Notes](Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md)
-
+* [Buds (2019) Development Notes](GalaxyBudsRFCommProtocol.md)
+* [Buds Plus Development Notes](Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md)
+* [Buds Plus Undocumented Findings](Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md)
+* 
 ## Features
 
 **New features** (in addition to the existing ones):
