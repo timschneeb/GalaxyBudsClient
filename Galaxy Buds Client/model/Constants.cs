@@ -19,18 +19,20 @@ namespace Galaxy_Buds_Client.model
             es,
             [Description("Portuguese")]
             pt,
+            [Description("Italian")]
+            it,
             [Description("Korean")]
             ko,
             [Description("Japanese")]
             ja,
-            [Description("Chinese")]
-            cn,
             [Description("Russian")]
             ru,
             [Description("Ukrainian")]
             ua,
             [Description("Turkish")]
             tr,
+            [Description("Chinese")]
+            cn,
             [Description("Indonesian")]
             in_,
 

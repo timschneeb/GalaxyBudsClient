@@ -311,6 +311,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="i18N\it.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="i18N\ja.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
