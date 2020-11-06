@@ -207,7 +207,6 @@ namespace Galaxy_Buds_Client
         private void Instance_GetAllDataResponse(object sender, DebugGetAllDataParser e)
         {
             Settings.Default.LastSwVersion = e.SoftwareVersion;
-            Settings.Default.Save();
         }
 
         private void TbiOnTrayRightMouseDown(object sender, RoutedEventArgs e)
@@ -232,6 +231,7 @@ namespace Galaxy_Buds_Client
             else
             {
                 BluetoothService.Instance.Disconnect();
+                Settings.Default.Save();
             }
         }
 
@@ -271,104 +271,112 @@ namespace Galaxy_Buds_Client
                 _previousTrayBC = (int)bcase;
             }
 
-            Dispatcher.Invoke(() =>
+            try
             {
-                ContextMenu ctxMenu = new ContextMenu();
-                ctxMenu.Style = (Style)FindResource("SmallContextMenuStyle");
-
-                int staticCount = 0;
-
-                if (_previousTrayBL > 0)
+                Dispatcher.Invoke(() =>
                 {
-                    MenuItem left = new MenuItem();
-                    left.Header = $"{Loc.GetString("left")}: {_previousTrayBL}%";
-                    left.IsEnabled = false;
-                    left.Style = (Style)FindResource("SmallMenuItemStyle-Static");
-                    ctxMenu.Items.Add(left);
-                    staticCount++;
-                }
-                if (_previousTrayBR > 0)
-                {
-                    MenuItem right = new MenuItem();
-                    right.Header = $"{Loc.GetString("right")}: {_previousTrayBR}%";
-                    right.IsEnabled = false;
-                    right.Style = (Style)FindResource("SmallMenuItemStyle-Static");
-                    ctxMenu.Items.Add(right);
-                    staticCount++;
-                }
-                if (_previousTrayBC > 0)
-                {
-                    MenuItem c = new MenuItem();
-                    c.Header = $"{Loc.GetString("case")}: {_previousTrayBC}%";
-                    c.IsEnabled = false;
-                    c.Style = (Style)FindResource("SmallMenuItemStyle-Static");
-                    ctxMenu.Items.Add(c);
-                    staticCount++;
-                }
+                    ContextMenu ctxMenu = new ContextMenu();
+                    ctxMenu.Style = (Style)FindResource("SmallContextMenuStyle");
 
-                if (staticCount > 0)
-                {
+                    int staticCount = 0;
 
-                    Menu_AddSeparator(ctxMenu);
-                    MenuItem touchlockToggle = new MenuItem();
-                    touchlockToggle.Header = _touchpadPage.LockToggle.IsChecked ? Loc.GetString("tray_unlock_touchpad") : Loc.GetString("tray_lock_touchpad");
-                    touchlockToggle.Click += delegate
+                    if (_previousTrayBL > 0)
                     {
-                        _touchpadPage.ToggleTouchlock();
-                    };
-                    touchlockToggle.Style = (Style)FindResource("SmallMenuItemStyle");
-                    ctxMenu.Items.Add(touchlockToggle);
-
-                    MenuItem equalizerToggle = new MenuItem();
-                    equalizerToggle.Header = _equalizerPage.EQToggle.IsChecked ? Loc.GetString("tray_disable_eq") : Loc.GetString("tray_enable_eq");
-                    equalizerToggle.Click += delegate
-                    {
-                        _equalizerPage.ToggleEqualizer();
-                    };
-                    equalizerToggle.Style = (Style)FindResource("SmallMenuItemStyle");
-                    ctxMenu.Items.Add(equalizerToggle);
-
-                    if (BluetoothService.Instance.ActiveModel != Model.BudsLive)
-                    {
-                        MenuItem ambientToggle = new MenuItem();
-                        ambientToggle.Header = _ambientSoundPage.AmbientToggle.IsChecked ? Loc.GetString("tray_disable_ambient_sound") : Loc.GetString("tray_enable_ambient_sound");
-                        ambientToggle.Click += delegate
-                        {
-                            _ambientSoundPage.ToggleAmbient();
-                        };
-                        ambientToggle.Style = (Style)FindResource("SmallMenuItemStyle");
-                        ctxMenu.Items.Add(ambientToggle);
+                        MenuItem left = new MenuItem();
+                        left.Header = $"{Loc.GetString("left")}: {_previousTrayBL}%";
+                        left.IsEnabled = false;
+                        left.Style = (Style)FindResource("SmallMenuItemStyle-Static");
+                        ctxMenu.Items.Add(left);
+                        staticCount++;
                     }
-                    if (BluetoothService.Instance.ActiveModel == Model.BudsLive)
+                    if (_previousTrayBR > 0)
                     {
-                        MenuItem ancToggle = new MenuItem();
-                        ancToggle.Header = _mainPage.AncToggle.IsChecked ? Loc.GetString("tray_disable_anc") : Loc.GetString("tray_enable_anc");
-                        ancToggle.Click += delegate
-                        {
-                            _mainPage.ToggleAnc();
-                        };
-                        ancToggle.Style = (Style)FindResource("SmallMenuItemStyle");
-                        ctxMenu.Items.Add(ancToggle);
+                        MenuItem right = new MenuItem();
+                        right.Header = $"{Loc.GetString("right")}: {_previousTrayBR}%";
+                        right.IsEnabled = false;
+                        right.Style = (Style)FindResource("SmallMenuItemStyle-Static");
+                        ctxMenu.Items.Add(right);
+                        staticCount++;
+                    }
+                    if (_previousTrayBC > 0)
+                    {
+                        MenuItem c = new MenuItem();
+                        c.Header = $"{Loc.GetString("case")}: {_previousTrayBC}%";
+                        c.IsEnabled = false;
+                        c.Style = (Style)FindResource("SmallMenuItemStyle-Static");
+                        ctxMenu.Items.Add(c);
+                        staticCount++;
                     }
 
-                    Menu_AddSeparator(ctxMenu);
-                }
+                    if (staticCount > 0)
+                    {
 
-                MenuItem quit = new MenuItem();
-                quit.Header = Loc.GetString("tray_quit");
-                quit.Click += delegate
-                {
-                    var prev = Settings.Default.MinimizeTray;
-                    Settings.Default.MinimizeTray = false;
-                    this.Close();
-                    Settings.Default.MinimizeTray = prev;
-                };
-                quit.Style = (Style)FindResource("SmallMenuItemStyle");
-                ctxMenu.Items.Add(quit);
+                        Menu_AddSeparator(ctxMenu);
+                        MenuItem touchlockToggle = new MenuItem();
+                        touchlockToggle.Header = _touchpadPage.LockToggle.IsChecked ? Loc.GetString("tray_unlock_touchpad") : Loc.GetString("tray_lock_touchpad");
+                        touchlockToggle.Click += delegate
+                        {
+                            _touchpadPage.ToggleTouchlock();
+                        };
+                        touchlockToggle.Style = (Style)FindResource("SmallMenuItemStyle");
+                        ctxMenu.Items.Add(touchlockToggle);
 
-                _tbi.ContextMenu = ctxMenu;
+                        MenuItem equalizerToggle = new MenuItem();
+                        equalizerToggle.Header = _equalizerPage.EQToggle.IsChecked ? Loc.GetString("tray_disable_eq") : Loc.GetString("tray_enable_eq");
+                        equalizerToggle.Click += delegate
+                        {
+                            _equalizerPage.ToggleEqualizer();
+                        };
+                        equalizerToggle.Style = (Style)FindResource("SmallMenuItemStyle");
+                        ctxMenu.Items.Add(equalizerToggle);
 
-            });
+                        if (BluetoothService.Instance.ActiveModel != Model.BudsLive)
+                        {
+                            MenuItem ambientToggle = new MenuItem();
+                            ambientToggle.Header = _ambientSoundPage.AmbientToggle.IsChecked ? Loc.GetString("tray_disable_ambient_sound") : Loc.GetString("tray_enable_ambient_sound");
+                            ambientToggle.Click += delegate
+                            {
+                                _ambientSoundPage.ToggleAmbient();
+                            };
+                            ambientToggle.Style = (Style)FindResource("SmallMenuItemStyle");
+                            ctxMenu.Items.Add(ambientToggle);
+                        }
+                        if (BluetoothService.Instance.ActiveModel == Model.BudsLive)
+                        {
+                            MenuItem ancToggle = new MenuItem();
+                            ancToggle.Header = _mainPage.AncToggle.IsChecked ? Loc.GetString("tray_disable_anc") : Loc.GetString("tray_enable_anc");
+                            ancToggle.Click += delegate
+                            {
+                                _mainPage.ToggleAnc();
+                            };
+                            ancToggle.Style = (Style)FindResource("SmallMenuItemStyle");
+                            ctxMenu.Items.Add(ancToggle);
+                        }
+
+                        Menu_AddSeparator(ctxMenu);
+                    }
+
+                    MenuItem quit = new MenuItem();
+                    quit.Header = Loc.GetString("tray_quit");
+                    quit.Click += delegate
+                    {
+                        var prev = Settings.Default.MinimizeTray;
+                        Settings.Default.MinimizeTray = false;
+                        this.Close();
+                        Settings.Default.MinimizeTray = prev;
+                    };
+                    quit.Style = (Style)FindResource("SmallMenuItemStyle");
+                    ctxMenu.Items.Add(quit);
+
+                    _tbi.ContextMenu = ctxMenu;
+
+                });
+            }
+            catch(TaskCanceledException ex)
+            {
+                /* Ignore failed tasks here */
+                SentrySdk.AddBreadcrumb("GenerateTrayContext: " + ex.ToString(), level: Sentry.Protocol.BreadcrumbLevel.Warning);
+            }
         }
 
         /*
@@ -433,20 +441,26 @@ namespace Galaxy_Buds_Client
 
         private void Tray_OnTrayLeftMouseDown(object sender, RoutedEventArgs e)
         {
-
-            Visibility = Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-            if (Visibility == Visibility.Visible)
+            try
             {
-                if (WindowState == WindowState.Minimized)
+                Visibility = Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+                if (Visibility == Visibility.Visible)
                 {
-                    WindowState = WindowState.Normal;
-                }
+                    if (WindowState == WindowState.Minimized)
+                    {
+                        WindowState = WindowState.Normal;
+                    }
 
-                Activate();
-                Topmost = true;
-                Topmost = false;
-                Focus();
-                Show();
+                    Activate();
+                    Topmost = true;
+                    Topmost = false;
+                    Focus();
+                    Show();
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                SentrySdk.AddBreadcrumb("Tray_OnTrayLeftMouseDown: " + ex.ToString());
             }
         }
 

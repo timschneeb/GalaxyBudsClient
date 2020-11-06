@@ -74,18 +74,8 @@
                 </Grid>
             </ScrollViewer>
         </Border>
-        <Border Name="RemapBorder" Grid.Row="5" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518" MinHeight="81"
-                Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
-            <Border CornerRadius="20" Style="{StaticResource BorderHoverStyle}">
-                <Grid Margin="20,0">
-                    <element:DetailListItem Text="{DynamicResource touchpad_remap}" x:Name="Remap"
-                                    TextDetail="{DynamicResource touchpad_remap_description}"  />
-                    <Image Source="{DynamicResource NextButtonSrc}" Width="35" Height="35" Margin="436,10,-5,10" />
-                </Grid>
-            </Border>
-        </Border>
 
-        <Border Name="DoubleTapVolumeBorder" Grid.Row="6" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+       <Border Name="DoubleTapVolumeBorder" Grid.Row="6" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
                 Height="Auto" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="20" Margin="20,0,24,10">
             <element:CheckableDetailListItem Text="{DynamicResource touchpad_double_tap_volume}" TextDetail="{DynamicResource touchpad_double_tap_volume_description}"
                                              x:Name="DoubleTapVolume" SwitchToggled="DoubleTapVolume_OnSwitchToggled" />

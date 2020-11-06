@@ -97,6 +97,7 @@
     <sys:String x:Key="hotrec_title">Hotkey Recorder</sys:String>
     <sys:String x:Key="hotrec_content">Please enter a key-combination (hold down):</sys:String>
     <sys:String x:Key="hotrec_empty">None</sys:String>
+    <sys:String x:Key="hotrec_note">Note: Due to User Interface Privacy Isolation (UIPI) only applications of the same or lower elevation can properly receive hotkey commands.</sys:String>
 
     <!-- Welcome page -->
     <sys:String x:Key="welcome_textblock_header">Welcome!</sys:String>
@@ -170,8 +171,6 @@
 
     <sys:String x:Key="touchpad_double_tap_volume">Double-Tap Earbud Edge</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Double-tap the edge of the left or right earbud to turn the volume down or up</sys:String>
-    <sys:String x:Key="touchpad_remap">Remap default touch actions</sys:String>
-    <sys:String x:Key="touchpad_remap_description">Remap single, double, and triple touch actions (Windows only)</sys:String>
 
     <!-- Custom touchpad action page -->
     <sys:String x:Key="cact_header">Define custom long-press action</sys:String>
