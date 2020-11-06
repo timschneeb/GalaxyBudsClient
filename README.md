@@ -12,10 +12,10 @@ An unofficial Galaxy Buds Manager for Windows (Buds, Buds+, Buds Live)
 
 This Client is a product of my research on the custom RFComm Serial Protocol the Buds use to receive and send binary (configuration) data. If you are interested in the structure of the protocol and its serial messages, I recommend you to check my notes out which I took while reverse-engineering the whole thing:
 
-* [Buds (2019) Development Notes](GalaxyBudsRFCommProtocol.md)
-* [Buds Plus Development Notes](Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md)
-* [Buds Plus Undocumented Findings](Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md)
-* 
+* [Buds (2019) Notes](GalaxyBudsRFCommProtocol.md)
+* [Buds Plus Notes](Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md)
+* [Buds Plus: Undocumented calls](https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsPlus_HiddenDebugFeatures.md)
+
 ## Features
 
 **New features** (in addition to the existing ones):
@@ -48,13 +48,14 @@ You can [**download**](https://github.com/ThePBone/GalaxyBudsClient/releases) a 
 
 ## Translators
 
-* [@Florize](https://github.com/Florize) - Korean and Japanese translation
+* [@PlasticBrain](https://github.com/fhalfkg) - Korean and Japanese translation
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Russian and Ukrainian translation
 * [@erenbektas](https://github.com/erenbektas) - Turkish translation
 * [@kakkk](https://github.com/kakkk) - Chinese translation
 * [@efrenbg1](https://github.com/efrenbg1) and Andrew Gonza - Spanish translation
 * [@giovankabisano](https://github.com/giovankabisano) - Indonesian translation
 * [@lucasskluser](https://github.com/lucasskluser) - Portuguese translation
+* [@alb-p](https://github.com/alb-p) - Italian translation
  
 ## Contributors
 * [@AndriesK](https://github.com/AndriesK) - Buds Live bug fix
