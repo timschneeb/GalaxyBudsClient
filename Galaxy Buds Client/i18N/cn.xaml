@@ -17,13 +17,13 @@
     <sys:String x:Key="nobluetoothdev">未找到蓝牙设备 请开启蓝牙后重试</sys:String>
 
     <!-- SPP Message Parser -->
-    <sys:String x:Key="sppmsg_too_small">Packet size is too small</sys:String>
-    <sys:String x:Key="sppmsg_invalid_som">Invalid SOM</sys:String>
+    <sys:String x:Key="sppmsg_too_small">包大小太小</sys:String>
+    <sys:String x:Key="sppmsg_invalid_som">非法的SOM</sys:String>
     <!-- Context: SOM = Start of message -->
-    <sys:String x:Key="sppmsg_invalid_eom">Invalid EOM</sys:String>
+    <sys:String x:Key="sppmsg_invalid_eom">非法的EOM</sys:String>
     <!-- Context: EOM = End of message -->
-    <sys:String x:Key="sppmsg_size_mismatch">Payload size mismatch</sys:String>
-    <sys:String x:Key="sppmsg_tl">Packet size is too small</sys:String>
+    <sys:String x:Key="sppmsg_size_mismatch">Payload大小不匹配</sys:String>
+    <sys:String x:Key="sppmsg_tl">包大小太小</sys:String>
 
     <!-- Dark Mode States -->
     <sys:String x:Key="darkmode_disabled">关闭</sys:String>
@@ -31,19 +31,19 @@
     <sys:String x:Key="darkmode_system">使用系统设置</sys:String>
 
     <!-- Connection popup -->
-    <sys:String x:Key="connpopup_placement_tl">Top left</sys:String>
-    <sys:String x:Key="connpopup_placement_tc">Top center</sys:String>
-    <sys:String x:Key="connpopup_placement_tr">Top right</sys:String>
-    <sys:String x:Key="connpopup_placement_bl">Bottom left</sys:String>
-    <sys:String x:Key="connpopup_placement_bc">Bottom center</sys:String>
-    <sys:String x:Key="connpopup_placement_br">Bottom right</sys:String>
+    <sys:String x:Key="connpopup_placement_tl">顶部左侧</sys:String>
+    <sys:String x:Key="connpopup_placement_tc">顶部中心</sys:String>
+    <sys:String x:Key="connpopup_placement_tr">顶部右侧</sys:String>
+    <sys:String x:Key="connpopup_placement_bl">底部左侧</sys:String>
+    <sys:String x:Key="connpopup_placement_bc">底部中心</sys:String>
+    <sys:String x:Key="connpopup_placement_br">底部右侧</sys:String>
     <sys:String x:Key="connpopup_title">{0}的 Galaxy Buds{1}</sys:String>
     <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
 
     <!-- Placement  (Buds+) -->
     <sys:String x:Key="placement_disconnected">断开连接</sys:String>
-    <sys:String x:Key="placement_wearing">Wearing</sys:String>
-    <sys:String x:Key="placement_not_wearing">Idle</sys:String>
+    <sys:String x:Key="placement_wearing">警告</sys:String>
+    <sys:String x:Key="placement_not_wearing">空闲</sys:String>
     <sys:String x:Key="placement_in_case">充电盒</sys:String>
 
     <!-- Touch options -->
@@ -134,7 +134,7 @@
 
     <sys:String x:Key="updater_noupdate">当前未能找到可用更新 请稍后重试或在GitHub上查找更新</sys:String>
     <sys:String x:Key="updater_noupdate_title">无更新</sys:String>
-    <sys:String x:Key="updater_newrelease">Update {0} for Galaxy Buds Manager has been released</sys:String>
+    <sys:String x:Key="updater_newrelease">Galaxy Buds Manager的更新 {0} 已经推送</sys:String>
 
     <!-- Device selection page (setup) -->
     <sys:String x:Key="devsel_header">选择你的 Galaxy Buds</sys:String>
@@ -193,7 +193,7 @@
     <sys:String x:Key="system_protover">修订版本</sys:String>
     <sys:String x:Key="system_btaddr">蓝牙地址</sys:String>
     <sys:String x:Key="system_serial">序列号</sys:String>
-    <sys:String x:Key="system_build_info">Build Info</sys:String>
+    <sys:String x:Key="system_build_info">构建信息</sys:String>
     <sys:String x:Key="system_battery_type">电池类型</sys:String>
     <sys:String x:Key="system_proximity">距离传感器</sys:String>
     <sys:String x:Key="system_thermo">温度传感器</sys:String>
@@ -202,7 +202,7 @@
     <!-- Note: system_accel only used on the self-test page -->
     <sys:String x:Key="system_adc_soc">ADC SoC</sys:String>
     <!-- Context: SoC = State of charge (battery percentage) -->
-    <sys:String x:Key="system_adc_voltage">ADC Voltage</sys:String>
+    <sys:String x:Key="system_adc_voltage">ADC 电压</sys:String>
     <sys:String x:Key="system_adc_current">ADC Current</sys:String>
 
     <sys:String x:Key="selftest_header">自检</sys:String>
@@ -246,9 +246,9 @@
     <sys:String x:Key="factory_confirm">确认恢复出厂设置</sys:String>
     <sys:String x:Key="factory_error_title">恢复出厂设置失败</sys:String>
     <sys:String x:Key="factory_error">
-        Device returned error code: {0} 
-        Make sure both Earbuds are turned on and reachable. 
-        You might need to manually reconnect your Earbuds.
+        设备返回错误代码: {0} 
+        请确保耳机开启且可用。
+        你可能需要手动重新连接你的耳机。
     </sys:String>
     <sys:String x:Key="factory_text_p1">是否确定恢复出厂设置？</sys:String>
     <sys:String x:Key="factory_text_p2">恢复出厂设置后，你需要重新连接你的耳机</sys:String>
@@ -276,17 +276,17 @@
     <sys:String x:Key="as_header">环境音</sys:String>
     <sys:String x:Key="as_enable">开启环境音</sys:String>
     <sys:String x:Key="as_volume">环境音音量</sys:String>
-    <sys:String x:Key="as_voicefocus">Voice Focus</sys:String>
-    <sys:String x:Key="as_extrahigh">Extra-High Ambient Volume</sys:String>
-    <sys:String x:Key="as_extrahigh_description">Adds an extra volume level to the Ambient Volume slider</sys:String>
+    <sys:String x:Key="as_voicefocus">语音专注</sys:String>
+    <sys:String x:Key="as_extrahigh">额外增强的环境音</sys:String>
+    <sys:String x:Key="as_extrahigh_description">新增一个额外音量等级至环境音滑杆</sys:String>
 
     <!-- Advanced page -->
     <sys:String x:Key="adv_header">高级设置</sys:String>
-    <sys:String x:Key="adv_required_firmware_later">{0} or later</sys:String>
+    <sys:String x:Key="adv_required_firmware_later">{0} 或更新</sys:String>
     <sys:String x:Key="adv_seamless">无缝连接</sys:String>
     <sys:String x:Key="adv_seamless_desc"> 快速切换到附近的设备，而无需断开耳机或打开配对模式 </sys:String>
-    <sys:String x:Key="adv_resume_playback">Resume/start playback if Buds are worn</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">Sends a global play/pause state change event when at least one of the proximity sensors is covered (Windows only)</sys:String>
+    <sys:String x:Key="adv_resume_playback">当设备被佩戴，恢复/启动回放</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">当至少一个接近传感器被覆盖时，发送全局播放/暂停状态改变事件 (Windows only)</sys:String>
     <sys:String x:Key="adv_sidetone">通话时使用环境音</sys:String>
     <sys:String x:Key="adv_sidetone_desc"> 在打电话的时候更清楚地听到你自己的声音</sys:String>
     <sys:String x:Key="adv_gaming_mode">游戏模式</sys:String>
@@ -295,10 +295,10 @@
     <!-- Credits -->
     <sys:String x:Key="credits_header">关于</sys:String>
     <sys:String x:Key="credits_developer">开发</sys:String>
-    <sys:String x:Key="credits_license">License</sys:String>
+    <sys:String x:Key="credits_license">协议</sys:String>
     <sys:String x:Key="credits_version">版本</sys:String>
-    <sys:String x:Key="credits_contributor">Contributor</sys:String>
-    <sys:String x:Key="credits_translator">Translator</sys:String>
+    <sys:String x:Key="credits_contributor">构建者</sys:String>
+    <sys:String x:Key="credits_translator">翻译者</sys:String>
 
     <!-- Connection lost page -->
     <sys:String x:Key="connlost_header">无法建立连接</sys:String>
@@ -306,8 +306,8 @@
     <sys:String x:Key="connlost_description_p2">
         请检查你的蓝牙设置，确保耳机以配对此计算机。如有必要，可以在 选项->注销设备 后重新绑定
     </sys:String>
-    <sys:String x:Key="connlost_description_p3">Additional information:</sys:String>
-    <sys:String x:Key="connlost_noinfo">Failed to gather error information</sys:String>
+    <sys:String x:Key="connlost_description_p3">附加信息:</sys:String>
+    <sys:String x:Key="connlost_noinfo">收集错误信息失败</sys:String>
     <sys:String x:Key="connlost_connect">连接</sys:String>
     <sys:String x:Key="connlost_connecting">连接中...</sys:String>
 
