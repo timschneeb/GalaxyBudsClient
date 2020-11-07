@@ -2,7 +2,7 @@
 An unofficial Galaxy Buds Manager for Windows (Buds, Buds+, Buds Live)
 
 
-**This README is also available in [Korean](/README_kor.md), [Japanese](/README_jpn.md), [Russian](/README_rus.md) and [Ukrainian](/README_ukr.md)!**
+**This README is also available in [Chinese](/README_chs.md), [Korean](/README_kor.md), [Japanese](/README_jpn.md), [Russian](/README_rus.md) and [Ukrainian](/README_ukr.md)!**
 
 (You can find downloads in the [release tab](https://github.com/thepbone/galaxybudsclient/releases))
 
@@ -51,7 +51,7 @@ You can [**download**](https://github.com/ThePBone/GalaxyBudsClient/releases) a 
 * [@PlasticBrain](https://github.com/fhalfkg) - Korean and Japanese translation
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Russian and Ukrainian translation
 * [@erenbektas](https://github.com/erenbektas) - Turkish translation
-* [@kakkk](https://github.com/kakkk) - Chinese translation
+* [@kakkk](https://github.com/kakkk) and [@KevinZonda](https://github.com/KevinZonda) - Chinese translation
 * [@efrenbg1](https://github.com/efrenbg1) and Andrew Gonza - Spanish translation
 * [@giovankabisano](https://github.com/giovankabisano) - Indonesian translation
 * [@lucasskluser](https://github.com/lucasskluser) - Portuguese translation
