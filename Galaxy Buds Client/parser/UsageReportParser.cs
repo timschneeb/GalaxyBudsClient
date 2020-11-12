@@ -60,6 +60,12 @@ namespace Galaxy_Buds_Client.parser
             if (msg.Id != HandledType)
                 return;
 
+            if(ActiveModel == model.Constants.Model.BudsLive)
+            {
+                /* Buds Live not supported right now */
+                return;
+            }
+
             if (Statistics == null)
                 Statistics = new Dictionary<string, long>();
             else

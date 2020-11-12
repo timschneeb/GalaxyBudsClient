@@ -72,10 +72,21 @@
                                   ItemsSource="{Binding Source={StaticResource msgIds}}"/>
                         <Button x:Name="SendSubmit" Content="Send" Margin="0,10,10,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Grid.Column="1"
                                 Click="SendMsg_Click"/>
-                        <TextBox x:Name="SendMsgPayload" Margin="10,42,10,10" element:Masking.Mask="^[\s0-9a-fA-F]*$" TextWrapping="Wrap"
-                                 />
                         <ComboBox x:Name="SendMsgType" Margin="0,10,90,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Right" Width="106"
                                   ItemsSource="{Binding Source={StaticResource msgTypes}}"/>
+                        <TabControl x:Name="PayloadTabs" TabStripPlacement="Bottom" Margin="10,42,10,10">
+                            <TabItem Name="HexTab" Header="Hexadecimal">
+                                <Grid Background="#FFE5E5E5">
+                                    <TextBox x:Name="SendMsgPayload" element:Masking.Mask="^[\s0-9a-fA-F]*$" TextWrapping="Wrap"/>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Name="AsciiTab" Header="ASCII">
+                                <Grid>
+                                    <TextBox x:Name="SendMsgAsciiPayload" element:Masking.Mask=".*" TextWrapping="Wrap" Margin="0,0,0,23" AcceptsReturn="True"/>
+                                    <CheckBox x:Name="AppendNullAscii" Content="Append null terminator" Height="18" VerticalAlignment="Bottom" Margin="0,0,10,0"/>
+                                </Grid>
+                            </TabItem>
+                        </TabControl>
                     </Grid>
                 </Border>
             </Grid>

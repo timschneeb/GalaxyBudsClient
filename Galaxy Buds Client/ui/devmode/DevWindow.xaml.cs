@@ -150,10 +150,16 @@ namespace Galaxy_Buds_Client.ui.devmode
                 return;
             }
 
+            byte[] ascii = System.Text.Encoding.ASCII.GetBytes(SendMsgAsciiPayload.Text);
+            if (AppendNullAscii.IsChecked == true)
+            {
+                ascii = ByteArrayUtils.AddByteToArray(ascii, 00);
+            }
+
             SPPMessage msg = new SPPMessage
             {
                 Id = (SPPMessage.MessageIds) SendMsgId.SelectedValue,
-                Payload = SendMsgPayload.Text.HexStringToByteArray(),
+                Payload = (PayloadTabs.SelectedItem as TabItem).Name == "AsciiTab" ? ascii : SendMsgPayload.Text.HexStringToByteArray(),
                 Type = (SPPMessage.MsgType) SendMsgType.SelectedValue
             };
             BluetoothService.Instance.SendAsync(msg);

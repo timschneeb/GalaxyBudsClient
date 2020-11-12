@@ -6,6 +6,14 @@ namespace Galaxy_Buds_Client.util
 {
     static class ByteArrayUtils
     {
+        public static byte[] AddByteToArray(byte[] bArray, byte newByte)
+        {
+            byte[] newArray = new byte[bArray.Length + 1];
+            bArray.CopyTo(newArray, 0);
+            newArray[newArray.Length - 1] = newByte;
+            return newArray;
+        }
+
         public static Byte[] RTrimBytes(this Byte[] bytes)
         {
             if (bytes.Length == 0) return bytes;
