@@ -408,6 +408,9 @@ namespace Galaxy_Buds_Client
         {
             Dispatcher.Invoke(() =>
             {
+                if (_previousTrayBL <= 0 && _previousTrayBR <= 0)
+                    return;
+
                 BudsPopup pop = new BudsPopup(screen,
                     BluetoothService.Instance.ActiveModel, _previousTrayBL,
                     _previousTrayBR, _previousTrayBC);

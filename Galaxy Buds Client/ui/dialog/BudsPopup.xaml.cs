@@ -50,9 +50,6 @@ namespace Galaxy_Buds_Client.ui.dialog {
         public BudsPopup(Screen screen, Model model, int left, int right, int box) {
             InitializeComponent();
 
-            if (left <= 0 && right <= 0)
-                return;
-
             _screen = screen;
 
             string mod = "";
