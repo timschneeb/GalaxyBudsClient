@@ -14,7 +14,9 @@
     <sys:String x:Key="cancel">取消</sys:String>
     <sys:String x:Key="apply">应用</sys:String>
     <sys:String x:Key="notset">未设置</sys:String>
-    <sys:String x:Key="nobluetoothdev">未找到蓝牙设备 请开启蓝牙后重试</sys:String>
+    <sys:String x:Key="nobluetoothdev">未找到蓝牙设备，请开启蓝牙后重试。</sys:String>
+
+    <sys:String x:Key="anc">主动降噪</sys:String>
 
     <!-- SPP Message Parser -->
     <sys:String x:Key="sppmsg_too_small">包大小太小</sys:String>
@@ -42,25 +44,25 @@
 
     <!-- Placement  (Buds+) -->
     <sys:String x:Key="placement_disconnected">断开连接</sys:String>
-    <sys:String x:Key="placement_wearing">警告</sys:String>
+    <sys:String x:Key="placement_wearing">佩戴中</sys:String>
     <sys:String x:Key="placement_not_wearing">空闲</sys:String>
     <sys:String x:Key="placement_in_case">充电盒</sys:String>
 
     <!-- Touch options -->
     <sys:String x:Key="touchoption_voice">语音助手</sys:String>
-    <sys:String x:Key="touchoption_quickambientsound">快速开启关闭环境声</sys:String>
+    <sys:String x:Key="touchoption_quickambientsound">快速开启关闭环境音</sys:String>
     <sys:String x:Key="touchoption_volume">音量</sys:String>
     <sys:String x:Key="touchoption_volume_up">音量加</sys:String>
     <sys:String x:Key="touchoption_volume_down">音量减</sys:String>
     <sys:String x:Key="touchoption_ambientsound">环境声</sys:String>
-    <sys:String x:Key="touchoption_spotify">Spotify (Android only)</sys:String>
-    <sys:String x:Key="touchoption_custom">自定义</sys:String>
+    <sys:String x:Key="touchoption_spotify">Spotify (仅Android设备)</sys:String>
+    <sys:String x:Key="touchoption_custom">自定义...</sys:String>
     <sys:String x:Key="touchoption_custom_null">未设置</sys:String>
     <sys:String x:Key="touchoption_custom_unknown">未知</sys:String>
-    <sys:String x:Key="touchoption_custom_prefix">自定义:</sys:String>
+    <sys:String x:Key="touchoption_custom_prefix">自定义：</sys:String>
 
-    <sys:String x:Key="touchoption_custom_ambient_up">环境声增加</sys:String>
-    <sys:String x:Key="touchoption_custom_ambient_down">环境声降低</sys:String>
+    <sys:String x:Key="touchoption_custom_ambient_up">环境音量增加</sys:String>
+    <sys:String x:Key="touchoption_custom_ambient_down">环境音量降低</sys:String>
     <sys:String x:Key="touchoption_custom_toggle_eq">切换均衡器</sys:String>
     <sys:String x:Key="touchoption_custom_next_eq_preset">下一个均衡器预设</sys:String>
     <sys:String x:Key="touchoption_custom_trigger_hotkey">点击热键...</sys:String>
@@ -72,15 +74,17 @@
     <sys:String x:Key="optionsmenu_refresh">刷新状态</sys:String>
     <sys:String x:Key="optionsmenu_deregister">重新注册设备</sys:String>
     <sys:String x:Key="optionsmenu_update">检查更新</sys:String>
-    <sys:String x:Key="optionsmenu_credits">Credits</sys:String>
+    <sys:String x:Key="optionsmenu_credits">关于</sys:String>
 
     <!-- Tray context menu -->
     <sys:String x:Key="tray_unlock_touchpad">使用触摸</sys:String>
-    <sys:String x:Key="tray_lock_touchpad">禁止触摸</sys:String>
+    <sys:String x:Key="tray_lock_touchpad">阻止触摸</sys:String>
     <sys:String x:Key="tray_enable_ambient_sound">开启环境音</sys:String>
     <sys:String x:Key="tray_disable_ambient_sound">关闭环境音</sys:String>
     <sys:String x:Key="tray_enable_eq">开启均衡器</sys:String>
     <sys:String x:Key="tray_disable_eq">关闭均衡器</sys:String>
+    <sys:String x:Key="tray_enable_anc">开启主动降噪</sys:String>
+    <sys:String x:Key="tray_disable_anc">关闭主动降噪</sys:String>
     <sys:String x:Key="tray_quit">退出</sys:String>
 
 
@@ -93,24 +97,25 @@
     <sys:String x:Key="hotrec_title">热键记录</sys:String>
     <sys:String x:Key="hotrec_content">请键入热键组合：</sys:String>
     <sys:String x:Key="hotrec_empty">空</sys:String>
+    <sys:String x:Key="hotrec_note">注意：由于用户界面权限隔离（UIPI），只有运行在相同或者更低权限下的程序可以正常收到热键命令。</sys:String>
 
     <!-- Welcome page -->
     <sys:String x:Key="welcome_textblock_header">欢迎！</sys:String>
     <sys:String x:Key="welcome_textblock_p1">
-        你好！ 这是一个非官方的Galaxy Buds管理软件，与三星没有任何关系！
-        尽管这个程序可以做到许多在Samsung Wearable上不能做到的事情，但是出于安全考虑，我们依然决定移除OTA功能。如果有需要，请使用官方APP进行更新。
+        你好！ 这是一个非官方的Galaxy Buds管理软件，与三星没有任何关系。
+        尽管这个程序可以做到许多在官方Samsung Wearable APP上不能做到的事情，但是出于安全考虑，我们依然决定移除OTA功能。如果有需要，请使用官方APP进行更新。
     </sys:String>
     <sys:String x:Key="welcome_textblock_p2">
-        如果你对此项目感兴趣，可以查看GitHub，如果你遇上任何问题，可以在GitHub联系我或者在Telegram @thepbone 上给我留言
+        如果你对此项目的原理感兴趣，我的GitHub库里有一份小型逆向工程日记。如果你遇到任何问题，可以在GitHub联系我或者在Telegram @thepbone 上给我留言。
     </sys:String>
     <sys:String x:Key="welcome_textblock_p3">
-        本软件支持 Buds (2019) 和 Buds+ (2020).
+        本软件支持 Buds (2019) 、 Buds+ (2020) 和 Buds Live.
     </sys:String>
     <sys:String x:Key="welcome_darkmode">暗黑模式</sys:String>
     <sys:String x:Key="welcome_darkmode_content">你的眼睛感到不适？ 试试使用暗黑模式!</sys:String>
 
     <!-- Main page -->
-    <sys:String x:Key="mainpage_corrupt_data">数据损坏，正在重连...</sys:String>
+    <sys:String x:Key="mainpage_corrupt_data">接收到损坏的数据，正在重连...</sys:String>
     <sys:String x:Key="mainpage_find_my_earbuds">查找我的耳机</sys:String>
     <sys:String x:Key="mainpage_touchpad">触摸控制</sys:String>
     <sys:String x:Key="mainpage_ambient_sound">环境音</sys:String>
@@ -121,7 +126,7 @@
     <!-- Update page -->
     <sys:String x:Key="updater_header">管理可用更新</sys:String>
     <sys:String x:Key="updater_message_p1">
-        正在自动下载更新，更新向导将在下载完成后启动。我们非常建议您安装更新以便解决一些存在的问题。
+        正在自动下载更新，更新向导将在下载完成后启动。我非常建议您安装更新以便获取问题修复和功能更新。
     </sys:String>
     <sys:String x:Key="updater_message_p2">
         您可以通过单击下面的按钮来查看更新日志。 
@@ -134,7 +139,7 @@
 
     <sys:String x:Key="updater_noupdate">当前未能找到可用更新 请稍后重试或在GitHub上查找更新</sys:String>
     <sys:String x:Key="updater_noupdate_title">无更新</sys:String>
-    <sys:String x:Key="updater_newrelease">Galaxy Buds Manager的更新 {0} 已经推送</sys:String>
+    <sys:String x:Key="updater_newrelease">Galaxy Buds Manager的更新 {0} 已经推出</sys:String>
 
     <!-- Device selection page (setup) -->
     <sys:String x:Key="devsel_header">选择你的 Galaxy Buds</sys:String>
@@ -151,12 +156,12 @@
     <sys:String x:Key="unsupported_feature_required_fwver">需要的固件版本:</sys:String>
 
     <sys:String x:Key="unsupported_feature_header">请更新你的固件</sys:String>
-    <sys:String x:Key="unsupported_feature_current_fwver_null">当前固件版本: Unknown</sys:String>
-    <sys:String x:Key="unsupported_feature_required_fwver_null">需要的固件版本:</sys:String>
+    <sys:String x:Key="unsupported_feature_current_fwver_null">当前固件版本：未知</sys:String>
+    <sys:String x:Key="unsupported_feature_required_fwver_null">需要的固件版本：未指定</sys:String>
 
-    <sys:String x:Key="unsupported_feature_description_p1">当前固件版本不支持</sys:String>
-    <sys:String x:Key="unsupported_feature_description_p2">请使用Windows Update或安卓APP更新最新固件</sys:String>
-    <sys:String x:Key="unsupported_feature_description_p3">如果使用Windows更新固件，请确保关闭此软件。</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p1">当前固件版本过旧，不支持此功能</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p2">请使用官方Windows或安卓APP更新最新固件</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p3">如果使用Windows更新固件，请确保关闭此软件。同时只能有一个软件与耳机通信。</sys:String>
 
     <!-- Touchpad page -->
     <sys:String x:Key="touchpad_header">触摸控制</sys:String>
@@ -164,18 +169,18 @@
     <sys:String x:Key="touchpad_left_action">左侧</sys:String>
     <sys:String x:Key="touchpad_right_action">右侧</sys:String>
 
-    <sys:String x:Key="touchpad_double_tap_volume">双击耳机</sys:String>
-    <sys:String x:Key="touchpad_double_tap_volume_description">双击以提高音量</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume">双击耳机边缘</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">双击左侧或者右侧的耳机边缘可以降低或者提高音量</sys:String>
 
     <!-- Custom touchpad action page -->
-    <sys:String x:Key="cact_header">设置长按</sys:String>
+    <sys:String x:Key="cact_header">设置长按动作</sys:String>
     <sys:String x:Key="cact_external_app_dialog_title">选择动作...</sys:String>
     <sys:String x:Key="cact_action">自定义</sys:String>
     <sys:String x:Key="cact_notice">注意</sys:String>
-    <sys:String x:Key="cact_notice_content_p1">自定义长按动作仅在软件后台开启时启用</sys:String>
-    <sys:String x:Key="cact_notice_content_p2">此操作不会影响在其他设备叁使用</sys:String>
+    <sys:String x:Key="cact_notice_content_p1">自定义长按动作仅在软件后台开启时启用。</sys:String>
+    <sys:String x:Key="cact_notice_content_p2">它在Android或者其他设备上无效。</sys:String>
     <sys:String x:Key="cact_notice_content_p3">
-        为了使此功能正常运行，软件将自动启动。
+        为了使此功能正常运行，软件将在系统启动时自动在后台运行。
         你可以在设置中关闭。
     </sys:String>
 
@@ -200,10 +205,10 @@
     <sys:String x:Key="system_hall">霍尔传感器</sys:String>
     <sys:String x:Key="system_accel">加速度传感器</sys:String>
     <!-- Note: system_accel only used on the self-test page -->
-    <sys:String x:Key="system_adc_soc">ADC SoC</sys:String>
+    <sys:String x:Key="system_adc_soc">ADC 电量</sys:String>
     <!-- Context: SoC = State of charge (battery percentage) -->
     <sys:String x:Key="system_adc_voltage">ADC 电压</sys:String>
-    <sys:String x:Key="system_adc_current">ADC Current</sys:String>
+    <sys:String x:Key="system_adc_current">ADC 当前耗电</sys:String>
 
     <sys:String x:Key="selftest_header">自检</sys:String>
     <sys:String x:Key="selftest_header_alt">自检（你的设备将断开连接）</sys:String>
@@ -224,7 +229,7 @@
     <sys:String x:Key="settings_minimize_tray">最小化到系统托盘</sys:String>
     <sys:String x:Key="settings_minimize_tray_description">保留后台运行</sys:String>
     <sys:String x:Key="settings_autostart">开机时启动</sys:String>
-    <sys:String x:Key="settings_autostart_description">开机时启动最小化</sys:String>
+    <sys:String x:Key="settings_autostart_description">开机时以最小化形式启动</sys:String>
 
     <sys:String x:Key="settings_connpopup">配置连接弹出菜单</sys:String>
     <sys:String x:Key="settings_devmode">进入开发者模式</sys:String>
@@ -234,19 +239,21 @@
     <sys:String x:Key="settings_cpopup_enable">开启连接弹窗</sys:String>
     <sys:String x:Key="settings_cpopup_enable_description">显示一个弹窗，通知当前电量</sys:String>
     <sys:String x:Key="settings_cpopup_compact">紧凑模式</sys:String>
-    <sys:String x:Key="settings_cpopup_compact_description"> 隐藏弹出窗口的标题以节省空间 </sys:String>
+    <sys:String x:Key="settings_cpopup_compact_description">隐藏弹出窗口的标题以节省空间</sys:String>
     <sys:String x:Key="settings_cpopup_position">位置</sys:String>
     <sys:String x:Key="settings_cpopup_position_placeholder">未知</sys:String>
     <sys:String x:Key="settings_cpopup_demo">显示当前弹窗</sys:String>
-    <sys:String x:Key="settings_cpopup_override_title">重设弹窗</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title">重设弹窗标题</sys:String>
     <sys:String x:Key="settings_cpopup_override_title_dialog">请输入自定义标题，你可以通过留空以恢复默认设置</sys:String>
-
+    <sys:String x:Key="settings_cpopup_primary_screen">仅主屏幕</sys:String>
+    <sys:String x:Key="settings_cpopup_primary_screen_description">只在主屏幕显示弹窗</sys:String>
+    
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">恢复出厂设置</sys:String>
     <sys:String x:Key="factory_confirm">确认恢复出厂设置</sys:String>
     <sys:String x:Key="factory_error_title">恢复出厂设置失败</sys:String>
     <sys:String x:Key="factory_error">
-        设备返回错误代码: {0} 
+        设备返回错误代码： {0} 
         请确保耳机开启且可用。
         你可能需要手动重新连接你的耳机。
     </sys:String>
@@ -255,7 +262,7 @@
     <sys:String x:Key="factory_text_p3">请确保你的耳机已开启</sys:String>
 
     <!-- Find my Gear -->
-    <sys:String x:Key="fmg_warning_both">请摘下你的耳机</sys:String>
+    <sys:String x:Key="fmg_warning_both">请摘下两只耳机</sys:String>
     <sys:String x:Key="fmg_warning_left">请摘下左耳耳机</sys:String>
     <sys:String x:Key="fmg_warning_right">请摘下右耳耳机</sys:String>
     <sys:String x:Key="fmg_header">查找我的耳机</sys:String>
@@ -263,8 +270,8 @@
     <!-- Equalizer -->
     <sys:String x:Key="eq_header">均衡器</sys:String>
     <sys:String x:Key="eq_enable">开启均衡器</sys:String>
-    <sys:String x:Key="eq_mode">模式:</sys:String>
-    <sys:String x:Key="eq_dolby">使用杜比音效</sys:String>
+    <sys:String x:Key="eq_mode">模式：</sys:String>
+    <sys:String x:Key="eq_dolby">为使用杜比音效优化</sys:String>
 
     <sys:String x:Key="eq_bass">低音增强</sys:String>
     <sys:String x:Key="eq_soft">柔和</sys:String>
@@ -275,22 +282,24 @@
     <!-- Ambient sound -->
     <sys:String x:Key="as_header">环境音</sys:String>
     <sys:String x:Key="as_enable">开启环境音</sys:String>
-    <sys:String x:Key="as_volume">环境音音量</sys:String>
+    <sys:String x:Key="as_volume">环境音量</sys:String>
     <sys:String x:Key="as_voicefocus">语音专注</sys:String>
-    <sys:String x:Key="as_extrahigh">额外增强的环境音</sys:String>
+    <sys:String x:Key="as_extrahigh">超高环境音量</sys:String>
     <sys:String x:Key="as_extrahigh_description">新增一个额外音量等级至环境音滑杆</sys:String>
 
     <!-- Advanced page -->
     <sys:String x:Key="adv_header">高级设置</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} 或更新</sys:String>
     <sys:String x:Key="adv_seamless">无缝连接</sys:String>
-    <sys:String x:Key="adv_seamless_desc"> 快速切换到附近的设备，而无需断开耳机或打开配对模式 </sys:String>
-    <sys:String x:Key="adv_resume_playback">当设备被佩戴，恢复/启动媒体播放</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">当至少一个接近传感器被覆盖时，发送全局播放/暂停状态改变事件 (Windows only)</sys:String>
+    <sys:String x:Key="adv_seamless_desc">快速切换到附近的设备，而无需断开耳机或打开配对模式</sys:String>
+    <sys:String x:Key="adv_resume_playback">当佩戴耳机时恢复/启动媒体播放</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">当至少一个距离传感器被覆盖时，发送全局播放/暂停状态改变事件 (仅Windows设备)</sys:String>
     <sys:String x:Key="adv_sidetone">通话时使用环境音</sys:String>
-    <sys:String x:Key="adv_sidetone_desc"> 在打电话的时候更清楚地听到你自己的声音</sys:String>
+    <sys:String x:Key="adv_sidetone_desc">在打电话的时候更清楚地听到你自己的声音</sys:String>
+    <sys:String x:Key="adv_passthrough">通过环境音缓解压力</sys:String>
+    <sys:String x:Key="adv_passthrough_desc">此功能可以防止在您没有使用主动式降噪时出现闷气或压迫的感觉</sys:String>
     <sys:String x:Key="adv_gaming_mode">游戏模式</sys:String>
-    <sys:String x:Key="adv_gaming_mode_desc">最大限度减少音频延迟，以获得逼真的同步游戏声音（仅Samsung）</sys:String>
+    <sys:String x:Key="adv_gaming_mode_desc">最大限度减少音频延迟，以获得逼真的同步游戏声音（仅Samsung设备）</sys:String>
 
     <!-- Credits -->
     <sys:String x:Key="credits_header">关于</sys:String>
