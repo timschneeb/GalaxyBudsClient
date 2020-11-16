@@ -161,7 +161,7 @@
 
     <sys:String x:Key="unsupported_feature_description_p1">当前固件版本过旧，不支持此功能</sys:String>
     <sys:String x:Key="unsupported_feature_description_p2">请使用官方Windows或安卓APP更新最新固件</sys:String>
-    <sys:String x:Key="unsupported_feature_description_p3">如果使用Windows更新固件，请确保关闭此软件。</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p3">如果使用Windows更新固件，请确保关闭此软件。同时只能有一个软件与耳机通信。</sys:String>
 
     <!-- Touchpad page -->
     <sys:String x:Key="touchpad_header">触摸控制</sys:String>
@@ -178,7 +178,7 @@
     <sys:String x:Key="cact_action">自定义</sys:String>
     <sys:String x:Key="cact_notice">注意</sys:String>
     <sys:String x:Key="cact_notice_content_p1">自定义长按动作仅在软件后台开启时启用。</sys:String>
-    <sys:String x:Key="cact_notice_content_p2">在Android或者其他设备上无效。</sys:String>
+    <sys:String x:Key="cact_notice_content_p2">它在Android或者其他设备上无效。</sys:String>
     <sys:String x:Key="cact_notice_content_p3">
         为了使此功能正常运行，软件将在系统启动时自动在后台运行。
         你可以在设置中关闭。
