@@ -115,7 +115,7 @@
     <sys:String x:Key="welcome_darkmode_content">你的眼睛感到不适？ 试试使用暗黑模式!</sys:String>
 
     <!-- Main page -->
-    <sys:String x:Key="mainpage_corrupt_data"接收到损坏的数据，正在重连...</sys:String>
+    <sys:String x:Key="mainpage_corrupt_data">接收到损坏的数据，正在重连...</sys:String>
     <sys:String x:Key="mainpage_find_my_earbuds">查找我的耳机</sys:String>
     <sys:String x:Key="mainpage_touchpad">触摸控制</sys:String>
     <sys:String x:Key="mainpage_ambient_sound">环境音</sys:String>
@@ -195,7 +195,7 @@
     <sys:String x:Key="system_hwver">硬件版本</sys:String>
     <sys:String x:Key="system_swver">软件版本</sys:String>
     <sys:String x:Key="system_touchver">触摸固件版本</sys:String>
-    <sys:String x:Key="system_protover"修订版本</sys:String>
+    <sys:String x:Key="system_protover">修订版本</sys:String>
     <sys:String x:Key="system_btaddr">蓝牙地址</sys:String>
     <sys:String x:Key="system_serial">序列号</sys:String>
     <sys:String x:Key="system_build_info">构建信息</sys:String>
@@ -313,8 +313,7 @@
     <sys:String x:Key="connlost_header">无法建立连接</sys:String>
     <sys:String x:Key="connlost_description_p1">无法连接你的耳机</sys:String>
     <sys:String x:Key="connlost_description_p2">
-        请检查你的蓝牙设置，确保耳机以配对此计算机。
-        如有必要，可以在 选项->注销设备 后重新绑定
+        请检查你的蓝牙设置，确保耳机以配对此计算机。如有必要，可以在 选项->注销设备 后重新绑定
     </sys:String>
     <sys:String x:Key="connlost_description_p3">附加信息:</sys:String>
     <sys:String x:Key="connlost_noinfo">收集错误信息失败</sys:String>
