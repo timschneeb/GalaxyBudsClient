@@ -46,6 +46,8 @@ ShowInstDetails show
 ShowUnInstDetails show
 
 Section "Hauptgruppe" SEC01
+  ExecWait "taskkill /f /t /im $\"Galaxy Buds Client.exe$\""
+  
   SetOutPath "$INSTDIR"
   SetOverwrite on
   File "Galaxy Buds Client\bin\Release\Galaxy Buds Client.exe"
@@ -96,6 +98,8 @@ Function un.onInit
 FunctionEnd
 
 Section Uninstall
+  ExecWait "taskkill /f /t /im $\"Galaxy Buds Client.exe$\""
+
   Delete "$INSTDIR\${PRODUCT_NAME}.url"
   Delete "$INSTDIR\uninst.exe"
   Delete "$INSTDIR\InTheHand.Net.Personal.dll"
