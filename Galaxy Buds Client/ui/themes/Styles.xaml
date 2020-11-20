@@ -13,6 +13,7 @@
                 </Trigger>
             </Style.Triggers>
     </Style>
+    
     <Style TargetType="{x:Type ContextMenu}" x:Key="ContextMenuStyle">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
@@ -45,8 +46,10 @@
                             </Style>
                         </Border.Style>
 
-                        <StackPanel IsItemsHost="True"
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                            <StackPanel IsItemsHost="True"
                                     KeyboardNavigation.DirectionalNavigation="Cycle" />
+                        </ScrollViewer>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="HasDropShadow" Value="true">
