@@ -91,7 +91,7 @@ namespace Galaxy_Buds_Client
         private int _previousTrayBC = -1;
 
         private bool _popupShownCurrentSession;
-        private ArrayList _previousBudsPopups = new ArrayList();
+        private BudsPopup _previousBudsPopup;
 
         public CustomActionPage CustomActionPage => _customActionPage;
 
@@ -389,36 +389,15 @@ namespace Galaxy_Buds_Client
                 if (!this.IsActive && (bl > 0 || br > 0 || bc > 0)
                                    && Settings.Default.ConnectionPopupEnabled)
                 {
-                    ShowDemoPopup();
+                    _previousBudsPopup?.Close();
+
+                    BudsPopup pop = new BudsPopup(
+                        BluetoothService.Instance.ActiveModel, bl, br, bc);
+                    pop.HideHeader = Settings.Default.ConnectionPopupCompact;
+                    pop.PopupPlacement = Settings.Default.ConnectionPopupPosition;
+                    pop.ShowWindowWithoutFocus();
+                    _previousBudsPopup = pop;
                 }
-            });
-        }
-
-        private void CloseAllPopups(object sender, EventArgs args)
-        {
-            foreach (BudsPopup popup in _previousBudsPopups)
-            {
-                Dispatcher.Invoke(() => { popup?.Quit(); });
-                popup.ClickedEventHandler -= CloseAllPopups;
-            }
-            _previousBudsPopups.Clear();
-        }
-
-        private void NewPopup(Screen screen)
-        {
-            Dispatcher.Invoke(() =>
-            {
-                if (_previousTrayBL <= 0 && _previousTrayBR <= 0)
-                    return;
-
-                BudsPopup pop = new BudsPopup(screen,
-                    BluetoothService.Instance.ActiveModel, _previousTrayBL,
-                    _previousTrayBR, _previousTrayBC);
-                pop.ClickedEventHandler += CloseAllPopups;
-                pop.HideHeader = Settings.Default.ConnectionPopupCompact;
-                pop.PopupPlacement = Settings.Default.ConnectionPopupPosition;
-                pop.ShowWindowWithoutFocus();
-                _previousBudsPopups.Add(pop);
             });
         }
 
@@ -427,19 +406,18 @@ namespace Galaxy_Buds_Client
          */
         public void ShowDemoPopup()
         {
-            CloseAllPopups(this, null);
+            Dispatcher.Invoke(() =>
+            {
+                _previousBudsPopup?.Close();
 
-            if (Settings.Default.ConnectionPopupPrimaryScreen)
-            {
-                NewPopup(Screen.PrimaryScreen);
-            }
-            else
-            {
-                foreach (Screen screen in Screen.AllScreens)
-                {
-                    NewPopup(screen);
-                }
-            }
+                BudsPopup pop = new BudsPopup(
+                        BluetoothService.Instance.ActiveModel, _previousTrayBL,
+                        _previousTrayBR, _previousTrayBC);
+                pop.HideHeader = Settings.Default.ConnectionPopupCompact;
+                pop.PopupPlacement = Settings.Default.ConnectionPopupPosition;
+                pop.ShowWindowWithoutFocus();
+                _previousBudsPopup = pop;
+            });
         }
 
         private void Tray_OnTrayLeftMouseDown(object sender, RoutedEventArgs e)

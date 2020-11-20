@@ -66,7 +66,6 @@ namespace Galaxy_Buds_Client.ui
             PositionPopupBorder.ContextMenu = GenerateMenu(PositionPopupBorder);
             EnablePopup.Switch.SetChecked(Settings.Default.ConnectionPopupEnabled);
             CompactPopup.Switch.SetChecked(Settings.Default.ConnectionPopupCompact);
-            PrimaryScreen.Switch.SetChecked(Settings.Default.ConnectionPopupPrimaryScreen);
             PositionPopup.TextDetail = Settings.Default.ConnectionPopupPosition.GetDescription();
             OverrideTitle.TextDetail = Settings.Default.ConnectionPopupCustomTitle == "" ?
                 Loc.GetString("notset") : Settings.Default.ConnectionPopupCustomTitle;
@@ -116,12 +115,6 @@ namespace Galaxy_Buds_Client.ui
                 Settings.Default.ConnectionPopupCustomTitle = dlg.Text;
                 Settings.Default.Save();
             }
-        }
-
-        private void PrimaryScreen_OnSwitchToggled(object sender, bool e)
-        {
-            Settings.Default.ConnectionPopupPrimaryScreen = e;
-            Settings.Default.Save();
         }
     }
 }

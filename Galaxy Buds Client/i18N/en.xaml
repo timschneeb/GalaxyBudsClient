@@ -245,8 +245,6 @@
     <sys:String x:Key="settings_cpopup_demo">Show demo popup</sys:String>
     <sys:String x:Key="settings_cpopup_override_title">Override popup title</sys:String>
     <sys:String x:Key="settings_cpopup_override_title_dialog">Please enter a custom popup title. You can restore the default one by leaving this field empty.</sys:String>
-    <sys:String x:Key="settings_cpopup_primary_screen">Primary screen only</sys:String>
-    <sys:String x:Key="settings_cpopup_primary_screen_description">Show popup only on the primary monitor</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">Factory reset</sys:String>

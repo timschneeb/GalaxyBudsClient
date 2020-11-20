@@ -55,8 +55,6 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="1"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="1"/>
-                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" ContextMenuService.Placement="Bottom">
                         <element:CheckableDetailListItem x:Name="CompactPopup" Text="{DynamicResource settings_cpopup_compact}" TextDetail="{DynamicResource settings_cpopup_compact_description}"
@@ -74,12 +72,6 @@
                             MouseLeftButtonUp="PositionPopup_OnMouseLeftButtonUp" ContextMenuService.Placement="Bottom">
                         <element:DetailListItem x:Name="PositionPopup" Text="{DynamicResource settings_cpopup_position}"
                                                 TextDetail="{DynamicResource settings_cpopup_position_placeholder}" Margin="20,0,20,0"/>
-                    </Border>
-                    <Separator Grid.Row="5" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
-                    <Border Grid.Row="6" x:Name="PrimaryScreenBorder" CornerRadius="20" Style="{StaticResource BorderHoverStyle}" 
-                            ContextMenuService.Placement="Bottom">
-                        <element:CheckableDetailListItem x:Name="PrimaryScreen" Text="{DynamicResource settings_cpopup_primary_screen}" SwitchToggled="PrimaryScreen_OnSwitchToggled"
-                                                         TextDetail="{DynamicResource settings_cpopup_primary_screen_description}" Margin="0,-6,0,-1"/>
                     </Border>
                 </Grid>
             </ScrollViewer>

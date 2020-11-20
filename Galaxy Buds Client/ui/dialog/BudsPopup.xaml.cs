@@ -45,12 +45,8 @@ namespace Galaxy_Buds_Client.ui.dialog {
 
         public PopupPlacement PopupPlacement { get; set; }
 
-        private Screen _screen;
-
-        public BudsPopup(Screen screen, Model model, int left, int right, int box) {
+        public BudsPopup(Model model, int left, int right, int box) {
             InitializeComponent();
-
-            _screen = screen;
 
             string mod = "";
             if (model == Model.BudsPlus) mod = "+";
@@ -137,7 +133,7 @@ namespace Galaxy_Buds_Client.ui.dialog {
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            Rectangle workArea = _screen.WorkingArea;
+            var workArea = SystemParameters.WorkArea;
 
             int padding = 20;
             switch (this.PopupPlacement)
