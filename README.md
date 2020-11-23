@@ -56,6 +56,7 @@ You can [**download**](https://github.com/ThePBone/GalaxyBudsClient/releases) a 
 * [@giovankabisano](https://github.com/giovankabisano) - Indonesian translation
 * [@lucasskluser](https://github.com/lucasskluser) - Portuguese translation
 * [@alb-p](https://github.com/alb-p) - Italian translation
+* [@Buashei](https://github.com/Buashei) - Polish translation
  
 ## Contributors
 * [@AndriesK](https://github.com/AndriesK) - Buds Live bug fix
