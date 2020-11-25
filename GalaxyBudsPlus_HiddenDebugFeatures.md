@@ -1,6 +1,6 @@
 ## Galaxy Buds+ Debug Features
 
-Random findings that were **not** referenced in the official Android app and only known to the Samsung team. Until now, at least.
+Random findings that were **not** referenced in the official Android app and are only known to the Samsung team. Until now, at least.
 
 All of these messages can be transmitted/received using the built-in data stream inspector of the Unofficial Buds Manager (see Settings > Enter developer mode). 
 
