@@ -22,9 +22,6 @@ Steps to reproduce the behavior:
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Does application crash?**
-If your application does crash, please refer to repository wiki to learn how to add error log files from your system into issue report. This will speed up process greatly.
-
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
