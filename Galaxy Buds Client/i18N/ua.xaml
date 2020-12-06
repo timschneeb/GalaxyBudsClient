@@ -83,6 +83,8 @@
     <sys:String x:Key="tray_disable_ambient_sound">Вимкнути звуковий фон</sys:String>
     <sys:String x:Key="tray_enable_eq">Ввімкнути еквалайзер</sys:String>
     <sys:String x:Key="tray_disable_eq">Вимкнути еквалайзер</sys:String>
+    <sys:String x:Key="tray_enable_anc">Ввімкнути активне шумозаглушення</sys:String>
+    <sys:String x:Key="tray_disable_anc">Вимкнути активне шумозаглушення</sys:String>
     <sys:String x:Key="tray_quit">Вихід</sys:String>
 
 
@@ -95,12 +97,13 @@
     <sys:String x:Key="hotrec_title">Запис комбінації клавиш</sys:String>
     <sys:String x:Key="hotrec_content">Будь ласка, введіть комбінацію клавіш:</sys:String>
     <sys:String x:Key="hotrec_empty">Немає комбінації</sys:String>
+    <sys:String x:Key="hotrec_note">Нотатка: Завдяки ізоляції конфіденційності користувальницького інтерфейсу (ENG: UIPI) лише програми однакового або нижчого рівня можуть правильно отримувати команди гарячих клавіш.</sys:String>
 
     <!-- Welcome page -->
     <sys:String x:Key="welcome_textblock_header">Ласкаво просимо!</sys:String>
     <sys:String x:Key="welcome_textblock_p1">
-        Вітаю! Цей менеджер для Galaxy Buds не офіційний, тому майте на увазі, що він ніяк не пов'язаний із Samsung.
-        Незважаючи на розширений по відношенню до оригінального Samsung Wearable на Android, функціонал цієї програми, я все ж вирішив виключити утиліту оновлення прошивки заради безпеки. Будь ласка, скористайтесь офіційним якщо він вам знадобится.
+        Вітаю! Цей менеджер для Galaxy Buds не офіційний, тож майте на увазі, що він ніяк не пов'язаний із Samsung.
+        Незважаючи на розширений по відношенню до оригінального Samsung Wearable на Android функціонал цієї програми, я все ж вирішив виключити утиліту оновлення прошивки заради безпеки. Будь ласка, скористайтесь офіційним засобом якщо він вам знадобится.
     </sys:String>
     <sys:String x:Key="welcome_textblock_p2">
         Якщо вам цікаво про те що відбувається за лаштунками, можете відвідати мій репозиторій на GitHub. Також там можна знайти невеликий журнал по реверс-інжинірингу. Можете написати мені повідомлення на GitHub або в Telegram @thepbone якщо у вас з'являться проблеми.  
@@ -126,7 +129,7 @@
         Завантаження повністю автоматизоване і майстер встановлення буде запущений по завершенню завантаження. Я наполегливо рекомендую вам оновитися щоб отримати останні виправлення та функції. 
     </sys:String>
     <sys:String x:Key="updater_message_p2">
-        Ви можете подивитися історію змін нажав на кнопку нижче.
+        Ви можете подивитися історію змін натиснувши на кнопку нижче.
     </sys:String>
 
     <sys:String x:Key="updater_view_changelog">Подивитися історію змін на GitHub</sys:String>
@@ -135,7 +138,6 @@
     <sys:String x:Key="updater_footer_install">Встановити</sys:String>
 
     <sys:String x:Key="updater_noupdate">Зараз немає доступних оновлень. Будь ласка, спробуйте пізніше або підпишіться на мій GitHub для оновлень.</sys:String>
-
     <sys:String x:Key="updater_noupdate_title">Оновлень немає</sys:String>
     <sys:String x:Key="updater_newrelease">Оновлення {0} для Galaxy Buds Manager було випущене</sys:String>
 
@@ -221,7 +223,7 @@
     <sys:String x:Key="settings_darkmode">Темна тема</sys:String>
     <sys:String x:Key="settings_darkmode_description">Скористайтесь кольорами потемніше</sys:String>
     <sys:String x:Key="settings_transitions">Анімації</sys:String>
-    <sys:String x:Key="settings_transitions_description">Ввімкнути переходи між слайдами</sys:String>
+    <sys:String x:Key="settings_transitions_description">Ввімкнути слайдову анімацію</sys:String>
     <sys:String x:Key="settings_localization_disable">Мова</sys:String>
     <sys:String x:Key="settings_localization_disable_description">Примусове використання англійської мови</sys:String>
     <sys:String x:Key="settings_minimize_tray">Згортати в трей</sys:String>
@@ -280,7 +282,7 @@
     <sys:String x:Key="as_enable">Ввімкнути звуковий фон</sys:String>
     <sys:String x:Key="as_volume">Гучність звукового фона</sys:String>
     <sys:String x:Key="as_voicefocus">Підсилення голосу</sys:String>
-    <sys:String x:Key="as_extrahigh">Підсилення звукового фона</sys:String>
+    <sys:String x:Key="as_extrahigh">Підсилення звукового фону</sys:String>
     <sys:String x:Key="as_extrahigh_description">Додає ще один рівень гучності звукового фона на слайдер</sys:String>
 
     <!-- Advanced page -->
@@ -292,7 +294,6 @@
     <sys:String x:Key="adv_resume_playback_desc">Відправляє загальносистемну команду відтворення / пауза поки хоча б один з датчиків наближення прикритий (Тільки Windows)</sys:String>
     <sys:String x:Key="adv_sidetone">Фонові звуки під час виклику</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Поліпшення чутності свого голосу під час розмови по телефону</sys:String>
-    
     <sys:String x:Key="adv_passthrough">Зніміть напругу за допомогою звукового оточення</sys:String>
     <sys:String x:Key="adv_passthrough_desc">Це може допомогти з відчуттям духоти або тиску коли ви не використовуєте активне шумозаглушення</sys:String>    
     <sys:String x:Key="adv_gaming_mode">Ігровий режим</sys:String>
