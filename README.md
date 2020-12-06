@@ -27,10 +27,10 @@
   <a href="#contributing">Contributing</a> •
   <a href="#contributing">Roadmap</a> •
   <a href="#credits">Credits</a> •
-  <a href="#license">License</a>
+  <a href="#license">License</a> 
 </p>
 
-<br>
+![](screenshots/screencap.gif)
 
 ## Key Features
 
@@ -51,8 +51,6 @@ Get binaries for Windows in the [release](https://github.com/ThePBone/GalaxyBuds
 <p align="center">
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="screenshots/download.png"></a>
 </p>
-*This app requires [.Net Framework](https://dotnet.microsoft.com/download/dotnet-framework/net461) 4.6.1 or later*
-
 ## How it works
 
 To use Bluetooth wireless technology, a device must be able to interpret certain Bluetooth profiles, which are definitions of possible applications and specify general behaviors that Bluetooth-enabled devices use to communicate with other Bluetooth devices. 
