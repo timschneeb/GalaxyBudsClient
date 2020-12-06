@@ -22,20 +22,20 @@
   </a>
 </p>
 <p align="center">
-  <a href="#key-features">Основные возможности</a> •
-  <a href="#download">Скачать</a> •
-  <a href="#how-it-works">Как это работает</a> •
-  <a href="#contributing">Внести вклад</a> •
-  <a href="#contributing">Дорожная карта</a> •
-  <a href="#credits">Имена</a> •
-  <a href="#license">Лицензия</a> 
+  <a href="#основные-возможности">Основные возможности</a> •
+  <a href="#скачать">Скачать</a> •
+  <a href="#как-это-работает">Как это работает</a> •
+  <a href="#внести-вклад">Внести вклад</a> •
+  <a href="#дорожная-карта">Дорожная карта</a> •
+  <a href="#имена">Имена</a> •
+  <a href="#лицензия">Лицензия</a> 
 </p>
 
 
 <p align="center">
     <a href="#"><img alt="Screenshot" src="screenshots/screencap.gif"></a>
 </p>
-<a href="#key-features"></a>
+
 ## Основные возможности
 
 Настраивайте и управляйте любым устройством Samsung Galaxy Buds и интегрируйте их в свой компьютер.
