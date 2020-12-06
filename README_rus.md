@@ -35,6 +35,7 @@
 <p align="center">
     <a href="#"><img alt="Screenshot" src="screenshots/screencap.gif"></a>
 </p>
+<a href="#key-features"></a>
 ## Основные возможности
 
 Настраивайте и управляйте любым устройством Samsung Galaxy Buds и интегрируйте их в свой компьютер.
