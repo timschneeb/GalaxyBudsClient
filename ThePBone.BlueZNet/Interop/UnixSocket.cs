@@ -207,8 +207,6 @@ namespace ThePBone.BlueZNet.Interop
 				Console.WriteLine ("Error " + error);
 				throw UnixError.GetLastUnixException ();
 			}
-
-			return r;
 		}
 
 		public int Write (byte* bufP, int count)

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="$USER_HOME$/.cache/JetBrains/Rider2020.3/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.3/resharper-host/local/Transient/Rider/v203/SolutionCaches/_GalaxyBudsClient.442716274.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.3/resharper-host/local/Transient/Rider/v203/SolutionCaches/_GalaxyBudsClient.1174347095.00" t="ExcludeRecursive" />
     <e p="$USER_HOME$/.nuget/packages/dein.toolbox/1.7.1/contentFiles/any/any/cmd.bat" t="Include" />
     <e p="$USER_HOME$/.nuget/packages/dein.toolbox/1.7.1/contentFiles/any/any/cmd.sh" t="Include" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
@@ -292,6 +292,7 @@
         </e>
       </e>
       <e p="GalaxyBudsClient.Bluetooth" t="IncludeRecursive">
+        <e p=".gitignore" t="Include" />
         <e p="BluetoothException.cs" t="Include" />
         <e p="GalaxyBudsClient.Bluetooth.csproj" t="IncludeRecursive" />
         <e p="IBluetoothService.cs" t="Include" />
@@ -305,6 +306,7 @@
         </e>
       </e>
       <e p="GalaxyBudsClient.Bluetooth.Linux" t="IncludeRecursive">
+        <e p=".gitignore" t="Include" />
         <e p="BluetoothService.cs" t="Include" />
         <e p="BluetoothSocket.cs" t="Include" />
         <e p="GalaxyBudsClient.Bluetooth.Linux.csproj" t="IncludeRecursive" />
@@ -319,6 +321,7 @@
       </e>
       <e p="GalaxyBudsClient.sln" t="IncludeFlat" />
       <e p="ThePBone.BlueZNet" t="IncludeRecursive">
+        <e p=".gitignore" t="Include" />
         <e p="Adapter.cs" t="Include" />
         <e p="BlueZException.cs" t="Include" />
         <e p="BlueZInterfaces.cs" t="Include" />

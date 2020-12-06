@@ -49,7 +49,8 @@ namespace GalaxyBudsClient.Platform
                 throw new PlatformNotSupportedException();
             
             _backend.NewDataAvailable += OnNewDataAvailable;
-            _backend.RfcommConnected += (sender, args) => Connected?.Invoke(this, EventArgs.Empty);
+            _backend.RfcommConnected += (sender, args) => 
+                Task.Delay(150).ContinueWith((_) => Connected?.Invoke(this, EventArgs.Empty));
             _backend.Disconnected += (sender, reason) => Disconnected?.Invoke(this, reason);
             MessageReceived += SPPMessageHandler.Instance.MessageReceiver;
         }
@@ -123,9 +124,9 @@ namespace GalaxyBudsClient.Platform
             }
         }
         
-        public async Task SendAsync(SPPMessage.MessageIds id, byte[]? payload = null, SPPMessage.MsgType type = SPPMessage.MsgType.Request)
+        public async Task SendRequestAsync(SPPMessage.MessageIds id, params byte[]? payload)
         {
-            await SendAsync(new SPPMessage{Id = id, Payload = payload ?? new byte[0], Type = type});
+            await SendAsync(new SPPMessage{Id = id, Payload = payload ?? new byte[0], Type = SPPMessage.MsgType.Request});
         }
         
         public bool RegisteredDeviceValid =>

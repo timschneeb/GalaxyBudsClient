@@ -56,10 +56,10 @@ namespace GalaxyBudsClient
 
             BuildOptionsMenu();
 
-            BluetoothImpl.Instance.ConnectAsync("80:7B:3E:21:79:EC", Models.BudsPlus).ContinueWith(delegate(Task task)
-            {
-                BluetoothImpl.Instance.Connected += (sender, args) => BluetoothImpl.Instance.SendAsync(SPPMessage.MessageIds.MSG_ID_SET_AMBIENT_MODE, new byte[1]{0x01});
-            });
+            BluetoothImpl.Instance.Connected += (sender, args) =>
+                BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_AMBIENT_MODE, 0x01);
+
+            BluetoothImpl.Instance.ConnectAsync("80:7B:3E:21:79:EC", Models.BudsPlus);
         }
 
         private void OnLanguageUpdated()

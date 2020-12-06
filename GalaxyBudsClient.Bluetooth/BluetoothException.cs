@@ -1,6 +1,6 @@
 using System;
 
-namespace GalaxyBudsClient.Bluetooth.Linux
+namespace GalaxyBudsClient.Bluetooth
 {
     public class BluetoothException : Exception
     {
@@ -13,14 +13,12 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             Unknown
         }
         
-        public readonly string ErrorName;
         public readonly string? ErrorMessage;
         public readonly ErrorCodes ErrorCode;
         
         public BluetoothException(ErrorCodes code)
             : base(code.ToString())
         {
-            ErrorName = code.ToString();
             ErrorMessage = null;
             ErrorCode = code;
         }
@@ -28,7 +26,6 @@ namespace GalaxyBudsClient.Bluetooth.Linux
         public BluetoothException(ErrorCodes code, string message)
             : base($"{code.ToString()}: {message}")
         {
-            ErrorName = code.ToString();
             ErrorMessage = message;
             ErrorCode = code;
         }
