@@ -75,7 +75,7 @@ While taking a closer look at the Galaxy Buds Plus, I also noticed some unusual 
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsPlus_HiddenDebugFeatures.md">Galaxy Buds Plus: Unusual features</a>
 </p>
 
-Currently, I'm looking into modifying and reverse-engineering the firmware for the Buds+. At the of writing I have two tools to fetch and analyse with official firmware binaries. Check them out here:
+Currently, I'm looking into modifying and reverse-engineering the firmware for the Buds+. At time of writing I have two tools to fetch and analyse with official firmware binaries. Check them out here:
 
 <p align="center">
   <a href="https://github.com/ThePBone/GalaxyBudsFirmwareDownloader">Firmware Downloader</a> •
