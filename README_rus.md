@@ -115,14 +115,13 @@ In order to reverse-engineer this data format, I started off by analysing the st
 #### Соучастники
 
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Шаблоны уведомлений о проблемах, вики и переводы
-
 * [@AndriesK](https://github.com/AndriesK) - Исправление ошибок при работе с Buds Live
 * [@githubcatw](https://github.com/githubcatw) - Програмная основа диалога подключения
 
 #### Переводчики
 
-* Русский и Украинский переводы
- - [@PlasticBrain](https://github.com/fhalfkg) - Корейский и Японский переводы
+* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Русский и Украинский переводы
+* [@PlasticBrain](https://github.com/fhalfkg) - Корейский и Японский переводы
 * [@erenbektas](https://github.com/erenbektas) - Турецкий перевод
 * [@kakkk](https://github.com/kakkk) , [@KevinZonda](https://github.com/KevinZonda) и [@ssenkrad](https://github.com/ssenkrad) - Китайский перевод
 * [@efrenbg1](https://github.com/efrenbg1) и Andrew Gonza - Испанский перевод
