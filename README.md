@@ -115,7 +115,6 @@ Contributions regarding this roadmap are very appreciated. The new implementatio
 #### Contributors
 
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue templates, wiki and translations
-
 * [@AndriesK](https://github.com/AndriesK) - Buds Live bug fix
 * [@githubcatw](https://github.com/githubcatw) - Connection dialog base
 
