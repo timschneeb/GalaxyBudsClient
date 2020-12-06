@@ -53,6 +53,7 @@ Get binaries for Windows in the [release](https://github.com/ThePBone/GalaxyBuds
 <p align="center">
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="screenshots/download.png"></a>
 </p>
+
 ## How it works
 
 To use Bluetooth wireless technology, a device must be able to interpret certain Bluetooth profiles, which are definitions of possible applications and specify general behaviors that Bluetooth-enabled devices use to communicate with other Bluetooth devices. 
