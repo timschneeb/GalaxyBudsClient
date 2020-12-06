@@ -1,55 +1,125 @@
-# Galaxy Buds Client
-An unofficial Galaxy Buds Manager for Windows (Buds, Buds+, Buds Live)
-
-
-**This README is also available in [Chinese](/README_chs.md), [Korean](/README_kor.md), [Japanese](/README_jpn.md), [Russian](/README_rus.md) and [Ukrainian](/README_ukr.md)!**
-
-(You can find downloads in the [release tab](https://github.com/thepbone/galaxybudsclient/releases))
-
 <p align="center">
-  <img src="screenshots/screencap.gif">
+  English | <a href="./README_rus.md">pусский </a> | <a href="./README_ukr.md"> украинец</a>
+</p>
+<h1 align="center">
+  Galaxy Buds Client
+  <br>
+</h1>
+<h4 align="center">An unofficial manager for the Buds, Buds+ and Buds Live</h4>
+<p align="center">
+  <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
+    <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
+  </a>
+  <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
+  	<img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
+  </a>
+  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE">
+      <img alt="License" src="https://img.shields.io/github/license/thepbone/galaxybudsclient">
+  </a>
+  <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
+    <img alt="Platform" src="https://img.shields.io/badge/platform-Windows-yellowgreen">
+  </a>
+</p>
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#download">Download</a> •
+  <a href="#how-it-works">How it works</a> •
+  <a href="#contributing">Contributing</a> •
+  <a href="#contributing">Roadmap</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#license">License</a>
 </p>
 
-This Client is a product of my research on the custom RFComm Serial Protocol the Buds use to receive and send binary (configuration) data. If you are interested in the structure of the protocol and its serial messages, I recommend you to check my notes out which I took while reverse-engineering the whole thing:
+<br>
 
-* [Buds (2019) Notes](GalaxyBudsRFCommProtocol.md)
-* [Buds Plus Notes](Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md)
-* [Buds Plus: Undocumented calls](https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsPlus_HiddenDebugFeatures.md)
+## Key Features
 
-## Features
+Configure and control any Samsung Galaxy Buds device and integrate them into your desktop.
 
-**New features** (in addition to the existing ones):
+Aside from standard features known from the official Android app, this project helps you to release the full potential of your earbuds and implements new functionality such as:
 
-* Touchpad: Customizable tap-and-hold actions (launch application, toggle equalizer, change ambient volume, ...)<sup>[1]</sup>
-* Resume media playback if Buds are worn
-* Tray-bar context menu with battery statistics
-* Display detailed sensor statistics on the dashboard, this includes:
-  * Voltage, current and temperature of the built-in ADC (Analog-to-Digital converter)
-  * Precise battery percentage (instead of steps of 5 percent)
-* Perform a self-test with all on-board components
-* Display various (debug) information, including:
-  * Hardware/Software/Touch revision
-  * Bluetooth addresses, serial numbers
-  * Firmware build info (compile date, developer name)
-  * Battery type
-  * Other sensor data
-* Touchpad: Combine Volume Up/Down with other options<sup>[1]</sup>
-* Equalizer: unlock 'Optimize for Dolby' feature<sup>[2]</sup>
+* Detailed battery statistics
+* Diagnostics and factory self-tests
+* Loads of hidden debugging information
+* Customizable long-press touch actions
+* and much more...
 
-> <sup>[1]</sup> The official Wearable app by Samsung cannot handle these features
->
-> <sup>[2]</sup> Buds (2019) only
+## Download
 
-## Installation ![Downloads](https://img.shields.io/github/downloads/ThePBone/GalaxyBudsClient/total)
+Get binaries for Windows in the [release](https://github.com/ThePBone/GalaxyBudsClient/releases) section. Please read the release notes before installing.
 
-You can [**download**](https://github.com/ThePBone/GalaxyBudsClient/releases) a fully automated Setup executable in the [**release section**](https://github.com/ThePBone/GalaxyBudsClient/releases) of this repository!
-
+<p align="center">
+    <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="screenshots/download.png"></a>
+</p>
 *This app requires [.Net Framework](https://dotnet.microsoft.com/download/dotnet-framework/net461) 4.6.1 or later*
 
-## Translators
+## How it works
 
-* [@PlasticBrain](https://github.com/fhalfkg) - Korean and Japanese translation
+To use Bluetooth wireless technology, a device must be able to interpret certain Bluetooth profiles, which are definitions of possible applications and specify general behaviors that Bluetooth-enabled devices use to communicate with other Bluetooth devices. 
+
+The Galaxy Buds define two Bluetooth profiles: A2DP (Advanced Audio Distribution Profile) for audio streaming/controlling and SPP (Serial Port Profile) for transmitting a binary stream. Manufacturers often use this profile (which relies on the RFCOMM protocol) to exchange configuration data, perform firmware updates or send other commands to the Bluetooth device.
+
+Even though the A2DP profile is standardized and documented, the format of the actual binary data exchanged by this RFCOMM protocol is usually not documented and proprietary. 
+
+In order to reverse-engineer this data format, I started off by analysing the structure of the binary stream send by the earbuds. Later on, I also disassembled the official Galaxy Buds apps for Android to gain more insight of the inner workings of these devices. While working on this, I wrote my thoughts down into a small scratchpad. Even though they are not that beautiful, I've linked them down below. Keep in mind that I didn't bother to write every single detail down. Check the source code to get more detailed information on the structure of the protocol.
+
+<p align="center">
+  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsRFCommProtocol.md">Galaxy Buds (2019) Notes</a> •
+  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md">Galaxy Buds Plus Notes</a>
+</p>
+
+While taking a closer look at the Galaxy Buds Plus, I also noticed some unusual features, such as a firmware debug mode, an unused pairing mode and a Bluetooth key dumper. I documented these findings here:
+
+<p align="center">
+  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsPlus_HiddenDebugFeatures.md">Galaxy Buds Plus: Unusual features</a>
+</p>
+
+Currently, I'm looking into modifying and reverse-engineering the firmware for the Buds+. At the of writing I have two tools to fetch and analyse with official firmware binaries. Check them out here:
+
+<p align="center">
+  <a href="https://github.com/ThePBone/GalaxyBudsFirmwareDownloader">Firmware Downloader</a> •
+  <a href="https://github.com/ThePBone/GalaxyBudsFirmwareExtractor">Firmware Extractor</a>
+</p>
+
+## Contributing
+
+Feature requests, bug reports, and pull requests of any kind are always welcome.
+
+If you want to report bugs or propose your ideas for this project, you are welcome to [open a new issue](https://github.com/ThePBone/GalaxyBudsClient/issues/new/choose) with a suitable template. [Visit our wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/2.-How-to-submit-issues) for a detailed explanation.
+
+If you are planning to help us translating this app, [refer to the instructions on our wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations). No programming knowledge is required, you can test your custom translations without installing any development tools before submitting a pull request.
+
+If you want to contribute your own code, you can simply submit a plain pull request explaining you changes. For larger and complex contributions it would be nice if you could open an issue (or message me via Telegram [@thepbone](https://t.me/thepbone)) before starting to work on it.
+
+## Roadmap
+
+Version 4.0 is planned to be released by the end of 2020 and introduces cross-platform support. This is the progress so far:
+
+
+- [x] Move to .NET Core 3.1
+- [x] Linux: Implement native Bluetooth interface
+- [ ] Windows: Implement native Bluetooth interface
+- [ ] Windows/Linux: Native tray icon support (libappindicator)
+- [ ] Cross-platform Bluetooth device selection dialog
+- [ ] Port user interface to AvaloniaUI.NET
+- [ ] Linux: Solve NVIDIA incompatibility with libSkia
+
+Contributions regarding this roadmap are very appreciated. The new implementation is available on the [`avalonia-rewrite`](https://github.com/ThePBone/GalaxyBudsClient/tree/avalonia-rewrite) branch.
+
+
+## Credits
+
+#### Contributors
+
+* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue templates, wiki and translations
+
+* [@AndriesK](https://github.com/AndriesK) - Buds Live bug fix
+* [@githubcatw](https://github.com/githubcatw) - Connection dialog base
+
+#### Translators
+
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Russian and Ukrainian translation
+* [@PlasticBrain](https://github.com/fhalfkg) - Korean and Japanese translation
 * [@erenbektas](https://github.com/erenbektas) - Turkish translation
 * [@kakkk](https://github.com/kakkk) , [@KevinZonda](https://github.com/KevinZonda) and [@ssenkrad](https://github.com/ssenkrad) - Chinese translation
 * [@efrenbg1](https://github.com/efrenbg1) and Andrew Gonza - Spanish translation
@@ -57,11 +127,12 @@ You can [**download**](https://github.com/ThePBone/GalaxyBudsClient/releases) a 
 * [@lucasskluser](https://github.com/lucasskluser) - Portuguese translation
 * [@alb-p](https://github.com/alb-p) - Italian translation
 * [@Buashei](https://github.com/Buashei) - Polish translation
- 
-## Contributors
-* [@AndriesK](https://github.com/AndriesK) - Buds Live bug fix
-* [@githubcatw](https://github.com/githubcatw) - Connection dialog base
-* [@superbonaci](https://github.com/superbonaci) - Chocolatey package
-___
 
-Check my website out: <https://timschneeberger.me>
+## License
+
+This project is licensed under [GPLv3](LICENSE). It is not affiliated with Samsung nor supervised by them in any way.
+
+```
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
+
