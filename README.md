@@ -30,7 +30,9 @@
   <a href="#license">License</a> 
 </p>
 
-![](screenshots/screencap.gif)
+<p align="center">
+    <a href="#"><img alt="Screenshot" src="screenshots/screencap.gif"></a>
+</p>
 
 ## Key Features
 
