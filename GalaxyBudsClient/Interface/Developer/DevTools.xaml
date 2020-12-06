@@ -1,0 +1,132 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="625"
+        x:Class="GalaxyBudsClient.Interface.Developer.DevTools"
+        Height="625" Width="700"
+        WindowStartupLocation="CenterScreen"
+        Icon="/Resources/icon_white.ico"
+        Title="Galaxy Buds Manager - Developer Tools">
+    
+    <Window.Resources>
+        <SolidColorBrush x:Key="GridLine" Color="#FFD1D1D1" />
+    </Window.Resources>
+    <Window.Styles>
+        <StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseLight.xaml" />
+        <StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml" />
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Default.xaml"/>
+    </Window.Styles>
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Dump to file..." Click="SaveDump_OnClick" />
+                <MenuItem Header="_Parse dump..." Click="LoadDump_OnClick" />
+                <MenuItem Header="_Clear" Click="Clear_OnClick" />
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Copy selected cell" Click="CopyPayload_OnClick" />
+            </MenuItem>
+        </Menu>
+
+        <Grid Margin="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBox x:Name="HexDump"
+                         Grid.Column="0" Text="Waiting for incoming data..." IsReadOnly="True"
+                         FontFamily="Monospace" FontSize="12"
+                         BorderBrush="{StaticResource SystemBaseLowColor}" />
+
+                <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                              ResizeDirection="Rows" ShowsPreview="True" />
+
+                <Border Grid.Row="2" BorderThickness="1"
+                        BorderBrush="{StaticResource SystemBaseLowColor}"
+                        Grid.Column="0">
+                    <Grid x:Name="SendFormGrid">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" MaxWidth="100" />
+                            </Grid.ColumnDefinitions>
+                            <ComboBox Grid.Column="0" x:Name="SendMsgId"
+                                      Items="{Binding MsgIdSource}"
+                                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                      Margin="0,0,5,0" />
+                            <ComboBox Grid.Column="1" x:Name="SendMsgType"
+                                      Items="{Binding MsgTypeSource}"
+                                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                      Margin="0,0,5,0" />
+                            <Button Grid.Column="2" x:Name="SendSubmit"
+                                    Content="Send"
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                        </Grid>
+
+                        <Grid Grid.Row="1" Margin="5,0,5,5">
+                            <TextBox x:Name="SendMsgPayload" TextWrapping="Wrap"
+                                     BorderBrush="{StaticResource SystemBaseLowColor}" />
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <GridSplitter Grid.Column="1" Width="5" ShowsPreview="True" HorizontalAlignment="Stretch" />
+
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <DataGrid x:Name="MsgTable" Grid.Row="0" SelectionMode="Single"
+                          VerticalGridLinesBrush="{StaticResource GridLine}"
+                          HorizontalGridLinesBrush="{StaticResource GridLine}"
+                          CanUserSortColumns="False" CanUserReorderColumns="False"
+                          IsReadOnly="True"
+                          HeadersVisibility="All"
+                          SelectionChanged="MsgTable_OnSelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="Auto" />
+                        <DataGridTextColumn Header="Payload" Binding="{Binding Payload}" Width="*" />
+                        <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="Auto" />
+                        <DataGridTextColumn Header="CRC16" Binding="{Binding CRC16}" Width="Auto" />
+                        <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="Auto" />
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                              ResizeDirection="Rows" ShowsPreview="True" />
+                <DataGrid Grid.Row="2" x:Name="PropTable" SelectionMode="Single"
+                          VerticalGridLinesBrush="{StaticResource GridLine}"
+                          HorizontalGridLinesBrush="{StaticResource GridLine}"
+                          IsReadOnly="True"
+                          CanUserSortColumns="False" CanUserReorderColumns="False"
+                          HeadersVisibility="All">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Property" Binding="{Binding Key}" IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Value" Binding="{Binding Value}" IsReadOnly="True" Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+        </Grid>
+    </DockPanel>
+
+</Window>

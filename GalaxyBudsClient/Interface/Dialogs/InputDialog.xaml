@@ -1,0 +1,35 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="140"
+        x:Class="GalaxyBudsClient.Interface.Dialogs.InputDialog"
+        Height="150" Width="300" MaxHeight="150" MaxWidth="300"
+        WindowStartupLocation="CenterOwner"
+        Icon="/Resources/icon_white.ico"
+        CanResize="False"
+        Title="{DynamicResource settings_cpopup_override_title}">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" 
+                   Text="{DynamicResource settings_cpopup_override_title_dialog}" 
+                   TextWrapping="Wrap" Margin="0,0,0,7"/>
+        <TextBox Grid.Row="1" x:Name="Input" Margin="0,0,0,5"/>
+        <Grid Grid.Row="3" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Content="{DynamicResource cancel}" Click="Cancel_OnClick"/>
+            <Button Grid.Column="3" Content="{DynamicResource apply}" Click="Apply_OnClick"/>
+        </Grid>
+    </Grid>
+</Window>

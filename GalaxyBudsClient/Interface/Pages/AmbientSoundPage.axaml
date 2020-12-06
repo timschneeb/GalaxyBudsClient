@@ -1,0 +1,38 @@
+﻿<pages:AbstractPage xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.Pages"
+             xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
+             xmlns:items="clr-namespace:GalaxyBudsClient.Interface.Items"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+             x:Class="GalaxyBudsClient.Interface.Pages.AmbientSoundPage"
+             DockPanel.Dock="Top" Margin="10,0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <elements:PageHeader Grid.Row="1" Title="{DynamicResource as_header}" BackPressed="BackButton_OnPointerPressed"/>
+        <Border Grid.Row="3" Classes="RoundedBorderListItem BottomSpacer10">
+            <items:SwitchListItem x:Name="AmbientToggle" Text="{DynamicResource as_enable}" Toggled="AmbientToggle_OnToggled"/>
+        </Border>
+        <Border Grid.Row="4" Classes="RoundedBorderListItem BottomSpacer10" >
+            <items:SliderListItem x:Name="AmbientVolume" Text="{DynamicResource as_volume}" Changed="VolumeSlider_OnChanged" />
+        </Border>
+        <Border Grid.Row="5" Classes="RoundedBorderListItem BottomSpacer10">
+            <items:SwitchListItem x:Name="AmbientVoiceFocusToggle" Text="{DynamicResource as_voicefocus}" Toggled="VoiceFocusToggle_OnToggled"/>
+        </Border>
+        <Border Grid.Row="6" Classes="RoundedBorderListItem">
+            <items:SwitchDetailListItem x:Name="ExtraLoud"
+                                        Text="{DynamicResource as_extrahigh}"
+                                        Description="{DynamicResource as_extrahigh_description}"
+                                        Toggled="ExtraLoud_OnToggled"/>
+        </Border>
+    </Grid>
+</pages:AbstractPage>

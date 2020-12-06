@@ -1,0 +1,37 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:interface="clr-namespace:GalaxyBudsClient.Interface"
+        xmlns:transition="clr-namespace:GalaxyBudsClient.Interface.Transition"
+        mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="625" 
+        x:Class="GalaxyBudsClient.MainWindow"
+        Height="625" Width="700"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        TransparencyLevelHint="Transparent"
+        SystemDecorations="None"
+        Background="Transparent"
+        UseLayoutRounding="True"
+        Icon="/Resources/icon_white.ico"
+        Title="Galaxy Buds Manager">
+    
+    <Border CornerRadius="{StaticResource DefaultCornerRadius}"
+            BorderBrush="Gray"
+            BorderThickness="1"
+            ClipToBounds="True" Padding="1"
+            Background="{DynamicResource SystemControlBackgroundAltHighBrush}">
+        <DockPanel HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch"
+                   Name="ContentWrapper"
+                   Margin="2,0,2,25">
+            <interface:CustomTitleBar Name="TitleBar" Title="{Binding $parent[Window].Title}" Background="Transparent"></interface:CustomTitleBar>
+            <DockPanel Background="{DynamicResource SystemControlBackgroundAltHighBrush}">
+                <transition:PageContainer Name="Container"/>
+            </DockPanel>
+        </DockPanel>
+    </Border>
+</Window>

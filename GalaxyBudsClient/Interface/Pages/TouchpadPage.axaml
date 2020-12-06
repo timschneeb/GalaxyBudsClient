@@ -1,0 +1,50 @@
+﻿<pages:AbstractPage xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.Pages"
+             xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
+             xmlns:items="clr-namespace:GalaxyBudsClient.Interface.Items"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+             x:Class="GalaxyBudsClient.Interface.Pages.TouchpadPage"
+             DockPanel.Dock="Top" Margin="10,0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <elements:PageHeader Grid.Row="1" Title="{DynamicResource touchpad_header}" BackPressed="BackButton_OnPointerPressed"/>
+        
+        <Border Grid.Row="3" Classes="RoundedBorderListItem BottomSpacer10">
+            <items:SwitchListItem x:Name="LockToggle" Text="{DynamicResource touchpad_lock}" Toggled="LockToggle_OnToggled"/>
+        </Border>
+        <Border Grid.Row="4" Classes="RoundedBorderListItem BottomSpacer10">
+            <Grid ClipToBounds="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Border x:Name="LeftOptionBorder" Grid.Row="0" Classes="BorderHoverStyle" CornerRadius="{StaticResource DefaultCornerRadius}">
+                    <items:DetailListItem x:Name="LeftOption" Text="{DynamicResource touchpad_left_action}" Description="{DynamicResource touchoption_custom_unknown}" />
+                </Border>
+                <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
+                <Border x:Name="RightOptionBorder" Grid.Row="2" Classes="BorderHoverStyle" CornerRadius="{StaticResource DefaultCornerRadius}">
+                    <items:DetailListItem x:Name="RightOption" Text="{DynamicResource touchpad_right_action}" Description="{DynamicResource touchoption_custom_unknown}"/>
+                </Border>
+            </Grid>
+        </Border>
+        <Border Grid.Row="5" x:Name="DoubleTapVolumeBorder" Classes="RoundedBorderListItem BottomSpacer10">
+            <items:SwitchDetailListItem x:Name="DoubleTapVolume"
+                                        Text="{DynamicResource touchpad_double_tap_volume}" 
+                                        Description="{DynamicResource touchpad_double_tap_volume_description}"
+                                        Toggled="DoubleTapVolume_OnToggled" />
+        </Border>
+    </Grid>
+</pages:AbstractPage>

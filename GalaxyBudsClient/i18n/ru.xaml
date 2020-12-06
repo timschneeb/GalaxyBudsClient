@@ -1,0 +1,320 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+ 
+    <sys:String x:Key="ResourceDictionaryName">Loc-ru</sys:String>
+
+    <!-- :::::::: Source code :::::::: -->
+
+    <!-- General -->
+    <sys:String x:Key="left">Левый</sys:String>
+    <sys:String x:Key="right">Правый</sys:String>
+    <sys:String x:Key="case">Кейс</sys:String>
+    <sys:String x:Key="error">Ошибка</sys:String>
+    <sys:String x:Key="cancel">Отмена</sys:String>
+    <sys:String x:Key="apply">Применить</sys:String>
+    <sys:String x:Key="notset">Не установлено</sys:String>
+    <sys:String x:Key="nobluetoothdev">Адаптер Bluetooth не найден. Пожалуйста, включите Bluetooth и попробуйте еще раз.</sys:String>
+
+    <sys:String x:Key="anc">Активное шумоподавление</sys:String>
+
+    <!-- SPP Message Parser -->
+    <sys:String x:Key="sppmsg_too_small">Размер пакета слишком мал</sys:String>
+    <sys:String x:Key="sppmsg_invalid_som">Плохое начало пакета</sys:String>
+    <!-- Context: SOM = Start of message -->
+    <sys:String x:Key="sppmsg_invalid_eom">Плохой конец пакета</sys:String>
+    <!-- Context: EOM = End of message -->
+    <sys:String x:Key="sppmsg_size_mismatch">Несоответствие размера пакета</sys:String>
+    <sys:String x:Key="sppmsg_tl">Размер пакета слишком мал</sys:String>
+
+    <!-- Dark Mode States -->
+    <sys:String x:Key="darkmode_disabled">Выключена</sys:String>
+    <sys:String x:Key="darkmode_enabled">Включена</sys:String>
+    <sys:String x:Key="darkmode_system">Использовать настройки системы</sys:String>
+
+    <!-- Connection popup -->
+    <sys:String x:Key="connpopup_placement_tl">Сверху слева</sys:String>
+    <sys:String x:Key="connpopup_placement_tc">Сверху по центру</sys:String>
+    <sys:String x:Key="connpopup_placement_tr">Сверху справа</sys:String>
+    <sys:String x:Key="connpopup_placement_bl">Снизу слева</sys:String>
+    <sys:String x:Key="connpopup_placement_bc">Снизу по центру</sys:String>
+    <sys:String x:Key="connpopup_placement_br">Снизу справа</sys:String>
+    <sys:String x:Key="connpopup_title">{0}'s Galaxy Buds{1}</sys:String>
+    <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
+
+    <!-- Placement  (Buds+) -->
+    <sys:String x:Key="placement_disconnected">Отключен</sys:String>
+    <sys:String x:Key="placement_wearing">Одет</sys:String>
+    <sys:String x:Key="placement_not_wearing">Снят</sys:String>
+    <sys:String x:Key="placement_in_case">В кейсе</sys:String>
+
+    <!-- Touch options -->
+    <sys:String x:Key="touchoption_voice">Голосовое управление</sys:String>
+    <sys:String x:Key="touchoption_quickambientsound">Прослушать окружение</sys:String>
+    <sys:String x:Key="touchoption_volume">Громкость</sys:String>
+    <sys:String x:Key="touchoption_volume_up">Увеличить громкость</sys:String>
+    <sys:String x:Key="touchoption_volume_down">Уменьшить громкость</sys:String>
+    <sys:String x:Key="touchoption_ambientsound">Звуковой фон</sys:String>
+    <sys:String x:Key="touchoption_spotify">Spotify (Только Android)</sys:String>
+    <sys:String x:Key="touchoption_custom">Настраиваемое действие...</sys:String>
+    <sys:String x:Key="touchoption_custom_null">Не установлено</sys:String>
+    <sys:String x:Key="touchoption_custom_unknown">Неизвестно</sys:String>
+    <sys:String x:Key="touchoption_custom_prefix">Настраиваемое действие:</sys:String>
+
+    <sys:String x:Key="touchoption_custom_ambient_up">Усилить звуковой фон</sys:String>
+    <sys:String x:Key="touchoption_custom_ambient_down">Ослабить звуковой фон</sys:String>
+    <sys:String x:Key="touchoption_custom_toggle_eq">Включить / выключить эквалайзер</sys:String>
+    <sys:String x:Key="touchoption_custom_next_eq_preset">Следуюющий режим эквалайзера</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_hotkey">Комбинация клавиш...</sys:String>
+    <sys:String x:Key="touchoption_custom_external_app">Запуск сторонней программы...</sys:String>
+
+    <!-- Options menu -->
+    <sys:String x:Key="optionsmenu_title">Опции</sys:String>
+    <sys:String x:Key="optionsmenu_settings">Настройки</sys:String>
+    <sys:String x:Key="optionsmenu_refresh">Перезагрузить интерфейс</sys:String>
+    <sys:String x:Key="optionsmenu_deregister">Отменить регистрацию</sys:String>
+    <sys:String x:Key="optionsmenu_update">Проверить обновления</sys:String>
+    <sys:String x:Key="optionsmenu_credits">Авторы</sys:String>
+
+    <!-- Tray context menu -->
+    <sys:String x:Key="tray_unlock_touchpad">Разблокировать сенсорную панель</sys:String>
+    <sys:String x:Key="tray_lock_touchpad">Заблокировать сенсорную панель</sys:String>
+    <sys:String x:Key="tray_enable_ambient_sound">Включить звуковой фон</sys:String>
+    <sys:String x:Key="tray_disable_ambient_sound">Выключить звуковой фон</sys:String>
+    <sys:String x:Key="tray_enable_eq">Включить эквалайзер</sys:String>
+    <sys:String x:Key="tray_disable_eq">Выключить эквалайзер</sys:String>
+    <sys:String x:Key="tray_quit">Выход</sys:String>
+
+
+    <!-- :::::::: XAML files (static) :::::::: -->
+
+    <!-- General -->
+    <sys:String x:Key="continue_button">Продолжить</sys:String>
+
+    <!-- Hotkey Recorder Dialog (Custom action) -->
+    <sys:String x:Key="hotrec_title">Запись комбинации клавиш</sys:String>
+    <sys:String x:Key="hotrec_content">Пожалуйста, введите комбинацию клавиш:</sys:String>
+    <sys:String x:Key="hotrec_empty">Нет комбинации</sys:String>
+
+    <!-- Welcome page -->
+    <sys:String x:Key="welcome_textblock_header">Добро пожаловать!</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">
+        Привет! Этот менеджер для Galaxy Buds не официальный, а потому учитывайте, что он никак не связан с Samsung.
+        Несмотря на расширенный по отношению к оригинальному Samsung Wearable на Android, функционал этой программы, я все же решил исключить утилиту обновления прошивки ради безопасности. Пожалуйста, используйте официальный если он вам понадобится.
+    </sys:String>
+    <sys:String x:Key="welcome_textblock_p2">
+        Если вам интересно о том что происходит за кулисами, можете посетить мой репозиторий на GitHub. Также там можно найти небольшой журнал по реверс-инжинирингу. Можете написать мне сообщение на GitHub или в Telegram @thepbone если у вас возникнут проблемы.  
+    </sys:String>
+    <sys:String x:Key="welcome_textblock_p3">
+        Эта программа поддерживает Buds (2019), Buds+ (2020) и Buds Live.
+    </sys:String>
+    <sys:String x:Key="welcome_darkmode">Темная тема</sys:String>
+    <sys:String x:Key="welcome_darkmode_content">Ваши глаза уже горят? Воспользуйтесь цветами потемнее!</sys:String>
+
+    <!-- Main page -->
+    <sys:String x:Key="mainpage_corrupt_data">Получены поврежденные данные. Повторное подключение...</sys:String>
+    <sys:String x:Key="mainpage_find_my_earbuds">Поиск наушников</sys:String>
+    <sys:String x:Key="mainpage_touchpad">Сенсорная панель</sys:String>
+    <sys:String x:Key="mainpage_ambient_sound">Звуковой фон</sys:String>
+    <sys:String x:Key="mainpage_equalizer">Эквалайзер</sys:String>
+    <sys:String x:Key="mainpage_advanced">Дополнительно</sys:String>
+    <sys:String x:Key="mainpage_system">О наушниках</sys:String>
+
+    <!-- Update page -->
+    <sys:String x:Key="updater_header">Доступно обновление программы</sys:String>
+    <sys:String x:Key="updater_message_p1">
+        Загрузка полностью автоматизирована и установщик будет запущен по завершению загрузки. Я настоятельно рекомендую вам обновиться чтобы получить последние исправления и функции. 
+    </sys:String>
+    <sys:String x:Key="updater_message_p2">
+        Вы можете просмотреть историю изменений по нажатию на кнопку ниже.
+    </sys:String>
+
+    <sys:String x:Key="updater_view_changelog">Просмотреть историю изменений на GitHub</sys:String>
+    <sys:String x:Key="updater_footer_remindmelater">Позже</sys:String>
+    <sys:String x:Key="updater_footer_skipversion">Пропустить</sys:String>
+    <sys:String x:Key="updater_footer_install">Установить</sys:String>
+
+    <sys:String x:Key="updater_noupdate">Сейчас нет доступных обновлений. Пожалуйста, попробуйте позже или подпишитесь на мой GitHub для обновлений.</sys:String>
+
+    <sys:String x:Key="updater_noupdate_title">Обновлений нет</sys:String>
+    <sys:String x:Key="updater_newrelease">Обновление {0} для Galaxy Buds Manager было выпущено</sys:String>
+
+    <!-- Device selection page (setup) -->
+    <sys:String x:Key="devsel_header">Выберите ваши Galaxy Buds</sys:String>
+    <sys:String x:Key="devsel_search">Начать поиск устройств</sys:String>
+    <sys:String x:Key="devsel_device_name">Имя устройства</sys:String>
+    <sys:String x:Key="devsel_btaddr">MAC-адрес</sys:String>
+    <sys:String x:Key="devsel_model">Модель</sys:String>
+    <sys:String x:Key="devsel_noselection">Устройство не выбрано</sys:String>
+    <sys:String x:Key="devsel_invalid_selection">Пожалуйста, сначала выберите поддерживаемое устройство</sys:String>
+    <sys:String x:Key="devsel_footer_continue">Завершить</sys:String>
+
+    <!-- Unsupported feature page -->
+    <sys:String x:Key="unsupported_feature_current_fwver">Текущая версия прошивки:</sys:String>
+    <sys:String x:Key="unsupported_feature_required_fwver">Необходимая версия прошивки:</sys:String>
+
+    <sys:String x:Key="unsupported_feature_header">Пожалуйста, обновите прошивку</sys:String>
+    <sys:String x:Key="unsupported_feature_current_fwver_null">Текущая версия прошивки: Неизвестно</sys:String>
+    <sys:String x:Key="unsupported_feature_required_fwver_null">Необходимая версия прошивки: Не указано</sys:String>
+
+    <sys:String x:Key="unsupported_feature_description_p1">Прошивка ваших Galaxy Buds устарела и не поддерживает эту функцию.</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p2">Пожалуйста, обновитесь до последней версии используя официальную утилиту обновлений для Windows или официальное приложение Wearable на Android</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p3">Убедитесь что вы закрыли эту программу для использования утилиты обновлений для Windows. Только одно приложение за раз может общаться с устройством Buds.</sys:String>
+
+    <!-- Touchpad page -->
+    <sys:String x:Key="touchpad_header">Сенсорная панель</sys:String>
+    <sys:String x:Key="touchpad_lock">Блокировка сенсорной панели</sys:String>
+    <sys:String x:Key="touchpad_left_action">Действие слева</sys:String>
+    <sys:String x:Key="touchpad_right_action">Действие справа</sys:String>
+
+    <sys:String x:Key="touchpad_double_tap_volume">Двойное касание к поверхности наушника</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">Дважды коснитесь поверхности левого или правого наушника чтобы уменьшить или увеличить громкость</sys:String>
+
+    <!-- Custom touchpad action page -->
+    <sys:String x:Key="cact_header">Выберите настраиваемое действие</sys:String>
+    <sys:String x:Key="cact_external_app_dialog_title">Выбрать исполняемый файл...</sys:String>
+    <sys:String x:Key="cact_action">Настраиваемое действие</sys:String>
+    <sys:String x:Key="cact_notice">Предупреждение</sys:String>
+    <sys:String x:Key="cact_notice_content_p1">Настраиваемые действия доступны только при условии работы этой программы в фоне.</sys:String>
+    <sys:String x:Key="cact_notice_content_p2">Эти настройки невозможно применить к Android или другим устройствам.</sys:String>
+    <sys:String x:Key="cact_notice_content_p3">
+        Для того чтобы обеспечить работу этой функции, программа будет запускатся вместе с операционной системой и работать в фоне.
+        Вы можете отключить автоматический запуск в настройках.
+    </sys:String>
+
+    <!-- System/Self-Test -->
+    <sys:String x:Key="system_header">О наушниках</sys:String>
+    <sys:String x:Key="system_selftest">Самодиагностика</sys:String>
+    <sys:String x:Key="system_factory_reset">Сброс настроек</sys:String>
+
+    <sys:String x:Key="system_battery_type_unknown">Не указано</sys:String>
+    <sys:String x:Key="system_waiting_for_device">Ожидание ответа...</sys:String>
+
+    <sys:String x:Key="system_hwver">Аппаратная версия</sys:String>
+    <sys:String x:Key="system_swver">Программная версия</sys:String>
+    <sys:String x:Key="system_touchver">Прошивка сенсорной панели</sys:String>
+    <sys:String x:Key="system_protover">Ревизия протокола</sys:String>
+    <sys:String x:Key="system_btaddr">Адрес Bluetooth</sys:String>
+    <sys:String x:Key="system_serial">Серийный номер</sys:String>
+    <sys:String x:Key="system_build_info">Информация о сборке</sys:String>
+    <sys:String x:Key="system_battery_type">Тип батареи</sys:String>
+    <sys:String x:Key="system_proximity">Показания датчика приближения</sys:String>
+    <sys:String x:Key="system_thermo">Показания термистора</sys:String>
+    <sys:String x:Key="system_hall">Показания датчика Холла</sys:String>
+    <sys:String x:Key="system_accel">Статус акселерометра</sys:String>
+    <!-- Note: system_accel only used on the self-test page -->
+    <sys:String x:Key="system_adc_soc">АЦП: Батарея</sys:String>
+    
+    <sys:String x:Key="system_adc_voltage">АЦП: Вольты</sys:String>
+    <sys:String x:Key="system_adc_current">АЦП: Ток</sys:String>
+
+    <sys:String x:Key="selftest_header">Самодиагностика</sys:String>
+    <sys:String x:Key="selftest_header_alt">Самодиагностика (Возможно отключение)</sys:String>
+    <sys:String x:Key="selftest_pass">Успешно</sys:String>
+    <sys:String x:Key="selftest_fail">Ошибка</sys:String>
+    <sys:String x:Key="selftest_pass_long">Все проверки пройдены успешно</sys:String>
+    <sys:String x:Key="selftest_fail_long">Одна или более проверок провалились</sys:String>
+
+    <!-- Settings -->
+    <sys:String x:Key="settings_header">Настройки</sys:String>
+
+    <sys:String x:Key="settings_darkmode">Темная тема</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Воспользуйтесь цветами потемнее</sys:String>
+    <sys:String x:Key="settings_transitions">Анимации</sys:String>
+    <sys:String x:Key="settings_transitions_description">Включить переходы между слайдами</sys:String>
+    <sys:String x:Key="settings_localization_disable">Язык</sys:String>
+    <sys:String x:Key="settings_localization_disable_description">Принудительное использование английского языка</sys:String>
+    <sys:String x:Key="settings_minimize_tray">Сворачивать в трей</sys:String>
+    <sys:String x:Key="settings_minimize_tray_description">Свернуть вместо завершения работы</sys:String>
+    <sys:String x:Key="settings_autostart">Запускать на старте</sys:String>
+    <sys:String x:Key="settings_autostart_description">Запускать свернутым при запуске системы</sys:String>
+
+    <sys:String x:Key="settings_connpopup">Настроить уведомление о подключении</sys:String>
+    <sys:String x:Key="settings_devmode">Включить режим разработчика</sys:String>
+
+    <!-- Settings >>> Connection popup -->
+    <sys:String x:Key="settings_cpopup_header">Уведомление о подключении</sys:String>
+    <sys:String x:Key="settings_cpopup_enable">Включить уведомление о подключении</sys:String>
+    <sys:String x:Key="settings_cpopup_enable_description">Показывать небольшое уведомление со статусом заряда при подключении устройств Buds</sys:String>
+    <sys:String x:Key="settings_cpopup_compact">Компактный режим</sys:String>
+    <sys:String x:Key="settings_cpopup_compact_description">Спрятать заголовок уведомления для экономии места</sys:String>
+    <sys:String x:Key="settings_cpopup_position">Положение</sys:String>
+    <sys:String x:Key="settings_cpopup_position_placeholder">Неизвестно</sys:String>
+    <sys:String x:Key="settings_cpopup_demo">Показать демонстрационное уведомление</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title">Заменить заголовок уведомления</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title_dialog">Пожалуйста, введите свой заголовок уведомления. Вы можете вернутся к стандартному варианту оставив это поле пустым.</sys:String>
+
+    <!-- Factory reset -->
+    <sys:String x:Key="factory_header">Сброс настроек</sys:String>
+    <sys:String x:Key="factory_confirm">Подтвердите сброс настроек</sys:String>
+    <sys:String x:Key="factory_error_title">Сброс настроек не удался</sys:String>
+    <sys:String x:Key="factory_error">
+        Устройство вернуло код ошибки: {0} 
+        Убедитесь что оба наушника включены и досягаемы. 
+        Вам может понадобится повторно подключить наушники вручную.
+    </sys:String>
+    <sys:String x:Key="factory_text_p1">Вы уверены что хотите сбросить настройки наушников?</sys:String>
+    <sys:String x:Key="factory_text_p2">После выполнения сброса настроек, вам понадобится повторно подключить наушники к компьютеру.</sys:String>
+    <sys:String x:Key="factory_text_p3">Убедитесь что оба наушника включены перед продолжением!</sys:String>
+
+    <!-- Find my Gear -->
+    <sys:String x:Key="fmg_warning_both">Пожалуйста извлеките оба наушника из ушей.</sys:String>
+    <sys:String x:Key="fmg_warning_left">Пожалуйста извлеките левый наушник из уха.</sys:String>
+    <sys:String x:Key="fmg_warning_right">Пожалуйста извлеките правый наушник из уха.</sys:String>
+    <sys:String x:Key="fmg_header">Найти мои наушники</sys:String>
+
+    <!-- Equalizer -->
+    <sys:String x:Key="eq_header">Эквалайзер</sys:String>
+    <sys:String x:Key="eq_enable">Включить эквалайзер</sys:String>
+    <sys:String x:Key="eq_mode">Режим:</sys:String>
+    <sys:String x:Key="eq_dolby">Оптимизировать для использования с Dolby</sys:String>
+
+    <sys:String x:Key="eq_bass">Больше низких</sys:String>
+    <sys:String x:Key="eq_soft">Мягкий</sys:String>
+    <sys:String x:Key="eq_dynamic">Динамичный</sys:String>
+    <sys:String x:Key="eq_clear">Чистый</sys:String>
+    <sys:String x:Key="eq_treble">Больше высоких</sys:String>
+
+    <!-- Ambient sound -->
+    <sys:String x:Key="as_header">Звуковой фон</sys:String>
+    <sys:String x:Key="as_enable">Включить звуковой фон</sys:String>
+    <sys:String x:Key="as_volume">Громкость звукового фона</sys:String>
+    <sys:String x:Key="as_voicefocus">Усиление голоса</sys:String>
+    <sys:String x:Key="as_extrahigh">Усиление звукового фона</sys:String>
+    <sys:String x:Key="as_extrahigh_description">Добавляет дополнительный уровень громкости звукового фона на слайдер</sys:String>
+
+    <!-- Advanced page -->
+    <sys:String x:Key="adv_header">Расширенные настройки</sys:String>
+    <sys:String x:Key="adv_required_firmware_later">{0} или позднее</sys:String>
+    <sys:String x:Key="adv_seamless">Бесшовное подключение наушников</sys:String>
+    <sys:String x:Key="adv_seamless_desc">Быстро подключайтесь к устройствам поблизости, не отключая наушники и не включая режим сопряжения</sys:String>
+    <sys:String x:Key="adv_resume_playback">Возобновить воспроизведение если наушники одеты</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Отправляет общесистемную команду воспроизведение/пауза пока хотя бы один из датчиков приближения прикрыт (Только Windows)</sys:String>
+    <sys:String x:Key="adv_sidetone">Фоновые звуки во время вызова</sys:String>
+    <sys:String x:Key="adv_sidetone_desc">Улучшение слышимости своего голоса во время разговора по телефону</sys:String>
+
+    <sys:String x:Key="adv_passthrough">Снимите напряжение с помощью звукового окружения</sys:String>
+    <sys:String x:Key="adv_passthrough_desc">Это может помочь с ощущением духоты или давления когда вы не используете активное шумоподавление</sys:String>
+    <sys:String x:Key="adv_gaming_mode">Игровой режим</sys:String>
+    <sys:String x:Key="adv_gaming_mode_desc">Уменьшить задержку звука, и откорректировать синхронизацию аудио (Только Samsung)</sys:String>
+
+    <!-- Credits -->
+    <sys:String x:Key="credits_header">Авторы</sys:String>
+    <sys:String x:Key="credits_developer">Разработчик</sys:String>
+    <sys:String x:Key="credits_license">Лицензионное соглашение</sys:String>
+    <sys:String x:Key="credits_version">Версия</sys:String>
+    <sys:String x:Key="credits_contributor">Соучастник</sys:String>
+    <sys:String x:Key="credits_translator">Переводчик</sys:String>
+
+    <!-- Connection lost page -->
+    <sys:String x:Key="connlost_header">Не удалось установить соединение</sys:String>
+    <sys:String x:Key="connlost_description_p1">Не удалось подключиться к вашим наушникам.</sys:String>
+    <sys:String x:Key="connlost_description_p2">
+        Пожалуйста проверьте настройки Bluetooth и убедитесь что ваши наушники включены и привязаны к этому компьютеру.
+        Вы также можете зарегистрировать новую пару наушников. В таком случае выберите "Опции > Отменить регистрацию"
+    </sys:String>
+    <sys:String x:Key="connlost_description_p3">Дополнительная информация:</sys:String>
+    <sys:String x:Key="connlost_noinfo">Не удалось собрать дополнительную информацию</sys:String>
+    <sys:String x:Key="connlost_connect">Подключиться</sys:String>
+    <sys:String x:Key="connlost_connecting">Подключение...</sys:String>
+</ResourceDictionary>

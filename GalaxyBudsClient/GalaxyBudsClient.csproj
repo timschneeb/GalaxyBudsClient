@@ -1,0 +1,142 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <ApplicationIcon>Resources/icon_white.ico</ApplicationIcon>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    <ItemGroup>
+        <AvaloniaResource Include="Resources\**" />
+        <AvaloniaResource Include="i18n\*" /> 
+        <AvaloniaResource Include="ui\style\*" /> 
+        <AvaloniaResource Remove="bin\Debug\netcoreapp3.1\**" /> 
+        <AvaloniaResource Remove="bin\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Update="**\*.xaml.cs">
+            <DependentUpon>%(Filename)</DependentUpon>
+        </Compile>
+        <AvaloniaResource Include="**\*.xaml">
+            <SubType>Designer</SubType>
+        </AvaloniaResource>
+        <Compile Update="ui\pages\DummyPage.axaml.cs">
+          <DependentUpon>DummyPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="ui\pages\FindMyGearPage.axaml.cs">
+          <DependentUpon>FindMyGearPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="ui\pages\TouchpadPage.axaml.cs">
+          <DependentUpon>TouchpadPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="ui\pages\EqualizerPage.axaml.cs">
+          <DependentUpon>EqualizerPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="ui\pages\AdvancedPage.axaml.cs">
+          <DependentUpon>AdvancedPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="ui\pages\SystemPage.axaml.cs">
+          <DependentUpon>SystemPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="ui\pages\SelfTestPage.axaml.cs">
+          <DependentUpon>SelfTestPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="ui\pages\FactoryResetPage.axaml.cs">
+          <DependentUpon>FactoryResetPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="ui\pages\CreditsPage.axaml.cs">
+          <DependentUpon>Credits.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="ui\pages\SettingsPage.axaml.cs">
+          <DependentUpon>SettingsPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="ui\pages\PopupSettingsPage.axaml.cs">
+          <DependentUpon>PopupSettingsPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="ui\pages\ConnectionLostPage.axaml.cs">
+          <DependentUpon>ConnectionLostPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="ui\pages\CustomTouchActionPage.axaml.cs">
+          <DependentUpon>CustomTouchActionPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="ui\pages\DeviceSelectionPage.axaml.cs">
+          <DependentUpon>DeviceSelectionPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="ui\pages\WelcomePage.axaml.cs">
+          <DependentUpon>WelcomePage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="ui\pages\UnsupportedFeaturePage.axaml.cs">
+          <DependentUpon>UnsupportedFeaturePage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="ui\pages\UpdatePage.axaml.cs">
+          <DependentUpon>UpdatePage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="ui\developer\DevTools.xaml.cs">
+          <DependentUpon>DevTools.xaml</DependentUpon>
+        </Compile>
+        <Compile Update="ui\dialogs\InputDialog.xaml.cs">
+          <DependentUpon>InputDialog.xaml</DependentUpon>
+        </Compile>
+        <Compile Update="ui\dialogs\BudsPopup.xaml.cs">
+          <DependentUpon>BudsPopup.xaml</DependentUpon>
+        </Compile>
+        <Compile Remove="bin\Debug\netcoreapp3.1\**" />
+        <Compile Remove="bin\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="0.10.0-preview6" />
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.0-preview6" />
+        <PackageReference Include="Avalonia.Desktop" Version="0.10.0-preview6" />
+        <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0-preview6" />
+        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.0-preview6" />
+        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.0-preview6" />
+        <PackageReference Include="Config.Net" Version="4.15.0" />
+        <PackageReference Include="Config.Net.Json" Version="4.15.0" />
+        <PackageReference Include="dein.ToolBox" Version="1.7.1" />
+        <PackageReference Include="Eto.Forms" Version="2.5.8" />
+        <PackageReference Include="Eto.Platform.Gtk" Version="2.5.8" />
+        <PackageReference Include="Sentry" Version="3.0.0-alpha.6" />
+        <PackageReference Include="Serilog" Version="2.10.1-dev-01256" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="4.0.0-dev-00839" />
+        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0-dev-00905" />
+        <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <UpToDateCheckInput Remove="Resources\window\window_close_light.png" />
+      <UpToDateCheckInput Remove="Resources\window\window_close_nor.png" />
+      <UpToDateCheckInput Remove="Resources\window\window_minimum_light.png" />
+      <UpToDateCheckInput Remove="Resources\window\window_minimum_nor.png" />
+    </ItemGroup>
+    <ItemGroup>
+      <AvaloniaXaml Remove="bin\Debug\netcoreapp3.1\**" />
+      <AvaloniaXaml Remove="bin\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Remove="bin\Debug\netcoreapp3.1\**" />
+      <EmbeddedResource Remove="bin\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="bin\Debug\netcoreapp3.1\**" />
+      <None Remove="bin\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Linux\GalaxyBudsClient.Bluetooth.Linux.csproj" />
+      <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj" />
+    </ItemGroup>
+</Project>

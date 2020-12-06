@@ -1,0 +1,317 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+ 
+    <sys:String x:Key="ResourceDictionaryName">Loc-ja</sys:String>
+
+    <!-- :::::::: Source code :::::::: -->
+
+    <!-- General -->
+    <sys:String x:Key="left">左</sys:String>
+    <sys:String x:Key="right">右</sys:String>
+    <sys:String x:Key="case">ケース</sys:String>
+    <sys:String x:Key="error">エラー</sys:String>
+    <sys:String x:Key="cancel">キャンセル</sys:String>
+    <sys:String x:Key="apply">適用</sys:String>
+    <sys:String x:Key="notset">指定なし</sys:String>
+    <sys:String x:Key="nobluetoothdev">Bluetooth 装置が見つかりませんでした。Bluetoothを有効にしてからもう一度試してください。</sys:String>
+
+    <!-- SPP Message Parser -->
+    <sys:String x:Key="sppmsg_too_small">Message too small</sys:String>
+    <sys:String x:Key="sppmsg_invalid_som">Invalid SOM</sys:String>
+    <!-- Context: SOM = Start of message -->
+    <sys:String x:Key="sppmsg_invalid_eom">Invalid EOM</sys:String>
+    <!-- Context: EOM = End of message -->
+    <sys:String x:Key="sppmsg_size_mismatch">Payload size mismatch</sys:String>
+    <sys:String x:Key="sppmsg_tl">Message too small</sys:String>
+	 
+    <!-- Dark Mode States -->
+    <sys:String x:Key="darkmode_disabled">OFF</sys:String>
+    <sys:String x:Key="darkmode_enabled">ON</sys:String>
+    <sys:String x:Key="darkmode_system">システムのデフォルト</sys:String>
+
+ 
+    <!-- Connection popup -->
+    <sys:String x:Key="connpopup_placement_tl">左上</sys:String>
+    <sys:String x:Key="connpopup_placement_tc">中央上</sys:String>
+    <sys:String x:Key="connpopup_placement_tr">右上</sys:String>
+    <sys:String x:Key="connpopup_placement_bl">左下</sys:String>
+    <sys:String x:Key="connpopup_placement_bc">中央下</sys:String>
+    <sys:String x:Key="connpopup_placement_br">右下</sys:String>
+    <sys:String x:Key="connpopup_title">{0}の Galaxy Buds{1}</sys:String>
+    <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
+	
+	<!-- Placement (Buds+) -->
+    <sys:String x:Key="placement_disconnected">切断</sys:String>
+    <sys:String x:Key="placement_wearing">装着</sys:String>
+    <sys:String x:Key="placement_not_wearing">待機</sys:String>
+    <sys:String x:Key="placement_in_case">ケース</sys:String>
+
+    <!-- Touch options -->
+    <sys:String x:Key="touchoption_voice">音声コマンド</sys:String>
+    <sys:String x:Key="touchoption_quickambientsound">クイック周辺音</sys:String>
+    <sys:String x:Key="touchoption_volume">音量</sys:String>
+    <sys:String x:Key="touchoption_volume_up">音量アップ</sys:String>
+    <sys:String x:Key="touchoption_volume_down">音量ダウン</sys:String>
+    <sys:String x:Key="touchoption_ambientsound">周辺の音</sys:String>
+    <sys:String x:Key="touchoption_spotify">Spotify (Android機能)</sys:String>
+    <sys:String x:Key="touchoption_custom">カスタム設定...</sys:String>
+    <sys:String x:Key="touchoption_custom_null">指定なし</sys:String>
+    <sys:String x:Key="touchoption_custom_unknown">不明</sys:String>
+    <sys:String x:Key="touchoption_custom_prefix">カスタム設定:</sys:String>
+
+    <sys:String x:Key="touchoption_custom_ambient_up">周辺の音の音量アップ</sys:String>
+    <sys:String x:Key="touchoption_custom_ambient_down">周辺の音の音量ダウン</sys:String>
+    <sys:String x:Key="touchoption_custom_toggle_eq">イコライザーON</sys:String>
+    <sys:String x:Key="touchoption_custom_next_eq_preset">次のイコライザープリセット</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_hotkey">カスタムショートカットキーを押す...</sys:String>
+    <sys:String x:Key="touchoption_custom_external_app">プログラムを開く...</sys:String>
+
+    <!-- Options menu -->
+    <sys:String x:Key="optionsmenu_title">オプション</sys:String>
+    <sys:String x:Key="optionsmenu_settings">設定</sys:String>
+    <sys:String x:Key="optionsmenu_refresh">ダッシュボードリロード</sys:String>
+    <sys:String x:Key="optionsmenu_deregister">デバイスとのペアリングを解除</sys:String>
+    <sys:String x:Key="optionsmenu_update">更新を確認</sys:String>
+    <sys:String x:Key="optionsmenu_credits">クレジット</sys:String>
+
+    <!-- Tray context menu -->
+    <sys:String x:Key="tray_unlock_touchpad">タッチパッドロックOFF</sys:String>
+    <sys:String x:Key="tray_lock_touchpad">タッチパッドロックON</sys:String>
+    <sys:String x:Key="tray_enable_ambient_sound">周辺の音ON</sys:String>
+    <sys:String x:Key="tray_disable_ambient_sound">周辺の音OFF</sys:String>
+    <sys:String x:Key="tray_enable_eq">イコライザーON</sys:String>
+    <sys:String x:Key="tray_disable_eq">イコライザーOFF</sys:String>
+    <sys:String x:Key="tray_quit">終了</sys:String>
+
+
+    <!-- :::::::: XAML files (static) :::::::: -->
+
+    <!-- General -->
+    <sys:String x:Key="continue_button">続ける</sys:String>
+
+    <!-- Hotkey Recorder Dialog (Custom action) -->
+    <sys:String x:Key="hotrec_title">キーの指定</sys:String>
+    <sys:String x:Key="hotrec_content">キーの組み合わせを入力してください (ホールド):</sys:String>
+    <sys:String x:Key="hotrec_empty">なし</sys:String>
+
+    <!-- Welcome page -->
+    <sys:String x:Key="welcome_textblock_header">ようこそ！</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">
+		どうも！このGalaxy Buds Managerは非公式プログラムであり、Samsungと一切の関係がありません。
+		このプログラムは公式Samsung Wearableアプリにないいろんな機能がありますが、安全のため、イヤホンのソフトウェアの更新機能は除外しました。ソフトウェアの更新が必要でしたら、公式Galaxy Buds Managerを使用してください。
+	</sys:String>
+    <sys:String x:Key="welcome_textblock_p2">
+		もしこのプログラムの開発過程をご覧になりたいのであれば、私どものリバースエンジニアリングの成果物があるGithHubリポジトリでご確認いただけます。 また、問題が発生するとTelegramの@thepboneにメッセージを送る方法もあります。
+	</sys:String>
+    <sys:String x:Key="welcome_textblock_p3">
+        このプログラムはGalaxy Buds（2019）と Galaxy Buds+（2020）をサポートしています。
+    </sys:String>
+    <sys:String x:Key="welcome_darkmode">ダークモード</sys:String>
+    <sys:String x:Key="welcome_darkmode_content">眩しいですか？ 暗い色に変えてみましょう!</sys:String>
+
+    <!-- Main page -->
+    <sys:String x:Key="mainpage_corrupt_data">正しくないデータを受信しました。再接続します……</sys:String>
+    <sys:String x:Key="mainpage_find_my_earbuds">イヤホンリモート追跡</sys:String>
+    <sys:String x:Key="mainpage_touchpad">タッチパッド</sys:String>
+    <sys:String x:Key="mainpage_ambient_sound">周辺の音</sys:String>
+    <sys:String x:Key="mainpage_equalizer">イコライザー</sys:String>
+    <sys:String x:Key="mainpage_advanced">詳細設定</sys:String>
+    <sys:String x:Key="mainpage_system">イヤホンについて</sys:String>
+
+    <!-- Update page -->
+    <sys:String x:Key="updater_header">プログラムの更新ができます</sys:String>
+    <sys:String x:Key="updater_message_p1">
+		ダウンロードは自動的に進行され、ダウンロードの完了後、更新プログラムが実行されます。最新のバグフィックスと機能の追加のため、更新をお勧めします。
+	</sys:String>
+    <sys:String x:Key="updater_message_p2">
+        下のボタンを押して更新内容を見ることができます。
+    </sys:String>
+
+    <sys:String x:Key="updater_view_changelog">GitHubですべての更新内容を見る</sys:String>
+    <sys:String x:Key="updater_footer_remindmelater">あとで</sys:String>
+    <sys:String x:Key="updater_footer_skipversion">このﾊﾞｰｼﾞｮﾝをｽｷｯﾌﾟ</sys:String>
+    <sys:String x:Key="updater_footer_install">今すぐｲﾝｽﾄｰﾙ</sys:String>
+
+    <sys:String x:Key="updater_noupdate">最新のバージョンです。後でもう一度確認するかGitHubに登録して新しいアップデートを確認しましょう。</sys:String>
+    <sys:String x:Key="updater_noupdate_title">アップデートなし</sys:String>
+    <sys:String x:Key="updater_newrelease">Galaxy Buds Manager バージョン {0}がリリーズされました！ </sys:String>
+
+    <!-- Device selection page (setup) -->
+    <sys:String x:Key="devsel_header">Galaxy Budsと接続する</sys:String>
+    <sys:String x:Key="devsel_search">デバイスを探す</sys:String>
+    <sys:String x:Key="devsel_device_name">デバイスの名前</sys:String>
+    <sys:String x:Key="devsel_btaddr">MACアドレス</sys:String>
+    <sys:String x:Key="devsel_model">モデル</sys:String>
+    <sys:String x:Key="devsel_noselection">デバイス未選択</sys:String>
+    <sys:String x:Key="devsel_invalid_selection">正しいデバイスを選択してください。</sys:String>
+    <sys:String x:Key="devsel_footer_continue">続ける</sys:String>
+
+    <!-- Unsupported feature page -->
+    <sys:String x:Key="unsupported_feature_current_fwver">現在のバージョン:</sys:String>
+    <sys:String x:Key="unsupported_feature_required_fwver">必要のバージョン:</sys:String>
+
+    <sys:String x:Key="unsupported_feature_header">イヤホンのソフトウェアを更新してください。</sys:String>
+    <sys:String x:Key="unsupported_feature_current_fwver_null">現在のバージョン: 不明</sys:String>
+    <sys:String x:Key="unsupported_feature_required_fwver_null">必要のバージョン: 指定なし</sys:String>
+
+    <sys:String x:Key="unsupported_feature_description_p1">イヤホンのソフトウェアが最新ではないため、この機能をサポートしません。</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p2">公式Galaxy Buds ManagerやGalaxy Wearableアプリで最新のソフトウェアに更新してください。</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p3">公式Galaxy Buds Managerを使用する場合、このプログラムを終了することを忘れないようご注意ください。イヤホンは一つのプログラムとのみ通信できます。</sys:String>
+
+    <!-- Touchpad page -->
+    <sys:String x:Key="touchpad_header">タッチパッド</sys:String>
+    <sys:String x:Key="touchpad_lock">タッチパッドをロック</sys:String>
+    <sys:String x:Key="touchpad_left_action">左</sys:String>
+    <sys:String x:Key="touchpad_right_action">右</sys:String>
+
+    <sys:String x:Key="touchpad_double_tap_volume">イヤホンの端をダブルタップ</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">左のイヤホンの端をダブルタップすると音量が下がり、右のイヤホンの端をダブルタップすると音量が上がります。</sys:String>
+
+    <!-- Custom touchpad action page -->
+    <sys:String x:Key="cact_header">カスタム長押し動作</sys:String>
+    <sys:String x:Key="cact_external_app_dialog_title">外部プログラムを選択...</sys:String>
+    <sys:String x:Key="cact_action">カスタム動作</sys:String>
+    <sys:String x:Key="cact_notice">알림</sys:String>
+    <sys:String x:Key="cact_notice_content_p1">カスタム長押し動作はプログラムがバックグラウンドで実行されているときだけ有効です。</sys:String>
+    <sys:String x:Key="cact_notice_content_p2">Androidデバイスやその以外のデバイスでは無効です。</sys:String>
+    <sys:String x:Key="cact_notice_content_p3">
+	この機能の常時的な動作のため、このプログラムはシステムの起動時にバックグラウンドで実行されます。
+        設定でシステム起動時に自動実行をOFFできます。
+    </sys:String>
+
+    <!-- System/Self-Test -->
+    <sys:String x:Key="system_header">システム情報</sys:String>
+    <sys:String x:Key="system_selftest">セルフテスト開始</sys:String>
+    <sys:String x:Key="system_factory_reset">イヤホンをﾘｾｯﾄ</sys:String>
+
+    <sys:String x:Key="system_battery_type_unknown">指定なし</sys:String>
+    <sys:String x:Key="system_waiting_for_device">応答を待機中...</sys:String>
+
+    <sys:String x:Key="system_hwver">Hardware Version</sys:String>
+    <sys:String x:Key="system_swver">Software Version</sys:String>
+    <sys:String x:Key="system_touchver">Touch Firmware Version</sys:String>
+    <sys:String x:Key="system_protover">Protocol Revision</sys:String>
+    <sys:String x:Key="system_btaddr">Bluetooth Address</sys:String>
+    <sys:String x:Key="system_serial">Serial Number</sys:String>
+    <sys:String x:Key="system_build_info">Build Info</sys:String>
+    <sys:String x:Key="system_battery_type">Battery Type</sys:String>
+    <sys:String x:Key="system_proximity">Proximity Measurement</sys:String>
+    <sys:String x:Key="system_thermo">Thermistor Measurement</sys:String>
+    <sys:String x:Key="system_hall">Hall Measurement</sys:String>
+    <sys:String x:Key="system_accel">Accelerator Measurement</sys:String>
+    <!-- Note: system_accel only used on the self-test page -->
+    <sys:String x:Key="system_adc_soc">ADC SoC</sys:String>
+    <!-- Context: SoC = State of charge (battery percentage) -->
+    <sys:String x:Key="system_adc_voltage">ADC Voltage</sys:String>
+    <sys:String x:Key="system_adc_current">ADC Current</sys:String>
+
+    <sys:String x:Key="selftest_header">セルフテスト</sys:String>
+    <sys:String x:Key="selftest_header_alt">セルフテスト(デバイスから切断される場合あり)</sys:String>
+    <sys:String x:Key="selftest_pass">成功</sys:String>
+    <sys:String x:Key="selftest_fail">失敗</sys:String>
+    <sys:String x:Key="selftest_pass_long">すべてのテストが成功しました。</sys:String>
+    <sys:String x:Key="selftest_fail_long">一つ以上のテストが失敗しました。</sys:String>
+
+    <!-- Settings -->
+    <sys:String x:Key="settings_header">設定</sys:String>
+
+    <sys:String x:Key="settings_darkmode">ダークモード</sys:String>
+    <sys:String x:Key="settings_darkmode_description">暗いテーマを使用します。</sys:String>
+    <sys:String x:Key="settings_transitions">トランジション</sys:String>
+    <sys:String x:Key="settings_transitions_description">スライド転換エフェクトをON/OFFします。</sys:String>
+    <sys:String x:Key="settings_localization_disable">言語</sys:String>
+    <sys:String x:Key="settings_localization_disable_description">英語に強制設定</sys:String>
+    <sys:String x:Key="settings_minimize_tray">システムトレイに最小化</sys:String>
+    <sys:String x:Key="settings_minimize_tray_description">プログラムを終了せずにシステムトレイに最小化します。</sys:String>
+    <sys:String x:Key="settings_autostart">システム起動時に自動実行</sys:String>
+    <sys:String x:Key="settings_autostart_description">システム起動時に自動的に最小化されたまま実行します。</sys:String>
+
+    <sys:String x:Key="settings_connpopup">接続ポップアップ設定</sys:String>
+    <sys:String x:Key="settings_devmode">開発者モード</sys:String>
+
+    <!-- Settings >>> Connection popup -->
+    <sys:String x:Key="settings_cpopup_header">接続ポップアップ</sys:String>
+    <sys:String x:Key="settings_cpopup_enable">接続時ポップアップ表示</sys:String>
+    <sys:String x:Key="settings_cpopup_enable_description">イヤホンが接続されたとき、残りのバッテリー容量を示す小さな情報ポップアップを表示します。</sys:String>
+    <sys:String x:Key="settings_cpopup_compact">簡単モード</sys:String>
+    <sys:String x:Key="settings_cpopup_compact_description">表示される空間を小さくするためにポップアップでイヤホンの名前を表示しません。</sys:String>
+    <sys:String x:Key="settings_cpopup_position">表示位置</sys:String>
+    <sys:String x:Key="settings_cpopup_position_placeholder">不明</sys:String>
+    <sys:String x:Key="settings_cpopup_demo">ポップアップを見る</sys:String>
+           
+     
+    <sys:String x:Key="settings_cpopup_override_title">ポップアップのタイトルをオーバーライド</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title_dialog">カスタムポップアップタイトルを入力してください。このフィールドを空にすることでデフォルトに戻せます。</sys:String>
+
+    <!-- Factory reset -->
+    <sys:String x:Key="factory_header">イヤホンをリセット</sys:String>
+    <sys:String x:Key="factory_confirm">イヤホンをリセットする</sys:String>
+    <sys:String x:Key="factory_error_title">イヤホンのリセットに失敗</sys:String>
+    <sys:String x:Key="factory_error">
+        デバイスがエラーコードを返しました。: {0} 
+        両方のイヤホンがお互いに近い距離にあり、すべてオンになっているかを確認してください。
+        イヤバードを手動で再度接続する必要がある可能性があります。
+    </sys:String>
+    <sys:String x:Key="factory_text_p1">イヤホンをリセットしますか？</sys:String>
+    <sys:String x:Key="factory_text_p2">リセットした後には、PCとイヤホンをもう一度接続する必要があります。</sys:String>
+    <sys:String x:Key="factory_text_p3">両方のイヤホンがすべてオンになっているかを確認してください！</sys:String>
+
+    <!-- Find my Gear -->
+    <sys:String x:Key="fmg_warning_both">両方のイヤホンを耳から外してください。</sys:String>
+    <sys:String x:Key="fmg_warning_left">左のイヤホンを耳から外してください。</sys:String>
+    <sys:String x:Key="fmg_warning_right">右のイヤホンを耳から外してください。</sys:String>
+    <sys:String x:Key="fmg_header">イヤホンリモート追跡</sys:String>
+
+    <!-- Equalizer -->
+    <sys:String x:Key="eq_header">イコライザー</sys:String>
+    <sys:String x:Key="eq_enable">イコライザー ON</sys:String>
+    <sys:String x:Key="eq_mode">モード:</sys:String>
+    <sys:String x:Key="eq_dolby">Dolbyと一緒に使用するために最適化</sys:String>
+
+    <sys:String x:Key="eq_bass">低音ブースター</sys:String>
+    <sys:String x:Key="eq_soft">ソフト</sys:String>
+    <sys:String x:Key="eq_dynamic">ダイナミック</sys:String>
+    <sys:String x:Key="eq_clear">クリア</sys:String>
+    <sys:String x:Key="eq_treble">高音ブースター</sys:String>
+
+    <!-- Ambient sound -->
+    <sys:String x:Key="as_header">周辺の音</sys:String>
+    <sys:String x:Key="as_enable">周辺の音 ON</sys:String>
+    <sys:String x:Key="as_volume">周辺の音の音量</sys:String>
+    <sys:String x:Key="as_voicefocus">音声フォーカス</sys:String>
+    <sys:String x:Key="as_extrahigh">[周辺の音]の音量に[特大]を追加</sys:String>
+    <sys:String x:Key="as_extrahigh_description">周辺の音を通常の音量より大きな音で聞こえるようにすることができるように、音量レベルに[特大]を追加します。</sys:String>
+
+    <!-- Advanced page -->
+    <sys:String x:Key="adv_header">고급 설정</sys:String>
+    <sys:String x:Key="adv_required_firmware_later">{0} または以上のバージョン</sys:String>
+    <sys:String x:Key="adv_seamless">イヤホンをシームレスに接続</sys:String>
+    <sys:String x:Key="adv_seamless_desc">イヤホンの接続を解除したりペアリングモードにしたりすることなく素早く近くの他のデバイスに切り替えます。</sys:String>
+    <sys:String x:Key="adv_resume_playback">イヤホンを装着時にプレイバック再開/開始</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">一つ以上の距離センサが遮られた場合にメディア再生/停止の信号を送ります。(Windows機能)</sys:String>
+    <sys:String x:Key="adv_sidetone">通話中に[周辺の音]を使用</sys:String>
+    <sys:String x:Key="adv_sidetone_desc">通話中に音声がはっきり聞こえます。</sys:String>
+    <sys:String x:Key="adv_gaming_mode">ゲームモード</sys:String>
+    <sys:String x:Key="adv_gaming_mode_desc">オーディオの遅延を最小化して、同期されたゲームサウンドを鮮明にお届けします。 (Samsung機能)</sys:String>
+
+    <!-- Credits -->
+    <sys:String x:Key="credits_header">製作者</sys:String>
+    <sys:String x:Key="credits_developer">開発者</sys:String>
+    <sys:String x:Key="credits_license">ライセンス</sys:String>
+    <sys:String x:Key="credits_version">バージョン</sys:String>
+    <sys:String x:Key="credits_contributor">寄与</sys:String>
+    <sys:String x:Key="credits_translator">翻訳</sys:String>
+
+    <!-- Connection lost page -->
+    <sys:String x:Key="connlost_header">接続に失敗しました</sys:String>
+    <sys:String x:Key="connlost_description_p1">イヤホンとの接続に失敗しました。</sys:String>
+    <sys:String x:Key="connlost_description_p2">
+        Bluetoothの設定を確認し、イヤホンがPCとペアリングされているかを確認してください。
+        必要であれば再度ペアリングができます。 再度ペアリングする場合、オプション>デバイスとのペアリングを解除をしてください。
+    </sys:String>
+    <sys:String x:Key="connlost_description_p3">追加情報:</sys:String>
+    <sys:String x:Key="connlost_noinfo">エラーの情報が読み込めませんでした。</sys:String>
+    <sys:String x:Key="connlost_connect">接続</sys:String>
+    <sys:String x:Key="connlost_connecting">接続中...</sys:String>
+</ResourceDictionary>

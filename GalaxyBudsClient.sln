@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyBudsClient", "GalaxyBudsClient\GalaxyBudsClient.csproj", "{1DFCF45B-9817-45EF-9BBB-9DACA8F3E4E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyBudsClient.Bluetooth.Linux", "GalaxyBudsClient.Bluetooth.Linux\GalaxyBudsClient.Bluetooth.Linux.csproj", "{DD32EA98-F26F-4629-B78F-F9F68C9BDA37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThePBone.BlueZNet", "ThePBone.BlueZNet\ThePBone.BlueZNet.csproj", "{753E53D6-0351-4681-BA13-B9ABCF07D370}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyBudsClient.Bluetooth", "GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj", "{B9AE8AD4-5A51-4A46-AEAE-B7A61B8450E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DFCF45B-9817-45EF-9BBB-9DACA8F3E4E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DFCF45B-9817-45EF-9BBB-9DACA8F3E4E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DFCF45B-9817-45EF-9BBB-9DACA8F3E4E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DFCF45B-9817-45EF-9BBB-9DACA8F3E4E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD32EA98-F26F-4629-B78F-F9F68C9BDA37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD32EA98-F26F-4629-B78F-F9F68C9BDA37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD32EA98-F26F-4629-B78F-F9F68C9BDA37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD32EA98-F26F-4629-B78F-F9F68C9BDA37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{753E53D6-0351-4681-BA13-B9ABCF07D370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{753E53D6-0351-4681-BA13-B9ABCF07D370}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{753E53D6-0351-4681-BA13-B9ABCF07D370}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{753E53D6-0351-4681-BA13-B9ABCF07D370}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9AE8AD4-5A51-4A46-AEAE-B7A61B8450E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9AE8AD4-5A51-4A46-AEAE-B7A61B8450E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9AE8AD4-5A51-4A46-AEAE-B7A61B8450E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9AE8AD4-5A51-4A46-AEAE-B7A61B8450E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

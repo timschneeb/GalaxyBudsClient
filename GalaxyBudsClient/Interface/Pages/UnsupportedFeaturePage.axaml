@@ -1,0 +1,55 @@
+﻿<pages:AbstractPage xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.Pages"
+             xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+             x:Class="GalaxyBudsClient.Interface.Pages.UnsupportedFeaturePage"
+             DockPanel.Dock="Top" Margin="10,0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <elements:PageHeader Grid.Row="1" Title="{DynamicResource unsupported_feature_header}" BackPressed="OnBackPressed" />
+        
+        <Border Grid.Row="3" Classes="RoundedBorderListItem">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Margin="20,20,20,0" 
+                           Text="{DynamicResource unsupported_feature_description_p1}"
+                           Foreground="{DynamicResource ForegroundTextBrush}"
+                           TextWrapping="Wrap" FontSize="14" />
+                <TextBlock Grid.Row="1" Margin="20,10,20,10" 
+                           Text="{DynamicResource unsupported_feature_description_p2}"
+                           Foreground="{DynamicResource ForegroundTextBrush}"
+                           TextWrapping="Wrap" FontSize="14" />
+                <TextBlock Grid.Row="2" Margin="20,0,20,20" 
+                           Text="{DynamicResource unsupported_feature_description_p3}"
+                           Foreground="{DynamicResource ForegroundTextBrush}"
+                           TextWrapping="Wrap" FontSize="14" />
+                
+                <TextBlock Grid.Row="3" x:Name="CurrentFw" 
+                           Margin="20,0,20,5"
+                           Text="{DynamicResource unsupported_feature_current_fwver_null}"
+                           Foreground="{DynamicResource ForegroundTextBrush}" 
+                           TextWrapping="Wrap" FontSize="14"/>
+                <TextBlock Grid.Row="4" x:Name="RequiredFw" 
+                           Margin="20,0,20,20" 
+                           Text="{DynamicResource unsupported_feature_required_fwver_null}"
+                           Foreground="{DynamicResource ForegroundTextBrush}" 
+                           TextWrapping="Wrap" FontSize="14"/>
+            </Grid>
+        </Border>
+    </Grid>
+</pages:AbstractPage>
