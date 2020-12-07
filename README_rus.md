@@ -64,7 +64,7 @@ Galaxy Buds определяют два профиля Bluetooth: A2DP (Advanced
 
 Несмотря на то, что профиль A2DP стандартизирован и задокументирован, формат фактических двоичных данных, которыми обменивается этот протокол RFCOMM, обычно не документируется и является собственностью компании производителя.
 
-In order to reverse-engineer this data format, I started off by analysing the structure of the binary stream send by the earbuds. Later on, I also disassembled the official Galaxy Buds apps for Android to gain more insight of the inner workings of these devices. While working on this, I wrote my thoughts down into a small scratchpad. Even though they are not that beautiful, I've linked them down below. Keep in mind that I didn't bother to write every single detail down. Check the source code to get more detailed information on the structure of the protocol.
+Чтобы реконструировать этот формат данных, я начал с анализа структуры двоичного потока, отправляемого наушниками. Позже я также разобрал официальные приложения Galaxy Buds для Android, чтобы лучше понять внутреннюю работу этих устройств. Работая над этим, я записывал свои мысли в небольшой блокнот. Хотя они не такие и красивые, я приложил их ниже. Имейте в виду, что я не стал записывать каждую деталь. Проверьте исходный код, чтобы получить более подробную информацию о структуре протокола.
 
 <p align="center">
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsRFCommProtocol.md">Galaxy Buds (2019) Notes</a> •
