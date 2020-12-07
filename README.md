@@ -1,5 +1,6 @@
 <p align="center">
-  English | <a href="./README_rus.md">pусский </a> | <a href="./README_ukr.md"> украинец</a>
+  English | <a href="./README_chs.md">中文</a> | <a href="./README_rus.md">Русский</a> | <a href="./README_jpn.md">日本語</a> | <a href="./README_ukr.md">Українська</a> | <a href="./README_kor.md">한국어</a><br>
+    <sub>Attention: readme files are maintained by translators and may become outdated from time to time. For newest info rely on English version.</sub>
 </p>
 <h1 align="center">
   Galaxy Buds Client
@@ -8,7 +9,7 @@
 <h4 align="center">An unofficial manager for the Buds, Buds+ and Buds Live</h4>
 <p align="center">
   <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
-    <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
+    <img alt="GitHub downloads count" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
   </a>
   <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
   	<img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
@@ -29,6 +30,7 @@
   <a href="#credits">Credits</a> •
   <a href="#license">License</a> 
 </p>
+
 
 <p align="center">
     <a href="#"><img alt="Screenshot" src="screenshots/screencap.gif"></a>
