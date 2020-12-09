@@ -43,6 +43,13 @@
     <CroppedBitmap x:Key="LeftBudDisconnected" Source="/Resources/device/left_gray_dim.png"/>
     <CroppedBitmap x:Key="RightBudDisconnected" Source="/Resources/device/right_gray_dim.png"/>
 
+    <!-- Battery -->
+    <CroppedBitmap x:Key="BatteryDisconnected" Source="/Resources/battery/disconnected.png"/>
+    <CroppedBitmap x:Key="BatteryLow" Source="/Resources/battery/low.png"/>
+    <CroppedBitmap x:Key="BatteryMedium" Source="/Resources/battery/medium.png"/>
+    <CroppedBitmap x:Key="BatteryHigh" Source="/Resources/battery/high.png"/>
+    <CroppedBitmap x:Key="BatteryFull" Source="/Resources/battery/full.png"/>
+    
     <!-- Buttons -->
     <CroppedBitmap x:Key="BackButton" Source="/Resources/navigation/back_dark.png"/>
     <CroppedBitmap x:Key="NextButtonSrc" Source="/Resources/navigation/next_small_dark.png"/>

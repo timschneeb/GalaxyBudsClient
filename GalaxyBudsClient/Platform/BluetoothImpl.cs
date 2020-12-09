@@ -7,6 +7,7 @@ using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Bluetooth.Linux;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Utils;
 using Serilog;
 using Task = System.Threading.Tasks.Task;
@@ -31,12 +32,32 @@ namespace GalaxyBudsClient.Platform
         private readonly IBluetoothService _backend;
         
         public event EventHandler? Connected;
+        public event EventHandler? Connecting;
         public event EventHandler<string>? Disconnected;
         public event EventHandler<SPPMessage>? MessageReceived;
         public event EventHandler<InvalidDataException>? InvalidDataReceived;
+        public event EventHandler<byte[]>? NewDataReceived;
         public event EventHandler<BluetoothException>? BluetoothError;
         
         public Models ActiveModel => SettingsProvider.Instance.RegisteredDevice.Model;
+        public IDeviceSpec DeviceSpec
+        {
+            get
+            {
+                switch (ActiveModel)
+                {
+                    case Models.Buds:
+                        return new BudsDeviceSpec();
+                    case Models.BudsPlus:
+                        return new BudsPlusDeviceSpec();
+                    case Models.BudsLive:
+                        return new BudsLiveDeviceSpec();
+                    default:
+                        return new StubDeviceSpec();
+                }
+            }
+        }
+
         public bool IsConnected => _backend.IsStreamConnected;
         
         private BluetoothImpl()
@@ -47,10 +68,13 @@ namespace GalaxyBudsClient.Platform
                 _backend = new Bluetooth.Linux.BluetoothService();
             else
                 throw new PlatformNotSupportedException();
-            
+
+            _backend.Connecting += (sender, args) => Connecting?.Invoke(this, EventArgs.Empty); 
             _backend.NewDataAvailable += OnNewDataAvailable;
-            _backend.RfcommConnected += (sender, args) => 
-                Task.Delay(150).ContinueWith((_) => Connected?.Invoke(this, EventArgs.Empty));
+            _backend.NewDataAvailable += (sender, bytes) => NewDataReceived?.Invoke(this, bytes);
+            _backend.RfcommConnected += (sender, args) => Task.Run(async () =>
+                    await Task.Delay(150).ContinueWith((_) => Connected?.Invoke(this, EventArgs.Empty)))
+                ;
             _backend.Disconnected += (sender, reason) => Disconnected?.Invoke(this, reason);
             MessageReceived += SPPMessageHandler.Instance.MessageReceiver;
         }
@@ -129,6 +153,11 @@ namespace GalaxyBudsClient.Platform
             await SendAsync(new SPPMessage{Id = id, Payload = payload ?? new byte[0], Type = SPPMessage.MsgType.Request});
         }
         
+        public async Task SendRequestAsync(SPPMessage.MessageIds id, bool payload)
+        {
+            await SendAsync(new SPPMessage{Id = id, Payload = payload ? new byte[]{0x01} : new byte[]{0x00}, Type = SPPMessage.MsgType.Request});
+        }
+        
         public bool RegisteredDeviceValid =>
             IsDeviceValid(SettingsProvider.Instance.RegisteredDevice.Model,
                 SettingsProvider.Instance.RegisteredDevice.MacAddress);
@@ -166,10 +195,16 @@ namespace GalaxyBudsClient.Platform
                     SPPMessage msg = SPPMessage.DecodeMessage(data.OfType<byte>().ToArray());
                     Log.Verbose($">> Incoming: {msg}");
                     MessageReceived?.Invoke(this, msg);
-                    
+                
                     if (msg.TotalPacketSize >= data.Count)
                         break;
                     data.RemoveRange(0, msg.TotalPacketSize);
+                    
+                    if (ByteArrayUtils.IsBufferZeroedOut(data))
+                    {
+                        /* No more data remaining */
+                        break;
+                    }
                 }
                 catch (InvalidDataException e)
                 {

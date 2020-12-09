@@ -6,7 +6,7 @@ using GalaxyBudsClient.Utils.DynamicLocalization;
 
 namespace GalaxyBudsClient.Decoder
 {
-    class SelfTestParser : BaseMessageParser
+    public class SelfTestParser : BaseMessageParser
     {
         public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_SELF_TEST;
 

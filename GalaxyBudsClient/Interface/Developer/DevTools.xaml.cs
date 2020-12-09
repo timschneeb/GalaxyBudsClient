@@ -9,9 +9,11 @@ using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using GalaxyBudsClient.Bluetooth.Linux;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 
 namespace GalaxyBudsClient.Interface.Developer
@@ -76,8 +78,8 @@ namespace GalaxyBudsClient.Interface.Developer
             _propTable.Items = _vm.PropTableDataView;
             
             Closing += OnClosing;
-            BluetoothService.Instance.NewDataAvailable += NewDataAvailable;
-            BluetoothService.Instance.MessageReceived += MessageReceived;
+            BluetoothImpl.Instance.NewDataReceived += NewDataAvailable;
+            BluetoothImpl.Instance.MessageReceived += MessageReceived;
         }
         
         private void MessageReceived(object sender, SPPMessage e)
@@ -89,8 +91,8 @@ namespace GalaxyBudsClient.Interface.Developer
 
         private void OnClosing(object sender, CancelEventArgs e)
         {
-            BluetoothService.Instance.NewDataAvailable -= NewDataAvailable;
-            BluetoothService.Instance.MessageReceived -= MessageReceived;
+            BluetoothImpl.Instance.NewDataReceived -= NewDataAvailable;
+            BluetoothImpl.Instance.MessageReceived -= MessageReceived;
 
             _cache.Clear();
             _hexDump.Clear();
@@ -146,7 +148,7 @@ namespace GalaxyBudsClient.Interface.Developer
                 Payload = payload,
                 Type = (SPPMessage.MsgType) _msgTypeSend.SelectedItem
             };
-            BluetoothService.Instance.SendAsync(msg);
+            BluetoothImpl.Instance.SendAsync(msg).Wait();
         }
         
         private void Clear_OnClick(object? sender, RoutedEventArgs e)

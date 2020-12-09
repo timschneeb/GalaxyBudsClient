@@ -13,23 +13,16 @@ namespace GalaxyBudsClient.Interface.Transition
 
 		private object? _lastPageCache = null;
 		
-		private ViewModel _vm = new ViewModel();
+		public ViewModel PageViewModel = new ViewModel();
 		public PageContainer()
 		{   
 			InitializeComponent();
 			
-			DataContext = _vm;
+			DataContext = PageViewModel;
 			
 			Pager = this.FindControl<Carousel>("Pager");
 			var fadeTransition = new FadeTransition();
-			fadeTransition.FadeInBegin += (sender, args) =>
-			{
-				if (Pager.SelectedItem is AbstractPage page)
-				{
-					page.OnPageShown();
-				}
-			};
-			fadeTransition.FadeOutComplete += (sender, args) =>
+			fadeTransition.FadeOutComplete += async (sender, args) =>
 			{		
 				if (_lastPageCache is AbstractPage page)
 				{
@@ -39,18 +32,18 @@ namespace GalaxyBudsClient.Interface.Transition
 			Pager.PageTransition = fadeTransition;
 
 			// Add placeholder page
-			RegisterPage(new DummyPage());
+			RegisterPages(new DummyPage(), new DummyPage2());
 			SwitchPage(AbstractPage.Pages.Dummy);
 		}
 
 		public void RegisterPage(AbstractPage page)
 		{
-			if (_vm.HasPageType(page.PageType))
+			if (PageViewModel.HasPageType(page.PageType))
 			{
 				Log.Warning($"Page type '${page.PageType}' is already assigned. Disposing old page.");
 				UnregisterPage(page);
 			}
-			_vm.Items.Add(page);
+			PageViewModel.Items.Add(page);
 		}
 
 		public void RegisterPages(params AbstractPage[] pages)
@@ -68,17 +61,19 @@ namespace GalaxyBudsClient.Interface.Transition
 				Log.Warning($"Page '${page.PageType}' to be unregistered is currently loaded");
 			}
 
-			return _vm.Items.Remove(page);
+			return PageViewModel.Items.Remove(page);
 		}
 
 		public bool SwitchPage(AbstractPage.Pages page)
 		{
-			var target = _vm.FindPage(page);
+			var target = PageViewModel.FindPage(page);
 
 			if (target != null)
 			{
 				_lastPageCache = Pager.SelectedItem;
 				Pager.SelectedItem = target;
+				/* Call OnPageShown prematurely */
+				target.OnPageShown();
 			}
 
 			return target != null;
@@ -89,7 +84,7 @@ namespace GalaxyBudsClient.Interface.Transition
 			AvaloniaXamlLoader.Load(this);
 		}
 
-		private class ViewModel
+		public class ViewModel
 		{
 			public ViewModel()
 			{

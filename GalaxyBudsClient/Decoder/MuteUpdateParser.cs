@@ -5,7 +5,7 @@ using GalaxyBudsClient.Message;
 
 namespace GalaxyBudsClient.Decoder
 { 
-    class MuteUpdateParser : BaseMessageParser
+    public class MuteUpdateParser : BaseMessageParser
     {
         public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_MUTE_EARBUD_STATUS_UPDATED;
 

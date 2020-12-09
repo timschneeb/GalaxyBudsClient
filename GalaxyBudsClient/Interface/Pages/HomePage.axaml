@@ -19,18 +19,18 @@
                 Height="155" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="{StaticResource DefaultCornerRadius}">
             <Grid HorizontalAlignment="Left" Width="516">
                 <Image Name="BatteryIconLeft" Source="/Resources/battery/high.png" Height="18" Width="27" Margin="132,51,357,109"/>
-                <Label Name="BatteryVoltLeft" Content="4.56V" Margin="0,71,360,73" HorizontalAlignment="Right" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" />
-                <Label Name="BatteryPercentageLeft" Content="75%" Margin="0,46,381,102" FontSize="20" HorizontalAlignment="Right" Foreground="{DynamicResource ForegroundTextAltBrush}" />
-                <Label Name="BatteryCurrentLeft" Content="7.54mA" Margin="0,90,360,54" HorizontalAlignment="Right" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" />
-                <Label Name="BatteryTemperatureLeft" Content="29.4 °C" Margin="0,109,361,35" HorizontalAlignment="Right" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" />
+                <Label Name="BatteryVoltLeft" Content="--.--" Margin="0,71,360,73" HorizontalAlignment="Right" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" />
+                <Label Name="BatteryPercentageLeft" Content="--%" Margin="0,46,381,102" FontSize="20" HorizontalAlignment="Right" Foreground="{DynamicResource ForegroundTextAltBrush}" />
+                <Label Name="BatteryCurrentLeft" Content="--.--mA" Margin="0,90,360,54" HorizontalAlignment="Right" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" PointerPressed="RequestTempUnitChange_OnPointerPressed" />
+                <Label Name="BatteryTemperatureLeft" Content="--.-- °C" Margin="0,109,361,35" HorizontalAlignment="Right" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" PointerPressed="RequestTempUnitChange_OnPointerPressed" />
                 <Image Name="LeftIcon" Source="{DynamicResource LeftBeanConnected}" Width="75" Height="75" Margin="160,52,281,0" VerticalAlignment="Top"/>
                 <Image Name="RightIcon" Source="{DynamicResource RightBeanConnected}" Margin="281,52,160,0" Height="75" VerticalAlignment="Top"  Width="75"/>
                 <Image Name="BatteryIconRight" Source="/Resources/battery/high.png" Height="18" Width="27" Margin="357,51,132,109"/>
-                <Label Name="BatteryVoltRight" Content="4.56V" Margin="360,71,0,73" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" />
-                <Label Name="BatteryPercentageRight" Content="75%" Margin="381,46,0,102" FontSize="20" HorizontalAlignment="Left" Foreground="{DynamicResource ForegroundTextAltBrush}"/>
-                <Label Name="BatteryCurrentRight" Content="7.54mA" Margin="360,90,0,54" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" />
-                <Label Name="BatteryTemperatureRight" Content="29.4 °C" Margin="360,109,0,35" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" />
-                <Label Name="BatteryCase" Content="78%" Margin="204,130,204,14" FontSize="16" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalContentAlignment="Center" />
+                <Label Name="BatteryVoltRight" Content="--.--V" Margin="360,71,0,73" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" />
+                <Label Name="BatteryPercentageRight" Content="--%" Margin="381,46,0,102" FontSize="20" HorizontalAlignment="Left" Foreground="{DynamicResource ForegroundTextAltBrush}"/>
+                <Label Name="BatteryCurrentRight" Content="--.--mA" Margin="360,90,0,54" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" PointerPressed="RequestTempUnitChange_OnPointerPressed" />
+                <Label Name="BatteryTemperatureRight" Content="--.-- °C" Margin="360,109,0,35" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" PointerPressed="RequestTempUnitChange_OnPointerPressed" />
+                <Label Name="BatteryCase" Margin="204,130,204,14" FontSize="16" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalContentAlignment="Center" />
                 <Label Name="CaseLabel" Foreground="{DynamicResource SubtitleTextBrush}"
                        FontSize="13" VerticalAlignment="Top" Content="{DynamicResource case}" Margin="218,113,218,0" HorizontalContentAlignment="Center"/>
 

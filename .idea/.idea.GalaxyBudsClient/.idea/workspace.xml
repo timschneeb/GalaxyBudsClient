@@ -6,13 +6,66 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="251ef05e-b4ff-45d6-b19b-dfffa1fae931" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/.name" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/IBasicStatusUpdate.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/DummyPage2.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/DummyPage2.axaml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/DeviceMessageCache.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/BudsDeviceSpec.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/BudsLiveDeviceSpec.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/BudsPlusDeviceSpec.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/IDeviceSpec.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/StubDeviceSpec.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Galaxy Buds Client/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Galaxy Buds Client/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Galaxy Buds Client/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Galaxy Buds Client/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Galaxy Buds Client/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Galaxy Buds Client/.idea/riderModule.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Galaxy Buds Client/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Galaxy Buds Client/riderModule.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient.Bluetooth/BluetoothException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient.Bluetooth/BluetoothException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient.Bluetooth.Linux/BluetoothService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient.Bluetooth.Linux/BluetoothService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient.Bluetooth/IBluetoothService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient.Bluetooth/IBluetoothService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/App.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/BluetoothServiceStub.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/BaseMessageParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/IBaseMessageParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/BatteryTypeParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/BatteryTypeParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/DebugGetAllDataParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/DebugGetAllDataParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/DebugSerialNumberParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/DebugSerialNumberParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/ExtendedStatusUpdateParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/ExtendedStatusUpdateParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/GenericResponseParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/GenericResponseParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/MuteUpdateParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/MuteUpdateParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/SelfTestParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/SelfTestParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/StatusUpdateParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/StatusStatusUpdateParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/UsageReportParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/UsageReportParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/GalaxyBudsClient.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/GalaxyBudsClient.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Developer/DevTools.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Developer/DevTools.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Elements/ScanButton.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Elements/ScanButton.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Items/SwitchDetailListItem.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Items/SwitchDetailListItem.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AbstractPage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AbstractPage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AdvancedPage.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AdvancedPage.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AmbientSoundPage.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AmbientSoundPage.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AmbientSoundPage.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AmbientSoundPage.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/EqualizerPage.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/EqualizerPage.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/FindMyGearPage.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/FindMyGearPage.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/FindMyGearPage.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/FindMyGearPage.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/HomePage.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/HomePage.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/HomePage.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/HomePage.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/Brushes.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/Brushes.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Transition/PageContainer.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Transition/PageContainer.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessageBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Message/MessageComposer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessageHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessageHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessageParserFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessageParserFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Model/Constants.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/Constants.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Model/ISettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/ISettings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Model/MessageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/MessageViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Platform/BluetoothImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Platform/BluetoothImpl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ThePBone.BlueZNet/Interop/UnixSocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ThePBone.BlueZNet/Interop/UnixSocket.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Utils/ByteArrayUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Utils/ByteArrayUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/i18n/en.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/i18n/en.xaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,34 +78,68 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7899125C-45B9-4E45-A5C6-367FE303FBB7/5a/812e2c9a/Log.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/87DBB896-6B20-4A14-9B6A-7AB43642646D/92/eda64173/Monitor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F9E8E74F-0926-4402-B832-0C7BCA0D1592/2D/IResourceNode.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3C2E205D-04D0-44C3-8C21-30A014740617/8a/71ff0e11/HorizontalAlignment.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A76B8C80-4D9F-4FC8-8A9A-03F322A6D646/2D/Dispatcher.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/E9CB8FBD-A44D-4E4D-9389-94F415C36F74/26/DefinitionBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F9E8E74F-0926-4402-B832-0C7BCA0D1592/2E/IResourceProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5855A35E-4512-43F5-9E9B-519C76928F8C/10/X11PlatformThreading.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F9E8E74F-0926-4402-B832-0C7BCA0D1592/2B/IResourceDictionary.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/87DBB896-6B20-4A14-9B6A-7AB43642646D/4f/67d2b701/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/GalaxyBudsClient.csproj" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient.Bluetooth/Class1.cs" />
-      <option value="$PROJECT_DIR$/ThePBone.BlueZNet/ThePBone.BlueZNet.csproj" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient.Bluetooth/GalaxyBudsClient.Bluetooth.csproj" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient.Bluetooth.Linux/Program.cs" />
-      <option value="$PROJECT_DIR$/ThePBone.BlueZNet/BlueZException.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient.Bluetooth.Linux/BluetoothException.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient.Bluetooth.Linux/BluetoothServiceLinux.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient.Bluetooth.Linux/GalaxyBudsClient.Bluetooth.Linux.csproj" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Dialogs/BudsPopup.xaml.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient.Bluetooth/IBluetoothService.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/BluetoothImpl.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/ISettings.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/App.xaml.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessage.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Constants.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/IBasicUpdate.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/BluetoothServiceStub.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Utils/ResourceUtils.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/Brushes.xaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/BatteryTypeParser.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/DebugGetAllDataParser.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/DebugSerialNumberParser.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/SelfTestParser.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/StatusUpdateParser.cs" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/UsageReportParser.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient.Bluetooth.Linux/BluetoothSocket.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Program.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/MuteUpdateParser.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/GenericResponseParser.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Developer/DevTools.xaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessageBuilder.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/BaseMessageParser.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/i18n/en.xaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Constants.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessage.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Utils/ByteArrayUtils.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AbstractPage.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/DummyPage2.axaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/DummyPage2.axaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/HomePage.axaml" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient.Bluetooth.Linux/BluetoothService.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Platform/BluetoothImpl.cs" />
-      <option value="$PROJECT_DIR$/ThePBone.BlueZNet/Interop/UnixSocket.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient.Bluetooth/IBluetoothService.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/HomePage.axaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Transition/PageContainer.axaml.cs" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient.Bluetooth/BluetoothException.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AmbientSoundPage.axaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Message/MeesageComposer.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Message/MessageComposer.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Elements/ScanButton.xaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/FindMyGearPage.axaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/FindMyGearPage.axaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessageHandler.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Items/SwitchDetailListItem.xaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/EqualizerPage.axaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Program.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/ISettings.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/ExtendedStatusUpdateParser.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/IBaseMessageParser.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/App.xaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/DeviceMessageCache.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/BudsLiveDeviceSpec.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AdvancedPage.axaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/BudsDeviceSpec.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/BudsPlusDeviceSpec.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AmbientSoundPage.axaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/StubDeviceSpec.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Platform/BluetoothImpl.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/IDeviceSpec.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lFViZ0CpC2QuPJaC1pFqMhLzzN" />
@@ -61,7 +148,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34997287" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.24077329" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -73,6 +160,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -123,7 +211,13 @@
       <option name="presentableId" value="Default" />
       <updated>1607192953390</updated>
       <workItem from="1607192957588" duration="21539000" />
-      <workItem from="1607219303330" duration="3201000" />
+      <workItem from="1607219303330" duration="3235000" />
+      <workItem from="1607250777303" duration="1244000" />
+      <workItem from="1607272567592" duration="19562000" />
+      <workItem from="1607340252946" duration="11226000" />
+      <workItem from="1607428565208" duration="766000" />
+      <workItem from="1607525359300" duration="8017000" />
+      <workItem from="1607542986654" duration="765000" />
     </task>
     <servers />
   </component>
@@ -144,5 +238,38 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.IO.InvalidDataException" isInternal="false" displayValue="InvalidDataException" namespaceName="System.IO">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/FindMyGearPage.axaml.cs</url>
+          <line>158</line>
+          <properties documentPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/FindMyGearPage.axaml.cs" initialLine="158" containingFunctionPresentation="method 'EarbudWarning'">
+            <startOffsets>
+              <option value="5865" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5866" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="DotNet Exception Breakpoints" />
+      </default-breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Frame#GalaxyBudsClient.Platform.BluetoothImpl.OnNewDataAvailable" memberName="frame" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

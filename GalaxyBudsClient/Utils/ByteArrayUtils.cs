@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Text.RegularExpressions;
 
 namespace GalaxyBudsClient.Utils
 {
-    static class ByteArrayUtils
+    public static class ByteArrayUtils
     {
         public static byte[] AddByteToArray(byte[] bArray, byte newByte)
         {
@@ -26,6 +27,24 @@ namespace GalaxyBudsClient.Utils
             return copy;
         }
 
+        public static bool IsBufferZeroedOut(ArrayList? buffer)
+        {
+            if (buffer == null)
+            {
+                return true;
+            }
+            
+            foreach(var value in buffer)
+            {
+                if (value is byte b && b != 0x00)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        
         /**
          * Throws ArgumentOutOfRangeException in case of bad format
          **/

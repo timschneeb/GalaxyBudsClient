@@ -8,7 +8,7 @@ using GalaxyBudsClient.Model;
 
 namespace GalaxyBudsClient.Decoder
 {
-    class DebugGetAllDataParser : BaseMessageParser
+    public class DebugGetAllDataParser : BaseMessageParser
     {
         public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_DEBUG_GET_ALL_DATA;
 

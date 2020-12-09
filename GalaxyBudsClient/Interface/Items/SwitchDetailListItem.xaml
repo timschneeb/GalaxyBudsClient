@@ -6,24 +6,27 @@
              xmlns:items="clr-namespace:GalaxyBudsClient.Interface.Items"
              xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
              mc:Ignorable="d">
+
     <Border CornerRadius="{StaticResource DefaultCornerRadius}" Classes="BorderHoverStyle" PointerPressed="InputElement_OnPointerPressed">
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10" >
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="40" MinWidth="40" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="32"/>
+                <RowDefinition Height="Auto" MinHeight="30"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             
-            <Label Grid.Row="0" Grid.Column="0" 
-                   Content="{Binding $parent[items:SwitchDetailListItem].Text}"
+            <TextBlock Grid.Row="0" Grid.Column="0" 
+                   Text="{Binding $parent[items:SwitchDetailListItem].Text}"
                    Foreground="{DynamicResource ForegroundTextBrush}"
                    FontSize="16"
                    VerticalAlignment="Top" 
-                   HorizontalAlignment="Center"/>
+                   HorizontalAlignment="Left"
+                   Margin="3,5,3,2"
+                   TextWrapping="Wrap"/>
             
             <elements:ToggleSwitch Grid.Row="0" Grid.Column="2" 
                                    x:Name="Toggle" 

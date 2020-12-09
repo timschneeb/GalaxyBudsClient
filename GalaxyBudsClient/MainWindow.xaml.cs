@@ -22,11 +22,12 @@ namespace GalaxyBudsClient
     public sealed class MainWindow : Window
     {
         private readonly HomePage _homePage = new HomePage();
-        
+        private readonly UnsupportedFeaturePage _unsupportedFeaturePage = new UnsupportedFeaturePage();
         private readonly CustomTitleBar _titleBar;
         
         public PageContainer Pager { get; }
 
+        
         public static MainWindow Instance { get; }
         static MainWindow()
         {
@@ -45,7 +46,7 @@ namespace GalaxyBudsClient
             Pager.RegisterPages(_homePage, new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(), new CreditsPage(),
                 new TouchpadPage(), new EqualizerPage(), new AdvancedPage(), new SystemPage(), new SelfTestPage(), new SettingsPage(),
                 new PopupSettingsPage(), new ConnectionLostPage(), new CustomTouchActionPage(), new DeviceSelectionPage(),
-                new WelcomePage(), new UnsupportedFeaturePage(), new UpdatePage());
+                new WelcomePage(), _unsupportedFeaturePage, new UpdatePage());
             Pager.SwitchPage(AbstractPage.Pages.Home);
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
@@ -56,10 +57,8 @@ namespace GalaxyBudsClient
 
             BuildOptionsMenu();
 
-            BluetoothImpl.Instance.Connected += (sender, args) =>
-                BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_AMBIENT_MODE, 0x01);
-
-            BluetoothImpl.Instance.ConnectAsync("80:7B:3E:21:79:EC", Models.BudsPlus);
+            /* TODO */
+            var connectTask = BluetoothImpl.Instance.ConnectAsync("80:7B:3E:21:79:EC", Models.BudsPlus);
         }
 
         private void OnLanguageUpdated()
@@ -83,6 +82,12 @@ namespace GalaxyBudsClient
         public void ShowDevTools()
         {
             new DevTools().Show(this);
+        }
+
+        public void ShowUnsupportedFeaturePage(string assertion)
+        {
+            _unsupportedFeaturePage.RequiredVersion = assertion;
+            Pager.SwitchPage(AbstractPage.Pages.UnsupportedFeature);
         }
     }
 }

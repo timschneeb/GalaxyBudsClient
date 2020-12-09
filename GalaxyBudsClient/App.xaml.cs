@@ -5,6 +5,7 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Styling;
 using GalaxyBudsClient.Interface.Developer;
+using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
@@ -40,6 +41,7 @@ namespace GalaxyBudsClient
             }
             
             Loc.Load();
+            DeviceMessageCache.Init();
         }
         
         public override void OnFrameworkInitializationCompleted()

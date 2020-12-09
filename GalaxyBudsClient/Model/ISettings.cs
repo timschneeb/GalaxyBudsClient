@@ -31,6 +31,7 @@ namespace GalaxyBudsClient.Model
         IDevice RegisteredDevice { set; get; }
         
         bool MinimizeToTray { set; get; }
+        bool ResumePlaybackOnSensor { set; get; }
         
         ICustomAction CustomActionLeft { set; get; }
         ICustomAction CustomActionRight { set; get; }

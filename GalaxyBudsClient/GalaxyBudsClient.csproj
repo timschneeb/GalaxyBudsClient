@@ -4,6 +4,7 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <ApplicationIcon>Resources/icon_white.ico</ApplicationIcon>
         <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
     <ItemGroup>
         <AvaloniaResource Include="Resources\**" />
@@ -98,6 +99,10 @@
         </Compile>
         <Compile Remove="bin\Debug\netcoreapp3.1\**" />
         <Compile Remove="bin\**" />
+        <Compile Update="Interface\Pages\DummyPage2.axaml.cs">
+          <DependentUpon>DummyPage2.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="0.10.0-preview6" />

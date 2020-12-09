@@ -25,11 +25,11 @@
         <Border Grid.Row="4" Classes="RoundedBorderListItem BottomSpacer10" >
             <items:SliderListItem x:Name="AmbientVolume" Text="{DynamicResource as_volume}" Changed="VolumeSlider_OnChanged" />
         </Border>
-        <Border Grid.Row="5" Classes="RoundedBorderListItem BottomSpacer10">
+        <Border Grid.Row="5" x:Name="AmbientVoiceFocusBorder" Classes="RoundedBorderListItem BottomSpacer10">
             <items:SwitchListItem x:Name="AmbientVoiceFocusToggle" Text="{DynamicResource as_voicefocus}" Toggled="VoiceFocusToggle_OnToggled"/>
         </Border>
-        <Border Grid.Row="6" Classes="RoundedBorderListItem">
-            <items:SwitchDetailListItem x:Name="ExtraLoud"
+        <Border Grid.Row="6" x:Name="AmbientExtraLoudBorder" Classes="RoundedBorderListItem">
+            <items:SwitchDetailListItem x:Name="AmbientExtraLoud"
                                         Text="{DynamicResource as_extrahigh}"
                                         Description="{DynamicResource as_extrahigh_description}"
                                         Toggled="ExtraLoud_OnToggled"/>

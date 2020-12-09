@@ -42,6 +42,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
         }
         
         public event EventHandler? RfcommConnected;
+        public event EventHandler? Connecting;
         public event EventHandler? Connected;
         public event EventHandler<string>? Disconnected;
         public event EventHandler<byte[]>? NewDataAvailable;
@@ -56,6 +57,8 @@ namespace GalaxyBudsClient.Bluetooth.Linux
         
         public async Task ConnectAsync(string macAddress, string uuid)
         {
+            Connecting?.Invoke(this, EventArgs.Empty);
+            
             if (_adapter == null)
             {
                 Log.Debug("Linux.BluetoothService: No adapter preselected. Choosing default one.");
@@ -313,7 +316,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                     Disconnected?.Invoke(this, ex.Message);
                     throw;
                 }
-
+                
                 if (dataAvailable)
                 {
                     NewDataAvailable?.Invoke(this, buffer);

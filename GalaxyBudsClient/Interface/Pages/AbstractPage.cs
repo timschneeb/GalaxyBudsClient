@@ -8,6 +8,7 @@ namespace GalaxyBudsClient.Interface.Pages
         public enum Pages
         {
             Dummy,
+            Dummy2,
             Home,
             FindMyGear,
             Touch,

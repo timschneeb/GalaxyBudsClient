@@ -2,7 +2,11 @@
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
+using GalaxyBudsClient.Decoder;
 using GalaxyBudsClient.Interface.Items;
+using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using Serilog;
 
@@ -21,8 +25,38 @@ namespace GalaxyBudsClient.Interface.Pages
 			_eqSwitch = this.FindControl<SwitchListItem>("EqToggle");
 			_presetSlider = this.FindControl<SliderListItem>("EqPreset");
 			
+			SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
+			
 			Loc.LanguageUpdated += UpdateStrings;
 			UpdateStrings();
+		}
+
+		private void InstanceOnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
+		{
+			if (BluetoothImpl.Instance.ActiveModel == Models.Buds)
+			{
+				_eqSwitch.IsChecked = e.EqualizerEnabled;
+				
+				var preset = e.EqualizerMode;
+				if (preset >= 5)
+				{
+					preset -= 5;
+				}
+
+				_presetSlider.Value = preset;
+			}
+			else
+			{
+				_eqSwitch.IsChecked = e.EqualizerMode != 0;
+				if (e.EqualizerMode == 0)
+				{
+					_presetSlider.Value = 2;
+				}
+				else
+				{
+					_presetSlider.Value = e.EqualizerMode - 1;
+				}
+			}
 		}
 
 		private void UpdateStrings()
@@ -37,27 +71,19 @@ namespace GalaxyBudsClient.Interface.Pages
 			};
 		}
 
-		public override void OnPageShown()
-		{
-			Log.Debug(this.GetType().Name + " shown");
-		}
-
-		public override void OnPageHidden()
-		{
-			Log.Debug(this.GetType().Name + " hidden");
-		}
-
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
 			MainWindow.Instance.Pager.SwitchPage(Pages.Home);
 		}
 
-		private void EqToggle_OnToggled(object? sender, bool e)
+		private async void EqToggle_OnToggled(object? sender, bool e)
 		{
+			await MessageComposer.SetEqualizer(_eqSwitch.IsChecked, (EqPreset)_presetSlider.Value, false);
 		}
 
-		private void EqPreset_OnChanged(object? sender, int e)
+		private async void EqPreset_OnChanged(object? sender, int e)
 		{
+			await MessageComposer.SetEqualizer(_eqSwitch.IsChecked, (EqPreset)_presetSlider.Value, false);
 		}
 	}
 }

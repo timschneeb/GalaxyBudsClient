@@ -10,13 +10,11 @@
         <e p=".gitignore" t="Include" />
         <e p="App.xaml" t="Include" />
         <e p="App.xaml.cs" t="Include" />
-        <e p="BluetoothServiceStub.cs" t="Include" />
         <e p="Decoder" t="Include">
           <e p="AmbientModeUpdateParser.cs" t="Include" />
           <e p="AmbientVoiceFocusParser.cs" t="Include" />
           <e p="AmbientVolumeParser.cs" t="Include" />
           <e p="AmbientWearingUpdateParser.cs" t="Include" />
-          <e p="BaseMessageParser.cs" t="Include" />
           <e p="BatteryTypeParser.cs" t="Include" />
           <e p="BondedDevicesParser.cs" t="Include" />
           <e p="DebugBuildInfoParser.cs" t="Include" />
@@ -26,6 +24,8 @@
           <e p="DebugSkuParser.cs" t="Include" />
           <e p="ExtendedStatusUpdateParser.cs" t="Include" />
           <e p="GenericResponseParser.cs" t="Include" />
+          <e p="IBaseMessageParser.cs" t="Include" />
+          <e p="IBasicStatusUpdate.cs" t="Include" />
           <e p="MuteUpdateParser.cs" t="Include" />
           <e p="NoiseReductionModeUpdateParser.cs" t="Include" />
           <e p="ResetResponseParser.cs" t="Include" />
@@ -34,7 +34,7 @@
           <e p="SetOtherOptionParser.cs" t="Include" />
           <e p="SoftwareVersionOTAParser.cs" t="Include" />
           <e p="SppRoleStateParser.cs" t="Include" />
-          <e p="StatusUpdateParser.cs" t="Include" />
+          <e p="StatusStatusUpdateParser.cs" t="Include" />
           <e p="TouchUpdateParser.cs" t="Include" />
           <e p="UsageReportParser.cs" t="Include" />
         </e>
@@ -99,6 +99,8 @@
             <e p="DeviceSelectionPage.axaml.cs" t="Include" />
             <e p="DummyPage.axaml" t="Include" />
             <e p="DummyPage.axaml.cs" t="Include" />
+            <e p="DummyPage2.axaml" t="Include" />
+            <e p="DummyPage2.axaml.cs" t="Include" />
             <e p="EqualizerPage.axaml" t="Include" />
             <e p="EqualizerPage.axaml.cs" t="Include" />
             <e p="FactoryResetPage.axaml" t="Include" />
@@ -140,8 +142,8 @@
         <e p="MainWindow.xaml" t="Include" />
         <e p="MainWindow.xaml.cs" t="Include" />
         <e p="Message" t="Include">
+          <e p="MessageComposer.cs" t="Include" />
           <e p="SPPMessage.cs" t="Include" />
-          <e p="SPPMessageBuilder.cs" t="Include" />
           <e p="SPPMessageHandler.cs" t="Include" />
           <e p="SPPMessageParserFactory.cs" t="Include" />
           <e p="SPPMessagePrivate.cs" t="Include" />
@@ -151,11 +153,19 @@
           <e p="CustomAction.cs" t="Include" />
           <e p="DescriptionAttribute.cs" t="Include" />
           <e p="DeviceAttribute.cs" t="Include" />
+          <e p="DeviceMessageCache.cs" t="Include" />
           <e p="ISettings.cs" t="Include" />
           <e p="LocalizedDescriptionAttribute.cs" t="Include" />
           <e p="MessageViewModel.cs" t="Include" />
           <e p="PostfixAttribute.cs" t="Include" />
           <e p="PropertyViewModel.cs" t="Include" />
+          <e p="Specifications" t="Include">
+            <e p="BudsDeviceSpec.cs" t="Include" />
+            <e p="BudsLiveDeviceSpec.cs" t="Include" />
+            <e p="BudsPlusDeviceSpec.cs" t="Include" />
+            <e p="IDeviceSpec.cs" t="Include" />
+            <e p="StubDeviceSpec.cs" t="Include" />
+          </e>
         </e>
         <e p="Platform" t="Include">
           <e p="BluetoothImpl.cs" t="Include" />

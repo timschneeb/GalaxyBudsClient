@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using GalaxyBudsClient.Platform;
 using Serilog;
 
 namespace GalaxyBudsClient.Model
@@ -181,31 +182,31 @@ namespace GalaxyBudsClient.Model
             
             public static byte ToRawByte(Universal uOption)
             {
-                if (BluetoothService.Instance.ActiveModel == Models.Buds)
+                if (BluetoothImpl.Instance.ActiveModel == Models.Buds)
                 {
-                    foreach (int? i in Enum.GetValues(typeof(OptionsBuds)))
+                    foreach (int i in Enum.GetValues(typeof(OptionsBuds)))
                     {
-                        string? name = Enum.GetName(typeof(OptionsBuds), i ?? 0);
+                        string? name = Enum.GetName(typeof(OptionsBuds), i);
                         if (name == uOption.ToString())
-                            return (byte)(i ?? 0);
+                            return (byte)(i);
                     }
                 }
-                else if (BluetoothService.Instance.ActiveModel == Models.BudsPlus)
+                else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPlus)
                 {
-                    foreach (int? i in Enum.GetValues(typeof(OptionsBudsPlus)))
+                    foreach (int i in Enum.GetValues(typeof(OptionsBudsPlus)))
                     {
-                        string? name = Enum.GetName(typeof(OptionsBudsPlus), i ?? 0);
+                        string? name = Enum.GetName(typeof(OptionsBudsPlus), i);
                         if (name == uOption.ToString())
-                            return (byte)(i ?? 0);
+                            return (byte)(i);
                     }
                 }
                 else
                 {
-                    foreach (int? i in Enum.GetValues(typeof(OptionsBudsLive)))
+                    foreach (int i in Enum.GetValues(typeof(OptionsBudsLive)))
                     {
-                        string? name = Enum.GetName(typeof(OptionsBudsLive), i ?? 0);
+                        string? name = Enum.GetName(typeof(OptionsBudsLive), i);
                         if (name == uOption.ToString())
-                            return (byte)(i ?? 0);
+                            return (byte)(i);
                     }
                 }
 
@@ -214,34 +215,34 @@ namespace GalaxyBudsClient.Model
             }
             public static Universal ToUniversal(int iOption)
             {
-                if (BluetoothService.Instance.ActiveModel == Models.Buds)
+                if (BluetoothImpl.Instance.ActiveModel == Models.Buds)
                 {
                     OptionsBuds opt = (OptionsBuds)iOption;
-                    foreach (int? i in Enum.GetValues(typeof(Universal)))
+                    foreach (int i in Enum.GetValues(typeof(Universal)))
                     {
-                        string? name = Enum.GetName(typeof(Universal), i ?? 0);
+                        string? name = Enum.GetName(typeof(Universal), i);
                         if (name == opt.ToString())
-                            return (Universal)(i ?? 0);
+                            return (Universal)(i);
                     }
                 }
-                else if (BluetoothService.Instance.ActiveModel == Models.BudsPlus)
+                else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPlus)
                 {
                     OptionsBudsPlus opt = (OptionsBudsPlus)iOption;
-                    foreach (int? i in Enum.GetValues(typeof(Universal)))
+                    foreach (int i in Enum.GetValues(typeof(Universal)))
                     {
-                        string? name = Enum.GetName(typeof(Universal), i ?? 0);
+                        string? name = Enum.GetName(typeof(Universal), i);
                         if (name == opt.ToString())
-                            return (Universal)(i ?? 0);
+                            return (Universal)i;
                     }
                 }
-                else if (BluetoothService.Instance.ActiveModel == Models.BudsLive)
+                else if (BluetoothImpl.Instance.ActiveModel == Models.BudsLive)
                 {
                     OptionsBudsLive opt = (OptionsBudsLive)iOption;
-                    foreach (int? i in Enum.GetValues(typeof(Universal)))
+                    foreach (int i in Enum.GetValues(typeof(Universal)))
                     {
-                        string? name = Enum.GetName(typeof(Universal), i ?? 0);
+                        string? name = Enum.GetName(typeof(Universal), i);
                         if (name == opt.ToString())
-                            return (Universal)(i ?? 0);
+                            return (Universal)(i);
                     }
                 }
 

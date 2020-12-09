@@ -6,7 +6,7 @@ using Serilog;
 
 namespace GalaxyBudsClient.Decoder
 {
-    class UsageReportParser : BaseMessageParser
+    public class UsageReportParser : BaseMessageParser
     {
         static readonly Dictionary<string, string> KeyLookup = new Dictionary<string, string>
         {

@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Config.Net;
+using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
@@ -24,8 +28,7 @@ namespace GalaxyBudsClient
             
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
             
-            BuildAvaloniaApp()
-                        .StartWithClassicDesktopLifetime(args);
+            BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
         } 
 
         // Avalonia configuration, don't remove; also used by visual designer.

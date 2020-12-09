@@ -5,6 +5,7 @@ namespace GalaxyBudsClient.Bluetooth
 {
     public interface IBluetoothService
     {
+        event EventHandler Connecting;
         event EventHandler Connected;
         event EventHandler RfcommConnected;
         event EventHandler<string> Disconnected;

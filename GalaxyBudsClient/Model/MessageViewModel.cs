@@ -21,7 +21,7 @@ namespace GalaxyBudsClient.Model
             PayloadAscii = Hex.DumpAscii(msg.Payload);
             Type = GetEnumName(typeof(SPPMessage.MsgType), msg.Type);
             Size = $"{msg.Size} bytes";
-            CRC16 = (msg.CRC16 == 0 ? "Pass" : "Fail");
+            CRC16 = (msg.Crc16 == 0 ? "Pass" : "Fail");
             Message = msg;
         }
 

@@ -5,7 +5,7 @@ using GalaxyBudsClient.Message;
 
 namespace GalaxyBudsClient.Decoder
 {
-    class DebugSerialNumberParser : BaseMessageParser
+    public class DebugSerialNumberParser : BaseMessageParser
     {
         public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_DEBUG_SERIAL_NUMBER;
 

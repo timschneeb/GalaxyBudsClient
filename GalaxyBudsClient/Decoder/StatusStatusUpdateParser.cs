@@ -8,7 +8,7 @@ using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Decoder
 {
-    class StatusUpdateParser : BaseMessageParser
+    public class StatusStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
     {
 
         public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_STATUS_UPDATED;
@@ -19,17 +19,17 @@ namespace GalaxyBudsClient.Decoder
         public WearStates WearState { set; get; }
 
 
-        [Device(Model.Constants.Models.Buds)]
+        [Device(Models.Buds)]
         public int EarType { set; get; }
 
 
-        [Device(new Model.Constants.Models[] { Model.Constants.Models.BudsPlus, Model.Constants.Models.BudsLive })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive })]
         public int Revision { set; get; }
-        [Device(new Model.Constants.Models[] { Model.Constants.Models.BudsPlus, Model.Constants.Models.BudsLive })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive })]
         public PlacementStates PlacementL { set; get; }
-        [Device(new Model.Constants.Models[] { Model.Constants.Models.BudsPlus, Model.Constants.Models.BudsLive })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive })]
         public PlacementStates PlacementR { set; get; }
-        [Device(new Model.Constants.Models[] { Model.Constants.Models.BudsPlus, Model.Constants.Models.BudsLive })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive })]
         public int BatteryCase { set; get; }
 
         public override void ParseMessage(SPPMessage msg)
@@ -37,7 +37,7 @@ namespace GalaxyBudsClient.Decoder
             if (msg.Id != HandledType)
                 return;
 
-            if (ActiveModel == Model.Constants.Models.Buds)
+            if (ActiveModel == Models.Buds)
             {
                 EarType = msg.Payload[0];
                 BatteryL = msg.Payload[1];
@@ -72,7 +72,7 @@ namespace GalaxyBudsClient.Decoder
         public override Dictionary<String, String> ToStringMap()
         {
             Dictionary<String, String> map = new Dictionary<string, string>();
-            PropertyInfo[] properties = this.GetType().GetProperties();
+            PropertyInfo[] properties = GetType().GetProperties();
             foreach (PropertyInfo property in properties)
             {
                 if (property.Name == "HandledType" || property.Name == "ActiveModel")

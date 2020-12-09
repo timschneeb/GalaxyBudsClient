@@ -8,7 +8,7 @@ using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Decoder
 {
-    class ExtendedStatusUpdateParser : BaseMessageParser
+    public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
     {
 
         public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_EXTENDED_STATUS_UPDATED;
