@@ -132,125 +132,27 @@ namespace GalaxyBudsClient.Model
             Changing = 1,
             Unknown = 2
         }
-        public class TouchOption
+        
+        public enum TouchOptions
         {
-            public enum Universal
-            {
-                [LocalizedDescription("touchoption_voice")]
-                VoiceAssistant,
-                [LocalizedDescription("touchoption_quickambientsound")]
-                QuickAmbientSound,
-                [LocalizedDescription("touchoption_volume")]
-                Volume,
-                [LocalizedDescription("touchoption_ambientsound")]
-                AmbientSound,
-                [LocalizedDescription("anc")]
-                ANC,
-                [LocalizedDescription("touchoption_spotify")]
-                SpotifySpotOn,
-                OtherL,
-                OtherR
-            }
-            public enum OptionsBuds
-            {
-                VoiceAssistant = 0,
-                QuickAmbientSound = 1,
-                Volume = 2,
-                AmbientSound = 3,
-                SpotifySpotOn = 4,
-                OtherL = 5,
-                OtherR = 6
-            }
-            public enum OptionsBudsPlus
-            {
-                VoiceAssistant = 1,
-                AmbientSound = 2,
-                Volume = 3,
-                SpotifySpotOn = 4,
-                OtherL = 5,
-                OtherR = 6
-            }
-            public enum OptionsBudsLive
-            {
-                VoiceAssistant = 1,
-                ANC = 2,
-                Volume = 3,
-                SpotifySpotOn = 4,
-                OtherL = 5,
-                OtherR = 6
-            }
-            
-            public static byte ToRawByte(Universal uOption)
-            {
-                if (BluetoothImpl.Instance.ActiveModel == Models.Buds)
-                {
-                    foreach (int i in Enum.GetValues(typeof(OptionsBuds)))
-                    {
-                        string? name = Enum.GetName(typeof(OptionsBuds), i);
-                        if (name == uOption.ToString())
-                            return (byte)(i);
-                    }
-                }
-                else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPlus)
-                {
-                    foreach (int i in Enum.GetValues(typeof(OptionsBudsPlus)))
-                    {
-                        string? name = Enum.GetName(typeof(OptionsBudsPlus), i);
-                        if (name == uOption.ToString())
-                            return (byte)(i);
-                    }
-                }
-                else
-                {
-                    foreach (int i in Enum.GetValues(typeof(OptionsBudsLive)))
-                    {
-                        string? name = Enum.GetName(typeof(OptionsBudsLive), i);
-                        if (name == uOption.ToString())
-                            return (byte)(i);
-                    }
-                }
-
-                Log.Error(@"ToRawByte: TouchOption not translatable");
-                return 0;
-            }
-            public static Universal ToUniversal(int iOption)
-            {
-                if (BluetoothImpl.Instance.ActiveModel == Models.Buds)
-                {
-                    OptionsBuds opt = (OptionsBuds)iOption;
-                    foreach (int i in Enum.GetValues(typeof(Universal)))
-                    {
-                        string? name = Enum.GetName(typeof(Universal), i);
-                        if (name == opt.ToString())
-                            return (Universal)(i);
-                    }
-                }
-                else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPlus)
-                {
-                    OptionsBudsPlus opt = (OptionsBudsPlus)iOption;
-                    foreach (int i in Enum.GetValues(typeof(Universal)))
-                    {
-                        string? name = Enum.GetName(typeof(Universal), i);
-                        if (name == opt.ToString())
-                            return (Universal)i;
-                    }
-                }
-                else if (BluetoothImpl.Instance.ActiveModel == Models.BudsLive)
-                {
-                    OptionsBudsLive opt = (OptionsBudsLive)iOption;
-                    foreach (int i in Enum.GetValues(typeof(Universal)))
-                    {
-                        string? name = Enum.GetName(typeof(Universal), i);
-                        if (name == opt.ToString())
-                            return (Universal)(i);
-                    }
-                }
-
-                Log.Error(@"ToUniversal: TouchOption not translatable");
-                return 0;
-            }
+            [LocalizedDescription("touchoption_voice")]
+            VoiceAssistant,
+            [LocalizedDescription("touchoption_quickambientsound")]
+            QuickAmbientSound,
+            [LocalizedDescription("touchoption_volume")]
+            Volume,
+            [LocalizedDescription("touchoption_ambientsound")]
+            AmbientSound,
+            [LocalizedDescription("anc")]
+            Anc,
+            [LocalizedDescription("touchoption_spotify")]
+            SpotifySpotOn,
+            [Hidden]
+            OtherL,
+            [Hidden]
+            OtherR
         }
-
+        
         public enum ClientDeviceType
         {
             Samsung = 1,

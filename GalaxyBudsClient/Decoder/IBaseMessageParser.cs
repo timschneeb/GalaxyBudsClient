@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 
 namespace GalaxyBudsClient.Decoder
@@ -13,5 +14,6 @@ namespace GalaxyBudsClient.Decoder
         public abstract Dictionary<String, String> ToStringMap();
 
         public Model.Constants.Models ActiveModel => BluetoothImpl.Instance.ActiveModel;
+        public IDeviceSpec DeviceSpec => BluetoothImpl.Instance.DeviceSpec;
     }
 }

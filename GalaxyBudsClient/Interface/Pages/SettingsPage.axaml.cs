@@ -63,11 +63,6 @@ namespace GalaxyBudsClient.Interface.Pages
 			_locale.Items = localeMenuActions;
 		}
 
-		public override void OnPageHidden()
-		{
-			Log.Debug(this.GetType().Name + " hidden");
-		}
-
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
 			MainWindow.Instance.Pager.SwitchPage(Pages.Home);

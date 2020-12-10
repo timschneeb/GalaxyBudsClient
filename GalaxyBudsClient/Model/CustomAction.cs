@@ -15,8 +15,6 @@ namespace GalaxyBudsClient.Model
             EnableEqualizer,
             [LocalizedDescription("touchoption_custom_next_eq_preset")]
             SwitchEqualizerPreset,
-            [LocalizedDescription("touchoption_custom_trigger_hotkey")]
-            Hotkey,
             [LocalizedDescription("touchoption_custom_external_app")]
             RunExternalProgram
         }
@@ -34,8 +32,6 @@ namespace GalaxyBudsClient.Model
         {
             if(Action == Actions.RunExternalProgram)
                 return $"{Path.GetFileName(Parameter)}";
-            if(Action == Actions.Hotkey && Parameter.Contains(";"))
-                return $"{Parameter.Split(';')[0]}";
             return Action.GetDescription();
         }
 
@@ -43,8 +39,6 @@ namespace GalaxyBudsClient.Model
         {
             if (Action == Actions.RunExternalProgram)
                 return $"{Action.GetDescription()} ({Path.GetFileName(Parameter)})";
-            if (Action == Actions.Hotkey && Parameter.Contains(";"))
-                return $"{Action.GetDescription()} ({Parameter.Split(';')[0]})";
             return Action.GetDescription();
         }
     }

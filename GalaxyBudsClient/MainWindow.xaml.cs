@@ -23,10 +23,11 @@ namespace GalaxyBudsClient
     {
         private readonly HomePage _homePage = new HomePage();
         private readonly UnsupportedFeaturePage _unsupportedFeaturePage = new UnsupportedFeaturePage();
+        private readonly CustomTouchActionPage _customTouchActionPage = new CustomTouchActionPage();
         private readonly CustomTitleBar _titleBar;
         
         public PageContainer Pager { get; }
-
+        public CustomTouchActionPage CustomTouchActionPage => _customTouchActionPage;
         
         public static MainWindow Instance { get; }
         static MainWindow()
@@ -45,7 +46,7 @@ namespace GalaxyBudsClient
             Pager = this.FindControl<PageContainer>("Container");
             Pager.RegisterPages(_homePage, new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(), new CreditsPage(),
                 new TouchpadPage(), new EqualizerPage(), new AdvancedPage(), new SystemPage(), new SelfTestPage(), new SettingsPage(),
-                new PopupSettingsPage(), new ConnectionLostPage(), new CustomTouchActionPage(), new DeviceSelectionPage(),
+                new PopupSettingsPage(), new ConnectionLostPage(), _customTouchActionPage, new DeviceSelectionPage(),
                 new WelcomePage(), _unsupportedFeaturePage, new UpdatePage());
             Pager.SwitchPage(AbstractPage.Pages.Home);
 
@@ -88,6 +89,12 @@ namespace GalaxyBudsClient
         {
             _unsupportedFeaturePage.RequiredVersion = assertion;
             Pager.SwitchPage(AbstractPage.Pages.UnsupportedFeature);
+        }
+
+        public void ShowCustomActionSelection(Devices device)
+        {
+            _customTouchActionPage.CurrentSide = device;
+            Pager.SwitchPage(AbstractPage.Pages.TouchCustomAction);
         }
     }
 }

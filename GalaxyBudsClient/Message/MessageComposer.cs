@@ -67,11 +67,11 @@ namespace GalaxyBudsClient.Message
 
         public static class Touch
         {
-            public static async Task SetOptions(TouchOption.Universal left, TouchOption.Universal right)
+            public static async Task SetOptions(TouchOptions left, TouchOptions right)
             {
                 byte[] payload = new byte[2];
-                payload[0] = TouchOption.ToRawByte(left);
-                payload[1] = TouchOption.ToRawByte(right);
+                payload[0] = BluetoothImpl.Instance.DeviceSpec.TouchMap.ToByte(left);
+                payload[1] = BluetoothImpl.Instance.DeviceSpec.TouchMap.ToByte(right);
                 await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_TOUCHPAD_OPTION, payload);
             }
         }

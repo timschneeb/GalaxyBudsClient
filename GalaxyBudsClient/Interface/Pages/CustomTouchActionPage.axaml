@@ -19,11 +19,13 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
-        <elements:PageHeader Grid.Row="1" Title="{DynamicResource cact_header}" BackPressed="BackButton_OnPointerPressed"/>
+        <elements:PageHeader Grid.Row="1" x:Name="PageHeader"
+                             Title="{DynamicResource cact_header}"
+                             BackPressed="BackButton_OnPointerPressed"/>
         
         <Border Grid.Row="3" Classes="RoundedBorderListItem">
             <Border Name="ActionBorder" Classes="BorderHoverStyle">
-                <items:DetailListItem x:Name="Action"
+                <items:MenuListItem x:Name="Menu"
                                       Text="{DynamicResource cact_action}"
                                       Description="{DynamicResource touchoption_custom_null}"/>
             </Border>
@@ -77,7 +79,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Classes="BorderHoverStyle">
+                <Border Grid.Column="0" Classes="BorderHoverStyle" PointerPressed="BackButton_OnPointerPressed">
                     <Label Content="{DynamicResource cancel}"
                            Height="50" FontSize="18"
                            Foreground="{DynamicResource ForegroundTextBrush}" 
@@ -86,7 +88,7 @@
                            VerticalContentAlignment="Center" />
                 </Border>
                 <Border Grid.Column="1" Classes="VerticalSeparator"/>
-                <Border Grid.Column="2" Classes="BorderHoverStyle">
+                <Border Grid.Column="2" Classes="BorderHoverStyle" PointerPressed="Apply_OnPointerPressed">
                     <Label Content="{DynamicResource apply}" 
                            Height="50" FontSize="18"
                            Foreground="{DynamicResource ForegroundTextBrush}" 

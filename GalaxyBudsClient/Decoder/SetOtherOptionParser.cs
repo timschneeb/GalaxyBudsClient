@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.Reflection;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Platform;
 
 namespace GalaxyBudsClient.Decoder
 {
     class SetOtherOptionParser : BaseMessageParser
     {
         public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_SET_TOUCHPAD_OTHER_OPTION;
-        public TouchOption.Universal OptionType { set; get; }
+        public TouchOptions OptionType { set; get; }
 
         public override void ParseMessage(SPPMessage msg)
         {
             if (msg.Id != HandledType)
                 return;
 
-            OptionType = TouchOption.ToUniversal(msg.Payload[0]);
+            OptionType = DeviceSpec.TouchMap.FromByte(msg.Payload[0]);
         }
 
         public override Dictionary<String, String> ToStringMap()

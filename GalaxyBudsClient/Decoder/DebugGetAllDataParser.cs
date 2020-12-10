@@ -103,7 +103,7 @@ namespace GalaxyBudsClient.Decoder
 
                 HardwareVersion = "rev" + hw1.ToString("X") + "." + hw2.ToString("X");
                 SoftwareVersion = VersionDataToString(msg.Payload, 1, "R");
-                TouchSoftwareVersion = msg.Payload[4].ToString("X");
+                TouchSoftwareVersion = $"0x{msg.Payload[4]:X}";
                 LeftBluetoothAddress = BytesToMacString(msg.Payload, 5);
                 RightBluetoothAddress = BytesToMacString(msg.Payload, 11);
 
@@ -139,7 +139,7 @@ namespace GalaxyBudsClient.Decoder
 
                 HardwareVersion = "rev" + hw1.ToString("X") + "." + hw2.ToString("X");
                 SoftwareVersion = VersionDataToString(msg.Payload, 2, "R");
-                TouchSoftwareVersion = msg.Payload[5].ToString("X");
+                TouchSoftwareVersion = $"0x{msg.Payload[5]:X}";
                 LeftBluetoothAddress = BytesToMacString(msg.Payload, 6);
                 RightBluetoothAddress = BytesToMacString(msg.Payload, 12);
 

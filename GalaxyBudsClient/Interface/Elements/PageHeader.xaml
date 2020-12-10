@@ -6,7 +6,7 @@
              xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
              mc:Ignorable="d" x:Name="UserControl" Height="{StaticResource PageHeaderHeight}">
     <Border Height="{StaticResource PageHeaderHeight}" Classes="RoundedBorderListItem">
-        <Grid HorizontalAlignment="Left">
+        <Grid HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" MinWidth="16" />
                 <ColumnDefinition Width="Auto" />
@@ -25,7 +25,9 @@
                    Foreground="{DynamicResource ForegroundTextBrush}" 
                    VerticalContentAlignment="Center" 
                    FontSize="20"/>
-            <elements:LoadingSpinner Grid.Column="3" IsVisible="{Binding $parent[elements:PageHeader].LoadingSpinnerVisible}" Margin="321,19,-341,19"/>
+            <elements:LoadingSpinner Grid.Column="3"
+                                     IsVisible="{Binding $parent[elements:PageHeader].LoadingSpinnerVisible}" 
+                                     Margin="0,19,23,19"/>
         </Grid>
     </Border>
 </UserControl>

@@ -154,6 +154,7 @@
           <e p="DescriptionAttribute.cs" t="Include" />
           <e p="DeviceAttribute.cs" t="Include" />
           <e p="DeviceMessageCache.cs" t="Include" />
+          <e p="HiddenAttribute.cs" t="Include" />
           <e p="ISettings.cs" t="Include" />
           <e p="LocalizedDescriptionAttribute.cs" t="Include" />
           <e p="MessageViewModel.cs" t="Include" />
@@ -165,6 +166,13 @@
             <e p="BudsPlusDeviceSpec.cs" t="Include" />
             <e p="IDeviceSpec.cs" t="Include" />
             <e p="StubDeviceSpec.cs" t="Include" />
+          </e>
+          <e p="Touchpad" t="Include">
+            <e p="BudsLiveTouchOption.cs" t="Include" />
+            <e p="BudsPlusTouchOption.cs" t="Include" />
+            <e p="BudsTouchOption.cs" t="Include" />
+            <e p="ITouchOption.cs" t="Include" />
+            <e p="StubTouchOption.cs" t="Include" />
           </e>
         </e>
         <e p="Platform" t="Include">
@@ -266,6 +274,7 @@
           <e p="MenuFactory.cs" t="Include" />
           <e p="PlatformUtils.cs" t="Include" />
           <e p="SettingsProvider.cs" t="Include" />
+          <e p="TouchpadMenuFactory.cs" t="Include" />
           <e p="ValueConverter.cs" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive">

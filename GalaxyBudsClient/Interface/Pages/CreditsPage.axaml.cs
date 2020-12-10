@@ -26,17 +26,6 @@ namespace GalaxyBudsClient.Interface.Pages
 			AvaloniaXamlLoader.Load(this);
 		}
 
-		public override void OnPageShown()
-		{
-			_versionItem.Description = Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "x.x.x.x";
-			Log.Debug(this.GetType().Name + " shown");
-		}
-
-		public override void OnPageHidden()
-		{
-			Log.Debug(this.GetType().Name + " hidden");
-		}
-
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
 			MainWindow.Instance.Pager.SwitchPage(Pages.Home);

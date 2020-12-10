@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Model.Specifications
 {
@@ -12,6 +13,10 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.SeamlessConnection, new FeatureRule(11, "R175XXU0ATF2")  },
                 { IDeviceSpec.Feature.GamingMode, null },
                 { IDeviceSpec.Feature.AmbientExtraLoud, new FeatureRule(9, "R175XXU0ATF2")  },
+                { IDeviceSpec.Feature.AmbientSound, null },
+                { IDeviceSpec.Feature.DoubleTapVolume, null },
             };
+        
+        public Models Device => Models.BudsPlus;
     }
 }

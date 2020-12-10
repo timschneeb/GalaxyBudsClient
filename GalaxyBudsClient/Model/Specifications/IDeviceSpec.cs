@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Touchpad;
 using Serilog;
 
 namespace GalaxyBudsClient.Model.Specifications
@@ -23,10 +25,13 @@ namespace GalaxyBudsClient.Model.Specifications
             AmbientVoiceFocus,
             AmbientSidetone,
             AmbientPassthrough,
+            AmbientSound,
             GamingMode,
+            DoubleTapVolume
         }
         
         Dictionary<Feature, FeatureRule?> Rules { get; }
+        Models Device { get; }
 
         bool Supports(Feature feature)
         {
@@ -52,6 +57,24 @@ namespace GalaxyBudsClient.Model.Specifications
         string RecommendedFwVersion(Feature feature)
         {
             return Rules.ContainsKey(feature) ? Rules[feature]?.RecommendedFirmwareVersion ?? "---" : "???";
+        }
+        
+        public ITouchOption TouchMap
+        {
+            get
+            {
+                switch (Device)
+                {
+                    case Models.Buds:
+                        return new BudsTouchOption();
+                    case Models.BudsPlus:
+                        return new BudsPlusTouchOption();
+                    case Models.BudsLive:
+                        return new BudsLiveTouchOption();
+                    default:
+                        return new StubTouchOption();
+                }
+            }
         }
     }
 }

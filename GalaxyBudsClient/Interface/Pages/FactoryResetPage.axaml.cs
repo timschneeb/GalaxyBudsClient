@@ -1,5 +1,12 @@
-﻿using Avalonia.Input;
+﻿using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Markup.Xaml;
+using GalaxyBudsClient.Interface.Dialogs;
+using GalaxyBudsClient.Interface.Elements;
+using GalaxyBudsClient.Interface.Items;
+using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Utils.DynamicLocalization;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages
@@ -7,20 +14,44 @@ namespace GalaxyBudsClient.Interface.Pages
  	public class FactoryResetPage : AbstractPage
 	{
 		public override Pages PageType => Pages.FactoryReset;
-		
+
+		private readonly PageHeader _pageHeader;
+		private readonly IconListItem _resetButton;
+
 		public FactoryResetPage()
 		{   
 			AvaloniaXamlLoader.Load(this);
+
+			_pageHeader = this.FindControl<PageHeader>("PageHeader");
+			_resetButton = this.FindControl<IconListItem>("FactoryReset");
+			
+			SPPMessageHandler.Instance.ResetResponse += InstanceOnResetResponse;
+		}
+
+		private void InstanceOnResetResponse(object? sender, int e)
+		{
+			_pageHeader.BackButtonVisible = true;
+			_pageHeader.LoadingSpinnerVisible = false;
+
+			_resetButton.Text = Loc.Resolve("factory_confirm");
+			_resetButton.IsEnabled = false;
+
+			if (e != 0)
+			{
+				new MessageBox()
+				{
+					Title = Loc.Resolve("factory_error_title"),
+					Description = Loc.Resolve("factory_error")
+				}.ShowDialog(MainWindow.Instance);
+			}
+
+			MainWindow.Instance.Pager.SwitchPage(Pages.NoConnection);
 		}
 
 		public override void OnPageShown()
 		{
-			Log.Debug(this.GetType().Name + " shown");
-		}
-
-		public override void OnPageHidden()
-		{
-			Log.Debug(this.GetType().Name + " hidden");
+			_pageHeader.BackButtonVisible = true;
+			_pageHeader.LoadingSpinnerVisible = false;
 		}
 
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
@@ -28,9 +59,14 @@ namespace GalaxyBudsClient.Interface.Pages
 			MainWindow.Instance.Pager.SwitchPage(Pages.System);
 		}
 
-		private void FactoryReset_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+		private async void FactoryReset_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
-			
+			_pageHeader.BackButtonVisible = false;
+			_pageHeader.LoadingSpinnerVisible = true;
+			_resetButton.Text = Loc.Resolve("system_waiting_for_device");
+			_resetButton.IsEnabled = false;
+			//TODO: Unregister device instead
+			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_RESET);
 		}
 	}
 }

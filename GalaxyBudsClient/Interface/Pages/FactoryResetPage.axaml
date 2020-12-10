@@ -19,7 +19,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        <elements:PageHeader Grid.Row="1" Title="{DynamicResource factory_header}" BackPressed="BackButton_OnPointerPressed"/>
+        <elements:PageHeader Grid.Row="1" x:Name="PageHeader" Title="{DynamicResource factory_header}" BackPressed="BackButton_OnPointerPressed"/>
         
         <Border Grid.Row="3" Classes="RoundedBorderListItem">
             <Grid>

@@ -19,10 +19,14 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
-        <elements:PageHeader Grid.Row="1" Title="{DynamicResource touchpad_header}" BackPressed="BackButton_OnPointerPressed"/>
+        <elements:PageHeader Grid.Row="1"
+                             Title="{DynamicResource touchpad_header}"
+                             BackPressed="BackButton_OnPointerPressed"/>
         
         <Border Grid.Row="3" Classes="RoundedBorderListItem BottomSpacer10">
-            <items:SwitchListItem x:Name="LockToggle" Text="{DynamicResource touchpad_lock}" Toggled="LockToggle_OnToggled"/>
+            <items:SwitchListItem x:Name="LockToggle"
+                                  Text="{DynamicResource touchpad_lock}"
+                                  Toggled="LockToggle_OnToggled"/>
         </Border>
         <Border Grid.Row="4" Classes="RoundedBorderListItem BottomSpacer10">
             <Grid ClipToBounds="True">
@@ -31,16 +35,28 @@
                     <RowDefinition Height="1"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Border x:Name="LeftOptionBorder" Grid.Row="0" Classes="BorderHoverStyle" CornerRadius="{StaticResource DefaultCornerRadius}">
-                    <items:DetailListItem x:Name="LeftOption" Text="{DynamicResource touchpad_left_action}" Description="{DynamicResource touchoption_custom_unknown}" />
+                <Border x:Name="LeftOptionBorder"
+                        Grid.Row="0" 
+                        Classes="BorderHoverStyle"
+                        CornerRadius="{StaticResource DefaultCornerRadius}">
+                    <items:MenuListItem x:Name="LeftOption" 
+                                        Text="{DynamicResource touchpad_left_action}"
+                                        Description="{DynamicResource touchoption_custom_unknown}" />
                 </Border>
-                <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
-                <Border x:Name="RightOptionBorder" Grid.Row="2" Classes="BorderHoverStyle" CornerRadius="{StaticResource DefaultCornerRadius}">
-                    <items:DetailListItem x:Name="RightOption" Text="{DynamicResource touchpad_right_action}" Description="{DynamicResource touchoption_custom_unknown}"/>
+                <Separator Grid.Row="1" Margin="20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
+                <Border x:Name="RightOptionBorder"
+                        Grid.Row="2" 
+                        Classes="BorderHoverStyle" 
+                        CornerRadius="{StaticResource DefaultCornerRadius}">
+                    <items:MenuListItem x:Name="RightOption" 
+                                        Text="{DynamicResource touchpad_right_action}"
+                                        Description="{DynamicResource touchoption_custom_unknown}"/>
                 </Border>
             </Grid>
         </Border>
-        <Border Grid.Row="5" x:Name="DoubleTapVolumeBorder" Classes="RoundedBorderListItem BottomSpacer10">
+        <Border Grid.Row="5"
+                x:Name="DoubleTapVolumeBorder" 
+                Classes="RoundedBorderListItem BottomSpacer10">
             <items:SwitchDetailListItem x:Name="DoubleTapVolume"
                                         Text="{DynamicResource touchpad_double_tap_volume}" 
                                         Description="{DynamicResource touchpad_double_tap_volume_description}"

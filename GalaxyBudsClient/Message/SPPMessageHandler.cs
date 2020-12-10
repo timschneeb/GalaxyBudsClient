@@ -33,7 +33,7 @@ namespace GalaxyBudsClient.Message
         public event EventHandler<DebugSerialNumberParser>? SerialNumberResponse;
         public event EventHandler<GenericResponseParser>? GenericResponse;
         public event EventHandler<SelfTestParser>? SelfTestResponse;
-        public event EventHandler<TouchOption.Universal>? OtherOption;
+        public event EventHandler<TouchOptions>? OtherOption;
         public event EventHandler<ExtendedStatusUpdateParser>? ExtendedStatusUpdate;
         public event EventHandler<IBasicStatusUpdate>? BaseUpdate;
         public event EventHandler<StatusStatusUpdateParser>? StatusUpdate;

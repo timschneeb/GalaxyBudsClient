@@ -22,52 +22,52 @@ namespace GalaxyBudsClient.Decoder
         public WearStates WearState { set; get; }
         public int EqualizerMode { set; get; }
         public bool TouchpadLock { set; get; }
-        public TouchOption.Universal TouchpadOptionL { set; get; }
-        public TouchOption.Universal TouchpadOptionR { set; get; }
+        public TouchOptions TouchpadOptionL { set; get; }
+        public TouchOptions TouchpadOptionR { set; get; }
         public bool SeamlessConnectionEnabled { set; get; }
 
 
-        [Device(new Model.Constants.Models[] { Model.Constants.Models.Buds, Model.Constants.Models.BudsPlus })]
+        [Device(new[] { Models.Buds, Models.BudsPlus })]
         public bool AmbientSoundEnabled { set; get; }
-        [Device(new Model.Constants.Models[] { Model.Constants.Models.Buds, Model.Constants.Models.BudsPlus })]
+        [Device(new[] { Models.Buds, Models.BudsPlus })]
         public int AmbientSoundVolume { set; get; }
 
 
-        [Device(Model.Constants.Models.Buds)]
+        [Device(Models.Buds)]
         public AmbientType AmbientSoundMode { set; get; }
-        [Device(Model.Constants.Models.Buds)]
+        [Device(Models.Buds)]
         public bool EqualizerEnabled { set; get; }
 
 
-        [Device(new Model.Constants.Models[] { Model.Constants.Models.BudsPlus, Model.Constants.Models.BudsLive })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive })]
         public PlacementStates PlacementL { set; get; }
-        [Device(new Model.Constants.Models[] { Model.Constants.Models.BudsPlus, Model.Constants.Models.BudsLive })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive })]
         public PlacementStates PlacementR { set; get; }
-        [Device(new Model.Constants.Models[] { Model.Constants.Models.BudsPlus, Model.Constants.Models.BudsLive })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive })]
         public int BatteryCase { set; get; }
-        [Device(new Model.Constants.Models[] { Model.Constants.Models.BudsPlus, Model.Constants.Models.BudsLive })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive })]
         public bool OutsideDoubleTap { set; get; }
-        [Device(new Model.Constants.Models[] { Model.Constants.Models.BudsPlus, Model.Constants.Models.BudsLive })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive })]
         public Color DeviceColor { set; get; }
 
 
-        [Device(Model.Constants.Models.BudsPlus)]
+        [Device(Models.BudsPlus)]
         public bool AdjustSoundSync { set; get; }
-        [Device(Model.Constants.Models.BudsPlus)]
+        [Device(Models.BudsPlus)]
         public bool SideToneEnabled { set; get; }
-        [Device(Model.Constants.Models.BudsPlus)]
+        [Device(Models.BudsPlus)]
         public bool ExtraHighAmbientEnabled { set; get; }
 
 
-        [Device(Model.Constants.Models.BudsLive)]
+        [Device(Models.BudsLive)]
         public bool RelieveAmbient { set; get; }
-        [Device(Model.Constants.Models.BudsLive)]
+        [Device(Models.BudsLive)]
         public bool VoiceWakeUp { set; get; }
-        [Device(Model.Constants.Models.BudsLive)]
+        [Device(Models.BudsLive)]
         public int VoiceWakeUpLang { set; get; }
-        [Device(Model.Constants.Models.BudsLive)]
+        [Device(Models.BudsLive)]
         public int FmmRevision { set; get; }
-        [Device(Model.Constants.Models.BudsLive)]
+        [Device(Models.BudsLive)]
         public bool NoiceCancelling { set; get; }
 
         public override void ParseMessage(SPPMessage msg)
@@ -75,7 +75,7 @@ namespace GalaxyBudsClient.Decoder
             if (msg.Id != HandledType)
                 return;
 
-            if (ActiveModel == Model.Constants.Models.Buds)
+            if (ActiveModel == Models.Buds)
             {
                 Revision = msg.Payload[0];
                 EarType = msg.Payload[1];
@@ -93,8 +93,8 @@ namespace GalaxyBudsClient.Decoder
                 if (msg.Size > 13)
                 {
                     TouchpadLock = Convert.ToBoolean(msg.Payload[12]);
-                    TouchpadOptionL = TouchOption.ToUniversal((msg.Payload[13] & 0xF0) >> 4);
-                    TouchpadOptionR = TouchOption.ToUniversal(msg.Payload[13] & 0x0F);
+                    TouchpadOptionL = DeviceSpec.TouchMap.FromByte((byte) ((msg.Payload[13] & 0xF0) >> 4));
+                    TouchpadOptionR = DeviceSpec.TouchMap.FromByte((byte) (msg.Payload[13] & 0x0F));
                     if (Revision >= 3)
                     {
                         SeamlessConnectionEnabled = msg.Payload[14] == 0;
@@ -103,8 +103,8 @@ namespace GalaxyBudsClient.Decoder
                 else
                 {
                     TouchpadLock = Convert.ToBoolean((msg.Payload[12] & 0xF0) >> 4);
-                    TouchpadOptionL = TouchOption.ToUniversal(msg.Payload[12] & 0x0F);
-                    TouchpadOptionR = TouchOption.ToUniversal(msg.Payload[12] & 0x0F);
+                    TouchpadOptionL = DeviceSpec.TouchMap.FromByte((byte) (msg.Payload[12] & 0x0F));
+                    TouchpadOptionR = DeviceSpec.TouchMap.FromByte((byte) (msg.Payload[12] & 0x0F));
                     if (Revision >= 3)
                     {
                         SeamlessConnectionEnabled = msg.Payload[13] == 0;
@@ -133,7 +133,7 @@ namespace GalaxyBudsClient.Decoder
 
                 BatteryCase = msg.Payload[7];
 
-                if (ActiveModel == Model.Constants.Models.BudsPlus)
+                if (ActiveModel == Models.BudsPlus)
                 {
                     AmbientSoundEnabled = Convert.ToBoolean(msg.Payload[8]);
                     AmbientSoundVolume = msg.Payload[9];
@@ -141,10 +141,10 @@ namespace GalaxyBudsClient.Decoder
                     AdjustSoundSync = msg.Payload[10] == 1;
                     EqualizerMode = msg.Payload[11];
                     TouchpadLock = Convert.ToBoolean(msg.Payload[12]);
-
-                    TouchpadOptionL = TouchOption.ToUniversal((msg.Payload[13] & 240) >> 4);
-                    TouchpadOptionR = TouchOption.ToUniversal(msg.Payload[13] & 15);
-
+                    
+                    TouchpadOptionL = DeviceSpec.TouchMap.FromByte((byte) ((msg.Payload[13] & 240) >> 4));
+                    TouchpadOptionR = DeviceSpec.TouchMap.FromByte((byte) (msg.Payload[13] & 15));
+                    
                     OutsideDoubleTap = msg.Payload[14] == 1;
 
                     short leftColor = BitConverter.ToInt16(msg.Payload, 15);
@@ -166,14 +166,14 @@ namespace GalaxyBudsClient.Decoder
                         SeamlessConnectionEnabled = msg.Payload[21] == 0;
                     }
                 }
-                else if(ActiveModel == Model.Constants.Models.BudsLive)
+                else if(ActiveModel == Models.BudsLive)
                 {
                     AdjustSoundSync = msg.Payload[8] == 1;
                     EqualizerMode = msg.Payload[9];
                     TouchpadLock = Convert.ToBoolean(msg.Payload[10]);
 
-                    TouchpadOptionL = TouchOption.ToUniversal((msg.Payload[11] & 240) >> 4);
-                    TouchpadOptionR = TouchOption.ToUniversal(msg.Payload[11] & 15);
+                    TouchpadOptionL = DeviceSpec.TouchMap.FromByte((byte) ((msg.Payload[11] & 240) >> 4));
+                    TouchpadOptionR = DeviceSpec.TouchMap.FromByte((byte) (msg.Payload[11] & 15));
 
                     NoiceCancelling = msg.Payload[12] == 1;
                     VoiceWakeUp = msg.Payload[13] == 1;
@@ -203,7 +203,7 @@ namespace GalaxyBudsClient.Decoder
         public override Dictionary<String, String> ToStringMap()
         {
             Dictionary<String, String> map = new Dictionary<string, string>();
-            PropertyInfo[] properties = this.GetType().GetProperties();
+            PropertyInfo[] properties = GetType().GetProperties();
             foreach (PropertyInfo property in properties)
             {
                 if (property.Name == "HandledType" || property.Name == "ActiveModel")

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using GalaxyBudsClient.Model.Constants;
 using Serilog;
 
 namespace GalaxyBudsClient.Model.Specifications
@@ -13,5 +14,7 @@ namespace GalaxyBudsClient.Model.Specifications
         {
             Log.Warning("StubDeviceSpec: initialized");
         }
+        
+        public Models Device => Models.NULL;
     }
 }

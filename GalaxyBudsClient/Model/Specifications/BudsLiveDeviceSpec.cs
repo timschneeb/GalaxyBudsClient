@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Model.Specifications
 {
@@ -12,5 +13,7 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.AmbientPassthrough, null },
                 { IDeviceSpec.Feature.GamingMode, null }
             };
+        
+        public Models Device => Models.BudsLive;
     }
 }

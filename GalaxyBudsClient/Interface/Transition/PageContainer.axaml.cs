@@ -2,6 +2,7 @@
 using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Interface.Pages;
 using Serilog;
 
@@ -34,6 +35,19 @@ namespace GalaxyBudsClient.Interface.Transition
 			// Add placeholder page
 			RegisterPages(new DummyPage(), new DummyPage2());
 			SwitchPage(AbstractPage.Pages.Dummy);
+		}
+
+		public AbstractPage.Pages CurrentPage
+		{
+			get
+			{
+				if (Pager.SelectedItem is AbstractPage page)
+				{
+					return page.PageType;
+				}
+
+				return AbstractPage.Pages.Undefined;
+			}
 		}
 
 		public void RegisterPage(AbstractPage page)

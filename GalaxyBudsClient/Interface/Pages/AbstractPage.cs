@@ -26,7 +26,8 @@ namespace GalaxyBudsClient.Interface.Pages
             SettingsPopup,
             Advanced,
             UnsupportedFeature,
-            UpdateAvailable
+            UpdateAvailable,
+            Undefined
         }
 
         public abstract Pages PageType { get; }
