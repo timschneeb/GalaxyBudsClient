@@ -5,8 +5,10 @@ using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Decoder;
 using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using Serilog;
 
@@ -26,9 +28,34 @@ namespace GalaxyBudsClient.Interface.Pages
 			_presetSlider = this.FindControl<SliderListItem>("EqPreset");
 			
 			SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
+			SPPMessageHandler.Instance.OtherOption += InstanceOnOtherOption;
 			
 			Loc.LanguageUpdated += UpdateStrings;
 			UpdateStrings();
+		}
+
+		private async void InstanceOnOtherOption(object? sender, TouchOptions e)
+		{
+			ICustomAction action = e == TouchOptions.OtherL ? 
+				SettingsProvider.Instance.CustomActionLeft : SettingsProvider.Instance.CustomActionRight;
+			
+			switch (action.Action)
+			{
+				case CustomAction.Actions.EnableEqualizer:
+					_eqSwitch.IsChecked = !_eqSwitch.IsChecked;
+					await MessageComposer.SetEqualizer(_eqSwitch.IsChecked, (EqPreset)_presetSlider.Value, false);
+					break;
+				
+				case CustomAction.Actions.SwitchEqualizerPreset:
+					_eqSwitch.IsChecked = true;
+					var newVal = _presetSlider.Value + 1;
+					if (newVal >= 5)
+						newVal = 0;
+
+					_presetSlider.Value = newVal;
+					await MessageComposer.SetEqualizer(_eqSwitch.IsChecked, (EqPreset)_presetSlider.Value, false);
+					break;
+			}
 		}
 
 		private void InstanceOnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)

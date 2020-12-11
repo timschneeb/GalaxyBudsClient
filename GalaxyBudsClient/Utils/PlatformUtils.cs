@@ -12,6 +12,8 @@ namespace GalaxyBudsClient.Utils
                    RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
         }
 
+        public static bool IsLinux => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+
         public static string CombineDataPath(string postfix)
         {
             return Path.Combine(AppDataPath, postfix);

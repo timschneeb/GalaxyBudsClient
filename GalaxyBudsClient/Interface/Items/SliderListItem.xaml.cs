@@ -5,6 +5,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Serilog;
 
 namespace GalaxyBudsClient.Interface.Items
 {
@@ -44,8 +45,16 @@ namespace GalaxyBudsClient.Interface.Items
 
             _slider.GetObservable(RangeBase.ValueProperty).Subscribe(d =>
             {
-                var subtitle = SubtitleDictionary?[(int)d];
-                if (subtitle != null) Subtitle = subtitle;
+                try
+                {
+                    var subtitle = SubtitleDictionary?[(int) d];
+                    if (subtitle != null) Subtitle = subtitle;
+                }
+                catch (KeyNotFoundException ex)
+                {
+                    Log.Warning("SliderListItem: Key not in subtitle dictionary");
+                    Subtitle = "";
+                }
             });
 
             this.GetObservable(SubtitleDictionaryProperty).Subscribe(dictionary =>

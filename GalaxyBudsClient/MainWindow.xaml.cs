@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
@@ -8,9 +11,11 @@ using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Bluetooth.Linux;
 using GalaxyBudsClient.Interface;
 using GalaxyBudsClient.Interface.Developer;
+using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Interface.Transition;
 using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
@@ -54,12 +59,64 @@ namespace GalaxyBudsClient
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
             _titleBar.OptionsPressed += (i, e) => _titleBar.OptionsButton.ContextMenu.Open();
             
+            SPPMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
+            
             Loc.LanguageUpdated += OnLanguageUpdated;
 
             BuildOptionsMenu();
 
             /* TODO */
             var connectTask = BluetoothImpl.Instance.ConnectAsync("80:7B:3E:21:79:EC", Models.BudsPlus);
+        }
+
+        private void HandleOtherTouchOption(object? sender, TouchOptions e)
+        {
+            ICustomAction action = e == TouchOptions.OtherL ? 
+                SettingsProvider.Instance.CustomActionLeft : SettingsProvider.Instance.CustomActionRight;
+
+            if (action.Action == CustomAction.Actions.RunExternalProgram)
+            {
+                try
+                {
+                    var psi = new ProcessStartInfo
+                    {
+                        FileName = action.Parameter,
+                        UseShellExecute = true
+                    };
+                    Process.Start(psi);
+                }
+                catch (FileNotFoundException ex)
+                {
+                    new MessageBox()
+                    {
+                        Title = "Custom long-press action failed",
+                        Description = $"Unable to launch external application.\nFile not found: '{ex.FileName}'"
+                    }.Show(this);
+                }
+                catch (Win32Exception ex)
+                {
+                    if (ex.NativeErrorCode == 13 && PlatformUtils.IsLinux)
+                    {
+                        new MessageBox()
+                        {
+                            Title = "Custom long-press action failed",
+                            Description = $"Unable to launch external application.\n\n" +
+                                          $"Insufficient permission. Please add execute permissions for your user/group to this file.\n\n" +
+                                          $"Run this in a terminal: chmod +x \"{action.Parameter}\""
+                        }.Show(this);      
+                    }                        new MessageBox()
+                    {
+                        Title = "Custom long-press action failed",
+                        Description = $"Unable to launch external application.\n\n" +
+                                      $"Detailed information:\n\n" +
+                                      $"{ex.Message}"
+                    }.Show(this);  
+                    else
+                    {
+                        
+                    }
+                }
+            }
         }
 
         private void OnLanguageUpdated()
@@ -71,13 +128,13 @@ namespace GalaxyBudsClient
         {
             _titleBar.OptionsButton.ContextMenu = 
                 MenuFactory.BuildContextMenu(new Dictionary<string, EventHandler<RoutedEventArgs>?>()
-            {
-                [Loc.Resolve("optionsmenu_settings")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Settings),
-                [Loc.Resolve("optionsmenu_refresh")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.UpdateAvailable),
-                [Loc.Resolve("optionsmenu_deregister")] = (sender, args) => Log.Debug("Deregister selected"),
-                [Loc.Resolve("optionsmenu_update")] = (sender, args) => Log.Debug("Check for updates selected"),
-                [Loc.Resolve("optionsmenu_credits")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Credits),
-            });
+                {
+                    [Loc.Resolve("optionsmenu_settings")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Settings),
+                    [Loc.Resolve("optionsmenu_refresh")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.UpdateAvailable),
+                    [Loc.Resolve("optionsmenu_deregister")] = (sender, args) => Log.Debug("Deregister selected"),
+                    [Loc.Resolve("optionsmenu_update")] = (sender, args) => Log.Debug("Check for updates selected"),
+                    [Loc.Resolve("optionsmenu_credits")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Credits),
+                });
         }
 
         public void ShowDevTools()

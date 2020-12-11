@@ -63,8 +63,8 @@ namespace GalaxyBudsClient.Interface.Pages
                     {
                         /* Skip unsupported features */
                         if (!BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSound) 
-                            && action == CustomAction.Actions.AmbientVolumeDown 
-                            || action == CustomAction.Actions.AmbientVolumeUp)
+                            && (action == CustomAction.Actions.AmbientVolumeDown 
+                            || action == CustomAction.Actions.AmbientVolumeUp))
                         {
                             continue;
                         }
