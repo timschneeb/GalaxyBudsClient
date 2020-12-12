@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Sockets;
@@ -93,7 +94,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 if (attempt >= 15)
                 {
                     Log.Fatal("Linux.BluetoothService: Gave up after 15 attempts. Timed out.");
-                    throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "BlueZ timed out");
+                    throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "BlueZ timed out while connecting to device.");
                 }
             }
 
@@ -147,31 +148,52 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 }
             }
             
-            Log.Debug("Linux.BluetoothService: Connecting to profile...");
-            try
+            for (int attempt = 1; attempt <= 15; attempt++)
             {
-                await _device.ConnectProfileAsync(uuid);
-            }
-            catch (DBusException e)
-            {
-                var ex = new BlueZException(e);
+                Log.Debug($"Linux.BluetoothService: Connecting to profile... (attempt {attempt}/15)");
 
-                switch (ex.ErrorCode)
+                try
                 {
-                    case BlueZException.ErrorCodes.AlreadyConnected:
-                        Log.Debug("Linux.BluetoothService: Success. Already connected.");
-                        break;
-                    case BlueZException.ErrorCodes.ConnectFailed:
-                        throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, $"{ex.ErrorName}: {ex.ErrorMessage}");
-                    case BlueZException.ErrorCodes.DoesNotExist:
-                        Log.Fatal("Linux.BluetoothService: Unsupported device. Device does not provide requested Bluetooth profile.");
-                        throw new BluetoothException(BluetoothException.ErrorCodes.UnsupportedDevice, $"Device does not provide required Bluetooth profile");
-                    default:
-                        /* Other unknown dbus errors */
-                        Log.Fatal($"Linux.BluetoothService: Cannot connect to profile. {ex.ErrorName}: {ex.ErrorMessage}");
-                        throw new BluetoothException(BluetoothException.ErrorCodes.Unknown, $"{ex.ErrorName}: {ex.ErrorMessage}");
+                    await _device.ConnectProfileAsync(uuid);
+                    break;
+                }
+                catch (DBusException e)
+                {
+                    var ex = new BlueZException(e);
+
+                    switch (ex.ErrorCode)
+                    {
+                        case BlueZException.ErrorCodes.Failed:
+                            Log.Debug($"Linux.BluetoothService: Failed: '{ex.ErrorMessage}'. Retrying...");
+                            await Task.Delay(250);
+                            break;
+                        case BlueZException.ErrorCodes.InProgress:
+                            Log.Debug("Linux.BluetoothService: Already connecting, retrying...");
+                            await Task.Delay(250);
+                            break;
+                        case BlueZException.ErrorCodes.AlreadyConnected:
+                            Log.Debug("Linux.BluetoothService: Success. Already connected.");
+                            return; /* We return here */
+                        case BlueZException.ErrorCodes.ConnectFailed:
+                            throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, $"{ex.ErrorName}: {ex.ErrorMessage}");
+                        case BlueZException.ErrorCodes.DoesNotExist:
+                            Log.Fatal("Linux.BluetoothService: Unsupported device. Device does not provide requested Bluetooth profile.");
+                            throw new BluetoothException(BluetoothException.ErrorCodes.UnsupportedDevice, $"Device does not provide required Bluetooth profile");
+                        default:
+                            /* Other unknown dbus errors */
+                            Log.Fatal($"Linux.BluetoothService: Cannot connect to profile. {ex.ErrorName}: {ex.ErrorMessage}");
+                            throw new BluetoothException(BluetoothException.ErrorCodes.Unknown, $"{ex.ErrorName}: {ex.ErrorMessage}");
+                    }
+                }
+
+                if (attempt >= 15)
+                {
+                    Log.Fatal("Linux.BluetoothService: Gave up after 15 attempts. Timed out.");
+                    throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "BlueZ timed out while connecting to profile");
                 }
             }
+            
+            FINISH_PROFILE_CONNECTION: ;
         }
 
         private async Task<bool> AttemptBasicConnectionAsync()
@@ -184,9 +206,14 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             {
                 var ex = new BlueZException(e);
                 switch (ex.ErrorCode)
-                {
+                {    
+                    case BlueZException.ErrorCodes.Failed:
+                        Log.Debug($"Linux.BluetoothService: Failed: '{ex.ErrorMessage}'. Retrying...");
+                        await Task.Delay(250);
+                        break;
+                    
                     case BlueZException.ErrorCodes.InProgress:
-                        Log.Debug("Linux.BluetoothService: Already connecting, trying in 100ms again...");
+                        Log.Debug("Linux.BluetoothService: Already connecting, retrying...");
                         await Task.Delay(250);
                         return false;
                         

@@ -20,16 +20,16 @@
         Title="Galaxy Buds Manager">
     
     <Border CornerRadius="{StaticResource DefaultCornerRadius}"
-            BorderBrush="Gray"
+            BorderBrush="{DynamicResource WindowBorderBrush}"
             BorderThickness="1"
             ClipToBounds="True" Padding="1"
-            Background="{DynamicResource SystemControlBackgroundAltHighBrush}">
+            Background="{DynamicResource WindowBackgroundBrush}">
         <DockPanel HorizontalAlignment="Stretch"
                    VerticalAlignment="Stretch"
                    Name="ContentWrapper"
                    Margin="2,0,2,25">
             <interface:CustomTitleBar Name="TitleBar" Title="{Binding $parent[Window].Title}" Background="Transparent"></interface:CustomTitleBar>
-            <DockPanel Background="{DynamicResource SystemControlBackgroundAltHighBrush}">
+            <DockPanel Background="{DynamicResource WindowBackgroundBrush}">
                 <transition:PageContainer Name="Container"/>
             </DockPanel>
         </DockPanel>

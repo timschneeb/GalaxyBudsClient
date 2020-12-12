@@ -13,6 +13,7 @@ namespace ThePBone.BlueZNet
             InvalidArguments,
             ConnectFailed,
             DoesNotExist,
+            Failed,
             
             NoAdaptersAvailable,
             Unknown
@@ -44,6 +45,9 @@ namespace ThePBone.BlueZNet
                     break;
                 case "org.bluez.Error.ConnectFailed":
                     ErrorCode = ErrorCodes.ConnectFailed;
+                    break;
+                case "org.bluez.Error.Failed":
+                    ErrorCode = ErrorCodes.Failed;
                     break;
                 case "org.bluez.Error.DoesNotExist":
                     ErrorCode = ErrorCodes.DoesNotExist;

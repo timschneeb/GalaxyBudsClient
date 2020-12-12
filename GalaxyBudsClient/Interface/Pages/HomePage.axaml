@@ -23,8 +23,8 @@
                 <Label Name="BatteryPercentageLeft" Content="--%" Margin="0,46,381,102" FontSize="20" HorizontalAlignment="Right" Foreground="{DynamicResource ForegroundTextAltBrush}" />
                 <Label Name="BatteryCurrentLeft" Content="--.--mA" Margin="0,90,360,54" HorizontalAlignment="Right" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" PointerPressed="RequestTempUnitChange_OnPointerPressed" />
                 <Label Name="BatteryTemperatureLeft" Content="{DynamicResource unknown}" Margin="0,109,361,35" HorizontalAlignment="Right" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" PointerPressed="RequestTempUnitChange_OnPointerPressed" />
-                <Image Name="LeftIcon" Source="{DynamicResource LeftBeanConnected}" Width="75" Height="75" Margin="160,52,281,0" VerticalAlignment="Top"/>
-                <Image Name="RightIcon" Source="{DynamicResource RightBeanConnected}" Margin="281,52,160,0" Height="75" VerticalAlignment="Top"  Width="75"/>
+                <Image Name="LeftIcon" Width="75" Height="75" Margin="160,52,281,0" VerticalAlignment="Top"/>
+                <Image Name="RightIcon" Margin="281,52,160,0" Height="75" VerticalAlignment="Top"  Width="75"/>
                 <Image Name="BatteryIconRight" Source="/Resources/battery/high.png" Height="18" Width="27" Margin="357,51,132,109"/>
                 <Label Name="BatteryVoltRight" Content="--.--V" Margin="360,71,0,73" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" />
                 <Label Name="BatteryPercentageRight" Content="--%" Margin="381,46,0,102" FontSize="20" HorizontalAlignment="Left" Foreground="{DynamicResource ForegroundTextAltBrush}"/>
@@ -77,7 +77,12 @@
                 <Border Name="AncBorder" IsVisible="False" Grid.Row="0" CornerRadius="{StaticResource DefaultCornerRadius}" Classes="BorderHoverStyle" PointerPressed="AncBorder_OnPointerPressed">
                     <Grid>
                         <items:IconListItem FontSize="18" Source="/Resources/features/anc_color.png" Text="{DynamicResource anc}" />
-                        <elements:ToggleSwitch Grid.Row="0" x:Name="AncToggle" DisableButton="True" Height="30" Margin="461,10,15,10" />
+                        <elements:ToggleSwitch Grid.Row="0" 
+                                               x:Name="AncToggle" 
+                                               DisableButton="True" 
+                                               ColorOff="{DynamicResource ToggleOffBrush}"
+                                               ColorOn="{DynamicResource ToggleOnBrush}" 
+                                               Margin="461,10,15,10" Height="30" />
                     </Grid>
                 </Border>
                 <Separator Grid.Row="1" Classes="HSeparatorIconListSpacer"/>

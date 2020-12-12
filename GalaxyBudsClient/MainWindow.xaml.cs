@@ -21,7 +21,6 @@ using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using Serilog;
-using Object = GLib.Object;
 
 namespace GalaxyBudsClient
 {
@@ -30,7 +29,9 @@ namespace GalaxyBudsClient
         private readonly HomePage _homePage = new HomePage();
         private readonly UnsupportedFeaturePage _unsupportedFeaturePage = new UnsupportedFeaturePage();
         private readonly CustomTouchActionPage _customTouchActionPage = new CustomTouchActionPage();
+        
         private readonly CustomTitleBar _titleBar;
+        private BudsPopup _popup;
         
         public PageContainer Pager { get; }
         public CustomTouchActionPage CustomTouchActionPage => _customTouchActionPage;
@@ -59,6 +60,8 @@ namespace GalaxyBudsClient
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
             _titleBar.OptionsPressed += (i, e) => _titleBar.OptionsButton.ContextMenu.Open(_titleBar.OptionsButton);
+
+            _popup = new BudsPopup();
             
             SPPMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
             
@@ -137,6 +140,26 @@ namespace GalaxyBudsClient
                     [Loc.Resolve("optionsmenu_update")] = (sender, args) => Log.Debug("Check for updates selected"),
                     [Loc.Resolve("optionsmenu_credits")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Credits),
                 });
+        }
+        
+        public void ShowPopup()
+        {
+            if (_popup.IsVisible)
+            { 
+                _popup.UpdateSettings();
+                _popup.RearmTimer();
+            }
+
+            try
+            {
+                _popup.Show();
+            }
+            catch (InvalidOperationException ex)
+            {
+                /* Window already closed down */
+                _popup = new BudsPopup();
+                _popup.Show();
+            }
         }
 
         public void ShowDevTools()

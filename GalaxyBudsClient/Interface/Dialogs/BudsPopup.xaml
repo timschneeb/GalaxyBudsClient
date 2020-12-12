@@ -16,14 +16,47 @@
         UseLayoutRounding="True"
         Icon="/Resources/icon_white.ico"
         ShowInTaskbar="False"
+        Topmost="True"
         Title="Galaxy Buds Manager (Popup)"
-        PointerPressed="Window_OnPointerPressed"
-         Opened="OnOpened">
-
-     <Border BorderBrush="{DynamicResource RoundBorderBrush}" 
-             Background="{DynamicResource WindowBackgroundBrush}"
-             CornerRadius="20">
-        <Grid Margin="0,0,0,0">
+        PointerPressed="Window_OnPointerPressed">
+    <Border x:Name="OuterBorder"
+            BorderBrush="{DynamicResource WindowBorderBrush}"
+            BorderThickness="1"
+            Background="{DynamicResource WindowBackgroundBrush}"
+            CornerRadius="20">
+        <Border.Styles>
+            <Style Selector="Border[Tag=showing]">
+                <Style.Animations>
+                    <Animation IterationCount="1"
+                               PlaybackDirection="Normal"
+                               FillMode="Both"
+                               Duration="0:0:.4"> 
+                        <KeyFrame Cue="0%">
+                            <Setter Property="Opacity" Value="0.0"/>
+                        </KeyFrame>
+                        <KeyFrame Cue="100%">
+                            <Setter Property="Opacity" Value="1.0"/>
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+            <Style Selector="Border[Tag=hiding]">
+                <Style.Animations>
+                    <Animation IterationCount="1"
+                               PlaybackDirection="Normal"
+                               FillMode="Both"
+                               Duration="0:0:.4"> 
+                        <KeyFrame Cue="0%">
+                            <Setter Property="Opacity" Value="1.0"/>
+                        </KeyFrame>
+                        <KeyFrame Cue="100%">
+                            <Setter Property="Opacity" Value="0.0"/>
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+        </Border.Styles>
+        <Grid Margin="0,0,0,0" x:Name="Grid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="24"/>
                 <RowDefinition Height="35"/>

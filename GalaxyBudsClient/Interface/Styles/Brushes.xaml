@@ -31,7 +31,7 @@
 
     <!-- Window -->
     <SolidColorBrush x:Key="WindowButtonBrush" Color="#222222" />
-    <SolidColorBrush x:Key="WindowBorderBrush" Color="Black" />
+    <SolidColorBrush x:Key="WindowBorderBrush" Color="#FFDADADA" />
     <SolidColorBrush x:Key="WindowHeaderBrush" Color="White" />
     <SolidColorBrush x:Key="WindowBackgroundBrush" Color="White" />
 

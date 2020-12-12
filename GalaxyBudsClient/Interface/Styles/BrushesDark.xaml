@@ -27,11 +27,11 @@
     <!-- Elements -->
     <SolidColorBrush x:Key="SliderBrush" Color="Orange" />
     <SolidColorBrush x:Key="ToggleOnBrush" Color="Orange" />
-    <SolidColorBrush x:Key="ToggleOffBrush" Color="#777777" />
+    <SolidColorBrush x:Key="ToggleOffBrush" Color="#444444" />
 
     <!-- Window -->
     <SolidColorBrush x:Key="WindowButtonBrush" Color="#DDDDDD" />
-    <SolidColorBrush x:Key="WindowBorderBrush" Color="Black" />
+    <SolidColorBrush x:Key="WindowBorderBrush" Color="#252525" />
     <SolidColorBrush x:Key="WindowHeaderBrush" Color="Black" />
     <SolidColorBrush x:Key="WindowBackgroundBrush" Color="Black" />
 

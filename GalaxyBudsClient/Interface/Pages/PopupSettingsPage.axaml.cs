@@ -78,8 +78,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		private void Demo_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
-			var cache = DeviceMessageCache.Instance.BasicStatusUpdate;
-			new BudsPopup(Models.BudsPlus,cache!.BatteryL, cache.BatteryR, cache.BatteryCase).Show();
+			MainWindow.Instance.ShowPopup();
 		}
 
 		private async void OverrideTitle_OnPointerPressed(object? sender, PointerPressedEventArgs e)

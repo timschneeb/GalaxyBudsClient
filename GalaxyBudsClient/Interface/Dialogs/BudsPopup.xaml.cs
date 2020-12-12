@@ -1,44 +1,33 @@
 using System;
+using System.Threading.Tasks;
+using System.Timers;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
-using Avalonia.Platform;
+using Avalonia.Threading;
 using GalaxyBudsClient.Decoder;
 using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
-using Serilog;
+using Application = Avalonia.Application;
+using Grid = Avalonia.Controls.Grid;
+using Image = Avalonia.Controls.Image;
+using Label = Avalonia.Controls.Label;
+using Window = Avalonia.Controls.Window;
 
 namespace GalaxyBudsClient.Interface.Dialogs
 {
     public sealed class BudsPopup : Window
     {
-        private bool _isHeaderHidden;
-        public bool HideHeader
-        {
-            get => _isHeaderHidden;
-            set
-            {
-                _isHeaderHidden = value;
-                if (value)
-                {
-                    Height = 205 - 35;
-                    //HeaderRow.Height = new GridLength(0);
-                }
-                else
-                {
-                    Height = 205;
-                    //HeaderRow.Height = new GridLength(35);
-                }
-            }
-        }
-
         public EventHandler? ClickedEventHandler { get; set; }
+
+        private readonly Border _outerBorder;
         
         private readonly Label _header;
         private readonly Label _batteryL;
@@ -49,16 +38,15 @@ namespace GalaxyBudsClient.Interface.Dialogs
         private readonly Image _iconLeft;
         private readonly Image _iconRight;
 
-        public BudsPopup() : this(Models.Buds, 0, 0, 0)
-        {
-            Log.Warning("BudsPopup: instantiated with no arguments");
-        }
-
-        public BudsPopup(Models model, int left, int right, int box)
+        private readonly Timer _timer = new Timer(3000){AutoReset = false};
+        
+        public BudsPopup() 
         {
             AvaloniaXamlLoader.Load(this);
             this.AttachDevTools();
 
+            _outerBorder = this.FindControl<Border>("OuterBorder");
+            
             _header = this.FindControl<Label>("Header");
             _batteryL = this.FindControl<Label>("BatteryL");
             _batteryR = this.FindControl<Label>("BatteryR");
@@ -68,22 +56,14 @@ namespace GalaxyBudsClient.Interface.Dialogs
             _iconLeft = this.FindControl<Image>("ImageLeft");
             _iconRight = this.FindControl<Image>("ImageRight");
             
-            string modifier = string.Empty;
-            if (model == Models.BudsPlus) modifier = "+";
-            else if (model == Models.BudsLive) modifier = " Live";
-
-            string name = Environment.UserName.Split(' ')[0];
-
-            string title = SettingsProvider.Instance.Popup.CustomTitle == string.Empty
-                ? Loc.Resolve("connpopup_title")
-                : SettingsProvider.Instance.Popup.CustomTitle;
-
-            _header.Content = string.Format(title, name, modifier);
-            UpdateContent(left, right, box);
+            var cachedStatus = DeviceMessageCache.Instance.BasicStatusUpdate;
+            UpdateContent(cachedStatus?.BatteryL ?? 0, cachedStatus?.BatteryR ?? 0, cachedStatus?.BatteryCase ?? 0);
             
-
-
             SPPMessageHandler.Instance.BaseUpdate += InstanceOnBaseUpdate;
+            _timer.Elapsed += (sender, args) =>
+            {
+                Dispatcher.UIThread.Post(Hide, DispatcherPriority.Render);
+            };
         }
 
         private void InstanceOnBaseUpdate(object? sender, IBasicStatusUpdate e)
@@ -91,6 +71,12 @@ namespace GalaxyBudsClient.Interface.Dialogs
             UpdateContent(e.BatteryL, e.BatteryR, e.BatteryCase);
         }
 
+        public void RearmTimer()
+        {
+            _timer.Stop();
+            _timer.Start();
+        }
+        
         private void UpdateContent(int bl, int br, int bc)
         {
             _batteryL.Content = $"{bl}%"; 
@@ -127,16 +113,62 @@ namespace GalaxyBudsClient.Interface.Dialogs
             }
         }
 
+        public override void Hide()
+        {  
+            /* Close window instead */
+            _timer.Stop();
+            _outerBorder.Tag = "hiding";
+            Task.Delay(400).ContinueWith((_) => { Close(); });
+        }
+
+        public override void Show()
+        {
+            base.Show();
+            Activate();
+            Focus();
+            
+            UpdateSettings();
+            _outerBorder.Tag = "showing";
+            
+            _timer.Start();
+        }
+
         private void Window_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
             ClickedEventHandler?.Invoke(this, EventArgs.Empty);
-            Close();
+            Hide();
         }
 
-        private void OnOpened(object? sender, EventArgs e)
+        public void UpdateSettings()
         {
-            var workArea = (Screens.Primary ?? Screens.All[0]).WorkingArea;
+            /* Load strings */
+            string modifier = string.Empty;
+            if (BluetoothImpl.Instance.ActiveModel == Models.BudsPlus) modifier = "+";
+            else if (BluetoothImpl.Instance.ActiveModel == Models.BudsLive) modifier = " Live";
 
+            string name = Environment.UserName.Split(' ')[0];
+
+            string title = SettingsProvider.Instance.Popup.CustomTitle == string.Empty
+                ? Loc.Resolve("connpopup_title")
+                : SettingsProvider.Instance.Popup.CustomTitle;
+
+            _header.Content = string.Format(title, name, modifier);
+            
+            /* Header */
+            var grid = this.FindControl<Grid>("Grid");
+            if (SettingsProvider.Instance.Popup.Compact)
+            {
+                Height = 205 - 35;
+                grid.RowDefinitions[1].Height = new GridLength(0);
+            }
+            else
+            {
+                Height = 205;
+                grid.RowDefinitions[1].Height = new GridLength(35);
+            }
+            
+            /* Window positioning */
+            var workArea = (Screens.Primary ?? Screens.All[0]).WorkingArea;
             int padding = 20;
             switch (SettingsProvider.Instance.Popup.Placement)
             {

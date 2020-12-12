@@ -14,39 +14,25 @@ namespace GalaxyBudsClient.Interface.Elements
 {
     public class ToggleSwitch : UserControl
     {
-        public static readonly StyledProperty<Color> ColorOnProperty =
-            AvaloniaProperty.Register<ToggleSwitch, Color>(nameof(ColorOn), Colors.Orange);
+        public static readonly StyledProperty<SolidColorBrush> ColorOnProperty =
+            AvaloniaProperty.Register<ToggleSwitch, SolidColorBrush>(nameof(ColorOn), new SolidColorBrush(Colors.Orange));
         
-        public static readonly StyledProperty<Color> ColorOffProperty =
-            AvaloniaProperty.Register<ToggleSwitch, Color>(nameof(ColorOff), Color.FromRgb(160, 160, 160));
+        public static readonly StyledProperty<SolidColorBrush> ColorOffProperty =
+            AvaloniaProperty.Register<ToggleSwitch, SolidColorBrush>(nameof(ColorOff), new SolidColorBrush(Color.FromRgb(160, 160, 160)));
 
         public static readonly StyledProperty<bool> DisableProperty =
             AvaloniaProperty.Register<ToggleSwitch, bool>(nameof(ColorOff), false);
 
-        public Color ColorOn
+        public SolidColorBrush ColorOn
         {
             get => GetValue(ColorOnProperty);
-            set
-            {
-                SetValue(ColorOnProperty, value);
-                if (_isChecked)
-                {
-                    _back.Background = new SolidColorBrush(value);
-                }
-            }
+            set => SetValue(ColorOnProperty, value);
         }
 
-        public Color ColorOff
+        public SolidColorBrush ColorOff
         {
             get => GetValue(ColorOffProperty);
-            set
-            {
-                SetValue(ColorOffProperty, value);
-                if (!_isChecked)
-                {
-                    _back.Background = new SolidColorBrush(value);
-                }
-            }
+            set => SetValue(ColorOffProperty, value);
         }
 
         public bool DisableButton
@@ -68,6 +54,9 @@ namespace GalaxyBudsClient.Interface.Elements
             
             _back = this.FindControl<Border>("Back");
             _dot = this.FindControl<Ellipse>("Dot");
+
+            ColorOffProperty.Changed.Subscribe(args => _back.Background = _isChecked ? ColorOn : ColorOff);
+            ColorOnProperty.Changed.Subscribe(args => _back.Background = _isChecked ? ColorOn : ColorOff);
             
             _isChecked = false;
             
@@ -116,7 +105,7 @@ namespace GalaxyBudsClient.Interface.Elements
         {
             _isChecked = !_isChecked;
             
-            _back.Background = _isChecked ? new SolidColorBrush(ColorOn) : new SolidColorBrush(ColorOff);
+            _back.Background = _isChecked ? ColorOn : ColorOff;
 
             Dispatcher.UIThread.InvokeAsync(async () =>
             {

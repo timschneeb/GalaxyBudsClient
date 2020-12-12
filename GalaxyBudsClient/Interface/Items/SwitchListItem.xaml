@@ -15,7 +15,12 @@
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Content="{Binding $parent[items:SwitchListItem].Text}" Margin="0,3,0,0"
                    Foreground="{DynamicResource ForegroundTextBrush}" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-            <elements:ToggleSwitch Name="Toggle" Grid.Column="2" Width="40" Height="30" DisableButton="True" />
+            <elements:ToggleSwitch Name="Toggle"
+                                   Grid.Column="2"
+                                   Width="40" Height="30" 
+                                   DisableButton="True"
+                                   ColorOff="{DynamicResource ToggleOffBrush}"
+                                   ColorOn="{DynamicResource ToggleOnBrush}" />
         </Grid>
     </Border>
 </UserControl>

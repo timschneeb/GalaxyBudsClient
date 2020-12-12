@@ -19,6 +19,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		{   
 			InitializeComponent();
 			_versionItem = this.FindControl<DetailListItem>("Version");
+			_versionItem.Description = Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? string.Empty;
 		}
 
 		private void InitializeComponent()

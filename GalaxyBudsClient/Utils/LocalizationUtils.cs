@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Xml;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
@@ -76,8 +77,10 @@ namespace GalaxyBudsClient.Utils
 
                     if (langDictId == -1)
                     {
-                        Log.Error("Localization: Neither custom language nor fallback resource found. " +
-                                  "Unwanted side-effects may occur.");
+                        string msg = "Neither custom language nor fallback resource found. " +
+                                     "Unwanted side-effects may occur.";
+                        Log.Error($"Localization: {msg}");
+                        ErrorDetected?.Invoke("Unable to resolve resource", msg);
                     }
                     else
                     {
@@ -104,11 +107,11 @@ namespace GalaxyBudsClient.Utils
                                     Log.Error($"Localization: {msg}");
                                 }
                             }
-                            catch (XamlLoadException ex)
+                            catch (XmlException ex)
                             {
-                                string msg = $"Custom language file contains syntax errors. Additional information:\n\n {ex.Message}";
+                                string msg = $"An external resource dictionary contains syntax errors.\n\nPlease check line {ex.LineNumber}, column {ex.LinePosition} in the affected XAML file.\n\n{path}";
                                 ErrorDetected?.Invoke("XAML syntax error", msg);
-                                Log.Error($"Localization: XAML syntax error. {msg}");
+                                Log.Error($"Localization: XAML syntax error. Line {ex.LineNumber}, column {ex.LinePosition}.");
                             }
                         }
                         else
