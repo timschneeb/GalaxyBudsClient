@@ -36,23 +36,30 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3256A3CF-2946-4D07-98F9-B6351DDB69EB/115/IWindowImpl.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D3207CB0-D822-4EAF-BAA4-69E8AB258B6C/aa/083b9453/Process.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3256A3CF-2946-4D07-98F9-B6351DDB69EB/14/Carousel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/MainWindow.xaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/E9CB8FBD-A44D-4E4D-9389-94F415C36F74/A2/CarouselPresenter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7899125C-45B9-4E45-A5C6-367FE303FBB7/5a/812e2c9a/Log.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/87DBB896-6B20-4A14-9B6A-7AB43642646D/92/eda64173/Monitor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3C2E205D-04D0-44C3-8C21-30A014740617/8a/71ff0e11/HorizontalAlignment.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/87DBB896-6B20-4A14-9B6A-7AB43642646D/cc/28d63ba2/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7DCA918B-18E1-4EA7-9F4D-BA6796FE09E5/13/X11Window.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/Interface/Pages/PopupSettingsPage.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3256A3CF-2946-4D07-98F9-B6351DDB69EB/113/IWindowBaseImpl.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/Interface/Pages/CreditsPage.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3256A3CF-2946-4D07-98F9-B6351DDB69EB/D6/Popup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5855A35E-4512-43F5-9E9B-519C76928F8C/10/X11PlatformThreading.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C79831EF-8471-437D-81C9-F446A0C92EDF/45/e818312c/Trace.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1BC7A9CB-ED9A-4352-913B-AFD0E4803D29/89/237c26dc/XmlException.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5CB04603-73FD-4E34-B134-F9558BD7A7E5/49/TraceLogSink.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/Interface/Pages/HomePage.axaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/Interface/Items/SwitchListItem.xaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4A0C9221-894B-436D-8543-04AC5663A91A/63/3805a9cf/XamlParseException.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3256A3CF-2946-4D07-98F9-B6351DDB69EB/4/LoggingExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F9E8E74F-0926-4402-B832-0C7BCA0D1592/2E/IResourceProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4A0C9221-894B-436D-8543-04AC5663A91A/60/f35f1a70/XamlLoadException.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F9E8E74F-0926-4402-B832-0C7BCA0D1592/2B/IResourceDictionary.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/Interface/Elements/ToggleSwitch.xaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/Interface/Dialogs/BudsPopup.xaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5CB04603-73FD-4E34-B134-F9558BD7A7E5/2E/Dispatcher.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F9E8E74F-0926-4402-B832-0C7BCA0D1592/2D/IResourceNode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BB5E58F5-3BFC-4A94-88E4-22534AC64971/9e/f92f30e8/Timer.cs" root0="SKIP_HIGHLIGHTING" />
@@ -194,7 +201,7 @@
       <workItem from="1607542986654" duration="7798000" />
       <workItem from="1607625593284" duration="12895000" />
       <workItem from="1607700218646" duration="29010000" />
-      <workItem from="1607791117827" duration="15259000" />
+      <workItem from="1607791117827" duration="15712000" />
     </task>
     <task id="LOCAL-00001" summary="Update all">
       <created>1607543806441</created>
@@ -224,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607743294822</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Popup fully implemented, better resource swapping mechanism, more reliable BlueZ stack interaction">
+      <created>1607808059196</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1607808059196</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,7 +262,8 @@
     <MESSAGE value="More stuff ported + new device specification lookup tables" />
     <MESSAGE value="Fully implement touch actions" />
     <MESSAGE value="Dynamic brush switching, self-test page, autostart (linux &amp; windows), connection popup base, much more..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Dynamic brush switching, self-test page, autostart (linux &amp; windows), connection popup base, much more..." />
+    <MESSAGE value="Popup fully implemented, better resource swapping mechanism, more reliable BlueZ stack interaction" />
+    <option name="LAST_COMMIT_MESSAGE" value="Popup fully implemented, better resource swapping mechanism, more reliable BlueZ stack interaction" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

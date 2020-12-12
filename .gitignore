@@ -10,6 +10,9 @@
 *.userosscache
 *.sln.docstates
 
+# Idea files
+.idea/.idea.GalaxyBudsClient/.idea/workspace.xml
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
