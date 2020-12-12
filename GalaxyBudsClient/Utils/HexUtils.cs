@@ -2,7 +2,7 @@
 
 namespace GalaxyBudsClient.Utils
 {
-    class Hex
+    internal class HexUtils
     {
         private readonly byte[] _bytes;
         private readonly int _bytesPerLine;
@@ -15,7 +15,7 @@ namespace GalaxyBudsClient.Utils
         private int _index;
         private readonly StringBuilder _sb = new StringBuilder();
 
-        private Hex(byte[] bytes, int bytesPerLine, bool showHeader, bool showOffset, bool showAscii)
+        private HexUtils(byte[] bytes, int bytesPerLine, bool showHeader, bool showOffset, bool showAscii)
         {
             _bytes = bytes;
             _bytesPerLine = bytesPerLine;
@@ -31,7 +31,7 @@ namespace GalaxyBudsClient.Utils
             {
                 return "<null>";
             }
-            return (new Hex(bytes, bytesPerLine, showHeader, showOffset, showAscii)).Dump();
+            return (new HexUtils(bytes, bytesPerLine, showHeader, showOffset, showAscii)).Dump();
         }
         public static string DumpAscii(byte[]? bytes)
         {

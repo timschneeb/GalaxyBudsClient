@@ -1,9 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 
-namespace GalaxyBudsClient.Model
+namespace GalaxyBudsClient.Model.Attributes
 {
     class HiddenAttribute : Attribute
     {

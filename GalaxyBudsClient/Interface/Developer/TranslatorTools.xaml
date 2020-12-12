@@ -10,6 +10,15 @@
         CanResize="False"
         Title="Galaxy Buds Manager - Translator Tools">
 
+    <Window.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundTextDimBrush}"/>
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundTextDimBrush}"/>
+        </Style>
+    </Window.Styles>
+    
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 
-namespace GalaxyBudsClient.Model
+namespace GalaxyBudsClient.Model.Attributes
 {
     static class DescriptionAttributeExtension
     {

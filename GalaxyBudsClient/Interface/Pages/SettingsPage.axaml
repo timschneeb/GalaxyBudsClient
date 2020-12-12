@@ -55,13 +55,13 @@
                     <RowDefinition Height="1"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Border Grid.Row="0" Classes="BorderHoverStyle">
+                <Border Grid.Row="0" Classes="BorderHoverStyle" PointerPressed="MinimizeToTray_OnPointerPressed">
                     <items:SwitchDetailListItem x:Name="MinimizeTrayToggle" 
                                                 Text="{DynamicResource settings_minimize_tray}"
                                                 Description="{DynamicResource settings_minimize_tray_description}"/>
                 </Border>
                 <Separator Grid.Row="1" Classes="HSeparatorSpacer20"/>
-                <Border Grid.Row="2" Classes="BorderHoverStyle">
+                <Border Grid.Row="2" Classes="BorderHoverStyle" PointerPressed="Autostart_OnPointerPressed">
                     <items:SwitchDetailListItem x:Name="AutostartToggle"
                                                 Text="{DynamicResource settings_autostart}" 
                                                 Description="{DynamicResource settings_autostart_description}"/>

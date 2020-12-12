@@ -6,6 +6,7 @@ namespace GalaxyBudsClient.Model
     public interface ICustomAction
     {
         CustomAction.Actions Action { set; get; }
+        [Option(DefaultValue = "")]
         string Parameter { set; get; }
     }
     
@@ -13,7 +14,19 @@ namespace GalaxyBudsClient.Model
     {
         [Option(DefaultValue = Models.NULL)]
         Models Model { set; get; }
+        [Option(DefaultValue = "")]
         string MacAddress { set; get; }
+    }
+    
+    public interface IPopup
+    {
+        bool Enabled { set; get; }
+        bool Compact { set; get; }
+        [Option(DefaultValue = "")]
+        string CustomTitle { set; get; }
+        
+        [Option(DefaultValue = PopupPlacement.BottomRight)]
+        PopupPlacement Placement  { set; get; }
     }
     
     public interface ISettings
@@ -35,7 +48,10 @@ namespace GalaxyBudsClient.Model
         
         ICustomAction CustomActionLeft { set; get; }
         ICustomAction CustomActionRight { set; get; }
+
+        IPopup Popup { set; get; }
         
+        [Option(DefaultValue = "")]
         string UpdateSkippedVersion { set; get; }
         
     }

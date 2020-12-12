@@ -17,7 +17,7 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <elements:PageHeader Grid.Row="1" Title="{DynamicResource selftest_header}" BackPressed="BackButton_OnPointerPressed"/>
+        <elements:PageHeader Grid.Row="1" x:Name="PageHeader" Title="{DynamicResource selftest_header}" BackPressed="BackButton_OnPointerPressed"/>
 
         <Border Grid.Row="3" Classes="RoundedBorderListItem">
             <Border CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">

@@ -16,7 +16,7 @@
     </Application.Resources>
     <Application.Styles>
         <StyleInclude Source="/Interface/Styles/Styles.xaml"/>
-        <StyleInclude Source="avares://Avalonia.Themes.Fluent/Accents/FluentLight.xaml"/>
+        <StyleInclude Source="avares://Avalonia.Themes.Fluent/FluentLight.xaml"/>
         <StyleInclude Source="/Interface/Styles/Slider.xaml"/>
     </Application.Styles>
 </Application>

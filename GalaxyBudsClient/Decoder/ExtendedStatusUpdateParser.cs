@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Decoder

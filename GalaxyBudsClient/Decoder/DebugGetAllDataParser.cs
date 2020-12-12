@@ -5,6 +5,8 @@ using System.Reflection;
 using System.Text;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Attributes;
+using Serilog;
 
 namespace GalaxyBudsClient.Decoder
 {
@@ -229,7 +231,9 @@ namespace GalaxyBudsClient.Decoder
             }
             else
             {
-                String swVar = payload[startIndex] == 0 ? "E" : "U";
+                String swVar = (payload[startIndex] & 1) == 0 ? "E" : "U";
+                int isFotaDm = (payload[startIndex] & 240) >> 4;
+                
                 int swYearIndex = (payload[startIndex + 1] & 240) >> 4;
                 int swMonthIndex = payload[startIndex + 1] & 15;
                 byte swRelVerIndex = payload[startIndex + 2];

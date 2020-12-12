@@ -13,6 +13,7 @@ using GalaxyBudsClient.Bluetooth.Linux;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.ViewModels;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 
@@ -103,7 +104,7 @@ namespace GalaxyBudsClient.Interface.Developer
         private void NewDataAvailable(object sender, byte[] e)
         {
             _cache.AddRange(e);
-            _hexDump.Text = Hex.Dump(_cache.ToArray());
+            _hexDump.Text = HexUtils.Dump(_cache.ToArray());
         }
         
         private void CopyPayload_OnClick(object? sender, RoutedEventArgs e)
@@ -175,7 +176,7 @@ namespace GalaxyBudsClient.Interface.Developer
                 data = new ArrayList(await File.ReadAllBytesAsync(paths[0]));
                 _cache.Clear();
                 _cache.AddRange((byte[]) data.ToArray(typeof(byte)));
-                _hexDump.Text = Hex.Dump(_cache.ToArray());
+                _hexDump.Text = HexUtils.Dump(_cache.ToArray());
             }
             catch (Exception ex)
             {

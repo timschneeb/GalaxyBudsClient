@@ -11,7 +11,8 @@ namespace GalaxyBudsClient.Model.Specifications
             {
                 { IDeviceSpec.Feature.SeamlessConnection, new FeatureRule(11, "R180XXU0ATF2")  },
                 { IDeviceSpec.Feature.AmbientPassthrough, null },
-                { IDeviceSpec.Feature.GamingMode, null }
+                { IDeviceSpec.Feature.GamingMode, null },
+                { IDeviceSpec.Feature.CaseBattery, null },
             };
         
         public Models Device => Models.BudsLive;

@@ -5,15 +5,71 @@
     <projectFile>GalaxyBudsClient.Bluetooth.Linux/GalaxyBudsClient.Bluetooth.Linux.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="251ef05e-b4ff-45d6-b19b-dfffa1fae931" name="Default Changelist" comment="More stuff ported + new device specification lookup tables">
+    <list default="true" id="251ef05e-b4ff-45d6-b19b-dfffa1fae931" name="Default Changelist" comment="Fully implement touch actions">
+      <change afterPath="$PROJECT_DIR$/GalaxyBudsClient/Platform/AutoStartImpl.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GalaxyBudsClient/Platform/Interfaces/IAutoStartHelper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GalaxyBudsClient/Platform/Linux/AutoStartHelper.Linux.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GalaxyBudsClient/Platform/Windows/AutoStartHelper.Windows.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GalaxyBudsClient/Utils/ResourceIndexer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GalaxyBudsClient/Utils/ThemeUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Items/SliderListItem.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Items/SliderListItem.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AmbientSoundPage.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AmbientSoundPage.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/App.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/App.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/App.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/DebugGetAllDataParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/DebugGetAllDataParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/DebugModeVersionParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/DebugModeVersionParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/ExtendedStatusUpdateParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/ExtendedStatusUpdateParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/IBasicStatusUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/IBasicStatusUpdate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/StatusStatusUpdateParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Decoder/StatusUpdateParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/GalaxyBudsClient.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/GalaxyBudsClient.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/CustomTitleBar.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/CustomTitleBar.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Developer/DevTools.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Developer/DevTools.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Developer/DevTools.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Developer/DevTools.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Developer/TranslatorTools.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Developer/TranslatorTools.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Dialogs/BudsPopup.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Dialogs/BudsPopup.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Dialogs/BudsPopup.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Dialogs/BudsPopup.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Dialogs/InputDialog.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Dialogs/InputDialog.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AdvancedPage.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AdvancedPage.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/CustomTouchActionPage.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/CustomTouchActionPage.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/EqualizerPage.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/EqualizerPage.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/EqualizerPage.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/EqualizerPage.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/HomePage.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/HomePage.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/HomePage.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/HomePage.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/PopupSettingsPage.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/PopupSettingsPage.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/PopupSettingsPage.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/PopupSettingsPage.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/SelfTestPage.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/SelfTestPage.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/SelfTestPage.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/SelfTestPage.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/SettingsPage.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/SettingsPage.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/SettingsPage.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/SettingsPage.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/TouchpadPage.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/TouchpadPage.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/Brushes.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/Brushes.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/BrushesDark.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/BrushesDark.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/Styles.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/Styles.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Utils/PlatformUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Utils/PlatformUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessageHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessageHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessageParserFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessageParserFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Model/Constants.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/Constants.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Model/CustomAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/CustomAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Model/DescriptionAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/Attributes/DescriptionAttribute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Model/DeviceAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/Attributes/DeviceAttribute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Model/DeviceMessageCache.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/DeviceMessageCache.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Model/HiddenAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/Attributes/HiddenAttribute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Model/ISettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/ISettings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Model/LocalizedDescriptionAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/Attributes/LocalizedDescriptionAttribute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Model/MessageViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/ViewModels/MessageViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Model/PostfixAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/Attributes/PostfixAttribute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Model/PropertyViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/ViewModels/PropertyViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/BudsLiveDeviceSpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/BudsLiveDeviceSpec.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/BudsPlusDeviceSpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/BudsPlusDeviceSpec.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/IDeviceSpec.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/IDeviceSpec.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Platform/BluetoothImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Platform/BluetoothImpl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Utils/ByteArrayUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Utils/ByteArrayUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Utils/Hex.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Utils/HexUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Utils/LocalizationUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Utils/LocalizationUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Utils/PlatformUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Platform/PlatformUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Utils/SettingsProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Utils/SettingsProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Utils/TouchpadMenuFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/i18n/en.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/i18n/en.xaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,71 +80,84 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/Interface/Pages/AmbientSoundPage.axaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C79831EF-8471-437D-81C9-F446A0C92EDF/45/e818312c/Trace.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8982FC25-74E3-4111-8620-D874DFEAB093/5/PixelRect.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5CB04603-73FD-4E34-B134-F9558BD7A7E5/49/TraceLogSink.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3256A3CF-2946-4D07-98F9-B6351DDB69EB/78/Window.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3256A3CF-2946-4D07-98F9-B6351DDB69EB/4/LoggingExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F9E8E74F-0926-4402-B832-0C7BCA0D1592/2E/IResourceProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3256A3CF-2946-4D07-98F9-B6351DDB69EB/115/IWindowImpl.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D3207CB0-D822-4EAF-BAA4-69E8AB258B6C/aa/083b9453/Process.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F9E8E74F-0926-4402-B832-0C7BCA0D1592/2B/IResourceDictionary.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3256A3CF-2946-4D07-98F9-B6351DDB69EB/14/Carousel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/E9CB8FBD-A44D-4E4D-9389-94F415C36F74/A2/CarouselPresenter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7899125C-45B9-4E45-A5C6-367FE303FBB7/5a/812e2c9a/Log.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/87DBB896-6B20-4A14-9B6A-7AB43642646D/92/eda64173/Monitor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F9E8E74F-0926-4402-B832-0C7BCA0D1592/2D/IResourceNode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3C2E205D-04D0-44C3-8C21-30A014740617/8a/71ff0e11/HorizontalAlignment.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/87DBB896-6B20-4A14-9B6A-7AB43642646D/cc/28d63ba2/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7DCA918B-18E1-4EA7-9F4D-BA6796FE09E5/13/X11Window.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3256A3CF-2946-4D07-98F9-B6351DDB69EB/113/IWindowBaseImpl.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A76B8C80-4D9F-4FC8-8A9A-03F322A6D646/2D/Dispatcher.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/E9CB8FBD-A44D-4E4D-9389-94F415C36F74/26/DefinitionBase.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F9E8E74F-0926-4402-B832-0C7BCA0D1592/2E/IResourceProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3256A3CF-2946-4D07-98F9-B6351DDB69EB/D6/Popup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5855A35E-4512-43F5-9E9B-519C76928F8C/10/X11PlatformThreading.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D3207CB0-D822-4EAF-BAA4-69E8AB258B6C/aa/083b9453/Process.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F9E8E74F-0926-4402-B832-0C7BCA0D1592/2B/IResourceDictionary.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/87DBB896-6B20-4A14-9B6A-7AB43642646D/4f/67d2b701/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Elements/ScanButton.xaml.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/FindMyGearPage.axaml" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/FindMyGearPage.axaml.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Items/SwitchDetailListItem.xaml" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Program.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/ISettings.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/App.xaml.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/DeviceMessageCache.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AdvancedPage.axaml.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Platform/BluetoothImpl.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/CreditsPage.axaml.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/SystemPage.axaml" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AbstractPage.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Transition/PageContainer.axaml.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/DebugGetAllDataParser.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Elements/PageHeader.xaml" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/SystemPage.axaml.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/FactoryResetPage.axaml" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/FactoryResetPage.axaml.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/TouchpadPage.axaml" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/SettingsPage.axaml.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Utils/MenuFactory.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Utils/TouchpadMenuFactory.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/TouchIdAttribute.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Touchpad/ITouchOption.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Touchpad/BudsTouchOption.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Touchpad/BudsPlusTouchOption.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Touchpad/BudsLiveTouchOption.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/BudsLiveDeviceSpec.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/StubDeviceSpec.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Touchpad/StubTouchOption.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/IBaseMessageParser.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/SetOtherOptionParser.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessageHandler.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/ExtendedStatusUpdateParser.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Message/MessageComposer.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Constants.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/HiddenAttribute.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/BudsDeviceSpec.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/CustomAction.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/IDeviceSpec.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/BudsPlusDeviceSpec.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/CustomTouchActionPage.axaml" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/TouchpadPage.axaml.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/EqualizerPage.axaml.cs" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Items/SliderListItem.xaml.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/CustomTouchActionPage.axaml.cs" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AmbientSoundPage.axaml.cs" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/EqualizerPage.axaml" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Utils/PlatformUtils.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/CustomTouchActionPage.axaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/AdvancedPage.axaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/SelfTestPage.axaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/SelfTestPage.axaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/DebugGetAllDataParser.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/StatusUpdateParser.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Utils/SettingsProvider.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Utils/HexUtils.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Utils/IEnumerableUtils.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Utils/ByteArrayUtils.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Utils/ResourceIndexer.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/Brushes.xaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/BrushesDark.xaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Utils/LocalizationUtils.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/App.xaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Developer/DevTools.xaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Utils/ThemeUtils.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/CustomTitleBar.axaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/i18n/en.xaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/HomePage.axaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/HomePage.axaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/DeviceMessageCache.cs" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Platform/Windows/IAutoStartHelper.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Platform/Windows/AutoStartHelper.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Platform/PlatformUtils.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Platform/IAutoStartHelper.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Platform/AutoStartImpl.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/SettingsPage.axaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Platform/Windows/AutoStartHelper.Windows.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Platform/Interfaces/IAutoStartHelper.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/SettingsPage.axaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Platform/Linux/AutoStartHelper.Linux.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/PopupSettingsPage.axaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Dialogs/InputDialog.xaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/ISettings.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Developer/TranslatorTools.xaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/Styles.xaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/IDeviceSpec.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/BudsLiveDeviceSpec.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Model/Specifications/BudsPlusDeviceSpec.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/App.xaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Program.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/PopupSettingsPage.axaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Dialogs/BudsPopup.xaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Dialogs/BudsPopup.xaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Platform/BluetoothImpl.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lFViZ0CpC2QuPJaC1pFqMhLzzN" />
@@ -97,11 +166,12 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.24091156" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.47151384" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.25576037" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/ThePBone.BlueZNet/ThePBone.BlueZNet.csproj" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -168,7 +238,7 @@
       <workItem from="1607525359300" duration="8017000" />
       <workItem from="1607542986654" duration="7798000" />
       <workItem from="1607625593284" duration="12895000" />
-      <workItem from="1607700218646" duration="3628000" />
+      <workItem from="1607700218646" duration="28706000" />
     </task>
     <task id="LOCAL-00001" summary="Update all">
       <created>1607543806441</created>
@@ -184,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607639405870</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fully implement touch actions">
+      <created>1607703873223</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1607703873223</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,7 +283,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Update all" />
     <MESSAGE value="More stuff ported + new device specification lookup tables" />
-    <option name="LAST_COMMIT_MESSAGE" value="More stuff ported + new device specification lookup tables" />
+    <MESSAGE value="Fully implement touch actions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fully implement touch actions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -217,19 +295,6 @@
           </properties>
           <option name="timeStamp" value="3" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml.cs</url>
-          <line>117</line>
-          <properties documentPath="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml.cs" initialLine="97" containingFunctionPresentation="method 'HandleOtherTouchOption'">
-            <startOffsets>
-              <option value="5000" />
-            </startOffsets>
-            <endOffsets>
-              <option value="5001" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint enabled="true" type="DotNet Exception Breakpoints" />

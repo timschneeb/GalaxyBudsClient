@@ -1,7 +1,9 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
+    <sys:String x:Key="ResourceDictionaryName">Brushes-light</sys:String>
+    
     <!-- Basic -->
     <SolidColorBrush x:Key="RoundBorderBrush" Color="#FFEAEAEA" />
     <SolidColorBrush x:Key="RoundBorderHoverBrush" Color="#FFE8E8E8" />

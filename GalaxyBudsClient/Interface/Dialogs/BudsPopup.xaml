@@ -6,7 +6,7 @@
         x:Class="GalaxyBudsClient.Interface.Dialogs.BudsPopup"
         Height="205" Width="370"
         CanResize="False"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="Manual"
         ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaChromeHints="NoChrome"
         ExtendClientAreaTitleBarHeightHint="-1"
@@ -16,8 +16,10 @@
         UseLayoutRounding="True"
         Icon="/Resources/icon_white.ico"
         ShowInTaskbar="False"
-        Title="Galaxy Buds Manager (Popup)">
-    
+        Title="Galaxy Buds Manager (Popup)"
+        PointerPressed="Window_OnPointerPressed"
+         Opened="OnOpened">
+
      <Border BorderBrush="{DynamicResource RoundBorderBrush}" 
              Background="{DynamicResource WindowBackgroundBrush}"
              CornerRadius="20">

@@ -9,6 +9,7 @@ using GalaxyBudsClient.Decoder;
 using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.DynamicLocalization;
@@ -100,6 +101,13 @@ namespace GalaxyBudsClient.Interface.Pages
             {  
                 Dispatcher.UIThread.Post((() => _loadingSpinner.IsVisible = true), DispatcherPriority.Render);
             };
+            
+            /* Restore data if restarted */
+            var cache = DeviceMessageCache.Instance.BasicStatusUpdate;
+            if (cache != null)
+            {
+                ProcessBasicUpdate(cache);
+            }
         }
 
         private void OnLanguageUpdated()

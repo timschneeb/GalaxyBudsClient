@@ -15,6 +15,8 @@
     <sys:String x:Key="cancel">Cancel</sys:String>
     <sys:String x:Key="apply">Apply</sys:String>
     <sys:String x:Key="notset">Not set</sys:String>
+    <sys:String x:Key="unknown">Unknown</sys:String>
+    
     <sys:String x:Key="nobluetoothdev">No bluetooth adapter found. Please enable bluetooth and try again.</sys:String>
 
     <sys:String x:Key="anc">Active noise cancelling</sys:String>
@@ -211,7 +213,6 @@
     <sys:String x:Key="system_adc_current">ADC Current</sys:String>
 
     <sys:String x:Key="selftest_header">Self Test</sys:String>
-    <sys:String x:Key="selftest_header_alt">Self Test (Your device may disconnect)</sys:String>
     <sys:String x:Key="selftest_pass">Pass</sys:String>
     <sys:String x:Key="selftest_fail">Fail</sys:String>
     <sys:String x:Key="selftest_pass_long">All checks have passed</sys:String>

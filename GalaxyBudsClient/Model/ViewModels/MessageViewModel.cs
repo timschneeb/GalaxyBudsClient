@@ -2,7 +2,7 @@
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Utils;
 
-namespace GalaxyBudsClient.Model
+namespace GalaxyBudsClient.Model.ViewModels
 {
     public class RecvMsgViewHolder
     {
@@ -18,7 +18,7 @@ namespace GalaxyBudsClient.Model
         {
             Id = GetEnumName(typeof(SPPMessage.MessageIds),msg.Id);
             Payload = BitConverter.ToString(msg.Payload).Replace("-", " ");
-            PayloadAscii = Hex.DumpAscii(msg.Payload);
+            PayloadAscii = HexUtils.DumpAscii(msg.Payload);
             Type = GetEnumName(typeof(SPPMessage.MsgType), msg.Type);
             Size = $"{msg.Size} bytes";
             CRC16 = (msg.Crc16 == 0 ? "Pass" : "Fail");

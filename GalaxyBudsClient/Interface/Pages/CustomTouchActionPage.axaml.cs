@@ -8,6 +8,7 @@ using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
@@ -87,8 +88,7 @@ namespace GalaxyBudsClient.Interface.Pages
                         Title = Loc.Resolve("cact_external_app_dialog_title"), 
                         AllowMultiple = false
                     };
-
-
+                    
                     string[]? result = await dlg.ShowAsync(MainWindow.Instance);
                     if (result != null && result.Length > 0)
                     {

@@ -1,15 +1,18 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Logging;
 using Config.Net;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using Serilog;
-using Serilog.Sinks.SystemConsole.Themes;
+using Serilog.Filters;
 
 namespace GalaxyBudsClient
 {
@@ -21,14 +24,17 @@ namespace GalaxyBudsClient
         public static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Verbose()
+                .MinimumLevel.Debug()
                 .WriteTo.Console()
                 .WriteTo.File(PlatformUtils.CombineDataPath("application.log"))
                 .CreateLogger();
             
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+            Trace.Listeners.Add(new ConsoleTraceListener());
             
             BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
+
         } 
 
         // Avalonia configuration, don't remove; also used by visual designer.

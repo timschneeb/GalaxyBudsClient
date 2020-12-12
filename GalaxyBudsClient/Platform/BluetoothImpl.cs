@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using GalaxyBudsClient.Bluetooth;
-using GalaxyBudsClient.Bluetooth.Linux;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;

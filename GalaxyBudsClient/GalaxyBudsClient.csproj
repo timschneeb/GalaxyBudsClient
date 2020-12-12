@@ -105,22 +105,24 @@
         </Compile>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="0.10.0-preview6" />
-        <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.0-preview6" />
-        <PackageReference Include="Avalonia.Desktop" Version="0.10.0-preview6" />
-        <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0-preview6" />
-        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.0-preview6" />
-        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.0-preview6" />
+        <PackageReference Include="Avalonia" Version="0.10.0-rc1" />
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.0-rc1" />
+        <PackageReference Include="Avalonia.Desktop" Version="0.10.0-rc1" />
+        <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0-rc1" />
+        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.0-rc1" />
+        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.0-rc1" />
         <PackageReference Include="Config.Net" Version="4.15.0" />
         <PackageReference Include="Config.Net.Json" Version="4.15.0" />
         <PackageReference Include="dein.ToolBox" Version="1.7.1" />
         <PackageReference Include="Eto.Forms" Version="2.5.8" />
         <PackageReference Include="Eto.Platform.Gtk" Version="2.5.8" />
+        <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
         <PackageReference Include="Sentry" Version="3.0.0-alpha.6" />
         <PackageReference Include="Serilog" Version="2.10.1-dev-01256" />
         <PackageReference Include="Serilog.Sinks.Console" Version="4.0.0-dev-00839" />
         <PackageReference Include="Serilog.Sinks.File" Version="5.0.0-dev-00905" />
         <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
+        <PackageReference Include="Tmds.DBus" Version="0.9.1" />
     </ItemGroup>
     <ItemGroup>
       <UpToDateCheckInput Remove="Resources\window\window_close_light.png" />

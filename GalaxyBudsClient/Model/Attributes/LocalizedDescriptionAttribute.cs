@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 
-namespace GalaxyBudsClient.Model
+namespace GalaxyBudsClient.Model.Attributes
 {
     public class LocalizedDescriptionAttribute : DescriptionAttribute
     {

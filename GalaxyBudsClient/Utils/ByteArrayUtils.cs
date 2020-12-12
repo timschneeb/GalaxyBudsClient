@@ -10,7 +10,7 @@ namespace GalaxyBudsClient.Utils
         {
             byte[] newArray = new byte[bArray.Length + 1];
             bArray.CopyTo(newArray, 0);
-            newArray[newArray.Length - 1] = newByte;
+            newArray[^1] = newByte;
             return newArray;
         }
 

@@ -36,7 +36,7 @@ namespace GalaxyBudsClient.Message
         public event EventHandler<TouchOptions>? OtherOption;
         public event EventHandler<ExtendedStatusUpdateParser>? ExtendedStatusUpdate;
         public event EventHandler<IBasicStatusUpdate>? BaseUpdate;
-        public event EventHandler<StatusStatusUpdateParser>? StatusUpdate;
+        public event EventHandler<StatusUpdateParser>? StatusUpdate;
         public event EventHandler<UsageReportParser>? UsageReport;
         public event EventHandler<MuteUpdateParser>? FindMyGearMuteUpdate;
         public event EventHandler? FindMyGearStopped;
@@ -88,7 +88,7 @@ namespace GalaxyBudsClient.Message
                         OtherOption?.Invoke(this, (parser as SetOtherOptionParser)!.OptionType);
                         break;
                     case SPPMessage.MessageIds.MSG_ID_STATUS_UPDATED:
-                        StatusUpdate?.Invoke(this, (parser as StatusStatusUpdateParser)!);
+                        StatusUpdate?.Invoke(this, (parser as StatusUpdateParser)!);
                         BaseUpdate?.Invoke(this, (parser as IBasicStatusUpdate)!);
                         break;
                     case SPPMessage.MessageIds.MSG_ID_USAGE_REPORT:

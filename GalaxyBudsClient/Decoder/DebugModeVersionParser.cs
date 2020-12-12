@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Attributes;
 
 namespace GalaxyBudsClient.Decoder
 {

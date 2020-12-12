@@ -8,6 +8,7 @@ using GalaxyBudsClient.Decoder;
 using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;

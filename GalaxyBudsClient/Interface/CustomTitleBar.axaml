@@ -26,7 +26,7 @@
                             HorizontalAlignment="Left" BorderThickness="0">
                         <TextBlock Text="{DynamicResource optionsmenu_title}"
                                    FontSize="13"
-                                   Foreground="Black"
+                                   Foreground="{DynamicResource ForegroundTextBrush}"
                                    HorizontalAlignment="Left"
                                    TextAlignment="Center"
                                    VerticalAlignment="Center">
@@ -54,7 +54,7 @@
                                TextAlignment="Left"
                                VerticalAlignment="Center"
                                Padding="60 0 60 0"
-                               Foreground="Black"/>
+                               Foreground="{DynamicResource ForegroundTextBrush}"/>
 
                     <StackPanel x:Name="WindowControlsGrid" Grid.Column="2" Background="Transparent"
                                 Orientation="Horizontal">

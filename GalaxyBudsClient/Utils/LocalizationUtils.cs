@@ -8,7 +8,6 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Markup.Xaml.MarkupExtensions;
 using GalaxyBudsClient.Model.Constants;
 using Serilog;
-using XamlLoadException = XamlX.XamlLoadException;
 
 namespace GalaxyBudsClient.Utils
 {
@@ -73,44 +72,7 @@ namespace GalaxyBudsClient.Utils
             {
                 try
                 {
-                    int langDictId = -1;
-                    for (var i = Application.Current.Resources.MergedDictionaries.Count - 1; i >= 0; i--)
-                    {
-                        var md = Application.Current.Resources.MergedDictionaries[i];
-                        if (md is ResourceInclude include)
-                        {
-                            if (include.Loaded.TryGetResource("ResourceDictionaryName", out var name))
-                            {
-                                if (name?.ToString() == null)
-                                {
-                                    return;
-                                }
-                                
-                                if (name.ToString()!.StartsWith("Loc-"))
-                                {
-                                    langDictId = i;
-                                    break;
-                                }
-                            }
-                        }
-                        else if (md is ResourceDictionary dict)
-                        {
-                            if (dict.TryGetResource("ResourceDictionaryName", out var name))
-                            {
-                                if (name?.ToString() == null)
-                                {
-                                    return;
-                                }
-                                
-                                if (name.ToString()!.StartsWith("Loc-"))
-                                {
-                                    langDictId = i;
-                                    break;
-                                }
-                            }
-                        }
-
-                    }
+                    int langDictId = ResourceIndexer.Find("Loc-");
 
                     if (langDictId == -1)
                     {
@@ -144,7 +106,7 @@ namespace GalaxyBudsClient.Utils
                             }
                             catch (XamlLoadException ex)
                             {
-                                string msg = $"Custom language file contains syntax errors. Please check line {ex.LineNumber}, column {ex.LinePosition} in custom_language.xaml.";
+                                string msg = $"Custom language file contains syntax errors. Additional information:\n\n {ex.Message}";
                                 ErrorDetected?.Invoke("XAML syntax error", msg);
                                 Log.Error($"Localization: XAML syntax error. {msg}");
                             }

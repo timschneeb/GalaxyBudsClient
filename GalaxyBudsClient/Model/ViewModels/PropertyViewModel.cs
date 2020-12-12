@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GalaxyBudsClient.Model
+namespace GalaxyBudsClient.Model.ViewModels
 {
     public class PropertyViewModel
     {

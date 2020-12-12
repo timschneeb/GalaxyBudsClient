@@ -34,7 +34,7 @@
           <e p="SetOtherOptionParser.cs" t="Include" />
           <e p="SoftwareVersionOTAParser.cs" t="Include" />
           <e p="SppRoleStateParser.cs" t="Include" />
-          <e p="StatusStatusUpdateParser.cs" t="Include" />
+          <e p="StatusUpdateParser.cs" t="Include" />
           <e p="TouchUpdateParser.cs" t="Include" />
           <e p="UsageReportParser.cs" t="Include" />
         </e>
@@ -149,17 +149,17 @@
           <e p="SPPMessagePrivate.cs" t="Include" />
         </e>
         <e p="Model" t="Include">
+          <e p="Attributes" t="Include">
+            <e p="DescriptionAttribute.cs" t="Include" />
+            <e p="DeviceAttribute.cs" t="Include" />
+            <e p="HiddenAttribute.cs" t="Include" />
+            <e p="LocalizedDescriptionAttribute.cs" t="Include" />
+            <e p="PostfixAttribute.cs" t="Include" />
+          </e>
           <e p="Constants.cs" t="Include" />
           <e p="CustomAction.cs" t="Include" />
-          <e p="DescriptionAttribute.cs" t="Include" />
-          <e p="DeviceAttribute.cs" t="Include" />
           <e p="DeviceMessageCache.cs" t="Include" />
-          <e p="HiddenAttribute.cs" t="Include" />
           <e p="ISettings.cs" t="Include" />
-          <e p="LocalizedDescriptionAttribute.cs" t="Include" />
-          <e p="MessageViewModel.cs" t="Include" />
-          <e p="PostfixAttribute.cs" t="Include" />
-          <e p="PropertyViewModel.cs" t="Include" />
           <e p="Specifications" t="Include">
             <e p="BudsDeviceSpec.cs" t="Include" />
             <e p="BudsLiveDeviceSpec.cs" t="Include" />
@@ -174,9 +174,24 @@
             <e p="ITouchOption.cs" t="Include" />
             <e p="StubTouchOption.cs" t="Include" />
           </e>
+          <e p="ViewModels" t="Include">
+            <e p="MessageViewModel.cs" t="Include" />
+            <e p="PropertyViewModel.cs" t="Include" />
+          </e>
         </e>
         <e p="Platform" t="Include">
+          <e p="AutoStartImpl.cs" t="Include" />
           <e p="BluetoothImpl.cs" t="Include" />
+          <e p="Interfaces" t="Include">
+            <e p="IAutoStartHelper.cs" t="Include" />
+          </e>
+          <e p="Linux" t="Include">
+            <e p="AutoStartHelper.Linux.cs" t="Include" />
+          </e>
+          <e p="PlatformUtils.cs" t="Include" />
+          <e p="Windows" t="Include">
+            <e p="AutoStartHelper.Windows.cs" t="Include" />
+          </e>
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Resources" t="Include">
@@ -268,13 +283,13 @@
           <e p="ByteArrayUtils.cs" t="Include" />
           <e p="CRC16.cs" t="Include" />
           <e p="EnumHelper.cs" t="Include" />
-          <e p="Hex.cs" t="Include" />
+          <e p="HexUtils.cs" t="Include" />
           <e p="IEnumerableUtils.cs" t="Include" />
           <e p="LocalizationUtils.cs" t="Include" />
           <e p="MenuFactory.cs" t="Include" />
-          <e p="PlatformUtils.cs" t="Include" />
+          <e p="ResourceIndexer.cs" t="Include" />
           <e p="SettingsProvider.cs" t="Include" />
-          <e p="TouchpadMenuFactory.cs" t="Include" />
+          <e p="ThemeUtils.cs" t="Include" />
           <e p="ValueConverter.cs" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive">

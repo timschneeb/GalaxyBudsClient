@@ -1,4 +1,5 @@
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Decoder

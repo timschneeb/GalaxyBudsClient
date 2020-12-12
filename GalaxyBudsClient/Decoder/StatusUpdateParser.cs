@@ -4,11 +4,12 @@ using System.Linq;
 using System.Reflection;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Decoder
 {
-    public class StatusStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
+    public class StatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
     {
 
         public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_STATUS_UPDATED;

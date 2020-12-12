@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Platform;
 using Serilog;
 

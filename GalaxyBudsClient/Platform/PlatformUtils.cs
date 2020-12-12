@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace GalaxyBudsClient.Utils
+namespace GalaxyBudsClient.Platform
 {
     public static class PlatformUtils
     {
@@ -12,6 +12,7 @@ namespace GalaxyBudsClient.Utils
                    RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
         }
 
+        public static bool IsWindows => RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         public static bool IsLinux => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
 
         public static string CombineDataPath(string postfix)

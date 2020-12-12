@@ -68,7 +68,7 @@ namespace GalaxyBudsClient.Interface.Pages
 						BluetoothImpl.Instance.DeviceSpec.RecommendedFwVersion(IDeviceSpec.Feature.SeamlessConnection)));
 				return;
 			}
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_SEAMLESS_CONNECTION, e);
+			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_SEAMLESS_CONNECTION, !e);
 		}
 
 		private void ResumeSensor_OnToggled(object? sender, bool e)

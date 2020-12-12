@@ -198,7 +198,7 @@ namespace GalaxyBudsClient.Message
                 SentrySdk.ConfigureScope(scope =>
                 {
                     scope.SetTag("raw-data-available", "true");
-                    scope.SetExtra("raw-data", Hex.Dump(raw, 512, false, false, false));
+                    scope.SetExtra("raw-data", HexUtils.Dump(raw, 512, false, false, false));
                 });
                 SentrySdk.CaptureException(ex);
 
@@ -211,7 +211,7 @@ namespace GalaxyBudsClient.Message
                 SentrySdk.ConfigureScope(scope =>
                 {
                     scope.SetTag("raw-data-available", "true");
-                    scope.SetExtra("raw-data", Hex.Dump(raw, 512, false, false, false));
+                    scope.SetExtra("raw-data", HexUtils.Dump(raw, 512, false, false, false));
                 });
                 SentrySdk.CaptureException(ex);
 

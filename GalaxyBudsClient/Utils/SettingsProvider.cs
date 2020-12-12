@@ -1,5 +1,6 @@
 using Config.Net;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Platform;
 using Serilog;
 
 namespace GalaxyBudsClient.Utils

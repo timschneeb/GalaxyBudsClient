@@ -28,12 +28,13 @@ namespace GalaxyBudsClient.Model
 
         public DeviceMessageCache()
         {
-            SPPMessageHandler.Instance.ExtendedStatusUpdate += (sender, parser) =>
-            {
-                ExtendedStatusUpdate = parser;
-            };
+            SPPMessageHandler.Instance.ExtendedStatusUpdate += (sender, parser) => ExtendedStatusUpdate = parser;
+                SPPMessageHandler.Instance.StatusUpdate += (sender, parser) => StatusUpdate = parser;
         }
 
         public ExtendedStatusUpdateParser? ExtendedStatusUpdate { set; get; }
+        public StatusUpdateParser? StatusUpdate { set; get; }
+
+        public IBasicStatusUpdate? BasicStatusUpdate => (IBasicStatusUpdate?) StatusUpdate ?? ExtendedStatusUpdate;
     }
 }

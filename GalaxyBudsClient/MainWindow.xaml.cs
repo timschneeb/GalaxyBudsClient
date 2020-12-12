@@ -21,6 +21,7 @@ using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using Serilog;
+using Object = GLib.Object;
 
 namespace GalaxyBudsClient
 {
@@ -33,22 +34,22 @@ namespace GalaxyBudsClient
         
         public PageContainer Pager { get; }
         public CustomTouchActionPage CustomTouchActionPage => _customTouchActionPage;
-        
-        public static MainWindow Instance { get; }
-        static MainWindow()
+
+        private static MainWindow? _instance;
+        public static MainWindow Instance => _instance ??= new MainWindow();
+
+        public static void Kill()
         {
-            Instance = new MainWindow();
-            Log.Debug("MainWindow instance allocated");
+            _instance = null;
         }
         
         public MainWindow()
         {
             AvaloniaXamlLoader.Load(this);
             this.AttachDevTools();
-
-            Application.Current.Styles[1] = App.FluentLight;
             
             Pager = this.FindControl<PageContainer>("Container");
+            
             Pager.RegisterPages(_homePage, new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(), new CreditsPage(),
                 new TouchpadPage(), new EqualizerPage(), new AdvancedPage(), new SystemPage(), new SelfTestPage(), new SettingsPage(),
                 new PopupSettingsPage(), new ConnectionLostPage(), _customTouchActionPage, new DeviceSelectionPage(),
@@ -57,7 +58,7 @@ namespace GalaxyBudsClient
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
-            _titleBar.OptionsPressed += (i, e) => _titleBar.OptionsButton.ContextMenu.Open();
+            _titleBar.OptionsPressed += (i, e) => _titleBar.OptionsButton.ContextMenu.Open(_titleBar.OptionsButton);
             
             SPPMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
             
@@ -90,7 +91,8 @@ namespace GalaxyBudsClient
                     new MessageBox()
                     {
                         Title = "Custom long-press action failed",
-                        Description = $"Unable to launch external application.\nFile not found: '{ex.FileName}'"
+                        Description = $"Unable to launch external application.\n" +
+                                      $"File not found: '{ex.FileName}'"
                     }.Show(this);
                 }
                 catch (Win32Exception ex)
@@ -101,19 +103,19 @@ namespace GalaxyBudsClient
                         {
                             Title = "Custom long-press action failed",
                             Description = $"Unable to launch external application.\n\n" +
-                                          $"Insufficient permission. Please add execute permissions for your user/group to this file.\n\n" +
-                                          $"Run this in a terminal: chmod +x \"{action.Parameter}\""
-                        }.Show(this);      
-                    }                        new MessageBox()
-                    {
-                        Title = "Custom long-press action failed",
-                        Description = $"Unable to launch external application.\n\n" +
-                                      $"Detailed information:\n\n" +
-                                      $"{ex.Message}"
-                    }.Show(this);  
+                                          $"Insufficient permissions. Please add execute permissions for your user/group to this file.\n\n" +
+                                          $"Run this command in a terminal: chmod +x \"{action.Parameter}\""
+                        }.Show(this);
+                    }
                     else
                     {
-                        
+                        new MessageBox()
+                        {
+                            Title = "Custom long-press action failed",
+                            Description = $"Unable to launch external application.\n\n" +
+                                          $"Detailed information:\n\n" +
+                                          $"{ex.Message}"
+                        }.Show(this);
                     }
                 }
             }
@@ -130,7 +132,7 @@ namespace GalaxyBudsClient
                 MenuFactory.BuildContextMenu(new Dictionary<string, EventHandler<RoutedEventArgs>?>()
                 {
                     [Loc.Resolve("optionsmenu_settings")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Settings),
-                    [Loc.Resolve("optionsmenu_refresh")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.UpdateAvailable),
+                    [Loc.Resolve("optionsmenu_refresh")] = async (sender, args) => await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_GET_ALL_DATA),
                     [Loc.Resolve("optionsmenu_deregister")] = (sender, args) => Log.Debug("Deregister selected"),
                     [Loc.Resolve("optionsmenu_update")] = (sender, args) => Log.Debug("Check for updates selected"),
                     [Loc.Resolve("optionsmenu_credits")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Credits),
