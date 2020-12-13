@@ -46,6 +46,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
         public event EventHandler? Connecting;
         public event EventHandler? Connected;
         public event EventHandler<string>? Disconnected;
+        public event EventHandler<BluetoothException>? BluetoothErrorAsync;
         public event EventHandler<byte[]>? NewDataAvailable;
 
         public bool IsStreamConnected { get; set; }
@@ -56,7 +57,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             Disconnected += (sender, args) => IsStreamConnected = false;
         }
         
-        public async Task ConnectAsync(string macAddress, string uuid)
+        public async Task ConnectAsync(string macAddress, string uuid, bool noRetry = false)
         {
             Connecting?.Invoke(this, EventArgs.Empty);
             
@@ -84,36 +85,31 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             _profile.RequestDisconnection = async (path, handle) => await DisconnectAsync();
             await conn.RegisterObjectAsync(_profile);
 
-            for (int attempt = 1; attempt <= 15; attempt++)
+            for (int attempt = 1; attempt <= 5; attempt++)
             {
-                Log.Debug($"Linux.BluetoothService: Connecting... (attempt {attempt}/15)");
-                if (await AttemptBasicConnectionAsync())
+                Log.Debug($"Linux.BluetoothService: Connecting... (attempt {attempt}/5)");
+                try
                 {
-                    break;
+                    if (await AttemptBasicConnectionAsync(noRetry))
+                    {
+                        break;
+                    }
                 }
-                if (attempt >= 15)
+                catch(BluetoothException ex)
                 {
-                    Log.Fatal("Linux.BluetoothService: Gave up after 15 attempts. Timed out.");
+                    BluetoothErrorAsync?.Invoke(this, ex);
+                }   
+
+                if (attempt >= 5)
+                {
+                    Log.Fatal("Linux.BluetoothService: Gave up after 5 attempts. Timed out.");
                     throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "BlueZ timed out while connecting to device.");
                 }
             }
 
             await _device.WaitForPropertyValueAsync("Connected", value: true, Timeout);
             Connected?.Invoke(this, EventArgs.Empty);
-            ConnectionWatchdog = _device.WatchForPropertyChangeAsync("Connected", true, async delegate(bool state)
-            {
-                if (state)
-                {
-                    Connected?.Invoke(this, EventArgs.Empty);
-                    Log.Debug("Linux.BluetoothService: Reconnected. Attempting to auto-connect to profile...");
-                    await ConnectAsync(_currentMac, _currentUuid);
-                }
-                else
-                {
-                    Disconnected?.Invoke(this, "Reported as disconnected by Bluez");
-                    Log.Debug("Linux.BluetoothService: Disconnected");
-                }
-            });
+            ConnectionWatchdog = _device.WatchForPropertyChangeAsync("Connected", true, ConnectionWatcherCallback);
             Log.Debug($"Linux.BluetoothService: Device ready. Registering profile client for UUID {uuid}...");
 
             var properties = new Dictionary<string, object>
@@ -148,9 +144,9 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 }
             }
             
-            for (int attempt = 1; attempt <= 15; attempt++)
+            for (int attempt = 1; attempt <= 10; attempt++)
             {
-                Log.Debug($"Linux.BluetoothService: Connecting to profile... (attempt {attempt}/15)");
+                Log.Debug($"Linux.BluetoothService: Connecting to profile... (attempt {attempt}/10)");
 
                 try
                 {
@@ -164,11 +160,23 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                     switch (ex.ErrorCode)
                     {
                         case BlueZException.ErrorCodes.Failed:
-                            Log.Debug($"Linux.BluetoothService: Failed: '{ex.ErrorMessage}'. Retrying...");
+                            Log.Debug($"Linux.BluetoothService: Failed: '{ex.ErrorMessage}'.");
+                            
+                            if (noRetry)
+                            {
+                                throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, $"Failed to connect to profile: '{ex.ErrorMessage}'");
+                            }
+                            
                             await Task.Delay(250);
                             break;
                         case BlueZException.ErrorCodes.InProgress:
-                            Log.Debug("Linux.BluetoothService: Already connecting, retrying...");
+                            Log.Debug("Linux.BluetoothService: Already connecting.");
+                            
+                            if (noRetry)
+                            {
+                                throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, $"Already connecting to profile. Please wait and try again later: '{ex.ErrorMessage}'");
+                            }
+                            
                             await Task.Delay(250);
                             break;
                         case BlueZException.ErrorCodes.AlreadyConnected:
@@ -186,17 +194,37 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                     }
                 }
 
-                if (attempt >= 15)
+                if (attempt >= 10)
                 {
-                    Log.Fatal("Linux.BluetoothService: Gave up after 15 attempts. Timed out.");
+                    Log.Fatal("Linux.BluetoothService: Gave up after 10 attempts. Timed out.");
                     throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "BlueZ timed out while connecting to profile");
                 }
             }
-            
-            FINISH_PROFILE_CONNECTION: ;
         }
 
-        private async Task<bool> AttemptBasicConnectionAsync()
+        private async void ConnectionWatcherCallback(bool state)
+        {
+            if (state)
+            {
+                Connected?.Invoke(this, EventArgs.Empty);
+                Log.Debug("Linux.BluetoothService: Reconnected. Attempting to auto-connect to profile...");
+                try
+                {
+                    await ConnectAsync(_currentMac, _currentUuid);
+                }
+                catch (BluetoothException ex)
+                {
+                    BluetoothErrorAsync?.Invoke(this, ex);
+                }
+            }
+            else
+            {
+                Disconnected?.Invoke(this, "Reported as disconnected by Bluez");
+                Log.Debug("Linux.BluetoothService: Disconnected");
+            }
+        }
+
+        private async Task<bool> AttemptBasicConnectionAsync(bool noRetry)
         {
             try
             {
@@ -208,12 +236,24 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 switch (ex.ErrorCode)
                 {    
                     case BlueZException.ErrorCodes.Failed:
-                        Log.Debug($"Linux.BluetoothService: Failed: '{ex.ErrorMessage}'. Retrying...");
+                        Log.Debug($"Linux.BluetoothService: Failed: '{ex.ErrorMessage}'");
+                        
+                        if (noRetry || ex.ErrorMessage.Contains("Host is down", StringComparison.OrdinalIgnoreCase))
+                        {
+                            throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, $"Failed to connect: '{ex.ErrorMessage}'");
+                        }
+                        
                         await Task.Delay(250);
-                        break;
+                        return false;
                     
                     case BlueZException.ErrorCodes.InProgress:
-                        Log.Debug("Linux.BluetoothService: Already connecting, retrying...");
+                        Log.Debug("Linux.BluetoothService: Already connecting");
+                        
+                        if (noRetry)
+                        {
+                            throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, $"Already connecting, please wait and try again: '{ex.ErrorMessage}'");
+                        }
+                        
                         await Task.Delay(250);
                         return false;
                         

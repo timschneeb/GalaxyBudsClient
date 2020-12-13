@@ -2,6 +2,7 @@
 using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Interface.Pages;
 using Serilog;
@@ -82,14 +83,17 @@ namespace GalaxyBudsClient.Interface.Transition
 		{
 			var target = PageViewModel.FindPage(page);
 
-			if (target != null)
+			Dispatcher.UIThread.Post(() =>
 			{
-				_lastPageCache = Pager.SelectedItem;
-				Pager.SelectedItem = target;
-				/* Call OnPageShown prematurely */
-				target.OnPageShown();
-			}
-
+				if (target != null)
+                {
+                	_lastPageCache = Pager.SelectedItem;
+                	Pager.SelectedItem = target;
+                	/* Call OnPageShown prematurely */
+                	target.OnPageShown();
+                }
+                
+			}, DispatcherPriority.Render);
 			return target != null;
 		}
 		

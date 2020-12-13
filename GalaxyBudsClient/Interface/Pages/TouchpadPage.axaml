@@ -39,7 +39,7 @@
                         Grid.Row="0" 
                         Classes="BorderHoverStyle"
                         CornerRadius="{StaticResource DefaultCornerRadius}">
-                    <items:MenuListItem x:Name="LeftOption" 
+                    <items:MenuDetailListItem x:Name="LeftOption" 
                                         Text="{DynamicResource touchpad_left_action}"
                                         Description="{DynamicResource touchoption_custom_unknown}" />
                 </Border>
@@ -48,7 +48,7 @@
                         Grid.Row="2" 
                         Classes="BorderHoverStyle" 
                         CornerRadius="{StaticResource DefaultCornerRadius}">
-                    <items:MenuListItem x:Name="RightOption" 
+                    <items:MenuDetailListItem x:Name="RightOption" 
                                         Text="{DynamicResource touchpad_right_action}"
                                         Description="{DynamicResource touchoption_custom_unknown}"/>
                 </Border>

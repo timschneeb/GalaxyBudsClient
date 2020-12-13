@@ -103,6 +103,9 @@
           <DependentUpon>DummyPage2.axaml</DependentUpon>
           <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Interface\Items\MenuDetailListItem.xaml.cs">
+          <DependentUpon>MenuDetailListItem.xaml</DependentUpon>
+        </Compile>
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="0.10.0-rc1" />

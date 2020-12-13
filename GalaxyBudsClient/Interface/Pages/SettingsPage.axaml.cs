@@ -22,7 +22,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		public override Pages PageType => Pages.Settings;
 		
 		private readonly SwitchDetailListItem _darkMode;
-		private readonly MenuListItem _locale;
+		private readonly MenuDetailListItem _locale;
 		private readonly SwitchDetailListItem _minimizeTray;
 		private readonly SwitchDetailListItem _autostart;
 
@@ -30,7 +30,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		{   
 			InitializeComponent();
 			_darkMode = this.FindControl<SwitchDetailListItem>("DarkModeSelect");
-			_locale = this.FindControl<MenuListItem>("LocaleSelect");
+			_locale = this.FindControl<MenuDetailListItem>("LocaleSelect");
 			_minimizeTray = this.FindControl<SwitchDetailListItem>("MinimizeTrayToggle");
 			_autostart = this.FindControl<SwitchDetailListItem>("AutostartToggle");
 		}

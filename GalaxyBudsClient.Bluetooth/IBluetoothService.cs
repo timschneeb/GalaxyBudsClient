@@ -5,6 +5,7 @@ namespace GalaxyBudsClient.Bluetooth
 {
     public interface IBluetoothService
     {
+        event EventHandler<BluetoothException> BluetoothErrorAsync;   
         event EventHandler Connecting;
         event EventHandler Connected;
         event EventHandler RfcommConnected;
@@ -13,7 +14,7 @@ namespace GalaxyBudsClient.Bluetooth
         
         bool IsStreamConnected { set; get; }
 
-        Task ConnectAsync(string macAddress, string serviceUuid);
+        Task ConnectAsync(string macAddress, string serviceUuid, bool noRetry = false);
         Task DisconnectAsync();
         Task SendAsync(byte[] data);
     }

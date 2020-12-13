@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="GalaxyBudsClient.Interface.Items.MenuListItem"
+﻿<UserControl x:Class="GalaxyBudsClient.Interface.Items.MenuDetailListItem"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
@@ -14,7 +14,7 @@
             </Grid.RowDefinitions>
             
             <Label Grid.Row="0" 
-                   Content="{Binding $parent[items:MenuListItem].Text}"
+                   Content="{Binding $parent[items:MenuDetailListItem].Text}"
                    Foreground="{DynamicResource ForegroundTextBrush}"
                    FontSize="16"
                    VerticalAlignment="Top" 
@@ -24,7 +24,7 @@
                        Margin="3,0,3,5"
                        TextWrapping="Wrap" FontSize="14"
                        Foreground="{DynamicResource SubtitleTextAltBrush}"
-                       Text="{Binding $parent[items:MenuListItem].Description}"/>
+                       Text="{Binding $parent[items:MenuDetailListItem].Description}"/>
         </Grid>
     </Border>
 </UserControl>

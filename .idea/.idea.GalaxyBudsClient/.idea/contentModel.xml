@@ -74,8 +74,8 @@
             <e p="DetailListItem.xaml.cs" t="Include" />
             <e p="IconListItem.xaml" t="Include" />
             <e p="IconListItem.xaml.cs" t="Include" />
-            <e p="MenuListItem.xaml" t="Include" />
-            <e p="MenuListItem.xaml.cs" t="Include" />
+            <e p="MenuDetailListItem.xaml" t="Include" />
+            <e p="MenuDetailListItem.xaml.cs" t="Include" />
             <e p="SliderListItem.xaml" t="Include" />
             <e p="SliderListItem.xaml.cs" t="Include" />
             <e p="SwitchDetailListItem.xaml" t="Include" />

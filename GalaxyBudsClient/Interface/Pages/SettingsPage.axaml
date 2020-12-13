@@ -41,7 +41,7 @@
                 </Border>
                 <Separator Grid.Row="1" Classes="HSeparatorSpacer20"/>
                 <Border Grid.Row="2" CornerRadius="20" Classes="BorderHoverStyle">
-                        <items:MenuListItem x:Name="LocaleSelect"
+                        <items:MenuDetailListItem x:Name="LocaleSelect"
                                             Text="{DynamicResource settings_localization_disable}" 
                                             Description="English" />
                 </Border>

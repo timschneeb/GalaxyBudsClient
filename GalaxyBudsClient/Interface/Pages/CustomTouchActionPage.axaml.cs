@@ -23,7 +23,7 @@ namespace GalaxyBudsClient.Interface.Pages
         public override Pages PageType => Pages.TouchCustomAction;
 		
         private readonly PageHeader _pageHeader;
-        private readonly MenuListItem _menu;
+        private readonly MenuDetailListItem _menuDetail;
 
         private CustomAction? _currentAction;
 		
@@ -35,7 +35,7 @@ namespace GalaxyBudsClient.Interface.Pages
         {   
             AvaloniaXamlLoader.Load(this);
             _pageHeader = this.FindControl<PageHeader>("PageHeader");
-            _menu = this.FindControl<MenuListItem>("Menu");
+            _menuDetail = this.FindControl<MenuDetailListItem>("Menu");
 
             Loc.LanguageUpdated += UpdateStrings;
         }
@@ -43,7 +43,7 @@ namespace GalaxyBudsClient.Interface.Pages
         public override void OnPageShown()
         {
             _currentAction = null;
-            _menu.Description = Loc.Resolve("touchoption_custom_null");
+            _menuDetail.Description = Loc.Resolve("touchoption_custom_null");
             UpdateStrings();
         }
 
@@ -73,7 +73,7 @@ namespace GalaxyBudsClient.Interface.Pages
                         menuActions.Add(action.GetDescription(), (sender, args) => ItemClicked(action));
                     }
                 }
-                _menu.Items = menuActions;
+                _menuDetail.Items = menuActions;
             }
         }
 
@@ -104,7 +104,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
             if (_currentAction != null)
             {
-                _menu.Description = _currentAction.ToLongString();
+                _menuDetail.Description = _currentAction.ToLongString();
             }
         }
 		

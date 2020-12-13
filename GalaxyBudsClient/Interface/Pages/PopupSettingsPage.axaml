@@ -54,7 +54,7 @@
                 </Border>
                 <Separator Grid.Row="3" Classes="HSeparatorSpacer20"/>
                 <Border Grid.Row="4" Classes="BorderHoverStyle" >
-                    <items:MenuListItem x:Name="PositionPopup" 
+                    <items:MenuDetailListItem x:Name="PositionPopup" 
                                           Text="{DynamicResource settings_cpopup_position}"
                                           Description="{DynamicResource settings_cpopup_position_placeholder}"/>
                 </Border>

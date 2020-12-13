@@ -25,7 +25,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		private readonly SwitchDetailListItem _popupToggle;
 		private readonly SwitchDetailListItem _compactToggle;
 		private readonly DetailListItem _overrideTitle;
-		private readonly MenuListItem _placement;
+		private readonly MenuDetailListItem _placement;
 		
 		public PopupSettingsPage()
 		{   
@@ -33,7 +33,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			_popupToggle = this.FindControl<SwitchDetailListItem>("PopupToggle");
 			_compactToggle = this.FindControl<SwitchDetailListItem>("CompactPopup");
 			_overrideTitle = this.FindControl<DetailListItem>("OverrideTitle");
-			_placement = this.FindControl<MenuListItem>("PositionPopup");
+			_placement = this.FindControl<MenuDetailListItem>("PositionPopup");
 
 			Loc.LanguageUpdated += UpdateMenuDescriptions;
 			Loc.LanguageUpdated += UpdateMenus;

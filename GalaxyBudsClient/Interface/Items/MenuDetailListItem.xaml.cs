@@ -8,20 +8,20 @@ using MenuEntries = System.Collections.Generic.Dictionary<string, System.EventHa
 
 namespace GalaxyBudsClient.Interface.Items
 {
-    public class MenuListItem : UserControl
+    public class MenuDetailListItem : UserControl
     {
         public static readonly StyledProperty<String> TextProperty =
-            AvaloniaProperty.Register<MenuListItem, String>(nameof(Text));
+            AvaloniaProperty.Register<MenuDetailListItem, String>(nameof(Text));
         
         public static readonly StyledProperty<String> DescriptionProperty =
-            AvaloniaProperty.Register<MenuListItem, String>(nameof(Description));
-        
+            AvaloniaProperty.Register<MenuDetailListItem, String>(nameof(Description));
+
         public static readonly StyledProperty<MenuEntries?> ItemsProperty =
-            AvaloniaProperty.Register<MenuListItem, MenuEntries?>(nameof(Items));
+            AvaloniaProperty.Register<MenuDetailListItem, MenuEntries?>(nameof(Items));
 
         private ContextMenu? _ctxMenu;
         
-        public MenuListItem()
+        public MenuDetailListItem()
         {
             AvaloniaXamlLoader.Load(this);
             DataContext = this;
@@ -32,7 +32,7 @@ namespace GalaxyBudsClient.Interface.Items
             get => GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
-
+        
         public String Description
         {
             get => GetValue(DescriptionProperty);

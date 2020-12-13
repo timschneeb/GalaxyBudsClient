@@ -25,7 +25,7 @@
         
         <Border Grid.Row="3" Classes="RoundedBorderListItem">
             <Border Name="ActionBorder" Classes="BorderHoverStyle">
-                <items:MenuListItem x:Name="Menu"
+                <items:MenuDetailListItem x:Name="Menu"
                                       Text="{DynamicResource cact_action}"
                                       Description="{DynamicResource touchoption_custom_null}"/>
             </Border>

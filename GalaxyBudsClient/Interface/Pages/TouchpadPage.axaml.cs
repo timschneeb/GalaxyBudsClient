@@ -24,8 +24,8 @@ namespace GalaxyBudsClient.Interface.Pages
 		
 		private readonly SwitchListItem _lock;
 		private readonly SwitchDetailListItem _edgeTouch;
-		private readonly MenuListItem _leftOption;
-		private readonly MenuListItem _rightOption;
+		private readonly MenuDetailListItem _leftOption;
+		private readonly MenuDetailListItem _rightOption;
 		
 		private TouchOptions _lastLeftOption;
 		private TouchOptions _lastRightOption;
@@ -35,8 +35,8 @@ namespace GalaxyBudsClient.Interface.Pages
 			AvaloniaXamlLoader.Load(this);
 			_lock = this.FindControl<SwitchListItem>("LockToggle");
 			_edgeTouch = this.FindControl<SwitchDetailListItem>("DoubleTapVolume");
-			_leftOption = this.FindControl<MenuListItem>("LeftOption");
-			_rightOption = this.FindControl<MenuListItem>("RightOption");
+			_leftOption = this.FindControl<MenuDetailListItem>("LeftOption");
+			_rightOption = this.FindControl<MenuDetailListItem>("RightOption");
 
 		
 			SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;

@@ -8,6 +8,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Bluetooth.Linux;
 using GalaxyBudsClient.Interface;
 using GalaxyBudsClient.Interface.Developer;
@@ -29,6 +30,7 @@ namespace GalaxyBudsClient
         private readonly HomePage _homePage = new HomePage();
         private readonly UnsupportedFeaturePage _unsupportedFeaturePage = new UnsupportedFeaturePage();
         private readonly CustomTouchActionPage _customTouchActionPage = new CustomTouchActionPage();
+        private readonly ConnectionLostPage _connectionLostPage = new ConnectionLostPage();
         
         private readonly CustomTitleBar _titleBar;
         private BudsPopup _popup;
@@ -53,15 +55,19 @@ namespace GalaxyBudsClient
             
             Pager.RegisterPages(_homePage, new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(), new CreditsPage(),
                 new TouchpadPage(), new EqualizerPage(), new AdvancedPage(), new SystemPage(), new SelfTestPage(), new SettingsPage(),
-                new PopupSettingsPage(), new ConnectionLostPage(), _customTouchActionPage, new DeviceSelectionPage(),
+                new PopupSettingsPage(), _connectionLostPage, _customTouchActionPage, new DeviceSelectionPage(),
                 new WelcomePage(), _unsupportedFeaturePage, new UpdatePage());
-            Pager.SwitchPage(AbstractPage.Pages.Home);
+            Pager.SwitchPage(AbstractPage.Pages.Welcome);
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
             _titleBar.OptionsPressed += (i, e) => _titleBar.OptionsButton.ContextMenu.Open(_titleBar.OptionsButton);
 
             _popup = new BudsPopup();
+            
+            BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
+            BluetoothImpl.Instance.Disconnected += OnDisconnected;
+            BluetoothImpl.Instance.Connected += OnConnected;
             
             SPPMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
             
@@ -71,6 +77,21 @@ namespace GalaxyBudsClient
 
             /* TODO */
             var connectTask = BluetoothImpl.Instance.ConnectAsync("80:7B:3E:21:79:EC", Models.BudsPlus);
+        }
+
+        private void OnConnected(object? sender, EventArgs e)
+        {
+            Pager.SwitchPage(AbstractPage.Pages.Home);
+        }
+
+        private void OnBluetoothError(object? sender, BluetoothException e)
+        {
+            Pager.SwitchPage(AbstractPage.Pages.NoConnection);
+        }
+
+        private void OnDisconnected(object? sender, string e)
+        {
+            Pager.SwitchPage(AbstractPage.Pages.NoConnection);
         }
 
         private void HandleOtherTouchOption(object? sender, TouchOptions e)

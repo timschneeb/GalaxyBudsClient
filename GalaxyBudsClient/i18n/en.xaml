@@ -115,7 +115,7 @@
         This app supports both the Buds (2019), Buds+ (2020) and Buds Live.
     </sys:String>
     <sys:String x:Key="welcome_darkmode">Dark Mode</sys:String>
-    <sys:String x:Key="welcome_darkmode_content">Your eyes are already burning? Use a darker color scheme instead!</sys:String>
+    <sys:String x:Key="welcome_darkmode_content">Your eyes are already burning? Use a darker color scheme instead! (Restart required)</sys:String>
 
     <!-- Main page -->
     <sys:String x:Key="mainpage_corrupt_data">Received corrupted data. Reconnecting...</sys:String>

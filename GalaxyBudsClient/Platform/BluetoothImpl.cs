@@ -71,14 +71,14 @@ namespace GalaxyBudsClient.Platform
             _backend.Connecting += (sender, args) => Connecting?.Invoke(this, EventArgs.Empty); 
             _backend.NewDataAvailable += OnNewDataAvailable;
             _backend.NewDataAvailable += (sender, bytes) => NewDataReceived?.Invoke(this, bytes);
+            _backend.BluetoothErrorAsync += (sender, exception) => BluetoothError?.Invoke(this, exception); 
             _backend.RfcommConnected += (sender, args) => Task.Run(async () =>
-                    await Task.Delay(150).ContinueWith((_) => Connected?.Invoke(this, EventArgs.Empty)))
-                ;
+                    await Task.Delay(150).ContinueWith((_) => Connected?.Invoke(this, EventArgs.Empty)));
             _backend.Disconnected += (sender, reason) => Disconnected?.Invoke(this, reason);
             MessageReceived += SPPMessageHandler.Instance.MessageReceiver;
         }
 
-        public async Task ConnectAsync(string? macAddress = null, Models? model = null)
+        public async Task ConnectAsync(string? macAddress = null, Models? model = null, bool noRetry = false)
         {
             /* Load from configuration */
             if (macAddress == null && model == null)
@@ -88,7 +88,7 @@ namespace GalaxyBudsClient.Platform
                     try
                     {
                         await _backend.ConnectAsync(SettingsProvider.Instance.RegisteredDevice.MacAddress,
-                            ServiceUuid.ToString()!);
+                            ServiceUuid.ToString()!, noRetry);
                     }
                     catch (BluetoothException ex)
                     {

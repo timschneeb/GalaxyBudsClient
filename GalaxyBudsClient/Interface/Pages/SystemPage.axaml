@@ -20,7 +20,7 @@
         <elements:PageHeader Grid.Row="1" x:Name="PageHeader" Title="{DynamicResource system_header}" BackPressed="BackButton_OnPointerPressed"/>
 
         <Border Grid.Row="3" Classes="RoundedBorderListItem">
-            <Grid ClipToBounds="True" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <Grid ClipToBounds="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
