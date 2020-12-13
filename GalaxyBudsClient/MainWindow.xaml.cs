@@ -10,6 +10,7 @@ using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Bluetooth.Linux;
+using GalaxyBudsClient.Decoder;
 using GalaxyBudsClient.Interface;
 using GalaxyBudsClient.Interface.Developer;
 using GalaxyBudsClient.Interface.Dialogs;
@@ -34,6 +35,7 @@ namespace GalaxyBudsClient
         
         private readonly CustomTitleBar _titleBar;
         private BudsPopup _popup;
+        private DateTime _lastPopupTime = DateTime.UtcNow;
         
         public PageContainer Pager { get; }
         public CustomTouchActionPage CustomTouchActionPage => _customTouchActionPage;
@@ -69,6 +71,7 @@ namespace GalaxyBudsClient
             BluetoothImpl.Instance.Disconnected += OnDisconnected;
             BluetoothImpl.Instance.Connected += OnConnected;
             
+            SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
             SPPMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
             
             Loc.LanguageUpdated += OnLanguageUpdated;
@@ -76,7 +79,13 @@ namespace GalaxyBudsClient
             BuildOptionsMenu();
 
             /* TODO */
-            var connectTask = BluetoothImpl.Instance.ConnectAsync("80:7B:3E:21:79:EC", Models.BudsPlus);
+            //var connectTask = BluetoothImpl.Instance.ConnectAsync("80:7B:3E:21:79:EC", Models.BudsPlus);
+        }
+
+        private async void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
+        {
+            ShowPopup();
+            await MessageComposer.SetManagerInfo();
         }
 
         private void OnConnected(object? sender, EventArgs e)
@@ -86,12 +95,16 @@ namespace GalaxyBudsClient
 
         private void OnBluetoothError(object? sender, BluetoothException e)
         {
-            Pager.SwitchPage(AbstractPage.Pages.NoConnection);
+            Pager.SwitchPage(BluetoothImpl.Instance.RegisteredDeviceValid
+                ? AbstractPage.Pages.NoConnection
+                : AbstractPage.Pages.Welcome);
         }
 
         private void OnDisconnected(object? sender, string e)
         {
-            Pager.SwitchPage(AbstractPage.Pages.NoConnection);
+            Pager.SwitchPage(BluetoothImpl.Instance.RegisteredDeviceValid
+                ? AbstractPage.Pages.NoConnection
+                : AbstractPage.Pages.Welcome);
         }
 
         private void HandleOtherTouchOption(object? sender, TouchOptions e)
@@ -157,30 +170,40 @@ namespace GalaxyBudsClient
                 {
                     [Loc.Resolve("optionsmenu_settings")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Settings),
                     [Loc.Resolve("optionsmenu_refresh")] = async (sender, args) => await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_GET_ALL_DATA),
-                    [Loc.Resolve("optionsmenu_deregister")] = (sender, args) => Log.Debug("Deregister selected"),
+                    [Loc.Resolve("optionsmenu_deregister")] = (sender, args) =>
+                    {
+                        BluetoothImpl.Instance.UnregisterDevice().ContinueWith((_) => Pager.SwitchPage(AbstractPage.Pages.Welcome));
+                    },
                     [Loc.Resolve("optionsmenu_update")] = (sender, args) => Log.Debug("Check for updates selected"),
                     [Loc.Resolve("optionsmenu_credits")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Credits),
                 });
         }
-        
-        public void ShowPopup()
-        {
-            if (_popup.IsVisible)
-            { 
-                _popup.UpdateSettings();
-                _popup.RearmTimer();
-            }
 
-            try
+
+        public void ShowPopup(bool ignoreRestrictions = false)
+        {
+            DateTime now = DateTime.UtcNow;
+            if ((now.Subtract(_lastPopupTime).TotalSeconds >= 5 && !IsActive) || ignoreRestrictions)
             {
-                _popup.Show();
+                if (_popup.IsVisible)
+                {
+                    _popup.UpdateSettings();
+                    _popup.RearmTimer();
+                }
+
+                try
+                {
+                    _popup.Show();
+                }
+                catch (InvalidOperationException ex)
+                {
+                    /* Window already closed down */
+                    _popup = new BudsPopup();
+                    _popup.Show();
+                }
+                _lastPopupTime = now; 
             }
-            catch (InvalidOperationException ex)
-            {
-                /* Window already closed down */
-                _popup = new BudsPopup();
-                _popup.Show();
-            }
+       
         }
 
         public void ShowDevTools()

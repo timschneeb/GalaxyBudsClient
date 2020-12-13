@@ -33,6 +33,7 @@ namespace GalaxyBudsClient.Model.Specifications
         
         Dictionary<Feature, FeatureRule?> Rules { get; }
         Models Device { get; }
+        string DeviceBaseName { get; }
 
         bool Supports(Feature feature)
         {

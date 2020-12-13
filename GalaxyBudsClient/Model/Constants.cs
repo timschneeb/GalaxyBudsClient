@@ -79,8 +79,11 @@ namespace GalaxyBudsClient.Model
         public enum Models
         {
             NULL = 0,
+            [Description("Galaxy Buds (2019)")]
             Buds = 1,
+            [Description("Galaxy Buds+ (2020)")]
             BudsPlus = 2,
+            [Description("Galaxy Buds Live (2020)")]
             BudsLive = 3
         }
 

@@ -78,7 +78,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		private void Demo_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
-			MainWindow.Instance.ShowPopup();
+			MainWindow.Instance.ShowPopup(true);
 		}
 
 		private async void OverrideTitle_OnPointerPressed(object? sender, PointerPressedEventArgs e)

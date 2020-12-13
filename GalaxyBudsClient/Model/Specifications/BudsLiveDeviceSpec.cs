@@ -16,5 +16,8 @@ namespace GalaxyBudsClient.Model.Specifications
             };
         
         public Models Device => Models.BudsLive;
+        
+        public string DeviceBaseName => "Galaxy Buds Live (";
+
     }
 }

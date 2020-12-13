@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -91,7 +93,12 @@ namespace GalaxyBudsClient.Interface.Pages
             
             SPPMessageHandler.Instance.BaseUpdate += (sender, update) => ProcessBasicUpdate(update);
             SPPMessageHandler.Instance.GetAllDataResponse += (sender, parser) => UpdateDetails(parser);
-            SPPMessageHandler.Instance.AncEnabledUpdateResponse += (sender, b) => _ancSwitch.IsChecked = b; 
+            SPPMessageHandler.Instance.AncEnabledUpdateResponse += (sender, b) => _ancSwitch.IsChecked = b;
+            SPPMessageHandler.Instance.AnyMessageReceived += (sender, parser) =>
+            {
+                SetWarning(false);
+                _loadingSpinner.IsVisible = false;
+            };
             
             BluetoothImpl.Instance.Connected += (sender, args) =>
             {
@@ -101,13 +108,28 @@ namespace GalaxyBudsClient.Interface.Pages
             {  
                 Dispatcher.UIThread.Post((() => _loadingSpinner.IsVisible = true), DispatcherPriority.Render);
             };
-            
+            BluetoothImpl.Instance.InvalidDataReceived += InstanceOnInvalidDataReceived;
+
             /* Restore data if restarted */
             var cache = DeviceMessageCache.Instance.BasicStatusUpdate;
             if (cache != null)
             {
                 ProcessBasicUpdate(cache);
             }
+        }
+
+        private void InstanceOnInvalidDataReceived(object? sender, InvalidDataException e)
+        {
+            Dispatcher.UIThread.Post((async() =>
+            {
+                await BluetoothImpl.Instance.DisconnectAsync();
+                SetWarning(true, $"{Loc.Resolve("mainpage_corrupt_data")} ({e.Message})");
+                await Task.Delay(500).ContinueWith(async(_)=>
+                {
+                    await BluetoothImpl.Instance.ConnectAsync();
+                    SetWarning(false);
+                });
+            }), DispatcherPriority.Render);
         }
 
         private void OnLanguageUpdated()

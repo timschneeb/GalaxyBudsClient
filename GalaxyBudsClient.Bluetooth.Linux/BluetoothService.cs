@@ -56,7 +56,42 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             RfcommConnected += (sender, args) => IsStreamConnected = true;
             Disconnected += (sender, args) => IsStreamConnected = false;
         }
-        
+
+        #region Adapter
+        public async Task SelectAdapter(string preferred = "")
+        {
+            if (preferred.Length > 0)
+            {
+                try
+                {
+                    _adapter = await BlueZManager.GetAdapterAsync(preferred);
+                }
+                catch(BlueZException ex)
+                {
+                    Log.Warning($"Preferred adapter not available: " + ex.ErrorName);
+                    _adapter = null;
+                }
+            }
+            
+            if(_adapter == null || preferred.Length == 0)
+            {
+                var adapters = await BlueZManager.GetAdaptersAsync();
+                if (adapters.Count == 0)
+                {
+                    throw new BluetoothException(BluetoothException.ErrorCodes.NoAdaptersAvailable);
+                }
+
+                _adapter = adapters.First();
+            }
+            
+            var adapterPath = _adapter.ObjectPath.ToString();
+            var adapterName = adapterPath.Substring(adapterPath.LastIndexOf("/", StringComparison.Ordinal) + 1);
+            
+            Log.Debug($"Linux.BluetoothService: Using Bluetooth adapter: {adapterName}");
+        }
+        #endregion
+
+        #region Connection
         public async Task ConnectAsync(string macAddress, string uuid, bool noRetry = false)
         {
             Connecting?.Invoke(this, EventArgs.Empty);
@@ -269,7 +304,20 @@ namespace GalaxyBudsClient.Bluetooth.Linux
 
             return true;
         }
-            
+        
+        private void OnConnectionEstablished()
+        {
+            Log.Debug("Linux.BluetoothService: Connection established. Launching BluetoothServiceLoop.");
+
+            _loop?.Dispose();
+            _cancelSource = new CancellationTokenSource();
+            _loop = Task.Run(BluetoothServiceLoop, _cancelSource.Token);
+                
+            RfcommConnected?.Invoke(this, null);
+        }
+        #endregion     
+        
+        #region Disconnection
         public async Task DisconnectAsync()
         {
             Log.Debug("Linux.BluetoothService: Disconnecting...");
@@ -311,7 +359,9 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 /* Discard non-critical exceptions. */
             }
         }
+        #endregion
 
+        #region Transmission
         public async Task SendAsync(byte[] data)
         {
             lock (TransmitterQueue)
@@ -320,50 +370,34 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             }
             await Task.CompletedTask;
         }
-        
-        private void OnConnectionEstablished()
-        {
-            Log.Debug("Linux.BluetoothService: Connection established. Launching BluetoothServiceLoop.");
 
-            _loop?.Dispose();
-            _cancelSource = new CancellationTokenSource();
-            _loop = Task.Run(BluetoothServiceLoop, _cancelSource.Token);
-                
-            RfcommConnected?.Invoke(this, null);
-        }
-        
-        public async Task SelectAdapter(string preferred = "")
+        public async Task<BluetoothDevice[]> GetDevicesAsync()
         {
-            if (preferred.Length > 0)
+            if (_adapter == null)
             {
-                try
-                {
-                    _adapter = await BlueZManager.GetAdapterAsync(preferred);
-                }
-                catch(BlueZException ex)
-                {
-                    Log.Warning($"Preferred adapter not available: " + ex.ErrorName);
-                    _adapter = null;
-                }
+                await SelectAdapter();
             }
             
-            if(_adapter == null || preferred.Length == 0)
-            {
-                var adapters = await BlueZManager.GetAdaptersAsync();
-                if (adapters.Count == 0)
-                {
-                    throw new BluetoothException(BluetoothException.ErrorCodes.NoAdaptersAvailable);
-                }
+            var devicesBluez = await _adapter.GetDevicesAsync();
 
-                _adapter = adapters.First();
+            if (devicesBluez == null)
+            {
+                return new BluetoothDevice[0];
             }
             
-            var adapterPath = _adapter.ObjectPath.ToString();
-            var adapterName = adapterPath.Substring(adapterPath.LastIndexOf("/", StringComparison.Ordinal) + 1);
-            
-            Log.Debug($"Linux.BluetoothService: Using Bluetooth adapter: {adapterName}");
+            BluetoothDevice[] devices = new BluetoothDevice[devicesBluez.Count];
+            for (int i = 0; i < devicesBluez.Count; i++)
+            {
+                Device1Properties props = await devicesBluez[i].GetAllAsync();
+                devices[i] = new BluetoothDevice(props.Name, props.Address, props.Connected, props.Paired, new BluetoothCoD(props.Class));
+            }
+
+            return devices;
         }
+
+        #endregion
         
+        #region Service
         private void BluetoothServiceLoop()
         {
             while (true)
@@ -414,5 +448,6 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 }
             }
         }
+        #endregion
     }
 }

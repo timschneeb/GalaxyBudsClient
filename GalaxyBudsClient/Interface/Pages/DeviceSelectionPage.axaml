@@ -24,13 +24,13 @@
         <elements:PageHeader Grid.Row="1" Title="{DynamicResource devsel_header}" BackPressed="BackButton_OnPointerPressed"/>
         
         <Border Grid.Row="3" Classes="RoundedBorderListItem">
-            <Border Classes="BorderHoverStyle">
+            <Border Classes="BorderHoverStyle" PointerPressed="SelectDevice_OnPointerPressed">
                 <Grid>
                     <items:IconListItem x:Name="Scan"
                                         FontSize="18"
                                         Text="{DynamicResource devsel_search}" 
                                         Source="{DynamicResource SearchButton}" 
-                                        Margin="20,0,20,0"/>
+                                        Margin="10,0"/>
                 </Grid>
             </Border>
         </Border>
@@ -62,7 +62,7 @@
                     </Border>
                 </Grid>
         </Border>
-        <Border Grid.Row="7" Classes="RoundedBorderListItem">
+        <Border Grid.Row="7" x:Name="NavBar" Classes="RoundedBorderListItem">
             <Grid ClipToBounds="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -71,12 +71,11 @@
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" CornerRadius="20"/>
                 <Border Grid.Column="1" Classes="VerticalSeparator"/>
-                <Border Grid.Column="2" Classes="BorderHoverStyle">
+                <Border Grid.Column="2" Classes="BorderHoverStyle" PointerPressed="Next_OnPointerPressed">
                     <items:IconListItem FontSize="18"
                                         Text="{DynamicResource devsel_footer_continue}"
                                         Source="{DynamicResource NextButton}"
-                                        Margin="20,0,20,0">
-                    </items:IconListItem>
+                                        Margin="20,0,20,0"/>
                 </Border>
             </Grid>
         </Border>

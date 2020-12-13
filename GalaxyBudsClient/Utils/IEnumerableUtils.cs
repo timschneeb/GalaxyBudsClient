@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Avalonia;
 
 namespace GalaxyBudsClient.Utils
 {
     internal static class IEnumerableUtils
     {
+
         public static bool Contains(this IEnumerable items, object item)
         {
             return items.IndexOf(item) != -1;

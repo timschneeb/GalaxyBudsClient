@@ -14,6 +14,7 @@
     <sys:String x:Key="error">Error</sys:String>
     <sys:String x:Key="cancel">Cancel</sys:String>
     <sys:String x:Key="apply">Apply</sys:String>
+    <sys:String x:Key="select">Select</sys:String>
     <sys:String x:Key="notset">Not set</sys:String>
     <sys:String x:Key="unknown">Unknown</sys:String>
     
@@ -114,7 +115,7 @@
     <sys:String x:Key="welcome_textblock_p3">
         This app supports both the Buds (2019), Buds+ (2020) and Buds Live.
     </sys:String>
-    <sys:String x:Key="welcome_darkmode">Dark Mode</sys:String>
+    <sys:String x:Key="welcome_darkmode">Dark mode (Restart required)</sys:String>
     <sys:String x:Key="welcome_darkmode_content">Your eyes are already burning? Use a darker color scheme instead! (Restart required)</sys:String>
 
     <!-- Main page -->
@@ -153,6 +154,9 @@
     <sys:String x:Key="devsel_noselection">No device selected</sys:String>
     <sys:String x:Key="devsel_invalid_selection">Please select a valid device</sys:String>
     <sys:String x:Key="devsel_footer_continue">Finish Setup</sys:String>
+    <sys:String x:Key="devsel_dialog_header">Please select your Galaxy Buds device from this list:</sys:String>
+    <sys:String x:Key="devsel_dialog_footer">If the device does not show up, please make sure to pair and connect it in the Bluetooth system settings of your computer and press 'Refresh'.</sys:String>
+    <sys:String x:Key="devsel_reload">Refresh</sys:String>
 
     <!-- Unsupported feature page -->
     <sys:String x:Key="unsupported_feature_current_fwver">Current Firmware version:</sys:String>

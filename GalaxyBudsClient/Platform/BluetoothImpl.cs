@@ -3,7 +3,9 @@ using System.Collections;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using GalaxyBudsClient.Bluetooth;
+using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
@@ -39,23 +41,7 @@ namespace GalaxyBudsClient.Platform
         public event EventHandler<BluetoothException>? BluetoothError;
         
         public Models ActiveModel => SettingsProvider.Instance.RegisteredDevice.Model;
-        public IDeviceSpec DeviceSpec
-        {
-            get
-            {
-                switch (ActiveModel)
-                {
-                    case Models.Buds:
-                        return new BudsDeviceSpec();
-                    case Models.BudsPlus:
-                        return new BudsPlusDeviceSpec();
-                    case Models.BudsLive:
-                        return new BudsLiveDeviceSpec();
-                    default:
-                        return new StubDeviceSpec();
-                }
-            }
-        }
+        public IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(ActiveModel) ?? new StubDeviceSpec();
 
         public bool IsConnected => _backend.IsStreamConnected;
         
@@ -76,6 +62,11 @@ namespace GalaxyBudsClient.Platform
                     await Task.Delay(150).ContinueWith((_) => Connected?.Invoke(this, EventArgs.Empty)));
             _backend.Disconnected += (sender, reason) => Disconnected?.Invoke(this, reason);
             MessageReceived += SPPMessageHandler.Instance.MessageReceiver;
+        }
+
+        public async Task<BluetoothDevice[]> GetDevicesAsync()
+        {
+            return await _backend.GetDevicesAsync();
         }
 
         public async Task ConnectAsync(string? macAddress = null, Models? model = null, bool noRetry = false)
@@ -155,6 +146,13 @@ namespace GalaxyBudsClient.Platform
         public async Task SendRequestAsync(SPPMessage.MessageIds id, bool payload)
         {
             await SendAsync(new SPPMessage{Id = id, Payload = payload ? new byte[]{0x01} : new byte[]{0x00}, Type = SPPMessage.MsgType.Request});
+        }
+        
+        public async Task UnregisterDevice()
+        {
+            SettingsProvider.Instance.RegisteredDevice.Model = Models.NULL;
+            SettingsProvider.Instance.RegisteredDevice.MacAddress = string.Empty;
+            await DisconnectAsync();
         }
         
         public bool RegisteredDeviceValid =>

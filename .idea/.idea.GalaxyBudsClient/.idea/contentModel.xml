@@ -51,6 +51,8 @@
           <e p="Dialogs" t="Include">
             <e p="BudsPopup.xaml" t="Include" />
             <e p="BudsPopup.xaml.cs" t="Include" />
+            <e p="DeviceSelectionDialog.xaml" t="Include" />
+            <e p="DeviceSelectionDialog.xaml.cs" t="Include" />
             <e p="InputDialog.xaml" t="Include" />
             <e p="InputDialog.xaml.cs" t="Include" />
             <e p="MessageBox.xaml" t="Include" />
@@ -164,6 +166,7 @@
             <e p="BudsDeviceSpec.cs" t="Include" />
             <e p="BudsLiveDeviceSpec.cs" t="Include" />
             <e p="BudsPlusDeviceSpec.cs" t="Include" />
+            <e p="DeviceSpecHelper.cs" t="Include" />
             <e p="IDeviceSpec.cs" t="Include" />
             <e p="StubDeviceSpec.cs" t="Include" />
           </e>
@@ -287,6 +290,7 @@
           <e p="IEnumerableUtils.cs" t="Include" />
           <e p="LocalizationUtils.cs" t="Include" />
           <e p="MenuFactory.cs" t="Include" />
+          <e p="ReflectiveEnumerator.cs" t="Include" />
           <e p="ResourceIndexer.cs" t="Include" />
           <e p="SettingsProvider.cs" t="Include" />
           <e p="ThemeUtils.cs" t="Include" />
@@ -327,6 +331,7 @@
       </e>
       <e p="GalaxyBudsClient.Bluetooth" t="IncludeRecursive">
         <e p=".gitignore" t="Include" />
+        <e p="BluetoothCoD.cs" t="Include" />
         <e p="BluetoothException.cs" t="Include" />
         <e p="GalaxyBudsClient.Bluetooth.csproj" t="IncludeRecursive" />
         <e p="IBluetoothService.cs" t="Include" />

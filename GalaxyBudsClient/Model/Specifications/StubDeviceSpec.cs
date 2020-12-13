@@ -16,5 +16,7 @@ namespace GalaxyBudsClient.Model.Specifications
         }
         
         public Models Device => Models.NULL;
+
+        public string DeviceBaseName => "STUB_DEVICE";
     }
 }
