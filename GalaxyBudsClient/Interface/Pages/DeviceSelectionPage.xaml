@@ -1,0 +1,83 @@
+﻿<pages:AbstractPage xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.Pages"
+             xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
+             xmlns:items="clr-namespace:GalaxyBudsClient.Interface.Items"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+             x:Class="GalaxyBudsClient.Interface.Pages.DeviceSelectionPage"
+             DockPanel.Dock="Top" Margin="10,0">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <elements:PageHeader Grid.Row="1" Title="{DynamicResource devsel_header}" BackPressed="BackButton_OnPointerPressed"/>
+        
+        <Border Grid.Row="3" Classes="RoundedBorderListItem">
+            <Border Classes="BorderHoverStyle" PointerPressed="SelectDevice_OnPointerPressed">
+                <Grid>
+                    <items:IconListItem x:Name="Scan"
+                                        FontSize="18"
+                                        Text="{DynamicResource devsel_search}" 
+                                        Source="{DynamicResource SearchButton}" 
+                                        Margin="10,0"/>
+                </Grid>
+            </Border>
+        </Border>
+        <Border Grid.Row="5" Classes="RoundedBorderListItem">
+                <Grid ClipToBounds="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" Classes="BorderHoverStyle">
+                        <items:DetailListItem x:Name="DevName"
+                                              Text="{DynamicResource devsel_device_name}" 
+                                              Description="{DynamicResource devsel_noselection}"/>
+                    </Border>
+                    <Separator Grid.Row="1" Classes="HSeparatorSpacer20"/>
+                    <Border Grid.Row="2" Classes="BorderHoverStyle">
+                        <items:DetailListItem x:Name="DevAddress"
+                                              Text="{DynamicResource devsel_btaddr}" 
+                                              Description="{DynamicResource devsel_noselection}"/>
+                    </Border>
+                    <Separator Grid.Row="3" Classes="HSeparatorSpacer20"/>
+                    <Border Grid.Row="4" Classes="BorderHoverStyle">
+                        <items:DetailListItem x:Name="DevModel" 
+                                              Text="{DynamicResource devsel_model}" 
+                                              Description="{DynamicResource devsel_noselection}"/>
+                    </Border>
+                </Grid>
+        </Border>
+        <Border Grid.Row="7" x:Name="NavBar" Classes="RoundedBorderListItem">
+            <Grid ClipToBounds="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" CornerRadius="20"/>
+                <Border Grid.Column="1" Classes="VerticalSeparator"/>
+                <Border Grid.Column="2" Classes="BorderHoverStyle" PointerPressed="Next_OnPointerPressed">
+                    <items:IconListItem FontSize="18"
+                                        Text="{DynamicResource devsel_footer_continue}"
+                                        Source="{DynamicResource NextButton}"
+                                        Margin="20,0,20,0"/>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</pages:AbstractPage>

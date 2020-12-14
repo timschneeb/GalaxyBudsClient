@@ -1,0 +1,111 @@
+﻿<pages:AbstractPage xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.Pages"
+             xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
+             xmlns:items="clr-namespace:GalaxyBudsClient.Interface.Items"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+             x:Class="GalaxyBudsClient.Interface.Pages.HomePage"
+             DockPanel.Dock="Top" Margin="10,0">
+            <Grid Margin="0,0,0,20" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="180"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="1" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinHeight="180" MaxHeight="180" MinWidth="518"
+                Height="155" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="{StaticResource DefaultCornerRadius}">
+            <Grid HorizontalAlignment="Left" Width="516">
+                <Image Name="BatteryIconLeft" Source="/Resources/battery/high.png" Height="18" Width="27" Margin="132,51,357,109"/>
+                <Label Name="BatteryVoltLeft" Content="--.--" Margin="0,71,360,73" HorizontalAlignment="Right" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" />
+                <Label Name="BatteryPercentageLeft" Content="--%" Margin="0,46,381,102" FontSize="20" HorizontalAlignment="Right" Foreground="{DynamicResource ForegroundTextAltBrush}" />
+                <Label Name="BatteryCurrentLeft" Content="--.--mA" Margin="0,90,360,54" HorizontalAlignment="Right" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" PointerPressed="RequestTempUnitChange_OnPointerPressed" />
+                <Label Name="BatteryTemperatureLeft" Content="{DynamicResource unknown}" Margin="0,109,361,35" HorizontalAlignment="Right" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" PointerPressed="RequestTempUnitChange_OnPointerPressed" />
+                <Image Name="LeftIcon" Width="75" Height="75" Margin="160,52,281,0" VerticalAlignment="Top"/>
+                <Image Name="RightIcon" Margin="281,52,160,0" Height="75" VerticalAlignment="Top"  Width="75"/>
+                <Image Name="BatteryIconRight" Source="/Resources/battery/high.png" Height="18" Width="27" Margin="357,51,132,109"/>
+                <Label Name="BatteryVoltRight" Content="--.--V" Margin="360,71,0,73" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" />
+                <Label Name="BatteryPercentageRight" Content="--%" Margin="381,46,0,102" FontSize="20" HorizontalAlignment="Left" Foreground="{DynamicResource ForegroundTextAltBrush}"/>
+                <Label Name="BatteryCurrentRight" Content="--.--mA" Margin="360,90,0,54" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" PointerPressed="RequestTempUnitChange_OnPointerPressed" />
+                <Label Name="BatteryTemperatureRight" Content="{DynamicResource unknown}" Margin="360,109,0,35" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" PointerPressed="RequestTempUnitChange_OnPointerPressed" />
+                <Label Name="BatteryCase" Margin="204,130,204,14" FontSize="16" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalContentAlignment="Center" />
+                <Label Name="CaseLabel" Foreground="{DynamicResource SubtitleTextBrush}"
+                       FontSize="13" VerticalAlignment="Top" Content="{DynamicResource case}" Margin="218,113,218,0" HorizontalContentAlignment="Center"/>
+
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" x:Name="WarningContainer">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" 
+                           Source="/Resources/warning.png"
+                           Height="20" 
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,5,0"/>
+                    <Label Grid.Column="1"
+                           x:Name="WarningText"
+                           Content="{DynamicResource mainpage_corrupt_data}"
+                           Foreground="{DynamicResource ForegroundTextBrush}" 
+                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Margin="0,1,0,0"/>
+                </Grid>
+                <elements:LoadingSpinner x:Name="LoadingSpinner" Margin="469,12,22,142" />
+            </Grid>
+        </Border>
+        <Border Grid.Row="3" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinWidth="518"
+                VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="{StaticResource DefaultCornerRadius}" Margin="20,0,24,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Border IsVisible="True" Name="AmbientBorder" Grid.Row="0" CornerRadius="{StaticResource DefaultCornerRadius}" Classes="BorderHoverStyle" PointerPressed="Ambient_OnPointerPressed">
+                    <items:IconListItem FontSize="18" Source="/Resources/features/sound_color.png" Text="{DynamicResource mainpage_ambient_sound}" />
+                </Border>
+                <Border Name="AncBorder" IsVisible="False" Grid.Row="0" CornerRadius="{StaticResource DefaultCornerRadius}" Classes="BorderHoverStyle" PointerPressed="AncBorder_OnPointerPressed">
+                    <Grid>
+                        <items:IconListItem FontSize="18" Source="/Resources/features/anc_color.png" Text="{DynamicResource anc}" />
+                        <elements:ToggleSwitch Grid.Row="0" 
+                                               x:Name="AncToggle" 
+                                               DisableButton="True" 
+                                               ColorOff="{DynamicResource ToggleOffBrush}"
+                                               ColorOn="{DynamicResource ToggleOnBrush}" 
+                                               Margin="461,10,15,10" Height="30" />
+                    </Grid>
+                </Border>
+                <Separator Grid.Row="1" Classes="HSeparatorIconListSpacer"/>
+                <Border Grid.Row="2" CornerRadius="{StaticResource DefaultCornerRadius}" Classes="BorderHoverStyle" PointerPressed="FindMyBuds_OnPointerPressed">
+                    <items:IconListItem FontSize="18" Source="/Resources/features/findmygear_color.png" Text="{DynamicResource mainpage_find_my_earbuds}"/>
+                </Border>
+                <Separator Grid.Row="3" Classes="HSeparatorIconListSpacer"/>
+                <Border Grid.Row="4" CornerRadius="{StaticResource DefaultCornerRadius}" Classes="BorderHoverStyle" PointerPressed="Touch_OnPointerPressed">
+                    <items:IconListItem FontSize="18" Source="/Resources/features/touch_color.png" Text="{DynamicResource mainpage_touchpad}"/>
+                </Border>
+                <Separator Grid.Row="5" Classes="HSeparatorIconListSpacer"/>
+                <Border Grid.Row="6" CornerRadius="{StaticResource DefaultCornerRadius}" Classes="BorderHoverStyle" PointerPressed="Equalizer_OnPointerPressed">
+                    <items:IconListItem FontSize="18" Source="/Resources/features/equalizer_gray.png" Text="{DynamicResource mainpage_equalizer}"/>
+                </Border>
+                <Separator Grid.Row="7" Classes="HSeparatorIconListSpacer"/>
+                <Border Grid.Row="8" CornerRadius="{StaticResource DefaultCornerRadius}" Classes="BorderHoverStyle" PointerPressed="Advanced_OnPointerPressed">
+                    <items:IconListItem FontSize="18" Source="/Resources/features/advanced_color.png" Text="{DynamicResource mainpage_advanced}"/>
+                </Border>
+                <Separator Grid.Row="9" Classes="HSeparatorIconListSpacer"/>
+                <Border Grid.Row="10" CornerRadius="{StaticResource DefaultCornerRadius}" Classes="BorderHoverStyle" PointerPressed="System_OnPointerPressed">
+                    <items:IconListItem FontSize="18" Source="/Resources/features/info_gray.png" Text="{DynamicResource mainpage_system}"/>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</pages:AbstractPage>

@@ -25,7 +25,7 @@ namespace GalaxyBudsClient.Interface.Items
             _toggle = this.FindControl<ToggleSwitch>("Toggle");
             DataContext = this;
         }
-        
+
         public bool IsChecked
         {
             get => _toggle.IsChecked;

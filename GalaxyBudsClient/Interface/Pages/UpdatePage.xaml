@@ -1,0 +1,97 @@
+﻿<pages:AbstractPage xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.Pages"
+             xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+             x:Class="GalaxyBudsClient.Interface.Pages.UpdatePage"
+             DockPanel.Dock="Top" Margin="10,0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <elements:PageHeader Grid.Row="1" Title="{DynamicResource updater_header}" BackButtonVisible="False"/>
+       
+        <Border Grid.Row="3" Classes="RoundedBorderListItem">
+            <Grid Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" x:Name="VersionTitle"
+                           FontSize="14"
+                           Foreground="{DynamicResource ForegroundTextBrush}"
+                           FontWeight="Bold"
+                           Text="{DynamicResource updater_newrelease}"/>
+                <TextBlock Grid.Row="1"
+                           FontSize="14" 
+                           Foreground="{DynamicResource ForegroundTextBrush}"
+                           TextWrapping="Wrap"
+                           Text="{DynamicResource updater_message_p1}"
+                           Margin="0,10,0,10"/>
+                <TextBlock Grid.Row="2"
+                           FontSize="14" 
+                           Foreground="{DynamicResource ForegroundTextBrush}"
+                           TextWrapping="Wrap"
+                           Text="{DynamicResource updater_message_p2}"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="5" Classes="RoundedBorderListItem">
+            <Border Classes="BorderHoverStyle" PointerPressed="ViewChangelog_OnPointerPressed">
+                <Label Margin="10,5" FontSize="16" Width="496"
+                       Content="{DynamicResource updater_view_changelog}" 
+                       VerticalContentAlignment="Center" 
+                       HorizontalAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       Foreground="{DynamicResource ForegroundTextBrush}" />
+            </Border>
+        </Border>
+        <Border Grid.Row="7" Classes="RoundedBorderListItem">
+            <Grid ClipToBounds="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Classes="BorderHoverStyle">
+                    <Label Margin="20,0,10,0" FontSize="15" Width="139"
+                           Content="{DynamicResource updater_footer_remindmelater}"
+                           VerticalContentAlignment="Center" 
+                           HorizontalAlignment="Center" 
+                           HorizontalContentAlignment="Center"
+                           Foreground="{DynamicResource ForegroundTextBrush}"/>
+                </Border>
+                <Border Grid.Column="1" Classes="VerticalSeparator"/>
+                <Border Grid.Column="2" Classes="BorderHoverStyle">
+                    <Label Margin="10,5" FontSize="15"  Width="149" 
+                           Content="{DynamicResource updater_footer_skipversion}"
+                           VerticalContentAlignment="Center" 
+                           HorizontalAlignment="Center"
+                           HorizontalContentAlignment="Center"
+                           Foreground="{DynamicResource ForegroundTextBrush}"/>
+                </Border>
+                <Border Grid.Column="3" Classes="VerticalSeparator"/>
+                <Border Grid.Column="4" Classes="BorderHoverStyle">
+                    <Label Margin="10,5,21,5" FontWeight="DemiBold" 
+                           FontSize="15"  Width="137"
+                           Content="{DynamicResource updater_footer_install}" 
+                           VerticalContentAlignment="Center"
+                           HorizontalAlignment="Center"
+                           HorizontalContentAlignment="Center"
+                           Foreground="{DynamicResource ForegroundTextBrush}"/>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</pages:AbstractPage>
