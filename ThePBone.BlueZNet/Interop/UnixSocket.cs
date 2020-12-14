@@ -194,17 +194,17 @@ namespace ThePBone.BlueZNet.Interop
 			else if (error >= 103 && error <= 113) /* Bundle common socket errno identifiers */
 			{
 				/* ECONNABORTED, ECONNRESET, ENOBUFS, ETIMEDOUT, ... */
-				Console.WriteLine ("IO-Error " + error);
+				// Console.WriteLine ("IO-Error " + error);
 				throw new UnixSocketException(error);
 			}
 			else if (error == 9) /* EBADF */
 			{
-				Console.WriteLine ("Socket closed: bad file descriptor");
+				// Console.WriteLine ("Socket closed: bad file descriptor");
 				throw new UnixSocketException(error);
 			}
 			else
 			{
-				Console.WriteLine ("Error " + error);
+				// Console.WriteLine ("Error " + error);
 				throw UnixError.GetLastUnixException ();
 			}
 		}

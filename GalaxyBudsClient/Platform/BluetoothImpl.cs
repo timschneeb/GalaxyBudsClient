@@ -10,6 +10,7 @@ using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Utils;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Serilog;
 using Task = System.Threading.Tasks.Task;
 
@@ -42,9 +43,10 @@ namespace GalaxyBudsClient.Platform
         
         public Models ActiveModel => SettingsProvider.Instance.RegisteredDevice.Model;
         public IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(ActiveModel) ?? new StubDeviceSpec();
-
         public bool IsConnected => _backend.IsStreamConnected;
         
+        private Guid ServiceUuid => DeviceSpec.ServiceUuid;
+
         private BluetoothImpl()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -66,7 +68,16 @@ namespace GalaxyBudsClient.Platform
 
         public async Task<BluetoothDevice[]> GetDevicesAsync()
         {
-            return await _backend.GetDevicesAsync();
+            try
+            {
+                return await _backend.GetDevicesAsync();
+            }
+            catch (BluetoothException ex)
+            {
+                BluetoothError?.Invoke(this, ex);
+            }
+
+            return new BluetoothDevice[0];
         }
 
         public async Task ConnectAsync(string? macAddress = null, Models? model = null, bool noRetry = false)
@@ -127,6 +138,12 @@ namespace GalaxyBudsClient.Platform
         
         public async Task SendAsync(SPPMessage msg)
         {
+            if (!IsConnected)
+            {
+                BluetoothError?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.NotConnected, "Attempted to send command to disconnected device"));
+                return;
+            }
+            
             try
             {
                 Log.Verbose($"<< Outgoing: {msg}");
@@ -162,24 +179,6 @@ namespace GalaxyBudsClient.Platform
         private static bool IsDeviceValid(Models model, string macAddress)
         {
             return model != Models.NULL && macAddress.Length >= 12;
-        }
-
-        private Guid? ServiceUuid
-        {
-            get
-            {
-                switch (ActiveModel)
-                {
-                    case Models.Buds:
-                        return Uuids.Buds;
-                    case Models.BudsPlus:
-                        return Uuids.BudsPlus;
-                    case Models.BudsLive:
-                        return Uuids.BudsLive;
-                    default:
-                        return null;
-                }
-            }
         }
         
         private void OnNewDataAvailable(object? sender, byte[] frame)

@@ -7,8 +7,10 @@ using System.Linq;
 using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 using GalaxyBudsClient.Bluetooth.Linux;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Message;
@@ -41,7 +43,7 @@ namespace GalaxyBudsClient.Interface.Developer
             public List<RecvMsgViewHolder>? MsgTableDataSource =>
                 MsgTableDataView.SourceCollection as List<RecvMsgViewHolder>;
             public List<PropertyViewModel>? PropTableDataSource =>
-                MsgTableDataView.SourceCollection as List<PropertyViewModel>;
+                PropTableDataView.SourceCollection as List<PropertyViewModel>;
         }
 
         private readonly List<byte> _cache = new List<byte>();
@@ -79,32 +81,31 @@ namespace GalaxyBudsClient.Interface.Developer
             _propTable.Items = _vm.PropTableDataView;
             
             Closing += OnClosing;
-            BluetoothImpl.Instance.NewDataReceived += NewDataAvailable;
             BluetoothImpl.Instance.MessageReceived += MessageReceived;
         }
         
         private void MessageReceived(object sender, SPPMessage e)
         {
-            RecvMsgViewHolder holder = new RecvMsgViewHolder(e);
-            _vm.MsgTableDataSource?.Add(holder);
-            _vm.MsgTableDataView.Refresh();
+            Dispatcher.UIThread.Post(() =>
+            {
+                RecvMsgViewHolder holder = new RecvMsgViewHolder(e);
+                _vm.MsgTableDataSource?.Add(holder);
+                _vm.MsgTableDataView.Refresh();
+
+                var raw = e.EncodeMessage();
+                _cache.AddRange(raw);
+                _hexDump.Text = HexUtils.Dump(_cache.ToArray());
+            });
         }
 
         private void OnClosing(object sender, CancelEventArgs e)
         {
-            BluetoothImpl.Instance.NewDataReceived -= NewDataAvailable;
             BluetoothImpl.Instance.MessageReceived -= MessageReceived;
 
             _cache.Clear();
             _hexDump.Clear();
             _vm.MsgTableDataSource?.Clear();
             _vm.MsgTableDataView.Refresh();
-        }
-
-        private void NewDataAvailable(object sender, byte[] e)
-        {
-            _cache.AddRange(e);
-            _hexDump.Text = HexUtils.Dump(_cache.ToArray());
         }
         
         private void CopyPayload_OnClick(object? sender, RoutedEventArgs e)
@@ -116,7 +117,7 @@ namespace GalaxyBudsClient.Interface.Developer
             }
         }
        
-        private void SendMsg_Click(object sender, RoutedEventArgs e)
+        private void SendMsg_Click(object? sender, PointerPressedEventArgs e)
         {
             if (_msgIdSend.SelectedItem == null || _msgTypeSend.SelectedItem == null)
             {

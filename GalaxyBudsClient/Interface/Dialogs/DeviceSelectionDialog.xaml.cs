@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
@@ -20,7 +21,8 @@ namespace GalaxyBudsClient.Interface.Dialogs
 {
     public sealed class DeviceSelectionDialog : Window
     {
-
+        private readonly SemaphoreSlim _deviceLock = new SemaphoreSlim(1,1);
+        
         public ObservableCollection<BluetoothDevice>? AvailableDevices
         {
             get => _deviceBox.Items as ObservableCollection<BluetoothDevice>;
@@ -52,8 +54,9 @@ namespace GalaxyBudsClient.Interface.Dialogs
 
             AvailableDevices = new ObservableCollection<BluetoothDevice>();
             Selection = new SelectionModel<BluetoothDevice>();
-
+            
             IsSearching = false;
+            RefreshList();
         }
         
         private void Cancel_OnClick(object? sender, RoutedEventArgs e)
@@ -68,7 +71,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
 
         private void OnOpened(object? sender, EventArgs e)
         {
-            RefreshList();
+            
         }
 
         private async void RefreshList()
@@ -78,18 +81,27 @@ namespace GalaxyBudsClient.Interface.Dialogs
                 Log.Warning("DeviceSelectionDialog: Refresh already in progress");
                 return;
             }
+
+            await _deviceLock.WaitAsync();
             
             IsSearching = true;
             AvailableDevices?.Clear();
-            
-            var devices = await BluetoothImpl.Instance.GetDevicesAsync();
-            devices
-                .Where(dev => dev.IsConnected)
-                .Where(dev => DeviceSpecHelper.FindByDeviceName(dev.Name) != null)
-                .ToList()
-                .ForEach(x => AvailableDevices?.Add(x));
-            
-            IsSearching = false;
+
+            try
+            {
+                var devices = await BluetoothImpl.Instance.GetDevicesAsync();
+                devices
+                    .Where(dev => dev.IsConnected)
+                    .Where(dev => DeviceSpecHelper.FindByDeviceName(dev.Name) != null)
+                    .ToList()
+                    .ForEach(x => AvailableDevices?.Add(x));
+
+                IsSearching = false;
+            }
+            finally
+            {
+                _deviceLock.Release();
+            }
         }
 
         private void Reload_OnClick(object? sender, RoutedEventArgs e)

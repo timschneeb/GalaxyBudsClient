@@ -33,7 +33,7 @@ namespace GalaxyBudsClient
 
             Trace.Listeners.Add(new ConsoleTraceListener());
             
-            BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
+            BuildAvaloniaApp().StartWithClassicDesktopLifetime(args, ShutdownMode.OnExplicitShutdown);
 
         } 
 

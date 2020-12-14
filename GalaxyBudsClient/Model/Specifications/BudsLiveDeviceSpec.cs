@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Touchpad;
 
 namespace GalaxyBudsClient.Model.Specifications
 {
@@ -16,8 +17,8 @@ namespace GalaxyBudsClient.Model.Specifications
             };
         
         public Models Device => Models.BudsLive;
-        
         public string DeviceBaseName => "Galaxy Buds Live (";
-
+        public ITouchOption TouchMap => new BudsLiveTouchOption();
+        public Guid ServiceUuid => Uuids.BudsLive;
     }
 }

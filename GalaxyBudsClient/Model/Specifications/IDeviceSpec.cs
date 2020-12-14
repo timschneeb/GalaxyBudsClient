@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Touchpad;
@@ -5,17 +6,6 @@ using Serilog;
 
 namespace GalaxyBudsClient.Model.Specifications
 {
-    public class FeatureRule
-    {
-        public FeatureRule(int minimumRevision, string recommendedFirmwareVersion)
-        {
-            MinimumRevision = minimumRevision;
-            RecommendedFirmwareVersion = recommendedFirmwareVersion;
-        }
-        public int MinimumRevision { get; }
-        public string RecommendedFirmwareVersion { get; }
-    }
-    
     public interface IDeviceSpec
     {
         enum Feature
@@ -34,6 +24,8 @@ namespace GalaxyBudsClient.Model.Specifications
         Dictionary<Feature, FeatureRule?> Rules { get; }
         Models Device { get; }
         string DeviceBaseName { get; }
+        ITouchOption TouchMap { get; }
+        Guid ServiceUuid { get; }
 
         bool Supports(Feature feature)
         {
@@ -60,23 +52,16 @@ namespace GalaxyBudsClient.Model.Specifications
         {
             return Rules.ContainsKey(feature) ? Rules[feature]?.RecommendedFirmwareVersion ?? "---" : "???";
         }
-        
-        public ITouchOption TouchMap
+    }
+    
+    public class FeatureRule
+    {
+        public FeatureRule(int minimumRevision, string recommendedFirmwareVersion)
         {
-            get
-            {
-                switch (Device)
-                {
-                    case Models.Buds:
-                        return new BudsTouchOption();
-                    case Models.BudsPlus:
-                        return new BudsPlusTouchOption();
-                    case Models.BudsLive:
-                        return new BudsLiveTouchOption();
-                    default:
-                        return new StubTouchOption();
-                }
-            }
+            MinimumRevision = minimumRevision;
+            RecommendedFirmwareVersion = recommendedFirmwareVersion;
         }
+        public int MinimumRevision { get; }
+        public string RecommendedFirmwareVersion { get; }
     }
 }

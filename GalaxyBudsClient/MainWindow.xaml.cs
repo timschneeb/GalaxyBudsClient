@@ -95,9 +95,21 @@ namespace GalaxyBudsClient
 
         private void OnBluetoothError(object? sender, BluetoothException e)
         {
-            Pager.SwitchPage(BluetoothImpl.Instance.RegisteredDeviceValid
-                ? AbstractPage.Pages.NoConnection
-                : AbstractPage.Pages.Welcome);
+            switch (e.ErrorCode)
+            {
+                case BluetoothException.ErrorCodes.NoAdaptersAvailable:
+                    new MessageBox()
+                    {
+                        Title = Loc.Resolve("error"),
+                        Description = Loc.Resolve("nobluetoothdev")
+                    }.ShowDialog(this);
+                    break;
+                default:
+                    Pager.SwitchPage(BluetoothImpl.Instance.RegisteredDeviceValid
+                        ? AbstractPage.Pages.NoConnection
+                        : AbstractPage.Pages.Welcome);
+                    break;
+            }
         }
 
         private void OnDisconnected(object? sender, string e)

@@ -115,8 +115,8 @@
     <sys:String x:Key="welcome_textblock_p3">
         This app supports both the Buds (2019), Buds+ (2020) and Buds Live.
     </sys:String>
-    <sys:String x:Key="welcome_darkmode">Dark mode (Restart required)</sys:String>
-    <sys:String x:Key="welcome_darkmode_content">Your eyes are already burning? Use a darker color scheme instead! (Restart required)</sys:String>
+    <sys:String x:Key="welcome_darkmode">Dark mode</sys:String>
+    <sys:String x:Key="welcome_darkmode_content">Your eyes are already burning? Use a darker color scheme instead! (Reload required)</sys:String>
 
     <!-- Main page -->
     <sys:String x:Key="mainpage_corrupt_data">Received corrupted data. Reconnecting...</sys:String>
@@ -226,7 +226,7 @@
     <sys:String x:Key="settings_header">Settings</sys:String>
 
     <sys:String x:Key="settings_darkmode">Dark Mode</sys:String>
-    <sys:String x:Key="settings_darkmode_description">Use a darker color scheme</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Use a darker color scheme (Reload required)</sys:String>
     <sys:String x:Key="settings_transitions">Transition</sys:String>
     <sys:String x:Key="settings_transitions_description">Enable slide transitions</sys:String>
     <sys:String x:Key="settings_localization_disable">Language</sys:String>

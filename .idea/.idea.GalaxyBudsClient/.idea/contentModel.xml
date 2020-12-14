@@ -3,8 +3,6 @@
   <component name="ContentModelStore">
     <e p="$USER_HOME$/.cache/JetBrains/Rider2020.3/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/.cache/JetBrains/Rider2020.3/resharper-host/local/Transient/Rider/v203/SolutionCaches/_GalaxyBudsClient.1174347095.00" t="ExcludeRecursive" />
-    <e p="$USER_HOME$/.nuget/packages/dein.toolbox/1.7.1/contentFiles/any/any/cmd.bat" t="Include" />
-    <e p="$USER_HOME$/.nuget/packages/dein.toolbox/1.7.1/contentFiles/any/any/cmd.sh" t="Include" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="GalaxyBudsClient" t="IncludeRecursive">
         <e p=".gitignore" t="Include" />
@@ -40,8 +38,8 @@
         </e>
         <e p="GalaxyBudsClient.csproj" t="IncludeRecursive" />
         <e p="Interface" t="Include">
-          <e p="CustomTitleBar.axaml" t="Include" />
-          <e p="CustomTitleBar.axaml.cs" t="Include" />
+          <e p="CustomTitleBar.xaml" t="Include" />
+          <e p="CustomTitleBar.xaml.cs" t="Include" />
           <e p="Developer" t="Include">
             <e p="DevTools.xaml" t="Include" />
             <e p="DevTools.xaml.cs" t="Include" />
@@ -87,46 +85,46 @@
           </e>
           <e p="Pages" t="Include">
             <e p="AbstractPage.cs" t="Include" />
-            <e p="AdvancedPage.axaml" t="Include" />
-            <e p="AdvancedPage.axaml.cs" t="Include" />
-            <e p="AmbientSoundPage.axaml" t="Include" />
-            <e p="AmbientSoundPage.axaml.cs" t="Include" />
-            <e p="ConnectionLostPage.axaml" t="Include" />
-            <e p="ConnectionLostPage.axaml.cs" t="Include" />
-            <e p="CreditsPage.axaml" t="Include" />
-            <e p="CreditsPage.axaml.cs" t="Include" />
-            <e p="CustomTouchActionPage.axaml" t="Include" />
-            <e p="CustomTouchActionPage.axaml.cs" t="Include" />
-            <e p="DeviceSelectionPage.axaml" t="Include" />
-            <e p="DeviceSelectionPage.axaml.cs" t="Include" />
-            <e p="DummyPage.axaml" t="Include" />
-            <e p="DummyPage.axaml.cs" t="Include" />
-            <e p="DummyPage2.axaml" t="Include" />
-            <e p="DummyPage2.axaml.cs" t="Include" />
-            <e p="EqualizerPage.axaml" t="Include" />
-            <e p="EqualizerPage.axaml.cs" t="Include" />
-            <e p="FactoryResetPage.axaml" t="Include" />
-            <e p="FactoryResetPage.axaml.cs" t="Include" />
-            <e p="FindMyGearPage.axaml" t="Include" />
-            <e p="FindMyGearPage.axaml.cs" t="Include" />
-            <e p="HomePage.axaml" t="Include" />
-            <e p="HomePage.axaml.cs" t="Include" />
-            <e p="PopupSettingsPage.axaml" t="Include" />
-            <e p="PopupSettingsPage.axaml.cs" t="Include" />
-            <e p="SelfTestPage.axaml" t="Include" />
-            <e p="SelfTestPage.axaml.cs" t="Include" />
-            <e p="SettingsPage.axaml" t="Include" />
-            <e p="SettingsPage.axaml.cs" t="Include" />
-            <e p="SystemPage.axaml" t="Include" />
-            <e p="SystemPage.axaml.cs" t="Include" />
-            <e p="TouchpadPage.axaml" t="Include" />
-            <e p="TouchpadPage.axaml.cs" t="Include" />
-            <e p="UnsupportedFeaturePage.axaml" t="Include" />
-            <e p="UnsupportedFeaturePage.axaml.cs" t="Include" />
-            <e p="UpdatePage.axaml" t="Include" />
-            <e p="UpdatePage.axaml.cs" t="Include" />
-            <e p="WelcomePage.axaml" t="Include" />
-            <e p="WelcomePage.axaml.cs" t="Include" />
+            <e p="AdvancedPage.xaml" t="Include" />
+            <e p="AdvancedPage.xaml.cs" t="Include" />
+            <e p="AmbientSoundPage.xaml" t="Include" />
+            <e p="AmbientSoundPage.xaml.cs" t="Include" />
+            <e p="ConnectionLostPage.xaml" t="Include" />
+            <e p="ConnectionLostPage.xaml.cs" t="Include" />
+            <e p="CreditsPage.xaml" t="Include" />
+            <e p="CreditsPage.xaml.cs" t="Include" />
+            <e p="CustomTouchActionPage.xaml" t="Include" />
+            <e p="CustomTouchActionPage.xaml.cs" t="Include" />
+            <e p="DeviceSelectionPage.xaml" t="Include" />
+            <e p="DeviceSelectionPage.xaml.cs" t="Include" />
+            <e p="DummyPage.xaml" t="Include" />
+            <e p="DummyPage.xaml.cs" t="Include" />
+            <e p="DummyPage2.xaml" t="Include" />
+            <e p="DummyPage2.xaml.cs" t="Include" />
+            <e p="EqualizerPage.xaml" t="Include" />
+            <e p="EqualizerPage.xaml.cs" t="Include" />
+            <e p="FactoryResetPage.xaml" t="Include" />
+            <e p="FactoryResetPage.xaml.cs" t="Include" />
+            <e p="FindMyGearPage.xaml" t="Include" />
+            <e p="FindMyGearPage.xaml.cs" t="Include" />
+            <e p="HomePage.xaml" t="Include" />
+            <e p="HomePage.xaml.cs" t="Include" />
+            <e p="PopupSettingsPage.xaml" t="Include" />
+            <e p="PopupSettingsPage.xaml.cs" t="Include" />
+            <e p="SelfTestPage.xaml" t="Include" />
+            <e p="SelfTestPage.xaml.cs" t="Include" />
+            <e p="SettingsPage.xaml" t="Include" />
+            <e p="SettingsPage.xaml.cs" t="Include" />
+            <e p="SystemPage.xaml" t="Include" />
+            <e p="SystemPage.xaml.cs" t="Include" />
+            <e p="TouchpadPage.xaml" t="Include" />
+            <e p="TouchpadPage.xaml.cs" t="Include" />
+            <e p="UnsupportedFeaturePage.xaml" t="Include" />
+            <e p="UnsupportedFeaturePage.xaml.cs" t="Include" />
+            <e p="UpdatePage.xaml" t="Include" />
+            <e p="UpdatePage.xaml.cs" t="Include" />
+            <e p="WelcomePage.xaml" t="Include" />
+            <e p="WelcomePage.xaml.cs" t="Include" />
           </e>
           <e p="Styles" t="Include">
             <e p="Base.xaml" t="Include" />
@@ -137,8 +135,8 @@
           </e>
           <e p="Transition" t="Include">
             <e p="FadeTransition.cs" t="Include" />
-            <e p="PageContainer.axaml" t="Include" />
-            <e p="PageContainer.axaml.cs" t="Include" />
+            <e p="PageContainer.xaml" t="Include" />
+            <e p="PageContainer.xaml.cs" t="Include" />
           </e>
         </e>
         <e p="MainWindow.xaml" t="Include" />
@@ -285,6 +283,7 @@
         <e p="Utils" t="Include">
           <e p="ByteArrayUtils.cs" t="Include" />
           <e p="CRC16.cs" t="Include" />
+          <e p="DialogUtils.cs" t="Include" />
           <e p="EnumHelper.cs" t="Include" />
           <e p="HexUtils.cs" t="Include" />
           <e p="IEnumerableUtils.cs" t="Include" />
@@ -296,13 +295,7 @@
           <e p="ThemeUtils.cs" t="Include" />
           <e p="ValueConverter.cs" t="Include" />
         </e>
-        <e p="bin" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="netcoreapp3.1" t="Include">
-              <e p="custom_language.xaml" t="Include" />
-            </e>
-          </e>
-        </e>
+        <e p="bin" t="ExcludeRecursive" />
         <e p="i18n" t="Include">
           <e p="cn.xaml" t="Include" />
           <e p="de.xaml" t="Include" />

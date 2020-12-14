@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Touchpad;
 using Serilog;
 
 namespace GalaxyBudsClient.Model.Specifications
@@ -14,9 +15,10 @@ namespace GalaxyBudsClient.Model.Specifications
         {
             Log.Warning("StubDeviceSpec: initialized");
         }
-        
-        public Models Device => Models.NULL;
 
+        public Models Device => Models.NULL;
         public string DeviceBaseName => "STUB_DEVICE";
+        public ITouchOption TouchMap => new StubTouchOption();
+        public Guid ServiceUuid => new Guid("{00000000-0000-0000-0000-000000000000}");
     }
 }
