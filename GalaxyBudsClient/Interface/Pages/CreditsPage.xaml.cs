@@ -5,6 +5,7 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Interface.Items;
+using GalaxyBudsClient.Platform;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages
@@ -17,19 +18,21 @@ namespace GalaxyBudsClient.Interface.Pages
 		
 		public CreditsPage()
 		{   
-			InitializeComponent();
+			AvaloniaXamlLoader.Load(this);
 			_versionItem = this.FindControl<DetailListItem>("Version");
 			_versionItem.Description = Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? string.Empty;
 		}
 
-		private void InitializeComponent()
-		{
-			AvaloniaXamlLoader.Load(this);
-		}
-
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
-			MainWindow.Instance.Pager.SwitchPage(Pages.Home);
+			if (BluetoothImpl.Instance.RegisteredDeviceValid)
+			{
+				MainWindow.Instance.Pager.SwitchPage(Pages.Home);
+			}
+			else
+			{
+				MainWindow.Instance.Pager.SwitchPage(Pages.Welcome);
+			}
 		}
 
 		private void OpenWebsite(String url)

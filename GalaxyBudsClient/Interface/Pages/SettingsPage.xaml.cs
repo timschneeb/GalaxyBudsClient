@@ -28,16 +28,11 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		public SettingsPage()
 		{   
-			InitializeComponent();
+			AvaloniaXamlLoader.Load(this);
 			_darkMode = this.FindControl<SwitchDetailListItem>("DarkModeSelect");
 			_locale = this.FindControl<MenuDetailListItem>("LocaleSelect");
 			_minimizeTray = this.FindControl<SwitchDetailListItem>("MinimizeTrayToggle");
 			_autostart = this.FindControl<SwitchDetailListItem>("AutostartToggle");
-		}
-		
-		private void InitializeComponent()
-		{
-			AvaloniaXamlLoader.Load(this);
 		}
 
 		public override void OnPageShown()

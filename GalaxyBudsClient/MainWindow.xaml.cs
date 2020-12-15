@@ -59,7 +59,6 @@ namespace GalaxyBudsClient
                 new TouchpadPage(), new EqualizerPage(), new AdvancedPage(), new SystemPage(), new SelfTestPage(), new SettingsPage(),
                 new PopupSettingsPage(), _connectionLostPage, _customTouchActionPage, new DeviceSelectionPage(),
                 new WelcomePage(), _unsupportedFeaturePage, new UpdatePage());
-            Pager.SwitchPage(AbstractPage.Pages.Welcome);
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
@@ -73,13 +72,20 @@ namespace GalaxyBudsClient
             
             SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
             SPPMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
-            
-            Loc.LanguageUpdated += OnLanguageUpdated;
 
+            Pager.PageSwitched += (sender, pages) => BuildOptionsMenu();
+            Loc.LanguageUpdated += OnLanguageUpdated;
             BuildOptionsMenu();
 
-            /* TODO */
-            //var connectTask = BluetoothImpl.Instance.ConnectAsync("80:7B:3E:21:79:EC", Models.BudsPlus);
+            if (BluetoothImpl.Instance.RegisteredDeviceValid)
+            {
+                var _ = BluetoothImpl.Instance.ConnectAsync();
+                Pager.SwitchPage(AbstractPage.Pages.Home);
+            }
+            else
+            {
+                Pager.SwitchPage(AbstractPage.Pages.Welcome);
+            }
         }
 
         private async void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
@@ -177,18 +183,30 @@ namespace GalaxyBudsClient
 
         private void BuildOptionsMenu()
         {
-            _titleBar.OptionsButton.ContextMenu = 
-                MenuFactory.BuildContextMenu(new Dictionary<string, EventHandler<RoutedEventArgs>?>()
-                {
-                    [Loc.Resolve("optionsmenu_settings")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Settings),
-                    [Loc.Resolve("optionsmenu_refresh")] = async (sender, args) => await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_GET_ALL_DATA),
-                    [Loc.Resolve("optionsmenu_deregister")] = (sender, args) =>
-                    {
-                        BluetoothImpl.Instance.UnregisterDevice().ContinueWith((_) => Pager.SwitchPage(AbstractPage.Pages.Welcome));
-                    },
-                    [Loc.Resolve("optionsmenu_update")] = (sender, args) => Log.Debug("Check for updates selected"),
-                    [Loc.Resolve("optionsmenu_credits")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Credits),
-                });
+            bool restricted = Pager.CurrentPage == AbstractPage.Pages.Welcome ||
+                              Pager.CurrentPage == AbstractPage.Pages.DeviceSelect ||
+                              !BluetoothImpl.Instance.RegisteredDeviceValid;
+            
+            var options = new Dictionary<string, EventHandler<RoutedEventArgs>?>()
+            {
+                [Loc.Resolve("optionsmenu_settings")] =
+                    (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Settings),
+                [Loc.Resolve("optionsmenu_refresh")] = async (sender, args) =>
+                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_GET_ALL_DATA),
+                [Loc.Resolve("optionsmenu_deregister")] = (sender, args) => BluetoothImpl.Instance.UnregisterDevice()
+                    .ContinueWith((_) => Pager.SwitchPage(AbstractPage.Pages.Welcome))
+            };
+                
+            if (restricted)
+            {
+                options.Clear();
+            }
+                
+            options[Loc.Resolve("optionsmenu_update")] = (sender, args) => Log.Debug("Check for updates selected");
+            options[Loc.Resolve("optionsmenu_credits")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Credits);
+
+            
+            _titleBar.OptionsButton.ContextMenu = MenuFactory.BuildContextMenu(options);
         }
 
 

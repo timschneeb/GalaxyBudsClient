@@ -61,7 +61,13 @@ namespace GalaxyBudsClient.Platform
             _backend.NewDataAvailable += (sender, bytes) => NewDataReceived?.Invoke(this, bytes);
             _backend.BluetoothErrorAsync += (sender, exception) => BluetoothError?.Invoke(this, exception); 
             _backend.RfcommConnected += (sender, args) => Task.Run(async () =>
-                    await Task.Delay(150).ContinueWith((_) => Connected?.Invoke(this, EventArgs.Empty)));
+                    await Task.Delay(150).ContinueWith((_) =>
+                    {
+                        if (RegisteredDeviceValid)
+                            Connected?.Invoke(this, EventArgs.Empty);
+                        else
+                            Log.Error("BluetoothImpl: Suppressing Connected event, device not properly registered");
+                    }));
             _backend.Disconnected += (sender, reason) => Disconnected?.Invoke(this, reason);
             MessageReceived += SPPMessageHandler.Instance.MessageReceiver;
         }
@@ -183,6 +189,12 @@ namespace GalaxyBudsClient.Platform
         
         private void OnNewDataAvailable(object? sender, byte[] frame)
         {
+            /* Discard data if not properly registered */
+            if (!RegisteredDeviceValid)
+            {
+                return;
+            }
+
             ArrayList data = new ArrayList(frame);
             do
             {

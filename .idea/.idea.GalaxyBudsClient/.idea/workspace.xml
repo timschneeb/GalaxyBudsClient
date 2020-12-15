@@ -10,9 +10,11 @@
   <component name="ChangeListManager">
     <list default="true" id="251ef05e-b4ff-45d6-b19b-dfffa1fae931" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/DeviceSelectionPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/DeviceSelectionPage.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/DeviceSelectionPage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/DeviceSelectionPage.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/ListBox.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/ListBox.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/CreditsPage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/CreditsPage.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/SettingsPage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/SettingsPage.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Transition/PageContainer.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Transition/PageContainer.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Platform/BluetoothImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Platform/BluetoothImpl.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +29,7 @@
     <setting file="file://$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/UnsupportedFeaturePage.xaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GalaxyBudsClient/Interface/Elements/RippleEffect.xaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/WelcomePage.xaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/Interface/Pages/DeviceSelectionPage.xaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/App.xaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F9E8E74F-0926-4402-B832-0C7BCA0D1592/2E/IResourceProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F9E8E74F-0926-4402-B832-0C7BCA0D1592/2B/IResourceDictionary.cs" root0="SKIP_HIGHLIGHTING" />
@@ -41,7 +44,6 @@
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/WelcomePage.xaml" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/i18n/en.xaml" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/ConnectionLostPage.xaml.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Platform/BluetoothImpl.cs" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient.Bluetooth.Linux/BluetoothService.cs" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/App.xaml" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/BrushesDark.xaml" />
@@ -49,6 +51,11 @@
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/DeviceSelectionPage.xaml" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/DeviceSelectionPage.xaml.cs" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/ListBox.xaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Platform/BluetoothImpl.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Transition/PageContainer.xaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/CreditsPage.xaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/SettingsPage.xaml.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lFViZ0CpC2QuPJaC1pFqMhLzzN" />
@@ -141,7 +148,7 @@
       <workItem from="1607972976083" duration="56000" />
       <workItem from="1607973326941" duration="4007000" />
       <workItem from="1607978087029" duration="629000" />
-      <workItem from="1608058091625" duration="10016000" />
+      <workItem from="1608058091625" duration="13688000" />
     </task>
     <task id="LOCAL-00001" summary="Update all">
       <created>1607543806441</created>
@@ -213,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608069093436</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Better selection UI">
+      <created>1608069934737</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1608069934737</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,7 +256,8 @@
     <MESSAGE value="Implement cross-platform device selector, popup debounce, first version of the setup assistant and a better device specification subsystem" />
     <MESSAGE value="Misc changes + rename axaml to xaml" />
     <MESSAGE value="Insert cross-platform Bluetooth device selector into wizard page instead of separate dialog" />
-    <option name="LAST_COMMIT_MESSAGE" value="Insert cross-platform Bluetooth device selector into wizard page instead of separate dialog" />
+    <MESSAGE value="Better selection UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Better selection UI" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">

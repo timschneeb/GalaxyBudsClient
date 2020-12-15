@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
@@ -16,6 +17,9 @@ namespace GalaxyBudsClient.Interface.Transition
 		private object? _lastPageCache = null;
 		
 		public ViewModel PageViewModel = new ViewModel();
+
+		public event EventHandler<AbstractPage.Pages>? PageSwitched;
+		
 		public PageContainer()
 		{   
 			InitializeComponent();
@@ -91,6 +95,7 @@ namespace GalaxyBudsClient.Interface.Transition
                 	Pager.SelectedItem = target;
                 	/* Call OnPageShown prematurely */
                 	target.OnPageShown();
+                    PageSwitched?.Invoke(this, page);
                 }
                 
 			}, DispatcherPriority.Render);
