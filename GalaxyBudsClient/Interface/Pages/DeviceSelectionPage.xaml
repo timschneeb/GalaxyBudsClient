@@ -42,7 +42,8 @@
                 Margin="20,0"
                 ClipToBounds="True">
             <ListBox x:Name="Devices"
-                     Background="{DynamicResource RoundBorderBackgroundBrush}">
+                     Background="{DynamicResource RoundBorderBackgroundBrush}"
+                     SelectionChanged="Devices_OnSelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="6,4,6,4">
@@ -70,8 +71,8 @@
                        TextWrapping="Wrap"
                        LineHeight="19"/>
         </Border>
-        <Border Grid.Row="9" x:Name="NavBar" Classes="RoundedBorderListItem">
-            <Grid ClipToBounds="True">
+        <Border Grid.Row="9" Classes="RoundedBorderListItem">
+            <Grid ClipToBounds="True" MinHeight="50">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
@@ -79,7 +80,7 @@
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" CornerRadius="20" />
                 <Border Grid.Column="1" Classes="VerticalSeparator" />
-                <Border Grid.Column="2" Classes="BorderHoverStyle" PointerPressed="Next_OnPointerPressed">
+                <Border Grid.Column="2" Classes="BorderHoverStyle" PointerPressed="Next_OnPointerPressed" x:Name="NavBarNext">
                     <items:IconListItem FontSize="18"
                                         Text="{DynamicResource devsel_footer_continue}"
                                         Source="{DynamicResource NextButton}"

@@ -43,12 +43,12 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private readonly ListBox _deviceBox;
         private readonly PageHeader _pageHeader;
-        private readonly Border _navBar;
+        private readonly Border _navBarNext;
 
         public DeviceSelectionPage()
         {
             AvaloniaXamlLoader.Load(this);
-            _navBar = this.FindControl<Border>("NavBar");
+            _navBarNext = this.FindControl<Border>("NavBarNext");
             _pageHeader = this.FindControl<PageHeader>("PageHeader");
             _deviceBox = this.FindControl<ListBox>("Devices");
 
@@ -113,8 +113,9 @@ namespace GalaxyBudsClient.Interface.Pages
                 Log.Warning("DeviceSelectionDialog: Refresh already in progress");
                 return;
             }
-
+            
             IsSearching = true;
+            _navBarNext.IsVisible = false;
             AvailableDevices?.Clear();
 
             var devices = await BluetoothImpl.Instance.GetDevicesAsync();
@@ -124,9 +125,10 @@ namespace GalaxyBudsClient.Interface.Pages
                 .ToList()
                 .ForEach(x => AvailableDevices?.Add(x));
             
-            AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds (36FD)", "36:AB:38:F5:04:FD", true, true, new BluetoothCoD(0)));
+            /* Dummy devices for testing */
+            /* AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds (36FD)", "36:AB:38:F5:04:FD", true, true, new BluetoothCoD(0)));
             AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds Live (4AC3)", "4A:6B:87:E5:12:C3", true, true, new BluetoothCoD(0)));
-            AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds+ (A2D5)", "A2:BF:D4:4A:52:D5", true, true, new BluetoothCoD(0)));
+            AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds+ (A2D5)", "A2:BF:D4:4A:52:D5", true, true, new BluetoothCoD(0))); */
 
             if (AvailableDevices?.Count <= 0)
             {
@@ -140,6 +142,11 @@ namespace GalaxyBudsClient.Interface.Pages
             }
             
             IsSearching = false;
+        }
+
+        private void Devices_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
+        {
+            _navBarNext.IsVisible = true;
         }
     }
 }

@@ -27,6 +27,6 @@
 
     <!--  Selected Pressed State  -->
     <Style Selector="ListBoxItem:selected:pressed /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource RoundBorderHoverSelectionBrush}" />
+        <Setter Property="Background" Value="{DynamicResource RoundBorderSelectionBrush}" />
     </Style>
 </Styles>
