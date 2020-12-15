@@ -49,8 +49,6 @@
           <e p="Dialogs" t="Include">
             <e p="BudsPopup.xaml" t="Include" />
             <e p="BudsPopup.xaml.cs" t="Include" />
-            <e p="DeviceSelectionDialog.xaml" t="Include" />
-            <e p="DeviceSelectionDialog.xaml.cs" t="Include" />
             <e p="InputDialog.xaml" t="Include" />
             <e p="InputDialog.xaml.cs" t="Include" />
             <e p="MessageBox.xaml" t="Include" />
@@ -63,6 +61,8 @@
             <e p="MuteButton.xaml.cs" t="Include" />
             <e p="PageHeader.xaml" t="Include" />
             <e p="PageHeader.xaml.cs" t="Include" />
+            <e p="RippleEffect.cs" t="Include" />
+            <e p="RippleEffect.xaml" t="Include" />
             <e p="ScanButton.xaml" t="Include" />
             <e p="ScanButton.xaml.cs" t="Include" />
             <e p="ToggleSwitch.xaml" t="Include" />
@@ -130,6 +130,7 @@
             <e p="Base.xaml" t="Include" />
             <e p="Brushes.xaml" t="Include" />
             <e p="BrushesDark.xaml" t="Include" />
+            <e p="ListBox.xaml" t="Include" />
             <e p="Slider.xaml" t="Include" />
             <e p="Styles.xaml" t="Include" />
           </e>

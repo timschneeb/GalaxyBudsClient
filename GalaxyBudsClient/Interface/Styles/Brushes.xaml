@@ -5,8 +5,11 @@
     <sys:String x:Key="ResourceDictionaryName">Brushes-light</sys:String>
     
     <!-- Basic -->
-    <SolidColorBrush x:Key="RoundBorderBrush" Color="#FFEAEAEA" />
-    <SolidColorBrush x:Key="RoundBorderHoverBrush" Color="#FFE8E8E8" />
+    <SolidColorBrush x:Key="RoundBorderBrush" Color="#EAEAEA" />
+    <SolidColorBrush x:Key="RoundBorderHoverBrush" Color="#E8E8E8" />
+    <SolidColorBrush x:Key="RoundBorderSelectionBrush" Color="#D0D0D0" />
+    <SolidColorBrush x:Key="RoundBorderHoverSelectionBrush" Color="#C0C0C0" />
+    
     <SolidColorBrush x:Key="RoundBorderBackgroundBrush" Color="WhiteSmoke" />
     <SolidColorBrush x:Key="RoundBorderBackgroundWarningBrush" Color="#FFFFEBEB" />
     <SolidColorBrush x:Key="BorderSeparatorBrush" Color="LightGray" />

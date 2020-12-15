@@ -6,7 +6,10 @@
     
     <!-- Basic -->
     <SolidColorBrush x:Key="RoundBorderBrush" Color="#252525" />
-    <SolidColorBrush x:Key="RoundBorderHoverBrush" Color="#333333" />
+    <SolidColorBrush x:Key="RoundBorderHoverBrush" Color="#333333" /> 
+    <SolidColorBrush x:Key="RoundBorderSelectionBrush" Color="#4B4B4B" />
+    <SolidColorBrush x:Key="RoundBorderHoverSelectionBrush" Color="#555555" />
+    
     <SolidColorBrush x:Key="RoundBorderBackgroundBrush" Color="#252525" />
     <SolidColorBrush x:Key="RoundBorderBackgroundWarningBrush" Color="#352525" />
     <SolidColorBrush x:Key="BorderSeparatorBrush" Color="#383838" />

@@ -1,8 +1,13 @@
-﻿using Avalonia.Controls;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
+using Avalonia.Controls;
+using Avalonia.Controls.Selection;
 using Avalonia.Input;
+using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Interface.Dialogs;
+using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Specifications;
@@ -17,36 +22,42 @@ namespace GalaxyBudsClient.Interface.Pages
     public class DeviceSelectionPage : AbstractPage
     {
         public override Pages PageType => Pages.DeviceSelect;
-
-        private readonly DetailListItem _devName;
-        private readonly DetailListItem _devAddress;
-        private readonly DetailListItem _devModel;
-		
-        private readonly Border _navBar;
-
-        private DeviceSelectionDialog? _deviceSelectionDialog;
-        private BluetoothDevice? _selectedDevice;
-        private IDeviceSpec? _selectedDeviceSpec;
-
-        public BluetoothDevice? SelectedDevice
+        
+        public ObservableCollection<BluetoothDevice>? AvailableDevices
         {
-            get => _selectedDevice;
-            set
-            {
-                _selectedDevice = value;
-                _navBar.IsVisible = value != null;
-            }
+            get => _deviceBox.Items as ObservableCollection<BluetoothDevice>;
+            set => _deviceBox.Items = value;
         }
+
+        public SelectionModel<BluetoothDevice>? Selection
+        {
+            get => _deviceBox.Selection as SelectionModel<BluetoothDevice>;
+            set => _deviceBox.Selection = value;
+        }
+        
+        public bool IsSearching
+        {
+            set => _pageHeader.LoadingSpinnerVisible = value;
+            get => _pageHeader.LoadingSpinnerVisible;
+        }
+
+        private readonly ListBox _deviceBox;
+        private readonly PageHeader _pageHeader;
+        private readonly Border _navBar;
 
         public DeviceSelectionPage()
         {
             AvaloniaXamlLoader.Load(this);
-            _devName = this.FindControl<DetailListItem>("DevName");
-            _devAddress = this.FindControl<DetailListItem>("DevAddress");
-            _devModel = this.FindControl<DetailListItem>("DevModel");
             _navBar = this.FindControl<Border>("NavBar");
-			
-            // Loc.LanguageUpdated += UpdateStrings;
+            _pageHeader = this.FindControl<PageHeader>("PageHeader");
+            _deviceBox = this.FindControl<ListBox>("Devices");
+
+            AvailableDevices = new ObservableCollection<BluetoothDevice>();
+            Selection = new SelectionModel<BluetoothDevice>();
+            
+            IsSearching = false;
+            
+            RefreshList();
         }
 		
         private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
@@ -54,38 +65,17 @@ namespace GalaxyBudsClient.Interface.Pages
             MainWindow.Instance.Pager.SwitchPage(Pages.Welcome);
         }
 
-        private async void SelectDevice_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+        private void SelectDevice_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
-            _deviceSelectionDialog = new DeviceSelectionDialog();
-            var result = await _deviceSelectionDialog.ShowDialog<BluetoothDevice?>(MainWindow.Instance);
-            if (result == null || result.Name == string.Empty)
-            {
-                return;
-            }
-	                
-            var spec = DeviceSpecHelper.FindByDeviceName(result.Name);
-	                
-            _selectedDevice = result;
-            _selectedDeviceSpec = spec;
-	                
-            if (spec == null)
-            {
-                /* This should never happen! */
-                _devModel.Description = Loc.Resolve("settings_cpopup_position_placeholder");
-                _devName.Description = $"{result.Name} (UNSUPPORTED)";
-                _devAddress.Description = result.Address;
-                Log.Warning($"DeviceSelectionPage: IDeviceSpec is NULL ({result.Name})");
-                return;
-            }
-	                
-            _devModel.Description = spec.Device.GetDescription();
-            _devName.Description = result.Name;
-            _devAddress.Description = result.Address;
+            RefreshList();
         }
 
         private void Next_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
-            if (_selectedDevice == null || _selectedDeviceSpec == null)
+            
+            if (Selection == null || 
+                Selection.Count <= 0 || 
+                Selection.SelectedItem == null)
             {
                 new MessageBox()
                 {
@@ -95,12 +85,61 @@ namespace GalaxyBudsClient.Interface.Pages
                 return;
             }
 
-            SettingsProvider.Instance.RegisteredDevice.Model = _selectedDeviceSpec.Device;
-            SettingsProvider.Instance.RegisteredDevice.MacAddress = _selectedDevice.Address;
+            var selection = Selection.SelectedItem!;
+            var spec = DeviceSpecHelper.FindByDeviceName(selection.Name);
+
+            if (spec == null || selection.IsConnected == false)
+            {
+                new MessageBox()
+                {
+                    Title = Loc.Resolve("error"),
+                    Description = Loc.Resolve("devsel_invalid_selection")
+                }.ShowDialog(MainWindow.Instance);
+                return;
+            }
+
+            SettingsProvider.Instance.RegisteredDevice.Model = spec.Device;
+            SettingsProvider.Instance.RegisteredDevice.MacAddress = selection.Address;
 
             MainWindow.Instance.Pager.SwitchPage(Pages.Home);
 
             var _ = BluetoothImpl.Instance.ConnectAsync();
+        }
+        
+        private async void RefreshList()
+        {
+            if (IsSearching)
+            {
+                Log.Warning("DeviceSelectionDialog: Refresh already in progress");
+                return;
+            }
+
+            IsSearching = true;
+            AvailableDevices?.Clear();
+
+            var devices = await BluetoothImpl.Instance.GetDevicesAsync();
+            devices
+                .Where(dev => dev.IsConnected)
+                .Where(dev => DeviceSpecHelper.FindByDeviceName(dev.Name) != null)
+                .ToList()
+                .ForEach(x => AvailableDevices?.Add(x));
+            
+            AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds (36FD)", "36:AB:38:F5:04:FD", true, true, new BluetoothCoD(0)));
+            AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds Live (4AC3)", "4A:6B:87:E5:12:C3", true, true, new BluetoothCoD(0)));
+            AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds+ (A2D5)", "A2:BF:D4:4A:52:D5", true, true, new BluetoothCoD(0)));
+
+            if (AvailableDevices?.Count <= 0)
+            {
+                AvailableDevices?.Add(new BluetoothDevice(Loc.Resolve("devsel_nodevices_title"), 
+                    Loc.Resolve("devsel_nodevices"), false, false, new BluetoothCoD(0)));
+                _deviceBox.IsEnabled = false;
+            }
+            else
+            {
+                _deviceBox.IsEnabled = true;
+            }
+            
+            IsSearching = false;
         }
     }
 }

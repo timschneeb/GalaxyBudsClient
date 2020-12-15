@@ -106,7 +106,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             if (_device == null)
             {
                 Disconnected?.Invoke(this, 
-                    "Bluetooth peripheral with address '{macAddress}' not found. Use `bluetoothctl` or Bluetooth Manager to scan and possibly pair first.");
+                    $"Bluetooth peripheral with address '{macAddress}' not found. Use `bluetoothctl` or Bluetooth Manager to scan and possibly pair first.");
                 return;
             }
 

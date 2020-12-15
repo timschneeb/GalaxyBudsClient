@@ -147,16 +147,16 @@
 
     <!-- Device selection page (setup) -->
     <sys:String x:Key="devsel_header">Select your Galaxy Buds</sys:String>
-    <sys:String x:Key="devsel_search">Select Bluetooth device</sys:String>
+    <sys:String x:Key="devsel_refresh">Refresh paired devices</sys:String>
     <sys:String x:Key="devsel_device_name">Device Name</sys:String>
     <sys:String x:Key="devsel_btaddr">MAC-Address</sys:String>
     <sys:String x:Key="devsel_model">Model</sys:String>
+    <sys:String x:Key="devsel_nodevices">Please connect and pair your Buds first</sys:String>
+    <sys:String x:Key="devsel_nodevices_title">No paired devices found</sys:String>
     <sys:String x:Key="devsel_noselection">No device selected</sys:String>
     <sys:String x:Key="devsel_invalid_selection">Please select a valid device</sys:String>
     <sys:String x:Key="devsel_footer_continue">Finish Setup</sys:String>
-    <sys:String x:Key="devsel_dialog_header">Please select your Galaxy Buds device from this list:</sys:String>
-    <sys:String x:Key="devsel_dialog_footer">If the device does not show up, please make sure to pair and connect it in the Bluetooth system settings of your computer and press 'Refresh'.</sys:String>
-    <sys:String x:Key="devsel_reload">Refresh</sys:String>
+    <sys:String x:Key="devsel_dialog_footer">If you don't see your earbuds, make sure you've paired and connected them in your computer's bluetooth settings, and then click Refresh.</sys:String>
 
     <!-- Unsupported feature page -->
     <sys:String x:Key="unsupported_feature_current_fwver">Current Firmware version:</sys:String>

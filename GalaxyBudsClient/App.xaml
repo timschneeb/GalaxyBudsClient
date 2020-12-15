@@ -18,5 +18,6 @@
         <StyleInclude Source="/Interface/Styles/Styles.xaml"/>
         <StyleInclude Source="avares://Avalonia.Themes.Fluent/FluentLight.xaml"/>
         <StyleInclude Source="/Interface/Styles/Slider.xaml"/>
+        <StyleInclude Source="/Interface/Styles/ListBox.xaml"/>
     </Application.Styles>
 </Application>

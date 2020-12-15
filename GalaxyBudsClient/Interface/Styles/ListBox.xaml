@@ -1,0 +1,32 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--  PointerOver State  -->
+    <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource RoundBorderHoverBrush}" />
+    </Style>
+
+    <!--  Pressed State  -->
+    <Style Selector="ListBoxItem:pressed /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource RoundBorderSelectionBrush}" />
+    </Style>
+
+    <!--  Selected State  -->
+    <Style Selector="ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource RoundBorderSelectionBrush}" />
+    </Style>
+
+    <!--  Selected Unfocused State  -->
+    <Style Selector="ListBoxItem:selected:not(:focus) /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource RoundBorderHoverBrush}" />
+    </Style>
+
+    <!--  Selected PointerOver State  -->
+    <Style Selector="ListBoxItem:selected:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource RoundBorderHoverSelectionBrush}" />
+    </Style>
+
+    <!--  Selected Pressed State  -->
+    <Style Selector="ListBoxItem:selected:pressed /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource RoundBorderHoverSelectionBrush}" />
+    </Style>
+</Styles>

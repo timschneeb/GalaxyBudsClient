@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
+using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Model.Constants;
@@ -51,8 +52,15 @@ namespace GalaxyBudsClient.Interface.Pages
 			{
 				Dispatcher.UIThread.Post(() =>
 				{
-					ErrorDescription = s.Message;
 					ResetRetryButton();
+					
+					if (s.ErrorCode == BluetoothException.ErrorCodes.MessageNotSent)
+					{
+						/* Hide "message couldn't be sent" because it'll shadow the actual error in most situations */
+						return;
+					}
+					
+					ErrorDescription = s.Message;
 				}, DispatcherPriority.Render);
 			};
 			BluetoothImpl.Instance.Connected += (sender, args) =>
