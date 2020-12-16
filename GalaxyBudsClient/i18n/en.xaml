@@ -140,6 +140,7 @@
     <sys:String x:Key="updater_footer_remindmelater">Remind me later</sys:String>
     <sys:String x:Key="updater_footer_skipversion">Skip this version</sys:String>
     <sys:String x:Key="updater_footer_install">Install now</sys:String>
+    <sys:String x:Key="updater_appcast_null">New update but no valid appcast data found. Please try again later.</sys:String>
 
     <sys:String x:Key="updater_noupdate">No updates are available at the moment. Please try again later or check and subscribe the GitHub page for updates.</sys:String>
     <sys:String x:Key="updater_noupdate_title">No updates</sys:String>

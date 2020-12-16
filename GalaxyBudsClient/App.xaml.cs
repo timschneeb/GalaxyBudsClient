@@ -29,6 +29,7 @@ namespace GalaxyBudsClient
             ThemeUtils.Reload();
             Loc.Load();
             DeviceMessageCache.Init();
+            UpdateManager.Init();
         }
         
         public override void OnFrameworkInitializationCompleted()

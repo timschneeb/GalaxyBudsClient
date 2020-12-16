@@ -5,7 +5,6 @@
              xmlns="https://github.com/avaloniaui"
              xmlns:items="clr-namespace:GalaxyBudsClient.Interface.Items"
              xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
-             xmlns:rippleEffect="clr-namespace:Ripple.RippleEffect"
              mc:Ignorable="d">
     <Border CornerRadius="{StaticResource DefaultCornerRadius}"
             Classes="BorderHoverStyle" 

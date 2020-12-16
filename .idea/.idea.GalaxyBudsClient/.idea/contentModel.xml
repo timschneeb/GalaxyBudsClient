@@ -288,6 +288,7 @@
           <e p="ResourceIndexer.cs" t="Include" />
           <e p="SettingsProvider.cs" t="Include" />
           <e p="ThemeUtils.cs" t="Include" />
+          <e p="UpdateManager.cs" t="Include" />
           <e p="ValueConverter.cs" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive" />

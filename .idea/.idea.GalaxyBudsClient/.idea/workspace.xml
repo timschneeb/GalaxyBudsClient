@@ -9,10 +9,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="251ef05e-b4ff-45d6-b19b-dfffa1fae931" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/GalaxyBudsClient/Utils/UpdateManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/App.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Developer/DevTools.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Developer/DevTools.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessageHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessageHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/GalaxyBudsClient.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/GalaxyBudsClient.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Dialogs/BudsPopup.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Dialogs/BudsPopup.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Items/SwitchDetailListItem.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Items/SwitchDetailListItem.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/UpdatePage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/UpdatePage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/UpdatePage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/UpdatePage.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/i18n/en.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/i18n/en.xaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,36 +32,18 @@
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/Utils/ByteArrayUtils.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/Model/Attributes/DeviceAttribute.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/87DBB896-6B20-4A14-9B6A-7AB43642646D/5b/04d25521/ParseNumbers.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/Model/Attributes/DescriptionAttribute.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/App.xaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/Interface/Transition/PageContainer.xaml.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/Model/Attributes/PostfixAttribute.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F9E8E74F-0926-4402-B832-0C7BCA0D1592/2E/IResourceProvider.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/Interface/Pages/SettingsPage.xaml.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F9E8E74F-0926-4402-B832-0C7BCA0D1592/2B/IResourceDictionary.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/Decoder/AmbientModeUpdateParser.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/UnsupportedFeaturePage.xaml.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/Decoder/ResetResponseParser.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/MainWindow.xaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1651E980-D666-4695-80ED-326E03EFC610/95/37e6deda/IAssemblyAccessor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/87DBB896-6B20-4A14-9B6A-7AB43642646D/5b/04d25521/ParseNumbers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5CB04603-73FD-4E34-B134-F9558BD7A7E5/2E/Dispatcher.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/WelcomePage.xaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/Interface/Pages/DeviceSelectionPage.xaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1651E980-D666-4695-80ED-326E03EFC610/08/2f734594/JSONConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F9E8E74F-0926-4402-B832-0C7BCA0D1592/2E/IResourceProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F9E8E74F-0926-4402-B832-0C7BCA0D1592/2B/IResourceDictionary.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/87DBB896-6B20-4A14-9B6A-7AB43642646D/4f/67d2b701/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/BrushesDark.xaml" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/Brushes.xaml" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/DeviceSelectionPage.xaml" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/DeviceSelectionPage.xaml.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Styles/ListBox.xaml" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/CreditsPage.xaml.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/AmbientVolumeParser.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/AmbientModeUpdateParser.cs" />
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/AmbientVoiceFocusParser.cs" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/TouchUpdateParser.cs" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/StatusUpdateParser.cs" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/AmbientWearingUpdateParser.cs" />
@@ -94,7 +84,17 @@
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Developer/DevTools.xaml" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Platform/BluetoothImpl.cs" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Message/SPPMessageHandler.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Items/SwitchDetailListItem.xaml" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/App.xaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/GalaxyBudsClient.csproj" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/i18n/en.xaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Dialogs/BudsPopup.xaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Utils/UpdateManager.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/UpdatePage.xaml" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/UpdatePage.xaml.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Utils/LocalizationUtils.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lFViZ0CpC2QuPJaC1pFqMhLzzN" />
@@ -103,13 +103,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.47085714" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.47097126" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="XThreadsFramesViewSplitterKey" value="0.33272728" />
-    <property name="last_opened_file_path" value="$USER_HOME$/RiderProjects/Avalonia/Avalonia.sln" />
+    <property name="last_opened_file_path" value="$USER_HOME$/RiderProjects/lara/src/SampleProject/LaraSample.csproj" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -187,7 +187,9 @@
       <workItem from="1607972976083" duration="56000" />
       <workItem from="1607973326941" duration="4007000" />
       <workItem from="1607978087029" duration="629000" />
-      <workItem from="1608058091625" duration="24098000" />
+      <workItem from="1608058091625" duration="24535000" />
+      <workItem from="1608139002440" duration="7770000" />
+      <workItem from="1608157200279" duration="5510000" />
     </task>
     <task id="LOCAL-00001" summary="Update all">
       <created>1607543806441</created>
@@ -287,7 +289,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608079994052</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Better caching + finalize devmode restoration">
+      <created>1608085536640</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1608085536640</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,7 +329,8 @@
     <MESSAGE value="Dynamically alter UI based on connection status" />
     <MESSAGE value="Fix nullability issues + other problems" />
     <MESSAGE value="Fix devmode msg send" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix devmode msg send" />
+    <MESSAGE value="Better caching + finalize devmode restoration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Better caching + finalize devmode restoration" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -332,6 +342,19 @@
           </properties>
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5CB04603-73FD-4E34-B134-F9558BD7A7E5/2E/Dispatcher.cs</url>
+          <line>47</line>
+          <properties documentPath="$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5CB04603-73FD-4E34-B134-F9558BD7A7E5/2E/Dispatcher.cs" initialLine="47" containingFunctionPresentation="method 'VerifyAccess'">
+            <startOffsets>
+              <option value="1579" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1643" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint enabled="true" type="DotNet Exception Breakpoints" />

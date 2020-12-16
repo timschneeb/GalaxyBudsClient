@@ -22,6 +22,8 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
+using JetBrains.Annotations;
+using NetSparkleUpdater.Enums;
 using Serilog;
 
 namespace GalaxyBudsClient
@@ -32,6 +34,7 @@ namespace GalaxyBudsClient
         private readonly UnsupportedFeaturePage _unsupportedFeaturePage = new UnsupportedFeaturePage();
         private readonly CustomTouchActionPage _customTouchActionPage = new CustomTouchActionPage();
         private readonly ConnectionLostPage _connectionLostPage = new ConnectionLostPage();
+        private readonly UpdatePage _updatePage = new UpdatePage();
         
         private readonly CustomTitleBar _titleBar;
         private BudsPopup _popup;
@@ -39,6 +42,7 @@ namespace GalaxyBudsClient
         
         public PageContainer Pager { get; }
         public CustomTouchActionPage CustomTouchActionPage => _customTouchActionPage;
+        public UpdatePage UpdatePage => _updatePage;
 
         private static MainWindow? _instance;
         public static MainWindow Instance => _instance ??= new MainWindow();
@@ -58,7 +62,7 @@ namespace GalaxyBudsClient
             Pager.RegisterPages(_homePage, new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(), new CreditsPage(),
                 new TouchpadPage(), new EqualizerPage(), new AdvancedPage(), new SystemPage(), new SelfTestPage(), new SettingsPage(),
                 new PopupSettingsPage(), _connectionLostPage, _customTouchActionPage, new DeviceSelectionPage(),
-                new WelcomePage(), _unsupportedFeaturePage, new UpdatePage());
+                new WelcomePage(), _unsupportedFeaturePage, _updatePage);
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
@@ -196,8 +200,19 @@ namespace GalaxyBudsClient
             {
                 options.Clear();
             }
-                
-            options[Loc.Resolve("optionsmenu_update")] = (sender, args) => Log.Debug("Check for updates selected");
+
+            options[Loc.Resolve("optionsmenu_update")] = async (sender, args) =>
+            {
+                var result  = await UpdateManager.Instance.DoManualCheck();
+                if (result != UpdateStatus.UpdateAvailable)
+                {
+                    await new MessageBox()
+                    {
+                        Title = Loc.Resolve("updater_noupdate_title"),
+                        Description = Loc.Resolve("updater_noupdate"),
+                    }.ShowDialog(this);
+                }
+            };
             options[Loc.Resolve("optionsmenu_credits")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Credits);
 
             
@@ -246,6 +261,14 @@ namespace GalaxyBudsClient
         {
             _customTouchActionPage.CurrentSide = device;
             Pager.SwitchPage(AbstractPage.Pages.TouchCustomAction);
+        }
+
+        private async void OnOpened(object? sender, EventArgs e)
+        {
+            if (BluetoothImpl.Instance.RegisteredDeviceValid)
+            {
+                await Task.Delay(3000).ContinueWith((_) => UpdateManager.Instance.SilentCheck());
+            }
         }
     }
 }

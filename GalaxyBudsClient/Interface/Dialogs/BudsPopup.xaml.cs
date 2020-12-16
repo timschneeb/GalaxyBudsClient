@@ -118,7 +118,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
             /* Close window instead */
             _timer.Stop();
             _outerBorder.Tag = "hiding";
-            Task.Delay(400).ContinueWith((_) => { Close(); });
+            Task.Delay(400).ContinueWith((_) => { Dispatcher.UIThread.InvokeAsync(Close); });
         }
 
         public override void Show()
