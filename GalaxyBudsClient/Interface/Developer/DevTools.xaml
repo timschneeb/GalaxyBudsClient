@@ -13,11 +13,13 @@
         <SolidColorBrush x:Key="GridLine" Color="#FFD1D1D1" />
     </Window.Resources>
     <Window.Styles>
-        <StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseDark.xaml" />
-        <StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml" />
-        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Default.xaml"/>
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+        <Style Selector="DataGridCell">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="MinHeight" Value="24" />
+        </Style>
     </Window.Styles>
-
+    
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
@@ -76,7 +78,9 @@
                                       Margin="0,0,5,0" />
                             <Button Grid.Column="2" x:Name="SendSubmit"
                                     Content="Send"
-                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                                    HorizontalAlignment="Stretch" 
+                                    VerticalAlignment="Stretch" 
+                                    HorizontalContentAlignment="Center"
                                     Click="SendMsg_Click"  />
                         </Grid>
 

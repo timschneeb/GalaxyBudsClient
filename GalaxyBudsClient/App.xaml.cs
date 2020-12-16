@@ -6,6 +6,7 @@ using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Styling;
 using GalaxyBudsClient.Interface.Developer;
 using GalaxyBudsClient.Interface.Pages;
+using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
@@ -40,7 +41,7 @@ namespace GalaxyBudsClient
             base.OnFrameworkInitializationCompleted();
         }
 
-        public void RestartApp(AbstractPage.Pages? target = null)
+        public void RestartApp(AbstractPage.Pages target)
         {
             MainWindow.Instance.Close();
             MainWindow.Kill();
@@ -51,11 +52,12 @@ namespace GalaxyBudsClient
             {
                 desktop.MainWindow = MainWindow.Instance;
                 desktop.MainWindow.Show();
-
-                if (target != null)
-                {
-                    MainWindow.Instance.Pager.SwitchPage((AbstractPage.Pages)target);
-                }
+                
+                MainWindow.Instance.Pager.SwitchPage(target);
+                
+                /* Restore crucial information */
+                SPPMessageHandler.Instance.DispatchEvent(DeviceMessageCache.Instance.ExtendedStatusUpdate);
+                SPPMessageHandler.Instance.DispatchEvent(DeviceMessageCache.Instance.StatusUpdate);
             }
         }
     }
