@@ -16,12 +16,12 @@ namespace GalaxyBudsClient.Decoder
         readonly String[] _swVer = { "E", "U" };
         readonly String[] _swYear = { "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
 
-        public String LeftHardwareVersion { set; get; }
-        public String RightHardwareVersion { set; get; }
-        public String LeftSoftwareVersion { set; get; }
-        public String RightSoftwareVersion { set; get; }
-        public String LeftTouchSoftwareVersion { set; get; }
-        public String RightTouchSoftwareVersion { set; get; }
+        public String? LeftHardwareVersion { set; get; }
+        public String? RightHardwareVersion { set; get; }
+        public String? LeftSoftwareVersion { set; get; }
+        public String? RightSoftwareVersion { set; get; }
+        public String? LeftTouchSoftwareVersion { set; get; }
+        public String? RightTouchSoftwareVersion { set; get; }
 
         public override void ParseMessage(SPPMessage msg)
         {
@@ -89,11 +89,11 @@ namespace GalaxyBudsClient.Decoder
                 var customAttributes = (PostfixAttribute[])property.GetCustomAttributes(typeof(PostfixAttribute), true);
                 if (customAttributes.Length > 0)
                 {
-                    map.Add(property.Name, property.GetValue(this).ToString() + customAttributes[0].Text);
+                    map.Add(property.Name, property?.GetValue(this)?.ToString() ?? "null" + customAttributes[0].Text);
                 }
                 else
                 {
-                    map.Add(property.Name, property.GetValue(this).ToString());
+                    map.Add(property.Name, property?.GetValue(this)?.ToString() ?? "null");
                 }
             }
 

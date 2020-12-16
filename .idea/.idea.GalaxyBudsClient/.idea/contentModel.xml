@@ -61,8 +61,6 @@
             <e p="MuteButton.xaml.cs" t="Include" />
             <e p="PageHeader.xaml" t="Include" />
             <e p="PageHeader.xaml.cs" t="Include" />
-            <e p="RippleEffect.cs" t="Include" />
-            <e p="RippleEffect.xaml" t="Include" />
             <e p="ScanButton.xaml" t="Include" />
             <e p="ScanButton.xaml.cs" t="Include" />
             <e p="ToggleSwitch.xaml" t="Include" />
@@ -284,13 +282,9 @@
         <e p="Utils" t="Include">
           <e p="ByteArrayUtils.cs" t="Include" />
           <e p="CRC16.cs" t="Include" />
-          <e p="DialogUtils.cs" t="Include" />
-          <e p="EnumHelper.cs" t="Include" />
           <e p="HexUtils.cs" t="Include" />
-          <e p="IEnumerableUtils.cs" t="Include" />
           <e p="LocalizationUtils.cs" t="Include" />
           <e p="MenuFactory.cs" t="Include" />
-          <e p="ReflectiveEnumerator.cs" t="Include" />
           <e p="ResourceIndexer.cs" t="Include" />
           <e p="SettingsProvider.cs" t="Include" />
           <e p="ThemeUtils.cs" t="Include" />

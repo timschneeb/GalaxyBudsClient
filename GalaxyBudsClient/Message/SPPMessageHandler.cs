@@ -41,7 +41,7 @@ namespace GalaxyBudsClient.Message
         public event EventHandler<MuteUpdateParser>? FindMyGearMuteUpdate;
         public event EventHandler? FindMyGearStopped;
 
-        public void MessageReceiver(object sender, SPPMessage e)
+        public void MessageReceiver(object? sender, SPPMessage e)
         {
             Dispatcher.UIThread.InvokeAsync(() =>
             {

@@ -12,10 +12,10 @@ namespace GalaxyBudsClient.Interface.Transition
     /// </summary>
     public class FadeTransition : IPageTransition
     {
-        public EventHandler FadeOutComplete;
-        public EventHandler FadeInComplete;
-        public EventHandler FadeOutBegin;
-        public EventHandler FadeInBegin;
+        public EventHandler? FadeOutComplete;
+        public EventHandler? FadeInComplete;
+        public EventHandler? FadeOutBegin;
+        public EventHandler? FadeInBegin;
         
         private readonly Animation _fadeOutAnimation;
         private readonly Animation _fadeInAnimation;
@@ -95,7 +95,7 @@ namespace GalaxyBudsClient.Interface.Transition
         /// <returns>
         /// A <see cref="Task"/> that tracks the progress of the animation.
         /// </returns>
-        public async Task Start(Visual from, Visual to)
+        public async Task Start(Visual? from, Visual? to)
         {
             if (to != null)
             {
@@ -145,7 +145,7 @@ namespace GalaxyBudsClient.Interface.Transition
         /// <returns>
         /// A <see cref="Task"/> that tracks the progress of the animation.
         /// </returns>
-        Task IPageTransition.Start(Visual from, Visual to, bool forward)
+        Task IPageTransition.Start(Visual? from, Visual? to, bool forward)
         {
             return Start(from, to);
         }

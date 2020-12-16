@@ -9,7 +9,7 @@ namespace GalaxyBudsClient.Decoder
     {
         public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.UNK_BONDED_DEVICES;
 
-        public String Content { set; get; }
+        public String? Content { set; get; }
 
         public override void ParseMessage(SPPMessage msg)
         {
@@ -28,7 +28,7 @@ namespace GalaxyBudsClient.Decoder
                 if (property.Name == "HandledType" || property.Name == "ActiveModel")
                     continue;
 
-                map.Add(property.Name, property.GetValue(this).ToString());
+                map.Add(property.Name, property?.GetValue(this)?.ToString() ?? "null");
             }
 
             return map;

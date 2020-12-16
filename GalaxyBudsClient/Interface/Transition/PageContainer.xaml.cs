@@ -28,7 +28,7 @@ namespace GalaxyBudsClient.Interface.Transition
 			
 			Pager = this.FindControl<Carousel>("Pager");
 			var fadeTransition = new FadeTransition();
-			fadeTransition.FadeOutComplete += async (sender, args) =>
+			fadeTransition.FadeOutComplete += (sender, args) =>
 			{		
 				if (_lastPageCache is AbstractPage page)
 				{

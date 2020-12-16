@@ -16,9 +16,9 @@ namespace GalaxyBudsClient.Model.Attributes
 
         public override string ToString()
         {
-            String str = null;
+            string str = string.Empty;
             int i = 0;
-            foreach (Constants.Models model in Models)
+            foreach (var model in Models)
             {
                 str += model.ToString();
                 if (i < Models.Length - 1)
@@ -29,6 +29,6 @@ namespace GalaxyBudsClient.Model.Attributes
             return str;
         }
 
-        public Constants.Models[] Models;
+        public readonly Constants.Models[] Models;
     }
 }

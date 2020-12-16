@@ -34,17 +34,13 @@ namespace GalaxyBudsClient.Model
 
         [Option(DefaultValue = DarkModes.Light)]
         DarkModes DarkMode { set; get; }
-        
         [Option(DefaultValue = Locales.en)]
+        
         Locales Locale { set; get; }
-        
         [Option(DefaultValue = TemperatureUnits.Celsius)]
+        
         TemperatureUnits TemperatureUnit { set; get; }
-        
         IDevice RegisteredDevice { set; get; }
-        
-        bool MinimizeToTray { set; get; }
-        bool ResumePlaybackOnSensor { set; get; }
         
         ICustomAction CustomActionLeft { set; get; }
         ICustomAction CustomActionRight { set; get; }
@@ -53,6 +49,7 @@ namespace GalaxyBudsClient.Model
         
         [Option(DefaultValue = "")]
         string UpdateSkippedVersion { set; get; }
-        
+        bool MinimizeToTray { set; get; }
+        bool ResumePlaybackOnSensor { set; get; }
     }
 }

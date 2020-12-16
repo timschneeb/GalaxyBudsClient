@@ -74,7 +74,7 @@ namespace GalaxyBudsClient
             SPPMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
 
             Pager.PageSwitched += (sender, pages) => BuildOptionsMenu();
-            Loc.LanguageUpdated += OnLanguageUpdated;
+            Loc.LanguageUpdated += BuildOptionsMenu;
             BuildOptionsMenu();
 
             if (BluetoothImpl.Instance.RegisteredDeviceValid)
@@ -175,12 +175,7 @@ namespace GalaxyBudsClient
                 }
             }
         }
-
-        private void OnLanguageUpdated()
-        {
-            BuildOptionsMenu();
-        }
-
+        
         private void BuildOptionsMenu()
         {
             bool restricted = Pager.CurrentPage == AbstractPage.Pages.Welcome ||
@@ -225,7 +220,7 @@ namespace GalaxyBudsClient
                 {
                     _popup.Show();
                 }
-                catch (InvalidOperationException ex)
+                catch (InvalidOperationException)
                 {
                     /* Window already closed down */
                     _popup = new BudsPopup();

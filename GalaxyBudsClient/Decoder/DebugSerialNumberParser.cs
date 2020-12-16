@@ -9,8 +9,8 @@ namespace GalaxyBudsClient.Decoder
     {
         public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_DEBUG_SERIAL_NUMBER;
 
-        public String LeftSerialNumber { set; get; }
-        public String RightSerialNumber { set; get; }
+        public String? LeftSerialNumber { set; get; }
+        public String? RightSerialNumber { set; get; }
 
         public override void ParseMessage(SPPMessage msg)
         {
@@ -34,7 +34,7 @@ namespace GalaxyBudsClient.Decoder
                 if (property.Name == "HandledType" || property.Name == "ActiveModel")
                     continue;
 
-                map.Add(property.Name, property.GetValue(this).ToString());
+                map.Add(property.Name, property.GetValue(this)?.ToString() ?? "null");
             }
 
             return map;

@@ -68,7 +68,7 @@ namespace GalaxyBudsClient.Interface
         
         public CustomTitleBar()
         {
-            this.InitializeComponent();
+            AvaloniaXamlLoader.Load(this);
 
             minimizeButton = this.FindControl<Button>("MinimizeButton");
             closeButton = this.FindControl<Button>("CloseButton");
@@ -87,13 +87,13 @@ namespace GalaxyBudsClient.Interface
             SubscribeToWindowState();
         }
 
-        private void CloseWindow(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private void CloseWindow(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             Window hostWindow = (Window)this.VisualRoot;
             hostWindow.Close();
         }
         
-        private void MinimizeWindow(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private void MinimizeWindow(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             Window hostWindow = (Window)this.VisualRoot;
             hostWindow.WindowState = WindowState.Minimized;
@@ -109,11 +109,6 @@ namespace GalaxyBudsClient.Interface
                 await Task.Delay(50);
             }
             
-        }
-
-        private void InitializeComponent()
-        {
-            AvaloniaXamlLoader.Load(this);
         }
     }
 }

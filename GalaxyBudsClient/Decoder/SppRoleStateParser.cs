@@ -32,7 +32,7 @@ namespace GalaxyBudsClient.Decoder
                 if (property.Name == "HandledType" || property.Name == "ActiveModel")
                     continue;
 
-                map.Add(property.Name, property.GetValue(this).ToString());
+                map.Add(property.Name, property?.GetValue(this)?.ToString() ?? "null");
             }
 
             return map;

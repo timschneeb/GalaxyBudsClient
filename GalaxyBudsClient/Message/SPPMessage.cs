@@ -30,6 +30,7 @@ namespace GalaxyBudsClient.Message
 
         public SPPMessage()
         {
+            Payload = new byte[0];
         }
 
         public SPPMessage(MessageIds id, MsgType type, byte[] payload)

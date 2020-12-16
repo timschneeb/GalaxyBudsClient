@@ -12,25 +12,26 @@ namespace GalaxyBudsClient.Model.Attributes
             if (e is Enum)
             {
                 Type type = e.GetType();
-                Array values = Enum.GetValues(type);
-
-                foreach (int val in values)
+                foreach (var obj in Enum.GetValues(type))
                 {
-                    if (val == e.ToInt32(CultureInfo.InvariantCulture))
+                    if (obj is {} val)
                     {
-                        var memInfo = type.GetMember(type.GetEnumName(val));
-
-                        if (memInfo[0]
-                            .GetCustomAttributes(typeof(DescriptionAttribute), false)
-                            .FirstOrDefault() is DescriptionAttribute descriptionAttribute)
+                        if ((int) val == e.ToInt32(CultureInfo.InvariantCulture))
                         {
-                            return descriptionAttribute.Description;
+                            var memInfo = type.GetMember(type.GetEnumName((int) val) ?? string.Empty);
+
+                            if (memInfo[0]
+                                .GetCustomAttributes(typeof(DescriptionAttribute), false)
+                                .FirstOrDefault() is DescriptionAttribute descriptionAttribute)
+                            {
+                                return descriptionAttribute.Description;
+                            }
                         }
                     }
                 }
             }
 
-            return null; // could also return string.Empty
+            return string.Empty;
         }
     }
 }

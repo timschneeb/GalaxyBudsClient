@@ -24,9 +24,6 @@
         </AvaloniaResource>
         <Compile Remove="bin\Debug\netcoreapp3.1\**" />
         <Compile Remove="bin\**" />
-        <Compile Update="Interface\Elements\RippleEffect.cs">
-          <DependentUpon>RippleEffect.xaml</DependentUpon>
-        </Compile>
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="0.10.0-rc1" />

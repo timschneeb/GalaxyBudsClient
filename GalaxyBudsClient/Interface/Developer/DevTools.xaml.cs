@@ -84,7 +84,7 @@ namespace GalaxyBudsClient.Interface.Developer
             BluetoothImpl.Instance.MessageReceived += MessageReceived;
         }
         
-        private void MessageReceived(object sender, SPPMessage e)
+        private void MessageReceived(object? sender, SPPMessage e)
         {
             Dispatcher.UIThread.Post(() =>
             {
@@ -98,7 +98,7 @@ namespace GalaxyBudsClient.Interface.Developer
             });
         }
 
-        private void OnClosing(object sender, CancelEventArgs e)
+        private void OnClosing(object? sender, CancelEventArgs e)
         {
             BluetoothImpl.Instance.MessageReceived -= MessageReceived;
 
@@ -134,7 +134,7 @@ namespace GalaxyBudsClient.Interface.Developer
             {
                 payload = _hexPayloadSend.Text.HexStringToByteArray();
             }
-            catch (ArgumentOutOfRangeException ex)
+            catch (ArgumentOutOfRangeException)
             {
                 new MessageBox
                 {

@@ -50,7 +50,7 @@ namespace GalaxyBudsClient.Interface.Items
                     var subtitle = SubtitleDictionary?[(int) d];
                     if (subtitle != null) Subtitle = subtitle;
                 }
-                catch (KeyNotFoundException ex)
+                catch (KeyNotFoundException)
                 {
                     Log.Warning("SliderListItem: Key not in subtitle dictionary");
                     Subtitle = "";

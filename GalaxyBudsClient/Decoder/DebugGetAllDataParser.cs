@@ -18,11 +18,11 @@ namespace GalaxyBudsClient.Decoder
         readonly String[] _swRelVer = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
         readonly String[] _swVer = { "E", "U" };
         readonly String[] _swYear = { "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-        public String HardwareVersion { set; get; }
-        public String SoftwareVersion { set; get; }
-        public String LeftBluetoothAddress { set; get; }
-        public String RightBluetoothAddress { set; get; }
-        public String TouchSoftwareVersion { set; get; }
+        public String? HardwareVersion { set; get; }
+        public String? SoftwareVersion { set; get; }
+        public String? LeftBluetoothAddress { set; get; }
+        public String? RightBluetoothAddress { set; get; }
+        public String? TouchSoftwareVersion { set; get; }
         public short LeftAcceleratorX { set; get; }
         public short LeftAcceleratorY { set; get; }
         public short LeftAcceleratorZ { set; get; }
@@ -50,8 +50,8 @@ namespace GalaxyBudsClient.Decoder
         [Postfix(Text = "mA")]
         public double RightAdcCurrent { set; get; }
 
-        public String LeftHall { set; get; }
-        public String RightHall { set; get; }
+        public String? LeftHall { set; get; }
+        public String? RightHall { set; get; }
 
         [Device(new[] { Model.Constants.Models.BudsPlus, Model.Constants.Models.BudsLive })]
         public short LeftProximityOffset { set; get; }
@@ -258,16 +258,16 @@ namespace GalaxyBudsClient.Decoder
                 String valuePostfix = "";
                 if (customAttributes.Length > 0)
                 {
-                    valuePostfix = customAttributes[0].Text;
+                    valuePostfix = customAttributes[0].Text ?? string.Empty;
                 }
 
                 if (customAttributesB.Length <= 0)
                 {
-                    map.Add(property.Name, property.GetValue(this).ToString() + valuePostfix);
+                    map.Add(property.Name, property.GetValue(this)?.ToString() ?? "null" + valuePostfix);
                 }
                 else if (customAttributesB[0].Models.Contains(ActiveModel))
                 {
-                    map.Add($"{property.Name} ({customAttributesB[0]})", property.GetValue(this).ToString() + valuePostfix);
+                    map.Add($"{property.Name} ({customAttributesB[0]})", property.GetValue(this)?.ToString() + valuePostfix);
                 }
             }
 

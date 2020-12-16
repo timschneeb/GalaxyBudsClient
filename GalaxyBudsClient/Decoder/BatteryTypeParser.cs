@@ -9,8 +9,8 @@ namespace GalaxyBudsClient.Decoder
     {
         public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_BATTERY_TYPE;
 
-        public String LeftBatteryType { set; get; }
-        public String RightBatteryType { set; get; }
+        public String? LeftBatteryType { set; get; }
+        public String? RightBatteryType { set; get; }
 
         public override void ParseMessage(SPPMessage msg)
         {
@@ -34,7 +34,7 @@ namespace GalaxyBudsClient.Decoder
                 if (property.Name == "HandledType" || property.Name == "ActiveModel")
                     continue;
 
-                map.Add(property.Name, property.GetValue(this).ToString());
+                map.Add(property.Name, property?.GetValue(this)?.ToString() ?? "null");
             }
 
             return map;

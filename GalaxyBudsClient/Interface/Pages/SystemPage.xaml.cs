@@ -80,9 +80,9 @@ namespace GalaxyBudsClient.Interface.Pages
 		private void InstanceOnGetAllDataResponse(object? sender, DebugGetAllDataParser e)
 		{
 			_pageHeader.LoadingSpinnerVisible = false;
-			_hwVer.Description = e.HardwareVersion;
-			_swVer.Description = e.SoftwareVersion;
-			_touchFwVer.Description = e.TouchSoftwareVersion;
+			_hwVer.Description = e.HardwareVersion ?? Loc.Resolve("unknown");
+			_swVer.Description = e.SoftwareVersion ?? Loc.Resolve("unknown");
+			_touchFwVer.Description = e.TouchSoftwareVersion ?? Loc.Resolve("unknown");
 			_btAddr.Description = $"{Left}: {e.LeftBluetoothAddress}, {Right}: {e.RightBluetoothAddress}"; 
 		}
 

@@ -214,11 +214,11 @@ namespace GalaxyBudsClient.Decoder
 
                 if (customAttributes.Length <= 0)
                 {
-                    map.Add(property.Name, property.GetValue(this).ToString());
+                    map.Add(property.Name, property.GetValue(this)?.ToString() ?? "null");
                 }
                 else if (customAttributes[0].Models.Contains(ActiveModel))
                 {
-                    map.Add($"{property.Name} ({customAttributes[0]})", property.GetValue(this).ToString());
+                    map.Add($"{property.Name} ({customAttributes[0]})", property.GetValue(this)?.ToString() ?? "null");
                 }
             }
 

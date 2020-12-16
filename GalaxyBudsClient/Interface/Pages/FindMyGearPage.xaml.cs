@@ -88,13 +88,13 @@ namespace GalaxyBudsClient.Interface.Pages
             }
         }
 
-        private void InstanceOnFindMyGearMuteUpdate(object sender, MuteUpdateParser e)
+        private void InstanceOnFindMyGearMuteUpdate(object? sender, MuteUpdateParser e)
         {
             _leftMuteButton.IsMuted = e.LeftMuted;
             _rightMuteButton.IsMuted = e.RightMuted;
         }
 
-        private void InstanceOnFindMyGearStopped(object sender, EventArgs e)
+        private void InstanceOnFindMyGearStopped(object? sender, EventArgs e)
         {
             _scanButton.IsSearching = false;
 

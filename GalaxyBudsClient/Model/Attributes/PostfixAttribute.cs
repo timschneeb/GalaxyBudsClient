@@ -4,6 +4,6 @@ namespace GalaxyBudsClient.Model.Attributes
 {
     class PostfixAttribute : Attribute
     {
-        public string Text { get; set; }
+        public string? Text { get; set; }
     }
 }

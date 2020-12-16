@@ -27,9 +27,7 @@ namespace GalaxyBudsClient.Interface.Pages
 				Loc.Resolve("connlost_noinfo") : value;
 			get => _additionalInfo.Text;
 		}
-
-		public event EventHandler? RetryRequested; 
-
+		
 		public ConnectionLostPage()
 		{   
 			AvaloniaXamlLoader.Load(this);

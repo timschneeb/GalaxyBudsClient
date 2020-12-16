@@ -37,6 +37,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		public override void OnPageShown()
 		{
+			_minimizeTray.IsChecked = SettingsProvider.Instance.MinimizeToTray;
 			_autostart.IsChecked = AutoStartImpl.Instance.Enabled;
 			_darkMode.IsChecked = SettingsProvider.Instance.DarkMode == DarkModes.Dark;
 			_locale.Description = SettingsProvider.Instance.Locale.GetDescription();
@@ -89,12 +90,23 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		private void Autostart_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
-			AutoStartImpl.Instance.Enabled = !AutoStartImpl.Instance.Enabled;
+			if (!_minimizeTray.IsChecked && _autostart.IsChecked)
+			{
+				_minimizeTray.Toggle();
+				SettingsProvider.Instance.MinimizeToTray = _minimizeTray.IsChecked;
+			}
+			
+			AutoStartImpl.Instance.Enabled = _autostart.IsChecked;
 		}
 
 		private void MinimizeToTray_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
-			throw new NotImplementedException();
+			if (!_minimizeTray.IsChecked && _autostart.IsChecked)
+			{
+				_autostart.Toggle();
+	            AutoStartImpl.Instance.Enabled = _autostart.IsChecked;
+            }
+			SettingsProvider.Instance.MinimizeToTray = _minimizeTray.IsChecked;
 		}
 	}
 }
