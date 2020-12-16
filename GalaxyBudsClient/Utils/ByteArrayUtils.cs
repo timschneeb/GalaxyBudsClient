@@ -46,15 +46,20 @@ namespace GalaxyBudsClient.Utils
         }
         
         /**
-         * Throws ArgumentOutOfRangeException in case of bad format
+         * Throws ArgumentOutOfRangeException and FormatException in case of bad format
          **/
-        public static byte[] HexStringToByteArray(this String hex)
+        public static byte[] HexStringToByteArray(this string? hex)
         {
+            if (hex == null)
+            {
+                return new byte[0];
+            }
+            
             hex = Regex.Replace(hex, @"\s+", "");
 
             int numberChars = hex.Length;
             byte[] bytes = new byte[numberChars / 2];
-
+            
             for (int i = 0; i < numberChars; i += 2)
                 bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
 

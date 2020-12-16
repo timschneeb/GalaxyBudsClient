@@ -77,7 +77,7 @@
                             <Button Grid.Column="2" x:Name="SendSubmit"
                                     Content="Send"
                                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                                    PointerPressed="SendMsg_Click" />
+                                    Click="SendMsg_Click"  />
                         </Grid>
 
                         <Grid Grid.Row="1" Margin="5,0,5,5">

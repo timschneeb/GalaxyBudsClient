@@ -117,7 +117,7 @@ namespace GalaxyBudsClient.Interface.Developer
             }
         }
        
-        private void SendMsg_Click(object? sender, PointerPressedEventArgs e)
+        private void SendMsg_Click(object? sender, RoutedEventArgs e)
         {
             if (_msgIdSend.SelectedItem == null || _msgTypeSend.SelectedItem == null)
             {
@@ -138,7 +138,16 @@ namespace GalaxyBudsClient.Interface.Developer
             {
                 new MessageBox
                 {
-                    Title = "Invalid payload format", 
+                    Title = "Invalid payload format",
+                    Description = "Correct format: 00 01 FF E5 [...]"
+                }.ShowDialog(this);
+                return;
+            }
+            catch (FormatException)
+            {
+                new MessageBox
+                {
+                    Title = "Payload not hexadecimal",
                     Description = "Correct format: 00 01 FF E5 [...]"
                 }.ShowDialog(this);
                 return;
@@ -150,7 +159,7 @@ namespace GalaxyBudsClient.Interface.Developer
                 Payload = payload,
                 Type = (SPPMessage.MsgType) _msgTypeSend.SelectedItem
             };
-            BluetoothImpl.Instance.SendAsync(msg).Wait();
+            var _ = BluetoothImpl.Instance.SendAsync(msg);
         }
         
         private void Clear_OnClick(object? sender, RoutedEventArgs e)
