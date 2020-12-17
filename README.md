@@ -100,12 +100,14 @@ Version 4.0 is planned to be released by the end of 2020 and introduces cross-pl
 
 
 - [x] Move to .NET Core 3.1
+- [x] Port user interface to AvaloniaUI.NET
 - [x] Linux: Implement native Bluetooth interface
+- [x] Cross-platform Bluetooth device selection dialog
 - [ ] Windows: Implement native Bluetooth interface
 - [ ] Windows/Linux: Native tray icon support (libappindicator)
-- [ ] Cross-platform Bluetooth device selection dialog
-- [ ] Port user interface to AvaloniaUI.NET
 - [ ] Linux: Solve NVIDIA incompatibility with libSkia
+
+You can check the [kanban board for milestone v4.0](https://github.com/ThePBone/GalaxyBudsClient/projects/3) for more details.
 
 Contributions regarding this roadmap are very appreciated. The new implementation is available on the [`avalonia-rewrite`](https://github.com/ThePBone/GalaxyBudsClient/tree/avalonia-rewrite) branch.
 
