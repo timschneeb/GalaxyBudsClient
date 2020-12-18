@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Controls.Selection;
 using Avalonia.Input;
@@ -103,9 +104,9 @@ namespace GalaxyBudsClient.Interface.Pages
 
             MainWindow.Instance.Pager.SwitchPage(Pages.Home);
 
-            var _ = BluetoothImpl.Instance.ConnectAsync();
+            Task.Factory.StartNew(() => BluetoothImpl.Instance.ConnectAsync());
         }
-        
+
         private async void RefreshList()
         {
             if (IsSearching)

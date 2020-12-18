@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
@@ -94,10 +95,8 @@ namespace GalaxyBudsClient.Interface.Pages
 					return;
 				}
 
-				BluetoothImpl.Instance.ConnectAsync()
-					.ContinueWith((_)=>MainWindow.Instance.Pager.SwitchPage(Pages.Home));
-				;
-			}
+			    Task.Factory.StartNew(() => BluetoothImpl.Instance.ConnectAsync());
+            }
 		}
 	}
 }

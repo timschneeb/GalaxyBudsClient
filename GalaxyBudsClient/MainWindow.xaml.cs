@@ -83,7 +83,7 @@ namespace GalaxyBudsClient
 
             if (BluetoothImpl.Instance.RegisteredDeviceValid)
             {
-                var _ = BluetoothImpl.Instance.ConnectAsync();
+                Task.Factory.StartNew(() => BluetoothImpl.Instance.ConnectAsync());
                 Pager.SwitchPage(AbstractPage.Pages.Home);
             }
             else

@@ -5,6 +5,7 @@
         mc:Ignorable="d"
         x:Class="GalaxyBudsClient.Interface.Dialogs.BudsPopup"
         Height="205" Width="370"
+        MaxWidth="370"
         CanResize="False"
         WindowStartupLocation="Manual"
         ExtendClientAreaToDecorationsHint="True"
