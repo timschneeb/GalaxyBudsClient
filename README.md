@@ -103,7 +103,7 @@ Version 4.0 is planned to be released by the end of 2020 and introduces cross-pl
 - [x] Port user interface to AvaloniaUI.NET
 - [x] Linux: Implement native Bluetooth interface
 - [x] Cross-platform Bluetooth device selection dialog
-- [ ] Windows: Implement native Bluetooth interface
+- [X] Windows: Implement native Bluetooth interface
 - [ ] Windows/Linux: Native tray icon support (libappindicator)
 - [ ] Linux: Solve NVIDIA incompatibility with libSkia
 
