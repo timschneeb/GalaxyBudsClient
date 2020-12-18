@@ -139,6 +139,14 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                 throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "Timed out while waiting to enter connection phase. Another task is already preparing a connection.");
             }
 
+            if (_client?.Connected ?? false)
+            {
+                Log.Debug($"Windows.BluetoothService: Already connected, skipped.");
+                Log.Debug("CONN_SEM_REL 0");
+                _connSemaphore.Release();
+                return;
+            }
+
             SelectAdapter();
             
             Connecting?.Invoke(this, EventArgs.Empty);
@@ -153,15 +161,9 @@ namespace GalaxyBudsClient.Bluetooth.Windows
             {
                 Log.Error("Windows.BluetoothService: Cannot create client and connect.");
                 BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.Unknown, "Cannot create client"));
-                Log.Fatal("CONN_SEM_REL A");
+                Log.Debug("CONN_SEM_REL A");
                 _connSemaphore.Release();
                 return;
-            }
-
-            if (_client.Connected)
-            {
-                Log.Debug($"Windows.BluetoothService: Closing existing connection...");
-                _client.Close();
             }
 
             try
@@ -197,7 +199,7 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                     BluetoothErrorAsync?.Invoke(this, new BluetoothException(
                         BluetoothException.ErrorCodes.ConnectFailed,
                         $"Invalid MAC address. Please deregister your device and try again."));
-                    Log.Fatal("CONN_SEM_REL B");
+                    Log.Debug("CONN_SEM_REL B");
                     _connSemaphore.Release();
                     return;
                 }
@@ -215,7 +217,7 @@ namespace GalaxyBudsClient.Bluetooth.Windows
             }
             finally
             {
-                Log.Fatal("CONN_SEM_REL C");
+                Log.Debug("CONN_SEM_REL C");
                 _connSemaphore.Release();
             }
         }
