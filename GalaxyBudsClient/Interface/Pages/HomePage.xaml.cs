@@ -126,7 +126,7 @@ namespace GalaxyBudsClient.Interface.Pages
                 SetWarning(true, $"{Loc.Resolve("mainpage_corrupt_data")} ({e.Message})");
                 await Task.Delay(500).ContinueWith(async(_)=>
                 {
-                    Task.Factory.StartNew(() => BluetoothImpl.Instance.ConnectAsync());
+                    await Task.Factory.StartNew(() => BluetoothImpl.Instance.ConnectAsync());
                     SetWarning(false);
                 });
             }), DispatcherPriority.Render);

@@ -19,6 +19,7 @@ namespace InTheHand.Net.Bluetooth.Msft
 #if WinXP
     [StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
 #endif
+    [CLSCompliant(false)]
     public struct BLUETOOTH_DEVICE_INFO
     {
         public int dwSize;

@@ -286,7 +286,7 @@
     <sys:String x:Key="adv_seamless">无缝连接</sys:String>
     <sys:String x:Key="adv_seamless_desc"> 快速切换到附近的设备，而无需断开耳机或打开配对模式 </sys:String>
     <sys:String x:Key="adv_resume_playback">当设备被佩戴，恢复/启动媒体播放</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">当至少一个接近传感器被覆盖时，发送全局播放/暂停状态改变事件 (Windows only)</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">当至少一个接近传感器被覆盖时，发送全局播放/暂停状态改变事件 (Desktop only)</sys:String>
     <sys:String x:Key="adv_sidetone">通话时使用环境音</sys:String>
     <sys:String x:Key="adv_sidetone_desc"> 在打电话的时候更清楚地听到你自己的声音</sys:String>
     <sys:String x:Key="adv_gaming_mode">游戏模式</sys:String>

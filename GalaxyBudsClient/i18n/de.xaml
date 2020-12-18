@@ -289,7 +289,7 @@
     <sys:String x:Key="adv_seamless">Nahtlose Verbindung</sys:String>
     <sys:String x:Key="adv_seamless_desc">Wechseln Sie schnell zu Geräten in der Nähe, ohne die Ohrhörer zu trennen oder den Pairing-Modus zu aktivieren</sys:String>
     <sys:String x:Key="adv_resume_playback">Setze die Wiedergabe fort, wenn die Buds getragen werden</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">Sendet ein Pause/Play-Signal wenn mindestens einer der Näherungsensoren bedeckt ist (nur Windows)</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Sendet ein Pause/Play-Signal wenn mindestens einer der Näherungsensoren bedeckt ist (nur Desktop)</sys:String>
     <sys:String x:Key="adv_sidetone">Bei Anrufen Umgebungston verwenden</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Höre Deine Ihre eigene Stimme klarer, wenn Du telefonierst.</sys:String>
     <sys:String x:Key="adv_passthrough">Druckentlastung durch Umgebungssound</sys:String>

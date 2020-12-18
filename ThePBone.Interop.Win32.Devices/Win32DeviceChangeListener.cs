@@ -7,10 +7,13 @@ using InTheHand.Net.Bluetooth.Msft;
 using Serilog;
 using ThePBone.Interop.Win32.Devices.Bluetooth;
 using ThePBone.Interop.Win32.Devices.Utils;
-using static ThePBone.Interop.Win32.Devices.UnmanagedMethods;
+using static ThePBone.Interop.Win32.Devices.UnmanagedDevice;
 
 namespace ThePBone.Interop.Win32.Devices
 {
+    // ReSharper disable InconsistentNaming
+#pragma warning disable 169, 649
+
     public class Win32DeviceChangeListener : IDisposable
     {
         private static readonly object Padlock = new object();
@@ -100,7 +103,7 @@ namespace ThePBone.Interop.Win32.Devices
         {
             Debug.Assert(_hDevNotification == null, "btRegister, already set.");
             Debug.Assert(_hDevNotification == null || _hDevNotification.IsInvalid, "btRegister, already registered.");
-            IntPtr windowHandle = _wndProc.hWnd;
+            IntPtr windowHandle = _wndProc.WindowHandle;
             DEV_BROADCAST_HANDLE devHandle = new DEV_BROADCAST_HANDLE(bluetoothRadioHandle);
             RegisterDeviceNotificationSafeHandle hDevNotification
                 = RegisterDeviceNotification_SafeHandle(windowHandle,
@@ -117,7 +120,7 @@ namespace ThePBone.Interop.Win32.Devices
         {
             switch (e.Msg)
             {
-                case UnmanagedMethods.WindowsMessage.WM_DEVICECHANGE:
+                case Unmanaged.WindowsMessage.WM_DEVICECHANGE:
                     Dbt subId = (Dbt) e.wParam.ToInt64();
                     if (subId == Dbt.CustomEvent
                             || subId == Dbt.DeviceArrival

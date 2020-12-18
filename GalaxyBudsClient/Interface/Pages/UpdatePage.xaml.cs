@@ -57,8 +57,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		{
 			foreach(var item in items)
 			{
-				// TODO
-				if (item.IsWindowsUpdate && PlatformUtils.IsWindows)
+                if (item.IsWindowsUpdate && PlatformUtils.IsWindows)
 				{
 					UpdateInstallerHandler = OnInstall_Windows;
 					Select(item, silent);
@@ -75,9 +74,9 @@ namespace GalaxyBudsClient.Interface.Pages
 		}
 
 		private void OnInstall_Windows(object? sender, AppCastItem e)
-		{
-			throw new NotImplementedException();
-		}
+        {
+            MainWindow.Instance.UpdateProgressPage.BeginUpdate(e);
+        }
 
 		private void OnInstall_Linux(object? sender, AppCastItem e)
 		{

@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace ThePBone.Interop.Win32.Devices
+namespace ThePBone.Interop.Win32
 {
     public class WindowMessage
     {
         public IntPtr hWnd { set; get; }
-        public UnmanagedMethods.WindowsMessage Msg { set; get; }
+        public Unmanaged.WindowsMessage Msg { set; get; }
         public IntPtr wParam { set; get; }
         public IntPtr lParam { set; get; }
 

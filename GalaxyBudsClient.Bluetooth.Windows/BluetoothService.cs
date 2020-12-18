@@ -12,6 +12,7 @@ using InTheHand.Net.Sockets;
 using InTheHand.Net.Bluetooth;
 using Serilog;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 using System.Transactions;
 using ThePBone.Interop.Win32;
 using ThePBone.Interop.Win32.Devices;
@@ -27,7 +28,7 @@ namespace GalaxyBudsClient.Bluetooth.Windows
 
         private BluetoothClient? _client;
         private readonly object _btlock = new object();
-        static SemaphoreSlim _connSemaphore = new SemaphoreSlim(1, 1);
+        static readonly SemaphoreSlim _connSemaphore = new SemaphoreSlim(1, 1);
         
         private string _currentMac = string.Empty;
         private string _currentUuid = string.Empty;
@@ -35,7 +36,9 @@ namespace GalaxyBudsClient.Bluetooth.Windows
         public event EventHandler? RfcommConnected;
         public event EventHandler? Connecting;
         public event EventHandler? Connected;
+#pragma warning disable 0067
         public event EventHandler<string>? Disconnected;
+#pragma warning restore
         public event EventHandler<BluetoothException>? BluetoothErrorAsync;
         public event EventHandler<byte[]>? NewDataAvailable;
 
@@ -141,8 +144,7 @@ namespace GalaxyBudsClient.Bluetooth.Windows
 
             if (_client?.Connected ?? false)
             {
-                Log.Debug($"Windows.BluetoothService: Already connected, skipped.");
-                Log.Debug("CONN_SEM_REL 0");
+                Log.Debug("Windows.BluetoothService: Already connected, skipped.");
                 _connSemaphore.Release();
                 return;
             }
@@ -161,7 +163,6 @@ namespace GalaxyBudsClient.Bluetooth.Windows
             {
                 Log.Error("Windows.BluetoothService: Cannot create client and connect.");
                 BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.Unknown, "Cannot create client"));
-                Log.Debug("CONN_SEM_REL A");
                 _connSemaphore.Release();
                 return;
             }
@@ -199,7 +200,6 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                     BluetoothErrorAsync?.Invoke(this, new BluetoothException(
                         BluetoothException.ErrorCodes.ConnectFailed,
                         $"Invalid MAC address. Please deregister your device and try again."));
-                    Log.Debug("CONN_SEM_REL B");
                     _connSemaphore.Release();
                     return;
                 }
@@ -217,7 +217,6 @@ namespace GalaxyBudsClient.Bluetooth.Windows
             }
             finally
             {
-                Log.Debug("CONN_SEM_REL C");
                 _connSemaphore.Release();
             }
         }
@@ -240,6 +239,8 @@ namespace GalaxyBudsClient.Bluetooth.Windows
             /* Detach device if not already done... */
             _client?.Close();
             _client = null;
+            
+            await Task.CompletedTask;
         }
         #endregion
 
@@ -252,7 +253,9 @@ namespace GalaxyBudsClient.Bluetooth.Windows
             }
             await Task.CompletedTask;
         }
+        #endregion
 
+        #region Enumaration
         public async Task<BluetoothDevice[]> GetDevicesAsync()
         {
             if (_client == null)
@@ -275,19 +278,19 @@ namespace GalaxyBudsClient.Bluetooth.Windows
             BluetoothDevice[] devices = new BluetoothDevice[devs.Length];
             for (int i = 0; i < devs.Length; i++)
             {
-                devices[i] = new BluetoothDevice(devs[i].DeviceName, devs[i].DeviceAddress.ToString(),
+                var formattedMac = Regex.Replace(devs[i].DeviceAddress.ToString(), ".{2}", "$0:").TrimEnd(':');
+                devices[i] = new BluetoothDevice(devs[i].DeviceName, formattedMac,
                     devs[i].Connected, true, new BluetoothCoD(devs[i].ClassOfDevice.Value));
             }
 
             return devices;
         }
-
         #endregion
 
         #region Service
         private void BluetoothServiceLoop()
         {
-            Stream peerStream = null;
+            Stream? peerStream = null;
 
             while (true)
             {

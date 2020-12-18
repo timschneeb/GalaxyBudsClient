@@ -36,8 +36,10 @@ namespace GalaxyBudsClient.Utils
             }
         }
 
-        private readonly SparkleUpdater _sparkle;
+        public SparkleUpdater Core => _sparkle;
         
+        private readonly SparkleUpdater _sparkle;
+
         public UpdateManager()
         {
             _sparkle = new SparkleUpdater("https://timschneeberger.me/updates/galaxybudsclient/appcast.xml", new Ed25519Checker(SecurityMode.Unsafe))

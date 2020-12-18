@@ -289,7 +289,7 @@
     <sys:String x:Key="adv_seamless">イヤホンをシームレスに接続</sys:String>
     <sys:String x:Key="adv_seamless_desc">イヤホンの接続を解除したりペアリングモードにしたりすることなく素早く近くの他のデバイスに切り替えます。</sys:String>
     <sys:String x:Key="adv_resume_playback">イヤホンを装着時にプレイバック再開/開始</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">一つ以上の距離センサが遮られた場合にメディア再生/停止の信号を送ります。(Windows機能)</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">一つ以上の距離センサが遮られた場合にメディア再生/停止の信号を送ります。(Desktop機能)</sys:String>
     <sys:String x:Key="adv_sidetone">通話中に[周辺の音]を使用</sys:String>
     <sys:String x:Key="adv_sidetone_desc">通話中に音声がはっきり聞こえます。</sys:String>
     <sys:String x:Key="adv_gaming_mode">ゲームモード</sys:String>

@@ -288,7 +288,7 @@
     <sys:String x:Key="adv_seamless">Koneksi Earbud Otomatis</sys:String>
     <sys:String x:Key="adv_seamless_desc">Beralih dengan cepat ke perangkat terdekat tanpa melepaskan earbud atau mengaktifkan mode pairing</sys:String>
     <sys:String x:Key="adv_resume_playback">Lanjutkan pemutaran media kembali saat Earbuds digunakan</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">Melanjutkan pemutaran / melakukan jeda saat sensor pada Earbuds tertutupi (Hanya berlaku untuk Windows)</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Melanjutkan pemutaran / melakukan jeda saat sensor pada Earbuds tertutupi (Hanya berlaku untuk Desktop)</sys:String>
     <sys:String x:Key="adv_sidetone">Aktifkan Suara Sekitar saat melakukan telepon</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Anda dapat mendengar suara anda lebih jelas saat melakukan telepon</sys:String>
     <sys:String x:Key="adv_passthrough">Kurangi tekanan dengan suara sekitar</sys:String>

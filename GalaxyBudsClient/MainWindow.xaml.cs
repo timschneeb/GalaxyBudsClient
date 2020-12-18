@@ -35,14 +35,17 @@ namespace GalaxyBudsClient
         private readonly CustomTouchActionPage _customTouchActionPage = new CustomTouchActionPage();
         private readonly ConnectionLostPage _connectionLostPage = new ConnectionLostPage();
         private readonly UpdatePage _updatePage = new UpdatePage();
-        
+        private readonly UpdateProgressPage _updateProgressPage = new UpdateProgressPage();
+
         private readonly CustomTitleBar _titleBar;
         private BudsPopup _popup;
         private DateTime _lastPopupTime = DateTime.UtcNow;
-        
+        private WearStates _lastWearState = WearStates.Both;
+
         public PageContainer Pager { get; }
         public CustomTouchActionPage CustomTouchActionPage => _customTouchActionPage;
         public UpdatePage UpdatePage => _updatePage;
+        public UpdateProgressPage UpdateProgressPage => _updateProgressPage;
 
         private static MainWindow? _instance;
         public static MainWindow Instance => _instance ??= new MainWindow();
@@ -62,7 +65,7 @@ namespace GalaxyBudsClient
             Pager.RegisterPages(_homePage, new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(), new CreditsPage(),
                 new TouchpadPage(), new EqualizerPage(), new AdvancedPage(), new SystemPage(), new SelfTestPage(), new SettingsPage(),
                 new PopupSettingsPage(), _connectionLostPage, _customTouchActionPage, new DeviceSelectionPage(),
-                new WelcomePage(), _unsupportedFeaturePage, _updatePage);
+                new WelcomePage(), _unsupportedFeaturePage, _updatePage, _updateProgressPage);
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
@@ -75,6 +78,7 @@ namespace GalaxyBudsClient
             BluetoothImpl.Instance.Connected += OnConnected;
             
             SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+            SPPMessageHandler.Instance.StatusUpdate += OnStatusUpdate;
             SPPMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
 
             Pager.PageSwitched += (sender, pages) => BuildOptionsMenu();
@@ -90,6 +94,17 @@ namespace GalaxyBudsClient
             {
                 Pager.SwitchPage(AbstractPage.Pages.Welcome);
             }
+        }
+
+        private void OnStatusUpdate(object? sender, StatusUpdateParser e)
+        {
+            if (_lastWearState == WearStates.None &&
+                e.WearState != WearStates.None && SettingsProvider.Instance.ResumePlaybackOnSensor)
+            {
+                MediaKeyRemoteImpl.Instance.Play();
+            }
+
+            _lastWearState = e.WearState;
         }
 
         private async void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)

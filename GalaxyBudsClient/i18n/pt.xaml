@@ -288,7 +288,7 @@
     <sys:String x:Key="adv_seamless">Conexão direta de fones de ouvido</sys:String>
     <sys:String x:Key="adv_seamless_desc">Alterne rapidamente para aparelhos próximos sem desconectar seus fones de ouvido nem ativar o modo de pareamento.</sys:String>
     <sys:String x:Key="adv_resume_playback">Continua a reprodução de mídia ao colocar os fones</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">Envia um evento global de reprodução/pausa quando, ao menos, um sensor de proximidade for coberto (apenas Windows).</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Envia um evento global de reprodução/pausa quando, ao menos, um sensor de proximidade for coberto (apenas Desktop).</sys:String>
     <sys:String x:Key="adv_sidetone">Ativar o som ambiente durante chamadas</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Ouça melhor sua voz durante chamadas</sys:String>
     <sys:String x:Key="adv_passthrough">Aliviar a pressão com som ambiente</sys:String>

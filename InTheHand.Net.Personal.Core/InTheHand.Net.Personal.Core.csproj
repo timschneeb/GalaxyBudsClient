@@ -12,6 +12,11 @@
         <DefineConstants>NO_WINFORMS;WinXP;V2</DefineConstants>
     </PropertyGroup>
     <ItemGroup>
+      <Compile Remove="Windows\**" />
+      <EmbeddedResource Remove="Windows\**" />
+      <None Remove="Windows\**" />
+    </ItemGroup>
+    <ItemGroup>
       <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
       <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
       <PackageReference Include="System.IO.Ports" Version="5.0.0" />

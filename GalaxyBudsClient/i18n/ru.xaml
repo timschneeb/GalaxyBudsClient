@@ -289,7 +289,7 @@
     <sys:String x:Key="adv_seamless">Бесшовное подключение наушников</sys:String>
     <sys:String x:Key="adv_seamless_desc">Быстро подключайтесь к устройствам поблизости, не отключая наушники и не включая режим сопряжения</sys:String>
     <sys:String x:Key="adv_resume_playback">Возобновить воспроизведение если наушники одеты</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">Отправляет общесистемную команду воспроизведение/пауза пока хотя бы один из датчиков приближения прикрыт (Только Windows)</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Отправляет общесистемную команду воспроизведение/пауза пока хотя бы один из датчиков приближения прикрыт (Только Desktop)</sys:String>
     <sys:String x:Key="adv_sidetone">Фоновые звуки во время вызова</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Улучшение слышимости своего голоса во время разговора по телефону</sys:String>
 

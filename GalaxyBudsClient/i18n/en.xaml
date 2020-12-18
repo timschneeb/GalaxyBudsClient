@@ -141,10 +141,20 @@
     <sys:String x:Key="updater_footer_skipversion">Skip this version</sys:String>
     <sys:String x:Key="updater_footer_install">Install now</sys:String>
     <sys:String x:Key="updater_appcast_null">New update but no valid appcast data found. Please try again later.</sys:String>
-
     <sys:String x:Key="updater_noupdate">No updates are available at the moment. Please try again later or check and subscribe the GitHub page for updates.</sys:String>
     <sys:String x:Key="updater_noupdate_title">No updates</sys:String>
     <sys:String x:Key="updater_newrelease">Update {0} for Galaxy Buds Manager has been released</sys:String>
+
+    <sys:String x:Key="updater_dl_header">Downloading...</sys:String>
+    <sys:String x:Key="updater_dl_manual">View on GitHub</sys:String>
+    <sys:String x:Key="updater_dl_fail_title">Download failed</sys:String>
+    <sys:String x:Key="updater_dl_fail">Reason:&#10;</sys:String>
+    <sys:String x:Key="updater_dl_progress_prepare">Preparing download...</sys:String>
+    <sys:String x:Key="updater_dl_progress_cancelled">Download cancelled</sys:String>
+    <sys:String x:Key="updater_dl_progress_finished">Download finished. Launching installer...</sys:String>
+    <sys:String x:Key="updater_dl_progress">Downloading... {0}%</sys:String>
+    <sys:String x:Key="updater_dl_progress_size">({0}/{1} megabytes)</sys:String>
+    <sys:String x:Key="updater_dl_note">When the download finishes, this app will automatically close itself and launch a separate update installer. It may take a few seconds until it shows up.</sys:String>
 
     <!-- Device selection page (setup) -->
     <sys:String x:Key="devsel_header">Select your Galaxy Buds</sys:String>
@@ -303,7 +313,7 @@
     <sys:String x:Key="adv_seamless">Seamless Earbud Connection</sys:String>
     <sys:String x:Key="adv_seamless_desc">Switch quickly to nearby devices without disconnecting your earbuds or turning on pairing mode</sys:String>
     <sys:String x:Key="adv_resume_playback">Resume/start playback if Buds are worn</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">Sends a global play/pause state change event when at least one of the proximity sensors is covered (Windows only)</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Sends a global play/pause state change event when at least one of the proximity sensors is covered (Desktop only)</sys:String>
     <sys:String x:Key="adv_sidetone">Use Ambient Sound during calls</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Hear your own voice more clearly while on the phone</sys:String>
     <sys:String x:Key="adv_passthrough">Relieve pressure with ambient sound</sys:String>

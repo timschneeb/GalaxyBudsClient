@@ -287,7 +287,7 @@
     <sys:String x:Key="adv_seamless">디바이스간에 간편하게 전환하기</sys:String>
     <sys:String x:Key="adv_seamless_desc">이어버드의 연결을 끊거나 페어링 모드에 들어가지 않고 빠르게 주변에 있는 다른 디바이스로 전환합니다.</sys:String>
     <sys:String x:Key="adv_resume_playback">이어버드 착용 시 재생 재개/시작하기</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">하나 이상의 거리 센서가 가려졌을 경우 전체 재생/정지 신호를 보냅니다. (Windows 기능)</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">하나 이상의 거리 센서가 가려졌을 경우 전체 재생/정지 신호를 보냅니다. (Desktop 기능)</sys:String>
     <sys:String x:Key="adv_sidetone">통화 중 주변 소리 듣기 허용</sys:String>
     <sys:String x:Key="adv_sidetone_desc">통화 중에 내 목소리를 더 또렷하게 들어보세요.</sys:String>
     <sys:String x:Key="adv_gaming_mode">게임 모드</sys:String>

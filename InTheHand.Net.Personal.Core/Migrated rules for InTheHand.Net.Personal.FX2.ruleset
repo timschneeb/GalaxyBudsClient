@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<RuleSet Name="Migrated rules for InTheHand.Net.Personal.FX2.ruleset" Description="This rule set was created from the CodeAnalysisRules property for the &quot;CodeAnalysis (Any CPU)&quot; configuration in project &quot;C:\Users\peter\Source\Repos\32feet\InTheHand.Net.Personal\InTheHand.Net.Personal.FX2.csproj&quot;." ToolsVersion="14.0">
-  <IncludeAll Action="Warning" />
-  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
-    <Rule Id="CA1304" Action="None" />
-    <Rule Id="CA1305" Action="None" />
-    <Rule Id="CA1822" Action="None" />
-  </Rules>
-</RuleSet>

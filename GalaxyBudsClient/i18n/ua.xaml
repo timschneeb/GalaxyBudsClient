@@ -289,7 +289,7 @@
     <sys:String x:Key="adv_seamless">Зручне підключення до навушників</sys:String>
     <sys:String x:Key="adv_seamless_desc">Швидко підключайтесь до пристроїв поблизку, не відключаючи навушники і не вмикаючи режим парування</sys:String>
     <sys:String x:Key="adv_resume_playback">Відновити відтворення якщо навушники одягнені</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">Відправляє загальносистемну команду відтворення / пауза поки хоча б один з датчиків наближення прикритий (Тільки Windows)</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Відправляє загальносистемну команду відтворення / пауза поки хоча б один з датчиків наближення прикритий (Тільки Desktop)</sys:String>
     <sys:String x:Key="adv_sidetone">Фонові звуки під час виклику</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Поліпшення чутності свого голосу під час розмови по телефону</sys:String>
     

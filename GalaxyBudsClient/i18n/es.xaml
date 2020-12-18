@@ -286,7 +286,7 @@
     <sys:String x:Key="adv_seamless">Conexión fácil con auriculares</sys:String>
     <sys:String x:Key="adv_seamless_desc">Cambie rapidamente a los dispositivos cercanos sin desconectar sus auriculares ni activar el modo de vinculación</sys:String>
     <sys:String x:Key="adv_resume_playback">Resumir la reproducción si se coloca los Buds en el oido</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">Envia una orden de play/pausa si al menos uno de los sensores de proximidad se cubre (solo Windows)</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Envia una orden de play/pausa si al menos uno de los sensores de proximidad se cubre (solo Desktop)</sys:String>
     <sys:String x:Key="adv_sidetone">Sonido ambiental en llamadas</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Escuche su voz con mayor nítidez cuando esté usando el teléfono.</sys:String>
     <sys:String x:Key="adv_gaming_mode">Modo Juego</sys:String>

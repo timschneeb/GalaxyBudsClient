@@ -278,7 +278,7 @@
     <sys:String x:Key="adv_seamless">Kusursuz Kulaklık Bağlantısı</sys:String>
     <sys:String x:Key="adv_seamless_desc">Kulaklığınızın bağlantısını kesmeden veya eşleştirme modunu açmadan yakındaki cihazlara hızlıca geçiş yapın.</sys:String>
     <sys:String x:Key="adv_resume_playback">Kulaklıklar takıldığında başlat ya da devam et</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">En az bir kulaklığın yakınlık sensörü yakınlık algılarsa, genel bir başlat/durdur işlemi gerçekleştirilir (Sadece Windows)</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">En az bir kulaklığın yakınlık sensörü yakınlık algılarsa, genel bir başlat/durdur işlemi gerçekleştirilir (Sadece Desktop)</sys:String>
     <sys:String x:Key="adv_sidetone">Görüşmeler esnasında Ortam Sesini kullan</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Görüşme esnasında kendinizi daha temiz duymanızı sağlar</sys:String>
     <sys:String x:Key="adv_gaming_mode">Oyun Modu</sys:String>

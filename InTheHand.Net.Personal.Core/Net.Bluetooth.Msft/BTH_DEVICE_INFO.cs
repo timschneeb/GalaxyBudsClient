@@ -5,6 +5,7 @@
 // Copyright (c) 2003-2011 In The Hand Ltd, All rights reserved.
 // This source code is licensed under the MIT License
 
+using System;
 using System.Runtime.InteropServices;
 
 namespace InTheHand.Net.Bluetooth.Msft
@@ -12,6 +13,7 @@ namespace InTheHand.Net.Bluetooth.Msft
     //
     // The BTH_DEVICE_INFO structure stores information about a Bluetooth device.
     //
+    [CLSCompliant(false)]
     [StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public struct BTH_DEVICE_INFO
     {

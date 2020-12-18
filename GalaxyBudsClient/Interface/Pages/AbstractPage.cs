@@ -27,6 +27,7 @@ namespace GalaxyBudsClient.Interface.Pages
             Advanced,
             UnsupportedFeature,
             UpdateAvailable,
+            UpdateProgress,
             Undefined
         }
 

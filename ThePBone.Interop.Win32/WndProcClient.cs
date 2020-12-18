@@ -3,41 +3,43 @@ using System.ComponentModel;
 using System.Runtime.InteropServices;
 using Serilog;
 
-namespace ThePBone.Interop.Win32.Devices
+namespace ThePBone.Interop.Win32
 {
 
     public class WndProcClient
     {
         public event EventHandler<WindowMessage>? MessageReceived;
 
-        private UnmanagedMethods.WndProc? _wndProcDelegate;
-        private IntPtr _hwnd;
-        public IntPtr hWnd => _hwnd;
+        private readonly Unmanaged.WndProc? _wndProcDelegate;
+        private readonly IntPtr _hwnd;
+        public IntPtr WindowHandle => _hwnd;
 
         public WndProcClient()
         {
             // Ensure that the delegate doesn't get garbage collected by storing it as a field.
-            _wndProcDelegate = new UnmanagedMethods.WndProc(WndProc);
+            _wndProcDelegate = new Unmanaged.WndProc(WndProc);
 
-            UnmanagedMethods.WNDCLASSEX wndClassEx = new UnmanagedMethods.WNDCLASSEX
+            Unmanaged.WNDCLASSEX wndClassEx = new Unmanaged.WNDCLASSEX
             {
-                cbSize = Marshal.SizeOf<UnmanagedMethods.WNDCLASSEX>(),
+                cbSize = Marshal.SizeOf<Unmanaged.WNDCLASSEX>(),
                 lpfnWndProc = _wndProcDelegate,
-                hInstance = UnmanagedMethods.GetModuleHandle(null),
+                hInstance = Unmanaged.GetModuleHandle(null),
                 lpszClassName = "MessageWindow " + Guid.NewGuid(),
             };
 
-            ushort atom = UnmanagedMethods.RegisterClassEx(ref wndClassEx);
+            ushort atom = Unmanaged.RegisterClassEx(ref wndClassEx);
 
             if (atom == 0)
             {
+                Log.Error("Interop.Win32.WndProcClient: atom is null");
                 throw new Win32Exception();
             }
 
-            _hwnd = UnmanagedMethods.CreateWindowEx(0, atom, null, 0, 0, 0, 0, 0, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
+            _hwnd = Unmanaged.CreateWindowEx(0, atom, null, 0, 0, 0, 0, 0, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
 
             if (_hwnd == IntPtr.Zero)
             {
+                Log.Error("Interop.Win32.WndProcClient: nWnd is null");
                 throw new Win32Exception();
             }
         }
@@ -47,14 +49,14 @@ namespace ThePBone.Interop.Win32.Devices
             var message = new WindowMessage()
             {
                 hWnd = hWnd,
-                Msg = (UnmanagedMethods.WindowsMessage) msg,
+                Msg = (Unmanaged.WindowsMessage) msg,
                 wParam = wParam,
                 lParam = lParam
             };
 
             MessageReceived?.Invoke(this, message);
 
-            return UnmanagedMethods.DefWindowProc(hWnd, msg, wParam, lParam);
+            return Unmanaged.DefWindowProc(hWnd, msg, wParam, lParam);
         }
     }
 }

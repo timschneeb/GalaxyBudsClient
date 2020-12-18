@@ -292,7 +292,7 @@
         <sys:String x:Key="adv_seamless">Connessione senza interruzione</sys:String>
         <sys:String x:Key="adv_seamless_desc">Passa rapidamente ai dispositivi nelle vicinanze senza disconnettere gli auricolari o attivare la modalità di associazione</sys:String>
         <sys:String x:Key="adv_resume_playback">Riprendi/avvia la riproduzione se gli auricolari sono indossati</sys:String>
-        <sys:String x:Key="adv_resume_playback_desc">Invia un evento globale di cambiamento di play/pausa quando almeno uno dei sensori di prossimità è coperto (solo Windows)</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Invia un evento globale di cambiamento di play/pausa quando almeno uno dei sensori di prossimità è coperto (solo Desktop)</sys:String>
         <sys:String x:Key="adv_sidetone">Usa il Suono Ambientale durante le chiamate</sys:String>
         <sys:String x:Key="adv_sidetone_desc">Senti la tua voce più chiaramente quando sei al telefono</sys:String>
         <sys:String x:Key="adv_passthrough">Allevia la pressione con il suono ambientale</sys:String>
