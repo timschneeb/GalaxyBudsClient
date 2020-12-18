@@ -26,8 +26,8 @@ namespace GalaxyBudsClient.Bluetooth.Linux
         private IAdapter1? _adapter;
         private IDevice1? _device;
 
-        private string _currentMac = String.Empty;
-        private string _currentUuid = String.Empty;
+        private string _currentMac = string.Empty;
+        private string _currentUuid = string.Empty;
 
         private IDisposable? _connectionWatchdog;
 

@@ -50,7 +50,7 @@ namespace GalaxyBudsClient.Platform
         private BluetoothImpl()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                throw new NotImplementedException();
+                _backend = new Bluetooth.Windows.BluetoothService();
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 _backend = new Bluetooth.Linux.BluetoothService();
             else
@@ -146,7 +146,7 @@ namespace GalaxyBudsClient.Platform
         {
             if (!IsConnected)
             {
-                BluetoothError?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.MessageNotSent, "Attempted to send command to disconnected device"));
+                BluetoothError?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.SendFailed, "Attempted to send command to disconnected device"));
                 return;
             }
             

@@ -10,7 +10,8 @@ namespace GalaxyBudsClient.Bluetooth
             UnsupportedDevice,
             TimedOut,
             ConnectFailed,
-            MessageNotSent,
+            ReceiveFailed,
+            SendFailed,
             Unknown
         }
         

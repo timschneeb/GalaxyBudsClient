@@ -24,8 +24,9 @@ namespace GalaxyBudsClient
         public static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
+                .MinimumLevel.Verbose()
                 .WriteTo.Console()
+                .WriteTo.Debug()
                 .WriteTo.File(PlatformUtils.CombineDataPath("application.log"))
                 .CreateLogger();
             

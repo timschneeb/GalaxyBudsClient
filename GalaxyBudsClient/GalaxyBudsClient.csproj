@@ -39,15 +39,10 @@
         <PackageReference Include="Sentry" Version="3.0.0-alpha.6" />
         <PackageReference Include="Serilog" Version="2.10.1-dev-01256" />
         <PackageReference Include="Serilog.Sinks.Console" Version="4.0.0-dev-00839" />
+        <PackageReference Include="Serilog.Sinks.Debug" Version="1.0.1" />
         <PackageReference Include="Serilog.Sinks.File" Version="5.0.0-dev-00905" />
         <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
         <PackageReference Include="Tmds.DBus" Version="0.9.1" />
-    </ItemGroup>
-    <ItemGroup>
-      <UpToDateCheckInput Remove="Resources\window\window_close_light.png" />
-      <UpToDateCheckInput Remove="Resources\window\window_close_nor.png" />
-      <UpToDateCheckInput Remove="Resources\window\window_minimum_light.png" />
-      <UpToDateCheckInput Remove="Resources\window\window_minimum_nor.png" />
     </ItemGroup>
     <ItemGroup>
       <AvaloniaXaml Remove="bin\Debug\netcoreapp3.1\**" />
@@ -63,6 +58,7 @@
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Linux\GalaxyBudsClient.Bluetooth.Linux.csproj" />
+      <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Windows\GalaxyBudsClient.Bluetooth.Windows.csproj" />
       <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj" />
     </ItemGroup>
 </Project>
