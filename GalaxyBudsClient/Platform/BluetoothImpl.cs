@@ -44,7 +44,7 @@ namespace GalaxyBudsClient.Platform
         public Models ActiveModel => SettingsProvider.Instance.RegisteredDevice.Model;
         public IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(ActiveModel) ?? new StubDeviceSpec();
         public bool IsConnected => _backend.IsStreamConnected;
-        
+
         private Guid ServiceUuid => DeviceSpec.ServiceUuid;
 
         private BluetoothImpl()

@@ -27,7 +27,8 @@ namespace GalaxyBudsClient.Bluetooth.Windows
 
         private BluetoothClient? _client;
         private readonly object _btlock = new object();
-
+        static SemaphoreSlim _connSemaphore = new SemaphoreSlim(1, 1);
+        
         private string _currentMac = string.Empty;
         private string _currentUuid = string.Empty;
 
@@ -93,7 +94,13 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                     }
                     catch (InvalidOperationException ex)
                     {
-                        Log.Error($"Windows.BluetoothService: DeviceInRange: InvalidOperationException ({ex.Message})");
+                        BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.Unknown, ex.Message));
+                        Log.Error($"Windows.BluetoothService: DeviceInRange: InvalidOperationException caught ({ex.Message})");
+                    }
+                    catch (BluetoothException ex)
+                    {
+                        BluetoothErrorAsync?.Invoke(this, ex);
+                        Log.Error($"Windows.BluetoothService: DeviceInRange: BluetoothException caught ({ex.Message})");
                     }
 
                 }
@@ -125,11 +132,19 @@ namespace GalaxyBudsClient.Bluetooth.Windows
         #region Connection
         public async Task ConnectAsync(string macAddress, string uuid, bool noRetry = false)
         {
+            var semResult = await _connSemaphore.WaitAsync(5000);
+            if (semResult == false)
+            {
+                Log.Error($"Windows.BluetoothService: Connection attempt timed out due to blocked semaphore");
+                throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "Timed out while waiting to enter connection phase. Another task is already preparing a connection.");
+            }
+
             SelectAdapter();
             
             Connecting?.Invoke(this, EventArgs.Empty);
             Log.Debug($"Windows.BluetoothService: Connecting...");
 
+            _cancelSource?.Cancel();
             _client?.Close();
             _client = null;
             SelectAdapter();
@@ -138,6 +153,8 @@ namespace GalaxyBudsClient.Bluetooth.Windows
             {
                 Log.Error("Windows.BluetoothService: Cannot create client and connect.");
                 BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.Unknown, "Cannot create client"));
+                Log.Fatal("CONN_SEM_REL A");
+                _connSemaphore.Release();
                 return;
             }
 
@@ -159,7 +176,7 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                     var connectTask = Task.Factory.FromAsync(
                         (callback, stateObject) => _client.BeginConnect(addr, new Guid(uuid), callback, stateObject),
                         _client.EndConnect, null);
-                    
+
                     await connectTask.ContinueWith(tsk =>
                     {
                         if (tsk.IsFaulted)
@@ -169,7 +186,6 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                             {
                                 BluetoothErrorAsync?.Invoke(this, new BluetoothException(
                                     BluetoothException.ErrorCodes.ConnectFailed, ex.Message));
-
                                 return true;
                             });
                         }
@@ -181,20 +197,26 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                     BluetoothErrorAsync?.Invoke(this, new BluetoothException(
                         BluetoothException.ErrorCodes.ConnectFailed,
                         $"Invalid MAC address. Please deregister your device and try again."));
+                    Log.Fatal("CONN_SEM_REL B");
+                    _connSemaphore.Release();
                     return;
                 }
-  
+
                 Connected?.Invoke(this, EventArgs.Empty);
                 Log.Debug($"Windows.BluetoothService: Connected. Launching BluetoothServiceLoop.");
 
-
-                _loop?.Dispose();
                 _cancelSource = new CancellationTokenSource();
                 _loop = Task.Run(BluetoothServiceLoop, _cancelSource.Token);
             }
             catch (SocketException e)
             {
-                BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, e.Message));
+                BluetoothErrorAsync?.Invoke(this,
+                    new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, e.Message));
+            }
+            finally
+            {
+                Log.Fatal("CONN_SEM_REL C");
+                _connSemaphore.Release();
             }
         }
         #endregion
@@ -267,9 +289,16 @@ namespace GalaxyBudsClient.Bluetooth.Windows
 
             while (true)
             {
-                _cancelSource.Token.ThrowIfCancellationRequested();
-
-                Task.Delay(50).Wait(_cancelSource.Token);
+                try
+                {
+                    _cancelSource.Token.ThrowIfCancellationRequested();
+                }
+                catch (TaskCanceledException)
+                {
+                    peerStream?.Close();
+                    _client?.Close();
+                    throw;
+                }
                 
                 if (_client == null || !_client.Connected)
                 {
