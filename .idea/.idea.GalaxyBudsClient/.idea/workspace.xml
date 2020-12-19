@@ -9,18 +9,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="251ef05e-b4ff-45d6-b19b-dfffa1fae931" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/GalaxyBudsClient/Utils/UpdateManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GalaxyBudsClient/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/App.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/GalaxyBudsClient.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/GalaxyBudsClient.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Dialogs/BudsPopup.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Dialogs/BudsPopup.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Items/SwitchDetailListItem.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Items/SwitchDetailListItem.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/UpdatePage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/UpdatePage.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/UpdatePage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/UpdatePage.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/MainWindow.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/i18n/en.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/i18n/en.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GalaxyBudsClient/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GalaxyBudsClient/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +27,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1651E980-D666-4695-80ED-326E03EFC610/95/37e6deda/IAssemblyAccessor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/87DBB896-6B20-4A14-9B6A-7AB43642646D/5b/04d25521/ParseNumbers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5CB04603-73FD-4E34-B134-F9558BD7A7E5/2E/Dispatcher.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/tim/Development/GalaxyBudsClient/GalaxyBudsClient/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/WelcomePage.xaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1651E980-D666-4695-80ED-326E03EFC610/08/2f734594/JSONConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F9E8E74F-0926-4402-B832-0C7BCA0D1592/2E/IResourceProvider.cs" root0="SKIP_HIGHLIGHTING" />
@@ -44,7 +36,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/TouchUpdateParser.cs" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/StatusUpdateParser.cs" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/AmbientWearingUpdateParser.cs" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Decoder/SppRoleStateParser.cs" />
@@ -95,6 +86,7 @@
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/UpdatePage.xaml" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Interface/Pages/UpdatePage.xaml.cs" />
       <option value="$PROJECT_DIR$/GalaxyBudsClient/Utils/LocalizationUtils.cs" />
+      <option value="$PROJECT_DIR$/GalaxyBudsClient/Program.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lFViZ0CpC2QuPJaC1pFqMhLzzN" />
@@ -189,7 +181,8 @@
       <workItem from="1607978087029" duration="629000" />
       <workItem from="1608058091625" duration="24535000" />
       <workItem from="1608139002440" duration="7770000" />
-      <workItem from="1608157200279" duration="5510000" />
+      <workItem from="1608157200279" duration="6491000" />
+      <workItem from="1608390318987" duration="1381000" />
     </task>
     <task id="LOCAL-00001" summary="Update all">
       <created>1607543806441</created>
@@ -296,7 +289,21 @@
       <option name="project" value="LOCAL" />
       <updated>1608085536640</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Basic updater">
+      <created>1608163080446</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1608163080446</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Log detection">
+      <created>1608391823292</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1608391823292</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,7 +337,9 @@
     <MESSAGE value="Fix nullability issues + other problems" />
     <MESSAGE value="Fix devmode msg send" />
     <MESSAGE value="Better caching + finalize devmode restoration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Better caching + finalize devmode restoration" />
+    <MESSAGE value="Basic updater" />
+    <MESSAGE value="Log detection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Log detection" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
