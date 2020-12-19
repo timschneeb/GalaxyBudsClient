@@ -23,12 +23,13 @@ namespace GalaxyBudsClient
         // yet and stuff might break.
         public static void Main(string[] args)
         {
-            Log.Logger = new LoggerConfiguration()
+            var config = new LoggerConfiguration()
                 .MinimumLevel.Debug()
-                .WriteTo.Console()
-                .WriteTo.Debug()
-                .WriteTo.File(PlatformUtils.CombineDataPath("application.log"))
-                .CreateLogger();
+                .WriteTo.File(PlatformUtils.CombineDataPath("application.log"));
+            
+            config = PlatformUtils.IsWindows ? 
+                config.WriteTo.Debug() : config.WriteTo.Console();
+            Log.Logger =  config.CreateLogger();
             
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
