@@ -45,15 +45,9 @@ namespace GalaxyBudsClient
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 desktop.MainWindow = MainWindow.Instance;
-                desktop.Exit += OnExit;
             }
             
             base.OnFrameworkInitializationCompleted();
-        }
-
-        private void OnExit(object? sender, ControlledApplicationLifetimeExitEventArgs e)
-        {
-            
         }
 
         public void RestartApp(AbstractPage.Pages target)
