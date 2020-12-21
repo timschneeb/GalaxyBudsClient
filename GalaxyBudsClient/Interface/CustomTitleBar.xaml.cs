@@ -9,15 +9,15 @@ namespace GalaxyBudsClient.Interface
 {
     public class CustomTitleBar : UserControl
     {
-        private Button minimizeButton;
-        private Button closeButton;
+        private readonly Button minimizeButton;
+        private readonly Button closeButton;
         private Button optionsButton;
 
-        private DockPanel titleBar;
-        private Control titleBarBackground;
-        private TextBlock systemChromeTitle;
-        private NativeMenuBar seamlessMenuBar;
-        private NativeMenuBar defaultMenuBar;
+        private readonly DockPanel titleBar;
+        private readonly Control? titleBarBackground;
+        private readonly TextBlock? systemChromeTitle;
+        private readonly NativeMenuBar? seamlessMenuBar;
+        private readonly NativeMenuBar? defaultMenuBar;
 
         public static readonly StyledProperty<bool> IsSeamlessProperty =
             AvaloniaProperty.Register<CustomTitleBar, bool>(nameof(IsSeamless));
@@ -50,7 +50,7 @@ namespace GalaxyBudsClient.Interface
             AvaloniaProperty.Register<CustomTitleBar, string>(nameof(Title));
         
         public event EventHandler? OptionsPressed;
-
+        
         public Button OptionsButton
         {
             set => optionsButton = value;
@@ -59,11 +59,8 @@ namespace GalaxyBudsClient.Interface
         
         public string Title
         {
-            get { return GetValue(TitleProperty); }
-            set
-            {
-                SetValue(TitleProperty, value);
-            }
+            get => GetValue(TitleProperty);
+            set => SetValue(TitleProperty, value);
         }
         
         public CustomTitleBar()
@@ -92,7 +89,7 @@ namespace GalaxyBudsClient.Interface
             Window hostWindow = (Window)this.VisualRoot;
             hostWindow.Close();
         }
-        
+
         private void MinimizeWindow(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             Window hostWindow = (Window)this.VisualRoot;

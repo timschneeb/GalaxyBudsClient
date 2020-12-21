@@ -16,7 +16,7 @@ namespace ThePBone.Interop.Linux.TrayIcon
         #region Properties
         public event EventHandler<TrayMenuItem>? TrayMenuItemSelected;
         public event EventHandler? LeftClicked;
-
+        public event EventHandler RightClicked;
         public List<TrayMenuItem> MenuItems
         {
             get => _menuItems;

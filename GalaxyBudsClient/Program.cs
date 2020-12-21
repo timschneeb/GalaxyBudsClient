@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Logging;
+using Avalonia.Threading;
 using Config.Net;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
@@ -34,9 +36,8 @@ namespace GalaxyBudsClient
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
             Trace.Listeners.Add(new ConsoleTraceListener());
-            
-            BuildAvaloniaApp().StartWithClassicDesktopLifetime(args, ShutdownMode.OnExplicitShutdown);
 
+            BuildAvaloniaApp().StartWithClassicDesktopLifetime(args, ShutdownMode.OnExplicitShutdown);
         } 
 
         // Avalonia configuration, don't remove; also used by visual designer.
@@ -44,5 +45,7 @@ namespace GalaxyBudsClient
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
                 .LogToTrace();
+
+
     }
 }

@@ -177,24 +177,11 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                     _currentMac = macAddress;
                     _currentUuid = uuid;
 
-                    var connectTask = Task.Factory.FromAsync(
+                    _client.Connect(addr, new Guid(uuid));
+                    
+                    /*await  Task.Factory.FromAsync(
                         (callback, stateObject) => _client.BeginConnect(addr, new Guid(uuid), callback, stateObject),
-                        _client.EndConnect, null);
-
-                    await connectTask.ContinueWith(tsk =>
-                    {
-                        if (tsk.IsFaulted)
-                        {
-                            var flattened = tsk.Exception?.Flatten();
-                            flattened?.Handle(ex =>
-                            {
-                                BluetoothErrorAsync?.Invoke(this, new BluetoothException(
-                                    BluetoothException.ErrorCodes.ConnectFailed, ex.Message));
-                                return true;
-                            });
-                        }
-
-                    });
+                        _client.EndConnect, null);*/
                 }
                 catch (ArgumentException)
                 {
@@ -300,7 +287,7 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                     _cancelSource.Token.ThrowIfCancellationRequested();
                     Task.Delay(50).Wait(_cancelSource.Token);
                 }
-                catch (TaskCanceledException)
+                catch (OperationCanceledException)
                 {
                     peerStream?.Close();
                     _client?.Close();

@@ -2,15 +2,23 @@
 {
     public class TrayMenuItem
     {
-        public int Id { set; get; }
+        public ItemType Id { set; get; }
         public string Title { set; get; }
         public bool IsEnabled { set; get; }
         public virtual bool IsSeparator => false;
 
-        public TrayMenuItem(string title, bool isEnabled = true)
+        public TrayMenuItem(string title, bool isEnabled = true, ItemType id = ItemType.User)
         {
             Title = title;
+            Id = id;
             IsEnabled = isEnabled;
+        }
+
+        public TrayMenuItem(string title, ItemType id)
+        {
+            Title = title;
+            Id = id;
+            IsEnabled = true;
         }
     }
 

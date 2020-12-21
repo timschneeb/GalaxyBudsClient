@@ -48,7 +48,7 @@
 
                 <TextBox x:Name="HexDump"
                          Grid.Column="0" Text="Waiting for incoming data..." IsReadOnly="True"
-                         FontFamily="Monospace" FontSize="12"
+                         FontFamily="Monospace, Lucida Console" FontSize="12"
                          BorderBrush="{StaticResource SystemBaseLowColor}" />
 
                 <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"

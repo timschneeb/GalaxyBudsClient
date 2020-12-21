@@ -2,18 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using Avalonia.Platform;
 using Avalonia.Threading;
 using GalaxyBudsClient.Bluetooth;
-using GalaxyBudsClient.Bluetooth.Linux;
 using GalaxyBudsClient.Decoder;
 using GalaxyBudsClient.Interface;
 using GalaxyBudsClient.Interface.Developer;
@@ -27,9 +23,7 @@ using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using NetSparkleUpdater.Enums;
-using Sentry.Protocol;
 using Serilog;
-using ThePBone.Interop.Win32.TrayIcon;
 using MessageBox = GalaxyBudsClient.Interface.Dialogs.MessageBox;
 using RoutedEventArgs = Avalonia.Interactivity.RoutedEventArgs;
 using Window = Avalonia.Controls.Window;
@@ -45,13 +39,14 @@ namespace GalaxyBudsClient
         private readonly UpdatePage _updatePage = new UpdatePage();
         private readonly UpdateProgressPage _updateProgressPage = new UpdateProgressPage();
 
-        private readonly NotifyIconImpl _trayIcon = new NotifyIconImpl();
-        
         private readonly CustomTitleBar _titleBar;
         private BudsPopup _popup;
         private DateTime _lastPopupTime = DateTime.UtcNow;
         private WearStates _lastWearState = WearStates.Both;
 
+        public bool OverrideMinimizeTray { set; get; }
+        public bool DisableApplicationExit { set; get; }
+        
         public PageContainer Pager { get; }
         public CustomTouchActionPage CustomTouchActionPage => _customTouchActionPage;
         public UpdatePage UpdatePage => _updatePage;
@@ -73,16 +68,15 @@ namespace GalaxyBudsClient
             Pager = this.FindControl<PageContainer>("Container");
 
             Pager.RegisterPages(_homePage, new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(),
-                new CreditsPage(),
-                new TouchpadPage(), new EqualizerPage(), new AdvancedPage(), new SystemPage(), new SelfTestPage(),
-                new SettingsPage(),
-                new PopupSettingsPage(), _connectionLostPage, _customTouchActionPage, new DeviceSelectionPage(),
+                new CreditsPage(), new TouchpadPage(), new EqualizerPage(), new AdvancedPage(),
+                new SystemPage(), new SelfTestPage(), new SettingsPage(), new PopupSettingsPage(),
+                _connectionLostPage, _customTouchActionPage, new DeviceSelectionPage(),
                 new WelcomePage(), _unsupportedFeaturePage, _updatePage, _updateProgressPage);
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
             _titleBar.OptionsPressed += (i, e) => _titleBar.OptionsButton.ContextMenu.Open(_titleBar.OptionsButton);
-
+            
             _popup = new BudsPopup();
 
             BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
@@ -92,6 +86,9 @@ namespace GalaxyBudsClient
             SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
             SPPMessageHandler.Instance.StatusUpdate += OnStatusUpdate;
             SPPMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
+
+            NotifyIconImpl.Instance.LeftClicked += TrayIcon_OnLeftClicked;
+            TrayManager.Instance.Rebuild();
 
             Pager.PageSwitched += (sender, pages) => BuildOptionsMenu();
             Loc.LanguageUpdated += BuildOptionsMenu;
@@ -106,14 +103,90 @@ namespace GalaxyBudsClient
             {
                 Pager.SwitchPage(AbstractPage.Pages.Welcome);
             }
-
-
-      
-
-            
+        }
         
-    }
+        
 
+        #region Window management
+        protected override async void OnInitialized()
+        {
+            if (BluetoothImpl.Instance.RegisteredDeviceValid)
+            {
+                await Task.Delay(3000).ContinueWith((_) => UpdateManager.Instance.SilentCheck());
+            }
+            base.OnInitialized();
+        }
+
+        protected override async void OnClosing(CancelEventArgs e)
+        {
+            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_FIND_MY_EARBUDS_STOP);
+
+            if (SettingsProvider.Instance.MinimizeToTray && !OverrideMinimizeTray)
+            {
+                Hide();
+                e.Cancel = true;
+            }
+            
+            base.OnClosing(e);
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            BluetoothImpl.Instance.BluetoothError -= OnBluetoothError;
+            BluetoothImpl.Instance.Disconnected -= OnDisconnected;
+            BluetoothImpl.Instance.Connected -= OnConnected;
+
+            SPPMessageHandler.Instance.ExtendedStatusUpdate -= OnExtendedStatusUpdate;
+            SPPMessageHandler.Instance.StatusUpdate -= OnStatusUpdate;
+            SPPMessageHandler.Instance.OtherOption -= HandleOtherTouchOption;
+
+            NotifyIconImpl.Instance.LeftClicked -= TrayIcon_OnLeftClicked;
+            Loc.LanguageUpdated -= BuildOptionsMenu;
+
+            if (DisableApplicationExit)
+            {
+                return;
+            }
+            
+            if(Application.Current.ApplicationLifetime is ClassicDesktopStyleApplicationLifetime desktop)
+            {
+                desktop.Shutdown();
+            }
+            else
+            {
+                Environment.Exit(0);
+            }
+        }
+
+        private void TrayIcon_OnLeftClicked(object? sender, EventArgs e)
+        {
+            Dispatcher.UIThread.InvokeAsync(() =>
+            {
+                if (!IsVisible)
+                {
+
+                    if (WindowState == WindowState.Minimized)
+                    {
+                        WindowState = WindowState.Normal;
+                    }
+
+                    Show();
+
+                    Activate();
+                    Topmost = true;
+                    Topmost = false;
+                    Focus();
+                }
+                else
+                {
+                    Hide();
+                }
+            });
+
+        }
+        #endregion
+
+        #region Global Bluetooth callbacks
         private void OnStatusUpdate(object? sender, StatusUpdateParser e)
         {
             if (_lastWearState == WearStates.None &&
@@ -164,7 +237,7 @@ namespace GalaxyBudsClient
 
         private void HandleOtherTouchOption(object? sender, TouchOptions e)
         {
-            ICustomAction action = e == TouchOptions.OtherL ? 
+            ICustomAction action = e == TouchOptions.OtherL ?
                 SettingsProvider.Instance.CustomActionLeft : SettingsProvider.Instance.CustomActionRight;
 
             if (action.Action == CustomAction.Actions.RunExternalProgram)
@@ -212,23 +285,28 @@ namespace GalaxyBudsClient
                 }
             }
         }
-        
+
+
+
+        #endregion
+
+        #region Options menu
         private void BuildOptionsMenu()
         {
             bool restricted = Pager.CurrentPage == AbstractPage.Pages.Welcome ||
                               Pager.CurrentPage == AbstractPage.Pages.DeviceSelect ||
                               !BluetoothImpl.Instance.RegisteredDeviceValid;
-            
+
             var options = new Dictionary<string, EventHandler<RoutedEventArgs>?>()
             {
                 [Loc.Resolve("optionsmenu_settings")] =
                     (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Settings),
                 [Loc.Resolve("optionsmenu_refresh")] = async (sender, args) =>
-                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_GET_ALL_DATA),
+                    await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_GET_ALL_DATA),
                 [Loc.Resolve("optionsmenu_deregister")] = (sender, args) => BluetoothImpl.Instance.UnregisterDevice()
                     .ContinueWith((_) => Pager.SwitchPage(AbstractPage.Pages.Welcome))
             };
-                
+
             if (restricted)
             {
                 options.Clear();
@@ -236,7 +314,7 @@ namespace GalaxyBudsClient
 
             options[Loc.Resolve("optionsmenu_update")] = async (sender, args) =>
             {
-                var result  = await UpdateManager.Instance.DoManualCheck();
+                var result = await UpdateManager.Instance.DoManualCheck();
                 if (result != UpdateStatus.UpdateAvailable)
                 {
                     await new MessageBox()
@@ -248,10 +326,29 @@ namespace GalaxyBudsClient
             };
             options[Loc.Resolve("optionsmenu_credits")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Credits);
 
-            
+
             _titleBar.OptionsButton.ContextMenu = MenuFactory.BuildContextMenu(options);
         }
+        #endregion
 
+        #region Pages utils
+        public void ShowDevTools()
+        {
+            new DevTools().Show(this);
+        }
+
+        public void ShowUnsupportedFeaturePage(string assertion)
+        {
+            _unsupportedFeaturePage.RequiredVersion = assertion;
+            Pager.SwitchPage(AbstractPage.Pages.UnsupportedFeature);
+        }
+
+        public void ShowCustomActionSelection(Devices device)
+        {
+            _customTouchActionPage.CurrentSide = device;
+            Pager.SwitchPage(AbstractPage.Pages.TouchCustomAction);
+        }
+        #endregion
 
         public void ShowPopup(bool ignoreRestrictions = false)
         {
@@ -274,34 +371,9 @@ namespace GalaxyBudsClient
                     _popup = new BudsPopup();
                     _popup.Show();
                 }
-                _lastPopupTime = now; 
+                _lastPopupTime = now;
             }
-       
-        }
 
-        public void ShowDevTools()
-        {
-            new DevTools().Show(this);
-        }
-
-        public void ShowUnsupportedFeaturePage(string assertion)
-        {
-            _unsupportedFeaturePage.RequiredVersion = assertion;
-            Pager.SwitchPage(AbstractPage.Pages.UnsupportedFeature);
-        }
-
-        public void ShowCustomActionSelection(Devices device)
-        {
-            _customTouchActionPage.CurrentSide = device;
-            Pager.SwitchPage(AbstractPage.Pages.TouchCustomAction);
-        }
-
-        private async void OnOpened(object? sender, EventArgs e)
-        {
-            if (BluetoothImpl.Instance.RegisteredDeviceValid)
-            {
-                await Task.Delay(3000).ContinueWith((_) => UpdateManager.Instance.SilentCheck());
-            }
         }
     }
 }

@@ -9,11 +9,13 @@ using Avalonia.Media;
 using Avalonia.Threading;
 using GalaxyBudsClient.Decoder;
 using GalaxyBudsClient.Interface.Elements;
+using GalaxyBudsClient.Interop.TrayIcon;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using SettingsProvider = GalaxyBudsClient.Utils.SettingsProvider;
 using ToggleSwitch = GalaxyBudsClient.Interface.Elements.ToggleSwitch;
@@ -23,7 +25,9 @@ namespace GalaxyBudsClient.Interface.Pages
  	public class HomePage : AbstractPage
 	{
 		public override Pages PageType => Pages.Home;
-		
+
+        public bool AncEnabled => _ancSwitch.IsChecked;
+        
         private readonly ToggleSwitch _ancSwitch;
         private readonly LoadingSpinner _loadingSpinner;
         
@@ -110,11 +114,23 @@ namespace GalaxyBudsClient.Interface.Pages
             };
             BluetoothImpl.Instance.InvalidDataReceived += InstanceOnInvalidDataReceived;
 
+            NotifyIconImpl.Instance.TrayMenuItemSelected += OnTrayMenuItemSelected;
+            
             /* Restore data if restarted */
             var cache = DeviceMessageCache.Instance.BasicStatusUpdate;
             if (cache != null)
             {
                 ProcessBasicUpdate(cache);
+            }
+        }
+
+        private async void OnTrayMenuItemSelected(object? sender, TrayMenuItem e)
+        {
+            if (e.Id == ItemType.ToggleAnc)
+            {
+                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_NOISE_REDUCTION, !_ancSwitch.IsChecked);
+                Dispatcher.UIThread.Post(_ancSwitch.Toggle);
+                TrayManager.Instance.Rebuild();
             }
         }
 

@@ -15,6 +15,8 @@ namespace GalaxyBudsClient.Utils
 {
     public static class ThemeUtils
     {
+        public static event EventHandler<DarkModes>? ThemeReloaded; 
+        
         public static Styles FluentDark = new Styles
         {
             new StyleInclude(new Uri("avares://ControlCatalog/Styles"))
@@ -43,6 +45,8 @@ namespace GalaxyBudsClient.Utils
                 Application.Current.Styles[1] = FluentDark;
                 SetBrushSource("BrushesDark");
             }
+            
+            ThemeReloaded?.Invoke(nameof(ThemeUtils), SettingsProvider.Instance.DarkMode);
         }
 
         private static void SetBrushSource(string name)

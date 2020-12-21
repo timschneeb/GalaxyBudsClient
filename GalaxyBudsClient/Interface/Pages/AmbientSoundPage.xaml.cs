@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Threading;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Decoder;
 using GalaxyBudsClient.Interface.Items;
+using GalaxyBudsClient.Interop.TrayIcon;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
@@ -18,7 +20,8 @@ namespace GalaxyBudsClient.Interface.Pages
     public class AmbientSoundPage : AbstractPage
     {
         public override Pages PageType => Pages.AmbientSound;
-		
+        public bool AmbientEnabled => _ambientSwitch.IsChecked;
+        
         private readonly SwitchListItem _ambientSwitch;
         private readonly SwitchListItem _voiceFocusSwitch;
         private readonly SliderListItem _volumeSlider;
@@ -42,8 +45,20 @@ namespace GalaxyBudsClient.Interface.Pages
             SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
             SPPMessageHandler.Instance.OtherOption += InstanceOnOtherOption;
 
+            NotifyIconImpl.Instance.TrayMenuItemSelected += OnTrayMenuItemSelected;
+            
             Loc.LanguageUpdated += UpdateStrings;
             UpdateStrings();
+        }
+
+        private async void OnTrayMenuItemSelected(object? sender, TrayMenuItem e)
+        {
+            if (e.Id == ItemType.ToggleAmbient)
+            {
+                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_AMBIENT_MODE, !_ambientSwitch.IsChecked);
+                Avalonia.Threading.Dispatcher.UIThread.Post(_ambientSwitch.Toggle);
+                TrayManager.Instance.Rebuild();
+            }
         }
 
         private async void InstanceOnOtherOption(object? sender, TouchOptions e)

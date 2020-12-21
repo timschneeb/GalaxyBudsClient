@@ -7,6 +7,7 @@ namespace GalaxyBudsClient.Interop.TrayIcon
     {
         event EventHandler<TrayMenuItem> TrayMenuItemSelected;
         event EventHandler LeftClicked;
+        event EventHandler RightClicked;
 
         List<TrayMenuItem> MenuItems { set; get; }
 

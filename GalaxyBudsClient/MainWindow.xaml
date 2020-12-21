@@ -19,8 +19,7 @@
         Background="Transparent"
         UseLayoutRounding="True"
         Icon="/Resources/icon_white.ico"
-        Title="Galaxy Buds Manager"
-        Opened="OnOpened">
+        Title="Galaxy Buds Manager">
     
     <Border CornerRadius="{StaticResource DefaultCornerRadius}"
             BorderBrush="{DynamicResource WindowBorderBrush}"

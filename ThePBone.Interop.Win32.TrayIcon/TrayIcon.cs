@@ -23,19 +23,20 @@ namespace ThePBone.Interop.Win32.TrayIcon
         #region Properties
         public event EventHandler<TrayMenuItem> TrayMenuItemSelected;
         public event EventHandler LeftClicked;
+        public event EventHandler RightClicked;
 
         public List<TrayMenuItem> MenuItems
         {
             set
             {
                 _menuItems = value;
-                BeginInvoke(new Action(() =>
+                Application.Current?.Dispatcher.Invoke(() =>
                 {
                     if (_win != null)
                     {
                         _win.MenuItems = _menuItems;
                     }
-                }));
+                });
             }
             get => _menuItems;
         }
@@ -45,13 +46,13 @@ namespace ThePBone.Interop.Win32.TrayIcon
             set
             {
                 _preferDarkMode = value;
-                BeginInvoke(new Action(() =>
+                Application.Current?.Dispatcher.Invoke(() =>
                 {
                     if (_win != null)
                     {
                         _win.PreferDarkMode = value;
                     }
-                }));
+                });
             }
             get => _preferDarkMode;
         }
@@ -92,7 +93,7 @@ namespace ThePBone.Interop.Win32.TrayIcon
         #endregion
 
         #region Threading objects
-        private Thread _thread;
+        private readonly Thread _thread;
         private SynchronizationContext _ctx;
         private bool _preferDarkMode;
         private List<TrayMenuItem> _menuItems;
@@ -176,6 +177,7 @@ namespace ThePBone.Interop.Win32.TrayIcon
                 }
                 _tbi.ToolTipText = "Galaxy Buds Manager";
                 _tbi.TrayLeftMouseUp += (sender, args) => ParentClass.LeftClicked?.Invoke(this, EventArgs.Empty);
+                _tbi.TrayRightMouseDown += (sender, args) => ParentClass.RightClicked?.Invoke(this, EventArgs.Empty);
 
                 ReloadStyles(false);
                 CreateMenu();
@@ -190,8 +192,13 @@ namespace ThePBone.Interop.Win32.TrayIcon
                     ResourceLoader.LoadXamlFromManifest<ResourceDictionary>($"ThePBone.Interop.Win32.TrayIcon.Styles.Brushes{(dark ? "Dark" : string.Empty)}.xaml"));
             }
 
-            public void CreateMenu()
-            {
+            private void CreateMenu()
+            {    
+                if (MenuItems == null)
+                {
+                    return;
+                }
+                
                 if (_lastRedrawDark != PreferDarkMode)
                 {
                     ReloadStyles(PreferDarkMode);
@@ -201,6 +208,8 @@ namespace ThePBone.Interop.Win32.TrayIcon
                 {
                     Style = ResourceLoader.FindResource<Style>("SmallContextMenuStyle")
                 };
+
+
 
                 foreach (var item in MenuItems)
                 {

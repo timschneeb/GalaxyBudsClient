@@ -1,5 +1,6 @@
 using System;
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Avalonia.Markup.Xaml.Styling;
@@ -9,6 +10,7 @@ using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 
@@ -19,6 +21,12 @@ namespace GalaxyBudsClient
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
+
+            /* Clean everything from the old run up */
+            if (PlatformUtils.IsWindows)
+            {
+                ThePBone.Interop.Win32.TrayIcon.ResourceLoader.ClearCache();
+            }
             
             if (Loc.IsTranslatorModeEnabled())
             {
@@ -37,20 +45,29 @@ namespace GalaxyBudsClient
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 desktop.MainWindow = MainWindow.Instance;
+                desktop.Exit += OnExit;
             }
             
             base.OnFrameworkInitializationCompleted();
         }
 
+        private void OnExit(object? sender, ControlledApplicationLifetimeExitEventArgs e)
+        {
+            
+        }
+
         public void RestartApp(AbstractPage.Pages target)
         {
-            MainWindow.Instance.Close();
-            MainWindow.Kill();
-			
-            ThemeUtils.Reload();
-            
+
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
+                MainWindow.Instance.DisableApplicationExit = true;
+                MainWindow.Instance.OverrideMinimizeTray = true;
+                MainWindow.Instance.Close();
+                MainWindow.Kill();
+
+                ThemeUtils.Reload();
+
                 desktop.MainWindow = MainWindow.Instance;
                 desktop.MainWindow.Show();
                 

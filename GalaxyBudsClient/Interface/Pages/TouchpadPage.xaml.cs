@@ -4,8 +4,10 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 using GalaxyBudsClient.Decoder;
 using GalaxyBudsClient.Interface.Items;
+using GalaxyBudsClient.Interop.TrayIcon;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Attributes;
@@ -21,7 +23,9 @@ namespace GalaxyBudsClient.Interface.Pages
  	public class TouchpadPage : AbstractPage
 	{
 		public override Pages PageType => Pages.Touch;
-		
+
+        public bool TouchpadLocked => _lock.IsChecked;
+        
 		private readonly SwitchListItem _lock;
 		private readonly SwitchDetailListItem _edgeTouch;
 		private readonly MenuDetailListItem _leftOption;
@@ -38,15 +42,26 @@ namespace GalaxyBudsClient.Interface.Pages
 			_leftOption = this.FindControl<MenuDetailListItem>("LeftOption");
 			_rightOption = this.FindControl<MenuDetailListItem>("RightOption");
 
-		
-			SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
+            SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
 			
+            NotifyIconImpl.Instance.TrayMenuItemSelected += OnTrayMenuItemSelected;
+            
 			Loc.LanguageUpdated += UpdateTouchActionMenus;
 			Loc.LanguageUpdated += UpdateMenuDescriptions;
 			UpdateTouchActionMenus();
 		}
-		
-		private void InstanceOnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
+
+        private async void OnTrayMenuItemSelected(object? sender, TrayMenuItem e)
+        {
+			if (e.Id == ItemType.LockTouchpad)
+            {
+				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_LOCK_TOUCHPAD, !_lock.IsChecked);
+				Dispatcher.UIThread.Post(_lock.Toggle);
+                TrayManager.Instance.Rebuild();
+            }
+		}
+
+        private void InstanceOnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
 		{
 			_lock.IsChecked = e.TouchpadLock;
 			_edgeTouch.IsChecked = e.OutsideDoubleTap;

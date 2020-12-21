@@ -42,7 +42,7 @@ namespace GalaxyBudsClient.Interface.Transition
 			SwitchPage(AbstractPage.Pages.Dummy);
 		}
 
-		public AbstractPage.Pages CurrentPage
+        public AbstractPage.Pages CurrentPage
 		{
 			get
 			{
@@ -57,7 +57,7 @@ namespace GalaxyBudsClient.Interface.Transition
 
 		public void RegisterPage(AbstractPage page)
 		{
-			if (PageViewModel.HasPageType(page.PageType))
+			if (HasPageType(page.PageType))
 			{
 				Log.Warning($"Page type '${page.PageType}' is already assigned. Disposing old page.");
 				UnregisterPage(page);
@@ -85,7 +85,7 @@ namespace GalaxyBudsClient.Interface.Transition
 
 		public bool SwitchPage(AbstractPage.Pages page)
 		{
-			var target = PageViewModel.FindPage(page);
+			var target = FindPage(page);
 
 			Dispatcher.UIThread.Post(() =>
 			{
@@ -107,6 +107,30 @@ namespace GalaxyBudsClient.Interface.Transition
 			AvaloniaXamlLoader.Load(this);
 		}
 
+		public AbstractPage? FindPage(AbstractPage.Pages page, bool nullAware = false)
+        {
+            AbstractPage[] matches = PageViewModel.Items.Where(abstractPage => abstractPage.PageType == page).ToArray();
+            if (matches.Length < 1)
+            {
+                if (!nullAware)
+                {
+                    Log.Error($"Page '{page}' is not assigned");
+                }
+
+                return null;
+            }
+            if (matches.Length > 1)
+            {
+                Log.Warning($"Page '{page}' has multiple assignments. Choosing first one.");
+            }
+
+            return matches[0];
+        }
+        public bool HasPageType(AbstractPage.Pages page)
+        {
+            return FindPage(page, nullAware: true) != null;
+        }
+
 		public class ViewModel
 		{
 			public ViewModel()
@@ -115,32 +139,6 @@ namespace GalaxyBudsClient.Interface.Transition
 			}
 
 			public ObservableCollection<AbstractPage> Items { get; }
-			
-			public AbstractPage? FindPage(AbstractPage.Pages page, bool nullAware = false)
-			{
-				AbstractPage[] matches = Items.Where(abstractPage => abstractPage.PageType == page).ToArray();
-				if (matches.Length < 1)
-				{
-					if (!nullAware)
-					{
-						Log.Error($"Page '{page}' is not assigned");
-					}
-
-					return null;
-				} 
-				if (matches.Length > 1)
-				{
-					Log.Warning($"Page '{page}' has multiple assignments. Choosing first one.");
-				}
-				
-				return matches[0];
-			}
-        
-			public bool HasPageType(AbstractPage.Pages page)
-			{
-				return FindPage(page, nullAware: true) != null;
-			}
-		}
-
-	}
+        }
+    }
 }

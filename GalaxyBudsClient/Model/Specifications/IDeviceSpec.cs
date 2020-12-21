@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using GalaxyBudsClient.Interop.TrayIcon;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Touchpad;
 using Serilog;
@@ -26,7 +28,8 @@ namespace GalaxyBudsClient.Model.Specifications
         string DeviceBaseName { get; }
         ITouchOption TouchMap { get; }
         Guid ServiceUuid { get; }
-
+        IReadOnlyCollection<ItemType> TrayShortcuts { get; }
+        
         bool Supports(Feature feature)
         {
             if (!Rules.ContainsKey(feature))

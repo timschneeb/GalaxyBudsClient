@@ -12,7 +12,7 @@ using Serilog;
 
 namespace ThePBone.Interop.Win32.TrayIcon
 {
-    internal static class ResourceLoader
+    public static class ResourceLoader
     {
         private static readonly string TempDir = Path.Combine(Path.GetTempPath(), "TempResourcesGBC");
         
@@ -50,7 +50,7 @@ namespace ThePBone.Interop.Win32.TrayIcon
                 return (T)XamlReader.Load(xmlReader);
         }
 
-         internal static void ClearCache()
+         public static void ClearCache()
          {
              try
              {

@@ -2,8 +2,10 @@
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 using GalaxyBudsClient.Decoder;
 using GalaxyBudsClient.Interface.Items;
+using GalaxyBudsClient.Interop.TrayIcon;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
@@ -17,7 +19,8 @@ namespace GalaxyBudsClient.Interface.Pages
  	public class EqualizerPage : AbstractPage
 	{
 		public override Pages PageType => Pages.Equalizer;
-		
+        public bool EqualizerEnabled => _eqSwitch.IsChecked;
+        
 		private readonly SwitchListItem _eqSwitch;
 		private readonly SliderListItem _presetSlider;
 		
@@ -30,11 +33,23 @@ namespace GalaxyBudsClient.Interface.Pages
 			SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
 			SPPMessageHandler.Instance.OtherOption += InstanceOnOtherOption;
 			
+            NotifyIconImpl.Instance.TrayMenuItemSelected += OnTrayMenuItemSelected;
+            
 			Loc.LanguageUpdated += UpdateStrings;
 			UpdateStrings();
 		}
 
-		private async void InstanceOnOtherOption(object? sender, TouchOptions e)
+        private async void OnTrayMenuItemSelected(object? sender, TrayMenuItem e)
+        {
+            if (e.Id == ItemType.ToggleEqualizer)
+            {
+                await MessageComposer.SetEqualizer(!_eqSwitch.IsChecked, (EqPreset)_presetSlider.Value, false);
+				Dispatcher.UIThread.Post(_eqSwitch.Toggle);
+                TrayManager.Instance.Rebuild();
+            }
+        }
+
+        private async void InstanceOnOtherOption(object? sender, TouchOptions e)
 		{
 			ICustomAction action = e == TouchOptions.OtherL ? 
 				SettingsProvider.Instance.CustomActionLeft : SettingsProvider.Instance.CustomActionRight;

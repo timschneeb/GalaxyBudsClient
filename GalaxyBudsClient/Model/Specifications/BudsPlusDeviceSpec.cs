@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using GalaxyBudsClient.Interop.TrayIcon;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Touchpad;
 
@@ -23,5 +24,13 @@ namespace GalaxyBudsClient.Model.Specifications
         public string DeviceBaseName => "Galaxy Buds+ (";
         public ITouchOption TouchMap => new BudsPlusTouchOption();
         public Guid ServiceUuid => Uuids.BudsPlus;
+
+        public IReadOnlyCollection<ItemType> TrayShortcuts => Array.AsReadOnly(
+            new[] {
+                ItemType.ToggleAmbient,
+                ItemType.ToggleEqualizer,
+                ItemType.LockTouchpad
+            }
+        );
     }
 }
