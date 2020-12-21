@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
+using System.Threading;
 using Serilog;
 
 namespace ThePBone.Interop.Win32
@@ -57,6 +58,37 @@ namespace ThePBone.Interop.Win32
             MessageReceived?.Invoke(this, message);
 
             return Unmanaged.DefWindowProc(hWnd, msg, wParam, lParam);
+        }
+
+        public void ProcessMessage()
+        {
+
+            if (Unmanaged.GetMessage(out var msg, IntPtr.Zero, 0, 0) > -1)
+            {
+                Unmanaged.TranslateMessage(ref msg);
+                Unmanaged.DispatchMessage(ref msg);
+            }
+            else
+            {
+                Log.Error("WndProcClient: Unmanaged error in {0}. Error Code: {1}", nameof(ProcessMessage),
+                    Marshal.GetLastWin32Error());
+            }
+        }
+
+        public void RunLoop(CancellationToken cancellationToken)
+        {
+            var result = 0;
+            while (!cancellationToken.IsCancellationRequested
+                   && (result = Unmanaged.GetMessage(out var msg, IntPtr.Zero, 0, 0)) > 0)
+            {
+                Unmanaged.TranslateMessage(ref msg);
+                Unmanaged.DispatchMessage(ref msg);
+            }
+            if (result < 0)
+            {
+                Log.Error("WndProcClient: Unmanaged error in {0}. Error Code: {1}", nameof(RunLoop),
+                    Marshal.GetLastWin32Error());
+            }
         }
     }
 }

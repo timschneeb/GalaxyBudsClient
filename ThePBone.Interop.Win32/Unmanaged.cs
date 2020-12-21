@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace ThePBone.Interop.Win32
 { 
@@ -244,6 +242,22 @@ namespace ThePBone.Interop.Win32
             WM_USER = 0x0400,
         }
 
+        public struct MSG
+        {
+            public IntPtr hwnd;
+            public uint message;
+            public IntPtr wParam;
+            public IntPtr lParam;
+            public uint time;
+            public POINT pt;
+        }
+
+        public struct POINT
+        {
+            public int X;
+            public int Y;
+        }
+
         [DllImport("user32.dll", SetLastError = true)]
         internal static extern IntPtr CreateWindowEx(
            int dwExStyle,
@@ -259,11 +273,29 @@ namespace ThePBone.Interop.Win32
            IntPtr hInstance,
            IntPtr lpParam);
 
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool GetCursorPos(ref Win32Point pt);
+
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct Win32Point
+        {
+            public Int32 X;
+            public Int32 Y;
+        };
+
         [DllImport("user32.dll", EntryPoint = "DefWindowProcW")]
         internal static extern IntPtr DefWindowProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
 
         [DllImport("kernel32.dll")]
         internal static extern IntPtr GetModuleHandle(string? lpModuleName);
+        [DllImport("user32.dll", EntryPoint = "GetMessageW", SetLastError = true)]
+        public static extern int GetMessage(out MSG lpMsg, IntPtr hWnd, uint wMsgFilterMin, uint wMsgFilterMax);
+
+        [DllImport("user32.dll", EntryPoint = "DispatchMessageW")]
+        public static extern IntPtr DispatchMessage(ref MSG lpmsg);
+        [DllImport("user32.dll")]
+        public static extern bool TranslateMessage(ref MSG lpMsg);
 
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode, EntryPoint = "RegisterClassExW")]
         internal static extern ushort RegisterClassEx(ref WNDCLASSEX lpwcx);

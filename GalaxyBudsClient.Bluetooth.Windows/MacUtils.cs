@@ -8,13 +8,13 @@ namespace GalaxyBudsClient.Bluetooth.Windows
 {
     internal static class MacUtils
     {
-        internal static BluetoothAddress ToAddress(string mac)
+        internal static BluetoothAddress? ToAddress(string mac)
         {
             var isValid = BluetoothAddress.TryParse(mac, out var addr);
 
             if (!isValid)
             {
-                throw new ArgumentException("MAC has wrong format");
+                return null;
             }
 
             return addr;

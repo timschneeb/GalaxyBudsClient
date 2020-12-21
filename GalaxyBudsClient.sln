@@ -17,7 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InTheHand.Net.Personal.Core
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThePBone.Interop.Win32.Devices", "ThePBone.Interop.Win32.Devices\ThePBone.Interop.Win32.Devices.csproj", "{52D12371-856C-489B-9F01-40288FD12B6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThePBone.Interop.Win32", "ThePBone.Interop.Win32\ThePBone.Interop.Win32.csproj", "{E4FE82A9-9D6B-4012-A941-E7B778F2F85E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThePBone.Interop.Win32", "ThePBone.Interop.Win32\ThePBone.Interop.Win32.csproj", "{E4FE82A9-9D6B-4012-A941-E7B778F2F85E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThePBone.Interop.Win32.TrayIcon", "ThePBone.Interop.Win32.TrayIcon\ThePBone.Interop.Win32.TrayIcon.csproj", "{3657C6F4-A42E-4A41-BFB6-400198302E17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThePBone.Interop.Linux.TrayIcon", "ThePBone.Interop.Linux.TrayIcon\ThePBone.Interop.Linux.TrayIcon.csproj", "{D65EE2BC-7208-4604-92FA-27BE35B00423}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalaxyBudsClient.Interop.TrayIcon", "GalaxyBudsClient.Interop.TrayIcon\GalaxyBudsClient.Interop.TrayIcon.csproj", "{2817B943-2C08-49A3-A6E3-EB0AF131F408}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,6 +80,24 @@ Global
 		{E4FE82A9-9D6B-4012-A941-E7B778F2F85E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4FE82A9-9D6B-4012-A941-E7B778F2F85E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4FE82A9-9D6B-4012-A941-E7B778F2F85E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3657C6F4-A42E-4A41-BFB6-400198302E17}.CodeAnalysis|Any CPU.ActiveCfg = Debug|Any CPU
+		{3657C6F4-A42E-4A41-BFB6-400198302E17}.CodeAnalysis|Any CPU.Build.0 = Debug|Any CPU
+		{3657C6F4-A42E-4A41-BFB6-400198302E17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3657C6F4-A42E-4A41-BFB6-400198302E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3657C6F4-A42E-4A41-BFB6-400198302E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3657C6F4-A42E-4A41-BFB6-400198302E17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D65EE2BC-7208-4604-92FA-27BE35B00423}.CodeAnalysis|Any CPU.ActiveCfg = Debug|Any CPU
+		{D65EE2BC-7208-4604-92FA-27BE35B00423}.CodeAnalysis|Any CPU.Build.0 = Debug|Any CPU
+		{D65EE2BC-7208-4604-92FA-27BE35B00423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D65EE2BC-7208-4604-92FA-27BE35B00423}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D65EE2BC-7208-4604-92FA-27BE35B00423}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D65EE2BC-7208-4604-92FA-27BE35B00423}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2817B943-2C08-49A3-A6E3-EB0AF131F408}.CodeAnalysis|Any CPU.ActiveCfg = Debug|Any CPU
+		{2817B943-2C08-49A3-A6E3-EB0AF131F408}.CodeAnalysis|Any CPU.Build.0 = Debug|Any CPU
+		{2817B943-2C08-49A3-A6E3-EB0AF131F408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2817B943-2C08-49A3-A6E3-EB0AF131F408}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2817B943-2C08-49A3-A6E3-EB0AF131F408}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2817B943-2C08-49A3-A6E3-EB0AF131F408}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System">
+    <!-- Context Menu -->
+    <SolidColorBrush x:Key="ContextForegroundBrush" Color="#CC000000" />
+    <SolidColorBrush x:Key="ContextBackgroundBrush" Color="#FFEEEEEE" />
+    <SolidColorBrush x:Key="ContextBorderBrush" Color="WhiteSmoke" />
+    <SolidColorBrush x:Key="ContextSeparatorBrush" Color="#D7D7D7" />
+    <SolidColorBrush x:Key="ContextItemHoverBrush" Color="#FFE0E0E0" />
+    <SolidColorBrush x:Key="ContextForegroundDisabledStaticBrush" Color="#AA000000" />
+</ResourceDictionary>

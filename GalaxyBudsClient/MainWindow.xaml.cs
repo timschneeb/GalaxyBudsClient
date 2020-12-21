@@ -2,12 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Platform;
+using Avalonia.Threading;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Bluetooth.Linux;
 using GalaxyBudsClient.Decoder;
@@ -22,9 +26,13 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
-using JetBrains.Annotations;
 using NetSparkleUpdater.Enums;
+using Sentry.Protocol;
 using Serilog;
+using ThePBone.Interop.Win32.TrayIcon;
+using MessageBox = GalaxyBudsClient.Interface.Dialogs.MessageBox;
+using RoutedEventArgs = Avalonia.Interactivity.RoutedEventArgs;
+using Window = Avalonia.Controls.Window;
 
 namespace GalaxyBudsClient
 {
@@ -37,6 +45,8 @@ namespace GalaxyBudsClient
         private readonly UpdatePage _updatePage = new UpdatePage();
         private readonly UpdateProgressPage _updateProgressPage = new UpdateProgressPage();
 
+        private readonly NotifyIconImpl _trayIcon = new NotifyIconImpl();
+        
         private readonly CustomTitleBar _titleBar;
         private BudsPopup _popup;
         private DateTime _lastPopupTime = DateTime.UtcNow;
@@ -54,16 +64,18 @@ namespace GalaxyBudsClient
         {
             _instance = null;
         }
-        
+
         public MainWindow()
         {
             AvaloniaXamlLoader.Load(this);
             this.AttachDevTools();
-            
+
             Pager = this.FindControl<PageContainer>("Container");
-            
-            Pager.RegisterPages(_homePage, new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(), new CreditsPage(),
-                new TouchpadPage(), new EqualizerPage(), new AdvancedPage(), new SystemPage(), new SelfTestPage(), new SettingsPage(),
+
+            Pager.RegisterPages(_homePage, new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(),
+                new CreditsPage(),
+                new TouchpadPage(), new EqualizerPage(), new AdvancedPage(), new SystemPage(), new SelfTestPage(),
+                new SettingsPage(),
                 new PopupSettingsPage(), _connectionLostPage, _customTouchActionPage, new DeviceSelectionPage(),
                 new WelcomePage(), _unsupportedFeaturePage, _updatePage, _updateProgressPage);
 
@@ -72,11 +84,11 @@ namespace GalaxyBudsClient
             _titleBar.OptionsPressed += (i, e) => _titleBar.OptionsButton.ContextMenu.Open(_titleBar.OptionsButton);
 
             _popup = new BudsPopup();
-            
+
             BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
             BluetoothImpl.Instance.Disconnected += OnDisconnected;
             BluetoothImpl.Instance.Connected += OnConnected;
-            
+
             SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
             SPPMessageHandler.Instance.StatusUpdate += OnStatusUpdate;
             SPPMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
@@ -94,7 +106,13 @@ namespace GalaxyBudsClient
             {
                 Pager.SwitchPage(AbstractPage.Pages.Welcome);
             }
-        }
+
+
+      
+
+            
+        
+    }
 
         private void OnStatusUpdate(object? sender, StatusUpdateParser e)
         {

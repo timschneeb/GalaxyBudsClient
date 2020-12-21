@@ -10,6 +10,8 @@
     </PropertyGroup>
     <ItemGroup>
         <AvaloniaResource Include="Resources\**" />
+        <EmbeddedResource Include="Resources\**" />
+
         <AvaloniaResource Include="i18n\*" /> 
         <AvaloniaResource Include="ui\style\*" /> 
         <AvaloniaResource Remove="bin\Debug\netcoreapp3.1\**" /> 
@@ -60,12 +62,46 @@
       <None Remove="Interface\Pages\UpdateProgressPage.xaml" />
     </ItemGroup>
     <ItemGroup>
+      <AvaloniaResource Include="findmygear\finding.png" />
+      <AvaloniaResource Include="findmygear\finding_black.png" />
+      <AvaloniaResource Include="findmygear\finding_glow.png" />
+      <AvaloniaResource Include="findmygear\muted.png" />
+      <AvaloniaResource Include="findmygear\muted_white.png" />
+      <AvaloniaResource Include="findmygear\radar_circle.png" />
+      <AvaloniaResource Include="findmygear\start_finding.png" />
+      <AvaloniaResource Include="findmygear\start_finding_black.png" />
+      <AvaloniaResource Include="findmygear\start_gray.png" />
+      <AvaloniaResource Include="findmygear\start_lightgray.png" />
+      <AvaloniaResource Include="findmygear\start_white.png" />
+      <AvaloniaResource Include="findmygear\stop_white.png" />
+      <AvaloniaResource Include="findmygear\unmuted.png" />
+      <AvaloniaResource Include="findmygear\unmuted_white.png" />
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Include="findmygear\finding.png" />
+      <EmbeddedResource Include="findmygear\finding_black.png" />
+      <EmbeddedResource Include="findmygear\finding_glow.png" />
+      <EmbeddedResource Include="findmygear\muted.png" />
+      <EmbeddedResource Include="findmygear\muted_white.png" />
+      <EmbeddedResource Include="findmygear\radar_circle.png" />
+      <EmbeddedResource Include="findmygear\start_finding.png" />
+      <EmbeddedResource Include="findmygear\start_finding_black.png" />
+      <EmbeddedResource Include="findmygear\start_gray.png" />
+      <EmbeddedResource Include="findmygear\start_lightgray.png" />
+      <EmbeddedResource Include="findmygear\start_white.png" />
+      <EmbeddedResource Include="findmygear\stop_white.png" />
+      <EmbeddedResource Include="findmygear\unmuted.png" />
+      <EmbeddedResource Include="findmygear\unmuted_white.png" />
+    </ItemGroup>
+    <ItemGroup>
       <None Include="Platform\Windows\MediaKeyRemote.Windows.cs" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Linux\GalaxyBudsClient.Bluetooth.Linux.csproj" />
       <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Windows\GalaxyBudsClient.Bluetooth.Windows.csproj" />
       <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj" />
+      <ProjectReference Include="..\ThePBone.Interop.Linux.TrayIcon\ThePBone.Interop.Linux.TrayIcon.csproj" />
+      <ProjectReference Include="..\ThePBone.Interop.Win32.TrayIcon\ThePBone.Interop.Win32.TrayIcon.csproj" />
     </ItemGroup>
     <ItemGroup>
       <AvaloniaResource Update="Interface\Pages\UpdateProgressPage.xaml">

@@ -76,7 +76,7 @@ namespace GalaxyBudsClient.Bluetooth.Windows
         
         private async void DeviceInRange(object sender, BluetoothWin32RadioInRangeEventArgs? e)
         {
-            if(e == null || e.Device == null)
+            if(e?.Device == null)
             {
                 Log.Warning("Windows.BluetoothService: Discovered NULL device");
                 return;
@@ -107,10 +107,6 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                     }
 
                 }
-            }
-            else
-            {
-                Log.Debug($"Windows.BluetoothService: Other device inbound ({e.Device.DeviceAddress})");
             }
         }
         #endregion
@@ -172,6 +168,11 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                 try
                 {
                     var addr = MacUtils.ToAddress(macAddress);
+                    if (addr == null)
+                    {
+                        Log.Error("Windows.BluetoothService: Invalid MAC address. Failed to connect.");
+                        throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, "Invalid MAC address. Please deregister your device and try again.");
+                    }
 
                     _currentMac = macAddress;
                     _currentUuid = uuid;
@@ -297,6 +298,7 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                 try
                 {
                     _cancelSource.Token.ThrowIfCancellationRequested();
+                    Task.Delay(50).Wait(_cancelSource.Token);
                 }
                 catch (TaskCanceledException)
                 {
