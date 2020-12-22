@@ -24,6 +24,8 @@ namespace ThePBone.BlueZNet.Interop
 		const short AF_UNIX = 1;
 
 		const short SOCK_STREAM = 1;
+		
+		public static int FIONREAD => 0x541B;
 
 		[DllImport (LIBC, CallingConvention=CallingConvention.Cdecl, SetLastError=true)]
 		static extern int close (int fd);
@@ -49,6 +51,15 @@ namespace ThePBone.BlueZNet.Interop
 
 		[DllImport (LIBC, CallingConvention=CallingConvention.Cdecl, SetLastError=true)]
 		static extern SSizeT write (int fd, byte* buf, SizeT count);
+		
+		[DllImport (LIBC, CallingConvention=CallingConvention.Cdecl, SetLastError=true)]
+		public static extern int ioctl(int fd, int request);
+
+		[DllImport (LIBC, CallingConvention=CallingConvention.Cdecl, SetLastError=true)]
+		public static extern int ioctl(int fd, int request, int arg);
+
+		[DllImport (LIBC, CallingConvention=CallingConvention.Cdecl, SetLastError=true)]
+		public static extern int ioctl(int fd, int request, void* arg);
 		
 		public int Handle;
 		private readonly bool _ownsHandle = false;
@@ -226,6 +237,17 @@ namespace ThePBone.BlueZNet.Interop
 
 			return r;
 		}
+
+		public int AvailableBytes()
+		{
+			int count = 0;
+			ioctl(Handle, FIONREAD, &count);
+			return count;
+		}
 		
+		public bool Available()
+		{
+			return AvailableBytes() > 0;
+		}
 	}
 }

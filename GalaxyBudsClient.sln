@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThePBone.Interop.Linux.Tray
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalaxyBudsClient.Interop.TrayIcon", "GalaxyBudsClient.Interop.TrayIcon\GalaxyBudsClient.Interop.TrayIcon.csproj", "{2817B943-2C08-49A3-A6E3-EB0AF131F408}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThePBone.MprisClient", "ThePBone.MprisClient\ThePBone.MprisClient.csproj", "{F7EF8769-6150-4476-8505-ECFC97ED43F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CodeAnalysis|Any CPU = CodeAnalysis|Any CPU
@@ -98,6 +100,12 @@ Global
 		{2817B943-2C08-49A3-A6E3-EB0AF131F408}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2817B943-2C08-49A3-A6E3-EB0AF131F408}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2817B943-2C08-49A3-A6E3-EB0AF131F408}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7EF8769-6150-4476-8505-ECFC97ED43F7}.CodeAnalysis|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7EF8769-6150-4476-8505-ECFC97ED43F7}.CodeAnalysis|Any CPU.Build.0 = Debug|Any CPU
+		{F7EF8769-6150-4476-8505-ECFC97ED43F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7EF8769-6150-4476-8505-ECFC97ED43F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7EF8769-6150-4476-8505-ECFC97ED43F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7EF8769-6150-4476-8505-ECFC97ED43F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

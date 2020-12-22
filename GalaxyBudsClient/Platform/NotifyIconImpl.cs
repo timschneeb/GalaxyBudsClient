@@ -18,7 +18,9 @@ namespace GalaxyBudsClient.Platform
         {
             if (PlatformUtils.IsWindows)
             {
+#if Windows
                 Instance = new ThePBone.Interop.Win32.TrayIcon.TrayIcon();
+#endif
             }
             else if (PlatformUtils.IsLinux)
             {

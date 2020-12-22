@@ -394,7 +394,6 @@ namespace GalaxyBudsClient.Bluetooth.Linux
 
             return devices;
         }
-
         #endregion
         
         #region Service
@@ -404,25 +403,36 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             {
                 _cancelSource.Token.ThrowIfCancellationRequested();
 
-                /* Handle incoming stream */
-                byte[] buffer = new byte[2048];
-                var dataAvailable = false;
-                try
+                var incomingCount = _profile.Stream?.AvailableBytes;
+
+                if (incomingCount == null)
                 {
-                    dataAvailable = _profile.Stream?.Read(buffer, 0, buffer.Length) >= 0;
-                }
-                catch (UnixSocketException ex)
-                {
-                    Log.Error($"Linux.BluetoothService: BluetoothServiceLoop: SocketException thrown while reading unsafe stream: {ex.Message}. Cancelled.");
-                    Disconnected?.Invoke(this, ex.Message);
-                    throw;
+                    Task.Delay(50);
+                    continue;
                 }
                 
-                if (dataAvailable)
+                if (incomingCount > 0)
                 {
-                    NewDataAvailable?.Invoke(this, buffer);
+                    /* Handle incoming stream */
+                    byte[] buffer = new byte[incomingCount ?? 0];
+                    var dataAvailable = false;
+                    try
+                    {
+                        dataAvailable = _profile.Stream?.Read(buffer, 0, buffer.Length) >= 0;
+                    }
+                    catch (UnixSocketException ex)
+                    {
+                        Log.Error($"Linux.BluetoothService: BluetoothServiceLoop: SocketException thrown while reading unsafe stream: {ex.Message}. Cancelled.");
+                        Disconnected?.Invoke(this, ex.Message);
+                        throw;
+                    }
+                
+                    if (dataAvailable)
+                    {
+                        NewDataAvailable?.Invoke(this, buffer);
+                    }
                 }
-
+                
                 /* Handle outgoing stream */
                 lock (TransmitterQueue)
                 {

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Windows.Threading;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;

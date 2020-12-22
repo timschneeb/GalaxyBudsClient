@@ -66,7 +66,6 @@
             <e p="ToggleSwitch.xaml" t="Include" />
             <e p="ToggleSwitch.xaml.cs" t="Include" />
           </e>
-          <e p="INotifyIcon.cs" t="Include" />
           <e p="Items" t="Include">
             <e p="DetailListItem.xaml" t="Include" />
             <e p="DetailListItem.xaml.cs" t="Include" />
@@ -193,6 +192,7 @@
             <e p="MediaKeyRemote.Linux.cs" t="Include" />
           </e>
           <e p="MediaKeyRemoteImpl.cs" t="Include" />
+          <e p="NotifyIconImpl.cs" t="Include" />
           <e p="PlatformUtils.cs" t="Include" />
           <e p="Windows" t="Include">
             <e p="AutoStartHelper.Windows.cs" t="Include" />
@@ -276,6 +276,7 @@
           </e>
           <e p="icon_white.ico" t="Include" />
           <e p="icon_white.png" t="Include" />
+          <e p="icon_white_small.png" t="Include" />
           <e p="navigation" t="Include">
             <e p="LoadingSpinner.png" t="Include" />
             <e p="back_dark.png" t="Include" />
@@ -294,10 +295,27 @@
           <e p="ResourceIndexer.cs" t="Include" />
           <e p="SettingsProvider.cs" t="Include" />
           <e p="ThemeUtils.cs" t="Include" />
+          <e p="TrayManager.cs" t="Include" />
           <e p="UpdateManager.cs" t="Include" />
           <e p="ValueConverter.cs" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive" />
+        <e p="findmygear" t="Include">
+          <e p="finding.png" t="Include" />
+          <e p="finding_black.png" t="Include" />
+          <e p="finding_glow.png" t="Include" />
+          <e p="muted.png" t="Include" />
+          <e p="muted_white.png" t="Include" />
+          <e p="radar_circle.png" t="Include" />
+          <e p="start_finding.png" t="Include" />
+          <e p="start_finding_black.png" t="Include" />
+          <e p="start_gray.png" t="Include" />
+          <e p="start_lightgray.png" t="Include" />
+          <e p="start_white.png" t="Include" />
+          <e p="stop_white.png" t="Include" />
+          <e p="unmuted.png" t="Include" />
+          <e p="unmuted_white.png" t="Include" />
+        </e>
         <e p="i18n" t="Include">
           <e p="cn.xaml" t="Include" />
           <e p="de.xaml" t="Include" />
@@ -364,6 +382,23 @@
           <e p="Debug" t="Include">
             <e p="netstandard2.1" t="Include">
               <e p="GalaxyBudsClient.Bluetooth.Windows.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="GalaxyBudsClient.Interop.TrayIcon" t="IncludeRecursive">
+        <e p="GalaxyBudsClient.Interop.TrayIcon.csproj" t="IncludeRecursive" />
+        <e p="ITrayIcon.cs" t="Include" />
+        <e p="ItemType.cs" t="Include" />
+        <e p="TrayMenuItem.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net472" t="Include">
+              <e p="GalaxyBudsClient.Interop.TrayIcon.AssemblyInfo.cs" t="Include" />
+            </e>
+            <e p="netcoreapp3.1" t="Include">
+              <e p="GalaxyBudsClient.Interop.TrayIcon.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -733,6 +768,18 @@
           </e>
         </e>
       </e>
+      <e p="ThePBone.Interop.Linux.TrayIcon" t="IncludeRecursive">
+        <e p="ThePBone.Interop.Linux.TrayIcon.csproj" t="IncludeRecursive" />
+        <e p="TrayIcon.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="ThePBone.Interop.Linux.TrayIcon.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
       <e p="ThePBone.Interop.Win32" t="IncludeRecursive">
         <e p="AudioPlaybackDetection.cs" t="Include" />
         <e p="ThePBone.Interop.Win32.csproj" t="IncludeRecursive" />
@@ -763,6 +810,23 @@
           <e p="Debug" t="Include">
             <e p="netstandard2.1" t="Include">
               <e p="ThePBone.Interop.Win32.Devices.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="ThePBone.Interop.Win32.TrayIcon" t="IncludeRecursive">
+        <e p="ThePBone.Interop.Win32.TrayIcon.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="ThePBone.MprisClient" t="IncludeRecursive">
+        <e p="IDBus.cs" t="Include" />
+        <e p="IPlayer2.cs" t="Include" />
+        <e p="MprisClient.cs" t="Include" />
+        <e p="ThePBone.MprisClient.csproj" t="IncludeRecursive" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.1" t="Include">
+              <e p="ThePBone.MprisClient.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
         </e>

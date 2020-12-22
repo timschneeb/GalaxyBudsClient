@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using Eto.Drawing;
-using Eto.Forms;
+using System.Threading.Tasks;
 using GalaxyBudsClient.Interop.TrayIcon;
+using Gtk;
 using Serilog;
 using Action = System.Action;
-using Application = Eto.Forms.Application;
 using Thread = System.Threading.Thread;
 
 namespace ThePBone.Interop.Linux.TrayIcon
@@ -16,7 +15,7 @@ namespace ThePBone.Interop.Linux.TrayIcon
         #region Properties
         public event EventHandler<TrayMenuItem>? TrayMenuItemSelected;
         public event EventHandler? LeftClicked;
-        public event EventHandler RightClicked;
+        public event EventHandler? RightClicked;
         public List<TrayMenuItem> MenuItems
         {
             get => _menuItems;
@@ -29,22 +28,6 @@ namespace ThePBone.Interop.Linux.TrayIcon
 
         /* PreferDarkMode is ignored here */
         public bool PreferDarkMode { get; set; }
-
-        public void Show()
-        {
-            BeginInvoke(new Action(() =>
-            {
-                _tray?.Show();
-            }));
-        }
-
-        public void Hide()
-        {
-            BeginInvoke(new Action(() =>
-            {
-                _tray?.Hide();
-            }));
-        }
         #endregion
 
         #region Threading
@@ -61,59 +44,55 @@ namespace ThePBone.Interop.Linux.TrayIcon
             ctx.Send((_) => result = dlg.DynamicInvoke(args), null);
             return result;
         }
-
-        protected virtual void Initialize(object? sender, EventArgs e)
-        {
-            ctx = SynchronizationContext.Current;
-            mre.Set();
-            Application.Instance.Initialized -= Initialize;
-        }
         #endregion
 
-        #region STA-owned objects
-        private TrayIndicator? _tray;
+        #region Thread-owned objects
+        private Menu? _popupMenu;
+        private Application _app;
+        private StatusIcon _status;
+        private List<TrayMenuItem> _menuItems = new List<TrayMenuItem>();
         #endregion
 
         #region Threading objects
         private readonly Thread thread;
         private SynchronizationContext? ctx;
-        private readonly ManualResetEvent mre;
-        private List<TrayMenuItem> _menuItems = new List<TrayMenuItem>();
         #endregion
-
+        
         public TrayIcon()
         {
-            using (mre = new ManualResetEvent(false))
-            {
-                thread = new Thread(() =>
-                {
-                    var app = new Application();
-                    app.Initialized += Initialize;
 
-                    _tray = new TrayIndicator
-                    {
-                        Title = "Galaxy Buds Manager",
-                        Image = Icon.FromResource("GalaxyBudsClient.Resources.icon_white_small.png")
-                    };
-                    _tray.Activated += (sender, args) => LeftClicked?.Invoke(this, EventArgs.Empty);
-                    _tray.Show();
-                    
-                    UpdateMenu();
-                    
-                    app.Run();
-                })
+           /* 
+            new Task(() =>
+            {
+                ctx = SynchronizationContext.Current;
+               
+                Application.Init();
+                
+                _app = new Application("GalaxyBudsClient.ThePBone.Interop.Linux.TrayIcon", GLib.ApplicationFlags.None);
+                _app.Register(GLib.Cancellable.Current);
+
+                _status = new StatusIcon();//new Gdk.Pixbuf("ScreenlapseIcon.png"));
+                
+                _status.Activate += (sender, args) => LeftClicked?.Invoke(this, EventArgs.Empty);
+                _status.PopupMenu += (o, menuArgs) =>
                 {
-                    IsBackground = true
+                    RightClicked?.Invoke(this, EventArgs.Empty);
+                    _popupMenu?.ShowAll ();
+                    _popupMenu?.Popup ();
                 };
-                thread.SetApartmentState(ApartmentState.STA);
-                thread.Start();
-                mre.WaitOne();
-            }
+                
+                _popupMenu = new Menu ();
+
+                ImageMenuItem explore = new ImageMenuItem ("Explore");
+                _popupMenu.Add(explore);
+                
+                Application.Run(); 
+            }).Start();*/
         }
         
         public void UpdateMenu()
         {
-            Application.Instance.AsyncInvoke(() =>
+            /*Application.Instance.AsyncInvoke(() =>
             {
                 var menu = new ContextMenu();
 
@@ -131,7 +110,6 @@ namespace ThePBone.Interop.Linux.TrayIcon
                         entry.Text = item.Title;
                         menu.Items.Add(entry);
                     }
-;
                 }
                 
                 if(_tray == null)
@@ -142,14 +120,14 @@ namespace ThePBone.Interop.Linux.TrayIcon
                 {
                     _tray.Menu = menu;
                 }
-            });
+            });*/
         }
 
         public void Dispose()
         {
             if (ctx != null)
             {
-                ctx.Send((_) => Application.Instance.Quit(), null);
+                ctx.Send((_) => Application.Quit(), null);
                 ctx = null;
             }
         }

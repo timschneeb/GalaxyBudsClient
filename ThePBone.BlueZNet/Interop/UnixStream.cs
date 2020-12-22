@@ -22,8 +22,10 @@ namespace ThePBone.BlueZNet.Interop
         }
 
         public UnixSocket Socket => _usock;
+
+        public int AvailableBytes => _usock.AvailableBytes();
         
-        public override bool CanRead => true;
+        public override bool CanRead => _usock.Available();
 
         public override bool CanSeek => false;
 

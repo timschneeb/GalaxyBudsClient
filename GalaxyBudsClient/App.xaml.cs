@@ -25,7 +25,9 @@ namespace GalaxyBudsClient
             /* Clean everything from the old run up */
             if (PlatformUtils.IsWindows)
             {
+#if Windows
                 ThePBone.Interop.Win32.TrayIcon.ResourceLoader.ClearCache();
+#endif
             }
             
             if (Loc.IsTranslatorModeEnabled())

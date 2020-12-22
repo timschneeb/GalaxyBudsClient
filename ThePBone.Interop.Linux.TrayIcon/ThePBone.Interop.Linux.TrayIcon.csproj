@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Eto.Forms" Version="2.5.8" />
-    <PackageReference Include="Eto.Platform.Gtk" Version="2.5.8" />
+    <PackageReference Include="GtkSharp" Version="3.22.25.128" />
     <PackageReference Include="Serilog" Version="2.10.0" />
   </ItemGroup>
 

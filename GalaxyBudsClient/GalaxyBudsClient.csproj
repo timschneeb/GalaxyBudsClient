@@ -8,6 +8,20 @@
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
+    <PropertyGroup>
+        <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
+        <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
+        <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsWindows)'=='true'">
+        <DefineConstants>Windows</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsOSX)'=='true'">
+        <DefineConstants>OSX</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsLinux)'=='true'">
+        <DefineConstants>Linux</DefineConstants>
+    </PropertyGroup>
     <ItemGroup>
         <AvaloniaResource Include="Resources\**" />
         <EmbeddedResource Include="Resources\**" />
@@ -101,6 +115,9 @@
       <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Windows\GalaxyBudsClient.Bluetooth.Windows.csproj" />
       <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj" />
       <ProjectReference Include="..\ThePBone.Interop.Linux.TrayIcon\ThePBone.Interop.Linux.TrayIcon.csproj" />
+      <ProjectReference Include="..\ThePBone.MprisClient\ThePBone.MprisClient.csproj" />
+    </ItemGroup>
+    <ItemGroup Condition="'$(IsWindows)'=='true'">
       <ProjectReference Include="..\ThePBone.Interop.Win32.TrayIcon\ThePBone.Interop.Win32.TrayIcon.csproj" />
     </ItemGroup>
     <ItemGroup>
