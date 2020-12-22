@@ -62,7 +62,6 @@ namespace GalaxyBudsClient.Interface.Developer
         };
 
         private readonly ViewModel _vm = new ViewModel();
-
         
         public DevTools()
         {
@@ -81,26 +80,25 @@ namespace GalaxyBudsClient.Interface.Developer
             _propTable.Items = _vm.PropTableDataView;
             
             Closing += OnClosing;
-            BluetoothImpl.Instance.MessageReceived += MessageReceived;
+            BluetoothImpl.Instance.NewDataReceived += OnNewDataReceived;
         }
-        
-        private void MessageReceived(object? sender, SPPMessage e)
+
+        private void OnNewDataReceived(object? sender, byte[] raw)
         {
             Dispatcher.UIThread.Post(() =>
             {
-                RecvMsgViewHolder holder = new RecvMsgViewHolder(e);
-                _vm.MsgTableDataSource?.Add(holder);
-                _vm.MsgTableDataView.Refresh();
-
-                var raw = e.EncodeMessage();
                 _cache.AddRange(raw);
                 _hexDump.Text = HexUtils.Dump(_cache.ToArray());
+                
+                RecvMsgViewHolder holder = new RecvMsgViewHolder(SPPMessage.DecodeMessage(raw));
+                _vm.MsgTableDataSource?.Add(holder);
+                _vm.MsgTableDataView.Refresh();
             });
         }
 
         private void OnClosing(object? sender, CancelEventArgs e)
         {
-            BluetoothImpl.Instance.MessageReceived -= MessageReceived;
+            BluetoothImpl.Instance.NewDataReceived -= OnNewDataReceived;
 
             _cache.Clear();
             _hexDump.Clear();
