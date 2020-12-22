@@ -1,0 +1,65 @@
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using Tmds.DBus;
+
+namespace ThePBone.MprisClient
+{
+    public class MprisClient
+    {
+        public IPlayer? Player
+        {
+            private set => _player = value;
+            get
+            {
+                try
+                {
+                    UpdateTarget();
+                }
+                catch(DBusException)
+                {
+                    return null;
+                }
+                return _player;
+            }
+        }
+
+        private IPlayer? _player;
+        private IDBus _dbus;
+        private readonly Connection _connection;
+        
+        public MprisClient()
+        {
+            var clientOptions = new ClientConnectionOptions(Address.Session)
+            {
+                AutoConnect = false
+            };
+         
+            _connection = new Connection(clientOptions);
+            _connection.ConnectAsync();
+         
+            _dbus = _connection.CreateProxy<IDBus>("org.freedesktop.DBus", "/");
+
+            UpdateTarget();
+        }
+        
+        private async void UpdateTarget()
+        {
+            var names = await _dbus.ListNamesAsync();
+            foreach (var name in names)
+            {
+                if (name.StartsWith("org.mpris.MediaPlayer2"))
+                {
+                    try
+                    {
+                        _player = _connection.CreateProxy<IPlayer>(name, "/org/mpris/MediaPlayer2");
+                    }
+                    catch (DBusException ex)
+                    {
+                        Trace.WriteLine($"{name} is not ready");
+                    }
+                }
+            }
+        }
+    }
+}
