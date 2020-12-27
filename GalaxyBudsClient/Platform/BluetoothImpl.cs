@@ -9,6 +9,7 @@ using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
+using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Serilog;
@@ -153,7 +154,20 @@ namespace GalaxyBudsClient.Platform
             try
             {
                 Log.Verbose($"<< Outgoing: {msg}");
-                await _backend.SendAsync(msg.EncodeMessage());
+                
+                foreach(var hook in ScriptManager.Instance.MessageHooks)
+                {
+                    hook?.OnMessageSend(ref msg);
+                }
+
+                var raw = msg.EncodeMessage();
+                
+                foreach(var hook in ScriptManager.Instance.RawStreamHooks)
+                {
+                    hook?.OnRawDataSend(ref raw);
+                }
+                
+                await _backend.SendAsync(raw);
             }
             catch (BluetoothException ex)
             {
@@ -175,6 +189,7 @@ namespace GalaxyBudsClient.Platform
         {
             SettingsProvider.Instance.RegisteredDevice.Model = Models.NULL;
             SettingsProvider.Instance.RegisteredDevice.MacAddress = string.Empty;
+            DeviceMessageCache.Instance.Clear();
             await DisconnectAsync();
         }
         
@@ -200,8 +215,21 @@ namespace GalaxyBudsClient.Platform
             {
                 try
                 {
-                    SPPMessage msg = SPPMessage.DecodeMessage(data.OfType<byte>().ToArray());
+                    var raw = data.OfType<byte>().ToArray();
+                    
+                    foreach(var hook in ScriptManager.Instance.RawStreamHooks)
+                    {
+                        hook?.OnRawDataAvailable(ref raw);
+                    }
+                    
+                    SPPMessage msg = SPPMessage.DecodeMessage(raw);
                     Log.Verbose($">> Incoming: {msg}");
+                    
+                    foreach(var hook in ScriptManager.Instance.MessageHooks)
+                    {
+                        hook?.OnMessageAvailable(ref msg);
+                    }
+
                     MessageReceived?.Invoke(this, msg);
                 
                     if (msg.TotalPacketSize >= data.Count)

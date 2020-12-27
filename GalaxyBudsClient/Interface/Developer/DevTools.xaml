@@ -28,7 +28,7 @@
                 <MenuItem Header="_Clear" Click="Clear_OnClick" />
             </MenuItem>
             <MenuItem Header="_Edit">
-                <MenuItem Header="_Copy selected cell" Click="CopyPayload_OnClick" />
+                <MenuItem Header="_Copy selected payload" Click="CopyPayload_OnClick" />
             </MenuItem>
         </Menu>
 

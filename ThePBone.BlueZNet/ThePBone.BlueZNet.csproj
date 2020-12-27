@@ -2,6 +2,8 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <RootNamespace>ThePBone.BlueZNet</RootNamespace>
+        <Configurations>Debug;Release;Debug (Local server)</Configurations>
+        <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
     
     <PropertyGroup>
@@ -18,6 +20,11 @@
 
     <PropertyGroup>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug (Local server)' ">
+      <DebugSymbols Condition=" '$(DebugSymbols)' == '' ">true</DebugSymbols>
+      <Optimize Condition=" '$(Optimize)' == '' ">false</Optimize>
     </PropertyGroup>
     
     <ItemGroup>

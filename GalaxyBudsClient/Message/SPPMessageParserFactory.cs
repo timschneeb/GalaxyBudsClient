@@ -1,5 +1,6 @@
 ﻿using System;
 using GalaxyBudsClient.Decoder;
+using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;
 using Sentry;
 
@@ -10,12 +11,12 @@ namespace GalaxyBudsClient.Message
 
         private static readonly Type[] RegisteredParsers =
         {
-             typeof(ExtendedStatusUpdateParser), typeof(StatusUpdateParser), typeof(SoftwareVersionOTAParser), typeof(UsageReportParser),
-             typeof(SelfTestParser), typeof(GenericResponseParser), typeof(BatteryTypeParser), typeof(AmbientModeUpdateParser), typeof(DebugBuildInfoParser),
-             typeof(DebugSerialNumberParser), typeof(DebugModeVersionParser), typeof(SppRoleStateParser), typeof(ResetResponseParser),
-             typeof(AmbientVoiceFocusParser), typeof(AmbientVolumeParser), typeof(DebugGetAllDataParser), typeof(TouchUpdateParser),
-             typeof(AmbientWearingUpdateParser), typeof(MuteUpdateParser), typeof(SetOtherOptionParser), typeof(BondedDevicesParser),
-             typeof(DebugSkuParser), typeof(SetInBandRingtoneParser), typeof(NoiseReductionModeUpdateParser)
+            typeof(ExtendedStatusUpdateParser), typeof(StatusUpdateParser), typeof(SoftwareVersionOTAParser), typeof(UsageReportParser),
+            typeof(SelfTestParser), typeof(GenericResponseParser), typeof(BatteryTypeParser), typeof(AmbientModeUpdateParser), typeof(DebugBuildInfoParser),
+            typeof(DebugSerialNumberParser), typeof(DebugModeVersionParser), typeof(SppRoleStateParser), typeof(ResetResponseParser),
+            typeof(AmbientVoiceFocusParser), typeof(AmbientVolumeParser), typeof(DebugGetAllDataParser), typeof(TouchUpdateParser),
+            typeof(AmbientWearingUpdateParser), typeof(MuteUpdateParser), typeof(SetOtherOptionParser), typeof(BondedDevicesParser),
+            typeof(DebugSkuParser), typeof(SetInBandRingtoneParser), typeof(NoiseReductionModeUpdateParser)
         };
 
         public static BaseMessageParser? BuildParser(SPPMessage msg)
@@ -46,6 +47,15 @@ namespace GalaxyBudsClient.Message
                     }
                 }
             }
+
+            if (b != null)
+            {
+                foreach (var hook in ScriptManager.Instance.DecoderHooks)
+                {
+                    hook?.OnDecoderCreated(msg, ref b);
+                }
+            }
+
             return b;
         }
     }

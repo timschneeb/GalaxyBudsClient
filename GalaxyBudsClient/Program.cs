@@ -12,6 +12,7 @@ using Config.Net;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;
 using Serilog;
 using Serilog.Filters;
@@ -37,6 +38,8 @@ namespace GalaxyBudsClient
 
             Trace.Listeners.Add(new ConsoleTraceListener());
 
+            var scripts = new ScriptManager();
+            
             BuildAvaloniaApp().StartWithClassicDesktopLifetime(args, ShutdownMode.OnExplicitShutdown);
         } 
 

@@ -3,6 +3,8 @@
   <component name="ContentModelStore">
     <e p="$USER_HOME$/.cache/JetBrains/Rider2020.3/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/.cache/JetBrains/Rider2020.3/resharper-host/local/Transient/Rider/v203/SolutionCaches/_GalaxyBudsClient.1174347095.00" t="ExcludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="GalaxyBudsClient" t="IncludeRecursive">
         <e p=".gitignore" t="Include" />
@@ -142,6 +144,7 @@
         <e p="MainWindow.xaml" t="Include" />
         <e p="MainWindow.xaml.cs" t="Include" />
         <e p="Message" t="Include">
+          <e p="DeviceMessageCache.cs" t="Include" />
           <e p="MessageComposer.cs" t="Include" />
           <e p="SPPMessage.cs" t="Include" />
           <e p="SPPMessageHandler.cs" t="Include" />
@@ -156,9 +159,9 @@
             <e p="LocalizedDescriptionAttribute.cs" t="Include" />
             <e p="PostfixAttribute.cs" t="Include" />
           </e>
+          <e p="ConfigArrayParser.cs" t="Include" />
           <e p="Constants.cs" t="Include" />
           <e p="CustomAction.cs" t="Include" />
-          <e p="DeviceMessageCache.cs" t="Include" />
           <e p="ISettings.cs" t="Include" />
           <e p="Specifications" t="Include">
             <e p="BudsDeviceSpec.cs" t="Include" />
@@ -286,9 +289,29 @@
           </e>
           <e p="warning.png" t="Include" />
         </e>
+        <e p="Scripting" t="Include">
+          <e p="Experiment" t="Include">
+            <e p="ExperimentClient.cs" t="Include" />
+            <e p="ExperimentManager.cs" t="Include" />
+            <e p="ExperimentRequest.cs" t="Include" />
+            <e p="ExperimentResult.cs" t="Include" />
+            <e p="ExperimentRuntimeResult.cs" t="Include" />
+          </e>
+          <e p="Hooks" t="Include">
+            <e p="IDecoderHook.cs" t="Include" />
+            <e p="IExperimentHook.cs" t="Include" />
+            <e p="IHook.cs" t="Include" />
+            <e p="IMessageHook.cs" t="Include" />
+            <e p="IRawStreamHook.cs" t="Include" />
+          </e>
+          <e p="ScriptManager.cs" t="Include" />
+          <e p="TestScript.cs" t="Include" />
+        </e>
         <e p="Utils" t="Include">
+          <e p="ArrayUtils.cs" t="Include" />
           <e p="ByteArrayUtils.cs" t="Include" />
           <e p="CRC16.cs" t="Include" />
+          <e p="EncryptionUtils.cs" t="Include" />
           <e p="HexUtils.cs" t="Include" />
           <e p="LocalizationUtils.cs" t="Include" />
           <e p="MenuFactory.cs" t="Include" />
@@ -300,22 +323,6 @@
           <e p="ValueConverter.cs" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive" />
-        <e p="findmygear" t="Include">
-          <e p="finding.png" t="Include" />
-          <e p="finding_black.png" t="Include" />
-          <e p="finding_glow.png" t="Include" />
-          <e p="muted.png" t="Include" />
-          <e p="muted_white.png" t="Include" />
-          <e p="radar_circle.png" t="Include" />
-          <e p="start_finding.png" t="Include" />
-          <e p="start_finding_black.png" t="Include" />
-          <e p="start_gray.png" t="Include" />
-          <e p="start_lightgray.png" t="Include" />
-          <e p="start_white.png" t="Include" />
-          <e p="stop_white.png" t="Include" />
-          <e p="unmuted.png" t="Include" />
-          <e p="unmuted_white.png" t="Include" />
-        </e>
         <e p="i18n" t="Include">
           <e p="cn.xaml" t="Include" />
           <e p="de.xaml" t="Include" />
@@ -339,6 +346,373 @@
               </e>
               <e p="GalaxyBudsClient.AssemblyInfo.cs" t="Include" />
             </e>
+          </e>
+        </e>
+        <e p="publish" t="Include">
+          <e p="AtkSharp.dll" t="Include" />
+          <e p="Avalonia.Animation.dll" t="Include" />
+          <e p="Avalonia.Base.dll" t="Include" />
+          <e p="Avalonia.Controls.DataGrid.dll" t="Include" />
+          <e p="Avalonia.Controls.dll" t="Include" />
+          <e p="Avalonia.DesignerSupport.dll" t="Include" />
+          <e p="Avalonia.Desktop.dll" t="Include" />
+          <e p="Avalonia.DesktopRuntime.dll" t="Include" />
+          <e p="Avalonia.Diagnostics.dll" t="Include" />
+          <e p="Avalonia.Dialogs.dll" t="Include" />
+          <e p="Avalonia.FreeDesktop.dll" t="Include" />
+          <e p="Avalonia.Input.dll" t="Include" />
+          <e p="Avalonia.Interactivity.dll" t="Include" />
+          <e p="Avalonia.Layout.dll" t="Include" />
+          <e p="Avalonia.Markup.Xaml.Loader.dll" t="Include" />
+          <e p="Avalonia.Markup.Xaml.dll" t="Include" />
+          <e p="Avalonia.Markup.dll" t="Include" />
+          <e p="Avalonia.MicroCom.dll" t="Include" />
+          <e p="Avalonia.Native.dll" t="Include" />
+          <e p="Avalonia.OpenGL.dll" t="Include" />
+          <e p="Avalonia.Remote.Protocol.dll" t="Include" />
+          <e p="Avalonia.Skia.dll" t="Include" />
+          <e p="Avalonia.Styling.dll" t="Include" />
+          <e p="Avalonia.Themes.Default.dll" t="Include" />
+          <e p="Avalonia.Themes.Fluent.dll" t="Include" />
+          <e p="Avalonia.Visuals.dll" t="Include" />
+          <e p="Avalonia.Win32.dll" t="Include" />
+          <e p="Avalonia.X11.dll" t="Include" />
+          <e p="Avalonia.Xaml.Interactions.dll" t="Include" />
+          <e p="Avalonia.Xaml.Interactivity.dll" t="Include" />
+          <e p="Avalonia.dll" t="Include" />
+          <e p="BouncyCastle.Crypto.dll" t="Include" />
+          <e p="CSScriptLib.dll" t="Include" />
+          <e p="CairoSharp.dll" t="Include" />
+          <e p="Castle.Core.dll" t="Include" />
+          <e p="Config.Net.Json.dll" t="Include" />
+          <e p="Config.Net.dll" t="Include" />
+          <e p="GLibSharp.dll" t="Include" />
+          <e p="GalaxyBudsClient" t="Include" />
+          <e p="GalaxyBudsClient.Bluetooth.Linux.dll" t="Include" />
+          <e p="GalaxyBudsClient.Bluetooth.Linux.pdb" t="Include" />
+          <e p="GalaxyBudsClient.Bluetooth.Windows.dll" t="Include" />
+          <e p="GalaxyBudsClient.Bluetooth.Windows.pdb" t="Include" />
+          <e p="GalaxyBudsClient.Bluetooth.dll" t="Include" />
+          <e p="GalaxyBudsClient.Bluetooth.pdb" t="Include" />
+          <e p="GalaxyBudsClient.Interop.TrayIcon.dll" t="Include" />
+          <e p="GalaxyBudsClient.Interop.TrayIcon.pdb" t="Include" />
+          <e p="GalaxyBudsClient.deps.json" t="Include" />
+          <e p="GalaxyBudsClient.dll" t="Include" />
+          <e p="GalaxyBudsClient.pdb" t="Include" />
+          <e p="GalaxyBudsClient.runtimeconfig.json" t="Include" />
+          <e p="GdkSharp.dll" t="Include" />
+          <e p="GioSharp.dll" t="Include" />
+          <e p="GtkSharp.dll" t="Include" />
+          <e p="HarfBuzzSharp.dll" t="Include" />
+          <e p="InTheHand.Net.Personal.dll" t="Include" />
+          <e p="InTheHand.Net.Personal.dll.config" t="Include" />
+          <e p="InTheHand.Net.Personal.pdb" t="Include" />
+          <e p="JetBrains.Annotations.dll" t="Include" />
+          <e p="Microsoft.CSharp.dll" t="Include" />
+          <e p="Microsoft.CodeAnalysis.CSharp.Scripting.dll" t="Include" />
+          <e p="Microsoft.CodeAnalysis.CSharp.dll" t="Include" />
+          <e p="Microsoft.CodeAnalysis.Scripting.dll" t="Include" />
+          <e p="Microsoft.CodeAnalysis.dll" t="Include" />
+          <e p="Microsoft.Extensions.DependencyModel.dll" t="Include" />
+          <e p="Microsoft.VisualBasic.Core.dll" t="Include" />
+          <e p="Microsoft.VisualBasic.dll" t="Include" />
+          <e p="Microsoft.Win32.Primitives.dll" t="Include" />
+          <e p="Microsoft.Win32.Registry.dll" t="Include" />
+          <e p="Microsoft.Win32.SystemEvents.dll" t="Include" />
+          <e p="NSec.Cryptography.dll" t="Include" />
+          <e p="NetSparkle.dll" t="Include" />
+          <e p="Newtonsoft.Json.Bson.dll" t="Include" />
+          <e p="Newtonsoft.Json.dll" t="Include" />
+          <e p="PangoSharp.dll" t="Include" />
+          <e p="SOS_README.md" t="Include" />
+          <e p="Sentry.dll" t="Include" />
+          <e p="Serilog.Sinks.Console.dll" t="Include" />
+          <e p="Serilog.Sinks.Debug.dll" t="Include" />
+          <e p="Serilog.Sinks.File.dll" t="Include" />
+          <e p="Serilog.dll" t="Include" />
+          <e p="SkiaSharp.dll" t="Include" />
+          <e p="System.AppContext.dll" t="Include" />
+          <e p="System.Buffers.dll" t="Include" />
+          <e p="System.Collections.Concurrent.dll" t="Include" />
+          <e p="System.Collections.Immutable.dll" t="Include" />
+          <e p="System.Collections.NonGeneric.dll" t="Include" />
+          <e p="System.Collections.Specialized.dll" t="Include" />
+          <e p="System.Collections.dll" t="Include" />
+          <e p="System.ComponentModel.Annotations.dll" t="Include" />
+          <e p="System.ComponentModel.DataAnnotations.dll" t="Include" />
+          <e p="System.ComponentModel.EventBasedAsync.dll" t="Include" />
+          <e p="System.ComponentModel.Primitives.dll" t="Include" />
+          <e p="System.ComponentModel.TypeConverter.dll" t="Include" />
+          <e p="System.ComponentModel.dll" t="Include" />
+          <e p="System.Configuration.ConfigurationManager.dll" t="Include" />
+          <e p="System.Configuration.dll" t="Include" />
+          <e p="System.Console.dll" t="Include" />
+          <e p="System.Core.dll" t="Include" />
+          <e p="System.Data.Common.dll" t="Include" />
+          <e p="System.Data.DataSetExtensions.dll" t="Include" />
+          <e p="System.Data.dll" t="Include" />
+          <e p="System.Diagnostics.Contracts.dll" t="Include" />
+          <e p="System.Diagnostics.Debug.dll" t="Include" />
+          <e p="System.Diagnostics.DiagnosticSource.dll" t="Include" />
+          <e p="System.Diagnostics.FileVersionInfo.dll" t="Include" />
+          <e p="System.Diagnostics.Process.dll" t="Include" />
+          <e p="System.Diagnostics.StackTrace.dll" t="Include" />
+          <e p="System.Diagnostics.TextWriterTraceListener.dll" t="Include" />
+          <e p="System.Diagnostics.Tools.dll" t="Include" />
+          <e p="System.Diagnostics.TraceSource.dll" t="Include" />
+          <e p="System.Diagnostics.Tracing.dll" t="Include" />
+          <e p="System.Drawing.Common.dll" t="Include" />
+          <e p="System.Drawing.Primitives.dll" t="Include" />
+          <e p="System.Drawing.dll" t="Include" />
+          <e p="System.Dynamic.Runtime.dll" t="Include" />
+          <e p="System.Globalization.Calendars.dll" t="Include" />
+          <e p="System.Globalization.Extensions.dll" t="Include" />
+          <e p="System.Globalization.Native.so" t="Include" />
+          <e p="System.Globalization.dll" t="Include" />
+          <e p="System.IO.Compression.Brotli.dll" t="Include" />
+          <e p="System.IO.Compression.FileSystem.dll" t="Include" />
+          <e p="System.IO.Compression.Native.a" t="Include" />
+          <e p="System.IO.Compression.Native.so" t="Include" />
+          <e p="System.IO.Compression.ZipFile.dll" t="Include" />
+          <e p="System.IO.Compression.dll" t="Include" />
+          <e p="System.IO.FileSystem.AccessControl.dll" t="Include" />
+          <e p="System.IO.FileSystem.DriveInfo.dll" t="Include" />
+          <e p="System.IO.FileSystem.Primitives.dll" t="Include" />
+          <e p="System.IO.FileSystem.Watcher.dll" t="Include" />
+          <e p="System.IO.FileSystem.dll" t="Include" />
+          <e p="System.IO.IsolatedStorage.dll" t="Include" />
+          <e p="System.IO.MemoryMappedFiles.dll" t="Include" />
+          <e p="System.IO.Pipes.AccessControl.dll" t="Include" />
+          <e p="System.IO.Pipes.dll" t="Include" />
+          <e p="System.IO.Ports.dll" t="Include" />
+          <e p="System.IO.UnmanagedMemoryStream.dll" t="Include" />
+          <e p="System.IO.dll" t="Include" />
+          <e p="System.Linq.Expressions.dll" t="Include" />
+          <e p="System.Linq.Parallel.dll" t="Include" />
+          <e p="System.Linq.Queryable.dll" t="Include" />
+          <e p="System.Linq.dll" t="Include" />
+          <e p="System.Memory.dll" t="Include" />
+          <e p="System.Native.a" t="Include" />
+          <e p="System.Native.so" t="Include" />
+          <e p="System.Net.Http.Formatting.dll" t="Include" />
+          <e p="System.Net.Http.Native.a" t="Include" />
+          <e p="System.Net.Http.Native.so" t="Include" />
+          <e p="System.Net.Http.dll" t="Include" />
+          <e p="System.Net.HttpListener.dll" t="Include" />
+          <e p="System.Net.Mail.dll" t="Include" />
+          <e p="System.Net.NameResolution.dll" t="Include" />
+          <e p="System.Net.NetworkInformation.dll" t="Include" />
+          <e p="System.Net.Ping.dll" t="Include" />
+          <e p="System.Net.Primitives.dll" t="Include" />
+          <e p="System.Net.Requests.dll" t="Include" />
+          <e p="System.Net.Security.Native.a" t="Include" />
+          <e p="System.Net.Security.Native.so" t="Include" />
+          <e p="System.Net.Security.dll" t="Include" />
+          <e p="System.Net.ServicePoint.dll" t="Include" />
+          <e p="System.Net.Sockets.dll" t="Include" />
+          <e p="System.Net.WebClient.dll" t="Include" />
+          <e p="System.Net.WebHeaderCollection.dll" t="Include" />
+          <e p="System.Net.WebProxy.dll" t="Include" />
+          <e p="System.Net.WebSockets.Client.dll" t="Include" />
+          <e p="System.Net.WebSockets.dll" t="Include" />
+          <e p="System.Net.dll" t="Include" />
+          <e p="System.Numerics.Vectors.dll" t="Include" />
+          <e p="System.Numerics.dll" t="Include" />
+          <e p="System.ObjectModel.dll" t="Include" />
+          <e p="System.Private.CoreLib.dll" t="Include" />
+          <e p="System.Private.DataContractSerialization.dll" t="Include" />
+          <e p="System.Private.Uri.dll" t="Include" />
+          <e p="System.Private.Xml.Linq.dll" t="Include" />
+          <e p="System.Private.Xml.dll" t="Include" />
+          <e p="System.Reactive.dll" t="Include" />
+          <e p="System.Reactive.xml" t="Include" />
+          <e p="System.Reflection.DispatchProxy.dll" t="Include" />
+          <e p="System.Reflection.Emit.ILGeneration.dll" t="Include" />
+          <e p="System.Reflection.Emit.Lightweight.dll" t="Include" />
+          <e p="System.Reflection.Emit.dll" t="Include" />
+          <e p="System.Reflection.Extensions.dll" t="Include" />
+          <e p="System.Reflection.Metadata.dll" t="Include" />
+          <e p="System.Reflection.Primitives.dll" t="Include" />
+          <e p="System.Reflection.TypeExtensions.dll" t="Include" />
+          <e p="System.Reflection.dll" t="Include" />
+          <e p="System.Resources.Reader.dll" t="Include" />
+          <e p="System.Resources.ResourceManager.dll" t="Include" />
+          <e p="System.Resources.Writer.dll" t="Include" />
+          <e p="System.Runtime.CompilerServices.Unsafe.dll" t="Include" />
+          <e p="System.Runtime.CompilerServices.VisualC.dll" t="Include" />
+          <e p="System.Runtime.Extensions.dll" t="Include" />
+          <e p="System.Runtime.Handles.dll" t="Include" />
+          <e p="System.Runtime.InteropServices.RuntimeInformation.dll" t="Include" />
+          <e p="System.Runtime.InteropServices.WindowsRuntime.dll" t="Include" />
+          <e p="System.Runtime.InteropServices.dll" t="Include" />
+          <e p="System.Runtime.Intrinsics.dll" t="Include" />
+          <e p="System.Runtime.Loader.dll" t="Include" />
+          <e p="System.Runtime.Numerics.dll" t="Include" />
+          <e p="System.Runtime.Serialization.Formatters.dll" t="Include" />
+          <e p="System.Runtime.Serialization.Json.dll" t="Include" />
+          <e p="System.Runtime.Serialization.Primitives.dll" t="Include" />
+          <e p="System.Runtime.Serialization.Xml.dll" t="Include" />
+          <e p="System.Runtime.Serialization.dll" t="Include" />
+          <e p="System.Runtime.WindowsRuntime.UI.Xaml.dll" t="Include" />
+          <e p="System.Runtime.WindowsRuntime.dll" t="Include" />
+          <e p="System.Runtime.dll" t="Include" />
+          <e p="System.Security.AccessControl.dll" t="Include" />
+          <e p="System.Security.Claims.dll" t="Include" />
+          <e p="System.Security.Cryptography.Algorithms.dll" t="Include" />
+          <e p="System.Security.Cryptography.Cng.dll" t="Include" />
+          <e p="System.Security.Cryptography.Csp.dll" t="Include" />
+          <e p="System.Security.Cryptography.Encoding.dll" t="Include" />
+          <e p="System.Security.Cryptography.Native.OpenSsl.a" t="Include" />
+          <e p="System.Security.Cryptography.Native.OpenSsl.so" t="Include" />
+          <e p="System.Security.Cryptography.OpenSsl.dll" t="Include" />
+          <e p="System.Security.Cryptography.Primitives.dll" t="Include" />
+          <e p="System.Security.Cryptography.ProtectedData.dll" t="Include" />
+          <e p="System.Security.Cryptography.X509Certificates.dll" t="Include" />
+          <e p="System.Security.Permissions.dll" t="Include" />
+          <e p="System.Security.Principal.Windows.dll" t="Include" />
+          <e p="System.Security.Principal.dll" t="Include" />
+          <e p="System.Security.SecureString.dll" t="Include" />
+          <e p="System.Security.dll" t="Include" />
+          <e p="System.ServiceModel.Web.dll" t="Include" />
+          <e p="System.ServiceProcess.dll" t="Include" />
+          <e p="System.Text.Encoding.CodePages.dll" t="Include" />
+          <e p="System.Text.Encoding.Extensions.dll" t="Include" />
+          <e p="System.Text.Encoding.dll" t="Include" />
+          <e p="System.Text.Encodings.Web.dll" t="Include" />
+          <e p="System.Text.Json.dll" t="Include" />
+          <e p="System.Text.RegularExpressions.dll" t="Include" />
+          <e p="System.Threading.Channels.dll" t="Include" />
+          <e p="System.Threading.Overlapped.dll" t="Include" />
+          <e p="System.Threading.Tasks.Dataflow.dll" t="Include" />
+          <e p="System.Threading.Tasks.Extensions.dll" t="Include" />
+          <e p="System.Threading.Tasks.Parallel.dll" t="Include" />
+          <e p="System.Threading.Tasks.dll" t="Include" />
+          <e p="System.Threading.Thread.dll" t="Include" />
+          <e p="System.Threading.ThreadPool.dll" t="Include" />
+          <e p="System.Threading.Timer.dll" t="Include" />
+          <e p="System.Threading.dll" t="Include" />
+          <e p="System.Transactions.Local.dll" t="Include" />
+          <e p="System.Transactions.dll" t="Include" />
+          <e p="System.ValueTuple.dll" t="Include" />
+          <e p="System.Web.HttpUtility.dll" t="Include" />
+          <e p="System.Web.dll" t="Include" />
+          <e p="System.Windows.Extensions.dll" t="Include" />
+          <e p="System.Windows.dll" t="Include" />
+          <e p="System.Xml.Linq.dll" t="Include" />
+          <e p="System.Xml.ReaderWriter.dll" t="Include" />
+          <e p="System.Xml.Serialization.dll" t="Include" />
+          <e p="System.Xml.XDocument.dll" t="Include" />
+          <e p="System.Xml.XPath.XDocument.dll" t="Include" />
+          <e p="System.Xml.XPath.dll" t="Include" />
+          <e p="System.Xml.XmlDocument.dll" t="Include" />
+          <e p="System.Xml.XmlSerializer.dll" t="Include" />
+          <e p="System.Xml.dll" t="Include" />
+          <e p="System.dll" t="Include" />
+          <e p="ThePBone.BlueZNet.dll" t="Include" />
+          <e p="ThePBone.BlueZNet.pdb" t="Include" />
+          <e p="ThePBone.Interop.Linux.TrayIcon.dll" t="Include" />
+          <e p="ThePBone.Interop.Linux.TrayIcon.pdb" t="Include" />
+          <e p="ThePBone.Interop.Win32.Devices.dll" t="Include" />
+          <e p="ThePBone.Interop.Win32.Devices.pdb" t="Include" />
+          <e p="ThePBone.Interop.Win32.dll" t="Include" />
+          <e p="ThePBone.Interop.Win32.pdb" t="Include" />
+          <e p="ThePBone.MprisClient.dll" t="Include" />
+          <e p="ThePBone.MprisClient.pdb" t="Include" />
+          <e p="Tmds.DBus.dll" t="Include" />
+          <e p="WindowsBase.dll" t="Include" />
+          <e p="WindowsInput.dll" t="Include" />
+          <e p="createdump" t="Include" />
+          <e p="cs" t="Include">
+            <e p="Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.CSharp.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.resources.dll" t="Include" />
+          </e>
+          <e p="de" t="Include">
+            <e p="Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.CSharp.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.resources.dll" t="Include" />
+          </e>
+          <e p="es" t="Include">
+            <e p="Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.CSharp.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.resources.dll" t="Include" />
+          </e>
+          <e p="fr" t="Include">
+            <e p="Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.CSharp.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.resources.dll" t="Include" />
+          </e>
+          <e p="it" t="Include">
+            <e p="Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.CSharp.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.resources.dll" t="Include" />
+          </e>
+          <e p="ja" t="Include">
+            <e p="Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.CSharp.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.resources.dll" t="Include" />
+          </e>
+          <e p="ko" t="Include">
+            <e p="Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.CSharp.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.resources.dll" t="Include" />
+          </e>
+          <e p="libHarfBuzzSharp.so" t="Include" />
+          <e p="libSkiaSharp.so" t="Include" />
+          <e p="libSystem.IO.Ports.Native.so" t="Include" />
+          <e p="libclrjit.so" t="Include" />
+          <e p="libcoreclr.so" t="Include" />
+          <e p="libcoreclrtraceptprovider.so" t="Include" />
+          <e p="libdbgshim.so" t="Include" />
+          <e p="libhostfxr.so" t="Include" />
+          <e p="libhostpolicy.so" t="Include" />
+          <e p="libmscordaccore.so" t="Include" />
+          <e p="libmscordbi.so" t="Include" />
+          <e p="libsodium.so" t="Include" />
+          <e p="mscorlib.dll" t="Include" />
+          <e p="netstandard.dll" t="Include" />
+          <e p="pl" t="Include">
+            <e p="Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.CSharp.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.resources.dll" t="Include" />
+          </e>
+          <e p="pt-BR" t="Include">
+            <e p="Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.CSharp.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.resources.dll" t="Include" />
+          </e>
+          <e p="ru" t="Include">
+            <e p="Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.CSharp.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.resources.dll" t="Include" />
+          </e>
+          <e p="tr" t="Include">
+            <e p="Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.CSharp.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.resources.dll" t="Include" />
+          </e>
+          <e p="zh-Hans" t="Include">
+            <e p="Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.CSharp.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.resources.dll" t="Include" />
+          </e>
+          <e p="zh-Hant" t="Include">
+            <e p="Microsoft.CodeAnalysis.CSharp.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.CSharp.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.Scripting.resources.dll" t="Include" />
+            <e p="Microsoft.CodeAnalysis.resources.dll" t="Include" />
           </e>
         </e>
       </e>

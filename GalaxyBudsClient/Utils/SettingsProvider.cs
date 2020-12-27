@@ -13,6 +13,7 @@ namespace GalaxyBudsClient.Utils
             Log.Information($"Using settings file at: {SettingsPath}");
             Instance = new ConfigurationBuilder<ISettings>()
                 .UseJsonFile(SettingsPath)
+                .UseTypeParser(new ConfigArrayParser<long>())
                 .Build();
         }
 

@@ -10,6 +10,12 @@
         <Product>32feet.NET</Product>
         <Company>In The Hand Ltd</Company>
         <DefineConstants>NO_WINFORMS;WinXP;V2</DefineConstants>
+        <Configurations>Debug;Release;Debug (Local server)</Configurations>
+        <Platforms>AnyCPU</Platforms>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug (Local server)' ">
+      <DebugSymbols Condition=" '$(DebugSymbols)' == '' ">true</DebugSymbols>
+      <Optimize Condition=" '$(Optimize)' == '' ">false</Optimize>
     </PropertyGroup>
     <ItemGroup>
       <Compile Remove="Windows\**" />

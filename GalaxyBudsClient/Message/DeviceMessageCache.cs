@@ -1,7 +1,6 @@
 using GalaxyBudsClient.Decoder;
-using GalaxyBudsClient.Message;
 
-namespace GalaxyBudsClient.Model
+namespace GalaxyBudsClient.Message
 {
     public class DeviceMessageCache
     {
@@ -29,9 +28,18 @@ namespace GalaxyBudsClient.Model
         public DeviceMessageCache()
         {
             SPPMessageHandler.Instance.ExtendedStatusUpdate += (sender, parser) => ExtendedStatusUpdate = parser;
-                SPPMessageHandler.Instance.StatusUpdate += (sender, parser) => StatusUpdate = parser;
+            SPPMessageHandler.Instance.StatusUpdate += (sender, parser) => StatusUpdate = parser;
+            SPPMessageHandler.Instance.GetAllDataResponse += (sender, parser) => DebugGetAllData = parser;
         }
 
+        public void Clear()
+        {
+            DebugGetAllData = null;
+            ExtendedStatusUpdate = null;
+            StatusUpdate = null;
+        }
+        
+        public DebugGetAllDataParser? DebugGetAllData { set; get; }
         public ExtendedStatusUpdateParser? ExtendedStatusUpdate { set; get; }
         public StatusUpdateParser? StatusUpdate { set; get; }
 

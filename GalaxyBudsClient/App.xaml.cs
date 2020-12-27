@@ -11,6 +11,8 @@ using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Scripting;
+using GalaxyBudsClient.Scripting.Experiment;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 
@@ -38,8 +40,11 @@ namespace GalaxyBudsClient
             
             ThemeUtils.Reload();
             Loc.Load();
+            
             DeviceMessageCache.Init();
             UpdateManager.Init();
+            ScriptManager.Init();
+            ExperimentManager.Init();
         }
         
         public override void OnFrameworkInitializationCompleted()

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Config.Net;
 using GalaxyBudsClient.Model.Constants;
 
@@ -29,9 +30,15 @@ namespace GalaxyBudsClient.Model
         PopupPlacement Placement  { set; get; }
     }
     
+    public interface IExperiments
+    {
+        [Option(DefaultValue = true)]
+        bool Enabled { set; get; }
+        long[] FinishedIds { set; get; }
+    }
+    
     public interface ISettings
     {
-
         [Option(DefaultValue = DarkModes.Light)]
         DarkModes DarkMode { set; get; }
         [Option(DefaultValue = Locales.en)]
@@ -51,5 +58,7 @@ namespace GalaxyBudsClient.Model
         string UpdateSkippedVersion { set; get; }
         bool MinimizeToTray { set; get; }
         bool ResumePlaybackOnSensor { set; get; }
+        
+        IExperiments Experiments { set; get; }
     }
 }
