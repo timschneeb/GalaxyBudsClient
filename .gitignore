@@ -11,7 +11,7 @@
 *.sln.docstates
 
 # Idea files
-.idea/.idea.GalaxyBudsClient/.idea/workspace.xml
+.idea/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
