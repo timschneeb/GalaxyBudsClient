@@ -16,6 +16,8 @@
     <sys:String x:Key="notset">설정되지 않음</sys:String>
     <sys:String x:Key="nobluetoothdev">Bluetooth 송수신 장치를 찾지 못했습니다. Bluetooth를 켠 후 다시 시도해 주세요.</sys:String>
 
+    <sys:String x:Key="anc">액티브 노이즈 캔슬링</sys:String>
+
     <!-- SPP Message Parser -->
     <sys:String x:Key="sppmsg_too_small">패킷 크기가 너무 작음</sys:String>
     <sys:String x:Key="sppmsg_invalid_som">유효하지 않은 SOM</sys:String>
@@ -81,6 +83,8 @@
     <sys:String x:Key="tray_disable_ambient_sound">주변 소리 듣기 끄기</sys:String>
     <sys:String x:Key="tray_enable_eq">이퀄라이저 켜기</sys:String>
     <sys:String x:Key="tray_disable_eq">이퀄라이저 끄기</sys:String>
+    <sys:String x:Key="tray_enable_anc">액티브 노이즈 캔슬링 활성화</sys:String>
+    <sys:String x:Key="tray_disable_anc">액티브 노이즈 캔슬링 비활성화/sys:String>
     <sys:String x:Key="tray_quit">종료</sys:String>
 
 
@@ -93,12 +97,13 @@
     <sys:String x:Key="hotrec_title">키 지정</sys:String>
     <sys:String x:Key="hotrec_content">키 조합을 입력하세요 (누른 채로 유지):</sys:String>
     <sys:String x:Key="hotrec_empty">없음</sys:String>
+    <sys:String x:Key="hotrec_note">참고: 사용자 인터페이스 권한 격리(UIPI)로 인해, 동일한 권한 수준의 앱에서만 키 조합을 수신할 수 있습니다.</sys:String>
 
     <!-- Welcome page -->
     <sys:String x:Key="welcome_textblock_header">환영합니다!</sys:String>
     <sys:String x:Key="welcome_textblock_p1">
-        안녕하세요! 이 Galaxy Buds Manager는 비공식 프로그램이며, Samsung과 일절의 관련이 없습니다.
-		이 프로그램은 공식 Samsung Wearable 앱에서 할 수 없는 여러 가지 것들을 할 수 있지만, 안전을 위해 이어버드 소프트웨어 OTA 업데이트 기능을 제외했습니다. 만약 업데이트가 필요하시다면, 공식 Galaxy Buds Manager를 사용해 주세요.
+        안녕하세요! 이 갤럭시 버즈 매니저는 비공식 프로그램이며, 삼성과 일절의 관련이 없습니다.
+		이 프로그램은 공식 삼성 웨어러블 앱에서 할 수 없는 여러 가지 것들을 할 수 있지만, 안전을 위해 이어버드 소프트웨어 OTA 업데이트 기능을 제외했습니다. 만약 업데이트가 필요하시다면, 공식 갤럭시 버즈 매니저를 사용해 주세요.
     </sys:String>
     <sys:String x:Key="welcome_textblock_p2">
         만약 이 프로그램이 개발되는 과정을 보고 싶으시다면, 저의 리버스 엔지니어링의 성과물들이 있는 GitHub 레포지토리에서 확인하실 수 있습니다. 또한 문제가 생기면 Telegram에서 @thepbone으로 메시지를 보내는 방법도 있습니다.
@@ -238,7 +243,6 @@
     <sys:String x:Key="settings_cpopup_position">표시 위치</sys:String>
     <sys:String x:Key="settings_cpopup_position_placeholder">알 수 없음</sys:String>
     <sys:String x:Key="settings_cpopup_demo">팝업 보기</sys:String>
-
     <sys:String x:Key="settings_cpopup_override_title">팝업 타이틀 변경</sys:String>
     <sys:String x:Key="settings_cpopup_override_title_dialog">팝업 타이틀을 입력해 주세요. 공백으로 둘 시 기본 타이틀이 적용됩니다.</sys:String>
 
@@ -290,6 +294,8 @@
     <sys:String x:Key="adv_resume_playback_desc">하나 이상의 거리 센서가 가려졌을 경우 전체 재생/정지 신호를 보냅니다. (Windows 기능)</sys:String>
     <sys:String x:Key="adv_sidetone">통화 중 주변 소리 듣기 허용</sys:String>
     <sys:String x:Key="adv_sidetone_desc">통화 중에 내 목소리를 더 또렷하게 들어보세요.</sys:String>
+    <sys:String x:Key="adv_passthrough">주변 소리 듣기로 압력을 완화해요.</sys:String>
+    <sys:String x:Key="adv_passthrough_desc">액티브 노이즈 캔슬링을 쓰지 않을 때의 답답함이나 압박감을 해결할 수 있어요.</sys:String>
     <sys:String x:Key="adv_gaming_mode">게임 모드</sys:String>
     <sys:String x:Key="adv_gaming_mode_desc">오디오 지연을 최소화하여, 더 생생하고 싱크가 완벽한 게임 사운드를 즐길 수 있어요. (Samsung 기능)</sys:String>
 
@@ -312,4 +318,5 @@
     <sys:String x:Key="connlost_noinfo">오류 정보를 가져오지 못했습니다.</sys:String>
     <sys:String x:Key="connlost_connect">연결</sys:String>
     <sys:String x:Key="connlost_connecting">연결 중...</sys:String>
+
 </ResourceDictionary>
