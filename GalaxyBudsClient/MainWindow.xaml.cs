@@ -22,8 +22,10 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
+using Gtk;
 using NetSparkleUpdater.Enums;
 using Serilog;
+using Application = Avalonia.Application;
 using MessageBox = GalaxyBudsClient.Interface.Dialogs.MessageBox;
 using RoutedEventArgs = Avalonia.Interactivity.RoutedEventArgs;
 using Window = Avalonia.Controls.Window;
@@ -158,31 +160,41 @@ namespace GalaxyBudsClient
             }
         }
 
+        public void BringToFront()
+        {
+            Dispatcher.UIThread.InvokeAsync(() =>
+            {
+                if (WindowState == WindowState.Minimized)
+                {
+                    WindowState = WindowState.Normal;
+                }
+
+                if (PlatformUtils.IsLinux)
+                {
+                    Hide(); // Workaround for some Linux DMs
+                }
+                Show();
+
+                Activate();
+                Topmost = true;
+                Topmost = false;
+                Focus();
+            });
+        }
+        
         private void TrayIcon_OnLeftClicked(object? sender, EventArgs e)
         {
             Dispatcher.UIThread.InvokeAsync(() =>
             {
                 if (!IsVisible)
                 {
-
-                    if (WindowState == WindowState.Minimized)
-                    {
-                        WindowState = WindowState.Normal;
-                    }
-
-                    Show();
-
-                    Activate();
-                    Topmost = true;
-                    Topmost = false;
-                    Focus();
+                    BringToFront();
                 }
                 else
                 {
                     Hide();
                 }
             });
-
         }
         #endregion
 

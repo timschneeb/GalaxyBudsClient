@@ -1,20 +1,21 @@
 using System;
-using Avalonia;
+using System.Threading;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using Avalonia.Markup.Xaml.Styling;
-using Avalonia.Styling;
+using Avalonia.Threading;
 using GalaxyBudsClient.Interface.Developer;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
-using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Scripting.Experiment;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
+using Serilog;
+using Application = Avalonia.Application;
+using Environment = System.Environment;
 
 namespace GalaxyBudsClient
 {
@@ -23,7 +24,7 @@ namespace GalaxyBudsClient
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
-
+            
             /* Clean everything from the old run up */
             if (PlatformUtils.IsWindows)
             {
@@ -52,7 +53,14 @@ namespace GalaxyBudsClient
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 desktop.MainWindow = MainWindow.Instance;
+                
+                SingleInstanceWatcher.Activated += () =>
+                {
+                    MainWindow.Instance.BringToFront();
+                };
             }
+            
+            
             
             base.OnFrameworkInitializationCompleted();
         }

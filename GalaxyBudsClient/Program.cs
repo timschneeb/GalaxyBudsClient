@@ -24,7 +24,7 @@ namespace GalaxyBudsClient
         // Initialization code. Don't use any Avalonia, third-party APIs or any
         // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
         // yet and stuff might break.
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var config = new LoggerConfiguration()
                 .MinimumLevel.Debug()
@@ -38,8 +38,7 @@ namespace GalaxyBudsClient
 
             Trace.Listeners.Add(new ConsoleTraceListener());
 
-            var scripts = new ScriptManager();
-            
+            await SingleInstanceWatcher.Setup();
             BuildAvaloniaApp().StartWithClassicDesktopLifetime(args, ShutdownMode.OnExplicitShutdown);
         } 
 
