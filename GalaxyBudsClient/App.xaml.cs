@@ -53,14 +53,7 @@ namespace GalaxyBudsClient
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 desktop.MainWindow = MainWindow.Instance;
-                
-                SingleInstanceWatcher.Activated += () =>
-                {
-                    MainWindow.Instance.BringToFront();
-                };
             }
-            
-            
             
             base.OnFrameworkInitializationCompleted();
         }

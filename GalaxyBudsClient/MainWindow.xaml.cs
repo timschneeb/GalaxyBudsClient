@@ -72,7 +72,7 @@ namespace GalaxyBudsClient
             Pager.RegisterPages(_homePage, new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(),
                 new CreditsPage(), new TouchpadPage(), new EqualizerPage(), new AdvancedPage(),
                 new SystemPage(), new SelfTestPage(), new SettingsPage(), new PopupSettingsPage(),
-                _connectionLostPage, _customTouchActionPage, new DeviceSelectionPage(),
+                _connectionLostPage, _customTouchActionPage, new DeviceSelectionPage(), new SystemInfoPage(),
                 new WelcomePage(), _unsupportedFeaturePage, _updatePage, _updateProgressPage);
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
@@ -95,7 +95,7 @@ namespace GalaxyBudsClient
             Pager.PageSwitched += (sender, pages) => BuildOptionsMenu();
             Loc.LanguageUpdated += BuildOptionsMenu;
             BuildOptionsMenu();
-
+            
             if (BluetoothImpl.Instance.RegisteredDeviceValid)
             {
                 Task.Factory.StartNew(() => BluetoothImpl.Instance.ConnectAsync());
@@ -107,11 +107,11 @@ namespace GalaxyBudsClient
             }
         }
         
-        
-
         #region Window management
         protected override async void OnInitialized()
         {
+            SingleInstanceWatcher.Activated += BringToFront;
+
             if (BluetoothImpl.Instance.RegisteredDeviceValid)
             {
                 await Task.Delay(3000).ContinueWith((_) => UpdateManager.Instance.SilentCheck());

@@ -125,7 +125,7 @@
     <sys:String x:Key="mainpage_ambient_sound">Ambient Sound</sys:String>
     <sys:String x:Key="mainpage_equalizer">Equalizer</sys:String>
     <sys:String x:Key="mainpage_advanced">Advanced Settings</sys:String>
-    <sys:String x:Key="mainpage_system">System Information</sys:String>
+    <sys:String x:Key="mainpage_system">System</sys:String>
 
     <!-- Update page -->
     <sys:String x:Key="updater_header">Manager update available</sys:String>
@@ -202,6 +202,7 @@
     </sys:String>
 
     <!-- System/Self-Test -->
+    <sys:String x:Key="system_overview_header">System</sys:String>
     <sys:String x:Key="system_header">System Information</sys:String>
     <sys:String x:Key="system_selftest">Run self test</sys:String>
     <sys:String x:Key="system_factory_reset">Factory reset</sys:String>
