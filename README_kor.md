@@ -22,13 +22,13 @@
   </a>
 </p>
 <p align="center">
-  <a href="#key-features">주요 기능</a> •
-  <a href="#download">다운로드</a> •
-  <a href="#how-it-works">동작 방식</a> •
-  <a href="#contributing">기여</a> •
-  <a href="#contributing">로드맵</a> •
-  <a href="#credits">제작자</a> •
-  <a href="#license">라이선스</a> 
+  <a href="#주요-기능">주요 기능</a> •
+  <a href="#다운로드">다운로드</a> •
+  <a href="#동작-방식">동작 방식</a> •
+  <a href="#기여">기여</a> •
+  <a href="#로드맵">로드맵</a> •
+  <a href="#제작자">제작자</a> •
+  <a href="#라이선스">라이선스</a> 
 </p>
 
 
