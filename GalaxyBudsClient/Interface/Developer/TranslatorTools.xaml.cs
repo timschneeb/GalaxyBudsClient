@@ -24,6 +24,7 @@ namespace GalaxyBudsClient.Interface.Developer
         }
 
         private readonly CheckBox _ignoreConnLoss;
+        private readonly CheckBox _dummyDevices;
         private readonly ComboBox _pages;
         private readonly ComboBox _locales;
         private readonly TextBox _xamlPath;
@@ -37,6 +38,7 @@ namespace GalaxyBudsClient.Interface.Developer
             this.AttachDevTools();
 
             _ignoreConnLoss = this.FindControl<CheckBox>("IgnoreConnLoss");
+            _dummyDevices = this.FindControl<CheckBox>("DummyDevices");
             _pages = this.FindControl<ComboBox>("Pages");
             _locales = this.FindControl<ComboBox>("Locales");
             _xamlPath = this.FindControl<TextBox>("XamlPath");
@@ -44,7 +46,8 @@ namespace GalaxyBudsClient.Interface.Developer
             _locales.SelectedItem = SettingsProvider.Instance.Locale;
             _xamlPath.Text = Loc.GetTranslatorModeFile();
             _ignoreConnLoss.IsChecked = BluetoothImpl.Instance.SuppressDisconnectionEvents;
-
+            _dummyDevices.IsChecked = MainWindow.Instance.DeviceSelectionPage.EnableDummyDevices;
+            
             Loc.ErrorDetected += (title, content) =>
             {
                 new MessageBox
@@ -76,6 +79,11 @@ namespace GalaxyBudsClient.Interface.Developer
         private void IgnoreConnLoss_OnChecked(object? sender, RoutedEventArgs e)
         {
             BluetoothImpl.Instance.SuppressDisconnectionEvents = _ignoreConnLoss.IsChecked ?? false;
+        }
+
+        private void DummyDevices_OnChecked(object? sender, RoutedEventArgs e)
+        {
+            MainWindow.Instance.DeviceSelectionPage.EnableDummyDevices = _dummyDevices.IsChecked ?? false;
         }
     }
 }

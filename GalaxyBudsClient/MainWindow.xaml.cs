@@ -38,7 +38,8 @@ namespace GalaxyBudsClient
         private readonly ConnectionLostPage _connectionLostPage = new ConnectionLostPage();
         private readonly UpdatePage _updatePage = new UpdatePage();
         private readonly UpdateProgressPage _updateProgressPage = new UpdateProgressPage();
-
+        private readonly DeviceSelectionPage _deviceSelectionPage = new DeviceSelectionPage();
+        
         private DevOptions? _devOptions;
 
         private readonly CustomTitleBar _titleBar;
@@ -53,6 +54,7 @@ namespace GalaxyBudsClient
         public CustomTouchActionPage CustomTouchActionPage => _customTouchActionPage;
         public UpdatePage UpdatePage => _updatePage;
         public UpdateProgressPage UpdateProgressPage => _updateProgressPage;
+        public DeviceSelectionPage DeviceSelectionPage => _deviceSelectionPage;
 
         private static MainWindow? _instance;
         public static MainWindow Instance => _instance ??= new MainWindow();
@@ -72,7 +74,7 @@ namespace GalaxyBudsClient
             Pager.RegisterPages(_homePage, new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(),
                 new CreditsPage(), new TouchpadPage(), new EqualizerPage(), new AdvancedPage(),
                 new SystemPage(), new SelfTestPage(), new SettingsPage(), new PopupSettingsPage(),
-                _connectionLostPage, _customTouchActionPage, new DeviceSelectionPage(), new SystemInfoPage(),
+                _connectionLostPage, _customTouchActionPage, _deviceSelectionPage, new SystemInfoPage(),
                 new WelcomePage(), _unsupportedFeaturePage, _updatePage, _updateProgressPage, new SystemCoredumpPage());
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");

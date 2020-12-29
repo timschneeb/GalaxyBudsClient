@@ -46,6 +46,17 @@ namespace GalaxyBudsClient.Interface.Pages
         private readonly PageHeader _pageHeader;
         private readonly Border _navBarNext;
 
+        private bool _enableDummyDevices = false;
+        public bool EnableDummyDevices
+        {
+            set
+            {
+                _enableDummyDevices = value;
+                RefreshList();
+            }
+            get => _enableDummyDevices;
+        }
+        
         public DeviceSelectionPage()
         {
             AvaloniaXamlLoader.Load(this);
@@ -125,11 +136,20 @@ namespace GalaxyBudsClient.Interface.Pages
                 .Where(dev => DeviceSpecHelper.FindByDeviceName(dev.Name) != null)
                 .ToList()
                 .ForEach(x => AvailableDevices?.Add(x));
+
+            if (_enableDummyDevices)
+            {
+                /* Dummy devices for testing */
+                AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds (36FD) [Dummy]", "36:AB:38:F5:04:FD", true, true,
+                    new BluetoothCoD(0)));
+                AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds+ (A2D5) [Dummy]", "A2:BF:D4:4A:52:D5", true,
+                    true, new BluetoothCoD(0)));
+                AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds Live (4AC3) [Dummy]", "4A:6B:87:E5:12:C3", true,
+                    true, new BluetoothCoD(0)));
+                AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds Pro (E43F) [Dummy]", "E4:25:FA:6D:B9:3F", true,
+                    true, new BluetoothCoD(0)));
+            }
             
-            /* Dummy devices for testing */
-            /* AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds (36FD)", "36:AB:38:F5:04:FD", true, true, new BluetoothCoD(0)));
-            AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds Live (4AC3)", "4A:6B:87:E5:12:C3", true, true, new BluetoothCoD(0)));
-            AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds+ (A2D5)", "A2:BF:D4:4A:52:D5", true, true, new BluetoothCoD(0))); */
 
             if (AvailableDevices?.Count <= 0)
             {

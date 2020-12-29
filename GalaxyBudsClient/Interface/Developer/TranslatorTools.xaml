@@ -2,9 +2,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="463" d:DesignHeight="480"
+        mc:Ignorable="d" d:DesignWidth="463" d:DesignHeight="570"
         x:Class="GalaxyBudsClient.Interface.Developer.TranslatorTools"
-        Height="540" Width="460" MaxWidth="460"
+        Height="570" Width="460" MaxWidth="460"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/icon_white.ico"
         CanResize="False"
@@ -76,9 +76,12 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="5" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <CheckBox Grid.Row="0" x:Name="IgnoreConnLoss" Content="Ignore connection loss" Checked="IgnoreConnLoss_OnChecked"/>
-                <TextBlock Grid.Row="2" TextWrapping="Wrap">
+                <CheckBox Grid.Row="0" x:Name="DummyDevices" Content="Show dummy devices (Device selection page)" Checked="DummyDevices_OnChecked"/>
+                <CheckBox Grid.Row="2" x:Name="IgnoreConnLoss" Content="Ignore connection loss" Checked="IgnoreConnLoss_OnChecked"/>
+                <TextBlock Grid.Row="4" TextWrapping="Wrap">
                     This setting overrides platform-specific Bluetooth backend logic and may cause crashes and inconsistent behavior.
                 </TextBlock>
             </Grid>

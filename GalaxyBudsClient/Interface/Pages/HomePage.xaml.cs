@@ -103,7 +103,8 @@ namespace GalaxyBudsClient.Interface.Pages
                 SetWarning(false);
                 _loadingSpinner.IsVisible = false;
             };
-            
+            BluetoothImpl.Instance.BluetoothError += (sender, exception) => _lastGetAllDataParser = null; 
+            BluetoothImpl.Instance.Disconnected += (sender, reason) => _lastGetAllDataParser = null; 
             BluetoothImpl.Instance.Connected += (sender, args) =>
             {
                 Dispatcher.UIThread.Post((() => _loadingSpinner.IsVisible = false), DispatcherPriority.Render);

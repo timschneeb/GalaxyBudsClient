@@ -121,6 +121,16 @@ namespace GalaxyBudsClient.Interface.Pages
             _rightMuteButton.IsMuted = false;
             
             EarbudWarning(_lastWarningLeft, _lastWarningRight);
+
+            if (DeviceMessageCache.Instance.DebugGetAllData == null)
+            {
+                UpdateIcons(0,0);
+            }
+            else
+            {
+                UpdateIcons(DeviceMessageCache.Instance.DebugGetAllData.LeftAdcSOC,
+                    DeviceMessageCache.Instance.DebugGetAllData.RightAdcSOC);
+            }
         }
 
         public override async void OnPageHidden()
