@@ -17,7 +17,8 @@
     <sys:String x:Key="select">Select</sys:String>
     <sys:String x:Key="notset">Not set</sys:String>
     <sys:String x:Key="unknown">Unknown</sys:String>
-    
+    <sys:String x:Key="back">Back</sys:String>
+
     <sys:String x:Key="nobluetoothdev">No bluetooth adapter found. Please enable bluetooth and try again.</sys:String>
 
     <sys:String x:Key="anc">Active noise cancelling</sys:String>
