@@ -26,7 +26,7 @@ namespace GalaxyBudsClient.Interface.Items
             get => GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
-        public IImage Source
+        public IImage? Source
         {
             get => GetValue(SourceProperty);
             set => SetValue(SourceProperty, value);

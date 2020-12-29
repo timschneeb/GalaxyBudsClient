@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media;
 using Avalonia.Threading;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Interface.Elements;
@@ -74,6 +76,11 @@ namespace GalaxyBudsClient.Interface.Pages
 			_loadingSpinner.IsVisible = false;
 			_retry.IsEnabled = true;
 			_retry.Text = Loc.Resolve("connlost_connect");
+		}
+
+		public override void OnPageShown()
+		{
+			_retry.Source = (IImage?)Application.Current.FindResource($"Neutral{(BluetoothImpl.Instance.ActiveModel == Models.BudsLive ? "Bean" : "Bud")}");
 		}
 
 		public override void OnPageHidden()

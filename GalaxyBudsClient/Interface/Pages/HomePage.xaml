@@ -87,11 +87,11 @@
                 </Border>
                 <Separator Grid.Row="1" Classes="HSeparatorIconListSpacer"/>
                 <Border Grid.Row="2" CornerRadius="{StaticResource DefaultCornerRadius}" Classes="BorderHoverStyle" PointerPressed="FindMyBuds_OnPointerPressed">
-                    <items:IconListItem FontSize="18" Source="/Resources/features/findmygear_color.png" Text="{DynamicResource mainpage_find_my_earbuds}"/>
+                    <items:IconListItem x:Name="FindMyGear" FontSize="18" Source="{DynamicResource FindMyGearBud}" Text="{DynamicResource mainpage_find_my_earbuds}"/>
                 </Border>
                 <Separator Grid.Row="3" Classes="HSeparatorIconListSpacer"/>
                 <Border Grid.Row="4" CornerRadius="{StaticResource DefaultCornerRadius}" Classes="BorderHoverStyle" PointerPressed="Touch_OnPointerPressed">
-                    <items:IconListItem FontSize="18" Source="/Resources/features/touch_color.png" Text="{DynamicResource mainpage_touchpad}"/>
+                    <items:IconListItem x:Name="Touch" FontSize="18" Source="{DynamicResource TouchBud}" Text="{DynamicResource mainpage_touchpad}"/>
                 </Border>
                 <Separator Grid.Row="5" Classes="HSeparatorIconListSpacer"/>
                 <Border Grid.Row="6" CornerRadius="{StaticResource DefaultCornerRadius}" Classes="BorderHoverStyle" PointerPressed="Equalizer_OnPointerPressed">

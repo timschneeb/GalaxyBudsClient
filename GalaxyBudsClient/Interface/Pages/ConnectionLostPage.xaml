@@ -58,7 +58,7 @@
                 <Grid>
                     <items:IconListItem x:Name="Retry"
                                         Text="{DynamicResource connlost_connect}"
-                                        Source="/Resources/device/neutral_gray.png"
+                                        Source="{DynamicResource NeutralBud}"
                                         Margin="15,0,20,0"
                                         FontSize="18" />
                     <elements:LoadingSpinner x:Name="LoadingSpinner"

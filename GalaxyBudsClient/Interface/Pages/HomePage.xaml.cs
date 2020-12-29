@@ -8,6 +8,7 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Avalonia.Threading;
 using GalaxyBudsClient.Interface.Elements;
+using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Interop.TrayIcon;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
@@ -53,6 +54,9 @@ namespace GalaxyBudsClient.Interface.Pages
    
         private readonly Border _ancBorder;
         private readonly Border _ambientBorder;
+
+        private readonly IconListItem _findMyGear;
+        private readonly IconListItem _touch;
         
 		private readonly DispatcherTimer _refreshTimer = new DispatcherTimer();
         private DebugGetAllDataParser? _lastGetAllDataParser;
@@ -88,6 +92,9 @@ namespace GalaxyBudsClient.Interface.Pages
             
             _ancBorder = this.FindControl<Border>("AncBorder");
             _ambientBorder = this.FindControl<Border>("AmbientBorder");
+            
+            _findMyGear = this.FindControl<IconListItem>("FindMyGear");
+            _touch = this.FindControl<IconListItem>("Touch");
             
             Loc.LanguageUpdated += OnLanguageUpdated;
             
@@ -186,6 +193,9 @@ namespace GalaxyBudsClient.Interface.Pages
 
             UpdateList();
             
+            _findMyGear.Source = (IImage?)Application.Current.FindResource($"FindMyGear{(BluetoothImpl.Instance.ActiveModel == Models.BudsLive ? "Bean" : "Bud")}");
+            _touch.Source = (IImage?)Application.Current.FindResource($"Touch{(BluetoothImpl.Instance.ActiveModel == Models.BudsLive ? "Bean" : "Bud")}");
+
             _loadingSpinner.IsVisible = !BluetoothImpl.Instance.IsConnected;
         }
 
