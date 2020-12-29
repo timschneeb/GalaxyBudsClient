@@ -30,7 +30,7 @@ namespace ThePBone.Interop.Win32
                 // if you want to test for 0 or for a small value
                 return value > 1E-08;
             }
-            catch (COMException e)
+            catch (Exception e)
             {
                 Log.Error($"IsWindowsPlayingSound: {e.Message}");
                 return true;

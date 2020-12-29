@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
@@ -23,6 +24,7 @@ using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using NetSparkleUpdater.Enums;
+using Serilog;
 using Application = Avalonia.Application;
 using MessageBox = GalaxyBudsClient.Interface.Dialogs.MessageBox;
 using RoutedEventArgs = Avalonia.Interactivity.RoutedEventArgs;
@@ -132,6 +134,18 @@ namespace GalaxyBudsClient
             }
             
             base.OnClosing(e);
+        }
+
+        protected override void OnOpened(EventArgs e)
+        {
+            if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                if (desktop.Args.Contains("/StartMinimized") && PlatformUtils.SupportsTrayIcon)
+                {
+                    Log.Debug("MainWindow: Launched minimized.");
+                    Hide();
+                }
+            }
         }
 
         protected override void OnClosed(EventArgs e)

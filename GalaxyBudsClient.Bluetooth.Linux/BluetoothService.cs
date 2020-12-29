@@ -137,7 +137,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
 
                 if (attempt >= 5)
                 {
-                    Log.Fatal("Linux.BluetoothService: Gave up after 5 attempts. Timed out.");
+                    Log.Error("Linux.BluetoothService: Gave up after 5 attempts. Timed out.");
                     throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "BlueZ timed out while connecting to device.");
                 }
             }
@@ -170,11 +170,11 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                         Log.Warning("Linux.BluetoothService: Already registered. This may be fatal when multiple instances are active.");
                         break;
                     case BlueZException.ErrorCodes.InvalidArguments:
-                        Log.Fatal($"Linux.BluetoothService: Invalid arguments. Cannot register profile: {ex.ErrorMessage}");
+                        Log.Error($"Linux.BluetoothService: Invalid arguments. Cannot register profile: {ex.ErrorMessage}");
                         throw new BluetoothException(BluetoothException.ErrorCodes.Unknown, $"{ex.ErrorName}: {ex.ErrorMessage}");
                     default:
                         /* Other unknown dbus errors */
-                        Log.Fatal($"Linux.BluetoothService: Cannot register profile. {ex.ErrorName}: {ex.ErrorMessage}");
+                        Log.Error($"Linux.BluetoothService: Cannot register profile. {ex.ErrorName}: {ex.ErrorMessage}");
                         throw new BluetoothException(BluetoothException.ErrorCodes.Unknown, $"{ex.ErrorName}: {ex.ErrorMessage}");
                 }
             }
@@ -220,18 +220,18 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                         case BlueZException.ErrorCodes.ConnectFailed:
                             throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, $"{ex.ErrorName}: {ex.ErrorMessage}");
                         case BlueZException.ErrorCodes.DoesNotExist:
-                            Log.Fatal("Linux.BluetoothService: Unsupported device. Device does not provide requested Bluetooth profile.");
+                            Log.Error("Linux.BluetoothService: Unsupported device. Device does not provide requested Bluetooth profile.");
                             throw new BluetoothException(BluetoothException.ErrorCodes.UnsupportedDevice, $"Device does not provide required Bluetooth profile");
                         default:
                             /* Other unknown dbus errors */
-                            Log.Fatal($"Linux.BluetoothService: Cannot connect to profile. {ex.ErrorName}: {ex.ErrorMessage}");
+                            Log.Error($"Linux.BluetoothService: Cannot connect to profile. {ex.ErrorName}: {ex.ErrorMessage}");
                             throw new BluetoothException(BluetoothException.ErrorCodes.Unknown, $"{ex.ErrorName}: {ex.ErrorMessage}");
                     }
                 }
 
                 if (attempt >= 10)
                 {
-                    Log.Fatal("Linux.BluetoothService: Gave up after 10 attempts. Timed out.");
+                    Log.Error("Linux.BluetoothService: Gave up after 10 attempts. Timed out.");
                     throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "BlueZ timed out while connecting to profile");
                 }
             }
@@ -297,7 +297,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                         break;
                     default:
                         /* org.bluez.Error.NotReady, org.bluez.Error.Failed */
-                        Log.Fatal($"Linux.BluetoothService: Connect call failed due to: {ex.ErrorMessage} ({ex.ErrorCode})");
+                        Log.Error($"Linux.BluetoothService: Connect call failed due to: {ex.ErrorMessage} ({ex.ErrorCode})");
                         throw new BluetoothException(BluetoothException.ErrorCodes.Unknown, $"{ex.ErrorName}: {ex.ErrorMessage}");
                 }
             }
