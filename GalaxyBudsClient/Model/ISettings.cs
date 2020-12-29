@@ -32,8 +32,7 @@ namespace GalaxyBudsClient.Model
     
     public interface IExperiments
     {
-        [Option(DefaultValue = true)]
-        bool Enabled { set; get; }
+        bool Disabled { set; get; }
         long[] FinishedIds { set; get; }
     }
     

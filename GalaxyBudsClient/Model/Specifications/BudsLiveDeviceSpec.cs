@@ -15,6 +15,7 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.AmbientPassthrough, null },
                 { IDeviceSpec.Feature.GamingMode, null },
                 { IDeviceSpec.Feature.CaseBattery, null },
+                { IDeviceSpec.Feature.FragmentedMessages, null },
             };
         
         public Models Device => Models.BudsLive;

@@ -27,8 +27,10 @@ namespace GalaxyBudsClient
         public static async Task Main(string[] args)
         {
             var config = new LoggerConfiguration()
-                .MinimumLevel.Debug()
                 .WriteTo.File(PlatformUtils.CombineDataPath("application.log"));
+
+            config = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("VERBOSE")) ? 
+                config.MinimumLevel.Verbose() : config.MinimumLevel.Debug();
             
             config = PlatformUtils.IsWindows ? 
                 config.WriteTo.Debug() : config.WriteTo.Console();

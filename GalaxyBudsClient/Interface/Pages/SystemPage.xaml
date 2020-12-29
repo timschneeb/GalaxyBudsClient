@@ -37,37 +37,37 @@
                     <Border Grid.Row="0" CornerRadius="{DynamicResource DefaultCornerRadius}"
                             Classes="BorderHoverStyle" PointerPressed="RunSelfTest_OnPointerPressed">
                         <items:DetailListItem Text="{DynamicResource system_selftest}"
-                                              Description="Verify if all modules of your earbuds are functioning properly" />
+                                              Description="{DynamicResource system_selftest_desc}" />
                     </Border>
                     <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
                     <Border Grid.Row="2" CornerRadius="{DynamicResource DefaultCornerRadius}"
                             Classes="BorderHoverStyle" PointerPressed="FactoryReset_OnPointerPressed">
                         <items:DetailListItem Text="{DynamicResource system_factory_reset}"
-                                              Description="Restore your earbuds to their factory settings and disconnect" />
+                                              Description="{DynamicResource system_factory_reset_desc}" />
                     </Border>
                     <Separator Grid.Row="3" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
                     <Border Grid.Row="4" CornerRadius="{DynamicResource DefaultCornerRadius}"
                             Classes="BorderHoverStyle" PointerPressed="PairingMode_OnPointerPressed">
-                        <items:DetailListItem Text="Enter pairing mode"
-                                              Description="Disconnect your earbuds from this PC and make it visible to other devices" />
+                        <items:DetailListItem Text="{DynamicResource system_pairing_mode}"
+                                              Description="{DynamicResource system_pairing_mode_desc}" />
                     </Border>
-                    <!--<Separator Grid.Row="5" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
-                    <Border Grid.Row="6" CornerRadius="{DynamicResource DefaultCornerRadius}"
-                            Classes="BorderHoverStyle">
-                        <items:DetailListItem Text="View paired devices"
-                                              Description="Download all information about devices that were previously paired with your earbuds" />
-                    </Border>-->
+                    <Separator Grid.Row="5" x:Name="TraceCoreDumpSeparator" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
+                    <Border Grid.Row="6" x:Name="TraceCoreDump" CornerRadius="{DynamicResource DefaultCornerRadius}"
+                            Classes="BorderHoverStyle" PointerPressed="DownloadTraceCoredump_OnPointerPressed">
+                        <items:DetailListItem Text="{DynamicResource system_trace_core_dump}"
+                                              Description="{DynamicResource system_trace_core_dump_desc}" />
+                    </Border>
                     <Separator Grid.Row="7" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
                     <Border Grid.Row="8" CornerRadius="{DynamicResource DefaultCornerRadius}"
                             Classes="BorderHoverStyle" PointerPressed="SystemInfo_OnPointerPressed">
-                        <items:DetailListItem Text="View system information"
-                                              Description="Display detailed information about your earbuds" />
+                        <items:DetailListItem Text="{DynamicResource system_info}"
+                                              Description="{DynamicResource system_info_desc}" />
                     </Border>
                     <!--<Separator Grid.Row="9" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
                     <Border Grid.Row="10" CornerRadius="{DynamicResource DefaultCornerRadius}"
                             Classes="BorderHoverStyle" PointerPressed="FactoryReset_OnPointerPressed">
-                        <items:DetailListItem Text="Firmware flashing tool"
-                                              Description="Flash custom firmware or upgrade/downgrade your firmware version (experimental)" />
+                        <items:DetailListItem Text="{DynamicResource system_flasher}"
+                                              Description="{DynamicResource system_flasher_desc}" />
                     </Border>-->
                 </Grid>
             </ScrollViewer>

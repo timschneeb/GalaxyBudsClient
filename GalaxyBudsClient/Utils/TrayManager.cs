@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Avalonia.Threading;
-using GalaxyBudsClient.Decoder;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Interop.TrayIcon;
 using GalaxyBudsClient.Message;

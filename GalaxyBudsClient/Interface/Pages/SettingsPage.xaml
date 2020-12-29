@@ -14,11 +14,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
@@ -26,7 +23,7 @@
         
         <elements:PageHeader Grid.Row="1" Title="{DynamicResource settings_header}" BackPressed="BackButton_OnPointerPressed"/>
 
-        <Border Grid.Row="3" Classes="RoundedBorderListItem">
+        <Border Grid.Row="3" Classes="RoundedBorderListItem" Margin="0,0,0,10">
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -48,7 +45,7 @@
             </Grid>
         </Border>
 
-        <Border Grid.Row="5" Classes="RoundedBorderListItem">
+        <Border Grid.Row="5" Classes="RoundedBorderListItem" Margin="0,0,0,10" x:Name="TrayOptionBorder">
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -69,7 +66,7 @@
             </Grid>
         </Border>
 
-        <Border Grid.Row="7" Classes="RoundedBorderListItem">
+        <Border Grid.Row="7" Classes="RoundedBorderListItem" Margin="0,0,0,10">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>

@@ -17,6 +17,7 @@ namespace GalaxyBudsClient.Interface.Pages
             Equalizer,
             System,
             SystemInfo,
+            SystemCoredump,
             Credits,
             SelfTest,
             FactoryReset,

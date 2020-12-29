@@ -8,6 +8,7 @@ using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 
@@ -42,6 +43,7 @@ namespace GalaxyBudsClient.Interface.Developer
 
             _locales.SelectedItem = SettingsProvider.Instance.Locale;
             _xamlPath.Text = Loc.GetTranslatorModeFile();
+            _ignoreConnLoss.IsChecked = BluetoothImpl.Instance.SuppressDisconnectionEvents;
 
             Loc.ErrorDetected += (title, content) =>
             {
@@ -67,17 +69,13 @@ namespace GalaxyBudsClient.Interface.Developer
             {
                 SettingsProvider.Instance.Locale = locale;
             }
-            Loc.Load();
-        }
 
-        private void Model_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
-        {
-            
+            Loc.Load();
         }
 
         private void IgnoreConnLoss_OnChecked(object? sender, RoutedEventArgs e)
         {
-            
+            BluetoothImpl.Instance.SuppressDisconnectionEvents = _ignoreConnLoss.IsChecked ?? false;
         }
     }
 }

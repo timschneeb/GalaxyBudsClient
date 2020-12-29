@@ -1,9 +1,9 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
-using GalaxyBudsClient.Decoder;
 using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;

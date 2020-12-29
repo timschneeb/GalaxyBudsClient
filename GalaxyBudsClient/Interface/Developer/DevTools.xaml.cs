@@ -85,15 +85,19 @@ namespace GalaxyBudsClient.Interface.Developer
 
         private void OnNewDataReceived(object? sender, byte[] raw)
         {
-            Dispatcher.UIThread.Post(() =>
+            try
             {
-                _cache.AddRange(raw);
-                _hexDump.Text = HexUtils.Dump(_cache.ToArray());
-                
-                RecvMsgViewHolder holder = new RecvMsgViewHolder(SPPMessage.DecodeMessage(raw));
-                _vm.MsgTableDataSource?.Add(holder);
-                _vm.MsgTableDataView.Refresh();
-            });
+                Dispatcher.UIThread.Post(() =>
+                {
+                    _cache.AddRange(raw);
+                    _hexDump.Text = HexUtils.Dump(_cache.ToArray());
+
+                    RecvMsgViewHolder holder = new RecvMsgViewHolder(SPPMessage.DecodeMessage(raw));
+                    _vm.MsgTableDataSource?.Add(holder);
+                    _vm.MsgTableDataView.Refresh();
+                });
+            }
+            catch(InvalidDataException ex){}
         }
 
         private void OnClosing(object? sender, CancelEventArgs e)
@@ -224,17 +228,17 @@ namespace GalaxyBudsClient.Interface.Developer
 
         private async void SaveDump_OnClick(object? sender, RoutedEventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog {Filters = _filters, AllowMultiple = false};
-            string[]? paths = await dlg.ShowAsync(this);
+            SaveFileDialog dlg = new SaveFileDialog {Filters = _filters};
+            string? path = await dlg.ShowAsync(this);
             
-            if (paths == null || paths.Length < 1)
+            if (path == null)
             {
                 return;
             }
             
             try
             {
-                await using var fs = new FileStream(paths[0], FileMode.Create, FileAccess.Write);
+                await using var fs = new FileStream(path, FileMode.Create, FileAccess.Write);
                 fs.Write(_cache.ToArray(), 0, _cache.ToArray().Length);
             }
             catch (Exception ex)

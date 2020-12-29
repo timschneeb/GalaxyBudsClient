@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using GalaxyBudsClient.Decoder;
+using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
@@ -27,6 +27,9 @@ namespace GalaxyBudsClient.Message
         public int TotalPacketSize => somSize + typeSize + bytesSize + msgIdSize + Payload.Length + crcSize + eomSize;
         public byte[] Payload { set; get; }
         public int Crc16 { private set; get; }
+        
+        /* No Buds support at the moment */
+        public bool IsFragment { set; get; }
 
         public SPPMessage()
         {
@@ -45,28 +48,30 @@ namespace GalaxyBudsClient.Message
             return SPPMessageParserFactory.BuildParser(this);
         }
 
-        public byte[] EncodeMessage(MsgType overrideType = MsgType.INVALID)
+        public byte[] EncodeMessage()
         {
-
-            MsgType type;
-            if (overrideType == MsgType.INVALID)
-                type = Type;
-            else
-                type = overrideType;
-
             byte[] msg = new byte[TotalPacketSize];
-
-
+            
             if (BluetoothImpl.Instance.ActiveModel != Models.Buds)
             {
                 msg[0] = (byte)Constants.SOMPlus;
-                msg[1] = (byte)Size;
-                msg[2] = (byte)(type == MsgType.Request ? 0 : 16);
+                
+                /* Generate header */
+                var header = (BitConverter.GetBytes((short)Size));
+                if (IsFragment) {
+                    header[1] = (byte) (header[1] | 32);
+                }
+                if (Type == MsgType.Response) {
+                    header[1] = (byte) (header[1] | 16);
+                }
+
+                msg[1] = header[0];
+                msg[2] = header[1];
             }
             else
             {
                 msg[0] = (byte)Constants.SOM;
-                msg[1] = (byte)type;
+                msg[1] = (byte)Type;
                 msg[2] = (byte)Size;
             }
 
@@ -126,8 +131,12 @@ namespace GalaxyBudsClient.Message
 
                 if (BluetoothImpl.Instance.ActiveModel != Models.Buds)
                 {
-                    size = raw[1] & 1023;
-                    draft.Type = (raw[2] & 16) == 0 ? MsgType.Request : MsgType.Response;
+                    var p1 = (raw[2] << 8);
+                    var p2 = raw[1] & 255;
+                    var header = p1 + p2;
+                    draft.IsFragment = (header & 8192) != 0;
+                    draft.Type = (header & 4096) != 0 ? MsgType.Request : MsgType.Response;
+                    size = header & 1023;
                 }
                 else
                 {
@@ -173,7 +182,7 @@ namespace GalaxyBudsClient.Message
                     throw new InvalidDataException(Loc.Resolve("sppmsg_crc_fail"));
                 }
 
-                if (raw[4 + rawPayloadSize + 2] != (byte) Constants.EOM &&
+                if (raw[raw.Length - 1] != (byte) Constants.EOM &&
                     BluetoothImpl.Instance.ActiveModel == Models.Buds)
                 {
                     SentrySdk.AddBreadcrumb($"Invalid EOM (Received: {raw[4 + rawPayloadSize + 2]})", "spp",
@@ -182,7 +191,7 @@ namespace GalaxyBudsClient.Message
                     throw new InvalidDataException(Loc.Resolve("sppmsg_invalid_eom"));
                 }
 
-                if (raw[4 + rawPayloadSize + 2] != (byte) Constants.EOMPlus &&
+                if (raw[raw.Length - 1] != (byte) Constants.EOMPlus &&
                     BluetoothImpl.Instance.ActiveModel != Models.Buds)
                 {
                     SentrySdk.AddBreadcrumb($"Invalid EOM (Received: {raw[4 + rawPayloadSize + 2]})", "spp",
@@ -222,7 +231,7 @@ namespace GalaxyBudsClient.Message
 
         public override string ToString()
         {
-            return $"SPPMessage[MessageID={Id},PayloadSize={Size},Type={Type},CRC16={Crc16}," +
+            return $"SPPMessage[MessageID={Id},PayloadSize={Size},Type={(IsFragment ? "Fragment/" : string.Empty) + Type},CRC16={Crc16}," +
                    $"Payload={{{BitConverter.ToString(Payload).Replace("-", " ")}}}]";
         }
 

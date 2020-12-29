@@ -104,6 +104,7 @@
                           VerticalGridLinesBrush="{StaticResource GridLine}"
                           HorizontalGridLinesBrush="{StaticResource GridLine}"
                           CanUserSortColumns="False" CanUserReorderColumns="False"
+                          CanUserResizeColumns="True"
                           IsReadOnly="True"
                           HeadersVisibility="All"
                           SelectionChanged="MsgTable_OnSelectionChanged">
@@ -122,6 +123,7 @@
                           VerticalGridLinesBrush="{StaticResource GridLine}"
                           HorizontalGridLinesBrush="{StaticResource GridLine}"
                           IsReadOnly="True"
+                          CanUserResizeColumns="True"
                           CanUserSortColumns="False" CanUserReorderColumns="False"
                           HeadersVisibility="All">
                     <DataGrid.Columns>

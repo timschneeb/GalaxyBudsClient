@@ -413,6 +413,8 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 
                 if (incomingCount > 0)
                 {
+                    IsStreamConnected = true;
+                    
                     /* Handle incoming stream */
                     byte[] buffer = new byte[incomingCount ?? 0];
                     var dataAvailable = false;

@@ -42,6 +42,7 @@ namespace GalaxyBudsClient.Platform
         public event EventHandler<byte[]>? NewDataReceived;
         public event EventHandler<BluetoothException>? BluetoothError;
         
+        public bool SuppressDisconnectionEvents { set; get; }
         public Models ActiveModel => SettingsProvider.Instance.RegisteredDevice.Model;
         public IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(ActiveModel) ?? new StubDeviceSpec();
         public bool IsConnected => _backend.IsStreamConnected;
@@ -59,8 +60,9 @@ namespace GalaxyBudsClient.Platform
 
             _backend.Connecting += (sender, args) => Connecting?.Invoke(this, EventArgs.Empty); 
             _backend.NewDataAvailable += OnNewDataAvailable;
-            _backend.NewDataAvailable += (sender, bytes) => NewDataReceived?.Invoke(this, bytes);
-            _backend.BluetoothErrorAsync += (sender, exception) => BluetoothError?.Invoke(this, exception); 
+            _backend.NewDataAvailable += (sender, bytes) =>  NewDataReceived?.Invoke(this, bytes);
+            _backend.BluetoothErrorAsync += (sender, exception) => OnBluetoothError(exception); 
+            
             _backend.RfcommConnected += (sender, args) => Task.Run(async () =>
                     await Task.Delay(150).ContinueWith((_) =>
                     {
@@ -69,10 +71,26 @@ namespace GalaxyBudsClient.Platform
                         else
                             Log.Error("BluetoothImpl: Suppressing Connected event, device not properly registered");
                     }));
-            _backend.Disconnected += (sender, reason) => Disconnected?.Invoke(this, reason);
+            
+            _backend.Disconnected += (sender, reason) =>
+            {
+                if (!SuppressDisconnectionEvents)
+                {
+                    Disconnected?.Invoke(this, reason);
+                }
+            };
+            
             MessageReceived += SPPMessageHandler.Instance.MessageReceiver;
         }
 
+        private void OnBluetoothError(BluetoothException exception)
+        {
+            if (!SuppressDisconnectionEvents)
+            {
+                BluetoothError?.Invoke(this, exception);
+            }
+        }
+        
         public async Task<BluetoothDevice[]> GetDevicesAsync()
         {
             try
@@ -81,7 +99,7 @@ namespace GalaxyBudsClient.Platform
             }
             catch (BluetoothException ex)
             {
-                BluetoothError?.Invoke(this, ex);
+                OnBluetoothError(ex);
             }
 
             return new BluetoothDevice[0];
@@ -101,7 +119,7 @@ namespace GalaxyBudsClient.Platform
                     }
                     catch (BluetoothException ex)
                     {
-                        BluetoothError?.Invoke(this, ex);
+                        OnBluetoothError(ex);
                     }
                 }
                 else
@@ -139,7 +157,7 @@ namespace GalaxyBudsClient.Platform
             }
             catch (BluetoothException ex)
             {
-                BluetoothError?.Invoke(this, ex);
+                OnBluetoothError(ex);
             }
         }
         
@@ -147,7 +165,7 @@ namespace GalaxyBudsClient.Platform
         {
             if (!IsConnected)
             {
-                BluetoothError?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.SendFailed, "Attempted to send command to disconnected device"));
+                OnBluetoothError(new BluetoothException(BluetoothException.ErrorCodes.SendFailed, "Attempted to send command to disconnected device"));
                 return;
             }
             
@@ -171,7 +189,7 @@ namespace GalaxyBudsClient.Platform
             }
             catch (BluetoothException ex)
             {
-                BluetoothError?.Invoke(this, ex);
+                OnBluetoothError(ex);
             }
         }
         

@@ -1,5 +1,5 @@
 ﻿using System;
-using GalaxyBudsClient.Decoder;
+using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;
 using Sentry;
@@ -16,7 +16,8 @@ namespace GalaxyBudsClient.Message
             typeof(DebugSerialNumberParser), typeof(DebugModeVersionParser), typeof(SppRoleStateParser), typeof(ResetResponseParser),
             typeof(AmbientVoiceFocusParser), typeof(AmbientVolumeParser), typeof(DebugGetAllDataParser), typeof(TouchUpdateParser),
             typeof(AmbientWearingUpdateParser), typeof(MuteUpdateParser), typeof(SetOtherOptionParser), typeof(BondedDevicesParser),
-            typeof(DebugSkuParser), typeof(SetInBandRingtoneParser), typeof(NoiseReductionModeUpdateParser)
+            typeof(DebugSkuParser), typeof(SetInBandRingtoneParser), typeof(NoiseReductionModeUpdateParser),
+            typeof(LogTraceStartParser), typeof(LogTraceDataParser), typeof(LogCoredumpDataParser), typeof(LogCoredumpDataSizeParser)
         };
 
         public static BaseMessageParser? BuildParser(SPPMessage msg)

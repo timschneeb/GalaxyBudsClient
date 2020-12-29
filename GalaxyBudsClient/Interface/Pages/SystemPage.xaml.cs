@@ -1,14 +1,15 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
-using GalaxyBudsClient.Decoder;
 using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.DynamicLocalization;
+using Org.BouncyCastle.Crypto.Parameters;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages
@@ -17,16 +18,17 @@ namespace GalaxyBudsClient.Interface.Pages
 	{
 		public override Pages PageType => Pages.System;
 		
-		private string Waiting => Loc.Resolve("system_waiting_for_device");
-		private string Left => Loc.Resolve("left");
-		private string Right => Loc.Resolve("right");
-		
-		private readonly PageHeader _pageHeader;
-
 		public SystemPage()
 		{   
 			AvaloniaXamlLoader.Load(this);
-			_pageHeader = this.FindControl<PageHeader>("PageHeader");
+		}
+
+		public override void OnPageShown()
+		{
+			this.FindControl<Control>("TraceCoreDumpSeparator").IsVisible =
+				BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.FragmentedMessages);
+			this.FindControl<Control>("TraceCoreDump").IsVisible =
+				BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.FragmentedMessages);
 		}
 
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
@@ -53,6 +55,11 @@ namespace GalaxyBudsClient.Interface.Pages
 		{
 			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.UNK_PAIRING_MODE);
 			await BluetoothImpl.Instance.DisconnectAsync();
+		}
+
+		private void DownloadTraceCoredump_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+		{
+			MainWindow.Instance.Pager.SwitchPage(Pages.SystemCoredump);
 		}
 	}
 }

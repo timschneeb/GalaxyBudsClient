@@ -1,5 +1,5 @@
-using GalaxyBudsClient.Decoder;
 using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Message.Decoder;
 
 namespace GalaxyBudsClient.Scripting.Hooks
 {

@@ -27,6 +27,11 @@ namespace GalaxyBudsClient.Scripting.Experiment
             _client.NewResultsFound += OnNewResultsFound;
         }
 
+        public async Task ProcessCoredump(byte[] content, string device)
+        {
+            await _client.PostCoredump(content, device);
+        }
+
         private void LaunchExperiment(ExperimentRequest e)
         {
             if (_activeExperiment != null)

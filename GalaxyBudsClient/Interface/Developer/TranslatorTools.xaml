@@ -4,7 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="463" d:DesignHeight="480"
         x:Class="GalaxyBudsClient.Interface.Developer.TranslatorTools"
-        Height="575" Width="460" MaxWidth="460"
+        Height="540" Width="460" MaxWidth="460"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/icon_white.ico"
         CanResize="False"
@@ -70,25 +70,16 @@
             </Grid>
         </HeaderedContentControl>
         <HeaderedContentControl Grid.Row="2" Classes="GroupBox"
-                                Header="Model" Margin="0,5,0,0">
+                                Header="Connection" Margin="0,5,0,0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="5" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <ComboBox Grid.Column="0" x:Name="ModelSel" HorizontalAlignment="Stretch"
-                              Items="{Binding ModelSource}" SelectionChanged="Model_OnSelectionChanged"
-                              Margin="0,0,5,0"/>
-                    <CheckBox Grid.Column="1" x:Name="IgnoreConnLoss" Content="Ignore connection loss" Checked="IgnoreConnLoss_OnChecked"/>
-                </Grid>
+                <CheckBox Grid.Row="0" x:Name="IgnoreConnLoss" Content="Ignore connection loss" Checked="IgnoreConnLoss_OnChecked"/>
                 <TextBlock Grid.Row="2" TextWrapping="Wrap">
-                    Overrides current device model. This setting may cause connection problems, crashes and inconsistent behavior. This model setting persists until the device is deregistered or changed back. Does not instantly apply.
+                    This setting overrides platform-specific Bluetooth backend logic and may cause crashes and inconsistent behavior.
                 </TextBlock>
             </Grid>
         </HeaderedContentControl>

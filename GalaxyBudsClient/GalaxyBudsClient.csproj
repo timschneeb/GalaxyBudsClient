@@ -36,7 +36,10 @@
         <AvaloniaResource Include="i18n\*" /> 
         <AvaloniaResource Include="ui\style\*" /> 
         <AvaloniaResource Remove="bin\Debug\netcoreapp3.1\**" /> 
-        <AvaloniaResource Remove="bin\**" />
+        <AvaloniaResource Remove="bin\**" /> 
+        <AvaloniaResource Update="Interface\Pages\SystemCoredumpPage.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </AvaloniaResource>
     </ItemGroup>
     <ItemGroup>
         <Compile Update="**\*.xaml.cs">

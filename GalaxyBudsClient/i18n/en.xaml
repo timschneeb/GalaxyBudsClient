@@ -77,7 +77,7 @@
     <sys:String x:Key="optionsmenu_title">Options</sys:String>
     <sys:String x:Key="optionsmenu_settings">Settings</sys:String>
     <sys:String x:Key="optionsmenu_refresh">Refresh dashboard</sys:String>
-    <sys:String x:Key="optionsmenu_deregister">Deregister device</sys:String>
+    <sys:String x:Key="optionsmenu_deregister">Unregister device</sys:String>
     <sys:String x:Key="optionsmenu_update">Check for updates</sys:String>
     <sys:String x:Key="optionsmenu_credits">Credits</sys:String>
 
@@ -205,7 +205,17 @@
     <sys:String x:Key="system_overview_header">System</sys:String>
     <sys:String x:Key="system_header">System Information</sys:String>
     <sys:String x:Key="system_selftest">Run self test</sys:String>
+    <sys:String x:Key="system_selftest_desc">Verify if all modules of your earbuds are functioning properly</sys:String>
     <sys:String x:Key="system_factory_reset">Factory reset</sys:String>
+    <sys:String x:Key="system_factory_reset_desc">Restore your earbuds to their factory settings and disconnect</sys:String>
+    <sys:String x:Key="system_pairing_mode">Enter pairing mode</sys:String>
+    <sys:String x:Key="system_pairing_mode_desc">Disconnect your earbuds from this PC and make it visible to other devices</sys:String>
+    <sys:String x:Key="system_trace_core_dump">Download trace and coredumps</sys:String>
+    <sys:String x:Key="system_trace_core_dump_desc">Retrieve raw debugging data from your earbuds</sys:String>
+    <sys:String x:Key="system_info">View system information</sys:String>
+    <sys:String x:Key="system_info_desc">Display detailed information about your earbuds</sys:String>
+    <sys:String x:Key="system_flasher">Firmware flashing tool</sys:String>
+    <sys:String x:Key="system_flasher_desc">Flash custom firmware or upgrade/downgrade your firmware version (experimental)</sys:String>
 
     <sys:String x:Key="system_battery_type_unknown">Not specified</sys:String>
     <sys:String x:Key="system_waiting_for_device">Waiting for response...</sys:String>
@@ -233,7 +243,23 @@
     <sys:String x:Key="selftest_fail">Fail</sys:String>
     <sys:String x:Key="selftest_pass_long">All checks have passed</sys:String>
     <sys:String x:Key="selftest_fail_long">One or more checks have failed</sys:String>
-
+    
+    <sys:String x:Key="coredump_header">Dumping data...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_prepare">Preparing download...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_cancelled">Download cancelled</sys:String>
+    <sys:String x:Key="coredump_dl_progress_finished">Download finished</sys:String>
+    <sys:String x:Key="coredump_dl_trace_progress">Downloading trace dump... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_core_progress">Downloading core dump... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytes)</sys:String>
+    <sys:String x:Key="coredump_dl_note">
+        The audio stream is temporarily paused while downloading. Your earbuds will be disconnected as soon as the transmission finishes, please reconnect them manually.&#10;Once finished, you will be prompted to select a directory for all collected data.
+    </sys:String>
+    <sys:String x:Key="coredump_dl_save_fail_title">Failed to save dump</sys:String>
+    <sys:String x:Key="coredump_dl_save_fail">Unable to copy dump from temporary location. Reason: {0}</sys:String>
+    <sys:String x:Key="coredump_dl_save_success_title">Successfully saved dumps</sys:String>
+    <sys:String x:Key="coredump_dl_save_success">{0} dump(s) were written to '{1}'</sys:String>
+    <sys:String x:Key="coredump_dl_save_dialog_title">Select an download directory...</sys:String>
+    
     <!-- Settings -->
     <sys:String x:Key="settings_header">Settings</sys:String>
 
@@ -249,7 +275,7 @@
     <sys:String x:Key="settings_autostart_description">Start minimized on system boot</sys:String>
 
     <sys:String x:Key="settings_connpopup">Configure connection popup</sys:String>
-    <sys:String x:Key="settings_devmode">Enter developer mode</sys:String>
+    <sys:String x:Key="settings_devmode">Developer options</sys:String>
 
     <!-- Settings >>> Connection popup -->
     <sys:String x:Key="settings_cpopup_header">Connection popup</sys:String>
@@ -306,7 +332,6 @@
     <sys:String x:Key="as_scale_moderate">Moderate</sys:String>
     <sys:String x:Key="as_scale_high">High</sys:String>
     <sys:String x:Key="as_scale_extraloud">Extra loud</sys:String>
-
     
     <!-- Advanced page -->
     <sys:String x:Key="adv_header">Advanced Settings</sys:String>
@@ -334,7 +359,7 @@
     <sys:String x:Key="connlost_header">Unable to establish connection</sys:String>
     <sys:String x:Key="connlost_description_p1">Unable to establish a connection to your Earbuds.</sys:String>
     <sys:String x:Key="connlost_description_p2">
-        Please check your Bluetooth settings and make sure your Earbuds are turned on and paired to this computer.&#10;You can also register a new pair if needed. In that case, please select "Options > Deregister device".
+        Please check your Bluetooth settings and make sure your Earbuds are turned on and paired to this computer.&#10;You can also register a new pair if needed. In that case, please select "Options > Unregister device".
     </sys:String>
     <sys:String x:Key="connlost_description_p3">Additional information:</sys:String>
     <sys:String x:Key="connlost_noinfo">Failed to gather error information</sys:String>

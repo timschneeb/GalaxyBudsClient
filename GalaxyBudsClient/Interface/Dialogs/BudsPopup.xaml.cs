@@ -7,8 +7,8 @@ using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Avalonia.Threading;
-using GalaxyBudsClient.Decoder;
 using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
@@ -158,11 +158,13 @@ namespace GalaxyBudsClient.Interface.Dialogs
             var grid = this.FindControl<Grid>("Grid");
             if (SettingsProvider.Instance.Popup.Compact)
             {
+                MaxHeight = 205 - 35;
                 Height = 205 - 35;
                 grid.RowDefinitions[1].Height = new GridLength(0);
             }
             else
             {
+                MaxHeight = 205;
                 Height = 205;
                 grid.RowDefinitions[1].Height = new GridLength(35);
             }

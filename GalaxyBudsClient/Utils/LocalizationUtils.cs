@@ -45,7 +45,7 @@ namespace GalaxyBudsClient.Utils
                     return str;
                 }
 
-                return "<Missing resource>";
+                return $"<Missing resource: {resName}>";
             }
 
             public static void Load()

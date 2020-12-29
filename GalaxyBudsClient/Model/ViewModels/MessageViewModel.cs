@@ -6,20 +6,20 @@ namespace GalaxyBudsClient.Model.ViewModels
 {
     public class RecvMsgViewHolder
     {
-        public String Id { get; set; }
-        public String Payload { get; set; }
-        public String PayloadAscii { get; set; }
-        public String Type { set; get; }
-        public String Size { set; get; }
-        public String CRC16 { set; get; }
-        public SPPMessage Message { set; get; }
+        public String Id { get; }
+        public String Payload { get; }
+        public String PayloadAscii { get; }
+        public String Type { get; }
+        public String Size { get; }
+        public String CRC16 { get; }
+        public SPPMessage Message { get; }
 
         public RecvMsgViewHolder(SPPMessage msg)
         {
             Id = GetEnumName(typeof(SPPMessage.MessageIds),msg.Id);
             Payload = BitConverter.ToString(msg.Payload).Replace("-", " ");
             PayloadAscii = HexUtils.DumpAscii(msg.Payload);
-            Type = GetEnumName(typeof(SPPMessage.MsgType), msg.Type);
+            Type = msg.IsFragment ? "Fragment/" : string.Empty + GetEnumName(typeof(SPPMessage.MsgType), msg.Type);
             Size = $"{msg.Size} bytes";
             CRC16 = (msg.Crc16 == 0 ? "Pass" : "Fail");
             Message = msg;

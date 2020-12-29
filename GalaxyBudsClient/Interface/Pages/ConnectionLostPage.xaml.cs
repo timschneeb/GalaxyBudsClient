@@ -82,7 +82,13 @@ namespace GalaxyBudsClient.Interface.Pages
 		}
 
 		private void Retry_OnPointerPressed(object? sender, PointerPressedEventArgs e)
-		{
+		{	
+			if (BluetoothImpl.Instance.IsConnected)
+         	{
+         		MainWindow.Instance.Pager.SwitchPage(Pages.Home);
+         		return;
+         	}
+			
 			if (_retry.IsEnabled)
 			{
 				_loadingSpinner.IsVisible = true;
@@ -94,7 +100,7 @@ namespace GalaxyBudsClient.Interface.Pages
 					MainWindow.Instance.Pager.SwitchPage(Pages.Welcome);
 					return;
 				}
-
+				
 			    Task.Factory.StartNew(() => BluetoothImpl.Instance.ConnectAsync());
             }
 		}

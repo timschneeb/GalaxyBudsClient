@@ -1,4 +1,4 @@
-using GalaxyBudsClient.Decoder;
+using GalaxyBudsClient.Message.Decoder;
 
 namespace GalaxyBudsClient.Message
 {

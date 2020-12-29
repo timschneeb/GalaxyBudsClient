@@ -21,7 +21,8 @@ namespace GalaxyBudsClient.Model.Specifications
             AmbientSound,
             GamingMode,
             DoubleTapVolume,
-            CaseBattery
+            CaseBattery,
+            FragmentedMessages
         }
         
         Dictionary<Feature, FeatureRule?> Rules { get; }

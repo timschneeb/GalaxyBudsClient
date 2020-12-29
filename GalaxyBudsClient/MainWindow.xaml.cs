@@ -10,21 +10,19 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
 using GalaxyBudsClient.Bluetooth;
-using GalaxyBudsClient.Decoder;
 using GalaxyBudsClient.Interface;
 using GalaxyBudsClient.Interface.Developer;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Interface.Transition;
 using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
-using Gtk;
 using NetSparkleUpdater.Enums;
-using Serilog;
 using Application = Avalonia.Application;
 using MessageBox = GalaxyBudsClient.Interface.Dialogs.MessageBox;
 using RoutedEventArgs = Avalonia.Interactivity.RoutedEventArgs;
@@ -40,6 +38,8 @@ namespace GalaxyBudsClient
         private readonly ConnectionLostPage _connectionLostPage = new ConnectionLostPage();
         private readonly UpdatePage _updatePage = new UpdatePage();
         private readonly UpdateProgressPage _updateProgressPage = new UpdateProgressPage();
+
+        private DevOptions? _devOptions;
 
         private readonly CustomTitleBar _titleBar;
         private BudsPopup _popup;
@@ -73,7 +73,7 @@ namespace GalaxyBudsClient
                 new CreditsPage(), new TouchpadPage(), new EqualizerPage(), new AdvancedPage(),
                 new SystemPage(), new SelfTestPage(), new SettingsPage(), new PopupSettingsPage(),
                 _connectionLostPage, _customTouchActionPage, new DeviceSelectionPage(), new SystemInfoPage(),
-                new WelcomePage(), _unsupportedFeaturePage, _updatePage, _updateProgressPage);
+                new WelcomePage(), _unsupportedFeaturePage, _updatePage, _updateProgressPage, new SystemCoredumpPage());
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
@@ -123,7 +123,7 @@ namespace GalaxyBudsClient
         {
             await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_FIND_MY_EARBUDS_STOP);
 
-            if (SettingsProvider.Instance.MinimizeToTray && !OverrideMinimizeTray)
+            if (SettingsProvider.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
             {
                 Hide();
                 e.Cancel = true;
@@ -297,9 +297,6 @@ namespace GalaxyBudsClient
                 }
             }
         }
-
-
-
         #endregion
 
         #region Options menu
@@ -346,7 +343,16 @@ namespace GalaxyBudsClient
         #region Pages utils
         public void ShowDevTools()
         {
-            new DevTools().Show(this);
+            _devOptions ??= new DevOptions();
+            try
+            {
+                _devOptions.Show(this);
+            }
+            catch (InvalidOperationException)
+            {
+                _devOptions = new DevOptions();
+                _devOptions.Show(this);
+            }
         }
 
         public void ShowUnsupportedFeaturePage(string assertion)

@@ -1,6 +1,6 @@
 ﻿using System;
 using Avalonia.Threading;
-using GalaxyBudsClient.Decoder;
+using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Constants;
 using Serilog;
 

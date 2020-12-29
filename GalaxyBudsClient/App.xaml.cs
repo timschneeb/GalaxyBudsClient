@@ -36,7 +36,6 @@ namespace GalaxyBudsClient
             if (Loc.IsTranslatorModeEnabled())
             {
                 SettingsProvider.Instance.Locale = Locales.custom;
-                new TranslatorTools().Show();
             }
             
             ThemeUtils.Reload();
@@ -53,6 +52,11 @@ namespace GalaxyBudsClient
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 desktop.MainWindow = MainWindow.Instance;
+            }
+            
+            if (Loc.IsTranslatorModeEnabled())
+            {
+                DialogLauncher.ShowTranslatorTools();
             }
             
             base.OnFrameworkInitializationCompleted();
