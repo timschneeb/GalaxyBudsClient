@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="../README.md">English</a> | <a href="./docs/README_chs.md">中文</a> | <a href="./docs/README_rus.md">Русский</a> | <a href="./docs/README_jpn.md">日本語</a> | <a href="./docs/README_ukr.md">Українська</a> | 한국어<br>
+    <a href="../README.md">English</a> | <a href="./README_chs.md">中文</a> | <a href="./README_rus.md">Русский</a> | <a href="./README_jpn.md">日本語</a> | <a href="./README_ukr.md">Українська</a> | 한국어<br>
     <sub>주의: readme 파일들은 번역자들에 의해 업데이트되며 시간이 지나면 최신 내용이 아니게 될 수 있습니다. 새로운 기능은 가장 먼저 영어 버전에 기재됩니다.</sub>
 </p>
 <h1 align="center">
@@ -26,7 +26,6 @@
   <a href="#다운로드">다운로드</a> •
   <a href="#동작-방식">동작 방식</a> •
   <a href="#기여">기여</a> •
-  <a href="#로드맵">로드맵</a> •
   <a href="#제작자">제작자</a> •
   <a href="#라이선스">라이선스</a> 
 </p>
@@ -34,7 +33,7 @@
 
 
 <p align="center">
-    <a href="#"><img alt="Screenshot" src="screenshots/screencap.gif"></a>
+    <a href="#"><img alt="Screenshot" src="../screenshots/screencap.gif"></a>
 </p>
 
 ## 주요 기능
@@ -54,7 +53,7 @@
 Windows 바이너리는 [release](https://github.com/ThePBone/GalaxyBudsClient/releases)에서 다운로드가 가능합니다. 설치하기 전에 릴리즈 노트를 읽어 주세요.
 
 <p align="center">
-    <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="screenshots/download.png"></a>
+    <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="../screenshots/download.png"></a>
 </p>
 
 ## 동작 방식
@@ -95,24 +94,6 @@ A2DP 프로필이 표준화 및 문서화되더라도, RFCOMM 프로토콜로 �
 
 소스 코드에 기여하고 싶으시다면, 변경한 내용에 대한 Pull Request를 생성하면 됩니다. 프로그램에 대한 크거나 민감한 기여 사항은 작업을 시작하기 전에 Issue를 생성해 주세요. (또는 텔레그램 [@thepbone](https://t.me/thepbone)으로 연락)
 
-## 로드맵
-
-버전 4.0은 2020년 말에 출시를 계획하고 있으며, 크로스 플랫폼 지원을 포함합니다. 진행 상황은 다음과 같습니다:
-
-
-- [x] .NET Core 3.1로 이전
-- [x] AvaloniaUI.NET로 사용자 인터페이스 포팅
-- [x] Linux: 네이티브 Bluetooth 인터페이스 구현
-- [x] 크로스 플랫폼 Bluetooth 디바이스 선택 알림
-- [X] Windows: 네이티브 Bluetooth 인터페이스 구현
-- [ ] Windows/Linux: 네이티브 트레이 아이콘 지원 (libappindicator)
-- [ ] Linux: NVIDIA와 libSkia의 호환 불가능 해결
-
-[Milestone v4.0](https://github.com/ThePBone/GalaxyBudsClient/projects/3)을 통해 자세한 정보를 확인할 수 있습니다.
-
-이 로드맵에 대한 기여에 대해서는 매우 감사하게 생각할 것입니다. 새로운 구현 사항은[`avalonia-rewrite`](https://github.com/ThePBone/GalaxyBudsClient/tree/avalonia-rewrite) branch를 참조하세요.
-
-
 ## 제작자
 
 #### 기여
@@ -135,7 +116,7 @@ A2DP 프로필이 표준화 및 문서화되더라도, RFCOMM 프로토콜로 �
 
 ## 라이선스
 
-이 프로젝트는 [GPLv3](LICENSE) 라이선스를 따릅니다. 삼성과 관련되지 않았으며 그 어떤 권고나 제한도 받지 않습니다.
+이 프로젝트는 [GPLv3](../LICENSE) 라이선스를 따릅니다. 삼성과 관련되지 않았으며 그 어떤 권고나 제한도 받지 않습니다.
 
 ```
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 

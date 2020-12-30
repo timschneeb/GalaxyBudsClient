@@ -1,5 +1,5 @@
 <p align="center">
-  English | <a href="./docs/README_chs.md">中文</a> | <a href="./docs/README_rus.md">Русский</a> | <a href="./docs/README_jpn.md">日本語</a> | <a href="./docs/README_ukr.md">Українська</a> | <a href="./docs/README_kor.md">한국어</a><br>
+  English | <a href="/docs/README_chs.md">中文</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a><br>
     <sub>Attention: readme files are maintained by translators and may become outdated from time to time. For newest info rely on English version.</sub>
 </p>
 <h1 align="center">
@@ -26,14 +26,13 @@
   <a href="#download">Download</a> •
   <a href="#how-it-works">How it works</a> •
   <a href="#contributing">Contributing</a> •
-  <a href="#contributing">Roadmap</a> •
   <a href="#credits">Credits</a> •
   <a href="#license">License</a> 
 </p>
 
 
 <p align="center">
-    <a href="#"><img alt="Screenshot" src="screenshots/screencap.gif"></a>
+    <a href="#"><img alt="Screenshot" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/screencap.gif"></a>
 </p>
 
 ## Key Features
@@ -53,7 +52,7 @@ Aside from standard features known from the official Android app, this project h
 Get binaries for Windows in the [release](https://github.com/ThePBone/GalaxyBudsClient/releases) section. Please read the release notes before installing.
 
 <p align="center">
-    <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="screenshots/download.png"></a>
+    <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
 ## How it works
@@ -94,24 +93,6 @@ If you are planning to help us translating this app, [refer to the instructions 
 
 If you want to contribute your own code, you can simply submit a plain pull request explaining you changes. For larger and complex contributions it would be nice if you could open an issue (or message me via Telegram [@thepbone](https://t.me/thepbone)) before starting to work on it.
 
-## Roadmap
-
-Version 4.0 is planned to be released by the end of 2020 and introduces cross-platform support. This is the progress so far:
-
-
-- [x] Move to .NET Core 3.1
-- [x] Port user interface to AvaloniaUI.NET
-- [x] Linux: Implement native Bluetooth interface
-- [x] Cross-platform Bluetooth device selection dialog
-- [X] Windows: Implement native Bluetooth interface
-- [ ] Windows/Linux: Native tray icon support (libappindicator)
-- [ ] Linux: Solve NVIDIA incompatibility with libSkia
-
-You can check the [kanban board for milestone v4.0](https://github.com/ThePBone/GalaxyBudsClient/projects/3) for more details.
-
-Contributions regarding this roadmap are very appreciated. The new implementation is available on the [`avalonia-rewrite`](https://github.com/ThePBone/GalaxyBudsClient/tree/avalonia-rewrite) branch.
-
-
 ## Credits
 
 #### Contributors
@@ -134,7 +115,7 @@ Contributions regarding this roadmap are very appreciated. The new implementatio
 
 ## License
 
-This project is licensed under [GPLv3](LICENSE). It is not affiliated with Samsung nor supervised by them in any way.
+This project is licensed under [GPLv3](https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE). It is not affiliated with Samsung nor supervised by them in any way.
 
 ```
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 

@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="../README.md">English</a> | <a href="./docs/README_chs.md">中文</a> | <a href="./docs/README_rus.md">Русский</a> | <a href="./docs/README_jpn.md">日本語</a> | Українська | <a href="./docs/README_kor.md">한국어</a><br>
+  <a href="../README.md">English</a> | <a href="./README_chs.md">中文</a> | <a href="./README_rus.md">Русский</a> | <a href="./README_jpn.md">日本語</a> | Українська | <a href="./README_kor.md">한국어</a><br>
     <sub>Увага: файли "Про проект" підтримуються перекладачами і можуть час від часу не відповідати поточній версії. Для новішої інформації покладайтеся на англоязичний варіант.</sub>
 </p>
 <h1 align="center">
@@ -26,7 +26,6 @@
   <a href="#завантажити">Завантажити</a> •
   <a href="#як-це-працює">Як це працює</a> •
   <a href="#зробити-внесок">Зробити внесок</a> •
-  <a href="#дорожня-карта">Дорожня карта</a> •
   <a href="#імена">Імена</a> •
   <a href="#ліцензія">Ліцензія</a> 
 </p>
@@ -34,7 +33,7 @@
 
 
 <p align="center">
-    <a href="#"><img alt="Screenshot" src="screenshots/screencap.gif"></a>
+    <a href="#"><img alt="Screenshot" src="../screenshots/screencap.gif"></a>
 </p>
 
 ## Основні можливості
@@ -54,7 +53,7 @@
 Завантажте файли для Windows у розділі [релізи](https://github.com/ThePBone/GalaxyBudsClient/releases). Будь ласка, прочитайте нотатки до релізу перед встановленням.
 
 <p align="center">
-    <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="screenshots/download.png"></a>
+    <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="../screenshots/download.png"></a>
 </p>
 
 ## Як це працює
@@ -96,22 +95,6 @@ Galaxy Buds визначають два профілі Bluetooth: A2DP (Advanced
 
 Якщо ви хочете внести свій власний код, ви можете просто відправити простий запит на перенесення з поясненням ваших змін. Для більших і складних вкладів було б непогано, якби ви могли відкрити запит (або написати мені в Telegram [@thepbone](https://t.me/thepbone)), перш ніж починати роботу над ним.
 
-## Дорожня карта
-
-Випуск версії 4.0 запланований на кінець 2020 і принесе кросс-платформену підтримку. Ось що вже вдалося реалізувати:
-
-
-- [x] Move to .NET Core 3.1
-- [x] Linux: Implement native Bluetooth interface
-- [ ] Windows: Implement native Bluetooth interface
-- [ ] Windows/Linux: Native tray icon support (libappindicator)
-- [ ] Cross-platform Bluetooth device selection dialog
-- [ ] Port user interface to AvaloniaUI.NET
-- [ ] Linux: Solve NVIDIA incompatibility with libSkia
-
-Внески по відношенню до цією дорожньої карти дуже цінуються. Нова реалізація доступна на гілці [`avalonia-rewrite`](https://github.com/ThePBone/GalaxyBudsClient/tree/avalonia-rewrite).
-
-
 ## Імена
 
 #### Співучасники
@@ -134,7 +117,7 @@ Galaxy Buds визначають два профілі Bluetooth: A2DP (Advanced
 
 ## Ліцензія
 
-Цей проект розповсюджується за ліцензією [GPLv3](LICENSE). Він ніяким чином не пов'язаний з Samsung і не контролюється нею.
+Цей проект розповсюджується за ліцензією [GPLv3](../LICENSE). Він ніяким чином не пов'язаний з Samsung і не контролюється нею.
 
 ```
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

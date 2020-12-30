@@ -1,7 +1,7 @@
 
 
 <p align="center">
-  <a href="../README.md">English</a> | <a href="./docs/README_chn.md">中文</a> | <a href="./docs/README_rus.md">Русский</a> | 日本語 | <a href="./docs/README_ukr.md">Українська</a> | <a href="./docs/README_kor.md">한국어</a>
+  <a href="../README.md">English</a> | <a href="./README_chn.md">中文</a> | <a href="./README_rus.md">Русский</a> | 日本語 | <a href="./README_ukr.md">Українська</a> | <a href="./README_kor.md">한국어</a>
 </p>
 _____
 
@@ -12,13 +12,13 @@ Windows 非公式 Galaxy Buds Manager (Buds/Buds+)
 ([release tab](https://github.com/thepbone/galaxybudsclient/releases)からダウンロードができます。)
 
 <p align="center">
-  <img src="screenshots/screencap.gif">
+  <img src="../screenshots/screencap.gif">
 </p>
 
 このプログラムはBudsが情報を送受信するときに使用するカスタムRFCommシリアルプロトコルの研究の結果物の一つです。もし、プロトコルの構造やシリアル通信の内容が知りたい方は、リバースエンジニアリングをしたすべての内容を記録した私のノートをご覧ください。
 
-* [My Buds (2019) Notes](GalaxyBudsRFCommProtocol.md)
-* [My Buds Plus Notes](Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md)
+* [My Buds (2019) Notes](../GalaxyBudsRFCommProtocol.md)
+* [My Buds Plus Notes](../Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md)
 
 ## 機能
 
