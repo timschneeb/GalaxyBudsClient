@@ -35,6 +35,8 @@ namespace GalaxyBudsClient.Model
             ru,
             [Description("Ukrainian")]
             ua,
+            [Description("Czech")]
+            cz,
             [Description("Turkish")]
             tr,
             [Description("Chinese")]
