@@ -1,5 +1,5 @@
 <p align="center">
-  English | <a href="./README_chs.md">中文</a> | <a href="./README_rus.md">Русский</a> | <a href="./README_jpn.md">日本語</a> | <a href="./README_ukr.md">Українська</a> | <a href="./README_kor.md">한국어</a><br>
+    <a href="../README.md">English</a> | <a href="./docs/README_chs.md">中文</a> | <a href="./docs/README_rus.md">Русский</a> | <a href="./docs/README_jpn.md">日本語</a> | <a href="./docs/README_ukr.md">Українська</a> | 한국어<br>
     <sub>주의: readme 파일들은 번역자들에 의해 업데이트되며 시간이 지나면 최신 내용이 아니게 될 수 있습니다. 새로운 기능은 가장 먼저 영어 버전에 기재됩니다.</sub>
 </p>
 <h1 align="center">
@@ -30,6 +30,7 @@
   <a href="#제작자">제작자</a> •
   <a href="#라이선스">라이선스</a> 
 </p>
+
 
 
 <p align="center">

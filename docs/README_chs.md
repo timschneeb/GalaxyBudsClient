@@ -1,8 +1,10 @@
+<p align="center">
+  <a href="../README.md">English</a> | 中文 | <a href="./docs/README_rus.md">Русский</a> | <a href="./docs/README_jpn.md">日本語</a> | <a href="./docs/README_ukr.md">Українська</a> | <a href="./docs/README_kor.md">한국어</a>
+</p>
+_____
 # Galaxy Buds Client
 
 Windows 非官方的 Galaxy Buds Manager (Buds, Buds+, Buds Live)
-
-**此 README 同样在以下语言可用 [英语](/README.md), [韩语](/README_kor.md), [日语](/README_jpn.md), [俄语](/README_rus.md) 和 [乌克兰语](/README_ukr.md)!**
 
 (在 [release tab](https://github.com/thepbone/galaxybudsclient/releases) 你可以找到你需要的下载内容。)
 

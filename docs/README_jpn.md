@@ -1,4 +1,12 @@
+
+
+<p align="center">
+  <a href="../README.md">English</a> | <a href="./docs/README_chn.md">中文</a> | <a href="./docs/README_rus.md">Русский</a> | 日本語 | <a href="./docs/README_ukr.md">Українська</a> | <a href="./docs/README_kor.md">한국어</a>
+</p>
+_____
+
 # Galaxy Buds Client
+
 Windows 非公式 Galaxy Buds Manager (Buds/Buds+)
 
 ([release tab](https://github.com/thepbone/galaxybudsclient/releases)からダウンロードができます。)
