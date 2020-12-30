@@ -11,13 +11,13 @@ Windows 非官方的 Galaxy Buds Manager (Buds, Buds+, Buds Live)
 (在 [release tab](https://github.com/thepbone/galaxybudsclient/releases) 你可以找到你需要的下载内容。)
 
 <p align="center">
-  <img src="screenshots/screencap.gif">
+  <img src="../screenshots/screencap.gif">
 </p>
 
 这个客户端是我研究自定义 RFComm 串行协议的产物，Buds 用来接收和发送二进制（配置）数据。如果你对协议的结构和它的串行消息感兴趣，我建议你看看我在逆向工程时做的笔记：
 
-* [Buds (2019) Notes](GalaxyBudsRFCommProtocol.md)
-* [Buds Plus Notes](Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md)
+* [Buds (2019) Notes](../GalaxyBudsRFCommProtocol.md)
+* [Buds Plus Notes](../Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md)
 * [Buds Plus: Undocumented calls](https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsPlus_HiddenDebugFeatures.md)
 
 ## 特点
