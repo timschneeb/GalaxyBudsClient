@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "Galaxy Buds Manager (Unofficial)"
-!define PRODUCT_VERSION "3.2.0.0"
+!define PRODUCT_VERSION "3.3.0.0"
 !define PRODUCT_PUBLISHER "ThePBone"
 !define PRODUCT_WEB_SITE "https://github.com/ThePBone/GalaxyBudsClient"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\Galaxy Buds Client.exe"

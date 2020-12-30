@@ -84,7 +84,7 @@
     <sys:String x:Key="tray_enable_eq">이퀄라이저 켜기</sys:String>
     <sys:String x:Key="tray_disable_eq">이퀄라이저 끄기</sys:String>
     <sys:String x:Key="tray_enable_anc">액티브 노이즈 캔슬링 활성화</sys:String>
-    <sys:String x:Key="tray_disable_anc">액티브 노이즈 캔슬링 비활성화/sys:String>
+    <sys:String x:Key="tray_disable_anc">액티브 노이즈 캔슬링 비활성화</sys:String>
     <sys:String x:Key="tray_quit">종료</sys:String>
 
 

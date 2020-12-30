@@ -38,6 +38,9 @@
                     <LineBreak/>
                     <LineBreak/>
                     <Run Text="{DynamicResource updater_message_p2}" />
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Run Text="NOTE: Version 4.0 makes use of a different update mechanism. If the update fails, please download and install it manually." />
                 </TextBlock>
             </Grid>
         </Border>
