@@ -397,7 +397,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
         #endregion
         
         #region Service
-        private void BluetoothServiceLoop()
+        private async void BluetoothServiceLoop()
         {
             while (true)
             {
@@ -405,9 +405,11 @@ namespace GalaxyBudsClient.Bluetooth.Linux
 
                 var incomingCount = _profile.Stream?.AvailableBytes;
 
+                await Task.Delay(75);
+
                 if (incomingCount == null)
                 {
-                    Task.Delay(50);
+                    /* Stream not yet ready */
                     continue;
                 }
                 
