@@ -1,7 +1,9 @@
 <p align="center">
   <a href="../README.md">English</a> | 中文 | <a href="./docs/README_rus.md">Русский</a> | <a href="./docs/README_jpn.md">日本語</a> | <a href="./docs/README_ukr.md">Українська</a> | <a href="./docs/README_kor.md">한국어</a>
 </p>
-_____
+
+_____________________
+
 # Galaxy Buds Client
 
 Windows 非官方的 Galaxy Buds Manager (Buds, Buds+, Buds Live)
