@@ -1,0 +1,114 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <ApplicationIcon>Resources/icon_white.ico</ApplicationIcon>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <Version>4.0.0.0</Version>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Configurations>Debug;Release;Debug (Local server)</Configurations>
+        <Platforms>AnyCPU</Platforms>
+    </PropertyGroup>
+    <PropertyGroup>
+        <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
+        <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
+        <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsWindows)'=='true'">
+        <DefineConstants>Windows</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsOSX)'=='true'">
+        <DefineConstants>OSX</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsLinux)'=='true'">
+        <DefineConstants>Linux</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug (Local server)' ">
+        <DebugSymbols Condition=" '$(DebugSymbols)' == '' ">true</DebugSymbols>
+        <Optimize Condition=" '$(Optimize)' == '' ">false</Optimize>
+        <DefineConstants>UseLocalServer</DefineConstants>
+    </PropertyGroup>
+    <ItemGroup>
+        <AvaloniaResource Include="Resources\**" />
+        <EmbeddedResource Include="Resources\**" />
+
+        <AvaloniaResource Include="i18n\*" /> 
+        <AvaloniaResource Include="ui\style\*" /> 
+        <AvaloniaResource Remove="bin\Debug\netcoreapp3.1\**" /> 
+        <AvaloniaResource Remove="bin\**" /> 
+        <AvaloniaResource Update="Interface\Pages\SystemCoredumpPage.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </AvaloniaResource>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Update="**\*.xaml.cs">
+            <DependentUpon>%(Filename)</DependentUpon>
+        </Compile>
+        <AvaloniaResource Include="**\*.xaml">
+            <SubType>Designer</SubType>
+        </AvaloniaResource>
+        <Compile Remove="bin\Debug\netcoreapp3.1\**" />
+        <Compile Remove="bin\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="0.10.0-rc1" />
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.0-rc1" />
+        <PackageReference Include="Avalonia.Desktop" Version="0.10.0-rc1" />
+        <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0-rc1" />
+        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.0-rc1" />
+        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.0-rc1" />
+        <PackageReference Include="Config.Net" Version="4.15.0" />
+        <PackageReference Include="Config.Net.Json" Version="4.15.0" />
+        <PackageReference Include="CS-Script.Core" Version="1.4.2-preview" />
+        <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+        <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
+        <PackageReference Include="NetSparkle.New" Version="2.0.0-preview20201108002" />
+        <PackageReference Include="Sentry" Version="3.0.0-alpha.8" />
+        <PackageReference Include="Sentry.Serilog" Version="3.0.0-alpha.8" />
+        <PackageReference Include="Serilog" Version="2.10.0" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="4.0.0-dev-00839" />
+        <PackageReference Include="Serilog.Sinks.Debug" Version="1.0.1" />
+        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0-dev-00905" />
+        <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
+        <PackageReference Include="Tmds.DBus" Version="0.9.1" />
+    </ItemGroup>
+    <ItemGroup>
+      <AvaloniaXaml Remove="bin\Debug\netcoreapp3.1\**" />
+      <AvaloniaXaml Remove="bin\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Remove="bin\Debug\netcoreapp3.1\**" />
+      <EmbeddedResource Remove="bin\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="bin\Debug\netcoreapp3.1\**" />
+      <None Remove="bin\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="Interface\Pages\UpdateProgressPage.xaml" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Include="Platform\Windows\MediaKeyRemote.Windows.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Linux\GalaxyBudsClient.Bluetooth.Linux.csproj" />
+      <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Windows\GalaxyBudsClient.Bluetooth.Windows.csproj" />
+      <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj" />
+      <ProjectReference Include="..\ThePBone.Interop.Linux.TrayIcon\ThePBone.Interop.Linux.TrayIcon.csproj" />
+      <ProjectReference Include="..\ThePBone.MprisClient\ThePBone.MprisClient.csproj" />
+    </ItemGroup>
+    <ItemGroup Condition="'$(IsWindows)'=='true'">
+      <ProjectReference Include="..\ThePBone.Interop.Win32.TrayIcon\ThePBone.Interop.Win32.TrayIcon.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <AvaloniaResource Update="Interface\Pages\UpdateProgressPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </AvaloniaResource>
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Interface\Pages\UpdateProgressPage.xaml.cs">
+        <DependentUpon>%(Filename)</DependentUpon>
+      </Compile>
+    </ItemGroup>
+</Project>

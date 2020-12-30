@@ -1,0 +1,70 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:String x:Key="ResourceDictionaryName">Brushes-dark</sys:String>
+    
+    <!-- Basic -->
+    <SolidColorBrush x:Key="RoundBorderBrush" Color="#252525" />
+    <SolidColorBrush x:Key="RoundBorderHoverBrush" Color="#333333" /> 
+    <SolidColorBrush x:Key="RoundBorderSelectionBrush" Color="#4B4B4B" />
+    <SolidColorBrush x:Key="RoundBorderHoverSelectionBrush" Color="#555555" />
+    
+    <SolidColorBrush x:Key="RoundBorderBackgroundBrush" Color="#252525" />
+    <SolidColorBrush x:Key="RoundBorderBackgroundWarningBrush" Color="#352525" />
+    <SolidColorBrush x:Key="BorderSeparatorBrush" Color="#383838" />
+    <SolidColorBrush x:Key="ForegroundTextBrush" Color="#CCCCCC" />
+    <SolidColorBrush x:Key="ForegroundTextAltBrush" Color="#DDDDDD" />
+    <SolidColorBrush x:Key="ForegroundTextDimBrush" Color="#BBBBBB" />
+    <SolidColorBrush x:Key="SubtitleTextBrush" Color="#888888" />
+    <SolidColorBrush x:Key="SubtitleTextAltBrush" Color="#888888" />
+
+    <!-- Context Menu -->
+    <SolidColorBrush x:Key="ContextForegroundBrush" Color="#CCCCCC" />
+    <SolidColorBrush x:Key="ContextBackgroundBrush" Color="#1E1E1E" />
+    <SolidColorBrush x:Key="ContextBorderBrush" Color="#1E1E1E" />
+    <SolidColorBrush x:Key="ContextSeparatorBrush" Color="#333333" />
+    <SolidColorBrush x:Key="ContextItemHoverBrush" Color="#333333" />
+    <SolidColorBrush x:Key="ContextForegroundDisabledStaticBrush" Color="#44FFFFFF" />
+    
+    <!-- Elements -->
+    <SolidColorBrush x:Key="SliderBrush" Color="Orange" />
+    <SolidColorBrush x:Key="ToggleOnBrush" Color="Orange" />
+    <SolidColorBrush x:Key="ToggleOffBrush" Color="#444444" />
+
+    <!-- Window -->
+    <SolidColorBrush x:Key="WindowButtonBrush" Color="#DDDDDD" />
+    <SolidColorBrush x:Key="WindowBorderBrush" Color="#252525" />
+    <SolidColorBrush x:Key="WindowHeaderBrush" Color="Black" />
+    <SolidColorBrush x:Key="WindowBackgroundBrush" Color="Black" />
+
+    <!-- Images -->
+    <CroppedBitmap x:Key="LeftBeanConnected" Source="/Resources/device/left_beans_black.png"/>
+    <CroppedBitmap x:Key="RightBeanConnected" Source="/Resources/device/right_beans_black.png"/>
+    <CroppedBitmap x:Key="LeftBeanDisconnected" Source="/Resources/device/left_beans_black_dim.png"/>
+    <CroppedBitmap x:Key="RightBeanDisconnected" Source="/Resources/device/right_beans_black_dim.png"/>
+    <CroppedBitmap x:Key="LeftBudConnected" Source="/Resources/device/left_gray_dim.png"/>
+    <CroppedBitmap x:Key="RightBudConnected" Source="/Resources/device/right_gray_dim.png"/>
+    <CroppedBitmap x:Key="LeftBudDisconnected" Source="/Resources/device/left_gray.png"/>
+    <CroppedBitmap x:Key="RightBudDisconnected" Source="/Resources/device/right_gray.png"/>
+
+    <!-- Battery -->
+    <CroppedBitmap x:Key="BatteryDisconnected" Source="/Resources/battery/disconnected.png"/>
+    <CroppedBitmap x:Key="BatteryLow" Source="/Resources/battery/low.png"/>
+    <CroppedBitmap x:Key="BatteryMedium" Source="/Resources/battery/medium.png"/>
+    <CroppedBitmap x:Key="BatteryHigh" Source="/Resources/battery/high.png"/>
+    <CroppedBitmap x:Key="BatteryFull" Source="/Resources/battery/full.png"/>
+    
+    <!-- Buttons -->
+    <CroppedBitmap x:Key="BackButton" Source="/Resources/navigation/back_light.png"/>
+    <CroppedBitmap x:Key="NextButtonSrc" Source="/Resources/navigation/next_small_light.png"/>
+    <CroppedBitmap x:Key="NextButton" Source="/Resources/navigation/next_small_light.png"/>
+    <CroppedBitmap x:Key="SearchButton" Source="/Resources/findmygear/start_lightgray.png"/>
+
+    <!--Find My Gear-->
+    <CroppedBitmap x:Key="FindMyGearScanButton" Source="/Resources/findmygear/start_finding_black.png"/>
+    <CroppedBitmap x:Key="FindMyGearScanButtonActive" Source="/Resources/findmygear/finding_black.png"/>
+    <CroppedBitmap x:Key="FindMyGearMuted" Source="/Resources/findmygear/muted_white.png"/>
+    <CroppedBitmap x:Key="FindMyGearUnmuted" Source="/Resources/findmygear/unmuted_white.png"/>
+    
+</ResourceDictionary>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+		    <RootNamespace>InTheHand</RootNamespace>
+		    <AssemblyName>InTheHand.Net.Personal</AssemblyName>
+        <AssemblyVersion>3.9.0.0</AssemblyVersion>
+        <Copyright>Copyright © In The Hand Ltd 2003-2017, Tim Schneeberger 2020-2021</Copyright>
+        <Description>Personal Area Networking for .NET</Description>
+        <Product>32feet.NET</Product>
+        <Company>In The Hand Ltd</Company>
+        <DefineConstants>NO_WINFORMS;WinXP;V2</DefineConstants>
+        <Configurations>Debug;Release;Debug (Local server)</Configurations>
+        <Platforms>AnyCPU</Platforms>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug (Local server)' ">
+      <DebugSymbols Condition=" '$(DebugSymbols)' == '' ">true</DebugSymbols>
+      <Optimize Condition=" '$(Optimize)' == '' ">false</Optimize>
+    </PropertyGroup>
+    <ItemGroup>
+      <Compile Remove="Windows\**" />
+      <EmbeddedResource Remove="Windows\**" />
+      <None Remove="Windows\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
+      <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+      <PackageReference Include="System.IO.Ports" Version="5.0.0" />
+    </ItemGroup>
+ 
+</Project>

@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+                    xmlns:utils="clr-namespace:GalaxyBudsClient.Utils">
+
+    <!-- Dimensions -->
+    <system:Double x:Key="ContentWidth">510</system:Double>
+    <system:Double x:Key="PageHeaderHeight">60</system:Double>
+    <CornerRadius x:Key="DefaultCornerRadius">20</CornerRadius>
+    
+    <!-- Global strings -->
+    <system:String x:Key="TranslatorCreditsString">@Florize; @ArthurWolfhound; @erenbektas; Andrew Gonza; @kakkk; @giovankabisano; @lucasskluser; @alb-p</system:String>
+    <system:String x:Key="ContributorCreditsString">@githubcatw; @AndriesK</system:String>
+    
+    <!-- Global bitmaps -->
+    <CroppedBitmap x:Key="NeutralBud" Source="/Resources/device/neutral_gray.png"/>
+    <CroppedBitmap x:Key="NeutralBean" Source="/Resources/device/neutral_bean_gray.png"/>
+    <CroppedBitmap x:Key="FindMyGearBud" Source="/Resources/features/findmygear_color.png"/>
+    <CroppedBitmap x:Key="FindMyGearBean" Source="/Resources/features/findmygear_bean.png"/>
+    <CroppedBitmap x:Key="TouchBud" Source="/Resources/features/touch_color.png"/>
+    <CroppedBitmap x:Key="TouchBean" Source="/Resources/features/touch_bean.png"/>
+
+    <!-- Value converters -->
+    <utils:BitmapAssetValueConverter x:Key="BitmapAssetValueConverter"/>
+    
+</ResourceDictionary>

@@ -1,0 +1,77 @@
+﻿<pages:AbstractPage xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.Pages"
+             xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
+             xmlns:items="clr-namespace:GalaxyBudsClient.Interface.Items"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+             x:Class="GalaxyBudsClient.Interface.Pages.WelcomePage"
+             DockPanel.Dock="Top" Margin="10,0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <elements:PageHeader Grid.Row="1" Title="{DynamicResource welcome_textblock_header}" BackButtonVisible="False" />
+        
+        <Border Grid.Row="3" Classes="RoundedBorderListItem">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="{DynamicResource welcome_textblock_p1}"
+                           Foreground="{DynamicResource ForegroundTextDimBrush}"
+                           TextWrapping="Wrap" FontSize="14.2" Margin="20,20,20,0" />
+                <TextBlock Grid.Row="1" Text="{DynamicResource welcome_textblock_p2}"
+                           Foreground="{DynamicResource ForegroundTextDimBrush}"
+                           TextWrapping="Wrap" FontSize="14.2" Margin="20,10,20,10" />
+                <TextBlock Grid.Row="2" Text="{DynamicResource welcome_textblock_p3}"
+                           Foreground="{DynamicResource ForegroundTextDimBrush}"
+                           TextWrapping="Wrap" FontSize="14.2" Margin="20,0,20,20"/>
+            </Grid>
+        </Border>
+        
+        <Border Grid.Row="5" Classes="RoundedBorderListItem">
+            <items:SwitchDetailListItem x:Name="DarkMode"
+                                        Text="{DynamicResource welcome_darkmode}" 
+                                        Description="{DynamicResource welcome_darkmode_content}"
+                                        Toggled="DarkMode_OnToggled"/>
+
+        </Border>
+        <Border Grid.Row="7" Classes="RoundedBorderListItem">
+            <Grid ClipToBounds="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border x:Name="Locales"
+                        Grid.Column="0"
+                        CornerRadius="{DynamicResource DefaultCornerRadius}" 
+                        Classes="BorderHoverStyle"
+                        PointerPressed="Locales_OnPointerPressed">
+                    <Label Content="{DynamicResource settings_localization_disable}"
+                           Foreground="{DynamicResource ForegroundTextBrush}"
+                           FontSize="18"
+                           VerticalContentAlignment="Center" HorizontalAlignment="Center"/>   
+                </Border>
+                <Border Grid.Column="1" Classes="VerticalSeparator" />
+                <Border Grid.Column="2" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle"
+                        PointerPressed="Next_OnPointerPressed">
+                    <items:IconListItem Text="{DynamicResource continue_button}"
+                                        Source="{DynamicResource NextButton}" 
+                                        Margin="20,0" FontSize="18"/>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</pages:AbstractPage>

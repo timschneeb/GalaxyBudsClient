@@ -1,0 +1,1672 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>32feet BlueSoleil Test</title>
+    <style type="text/css">
+        .doneTestToDo
+        {
+            text-decoration: line-through;
+        }
+        .testPassed
+        {
+            background-color: #00FF00;
+        }
+        .testAssumePassed
+        {
+            background-color: Green;
+        }
+    </style>
+</head>
+<body>
+    <!-- ==== -->
+    <h1>
+        Table of Contents</h1>
+    <ol>
+        <li><a href="#usage">Usage</a></li>
+        <li><a href="#general">General</a></li>
+        <li><a href="#generalToDo">General ToDo</a></li>
+        <li><a href="#startup">Startup</a></li>
+        <li><a href="#radio">BluetoothRadio</a>
+            <ol>
+                <li><a href="#radio_off">Radio turned off</a></li>
+                <li><a href="#radio_unplugged">Hardware unplugged</a></li>
+            </ol>
+        </li>
+        <li><a href="#deviceInfo">BluetoothDeviceInfo</a>
+            <ol>
+                <li><a href="#deviceInfo_GSR">BluetoothDeviceInfo.GetServiceRecords</a><ol>
+                    <li><a href="#deviceInfo_GSR_general">General Records</a></li>
+                    <li><a href="#deviceInfo_GSR_general_all">General -- All Records</a></li>
+                </ol>
+                </li>
+            </ol>
+        </li>
+        <li><a href="#client">BluetoothClient</a>
+            <ol>
+                <li><a href="#client_connect">Connect</a>
+                    <ol>
+                        <li><a href="#client_connect_1105_response">Connect to 0x1105, with OBEX response received</a></li>
+                        <li><a href="#client_connect_1105_noResponse">Connect to 0x1105, with no OBEX response
+                            received</a></li>
+                        <li><a href="#client_connect_1106_noResponse">Connect to 0x1106, with no OBEX response
+                            received</a></li>
+                    </ol>
+                </li>
+            </ol>
+        </li>
+        <li><a href="#networkStream">NetworkStream</a></li>
+        <li><a href="#listener">BluetoothListener</a></li>
+        <li><a href="#security">BluetoothSecurity</a></li>
+        <li><a href="#ObexWebRequest">ObexWebRequest</a></li>
+        <li><a href="#ObexListener">ObexListener</a></li>
+    </ol>
+    <!-- ==== -->
+    <h1 id="usage">
+        Usage</h1>
+    <ol>
+        <li>Support is now included in the main library and enabled by default.</li>
+        <li>Check whether <code>BluetoothRadio.PrimaryRadio</code> and/or <code>BluetoothRadio.AllRadios</code>
+            are non-empty, and that one has <code>SoftwareManufacter</code> containing a BlueSoleil
+            value.</li>
+        <li>Check what's in the trace.log file. It should contain something like the following.
+            <pre>BlueSoleil Btsdk_Init: OK=0x0000
+Num factories: 1, Primary Factory: BlueSoleilFactory</pre>
+        </li>
+        <li>See below for what is and isn&#x2019;t supported.</li>
+    </ol>
+    <!-- ==== -->
+    <h1 id="general">
+        General</h1>
+    <p>
+        This is a a summary see below for the details of each classes supported methods
+        and properties.</p>
+    <p>
+        There is good support for BluetoothRadio, BluetoothDeviceInfo including RSSI, and
+        device discovery including &#x2018;live&#x2019; discovery. There is no support for
+        BluetoothListener (there seems to be no BlueSoleil API), and there is only partial
+        support for SDP querying (returns both partial records and partial attributes).
+        BluetoothSecurity.RemoveDevice is supported, but more work is needed for PairRequest.</p>
+    <p>
+        BluetoothClient.Connect is supported for RFCOMM/SPP connections. However connections
+        can&#x2019;t be made to profiles that BlueSoleil supports directly, for instance
+        an RFCOMM connection to OBEX Push isn&#x2019;t possible. Nor is it it possible to
+        make a connection to a specific RFCOMM port number. BluetoothClient.Authenticate,
+        Encrypt are not supported (no API support), and we haven&#x2019;t looked at support
+        for SetPin.
+    </p>
+    <p>
+        Data transfer (for BluetoothClient) is somewhat lacking in comparison with the
+        other stacks as it doesn&#x2019;t use Sockets nor has it an data transfer API like
+        Widcomm. Instead it creates a virtual COM port for each connection, and that&#x2019;s
+        what we have to use. It creates a number of problems, firstly when there&#x2019;s
+        no data in the buffer for Read we would expect Read to block but instead we get
+        an IO error, so we have to workaround that. Then on Write there seems a lack of
+        flow control, we now internally split any any big writes into smaller chunks and
+        in testing that seems to stop data being lost.
+    </p>
+    <p>
+        Due to the various restrictions above ObexWebRequest and ObexListener are not supported
+        currently. It should be possible at least to support ObexWebRequest by internally
+        using the BlueSoleil OBEX API directly, something for the future, and volunteers
+        welcomed.
+    </p>
+    <p>
+        To check if BlueSoleil support is being loaded, check whether BluetoothRadio.PrimaryRadio
+        or AllRadios returns a radio and whether its SoftwareManufacturer is a enum value
+        of IvtBlueSoleil.
+    </p>
+    <p>
+        Please let me have any feedback.
+    </p>
+    <h2>
+        Multi-stack</h2>
+    <p>
+        This stack does work when the Microsoft stack is present/active. However the Microsoft
+        stack then seems not to work though. That's on a Windows 7 box with BlueSoleil version
+        5.X.X.X. Let me know if you find otherwise.
+    </p>
+    <!-- ==== -->
+    <h1 id="generalToDo">
+        General TODO</h1>
+    <p>
+        (Test) To Do:</p>
+    <ol>
+        <li>Odd threading, call Connect, Discovery, etc from all sorts of wierd threads.</li>
+        <li><span class="doneTestToDo">Does the RegisterCallback need to be re-done after PowerOff,
+            'power-on'?<br />
+            BtCli.Connect, PowerOff, 'power-on', BtCli.Connect </span>
+            <br />
+            No, for Connect at least after on->PowerOff-> we see the connect event.</li>
+        <li class="doneTestToDo">NetworkStream connected, but Disconnect when Off. Connection
+            closes at off??</li>
+    </ol>
+    <p>
+        Implementation To Do:</p>
+    <ol>
+        <li class="doneTestToDo">SetServiceState &#x2014; for HID, SPP, etc?<br />
+            Perhaps many services can be handled this way as BlueSoleil handles general Connect
+            calls for known services as requests to start that profile handler (does for OPP
+            and FTP at least).<br />
+            For disable, "Enum" the connections and disable the one with the respective Class
+            Id? </li>
+        <li class="doneTestToDo">Redo startup.</li>
+        <li class="doneTestToDo">Use Btsdk_IsServerConnected.</li>
+        <li class="doneTestToDo">In Debug build, lots of "BlueSoleil Btsdk_Init: OK" when radio
+            off and calling various actions.</li>
+    </ol>
+    <!-- ==== -->
+    <h1 id="startup">
+        Startup</h1>
+    <p>
+        To Do:</p>
+    <ol>
+        <li class="doneTestToDo">What if radio (dongle) is un-plugged?</li>
+        <li class="doneTestToDo">What if radio is disabled? Is it automatically re-enabled,
+            like Widcomm?</li>
+    </ol>
+    <table border="1">
+        <colgroup>
+            <col span="3" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th>
+                    Test
+                </th>
+                <th>
+                    Result
+                </th>
+            </tr>
+        </thead>
+        <tr>
+            <th>
+                Radio (dongle) is un-plugged
+            </th>
+            <td>
+                Stack is not loaded
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Radio is disabled
+            </th>
+            <td>
+                It does not turn-on automatically. Instead use Radio.set_Mode to enable it.<br />
+                Note we don't turn the radio on at any operation (as of r78137+).
+            </td>
+        </tr>
+    </table>
+    <!-- ==== -->
+    <h1 id="radio">
+        BluetoothRadio</h1>
+    <p>
+        To Do:</p>
+    <ol>
+        <li class="doneTestToDo">Mode 1) BothOff 2) BothOn 3) !Disco&NotConno</li>
+        <li class="doneTestToDo">Change radio Name. 32feet sees?</li>
+        <li class="doneTestToDo">Set Name; ex?</li>
+        <li class="doneTestToDo">Set Mode; ex?</li>
+        <li class="doneTestToDo">Radio turned off</li>
+        <li class="doneTestToDo">Hardware unplugged</li>
+        <li class="doneTestToDo">Double-check Off->Connectable transition.</li>
+    </ol>
+    <p>
+        See the two tables after this one for the values of the properties when the radio
+        is disabled or un-plugged.
+    </p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>
+                    Test
+                </th>
+                <th>
+                    Expected (BlueSoleil UI)
+                </th>
+                <th>
+                    Result
+                </th>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+                <b>ClassOfDevice ClassOfDevice { get; } </b>
+            </td>
+            <td>
+                0x120104, from Remote Discovery
+            </td>
+            <td class="testPassed">
+                120104<br />
+                device: DesktopComputer / service: Network, ObjectTransfer
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>IntPtr Handle { get; } </b>
+            </td>
+            <td>
+            </td>
+            <td class="testPassed">
+                NotSupported
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>HardwareStatus HardwareStatus { get; } </b>
+            </td>
+            <td>
+            </td>
+            <td class="testPassed">
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>int LmpSubversion { get; } </b>
+            </td>
+            <td>
+                4203 =&gt; decimal 16910
+            </td>
+            <td class="testPassed">
+                16910
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>BluetoothAddress LocalAddress { get; } </b>
+            </td>
+            <td>
+                00:19:0E:02:C9:16
+            </td>
+            <td class="testPassed">
+                00:19:0E:02:C9:16
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Manufacturer Manufacturer { get; } </b>
+            </td>
+            <td>
+                Broadcom Corporation
+            </td>
+            <td class="testPassed">
+                Broadcom
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>RadioMode Mode { get; &hellip;</b>
+            </td>
+            <td>
+                Connectable &amp; Discoverable:<ul>
+                    <li>No &amp; Yes</li>
+                    <li>Yes &amp; Yes</li>
+                    <li>No &amp; No</li>
+                    <li>No &amp; Yes!!</li>
+                </ul>
+            </td>
+            <td class="testPassed">
+                Results:<ul>
+                    <li>Connectable</li>
+                    <li>Discoverable</li>
+                    <li>PowerOff</li>
+                    <li>PowerOff</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>set; } </b>
+            </td>
+            <td>
+            </td>
+            <td class="testPassed">
+                Results:<ul>
+                    <li>PowerOff &#x2714;</li>
+                    <li>Connectable &#x2714;</li>
+                    <li>Discoverable &#x2714;</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>string Name { get; &hellip;</b>
+            </td>
+            <td>
+                alanlt2w
+            </td>
+            <td class="testPassed">
+                alanlt2w
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set; } </b>
+            </td>
+            <td>
+            </td>
+            <td class="testPassed">
+                <span style="background-color: Yellow;">&#x2718;</span> NotImplemented
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Manufacturer SoftwareManufacturer { get; } </b>
+            </td>
+            <td>
+            </td>
+            <td class="testPassed">
+                IvtBlueSoleilXxxx
+            </td>
+        </tr>
+    </table>
+    <h2 id="radio_off">
+        Radio turned off</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>
+                    Property
+                </th>
+                <th>
+                    Value
+                </th>
+            </tr>
+        </thead>
+        <tr>
+            <th>
+                HardwareStatus
+            </th>
+            <td>
+                <em>Shutdown</em>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Mode
+            </th>
+            <td>
+                PowerOff
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Name
+            </th>
+            <td>
+                empty (String.Empty)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Address
+            </th>
+            <td>
+                empty (BluetoothAddress.None)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Status of other properties is undefined.
+            </th>
+        </tr>
+    </table>
+    <h2 id="radio_unplugged">
+        Hardware unplugged</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>
+                    Property
+                </th>
+                <th>
+                    Value
+                </th>
+            </tr>
+        </thead>
+        <tr>
+            <th>
+                HardwareStatus
+            </th>
+            <td>
+                <em>NotPresent</em>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Mode
+            </th>
+            <td>
+                PowerOff
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Name
+            </th>
+            <td>
+                empty (String.Empty)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Address
+            </th>
+            <td>
+                empty (BluetoothAddress.None)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Status of other properties is undefined.
+            </th>
+        </tr>
+    </table>
+    <!-- ==== -->
+    <h1 id="deviceInfo">
+        BluetoothDeviceInfo</h1>
+    <p>
+        To Do:</p>
+    <ol>
+        <li>DeviceName read, change name on remote device, check DeviceName is updated after
+            a call to Refresh.</li>
+        <li>LastSeen.</li>
+    </ol>
+    <p>
+        To Do, for created-from:</p>
+    <ol>
+        <li>By Discovery &#x2014; Remembered.</li>
+        <li>By Discovery &#x2014; Authenticated.</li>
+        <li>By Address &#x2014; Get a Remembered device.</li>
+        <li>By Address &#x2014; Get a Authenticated device.</li>
+        <li>By Address &#x2014; Get a Non-existent device.</li>
+        <li>By Address &#x2014; Get an Unknown but in-range Device.</li>
+        <li>By Discovery &#x2014; DiscoOnly.</li>
+        <li>By Discovery &#x2014; Unknown.</li>
+        <li>By Discovery &#x2014; All devices.</li>
+        <li>By &#x2018;Live&#x2019; Discovery &#x2014; All devices.</li>
+    </ol>
+    <p>
+        Test Notes</p>
+    <ol>
+        <li>May want to check Remembered list from Discovery at each step so see when that stack
+            adds remembers devices.</li>
+        <li>Check timings of &#x201C;by Address&#x201D; cases.</li>
+    </ol>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>
+                    Test
+                </th>
+                <th>
+                    Result
+                </th>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+                bool Authenticated { get; }
+            </td>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                ClassOfDevice ClassOfDevice { get; }
+            </td>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                bool Connected { get; }
+            </td>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                BluetoothAddress DeviceAddress { get; }
+            </td>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                string DeviceName { get; &hellip;
+            </td>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set;
+                }
+            </td>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                byte[][] GetServiceRecordsUnparsed(Guid service);
+            </td>
+            <td>
+                &#x2718; NotSupported
+            </td>
+        </tr>
+        <tr>
+            <td>
+                ServiceRecord[] GetServiceRecords(Guid service);
+            </td>
+            <td>
+                &#x2714; See below.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Guid[] InstalledServices { get; }
+            </td>
+            <td>
+                &#x2718; NotImplemented
+            </td>
+        </tr>
+        <tr>
+            <td>
+                DateTime LastSeen { get; }
+            </td>
+            <td>
+                ??????
+            </td>
+        </tr>
+        <tr>
+            <td>
+                DateTime LastUsed { get; }
+            </td>
+            <td>
+                &#x2718; Returns DateTime.MinValue.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                void Refresh();
+            </td>
+            <td>
+                &#x2714; Resets DeviceName alone.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                bool Remembered { get; }
+            </td>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                int Rssi { get; }
+            </td>
+            <td>
+                &#x2714; Needs a connection to the remote device to work.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                void SetServiceState(Guid service, bool state,<br />
+                bool throwOnError);
+            </td>
+            <td rowspan="2">
+                &#x2714; Tested working for SerialPort and PAN for both enabling and disabling &#x2014;
+                can disable a connection created by the BlueSoleil UI (and presumably a connection
+                opened by BluetoothClient too, beware!! TODO fix).<br />
+                Test for HID, and others?
+            </td>
+        </tr>
+        <tr>
+            <td>
+                void SetServiceState(Guid service, bool state);
+            </td>
+        </tr>
+        <tr>
+            <td>
+                void ShowDialog();
+            </td>
+            <td>
+                &#x2718; NotImplemented
+            </td>
+        </tr>
+        <tr>
+            <td>
+                void Update();
+            </td>
+            <td>
+                &#x2718; NotImplemented
+            </td>
+        </tr>
+    </table>
+    <h4>
+        Notes</h4>
+    <ol>
+        <li><code>* MSFT+Win32 to Widcomm(000aaa6865bb):1101<br />
+            System.ComponentModel.Win32Exception: The specified service does not exist as an
+            installed service<br />
+            at InTheHand.Net.Sockets.WindowsBluetoothDeviceInfo.SetServiceState(Guid service,
+            Boolean state, Boolean throwOnError)<br />
+            * </code></li>
+    </ol>
+    <!-- ==== -->
+    <h2 id="deviceInfo_GSR">
+        BluetoothDeviceInfo.GetServiceRecords</h2>
+    <p>
+        To Do:</p>
+    <ol>
+        <li class="doneTestToDo">Query AllRecords (query class: L2CAP) with various remote records
+            including one RFCOMM server running with a non-SIG-format service class id.</li>
+        <li class="doneTestToDo">No matching records (e.g query class e.g. ReferencePrinting=0x1119)</li>
+        <li>Device not in range.</li>
+        <li class="doneTestToDo">(Query for the SIG-format Class of a running remote service).</li>
+        <li>(Query for the UUID of Protocol Descr List e.g. BNEP (though L2CAP is like this).</li>
+        <li class="doneTestToDo">Query for the non-SIG-format Class of a running remote service.</li>
+        <li>View a HID record.</li>
+        <li>View a PnP/DeviceInfo record.</li>
+    </ol>
+    <p>
+        Known flaws:</p>
+    <ul>
+        <li>Only services with standard Bluetooth Service Class Ids appear to be returned, those
+            with custom UUIDs are not returned.</li>
+        <li>There is no API to get general attributes.&nbsp; Instead there are a number of structs
+            to return information about specific record type: SPP, HID and PnP/DeviceInfo. We
+            get:
+            <ul>
+                <li>the Service Class Id, but only one value (some standard services have two);</li>
+                <li>we get the Service Name;</li>
+                <li>and the RFCOMM port number in most cases, see below.</li>
+            </ul>
+            We also get some HID and PnP/DeviceInfo attributes.</li>
+        <li>The SPP struct seems only to work work in certain cases, so we use a different API
+            to try and get the RFCOMM port number. But again in some cases neither APIs succeed
+            in fetching it. That's when querying Widcomm on WinXP at least...</li>
+    </ul>
+    <h3 id="deviceInfo_GSR_general">
+        General Records</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>
+                    Test
+                </th>
+                <th>
+                    Result
+                </th>
+                <th>
+                    Error code on MSFT+Win32
+                </th>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+                Query for a SIG-format Class of a running remote service
+            </td>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Query for no matching records<br />
+                (Use a UUID not present on the remote device, e.g. "ReferencePrinting 0x1119".<br />
+                Expect: See an empty result and <em>not</em> an exception).
+            </td>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Query for a custom (non-SIG-format) Class of a running remote service
+            </td>
+            <td>
+                &#x2718; Returns zero records.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Device not in range
+            </td>
+            <td>
+                &#x2714; <span style="color: Red; background-color: Yellow;">TimedOut SHOULD 10108</span>
+            </td>
+            <td>
+                10108 (WSASERVICE_NOT_FOUND)
+            </td>
+        </tr>
+    </table>
+    <h3 id="deviceInfo_GSR_general_all">
+        General -- All Records</h3>
+    <p>
+        Running SdpCreateTwoSppRecordsOneWithAvailAndBrowse e.g. on Widcomm, run SdpQuery/AllRecords
+        on SdpBrowser BlueSoleil.</p>
+    <table style="font-size: small;">
+        <tr>
+            <td valign="top">
+                <pre>
+ServiceName: 'Bluetooth Serial Port'
+ServiceClasses: 0x1101 SerialPort
+Channel Num: 1
+
+ServiceName: 'Network Access'
+ServiceClasses: 0x1117 GN
+Channel Num: &lt;not assigned&gt;
+
+ServiceName: 'Network Access'
+ServiceClasses: 0x1115 Panu
+Channel Num: &lt;not assigned&gt;
+
+ServiceName: 'Dial-up Networking'
+ServiceClasses: 0x1103 DialupNetworking
+Channel Num: 2
+
+ServiceName: 'File Transfer'
+ServiceClasses: 0x1106 ObexFileTransfer
+Channel Num: 4
+
+ServiceName: 'Fax'
+ServiceClasses: 0x1111 Fax
+Channel Num: 5
+
+ServiceName: 'PIM Synchronization'
+ServiceClasses: 0x1104 IrMCSync
+Channel Num: 6
+
+ServiceName: 'Sync Command Service'
+ServiceClasses: 0x1107 IrMCSyncCommand
+Channel Num: 6
+
+ServiceName: 'Headset'
+ServiceClasses: 0x1108 Headset, <span myforceline="true" style="white-space: pre;
+    color: Red; background-color: Yellow;">0x1203 GenericAudio</span>
+Channel Num: 7
+
+ServiceName: 'Headset'
+ServiceClasses: 0x111E Handsfree, <span myforceline="true" style="white-space: pre;
+    color: Red; background-color: Yellow;">0x1203 GenericAudio</span>
+Channel Num: 8
+
+ServiceName: 'Audio Gateway'
+ServiceClasses: 0x1112 HeadsetAudioGateway, <span myforceline="true" style="white-space: pre;
+    color: Red; background-color: Yellow;">0x1203 GenericAudio</span>
+Channel Num: 9
+
+ServiceName: &lt;none&gt;
+ServiceClasses: 0x1114 WapClient
+<span style="color: Red; background-color: Yellow;">Channel Num: 22</span>
+
+<span style="color: Red; background-color: Yellow;">ServiceName: &lt;none&gt;</span>
+<span style="color: Red; background-color: Yellow;">ServiceClasses: e665c159-4721-4e73-8e97-9a8be42423d9</span>
+<span style="color: Red; background-color: Yellow;">Channel Num: 10</span></pre>
+            </td>
+            <td valign="top">
+                <pre>
+ServiceName: 'Bluetooth Serial Port'
+ServiceClasses: 0x1101 SerialPort
+Channel Num: 1
+
+ServiceName: 'Network Access'
+ServiceClasses: 0x1117 GN
+Channel Num: &lt;not assigned&gt;
+
+ServiceName: 'Network Access'
+ServiceClasses: 0x1115 Panu
+Channel Num: &lt;not assigned&gt;
+
+ServiceName: 'Dial-up Networking'
+ServiceClasses: 0x1103 DialupNetworking
+Channel Num: 2
+
+ServiceName: 'File Transfer'
+ServiceClasses: 0x1106 ObexFileTransfer
+Channel Num: 4
+
+ServiceName: 'Fax'
+ServiceClasses: 0x1111 Fax
+Channel Num: 5
+
+ServiceName: 'PIM Synchronization'
+ServiceClasses: 0x1104 IrMCSync
+Channel Num: 6
+
+ServiceName: 'Sync Command Service'
+ServiceClasses: 0x1107 IrMCSyncCommand
+Channel Num: 6
+
+ServiceName: 'Headset'
+ServiceClasses: 0x1108 Headset
+Channel Num: 7
+
+ServiceName: 'Headset'
+ServiceClasses: 0x111E Handsfree
+Channel Num: 8
+
+ServiceName: 'Audio Gateway'
+ServiceClasses: 0x1112 HeadsetAudioGateway
+Channel Num: 9
+
+ServiceName: &lt;none&gt;
+ServiceClasses: 0x1114 WapClient
+Channel Num: &lt;not assigned&gt;
+</pre>
+            </td>
+        </tr>
+    </table>
+    <p>
+        Note: That's the result against Widcomm on WinXP. Against MSFT on WinXP the port
+        for the WapClient service is correctly got.
+    </p>
+    <!-- ==== -->
+    <h1 id="client">
+        BluetoothClient</h1>
+    <p>
+        To Do:</p>
+    <ol>
+        <li>xxxx</li>
+        <li class="doneTestToDo">xxxx</li>
+    </ol>
+    <table border="1">
+        <tr>
+            <th>
+            </th>
+            <th>
+                32feet.NET
+            </th>
+        </tr>
+        <tr>
+            <th>
+                BluetoothDeviceInfo[] DiscoverDevices(&hellip;)
+            </th>
+            <td class="testPassed">
+                &#x2714; All/Rmbd/DiscoOnly/etc
+            </td>
+        </tr>
+        <tr>
+            <th>
+                BluetoothDeviceInfo[] Begin-/EndDiscoverDevices(&hellip;)
+            </th>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                TimeSpan InquiryLength { get;
+            </th>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                int InquiryAccessCode { get; set; }
+            </th>
+            <td>
+                <span style="background-color: Yellow;">&#x2718;</span> NotImplemented
+            </td>
+        </tr>
+        <tr>
+            <th>
+            </th>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                void Connect(&hellip;);
+            </th>
+            <td>
+                &#x2714; See details below.
+            </td>
+        </tr>
+        <tr>
+            <th>
+                void Begin-/EndConnect(&hellip;);
+            </th>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                bool Connected { get; }
+            </th>
+            <td>
+                &#x2714; See NetworkStream below.
+            </td>
+        </tr>
+        <tr>
+            <th>
+                NetworkStream GetStream();
+            </th>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Socket Client { get; set; }
+            </th>
+            <td>
+                &#x2718; NotSupported
+            </td>
+        </tr>
+        <tr>
+            <th>
+                int Available { get; }
+            </th>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                LingerOption LingerState { get; set; }
+            </th>
+            <td>
+                <span style="background-color: Yellow;">&#x2718;</span> NotImplemented
+            </td>
+        </tr>
+        <tr>
+            <th>
+                void Dispose();
+            </th>
+            <td>
+                &#x2714; (ToDo disallow/abort device discovery ).
+            </td>
+        </tr>
+        <tr>
+            <th>
+            </th>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                bool Authenticate { get; &hellip;
+            </th>
+            <td>
+                &#x2714; returns false
+            </td>
+        </tr>
+        <tr>
+            <th>
+                set; }
+            </th>
+            <td>
+                &#x2718; NotSupported
+            </td>
+        </tr>
+        <tr>
+            <th>
+                bool Encrypt { get; &hellip;
+            </th>
+            <td>
+                &#x2714; returns false
+            </td>
+        </tr>
+        <tr>
+            <th>
+                set; }
+            </th>
+            <td>
+                &#x2718; NotSupported
+            </td>
+        </tr>
+        <tr>
+            <th>
+                void SetPin(string pin);
+            </th>
+            <td>
+                <span style="background-color: Yellow;">&#x2718;</span> NotImplemented
+            </td>
+        </tr>
+        <tr>
+            <th>
+                void SetPin(BluetoothAddress device, string pin);
+            </th>
+            <td>
+                <span style="background-color: Yellow;">&#x2718;</span> NotImplemented
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Guid LinkKey { get; }
+            </th>
+            <td>
+                <span style="background-color: Yellow;">&#x2718;</span> NotImplemented
+            </td>
+        </tr>
+        <tr>
+            <th>
+                LinkPolicy LinkPolicy { get; }
+            </th>
+            <td>
+                <span style="background-color: Yellow;">&#x2718;</span> NotImplemented
+            </td>
+        </tr>
+        <tr>
+            <th>
+            </th>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                string GetRemoteMachineName(BluetoothAddress)
+            </th>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                string RemoteMachineName { get; }
+            </th>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                BluetoothEndPoint RemoteEndPoint { get; }
+            </th>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+    </table>
+    <!-- ==== -->
+    <h2 id="client_discovery">
+        Discovery</h2>
+    <p>
+        See <a href="#deviceInfo">BluetoothDeviceInfo</a> for discovery testing.</p>
+    <p>
+        To Do:</p>
+    <ol>
+        <li>Run discovery in BlueSoleil UI -- any errors in library?</li>
+    </ol>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>
+                    Test
+                </th>
+                <th>
+                    Result
+                </th>
+                <th>
+                    Error code on MSFT+Win32
+                </th>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
+    <!-- ==== -->
+    <h2 id="client_connect">
+        Connect</h2>
+    <p>
+        BlueSoleil isn't terribly good at allowing direct RFCOMM connections. Firstly it
+        doesn't have its own IO API, but instead sets-up a COM port for the application
+        to use. Secondly for Bluetooth Profiles that it supports, it does not connect a
+        COM Port, but instead the built-in support for that profile is activated. So for
+        instance on connecting to OPP (0x1105) the remote server gets a connection and an
+        OBEX CONNECT packet, only on CONNECT response (or timeout) does the connect call
+        return, and no COM port is created.
+    </p>
+    <p>
+        Finally for the services that do create a COM port we have to handle two cases.
+        Firstly the case where the connect call <em>does</em> update the &#x201c;com_index&#x201d;
+        field in the struct with the COM port number. And secondly where it doesn't and
+        then we try the Btsdk_GetClientPort call. Custom UUIDs and miscellaneous services
+        use the former, but SerialPort (0x1101) needs the latter. 
+    </p>
+    <p>
+        There are thus three paths in our connect code: &#x201c;com_index&#x201d; field
+        is set, Btsdk_GetClientPort works, and neither so fail the connection.
+    </p>
+    <p>
+        To Do:</p>
+    <ol>
+        <li>Connect to a specific port.</li>
+        <li class="doneTestToDo">Service with non-SIG Class Id!</li>
+        <li>Radio disconnected</li>
+        <li>Radio/stack turned-off</li>
+        <li class="doneTestToDo">(Service doesn't have RFCOMM pdl)</li>
+        <li>(No listener on port/channel specified in the Service Record)</li>
+        <li>((Channel in record is invalid e.g. 100))</li>
+        <li class="doneTestToDo">Connect to an OBEX service (OPP, and FTP), normal COM port
+            connection created?</li>
+        <li>Connect to a other well known services (maybe HSP, PBAP, etc), normal COM port connection
+            created?</li>
+        <li>Connect to server that has "require authentication" (and "require encryption"?).</li>
+    </ol>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>
+                    Test
+                </th>
+                <th>
+                    Result
+                </th>
+                <th>
+                    Error code on MSFT+Win32
+                </th>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+                Service with SIG Class Id e.g. Wap
+            </td>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Service with custom (non-SIG) Class Id<br />
+                (Use BtLsnr->ListSomeCustomUuids)
+            </td>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Connect to a particular port number
+            </td>
+            <td>
+                &#x2718; Need to re-test/investigate.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                No Service with given Class Id
+            </td>
+            <td>
+                &#x2714; [NO_SERVICE] <span style="background-color: Yellow;">todo! ......</span>
+            </td>
+            <td>
+                ?10049
+            </td>
+        </tr>
+        <tr>
+            <td>
+                No Device with given Address
+            </td>
+            <td>
+                &#x2714; SoEx TimedOut [PAGE_TIMEOUT]
+            </td>
+            <td>
+                10060 TimedOut
+            </td>
+        </tr>
+        <tr>
+            <td>
+                (Service doesn't have RFCOMM pdl)
+            </td>
+            <td>
+                &#x2714; [OPERATION_FAILURE] !
+            </td>
+            <td>
+                10064 HostDown
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Already a connection to the RFCOMM port/channel
+            </td>
+            <td>
+                &#x2714; [NO_SERVICE] <span style="background-color: Yellow;">Re-test TODO</span>
+            </td>
+            <td>
+                10048 AddressAlreadyInUse
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Connect to 0x1101 SerialPort
+            </td>
+            <td>
+                &#x2714; This was broken prior to revision 85277.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Connect to 0x1105 OBEX Push
+            </td>
+            <td>
+                &#x2718; Not supported by BlueSoleil
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Connect to 0x1106 OBEX FTP
+            </td>
+            <td>
+                &#x2718; Not supported by BlueSoleil
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Connect to server that has "require authentication"
+            </td>
+            <td>
+                &#x2710; [OPERATION_FAILURE] TODO Re-test
+            </td>
+        </tr>
+    </table>
+    <h3 id="client_connect_1105_response">
+        Connect to 0x1105, with OBEX response received</h3>
+    <code>Connecting to: 008098244CA4:00001105-0000-1000-8000-00805f9b34fb:-1 ...<br />
+        Gonna Btsdk_ConnectAppExtSPPService with: BtSdkAppExtSPPAttrStru sdp_record_handle:
+        0x0 service_class_128: 00001105-0000-1000-8000-00805f9b34fb svc_name: "\x00..."
+        rf_svr_chnl: 0 com_index: 0.<br />
+        HandleConnectionEventInd event: CONN_CFM, conn_hdl: 0x1C50FC8, arg.hDev: 0x1C60790<br />
+        BlueSoleil LiveConns count: -2.<br />
+        ret: OK, hConn: 0x1C50FC8, with: BtSdkAppExtSPPAttrStru sdp_record_handle: 0x0 service_class_128:
+        00001105-0000-1000-8000-00805f9b34fb svc_name: "\x00..." rf_svr_chnl: 0 com_index:
+        0.<br />
+        Fail: sppAttr.rf_svr_chnl: 0<br />
+        HandleConnectionEventInd event: DISC_CFM, conn_hdl: 0x1C50FC8, arg.hDev: 0x1C60790<br />
+        InTheHand.Net.Bluetooth.BlueSoleil.BlueSoleilException: Exception of type 'InTheHand.Net.Bluetooth.BlueSoleil.BlueSoleilException'
+        was thrown. Error: OBEX_INDEX (0x600)<br />
+        Fail: RemoveConnection<br />
+        BlueSoleil LiveConns count: 0.<br />
+    </code>
+    <h3 id="client_connect_1105_noResponse">
+        Connect to 0x1105, with no OBEX response received</h3>
+    <code>Gonna Btsdk_ConnectAppExtSPPService with: BtSdkAppExtSPPAttrStru sdp_record_handle:
+        0x0 service_class_128: 00001105-0000-1000-8000-00805f9b34fb svc_name: "\x00..."
+        rf_svr_chnl: 0 com_index: 0.<br />
+        ret: REQUEST_TIMEOUT, hConn: 0x0, with: BtSdkAppExtSPPAttrStru sdp_record_handle:
+        0x0 service_class_128: 00001105-0000-1000-8000-00805f9b34fb svc_name: "\x00..."
+        rf_svr_chnl: 0 com_index: 0.<br />
+        InTheHand.Net.Bluetooth.BlueSoleil.BlueSoleilException: Exception of type 'InTheHand.Net.Bluetooth.BlueSoleil.BlueSoleilException'
+        was thrown. Error: REQUEST_TIMEOUT (0x6C8)</code>
+    <h3 id="client_connect_1106_noResponse">
+        Connect to 0x1106, with no OBEX response received</h3>
+    <code>Gonna Btsdk_ConnectAppExtSPPService with: BtSdkAppExtSPPAttrStru sdp_record_handle:
+        0x0 service_class_128: 00001106-0000-1000-8000-00805f9b34fb svc_name: "\x00..."
+        rf_svr_chnl: 0 com_index: 0.<br />
+        ret: OPERATION_FAILURE, hConn: 0x0, with: BtSdkAppExtSPPAttrStru sdp_record_handle:
+        0x0 service_class_128: 00001106-0000-1000-8000-00805f9b34fb svc_name: "\x00..."
+        rf_svr_chnl: 0 com_index: 0.<br />
+        InTheHand.Net.Bluetooth.BlueSoleil.BlueSoleilException: Exception of type 'InTheHand.Net.Bluetooth.BlueSoleil.BlueSoleilException'
+        was thrown. Error: OPERATION_FAILURE (0x302)</code>
+    <!-- ==== -->
+    <h1 id="networkStream">
+        NetworkStream</h1>
+    <p>
+        To Do:</p>
+    <ol>
+        <li class="doneTestToDo">Read when buffer empty. On standard BlueSoleil (&amp; System.IO.SerialPort)
+            this fails...</li>
+        <li class="doneTestToDo">Write an amount bigger than the buffer size. On standard BlueSoleil
+            (&amp; System.IO.SerialPort data is lost in this case...</li>
+        <li class="doneTestToDo">Read after local close.</li>
+        <li class="doneTestToDo">Write after local close.</li>
+        <li class="doneTestToDo">Is connection closed automatically on app exit?</li>
+        <li>Is connection closed automatically on app crash GPF/etc?</li>
+        <li class="doneTestToDo">Is connection closed automatically on Radio Off?</li>
+        <li class="doneTestToDo">Is connection closed automatically on Radio Unplugged?</li>
+        <li>Read after remote close when there is still data in the buffer.</li>
+        <li class="doneTestToDo">Pending Read through remote close when the remote sends data
+            immediately before close.</li>
+        <li>Finalizable? Drop references to client and stream and check that the connection
+            closes.<br />
+            Do we need to change the Add/CloseAnyLiveConnections to not store a strong reference.</li>
+    </ol>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>
+                    Test
+                </th>
+                <th>
+                    Expected
+                </th>
+                <th>
+                    Result
+                </th>
+            </tr>
+        </thead>
+        <tr>
+            <th>
+                Read when buffer empty.
+            </th>
+            <td>
+                On standard BlueSoleil (&amp; System.IO.SerialPort) this fails...
+            </td>
+            <td class="testPassed">
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Write an amount bigger than the buffer size.
+            </th>
+            <td>
+                On standard BlueSoleil (&amp; System.IO.SerialPort) data is lost in this case...
+            </td>
+            <td class="testPassed">
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Read thru/after Remote Close
+            </th>
+            <td>
+                Return zero.
+            </td>
+            <td class="testPassed">
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Write thru(if poss)/after Remote Close
+            </th>
+            <td>
+                IOEx(SocketEx(WSAECONNABORTED)).
+            </td>
+            <td class="testPassed">
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Flush when not-open
+            </th>
+            <td>
+                NetworkStream does not throw ObjectDisposedException.
+            </td>
+            <td class="testPassed">
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Client.Connected after local close
+            </th>
+            <td>
+            </td>
+            <td class="testPassed">
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Client.Connected after network close
+            </th>
+            <td>
+                Should be false after the connection close and there's been a failing I/O operation.
+            </td>
+            <td class="testPassed">
+                &#x2714; We have Connected=false as *soon* as the connection closes rather than
+                only after an I/O operation.
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Connections close at app exit?
+            </th>
+            <td>
+                BlueSoleil doesn't automatically handle this.<br />
+                Oh, how I wish they and Widcomm used real Windows Handles, and not their own ids.
+                (Maybe it&#x2019;s by design however, so that you can keep using the connection
+                through its COM port after the creating application exits).
+            </td>
+            <td class="testPassed">
+                &#x2714; We use a CriticalFinalizerObject to close each open connection.
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Connections close at Radio Off?
+            </th>
+            <td>
+                BlueSoleil does NOT automatically handle this.<br />
+                Writes do fail, but Reads block waiting for data.
+            </td>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Connections close at Radio Unplugged?
+            </th>
+            <td>
+                BlueSoleil DOES automatically handle this.
+            </td>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Read thru Local Close
+            </th>
+            <td>
+                &#x201C;System.IO.IOException: Unable to read data from the transport connection:
+                A blocking operation was interrupted by a call to WSACancelBlockingCall. ---&gt;
+                System.Net.Sockets.SocketException: A blocking operation was interrupted by a call
+                to WSACancelBlockingCall&#x201D;
+            </td>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Read after Local Close
+            </th>
+            <td>
+                &#x201C;System.ObjectDisposedException: Cannot access a disposed object.<br />
+                Object name: 'System.Net.Sockets.NetworkStream'.&#x201D;
+            </td>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Write after Local Close
+            </th>
+            <td>
+                ObjectDisposedEx.
+            </td>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Read after remote close when there is still data in the buffer.
+            </th>
+            <td>
+            </td>
+            <td>
+                &#x2718; Doesn't return the data, only returns zero-length!
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Pending Read through remote close when the remote sends data immediately before
+                close.
+            </th>
+            <td>
+                Get the data then zero-return.
+            </td>
+            <td>
+                &#x2714;
+            </td>
+        </tr>
+        <tr>
+            <th>
+                xxxx
+            </th>
+            <td>
+                yyyy
+            </td>
+            <td>
+                &#x2714; / &#x2718; zzzz
+            </td>
+        </tr>
+    </table>
+    <!-- ==== -->
+    <h1 id="listener">
+        BluetoothListener</h1>
+    <p>
+        Not Supported. There seems to be no BlueSoleil API for server-side SPP/RFCOMM.</p>
+    <!-- ==== -->
+    <h1 id="security">
+        BluetoothSecurity</h1>
+    <p>
+        To Do:</p>
+    <ol>
+        <li class="doneTestToDo">RemoveDevice</li>
+        <li class="doneTestToDo">RemoveDevice full remove?</li>
+        <li>Test/implement PairRequest</li>
+    </ol>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>
+                    Test
+                </th>
+                <th>
+                    Expected
+                </th>
+                <th>
+                    Result
+                </th>
+            </tr>
+        </thead>
+        <tr>
+            <th>
+                PairRequest(BluetoothAddress device, string pin)
+            </th>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                RemoveDevice(BluetoothAddress device)
+            </th>
+            <td>
+            </td>
+            <td>
+                &#x2714; Does full remove: name and auth'd state etc are gone.
+            </td>
+        </tr>
+        <tr>
+            <th>
+                &nbsp;
+            </th>
+        </tr>
+        <tr>
+            <th>
+                SetPin(BluetoothAddress device, string pin)
+            </th>
+            <td>
+            </td>
+            <td>
+                &#x2718; NotImplemented
+            </td>
+        </tr>
+        <tr>
+            <th>
+                RevokePin(BluetoothAddress device)
+            </th>
+            <td>
+            </td>
+            <td>
+                &#x2718; NotImplemented
+            </td>
+        </tr>
+        <tr>
+            <th>
+                &nbsp;
+            </th>
+        </tr>
+        <tr>
+            <th>
+                BluetoothAddress GetPinRequest()
+            </th>
+            <td>
+            </td>
+            <td>
+                &#x2718; NotImplemented. Is it supportable??
+            </td>
+        </tr>
+        <tr>
+            <th>
+                RefusePinRequest(BluetoothAddress device)
+            </th>
+            <td>
+            </td>
+            <td>
+                &#x2718; NotImplemented. Is it supportable??
+            </td>
+        </tr>
+        <tr>
+            <th>
+                &nbsp;
+            </th>
+        </tr>
+        <tr>
+            <th>
+                SetLinkKey(BluetoothAddress a, Guid linkkey)
+            </th>
+            <td>
+            </td>
+            <td>
+                &#x2718; NotImplemented. Is it supportable??
+            </td>
+        </tr>
+    </table>
+    <!-- ==== -->
+    <h1 id="ObexWebRequest">
+        ObexWebRequest</h1>
+    <p>
+        Not supported currently. Our default implementation doesn&#x2019;t work because
+        it uses a RFCOMM connection, and as noted above BlueSoleil doesn&#x2019;t support
+        such connections to don&#x2019;t work to known Profiles. There might be a BlueSoleil
+        OBEX API we could use instead. Volunteers welcomed.</p>
+    <!-- ==== -->
+    <h1 id="ObexListener">
+        ObexListener</h1>
+    <p>
+        Not supported currently. Our default implementation doesn&#x2019;t work because
+        as noted above there&#x2019;s no BlueSoleil API for server-side SPP/RFCOMM. There
+        might be a BlueSoleil OBEX-server API we could use instead. Volunteers welcomed.</p>
+    <!-- ==== -->
+    <p>
+        - end of document -</p>
+</body>
+</html>
