@@ -1,5 +1,6 @@
 <p align="center">
-  English | <a href="./README_rus.md">pусский </a> | <a href="./README_ukr.md"> украинец</a>
+  English | <a href="./README_chs.md">中文</a> | <a href="./README_rus.md">Русский</a> | <a href="./README_jpn.md">日本語</a> | <a href="./README_ukr.md">Українська</a> | <a href="./README_kor.md">한국어</a><br>
+    <sub>Attention: readme files are maintained by translators and may become outdated from time to time. For newest info rely on English version.</sub>
 </p>
 <h1 align="center">
   Galaxy Buds Client
@@ -8,7 +9,7 @@
 <h4 align="center">An unofficial manager for the Buds, Buds+ and Buds Live</h4>
 <p align="center">
   <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
-    <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
+    <img alt="GitHub downloads count" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
   </a>
   <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
   	<img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
@@ -29,6 +30,7 @@
   <a href="#credits">Credits</a> •
   <a href="#license">License</a> 
 </p>
+
 
 <p align="center">
     <a href="#"><img alt="Screenshot" src="screenshots/screencap.gif"></a>
@@ -98,12 +100,14 @@ Version 4.0 is planned to be released by the end of 2020 and introduces cross-pl
 
 
 - [x] Move to .NET Core 3.1
+- [x] Port user interface to AvaloniaUI.NET
 - [x] Linux: Implement native Bluetooth interface
-- [ ] Windows: Implement native Bluetooth interface
+- [x] Cross-platform Bluetooth device selection dialog
+- [X] Windows: Implement native Bluetooth interface
 - [ ] Windows/Linux: Native tray icon support (libappindicator)
-- [ ] Cross-platform Bluetooth device selection dialog
-- [ ] Port user interface to AvaloniaUI.NET
 - [ ] Linux: Solve NVIDIA incompatibility with libSkia
+
+You can check the [kanban board for milestone v4.0](https://github.com/ThePBone/GalaxyBudsClient/projects/3) for more details.
 
 Contributions regarding this roadmap are very appreciated. The new implementation is available on the [`avalonia-rewrite`](https://github.com/ThePBone/GalaxyBudsClient/tree/avalonia-rewrite) branch.
 
@@ -113,7 +117,6 @@ Contributions regarding this roadmap are very appreciated. The new implementatio
 #### Contributors
 
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue templates, wiki and translations
-
 * [@AndriesK](https://github.com/AndriesK) - Buds Live bug fix
 * [@githubcatw](https://github.com/githubcatw) - Connection dialog base
 
@@ -134,6 +137,10 @@ Contributions regarding this roadmap are very appreciated. The new implementatio
 This project is licensed under [GPLv3](LICENSE). It is not affiliated with Samsung nor supervised by them in any way.
 
 ```
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
+THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
