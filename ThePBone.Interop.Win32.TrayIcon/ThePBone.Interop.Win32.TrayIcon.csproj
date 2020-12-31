@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net45'">
-    <PackageReference Include="System.Resources.Extensions" Version="4.7.0" PrivateAssets="All" />
+    <PackageReference Include="System.Resources.Extensions" Version="5.0.0" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
