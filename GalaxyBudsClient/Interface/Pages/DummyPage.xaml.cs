@@ -11,15 +11,5 @@ namespace GalaxyBudsClient.Interface.Pages
 		{   
 			AvaloniaXamlLoader.Load(this);
 		}
-
-		public override void OnPageShown()
-		{
-			Log.Debug(this.GetType().Name + " shown");
-		}
-
-		public override void OnPageHidden()
-		{
-			Log.Debug(this.GetType().Name + " hidden");
-		}
 	}
 }
