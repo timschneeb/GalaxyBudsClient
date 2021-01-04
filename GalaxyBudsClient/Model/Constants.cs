@@ -13,6 +13,7 @@ namespace GalaxyBudsClient.Model
             public static readonly Guid Buds = new Guid("{00001102-0000-1000-8000-00805f9b34fd}");
             public static readonly Guid BudsPlus = new Guid("{00001101-0000-1000-8000-00805F9B34FB}");
             public static readonly Guid BudsLive = new Guid("{00001101-0000-1000-8000-00805F9B34FB}");
+            public static readonly Guid BudsPro = new Guid("{00001101-0000-1000-8000-00805F9B34FB}");
         }
         
         public enum Locales
@@ -86,7 +87,9 @@ namespace GalaxyBudsClient.Model
             [Description("Galaxy Buds+ (2020)")]
             BudsPlus = 2,
             [Description("Galaxy Buds Live (2020)")]
-            BudsLive = 3
+            BudsLive = 3,
+            [Description("Galaxy Buds Pro (2021)")]
+            BudsPro = 3
         }
 
         public enum Color

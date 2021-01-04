@@ -57,7 +57,7 @@ namespace ThePBone.MprisClient
                     {
                         _player = _connection.CreateProxy<IPlayer>(name, "/org/mpris/MediaPlayer2");
                     }
-                    catch (DBusException ex)
+                    catch (DBusException)
                     {
                         Log.Error($"MprisClient: {name} is not ready");
                     }

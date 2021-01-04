@@ -8,8 +8,8 @@ namespace GalaxyBudsClient.Scripting.Experiment
 {
     public class CoredumpItem
     {
-        public byte[] Content { set; get; }
-        public string Side { set; get; }
+        public byte[] Content { set; get; } = new byte[0];
+        public string Side { set; get; } = string.Empty;
         
         public Models Device => BluetoothImpl.Instance.ActiveModel;
         public int Revision => DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision ?? 0;

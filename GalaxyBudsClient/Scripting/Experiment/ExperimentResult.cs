@@ -1,3 +1,4 @@
+using System;
 using System.Globalization;
 using System.Reflection;
 using GalaxyBudsClient.Message;
@@ -9,8 +10,8 @@ namespace GalaxyBudsClient.Scripting.Experiment
     public class ExperimentResult
     {
         public int ResultCode { set; get; }
-        public string ResultCodeString { set; get; }
-        public string Result { set; get; }
+        public string ResultCodeString { set; get; } = string.Empty;
+        public string Result { set; get; } = string.Empty;
         public long ExperimentId { set; get; }
         public Environment? Environment { set; get; }
         

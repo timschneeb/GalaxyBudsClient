@@ -11,7 +11,7 @@ namespace GalaxyBudsClient.Message.Decoder
         
         public int PartialDataOffset { set; get; }
         public short PartialDataSize { set; get; }
-        public byte[] RawData { set; get; }
+        public byte[] RawData { set; get; } = new byte[0];
 
         public override void ParseMessage(SPPMessage msg)
         {

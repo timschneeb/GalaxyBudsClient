@@ -97,7 +97,7 @@ namespace GalaxyBudsClient.Interface.Developer
                     _vm.MsgTableDataView.Refresh();
                 });
             }
-            catch(InvalidDataException ex){}
+            catch(InvalidDataException){}
         }
 
         private void OnClosing(object? sender, CancelEventArgs e)

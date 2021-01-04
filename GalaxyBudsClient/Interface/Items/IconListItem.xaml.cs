@@ -12,8 +12,8 @@ namespace GalaxyBudsClient.Interface.Items
         public static readonly StyledProperty<String> TextProperty =
             AvaloniaProperty.Register<IconListItem, String>(nameof(Text));
         
-        public static readonly StyledProperty<IImage> SourceProperty =
-            AvaloniaProperty.Register<IconListItem, IImage>(nameof(Source));
+        public static readonly StyledProperty<IImage?> SourceProperty =
+            AvaloniaProperty.Register<IconListItem, IImage?>(nameof(Source));
         
         public IconListItem()
         {

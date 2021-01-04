@@ -90,10 +90,9 @@ namespace GalaxyBudsClient.Interface.Pages
             MainWindow.Instance.ShowDevTools();
         }
 
-        private async void DarkMode_OnToggled(object? sender, bool e)
+        private void DarkMode_OnToggled(object? sender, bool e)
         {
             SettingsProvider.Instance.DarkMode = e ? DarkModes.Dark : DarkModes.Light;
-
 
             if (Application.Current is App app)
             {
