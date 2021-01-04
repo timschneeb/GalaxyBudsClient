@@ -1,6 +1,8 @@
 using System;
+using System.Data.Common;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Serilog;
 using Tmds.DBus;
 
 namespace ThePBone.MprisClient
@@ -16,8 +18,9 @@ namespace ThePBone.MprisClient
                 {
                     UpdateTarget();
                 }
-                catch(DBusException)
-                {
+                catch(DBusException ex)
+                {                        
+                    Log.Error($"MprisClient: Failed to update player target: {ex}");
                     return null;
                 }
                 return _player;
@@ -56,7 +59,7 @@ namespace ThePBone.MprisClient
                     }
                     catch (DBusException ex)
                     {
-                        Trace.WriteLine($"{name} is not ready");
+                        Log.Error($"MprisClient: {name} is not ready");
                     }
                 }
             }
