@@ -18,7 +18,7 @@ jobs:
         dotnet-version: 3.1.108
        
     - name: Restore dependencies
-      run: dotnet restore -r win-x64
+      run: dotnet restore -r win-x64 --configfile GalaxyBudsClient/nuget.config
     - name: Build x64
       run: dotnet publish -r win-x64 -o bin_win64 -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
@@ -39,7 +39,7 @@ jobs:
         dotnet-version: 3.1.108
        
     - name: Restore dependencies
-      run: dotnet restore -r win-x86
+      run: dotnet restore -r win-x86 --configfile GalaxyBudsClient/nuget.config
     - name: Build x86
       run: dotnet publish -r win-x86 -o bin_win64 -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
@@ -60,7 +60,7 @@ jobs:
         dotnet-version: 3.1.108
        
     - name: Restore dependencies
-      run: dotnet restore -r win-arm
+      run: dotnet restore -r win-arm --configfile GalaxyBudsClient/nuget.config
     - name: Build arm
       run: dotnet publish -r win-arm -o bin_win_arm -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
@@ -81,7 +81,7 @@ jobs:
         dotnet-version: 3.1.108
        
     - name: Restore dependencies
-      run: dotnet restore -r win-arm64
+      run: dotnet restore -r win-arm64 --configfile GalaxyBudsClient/nuget.config
     - name: Build arm
       run: dotnet publish -r win-arm64 -o bin_win_arm64 -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
