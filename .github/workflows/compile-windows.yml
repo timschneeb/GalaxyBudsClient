@@ -54,6 +54,7 @@ jobs:
     needs: [build-x64, build-x86]
         
     steps:
+    - uses: actions/checkout@v2
     - name: Prepare version information (1/3)
       uses: oprypin/find-latest-tag@v1
       with:
@@ -76,9 +77,6 @@ jobs:
         name: GalaxyBudsClient_win64_portable
         path: Galaxy Buds Client.exe
         
-    - name: dir
-      run: dir
-
     - name: Create nsis installer (x64)
       uses: joncloud/makensis-action@v3.3
       with:
