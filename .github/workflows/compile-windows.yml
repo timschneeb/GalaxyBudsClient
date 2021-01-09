@@ -77,11 +77,13 @@ jobs:
         name: GalaxyBudsClient_win64_portable
         path: Galaxy Buds Client.exe
         
+    - run: dir
+    
     - name: Create nsis installer (x64)
       uses: joncloud/makensis-action@v3.3
       with:
         script-file: "install.nsi"
-        arguments: "-DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"64bit\""
+        arguments: "-DBASE_DIR=\"D:/a/GalaxyBudsClient/GalaxyBudsClient\" -DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"64bit\""
 
     - name: Upload artifact (x64)
       uses: actions/upload-artifact@v2.2.2
@@ -100,7 +102,7 @@ jobs:
       uses: joncloud/makensis-action@v3.3
       with:
         script-file: "install.nsi"
-        arguments: "-DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"32bit\""
+        arguments: "-DBASE_DIR=\"D:/a/GalaxyBudsClient/GalaxyBudsClient\" -DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"32bit\""
 
     - name: Upload artifact (x86)
       uses: actions/upload-artifact@v2.2.2
