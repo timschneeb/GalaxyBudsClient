@@ -1,0 +1,92 @@
+name: Compile Linux binaries
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-x64:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.108
+       
+    - name: Restore dependencies
+      run: dotnet restore -r linux-x64 --configfile GalaxyBudsClient/nuget.config
+    - name: Build x64
+      run: dotnet publish -r linux-x64 -o bin_linux64 -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: GalaxyBudsClient_linux64_portable
+        path: bin_linux64/GalaxyBudsClient
+    
+  build-x64-musl:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.108
+       
+    - name: Restore dependencies
+      run: dotnet restore -r linux-musl-x64 --configfile GalaxyBudsClient/nuget.config
+    - name: Build x64 musl
+      run: dotnet publish -r linux-musl-x64  -o bin_linux64_musl -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: GalaxyBudsClient_linux64-musl_portable
+        path: bin_linux64_musl/GalaxyBudsClient
+        
+  build-arm:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.108
+       
+    - name: Restore dependencies
+      run: dotnet restore -r linux-arm --configfile GalaxyBudsClient/nuget.config
+    - name: Build arm
+      run: dotnet publish -r linux-arm -o bin_linux_arm -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: GalaxyBudsClient_linux-arm_portable
+        path: bin_linux_arm/GalaxyBudsClient
+        
+  build-arm64:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.108
+       
+    - name: Restore dependencies
+      run: dotnet restore -r linux-arm64 --configfile GalaxyBudsClient/nuget.config
+    - name: Build arm64
+      run: dotnet publish -r linux-arm64 -o bin_linux_arm64 -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: GalaxyBudsClient_linux-arm64_portable
+        path: bin_linux_arm64/GalaxyBudsClient
