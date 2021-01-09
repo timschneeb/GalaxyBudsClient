@@ -46,6 +46,8 @@ namespace GalaxyBudsClient
             UpdateManager.Init();
             ScriptManager.Init();
             ExperimentManager.Init();
+            
+            Log.Information($"Translator mode file location: {Loc.GetTranslatorModeFile()}");
         }
         
         public override void OnFrameworkInitializationCompleted()

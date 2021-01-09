@@ -28,7 +28,7 @@ namespace GalaxyBudsClient.Utils
             public static string GetTranslatorModeFile()
             {
                 return Path.Combine(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty,
+                    Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty,
                     "custom_language.xaml");
             }
 
