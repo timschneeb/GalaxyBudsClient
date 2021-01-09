@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Tmds.DBus;
 
-[assembly: InternalsVisibleTo(Tmds.DBus.Connection.DynamicAssemblyName)]
+[assembly: InternalsVisibleTo(Connection.DynamicAssemblyName)]
 namespace ThePBone.MprisClient
 {
     [DBusInterface("org.mpris.MediaPlayer2")]
@@ -91,8 +91,8 @@ namespace ThePBone.MprisClient
             }
         }
 
-        private string _Identity = default(string);
-        public string Identity
+        private string? _Identity = default(string);
+        public string? Identity
         {
             get
             {
@@ -105,8 +105,8 @@ namespace ThePBone.MprisClient
             }
         }
 
-        private string _DesktopEntry = default(string);
-        public string DesktopEntry
+        private string? _DesktopEntry = default(string);
+        public string? DesktopEntry
         {
             get
             {
@@ -119,8 +119,8 @@ namespace ThePBone.MprisClient
             }
         }
 
-        private string[] _SupportedUriSchemes = default(string[]);
-        public string[] SupportedUriSchemes
+        private string[]? _SupportedUriSchemes = default(string[]);
+        public string[]? SupportedUriSchemes
         {
             get
             {
@@ -133,8 +133,8 @@ namespace ThePBone.MprisClient
             }
         }
 
-        private string[] _SupportedMimeTypes = default(string[]);
-        public string[] SupportedMimeTypes
+        private string[]? _SupportedMimeTypes = default(string[]);
+        public string[]? SupportedMimeTypes
         {
             get
             {
@@ -174,7 +174,7 @@ namespace ThePBone.MprisClient
         Task SeekAsync(long Offset);
         Task SetPositionAsync(ObjectPath TrackId, long Position);
         Task OpenUriAsync(string Uri);
-        Task<IDisposable> WatchSeekedAsync(Action<long> handler, Action<Exception> onError = null);
+        Task<IDisposable> WatchSeekedAsync(Action<long> handler, Action<Exception>? onError = null);
         Task<T> GetAsync<T>(string prop);
         Task<PlayerProperties> GetAllAsync();
         Task SetAsync(string prop, object val);
@@ -184,8 +184,8 @@ namespace ThePBone.MprisClient
     [Dictionary]
     public class PlayerProperties
     {
-        private string _PlaybackStatus = default(string);
-        public string PlaybackStatus
+        private string? _PlaybackStatus = default(string);
+        public string? PlaybackStatus
         {
             get
             {
@@ -198,8 +198,8 @@ namespace ThePBone.MprisClient
             }
         }
 
-        private string _LoopStatus = default(string);
-        public string LoopStatus
+        private string? _LoopStatus = default(string);
+        public string? LoopStatus
         {
             get
             {
@@ -226,8 +226,8 @@ namespace ThePBone.MprisClient
             }
         }
 
-        private IDictionary<string, object> _Metadata = default(IDictionary<string, object>);
-        public IDictionary<string, object> Metadata
+        private IDictionary<string, object>? _Metadata = default(IDictionary<string, object>);
+        public IDictionary<string, object>? Metadata
         {
             get
             {

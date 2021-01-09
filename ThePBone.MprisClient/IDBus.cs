@@ -29,9 +29,9 @@ namespace ThePBone.MprisClient
         Task ReloadConfigAsync();
         Task<string> GetIdAsync();
         Task<IDictionary<string, object>> GetConnectionCredentialsAsync(string arg0);
-        Task<IDisposable> WatchNameOwnerChangedAsync(Action<(string, string, string)> handler, Action<Exception> onError = null);
-        Task<IDisposable> WatchNameLostAsync(Action<string> handler, Action<Exception> onError = null);
-        Task<IDisposable> WatchNameAcquiredAsync(Action<string> handler, Action<Exception> onError = null);
+        Task<IDisposable> WatchNameOwnerChangedAsync(Action<(string, string, string)> handler, Action<Exception>? onError = null);
+        Task<IDisposable> WatchNameLostAsync(Action<string> handler, Action<Exception>? onError = null);
+        Task<IDisposable> WatchNameAcquiredAsync(Action<string> handler, Action<Exception>? onError = null);
         Task<T> GetAsync<T>(string prop);
         Task<DBusProperties> GetAllAsync();
         Task SetAsync(string prop, object val);
@@ -41,8 +41,8 @@ namespace ThePBone.MprisClient
     [Dictionary]
     class DBusProperties
     {
-        private string[] _Features = default(string[]);
-        public string[] Features
+        private string[]? _Features = default(string[]);
+        public string[]? Features
         {
             get
             {
@@ -55,8 +55,8 @@ namespace ThePBone.MprisClient
             }
         }
 
-        private string[] _Interfaces = default(string[]);
-        public string[] Interfaces
+        private string[]? _Interfaces = default(string[]);
+        public string[]? Interfaces
         {
             get
             {
