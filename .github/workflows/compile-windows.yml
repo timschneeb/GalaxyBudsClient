@@ -77,7 +77,7 @@ jobs:
         name: GalaxyBudsClient_win64_portable
         path: Galaxy Buds Client.exe
         
-    - run: dir
+    - run: dir "Galaxy Buds Client.exe"
     
     - name: Create nsis installer (x64)
       uses: joncloud/makensis-action@v3.3
