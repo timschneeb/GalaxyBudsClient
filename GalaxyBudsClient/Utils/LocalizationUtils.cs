@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -28,7 +29,7 @@ namespace GalaxyBudsClient.Utils
             public static string GetTranslatorModeFile()
             {
                 return Path.Combine(
-                    Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty,
+                    Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) ?? string.Empty,
                     "custom_language.xaml");
             }
 
