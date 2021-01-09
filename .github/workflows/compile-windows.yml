@@ -61,7 +61,7 @@ jobs:
         releases-only: true
       id: last_release  
     - name: Prepare version information (2/2)
-      run: echo '::set-output name=version::${{steps.last_release.outputs.tag}}-${{GITHUB_SHA::8}}'
+      run: echo '::set-output name=version::${{steps.last_release.outputs.tag}}-${GITHUB_SHA::8}'
       id: version
       
     - name: Download artifact (x64)
