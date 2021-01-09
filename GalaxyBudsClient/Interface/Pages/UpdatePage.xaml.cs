@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
@@ -75,7 +76,15 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		private void OnInstall_Windows(object? sender, AppCastItem e)
         {
-            MainWindow.Instance.UpdateProgressPage.BeginUpdate(e);
+	        if (RuntimeInformation.ProcessArchitecture == Architecture.X64)
+	        {
+		        MainWindow.Instance.UpdateProgressPage.BeginUpdate(e);
+	        }
+	        else
+	        {
+		        Log.Warning("UpdatePage: Only x64 Windows builds have updater support. Opening download website for manual installation instead.");
+		        OpenWebsite("https://github.com/ThePBone/GalaxyBudsClient/releases");
+	        }
         }
 
 		private void OnInstall_Linux(object? sender, AppCastItem e)
