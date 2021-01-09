@@ -52,18 +52,24 @@ jobs:
   make-nsis-installer:
     runs-on: windows-latest
     needs: [build-x64, build-x86]
-
+        
     steps:
-    - name: Prepare version information (1/2)
+    - name: Prepare version information (1/3)
       uses: oprypin/find-latest-tag@v1
       with:
         repository: ThePBone/GalaxyBudsClient
         releases-only: true
       id: last_release  
-    - name: Prepare version information (2/2)
-      run: echo '::set-output name=version::${{steps.last_release.outputs.tag}}-${GITHUB_SHA::8}'
+    - name: Prepare version information (2/3)
+      uses: benjlevesque/short-sha@v1.2
+      id: short-sha
+      with:
+        length: 6
+    - name: Prepare version information (3/3)
+      run: echo '::set-output name=version::${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}'
       id: version
       
+    # Make x64 installer
     - name: Download artifact (x64)
       uses: actions/download-artifact@v2
       with:
@@ -73,6 +79,7 @@ jobs:
     - name: Create nsis installer (x64)
       uses: joncloud/makensis-action@v3.3
       with:
+        script-file: "../install.nsi"
         arguments: "-DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"64bit\""
 
     - name: Upload artifact (x64)
@@ -80,4 +87,23 @@ jobs:
       with:
         name: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
         path: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
+
+    # Make x86 installer
+    - name: Download artifact (x86)
+      uses: actions/download-artifact@v2
+      with:
+        name: GalaxyBudsClient_win32_portable
+        path: Galaxy Buds Client.exe
+
+    - name: Create nsis installer (x86)
+      uses: joncloud/makensis-action@v3.3
+      with:
+        script-file: "../install.nsi"
+        arguments: "-DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"32bit\""
+
+    - name: Upload artifact (x86)
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: GalaxyBudsClient_Setup_32bit_${{steps.version.outputs.version}}.exe
+        path: GalaxyBudsClient_Setup_32bit_${{steps.version.outputs.version}}.exe
 
