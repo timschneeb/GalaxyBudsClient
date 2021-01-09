@@ -12,6 +12,11 @@
 !define PRODUCT_ARCH "unknown"
 !endif
 
+!ifndef BASE_DIR
+!warning "BASE_DIR not defined!"
+!define BASE_DIR "."
+!endif
+
 !define PRODUCT_NAME "Galaxy Buds Manager (Unofficial)"
 !define PRODUCT_PUBLISHER "ThePBone"
 !define PRODUCT_WEB_SITE "https://github.com/ThePBone/GalaxyBudsClient"
@@ -60,7 +65,7 @@ Section "Hauptgruppe" SEC01
   
   SetOutPath "$INSTDIR"
   SetOverwrite on
-  File "Galaxy Buds Client.exe"
+  File "$BASE_DIR\Galaxy Buds Client.exe"
   CreateDirectory "$SMPROGRAMS\Galaxy Buds Manager"
   CreateShortCut "$SMPROGRAMS\Galaxy Buds Manager\Galaxy Buds Manager.lnk" "$INSTDIR\Galaxy Buds Client.exe"
   CreateShortCut "$DESKTOP\Galaxy Buds Manager.lnk" "$INSTDIR\Galaxy Buds Client.exe"
