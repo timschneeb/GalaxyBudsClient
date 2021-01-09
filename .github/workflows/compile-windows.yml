@@ -25,8 +25,8 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v2.2.2
       with:
-        name: GalaxyBudsClient_win64_binaries
-        path: bin_win64/
+        name: GalaxyBudsClient_win64_portable
+        path: bin_win64/GalaxyBudsClient.exe
     
   build-x86:
     runs-on: windows-latest
@@ -46,5 +46,47 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v2.2.2
       with:
-        name: GalaxyBudsClient_win32_binaries
-        path: bin_win32/
+        name: GalaxyBudsClient_win32_portable
+        path: bin_win32/GalaxyBudsClient.exe
+
+  build-arm:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.108
+       
+    - name: Restore dependencies
+      run: dotnet restore -r win-arm
+    - name: Build arm
+      run: dotnet publish -r win-arm -o bin_win_arm -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: GalaxyBudsClient_arm_portable
+        path: bin_win_arm/GalaxyBudsClient.exe
+
+  build-arm64:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.108
+       
+    - name: Restore dependencies
+      run: dotnet restore -r win-arm64
+    - name: Build arm
+      run: dotnet publish -r win-arm64 -o bin_win_arm64 -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: GalaxyBudsClient_arm64_portable
+        path: bin_win_arm64/GalaxyBudsClient.exe
