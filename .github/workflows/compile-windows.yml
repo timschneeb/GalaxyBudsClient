@@ -75,9 +75,9 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: GalaxyBudsClient_win64_portable
-        path: Galaxy Buds Client.exe
         
-    - run: dir "Galaxy Buds Client.exe"
+    - name: Rename artifact (x64)
+      run: ren GalaxyBudsClient.exe "Galaxy Buds Client.exe"
     
     - name: Create nsis installer (x64)
       uses: joncloud/makensis-action@v3.3
@@ -91,12 +91,17 @@ jobs:
         name: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
         path: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
 
+    - name: Cleaning artifact
+      run: del GalaxyBudsClient.exe "Galaxy Buds Client.exe"
+
     # Make x86 installer
     - name: Download artifact (x86)
       uses: actions/download-artifact@v2
       with:
         name: GalaxyBudsClient_win32_portable
-        path: Galaxy Buds Client.exe
+        
+    - name: Rename artifact (x86)
+      run: ren GalaxyBudsClient.exe "Galaxy Buds Client.exe"
 
     - name: Create nsis installer (x86)
       uses: joncloud/makensis-action@v3.3
