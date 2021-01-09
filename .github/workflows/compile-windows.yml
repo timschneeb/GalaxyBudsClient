@@ -61,11 +61,11 @@ jobs:
         releases-only: true
       id: last_release  
     - name: Prepare version information (2/2)
-      run: echo '::set-output name=version::${{steps.last_release.outputs.tag}}-${{github.sha}}'
+      run: echo '::set-output name=version::${{steps.last_release.outputs.tag}}-${{GITHUB_SHA::8}}'
       id: version
       
     - name: Download artifact (x64)
-      uses: actions/download-artifact@v2.2.2
+      uses: actions/download-artifact@v2
       with:
         name: GalaxyBudsClient_win64_portable
         path: Galaxy Buds Client.exe
@@ -76,7 +76,7 @@ jobs:
         arguments: "-DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"64bit\""
 
     - name: Upload artifact (x64)
-      uses: actions/upload-artifact@v1.0.0
+      uses: actions/upload-artifact@v2.2.2
       with:
         name: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
         path: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
