@@ -55,7 +55,7 @@ jobs:
 
     steps:
     - name: Prepare version information (1/2)
-    - uses: oprypin/find-latest-tag@v1
+      uses: oprypin/find-latest-tag@v1
       with:
         repository: ThePBone/GalaxyBudsClient
         releases-only: true
