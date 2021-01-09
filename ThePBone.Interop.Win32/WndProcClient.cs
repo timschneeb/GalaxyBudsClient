@@ -44,6 +44,11 @@ namespace ThePBone.Interop.Win32
                 throw new Win32Exception();
             }
         }
+
+        ~WndProcClient()
+        {
+            GC.KeepAlive(_wndProcDelegate);
+        }
         
         private IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
         {
