@@ -48,3 +48,41 @@ jobs:
       with:
         name: GalaxyBudsClient_win32_portable
         path: bin_win32/GalaxyBudsClient.exe
+
+  make-nsis-installer:
+    runs-on: windows-latest
+    needs: [build-x64, build-x86]
+
+    steps:
+    - name: Prepare version information (1/2)
+    - uses: oprypin/find-latest-tag@v1
+      with:
+        repository: ThePBone/GalaxyBudsClient
+        releases-only: true
+      id: last_release  
+    - name: Prepare version information (2/2)
+      run: echo '::set-output name=version::${{steps.last_release.outputs.tag}}-${{github.sha}}'
+      id: version
+      
+    - name: Download artifact (x64)
+      uses: actions/download-artifact@v2.2.2
+      with:
+        name: GalaxyBudsClient_win64_portable
+        path: Galaxy Buds Client.exe
+
+    - name: Create nsis installer (x64)
+      uses: joncloud/makensis-action@v3.3
+      with:
+        arguments: "-DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"64bit\""
+
+    - name: Upload artifact (x64)
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
+        path: installsig.exe
+        
+    - name: Print GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
