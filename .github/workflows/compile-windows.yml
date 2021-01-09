@@ -91,9 +91,6 @@ jobs:
         name: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
         path: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
 
-    - name: Cleaning artifact
-      run: del GalaxyBudsClient.exe "Galaxy Buds Client.exe"
-
     # Make x86 installer
     - name: Download artifact (x86)
       uses: actions/download-artifact@v2
