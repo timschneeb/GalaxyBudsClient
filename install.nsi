@@ -54,7 +54,7 @@
 ; MUI end ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "GalaxyBudsManager_Setup_${PRODUCT_ARCH}_${PRODUCT_VERSION}.exe"
+OutFile "GalaxyBudsClient_Setup_${PRODUCT_ARCH}_${PRODUCT_VERSION}.exe"
 InstallDir "$PROGRAMFILES\Galaxy Buds Manager"
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show
