@@ -79,10 +79,5 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         name: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
-        path: installsig.exe
-        
-    - name: Print GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: |
-          echo "$GITHUB_CONTEXT"
+        path: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
+
