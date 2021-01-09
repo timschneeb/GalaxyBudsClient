@@ -25,7 +25,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v2.2.2
       with:
-        name: GalaxyBudsClient_linux64_portable
+        name: GalaxyBudsClient_linux-amd64_portable
         path: bin_linux64/GalaxyBudsClient
     
   build-x64-musl:
@@ -46,7 +46,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v2.2.2
       with:
-        name: GalaxyBudsClient_linux64-musl_portable
+        name: GalaxyBudsClient_linux-amd64-musl_portable
         path: bin_linux64_musl/GalaxyBudsClient
         
   build-arm:
