@@ -19,9 +19,9 @@ jobs:
         dotnet-version: 3.1.108
     
     - name: Restore dependencies for x64 build
-      run: dotnet restore -r windows-x64
+      run: dotnet restore -r win-x64
     - name: Build x64
-      run: dotnet publish -r windows-x64 -o bin_win64 -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -r win-x64 -o bin_win64 -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
     - name: Upload artifacts (x64)
       uses: actions/upload-artifact@v2.2.2
@@ -32,9 +32,9 @@ jobs:
     - name: Clean
       run: dotnet clean GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Restore dependencies for x86 build
-      run: dotnet restore -r windows-x86
+      run: dotnet restore -r win-x86
     - name: Build x86
-      run: dotnet publish -r windows-x86 -o bin_win32 -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -r win-x86 -o bin_win32 -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
     - name: Upload artifacts (x86)
       uses: actions/upload-artifact@v2.2.2
