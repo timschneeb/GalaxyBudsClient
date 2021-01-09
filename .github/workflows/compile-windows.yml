@@ -41,7 +41,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore -r win-x86 --configfile GalaxyBudsClient/nuget.config
     - name: Build x86
-      run: dotnet publish -r win-x86 -o bin_win64 -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -r win-x86 -o bin_win32 -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
     - name: Upload artifacts
       uses: actions/upload-artifact@v2.2.2
