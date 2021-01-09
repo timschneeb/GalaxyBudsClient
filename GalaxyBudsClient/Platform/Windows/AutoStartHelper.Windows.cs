@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Reflection;
 using Microsoft.Win32;
 
@@ -10,26 +11,19 @@ namespace GalaxyBudsClient.Platform.Windows
             get
             {
                 RegistryKey? key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-                Assembly curAssembly = Assembly.GetExecutingAssembly();
-                var result = key?.GetValue(curAssembly.GetName().Name, null);
-                return result != null;
+                return key?.GetValue("Galaxy Buds Client", null) != null;
             }
             set
             {
                 if (value)
                 {
                     RegistryKey? key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-                    Assembly curAssembly = Assembly.GetExecutingAssembly();
-                    key?.SetValue(curAssembly.GetName().Name, "\"" + curAssembly.Location + "\" /StartMinimized");
+                    key?.SetValue("Galaxy Buds Client", Process.GetCurrentProcess().MainModule.FileName + "\" /StartMinimized");
                 }
                 else
                 {
                     RegistryKey? key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-                    Assembly curAssembly = Assembly.GetExecutingAssembly();
-                    if (curAssembly?.GetName()?.Name is { } name)
-                    {
-                        key?.DeleteValue(name);
-                    }
+                    key?.DeleteValue("Galaxy Buds Client");
                 }
             }
         }
