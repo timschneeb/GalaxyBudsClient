@@ -228,7 +228,11 @@ namespace GalaxyBudsClient
 
         private async void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
         {
-            ShowPopup();
+            if (SettingsProvider.Instance.Popup.Enabled)
+            {
+                ShowPopup();
+            }
+            
             await MessageComposer.SetManagerInfo();
         }
 
