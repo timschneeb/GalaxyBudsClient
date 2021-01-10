@@ -60,7 +60,8 @@ namespace GalaxyBudsClient.Interface.Pages
         
 		private readonly DispatcherTimer _refreshTimer = new DispatcherTimer();
         private DebugGetAllDataParser? _lastGetAllDataParser;
-        private bool _allowGetAllResponse;
+        private bool _lastLeftOnline;
+        private bool _lastRightOnline;
 
 		private PlacementStates _lastPlacementL = PlacementStates.Disconnected;
 		private PlacementStates _lastPlacementR = PlacementStates.Disconnected;
@@ -110,8 +111,18 @@ namespace GalaxyBudsClient.Interface.Pages
                 SetWarning(false);
                 _loadingSpinner.IsVisible = false;
             };
-            BluetoothImpl.Instance.BluetoothError += (sender, exception) => _lastGetAllDataParser = null; 
-            BluetoothImpl.Instance.Disconnected += (sender, reason) => _lastGetAllDataParser = null; 
+            BluetoothImpl.Instance.BluetoothError += (sender, exception) =>
+            {
+                _lastLeftOnline = false;
+                _lastRightOnline = false;
+                _lastGetAllDataParser = null;
+            }; 
+            BluetoothImpl.Instance.Disconnected += (sender, reason) =>
+            { 
+                _lastLeftOnline = false;
+                _lastRightOnline = false;
+                _lastGetAllDataParser = null;
+            }; 
             BluetoothImpl.Instance.Connected += (sender, args) =>
             {
                 Dispatcher.UIThread.Post((() => _loadingSpinner.IsVisible = false), DispatcherPriority.Render);
@@ -171,7 +182,6 @@ namespace GalaxyBudsClient.Interface.Pages
             await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_GET_ALL_DATA);
             
 			_refreshTimer.Start();
-            _allowGetAllResponse = true;
             _caseLabel.IsVisible = BluetoothImpl.Instance.ActiveModel != Models.Buds;
 
             /* Initial properties */
@@ -202,18 +212,10 @@ namespace GalaxyBudsClient.Interface.Pages
 		public override void OnPageHidden()
 		{
             _refreshTimer.Stop();
-            _allowGetAllResponse = false;
         }
-
-       
+        
 		public async void ProcessBasicUpdate(IBasicStatusUpdate parser)
         {
-           
-            if (_allowGetAllResponse && parser.GetType() != typeof(DebugGetAllDataParser))
-            {
-                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_GET_ALL_DATA);
-            }
-
             _batteryCase.Content = BluetoothImpl.Instance.ActiveModel == Models.Buds ? string.Empty : $"{parser.BatteryCase}%";
             _caseLabel.IsVisible = BluetoothImpl.Instance.ActiveModel != Models.Buds;
 
@@ -230,6 +232,14 @@ namespace GalaxyBudsClient.Interface.Pages
             {
                 _ancSwitch.SetChecked(p.NoiceCancelling);
             }
+            
+            /* Update if disconnected */
+            if ((_lastLeftOnline && parser.BatteryL <= 0) || (_lastRightOnline && parser.BatteryR <= 0))
+            {
+                UpdateConnectionState(parser.BatteryL > 0, parser.BatteryR > 0);
+            }
+            
+            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_GET_ALL_DATA);
         }
 
         private void UpdatePlusPlacement(PlacementStates l ,PlacementStates r)
@@ -287,9 +297,9 @@ namespace GalaxyBudsClient.Interface.Pages
 
             UpdateTemperature(p.LeftThermistor, p.RightThermistor);
 
-            bool isLeftOnline = p.LeftAdcSOC > 0;
-            bool isRightOnline = p.RightAdcSOC > 0;
-
+            var isLeftOnline = p.LeftAdcSOC > 0;
+            var isRightOnline = p.RightAdcSOC > 0;
+            
             _batteryVoltLeft.IsVisible = isLeftOnline;
             _batteryVoltRight.IsVisible = isRightOnline;
             _batteryCurrentLeft.IsVisible = isLeftOnline;
@@ -302,6 +312,13 @@ namespace GalaxyBudsClient.Interface.Pages
             _batteryPercentageLeft.IsVisible = isLeftOnline;
             _batteryPercentageRight.IsVisible = isRightOnline;
 
+            UpdateConnectionState(isLeftOnline, isRightOnline);
+        }
+
+        private void UpdateConnectionState(bool isLeftOnline, bool isRightOnline)
+        {
+            _lastLeftOnline = isLeftOnline;
+            _lastRightOnline = isRightOnline;
             string type = BluetoothImpl.Instance.ActiveModel == Models.BudsLive ? "Bean" : "Bud";
 
             if (isLeftOnline)
