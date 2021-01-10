@@ -18,7 +18,7 @@ namespace GalaxyBudsClient.Platform.Windows
                 if (value)
                 {
                     RegistryKey? key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-                    key?.SetValue("Galaxy Buds Client", Process.GetCurrentProcess().MainModule.FileName + "\" /StartMinimized");
+                    key?.SetValue("Galaxy Buds Client", "\"" + Process.GetCurrentProcess().MainModule.FileName + "\" /StartMinimized");
                 }
                 else
                 {
