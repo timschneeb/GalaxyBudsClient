@@ -7,11 +7,7 @@
 // This source code is licensed under the MIT License
 
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using InTheHand.Net.Bluetooth;
 using InTheHand.Net.Bluetooth.Msft;
-using System.Text;
 using InTheHand.Net.Sockets;
 
 namespace InTheHand.Net.Bluetooth
@@ -118,6 +114,7 @@ namespace InTheHand.Net.Bluetooth
         }
 
         //----
+        [CLSCompliant(false)]
         public static BluetoothWin32RadioInRangeEventArgs Create(
             BluetoothDeviceInfoProperties previousFlags,
             BluetoothDeviceInfoProperties currentFlags,

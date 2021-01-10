@@ -14,7 +14,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GtkSharp" Version="3.22.25.128" />
     <PackageReference Include="Serilog" Version="2.10.0" />
   </ItemGroup>
 

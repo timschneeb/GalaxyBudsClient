@@ -7,7 +7,6 @@ using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Utils;
-using Gtk;
 using Window = Avalonia.Controls.Window;
 
 namespace GalaxyBudsClient.Interface.Developer

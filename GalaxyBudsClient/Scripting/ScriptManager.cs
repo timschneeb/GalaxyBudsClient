@@ -4,8 +4,6 @@ using System.Linq;
 using CSScriptLib;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Scripting.Hooks;
-using GLib;
-using Gtk;
 using Log = Serilog.Log;
 
 namespace GalaxyBudsClient.Scripting
