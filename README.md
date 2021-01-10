@@ -18,7 +18,7 @@
       <img alt="License" src="https://img.shields.io/github/license/thepbone/galaxybudsclient">
   </a>
   <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
-    <img alt="Platform" src="https://img.shields.io/badge/platform-Windows-yellowgreen">
+    <img alt="Platform" src="https://img.shields.io/badge/platform-Windows/Linux-yellowgreen">
   </a>
 </p>
 <p align="center">
@@ -54,6 +54,17 @@ Get binaries for Windows in the [release](https://github.com/ThePBone/GalaxyBuds
 <p align="center">
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
+
+### Linux and ARM support
+
+Linux support for x86_64, x86, ARM and ARM64 is currently in beta. You can grab precompiled self-contained beta builds here: 
+
+1. Follow this [link](https://github.com/ThePBone/GalaxyBudsClient/actions?query=workflow%3A%22Compile+Linux+binaries%22)
+2. Select the latest job that finished successfully
+3. On the next page, scroll all the way down to the artifacts section
+4. Select your architecture and download the binary (**You need to do logged in with a GitHub account to download artifacts!**)
+
+Windows 10 on ARM support is planned.
 
 ## How it works
 
