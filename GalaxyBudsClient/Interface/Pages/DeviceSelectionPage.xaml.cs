@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Avalonia.Controls;
@@ -79,7 +80,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private void SelectDevice_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
-            RefreshList();
+            RefreshList(true);
         }
 
         private void Next_OnPointerPressed(object? sender, PointerPressedEventArgs e)
@@ -100,7 +101,7 @@ namespace GalaxyBudsClient.Interface.Pages
             var selection = Selection.SelectedItem!;
             var spec = DeviceSpecHelper.FindByDeviceName(selection.Name);
 
-            if (spec == null || selection.IsConnected == false)
+            if (spec == null || selection.IsConnected == false || selection.Address == string.Empty)
             {
                 new MessageBox()
                 {
@@ -118,7 +119,7 @@ namespace GalaxyBudsClient.Interface.Pages
             Task.Factory.StartNew(() => BluetoothImpl.Instance.ConnectAsync());
         }
 
-        private async void RefreshList()
+        private async void RefreshList(bool user = false)
         {
             if (IsSearching)
             {
@@ -130,7 +131,29 @@ namespace GalaxyBudsClient.Interface.Pages
             _navBarNext.IsVisible = false;
             AvailableDevices?.Clear();
 
-            var devices = await BluetoothImpl.Instance.GetDevicesAsync();
+
+            BluetoothDevice[] devices;
+            try
+            {
+                devices = await BluetoothImpl.Instance.GetDevicesAsync();
+            }
+            catch (PlatformNotSupportedException ex)
+            {
+                IsSearching = false;
+                
+                if (!user)
+                {
+                    return;
+                }
+                
+                await new MessageBox()
+                {
+                    Title = Loc.Resolve("error"),
+                    Description = ex.Message
+                }.ShowDialog(MainWindow.Instance);
+                return;
+            }
+
             devices
                 .Where(dev => dev.IsConnected)
                 .Where(dev => DeviceSpecHelper.FindByDeviceName(dev.Name) != null)
