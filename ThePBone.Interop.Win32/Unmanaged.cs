@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-
+[assembly: InternalsVisibleTo("ThePBone.Interop.Win32.Devices")]
 namespace ThePBone.Interop.Win32
 { 
     // ReSharper disable InconsistentNaming
 #pragma warning disable 169, 649
     
-    public static class Unmanaged
+    internal static class Unmanaged
     {
         internal delegate IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
 

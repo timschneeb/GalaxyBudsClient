@@ -14,6 +14,7 @@ using Serilog;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Transactions;
+using InTheHand.Net.Bluetooth.Msft;
 using ThePBone.Interop.Win32;
 using ThePBone.Interop.Win32.Devices;
 
@@ -46,6 +47,11 @@ namespace GalaxyBudsClient.Bluetooth.Windows
 
         public BluetoothService()
         {
+            if (!WindowsBluetoothRadio.IsPlatformSupported)
+            {
+                Log.Fatal("Windows.BluetoothService: Microsoft Bluetooth Stack unavailable");
+                throw new PlatformNotSupportedException("Microsoft Bluetooth stack not available");
+            }
             SetupDeviceDetection();
         }
 

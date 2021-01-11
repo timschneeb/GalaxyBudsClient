@@ -2,7 +2,7 @@
 
 namespace ThePBone.Interop.Win32
 {
-    public class WindowMessage
+    internal class WindowMessage
     {
         public IntPtr hWnd { set; get; }
         public Unmanaged.WindowsMessage Msg { set; get; }

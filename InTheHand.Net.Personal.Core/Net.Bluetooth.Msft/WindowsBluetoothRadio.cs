@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using InTheHand.Net.Bluetooth.Factory;
 
@@ -17,6 +18,7 @@ using InTheHand.Net.Bluetooth.Factory;
 using InTheHand.Win32;
 using System.Diagnostics.CodeAnalysis;
 
+[assembly: InternalsVisibleTo("GalaxyBudsClient.Bluetooth.Windows")]
 
 namespace InTheHand.Net.Bluetooth.Msft
 {

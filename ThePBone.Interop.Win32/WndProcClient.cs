@@ -7,23 +7,19 @@ using Serilog;
 namespace ThePBone.Interop.Win32
 {
 
-    public class WndProcClient
+    internal class WndProcClient
     {
         public event EventHandler<WindowMessage>? MessageReceived;
 
-        private readonly Unmanaged.WndProc? _wndProcDelegate;
         private readonly IntPtr _hwnd;
         public IntPtr WindowHandle => _hwnd;
 
         public WndProcClient()
         {
-            // Ensure that the delegate doesn't get garbage collected by storing it as a field.
-            _wndProcDelegate = new Unmanaged.WndProc(WndProc);
-
             Unmanaged.WNDCLASSEX wndClassEx = new Unmanaged.WNDCLASSEX
             {
                 cbSize = Marshal.SizeOf<Unmanaged.WNDCLASSEX>(),
-                lpfnWndProc = _wndProcDelegate,
+                lpfnWndProc = WndProc,
                 hInstance = Unmanaged.GetModuleHandle(null),
                 lpszClassName = "MessageWindow " + Guid.NewGuid(),
             };
@@ -43,11 +39,6 @@ namespace ThePBone.Interop.Win32
                 Log.Error("Interop.Win32.WndProcClient: nWnd is null");
                 throw new Win32Exception();
             }
-        }
-
-        ~WndProcClient()
-        {
-            GC.KeepAlive(_wndProcDelegate);
         }
         
         private IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
