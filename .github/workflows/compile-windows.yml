@@ -18,7 +18,7 @@ jobs:
         dotnet-version: 3.1.108
        
     - name: Restore dependencies
-      run: dotnet restore -r win-x64 --configfile GalaxyBudsClient/nuget.config
+      run: dotnet restore -r win-x64 GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build x64
       run: dotnet publish -r win-x64 -o bin_win64 -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
@@ -39,7 +39,7 @@ jobs:
         dotnet-version: 3.1.108
        
     - name: Restore dependencies
-      run: dotnet restore -r win-x86 --configfile GalaxyBudsClient/nuget.config
+      run: dotnet restore -r win-x86 GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build x86
       run: dotnet publish -r win-x86 -o bin_win32 -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
@@ -58,9 +58,12 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.108
+        
+    - name: Strip incompatible modules
+      run: rmdir ThePBone.Interop.Win32.TrayIcon /s /q
        
     - name: Restore dependencies
-      run: dotnet restore -r win-arm --configfile GalaxyBudsClient/nuget.config
+      run: dotnet restore -r win-arm GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build arm
       run: dotnet publish -r win-arm -o bin_win-arm -c "Release - Windows ARM" -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
@@ -80,8 +83,11 @@ jobs:
       with:
         dotnet-version: 3.1.108
        
+    - name: Strip incompatible modules
+      run: rmdir ThePBone.Interop.Win32.TrayIcon /s /q
+       
     - name: Restore dependencies
-      run: dotnet restore -r win-arm64 --configfile GalaxyBudsClient/nuget.config
+      run: dotnet restore -r win-arm64 GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build arm64
       run: dotnet publish -r win-arm64 -o bin_win-arm64 -c "Release - Windows ARM" -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
