@@ -7,7 +7,7 @@
         <Version>4.0.0.0</Version>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <Configurations>Debug;Release;Debug (Local server)</Configurations>
+        <Configurations>Debug;Release;Release (Windows ARM);Debug (Local server)</Configurations>
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
     
@@ -25,13 +25,17 @@
     <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <DefineConstants>Linux</DefineConstants>
     </PropertyGroup>
+
+    <PropertyGroup Condition="'$(IsWindows)'=='true' And '$(Configuration)' != 'Release (Windows ARM)'">
+        <DefineConstants>WindowsNoARM</DefineConstants>
+    </PropertyGroup>
     
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug (Local server)' ">
         <DebugSymbols Condition=" '$(DebugSymbols)' == '' ">true</DebugSymbols>
         <Optimize Condition=" '$(Optimize)' == '' ">false</Optimize>
         <DefineConstants>UseLocalServer</DefineConstants>
     </PropertyGroup>
-    
+
     <ItemGroup>
         <AvaloniaResource Include="Resources\**" />
         <EmbeddedResource Include="Resources\**" />
@@ -65,6 +69,7 @@
         <PackageReference Include="Config.Net" Version="4.15.0" />
         <PackageReference Include="Config.Net.Json" Version="4.15.0" />
         <PackageReference Include="CS-Script.Core" Version="1.4.2-preview" />
+        <PackageReference Include="InputSimulatorCore" Version="1.0.5" />
         <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
         <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
         <PackageReference Include="NetSparkle.New" Version="2.0.0-preview20210111001" />
@@ -96,6 +101,7 @@
     <ItemGroup>
       <None Include="Platform\Windows\MediaKeyRemote.Windows.cs" />
     </ItemGroup>
+
     <ItemGroup>
       <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Linux\GalaxyBudsClient.Bluetooth.Linux.csproj" />
       <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.WindowsRT\GalaxyBudsClient.Bluetooth.WindowsRT.csproj" />
@@ -104,9 +110,11 @@
       <ProjectReference Include="..\ThePBone.Interop.Linux.TrayIcon\ThePBone.Interop.Linux.TrayIcon.csproj" />
       <ProjectReference Include="..\ThePBone.MprisClient\ThePBone.MprisClient.csproj" />
     </ItemGroup>
-    <ItemGroup Condition="'$(IsWindows)'=='true' and '$(RuntimeIdentifier)' != 'win-arm' and '$(RuntimeIdentifier)' != 'win-arm64'">
-      <ProjectReference Include="..\ThePBone.Interop.Win32.TrayIcon\ThePBone.Interop.Win32.TrayIcon.csproj" />
+    
+    <ItemGroup Condition="'$(WindowsNoARM)'=='true'">
+        <ProjectReference Include="..\ThePBone.Interop.Win32.TrayIcon\ThePBone.Interop.Win32.TrayIcon.csproj" />
     </ItemGroup>
+    
     <ItemGroup>
       <AvaloniaResource Update="Interface\Pages\UpdateProgressPage.xaml">
         <Generator>MSBuild:Compile</Generator>

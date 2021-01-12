@@ -4,7 +4,7 @@
         <TargetFramework>netstandard2.1</TargetFramework>
         <Nullable>enable</Nullable>
         <RootNamespace>GalaxyBudsClient.Bluetooth.Windows</RootNamespace>
-        <Configurations>Debug;Release;Debug (Local server)</Configurations>
+        <Configurations>Debug;Release;Debug (Local server);Release (Windows ARM)</Configurations>
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
 
@@ -33,7 +33,6 @@
     </ItemGroup>
     
     <ItemGroup>
-      <PackageReference Include="InputSimulator" Version="1.0.4" />
       <PackageReference Include="Serilog" Version="2.10.0" />
     </ItemGroup>
     

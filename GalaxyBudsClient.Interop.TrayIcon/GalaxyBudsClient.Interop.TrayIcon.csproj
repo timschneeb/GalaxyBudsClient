@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp3.1;netstandard2.0</TargetFrameworks>
-    <Configurations>Debug;Release;Debug (Local server)</Configurations>
+    <Configurations>Debug;Release;Debug (Local server);Release (Windows ARM)</Configurations>
     <Platforms>AnyCPU</Platforms>
 
   </PropertyGroup>
