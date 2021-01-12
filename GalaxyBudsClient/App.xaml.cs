@@ -29,7 +29,7 @@ namespace GalaxyBudsClient
             /* Clean everything from the old run up */
             if (PlatformUtils.IsWindows)
             {
-#if Windows
+#if WindowsNoARM
                 ThePBone.Interop.Win32.TrayIcon.ResourceLoader.ClearCache();
 #endif
             }

@@ -16,7 +16,7 @@ namespace GalaxyBudsClient.Platform.Dummy
         
         public async Task ConnectAsync(string macAddress, string serviceUuid, bool noRetry = false)
         {
-            BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.Unknown, "ERROR: Platform not supported. On Windows systems, we only support the default Microsoft Bluetooth stack drivers. Third-party stacks such as BlueSoleil and Widcomm are NOT supported!"));
+            BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.Unknown, "Platform not supported. On Windows systems, we only support the default Microsoft Bluetooth stack drivers. Third-party stacks such as BlueSoleil and Widcomm are NOT supported!"));
             await Task.CompletedTask;
         }
 

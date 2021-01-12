@@ -63,8 +63,10 @@ namespace GalaxyBudsClient.Platform
             {
                 if (PlatformUtils.IsWindows && PlatformUtils.IsWindowsContractsSdkSupported)
                     _backend = new Bluetooth.WindowsRT.BluetoothService();
+#if WindowsNoARM
                 else if (PlatformUtils.IsWindows)
                     _backend = new Bluetooth.Windows.BluetoothService();
+#endif
                 else if (PlatformUtils.IsLinux)
                     _backend = new Bluetooth.Linux.BluetoothService();
                 else

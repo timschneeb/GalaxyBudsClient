@@ -7,6 +7,10 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
 using Serilog;
 
+#if WindowsNoARM
+using ThePBone.Interop.Win32.TrayIcon;
+#endif
+
 namespace GalaxyBudsClient.Platform
 {
    
@@ -18,10 +22,10 @@ namespace GalaxyBudsClient.Platform
         {
             if (PlatformUtils.IsWindows)
             {
-#if Windows
+#if WindowsNoARM
                 Instance = new ThePBone.Interop.Win32.TrayIcon.TrayIcon();
 #else
-                throw new PlatformNotSupportedException();
+                Instance = new Dummy.TrayIcon(); /* No ARM support */
 #endif
             }
             else if (PlatformUtils.IsLinux)

@@ -10,6 +10,7 @@
         <Configurations>Debug;Release;Debug (Local server)</Configurations>
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
+    
     <PropertyGroup>
         <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
         <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
@@ -24,23 +25,25 @@
     <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <DefineConstants>Linux</DefineConstants>
     </PropertyGroup>
+    
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug (Local server)' ">
         <DebugSymbols Condition=" '$(DebugSymbols)' == '' ">true</DebugSymbols>
         <Optimize Condition=" '$(Optimize)' == '' ">false</Optimize>
         <DefineConstants>UseLocalServer</DefineConstants>
     </PropertyGroup>
+    
     <ItemGroup>
         <AvaloniaResource Include="Resources\**" />
         <EmbeddedResource Include="Resources\**" />
 
         <AvaloniaResource Include="i18n\*" /> 
-        <AvaloniaResource Include="ui\style\*" /> 
-        <AvaloniaResource Remove="bin\Debug\netcoreapp3.1\**" /> 
+        <AvaloniaResource Include="ui\style\*" />
         <AvaloniaResource Remove="bin\**" /> 
         <AvaloniaResource Update="Interface\Pages\SystemCoredumpPage.xaml">
           <Generator>MSBuild:Compile</Generator>
         </AvaloniaResource>
     </ItemGroup>
+    
     <ItemGroup>
         <Compile Update="**\*.xaml.cs">
             <DependentUpon>%(Filename)</DependentUpon>
@@ -51,6 +54,7 @@
         <Compile Remove="bin\Debug\netcoreapp3.1\**" />
         <Compile Remove="bin\**" />
     </ItemGroup>
+    
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="0.10.0-rc1" />
         <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.0-rc1" />
@@ -73,6 +77,7 @@
         <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
         <PackageReference Include="Tmds.DBus" Version="0.9.1" />
     </ItemGroup>
+    
     <ItemGroup>
       <AvaloniaXaml Remove="bin\Debug\netcoreapp3.1\**" />
       <AvaloniaXaml Remove="bin\**" />
@@ -99,7 +104,7 @@
       <ProjectReference Include="..\ThePBone.Interop.Linux.TrayIcon\ThePBone.Interop.Linux.TrayIcon.csproj" />
       <ProjectReference Include="..\ThePBone.MprisClient\ThePBone.MprisClient.csproj" />
     </ItemGroup>
-    <ItemGroup Condition="'$(IsWindows)'=='true'">
+    <ItemGroup Condition="'$(IsWindows)'=='true' and '$(RuntimeIdentifier)' != 'win-arm' and '$(RuntimeIdentifier)' != 'win-arm64'">
       <ProjectReference Include="..\ThePBone.Interop.Win32.TrayIcon\ThePBone.Interop.Win32.TrayIcon.csproj" />
     </ItemGroup>
     <ItemGroup>
