@@ -60,7 +60,7 @@ jobs:
         dotnet-version: 3.1.108
         
     - name: Strip incompatible modules
-      run: rmdir ThePBone.Interop.Win32.TrayIcon /s /q
+      run: rm -r -fo ThePBone.Interop.Win32.TrayIcon
        
     - name: Restore dependencies
       run: dotnet restore -r win-arm GalaxyBudsClient/GalaxyBudsClient.csproj
@@ -84,7 +84,7 @@ jobs:
         dotnet-version: 3.1.108
        
     - name: Strip incompatible modules
-      run: rmdir ThePBone.Interop.Win32.TrayIcon /s /q
+      run: rm -r -fo ThePBone.Interop.Win32.TrayIcon
        
     - name: Restore dependencies
       run: dotnet restore -r win-arm64 GalaxyBudsClient/GalaxyBudsClient.csproj
