@@ -7,7 +7,7 @@
         <Version>4.0.0.0</Version>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <Configurations>Debug;Release;Release (Windows ARM);Debug (Local server)</Configurations>
+        <Configurations>Debug;Release;Debug (Local server);Release - Windows ARM</Configurations>
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
     
@@ -26,7 +26,7 @@
         <DefineConstants>Linux</DefineConstants>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(IsWindows)'=='true' And '$(Configuration)' != 'Release (Windows ARM)'">
+    <PropertyGroup Condition="'$(IsWindows)'=='true' And '$(Configuration)' != 'Release - Windows ARM'">
         <DefineConstants>WindowsNoARM</DefineConstants>
     </PropertyGroup>
     

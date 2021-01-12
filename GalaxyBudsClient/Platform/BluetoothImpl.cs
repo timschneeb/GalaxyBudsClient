@@ -72,7 +72,7 @@ namespace GalaxyBudsClient.Platform
                 else
                     _backend = new Dummy.BluetoothService();
             }
-            catch (PlatformNotSupportedException ex)
+            catch (PlatformNotSupportedException)
             {
                 Log.Error("BluetoothImpl: Critical error while preparing bluetooth backend");
                 Log.Error("BluetoothImpl: Backend swapped out with non-functional dummy object in order to prevent crash");

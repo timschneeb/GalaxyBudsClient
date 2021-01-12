@@ -5,7 +5,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Nullable>enable</Nullable>
     <LangVersion>8.0</LangVersion>
-    <Configurations>Debug;Release;Debug (Local server);Release (Windows ARM)</Configurations>
+    <Configurations>Debug;Release;Debug (Local server);Release - Windows ARM</Configurations>
     <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
 

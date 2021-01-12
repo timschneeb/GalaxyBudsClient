@@ -16,6 +16,8 @@ namespace GalaxyBudsClient.Bluetooth
         
         public BluetoothDevice(uint cod)
         {
+            Name = string.Empty;
+            Address = string.Empty;
             Class = new BluetoothCoD(cod);
         }
 

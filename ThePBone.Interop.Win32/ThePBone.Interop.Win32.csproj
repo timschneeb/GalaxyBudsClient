@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>8</LangVersion>
-    <Configurations>Debug;Release;Debug (Local server);Release (Windows ARM)</Configurations>
+    <Configurations>Debug;Release;Debug (Local server);Release - Windows ARM</Configurations>
     <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
 

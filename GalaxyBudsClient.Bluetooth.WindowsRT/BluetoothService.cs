@@ -302,7 +302,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                 }
                 
                 _writer.WriteBytes(data);
-                _writer.StoreAsync();
+                await _writer.StoreAsync();
             }
             catch (Exception ex) when ((uint)ex.HResult == 0x80072745)
             {

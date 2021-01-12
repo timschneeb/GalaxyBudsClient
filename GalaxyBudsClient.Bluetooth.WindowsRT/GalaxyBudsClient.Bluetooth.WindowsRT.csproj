@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <Nullable>enable</Nullable>
-        <Configurations>Debug;Release;Release (Windows ARM)</Configurations>
+        <Configurations>Debug;Release;Release - Windows ARM</Configurations>
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
 

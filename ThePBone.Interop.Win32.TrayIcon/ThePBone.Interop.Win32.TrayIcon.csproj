@@ -5,7 +5,7 @@
     <AssemblyName>ThePBone.Interop.Win32.TrayIcon</AssemblyName>
     <TargetFrameworks>net472;netcoreapp3.1</TargetFrameworks>
     <UseWpf>true</UseWpf>
-    <Configurations>Debug;Release;Release (Windows ARM)</Configurations>
+    <Configurations>Debug;Release;Release - Windows ARM</Configurations>
     <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
 
