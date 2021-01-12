@@ -62,7 +62,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore -r win-arm --configfile GalaxyBudsClient/nuget.config
     - name: Build arm
-      run: dotnet publish -r win-arm -o bin_win-arm -c "Release (Windows ARM)" -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -r win-arm -o bin_win-arm -c "Release - Windows ARM" -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
     - name: Upload artifacts
       uses: actions/upload-artifact@v2.2.2
@@ -83,7 +83,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore -r win-arm64 --configfile GalaxyBudsClient/nuget.config
     - name: Build arm64
-      run: dotnet publish -r win-arm64 -o bin_win-arm64 -c "Release (Windows ARM)" -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -r win-arm64 -o bin_win-arm64 -c "Release - Windows ARM" -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
     - name: Upload artifacts
       uses: actions/upload-artifact@v2.2.2
