@@ -39,13 +39,8 @@
     <ItemGroup>
         <AvaloniaResource Include="Resources\**" />
         <EmbeddedResource Include="Resources\**" />
-
         <AvaloniaResource Include="i18n\*" /> 
         <AvaloniaResource Include="ui\style\*" />
-        <AvaloniaResource Remove="bin\**" /> 
-        <AvaloniaResource Update="Interface\Pages\SystemCoredumpPage.xaml">
-          <Generator>MSBuild:Compile</Generator>
-        </AvaloniaResource>
     </ItemGroup>
     
     <ItemGroup>
@@ -55,10 +50,14 @@
         <AvaloniaResource Include="**\*.xaml">
             <SubType>Designer</SubType>
         </AvaloniaResource>
-        <Compile Remove="bin\Debug\netcoreapp3.1\**" />
+
         <Compile Remove="bin\**" />
+        <AvaloniaResource Remove="bin\**" />
+        <AvaloniaXaml Remove="bin\**" />
+        <EmbeddedResource Remove="bin\**" />
+        <None Remove="bin\**" />
     </ItemGroup>
-    
+
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="0.10.0-rc1" />
         <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.0-rc1" />
@@ -84,45 +83,20 @@
     </ItemGroup>
     
     <ItemGroup>
-      <AvaloniaXaml Remove="bin\Debug\netcoreapp3.1\**" />
-      <AvaloniaXaml Remove="bin\**" />
+        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Linux\GalaxyBudsClient.Bluetooth.Linux.csproj" />
+        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.WindowsRT\GalaxyBudsClient.Bluetooth.WindowsRT.csproj" />
+        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Windows\GalaxyBudsClient.Bluetooth.Windows.csproj" />
+        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj" />
+        <ProjectReference Include="..\ThePBone.Interop.Linux.TrayIcon\ThePBone.Interop.Linux.TrayIcon.csproj" />
+        <ProjectReference Include="..\ThePBone.MprisClient\ThePBone.MprisClient.csproj" />
     </ItemGroup>
-    <ItemGroup>
-      <EmbeddedResource Remove="bin\Debug\netcoreapp3.1\**" />
-      <EmbeddedResource Remove="bin\**" />
-    </ItemGroup>
-    <ItemGroup>
-      <None Remove="bin\Debug\netcoreapp3.1\**" />
-      <None Remove="bin\**" />
-    </ItemGroup>
-    <ItemGroup>
-      <None Remove="Interface\Pages\UpdateProgressPage.xaml" />
-    </ItemGroup>
-    <ItemGroup>
-      <None Include="Platform\Windows\MediaKeyRemote.Windows.cs" />
-    </ItemGroup>
+    
+    <Choose>
+        <When Condition="$(DefineConstants.Contains('WindowsNoARM'))">
+            <ItemGroup>
+                <ProjectReference Include="..\ThePBone.Interop.Win32.TrayIcon\ThePBone.Interop.Win32.TrayIcon.csproj" />
+            </ItemGroup>
+        </When>
+    </Choose>
 
-    <ItemGroup>
-      <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Linux\GalaxyBudsClient.Bluetooth.Linux.csproj" />
-      <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.WindowsRT\GalaxyBudsClient.Bluetooth.WindowsRT.csproj" />
-      <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Windows\GalaxyBudsClient.Bluetooth.Windows.csproj" />
-      <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj" />
-      <ProjectReference Include="..\ThePBone.Interop.Linux.TrayIcon\ThePBone.Interop.Linux.TrayIcon.csproj" />
-      <ProjectReference Include="..\ThePBone.MprisClient\ThePBone.MprisClient.csproj" />
-    </ItemGroup>
-    
-    <ItemGroup Condition="'$(WindowsNoARM)'=='true'">
-        <ProjectReference Include="..\ThePBone.Interop.Win32.TrayIcon\ThePBone.Interop.Win32.TrayIcon.csproj" />
-    </ItemGroup>
-    
-    <ItemGroup>
-      <AvaloniaResource Update="Interface\Pages\UpdateProgressPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </AvaloniaResource>
-    </ItemGroup>
-    <ItemGroup>
-      <Compile Update="Interface\Pages\UpdateProgressPage.xaml.cs">
-        <DependentUpon>%(Filename)</DependentUpon>
-      </Compile>
-    </ItemGroup>
 </Project>
