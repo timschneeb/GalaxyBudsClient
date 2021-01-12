@@ -7,10 +7,6 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
 using Serilog;
 
-#if WindowsNoARM
-using ThePBone.Interop.Win32.TrayIcon;
-#endif
-
 namespace GalaxyBudsClient.Platform
 {
    
