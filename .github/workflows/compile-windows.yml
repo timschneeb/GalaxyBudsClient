@@ -213,7 +213,7 @@ jobs:
     - name: Download artifact (arm64)
       uses: actions/download-artifact@v2
       with:
-        name: GalaxyBudsClient_arm64_portable
+        name: GalaxyBudsClient_win-arm64_portable
         
     - name: Rename artifact (arm64)
       run: ren GalaxyBudsClient.exe "Galaxy Buds Client.exe"
