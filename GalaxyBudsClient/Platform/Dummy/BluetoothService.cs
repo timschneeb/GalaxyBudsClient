@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using GalaxyBudsClient.Bluetooth;
 
+#pragma warning disable CS0067
+
 namespace GalaxyBudsClient.Platform.Dummy
 {
     public class BluetoothService : IBluetoothService

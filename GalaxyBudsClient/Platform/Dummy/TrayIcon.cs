@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using GalaxyBudsClient.Interop.TrayIcon;
 
+#pragma warning disable CS0067
+
 namespace GalaxyBudsClient.Platform.Dummy
 {
     public class TrayIcon : ITrayIcon
