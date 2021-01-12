@@ -2,7 +2,7 @@
 
 namespace GalaxyBudsClient.Utils
 {
-    internal class HexUtils
+    public class HexUtils
     {
         private readonly byte[] _bytes;
         private readonly int _bytesPerLine;

@@ -13,16 +13,21 @@ namespace GalaxyBudsClient.Bluetooth
             IsPaired = isPaired;
             Class = cod;
         }
+        
+        public BluetoothDevice(uint cod)
+        {
+            Class = new BluetoothCoD(cod);
+        }
 
         public override string ToString()
         {
             return $"BluetoothDevice[Name={Name},Address={Address},IsConnected={IsConnected},IsPaired='{IsPaired}',CoD='{Class}']";
         }
 
-        public string Name { get; }
-        public string Address { get; }
-        public bool IsConnected { get; }
-        public bool IsPaired { get; }
+        public virtual string Name { get; }
+        public virtual string Address { get; }
+        public virtual bool IsConnected { get; }
+        public virtual bool IsPaired { get; }
         public BluetoothCoD Class { get; }
         
     }

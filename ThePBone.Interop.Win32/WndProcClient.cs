@@ -7,7 +7,7 @@ using Serilog;
 namespace ThePBone.Interop.Win32
 {
 
-    internal class WndProcClient
+    public partial class WndProcClient
     {
         public event EventHandler<WindowMessage>? MessageReceived;
 
@@ -19,7 +19,19 @@ namespace ThePBone.Interop.Win32
             Unmanaged.WNDCLASSEX wndClassEx = new Unmanaged.WNDCLASSEX
             {
                 cbSize = Marshal.SizeOf<Unmanaged.WNDCLASSEX>(),
-                lpfnWndProc = WndProc,
+                lpfnWndProc = delegate(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam) { 
+                    var message = new WindowMessage()
+                    {
+                        hWnd = hWnd,
+                        Msg = (WindowsMessage)msg,
+                        wParam = wParam,
+                        lParam = lParam
+                    };
+
+                    MessageReceived?.Invoke(this, message);
+
+                    return Unmanaged.DefWindowProc(hWnd, msg, wParam, lParam);
+                },
                 hInstance = Unmanaged.GetModuleHandle(null),
                 lpszClassName = "MessageWindow " + Guid.NewGuid(),
             };
@@ -32,7 +44,7 @@ namespace ThePBone.Interop.Win32
                 throw new Win32Exception();
             }
 
-            _hwnd = Unmanaged.CreateWindowEx(0, atom, null, 0, 0, 0, 0, 0, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
+            _hwnd = Unmanaged.CreateWindowEx(0, atom, null, 0, 0, 0, 0, 0, IntPtr.Zero, IntPtr.Zero, Unmanaged.GetModuleHandle(null), IntPtr.Zero);
 
             if (_hwnd == IntPtr.Zero)
             {
@@ -41,21 +53,6 @@ namespace ThePBone.Interop.Win32
             }
         }
         
-        private IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
-        {
-            var message = new WindowMessage()
-            {
-                hWnd = hWnd,
-                Msg = (Unmanaged.WindowsMessage) msg,
-                wParam = wParam,
-                lParam = lParam
-            };
-
-            MessageReceived?.Invoke(this, message);
-
-            return Unmanaged.DefWindowProc(hWnd, msg, wParam, lParam);
-        }
-
         public void ProcessMessage()
         {
 

@@ -153,7 +153,7 @@ namespace GalaxyBudsClient.Interface.Pages
             }
         }
 
-        private void InstanceOnInvalidDataReceived(object? sender, InvalidDataException e)
+        private void InstanceOnInvalidDataReceived(object? sender, InvalidPacketException e)
         {
             Dispatcher.UIThread.Post((async() =>
             {

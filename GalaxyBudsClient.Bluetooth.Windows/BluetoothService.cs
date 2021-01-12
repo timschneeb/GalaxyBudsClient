@@ -52,12 +52,14 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                 Log.Error("Windows.BluetoothService: Microsoft Bluetooth Stack unavailable");
                 throw new PlatformNotSupportedException("Microsoft Bluetooth stack not available");
             }
-            SetupDeviceDetection();
+
+            Task.Delay(2000).ContinueWith(x => SetupDeviceDetection());
         }
 
         #region Detection
         private void SetupDeviceDetection()
         {
+            Log.Debug("Windows.BluetoothService: Setting device detection up");
             Task.Factory.StartNew(Win32DeviceChangeListener.Init);
             
             try
@@ -249,7 +251,7 @@ namespace GalaxyBudsClient.Bluetooth.Windows
         }
         #endregion
 
-        #region Enumaration
+        #region Enumeration
         public async Task<BluetoothDevice[]> GetDevicesAsync()
         {
             if (_client == null)

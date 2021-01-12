@@ -85,9 +85,9 @@ namespace GalaxyBudsClient.Interface.Developer
 
         private void OnNewDataReceived(object? sender, byte[] raw)
         {
-            try
-            {
-                Dispatcher.UIThread.Post(() =>
+            Dispatcher.UIThread.Post(() =>
+            { 
+                try
                 {
                     _cache.AddRange(raw);
                     _hexDump.Text = HexUtils.Dump(_cache.ToArray());
@@ -95,9 +95,9 @@ namespace GalaxyBudsClient.Interface.Developer
                     RecvMsgViewHolder holder = new RecvMsgViewHolder(SPPMessage.DecodeMessage(raw));
                     _vm.MsgTableDataSource?.Add(holder);
                     _vm.MsgTableDataView.Refresh();
-                });
-            }
-            catch(InvalidDataException){}
+                }
+                catch(InvalidPacketException){}
+            });
         }
 
         private void OnClosing(object? sender, CancelEventArgs e)
@@ -211,7 +211,7 @@ namespace GalaxyBudsClient.Interface.Developer
                         break;
                     data.RemoveRange(0, msg.TotalPacketSize);
                 }
-                catch (InvalidDataException ex)
+                catch (InvalidPacketException ex)
                 {
                     await new MessageBox
                     {

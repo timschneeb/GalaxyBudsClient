@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using Serilog;
 
 namespace GalaxyBudsClient.Platform
 {
@@ -41,6 +42,32 @@ namespace GalaxyBudsClient.Platform
             }
         }
         
+        public static bool IsWindowsContractsSdkSupported
+        {
+            get
+            {
+                if (!IsWindows)
+                {
+                    return false;
+                }
+                
+                try
+                {
+                    var release = Microsoft.Win32.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion",
+                        "ReleaseId", "")?.ToString();
+                    var major = Convert.ToInt32(release?.Substring(0, 2));
+                    var minor = Convert.ToInt32(release?.Substring(2, 2));
+                    return major >= 18 && minor >= 03;
+                }
+                catch (Exception ex)
+                {
+                    Log.Error($"PlatformUtils: Cannot determine build version: {ex.Message}");
+                    return false;
+                }
+            }
+        }
+
+
         public static string CombineDataPath(string postfix)
         {
             return Path.Combine(AppDataPath, postfix);

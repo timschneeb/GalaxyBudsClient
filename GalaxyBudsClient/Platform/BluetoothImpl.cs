@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Scripting;
@@ -38,7 +41,7 @@ namespace GalaxyBudsClient.Platform
         public event EventHandler? Connecting;
         public event EventHandler<string>? Disconnected;
         public event EventHandler<SPPMessage>? MessageReceived;
-        public event EventHandler<InvalidDataException>? InvalidDataReceived;
+        public event EventHandler<InvalidPacketException>? InvalidDataReceived;
         public event EventHandler<byte[]>? NewDataReceived;
         public event EventHandler<BluetoothException>? BluetoothError;
         
@@ -46,16 +49,23 @@ namespace GalaxyBudsClient.Platform
         public Models ActiveModel => SettingsProvider.Instance.RegisteredDevice.Model;
         public IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(ActiveModel) ?? new StubDeviceSpec();
         public bool IsConnected => _backend.IsStreamConnected;
-
+        
+        public readonly ArrayList IncomingData = new ArrayList();
+        private static readonly ConcurrentQueue<byte[]> IncomingQueue = new ConcurrentQueue<byte[]>();
+        private readonly CancellationTokenSource _cancelSource;
+        private Task? _loop;
+        
         private Guid ServiceUuid => DeviceSpec.ServiceUuid;
 
         private BluetoothImpl()
         {
             try
             {
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                if (PlatformUtils.IsWindows && PlatformUtils.IsWindowsContractsSdkSupported)
+                    _backend = new Bluetooth.WindowsRT.BluetoothService();
+                else if (PlatformUtils.IsWindows)
                     _backend = new Bluetooth.Windows.BluetoothService();
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                else if (PlatformUtils.IsLinux)
                     _backend = new Bluetooth.Linux.BluetoothService();
                 else
                     _backend = new Dummy.BluetoothService();
@@ -67,6 +77,9 @@ namespace GalaxyBudsClient.Platform
                 _backend = new Dummy.BluetoothService();
             }
 
+            _cancelSource = new CancellationTokenSource();
+            _loop = Task.Run(DataConsumerLoop, _cancelSource.Token);
+            
             _backend.Connecting += (sender, args) => Connecting?.Invoke(this, EventArgs.Empty); 
             _backend.NewDataAvailable += OnNewDataAvailable;
             _backend.NewDataAvailable += (sender, bytes) =>  NewDataReceived?.Invoke(this, bytes);
@@ -237,44 +250,75 @@ namespace GalaxyBudsClient.Platform
                 return;
             }
 
-            ArrayList data = new ArrayList(frame);
-            do
+            IncomingQueue.Enqueue(frame);
+        }
+
+        private void DataConsumerLoop()
+        {
+            while (true)
             {
                 try
                 {
-                    var raw = data.OfType<byte>().ToArray();
-                    
-                    foreach(var hook in ScriptManager.Instance.RawStreamHooks)
-                    {
-                        hook?.OnRawDataAvailable(ref raw);
-                    }
-                    
-                    SPPMessage msg = SPPMessage.DecodeMessage(raw);
-                    Log.Verbose($">> Incoming: {msg}");
-                    
-                    foreach(var hook in ScriptManager.Instance.MessageHooks)
-                    {
-                        hook?.OnMessageAvailable(ref msg);
-                    }
-
-                    MessageReceived?.Invoke(this, msg);
-                
-                    if (msg.TotalPacketSize >= data.Count)
-                        break;
-                    data.RemoveRange(0, msg.TotalPacketSize);
-                    
-                    if (ByteArrayUtils.IsBufferZeroedOut(data))
-                    {
-                        /* No more data remaining */
-                        break;
-                    }
+                    _cancelSource.Token.ThrowIfCancellationRequested();
+                    Task.Delay(50).Wait(_cancelSource.Token);
                 }
-                catch (InvalidDataException e)
+                catch (OperationCanceledException)
                 {
-                    InvalidDataReceived?.Invoke(this, e);
-                    break;
+                    IncomingData?.Clear();
+                    throw;
                 }
-            } while (data.Count > 0);
+                
+                lock (IncomingQueue)
+                {
+                    if (IncomingQueue.Count <= 0) continue;
+                    while (IncomingQueue.TryDequeue(out var frame))
+                    {
+                        IncomingData.AddRange(frame);
+                    }
+                }
+                
+                do
+                {
+                    try
+                    {
+                        var raw = IncomingData.OfType<byte>().ToArray();
+
+                        foreach (var hook in ScriptManager.Instance.RawStreamHooks)
+                        {
+                            hook?.OnRawDataAvailable(ref raw);
+                        }
+
+                        var msg = SPPMessage.DecodeMessage(raw);
+
+                        Log.Verbose($">> Incoming: {msg}");
+
+                        foreach (var hook in ScriptManager.Instance.MessageHooks)
+                        {
+                            hook?.OnMessageAvailable(ref msg);
+                        }
+
+                        MessageReceived?.Invoke(this, msg);
+
+                        if (msg.TotalPacketSize >= IncomingData.Count)
+                        {
+                            break;
+                        }
+
+                        IncomingData.RemoveRange(0, msg.TotalPacketSize);
+
+                        if (ByteArrayUtils.IsBufferZeroedOut(IncomingData))
+                        {
+                            /* No more data remaining */
+                            break;
+                        }
+                    }
+                    catch (InvalidPacketException e)
+                    {
+                        InvalidDataReceived?.Invoke(this, e);
+                        break;
+                    }
+                } while (IncomingData.Count > 0);
+            }
         }
     }
 }

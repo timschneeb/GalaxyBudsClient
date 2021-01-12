@@ -116,11 +116,12 @@ namespace ThePBone.Interop.Win32.Devices
         }
 
 
-        private void WndProcClient_MessageReceived(object? sender, WindowMessage e)
+        private void WndProcClient_MessageReceived(object? sender, WndProcClient.WindowMessage e)
         {
+            Console.WriteLine(e);
             switch (e.Msg)
             {
-                case Unmanaged.WindowsMessage.WM_DEVICECHANGE:
+                case WndProcClient.WindowsMessage.WM_DEVICECHANGE:
                     Dbt subId = (Dbt) e.wParam.ToInt64();
                     if (subId == Dbt.CustomEvent
                             || subId == Dbt.DeviceArrival
@@ -136,7 +137,7 @@ namespace ThePBone.Interop.Win32.Devices
             }
         }
 
-        private void DoBroadcastHdr(WindowMessage m)
+        private void DoBroadcastHdr(WndProcClient.WindowMessage m)
         {
             //IntPtr pXXX;
             String text = String.Empty;
@@ -151,7 +152,7 @@ namespace ThePBone.Interop.Win32.Devices
             }
         }
 
-        private void DoDevTypHandle(ref WindowMessage m, ref String text)
+        private void DoDevTypHandle(ref WndProcClient.WindowMessage m, ref String text)
         {
             DEV_BROADCAST_HANDLE hdrHandle = (DEV_BROADCAST_HANDLE) Marshal.PtrToStructure(m.lParam, typeof(DEV_BROADCAST_HANDLE));
             var pData = PointerUtils.Add(m.lParam, _OffsetOfData);
@@ -218,7 +219,7 @@ namespace ThePBone.Interop.Win32.Devices
             Log.Verbose("Interop.Win32: Device changed: " + text);
         }
 
-        private static void DoDevTypPort(ref WindowMessage m, ref String text, ref DEV_BROADCAST_HDR hdr)
+        private static void DoDevTypPort(ref WndProcClient.WindowMessage m, ref String text, ref DEV_BROADCAST_HDR hdr)
         {
             text += "Port: ";
             //DEV_BROADCAST_PORT hdrPort = (DEV_BROADCAST_PORT)m.GetLParam(typeof(DEV_BROADCAST_PORT));
