@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -11,6 +12,7 @@ using GalaxyBudsClient.Utils.DynamicLocalization;
 using NetSparkleUpdater;
 using NetSparkleUpdater.Events;
 using Serilog;
+using Trinet.Core.IO.Ntfs;
 
 namespace GalaxyBudsClient.Interface.Pages
 {
@@ -39,7 +41,7 @@ namespace GalaxyBudsClient.Interface.Pages
         private void OnDownloadMadeProgress(object sender, AppCastItem item, ItemDownloadProgressEventArgs args)
         {
             _progressText.Text = string.Format(Loc.Resolve("updater_dl_progress"), args.ProgressPercentage);
-            _progressSizeText.Text = string.Format(Loc.Resolve("updater_dl_progress_size"),  (args.BytesReceived / 100000f).ToString("N2"), (args.TotalBytesToReceive / 100000f).ToString("N2"));
+            _progressSizeText.Text = string.Format(Loc.Resolve("updater_dl_progress_size"),  (args.BytesReceived / 1000000f).ToString("N2"), (args.TotalBytesToReceive / 1000000f).ToString("N2"));
             _progress.Value = args.ProgressPercentage;
         }
 
@@ -59,6 +61,8 @@ namespace GalaxyBudsClient.Interface.Pages
 
             try
             {
+                new FileInfo(path).DeleteAlternateDataStream("Zone.Identifier");
+               
                 Process proc = new Process
                 {
                     StartInfo =

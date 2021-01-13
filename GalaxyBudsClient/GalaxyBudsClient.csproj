@@ -80,6 +80,7 @@
         <PackageReference Include="Serilog.Sinks.File" Version="5.0.0-dev-00909" />
         <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
         <PackageReference Include="Tmds.DBus" Version="0.9.1" />
+        <PackageReference Include="Trinet.Core.IO.Ntfs" Version="4.1.1" />
     </ItemGroup>
     
     <Choose>
