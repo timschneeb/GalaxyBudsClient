@@ -89,11 +89,6 @@ namespace GalaxyBudsClient
 
             try
             {
-                if (PlatformUtils.IsWindows)
-                {
-                    WindowsConsoleRedirection.Show();
-                }
-                
                 await SingleInstanceWatcher.Setup();
                 BuildAvaloniaApp().StartWithClassicDesktopLifetime(args, ShutdownMode.OnExplicitShutdown);
             }

@@ -13,7 +13,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
 
         public string Id => DeviceInfo.Id;
         public override string Name => DeviceInfo.Name;
-        public override string Address => DeviceInfo.Properties["System.Devices.Aep.DeviceAddress"].ToString();
+        public override string Address => DeviceInfo.Properties["System.Devices.Aep.DeviceAddress"].ToString() ?? string.Empty;
         public override bool IsPaired => (bool) DeviceInfo.Properties["System.Devices.Aep.IsPaired"];
         public override bool IsConnected => (bool) DeviceInfo.Properties["System.Devices.Aep.IsConnected"];
         
