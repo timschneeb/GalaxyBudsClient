@@ -325,9 +325,17 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
         {
             while (true)
             {
-                _loopCancellation.Token.ThrowIfCancellationRequested();
-                Task.Delay(100).Wait(_loopCancellation.Token);
-                
+                try
+                {
+                    _loopCancellation.Token.ThrowIfCancellationRequested();
+                    Task.Delay(100).Wait(_loopCancellation.Token);
+                }
+                catch (OperationCanceledException)
+                {
+                    Log.Debug("WindowsRT.BluetoothService: BluetoothServiceLoop cancelled.");
+                    return;
+                }
+
                 Stream? incoming = null;
                 if (_socket == null)
                 {
