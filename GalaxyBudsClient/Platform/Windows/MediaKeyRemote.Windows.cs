@@ -35,7 +35,7 @@ namespace GalaxyBudsClient.Platform.Windows
             }
         }
 
-        private void PlayPause()
+        public void PlayPause()
         {
             try
             {

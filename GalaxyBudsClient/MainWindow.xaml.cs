@@ -8,8 +8,11 @@ using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Controls.Platform;
 using Avalonia.Markup.Xaml;
+using Avalonia.Platform;
 using Avalonia.Threading;
+using Avalonia.Win32;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Interface;
 using GalaxyBudsClient.Interface.Developer;
@@ -21,11 +24,15 @@ using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Platform.Windows;
+using GalaxyBudsClient.Scripting;
+using GalaxyBudsClient.Scripting.Experiment;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using NetSparkleUpdater.Enums;
 using Serilog;
 using Application = Avalonia.Application;
+using Environment = System.Environment;
 using MessageBox = GalaxyBudsClient.Interface.Dialogs.MessageBox;
 using RoutedEventArgs = Avalonia.Interactivity.RoutedEventArgs;
 using Window = Avalonia.Controls.Window;
@@ -34,13 +41,13 @@ namespace GalaxyBudsClient
 {
     public sealed class MainWindow : Window
     {
-        private readonly HomePage _homePage = new HomePage();
-        private readonly UnsupportedFeaturePage _unsupportedFeaturePage = new UnsupportedFeaturePage();
-        private readonly CustomTouchActionPage _customTouchActionPage = new CustomTouchActionPage();
-        private readonly ConnectionLostPage _connectionLostPage = new ConnectionLostPage();
-        private readonly UpdatePage _updatePage = new UpdatePage();
-        private readonly UpdateProgressPage _updateProgressPage = new UpdateProgressPage();
-        private readonly DeviceSelectionPage _deviceSelectionPage = new DeviceSelectionPage();
+        public readonly HomePage HomePage = new HomePage();
+        public readonly UnsupportedFeaturePage UnsupportedFeaturePage = new UnsupportedFeaturePage();
+        public readonly CustomTouchActionPage CustomTouchActionPage = new CustomTouchActionPage();
+        public readonly ConnectionLostPage ConnectionLostPage = new ConnectionLostPage();
+        public readonly UpdatePage UpdatePage = new UpdatePage();
+        public readonly UpdateProgressPage UpdateProgressPage = new UpdateProgressPage();
+        public readonly DeviceSelectionPage DeviceSelectionPage = new DeviceSelectionPage();
         
         private DevOptions? _devOptions;
 
@@ -53,31 +60,71 @@ namespace GalaxyBudsClient
         public bool DisableApplicationExit { set; get; }
         
         public PageContainer Pager { get; }
-        public CustomTouchActionPage CustomTouchActionPage => _customTouchActionPage;
-        public UpdatePage UpdatePage => _updatePage;
-        public UpdateProgressPage UpdateProgressPage => _updateProgressPage;
-        public DeviceSelectionPage DeviceSelectionPage => _deviceSelectionPage;
-
+        
         private static MainWindow? _instance;
-        public static MainWindow Instance => _instance ??= new MainWindow();
+        public static MainWindow Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    var platform = AvaloniaLocator.Current.GetService<IWindowingPlatform>();
+                    if (platform == null)
+                    {
+                        throw new Exception("Could not CreateWindow(): IWindowingPlatform is not registered.");
+                    }
+
+                    IWindowImpl impl;
+                    if (platform.GetType().Name == "Win32Platform")
+                    {
+                        Log.Debug("MainWindow.Instance: Initializing window with WndProc proxy");
+                        impl = new Win32ProcWindowImpl();
+                    }
+                    else
+                    {
+                        Log.Debug("MainWindow.Instance: Initializing window with default WindowImpl");
+                        impl = platform.CreateWindow();
+                    }
+                    
+                    _instance = new MainWindow(impl);
+                }
+
+                return _instance;
+            }
+        }
+
+        public static bool IsInitialized()
+        {
+            return _instance != null;
+        }
 
         public static void Kill()
         {
             _instance = null;
         }
 
+        /* Public constructor for XAMLIL only */
         public MainWindow()
+        {
+            /* Init with dummy objects */
+            _titleBar = new CustomTitleBar();
+            _popup = new BudsPopup();
+            Pager = new PageContainer();
+            Log.Error("MainWindow: Initialized without modified PlatformImpl. Features making use of legacy Win32 APIs may be unavailable.");
+        }
+        
+        public MainWindow(IWindowImpl impl) : base(impl)
         {
             AvaloniaXamlLoader.Load(this);
             this.AttachDevTools();
-
+            
             Pager = this.FindControl<PageContainer>("Container");
 
-            Pager.RegisterPages(_homePage, new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(),
+            Pager.RegisterPages(HomePage, new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(),
                 new CreditsPage(), new TouchpadPage(), new EqualizerPage(), new AdvancedPage(),
                 new SystemPage(), new SelfTestPage(), new SettingsPage(), new PopupSettingsPage(),
-                _connectionLostPage, _customTouchActionPage, _deviceSelectionPage, new SystemInfoPage(),
-                new WelcomePage(), _unsupportedFeaturePage, _updatePage, _updateProgressPage, new SystemCoredumpPage());
+                ConnectionLostPage, CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(),
+                new WelcomePage(), UnsupportedFeaturePage, UpdatePage, UpdateProgressPage, new SystemCoredumpPage());
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
@@ -95,7 +142,7 @@ namespace GalaxyBudsClient
 
             NotifyIconImpl.Instance.LeftClicked += TrayIcon_OnLeftClicked;
             TrayManager.Instance.Rebuild();
-
+            
             Pager.PageSwitched += (sender, pages) => BuildOptionsMenu();
             Loc.LanguageUpdated += BuildOptionsMenu;
             BuildOptionsMenu();
@@ -377,13 +424,13 @@ namespace GalaxyBudsClient
 
         public void ShowUnsupportedFeaturePage(string assertion)
         {
-            _unsupportedFeaturePage.RequiredVersion = assertion;
+            UnsupportedFeaturePage.RequiredVersion = assertion;
             Pager.SwitchPage(AbstractPage.Pages.UnsupportedFeature);
         }
 
         public void ShowCustomActionSelection(Devices device)
         {
-            _customTouchActionPage.CurrentSide = device;
+            CustomTouchActionPage.CurrentSide = device;
             Pager.SwitchPage(AbstractPage.Pages.TouchCustomAction);
         }
         #endregion

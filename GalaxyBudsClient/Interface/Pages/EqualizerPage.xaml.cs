@@ -33,23 +33,47 @@ namespace GalaxyBudsClient.Interface.Pages
 			SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
 			SPPMessageHandler.Instance.OtherOption += InstanceOnOtherOption;
 			
+			EventDispatcher.Instance.EventReceived += OnEventReceived;
             NotifyIconImpl.Instance.TrayMenuItemSelected += OnTrayMenuItemSelected;
             
 			Loc.LanguageUpdated += UpdateStrings;
 			UpdateStrings();
 		}
 
-        private async void OnTrayMenuItemSelected(object? sender, TrayMenuItem e)
+		private void OnEventReceived(EventDispatcher.Event e, object? arg)
+        {
+            Dispatcher.UIThread.Post(async () =>
+            {
+                switch (e)
+                {
+                    case EventDispatcher.Event.EqualizerToggle:
+	                    await MessageComposer.SetEqualizer(!_eqSwitch.IsChecked, (EqPreset)_presetSlider.Value, false);
+	                    _eqSwitch.Toggle();
+                        break;
+                    case EventDispatcher.Event.EqualizerNextPreset:
+	                    _eqSwitch.IsChecked = true;
+	                    var newVal = _presetSlider.Value + 1;
+	                    if (newVal >= 5)
+		                    newVal = 0;
+
+	                    _presetSlider.Value = newVal;
+	                    await MessageComposer.SetEqualizer(_eqSwitch.IsChecked, (EqPreset)_presetSlider.Value, false);
+	                    break;
+                }
+            });
+        }
+
+
+		private void OnTrayMenuItemSelected(object? sender, TrayMenuItem e)
         {
             if (e.Id == ItemType.ToggleEqualizer)
             {
-                await MessageComposer.SetEqualizer(!_eqSwitch.IsChecked, (EqPreset)_presetSlider.Value, false);
-				Dispatcher.UIThread.Post(_eqSwitch.Toggle);
+	            EventDispatcher.Instance.Dispatch(EventDispatcher.Event.EqualizerToggle);
                 TrayManager.Instance.Rebuild();
             }
         }
 
-        private async void InstanceOnOtherOption(object? sender, TouchOptions e)
+        private void InstanceOnOtherOption(object? sender, TouchOptions e)
 		{
 			ICustomAction action = e == TouchOptions.OtherL ? 
 				SettingsProvider.Instance.CustomActionLeft : SettingsProvider.Instance.CustomActionRight;
@@ -57,18 +81,10 @@ namespace GalaxyBudsClient.Interface.Pages
 			switch (action.Action)
 			{
 				case CustomAction.Actions.EnableEqualizer:
-					_eqSwitch.IsChecked = !_eqSwitch.IsChecked;
-					await MessageComposer.SetEqualizer(_eqSwitch.IsChecked, (EqPreset)_presetSlider.Value, false);
+					EventDispatcher.Instance.Dispatch(EventDispatcher.Event.EqualizerToggle);
 					break;
-				
 				case CustomAction.Actions.SwitchEqualizerPreset:
-					_eqSwitch.IsChecked = true;
-					var newVal = _presetSlider.Value + 1;
-					if (newVal >= 5)
-						newVal = 0;
-
-					_presetSlider.Value = newVal;
-					await MessageComposer.SetEqualizer(_eqSwitch.IsChecked, (EqPreset)_presetSlider.Value, false);
+					EventDispatcher.Instance.Dispatch(EventDispatcher.Event.EqualizerNextPreset);
 					break;
 			}
 		}

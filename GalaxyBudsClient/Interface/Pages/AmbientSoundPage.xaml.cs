@@ -44,10 +44,57 @@ namespace GalaxyBudsClient.Interface.Pages
             SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
             SPPMessageHandler.Instance.OtherOption += InstanceOnOtherOption;
 
+            EventDispatcher.Instance.EventReceived += OnEventReceived;
             NotifyIconImpl.Instance.TrayMenuItemSelected += OnTrayMenuItemSelected;
             
             Loc.LanguageUpdated += UpdateStrings;
             UpdateStrings();
+        }
+
+        private void OnEventReceived(EventDispatcher.Event e, object? arg)
+        {
+            Avalonia.Threading.Dispatcher.UIThread.Post(async () =>
+            {
+                switch (e)
+                {
+                    case EventDispatcher.Event.AmbientToggle:
+                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_AMBIENT_MODE,
+                            !_ambientSwitch.IsChecked);
+                        _ambientSwitch.Toggle();
+                        break;
+                    case EventDispatcher.Event.AmbientVolumeUp:
+                        _ambientSwitch.IsChecked = true;
+                        if (_volumeSlider.Value != _volumeSlider.Maximum)
+                        {
+                            _volumeSlider.Value += 1;
+                        }
+
+                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_AMBIENT_MODE,
+                            true);
+                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_AMBIENT_VOLUME,
+                            (byte) _volumeSlider.Value);
+                        break;
+                    case EventDispatcher.Event.AmbientVolumeDown:
+                        if (_volumeSlider.Value <= 0)
+                        {
+                            _ambientSwitch.IsChecked = false;
+                            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_AMBIENT_MODE,
+                                false);
+                        }
+                        else
+                        {
+                            _ambientSwitch.IsChecked = true;
+                            _volumeSlider.Value -= 1;
+
+                            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_AMBIENT_MODE,
+                                true);
+                            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_AMBIENT_VOLUME,
+                                (byte) _volumeSlider.Value);
+                        }
+
+                        break;
+                }
+            });
         }
 
         private async void OnTrayMenuItemSelected(object? sender, TrayMenuItem e)
@@ -60,7 +107,7 @@ namespace GalaxyBudsClient.Interface.Pages
             }
         }
 
-        private async void InstanceOnOtherOption(object? sender, TouchOptions e)
+        private void InstanceOnOtherOption(object? sender, TouchOptions e)
         {
             ICustomAction action = e == TouchOptions.OtherL ? 
                 SettingsProvider.Instance.CustomActionLeft : SettingsProvider.Instance.CustomActionRight;
@@ -68,28 +115,10 @@ namespace GalaxyBudsClient.Interface.Pages
             switch (action.Action)
             {
                 case CustomAction.Actions.AmbientVolumeUp:
-                    _ambientSwitch.IsChecked = true;
-                    _volumeSlider.Value += 1;
-					
-                    await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_AMBIENT_MODE, true);
-                    await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_AMBIENT_VOLUME, (byte)_volumeSlider.Value);
+                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientVolumeUp);
                     break;
                 case CustomAction.Actions.AmbientVolumeDown:
-
-                    if (_volumeSlider.Value <= 0)
-                    {
-                        _ambientSwitch.IsChecked = false;
-                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_AMBIENT_MODE, false);
-                    }
-                    else
-                    {
-                        _ambientSwitch.IsChecked = true;
-                        _volumeSlider.Value -= 1;
-                        					
-                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_AMBIENT_MODE, true);
-                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_AMBIENT_VOLUME, (byte)_volumeSlider.Value);
-                    }
-
+                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientVolumeDown);
                     break;
             }
         }

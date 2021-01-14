@@ -34,5 +34,18 @@ namespace GalaxyBudsClient.Platform.Linux
                 Log.Error($"{ex.ErrorName}: {ex.ErrorMessage}");
             }
         }
+
+        public void PlayPause()
+        {
+            try
+            {
+                _client.Player?.PlayPauseAsync();
+                Log.Debug("Linux.MediaKeyRemote: PlayPause request sent");
+            }
+            catch (DBusException ex)
+            {
+                Log.Error($"{ex.ErrorName}: {ex.ErrorMessage}");
+            }
+        }
     }
 }

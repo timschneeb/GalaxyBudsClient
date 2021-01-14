@@ -3,7 +3,7 @@ using GalaxyBudsClient.Platform.Interfaces;
 
 namespace GalaxyBudsClient.Platform
 {
-    class MediaKeyRemoteImpl
+    public class MediaKeyRemoteImpl
     {
         public static IMediaKeyRemote Instance;
 

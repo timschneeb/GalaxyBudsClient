@@ -4,9 +4,10 @@ using System.Text;
 
 namespace GalaxyBudsClient.Platform.Interfaces
 {
-    interface IMediaKeyRemote
+    public interface IMediaKeyRemote
     {
         void Play();
         void Pause();
+        void PlayPause();
     }
 }

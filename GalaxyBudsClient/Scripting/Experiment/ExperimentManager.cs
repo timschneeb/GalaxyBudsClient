@@ -15,7 +15,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
 {
     public class ExperimentManager
     {
-        private const int InitialScanTimeout = 2000; 
+        private const int InitialScanTimeout = 5000; 
         private readonly ExperimentClient _client = new ExperimentClient();
         private ExperimentRequest? _activeExperiment = null;
         private IExperimentBase? _activeExperimentHook = null;

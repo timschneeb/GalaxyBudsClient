@@ -44,8 +44,6 @@ namespace GalaxyBudsClient
             
             DeviceMessageCache.Init();
             UpdateManager.Init();
-            ScriptManager.Init();
-            ExperimentManager.Init();
             
             Log.Information($"Translator mode file location: {Loc.GetTranslatorModeFile()}");
 
