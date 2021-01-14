@@ -89,7 +89,7 @@ namespace GalaxyBudsClient.Scripting
 
         public void RegisterUserHooks()
         {
-            var directory = @"D:\Development\GalaxyBudsClient\GalaxyBudsClient\Temp"; // PlatformUtils.CombineDataPath("scripts");
+            var directory = PlatformUtils.CombineDataPath("scripts");
             Log.Information($"User script directory: {directory}");
             
             if (!Directory.Exists(directory))

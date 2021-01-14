@@ -16,10 +16,10 @@ public class GlobalHotkeyReceiver : IHook
     /* ----- Hotkeys are defined here: ----- */
     private static IEnumerable<(ModifierKeys, Keys, Action)> Hotkeys => new List<(ModifierKeys, Keys, Action)>()
     {
-        (ModifierKeys.Control, Keys.VolumeMute, () => { EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientToggle); }),
-        (ModifierKeys.Control, Keys.VolumeDown, () => { EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientVolumeDown); }),
-        (ModifierKeys.Control, Keys.VolumeUp, () => { EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientVolumeUp); }),
-        (ModifierKeys.Control | ModifierKeys.Shift, Keys.P, MediaKeyRemoteImpl.Instance.PlayPause),
+        (ModifierKeys.Win, Keys.F2, () => { EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientToggle); }),
+        (ModifierKeys.Control | ModifierKeys.Alt, Keys.Down, () => { EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientVolumeDown); }),
+        (ModifierKeys.Control | ModifierKeys.Alt, Keys.Up, () => { EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientVolumeUp); }),
+        (ModifierKeys.Control | ModifierKeys.Alt, Keys.P, MediaKeyRemoteImpl.Instance.PlayPause),
     };
     /* ----- ------------------------- ----- */
     
@@ -131,7 +131,8 @@ public class GlobalHotkeyReceiver : IHook
         Shift = 4,
         Win = 8
     }
-    
+	
+    [Flags]
     public enum Keys
     {
         /// <summary>
