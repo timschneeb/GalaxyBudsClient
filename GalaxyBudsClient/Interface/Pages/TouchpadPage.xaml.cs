@@ -43,24 +43,24 @@ namespace GalaxyBudsClient.Interface.Pages
 			_rightOption = this.FindControl<MenuDetailListItem>("RightOption");
 
             SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
-			
-            NotifyIconImpl.Instance.TrayMenuItemSelected += OnTrayMenuItemSelected;
+            EventDispatcher.Instance.EventReceived += OnEventReceived;
             
 			Loc.LanguageUpdated += UpdateTouchActionMenus;
 			Loc.LanguageUpdated += UpdateMenuDescriptions;
 			UpdateTouchActionMenus();
 		}
 
-        private async void OnTrayMenuItemSelected(object? sender, TrayMenuItem e)
-        {
-			if (e.Id == ItemType.LockTouchpad)
-            {
-				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_LOCK_TOUCHPAD, !_lock.IsChecked);
-				Dispatcher.UIThread.Post(_lock.Toggle);
-                TrayManager.Instance.Rebuild();
-            }
+		private async void OnEventReceived(EventDispatcher.Event e, object? arg)
+		{
+			switch (e)
+			{
+				case EventDispatcher.Event.LockTouchpadToggle:
+					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_LOCK_TOUCHPAD, !_lock.IsChecked);
+					Dispatcher.UIThread.Post(_lock.Toggle);
+					break;
+			}
 		}
-
+		
         private void InstanceOnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
 		{
 			_lock.IsChecked = e.TouchpadLock;

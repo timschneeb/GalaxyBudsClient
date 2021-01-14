@@ -31,11 +31,9 @@ namespace GalaxyBudsClient.Interface.Pages
 			_presetSlider = this.FindControl<SliderListItem>("EqPreset");
 			
 			SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
-			SPPMessageHandler.Instance.OtherOption += InstanceOnOtherOption;
 			
 			EventDispatcher.Instance.EventReceived += OnEventReceived;
-            NotifyIconImpl.Instance.TrayMenuItemSelected += OnTrayMenuItemSelected;
-            
+
 			Loc.LanguageUpdated += UpdateStrings;
 			UpdateStrings();
 		}
@@ -62,33 +60,7 @@ namespace GalaxyBudsClient.Interface.Pages
                 }
             });
         }
-
-
-		private void OnTrayMenuItemSelected(object? sender, TrayMenuItem e)
-        {
-            if (e.Id == ItemType.ToggleEqualizer)
-            {
-	            EventDispatcher.Instance.Dispatch(EventDispatcher.Event.EqualizerToggle);
-                TrayManager.Instance.Rebuild();
-            }
-        }
-
-        private void InstanceOnOtherOption(object? sender, TouchOptions e)
-		{
-			ICustomAction action = e == TouchOptions.OtherL ? 
-				SettingsProvider.Instance.CustomActionLeft : SettingsProvider.Instance.CustomActionRight;
-			
-			switch (action.Action)
-			{
-				case CustomAction.Actions.EnableEqualizer:
-					EventDispatcher.Instance.Dispatch(EventDispatcher.Event.EqualizerToggle);
-					break;
-				case CustomAction.Actions.SwitchEqualizerPreset:
-					EventDispatcher.Instance.Dispatch(EventDispatcher.Event.EqualizerNextPreset);
-					break;
-			}
-		}
-
+		
 		private void InstanceOnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
 		{
 			if (BluetoothImpl.Instance.ActiveModel == Models.Buds)

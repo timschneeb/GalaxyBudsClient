@@ -10,7 +10,9 @@ namespace GalaxyBudsClient.Model
             AmbientVolumeUp,
             AmbientVolumeDown,
             EqualizerToggle,
-            EqualizerNextPreset
+            EqualizerNextPreset,
+            AncToggle,
+            LockTouchpadToggle
         }
 
         public event Action<Event, object?>? EventReceived;

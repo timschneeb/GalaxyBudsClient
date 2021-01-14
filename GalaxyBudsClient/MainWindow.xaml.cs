@@ -332,49 +332,64 @@ namespace GalaxyBudsClient
             ICustomAction action = e == TouchOptions.OtherL ?
                 SettingsProvider.Instance.CustomActionLeft : SettingsProvider.Instance.CustomActionRight;
 
-            if (action.Action == CustomAction.Actions.RunExternalProgram)
+            switch (action.Action)
             {
-                try
-                {
-                    var psi = new ProcessStartInfo
+                case CustomAction.Actions.AmbientVolumeUp:
+                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientVolumeUp);
+                    break;
+                case CustomAction.Actions.AmbientVolumeDown:
+                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientVolumeDown);
+                    break;
+                case CustomAction.Actions.EnableEqualizer:
+                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.EqualizerToggle);
+                    break;
+                case CustomAction.Actions.SwitchEqualizerPreset:
+                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.EqualizerNextPreset);
+                    break;
+                case CustomAction.Actions.RunExternalProgram:
+                    try
                     {
-                        FileName = action.Parameter,
-                        UseShellExecute = true
-                    };
-                    Process.Start(psi);
-                }
-                catch (FileNotFoundException ex)
-                {
-                    new MessageBox()
-                    {
-                        Title = "Custom long-press action failed",
-                        Description = $"Unable to launch external application.\n" +
-                                      $"File not found: '{ex.FileName}'"
-                    }.Show(this);
-                }
-                catch (Win32Exception ex)
-                {
-                    if (ex.NativeErrorCode == 13 && PlatformUtils.IsLinux)
+                        var psi = new ProcessStartInfo
+                        {
+                            FileName = action.Parameter,
+                            UseShellExecute = true
+                        };
+                        Process.Start(psi);
+                    }
+                    catch (FileNotFoundException ex)
                     {
                         new MessageBox()
                         {
                             Title = "Custom long-press action failed",
-                            Description = $"Unable to launch external application.\n\n" +
-                                          $"Insufficient permissions. Please add execute permissions for your user/group to this file.\n\n" +
-                                          $"Run this command in a terminal: chmod +x \"{action.Parameter}\""
+                            Description = $"Unable to launch external application.\n" +
+                                          $"File not found: '{ex.FileName}'"
                         }.Show(this);
                     }
-                    else
+                    catch (Win32Exception ex)
                     {
-                        new MessageBox()
+                        if (ex.NativeErrorCode == 13 && PlatformUtils.IsLinux)
                         {
-                            Title = "Custom long-press action failed",
-                            Description = $"Unable to launch external application.\n\n" +
-                                          $"Detailed information:\n\n" +
-                                          $"{ex.Message}"
-                        }.Show(this);
+                            new MessageBox()
+                            {
+                                Title = "Custom long-press action failed",
+                                Description = $"Unable to launch external application.\n\n" +
+                                              $"Insufficient permissions. Please add execute permissions for your user/group to this file.\n\n" +
+                                              $"Run this command in a terminal: chmod +x \"{action.Parameter}\""
+                            }.Show(this);
+                        }
+                        else
+                        {
+                            new MessageBox()
+                            {
+                                Title = "Custom long-press action failed",
+                                Description = $"Unable to launch external application.\n\n" +
+                                              $"Detailed information:\n\n" +
+                                              $"{ex.Message}"
+                            }.Show(this);
+                        }
                     }
-                }
+
+                    break;
             }
         }
         #endregion

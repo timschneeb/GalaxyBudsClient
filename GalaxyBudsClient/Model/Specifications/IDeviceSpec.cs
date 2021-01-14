@@ -11,7 +11,7 @@ namespace GalaxyBudsClient.Model.Specifications
 {
     public interface IDeviceSpec
     {
-        enum Feature
+        public enum Feature
         {
             SeamlessConnection,
             AmbientExtraLoud,
@@ -28,14 +28,14 @@ namespace GalaxyBudsClient.Model.Specifications
             StereoPan
         }
         
-        Dictionary<Feature, FeatureRule?> Rules { get; }
-        Models Device { get; }
-        string DeviceBaseName { get; }
-        ITouchOption TouchMap { get; }
-        Guid ServiceUuid { get; }
-        IReadOnlyCollection<ItemType> TrayShortcuts { get; }
+        public Dictionary<Feature, FeatureRule?> Rules { get; }
+        public Models Device { get; }
+        public string DeviceBaseName { get; }
+        public ITouchOption TouchMap { get; }
+        public Guid ServiceUuid { get; }
+        public IReadOnlyCollection<ItemType> TrayShortcuts { get; }
         
-        bool Supports(Feature feature)
+        public bool Supports(Feature feature)
         {
             if (!Rules.ContainsKey(feature))
             {
@@ -56,7 +56,7 @@ namespace GalaxyBudsClient.Model.Specifications
             return DeviceMessageCache.Instance.ExtendedStatusUpdate.Revision >= Rules[feature]?.MinimumRevision;
         }
 
-        string RecommendedFwVersion(Feature feature)
+        public string RecommendedFwVersion(Feature feature)
         {
             return Rules.ContainsKey(feature) ? Rules[feature]?.RecommendedFirmwareVersion ?? "---" : "???";
         }

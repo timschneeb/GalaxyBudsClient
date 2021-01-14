@@ -27,6 +27,18 @@ namespace GalaxyBudsClient.Utils
         {
             switch (e.Id)
             {
+                case ItemType.LockTouchpad:
+                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.LockTouchpadToggle);
+                    break;
+                case ItemType.ToggleAnc:
+                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AncToggle);
+                    break;
+                case ItemType.ToggleEqualizer:
+                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.EqualizerToggle);
+                    break;
+                case ItemType.ToggleAmbient:
+                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientToggle);
+                    break;
                 case ItemType.Connect:
                     if (!BluetoothImpl.Instance.IsConnected && BluetoothImpl.Instance.RegisteredDeviceValid)
                     {
@@ -38,6 +50,8 @@ namespace GalaxyBudsClient.Utils
                     Dispatcher.UIThread.Post(MainWindow.Instance.Close);
                     break;
             }
+            
+            Rebuild();
         }
 
         private List<TrayMenuItem?> RebuildBatteryInfo()

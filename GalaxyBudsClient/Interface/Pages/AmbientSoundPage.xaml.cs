@@ -42,10 +42,8 @@ namespace GalaxyBudsClient.Interface.Pages
 
             SPPMessageHandler.Instance.AmbientEnabledUpdateResponse += (sender, b) => _ambientSwitch.IsChecked = b; 
             SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
-            SPPMessageHandler.Instance.OtherOption += InstanceOnOtherOption;
 
             EventDispatcher.Instance.EventReceived += OnEventReceived;
-            NotifyIconImpl.Instance.TrayMenuItemSelected += OnTrayMenuItemSelected;
             
             Loc.LanguageUpdated += UpdateStrings;
             UpdateStrings();
@@ -95,32 +93,6 @@ namespace GalaxyBudsClient.Interface.Pages
                         break;
                 }
             });
-        }
-
-        private async void OnTrayMenuItemSelected(object? sender, TrayMenuItem e)
-        {
-            if (e.Id == ItemType.ToggleAmbient)
-            {
-                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_AMBIENT_MODE, !_ambientSwitch.IsChecked);
-                Avalonia.Threading.Dispatcher.UIThread.Post(_ambientSwitch.Toggle);
-                TrayManager.Instance.Rebuild();
-            }
-        }
-
-        private void InstanceOnOtherOption(object? sender, TouchOptions e)
-        {
-            ICustomAction action = e == TouchOptions.OtherL ? 
-                SettingsProvider.Instance.CustomActionLeft : SettingsProvider.Instance.CustomActionRight;
-			
-            switch (action.Action)
-            {
-                case CustomAction.Actions.AmbientVolumeUp:
-                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientVolumeUp);
-                    break;
-                case CustomAction.Actions.AmbientVolumeDown:
-                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientVolumeDown);
-                    break;
-            }
         }
 
         private void UpdateStrings()

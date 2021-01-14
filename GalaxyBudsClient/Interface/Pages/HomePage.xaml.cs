@@ -133,7 +133,7 @@ namespace GalaxyBudsClient.Interface.Pages
             };
             BluetoothImpl.Instance.InvalidDataReceived += InstanceOnInvalidDataReceived;
 
-            NotifyIconImpl.Instance.TrayMenuItemSelected += OnTrayMenuItemSelected;
+            EventDispatcher.Instance.EventReceived += OnEventReceived;
             
             /* Restore data if restarted */
             var cache = DeviceMessageCache.Instance.BasicStatusUpdate;
@@ -143,13 +143,14 @@ namespace GalaxyBudsClient.Interface.Pages
             }
         }
 
-        private async void OnTrayMenuItemSelected(object? sender, TrayMenuItem e)
+        private async void OnEventReceived(EventDispatcher.Event e, object? arg)
         {
-            if (e.Id == ItemType.ToggleAnc)
+            switch (e)
             {
-                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_NOISE_REDUCTION, !_ancSwitch.IsChecked);
-                Dispatcher.UIThread.Post(_ancSwitch.Toggle);
-                TrayManager.Instance.Rebuild();
+                case EventDispatcher.Event.AncToggle:
+                    await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_NOISE_REDUCTION, !_ancSwitch.IsChecked);
+                    Dispatcher.UIThread.Post(_ancSwitch.Toggle);
+                    break;
             }
         }
 
