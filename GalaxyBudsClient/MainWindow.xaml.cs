@@ -56,6 +56,8 @@ namespace GalaxyBudsClient
         private DateTime _lastPopupTime = DateTime.UtcNow;
         private WearStates _lastWearState = WearStates.Both;
 
+        private bool _firstShow = true;
+        
         public bool OverrideMinimizeTray { set; get; }
         public bool DisableApplicationExit { set; get; }
         
@@ -156,6 +158,14 @@ namespace GalaxyBudsClient
             {
                 Pager.SwitchPage(AbstractPage.Pages.Welcome);
             }
+            
+            if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                if (desktop.Args.Contains("/StartMinimized") && PlatformUtils.SupportsTrayIcon)
+                {
+                    WindowState = WindowState.Minimized;
+                }
+            }
         }
         
         #region Window management
@@ -187,12 +197,14 @@ namespace GalaxyBudsClient
         {
             if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                if (desktop.Args.Contains("/StartMinimized") && PlatformUtils.SupportsTrayIcon)
+                if (desktop.Args.Contains("/StartMinimized") && PlatformUtils.SupportsTrayIcon && _firstShow)
                 {
                     Log.Debug("MainWindow: Launched minimized.");
                     Hide();
                 }
             }
+
+            _firstShow = false;
         }
 
         protected override void OnClosed(EventArgs e)
@@ -226,18 +238,19 @@ namespace GalaxyBudsClient
         public void BringToFront()
         {
             Dispatcher.UIThread.InvokeAsync(() =>
-            {
+            {  
                 if (WindowState == WindowState.Minimized)
                 {
                     WindowState = WindowState.Normal;
                 }
-
+                
                 if (PlatformUtils.IsLinux)
                 {
                     Hide(); // Workaround for some Linux DMs
                 }
+                
                 Show();
-
+                
                 Activate();
                 Topmost = true;
                 Topmost = false;
