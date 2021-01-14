@@ -1,7 +1,7 @@
 using System;
-using System.Collections.Concurrent;
-using System.Threading;
-using System.Windows.Threading;
+using Avalonia;
+using Avalonia.Platform;
+using Avalonia.Threading;
 using ThePBone.Interop.Win32;
 
 namespace GalaxyBudsClient.Platform.Windows
@@ -14,7 +14,7 @@ namespace GalaxyBudsClient.Platform.Windows
         
         protected override IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
         {
-            Dispatcher ??= Dispatcher.CurrentDispatcher;
+            Dispatcher ??= new Dispatcher(AvaloniaLocator.Current.GetService<IPlatformThreadingInterface>());
             
             MessageReceived?.Invoke(this,
                 new WndProcClient.WindowMessage()

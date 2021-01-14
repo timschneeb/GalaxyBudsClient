@@ -48,7 +48,7 @@ public class GlobalHotkeyReceiver : IHook
 
     private void Initialize()
     {
-        if (!MainWindow.IsInitialized())
+        if (!MainWindow.IsReady())
         {
             Logger.Error("Abnormal state: MainWindow not yet initialized");
             ScriptManager.Instance.UnregisterHook(this);

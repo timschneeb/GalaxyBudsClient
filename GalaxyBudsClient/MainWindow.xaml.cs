@@ -93,7 +93,7 @@ namespace GalaxyBudsClient
             }
         }
 
-        public static bool IsInitialized()
+        public static bool IsReady()
         {
             return _instance != null;
         }
