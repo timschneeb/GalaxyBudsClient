@@ -36,7 +36,7 @@ namespace GalaxyBudsClient.Platform.Dummy
         {
             await Task.CompletedTask;
             throw new PlatformNotSupportedException(
-                "ERROR: Platform not supported. On Windows systems, we only support the default Microsoft Bluetooth stack drivers. Third-party stacks such as BlueSoleil and Widcomm are NOT supported!");
+                "Platform not supported. On Windows systems, we only support the default Microsoft Bluetooth stack drivers. Third-party driver stacks such as BlueSoleil and Widcomm are NOT supported! This error can also occur if no Bluetooth adapter is enabled or connected to your PC.");
         }
     }
 }

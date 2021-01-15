@@ -1,0 +1,38 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="GalaxyBudsClient.Interface.Dialogs.HotkeyRecorder"
+        Title="{DynamicResource hotrec_title}"
+        MinWidth="370" MaxWidth="370" SizeToContent="Height"
+        KeyUp="OnKeyUp" KeyDown="OnKeyDown"
+        CanResize="False" Topmost="True" WindowStartupLocation="CenterOwner">
+    <Grid Margin="8"
+          RowDefinitions="Auto, 5, Auto, 5, Auto, 5, Auto">
+        <TextBlock Grid.Row="0"
+                   TextWrapping="Wrap" 
+                   Text="{DynamicResource hotrec_content}" />
+        
+        <TextBlock Grid.Row="2"
+                   x:Name="KeyString" 
+                   Padding="5"
+                   TextWrapping="Wrap" 
+                   Text="{DynamicResource hotrec_empty}"
+                   Background="{DynamicResource RoundBorderHoverBrush}" />
+        
+        <TextBlock Grid.Row="4"
+                   TextWrapping="Wrap"
+                   Text="{DynamicResource hotrec_note}" />
+        
+        <Grid Grid.Row="6"
+              ColumnDefinitions="*,Auto,5,Auto">
+            <Button Grid.Column="1"
+                    Content="{DynamicResource cancel}" 
+                    Click="Cancel_OnClick" />
+            <Button Grid.Column="3"
+                    Content="{DynamicResource apply}"
+                    Click="Apply_OnClick" />
+        </Grid>
+    </Grid>
+</Window>

@@ -1,6 +1,10 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using Avalonia.Input;
 using GalaxyBudsClient.Model.Attributes;
+using GalaxyBudsClient.Utils.DynamicLocalization;
+using Serilog;
 
 namespace GalaxyBudsClient.Model
 {
@@ -16,6 +20,8 @@ namespace GalaxyBudsClient.Model
             EnableEqualizer,
             [LocalizedDescription("touchoption_custom_next_eq_preset")]
             SwitchEqualizerPreset,
+            [LocalizedDescription("touchoption_custom_trigger_hotkey")]
+            TriggerHotkey,
             [LocalizedDescription("touchoption_custom_external_app")]
             RunExternalProgram
         }
@@ -31,15 +37,34 @@ namespace GalaxyBudsClient.Model
         }
         public override string ToString()
         {
-            if(Action == Actions.RunExternalProgram)
-                return $"{Path.GetFileName(Parameter)}";
+            switch (Action)
+            {
+                case Actions.RunExternalProgram:
+                    return $"{Path.GetFileName(Parameter)}";
+                case Actions.TriggerHotkey:
+                    try
+                    {
+                        return string.Join('+', Parameter.Split(',').Select(Enum.Parse<Key>));
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error("CustomAction.HotkeyBroadcast: Cannot parse saved key-combo: " + ex.Message);
+                        Log.Error("CustomAction.HotkeyBroadcast: Caused by combo: " + Parameter);
+                        return Loc.Resolve("unknown");
+                    }
+                    break;
+            }
+
             return Action.GetDescription();
         }
 
         public string ToLongString()
         {
-            if (Action == Actions.RunExternalProgram)
-                return $"{Action.GetDescription()} ({Path.GetFileName(Parameter)})";
+            if (Action == Actions.RunExternalProgram || Action == Actions.TriggerHotkey)
+            {
+                return $"{Action.GetDescription()} ({ToString()})";
+            }
+
             return Action.GetDescription();
         }
     }

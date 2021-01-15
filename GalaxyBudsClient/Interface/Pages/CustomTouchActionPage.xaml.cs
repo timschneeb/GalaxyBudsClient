@@ -4,6 +4,7 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Message;
@@ -69,6 +70,11 @@ namespace GalaxyBudsClient.Interface.Pages
                         {
                             continue;
                         }
+
+                        if (!PlatformUtils.IsWindows && action == CustomAction.Actions.TriggerHotkey)
+                        {
+                            continue;
+                        }
                         
                         menuActions.Add(action.GetDescription(), (sender, args) => ItemClicked(action));
                     }
@@ -97,6 +103,14 @@ namespace GalaxyBudsClient.Interface.Pages
 
                     break;
                 }
+                case CustomAction.Actions.TriggerHotkey:
+                    var recorder = new HotkeyRecorder();
+                    await recorder.ShowDialog(MainWindow.Instance);
+                    if (recorder.Result)
+                    {
+                        _currentAction = new CustomAction(action, string.Join(",", recorder.Hotkeys ?? new List<Key>()));
+                    }
+                    break;
                 default:
                     _currentAction = new CustomAction(action);
                     break;

@@ -9,6 +9,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Platform;
+using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Platform;
 using Avalonia.Threading;
@@ -389,6 +390,21 @@ namespace GalaxyBudsClient
                         }
                     }
 
+                    break;
+                case CustomAction.Actions.TriggerHotkey:
+                    var keys = new List<Key>();
+                    try
+                    {
+                        keys.AddRange(action.Parameter.Split(',').Select(Enum.Parse<Key>));
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error("CustomAction.HotkeyBroadcast: Cannot parse saved key-combo: " + ex.Message);
+                        Log.Error("CustomAction.HotkeyBroadcast: Caused by combo: " + action.Parameter);
+                        return;
+                    }
+
+                    HotkeyBroadcastImpl.Instance.SendKeys(keys);
                     break;
             }
         }
