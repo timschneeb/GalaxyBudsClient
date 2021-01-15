@@ -59,6 +59,9 @@ Get binaries for Windows in the [release](https://github.com/ThePBone/GalaxyBuds
 
 Linux support for x86_64, x86, ARM and ARM64 is currently in beta. You can grab precompiled self-contained beta builds here: 
 
+**Note:** If your system language is set to Korean, Japanese (and probably any other with non-Latin characters), you'll run into a crash.
+You can solve this by launching the executable like this: `LC_ALL=C ./GalaxyBudsClient`. I'll try to come up with a better solution soon.
+
 1. Follow this [link](https://github.com/ThePBone/GalaxyBudsClient/actions?query=workflow%3A%22Compile+Linux+binaries%22)
 2. Select the latest job that finished successfully
 3. On the next page, scroll all the way down to the artifacts section
