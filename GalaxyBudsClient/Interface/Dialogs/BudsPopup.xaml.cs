@@ -145,6 +145,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
             string modifier = string.Empty;
             if (BluetoothImpl.Instance.ActiveModel == Models.BudsPlus) modifier = "+";
             else if (BluetoothImpl.Instance.ActiveModel == Models.BudsLive) modifier = " Live";
+            else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPro) modifier = " Pro";
 
             string name = Environment.UserName.Split(' ')[0];
 

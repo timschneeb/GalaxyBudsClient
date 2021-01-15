@@ -18,6 +18,10 @@ namespace GalaxyBudsClient.Utils
             return rv;
         }
         
+        public static int ValueOfBinaryDigit(byte b, int i) {
+            return b & (1 << i);
+        }
+
         public static byte[] AddByteToArray(byte[] bArray, byte newByte)
         {
             byte[] newArray = new byte[bArray.Length + 1];

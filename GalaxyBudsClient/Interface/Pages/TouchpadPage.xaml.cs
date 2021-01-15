@@ -55,7 +55,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			switch (e)
 			{
 				case EventDispatcher.Event.LockTouchpadToggle:
-					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_LOCK_TOUCHPAD, !_lock.IsChecked);
+					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOCK_TOUCHPAD, !_lock.IsChecked);
 					Dispatcher.UIThread.Post(_lock.Toggle);
 					break;
 			}
@@ -195,12 +195,12 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		private async void LockToggle_OnToggled(object? sender, bool e)
 		{
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_LOCK_TOUCHPAD, e);
+			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOCK_TOUCHPAD, e);
 		}
 
 		private async void DoubleTapVolume_OnToggled(object? sender, bool e)
 		{
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_OUTSIDE_DOUBLE_TAP, e);
+			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.OUTSIDE_DOUBLE_TAP, e);
 		}
 	}
 }

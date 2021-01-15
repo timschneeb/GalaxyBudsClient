@@ -74,13 +74,13 @@ namespace GalaxyBudsClient.Interface.Pages
         {
             if (e)
             {
-                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_FIND_MY_EARBUDS_START);    
+                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.FIND_MY_EARBUDS_START);    
                 _leftMuteButton.IsVisible = true;
                 _rightMuteButton.IsVisible = true;
             }
             else
             {
-                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_FIND_MY_EARBUDS_STOP);    
+                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.FIND_MY_EARBUDS_STOP);    
                 _leftMuteButton.IsVisible = false;
                 _rightMuteButton.IsVisible = false;
                 _leftMuteButton.IsMuted = false;
@@ -135,7 +135,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
         public override async void OnPageHidden()
         {
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_FIND_MY_EARBUDS_STOP);
+            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.FIND_MY_EARBUDS_STOP);
             _scanButton.IsSearching = false;
         }
 

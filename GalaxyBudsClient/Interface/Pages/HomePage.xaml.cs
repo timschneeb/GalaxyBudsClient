@@ -15,6 +15,7 @@ using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
@@ -54,7 +55,8 @@ namespace GalaxyBudsClient.Interface.Pages
    
         private readonly Border _ancBorder;
         private readonly Border _ambientBorder;
-
+        private readonly Border _noiseBorder;
+        
         private readonly IconListItem _findMyGear;
         private readonly IconListItem _touch;
         
@@ -93,6 +95,7 @@ namespace GalaxyBudsClient.Interface.Pages
             
             _ancBorder = this.FindControl<Border>("AncBorder");
             _ambientBorder = this.FindControl<Border>("AmbientBorder");
+            _noiseBorder = this.FindControl<Border>("NoiseBorder");
             
             _findMyGear = this.FindControl<IconListItem>("FindMyGear");
             _touch = this.FindControl<IconListItem>("Touch");
@@ -101,7 +104,7 @@ namespace GalaxyBudsClient.Interface.Pages
             
             _refreshTimer.Interval = new TimeSpan(0, 0, 7);
 			_refreshTimer.Tick += async (sender, args) =>
-				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_GET_ALL_DATA);
+				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA);
             
             SPPMessageHandler.Instance.BaseUpdate += (sender, update) => ProcessBasicUpdate(update);
             SPPMessageHandler.Instance.GetAllDataResponse += (sender, parser) => UpdateDetails(parser);
@@ -145,10 +148,15 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private async void OnEventReceived(EventDispatcher.Event e, object? arg)
         {
+            if (!BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Anc))
+            {
+                return;
+            }
+            
             switch (e)
             {
                 case EventDispatcher.Event.AncToggle:
-                    await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_NOISE_REDUCTION, !_ancSwitch.IsChecked);
+                    await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_NOISE_REDUCTION, !_ancSwitch.IsChecked);
                     Dispatcher.UIThread.Post(_ancSwitch.Toggle);
                     break;
             }
@@ -159,7 +167,7 @@ namespace GalaxyBudsClient.Interface.Pages
             Dispatcher.UIThread.Post((async() =>
             {
                 await BluetoothImpl.Instance.DisconnectAsync();
-                SetWarning(true, $"{Loc.Resolve("mainpage_corrupt_data")} ({e.Message})");
+                SetWarning(true, $"{Loc.Resolve("mainpage_corrupt_data")} ({e.ErrorCode})");
                 await Task.Delay(500).ContinueWith(async(_)=>
                 {
                     await Task.Factory.StartNew(() => BluetoothImpl.Instance.ConnectAsync());
@@ -180,10 +188,10 @@ namespace GalaxyBudsClient.Interface.Pages
 		{
             SetWarning(false);
             
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_GET_ALL_DATA);
+            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA);
             
 			_refreshTimer.Start();
-            _caseLabel.IsVisible = BluetoothImpl.Instance.ActiveModel != Models.Buds;
+            _caseLabel.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery);
 
             /* Initial properties */
             if (_lastGetAllDataParser == null)
@@ -217,11 +225,10 @@ namespace GalaxyBudsClient.Interface.Pages
         
 		public async void ProcessBasicUpdate(IBasicStatusUpdate parser)
         {
-            _batteryCase.Content = BluetoothImpl.Instance.ActiveModel == Models.Buds ? string.Empty : $"{parser.BatteryCase}%";
-            _caseLabel.IsVisible = BluetoothImpl.Instance.ActiveModel != Models.Buds;
+            _batteryCase.Content = !BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery) ? string.Empty : $"{parser.BatteryCase}%";
+            _caseLabel.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery);
 
-            if (BluetoothImpl.Instance.ActiveModel == Models.BudsPlus ||
-                BluetoothImpl.Instance.ActiveModel == Models.BudsLive)
+            if (BluetoothImpl.Instance.ActiveModel != Models.Buds)
             {
                 UpdatePlusPlacement(parser.PlacementL, parser.PlacementR);
                 _lastPlacementL = parser.PlacementL;
@@ -229,9 +236,9 @@ namespace GalaxyBudsClient.Interface.Pages
             }
 
             if (parser is ExtendedStatusUpdateParser p &&
-                BluetoothImpl.Instance.ActiveModel == Models.BudsLive)
+                BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Anc))
             {
-                _ancSwitch.SetChecked(p.NoiceCancelling);
+                _ancSwitch.SetChecked(p.NoiseCancelling);
             }
             
             /* Update if disconnected */
@@ -240,7 +247,7 @@ namespace GalaxyBudsClient.Interface.Pages
                 UpdateConnectionState(parser.BatteryL > 0, parser.BatteryR > 0);
             }
             
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_GET_ALL_DATA);
+            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA);
         }
 
         private void UpdatePlusPlacement(PlacementStates l ,PlacementStates r)
@@ -380,8 +387,9 @@ namespace GalaxyBudsClient.Interface.Pages
 
         public void UpdateList()
         {
-            _ancBorder.IsVisible = BluetoothImpl.Instance.ActiveModel == Models.BudsLive;
-            _ambientBorder.IsVisible = BluetoothImpl.Instance.ActiveModel != Models.BudsLive;
+            _ancBorder.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Anc);
+            _ambientBorder.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSound);
+            _noiseBorder.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl);
         }
 
         public void SetWarning(bool visible, string message = "")
@@ -393,7 +401,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		private async void AncBorder_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
 			_ancSwitch.Toggle();
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_NOISE_REDUCTION, true);
+			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_NOISE_REDUCTION, true);
 		}
 
 		private void FindMyBuds_OnPointerPressed(object? sender, PointerPressedEventArgs e)
@@ -425,6 +433,11 @@ namespace GalaxyBudsClient.Interface.Pages
 		{
 			MainWindow.Instance.Pager.SwitchPage(Pages.System);
 		}
+        
+        private void NoiseBorder_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+        {
+            MainWindow.Instance.Pager.SwitchPage(Pages.NoiseControlPro);
+        }
 
         private void RequestTempUnitChange_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {

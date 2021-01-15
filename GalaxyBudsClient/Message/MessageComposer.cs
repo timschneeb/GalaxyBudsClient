@@ -23,7 +23,7 @@ namespace GalaxyBudsClient.Message
             Array.Copy(timestampRaw, 0, payload, 0, 8);
             Array.Copy(payload, 8, offsetRaw, 0, 4);
 
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_UPDATE_TIME, payload);
+            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.UPDATE_TIME, payload);
         }
         
         public static async Task SetManagerInfo(ClientDeviceType type = ClientDeviceType.Samsung, int androidSdkVersion = 29)
@@ -32,19 +32,19 @@ namespace GalaxyBudsClient.Message
             payload[0] = 1;
             payload[1] = (byte)type;
             payload[2] = (byte)androidSdkVersion;
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_MANAGER_INFO, payload);
+            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MANAGER_INFO, payload);
         }
         
         public static async Task SetMainConnection(DeviceInv side)
         {
             byte[] payload = new byte[1];
             payload[0] = (byte)side;
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_MAIN_CHANGE, payload);
+            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MAIN_CHANGE, payload);
         }
         
         public static async Task SetEqualizer(bool enable, EqPreset preset, bool dolbyMode)
         {
-            //Dolby mode has no effect on the Buds+/Live
+            // Dolby mode has no effect on the Buds+/Live/Pro
             if (BluetoothImpl.Instance.ActiveModel == Models.Buds)
             {
                 int rawPreset = (int)preset;
@@ -54,13 +54,13 @@ namespace GalaxyBudsClient.Message
                 byte[] payload = new byte[2];
                 payload[0] = Convert.ToByte(enable);
                 payload[1] = (byte)rawPreset;
-                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_EQUALIZER, payload);
+                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.EQUALIZER, payload);
             }
             else
             {
                 byte[] payload = new byte[1];
                 payload[0] = !enable ? (byte) 0 : Convert.ToByte(preset + 1);
-                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_EQUALIZER, payload);
+                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.EQUALIZER, payload);
             }
         }
         
@@ -70,9 +70,18 @@ namespace GalaxyBudsClient.Message
             public static async Task SetOptions(TouchOptions left, TouchOptions right)
             {
                 byte[] payload = new byte[2];
+                if (left == TouchOptions.NoiseControl)
+                {
+                    await NoiseControl.SetTouchNoiseControls(true, true, false);
+                }
+                if (right == TouchOptions.NoiseControl)
+                {
+                    await NoiseControl.SetTouchNoiseControls(true, true, false);
+                }
+
                 payload[0] = BluetoothImpl.Instance.DeviceSpec.TouchMap.ToByte(left);
                 payload[1] = BluetoothImpl.Instance.DeviceSpec.TouchMap.ToByte(right);
-                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_TOUCHPAD_OPTION, payload);
+                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_TOUCHPAD_OPTION, payload);
             }
         }
         
@@ -83,7 +92,22 @@ namespace GalaxyBudsClient.Message
                 byte[] payload = new byte[2];
                 payload[0] = Convert.ToByte(leftMuted);
                 payload[1] = Convert.ToByte(rightMuted);
-                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_MUTE_EARBUD, payload);
+                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MUTE_EARBUD, payload);
+            }
+        }
+        
+        /* Buds Pro only */
+        public static class NoiseControl
+        {
+            public static async Task SetMode(NoiseControlMode mode)
+            {
+                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.NOISE_CONTROLS, (byte)mode);
+            }
+
+            public static async Task SetTouchNoiseControls(bool anc, bool ambient, bool off)
+            {
+                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS,
+                    new byte[]{Convert.ToByte(anc), Convert.ToByte(ambient), Convert.ToByte(off)});
             }
         }
     }

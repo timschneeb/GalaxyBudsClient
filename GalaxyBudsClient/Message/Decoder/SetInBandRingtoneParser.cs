@@ -9,7 +9,7 @@ namespace GalaxyBudsClient.Message.Decoder
      */
     class SetInBandRingtoneParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_SET_IN_BAND_RINGTONE;
+        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.SET_IN_BAND_RINGTONE;
 
         public byte Status { set; get; }
 

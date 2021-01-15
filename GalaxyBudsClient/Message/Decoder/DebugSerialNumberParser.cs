@@ -6,7 +6,7 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     public class DebugSerialNumberParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_DEBUG_SERIAL_NUMBER;
+        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.DEBUG_SERIAL_NUMBER;
 
         public String? LeftSerialNumber { set; get; }
         public String? RightSerialNumber { set; get; }

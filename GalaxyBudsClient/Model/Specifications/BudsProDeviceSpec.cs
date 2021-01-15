@@ -14,7 +14,7 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.SeamlessConnection, null },
                 { IDeviceSpec.Feature.StereoPan, new FeatureRule(5, "???") },
                 { IDeviceSpec.Feature.DetectConversations, null },
-                { IDeviceSpec.Feature.AmbientAnc, null },
+                { IDeviceSpec.Feature.NoiseControl, null },
                 { IDeviceSpec.Feature.GamingMode, null },
                 { IDeviceSpec.Feature.CaseBattery, null },
                 { IDeviceSpec.Feature.FragmentedMessages, null },

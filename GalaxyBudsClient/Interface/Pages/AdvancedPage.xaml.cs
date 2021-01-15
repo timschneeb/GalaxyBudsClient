@@ -68,7 +68,7 @@ namespace GalaxyBudsClient.Interface.Pages
 						BluetoothImpl.Instance.DeviceSpec.RecommendedFwVersion(IDeviceSpec.Feature.SeamlessConnection)));
 				return;
 			}
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_SEAMLESS_CONNECTION, !e);
+			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_SEAMLESS_CONNECTION, !e);
 		}
 
 		private void ResumeSensor_OnToggled(object? sender, bool e)
@@ -86,17 +86,17 @@ namespace GalaxyBudsClient.Interface.Pages
 						BluetoothImpl.Instance.DeviceSpec.RecommendedFwVersion(IDeviceSpec.Feature.AmbientSidetone)));
 				return;
 			}
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_SIDETONE, e);
+			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_SIDETONE, e);
 		}
 
 		private async void Passthrough_OnToggled(object? sender, bool e)
 		{
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_PASS_THROUGH, e);
+			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.PASS_THROUGH, e);
 		}
 
 		private async void GamingMode_OnToggled(object? sender, bool e)
 		{
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_ADJUST_SOUND_SYNC, e);
+			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.ADJUST_SOUND_SYNC, e);
 		}
 	}
 }

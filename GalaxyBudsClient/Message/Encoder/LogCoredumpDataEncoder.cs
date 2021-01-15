@@ -11,7 +11,7 @@ namespace GalaxyBudsClient.Message.Encoder
                 BitConverter.GetBytes(offset),
                 BitConverter.GetBytes(size)
             );
-            return new SPPMessage(SPPMessage.MessageIds.MSG_ID_LOG_COREDUMP_DATA, SPPMessage.MsgType.Request, bytes);
+            return new SPPMessage(SPPMessage.MessageIds.LOG_COREDUMP_DATA, SPPMessage.MsgType.Request, bytes);
         }
     }
 }

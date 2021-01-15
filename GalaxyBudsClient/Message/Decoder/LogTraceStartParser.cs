@@ -7,7 +7,7 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     class LogTraceStartParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_LOG_TRACE_START;
+        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.LOG_TRACE_START;
         
         public int DataSize { set; get; }
         public short PartialDataMaxSize { set; get; }

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Reflection;
 using GalaxyBudsClient.Model.Attributes;
+using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Message.Decoder
 {
     class DebugModeVersionParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_VERSION_INFO;
+        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.VERSION_INFO;
 
         readonly String[] _swMonth = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" };
         readonly String[] _swRelVer = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
@@ -65,13 +66,30 @@ namespace GalaxyBudsClient.Message.Decoder
             }
             else
             {
-                String swVar = payload[startIndex] == 0 ? "E" : "U";
+                string swVar = payload[startIndex] == 0 ? "E" : "U";
                 int swYearIndex = (payload[startIndex + 1] & 240) >> 4;
                 int swMonthIndex = payload[startIndex + 1] & 15;
                 byte swRelVerIndex = payload[startIndex + 2];
 
-                return side + (ActiveModel == Model.Constants.Models.BudsLive ? "180XX" : "175XX") + swVar + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] +
-                       _swRelVer[swRelVerIndex]; ;
+                string pre;
+                switch (ActiveModel)
+                {
+                    case Models.BudsPlus:
+                        pre = "175XX";
+                        break;
+                    case Models.BudsLive:
+                        pre = "180XX";
+                        break;
+                    case Models.BudsPro:
+                        pre = "190XX";
+                        break;
+                    default:
+                        pre = "???XX";
+                        break;
+                }
+                
+                return side + pre + swVar + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] +
+                       _swRelVer[swRelVerIndex];
             }
         }
 

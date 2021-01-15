@@ -10,7 +10,7 @@ namespace GalaxyBudsClient.Message.Decoder
      */
     class AmbientWearingUpdateParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_AMBIENT_WEARING_STATUS_UPDATED;
+        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.AMBIENT_WEARING_STATUS_UPDATED;
 
         public WearStates WearState { set; get; }
         public int LeftDetectionCount { set; get; }

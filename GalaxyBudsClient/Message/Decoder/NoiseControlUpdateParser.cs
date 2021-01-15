@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Message.Decoder
 {
-    class DebugBuildInfoParser : BaseMessageParser
+    class NoiseControlUpdateParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.DEBUG_BUILD_INFO;
-        
-        public String? BuildString { set; get; }
+        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.NOISE_CONTROLS_UPDATE;
+        public NoiseControlMode Mode { set; get; }
 
         public override void ParseMessage(SPPMessage msg)
         {
             if (msg.Id != HandledType)
                 return;
 
-            BuildString = System.Text.Encoding.ASCII.GetString(msg.Payload);
+            Mode = (NoiseControlMode) msg.Payload[0];
         }
 
         public override Dictionary<String, String> ToStringMap()
@@ -27,7 +27,7 @@ namespace GalaxyBudsClient.Message.Decoder
                 if (property.Name == "HandledType" || property.Name == "ActiveModel")
                     continue;
 
-                map.Add(property.Name, property?.GetValue(this)?.ToString() ?? "null");
+                map.Add(property.Name, property.GetValue(this)?.ToString() ?? "null");
             }
 
             return map;

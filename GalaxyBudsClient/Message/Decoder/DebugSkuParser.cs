@@ -6,7 +6,7 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     class DebugSkuParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_DEBUG_SKU;
+        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.DEBUG_SKU;
 
         public char a { set; get; }
         public char b { set; get; }

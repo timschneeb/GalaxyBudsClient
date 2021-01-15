@@ -66,7 +66,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			_resetButton.Text = Loc.Resolve("system_waiting_for_device");
 			_resetButton.IsEnabled = false;
 			//TODO: Unregister device instead
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_RESET);
+			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.RESET);
 		}
 	}
 }

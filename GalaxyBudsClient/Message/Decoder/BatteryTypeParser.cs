@@ -6,7 +6,7 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     public class BatteryTypeParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_BATTERY_TYPE;
+        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.BATTERY_TYPE;
 
         public String? LeftBatteryType { set; get; }
         public String? RightBatteryType { set; get; }

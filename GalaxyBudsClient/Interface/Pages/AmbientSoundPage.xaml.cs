@@ -51,12 +51,17 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private void OnEventReceived(EventDispatcher.Event e, object? arg)
         {
+            if (!BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSound))
+            {
+                return;
+            }
+
             Avalonia.Threading.Dispatcher.UIThread.Post(async () =>
             {
                 switch (e)
                 {
                     case EventDispatcher.Event.AmbientToggle:
-                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_AMBIENT_MODE,
+                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_AMBIENT_MODE,
                             !_ambientSwitch.IsChecked);
                         _ambientSwitch.Toggle();
                         break;
@@ -67,16 +72,16 @@ namespace GalaxyBudsClient.Interface.Pages
                             _volumeSlider.Value += 1;
                         }
 
-                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_AMBIENT_MODE,
+                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_AMBIENT_MODE,
                             true);
-                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_AMBIENT_VOLUME,
+                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.AMBIENT_VOLUME,
                             (byte) _volumeSlider.Value);
                         break;
                     case EventDispatcher.Event.AmbientVolumeDown:
                         if (_volumeSlider.Value <= 0)
                         {
                             _ambientSwitch.IsChecked = false;
-                            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_AMBIENT_MODE,
+                            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_AMBIENT_MODE,
                                 false);
                         }
                         else
@@ -84,9 +89,9 @@ namespace GalaxyBudsClient.Interface.Pages
                             _ambientSwitch.IsChecked = true;
                             _volumeSlider.Value -= 1;
 
-                            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_AMBIENT_MODE,
+                            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_AMBIENT_MODE,
                                 true);
-                            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_AMBIENT_VOLUME,
+                            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.AMBIENT_VOLUME,
                                 (byte) _volumeSlider.Value);
                         }
 
@@ -142,18 +147,18 @@ namespace GalaxyBudsClient.Interface.Pages
 		
         private async void AmbientToggle_OnToggled(object? sender, bool e)
         {
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_SET_AMBIENT_MODE, e);
+            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_AMBIENT_MODE, e);
         }
 
         private async void VoiceFocusToggle_OnToggled(object? sender, bool e)
         {
             var type = _voiceFocusSwitch.IsChecked ? AmbientType.VoiceFocus : AmbientType.Default;
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_AMBIENT_VOICE_FOCUS, e);
+            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.AMBIENT_VOICE_FOCUS, e);
         }
 
         private async void VolumeSlider_OnChanged(object? sender, int e)
         {
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_AMBIENT_VOLUME, (byte)e);
+            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.AMBIENT_VOLUME, (byte)e);
         }
 
         private async void ExtraLoud_OnToggled(object? sender, bool e)
@@ -171,8 +176,8 @@ namespace GalaxyBudsClient.Interface.Pages
             if (e || _volumeSlider.Value >= 3)
                 _volumeSlider.Value = _volumeSlider.Maximum;
 			
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_EXTRA_HIGH_AMBIENT, e);
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_AMBIENT_VOLUME, (byte)_volumeSlider.Value);
+            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.EXTRA_HIGH_AMBIENT, e);
+            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.AMBIENT_VOLUME, (byte)_volumeSlider.Value);
         }
     }
 }

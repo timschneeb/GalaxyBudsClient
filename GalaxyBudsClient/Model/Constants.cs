@@ -89,7 +89,7 @@ namespace GalaxyBudsClient.Model
             [Description("Galaxy Buds Live (2020)")]
             BudsLive = 3,
             [Description("Galaxy Buds Pro (2021)")]
-            BudsPro = 3
+            BudsPro = 4
         }
 
         public enum Color
@@ -142,6 +142,13 @@ namespace GalaxyBudsClient.Model
             Unknown = 2
         }
         
+        public enum NoiseControlMode
+        {
+            Off = 0,
+            AmbientSound = 1,
+            NoiseReduction = 2
+        }
+        
         public enum TouchOptions
         {
             [LocalizedDescription("touchoption_voice")]
@@ -154,6 +161,8 @@ namespace GalaxyBudsClient.Model
             AmbientSound,
             [LocalizedDescription("anc")]
             Anc,
+            [LocalizedDescription("touchoption_switch_noisecontrols")]
+            NoiseControl,
             [LocalizedDescription("touchoption_spotify")]
             SpotifySpotOn,
             [Hidden]

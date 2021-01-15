@@ -8,7 +8,7 @@ namespace GalaxyBudsClient.Model.Touchpad
         public Dictionary<TouchOptions, byte> LookupTable => new Dictionary<TouchOptions, byte>()
         {
             {TouchOptions.VoiceAssistant, 1},
-            {TouchOptions.Anc, 2},
+            {TouchOptions.NoiseControl, 2},
             {TouchOptions.Volume, 3},
             {TouchOptions.SpotifySpotOn, 4},
             {TouchOptions.OtherL, 5},

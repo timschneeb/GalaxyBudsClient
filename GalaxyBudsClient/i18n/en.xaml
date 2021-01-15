@@ -55,24 +55,25 @@
     <sys:String x:Key="placement_in_case">Case</sys:String>
 
     <!-- Touch options -->
-    <sys:String x:Key="touchoption_voice">Voice Assistant</sys:String>
-    <sys:String x:Key="touchoption_quickambientsound">Quick Ambient Sound</sys:String>
+    <sys:String x:Key="touchoption_voice">Voice assistant</sys:String>
+    <sys:String x:Key="touchoption_quickambientsound">Quick ambient sound</sys:String>
     <sys:String x:Key="touchoption_volume">Volume</sys:String>
-    <sys:String x:Key="touchoption_volume_up">Volume Up</sys:String>
-    <sys:String x:Key="touchoption_volume_down">Volume Down</sys:String>
-    <sys:String x:Key="touchoption_ambientsound">Ambient Sound</sys:String>
+    <sys:String x:Key="touchoption_volume_up">Volume up</sys:String>
+    <sys:String x:Key="touchoption_volume_down">Volume down</sys:String>
+    <sys:String x:Key="touchoption_ambientsound">Ambient sound</sys:String>
+    <sys:String x:Key="touchoption_switch_noisecontrols">Switch noise controls</sys:String>
     <sys:String x:Key="touchoption_spotify">Spotify (Android only)</sys:String>
-    <sys:String x:Key="touchoption_custom">Custom Action...</sys:String>
+    <sys:String x:Key="touchoption_custom">Custom action...</sys:String>
     <sys:String x:Key="touchoption_custom_null">Not set</sys:String>
     <sys:String x:Key="touchoption_custom_unknown">Unknown</sys:String>
-    <sys:String x:Key="touchoption_custom_prefix">Custom Action:</sys:String>
-
-    <sys:String x:Key="touchoption_custom_ambient_up">Ambient Volume Up</sys:String>
-    <sys:String x:Key="touchoption_custom_ambient_down">Ambient Volume Down</sys:String>
-    <sys:String x:Key="touchoption_custom_toggle_eq">Toggle Equalizer</sys:String>
-    <sys:String x:Key="touchoption_custom_next_eq_preset">Next Equalizer Preset</sys:String>
-    <sys:String x:Key="touchoption_custom_trigger_hotkey">Press Hotkey...</sys:String>
-    <sys:String x:Key="touchoption_custom_external_app">Run External Program...</sys:String>
+    <sys:String x:Key="touchoption_custom_prefix">Custom action:</sys:String>
+    
+    <sys:String x:Key="touchoption_custom_ambient_up">Ambient volume up</sys:String>
+    <sys:String x:Key="touchoption_custom_ambient_down">Ambient volume down</sys:String>
+    <sys:String x:Key="touchoption_custom_toggle_eq">Toggle equalizer</sys:String>
+    <sys:String x:Key="touchoption_custom_next_eq_preset">Next equalizer preset</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_hotkey">Press hotkey...</sys:String>
+    <sys:String x:Key="touchoption_custom_external_app">Run external program...</sys:String>
 
     <!-- Options menu -->
     <sys:String x:Key="optionsmenu_title">Options</sys:String>
@@ -100,7 +101,7 @@
     <sys:String x:Key="continue_button">Continue</sys:String>
 
     <!-- Hotkey Recorder Dialog (Custom action) -->
-    <sys:String x:Key="hotrec_title">Hotkey Recorder</sys:String>
+    <sys:String x:Key="hotrec_title">Hotkey recorder</sys:String>
     <sys:String x:Key="hotrec_content">Please enter a key-combination (hold down):</sys:String>
     <sys:String x:Key="hotrec_empty">None</sys:String>
     <sys:String x:Key="hotrec_note">Note: Due to User Interface Privacy Isolation (UIPI) only applications of the same or lower elevation can properly receive hotkey commands.</sys:String>
@@ -121,11 +122,12 @@
 
     <!-- Main page -->
     <sys:String x:Key="mainpage_corrupt_data">Received corrupted data. Reconnecting...</sys:String>
-    <sys:String x:Key="mainpage_find_my_earbuds">Find my Earbuds</sys:String>
+    <sys:String x:Key="mainpage_find_my_earbuds">Find my earbuds</sys:String>
     <sys:String x:Key="mainpage_touchpad">Touchpad</sys:String>
-    <sys:String x:Key="mainpage_ambient_sound">Ambient Sound</sys:String>
+    <sys:String x:Key="mainpage_ambient_sound">Ambient sound</sys:String>
+    <sys:String x:Key="mainpage_noise">Noise control</sys:String>
     <sys:String x:Key="mainpage_equalizer">Equalizer</sys:String>
-    <sys:String x:Key="mainpage_advanced">Advanced Settings</sys:String>
+    <sys:String x:Key="mainpage_advanced">Advanced settings</sys:String>
     <sys:String x:Key="mainpage_system">System</sys:String>
 
     <!-- Update page -->
@@ -184,17 +186,17 @@
 
     <!-- Touchpad page -->
     <sys:String x:Key="touchpad_header">Touchpad</sys:String>
-    <sys:String x:Key="touchpad_lock">Lock Touchpad</sys:String>
-    <sys:String x:Key="touchpad_left_action">Left Action</sys:String>
-    <sys:String x:Key="touchpad_right_action">Right Action</sys:String>
+    <sys:String x:Key="touchpad_lock">Lock touchpad</sys:String>
+    <sys:String x:Key="touchpad_left_action">Left action</sys:String>
+    <sys:String x:Key="touchpad_right_action">Right action</sys:String>
 
-    <sys:String x:Key="touchpad_double_tap_volume">Double-Tap Earbud Edge</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume">Double-tap earbud edge</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Double-tap the edge of the left or right earbud to turn the volume down or up</sys:String>
 
     <!-- Custom touchpad action page -->
     <sys:String x:Key="cact_header">Define custom long-press action</sys:String>
     <sys:String x:Key="cact_external_app_dialog_title">Select executable...</sys:String>
-    <sys:String x:Key="cact_action">Custom Action</sys:String>
+    <sys:String x:Key="cact_action">Custom action</sys:String>
     <sys:String x:Key="cact_notice">Notice</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Custom long-press actions are only available when this app is active in the background.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">It has no effect on Android or other devices.</sys:String>
@@ -307,11 +309,11 @@
     <sys:String x:Key="fmg_warning_both">Please remove both earbuds from your ears.</sys:String>
     <sys:String x:Key="fmg_warning_left">Please remove the left earbud from your ear.</sys:String>
     <sys:String x:Key="fmg_warning_right">Please remove the right earbud from your ear.</sys:String>
-    <sys:String x:Key="fmg_header">Find my Earbuds</sys:String>
+    <sys:String x:Key="fmg_header">Find my earbuds</sys:String>
 
     <!-- Equalizer -->
     <sys:String x:Key="eq_header">Equalizer</sys:String>
-    <sys:String x:Key="eq_enable">Enable Equalizer</sys:String>
+    <sys:String x:Key="eq_enable">Enable equalizer</sys:String>
     <sys:String x:Key="eq_preset">Preset</sys:String>
     <sys:String x:Key="eq_dolby">Optimize for use with Dolby</sys:String>
 
@@ -321,12 +323,21 @@
     <sys:String x:Key="eq_clear">Clear</sys:String>
     <sys:String x:Key="eq_treble">Treble Boost</sys:String>
 
+    <!-- Noise control -->
+    <sys:String x:Key="nc_header">Noise control</sys:String>
+    <sys:String x:Key="nc_anc_level">High sensitivity</sys:String>
+    <sys:String x:Key="nc_anc_level_description">Stronger noise cancelling effect</sys:String>
+    <sys:String x:Key="nc_voicedetect">Conversation detection</sys:String>
+    <sys:String x:Key="nc_voicedetect_description">When your voice is detected, automatically turn on Ambient sound and lower media volume to make conversation easier</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout">Conversation timeout</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout_item">{0} seconds</sys:String>
+    
     <!-- Ambient sound -->
-    <sys:String x:Key="as_header">Ambient Sound</sys:String>
-    <sys:String x:Key="as_enable">Enable Ambient Sound</sys:String>
-    <sys:String x:Key="as_volume">Ambient Sound Volume</sys:String>
-    <sys:String x:Key="as_voicefocus">Voice Focus</sys:String>
-    <sys:String x:Key="as_extrahigh">Extra-High Ambient Volume</sys:String>
+    <sys:String x:Key="as_header">Ambient sound</sys:String>
+    <sys:String x:Key="as_enable">Enable ambient sound</sys:String>
+    <sys:String x:Key="as_volume">Ambient sound volume</sys:String>
+    <sys:String x:Key="as_voicefocus">Voice focus</sys:String>
+    <sys:String x:Key="as_extrahigh">Extra-high ambient volume</sys:String>
     <sys:String x:Key="as_extrahigh_description">Adds an extra volume level to the Ambient Volume slider</sys:String>
     <sys:String x:Key="as_scale_very_low">Very low</sys:String>
     <sys:String x:Key="as_scale_low">Low</sys:String>
@@ -337,15 +348,15 @@
     <!-- Advanced page -->
     <sys:String x:Key="adv_header">Advanced Settings</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} or later</sys:String>
-    <sys:String x:Key="adv_seamless">Seamless Earbud Connection</sys:String>
+    <sys:String x:Key="adv_seamless">Seamless earbud connection</sys:String>
     <sys:String x:Key="adv_seamless_desc">Switch quickly to nearby devices without disconnecting your earbuds or turning on pairing mode</sys:String>
     <sys:String x:Key="adv_resume_playback">Resume/start playback if Buds are worn</sys:String>
     <sys:String x:Key="adv_resume_playback_desc">Sends a global play/pause state change event when at least one of the proximity sensors is covered (Desktop only)</sys:String>
-    <sys:String x:Key="adv_sidetone">Use Ambient Sound during calls</sys:String>
+    <sys:String x:Key="adv_sidetone">Use ambient sound during calls</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Hear your own voice more clearly while on the phone</sys:String>
     <sys:String x:Key="adv_passthrough">Relieve pressure with ambient sound</sys:String>
     <sys:String x:Key="adv_passthrough_desc">This can prevent a feeling of stuffiness or compression when you're not using active noise canceling</sys:String>
-    <sys:String x:Key="adv_gaming_mode">Gaming Mode</sys:String>
+    <sys:String x:Key="adv_gaming_mode">Gaming mode</sys:String>
     <sys:String x:Key="adv_gaming_mode_desc">Minimize latency and adjust audio synchronization (Samsung only)</sys:String>
 
     <!-- Credits -->
@@ -358,7 +369,7 @@
 
     <!-- Connection lost page -->
     <sys:String x:Key="connlost_header">Unable to establish connection</sys:String>
-    <sys:String x:Key="connlost_description_p1">Unable to establish a connection to your Earbuds.</sys:String>
+    <sys:String x:Key="connlost_description_p1">Unable to establish a connection to your earbuds.</sys:String>
     <sys:String x:Key="connlost_description_p2">
         Please check your Bluetooth settings and make sure your Earbuds are turned on and paired to this computer.&#10;You can also register a new pair if needed. In that case, please select "Options > Unregister device".
     </sys:String>

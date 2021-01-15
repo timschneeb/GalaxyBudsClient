@@ -13,13 +13,13 @@ namespace GalaxyBudsClient.Message.Decoder
         [Device(Models.Buds)]
         public int EarType { set; get; }
         
-        [Device(new[] { Models.BudsPlus, Models.BudsLive })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
         public int Revision { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
         public PlacementStates PlacementL { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
         public PlacementStates PlacementR { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
         public int BatteryCase { set; get; }
     }
 }

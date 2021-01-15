@@ -10,7 +10,7 @@ namespace GalaxyBudsClient.Message.Decoder
     public class StatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
     {
 
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_STATUS_UPDATED;
+        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.STATUS_UPDATED;
         public int BatteryL { set; get; }
         public int BatteryR { set; get; }
         public bool IsCoupled { set; get; }
@@ -22,13 +22,13 @@ namespace GalaxyBudsClient.Message.Decoder
         public int EarType { set; get; }
 
 
-        [Device(new[] { Models.BudsPlus, Models.BudsLive })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
         public int Revision { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
         public PlacementStates PlacementL { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
         public PlacementStates PlacementR { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
         public int BatteryCase { set; get; }
 
         public override void ParseMessage(SPPMessage msg)
@@ -64,7 +64,15 @@ namespace GalaxyBudsClient.Message.Decoder
                 else
                     WearState = WearStates.None;
 
-                BatteryCase = msg.Payload[6];
+                if (ActiveModel == Models.BudsPro && msg.Payload[6] == 101)
+                {
+                    /* Cradle disconnected */
+                    BatteryCase = 0;
+                }
+                else
+                {
+                    BatteryCase = msg.Payload[6];
+                }
             }
         }
 

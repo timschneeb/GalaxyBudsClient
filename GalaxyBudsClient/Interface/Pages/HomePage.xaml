@@ -74,6 +74,9 @@
                 <Border IsVisible="True" Name="AmbientBorder" Grid.Row="0" CornerRadius="{StaticResource DefaultCornerRadius}" Classes="BorderHoverStyle" PointerPressed="Ambient_OnPointerPressed">
                     <items:IconListItem FontSize="18" Source="/Resources/features/sound_color.png" Text="{DynamicResource mainpage_ambient_sound}" />
                 </Border>
+                <Border IsVisible="False" Name="NoiseBorder" Grid.Row="0" CornerRadius="{StaticResource DefaultCornerRadius}" Classes="BorderHoverStyle" PointerPressed="NoiseBorder_OnPointerPressed">
+                    <items:IconListItem FontSize="18" Source="/Resources/features/sound_color.png" Text="{DynamicResource mainpage_noise}" />
+                </Border>
                 <Border Name="AncBorder" IsVisible="False" Grid.Row="0" CornerRadius="{StaticResource DefaultCornerRadius}" Classes="BorderHoverStyle" PointerPressed="AncBorder_OnPointerPressed">
                     <Grid>
                         <items:IconListItem FontSize="18" Source="/Resources/features/anc_color.png" Text="{DynamicResource anc}" />

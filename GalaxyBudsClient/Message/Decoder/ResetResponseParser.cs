@@ -6,7 +6,7 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     class ResetResponseParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.MSG_ID_RESET;
+        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.RESET;
 
         public int ResultCode { set; get; }
 

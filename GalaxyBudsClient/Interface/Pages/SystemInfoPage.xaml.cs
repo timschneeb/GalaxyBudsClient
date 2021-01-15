@@ -1,4 +1,5 @@
-﻿using Avalonia.Controls;
+﻿using System;
+using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Interface.Elements;
@@ -65,6 +66,10 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		private void InstanceOnBuildStringResponse(object? sender, string e)
 		{
+			if (e == string.Empty)
+			{
+				return;
+			}
 			_buildString.Description = e.Length > 2 ? e.Remove(0,2) : e;
 		}
 
@@ -90,10 +95,10 @@ namespace GalaxyBudsClient.Interface.Pages
 		{
 			if (MainWindow.Instance.Pager.CurrentPage == Pages.SystemInfo)
 			{
-				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_BATTERY_TYPE);
-				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_SERIAL_NUMBER);
-				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_BUILD_INFO);
-				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_GET_ALL_DATA);
+				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.BATTERY_TYPE);
+				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_SERIAL_NUMBER);
+				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_BUILD_INFO);
+				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA);
 			}
 		}
 
@@ -109,10 +114,10 @@ namespace GalaxyBudsClient.Interface.Pages
 			_batteryType.Description = Waiting;
 			_revision.Description = DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision.ToString() ?? Waiting;
 
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_BATTERY_TYPE);
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_SERIAL_NUMBER);
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_BUILD_INFO);
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_GET_ALL_DATA);
+			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.BATTERY_TYPE);
+			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_SERIAL_NUMBER);
+			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_BUILD_INFO);
+			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA);
 		}
 
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)

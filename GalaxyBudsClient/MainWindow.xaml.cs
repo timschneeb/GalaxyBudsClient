@@ -123,7 +123,7 @@ namespace GalaxyBudsClient
             Pager = this.FindControl<PageContainer>("Container");
 
             Pager.RegisterPages(HomePage, new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(),
-                new CreditsPage(), new TouchpadPage(), new EqualizerPage(), new AdvancedPage(),
+                new CreditsPage(), new TouchpadPage(), new EqualizerPage(), new AdvancedPage(), new NoiseProPage(),
                 new SystemPage(), new SelfTestPage(), new SettingsPage(), new PopupSettingsPage(),
                 ConnectionLostPage, CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(),
                 new WelcomePage(), UnsupportedFeaturePage, UpdatePage, UpdateProgressPage, new SystemCoredumpPage());
@@ -182,7 +182,7 @@ namespace GalaxyBudsClient
 
         protected override async void OnClosing(CancelEventArgs e)
         {
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_FIND_MY_EARBUDS_STOP);
+            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.FIND_MY_EARBUDS_STOP);
 
             if (SettingsProvider.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
             {
@@ -406,7 +406,7 @@ namespace GalaxyBudsClient
                 [Loc.Resolve("optionsmenu_settings")] =
                     (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Settings),
                 [Loc.Resolve("optionsmenu_refresh")] = async (sender, args) =>
-                    await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_GET_ALL_DATA),
+                    await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA),
                 [Loc.Resolve("optionsmenu_deregister")] = (sender, args) => BluetoothImpl.Instance.UnregisterDevice()
                     .ContinueWith((_) => Pager.SwitchPage(AbstractPage.Pages.Welcome))
             };
