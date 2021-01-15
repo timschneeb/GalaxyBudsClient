@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -86,6 +87,22 @@ namespace GalaxyBudsClient
                     return sentryEvent;
                 };
             });
+
+            /* Fix Avalonia font issue */
+            if (PlatformUtils.IsLinux)
+            {
+                try
+                {
+                    Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+                }
+                catch (CultureNotFoundException ex)
+                {
+                    Log.Warning("Startup: Culture en-US unavailable. Falling back to C. " + ex);
+                    Thread.CurrentThread.CurrentCulture = new CultureInfo("C");
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("C");
+                }
+            }
 
             try
             {
