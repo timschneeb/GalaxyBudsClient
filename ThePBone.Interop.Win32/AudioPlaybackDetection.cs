@@ -20,15 +20,15 @@ namespace ThePBone.Interop.Win32
                 }
                 
                 var speakers = enumerator.GetDefaultAudioEndpoint(EDataFlow.eRender, ERole.eMultimedia);
-                var meter = (IAudioMeterInformation)speakers.Activate(typeof(IAudioMeterInformation).GUID, 0, IntPtr.Zero);
-                var value = meter.GetPeakValue();
+                var meter = speakers.Activate(typeof(IAudioMeterInformation).GUID, 0, IntPtr.Zero) as IAudioMeterInformation;
+                var value = meter?.GetPeakValue();
 
                 // this is a bit tricky. 0 is the official "no sound" value
                 // but for example, if you open a video and plays/stops with it (w/o killing the app/window/stream),
                 // the value will not be zero, but something really small (around 1E-09)
                 // so, depending on your context, it is up to you to decide
                 // if you want to test for 0 or for a small value
-                return value > 1E-08;
+                return (value ?? 1) > 1E-08;
             }
             catch (Exception e)
             {
