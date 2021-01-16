@@ -137,6 +137,11 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                 Log.Debug($"WindowsRT.BluetoothService: Already connecting. Skipping request.");
                 return;
             }
+            if (IsStreamConnected)
+            {
+                Log.Debug($"WindowsRT.BluetoothService: Already connected. Skipping request.");
+                return;
+            }
             
             Connecting?.Invoke(this, EventArgs.Empty);
             
