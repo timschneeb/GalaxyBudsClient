@@ -28,6 +28,7 @@ namespace GalaxyBudsClient.Interface.Pages
             Settings,
             SettingsPopup,
             Advanced,
+            Hotkeys,
             UnsupportedFeature,
             UpdateAvailable,
             UpdateProgress,

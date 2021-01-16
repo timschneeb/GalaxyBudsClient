@@ -42,6 +42,7 @@ namespace GalaxyBudsClient
             ThemeUtils.Reload();
             Loc.Load();
             
+            MediaKeyRemoteImpl.Init();
             DeviceMessageCache.Init();
             UpdateManager.Init();
             

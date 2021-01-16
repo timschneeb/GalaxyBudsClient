@@ -88,9 +88,17 @@ namespace GalaxyBudsClient.Interface.Pages
             {
                 switch (e)
                 {
+                    case EventDispatcher.Event.ToggleConversationDetect:
+                        _voiceDetect.Toggle();
+                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_DETECT_CONVERSATIONS, _voiceDetect.IsChecked);
+                        break;
                     case EventDispatcher.Event.AncToggle:
                         _ancSwitch.Toggle();
                         AncToggle_OnToggled(this, _ancSwitch.IsChecked);
+                        break;
+                    case EventDispatcher.Event.SwitchAncSensitivity:
+                        _ancLevel.Toggle();
+                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.NOISE_REDUCTION_LEVEL, _ancLevel.IsChecked);
                         break;
                     case EventDispatcher.Event.AmbientToggle:
                         _ambientSwitch.Toggle();

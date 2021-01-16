@@ -21,7 +21,6 @@ namespace GalaxyBudsClient.Interface.Pages
 		private readonly SwitchDetailListItem _resumeSensor;
 		private readonly SwitchDetailListItem _sidetone;
 		private readonly SwitchDetailListItem _passthrough;
-		private readonly SwitchDetailListItem _gamingMode;
 		
 		public AdvancedPage()
 		{   
@@ -30,7 +29,6 @@ namespace GalaxyBudsClient.Interface.Pages
 			_resumeSensor = this.FindControl<SwitchDetailListItem>("ResumeSensor");
 			_sidetone = this.FindControl<SwitchDetailListItem>("Sidetone");
 			_passthrough = this.FindControl<SwitchDetailListItem>("Passthrough");
-			_gamingMode = this.FindControl<SwitchDetailListItem>("GamingMode");
 			
 			SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
 		}
@@ -39,7 +37,6 @@ namespace GalaxyBudsClient.Interface.Pages
 		{
 			_sidetone.IsChecked = e.SideToneEnabled;
 			_passthrough.IsChecked = e.RelieveAmbient;
-			_gamingMode.IsChecked = e.AdjustSoundSync;
 
 			_seamlessConnection.IsChecked = e.SeamlessConnectionEnabled;
 			_resumeSensor.IsChecked = SettingsProvider.Instance.ResumePlaybackOnSensor;
@@ -47,9 +44,11 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		public override void OnPageShown()
 		{
+			this.FindControl<Border>("Hotkeys").IsVisible = PlatformUtils.SupportsHotkeys;
+			this.FindControl<Separator>("SidetoneS").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSidetone);
+			this.FindControl<Separator>("PassthroughS").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientPassthrough);
 			_sidetone.Parent.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSidetone);
 			_passthrough.Parent.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientPassthrough);
-			_gamingMode.Parent.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.GamingMode);
 		}
 		
 
@@ -94,9 +93,9 @@ namespace GalaxyBudsClient.Interface.Pages
 			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.PASS_THROUGH, e);
 		}
 
-		private async void GamingMode_OnToggled(object? sender, bool e)
+		private void Hotkeys_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.ADJUST_SOUND_SYNC, e);
+			MainWindow.Instance.Pager.SwitchPage(Pages.Hotkeys);
 		}
 	}
 }

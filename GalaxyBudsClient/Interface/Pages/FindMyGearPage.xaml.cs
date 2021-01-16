@@ -9,6 +9,7 @@ using GalaxyBudsClient.Bluetooth.Linux;
 using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.DynamicLocalization;
@@ -55,9 +56,30 @@ namespace GalaxyBudsClient.Interface.Pages
             SPPMessageHandler.Instance.FindMyGearStopped += InstanceOnFindMyGearStopped;
             SPPMessageHandler.Instance.FindMyGearMuteUpdate += InstanceOnFindMyGearMuteUpdate;
             
+            EventDispatcher.Instance.EventReceived += OnEventReceived;
+            
             _scanButton.ScanningStatusChanged += ScanButton_OnScanningStatusChanged;
             _leftMuteButton.Toggled += LeftMuteButton_OnToggled;
             _rightMuteButton.Toggled += RightMuteButton_OnToggled;
+        }
+
+        private void OnEventReceived(EventDispatcher.Event @event, object? arg)
+        {
+            switch (@event)
+            {
+                case EventDispatcher.Event.StartFind:
+                    _scanButton.IsSearching = true;
+                    ScanButton_OnScanningStatusChanged(this, true);
+                    break;
+                case EventDispatcher.Event.StopFind:
+                    _scanButton.IsSearching = false;
+                    ScanButton_OnScanningStatusChanged(this, false);
+                    break;
+                case EventDispatcher.Event.StartStopFind:
+                    _scanButton.IsSearching = !_scanButton.IsSearching;
+                    ScanButton_OnScanningStatusChanged(this, _scanButton.IsSearching);
+                    break;
+            }
         }
 
         private async void RightMuteButton_OnToggled(object? sender, bool e)

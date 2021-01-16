@@ -49,7 +49,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
 
             _recording = true;
 
-            _keyLabel.Text = Hotkeys.AsHotkeyString();
+            _keyLabel.Text = Hotkeys.AsAvaloniaHotkeyString();
             e.Handled = true;
         }
 

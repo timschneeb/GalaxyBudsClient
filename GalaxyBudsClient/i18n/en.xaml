@@ -106,6 +106,37 @@
     <sys:String x:Key="hotrec_empty">None</sys:String>
     <sys:String x:Key="hotrec_note">Note: Due to User Interface Privacy Isolation (UIPI) only applications of the same or lower elevation can properly receive hotkey commands.</sys:String>
 
+    <!-- Hotkey Action Builder Dialog -->
+    <sys:String x:Key="hotkey_edit_title">Hotkey editor</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid">Invalid selection</sys:String>
+    <sys:String x:Key="hotkey_edit_modifier">Modifiers</sys:String>
+    <sys:String x:Key="hotkey_edit_keys">Keys</sys:String>
+    <sys:String x:Key="hotkey_edit_action">Action</sys:String>
+    <sys:String x:Key="hotkey_edit_preview">Shortcut preview: </sys:String>
+    <sys:String x:Key="hotkey_edit_header">Select a keyboard hotkey</sys:String>
+    
+    <!-- EventDispatcher module -->
+    <sys:String x:Key="event_none">None</sys:String>
+    <sys:String x:Key="event_ambient_toggle">Toggle ambient sound</sys:String>
+    <sys:String x:Key="event_ambient_volume_up">Ambient volume up</sys:String>
+    <sys:String x:Key="event_ambient_volume_down">Ambient volume down</sys:String>
+    <sys:String x:Key="event_eq_toggle">Toggle equalizer</sys:String>
+    <sys:String x:Key="event_eq_switch">Iterate equalizer presets</sys:String>
+    <sys:String x:Key="event_anc_toggle">Toggle noise cancelling</sys:String>
+    <sys:String x:Key="event_anc_switch_sensitivity">Switch ANC sensitivity</sys:String>
+    <sys:String x:Key="event_touch_lock_toggle">Toggle touchpad lock</sys:String>
+    <sys:String x:Key="event_double_edge_touch_toggle">Toggle double-edge touch feature</sys:String>
+    <sys:String x:Key="event_conversation_toggle">Toggle conversation detection</sys:String>
+    <sys:String x:Key="event_start_stop_find">Start/stop find my earbuds</sys:String>
+    <sys:String x:Key="event_start_find">Start find my earbuds</sys:String>
+    <sys:String x:Key="event_stop_find">Stop find my earbuds</sys:String>
+    <sys:String x:Key="event_paring_mode">Pairing mode</sys:String>
+    <sys:String x:Key="event_media_play">Play media</sys:String>
+    <sys:String x:Key="event_media_pause">Pause media</sys:String>
+    <sys:String x:Key="event_media_play_pause">Play/pause media</sys:String>
+    <sys:String x:Key="event_manager_visible">Show/hide manager window</sys:String>
+    <sys:String x:Key="event_display_battery_popup">Display battery popup</sys:String>
+    
     <!-- Welcome page -->
     <sys:String x:Key="welcome_textblock_header">Welcome!</sys:String>
     <sys:String x:Key="welcome_textblock_p1">
@@ -358,6 +389,8 @@
     <sys:String x:Key="adv_passthrough_desc">This can prevent a feeling of stuffiness or compression when you're not using active noise canceling</sys:String>
     <sys:String x:Key="adv_gaming_mode">Gaming mode</sys:String>
     <sys:String x:Key="adv_gaming_mode_desc">Minimize latency and adjust audio synchronization (Samsung only)</sys:String>
+    <sys:String x:Key="adv_hotkey">Keyboard hotkeys</sys:String>
+    <sys:String x:Key="adv_hotkey_desc">Define custom keyboard hotkeys to remote-control your earbuds</sys:String>
 
     <!-- Credits -->
     <sys:String x:Key="credits_header">Credits</sys:String>

@@ -52,7 +52,6 @@ namespace GalaxyBudsClient.Model
                         Log.Error("CustomAction.HotkeyBroadcast: Caused by combo: " + Parameter);
                         return Loc.Resolve("unknown");
                     }
-                    break;
             }
 
             return Action.GetDescription();

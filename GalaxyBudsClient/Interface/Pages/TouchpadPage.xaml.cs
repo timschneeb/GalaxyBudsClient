@@ -55,8 +55,12 @@ namespace GalaxyBudsClient.Interface.Pages
 			switch (e)
 			{
 				case EventDispatcher.Event.LockTouchpadToggle:
-					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOCK_TOUCHPAD, !_lock.IsChecked);
-					Dispatcher.UIThread.Post(_lock.Toggle);
+					_lock.Toggle();
+					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOCK_TOUCHPAD, _lock.IsChecked);
+					break;
+				case EventDispatcher.Event.ToggleDoubleEdgeTouch:
+					_edgeTouch.Toggle();
+					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.OUTSIDE_DOUBLE_TAP, _edgeTouch.IsChecked);
 					break;
 			}
 		}

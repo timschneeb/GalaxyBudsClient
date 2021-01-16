@@ -143,6 +143,7 @@ namespace GalaxyBudsClient
             SPPMessageHandler.Instance.StatusUpdate += OnStatusUpdate;
             SPPMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
 
+            EventDispatcher.Instance.EventReceived += OnEventReceived;
             NotifyIconImpl.Instance.LeftClicked += TrayIcon_OnLeftClicked;
             TrayManager.Instance.Rebuild();
             
@@ -167,8 +168,33 @@ namespace GalaxyBudsClient
                     WindowState = WindowState.Minimized;
                 }
             }
+
+            new HotkeyActionBuilder().Show(this);
         }
-        
+
+        private async void OnEventReceived(EventDispatcher.Event e, object? arg)
+        {
+            switch (e)
+            {
+                case EventDispatcher.Event.PairingMode:
+                    await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.UNK_PAIRING_MODE);
+                    break;
+                case EventDispatcher.Event.ToggleManagerVisibility:
+                    if (!IsVisible)
+                    {
+                        BringToFront();
+                    }
+                    else
+                    {
+                        Hide();
+                    }
+                    break;
+                case EventDispatcher.Event.ShowBatteryPopup:
+                    ShowPopup(ignoreRestrictions: true);
+                    break;
+            }
+        }
+
         #region Window management
         protected override async void OnInitialized()
         {
