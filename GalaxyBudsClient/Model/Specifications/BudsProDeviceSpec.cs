@@ -27,6 +27,7 @@ namespace GalaxyBudsClient.Model.Specifications
 
         public IReadOnlyCollection<ItemType> TrayShortcuts => Array.AsReadOnly(
             new[] {
+                ItemType.ToggleNoiseControl,
                 ItemType.ToggleEqualizer,
                 ItemType.LockTouchpad
             }

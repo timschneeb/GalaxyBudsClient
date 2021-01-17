@@ -11,6 +11,7 @@ namespace GalaxyBudsClient.Interop.TrayIcon
         ToggleEqualizer,
         ToggleAmbient,
         ToggleAnc,
+        ToggleNoiseControl,
         LockTouchpad,
         
         Connect,

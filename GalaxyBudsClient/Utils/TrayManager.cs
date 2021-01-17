@@ -27,6 +27,27 @@ namespace GalaxyBudsClient.Utils
         {
             switch (e.Id)
             {
+                case ItemType.ToggleNoiseControl:
+                    var noisePage = MainWindow.Instance.Pager.FindPage(AbstractPage.Pages.NoiseControlPro);
+                    if (noisePage is NoiseProPage page)
+                    {
+                        if (page.AmbientEnabled)
+                        {
+                            /* Ambient is on, use ANC toggle */
+                            EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AncToggle);
+                        }
+                        else if (page.AncEnabled)
+                        {
+                            /* ANC is on, use ANC toggle to disable itself */
+                            EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AncToggle);
+                        }
+                        else
+                        {
+                            /* Nothing is on, use ambient toggle */
+                            EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientToggle);
+                        }
+                    }
+                    break;
                 case ItemType.LockTouchpad:
                     EventDispatcher.Instance.Dispatch(EventDispatcher.Event.LockTouchpadToggle);
                     break;
@@ -76,6 +97,9 @@ namespace GalaxyBudsClient.Utils
             {
                 switch (type)
                 {
+                    case ItemType.ToggleNoiseControl:
+                        items.Add(new TrayMenuItem(Loc.Resolve("tray_switch_noise"), type));
+                        break;
                     case ItemType.ToggleEqualizer:
                         bool eqEnabled =
                             (MainWindow.Instance.Pager.FindPage(AbstractPage.Pages.Equalizer) as EqualizerPage)

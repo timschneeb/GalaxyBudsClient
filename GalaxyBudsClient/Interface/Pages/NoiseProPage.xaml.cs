@@ -23,7 +23,7 @@ namespace GalaxyBudsClient.Interface.Pages
         public override Pages PageType => Pages.NoiseControlPro;
         
         public bool AmbientEnabled => _ambientSwitch.IsChecked;
-        public bool AncEnabled => _ancLevel.IsChecked;
+        public bool AncEnabled => _ancSwitch.IsChecked;
         
         private readonly SwitchListItem _ambientSwitch;
         private readonly SliderListItem _volumeSlider;
