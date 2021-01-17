@@ -196,7 +196,10 @@ namespace GalaxyBudsClient.Interface.Dialogs
                 modifier.Add(ModifierKeys.Shift);
             }
 
-            Hotkey = new Hotkey(modifier, keys, ((ActionViewHolder) _action.SelectedItem).Value);
+            if (_action.SelectedItem is ActionViewHolder viewHolder)
+            {
+                Hotkey = new Hotkey(modifier, keys, viewHolder.Value);
+            }
             
             _keyLabel.Text = keys.AsHotkeyString(modifier);
         }
