@@ -173,25 +173,26 @@ namespace GalaxyBudsClient.Interface.Dialogs
             /* Window positioning */
             var workArea = (Screens.Primary ?? Screens.All[0]).WorkingArea;
             int padding = 20;
+            var scaling = PlatformImpl.DesktopScaling;
             switch (SettingsProvider.Instance.Popup.Placement)
             {
                 case PopupPlacement.TopLeft:
                     Position = new PixelPoint(workArea.X + padding, workArea.Y + padding);
                     break;
                 case PopupPlacement.TopCenter:
-                    Position = new PixelPoint((int) ((workArea.Width / 2f) - (this.Width / 2) + workArea.X), workArea.Y + padding);
+                    Position = new PixelPoint((int) ((workArea.Width / 2f) - (this.Width  * scaling / 2) + workArea.X), workArea.Y + padding);
                     break;
                 case PopupPlacement.TopRight:
-                    Position = new PixelPoint((int) (workArea.Width - this.Width + workArea.X - padding), workArea.Y + padding);
+                    Position = new PixelPoint((int) (workArea.Width - this.Width  * scaling + workArea.X - padding), workArea.Y + padding);
                     break;
                 case PopupPlacement.BottomLeft:
-                    Position = new PixelPoint(workArea.X + padding, (int) (workArea.Height - this.Height + workArea.Y - padding));
+                    Position = new PixelPoint(workArea.X + padding, (int) (workArea.Height - this.Height * scaling + workArea.Y - padding));
                     break;
                 case PopupPlacement.BottomCenter:
-                    Position = new PixelPoint((int) ((workArea.Width / 2f) - (this.Width / 2) + workArea.X), (int) (workArea.Height - this.Height + workArea.Y - padding));
+                    Position = new PixelPoint((int) ((workArea.Width / 2f) - (this.Width * scaling / 2) + workArea.X), (int) (workArea.Height - this.Height * scaling + workArea.Y - padding));
                     break;
                 case PopupPlacement.BottomRight:
-                    Position = new PixelPoint((int) ((workArea.Width - this.Width) + workArea.X - padding), (int) (workArea.Height - this.Height + workArea.Y - padding));
+                    Position = new PixelPoint((int) ((workArea.Width - this.Width * scaling) + workArea.X - padding), (int) (workArea.Height - this.Height * scaling + workArea.Y - padding));
                     break;
             }
         }
