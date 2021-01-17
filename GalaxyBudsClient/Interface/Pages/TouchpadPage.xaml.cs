@@ -189,6 +189,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			
 			MainWindow.Instance.CustomTouchActionPage.Accepted += CustomTouchActionPageOnAccepted;
 
+			UpdateTouchActionMenus();
 			UpdateMenuDescriptions();
 		}
 		

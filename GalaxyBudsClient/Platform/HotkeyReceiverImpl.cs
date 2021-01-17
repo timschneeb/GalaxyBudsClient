@@ -30,6 +30,8 @@ namespace GalaxyBudsClient.Platform
 
         public HotkeyReceiverImpl()
         {
+            SettingsProvider.Instance.Hotkeys = new Hotkey[0];
+            
             if (PlatformUtils.IsWindows)
             {
                 _backend = new Windows.HotkeyReceiver();
