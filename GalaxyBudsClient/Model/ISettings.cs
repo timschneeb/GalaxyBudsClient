@@ -56,6 +56,7 @@ namespace GalaxyBudsClient.Model
         
         [Option(DefaultValue = "")]
         string UpdateSkippedVersion { set; get; }
+        [Option(DefaultValue = true)]
         bool MinimizeToTray { set; get; }
         bool ResumePlaybackOnSensor { set; get; }
         
