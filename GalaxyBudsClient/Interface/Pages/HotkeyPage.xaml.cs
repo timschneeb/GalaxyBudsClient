@@ -55,6 +55,11 @@ namespace GalaxyBudsClient.Interface.Pages
                 SettingsProvider.Instance.Hotkeys = (SettingsProvider.Instance?.Hotkeys).Add(_builder.Hotkey);
                 ReloadList();
                 HotkeyReceiverImpl.Instance.Update();
+
+                if (PlatformUtils.SupportsTrayIcon)
+                {
+                    SettingsProvider.Instance!.MinimizeToTray = true;
+                }
             }
         }
 
