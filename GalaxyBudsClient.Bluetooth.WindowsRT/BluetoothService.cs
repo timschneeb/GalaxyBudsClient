@@ -282,7 +282,8 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                     _socket = null;
                 }
             }
-            
+
+            IsStreamConnected = false;
             Log.Debug("WindowsRT.BluetoothService: Memory freed. Disconnected.");
             await Task.CompletedTask;
         }
@@ -303,6 +304,9 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                 if (_writer == null)
                 {
                     Log.Warning("WindowsRT.BluetoothService: Cannot send message. Writer is NULL");
+                    IsStreamConnected = false;
+                    BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.SendFailed,
+                        "Stream disconnected while dispatching a message"));
                     return;
                 }
                 
@@ -337,6 +341,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                 }
                 catch (OperationCanceledException)
                 {
+                    IsStreamConnected = false;
                     Log.Debug("WindowsRT.BluetoothService: BluetoothServiceLoop cancelled.");
                     return;
                 }
