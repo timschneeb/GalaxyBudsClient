@@ -298,7 +298,7 @@
     <sys:String x:Key="coredump_dl_core_progress">Downloading core dump... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytes)</sys:String>
     <sys:String x:Key="coredump_dl_note">
-        The audio stream is temporarily paused while downloading. Your earbuds will be disconnected as soon as the transmission finishes, please reconnect them manually.&#10;Once finished, you will be prompted to select a directory for all collected data.&#10;If the transmission is stuck or 
+        The audio stream is temporarily paused while downloading. Your earbuds will be disconnected as soon as the transmission finishes, please reconnect them manually.&#10;Once finished, you will be prompted to select a directory for all collected data.&#10;&#10;If the transmission is stuck or the device disconnected prematurely, you need to restart the download. This feature is currently unstable. 
     </sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">Failed to save dump</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">Unable to copy dump from temporary location. Reason: {0}</sys:String>
