@@ -260,8 +260,6 @@
     <sys:String x:Key="system_trace_core_dump_desc">Retrieve raw debugging data from your earbuds</sys:String>
     <sys:String x:Key="system_info">View system information</sys:String>
     <sys:String x:Key="system_info_desc">Display detailed information about your earbuds</sys:String>
-    <sys:String x:Key="system_flasher">Firmware flashing tool</sys:String>
-    <sys:String x:Key="system_flasher_desc">Flash custom firmware or upgrade/downgrade your firmware version (experimental)</sys:String>
 
     <sys:String x:Key="system_battery_type_unknown">Not specified</sys:String>
     <sys:String x:Key="system_waiting_for_device">Waiting for response...</sys:String>
