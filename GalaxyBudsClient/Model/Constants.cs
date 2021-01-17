@@ -145,8 +145,8 @@ namespace GalaxyBudsClient.Model
         public enum NoiseControlMode
         {
             Off = 0,
-            AmbientSound = 1,
-            NoiseReduction = 2
+            AmbientSound = 2,
+            NoiseReduction = 1
         }
         
         public enum TouchOptions
