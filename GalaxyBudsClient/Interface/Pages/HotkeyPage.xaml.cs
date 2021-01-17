@@ -133,8 +133,10 @@ namespace GalaxyBudsClient.Interface.Pages
                                 var saved = (SettingsProvider.Instance?.Hotkeys ?? new Hotkey[0]);
                                 if (saved.Length <= 1)
                                 {
+                                    Log.Debug($"HotkeyPage.Delete: Removed hotkey '{saved[0]}'");
                                     SettingsProvider.Instance!.Hotkeys = new Hotkey[0];
                                     ReloadList();
+                                    HotkeyReceiverImpl.Instance.Update();
                                     return;
                                 }
                                 

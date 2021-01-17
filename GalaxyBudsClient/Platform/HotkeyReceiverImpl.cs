@@ -30,7 +30,12 @@ namespace GalaxyBudsClient.Platform
 
         public HotkeyReceiverImpl()
         {
-            SettingsProvider.Instance.Hotkeys = new Hotkey[0];
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+            if (SettingsProvider.Instance.Hotkeys == null)
+            {
+                SettingsProvider.Instance.Hotkeys = new Hotkey[0];
+            }
+            
             
             if (PlatformUtils.IsWindows)
             {
