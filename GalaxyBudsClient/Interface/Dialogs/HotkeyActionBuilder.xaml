@@ -32,14 +32,9 @@
             <HeaderedContentControl Grid.Column="2"
                                     Classes="GroupBox"
                                     Header="{DynamicResource hotkey_edit_keys}">
-                <Grid RowDefinitions="Auto,5,Auto">
+                <Grid RowDefinitions="Auto">
                     <ComboBox Grid.Row="0"
                               Name="Key1"
-                              Items="{Binding KeySource}"
-                              HorizontalAlignment="Stretch"
-                              SelectionChanged="OnKeySelectionChanged" />
-                    <ComboBox Grid.Row="2"
-                              Name="Key2"
                               Items="{Binding KeySource}"
                               HorizontalAlignment="Stretch"
                               SelectionChanged="OnKeySelectionChanged" />

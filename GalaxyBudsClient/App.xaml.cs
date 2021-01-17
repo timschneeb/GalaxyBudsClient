@@ -45,7 +45,7 @@ namespace GalaxyBudsClient
             MediaKeyRemoteImpl.Init();
             DeviceMessageCache.Init();
             UpdateManager.Init();
-            
+           
             Log.Information($"Translator mode file location: {Loc.GetTranslatorModeFile()}");
 
             ScriptManager.Instance.RegisterUserHooks();
@@ -62,6 +62,8 @@ namespace GalaxyBudsClient
             {
                 DialogLauncher.ShowTranslatorTools();
             }
+            
+            HotkeyReceiverImpl.Instance.Update(silent: true);
             
             base.OnFrameworkInitializationCompleted();
         }

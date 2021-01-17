@@ -12,6 +12,9 @@
         <Setter Property="Background" Value="{DynamicResource BorderSeparatorBrush}" />
     </Style>
 
+    <Style Selector="Separator.SeparatorBrush">
+        <Setter Property="Background" Value="{DynamicResource BorderSeparatorBrush}" />
+    </Style>
     
     <Style Selector="Border.VerticalSeparator">
         <Setter Property="Background" Value="{DynamicResource BorderSeparatorBrush}" />

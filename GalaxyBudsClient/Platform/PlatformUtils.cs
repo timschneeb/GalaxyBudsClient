@@ -24,7 +24,7 @@ namespace GalaxyBudsClient.Platform
         public static bool IsLinux => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
 
         public static bool SupportsTrayIcon => IsWindows && !IsARMCompileTarget;
-        public static bool SupportsHotkeys => false;
+        public static bool SupportsHotkeys => IsWindows;
         
         public static Platforms Platform
         {

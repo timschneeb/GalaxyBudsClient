@@ -1,6 +1,8 @@
 using System;
 using Avalonia.Threading;
 using GalaxyBudsClient.Model.Attributes;
+using GalaxyBudsClient.Model.Specifications;
+using GalaxyBudsClient.Platform;
 
 namespace GalaxyBudsClient.Model
 {
@@ -48,6 +50,36 @@ namespace GalaxyBudsClient.Model
             Play,
             [LocalizedDescription("event_media_pause")]
             Pause,
+            [LocalizedDescription("event_connect")]
+            Connect,
+        }
+        
+        public static bool CheckDeviceSupport(Event arg)
+        {
+            switch (arg)
+            {
+                case Event.AmbientToggle:
+                    return (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSound) ||
+                            BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl));
+                case Event.AmbientVolumeUp:
+                    return (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSound) ||
+                            BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl));
+                case Event.AmbientVolumeDown:
+                    return (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSound) ||
+                            BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl));
+                case Event.AncToggle:
+                    return (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Anc) ||
+                            BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl));
+                case Event.SwitchAncSensitivity:
+                    return (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Anc) ||
+                            BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl));
+                case Event.ToggleDoubleEdgeTouch:
+                    return BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DoubleTapVolume);
+                case Event.ToggleConversationDetect:
+                    return BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DetectConversations);
+            }
+
+            return true;
         }
 
         public event Action<Event, object?>? EventReceived;

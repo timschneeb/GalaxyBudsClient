@@ -127,7 +127,8 @@ namespace GalaxyBudsClient
                 new CreditsPage(), new TouchpadPage(), new EqualizerPage(), new AdvancedPage(), new NoiseProPage(),
                 new SystemPage(), new SelfTestPage(), new SettingsPage(), new PopupSettingsPage(),
                 ConnectionLostPage, CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(),
-                new WelcomePage(), UnsupportedFeaturePage, UpdatePage, UpdateProgressPage, new SystemCoredumpPage());
+                new WelcomePage(), UnsupportedFeaturePage, UpdatePage, UpdateProgressPage, new SystemCoredumpPage(),
+                new HotkeyPage());
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
@@ -168,8 +169,6 @@ namespace GalaxyBudsClient
                     WindowState = WindowState.Minimized;
                 }
             }
-
-            new HotkeyActionBuilder().Show(this);
         }
 
         private async void OnEventReceived(EventDispatcher.Event e, object? arg)
@@ -187,6 +186,12 @@ namespace GalaxyBudsClient
                     else
                     {
                         Hide();
+                    }
+                    break;
+                case EventDispatcher.Event.Connect:
+                    if (!BluetoothImpl.Instance.IsConnected)
+                    {
+                        await BluetoothImpl.Instance.ConnectAsync();
                     }
                     break;
                 case EventDispatcher.Event.ShowBatteryPopup:

@@ -16,34 +16,197 @@ namespace GalaxyBudsClient.Model.Hotkeys
     public enum Keys
     {
         None = 0x0,
+        
+        /// <summary>
+        ///  The BACKSPACE key.
+        /// </summary>
+        Backspace = 0x08,
 
         /// <summary>
-        ///  The left mouse button.
+        ///  The TAB key.
         /// </summary>
-        MouseLeft = 0x01,
+        Tab = 0x09,
 
         /// <summary>
-        ///  The right mouse button.
+        ///  The CLEAR key.
         /// </summary>
-        MouseRight = 0x02,
+        LineFeed = 0x0A,
+        
+        /// <summary>
+        ///  The CLEAR key.
+        /// </summary>
+        Clear = 0x0C,
 
         /// <summary>
-        ///  The middle mouse button (three-button mouse).
+        ///  The ENTER key.
         /// </summary>
-        MouseMiddle = 0x04,
+        Enter = 0x0D,
 
         /// <summary>
-        ///  The first x mouse button (five-button mouse).
+        ///  The SHIFT key.
         /// </summary>
-        [Description("Five-button mouse")]
-        MouseX1 = 0x05,
+        /// ShiftKey = 0x10,
 
         /// <summary>
-        ///  The second x mouse button (five-button mouse).
+        ///  The CTRL key.
         /// </summary>
-        [Description("Five-button mouse")]
-        MouseX2 = 0x06,
+        /// ControlKey = 0x11,
 
+        /// <summary>
+        ///  The ALT key.
+        /// </summary>
+        /// Menu = 0x12,
+
+        /// <summary>
+        ///  The PAUSE key.
+        /// </summary>
+        Pause = 0x13,
+
+        /// <summary>
+        ///  The CAPS LOCK key.
+        /// </summary>
+        CapsLock = 0x14,
+        
+        /// <summary>
+        ///  The IME Kana mode key.
+        /// </summary>
+        /// KanaMode = 0x15,
+
+        /// <summary>
+        ///  The IME Hanguel mode key.
+        /// </summary>
+        /// HanguelMode = 0x15,
+
+        /// <summary>
+        ///  The IME Hangul mode key.
+        /// </summary>
+        /// HangulMode = 0x15,
+
+        /// <summary>
+        ///  The IME Junja mode key.
+        /// </summary>
+        /// JunjaMode = 0x17,
+
+        /// <summary>
+        ///  The IME Final mode key.
+        /// </summary>
+        /// FinalMode = 0x18,
+
+        /// <summary>
+        ///  The IME Hanja mode key.
+        /// </summary>
+        /// HanjaMode = 0x19,
+
+        /// <summary>
+        ///  The IME Kanji mode key.
+        /// </summary>
+        /// KanjiMode = 0x19,
+
+        /// <summary>
+        ///  The ESC key.
+        /// </summary>
+        Escape = 0x1B,
+        
+        /// <summary>
+        ///  The IME Convert key.
+        /// </summary>
+        /// IMEConvert = 0x1C,
+
+        /// <summary>
+        ///  The IME NonConvert key.
+        /// </summary>
+        /// IMENonconvert = 0x1D,
+
+        /// <summary>
+        ///  The IME Accept key.
+        /// </summary>
+        /// IMEAccept = 0x1E,
+        
+        /// <summary>
+        ///  The IME Mode change request.
+        /// </summary>
+        /// IMEModeChange = 0x1F,
+
+        /// <summary>
+        ///  The SPACEBAR key.
+        /// </summary>
+        Space = 0x20,
+        
+        /// <summary>
+        ///  The PAGE UP key.
+        /// </summary>
+        PageUp = 0x21,
+
+        /// <summary>
+        ///  The PAGE DOWN key.
+        /// </summary>
+        PageDown = 0x22,
+
+        /// <summary>
+        ///  The END key.
+        /// </summary>
+        End = 0x23,
+
+        /// <summary>
+        ///  The HOME key.
+        /// </summary>
+        Home = 0x24,
+
+        /// <summary>
+        ///  The LEFT ARROW key.
+        /// </summary>
+        Left = 0x25,
+
+        /// <summary>
+        ///  The UP ARROW key.
+        /// </summary>
+        Up = 0x26,
+
+        /// <summary>
+        ///  The RIGHT ARROW key.
+        /// </summary>
+        Right = 0x27,
+
+        /// <summary>
+        ///  The DOWN ARROW key.
+        /// </summary>
+        Down = 0x28,
+
+        /// <summary>
+        ///  The SELECT key.
+        /// </summary>
+        Select = 0x29,
+
+        /// <summary>
+        ///  The PRINT key.
+        /// </summary>
+        Print = 0x2A,
+
+        /// <summary>
+        ///  The EXECUTE key.
+        /// </summary>
+        Execute = 0x2B,
+
+        /// <summary>
+        ///  The PRINT SCREEN key.
+        /// </summary>
+        PrintScreen = 0x2C,
+        
+        /// <summary>
+        ///  The INS key.
+        /// </summary>
+        Insert = 0x2D,
+
+        /// <summary>
+        ///  The DEL key.
+        /// </summary>
+        Delete = 0x2E,
+
+        /// <summary>
+        ///  The HELP key.
+        /// </summary>
+        Help = 0x2F,
+        
                 /// <summary>
         ///  The 0 key.
         /// </summary>
@@ -223,198 +386,6 @@ namespace GalaxyBudsClient.Model.Hotkeys
         ///  The Z key.
         /// </summary>
         Z = 0x5A,
-        
-        /// <summary>
-        ///  The BACKSPACE key.
-        /// </summary>
-        Backspace = 0x08,
-
-        /// <summary>
-        ///  The TAB key.
-        /// </summary>
-        Tab = 0x09,
-
-        /// <summary>
-        ///  The CLEAR key.
-        /// </summary>
-        LineFeed = 0x0A,
-        
-        /// <summary>
-        ///  The CLEAR key.
-        /// </summary>
-        Clear = 0x0C,
-
-        /// <summary>
-        ///  The ENTER key.
-        /// </summary>
-        Enter = 0x0D,
-
-        /// <summary>
-        ///  The SHIFT key.
-        /// </summary>
-        /// ShiftKey = 0x10,
-
-        /// <summary>
-        ///  The CTRL key.
-        /// </summary>
-        /// ControlKey = 0x11,
-
-        /// <summary>
-        ///  The ALT key.
-        /// </summary>
-        /// Menu = 0x12,
-
-        /// <summary>
-        ///  The PAUSE key.
-        /// </summary>
-        Pause = 0x13,
-
-        /// <summary>
-        ///  The CAPS LOCK key.
-        /// </summary>
-        CapsLock = 0x14,
-        
-        /// <summary>
-        ///  The IME Kana mode key.
-        /// </summary>
-        /// KanaMode = 0x15,
-
-        /// <summary>
-        ///  The IME Hanguel mode key.
-        /// </summary>
-        /// HanguelMode = 0x15,
-
-        /// <summary>
-        ///  The IME Hangul mode key.
-        /// </summary>
-        /// HangulMode = 0x15,
-
-        /// <summary>
-        ///  The IME Junja mode key.
-        /// </summary>
-        /// JunjaMode = 0x17,
-
-        /// <summary>
-        ///  The IME Final mode key.
-        /// </summary>
-        /// FinalMode = 0x18,
-
-        /// <summary>
-        ///  The IME Hanja mode key.
-        /// </summary>
-        /// HanjaMode = 0x19,
-
-        /// <summary>
-        ///  The IME Kanji mode key.
-        /// </summary>
-        /// KanjiMode = 0x19,
-
-        /// <summary>
-        ///  The ESC key.
-        /// </summary>
-        Escape = 0x1B,
-        
-        
-
-        /// <summary>
-        ///  The IME Convert key.
-        /// </summary>
-        /// IMEConvert = 0x1C,
-
-        /// <summary>
-        ///  The IME NonConvert key.
-        /// </summary>
-        /// IMENonconvert = 0x1D,
-
-        /// <summary>
-        ///  The IME Accept key.
-        /// </summary>
-        /// IMEAccept = 0x1E,
-        
-        /// <summary>
-        ///  The IME Mode change request.
-        /// </summary>
-        /// IMEModeChange = 0x1F,
-
-        /// <summary>
-        ///  The SPACEBAR key.
-        /// </summary>
-        Space = 0x20,
-        
-        /// <summary>
-        ///  The PAGE UP key.
-        /// </summary>
-        PageUp = 0x21,
-
-        /// <summary>
-        ///  The PAGE DOWN key.
-        /// </summary>
-        PageDown = 0x22,
-
-        /// <summary>
-        ///  The END key.
-        /// </summary>
-        End = 0x23,
-
-        /// <summary>
-        ///  The HOME key.
-        /// </summary>
-        Home = 0x24,
-
-        /// <summary>
-        ///  The LEFT ARROW key.
-        /// </summary>
-        Left = 0x25,
-
-        /// <summary>
-        ///  The UP ARROW key.
-        /// </summary>
-        Up = 0x26,
-
-        /// <summary>
-        ///  The RIGHT ARROW key.
-        /// </summary>
-        Right = 0x27,
-
-        /// <summary>
-        ///  The DOWN ARROW key.
-        /// </summary>
-        Down = 0x28,
-
-        /// <summary>
-        ///  The SELECT key.
-        /// </summary>
-        Select = 0x29,
-
-        /// <summary>
-        ///  The PRINT key.
-        /// </summary>
-        Print = 0x2A,
-
-        /// <summary>
-        ///  The EXECUTE key.
-        /// </summary>
-        Execute = 0x2B,
-
-        /// <summary>
-        ///  The PRINT SCREEN key.
-        /// </summary>
-        PrintScreen = 0x2C,
-        
-        /// <summary>
-        ///  The INS key.
-        /// </summary>
-        Insert = 0x2D,
-
-        /// <summary>
-        ///  The DEL key.
-        /// </summary>
-        Delete = 0x2E,
-
-        /// <summary>
-        ///  The HELP key.
-        /// </summary>
-        Help = 0x2F,
         
         /// <summary>
         ///  The left Windows logo key (Microsoft Natural Keyboard).

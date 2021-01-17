@@ -88,7 +88,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
         private void ExcludeExperiment(long id)
         {
             SettingsProvider.Instance.Experiments.FinishedIds =
-                ArrayUtils.Add(SettingsProvider.Instance.Experiments.FinishedIds, id);
+                SettingsProvider.Instance.Experiments.FinishedIds.Add(id);
         }
         
         public static Environment CurrentEnvironment()

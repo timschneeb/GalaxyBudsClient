@@ -108,12 +108,27 @@
 
     <!-- Hotkey Action Builder Dialog -->
     <sys:String x:Key="hotkey_edit_title">Hotkey editor</sys:String>
-    <sys:String x:Key="hotkey_edit_invalid">Invalid selection</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid">Invalid hotkey selection</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_desc">Please choose at least one key aside from modifiers</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action">Invalid action</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action_desc">Please choose an action</sys:String>
     <sys:String x:Key="hotkey_edit_modifier">Modifiers</sys:String>
     <sys:String x:Key="hotkey_edit_keys">Keys</sys:String>
     <sys:String x:Key="hotkey_edit_action">Action</sys:String>
     <sys:String x:Key="hotkey_edit_preview">Shortcut preview: </sys:String>
     <sys:String x:Key="hotkey_edit_header">Select a keyboard hotkey</sys:String>
+    
+    <!-- Hotkey page -->
+    <sys:String x:Key="hotkey_header">Keyboard hotkeys</sys:String>
+    <sys:String x:Key="hotkey_add">Assign new hotkey</sys:String>
+    <sys:String x:Key="hotkey_empty">No hotkeys assigned</sys:String>
+    <sys:String x:Key="hotkey_empty_desc">Create a new keyboard hotkey by clicking the button above</sys:String>
+    <sys:String x:Key="hotkey_edit">Edit</sys:String>
+    <sys:String x:Key="hotkey_delete">Delete</sys:String>
+    <sys:String x:Key="hotkey_add_error">Failed to register/update hotkeys</sys:String>
+    <sys:String x:Key="hotkey_add_error_context">Affected hotkey:</sys:String>
+    <sys:String x:Key="hotkey_add_error_duplicate">Your selected key-combination was already registered as a hotkey by this or another application. Please choose another one.</sys:String>
+    <sys:String x:Key="hotkey_add_error_unknown">Operating system responded with error '{0}'</sys:String>
     
     <!-- EventDispatcher module -->
     <sys:String x:Key="event_none">None</sys:String>
@@ -136,6 +151,7 @@
     <sys:String x:Key="event_media_play_pause">Play/pause media</sys:String>
     <sys:String x:Key="event_manager_visible">Show/hide manager window</sys:String>
     <sys:String x:Key="event_display_battery_popup">Display battery popup</sys:String>
+    <sys:String x:Key="event_connect">Connect to device</sys:String>
     
     <!-- Welcome page -->
     <sys:String x:Key="welcome_textblock_header">Welcome!</sys:String>

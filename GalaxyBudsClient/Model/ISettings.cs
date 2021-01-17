@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Config.Net;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Hotkeys;
 
 namespace GalaxyBudsClient.Model
 {
@@ -59,5 +60,7 @@ namespace GalaxyBudsClient.Model
         bool ResumePlaybackOnSensor { set; get; }
         
         IExperiments Experiments { set; get; }
+        
+        Hotkey[] Hotkeys { set; get; }
     }
 }

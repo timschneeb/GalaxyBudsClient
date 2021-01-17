@@ -1,5 +1,6 @@
 using Config.Net;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform;
 using Serilog;
 
@@ -14,6 +15,7 @@ namespace GalaxyBudsClient.Utils
             Instance = new ConfigurationBuilder<ISettings>()
                 .UseJsonFile(SettingsPath)
                 .UseTypeParser(new ConfigArrayParser<long>())
+                .UseTypeParser(new HotkeyArrayParser())
                 .Build();
         }
 
