@@ -53,6 +53,26 @@ namespace GalaxyBudsClient.Model
             [LocalizedDescription("event_connect")]
             Connect,
         }
+
+        public static bool CheckTouchOptionEligibility(Event arg)
+        {
+            switch (arg)
+            {
+                case Event.None:
+                case Event.AmbientToggle:
+                case Event.AncToggle:
+                case Event.LockTouchpadToggle:
+                case Event.StartStopFind:
+                case Event.StartFind:
+                case Event.StopFind:
+                case Event.Play:
+                case Event.Pause:
+                case Event.Connect:
+                    return false;
+                default:
+                    return true;
+            }
+        }
         
         public static bool CheckDeviceSupport(Event arg)
         {

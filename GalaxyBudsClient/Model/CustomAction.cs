@@ -12,14 +12,7 @@ namespace GalaxyBudsClient.Model
     {
         public enum Actions
         {
-            [LocalizedDescription("touchoption_custom_ambient_up")]
-            AmbientVolumeUp,
-            [LocalizedDescription("touchoption_custom_ambient_down")]
-            AmbientVolumeDown,
-            [LocalizedDescription("touchoption_custom_toggle_eq")]
-            EnableEqualizer,
-            [LocalizedDescription("touchoption_custom_next_eq_preset")]
-            SwitchEqualizerPreset,
+            Event,
             [LocalizedDescription("touchoption_custom_trigger_hotkey")]
             TriggerHotkey,
             [LocalizedDescription("touchoption_custom_external_app")]
@@ -28,17 +21,28 @@ namespace GalaxyBudsClient.Model
 
         public Actions Action;
 
-        public String Parameter;
+        public string Parameter;
 
-        public CustomAction(Actions action, String parameter = "")
+        public EventDispatcher.Event Event => Enum.Parse<EventDispatcher.Event>(Parameter);
+
+        public CustomAction(Actions action, string parameter = "")
         {
             Action = action;
             Parameter = parameter;
         }
+        
+        public CustomAction(EventDispatcher.Event @event)
+        {
+            Action = Actions.Event;
+            Parameter = @event.ToString();
+        }
+        
         public override string ToString()
         {
             switch (Action)
             {
+                case Actions.Event:
+                    return Event.GetDescription();
                 case Actions.RunExternalProgram:
                     return $"{Path.GetFileName(Parameter)}";
                 case Actions.TriggerHotkey:
@@ -48,8 +52,8 @@ namespace GalaxyBudsClient.Model
                     }
                     catch (Exception ex)
                     {
-                        Log.Error("CustomAction.HotkeyBroadcast: Cannot parse saved key-combo: " + ex.Message);
-                        Log.Error("CustomAction.HotkeyBroadcast: Caused by combo: " + Parameter);
+                        Log.Error($"CustomAction.HotkeyBroadcast: Cannot parse saved key-combo: {ex.Message}");
+                        Log.Error($"CustomAction.HotkeyBroadcast: Caused by combo: {Parameter}");
                         return Loc.Resolve("unknown");
                     }
             }
@@ -59,12 +63,16 @@ namespace GalaxyBudsClient.Model
 
         public string ToLongString()
         {
-            if (Action == Actions.RunExternalProgram || Action == Actions.TriggerHotkey)
+            switch (Action)
             {
-                return $"{Action.GetDescription()} ({ToString()})";
+                case Actions.RunExternalProgram:
+                case Actions.TriggerHotkey:
+                    return $"{Action.GetDescription()} ({ToString()})";
+                case Actions.Event:
+                    return Event.GetDescription();
+                default:
+                    return Action.GetDescription();
             }
-
-            return Action.GetDescription();
         }
     }
 }

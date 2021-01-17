@@ -67,11 +67,6 @@
     <sys:String x:Key="touchoption_custom_null">Not set</sys:String>
     <sys:String x:Key="touchoption_custom_unknown">Unknown</sys:String>
     <sys:String x:Key="touchoption_custom_prefix">Custom action:</sys:String>
-    
-    <sys:String x:Key="touchoption_custom_ambient_up">Ambient volume up</sys:String>
-    <sys:String x:Key="touchoption_custom_ambient_down">Ambient volume down</sys:String>
-    <sys:String x:Key="touchoption_custom_toggle_eq">Toggle equalizer</sys:String>
-    <sys:String x:Key="touchoption_custom_next_eq_preset">Next equalizer preset</sys:String>
     <sys:String x:Key="touchoption_custom_trigger_hotkey">Press hotkey...</sys:String>
     <sys:String x:Key="touchoption_custom_external_app">Run external program...</sys:String>
 

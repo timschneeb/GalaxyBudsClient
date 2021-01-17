@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -63,29 +64,38 @@ namespace GalaxyBudsClient.Interface.Pages
                 {
                     if (value is CustomAction.Actions action)
                     {
-                        /* Skip unsupported features */
-                        if (!BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSound) 
-                            && (action == CustomAction.Actions.AmbientVolumeDown 
-                            || action == CustomAction.Actions.AmbientVolumeUp))
+                        if (action == CustomAction.Actions.Event)
                         {
                             continue;
                         }
-
+                        
                         if (!PlatformUtils.IsWindows && action == CustomAction.Actions.TriggerHotkey)
                         {
                             continue;
                         }
                         
-                        menuActions.Add(action.GetDescription(), (sender, args) => ItemClicked(action));
+                        menuActions.Add(action.GetDescription(), (sender, args) => ItemClicked(new CustomAction(action)));
                     }
                 }
+                
+                Enum.GetValues(typeof(EventDispatcher.Event))
+                    .Cast<EventDispatcher.Event>()
+                    .Where(EventDispatcher.CheckDeviceSupport)
+                    .Where(EventDispatcher.CheckTouchOptionEligibility)
+                    .ToList()
+                    .ForEach(x =>
+                    {
+                        var action = new CustomAction(x);
+                        menuActions.Add(x.GetDescription(), (sender, args) => ItemClicked(action));   
+                    });
+                
                 _menuDetail.Items = menuActions;
             }
         }
 
-        private async void ItemClicked(CustomAction.Actions action)
+        private async void ItemClicked(CustomAction action)
         {
-            switch (action)
+            switch (action.Action)
             {
                 case CustomAction.Actions.RunExternalProgram:
                 {
@@ -98,7 +108,7 @@ namespace GalaxyBudsClient.Interface.Pages
                     string[]? result = await dlg.ShowAsync(MainWindow.Instance);
                     if (result != null && result.Length > 0)
                     {
-                        _currentAction = new CustomAction(action, result[0]);
+                        _currentAction = new CustomAction(action.Action, result[0]);
                     }
 
                     break;
@@ -108,11 +118,11 @@ namespace GalaxyBudsClient.Interface.Pages
                     await recorder.ShowDialog(MainWindow.Instance);
                     if (recorder.Result)
                     {
-                        _currentAction = new CustomAction(action, string.Join(",", recorder.Hotkeys ?? new List<Key>()));
+                        _currentAction = new CustomAction(action.Action, string.Join(",", recorder.Hotkeys ?? new List<Key>()));
                     }
                     break;
                 default:
-                    _currentAction = new CustomAction(action);
+                    _currentAction = action;
                     break;
             }
 

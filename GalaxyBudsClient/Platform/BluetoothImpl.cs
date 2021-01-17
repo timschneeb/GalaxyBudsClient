@@ -303,6 +303,7 @@ namespace GalaxyBudsClient.Platform
 
                         if (msg.TotalPacketSize >= IncomingData.Count)
                         {
+                            IncomingData.Clear();
                             break;
                         }
 

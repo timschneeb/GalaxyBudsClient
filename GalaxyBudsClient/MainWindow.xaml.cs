@@ -366,17 +366,8 @@ namespace GalaxyBudsClient
 
             switch (action.Action)
             {
-                case CustomAction.Actions.AmbientVolumeUp:
-                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientVolumeUp);
-                    break;
-                case CustomAction.Actions.AmbientVolumeDown:
-                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientVolumeDown);
-                    break;
-                case CustomAction.Actions.EnableEqualizer:
-                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.EqualizerToggle);
-                    break;
-                case CustomAction.Actions.SwitchEqualizerPreset:
-                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.EqualizerNextPreset);
+                case CustomAction.Actions.Event:
+                    EventDispatcher.Instance.Dispatch(Enum.Parse<EventDispatcher.Event>(action.Parameter), true);
                     break;
                 case CustomAction.Actions.RunExternalProgram:
                     try
