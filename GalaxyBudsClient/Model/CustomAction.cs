@@ -23,7 +23,20 @@ namespace GalaxyBudsClient.Model
 
         public string Parameter;
 
-        public EventDispatcher.Event Event => Enum.Parse<EventDispatcher.Event>(Parameter);
+        public EventDispatcher.Event Event
+        {
+            get
+            {
+                try
+                {
+                    return Enum.Parse<EventDispatcher.Event>(Parameter);
+                }
+                catch (Exception)
+                {
+                    return EventDispatcher.Event.None;
+                }
+            }
+        }
 
         public CustomAction(Actions action, string parameter = "")
         {

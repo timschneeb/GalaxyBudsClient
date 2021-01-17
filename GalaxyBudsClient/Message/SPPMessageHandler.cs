@@ -79,8 +79,8 @@ namespace GalaxyBudsClient.Message
                     SerialNumberResponse?.Invoke(this, (parser as DebugSerialNumberParser)!);
                     break;
                 case SPPMessage.MessageIds.EXTENDED_STATUS_UPDATED:
-                    ExtendedStatusUpdate?.Invoke(this, (parser as ExtendedStatusUpdateParser)!);
                     BaseUpdate?.Invoke(this, (parser as IBasicStatusUpdate)!);
+                    ExtendedStatusUpdate?.Invoke(this, (parser as ExtendedStatusUpdateParser)!);
                     break;
                 case SPPMessage.MessageIds.FIND_MY_EARBUDS_STOP:
                     FindMyGearStopped?.Invoke(this, EventArgs.Empty);
