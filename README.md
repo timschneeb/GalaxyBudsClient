@@ -6,7 +6,7 @@
   Galaxy Buds Client
   <br>
 </h1>
-<h4 align="center">An unofficial manager for the Buds, Buds+ and Buds Live</h4>
+<h4 align="center">An unofficial manager for the Buds, Buds+, Buds Live and Buds Pro</h4>
 <p align="center">
   <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
     <img alt="GitHub downloads count" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
