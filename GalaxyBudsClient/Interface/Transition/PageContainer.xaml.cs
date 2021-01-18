@@ -82,6 +82,13 @@ namespace GalaxyBudsClient.Interface.Transition
 
 			return PageViewModel.Items.Remove(page);
 		}
+		
+		        
+		public void UnregisterAll()
+		{
+			PageViewModel.Items.Clear();
+		}
+
 
 		public bool SwitchPage(AbstractPage.Pages page)
 		{

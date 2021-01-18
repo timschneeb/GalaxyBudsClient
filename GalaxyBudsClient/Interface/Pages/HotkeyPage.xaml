@@ -38,7 +38,7 @@
 
         <Border Grid.Row="4"
                 x:Name="ContainerBorder"
-                Classes="RoundedBorderListItem"
+                Classes="RoundedBorderListItem BottomSpacer10"
                 ClipToBounds="True">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <ItemsControl Name="ItemsControl">
@@ -82,7 +82,7 @@
             </ScrollViewer>
         </Border>
 
-        <Border Grid.Row="4" x:Name="EmptyViewBorder" IsVisible="False" Classes="RoundedBorderListItem">
+        <Border Grid.Row="4" x:Name="EmptyViewBorder" IsVisible="False" Classes="RoundedBorderListItem BottomSpacer10">
             <items:DetailListItem Text="{DynamicResource hotkey_empty}"
                                   Description="{DynamicResource hotkey_empty_desc}" />
         </Border>

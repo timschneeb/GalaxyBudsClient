@@ -57,14 +57,13 @@ namespace GalaxyBudsClient
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 desktop.MainWindow = MainWindow.Instance;
+                desktop.Exit += (sender, args) => SettingsProvider.Instance.FirstLaunch = false;
             }
             
             if (Loc.IsTranslatorModeEnabled())
             {
                 DialogLauncher.ShowTranslatorTools();
             }
-            
-            HotkeyReceiverImpl.Instance.Update(silent: true);
             
             base.OnFrameworkInitializationCompleted();
         }

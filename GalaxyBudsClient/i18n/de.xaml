@@ -128,7 +128,7 @@
     <sys:String x:Key="hotkey_add_error_context">Affected hotkey:</sys:String>
     <sys:String x:Key="hotkey_add_error_duplicate">Your selected key-combination was already registered as a hotkey by this or another application. Please choose another one.</sys:String>
     <sys:String x:Key="hotkey_add_error_unknown">Operating system responded with error '{0}'</sys:String>
-    
+
     <!-- EventDispatcher module -->
     <sys:String x:Key="event_none">Keine Auswahl</sys:String>
     <sys:String x:Key="event_ambient_toggle">Ambient Sound umschalten</sys:String>

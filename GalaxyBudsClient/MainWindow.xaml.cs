@@ -204,18 +204,18 @@ namespace GalaxyBudsClient
         protected override async void OnInitialized()
         {
             SingleInstanceWatcher.Activated += BringToFront;
-
+            
             if (BluetoothImpl.Instance.RegisteredDeviceValid)
             {
                 await Task.Delay(3000).ContinueWith((_) => UpdateManager.Instance.SilentCheck());
             }
             base.OnInitialized();
         }
-
+        
         protected override async void OnClosing(CancelEventArgs e)
         {
             await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.FIND_MY_EARBUDS_STOP);
-
+            
             if (SettingsProvider.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
             {
                 Hide();
@@ -227,6 +227,9 @@ namespace GalaxyBudsClient
 
         protected override void OnOpened(EventArgs e)
         {
+            HotkeyReceiverImpl.Reset();
+            HotkeyReceiverImpl.Instance.Update(silent: true);
+            
             if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 if (desktop.Args.Contains("/StartMinimized") && PlatformUtils.SupportsTrayIcon && _firstShow)
@@ -250,6 +253,8 @@ namespace GalaxyBudsClient
             SPPMessageHandler.Instance.OtherOption -= HandleOtherTouchOption;
 
             NotifyIconImpl.Instance.LeftClicked -= TrayIcon_OnLeftClicked;
+            EventDispatcher.Instance.EventReceived -= OnEventReceived;
+
             Loc.LanguageUpdated -= BuildOptionsMenu;
 
             if (DisableApplicationExit)

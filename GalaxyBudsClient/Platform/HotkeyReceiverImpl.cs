@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Avalonia.Collections;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Hotkeys;
@@ -26,17 +27,16 @@ namespace GalaxyBudsClient.Platform
             }
         }
 
+        public static void Reset()
+        {
+            _instance?.UnregisterAll();
+            _instance = null;
+        }
+
         private readonly IHotkeyReceiver _backend;
 
         public HotkeyReceiverImpl()
         {
-            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-            if (SettingsProvider.Instance.Hotkeys == null)
-            {
-                SettingsProvider.Instance.Hotkeys = new Hotkey[0];
-            }
-            
-            
             if (PlatformUtils.IsWindows)
             {
                 _backend = new Windows.HotkeyReceiver();

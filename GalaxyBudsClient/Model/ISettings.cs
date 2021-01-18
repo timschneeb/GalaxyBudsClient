@@ -63,5 +63,8 @@ namespace GalaxyBudsClient.Model
         IExperiments Experiments { set; get; }
         
         Hotkey[] Hotkeys { set; get; }
+        
+        [Option(DefaultValue = true)]
+        bool FirstLaunch { set; get; }
     }
 }
