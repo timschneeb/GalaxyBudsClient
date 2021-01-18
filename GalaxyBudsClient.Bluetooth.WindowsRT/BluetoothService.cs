@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.UserDataTasks;
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Bluetooth.Rfcomm;
 using Windows.Devices.Enumeration;
 using Windows.Networking.Sockets;
 using Windows.Storage.Streams;
 using Serilog;
-using Serilog.Core;
 
 namespace GalaxyBudsClient.Bluetooth.WindowsRT
 {
@@ -62,8 +58,8 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
             };
 
             _deviceWatcher = DeviceInformation.CreateWatcher("(System.Devices.Aep.ProtocolId:=\"{e0cbf06c-cd8b-4647-bb8a-263b43f0f974}\")",
-                                                            requestedProperties,
-                                                            DeviceInformationKind.AssociationEndpoint);
+                requestedProperties,
+                DeviceInformationKind.AssociationEndpoint);
             
             _deviceWatcher.Added += (watcher, deviceInfo) =>
             {
@@ -144,116 +140,136 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
             }
             
             Connecting?.Invoke(this, EventArgs.Empty);
-            
-            var matches = _deviceCache.Where(x => string.Equals(x.Address, macAddress, StringComparison.CurrentCultureIgnoreCase)).ToList();
-            if (matches.Count <= 0)
-            {
-                Log.Error($"WindowsRT.BluetoothService: Registered device not available. Expected MAC: {macAddress}");
-                BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
-                    "Device unavailable. Not device with registered MAC address not found nearby. If you are certain that your earbuds are connected to this computer, please unregister them and try again."));
-            }
-            else
-            {
-                Log.Debug($"WindowsRT.BluetoothService: Selected '{matches[0].Name}' ({matches[0].Address}) from cache as target");
-            }
-            
-            // Perform device access checks before trying to get the device.
-            // First, we check if consent has been explicitly denied by the user.
-            var accessStatus = DeviceAccessInformation.CreateFromId(matches[0].Id).CurrentStatus;
-            if (accessStatus == DeviceAccessStatus.DeniedByUser)
-            {
-                Log.Error($"WindowsRT.BluetoothService: Access to device explicitly denied by user");
-                BluetoothErrorAsync?.Invoke(this,
-                    new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, 
-                        "This app does not have access to connect to the remote device (please grant access in Settings > Privacy > Other Devices"));
-                return;
-            }
-            if (accessStatus == DeviceAccessStatus.DeniedBySystem)
-            {
-                Log.Error($"WindowsRT.BluetoothService: Access to device denied by system");
-                BluetoothErrorAsync?.Invoke(this,
-                    new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, 
-                        "Access denied by system. This app does not have access to connect to the remote device"));
-                return;
-            }
-            
-            // If not, try to get the Bluetooth device
+
             try
             {
-                _bluetoothDevice = await Windows.Devices.Bluetooth.BluetoothDevice.FromIdAsync(matches[0].Id);
+                var matches = _deviceCache.Where(x =>
+                    string.Equals(x.Address, macAddress, StringComparison.CurrentCultureIgnoreCase)).ToList();
+                if (matches.Count <= 0)
+                {
+                    Log.Error(
+                        $"WindowsRT.BluetoothService: Registered device not available. Expected MAC: {macAddress}");
+                    BluetoothErrorAsync?.Invoke(this, new BluetoothException(
+                        BluetoothException.ErrorCodes.ConnectFailed,
+                        "Device unavailable. Not device with registered MAC address not found nearby. If you are certain that your earbuds are connected to this computer, please unregister them and try again."));
+                }
+                else
+                {
+                    Log.Debug(
+                        $"WindowsRT.BluetoothService: Selected '{matches[0].Name}' ({matches[0].Address}) from cache as target");
+                }
+
+                // Perform device access checks before trying to get the device.
+                // First, we check if consent has been explicitly denied by the user.
+                var accessStatus = DeviceAccessInformation.CreateFromId(matches[0].Id).CurrentStatus;
+                if (accessStatus == DeviceAccessStatus.DeniedByUser)
+                {
+                    Log.Error($"WindowsRT.BluetoothService: Access to device explicitly denied by user");
+                    BluetoothErrorAsync?.Invoke(this,
+                        new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
+                            "This app does not have access to connect to the remote device (please grant access in Settings > Privacy > Other Devices"));
+                    return;
+                }
+
+                if (accessStatus == DeviceAccessStatus.DeniedBySystem)
+                {
+                    Log.Error($"WindowsRT.BluetoothService: Access to device denied by system");
+                    BluetoothErrorAsync?.Invoke(this,
+                        new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
+                            "Access denied by system. This app does not have access to connect to the remote device"));
+                    return;
+                }
+
+                // If not, try to get the Bluetooth device
+                try
+                {
+                    _bluetoothDevice = await Windows.Devices.Bluetooth.BluetoothDevice.FromIdAsync(matches[0].Id);
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(
+                        $"WindowsRT.BluetoothService: Error while getting Bluetooth device from cached id: {ex.Message}");
+                    BluetoothErrorAsync?.Invoke(this,
+                        new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
+                            ex.Message));
+                    return;
+                }
+
+                // If we were unable to get a valid Bluetooth device object,
+                // it's most likely because the user has specified that all unpaired devices
+                // should not be interacted with.
+                if (_bluetoothDevice == null)
+                {
+                    Log.Error($"WindowsRT.BluetoothService: BluetoothDevice.FromIdAsync returned NULL");
+                    BluetoothErrorAsync?.Invoke(this,
+                        new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
+                            "Unable to retrieve device object. Try to re-pair your Bluetooth device."));
+                    return;
+                }
+
+                // This should return a list of uncached Bluetooth services (so if the server was not active when paired, it will still be detected by this call
+                var rfcommServices = await _bluetoothDevice.GetRfcommServicesForIdAsync(
+                    RfcommServiceId.FromUuid(new Guid(serviceUuid)), BluetoothCacheMode.Uncached);
+
+                if (rfcommServices.Services.Count > 0)
+                {
+                    _service = rfcommServices.Services[0];
+                }
+                else
+                {
+                    Log.Error($"WindowsRT.BluetoothService: SPP service not discovered");
+                    BluetoothErrorAsync?.Invoke(this,
+                        new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
+                            "Unable to discover SDP record for the RFCOMM protocol. Either your earbuds are out of range or ran out of battery."));
+                    return;
+                }
+
+                lock (this)
+                {
+                    _socket = new StreamSocket();
+                }
+
+                try
+                {
+                    await _socket.ConnectAsync(_service.ConnectionHostName, _service.ConnectionServiceName);
+                    Connected?.Invoke(this, EventArgs.Empty);
+                    Log.Debug($"WindowsRT.BluetoothService: Connected");
+
+                    _writer = new DataWriter(_socket.OutputStream);
+
+                    Log.Debug("WindowsRT.BluetoothService: Launching BluetoothServiceLoop...");
+                    RfcommConnected?.Invoke(this, EventArgs.Empty);
+
+                    IsStreamConnected = true;
+
+                    _loopCancellation = new CancellationTokenSource();
+                    _loop = Task.Run(BluetoothServiceLoop);
+                }
+                catch (Exception ex) when ((uint) ex.HResult == 0x80070490) // ERROR_ELEMENT_NOT_FOUND
+                {
+                    Log.Error(
+                        "WindowsRT.BluetoothService: Error while connecting (HRESULT: ERROR_ELEMENT_NOT_FOUND): " +
+                        ex.Message);
+                    BluetoothErrorAsync?.Invoke(this,
+                        new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
+                            "SPP server on remote device unavailable. Please reboot your earbuds by placing both into the case and closing it. (ERROR_ELEMENT_NOT_FOUND)"));
+                }
+                catch (Exception ex) when ((uint) ex.HResult == 0x80072740) // WSAEADDRINUSE
+                {
+                    Log.Error("WindowsRT.BluetoothService: Address already in use");
+                    BluetoothErrorAsync?.Invoke(this,
+                        new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
+                            "Target address already in use. Only one app can talk to the Galaxy Buds at a time. " +
+                            "Please make sure to close duplicate instances of this app and close all applications that are interacting with the proprietary RFCOMM protocol, such as Samsung's official firmware updater"));
+                }
             }
             catch (Exception ex)
             {
-                Log.Error($"WindowsRT.BluetoothService: Error while getting Bluetooth device from cached id: {ex.Message}");
+                Log.Error("WindowsRT.BluetoothService: Unknown error while connecting: " + ex);
                 BluetoothErrorAsync?.Invoke(this,
-                    new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, 
+                    new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
                         ex.Message));
-                return;
-            }
-            
-            // If we were unable to get a valid Bluetooth device object,
-            // it's most likely because the user has specified that all unpaired devices
-            // should not be interacted with.
-            if (_bluetoothDevice == null)
-            {
-                Log.Error($"WindowsRT.BluetoothService: BluetoothDevice.FromIdAsync returned NULL");
-                BluetoothErrorAsync?.Invoke(this,
-                    new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, 
-                        "Unable to retrieve device object. Try to re-pair your Bluetooth device."));
-                return;
-            }
 
-            // This should return a list of uncached Bluetooth services (so if the server was not active when paired, it will still be detected by this call
-            var rfcommServices = await _bluetoothDevice.GetRfcommServicesForIdAsync(
-                RfcommServiceId.FromUuid(new Guid(serviceUuid)), BluetoothCacheMode.Uncached);
-
-            if (rfcommServices.Services.Count > 0)
-            {
-                _service = rfcommServices.Services[0];
-            }
-            else
-            {
-                Log.Error($"WindowsRT.BluetoothService: SPP service not discovered");
-                BluetoothErrorAsync?.Invoke(this,
-                    new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, 
-                        "Unable to discover SDP record for the RFCOMM protocol. Either your earbuds are out of range or ran out of battery."));
-                return;
-            }
-
-            lock (this)
-            {
-                _socket = new StreamSocket();
-            }
-            try
-            {
-                await _socket.ConnectAsync(_service.ConnectionHostName, _service.ConnectionServiceName);
-                Connected?.Invoke(this, EventArgs.Empty);
-                Log.Debug($"WindowsRT.BluetoothService: Connected");
-
-                _writer = new DataWriter(_socket.OutputStream);
-
-                Log.Debug("WindowsRT.BluetoothService: Launching BluetoothServiceLoop...");
-                RfcommConnected?.Invoke(this, EventArgs.Empty);
-
-                IsStreamConnected = true;
-                
-                _loopCancellation = new CancellationTokenSource();
-                _loop = Task.Run(BluetoothServiceLoop);
-            }
-            catch (Exception ex) when ((uint)ex.HResult == 0x80070490) // ERROR_ELEMENT_NOT_FOUND
-            {
-                Log.Error("WindowsRT.BluetoothService: Error while connecting (HRESULT: ERROR_ELEMENT_NOT_FOUND): " + ex.Message);
-                BluetoothErrorAsync?.Invoke(this,
-                    new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, 
-                        "SPP server on remote device unavailable. Please reboot your earbuds by placing both into the case and closing it. (ERROR_ELEMENT_NOT_FOUND)"));
-            }
-            catch (Exception ex) when ((uint)ex.HResult == 0x80072740) // WSAEADDRINUSE
-            {
-                Log.Error("WindowsRT.BluetoothService: Address already in use");
-                BluetoothErrorAsync?.Invoke(this,
-                    new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, 
-                        "Target address already in use. Only one app can talk to the Galaxy Buds at a time. " +
-                        "Please make sure to close duplicate instances of this app and close all applications that are interacting with the proprietary RFCOMM protocol, such as Samsung's official firmware updater"));
             }
         }
 
@@ -265,8 +281,15 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
             
             if (_writer != null)
             {
-                _writer.DetachStream();
-                _writer = null;
+                try
+                {
+                    _writer.DetachStream();
+                    _writer = null;
+                }
+                catch (Exception ex)
+                {
+                    Log.Error($"WindowsRT.BluetoothService: Exception while detaching writer stream: {ex}");
+                }
             }
 
             if (_service != null)
@@ -298,7 +321,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                 await DisconnectAsync();
                 return;
             }
-            
+
             try
             {
                 if (_writer == null)
@@ -307,20 +330,29 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                     IsStreamConnected = false;
                     BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.SendFailed,
                         "Stream disconnected while dispatching a message"));
+                    await DisconnectAsync();    
                     return;
                 }
-                
+
                 _writer.WriteBytes(data);
                 await _writer.StoreAsync();
             }
-            catch (Exception ex) when ((uint)ex.HResult == 0x80072745)
+            catch (Exception ex) when ((uint) ex.HResult == 0x80072745)
             {
                 // The remote device has disconnected the connection
                 Log.Error("WindowsRT.BluetoothService: Remote closed connection while dispatching message");
-                BluetoothErrorAsync?.Invoke(this, 
-                    new BluetoothException(BluetoothException.ErrorCodes.SendFailed, 
+                BluetoothErrorAsync?.Invoke(this,
+                    new BluetoothException(BluetoothException.ErrorCodes.SendFailed,
                         "Remote device closed connection: " + ex.HResult.ToString() + " - " + ex.Message));
                 await DisconnectAsync();
+            }
+            catch (Exception ex)
+            {
+                Log.Error("WindowsRT.BluetoothService: Error while sending: " + ex.Message);       
+                BluetoothErrorAsync?.Invoke(this,                                                                  
+                    new BluetoothException(BluetoothException.ErrorCodes.SendFailed,                               
+                        "Remote device closed connection: " + ex.HResult.ToString() + " - " + ex.Message));  
+                await DisconnectAsync();      
             }
         }
 
@@ -345,33 +377,35 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                     Log.Debug("WindowsRT.BluetoothService: BluetoothServiceLoop cancelled.");
                     return;
                 }
-
-                Stream? incoming = null;
-                if (_socket == null)
-                {
-                    Log.Error($"WindowsRT.BluetoothService: StreamSocket is null");
-                    BluetoothErrorAsync?.Invoke(this,
-                        new BluetoothException(BluetoothException.ErrorCodes.ReceiveFailed, 
-                            "Cannot retrieve incoming data stream. Device probably disconnected."));
-                    return;
-                }
                 
-                lock (_socket)
-                {
-                    incoming = _socket?.InputStream.AsStreamForRead();
-                }
-
-                if (incoming == null)
-                {
-                    Log.Error($"WindowsRT.BluetoothService: Cannot retrieve incoming data stream");
-                    BluetoothErrorAsync?.Invoke(this,
-                        new BluetoothException(BluetoothException.ErrorCodes.ReceiveFailed, 
-                            "Cannot retrieve incoming data stream. Device probably disconnected."));
-                    return;
-                }
-
                 try
-                {
+                {  
+                    Stream? incoming = null;
+                    if (_socket == null)
+                    {
+                        Log.Error($"WindowsRT.BluetoothService: StreamSocket is null");
+                        BluetoothErrorAsync?.Invoke(this,
+                            new BluetoothException(BluetoothException.ErrorCodes.ReceiveFailed, 
+                                "Cannot retrieve incoming data stream. Device probably disconnected."));
+                        await DisconnectAsync();    
+                        return;
+                    }
+                
+                    lock (_socket)
+                    {
+                        incoming = _socket?.InputStream.AsStreamForRead();
+                    }
+
+                    if (incoming == null)
+                    {
+                        Log.Error($"WindowsRT.BluetoothService: Cannot retrieve incoming data stream");
+                        BluetoothErrorAsync?.Invoke(this,
+                            new BluetoothException(BluetoothException.ErrorCodes.ReceiveFailed, 
+                                "Cannot retrieve incoming data stream. Device probably disconnected."));
+                        await DisconnectAsync();    
+                        return;
+                    }
+                    
                     byte[] buffer = new byte[10000];
                     
                     var b = incoming.Read(buffer, 0, buffer.Length);
@@ -388,31 +422,28 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                 }
                 catch (Exception ex)
                 {
-                    lock (this)
+                    if (_socket == null)
                     {
-                        if (_socket == null)
+                        switch ((uint) ex.HResult)
                         {
-                            switch ((uint) ex.HResult)
-                            {
-                                // the user closed the socket.
-                                case 0x80072745:
+                            // the user closed the socket.
+                            case 0x80072745:
 
-                                    BluetoothErrorAsync?.Invoke(this, new BluetoothException(
-                                        BluetoothException.ErrorCodes.ReceiveFailed,
-                                        "Disconnect triggered by remote device"));
-                                    break;
-                                case 0x800703E3:
-                                    Log.Debug(
-                                        "WindowsRT.BluetoothService: The I/O operation has been aborted because of either a thread exit or an application request");
-                                    break;
-                            }
+                                BluetoothErrorAsync?.Invoke(this, new BluetoothException(
+                                    BluetoothException.ErrorCodes.ReceiveFailed,
+                                    "Disconnect triggered by remote device"));
+                                break;
+                            case 0x800703E3:
+                                Log.Debug(
+                                    "WindowsRT.BluetoothService: The I/O operation has been aborted because of either a thread exit or an application request");
+                                break;
                         }
-                        else
-                        {
-                            BluetoothErrorAsync?.Invoke(this, new BluetoothException(
-                                BluetoothException.ErrorCodes.ReceiveFailed,
-                                "Failed to read stream: " + ex.Message));
-                        }
+                    }
+                    else
+                    {
+                        BluetoothErrorAsync?.Invoke(this, new BluetoothException(
+                            BluetoothException.ErrorCodes.ReceiveFailed,
+                            "Failed to read stream: " + ex.Message));
                     }
 
                     await DisconnectAsync();

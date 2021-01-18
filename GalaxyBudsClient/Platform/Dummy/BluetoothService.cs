@@ -18,7 +18,10 @@ namespace GalaxyBudsClient.Platform.Dummy
         
         public async Task ConnectAsync(string macAddress, string serviceUuid, bool noRetry = false)
         {
-            BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.Unknown, "Platform not supported. On Windows systems, we only support the default Microsoft Bluetooth stack drivers. Third-party stacks such as BlueSoleil and Widcomm are NOT supported!"));
+            BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.Unknown, 
+                "Platform configuration not supported." +
+                "For Windows users, it is recommended to use Windows 10 build 1803 and later since it provides a much more reliable and newer bluetooth interface. " +
+                $"You can find more information about the cause of this error in the application logs ({PlatformUtils.CombineDataPath("application.log")})."));
             await Task.CompletedTask;
         }
 

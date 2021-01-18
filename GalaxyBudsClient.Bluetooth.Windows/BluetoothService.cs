@@ -47,10 +47,17 @@ namespace GalaxyBudsClient.Bluetooth.Windows
 
         public BluetoothService()
         {
-            if (!WindowsBluetoothRadio.IsPlatformSupported)
+            try
             {
-                Log.Error("Windows.BluetoothService: Microsoft Bluetooth Stack unavailable");
-                throw new PlatformNotSupportedException("Microsoft Bluetooth stack not available");
+                if (!WindowsBluetoothRadio.IsPlatformSupported)
+                {
+                    Log.Error("Windows.BluetoothService: Microsoft Bluetooth Stack unavailable");
+                    throw new PlatformNotSupportedException("Microsoft Bluetooth stack not available");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new PlatformNotSupportedException($"Error while initializing legacy Bluetooth backend for older Windows 10 versions: {ex.Message}");
             }
 
             Task.Delay(2000).ContinueWith(x => SetupDeviceDetection());
