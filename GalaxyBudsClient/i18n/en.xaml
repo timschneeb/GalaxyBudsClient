@@ -105,7 +105,8 @@
     <!-- Hotkey Action Builder Dialog -->
     <sys:String x:Key="hotkey_edit_title">Hotkey editor</sys:String>
     <sys:String x:Key="hotkey_edit_invalid">Invalid hotkey selection</sys:String>
-    <sys:String x:Key="hotkey_edit_invalid_desc">Please choose at least one key aside from modifiers</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_desc">Please choose at least one key and one modifiers</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_mod">Modifier missing</sys:String>
     <sys:String x:Key="hotkey_edit_invalid_action">Invalid action</sys:String>
     <sys:String x:Key="hotkey_edit_invalid_action_desc">Please choose an action</sys:String>
     <sys:String x:Key="hotkey_edit_modifier">Modifiers</sys:String>

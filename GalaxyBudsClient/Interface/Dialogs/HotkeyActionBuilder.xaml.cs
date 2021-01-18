@@ -108,7 +108,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
 
         private async void Apply_OnClick(object? sender, RoutedEventArgs e)
         {
-            if ((_key1.SelectedItem == null || (Keys)_key1.SelectedItem == Keys.None)  || Hotkey == null)
+            if ((_key1.SelectedItem == null || (Keys)_key1.SelectedItem == Keys.None) || Hotkey == null)
             {
                 await new MessageBox()
                 {
@@ -194,6 +194,12 @@ namespace GalaxyBudsClient.Interface.Dialogs
             if (_modShift.IsChecked == true)
             {
                 modifier.Add(ModifierKeys.Shift);
+            }
+
+            if (modifier.Count < 1)
+            {
+                _keyLabel.Text = Loc.Resolve("hotkey_edit_invalid_mod");
+                return;
             }
 
             if (_action.SelectedItem is ActionViewHolder viewHolder)
