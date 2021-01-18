@@ -49,7 +49,7 @@ namespace GalaxyBudsClient.Interface.Pages
                 };
                 string? path = await dlg.ShowAsync(MainWindow.Instance);
     
-                if (path == null)
+                if (string.IsNullOrEmpty(path))
                 {
                     return;
                 }

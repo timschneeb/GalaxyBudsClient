@@ -1,26 +1,26 @@
 <pages:AbstractPage xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.Pages"
-             xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
-             xmlns:items="clr-namespace:GalaxyBudsClient.Interface.Items"
-             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
-             x:Class="GalaxyBudsClient.Interface.Pages.SystemCoredumpPage"
-             DockPanel.Dock="Top" Margin="10,0">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.Pages"
+                    xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
+                    xmlns:items="clr-namespace:GalaxyBudsClient.Interface.Items"
+                    mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+                    x:Class="GalaxyBudsClient.Interface.Pages.SystemCoredumpPage"
+                    DockPanel.Dock="Top" Margin="10,0">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="200"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <elements:PageHeader Grid.Row="1" Title="{DynamicResource coredump_header}" BackButtonVisible="False"/>
-       
+        <elements:PageHeader Grid.Row="1" Title="{DynamicResource coredump_header}" BackButtonVisible="False" />
+
         <Border Grid.Row="3"
-                Classes="RoundedBorderListItem" > 
+                Classes="RoundedBorderListItem">
             <Grid Margin="20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -29,51 +29,50 @@
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" x:Name="ProgressText"
                                FontSize="14"
                                Foreground="{DynamicResource ForegroundTextBrush}"
                                FontWeight="Bold"
-                               Text="{DynamicResource coredump_dl_progress_prepare}"/>
+                               Text="{DynamicResource coredump_dl_progress_prepare}" />
                     <TextBlock Grid.Column="2" x:Name="ProgressSizeText"
                                HorizontalAlignment="Right"
                                FontSize="12"
-                               Foreground="{DynamicResource ForegroundTextBrush}"/>
+                               Foreground="{DynamicResource ForegroundTextBrush}" />
 
                 </Grid>
 
                 <ProgressBar Grid.Row="1"
                              x:Name="Progress"
-                             Margin="0,13"/>
+                             Margin="0,13" />
                 <TextBlock Grid.Row="2"
                            FontSize="14"
                            Foreground="{DynamicResource ForegroundTextBrush}"
                            Text="{DynamicResource coredump_dl_note}"
-                           TextWrapping="Wrap"/>
+                           TextWrapping="Wrap" />
             </Grid>
         </Border>
         <Border Grid.Row="5" Classes="RoundedBorderListItem" Height="50">
-                <Grid ClipToBounds="True" MinHeight="50">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Border Grid.Column="0" Classes="BorderHoverStyle" PointerPressed="Cancel_OnPointerPressed" 
-                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <Label FontSize="18"
-                               Content="{DynamicResource cancel}"
-                               VerticalContentAlignment="Center" 
-                               HorizontalAlignment="Center"
-                               HorizontalContentAlignment="Center"/>
-                    </Border>
-                    <Border Grid.Column="1" Classes="VerticalSeparator" />
-                    <Border Grid.Column="2" Classes="BorderHoverStyle"
-                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    </Border>
+            <Grid ClipToBounds="True" MinHeight="50">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Classes="BorderHoverStyle" PointerPressed="Cancel_OnPointerPressed"
+                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Label FontSize="18"
+                           Content="{DynamicResource cancel}"
+                           VerticalContentAlignment="Center"
+                           HorizontalAlignment="Center"
+                           HorizontalContentAlignment="Center" />
+                </Border>
+                <Border Grid.Column="1" Classes="VerticalSeparator" />
+                <Border Grid.Column="2"
+                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             </Grid>
         </Border>
     </Grid>
