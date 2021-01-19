@@ -7,13 +7,18 @@
         <!-- :::::::: Source code :::::::: -->
 
         <!-- General -->
+        <sys:String x:Key="okay">Ok</sys:String>
         <sys:String x:Key="left">Sinistro</sys:String>
         <sys:String x:Key="right">Destro</sys:String>
         <sys:String x:Key="case">Custodia</sys:String>
         <sys:String x:Key="error">Errore</sys:String>
         <sys:String x:Key="cancel">Annulla</sys:String>
         <sys:String x:Key="apply">Applica</sys:String>
+        <sys:String x:Key="select">Seleziona</sys:String>
         <sys:String x:Key="notset">Non impostato</sys:String>
+        <sys:String x:Key="unknown">Sconosciuto</sys:String>
+        <sys:String x:Key="back">Indietro</sys:String>
+
         <sys:String x:Key="nobluetoothdev">Non è stato trovato un adattatore bluetooth. Attivare il bluetooth e riprovare.</sys:String>
 
         <sys:String x:Key="anc">Cancellazione del rumore attiva</sys:String>
@@ -71,7 +76,7 @@
         <!-- Options menu -->
         <sys:String x:Key="optionsmenu_title">Opzioni</sys:String>
         <sys:String x:Key="optionsmenu_settings">Impostazioni</sys:String>
-        <sys:String x:Key="optionsmenu_refresh">Rinfresca dashboard</sys:String>
+        <sys:String x:Key="optionsmenu_refresh">Ricarica dashboard</sys:String>
         <sys:String x:Key="optionsmenu_deregister">Disaccoppia dispositivo</sys:String>
         <sys:String x:Key="optionsmenu_update">Controlla presenza aggiornamenti</sys:String>
         <sys:String x:Key="optionsmenu_credits">Crediti</sys:String>
@@ -97,6 +102,31 @@
         <sys:String x:Key="hotrec_title">Registrazione tocchi</sys:String>
         <sys:String x:Key="hotrec_content">Inserisci una combinazione di tocchi (tenere premuto):</sys:String>
         <sys:String x:Key="hotrec_empty">Nessuno</sys:String>
+
+        <!-- Hotkey Action Builder Dialog -->
+        <sys:String x:Key="hotkey_edit_title">Editor scorciatoie da tastiera</sys:String>
+        <sys:String x:Key="hotkey_edit_invalid">Scorciatoia non valida</sys:String>
+        <sys:String x:Key="hotkey_edit_invalid_desc">Scegli almeno un tasto e un modificatore</sys:String>
+        <sys:String x:Key="hotkey_edit_invalid_mod">Modificatore mancante</sys:String>
+        <sys:String x:Key="hotkey_edit_invalid_action">Azione non valida</sys:String>
+        <sys:String x:Key="hotkey_edit_invalid_action_desc">Scegli un'azione</sys:String>
+        <sys:String x:Key="hotkey_edit_modifier">Modificatori</sys:String>
+        <sys:String x:Key="hotkey_edit_keys">Tasti</sys:String>
+        <sys:String x:Key="hotkey_edit_action">Azione</sys:String>
+        <sys:String x:Key="hotkey_edit_preview">Anteprima scorciatoia: </sys:String>
+        <sys:String x:Key="hotkey_edit_header">Seleziona una scorciatoia da tastiera</sys:String>
+
+        <!-- Hotkey page -->
+        <sys:String x:Key="hotkey_header">Scorciatoie da tastiera</sys:String>
+        <sys:String x:Key="hotkey_add">Assegna una nuova scorciatoia</sys:String>
+        <sys:String x:Key="hotkey_empty">Nessuna scorciatoia assegnata</sys:String>
+        <sys:String x:Key="hotkey_empty_desc">Crea una nuova scorciatoia da tastiera cliccando il pulsante sopra</sys:String>
+        <sys:String x:Key="hotkey_edit">Modifica</sys:String>
+        <sys:String x:Key="hotkey_delete">Elimina</sys:String>
+        <sys:String x:Key="hotkey_add_error">Impossibile registrare/aggiornare le scorciatoie</sys:String>
+        <sys:String x:Key="hotkey_add_error_context">Scorciatoie interessate:</sys:String>
+        <sys:String x:Key="hotkey_add_error_duplicate">La combinazione di tasti selezionata è già stata registrata come scorciatoia da questa o da un'altra applicazione. Per favore scegline un'altra.</sys:String>
+        <sys:String x:Key="hotkey_add_error_unknown">Il sistema operativo ha risposto con l'errore '{0}'</sys:String>
 
         <!-- Welcome page -->
         <sys:String x:Key="welcome_textblock_header">Benvenuto!</sys:String>
@@ -142,13 +172,16 @@
 
         <!-- Device selection page (setup) -->
         <sys:String x:Key="devsel_header">Seleziona i tuoi Galaxy Buds</sys:String>
-        <sys:String x:Key="devsel_search">Inizia la ricerca del dispositivo</sys:String>
+        <sys:String x:Key="devsel_refresh">Ricarica i dispositivi accoppiati</sys:String>
         <sys:String x:Key="devsel_device_name">Nome del dispositivo</sys:String>
         <sys:String x:Key="devsel_btaddr">Indirizzo MAC</sys:String>
         <sys:String x:Key="devsel_model">Modello</sys:String>
+        <sys:String x:Key="devsel_nodevices">Connetti e accoppia i tuoi Buds prima</sys:String>
+        <sys:String x:Key="devsel_nodevices_title">Nessun dispositivo accoppiato trovato</sys:String>
         <sys:String x:Key="devsel_noselection">Nessun dispositivo selezionato</sys:String>
         <sys:String x:Key="devsel_invalid_selection">Seleziona un dispositivo valido</sys:String>
         <sys:String x:Key="devsel_footer_continue">Configura</sys:String>
+        <sys:String x:Key="devsel_dialog_footer">Se non vedi i tuoi auricolari, assicurati di averli accoppiati e collegati attraverso le impostazioni bluetooth del tuo computer e poi clicca Ricarica.</sys:String>
 
         <!-- Unsupported feature page -->
         <sys:String x:Key="unsupported_feature_current_fwver">Versione Corrente Firmware:</sys:String>
@@ -184,9 +217,18 @@
         </sys:String>
 
         <!-- System/Self-Test -->
+        <sys:String x:Key="system_overview_header">Sistema</sys:String>
         <sys:String x:Key="system_header">Informazioni di sistema</sys:String>
-        <sys:String x:Key="system_selftest">Esegui self test</sys:String>
+        <sys:String x:Key="system_selftest">Esegui autoverifica</sys:String>
+        <sys:String x:Key="system_selftest_desc">Verifica che tutti i moduli degli auricolari funzionino correttamente</sys:String>
         <sys:String x:Key="system_factory_reset">Ripristino auricolari</sys:String>
+        <sys:String x:Key="system_factory_reset_desc">Ripristina le impostazioni di fabbrica e scollega gli auricolari</sys:String>
+        <sys:String x:Key="system_pairing_mode">Accedi alla modalità di associazione</sys:String>
+        <sys:String x:Key="system_pairing_mode_desc">Scollega gli auricolari da questo PC e rendili visibili ad altri dispositivi</sys:String>
+        <sys:String x:Key="system_trace_core_dump">Scarica trace e core dump</sys:String>
+        <sys:String x:Key="system_trace_core_dump_desc">Recupera i dati di debug non elaborati (raw) dagli auricolari</sys:String>
+        <sys:String x:Key="system_info">Visualizza informazioni di sistema</sys:String>
+        <sys:String x:Key="system_info_desc">Visualizza informazioni dettagliate sui tuoi auricolari</sys:String>
 
         <sys:String x:Key="system_battery_type_unknown">Non specificato</sys:String>
         <sys:String x:Key="system_waiting_for_device">In attesa di una risposta...</sys:String>
