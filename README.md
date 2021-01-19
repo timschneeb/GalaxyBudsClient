@@ -106,11 +106,11 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Russian and Ukrainian translation
 * [@PlasticBrain](https://github.com/fhalfkg) - Korean and Japanese translation
 * [@erenbektas](https://github.com/erenbektas) - Turkish translation
-* [@kakkk](https://github.com/kakkk) , [@KevinZonda](https://github.com/KevinZonda) and [@ssenkrad](https://github.com/ssenkrad) - Chinese translation
+* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda) and [@ssenkrad](https://github.com/ssenkrad) - Chinese translation
 * [@efrenbg1](https://github.com/efrenbg1) and Andrew Gonza - Spanish translation
 * [@giovankabisano](https://github.com/giovankabisano) - Indonesian translation
 * [@lucasskluser](https://github.com/lucasskluser) - Portuguese translation
-* [@alb-p](https://github.com/alb-p) - Italian translation
+* [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Italian translation
 * [@Buashei](https://github.com/Buashei) - Polish translation
 
 ## License
