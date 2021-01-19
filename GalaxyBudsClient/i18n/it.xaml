@@ -128,6 +128,29 @@
         <sys:String x:Key="hotkey_add_error_duplicate">La combinazione di tasti selezionata è già stata registrata come scorciatoia da questa o da un'altra applicazione. Per favore scegline un'altra.</sys:String>
         <sys:String x:Key="hotkey_add_error_unknown">Il sistema operativo ha risposto con l'errore '{0}'</sys:String>
 
+        <!-- EventDispatcher module -->
+        <sys:String x:Key="event_none">Nessuna</sys:String>
+        <sys:String x:Key="event_ambient_toggle">Attiva/disattiva suono ambientale</sys:String>
+        <sys:String x:Key="event_ambient_volume_up">Volume ambientale su</sys:String>
+        <sys:String x:Key="event_ambient_volume_down">Volume ambientale giù</sys:String>
+        <sys:String x:Key="event_eq_toggle">Attiva/disattiva equalizzatore</sys:String>
+        <sys:String x:Key="event_eq_switch">Itera preset equalizzatore</sys:String>
+        <sys:String x:Key="event_anc_toggle">Attiva/disattiva eliminazione del rumore</sys:String>
+        <sys:String x:Key="event_anc_switch_sensitivity">Cambia sensibilità ANC</sys:String>
+        <sys:String x:Key="event_touch_lock_toggle">Attiva/disattiva blocco dei tocchi</sys:String>
+        <sys:String x:Key="event_double_edge_touch_toggle">Attiva/disattiva doppio tocco bordo</sys:String>
+        <sys:String x:Key="event_conversation_toggle">Attiva/disattiva rilevamento delle conversazioni</sys:String>
+        <sys:String x:Key="event_start_stop_find">Avvia/interrompi trova i miei auricolari</sys:String>
+        <sys:String x:Key="event_start_find">Avvia trova i miei auricolari</sys:String>
+        <sys:String x:Key="event_stop_find">Interrompi trova i miei auricolari</sys:String>
+        <sys:String x:Key="event_paring_mode">Modalità accoppiamento</sys:String>
+        <sys:String x:Key="event_media_play">Riproduci contenuti multimediali</sys:String>
+        <sys:String x:Key="event_media_pause">Metti in pausa contenuti multimediali</sys:String>
+        <sys:String x:Key="event_media_play_pause">Riproduci/metti in pausa contenuti multimediali</sys:String>
+        <sys:String x:Key="event_manager_visible">Mostra/nascondi finestra del gestore</sys:String>
+        <sys:String x:Key="event_display_battery_popup">Visualizza popup della batteria</sys:String>
+        <sys:String x:Key="event_connect">Connetti al dispositivo</sys:String>
+
         <!-- Welcome page -->
         <sys:String x:Key="welcome_textblock_header">Benvenuto!</sys:String>
         <sys:String x:Key="welcome_textblock_p1">
@@ -341,6 +364,8 @@
         <sys:String x:Key="adv_passthrough_desc">Questo può prevenire la sensazione di ovattamento o compressione quando non stai usandola modalità di cancellazione attiva del rumore</sys:String>
         <sys:String x:Key="adv_gaming_mode">Modalità Gioco</sys:String>
         <sys:String x:Key="adv_gaming_mode_desc">Minimizza la latenza e migliora la sincronizzazione dell'audio (solo Samsung)</sys:String>
+        <sys:String x:Key="adv_hotkey">Scorciatoie da tastiera</sys:String>
+        <sys:String x:Key="adv_hotkey_desc">Definisci scorciatoie da tastiera personalizzate per controllare a distanza gli auricolari</sys:String>
 
         <!-- Credits -->
         <sys:String x:Key="credits_header">Crediti</sys:String>
