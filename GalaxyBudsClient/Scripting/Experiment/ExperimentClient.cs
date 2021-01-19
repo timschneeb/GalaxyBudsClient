@@ -141,7 +141,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
 
                 if (requests == null)
                 {
-                    Log.Warning("ExperimentClient: Scan failed; no data received.");
+                    Log.Warning("ExperimentClient: Scan failed; no data received");
                     return;
                 }
 

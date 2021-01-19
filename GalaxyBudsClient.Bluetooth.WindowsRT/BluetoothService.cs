@@ -57,73 +57,86 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                 "System.Devices.Aep.IsPaired"
             };
 
-            _deviceWatcher = DeviceInformation.CreateWatcher("(System.Devices.Aep.ProtocolId:=\"{e0cbf06c-cd8b-4647-bb8a-263b43f0f974}\")",
-                requestedProperties,
-                DeviceInformationKind.AssociationEndpoint);
-            
-            _deviceWatcher.Added += (watcher, deviceInfo) =>
+            try
             {
-                Log.Debug($"WindowsRT.BluetoothService: Device added: {deviceInfo.Id}");
-                if(deviceInfo.Name != string.Empty)
-                {
-                    _deviceCache.Add(new BluetoothDeviceRT(deviceInfo));
-                }
-            };
+                _deviceWatcher = DeviceInformation.CreateWatcher(
+                    "(System.Devices.Aep.ProtocolId:=\"{e0cbf06c-cd8b-4647-bb8a-263b43f0f974}\")",
+                    requestedProperties,
+                    DeviceInformationKind.AssociationEndpoint);
 
-            _deviceWatcher.Updated += (watcher, deviceInfoUpdate) =>
-            {
-                Log.Debug($"WindowsRT.BluetoothService: Device updated: {deviceInfoUpdate.Id}");
-                
-                _deviceCache.Where(x => x.Id == deviceInfoUpdate.Id).ToList().ForEach(async x =>
+                _deviceWatcher.Added += (watcher, deviceInfo) =>
                 {
-                    if (string.Equals(x.Address, _bluetoothDevice?.BluetoothAddressAsString(),
-                        StringComparison.CurrentCultureIgnoreCase) && deviceInfoUpdate.Properties.ContainsKey("System.Devices.Aep.IsConnected"))
+                    Log.Debug($"WindowsRT.BluetoothService: Device added: {deviceInfo.Id}");
+                    if (deviceInfo.Name != string.Empty)
                     {
-                        if ((bool) deviceInfoUpdate.Properties["System.Devices.Aep.IsConnected"])
-                        {
-                            Log.Debug($"WindowsRT.BluetoothService: Target device connected");
-                            await ConnectAsync(x.Address, _service?.ServiceId.AsString() ?? "{00001101-0000-1000-8000-00805F9B34FB}");
-                        }
-                        else
-                        {
-                            Log.Debug($"WindowsRT.BluetoothService: Target device disconnected");
-                            Disconnected?.Invoke(this, "Device disconnected"); 
-                        }
+                        _deviceCache?.Add(new BluetoothDeviceRT(deviceInfo));
                     }
-                });
-                _deviceCache.Where(x => deviceInfoUpdate.Id == x.Id)
-                    .ToList()
-                    .ForEach(x => x.Update(deviceInfoUpdate));
-            };
+                };
 
-            _deviceWatcher.Removed += (watcher, deviceInfoUpdate) =>
-            {
-                Log.Debug($"WindowsRT.BluetoothService: Device removed: {deviceInfoUpdate.Id}");
-                
-                _deviceCache.Where(x => x.Id == deviceInfoUpdate.Id).ToList().ForEach(x =>
+                _deviceWatcher.Updated += (watcher, deviceInfoUpdate) =>
                 {
-                    if (string.Equals(x.Address, _bluetoothDevice?.BluetoothAddressAsString(),
-                        StringComparison.CurrentCultureIgnoreCase))
+                    Log.Debug($"WindowsRT.BluetoothService: Device updated: {deviceInfoUpdate?.Id}");
+
+                    _deviceCache?.Where(x => x?.Id == deviceInfoUpdate?.Id).ToList().ForEach(async x =>
                     {
-                        Log.Debug($"WindowsRT.BluetoothService: Target device removed");
-                        Disconnected?.Invoke(this, "Device was removed/un-paired from Windows. Please check your computer's bluetooth settings.");
-                    }
-                });
-                _deviceCache.RemoveWhere(x => x.Id == deviceInfoUpdate.Id);
-            };
+                        if (string.Equals(x.Address, _bluetoothDevice?.BluetoothAddressAsString(),
+                                StringComparison.CurrentCultureIgnoreCase) &&
+                            (deviceInfoUpdate?.Properties?.ContainsKey("System.Devices.Aep.IsConnected") ?? false))
+                        {
+                            if ((bool) deviceInfoUpdate.Properties["System.Devices.Aep.IsConnected"])
+                            {
+                                Log.Debug($"WindowsRT.BluetoothService: Target device connected");
+                                await ConnectAsync(x.Address,
+                                    _service?.ServiceId?.AsString() ?? "{00001101-0000-1000-8000-00805F9B34FB}");
+                            }
+                            else
+                            {
+                                Log.Debug($"WindowsRT.BluetoothService: Target device disconnected");
+                                Disconnected?.Invoke(this, "Device disconnected");
+                            }
+                        }
+                    });
+                    _deviceCache?.Where(x => deviceInfoUpdate?.Id == x?.Id)
+                        .ToList()
+                        .ForEach(x => x?.Update(deviceInfoUpdate ?? null));
+                };
 
-            _deviceWatcher.EnumerationCompleted += (watcher, obj) =>
-            {
-                Log.Debug("WindowsRT.BluetoothService: Device enumeration complete");
-            };
-            
-            _deviceWatcher.Stopped += (watcher, obj) =>
-            {
-                Log.Warning("WindowsRT.BluetoothService: Device watcher stopped");
-            };
+                _deviceWatcher.Removed += (watcher, deviceInfoUpdate) =>
+                {
+                    Log.Debug($"WindowsRT.BluetoothService: Device removed: {deviceInfoUpdate.Id}");
 
-            _deviceWatcher.Start();
-            Log.Debug("WindowsRT.BluetoothService: Device watcher launched");
+                    _deviceCache?.Where(x => x?.Id == deviceInfoUpdate?.Id).ToList().ForEach(x =>
+                    {
+                        if (string.Equals(x?.Address, _bluetoothDevice?.BluetoothAddressAsString(),
+                            StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            Log.Debug($"WindowsRT.BluetoothService: Target device removed");
+                            Disconnected?.Invoke(this,
+                                "Device was removed/un-paired from Windows. Please check your computer's bluetooth settings.");
+                        }
+                    });
+                    _deviceCache?.RemoveWhere(x => x?.Id == deviceInfoUpdate?.Id);
+                };
+
+                _deviceWatcher.EnumerationCompleted += (watcher, obj) =>
+                {
+                    Log.Debug("WindowsRT.BluetoothService: Device enumeration complete");
+                };
+
+                _deviceWatcher.Stopped += (watcher, obj) =>
+                {
+                    Log.Warning("WindowsRT.BluetoothService: Device watcher stopped");
+                };
+
+                _deviceWatcher.Start();
+                Log.Debug("WindowsRT.BluetoothService: Device watcher launched");
+            }
+            catch (ArgumentException ex)
+            {
+                Log.Error(
+                    $"WindowsRT.BluetoothService: Failed to set up device watcher. Protocol GUID probably not found. Details: {ex}");
+                throw new PlatformNotSupportedException("Failed to set up device watcher. Make sure you have a compatible Bluetooth driver installed.");
+            }
         }
         
         public async Task ConnectAsync(string macAddress, string serviceUuid, bool noRetry = false)

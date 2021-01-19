@@ -33,6 +33,12 @@ namespace ThePBone.MprisClient
         
         public MprisClient()
         {
+            if (Address.Session == null)
+            {
+                Log.Error("MprisClient: Session bus unavailable. Cannot initialize");
+                throw new PlatformNotSupportedException("Session bus unavailable");
+            }
+            
             var clientOptions = new ClientConnectionOptions(Address.Session)
             {
                 AutoConnect = false

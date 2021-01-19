@@ -66,10 +66,15 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 {
                     _adapter = await BlueZManager.GetAdapterAsync(preferred);
                 }
-                catch(BlueZException ex)
+                catch (BlueZException ex)
                 {
                     Log.Warning($"Preferred adapter not available: " + ex.ErrorName);
                     _adapter = null;
+                }
+                catch (DBusException ex)
+                {
+                    BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.NoAdaptersAvailable, $"BlueZ not available. Make sure you've installed BlueZ and enabled that driver properly. {ex.Message}"));
+                    return;
                 }
             }
             

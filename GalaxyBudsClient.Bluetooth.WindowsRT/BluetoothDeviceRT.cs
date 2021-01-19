@@ -22,8 +22,13 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
             DeviceInfo = info;
         }
 
-        public void Update(DeviceInformationUpdate update)
+        public void Update(DeviceInformationUpdate? update)
         {
+            if (update == null)
+            {
+                return;
+            }
+            
             DeviceInfo.Update(update);
         }
     }

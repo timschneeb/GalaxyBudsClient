@@ -118,7 +118,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
             }
             else
             {
-                Log.Warning("ExperimentRuntime.ReportResult: ActiveExperiment is null. Cannot send report and exclude.");
+                Log.Warning("ExperimentRuntime.ReportResult: ActiveExperiment is null. Cannot send report and exclude");
                 return;
             }
 

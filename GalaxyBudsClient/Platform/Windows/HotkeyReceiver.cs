@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Avalonia.Threading;
 using csscript;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Hotkeys;
@@ -58,10 +59,18 @@ namespace GalaxyBudsClient.Platform.Windows
 
         ~HotkeyReceiver()
         {
-            if (MainWindow.Instance.PlatformImpl is Win32ProcWindowImpl impl)
+            Dispatcher.UIThread.Post(() =>
             {
-                impl.MessageReceived -= OnMessageReceived;
-            }
+                if (!MainWindow.IsReady())
+                {
+                    return;
+                }
+                
+                if (MainWindow.Instance.PlatformImpl is Win32ProcWindowImpl impl)
+                {
+                    impl.MessageReceived -= OnMessageReceived;
+                }   
+            });
 
             var _ = UnregisterAllAsync();
         }
