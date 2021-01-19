@@ -49,25 +49,11 @@ Aside from standard features known from the official Android app, this project h
 
 ## Download
 
-Get binaries for Windows in the [release](https://github.com/ThePBone/GalaxyBudsClient/releases) section. Please read the release notes before installing.
+Get binaries for Windows and Linux in the [release](https://github.com/ThePBone/GalaxyBudsClient/releases) section. Please read the release notes before installing.
 
 <p align="center">
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
-
-### Linux and ARM support
-
-Linux support for x86_64, x86, ARM and ARM64 is currently in beta. You can grab precompiled self-contained beta builds here: 
-
-**Note:** If your system language is set to Korean, Japanese (and probably any other with non-Latin characters), you'll run into a crash.
-You can solve this by launching the executable like this: `LC_ALL=C ./GalaxyBudsClient`. I'll try to come up with a better solution soon.
-
-1. Follow this [link](https://github.com/ThePBone/GalaxyBudsClient/actions?query=workflow%3A%22Compile+Linux+binaries%22)
-2. Select the latest job that finished successfully
-3. On the next page, scroll all the way down to the artifacts section
-4. Select your architecture and download the binary (**You need to do logged in with a GitHub account to download artifacts!**)
-
-Windows 10 on ARM support is planned.
 
 ## How it works
 
