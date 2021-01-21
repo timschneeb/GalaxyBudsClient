@@ -70,9 +70,9 @@ namespace GalaxyBudsClient.Platform.Windows
                 {
                     impl.MessageReceived -= OnMessageReceived;
                 }   
+                
+                var _ = UnregisterAllAsync();
             });
-
-            var _ = UnregisterAllAsync();
         }
 
         private void OnMessageReceived(object? sender, WndProcClient.WindowMessage msg)
