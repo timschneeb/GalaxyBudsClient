@@ -63,7 +63,7 @@
         <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.0-rc1" />
         <PackageReference Include="Avalonia.Desktop" Version="0.10.0-rc1" />
         <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0-rc1" />
-        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.0-rc1" />
+        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.0-rc2" />
         <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.0-rc1" />
         <PackageReference Include="Config.Net" Version="4.15.0" />
         <PackageReference Include="Config.Net.Json" Version="4.15.0" />
