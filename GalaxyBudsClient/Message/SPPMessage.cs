@@ -203,7 +203,7 @@ namespace GalaxyBudsClient.Message
 
                 return draft;
             }
-            catch (IndexOutOfRangeException ex)
+            catch (IndexOutOfRangeException)
             {
                 SentrySdk.AddBreadcrumb("IndexOutOfRangeException");
                 SentrySdk.ConfigureScope(scope =>

@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia;
@@ -63,20 +64,23 @@ namespace GalaxyBudsClient
                 {
                     try
                     {
+                        sentryEvent.SetTag("arch", System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString());
                         sentryEvent.SetTag("bluetooth-mac", SettingsProvider.Instance.RegisteredDevice.MacAddress);
-                        sentryEvent.SetTag("bluetooth-model", BluetoothImpl.Instance.ActiveModel.ToString());
                         sentryEvent.SetTag("sw-version",
                             DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");
-
+                        
+                        sentryEvent.SetExtra("arch", System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString());
                         sentryEvent.SetExtra("bluetooth-mac", SettingsProvider.Instance.RegisteredDevice.MacAddress);
-                        sentryEvent.SetExtra("bluetooth-model", BluetoothImpl.Instance.ActiveModel);
                         sentryEvent.SetExtra("bluetooth-model-saved", SettingsProvider.Instance.RegisteredDevice.Model);
-                        sentryEvent.SetExtra("bluetooth-connected", BluetoothImpl.Instance.IsConnected);
-                        sentryEvent.SetExtra("custom-locale", SettingsProvider.Instance.Locale);
+                        sentryEvent.SetExtra("custom-locale", SettingsProvider.Instance.Locale);          
                         sentryEvent.SetExtra("sw-version",
-                            DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");
-
+                            DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");                 
+                                          
                         sentryEvent.SetExtra("current-page", MainWindow.Instance.Pager.CurrentPage);
+                        
+                        sentryEvent.SetTag("bluetooth-model", BluetoothImpl.Instance.ActiveModel.ToString());
+                        sentryEvent.SetExtra("bluetooth-model", BluetoothImpl.Instance.ActiveModel);
+                        sentryEvent.SetExtra("bluetooth-connected", BluetoothImpl.Instance.IsConnected);
                     }
                     catch (Exception ex)
                     {
