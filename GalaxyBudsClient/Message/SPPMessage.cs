@@ -211,10 +211,7 @@ namespace GalaxyBudsClient.Message
                     scope.SetTag("raw-data-available", "true");
                     scope.SetExtra("raw-data", HexUtils.Dump(raw, 512, false, false, false));
                 });
-                SentrySdk.CaptureException(ex);
-
                 throw new InvalidPacketException(InvalidPacketException.ErrorCodes.OutOfRange,"OutOfRange. Update your firmware!");
-
             }
             catch (OverflowException ex)
             {
