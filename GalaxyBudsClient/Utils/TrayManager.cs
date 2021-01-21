@@ -11,6 +11,7 @@ using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.DynamicLocalization;
+using Serilog;
 
 namespace GalaxyBudsClient.Utils
 {
@@ -67,6 +68,7 @@ namespace GalaxyBudsClient.Utils
                     }
                     break;
                 case ItemType.Quit:
+                    Log.Information("TrayManager: Exit requested by user");
                     MainWindow.Instance.OverrideMinimizeTray = true;
                     Dispatcher.UIThread.Post(MainWindow.Instance.Close);
                     break;

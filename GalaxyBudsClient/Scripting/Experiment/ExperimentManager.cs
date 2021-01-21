@@ -7,6 +7,7 @@ using CSScriptLib;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Scripting.Hooks;
 using GalaxyBudsClient.Utils;
+using Sentry;
 using Log = Serilog.Log;
 using Task = System.Threading.Tasks.Task;
 using Timer = System.Timers.Timer;
@@ -104,40 +105,51 @@ namespace GalaxyBudsClient.Scripting.Experiment
         {
             _experimentTimeLimit?.Stop();
 
-            ExperimentResult result;
-            if (_activeExperiment != null)
+            try
             {
-                result = new ExperimentResult()
+                ExperimentResult result;
+                if (_activeExperiment != null)
                 {
-                    Environment = CurrentEnvironment(),
-                    ExperimentId = _activeExperiment.Id, 
-                    Result = runtimeResult.Result,
-                    ResultCode = runtimeResult.ResultCode,
-                    ResultCodeString = runtimeResult.ResultCodeString ?? (runtimeResult.ResultCode == 0  ? "PASS" : "FAIL")
-                };
-            }
-            else
-            {
-                Log.Warning("ExperimentRuntime.ReportResult: ActiveExperiment is null. Cannot send report and exclude");
-                return;
-            }
+                    result = new ExperimentResult()
+                    {
+                        Environment = CurrentEnvironment(),
+                        ExperimentId = _activeExperiment.Id,
+                        Result = runtimeResult.Result,
+                        ResultCode = runtimeResult.ResultCode,
+                        ResultCodeString = runtimeResult.ResultCodeString ??
+                                           (runtimeResult.ResultCode == 0 ? "PASS" : "FAIL")
+                    };
+                }
+                else
+                {
+                    Log.Warning(
+                        "ExperimentRuntime.ReportResult: ActiveExperiment is null. Cannot send report and exclude");
+                    return;
+                }
 
-            Log.Debug($"ExperimentRuntime: Experiment finished with result code {runtimeResult.ResultCode}");
+                Log.Debug($"ExperimentRuntime: Experiment finished with result code {runtimeResult.ResultCode}");
 
-            if (_activeExperimentHook != null)
-            {
-                _activeExperimentHook.Finished -= ReportResult;
-                ScriptManager.Instance.UnregisterHook(_activeExperimentHook);
-                Log.Debug("ExperimentRuntime: Experiment unhooked");
-            }
-            else
-            {
-                Log.Warning("ExperimentRuntime: Experiment not unhooked; hook reference is already null");
-            }
+                if (_activeExperimentHook != null)
+                {
+                    _activeExperimentHook.Finished -= ReportResult;
+                    ScriptManager.Instance.UnregisterHook(_activeExperimentHook);
+                    Log.Debug("ExperimentRuntime: Experiment unhooked");
+                }
+                else
+                {
+                    Log.Warning("ExperimentRuntime: Experiment not unhooked; hook reference is already null");
+                }
 
-            await _client.PostResult(result);
-            
-            ExcludeExperiment(_activeExperiment.Id);
+                await _client.PostResult(result);
+
+                ExcludeExperiment(_activeExperiment.Id);
+            }
+            catch (Exception ex)
+            {
+                Log.Error("ExperimentManager: Error while posting results: " + ex);
+                SentrySdk.CaptureException(ex);
+            } 
+
             NextExperiment();
         }
 
