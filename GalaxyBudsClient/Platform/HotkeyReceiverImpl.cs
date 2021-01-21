@@ -12,7 +12,7 @@ using GalaxyBudsClient.Utils.DynamicLocalization;
 
 namespace GalaxyBudsClient.Platform
 {
-    public class HotkeyReceiverImpl
+    public class HotkeyReceiverImpl : IDisposable
     {
         private static readonly object Padlock = new object();
         private static HotkeyReceiverImpl? _instance;
@@ -30,6 +30,7 @@ namespace GalaxyBudsClient.Platform
         public static void Reset()
         {
             _instance?.UnregisterAll();
+            _instance?.Dispose();
             _instance = null;
         }
 
@@ -113,6 +114,11 @@ namespace GalaxyBudsClient.Platform
         public async void UnregisterAll()
         {
             await _backend.UnregisterAllAsync();
+        }
+        
+        public void Dispose()
+        {
+            _backend.Dispose();
         }
     }
 }

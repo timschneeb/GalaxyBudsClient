@@ -34,7 +34,7 @@ namespace GalaxyBudsClient.Platform.Windows
         }
     } 
     
-    public class HotkeyReceiver : IHotkeyReceiver
+    public class HotkeyReceiver : IHotkeyReceiver, IDisposable
     {
         private readonly IList<Hotkey> _hotkeys = new List<Hotkey>();
         
@@ -56,8 +56,8 @@ namespace GalaxyBudsClient.Platform.Windows
                 Log.Error("Windows.HotkeyReceiver: This platform configuration is not supported.");
             }
         }
-
-        ~HotkeyReceiver()
+        
+        public void Dispose()
         {
             Dispatcher.UIThread.Post(() =>
             {
@@ -146,7 +146,7 @@ namespace GalaxyBudsClient.Platform.Windows
                 
                 Log.Debug("Windows.HotkeyReceiver: All hotkeys unregistered");
             }
-
+            
             await Task.CompletedTask;
         }
 

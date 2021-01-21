@@ -15,7 +15,7 @@ namespace GalaxyBudsClient.Platform.Interfaces
         }
     }
 
-    public interface IHotkeyReceiver
+    public interface IHotkeyReceiver : IDisposable
     {
         Task RegisterHotkeyAsync(Hotkey hotkey);
         Task UnregisterAllAsync();

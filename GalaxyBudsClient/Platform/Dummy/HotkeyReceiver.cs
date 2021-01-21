@@ -24,5 +24,10 @@ namespace GalaxyBudsClient.Platform.Dummy
         {
             Log.Warning("Dummy.HotkeyReceiver: Platform not supported");
         }
+
+        public void Dispose()
+        {
+            
+        }
     }
 }
