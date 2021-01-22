@@ -105,7 +105,8 @@ A2DP 프로필이 표준화 및 문서화되더라도, RFCOMM 프로토콜로 �
 #### 번역
 
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - 러시아어, 우크라이나어 번역
-* [@PlasticBrain](https://github.com/fhalfkg) - 한국어, 일본어 번여
+* [@cozyplanes](https://github.com/cozyplanes) - 한국어 번역
+* [@PlasticBrain](https://github.com/fhalfkg) - 한국어, 일본어 번역
 * [@erenbektas](https://github.com/erenbektas) - 터키어 번역
 * [@kakkk](https://github.com/kakkk) , [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) - 중국어 번역
 * [@efrenbg1](https://github.com/efrenbg1), Andrew Gonza - 스페인어 번역
