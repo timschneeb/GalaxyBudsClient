@@ -6,6 +6,7 @@ using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Utils.DynamicLocalization;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages
@@ -20,7 +21,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		{   
 			AvaloniaXamlLoader.Load(this);
 			_versionItem = this.FindControl<DetailListItem>("Version");
-			_versionItem.Description = Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? string.Empty;
+			_versionItem.Description = (Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? "?.?.?.?") + $" ({Loc.Resolve("credits_license")}: GPLv3)";
 		}
 
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)

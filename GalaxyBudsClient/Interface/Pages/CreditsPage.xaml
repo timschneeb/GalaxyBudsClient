@@ -49,18 +49,12 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="1"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="1"/>
-                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" CornerRadius="20" Classes="BorderHoverStyle">
                         <items:DetailListItem Text="{DynamicResource credits_developer}" Description="@ThePBone (u/TheBone_)"/>
                     </Border>
                     <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
                     <Border Grid.Row="2" CornerRadius="20" Classes="BorderHoverStyle">
-                        <items:DetailListItem Text="{DynamicResource credits_license}" Description="GPLv3"/>
-                    </Border>
-                    <Separator Grid.Row="3" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
-                    <Border Grid.Row="4" CornerRadius="20" Classes="BorderHoverStyle">
                         <items:DetailListItem x:Name="Version" Text="{DynamicResource credits_version}" Description="x.x.x.x"/>
                     </Border>
                 </Grid>
