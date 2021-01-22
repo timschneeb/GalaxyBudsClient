@@ -82,7 +82,7 @@
             <Label Grid.Column="1" Grid.Row="2" x:Name="BatteryC" Foreground="{DynamicResource ForegroundTextBrush}"
 				   FontSize="16" VerticalAlignment="Top" Content="Case%" Margin="133,85,133,0" HorizontalContentAlignment="Center"/>
             <Label Grid.Column="1" Grid.Row="2" x:Name="CaseLabel" Foreground="{DynamicResource SubtitleTextBrush}"
-                FontSize="13" VerticalAlignment="Top" Content="{DynamicResource case}" Margin="133,68,133,0" HorizontalContentAlignment="Center"/>
+                FontSize="13" VerticalAlignment="Top" Content="{DynamicResource case}" Margin="130,68,130,0" HorizontalContentAlignment="Center"/>
         </Grid>
     </Border>
 </Window>

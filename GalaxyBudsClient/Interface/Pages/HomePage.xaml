@@ -32,7 +32,7 @@
                 <Label Name="BatteryTemperatureRight" Content="{DynamicResource unknown}" Margin="360,109,0,35" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" PointerPressed="RequestTempUnitChange_OnPointerPressed" />
                 <Label Name="BatteryCase" Margin="204,130,204,14" FontSize="16" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalContentAlignment="Center" />
                 <Label Name="CaseLabel" Foreground="{DynamicResource SubtitleTextBrush}"
-                       FontSize="13" VerticalAlignment="Top" Content="{DynamicResource case}" Margin="218,113,218,0" HorizontalContentAlignment="Center"/>
+                       FontSize="13" VerticalAlignment="Top" Content="{DynamicResource case}" Margin="216,113,216,0" HorizontalContentAlignment="Center"/>
 
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" x:Name="WarningContainer">
                     <Grid.ColumnDefinitions>

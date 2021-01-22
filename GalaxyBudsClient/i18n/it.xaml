@@ -10,7 +10,7 @@
         <sys:String x:Key="okay">Ok</sys:String>
         <sys:String x:Key="left">Sinistro</sys:String>
         <sys:String x:Key="right">Destro</sys:String>
-        <sys:String x:Key="case">Custodi</sys:String>
+        <sys:String x:Key="case">Custodia</sys:String>
         <sys:String x:Key="error">Errore</sys:String>
         <sys:String x:Key="cancel">Annulla</sys:String>
         <sys:String x:Key="apply">Applica</sys:String>
