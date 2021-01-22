@@ -410,6 +410,7 @@
     <sys:String x:Key="credits_version">Version</sys:String>
     <sys:String x:Key="credits_contributor">Contributors</sys:String>
     <sys:String x:Key="credits_translator">Translators</sys:String>
+    <sys:String x:Key="credits_sponsor">Sponsor this project</sys:String>
 
     <!-- Connection lost page -->
     <sys:String x:Key="connlost_header">Unable to establish connection</sys:String>

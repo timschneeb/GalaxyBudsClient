@@ -13,14 +13,16 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <elements:PageHeader Grid.Row="1" Title="{DynamicResource credits_header}" BackPressed="BackButton_OnPointerPressed"/>
-        <Border Grid.Row="3" Classes="RoundedBorderListItem">
+        <Border Grid.Row="3" Classes="RoundedBorderListItem" MinHeight="40">
             <Grid ClipToBounds="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -42,7 +44,15 @@
                 </Border>
             </Grid>
         </Border>
-        <Border Grid.Row="5" Classes="RoundedBorderListItem">
+        
+        <Border Grid.Row="5" Classes="RoundedBorderListItem" MinHeight="40">
+            <Border CornerRadius="20" Classes="BorderHoverStyle" PointerPressed="Sponsor_OnPointerPressed">
+                <Label Margin="20,0" FontSize="16" Content="{DynamicResource credits_sponsor}" 
+                       VerticalContentAlignment="Center" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalAlignment="Center" />
+            </Border>
+        </Border>
+        
+        <Border Grid.Row="7" Classes="RoundedBorderListItem">
             <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
                 <Grid ClipToBounds="True" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                     <Grid.RowDefinitions>
@@ -60,7 +70,7 @@
                 </Grid>
             </ScrollViewer>
         </Border>
-        <Border Grid.Row="7" Classes="RoundedBorderListItem">
+        <Border Grid.Row="9" Classes="RoundedBorderListItem">
             <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
                 <Grid ClipToBounds="True" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                     <Grid.RowDefinitions>

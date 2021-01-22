@@ -60,5 +60,10 @@ namespace GalaxyBudsClient.Interface.Pages
 		{
 			OpenWebsite("https://github.com/ThePBone/GalaxyBudsClient");
 		}
+
+		private void Sponsor_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+		{
+			OpenWebsite("https://ko-fi.com/thepbone");
+		}
 	}
 }
