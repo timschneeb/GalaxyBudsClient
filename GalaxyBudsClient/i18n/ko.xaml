@@ -399,7 +399,7 @@
     <sys:String x:Key="adv_passthrough_desc">액티브 노이즈 캔슬링을 쓰지 않을 때의 답답함이나 압박감을 해결할 수 있어요.</sys:String>
     <sys:String x:Key="adv_gaming_mode">게임 모드</sys:String>
     <sys:String x:Key="adv_gaming_mode_desc">오디오 지연을 최소화하여, 더 생생하고 싱크가 완벽한 게임 사운드를 즐길 수 있어요. (삼성 전용 기능)</sys:String>
-    <sys:String x:Key="adv_hotkey">Keyboard hotkeys</sys:String>
+    <sys:String x:Key="adv_hotkey">키보드 단축키</sys:String>
     <sys:String x:Key="adv_hotkey_desc">사용자 설정된 단축키를 지정하여 버즈를 멀리서 조작하세요.</sys:String>
 
     <!-- Credits -->
