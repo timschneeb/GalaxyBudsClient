@@ -21,7 +21,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		{   
 			AvaloniaXamlLoader.Load(this);
 			_versionItem = this.FindControl<DetailListItem>("Version");
-			_versionItem.Description = (Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? "?.?.?.?") + $" ({Loc.Resolve("credits_license")}: GPLv3)";
+			_versionItem.Description = (Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? "?.?.?.?") + $" (GPLv3)";
 		}
 
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
