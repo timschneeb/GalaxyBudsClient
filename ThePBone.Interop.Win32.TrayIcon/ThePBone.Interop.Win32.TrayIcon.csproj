@@ -39,7 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Hardcodet.NotifyIcon.Wpf.NetCore">
-      <Version>1.0.17</Version>
+      <Version>1.0.18</Version>
     </PackageReference>
     <PackageReference Include="Serilog" Version="2.10.0" />
   </ItemGroup>
