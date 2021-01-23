@@ -43,9 +43,11 @@ namespace GalaxyBudsClient.Interface.Pages
 					Title = Loc.Resolve("factory_error_title"),
 					Description = Loc.Resolve("factory_error")
 				}.ShowDialog(MainWindow.Instance);
+				return;
 			}
 
-			MainWindow.Instance.Pager.SwitchPage(Pages.NoConnection);
+			BluetoothImpl.Instance.UnregisterDevice()
+				.ContinueWith((_) => MainWindow.Instance.Pager.SwitchPage(Pages.Welcome));
 		}
 
 		public override void OnPageShown()
@@ -65,7 +67,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			_pageHeader.LoadingSpinnerVisible = true;
 			_resetButton.Text = Loc.Resolve("system_waiting_for_device");
 			_resetButton.IsEnabled = false;
-			//TODO: Unregister device instead
+
 			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.RESET);
 		}
 	}

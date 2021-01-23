@@ -177,8 +177,6 @@ namespace GalaxyBudsClient.Interface.Pages
 			}
 
 			await MessageComposer.Touch.SetOptions(_lastLeftOption, _lastRightOption);
-			
-			// TODO: Force enable MinimizeTray and AutoStart here!
 		}
 
 		
