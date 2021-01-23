@@ -13,5 +13,6 @@ namespace GalaxyBudsClient.Platform.Dummy
         public event EventHandler? RightClicked;
         public List<TrayMenuItem>? MenuItems { get; set; } = new List<TrayMenuItem>();
         public bool PreferDarkMode { get; set; }
+        public void Dispose() {}
     }
 }

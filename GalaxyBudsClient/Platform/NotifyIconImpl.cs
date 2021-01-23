@@ -9,8 +9,7 @@ using Serilog;
 
 namespace GalaxyBudsClient.Platform
 {
-   
-    class NotifyIconImpl
+    public static class NotifyIconImpl
     {
         public static readonly ITrayIcon Instance;
         
@@ -40,6 +39,12 @@ namespace GalaxyBudsClient.Platform
         private static void OnThemeReloaded(object? sender, DarkModes e)
         {
             Instance.PreferDarkMode = e == DarkModes.Dark;
+        }
+
+        public static void Shutdown()
+        {
+            Log.Debug("NotifyIconImpl: Disposing notify icon");
+            Instance.Dispose();
         }
     }
 }

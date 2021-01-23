@@ -1,19 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Markup;
-using System.Xml;
 using GalaxyBudsClient.Interop.TrayIcon;
 using Hardcodet.Wpf.TaskbarNotification;
-using Serilog;
 using Application = System.Windows.Application;
 
 namespace ThePBone.Interop.Win32.TrayIcon
@@ -137,7 +130,7 @@ namespace ThePBone.Interop.Win32.TrayIcon
         
         private class ContainerWindow : Window
         {
-            private readonly TaskbarIcon _tbi;
+            public readonly TaskbarIcon TaskbarIcon;
 
             private bool? _lastRedrawDark = null;
             public TrayIcon ParentClass = null;
@@ -167,18 +160,17 @@ namespace ThePBone.Interop.Win32.TrayIcon
 
             public ContainerWindow()
             {
-                _tbi = new TaskbarIcon();
+                TaskbarIcon = new TaskbarIcon();
 
                 var iconResource = Assembly.GetEntryAssembly()
                     ?.GetManifestResourceStream("GalaxyBudsClient.Resources.icon_white.ico");
                 if (iconResource != null)
                 {
-                    _tbi.Icon = new Icon(iconResource);
+                    TaskbarIcon.Icon = new Icon(iconResource);
                 }
-                _tbi.ToolTipText = "Galaxy Buds Manager";
-                _tbi.TrayLeftMouseUp += (sender, args) => ParentClass.LeftClicked?.Invoke(this, EventArgs.Empty);
-                _tbi.TrayRightMouseDown += (sender, args) => ParentClass.RightClicked?.Invoke(this, EventArgs.Empty);
-
+                TaskbarIcon.ToolTipText = "Galaxy Buds Manager";
+                TaskbarIcon.TrayLeftMouseUp += (sender, args) => ParentClass.LeftClicked?.Invoke(this, EventArgs.Empty);
+                TaskbarIcon.TrayRightMouseDown += (sender, args) => ParentClass.RightClicked?.Invoke(this, EventArgs.Empty);
                 ReloadStyles(false);
                 CreateMenu();
             }
@@ -209,8 +201,6 @@ namespace ThePBone.Interop.Win32.TrayIcon
                     Style = ResourceLoader.FindResource<Style>("SmallContextMenuStyle")
                 };
 
-
-
                 foreach (var item in MenuItems)
                 {
                     if (item.IsSeparator)
@@ -234,9 +224,17 @@ namespace ThePBone.Interop.Win32.TrayIcon
 
                 }
                 
-                _tbi.ContextMenu = ctxMenu;
+                TaskbarIcon.ContextMenu = ctxMenu;
                 _lastRedrawDark = PreferDarkMode;
             }
+        }
+
+        public void Dispose()
+        {
+            Application.Current?.Dispatcher.Invoke(() =>
+            {
+                _win?.TaskbarIcon?.Dispose();
+            });
         }
     }
 }

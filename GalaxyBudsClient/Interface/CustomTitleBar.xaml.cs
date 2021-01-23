@@ -50,6 +50,7 @@ namespace GalaxyBudsClient.Interface
             AvaloniaProperty.Register<CustomTitleBar, string>(nameof(Title));
         
         public event EventHandler? OptionsPressed;
+        public event EventHandler? ClosePressed;
         
         public Button OptionsButton
         {
@@ -72,7 +73,7 @@ namespace GalaxyBudsClient.Interface
             optionsButton = this.FindControl<Button>("OptionsButton");
             
             minimizeButton.Click += MinimizeWindow;
-            closeButton.Click += CloseWindow;
+            closeButton.Click += (sender, args) => ClosePressed?.Invoke(sender, EventArgs.Empty);
             optionsButton.Click += (sender, args) => OptionsPressed?.Invoke(sender, EventArgs.Empty);
 
             titleBar = this.FindControl<DockPanel>("TitleBar");
@@ -83,13 +84,7 @@ namespace GalaxyBudsClient.Interface
             
             SubscribeToWindowState();
         }
-
-        private void CloseWindow(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-            Window hostWindow = (Window)this.VisualRoot;
-            hostWindow.Close();
-        }
-
+        
         private void MinimizeWindow(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             Window hostWindow = (Window)this.VisualRoot;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GalaxyBudsClient.Interop.TrayIcon
 {
-    public interface ITrayIcon
+    public interface ITrayIcon : IDisposable
     {
         event EventHandler<TrayMenuItem> TrayMenuItemSelected;
         event EventHandler LeftClicked;

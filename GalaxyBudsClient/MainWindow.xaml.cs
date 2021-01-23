@@ -133,8 +133,21 @@ namespace GalaxyBudsClient
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
             _titleBar.OptionsPressed += (i, e) => _titleBar.OptionsButton.ContextMenu.Open(_titleBar.OptionsButton);
-            
-            _popup = new BudsPopup();
+            _titleBar.ClosePressed += (sender, args) =>
+            {
+                if (SettingsProvider.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
+                {
+                    Log.Information("MainWindow.TitleBar: Close requested, minimizing to tray bar");
+                    Hide();
+                }
+                else
+                { 
+                    Log.Information("MainWindow.TitleBar: Close requested, exiting app");
+                    Close();
+                }
+            };
+
+                _popup = new BudsPopup();
 
             BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
             BluetoothImpl.Instance.Disconnected += OnDisconnected;
@@ -220,6 +233,11 @@ namespace GalaxyBudsClient
             {
                 Hide();
                 e.Cancel = true;
+                Log.Debug("MainWindow.OnClosing: Termination cancelled");
+            }
+            else
+            {
+                Log.Debug("MainWindow.OnClosing: Now closing session");
             }
             
             base.OnClosing(e);
@@ -264,10 +282,12 @@ namespace GalaxyBudsClient
             
             if(Application.Current.ApplicationLifetime is ClassicDesktopStyleApplicationLifetime desktop)
             {
+                Log.Information("MainWindow: Shutting down normally");
                 desktop.Shutdown();
             }
             else
             {
+                Log.Information("MainWindow: Shutting down using Environment.Exit");
                 Environment.Exit(0);
             }
         }
