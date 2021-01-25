@@ -61,7 +61,7 @@
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="0.10.0-rc2" />
         <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.0-rc2" />
-        <PackageReference Include="Avalonia.Desktop" Version="0.10.0-rc2" />
+        <PackageReference Include="Avalonia.Desktop" Version="0.10.0" />
         <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0-rc2" />
         <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.0-rc2" />
         <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.0-rc2" />
