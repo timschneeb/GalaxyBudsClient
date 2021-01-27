@@ -30,7 +30,7 @@ jobs:
       uses: actions/upload-artifact@v2.2.2
       with:
         name: GalaxyBudsClient_win64_portable
-        path: bin_win64/GalaxyBudsClient.exe
+        path: bin_win64/
     
   build-x86:
     runs-on: windows-latest
@@ -51,7 +51,7 @@ jobs:
       uses: actions/upload-artifact@v2.2.2
       with:
         name: GalaxyBudsClient_win32_portable
-        path: bin_win32/GalaxyBudsClient.exe
+        path: bin_win32/
 
   build-arm:
     runs-on: windows-latest
@@ -75,7 +75,7 @@ jobs:
       uses: actions/upload-artifact@v2.2.2
       with:
         name: GalaxyBudsClient_win-arm_portable
-        path: bin_win-arm/GalaxyBudsClient.exe
+        path: bin_win-arm/
 
   build-arm64:
     runs-on: windows-latest
@@ -99,7 +99,7 @@ jobs:
       uses: actions/upload-artifact@v2.2.2
       with:
         name: GalaxyBudsClient_win-arm64_portable
-        path: bin_win-arm64/GalaxyBudsClient.exe
+        path: bin_win-arm64/
 
   make-nsis-installer:
     runs-on: windows-latest
