@@ -66,6 +66,7 @@ Section "Hauptgruppe" SEC01
   SetOutPath "$INSTDIR"
   SetOverwrite on
   File "${BASE_DIR}\Galaxy Buds Client.exe"
+  File "${BASE_DIR}\*.pdb"
   CreateDirectory "$SMPROGRAMS\Galaxy Buds Manager"
   CreateShortCut "$SMPROGRAMS\Galaxy Buds Manager\Galaxy Buds Manager.lnk" "$INSTDIR\Galaxy Buds Client.exe"
   CreateShortCut "$DESKTOP\Galaxy Buds Manager.lnk" "$INSTDIR\Galaxy Buds Client.exe"
@@ -104,7 +105,8 @@ Section Uninstall
   Delete "$INSTDIR\uninst.exe"
 
   Delete "$INSTDIR\Galaxy Buds Client.exe"
-
+  Delete "$INSTDIR\*.pdb"
+  
   Delete "$DESKTOP\Galaxy Buds Manager.lnk"
   Delete "$SMPROGRAMS\Galaxy Buds Manager\Galaxy Buds Manager.lnk"
 
