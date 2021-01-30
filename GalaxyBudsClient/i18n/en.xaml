@@ -19,7 +19,7 @@
     <sys:String x:Key="unknown">Unknown</sys:String>
     <sys:String x:Key="back">Back</sys:String>
 
-    <sys:String x:Key="nobluetoothdev">No bluetooth adapter found. Please enable bluetooth and try again.</sys:String>
+    <sys:String x:Key="nobluetoothdev">No Bluetooth adapter found. Please enable Bluetooth and try again.</sys:String>
 
     <sys:String x:Key="anc">Active noise cancelling</sys:String>
 
@@ -214,7 +214,7 @@
     <sys:String x:Key="devsel_noselection">No device selected</sys:String>
     <sys:String x:Key="devsel_invalid_selection">Please select a valid device</sys:String>
     <sys:String x:Key="devsel_footer_continue">Finish Setup</sys:String>
-    <sys:String x:Key="devsel_dialog_footer">If you don't see your earbuds, make sure you've paired and connected them in your computer's bluetooth settings, and then click Refresh.</sys:String>
+    <sys:String x:Key="devsel_dialog_footer">If you don't see your earbuds, make sure you've paired and connected them in your computer's Bluetooth settings, and then click Refresh.</sys:String>
 
     <!-- Unsupported feature page -->
     <sys:String x:Key="unsupported_feature_current_fwver">Current Firmware version:</sys:String>
