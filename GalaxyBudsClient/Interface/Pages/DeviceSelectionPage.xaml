@@ -72,8 +72,8 @@
                 </Grid.RowDefinitions>
                 <Border Grid.Row="0">
                     <items:SwitchDetailListItem x:Name="UseWinRT"
-                                                Text="Use alternative Bluetooth backend"
-                                                Description="Much better stability, but may not work on all PCs with some Bluetooth adapters"
+                                                Text="{DynamicResource devsel_winrt_title}"
+                                                Description="{DynamicResource devsel_winrt}"
                                                 Toggled="UseWinRT_OnToggled" />
 
                 </Border>

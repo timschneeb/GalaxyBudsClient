@@ -212,6 +212,8 @@ Diese App unterstützt die Buds (2019) und Buds+ (2020).
     <sys:String x:Key="devsel_nodevices">Verbinde und kopple die Earbuds in den Systemeinstellungen zuerst.</sys:String>
     <sys:String x:Key="devsel_nodevices_title">Keine unterstützten Geräte gefunden</sys:String>
     <sys:String x:Key="devsel_dialog_footer">Falls die Earbuds nicht angezeigt werden, sind sie womöglich nicht mit diesem Gerät gekoppelt und/oder nicht verbunden.</sys:String>
+    <sys:String x:Key="devsel_winrt_title">Alternative Bluetooth-Verbindungsmethode</sys:String>
+    <sys:String x:Key="devsel_winrt">Bessere Stabilität, allerdings nicht mit einigen PCs und Bluetooth Adaptern kompatibel</sys:String>
 
     <!-- Unsupported feature page -->
     <sys:String x:Key="unsupported_feature_current_fwver">Installierte Firmwareversion:</sys:String>

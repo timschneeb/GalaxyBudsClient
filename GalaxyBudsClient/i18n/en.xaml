@@ -215,6 +215,8 @@
     <sys:String x:Key="devsel_invalid_selection">Please select a valid device</sys:String>
     <sys:String x:Key="devsel_footer_continue">Finish Setup</sys:String>
     <sys:String x:Key="devsel_dialog_footer">If you don't see your earbuds, make sure you've paired and connected them in your computer's Bluetooth settings, and then click Refresh.</sys:String>
+    <sys:String x:Key="devsel_winrt_title">Use alternative Bluetooth backend</sys:String>
+    <sys:String x:Key="devsel_winrt">Much better stability, but may not work on all PCs with some Bluetooth adapters</sys:String>
 
     <!-- Unsupported feature page -->
     <sys:String x:Key="unsupported_feature_current_fwver">Current Firmware version:</sys:String>
