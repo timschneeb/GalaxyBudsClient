@@ -61,7 +61,7 @@
     <sys:String x:Key="touchoption_volume_up">Увеличить громкость</sys:String>
     <sys:String x:Key="touchoption_volume_down">Уменьшить громкость</sys:String>
     <sys:String x:Key="touchoption_ambientsound">Звуковое окружение</sys:String>
-    <sys:String x:Key="touchoption_switch_noisecontrols">Switch noise controls</sys:String>
+    <sys:String x:Key="touchoption_switch_noisecontrols">Поменять управление шумом</sys:String>
     <sys:String x:Key="touchoption_spotify">Spotify (Только Android)</sys:String>
     <sys:String x:Key="touchoption_custom">Настраиваемое действие...</sys:String>
     <sys:String x:Key="touchoption_custom_null">Не установлено</sys:String>
@@ -87,7 +87,7 @@
     <sys:String x:Key="tray_disable_eq">Выключить эквалайзер</sys:String>
     <sys:String x:Key="tray_enable_anc">Включить активное шумоподавление</sys:String>
     <sys:String x:Key="tray_disable_anc">Выключить активное шумоподавление</sys:String>
-    <sys:String x:Key="tray_switch_noise">Switch noise controls</sys:String>
+    <sys:String x:Key="tray_switch_noise">Поменять управление шумом</sys:String>
     <sys:String x:Key="tray_quit">Выход</sys:String>
 
 
@@ -100,7 +100,7 @@
     <sys:String x:Key="hotrec_title">Запись комбинации клавиш</sys:String>
     <sys:String x:Key="hotrec_content">Пожалуйста, введите комбинацию клавиш:</sys:String>
     <sys:String x:Key="hotrec_empty">Нет комбинации</sys:String>
-    <sys:String x:Key="hotrec_note">Заметка: Из-за изоляции конфиденциальности пользовательского интерфейса (UIPI) только приложения с таким же или более низким уровнем доступа могут правильно получать команды горячих клавиш.</sys:String>
+    <sys:String x:Key="hotrec_note">Заметка: Из-за изоляции конфиденциальности пользовательского интерфейса (ENG: UIPI) только приложения с таким же или более низким уровнем доступа могут правильно получать команды от комбинаций клавиш.</sys:String>
 
     <!-- Hotkey Action Builder Dialog -->
     <sys:String x:Key="hotkey_edit_title">Редактор комбинаций</sys:String>
@@ -147,7 +147,7 @@
     <sys:String x:Key="event_media_pause">Приостановить медиа</sys:String>
     <sys:String x:Key="event_media_play_pause">Воспроизведение / пауза медиа</sys:String>
     <sys:String x:Key="event_manager_visible">Позвать окно программы</sys:String>
-    <sys:String x:Key="event_display_battery_popup">Показать состояние батареи</sys:String>
+    <sys:String x:Key="event_display_battery_popup">Показать заряд батареи</sys:String>
     <sys:String x:Key="event_connect">Подключиться к устройству</sys:String>
     
     <!-- Welcome page -->
@@ -295,7 +295,7 @@
     <sys:String x:Key="coredump_dl_progress_finished">Загрузка завершена</sys:String>
     <sys:String x:Key="coredump_dl_trace_progress">Загружаю трассировку... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">Загружаю дампы... {0}%</sys:String>
-    <sys:String x:Key="coredump_dl_progress_size">({0}/{1} байт)</sys:String>
+    <sys:String x:Key="coredump_dl_progress_size">({0}/{1} байтов)</sys:String>
     <sys:String x:Key="coredump_dl_note">
         Аудиопоток временно остановлен во время загрузки. Ваши наушники будут отключены по завершению загрузки, пожалуйста восстановите подключение самостоятельно.&#10;По завершению, вам будет предложено выбрать место сохранения данных.&#10;&#10;Если передача зависла или устройство отключилось преждевременно, вам нужно перезапустить загрузку. Пока что, эта функция очень нестабильна. 
     </sys:String>
@@ -315,7 +315,7 @@
     <sys:String x:Key="settings_localization_disable">Язык</sys:String>
     <sys:String x:Key="settings_localization_disable_description">Использовать английский принудительно</sys:String>
     <sys:String x:Key="settings_minimize_tray">Сворачивать в трей</sys:String>
-    <sys:String x:Key="settings_minimize_tray_description">Задерживать в фоне вместо завершения работы</sys:String>
+    <sys:String x:Key="settings_minimize_tray_description">Свернуть вместо завершения работы</sys:String>
     <sys:String x:Key="settings_autostart">Авто-заупск</sys:String>
     <sys:String x:Key="settings_autostart_description">Запускать свернутым при запуске системы</sys:String>
 
@@ -356,7 +356,7 @@
     <!-- Equalizer -->
     <sys:String x:Key="eq_header">Эквалайзер</sys:String>
     <sys:String x:Key="eq_enable">Включить эквалайзер</sys:String>
-    <sys:String x:Key="eq_mode">Режим:</sys:String>
+    <sys:String x:Key="eq_preset">Режим:</sys:String>
     <sys:String x:Key="eq_dolby">Оптимизировать для использования с Dolby</sys:String>
 
     <sys:String x:Key="eq_bass">Больше низких</sys:String>
@@ -401,7 +401,7 @@
     <sys:String x:Key="adv_gaming_mode">Игровой режим</sys:String>
     <sys:String x:Key="adv_gaming_mode_desc">Уменьшить задержку звука, и откорректировать синхронизацию аудио (Только Samsung)</sys:String>
     <sys:String x:Key="adv_hotkey">Клавиатурные комбинации</sys:String>
-    <sys:String x:Key="adv_hotkey_desc">Определите собственные клавиатурные комбинации для того чтобы управлять вашими наушниками удаленно</sys:String>
+    <sys:String x:Key="adv_hotkey_desc">Настройте собственные клавиатурные комбинации для того чтобы управлять вашими наушниками удаленно</sys:String>
 
     <!-- Credits -->
     <sys:String x:Key="credits_header">Авторы</sys:String>
@@ -415,9 +415,7 @@
     <!-- Connection lost page -->
     <sys:String x:Key="connlost_header">Не удалось установить соединение</sys:String>
     <sys:String x:Key="connlost_description_p1">Не удалось подключиться к вашим наушникам.</sys:String>
-    <sys:String x:Key="connlost_description_p2">
-        Пожалуйста проверьте настройки Bluetooth и убедитесь что ваши наушники включены и сопряжены с этим компьютером.&#10;Вы также можете сопрячь новую пару наушников. В таком случае выберите "Опции > Отменить сопряжение"
-    </sys:String>
+    <sys:String x:Key="connlost_description_p2">Пожалуйста проверьте настройки Bluetooth и убедитесь что ваши наушники включены и сопряжены с этим компьютером.&#10;Вы также можете сопрячь новую пару наушников. В таком случае выберите "Опции > Отменить сопряжение"</sys:String>
     <sys:String x:Key="connlost_description_p3">Дополнительная информация:</sys:String>
     <sys:String x:Key="connlost_noinfo">Не удалось собрать дополнительную информацию</sys:String>
     <sys:String x:Key="connlost_connect">Подключиться</sys:String>
