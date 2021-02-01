@@ -72,7 +72,12 @@ namespace GalaxyBudsClient.Interface.Pages
             
             RefreshList();
         }
-		
+
+        public override void OnPageShown()
+        {
+            this.FindControl<SwitchDetailListItem>("UseWinRT").IsChecked = SettingsProvider.Instance.UseBluetoothWinRT;
+        }
+
         private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
             MainWindow.Instance.Pager.SwitchPage(Pages.Welcome);
@@ -191,6 +196,13 @@ namespace GalaxyBudsClient.Interface.Pages
         private void Devices_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
         {
             _navBarNext.IsVisible = true;
+        }
+
+        private void UseWinRT_OnToggled(object? sender, bool e)
+        {
+            SettingsProvider.Instance.UseBluetoothWinRT = e;
+            BluetoothImpl.Reallocate();
+            RefreshList(user: true);
         }
     }
 }

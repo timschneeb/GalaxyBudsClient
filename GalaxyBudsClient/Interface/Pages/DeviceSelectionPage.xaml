@@ -16,7 +16,7 @@
             <RowDefinition Height="10" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="10" />
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="*" />
             <RowDefinition Height="10" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="10" />
@@ -24,7 +24,7 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
         <elements:PageHeader Grid.Row="1" Title="{DynamicResource devsel_header}"
-                             BackPressed="BackButton_OnPointerPressed" x:Name="PageHeader"/>
+                             BackPressed="BackButton_OnPointerPressed" x:Name="PageHeader" />
 
         <Border Grid.Row="3" Classes="RoundedBorderListItem">
             <Border Classes="BorderHoverStyle" PointerPressed="SelectDevice_OnPointerPressed">
@@ -54,7 +54,7 @@
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0"
                                        Text="{Binding Name}"
-                                       Foreground="{DynamicResource ForegroundTextBrush}"/>
+                                       Foreground="{DynamicResource ForegroundTextBrush}" />
                             <TextBlock Grid.Row="2"
                                        Text="{Binding Address}"
                                        Foreground="{DynamicResource SubtitleTextBrush}" />
@@ -64,12 +64,27 @@
             </ListBox>
         </Border>
         <Border Grid.Row="7" Classes="RoundedBorderListItem">
-            <TextBlock FontSize="14"
-                       Margin="20,10"
-                       Foreground="{DynamicResource ForegroundTextAltBrush}"
-                       Text="{DynamicResource devsel_dialog_footer}"
-                       TextWrapping="Wrap"
-                       LineHeight="19"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0">
+                    <items:SwitchDetailListItem x:Name="UseWinRT"
+                                                Text="Use alternative Bluetooth backend"
+                                                Description="Much better stability, but may not work on all PCs with some Bluetooth adapters"
+                                                Toggled="UseWinRT_OnToggled" />
+
+                </Border>
+                <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
+                <TextBlock Grid.Row="2" FontSize="14"
+                           Margin="20,10"
+                           Foreground="{DynamicResource ForegroundTextBrush}"
+                           Text="{DynamicResource devsel_dialog_footer}"
+                           TextWrapping="Wrap"
+                           LineHeight="19" />
+            </Grid>
         </Border>
         <Border Grid.Row="9" Classes="RoundedBorderListItem">
             <Grid ClipToBounds="True" MinHeight="50">
@@ -78,16 +93,17 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Classes="BorderHoverStyle"  PointerPressed="BackButton_OnPointerPressed">
-                    <Label Content="{DynamicResource back}" 
+                <Border Grid.Column="0" Classes="BorderHoverStyle" PointerPressed="BackButton_OnPointerPressed">
+                    <Label Content="{DynamicResource back}"
                            Height="50" FontSize="18"
-                           Foreground="{DynamicResource ForegroundTextBrush}" 
-                           Margin="20,0,20,0" 
+                           Foreground="{DynamicResource ForegroundTextBrush}"
+                           Margin="20,0,20,0"
                            HorizontalContentAlignment="Center"
                            VerticalContentAlignment="Center" />
                 </Border>
                 <Border Grid.Column="1" Classes="VerticalSeparator" />
-                <Border Grid.Column="2" Classes="BorderHoverStyle" PointerPressed="Next_OnPointerPressed" x:Name="NavBarNext">
+                <Border Grid.Column="2" Classes="BorderHoverStyle" PointerPressed="Next_OnPointerPressed"
+                        x:Name="NavBarNext">
                     <items:IconListItem FontSize="18"
                                         Text="{DynamicResource devsel_footer_continue}"
                                         Source="{DynamicResource NextButton}"

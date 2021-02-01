@@ -66,5 +66,8 @@ namespace GalaxyBudsClient.Model
         
         [Option(DefaultValue = true)]
         bool FirstLaunch { set; get; }
+        
+        [Option(DefaultValue = true)]
+        bool UseBluetoothWinRT { set; get; }
     }
 }

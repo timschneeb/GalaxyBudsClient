@@ -20,7 +20,7 @@ using Task = System.Threading.Tasks.Task;
 
 namespace GalaxyBudsClient.Platform
 {
-    public class BluetoothImpl
+    public class BluetoothImpl : IDisposable
     { 
         private static readonly object Padlock = new object();
         private static BluetoothImpl? _instance;
@@ -33,6 +33,14 @@ namespace GalaxyBudsClient.Platform
                     return _instance ??= new BluetoothImpl();
                 }
             }
+        }
+
+        public static void Reallocate()
+        {
+            Log.Debug("BluetoothImpl: Reallocating");
+            _instance?.Dispose();
+            _instance = null;
+            _instance = new BluetoothImpl();
         }
 
         private readonly IBluetoothService _backend;
@@ -61,16 +69,35 @@ namespace GalaxyBudsClient.Platform
         {
             try
             {
-                if (PlatformUtils.IsWindows && PlatformUtils.IsWindowsContractsSdkSupported)
+                if (PlatformUtils.IsWindows && SettingsProvider.Instance.UseBluetoothWinRT
+                                            && PlatformUtils.IsWindowsContractsSdkSupported)
+                {
+                    Log.Debug("BluetoothImpl: Using WinRT.BluetoothService");
                     _backend = new Bluetooth.WindowsRT.BluetoothService();
+                }
 #if WindowsNoARM
                 else if (PlatformUtils.IsWindows)
+                {
+                    Log.Debug("BluetoothImpl: Using Windows.BluetoothService");
                     _backend = new Bluetooth.Windows.BluetoothService();
+                }
+#else
+                else if (PlatformUtils.IsWindows && PlatformUtils.IsWindowsContractsSdkSupported)
+                {
+                    Log.Debug("BluetoothImpl: Using WinRT.BluetoothService (ARM)");
+                    _backend = new Bluetooth.WindowsRT.BluetoothService();
+                }
 #endif
                 else if (PlatformUtils.IsLinux)
+                {   
+                    Log.Debug("BluetoothImpl: Using Linux.BluetoothService");
                     _backend = new Bluetooth.Linux.BluetoothService();
+                }
                 else
+                {
+                    Log.Warning("BluetoothImpl: Using Dummy.BluetoothService");
                     _backend = new Dummy.BluetoothService();
+                }
             }
             catch (PlatformNotSupportedException)
             {
@@ -107,6 +134,34 @@ namespace GalaxyBudsClient.Platform
             MessageReceived += SPPMessageHandler.Instance.MessageReceiver;
         }
 
+        public async void Dispose()
+        {
+            try
+            {
+                await _backend.DisconnectAsync();
+            }
+            catch (Exception ex)
+            {
+                Log.Warning("BluetoothImpl.Dispose: Error while disconnecting: " + ex);
+            }
+
+            MessageReceived -= SPPMessageHandler.Instance.MessageReceiver;
+            
+            _cancelSource.Cancel();
+
+            await Task.Delay(50);
+
+            try
+            {
+                _loop?.Dispose();
+                _cancelSource.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Log.Error("BluetoothImpl.Dispose: Error while disposing children: " + ex);
+            }
+        }
+        
         private void OnBluetoothError(BluetoothException exception)
         {
             if (!SuppressDisconnectionEvents)
