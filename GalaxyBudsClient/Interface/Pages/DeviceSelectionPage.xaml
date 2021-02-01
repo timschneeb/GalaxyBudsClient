@@ -77,7 +77,7 @@
                                                 Toggled="UseWinRT_OnToggled" />
 
                 </Border>
-                <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
+                <Separator Grid.Row="1" x:Name="UseWinRTSep" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
                 <TextBlock Grid.Row="2" FontSize="14"
                            Margin="20,10"
                            Foreground="{DynamicResource ForegroundTextBrush}"
