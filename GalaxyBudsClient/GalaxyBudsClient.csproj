@@ -72,7 +72,7 @@
         <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
         <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
         <PackageReference Include="NetSparkle.New" Version="2.0.0-preview20210114001" />
-        <PackageReference Include="Sentry" Version="3.0.0-alpha.8" />
+        <PackageReference Include="Sentry" Version="3.0.3" />
         <PackageReference Include="Sentry.Serilog" Version="3.0.0-alpha.8" />
         <PackageReference Include="Serilog" Version="2.10.0" />
         <PackageReference Include="Serilog.Sinks.Console" Version="4.0.0-dev-00839" />
