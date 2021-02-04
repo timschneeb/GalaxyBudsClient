@@ -9,7 +9,7 @@
     <CornerRadius x:Key="DefaultCornerRadius">20</CornerRadius>
     
     <!-- Global strings -->
-    <system:String x:Key="TranslatorCreditsString">@fhalfkg; @ArthurWolfhound; @erenbektas; Andrew Gonza; @kakkk; @giovankabisano; @lucasskluser; @alb-p; @joskaja; @buashei; @ssenkrad; @KevinZonda; @mario-donnarumma; @pseudor; @cozyplanes</system:String>
+    <system:String x:Key="TranslatorCreditsString">@fhalfkg; @ArthurWolfhound; @erenbektas; Andrew Gonza; @kakkk; @giovankabisano; @lucasskluser; @alb-p; @joskaja; @buashei; @ssenkrad; @KevinZonda; @mario-donnarumma; @pseudor; @cozyplanes; @KatJillianne</system:String>
     <system:String x:Key="ContributorCreditsString">@githubcatw; @AndriesK; @ArthurWolfhound</system:String>
     
     <!-- Global bitmaps -->
