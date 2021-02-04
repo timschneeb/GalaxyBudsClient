@@ -118,6 +118,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@lucasskluser](https://github.com/lucasskluser) - Portuguese translation
 * [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Italian translation
 * [@Buashei](https://github.com/Buashei) - Polish translation
+* [@KatJillianne](https://github.com/KatJillianne) - Vietnamese translation
 
 ## License
 
