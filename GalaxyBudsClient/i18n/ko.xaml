@@ -11,7 +11,7 @@
     예2) ~하세요 (x) ~해 주세요 (o) -->
 	
     <!-- General -->
-    <sys:String x:Key="okay">예</sys:String>
+    <sys:String x:Key="okay">확인</sys:String>
     <sys:String x:Key="left">왼쪽</sys:String>
     <sys:String x:Key="right">오른쪽</sys:String>
     <sys:String x:Key="case">케이스</sys:String>
@@ -19,10 +19,14 @@
     <sys:String x:Key="cancel">취소</sys:String>
     <sys:String x:Key="apply">적용</sys:String>
     <sys:String x:Key="select">선택</sys:String>
-    <sys:String x:Key="notset">설정되지 않음</sys:String>
+	
+    <!-- 이쪽은 해요체를 적용하지 않았지만, 실제 One UI에서도 해요체가 적용되지 않는 부분입니다.-->
+    <sys:String x:Key="notset">선택되지 않음</sys:String>
     <sys:String x:Key="unknown">알 수 없음</sys:String>
-    <sys:String x:Key="nobluetoothdev">블루투스 송수신 장치를 찾지 못했어요. 블루투스를 켠 후 다시 시도해 주세요.</sys:String>
-
+    <sys:String x:Key="back">돌아가기</sys:String>
+	
+	
+    <sys:String x:Key="nobluetoothdev">블루투스 어댑터를 찾을 수 없어요. 블루투스를 활성화 하고 다시 시도하세요.</sys:String>
     <sys:String x:Key="anc">액티브 노이즈 캔슬링</sys:String>
 
     <!-- SPP Message Parser -->
@@ -32,6 +36,7 @@
     <sys:String x:Key="sppmsg_invalid_eom">유효하지 않은 EOM</sys:String>
     <!-- Context: EOM = End of message -->
     <sys:String x:Key="sppmsg_size_mismatch">페이로드 크기 불일치</sys:String>
+    <sys:String x:Key="sppmsg_crc_fail">체크섬 불일치</sys:String>
     <sys:String x:Key="sppmsg_tl">패킷 크기가 너무 작음</sys:String>
 	 
     <!-- Dark Mode States -->
@@ -63,7 +68,8 @@
     <sys:String x:Key="touchoption_volume_down">음량 내리기</sys:String>
     <sys:String x:Key="touchoption_ambientsound">주변 소리 듣기</sys:String>
     <sys:String x:Key="touchoption_switch_noisecontrols">소음 제어 옵션 변경</sys:String>
-    <sys:String x:Key="touchoption_spotify">스포티파이 (안드로이드 전용)</sys:String>
+    <!-- Spotify Korea 측에서도 스포티파이라는 명칭보다 Spotify를 사용하고 있습니다. -->
+    <sys:String x:Key="touchoption_spotify">Spotify (Android 전용)</sys:String>
     <sys:String x:Key="touchoption_custom">사용자 설정 동작...</sys:String>
     <sys:String x:Key="touchoption_custom_null">설정되지 않음</sys:String>
     <sys:String x:Key="touchoption_custom_unknown">알 수 없음</sys:String>
@@ -161,8 +167,7 @@
     <!-- Welcome page -->
     <sys:String x:Key="welcome_textblock_header">환영합니다!</sys:String>
     <sys:String x:Key="welcome_textblock_p1">
-        안녕하세요! 이 갤럭시 버즈 매니저는 비공식 프로그램이며, 삼성과 어떠한 관련이 없어요.
-		이 프로그램은 공식 삼성 웨어러블 앱에서 할 수 없는 여러 가지 것들을 할 수 있지만, 기기 보호를 위해 버즈 소프트웨어 무선 OTA 업데이트 기능은 제외되었어요. 만약 업데이트가 필요하시다면, 공식 갤럭시 웨어러블 앱을 사용해 주세요.
+        안녕하세요! 이 Galaxy Buds Manager는 비공식 프로그램이며, 삼성과 어떠한 관련이 없어요.&#10;이 프로그램은 공식 삼성 웨어러블 앱에서 할 수 없는 여러 가지 것들을 할 수 있지만, 기기 보호를 위해 버즈 소프트웨어 무선 OTA 업데이트 기능은 제외되었어요. 만약 업데이트가 필요하시다면, 공식 갤럭시 웨어러블 앱을 사용해 주세요.
     </sys:String>
     <sys:String x:Key="welcome_textblock_p2">
         만약 이 프로그램이 개발되는 과정을 보고 싶으시다면, 저의 리버스 엔지니어링의 성과물들이 있는 GitHub 리포지토리에서 확인이 가능해요. 또한 문제가 생기면 텔레그램에서 @thepbone으로 메시지를 보내실 수 있어요.
@@ -184,7 +189,7 @@
     <sys:String x:Key="mainpage_system">버즈 정보</sys:String>
 
     <!-- Update page -->
-    <sys:String x:Key="updater_header">프로그램 업데이트 가능</sys:String>
+    <sys:String x:Key="updater_header">매니저 업데이트 가능</sys:String>
     <sys:String x:Key="updater_message_p1">
         다운로드는 자동으로 진행되며, 다운로드 완료 후 업데이트 프로그램이 자동으로 실행되요. 최신 버그 픽스와 기능을 원하신다면 업데이트를 권장해요.
     </sys:String>
@@ -193,23 +198,40 @@
     </sys:String>
 
     <sys:String x:Key="updater_view_changelog">GitHub에서 모든 업데이트 내용 보기</sys:String>
-    <sys:String x:Key="updater_footer_remindmelater">나중에</sys:String>
+    <sys:String x:Key="updater_footer_remindmelater">나중에 알림</sys:String>
     <sys:String x:Key="updater_footer_skipversion">이 버전 건너뛰기</sys:String>
     <sys:String x:Key="updater_footer_install">지금 설치</sys:String>
-
+    <sys:String x:Key="updater_appcast_null">새로운 업데이트가 있지만 올바른 AppCast를 찾을 수 없어요. 나중에 시도하세요.</sys:String>
     <sys:String x:Key="updater_noupdate">최신 버전을 사용하고 있어요. 나중에 다시 확인하거나, GitHub를 구독해 새로운 업데이트를 확인해 보세요.</sys:String>
     <sys:String x:Key="updater_noupdate_title">업데이트 없음</sys:String>
     <sys:String x:Key="updater_newrelease">Galaxy Buds Manager 버전 {0} 이(가) 출시되었어요.</sys:String>
 
+    <sys:String x:Key="updater_dl_header">다운로드 중...</sys:String>
+    <sys:String x:Key="updater_dl_manual">GitHub에서 보기</sys:String>
+    <sys:String x:Key="updater_dl_fail_title">다운로드 실패</sys:String>
+    <sys:String x:Key="updater_dl_fail">사유:&#10;</sys:String>
+    <sys:String x:Key="updater_dl_progress_prepare">다운로드 준비 중...</sys:String>
+    <sys:String x:Key="updater_dl_progress_cancelled">다운로드 취소됨</sys:String>
+    <sys:String x:Key="updater_dl_progress_finished">다운로드 완료. 설치 프로그램 준비 중...</sys:String>
+    <sys:String x:Key="updater_dl_progress">다운로드 중... {0}%</sys:String>
+    <sys:String x:Key="updater_dl_progress_size">({0}/{1} 메가바이트)</sys:String>
+    <sys:String x:Key="updater_dl_note">다운로드가 끝나면, 앱이 닫히고 별개의 업데이터가 실행돼요. 나타나기까지 몇 초가 걸릴 수 있어요.</sys:String>
+
+	
     <!-- Device selection page (setup) -->
     <sys:String x:Key="devsel_header">Galaxy Buds 선택하기</sys:String>
-    <sys:String x:Key="devsel_search">디바이스 찾기</sys:String>
+    <sys:String x:Key="devsel_refresh">페어링된 기기 새로 고침</sys:String>
     <sys:String x:Key="devsel_device_name">디바이스 이름</sys:String>
     <sys:String x:Key="devsel_btaddr">MAC 주소</sys:String>
     <sys:String x:Key="devsel_model">모델</sys:String>
-    <sys:String x:Key="devsel_noselection">디바이스가 선택되지 않음</sys:String>
-    <sys:String x:Key="devsel_invalid_selection">먼저 올바른 장치를 선택해 주세요.</sys:String>
+    <sys:String x:Key="devsel_nodevices">버즈를 우선 연결하고 페어링하세요.</sys:String>
+    <sys:String x:Key="devsel_nodevices_title">페어링된 기기를 찾을 수 없어요.</sys:String>
+    <sys:String x:Key="devsel_noselection">기기가 선택되지 않았어요.</sys:String>
+    <sys:String x:Key="devsel_invalid_selection">올바른 장치를 선택하세요.</sys:String>
     <sys:String x:Key="devsel_footer_continue">설정 끝내기</sys:String>
+    <sys:String x:Key="devsel_dialog_footer">이어버드를 찾을 수 없다면, 컴퓨터의 블루투스 설정에서 연결된 것을 확인하고, 새로 고침을 클릭하세요.</sys:String>
+    <sys:String x:Key="devsel_winrt_title">다른 블루투스 백엔드 사용하기</sys:String>
+    <sys:String x:Key="devsel_winrt">훨씬 나은 안정성이지만, 일부 PC 블루투스 어댑터에서는 작동하지 않아요.</sys:String>
 
     <!-- Unsupported feature page -->
     <sys:String x:Key="unsupported_feature_current_fwver">현재 버즈 소프트웨어 버전:</sys:String>
@@ -219,9 +241,9 @@
     <sys:String x:Key="unsupported_feature_current_fwver_null">현재 버즈 소프트웨어 버전: 알 수 없음</sys:String>
     <sys:String x:Key="unsupported_feature_required_fwver_null">요구되는 소프트웨어 버전: 지정되지 않음</sys:String>
 
-    <sys:String x:Key="unsupported_feature_description_p1">버즈의 소프트웨어가 최신 버전이 아니므로 이 기능을 지원하지 않아요.</sys:String>
-    <sys:String x:Key="unsupported_feature_description_p2">공식 갤럭시 웨어러블 앱을 통해 최신 소프트웨어로 업데이트해 주세요.</sys:String>
-    <sys:String x:Key="unsupported_feature_description_p3">공식 Galaxy Buds Manager를 사용할 시, 이 프로그램을 종료하는 것을 잊지 마세요. 버즈는 한 번에 하나의 프로그램과만 통신이 가능해요.</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p1">버즈의 소프트웨어가 너무 오래됬으므로 이 기능을 지원하지 않아요.</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p2">공식 Windows 및 Android 업데이터를 통해 최신 소프트웨어로 업데이트해 주세요.</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p3">Windows 업데이터를 사용할 시, 이 프로그램을 종료하는 것을 잊지 마세요. 한 번에 하나의 프로그램만 버즈와 통신이 가능해요.</sys:String>
 
     <!-- Touchpad page -->
     <sys:String x:Key="touchpad_header">터치패드</sys:String>
@@ -240,8 +262,7 @@
     <sys:String x:Key="cact_notice_content_p1">사용자 지정 길게 누르기 동작은 프로그램이 백그라운드에서 실행 중일 때만 동작해요.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">안드로이드 기기나 그 이외 다른 디바이스에서는 동작하지 않아요.</sys:String>
     <sys:String x:Key="cact_notice_content_p3">
-        이 기능의 지속적인 동작을 위해, 이 프로그램은 부팅 시 자동으로 백그라운드에서 실행되요.
-        설정에서 부팅 시 자동 실행 기능을 끌 수 있어요.
+        이 기능의 지속적인 동작을 위해, 이 프로그램은 부팅 시 자동으로 백그라운드에서 실행돼요.&#10;설정에서 부팅 시 자동 실행 기능을 끌 수 있어요.
     </sys:String>
 
     <!-- System/Self-Test -->
