@@ -6,7 +6,7 @@
   Galaxy Buds Client
   <br>
 </h1>
-<h4 align="center">버즈, 버즈 플러스와 버즈 라이브를 위한 비공식 매니저 프로그램</h4>
+<h4 align="center">버즈, 버즈 플러스, 버즈 라이브와 버즈 프로를 위한 비공식 매니저 프로그램</h4>
 <p align="center">
   <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
     <img alt="GitHub downloads count" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
@@ -30,7 +30,9 @@
   <a href="#라이선스">라이선스</a> 
 </p>
 
-
+<p align="center">
+    <a href="https://ko-fi.com/H2H83E5J3"><img alt="Screenshot" src="https://ko-fi.com/img/githubbutton_sm.svg"></a>
+</p>
 
 <p align="center">
     <a href="#"><img alt="Screenshot" src="../screenshots/screencap.gif"></a>
@@ -50,7 +52,7 @@
 
 ## 다운로드
 
-Windows 바이너리는 [release](https://github.com/ThePBone/GalaxyBudsClient/releases)에서 다운로드가 가능합니다. 설치하기 전에 릴리즈 노트를 읽어 주세요.
+Windows와 Linux 바이너리는 [릴리즈 섹션](https://github.com/ThePBone/GalaxyBudsClient/releases)에서 다운로드가 가능합니다. 설치하기 전에 릴리즈 노트를 읽어 주세요.
 
 <p align="center">
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="../screenshots/download.png"></a>
@@ -106,6 +108,7 @@ A2DP 프로필이 표준화 및 문서화되더라도, RFCOMM 프로토콜로 �
 
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - 러시아어, 우크라이나어 번역
 * [@cozyplanes](https://github.com/cozyplanes) - 한국어 번역
+* [@redevunlink](https://github.com/redevunlink) - 한국어 번역
 * [@PlasticBrain](https://github.com/fhalfkg) - 한국어, 일본어 번역
 * [@erenbektas](https://github.com/erenbektas) - 터키어 번역
 * [@kakkk](https://github.com/kakkk) , [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) - 중국어 번역
