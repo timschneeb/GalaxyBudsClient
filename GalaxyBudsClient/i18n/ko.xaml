@@ -376,7 +376,7 @@
     <sys:String x:Key="eq_header">이퀄라이저</sys:String>
     <sys:String x:Key="eq_enable">이퀄라이저 켜기</sys:String>
     <sys:String x:Key="eq_mode">모드: </sys:String>
-    <sys:String x:Key="eq_dolby">Dolby와 함 사용하도록 최적화</sys:String>
+    <sys:String x:Key="eq_dolby">Dolby와 함께 사용하도록 최적화</sys:String>
 
     <sys:String x:Key="eq_bass">저음 강조</sys:String>
     <sys:String x:Key="eq_soft">부드러운</sys:String>
