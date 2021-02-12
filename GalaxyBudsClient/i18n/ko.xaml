@@ -51,7 +51,7 @@
     <sys:String x:Key="connpopup_placement_bl">하단 왼쪽</sys:String>
     <sys:String x:Key="connpopup_placement_bc">하단 중앙</sys:String>
     <sys:String x:Key="connpopup_placement_br">하단 오른쪽</sys:String>
-    <sys:String x:Key="connpopup_title">{0}의 Galaxy Buds{1}</sys:String>
+    <sys:String x:Key="connpopup_title">{0}의 Galaxy Buds {1}</sys:String>
     <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
 
     <!-- Placement  (Buds+) -->
@@ -112,7 +112,7 @@
 
     <!-- Hotkey Recorder Dialog (Custom action) -->
     <sys:String x:Key="hotrec_title">키 지정</sys:String>
-    <sys:String x:Key="hotrec_content">키 조합을 입력해 주세요. (누른 채로 유지):</sys:String>
+    <sys:String x:Key="hotrec_content">키 조합을 입력해 주세요. (누른 채로 유지하세요.):</sys:String>
     <sys:String x:Key="hotrec_empty">없음</sys:String>
     <sys:String x:Key="hotrec_note">참고: 사용자 인터페이스 권한 격리(UIPI)로 인해, 동일한 권한 수준의 앱에서만 키 조합을 수신할 수 있어요.</sys:String>
 
@@ -191,7 +191,7 @@
     <!-- Update page -->
     <sys:String x:Key="updater_header">매니저 업데이트 가능</sys:String>
     <sys:String x:Key="updater_message_p1">
-        다운로드는 자동으로 진행되며, 다운로드 완료 후 업데이트 프로그램이 자동으로 실행되요. 최신 버그 픽스와 기능을 원하신다면 업데이트를 권장해요.
+        다운로드는 자동으로 진행되며, 다운로드 완료 후 업데이트 프로그램이 자동으로 실행되요. 최신 버그 수정 및 새로운 기능을 원하신다면 업데이트를 권장해요.
     </sys:String>
     <sys:String x:Key="updater_message_p2">
         아래 버튼을 눌러 업데이트 내용을 볼 수 있어요.
@@ -209,13 +209,13 @@
     <sys:String x:Key="updater_dl_header">다운로드 중...</sys:String>
     <sys:String x:Key="updater_dl_manual">GitHub에서 보기</sys:String>
     <sys:String x:Key="updater_dl_fail_title">다운로드 실패</sys:String>
-    <sys:String x:Key="updater_dl_fail">사유:&#10;</sys:String>
+    <sys:String x:Key="updater_dl_fail">실패 사유: &#10;</sys:String>
     <sys:String x:Key="updater_dl_progress_prepare">다운로드 준비 중...</sys:String>
     <sys:String x:Key="updater_dl_progress_cancelled">다운로드 취소됨</sys:String>
     <sys:String x:Key="updater_dl_progress_finished">다운로드 완료. 설치 프로그램 준비 중...</sys:String>
     <sys:String x:Key="updater_dl_progress">다운로드 중... {0}%</sys:String>
     <sys:String x:Key="updater_dl_progress_size">({0}/{1} 메가바이트)</sys:String>
-    <sys:String x:Key="updater_dl_note">다운로드가 끝나면, 앱이 닫히고 별개의 업데이터가 실행돼요. 나타나기까지 몇 초가 걸릴 수 있어요.</sys:String>
+    <sys:String x:Key="updater_dl_note">다운로드가 끝나면, 앱이 닫히고 별개의 업데이터가 실행돼요. 실행되기까지 몇 초가 걸릴 수 있어요.</sys:String>
 
 	
     <!-- Device selection page (setup) -->
@@ -376,7 +376,7 @@
     <sys:String x:Key="eq_header">이퀄라이저</sys:String>
     <sys:String x:Key="eq_enable">이퀄라이저 켜기</sys:String>
     <sys:String x:Key="eq_mode">모드: </sys:String>
-    <sys:String x:Key="eq_dolby">Dolby와 함꼐 사용하도록 최적화</sys:String>
+    <sys:String x:Key="eq_dolby">Dolby와 함 사용하도록 최적화</sys:String>
 
     <sys:String x:Key="eq_bass">저음 강조</sys:String>
     <sys:String x:Key="eq_soft">부드러운</sys:String>
@@ -436,7 +436,7 @@
     <sys:String x:Key="connlost_description_p1">버즈와 연결에 실패했습니다.</sys:String>
     <sys:String x:Key="connlost_description_p2">
          설정을 확인하고 버즈가 컴퓨터와 페어링되어 있는지 확인하세요.
-        필요하면 다시 페어링이 가능합니다. 다시 페어링할 경우, 옵션>디바이스 연결 해제를 누르세요.
+        필요하면 다시 페어링이 가능합니다. 다시 페어링할 경우, 옵션 > 디바이스 연결 해제를 누르세요.
     </sys:String>
     <sys:String x:Key="connlost_description_p3">추가 정보:</sys:String>
     <sys:String x:Key="connlost_noinfo">오류 정보를 가져오지 못했습니다.</sys:String>
