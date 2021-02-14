@@ -401,7 +401,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		private async void AncBorder_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
 			_ancSwitch.Toggle();
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_NOISE_REDUCTION, true);
+			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_NOISE_REDUCTION, _ancSwitch.IsChecked);
 		}
 
 		private void FindMyBuds_OnPointerPressed(object? sender, PointerPressedEventArgs e)
