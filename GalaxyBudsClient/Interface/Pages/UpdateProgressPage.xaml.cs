@@ -61,13 +61,15 @@ namespace GalaxyBudsClient.Interface.Pages
 
             try
             {
-                new FileInfo(path).DeleteAlternateDataStream("Zone.Identifier");
-               
+                FileInfo fileInfo = new FileInfo(path);
+                fileInfo.DeleteAlternateDataStream("Zone.Identifier");
+                fileInfo.MoveTo(Path.Combine(fileInfo.DirectoryName ?? "", "GalaxyBudsClient_Updater.exe"));
+                
                 Process proc = new Process
                 {
                     StartInfo =
                     {
-                        FileName = path,
+                        FileName = Path.Combine(fileInfo.DirectoryName ?? "", "GalaxyBudsClient_Updater.exe"),
                         UseShellExecute = true,
                         Verb = "runas"
                     }
@@ -76,7 +78,7 @@ namespace GalaxyBudsClient.Interface.Pages
             }
             catch (Exception exception)
             {
-                Log.Warning("UpdateProgressPage: Exception raised while launching installer: " + exception.Message);
+                Log.Warning("UpdateProgressPage: Exception raised while launching installer: " + exception.Message + $" ({path})");
             }
 
             if (BluetoothImpl.Instance.IsConnected)
@@ -84,7 +86,7 @@ namespace GalaxyBudsClient.Interface.Pages
                 await BluetoothImpl.Instance.DisconnectAsync();
             }
 
-            await Task.Delay(100);
+            await Task.Delay(400);
             
             Environment.Exit(0);
         }
