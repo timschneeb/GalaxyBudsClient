@@ -45,12 +45,12 @@
     <sys:String x:Key="darkmode_system">시스템 설정 사용</sys:String>
 
     <!-- Connection popup -->
-    <sys:String x:Key="connpopup_placement_tl">상단 왼쪽</sys:String>
+    <sys:String x:Key="connpopup_placement_tl">좌측 상단</sys:String>
     <sys:String x:Key="connpopup_placement_tc">상단 중앙</sys:String>
-    <sys:String x:Key="connpopup_placement_tr">상단 오른쪽</sys:String>
-    <sys:String x:Key="connpopup_placement_bl">하단 왼쪽</sys:String>
+    <sys:String x:Key="connpopup_placement_tr">우측 상단</sys:String>
+    <sys:String x:Key="connpopup_placement_bl">좌측 하단</sys:String>
     <sys:String x:Key="connpopup_placement_bc">하단 중앙</sys:String>
-    <sys:String x:Key="connpopup_placement_br">하단 오른쪽</sys:String>
+    <sys:String x:Key="connpopup_placement_br">우측 하단</sys:String>
     <sys:String x:Key="connpopup_title">{0}의 Galaxy Buds {1}</sys:String>
     <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
 
@@ -73,7 +73,7 @@
     <sys:String x:Key="touchoption_custom">사용자 설정 동작...</sys:String>
     <sys:String x:Key="touchoption_custom_null">설정되지 않음</sys:String>
     <sys:String x:Key="touchoption_custom_unknown">알 수 없음</sys:String>
-    <sys:String x:Key="touchoption_custom_prefix">사용자 설정 동작:</sys:String>
+    <sys:String x:Key="touchoption_custom_prefix">사용자 설정 동작: </sys:String>
     <sys:String x:Key="touchoption_custom_trigger_hotkey">지정된 키 조합을 누르기...</sys:String>
     <sys:String x:Key="touchoption_custom_external_app">외부 응용 프로그램을 열기...</sys:String>
 
@@ -90,7 +90,7 @@
     <sys:String x:Key="optionsmenu_refresh">대시보드 새로고침</sys:String>
     <sys:String x:Key="optionsmenu_deregister">디바이스 등록 해제</sys:String>
     <sys:String x:Key="optionsmenu_update">업데이트 확인</sys:String>
-    <sys:String x:Key="optionsmenu_credits">제작자</sys:String>
+    <sys:String x:Key="optionsmenu_credits">크레딧</sys:String>
 
     <!-- Tray context menu -->
     <sys:String x:Key="tray_unlock_touchpad">터치패드 잠금 해제</sys:String>
@@ -139,7 +139,7 @@
     <sys:String x:Key="hotkey_add_error">단축키를 등록/업데이트 하는데 실패했어요.</sys:String>
     <sys:String x:Key="hotkey_add_error_context">오류가 발생한 단축키: </sys:String>
     <sys:String x:Key="hotkey_add_error_duplicate">방금 등록한 단축키 조합은 Galaxy Buds Manager 또는 다른 프로그램에서 이미 단축키로 사용되고 있어요. 다른 단축키를 선택해 주세요.</sys:String>
-    <sys:String x:Key="hotkey_add_error_unknown">운영체제가 오류: '{0}' (으)로 응답했어요.</sys:String>
+    <sys:String x:Key="hotkey_add_error_unknown">운영체제가 '{0}' (이)라는 오류로 응답했어요.</sys:String>
 
     <!-- EventDispatcher module -->
     <sys:String x:Key="event_none">없음</sys:String>
@@ -148,8 +148,8 @@
     <sys:String x:Key="event_ambient_volume_down">주변 소리 듣기 볼륨 작게</sys:String>
     <sys:String x:Key="event_eq_toggle">이퀄라이저 켜기/끄기</sys:String>
     <sys:String x:Key="event_eq_switch">이퀄라이저 프리셋 반복</sys:String>
-    <sys:String x:Key="event_anc_toggle">노이즈 캔슬링 켜기/끄기</sys:String>
-    <sys:String x:Key="event_anc_switch_sensitivity">ANC 민감도 변경하기</sys:String>
+    <sys:String x:Key="event_anc_toggle">액티브 노이즈 캔슬링 켜기/끄기</sys:String>
+    <sys:String x:Key="event_anc_switch_sensitivity">액티브 노이즈 캔슬링 민감도 변경하기</sys:String>
     <sys:String x:Key="event_touch_lock_toggle">터치패드 잠금 켜기/끄기</sys:String>
     <sys:String x:Key="event_double_edge_touch_toggle">가장자리 두 번 두드리기 기능 켜기/끄기e</sys:String>
     <sys:String x:Key="event_conversation_toggle">대화 감지 켜기/끄기</sys:String>
@@ -343,13 +343,13 @@
     <sys:String x:Key="settings_cpopup_header">연결 팝업</sys:String>
     <sys:String x:Key="settings_cpopup_enable">연결 시 팝업 표시</sys:String>
     <sys:String x:Key="settings_cpopup_enable_description">버즈가 연결되었을 때 남은 배터리 용량을 보여주는 작은 알림 팝업이 표시되요.</sys:String>
-    <sys:String x:Key="settings_cpopup_compact">간단 모드</sys:String>
+    <sys:String x:Key="settings_cpopup_compact">간단한 모드</sys:String>
     <sys:String x:Key="settings_cpopup_compact_description">표시 공간을 줄이기 위해 팝업에서 버즈의 이름을 표시되지 않아요.</sys:String>
     <sys:String x:Key="settings_cpopup_position">표시 위치</sys:String>
     <sys:String x:Key="settings_cpopup_position_placeholder">알 수 없음</sys:String>
-    <sys:String x:Key="settings_cpopup_demo">팝업 보기</sys:String>
-    <sys:String x:Key="settings_cpopup_override_title">팝업 타이틀 변경</sys:String>
-    <sys:String x:Key="settings_cpopup_override_title_dialog">팝업 타이틀을 입력해 주세요. 공백으로 둘 시 기본 타이틀이 적용되요.</sys:String>
+    <sys:String x:Key="settings_cpopup_demo">연결 팝업 보기</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title">연결 팝업 레이블 변경</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title_dialog">팝업 레이블을 입력해 주세요. 공백으로 둘 시 기본 레이블이 적용되요.</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen">주 화면만</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen_description">팝업을 주 화면에서만 보이기</sys:String>
 
@@ -358,7 +358,7 @@
     <sys:String x:Key="factory_confirm">버즈 초기화하기</sys:String>
     <sys:String x:Key="factory_error_title">버즈 초기화 실패</sys:String>
     <sys:String x:Key="factory_error">
-        디바이스가 오류 코드를 반환했어요: {0} 
+        디바이스가 {0} (이)라는 오류 코드를 반환했어요.
         양쪽 버즈가 서로 가까운 거리에 있고 켜져 있는지 확인해 주세요. 
         버즈를 수동으로 다시 연결해야 할 수도 있어요.
     </sys:String>
@@ -387,7 +387,7 @@
     <!-- Noise control -->
     <sys:String x:Key="nc_header">소음 제어</sys:String>
     <sys:String x:Key="nc_anc_level">높은 민감도</sys:String>
-    <sys:String x:Key="nc_anc_level_description">더 강한 노이즈 캔슬링 효과</sys:String>
+    <sys:String x:Key="nc_anc_level_description">더 강한 액티브 노이즈 캔슬링 효과</sys:String>
     <sys:String x:Key="nc_voicedetect">대화 감지</sys:String>
     <sys:String x:Key="nc_voicedetect_description">음성이 감지되면 주변 소리 듣기가 자동으로 켜지고 미디어 볼륨은 줄어들어 대화를 더 편하게 할 수 있어요.</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">대화 감지 만료 시간</sys:String>
@@ -435,10 +435,10 @@
     <sys:String x:Key="connlost_header">접속에 실패했습니다</sys:String>
     <sys:String x:Key="connlost_description_p1">버즈와 연결에 실패했습니다.</sys:String>
     <sys:String x:Key="connlost_description_p2">
-         설정을 확인하고 버즈가 컴퓨터와 페어링되어 있는지 확인하세요.
+        설정을 확인하고 버즈가 컴퓨터와 페어링되어 있는지 확인하세요.
         필요하면 다시 페어링이 가능합니다. 다시 페어링할 경우, 옵션 > 디바이스 연결 해제를 누르세요.
     </sys:String>
-    <sys:String x:Key="connlost_description_p3">추가 정보:</sys:String>
+    <sys:String x:Key="connlost_description_p3">추가 정보: </sys:String>
     <sys:String x:Key="connlost_noinfo">오류 정보를 가져오지 못했습니다.</sys:String>
     <sys:String x:Key="connlost_connect">연결</sys:String>
     <sys:String x:Key="connlost_connecting">연결 중...</sys:String>
