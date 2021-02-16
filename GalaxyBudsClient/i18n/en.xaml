@@ -305,7 +305,7 @@
     <sys:String x:Key="coredump_dl_save_fail">Unable to copy dump from temporary location. Reason: {0}</sys:String>
     <sys:String x:Key="coredump_dl_save_success_title">Successfully saved dumps</sys:String>
     <sys:String x:Key="coredump_dl_save_success">{0} dump(s) were written to '{1}'</sys:String>
-    <sys:String x:Key="coredump_dl_save_dialog_title">Select an download directory...</sys:String>
+    <sys:String x:Key="coredump_dl_save_dialog_title">Select a download directory...</sys:String>
     
     <!-- Settings -->
     <sys:String x:Key="settings_header">Settings</sys:String>
