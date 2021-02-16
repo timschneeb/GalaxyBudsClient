@@ -26,7 +26,7 @@
   <a href="#key-features">Klíčové vlastnosti</a> •
   <a href="#download">Stažení</a> •
   <a href="#how-it-works">Jak to funguje</a> •
-  <a href="#contributing">Spolupáce</a> •
+  <a href="#contributing">Spolupáce</a>
   <a href="#credits">Zásluhy</a> •
   <a href="#license">Licence</a> 
 </p>
@@ -50,12 +50,12 @@ Kromě standartních funkcí známých z oficiální Androidí aplikace, Vám te
 * Detailní statistiky baterie
 * Diagnostika a tovární autotesty
 * Spousta skrytých informací o ladění
-* Přizpůsobitelné dlouhé dotykové akce
+* Přizpůsobitelné akce dlouhého dotyku
 * a spousty dalších...
 
 ## Stažení
 
-Získejte binární soubory pro Windows a Linux v sekci [vydání](https://github.com/ThePBone/GalaxyBudsClient/releases). Prosím přečtěte si poznámky k vydání před stažením.
+Získejte binární soubory pro Windows a Linux v sekci [vydání](https://github.com/ThePBone/GalaxyBudsClient/releases). Prosím přečtěte si poznámky k vydání před stažením (v angličtině).
 
 <p align="center">
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
@@ -85,8 +85,8 @@ Při bližším pohledu na Galaxy Buds Plus jsem si také všiml některých neo
 V současné době zkoumám úpravy a reverzní inženýrství firmwaru pro Buds+. V době psaní tohoto článku mám dva nástroje pro načítání a analýzu pomocí oficiálních binárních souborů firmwaru. Podívejte se na ně zde:
 
 <p align="center">
-  <a href="https://github.com/ThePBone/GalaxyBudsFirmwareDownloader">Firmware Downloader</a> •
-  <a href="https://github.com/ThePBone/GalaxyBudsFirmwareExtractor">Firmware Extractor</a>
+  <a href="https://github.com/ThePBone/GalaxyBudsFirmwareDownloader">Stahovač Firmwaru</a> •
+  <a href="https://github.com/ThePBone/GalaxyBudsFirmwareExtractor">Extraktor Firmwaru</a>
 </p>
 
 ## Spolupráce
