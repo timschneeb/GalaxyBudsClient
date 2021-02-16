@@ -1,6 +1,6 @@
 <p align="center">
   <a href="../README.md">English</a> | <a href="./README_chs.md">中文</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="./README_jpn.md">日本語</a> | <a href="./README_ukr.md">Українська</a> | <a href="./README_kor.md">한국어</a> | Česky<br>
-    <sub>Upozornění: README soubory jsou spravovány překladately a proto mohou být zaostalé. Pro nejnovější informace se spoléhejte na anglickou verzi.</sub>
+    <sub>Upozornění: README soubory jsou spravovány překladately, a proto mohou být zaostalé. Pro nejnovější informace se spoléhejte na anglickou verzi.</sub>
 </p>
 
 <h1 align="center">
@@ -26,7 +26,7 @@
   <a href="#key-features">Klíčové vlastnosti</a> •
   <a href="#download">Stažení</a> •
   <a href="#how-it-works">Jak to funguje</a> •
-  <a href="#contributing">Spolupáce</a> •
+  <a href="#contributing">Spolupráce</a> •
   <a href="#credits">Zásluhy</a> •
   <a href="#license">Licence</a> 
 </p>
@@ -45,7 +45,7 @@
 
 Spravujte a ovládejte jakékoliv zařízení Samsung Galaxy Buds a integrujte je do vašeho počítače.
 
-Kromě standartních funkcí známých z oficiální Androidí aplikace, Vám tento projekt pomáhá uvolnit plný potenciál sluchátek a implementovat nové funkce, jako je:
+Kromě standardních funkcí známých z oficiální Androidí aplikace, Vám tento projekt pomáhá uvolnit plný potenciál sluchátek a implementovat nové funkce, jako je:
 
 * Detailní statistiky baterie
 * Diagnostika a tovární autotesty
