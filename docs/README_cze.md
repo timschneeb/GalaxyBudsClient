@@ -26,7 +26,7 @@
   <a href="#key-features">Klíčové vlastnosti</a> •
   <a href="#download">Stažení</a> •
   <a href="#how-it-works">Jak to funguje</a> •
-  <a href="#contributing">Spolupáce</a>
+  <a href="#contributing">Spolupáce</a> •
   <a href="#credits">Zásluhy</a> •
   <a href="#license">Licence</a> 
 </p>
