@@ -306,7 +306,9 @@
     <sys:String x:Key="coredump_dl_core_progress">Stahování výpisu jádra... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytů)</sys:String>
     <sys:String x:Key="coredump_dl_note">
-        Během stahování je zvukový stream dočasně pozastaven. Vaše sluchátka se odpojí, jakmile přenos skončí, prosím, znovu ručně.&#10;Po dokončení budete vyzváni k výběru adresáře pro všechny shromážděných údajů.&#10;&#10;Je-li přenos zaseklý nebo se zařízení předčasně odpojilo, musíte restartovat stahování. Tato funkce je v současné době velmi nestabilní.
+        Během stahování je zvukový stream dočasně pozastaven. Vaše sluchátka se odpojí, jakmile přenos skončí, prosím, znovu ručně.&#10;
+        Po dokončení budete vyzváni k výběru adresáře pro všechny shromážděných údajů.&#10;&#10;
+        Je-li přenos zaseklý nebo se zařízení předčasně odpojilo, musíte restartovat stahování. Tato funkce je v současné době velmi nestabilní.
     </sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">Uložení výpisu se nezdařilo</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">Nelze kopírovat výpis z dočasného umístění. Důvod: {0}</sys:String>
