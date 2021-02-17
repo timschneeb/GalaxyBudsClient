@@ -294,7 +294,7 @@
 
     <sys:String x:Key="selftest_header">Autotest</sys:String>
     <sys:String x:Key="selftest_pass">Prošlo</sys:String>
-    <sys:String x:Key="selftest_fail">selhalo</sys:String>
+    <sys:String x:Key="selftest_fail">Selhalo</sys:String>
     <sys:String x:Key="selftest_pass_long">Všechny kontroly prošly</sys:String>
     <sys:String x:Key="selftest_fail_long">Jedna nebo více kontrol selhala</sys:String>
     
