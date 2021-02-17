@@ -48,7 +48,7 @@ Spravujte a ovládejte jakékoliv zařízení Samsung Galaxy Buds a integrujte j
 Kromě standardních funkcí známých z oficiální Androidí aplikace, Vám tento projekt pomáhá uvolnit plný potenciál sluchátek a implementovat nové funkce, jako je:
 
 * Detailní statistiky baterie
-* Diagnostika a tovární autotesty
+* Diagnostika a tovární auto-testy
 * Spousta skrytých informací o ladění
 * Přizpůsobitelné akce dlouhého dotyku
 * a spousty dalších...
@@ -65,11 +65,11 @@ Získejte binární soubory pro Windows a Linux v sekci [vydání](https://githu
 
 Chcete-li používat bezdrátovou technologii Bluetooth, musí být zařízení schopno interpretovat určité profily Bluetooth, což jsou definice možných aplikací, a určit obecné chování, které zařízení podporující technologii Bluetooth používá ke komunikaci s jinými zařízeními Bluetooth.
 
-Galaxy Buds definují dva profily Bluetooth: A2DP (Advanced Audio Distribution Profile) pro audio streaming / ovládání a SPP (Serial Port Profile) pro přenos binárního proudu. Výrobci často používají tento profil (který se spoléhá na protokol RFCOMM) k výměně konfiguračních dat, provádění aktualizací firmwaru nebo k odesílání dalších příkazů do zařízení Bluetooth.
+Galaxy Buds definují dva profily Bluetooth: A2DP (Advanced Audio Distribution Profile) pro vysílání audia / ovládání a SPP (Serial Port Profile) pro přenos binárního proudu. Výrobci často používají tento profil (který se spoléhá na protokol RFCOMM) k výměně konfiguračních dat, provádění aktualizací firmwaru nebo k odesílání dalších příkazů do zařízení Bluetooth.
 
 I když je profil A2DP standardizovaný a dokumentovaný, formát skutečných binárních dat vyměňovaných tímto protokolem RFCOMM obvykle není dokumentován a chráněn.
 
-Abych mohl zpětně analyzovat tento datový formát, začal jsem analýzou struktury binárního proudu posílaného sluchátky. Později jsem také rozebral oficiální aplikace Galaxy Buds pro Android, abych získal lepší přehled o vnitřním fungování těchto zařízení. Když jsem na tom pracoval, zapsal jsem své myšlenky do malého zápisníku. I když nejsou tak krásné, propojil jsem je níže. Mějte na paměti, že jsem se neobtěžoval psát každý jednotlivý detail. Zkontrolujte zdrojový kód a získejte podrobnější informace o struktuře protokolu.
+Abych mohl zpětně analyzovat tento datový formát, začal jsem analýzou struktury binárního proudu posílaného sluchátky. Později jsem také rozebral oficiální aplikaci pro Galaxy Buds na Android, abych získal lepší přehled o vnitřním fungování těchto zařízení. Když jsem na tom pracoval, zapsal jsem své myšlenky do malého zápisníku. I když nejsou tak krásné, přiložil jsem je níže. Mějte na paměti, že jsem se neobtěžoval psát každý jednotlivý detail. Zkontrolujte zdrojový kód a získejte podrobnější informace o struktuře protokolu.
 
 <p align="center">
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsRFCommProtocol.md">Galaxy Buds (2019): Poznámky</a> •
@@ -91,13 +91,13 @@ V současné době zkoumám úpravy a reverzní inženýrství firmwaru pro Buds
 
 ## Spolupráce
 
-Žádosti o funkce, nahlašování chyb, a požadavky o sjednocení kódů jakéhokolik typu jsou vždy vítány.
+Žádosti o funkce, nahlašování chyb, a požadavky o sjednocení kódů jakéhokoliv typu jsou vždy vítány.
 
 Pokud chcete nahlásit chybu nebo navrhnout Vaše nápady na tento projekt, jste vítáni k [otevření nového problému](https://github.com/ThePBone/GalaxyBudsClient/issues/new/choose) s vhodnou šablonou. [Navštivte naši wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/2.-How-to-submit-issues) pro detailní vysvětlení.
 
 Pokud nám plánujete pomoci s překladem aplikace, [viz pokyny na naší wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations). Nejsou vyžadovány žádné znalosti programování, můžete vyzkoušet vaše překlady bez instalace jakýchkoliv vývojářských nástrojů před podání žádosti o sjednocení kódu.
 
-If you want to contribute your own code, you can simply submit a plain pull request explaining you changes. For larger and complex contributions it would be nice if you could open an issue (or message me via Telegram [@thepbone](https://t.me/thepbone)) before starting to work on it.
+Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý požadavek na sjednocení kódů s vysvětlením Vašich změn. U větších a komplexnějších příspěvků by bylo hezké, kdybyste před zahájením práce mohli otevřít nějaký problém (nebo mi poslat zprávu na Telegram [@tpheone] (https://t.me/thepbone)).
 
 ## Zásluhy
 
