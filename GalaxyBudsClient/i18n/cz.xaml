@@ -7,6 +7,7 @@
     <!-- :::::::: Source code :::::::: -->
 
     <!-- General -->
+    <sys:String x:Key="okay">Dobře</sys:String>
     <sys:String x:Key="left">Levé</sys:String>
     <sys:String x:Key="right">Pravé</sys:String>
     <sys:String x:Key="case">Pouzdro</sys:String>
@@ -36,16 +37,16 @@
     <!-- Dark Mode States -->
     <sys:String x:Key="darkmode_disabled">Vypnuto</sys:String>
     <sys:String x:Key="darkmode_enabled">Zapnuto</sys:String>
-    <sys:String x:Key="darkmode_system">Použít nastavení systému</sys:String>
+    <sys:String x:Key="darkmode_system">Použít systémové nastavení</sys:String>
 
     <!-- Connection popup -->
-    <sys:String x:Key="connpopup_placement_tl">Vlevo nahoře</sys:String>
-    <sys:String x:Key="connpopup_placement_tc">Uprostřed nahoře</sys:String>
-    <sys:String x:Key="connpopup_placement_tr">Vpravo uprostřed</sys:String>
+    <sys:String x:Key="connpopup_placement_tl">Nahoře vlevo</sys:String>
+    <sys:String x:Key="connpopup_placement_tc">Nahoře uprostřed</sys:String>
+    <sys:String x:Key="connpopup_placement_tr">Nahoře vpravo</sys:String>
     <sys:String x:Key="connpopup_placement_bl">Dole vlevo</sys:String>
     <sys:String x:Key="connpopup_placement_bc">Dole uprostřed</sys:String>
     <sys:String x:Key="connpopup_placement_br">Dole vpravo</sys:String>
-    <sys:String x:Key="connpopup_title">{0}'s Galaxy Buds{1}</sys:String>
+    <sys:String x:Key="connpopup_title">Galaxy Buds{1} uživatele {0}</sys:String>
     <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
 
     <!-- Placement  (Buds+) -->
@@ -70,8 +71,6 @@
     <sys:String x:Key="touchoption_custom_prefix">Vlastní akce:</sys:String>
     <sys:String x:Key="touchoption_custom_ambient_up">Zesílit ambientní režim</sys:String>
     <sys:String x:Key="touchoption_custom_ambient_down">Zeslabit ambientní režim</sys:String>
-    <sys:String x:Key="touchoption_custom_toggle_eq">Přepnout equalizer</sys:String>
-    <sys:String x:Key="touchoption_custom_next_eq_preset">Další nastavení ekvalizéru</sys:String>
     <sys:String x:Key="touchoption_custom_trigger_hotkey">Stisknout zkratku...</sys:String>
     <sys:String x:Key="touchoption_custom_external_app">Spustit program...</sys:String>
 
@@ -126,9 +125,9 @@
     <sys:String x:Key="hotkey_empty_desc">Kliknutím na tlačítko výše vytvoříte novou klávesovou zkratku</sys:String>
     <sys:String x:Key="hotkey_edit">Upravit</sys:String>
     <sys:String x:Key="hotkey_delete">Smazat</sys:String>
-    <sys:String x:Key="hotkey_add_error">nepovedlo se registrovat/aktualizovat zkratku</sys:String>
+    <sys:String x:Key="hotkey_add_error">Nepovedlo se registrovat/aktualizovat zkratku</sys:String>
     <sys:String x:Key="hotkey_add_error_context">Ovlivněné zkratky:</sys:String>
-    <sys:String x:Key="hotkey_add_error_duplicate">Vaše vybraná kombinace kláves byla touto nebo jinou aplikací již zaregistrována jako klávesová zkratka. Vyberte prosím jinou.</sys:String>
+    <sys:String x:Key="hotkey_add_error_duplicate">Vybraná kombinace kláves byla touto nebo jinou aplikací již zaregistrována jako klávesová zkratka. Vyberte prosím jinou.</sys:String>
     <sys:String x:Key="hotkey_add_error_unknown">Operační systém odpověděl chybou '{0}'</sys:String>
 
     <!-- EventDispatcher module -->
@@ -139,7 +138,7 @@
     <sys:String x:Key="event_eq_toggle">Přepnout ekvalizér</sys:String>
     <sys:String x:Key="event_eq_switch">Iterovat předvolby ekvalizéru</sys:String>
     <sys:String x:Key="event_anc_toggle">Přepnout potlačení hluku</sys:String>
-    <sys:String x:Key="event_anc_switch_sensitivity">Přepnout citlivost ANC</sys:String>
+    <sys:String x:Key="event_anc_switch_sensitivity">Přepnout citlivost potlačení hluku</sys:String>
     <sys:String x:Key="event_touch_lock_toggle">Přepnout zámek touchpadu</sys:String>
     <sys:String x:Key="event_double_edge_touch_toggle">Přepnout dvojí poklepání na okraj</sys:String>
     <sys:String x:Key="event_conversation_toggle">Přepnout detekci konverzace</sys:String>
@@ -157,21 +156,21 @@
     <!-- Welcome page -->
     <sys:String x:Key="welcome_textblock_header">Vítejte!</sys:String>
     <sys:String x:Key="welcome_textblock_p1">
-        Ahoj! Tohle je neoficiální Galaxy Buds Manager a není nijak spojen se společností Samsung, pamatujte na to prosím.
-	I když tento program umí spoustu věcí co originální aplikace Samsung Wearable na Android neumí, rozhodl jsem se do ni nezahrnovat nástroj pro aktualizaci firmwaru (OTA) a to z důvodu bezpečnosti. Pokud tedy potřebujete nainstalovat aktualizaci, použijete aplikaci výrobce.
+        Ahoj! Tohle je neoficiální Galaxy Buds Manager a není nijak spojen se společností Samsung, pamatujte si to prosím.&#10;
+	I když tento program umí spoustu věcí co originální aplikace Samsung Wearable na Android neumí, rozhodl jsem se do ni nezahrnovat nástroj pro aktualizaci firmwaru (OTA) a to z důvodu bezpečnosti. Pokud tedy potřebujete nainstalovat aktualizaci, použijte aplikaci výrobce.
        
     </sys:String>
     <sys:String x:Key="welcome_textblock_p2">
-	Pokud vás zajímá co se děje v pozadí této aplikace, můžete sledovat můj repositář na GitHubu. Tam naleznete i menší návod jak jsem tuto aplikaci vytvořil pomocí reverzního inženýrství. Také mi můžete napsat přes GitHub případně na Telegram @thepbone, pokud naleznete nějaký problém.
+	Pokud vás zajímá co se děje v pozadí této aplikace, můžete sledovat můj repositář na GitHubu. Naleznete tam i menší návod jak jsem tuto aplikaci vytvořil pomocí reverzního inženýrství. V případě zjištění jakéhokoliv problému mi můžete napsat přes GitHub či na Telegram @thepbone.
     </sys:String>
     <sys:String x:Key="welcome_textblock_p3">
-        Tato aplikace podporuje Buds (2019), Buds+ (2020) a Buds Live.
+        Tato aplikace podporuje všechna zařízení Galaxy Buds.
     </sys:String>
     <sys:String x:Key="welcome_darkmode">Tmavý režim</sys:String>
     <sys:String x:Key="welcome_darkmode_content">Už vám ta bílá vypálila oči? Použijte místo toho tmavý režim!</sys:String>
 
     <!-- Main page -->
-    <sys:String x:Key="mainpage_corrupt_data">Obdržena poničená data. Znovu připojování...</sys:String>
+    <sys:String x:Key="mainpage_corrupt_data">Obdržena poničená data. Opakuji připojení...</sys:String>
     <sys:String x:Key="mainpage_find_my_earbuds">Najít sluchátka</sys:String>
     <sys:String x:Key="mainpage_touchpad">Dotykové ovládání</sys:String>
     <sys:String x:Key="mainpage_ambient_sound">Ambientní režim</sys:String>
@@ -183,7 +182,7 @@
     <!-- Update page -->
     <sys:String x:Key="updater_header">Dostupná aktualizace aplikace</sys:String>
     <sys:String x:Key="updater_message_p1">
-	Stažení aktualizace je plně automatické a aktualizační program bude spuštěn hned po dokončení stahování. K získání oprav a nových funkcí doporučujeme aktualizaci provést. 
+	Stažení aktualizace je plně automatické a aktualizační program bude spuštěn hned po dokončení stahování. K získání oprav a nových funkcí Vám doporučujeme provést aktualizaci. 
     </sys:String>
     <sys:String x:Key="updater_message_p2">
         Pro zobrazení změn klikněte na tlačítko níže.
@@ -193,7 +192,7 @@
     <sys:String x:Key="updater_footer_remindmelater">Připomenout později</sys:String>
     <sys:String x:Key="updater_footer_skipversion">Přeskočit tuto verzi</sys:String>
     <sys:String x:Key="updater_footer_install">Nainstalovat</sys:String>
-    <sys:String x:Key="updater_appcast_null">Je k dispozici nová aktualizace, ale nenalezena žádná platná data aplikace. Prosím zkuste to znovu později.</sys:String>
+    <sys:String x:Key="updater_appcast_null">Je k dispozici nová aktualizace, ale nenalezena žádná platná data aplikace. Prosím, zkuste to znovu později.</sys:String>
     <sys:String x:Key="updater_noupdate">Aktuálně nejsou dostupné žádné aktualizace. Zkuste to znovu později nebo se podívejte na stránku na GitHub pro přehled o aktualizacích.</sys:String>
     <sys:String x:Key="updater_noupdate_title">Žádné aktualizace</sys:String>
     <sys:String x:Key="updater_newrelease">Byla vydána nová aktualizace {0} pro Galaxy Buds Manager.</sys:String>
@@ -207,16 +206,16 @@
     <sys:String x:Key="updater_dl_progress_finished">Stahování Dokončeno. Spouštění instalátoru...</sys:String>
     <sys:String x:Key="updater_dl_progress">Stahování... {0}%</sys:String>
     <sys:String x:Key="updater_dl_progress_size">({0}/{1} megabytů)</sys:String>
-    <sys:String x:Key="updater_dl_note">Po dokončení stahování se tato aplikace automaticky zavře a spustí samostatný instalační program aktualizace. Může to trvat několik sekund, než se objeví.</sys:String>
+    <sys:String x:Key="updater_dl_note">Po dokončení stahování se tato aplikace automaticky zavře a spustí samostatný instalační program aktualizace. Může trvat několik sekund, než se objeví.</sys:String>
 
     <!-- Device selection page (setup) -->
     <sys:String x:Key="devsel_header">Vyberte své Galaxy Buds</sys:String>
     <sys:String x:Key="devsel_refresh">Obnovit spárovaná zařízení</sys:String>
     <sys:String x:Key="devsel_search">Vyhledat zařízení</sys:String>
     <sys:String x:Key="devsel_device_name">Název zařízení</sys:String>
-    <sys:String x:Key="devsel_btaddr">MAC-Adresa</sys:String>
+    <sys:String x:Key="devsel_btaddr">Adresa MAC</sys:String>
     <sys:String x:Key="devsel_model">Model</sys:String>
-    <sys:String x:Key="devsel_nodevices">Prosím nejprve připojte a spárujte Vaše sluchátka.</sys:String>
+    <sys:String x:Key="devsel_nodevices">Prosím, nejprve připojte a spárujte Vaše sluchátka.</sys:String>
     <sys:String x:Key="devsel_nodevices_title">Nenalezeno žádné spárované zařízení</sys:String>
     <sys:String x:Key="devsel_noselection">Nebylo vybráno žádné zařízení</sys:String>
     <sys:String x:Key="devsel_invalid_selection">Prosím vyberte správné zařízení</sys:String>
@@ -260,15 +259,15 @@
     <!-- System/Self-Test -->
     <sys:String x:Key="system_overview_header">Systém</sys:String>
     <sys:String x:Key="system_header">Systémové informace</sys:String>
-    <sys:String x:Key="system_selftest">Spustit samotestování</sys:String>
+    <sys:String x:Key="system_selftest">Spustit sebetestování</sys:String>
     <sys:String x:Key="system_factory_reset">Obnovit nastavení</sys:String>
     <sys:String x:Key="system_selftest_desc">Ověřte, zda všechny moduly sluchátek fungují správně</sys:String>
     <sys:String x:Key="system_factory_reset">Tovární nastavení</sys:String>
-    <sys:String x:Key="system_factory_reset_desc">Obnovte tovární nastavení sluchátek a odpojte je</sys:String>
-    <sys:String x:Key="system_pairing_mode">Přejděte do režimu párování</sys:String>
-    <sys:String x:Key="system_pairing_mode_desc">Odpojte sluchátka od tohoto počítače a zvyšte viditelnost pro ostatní zařízení</sys:String>
-    <sys:String x:Key="system_trace_core_dump">Stáhněte si výpisy trasování a jádra</sys:String>
-    <sys:String x:Key="system_trace_core_dump_desc">Načtěte surová ladicí data ze sluchátek</sys:String>
+    <sys:String x:Key="system_factory_reset_desc">Obnovit tovární nastavení sluchátek a odpojit je</sys:String>
+    <sys:String x:Key="system_pairing_mode">Přejít do režimu párování</sys:String>
+    <sys:String x:Key="system_pairing_mode_desc">Odpojit sluchátka od tohoto počítače a zvýšit viditelnost pro ostatní zařízení</sys:String>
+    <sys:String x:Key="system_trace_core_dump">Stáhnout výpisy trasování a jádra</sys:String>
+    <sys:String x:Key="system_trace_core_dump_desc">Načíst surová ladicí data ze sluchátek</sys:String>
     <sys:String x:Key="system_info">Zobrazit systémové informace</sys:String>
     <sys:String x:Key="system_info_desc">Zobrazit podrobné informace o Vašich sluchátkách</sys:String>
 
@@ -278,7 +277,7 @@
     <sys:String x:Key="system_hwver">Hardwarová verze</sys:String>
     <sys:String x:Key="system_swver">Softwarová verze</sys:String>
     <sys:String x:Key="system_touchver">Verze firmwaru dotyku</sys:String>
-    <sys:String x:Key="system_protover">revize protokolu</sys:String>
+    <sys:String x:Key="system_protover">Revize protokolu</sys:String>
     <sys:String x:Key="system_btaddr">Adresa bluetooth</sys:String>
     <sys:String x:Key="system_serial">Sériové číslo</sys:String>
     <sys:String x:Key="system_build_info">Informace o sestavení</sys:String>
@@ -294,10 +293,10 @@
     <sys:String x:Key="system_adc_current">Současné ADC</sys:String>
 
     <sys:String x:Key="selftest_header">Autotest</sys:String>
-    <sys:String x:Key="selftest_pass">Projít</sys:String>
-    <sys:String x:Key="selftest_fail">Selhat</sys:String>
+    <sys:String x:Key="selftest_pass">Prošlo</sys:String>
+    <sys:String x:Key="selftest_fail">selhalo</sys:String>
     <sys:String x:Key="selftest_pass_long">Všechny kontroly prošly</sys:String>
-    <sys:String x:Key="selftest_fail_long">Jedna nebo více kontrol selhalo</sys:String>
+    <sys:String x:Key="selftest_fail_long">Jedna nebo více kontrol selhala</sys:String>
     
     <sys:String x:Key="coredump_header">Shromažďování dat...</sys:String>
     <sys:String x:Key="coredump_dl_progress_prepare">Příprava stahování...</sys:String>
@@ -307,7 +306,7 @@
     <sys:String x:Key="coredump_dl_core_progress">Stahování výpisu jádra... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytů)</sys:String>
     <sys:String x:Key="coredump_dl_note">
-        Během stahování je zvukový stream dočasně pozastaven. Vaše sluchátka se odpojí, jakmile přenos skončí, prosím, znovu ručně &#10;. Po dokončení budete vyzváni k výběru adresáře pro všechny shromážděných údajů &#10;. &#10; Je-li přenos zaseklý nebo se zařízení předčasně odpojilo, musíte restartovat stahování. Tato funkce je v současné době velmi nestabilní.
+        Během stahování je zvukový stream dočasně pozastaven. Vaše sluchátka se odpojí, jakmile přenos skončí, prosím, znovu ručně.&#10;Po dokončení budete vyzváni k výběru adresáře pro všechny shromážděných údajů.&#10;&#10;Je-li přenos zaseklý nebo se zařízení předčasně odpojilo, musíte restartovat stahování. Tato funkce je v současné době velmi nestabilní.
     </sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">Uložení výpisu se nezdařilo</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">Nelze kopírovat výpis z dočasného umístění. Důvod: {0}</sys:String>
@@ -318,7 +317,7 @@
     <!-- Settings -->
     <sys:String x:Key="settings_header">Nastavení</sys:String>
 
-    <sys:String x:Key="settings_darkmode">Tmavý režim</sys:String>
+    <sys:String x:Key="settings_darkmode">Tmavý motiv</sys:String>
     <sys:String x:Key="settings_darkmode_description">Použít tmavý motiv</sys:String>
     <sys:String x:Key="settings_transitions">Přechody</sys:String>
     <sys:String x:Key="settings_transitions_description">Povolit posuvný přechod</sys:String>
@@ -382,7 +381,7 @@
     <sys:String x:Key="nc_anc_level">Vysoká citlivost</sys:String>
     <sys:String x:Key="nc_anc_level_description">Silnější efekt potlačení šumu</sys:String>
     <sys:String x:Key="nc_voicedetect">Detekce konverzace</sys:String>
-    <sys:String x:Key="nc_voicedetect_description">Když je váš hlas detekován, automaticky zapne ambientní režim a sníží hlasitost médií, aby se konverzace usnadnila</sys:String>
+    <sys:String x:Key="nc_voicedetect_description">Když je váš hlas detekován, automaticky zapne ambientní režim a sníží hlasitost médií, pro usnadnění konverzace</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">Časový limit konverzace</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} sekund</sys:String>
 
@@ -411,7 +410,7 @@
     <sys:String x:Key="adv_passthrough">Zmírňuje tlak při zapnutí ambientního režimu</sys:String>
     <sys:String x:Key="adv_passthrough_desc">Zmírňuje pocit dusnosti, když není používáno aktivní potlačení hluku</sys:String>
     <sys:String x:Key="adv_gaming_mode">Herní režim</sys:String>
-    <sys:String x:Key="adv_gaming_mode_desc">Minimalizuje latency připojení (pouze Samsung)</sys:String>
+    <sys:String x:Key="adv_gaming_mode_desc">Minimalizuje latenci připojení (pouze Samsung)</sys:String>
     <sys:String x:Key="adv_hotkey">Klávesové zkratky</sys:String>
     <sys:String x:Key="adv_hotkey_desc">Definovat vlastní klávesové zkratky pro dálkové ovládání sluchátek</sys:String>
 
