@@ -237,7 +237,7 @@
     <sys:String x:Key="unsupported_feature_current_fwver">현재 버즈 소프트웨어 버전:</sys:String>
     <sys:String x:Key="unsupported_feature_required_fwver">요구되는 버즈 소프트웨어 버전:</sys:String>
 
-    <sys:String x:Key="unsupported_feature_header">버즈 소프트웨어를 공식 갤럭시 웨어러블 앱을 통해 업데이트해 주세요.</sys:String>
+    <sys:String x:Key="unsupported_feature_header">버즈 펌웨어를 업데이트해 주세요</sys:String>
     <sys:String x:Key="unsupported_feature_current_fwver_null">현재 버즈 소프트웨어 버전: 알 수 없음</sys:String>
     <sys:String x:Key="unsupported_feature_required_fwver_null">요구되는 소프트웨어 버전: 지정되지 않음</sys:String>
 
