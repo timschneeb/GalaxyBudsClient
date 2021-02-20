@@ -1,0 +1,94 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="463" d:DesignHeight="570"
+        x:Class="GalaxyBudsClient.Interface.Developer.TranslatorTools"
+        Height="570" Width="460" MaxWidth="460"
+        WindowStartupLocation="CenterScreen"
+        Icon="/Resources/icon_white.ico"
+        CanResize="False"
+        Title="Galaxy Buds Manager - Translator Tools">
+
+    <Window.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundTextDimBrush}"/>
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundTextDimBrush}"/>
+        </Style>
+    </Window.Styles>
+    
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <HeaderedContentControl Grid.Row="0" Classes="GroupBox" Header="Jump to page">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" MinWidth="80" />
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Grid.Column="0" x:Name="Pages" HorizontalAlignment="Stretch" Items="{Binding PagesSource}" Margin="0,0,5,0"/>
+                    <Button Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="Go to..." Click="GoToPage_OnClick"/>
+                </Grid>
+                <TextBlock Grid.Row="2" TextWrapping="Wrap">
+                    Useful if you need to jump to pages that are rather rarely shown. Some pages require certain contextual parameters (which are not provided here) may misbehave when forcefully loaded and may cause crashes.
+                </TextBlock>
+            </Grid>
+        </HeaderedContentControl>
+        <HeaderedContentControl Grid.Row="1" Classes="GroupBox"
+                           Header="Reload XAML" Margin="0,5,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" MinWidth="100" />
+                        <ColumnDefinition Width="Auto" MinWidth="80" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" x:Name="XamlPath" IsReadOnly="True" Margin="0,0,5,0"/>
+                    <ComboBox Grid.Column="1" x:Name="Locales" HorizontalAlignment="Stretch" Items="{Binding LocaleSource}" Margin="0,0,5,0"/>
+                    <Button Grid.Column="2" x:Name="ReloadXaml" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="Reload" Click="ReloadXaml_OnClick" />
+                </Grid>
+                <TextBlock Grid.Row="2" TextWrapping="Wrap">
+                    Reloads strings. While all strings directly bound to elements within XAML will update instantly, there may still be strings cached within C# variables that are not updated instantly. Don't forget to save before reloading.
+                </TextBlock>
+            </Grid>
+        </HeaderedContentControl>
+        <HeaderedContentControl Grid.Row="2" Classes="GroupBox"
+                                Header="Connection" Margin="0,5,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <CheckBox Grid.Row="0" x:Name="DummyDevices" Content="Show dummy devices (Device selection page)" Checked="DummyDevices_OnChecked"/>
+                <CheckBox Grid.Row="2" x:Name="IgnoreConnLoss" Content="Ignore connection loss" Checked="IgnoreConnLoss_OnChecked"/>
+                <TextBlock Grid.Row="4" TextWrapping="Wrap">
+                    This setting overrides platform-specific Bluetooth backend logic and may cause crashes and inconsistent behavior.
+                </TextBlock>
+            </Grid>
+        </HeaderedContentControl>
+        <HeaderedContentControl Grid.Row="3" Classes="GroupBox"
+                           Header="Exit translator mode" Margin="0,5,0,0">
+            <TextBlock TextWrapping="Wrap" Text="You can exit this debug mode by deleting the XAML file specified above."/>
+        </HeaderedContentControl>
+    </Grid>
+</Window>

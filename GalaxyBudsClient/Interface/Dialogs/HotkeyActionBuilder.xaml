@@ -1,0 +1,78 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="GalaxyBudsClient.Interface.Dialogs.HotkeyActionBuilder"
+        Title="{DynamicResource hotkey_edit_title}"
+        MinWidth="370" MaxWidth="370" SizeToContent="Height"
+        CanResize="False" Topmost="True" WindowStartupLocation="CenterOwner">
+    <Grid Margin="8"
+          RowDefinitions="Auto, 10, Auto, 10, Auto, 10, Auto, 10, Auto">
+        <TextBlock Grid.Row="0"
+                   TextWrapping="Wrap" 
+                   Text="{DynamicResource hotkey_edit_header}" />
+        
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" MinWidth="125" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <HeaderedContentControl Grid.Column="0"
+                                    Classes="GroupBox"
+                                    Header="{DynamicResource hotkey_edit_modifier}">
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto">
+                    <CheckBox Grid.Row="0" Name="ModCtrl" Content="Ctrl" Click="OnModifierChanged" />
+                    <CheckBox Grid.Row="1" Name="ModAlt" Content="Alt" Click="OnModifierChanged" />
+                    <CheckBox Grid.Row="2" Name="ModShift" Content="Shift" Click="OnModifierChanged" />
+                    <CheckBox Grid.Row="3" Name="ModWin" Content="Win" Click="OnModifierChanged" />
+                </Grid>
+            </HeaderedContentControl>
+            <HeaderedContentControl Grid.Column="2"
+                                    Classes="GroupBox"
+                                    Header="{DynamicResource hotkey_edit_keys}">
+                <Grid RowDefinitions="Auto">
+                    <ComboBox Grid.Row="0"
+                              Name="Key1"
+                              Items="{Binding KeySource}"
+                              HorizontalAlignment="Stretch"
+                              SelectionChanged="OnKeySelectionChanged" />
+                </Grid>
+            </HeaderedContentControl>
+        </Grid>
+        
+        <HeaderedContentControl Grid.Row="4"
+                                Classes="GroupBox"
+                                Header="{DynamicResource hotkey_edit_action}">
+            <ComboBox Name="Action"
+                      HorizontalAlignment="Stretch"
+                      Items="{Binding ActionSource}"
+                      SelectionChanged="Action_OnSelectionChanged">
+            </ComboBox>
+        </HeaderedContentControl>
+        
+        <Grid Grid.Row="6"
+              ColumnDefinitions="Auto,*">
+            <TextBlock Grid.Column="0"
+                       Padding="5"
+                       Text="{DynamicResource hotkey_edit_preview}" />
+            <TextBlock Grid.Column="1"
+                       x:Name="KeyString" 
+                       Padding="5"
+                       TextWrapping="Wrap" 
+                       Text="{DynamicResource hotkey_edit_invalid}"
+                       Background="{DynamicResource RoundBorderHoverBrush}" />
+        </Grid>
+
+        <Grid Grid.Row="8"
+              ColumnDefinitions="*,Auto,5,Auto">
+            <Button Grid.Column="1"
+                    Content="{DynamicResource cancel}" 
+                    Click="Cancel_OnClick" />
+            <Button Grid.Column="3"
+                    Content="{DynamicResource apply}"
+                    Click="Apply_OnClick" />
+        </Grid>
+    </Grid>
+</Window>

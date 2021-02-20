@@ -1,0 +1,167 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <Style Selector="Separator.HSeparatorSpacer20">
+        <Setter Property="Margin" Value="20,0" />
+        <Setter Property="Background" Value="{DynamicResource BorderSeparatorBrush}" />
+    </Style>
+
+    <Style Selector="Separator.HSeparatorIconListSpacer">
+        <Setter Property="Margin" Value="60,0,20,0" />
+        <Setter Property="Background" Value="{DynamicResource BorderSeparatorBrush}" />
+    </Style>
+
+    <Style Selector="Separator.SeparatorBrush">
+        <Setter Property="Background" Value="{DynamicResource BorderSeparatorBrush}" />
+    </Style>
+    
+    <Style Selector="Border.VerticalSeparator">
+        <Setter Property="Background" Value="{DynamicResource BorderSeparatorBrush}" />
+        <Setter Property="Width" Value="1" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Margin" Value="1,0" />
+    </Style>
+
+    <Style Selector="Border.BottomSpacer10">
+        <Setter Property="Margin" Value="0,0,0,10" />
+    </Style>
+
+    <Style Selector="Border.RoundedBorderListItem">
+        <Setter Property="BorderBrush" Value="{DynamicResource RoundBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Width" Value="{DynamicResource ContentWidth}" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
+        <Setter Property="Background" Value="{DynamicResource RoundBorderBackgroundBrush}" />
+    </Style>
+
+    <Style Selector="Border.BorderHoverStyle">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
+    </Style>
+    <Style Selector="Border.BorderHoverStyle:pointerover">
+        <Setter Property="Background" Value="{DynamicResource RoundBorderHoverBrush}" />
+    </Style>
+
+    <Style Selector="Button.BorderHoverStyle">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        Margin="0"
+                        Background="{TemplateBinding Background}">
+                        <ContentPresenter
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Content="{TemplateBinding Content}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Margin="{TemplateBinding Padding}"
+                            RecognizesAccessKey="True"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource WindowButtonBrush}" />
+        <Setter Property="Margin" Value="0,2,3,0" />
+    </Style>
+
+    <Style Selector="ContextMenu.RoundMenuStyle">
+        <Setter Property="Grid.IsSharedSizeScope" Value="true" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Foreground" Value="{DynamicResource ContextForegroundBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContextMenu">
+                    <Border Background="{DynamicResource ContextBackgroundBrush}"
+                            BorderBrush="{DynamicResource ContextBorderBrush}"
+                            BorderThickness="1"
+                            Padding="{TemplateBinding Padding}"
+                            MaxWidth="{TemplateBinding MaxWidth}"
+                            MinHeight="{TemplateBinding MinHeight}"
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            CornerRadius="{DynamicResource DefaultCornerRadius}">
+                        <ScrollViewer Classes="menuscroller">
+                            <ItemsPresenter Name="PART_ItemsPresenter"
+                                            Items="{TemplateBinding Items}"
+                                            ItemsPanel="{TemplateBinding ItemsPanel}"
+                                            ItemTemplate="{TemplateBinding ItemTemplate}"
+                                            Margin="{DynamicResource MenuFlyoutScrollerMargin}"
+                                            KeyboardNavigation.TabNavigation="Continue"
+                                            Grid.IsSharedSizeScope="True" />
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style Selector="ContextMenu > MenuItem.RoundMenuStyle">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource ContextForegroundBrush}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="MinWidth" Value="150" />
+        <Setter Property="Margin" Value="5,0,3,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="MenuItem">
+                    <Border Name="PART_LayoutRoot"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{DynamicResource DefaultCornerRadius}"
+                            Classes="BorderHoverStyle" 
+                            VerticalAlignment="Center" Height="40" Margin="0,0">
+                        <Panel>
+                            <ContentPresenter Name="PART_HeaderPresenter"
+                                              Content="{TemplateBinding Header}"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Stretch"
+                                              Margin="{TemplateBinding Padding}">
+                                <ContentPresenter.DataTemplates>
+                                    <DataTemplate DataType="system:String">
+                                        <AccessText Text="{Binding}" />
+                                    </DataTemplate>
+                                </ContentPresenter.DataTemplates>
+                            </ContentPresenter>
+                        </Panel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style Selector="MenuItem.RoundMenuStyle > Separator, ContextMenu.RoundMenuStyle > Separator, MenuItem.RoundMenuStyle:separator">
+        <Setter Property="Background" Value="{DynamicResource BorderSeparatorBrush}" />
+        <Setter Property="Margin" Value="10,1,10,1" />
+    </Style>
+    
+    <Style Selector="HeaderedContentControl.GroupBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border ZIndex="1" Padding="5,0,5,0" Background="{DynamicResource WindowBackgroundBrush}" Margin="8,0,0,0">
+                            <TextBlock FontWeight="Bold" Text="{TemplateBinding Header}" Foreground="{DynamicResource ForegroundTextDimBrush}" />
+                        </Border>
+                        <Border Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="0" Margin="0,10,0,0"
+                                BorderBrush="{DynamicResource SystemBaseLowColor}"
+                                BorderThickness="2"
+                                CornerRadius="10">
+                            <ContentPresenter Margin="15" Content="{TemplateBinding Content}" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</Styles>

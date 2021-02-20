@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <RootNamespace>ThePBone.Interop.Win32.TrayIcon</RootNamespace>
+    <AssemblyName>ThePBone.Interop.Win32.TrayIcon</AssemblyName>
+    <TargetFrameworks>net472;netcoreapp3.1</TargetFrameworks>
+    <UseWpf>true</UseWpf>
+    <Configurations>Debug;Release;Release - Windows ARM</Configurations>
+    <Platforms>AnyCPU</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="*.xaml" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' != 'net45'">
+    <PackageReference Include="System.Resources.Extensions" Version="5.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ThePBone.Interop.Win32.TrayIcon.csproj.DotSettings" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Styles\Brushes.xaml" />
+    <EmbeddedResource Include="Styles\BrushesDark.xaml" />
+    <EmbeddedResource Include="Styles\Styles.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile DependentUpon="%(Filename)" SubType="Code" Update="**\obj\**\*.g$(DefaultLanguageSourceExtension)" />
+    <Compile DependentUpon="%(Filename)" SubType="Designer" Update="**\*.xaml$(DefaultLanguageSourceExtension)" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf.NetCore">
+      <Version>1.0.17</Version>
+    </PackageReference>
+    <PackageReference Include="Serilog" Version="2.10.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GalaxyBudsClient.Interop.TrayIcon\GalaxyBudsClient.Interop.TrayIcon.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Styles\Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Styles\BrushesDark.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Styles\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+</Project>

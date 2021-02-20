@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="GalaxyBudsClient.Interface.Items.SwitchDetailListItem"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns="https://github.com/avaloniaui"
+             xmlns:items="clr-namespace:GalaxyBudsClient.Interface.Items"
+             xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
+             mc:Ignorable="d">
+    <Border CornerRadius="{StaticResource DefaultCornerRadius}"
+            Classes="BorderHoverStyle" 
+            PointerPressed="InputElement_OnPointerPressed">
+
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="40" MinWidth="40" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" MinHeight="30"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Grid.Column="0" 
+                   Text="{Binding $parent[items:SwitchDetailListItem].Text}"
+                   Foreground="{DynamicResource ForegroundTextBrush}"
+                   FontSize="16"
+                   VerticalAlignment="Top" 
+                   HorizontalAlignment="Left"
+                   Margin="3,5,3,2"
+                   TextWrapping="Wrap"/>
+            
+            <elements:ToggleSwitch Grid.Row="0" Grid.Column="2" 
+                                   x:Name="Toggle" 
+                                   Width="40" Height="30" 
+                                   ColorOff="{DynamicResource ToggleOffBrush}"
+                                   ColorOn="{DynamicResource ToggleOnBrush}" 
+                                   DisableButton="True" 
+                                   Margin="0,2,0,0" />
+
+            <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" 
+                       Margin="3,0,3,5"
+                       TextWrapping="Wrap" FontSize="14"
+                       Foreground="{DynamicResource SubtitleTextAltBrush}"
+                       Text="{Binding $parent[items:SwitchDetailListItem].Description}"/>
+        </Grid>
+        
+    </Border>
+</UserControl>

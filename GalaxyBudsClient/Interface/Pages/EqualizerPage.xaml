@@ -1,0 +1,27 @@
+﻿<pages:AbstractPage xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.Pages"
+             xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
+             xmlns:items="clr-namespace:GalaxyBudsClient.Interface.Items"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+             x:Class="GalaxyBudsClient.Interface.Pages.EqualizerPage"
+             DockPanel.Dock="Top" Margin="10,0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <elements:PageHeader Grid.Row="1" Title="{DynamicResource eq_header}" BackPressed="BackButton_OnPointerPressed"/>
+        <Border Grid.Row="3" Classes="RoundedBorderListItem BottomSpacer10">
+            <items:SwitchListItem x:Name="EqToggle" Text="{DynamicResource eq_enable}" Toggled="EqToggle_OnToggled"/>
+        </Border>
+        <Border Grid.Row="4" Classes="RoundedBorderListItem BottomSpacer10" >
+            <items:SliderListItem x:Name="EqPreset" Text="{DynamicResource eq_preset}" Maximum="4" Changed="EqPreset_OnChanged" />
+        </Border>
+    </Grid>
+</pages:AbstractPage>

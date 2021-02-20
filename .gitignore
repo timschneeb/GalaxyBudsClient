@@ -10,6 +10,9 @@
 *.userosscache
 *.sln.docstates
 
+# Idea files
+.idea/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -23,7 +26,6 @@ mono_crash.*
 [Rr]eleases/
 x64/
 x86/
-[Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
@@ -358,6 +360,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/Setup_GalaxyBudsManager_1.2.1.exe
-/Setup_GalaxyBudsManager_2.0.0.exe
-/Galaxy Buds Client/i18N/de.xaml
+*.exe

@@ -1,0 +1,23 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="GalaxyBudsClient.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Fallback language -->
+                <ResourceInclude Source="/i18n/en.xaml" />
+                <!-- User language -->
+                <ResourceInclude Source="/i18n/en.xaml" />
+                <!-- Palettes -->
+                <ResourceInclude Source="/Interface/Styles/Base.xaml" />
+                <ResourceInclude Source="/Interface/Styles/Brushes.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+    <Application.Styles>
+        <StyleInclude Source="/Interface/Styles/Styles.xaml"/>
+        <StyleInclude Source="avares://Avalonia.Themes.Fluent/FluentLight.xaml"/>
+        <StyleInclude Source="/Interface/Styles/Slider.xaml"/>
+        <StyleInclude Source="/Interface/Styles/ListBox.xaml"/>
+    </Application.Styles>
+</Application>

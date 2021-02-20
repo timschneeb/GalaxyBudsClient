@@ -1,0 +1,291 @@
+name: Compile Windows binaries
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  release:
+     types: 
+       - published
+       - prereleased
+
+jobs:
+  build-x64:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.108
+       
+    - name: Restore dependencies
+      run: dotnet restore -r win-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
+    - name: Build x64
+      run: dotnet publish -r win-x64 -o bin_win64 -c Release -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: GalaxyBudsClient_win64_portable
+        path: bin_win64/
+    
+  build-x86:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.108
+       
+    - name: Restore dependencies
+      run: dotnet restore -r win-x86 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
+    - name: Build x86
+      run: dotnet publish -r win-x86 -o bin_win32 -c Release -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: GalaxyBudsClient_win32_portable
+        path: bin_win32/
+
+  build-arm:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.108
+        
+    - name: Strip incompatible modules
+      run: rm -r -fo ThePBone.Interop.Win32.TrayIcon
+       
+    - name: Restore dependencies
+      run: dotnet restore -r win-arm --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
+    - name: Build arm
+      run: dotnet publish -r win-arm -o bin_win-arm -c "Release - Windows ARM" -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: GalaxyBudsClient_win-arm_portable
+        path: bin_win-arm/
+
+  build-arm64:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.108
+       
+    - name: Strip incompatible modules
+      run: rm -r -fo ThePBone.Interop.Win32.TrayIcon
+       
+    - name: Restore dependencies
+      run: dotnet restore -r win-arm64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
+    - name: Build arm64
+      run: dotnet publish -r win-arm64 -o bin_win-arm64 -c "Release - Windows ARM" -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: GalaxyBudsClient_win-arm64_portable
+        path: bin_win-arm64/
+
+  make-nsis-installer:
+    runs-on: windows-latest
+    needs: [build-x64, build-x86]
+        
+    steps:
+    - uses: actions/checkout@v2
+    - name: Prepare version information (1/3)
+      uses: oprypin/find-latest-tag@v1
+      with:
+        repository: ThePBone/GalaxyBudsClient
+        releases-only: true
+      id: last_release  
+    - name: Prepare version information (2/3)
+      uses: benjlevesque/short-sha@v1.2
+      id: short-sha
+      with:
+        length: 6
+    - name: Prepare version information (3/3)
+      run: echo '::set-output name=version::${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}'
+      id: version
+      
+    # Make x64 installer
+    - name: Download artifact (x64)
+      uses: actions/download-artifact@v2
+      with:
+        name: GalaxyBudsClient_win64_portable
+        
+    - name: Rename artifact (x64)
+      run: ren GalaxyBudsClient.exe "Galaxy Buds Client.exe"
+    
+    - name: Create nsis installer (x64)
+      uses: joncloud/makensis-action@v3.3
+      with:
+        script-file: "install.nsi"
+        arguments: "-DBASE_DIR=\"D:\\a\\GalaxyBudsClient\\GalaxyBudsClient\" -DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"64bit\""
+
+    - name: Upload artifact (x64)
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
+        path: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
+
+    - name: Clean artifacts
+      run: del "Galaxy Buds Client.exe"
+
+    # Make x86 installer
+    - name: Download artifact (x86)
+      uses: actions/download-artifact@v2
+      with:
+        name: GalaxyBudsClient_win32_portable
+        
+    - name: Rename artifact (x86)
+      run: ren GalaxyBudsClient.exe "Galaxy Buds Client.exe"
+
+    - name: Create nsis installer (x86)
+      uses: joncloud/makensis-action@v3.3
+      with:
+        script-file: "install.nsi"
+        arguments: "-DBASE_DIR=\"D:\\a\\GalaxyBudsClient\\GalaxyBudsClient\" -DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"32bit\""
+
+    - name: Upload artifact (x86)
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: GalaxyBudsClient_Setup_32bit_${{steps.version.outputs.version}}.exe
+        path: GalaxyBudsClient_Setup_32bit_${{steps.version.outputs.version}}.exe
+
+
+  make-nsis-installer-arm:
+    runs-on: windows-latest
+    needs: [build-arm, build-arm64]
+        
+    steps:
+    - uses: actions/checkout@v2
+    - name: Prepare version information (1/3)
+      uses: oprypin/find-latest-tag@v1
+      with:
+        repository: ThePBone/GalaxyBudsClient
+        releases-only: true
+      id: last_release  
+    - name: Prepare version information (2/3)
+      uses: benjlevesque/short-sha@v1.2
+      id: short-sha
+      with:
+        length: 6
+    - name: Prepare version information (3/3)
+      run: echo '::set-output name=version::${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}'
+      id: version
+      
+    # Make arm installer
+    - name: Download artifact (arm)
+      uses: actions/download-artifact@v2
+      with:
+        name: GalaxyBudsClient_win-arm_portable
+        
+    - name: Rename artifact (arm)
+      run: ren GalaxyBudsClient.exe "Galaxy Buds Client.exe"
+    
+    - name: Create nsis installer (arm)
+      uses: joncloud/makensis-action@v3.3
+      with:
+        script-file: "install.nsi"
+        arguments: "-DBASE_DIR=\"D:\\a\\GalaxyBudsClient\\GalaxyBudsClient\" -DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"arm\""
+
+    - name: Upload artifact (arm)
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: GalaxyBudsClient_Setup_arm_${{steps.version.outputs.version}}.exe
+        path: GalaxyBudsClient_Setup_arm_${{steps.version.outputs.version}}.exe
+
+    - name: Clean artifacts
+      run: del "Galaxy Buds Client.exe"
+
+    # Make arm64 installer
+    - name: Download artifact (arm64)
+      uses: actions/download-artifact@v2
+      with:
+        name: GalaxyBudsClient_win-arm64_portable
+        
+    - name: Rename artifact (arm64)
+      run: ren GalaxyBudsClient.exe "Galaxy Buds Client.exe"
+
+    - name: Create nsis installer (arm64)
+      uses: joncloud/makensis-action@v3.3
+      with:
+        script-file: "install.nsi"
+        arguments: "-DBASE_DIR=\"D:\\a\\GalaxyBudsClient\\GalaxyBudsClient\" -DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"arm64\""
+
+    - name: Upload artifact (arm64)
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: GalaxyBudsClient_Setup_arm64_${{steps.version.outputs.version}}.exe
+        path: GalaxyBudsClient_Setup_arm64_${{steps.version.outputs.version}}.exe
+
+  attach-to-release:
+    runs-on: windows-latest
+    needs: [make-nsis-installer, make-nsis-installer-arm]
+    if: github.event_name == 'release'
+    
+    steps:
+    - name: Prepare version information (1/3)
+      uses: oprypin/find-latest-tag@v1
+      with:
+        repository: ThePBone/GalaxyBudsClient
+        releases-only: true
+      id: last_release  
+      
+    - name: Prepare version information (2/3)
+      uses: benjlevesque/short-sha@v1.2
+      id: short-sha
+      with:
+        length: 6
+    - name: Prepare version information (3/3)
+      run: echo '::set-output name=version::${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}'
+      id: version
+      
+    - name: Download setup artifact (x64)
+      uses: actions/download-artifact@v2
+      with:
+        name: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
+      
+    - name: Download artifact (arm)
+      uses: actions/download-artifact@v2
+      with:
+        name: GalaxyBudsClient_Setup_arm_${{steps.version.outputs.version}}.exe
+
+    - name: Download artifact (arm64)
+      uses: actions/download-artifact@v2
+      with:
+        name: GalaxyBudsClient_Setup_arm64_${{steps.version.outputs.version}}.exe
+
+    - name: Rename (x64)
+      run: ren GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe GalaxyBudsClient_Windows_64bit_Setup.exe
+
+    - name: Rename (arm)
+      run: ren GalaxyBudsClient_Setup_arm_${{steps.version.outputs.version}}.exe GalaxyBudsClient_Windows_arm_Setup.exe
+
+    - name: Rename (arm64)
+      run: ren GalaxyBudsClient_Setup_arm64_${{steps.version.outputs.version}}.exe GalaxyBudsClient_Windows_arm64_Setup.exe
+
+    - uses: AButler/upload-release-assets@v2.0
+      with:
+        files: '*.exe'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    
+
+
+
+

@@ -1,0 +1,90 @@
+﻿<pages:AbstractPage xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.Pages"
+                    xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
+                    xmlns:items="clr-namespace:GalaxyBudsClient.Interface.Items"
+                    xmlns:model="clr-namespace:GalaxyBudsClient.Model"
+                    xmlns:hotkeys="clr-namespace:GalaxyBudsClient.Model.Hotkeys"
+                    mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+                    x:Class="GalaxyBudsClient.Interface.Pages.HotkeyPage"
+                    DockPanel.Dock="Top" Margin="10,0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <elements:PageHeader Grid.Row="1" Title="{DynamicResource hotkey_header}"
+                             BackPressed="BackButton_OnPointerPressed" />
+
+        <Border Grid.Row="3"
+                Classes="RoundedBorderListItem BottomSpacer10"
+                MinHeight="50">
+            <Border Classes="BorderHoverStyle"
+                    PointerPressed="Add_OnPointerPressed">
+                <Label FontSize="18"
+                       Margin="20,0"
+                       Foreground="{DynamicResource ForegroundTextBrush}"
+                       Content="{DynamicResource hotkey_add}"
+                       VerticalContentAlignment="Center"
+                       HorizontalAlignment="Left"
+                       HorizontalContentAlignment="Left" />
+            </Border>
+        </Border>
+
+        <Border Grid.Row="4"
+                x:Name="ContainerBorder"
+                Classes="RoundedBorderListItem BottomSpacer10"
+                ClipToBounds="True">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl Name="ItemsControl">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type hotkeys:Hotkey}">
+                            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="1" />
+                                </Grid.RowDefinitions>
+                                <Border CornerRadius="{StaticResource DefaultCornerRadius}" Classes="BorderHoverStyle"
+                                        PointerReleased="Item_OnPointerReleased">
+                                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="32" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <Label Grid.Row="0"
+                                               Content="{Binding HotkeyName}"
+                                               Foreground="{DynamicResource ForegroundTextBrush}"
+                                               FontSize="16"
+                                               VerticalAlignment="Top"
+                                               HorizontalAlignment="Left" />
+
+                                        <TextBlock Grid.Row="1"
+                                                   Margin="3,0,3,5"
+                                                   TextWrapping="Wrap" FontSize="14"
+                                                   Foreground="{DynamicResource SubtitleTextAltBrush}"
+                                                   Text="{Binding ActionName}" />
+                                    </Grid>
+                                </Border>
+                                <Separator Grid.Row="1"
+                                           Classes="SeparatorBrush"
+                                           Margin="20,0"
+                                           IsVisible="{Binding !IsLastInList}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
+
+        <Border Grid.Row="4" x:Name="EmptyViewBorder" IsVisible="False" Classes="RoundedBorderListItem BottomSpacer10">
+            <items:DetailListItem Text="{DynamicResource hotkey_empty}"
+                                  Description="{DynamicResource hotkey_empty_desc}" />
+        </Border>
+    </Grid>
+</pages:AbstractPage>

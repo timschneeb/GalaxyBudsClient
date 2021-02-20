@@ -1,0 +1,81 @@
+﻿<pages:AbstractPage xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.Pages"
+             xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
+             xmlns:items="clr-namespace:GalaxyBudsClient.Interface.Items"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+             x:Class="GalaxyBudsClient.Interface.Pages.NoiseProPage"
+             DockPanel.Dock="Top" Margin="10,0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <elements:PageHeader Grid.Row="1" Title="{DynamicResource nc_header}" BackPressed="BackButton_OnPointerPressed"/>
+        <Border Grid.Row="3" Classes="RoundedBorderListItem BottomSpacer10">
+               <Grid ClipToBounds="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" CornerRadius="{DynamicResource DefaultCornerRadius}"
+                            Classes="BorderHoverStyle">
+                        <items:SwitchListItem x:Name="AmbientToggle" Text="{DynamicResource as_header}" Toggled="AmbientToggle_OnToggled"/>
+                    </Border>
+                    <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
+                    <Border Grid.Row="2" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                        <items:SliderListItem x:Name="AmbientVolume" Text="{DynamicResource as_volume}" Changed="VolumeSlider_OnChanged"
+                                              Maximum="3" Minimum="0" />
+                    </Border>
+               </Grid>
+        </Border>
+        <Border Grid.Row="4" Classes="RoundedBorderListItem BottomSpacer10">
+            <Grid ClipToBounds="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" CornerRadius="{DynamicResource DefaultCornerRadius}"
+                        Classes="BorderHoverStyle">
+                    <items:SwitchListItem x:Name="AncToggle" Text="{DynamicResource anc}" Toggled="AncToggle_OnToggled"/>
+                </Border>
+                <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
+                <Border Grid.Row="2" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                    <items:SwitchDetailListItem x:Name="AncLevelToggle" 
+                                          Text="{DynamicResource nc_anc_level}" 
+                                          Description="{DynamicResource nc_anc_level_description}"
+                                          Toggled="AncLevelToggle_OnToggled"/>
+                </Border>
+            </Grid>
+        </Border>
+        <Border Grid.Row="5" Classes="RoundedBorderListItem BottomSpacer10">
+            <Grid ClipToBounds="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" CornerRadius="{DynamicResource DefaultCornerRadius}"
+                        Classes="BorderHoverStyle">
+                    <items:SwitchDetailListItem x:Name="VoiceDetect" 
+                                                Text="{DynamicResource nc_voicedetect}"
+                                                Description="{DynamicResource nc_voicedetect_description}"
+                                                Toggled="VoiceDetect_OnToggled" />
+                </Border>
+                <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
+                <Border Grid.Row="2" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                    <items:MenuDetailListItem x:Name="VoiceDetectTimeout" Text="{DynamicResource nc_voicedetect_timeout}" />
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</pages:AbstractPage>
