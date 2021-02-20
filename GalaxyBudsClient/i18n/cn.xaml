@@ -153,13 +153,13 @@
     <!-- Welcome page -->
     <sys:String x:Key="welcome_textblock_header">欢迎！</sys:String>
     <sys:String x:Key="welcome_textblock_p1">
-        你好！ 这是一个非官方的Galaxy Buds管理软件，与三星没有任何关系！&#10;尽管这个程序可以做到许多在Samsung Wearable上不能做到的事情，但是出于安全考虑，我们依然决定移除OTA功能。如果有需要，请使用官方APP进行更新。
+        你好！ 这是一个非官方的Galaxy Buds管理软件，与三星没有任何关系！&#10;尽管这个程序可以做到许多在Samsung Wearable上不能做到的事情，但是出于安全考虑，我们依然决定移除OTA功能。如果有需要，请使用官方APP进行管理。
     </sys:String>
     <sys:String x:Key="welcome_textblock_p2">
         如果你对此项目感兴趣，可以查看GitHub，如果你遇上任何问题，可以在GitHub联系我或者在Telegram @thepbone 上给我留言
     </sys:String>
     <sys:String x:Key="welcome_textblock_p3">
-        本软件支持 Buds (2019) 和 Buds+ (2020).
+        本软件支持所有的Galaxy Buds型号。
     </sys:String>
     <sys:String x:Key="welcome_darkmode">暗黑模式</sys:String>
     <sys:String x:Key="welcome_darkmode_content">你的眼睛感到不适？ 试试使用暗黑模式!</sys:String>
@@ -187,7 +187,7 @@
     <sys:String x:Key="updater_footer_remindmelater">下次提醒我</sys:String>
     <sys:String x:Key="updater_footer_skipversion">跳过该版本</sys:String>
     <sys:String x:Key="updater_footer_install">现在安装</sys:String>
-    <sys:String x:Key="updater_appcast_null">发现更新，但appcast数据错误，请稍后再试。</sys:String>
+    <sys:String x:Key="updater_appcast_null">发现更新，但发生数据错误，请稍后再试。</sys:String>
     <sys:String x:Key="updater_noupdate">当前未能找到可用更新 请稍后重试或在GitHub上查找更新</sys:String>
     <sys:String x:Key="updater_noupdate_title">无更新</sys:String>
     <sys:String x:Key="updater_newrelease">Galaxy Buds Manager的更新 {0} 已经推送</sys:String>
@@ -243,7 +243,7 @@
     <sys:String x:Key="cact_action">自定义</sys:String>
     <sys:String x:Key="cact_notice">注意</sys:String>
     <sys:String x:Key="cact_notice_content_p1">自定义长按动作仅在软件后台开启时启用</sys:String>
-    <sys:String x:Key="cact_notice_content_p2">此操作不会影响在其他设备叁使用</sys:String>
+    <sys:String x:Key="cact_notice_content_p2">此操作不会影响在其他设备上使用</sys:String>
     <sys:String x:Key="cact_notice_content_p3">
         为了使此功能正常运行，软件将自动启动。&#10;你可以在设置中关闭。
     </sys:String>
@@ -289,21 +289,21 @@
     <sys:String x:Key="selftest_pass_long">所有测试通过</sys:String>
     <sys:String x:Key="selftest_fail_long">有一个或多个选项未通过测试</sys:String>
 
-    <sys:String x:Key="coredump_header">Dumping data...</sys:String>
-    <sys:String x:Key="coredump_dl_progress_prepare">Preparing download...</sys:String>
-    <sys:String x:Key="coredump_dl_progress_cancelled">Download cancelled</sys:String>
-    <sys:String x:Key="coredump_dl_progress_finished">Download finished</sys:String>
-    <sys:String x:Key="coredump_dl_trace_progress">Downloading trace dump... {0}%</sys:String>
-    <sys:String x:Key="coredump_dl_core_progress">Downloading core dump... {0}%</sys:String>
+    <sys:String x:Key="coredump_header">正在获取数据...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_prepare">准备下载...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_cancelled">下载被取消</sys:String>
+    <sys:String x:Key="coredump_dl_progress_finished">下载完成</sys:String>
+    <sys:String x:Key="coredump_dl_trace_progress">正在下载追踪数据... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_core_progress">正在下载核心数据... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytes)</sys:String>
     <sys:String x:Key="coredump_dl_note">
-        The audio stream is temporarily paused while downloading. Your earbuds will be disconnected as soon as the transmission finishes, please reconnect them manually.&#10;Once finished, you will be prompted to select a directory for all collected data.&#10;&#10;If the transmission is stuck or the device disconnected prematurely, you need to restart the download. This feature is currently very unstable. 
+        声音播放将会在下载过程中被暂停。你的耳机将会在完成前暂停连接，请在完成后重新连接&#10;传输完成后，你需要选择一个文件夹以便保存数据&#10;&#10;如果转存过程被断开，则需要重新转存。这项功能十分不稳定！
     </sys:String>
-    <sys:String x:Key="coredump_dl_save_fail_title">Failed to save dump</sys:String>
-    <sys:String x:Key="coredump_dl_save_fail">Unable to copy dump from temporary location. Reason: {0}</sys:String>
-    <sys:String x:Key="coredump_dl_save_success_title">Successfully saved dumps</sys:String>
-    <sys:String x:Key="coredump_dl_save_success">{0} dump(s) were written to '{1}'</sys:String>
-    <sys:String x:Key="coredump_dl_save_dialog_title">Select an download directory...</sys:String>
+    <sys:String x:Key="coredump_dl_save_fail_title">转存数据失败</sys:String>
+    <sys:String x:Key="coredump_dl_save_fail">将数据保存至临时目录失败！ 原因: {0}</sys:String>
+    <sys:String x:Key="coredump_dl_save_success_title">成功转存数据！</sys:String>
+    <sys:String x:Key="coredump_dl_save_success">{0} 项数据保存至 '{1}'</sys:String>
+    <sys:String x:Key="coredump_dl_save_dialog_title">选择保存目录...</sys:String>
 
     <!-- Settings -->
     <sys:String x:Key="settings_header">设置</sys:String>
