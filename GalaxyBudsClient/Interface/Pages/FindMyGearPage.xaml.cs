@@ -199,9 +199,17 @@ namespace GalaxyBudsClient.Interface.Pages
             
             bool isLeftOnline = left > 0;
             bool isRightOnline = right > 0;
-            
 
-            string type = BluetoothImpl.Instance.ActiveModel == Models.BudsLive ? "Bean" : "Bud";
+
+            string type = "Bud";
+            if (BluetoothImpl.Instance.ActiveModel == Models.BudsLive)
+            {
+                type = "Bean";
+            }
+            else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPro)
+            {
+                type = "Pro";
+            }
 
             if (isLeftOnline)
             {

@@ -422,6 +422,7 @@
     </sys:String>
     <sys:String x:Key="connlost_description_p3">Additional information:</sys:String>
     <sys:String x:Key="connlost_noinfo">Failed to gather error information</sys:String>
+    <sys:String x:Key="connlost_disconnected">Device disconnected</sys:String>
     <sys:String x:Key="connlost_connect">Connect</sys:String>
     <sys:String x:Key="connlost_connecting">Connecting...</sys:String>
     

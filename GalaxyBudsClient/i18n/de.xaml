@@ -10,7 +10,7 @@
     <sys:String x:Key="okay">Okay</sys:String>
     <sys:String x:Key="left">Links</sys:String>
     <sys:String x:Key="right">Rechts</sys:String>
-    <sys:String x:Key="case">Case</sys:String>
+    <sys:String x:Key="case">Ladeetui</sys:String>
     <sys:String x:Key="error">Fehler</sys:String>
     <sys:String x:Key="cancel">Abbrechen</sys:String>
     <sys:String x:Key="apply">Speichern</sys:String>
@@ -52,7 +52,7 @@
     <sys:String x:Key="placement_disconnected">Nicht verbunden</sys:String>
     <sys:String x:Key="placement_wearing">Bereit</sys:String>
     <sys:String x:Key="placement_not_wearing">Standby</sys:String>
-    <sys:String x:Key="placement_in_case">Hülle</sys:String>
+    <sys:String x:Key="placement_in_case">Ladeetui</sys:String>
 
     <!-- Touch options -->
     <sys:String x:Key="touchoption_voice">Sprachassistent</sys:String>
@@ -70,7 +70,7 @@
     <sys:String x:Key="touchoption_custom_ambient_up">Ambient lauter</sys:String>
     <sys:String x:Key="touchoption_custom_ambient_down">Ambient leiser</sys:String>
     <sys:String x:Key="touchoption_custom_toggle_eq">Equalizer umschalten</sys:String>
-    <sys:String x:Key="touchoption_custom_next_eq_preset">Nächstes Equalizer Preset</sys:String>
+    <sys:String x:Key="touchoption_custom_next_eq_preset">Nächste Equalizer Voreinstellung</sys:String>
     <sys:String x:Key="touchoption_custom_trigger_hotkey">Hotkey auslösen...</sys:String>
     <sys:String x:Key="touchoption_custom_external_app">Externes Programm starten...</sys:String>
 
@@ -91,7 +91,7 @@
     <sys:String x:Key="tray_disable_eq">Equalizer ausschalten</sys:String>
     <sys:String x:Key="tray_enable_anc">Aktive Geräuschunterdrückung aktivieren</sys:String>
     <sys:String x:Key="tray_disable_anc">Aktive Geräuschunterdrückung deaktivieren</sys:String>
-    <sys:String x:Key="tray_switch_noise">Geräuschkontrollen wechseln</sys:String>
+    <sys:String x:Key="tray_switch_noise">Geräuschverhalten wechseln</sys:String>
     <sys:String x:Key="tray_quit">Verlassen</sys:String>
 
 
@@ -135,7 +135,7 @@
     <sys:String x:Key="event_ambient_volume_up">Umgebungsgeräusche Lauter</sys:String>
     <sys:String x:Key="event_ambient_volume_down">Umgebungsgeräusche Leiser</sys:String>
     <sys:String x:Key="event_eq_toggle">Equalizer umschalten</sys:String>
-    <sys:String x:Key="event_eq_switch">Equalizer-Preset wechseln</sys:String>
+    <sys:String x:Key="event_eq_switch">Equalizer-Voreinstellung wechseln</sys:String>
     <sys:String x:Key="event_anc_toggle">ANC umschalten</sys:String>
     <sys:String x:Key="event_anc_switch_sensitivity">ANC Empfindlichkeit wechseln</sys:String>
     <sys:String x:Key="event_touch_lock_toggle">Touchsperre umschalten</sys:String>
@@ -168,9 +168,10 @@ Diese App unterstützt alle Galaxy Buds Modelle.
 
     <!-- Main page -->
     <sys:String x:Key="mainpage_corrupt_data">Korrupte Daten erhalten. Neuverbinden...</sys:String>
-    <sys:String x:Key="mainpage_find_my_earbuds">Ohrhörersuche</sys:String>
+    <sys:String x:Key="mainpage_find_my_earbuds">Meine Buds finden</sys:String>
     <sys:String x:Key="mainpage_touchpad">Touchpad</sys:String>
-    <sys:String x:Key="mainpage_ambient_sound">Geräuschkontrolle</sys:String>
+    <sys:String x:Key="mainpage_ambient_sound">Umgebungsgeräusche</sys:String>
+    <sys:String x:Key="mainpage_noise">Geräuschverhalten</sys:String>
     <sys:String x:Key="mainpage_equalizer">Equalizer</sys:String>
     <sys:String x:Key="mainpage_advanced">Erweiterte Einstellungen</sys:String>
     <sys:String x:Key="mainpage_system">System</sys:String>
@@ -336,17 +337,17 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <!-- Equalizer -->
     <sys:String x:Key="eq_header">Equalizer</sys:String>
     <sys:String x:Key="eq_enable">Equalizer einschalten</sys:String>
-    <sys:String x:Key="eq_mode">Voreinstellung</sys:String>
+    <sys:String x:Key="eq_preset">Voreinstellung</sys:String>
     <sys:String x:Key="eq_dolby">Optimiere für Dolby</sys:String>
 
-    <sys:String x:Key="eq_bass">Bass</sys:String>
+    <sys:String x:Key="eq_bass">Bass Verstärkung</sys:String>
     <sys:String x:Key="eq_soft">Weich</sys:String>
     <sys:String x:Key="eq_dynamic">Dynamisch</sys:String>
     <sys:String x:Key="eq_clear">Klar</sys:String>
-    <sys:String x:Key="eq_treble">Höhen</sys:String>
+    <sys:String x:Key="eq_treble">Höhen Verstärkung</sys:String>
 
     <!-- Noise control -->
-    <sys:String x:Key="nc_header">Geräuschkontrolle</sys:String>
+    <sys:String x:Key="nc_header">Geräuschverhalten</sys:String>
     <sys:String x:Key="nc_anc_level">Hohe Empfindlichkeit</sys:String>
     <sys:String x:Key="nc_anc_level_description">Stärkerer Geräuschunterdrückungseffekt</sys:String>
     <sys:String x:Key="nc_voicedetect">Konversationserkennung</sys:String>
@@ -398,6 +399,7 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="connlost_description_p2">Bitte überprüfe deine Bluetooth-Einstellungen und stelle sicher, dass die Ohrhörer mit diesem Computer gekoppelt und verbunden sind.&#10;Du kannst auch bei "Optionen > Gerät entfernen" ein neues Paar registrieren.</sys:String>
     <sys:String x:Key="connlost_description_p3">Zusätzliche Informationen:</sys:String>
     <sys:String x:Key="connlost_noinfo">Keine Informationen verfügbar</sys:String>
+    <sys:String x:Key="connlost_disconnected">Gerät hat die Verbindung getrennt</sys:String>
     <sys:String x:Key="connlost_connect">Verbinden</sys:String>
     <sys:String x:Key="connlost_connecting">Verbindung wird hergestellt...</sys:String>
     

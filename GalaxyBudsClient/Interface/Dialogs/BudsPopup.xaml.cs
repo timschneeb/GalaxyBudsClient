@@ -92,7 +92,14 @@ namespace GalaxyBudsClient.Interface.Dialogs
             _batteryC.IsVisible = isCaseOnline;
             _caseLabel.IsVisible = isCaseOnline;
 
-            string type = BluetoothImpl.Instance.ActiveModel == Models.BudsLive ? "Bean" : "Bud";
+            string type = "Bud";
+            if(BluetoothImpl.Instance.ActiveModel == Models.BudsLive)
+            {
+                type = "Bean";
+            } else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPro)
+            {
+                type = "Pro";
+            }
 
             if (isLeftOnline)
             {
