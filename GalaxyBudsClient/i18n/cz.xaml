@@ -16,7 +16,6 @@
     <sys:String x:Key="apply">Potvrdit</sys:String>
     <sys:String x:Key="notset">Nenastaveno</sys:String>
     <sys:String x:Key="select">Zvolit</sys:String>
-    <sys:String x:Key="notset">Nezvoleno</sys:String>
     <sys:String x:Key="unknown">Neznámý</sys:String>
     <sys:String x:Key="back">Back</sys:String>
 
@@ -64,7 +63,6 @@
     <sys:String x:Key="touchoption_ambientsound">Ambientní režim</sys:String>
     <sys:String x:Key="touchoption_spotify">Spotify (pouze Android)</sys:String>
     <sys:String x:Key="touchoption_switch_noisecontrols">Přepnout ovládání šumu</sys:String>
-    <sys:String x:Key="touchoption_spotify">Spotify (pouze Android)</sys:String>
     <sys:String x:Key="touchoption_custom">Vlastní akce...</sys:String>
     <sys:String x:Key="touchoption_custom_null">Nenastaveno</sys:String>
     <sys:String x:Key="touchoption_custom_unknown">Neznámý</sys:String>
@@ -260,7 +258,6 @@
     <sys:String x:Key="system_overview_header">Systém</sys:String>
     <sys:String x:Key="system_header">Systémové informace</sys:String>
     <sys:String x:Key="system_selftest">Spustit sebetestování</sys:String>
-    <sys:String x:Key="system_factory_reset">Obnovit nastavení</sys:String>
     <sys:String x:Key="system_selftest_desc">Ověřte, zda všechny moduly sluchátek fungují správně</sys:String>
     <sys:String x:Key="system_factory_reset">Tovární nastavení</sys:String>
     <sys:String x:Key="system_factory_reset_desc">Obnovit tovární nastavení sluchátek a odpojit je</sys:String>
