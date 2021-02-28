@@ -36,7 +36,7 @@
         <Border Grid.Row="5" Classes="RoundedBorderListItem" Background="{DynamicResource RoundBorderBackgroundWarningBrush}">
             <Border CornerRadius="20" Classes="BorderHoverStyle" PointerPressed="FactoryReset_OnPointerPressed">
                 <items:IconListItem x:Name="FactoryReset" Text="{DynamicResource factory_confirm}" 
-                                    Source="/Resources/device/neutral_gray.png" Margin="20,0,20,0" FontSize="18" />
+                                    Source="{DynamicResource NeutralBud}" Margin="20,0,20,0" FontSize="18" />
             </Border>
         </Border>
     </Grid>

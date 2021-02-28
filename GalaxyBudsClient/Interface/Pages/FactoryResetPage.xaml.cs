@@ -1,10 +1,13 @@
-﻿using Avalonia.Controls;
+﻿using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using Serilog;
@@ -54,6 +57,18 @@ namespace GalaxyBudsClient.Interface.Pages
 		{
 			_pageHeader.BackButtonVisible = true;
 			_pageHeader.LoadingSpinnerVisible = false;
+			
+			string type = "Bud";
+			if (BluetoothImpl.Instance.ActiveModel == Models.BudsLive)
+			{
+				type = "Bean";
+			}
+			else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPro)
+			{
+				type = "Pro";
+			}
+			this.FindControl<IconListItem>("FactoryReset").Source =
+				(IImage?)Application.Current.FindResource($"Neutral{type}");
 		}
 
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
