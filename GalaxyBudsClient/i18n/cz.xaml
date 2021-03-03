@@ -173,7 +173,7 @@
     <sys:String x:Key="mainpage_touchpad">Dotykové ovládání</sys:String>
     <sys:String x:Key="mainpage_ambient_sound">Ambientní režim</sys:String>
     <sys:String x:Key="mainpage_noise">Potlačení šumu</sys:String>
-    <sys:String x:Key="mainpage_equalizer">Equalizer</sys:String>
+    <sys:String x:Key="mainpage_equalizer">Ekvalizér</sys:String>
     <sys:String x:Key="mainpage_advanced">Pokročilá nastavení</sys:String>
     <sys:String x:Key="mainpage_system">Systémové informace</sys:String>
 
