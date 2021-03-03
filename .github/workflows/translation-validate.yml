@@ -9,17 +9,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Checkout GBC
-        uses: actions/checkout@v2
-        with:
-          repository: 'ThePBone/GalaxyBudsClient'
-          path: 'tmp/'
           
       - name: Run XAML validator
         uses: ThePBone/XamlTranslationValidator@1.1
         with:
-          source-xaml: 'tmp/GalaxyBudsClient/i18n/en.xaml'
-          translation-xaml: 'tmp/GalaxyBudsClient/i18n/*.xaml'
+          source-xaml: 'GalaxyBudsClient/i18n/en.xaml'
+          translation-xaml: 'GalaxyBudsClient/i18n/*.xaml'
           output-directory: 'meta/'
           output-name-summary: 'translations.md'
           custom-note: 'Translation instructions are available [in the wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations).'
