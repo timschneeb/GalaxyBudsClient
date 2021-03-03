@@ -16,7 +16,7 @@ jobs:
           path: 'tmp/'
           
       - name: Run XAML validator
-        uses: ThePBone/XamlTranslationValidator@v1.1
+        uses: ThePBone/XamlTranslationValidator@1.1
         with:
           source-xaml: 'tmp/GalaxyBudsClient/i18n/en.xaml'
           translation-xaml: 'tmp/GalaxyBudsClient/i18n/*.xaml'
