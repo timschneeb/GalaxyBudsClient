@@ -17,7 +17,7 @@
     <sys:String x:Key="notset">Nenastaveno</sys:String>
     <sys:String x:Key="select">Zvolit</sys:String>
     <sys:String x:Key="unknown">Neznámý</sys:String>
-    <sys:String x:Key="back">Back</sys:String>
+    <sys:String x:Key="back">Zpět</sys:String>
 
     <sys:String x:Key="nobluetoothdev">Nebyl nalezen Bluetooth adaptér. Zapněte Bluetooth a zkuste to znovu..</sys:String>
 
