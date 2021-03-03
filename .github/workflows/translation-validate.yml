@@ -19,9 +19,10 @@ jobs:
           output-name-summary: 'translations.md'
           custom-note: 'Translation instructions are available [in the wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations).'
 
-      - name: Publish changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Update translation statuses
-          file_pattern: meta/*.md
-          skip_dirty_check: true  
+      - name: Commit
+        run: |
+          git config --global user.name 'ThePBone'
+          git config --global user.email 'thepbone@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git commit -am "Update translation statuses"
+          git push
