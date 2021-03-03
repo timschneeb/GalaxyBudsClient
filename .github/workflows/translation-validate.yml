@@ -24,3 +24,4 @@ jobs:
         with:
           commit_message: Update translation statuses
           file_pattern: meta/*.md
+          skip_dirty_check: true  
