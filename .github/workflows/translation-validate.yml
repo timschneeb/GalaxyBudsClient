@@ -1,0 +1,31 @@
+name: Validate translations
+
+on: [push]
+
+jobs:
+  run-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Checkout GBC
+        uses: actions/checkout@v2
+        with:
+          repository: 'ThePBone/GalaxyBudsClient'
+          path: 'tmp/'
+          
+      - name: Run XAML validator
+        uses: ThePBone/XamlTranslationValidator@v1
+        with:
+          source-xaml: 'tmp/GalaxyBudsClient/i18n/en.xaml'
+          translation-xaml: 'tmp/GalaxyBudsClient/i18n/*.xaml'
+          output-directory: 'meta/'
+          output-name-summary: 'translations.md'
+          custom-note: 'Translation instructions are available [in the wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations).'
+
+      - name: Publish changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update translation statuses
+          file_pattern: meta/*.md
