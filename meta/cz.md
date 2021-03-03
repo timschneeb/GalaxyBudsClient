@@ -11,7 +11,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Key</th><th>Original string</th></tr>
-<tr><td><code>connlost_disconnected<code></td><td>Device disconnected</td></tr>
+<tr><td><code>connlost_disconnected</code></td><td>Device disconnected</td></tr>
 
 </table>
 
