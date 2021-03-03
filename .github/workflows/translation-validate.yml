@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v2
           
       - name: Run XAML validator
-        uses: ThePBone/XamlTranslationValidator@1.1
+        uses: ThePBone/XamlTranslationValidator@v1.2
         with:
           source-xaml: 'GalaxyBudsClient/i18n/en.xaml'
           translation-xaml: 'GalaxyBudsClient/i18n/*.xaml'
