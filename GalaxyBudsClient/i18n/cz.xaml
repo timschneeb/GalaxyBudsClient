@@ -17,7 +17,7 @@
     <sys:String x:Key="notset">Nenastaveno</sys:String>
     <sys:String x:Key="select">Zvolit</sys:String>
     <sys:String x:Key="unknown">Neznámý</sys:String>
-    <sys:String x:Key="back">Back</sys:String>
+    <sys:String x:Key="back">Zpět</sys:String>
 
     <sys:String x:Key="nobluetoothdev">Nebyl nalezen Bluetooth adaptér. Zapněte Bluetooth a zkuste to znovu..</sys:String>
 
@@ -173,7 +173,7 @@
     <sys:String x:Key="mainpage_touchpad">Dotykové ovládání</sys:String>
     <sys:String x:Key="mainpage_ambient_sound">Ambientní režim</sys:String>
     <sys:String x:Key="mainpage_noise">Potlačení šumu</sys:String>
-    <sys:String x:Key="mainpage_equalizer">Equalizer</sys:String>
+    <sys:String x:Key="mainpage_equalizer">Ekvalizér</sys:String>
     <sys:String x:Key="mainpage_advanced">Pokročilá nastavení</sys:String>
     <sys:String x:Key="mainpage_system">Systémové informace</sys:String>
 
@@ -303,7 +303,9 @@
     <sys:String x:Key="coredump_dl_core_progress">Stahování výpisu jádra... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytů)</sys:String>
     <sys:String x:Key="coredump_dl_note">
-        Během stahování je zvukový stream dočasně pozastaven. Vaše sluchátka se odpojí, jakmile přenos skončí, prosím, znovu ručně.&#10;Po dokončení budete vyzváni k výběru adresáře pro všechny shromážděných údajů.&#10;&#10;Je-li přenos zaseklý nebo se zařízení předčasně odpojilo, musíte restartovat stahování. Tato funkce je v současné době velmi nestabilní.
+        Během stahování je zvukový stream dočasně pozastaven. Vaše sluchátka se odpojí, jakmile přenos skončí, prosím, znovu ručně.&#10;
+        Po dokončení budete vyzváni k výběru adresáře pro všechny shromážděných údajů.&#10;&#10;
+        Je-li přenos zaseklý nebo se zařízení předčasně odpojilo, musíte restartovat stahování. Tato funkce je v současné době velmi nestabilní.
     </sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">Uložení výpisu se nezdařilo</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">Nelze kopírovat výpis z dočasného umístění. Důvod: {0}</sys:String>
