@@ -26,8 +26,22 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		private string ErrorDescription
 		{
-			set => _additionalInfo.Text = (value == string.Empty) ?
-				Loc.Resolve("connlost_noinfo") : value;
+			set {
+				string text = "";
+				if (value == string.Empty)
+				{
+					text = Loc.Resolve("connlost_noinfo");
+				}
+				else if (value == "Device disconnected")
+				{
+					text = Loc.Resolve("connlost_disconnected");
+				}
+				else
+				{
+					text = value;				
+				}
+				_additionalInfo.Text = text;
+			}
 			get => _additionalInfo.Text;
 		}
 		
@@ -80,7 +94,16 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		public override void OnPageShown()
 		{
-			_retry.Source = (IImage?)Application.Current.FindResource($"Neutral{(BluetoothImpl.Instance.ActiveModel == Models.BudsLive ? "Bean" : "Bud")}");
+			string type = "Bud";
+			if (BluetoothImpl.Instance.ActiveModel == Models.BudsLive)
+			{
+				type = "Bean";
+			}
+			else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPro)
+			{
+				type = "Pro";
+			}
+			_retry.Source = (IImage?)Application.Current.FindResource($"Neutral{type}");
 		}
 
 		public override void OnPageHidden()

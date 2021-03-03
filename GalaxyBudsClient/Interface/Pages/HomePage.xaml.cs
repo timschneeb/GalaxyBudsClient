@@ -211,9 +211,19 @@ namespace GalaxyBudsClient.Interface.Pages
             }
 
             UpdateList();
-            
-            _findMyGear.Source = (IImage?)Application.Current.FindResource($"FindMyGear{(BluetoothImpl.Instance.ActiveModel == Models.BudsLive ? "Bean" : "Bud")}");
-            _touch.Source = (IImage?)Application.Current.FindResource($"Touch{(BluetoothImpl.Instance.ActiveModel == Models.BudsLive ? "Bean" : "Bud")}");
+
+            string type = "Bud";
+            if (BluetoothImpl.Instance.ActiveModel == Models.BudsLive)
+            {
+                type = "Bean";
+            }
+            else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPro)
+            {
+                type = "Pro";
+            }
+
+            _findMyGear.Source = (IImage?)Application.Current.FindResource($"FindMyGear{type}");
+            _touch.Source = (IImage?)Application.Current.FindResource($"Touch{type}");
 
             _loadingSpinner.IsVisible = !BluetoothImpl.Instance.IsConnected;
         }
@@ -327,7 +337,16 @@ namespace GalaxyBudsClient.Interface.Pages
         {
             _lastLeftOnline = isLeftOnline;
             _lastRightOnline = isRightOnline;
-            string type = BluetoothImpl.Instance.ActiveModel == Models.BudsLive ? "Bean" : "Bud";
+
+            string type = "Bud";
+            if (BluetoothImpl.Instance.ActiveModel == Models.BudsLive)
+            {
+                type = "Bean";
+            }
+            else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPro)
+            {
+                type = "Pro";
+            }
 
             if (isLeftOnline)
             {

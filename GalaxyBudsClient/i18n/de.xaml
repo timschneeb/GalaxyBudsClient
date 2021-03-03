@@ -10,7 +10,7 @@
     <sys:String x:Key="okay">Okay</sys:String>
     <sys:String x:Key="left">Links</sys:String>
     <sys:String x:Key="right">Rechts</sys:String>
-    <sys:String x:Key="case">Case</sys:String>
+    <sys:String x:Key="case">Ladeetui</sys:String>
     <sys:String x:Key="error">Fehler</sys:String>
     <sys:String x:Key="cancel">Abbrechen</sys:String>
     <sys:String x:Key="apply">Speichern</sys:String>
@@ -52,7 +52,7 @@
     <sys:String x:Key="placement_disconnected">Nicht verbunden</sys:String>
     <sys:String x:Key="placement_wearing">Bereit</sys:String>
     <sys:String x:Key="placement_not_wearing">Standby</sys:String>
-    <sys:String x:Key="placement_in_case">Hülle</sys:String>
+    <sys:String x:Key="placement_in_case">Ladeetui</sys:String>
 
     <!-- Touch options -->
     <sys:String x:Key="touchoption_voice">Sprachassistent</sys:String>
@@ -70,7 +70,7 @@
     <sys:String x:Key="touchoption_custom_ambient_up">Ambient lauter</sys:String>
     <sys:String x:Key="touchoption_custom_ambient_down">Ambient leiser</sys:String>
     <sys:String x:Key="touchoption_custom_toggle_eq">Equalizer umschalten</sys:String>
-    <sys:String x:Key="touchoption_custom_next_eq_preset">Nächstes Equalizer Preset</sys:String>
+    <sys:String x:Key="touchoption_custom_next_eq_preset">Nächste Equalizer Voreinstellung</sys:String>
     <sys:String x:Key="touchoption_custom_trigger_hotkey">Hotkey auslösen...</sys:String>
     <sys:String x:Key="touchoption_custom_external_app">Externes Programm starten...</sys:String>
 
@@ -91,7 +91,7 @@
     <sys:String x:Key="tray_disable_eq">Equalizer ausschalten</sys:String>
     <sys:String x:Key="tray_enable_anc">Aktive Geräuschunterdrückung aktivieren</sys:String>
     <sys:String x:Key="tray_disable_anc">Aktive Geräuschunterdrückung deaktivieren</sys:String>
-    <sys:String x:Key="tray_switch_noise">Geräuschkontrollen wechseln</sys:String>
+    <sys:String x:Key="tray_switch_noise">Geräuschverhalten wechseln</sys:String>
     <sys:String x:Key="tray_quit">Verlassen</sys:String>
 
 
@@ -122,8 +122,8 @@
     <sys:String x:Key="hotkey_add">Assign new hotkey</sys:String>
     <sys:String x:Key="hotkey_empty">No hotkeys assigned</sys:String>
     <sys:String x:Key="hotkey_empty_desc">Create a new keyboard hotkey by clicking the button above</sys:String>
-    <sys:String x:Key="hotkey_edit">Edit</sys:String>
-    <sys:String x:Key="hotkey_delete">Delete</sys:String>
+    <sys:String x:Key="hotkey_edit">Bearbeiten</sys:String>
+    <sys:String x:Key="hotkey_delete">Löschen</sys:String>
     <sys:String x:Key="hotkey_add_error">Failed to register/update hotkeys</sys:String>
     <sys:String x:Key="hotkey_add_error_context">Affected hotkey:</sys:String>
     <sys:String x:Key="hotkey_add_error_duplicate">Your selected key-combination was already registered as a hotkey by this or another application. Please choose another one.</sys:String>
@@ -131,46 +131,47 @@
 
     <!-- EventDispatcher module -->
     <sys:String x:Key="event_none">Keine Auswahl</sys:String>
-    <sys:String x:Key="event_ambient_toggle">Ambient Sound umschalten</sys:String>
-    <sys:String x:Key="event_ambient_volume_up">Ambient Volume Lauter</sys:String>
-    <sys:String x:Key="event_ambient_volume_down">Ambient Volume Leiser</sys:String>
+    <sys:String x:Key="event_ambient_toggle">Umgebungsgeräusche umschalten</sys:String>
+    <sys:String x:Key="event_ambient_volume_up">Umgebungsgeräusche Lauter</sys:String>
+    <sys:String x:Key="event_ambient_volume_down">Umgebungsgeräusche Leiser</sys:String>
     <sys:String x:Key="event_eq_toggle">Equalizer umschalten</sys:String>
-    <sys:String x:Key="event_eq_switch">Equalizer-Preset wechseln</sys:String>
+    <sys:String x:Key="event_eq_switch">Equalizer-Voreinstellung wechseln</sys:String>
     <sys:String x:Key="event_anc_toggle">ANC umschalten</sys:String>
     <sys:String x:Key="event_anc_switch_sensitivity">ANC Empfindlichkeit wechseln</sys:String>
     <sys:String x:Key="event_touch_lock_toggle">Touchsperre umschalten</sys:String>
     <sys:String x:Key="event_double_edge_touch_toggle">Double-Edge Touch umschalten</sys:String>
     <sys:String x:Key="event_conversation_toggle">Konversationserkennung umschalten</sys:String>
-    <sys:String x:Key="event_start_stop_find">Find my Earbuds starten/stoppen</sys:String>
-    <sys:String x:Key="event_start_find">Find my Earbuds starten</sys:String>
-    <sys:String x:Key="event_stop_find">Find my Earbuds stoppen</sys:String>
+    <sys:String x:Key="event_start_stop_find">Ohrhörersuche starten/stoppen</sys:String>
+    <sys:String x:Key="event_start_find">Ohrhörersuche starten</sys:String>
+    <sys:String x:Key="event_stop_find">Ohrhörersuche stoppen</sys:String>
     <sys:String x:Key="event_paring_mode">Kopplungsmodus</sys:String>
-    <sys:String x:Key="event_media_play">Play</sys:String>
-    <sys:String x:Key="event_media_pause">Pause</sys:String>
-    <sys:String x:Key="event_media_play_pause">Play/pause</sys:String>
+    <sys:String x:Key="event_media_play">Medien abspielen</sys:String>
+    <sys:String x:Key="event_media_pause">Medien pausieren</sys:String>
+    <sys:String x:Key="event_media_play_pause">Medien abspielen/pausieren</sys:String>
     <sys:String x:Key="event_manager_visible">Hauptfenster verstecken/anzeigen</sys:String>
-    <sys:String x:Key="event_display_battery_popup">Batteriepopup anzeigen</sys:String>
+    <sys:String x:Key="event_display_battery_popup">Batterie-Popup anzeigen</sys:String>
     <sys:String x:Key="event_connect">Verbindung herstellen</sys:String>
     
     <!-- Welcome page -->
     <sys:String x:Key="welcome_textblock_header">Willkommen!</sys:String>
     <sys:String x:Key="welcome_textblock_p1">
-Hallo! Dieser Galaxy Buds Manager ist inoffiziell und ist in keiner Weise mit Samsung verbunden. Während diese Programm viele Dinge tun kann, die die offizielle App nicht kann, habe ich mich dazu entschieden, die Firmware-Update Funktion aus Sicherheitsgründen nicht zu implementieren. Bitte verwende die offiziellen Apps um Updates durchzuführen.
+Hallo! Dieser Galaxy Buds Manager ist inoffiziell und ist in keiner Weise mit Samsung verbunden. Während dieses Programm viele Dinge tun kann, welche die offizielle App nicht kann, habe ich mich dazu entschieden, die Firmware-Update Funktion aus Sicherheitsgründen nicht zu implementieren. Bitte verwende die offiziellen Apps um Updates durchzuführen.
     </sys:String>
     <sys:String x:Key="welcome_textblock_p2">
-Falls es Dich interessiert was hinter den Kulissen vorgeht, kannst Du im GitHub Repository eine kurze Dokumentation des reverse-engineerten Protokolls ansehen. Du kannst mich auch auf Telegram oder GitHub unter dem Handle @thepbone erreichen.
+Falls es Dich interessiert was hinter den Kulissen vorgeht, kannst du im GitHub Repository eine kurze Dokumentation des reverse-engineerten Protokolls ansehen. Du kannst mich auch auf Telegram oder GitHub unter @thepbone erreichen, sollten irgendwelche Probleme auftreten.
     </sys:String>
     <sys:String x:Key="welcome_textblock_p3">
-Diese App unterstützt die Buds (2019) und Buds+ (2020).
+Diese App unterstützt alle Galaxy Buds Modelle.
     </sys:String>
     <sys:String x:Key="welcome_darkmode">Dark-Mode</sys:String>
-    <sys:String x:Key="welcome_darkmode_content">Verwende ein dunkleres Farbschema (Neustart notwendig)</sys:String>
+    <sys:String x:Key="welcome_darkmode_content">Brennen deine Augen schon? Verwende doch ein dunkleres Farbschema! (Neustart notwendig)</sys:String>
 
     <!-- Main page -->
     <sys:String x:Key="mainpage_corrupt_data">Korrupte Daten erhalten. Neuverbinden...</sys:String>
-    <sys:String x:Key="mainpage_find_my_earbuds">Find my Buds</sys:String>
+    <sys:String x:Key="mainpage_find_my_earbuds">Meine Buds finden</sys:String>
     <sys:String x:Key="mainpage_touchpad">Touchpad</sys:String>
-    <sys:String x:Key="mainpage_ambient_sound">Ambient Sound</sys:String>
+    <sys:String x:Key="mainpage_ambient_sound">Umgebungsgeräusche</sys:String>
+    <sys:String x:Key="mainpage_noise">Geräuschverhalten</sys:String>
     <sys:String x:Key="mainpage_equalizer">Equalizer</sys:String>
     <sys:String x:Key="mainpage_advanced">Erweiterte Einstellungen</sys:String>
     <sys:String x:Key="mainpage_system">System</sys:String>
@@ -195,10 +196,10 @@ Diese App unterstützt die Buds (2019) und Buds+ (2020).
     <sys:String x:Key="updater_dl_fail">Grund: &#10;</sys:String>
     <sys:String x:Key="updater_dl_progress_prepare">Bereite Download vor...</sys:String>
     <sys:String x:Key="updater_dl_progress_cancelled">Download abgebrochen</sys:String>
-    <sys:String x:Key="updater_dl_progress_finished">Download beendet. Installer wird gestartet...</sys:String>
+    <sys:String x:Key="updater_dl_progress_finished">Download beendet. Installation wird gestartet...</sys:String>
     <sys:String x:Key="updater_dl_progress">Herunterladen... {0}%</sys:String>
     <sys:String x:Key="updater_dl_progress_size">({0}/{1} Megabytes)</sys:String>
-    <sys:String x:Key="updater_dl_note">Wenn der Download fertig ist, wird sich dieses Programm selbst schließen und den Updateprozess starten. Es kann einige Sekunden dauert, bis er angezeigt wird.</sys:String>
+    <sys:String x:Key="updater_dl_note">Wenn der Download fertig ist, wird sich dieses Programm selbst schließen und den Updateprozess starten. Es kann einige Sekunden dauern, bis er angezeigt wird.</sys:String>
 
     <!-- Device selection page (setup) -->
     <sys:String x:Key="devsel_header">Galaxy Buds auswählen</sys:String>
@@ -209,9 +210,9 @@ Diese App unterstützt die Buds (2019) und Buds+ (2020).
     <sys:String x:Key="devsel_noselection">Kein Gerät ausgewählt</sys:String>
     <sys:String x:Key="devsel_invalid_selection">Bitte wähle ein Gerät aus.</sys:String>
     <sys:String x:Key="devsel_footer_continue">Fertigstellen</sys:String>
-    <sys:String x:Key="devsel_nodevices">Verbinde und kopple die Earbuds in den Systemeinstellungen zuerst.</sys:String>
+    <sys:String x:Key="devsel_nodevices">Verbinde und kopple die Earbuds zuerst in den Systemeinstellungen.</sys:String>
     <sys:String x:Key="devsel_nodevices_title">Keine unterstützten Geräte gefunden</sys:String>
-    <sys:String x:Key="devsel_dialog_footer">Falls die Earbuds nicht angezeigt werden, sind sie womöglich nicht mit diesem Gerät gekoppelt und/oder nicht verbunden.</sys:String>
+    <sys:String x:Key="devsel_dialog_footer">Falls die Ohrhörer nicht angezeigt werden, sind sie womöglich nicht mit diesem Gerät gekoppelt und/oder nicht verbunden.</sys:String>
     <sys:String x:Key="devsel_winrt_title">Alternative Bluetooth-Verbindungsmethode</sys:String>
     <sys:String x:Key="devsel_winrt">Bessere Stabilität, allerdings nicht mit einigen PCs und Bluetooth Adaptern kompatibel</sys:String>
 
@@ -243,21 +244,21 @@ Diese App unterstützt die Buds (2019) und Buds+ (2020).
     <sys:String x:Key="cact_notice">Hinweis</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Benutzerdefinierte Aktionen sind nur verfügbar wenn diese App im Hintergrund aktiv ist.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">Es hat keinen Effekt auf Android oder anderen Geräten.</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">Um eine konsistente Funktionsweise zu gewährleisten, wird sich diese App automatisch in den Hintergrund versetzen wenn sie geschlossen wird. Dieses Verhalten kann in den Einstellungen deaktiviert werden.</sys:String>
+    <sys:String x:Key="cact_notice_content_p3">Um eine konsistente Funktionsweise zu gewährleisten, wird sich diese App automatisch mit dem Systemstart starten und in den Hintergrund versetzen, wenn sie geschlossen wird. Dieses Verhalten kann in den Einstellungen deaktiviert werden.</sys:String>
 
     <!-- System/Self-Test -->
     <sys:String x:Key="system_overview_header">System</sys:String>
     <sys:String x:Key="system_header">Systeminformation</sys:String>
-    <sys:String x:Key="system_selftest">Self-Test starten</sys:String>
-    <sys:String x:Key="system_selftest_desc">Verifiziere ob alle Module der Earbuds ordnungsgemäß funktionieren</sys:String>
+    <sys:String x:Key="system_selftest">Selbsttest starten</sys:String>
+    <sys:String x:Key="system_selftest_desc">Verifiziere ob alle Module der Ohrhörer ordnungsgemäß funktionieren</sys:String>
     <sys:String x:Key="system_factory_reset">Zurücksetzen</sys:String>
-    <sys:String x:Key="system_factory_reset_desc">Setze die Earbuds zu ihren Werkseinstellungen zurück</sys:String>
+    <sys:String x:Key="system_factory_reset_desc">Setze die Ohrhörer zu ihren Werkseinstellungen zurück</sys:String>
     <sys:String x:Key="system_pairing_mode">Kopplungsmodus</sys:String>
-    <sys:String x:Key="system_pairing_mode_desc">Trennt die Earbuds von diesem Gerät und macht sie sichtbar für ungekoppelte Geräte</sys:String>
+    <sys:String x:Key="system_pairing_mode_desc">Trennt die Ohrhörer von diesem Gerät und macht sie sichtbar für ungekoppelte Geräte</sys:String>
     <sys:String x:Key="system_trace_core_dump">Trace- und Coredumps downloaden</sys:String>
-    <sys:String x:Key="system_trace_core_dump_desc">Erhalte rohe Entwicklungsdaten von den Earbuds</sys:String>
+    <sys:String x:Key="system_trace_core_dump_desc">Erhalte rohe Entwicklungsdaten von den Ohrhörern</sys:String>
     <sys:String x:Key="system_info">Systeminformationen anzeigen</sys:String>
-    <sys:String x:Key="system_info_desc">Zeige detailierte Informationen über deine Earbuds an</sys:String>
+    <sys:String x:Key="system_info_desc">Zeige detailierte Informationen über deine Ohrhörer an</sys:String>
 
     <sys:String x:Key="system_battery_type_unknown">Nicht angegeben</sys:String>
     <sys:String x:Key="system_waiting_for_device">Warte auf Antwort...</sys:String>
@@ -269,20 +270,20 @@ Diese App unterstützt die Buds (2019) und Buds+ (2020).
     <sys:String x:Key="system_btaddr">Bluetoothadresse</sys:String>
     <sys:String x:Key="system_serial">Seriennummer</sys:String>
     <sys:String x:Key="system_build_info">Buildinfo</sys:String>
-    <sys:String x:Key="system_battery_type">Batterytyp</sys:String>
+    <sys:String x:Key="system_battery_type">Batterietyp</sys:String>
     <sys:String x:Key="system_proximity">Entfernungsmessung</sys:String>
     <sys:String x:Key="system_thermo">Thermistormessung</sys:String>
     <sys:String x:Key="system_hall">Magnetmessung</sys:String>
-    <sys:String x:Key="system_accel">Beschleunigungsmeasurement</sys:String>
+    <sys:String x:Key="system_accel">Beschleunigungsmesserstatus</sys:String>
     <!-- Note: system_accel only used on the self-test page -->
     <sys:String x:Key="system_adc_soc">ADC SoC</sys:String>
     <!-- Context: SoC = State of charge (battery percentage) -->
     <sys:String x:Key="system_adc_voltage">ADC Spannung</sys:String>
     <sys:String x:Key="system_adc_current">ADC Stromstärke</sys:String>
 
-    <sys:String x:Key="selftest_header">Self-Test</sys:String>
-    <sys:String x:Key="selftest_header_alt">Self-Test (Verbindung kann abbrechen)</sys:String>
-    <sys:String x:Key="selftest_pass">Normal</sys:String>
+    <sys:String x:Key="selftest_header">Selbsttest</sys:String>
+    <sys:String x:Key="selftest_header_alt">Selbsttest (Verbindung kann abbrechen)</sys:String>
+    <sys:String x:Key="selftest_pass">Bestanden</sys:String>
     <sys:String x:Key="selftest_fail">Fehler</sys:String>
     <sys:String x:Key="selftest_pass_long">Keine Probleme erkannt</sys:String>
     <sys:String x:Key="selftest_fail_long">Mind. ein Problem erkannt</sys:String>
@@ -291,15 +292,15 @@ Diese App unterstützt die Buds (2019) und Buds+ (2020).
     <sys:String x:Key="settings_header">Einstellungen</sys:String>
 
     <sys:String x:Key="settings_darkmode">Dark-Mode</sys:String>
-    <sys:String x:Key="settings_darkmode_description">Verwende eine dunkleres Farbschema (Neustart nötig)</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Verwende ein dunkleres Farbschema (Neustart nötig)</sys:String>
     <sys:String x:Key="settings_transitions">Übergang</sys:String>
     <sys:String x:Key="settings_transitions_description">Schiebeübergang aktivieren</sys:String>
     <sys:String x:Key="settings_localization_disable">Sprache</sys:String>
     <sys:String x:Key="settings_localization_disable_description">Englisch erzwingen (Force english language)</sys:String>
     <sys:String x:Key="settings_minimize_tray">In Taskleiste minimieren</sys:String>
     <sys:String x:Key="settings_minimize_tray_description">In den Hintergrund versetzen statt die App zu beenden</sys:String>
-    <sys:String x:Key="settings_autostart">Nach Systemstart starten</sys:String>
-    <sys:String x:Key="settings_autostart_description">Minimiert am Systemstart starten</sys:String>
+    <sys:String x:Key="settings_autostart">Mit Systemstart starten</sys:String>
+    <sys:String x:Key="settings_autostart_description">Starte Anwendung minimiert mit dem Systemstart</sys:String>
 
     <sys:String x:Key="settings_connpopup">Verbindungspopup einstellen</sys:String>
     <sys:String x:Key="settings_devmode">Entwickleroptionen</sys:String>
@@ -307,7 +308,7 @@ Diese App unterstützt die Buds (2019) und Buds+ (2020).
     <!-- Settings >>> Connection popup -->
     <sys:String x:Key="settings_cpopup_header">Verbindungspopup</sys:String>
     <sys:String x:Key="settings_cpopup_enable">Popup bei Verbindung anzeigen</sys:String>
-    <sys:String x:Key="settings_cpopup_enable_description">Popupbenachrichtigung mit Batteriestatistiken anzeigen, wenn die Buds verbunden werden.</sys:String>
+    <sys:String x:Key="settings_cpopup_enable_description">Popupbenachrichtigung mit Batteriestand anzeigen, wenn die Ohrhörer verbunden werden.</sys:String>
     <sys:String x:Key="settings_cpopup_compact">Kompakter Modus</sys:String>
     <sys:String x:Key="settings_cpopup_compact_description">Titel des Popups verstecken um Platz zu sparen</sys:String>
     <sys:String x:Key="settings_cpopup_position">Position</sys:String>
@@ -315,36 +316,38 @@ Diese App unterstützt die Buds (2019) und Buds+ (2020).
     <sys:String x:Key="settings_cpopup_demo">Demo-Popup anzeigen</sys:String>
     <sys:String x:Key="settings_cpopup_override_title">Popup-Titel überschreiben</sys:String>
     <sys:String x:Key="settings_cpopup_override_title_dialog">Bitte gebe einen eigenen Popup-Titel ein. Lasse das Feld leer, um den Originaltext wiederherzustellen.</sys:String>
+    <sys:String x:Key="settings_cpopup_primary_screen">Nur am Hauptmonitor</sys:String>
+    <sys:String x:Key="settings_cpopup_primary_screen_description">Zeige das Popup nur am Hauptmonitor</sys:String>
 
     <!-- Factory reset -->
-    <sys:String x:Key="factory_header">Zurücksetzen</sys:String>
-    <sys:String x:Key="factory_confirm">Zu Werkseinstellungen zurücksetzen</sys:String>
+    <sys:String x:Key="factory_header">Auf Werkseinstellungen zurücksetzen</sys:String>
+    <sys:String x:Key="factory_confirm">Zurücksetzten auf Werkseinstellungen bestätigen</sys:String>
     <sys:String x:Key="factory_error_title">Zurücksetzen fehlgeschlagen</sys:String>
-    <sys:String x:Key="factory_error">Gerät antwortete mit Fehlercode: {0}&#10;Stelle sicher dass beide Earbuds eingeschalten und erreichbar sind.&#10;Möglicherweise musst du sie manuell neuverbinden.</sys:String>
-    <sys:String x:Key="factory_text_p1">Bist Du sicher dass Du Deine Earbuds zurücksetzen willst?</sys:String>
-    <sys:String x:Key="factory_text_p2">Nach dem Reset muss das Gerät manuell neuverbunden werden.</sys:String>
-    <sys:String x:Key="factory_text_p3">Stelle sicher dass beide Earbuds eingeschalten und erreichbar sind, bevor Du sie zurücksetzt.</sys:String>
+    <sys:String x:Key="factory_error">Gerät antwortete mit Fehlercode: {0}&#10;Stelle sicher dass beide Ohrhörer eingeschalten und erreichbar sind.&#10;Möglicherweise musst du sie manuell neuverbinden.</sys:String>
+    <sys:String x:Key="factory_text_p1">Bist du sicher dass du deine Ohrhörer zurücksetzen willst?</sys:String>
+    <sys:String x:Key="factory_text_p2">Nach dem Zurücksetzen müssen die Ohrörer erneut manuell mit dem Computer verbunden werden.</sys:String>
+    <sys:String x:Key="factory_text_p3">Stelle sicher dass beide Ohrhörer eingeschalten und erreichbar sind, bevor du sie zurücksetzt.</sys:String>
 
     <!-- Find my Gear -->
-    <sys:String x:Key="fmg_warning_both">Bitte entferne beide Earbuds aus Deinen Ohren.</sys:String>
-    <sys:String x:Key="fmg_warning_left">Bitte entferne den linken Earbud aus Deinem Ohr.</sys:String>
-    <sys:String x:Key="fmg_warning_right">Bitte entferne den rechten Earbud aus Deinem Ohr.</sys:String>
-    <sys:String x:Key="fmg_header">Find my Buds</sys:String>
+    <sys:String x:Key="fmg_warning_both">Bitte entferne beide Ohrhörer aus Deinen Ohren.</sys:String>
+    <sys:String x:Key="fmg_warning_left">Bitte entferne den linken Ohrhörer aus deinem Ohr.</sys:String>
+    <sys:String x:Key="fmg_warning_right">Bitte entferne den rechten Ohrhörer aus deinem Ohr.</sys:String>
+    <sys:String x:Key="fmg_header">Ohrhörersuche</sys:String>
 
     <!-- Equalizer -->
     <sys:String x:Key="eq_header">Equalizer</sys:String>
     <sys:String x:Key="eq_enable">Equalizer einschalten</sys:String>
-    <sys:String x:Key="eq_mode">Preset</sys:String>
+    <sys:String x:Key="eq_preset">Voreinstellung</sys:String>
     <sys:String x:Key="eq_dolby">Optimiere für Dolby</sys:String>
 
-    <sys:String x:Key="eq_bass">Bass</sys:String>
+    <sys:String x:Key="eq_bass">Bass Verstärkung</sys:String>
     <sys:String x:Key="eq_soft">Weich</sys:String>
     <sys:String x:Key="eq_dynamic">Dynamisch</sys:String>
     <sys:String x:Key="eq_clear">Klar</sys:String>
-    <sys:String x:Key="eq_treble">Höhen</sys:String>
+    <sys:String x:Key="eq_treble">Höhen Verstärkung</sys:String>
 
     <!-- Noise control -->
-    <sys:String x:Key="nc_header">Geräuschkontrolle</sys:String>
+    <sys:String x:Key="nc_header">Geräuschverhalten</sys:String>
     <sys:String x:Key="nc_anc_level">Hohe Empfindlichkeit</sys:String>
     <sys:String x:Key="nc_anc_level_description">Stärkerer Geräuschunterdrückungseffekt</sys:String>
     <sys:String x:Key="nc_voicedetect">Konversationserkennung</sys:String>
@@ -353,11 +356,11 @@ Diese App unterstützt die Buds (2019) und Buds+ (2020).
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} Sekunden</sys:String>
     
     <!-- Ambient sound -->
-    <sys:String x:Key="as_header">Ambient Sound</sys:String>
-    <sys:String x:Key="as_enable">Ambient Sound einschalten</sys:String>
-    <sys:String x:Key="as_volume">Ambient Sound Lautstärke</sys:String>
-    <sys:String x:Key="as_voicefocus">Voice Focus</sys:String>
-    <sys:String x:Key="as_extrahigh">Extrahohe Ambient-Lautstärke</sys:String>
+    <sys:String x:Key="as_header">Umgebungsgeräusche</sys:String>
+    <sys:String x:Key="as_enable">Umgebungsgeräusche einschalten</sys:String>
+    <sys:String x:Key="as_volume">Lautstärke für Umgebungsgeräusche</sys:String>
+    <sys:String x:Key="as_voicefocus">Steimmenfokus</sys:String>
+    <sys:String x:Key="as_extrahigh">Extrahohe Lautstärke der Umgebungsgeräusche</sys:String>
     <sys:String x:Key="as_extrahigh_description">Füge eine Extralautstärkenstufe hinzu, damit Umgebungsgeräusche mit einer höheren Lautstärke als normal wiedergegeben werden können.</sys:String>
     <sys:String x:Key="as_scale_very_low">Sehr niedrig</sys:String>
     <sys:String x:Key="as_scale_low">Niedrig</sys:String>
@@ -365,7 +368,7 @@ Diese App unterstützt die Buds (2019) und Buds+ (2020).
     <sys:String x:Key="as_scale_high">Hoch</sys:String>
     <sys:String x:Key="as_scale_extraloud">Sehr hoch</sys:String>
     <sys:String x:Key="adv_hotkey">Tastaturabkürzungen</sys:String>
-    <sys:String x:Key="adv_hotkey_desc">Definiere Hotkeys, um die Earbuds mit der Tastatur zu steuern</sys:String>
+    <sys:String x:Key="adv_hotkey_desc">Definiere Hotkeys, um die Ohrhörer mit der Tastatur zu steuern</sys:String>
 
     <!-- Advanced page -->
     <sys:String x:Key="adv_header">Erweiterte Einstellungen</sys:String>
@@ -388,13 +391,15 @@ Diese App unterstützt die Buds (2019) und Buds+ (2020).
     <sys:String x:Key="credits_version">Version</sys:String>
     <sys:String x:Key="credits_contributor">Mitwirkende</sys:String>
     <sys:String x:Key="credits_translator">Übersetzer</sys:String>
+    <sys:String x:Key="credits_sponsor">Unterstütze dieses Projekt</sys:String>
 
     <!-- Connection lost page -->
     <sys:String x:Key="connlost_header">Verbindung konnte nicht hergestellt werden</sys:String>
     <sys:String x:Key="connlost_description_p1">Es konnte keine Verbindung hergestellt werden</sys:String>
-    <sys:String x:Key="connlost_description_p2">Bitte überprüfe deine Bluetooth-Einstellungen und stelle sicher, dass die Earbuds mit diesem Computer gekoppelt und verbunden sind.&#10;Du kannst auch bei "Optionen > Gerät entfernen" ein neues Paar registrieren.</sys:String>
+    <sys:String x:Key="connlost_description_p2">Bitte überprüfe deine Bluetooth-Einstellungen und stelle sicher, dass die Ohrhörer mit diesem Computer gekoppelt und verbunden sind.&#10;Du kannst auch bei "Optionen > Gerät entfernen" ein neues Paar registrieren.</sys:String>
     <sys:String x:Key="connlost_description_p3">Zusätzliche Informationen:</sys:String>
     <sys:String x:Key="connlost_noinfo">Keine Informationen verfügbar</sys:String>
+    <sys:String x:Key="connlost_disconnected">Gerät hat die Verbindung getrennt</sys:String>
     <sys:String x:Key="connlost_connect">Verbinden</sys:String>
     <sys:String x:Key="connlost_connecting">Verbindung wird hergestellt...</sys:String>
     
