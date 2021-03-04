@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>85%</td><td>48 missing string(s)</td></tr>
+<tr><td>84%</td><td>49 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -48,6 +48,7 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 <tr><td><code>coredump_dl_save_success_title</code></td><td>Successfully saved dumps</td></tr>
 <tr><td><code>coredump_dl_save_success</code></td><td>{0} dump(s) were written to '{1}'</td></tr>
 <tr><td><code>coredump_dl_save_dialog_title</code></td><td>Select a download directory...</td></tr>
+<tr><td><code>settings_autostart_permission</code></td><td>Cannot update auto-start entry in registry. Registry access (HKCU) was explicitly disabled by your system administrator.</td></tr>
 <tr><td><code>eq_preset</code></td><td>Preset</td></tr>
 <tr><td><code>nc_header</code></td><td>Noise control</td></tr>
 <tr><td><code>nc_anc_level</code></td><td>High sensitivity</td></tr>

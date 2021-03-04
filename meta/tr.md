@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>61%</td><td>122 missing string(s)</td></tr>
+<tr><td>61%</td><td>123 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -114,6 +114,7 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 <tr><td><code>coredump_dl_save_success_title</code></td><td>Successfully saved dumps</td></tr>
 <tr><td><code>coredump_dl_save_success</code></td><td>{0} dump(s) were written to '{1}'</td></tr>
 <tr><td><code>coredump_dl_save_dialog_title</code></td><td>Select a download directory...</td></tr>
+<tr><td><code>settings_autostart_permission</code></td><td>Cannot update auto-start entry in registry. Registry access (HKCU) was explicitly disabled by your system administrator.</td></tr>
 <tr><td><code>settings_cpopup_override_title</code></td><td>Override popup title</td></tr>
 <tr><td><code>settings_cpopup_override_title_dialog</code></td><td>Please enter a custom popup title. You can restore the default one by leaving this field empty.</td></tr>
 <tr><td><code>settings_cpopup_primary_screen</code></td><td>Primary screen only</td></tr>
