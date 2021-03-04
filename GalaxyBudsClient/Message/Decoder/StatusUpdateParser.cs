@@ -64,7 +64,7 @@ namespace GalaxyBudsClient.Message.Decoder
                 else
                     WearState = WearStates.None;
 
-                if (ActiveModel == Models.BudsPro && msg.Payload[6] == 101)
+                if (msg.Payload[6] == 101)
                 {
                     /* Cradle disconnected */
                     BatteryCase = 0;
