@@ -26,14 +26,6 @@ namespace GalaxyBudsClient
         {
             AvaloniaXamlLoader.Load(this);
             
-            /* Clean everything from the old run up */
-            if (PlatformUtils.IsWindows)
-            {
-#if WindowsNoARM
-                ThePBone.Interop.Win32.TrayIcon.ResourceLoader.ClearCache();
-#endif
-            }
-            
             if (Loc.IsTranslatorModeEnabled())
             {
                 SettingsProvider.Instance.Locale = Locales.custom;

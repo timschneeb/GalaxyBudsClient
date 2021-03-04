@@ -320,7 +320,8 @@
     <sys:String x:Key="settings_minimize_tray_description">Keep in background instead of terminating the app</sys:String>
     <sys:String x:Key="settings_autostart">Launch on boot</sys:String>
     <sys:String x:Key="settings_autostart_description">Start minimized on system boot</sys:String>
-
+    <sys:String x:Key="settings_autostart_permission">Cannot update auto-start entry in registry. Registry access (HKCU) was explicitly disabled by your system administrator.</sys:String>
+    
     <sys:String x:Key="settings_connpopup">Configure connection popup</sys:String>
     <sys:String x:Key="settings_devmode">Developer options</sys:String>
 

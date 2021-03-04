@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using GalaxyBudsClient.Interop.TrayIcon;
 using Hardcodet.Wpf.TaskbarNotification;
+using Serilog;
 using Application = System.Windows.Application;
 
 namespace ThePBone.Interop.Win32.TrayIcon
@@ -53,11 +54,6 @@ namespace ThePBone.Interop.Win32.TrayIcon
         #endregion
 
         #region Threading
-        public void Cleanup()
-        {
-            ResourceLoader.ClearCache();
-        }
-        
         public bool BeginInvoke(Delegate dlg, params object[] args)
         {
             if (_ctx == null)
@@ -178,10 +174,19 @@ namespace ThePBone.Interop.Win32.TrayIcon
             private static void ReloadStyles(bool dark)
             {
                 Application.Current.Resources.MergedDictionaries.Clear();
-                Application.Current.Resources.MergedDictionaries.Add(
-                    ResourceLoader.LoadXamlFromManifest<ResourceDictionary>("ThePBone.Interop.Win32.TrayIcon.Styles.Styles.xaml"));
-                Application.Current.Resources.MergedDictionaries.Add(
-                    ResourceLoader.LoadXamlFromManifest<ResourceDictionary>($"ThePBone.Interop.Win32.TrayIcon.Styles.Brushes{(dark ? "Dark" : string.Empty)}.xaml"));
+                try
+                {
+                    Application.Current.Resources.MergedDictionaries.Add(
+                        ResourceLoader.LoadXamlFromManifest<ResourceDictionary>(
+                            "ThePBone.Interop.Win32.TrayIcon.Styles.Styles.xaml"));
+                    Application.Current.Resources.MergedDictionaries.Add(
+                        ResourceLoader.LoadXamlFromManifest<ResourceDictionary>(
+                            $"ThePBone.Interop.Win32.TrayIcon.Styles.Brushes{(dark ? "Dark" : string.Empty)}.xaml"));
+                }
+                catch (InvalidOperationException ex)
+                {
+                    Log.Fatal("Win32.TrayIcon: LoadXamlFromManifest: stream was null");
+                }
             }
 
             private void CreateMenu()

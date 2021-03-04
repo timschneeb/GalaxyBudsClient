@@ -83,8 +83,15 @@ namespace GalaxyBudsClient.Scripting
 
         public void UnregisterHook(IHook hook)
         {
-            Hooks.Remove(hook);
-            hook.OnUnhooked();
+            try
+            {
+                Hooks.Remove(hook);
+                hook.OnUnhooked();
+            }
+            catch (Exception ex)
+            {
+                Log.Error("ScriptManager.UnregisterHook: " + ex);
+            }
         }
 
         public void RegisterUserHooks()
