@@ -157,15 +157,8 @@ namespace GalaxyBudsClient.Message.Decoder
                 else
                     WearState = WearStates.None;
 
-                if (msg.Payload[7] == 101)
-                {
-                    BatteryCase = 0;
-                }
-                else
-                {
-                   BatteryCase = msg.Payload[7]; 
-                }
-
+                BatteryCase = msg.Payload[7]; 
+                
                 if (ActiveModel == Models.BudsPlus)
                 {
                     AmbientSoundEnabled = Convert.ToBoolean(msg.Payload[8]);

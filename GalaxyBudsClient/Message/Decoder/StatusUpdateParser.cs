@@ -64,15 +64,7 @@ namespace GalaxyBudsClient.Message.Decoder
                 else
                     WearState = WearStates.None;
 
-                if (msg.Payload[6] == 101)
-                {
-                    /* Cradle disconnected */
-                    BatteryCase = 0;
-                }
-                else
-                {
-                    BatteryCase = msg.Payload[6];
-                }
+                BatteryCase = msg.Payload[6];
             }
         }
 

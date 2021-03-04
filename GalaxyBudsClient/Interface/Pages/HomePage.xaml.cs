@@ -235,8 +235,8 @@ namespace GalaxyBudsClient.Interface.Pages
         
 		public async void ProcessBasicUpdate(IBasicStatusUpdate parser)
         {
-            _batteryCase.Content = !BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery) ? string.Empty : $"{parser.BatteryCase}%";
-            _caseLabel.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery);
+            _batteryCase.Content = !BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery) || parser.BatteryCase > 100 ? string.Empty : $"{parser.BatteryCase}%";
+            _caseLabel.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery) && parser.BatteryCase <= 100;
 
             if (BluetoothImpl.Instance.ActiveModel != Models.Buds)
             {

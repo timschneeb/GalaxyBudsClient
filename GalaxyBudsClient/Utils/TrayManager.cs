@@ -85,7 +85,7 @@ namespace GalaxyBudsClient.Utils
             {
                 bsu.BatteryL > 0 ? new TrayMenuItem($"{Loc.Resolve("left")}: {bsu.BatteryL}%", false) : null,
                 bsu.BatteryR > 0 ? new TrayMenuItem($"{Loc.Resolve("right")}: {bsu.BatteryR}%", false) : null,
-                (bsu.BatteryCase > 0 && BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery)) ?
+                (bsu.BatteryCase > 0 && bsu.BatteryCase <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery)) ?
                     new TrayMenuItem($"{Loc.Resolve("case")}: {bsu.BatteryCase}%", false) : null,
                 new TrayMenuSeparator(),
             };
