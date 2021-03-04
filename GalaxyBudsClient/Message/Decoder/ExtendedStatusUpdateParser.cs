@@ -157,7 +157,7 @@ namespace GalaxyBudsClient.Message.Decoder
                 else
                     WearState = WearStates.None;
 
-                if (ActiveModel == Models.BudsPro && msg.Payload[7] == 101)
+                if (msg.Payload[7] == 101)
                 {
                     BatteryCase = 0;
                 }
