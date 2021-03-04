@@ -20,7 +20,7 @@ namespace GalaxyBudsClient.Platform.Windows
                         Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", false);
                     return key?.GetValue("Galaxy Buds Client", null) != null;
                 }
-                catch (SecurityException ex)
+                catch (SecurityException)
                 {
                     return false;
                 }

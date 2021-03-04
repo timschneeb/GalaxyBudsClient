@@ -61,6 +61,7 @@
     <sys:String x:Key="touchoption_volume_up">Lauter</sys:String>
     <sys:String x:Key="touchoption_volume_down">Leiser</sys:String>
     <sys:String x:Key="touchoption_ambientsound">Ambient Sound</sys:String>
+    <sys:String x:Key="touchoption_switch_noisecontrols">Geräuschverhalten wechseln</sys:String>
     <sys:String x:Key="touchoption_spotify">Spotify (nur Android)</sys:String>
     <sys:String x:Key="touchoption_custom">Benutzerdefinierte Aktion...</sys:String>
     <sys:String x:Key="touchoption_custom_null">Nicht festgelegt</sys:String>
@@ -103,19 +104,21 @@
     <!-- Hotkey Recorder Dialog (Custom action) -->
     <sys:String x:Key="hotrec_title">Hotkey Recorder</sys:String>
     <sys:String x:Key="hotrec_content">Bitte gebe eine Tastenkombination ein (gedrückt halten):</sys:String>
-    <sys:String x:Key="hotrec_empty">None</sys:String>
+    <sys:String x:Key="hotrec_empty">Leer</sys:String>
+    <sys:String x:Key="hotrec_note">Hinweis: Aufgrund von User Interface Privacy Isolation (UIPI) können nur Programme welche auf der gleichen oder niedrigen Berechtigungsstufe gestartet wurden, Hotkey-Befehle erhalten.</sys:String>
 
-        <!-- Hotkey Action Builder Dialog -->
-    <sys:String x:Key="hotkey_edit_title">Hotkey editor</sys:String>
-    <sys:String x:Key="hotkey_edit_invalid">Invalid hotkey selection</sys:String>
-    <sys:String x:Key="hotkey_edit_invalid_desc">Please choose at least one key aside from modifiers</sys:String>
-    <sys:String x:Key="hotkey_edit_invalid_action">Invalid action</sys:String>
-    <sys:String x:Key="hotkey_edit_invalid_action_desc">Please choose an action</sys:String>
-    <sys:String x:Key="hotkey_edit_modifier">Modifiers</sys:String>
-    <sys:String x:Key="hotkey_edit_keys">Keys</sys:String>
-    <sys:String x:Key="hotkey_edit_action">Action</sys:String>
-    <sys:String x:Key="hotkey_edit_preview">Shortcut preview: </sys:String>
-    <sys:String x:Key="hotkey_edit_header">Select a keyboard hotkey</sys:String>
+    <!-- Hotkey Action Builder Dialog -->
+    <sys:String x:Key="hotkey_edit_title">Hotkey bearbeiten</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid">Ungültige Hotkeyauswahl</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_desc">Bitte wähle mindestens eine Taste neben den Modifikatoren aus</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action">Ungültige Aktion</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action_desc">Bitte wähle eine Aktion aus</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_mod">Modifikator fehlt</sys:String>
+    <sys:String x:Key="hotkey_edit_modifier">Modifikatoren</sys:String>
+    <sys:String x:Key="hotkey_edit_keys">Tasten</sys:String>
+    <sys:String x:Key="hotkey_edit_action">Aktion</sys:String>
+    <sys:String x:Key="hotkey_edit_preview">Vorschau: </sys:String>
+    <sys:String x:Key="hotkey_edit_header">Wähle eine Tastaturkombination aus</sys:String>
     
     <!-- Hotkey page -->
     <sys:String x:Key="hotkey_header">Keyboard hotkeys</sys:String>
@@ -203,7 +206,7 @@ Diese App unterstützt alle Galaxy Buds Modelle.
 
     <!-- Device selection page (setup) -->
     <sys:String x:Key="devsel_header">Galaxy Buds auswählen</sys:String>
-    <sys:String x:Key="devsel_search">Gekoppelte Geräte neu laden</sys:String>
+    <sys:String x:Key="devsel_refresh">Gekoppelte Geräte neu laden</sys:String>
     <sys:String x:Key="devsel_device_name">Gerätename</sys:String>
     <sys:String x:Key="devsel_btaddr">MAC-Adresse</sys:String>
     <sys:String x:Key="devsel_model">Modell</sys:String>
@@ -288,6 +291,22 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="selftest_pass_long">Keine Probleme erkannt</sys:String>
     <sys:String x:Key="selftest_fail_long">Mind. ein Problem erkannt</sys:String>
 
+    <sys:String x:Key="coredump_header">Daten werden übertragen...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_prepare">Bereite Download vor...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_cancelled">Download abgebrochen</sys:String>
+    <sys:String x:Key="coredump_dl_progress_finished">Download beendet</sys:String>
+    <sys:String x:Key="coredump_dl_trace_progress">Trace dump wird heruntergeladen... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_core_progress">Core dump wird heruntergeladen... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytes)</sys:String>
+    <sys:String x:Key="coredump_dl_note">
+        Die Audioübertragung ist während diesem Vorgang temporär deaktiviert. Die Ohrhörer werden getrennt, sobald die Übertragung fertiggestellt wurde; bitte manuell neu verbinden&#10;&#10;Falls die Übertragung einfriert oder das Gerät vorzeitig getrennt wird, kann der Download nicht weiter fortgeführt werden. Diese Funktion ist zurzeit sehr instabil und experimentell. 
+    </sys:String>
+    <sys:String x:Key="coredump_dl_save_fail_title">Speichern fehlgeschlagen</sys:String>
+    <sys:String x:Key="coredump_dl_save_fail">Die Daten konnten nicht von temporärem Speicherort zum Zielordner kopiert werden. Grund: {0}</sys:String>
+    <sys:String x:Key="coredump_dl_save_success_title">Daten erfolgreich gespeichert</sys:String>
+    <sys:String x:Key="coredump_dl_save_success">{0} Datei(en) wurden in '{1}' gespeichert</sys:String>
+    <sys:String x:Key="coredump_dl_save_dialog_title">Wähle einen Zielordner aus...</sys:String>
+
     <!-- Settings -->
     <sys:String x:Key="settings_header">Einstellungen</sys:String>
 
@@ -301,6 +320,7 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="settings_minimize_tray_description">In den Hintergrund versetzen statt die App zu beenden</sys:String>
     <sys:String x:Key="settings_autostart">Mit Systemstart starten</sys:String>
     <sys:String x:Key="settings_autostart_description">Starte Anwendung minimiert mit dem Systemstart</sys:String>
+    <sys:String x:Key="settings_autostart_permission">Registry-Eintrag konnte nicht aktualisiert werden. Zugriff auf die Registry (HKCU) wurde vom Systemadministrator explizit für den aktuellen Nutzer deaktiviert.</sys:String>
 
     <sys:String x:Key="settings_connpopup">Verbindungspopup einstellen</sys:String>
     <sys:String x:Key="settings_devmode">Entwickleroptionen</sys:String>
