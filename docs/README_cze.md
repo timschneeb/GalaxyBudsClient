@@ -23,12 +23,12 @@
   </a>
 </p>
 <p align="center">
-  <a href="#key-features">Klíčové vlastnosti</a> •
-  <a href="#download">Stažení</a> •
-  <a href="#how-it-works">Jak to funguje</a> •
-  <a href="#contributing">Spolupráce</a> •
-  <a href="#credits">Zásluhy</a> •
-  <a href="#license">Licence</a> 
+  <a href="#klíčové-vlastnosti">Klíčové vlastnosti</a> •
+  <a href="#stažení">Stažení</a> •
+  <a href="#jak-to-funguje">Jak to funguje</a> •
+  <a href="#spolupráce">Spolupráce</a> •
+  <a href="#zásluhy">Zásluhy</a> •
+  <a href="#licence">Licence</a> 
 </p>
 
 
@@ -98,7 +98,7 @@ Pokud chcete nahlásit chybu nebo navrhnout Vaše nápady na tento projekt, jste
 Pokud nám plánujete pomoci s překladem aplikace, [viz pokyny na naší wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations). Nejsou vyžadovány žádné znalosti programování, můžete vyzkoušet vaše překlady bez instalace jakýchkoliv vývojářských nástrojů před podání žádosti o sjednocení kódu.
 Automaticky generovaný postup překladů pro jednotlivé jazyky naleznete zde: [/meta/translations.md](https://github.com/ThePBone/GalaxyBudsClient/blob/master/meta/translations.md)
 
-Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý požadavek na sjednocení kódů s vysvětlením Vašich změn. U větších a komplexnějších příspěvků by bylo hezké, kdybyste před zahájením práce mohli otevřít nějaký problém (nebo mi poslat zprávu na Telegram [@tpheone] (https://t.me/thepbone)).
+Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý požadavek na sjednocení kódů s vysvětlením Vašich změn. U větších a komplexnějších příspěvků by bylo hezké, kdybyste před zahájením práce mohli otevřít nějaký problém (nebo mi poslat zprávu na Telegram [@tpheone](https://t.me/thepbone)).
 
 ## Zásluhy
 
