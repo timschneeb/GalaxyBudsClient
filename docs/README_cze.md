@@ -23,12 +23,12 @@
   </a>
 </p>
 <p align="center">
-  <a href="#key-features">Klíčové vlastnosti</a> •
-  <a href="#download">Stažení</a> •
-  <a href="#how-it-works">Jak to funguje</a> •
-  <a href="#contributing">Spolupráce</a> •
-  <a href="#credits">Zásluhy</a> •
-  <a href="#license">Licence</a> 
+  <a href="#klíčové-vlastnosti">Klíčové vlastnosti</a> •
+  <a href="#stažení">Stažení</a> •
+  <a href="#jak-to-funguje">Jak to funguje</a> •
+  <a href="#spolupráce">Spolupráce</a> •
+  <a href="#zásluhy">Zásluhy</a> •
+  <a href="#licence">Licence</a> 
 </p>
 
 
