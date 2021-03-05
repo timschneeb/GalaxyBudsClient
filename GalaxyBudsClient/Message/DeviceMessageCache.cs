@@ -1,3 +1,4 @@
+using Castle.Components.DictionaryAdapter;
 using GalaxyBudsClient.Message.Decoder;
 
 namespace GalaxyBudsClient.Message
@@ -30,6 +31,13 @@ namespace GalaxyBudsClient.Message
             SPPMessageHandler.Instance.ExtendedStatusUpdate += (sender, parser) => ExtendedStatusUpdate = parser;
             SPPMessageHandler.Instance.StatusUpdate += (sender, parser) => StatusUpdate = parser;
             SPPMessageHandler.Instance.GetAllDataResponse += (sender, parser) => DebugGetAllData = parser;
+            SPPMessageHandler.Instance.BaseUpdate += (sender, update) =>
+            {
+                if (update.BatteryCase <= 100 || BasicStatusUpdateWithValidCase == null) // 101 = Disconnected
+                {
+                    BasicStatusUpdateWithValidCase = update;
+                }
+            };
         }
 
         public void Clear()
@@ -44,5 +52,6 @@ namespace GalaxyBudsClient.Message
         public StatusUpdateParser? StatusUpdate { set; get; }
 
         public IBasicStatusUpdate? BasicStatusUpdate => (IBasicStatusUpdate?) StatusUpdate ?? ExtendedStatusUpdate;
+        public IBasicStatusUpdate? BasicStatusUpdateWithValidCase { set; get; }
     }
 }

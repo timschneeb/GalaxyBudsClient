@@ -79,6 +79,11 @@ namespace GalaxyBudsClient.Interface.Dialogs
         
         private void UpdateContent(int bl, int br, int bc)
         {
+            if (bc > 100)
+            {
+                bc = DeviceMessageCache.Instance.BasicStatusUpdateWithValidCase?.BatteryCase ?? bc;
+            }
+            
             _batteryL.Content = $"{bl}%"; 
             _batteryR.Content = $"{br}%";
             _batteryC.Content = $"{bc}%";

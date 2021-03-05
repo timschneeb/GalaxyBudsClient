@@ -156,7 +156,7 @@ namespace GalaxyBudsClient.Message.Decoder
                     WearState = WearStates.R;
                 else
                     WearState = WearStates.None;
-
+                
                 BatteryCase = msg.Payload[7]; 
                 
                 if (ActiveModel == Models.BudsPlus)

@@ -160,10 +160,10 @@ namespace GalaxyBudsClient.Message.Decoder
 
                 LeftAdcSOC = BitConverter.ToInt16(msg.Payload, 42);
                 LeftAdcVCell = BitConverter.ToInt16(msg.Payload, 44) * 0.01d;
-                LeftAdcCurrent = BitConverter.ToInt16(msg.Payload, 46) * 1.0E-4d;
+                LeftAdcCurrent = BitConverter.ToInt16(msg.Payload, 46) * -0.1d; //1.0E-4d;
                 RightAdcSOC = BitConverter.ToInt16(msg.Payload, 48);
                 RightAdcVCell = BitConverter.ToInt16(msg.Payload, 50) * 0.01d;
-                RightAdcCurrent = BitConverter.ToInt16(msg.Payload, 52) * 1.0E-4d;
+                RightAdcCurrent = BitConverter.ToInt16(msg.Payload, 52) * -0.1d; //1.0E-4d;
 
                 LeftTspAbs = BitConverter.ToInt16(msg.Payload, 54);
                 RightTspAbs = BitConverter.ToInt16(msg.Payload, 56);

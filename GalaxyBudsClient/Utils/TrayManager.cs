@@ -80,7 +80,11 @@ namespace GalaxyBudsClient.Utils
         private List<TrayMenuItem?> RebuildBatteryInfo()
         {
             var bsu = DeviceMessageCache.Instance.BasicStatusUpdate!;
-
+            if (bsu.BatteryCase > 100)
+            {
+                bsu.BatteryCase = DeviceMessageCache.Instance.BasicStatusUpdateWithValidCase?.BatteryCase ?? bsu.BatteryCase;
+            }
+            
             return new List<TrayMenuItem?>
             {
                 bsu.BatteryL > 0 ? new TrayMenuItem($"{Loc.Resolve("left")}: {bsu.BatteryL}%", false) : null,
