@@ -98,7 +98,7 @@ Pokud chcete nahlásit chybu nebo navrhnout Vaše nápady na tento projekt, jste
 Pokud nám plánujete pomoci s překladem aplikace, [viz pokyny na naší wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations). Nejsou vyžadovány žádné znalosti programování, můžete vyzkoušet vaše překlady bez instalace jakýchkoliv vývojářských nástrojů před podání žádosti o sjednocení kódu.
 Automaticky generovaný postup překladů pro jednotlivé jazyky naleznete zde: [/meta/translations.md](https://github.com/ThePBone/GalaxyBudsClient/blob/master/meta/translations.md)
 
-Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý požadavek na sjednocení kódů s vysvětlením Vašich změn. U větších a komplexnějších příspěvků by bylo hezké, kdybyste před zahájením práce mohli otevřít nějaký problém (nebo mi poslat zprávu na Telegram [@tpheone] (https://t.me/thepbone)).
+Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý požadavek na sjednocení kódů s vysvětlením Vašich změn. U větších a komplexnějších příspěvků by bylo hezké, kdybyste před zahájením práce mohli otevřít nějaký problém (nebo mi poslat zprávu na Telegram [@tpheone](https://t.me/thepbone)).
 
 ## Zásluhy
 
