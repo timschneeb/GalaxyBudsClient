@@ -326,6 +326,7 @@
     <sys:String x:Key="settings_minimize_tray_description">Nechat na pozadí místo ukončení aplikace</sys:String>
     <sys:String x:Key="settings_autostart">Zapnout při startu systému</sys:String>
     <sys:String x:Key="settings_autostart_description">Zapnout minimalizované při startu systému</sys:String>
+    <sys:String x:Key="settings_autostart_permission">Nelze aktualizovat položku automatického spuštění v registru. Správce systému výslovně zakázal přístup k registru (HKCU).</sys:String>
 
     <sys:String x:Key="settings_connpopup">Nastavení vyskakovacího okna připojení</sys:String>
     <sys:String x:Key="settings_devmode">Vývojářský režim</sys:String>
@@ -431,6 +432,7 @@
     </sys:String>
     <sys:String x:Key="connlost_description_p3">Dodatečné informace:</sys:String>
     <sys:String x:Key="connlost_noinfo">Nepodařilo se nashromáždit chybové hlášení.</sys:String>
+    <sys:String x:Key="connlost_disconnected">Zařízení je odpojené</sys:String>
     <sys:String x:Key="connlost_connect">Připojit</sys:String>
     <sys:String x:Key="connlost_connecting">Připojování...</sys:String>
 
