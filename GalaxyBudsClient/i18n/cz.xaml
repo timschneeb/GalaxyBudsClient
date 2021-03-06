@@ -81,8 +81,8 @@
     <sys:String x:Key="optionsmenu_credits">Autoři</sys:String>
 
     <!-- Tray context menu -->
-    <sys:String x:Key="tray_unlock_touchpad">Odemknout touchpad</sys:String>
-    <sys:String x:Key="tray_lock_touchpad">Zamknout touchpad</sys:String>
+    <sys:String x:Key="tray_unlock_touchpad">Odemknout dotykové ovládání</sys:String>
+    <sys:String x:Key="tray_lock_touchpad">Zamknout dotykové</sys:String>
     <sys:String x:Key="tray_enable_ambient_sound">Povolit ambientní režim</sys:String>
     <sys:String x:Key="tray_disable_ambient_sound">Zakázat ambientní režim</sys:String>
     <sys:String x:Key="tray_enable_eq">Povolit ekvalizér</sys:String>
