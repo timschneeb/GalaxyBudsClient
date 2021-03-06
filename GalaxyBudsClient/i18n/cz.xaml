@@ -75,7 +75,7 @@
     <!-- Options menu -->
     <sys:String x:Key="optionsmenu_title">Možnosti</sys:String>
     <sys:String x:Key="optionsmenu_settings">Nastavení</sys:String>
-    <sys:String x:Key="optionsmenu_refresh">Přenačíst přehled</sys:String>
+    <sys:String x:Key="optionsmenu_refresh">Přednačíst přehled</sys:String>
     <sys:String x:Key="optionsmenu_deregister">Odstranit zařízení</sys:String>
     <sys:String x:Key="optionsmenu_update">Vyhledat aktualizace</sys:String>
     <sys:String x:Key="optionsmenu_credits">Autoři</sys:String>
