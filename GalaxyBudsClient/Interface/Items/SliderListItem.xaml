@@ -25,6 +25,7 @@
                 Minimum="{Binding $parent[items:SliderListItem].Minimum}"
                 Maximum="{Binding $parent[items:SliderListItem].Maximum}"
                 Value="0" IsSnapToTickEnabled="True"
-                x:Name="Slider"/>
+                x:Name="Slider">
+        </Slider>
     </Grid>
 </UserControl>

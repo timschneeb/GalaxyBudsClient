@@ -93,7 +93,8 @@ namespace GalaxyBudsClient.Message.Decoder
         public byte DetectConversationsDuration { set; get; }
         [Device(Models.BudsPro)]
         public bool SpatialAudio { set; get; }
-        [Device(Models.BudsPro)]
+        
+        [Device(new []{ Models.BudsLive, Models.BudsPro })]
         public byte HearingEnhancements { set; get; }
         
         public override void ParseMessage(SPPMessage msg)
@@ -221,6 +222,10 @@ namespace GalaxyBudsClient.Message.Decoder
                     if (Revision >= 5)
                     {
                         RelieveAmbient = msg.Payload[21] == 1;
+                    }
+                    if (Revision >= 7)
+                    {
+                        HearingEnhancements = msg.Payload[22];
                     }
                 }
                 else if (ActiveModel == Models.BudsPro)

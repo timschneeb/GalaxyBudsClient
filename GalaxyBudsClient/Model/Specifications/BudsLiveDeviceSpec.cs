@@ -11,12 +11,13 @@ namespace GalaxyBudsClient.Model.Specifications
         public Dictionary<IDeviceSpec.Feature, FeatureRule?> Rules =>
             new Dictionary<IDeviceSpec.Feature, FeatureRule?>()
             {
-                { IDeviceSpec.Feature.SeamlessConnection, new FeatureRule(11, "R180XXU0ATF2")  },
+                { IDeviceSpec.Feature.SeamlessConnection, new FeatureRule(3, "R180XXU0ATF2")  },
                 { IDeviceSpec.Feature.AmbientPassthrough, null },
                 { IDeviceSpec.Feature.Anc, null },
                 { IDeviceSpec.Feature.GamingMode, null },
                 { IDeviceSpec.Feature.CaseBattery, null },
                 { IDeviceSpec.Feature.FragmentedMessages, null },
+                { IDeviceSpec.Feature.StereoPan, new FeatureRule(7, "R180XXU0AUB5") },
             };
         
         public Models Device => Models.BudsLive;

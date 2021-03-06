@@ -15,6 +15,8 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <elements:PageHeader Grid.Row="1" Title="{DynamicResource eq_header}" BackPressed="BackButton_OnPointerPressed"/>
         <Border Grid.Row="3" Classes="RoundedBorderListItem BottomSpacer10">
@@ -22,6 +24,9 @@
         </Border>
         <Border Grid.Row="4" Classes="RoundedBorderListItem BottomSpacer10" >
             <items:SliderListItem x:Name="EqPreset" Text="{DynamicResource eq_preset}" Maximum="4" Changed="EqPreset_OnChanged" />
+        </Border>
+        <Border Grid.Row="6" Classes="RoundedBorderListItem BottomSpacer10" >
+            <items:SliderListItem x:Name="StereoPan" Text="{DynamicResource eq_stereo_balance}" Maximum="32" Changed="StereoPan_OnChanged" />
         </Border>
     </Grid>
 </pages:AbstractPage>

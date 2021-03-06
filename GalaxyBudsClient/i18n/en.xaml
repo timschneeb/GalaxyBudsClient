@@ -361,7 +361,10 @@
     <sys:String x:Key="eq_enable">Enable equalizer</sys:String>
     <sys:String x:Key="eq_preset">Preset</sys:String>
     <sys:String x:Key="eq_dolby">Optimize for use with Dolby</sys:String>
-
+    <sys:String x:Key="eq_stereo_balance">Left/right sound balance</sys:String>
+    <sys:String x:Key="eq_stereo_balance_value">{0}% left; {1}% right</sys:String>
+    <sys:String x:Key="eq_stereo_balance_neutral">Neutral</sys:String>
+    
     <sys:String x:Key="eq_bass">Bass Boost</sys:String>
     <sys:String x:Key="eq_soft">Soft</sys:String>
     <sys:String x:Key="eq_dynamic">Dynamic</sys:String>
