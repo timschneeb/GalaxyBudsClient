@@ -169,7 +169,7 @@
 
     <!-- Main page -->
     <sys:String x:Key="mainpage_corrupt_data">Obdržena poničená data. Opakuji připojení...</sys:String>
-    <sys:String x:Key="mainpage_find_my_earbuds">Najít sluchátka</sys:String>
+    <sys:String x:Key="mainpage_find_my_earbuds">Najít moje sluchátka</sys:String>
     <sys:String x:Key="mainpage_touchpad">Dotykové ovládání</sys:String>
     <sys:String x:Key="mainpage_ambient_sound">Ambientní režim</sys:String>
     <sys:String x:Key="mainpage_noise">Potlačení šumu</sys:String>
