@@ -7,7 +7,7 @@ Translation instructions are available [in the wiki](https://github.com/ThePBone
 <table>
 <tr><th>Language</th><th>Progress</th><th>Missing strings</th><th>Details</th></tr>
 <tr><td>cn (China)</td><td>97%</td><td>9 missing string(s)</td><td><a href="cn.md">View details</a></td></tr>
-<tr><td>cz (Czechia)</td><td>99%</td><td>3 missing string(s)</td><td><a href="cz.md">View details</a></td></tr>
+<tr><td>cz (Czechia)</td><td>100%</td><td>No missing strings</td><td><a href="cz.md">View details</a></td></tr>
 <tr><td>de (Germany)</td><td>99%</td><td>3 missing string(s)</td><td><a href="de.md">View details</a></td></tr>
 <tr><td>es (Spain)</td><td>62%</td><td>120 missing string(s)</td><td><a href="es.md">View details</a></td></tr>
 <tr><td>in (India)</td><td>63%</td><td>117 missing string(s)</td><td><a href="in.md">View details</a></td></tr>
