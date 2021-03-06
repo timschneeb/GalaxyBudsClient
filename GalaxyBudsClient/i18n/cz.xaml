@@ -431,7 +431,7 @@
     <sys:String x:Key="connlost_description_p1">Není možné navázat připojení s vašimi sluchátky.</sys:String>
     <sys:String x:Key="connlost_description_p2">
 	Prosím zkontrolujte vaše nastavení Bluetooth a ujistěte se, že jsou sluchátka zapnuta a připojena k tomuto počítači.&#10;
-    Pokud potřebujete, můžete také spárovat nová sluchátka. V tom případě zvolte "Možnosti > Odstranit zařízení"
+Pokud potřebujete, můžete také spárovat nová sluchátka. V tom případě zvolte "Možnosti > Odstranit zařízení"
     </sys:String>
     <sys:String x:Key="connlost_description_p3">Dodatečné informace:</sys:String>
     <sys:String x:Key="connlost_noinfo">Nepodařilo se nashromáždit chybové hlášení.</sys:String>
