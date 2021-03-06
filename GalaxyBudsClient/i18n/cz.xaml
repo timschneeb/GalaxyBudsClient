@@ -369,6 +369,9 @@
     <sys:String x:Key="eq_enable">Povolit ekvalizér</sys:String>
     <sys:String x:Key="eq_preset">Předloha</sys:String>
     <sys:String x:Key="eq_dolby">Optimalizovat pro Dolby</sys:String>
+    <sys:String x:Key="eq_stereo_balance">Vyvážení zvuku vlevo/vpravo</sys:String>
+    <sys:String x:Key="eq_stereo_balance_value">{0}% levé; {1}% pravé</sys:String>
+    <sys:String x:Key="eq_stereo_balance_neutral">Neutrální</sys:String>
 
     <sys:String x:Key="eq_bass">Zesílení basů</sys:String>
     <sys:String x:Key="eq_soft">Měkký</sys:String>
