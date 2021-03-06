@@ -85,8 +85,8 @@
     <sys:String x:Key="tray_lock_touchpad">Zamknout touchpad</sys:String>
     <sys:String x:Key="tray_enable_ambient_sound">Povolit ambientní režim</sys:String>
     <sys:String x:Key="tray_disable_ambient_sound">Zakázat ambientní režim</sys:String>
-    <sys:String x:Key="tray_enable_eq">Povolit equalizer</sys:String>
-    <sys:String x:Key="tray_disable_eq">Zakázat equalizer</sys:String>
+    <sys:String x:Key="tray_enable_eq">Povolit ekvalizér</sys:String>
+    <sys:String x:Key="tray_disable_eq">Zakázat ekvalizér</sys:String>
     <sys:String x:Key="tray_enable_anc">Zapnout aktivní potlačení hluku</sys:String>
     <sys:String x:Key="tray_disable_anc">Vypnout aktivní potlačení hluku</sys:String>
     <sys:String x:Key="tray_switch_noise">Přepnout ovládání šumu</sys:String>
