@@ -2,6 +2,7 @@ using System;
 using Avalonia;
 using Avalonia.Platform;
 using Avalonia.Threading;
+using Serilog;
 using ThePBone.Interop.Win32;
 
 namespace GalaxyBudsClient.Platform.Windows
@@ -24,7 +25,15 @@ namespace GalaxyBudsClient.Platform.Windows
                       wParam = wParam,
                       lParam = lParam
                   });
-            
+
+            Log.Debug(new WndProcClient.WindowMessage()
+            {
+                hWnd = hWnd,
+                Msg = (WndProcClient.WindowsMessage) msg,
+                wParam = wParam,
+                lParam = lParam
+            }.ToString());
+
             return base.WndProc(hWnd, msg, wParam, lParam);
         }
     }
