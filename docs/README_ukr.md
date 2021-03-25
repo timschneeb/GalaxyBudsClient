@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="../README.md">English</a> | <a href="./README_chs.md">中文</a> | <a href="./README_rus.md">Русский</a> | <a href="./README_jpn.md">日本語</a> | Українська | <a href="./README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> <br>
+  <a href="../README.md">English</a> | <a href="./README_chs.md">中文</a> | <a href="./README_rus.md">Русский</a> | <a href="./README_jpn.md">日本語</a> | Українська | <a href="./README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> <br>
     <sub>Увага: файли "Про проект" підтримуються перекладачами і можуть час від часу не відповідати поточній версії. Для новішої інформації покладайтеся на англоязичний варіант.</sub>
 </p>
 <h1 align="center">

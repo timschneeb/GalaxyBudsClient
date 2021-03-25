@@ -1,6 +1,6 @@
 
 <p align="center">
-  English | <a href="/docs/README_chs.md">中文</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> <br>
+  English | <a href="/docs/README_chs.md">中文</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> <br>
     <sub>Attention: readme files are maintained by translators and may become outdated from time to time. For newest info rely on English version.</sub>
 </p>
 <h1 align="center">
@@ -124,6 +124,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@KatJillianne](https://github.com/KatJillianne) - Vietnamese translation
 * [@joskaja](https://github.com/joskaja) and [@Joedmin580](https://github.com/Joedmin580) - Czech translation
 * [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - German translation
+* [@nikossyr](https://github.com/nikossyr) - Greek translation
 
 ## License
 
