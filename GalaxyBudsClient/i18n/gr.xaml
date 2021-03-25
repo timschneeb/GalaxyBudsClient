@@ -253,7 +253,7 @@
     <!-- System/Self-Test -->
     <sys:String x:Key="system_overview_header">Σύστημα</sys:String>
     <sys:String x:Key="system_header">Πληροφορίες συστήματος</sys:String>
-    <sys:String x:Key="system_selftest">Εκτέλεση τεστ αυτοελέγχου</sys:String>
+    <sys:String x:Key="system_selftest">Εκτέλεση τεστ αυτοαξιολόγησης </sys:String>
     <sys:String x:Key="system_selftest_desc">Επιβεβαιώνει πως όλα τα υποσυστήματα των ακουστικών σας λειτουργούν σωστά</sys:String>
     <sys:String x:Key="system_factory_reset">Επαναφορά εργοστασιακών ρυθμίσεων</sys:String>
     <sys:String x:Key="system_factory_reset_desc">Επαναφέρει τα ακουστικά σας στις εργοστασιακές τους ρυθμίσεις και τα αποσυνδέει</sys:String>
