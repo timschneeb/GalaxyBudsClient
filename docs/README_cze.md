@@ -96,7 +96,7 @@ V současné době zkoumám úpravy a reverzní inženýrství firmwaru pro Buds
 Pokud chcete nahlásit chybu nebo navrhnout Vaše nápady na tento projekt, jste vítáni k [otevření nového problému](https://github.com/ThePBone/GalaxyBudsClient/issues/new/choose) s vhodnou šablonou. [Navštivte naši wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/2.-How-to-submit-issues) pro detailní vysvětlení.
 
 Pokud nám plánujete pomoci s překladem aplikace, [viz pokyny na naší wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations). Nejsou vyžadovány žádné znalosti programování, můžete vyzkoušet vaše překlady bez instalace jakýchkoliv vývojářských nástrojů před podání žádosti o sjednocení kódu.
-Automaticky generovaný postup překladů pro jednotlivé jazyky naleznete zde: [/meta/translations.md](https://github.com/ThePBone/GalaxyBudsClient/blob/master/meta/translations.md)
+Automaticky generovaný postup překladů pro jednotlivé jazyky naleznete [zde](https://github.com/ThePBone/GalaxyBudsClient/blob/master/meta/translations.md).
 
 Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý požadavek na sjednocení kódů s vysvětlením Vašich změn. U větších a komplexnějších příspěvků by bylo hezké, kdybyste před zahájením práce mohli otevřít nějaký problém (nebo mi poslat zprávu na Telegram [@tpheone](https://t.me/thepbone)).
 
@@ -123,6 +123,7 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 * [@KatJillianne](https://github.com/KatJillianne) - vietnamský překlad
 * [@joskaja](https://github.com/joskaja) a [@Joedmin580](https://github.com/Joedmin580) - český překlad
 * [@TheLastFrame](https://github.com/TheLastFrame) a [@ThePBone](https://github.com/ThePBone) - německý překlad
+* [@nikossyr](https://github.com/ThePBone/GalaxyBudsClient/commits?author=nikossyr) - řecký překlad
 
 ## Licence
 
