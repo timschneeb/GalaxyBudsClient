@@ -123,7 +123,7 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 * [@KatJillianne](https://github.com/KatJillianne) - vietnamský překlad
 * [@joskaja](https://github.com/joskaja) a [@Joedmin580](https://github.com/Joedmin580) - český překlad
 * [@TheLastFrame](https://github.com/TheLastFrame) a [@ThePBone](https://github.com/ThePBone) - německý překlad
-* [@nikossyr](https://github.com/ThePBone/GalaxyBudsClient/commits?author=nikossyr) - řecký překlad
+* [@nikossyr](https://github.com/nikossyr) - řecký překlad
 
 ## Licence
 
