@@ -26,7 +26,8 @@ namespace GalaxyBudsClient.Model.Specifications
             DoubleTapVolume,
             CaseBattery,
             FragmentedMessages,
-            StereoPan
+            StereoPan,
+            FirmwareUpdates
         }
         
         public Dictionary<Feature, FeatureRule?> Rules { get; }

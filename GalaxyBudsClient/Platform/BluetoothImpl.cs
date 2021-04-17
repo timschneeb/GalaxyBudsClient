@@ -272,6 +272,11 @@ namespace GalaxyBudsClient.Platform
             }
         }
         
+        public async Task SendResponseAsync(SPPMessage.MessageIds id, params byte[]? payload)
+        {
+            await SendAsync(new SPPMessage{Id = id, Payload = payload ?? new byte[0], Type = SPPMessage.MsgType.Response});
+        }
+
         public async Task SendRequestAsync(SPPMessage.MessageIds id, params byte[]? payload)
         {
             await SendAsync(new SPPMessage{Id = id, Payload = payload ?? new byte[0], Type = SPPMessage.MsgType.Request});

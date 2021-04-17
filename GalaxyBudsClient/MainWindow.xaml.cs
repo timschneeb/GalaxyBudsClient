@@ -147,7 +147,7 @@ namespace GalaxyBudsClient
                 }
             };
 
-                _popup = new BudsPopup();
+            _popup = new BudsPopup();
 
             BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
             BluetoothImpl.Instance.Disconnected += OnDisconnected;
@@ -472,8 +472,11 @@ namespace GalaxyBudsClient
                     (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Settings),
                 [Loc.Resolve("optionsmenu_refresh")] = async (sender, args) =>
                     await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA),
+               
                 [Loc.Resolve("optionsmenu_deregister")] = (sender, args) => BluetoothImpl.Instance.UnregisterDevice()
-                    .ContinueWith((_) => Pager.SwitchPage(AbstractPage.Pages.Welcome))
+                    .ContinueWith((_) => Pager.SwitchPage(AbstractPage.Pages.Welcome)),
+                // TODO: Remove this vvv
+               //     ["Run FOTA update"] = async (sender, args) => await FirmwareTransferManager.Instance.Install(@"D:\Reverse Engineering\Galaxy Buds\Firmware\FOTA_R175XXU0ATH7.bin")
             };
 
             if (restricted)
