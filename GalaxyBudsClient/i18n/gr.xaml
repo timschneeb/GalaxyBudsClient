@@ -1,0 +1,437 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+ 
+    <sys:String x:Key="ResourceDictionaryName">Loc-gr</sys:String>
+
+    <!-- :::::::: Source code :::::::: -->
+
+    <!-- General -->
+    <sys:String x:Key="okay">OK</sys:String>
+    <sys:String x:Key="left">Αριστερό</sys:String>
+    <sys:String x:Key="right">Δεξί</sys:String>
+    <sys:String x:Key="case">Θήκη</sys:String>
+    <sys:String x:Key="error">Σφάλμα</sys:String>
+    <sys:String x:Key="cancel">Ακύρωση</sys:String>
+    <sys:String x:Key="apply">Εφαρμογή</sys:String>
+    <sys:String x:Key="select">Επιλογή</sys:String>
+    <sys:String x:Key="notset">Καμία επιλογή</sys:String>
+    <sys:String x:Key="unknown">Άγνωστο</sys:String>
+    <sys:String x:Key="back">Πίσω</sys:String>
+
+    <sys:String x:Key="nobluetoothdev">Δεν βρέθηκε αντάπτορας Bluetooth. Παρακαλώ ενεργοποιήστε το Bluetooth και προσπαθήστε ξανά.</sys:String>
+
+    <sys:String x:Key="anc">Active Noise Cancellation</sys:String>
+
+    <!-- SPP Message Parser -->
+    <sys:String x:Key="sppmsg_too_small">Το μέγεθος του πακέτου είναι πολύ μικρό</sys:String>
+    <sys:String x:Key="sppmsg_invalid_som">Άκυρο SOM</sys:String>
+    <!-- Context: SOM = Start of message -->
+    <sys:String x:Key="sppmsg_invalid_eom">Άκυρο EOM</sys:String>
+    <!-- Context: EOM = End of message -->
+    <sys:String x:Key="sppmsg_size_mismatch">Αναντιστοιχία μέγεθος του Payload</sys:String>
+    <sys:String x:Key="sppmsg_crc_fail">Λάθος Checksum</sys:String>
+    <sys:String x:Key="sppmsg_tl">Το μέγεθος του πακέτου είναι πολύ μικρό</sys:String>
+
+    <!-- Dark Mode States -->
+    <sys:String x:Key="darkmode_disabled">Ανενεργό</sys:String>
+    <sys:String x:Key="darkmode_enabled">Ενεργό</sys:String>
+    <sys:String x:Key="darkmode_system">Χρήση ρυθμίσεων συστήματος</sys:String>
+
+    <!-- Connection popup -->
+    <sys:String x:Key="connpopup_placement_tl">Πάνω αριστερά</sys:String>
+    <sys:String x:Key="connpopup_placement_tc">Πάνω κεντρικά</sys:String>
+    <sys:String x:Key="connpopup_placement_tr">Πάνω δεξιά</sys:String>
+    <sys:String x:Key="connpopup_placement_bl">Κάτω αριστερά</sys:String>
+    <sys:String x:Key="connpopup_placement_bc">Κάτω κεντρικά</sys:String>
+    <sys:String x:Key="connpopup_placement_br">Κάτω δεξιά</sys:String>
+    <sys:String x:Key="connpopup_title">Τα Galaxy Buds{1} του χρήστη {0} </sys:String>
+    <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
+
+    <!-- Placement  (Buds+) -->
+    <sys:String x:Key="placement_disconnected">Αποσυνδεδεμένα</sys:String>
+    <sys:String x:Key="placement_wearing">Στα αυτιά</sys:String>
+    <sys:String x:Key="placement_not_wearing">Σε αναμονή</sys:String>
+    <sys:String x:Key="placement_in_case">Στη θήκη</sys:String>
+
+    <!-- Touch options -->
+    <sys:String x:Key="touchoption_voice">Φωνητικές εντολές</sys:String>
+    <sys:String x:Key="touchoption_quickambientsound">Γρήγορη εναλλαγή ήχων περιβάλλοντος</sys:String>
+    <sys:String x:Key="touchoption_volume">Ένταση</sys:String>
+    <sys:String x:Key="touchoption_volume_up">Αύξηση έντασης</sys:String>
+    <sys:String x:Key="touchoption_volume_down">Μείωση έντασης</sys:String>
+    <sys:String x:Key="touchoption_ambientsound">Ήχοι περιβάλλοντος</sys:String>
+    <sys:String x:Key="touchoption_switch_noisecontrols">Εναλλαγή εξάλειψης θορύβου</sys:String>
+    <sys:String x:Key="touchoption_spotify">Spotify (μόνο για Android)</sys:String>
+    <sys:String x:Key="touchoption_custom">Προσαρμοσμένη επιλογή...</sys:String>
+    <sys:String x:Key="touchoption_custom_null">Καμία επιλογή</sys:String>
+    <sys:String x:Key="touchoption_custom_unknown">Άγνωστο</sys:String>
+    <sys:String x:Key="touchoption_custom_prefix">Προσαρμοσμένη επιλογή:</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_hotkey">Πατήστε πλήκτρο...</sys:String>
+    <sys:String x:Key="touchoption_custom_external_app">Εκτέλεση εξωτερικού προγράμματος...</sys:String>
+
+    <!-- Options menu -->
+    <sys:String x:Key="optionsmenu_title">Επιλογές</sys:String>
+    <sys:String x:Key="optionsmenu_settings">Ρυθμίσεις</sys:String>
+    <sys:String x:Key="optionsmenu_refresh">Ανανέωση</sys:String>
+    <sys:String x:Key="optionsmenu_deregister">Κατάργηση συσκευής</sys:String>
+    <sys:String x:Key="optionsmenu_update">Έλεγχος για ενημερώσεις</sys:String>
+    <sys:String x:Key="optionsmenu_credits">Συντελεστές</sys:String>
+
+    <!-- Tray context menu -->
+    <sys:String x:Key="tray_unlock_touchpad">Ξεκλείδωμα επιφάνειας αφής</sys:String>
+    <sys:String x:Key="tray_lock_touchpad">Κλείδωμα επιφάνειας αφής</sys:String>
+    <sys:String x:Key="tray_enable_ambient_sound">Ενεργοποίηση λειτουργίας ήχων περιβάλλοντος</sys:String>
+    <sys:String x:Key="tray_disable_ambient_sound">Απενεργοποίηση λειτουργίας ήχων περιβάλλοντος</sys:String>
+    <sys:String x:Key="tray_enable_eq">Ενεργοποίηση ισοσταθμιστή</sys:String>
+    <sys:String x:Key="tray_disable_eq">Απενεργοποίηση ισοσταθμιστή</sys:String>
+    <sys:String x:Key="tray_enable_anc">Ενεργοποίηση εξάλειψης θορύβου</sys:String>
+    <sys:String x:Key="tray_disable_anc">Απενεργοποίηση εξάλειψης θορύβου</sys:String>
+    <sys:String x:Key="tray_switch_noise">Εναλλαγή ελέγχου θορύβου</sys:String>
+    <sys:String x:Key="tray_quit">Έξοδος</sys:String>
+
+
+    <!-- :::::::: XAML files (static) :::::::: -->
+
+    <!-- General -->
+    <sys:String x:Key="continue_button">Συνέχεια</sys:String>
+
+    <!-- Hotkey Recorder Dialog (Custom action) -->
+    <sys:String x:Key="hotrec_title">Ανίχνευση συντόμευσης πληκτρολογίου</sys:String>
+    <sys:String x:Key="hotrec_content">Παρακαλώ εισάγετε ένα συνδυασμό πλήκτρων (κρατήστε πατημένο):</sys:String>
+    <sys:String x:Key="hotrec_empty">Κανένα</sys:String>
+    <sys:String x:Key="hotrec_note">Σημείωση: Λόγω του User Interface Privacy Isolation (UIPI)  μόνο εφαρμογές με το ίδιο ή χαμηλότερο επίπεδο δικαιωμάτων μπορούν να δεχτούν εντολές με συντομεύσεις πληκτρολογίου.</sys:String>
+
+    <!-- Hotkey Action Builder Dialog -->
+    <sys:String x:Key="hotkey_edit_title">Επεξεργασία Συντομεύσεων</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid">Άκυρη επιλογή συντόμευσης πλήκτρου</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_desc">Παρακαλώ επιλέξτε τουλάχιστον ένα πλήκτρο και ένα πλήκτρο ελέγχου</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_mod">Απαιτείται η χρήση πλήκτρου ελέγχου</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action">Άκυρη λειτουργία</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action_desc">Παρακαλώ επιλέξτε μία λειτουργία</sys:String>
+    <sys:String x:Key="hotkey_edit_modifier">Πλήκτρα ελέγχου</sys:String>
+    <sys:String x:Key="hotkey_edit_keys">Πλήκτρα</sys:String>
+    <sys:String x:Key="hotkey_edit_action">Λειτουργία</sys:String>
+    <sys:String x:Key="hotkey_edit_preview">Προεπισκόπηση συντόμευσης: </sys:String>
+    <sys:String x:Key="hotkey_edit_header">Επιλέξτε μία συντόμευση πληκτρολογίου</sys:String>
+    
+    <!-- Hotkey page -->
+    <sys:String x:Key="hotkey_header">Συντομεύσεις πληκτρολογίου</sys:String>
+    <sys:String x:Key="hotkey_add">Ορισμός νέας συντόμευσης</sys:String>
+    <sys:String x:Key="hotkey_empty">Δεν έχει οριστεί κάποια συντόμευση</sys:String>
+    <sys:String x:Key="hotkey_empty_desc">Δημιουργείστε νέα συντόμευση πατώντας το παραπάνω πλήκτρο</sys:String>
+    <sys:String x:Key="hotkey_edit">Επεξεργασία</sys:String>
+    <sys:String x:Key="hotkey_delete">Διαγραφή</sys:String>
+    <sys:String x:Key="hotkey_add_error">Αδυναμία εισαγωγής/ενημέρωσης της συντόμευσης</sys:String>
+    <sys:String x:Key="hotkey_add_error_context">Αλλαγμένες συντομεύσεις:</sys:String>
+    <sys:String x:Key="hotkey_add_error_duplicate">Ο συνδυασμός πλήκτρου που επιλέξατε είναι ήδη καταχωρημένος σαν συντόμευση από αυτό ή κάποιο άλλο πρόγραμμα. Παρακαλώ επιλέξτε κάποιο άλλο.</sys:String>
+    <sys:String x:Key="hotkey_add_error_unknown">Σφάλμα λειτουργικού συστήματος '{0}'</sys:String>
+
+    <!-- EventDispatcher module -->
+    <sys:String x:Key="event_none">Καμία</sys:String>
+    <sys:String x:Key="event_ambient_toggle">Εναλλαγή λειτουργίας ήχων περιβάλλοντος</sys:String>
+    <sys:String x:Key="event_ambient_volume_up">Αύξηση έντασης ήχων περιβάλλοντος</sys:String>
+    <sys:String x:Key="event_ambient_volume_down">Μείωση έντασης ήχων περιβάλλοντος</sys:String>
+    <sys:String x:Key="event_eq_toggle">Εναλλαγή λειτουργίας ισοσταθμιστή</sys:String>
+    <sys:String x:Key="event_eq_switch">Εναλλαγή προφίλ ισοσταθμιστή</sys:String>
+    <sys:String x:Key="event_anc_toggle">Εναλλαγή λειτουργίας εξάλειψης θορύβου</sys:String>
+    <sys:String x:Key="event_anc_switch_sensitivity">Αλλαγή ευαισθησίας ANC</sys:String>
+    <sys:String x:Key="event_touch_lock_toggle">Εναλλαγή κλειδώματος επιφάνειας αφής</sys:String>
+    <sys:String x:Key="event_double_edge_touch_toggle">Εναλλαγή λειτουργίας διπλού αγγίγματος άκρης ακουστικού</sys:String>
+    <sys:String x:Key="event_conversation_toggle">Εναλλαγή λειτουργίας ανίχνευσης ομιλίας</sys:String>
+    <sys:String x:Key="event_start_stop_find">Εκκίνηση/διακοπή λειτουργίας εύρεσης των ακουστικών μου</sys:String>
+    <sys:String x:Key="event_start_find">Εκκίνηση λειτουργίας εύρεσης των ακουστικών μου</sys:String>
+    <sys:String x:Key="event_stop_find">Διακοπή λειτουργίας εύρεσης των ακουστικών μου</sys:String>
+    <sys:String x:Key="event_paring_mode">Λειτουργία σύζευξης</sys:String>
+    <sys:String x:Key="event_media_play">Αναπαραγωγή</sys:String>
+    <sys:String x:Key="event_media_pause">Παύση</sys:String>
+    <sys:String x:Key="event_media_play_pause">Αναπαραγωγή/παύση πολυμέσων</sys:String>
+    <sys:String x:Key="event_manager_visible">Εμφάνιση/απόκρυψη παραθύρου διαχείρισης</sys:String>
+    <sys:String x:Key="event_display_battery_popup">Εμφάνιση αναδυόμενου παραθύρου μπαταρίας</sys:String>
+    <sys:String x:Key="event_connect">Σύνδεση συσκευής</sys:String>
+    
+    <!-- Welcome page -->
+    <sys:String x:Key="welcome_textblock_header">Καλώς ήρθατε!</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">
+        Γειά! Αυτός η εφαρμογή είναι ανεπίσημη και δεν συνδέεται με κανέναν τρόπο με τη Samsung .&#10;Παρόλο που αυτή η εφαρμογή μπορεί να κάνει πολλά πράγματα που η επίσημη εφαρμογή Samsung Wearable για Android δεν μπορεί, αποφάσισα να μην συμπεριλάβω το πρόγραμμα ενημερώσεων Firmware για λόγους ασφαλείας. Παρακαλώ χρησιμοποιείστε την επίσημη εφαρμογή αν χρειαστεί να ενημερώσετε τη συσκευή σας.
+    </sys:String>
+    <sys:String x:Key="welcome_textblock_p2">
+        Αν σας ενδιαφέρει να ανακαλύψετε τι συμβαίνει στο παρασκήνιο, μπορείτε να επισκεφτείτε το GitHub repository μου που περιέχει ένα μικρό ημερολόγιο με την ανάστροφη μηχανική που χρειάστηκε. Μπορείτε επίσης να επικοινωνήσετε μαζί μου σε GitHub και Telegram @thepbone αν αντιμετωπίσετε κάποιο πρόβλημα.
+    </sys:String>
+    <sys:String x:Key="welcome_textblock_p3">
+        Η εφαρμογή υποστηρίζει όλα τα μοντέλα Galaxy Buds.
+    </sys:String>
+    <sys:String x:Key="welcome_darkmode">Σκούρο θέμα</sys:String>
+    <sys:String x:Key="welcome_darkmode_content">Τα μάτια σας καίνε ήδη? Χρησιμοποιείστε το σκούρο θέμα! (Απαιτεί επανεκκίνηση της εφαρμογής)</sys:String>
+
+    <!-- Main page -->
+    <sys:String x:Key="mainpage_corrupt_data">Λήφθηκαν αλλοιωμένα δεδομένα. Επανασύνδεση...</sys:String>
+    <sys:String x:Key="mainpage_find_my_earbuds">Εύρεση των ακουστικών μου</sys:String>
+    <sys:String x:Key="mainpage_touchpad">Επιφάνεια αφής</sys:String>
+    <sys:String x:Key="mainpage_ambient_sound">Ήχοι περιβάλλοντος</sys:String>
+    <sys:String x:Key="mainpage_noise">Έλεγχος θορύβου</sys:String>
+    <sys:String x:Key="mainpage_equalizer">Iσοσταθμιστής</sys:String>
+    <sys:String x:Key="mainpage_advanced">Ρυθμίσεις για προχωρημένους</sys:String>
+    <sys:String x:Key="mainpage_system">Σύστημα</sys:String>
+
+    <!-- Update page -->
+    <sys:String x:Key="updater_header">Διαθέσιμη ενημέρωση λογισμικού</sys:String>
+    <sys:String x:Key="updater_message_p1">
+        Η λήψη είναι πλήρως αυτοματοποιημένη και ο οδηγός ενημέρωσης θα ανοίξει αυτόματα μετά το πέρας της λήψης. Προτείνετε να ενημερώσετε το λογισμικό για να λάβετε τις τελευταίες διορθώσεις σφαλμάτων και τις νέες λειτουργίες.
+    </sys:String>
+    <sys:String x:Key="updater_message_p2">
+        Μπορείτε να δείτε τις αλλαγές πατώντας στο παρακάτω κουμπί.
+    </sys:String>
+
+    <sys:String x:Key="updater_view_changelog">View full changelog on GitHub</sys:String>
+    <sys:String x:Key="updater_footer_remindmelater">Υπενθύμιση αργότερα</sys:String>
+    <sys:String x:Key="updater_footer_skipversion">Παραλείψτε αυτή την έκδοση</sys:String>
+    <sys:String x:Key="updater_footer_install">Εγκατάσταση</sys:String>
+    <sys:String x:Key="updater_appcast_null">Βρέθηκε μία νέα ενημέρωση αλλά δεν βρέθηκαν έγκυρα δεδομένα appcast. Παρακαλώ προσπαθήστε αργότερα.</sys:String>
+    <sys:String x:Key="updater_noupdate">Δεν υπάρχουν διαθέσιμες ενημερώσεις. Παρακαλώ δοκιμάστε ξανά αργότερα ή επισκεφτείτε και ακολουθήστε τη σελίδα στο GitHub για ενημερώσεις.</sys:String>
+    <sys:String x:Key="updater_noupdate_title">Ενημερωμένο</sys:String>
+    <sys:String x:Key="updater_newrelease">Η έκδοση {0} για το Galaxy Buds Manager είναι διαθέσιμη</sys:String>
+
+    <sys:String x:Key="updater_dl_header">Λήψη...</sys:String>
+    <sys:String x:Key="updater_dl_manual">Προβολή στο GitHub</sys:String>
+    <sys:String x:Key="updater_dl_fail_title">Η λήψη απέτυχε</sys:String>
+    <sys:String x:Key="updater_dl_fail">Αιτία:&#10;</sys:String>
+    <sys:String x:Key="updater_dl_progress_prepare">Προετοιμασία λήψης...</sys:String>
+    <sys:String x:Key="updater_dl_progress_cancelled">Η λήψη ακυρώθηκε</sys:String>
+    <sys:String x:Key="updater_dl_progress_finished">Η λήψη ολοκληρώθηκε. Εκκίνηση προγράμματος εγκατάστασης...</sys:String>
+    <sys:String x:Key="updater_dl_progress">Λήψη... {0}%</sys:String>
+    <sys:String x:Key="updater_dl_progress_size">({0}/{1} megabytes)</sys:String>
+    <sys:String x:Key="updater_dl_note">Όταν ολοκληρωθεί η λήψη, η εφαρμογή θα κλείσει αυτόματα και θα εκκινήσει ένα ξεχωριστό πρόγραμμα εγκατάστασης της ενημέρωσης. Μπορεί να χρειαστούν μερικά δευτερόλεπτα μέχρι να πραγματοποιηθεί η εκκίνηση.</sys:String>
+
+    <!-- Device selection page (setup) -->
+    <sys:String x:Key="devsel_header">Επιλέξτε τα Galaxy Buds σας</sys:String>
+    <sys:String x:Key="devsel_refresh">Ανανέωση συζευγμένων συσκευών</sys:String>
+    <sys:String x:Key="devsel_device_name">Όνομα συσκευής</sys:String>
+    <sys:String x:Key="devsel_btaddr">Διεύθυνση MAC</sys:String>
+    <sys:String x:Key="devsel_model">Μοντέλο</sys:String>
+    <sys:String x:Key="devsel_nodevices">Παρακαλώ συνδέστε τα Buds σας πρώτα.</sys:String>
+    <sys:String x:Key="devsel_nodevices_title">Δεν βρέθηκε συζευγμένη και συνδεδεμένη συσκευή</sys:String>
+    <sys:String x:Key="devsel_noselection">Δεν επιλέχθηκε συσκευή</sys:String>
+    <sys:String x:Key="devsel_invalid_selection">Παρακαλώ επιλέξτε μια συμβατή συσκευή</sys:String>
+    <sys:String x:Key="devsel_footer_continue">Ολοκλήρωση</sys:String>
+    <sys:String x:Key="devsel_dialog_footer">Αν δεν βλέπετε τα ακουστικά σας, βεβαιωθείτε ότι είναι συζευγμένα και συνδεδεμένα στις ρυθμίσεις Bluetooth του υπολογιστή σας, και μετά πατήστε Ανανέωση.</sys:String>
+    <sys:String x:Key="devsel_winrt_title">Χρήση εναλλακτικού συστήματος Bluetooth</sys:String>
+    <sys:String x:Key="devsel_winrt">Πολύ καλύτερη σταθερότητα, αλλά ενδέχεται να μην λειτουργεί σε όλους τους υπολογιστές και κάποιους Bluetooth αντάπτορες</sys:String>
+
+    <!-- Unsupported feature page -->
+    <sys:String x:Key="unsupported_feature_current_fwver">Τρέχουσα έκδοση Firmware:</sys:String>
+    <sys:String x:Key="unsupported_feature_required_fwver">Απαιτούμενη έκδοση Firmware:</sys:String>
+
+    <sys:String x:Key="unsupported_feature_header">Παρακαλώ ενημερώστε το firmware της συσκευής σας</sys:String>
+    <sys:String x:Key="unsupported_feature_current_fwver_null">Τρέχουσα έκδοση firmware: Άγνωστη</sys:String>
+    <sys:String x:Key="unsupported_feature_required_fwver_null">Απαιτούμενη έκδοση firmware: Μη ορισμένη</sys:String>
+
+    <sys:String x:Key="unsupported_feature_description_p1">Η έκδοση firmware των ακουστικών σας είναι πολύ παλιά και δεν υποστηρίζει αυτή τη λειτουργία.</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p2">Παρακαλώ ενημερώστε στην τελευταία έκδοση firmware χρησιμοποιώντας την επίσημη έκδοση οδηγού εγκατάστασης για Windows ή Android.</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p3">Βεβαιωθείτε ότι κλείσατε αυτή την εφαρμογή πριν χρησιμοποιήσετε τον επίσημο οδηγό ενημέρωσης για Windows. Μόνο μία εφαρμογή μπορεί να επικοινωνεί με τα Buds κάθε φορά.</sys:String>
+
+    <!-- Touchpad page -->
+    <sys:String x:Key="touchpad_header">Επιφάνεια αφής</sys:String>
+    <sys:String x:Key="touchpad_lock">Κλείδωμα επιφάνειας αφής</sys:String>
+    <sys:String x:Key="touchpad_left_action">Λειτουργία αριστερού ακουστικού</sys:String>
+    <sys:String x:Key="touchpad_right_action">Λειτουργία δεξιού ακουστικού</sys:String>
+
+    <sys:String x:Key="touchpad_double_tap_volume">Διπλό άγγιγμα άκρης ακουστικού</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">Διπλό άγγιγμα της άκρης του δεξιού ή αριστερού ακουστικού για αυξομείωση της έντασης.</sys:String>
+
+    <!-- Custom touchpad action page -->
+    <sys:String x:Key="cact_header">Παρατεταμένο άγγιγμα</sys:String>
+    <sys:String x:Key="cact_external_app_dialog_title">Επιλογή εκτελέσιμου...</sys:String>
+    <sys:String x:Key="cact_action">Προσαρμοσμένη επιλογή</sys:String>
+    <sys:String x:Key="cact_notice">Προειδοποίηση</sys:String>
+    <sys:String x:Key="cact_notice_content_p1">Οι προσαρμοσμένες επιλογές παρατεταμένου αγγίγματος είναι διαθέσιμες μόνο όταν αυτή η εφαρμογή εκτελείται στο παρασκήνιο.</sys:String>
+    <sys:String x:Key="cact_notice_content_p2">Δεν λειτουργεί σε Android ή άλλες συσκευές.</sys:String>
+    <sys:String x:Key="cact_notice_content_p3">
+        Για την συνεχή υποστήριξη αυτής της δυνατότητας, η εφαρμογή θα εκτελείται αυτόματα κατά την εκκίνηση του συστήματος και θα τρέχει στο παρασκήνιο.&#10;Μπορείτε να απενεργοποιήσετε αυτή τη συμπεριφορά στις ρυθμίσεις.
+    </sys:String>
+
+    <!-- System/Self-Test -->
+    <sys:String x:Key="system_overview_header">Σύστημα</sys:String>
+    <sys:String x:Key="system_header">Πληροφορίες συστήματος</sys:String>
+    <sys:String x:Key="system_selftest">Εκτέλεση τεστ αυτοαξιολόγησης </sys:String>
+    <sys:String x:Key="system_selftest_desc">Επιβεβαιώνει πως όλα τα υποσυστήματα των ακουστικών σας λειτουργούν σωστά</sys:String>
+    <sys:String x:Key="system_factory_reset">Επαναφορά εργοστασιακών ρυθμίσεων</sys:String>
+    <sys:String x:Key="system_factory_reset_desc">Επαναφέρει τα ακουστικά σας στις εργοστασιακές τους ρυθμίσεις και τα αποσυνδέει</sys:String>
+    <sys:String x:Key="system_pairing_mode">Εκκίνηση λειτουργίας σύζευξης</sys:String>
+    <sys:String x:Key="system_pairing_mode_desc">Αποσυνδέει τα ακουστικά σας από αυτόν τον υπολογιστή και τα καθιστά ορατά σε άλλες συσκευές</sys:String>
+    <sys:String x:Key="system_trace_core_dump">Λήψη δεδομένων trace και coredumps</sys:String>
+    <sys:String x:Key="system_trace_core_dump_desc">Ανακτά τα δεδομένα αποσφαλμάτωσης από τα ακουστικά σας</sys:String>
+    <sys:String x:Key="system_info">Προβολή πληροφοριών συστήματος</sys:String>
+    <sys:String x:Key="system_info_desc">Εμφανίζει λεπτομερείς πληροφορίες για τα ακουστικά σας</sys:String>
+
+    <sys:String x:Key="system_battery_type_unknown">Άγνωστος</sys:String>
+    <sys:String x:Key="system_waiting_for_device">Αναμονή για απάντηση...</sys:String>
+
+    <sys:String x:Key="system_hwver">Έκδοση συστήματος</sys:String>
+    <sys:String x:Key="system_swver">Έκδοση λειτουργικού</sys:String>
+    <sys:String x:Key="system_touchver">Έκδοση Firmware Επιφάνειας Επαφής</sys:String>
+    <sys:String x:Key="system_protover">Έκδοσης Πρωτοκόλλου</sys:String>
+    <sys:String x:Key="system_btaddr">Διεύθυνση Bluetooth</sys:String>
+    <sys:String x:Key="system_serial">Σειριακός αριθμός</sys:String>
+    <sys:String x:Key="system_build_info">Πληροφορίες </sys:String>
+    <sys:String x:Key="system_battery_type">Τύπος μπαταρίας</sys:String>
+    <sys:String x:Key="system_proximity">Μέτρηση εγγύτητας</sys:String>
+    <sys:String x:Key="system_thermo">Μέτρηση Thermistor</sys:String>
+    <sys:String x:Key="system_hall">Μέτρηση Hall</sys:String>
+    <sys:String x:Key="system_accel">Κατάσταση Επιταχυνσιόμετρου</sys:String>
+    <!-- Note: system_accel only used on the self-test page -->
+    <sys:String x:Key="system_adc_soc">ADC SoC</sys:String>
+    <!-- Context: SoC = State of charge (battery percentage) -->
+    <sys:String x:Key="system_adc_voltage">Τάση ADC</sys:String>
+    <sys:String x:Key="system_adc_current">Ένταση ADC</sys:String>
+
+    <sys:String x:Key="selftest_header">Αυτοέλεγχος</sys:String>
+    <sys:String x:Key="selftest_pass">Επιτυχία</sys:String>
+    <sys:String x:Key="selftest_fail">Αποτυχία</sys:String>
+    <sys:String x:Key="selftest_pass_long">Όλα τα τεστ πέρασαν επιτυχώς</sys:String>
+    <sys:String x:Key="selftest_fail_long">Ένα ή περισσότερα τεστ απέτυχαν</sys:String>
+    
+    <sys:String x:Key="coredump_header">Μεταφορά δεδομένων...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_prepare">Προετοιμασία λήψης...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_cancelled">Η λήψη ακυρώθηκε</sys:String>
+    <sys:String x:Key="coredump_dl_progress_finished">Επιτυχής λήψη</sys:String>
+    <sys:String x:Key="coredump_dl_trace_progress">Λήψη δεδομένων trace dump... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_core_progress">Λήψη δεδομένων core dump... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytes)</sys:String>
+    <sys:String x:Key="coredump_dl_note">
+        Η αναπαραγωγή ήχου έχει προσωρινά διακοπεί λόγω της μεταφοράς δεδομένων. Τα ακουστικά σας θα αποσυνδεθούν όταν η λήψη ολοκληρωθεί. Παρακαλώ ξανασυνδέστε τα χειροκίνητα.&#10;Μετά το πέρας της διαδικασίας, θα ερωτηθείτε για την τοποθεσία αποθήκευσης των συλλεχθέντων δεδομένων.&#10;&#10;Αν η μεταφορά κολλήσει ή η συσκευή αποσυνδεθεί πρόωρα, θα χρειαστεί να επανεκκινήσετε τη λήψη. Αυτή η λειτουργία είναι πολύ ασταθής προς το παρόν. 
+    </sys:String>
+    <sys:String x:Key="coredump_dl_save_fail_title">Αποτυχία αποθήκευσης δεδομένων</sys:String>
+    <sys:String x:Key="coredump_dl_save_fail">Αδυναμία αντιγραφής δεδομένων από την προσωρινή τοποθεσία. Αιτία: {0}</sys:String>
+    <sys:String x:Key="coredump_dl_save_success_title">Επιτυχία αποθήκευσης δεδομένων</sys:String>
+    <sys:String x:Key="coredump_dl_save_success">{0} dump(s) μεταφέρθηκαν στο '{1}'</sys:String>
+    <sys:String x:Key="coredump_dl_save_dialog_title">Επιλέξτε τοποθεσία αποθήκευσης...</sys:String>
+    
+    <!-- Settings -->
+    <sys:String x:Key="settings_header">Ρυθμίσεις</sys:String>
+
+    <sys:String x:Key="settings_darkmode">Σκούρο θέμα</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Χρήση σκούρου θέματος (Απαιτείται επαναφόρτιση)</sys:String>
+    <sys:String x:Key="settings_transitions">Μετάβαση</sys:String>
+    <sys:String x:Key="settings_transitions_description">Ενεργοποίηση μεταβάσεων διαφάνειας</sys:String>
+    <sys:String x:Key="settings_localization_disable">Γλώσσα</sys:String>
+    <sys:String x:Key="settings_localization_disable_description">Force English language</sys:String>
+    <sys:String x:Key="settings_minimize_tray">Ελαχιστοποίηση στη γραμμή εργασιών</sys:String>
+    <sys:String x:Key="settings_minimize_tray_description">Διατηρεί την εφαρμογή στο παρασκήνιο αντί να την τερματίσει</sys:String>
+    <sys:String x:Key="settings_autostart">Έναρξη εφαρμογής κατά την εκκίνηση του συστήματος</sys:String>
+    <sys:String x:Key="settings_autostart_description">Έναρξη της εφαρμογής κατά την εκκίνηση του συστήματος ελαχιστοποιημένη στη γραμμή εργασιών</sys:String>
+    <sys:String x:Key="settings_autostart_permission">Αδυναμία ενημέρωσης εγγραφής αυτόματης εκκίνησης στο μητρώο. Η πρόσβαση στο Μητρώο (HKCU) έχει απενεργοποιηθεί από το διαχειριστή του συστήματός σας.</sys:String>
+    
+    <sys:String x:Key="settings_connpopup">Διαχείριση αναδυόμενου παραθύρου σύνδεσης</sys:String>
+    <sys:String x:Key="settings_devmode">Ρυθμίσεις για προγραμματιστές</sys:String>
+
+    <!-- Settings >>> Connection popup -->
+    <sys:String x:Key="settings_cpopup_header">Αναδυόμενο παράθυρο σύνδεσης</sys:String>
+    <sys:String x:Key="settings_cpopup_enable">Ενεργοποίηση αναδυόμενου παραθύρου κατά τη σύνδεση</sys:String>
+    <sys:String x:Key="settings_cpopup_enable_description">Εμφανίζει ένα μικρό αναδυόμενο παράθυρο με τα επίπεδα των μπαταριών, όταν συνδεθούν τα Buds στον υπολογιστή</sys:String>
+    <sys:String x:Key="settings_cpopup_compact">Συμπαγής λειτουργία</sys:String>
+    <sys:String x:Key="settings_cpopup_compact_description">Κρύβει τον τίτλο του αναδυόμενου παραθύρου για εξοικονόμηση χώρου</sys:String>
+    <sys:String x:Key="settings_cpopup_position">Θέση</sys:String>
+    <sys:String x:Key="settings_cpopup_position_placeholder">Άγνωστο</sys:String>
+    <sys:String x:Key="settings_cpopup_demo">Προβολή δοκιμαστικού αναδυόμενου παραθύρου</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title">Αλλαγή τίτλου αναδυόμενου παραθύρου</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title_dialog">Παρακαλώ εισάγετε ένα προσαρμοσμένο τίτλο. Μπορείτε να επαναφέρετε τον αρχικό τίτλο αφήνοντας κενό το πεδίο.</sys:String>
+    <sys:String x:Key="settings_cpopup_primary_screen">Μόνο κύρια οθόνη</sys:String>
+    <sys:String x:Key="settings_cpopup_primary_screen_description">Εμφανίζει το αναδυόμενο παράθυρο μόνο στην κύρια οθόνη</sys:String>
+
+    <!-- Factory reset -->
+    <sys:String x:Key="factory_header">Επαναφορά εργοστασιακών ρυθμίσεων</sys:String>
+    <sys:String x:Key="factory_confirm">Επιβεβαίωση επαναφοράς</sys:String>
+    <sys:String x:Key="factory_error_title">Αποτυχία επαναφοράς εργοστασιακών ρυθμίσεων</sys:String>
+    <sys:String x:Key="factory_error">
+        Η συσκευή επέστρεψε κωδικό σφάλματος: {0}&#10;Βεβαιωθείτε ότι και τα δύο Earbuds είναι ενεργά και προσβάσιμα.&#10;Πιθανόν να χρειαστεί να επανασυνδέσετε χειροκίνητα τα ακουστικά σας.&#10;
+    </sys:String>
+    <sys:String x:Key="factory_text_p1">Είστε σίγουροι ότι θέλετε να επαναφέρετε τα Earbuds σας;</sys:String>
+    <sys:String x:Key="factory_text_p2">Μετά την επαναφορά στις εργοστασιακές ρυθμίσεις, θα χρειαστεί να επανασυνδέσετε χειροκίνητα τα ακουστικά σας στον υπολογιστή.</sys:String>
+    <sys:String x:Key="factory_text_p3">Βεβαιωθείτε ότι και τα δύο ακουστικά είναι ενεργά πριν προχωρήσετε!</sys:String>
+
+    <!-- Find my Gear -->
+    <sys:String x:Key="fmg_warning_both">Παρακαλώ αφαιρέστε και τα δύο ακουστικά από τα αυτιά σας.</sys:String>
+    <sys:String x:Key="fmg_warning_left">Παρακαλώ αφαιρέστε το αριστερό ακουστικό από το αυτί σας.</sys:String>
+    <sys:String x:Key="fmg_warning_right">Παρακαλώ αφαιρέστε το δεξί ακουστικό από το αυτί σας.</sys:String>
+    <sys:String x:Key="fmg_header">Εύρεση των ακουστικών μου</sys:String>
+
+    <!-- Equalizer -->
+    <sys:String x:Key="eq_header">Ισοσταθμιστής</sys:String>
+    <sys:String x:Key="eq_enable">Ενεργοποίηση ισοσταθμιστή</sys:String>
+    <sys:String x:Key="eq_preset">Προφίλ</sys:String>
+    <sys:String x:Key="eq_dolby">Βελτιστοποίηση για χρήση με Dolby</sys:String>
+    <sys:String x:Key="eq_stereo_balance">Αριστερά/δεξιά ισορροπία ήχου</sys:String>
+    <sys:String x:Key="eq_stereo_balance_value">{0}% αριστερά; {1}% δεξιά</sys:String>
+    <sys:String x:Key="eq_stereo_balance_neutral">Ουδέτερο</sys:String>
+    
+    <sys:String x:Key="eq_bass">Ενίσχυση Μπάσου</sys:String>
+    <sys:String x:Key="eq_soft">Απαλό</sys:String>
+    <sys:String x:Key="eq_dynamic">Δυναμικό</sys:String>
+    <sys:String x:Key="eq_clear">Καθαρό</sys:String>
+    <sys:String x:Key="eq_treble">Ενίσχυση υψηλών συχνοτήτων</sys:String>
+
+    <!-- Noise control -->
+    <sys:String x:Key="nc_header">Έλεγχος θορύβου</sys:String>
+    <sys:String x:Key="nc_anc_level">Υψηλή ευαισθησία</sys:String>
+    <sys:String x:Key="nc_anc_level_description">Ισχυρότερο αποτέλεσμα εξάλειψης θορύβου</sys:String>
+    <sys:String x:Key="nc_voicedetect">Ανίχνευση ομιλίας</sys:String>
+    <sys:String x:Key="nc_voicedetect_description">Κατά την ανίχνευση της φωνής σας, αυτόματη ενεργοποίηση της λειτουργίας Ήχων περιβάλλοντος και μείωση της έντασης των πολυμέσων για την διευκόλυνση της συζήτησης</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout">Λήξη περιόδου ομιλίας</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout_item">{0} δευτερόλεπτα</sys:String>
+    
+    <!-- Ambient sound -->
+    <sys:String x:Key="as_header">Ήχοι περιβάλλοντος</sys:String>
+    <sys:String x:Key="as_enable">Ενεργοποίηση ήχων περιβάλλοντος</sys:String>
+    <sys:String x:Key="as_volume">Ένταση ήχων περιβάλλοντος</sys:String>
+    <sys:String x:Key="as_voicefocus">Εστίαση φωνής</sys:String>
+    <sys:String x:Key="as_extrahigh">Πολύ υψηλή ένταση ήχων περιβάλλοντος</sys:String>
+    <sys:String x:Key="as_extrahigh_description">Προσθέτει ένα έξτρα επίπεδο έντασης Ήχων περιβάλλοντος</sys:String>
+    <sys:String x:Key="as_scale_very_low">Πολύ χαμηλή</sys:String>
+    <sys:String x:Key="as_scale_low">Χαμηλή</sys:String>
+    <sys:String x:Key="as_scale_moderate">Μέτρια</sys:String>
+    <sys:String x:Key="as_scale_high">Υψηλή</sys:String>
+    <sys:String x:Key="as_scale_extraloud">Πολύ υψηλή</sys:String>
+    
+    <!-- Advanced page -->
+    <sys:String x:Key="adv_header">Ρυθμίσεις για προχωρημένους</sys:String>
+    <sys:String x:Key="adv_required_firmware_later">{0} or later</sys:String>
+    <sys:String x:Key="adv_seamless">Απρόσκοπτη σύνδεση ακουστικών</sys:String>
+    <sys:String x:Key="adv_seamless_desc">Γρήγορη εναλλαγή σε κοντινές συσκευές χωρίς αποσύνδεση των ακουστικών σας ή ενεργοποίηση λειτουργίας σύζευξης</sys:String>
+    <sys:String x:Key="adv_resume_playback">Παύση/έναρξη αναπαραγωγής αν τα ακουστικά φορεθούν</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Στέλνει ένα μήνυμα έναρξης/παύσης αναπαραγωγής όταν τουλάχιστον ένας από τους αισθητήρες εγγύτητας καλυφθεί (Μόνο για υπολογιστή)</sys:String>
+    <sys:String x:Key="adv_sidetone">Χρήση ήχων περιβάλλοντος κατά την κλήση</sys:String>
+    <sys:String x:Key="adv_sidetone_desc">Ακούστε πιο καθαρά τη φωνή σας όταν συνομιλείτε στο τηλέφωνο</sys:String>
+    <sys:String x:Key="adv_passthrough">Μείωση αίσθησης "πίεσης" με χρήση ήχων περιβάλλοντος</sys:String>
+    <sys:String x:Key="adv_passthrough_desc">Εμποδίζει την αίσθηση συμφόρησης ή συμπίεσης όταν δεν χρησιμοποιείτε εξάλειψη θορύβου</sys:String>
+    <sys:String x:Key="adv_gaming_mode">Λειτουργία παιχνιδιού</sys:String>
+    <sys:String x:Key="adv_gaming_mode_desc">Μειώνει το χρόνο μεταφοράς του σήματος και ρυθμίζει το συγχρονισμό του ηχητικού σήματος (Μόνο για Samsung)</sys:String>
+    <sys:String x:Key="adv_hotkey">Συντομεύσεις πληκτρολογίου</sys:String>
+    <sys:String x:Key="adv_hotkey_desc">Ορίστε συντομεύσεις πληκτρολογίου για να ελέγξετε εξ' αποστάσεως τα ακουστικά σας</sys:String>
+
+    <!-- Credits -->
+    <sys:String x:Key="credits_header">Συντελεστές</sys:String>
+    <sys:String x:Key="credits_developer">Προγραμματιστής</sys:String>
+    <sys:String x:Key="credits_license">Άδεια</sys:String>
+    <sys:String x:Key="credits_version">Έκδοση</sys:String>
+    <sys:String x:Key="credits_contributor">Συνεργάτες</sys:String>
+    <sys:String x:Key="credits_translator">Μεταφραστές</sys:String>
+    <sys:String x:Key="credits_sponsor">Χρηματοδοτήστε την εφαρμογή</sys:String>
+
+    <!-- Connection lost page -->
+    <sys:String x:Key="connlost_header">Αδυναμία σύνδεσης</sys:String>
+    <sys:String x:Key="connlost_description_p1">Αδυναμία σύνδεσης με τα earbuds σας.</sys:String>
+    <sys:String x:Key="connlost_description_p2">
+        Παρακαλώ ελέγξτε τις ρυθμίσεις του Bluetooth και βεβαιωθείτε ότι τα Earbuds είναι ενεργά και συζευγμένα με τον υπολογιστή.&#10;Μπορείτε να καταχωρήσετε ένα νέο ζευγάρι αν χρειάζεται. Σε αυτή την περίπτωση,  παρακαλώ επιλέξτε "Επιλογές > Κατάργηση συσκευής".
+    </sys:String>
+    <sys:String x:Key="connlost_description_p3">Επιπλέον πληροφορίες:</sys:String>
+    <sys:String x:Key="connlost_noinfo">Αδυναμία λήψης πληροφοριών σφάλματος</sys:String>
+    <sys:String x:Key="connlost_disconnected">Η συσκευή αποσυνδέθηκε</sys:String>
+    <sys:String x:Key="connlost_connect">Σύνδεση</sys:String>
+    <sys:String x:Key="connlost_connecting">Σύνδεση...</sys:String>
+    
+    <!-- Header -->
+    <sys:String x:Key="window_minimize">Ελαχιστοποίηση</sys:String>
+    <sys:String x:Key="window_close">Κλείσιμο</sys:String>
+
+</ResourceDictionary>
