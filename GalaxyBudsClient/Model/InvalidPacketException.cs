@@ -1,4 +1,5 @@
 ﻿using System;
+using GalaxyBudsClient.Message;
 
 namespace GalaxyBudsClient.Model
 {
@@ -17,10 +18,12 @@ namespace GalaxyBudsClient.Model
         }
 
         public ErrorCodes ErrorCode;
+        public SPPMessage? Draft;
 
-        public InvalidPacketException(ErrorCodes errorCode, string message) : base(message)
+        public InvalidPacketException(ErrorCodes errorCode, string message, SPPMessage? draft = null) : base(message)
         {
             ErrorCode = errorCode;
+            Draft = draft;
         }
     }
 }

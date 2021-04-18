@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -14,7 +15,6 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Serilog;
 using Task = System.Threading.Tasks.Task;
 
@@ -115,13 +115,13 @@ namespace GalaxyBudsClient.Platform
             _backend.BluetoothErrorAsync += (sender, exception) => OnBluetoothError(exception); 
             
             _backend.RfcommConnected += (sender, args) => Task.Run(async () =>
-                    await Task.Delay(150).ContinueWith((_) =>
-                    {
-                        if (RegisteredDeviceValid)
-                            Connected?.Invoke(this, EventArgs.Empty);
-                        else
-                            Log.Error("BluetoothImpl: Suppressing Connected event, device not properly registered");
-                    }));
+                await Task.Delay(150).ContinueWith((_) =>
+                {
+                    if (RegisteredDeviceValid)
+                        Connected?.Invoke(this, EventArgs.Empty);
+                    else
+                        Log.Error("BluetoothImpl: Suppressing Connected event, device not properly registered");
+                }));
             
             _backend.Disconnected += (sender, reason) =>
             {
@@ -339,8 +339,11 @@ namespace GalaxyBudsClient.Platform
                     }
                 }
                 
+                var failCount = 0;
                 do
                 {
+                    var msgSize = 0;
+                    SPPMessage? msg = null;
                     try
                     {
                         var raw = IncomingData.OfType<byte>().ToArray();
@@ -350,7 +353,7 @@ namespace GalaxyBudsClient.Platform
                             hook?.OnRawDataAvailable(ref raw);
                         }
 
-                        var msg = SPPMessage.DecodeMessage(raw);
+                        msg = SPPMessage.DecodeMessage(raw);
 
                         Log.Verbose($">> Incoming: {msg}");
 
@@ -360,26 +363,49 @@ namespace GalaxyBudsClient.Platform
                         }
 
                         MessageReceived?.Invoke(this, msg);
-
-                        if (msg.TotalPacketSize >= IncomingData.Count)
-                        {
-                            IncomingData.Clear();
-                            break;
-                        }
-
-                        IncomingData.RemoveRange(0, msg.TotalPacketSize);
-
-                        if (ByteArrayUtils.IsBufferZeroedOut(IncomingData))
-                        {
-                            /* No more data remaining */
-                            break;
-                        }
                     }
                     catch (InvalidPacketException e)
                     {
-                        InvalidDataReceived?.Invoke(this, e);
+                        // Attempt to remove broken message, otherwise skip data block
+                        var somIndex = 0;
+                        for (int i = 1; i < IncomingData.Count; i++)
+                        {
+                            if ((BluetoothImpl.Instance.ActiveModel == Models.Buds &&
+                                 (byte)(IncomingData[i] ?? 0) == (byte)SPPMessage.Constants.SOM) ||
+                                (BluetoothImpl.Instance.ActiveModel != Models.Buds &&
+                                 (byte)(IncomingData[i] ?? 0) == (byte)SPPMessage.Constants.SOMPlus))
+                            {
+                                somIndex = i;
+                                break;
+                            }
+                        }
+
+                        msgSize = somIndex;
+                    
+                        if (failCount > 5)
+                        {
+                            // Abandon data block
+                            InvalidDataReceived?.Invoke(this, e);
+                            break;
+                        }
+                    
+                        failCount++;
+                    }
+
+                    if (msgSize >= IncomingData.Count)
+                    {
+                        IncomingData.Clear();
                         break;
                     }
+
+                    IncomingData.RemoveRange(0, msgSize);
+
+                    if (ByteArrayUtils.IsBufferZeroedOut(IncomingData))
+                    {
+                        /* No more data remaining */
+                        break;
+                    }
+
                 } while (IncomingData.Count > 0);
             }
         }
