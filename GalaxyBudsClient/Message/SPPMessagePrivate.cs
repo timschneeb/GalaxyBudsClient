@@ -143,7 +143,6 @@
             UNK_PAIRING_MODE = 114,
             UNK_CONN_INFO = 169,
             UNK_DEBUG_INFO_1 = 182,
-            // UNK_CLOSE_A2DP = 187, // NOTE: This is actually FOTA_OPEN (v2)
             UNK_DEBUG_INFO_2 = 206,
             UNK_DUMP_BONDED_DEVICES = 212,
             UNK_BONDED_DEVICES = 214,

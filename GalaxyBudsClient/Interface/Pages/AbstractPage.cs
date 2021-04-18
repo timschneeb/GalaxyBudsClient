@@ -29,6 +29,8 @@ namespace GalaxyBudsClient.Interface.Pages
             SettingsPopup,
             Advanced,
             Hotkeys,
+            FirmwareSelect,
+            FirmwareTransfer,
             UnsupportedFeature,
             UpdateAvailable,
             UpdateProgress,

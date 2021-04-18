@@ -40,7 +40,7 @@ namespace GalaxyBudsClient
                 })
                 .WriteTo.File(PlatformUtils.CombineDataPath("application.log"))
                 .WriteTo.Console();
-            
+
             config = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("VERBOSE")) ? 
                 config.MinimumLevel.Verbose() : config.MinimumLevel.Debug();
             

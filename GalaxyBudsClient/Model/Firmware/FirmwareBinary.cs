@@ -1,92 +1,86 @@
 using System;
 using System.IO;
 using System.Linq;
+using GalaxyBudsClient.Utils.DynamicLocalization;
 using Serilog;
 
 namespace GalaxyBudsClient.Model.Firmware
 {
-    public class FirmwareBinary
+    public class FirmwareBinary : IDisposable
     {
-        private long _magic;
-        private string _path;
+        private readonly long _magic;
+        private MemoryStream _stream;
         
         private static readonly long FOTA_BIN_MAGIC = 3405695742L;
 
+        public string BuildName { get; }
         public long SegmentsCount { get; }
         public long TotalSize { get; }
         public int Crc32 { get; }
-        public FirmwareSegment[] Segments { get; } = new FirmwareSegment[0];
+        public FirmwareSegment[] Segments { get; }
 
-        public FirmwareBinary(string path)
+        public FirmwareBinary(byte[] data, string buildName)
         {
-            _path = path;
+            /* stream is now owned/managed by this class */
+            _stream = new MemoryStream(data);
+            BuildName = buildName;
             
             byte[] bArr = new byte[4];
-            FileStream fileStream = File.OpenRead(path);
-            BufferedStream stream = new BufferedStream(fileStream);
             try
             {
-                if (stream.Read(bArr) != -1)
+                if (_stream.Read(bArr) != -1)
                 {
                     _magic = (((long) bArr[2] & 255) << 16) | (((long) bArr[3] & 255) << 24) |
                              (((long) bArr[1] & 255) << 8) | (((long) bArr[0]) & 255);
                     if (_magic != FOTA_BIN_MAGIC)
                     {
-                        stream.Close();
-                        fileStream.Close();
+                        _stream.Close();
                         throw new FirmwareParseException(FirmwareParseException.ErrorCodes.InvalidMagic,
-                            "This is not a valid firmware binary. Invalid magic value found in file header.");
+                            Loc.Resolve("fw_fail_no_magic"));
                     }
                 }
 
-                if (stream.Read(bArr) != -1)
+                if (_stream.Read(bArr) != -1)
                 {
                     TotalSize = (((long) bArr[2] & 255) << 16) | (((long) bArr[3] & 255) << 24) |
                                 (((long) bArr[1] & 255) << 8) | (((long) bArr[0]) & 255);
                     if (TotalSize == 0)
                     {
-                        stream.Close();
-                        fileStream.Close();
+                        _stream.Close();
                         throw new FirmwareParseException(FirmwareParseException.ErrorCodes.SizeZero,
-                            "This firmware binary has its size set to zero and cannot be used for flashing. Please choose another one.");
+                            Loc.Resolve("fw_fail_size_null"));
                     }
                 }
 
-                if (stream.Read(bArr) != -1)
+                if (_stream.Read(bArr) != -1)
                 {
                     SegmentsCount = (((long) bArr[1] & 255) << 8) | (((long) bArr[3] & 255) << 24) |
                                     (((long) bArr[2] & 255) << 16) | (((long) bArr[0]) & 255);
                     if (SegmentsCount == 0)
                     {
-                        stream.Close();
-                        fileStream.Close();
+                        _stream.Close();
                         throw new FirmwareParseException(FirmwareParseException.ErrorCodes.NoSegmentsFound,
-                            "This firmware binary does not contain any binary segments and is empty. Please choose another one.");
+                            Loc.Resolve("fw_fail_no_segments"));
                     }
                 }
 
                 Segments = new FirmwareSegment[SegmentsCount];
                 for (var i = 0; i < SegmentsCount; i++)
                 {
-                    Segments[i] = new FirmwareSegment(i, SegmentsCount, path);
+                    Segments[i] = new FirmwareSegment(i, SegmentsCount, _stream);
                 }
 
-                stream.Seek(-4, SeekOrigin.End);
-                stream.Read(bArr, 0, 4);
+                _stream.Seek(-4, SeekOrigin.End);
+                _stream.Read(bArr, 0, 4);
                 Crc32 = BitConverter.ToInt32(bArr);
-
-                stream.Close();
-                fileStream.Close();
             }
-            catch (Exception ex)
+            catch (Exception ex) when (!(ex is FirmwareParseException))
             {
-                stream.Close();
-                fileStream.Close();
+                _stream.Close();
                 
-                Log.Fatal($"FirmwareBinary: Failed to decode binary: {ex}");
-     
-                throw new FirmwareParseException(FirmwareParseException.ErrorCodes.NoSegmentsFound,
-                    $"Unexpected error while decoding the firmware binary. This firmware archive might be corrupted. Details:\n{ex}");
+                Log.Error($"FirmwareBinary: Failed to decode binary: {ex}");
+                throw new FirmwareParseException(FirmwareParseException.ErrorCodes.Unknown,
+                    $"{Loc.Resolve("fw_fail_unknown")}\n{ex}");
             }
         }
 
@@ -118,12 +112,17 @@ namespace GalaxyBudsClient.Model.Firmware
 
         public BufferedStream OpenStream()
         {
-            return new BufferedStream(File.OpenRead(_path));
+            return new BufferedStream(_stream);
         }
         
         public override string ToString()
         {
             return "Magic=" + $"{_magic:X2}" + ", TotalSize=" + TotalSize + ", SegmentCount=" + SegmentsCount + $", CRC32=0x{Crc32:X2}";
+        }
+
+        public void Dispose()
+        {
+            _stream.Dispose();
         }
     }
 }

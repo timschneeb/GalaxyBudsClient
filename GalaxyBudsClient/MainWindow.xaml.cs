@@ -26,8 +26,6 @@ using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Platform.Windows;
-using GalaxyBudsClient.Scripting;
-using GalaxyBudsClient.Scripting.Experiment;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using NetSparkleUpdater.Enums;
@@ -61,6 +59,12 @@ namespace GalaxyBudsClient
         
         public bool OverrideMinimizeTray { set; get; }
         public bool DisableApplicationExit { set; get; }
+
+        public bool IsOptionsButtonVisible
+        {
+            get => _titleBar.OptionsButton.IsVisible;
+            set => _titleBar.OptionsButton.IsVisible = value;
+        } 
         
         public PageContainer Pager { get; }
         
@@ -120,7 +124,6 @@ namespace GalaxyBudsClient
         {
             AvaloniaXamlLoader.Load(this);
             this.AttachDevTools();
-            
             Pager = this.FindControl<PageContainer>("Container");
 
             Pager.RegisterPages(HomePage, new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(),
@@ -128,7 +131,7 @@ namespace GalaxyBudsClient
                 new SystemPage(), new SelfTestPage(), new SettingsPage(), new PopupSettingsPage(),
                 ConnectionLostPage, CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(),
                 new WelcomePage(), UnsupportedFeaturePage, UpdatePage, UpdateProgressPage, new SystemCoredumpPage(),
-                new HotkeyPage());
+                new HotkeyPage(), new FirmwareSelectionPage(), new FirmwareTransferPage());
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
@@ -474,9 +477,7 @@ namespace GalaxyBudsClient
                     await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA),
                
                 [Loc.Resolve("optionsmenu_deregister")] = (sender, args) => BluetoothImpl.Instance.UnregisterDevice()
-                    .ContinueWith((_) => Pager.SwitchPage(AbstractPage.Pages.Welcome)),
-                // TODO: Remove this vvv
-               //     ["Run FOTA update"] = async (sender, args) => await FirmwareTransferManager.Instance.Install(@"D:\Reverse Engineering\Galaxy Buds\Firmware\FOTA_R175XXU0ATH7.bin")
+                    .ContinueWith((_) => Pager.SwitchPage(AbstractPage.Pages.Welcome))
             };
 
             if (restricted)

@@ -31,8 +31,6 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="1" />
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="1" />
-                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" CornerRadius="{DynamicResource DefaultCornerRadius}"
                             Classes="BorderHoverStyle" PointerPressed="RunSelfTest_OnPointerPressed">
@@ -51,24 +49,18 @@
                         <items:DetailListItem Text="{DynamicResource system_pairing_mode}"
                                               Description="{DynamicResource system_pairing_mode_desc}" />
                     </Border>
-                    <Separator Grid.Row="5" x:Name="TraceCoreDumpSeparator" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
-                    <Border Grid.Row="6" x:Name="TraceCoreDump" CornerRadius="{DynamicResource DefaultCornerRadius}"
-                            Classes="BorderHoverStyle" PointerPressed="DownloadTraceCoredump_OnPointerPressed">
-                        <items:DetailListItem Text="{DynamicResource system_trace_core_dump}"
-                                              Description="{DynamicResource system_trace_core_dump_desc}" />
-                    </Border>
-                    <Separator Grid.Row="7" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
-                    <Border Grid.Row="8" CornerRadius="{DynamicResource DefaultCornerRadius}"
+                    <Separator Grid.Row="5" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
+                    <Border Grid.Row="6" CornerRadius="{DynamicResource DefaultCornerRadius}"
                             Classes="BorderHoverStyle" PointerPressed="SystemInfo_OnPointerPressed">
                         <items:DetailListItem Text="{DynamicResource system_info}"
                                               Description="{DynamicResource system_info_desc}" />
                     </Border>
-                    <!--<Separator Grid.Row="9" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
-                    <Border Grid.Row="10" CornerRadius="{DynamicResource DefaultCornerRadius}"
-                            Classes="BorderHoverStyle" PointerPressed="FactoryReset_OnPointerPressed">
+                    <Separator Grid.Row="7" x:Name="FirmwareSeparator" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
+                    <Border Grid.Row="8" x:Name="FirmwareItem" CornerRadius="{DynamicResource DefaultCornerRadius}"
+                            Classes="BorderHoverStyle" PointerPressed="Firmware_OnPointerPressed">
                         <items:DetailListItem Text="{DynamicResource system_flasher}"
                                               Description="{DynamicResource system_flasher_desc}" />
-                    </Border>-->
+                    </Border>
                 </Grid>
             </ScrollViewer>
         </Border>

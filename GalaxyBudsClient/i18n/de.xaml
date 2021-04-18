@@ -158,7 +158,7 @@
     <!-- Welcome page -->
     <sys:String x:Key="welcome_textblock_header">Willkommen!</sys:String>
     <sys:String x:Key="welcome_textblock_p1">
-Hallo! Dieser Galaxy Buds Manager ist inoffiziell und ist in keiner Weise mit Samsung verbunden. Während dieses Programm viele Dinge tun kann, welche die offizielle App nicht kann, habe ich mich dazu entschieden, die Firmware-Update Funktion aus Sicherheitsgründen nicht zu implementieren. Bitte verwende die offiziellen Apps um Updates durchzuführen.
+Hallo! Dieser Galaxy Buds Manager ist inoffiziell und ist in keiner Weise mit Samsung verbunden. Diese Programm wurde dazu entworfen, viele neue Funktionen für die Galaxy Buds-Reihe freizuschalten, allerdings sind einige dieser Funktionen auf Geräten ohne diese App aus technischen Gründen nicht verfügbar.
     </sys:String>
     <sys:String x:Key="welcome_textblock_p2">
 Falls es Dich interessiert was hinter den Kulissen vorgeht, kannst du im GitHub Repository eine kurze Dokumentation des reverse-engineerten Protokolls ansehen. Du kannst mich auch auf Telegram oder GitHub unter @thepbone erreichen, sollten irgendwelche Probleme auftreten.

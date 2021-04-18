@@ -6,7 +6,7 @@ using Sentry;
 
 namespace GalaxyBudsClient.Message
 {
-    public class SPPMessageParserFactory
+    public static class SPPMessageParserFactory
     {
 
         private static readonly Type[] RegisteredParsers =
@@ -18,7 +18,8 @@ namespace GalaxyBudsClient.Message
             typeof(AmbientWearingUpdateParser), typeof(MuteUpdateParser), typeof(SetOtherOptionParser), typeof(BondedDevicesParser),
             typeof(DebugSkuParser), typeof(SetInBandRingtoneParser), typeof(NoiseReductionModeUpdateParser),
             typeof(LogTraceStartParser), typeof(LogTraceDataParser), typeof(LogCoredumpDataParser), typeof(LogCoredumpDataSizeParser),
-            typeof(NoiseControlUpdateParser), typeof(FotaSessionParser), typeof(FotaControlParser), typeof(FotaDownloadDataParser), typeof(FotaUpdateParser)
+            typeof(NoiseControlUpdateParser), typeof(FotaSessionParser), typeof(FotaControlParser), typeof(FotaDownloadDataParser), 
+            typeof(FotaUpdateParser), typeof(FotaResultParser)
         };
 
         public static BaseMessageParser? BuildParser(SPPMessage msg)

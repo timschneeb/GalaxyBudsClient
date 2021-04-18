@@ -14,6 +14,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="10" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <elements:PageHeader Grid.Row="1" x:Name="PageHeader" Title="{DynamicResource system_header}"
                              BackPressed="BackButton_OnPointerPressed" />
@@ -87,5 +89,13 @@
                 </Grid>
             </ScrollViewer>
         </Border>
+        
+        <Border Grid.Row="5" Classes="RoundedBorderListItem" x:Name="TraceCoreDump">
+        <Border  CornerRadius="{DynamicResource DefaultCornerRadius}"
+                Classes="BorderHoverStyle" PointerPressed="TraceCoreDump_OnPointerPressed">
+            <items:DetailListItem Text="{DynamicResource system_trace_core_dump}"
+                                  Description="{DynamicResource system_trace_core_dump_desc}" />
+        </Border>
+            </Border>
     </Grid>
 </pages:AbstractPage>

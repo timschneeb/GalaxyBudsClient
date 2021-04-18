@@ -13,7 +13,9 @@ namespace GalaxyBudsClient.Model.Firmware
             ParseFail,
             SessionFail,
             CopyFail,
+            VerifyFail,
             
+            BatteryLow,
             InProgress,
             Disconnected,
             Unknown

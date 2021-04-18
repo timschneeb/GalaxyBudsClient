@@ -66,8 +66,7 @@ namespace GalaxyBudsClient.Message.Encoder
                 var binStream = _binary.OpenStream();
                 binStream.Seek(segment.Position + Offset, SeekOrigin.Begin);
                 binStream.Read(bArr, i2, rawDataSize);
-                binStream.Close();
-                
+
                 i3 = i4;
             }
 

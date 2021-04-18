@@ -69,5 +69,7 @@ namespace GalaxyBudsClient.Model
         
         [Option(DefaultValue = true)]
         bool UseBluetoothWinRT { set; get; }
+        
+        bool FirmwareWarningAccepted { set; get; }
     }
 }
