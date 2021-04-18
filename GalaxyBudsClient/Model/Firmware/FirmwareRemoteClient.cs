@@ -20,7 +20,7 @@ namespace GalaxyBudsClient.Model.Firmware
 #if UseLocalServer
         const string API_BASE = "http://localhost:5101";
 #else
-        const string API_BASE = "http://srv2.timschneeberger.me:5101";
+        const string API_BASE = "https://fw.timschneeberger.me";
 #endif
         const string API_GET_FIRMWARE = API_BASE + "/firmware";
         const string API_DOWNLOAD_FIRMWARE = API_BASE + "/firmware/download";

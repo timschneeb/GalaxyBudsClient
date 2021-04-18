@@ -24,7 +24,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
 #if UseLocalServer
         const string API_BASE = "http://localhost:5100";
 #else
-        const string API_BASE = "http://local.timschneeberger.me:5100";
+        const string API_BASE = "https://crowdsourcing.timschneeberger.me";
 #endif
         const string API_GET_EXPERIMENTS = API_BASE + "/experiments";
         const string API_POST_RESULT = API_BASE + "/result";
