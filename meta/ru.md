@@ -21,7 +21,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>eq_stereo_balance_neutral</code></td><td>Neutral</td></tr>
 <tr><td><code>connlost_disconnected</code></td><td>Device disconnected</td></tr>
 <tr><td><code>fw_disclaimer</code></td><td>Disclaimer</td></tr>
-<tr><td><code>fw_disclaimer_desc</code></td><td>This firmware updating tool is an accurate replica of the official updater found in Samsung's official Android app. I've thoroughly tested this implementation under various circumstances (normal operation, connection loss, intentionally corrupted Bluetooth transmissions, ...) without experiencing any issues at all. Still, I won't take any liability if anything should go wrong since firmware updates modify vital system components and should always be handled with caution.
+<tr><td><code>fw_disclaimer_desc</code></td><td>This firmware updating tool is an accurate replica of the official updater found in Samsung's official Android app. I've thoroughly tested this implementation under various circumstances (normal operation, connection loss, intentionally corrupted Bluetooth packets, ...) without experiencing any issues at all. Still, I won't take any liability if anything should go wrong since firmware updates modify vital system components and should always be handled with caution.
 
 DOWNGRADING: While downgrading to older firmware versions is possible and I never ran into problems with it, it may cause unexpected issues and should only be done if absolutely necessary.
 CUSTOM FLASHING: You are also able to load firmware files from your hard-drive. Do NOT flash firmware binaries designed for OTHER models onto your device.
