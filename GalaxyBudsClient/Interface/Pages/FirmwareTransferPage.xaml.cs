@@ -1,6 +1,7 @@
 ﻿using System;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Firmware;
@@ -64,15 +65,18 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private async void OnError(object? sender, FirmwareTransferException e)
         {
-            _progressText.Text = Loc.Resolve("fw_upload_progress_error");
+            await Dispatcher.UIThread.InvokeAsync(async () =>
+            { 
+                _progressText.Text = Loc.Resolve("fw_upload_progress_error");
                 
-            await new MessageBox()
-            {
-                Title = Loc.Resolve("fw_upload_progress_error"),
-                Description = e.ErrorMessage
-            }.ShowDialog(MainWindow.Instance);
+                await new MessageBox()
+                {
+                    Title = Loc.Resolve("fw_upload_progress_error"),
+                    Description = e.ErrorMessage
+                }.ShowDialog(MainWindow.Instance);
 
-            await BluetoothImpl.Instance.DisconnectAsync();
+                await BluetoothImpl.Instance.DisconnectAsync();
+            });
         }
 
         private async void OnFinished(object? sender, EventArgs e)
