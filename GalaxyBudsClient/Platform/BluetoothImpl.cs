@@ -184,7 +184,7 @@ namespace GalaxyBudsClient.Platform
             return new BluetoothDevice[0];
         }
 
-        public async Task ConnectAsync(string? macAddress = null, Models? model = null, bool noRetry = false)
+        public async Task<bool> ConnectAsync(string? macAddress = null, Models? model = null, bool noRetry = false)
         {
             /* Load from configuration */
             if (macAddress == null && model == null)
@@ -195,10 +195,12 @@ namespace GalaxyBudsClient.Platform
                     {
                         await _backend.ConnectAsync(SettingsProvider.Instance.RegisteredDevice.MacAddress,
                             ServiceUuid.ToString()!, noRetry);
+                        return true;
                     }
                     catch (BluetoothException ex)
                     {
                         OnBluetoothError(ex);
+                        return false;
                     }
                 }
                 else
@@ -215,17 +217,20 @@ namespace GalaxyBudsClient.Platform
                     SettingsProvider.Instance.RegisteredDevice.MacAddress = macAddress;
 
                     /* Load from configuration this time */
-                    await ConnectAsync();
+                    return await ConnectAsync();
                 }
                 else
                 {
                     Log.Error("BluetoothImpl: Connection attempt without valid device");
+                    return false;
                 }
             }
             else
             {
                 throw new ArgumentException("Either all or none arguments must be null");
             }
+
+            return false;
         }
 
         public async Task DisconnectAsync()
@@ -369,7 +374,7 @@ namespace GalaxyBudsClient.Platform
                     {
                         // Attempt to remove broken message, otherwise skip data block
                         var somIndex = 0;
-                        for (int i = 1; i < IncomingData.Count; i++)
+                        for (var i = 1; i < IncomingData.Count; i++)
                         {
                             if ((ActiveModel == Models.Buds &&
                                  (byte)(IncomingData[i] ?? 0) == (byte)SPPMessage.Constants.SOM) ||
