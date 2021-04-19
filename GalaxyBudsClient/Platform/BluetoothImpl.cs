@@ -354,6 +354,7 @@ namespace GalaxyBudsClient.Platform
                         }
 
                         msg = SPPMessage.DecodeMessage(raw);
+                        msgSize = msg.TotalPacketSize;
 
                         Log.Verbose($">> Incoming: {msg}");
 
@@ -370,9 +371,9 @@ namespace GalaxyBudsClient.Platform
                         var somIndex = 0;
                         for (int i = 1; i < IncomingData.Count; i++)
                         {
-                            if ((BluetoothImpl.Instance.ActiveModel == Models.Buds &&
+                            if ((ActiveModel == Models.Buds &&
                                  (byte)(IncomingData[i] ?? 0) == (byte)SPPMessage.Constants.SOM) ||
-                                (BluetoothImpl.Instance.ActiveModel != Models.Buds &&
+                                (ActiveModel != Models.Buds &&
                                  (byte)(IncomingData[i] ?? 0) == (byte)SPPMessage.Constants.SOMPlus))
                             {
                                 somIndex = i;
