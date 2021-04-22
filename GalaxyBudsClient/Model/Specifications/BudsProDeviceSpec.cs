@@ -12,7 +12,8 @@ namespace GalaxyBudsClient.Model.Specifications
             new Dictionary<IDeviceSpec.Feature, FeatureRule?>()
             {
                 { IDeviceSpec.Feature.SeamlessConnection, null },
-                { IDeviceSpec.Feature.StereoPan, new FeatureRule(5, "R190XXU0AUA") },
+                { IDeviceSpec.Feature.StereoPan, new FeatureRule(5, "R190XXU0AUA5") },
+                { IDeviceSpec.Feature.FirmwareUpdates, null },
                 { IDeviceSpec.Feature.DetectConversations, null },
                 { IDeviceSpec.Feature.NoiseControl, null },
                 { IDeviceSpec.Feature.GamingMode, null },
