@@ -266,7 +266,7 @@
     <sys:String x:Key="system_flasher">Install firmware updates</sys:String>
     <sys:String x:Key="system_flasher_desc">Upgrade, downgrade, or flash custom firmware binaries</sys:String>
     <sys:String x:Key="system_spatial">Dump spatial sensor measurements</sys:String>
-    <sys:String x:Key="system_spatial_desc">Read spatial data used for 3D audio</sys:String>
+    <sys:String x:Key="system_spatial_desc">Read spatial head-tracking data used for 3D audio</sys:String>
 
     <sys:String x:Key="system_battery_type_unknown">Not specified</sys:String>
     <sys:String x:Key="system_waiting_for_device">Waiting for response...</sys:String>
