@@ -219,7 +219,7 @@ namespace GalaxyBudsClient.Interface.Developer
 
                     failCount = 0;
                 }
-                catch (InvalidPacketException ex)
+                catch (InvalidPacketException)
                 {
                     // Attempt to remove broken message, otherwise skip data block
                     var somIndex = 0;

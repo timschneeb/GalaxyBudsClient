@@ -183,7 +183,7 @@ namespace ThePBone.Interop.Win32.TrayIcon
                         ResourceLoader.LoadXamlFromManifest<ResourceDictionary>(
                             $"ThePBone.Interop.Win32.TrayIcon.Styles.Brushes{(dark ? "Dark" : string.Empty)}.xaml"));
                 }
-                catch (InvalidOperationException ex)
+                catch (InvalidOperationException)
                 {
                     Log.Fatal("Win32.TrayIcon: LoadXamlFromManifest: stream was null");
                 }

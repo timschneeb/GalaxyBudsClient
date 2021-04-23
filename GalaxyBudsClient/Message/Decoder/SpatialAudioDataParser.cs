@@ -17,11 +17,11 @@ namespace GalaxyBudsClient.Message.Decoder
         public bool WearOnOffParam2 { set; get; }
         
         /* Grv */
-        public float[] GrvFloatArray { set; get; }
+        public float[]? GrvFloatArray { set; get; }
         public bool GrvBoolean { set; get; }
 
         /* Gyrocal */
-        public int[] GyrocalBias { set; get; }
+        public int[]? GyrocalBias { set; get; }
         
         /* SensorStuck */
         public int StuckParameter { set; get; }
@@ -192,7 +192,7 @@ namespace GalaxyBudsClient.Message.Decoder
                 }
                 else
                 {
-                    map.Add(property.Name, property?.GetValue(this)?.ToString() ?? "null");
+                    map.Add(property.Name, property.GetValue(this)?.ToString() ?? "null");
                 }
             }
 

@@ -40,6 +40,10 @@ namespace GalaxyBudsClient.Message
                 switch (data.EventId)
                 {
                     case SpatialAudioData.BudGrv:
+                        if (data.GrvFloatArray == null)
+                        {
+                            break;
+                        }
                         NewQuaternionReceived?.Invoke(this,
                             new Quaternion(data.GrvFloatArray[0], data.GrvFloatArray[1],
                                 data.GrvFloatArray[2], data.GrvFloatArray[3]));
