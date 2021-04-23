@@ -31,6 +31,10 @@ namespace GalaxyBudsClient.Interface.Pages
                 BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.FirmwareUpdates);
             this.FindControl<Control>("FirmwareItem").IsVisible =
                 BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.FirmwareUpdates);
+            this.FindControl<Control>("SpatialSensorSeparator").IsVisible =
+                BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.SpatialSensor);
+            this.FindControl<Control>("SpatialSensorItem").IsVisible =
+                BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.SpatialSensor);
 
         }
 
@@ -82,6 +86,11 @@ namespace GalaxyBudsClient.Interface.Pages
             {
                 MainWindow.Instance.Pager.SwitchPage(Pages.FirmwareSelect);
             }
+        }
+
+        private void SpatialSensor_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+        {
+            MainWindow.Instance.Pager.SwitchPage(Pages.SpatialTest);
         }
     }
 }

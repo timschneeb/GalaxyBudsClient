@@ -54,7 +54,7 @@ namespace GalaxyBudsClient
         private BudsPopup _popup;
         private DateTime _lastPopupTime = DateTime.UtcNow;
         private WearStates _lastWearState = WearStates.Both;
-
+        
         private bool _firstShow = true;
         
         public bool OverrideMinimizeTray { set; get; }
@@ -131,7 +131,7 @@ namespace GalaxyBudsClient
                 new SystemPage(), new SelfTestPage(), new SettingsPage(), new PopupSettingsPage(),
                 ConnectionLostPage, CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(),
                 new WelcomePage(), UnsupportedFeaturePage, UpdatePage, UpdateProgressPage, new SystemCoredumpPage(),
-                new HotkeyPage(), new FirmwareSelectionPage(), new FirmwareTransferPage());
+                new HotkeyPage(), new FirmwareSelectionPage(), new FirmwareTransferPage(), new SpatialTestPage());
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
@@ -498,7 +498,6 @@ namespace GalaxyBudsClient
                 }
             };
             options[Loc.Resolve("optionsmenu_credits")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Credits);
-
 
             _titleBar.OptionsButton.ContextMenu = MenuFactory.BuildContextMenu(options);
         }

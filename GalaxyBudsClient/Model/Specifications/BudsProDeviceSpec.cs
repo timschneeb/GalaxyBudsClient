@@ -19,6 +19,7 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.GamingMode, null },
                 { IDeviceSpec.Feature.CaseBattery, null },
                 { IDeviceSpec.Feature.FragmentedMessages, null },
+                { IDeviceSpec.Feature.SpatialSensor, null },
             };
         
         public Models Device => Models.BudsPro;

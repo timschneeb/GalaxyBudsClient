@@ -1,4 +1,5 @@
 ﻿using System;
+using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;
@@ -19,7 +20,7 @@ namespace GalaxyBudsClient.Message
             typeof(DebugSkuParser), typeof(SetInBandRingtoneParser), typeof(NoiseReductionModeUpdateParser),
             typeof(LogTraceStartParser), typeof(LogTraceDataParser), typeof(LogCoredumpDataParser), typeof(LogCoredumpDataSizeParser),
             typeof(NoiseControlUpdateParser), typeof(FotaSessionParser), typeof(FotaControlParser), typeof(FotaDownloadDataParser), 
-            typeof(FotaUpdateParser), typeof(FotaResultParser)
+            typeof(FotaUpdateParser), typeof(FotaResultParser), typeof(SpatialAudioDataParser), typeof(SpatialAudioControlParser), typeof(SpatialTestPage)
         };
 
         public static BaseMessageParser? BuildParser(SPPMessage msg)

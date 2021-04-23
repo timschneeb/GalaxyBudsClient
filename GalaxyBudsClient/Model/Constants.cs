@@ -53,6 +53,26 @@ namespace GalaxyBudsClient.Model
             custom
         }
         
+        public enum SpatialAudioControl
+        {
+            Attach = 0,
+            Detach = 1,
+            AttachSuccess = 2,
+            DetachSuccess = 3,
+            KeepAlive = 4,
+            WearOnOff = 5
+        }
+        
+        public enum SpatialAudioData
+        {
+            Unknown,
+            BudGrv = 32,
+            BudGyrocal = 35,
+            BudSensorStuck = 36,
+            WearOff = 34,
+            WearOn = 33
+        }
+        
         public enum TemperatureUnits
         {
             Fahrenheit,

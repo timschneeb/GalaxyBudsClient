@@ -27,7 +27,8 @@ namespace GalaxyBudsClient.Model.Specifications
             CaseBattery,
             FragmentedMessages,
             StereoPan,
-            FirmwareUpdates
+            FirmwareUpdates,
+            SpatialSensor
         }
         
         public Dictionary<Feature, FeatureRule?> Rules { get; }
