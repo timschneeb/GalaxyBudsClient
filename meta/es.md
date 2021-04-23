@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>54%</td><td>169 missing string(s)</td></tr>
+<tr><td>53%</td><td>174 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -94,6 +94,8 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>system_info_desc</code></td><td>Display detailed information about your earbuds</td></tr>
 <tr><td><code>system_flasher</code></td><td>Install firmware updates</td></tr>
 <tr><td><code>system_flasher_desc</code></td><td>Upgrade, downgrade, or flash custom firmware binaries</td></tr>
+<tr><td><code>system_spatial</code></td><td>Dump spatial sensor measurements</td></tr>
+<tr><td><code>system_spatial_desc</code></td><td>Read spatial data used for 3D audio</td></tr>
 <tr><td><code>coredump_header</code></td><td>Dumping data...</td></tr>
 <tr><td><code>coredump_dl_progress_prepare</code></td><td>Preparing download...</td></tr>
 <tr><td><code>coredump_dl_progress_cancelled</code></td><td>Download cancelled</td></tr>
@@ -197,6 +199,9 @@ Details:</td></tr>
 <tr><td><code>fw_fail_session_timeout</code></td><td>Timed out while waiting for the device to open a new session</td></tr>
 <tr><td><code>fw_fail_control_timeout</code></td><td>Timed out while waiting for the device to return a control block</td></tr>
 <tr><td><code>fw_fail_copy_timeout</code></td><td>Timed out while waiting for the transfer process to finish</td></tr>
+<tr><td><code>spatial_header</code></td><td>Spatial sensor test</td></tr>
+<tr><td><code>spatial_dump_quaternion</code></td><td>Raw quaternion vector:</td></tr>
+<tr><td><code>spatial_dump_rpy</code></td><td>RPY values:</td></tr>
 <tr><td><code>window_minimize</code></td><td>Minimize</td></tr>
 <tr><td><code>window_close</code></td><td>Close</td></tr>
 

@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>84%</td><td>56 missing string(s)</td></tr>
+<tr><td>83%</td><td>61 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -13,6 +13,8 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><th>Key</th><th>Original string</th></tr>
 <tr><td><code>system_flasher</code></td><td>Install firmware updates</td></tr>
 <tr><td><code>system_flasher_desc</code></td><td>Upgrade, downgrade, or flash custom firmware binaries</td></tr>
+<tr><td><code>system_spatial</code></td><td>Dump spatial sensor measurements</td></tr>
+<tr><td><code>system_spatial_desc</code></td><td>Read spatial data used for 3D audio</td></tr>
 <tr><td><code>settings_autostart_permission</code></td><td>Cannot update auto-start entry in registry. Registry access (HKCU) was explicitly disabled by your system administrator.</td></tr>
 <tr><td><code>eq_preset</code></td><td>Preset</td></tr>
 <tr><td><code>eq_stereo_balance</code></td><td>Left/right sound balance</td></tr>
@@ -80,6 +82,9 @@ Details:</td></tr>
 <tr><td><code>fw_fail_session_timeout</code></td><td>Timed out while waiting for the device to open a new session</td></tr>
 <tr><td><code>fw_fail_control_timeout</code></td><td>Timed out while waiting for the device to return a control block</td></tr>
 <tr><td><code>fw_fail_copy_timeout</code></td><td>Timed out while waiting for the transfer process to finish</td></tr>
+<tr><td><code>spatial_header</code></td><td>Spatial sensor test</td></tr>
+<tr><td><code>spatial_dump_quaternion</code></td><td>Raw quaternion vector:</td></tr>
+<tr><td><code>spatial_dump_rpy</code></td><td>RPY values:</td></tr>
 
 </table>
 
