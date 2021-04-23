@@ -99,7 +99,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>system_flasher</code></td><td>Install firmware updates</td></tr>
 <tr><td><code>system_flasher_desc</code></td><td>Upgrade, downgrade, or flash custom firmware binaries</td></tr>
 <tr><td><code>system_spatial</code></td><td>Dump spatial sensor measurements</td></tr>
-<tr><td><code>system_spatial_desc</code></td><td>Read spatial data used for 3D audio</td></tr>
+<tr><td><code>system_spatial_desc</code></td><td>Read spatial head-tracking data used for 3D audio</td></tr>
 <tr><td><code>coredump_header</code></td><td>Dumping data...</td></tr>
 <tr><td><code>coredump_dl_progress_prepare</code></td><td>Preparing download...</td></tr>
 <tr><td><code>coredump_dl_progress_cancelled</code></td><td>Download cancelled</td></tr>
