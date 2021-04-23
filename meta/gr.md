@@ -14,7 +14,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>system_flasher</code></td><td>Install firmware updates</td></tr>
 <tr><td><code>system_flasher_desc</code></td><td>Upgrade, downgrade, or flash custom firmware binaries</td></tr>
 <tr><td><code>system_spatial</code></td><td>Dump spatial sensor measurements</td></tr>
-<tr><td><code>system_spatial_desc</code></td><td>Read spatial data used for 3D audio</td></tr>
+<tr><td><code>system_spatial_desc</code></td><td>Read spatial head-tracking data used for 3D audio</td></tr>
 <tr><td><code>fw_disclaimer</code></td><td>Disclaimer</td></tr>
 <tr><td><code>fw_disclaimer_desc</code></td><td>This firmware updating tool is an accurate replica of the official updater found in Samsung's official Android app. I've thoroughly tested this implementation under various circumstances (normal operation, connection loss, intentionally corrupted Bluetooth packets, ...) without experiencing any issues at all. Still, I won't take any liability if anything should go wrong since firmware updates modify vital system components and should always be handled with caution.
 
