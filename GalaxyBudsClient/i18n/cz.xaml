@@ -251,7 +251,7 @@
     <sys:String x:Key="system_info">Zobrazit systémové informace</sys:String>
     <sys:String x:Key="system_info_desc">Zobrazit podrobné informace o Vašich sluchátkách</sys:String>
     <sys:String x:Key="system_flasher">Instalovat aktualizaci firmwaru</sys:String>
-    <sys:String x:Key="system_flasher_desc">Stáne novější, starší nebo flashne vlastní binární soubory firmwaru</sys:String>
+    <sys:String x:Key="system_flasher_desc">Stáne novější, starší nebo flashne vlastní firmware</sys:String>
 
     <sys:String x:Key="system_battery_type_unknown">Nespecifikováno</sys:String>
     <sys:String x:Key="system_waiting_for_device">Čekání na odpověď...</sys:String>
