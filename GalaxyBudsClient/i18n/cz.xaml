@@ -252,6 +252,8 @@
     <sys:String x:Key="system_info_desc">Zobrazit podrobné informace o Vašich sluchátkách</sys:String>
     <sys:String x:Key="system_flasher">Instalovat aktualizaci firmwaru</sys:String>
     <sys:String x:Key="system_flasher_desc">Stáne novější, starší nebo flashne vlastní firmware</sys:String>
+    <sys:String x:Key="system_spatial">Vypsat měření prostorových senzorů</sys:String>
+    <sys:String x:Key="system_spatial_desc">Přečtěte si prostorová data o sledování hlavy použitá pro 3D zvuk</sys:String>
 
     <sys:String x:Key="system_battery_type_unknown">Nespecifikováno</sys:String>
     <sys:String x:Key="system_waiting_for_device">Čekání na odpověď...</sys:String>
@@ -469,6 +471,13 @@
     <sys:String x:Key="fw_fail_session_timeout">Vypršel časový limit při čekání, až zařízení zahájí novou relaci</sys:String>
     <sys:String x:Key="fw_fail_control_timeout">Vypršel časový limit při čekání, až zařízení vrátí řídicí blok</sys:String>
     <sys:String x:Key="fw_fail_copy_timeout">Při čekání na dokončení procesu přenosu vypršel časový limit</sys:String>
+
+    <!-- Spatial test -->
+    <sys:String x:Key="spatial_header">Test prostorového senzoru</sys:String>
+    <!-- Note: Quaternion = 4-dimensional vector -->
+    <sys:String x:Key="spatial_dump_quaternion">Surový vektor čtveřice:</sys:String>
+    <!-- Note: RPY = Roll, pitch, yaw -->
+    <sys:String x:Key="spatial_dump_rpy">Hodnoty RPY:</sys:String>
 
     <!-- Header -->
     <sys:String x:Key="window_minimize">Minimalizovat</sys:String>
