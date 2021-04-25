@@ -395,6 +395,16 @@
     <sys:String x:Key="adv_gaming_mode_desc">Minimalizuje latenci připojení (pouze Samsung)</sys:String>
     <sys:String x:Key="adv_hotkey">Klávesové zkratky</sys:String>
     <sys:String x:Key="adv_hotkey_desc">Definovat vlastní klávesové zkratky pro dálkové ovládání sluchátek</sys:String>
+    <sys:String x:Key="adv_bixby_remap">Přemapovat probuzení Bixby</sys:String>
+    <sys:String x:Key="adv_bixby_remap_desc">Definujte, co se stane, když řeknete 'Hey Bixby!'</sys:String>
+
+    <!-- Remap bixby wakeup -->
+    <sys:String x:Key="bixby_remap_header">Přemapovat probuzení Bixby</sys:String>
+    <sys:String x:Key="bixby_remap_enable">Povolit probuzení Bixby</sys:String>
+    <sys:String x:Key="bixby_remap_enable_desc">Spustí Bixby na vašem telefonu Samsung nebo spustí vlastní akci na tomto počítači při probuzení.</sys:String>
+    <sys:String x:Key="bixby_remap_lang">Jazky vzbuzení Bixby</sys:String>
+    <sys:String x:Key="bixby_remap_action">Vlastní akce probuzení</sys:String>
+    <sys:String x:Key="bixby_remap_note">Řekněte 'Hey Bixby!' pro aktivaci. Aktivovací fráze v se může lišit v jiných jazykových nastavení.&#10;&#10;Konfigurace přemapování je aktivní pouze na tomto zařízení. Pokud připojíte sluchátka k zařízení Samsung, hlasové probuzení normálně aktivuje Bixby. Na jiných zařízeních, než je toto, a na telefonech jiných výrobců, tato funkce nespustí žádnou akci.</sys:String>
 
     <!-- Credits -->
     <sys:String x:Key="credits_header">Autoři</sys:String>
