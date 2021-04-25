@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Windows.AI.MachineLearning;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
@@ -45,7 +46,7 @@ namespace GalaxyBudsClient.Message.Decoder
         public PlacementStates PlacementR { set; get; }
         [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
         public int BatteryCase { set; get; }
-        [Device(new[] { Models.BudsPlus })]
+        [Device(new[] { Models.BudsPlus, Models.BudsPro })]
         public bool OutsideDoubleTap { set; get; }
         [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
         public Color DeviceColor { set; get; }
@@ -55,7 +56,7 @@ namespace GalaxyBudsClient.Message.Decoder
         public bool AdjustSoundSync { set; get; }
         [Device(Models.BudsPlus)]
         public bool SideToneEnabled { set; get; }
-        [Device(Models.BudsPlus)]
+        [Device(new []{ Models.BudsPlus, Models.BudsPro })]
         public bool ExtraHighAmbientEnabled { set; get; }
 
 
@@ -279,6 +280,14 @@ namespace GalaxyBudsClient.Message.Decoder
                     if (Revision >= 5)
                     {
                         HearingEnhancements = msg.Payload[29];
+                    }
+                    if (Revision >= 6)
+                    {
+                        ExtraHighAmbientEnabled = msg.Payload[30] == 1;
+                    }
+                    if (Revision >= 7)
+                    {
+                        HearingEnhancements = msg.Payload[31];
                     }
                 }
             }
