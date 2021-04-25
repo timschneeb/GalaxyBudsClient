@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>51%</td><td>188 missing string(s)</td></tr>
+<tr><td>50%</td><td>193 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -87,6 +87,11 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>devsel_dialog_footer</code></td><td>If you don't see your earbuds, make sure you've paired and connected them in your computer's Bluetooth settings, and then click Refresh.</td></tr>
 <tr><td><code>devsel_winrt_title</code></td><td>Use alternative Bluetooth backend</td></tr>
 <tr><td><code>devsel_winrt</code></td><td>Much better stability, but may not work on all PCs with some Bluetooth adapters</td></tr>
+<tr><td><code>touchpad_noise_control_mode</code></td><td>Noise control switching mode</td></tr>
+<tr><td><code>touchpad_noise_control_mode_anc_amb</code></td><td>ANC <-> Ambient sound</td></tr>
+<tr><td><code>touchpad_noise_control_mode_anc_off</code></td><td>ANC <-> Off</td></tr>
+<tr><td><code>touchpad_noise_control_mode_amb_off</code></td><td>Ambient sound <-> Off</td></tr>
+<tr><td><code>touchpad_noise_control_mode_threeway</code></td><td>Left: Ambient sound <-> Off, Right: ANC <-> Off</td></tr>
 <tr><td><code>system_overview_header</code></td><td>System</td></tr>
 <tr><td><code>system_selftest_desc</code></td><td>Verify if all modules of your earbuds are functioning properly</td></tr>
 <tr><td><code>system_factory_reset_desc</code></td><td>Restore your earbuds to their factory settings and disconnect</td></tr>

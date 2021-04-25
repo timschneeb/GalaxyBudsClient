@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>70%</td><td>114 missing string(s)</td></tr>
+<tr><td>69%</td><td>119 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -30,6 +30,11 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>updater_dl_note</code></td><td>When the download finishes, this app will automatically close itself and launch a separate update installer. It may take a few seconds until it shows up.</td></tr>
 <tr><td><code>devsel_winrt_title</code></td><td>Use alternative Bluetooth backend</td></tr>
 <tr><td><code>devsel_winrt</code></td><td>Much better stability, but may not work on all PCs with some Bluetooth adapters</td></tr>
+<tr><td><code>touchpad_noise_control_mode</code></td><td>Noise control switching mode</td></tr>
+<tr><td><code>touchpad_noise_control_mode_anc_amb</code></td><td>ANC <-> Ambient sound</td></tr>
+<tr><td><code>touchpad_noise_control_mode_anc_off</code></td><td>ANC <-> Off</td></tr>
+<tr><td><code>touchpad_noise_control_mode_amb_off</code></td><td>Ambient sound <-> Off</td></tr>
+<tr><td><code>touchpad_noise_control_mode_threeway</code></td><td>Left: Ambient sound <-> Off, Right: ANC <-> Off</td></tr>
 <tr><td><code>system_flasher</code></td><td>Install firmware updates</td></tr>
 <tr><td><code>system_flasher_desc</code></td><td>Upgrade, downgrade, or flash custom firmware binaries</td></tr>
 <tr><td><code>system_spatial</code></td><td>Dump spatial sensor measurements</td></tr>
