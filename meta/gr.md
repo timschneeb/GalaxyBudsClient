@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>85%</td><td>54 missing string(s)</td></tr>
+<tr><td>83%</td><td>62 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -15,6 +15,16 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>system_flasher_desc</code></td><td>Upgrade, downgrade, or flash custom firmware binaries</td></tr>
 <tr><td><code>system_spatial</code></td><td>Dump spatial sensor measurements</td></tr>
 <tr><td><code>system_spatial_desc</code></td><td>Read spatial head-tracking data used for 3D audio</td></tr>
+<tr><td><code>adv_bixby_remap</code></td><td>Remap Bixby wakeup</td></tr>
+<tr><td><code>adv_bixby_remap_desc</code></td><td>Define what should happen when you say 'Hey Bixby!'</td></tr>
+<tr><td><code>bixby_remap_header</code></td><td>Remap Bixby wakeup</td></tr>
+<tr><td><code>bixby_remap_enable</code></td><td>Enable Bixby wakeup</td></tr>
+<tr><td><code>bixby_remap_enable_desc</code></td><td>Launch Bixby on your Samsung phone or execute a custom action on this PC when waken up</td></tr>
+<tr><td><code>bixby_remap_lang</code></td><td>Bixby wakeup language</td></tr>
+<tr><td><code>bixby_remap_action</code></td><td>Custom wakeup action</td></tr>
+<tr><td><code>bixby_remap_note</code></td><td>Say 'Hey Bixby!' to activate. The activation phrase may be different with some language settings.
+
+The remap configuration is only active on this device. If you connect your earbuds to a Samsung device, voice wakeup will activate Bixby normally. On other devices than this device and non-Samsung phones, this feature won't trigger any action.</td></tr>
 <tr><td><code>fw_disclaimer</code></td><td>Disclaimer</td></tr>
 <tr><td><code>fw_disclaimer_desc</code></td><td>This firmware updating tool is an accurate replica of the official updater found in Samsung's official Android app. I've thoroughly tested this implementation under various circumstances (normal operation, connection loss, intentionally corrupted Bluetooth packets, ...) without experiencing any issues at all. Still, I won't take any liability if anything should go wrong since firmware updates modify vital system components and should always be handled with caution.
 
@@ -75,7 +85,7 @@ Details:</td></tr>
 <tr><td><code>fw_fail_session_timeout</code></td><td>Timed out while waiting for the device to open a new session</td></tr>
 <tr><td><code>fw_fail_control_timeout</code></td><td>Timed out while waiting for the device to return a control block</td></tr>
 <tr><td><code>fw_fail_copy_timeout</code></td><td>Timed out while waiting for the transfer process to finish</td></tr>
-<tr><td><code>spatial_header</code></td><td>Spatial sensor test</td></tr>
+<tr><td><code>spatial_header</code></td><td>Spatial sensor</td></tr>
 <tr><td><code>spatial_dump_quaternion</code></td><td>Raw quaternion vector:</td></tr>
 <tr><td><code>spatial_dump_rpy</code></td><td>RPY values:</td></tr>
 

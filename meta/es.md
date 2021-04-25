@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>53%</td><td>174 missing string(s)</td></tr>
+<tr><td>52%</td><td>182 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -137,6 +137,16 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 <tr><td><code>adv_passthrough_desc</code></td><td>This can prevent a feeling of stuffiness or compression when you're not using active noise canceling</td></tr>
 <tr><td><code>adv_hotkey</code></td><td>Keyboard hotkeys</td></tr>
 <tr><td><code>adv_hotkey_desc</code></td><td>Define custom keyboard hotkeys to remote-control your earbuds</td></tr>
+<tr><td><code>adv_bixby_remap</code></td><td>Remap Bixby wakeup</td></tr>
+<tr><td><code>adv_bixby_remap_desc</code></td><td>Define what should happen when you say 'Hey Bixby!'</td></tr>
+<tr><td><code>bixby_remap_header</code></td><td>Remap Bixby wakeup</td></tr>
+<tr><td><code>bixby_remap_enable</code></td><td>Enable Bixby wakeup</td></tr>
+<tr><td><code>bixby_remap_enable_desc</code></td><td>Launch Bixby on your Samsung phone or execute a custom action on this PC when waken up</td></tr>
+<tr><td><code>bixby_remap_lang</code></td><td>Bixby wakeup language</td></tr>
+<tr><td><code>bixby_remap_action</code></td><td>Custom wakeup action</td></tr>
+<tr><td><code>bixby_remap_note</code></td><td>Say 'Hey Bixby!' to activate. The activation phrase may be different with some language settings.
+
+The remap configuration is only active on this device. If you connect your earbuds to a Samsung device, voice wakeup will activate Bixby normally. On other devices than this device and non-Samsung phones, this feature won't trigger any action.</td></tr>
 <tr><td><code>credits_sponsor</code></td><td>Sponsor this project</td></tr>
 <tr><td><code>connlost_disconnected</code></td><td>Device disconnected</td></tr>
 <tr><td><code>fw_disclaimer</code></td><td>Disclaimer</td></tr>
@@ -199,7 +209,7 @@ Details:</td></tr>
 <tr><td><code>fw_fail_session_timeout</code></td><td>Timed out while waiting for the device to open a new session</td></tr>
 <tr><td><code>fw_fail_control_timeout</code></td><td>Timed out while waiting for the device to return a control block</td></tr>
 <tr><td><code>fw_fail_copy_timeout</code></td><td>Timed out while waiting for the transfer process to finish</td></tr>
-<tr><td><code>spatial_header</code></td><td>Spatial sensor test</td></tr>
+<tr><td><code>spatial_header</code></td><td>Spatial sensor</td></tr>
 <tr><td><code>spatial_dump_quaternion</code></td><td>Raw quaternion vector:</td></tr>
 <tr><td><code>spatial_dump_rpy</code></td><td>RPY values:</td></tr>
 <tr><td><code>window_minimize</code></td><td>Minimize</td></tr>
