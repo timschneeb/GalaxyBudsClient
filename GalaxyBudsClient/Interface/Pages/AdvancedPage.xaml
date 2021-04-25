@@ -15,6 +15,7 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <elements:PageHeader Grid.Row="1" Title="{DynamicResource adv_header}" BackPressed="BackButton_OnPointerPressed"/>
@@ -22,6 +23,8 @@
         <Border Grid.Row="3" Classes="RoundedBorderListItem BottomSpacer10">
             <Grid ClipToBounds="True">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="1" />
                         <RowDefinition Height="*" />
@@ -53,9 +56,26 @@
             </Grid>
         </Border>
         <Border Grid.Row="4" x:Name="Hotkeys" Classes="RoundedBorderListItem BottomSpacer10">
-            <items:DetailListItem Text="{DynamicResource adv_hotkey}"
-                                  Description="{DynamicResource adv_hotkey_desc}"
-                                  PointerPressed="Hotkeys_OnPointerPressed"/>
+            <Grid ClipToBounds="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                
+                <items:DetailListItem Grid.Row="0" Text="{DynamicResource adv_hotkey}"
+                                      Description="{DynamicResource adv_hotkey_desc}"
+                                      PointerPressed="Hotkeys_OnPointerPressed"/>
+                <Separator Grid.Row="1" x:Name="BixbyRemapS"  Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
+                <Border Grid.Row="2" x:Name="BixbyRemap">
+                    <items:DetailListItem Text="{DynamicResource adv_bixby_remap}"
+                                          Description="{DynamicResource adv_bixby_remap_desc}"
+                                          PointerPressed="BixbyRemap_OnPointerPressed"/>
+                </Border>
+            </Grid>
+            
+
         </Border>
+
     </Grid>
 </pages:AbstractPage>

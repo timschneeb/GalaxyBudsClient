@@ -71,5 +71,7 @@ namespace GalaxyBudsClient.Model
         bool UseBluetoothWinRT { set; get; }
         
         bool FirmwareWarningAccepted { set; get; }
+        
+        EventDispatcher.Event BixbyRemapEvent { set; get; }
     }
 }

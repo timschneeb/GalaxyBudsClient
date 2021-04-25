@@ -131,7 +131,8 @@ namespace GalaxyBudsClient
                 new SystemPage(), new SelfTestPage(), new SettingsPage(), new PopupSettingsPage(),
                 ConnectionLostPage, CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(),
                 new WelcomePage(), UnsupportedFeaturePage, UpdatePage, UpdateProgressPage, new SystemCoredumpPage(),
-                new HotkeyPage(), new FirmwareSelectionPage(), new FirmwareTransferPage(), new SpatialTestPage());
+                new HotkeyPage(), new FirmwareSelectionPage(), new FirmwareTransferPage(), new SpatialTestPage(),
+                new BixbyRemapPage());
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
@@ -159,6 +160,7 @@ namespace GalaxyBudsClient
             SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
             SPPMessageHandler.Instance.StatusUpdate += OnStatusUpdate;
             SPPMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
+            SPPMessageHandler.Instance.AnyMessageReceived += OnAnyMessageReceived;
 
             EventDispatcher.Instance.EventReceived += OnEventReceived;
             NotifyIconImpl.Instance.LeftClicked += TrayIcon_OnLeftClicked;
@@ -183,6 +185,19 @@ namespace GalaxyBudsClient
                 if (desktop.Args.Contains("/StartMinimized") && PlatformUtils.SupportsTrayIcon)
                 {
                     WindowState = WindowState.Minimized;
+                }
+            }
+        }
+
+        private void OnAnyMessageReceived(object? sender, BaseMessageParser? e)
+        {
+            if (e is VoiceWakeupEventParser wakeup)
+            {
+                if (wakeup.ResultCode == 1)
+                {
+                    Log.Debug("MainWindow.OnAnyMessageReceived: Voice wakeup event received");
+                    
+                    EventDispatcher.Instance.Dispatch(SettingsProvider.Instance.BixbyRemapEvent);
                 }
             }
         }

@@ -18,6 +18,7 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.CaseBattery, null },
                 { IDeviceSpec.Feature.FragmentedMessages, null },
                 { IDeviceSpec.Feature.StereoPan, new FeatureRule(7, "R180XXU0AUB5") },
+                { IDeviceSpec.Feature.BixbyWakeup, null },
             };
         
         public Models Device => Models.BudsLive;

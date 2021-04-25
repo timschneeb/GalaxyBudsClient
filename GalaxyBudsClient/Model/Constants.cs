@@ -15,6 +15,22 @@ namespace GalaxyBudsClient.Model
             public static readonly Guid BudsLive = new Guid("{00001101-0000-1000-8000-00805F9B34FB}");
             public static readonly Guid BudsPro = new Guid("{00001101-0000-1000-8000-00805F9B34FB}");
         }
+
+        public static class Bixby
+        {
+            public static (byte, string)[] Languages =
+            {
+                (0, "de-DE"),
+                (1, "en-GB"),
+                (2, "en-US"),
+                (3, "es-ES"),
+                (4, "fr-FR"),
+                (5, "it-IT"),
+                (6, "ko-KR"),
+                (7, "pt-BR"),
+                (8, "zh-CN"),
+            };
+        }
         
         public enum Locales
         {

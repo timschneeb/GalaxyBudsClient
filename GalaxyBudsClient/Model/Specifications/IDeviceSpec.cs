@@ -20,6 +20,7 @@ namespace GalaxyBudsClient.Model.Specifications
             AmbientPassthrough,
             AmbientSound,
             Anc,
+            BixbyWakeup,
             NoiseControl,
             DetectConversations,
             GamingMode,

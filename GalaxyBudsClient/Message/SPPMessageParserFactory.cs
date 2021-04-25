@@ -20,7 +20,8 @@ namespace GalaxyBudsClient.Message
             typeof(DebugSkuParser), typeof(SetInBandRingtoneParser), typeof(NoiseReductionModeUpdateParser),
             typeof(LogTraceStartParser), typeof(LogTraceDataParser), typeof(LogCoredumpDataParser), typeof(LogCoredumpDataSizeParser),
             typeof(NoiseControlUpdateParser), typeof(FotaSessionParser), typeof(FotaControlParser), typeof(FotaDownloadDataParser), 
-            typeof(FotaUpdateParser), typeof(FotaResultParser), typeof(SpatialAudioDataParser), typeof(SpatialAudioControlParser), typeof(SpatialTestPage)
+            typeof(FotaUpdateParser), typeof(FotaResultParser), typeof(SpatialAudioDataParser), typeof(SpatialAudioControlParser),
+            typeof(VoiceWakeupEventParser)
         };
 
         public static BaseMessageParser? BuildParser(SPPMessage msg)
