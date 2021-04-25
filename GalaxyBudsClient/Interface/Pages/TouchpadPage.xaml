@@ -16,6 +16,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
@@ -55,6 +56,13 @@
             </Grid>
         </Border>
         <Border Grid.Row="5"
+                x:Name="NoiseSwitchModeBorder" 
+                Classes="RoundedBorderListItem BottomSpacer10">
+            <items:MenuDetailListItem x:Name="NoiseSwitchMode"
+                                        Text="{DynamicResource touchpad_noise_control_mode}" 
+                                        Description="{DynamicResource notset}" />
+        </Border>
+        <Border Grid.Row="6"
                 x:Name="DoubleTapVolumeBorder" 
                 Classes="RoundedBorderListItem BottomSpacer10">
             <items:SwitchDetailListItem x:Name="DoubleTapVolume"

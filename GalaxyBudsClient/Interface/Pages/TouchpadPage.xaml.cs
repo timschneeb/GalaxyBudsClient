@@ -28,16 +28,28 @@ namespace GalaxyBudsClient.Interface.Pages
         
 		private readonly SwitchListItem _lock;
 		private readonly SwitchDetailListItem _edgeTouch;
+		private readonly MenuDetailListItem _noiseControlMode;
 		private readonly MenuDetailListItem _leftOption;
 		private readonly MenuDetailListItem _rightOption;
 		
 		private TouchOptions _lastLeftOption;
 		private TouchOptions _lastRightOption;
+		private (bool, bool, bool) _lastNoiseControlMode;
+		
+		/* ANC, Ambient, Off */
+		private static readonly (bool, bool, bool, string)[] NoiseControlModeMap = new[]
+		{
+			(true, true, false, "touchpad_noise_control_mode_anc_amb"),
+			(true, false, true, "touchpad_noise_control_mode_anc_off"),
+			(false, true, true, "touchpad_noise_control_mode_amb_off"),
+			(true, true, true, "touchpad_noise_control_mode_threeway"),
+		};
 		
 		public TouchpadPage()
 		{   
 			AvaloniaXamlLoader.Load(this);
 			_lock = this.FindControl<SwitchListItem>("LockToggle");
+			_noiseControlMode = this.FindControl<MenuDetailListItem>("NoiseSwitchMode");
 			_edgeTouch = this.FindControl<SwitchDetailListItem>("DoubleTapVolume");
 			_leftOption = this.FindControl<MenuDetailListItem>("LeftOption");
 			_rightOption = this.FindControl<MenuDetailListItem>("RightOption");
@@ -45,9 +57,9 @@ namespace GalaxyBudsClient.Interface.Pages
             SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
             EventDispatcher.Instance.EventReceived += OnEventReceived;
             
-			Loc.LanguageUpdated += UpdateTouchActionMenus;
+			Loc.LanguageUpdated += UpdateMenus;
 			Loc.LanguageUpdated += UpdateMenuDescriptions;
-			UpdateTouchActionMenus();
+			UpdateMenus();
 		}
 
 		private async void OnEventReceived(EventDispatcher.Event e, object? arg)
@@ -75,12 +87,32 @@ namespace GalaxyBudsClient.Interface.Pages
 
 			_leftOption.Description = e.TouchpadOptionL.GetDescription();
 			_rightOption.Description = e.TouchpadOptionR.GetDescription();
+
+			_lastNoiseControlMode = (e.NoiseControlTouchAnc, e.NoiseControlTouchAmbient, e.NoiseControlTouchOff);
 			
 			UpdateMenuDescriptions();
 		}
 
 		private void UpdateMenuDescriptions()
 		{
+			bool known = false;
+			foreach (var mode in NoiseControlModeMap)
+			{
+				if (mode.Item1 == _lastNoiseControlMode.Item1 &&
+				    mode.Item2 == _lastNoiseControlMode.Item2 &&
+				    mode.Item3 == _lastNoiseControlMode.Item3)
+				{
+					_noiseControlMode.Description = Loc.Resolve(mode.Item4);
+					known = true;
+					break;
+				}
+			}	
+			if(!known)
+            {
+             	Log.Warning("NoiseControlSwitchMode: Unknown mode");
+             	_noiseControlMode.Description = Loc.Resolve("touchpad_noise_control_mode_anc_amb");
+            }
+			
 			if (_lastLeftOption == TouchOptions.OtherL)
 			{
 				_leftOption.Description =
@@ -102,7 +134,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			}
 		}
 		
-		private void UpdateTouchActionMenus()
+		private void UpdateMenus()
 		{
 			foreach (var obj in Enum.GetValues(typeof(Devices)))
 			{
@@ -136,6 +168,32 @@ namespace GalaxyBudsClient.Interface.Pages
                     }
 				}
 			}
+			
+			var noiseActions = new Dictionary<string,EventHandler<RoutedEventArgs>?>();
+			foreach (var value in NoiseControlModeMap)
+			{
+				noiseActions[Loc.Resolve(value.Item4)] = async (sender, args) =>
+				{
+					_lastNoiseControlMode = (value.Item1, value.Item2, value.Item3);
+
+					if (value.Item1 && value.Item2 && value.Item3)
+					{
+						_lastLeftOption = TouchOptions.NoiseControl;
+						_lastRightOption = TouchOptions.NoiseControl;
+
+						UpdateMenuDescriptions();
+						UpdateNoiseSwitchModeVisible();
+						await MessageComposer.Touch.SetOptions(_lastLeftOption, _lastRightOption);
+					}
+					
+					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS, 
+						BitConverter.GetBytes(value.Item1)[0], 
+						BitConverter.GetBytes(value.Item2)[0], 
+						BitConverter.GetBytes(value.Item3)[0]);
+					UpdateMenuDescriptions();
+				};
+			}
+			_noiseControlMode.Items = noiseActions;
 		}
 
 		private async void ItemClicked(Devices device, TouchOptions option)
@@ -156,8 +214,21 @@ namespace GalaxyBudsClient.Interface.Pages
 				{
 					_lastRightOption = option;
 				}
+
+				if ((_lastNoiseControlMode.Item1 &&
+				     _lastNoiseControlMode.Item2 &&
+				     _lastNoiseControlMode.Item3) &&
+				    (_lastLeftOption != TouchOptions.NoiseControl || _lastRightOption != TouchOptions.NoiseControl))
+				{
+					// Reset three-way noise control switching if not both sides are set to noise control
+					_lastNoiseControlMode = (true, true, false);
+					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS, 
+						1, 1, 0);
+					UpdateMenuDescriptions();
+				}
 				
 				UpdateMenuDescriptions();
+				UpdateNoiseSwitchModeVisible();
 				await MessageComposer.Touch.SetOptions(_lastLeftOption, _lastRightOption);
             }
 			
@@ -176,19 +247,27 @@ namespace GalaxyBudsClient.Interface.Pages
 				_rightOption.Description = $"{Loc.Resolve("touchoption_custom_prefix")} {e}"; 
 			}
 
+			UpdateNoiseSwitchModeVisible();
 			await MessageComposer.Touch.SetOptions(_lastLeftOption, _lastRightOption);
 		}
 
-		
 		public override void OnPageShown()
 		{
 			_edgeTouch.Parent.IsVisible =
 				BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DoubleTapVolume);
+			UpdateNoiseSwitchModeVisible();
 			
 			MainWindow.Instance.CustomTouchActionPage.Accepted += CustomTouchActionPageOnAccepted;
 
-			UpdateTouchActionMenus();
+			UpdateMenus();
 			UpdateMenuDescriptions();
+		}
+
+		public void UpdateNoiseSwitchModeVisible()
+		{
+			_noiseControlMode.Parent.IsVisible =
+				BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl) 
+				&& (_lastLeftOption == TouchOptions.NoiseControl || _lastRightOption == TouchOptions.NoiseControl);
 		}
 		
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
