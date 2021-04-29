@@ -86,7 +86,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>touchpad_noise_control_mode_anc_amb</code></td><td>ANC <-> Ambient sound</td></tr>
 <tr><td><code>touchpad_noise_control_mode_anc_off</code></td><td>ANC <-> Off</td></tr>
 <tr><td><code>touchpad_noise_control_mode_amb_off</code></td><td>Ambient sound <-> Off</td></tr>
-<tr><td><code>touchpad_noise_control_mode_threeway</code></td><td>Left: Ambient sound <-> Off, Right: ANC <-> Off</td></tr>
+<tr><td><code>touchpad_noise_control_mode_threeway</code></td><td>Cycle between modes (ANC, Ambient, Off)</td></tr>
 <tr><td><code>system_overview_header</code></td><td>System</td></tr>
 <tr><td><code>system_selftest_desc</code></td><td>Verify if all modules of your earbuds are functioning properly</td></tr>
 <tr><td><code>system_factory_reset_desc</code></td><td>Restore your earbuds to their factory settings and disconnect</td></tr>
