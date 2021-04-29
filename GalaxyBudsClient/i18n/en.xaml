@@ -242,7 +242,7 @@
     <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC &lt;-&gt; Ambient sound</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; Off</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambient sound &lt;-&gt; Off</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_threeway">Left: Ambient sound &lt;-&gt; Off, Right: ANC &lt;-&gt; Off</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_threeway">Cycle between modes (ANC, Ambient, Off)</sys:String>
 
     <!-- Custom touchpad action page -->
     <sys:String x:Key="cact_header">Define custom long-press action</sys:String>
