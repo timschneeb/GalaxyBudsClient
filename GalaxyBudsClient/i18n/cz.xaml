@@ -227,6 +227,11 @@
 
     <sys:String x:Key="touchpad_double_tap_volume">Dvojité klepnutí na hranu sluchátka</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Dvakrát klepnout na hranu levého nebo pravého sluchátka pro zeslabení nebo zesílení hlasitosti.</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode">Režim přepínání regulace šumu</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC &lt;-&gt; Okolní zvuk</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; Vypnuto</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Okolní zvuk &lt;-&gt; Vypnuto</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_threeway">Pravé: Okolní zvuk &lt;-&gt; Vypnuto, Pravé: ANC &lt;-&gt; Vypnuto</sys:String>
 
     <!-- Custom touchpad action page -->
     <sys:String x:Key="cact_header">Definice vlastní akci při podržení</sys:String>
