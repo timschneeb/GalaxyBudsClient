@@ -24,6 +24,8 @@ namespace GalaxyBudsClient.Interface.Pages
         private TextBlock _progressSizeText;
         private ProgressBar _progress;
 
+        private Random _rng = new Random();
+
         public UpdateProgressPage()
 		{   
 			AvaloniaXamlLoader.Load(this);
@@ -59,17 +61,19 @@ namespace GalaxyBudsClient.Interface.Pages
         {
             _progressText.Text = Loc.Resolve("updater_dl_progress_finished");
 
+            string filename = $"GalaxyBudsClient_Updater_{_rng.Next(0,1000000)}.exe";
+            
             try
             {
                 FileInfo fileInfo = new FileInfo(path);
                 fileInfo.DeleteAlternateDataStream("Zone.Identifier");
-                fileInfo.MoveTo(Path.Combine(fileInfo.DirectoryName ?? "", "GalaxyBudsClient_Updater.exe"));
+                fileInfo.MoveTo(Path.Combine(fileInfo.DirectoryName ?? "", filename));
                 
                 Process proc = new Process
                 {
                     StartInfo =
                     {
-                        FileName = Path.Combine(fileInfo.DirectoryName ?? "", "GalaxyBudsClient_Updater.exe"),
+                        FileName = Path.Combine(fileInfo.DirectoryName ?? "", filename),
                         UseShellExecute = true,
                         Verb = "runas"
                     }
