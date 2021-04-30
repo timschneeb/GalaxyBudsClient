@@ -287,7 +287,7 @@ namespace GalaxyBudsClient.Message.Decoder
                     }
                     if (Revision >= 7)
                     {
-                        HearingEnhancements = msg.Payload[31];
+                        OutsideDoubleTap = msg.Payload[31] == 1;
                     }
                 }
             }
