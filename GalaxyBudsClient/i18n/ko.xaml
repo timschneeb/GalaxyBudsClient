@@ -423,6 +423,13 @@
     <sys:String x:Key="adv_hotkey">키보드 단축키</sys:String>
     <sys:String x:Key="adv_hotkey_desc">사용자 설정된 단축키를 지정하여 버즈를 멀리서 조작하세요.</sys:String>
 
+    <!-- Remap bixby wakeup -->
+    <sys:String x:Key="bixby_remap_header">빅스비 호출 동작 변경</sys:String>
+    <sys:String x:Key="bixby_remap_enable">빅스비 호출 활성화</sys:String>
+    <sys:String x:Key="bixby_remap_enable_desc">호출 시 삼성 휴대폰에서는 빅스비를 호출하고, 이 PC에서는 지정된 동작을 수행할 수 있어요.</sys:String>
+    <sys:String x:Key="bixby_remap_lang">빅스비 호출 언어</sys:String>
+    <sys:String x:Key="bixby_remap_action">호출 동작 사용자 지정</sys:String>
+    <sys:String x:Key="bixby_remap_note">'하이 빅스비'를 불러 활성화할 수 있어요. 언어에 따라 호출어가 다를 수 있어요.&#10;&#10;지정한 호출 동작은 이 기기에서만 사용할 수 있어요. 삼성 휴대폰에 이어버드를 연결하고 호출하면 정상적으로 빅스비가 활성화돼요. 삼성 외 제조사 휴대폰이나 다른 기기에서는 호출해도 아무 일도 일어나지 않아요.</sys:String>
     <!-- Credits -->
     <sys:String x:Key="credits_header">제작자</sys:String>
     <sys:String x:Key="credits_developer">개발자</sys:String>
