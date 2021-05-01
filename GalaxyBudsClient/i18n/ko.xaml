@@ -445,7 +445,9 @@
     <sys:String x:Key="connlost_connecting">연결 중...</sys:String>
 
     <!-- Firmware update disclaimer -->
-    <sys:String x:Key="fw_disclaimer">경고</sys:String>  
+    <sys:String x:Key="fw_disclaimer">경고</sys:String>
+    <sys:String x:Key="fw_disclaimer_desc">이 펌웨어는 삼성 공식 앱 내 공식 업데이트 도구의 복제품입니다. 다양한 상황(일반적인 상황, 연결 끊김, 의도적으로 블루투스 패킷 손상, ...) 에서의 테스트를 철저히 진행했고, 아무런 문제가 없었습니다. 그렇지만, 펌웨어 업데이트는 시스템 내 중요 요소를 변경하는 작업이고 신중하게 진행해야 하는 작업이므로 문제가 생기더라도 아무런 책임은 지지 않습니다.&#10;&#10;다운그레이드: 이전 펌웨어 버전으로의 다운그레이드가 가능하고 아무런 문제가 없었지만, 예기치 못한 문제를 일으킬 수 있으므로 필요할 때에만 진행하여야 합니다. 다운그레이드 이후 공장 초기화가 권장되지만 대부분 필수적이지는 않습니다.&#10;커스텀 플래싱: 하드 드라이브에서 펌웨어 파일을 로드하는 것 또한 가능합니다. 다른 모델용 펌웨어를 설치하지 마세요.&#10;&#10;이 프로그램에는 GPLv3 라이센스가 적용됩니다. 사용함으로서 라이센스와 책임의 한계에 동의하는 것으로 간주됩니다. 동의하시면 '계속'을 눌러주세요.</sys:String>
+
     <!-- Firmware selection -->
     <sys:String x:Key="fw_select_header">펌웨어 업데이트</sys:String>
     <sys:String x:Key="fw_select_instructions">다운로드하고 설치할 바이너리를 선택해 주세요. 또는, '고급..' > '디스크에서 이미지 선택하기'를 선택해 펌웨어 바이너리를 하드 디스크에서 선택할 수도 있어요.</sys:String>
@@ -482,16 +484,30 @@
     <sys:String x:Key="fw_upload_progress_stats_segment">세그먼트 #{0} 업로드 중 ({1}바이트, 체크섬 0x{2:X6})</sys:String>
 
     <!-- Firmware parse errors -->
+    <sys:String x:Key="fw_fail_no_magic">유효한 펌웨어 바이너리가 아니에요. 펌웨어 헤더에서 유효하지 않은 매직 값이 발견되었어요.</sys:String>
     <sys:String x:Key="fw_fail_size_null">펌웨어 바이너리의 크기가 0으로 설정되어 있어 설치에 사용할 수 없어요. 다른 펌웨어를 선택해 주세요.</sys:String>
+    <sys:String x:Key="fw_fail_no_segments">펌웨어 바이너리가 비어있으며, 바이너리 세그먼트를 포함하지 않아요. 다른 펌웨어를 선택해 주세요.</sys:String>
     <sys:String x:Key="fw_fail_unknown">펌웨어 바이너리를 해독하는 중 예기치 못한 오류가 발생했어요. 이 펌웨어 파일이 손상되었을 수도 있어요.&#10;&#10;상세 정보:</sys:String>
     
     <!-- Firmware transfer errors -->
     <sys:String x:Key="fw_fail_connection">기기와의 연결이 끊어졌어요. 펌웨어 전송이 취소됐어요.</sys:String>
+    <sys:String x:Key="fw_fail_session">새 세션을 열지 못했어요. 디바이스에서 받은 에러 코드: {0}</sys:String>
     <sys:String x:Key="fw_fail_copy">펌웨어 바이너리 복사에 실패했어요. 다시 연결한 후에 재시도해 주세요. 디바이스에서 받은 에러 코드: {0}</sys:String>
     <sys:String x:Key="fw_fail_verify">펌웨어 바이너리를 검증/설치하는 도중 오류가 발생했어요. 다시 연결한 후에 재시도해 주세요. 디바이스에서 받은 에러 코드: {0}</sys:String>
     <sys:String x:Key="fw_fail_connection_precheck">디바이스가 현재 연결되어 있지 않아요. 블루투스 시스템 설정을 확인하고 다시 연결해 주세요.</sys:String>
+    <sys:String x:Key="fw_fail_pending">이미 다른 펌웨어가 전송되고 있어요. 먼저 취소하고 다시 시도해 주세요.</sys:String>
     <sys:String x:Key="fw_fail_lowbattery">남은 배터리 용량이 너무 낮아요. 먼저 이어버드를 15% 이상 충전해 주세요.</sys:String>
+    <sys:String x:Key="fw_fail_session_timeout">기기에 새 세션이 열리기를 기다리던 중 시간이 초과되었어요.</sys:String>
+    <sys:String x:Key="fw_fail_control_timeout">기기가 컨트롤 블럭을 반환하기를 기다리던 중 시간이 초과되었어요.</sys:String>
+    <sys:String x:Key="fw_fail_copy_timeout">전송이 끝나기를 기다리던 중 시간이 초과되었어요.</sys:String>
     
+    <!-- Spatial test -->
+    <sys:String x:Key="spatial_header">360 오디오 센서</sys:String>
+    <!-- Note: Quaternion = 4-dimensional vector -->
+    <sys:String x:Key="spatial_dump_quaternion">원 쿼터니언 벡터:</sys:String>
+    <!-- Note: RPY = Roll, pitch, yaw -->
+    <sys:String x:Key="spatial_dump_rpy">RPY 값:</sys:String>
+
     <!-- Header -->
     <sys:String x:Key="window_minimize">최소화</sys:String>
     <sys:String x:Key="window_close">닫기</sys:String>
