@@ -51,6 +51,7 @@ Kromě standardních funkcí známých z oficiální Androidí aplikace, Vám te
 * Diagnostika a tovární auto-testy
 * Spousta skrytých informací o ladění
 * Přizpůsobitelné akce dlouhého dotyku
+* Stahování nových a starých verzí firmwaru (Buds+, Buds Pro)
 * a spousty dalších...
 
 ## Stažení
@@ -88,6 +89,8 @@ V současné době zkoumám úpravy a reverzní inženýrství firmwaru pro Buds
   <a href="https://github.com/ThePBone/GalaxyBudsFirmwareDownloader">Stahovač Firmwaru</a> •
   <a href="https://github.com/ThePBone/GalaxyBudsFirmwareExtractor">Extraktor Firmwaru</a>
 </p>
+
+Streamujte data v reálném čase ze svých Buds Pro pomocí tohoto skriptu: [ThePBone/BudsPro-Headtracking](https://github.com/ThePBone/BudsPro-Headtracking)
 
 ## Spolupráce
 
