@@ -198,7 +198,7 @@
     <sys:String x:Key="devsel_device_name">Název zařízení</sys:String>
     <sys:String x:Key="devsel_btaddr">Adresa MAC</sys:String>
     <sys:String x:Key="devsel_model">Model</sys:String>
-    <sys:String x:Key="devsel_nodevices">Prosím, nejprve připojte a spárujte Vaše sluchátka.</sys:String>
+    <sys:String x:Key="devsel_nodevices">Prosím, nejprve připojte a spárujte vaše sluchátka.</sys:String>
     <sys:String x:Key="devsel_nodevices_title">Nenalezeno žádné spárované zařízení</sys:String>
     <sys:String x:Key="devsel_noselection">Nebylo vybráno žádné zařízení</sys:String>
     <sys:String x:Key="devsel_invalid_selection">Prosím vyberte správné zařízení</sys:String>
@@ -228,10 +228,10 @@
     <sys:String x:Key="touchpad_double_tap_volume">Dvojité klepnutí na hranu sluchátka</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Dvakrát klepnout na hranu levého nebo pravého sluchátka pro zeslabení nebo zesílení hlasitosti.</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Režim přepínání regulace šumu</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC &lt;-&gt; Okolní zvuk</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC &lt;-&gt; Ambientní režim</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; Vypnuto</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Okolní zvuk &lt;-&gt; Vypnuto</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_threeway">Cyklování mezi režimy (Potlačení okolního hluku, Okolní zvuk, Vypnuto)</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambientní režim &lt;-&gt; Vypnuto</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_threeway">Cyklování mezi režimy (Potlačení okolního hluku, Ambientní režim, Vypnuto)</sys:String>
 
     <!-- Custom touchpad action page -->
     <sys:String x:Key="cact_header">Definice vlastní akci při podržení</sys:String>
@@ -254,9 +254,9 @@
     <sys:String x:Key="system_trace_core_dump">Stáhnout výpisy trasování a jádra</sys:String>
     <sys:String x:Key="system_trace_core_dump_desc">Načíst surová ladicí data ze sluchátek</sys:String>
     <sys:String x:Key="system_info">Zobrazit systémové informace</sys:String>
-    <sys:String x:Key="system_info_desc">Zobrazit podrobné informace o Vašich sluchátkách</sys:String>
+    <sys:String x:Key="system_info_desc">Zobrazit podrobné informace o vašich sluchátkách</sys:String>
     <sys:String x:Key="system_flasher">Instalovat aktualizaci firmwaru</sys:String>
-    <sys:String x:Key="system_flasher_desc">Stáne novější, starší nebo flashne vlastní firmware</sys:String>
+    <sys:String x:Key="system_flasher_desc">Stáhne novější, starší nebo nahraje vlastní firmware</sys:String>
     <sys:String x:Key="system_spatial">Vypsat měření prostorových senzorů</sys:String>
     <sys:String x:Key="system_spatial_desc">Přečtěte si prostorová data o sledování hlavy použitá pro 3D zvuk</sys:String>
 
@@ -343,9 +343,9 @@
     <sys:String x:Key="factory_text_p3">Ujistěte se, že jsou vaše sluchátka zapnuta než budete pokračovat!</sys:String>
 
     <!-- Find my Gear -->
-    <sys:String x:Key="fmg_warning_both">Vyndejte prosím obě svá sluchátka z uší.</sys:String>
-    <sys:String x:Key="fmg_warning_left">Vyndejte prosím levé sluchátko z ucha.</sys:String>
-    <sys:String x:Key="fmg_warning_right">Vyndejte prosím pravé sluchátko z ucha.</sys:String>
+    <sys:String x:Key="fmg_warning_both">Vyjměte prosím obě svá sluchátka z uší.</sys:String>
+    <sys:String x:Key="fmg_warning_left">Vyjměte prosím levé sluchátko z ucha.</sys:String>
+    <sys:String x:Key="fmg_warning_right">Vyjměte prosím pravé sluchátko z ucha.</sys:String>
     <sys:String x:Key="fmg_header">Najít moje sluchátka</sys:String>
 
     <!-- Equalizer -->
@@ -392,7 +392,7 @@
     <sys:String x:Key="adv_seamless_desc">Umožňuje rychle připojit sluchátka k dalšímu zařízení bez nutnosti je odpojovat nebo zapínat režim párování</sys:String>
     <sys:String x:Key="adv_resume_playback">Začít přehrávat když jsou sluchátka v uchu</sys:String>
     <sys:String x:Key="adv_resume_playback_desc">Pošle globální akci pro přehrávání/pozastavení pokud je aspoň jeden senzor přiblížení zakrytý (pouze Windows)</sys:String>
-    <sys:String x:Key="adv_sidetone">Používat ambientní při hovorech</sys:String>
+    <sys:String x:Key="adv_sidetone">Používat ambientní režim při hovorech</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Uslyšíte svůj hlas jasněji při telefonování (zamezí zbytečně halsitému mluvení)</sys:String>
     <sys:String x:Key="adv_passthrough">Zmírňuje tlak při zapnutí ambientního režimu</sys:String>
     <sys:String x:Key="adv_passthrough_desc">Zmírňuje pocit dusnosti, když není používáno aktivní potlačení hluku</sys:String>
