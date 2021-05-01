@@ -4,11 +4,11 @@
 
     <sys:String x:Key="ResourceDictionaryName">Loc-ko</sys:String>
 
+    <!-- :::::::: Source code :::::::: -->
+
     <!-- 삼성 한국어 어조/말투를 적용했습니다
     예1) ~했습니다 (x) ~했어요 (o)
     예2) ~하세요 (x) ~해 주세요 (o) -->
-
-    <!-- :::::::: Source code :::::::: -->    
 	
     <!-- General -->
     <sys:String x:Key="okay">확인</sys:String>
@@ -51,7 +51,7 @@
     <sys:String x:Key="connpopup_placement_bl">좌측 하단</sys:String>
     <sys:String x:Key="connpopup_placement_bc">하단 중앙</sys:String>
     <sys:String x:Key="connpopup_placement_br">우측 하단</sys:String>
-    <sys:String x:Key="connpopup_title">{0}의 Galaxy Buds{1}</sys:String>
+    <sys:String x:Key="connpopup_title">{0}의 Galaxy Buds {1}</sys:String>
     <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
 
     <!-- Placement  (Buds+) -->
@@ -82,6 +82,7 @@
     <sys:String x:Key="touchoption_custom_ambient_down">주변 소리 듣기 음량 내리기</sys:String>
     <sys:String x:Key="touchoption_custom_toggle_eq">이퀄라이저 켜기</sys:String>
     <sys:String x:Key="touchoption_custom_next_eq_preset">다음 이퀄라이저 프리셋</sys:String> -->
+
 
     <!-- Options menu -->
     <sys:String x:Key="optionsmenu_title">옵션</sys:String>
@@ -165,15 +166,14 @@
    
     <!-- Welcome page -->
     <sys:String x:Key="welcome_textblock_header">환영합니다!</sys:String>
-    <!--펌웨어 다운로드 기능이 버전 4.2부터 추가되어, 아래 텍스트는 영문원본에서도 삭제됨. 차후 사용할 경우를 대비해 남겨둠.: 기기 보호를 위해 버즈 소프트웨어 무선 OTA 업데이트 기능은 제외되었어요. 만약 업데이트가 필요하시다면, 공식 갤럭시 웨어러블 앱을 사용해 주세요.-->
     <sys:String x:Key="welcome_textblock_p1">
-        안녕하세요! 이 Galaxy Buds Manager는 비공식 프로그램이며, 삼성과 어떠한 관련이 없어요.&#10;이 프로그램은 공식 삼성 웨어러블 앱에서 할 수 없는 여러 가지 것들을 할 수 있지만, 해당 기능 중 일부는 이 비공식 Galaxy Buds Manager가 설치되지 않은 기기에서는 작동하지 않아요.
+        안녕하세요! 이 Galaxy Buds Manager는 비공식 프로그램이며, 삼성과 어떠한 관련이 없어요.&#10;이 프로그램은 공식 삼성 웨어러블 앱에서 할 수 없는 여러 가지 것들을 할 수 있지만, 기기 보호를 위해 버즈 소프트웨어 무선 OTA 업데이트 기능은 제외되었어요. 만약 업데이트가 필요하시다면, 공식 갤럭시 웨어러블 앱을 사용해 주세요.
     </sys:String>
     <sys:String x:Key="welcome_textblock_p2">
-        만약 이 프로그램이 개발되는 과정을 보고 싶으시다면, 저의 리버스 엔지니어링의 성과물들이 있는 GitHub 리포지토리에서 확인이 가능해요. 또한 문제가 생기면 GitHub를 통해, 또는 텔레그램에서 @thepbone으로 메시지를 보내실 수 있어요.
+        만약 이 프로그램이 개발되는 과정을 보고 싶으시다면, 저의 리버스 엔지니어링의 성과물들이 있는 GitHub 리포지토리에서 확인이 가능해요. 또한 문제가 생기면 텔레그램에서 @thepbone으로 메시지를 보내실 수 있어요.
     </sys:String>
     <sys:String x:Key="welcome_textblock_p3">
-        이 프로그램은 현재 출시된 모든 Galaxy Buds를 지원합니다. 지원 기기 목록: Galaxy Buds (1세대), Galaxy Buds+ (1.5세대), Galaxy Buds Live (1세대), Galaxy Buds Pro (1세대)
+        이 프로그램은 Galaxy Buds 1세대 부터 최신 버전인 Galaxy Buds Pro까지 모두 지원해요.
     </sys:String>
     <sys:String x:Key="welcome_darkmode">다크 모드</sys:String>
     <sys:String x:Key="welcome_darkmode_content">눈이 아프신가요? 어두운 색상으로 바꿔보세요!</sys:String>
@@ -194,12 +194,12 @@
         다운로드는 자동으로 진행되며, 다운로드 완료 후 업데이트 프로그램이 자동으로 실행되요. 최신 버그 수정 및 새로운 기능을 원하신다면 업데이트를 권장해요.
     </sys:String>
     <sys:String x:Key="updater_message_p2">
-        아래 버튼을 눌러 업데이트 내용을 볼 수 있어요. (영어로만 제공됩니다.)
+        아래 버튼을 눌러 업데이트 내용을 볼 수 있어요.
     </sys:String>
 
     <sys:String x:Key="updater_view_changelog">GitHub에서 모든 업데이트 내용 보기</sys:String>
     <sys:String x:Key="updater_footer_remindmelater">나중에 알림</sys:String>
-    <sys:String x:Key="updater_footer_skipversion">이 업데이트 버전 건너뛰기</sys:String>
+    <sys:String x:Key="updater_footer_skipversion">이 버전 건너뛰기</sys:String>
     <sys:String x:Key="updater_footer_install">지금 설치</sys:String>
     <sys:String x:Key="updater_appcast_null">새로운 업데이트가 있지만 올바른 AppCast를 찾을 수 없어요. 나중에 시도하세요.</sys:String>
     <sys:String x:Key="updater_noupdate">최신 버전을 사용하고 있어요. 나중에 다시 확인하거나, GitHub를 구독해 새로운 업데이트를 확인해 보세요.</sys:String>
@@ -253,12 +253,6 @@
 
     <sys:String x:Key="touchpad_double_tap_volume">버즈 가장자리 두 번 두드리기</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">음량을 낮추려연 왼쪽 버즈의 가장자리를 두 번 두드리고, 음량을 높이려면 오른쪽 버즈의 가장자리를 두 번 두드리세요.</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode">소음 제어 전환 모드</sys:String>
-
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">액티브 노이즈 캔슬링 &lt;-&gt; 주변 소리 듣기</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_off">액티브 노이즈 캔슬링 &lt;-&gt; 끄기</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_amb_off">주변 소리 듣기 &lt;-&gt; 끄기</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_threeway">모드간 돌아가며 변경 (액티브 노이즈 캔슬링, 주변 소리 듣기, 끄기)</sys:String>
 
     <!-- Custom touchpad action page -->
     <sys:String x:Key="cact_header">사용자 지정 길게 누르기 동작</sys:String>
@@ -284,12 +278,6 @@
     <sys:String x:Key="system_trace_core_dump_desc">나의 버즈로 부터 로우 디버깅 데이터 얻기</sys:String>
     <sys:String x:Key="system_info">시스템 정보 보기</sys:String>
     <sys:String x:Key="system_info_desc">나의 버즈에 대한 자세한 정보 살펴보기</sys:String>
-
-    <sys:String x:Key="system_flasher">펌웨어 업데이트 설치</sys:String>
-    <sys:String x:Key="system_flasher_desc">사용자 지정 펌웨어 바이너리 업그레이드, 다운그레이드, 플레시하기</sys:String>
-    <sys:String x:Key="system_spatial">360도 공간 인식 센서 측정값 덤프하기</sys:String>
-    <sys:String x:Key="system_spatial_desc">3D 오디오에 사용되는 360도 공간 헤드 트래킹 데이터를 읽어 보여줘요.</sys:String>
-
     <sys:String x:Key="system_battery_type_unknown">지정되지 않음</sys:String>
     <sys:String x:Key="system_waiting_for_device">응답 대기 중...</sys:String>
 
@@ -347,7 +335,6 @@
     <sys:String x:Key="settings_minimize_tray_description">프로그램을 종료하지 않고 트레이에 최소화합니다.</sys:String>
     <sys:String x:Key="settings_autostart">부팅 시 자동 실행</sys:String>
     <sys:String x:Key="settings_autostart_description">컴퓨터 부팅 시 자동으로 최소화된 상태로 시작합니다.</sys:String>
-    <sys:String x:Key="settings_autostart_permission">부팅 시 자동 실행 항목을 레지스트리에서 수정할 수 없어요. 사용자의 시스템 관리자가 레지스트리 접근 권한 (HKCU)를 부여하지 않았어요.</sys:String>
 
     <sys:String x:Key="settings_connpopup">연결 팝업 설정</sys:String>
     <sys:String x:Key="settings_devmode">개발자 모드 진입</sys:String>
@@ -385,16 +372,12 @@
     <sys:String x:Key="fmg_warning_right">오른쪽 버즈를 귀에서 빼 주세요.</sys:String>
     <sys:String x:Key="fmg_header">내 버즈 찾기</sys:String>
 
-    <!-- 4.2에서 삭제된 스트링: 
-    <sys:String x:Key="eq_mode">모드: </sys:String> -->
     <!-- Equalizer -->
     <sys:String x:Key="eq_header">이퀄라이저</sys:String>
     <sys:String x:Key="eq_enable">이퀄라이저 켜기</sys:String>
-    <sys:String x:Key="eq_preset">프리셋</sys:String>
+    <sys:String x:Key="eq_mode">모드: </sys:String>
     <sys:String x:Key="eq_dolby">Dolby와 함께 사용하도록 최적화</sys:String>
-    <sys:String x:Key="eq_stereo_balance">좌우 소리 균형</sys:String>
-    <sys:String x:Key="eq_stereo_balance_value">왼쪽 {0}%; 오른쪽 {1}%</sys:String>
-    <sys:String x:Key="eq_stereo_balance_neutral">중앙</sys:String>
+
     <sys:String x:Key="eq_bass">저음 강조</sys:String>
     <sys:String x:Key="eq_soft">부드러운</sys:String>
     <sys:String x:Key="eq_dynamic">풍성한</sys:String>
@@ -439,106 +422,27 @@
     <sys:String x:Key="adv_gaming_mode_desc">오디오 지연을 최소화하여, 더 생생하고 싱크가 완벽한 게임 사운드를 즐길 수 있어요. (삼성 전용 기능)</sys:String>
     <sys:String x:Key="adv_hotkey">키보드 단축키</sys:String>
     <sys:String x:Key="adv_hotkey_desc">사용자 설정된 단축키를 지정하여 버즈를 멀리서 조작하세요.</sys:String>
-    <sys:String x:Key="adv_bixby_remap">빅스비 호출 액션 변경</sys:String>
-    <sys:String x:Key="adv_bixby_remap_desc">'헤이 빅스비!'라고 말할 때 어떤 작업을 할 지 선택하세요.</sys:String>
-
-    <!-- Remap bixby wakeup -->
-    <sys:String x:Key="bixby_remap_header">빅스비 호출 액션 변경</sys:String>
-    <sys:String x:Key="bixby_remap_enable">빅스비 호출 켜기</sys:String>
-    <sys:String x:Key="bixby_remap_enable_desc">삼성 휴대전화기에서 빅스비를 실행하거나 이 PC가 켜있을때 사용자 지정 액션을 실행할 수 있어요.</sys:String>
-    <sys:String x:Key="bixby_remap_lang">빅스비 호출 언어</sys:String>
-    <sys:String x:Key="bixby_remap_action">사용자 지정 호출 액션</sys:String>
-    <sys:String x:Key="bixby_remap_note">'헤이 빅스비!'라고 말해 빅스비를 호출하세요. 호출 문구는 언어 설정마다 다를 수 있어요.&#10;&#10;사용자 지정 설정은 이 PC에서만 작동해요. 다른 삼성 기기에 버즈를 연결하면, 음성으로 빅스비 호출하기 기능이 정상적으로 작동해요. 이 PC가 아닌 다른 기기나 삼성이 아닌 브랜드의 휴대전화에서는 이 기능이 어떠한 액션도 호출하지 않아요.</sys:String>
 
     <!-- Credits -->
     <sys:String x:Key="credits_header">제작자</sys:String>
     <sys:String x:Key="credits_developer">개발자</sys:String>
     <sys:String x:Key="credits_license">라이선스</sys:String>
     <sys:String x:Key="credits_version">버전</sys:String>
-    <sys:String x:Key="credits_contributor">기여자</sys:String>
-    <sys:String x:Key="credits_translator">번역자</sys:String>
-    <sys:String x:Key="credits_sponsor">프로젝트 후원하기</sys:String>
+    <sys:String x:Key="credits_contributor">기여</sys:String>
+    <sys:String x:Key="credits_translator">번역</sys:String>
 
     <!-- Connection lost page -->
     <sys:String x:Key="connlost_header">접속에 실패했습니다</sys:String>
     <sys:String x:Key="connlost_description_p1">버즈와 연결에 실패했습니다.</sys:String>
     <sys:String x:Key="connlost_description_p2">
-        블루투스 설정을 확인하고 갤럭시 버즈가 이 컴퓨터와 페어링되어 있는지 확인하세요.
-        필요한 경우 다시 페어링이 가능합니다. 다시 페어링할 경우, '옵션' > '디바이스 연결 해제'를 누르세요.
+        설정을 확인하고 버즈가 컴퓨터와 페어링되어 있는지 확인하세요.
+        필요하면 다시 페어링이 가능합니다. 다시 페어링할 경우, 옵션 > 디바이스 연결 해제를 누르세요.
     </sys:String>
     <sys:String x:Key="connlost_description_p3">추가 정보: </sys:String>
     <sys:String x:Key="connlost_noinfo">오류 정보를 가져오지 못했습니다.</sys:String>
     <sys:String x:Key="connlost_connect">연결</sys:String>
     <sys:String x:Key="connlost_connecting">연결 중...</sys:String>
 
-    <!-- Header -->
-    <sys:String x:Key="window_minimize">최소화</sys:String>
-    <sys:String x:Key="window_close">닫기</sys:String>
-
-    <!-- Firmware update disclaimer -->
-    <sys:String x:Key="fw_disclaimer">종요 고지 사항</sys:String>
-    <sys:String x:Key="fw_disclaimer_desc">중요한 정보입니다. 해당 고지 사항은 사용자의 편의를 위해 영어로 번역되었으며, 라이선스의 효력은 영문 고지에 있습니다. 번역본은 참고로만 사용하시기 바랍니다. 다음 단계를 진행하시기 전에 반드시 숙지하세요. 이 펌웨어 업데이트 도구는 삼성의 공식 안드로이드 앱에 있는 공식 업데이트 프로그램의 복제본입니다. 개발진은 펌웨어 업데이트 중 발생할 수 있는 다양한 상황 (정상 작동, 연결 손실, 의도적으로 손상된 블루투스 패킷 등)에서 테스트를 하였고, 문제가 없다고 결론지었습니다. 그러나 펌웨어 업데이트는 중요한 시스템 구성 요소를 수정하는 작업인 만큼 항상 주의를 기울여 처리해야 합니다. 아직 발견되지 않은 상황이 있을 수 있기 때문에 해당 복제본 프로그램으로 펌웨어 업데이트를 진행하신 후 발생한 문제에 대해서는 개발진은 어떠한 책임도 지지 않습니다.&#10;&#10;다운그레이드: 이전 펌웨어 버전으로 다운그레이드 하는 것은 가능하며, 개발진의 테스트 결과 어떠한 문제점도 발견되지 않았지만, 예상치 못한 문제가 발생할 수 있기에, 반드시 필요한 경우에만 해당 도구를 사용하여 진행하시기 바랍니다. 다운그레이드 후에는 일반적으로 필요하지는 않지만 기기 공장 초기화를 권장드립니다. &#10;사용자 지정 플래시: 자신의 하드 드라이브에서 사용자 지정 펌웨어 파일을 로드하여 설치할 수 있습니다. /절/대/로/ /다/른/ 버즈 모델로 제작된 펌웨어 바이너리를 기기에 플래시 하지 마세요.&#10;&#10;이 도구 및 애플리케이션은 GPLv3에 따라 사용이 허가되었습니다. 계속하시면, 사용자는 라이센스 및 책임 제한에 동의하는 것입니다. 동의하려면 '계속'을 누르세요.&#10;&#10;영문 원본 고지 사항:This firmware updating tool is an accurate replica of the official updater found in Samsung's official Android app. I've thoroughly tested this implementation under various circumstances (normal operation, connection loss, intentionally corrupted Bluetooth packets, ...) without experiencing any issues at all. Still, I won't take any liability if anything should go wrong since firmware updates modify vital system components and should always be handled with caution.&#10;&#10;DOWNGRADING: While downgrading to older firmware versions is possible and I never ran into problems with it, it may cause unexpected issues and should only be done if necessary. A factory reset after the downgrade is recommended but not usually necessary. &#10;CUSTOM FLASHING: You are also able to load firmware files from your hard-drive. Do NOT flash firmware binaries designed for OTHER models onto your device.&#10;&#10;This application is licensed under GPLv3. By using it, you are accepting the license and its limitation of liability. Press 'Continue' to accept.</sys:String>
-    
-    <!-- Firmware selection -->
-    <sys:String x:Key="fw_select_header">펌웨어 업데이트</sys:String>
-    <sys:String x:Key="fw_select_instructions">다운로드 후 설치할 펌웨어 바이너리를 선택해 주세요. 또는, '고급 옵션 > 하드 디스크에서 플래시 이미지 선택...' 옵션을 클릭하면 하드 디스크에 저장된 사용자 지정 펌웨어 바이너리를 선택하여 다운로드 후 설치할 수 있어요.</sys:String>
-    <sys:String x:Key="fw_select_no_results">현재 설치 가능한 펌웨어 업데이트가 없어요. 잠시 후에 다시 시도해 주세요.</sys:String>
-    <sys:String x:Key="fw_select_downgrade">펌웨어 다운로드 허용</sys:String>
-    <sys:String x:Key="fw_select_downgrade_desc">버전 확인을 하지 않고 오래된 펌웨어를 목록에 표시 (예상치 못한 문제가 발생할 수 있으니 고급 사용자만 선택하세요.)</sys:String>
-    <sys:String x:Key="fw_select_advanced">고급 옵션</sys:String>
-    <sys:String x:Key="fw_select_install">펌웨어 설치</sys:String>
-    <sys:String x:Key="fw_select_from_disk">하드 디스크에서 플래시 이미지 선택...</sys:String>
-    <sys:String x:Key="fw_select_external_note">/절/대/로/ /다/른/ 버즈 모델로 제작된 펌웨어 바이너리를 기기에 플래시 하지 마세요. 버즈+ 에 버즈 프로 펌웨어를 플래시 하면, 추가 기능이 설치되는 것이 아니라 기기가 벽돌이 되어 다시는 사용할 수 없게 됩니다. 주의사항을 준수하지 않고 벽돌이 될 경우, 개발진은 어떠한 책임을 지지 않습니다.&#10;&#10;'계속하기'를 눌러 펌웨어 바이너리를 선택하세요.</sys:String>
-    <sys:String x:Key="fw_select_unsupported_selection">잘못된 선택값입니다. 호환되는 펌웨어를 목록에서 선택하세요.</sys:String>
-    <sys:String x:Key="fw_select_downloading">다운로드중...</sys:String>
-    <sys:String x:Key="fw_select_net_error">서버와의 통신을 실패했어요. 지금 펌웨어를 다운로드할 수 없어요.</sys:String>
-    <sys:String x:Key="fw_select_net_index_error">서버와의 통신을 실패했어요. 지금 펌웨어를 다운로드할 수 없어요.</sys:String>
-    <sys:String x:Key="fw_select_http_error">HTTP 오류 코드:</sys:String>
-    <sys:String x:Key="fw_select_unknown_build">알 수 없는 빌드네임</sys:String>
-    <sys:String x:Key="fw_select_verify_fail">펌웨어 인증을 실패했어요.</sys:String>
-    <sys:String x:Key="fw_select_confirm">이제 '{0}'를 '{1}' 기기에 플래시할 거에요.</sys:String>
-    <sys:String x:Key="fw_select_confirm_desc">표시된 정보가 맞는지 다시 한 번 확인하세요. 정보를 다시 확인해야 하거나 수정해야 할 경우, '취소'버튼을 눌러 세팅값을 다시 한 번 확인하세요.&#10;&#10;연결이 끊어질 경우 오류가 발생하지 않도록, 펌웨어 업데이트 전, 좌우 버즈가 모두 호스트 기기에 연결하는 것을 추천해요. 오류가 발생할 경우, 버즈는 전송 과정을 자동으로 중단하고, 펌웨어 업데이트 모드에서 빠져나오게 됩니다.&#10;&#10;진행하려면 '계속하기'를 눌러 업데이트를 시작하세요.</sys:String>
-  
-    <!-- Firmware transfer -->
-    <sys:String x:Key="fw_upload_header">펌웨어 설치중...</sys:String>
-    <sys:String x:Key="fw_upload_progress_session">새로운 세션 생성중...</sys:String>
-    <sys:String x:Key="fw_upload_progress_prepare">업로드 준비중...</sys:String>
-    <sys:String x:Key="fw_upload_progress_finished">업로드 완료</sys:String>
-    <sys:String x:Key="fw_upload_progress_finished_desc">업데이트가 성공적으로 전송되었고, 현재 기기에서 설치중이에요. 이 과정이 진행되는 동안 약 30초 동안 버즈가 응답하지 않게 되요. 대부분의 경우, 기기에서 설치가 완료되면 다시 호스트 기기에 연결을 시도하게 되요.</sys:String>
-    <sys:String x:Key="fw_upload_progress_error">펌웨어 업로드 실패</sys:String>
-    <sys:String x:Key="fw_upload_progress">펌웨어 업데이트 업로드중... {0}%</sys:String>
-    <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>
-    <sys:String x:Key="fw_upload_progress_stats">자세한 정보</sys:String>
-    <sys:String x:Key="fw_upload_note">전송이 완료되는 대로, 버즈 연결이 끊기면서 업로드된 펌웨어가 기기에 설치되요. 이 과정이 진행되는 동안, 버즈가 응답하지 않으며, 모든 블루투스 연결 요청을 거부하게 되요. 대부분의 경우, 기기에서 설치가 완료되면 다시 호스트 기기에 연결을 시도하게 되요.</sys:String>
-    <sys:String x:Key="fw_upload_progress_stats_mtu">최대 전송 유닛: {0} 바이트</sys:String>
-    <sys:String x:Key="fw_upload_progress_stats_offset">오프셋 0x{0:X6}부터 0x{1:X6}까지 데이터 처리중</sys:String>
-    <sys:String x:Key="fw_upload_progress_stats_segment">조각 #{0} 업로드중 ({1} 바이트, 체크섬 0x{2:X6})</sys:String>
-
-    <!-- Firmware parse errors -->
-    <sys:String x:Key="fw_fail_no_magic">이것은 유효한 펌웨어 바이너리가 아니에요. 유효하지 않은 매직 값은 파일 해더에서 찾을 수 있어요.</sys:String>
-    <sys:String x:Key="fw_fail_size_null">이 펌웨어 바이너리는 크기가 0으로, 플레시 작업에 사용할 수 없어요. 다른 파일을 선택해 주세요.</sys:String>
-    <sys:String x:Key="fw_fail_no_segments">이 펌웨어 바이너리는 어떠한 바이너리 조각을 포함하고 있지 않아요. 다른 파일을 선택해 주세요.</sys:String>
-    <sys:String x:Key="fw_fail_unknown">펌웨어 바이너리를 복호화하는 과정에서 알 수 없는 오류가 발생했어요. 이 펌웨어 아카이브 파일은 손상되었을 수 있어요.&#10;&#10;자세한 정보:</sys:String>
-    
-    <!-- Firmware transfer errors -->
-    <sys:String x:Key="fw_fail_connection">기기와 연결이 끊겼어요. 펌웨어 전송이 중단되었어요.</sys:String>
-    <sys:String x:Key="fw_fail_session">새로운 세션을 여는데 실패했어요. 디바이스가 반환한 에러 코드: ({0})</sys:String>
-    <sys:String x:Key="fw_fail_copy">펌웨어 바이너리를 복사하는데 실패했어요. 다시 연결한 후 다시 시도해 보세요. 디바이스가 반환한 에러 코드: ({0})</sys:String>
-    <sys:String x:Key="fw_fail_verify">펌웨어 바이너리 인증후 설치를 실패했어요. 다시 연결한 후 다시 시도해 보세요. 디바이스가 반환한 에러 코드: ({0})</sys:String>
-    <sys:String x:Key="fw_fail_connection_precheck">기기가 연결되지 않았어요. 시스템 블루투스 설정을 확인한 후 다시 연결해보세요.</sys:String>
-    <sys:String x:Key="fw_fail_pending">다른 펌웨어 전송이 진행 중이에요. 해당 세션을 종료한 후 새로운 전송을 시작하세요.</sys:String>
-    <sys:String x:Key="fw_fail_lowbattery">배터리 잔량이 너무 낮아요. 버즈를 15% 이상 충전한 후 진행하세요.</sys:String>
-    <sys:String x:Key="fw_fail_session_timeout">기기가 새로운 세션을 열기까지 기다리다가 세션이 만료되었어요.</sys:String>
-    <sys:String x:Key="fw_fail_control_timeout">기기가 컨트롤 블럭을 반환하기까지 기다리다가 세션이 만료되었어요.</sys:String>
-    <sys:String x:Key="fw_fail_copy_timeout">전송이 모두 끝나기 까지 기다리다가 세션이 만료되었어요.</sys:String>
-    
-    <!-- Spatial test -->
-    <sys:String x:Key="spatial_header">360도 공간 센서</sys:String>
-    <!-- Note: Quaternion = 4-dimensional vector -->
-    <sys:String x:Key="spatial_dump_quaternion">로우 4차원 (쿼터니언) 벡터:</sys:String>
-    <!-- Note: RPY = Roll, pitch, yaw -->
-    <sys:String x:Key="spatial_dump_rpy">RPY (Roll(롤), Pitch(피지), Yaw(요)) 값:</sys:String>
-    
     <!-- Header -->
     <sys:String x:Key="window_minimize">최소화</sys:String>
     <sys:String x:Key="window_close">닫기</sys:String>
