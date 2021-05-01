@@ -482,7 +482,7 @@
     <sys:String x:Key="fw_upload_progress_stats_segment">세그먼트 #{0} 업로드 중 ({1}바이트, 체크섬 0x{2:X6})</sys:String>
 
     <!-- Firmware parse errors -->
-    <sys:String x:Key="fw_fail_size_null">이 펌웨어 바이너리의 크기가 0으로 설정되어 있어 설치에 사용할 수 없어요. 다른 펌웨어를 선택해 주세요.</sys:String>
+    <sys:String x:Key="fw_fail_size_null">펌웨어 바이너리의 크기가 0으로 설정되어 있어 설치에 사용할 수 없어요. 다른 펌웨어를 선택해 주세요.</sys:String>
     <sys:String x:Key="fw_fail_unknown">펌웨어 바이너리를 해독하는 중 예기치 못한 오류가 발생했어요. 이 펌웨어 파일이 손상되었을 수도 있어요.&#10;&#10;상세 정보:</sys:String>
     
     <!-- Firmware transfer errors -->
