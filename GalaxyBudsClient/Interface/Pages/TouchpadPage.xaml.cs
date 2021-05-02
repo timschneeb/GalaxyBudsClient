@@ -176,16 +176,6 @@ namespace GalaxyBudsClient.Interface.Pages
 				{
 					_lastNoiseControlMode = (value.Item1, value.Item2, value.Item3);
 
-					if (value.Item1 && value.Item2 && value.Item3)
-					{
-						_lastLeftOption = TouchOptions.NoiseControl;
-						_lastRightOption = TouchOptions.NoiseControl;
-
-						UpdateMenuDescriptions();
-						UpdateNoiseSwitchModeVisible();
-						await MessageComposer.Touch.SetOptions(_lastLeftOption, _lastRightOption);
-					}
-					
 					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS, 
 						BitConverter.GetBytes(value.Item1)[0], 
 						BitConverter.GetBytes(value.Item2)[0], 
@@ -214,22 +204,14 @@ namespace GalaxyBudsClient.Interface.Pages
 				{
 					_lastRightOption = option;
 				}
-
-				if ((_lastNoiseControlMode.Item1 &&
-				     _lastNoiseControlMode.Item2 &&
-				     _lastNoiseControlMode.Item3) &&
-				    (_lastLeftOption != TouchOptions.NoiseControl || _lastRightOption != TouchOptions.NoiseControl))
-				{
-					// Reset three-way noise control switching if not both sides are set to noise control
-					_lastNoiseControlMode = (true, true, false);
-					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS, 
-						1, 1, 0);
-					UpdateMenuDescriptions();
-				}
 				
 				UpdateMenuDescriptions();
 				UpdateNoiseSwitchModeVisible();
 				await MessageComposer.Touch.SetOptions(_lastLeftOption, _lastRightOption);
+				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS, 
+					BitConverter.GetBytes(_lastNoiseControlMode.Item1)[0], 
+					BitConverter.GetBytes(_lastNoiseControlMode.Item2)[0], 
+					BitConverter.GetBytes(_lastNoiseControlMode.Item3)[0]);
             }
 			
 		}
