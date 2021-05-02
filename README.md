@@ -51,6 +51,7 @@ Aside from standard features known from the official Android app, this project h
 * Diagnostics and factory self-tests
 * Loads of hidden debugging information
 * Customizable long-press touch actions
+* Firmware flashing, downgrading (Buds+, Buds Pro)
 * and much more...
 
 ## Download
@@ -88,6 +89,8 @@ Currently, I'm looking into modifying and reverse-engineering the firmware for t
   <a href="https://github.com/ThePBone/GalaxyBudsFirmwareDownloader">Firmware Downloader</a> •
   <a href="https://github.com/ThePBone/GalaxyBudsFirmwareExtractor">Firmware Extractor</a>
 </p>
+
+Stream head-tracking data in realtime from your Buds Pro using this script: [ThePBone/BudsPro-Headtracking](https://github.com/ThePBone/BudsPro-Headtracking)
 
 ## Contributing
 
