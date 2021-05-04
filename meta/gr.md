@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>82%</td><td>67 missing string(s)</td></tr>
+<tr><td>82%</td><td>69 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -20,6 +20,8 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>system_flasher_desc</code></td><td>Upgrade, downgrade, or flash custom firmware binaries</td></tr>
 <tr><td><code>system_spatial</code></td><td>Dump spatial sensor measurements</td></tr>
 <tr><td><code>system_spatial_desc</code></td><td>Read spatial head-tracking data used for 3D audio</td></tr>
+<tr><td><code>settings_cpopup_wear_state</code></td><td>Use different color when in case</td></tr>
+<tr><td><code>settings_cpopup_wear_state_description</code></td><td>Gray earbud icon out when in your earbuds are in the case</td></tr>
 <tr><td><code>adv_bixby_remap</code></td><td>Remap Bixby wakeup</td></tr>
 <tr><td><code>adv_bixby_remap_desc</code></td><td>Define what should happen when you say 'Hey Bixby!'</td></tr>
 <tr><td><code>bixby_remap_header</code></td><td>Remap Bixby wakeup</td></tr>

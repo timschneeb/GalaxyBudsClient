@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>69%</td><td>119 missing string(s)</td></tr>
+<tr><td>69%</td><td>121 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -58,6 +58,8 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 <tr><td><code>coredump_dl_save_success</code></td><td>{0} dump(s) were written to '{1}'</td></tr>
 <tr><td><code>coredump_dl_save_dialog_title</code></td><td>Select a download directory...</td></tr>
 <tr><td><code>settings_autostart_permission</code></td><td>Cannot update auto-start entry in registry. Registry access (HKCU) was explicitly disabled by your system administrator.</td></tr>
+<tr><td><code>settings_cpopup_wear_state</code></td><td>Use different color when in case</td></tr>
+<tr><td><code>settings_cpopup_wear_state_description</code></td><td>Gray earbud icon out when in your earbuds are in the case</td></tr>
 <tr><td><code>eq_preset</code></td><td>Preset</td></tr>
 <tr><td><code>eq_stereo_balance</code></td><td>Left/right sound balance</td></tr>
 <tr><td><code>eq_stereo_balance_value</code></td><td>{0}% left; {1}% right</td></tr>

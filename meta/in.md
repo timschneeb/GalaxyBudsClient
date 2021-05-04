@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>52%</td><td>184 missing string(s)</td></tr>
+<tr><td>52%</td><td>186 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -121,6 +121,8 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 <tr><td><code>settings_autostart_permission</code></td><td>Cannot update auto-start entry in registry. Registry access (HKCU) was explicitly disabled by your system administrator.</td></tr>
 <tr><td><code>settings_cpopup_primary_screen</code></td><td>Primary screen only</td></tr>
 <tr><td><code>settings_cpopup_primary_screen_description</code></td><td>Show popup only on the primary monitor</td></tr>
+<tr><td><code>settings_cpopup_wear_state</code></td><td>Use different color when in case</td></tr>
+<tr><td><code>settings_cpopup_wear_state_description</code></td><td>Gray earbud icon out when in your earbuds are in the case</td></tr>
 <tr><td><code>eq_preset</code></td><td>Preset</td></tr>
 <tr><td><code>eq_stereo_balance</code></td><td>Left/right sound balance</td></tr>
 <tr><td><code>eq_stereo_balance_value</code></td><td>{0}% left; {1}% right</td></tr>
