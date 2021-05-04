@@ -359,7 +359,7 @@ namespace GalaxyBudsClient
             {
                 MediaKeyRemoteImpl.Instance.Play();
             }
-
+            
             _lastWearState = e.WearState;
         }
 

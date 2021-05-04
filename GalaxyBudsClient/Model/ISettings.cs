@@ -29,6 +29,8 @@ namespace GalaxyBudsClient.Model
         
         [Option(DefaultValue = PopupPlacement.BottomRight)]
         PopupPlacement Placement  { set; get; }
+        
+        bool ShowWearableState { set; get; }
     }
     
     public interface IExperiments

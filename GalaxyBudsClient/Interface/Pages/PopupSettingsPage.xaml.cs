@@ -24,6 +24,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		
 		private readonly SwitchDetailListItem _popupToggle;
 		private readonly SwitchDetailListItem _compactToggle;
+		private readonly SwitchDetailListItem _wearToggle;
 		private readonly DetailListItem _overrideTitle;
 		private readonly MenuDetailListItem _placement;
 		
@@ -34,6 +35,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			_compactToggle = this.FindControl<SwitchDetailListItem>("CompactPopup");
 			_overrideTitle = this.FindControl<DetailListItem>("OverrideTitle");
 			_placement = this.FindControl<MenuDetailListItem>("PositionPopup");
+			_wearToggle = this.FindControl<SwitchDetailListItem>("WearState");
 
 			Loc.LanguageUpdated += UpdateMenuDescriptions;
 			Loc.LanguageUpdated += UpdateMenus;
@@ -43,6 +45,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		{
 			_popupToggle.IsChecked = SettingsProvider.Instance.Popup.Enabled;
 			_compactToggle.IsChecked = SettingsProvider.Instance.Popup.Compact;
+			_wearToggle.IsChecked = SettingsProvider.Instance.Popup.ShowWearableState;
 			UpdateMenuDescriptions();
 			UpdateMenus();
 		}
@@ -102,6 +105,11 @@ namespace GalaxyBudsClient.Interface.Pages
 		private void PopupToggle_OnToggled(object? sender, bool e)
 		{
 			SettingsProvider.Instance.Popup.Enabled = e;
+		}
+
+		private void WearState_OnToggled(object? sender, bool e)
+		{
+			SettingsProvider.Instance.Popup.ShowWearableState = e;
 		}
 	}
 }

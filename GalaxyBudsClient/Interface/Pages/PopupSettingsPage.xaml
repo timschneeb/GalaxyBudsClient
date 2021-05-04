@@ -37,6 +37,8 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="1"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Border Grid.Row="0" Classes="BorderHoverStyle">
                     <items:SwitchDetailListItem x:Name="CompactPopup"
@@ -47,13 +49,21 @@
                 </Border>
                 <Separator Grid.Row="1" Classes="HSeparatorSpacer20"/>
                 <Border Grid.Row="2" Classes="BorderHoverStyle">
+                    <items:SwitchDetailListItem x:Name="WearState"
+                                                Text="{DynamicResource settings_cpopup_wear_state}" 
+                                                Description="{DynamicResource settings_cpopup_wear_state_description}"
+                                                Toggled="WearState_OnToggled"/>
+
+                </Border>
+                <Separator Grid.Row="3" Classes="HSeparatorSpacer20"/>
+                <Border Grid.Row="4" Classes="BorderHoverStyle">
                     <items:DetailListItem x:Name="OverrideTitle"
                                           Text="{DynamicResource settings_cpopup_override_title}"
                                           Description="{DynamicResource notset}"
                                           PointerPressed="OverrideTitle_OnPointerPressed"/>
                 </Border>
-                <Separator Grid.Row="3" Classes="HSeparatorSpacer20"/>
-                <Border Grid.Row="4" Classes="BorderHoverStyle" >
+                <Separator Grid.Row="5" Classes="HSeparatorSpacer20"/>
+                <Border Grid.Row="6" Classes="BorderHoverStyle" >
                     <items:MenuDetailListItem x:Name="PositionPopup" 
                                           Text="{DynamicResource settings_cpopup_position}"
                                           Description="{DynamicResource settings_cpopup_position_placeholder}"/>
