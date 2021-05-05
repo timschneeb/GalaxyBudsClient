@@ -234,7 +234,7 @@
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Cyklování mezi režimy (Potlačení okolního hluku, Ambientní režim, Vypnuto)</sys:String>
 
     <!-- Custom touchpad action page -->
-    <sys:String x:Key="cact_header">Definice vlastní akci při podržení</sys:String>
+    <sys:String x:Key="cact_header">Definovat vlastní akci při podržení</sys:String>
     <sys:String x:Key="cact_external_app_dialog_title">Zvolit aplikaci...</sys:String>
     <sys:String x:Key="cact_action">Vlastní akce</sys:String>
     <sys:String x:Key="cact_notice">Poznámka</sys:String>
@@ -332,6 +332,8 @@
     <sys:String x:Key="settings_cpopup_override_title_dialog">Prosím vložte vlastní titulek vyskakovacího okna. Výchozí můžete obnovit tím, že necháte toto pole prázdné.</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen">Pouze primární obrazovka</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen_description">Zobrazit vyskakovací okno pouze na primárním monitoru</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state">Použít jinou barvu, když se nachází v pouzdře</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state_description">Zešediví ikonu sluchátek, kdyz se nachází v pouzdře</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">Obnova továrního nastavení</sys:String>
