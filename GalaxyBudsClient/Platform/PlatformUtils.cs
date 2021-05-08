@@ -11,17 +11,20 @@ namespace GalaxyBudsClient.Platform
         {
             Windows,
             Linux,
+            OSX,
             Other
         }
         
         public static bool IsPlatformSupported()
         {
             return RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||
-                   RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+                   RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || 
+                   RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
         }
 
         public static bool IsWindows => RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         public static bool IsLinux => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+        public static bool IsOSX => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
 
         public static bool SupportsTrayIcon => IsWindows && !IsARMCompileTarget;
         public static bool SupportsHotkeys => IsWindows;
@@ -34,9 +37,13 @@ namespace GalaxyBudsClient.Platform
                 {
                     return Platforms.Windows;
                 }
-                else if (IsLinux)
+                if (IsLinux)
                 {
                     return Platforms.Linux;
+                }
+                if (IsOSX)
+                {
+                    return Platforms.OSX;
                 }
 
                 return Platforms.Other;

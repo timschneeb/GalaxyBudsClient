@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using GalaxyBudsClient.Interop.TrayIcon;
+using Serilog;
 
 #pragma warning disable CS0067
 
@@ -14,5 +15,10 @@ namespace GalaxyBudsClient.Platform.Dummy
         public List<TrayMenuItem>? MenuItems { get; set; } = new List<TrayMenuItem>();
         public bool PreferDarkMode { get; set; }
         public void Dispose() {}
+
+        public TrayIcon()
+        {
+            Log.Warning("TrayIcon.Dummy: Platform not supported");
+        }
     }
 }
