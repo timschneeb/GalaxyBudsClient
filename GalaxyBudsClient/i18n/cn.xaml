@@ -21,7 +21,7 @@
 
     <sys:String x:Key="nobluetoothdev">未找到蓝牙设备 请开启蓝牙后重试</sys:String>
 
-    <sys:String x:Key="anc">降噪</sys:String>
+    <sys:String x:Key="anc">主动降噪</sys:String>
 
     <!-- SPP Message Parser -->
     <sys:String x:Key="sppmsg_too_small">包大小太小</sys:String>
@@ -370,7 +370,7 @@
     <!-- Equalizer -->
     <sys:String x:Key="eq_header">均衡器</sys:String>
     <sys:String x:Key="eq_enable">开启均衡器</sys:String>
-    <sys:String x:Key="eq_mode">模式:</sys:String>
+    <sys:String x:Key="eq_preset">预设</sys:String>
     <sys:String x:Key="eq_dolby">使用杜比音效</sys:String>
     <sys:String x:Key="eq_stereo_balance">左/右声道平衡</sys:String>
     <sys:String x:Key="eq_stereo_balance_value">{0}% 左; {1}% 右</sys:String>
@@ -448,6 +448,7 @@
     </sys:String>
     <sys:String x:Key="connlost_description_p3">附加信息:</sys:String>
     <sys:String x:Key="connlost_noinfo">收集错误信息失败</sys:String>
+    <sys:String x:Key="connlost_disconnected">设备失去连接</sys:String>
     <sys:String x:Key="connlost_connect">连接</sys:String>
     <sys:String x:Key="connlost_connecting">连接中...</sys:String>
     
