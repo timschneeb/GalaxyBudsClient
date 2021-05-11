@@ -52,8 +52,8 @@ namespace GalaxyBudsClient.Platform
         public event EventHandler<InvalidPacketException>? InvalidDataReceived;
         public event EventHandler<byte[]>? NewDataReceived;
         public event EventHandler<BluetoothException>? BluetoothError;
-        
-        public bool SuppressDisconnectionEvents { set; get; }
+
+        public bool SuppressDisconnectionEvents { set; get; } = true; // TODO
         public Models ActiveModel => SettingsProvider.Instance.RegisteredDevice.Model;
         public IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(ActiveModel) ?? new StubDeviceSpec();
         public bool IsConnected => _backend.IsStreamConnected;
