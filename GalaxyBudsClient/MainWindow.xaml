@@ -9,7 +9,7 @@
         Height="640" Width="700"
         MaxHeight="640" MaxWidth="700"
         MinHeight="640" MinWidth="700"
-        CanResize="False"
+        CanResize="True"
         WindowStartupLocation="CenterScreen"
         ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaChromeHints="NoChrome"

@@ -29,7 +29,7 @@ namespace GalaxyBudsClient.Platform
             }
             else
             {
-                throw new PlatformNotSupportedException();
+                Instance = new Dummy.TrayIcon();
             }
 
             Instance.PreferDarkMode = SettingsProvider.Instance.DarkMode == DarkModes.Dark;

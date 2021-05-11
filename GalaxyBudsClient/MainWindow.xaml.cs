@@ -92,10 +92,9 @@ namespace GalaxyBudsClient
                         Log.Debug("MainWindow.Instance: Initializing window with default WindowImpl");
                         impl = platform.CreateWindow();
                     }
-                    
+
                     _instance = new MainWindow(impl);
                 }
-
                 return _instance;
             }
         }
@@ -124,6 +123,14 @@ namespace GalaxyBudsClient
         {
             AvaloniaXamlLoader.Load(this);
             this.AttachDevTools();
+
+            // Weird OSX hack to fix graphical corruptions and hide decorations
+            if (PlatformUtils.IsOSX)
+            {
+                SystemDecorations = SystemDecorations.Full;
+                HasSystemDecorations = false;
+            }
+            
             Pager = this.FindControl<PageContainer>("Container");
 
             Pager.RegisterPages(HomePage, new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(),
@@ -136,7 +143,10 @@ namespace GalaxyBudsClient
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
-            _titleBar.OptionsPressed += (i, e) => _titleBar.OptionsButton.ContextMenu.Open(_titleBar.OptionsButton);
+            _titleBar.OptionsPressed += (i, e) =>
+            {
+                _titleBar.OptionsButton.ContextMenu?.Open(_titleBar.OptionsButton);
+            };
             _titleBar.ClosePressed += (sender, args) =>
             {
                 if (SettingsProvider.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
@@ -514,7 +524,7 @@ namespace GalaxyBudsClient
             };
             options[Loc.Resolve("optionsmenu_credits")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Credits);
 
-            _titleBar.OptionsButton.ContextMenu = MenuFactory.BuildContextMenu(options);
+            _titleBar.OptionsButton.ContextMenu = MenuFactory.BuildContextMenu(options, _titleBar.OptionsButton);
         }
         #endregion
 

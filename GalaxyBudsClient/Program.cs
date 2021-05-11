@@ -74,9 +74,16 @@ namespace GalaxyBudsClient
                         sentryEvent.SetExtra("bluetooth-model-saved", SettingsProvider.Instance.RegisteredDevice.Model);
                         sentryEvent.SetExtra("custom-locale", SettingsProvider.Instance.Locale);          
                         sentryEvent.SetExtra("sw-version",
-                            DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");                 
-                                          
-                        sentryEvent.SetExtra("current-page", MainWindow.Instance.Pager.CurrentPage);
+                            DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");
+
+                        if (MainWindow.IsReady())
+                        {
+                            sentryEvent.SetExtra("current-page", MainWindow.Instance.Pager.CurrentPage);
+                        }
+                        else
+                        {
+                            sentryEvent.SetExtra("current-page", "instance_not_initialized");
+                        }
                         
                         sentryEvent.SetTag("bluetooth-model", BluetoothImpl.Instance.ActiveModel.ToString());
                         sentryEvent.SetExtra("bluetooth-model", BluetoothImpl.Instance.ActiveModel);
@@ -110,7 +117,18 @@ namespace GalaxyBudsClient
 
             try
             {
-                await SingleInstanceWatcher.Setup();
+                // OSX: Graphics must be drawn on the main thread.
+                // Awaiting this call would implicitly cause the next code to run as a async continuation task
+                if (PlatformUtils.IsOSX)
+                {
+                    SingleInstanceWatcher.Setup().Wait();
+                }
+                else
+                {
+                    await SingleInstanceWatcher.Setup();
+                }
+                Log.Information(
+                    $"Dispatcher.AccessCheck: {(Dispatcher.UIThread.CheckAccess() ? "Pass" : "Abnormal threading state")}");
                 BuildAvaloniaApp().StartWithClassicDesktopLifetime(args, ShutdownMode.OnExplicitShutdown);
             }
             catch (Exception ex)
@@ -125,7 +143,6 @@ namespace GalaxyBudsClient
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
                 .LogToTrace();
-
 
     }
 }

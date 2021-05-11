@@ -20,7 +20,7 @@ namespace GalaxyBudsClient.Platform
             }
             else
             {
-                throw new PlatformNotSupportedException();
+                Instance = new Dummy.MediaKeyRemote();
             }
             
             EventDispatcher.Instance.EventReceived += OnEventReceived;
