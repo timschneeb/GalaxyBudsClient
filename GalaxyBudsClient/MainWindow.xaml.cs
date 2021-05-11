@@ -145,14 +145,7 @@ namespace GalaxyBudsClient
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
             _titleBar.OptionsPressed += (i, e) =>
             {
-                try
-                {
-                    _titleBar.OptionsButton.ContextMenu?.Open(_titleBar.OptionsButton);
-                }
-                catch (AvaloniaInternalException ex)
-                {
-                    Log.Warning(ex.Message);
-                }
+                _titleBar.OptionsButton.ContextMenu?.Open(_titleBar.OptionsButton);
             };
             _titleBar.ClosePressed += (sender, args) =>
             {
