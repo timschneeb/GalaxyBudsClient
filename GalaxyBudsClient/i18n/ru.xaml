@@ -87,7 +87,7 @@
     <sys:String x:Key="tray_disable_eq">Выключить эквалайзер</sys:String>
     <sys:String x:Key="tray_enable_anc">Включить активное шумоподавление</sys:String>
     <sys:String x:Key="tray_disable_anc">Выключить активное шумоподавление</sys:String>
-    <sys:String x:Key="tray_switch_noise">Переключить шумоподавление</sys:String>
+    <sys:String x:Key="tray_switch_noise">Поменять режим шумоподавления</sys:String>
     <sys:String x:Key="tray_quit">Выход</sys:String>
 
 
@@ -238,7 +238,7 @@
 
     <sys:String x:Key="touchpad_double_tap_volume">Двойное касание к поверхности наушника</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Дважды коснитесь поверхности левого или правого наушника чтобы уменьшить или увеличить громкость</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode">Переключаемое шумоподавление</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode">Настраиваемое шумоподавление</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_amb">АШП &lt;-&gt; Звуковое окружение</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_off">АШП &lt;-&gt; Выкл</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_amb_off">Звуковое окружение &lt;-&gt; Выкл</sys:String>
@@ -269,7 +269,7 @@
     <sys:String x:Key="system_info">Просмотреть информацию о системе</sys:String>
     <sys:String x:Key="system_info_desc">Просмотреть расширенные данные о ваших наушниках</sys:String>
     <sys:String x:Key="system_flasher">Установить обновление прошивки</sys:String>
-    <sys:String x:Key="system_flasher_desc">Обновить, понизить, или загрузить кастомную прошивку</sys:String>
+    <sys:String x:Key="system_flasher_desc">Обновить, понизить или загрузить собственную прошивку</sys:String>
     <sys:String x:Key="system_spatial">Скачать данные пространственных измерений</sys:String>
     <sys:String x:Key="system_spatial_desc">Прочитать пространственные данные отслеживания головы которые используются для 3D аудио</sys:String>
 
@@ -493,7 +493,7 @@
 
     <!-- Firmware parse errors -->
     <sys:String x:Key="fw_fail_no_magic">Это некорректный бинарный файл. Неверное волшебное число обнаружено в заголовке файла.</sys:String>
-    <sys:String x:Key="fw_fail_size_null">Размера этого бинарного файла равено нулю, а значит файл не может быть использован для прошивки. Пожалуйста, выберите другой файл.</sys:String>
+    <sys:String x:Key="fw_fail_size_null">Размера этого бинарного файла равен нулю, а значит файл не может быть использован для прошивки. Пожалуйста, выберите другой файл.</sys:String>
     <sys:String x:Key="fw_fail_no_segments">Этот бинарный файл не содержит никаких блоков или пуст. Пожалуйста, выберите другой файл.</sys:String>
     <sys:String x:Key="fw_fail_unknown">Неожиданная ошибка произошла во время расшифровки бинарного файла. Этот файл прошивки может быть поврежден.&#10;&#10;Детали:</sys:String>
     
