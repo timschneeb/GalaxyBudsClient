@@ -205,7 +205,7 @@
 
     <!-- Device selection page (setup) -->
     <sys:String x:Key="devsel_header">Оберіть ваші Galaxy Buds</sys:String>
-    <sys:String x:Key="devsel_search">Оновити список пристроїв</sys:String>
+    <sys:String x:Key="devsel_refresh">Оновити список пристроїв</sys:String>
     <sys:String x:Key="devsel_device_name">Ім'я пристрою</sys:String>
     <sys:String x:Key="devsel_btaddr">MAC-адреса</sys:String>
     <sys:String x:Key="devsel_model">Модель</sys:String>
