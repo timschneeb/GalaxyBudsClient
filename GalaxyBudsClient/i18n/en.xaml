@@ -486,7 +486,7 @@
     <sys:String x:Key="fw_upload_progress">Uploading firmware update... {0}%</sys:String>
     <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>
     <sys:String x:Key="fw_upload_progress_stats">Statistics</sys:String>
-    <sys:String x:Key="fw_upload_note">Your earbuds will be disconnected, and start installing the uploaded firmware update as soon as the transmission finishes. During this process, your earbuds will be unresponsive and decline any Bluetooth connection requests. In most cases, the earbuds attempt to reconnect automatically after the on-board update process has finished.</sys:String>
+    <sys:String x:Key="fw_upload_note">Your earbuds will be disconnected, and start installing the uploaded firmware update as soon as the transmission finishes. During this process, your earbuds will be unresponsive and decline any Bluetooth connection requests. In most cases, the earbuds attempt to reconnect automatically after the on-board update process has finished. Please do not close your case while updating.</sys:String>
     <sys:String x:Key="fw_upload_progress_stats_mtu">Maximum transfer unit: {0} bytes</sys:String>
     <sys:String x:Key="fw_upload_progress_stats_offset">Processing data from offset 0x{0:X6} to 0x{1:X6}</sys:String>
     <sys:String x:Key="fw_upload_progress_stats_segment">Uploading segment #{0} ({1} bytes, checksum 0x{2:X6})</sys:String>

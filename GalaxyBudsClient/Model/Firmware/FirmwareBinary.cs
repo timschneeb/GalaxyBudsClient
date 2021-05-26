@@ -1,7 +1,9 @@
 using System;
+using System.Buffers.Text;
 using System.IO;
 using System.Linq;
 using GalaxyBudsClient.Utils.DynamicLocalization;
+using Sentry;
 using Serilog;
 
 namespace GalaxyBudsClient.Model.Firmware
@@ -12,6 +14,7 @@ namespace GalaxyBudsClient.Model.Firmware
         private MemoryStream _stream;
         
         private static readonly long FOTA_BIN_MAGIC = 3405695742L;
+        private static readonly long FOTA_BIN_MAGIC_COMBINATION = 1111707469L;
 
         public string BuildName { get; }
         public long SegmentsCount { get; }
@@ -32,9 +35,20 @@ namespace GalaxyBudsClient.Model.Firmware
                 {
                     _magic = (((long) bArr[2] & 255) << 16) | (((long) bArr[3] & 255) << 24) |
                              (((long) bArr[1] & 255) << 8) | (((long) bArr[0]) & 255);
-                    if (_magic != FOTA_BIN_MAGIC)
+                    if (_magic != FOTA_BIN_MAGIC && _magic != FOTA_BIN_MAGIC_COMBINATION)
                     {
                         _stream.Close();
+                        throw new FirmwareParseException(FirmwareParseException.ErrorCodes.InvalidMagic,
+                            Loc.Resolve("fw_fail_no_magic"));
+                    }
+
+                    if (_magic == FOTA_BIN_MAGIC_COMBINATION)
+                    {
+                        // Notify bug tracker about this event and submit firmware build info
+                        SentrySdk.CaptureMessage($"BCOM-Firmware discovered. Build: {buildName}, Content: {Convert.ToBase64String(data)}", SentryLevel.Info);
+                        
+                        Log.Fatal("FirmwareBinary: Parsing internal debug firmware. " +
+                                    "This is unsupported by this application as these binaries are not meant for retail devices. Affected build name");
                         throw new FirmwareParseException(FirmwareParseException.ErrorCodes.InvalidMagic,
                             Loc.Resolve("fw_fail_no_magic"));
                     }

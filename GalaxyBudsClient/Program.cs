@@ -1,27 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Logging;
-using Avalonia.Threading;
-using Config.Net;
-using CSScriptLib;
-using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
-using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;
 using Sentry;
 using Serilog;
-using Serilog.Filters;
-using ThePBone.Interop.Win32;
 
 namespace GalaxyBudsClient
 {
@@ -127,8 +115,7 @@ namespace GalaxyBudsClient
                 {
                     await SingleInstanceWatcher.Setup();
                 }
-                Log.Information(
-                    $"Dispatcher.AccessCheck: {(Dispatcher.UIThread.CheckAccess() ? "Pass" : "Abnormal threading state")}");
+
                 BuildAvaloniaApp().StartWithClassicDesktopLifetime(args, ShutdownMode.OnExplicitShutdown);
             }
             catch (Exception ex)
