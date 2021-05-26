@@ -75,7 +75,7 @@ Press 'Continue' to start the update.</td></tr>
 <tr><td><code>fw_upload_progress</code></td><td>Uploading firmware update... {0}%</td></tr>
 <tr><td><code>fw_upload_progress_size</code></td><td>({0}/{1} KB)</td></tr>
 <tr><td><code>fw_upload_progress_stats</code></td><td>Statistics</td></tr>
-<tr><td><code>fw_upload_note</code></td><td>Your earbuds will be disconnected, and start installing the uploaded firmware update as soon as the transmission finishes. During this process, your earbuds will be unresponsive and decline any Bluetooth connection requests. In most cases, the earbuds attempt to reconnect automatically after the on-board update process has finished.</td></tr>
+<tr><td><code>fw_upload_note</code></td><td>Your earbuds will be disconnected, and start installing the uploaded firmware update as soon as the transmission finishes. During this process, your earbuds will be unresponsive and decline any Bluetooth connection requests. In most cases, the earbuds attempt to reconnect automatically after the on-board update process has finished. Please do not close your case while updating.</td></tr>
 <tr><td><code>fw_upload_progress_stats_mtu</code></td><td>Maximum transfer unit: {0} bytes</td></tr>
 <tr><td><code>fw_upload_progress_stats_offset</code></td><td>Processing data from offset 0x{0:X6} to 0x{1:X6}</td></tr>
 <tr><td><code>fw_upload_progress_stats_segment</code></td><td>Uploading segment #{0} ({1} bytes, checksum 0x{2:X6})</td></tr>
