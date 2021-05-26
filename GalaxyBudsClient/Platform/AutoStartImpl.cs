@@ -1,4 +1,5 @@
 using System;
+using Serilog;
 
 namespace GalaxyBudsClient.Platform
 {
@@ -18,7 +19,8 @@ namespace GalaxyBudsClient.Platform
             }
             else
             {
-                throw new PlatformNotSupportedException();
+                Log.Warning("AutoStartHelper.Dummy: Platform not supported");
+                Instance = new Dummy.AutoStartHelper();
             }
         }
     }
