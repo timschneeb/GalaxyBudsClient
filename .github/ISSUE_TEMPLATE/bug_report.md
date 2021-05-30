@@ -7,28 +7,27 @@ assignees: ''
 
 ---
 
-<!--- Before submitting any bugs, please do refer to repository wiki - there is an instruction on how to reset application settings cache, that almost always helps. Beware, leaving this page will delete everything - make a copy. --->
+<!--- PLEASE RESPECT THE ISSUE TEMPLATES! IT WILL HELP A LOT! --->
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+**Describe the bug**  
+A clear and concise description of what the bug is. Examples are: can't connect. unexpected behaviour
 
-**To Reproduce**
+**To Reproduce**  
 Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
 
-**Expected behavior**
+**Expected behavior**  
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
+**Screenshots**  
 If applicable, add screenshots to help explain your problem.
 
-**Desktop (please complete the following information):**
- - OS: Windows 7/8/8.1/10 [Home / Pro] [32bit / 64bit] OS Build number
+**Desktop (please complete the following information):**  
+ - OS: Windows 7/8/8.1/10 [Home / Pro] [32bit / 64bit] OS Build number, default system language 
+ <!--- To get your build number - press Win+R and run 'winver' command --->
  - Application version: 
-<!--- Check repository wiki to learn how to get your OS Build number --->
 
-**Additional context**
+**Additional context**  
 Add any other context about the problem here.
+
+**Log files**  
+In most cases if you have a bug, log file will be required - it is located at ```%localappdata%\GalaxyBudsClient\application.log```
