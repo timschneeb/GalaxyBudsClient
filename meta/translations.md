@@ -14,7 +14,7 @@ Translation instructions are available [in the wiki](https://github.com/ThePBone
 <tr><td>in (India)</td><td>52%</td><td>186 missing string(s)</td><td><a href="in.md">View details</a></td></tr>
 <tr><td>it (Italy)</td><td>69%</td><td>121 missing string(s)</td><td><a href="it.md">View details</a></td></tr>
 <tr><td>ja (undefined)</td><td>51%</td><td>189 missing string(s)</td><td><a href="ja.md">View details</a></td></tr>
-<tr><td>ko (undefined)</td><td>99%</td><td>2 missing string(s)</td><td><a href="ko.md">View details</a></td></tr>
+<tr><td>ko (undefined)</td><td>100%</td><td>No missing strings</td><td><a href="ko.md">View details</a></td></tr>
 <tr><td>pt (Portugal)</td><td>52%</td><td>186 missing string(s)</td><td><a href="pt.md">View details</a></td></tr>
 <tr><td>ru (Russian Federation)</td><td>100%</td><td>No missing strings</td><td><a href="ru.md">View details</a></td></tr>
 <tr><td>tr (Turkey)</td><td>50%</td><td>195 missing string(s)</td><td><a href="tr.md">View details</a></td></tr>
