@@ -346,7 +346,6 @@
     <sys:String x:Key="settings_autostart_description">컴퓨터 부팅 시 자동으로 최소화된 상태로 시작합니다.</sys:String>
     <sys:String x:Key="settings_autostart_permission">레지스트리 내 자동 실행 항목을 수정할 수 없어요. 시스템 관리자에 의해 레지스트리 접근 권한이(HKCU) 해제되었어요.</sys:String>
 
-
     <sys:String x:Key="settings_connpopup">연결 팝업 설정</sys:String>
     <sys:String x:Key="settings_devmode">개발자 모드 진입</sys:String>
 
@@ -363,6 +362,8 @@
     <sys:String x:Key="settings_cpopup_override_title_dialog">팝업 레이블을 입력해 주세요. 공백으로 둘 시 기본 레이블이 적용돼요.</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen">주 화면만</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen_description">팝업을 주 화면에서만 보이기</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state">케이스에 보관된 상태일때 연한 다른 색상 사용</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state_description">버즈가 케이스에 보관된 상태일 경우 연한 회색으로 표시돼요.</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">버즈 초기화</sys:String>
@@ -502,7 +503,7 @@
     <sys:String x:Key="fw_upload_progress">펌웨어 업로드 중.. {0}%</sys:String>
     <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>
     <sys:String x:Key="fw_upload_progress_stats">정보</sys:String>
-    <sys:String x:Key="fw_upload_note">전송이 완료되면 바로 이어버드의 연결이 해제되고 업로드된 펌웨어의 설치가 시작돼요. 이 과정에서 이어버드가 응답하지 않고 블루투스 연결 요청을 모두 거절할 거예요. 대부분의 경우에는 업데이트 프로세스가 완료되면 이어버드가 자동으로 재연결을 시도해요.</sys:String>
+    <sys:String x:Key="fw_upload_note">전송이 완료되면 바로 이어버드의 연결이 해제되고 업로드된 펌웨어의 설치가 시작돼요. 이 과정에서 이어버드가 응답하지 않고 블루투스 연결 요청을 모두 거절할 거예요. 대부분의 경우에는 업데이트 프로세스가 완료되면 이어버드가 자동으로 재연결을 시도해요. 업데이트 중에는 케이스 덮개를 절대로 닫지 마세요.</sys:String>
     <sys:String x:Key="fw_upload_progress_stats_mtu">최대 전송 단위: {0}바이트</sys:String>
     <sys:String x:Key="fw_upload_progress_stats_offset">오프셋 0x{0:X6}에서 0x{1:X6}까지 처리 중</sys:String>
     <sys:String x:Key="fw_upload_progress_stats_segment">세그먼트 #{0} 업로드 중 ({1}바이트, 체크섬 0x{2:X6})</sys:String>
