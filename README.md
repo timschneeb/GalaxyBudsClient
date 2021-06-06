@@ -62,6 +62,10 @@ Get binaries for Windows and Linux in the [release](https://github.com/ThePBone/
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
+The Windows package is also available to install with Windows Package Manager (winget)
+
+`winget install ThePBone.GalaxyBudsClient`
+
 ## How it works
 
 To use Bluetooth wireless technology, a device must be able to interpret certain Bluetooth profiles, which are definitions of possible applications and specify general behaviors that Bluetooth-enabled devices use to communicate with other Bluetooth devices. 
@@ -111,6 +115,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@AndriesK](https://github.com/AndriesK) - Buds Live bug fix
 * [@TheLastFrame](https://github.com/TheLastFrame) - Buds Pro icons
 * [@githubcatw](https://github.com/githubcatw) - Connection dialog base
+* [@GaryGadget9](https://github.com/GaryGadget9) - WinGet package
 
 #### Translators
 
