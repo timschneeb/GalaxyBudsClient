@@ -133,6 +133,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@joskaja](https://github.com/joskaja) and [@Joedmin580](https://github.com/Joedmin580) - Czech translation
 * [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - German translation
 * [@nikossyr](https://github.com/nikossyr) - Greek translation
+* [@grigorem](https://github.com/grigorem) - Romanian translation
 
 ## License
 
