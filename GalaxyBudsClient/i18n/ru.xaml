@@ -50,7 +50,7 @@
 
     <!-- Placement  (Buds+) -->
     <sys:String x:Key="placement_disconnected">Отключен</sys:String>
-    <sys:String x:Key="placement_wearing">Одет</sys:String>
+    <sys:String x:Key="placement_wearing">Надет</sys:String>
     <sys:String x:Key="placement_not_wearing">Снят</sys:String>
     <sys:String x:Key="placement_in_case">В кейсе</sys:String>
 
