@@ -13,7 +13,7 @@
     <img alt="GitHub počet stažení" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
   </a>
   <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
-  	<img alt="GitHub vydání (nejnovější)" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
+   <img alt="GitHub vydání (nejnovější)" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
   </a>
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE">
       <img alt="Licence" src="https://img.shields.io/github/license/thepbone/galaxybudsclient">
@@ -28,9 +28,8 @@
   <a href="#jak-to-funguje">Jak to funguje</a> •
   <a href="#spolupráce">Spolupráce</a> •
   <a href="#zásluhy">Zásluhy</a> •
-  <a href="#licence">Licence</a> 
+  <a href="#licence">Licence</a>
 </p>
-
 
 <p align="center">
     <a href="https://ko-fi.com/H2H83E5J3"><img alt="Screenshot" src="https://ko-fi.com/img/githubbutton_sm.svg"></a>
@@ -39,7 +38,6 @@
 <p align="center">
     <a href="#"><img alt="Screenshot" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/screencap.gif"></a>
 </p>
-
 
 ## Klíčové vlastnosti
 
@@ -61,6 +59,9 @@ Získejte binární soubory pro Windows a Linux v sekci [vydání](https://githu
 <p align="center">
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
+
+Balíček windows je také dostupný ke stažení pomocí Manažeru Balíčku Windows (winget)
+`winget install ThePBone.GalaxyBudsClient`
 
 ## Jak to funguje
 
@@ -110,6 +111,7 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Vydání šablon, wiki a překlady
 * [@AndriesK](https://github.com/AndriesK) - Oprava chyby u Buds Live
 * [@githubcatw](https://github.com/githubcatw) - Základní dialogové okno připojení
+* [@GaryGadget9](https://github.com/GaryGadget9) - Balíček WinGet
 
 #### Překladatelé
 
@@ -127,6 +129,7 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 * [@joskaja](https://github.com/joskaja) a [@Joedmin580](https://github.com/Joedmin580) - český překlad
 * [@TheLastFrame](https://github.com/TheLastFrame) a [@ThePBone](https://github.com/ThePBone) - německý překlad
 * [@nikossyr](https://github.com/nikossyr) - řecký překlad
+* [@grigorem](https://github.com/grigorem) - romský překlad
 
 ## Licence
 
@@ -139,4 +142,3 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
-
