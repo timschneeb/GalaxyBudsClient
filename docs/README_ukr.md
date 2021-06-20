@@ -12,7 +12,7 @@
     <img alt="Кількість завантажень з GitHub" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
   </a>
   <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
-  	<img alt="Остання версія на GitHub" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
+   <img alt="Остання версія на GitHub" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
   </a>
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE">
       <img alt="Ліцензія" src="https://img.shields.io/github/license/thepbone/galaxybudsclient">
@@ -27,7 +27,7 @@
   <a href="#як-це-працює">Як це працює</a> •
   <a href="#зробити-внесок">Зробити внесок</a> •
   <a href="#учасники">Учасники</a> •
-  <a href="#ліцензія">Ліцензія</a> 
+  <a href="#ліцензія">Ліцензія</a>
 </p>
 <p align="center">
     <a href="https://ko-fi.com/H2H83E5J3"><img alt="Screenshot" src="https://ko-fi.com/img/githubbutton_sm.svg"></a>
@@ -36,7 +36,6 @@
 <p align="center">
     <a href="#"><img alt="Screenshot" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/screencap.gif"></a>
 </p>
-
 
 ## Основні можливості
 
@@ -59,7 +58,6 @@
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
-
 ## Як це працює
 
 Щоб використовувати бездротову технологію Bluetooth, пристрій повинен мати можливість інтерпретувати деякі профілі Bluetooth, які є описом можливих застосувань і визначати загальну поведінку, яку пристрої з підтримкою Bluetooth використовують для зв'язку з іншими пристроями.
@@ -75,7 +73,6 @@ Galaxy Buds визначають два профілі Bluetooth: A2DP (Advanced
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md">Galaxy Buds Plus Notes</a>
 </p>
 
-
 Придивившись до Galaxy Buds Plus, я також помітив деякі незвичайні функції, такі як режим налагодження прошивки, невикористаний режим сполучення і дампер адрес Bluetooth. Я задокументував ці результати тут:
 
 <p align="center">
@@ -88,7 +85,7 @@ Galaxy Buds визначають два профілі Bluetooth: A2DP (Advanced
   <a href="https://github.com/ThePBone/GalaxyBudsFirmwareDownloader">Firmware Downloader</a> •
   <a href="https://github.com/ThePBone/GalaxyBudsFirmwareExtractor">Firmware Extractor</a>
 </p>
-Отримуйте дані про відстеження положення голови в режимі реального часу від ваших Buds Pro використовуючи цей скрипт: [ThePBone/BudsPro-Headtracking](https://github.com/ThePBone/BudsPro-Headtracking) 
+Отримуйте дані про відстеження положення голови в режимі реального часу від ваших Buds Pro використовуючи цей скрипт: [ThePBone/BudsPro-Headtracking](https://github.com/ThePBone/BudsPro-Headtracking)
 
 ## Зробити внесок
 
@@ -110,7 +107,7 @@ Galaxy Buds визначають два профілі Bluetooth: A2DP (Advanced
 
 #### Перекладачі
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Український та Російський переклади 
+* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Український та Російський переклади
 * [@PlasticBrain](https://github.com/fhalfkg) - Корейський та Японський переклади
 * [@cozyplanes](https://github.com/cozyplanes) - Корейський переклад
 * [@erenbektas](https://github.com/erenbektas) - Турецький переклад
@@ -121,7 +118,7 @@ Galaxy Buds визначають два профілі Bluetooth: A2DP (Advanced
 * [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Італійський переклад
 * [@Buashei](https://github.com/Buashei) - Польський переклад
 * [@KatJillianne](https://github.com/KatJillianne) - В'єтнамський переклад
-* [@joskaja](https://github.com/joskaja) and [@Joedmin580](https://github.com/Joedmin580) - Чешський переклад
+* [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - Чешський переклад
 * [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - Німецький переклад
 * [@nikossyr](https://github.com/nikossyr) - Грецький переклад
 
@@ -134,4 +131,3 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
-

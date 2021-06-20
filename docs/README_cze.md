@@ -126,7 +126,7 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 * [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - italský překlad
 * [@Buashei](https://github.com/Buashei) - polský překlad
 * [@KatJillianne](https://github.com/KatJillianne) - vietnamský překlad
-* [@joskaja](https://github.com/joskaja) a [@Joedmin580](https://github.com/Joedmin580) - český překlad
+* [@joskaja](https://github.com/joskaja) a [@Joedmin](https://github.com/Joedmin) - český překlad
 * [@TheLastFrame](https://github.com/TheLastFrame) a [@ThePBone](https://github.com/ThePBone) - německý překlad
 * [@nikossyr](https://github.com/nikossyr) - řecký překlad
 * [@grigorem](https://github.com/grigorem) - romský překlad
