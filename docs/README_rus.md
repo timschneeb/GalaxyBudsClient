@@ -12,7 +12,7 @@
     <img alt="Кол-во скачиваний с GitHub" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
   </a>
   <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
-  	<img alt="Последняя версия на GitHub" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
+   <img alt="Последняя версия на GitHub" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
   </a>
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE">
       <img alt="Лицензия" src="https://img.shields.io/github/license/thepbone/galaxybudsclient">
@@ -27,7 +27,7 @@
   <a href="#как-это-работает">Как это работает</a> •
   <a href="#внести-вклад">Внести вклад</a> •
   <a href="#участники">Участники</a> •
-  <a href="#лицензия">Лицензия</a> 
+  <a href="#лицензия">Лицензия</a>
 </p>
 
 <p align="center">
@@ -37,7 +37,6 @@
 <p align="center">
     <a href="#"><img alt="Screenshot" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/screencap.gif"></a>
 </p>
-
 
 ## Основные возможности
 
@@ -60,10 +59,9 @@
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
-
 ## Как это работает
 
-Чтобы использовать беспроводную технологию Bluetooth, устройство должно иметь возможность интерпретировать некоторые профили Bluetooth, которые являются определениями возможных применений и обозначать общее поведение, которое устройства с поддержкой Bluetooth используют для связи с другими устройствами. 
+Чтобы использовать беспроводную технологию Bluetooth, устройство должно иметь возможность интерпретировать некоторые профили Bluetooth, которые являются определениями возможных применений и обозначать общее поведение, которое устройства с поддержкой Bluetooth используют для связи с другими устройствами.
 
 Galaxy Buds определяют два профиля Bluetooth: A2DP (Advanced Audio Distribution Profile) для потоковой передачи / управления аудио и SPP (Serial Port Profile) для передачи потока бинарных данных. Производители часто используют этот профиль (который основан на протоколе RFCOMM) для обмена данными конфигурации, выполнения обновлений прошивки или отправки других команд на устройство Bluetooth.
 
@@ -75,7 +73,6 @@ Galaxy Buds определяют два профиля Bluetooth: A2DP (Advanced
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsRFCommProtocol.md">Galaxy Buds (2019) Notes</a> •
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md">Galaxy Buds Plus Notes</a>
 </p>
-
 
 Присмотревшись к Galaxy Buds Plus, я также заметил некоторые необычные функции, такие как режим отладки прошивки, неиспользуемый режим сопряжения и дампер адресов Bluetooth. Я задокументировал эти результаты здесь:
 
@@ -89,7 +86,7 @@ Galaxy Buds определяют два профиля Bluetooth: A2DP (Advanced
   <a href="https://github.com/ThePBone/GalaxyBudsFirmwareDownloader">Firmware Downloader</a> •
   <a href="https://github.com/ThePBone/GalaxyBudsFirmwareExtractor">Firmware Extractor</a>
 </p>
-Получайте данные про отслеживание положения головы в режиме реального времени от ваших Buds Pro используя этот скрипт: [ThePBone/BudsPro-Headtracking](https://github.com/ThePBone/BudsPro-Headtracking) 
+Получайте данные про отслеживание положения головы в режиме реального времени от ваших Buds Pro используя этот скрипт: [ThePBone/BudsPro-Headtracking](https://github.com/ThePBone/BudsPro-Headtracking)
 
 ## Внести вклад
 
@@ -100,7 +97,6 @@ Galaxy Buds определяют два профиля Bluetooth: A2DP (Advanced
 Если вы планируете помочь нам в переводе этого приложения, [просмотрите инструкции в нашей вики](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations). Знания в области программирования не требуются, вы можете протестировать свои переводы без установки каких-либо инструментов разработки перед отправкой запроса на перенос.
 
 Если вы хотите внести свой собственный код, вы можете просто отправить простой запрос на перенос с объяснением ваших изменений. Для более крупных и сложных вкладов было бы неплохо, если бы вы могли открыть запрос (или написать мне в Telegram [@thepbone](https://t.me/thepbone)), прежде чем начинать работу над ним.
-
 
 ## Участники
 
@@ -123,7 +119,7 @@ Galaxy Buds определяют два профиля Bluetooth: A2DP (Advanced
 * [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Итальянский перевод
 * [@Buashei](https://github.com/Buashei) - Польский перевод
 * [@KatJillianne](https://github.com/KatJillianne) - Вьетнамский перевод
-* [@joskaja](https://github.com/joskaja) and [@Joedmin580](https://github.com/Joedmin580) - Чешский перевод
+* [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - Чешский перевод
 * [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - Немецкий перевод
 * [@nikossyr](https://github.com/nikossyr) - Греческий перевод
 
@@ -138,4 +134,3 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
-

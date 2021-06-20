@@ -13,7 +13,7 @@
     <img alt="GitHub downloads count" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
   </a>
   <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
-  	<img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
+   <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
   </a>
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE">
       <img alt="License" src="https://img.shields.io/github/license/thepbone/galaxybudsclient">
@@ -28,9 +28,8 @@
   <a href="#how-it-works">工作原理</a> •
   <a href="#contributing">贡献项目</a> •
   <a href="#credits">关于</a> •
-  <a href="#license">License</a> 
+  <a href="#license">License</a>
 </p>
-
 
 <p align="center">
     <a href="https://ko-fi.com/H2H83E5J3"><img alt="Screenshot" src="https://ko-fi.com/img/githubbutton_sm.svg"></a>
@@ -39,7 +38,6 @@
 <p align="center">
     <a href="#"><img alt="Screenshot" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/screencap.gif"></a>
 </p>
-
 
 ## 主要功能
 
@@ -125,7 +123,7 @@ Galaxy Buds 定义了两种蓝牙模式：用于音频流/控制的 A2DP (高级
 * [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - 意大利语翻译
 * [@Buashei](https://github.com/Buashei) - 波兰语翻译
 * [@KatJillianne](https://github.com/KatJillianne) - 越南语翻译
-* [@joskaja](https://github.com/joskaja) and [@Joedmin580](https://github.com/Joedmin580) - 捷克语翻译
+* [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - 捷克语翻译
 * [@TheLastFrame](https://github.com/TheLastFrame) and [@ThePBone](https://github.com/ThePBone) - 德语翻译
 * [@nikossyr](https://github.com/nikossyr) - 希腊语翻译
 
@@ -140,4 +138,3 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
-

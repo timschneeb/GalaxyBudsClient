@@ -13,7 +13,7 @@
     <img alt="μετρηρής λήψεων GitHub" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
   </a>
   <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
-  	<img alt="Έκδοση GitHub  (πιο πρόσφατη)" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
+   <img alt="Έκδοση GitHub  (πιο πρόσφατη)" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
   </a>
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE">
       <img alt="Άδεια" src="https://img.shields.io/github/license/thepbone/galaxybudsclient">
@@ -28,9 +28,8 @@
   <a href="#πώς-λειτουργεί">Πώς λειτουργεί</a> •
   <a href="#συνεισφορά">Συνεισφορά</a> •
   <a href="#συντελεστές">Συντελεστές</a> •
-  <a href="#άδεια">Άδεια</a> 
+  <a href="#άδεια">Άδεια</a>
 </p>
-
 
 <p align="center">
     <a href="https://ko-fi.com/H2H83E5J3"><img alt="Screenshot" src="https://ko-fi.com/img/githubbutton_sm.svg"></a>
@@ -39,7 +38,6 @@
 <p align="center">
     <a href="#"><img alt="Screenshot" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/screencap.gif"></a>
 </p>
-
 
 ## Κύρια χαρακτηριστικά
 
@@ -63,11 +61,11 @@
 
 ## Πώς λειτουργεί
 
-Για τη χρήση της τεχνολογίας της ασύρματης σύνδεσης μέσω Bluetooth, μια συσκευή θα πρέπει να μπορεί να αντιλαμβάνεται συγκεκριμένα προφίλ Bluetooth. Τα προφίλ Bluetooth ερμηνεύουν πιθανές εφαρμογές και ορίζουν γενικές συμπεριφορές, τις οποίες χρησιμοποιούν συσκευές με ενεργό Bluetooth για την επικοινωνία με άλλες συσκευές Bluetooth. 
+Για τη χρήση της τεχνολογίας της ασύρματης σύνδεσης μέσω Bluetooth, μια συσκευή θα πρέπει να μπορεί να αντιλαμβάνεται συγκεκριμένα προφίλ Bluetooth. Τα προφίλ Bluetooth ερμηνεύουν πιθανές εφαρμογές και ορίζουν γενικές συμπεριφορές, τις οποίες χρησιμοποιούν συσκευές με ενεργό Bluetooth για την επικοινωνία με άλλες συσκευές Bluetooth.
 
 Τα ακουστικά Galaxy Buds ορίζουν δύο προφίλ Bluetooth: το A2DP (Advanced Audio Distribution Profile) για τη μετάδοση ήχου και ελέγχου αυτής της μετάδοσης και το SPP (Serial Port Profile) για τη μεταφορά δυαδικών δεδομένων. Οι κατασκευαστές συχνά χρησιμοποιούν το τελευταίο προφίλ (το οποίο βασίζεται στο πρωτόκολλο RFCOMM) για την ανταλλαγή δεδομένων ρυθμίσεων, την ενημέρωση του firmware ή της αποστολή άλλων εντολών στη συσκευή Bluetooth.
 
-Παρόλο που το προφίλ A2DP είναι τυποποιημένο και τεκμηριωμένο, η μορφή των δεδομένων που ανταλλάσσονται με αυτό το πρωτόκολλο RFCOMM δεν είναι τεκμηριωμένη ενώ συνήθως είναι και ιδιόκτητη. 
+Παρόλο που το προφίλ A2DP είναι τυποποιημένο και τεκμηριωμένο, η μορφή των δεδομένων που ανταλλάσσονται με αυτό το πρωτόκολλο RFCOMM δεν είναι τεκμηριωμένη ενώ συνήθως είναι και ιδιόκτητη.
 
 Προκειμένου να ερευνηθεί ανάδρομα (reverse-engineer) αυτή η μορφή δεδομένων, ξεκίνησα αναλύοντας τη δομή της δυαδικής ροής που στέλνεται από τα ακουστικά. Στη συνέχεια, έκανα disassemble την επίσημη εφαρμογή για τα Galaxy Buds για τις συσκευές Android για να αποκτήσω περισσότερες γνώσεις για το πως λειτουργούν εσωτερικά αυτές οι συσκευές. Παράλληλα, κατέγραφα τις σκέψεις μου σε ένα μικρό σημειωματάριο. Παρόλο που οι σημειώσεις μου δεν είναι πολύ όμορφες, μπορείτε να τους ρίξετε μια ματιά με το παρακάτω link. Λάβετε υπόψιν ότι δεν κατέγραψα την κάθε παραμικρή λεπτομέρεια. Δείτε τον πηγαίο κώδικα για περισσότερες λεπτομέρειες σχετικά με τη δομή του πρωτοκόλλου.
 
@@ -122,7 +120,7 @@
 * [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Ιταλική μετάφραση
 * [@Buashei](https://github.com/Buashei) - Πολωνική μετάφραση
 * [@KatJillianne](https://github.com/KatJillianne) - Βιετναμέζικη μετάφραση
-* [@joskaja](https://github.com/joskaja) and [@Joedmin580](https://github.com/Joedmin580) - Τσεχική μετάφραση
+* [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - Τσεχική μετάφραση
 * [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - Γερμανική μετάφραση
 * [@nikossyr](https://github.com/nikossyr) - Ελληνική μετάφραση
 
@@ -137,4 +135,3 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
-
