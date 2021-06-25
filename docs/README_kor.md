@@ -59,6 +59,10 @@ Windows와 Linux 바이너리는 [릴리즈 섹션](https://github.com/ThePBone/
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="다운로드" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
+Windows 패키지는 Windows Package Manager(winget)로도 설치가 가능합니다.
+
+`winget install ThePBone.GalaxyBudsClient`
+
 ## 동작 방식
 
 Bluetooth 무선 기술을 사용하기 위해, 디바이스는 동작 가능한 앱과 디바이스가 다른 Bluetooth 디바이스와 통신하는 데 사용하는 일반적인 동작을 정의한 Bluetooth 프로필을 해석할 수 있어야 합니다.

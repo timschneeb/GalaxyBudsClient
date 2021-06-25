@@ -60,6 +60,10 @@ WindowsおよびLinuxのバイナリーは[リリーズ](https://github.com/TheP
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="ダウンロード" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
+WindowsパッケージはWindows Package Manager(winget)でもインストールすることができます。
+
+`winget install ThePBone.GalaxyBudsClient`
+
 ## 仕組み
 
 Bluetooth無線技術を使用するには、デバイスが動作可能なアプリやデバイスが他のBluetoothデバイスと通信するために使用する一般的な動作を定義したBluetoothプロファイルを解釈できる必要があります。
