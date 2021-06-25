@@ -1,3 +1,4 @@
+
 <p align="center">
     <a href="../README.md">English</a> | <a href="./README_chs.md">中文</a> | <a href="./README_rus.md">Русский</a> | <a href="./README_jpn.md">日本語</a> | <a href="./README_ukr.md">Українська</a> | 한국어 | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a>  <br>
     <sub>주의: readme 파일들은 번역자들에 의해 업데이트되며 시간이 지나면 최신 내용이 아니게 될 수 있습니다. 새로운 기능은 가장 먼저 영어 버전에 기재됩니다.</sub>
@@ -6,19 +7,19 @@
   Galaxy Buds Client
   <br>
 </h1>
-<h4 align="center">버즈, 버즈 플러스, 버즈 라이브와 버즈 프로를 위한 비공식 매니저 프로그램</h4>
+<h4 align="center">버즈, 버즈 플러스, 버즈 라이브와 버즈 프로를 위한 비공식 매니저</h4>
 <p align="center">
   <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
-    <img alt="GitHub downloads count" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
+    <img alt="Github 다운로드 횟수" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
   </a>
   <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
-    <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
+   <img alt="GitHub 릴리즈 (최신 날짜)" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
   </a>
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE">
-      <img alt="License" src="https://img.shields.io/github/license/thepbone/galaxybudsclient">
+      <img alt="라이센스" src="https://img.shields.io/github/license/thepbone/galaxybudsclient">
   </a>
   <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
-    <img alt="Platform" src="https://img.shields.io/badge/platform-Windows-yellowgreen">
+    <img alt="플랫폼" src="https://img.shields.io/badge/platform-Windows/Linux-yellowgreen">
   </a>
 </p>
 <p align="center">
@@ -31,11 +32,11 @@
 </p>
 
 <p align="center">
-    <a href="https://ko-fi.com/H2H83E5J3"><img alt="Screenshot" src="https://ko-fi.com/img/githubbutton_sm.svg"></a>
+    <a href="https://ko-fi.com/H2H83E5J3"><img alt="스크린샷" src="https://ko-fi.com/img/githubbutton_sm.svg"></a>
 </p>
 
 <p align="center">
-    <a href="#"><img alt="Screenshot" src="../screenshots/screencap.gif"></a>
+    <a href="#"><img alt="스크린샷" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/screencap.gif"></a>
 </p>
 
 ## 주요 기능
@@ -55,14 +56,14 @@
 Windows와 Linux 바이너리는 [릴리즈 섹션](https://github.com/ThePBone/GalaxyBudsClient/releases)에서 다운로드가 가능합니다. 설치하기 전에 릴리즈 노트를 읽어 주세요.
 
 <p align="center">
-    <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="../screenshots/download.png"></a>
+    <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="다운로드" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
 ## 동작 방식
 
 Bluetooth 무선 기술을 사용하기 위해, 디바이스는 동작 가능한 앱과 디바이스가 다른 Bluetooth 디바이스와 통신하는 데 사용하는 일반적인 동작을 정의한 Bluetooth 프로필을 해석할 수 있어야 합니다.
 
-갤럭시 버즈는 두 개의 Bluetooth 프로필을 정의합니다: A2DP (Advanced Audio Distribution Profile) 오디오 스트리밍/제어와 바이너리 스트림 통신을 위한 SPP (Serial Port Profile). 제조사들은 설정 데이터를 주고 받고, 펌웨어 업데이트나 기타 명령을 다른 Bluetooth 장치로 전송하기 위해 보통 이 프로필들을 사용하는 경우가 많습니다.
+갤럭시 버즈는 오디오 스트리밍/제어를 위한 A2DP (Advanced Audio Distribution Profile)와 바이너리 스트림 통신을 위한 SPP (Serial Port Profile)의 두 가지 Bluetooth 프로필을 사용합니다. 제조사들은 설정 데이터를 주고 받고, 펌웨어 업데이트나 기타 명령을 다른 Bluetooth 장치로 전송하기 위해 보통 이 프로필들을 사용하는 경우가 많습니다.
 
 A2DP 프로필이 표준화 및 문서화되더라도, RFCOMM 프로토콜로 교환되는 실제 바이너리 데이터의 형식은 일반적으로 문서화되지 않은 독자적 형식입니다.
 
@@ -93,7 +94,6 @@ A2DP 프로필이 표준화 및 문서화되더라도, RFCOMM 프로토콜로 �
 버그를 제보하거나 아이디어를 제시하고 싶으시면, 템플릿과 함께 제공되는 [새로운 Issue 생성](https://github.com/ThePBone/GalaxyBudsClient/issues/new/choose)을 이용해 주세요. [위키](https://github.com/ThePBone/GalaxyBudsClient/wiki/2.-How-to-submit-issues)를 방문해 자세한 설명을 참고하세요.
 
 이 프로그램의 번역에 도움을 제공하고 싶으시다면, [위키의 설명](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations)을 참조하세요. 프로그래밍 지식을 요구하지 않으며, Pull Request 전 어떤 개발 툴의 설치도 없이 번역을 테스트할 수 있습니다.
-
 소스 코드에 기여하고 싶으시다면, 변경한 내용에 대한 Pull Request를 생성하면 됩니다. 프로그램에 대한 크거나 민감한 기여 사항은 작업을 시작하기 전에 Issue를 생성해 주세요. (또는 텔레그램 [@thepbone](https://t.me/thepbone)으로 연락)
 
 ## 제작자
@@ -102,21 +102,27 @@ A2DP 프로필이 표준화 및 문서화되더라도, RFCOMM 프로토콜로 �
 
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue 템플릿, 위키 제작과 번역
 * [@AndriesK](https://github.com/AndriesK) - 버즈 라이브 버그 픽스
+* [@TheLastFrame](https://github.com/TheLastFrame) - 버즈 프로 아이콘
 * [@githubcatw](https://github.com/githubcatw) - 연결 알림 기반 제작
+* [@GaryGadget9](https://github.com/GaryGadget9) - WinGet 패키지
 
 #### 번역
 
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - 러시아어, 우크라이나어 번역
+* [@BrainInAVet](https://github.com/fhalfkg) - 한국어, 일본어 번역
 * [@cozyplanes](https://github.com/cozyplanes) - 한국어 번역
-* [@redevunlink](https://github.com/redevunlink) - 한국어 번역
-* [@PlasticBrain](https://github.com/fhalfkg) - 한국어, 일본어 번역
 * [@erenbektas](https://github.com/erenbektas) - 터키어 번역
-* [@kakkk](https://github.com/kakkk) , [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) - 중국어 번역
+* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) and [@pseudor](https://github.com/pseudor) - 중국어 번역
 * [@efrenbg1](https://github.com/efrenbg1), Andrew Gonza - 스페인어 번역
-* [@giovankabisano](https://github.com/giovankabisano) - 마인어 번역
+* [@giovankabisano](https://github.com/giovankabisano) - 인도네시아어 번역
 * [@lucasskluser](https://github.com/lucasskluser) - 포르투갈어 번역
-* [@alb-p](https://github.com/alb-p) - 이탈리아어 번역
+* [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - 이탈리아어 번역
 * [@Buashei](https://github.com/Buashei) - 폴란드어 번역
+* [@KatJillianne](https://github.com/KatJillianne) - 베트남어 번역
+* [@joskaja](https://github.com/joskaja), [@Joedmin](https://github.com/Joedmin) - 체코어 번역
+* [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - 독일어 번역
+* [@nikossyr](https://github.com/nikossyr) - 그리스어 번역
+* [@grigorem](https://github.com/grigorem) - 루마니아어 번역
 
 ## 라이선스
 

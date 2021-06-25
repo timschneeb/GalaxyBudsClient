@@ -1,75 +1,139 @@
+
 <p align="center">
   <a href="../README.md">English</a> | <a href="./README_chn.md">中文</a> | <a href="./README_rus.md">Русский</a> | 日本語 | <a href="./README_ukr.md">Українська</a> | <a href="./README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> <br>
+    <sub>注意: readmeは翻訳者により翻訳されており、時間により最新ではない場合があります。最新の情報は英語版をご覧ください。</sub>
 </p>
-
-_____
-
-# Galaxy Buds Client
-
-Windows 非公式 Galaxy Buds Manager (Buds/Buds+)
-
-([release tab](https://github.com/thepbone/galaxybudsclient/releases)からダウンロードができます。)
+<h1 align="center">
+  Galaxy Buds Client
+  <br>
+</h1>
+<h4 align="center">Buds、Buds+、Buds LiveとBuds Proのための非公式マネージャー</h4>
+<p align="center">
+  <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
+    <img alt="GitHub downloads count" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
+  </a>
+  <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
+   <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
+  </a>
+  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE">
+      <img alt="License" src="https://img.shields.io/github/license/thepbone/galaxybudsclient">
+  </a>
+  <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
+    <img alt="Platform" src="https://img.shields.io/badge/platform-Windows/Linux-yellowgreen">
+  </a>
+</p>
+<p align="center">
+  <a href="#主な機能">主な機能</a> •
+  <a href="#ダウンロード">ダウンロード</a> •
+  <a href="#仕組み">仕組み</a> •
+  <a href="#貢献">貢献</a> •
+  <a href="#クレジット">クレジット</a> •
+  <a href="#ライセンス">ライセンス</a>
+</p>
 
 <p align="center">
-  <img src="../screenshots/screencap.gif">
+    <a href="https://ko-fi.com/H2H83E5J3"><img alt="スクリーンショット" src="https://ko-fi.com/img/githubbutton_sm.svg"></a>
 </p>
 
-このプログラムはBudsが情報を送受信するときに使用するカスタムRFCommシリアルプロトコルの研究の結果物の一つです。もし、プロトコルの構造やシリアル通信の内容が知りたい方は、リバースエンジニアリングをしたすべての内容を記録した私のノートをご覧ください。
+<p align="center">
+    <a href="#"><img alt="スクリーンショット" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/screencap.gif"></a>
+</p>
 
-* [My Buds (2019) Notes](../GalaxyBudsRFCommProtocol.md)
-* [My Buds Plus Notes](../Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md)
+## 主な機能
 
-## 機能
+デスクトップでサムスンのGalaxy Budsデバイスを設定、制御できます。
 
-**新しい機能** (既存機能を除く):
+このプロジェクトは公式Androidアプリで知られている基本的な機能以外にも、イヤホンの潜在力を最大に発揮し、次のような新しい機能を使用できるようにします:
 
-* タッチパッド: カスタム長押し動作 (プログラムを開く、イコライザーON/OFF、周辺の音の音量調整、...)<sup>[1]</sup>
-* イヤホンを装着したときにメディアの再生を再開
-* バッテリーの状態を表示するシステムトレイ
-* ダッシュボードに詳しいセンサ情報を表示します。次を含みます:
-  * 両方のイヤホンの内部ADCの電圧と電流 (アナログ-デジタル変換回路)
-  * 両方のイヤホンの温度
-  * より正確なバッテリー容量 (5%ごとの表記を削除)
-* すべてのオンボードコンポーネントに対してセルフテストを遂行
-* 様々な情報を表示(デバッグ)、次を含みます:
-  * ハードウェアリビジョン
-  * (タップ)ファームウェアバージョン
-  * 両方のイヤホンのBluetoothアドレス
-  * 両方のイヤホンのシリアル番号
-  * ファームウェアのビルド情報 (コンパイルした日付、開発者の名前)
-  * バッテリーのタイプ
-  * その他のセンサー情報
-* イコライザー: 'Dolby最適化' 機能の解禁
-* タッチパッド: 音量を上げる/下げるを他のオプションと結合<sup>[1]</sup>
+* 詳細なバッテリー情報
+* 診断およびファクトリーセルフテスト
+* 非表示のデバッグ情報のロード
+* カスタマイズできる長押し機能
+* ファームウェアのインストール, ダウングレード (Buds+, Buds Pro)
+* その他…
 
-> <sup>[1]</sup> Galaxy Wearableアプリでタッチパッドの設定を変更する場合、この機能は自動的に無効化されます。
-## インストール
+## ダウンロード
 
-**このプログラムは[.Net Framework](https://dotnet.microsoft.com/download/dotnet-framework/net461) 4.6.1かそれ以上のバージョンを要求します。**
+WindowsおよびLinuxのバイナリーは[リリーズ](https://github.com/ThePBone/GalaxyBudsClient/releases)でダウンロードすることができます。インストールする前にリリーズノートをお読みください。
 
-[**ここ**](https://github.com/ThePBone/GalaxyBudsClient/releases)からフルインストールファイルのダウンロードができます。
+<p align="center">
+    <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="ダウンロード" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
+</p>
 
-正品**Galaxy Buds (2019)** や **Galaxy Buds+ (2020)** に対してすべての機能をサポートします。
+## 仕組み
 
-![Downloads](https://img.shields.io/github/downloads/ThePBone/GalaxyBudsClient/total)
+Bluetooth無線技術を使用するには、デバイスが動作可能なアプリやデバイスが他のBluetoothデバイスと通信するために使用する一般的な動作を定義したBluetoothプロファイルを解釈できる必要があります。
 
-または、[@superbonaci](https://github.com/superbonaci)さんが提供したChocolateyパッケージの使用ができます:
+Galaxy Budsはオーディオストリーミング/制御のためのA2DP (Advanced Audio Distribution Profile)やバイナリーストリーム通信のためのSPP (Serial Port Profile)の２つのBluetoothプロファイルを使用します。メーカーは設定データをやり取りし、ファームウェアアップデートやその他のコマンドを他のBluetoothデバイスに送信するためにこのプロファイルを使用することが多いです。
+
+A2DPプロファイルが標準化・文書化されても、RFCOMMプロトコールで交換される実際のデータの形式は一般的に文書化されていない独自の形式です。
+
+このデータ形式をリバースエンジニアリングするために、私はイヤホンから転送されるバイナリーストリームを分析し始めました。その後は、デバイスの内部動作をより詳しく知るためにAndroidの公式Galaxy Budsアプリを分析しました。この作業をする間、私は私が考えたことを記録しました。あまり綺麗な記録ではありませんが、下にリンクを記載しています。私が詳細な内容ひとつひとつを全部記録したのではないことをお含みおきください。プロトコールについてより詳しい情報を知りたい方はソースコードをご確認ください。
+
+<p align="center">
+  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsRFCommProtocol.md">Galaxy Buds (2019) 記録</a> •
+  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md">Galaxy Buds+ 記録</a>
+</p>
+
+Galaxy Buds+を注意深く分析しながら、私はファームウェアでバックモードや使われていないペアリングモード、Bluetoothキーダンパーなどのユニークな機能を見つけました。その機能の詳細も下記のリンクに記録しました:
+
+<p align="center">
+  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsPlus_HiddenDebugFeatures.md">Galaxy Buds+: ユニークな機能</a>
+</p>
+
+現在、私はGalaxy Buds+のファームウェアを修正し、リバースエンジニアリングしようとしています。作業するときにファームウェアバイナリーを取得し分析できるツールがあります。下記のリンクをご参照ください:
+
+<p align="center">
+  <a href="https://github.com/ThePBone/GalaxyBudsFirmwareDownloader">ファームウェアダウンローダー</a> •
+  <a href="https://github.com/ThePBone/GalaxyBudsFirmwareExtractor">ファームウェア解凍ツール</a>
+</p>
+
+## 貢献
+
+機能の要請、バグの報告、Pull Requestなどのいかなる形の貢献も歓迎いたします。
+
+バグを報告したり、アイデアを共有したい方はテンプレートと共に提供される [新しいIssue作成](https://github.com/ThePBone/GalaxyBudsClient/issues/new/choose)をご利用ください。 [ウィキ](https://github.com/ThePBone/GalaxyBudsClient/wiki/2.-How-to-submit-issues)で詳細をご参照ください。
+
+このプログラムの翻訳のお手伝いをご希望の方は、[ウィキの説明](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations)をご覧ください。プログラミングの知識を要求せず、Pull Requestの前にいかなる開発ツールのインストールなしに翻訳をテストできます。
+ソースコードに貢献したい方は、変更内容のPull Requestを作成してください。プログラムに対する大きいもしくは敏感な貢献事項は、作業を始める前にIssueを作成してください。(またはTelegram [@thepbone](https://t.me/thepbone)に連絡)
+
+## クレジット
+
+#### 貢献
+
+* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issueテンプレート、ウィキ作成と翻訳
+* [@AndriesK](https://github.com/AndriesK) - Buds Liveのバグ修正
+* [@TheLastFrame](https://github.com/TheLastFrame) - Buds Proのアイコン
+* [@githubcatw](https://github.com/githubcatw) - 接続プッシュ通知のベース作成
+* [@GaryGadget9](https://github.com/GaryGadget9) - WinGetパッケージ
+
+#### 翻訳
+
+* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - ロシア語、ウクライナ語
+* [@BrainInAVet](https://github.com/fhalfkg) - 韓国語、日本語
+* [@cozyplanes](https://github.com/cozyplanes) - 韓国語
+* [@erenbektas](https://github.com/erenbektas) - トルコ語
+* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) and [@pseudor](https://github.com/pseudor) - 中国語
+* [@efrenbg1](https://github.com/efrenbg1), Andrew Gonza - スペイン語
+* [@giovankabisano](https://github.com/giovankabisano) - インドネシア語
+* [@lucasskluser](https://github.com/lucasskluser) - ポルトガル語
+* [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - イタリア語
+* [@Buashei](https://github.com/Buashei) - ポーランド語
+* [@KatJillianne](https://github.com/KatJillianne) - ベトナム語
+* [@joskaja](https://github.com/joskaja), [@Joedmin](https://github.com/Joedmin) - チェコ語
+* [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - ドイツ語
+* [@nikossyr](https://github.com/nikossyr) - ギリシャ語
+* [@grigorem](https://github.com/grigorem) - ルーマニア語
+
+## ライセンス
+
+このプロジェクトは[GPLv3](../LICENSE)ライセンスに準拠しています。サムスンと関わりはなく、サムスンからの勧告や制限は一切ありません。
 
 ```
-choco install galaxybudsclient
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
+THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
-## 翻訳
-
-* [@Florize](https://github.com/Florize) - 韓国語、日本語翻訳
-
-## 寄与
-
-* [@superbonaci](https://github.com/superbonaci) - Chocolatey package
-* [@githubcatw](https://github.com/githubcatw) - Connection dialog base
-
-
-
-___
-
-Bitcoin: 3EawSB3NfX6JQxKBBFYh6ZwHDWXtJB84Ly
