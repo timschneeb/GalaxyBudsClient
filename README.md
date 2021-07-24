@@ -67,7 +67,7 @@ winget install ThePBone.GalaxyBudsClient
 ```
 
 #### Arch Linux (AUR)
-Arch Linux users can also download a dependencyless AUR package instead:
+Arch Linux users can also download a dependencyless [AUR package](https://aur.archlinux.org/packages/galaxybudsclient/) instead:
 ```
 yay -S galaxybudsclient
 ```
