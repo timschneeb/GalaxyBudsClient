@@ -100,6 +100,7 @@ jobs:
     #if: github.event_name == 'release'
     steps:
       - uses: actions/checkout@v2
+      - run: git fetch --prune --unshallow --tags
 
       - name: Get version tag
         run: echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
@@ -109,7 +110,7 @@ jobs:
         with:
           find: "%VERSION%"
           replace: ${{ env.GIT_TAG }}
-          include: ./deployment/PKGBUILD
+          include: deployment/PKGBUILD
 
       - name: Publish AUR package
         uses: ThePBone/github-actions-deploy-aur@v3.5
