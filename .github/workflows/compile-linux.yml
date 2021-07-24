@@ -94,6 +94,35 @@ jobs:
         name: GalaxyBudsClient_linux-arm64_portable
         path: bin_linux_arm64/GalaxyBudsClient
 
+  publish-aur:
+    runs-on: ubuntu-latest
+    needs: [build-x64, build-arm, build-arm64]
+    #if: github.event_name == 'release'
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get version tag
+        run: echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $VERSION_TAG
+
+      - name: Insert version
+        uses: jacobtomlinson/gha-find-replace@master
+        with:
+          find: "%VERSION%"
+          replace: ${{ VERSION_TAG }}
+          include: ./deployment/PKGBUILD
+
+      - name: Publish AUR package
+        uses: ThePBone/github-actions-deploy-aur@v3.2
+        with:
+          pkgname: galaxybudsclient
+          pkgbuild: ./deployment/PKGBUILD
+          other_files: GalaxyBudsClient/Resources/icon_white.png
+          commit_username: ${{ secrets.AUR_USERNAME }}
+          commit_email: ${{ secrets.AUR_EMAIL }}
+          ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
+          commit_message: Update AUR package
+          ssh_keyscan_types: rsa,dsa,ecdsa,ed25519
+          
   attach-to-release:
     runs-on: windows-latest
     needs: [build-x64, build-x64-musl, build-arm, build-arm64]
