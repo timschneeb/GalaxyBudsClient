@@ -62,7 +62,15 @@ Get binaries for Windows and Linux in the [release](https://github.com/ThePBone/
 
 The Windows package is also available to install with Windows Package Manager (winget)
 
-`winget install ThePBone.GalaxyBudsClient`
+```
+winget install ThePBone.GalaxyBudsClient
+```
+
+#### Arch Linux (AUR)
+Arch Linux users can also download a dependencyless AUR package instead:
+```
+yay -S galaxybudsclient
+```
 
 ## How it works
 
