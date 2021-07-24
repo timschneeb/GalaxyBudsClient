@@ -112,7 +112,7 @@ jobs:
           include: ./deployment/PKGBUILD
 
       - name: Publish AUR package
-        uses: ThePBone/github-actions-deploy-aur@v3.2
+        uses: ThePBone/github-actions-deploy-aur@v3.3
         with:
           pkgname: galaxybudsclient
           pkgbuild: deployment/PKGBUILD
