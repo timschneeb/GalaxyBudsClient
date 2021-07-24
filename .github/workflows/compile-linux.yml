@@ -102,13 +102,13 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Get version tag
-        run: echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $VERSION_TAG
+        run: echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
 
       - name: Insert version
         uses: jacobtomlinson/gha-find-replace@master
         with:
           find: "%VERSION%"
-          replace: ${{ VERSION_TAG }}
+          replace: ${{ env.GIT_TAG }}
           include: ./deployment/PKGBUILD
 
       - name: Publish AUR package
