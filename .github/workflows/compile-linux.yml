@@ -115,7 +115,7 @@ jobs:
         uses: ThePBone/github-actions-deploy-aur@v3.2
         with:
           pkgname: galaxybudsclient
-          pkgbuild: ./deployment/PKGBUILD
+          pkgbuild: deployment/PKGBUILD
           other_files: GalaxyBudsClient/Resources/icon_white.png
           commit_username: ${{ secrets.AUR_USERNAME }}
           commit_email: ${{ secrets.AUR_EMAIL }}
