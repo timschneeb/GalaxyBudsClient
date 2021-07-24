@@ -97,7 +97,7 @@ jobs:
   publish-aur:
     runs-on: ubuntu-latest
     needs: [build-x64, build-arm, build-arm64]
-    #if: github.event_name == 'release'
+    if: github.event_name == 'release'
     steps:
       - uses: actions/checkout@v2
       - run: git fetch --prune --unshallow --tags
