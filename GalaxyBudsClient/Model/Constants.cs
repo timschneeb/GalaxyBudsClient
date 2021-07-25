@@ -46,6 +46,8 @@ namespace GalaxyBudsClient.Model
             in_,
             [Description("Vietnamese")]
             vn_,
+            [Description("French")]
+            fr,
 
             [Description("custom_language.xaml")]
             custom
