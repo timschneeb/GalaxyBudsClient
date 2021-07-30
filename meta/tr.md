@@ -129,7 +129,7 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 <tr><td><code>settings_cpopup_primary_screen</code></td><td>Primary screen only</td></tr>
 <tr><td><code>settings_cpopup_primary_screen_description</code></td><td>Show popup only on the primary monitor</td></tr>
 <tr><td><code>settings_cpopup_wear_state</code></td><td>Use different color when in case</td></tr>
-<tr><td><code>settings_cpopup_wear_state_description</code></td><td>Gray earbud icon out when in your earbuds are in the case</td></tr>
+<tr><td><code>settings_cpopup_wear_state_description</code></td><td>Gray earbud icon out when your earbuds are in the case</td></tr>
 <tr><td><code>eq_preset</code></td><td>Preset</td></tr>
 <tr><td><code>eq_stereo_balance</code></td><td>Left/right sound balance</td></tr>
 <tr><td><code>eq_stereo_balance_value</code></td><td>{0}% left; {1}% right</td></tr>
