@@ -15,6 +15,22 @@ namespace GalaxyBudsClient.Model
             public static readonly Guid BudsLive = new Guid("{00001101-0000-1000-8000-00805F9B34FB}");
             public static readonly Guid BudsPro = new Guid("{00001101-0000-1000-8000-00805F9B34FB}");
         }
+
+        public static class Bixby
+        {
+            public static (byte, string)[] Languages =
+            {
+                (0, "de-DE"),
+                (1, "en-GB"),
+                (2, "en-US"),
+                (3, "es-ES"),
+                (4, "fr-FR"),
+                (5, "it-IT"),
+                (6, "ko-KR"),
+                (7, "pt-BR"),
+                (8, "zh-CN"),
+            };
+        }
         
         public enum Locales
         {
@@ -46,11 +62,35 @@ namespace GalaxyBudsClient.Model
             in_,
             [Description("Vietnamese")]
             vn_,
+            [Description("Greek")]
+            gr,
+            [Description("Romanian")]
+            ro,
             [Description("French")]
             fr,
 
             [Description("custom_language.xaml")]
             custom
+        }
+        
+        public enum SpatialAudioControl
+        {
+            Attach = 0,
+            Detach = 1,
+            AttachSuccess = 2,
+            DetachSuccess = 3,
+            KeepAlive = 4,
+            WearOnOff = 5
+        }
+        
+        public enum SpatialAudioData
+        {
+            Unknown,
+            BudGrv = 32,
+            BudGyrocal = 35,
+            BudSensorStuck = 36,
+            WearOff = 34,
+            WearOn = 33
         }
         
         public enum TemperatureUnits

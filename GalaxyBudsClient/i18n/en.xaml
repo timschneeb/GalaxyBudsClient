@@ -153,7 +153,7 @@
     <!-- Welcome page -->
     <sys:String x:Key="welcome_textblock_header">Welcome!</sys:String>
     <sys:String x:Key="welcome_textblock_p1">
-        Hey there! This Galaxy Buds Manager is unofficial and not affiliated with Samsung in any way, please keep that in mind.&#10;While this program can do a lot of things the original Samsung Wearable app on Android can't do, I've still decided to exclude the Firmware OTA Updater for safety reasons. Please use the official one if you happen to need it.
+        Hey there! This Galaxy Buds Manager is unofficial and not affiliated with Samsung in any way, please keep that in mind.&#10;This program is designed to provide much more functionality over the official Samsung wearable app; however, not all of these feature are available on devices without this app installed.
     </sys:String>
     <sys:String x:Key="welcome_textblock_p2">
         If you are interested in what is going on behind the scenes, you can check out my GitHub repository which includes a small reverse-engineering journal. You can also message me on GitHub or on Telegram @thepbone if you happen to run into any issue.
@@ -238,6 +238,11 @@
 
     <sys:String x:Key="touchpad_double_tap_volume">Double-tap earbud edge</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Double-tap the edge of the left or right earbud to turn the volume down or up</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode">Noise control switching mode</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC &lt;-&gt; Ambient sound</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; Off</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambient sound &lt;-&gt; Off</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_threeway">Cycle between modes (ANC, Ambient, Off)</sys:String>
 
     <!-- Custom touchpad action page -->
     <sys:String x:Key="cact_header">Define custom long-press action</sys:String>
@@ -263,6 +268,10 @@
     <sys:String x:Key="system_trace_core_dump_desc">Retrieve raw debugging data from your earbuds</sys:String>
     <sys:String x:Key="system_info">View system information</sys:String>
     <sys:String x:Key="system_info_desc">Display detailed information about your earbuds</sys:String>
+    <sys:String x:Key="system_flasher">Install firmware updates</sys:String>
+    <sys:String x:Key="system_flasher_desc">Upgrade, downgrade, or flash custom firmware binaries</sys:String>
+    <sys:String x:Key="system_spatial">Dump spatial sensor measurements</sys:String>
+    <sys:String x:Key="system_spatial_desc">Read spatial head-tracking data used for 3D audio</sys:String>
 
     <sys:String x:Key="system_battery_type_unknown">Not specified</sys:String>
     <sys:String x:Key="system_waiting_for_device">Waiting for response...</sys:String>
@@ -338,6 +347,8 @@
     <sys:String x:Key="settings_cpopup_override_title_dialog">Please enter a custom popup title. You can restore the default one by leaving this field empty.</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen">Primary screen only</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen_description">Show popup only on the primary monitor</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state">Use different color when in case</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state_description">Gray earbud icon out when in your earbuds are in the case</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">Factory reset</sys:String>
@@ -408,7 +419,18 @@
     <sys:String x:Key="adv_gaming_mode_desc">Minimize latency and adjust audio synchronization (Samsung only)</sys:String>
     <sys:String x:Key="adv_hotkey">Keyboard hotkeys</sys:String>
     <sys:String x:Key="adv_hotkey_desc">Define custom keyboard hotkeys to remote-control your earbuds</sys:String>
+    <sys:String x:Key="adv_bixby_remap">Remap Bixby wakeup</sys:String>
+    <sys:String x:Key="adv_bixby_remap_desc">Define what should happen when you say 'Hey Bixby!'</sys:String>
 
+    <!-- Remap bixby wakeup -->
+    <sys:String x:Key="bixby_remap_header">Remap Bixby wakeup</sys:String>
+    <sys:String x:Key="bixby_remap_enable">Enable Bixby wakeup</sys:String>
+    <sys:String x:Key="bixby_remap_enable_desc">Launch Bixby on your Samsung phone or execute a custom action on this PC when waken up</sys:String>
+    <sys:String x:Key="bixby_remap_lang">Bixby wakeup language</sys:String>
+    <sys:String x:Key="bixby_remap_action">Custom wakeup action</sys:String>
+    <sys:String x:Key="bixby_remap_note">Say 'Hey Bixby!' to activate. The activation phrase may be different with some language settings.&#10;&#10;The remap configuration is only active on this device. If you connect your earbuds to a Samsung device, voice wakeup will activate Bixby normally. On other devices than this device and non-Samsung phones, this feature won't trigger any action.</sys:String>
+
+    
     <!-- Credits -->
     <sys:String x:Key="credits_header">Credits</sys:String>
     <sys:String x:Key="credits_developer">Developer</sys:String>
@@ -429,6 +451,70 @@
     <sys:String x:Key="connlost_disconnected">Device disconnected</sys:String>
     <sys:String x:Key="connlost_connect">Connect</sys:String>
     <sys:String x:Key="connlost_connecting">Connecting...</sys:String>
+    
+    <!-- Firmware update disclaimer -->
+    <sys:String x:Key="fw_disclaimer">Disclaimer</sys:String>
+    <sys:String x:Key="fw_disclaimer_desc">This firmware updating tool is an accurate replica of the official updater found in Samsung's official Android app. I've thoroughly tested this implementation under various circumstances (normal operation, connection loss, intentionally corrupted Bluetooth packets, ...) without experiencing any issues at all. Still, I won't take any liability if anything should go wrong since firmware updates modify vital system components and should always be handled with caution.&#10;&#10;DOWNGRADING: While downgrading to older firmware versions is possible and I never ran into problems with it, it may cause unexpected issues and should only be done if necessary. A factory reset after the downgrade is recommended but not usually necessary. &#10;CUSTOM FLASHING: You are also able to load firmware files from your hard-drive. Do NOT flash firmware binaries designed for OTHER models onto your device.&#10;&#10;This application is licensed under GPLv3. By using it, you are accepting the license and its limitation of liability. Press 'Continue' to accept.</sys:String>
+    
+    <!-- Firmware selection -->
+    <sys:String x:Key="fw_select_header">Firmware updates</sys:String>
+    <sys:String x:Key="fw_select_instructions">Please choose a firmware binary to download and install. Alternatively, you can also select a firmware binary from your hard-drive by navigating to 'Advanced... > Select image from disk'</sys:String>
+    <sys:String x:Key="fw_select_no_results">No firmware updates are currently available. Please try again at a later time.</sys:String>
+    <sys:String x:Key="fw_select_downgrade">Allow firmware downgrading</sys:String>
+    <sys:String x:Key="fw_select_downgrade_desc">Disable version checks and show older firmwares in list (may cause unexpected issues; advanced users only)</sys:String>
+    <sys:String x:Key="fw_select_advanced">Advanced...</sys:String>
+    <sys:String x:Key="fw_select_install">Install firmware</sys:String>
+    <sys:String x:Key="fw_select_from_disk">Select image from disk...</sys:String>
+    <sys:String x:Key="fw_select_external_note">Do NOT flash firmware binaries meant for OTHER models onto your device. Flashing a Buds Pro firmware onto a pair of Buds Plus won't unlock any new features, instead it will permanently destroy your device.&#10;&#10;Press 'Continue' to select a firmware binary.</sys:String>
+    <sys:String x:Key="fw_select_unsupported_selection">Invalid selection. Please select a compatible item from the list.</sys:String>
+    <sys:String x:Key="fw_select_downloading">Downloading...</sys:String>
+    <sys:String x:Key="fw_select_net_error">Failed to communicate with server. Cannot download firmware at the moment.</sys:String>
+    <sys:String x:Key="fw_select_net_index_error">Failed to communicate with server. Cannot download firmware index at the moment.</sys:String>
+    <sys:String x:Key="fw_select_http_error">HTTP error code:</sys:String>
+    <sys:String x:Key="fw_select_unknown_build">Unknown build name</sys:String>
+    <sys:String x:Key="fw_select_verify_fail">Failed to verify firmware</sys:String>
+    <sys:String x:Key="fw_select_confirm">You are about to flash '{0}' onto your '{1}' device</sys:String>
+    <sys:String x:Key="fw_select_confirm_desc">Make sure this information is correct, otherwise press 'Cancel' and double-check your setup.&#10;&#10;If possible, make sure both of the earbuds are connected before starting. It won't cause any issues if the connection fails while transferring the update. In such a case, the earbuds will automatically cancel the transfer process and exit the firmware update mode.&#10;&#10;Press 'Continue' to start the update.</sys:String>
+  
+    <!-- Firmware transfer -->
+    <sys:String x:Key="fw_upload_header">Installing firmware...</sys:String>
+    <sys:String x:Key="fw_upload_progress_session">Creating new session...</sys:String>
+    <sys:String x:Key="fw_upload_progress_prepare">Preparing upload...</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished">Upload finished</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished_desc">The update has been successfully transferred and is currently being installed on the device. During this process your earbuds become unresponsive for about 30 seconds. In most cases, the earbuds attempt to reconnect automatically after the on-board update process has finished.</sys:String>
+    <sys:String x:Key="fw_upload_progress_error">Failed to upload firmware</sys:String>
+    <sys:String x:Key="fw_upload_progress">Uploading firmware update... {0}%</sys:String>
+    <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats">Statistics</sys:String>
+    <sys:String x:Key="fw_upload_note">Your earbuds will be disconnected, and start installing the uploaded firmware update as soon as the transmission finishes. During this process, your earbuds will be unresponsive and decline any Bluetooth connection requests. In most cases, the earbuds attempt to reconnect automatically after the on-board update process has finished. Please do not close your case while updating.</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_mtu">Maximum transfer unit: {0} bytes</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_offset">Processing data from offset 0x{0:X6} to 0x{1:X6}</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_segment">Uploading segment #{0} ({1} bytes, checksum 0x{2:X6})</sys:String>
+
+    <!-- Firmware parse errors -->
+    <sys:String x:Key="fw_fail_no_magic">This is not a valid firmware binary. Invalid magic value found in file header.</sys:String>
+    <sys:String x:Key="fw_fail_size_null">This firmware binary has its size set to zero and cannot be used for flashing. Please choose another one.</sys:String>
+    <sys:String x:Key="fw_fail_no_segments">This firmware binary does not contain any binary segments and is empty. Please choose another one.</sys:String>
+    <sys:String x:Key="fw_fail_unknown">Unexpected error while decoding the firmware binary. This firmware archive might be corrupted.&#10;&#10;Details:</sys:String>
+    
+    <!-- Firmware transfer errors -->
+    <sys:String x:Key="fw_fail_connection">Lost connection to the device. The firmware transfer has been cancelled.</sys:String>
+    <sys:String x:Key="fw_fail_session">Failed to open a new session. The device returned an error code ({0})</sys:String>
+    <sys:String x:Key="fw_fail_copy">Failed to copy firmware binary. Please reconnect and try again. Error code returned by device: {0}</sys:String>
+    <sys:String x:Key="fw_fail_verify">Failed to verify/install firmware binary. Please reconnect and try again. Error code returned by device: {0}</sys:String>
+    <sys:String x:Key="fw_fail_connection_precheck">The device is currently not connected. Please check your Bluetooth system settings and reconnect.</sys:String>
+    <sys:String x:Key="fw_fail_pending">Another firmware transfer is already in progress. Please cancel it properly first.</sys:String>
+    <sys:String x:Key="fw_fail_lowbattery">Battery too low. Please charge your earbuds over 15% first.</sys:String>
+    <sys:String x:Key="fw_fail_session_timeout">Timed out while waiting for the device to open a new session</sys:String>
+    <sys:String x:Key="fw_fail_control_timeout">Timed out while waiting for the device to return a control block</sys:String>
+    <sys:String x:Key="fw_fail_copy_timeout">Timed out while waiting for the transfer process to finish</sys:String>
+    
+    <!-- Spatial test -->
+    <sys:String x:Key="spatial_header">Spatial sensor</sys:String>
+    <!-- Note: Quaternion = 4-dimensional vector -->
+    <sys:String x:Key="spatial_dump_quaternion">Raw quaternion vector:</sys:String>
+    <!-- Note: RPY = Roll, pitch, yaw -->
+    <sys:String x:Key="spatial_dump_rpy">RPY values:</sys:String>
     
     <!-- Header -->
     <sys:String x:Key="window_minimize">Minimize</sys:String>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -14,7 +15,6 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Serilog;
 using Task = System.Threading.Tasks.Task;
 
@@ -52,8 +52,8 @@ namespace GalaxyBudsClient.Platform
         public event EventHandler<InvalidPacketException>? InvalidDataReceived;
         public event EventHandler<byte[]>? NewDataReceived;
         public event EventHandler<BluetoothException>? BluetoothError;
-        
-        public bool SuppressDisconnectionEvents { set; get; }
+
+        public bool SuppressDisconnectionEvents { set; get; } = true; // TODO
         public Models ActiveModel => SettingsProvider.Instance.RegisteredDevice.Model;
         public IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(ActiveModel) ?? new StubDeviceSpec();
         public bool IsConnected => _backend.IsStreamConnected;
@@ -115,13 +115,13 @@ namespace GalaxyBudsClient.Platform
             _backend.BluetoothErrorAsync += (sender, exception) => OnBluetoothError(exception); 
             
             _backend.RfcommConnected += (sender, args) => Task.Run(async () =>
-                    await Task.Delay(150).ContinueWith((_) =>
-                    {
-                        if (RegisteredDeviceValid)
-                            Connected?.Invoke(this, EventArgs.Empty);
-                        else
-                            Log.Error("BluetoothImpl: Suppressing Connected event, device not properly registered");
-                    }));
+                await Task.Delay(150).ContinueWith((_) =>
+                {
+                    if (RegisteredDeviceValid)
+                        Connected?.Invoke(this, EventArgs.Empty);
+                    else
+                        Log.Error("BluetoothImpl: Suppressing Connected event, device not properly registered");
+                }));
             
             _backend.Disconnected += (sender, reason) =>
             {
@@ -184,7 +184,7 @@ namespace GalaxyBudsClient.Platform
             return new BluetoothDevice[0];
         }
 
-        public async Task ConnectAsync(string? macAddress = null, Models? model = null, bool noRetry = false)
+        public async Task<bool> ConnectAsync(string? macAddress = null, Models? model = null, bool noRetry = false)
         {
             /* Load from configuration */
             if (macAddress == null && model == null)
@@ -195,10 +195,12 @@ namespace GalaxyBudsClient.Platform
                     {
                         await _backend.ConnectAsync(SettingsProvider.Instance.RegisteredDevice.MacAddress,
                             ServiceUuid.ToString()!, noRetry);
+                        return true;
                     }
                     catch (BluetoothException ex)
                     {
                         OnBluetoothError(ex);
+                        return false;
                     }
                 }
                 else
@@ -215,17 +217,20 @@ namespace GalaxyBudsClient.Platform
                     SettingsProvider.Instance.RegisteredDevice.MacAddress = macAddress;
 
                     /* Load from configuration this time */
-                    await ConnectAsync();
+                    return await ConnectAsync();
                 }
                 else
                 {
                     Log.Error("BluetoothImpl: Connection attempt without valid device");
+                    return false;
                 }
             }
             else
             {
                 throw new ArgumentException("Either all or none arguments must be null");
             }
+
+            return false;
         }
 
         public async Task DisconnectAsync()
@@ -272,6 +277,11 @@ namespace GalaxyBudsClient.Platform
             }
         }
         
+        public async Task SendResponseAsync(SPPMessage.MessageIds id, params byte[]? payload)
+        {
+            await SendAsync(new SPPMessage{Id = id, Payload = payload ?? new byte[0], Type = SPPMessage.MsgType.Response});
+        }
+
         public async Task SendRequestAsync(SPPMessage.MessageIds id, params byte[]? payload)
         {
             await SendAsync(new SPPMessage{Id = id, Payload = payload ?? new byte[0], Type = SPPMessage.MsgType.Request});
@@ -334,8 +344,11 @@ namespace GalaxyBudsClient.Platform
                     }
                 }
                 
+                var failCount = 0;
                 do
                 {
+                    var msgSize = 0;
+                    SPPMessage? msg = null;
                     try
                     {
                         var raw = IncomingData.OfType<byte>().ToArray();
@@ -345,7 +358,8 @@ namespace GalaxyBudsClient.Platform
                             hook?.OnRawDataAvailable(ref raw);
                         }
 
-                        var msg = SPPMessage.DecodeMessage(raw);
+                        msg = SPPMessage.DecodeMessage(raw);
+                        msgSize = msg.TotalPacketSize;
 
                         Log.Verbose($">> Incoming: {msg}");
 
@@ -355,26 +369,49 @@ namespace GalaxyBudsClient.Platform
                         }
 
                         MessageReceived?.Invoke(this, msg);
-
-                        if (msg.TotalPacketSize >= IncomingData.Count)
-                        {
-                            IncomingData.Clear();
-                            break;
-                        }
-
-                        IncomingData.RemoveRange(0, msg.TotalPacketSize);
-
-                        if (ByteArrayUtils.IsBufferZeroedOut(IncomingData))
-                        {
-                            /* No more data remaining */
-                            break;
-                        }
                     }
                     catch (InvalidPacketException e)
                     {
-                        InvalidDataReceived?.Invoke(this, e);
+                        // Attempt to remove broken message, otherwise skip data block
+                        var somIndex = 0;
+                        for (var i = 1; i < IncomingData.Count; i++)
+                        {
+                            if ((ActiveModel == Models.Buds &&
+                                 (byte)(IncomingData[i] ?? 0) == (byte)SPPMessage.Constants.SOM) ||
+                                (ActiveModel != Models.Buds &&
+                                 (byte)(IncomingData[i] ?? 0) == (byte)SPPMessage.Constants.SOMPlus))
+                            {
+                                somIndex = i;
+                                break;
+                            }
+                        }
+
+                        msgSize = somIndex;
+                    
+                        if (failCount > 5)
+                        {
+                            // Abandon data block
+                            InvalidDataReceived?.Invoke(this, e);
+                            break;
+                        }
+                    
+                        failCount++;
+                    }
+
+                    if (msgSize >= IncomingData.Count)
+                    {
+                        IncomingData.Clear();
                         break;
                     }
+
+                    IncomingData.RemoveRange(0, msgSize);
+
+                    if (ByteArrayUtils.IsBufferZeroedOut(IncomingData))
+                    {
+                        /* No more data remaining */
+                        break;
+                    }
+
                 } while (IncomingData.Count > 0);
             }
         }

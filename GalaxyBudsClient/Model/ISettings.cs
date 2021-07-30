@@ -29,6 +29,8 @@ namespace GalaxyBudsClient.Model
         
         [Option(DefaultValue = PopupPlacement.BottomRight)]
         PopupPlacement Placement  { set; get; }
+        
+        bool ShowWearableState { set; get; }
     }
     
     public interface IExperiments
@@ -69,5 +71,9 @@ namespace GalaxyBudsClient.Model
         
         [Option(DefaultValue = true)]
         bool UseBluetoothWinRT { set; get; }
+        
+        bool FirmwareWarningAccepted { set; get; }
+        
+        EventDispatcher.Event BixbyRemapEvent { set; get; }
     }
 }

@@ -147,6 +147,11 @@ namespace GalaxyBudsClient.Message
 
                 //Subtract Id and CRC from size
                 var rawPayloadSize = size - 3;
+                if (rawPayloadSize < 0)
+                {
+                    rawPayloadSize = 0;
+                    size = 3;
+                }
                 byte[] payload = new byte[rawPayloadSize];
 
                 byte[] crcData = new byte[size];
@@ -180,7 +185,7 @@ namespace GalaxyBudsClient.Message
                     SentrySdk.AddBreadcrumb($"CRC checksum failed (ID: {draft.Id}, Size: {draft.Size})", "spp",
                         level: BreadcrumbLevel.Warning);
                     Log.Error($"CRC checksum failed (ID: {draft.Id}, Size: {draft.Size})");
-                    //throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Checksum,Loc.Resolve("sppmsg_crc_fail"));
+                    //throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Checksum,Loc.Resolve("sppmsg_crc_fail"), draft);
                 }
 
                 if (raw[draft.TotalPacketSize - 1] != (byte) Constants.EOM &&
@@ -189,7 +194,7 @@ namespace GalaxyBudsClient.Message
                     SentrySdk.AddBreadcrumb($"Invalid EOM (Received: {raw[4 + rawPayloadSize + 2]})", "spp",
                         level: BreadcrumbLevel.Warning);
                     Log.Error($"Invalid EOM (Received: {raw[4 + rawPayloadSize + 2]}");
-                    throw new InvalidPacketException(InvalidPacketException.ErrorCodes.SOM,Loc.Resolve("sppmsg_invalid_eom"));
+                    throw new InvalidPacketException(InvalidPacketException.ErrorCodes.EOM,Loc.Resolve("sppmsg_invalid_eom"), draft);
                 }
 
                 if (raw[draft.TotalPacketSize - 1] != (byte) Constants.EOMPlus &&
@@ -198,7 +203,7 @@ namespace GalaxyBudsClient.Message
                     SentrySdk.AddBreadcrumb($"Invalid EOM (Received: {raw[4 + rawPayloadSize + 2]})", "spp",
                         level: BreadcrumbLevel.Warning);
                     Log.Error($"Invalid EOM (Received: {raw[4 + rawPayloadSize + 2]}");
-                    throw new InvalidPacketException(InvalidPacketException.ErrorCodes.EOM,Loc.Resolve("sppmsg_invalid_eom"));
+                    throw new InvalidPacketException(InvalidPacketException.ErrorCodes.EOM,Loc.Resolve("sppmsg_invalid_eom"), draft);
                 }
 
                 return draft;

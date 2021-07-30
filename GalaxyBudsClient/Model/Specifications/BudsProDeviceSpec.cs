@@ -12,12 +12,16 @@ namespace GalaxyBudsClient.Model.Specifications
             new Dictionary<IDeviceSpec.Feature, FeatureRule?>()
             {
                 { IDeviceSpec.Feature.SeamlessConnection, null },
-                { IDeviceSpec.Feature.StereoPan, new FeatureRule(5, "R190XXU0AUA") },
+                { IDeviceSpec.Feature.StereoPan, new FeatureRule(5, "R190XXU0AUA5") },
+                { IDeviceSpec.Feature.DoubleTapVolume, new FeatureRule(7, "R190XXU0AUD1" /* TODO */) },
+                { IDeviceSpec.Feature.FirmwareUpdates, null },
                 { IDeviceSpec.Feature.DetectConversations, null },
                 { IDeviceSpec.Feature.NoiseControl, null },
                 { IDeviceSpec.Feature.GamingMode, null },
                 { IDeviceSpec.Feature.CaseBattery, null },
                 { IDeviceSpec.Feature.FragmentedMessages, null },
+                { IDeviceSpec.Feature.SpatialSensor, null },
+                { IDeviceSpec.Feature.BixbyWakeup, null },
             };
         
         public Models Device => Models.BudsPro;

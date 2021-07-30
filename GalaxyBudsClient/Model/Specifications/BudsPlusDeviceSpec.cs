@@ -12,9 +12,10 @@ namespace GalaxyBudsClient.Model.Specifications
             new Dictionary<IDeviceSpec.Feature, FeatureRule?>()
             {
                 { IDeviceSpec.Feature.AmbientSound, null },
-                { IDeviceSpec.Feature.AmbientSidetone, new FeatureRule(8, "R175XXU0ATF2")  },
-                { IDeviceSpec.Feature.AmbientExtraLoud, new FeatureRule(9, "R175XXU0ATF2")  },
+                { IDeviceSpec.Feature.AmbientSidetone, new FeatureRule(8, "R175XXU0ASLE")  },
+                { IDeviceSpec.Feature.AmbientExtraLoud, new FeatureRule(9, "R175XXU0ATB3")  },
                 { IDeviceSpec.Feature.SeamlessConnection, new FeatureRule(11, "R175XXU0ATF2")  },
+                { IDeviceSpec.Feature.FirmwareUpdates, new FeatureRule(8, "R175XXU0ASLE") },
                 { IDeviceSpec.Feature.GamingMode, null },
                 { IDeviceSpec.Feature.DoubleTapVolume, null },
                 { IDeviceSpec.Feature.CaseBattery, null },

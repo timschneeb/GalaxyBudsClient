@@ -198,7 +198,7 @@
     <sys:String x:Key="devsel_device_name">Název zařízení</sys:String>
     <sys:String x:Key="devsel_btaddr">Adresa MAC</sys:String>
     <sys:String x:Key="devsel_model">Model</sys:String>
-    <sys:String x:Key="devsel_nodevices">Prosím, nejprve připojte a spárujte Vaše sluchátka.</sys:String>
+    <sys:String x:Key="devsel_nodevices">Prosím, nejprve připojte a spárujte vaše sluchátka.</sys:String>
     <sys:String x:Key="devsel_nodevices_title">Nenalezeno žádné spárované zařízení</sys:String>
     <sys:String x:Key="devsel_noselection">Nebylo vybráno žádné zařízení</sys:String>
     <sys:String x:Key="devsel_invalid_selection">Prosím vyberte správné zařízení</sys:String>
@@ -227,9 +227,14 @@
 
     <sys:String x:Key="touchpad_double_tap_volume">Dvojité klepnutí na hranu sluchátka</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Dvakrát klepnout na hranu levého nebo pravého sluchátka pro zeslabení nebo zesílení hlasitosti.</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode">Režim přepínání regulace šumu</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC &lt;-&gt; Ambientní režim</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; Vypnuto</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambientní režim &lt;-&gt; Vypnuto</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_threeway">Cyklování mezi režimy (Potlačení okolního hluku, Ambientní režim, Vypnuto)</sys:String>
 
     <!-- Custom touchpad action page -->
-    <sys:String x:Key="cact_header">Definice vlastní akci při podržení</sys:String>
+    <sys:String x:Key="cact_header">Definovat vlastní akci při podržení</sys:String>
     <sys:String x:Key="cact_external_app_dialog_title">Zvolit aplikaci...</sys:String>
     <sys:String x:Key="cact_action">Vlastní akce</sys:String>
     <sys:String x:Key="cact_notice">Poznámka</sys:String>
@@ -249,7 +254,11 @@
     <sys:String x:Key="system_trace_core_dump">Stáhnout výpisy trasování a jádra</sys:String>
     <sys:String x:Key="system_trace_core_dump_desc">Načíst surová ladicí data ze sluchátek</sys:String>
     <sys:String x:Key="system_info">Zobrazit systémové informace</sys:String>
-    <sys:String x:Key="system_info_desc">Zobrazit podrobné informace o Vašich sluchátkách</sys:String>
+    <sys:String x:Key="system_info_desc">Zobrazit podrobné informace o vašich sluchátkách</sys:String>
+    <sys:String x:Key="system_flasher">Instalovat aktualizaci firmwaru</sys:String>
+    <sys:String x:Key="system_flasher_desc">Stáhne novější, starší nebo nahraje vlastní firmware</sys:String>
+    <sys:String x:Key="system_spatial">Vypsat měření prostorových senzorů</sys:String>
+    <sys:String x:Key="system_spatial_desc">Přečtěte si prostorová data o sledování hlavy použitá pro 3D zvuk</sys:String>
 
     <sys:String x:Key="system_battery_type_unknown">Nespecifikováno</sys:String>
     <sys:String x:Key="system_waiting_for_device">Čekání na odpověď...</sys:String>
@@ -323,6 +332,8 @@
     <sys:String x:Key="settings_cpopup_override_title_dialog">Prosím vložte vlastní titulek vyskakovacího okna. Výchozí můžete obnovit tím, že necháte toto pole prázdné.</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen">Pouze primární obrazovka</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen_description">Zobrazit vyskakovací okno pouze na primárním monitoru</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state">Použít jinou barvu, když se nachází v pouzdře</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state_description">Zešediví ikonu sluchátek, kdyz se nachází v pouzdře</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">Obnova továrního nastavení</sys:String>
@@ -334,9 +345,9 @@
     <sys:String x:Key="factory_text_p3">Ujistěte se, že jsou vaše sluchátka zapnuta než budete pokračovat!</sys:String>
 
     <!-- Find my Gear -->
-    <sys:String x:Key="fmg_warning_both">Vyndejte prosím obě svá sluchátka z uší.</sys:String>
-    <sys:String x:Key="fmg_warning_left">Vyndejte prosím levé sluchátko z ucha.</sys:String>
-    <sys:String x:Key="fmg_warning_right">Vyndejte prosím pravé sluchátko z ucha.</sys:String>
+    <sys:String x:Key="fmg_warning_both">Vyjměte prosím obě svá sluchátka z uší.</sys:String>
+    <sys:String x:Key="fmg_warning_left">Vyjměte prosím levé sluchátko z ucha.</sys:String>
+    <sys:String x:Key="fmg_warning_right">Vyjměte prosím pravé sluchátko z ucha.</sys:String>
     <sys:String x:Key="fmg_header">Najít moje sluchátka</sys:String>
 
     <!-- Equalizer -->
@@ -383,7 +394,7 @@
     <sys:String x:Key="adv_seamless_desc">Umožňuje rychle připojit sluchátka k dalšímu zařízení bez nutnosti je odpojovat nebo zapínat režim párování</sys:String>
     <sys:String x:Key="adv_resume_playback">Začít přehrávat když jsou sluchátka v uchu</sys:String>
     <sys:String x:Key="adv_resume_playback_desc">Pošle globální akci pro přehrávání/pozastavení pokud je aspoň jeden senzor přiblížení zakrytý (pouze Windows)</sys:String>
-    <sys:String x:Key="adv_sidetone">Používat ambientní při hovorech</sys:String>
+    <sys:String x:Key="adv_sidetone">Používat ambientní režim při hovorech</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Uslyšíte svůj hlas jasněji při telefonování (zamezí zbytečně halsitému mluvení)</sys:String>
     <sys:String x:Key="adv_passthrough">Zmírňuje tlak při zapnutí ambientního režimu</sys:String>
     <sys:String x:Key="adv_passthrough_desc">Zmírňuje pocit dusnosti, když není používáno aktivní potlačení hluku</sys:String>
@@ -391,6 +402,16 @@
     <sys:String x:Key="adv_gaming_mode_desc">Minimalizuje latenci připojení (pouze Samsung)</sys:String>
     <sys:String x:Key="adv_hotkey">Klávesové zkratky</sys:String>
     <sys:String x:Key="adv_hotkey_desc">Definovat vlastní klávesové zkratky pro dálkové ovládání sluchátek</sys:String>
+    <sys:String x:Key="adv_bixby_remap">Přemapovat probuzení Bixby</sys:String>
+    <sys:String x:Key="adv_bixby_remap_desc">Definujte, co se stane, když řeknete 'Hey Bixby!'</sys:String>
+
+    <!-- Remap bixby wakeup -->
+    <sys:String x:Key="bixby_remap_header">Přemapovat probuzení Bixby</sys:String>
+    <sys:String x:Key="bixby_remap_enable">Povolit probuzení Bixby</sys:String>
+    <sys:String x:Key="bixby_remap_enable_desc">Spustí Bixby na vašem telefonu Samsung nebo spustí vlastní akci na tomto počítači při probuzení.</sys:String>
+    <sys:String x:Key="bixby_remap_lang">Jazky vzbuzení Bixby</sys:String>
+    <sys:String x:Key="bixby_remap_action">Vlastní akce probuzení</sys:String>
+    <sys:String x:Key="bixby_remap_note">Řekněte 'Hey Bixby!' pro aktivaci. Aktivovací fráze v se může lišit v jiných jazykových nastavení.&#10;&#10;Konfigurace přemapování je aktivní pouze na tomto zařízení. Pokud připojíte sluchátka k zařízení Samsung, hlasové probuzení normálně aktivuje Bixby. Na jiných zařízeních, než je toto, a na telefonech jiných výrobců, tato funkce nespustí žádnou akci.</sys:String>
 
     <!-- Credits -->
     <sys:String x:Key="credits_header">Autoři</sys:String>
@@ -404,12 +425,76 @@
     <!-- Connection lost page -->
     <sys:String x:Key="connlost_header">Není možné navázat připojení</sys:String>
     <sys:String x:Key="connlost_description_p1">Není možné navázat připojení s vašimi sluchátky.</sys:String>
-    <sys:String x:Key="connlost_description_p2">Prosím zkontrolujte vaše nastavení Bluetooth a ujistěte se, že jsou sluchátka zapnuta a připojena k tomuto počítači.&#10;Pokud potřebujete, můžete také spárovat nová sluchátka. V tom případě zvolte "Možnosti > Odstranit zařízení"</sys:String>
+    <sys:String x:Key="connlost_description_p2">Prosím zkontrolujte vaše nastavení Bluetooth a ujistěte se, že jsou sluchátka zapnuta a připojena k tomuto počítači.&#10;Pokud potřebujete, můžete také spárovat nová sluchátka. V tom případě zvolte 'Možnosti > Odstranit zařízení'</sys:String>
     <sys:String x:Key="connlost_description_p3">Dodatečné informace:</sys:String>
     <sys:String x:Key="connlost_noinfo">Nepodařilo se nashromáždit chybové hlášení.</sys:String>
     <sys:String x:Key="connlost_disconnected">Zařízení je odpojené</sys:String>
     <sys:String x:Key="connlost_connect">Připojit</sys:String>
     <sys:String x:Key="connlost_connecting">Připojování...</sys:String>
+
+    <!-- Firmware update disclaimer -->
+    <sys:String x:Key="fw_disclaimer">Zřeknutí se odpovědnosti </sys:String>
+    <sys:String x:Key="fw_disclaimer_desc">Tento nástroj pro aktualizaci firmwaru je přesnou replikou oficiálního aktualizátoru nalezeného v oficiální aplikaci pro Android od společnosti Samsung. Tuto implementaci jsem důkladně otestoval za různých okolností (normální provoz, ztráta připojení, záměrně poškozené pakety Bluetooth, ...), aniž by došlo k jakýmkoliv problémům. Přesto nebudu nést žádnou odpovědnost, pokud se něco pokazí, protože aktualizace firmwaru mění důležité součásti systému a mělo by se s nimi zacházet vždy opatrně.&#10;&#10;DOWNGRADE: Při přechodu na starší verze firmwaru jsem nenarazil na problémy, přesto mohou nastat a mohou způsobit neočekávané problémy. Mělo by to být provedeno pouze v případě potřeby. Obnovení továrního nastavení po downgradu je doporučené, ale obvykle není nutné.&#10;VLASTNÍ NAHRÁVÁNÍ: Je vám také umožněno načíst soubory firmwaru z vašeho pevného disku. NENAHRÁVEJTE do svého zařízení firmware určenéný pro JINÉ modely.&#10;&#10;Tato aplikace podléhá licenci GPLv3. Jeho používáním přijímáte licenci a její omezení odpovědnosti. Potvrďte stisknutím tlačítka 'Pokračovat'.</sys:String>
+    
+    <!-- Firmware selection -->
+    <sys:String x:Key="fw_select_header">Aktualizace firmwaru</sys:String>
+    <sys:String x:Key="fw_select_instructions">Prosím, vyberte firmware ke stažení a instalaci. Případně můžete zvolit soubory z vašeho zařízení pomocí zvolení 'Pokročilé... > Zvolit obraz z disku...'</sys:String>
+    <sys:String x:Key="fw_select_no_results">Nejsou dostupné žádné aktualizace firmwaru. Prosím, zkuste to později.</sys:String>
+    <sys:String x:Key="fw_select_downgrade">Povolit downgrade firmwaru</sys:String>
+    <sys:String x:Key="fw_select_downgrade_desc">Vypnout kontrolu starších verzí a zobrazit starší verze firmwaru (může způsobit nečekané chyby, pouze pro pokročilé uživatele)</sys:String>
+    <sys:String x:Key="fw_select_advanced">Pokročilé...</sys:String>
+    <sys:String x:Key="fw_select_install">Stáhnout firmware</sys:String>
+    <sys:String x:Key="fw_select_from_disk">Zvolit obraz z disku...</sys:String>
+    <sys:String x:Key="fw_select_external_note">NENAHRÁVEJTE do svého zařízení firmware určené pro JINÉ modely. Nahrávání firmwaru pro Buds Pro na vaše Buds Plus neodemkne žádné nové funkce, naopak to permanentně zničí vaše zařízení.&#10;&#10;Stishněte 'Pokračovat' ke zvolení firmwaru.</sys:String>
+    <sys:String x:Key="fw_select_unsupported_selection">Neplatný výběr. Prosím, vyberte kompatibilní položku ze seznamu.</sys:String>
+    <sys:String x:Key="fw_select_downloading">Stahování...</sys:String>
+    <sys:String x:Key="fw_select_net_error">Komunikace se serverem se nezdařila. V tuto chvíli nelze stáhnout firmware.</sys:String>
+    <sys:String x:Key="fw_select_net_index_error">Komunikace se serverem se nezdařila. V tuto chvíli nelze stáhnout index firmwaru.</sys:String>
+    <sys:String x:Key="fw_select_http_error">Kód HTTP chyby:</sys:String>
+    <sys:String x:Key="fw_select_unknown_build">Neznámý název sestavení</sys:String>
+    <sys:String x:Key="fw_select_verify_fail">Selhalo ověření firmwaru</sys:String>
+    <sys:String x:Key="fw_select_confirm">Chystáte se nahrát '{0}' na vaše zařízení '{1}'</sys:String>
+    <sys:String x:Key="fw_select_confirm_desc">Ujistěte se, že tyto informace jsou správné, jinak stiskněte 'Zrušit' a dvakrát zkontrolujte své nastavení.&#10;&#10;Pokud možno, ujistěte se, že jsou obě sluchátka připojena před spuštěním. Nezpůsobí to žádné problémy, pokud selže spojení při přenosu aktualizace. V takovém případě sluchátka automaticky zruší proces přenosu a opustí mód aktualizace firmwaru.&#10;&#10;Stiskněte 'Pokračovat' pro spuštění aktualizace.</sys:String>
+  
+    <!-- Firmware transfer -->
+    <sys:String x:Key="fw_upload_header">Instalace firmwaru...</sys:String>
+    <sys:String x:Key="fw_upload_progress_session">Vytváření nové relace...</sys:String>
+    <sys:String x:Key="fw_upload_progress_prepare">Příprava nahrávání...</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished">Nahrávání dokončeno</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished_desc">Aktualizace byla úspěšně přenesena a je instalována na zažízení. Během tohoto procesu nebudou vaše sluchátka reagovat po dobu asi 30 vteřin. Ve většině případů se sluchátka automticky pokůsí k připojení po dokončení aktualizace.</sys:String>
+    <sys:String x:Key="fw_upload_progress_error">Nahrání firmwaru selhalo</sys:String>
+    <sys:String x:Key="fw_upload_progress">Nahrávání aktualizace firmwaru... {0}%</sys:String>
+    <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats">Statistiky</sys:String>
+    <sys:String x:Key="fw_upload_note">Vaše sluchátka se odpojí a jakmile přenos skončí začnou instalovat nahraný firmware. Během tohoto procesu vaše sluchátka nebudou reagovat a odmítnou jakékoli požadavky na připojení Bluetooth. Ve většině případů se sluchátka po dokončení aktualizace automaticky pokusí znovu připojit.</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_mtu">Maximální přenosová jednotka: {0} bytů</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_offset">Zpracování dat z offsetu 0x{0:X6} do 0x{1:X6}</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_segment">Nahrávání segmentu #{0} ({1} bytů, kontrolní součet 0x{2:X6})</sys:String>
+
+    <!-- Firmware parse errors -->
+    <sys:String x:Key="fw_fail_no_magic">Toto není platná verze firmwaru. V záhlaví souboru byla nalezena neplatná magická hodnota.</sys:String>
+    <sys:String x:Key="fw_fail_size_null">Velikost tohoto firmwaru je nastavena na nulu a nelze jej použít k nahrání. Vyberte prosím jinou.</sys:String>
+    <sys:String x:Key="fw_fail_no_segments">Tato verze firmwaru neobsahuje žádné binární segmenty a je prázdná. Vyberte prosím jinou.</sys:String>
+    <sys:String x:Key="fw_fail_unknown">Neočekávaná chyba při dekódování firmwaru. Tento archiv firmwaru může být poškozen.&#10;&#10;Detaily:</sys:String>
+    
+    <!-- Firmware transfer errors -->
+    <sys:String x:Key="fw_fail_connection">Ztráta připojení k zařízení. Přenos firmwaru byl zrušen.</sys:String>
+    <sys:String x:Key="fw_fail_session">Nepodařilo se otevřít novou relaci. Zařízení vrátilo chybový kód ({0})</sys:String>
+    <sys:String x:Key="fw_fail_copy">Kopírování firmwaru se nezdařilo. Připojte se a zkuste to znovu. Chybový kód vrácený zařízením: {0}</sys:String>
+    <sys:String x:Key="fw_fail_verify">Ověření/instalace firmwaru se nezdařila. Připojte se a zkuste to znovu. Chybový kód vrácený zařízením: {0}</sys:String>
+    <sys:String x:Key="fw_fail_connection_precheck">Zařízení není aktuálně připojeno. Zkontrolujte nastavení systému Bluetooth a znovu se připojte.</sys:String>
+    <sys:String x:Key="fw_fail_pending">Další přenos firmwaru již probíhá. Nejprve to prosím řádně zrušte.</sys:String>
+    <sys:String x:Key="fw_fail_lowbattery">Baterie je příliš slabá. Nejprve prosím nabijte sluchátka nad 15%.</sys:String>
+    <sys:String x:Key="fw_fail_session_timeout">Vypršel časový limit při čekání, až zařízení zahájí novou relaci</sys:String>
+    <sys:String x:Key="fw_fail_control_timeout">Vypršel časový limit při čekání, až zařízení vrátí řídicí blok</sys:String>
+    <sys:String x:Key="fw_fail_copy_timeout">Při čekání na dokončení procesu přenosu vypršel časový limit</sys:String>
+
+    <!-- Spatial test -->
+    <sys:String x:Key="spatial_header">Test prostorového senzoru</sys:String>
+    <!-- Note: Quaternion = 4-dimensional vector -->
+    <sys:String x:Key="spatial_dump_quaternion">Surový vektor čtveřice:</sys:String>
+    <!-- Note: RPY = Roll, pitch, yaw -->
+    <sys:String x:Key="spatial_dump_rpy">Hodnoty RPY:</sys:String>
 
     <!-- Header -->
     <sys:String x:Key="window_minimize">Minimalizovat</sys:String>

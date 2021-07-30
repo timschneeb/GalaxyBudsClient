@@ -1,27 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Logging;
-using Avalonia.Threading;
-using Config.Net;
-using CSScriptLib;
-using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
-using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;
 using Sentry;
 using Serilog;
-using Serilog.Filters;
-using ThePBone.Interop.Win32;
 
 namespace GalaxyBudsClient
 {
@@ -40,7 +28,7 @@ namespace GalaxyBudsClient
                 })
                 .WriteTo.File(PlatformUtils.CombineDataPath("application.log"))
                 .WriteTo.Console();
-            
+
             config = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("VERBOSE")) ? 
                 config.MinimumLevel.Verbose() : config.MinimumLevel.Debug();
             
@@ -74,9 +62,16 @@ namespace GalaxyBudsClient
                         sentryEvent.SetExtra("bluetooth-model-saved", SettingsProvider.Instance.RegisteredDevice.Model);
                         sentryEvent.SetExtra("custom-locale", SettingsProvider.Instance.Locale);          
                         sentryEvent.SetExtra("sw-version",
-                            DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");                 
-                                          
-                        sentryEvent.SetExtra("current-page", MainWindow.Instance.Pager.CurrentPage);
+                            DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");
+
+                        if (MainWindow.IsReady())
+                        {
+                            sentryEvent.SetExtra("current-page", MainWindow.Instance.Pager.CurrentPage);
+                        }
+                        else
+                        {
+                            sentryEvent.SetExtra("current-page", "instance_not_initialized");
+                        }
                         
                         sentryEvent.SetTag("bluetooth-model", BluetoothImpl.Instance.ActiveModel.ToString());
                         sentryEvent.SetExtra("bluetooth-model", BluetoothImpl.Instance.ActiveModel);
@@ -110,7 +105,17 @@ namespace GalaxyBudsClient
 
             try
             {
-                await SingleInstanceWatcher.Setup();
+                // OSX: Graphics must be drawn on the main thread.
+                // Awaiting this call would implicitly cause the next code to run as a async continuation task
+                if (PlatformUtils.IsOSX)
+                {
+                    SingleInstanceWatcher.Setup().Wait();
+                }
+                else
+                {
+                    await SingleInstanceWatcher.Setup();
+                }
+
                 BuildAvaloniaApp().StartWithClassicDesktopLifetime(args, ShutdownMode.OnExplicitShutdown);
             }
             catch (Exception ex)
@@ -125,7 +130,6 @@ namespace GalaxyBudsClient
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
                 .LogToTrace();
-
 
     }
 }

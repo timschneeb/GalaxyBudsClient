@@ -53,6 +53,42 @@
 
 ; MUI end ------
 
+!include WinMessages.nsh
+
+!define WND_TITLE "Galaxy Buds Manager"
+!define TO_MS 2000
+!define SYNC_TERM 0x00100001
+
+LangString termMsg ${LANG_ENGLISH} "Installer cannot stop running ${WND_TITLE}.$\nDo you want to terminate the process?"
+LangString stopMsg ${LANG_ENGLISH} "Stopping ${WND_TITLE} process"
+ 
+!macro TerminateApp
+ 
+    Push $0 ; window handle
+    Push $1
+    Push $2 ; process handle
+    DetailPrint "$(stopMsg)"
+    FindWindow $0 '' '${WND_TITLE}'
+    IntCmp $0 0 done
+    System::Call 'user32.dll::GetWindowThreadProcessId(i r0, *i .r1) i .r2'
+    System::Call 'kernel32.dll::OpenProcess(i ${SYNC_TERM}, i 0, i r1) i .r2'
+    SendMessage $0 ${WM_CLOSE} 0 0 /TIMEOUT=${TO_MS}
+    System::Call 'kernel32.dll::WaitForSingleObject(i r2, i ${TO_MS}) i .r1'
+    IntCmp $1 0 close
+    MessageBox MB_YESNOCANCEL|MB_ICONEXCLAMATION "$(termMsg)" /SD IDYES IDYES terminate IDNO close
+    System::Call 'kernel32.dll::CloseHandle(i r2) i .r1'
+    Quit
+  terminate:
+    System::Call 'kernel32.dll::TerminateProcess(i r2, i 0) i .r1'
+  close:
+    System::Call 'kernel32.dll::CloseHandle(i r2) i .r1'
+  done:
+    Pop $2
+    Pop $1
+    Pop $0
+ 
+!macroend
+
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
 OutFile "GalaxyBudsClient_Setup_${PRODUCT_ARCH}_${PRODUCT_VERSION}.exe"
 InstallDir "$PROGRAMFILES\Galaxy Buds Manager"
@@ -61,7 +97,7 @@ ShowInstDetails show
 ShowUnInstDetails show
 
 Section "Hauptgruppe" SEC01
-  ExecWait "taskkill /f /t /im $\"Galaxy Buds Client.exe$\""
+  !insertmacro TerminateApp
   
   SetOutPath "$INSTDIR"
   SetOverwrite on
@@ -99,7 +135,7 @@ Function un.onInit
 FunctionEnd
 
 Section Uninstall
-  ExecWait "taskkill /f /t /im $\"Galaxy Buds Client.exe$\""
+  !insertmacro TerminateApp
 
   Delete "$INSTDIR\${PRODUCT_NAME}.url"
   Delete "$INSTDIR\uninst.exe"

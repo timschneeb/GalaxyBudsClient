@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="../README.md">English</a> | <a href="./README_chs.md">中文</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="./README_jpn.md">日本語</a> | <a href="./README_ukr.md">Українська</a> | <a href="./README_kor.md">한국어</a> | Česky<br>
+  <a href="../README.md">English</a> | <a href="./README_chs.md">中文</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="./README_jpn.md">日本語</a> | <a href="./README_ukr.md">Українська</a> | <a href="./README_kor.md">한국어</a> | Česky | <a href="/docs/README_gr.md">Ελληνικά</a> <br>
     <sub>Upozornění: README soubory jsou spravovány překladateli, a proto mohou být zaostalé. Pro nejnovější informace se spoléhejte na anglickou verzi.</sub>
 </p>
 
@@ -13,7 +13,7 @@
     <img alt="GitHub počet stažení" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
   </a>
   <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
-  	<img alt="GitHub vydání (nejnovější)" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
+   <img alt="GitHub vydání (nejnovější)" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
   </a>
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE">
       <img alt="Licence" src="https://img.shields.io/github/license/thepbone/galaxybudsclient">
@@ -28,9 +28,8 @@
   <a href="#jak-to-funguje">Jak to funguje</a> •
   <a href="#spolupráce">Spolupráce</a> •
   <a href="#zásluhy">Zásluhy</a> •
-  <a href="#licence">Licence</a> 
+  <a href="#licence">Licence</a>
 </p>
-
 
 <p align="center">
     <a href="https://ko-fi.com/H2H83E5J3"><img alt="Screenshot" src="https://ko-fi.com/img/githubbutton_sm.svg"></a>
@@ -39,7 +38,6 @@
 <p align="center">
     <a href="#"><img alt="Screenshot" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/screencap.gif"></a>
 </p>
-
 
 ## Klíčové vlastnosti
 
@@ -51,6 +49,7 @@ Kromě standardních funkcí známých z oficiální Androidí aplikace, Vám te
 * Diagnostika a tovární auto-testy
 * Spousta skrytých informací o ladění
 * Přizpůsobitelné akce dlouhého dotyku
+* Stahování nových a starých verzí firmwaru (Buds+, Buds Pro)
 * a spousty dalších...
 
 ## Stažení
@@ -60,6 +59,9 @@ Získejte binární soubory pro Windows a Linux v sekci [vydání](https://githu
 <p align="center">
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
+
+Balíček windows je také dostupný ke stažení pomocí Manažeru Balíčku Windows (winget)
+`winget install ThePBone.GalaxyBudsClient`
 
 ## Jak to funguje
 
@@ -89,6 +91,8 @@ V současné době zkoumám úpravy a reverzní inženýrství firmwaru pro Buds
   <a href="https://github.com/ThePBone/GalaxyBudsFirmwareExtractor">Extraktor Firmwaru</a>
 </p>
 
+Streamujte data v reálném čase ze svých Buds Pro pomocí tohoto skriptu: [ThePBone/BudsPro-Headtracking](https://github.com/ThePBone/BudsPro-Headtracking)
+
 ## Spolupráce
 
 Žádosti o funkce, nahlašování chyb, a požadavky o sjednocení kódů jakéhokoliv typu jsou vždy vítány.
@@ -96,7 +100,7 @@ V současné době zkoumám úpravy a reverzní inženýrství firmwaru pro Buds
 Pokud chcete nahlásit chybu nebo navrhnout Vaše nápady na tento projekt, jste vítáni k [otevření nového problému](https://github.com/ThePBone/GalaxyBudsClient/issues/new/choose) s vhodnou šablonou. [Navštivte naši wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/2.-How-to-submit-issues) pro detailní vysvětlení.
 
 Pokud nám plánujete pomoci s překladem aplikace, [viz pokyny na naší wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations). Nejsou vyžadovány žádné znalosti programování, můžete vyzkoušet vaše překlady bez instalace jakýchkoliv vývojářských nástrojů před podání žádosti o sjednocení kódu.
-Automaticky generovaný postup překladů pro jednotlivé jazyky naleznete zde: [/meta/translations.md](https://github.com/ThePBone/GalaxyBudsClient/blob/master/meta/translations.md)
+Automaticky generovaný postup překladů pro jednotlivé jazyky naleznete [zde](https://github.com/ThePBone/GalaxyBudsClient/blob/master/meta/translations.md).
 
 Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý požadavek na sjednocení kódů s vysvětlením Vašich změn. U větších a komplexnějších příspěvků by bylo hezké, kdybyste před zahájením práce mohli otevřít nějaký problém (nebo mi poslat zprávu na Telegram [@tpheone](https://t.me/thepbone)).
 
@@ -107,6 +111,7 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Vydání šablon, wiki a překlady
 * [@AndriesK](https://github.com/AndriesK) - Oprava chyby u Buds Live
 * [@githubcatw](https://github.com/githubcatw) - Základní dialogové okno připojení
+* [@GaryGadget9](https://github.com/GaryGadget9) - Balíček WinGet
 
 #### Překladatelé
 
@@ -121,8 +126,10 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 * [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - italský překlad
 * [@Buashei](https://github.com/Buashei) - polský překlad
 * [@KatJillianne](https://github.com/KatJillianne) - vietnamský překlad
-* [@joskaja](https://github.com/joskaja) a [@Joedmin580](https://github.com/Joedmin580) - český překlad
+* [@joskaja](https://github.com/joskaja) a [@Joedmin](https://github.com/Joedmin) - český překlad
 * [@TheLastFrame](https://github.com/TheLastFrame) a [@ThePBone](https://github.com/ThePBone) - německý překlad
+* [@nikossyr](https://github.com/nikossyr) - řecký překlad
+* [@grigorem](https://github.com/grigorem) - romský překlad
 
 ## Licence
 
@@ -135,4 +142,3 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
-

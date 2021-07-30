@@ -20,13 +20,16 @@ namespace GalaxyBudsClient.Model.Specifications
             AmbientPassthrough,
             AmbientSound,
             Anc,
+            BixbyWakeup,
             NoiseControl,
             DetectConversations,
             GamingMode,
             DoubleTapVolume,
             CaseBattery,
             FragmentedMessages,
-            StereoPan
+            StereoPan,
+            FirmwareUpdates,
+            SpatialSensor
         }
         
         public Dictionary<Feature, FeatureRule?> Rules { get; }

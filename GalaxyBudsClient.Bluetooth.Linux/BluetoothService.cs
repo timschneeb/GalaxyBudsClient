@@ -419,7 +419,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 {
                     var incomingCount = _profile.Stream?.AvailableBytes;
 
-                    await Task.Delay(75);
+                    await Task.Delay(200);
 
                     if (incomingCount == null)
                     {

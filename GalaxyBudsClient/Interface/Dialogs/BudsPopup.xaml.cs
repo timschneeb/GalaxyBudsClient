@@ -97,15 +97,26 @@ namespace GalaxyBudsClient.Interface.Dialogs
             _batteryC.IsVisible = isCaseOnline;
             _caseLabel.IsVisible = isCaseOnline;
 
-            string type = "Bud";
-            if(BluetoothImpl.Instance.ActiveModel == Models.BudsLive)
+            string type = BluetoothImpl.Instance.ActiveModel switch
             {
-                type = "Bean";
-            } else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPro)
-            {
-                type = "Pro";
-            }
+                Models.BudsLive => "Bean",
+                Models.BudsPro => "Pro",
+                _ => "Bud"
+            };
 
+            // Override color behaviour
+            if (SettingsProvider.Instance.Popup.ShowWearableState)
+            {
+                if (isLeftOnline && DeviceMessageCache.Instance.BasicStatusUpdate?.PlacementL == PlacementStates.Case)
+                {
+                    isLeftOnline = false;
+                }
+                if (isRightOnline && DeviceMessageCache.Instance.BasicStatusUpdate?.PlacementR == PlacementStates.Case)
+                {
+                    isRightOnline = false;
+                }
+            }
+         
             if (isLeftOnline)
             {
                 _iconLeft.Source = (IImage?)Application.Current.FindResource($"Left{type}Connected");

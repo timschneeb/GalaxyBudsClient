@@ -3,8 +3,8 @@
         <OutputType>WinExe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <ApplicationIcon>Resources/icon_white.ico</ApplicationIcon>
-        <AssemblyVersion>4.1.1.1</AssemblyVersion>
-        <Version>4.1.1.1</Version>
+        <AssemblyVersion>4.2.0.0</AssemblyVersion>
+        <Version>4.2.0.0</Version>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <Configurations>Debug;Release;Debug (Local server);Release - Windows ARM</Configurations>
@@ -64,6 +64,7 @@
         <PackageReference Include="Avalonia.Desktop" Version="0.10.0" />
         <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0" />
         <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.0" />
+        <PackageReference Include="Avalonia.Svg.Skia" Version="0.10.0" />
         <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.0" />
         <PackageReference Include="Config.Net" Version="4.15.0" />
         <PackageReference Include="Config.Net.Json" Version="4.15.0" />

@@ -123,7 +123,13 @@ namespace GalaxyBudsClient.Interface.Pages
 
             MainWindow.Instance.Pager.SwitchPage(Pages.Home);
 
-            Task.Factory.StartNew(() => BluetoothImpl.Instance.ConnectAsync());
+            Task.Factory.StartNew(async () =>
+            {
+                if (await BluetoothImpl.Instance.ConnectAsync())
+                {
+                    MainWindow.Instance.Pager.SwitchPage(Pages.Home);
+                }
+            });
         }
 
         private async void RefreshList(bool user = false)

@@ -8,6 +8,7 @@ using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using Serilog;
@@ -104,6 +105,9 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		public override async void OnPageShown()
 		{
+			this.FindControl<Control>("TraceCoreDump").IsVisible =
+				BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.FragmentedMessages);
+			
 			_pageHeader.LoadingSpinnerVisible = true;
 			_hwVer.Description = Waiting;
 			_swVer.Description = Waiting;
@@ -123,6 +127,11 @@ namespace GalaxyBudsClient.Interface.Pages
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
 			MainWindow.Instance.Pager.SwitchPage(Pages.System);
+		}
+
+		private void TraceCoreDump_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+		{
+			MainWindow.Instance.Pager.SwitchPage(Pages.SystemCoredump);
 		}
 	}
 }

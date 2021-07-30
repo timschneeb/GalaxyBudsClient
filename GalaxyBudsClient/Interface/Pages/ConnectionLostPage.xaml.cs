@@ -131,8 +131,9 @@ namespace GalaxyBudsClient.Interface.Pages
 					return;
 				}
 				
-			    Task.Factory.StartNew(() => BluetoothImpl.Instance.ConnectAsync());
-            }
+			    Task.Factory.StartNew(async () => await BluetoothImpl.Instance.ConnectAsync());
+			    MainWindow.Instance.Pager.SwitchPage(Pages.Home);
+			}
 		}
 	}
 }

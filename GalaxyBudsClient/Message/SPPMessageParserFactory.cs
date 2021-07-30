@@ -1,4 +1,5 @@
 ﻿using System;
+using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;
@@ -6,7 +7,7 @@ using Sentry;
 
 namespace GalaxyBudsClient.Message
 {
-    public class SPPMessageParserFactory
+    public static class SPPMessageParserFactory
     {
 
         private static readonly Type[] RegisteredParsers =
@@ -18,7 +19,9 @@ namespace GalaxyBudsClient.Message
             typeof(AmbientWearingUpdateParser), typeof(MuteUpdateParser), typeof(SetOtherOptionParser), typeof(BondedDevicesParser),
             typeof(DebugSkuParser), typeof(SetInBandRingtoneParser), typeof(NoiseReductionModeUpdateParser),
             typeof(LogTraceStartParser), typeof(LogTraceDataParser), typeof(LogCoredumpDataParser), typeof(LogCoredumpDataSizeParser),
-            typeof(NoiseControlUpdateParser)
+            typeof(NoiseControlUpdateParser), typeof(FotaSessionParser), typeof(FotaControlParser), typeof(FotaDownloadDataParser), 
+            typeof(FotaUpdateParser), typeof(FotaResultParser), typeof(SpatialAudioDataParser), typeof(SpatialAudioControlParser),
+            typeof(VoiceWakeupEventParser)
         };
 
         public static BaseMessageParser? BuildParser(SPPMessage msg)

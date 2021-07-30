@@ -45,13 +45,14 @@ namespace GalaxyBudsClient.Interface.Pages
 		public override void OnPageShown()
 		{
 			this.FindControl<Border>("Hotkeys").IsVisible = PlatformUtils.SupportsHotkeys;
+			this.FindControl<Border>("BixbyRemap").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.BixbyWakeup);
+			this.FindControl<Separator>("BixbyRemapS").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.BixbyWakeup);
 			this.FindControl<Separator>("SidetoneS").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSidetone);
 			this.FindControl<Separator>("PassthroughS").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientPassthrough);
 			_sidetone.Parent.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSidetone);
 			_passthrough.Parent.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientPassthrough);
 		}
 		
-
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
 			MainWindow.Instance.Pager.SwitchPage(Pages.Home);
@@ -96,6 +97,11 @@ namespace GalaxyBudsClient.Interface.Pages
 		private void Hotkeys_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
 			MainWindow.Instance.Pager.SwitchPage(Pages.Hotkeys);
+		}
+
+		private void BixbyRemap_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+		{
+			MainWindow.Instance.Pager.SwitchPage(Pages.BixbyRemap);
 		}
 	}
 }

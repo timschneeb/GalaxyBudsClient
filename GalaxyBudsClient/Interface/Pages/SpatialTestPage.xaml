@@ -1,0 +1,53 @@
+﻿<pages:AbstractPage xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.Pages"
+                    xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
+                    xmlns:skia="clr-namespace:Avalonia.Svg.Skia;assembly=Avalonia.Svg.Skia"
+                    mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+                    x:Class="GalaxyBudsClient.Interface.Pages.SpatialTestPage"
+                    DockPanel.Dock="Top" Margin="10,0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <elements:PageHeader Grid.Row="1" x:Name="PageHeader" Title="{DynamicResource spatial_header}"
+                             BackPressed="BackButton_OnPointerPressed" />
+
+        <Border Grid.Row="3" Classes="RoundedBorderListItem">
+            <Grid Margin="0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid>
+                    <Image x:Name="Arrow"
+                           Margin="30,0"
+                           Height="90" Width="90"
+                           HorizontalAlignment="Center"
+                           RenderTransformOrigin="45,45">
+                        <Image.Source>
+                            <skia:SvgImage Source="/Resources/spatial_arrow.svg" />
+                        </Image.Source>
+                        <Image.RenderTransform>
+                            <RotateTransform Angle="0" />
+                        </Image.RenderTransform>
+                    </Image>
+
+                </Grid>
+                
+                <TextBlock Grid.Column="1"
+                           x:Name="SpatialDetails"
+                           TextWrapping="Wrap"
+                           Margin="0,0,30,0" />
+            </Grid>
+        </Border>
+    </Grid>
+</pages:AbstractPage>

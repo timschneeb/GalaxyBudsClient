@@ -51,7 +51,7 @@
     <sys:String x:Key="connpopup_placement_bl">좌측 하단</sys:String>
     <sys:String x:Key="connpopup_placement_bc">하단 중앙</sys:String>
     <sys:String x:Key="connpopup_placement_br">우측 하단</sys:String>
-    <sys:String x:Key="connpopup_title">{0}의 Galaxy Buds {1}</sys:String>
+    <sys:String x:Key="connpopup_title">{0}의 Galaxy Buds{1}</sys:String>
     <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
 
     <!-- Placement  (Buds+) -->
@@ -191,7 +191,7 @@
     <!-- Update page -->
     <sys:String x:Key="updater_header">매니저 업데이트 가능</sys:String>
     <sys:String x:Key="updater_message_p1">
-        다운로드는 자동으로 진행되며, 다운로드 완료 후 업데이트 프로그램이 자동으로 실행되요. 최신 버그 수정 및 새로운 기능을 원하신다면 업데이트를 권장해요.
+        다운로드는 자동으로 진행되며, 다운로드 완료 후 업데이트 프로그램이 자동으로 실행돼요. 최신 버그 수정 및 새로운 기능을 원하신다면 업데이트를 권장해요.
     </sys:String>
     <sys:String x:Key="updater_message_p2">
         아래 버튼을 눌러 업데이트 내용을 볼 수 있어요.
@@ -253,6 +253,11 @@
 
     <sys:String x:Key="touchpad_double_tap_volume">버즈 가장자리 두 번 두드리기</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">음량을 낮추려연 왼쪽 버즈의 가장자리를 두 번 두드리고, 음량을 높이려면 오른쪽 버즈의 가장자리를 두 번 두드리세요.</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode">소음 제어 전환 모드</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">액티브 노이즈 캔슬링 &lt;-&gt; 주변 소리 듣기</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">액티브 노이즈 캔슬링 &lt;-&gt; 끄기</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">주변 소리 듣기 &lt;-&gt; 끄기</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_threeway">모드 간 순환 (액티브 노이즈 캔슬링, 주변 소리 듣기, 끄기)</sys:String>
 
     <!-- Custom touchpad action page -->
     <sys:String x:Key="cact_header">사용자 지정 길게 누르기 동작</sys:String>
@@ -271,15 +276,19 @@
     <sys:String x:Key="system_selftest">자가 진단 진행하기</sys:String>
     <sys:String x:Key="system_selftest_desc">나의 버즈의 모든 모듈이 정상적으로 작동하는지 확인할 수 있어요.</sys:String>
     <sys:String x:Key="system_factory_reset">버즈 초기화</sys:String>
-    <sys:String x:Key="system_factory_reset_desc">버즈를 초기 상태로 초기화되고 연결은 해제되요.</sys:String>
+    <sys:String x:Key="system_factory_reset_desc">버즈를 초기 상태로 초기화되고 연결은 해제돼요.</sys:String>
     <sys:String x:Key="system_pairing_mode">페어링 모드 진입하기</sys:String>
-    <sys:String x:Key="system_pairing_mode_desc">이 PC와의 연결을 끊어 다른 기기와 연결할 수 있게 되요.</sys:String>
+    <sys:String x:Key="system_pairing_mode_desc">이 PC와의 연결을 끊어 다른 기기와 연결할 수 있게 돼요.</sys:String>
     <sys:String x:Key="system_trace_core_dump">트레이스와 코어 덤프 다운로드</sys:String>
     <sys:String x:Key="system_trace_core_dump_desc">나의 버즈로 부터 로우 디버깅 데이터 얻기</sys:String>
     <sys:String x:Key="system_info">시스템 정보 보기</sys:String>
     <sys:String x:Key="system_info_desc">나의 버즈에 대한 자세한 정보 살펴보기</sys:String>
     <sys:String x:Key="system_battery_type_unknown">지정되지 않음</sys:String>
     <sys:String x:Key="system_waiting_for_device">응답 대기 중...</sys:String>
+    <sys:String x:Key="system_flasher">펌웨어 업데이트 설치</sys:String>
+    <sys:String x:Key="system_flasher_desc">펌웨어 업그레이드, 다운그레이드, 또는 커스텀 펌웨어 바이너리 설치</sys:String>
+    <sys:String x:Key="system_spatial">360 오디오 센서 측정치 덤프</sys:String>
+    <sys:String x:Key="system_spatial_desc">360 오디오 헤드 트래킹 데이터를 불러와요.</sys:String>
 
     <sys:String x:Key="system_hwver">하드웨어 버전</sys:String>
     <sys:String x:Key="system_swver">소프트웨어 버전</sys:String>
@@ -314,7 +323,7 @@
     <sys:String x:Key="coredump_dl_core_progress">코어 덤프 다운로드... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} 바이트)</sys:String>
     <sys:String x:Key="coredump_dl_note">
-        다운로드하는 동안 오디오 스트림은 일시적으로 중지되요. 나의 버즈는 이 전송이 완료되는 즉시 연결이 끊어질 거에요. 수동으로 다시 연결해 주세요.&#10;완료되면 수집된 모든 데이터에 대한 저장경로를 선택하라는 메시지가 표시될 거에요.&#10;&#10;전송이 중단되었거나 장치 연결이 너무 일찍 끊어지면 다운로드를 다시 시작하셔야 되요. 이 기능은 현재 매우 불안정해요. 
+        다운로드하는 동안 오디오 스트림은 일시적으로 중지돼요. 나의 버즈는 이 전송이 완료되는 즉시 연결이 끊어질 거예요. 수동으로 다시 연결해 주세요.&#10;완료되면 수집된 모든 데이터에 대한 저장경로를 선택하라는 메시지가 표시될 거에요.&#10;&#10;전송이 중단되었거나 장치 연결이 너무 일찍 끊어지면 다운로드를 다시 시작해야 해요. 이 기능은 현재 매우 불안정해요. 
     </sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">덤프 저장 실패</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">덤프를 임시 공간에서부터 복사 실패. 사유: {0}</sys:String>
@@ -335,6 +344,7 @@
     <sys:String x:Key="settings_minimize_tray_description">프로그램을 종료하지 않고 트레이에 최소화합니다.</sys:String>
     <sys:String x:Key="settings_autostart">부팅 시 자동 실행</sys:String>
     <sys:String x:Key="settings_autostart_description">컴퓨터 부팅 시 자동으로 최소화된 상태로 시작합니다.</sys:String>
+    <sys:String x:Key="settings_autostart_permission">레지스트리 내 자동 실행 항목을 수정할 수 없어요. 시스템 관리자에 의해 레지스트리 접근 권한이(HKCU) 해제되었어요.</sys:String>
 
     <sys:String x:Key="settings_connpopup">연결 팝업 설정</sys:String>
     <sys:String x:Key="settings_devmode">개발자 모드 진입</sys:String>
@@ -342,16 +352,18 @@
     <!-- Settings >>> Connection popup -->
     <sys:String x:Key="settings_cpopup_header">연결 팝업</sys:String>
     <sys:String x:Key="settings_cpopup_enable">연결 시 팝업 표시</sys:String>
-    <sys:String x:Key="settings_cpopup_enable_description">버즈가 연결되었을 때 남은 배터리 용량을 보여주는 작은 알림 팝업이 표시되요.</sys:String>
+    <sys:String x:Key="settings_cpopup_enable_description">버즈가 연결되었을 때 남은 배터리 용량을 보여주는 작은 알림 팝업이 표시돼요.</sys:String>
     <sys:String x:Key="settings_cpopup_compact">간단한 모드</sys:String>
     <sys:String x:Key="settings_cpopup_compact_description">표시 공간을 줄이기 위해 팝업에서 버즈의 이름을 표시되지 않아요.</sys:String>
     <sys:String x:Key="settings_cpopup_position">표시 위치</sys:String>
     <sys:String x:Key="settings_cpopup_position_placeholder">알 수 없음</sys:String>
     <sys:String x:Key="settings_cpopup_demo">연결 팝업 보기</sys:String>
     <sys:String x:Key="settings_cpopup_override_title">연결 팝업 레이블 변경</sys:String>
-    <sys:String x:Key="settings_cpopup_override_title_dialog">팝업 레이블을 입력해 주세요. 공백으로 둘 시 기본 레이블이 적용되요.</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title_dialog">팝업 레이블을 입력해 주세요. 공백으로 둘 시 기본 레이블이 적용돼요.</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen">주 화면만</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen_description">팝업을 주 화면에서만 보이기</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state">케이스에 보관된 상태일때 연한 다른 색상 사용</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state_description">버즈가 케이스에 보관된 상태일 경우 연한 회색으로 표시돼요.</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">버즈 초기화</sys:String>
@@ -363,7 +375,7 @@
         버즈를 수동으로 다시 연결해야 할 수도 있어요.
     </sys:String>
     <sys:String x:Key="factory_text_p1">버즈를 초기화하실 건가요?</sys:String>
-    <sys:String x:Key="factory_text_p2">초기화한 후에는, 컴퓨터와 버즈를 다시 연결해야 되요.</sys:String>
+    <sys:String x:Key="factory_text_p2">초기화한 후에는, 컴퓨터와 버즈를 다시 연결해야 돼요.</sys:String>
     <sys:String x:Key="factory_text_p3">양쪽 버즈가 모두 켜져 있는지 확인하세요!</sys:String>
 
     <!-- Find my Gear -->
@@ -375,8 +387,11 @@
     <!-- Equalizer -->
     <sys:String x:Key="eq_header">이퀄라이저</sys:String>
     <sys:String x:Key="eq_enable">이퀄라이저 켜기</sys:String>
-    <sys:String x:Key="eq_mode">모드: </sys:String>
+    <sys:String x:Key="eq_preset">프리셋</sys:String>
     <sys:String x:Key="eq_dolby">Dolby와 함께 사용하도록 최적화</sys:String>
+    <sys:String x:Key="eq_stereo_balance">좌우 소리 균형</sys:String>
+    <sys:String x:Key="eq_stereo_balance_value">왼쪽 {0}%; 오른쪽 {1}%</sys:String>
+    <sys:String x:Key="eq_stereo_balance_neutral">중앙</sys:String>
 
     <sys:String x:Key="eq_bass">저음 강조</sys:String>
     <sys:String x:Key="eq_soft">부드러운</sys:String>
@@ -422,7 +437,16 @@
     <sys:String x:Key="adv_gaming_mode_desc">오디오 지연을 최소화하여, 더 생생하고 싱크가 완벽한 게임 사운드를 즐길 수 있어요. (삼성 전용 기능)</sys:String>
     <sys:String x:Key="adv_hotkey">키보드 단축키</sys:String>
     <sys:String x:Key="adv_hotkey_desc">사용자 설정된 단축키를 지정하여 버즈를 멀리서 조작하세요.</sys:String>
+    <sys:String x:Key="adv_bixby_remap">빅스비 호출 동작 변경</sys:String>
+    <sys:String x:Key="adv_bixby_remap_desc">'헤이 빅스비'라고 말하면 무엇을 할지 설정할 수 있어요.</sys:String>
 
+    <!-- Remap bixby wakeup -->
+    <sys:String x:Key="bixby_remap_header">빅스비 호출 동작 변경</sys:String>
+    <sys:String x:Key="bixby_remap_enable">빅스비 호출 활성화</sys:String>
+    <sys:String x:Key="bixby_remap_enable_desc">호출 시 삼성 휴대폰에서는 빅스비를 호출하고, 이 PC에서는 지정된 동작을 수행할 수 있어요.</sys:String>
+    <sys:String x:Key="bixby_remap_lang">빅스비 호출 언어</sys:String>
+    <sys:String x:Key="bixby_remap_action">호출 동작 사용자 지정</sys:String>
+    <sys:String x:Key="bixby_remap_note">'헤이 빅스비'를 말해 활성화할 수 있어요. 언어에 따라 호출어가 다를 수 있어요.&#10;&#10;지정한 호출 동작은 이 기기에서만 사용할 수 있어요. 삼성 휴대폰에 이어버드를 연결하고 호출하면 정상적으로 빅스비가 활성화돼요. 삼성 외 제조사 휴대폰이나 다른 기기에서는 호출해도 아무 일도 일어나지 않아요.</sys:String>
     <!-- Credits -->
     <sys:String x:Key="credits_header">제작자</sys:String>
     <sys:String x:Key="credits_developer">개발자</sys:String>
@@ -430,6 +454,7 @@
     <sys:String x:Key="credits_version">버전</sys:String>
     <sys:String x:Key="credits_contributor">기여</sys:String>
     <sys:String x:Key="credits_translator">번역</sys:String>
+    <sys:String x:Key="credits_sponsor">이 프로젝트에 후원하기</sys:String>
 
     <!-- Connection lost page -->
     <sys:String x:Key="connlost_header">접속에 실패했습니다</sys:String>
@@ -440,8 +465,73 @@
     </sys:String>
     <sys:String x:Key="connlost_description_p3">추가 정보: </sys:String>
     <sys:String x:Key="connlost_noinfo">오류 정보를 가져오지 못했습니다.</sys:String>
+    <sys:String x:Key="connlost_disconnected">연결 해제됨</sys:String>
     <sys:String x:Key="connlost_connect">연결</sys:String>
     <sys:String x:Key="connlost_connecting">연결 중...</sys:String>
+
+    <!-- Firmware update disclaimer -->
+    <sys:String x:Key="fw_disclaimer">경고</sys:String>
+    <sys:String x:Key="fw_disclaimer_desc">이 펌웨어는 삼성 공식 앱 내 공식 업데이트 도구의 복제품입니다. 다양한 상황(일반적인 상황, 연결 끊김, 의도적으로 블루투스 패킷 손상, ...) 에서의 테스트를 철저히 진행했고, 아무런 문제가 없었습니다. 그렇지만, 펌웨어 업데이트는 시스템 내 중요 요소를 변경하는 작업이고 신중하게 진행해야 하는 작업이므로 문제가 생기더라도 아무런 책임은 지지 않습니다.&#10;&#10;다운그레이드: 이전 펌웨어 버전으로의 다운그레이드가 가능하고 아무런 문제가 없었지만, 예기치 못한 문제를 일으킬 수 있으므로 필요할 때에만 진행하여야 합니다. 다운그레이드 이후 공장 초기화가 권장되지만 대부분 필수적이지는 않습니다.&#10;커스텀 플래싱: 하드 드라이브에서 펌웨어 파일을 로드하는 것 또한 가능합니다. 다른 모델용 펌웨어를 설치하지 마세요.&#10;&#10;이 프로그램에는 GPLv3 라이센스가 적용되며, 프로그램을 사용함으로서 라이센스와 책임의 한계에 동의하는 것으로 간주됩니다. 동의하시면 '게속하기'를 눌러주세요.</sys:String>
+
+    <!-- Firmware selection -->
+    <sys:String x:Key="fw_select_header">펌웨어 업데이트</sys:String>
+    <sys:String x:Key="fw_select_instructions">다운로드하고 설치할 바이너리를 선택해 주세요. 또는, '고급..' > '디스크에서 이미지 선택하기'를 선택해 펌웨어 바이너리를 하드 디스크에서 선택할 수도 있어요.</sys:String>
+    <sys:String x:Key="fw_select_no_results">설치할 업데이트가 없어요. 나중에 다시 시도해 주세요.</sys:String>
+    <sys:String x:Key="fw_select_downgrade">펌웨어 다운그레이드 허용</sys:String>
+    <sys:String x:Key="fw_select_downgrade_desc">버전 체크 없이 리스트에 이전 펌웨어를 표시합니다. (예기치 못한 문제를 일으킬 수 있음, 고급자용)</sys:String>
+    <sys:String x:Key="fw_select_advanced">고급...</sys:String>
+    <sys:String x:Key="fw_select_install">펌웨어 설치</sys:String>
+    <sys:String x:Key="fw_select_from_disk">디스크에서 이미지 선택하기...</sys:String>
+    <sys:String x:Key="fw_select_external_note">다른 모델용 펌웨어 바이너리를 설치하지 마세요. Buds Pro용 펌웨어를 Buds Plus에 설치하면 기기에 새로운 기능이 추가되는 대신, 기기가 영구적으로 망가질 것입니다.&#10;&#10;펌웨어 바이너리를 선택하기 위해서는 '계속하기'를 눌러주세요.</sys:String>
+    <sys:String x:Key="fw_select_unsupported_selection">유효하지 않은 선택이에요. 리스트에서 호환되는 항목을 선택해 주세요.</sys:String>
+    <sys:String x:Key="fw_select_downloading">다운로드 중...</sys:String>
+    <sys:String x:Key="fw_select_net_error">서버와의 통신에 실패했어요. 지금은 펌웨어를 다운로드할 수 없어요.</sys:String>
+    <sys:String x:Key="fw_select_net_index_error">서버와의 통신에 실패했어요. 지금은 펌웨어 목록을 다운로드할 수 없어요.</sys:String>
+    <sys:String x:Key="fw_select_http_error">HTTP 에러 코드:</sys:String>
+    <sys:String x:Key="fw_select_unknown_build">빌드 번호 알 수 없음</sys:String>
+    <sys:String x:Key="fw_select_verify_fail">펌웨어 검증 실패</sys:String>
+    <sys:String x:Key="fw_select_confirm">'{0}'을 '{1}'에 설치합니다.</sys:String>
+    <sys:String x:Key="fw_select_confirm_desc">이 정보가 맞는지 확인해 주세요. 	아니라면 '취소'를 누르고 설정을 한 번 더 확인해 주세요.&#10;&#10;가능하다면 시작 전에 양쪽 이어버드가 모두 연결되어 있는지 확인해 주세요. 업데이트 전송 도중 연결에 실패해도 아무런 문제가 발생하지는 않을 거예요. 만약 연결에 실패하더라도, 이어버드가 자동으로 전송을 취소하고 펌웨어 업데이트 모드에서 나갈 거예요.&#10;&#10;업데이트를 시작하려면 '계속하기'를 눌러주세요.</sys:String>
+  
+    <!-- Firmware transfer -->
+    <sys:String x:Key="fw_upload_header">펌웨어 설치 중...</sys:String>
+    <sys:String x:Key="fw_upload_progress_session">새 세션 만드는 중...</sys:String>
+    <sys:String x:Key="fw_upload_progress_prepare">업로드 준비 중...</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished">업로드 완료</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished_desc">업데이트가 성공적으로 전송되었으며, 현재 설치 중이에요. 이 과정에서 이어버드가 약 30초가량 응답하지 않을 것이에요. 대부분의 경우에는 업데이트 프로세스가 완료되면 이어버드가 자동으로 재연결을 시도해요.</sys:String>
+    <sys:String x:Key="fw_upload_progress_error">펌웨어 업로드 실패</sys:String>
+    <sys:String x:Key="fw_upload_progress">펌웨어 업로드 중.. {0}%</sys:String>
+    <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats">정보</sys:String>
+    <sys:String x:Key="fw_upload_note">전송이 완료되면 바로 이어버드의 연결이 해제되고 업로드된 펌웨어의 설치가 시작돼요. 이 과정에서 이어버드가 응답하지 않고 블루투스 연결 요청을 모두 거절할 거예요. 대부분의 경우에는 업데이트 프로세스가 완료되면 이어버드가 자동으로 재연결을 시도해요. 업데이트 중에는 케이스 덮개를 절대로 닫지 마세요.</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_mtu">최대 전송 단위: {0}바이트</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_offset">오프셋 0x{0:X6}에서 0x{1:X6}까지 처리 중</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_segment">세그먼트 #{0} 업로드 중 ({1}바이트, 체크섬 0x{2:X6})</sys:String>
+
+    <!-- Firmware parse errors -->
+    <sys:String x:Key="fw_fail_no_magic">유효한 펌웨어 바이너리가 아니에요. 펌웨어 헤더에서 유효하지 않은 매직 값이 발견되었어요.</sys:String>
+    <sys:String x:Key="fw_fail_size_null">펌웨어 바이너리의 크기가 0으로 설정되어 있어 설치에 사용할 수 없어요. 다른 펌웨어를 선택해 주세요.</sys:String>
+    <sys:String x:Key="fw_fail_no_segments">펌웨어 바이너리가 비어있으며, 바이너리 세그먼트를 포함하지 않아요. 다른 펌웨어를 선택해 주세요.</sys:String>
+    <sys:String x:Key="fw_fail_unknown">펌웨어 바이너리를 해독하는 중 예기치 못한 오류가 발생했어요. 이 펌웨어 파일이 손상되었을 수도 있어요.&#10;&#10;상세 정보:</sys:String>
+    
+    <!-- Firmware transfer errors -->
+    <sys:String x:Key="fw_fail_connection">기기와의 연결이 끊어졌어요. 펌웨어 전송이 취소됐어요.</sys:String>
+    <sys:String x:Key="fw_fail_session">새 세션을 열지 못했어요. 디바이스에서 받은 에러 코드: {0}</sys:String>
+    <sys:String x:Key="fw_fail_copy">펌웨어 바이너리 복사에 실패했어요. 다시 연결한 후에 재시도해 주세요. 디바이스에서 받은 에러 코드: {0}</sys:String>
+    <sys:String x:Key="fw_fail_verify">펌웨어 바이너리를 검증/설치하는 도중 오류가 발생했어요. 다시 연결한 후에 재시도해 주세요. 디바이스에서 받은 에러 코드: {0}</sys:String>
+    <sys:String x:Key="fw_fail_connection_precheck">디바이스가 현재 연결되어 있지 않아요. 블루투스 시스템 설정을 확인하고 다시 연결해 주세요.</sys:String>
+    <sys:String x:Key="fw_fail_pending">이미 다른 펌웨어가 전송되고 있어요. 먼저 취소하고 다시 시도해 주세요.</sys:String>
+    <sys:String x:Key="fw_fail_lowbattery">남은 배터리 용량이 너무 낮아요. 먼저 이어버드를 15% 이상 충전해 주세요.</sys:String>
+    <sys:String x:Key="fw_fail_session_timeout">기기에 새 세션이 열리기를 기다리던 중 시간이 초과되었어요.</sys:String>
+    <sys:String x:Key="fw_fail_control_timeout">기기가 컨트롤 블럭을 반환하기를 기다리던 중 시간이 초과되었어요.</sys:String>
+    <sys:String x:Key="fw_fail_copy_timeout">전송이 끝나기를 기다리던 중 시간이 초과되었어요.</sys:String>
+    
+    <!-- Spatial test -->
+    <sys:String x:Key="spatial_header">360 오디오 센서</sys:String>
+    <!-- Note: Quaternion = 4-dimensional vector -->
+    <sys:String x:Key="spatial_dump_quaternion">원 쿼터니언 벡터:</sys:String>
+    <!-- Note: RPY = Roll, pitch, yaw -->
+    <sys:String x:Key="spatial_dump_rpy">RPY 값:</sys:String>
 
     <!-- Header -->
     <sys:String x:Key="window_minimize">최소화</sys:String>

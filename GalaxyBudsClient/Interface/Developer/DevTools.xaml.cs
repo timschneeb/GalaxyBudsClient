@@ -8,6 +8,7 @@ using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Input;
+using Avalonia.Input.Raw;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
@@ -15,6 +16,7 @@ using GalaxyBudsClient.Bluetooth.Linux;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.ViewModels;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
@@ -57,8 +59,8 @@ namespace GalaxyBudsClient.Interface.Developer
 
         private readonly List<FileDialogFilter> _filters = new List<FileDialogFilter>()
         {
-            new FileDialogFilter {Name = "Hex dump", Extensions = new List<string>() {"*.hex"}},
-            new FileDialogFilter {Name = "All files", Extensions = new List<string>() {"*.*"}},
+            new FileDialogFilter {Name = "Hex dump", Extensions = new List<string>() {"bin", "hex"}},
+            new FileDialogFilter {Name = "All files", Extensions = new List<string>() {"*"}},
         };
 
         private readonly ViewModel _vm = new ViewModel();
@@ -199,30 +201,70 @@ namespace GalaxyBudsClient.Interface.Developer
                 }.ShowDialog(this);
                 return;
             }
+
+            var msgs = new List<SPPMessage>();
+            int failCount = 0;
             do
             {
+                int msgSize = 0;
+                SPPMessage? msg = null;
                 try
                 {
-                    SPPMessage msg = SPPMessage.DecodeMessage((byte[]) data.ToArray(typeof(byte)));
-                    RecvMsgViewHolder holder = new RecvMsgViewHolder(msg);
-                    _vm.MsgTableDataSource?.Add(holder);
+                    var raw = data.OfType<byte>().ToArray();
+
+                    msg = SPPMessage.DecodeMessage(raw);
+                    msgSize = msg.TotalPacketSize;
                     
-                    if (msg.TotalPacketSize >= data.Count)
-                        break;
-                    data.RemoveRange(0, msg.TotalPacketSize);
+                    msgs.Add(msg);
+
+                    failCount = 0;
                 }
-                catch (InvalidPacketException ex)
+                catch (InvalidPacketException)
                 {
-                    await new MessageBox
+                    // Attempt to remove broken message, otherwise skip data block
+                    var somIndex = 0;
+                    for (int i = 1; i < data.Count; i++)
                     {
-                        Title = "Error while parsing file", 
-                        Description = ex.Message
-                    }.ShowDialog(this);
-                    _vm.MsgTableDataView.Refresh();
-                    return;
+                        if ((BluetoothImpl.Instance.ActiveModel == Models.Buds &&
+                            (byte)(data[i] ?? 0) == (byte)SPPMessage.Constants.SOM) ||
+                            (BluetoothImpl.Instance.ActiveModel != Models.Buds &&
+                             (byte)(data[i] ?? 0) == (byte)SPPMessage.Constants.SOMPlus))
+                        {
+                            somIndex = i;
+                            break;
+                        }
+                    }
+
+                    msgSize = somIndex;
+                    
+                    if (failCount > 5)
+                    {
+                        // Abandon data block
+                        break;
+                    }
+                    
+                    failCount++;
+                }
+
+                if (msgSize >= data.Count)
+                {
+                    data.Clear();
+                    break;
+                }
+
+                data.RemoveRange(0, msgSize);
+
+                if (ByteArrayUtils.IsBufferZeroedOut(data))
+                {
+                    /* No more data remaining */
+                    break;
                 }
             } while (data.Count > 0);
-            
+
+            foreach (var holder in msgs.Select(m => new RecvMsgViewHolder(m)))
+            {
+                _vm.MsgTableDataSource?.Add(holder);
+            }
             _vm.MsgTableDataView.Refresh();
         }
 

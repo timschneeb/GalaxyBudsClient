@@ -26,8 +26,6 @@ using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Platform.Windows;
-using GalaxyBudsClient.Scripting;
-using GalaxyBudsClient.Scripting.Experiment;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using NetSparkleUpdater.Enums;
@@ -56,11 +54,17 @@ namespace GalaxyBudsClient
         private BudsPopup _popup;
         private DateTime _lastPopupTime = DateTime.UtcNow;
         private WearStates _lastWearState = WearStates.Both;
-
+        
         private bool _firstShow = true;
         
         public bool OverrideMinimizeTray { set; get; }
         public bool DisableApplicationExit { set; get; }
+
+        public bool IsOptionsButtonVisible
+        {
+            get => _titleBar.OptionsButton.IsVisible;
+            set => _titleBar.OptionsButton.IsVisible = value;
+        } 
         
         public PageContainer Pager { get; }
         
@@ -88,10 +92,9 @@ namespace GalaxyBudsClient
                         Log.Debug("MainWindow.Instance: Initializing window with default WindowImpl");
                         impl = platform.CreateWindow();
                     }
-                    
+
                     _instance = new MainWindow(impl);
                 }
-
                 return _instance;
             }
         }
@@ -120,6 +123,13 @@ namespace GalaxyBudsClient
         {
             AvaloniaXamlLoader.Load(this);
             this.AttachDevTools();
+
+            // Weird OSX hack to fix graphical corruptions and hide decorations
+            if (PlatformUtils.IsOSX)
+            {
+                SystemDecorations = SystemDecorations.Full;
+                HasSystemDecorations = false;
+            }
             
             Pager = this.FindControl<PageContainer>("Container");
 
@@ -128,11 +138,15 @@ namespace GalaxyBudsClient
                 new SystemPage(), new SelfTestPage(), new SettingsPage(), new PopupSettingsPage(),
                 ConnectionLostPage, CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(),
                 new WelcomePage(), UnsupportedFeaturePage, UpdatePage, UpdateProgressPage, new SystemCoredumpPage(),
-                new HotkeyPage());
+                new HotkeyPage(), new FirmwareSelectionPage(), new FirmwareTransferPage(), new SpatialTestPage(),
+                new BixbyRemapPage());
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
-            _titleBar.OptionsPressed += (i, e) => _titleBar.OptionsButton.ContextMenu.Open(_titleBar.OptionsButton);
+            _titleBar.OptionsPressed += (i, e) =>
+            {
+                _titleBar.OptionsButton.ContextMenu?.Open(_titleBar.OptionsButton);
+            };
             _titleBar.ClosePressed += (sender, args) =>
             {
                 if (SettingsProvider.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
@@ -147,7 +161,7 @@ namespace GalaxyBudsClient
                 }
             };
 
-                _popup = new BudsPopup();
+            _popup = new BudsPopup();
 
             BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
             BluetoothImpl.Instance.Disconnected += OnDisconnected;
@@ -156,6 +170,7 @@ namespace GalaxyBudsClient
             SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
             SPPMessageHandler.Instance.StatusUpdate += OnStatusUpdate;
             SPPMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
+            SPPMessageHandler.Instance.AnyMessageReceived += OnAnyMessageReceived;
 
             EventDispatcher.Instance.EventReceived += OnEventReceived;
             NotifyIconImpl.Instance.LeftClicked += TrayIcon_OnLeftClicked;
@@ -180,6 +195,19 @@ namespace GalaxyBudsClient
                 if (desktop.Args.Contains("/StartMinimized") && PlatformUtils.SupportsTrayIcon)
                 {
                     WindowState = WindowState.Minimized;
+                }
+            }
+        }
+
+        private void OnAnyMessageReceived(object? sender, BaseMessageParser? e)
+        {
+            if (e is VoiceWakeupEventParser wakeup)
+            {
+                if (wakeup.ResultCode == 1)
+                {
+                    Log.Debug("MainWindow.OnAnyMessageReceived: Voice wakeup event received");
+                    
+                    EventDispatcher.Instance.Dispatch(SettingsProvider.Instance.BixbyRemapEvent);
                 }
             }
         }
@@ -341,7 +369,7 @@ namespace GalaxyBudsClient
             {
                 MediaKeyRemoteImpl.Instance.Play();
             }
-
+            
             _lastWearState = e.WearState;
         }
 
@@ -472,6 +500,7 @@ namespace GalaxyBudsClient
                     (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Settings),
                 [Loc.Resolve("optionsmenu_refresh")] = async (sender, args) =>
                     await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA),
+               
                 [Loc.Resolve("optionsmenu_deregister")] = (sender, args) => BluetoothImpl.Instance.UnregisterDevice()
                     .ContinueWith((_) => Pager.SwitchPage(AbstractPage.Pages.Welcome))
             };
@@ -495,8 +524,7 @@ namespace GalaxyBudsClient
             };
             options[Loc.Resolve("optionsmenu_credits")] = (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Credits);
 
-
-            _titleBar.OptionsButton.ContextMenu = MenuFactory.BuildContextMenu(options);
+            _titleBar.OptionsButton.ContextMenu = MenuFactory.BuildContextMenu(options, _titleBar.OptionsButton);
         }
         #endregion
 

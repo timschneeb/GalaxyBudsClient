@@ -9,6 +9,7 @@ using GalaxyBudsClient.Interface.Developer;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Firmware;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Scripting.Experiment;
