@@ -64,8 +64,10 @@ namespace GalaxyBudsClient.Model
             vn_,
             [Description("Greek")]
             gr,
-	    [Description("Romanian")]
-	    ro,
+            [Description("Romanian")]
+            ro,
+            [Description("French")]
+            fr,
 
             [Description("custom_language.xaml")]
             custom
