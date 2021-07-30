@@ -183,6 +183,7 @@ namespace GalaxyBudsClient.Interface.Pages
 					UpdateMenuDescriptions();
 				};
 			}
+
 			_noiseControlMode.Items = noiseActions;
 		}
 
