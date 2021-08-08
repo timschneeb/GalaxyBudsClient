@@ -449,8 +449,6 @@
     <sys:String x:Key="connlost_connect">Підключитися</sys:String>
     <sys:String x:Key="connlost_connecting">Підключення...</sys:String>
     <sys:String x:Key="connlost_disconnected">Пристрій відключено</sys:String>
-    <sys:String x:Key="connlost_connect">Підключитися</sys:String>
-    <sys:String x:Key="connlost_connecting">Підключення...</sys:String>
 
     <!-- Firmware update disclaimer -->
     <sys:String x:Key="fw_disclaimer">Відмова від відповідальності</sys:String>
