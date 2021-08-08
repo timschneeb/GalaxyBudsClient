@@ -3,8 +3,8 @@
         <OutputType>WinExe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <ApplicationIcon>Resources/icon_white.ico</ApplicationIcon>
-        <AssemblyVersion>4.2.0.0</AssemblyVersion>
-        <Version>4.2.0.0</Version>
+        <AssemblyVersion>4.2.1.0</AssemblyVersion>
+        <Version>4.2.1.0</Version>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <Configurations>Debug;Release;Debug (Local server);Release - Windows ARM</Configurations>
