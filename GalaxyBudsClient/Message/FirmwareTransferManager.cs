@@ -71,7 +71,7 @@ namespace GalaxyBudsClient.Message
         {
             _sessionTimeout = new Timer(20000);
             _controlTimeout = new Timer(20000);
-            _genericTimeout = new Timer(600000);
+            _genericTimeout = new Timer(600000 * 2); // 20 min
             _sessionTimeout.Elapsed += OnSessionTimeoutElapsed;
             _controlTimeout.Elapsed += OnControlTimeoutElapsed;
             _genericTimeout.Elapsed += OnCopyTimeoutElapsed;
