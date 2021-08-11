@@ -76,7 +76,11 @@ namespace GalaxyBudsClient.Message
             _controlTimeout.Elapsed += OnControlTimeoutElapsed;
             _genericTimeout.Elapsed += OnCopyTimeoutElapsed;
 
-            Error += (sender, exception) => Cancel();
+            Error += (sender, exception) =>
+            {
+                Log.Error($"FirmwareTransferManager.OnError: {exception}");
+                Cancel();
+            };
             StateChanged += (sender, state) => Log.Debug($"FirmwareTransferManager: Status changed to {state}");
             
             BluetoothImpl.Instance.Disconnected += (sender, s) =>
