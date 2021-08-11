@@ -66,12 +66,6 @@ The Windows package is also available to install with Windows Package Manager (w
 winget install ThePBone.GalaxyBudsClient
 ```
 
-#### Arch Linux (AUR)
-Arch Linux users can also download a dependencyless [AUR package](https://aur.archlinux.org/packages/galaxybudsclient/) instead:
-```
-yay -S galaxybudsclient
-```
-
 ## How it works
 
 To use Bluetooth wireless technology, a device must be able to interpret certain Bluetooth profiles, which are definitions of possible applications and specify general behaviors that Bluetooth-enabled devices use to communicate with other Bluetooth devices.
