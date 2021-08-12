@@ -14,6 +14,7 @@ namespace GalaxyBudsClient.Model
             public static readonly Guid BudsPlus = new Guid("{00001101-0000-1000-8000-00805F9B34FB}");
             public static readonly Guid BudsLive = new Guid("{00001101-0000-1000-8000-00805F9B34FB}");
             public static readonly Guid BudsPro = new Guid("{00001101-0000-1000-8000-00805F9B34FB}");
+            public static readonly Guid Buds2 = new Guid("{2e73a4ad-332d-41fc-90e2-16bef06523f2}");
         }
 
         public static class Bixby
@@ -133,7 +134,9 @@ namespace GalaxyBudsClient.Model
             [Description("Galaxy Buds Live (2020)")]
             BudsLive = 3,
             [Description("Galaxy Buds Pro (2021)")]
-            BudsPro = 4
+            BudsPro = 4,
+            [Description("Galaxy Buds2 (2021)")]
+            Buds2 = 5
         }
 
         public enum Color
