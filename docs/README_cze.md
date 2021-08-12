@@ -61,7 +61,10 @@ Získejte binární soubory pro Windows a Linux v sekci [vydání](https://githu
 </p>
 
 Balíček windows je také dostupný ke stažení pomocí Manažeru Balíčku Windows (winget)
-`winget install ThePBone.GalaxyBudsClient`
+
+```
+winget install ThePBone.GalaxyBudsClient
+```
 
 ## Jak to funguje
 
@@ -130,6 +133,7 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 * [@TheLastFrame](https://github.com/TheLastFrame) a [@ThePBone](https://github.com/ThePBone) - německý překlad
 * [@nikossyr](https://github.com/nikossyr) - řecký překlad
 * [@grigorem](https://github.com/grigorem) - romský překlad
+* [@tretre91](https://github.com/tretre91) - francouzský překlad
 
 ## Licence
 
