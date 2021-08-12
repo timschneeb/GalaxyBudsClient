@@ -333,7 +333,7 @@
     <sys:String x:Key="settings_cpopup_primary_screen">Pouze primární obrazovka</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen_description">Zobrazit vyskakovací okno pouze na primárním monitoru</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state">Použít jinou barvu, když se nachází v pouzdře</sys:String>
-    <sys:String x:Key="settings_cpopup_wear_state_description">Zešediví ikonu sluchátek, kdyz se nachází v pouzdře</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state_description">Šedivá ikona sluchátek, když se nachází v pouzdře</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">Obnova továrního nastavení</sys:String>
