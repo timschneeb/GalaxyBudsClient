@@ -13,7 +13,7 @@ namespace GalaxyBudsClient.Model.Specifications
             {
                 { IDeviceSpec.Feature.SeamlessConnection, null },
                 { IDeviceSpec.Feature.StereoPan, new FeatureRule(5, "R190XXU0AUA5") },
-                { IDeviceSpec.Feature.DoubleTapVolume, new FeatureRule(7, "R190XXU0AUD1" /* TODO */) },
+                { IDeviceSpec.Feature.DoubleTapVolume, new FeatureRule(7, "R190XXU0AUD1") },
                 { IDeviceSpec.Feature.FirmwareUpdates, null },
                 { IDeviceSpec.Feature.DetectConversations, null },
                 { IDeviceSpec.Feature.NoiseControl, null },

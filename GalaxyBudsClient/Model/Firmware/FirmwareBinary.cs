@@ -2,6 +2,7 @@ using System;
 using System.Buffers.Text;
 using System.IO;
 using System.Linq;
+using System.Text;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using Sentry;
 using Serilog;
@@ -35,25 +36,28 @@ namespace GalaxyBudsClient.Model.Firmware
                 {
                     _magic = (((long) bArr[2] & 255) << 16) | (((long) bArr[3] & 255) << 24) |
                              (((long) bArr[1] & 255) << 8) | (((long) bArr[0]) & 255);
-                    if (_magic != FOTA_BIN_MAGIC && _magic != FOTA_BIN_MAGIC_COMBINATION)
+                    if (_magic == FOTA_BIN_MAGIC)
                     {
-                        _stream.Close();
+                        // Okay! Skip ahead
+                        goto MAGIC_VALID;
+                    }
+                    if (_magic == FOTA_BIN_MAGIC_COMBINATION || Encoding.ASCII.GetString(data).StartsWith(":02000004FE00FC"))
+                    {
+                        // Notify tracker about this event and submit firmware build info
+                        SentrySdk.CaptureMessage($"BCOM-Firmware discovered. Build: {buildName}, Content: {Convert.ToBase64String(data)}", SentryLevel.Fatal);
+                      
+                        Log.Fatal($"FirmwareBinary: Parsing internal debug firmware '{buildName}'. " +
+                                  "This is unsupported by this application as these binaries are not meant for retail devices.");
                         throw new FirmwareParseException(FirmwareParseException.ErrorCodes.InvalidMagic,
                             Loc.Resolve("fw_fail_no_magic"));
                     }
 
-                    if (_magic == FOTA_BIN_MAGIC_COMBINATION)
-                    {
-                        // Notify bug tracker about this event and submit firmware build info
-                        SentrySdk.CaptureMessage($"BCOM-Firmware discovered. Build: {buildName}, Content: {Convert.ToBase64String(data)}", SentryLevel.Info);
-                        
-                        Log.Fatal("FirmwareBinary: Parsing internal debug firmware. " +
-                                    "This is unsupported by this application as these binaries are not meant for retail devices.");
-                        throw new FirmwareParseException(FirmwareParseException.ErrorCodes.InvalidMagic,
-                            Loc.Resolve("fw_fail_no_magic"));
-                    }
+                    _stream.Close();
+                    throw new FirmwareParseException(FirmwareParseException.ErrorCodes.InvalidMagic,
+                        Loc.Resolve("fw_fail_no_magic"));
                 }
 
+                MAGIC_VALID:
                 if (_stream.Read(bArr) != -1)
                 {
                     TotalSize = (((long) bArr[2] & 255) << 16) | (((long) bArr[3] & 255) << 24) |
