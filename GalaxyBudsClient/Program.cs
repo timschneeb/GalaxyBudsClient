@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia;
@@ -43,6 +44,7 @@ namespace GalaxyBudsClient
                 o.Dsn = "https://4591394c5fd747b0ab7f5e81297c094d@o456940.ingest.sentry.io/5462682";
                 o.MaxBreadcrumbs = 120;
                 o.SendDefaultPii = true;
+                o.Release = Assembly.GetExecutingAssembly().GetName().Version?.ToString();
 #if DEBUG
                 o.Environment = "staging";
 #else
