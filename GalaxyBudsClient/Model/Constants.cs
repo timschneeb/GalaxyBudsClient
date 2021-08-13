@@ -67,6 +67,8 @@ namespace GalaxyBudsClient.Model
             gr,
             [Description("Romanian")]
             ro,
+            [Description("Hebrew")]
+            he,
             [Description("French")]
             fr,
 
