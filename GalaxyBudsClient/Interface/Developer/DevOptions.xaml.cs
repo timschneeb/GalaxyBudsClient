@@ -34,23 +34,8 @@ namespace GalaxyBudsClient.Interface.Developer
             DialogLauncher.ShowTranslatorTools();
         }
         
-        private async void Crowdsourcing_OnClick(object? sender, RoutedEventArgs e)
+        private void Crowdsourcing_OnClick(object? sender, RoutedEventArgs e)
         {
-            if (!_crowdsourcing.IsChecked ?? false)
-            {
-                var result = await new QuestionBox()
-                {
-                    Title = "Warning",
-                    Description = "Turning off that option will disable all functionality of this application that depends on this module. Continue?"
-                }.ShowDialog<bool>(this);
-
-                if (!result)
-                {
-                    _crowdsourcing.IsChecked = true;
-                    return;
-                }
-            }
-            
             SettingsProvider.Instance.Experiments.Disabled = !_crowdsourcing.IsChecked ?? false;
         }
     }
