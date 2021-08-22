@@ -37,7 +37,7 @@ namespace GalaxyBudsClient.Interface.Pages
             _autostart = this.FindControl<SwitchDetailListItem>("AutostartToggle");
             _trayOptionBorder = this.FindControl<Border>("TrayOptionBorder");
 
-            _trayOptionBorder.IsVisible = PlatformUtils.SupportsTrayIcon;
+            //_trayOptionBorder.IsVisible = PlatformUtils.SupportsTrayIcon;
         }
 
         public override void OnPageShown()
@@ -119,6 +119,11 @@ namespace GalaxyBudsClient.Interface.Pages
                 AutoStartImpl.Instance.Enabled = _autostart.IsChecked;
             }
             SettingsProvider.Instance.MinimizeToTray = _minimizeTray.IsChecked;
+        }
+
+        private void Crowdsourcing_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+        {
+            MainWindow.Instance.Pager.SwitchPage(Pages.SettingsCrowdsourcing);
         }
     }
 }

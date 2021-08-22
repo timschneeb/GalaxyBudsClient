@@ -29,6 +29,7 @@ namespace GalaxyBudsClient.Interface.Pages
             DeviceSelect,
             Settings,
             SettingsPopup,
+            SettingsCrowdsourcing,
             Advanced,
             Hotkeys,
             FirmwareSelect,

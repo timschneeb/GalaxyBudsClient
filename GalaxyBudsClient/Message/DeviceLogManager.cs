@@ -223,7 +223,6 @@ namespace GalaxyBudsClient.Message
                     }
                     
                     ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(0,0, LogDownloadProgressEventArgs.Type._Switching));
-                    await ExperimentManager.Instance.ProcessCoredump(_coredumpBuffer ?? new byte[0], _traceContext?.DeviceType.ToString() ?? "?");
                     await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOG_COREDUMP_COMPLETE);
                     
                     var pathCore = WriteTempFile($"{BluetoothImpl.Instance.ActiveModel.ToString()}_coreDump_{/* this is intentional -> */_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _coredumpBuffer ?? new byte[0]);

@@ -16,7 +16,6 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -26,6 +25,10 @@
         <Border Grid.Row="3" Classes="RoundedBorderListItem" Margin="0,0,0,10">
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="1"/>
                     <RowDefinition Height="Auto"/>
@@ -42,23 +45,14 @@
                                             Text="{DynamicResource settings_localization_disable}" 
                                             Description="English" />
                 </Border>
-            </Grid>
-        </Border>
-
-        <Border Grid.Row="5" Classes="RoundedBorderListItem" Margin="0,0,0,10" x:Name="TrayOptionBorder">
-            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="1"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Border Grid.Row="0" Classes="BorderHoverStyle" PointerPressed="MinimizeToTray_OnPointerPressed">
+                <Separator Grid.Row="3" Classes="HSeparatorSpacer20"/>
+                <Border Grid.Row="4" Classes="BorderHoverStyle" PointerPressed="MinimizeToTray_OnPointerPressed">
                     <items:SwitchDetailListItem x:Name="MinimizeTrayToggle" 
                                                 Text="{DynamicResource settings_minimize_tray}"
                                                 Description="{DynamicResource settings_minimize_tray_description}"/>
                 </Border>
-                <Separator Grid.Row="1" Classes="HSeparatorSpacer20"/>
-                <Border Grid.Row="2" Classes="BorderHoverStyle" PointerPressed="Autostart_OnPointerPressed">
+                <Separator Grid.Row="5" Classes="HSeparatorSpacer20"/>
+                <Border Grid.Row="6" Classes="BorderHoverStyle" PointerPressed="Autostart_OnPointerPressed">
                     <items:SwitchDetailListItem x:Name="AutostartToggle"
                                                 Text="{DynamicResource settings_autostart}" 
                                                 Description="{DynamicResource settings_autostart_description}"/>
@@ -66,9 +60,11 @@
             </Grid>
         </Border>
 
-        <Border Grid.Row="7" Classes="RoundedBorderListItem" Margin="0,0,0,10">
+        <Border Grid.Row="5" Classes="RoundedBorderListItem" Margin="0,0,0,10">
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="1"/>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="1"/>
                     <RowDefinition Height="50"/>
@@ -84,6 +80,13 @@
                     <items:IconListItem x:Name="DevMode" 
                                         Text="{DynamicResource settings_devmode}"
                                         Source="/Resources/features/labs_color.png" 
+                                        FontSize="18"/>
+                </Border>
+                <Separator Grid.Row="3" Classes="HSeparatorIconListSpacer"/>
+                <Border Grid.Row="4" Classes="BorderHoverStyle" PointerPressed="Crowdsourcing_OnPointerPressed">
+                    <items:IconListItem x:Name="Crowdsourcing" 
+                                        Text="{DynamicResource settings_crowdsourcing}"
+                                        Source="/Resources/features/tips_color.png" 
                                         FontSize="18"/>
                 </Border>
             </Grid>

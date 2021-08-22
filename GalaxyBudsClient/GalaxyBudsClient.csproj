@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <OutputType>WinExe</OutputType>
+        <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <ApplicationIcon>Resources/icon_white.ico</ApplicationIcon>
         <AssemblyVersion>4.2.1.0</AssemblyVersion>
@@ -9,6 +9,7 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <Configurations>Debug;Release;Debug (Local server);Release - Windows ARM</Configurations>
         <Platforms>AnyCPU</Platforms>
+        <DisableWinExeOutputInference>true</DisableWinExeOutputInference>
     </PropertyGroup>
     
     <PropertyGroup>
@@ -75,10 +76,11 @@
         <PackageReference Include="NetSparkle.New" Version="2.0.0-preview20210114001" />
         <PackageReference Include="Sentry" Version="3.8.3" />
         <PackageReference Include="Sentry.Serilog" Version="3.8.3" />
-        <PackageReference Include="Serilog" Version="2.10.0" />
-        <PackageReference Include="Serilog.Sinks.Console" Version="4.0.0-dev-00839" />
-        <PackageReference Include="Serilog.Sinks.Debug" Version="1.0.1" />
-        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0-dev-00909" />
+        <PackageReference Include="Serilog" Version="2.11.0-dev-01367" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1-dev-00876" />
+        <PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
+        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+        <PackageReference Include="Serilog.Sinks.Trace" Version="3.0.0" />
         <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
         <PackageReference Include="Tmds.DBus" Version="0.9.1" />
         <PackageReference Include="Trinet.Core.IO.Ntfs" Version="4.1.1" />

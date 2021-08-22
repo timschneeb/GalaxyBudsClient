@@ -20,7 +20,7 @@ namespace GalaxyBudsClient
         // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
         // yet and stuff might break.
         public static async Task Main(string[] args)
-        {
+        {   
             var config = new LoggerConfiguration()
                 .WriteTo.Sentry(o =>
                 {
@@ -39,55 +39,66 @@ namespace GalaxyBudsClient
 
             Trace.Listeners.Add(new ConsoleTraceListener());
 
-            SentrySdk.Init(o =>
+            if (!SettingsProvider.Instance.DisableCrashReporting)
             {
-                o.Dsn = "https://4591394c5fd747b0ab7f5e81297c094d@o456940.ingest.sentry.io/5462682";
-                o.MaxBreadcrumbs = 120;
-                o.SendDefaultPii = true;
-                o.Release = Assembly.GetExecutingAssembly().GetName().Version?.ToString();
+                SentrySdk.Init(o =>
+                {
+                    o.Dsn = "https://4591394c5fd747b0ab7f5e81297c094d@o456940.ingest.sentry.io/5462682";
+                    o.MaxBreadcrumbs = 120;
+                    o.SendDefaultPii = true;
+                    o.Release = Assembly.GetExecutingAssembly().GetName().Version?.ToString();
 #if DEBUG
-                o.Environment = "staging";
+                    o.Environment = "staging";
 #else
                 o.Environment = "production";
 #endif
-                o.BeforeSend = sentryEvent =>
-                {
-                    try
+                    o.BeforeSend = sentryEvent =>
                     {
-                        sentryEvent.SetTag("arch", System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString());
-                        sentryEvent.SetTag("bluetooth-mac", SettingsProvider.Instance.RegisteredDevice.MacAddress);
-                        sentryEvent.SetTag("sw-version",
-                            DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");
-                        
-                        sentryEvent.SetExtra("arch", System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString());
-                        sentryEvent.SetExtra("bluetooth-mac", SettingsProvider.Instance.RegisteredDevice.MacAddress);
-                        sentryEvent.SetExtra("bluetooth-model-saved", SettingsProvider.Instance.RegisteredDevice.Model);
-                        sentryEvent.SetExtra("custom-locale", SettingsProvider.Instance.Locale);          
-                        sentryEvent.SetExtra("sw-version",
-                            DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");
-
-                        if (MainWindow.IsReady())
+                        try
                         {
-                            sentryEvent.SetExtra("current-page", MainWindow.Instance.Pager.CurrentPage);
-                        }
-                        else
-                        {
-                            sentryEvent.SetExtra("current-page", "instance_not_initialized");
-                        }
-                        
-                        sentryEvent.SetTag("bluetooth-model", BluetoothImpl.Instance.ActiveModel.ToString());
-                        sentryEvent.SetExtra("bluetooth-model", BluetoothImpl.Instance.ActiveModel);
-                        sentryEvent.SetExtra("bluetooth-connected", BluetoothImpl.Instance.IsConnected);
-                    }
-                    catch (Exception ex)
-                    {
-                        sentryEvent.SetExtra("beforesend-error", ex);
-                        Log.Error("Sentry.BeforeSend: Error while adding attachments: " + ex.Message);
-                    }
+                            sentryEvent.SetTag("arch",
+                                System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString());
+                            sentryEvent.SetTag("bluetooth-mac", SettingsProvider.Instance.RegisteredDevice.MacAddress);
+                            sentryEvent.SetTag("sw-version",
+                                DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");
 
-                    return sentryEvent;
-                };
-            });
+                            sentryEvent.SetExtra("arch",
+                                System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString());
+                            sentryEvent.SetExtra("bluetooth-mac",
+                                SettingsProvider.Instance.RegisteredDevice.MacAddress);
+                            sentryEvent.SetExtra("bluetooth-model-saved",
+                                SettingsProvider.Instance.RegisteredDevice.Model);
+                            sentryEvent.SetExtra("custom-locale", SettingsProvider.Instance.Locale);
+                            sentryEvent.SetExtra("sw-version",
+                                DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");
+
+                            if (MainWindow.IsReady())
+                            {
+                                sentryEvent.SetExtra("current-page", MainWindow.Instance.Pager.CurrentPage);
+                            }
+                            else
+                            {
+                                sentryEvent.SetExtra("current-page", "instance_not_initialized");
+                            }
+
+                            sentryEvent.SetTag("bluetooth-model", BluetoothImpl.Instance.ActiveModel.ToString());
+                            sentryEvent.SetExtra("bluetooth-model", BluetoothImpl.Instance.ActiveModel);
+                            sentryEvent.SetExtra("bluetooth-connected", BluetoothImpl.Instance.IsConnected);
+                        }
+                        catch (Exception ex)
+                        {
+                            sentryEvent.SetExtra("beforesend-error", ex);
+                            Log.Error("Sentry.BeforeSend: Error while adding attachments: " + ex.Message);
+                        }
+
+                        return sentryEvent;
+                    };
+                });
+            }
+            else
+            {
+                Log.Information("App crash reports disabled by user");
+            }
 
             /* Fix Avalonia font issue */
             if (PlatformUtils.IsLinux)

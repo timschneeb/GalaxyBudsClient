@@ -22,13 +22,12 @@ namespace GalaxyBudsClient.Scripting.Experiment
         public event EventHandler<IReadOnlyList<ExperimentRequest>>? NewResultsFound;
         
 #if UseLocalServer
-        const string API_BASE = "http://localhost:5100";
+        const string API_BASE = "http://localhost:5100/v2";
 #else
-        const string API_BASE = "https://crowdsourcing.timschneeberger.me";
+        const string API_BASE = "https://crowdsourcing.timschneeberger.me/v2";
 #endif
         const string API_GET_EXPERIMENTS = API_BASE + "/experiments";
         const string API_POST_RESULT = API_BASE + "/result";
-        const string API_POST_COREDUMP = API_BASE + "/coredump";
 
         private readonly HttpClient _client;
         private readonly Timer _timer;
@@ -47,37 +46,6 @@ namespace GalaxyBudsClient.Scripting.Experiment
             _timer.Start();
         }
 
-        public async Task PostCoredump(byte[] dump, string device)
-        {
-            Log.Debug($"ExperimentClient: Posting coredump...");
-            try
-            {
-                var item = new CoredumpItem()
-                {
-                    Content = dump,
-                    Side = device
-                };
-                
-                var jsonBody = JsonConvert.SerializeObject(item, new StringEnumConverter());
-                var httpContent = new StringContent(jsonBody, Encoding.UTF8, "application/json");
-                var httpResponse = await _client.PostAsync(API_POST_COREDUMP, httpContent);
-                if (!httpResponse.IsSuccessStatusCode)
-                {
-                    Log.Warning(
-                        $"ExperimentClient: Server returned error code after posting: " +
-                        $"{(int)httpResponse.StatusCode} ({httpResponse.ReasonPhrase}); Content: {await httpResponse.Content.ReadAsStringAsync()}");
-                }
-            }
-            catch (HttpRequestException ex)
-            {
-                Log.Error("ExperimentClient: Post failed due to network issues: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                Log.Error("ExperimentClient: Post failed: " + ex.Message);
-            }
-        }
-        
         public async Task<bool> PostResult(ExperimentResult result)
         {
             Log.Debug($"ExperimentClient: Posting results for experiment #{result.ExperimentId}...");
@@ -122,7 +90,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
 
             if (SettingsProvider.Instance.Experiments.Disabled)
             {
-                Log.Error("ExperimentClient: Feature is disabled. You can enable it here: 'Options > Developer options > Crowdsourcing'");
+                Log.Information("ExperimentClient: Feature is disabled. You can enable it here: 'Options > Crowdsourcing'");
                 return;
             }
 
@@ -135,8 +103,12 @@ namespace GalaxyBudsClient.Scripting.Experiment
                 {
                     MediaTypeFormatterCollection formatters = new MediaTypeFormatterCollection();
                     formatters.JsonFormatter.SerializerSettings.Converters.Add(new StringEnumConverter());
-
+                    
                     requests = await response.Content.ReadAsAsync<ExperimentRequest[]>(formatters);
+                }
+                else
+                {
+                    Log.Error($"ExperimentClient: HTTP error {response.StatusCode}");
                 }
 
                 if (requests == null)

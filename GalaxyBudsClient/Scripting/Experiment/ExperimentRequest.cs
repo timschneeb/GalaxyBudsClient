@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
@@ -55,14 +56,16 @@ namespace GalaxyBudsClient.Scripting.Experiment
         {
             try
             {
+                item.Script = Encoding.UTF8.GetString(Convert.FromBase64String(item.Script ?? string.Empty));
                 item.Signature = Crypto.RsaDecryptWithPublic(item.Signature ?? string.Empty, PublicSigningKey);
-                if (item.Signature != $"Experiment{item.Id}")
+
+                var hash = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(item.Script));
+                if (item.Signature != Convert.ToBase64String(hash))
                 {
                     Log.Error("ExperimentRequest.VerifyDecode: Unknown signature, discarding entry!");
                     return null;
                 }
-
-                item.Script = Encoding.UTF8.GetString(Convert.FromBase64String(item.Script ?? string.Empty));
+                
                 return item;
             }
             catch (InvalidCipherTextException ex)

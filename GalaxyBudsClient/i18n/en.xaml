@@ -333,6 +333,7 @@
     
     <sys:String x:Key="settings_connpopup">Configure connection popup</sys:String>
     <sys:String x:Key="settings_devmode">Developer options</sys:String>
+    <sys:String x:Key="settings_crowdsourcing">Crowdsourcing</sys:String>
 
     <!-- Settings >>> Connection popup -->
     <sys:String x:Key="settings_cpopup_header">Connection popup</sys:String>
@@ -349,6 +350,13 @@
     <sys:String x:Key="settings_cpopup_primary_screen_description">Show popup only on the primary monitor</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state">Use different color when in case</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state_description">Gray earbud icon out when your earbuds are in the case</sys:String>
+    
+    <!-- Settings >>> Crowdsourcing settings -->
+    <sys:String x:Key="settings_crowd_header">Crowdsourcing</sys:String>
+    <sys:String x:Key="settings_crowd_allow">Allow crowdsourcing contribution</sys:String>
+    <sys:String x:Key="settings_crowd_allow_description">Collect information about Samsung's proprietary Bluetooth protocol structure and data on demand. This allows me to keep all available Galaxy Buds models supported much more easily without owning them.</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport">Allow app crash reports</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport_description">Send application crash reports automatically in case of crashes or fatal errors using Sentry. This helps me to respond more quickly to problematic and disruptive application bugs.</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">Factory reset</sys:String>

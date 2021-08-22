@@ -139,7 +139,7 @@ namespace GalaxyBudsClient
                 ConnectionLostPage, CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(),
                 new WelcomePage(), UnsupportedFeaturePage, UpdatePage, UpdateProgressPage, new SystemCoredumpPage(),
                 new HotkeyPage(), new FirmwareSelectionPage(), new FirmwareTransferPage(), new SpatialTestPage(),
-                new BixbyRemapPage());
+                new BixbyRemapPage(), new CrowdsourcingSettingsPage());
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
@@ -255,8 +255,6 @@ namespace GalaxyBudsClient
         
         protected override async void OnClosing(CancelEventArgs e)
         {
-            Log.Debug("MainWindow.OnClosing: " + new StackTrace().ToString());
-        
             await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.FIND_MY_EARBUDS_STOP);
             
             if (SettingsProvider.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)

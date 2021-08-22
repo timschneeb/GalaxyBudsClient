@@ -4,7 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="414" d:DesignHeight="460"
         x:Class="GalaxyBudsClient.Interface.Developer.DevOptions"
-        Height="414" Width="460" MaxWidth="460"
+        Height="390" Width="460" MaxWidth="460"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/icon_white.ico"
         CanResize="False"
@@ -21,7 +21,6 @@
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -62,21 +61,6 @@
             <TextBlock TextWrapping="Wrap">
                     You can launch the Avalonia DevTools for user interface testing by focusing a window and pressing F12.
             </TextBlock>
-        </HeaderedContentControl>
-        <HeaderedContentControl Grid.Row="3" Classes="GroupBox" Header="Crowdsourcing">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" TextWrapping="Wrap">
-                    Collect information about Bluetooth protocol data if required. This allows me to keep all available Galaxy Buds models supported much more easily without owning them. Untick the checkbox to disable.
-                </TextBlock>
-                <CheckBox Grid.Column="1" x:Name="Crowdsourcing" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                        MaxHeight="30" MaxWidth="15" Margin="0,0,-97,0"
-                        Click="Crowdsourcing_OnClick"/>
-            </Grid>
         </HeaderedContentControl>
     </Grid>
 </Window>

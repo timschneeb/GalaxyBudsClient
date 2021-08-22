@@ -13,15 +13,10 @@ namespace GalaxyBudsClient.Interface.Developer
 {
     public sealed class DevOptions : Window
     {
-        private readonly CheckBox _crowdsourcing;
-        
         public DevOptions()
         {
             AvaloniaXamlLoader.Load(this);
             this.AttachDevTools();
-
-            _crowdsourcing = this.FindControl<CheckBox>("Crowdsourcing");
-            _crowdsourcing.IsChecked = !SettingsProvider.Instance.Experiments.Disabled;
         }
         
         private void LaunchDevTools_OnClick(object? sender, RoutedEventArgs e)
@@ -32,11 +27,6 @@ namespace GalaxyBudsClient.Interface.Developer
         private void LaunchTranslatorMode_OnClick(object? sender, RoutedEventArgs e)
         {
             DialogLauncher.ShowTranslatorTools();
-        }
-        
-        private void Crowdsourcing_OnClick(object? sender, RoutedEventArgs e)
-        {
-            SettingsProvider.Instance.Experiments.Disabled = !_crowdsourcing.IsChecked ?? false;
         }
     }
 }

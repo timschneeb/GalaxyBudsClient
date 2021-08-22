@@ -12,6 +12,7 @@ using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Model.Attributes;
+using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
@@ -116,6 +117,16 @@ namespace GalaxyBudsClient.Interface.Pages
                     Description = Loc.Resolve("devsel_invalid_selection")
                 }.ShowDialog(MainWindow.Instance);
                 return;
+            }
+
+            // TODO remove this later
+            if (spec.Device == Models.Buds2)
+            {
+                new MessageBox()
+                {
+                    Title = Loc.Resolve("error"),
+                    Description = "Buds2 support is currently untested and unfinished. Unexpected application crashes may occur. Please submit issues on GitHub."
+                }.ShowDialog(MainWindow.Instance);
             }
 
             SettingsProvider.Instance.RegisteredDevice.Model = spec.Device;
