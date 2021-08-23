@@ -191,7 +191,8 @@ namespace GalaxyBudsClient.Interface.Pages
             await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA);
             
 			_refreshTimer.Start();
-            _caseLabel.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery);
+            _caseLabel.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery) && 
+                                   (DeviceMessageCache.Instance.BasicStatusUpdate?.BatteryCase ?? 101) <= 100;
 
             /* Initial properties */
             if (_lastGetAllDataParser == null)
