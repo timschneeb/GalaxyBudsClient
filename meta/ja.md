@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>51%</td><td>189 missing string(s)</td></tr>
+<tr><td>51%</td><td>195 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -120,10 +120,16 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 <tr><td><code>coredump_dl_save_success</code></td><td>{0} dump(s) were written to '{1}'</td></tr>
 <tr><td><code>coredump_dl_save_dialog_title</code></td><td>Select a download directory...</td></tr>
 <tr><td><code>settings_autostart_permission</code></td><td>Cannot update auto-start entry in registry. Registry access (HKCU) was explicitly disabled by your system administrator.</td></tr>
+<tr><td><code>settings_crowdsourcing</code></td><td>Crowdsourcing</td></tr>
 <tr><td><code>settings_cpopup_primary_screen</code></td><td>Primary screen only</td></tr>
 <tr><td><code>settings_cpopup_primary_screen_description</code></td><td>Show popup only on the primary monitor</td></tr>
 <tr><td><code>settings_cpopup_wear_state</code></td><td>Use different color when in case</td></tr>
 <tr><td><code>settings_cpopup_wear_state_description</code></td><td>Gray earbud icon out when your earbuds are in the case</td></tr>
+<tr><td><code>settings_crowd_header</code></td><td>Crowdsourcing</td></tr>
+<tr><td><code>settings_crowd_allow</code></td><td>Allow crowdsourcing contribution</td></tr>
+<tr><td><code>settings_crowd_allow_description</code></td><td>Collect information about Samsung's proprietary Bluetooth protocol structure and data on demand. This allows me to keep all available Galaxy Buds models supported much more easily without owning them.</td></tr>
+<tr><td><code>settings_crowd_crashreport</code></td><td>Allow app crash reports</td></tr>
+<tr><td><code>settings_crowd_crashreport_description</code></td><td>Send application crash reports automatically in case of crashes or fatal errors using Sentry. This helps me to respond more quickly to problematic and disruptive application bugs.</td></tr>
 <tr><td><code>eq_preset</code></td><td>Preset</td></tr>
 <tr><td><code>eq_stereo_balance</code></td><td>Left/right sound balance</td></tr>
 <tr><td><code>eq_stereo_balance_value</code></td><td>{0}% left; {1}% right</td></tr>
