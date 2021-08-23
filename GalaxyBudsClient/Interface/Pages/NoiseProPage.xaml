@@ -48,7 +48,7 @@
                         Classes="BorderHoverStyle">
                     <items:SwitchListItem x:Name="AncToggle" Text="{DynamicResource anc}" Toggled="AncToggle_OnToggled"/>
                 </Border>
-                <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
+                <Separator Grid.Row="1" x:Name="AncLevelToggleSeparator" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
                 <Border Grid.Row="2" x:Name="AncLevelToggleBorder"  CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
                     <items:SwitchDetailListItem x:Name="AncLevelToggle" 
                                           Text="{DynamicResource nc_anc_level}" 

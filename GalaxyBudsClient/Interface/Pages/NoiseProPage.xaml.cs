@@ -159,6 +159,8 @@ namespace GalaxyBudsClient.Interface.Pages
                 BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DetectConversations);
             this.FindControl<Border>("AncLevelToggleBorder").IsVisible =
                 BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AncNoiseReductionLevels);
+            this.FindControl<Separator>("AncLevelToggleSeparator").IsVisible =
+                BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AncNoiseReductionLevels);
         }
         
         private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
