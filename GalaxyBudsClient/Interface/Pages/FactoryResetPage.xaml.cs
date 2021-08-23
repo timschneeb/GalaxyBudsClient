@@ -58,17 +58,8 @@ namespace GalaxyBudsClient.Interface.Pages
 			_pageHeader.BackButtonVisible = true;
 			_pageHeader.LoadingSpinnerVisible = false;
 			
-			string type = "Bud";
-			if (BluetoothImpl.Instance.ActiveModel == Models.BudsLive)
-			{
-				type = "Bean";
-			}
-			else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPro)
-			{
-				type = "Pro";
-			}
 			this.FindControl<IconListItem>("FactoryReset").Source =
-				(IImage?)Application.Current.FindResource($"Neutral{type}");
+				(IImage?)Application.Current.FindResource($"Neutral{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
 		}
 
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)

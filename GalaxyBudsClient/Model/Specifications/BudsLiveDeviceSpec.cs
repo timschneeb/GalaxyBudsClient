@@ -34,5 +34,7 @@ namespace GalaxyBudsClient.Model.Specifications
                 ItemType.LockTouchpad
             }
         );
+        
+        public string IconResourceKey => "Bean";
     }
 }

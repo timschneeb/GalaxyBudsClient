@@ -146,6 +146,13 @@ namespace GalaxyBudsClient.Interface.Pages
             }
         }
 
+        public void ResetCache()
+        {
+            _lastGetAllDataParser = null;
+            _lastPlacementL = PlacementStates.Disconnected;
+            _lastPlacementR = PlacementStates.Disconnected;
+        }
+
         private async void OnEventReceived(EventDispatcher.Event e, object? arg)
         {
             if (!BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Anc))
@@ -212,19 +219,9 @@ namespace GalaxyBudsClient.Interface.Pages
             }
 
             UpdateList();
-
-            string type = "Bud";
-            if (BluetoothImpl.Instance.ActiveModel == Models.BudsLive)
-            {
-                type = "Bean";
-            }
-            else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPro)
-            {
-                type = "Pro";
-            }
-
-            _findMyGear.Source = (IImage?)Application.Current.FindResource($"FindMyGear{type}");
-            _touch.Source = (IImage?)Application.Current.FindResource($"Touch{type}");
+            
+            _findMyGear.Source = (IImage?)Application.Current.FindResource($"FindMyGear{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
+            _touch.Source = (IImage?)Application.Current.FindResource($"Touch{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
 
             _loadingSpinner.IsVisible = !BluetoothImpl.Instance.IsConnected;
         }
@@ -344,16 +341,7 @@ namespace GalaxyBudsClient.Interface.Pages
             _lastLeftOnline = isLeftOnline;
             _lastRightOnline = isRightOnline;
 
-            string type = "Bud";
-            if (BluetoothImpl.Instance.ActiveModel == Models.BudsLive)
-            {
-                type = "Bean";
-            }
-            else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPro)
-            {
-                type = "Pro";
-            }
-
+            var type = BluetoothImpl.Instance.DeviceSpec.IconResourceKey;
             if (isLeftOnline)
             {
                 _iconLeft.Source = (IImage?)Application.Current.FindResource($"Left{type}Connected");

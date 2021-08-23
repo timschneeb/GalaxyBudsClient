@@ -22,5 +22,6 @@ namespace GalaxyBudsClient.Model.Specifications
         public ITouchOption TouchMap => new StubTouchOption();
         public Guid ServiceUuid => new Guid("{00000000-0000-0000-0000-000000000000}");
         public IReadOnlyCollection<ItemType> TrayShortcuts => new List<ItemType>();
+        public string IconResourceKey => "Bud";
     }
 }

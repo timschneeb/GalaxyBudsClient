@@ -201,16 +201,7 @@ namespace GalaxyBudsClient.Interface.Pages
             bool isRightOnline = right > 0;
 
 
-            string type = "Bud";
-            if (BluetoothImpl.Instance.ActiveModel == Models.BudsLive)
-            {
-                type = "Bean";
-            }
-            else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPro)
-            {
-                type = "Pro";
-            }
-
+            var type = BluetoothImpl.Instance.DeviceSpec.IconResourceKey;
             if (isLeftOnline)
             {
                 _iconLeft.Source = (IImage?)Application.Current.FindResource($"Left{type}Connected");

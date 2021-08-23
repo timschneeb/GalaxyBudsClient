@@ -39,6 +39,7 @@ namespace GalaxyBudsClient.Model.Specifications
         public ITouchOption TouchMap { get; }
         public Guid ServiceUuid { get; }
         public IReadOnlyCollection<ItemType> TrayShortcuts { get; }
+        public string IconResourceKey { get; }
         
         public bool Supports(Feature feature)
         {

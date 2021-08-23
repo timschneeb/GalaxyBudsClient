@@ -124,8 +124,8 @@ namespace GalaxyBudsClient.Interface.Pages
             {
                 new MessageBox()
                 {
-                    Title = Loc.Resolve("error"),
-                    Description = "Buds2 support is currently untested and unfinished. Unexpected application crashes may occur. Please submit issues on GitHub."
+                    Title = "Important message",
+                    Description = "Buds2 support is currently untested and unfinished. Unexpected application crashes may occur. Please submit issues/crashes on GitHub."
                 }.ShowDialog(MainWindow.Instance);
             }
 
@@ -136,6 +136,8 @@ namespace GalaxyBudsClient.Interface.Pages
 
             Task.Factory.StartNew(async () =>
             {
+                MainWindow.Instance.HomePage.ResetCache();
+                
                 if (await BluetoothImpl.Instance.ConnectAsync())
                 {
                     MainWindow.Instance.Pager.SwitchPage(Pages.Home);
@@ -194,6 +196,8 @@ namespace GalaxyBudsClient.Interface.Pages
                 AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds Live (4AC3) [Dummy]", "4A:6B:87:E5:12:C3", true,
                     true, new BluetoothCoD(0)));
                 AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds Pro (E43F) [Dummy]", "E4:25:FA:6D:B9:3F", true,
+                    true, new BluetoothCoD(0)));
+                AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds2 (D592) [Dummy]", "D5:97:B8:23:AB:92", true,
                     true, new BluetoothCoD(0)));
             }
             

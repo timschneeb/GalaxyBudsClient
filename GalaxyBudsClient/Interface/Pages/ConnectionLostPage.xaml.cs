@@ -94,16 +94,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		public override void OnPageShown()
 		{
-			string type = "Bud";
-			if (BluetoothImpl.Instance.ActiveModel == Models.BudsLive)
-			{
-				type = "Bean";
-			}
-			else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPro)
-			{
-				type = "Pro";
-			}
-			_retry.Source = (IImage?)Application.Current.FindResource($"Neutral{type}");
+			_retry.Source = (IImage?)Application.Current.FindResource($"Neutral{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
 		}
 
 		public override void OnPageHidden()

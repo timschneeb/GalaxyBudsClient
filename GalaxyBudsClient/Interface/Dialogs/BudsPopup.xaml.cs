@@ -96,14 +96,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
             _batteryR.IsVisible = isRightOnline;
             _batteryC.IsVisible = isCaseOnline;
             _caseLabel.IsVisible = isCaseOnline;
-
-            string type = BluetoothImpl.Instance.ActiveModel switch
-            {
-                Models.BudsLive => "Bean",
-                Models.BudsPro => "Pro",
-                _ => "Bud"
-            };
-
+            
             // Override color behaviour
             if (SettingsProvider.Instance.Popup.ShowWearableState)
             {
@@ -116,7 +109,8 @@ namespace GalaxyBudsClient.Interface.Dialogs
                     isRightOnline = false;
                 }
             }
-         
+
+            var type = BluetoothImpl.Instance.DeviceSpec.IconResourceKey;
             if (isLeftOnline)
             {
                 _iconLeft.Source = (IImage?)Application.Current.FindResource($"Left{type}Connected");
