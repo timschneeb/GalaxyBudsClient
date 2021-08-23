@@ -22,6 +22,7 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.FragmentedMessages, null },
                 { IDeviceSpec.Feature.SpatialSensor, null },
                 { IDeviceSpec.Feature.BixbyWakeup, null },
+                { IDeviceSpec.Feature.AncNoiseReductionLevels, null },
             };
         
         public Models Device => Models.BudsPro;

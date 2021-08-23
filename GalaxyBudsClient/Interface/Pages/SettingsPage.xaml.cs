@@ -26,8 +26,7 @@ namespace GalaxyBudsClient.Interface.Pages
         private readonly MenuDetailListItem _locale;
         private readonly SwitchDetailListItem _minimizeTray;
         private readonly SwitchDetailListItem _autostart;
-        private readonly Border _trayOptionBorder;
-
+        
         public SettingsPage()
         {
             AvaloniaXamlLoader.Load(this);
@@ -35,9 +34,12 @@ namespace GalaxyBudsClient.Interface.Pages
             _locale = this.FindControl<MenuDetailListItem>("LocaleSelect");
             _minimizeTray = this.FindControl<SwitchDetailListItem>("MinimizeTrayToggle");
             _autostart = this.FindControl<SwitchDetailListItem>("AutostartToggle");
-            _trayOptionBorder = this.FindControl<Border>("TrayOptionBorder");
+            
+            this.FindControl<Separator>("AutostartToggleSeparator").IsVisible = PlatformUtils.SupportsTrayIcon;
+            this.FindControl<Separator>("MinimizeTrayToggleSeparator").IsVisible = PlatformUtils.SupportsTrayIcon;
 
-            //_trayOptionBorder.IsVisible = PlatformUtils.SupportsTrayIcon;
+            _minimizeTray.IsVisible = PlatformUtils.SupportsTrayIcon;
+            _autostart.IsVisible = PlatformUtils.SupportsTrayIcon;
         }
 
         public override void OnPageShown()

@@ -49,7 +49,7 @@
                     <items:SwitchListItem x:Name="AncToggle" Text="{DynamicResource anc}" Toggled="AncToggle_OnToggled"/>
                 </Border>
                 <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
-                <Border Grid.Row="2" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                <Border Grid.Row="2" x:Name="AncLevelToggleBorder"  CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
                     <items:SwitchDetailListItem x:Name="AncLevelToggle" 
                                           Text="{DynamicResource nc_anc_level}" 
                                           Description="{DynamicResource nc_anc_level_description}"
@@ -57,7 +57,7 @@
                 </Border>
             </Grid>
         </Border>
-        <Border Grid.Row="5" Classes="RoundedBorderListItem BottomSpacer10">
+        <Border Grid.Row="5" Classes="RoundedBorderListItem BottomSpacer10" x:Name="VoiceDetectBorder" >
             <Grid ClipToBounds="True">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />

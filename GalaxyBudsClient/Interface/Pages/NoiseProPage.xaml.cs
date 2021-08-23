@@ -33,6 +33,7 @@ namespace GalaxyBudsClient.Interface.Pages
         
         private readonly SwitchDetailListItem _voiceDetect;
         private readonly MenuDetailListItem _voiceDetectTimeout;
+        private readonly Border _voiceBorder;
 
         public NoiseProPage()
         {   
@@ -45,6 +46,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
             _voiceDetect = this.FindControl<SwitchDetailListItem>("VoiceDetect");
             _voiceDetectTimeout = this.FindControl<MenuDetailListItem>("VoiceDetectTimeout");
+            _voiceBorder = this.FindControl<Border>("VoiceDetectBorder");
             
             SPPMessageHandler.Instance.NoiseControlUpdateResponse += (sender, mode) => SetNoiseControlState(mode);
             SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
@@ -153,6 +155,10 @@ namespace GalaxyBudsClient.Interface.Pages
 
         public override void OnPageShown()
         {
+            _voiceBorder.IsVisible =
+                BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DetectConversations);
+            this.FindControl<Border>("AncLevelToggleBorder").IsVisible =
+                BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AncNoiseReductionLevels);
         }
         
         private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)

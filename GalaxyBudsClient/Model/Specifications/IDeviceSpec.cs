@@ -30,7 +30,8 @@ namespace GalaxyBudsClient.Model.Specifications
             StereoPan,
             FirmwareUpdates,
             SpatialSensor,
-            AncWithOneEarbud
+            AncWithOneEarbud,
+            AncNoiseReductionLevels
         }
         
         public Dictionary<Feature, FeatureRule?> Rules { get; }

@@ -92,7 +92,8 @@ namespace GalaxyBudsClient.Model
                             BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl));
                 case Event.SwitchAncSensitivity:
                     return (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Anc) ||
-                            BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl));
+                            BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl))
+                           && BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AncNoiseReductionLevels);
                 case Event.ToggleDoubleEdgeTouch:
                     return BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DoubleTapVolume);
                 case Event.ToggleConversationDetect:
