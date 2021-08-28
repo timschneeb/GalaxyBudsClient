@@ -119,16 +119,6 @@ namespace GalaxyBudsClient.Interface.Pages
                 return;
             }
 
-            // TODO remove this later
-            if (spec.Device == Models.Buds2)
-            {
-                new MessageBox()
-                {
-                    Title = "Important message",
-                    Description = "Buds2 support is currently untested and unfinished. Unexpected application crashes may occur. Please submit issues/crashes on GitHub."
-                }.ShowDialog(MainWindow.Instance);
-            }
-
             SettingsProvider.Instance.RegisteredDevice.Model = spec.Device;
             SettingsProvider.Instance.RegisteredDevice.MacAddress = selection.Address;
 
