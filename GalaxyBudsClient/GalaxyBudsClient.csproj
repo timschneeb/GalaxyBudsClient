@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
+        <OutputType>WinExe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <ApplicationIcon>Resources/icon_white.ico</ApplicationIcon>
-        <AssemblyVersion>4.3.0.0</AssemblyVersion>
-        <Version>4.3.0.0</Version>
+        <AssemblyVersion>4.3.1.0</AssemblyVersion>
+        <Version>4.3.1.0</Version>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <Configurations>Debug;Release;Debug (Local server);Release - Windows ARM</Configurations>
         <Platforms>AnyCPU</Platforms>
-        <DisableWinExeOutputInference>true</DisableWinExeOutputInference>
+        <DisableWinExeOutputInference>false</DisableWinExeOutputInference>
     </PropertyGroup>
     
     <PropertyGroup>
