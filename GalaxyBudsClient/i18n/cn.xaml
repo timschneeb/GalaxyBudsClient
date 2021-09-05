@@ -21,7 +21,7 @@
 
     <sys:String x:Key="nobluetoothdev">未找到蓝牙设备 请开启蓝牙后重试</sys:String>
 
-    <sys:String x:Key="anc">主动降噪</sys:String>
+    <sys:String x:Key="anc">降噪</sys:String>
 
     <!-- SPP Message Parser -->
     <sys:String x:Key="sppmsg_too_small">包大小太小</sys:String>
@@ -333,6 +333,7 @@
     
     <sys:String x:Key="settings_connpopup">配置连接弹出菜单</sys:String>
     <sys:String x:Key="settings_devmode">开发者选项</sys:String>
+    <sys:String x:Key="settings_crowdsourcing">数据收集</sys:String>
 
     <!-- Settings >>> Connection popup -->
     <sys:String x:Key="settings_cpopup_header">连接弹窗</sys:String>
@@ -349,6 +350,13 @@
     <sys:String x:Key="settings_cpopup_primary_screen_description">仅在主屏幕显示弹出窗口</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state">需要时使用默认颜色</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state_description">在这种情况下出现灰色耳机图标</sys:String>
+
+    <!-- Settings >>> Crowdsourcing settings -->
+    <sys:String x:Key="settings_crowd_header">数据收集</sys:String>
+    <sys:String x:Key="settings_crowd_allow">允许收集数据</sys:String>
+    <sys:String x:Key="settings_crowd_allow_description">按需收集关于三星专有的蓝牙协议结构和数据的信息。这使我能够在不拥有 Galaxy Buds 的情况下更容易地保持所有可用的 Galaxy Buds 型号的支持。</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport">允许应用错误报告</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport_description">在发生崩溃或致命错误时，使用 Sentry 自动发送应用崩溃报告。这有助于我对有问题的和破坏性的 BUG 作出更迅速的反应。</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">恢复出厂设置</sys:String>
@@ -486,7 +494,7 @@
     <sys:String x:Key="fw_upload_progress">上传固件中... {0}%</sys:String>
     <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>
     <sys:String x:Key="fw_upload_progress_stats">统计</sys:String>
-    <sys:String x:Key="fw_upload_note">您的耳塞将被断开连接，并在传输结束后立即开始安装上传的固件更新。在此过程中，您的耳塞将停止反应，并拒绝任何蓝牙连接请求。在大多数情况下，板载更新过程结束后，耳塞会尝试自动重新连接。</sys:String>
+    <sys:String x:Key="fw_upload_note">您的耳塞将被断开连接，并在传输结束后立即开始安装上传的固件更新。在此过程中，您的耳塞将停止反应，并拒绝任何蓝牙连接请求。在大多数情况下，板载更新过程结束后，耳塞会尝试自动重新连接。请不要在更新时关闭你的耳机。</sys:String>
     <sys:String x:Key="fw_upload_progress_stats_mtu">最大传输单元: {0} bytes</sys:String>
     <sys:String x:Key="fw_upload_progress_stats_offset">处理数据从偏移量 0x{0:X6} to 0x{1:X6}</sys:String>
     <sys:String x:Key="fw_upload_progress_stats_segment">上传分块 #{0} ({1} bytes，校验和 0x{2:X6})</sys:String>
