@@ -60,6 +60,12 @@
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
+Windows 版本也在 Windows Package Manager (winget) 提供安装
+
+```
+winget install ThePBone.GalaxyBudsClient
+```
+
 ## 工作原理
 
 要使用蓝牙无线技术，设备必须能够解释某些蓝牙配置文件，这些配置文件是对可能的应用的定义，并规定了支持蓝牙的设备用来与其他蓝牙设备通信的一般行为。
@@ -116,7 +122,7 @@ Galaxy Buds 定义了两种蓝牙模式：用于音频流/控制的 A2DP (高级
 * [@PlasticBrain](https://github.com/fhalfkg) -  韩语和日语翻译
 * [@cozyplanes](https://github.com/cozyplanes) -  韩语翻译
 * [@erenbektas](https://github.com/erenbektas) - 土耳其语翻译
-* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) and [@pseudor](https://github.com/pseudor) - 中文翻译
+* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad), [@pseudor](https://github.com/pseudor) and [@YexuanXiao](https://github.com/YexuanXiao) - 中文翻译
 * [@efrenbg1](https://github.com/efrenbg1) and Andrew Gonza - 西班牙语翻译
 * [@giovankabisano](https://github.com/giovankabisano) - 印度尼西亚语翻译
 * [@lucasskluser](https://github.com/lucasskluser) - 葡萄牙语翻译
