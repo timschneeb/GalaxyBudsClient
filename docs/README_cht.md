@@ -1,6 +1,6 @@
 
 <p align="center">
-  English | <a href="/docs/README_chs.md">中文</a> | <a href="/docs/README_cht.md">中文(繁體)</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> <br>
+ <a href="../README.md">English</a> | <a href="/docs/README_chs.md">中文(簡體)</a> | 中文(繁體) | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> <br>
     <sub>注意：此自述文件由翻譯人員維護，可能會與當前的新版本有一定的誤差。 最新信息以英文版為準。</sub>
 </p>
 <h1 align="center">
@@ -25,8 +25,8 @@
 <p align="center">
   <a href="#key-features">主要功能</a> •
   <a href="#download">下載</a> •
-  <a href="#how-it-works">How it works</a> •
-  <a href="#contributing">Contributing</a> •
+  <a href="#how-it-works">運行方式</a> •
+  <a href="#contributing">貢獻</a> •
   <a href="#credits">Credits</a> •
   <a href="#license">License</a>
 </p>
@@ -66,7 +66,7 @@ Windows 程序包也可與 Windows 程序包管理器 (winget) 一起安裝
 winget install ThePBone.GalaxyBudsClient
 ```
 
-## How it works
+## 運行方式
 
 要使用藍牙無線技術，設備必須能夠解釋某些藍牙配置文件，這些配置文件是可能的應用程序的定義，並指定支持藍牙的設備用於與其他藍牙設備通信的一般行為。
 
@@ -81,65 +81,65 @@ Galaxy Buds 定義了兩個藍牙配置文件：用於音頻流/控制的 A2DP�
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md">Galaxy Buds Plus Notes</a>
 </p>
 
-While taking a closer look at the Galaxy Buds Plus, I also noticed some unusual features, such as a firmware debug mode, an unused pairing mode and a Bluetooth key dumper. I documented these findings here:
+在仔細觀察 Galaxy Buds Plus 的同時，我還注意到了一些不尋常的功能，例如固件調試模式、未使用的配對模式和藍牙密鑰轉儲器。我在這裡記錄了這些發現：
 
 <p align="center">
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsPlus_HiddenDebugFeatures.md">Galaxy Buds Plus: Unusual features</a>
 </p>
 
-Currently, I'm looking into modifying and reverse-engineering the firmware for the Buds+. At time of writing I have two tools to fetch and analyse with official firmware binaries. Check them out here:
+目前，我正在研究、修改和反向工程 Buds+ 的固件。在撰寫本文時，我有兩個工具可以使用官方固件二進製文件獲取和分析。在這裡查看它們：
 
 <p align="center">
   <a href="https://github.com/ThePBone/GalaxyBudsFirmwareDownloader">Firmware Downloader</a> •
   <a href="https://github.com/ThePBone/GalaxyBudsFirmwareExtractor">Firmware Extractor</a>
 </p>
 
-Stream head-tracking data in realtime from your Buds Pro using this script: [ThePBone/BudsPro-Headtracking](https://github.com/ThePBone/BudsPro-Headtracking)
+使用此腳本從 Buds Pro 實施流動式傳輸頭部跟踪數據: [ThePBone/BudsPro-Headtracking](https://github.com/ThePBone/BudsPro-Headtracking)
 
-## Contributing
+## 貢獻
 
-Feature requests, bug reports, and pull requests of any kind are always welcome.
+隨時歡迎各位，提出任何類型的功能需求、錯誤報告和拉取請求
 
-If you want to report bugs or propose your ideas for this project, you are welcome to [open a new issue](https://github.com/ThePBone/GalaxyBudsClient/issues/new/choose) with a suitable template. [Visit our wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/2.-How-to-submit-issues) for a detailed explanation.
+如果你想為這個項目報告 Bug 或提出你的想法，歡迎你用合適的模板 [創建新的 issue](https://github.com/ThePBone/GalaxyBudsClient/issues/new/choose) 亦或者 [觀看本專案的 wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/2.-How-to-submit-issues) 以獲得詳細說明。
 
-If you are planning to help us translating this app, [refer to the instructions on our wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations). No programming knowledge is required, you can test your custom translations without installing any development tools before submitting a pull request.
-You can find auto-generated progress reports for existing translations [here](https://github.com/ThePBone/GalaxyBudsClient/blob/master/meta/translations.md).
+如果您打算幫助我們翻譯此應用程序，請參閱我們 [wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations) 上的說明。這並不需要編程知識，您可以在提交拉取請求之前測試您的自定義翻譯，而無需安裝任何開發工具。您可以在 [此處](https://github.com/ThePBone/GalaxyBudsClient/blob/master/meta/translations.md) 找到現有翻譯的自動生成進度報告。
 
-If you want to contribute your own code, you can simply submit a plain pull request explaining you changes. For larger and complex contributions it would be nice if you could open an issue (or message me via Telegram [@thepbone](https://t.me/thepbone)) before starting to work on it.
+如果你想貢獻你自己的代碼，你可以簡單地提交一個簡單的拉取請求來解釋你的變化。對於更大和更複雜的貢獻，如果您可以在開始處理之前打開一個問題或通過 (Telegram [@thepbone](https://t.me/thepbone)) 給我發消息，那就更棒了。
 
 ## Credits
 
-### Contributors
+### 貢獻人員
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue templates, wiki and translations
-* [@AndriesK](https://github.com/AndriesK) - Buds Live bug fix
-* [@TheLastFrame](https://github.com/TheLastFrame) - Buds Pro icons
+* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue模板、 wiki 和 翻譯
+* [@AndriesK](https://github.com/AndriesK) - Buds Live 錯誤修復
+* [@TheLastFrame](https://github.com/TheLastFrame) - Buds Pro 圖標
 * [@githubcatw](https://github.com/githubcatw) - Connection dialog base
 * [@GaryGadget9](https://github.com/GaryGadget9) - WinGet package
 
-### Translators
+### 翻譯人員
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Russian and Ukrainian translation
-* [@PlasticBrain](https://github.com/fhalfkg) - Korean and Japanese translation
-* [@cozyplanes](https://github.com/cozyplanes) - Korean translation
-* [@erenbektas](https://github.com/erenbektas) - Turkish translation
-* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) and [@pseudor](https://github.com/pseudor) - Chinese translation
-* [@efrenbg1](https://github.com/efrenbg1) and Andrew Gonza - Spanish translation
-* [@giovankabisano](https://github.com/giovankabisano) - Indonesian translation
-* [@lucasskluser](https://github.com/lucasskluser) - Portuguese translation
-* [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Italian translation
-* [@Buashei](https://github.com/Buashei) - Polish translation
-* [@KatJillianne](https://github.com/KatJillianne) - Vietnamese translation
-* [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - Czech translation
-* [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - German translation
-* [@nikossyr](https://github.com/nikossyr) - Greek translation
-* [@grigorem](https://github.com/grigorem) - Romanian translation
-* [@tretre91](https://github.com/tretre91) - French translation
-* [@Sigarya](https://github.com/Sigarya) - Hebrew translation
+* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - 俄語和烏克蘭語翻譯
+* [@PlasticBrain](https://github.com/fhalfkg) - 韓語和日語翻譯
+* [@cozyplanes](https://github.com/cozyplanes) -韓語翻譯
+* [@erenbektas](https://github.com/erenbektas) - 土耳其語翻譯
+* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad), [@pseudor](https://github.com/pseudor) - 中文翻譯
+* [@YiJhu](https://github.com/YiJhu) - 繁體中文翻譯
+* [@efrenbg1](https://github.com/efrenbg1) 和 Andrew Gonza - 西班牙語翻譯
+* [@giovankabisano](https://github.com/giovankabisano) - 印尼語翻譯
+* [@lucasskluser](https://github.com/lucasskluser) - 葡萄牙語翻譯
+* [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - 義大利語翻譯
+* [@Buashei](https://github.com/Buashei) - 波蘭語翻譯
+* [@KatJillianne](https://github.com/KatJillianne) - 越南語翻譯
+* [@joskaja](https://github.com/joskaja), [@Joedmin](https://github.com/Joedmin) - 捷克語翻譯
+* [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - 德語翻譯
+* [@nikossyr](https://github.com/nikossyr) - 希臘語翻譯
+* [@grigorem](https://github.com/grigorem) - 羅馬尼亞語翻譯
+* [@tretre91](https://github.com/tretre91) - 法語翻譯
+* [@Sigarya](https://github.com/Sigarya) - 希伯來語翻譯
 
 ## License
 
-This project is licensed under [GPLv3](https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE). It is not affiliated with Samsung nor supervised by them in any way.
+本專案使用 [GPLv3](https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE) 授權許可。它不隸屬於三星(Samsung)，也不以任何方式受他們(Samsung)監督。
 
 ```
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
