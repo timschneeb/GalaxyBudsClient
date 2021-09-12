@@ -23,10 +23,10 @@
   </a>
 </p>
 <p align="center">
-  <a href="#key-features">主要功能</a> •
-  <a href="#download">下載</a> •
-  <a href="#how-it-works">運行方式</a> •
-  <a href="#contributing">貢獻</a> •
+  <a href="#主要功能">主要功能</a> •
+  <a href="#下載">下載</a> •
+  <a href="#運行方式">運行方式</a> •
+  <a href="#貢獻">貢獻</a> •
   <a href="#credits">Credits</a> •
   <a href="#license">License</a>
 </p>

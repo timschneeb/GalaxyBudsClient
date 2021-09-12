@@ -57,8 +57,10 @@ namespace GalaxyBudsClient.Model
             cz,
             [Description("Turkish")]
             tr,
-            [Description("Chinese")]
+            [Description("Simplified-Chinese")]
             cn,
+            [Description("Traditional-Chinese")]
+            tw,
             [Description("Indonesian")]
             in_,
             [Description("Vietnamese")]
