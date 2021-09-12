@@ -1,0 +1,531 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+ 
+    <sys:String x:Key="ResourceDictionaryName">Loc-tw</sys:String>
+
+    <!-- :::::::: Source code :::::::: -->
+
+    <!-- General -->
+    <sys:String x:Key="okay">Ok</sys:String>
+    <sys:String x:Key="left">左</sys:String>
+    <sys:String x:Key="right">右</sys:String>
+    <sys:String x:Key="case">充電盒</sys:String>
+    <sys:String x:Key="error">錯誤</sys:String>
+    <sys:String x:Key="cancel">取消</sys:String>
+    <sys:String x:Key="apply">套用</sys:String>
+    <sys:String x:Key="select">選擇</sys:String>
+    <sys:String x:Key="notset">未設定</sys:String>
+    <sys:String x:Key="unknown">Unknown</sys:String>
+    <sys:String x:Key="back">返回</sys:String>
+
+    <sys:String x:Key="nobluetoothdev">未找到藍牙裝置 請確認已啟用藍牙後並重試。</sys:String>
+
+    <sys:String x:Key="anc">主動降噪</sys:String>
+
+    <!-- SPP Message Parser -->
+    <sys:String x:Key="sppmsg_too_small">數據包太小</sys:String>
+    <sys:String x:Key="sppmsg_invalid_som">SOM 無效</sys:String>
+    <!-- Context: SOM = Start of message -->
+    <sys:String x:Key="sppmsg_invalid_eom">EOM 無效</sys:String>
+    <!-- Context: EOM = End of message -->
+    <sys:String x:Key="sppmsg_size_mismatch">Payload 大小不匹配 </sys:String>
+    <sys:String x:Key="sppmsg_crc_fail">驗證碼錯誤</sys:String>
+    <sys:String x:Key="sppmsg_tl">數據包太小</sys:String>
+
+    <!-- Dark Mode States -->
+    <sys:String x:Key="darkmode_disabled">Off</sys:String>
+    <sys:String x:Key="darkmode_enabled">On</sys:String>
+    <sys:String x:Key="darkmode_system">跟隨系統設置</sys:String>
+
+    <!-- Connection popup -->
+    <sys:String x:Key="connpopup_placement_tl">Top left</sys:String>
+    <sys:String x:Key="connpopup_placement_tc">Top center</sys:String>
+    <sys:String x:Key="connpopup_placement_tr">Top right</sys:String>
+    <sys:String x:Key="connpopup_placement_bl">Bottom left</sys:String>
+    <sys:String x:Key="connpopup_placement_bc">Bottom center</sys:String>
+    <sys:String x:Key="connpopup_placement_br">Bottom right</sys:String>
+    <sys:String x:Key="connpopup_title">{0}的 Galaxy Buds{1}</sys:String>
+    <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
+
+    <!-- Placement  (Buds+) -->
+    <sys:String x:Key="placement_disconnected">中斷連接</sys:String>
+    <sys:String x:Key="placement_wearing">配戴中</sys:String>
+    <sys:String x:Key="placement_not_wearing">閒置</sys:String>
+    <sys:String x:Key="placement_in_case">在充電盒</sys:String>
+
+    <!-- Touch options -->
+    <sys:String x:Key="touchoption_voice">語音助手</sys:String>
+    <sys:String x:Key="touchoption_quickambientsound">快速切換環境聲</sys:String>
+    <sys:String x:Key="touchoption_volume">音量</sys:String>
+    <sys:String x:Key="touchoption_volume_up">音量 +</sys:String>
+    <sys:String x:Key="touchoption_volume_down">音量 -</sys:String>
+    <sys:String x:Key="touchoption_ambientsound">環境聲</sys:String>
+    <sys:String x:Key="touchoption_switch_noisecontrols">切换降噪模式</sys:String>
+    <sys:String x:Key="touchoption_spotify">Spotify (Android only)</sys:String>
+    <sys:String x:Key="touchoption_custom">自定義操作...</sys:String>
+    <sys:String x:Key="touchoption_custom_null">未設置</sys:String>
+    <sys:String x:Key="touchoption_custom_unknown">Unknown</sys:String>
+    <sys:String x:Key="touchoption_custom_prefix">自定義操作:</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_hotkey">按下熱鍵...</sys:String>
+    <sys:String x:Key="touchoption_custom_external_app">運行外部程序...</sys:String>
+
+    <!-- Options menu -->
+    <sys:String x:Key="optionsmenu_title">選項</sys:String>
+    <sys:String x:Key="optionsmenu_settings">設置</sys:String>
+    <sys:String x:Key="optionsmenu_refresh">刷新 儀表板</sys:String>
+    <sys:String x:Key="optionsmenu_deregister">註銷設備</sys:String>
+    <sys:String x:Key="optionsmenu_update">檢查更新</sys:String>
+    <sys:String x:Key="optionsmenu_credits">Credits</sys:String>
+
+    <!-- Tray context menu -->
+    <sys:String x:Key="tray_unlock_touchpad">解鎖 觸控板</sys:String>
+    <sys:String x:Key="tray_lock_touchpad">鎖定 觸控板</sys:String>
+    <sys:String x:Key="tray_enable_ambient_sound">啟用 環境聲</sys:String>
+    <sys:String x:Key="tray_disable_ambient_sound">停用 環境聲</sys:String>
+    <sys:String x:Key="tray_enable_eq">啟用 平衡器</sys:String>
+    <sys:String x:Key="tray_disable_eq">停用 平衡器</sys:String>
+    <sys:String x:Key="tray_enable_anc">啟用 主動降噪</sys:String>
+    <sys:String x:Key="tray_disable_anc">停用 主動降噪</sys:String>
+    <sys:String x:Key="tray_switch_noise">切換 降噪模式</sys:String>
+    <sys:String x:Key="tray_quit">退出</sys:String>
+
+
+    <!-- :::::::: XAML files (static) :::::::: -->
+
+    <!-- General -->
+    <sys:String x:Key="continue_button">繼續</sys:String>
+
+    <!-- Hotkey Recorder Dialog (Custom action) -->
+    <sys:String x:Key="hotrec_title">熱鍵 紀錄</sys:String>
+    <sys:String x:Key="hotrec_content">請輸入熱鍵組合（按住）:</sys:String>
+    <sys:String x:Key="hotrec_empty">無</sys:String>
+    <sys:String x:Key="hotrec_note">注意：由於 使用者介面特權隔離(UIPI)，只有相同或更低級別的應用程序才能正確接收熱鍵命令。</sys:String>
+
+    <!-- Hotkey Action Builder Dialog -->
+    <sys:String x:Key="hotkey_edit_title">熱鍵編輯器</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid">熱鍵選擇無效</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_desc">請至少選擇一個 熱鍵 和 修飾符</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_mod">缺少 修飾符</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action">無效動作</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action_desc">請選擇一個動作</sys:String>
+    <sys:String x:Key="hotkey_edit_modifier">修飾符</sys:String>
+    <sys:String x:Key="hotkey_edit_keys">按鍵</sys:String>
+    <sys:String x:Key="hotkey_edit_action">動作</sys:String>
+    <sys:String x:Key="hotkey_edit_preview">熱鍵預覽: </sys:String>
+    <sys:String x:Key="hotkey_edit_header">選擇鍵盤熱鍵</sys:String>
+    
+    <!-- Hotkey page -->
+    <sys:String x:Key="hotkey_header">鍵盤熱鍵</sys:String>
+    <sys:String x:Key="hotkey_add">分配新熱鍵</sys:String>
+    <sys:String x:Key="hotkey_empty">未分配熱鍵</sys:String>
+    <sys:String x:Key="hotkey_empty_desc">通過單擊上面的按鈕創建一個新的鍵盤熱鍵</sys:String>
+    <sys:String x:Key="hotkey_edit">編輯</sys:String>
+    <sys:String x:Key="hotkey_delete">刪除</sys:String>
+    <sys:String x:Key="hotkey_add_error">無法 新增/更新 熱鍵</sys:String>
+    <sys:String x:Key="hotkey_add_error_context">受影響的熱鍵: </sys:String>
+    <sys:String x:Key="hotkey_add_error_duplicate">您選擇的組合鍵已被此應用程序或其他應用程序註冊為熱鍵。 請選擇另一個。</sys:String>
+    <sys:String x:Key="hotkey_add_error_unknown">操作系統響應錯誤 '{0}'</sys:String>
+
+    <!-- EventDispatcher module -->
+    <sys:String x:Key="event_none">None</sys:String>
+    <sys:String x:Key="event_ambient_toggle">切換環境聲</sys:String>
+    <sys:String x:Key="event_ambient_volume_up">環境音量 調高</sys:String>
+    <sys:String x:Key="event_ambient_volume_down">環境音量 降低</sys:String>
+    <sys:String x:Key="event_eq_toggle">切換均衡器</sys:String>
+    <sys:String x:Key="event_eq_switch">迭代均衡器預設</sys:String>
+    <sys:String x:Key="event_anc_toggle">切換降噪</sys:String>
+    <sys:String x:Key="event_anc_switch_sensitivity">切換降躁靈敏度</sys:String>
+    <sys:String x:Key="event_touch_lock_toggle">切換觸摸板鎖定</sys:String>
+    <sys:String x:Key="event_double_edge_touch_toggle">切換雙邊觸摸功能</sys:String>
+    <sys:String x:Key="event_conversation_toggle">切換對話檢測</sys:String>
+    <sys:String x:Key="event_start_stop_find">開始/停止 尋找我的耳機</sys:String>
+    <sys:String x:Key="event_start_find">開始 尋找我的耳機</sys:String>
+    <sys:String x:Key="event_stop_find">停止 尋找我的耳機</sys:String>
+    <sys:String x:Key="event_paring_mode">配對模式</sys:String>
+    <sys:String x:Key="event_media_play">播放 媒體</sys:String>
+    <sys:String x:Key="event_media_pause">暫停 媒體</sys:String>
+    <sys:String x:Key="event_media_play_pause">播放/暫停 媒體</sys:String>
+    <sys:String x:Key="event_manager_visible">顯示/隱藏 管理器窗口</sys:String>
+    <sys:String x:Key="event_display_battery_popup">顯示電池彈出窗口</sys:String>
+    <sys:String x:Key="event_connect">連接到設備</sys:String>
+    
+    <!-- Welcome page -->
+    <sys:String x:Key="welcome_textblock_header">歡迎！</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">
+        Hi！ 這個 Galaxy Buds Manager 是非官方的開源程式，與三星沒有任何關聯，請記住這一點。&#10;本程序擁有比官方 Samsung wearable 更多的功能； 但是，並非所有功能都能支援您的設備與裝置。
+    </sys:String>
+    <sys:String x:Key="welcome_textblock_p2">
+        如果您對開發本程式有興趣，可以查看我的 GitHub 存儲庫，其中包含一個小型逆向工程筆記。如果您碰巧遇到任何問題，也可以在 GitHub 或 Telegram @thepbone 上給我發消息。
+    </sys:String>
+    <sys:String x:Key="welcome_textblock_p3">
+        此應用程式支持所有 Galaxy Buds 型號。
+    </sys:String>
+    <sys:String x:Key="welcome_darkmode">黑色模式</sys:String>
+    <sys:String x:Key="welcome_darkmode_content">你的眼睛已經不舒服了嗎？ 可以試試我們的黑色模式！ （需要重新加載）</sys:String>
+
+    <!-- Main page -->
+    <sys:String x:Key="mainpage_corrupt_data">收到損壞的數據。 正在重新連接...</sys:String>
+    <sys:String x:Key="mainpage_find_my_earbuds">尋找我的 earbuds</sys:String>
+    <sys:String x:Key="mainpage_touchpad">觸摸板</sys:String>
+    <sys:String x:Key="mainpage_ambient_sound">環境聲</sys:String>
+    <sys:String x:Key="mainpage_noise">噪音控制</sys:String>
+    <sys:String x:Key="mainpage_equalizer">均衡器</sys:String>
+    <sys:String x:Key="mainpage_advanced">高級設置</sys:String>
+    <sys:String x:Key="mainpage_system">系統</sys:String>
+
+    <!-- Update page -->
+    <sys:String x:Key="updater_header">有可用的 Manager 更新</sys:String>
+    <sys:String x:Key="updater_message_p1">
+        下載是完全自動的，下載完成後將啟動更新嚮導。 我強烈建議您更新以接收最新的錯誤修正和功能。
+    </sys:String>
+    <sys:String x:Key="updater_message_p2">
+        您可以通過單擊下面的按鈕查看更改日誌。
+    </sys:String>
+
+    <sys:String x:Key="updater_view_changelog">在 GitHub 上查看完整的變更日誌</sys:String>
+    <sys:String x:Key="updater_footer_remindmelater">稍後提醒我</sys:String>
+    <sys:String x:Key="updater_footer_skipversion">跳過這個版本</sys:String>
+    <sys:String x:Key="updater_footer_install">現在安裝</sys:String>
+    <sys:String x:Key="updater_appcast_null">新更新可用，但未找到有效的 appcast 數據。 請稍後再試。</sys:String>
+    <sys:String x:Key="updater_noupdate">目前沒有可用的更新。 請稍後再試或查看並訂閱 GitHub 頁面以獲取更新。</sys:String>
+    <sys:String x:Key="updater_noupdate_title">沒有更新</sys:String>
+    <sys:String x:Key="updater_newrelease">已發佈 {0} 個 Galaxy Buds Manager 的更新</sys:String>
+
+    <sys:String x:Key="updater_dl_header">正在下載...</sys:String>
+    <sys:String x:Key="updater_dl_manual">在 GitHub 上查看</sys:String>
+    <sys:String x:Key="updater_dl_fail_title">下載失敗</sys:String>
+    <sys:String x:Key="updater_dl_fail">原因: &#10;</sys:String>
+    <sys:String x:Key="updater_dl_progress_prepare">正在準備下載...</sys:String>
+    <sys:String x:Key="updater_dl_progress_cancelled">下載已取消</sys:String>
+    <sys:String x:Key="updater_dl_progress_finished">下載完畢。 正在啟動安裝程序...</sys:String>
+    <sys:String x:Key="updater_dl_progress">正在下載... {0}%</sys:String>
+    <sys:String x:Key="updater_dl_progress_size">({0}/{1} megabytes)</sys:String>
+    <sys:String x:Key="updater_dl_note">下載完成後，此應用程序將自動關閉並啟動單獨的更新安裝程序。 它可能需要幾秒鐘才能顯示出來。</sys:String>
+
+    <!-- Device selection page (setup) -->
+    <sys:String x:Key="devsel_header">選擇您的 Galaxy Buds</sys:String>
+    <sys:String x:Key="devsel_refresh">刷新配對設備</sys:String>
+    <sys:String x:Key="devsel_device_name">設備名稱</sys:String>
+    <sys:String x:Key="devsel_btaddr">MAC-Address</sys:String>
+    <sys:String x:Key="devsel_model">機型編號</sys:String>
+    <sys:String x:Key="devsel_nodevices">請先連接並配對您的 Buds</sys:String>
+    <sys:String x:Key="devsel_nodevices_title">未找到配對設備</sys:String>
+    <sys:String x:Key="devsel_noselection">未選擇設備</sys:String>
+    <sys:String x:Key="devsel_invalid_selection">請選擇一個有效的設備</sys:String>
+    <sys:String x:Key="devsel_footer_continue">完成設置</sys:String>
+    <sys:String x:Key="devsel_dialog_footer">如果您沒有看到您的耳機，請確保您已在電腦的藍牙設置中配對並連接它們，然後單擊刷新。</sys:String>
+    <sys:String x:Key="devsel_winrt_title">使用替代藍牙後端</sys:String>
+    <sys:String x:Key="devsel_winrt">穩定性要好得多，但可能不支持某些PC</sys:String>
+
+    <!-- Unsupported feature page -->
+    <sys:String x:Key="unsupported_feature_current_fwver">當前固件版本:</sys:String>
+    <sys:String x:Key="unsupported_feature_required_fwver">所需固件版本:</sys:String>
+
+    <sys:String x:Key="unsupported_feature_header">請更新您的固件</sys:String>
+    <sys:String x:Key="unsupported_feature_current_fwver_null">當前固件版本: 未知</sys:String>
+    <sys:String x:Key="unsupported_feature_required_fwver_null">所需固件版本: 未標明</sys:String>
+
+    <sys:String x:Key="unsupported_feature_description_p1">您的耳機固件太舊，不支持此功能。</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p2">請使用官方 Windows 或 Android 更新程序更新到最新固件。</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p3">如果您使用 Windows 更新，請確保關閉此應用程序。 一次只有一個應用程序可以與 Buds 連結。</sys:String>
+
+    <!-- Touchpad page -->
+    <sys:String x:Key="touchpad_header">Touchpad</sys:String>
+    <sys:String x:Key="touchpad_lock">Lock touchpad</sys:String>
+    <sys:String x:Key="touchpad_left_action">Left action</sys:String>
+    <sys:String x:Key="touchpad_right_action">Right action</sys:String>
+
+    <sys:String x:Key="touchpad_double_tap_volume">Double-tap earbud edge</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">Double-tap the edge of the left or right earbud to turn the volume down or up</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode">Noise control switching mode</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC &lt;-&gt; Ambient sound</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; Off</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambient sound &lt;-&gt; Off</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_threeway">Cycle between modes (ANC, Ambient, Off)</sys:String>
+
+    <!-- Custom touchpad action page -->
+    <sys:String x:Key="cact_header">Define custom long-press action</sys:String>
+    <sys:String x:Key="cact_external_app_dialog_title">Select executable...</sys:String>
+    <sys:String x:Key="cact_action">Custom action</sys:String>
+    <sys:String x:Key="cact_notice">Notice</sys:String>
+    <sys:String x:Key="cact_notice_content_p1">Custom long-press actions are only available when this app is active in the background.</sys:String>
+    <sys:String x:Key="cact_notice_content_p2">It has no effect on Android or other devices.</sys:String>
+    <sys:String x:Key="cact_notice_content_p3">
+        In order to provide consistent support for this feature, this app will automatically start on boot and run in the background.&#10;You can disable this behaviour in the settings section.
+    </sys:String>
+
+    <!-- System/Self-Test -->
+    <sys:String x:Key="system_overview_header">System</sys:String>
+    <sys:String x:Key="system_header">System Information</sys:String>
+    <sys:String x:Key="system_selftest">Run self test</sys:String>
+    <sys:String x:Key="system_selftest_desc">Verify if all modules of your earbuds are functioning properly</sys:String>
+    <sys:String x:Key="system_factory_reset">Factory reset</sys:String>
+    <sys:String x:Key="system_factory_reset_desc">Restore your earbuds to their factory settings and disconnect</sys:String>
+    <sys:String x:Key="system_pairing_mode">Enter pairing mode</sys:String>
+    <sys:String x:Key="system_pairing_mode_desc">Disconnect your earbuds from this PC and make it visible to other devices</sys:String>
+    <sys:String x:Key="system_trace_core_dump">Download trace and coredumps</sys:String>
+    <sys:String x:Key="system_trace_core_dump_desc">Retrieve raw debugging data from your earbuds</sys:String>
+    <sys:String x:Key="system_info">View system information</sys:String>
+    <sys:String x:Key="system_info_desc">Display detailed information about your earbuds</sys:String>
+    <sys:String x:Key="system_flasher">Install firmware updates</sys:String>
+    <sys:String x:Key="system_flasher_desc">Upgrade, downgrade, or flash custom firmware binaries</sys:String>
+    <sys:String x:Key="system_spatial">Dump spatial sensor measurements</sys:String>
+    <sys:String x:Key="system_spatial_desc">Read spatial head-tracking data used for 3D audio</sys:String>
+
+    <sys:String x:Key="system_battery_type_unknown">Not specified</sys:String>
+    <sys:String x:Key="system_waiting_for_device">Waiting for response...</sys:String>
+
+    <sys:String x:Key="system_hwver">Hardware Version</sys:String>
+    <sys:String x:Key="system_swver">Software Version</sys:String>
+    <sys:String x:Key="system_touchver">Touch Firmware Version</sys:String>
+    <sys:String x:Key="system_protover">Protocol Revision</sys:String>
+    <sys:String x:Key="system_btaddr">Bluetooth Address</sys:String>
+    <sys:String x:Key="system_serial">Serial Number</sys:String>
+    <sys:String x:Key="system_build_info">Build Info</sys:String>
+    <sys:String x:Key="system_battery_type">Battery Type</sys:String>
+    <sys:String x:Key="system_proximity">Proximity Measurement</sys:String>
+    <sys:String x:Key="system_thermo">Thermistor Measurement</sys:String>
+    <sys:String x:Key="system_hall">Hall Measurement</sys:String>
+    <sys:String x:Key="system_accel">Accelerometer Status</sys:String>
+    <!-- Note: system_accel only used on the self-test page -->
+    <sys:String x:Key="system_adc_soc">ADC SoC</sys:String>
+    <!-- Context: SoC = State of charge (battery percentage) -->
+    <sys:String x:Key="system_adc_voltage">ADC Voltage</sys:String>
+    <sys:String x:Key="system_adc_current">ADC Current</sys:String>
+
+    <sys:String x:Key="selftest_header">Self Test</sys:String>
+    <sys:String x:Key="selftest_pass">Pass</sys:String>
+    <sys:String x:Key="selftest_fail">Fail</sys:String>
+    <sys:String x:Key="selftest_pass_long">All checks have passed</sys:String>
+    <sys:String x:Key="selftest_fail_long">One or more checks have failed</sys:String>
+    
+    <sys:String x:Key="coredump_header">Dumping data...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_prepare">Preparing download...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_cancelled">Download cancelled</sys:String>
+    <sys:String x:Key="coredump_dl_progress_finished">Download finished</sys:String>
+    <sys:String x:Key="coredump_dl_trace_progress">Downloading trace dump... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_core_progress">Downloading core dump... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytes)</sys:String>
+    <sys:String x:Key="coredump_dl_note">
+        The audio stream is temporarily paused while downloading. Your earbuds will be disconnected as soon as the transmission finishes, please reconnect them manually.&#10;Once finished, you will be prompted to select a directory for all collected data.&#10;&#10;If the transmission is stuck or the device disconnected prematurely, you need to restart the download. This feature is currently very unstable. 
+    </sys:String>
+    <sys:String x:Key="coredump_dl_save_fail_title">Failed to save dump</sys:String>
+    <sys:String x:Key="coredump_dl_save_fail">Unable to copy dump from temporary location. Reason: {0}</sys:String>
+    <sys:String x:Key="coredump_dl_save_success_title">Successfully saved dumps</sys:String>
+    <sys:String x:Key="coredump_dl_save_success">{0} dump(s) were written to '{1}'</sys:String>
+    <sys:String x:Key="coredump_dl_save_dialog_title">Select a download directory...</sys:String>
+    
+    <!-- Settings -->
+    <sys:String x:Key="settings_header">Settings</sys:String>
+
+    <sys:String x:Key="settings_darkmode">Dark Mode</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Use a darker color scheme (Reload required)</sys:String>
+    <sys:String x:Key="settings_transitions">Transition</sys:String>
+    <sys:String x:Key="settings_transitions_description">Enable slide transitions</sys:String>
+    <sys:String x:Key="settings_localization_disable">Language</sys:String>
+    <sys:String x:Key="settings_localization_disable_description">Force English language</sys:String>
+    <sys:String x:Key="settings_minimize_tray">Minimize to tray</sys:String>
+    <sys:String x:Key="settings_minimize_tray_description">Keep in background instead of terminating the app</sys:String>
+    <sys:String x:Key="settings_autostart">Launch on boot</sys:String>
+    <sys:String x:Key="settings_autostart_description">Start minimized on system boot</sys:String>
+    <sys:String x:Key="settings_autostart_permission">Cannot update auto-start entry in registry. Registry access (HKCU) was explicitly disabled by your system administrator.</sys:String>
+    
+    <sys:String x:Key="settings_connpopup">Configure connection popup</sys:String>
+    <sys:String x:Key="settings_devmode">Developer options</sys:String>
+    <sys:String x:Key="settings_crowdsourcing">Crowdsourcing</sys:String>
+
+    <!-- Settings >>> Connection popup -->
+    <sys:String x:Key="settings_cpopup_header">Connection popup</sys:String>
+    <sys:String x:Key="settings_cpopup_enable">Enable popup on connection</sys:String>
+    <sys:String x:Key="settings_cpopup_enable_description">Display a small notification popup informing about battery levels when the Buds are connected</sys:String>
+    <sys:String x:Key="settings_cpopup_compact">Compact mode</sys:String>
+    <sys:String x:Key="settings_cpopup_compact_description">Hide the header of the popup to save space</sys:String>
+    <sys:String x:Key="settings_cpopup_position">Position</sys:String>
+    <sys:String x:Key="settings_cpopup_position_placeholder">Unknown</sys:String>
+    <sys:String x:Key="settings_cpopup_demo">Show demo popup</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title">Override popup title</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title_dialog">Please enter a custom popup title. You can restore the default one by leaving this field empty.</sys:String>
+    <sys:String x:Key="settings_cpopup_primary_screen">Primary screen only</sys:String>
+    <sys:String x:Key="settings_cpopup_primary_screen_description">Show popup only on the primary monitor</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state">Use different color when in case</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state_description">Gray earbud icon out when your earbuds are in the case</sys:String>
+    
+    <!-- Settings >>> Crowdsourcing settings -->
+    <sys:String x:Key="settings_crowd_header">Crowdsourcing</sys:String>
+    <sys:String x:Key="settings_crowd_allow">Allow crowdsourcing contribution</sys:String>
+    <sys:String x:Key="settings_crowd_allow_description">Collect information about Samsung's proprietary Bluetooth protocol structure and data on demand. This allows me to keep all available Galaxy Buds models supported much more easily without owning them.</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport">Allow app crash reports</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport_description">Send application crash reports automatically in case of crashes or fatal errors using Sentry. This helps me to respond more quickly to problematic and disruptive application bugs.</sys:String>
+
+    <!-- Factory reset -->
+    <sys:String x:Key="factory_header">Factory reset</sys:String>
+    <sys:String x:Key="factory_confirm">Confirm factory reset</sys:String>
+    <sys:String x:Key="factory_error_title">Factory reset failed</sys:String>
+    <sys:String x:Key="factory_error">
+        Device returned error code: {0}&#10;Make sure both Earbuds are turned on and reachable.&#10;You might need to manually reconnect your Earbuds.&#10;
+    </sys:String>
+    <sys:String x:Key="factory_text_p1">Are you sure you want to reset your Earbuds?</sys:String>
+    <sys:String x:Key="factory_text_p2">After performing a Factory Reset, you'll have to manually reconnect your Earbuds to the computer.</sys:String>
+    <sys:String x:Key="factory_text_p3">Make sure both Earbuds are turned on before continuing!</sys:String>
+
+    <!-- Find my Gear -->
+    <sys:String x:Key="fmg_warning_both">Please remove both earbuds from your ears.</sys:String>
+    <sys:String x:Key="fmg_warning_left">Please remove the left earbud from your ear.</sys:String>
+    <sys:String x:Key="fmg_warning_right">Please remove the right earbud from your ear.</sys:String>
+    <sys:String x:Key="fmg_header">Find my earbuds</sys:String>
+
+    <!-- Equalizer -->
+    <sys:String x:Key="eq_header">Equalizer</sys:String>
+    <sys:String x:Key="eq_enable">Enable equalizer</sys:String>
+    <sys:String x:Key="eq_preset">Preset</sys:String>
+    <sys:String x:Key="eq_dolby">Optimize for use with Dolby</sys:String>
+    <sys:String x:Key="eq_stereo_balance">Left/right sound balance</sys:String>
+    <sys:String x:Key="eq_stereo_balance_value">{0}% left; {1}% right</sys:String>
+    <sys:String x:Key="eq_stereo_balance_neutral">Neutral</sys:String>
+    
+    <sys:String x:Key="eq_bass">Bass Boost</sys:String>
+    <sys:String x:Key="eq_soft">Soft</sys:String>
+    <sys:String x:Key="eq_dynamic">Dynamic</sys:String>
+    <sys:String x:Key="eq_clear">Clear</sys:String>
+    <sys:String x:Key="eq_treble">Treble Boost</sys:String>
+
+    <!-- Noise control -->
+    <sys:String x:Key="nc_header">Noise control</sys:String>
+    <sys:String x:Key="nc_anc_level">High sensitivity</sys:String>
+    <sys:String x:Key="nc_anc_level_description">Stronger noise cancelling effect</sys:String>
+    <sys:String x:Key="nc_voicedetect">Conversation detection</sys:String>
+    <sys:String x:Key="nc_voicedetect_description">When your voice is detected, automatically turn on Ambient sound and lower media volume to make conversation easier</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout">Conversation timeout</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout_item">{0} seconds</sys:String>
+    
+    <!-- Ambient sound -->
+    <sys:String x:Key="as_header">Ambient sound</sys:String>
+    <sys:String x:Key="as_enable">Enable ambient sound</sys:String>
+    <sys:String x:Key="as_volume">Ambient sound volume</sys:String>
+    <sys:String x:Key="as_voicefocus">Voice focus</sys:String>
+    <sys:String x:Key="as_extrahigh">Extra-high ambient volume</sys:String>
+    <sys:String x:Key="as_extrahigh_description">Adds an extra volume level to the Ambient Volume slider</sys:String>
+    <sys:String x:Key="as_scale_very_low">Very low</sys:String>
+    <sys:String x:Key="as_scale_low">Low</sys:String>
+    <sys:String x:Key="as_scale_moderate">Moderate</sys:String>
+    <sys:String x:Key="as_scale_high">High</sys:String>
+    <sys:String x:Key="as_scale_extraloud">Extra loud</sys:String>
+    
+    <!-- Advanced page -->
+    <sys:String x:Key="adv_header">Advanced Settings</sys:String>
+    <sys:String x:Key="adv_required_firmware_later">{0} or later</sys:String>
+    <sys:String x:Key="adv_seamless">Seamless earbud connection</sys:String>
+    <sys:String x:Key="adv_seamless_desc">Switch quickly to nearby devices without disconnecting your earbuds or turning on pairing mode</sys:String>
+    <sys:String x:Key="adv_resume_playback">Resume/start playback if Buds are worn</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Sends a global play/pause state change event when at least one of the proximity sensors is covered (Desktop only)</sys:String>
+    <sys:String x:Key="adv_sidetone">Use ambient sound during calls</sys:String>
+    <sys:String x:Key="adv_sidetone_desc">Hear your own voice more clearly while on the phone</sys:String>
+    <sys:String x:Key="adv_passthrough">Relieve pressure with ambient sound</sys:String>
+    <sys:String x:Key="adv_passthrough_desc">This can prevent a feeling of stuffiness or compression when you're not using active noise canceling</sys:String>
+    <sys:String x:Key="adv_gaming_mode">Gaming mode</sys:String>
+    <sys:String x:Key="adv_gaming_mode_desc">Minimize latency and adjust audio synchronization (Samsung only)</sys:String>
+    <sys:String x:Key="adv_hotkey">Keyboard hotkeys</sys:String>
+    <sys:String x:Key="adv_hotkey_desc">Define custom keyboard hotkeys to remote-control your earbuds</sys:String>
+    <sys:String x:Key="adv_bixby_remap">Remap Bixby wakeup</sys:String>
+    <sys:String x:Key="adv_bixby_remap_desc">Define what should happen when you say 'Hey Bixby!'</sys:String>
+
+    <!-- Remap bixby wakeup -->
+    <sys:String x:Key="bixby_remap_header">Remap Bixby wakeup</sys:String>
+    <sys:String x:Key="bixby_remap_enable">Enable Bixby wakeup</sys:String>
+    <sys:String x:Key="bixby_remap_enable_desc">Launch Bixby on your Samsung phone or execute a custom action on this PC when waken up</sys:String>
+    <sys:String x:Key="bixby_remap_lang">Bixby wakeup language</sys:String>
+    <sys:String x:Key="bixby_remap_action">Custom wakeup action</sys:String>
+    <sys:String x:Key="bixby_remap_note">Say 'Hey Bixby!' to activate. The activation phrase may be different with some language settings.&#10;&#10;The remap configuration is only active on this device. If you connect your earbuds to a Samsung device, voice wakeup will activate Bixby normally. On other devices than this device and non-Samsung phones, this feature won't trigger any action.</sys:String>
+
+    
+    <!-- Credits -->
+    <sys:String x:Key="credits_header">Credits</sys:String>
+    <sys:String x:Key="credits_developer">Developer</sys:String>
+    <sys:String x:Key="credits_license">License</sys:String>
+    <sys:String x:Key="credits_version">Version</sys:String>
+    <sys:String x:Key="credits_contributor">Contributors</sys:String>
+    <sys:String x:Key="credits_translator">Translators</sys:String>
+    <sys:String x:Key="credits_sponsor">Sponsor this project</sys:String>
+
+    <!-- Connection lost page -->
+    <sys:String x:Key="connlost_header">Unable to establish connection</sys:String>
+    <sys:String x:Key="connlost_description_p1">Unable to establish a connection to your earbuds.</sys:String>
+    <sys:String x:Key="connlost_description_p2">
+        Please check your Bluetooth settings and make sure your Earbuds are turned on and paired to this computer.&#10;You can also register a new pair if needed. In that case, please select "Options > Unregister device".
+    </sys:String>
+    <sys:String x:Key="connlost_description_p3">Additional information:</sys:String>
+    <sys:String x:Key="connlost_noinfo">Failed to gather error information</sys:String>
+    <sys:String x:Key="connlost_disconnected">Device disconnected</sys:String>
+    <sys:String x:Key="connlost_connect">Connect</sys:String>
+    <sys:String x:Key="connlost_connecting">Connecting...</sys:String>
+    
+    <!-- Firmware update disclaimer -->
+    <sys:String x:Key="fw_disclaimer">Disclaimer</sys:String>
+    <sys:String x:Key="fw_disclaimer_desc">This firmware updating tool is an accurate replica of the official updater found in Samsung's official Android app. I've thoroughly tested this implementation under various circumstances (normal operation, connection loss, intentionally corrupted Bluetooth packets, ...) without experiencing any issues at all. Still, I won't take any liability if anything should go wrong since firmware updates modify vital system components and should always be handled with caution.&#10;&#10;DOWNGRADING: While downgrading to older firmware versions is possible and I never ran into problems with it, it may cause unexpected issues and should only be done if necessary. A factory reset after the downgrade is recommended but not usually necessary. &#10;CUSTOM FLASHING: You are also able to load firmware files from your hard-drive. Do NOT flash firmware binaries designed for OTHER models onto your device.&#10;&#10;This application is licensed under GPLv3. By using it, you are accepting the license and its limitation of liability. Press 'Continue' to accept.</sys:String>
+    
+    <!-- Firmware selection -->
+    <sys:String x:Key="fw_select_header">Firmware updates</sys:String>
+    <sys:String x:Key="fw_select_instructions">Please choose a firmware binary to download and install. Alternatively, you can also select a firmware binary from your hard-drive by navigating to 'Advanced... > Select image from disk'</sys:String>
+    <sys:String x:Key="fw_select_no_results">No firmware updates are currently available. Please try again at a later time.</sys:String>
+    <sys:String x:Key="fw_select_downgrade">Allow firmware downgrading</sys:String>
+    <sys:String x:Key="fw_select_downgrade_desc">Disable version checks and show older firmwares in list (may cause unexpected issues; advanced users only)</sys:String>
+    <sys:String x:Key="fw_select_advanced">Advanced...</sys:String>
+    <sys:String x:Key="fw_select_install">Install firmware</sys:String>
+    <sys:String x:Key="fw_select_from_disk">Select image from disk...</sys:String>
+    <sys:String x:Key="fw_select_external_note">Do NOT flash firmware binaries meant for OTHER models onto your device. Flashing a Buds Pro firmware onto a pair of Buds Plus won't unlock any new features, instead it will permanently destroy your device.&#10;&#10;Press 'Continue' to select a firmware binary.</sys:String>
+    <sys:String x:Key="fw_select_unsupported_selection">Invalid selection. Please select a compatible item from the list.</sys:String>
+    <sys:String x:Key="fw_select_downloading">Downloading...</sys:String>
+    <sys:String x:Key="fw_select_net_error">Failed to communicate with server. Cannot download firmware at the moment.</sys:String>
+    <sys:String x:Key="fw_select_net_index_error">Failed to communicate with server. Cannot download firmware index at the moment.</sys:String>
+    <sys:String x:Key="fw_select_http_error">HTTP error code:</sys:String>
+    <sys:String x:Key="fw_select_unknown_build">Unknown build name</sys:String>
+    <sys:String x:Key="fw_select_verify_fail">Failed to verify firmware</sys:String>
+    <sys:String x:Key="fw_select_confirm">You are about to flash '{0}' onto your '{1}' device</sys:String>
+    <sys:String x:Key="fw_select_confirm_desc">Make sure this information is correct, otherwise press 'Cancel' and double-check your setup.&#10;&#10;If possible, make sure both of the earbuds are connected before starting. It won't cause any issues if the connection fails while transferring the update. In such a case, the earbuds will automatically cancel the transfer process and exit the firmware update mode.&#10;&#10;Press 'Continue' to start the update.</sys:String>
+  
+    <!-- Firmware transfer -->
+    <sys:String x:Key="fw_upload_header">Installing firmware...</sys:String>
+    <sys:String x:Key="fw_upload_progress_session">Creating new session...</sys:String>
+    <sys:String x:Key="fw_upload_progress_prepare">Preparing upload...</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished">Upload finished</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished_desc">The update has been successfully transferred and is currently being installed on the device. During this process your earbuds become unresponsive for about 30 seconds. In most cases, the earbuds attempt to reconnect automatically after the on-board update process has finished.</sys:String>
+    <sys:String x:Key="fw_upload_progress_error">Failed to upload firmware</sys:String>
+    <sys:String x:Key="fw_upload_progress">Uploading firmware update... {0}%</sys:String>
+    <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats">Statistics</sys:String>
+    <sys:String x:Key="fw_upload_note">Your earbuds will be disconnected, and start installing the uploaded firmware update as soon as the transmission finishes. During this process, your earbuds will be unresponsive and decline any Bluetooth connection requests. In most cases, the earbuds attempt to reconnect automatically after the on-board update process has finished. Please do not close your case while updating.</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_mtu">Maximum transfer unit: {0} bytes</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_offset">Processing data from offset 0x{0:X6} to 0x{1:X6}</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_segment">上傳片段 #{0} ({1} bytes, checksum 0x{2:X6})</sys:String>
+
+    <!-- Firmware parse errors -->
+    <sys:String x:Key="fw_fail_no_magic">這不是有效的固件二進製文件。 在文件頭中發現無效的magic value。</sys:String>
+    <sys:String x:Key="fw_fail_size_null">此固件二進製文件的大小設置為零，不能用於刷寫。 請選擇另一個。</sys:String>
+    <sys:String x:Key="fw_fail_no_segments">此固件二進製文件不包含任何二進製文件段且為空。 請選擇另一個。</sys:String>
+    <sys:String x:Key="fw_fail_unknown">解碼固件二進製文件時出現意外錯誤。 此固件存檔可能已損壞。&#10;&#10;詳細信息：</sys:String>
+    
+    <!-- Firmware transfer errors -->
+    <sys:String x:Key="fw_fail_connection">與設備的連接丟失。 固件傳輸已取消。</sys:String>
+    <sys:String x:Key="fw_fail_session">無法打開新會話。 錯誤代碼 ({0})</sys:String>
+    <sys:String x:Key="fw_fail_copy">無法複製固件二進製文件。 請重新連接並重試。 錯誤碼: {0}</sys:String>
+    <sys:String x:Key="fw_fail_verify">無法驗證/安裝固件二進製文件。 請重新連接並重試。 錯誤碼: {0}</sys:String>
+    <sys:String x:Key="fw_fail_connection_precheck">該設備當前未連接。 請檢查您的藍牙系統設置並重新連接。</sys:String>
+    <sys:String x:Key="fw_fail_pending">另一個固件傳輸正在進行中。 請先正確取消。</sys:String>
+    <sys:String x:Key="fw_fail_lowbattery">電池電量過低。 請先為您的耳機充電至 15% 以上。</sys:String>
+    <sys:String x:Key="fw_fail_session_timeout">等待設備打開新會話時超時</sys:String>
+    <sys:String x:Key="fw_fail_control_timeout">等待設備返回控制塊時超時</sys:String>
+    <sys:String x:Key="fw_fail_copy_timeout">等待傳輸過程完成時超時</sys:String>
+    
+    <!-- Spatial test -->
+    <sys:String x:Key="spatial_header">空間傳感器</sys:String>
+    <!-- Note: Quaternion = 4-dimensional vector -->
+    <sys:String x:Key="spatial_dump_quaternion">原始四元數向量: </sys:String>
+    <!-- Note: RPY = Roll, pitch, yaw -->
+    <sys:String x:Key="spatial_dump_rpy">RPY 值: </sys:String>
+    
+    <!-- Header -->
+    <sys:String x:Key="window_minimize">最小化</sys:String>
+    <sys:String x:Key="window_close">關閉</sys:String>
+
+</ResourceDictionary>

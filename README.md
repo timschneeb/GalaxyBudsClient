@@ -124,6 +124,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@cozyplanes](https://github.com/cozyplanes) - Korean translation
 * [@erenbektas](https://github.com/erenbektas) - Turkish translation
 * [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) and [@pseudor](https://github.com/pseudor) - Chinese translation
+* [@YiJhu](https://github.com/YiJhu) - Chinese-Traditional translation
 * [@efrenbg1](https://github.com/efrenbg1) and Andrew Gonza - Spanish translation
 * [@giovankabisano](https://github.com/giovankabisano) - Indonesian translation
 * [@lucasskluser](https://github.com/lucasskluser) - Portuguese translation
