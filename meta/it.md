@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>68%</td><td>127 missing string(s)</td></tr>
+<tr><td>67%</td><td>130 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -159,6 +159,11 @@ Details:</td></tr>
 <tr><td><code>spatial_dump_rpy</code></td><td>RPY values:</td></tr>
 <tr><td><code>window_minimize</code></td><td>Minimize</td></tr>
 <tr><td><code>window_close</code></td><td>Close</td></tr>
+<tr><td><code>budsapp_header</code></td><td>Galaxy Buds app found</td></tr>
+<tr><td><code>budsapp_text_p1</code></td><td>Looks like you have the official Galaxy Buds app for Windows 10 installed.</td></tr>
+<tr><td><code>budsapp_text_p2</code></td><td>
+      If it is open and connected, Galaxy Buds Manager might have issues connecting to your earbuds. Likewise, the Galaxy Buds app can't connect to your earbuds when Galaxy Buds Manager is running.
+    </td></tr>
 
 </table>
 
