@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>67%</td><td>131 missing string(s)</td></tr>
+<tr><td>65%</td><td>142 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -30,6 +30,17 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>updater_dl_note</code></td><td>When the download finishes, this app will automatically close itself and launch a separate update installer. It may take a few seconds until it shows up.</td></tr>
 <tr><td><code>devsel_winrt_title</code></td><td>Use alternative Bluetooth backend</td></tr>
 <tr><td><code>devsel_winrt</code></td><td>Much better stability, but may not work on all PCs with some Bluetooth adapters</td></tr>
+<tr><td><code>touchpad_gesture_header</code></td><td>Enable touchpad gestures</td></tr>
+<tr><td><code>touchpad_gesture_single</code></td><td>Single tap</td></tr>
+<tr><td><code>touchpad_gesture_single_desc</code></td><td>Play or pause track</td></tr>
+<tr><td><code>touchpad_gesture_double</code></td><td>Double tap</td></tr>
+<tr><td><code>touchpad_gesture_double_desc</code></td><td>Play next track</td></tr>
+<tr><td><code>touchpad_gesture_triple</code></td><td>Triple tap</td></tr>
+<tr><td><code>touchpad_gesture_triple_desc</code></td><td>Play previous track</td></tr>
+<tr><td><code>touchpad_gesture_hold</code></td><td>Touch and hold</td></tr>
+<tr><td><code>touchpad_gesture_hold_desc</code></td><td>Execute custom action</td></tr>
+<tr><td><code>touchpad_gestures</code></td><td>Advanced touch lock</td></tr>
+<tr><td><code>touchpad_gestures_description</code></td><td>Enable or disable default touch gestures</td></tr>
 <tr><td><code>touchpad_noise_control_mode</code></td><td>Noise control switching mode</td></tr>
 <tr><td><code>touchpad_noise_control_mode_anc_amb</code></td><td>ANC <-> Ambient sound</td></tr>
 <tr><td><code>touchpad_noise_control_mode_anc_off</code></td><td>ANC <-> Off</td></tr>

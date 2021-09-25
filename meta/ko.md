@@ -4,13 +4,24 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>97%</td><td>10 missing string(s)</td></tr>
+<tr><td>94%</td><td>21 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
 
 <table>
 <tr><th>Key</th><th>Original string</th></tr>
+<tr><td><code>touchpad_gesture_header</code></td><td>Enable touchpad gestures</td></tr>
+<tr><td><code>touchpad_gesture_single</code></td><td>Single tap</td></tr>
+<tr><td><code>touchpad_gesture_single_desc</code></td><td>Play or pause track</td></tr>
+<tr><td><code>touchpad_gesture_double</code></td><td>Double tap</td></tr>
+<tr><td><code>touchpad_gesture_double_desc</code></td><td>Play next track</td></tr>
+<tr><td><code>touchpad_gesture_triple</code></td><td>Triple tap</td></tr>
+<tr><td><code>touchpad_gesture_triple_desc</code></td><td>Play previous track</td></tr>
+<tr><td><code>touchpad_gesture_hold</code></td><td>Touch and hold</td></tr>
+<tr><td><code>touchpad_gesture_hold_desc</code></td><td>Execute custom action</td></tr>
+<tr><td><code>touchpad_gestures</code></td><td>Advanced touch lock</td></tr>
+<tr><td><code>touchpad_gestures_description</code></td><td>Enable or disable default touch gestures</td></tr>
 <tr><td><code>settings_crowdsourcing</code></td><td>Crowdsourcing</td></tr>
 <tr><td><code>settings_crowd_header</code></td><td>Crowdsourcing</td></tr>
 <tr><td><code>settings_crowd_allow</code></td><td>Allow crowdsourcing contribution</td></tr>
