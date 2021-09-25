@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -24,12 +25,15 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		private ContextMenu? _localeMenu;
 
+		private bool officialAppInstalled = false;
+
 		public WelcomePage()
 		{   
 			AvaloniaXamlLoader.Load(this);
 
 			_darkMode = this.FindControl<SwitchDetailListItem>("DarkMode");
 			_locale = this.FindControl<Border>("Locales");
+			
 		}
 
 		public override void OnPageShown()
@@ -55,29 +59,38 @@ namespace GalaxyBudsClient.Interface.Pages
 			}
 			
 			_localeMenu = MenuFactory.BuildContextMenu(localeMenuActions, _locale);
+			
+			// Only search for the Buds app on Windows 10 and above
+			if (Environment.OSVersion.Platform == PlatformID.Win32NT && Environment.OSVersion.Version.Major >= 10) 
+			{
+				try
+				{
+					ProcessStartInfo si = new ProcessStartInfo {
+						FileName = "powershell",
+						Arguments = "Get-AppxPackage SAMSUNGELECTRONICSCO.LTD.GalaxyBuds",
+						RedirectStandardOutput = true,
+						UseShellExecute = false,
+						CreateNoWindow = true,
+					};
+	
+					ThreadPool.QueueUserWorkItem(delegate {
+						var process = Process.Start(si);
+						if(process?.WaitForExit(4000) ?? false) 
+						{
+							officialAppInstalled = process?.StandardOutput.ReadToEnd().Contains("SAMSUNGELECTRONICSCO.LTD.GalaxyBuds") ?? false;
+						} 
+					});
+				}
+				catch (Exception exception)
+				{
+					Log.Warning("WelcomePage.BudsAppDetected: " + exception);
+				}
+			}
 		}
 		
 		private void Next_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
-			// Only search for the Buds app on Windows 10 and above
-			if (Environment.OSVersion.Platform == PlatformID.Win32NT && Environment.OSVersion.Version.Major >= 10) {
-				// Using PowerShell because I couldn't find a native way to get a list of UWP apps
-				ProcessStartInfo si = new ProcessStartInfo {
-					FileName = "powershell",
-					Arguments = "Get-AppxPackage SAMSUNGELECTRONICSCO.LTD.GalaxyBuds",
-					RedirectStandardOutput = true,
-					UseShellExecute = false,
-					CreateNoWindow = true
-				};
-				var pro = Process.Start(si);
-				pro.WaitForExit();
-				var result = pro.StandardOutput.ReadToEnd();
-				if (result.Contains("SAMSUNGELECTRONICSCO.LTD.GalaxyBuds")) {
-					MainWindow.Instance.Pager.SwitchPage(Pages.BudsAppDetected);
-				} else {
-					MainWindow.Instance.Pager.SwitchPage(Pages.DeviceSelect);
-				}
-			}
+			MainWindow.Instance.Pager.SwitchPage(officialAppInstalled ? Pages.BudsAppDetected : Pages.DeviceSelect);
 		}
 
 		private void DarkMode_OnToggled(object? sender, bool e)

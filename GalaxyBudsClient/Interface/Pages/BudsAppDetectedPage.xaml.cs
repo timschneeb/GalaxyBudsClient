@@ -19,8 +19,6 @@ namespace GalaxyBudsClient.Interface.Pages
 	{
 		public override Pages PageType => Pages.BudsAppDetected;
 
-		private ContextMenu? _localeMenu;
-
 		public BudsAppDetectedPage() {   
 			AvaloniaXamlLoader.Load(this);
 		}
