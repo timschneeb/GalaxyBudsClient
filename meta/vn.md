@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>77%</td><td>95 missing string(s)</td></tr>
+<tr><td>75%</td><td>106 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -43,6 +43,17 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>eq_stereo_balance</code></td><td>Left/right sound balance</td></tr>
 <tr><td><code>eq_stereo_balance_value</code></td><td>{0}% left; {1}% right</td></tr>
 <tr><td><code>eq_stereo_balance_neutral</code></td><td>Neutral</td></tr>
+<tr><td><code>nc_ambient</code></td><td>Customize ambient sound</td></tr>
+<tr><td><code>nc_ambient_description</code></td><td>Configure ambient sound tone and volume (if available)</td></tr>
+<tr><td><code>nc_as_header</code></td><td>Ambient sound settings</td></tr>
+<tr><td><code>nc_as_custom</code></td><td>Advanced customization</td></tr>
+<tr><td><code>nc_as_custom_volume_l</code></td><td>Ambient sound volume (left)</td></tr>
+<tr><td><code>nc_as_custom_volume_r</code></td><td>Ambient sound volume (right)</td></tr>
+<tr><td><code>nc_as_custom_tone</code></td><td>Ambient sound tone</td></tr>
+<tr><td><code>nc_as_custom_tone_clear</code></td><td>Clear</td></tr>
+<tr><td><code>nc_as_custom_tone_soft</code></td><td>Soft</td></tr>
+<tr><td><code>nc_as_custom_tone_neutral</code></td><td>Neutral</td></tr>
+<tr><td><code>nc_as_custom_vol_normal</code></td><td>Normal</td></tr>
 <tr><td><code>adv_bixby_remap</code></td><td>Remap Bixby wakeup</td></tr>
 <tr><td><code>adv_bixby_remap_desc</code></td><td>Define what should happen when you say 'Hey Bixby!'</td></tr>
 <tr><td><code>bixby_remap_header</code></td><td>Remap Bixby wakeup</td></tr>
