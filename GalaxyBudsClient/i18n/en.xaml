@@ -528,4 +528,11 @@
     <sys:String x:Key="window_minimize">Minimize</sys:String>
     <sys:String x:Key="window_close">Close</sys:String>
 
+    <!-- Buds app detected page -->
+    <sys:String x:Key="budsapp_header">Galaxy Buds app found</sys:String>
+    <sys:String x:Key="budsapp_text_p1">Looks like you have the official Galaxy Buds app for Windows 10 installed.</sys:String>
+    <sys:String x:Key="budsapp_text_p2">
+      If it is open and connected, Galaxy Buds Manager might have issues connecting to your earbuds. Likewise, the Galaxy Buds app can't connect to your earbuds when Galaxy Buds Manager is running.
+    </sys:String>
+
 </ResourceDictionary>

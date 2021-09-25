@@ -73,10 +73,11 @@ namespace GalaxyBudsClient.Interface.Pages
 				pro.WaitForExit();
 				var result = pro.StandardOutput.ReadToEnd();
 				if (result.Contains("SAMSUNGELECTRONICSCO.LTD.GalaxyBuds")) {
-					Process.Start("notepad");
+					MainWindow.Instance.Pager.SwitchPage(Pages.BudsAppDetected);
+				} else {
+					MainWindow.Instance.Pager.SwitchPage(Pages.DeviceSelect);
 				}
 			}
-			MainWindow.Instance.Pager.SwitchPage(Pages.DeviceSelect);
 		}
 
 		private void DarkMode_OnToggled(object? sender, bool e)

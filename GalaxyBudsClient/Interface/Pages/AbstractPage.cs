@@ -37,6 +37,7 @@ namespace GalaxyBudsClient.Interface.Pages
             UnsupportedFeature,
             UpdateAvailable,
             UpdateProgress,
+            BudsAppDetected,
             Undefined
         }
 
