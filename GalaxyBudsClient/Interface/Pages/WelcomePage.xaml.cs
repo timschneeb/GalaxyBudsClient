@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -58,6 +59,23 @@ namespace GalaxyBudsClient.Interface.Pages
 		
 		private void Next_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
+			// Only search for the Buds app on Windows 10 and above
+			if (Environment.OSVersion.Platform == PlatformID.Win32NT && Environment.OSVersion.Version.Major >= 10) {
+				// Using PowerShell because I couldn't find a native way to get a list of UWP apps
+				ProcessStartInfo si = new ProcessStartInfo {
+					FileName = "powershell",
+					Arguments = "Get-AppxPackage SAMSUNGELECTRONICSCO.LTD.GalaxyBuds",
+					RedirectStandardOutput = true,
+					UseShellExecute = false,
+					CreateNoWindow = true
+				};
+				var pro = Process.Start(si);
+				pro.WaitForExit();
+				var result = pro.StandardOutput.ReadToEnd();
+				if (result.Contains("SAMSUNGELECTRONICSCO.LTD.GalaxyBuds")) {
+					Process.Start("notepad");
+				}
+			}
 			MainWindow.Instance.Pager.SwitchPage(Pages.DeviceSelect);
 		}
 
