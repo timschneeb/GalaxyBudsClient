@@ -22,6 +22,14 @@ namespace GalaxyBudsClient.Utils
             return b & (1 << i);
         }
 
+        public static byte ValueOfLeft(byte b) {
+            return (byte) ((b & 240) >> 4);
+        }
+
+        public static byte ValueOfRight(byte b) {
+            return (byte) (b & 15);
+        }
+        
         public static byte[] AddByteToArray(byte[] bArray, byte newByte)
         {
             byte[] newArray = new byte[bArray.Length + 1];

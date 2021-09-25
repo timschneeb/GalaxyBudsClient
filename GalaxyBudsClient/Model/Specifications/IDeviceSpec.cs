@@ -30,6 +30,7 @@ namespace GalaxyBudsClient.Model.Specifications
             StereoPan,
             FirmwareUpdates,
             SpatialSensor,
+            AmbientCustomize,
             AncWithOneEarbud,
             AncNoiseReductionLevels
         }

@@ -23,6 +23,8 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.SpatialSensor, null },
                 { IDeviceSpec.Feature.BixbyWakeup, null },
                 { IDeviceSpec.Feature.AncNoiseReductionLevels, null },
+                { IDeviceSpec.Feature.AmbientSidetone, new FeatureRule(8, "R190XXU0AUI2")  },
+                { IDeviceSpec.Feature.AmbientCustomize, new FeatureRule(8, "R190XXU0AUI2") },
             };
         
         public Models Device => Models.BudsPro;

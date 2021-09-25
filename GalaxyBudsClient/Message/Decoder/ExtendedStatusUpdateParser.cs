@@ -30,7 +30,7 @@ namespace GalaxyBudsClient.Message.Decoder
 
         [Device(new[] { Models.Buds, Models.BudsPlus })]
         public bool AmbientSoundEnabled { set; get; }
-        [Device(new[] { Models.Buds, Models.BudsPlus, Models.BudsPro })]
+        [Device(new[] { Models.Buds, Models.BudsPlus, Models.BudsPro, Models.Buds2 })]
         public int AmbientSoundVolume { set; get; }
 
 
@@ -40,50 +40,60 @@ namespace GalaxyBudsClient.Message.Decoder
         public bool EqualizerEnabled { set; get; }
 
 
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2 })]
         public PlacementStates PlacementL { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2 })]
         public PlacementStates PlacementR { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2 })]
         public int BatteryCase { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsPro })]
+        [Device(new[] { Models.BudsPlus, Models.BudsPro, Models.Buds2 })]
         public bool OutsideDoubleTap { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2 })]
         public Color DeviceColor { set; get; }
 
 
-        [Device(new []{ Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device(new []{ Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2 })]
         public bool AdjustSoundSync { set; get; }
-        [Device(Models.BudsPlus)]
+        [Device(new []{ Models.BudsPlus, Models.BudsPro, Models.BudsPro, Models.Buds2 })]
         public bool SideToneEnabled { set; get; }
-        [Device(new []{ Models.BudsPlus, Models.BudsPro })]
+        [Device(new []{ Models.BudsPlus, Models.BudsPro, Models.Buds2 })]
         public bool ExtraHighAmbientEnabled { set; get; }
 
 
         [Device(Models.BudsLive)]
         public bool RelieveAmbient { set; get; }
-        [Device(new []{ Models.BudsLive, Models.BudsPro })]
+        [Device(new []{ Models.BudsLive, Models.BudsPro, Models.Buds2 })]
         public bool VoiceWakeUp { set; get; }
-        [Device(new []{ Models.BudsLive, Models.BudsPro })]
+        [Device(new []{ Models.BudsLive, Models.BudsPro, Models.Buds2 })]
         public int VoiceWakeUpLang { set; get; }
-        [Device(new []{ Models.BudsLive, Models.BudsPro })]
+        [Device(new []{ Models.BudsLive, Models.BudsPro, Models.Buds2 })]
         public int FmmRevision { set; get; }
         [Device(Models.BudsLive)]
         public bool NoiseCancelling { set; get; }
 
 
-        [Device(Models.BudsPro)]
+        [Device(new []{ Models.BudsPro, Models.Buds2 })]
         public NoiseControlMode NoiseControlMode { set; get; }
-        [Device(Models.BudsPro)]
+        [Device(new []{ Models.BudsPro, Models.Buds2 })]
         public bool NoiseControlTouchOff { set; get; }
-        [Device(Models.BudsPro)]
+        [Device(new []{ Models.BudsPro, Models.Buds2 })]
         public bool NoiseControlTouchAnc { set; get; }
-        [Device(Models.BudsPro)]
+        [Device(new []{ Models.BudsPro, Models.Buds2 })]
         public bool NoiseControlTouchAmbient { set; get; }
-        [Device(Models.BudsPro)]
+        
+        
+        [Device(new []{ Models.Buds2 })]
+        public bool NoiseControlTouchLeftOff { set; get; }
+        [Device(new []{ Models.Buds2 })]
+        public bool NoiseControlTouchLeftAnc { set; get; }
+        [Device(new []{ Models.Buds2 })]
+        public bool NoiseControlTouchLeftAmbient { set; get; }
+        
+        
+        [Device(new []{ Models.BudsPro, Models.Buds2 })]
         public bool SpeakSeamlessly { set; get; }
 
-        [Device(Models.BudsPro)]
+        [Device(new []{ Models.BudsPro, Models.Buds2 })]
         public byte NoiseReductionLevel { set; get; }
         [Device(Models.BudsPro)]
         public bool AutoSwitchAudioOutput { set; get; }
@@ -95,8 +105,35 @@ namespace GalaxyBudsClient.Message.Decoder
         [Device(Models.BudsPro)]
         public bool SpatialAudio { set; get; }
         
-        [Device(new []{ Models.BudsLive, Models.BudsPro })]
+        [Device(new []{ Models.BudsLive, Models.BudsPro, Models.Buds2 })]
         public byte HearingEnhancements { set; get; }
+        
+        [Device(Models.Buds2)]
+        public bool SingleTapOn { set; get; }
+        [Device(Models.Buds2)]
+        public bool DoubleTapOn { set; get; }
+        [Device(Models.Buds2)]
+        public bool TripleTapOn { set; get; }
+        [Device(Models.Buds2)]
+        public bool TouchHoldOn { set; get; }
+
+        [Device(Models.Buds2)]
+        public byte TouchType { set; get; }
+
+        [Device(new []{ Models.Buds2 })]
+        public bool AncWithOneEarbud { set; get; }
+        [Device(new []{ Models.BudsPro, Models.Buds2 })]
+        public bool NoiseControlsWithOneEarbud { set; get; }
+        
+        [Device(new []{ Models.BudsPro, Models.Buds2 })]
+        public bool AmbientCustomVolumeOn { set; get; }
+        [Device(new []{ Models.BudsPro, Models.Buds2 })]
+        public byte AmbientCustomVolumeLeft { set; get; }
+        [Device(new []{ Models.BudsPro, Models.Buds2 })]
+        public byte AmbientCustomVolumeRight { set; get; }
+        [Device(new []{ Models.BudsPro, Models.Buds2 })]
+        public byte AmbientCustomSoundTone { set; get; }
+
         
         public override void ParseMessage(SPPMessage msg)
         {
@@ -253,6 +290,13 @@ namespace GalaxyBudsClient.Message.Decoder
                     NoiseControlTouchAmbient = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 1) == 2;
                     NoiseControlTouchAnc = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 2) == 4;
 
+                    if (Revision >= 8)
+                    {
+                        NoiseControlTouchLeftOff = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 4) == 16;
+                        NoiseControlTouchLeftAmbient = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 5) == 32;
+                        NoiseControlTouchLeftAnc = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 6) == 64;
+                    }
+                    
                     if (Revision < 3)
                     {
                         ExtraHighAmbientEnabled = msg.Payload[22] == 1;
@@ -288,6 +332,94 @@ namespace GalaxyBudsClient.Message.Decoder
                     if (Revision >= 7)
                     {
                         OutsideDoubleTap = msg.Payload[31] == 1;
+                    }
+                    
+                    if (Revision >= 8)
+                    {
+                        NoiseControlsWithOneEarbud = msg.Payload[32] == 1;
+                        AmbientCustomVolumeOn = msg.Payload[33] == 1;
+                        AmbientCustomVolumeLeft = ByteArrayUtils.ValueOfLeft(msg.Payload[34]);
+                        AmbientCustomVolumeRight = ByteArrayUtils.ValueOfRight(msg.Payload[34]);
+                        AmbientCustomSoundTone = msg.Payload[35];
+                    }
+
+                    if (Revision >= 9)
+                    {
+                        SideToneEnabled = msg.Payload[36] == 1;
+                    }
+                }
+                else if(ActiveModel == Models.Buds2)
+                {
+                    AdjustSoundSync = msg.Payload[8] == 1;
+                    EqualizerMode = msg.Payload[9];
+
+                    if (Revision < 4)
+                    {
+                        TouchpadLock = msg.Payload[10] == 1;
+                    }
+                    else
+                    {
+                        TouchHoldOn = (msg.Payload[10] & (1 << 0)) == 1;
+                        TripleTapOn = (msg.Payload[10] & (1 << 1)) == 2;
+                        DoubleTapOn = (msg.Payload[10] & (1 << 2)) == 4;
+                        SingleTapOn = (msg.Payload[10] & (1 << 3)) == 8;
+                        TouchpadLock = (msg.Payload[10] & (1 << 7)) == 128;
+                    }
+                    
+                    TouchpadOptionL = DeviceSpec.TouchMap.FromByte((byte) ((msg.Payload[11] & 240) >> 4));
+                    TouchpadOptionR = DeviceSpec.TouchMap.FromByte((byte) (msg.Payload[11] & 15));
+
+                    NoiseControlMode = (NoiseControlMode)msg.Payload[12];
+                    VoiceWakeUp = msg.Payload[13] == 1;
+
+                    short leftColor = BitConverter.ToInt16(msg.Payload, 14);
+                    short rightColor = BitConverter.ToInt16(msg.Payload, 16);
+                    DeviceColor = (Color)(leftColor != rightColor ? 0 : leftColor);
+
+                    VoiceWakeUpLang = msg.Payload[18];
+                    SeamlessConnectionEnabled = msg.Payload[19] == 0;
+                    FmmRevision = msg.Payload[20];
+                    
+                    NoiseControlTouchOff = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 0) == 1;
+                    NoiseControlTouchAmbient = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 1) == 2;
+                    NoiseControlTouchAnc = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 2) == 4;
+
+                    if (Revision >= 5)
+                    {
+                        NoiseControlTouchLeftOff = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 4) == 16;
+                        NoiseControlTouchLeftAmbient = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 5) == 32;
+                        NoiseControlTouchLeftAnc = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 6) == 64;
+                    }
+                    
+                    SpeakSeamlessly = msg.Payload[22] == 1;
+                    AmbientSoundVolume = msg.Payload[23];
+                    NoiseReductionLevel = msg.Payload[24];
+                    HearingEnhancements = msg.Payload[25];
+                    ExtraHighAmbientEnabled = msg.Payload[26] == 1;
+
+                    if (Revision >= 2)
+                    {
+                        TouchType = msg.Payload[27];
+                    }
+                    
+                    if (Revision >= 3)
+                    {
+                        AncWithOneEarbud = msg.Payload[28] == 1;
+                        NoiseControlsWithOneEarbud = Revision >= 5 && AncWithOneEarbud;
+                    }
+                    
+                    if (Revision >= 5)
+                    {
+                        AmbientCustomVolumeOn = msg.Payload[29] == 1;
+                        AmbientCustomVolumeLeft = ByteArrayUtils.ValueOfLeft(msg.Payload[30]);
+                        AmbientCustomVolumeRight = ByteArrayUtils.ValueOfRight(msg.Payload[30]);
+                        AmbientCustomSoundTone = msg.Payload[31];
+                        OutsideDoubleTap = msg.Payload[32] == 1;
+                    }
+                    
+                    if (Revision >= 6)
+                    {
+                        SideToneEnabled = msg.Payload[33] == 1;
                     }
                 }
             }
