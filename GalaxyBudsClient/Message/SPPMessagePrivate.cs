@@ -79,7 +79,6 @@
             RESET = 80,
             RESP = 81,
             SELF_TEST = 171,
-            SET_A2DP_VOL = 130,
             SET_AMBIENT_MODE = 128,
             SET_DEBUG_MODE = 32,
             SET_MODE_CHANGE = 16,
@@ -134,6 +133,8 @@
             SET_HEARING_ENHANCEMENTS = 143,
             SPATIAL_AUDIO_DATA = 194,
             SPATIAL_AUDIO_CONTROL = 195,
+            
+            CUSTOMIZE_AMBIENT_SOUND = 130, /* prior: SET_A2DP_VOL */
 
             /* Undocumented IDs (refer to: https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsPlus_HiddenDebugFeatures.md) */
             UNK_DISCONNECT = 39,

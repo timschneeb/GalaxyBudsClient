@@ -2,7 +2,7 @@ using System.IO;
 
 namespace GalaxyBudsClient.Message.Encoder
 {
-    public class LockTouchpadEncoder
+    public static class LockTouchpadEncoder
     {
         public static SPPMessage Build(bool lockAll, bool tapOn, bool doubleTapOn, bool tripleTapOn, bool holdTapOn)
         {
@@ -18,7 +18,7 @@ namespace GalaxyBudsClient.Message.Encoder
             var data = stream.ToArray();
             stream.Close();
             
-            return new SPPMessage(SPPMessage.MessageIds.LOCK_TOUCHPAD, SPPMessage.MsgType.Response, data);
+            return new SPPMessage(SPPMessage.MessageIds.LOCK_TOUCHPAD, SPPMessage.MsgType.Request, data);
         }
     }
 }

@@ -5,7 +5,7 @@ using GalaxyBudsClient.Utils;
 
 namespace GalaxyBudsClient.Message.Encoder
 {
-    public class FotaControlEncoder
+    public static class FotaControlEncoder
     {
         public static SPPMessage Build(FirmwareConstants.ControlIds controlId, short parameter)
         {

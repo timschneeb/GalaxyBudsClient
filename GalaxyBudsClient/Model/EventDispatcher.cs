@@ -52,6 +52,9 @@ namespace GalaxyBudsClient.Model
             Pause,
             [LocalizedDescription("event_connect")]
             Connect,
+            
+            /* INTERNAL */
+            SetNoiseControlState
         }
 
         public static bool CheckTouchOptionEligibility(Event arg)
@@ -98,6 +101,10 @@ namespace GalaxyBudsClient.Model
                     return BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DoubleTapVolume);
                 case Event.ToggleConversationDetect:
                     return BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DetectConversations);
+                
+                /* INTERNAL */
+                case Event.SetNoiseControlState:
+                    return false;
             }
 
             return true;

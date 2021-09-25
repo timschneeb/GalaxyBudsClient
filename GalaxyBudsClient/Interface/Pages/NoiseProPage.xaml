@@ -32,8 +32,10 @@
                     </Border>
                     <Separator Grid.Row="1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
                     <Border Grid.Row="2" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
-                        <items:SliderListItem x:Name="AmbientVolume" Text="{DynamicResource as_volume}" Changed="VolumeSlider_OnChanged"
-                                              Maximum="3" Minimum="0" />
+                        <items:DetailListItem x:Name="AmbientSettings" 
+                                                    Text="{DynamicResource nc_ambient}"
+                                                    Description="{DynamicResource nc_ambient_description}"
+                                                    PointerPressed="AmbientSettings_OnPointerPressed" />
                     </Border>
                </Grid>
         </Border>

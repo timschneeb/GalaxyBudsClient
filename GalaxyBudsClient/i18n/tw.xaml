@@ -413,7 +413,7 @@
     <sys:String x:Key="as_scale_extraloud">Extra loud</sys:String>
     
     <!-- Advanced page -->
-    <sys:String x:Key="adv_header">Advanced Settings</sys:String>
+    <sys:String x:Key="adv_header">Advanced settings</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} or later</sys:String>
     <sys:String x:Key="adv_seamless">Seamless earbud connection</sys:String>
     <sys:String x:Key="adv_seamless_desc">Switch quickly to nearby devices without disconnecting your earbuds or turning on pairing mode</sys:String>

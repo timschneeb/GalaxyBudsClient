@@ -16,6 +16,7 @@ namespace GalaxyBudsClient.Interface.Pages
             TouchCustomAction,
             AmbientSound,
             NoiseControlPro,
+            NoiseControlProAmbient,
             Equalizer,
             BixbyRemap,
             System,

@@ -26,7 +26,6 @@ namespace GalaxyBudsClient.Interface.Pages
         public bool AncEnabled => _ancSwitch.IsChecked;
         
         private readonly SwitchListItem _ambientSwitch;
-        private readonly SliderListItem _volumeSlider;
         
         private readonly SwitchListItem _ancSwitch;
         private readonly SwitchDetailListItem _ancLevel;       
@@ -39,7 +38,6 @@ namespace GalaxyBudsClient.Interface.Pages
         {   
             AvaloniaXamlLoader.Load(this);
             _ambientSwitch = this.FindControl<SwitchListItem>("AmbientToggle");
-            _volumeSlider = this.FindControl<SliderListItem>("AmbientVolume");
             
             _ancSwitch = this.FindControl<SwitchListItem>("AncToggle");
             _ancLevel = this.FindControl<SwitchDetailListItem>("AncLevelToggle");
@@ -52,11 +50,8 @@ namespace GalaxyBudsClient.Interface.Pages
             SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
 
             EventDispatcher.Instance.EventReceived += OnEventReceived;
-            
-            Loc.LanguageUpdated += UpdateStrings;
             Loc.LanguageUpdated += UpdateVoiceDetectTimeout;
             
-            UpdateStrings();
             UpdateVoiceDetectTimeout();
         }
         
@@ -106,51 +101,16 @@ namespace GalaxyBudsClient.Interface.Pages
                         _ambientSwitch.Toggle();
                         AmbientToggle_OnToggled(this, _ambientSwitch.IsChecked);
                         break;
-                    case EventDispatcher.Event.AmbientVolumeUp:
-                        _ancSwitch.IsChecked = false;
-                        _ambientSwitch.IsChecked = true;
-                        await MessageComposer.NoiseControl.SetMode(NoiseControlMode.AmbientSound);
-                        
-                        if (_volumeSlider.Value != _volumeSlider.Maximum)
+                    case EventDispatcher.Event.SetNoiseControlState:
+                        if (arg == null)
                         {
-                            _volumeSlider.Value += 1;
+                            break;
                         }
                         
-                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.AMBIENT_VOLUME,
-                            (byte) _volumeSlider.Value);
-                        break;
-                    case EventDispatcher.Event.AmbientVolumeDown:
-                        _ancSwitch.IsChecked = false;
-                        
-                        if (_volumeSlider.Value <= 0)
-                        {
-                            _ambientSwitch.IsChecked = false;
-                            await MessageComposer.NoiseControl.SetMode(NoiseControlMode.Off);
-                        }
-                        else
-                        {
-                            await MessageComposer.NoiseControl.SetMode(NoiseControlMode.AmbientSound);
-                            _ambientSwitch.IsChecked = true;
-                            _volumeSlider.Value -= 1;
-                            
-                            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.AMBIENT_VOLUME,
-                                (byte) _volumeSlider.Value);
-                        }
-
+                        SetNoiseControlState((NoiseControlMode)arg);
                         break;
                 }
             });
-        }
-
-        private void UpdateStrings()
-        {
-            _volumeSlider.SubtitleDictionary = new Dictionary<int, string>()
-            {
-                { 0, Loc.Resolve("as_scale_low") },
-                { 1, Loc.Resolve("as_scale_moderate") },
-                { 2, Loc.Resolve("as_scale_high") },
-                { 3, Loc.Resolve("as_scale_extraloud") }
-            };
         }
 
         public override void OnPageShown()
@@ -166,7 +126,6 @@ namespace GalaxyBudsClient.Interface.Pages
         private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
         {
             _ambientSwitch.IsChecked = e.NoiseControlMode == NoiseControlMode.AmbientSound;
-            _volumeSlider.Value = e.AmbientSoundVolume;
             _ancSwitch.IsChecked = e.NoiseControlMode == NoiseControlMode.NoiseReduction;
             _ancLevel.IsChecked = e.NoiseReductionLevel == 1;
             _voiceDetect.IsChecked = e.DetectConversations;
@@ -222,11 +181,6 @@ namespace GalaxyBudsClient.Interface.Pages
             }
         }
         
-        private async void VolumeSlider_OnChanged(object? sender, int e)
-        {
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.AMBIENT_VOLUME, (byte)e);
-        }
-
         private async void AncToggle_OnToggled(object? sender, bool e)
         {
             if (e)
@@ -248,6 +202,11 @@ namespace GalaxyBudsClient.Interface.Pages
         private async void VoiceDetect_OnToggled(object? sender, bool e)
         {
             await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_DETECT_CONVERSATIONS, e);
+        }
+
+        private void AmbientSettings_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+        {
+            MainWindow.Instance.Pager.SwitchPage(Pages.NoiseControlProAmbient);
         }
     }
 }
