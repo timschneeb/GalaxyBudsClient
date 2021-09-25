@@ -32,7 +32,8 @@ namespace GalaxyBudsClient.Model.Specifications
             SpatialSensor,
             AmbientCustomize,
             AncWithOneEarbud,
-            AncNoiseReductionLevels
+            AncNoiseReductionLevels,
+            AdvancedTouchLock
         }
         
         public Dictionary<Feature, FeatureRule?> Rules { get; }

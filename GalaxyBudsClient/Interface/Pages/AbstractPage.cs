@@ -12,6 +12,7 @@ namespace GalaxyBudsClient.Interface.Pages
             Home,
             FindMyGear,
             Touch,
+            TouchGesture,
             TouchCustomAction,
             AmbientSound,
             NoiseControlPro,

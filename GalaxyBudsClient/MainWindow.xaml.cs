@@ -139,7 +139,7 @@ namespace GalaxyBudsClient
                 ConnectionLostPage, CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(),
                 new WelcomePage(), UnsupportedFeaturePage, UpdatePage, UpdateProgressPage, new SystemCoredumpPage(),
                 new HotkeyPage(), new FirmwareSelectionPage(), new FirmwareTransferPage(), new SpatialTestPage(),
-                new BixbyRemapPage(), new CrowdsourcingSettingsPage(), new BudsAppDetectedPage());
+                new BixbyRemapPage(), new CrowdsourcingSettingsPage(), new BudsAppDetectedPage(), new TouchpadGesturePage());
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);

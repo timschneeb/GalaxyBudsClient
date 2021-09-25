@@ -50,7 +50,7 @@ namespace GalaxyBudsClient
 #if DEBUG
                     o.Environment = "staging";
 #else
-                o.Environment = "production";
+                    o.Environment = "production";
 #endif
                     o.BeforeSend = sentryEvent =>
                     {

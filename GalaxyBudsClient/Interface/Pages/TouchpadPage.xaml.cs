@@ -9,6 +9,7 @@ using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Interop.TrayIcon;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
@@ -16,6 +17,7 @@ using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages
@@ -68,7 +70,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			{
 				case EventDispatcher.Event.LockTouchpadToggle:
 					_lock.Toggle();
-					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOCK_TOUCHPAD, _lock.IsChecked);
+					SendLockState();
 					break;
 				case EventDispatcher.Event.ToggleDoubleEdgeTouch:
 					_edgeTouch.Toggle();
@@ -236,8 +238,13 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		public override void OnPageShown()
 		{
-			_edgeTouch.Parent.IsVisible =
-				BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DoubleTapVolume);
+			var supportsEdgeTouch = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DoubleTapVolume);
+			var supportAdvTouchLock = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AdvancedTouchLock);
+			
+			_edgeTouch.Parent.IsVisible = supportsEdgeTouch;
+			this.FindControl<Separator>("GesturesSeparator").IsVisible = supportsEdgeTouch && supportAdvTouchLock;
+			this.FindControl<DetailListItem>("Gestures").Parent.IsVisible = supportAdvTouchLock;
+
 			UpdateNoiseSwitchModeVisible();
 			
 			MainWindow.Instance.CustomTouchActionPage.Accepted += CustomTouchActionPageOnAccepted;
@@ -252,6 +259,27 @@ namespace GalaxyBudsClient.Interface.Pages
 				BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl) 
 				&& (_lastLeftOption == TouchOptions.NoiseControl || _lastRightOption == TouchOptions.NoiseControl);
 		}
+
+		private async void SendLockState()
+		{
+			if(BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AdvancedTouchLock))
+			{
+				if (MainWindow.Instance.Pager.FindPage(Pages.TouchGesture) is TouchpadGesturePage page)
+				{
+					await BluetoothImpl.Instance.SendAsync(LockTouchpadEncoder.Build(_lock.IsChecked, 
+						page.Single.IsChecked, page.Double.IsChecked, page.Triple.IsChecked, page.Hold.IsChecked));
+				}
+				else
+				{
+					Log.Warning("TouchpadPage.SendLockState: TouchpadGesturePage not found, cannot submit correct advanced touch locks");
+					await BluetoothImpl.Instance.SendAsync(LockTouchpadEncoder.Build(_lock.IsChecked, true, true, true, true));
+				}
+			}
+			else
+			{
+				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOCK_TOUCHPAD, _lock.IsChecked);
+			}
+		}
 		
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
@@ -260,12 +288,17 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		private async void LockToggle_OnToggled(object? sender, bool e)
 		{
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOCK_TOUCHPAD, e);
+			SendLockState();
 		}
 
 		private async void DoubleTapVolume_OnToggled(object? sender, bool e)
 		{
 			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.OUTSIDE_DOUBLE_TAP, e);
+		}
+
+		private void Gestures_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+		{
+			MainWindow.Instance.Pager.SwitchPage(Pages.TouchGesture);
 		}
 	}
 }

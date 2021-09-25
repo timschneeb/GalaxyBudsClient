@@ -230,12 +230,25 @@
     <sys:String x:Key="unsupported_feature_description_p2">Please update to the latest firmware using the official Windows or Android updater.</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">Make sure you close this app if you use the Windows updater. Only one application can talk to the Buds at a time.</sys:String>
 
+    <!-- Touchpad gestures -->
+    <sys:String x:Key="touchpad_gesture_header">Enable touchpad gestures</sys:String>
+    <sys:String x:Key="touchpad_gesture_single">Single tap</sys:String>
+    <sys:String x:Key="touchpad_gesture_single_desc">Play or pause track</sys:String>
+    <sys:String x:Key="touchpad_gesture_double">Double tap</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_desc">Play next track</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple">Triple tap</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple_desc">Play previous track</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold">Touch and hold</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_desc">Execute custom action</sys:String>
+    
     <!-- Touchpad page -->
     <sys:String x:Key="touchpad_header">Touchpad</sys:String>
     <sys:String x:Key="touchpad_lock">Lock touchpad</sys:String>
     <sys:String x:Key="touchpad_left_action">Left action</sys:String>
     <sys:String x:Key="touchpad_right_action">Right action</sys:String>
-
+    
+    <sys:String x:Key="touchpad_gestures">Advanced touch lock</sys:String>
+    <sys:String x:Key="touchpad_gestures_description">Enable or disable default touch gestures</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume">Double-tap earbud edge</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Double-tap the edge of the left or right earbud to turn the volume down or up</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Noise control switching mode</sys:String>
@@ -243,7 +256,7 @@
     <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; Off</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambient sound &lt;-&gt; Off</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Cycle between modes (ANC, Ambient, Off)</sys:String>
-
+    
     <!-- Custom touchpad action page -->
     <sys:String x:Key="cact_header">Define custom long-press action</sys:String>
     <sys:String x:Key="cact_external_app_dialog_title">Select executable...</sys:String>

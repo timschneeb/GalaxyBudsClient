@@ -63,12 +63,31 @@
                                         Description="{DynamicResource notset}" />
         </Border>
         <Border Grid.Row="6"
-                x:Name="DoubleTapVolumeBorder" 
                 Classes="RoundedBorderListItem BottomSpacer10">
-            <items:SwitchDetailListItem x:Name="DoubleTapVolume"
-                                        Text="{DynamicResource touchpad_double_tap_volume}" 
-                                        Description="{DynamicResource touchpad_double_tap_volume_description}"
-                                        Toggled="DoubleTapVolume_OnToggled" />
+            <Grid ClipToBounds="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" 
+                        Classes="BorderHoverStyle"
+                        CornerRadius="{StaticResource DefaultCornerRadius}">
+                    <items:DetailListItem x:Name="Gestures" 
+                                              Text="{DynamicResource touchpad_gestures}"
+                                              Description="{DynamicResource touchpad_gestures_description}"
+                                              PointerPressed="Gestures_OnPointerPressed" />
+                </Border>
+                <Separator x:Name="GesturesSeparator" Grid.Row="1" Margin="20,0" Background="{DynamicResource BorderSeparatorBrush}"/>
+                <Border Grid.Row="2" 
+                        Classes="BorderHoverStyle" 
+                        CornerRadius="{StaticResource DefaultCornerRadius}">
+                <items:SwitchDetailListItem x:Name="DoubleTapVolume"
+                                            Text="{DynamicResource touchpad_double_tap_volume}" 
+                                            Description="{DynamicResource touchpad_double_tap_volume_description}"
+                                            Toggled="DoubleTapVolume_OnToggled" /> 
+                </Border>
+            </Grid>
         </Border>
     </Grid>
 </pages:AbstractPage>
