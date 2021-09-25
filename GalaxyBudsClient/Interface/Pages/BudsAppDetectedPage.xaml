@@ -31,9 +31,12 @@
                 <TextBlock Grid.Row="0" Text="{DynamicResource budsapp_text_p1}"
                            Foreground="{DynamicResource ForegroundTextDimBrush}"
                            TextWrapping="Wrap" FontSize="14.2" Margin="20,20,20,0" />
-				<TextBlock Grid.Row="1" Text="{DynamicResource budsapp_text_p2}"
+                <TextBlock Grid.Row="1" Text="{DynamicResource budsapp_text_p2}"
                            Foreground="{DynamicResource ForegroundTextDimBrush}"
-                           TextWrapping="Wrap" FontSize="14.2" Margin="20,10,20,10" />
+                           TextWrapping="Wrap" FontSize="14.2" Margin="20,10,20,0" />
+                <TextBlock Grid.Row="2" Text="{DynamicResource budsapp_text_p3}"
+                           Foreground="{DynamicResource ForegroundTextDimBrush}"
+                           TextWrapping="Wrap" FontSize="14.2" FontWeight="Bold" Margin="20,10,20,20" />
 			</Grid>
         </Border>
         
