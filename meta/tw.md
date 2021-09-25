@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>96%</td><td>15 missing string(s)</td></tr>
+<tr><td>93%</td><td>26 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -22,6 +22,17 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>touchpad_gesture_hold_desc</code></td><td>Execute custom action</td></tr>
 <tr><td><code>touchpad_gestures</code></td><td>Advanced touch lock</td></tr>
 <tr><td><code>touchpad_gestures_description</code></td><td>Enable or disable default touch gestures</td></tr>
+<tr><td><code>nc_ambient</code></td><td>Customize ambient sound</td></tr>
+<tr><td><code>nc_ambient_description</code></td><td>Configure ambient sound tone and volume (if available)</td></tr>
+<tr><td><code>nc_as_header</code></td><td>Ambient sound settings</td></tr>
+<tr><td><code>nc_as_custom</code></td><td>Advanced customization</td></tr>
+<tr><td><code>nc_as_custom_volume_l</code></td><td>Ambient sound volume (left)</td></tr>
+<tr><td><code>nc_as_custom_volume_r</code></td><td>Ambient sound volume (right)</td></tr>
+<tr><td><code>nc_as_custom_tone</code></td><td>Ambient sound tone</td></tr>
+<tr><td><code>nc_as_custom_tone_clear</code></td><td>Clear</td></tr>
+<tr><td><code>nc_as_custom_tone_soft</code></td><td>Soft</td></tr>
+<tr><td><code>nc_as_custom_tone_neutral</code></td><td>Neutral</td></tr>
+<tr><td><code>nc_as_custom_vol_normal</code></td><td>Normal</td></tr>
 <tr><td><code>budsapp_header</code></td><td>Bluetooth compatibility info</td></tr>
 <tr><td><code>budsapp_text_p1</code></td><td>The official Galaxy Buds app for Windows 10 is installed alongside this application.</td></tr>
 <tr><td><code>budsapp_text_p2</code></td><td>

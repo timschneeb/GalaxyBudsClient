@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>65%</td><td>142 missing string(s)</td></tr>
+<tr><td>64%</td><td>153 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -84,10 +84,21 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 <tr><td><code>nc_header</code></td><td>Noise control</td></tr>
 <tr><td><code>nc_anc_level</code></td><td>High sensitivity</td></tr>
 <tr><td><code>nc_anc_level_description</code></td><td>Stronger noise cancelling effect</td></tr>
+<tr><td><code>nc_ambient</code></td><td>Customize ambient sound</td></tr>
+<tr><td><code>nc_ambient_description</code></td><td>Configure ambient sound tone and volume (if available)</td></tr>
 <tr><td><code>nc_voicedetect</code></td><td>Conversation detection</td></tr>
 <tr><td><code>nc_voicedetect_description</code></td><td>When your voice is detected, automatically turn on Ambient sound and lower media volume to make conversation easier</td></tr>
 <tr><td><code>nc_voicedetect_timeout</code></td><td>Conversation timeout</td></tr>
 <tr><td><code>nc_voicedetect_timeout_item</code></td><td>{0} seconds</td></tr>
+<tr><td><code>nc_as_header</code></td><td>Ambient sound settings</td></tr>
+<tr><td><code>nc_as_custom</code></td><td>Advanced customization</td></tr>
+<tr><td><code>nc_as_custom_volume_l</code></td><td>Ambient sound volume (left)</td></tr>
+<tr><td><code>nc_as_custom_volume_r</code></td><td>Ambient sound volume (right)</td></tr>
+<tr><td><code>nc_as_custom_tone</code></td><td>Ambient sound tone</td></tr>
+<tr><td><code>nc_as_custom_tone_clear</code></td><td>Clear</td></tr>
+<tr><td><code>nc_as_custom_tone_soft</code></td><td>Soft</td></tr>
+<tr><td><code>nc_as_custom_tone_neutral</code></td><td>Neutral</td></tr>
+<tr><td><code>nc_as_custom_vol_normal</code></td><td>Normal</td></tr>
 <tr><td><code>as_scale_very_low</code></td><td>Very low</td></tr>
 <tr><td><code>as_scale_low</code></td><td>Low</td></tr>
 <tr><td><code>as_scale_moderate</code></td><td>Moderate</td></tr>
