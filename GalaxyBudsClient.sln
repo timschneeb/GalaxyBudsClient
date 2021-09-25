@@ -48,8 +48,8 @@ Global
 		{1DFCF45B-9817-45EF-9BBB-9DACA8F3E4E6}.Release - Windows ARM|Any CPU.Build.0 = Release - Windows ARM|Any CPU
 		{1DFCF45B-9817-45EF-9BBB-9DACA8F3E4E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DFCF45B-9817-45EF-9BBB-9DACA8F3E4E6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DD32EA98-F26F-4629-B78F-F9F68C9BDA37}.CodeAnalysis|Any CPU.ActiveCfg = CodeAnalysis|Any CPU
-		{DD32EA98-F26F-4629-B78F-F9F68C9BDA37}.CodeAnalysis|Any CPU.Build.0 = CodeAnalysis|Any CPU
+		{DD32EA98-F26F-4629-B78F-F9F68C9BDA37}.CodeAnalysis|Any CPU.ActiveCfg = Release|Any CPU
+		{DD32EA98-F26F-4629-B78F-F9F68C9BDA37}.CodeAnalysis|Any CPU.Build.0 = Release|Any CPU
 		{DD32EA98-F26F-4629-B78F-F9F68C9BDA37}.Debug (Local server)|Any CPU.ActiveCfg = Debug (Local server)|Any CPU
 		{DD32EA98-F26F-4629-B78F-F9F68C9BDA37}.Debug (Local server)|Any CPU.Build.0 = Debug (Local server)|Any CPU
 		{DD32EA98-F26F-4629-B78F-F9F68C9BDA37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -88,8 +88,8 @@ Global
 		{73B48D11-E52D-46B2-AA81-FE8A50CA8234}.Release - Windows ARM|Any CPU.Build.0 = Release - Windows ARM|Any CPU
 		{73B48D11-E52D-46B2-AA81-FE8A50CA8234}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73B48D11-E52D-46B2-AA81-FE8A50CA8234}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1411DDEF-EFBC-4BF1-9292-0E74261A587D}.CodeAnalysis|Any CPU.ActiveCfg = Release|Any CPU
-		{1411DDEF-EFBC-4BF1-9292-0E74261A587D}.CodeAnalysis|Any CPU.Build.0 = Release|Any CPU
+		{1411DDEF-EFBC-4BF1-9292-0E74261A587D}.CodeAnalysis|Any CPU.ActiveCfg = CodeAnalysis|Any CPU
+		{1411DDEF-EFBC-4BF1-9292-0E74261A587D}.CodeAnalysis|Any CPU.Build.0 = CodeAnalysis|Any CPU
 		{1411DDEF-EFBC-4BF1-9292-0E74261A587D}.Debug (Local server)|Any CPU.ActiveCfg = Debug (Local server)|Any CPU
 		{1411DDEF-EFBC-4BF1-9292-0E74261A587D}.Debug (Local server)|Any CPU.Build.0 = Debug (Local server)|Any CPU
 		{1411DDEF-EFBC-4BF1-9292-0E74261A587D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
