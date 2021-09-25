@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>67%</td><td>131 missing string(s)</td></tr>
+<tr><td>67%</td><td>130 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
