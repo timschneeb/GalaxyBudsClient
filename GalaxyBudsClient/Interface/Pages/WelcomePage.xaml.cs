@@ -83,7 +83,7 @@ namespace GalaxyBudsClient.Interface.Pages
 								officialAppInstalled = process?.StandardOutput.ReadToEnd().Contains("SAMSUNGELECTRONICSCO.LTD.GalaxyBuds") ?? false;
 							} 
 						}
-						catch(Win32Exception ex)
+						catch(Exception exception)
 						{
 						        Log.Warning("WelcomePage.BudsAppDetected.ThreadPool: " + exception);
 						}
