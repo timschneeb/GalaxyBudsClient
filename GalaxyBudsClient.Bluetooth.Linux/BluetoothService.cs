@@ -60,6 +60,11 @@ namespace GalaxyBudsClient.Bluetooth.Linux
         #region Adapter
         public async Task SelectAdapter(string preferred = "")
         {
+            if(preferred.Length <= 0)
+            {
+                preferred = Environment.GetEnvironmentVariable("BT_ADAPTER") ?? string.Empty;
+            }
+            
             if (preferred.Length > 0)
             {
                 try
