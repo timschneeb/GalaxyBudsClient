@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
@@ -74,11 +75,18 @@ namespace GalaxyBudsClient.Interface.Pages
 					};
 	
 					ThreadPool.QueueUserWorkItem(delegate {
-						var process = Process.Start(si);
-						if(process?.WaitForExit(4000) ?? false) 
+						try
 						{
-							officialAppInstalled = process?.StandardOutput.ReadToEnd().Contains("SAMSUNGELECTRONICSCO.LTD.GalaxyBuds") ?? false;
-						} 
+							var process = Process.Start(si);
+							if(process?.WaitForExit(4000) ?? false) 
+							{
+								officialAppInstalled = process?.StandardOutput.ReadToEnd().Contains("SAMSUNGELECTRONICSCO.LTD.GalaxyBuds") ?? false;
+							} 
+						}
+						catch(Win32Exception ex)
+						{
+						        Log.Warning("WelcomePage.BudsAppDetected.ThreadPool: " + exception);
+						}
 					});
 				}
 				catch (Exception exception)
