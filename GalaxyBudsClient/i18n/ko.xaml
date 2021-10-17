@@ -26,7 +26,7 @@
     <sys:String x:Key="back">돌아가기</sys:String>
 	
 	
-    <sys:String x:Key="nobluetoothdev">블루투스 어댑터를 찾을 수 없어요. 블루투스를 활성화 하고 다시 시도하세요.</sys:String>
+    <sys:String x:Key="nobluetoothdev">블루투스 어댑터를 찾을 수 없어요. 블루투스를 활성화하고 다시 시도하세요.</sys:String>
     <sys:String x:Key="anc">액티브 노이즈 캔슬링</sys:String>
 
     <!-- SPP Message Parser -->
@@ -87,7 +87,7 @@
     <!-- Options menu -->
     <sys:String x:Key="optionsmenu_title">옵션</sys:String>
     <sys:String x:Key="optionsmenu_settings">설정</sys:String>
-    <sys:String x:Key="optionsmenu_refresh">대시보드 새로고침</sys:String>
+    <sys:String x:Key="optionsmenu_refresh">대시보드 새로 고침</sys:String>
     <sys:String x:Key="optionsmenu_deregister">디바이스 등록 해제</sys:String>
     <sys:String x:Key="optionsmenu_update">업데이트 확인</sys:String>
     <sys:String x:Key="optionsmenu_credits">크레딧</sys:String>
@@ -173,7 +173,7 @@
         만약 이 프로그램이 개발되는 과정을 보고 싶으시다면, 저의 리버스 엔지니어링의 성과물들이 있는 GitHub 리포지토리에서 확인이 가능해요. 또한 문제가 생기면 텔레그램에서 @thepbone으로 메시지를 보내실 수 있어요.
     </sys:String>
     <sys:String x:Key="welcome_textblock_p3">
-        이 프로그램은 Galaxy Buds 1세대 부터 최신 버전인 Galaxy Buds Pro까지 모두 지원해요.
+        이 프로그램은 Galaxy Buds 1세대부터 최신 버전인 Galaxy Buds Pro까지 모두 지원해요.
     </sys:String>
     <sys:String x:Key="welcome_darkmode">다크 모드</sys:String>
     <sys:String x:Key="welcome_darkmode_content">눈이 아프신가요? 어두운 색상으로 바꿔보세요!</sys:String>
@@ -241,7 +241,7 @@
     <sys:String x:Key="unsupported_feature_current_fwver_null">현재 버즈 소프트웨어 버전: 알 수 없음</sys:String>
     <sys:String x:Key="unsupported_feature_required_fwver_null">요구되는 소프트웨어 버전: 지정되지 않음</sys:String>
 
-    <sys:String x:Key="unsupported_feature_description_p1">버즈의 소프트웨어가 너무 오래됬으므로 이 기능을 지원하지 않아요.</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p1">버즈의 소프트웨어가 너무 오래됐으므로 이 기능을 지원하지 않아요.</sys:String>
     <sys:String x:Key="unsupported_feature_description_p2">공식 Windows 및 Android 업데이터를 통해 최신 소프트웨어로 업데이트해 주세요.</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">Windows 업데이터를 사용할 시, 이 프로그램을 종료하는 것을 잊지 마세요. 한 번에 하나의 프로그램만 버즈와 통신이 가능해요.</sys:String>
 
@@ -252,7 +252,7 @@
     <sys:String x:Key="touchpad_right_action">오른쪽</sys:String>
 
     <sys:String x:Key="touchpad_double_tap_volume">버즈 가장자리 두 번 두드리기</sys:String>
-    <sys:String x:Key="touchpad_double_tap_volume_description">음량을 낮추려연 왼쪽 버즈의 가장자리를 두 번 두드리고, 음량을 높이려면 오른쪽 버즈의 가장자리를 두 번 두드리세요.</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">음량을 낮추려면 왼쪽 버즈의 가장자리를 두 번 두드리고, 음량을 높이려면 오른쪽 버즈의 가장자리를 두 번 두드리세요.</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">소음 제어 전환 모드</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_amb">액티브 노이즈 캔슬링 &lt;-&gt; 주변 소리 듣기</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_off">액티브 노이즈 캔슬링 &lt;-&gt; 끄기</sys:String>
@@ -280,7 +280,7 @@
     <sys:String x:Key="system_pairing_mode">페어링 모드 진입하기</sys:String>
     <sys:String x:Key="system_pairing_mode_desc">이 PC와의 연결을 끊어 다른 기기와 연결할 수 있게 돼요.</sys:String>
     <sys:String x:Key="system_trace_core_dump">트레이스와 코어 덤프 다운로드</sys:String>
-    <sys:String x:Key="system_trace_core_dump_desc">나의 버즈로 부터 로우 디버깅 데이터 얻기</sys:String>
+    <sys:String x:Key="system_trace_core_dump_desc">나의 버즈로부터 로우 디버깅 데이터 얻기</sys:String>
     <sys:String x:Key="system_info">시스템 정보 보기</sys:String>
     <sys:String x:Key="system_info_desc">나의 버즈에 대한 자세한 정보 살펴보기</sys:String>
     <sys:String x:Key="system_battery_type_unknown">지정되지 않음</sys:String>
@@ -316,14 +316,14 @@
     <sys:String x:Key="selftest_fail_long">하나 이상의 진단이 실패했습니다.</sys:String>
 
     <sys:String x:Key="coredump_header">데이터 덤프 중...</sys:String>
-    <sys:String x:Key="coredump_dl_progress_prepare">다운로드 준비중...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_prepare">다운로드 준비 중...</sys:String>
     <sys:String x:Key="coredump_dl_progress_cancelled">다운로드 취소됨</sys:String>
     <sys:String x:Key="coredump_dl_progress_finished">다운로드 완료</sys:String>
     <sys:String x:Key="coredump_dl_trace_progress">트레이스 덤프 다운로드... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">코어 덤프 다운로드... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} 바이트)</sys:String>
     <sys:String x:Key="coredump_dl_note">
-        다운로드하는 동안 오디오 스트림은 일시적으로 중지돼요. 나의 버즈는 이 전송이 완료되는 즉시 연결이 끊어질 거예요. 수동으로 다시 연결해 주세요.&#10;완료되면 수집된 모든 데이터에 대한 저장경로를 선택하라는 메시지가 표시될 거에요.&#10;&#10;전송이 중단되었거나 장치 연결이 너무 일찍 끊어지면 다운로드를 다시 시작해야 해요. 이 기능은 현재 매우 불안정해요. 
+        다운로드하는 동안 오디오 스트림은 일시적으로 중지돼요. 나의 버즈는 이 전송이 완료되는 즉시 연결이 끊어질 거예요. 수동으로 다시 연결해 주세요.&#10;완료되면 수집된 모든 데이터에 대한 저장 경로를 선택하라는 메시지가 표시될 거에요.&#10;&#10;전송이 중단되었거나 장치 연결이 너무 일찍 끊어지면 다운로드를 다시 시작해야 해요. 이 기능은 현재 매우 불안정해요. 
     </sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">덤프 저장 실패</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">덤프를 임시 공간에서부터 복사 실패. 사유: {0}</sys:String>
@@ -354,7 +354,7 @@
     <sys:String x:Key="settings_cpopup_enable">연결 시 팝업 표시</sys:String>
     <sys:String x:Key="settings_cpopup_enable_description">버즈가 연결되었을 때 남은 배터리 용량을 보여주는 작은 알림 팝업이 표시돼요.</sys:String>
     <sys:String x:Key="settings_cpopup_compact">간단한 모드</sys:String>
-    <sys:String x:Key="settings_cpopup_compact_description">표시 공간을 줄이기 위해 팝업에서 버즈의 이름을 표시되지 않아요.</sys:String>
+    <sys:String x:Key="settings_cpopup_compact_description">표시 공간을 줄이기 위해 팝업에서 버즈의 이름이 표시되지 않아요.</sys:String>
     <sys:String x:Key="settings_cpopup_position">표시 위치</sys:String>
     <sys:String x:Key="settings_cpopup_position_placeholder">알 수 없음</sys:String>
     <sys:String x:Key="settings_cpopup_demo">연결 팝업 보기</sys:String>
@@ -362,7 +362,7 @@
     <sys:String x:Key="settings_cpopup_override_title_dialog">팝업 레이블을 입력해 주세요. 공백으로 둘 시 기본 레이블이 적용돼요.</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen">주 화면만</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen_description">팝업을 주 화면에서만 보이기</sys:String>
-    <sys:String x:Key="settings_cpopup_wear_state">케이스에 보관된 상태일때 연한 다른 색상 사용</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state">케이스에 보관된 상태일 때 연한 다른 색상 사용</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state_description">버즈가 케이스에 보관된 상태일 경우 연한 회색으로 표시돼요.</sys:String>
 
     <!-- Factory reset -->
@@ -425,7 +425,7 @@
     <!-- Advanced page -->
     <sys:String x:Key="adv_header">고급 설정</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} 또는 이후 버전</sys:String>
-    <sys:String x:Key="adv_seamless">디바이스간에 간편하게 전환하기</sys:String>
+    <sys:String x:Key="adv_seamless">디바이스 간에 간편하게 전환하기</sys:String>
     <sys:String x:Key="adv_seamless_desc">버즈의 연결을 끊거나 페어링 모드에 들어가지 않고 빠르게 주변에 있는 다른 디바이스로 전환합니다.</sys:String>
     <sys:String x:Key="adv_resume_playback">버즈 착용 시 재생 재개/시작하기</sys:String>
     <sys:String x:Key="adv_resume_playback_desc">하나 이상의 거리 센서가 가려졌을 경우 전체 재생/정지 신호를 보냅니다. (데스크탑 전용 기능)</sys:String>
@@ -471,7 +471,7 @@
 
     <!-- Firmware update disclaimer -->
     <sys:String x:Key="fw_disclaimer">경고</sys:String>
-    <sys:String x:Key="fw_disclaimer_desc">이 펌웨어는 삼성 공식 앱 내 공식 업데이트 도구의 복제품입니다. 다양한 상황(일반적인 상황, 연결 끊김, 의도적으로 블루투스 패킷 손상, ...) 에서의 테스트를 철저히 진행했고, 아무런 문제가 없었습니다. 그렇지만, 펌웨어 업데이트는 시스템 내 중요 요소를 변경하는 작업이고 신중하게 진행해야 하는 작업이므로 문제가 생기더라도 아무런 책임은 지지 않습니다.&#10;&#10;다운그레이드: 이전 펌웨어 버전으로의 다운그레이드가 가능하고 아무런 문제가 없었지만, 예기치 못한 문제를 일으킬 수 있으므로 필요할 때에만 진행하여야 합니다. 다운그레이드 이후 공장 초기화가 권장되지만 대부분 필수적이지는 않습니다.&#10;커스텀 플래싱: 하드 드라이브에서 펌웨어 파일을 로드하는 것 또한 가능합니다. 다른 모델용 펌웨어를 설치하지 마세요.&#10;&#10;이 프로그램에는 GPLv3 라이센스가 적용되며, 프로그램을 사용함으로서 라이센스와 책임의 한계에 동의하는 것으로 간주됩니다. 동의하시면 '게속하기'를 눌러주세요.</sys:String>
+    <sys:String x:Key="fw_disclaimer_desc">이 펌웨어는 삼성 공식 앱 내 공식 업데이트 도구의 복제품입니다. 다양한 상황(일반적인 상황, 연결 끊김, 의도적으로 블루투스 패킷 손상, ...) 에서의 테스트를 철저히 진행했고, 아무런 문제가 없었습니다. 그렇지만, 펌웨어 업데이트는 시스템 내 중요 요소를 변경하는 작업이고 신중하게 진행해야 하는 작업이므로 문제가 생기더라도 아무런 책임은 지지 않습니다.&#10;&#10;다운그레이드: 이전 펌웨어 버전으로의 다운그레이드가 가능하고 아무런 문제가 없었지만, 예기치 못한 문제를 일으킬 수 있으므로 필요할 때에만 진행하여야 합니다. 다운그레이드 이후 공장 초기화가 권장되지만 대부분 필수적이지는 않습니다.&#10;커스텀 플래싱: 하드 드라이브에서 펌웨어 파일을 로드하는 것 또한 가능합니다. 다른 모델용 펌웨어를 설치하지 마세요.&#10;&#10;이 프로그램에는 GPLv3 라이센스가 적용되며, 프로그램을 사용함으로서 라이센스와 책임의 한계에 동의하는 것으로 간주됩니다. 동의하시면 '계속하기'를 눌러주세요.</sys:String>
 
     <!-- Firmware selection -->
     <sys:String x:Key="fw_select_header">펌웨어 업데이트</sys:String>
