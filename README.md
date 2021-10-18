@@ -60,11 +60,20 @@ Get binaries for Windows and Linux in the [release](https://github.com/ThePBone/
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
+### winget
+
 The Windows package is also available to install with Windows Package Manager (winget)
 
 ```
 winget install ThePBone.GalaxyBudsClient
 ```
+
+### AUR package 
+An [AUR package](https://aur.archlinux.org/packages/galaxybudsclient-bin/) for Arch Linux maintained by @joscdk is also available:
+```
+yay -S galaxybudsclient-bin
+```
+
 
 ## How it works
 
@@ -116,6 +125,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@TheLastFrame](https://github.com/TheLastFrame) - Buds Pro icons
 * [@githubcatw](https://github.com/githubcatw) - Connection dialog base
 * [@GaryGadget9](https://github.com/GaryGadget9) - WinGet package
+* [@joscdk](https://github.com/joscdk) - AUR package
 
 ### Translators
 
