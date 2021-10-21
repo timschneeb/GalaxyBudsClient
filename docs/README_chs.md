@@ -1,7 +1,7 @@
 
 <p align="center">
   <a href="../README.md">English</a> | 简体中文 | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> <br>
-    <sub>注意：该 README 文档由翻译人员维护，可能会过时，最新版本以英文版为准。</sub>
+    <sub>注意：该 README 文档由翻译人员维护，可能会过时，以英文版最新版本为准。</sub>
 </p>
 <h1 align="center">
   Galaxy Buds Client
@@ -60,10 +60,20 @@
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
+### winget
+
 Windows 版本也在 Windows Package Manager (winget) 提供安装
 
 ```
 winget install ThePBone.GalaxyBudsClient
+```
+
+### AUR 包
+
+@joscdk 维护的 Arch Linux 平台的 [AUR 包](https://aur.archlinux.org/packages/galaxybudsclient-bin/) 也可获得：
+
+```
+yay -S galaxybudsclient-bin
 ```
 
 ## 工作原理
@@ -115,6 +125,8 @@ Galaxy Buds 定义了两种蓝牙模式：用于音频流/控制的 A2DP (高级
 * [@AndriesK](https://github.com/AndriesK) - Buds Live bug 修正
 * [@TheLastFrame](https://github.com/TheLastFrame) - Buds Pro 的图标设计
 * [@githubcatw](https://github.com/githubcatw) - 基础连接会话
+* [@GaryGadget9](https://github.com/GaryGadget9) - WinGet 包维护
+* [@joscdk](https://github.com/joscdk) - AUR 包维护
 
 #### 翻译人员
 

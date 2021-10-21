@@ -45,7 +45,7 @@
     <sys:String x:Key="connpopup_placement_bl">底部左侧</sys:String>
     <sys:String x:Key="connpopup_placement_bc">底部中心</sys:String>
     <sys:String x:Key="connpopup_placement_br">底部右侧</sys:String>
-    <sys:String x:Key="connpopup_title">{0}的 Galaxy Buds{1}</sys:String>
+    <sys:String x:Key="connpopup_title">{0} 的 Galaxy Buds{1}</sys:String>
     <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
 
     <!-- Placement  (Buds+) -->
@@ -188,7 +188,7 @@
     <sys:String x:Key="updater_footer_skipversion">跳过该版本</sys:String>
     <sys:String x:Key="updater_footer_install">现在安装</sys:String>
     <sys:String x:Key="updater_appcast_null">发现更新，但发生数据错误，请稍后再试。</sys:String>
-    <sys:String x:Key="updater_noupdate">当前未能找到可用更新 请稍后重试或在 GitHub 上查找更新</sys:String>
+    <sys:String x:Key="updater_noupdate">当前未能找到可用更新，请稍后重试或在 GitHub 上查找更新</sys:String>
     <sys:String x:Key="updater_noupdate_title">无更新</sys:String>
     <sys:String x:Key="updater_newrelease">Galaxy Buds Manager 的更新 {0} 已经推送</sys:String>
 
@@ -230,12 +230,25 @@
     <sys:String x:Key="unsupported_feature_description_p2">请使用官方 Windows 或 Android APP 更新到最新固件</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">如果使用官方 Windows APP 更新固件，请确保此软件关闭。</sys:String>
 
+    <!-- Touchpad gestures -->
+    <sys:String x:Key="touchpad_gesture_header">启用触摸手势</sys:String>
+    <sys:String x:Key="touchpad_gesture_single">单击</sys:String>
+    <sys:String x:Key="touchpad_gesture_single_desc">播放/暂停</sys:String>
+    <sys:String x:Key="touchpad_gesture_double">双击</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_desc">播放下一首</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple">三击</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple_desc">播放上一首</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold">长按</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_desc">执行自定义动作</sys:String>
+
     <!-- Touchpad page -->
     <sys:String x:Key="touchpad_header">触摸控制</sys:String>
     <sys:String x:Key="touchpad_lock">触摸锁定</sys:String>
     <sys:String x:Key="touchpad_left_action">左侧</sys:String>
     <sys:String x:Key="touchpad_right_action">右侧</sys:String>
 
+    <sys:String x:Key="touchpad_gestures">高级触摸锁定</sys:String>
+    <sys:String x:Key="touchpad_gestures_description">启用/禁用默认触摸手势</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume">双击耳机</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">双击以提高音量</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">切换降噪模式</sys:String>
@@ -328,10 +341,10 @@
     <sys:String x:Key="settings_minimize_tray">最小化到系统托盘</sys:String>
     <sys:String x:Key="settings_minimize_tray_description">保留后台运行</sys:String>
     <sys:String x:Key="settings_autostart">开机时启动</sys:String>
-    <sys:String x:Key="settings_autostart_description">开机时启动最小化</sys:String>
-    <sys:String x:Key="settings_autostart_permission">不能更新自启动。注册表访问 (HKCU) 明确的被你的系统管理员禁止</sys:String>
+    <sys:String x:Key="settings_autostart_description">开机时启动并最小化</sys:String>
+    <sys:String x:Key="settings_autostart_permission">不能更新自启动。注册表访问 (HKCU) 明确的被你的系统管理员禁止。</sys:String>
     
-    <sys:String x:Key="settings_connpopup">配置连接弹出菜单</sys:String>
+    <sys:String x:Key="settings_connpopup">配置连接弹窗</sys:String>
     <sys:String x:Key="settings_devmode">开发者选项</sys:String>
     <sys:String x:Key="settings_crowdsourcing">数据收集</sys:String>
 
@@ -344,7 +357,7 @@
     <sys:String x:Key="settings_cpopup_position">位置</sys:String>
     <sys:String x:Key="settings_cpopup_position_placeholder">未知</sys:String>
     <sys:String x:Key="settings_cpopup_demo">显示当前弹窗</sys:String>
-    <sys:String x:Key="settings_cpopup_override_title">重设弹窗</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title">重定义弹窗</sys:String>
     <sys:String x:Key="settings_cpopup_override_title_dialog">请输入自定义标题，你可以通过留空以恢复默认设置</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen">仅主屏幕显示弹窗</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen_description">仅在主屏幕显示弹出窗口</sys:String>
@@ -367,7 +380,7 @@
     </sys:String>
     <sys:String x:Key="factory_text_p1">是否确定恢复出厂设置？</sys:String>
     <sys:String x:Key="factory_text_p2">恢复出厂设置后，你需要重新连接你的耳机</sys:String>
-    <sys:String x:Key="factory_text_p3">请确保你的耳机已开启</sys:String>
+    <sys:String x:Key="factory_text_p3">请确保你的耳机保持连接</sys:String>
 
     <!-- Find my Gear -->
     <sys:String x:Key="fmg_warning_both">请摘下你的耳机</sys:String>
@@ -392,12 +405,25 @@
 
     <!-- Noise control -->
     <sys:String x:Key="nc_header">噪声控制</sys:String>
-    <sys:String x:Key="nc_anc_level">高灵敏度</sys:String>
+    <sys:String x:Key="nc_anc_level">高降噪等级</sys:String>
     <sys:String x:Key="nc_anc_level_description">更强的降噪效果</sys:String>
+    <sys:String x:Key="nc_ambient">自定义环境音</sys:String>
+    <sys:String x:Key="nc_ambient_description">配置环境音的音量和音色（如果可用）</sys:String>
     <sys:String x:Key="nc_voicedetect">对话状态检测</sys:String>
     <sys:String x:Key="nc_voicedetect_description">当检测到你的声音时，会自动开启环境音模式，并降低媒体音量，便于对话。</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">对话超时</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} 秒</sys:String>
+
+    <!-- Noise control >>> Ambient sound -->
+    <sys:String x:Key="nc_as_header">环境音设置</sys:String>
+    <sys:String x:Key="nc_as_custom">高级自定义设置</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_l">左侧音量</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_r">右侧音量</sys:String>
+    <sys:String x:Key="nc_as_custom_tone">均衡器</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_clear">清晰</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_soft">柔和</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_neutral">中等</sys:String>
+    <sys:String x:Key="nc_as_custom_vol_normal">正常</sys:String>
 
     <!-- Ambient sound -->
     <sys:String x:Key="as_header">环境音</sys:String>
@@ -417,8 +443,8 @@
     <sys:String x:Key="adv_required_firmware_later">{0} 或更新</sys:String>
     <sys:String x:Key="adv_seamless">无缝连接</sys:String>
     <sys:String x:Key="adv_seamless_desc"> 快速切换到附近的设备，而无需断开耳机或打开配对模式 </sys:String>
-    <sys:String x:Key="adv_resume_playback">当设备被佩戴，恢复/启动媒体播放</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">当至少一个接近传感器被覆盖时，发送全局播放/暂停状态改变事件 (仅桌面程序)</sys:String>
+    <sys:String x:Key="adv_resume_playback">当设备被佩戴/恢复/启动媒体播放</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">当至少一个距离传感器被覆盖时，发送全局播放/暂停状态改变事件 (仅桌面程序)</sys:String>
     <sys:String x:Key="adv_sidetone">通话时使用环境音</sys:String>
     <sys:String x:Key="adv_sidetone_desc"> 在打电话的时候更清楚地听到你自己的声音</sys:String>
     <sys:String x:Key="adv_passthrough">使用环境声模式缓解压力</sys:String>
@@ -427,11 +453,11 @@
     <sys:String x:Key="adv_gaming_mode_desc">最大限度减少音频延迟，以获得逼真的同步游戏声音（仅三星设备）</sys:String>
     <sys:String x:Key="adv_hotkey">键盘快捷键</sys:String>
     <sys:String x:Key="adv_hotkey_desc">使用键盘快捷键控制耳机</sys:String>
-    <sys:String x:Key="adv_bixby_remap">重设 Bixby 唤醒</sys:String>
+    <sys:String x:Key="adv_bixby_remap">重定义 Bixby 唤醒</sys:String>
     <sys:String x:Key="adv_bixby_remap_desc">定义说出 '嗨 Bixby!' 后执行的动作</sys:String>
 
     <!-- Remap bixby wakeup -->
-    <sys:String x:Key="bixby_remap_header">重设 Bixby 唤醒</sys:String>
+    <sys:String x:Key="bixby_remap_header">重定义 Bixby 唤醒</sys:String>
     <sys:String x:Key="bixby_remap_enable">开启 Bixby 唤醒</sys:String>
     <sys:String x:Key="bixby_remap_enable_desc">在你的三星手机上启动 Bixby 或者在你的 PC 上执行一个自定义动作</sys:String>
     <sys:String x:Key="bixby_remap_lang">Bixby 启动语言</sys:String>
@@ -527,5 +553,15 @@
     <!-- Header -->
     <sys:String x:Key="window_minimize">最小化</sys:String>
     <sys:String x:Key="window_close">关闭</sys:String>
+
+    <!-- Buds app detected page -->
+    <sys:String x:Key="budsapp_header">蓝牙兼容性信息</sys:String>
+    <sys:String x:Key="budsapp_text_p1">你同时安装了官方 Galaxy Buds 应用和本应用。</sys:String>
+    <sys:String x:Key="budsapp_text_p2">
+        如果它已经打开并连接，GalaxyBudsClient 在连接你的耳机时可能出现问题。请确保在继续之前关闭它。同样，当 Galaxy Buds Manager 处于激活状态并且已经打开了与耳塞的连接时，官方的 Galaxy Buds 应用将无法连接到您的耳机。
+    </sys:String>
+    <sys:String x:Key="budsapp_text_p3">
+        请记住，同时只有一个应用程序可以与你的 Galaxy Buds 连接。
+    </sys:String>
 
 </ResourceDictionary>
