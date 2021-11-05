@@ -121,16 +121,16 @@
     <sys:String x:Key="hotkey_edit_header">Wähle eine Tastaturkombination aus</sys:String>
     
     <!-- Hotkey page -->
-    <sys:String x:Key="hotkey_header">Keyboard hotkeys</sys:String>
-    <sys:String x:Key="hotkey_add">Assign new hotkey</sys:String>
-    <sys:String x:Key="hotkey_empty">No hotkeys assigned</sys:String>
-    <sys:String x:Key="hotkey_empty_desc">Create a new keyboard hotkey by clicking the button above</sys:String>
+    <sys:String x:Key="hotkey_header">Tastatur Hotkeys</sys:String>
+    <sys:String x:Key="hotkey_add">Neuen Hotkey festlegen</sys:String>
+    <sys:String x:Key="hotkey_empty">Keine Hotkeys festgelegt</sys:String>
+    <sys:String x:Key="hotkey_empty_desc">Erstellen Sie einen neuen Hotkey durch klicken der Schaltfläche darüber</sys:String>
     <sys:String x:Key="hotkey_edit">Bearbeiten</sys:String>
     <sys:String x:Key="hotkey_delete">Löschen</sys:String>
-    <sys:String x:Key="hotkey_add_error">Failed to register/update hotkeys</sys:String>
-    <sys:String x:Key="hotkey_add_error_context">Affected hotkey:</sys:String>
+    <sys:String x:Key="hotkey_add_error">Registrierung/Updaten eines Hotkeys fehlgeschlagen</sys:String>
+    <sys:String x:Key="hotkey_add_error_context">Betroffener Hostkey:</sys:String>
     <sys:String x:Key="hotkey_add_error_duplicate">Your selected key-combination was already registered as a hotkey by this or another application. Please choose another one.</sys:String>
-    <sys:String x:Key="hotkey_add_error_unknown">Operating system responded with error '{0}'</sys:String>
+    <sys:String x:Key="hotkey_add_error_unknown">Betriebssystem hat mit folgendem Fehler Code geantwortet: '{0}'</sys:String>
 
     <!-- EventDispatcher module -->
     <sys:String x:Key="event_none">Keine Auswahl</sys:String>
@@ -426,4 +426,131 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <!-- Header -->
     <sys:String x:Key="window_minimize">Minimieren</sys:String>
     <sys:String x:Key="window_close">Schließen</sys:String>
+
+    <sys:String x:Key="touchpad_gesture_header">Touchpad Gesten aktivieren</sys:String>
+    <sys:String x:Key="touchpad_gesture_single">Tippen</sys:String>
+    <sys:String x:Key="touchpad_gesture_single_desc">Titel wiedergeben oder anhalten</sys:String>
+    <sys:String x:Key="touchpad_gesture_double">Zeimal tippen</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_desc">nächsten Titel wiedergeben</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple">Dreimal tippen</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple_desc">Vorherigen Titel wiedergeben</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold">Berühren und halten</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_desc">Benutzerdefinierte Aktion ausführen</sys:String>
+
+    <sys:String x:Key="touchpad_gestures">Erweiterte Touch Sperre</sys:String>
+    <sys:String x:Key="touchpad_gestures_description">Aktivieren oder deaktivieren der standard Tdouch Gesten</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode">Umgebungsgeräusch Kontroll wechsel Modus</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC &lt;-&gt; Umgebungssound</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; Aus</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Umgebungssound &lt;-&gt; Aus</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_threeway">Wechseln zwischen den verschiedenen Modi (ANC, Umgebung, Aus)</sys:String>
+
+    <sys:String x:Key="system_flasher">Firmware Update installieren</sys:String>
+    <sys:String x:Key="system_flasher_desc">Update, downgrade, oder flashen einer eigenen firmware</sys:String>
+    <sys:String x:Key="system_spatial">Spatial Sensor Daten speichern</sys:String>
+    <sys:String x:Key="system_spatial_desc">Spatial head-tracking Daten die für 3D Audio verwendet werden auslesen</sys:String>
+    
+    <sys:String x:Key="settings_crowdsourcing">Crowdsourcing</sys:String>
+
+    <sys:String x:Key="settings_cpopup_wear_state">Eine andere Farbe verwenden wenn Buds im Case sind</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state_description">Earbud Icon ausgrauen wenn die Buds im Case sind</sys:String>
+
+    <sys:String x:Key="settings_crowd_header">Crowdsourcing</sys:String>
+    <sys:String x:Key="settings_crowd_allow">Crowdsourcing Teilnahme zulassen</sys:String>
+    <sys:String x:Key="settings_crowd_allow_description">Informationen über Samsung's eigene Bluetooth Protokoll Struktur laufend sammeln. Dies erlaubt es mir alle Galaxy Buds Modelle zu unterstützen ohne alle selbst zu besitzen.</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport">App Absturtzberichte zulassen</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport_description">App Absturtzberichte automatisch bei einem Crash oder fatalen Fehler mithilfe von Sentry senden. Dies hilft mir auf Fehler und Bugs schneller zu reagieren.</sys:String>
+
+    <sys:String x:Key="eq_stereo_balance">Links/Rechts Sound Balance</sys:String>
+    <sys:String x:Key="eq_stereo_balance_value">{0}% Links; {1}% Rechts</sys:String>
+    <sys:String x:Key="eq_stereo_balance_neutral">Neutral</sys:String>
+
+    <sys:String x:Key="nc_ambient">Umgebungssound einstellen</sys:String>
+    <sys:String x:Key="nc_ambient_description">Umgebungssound Töne und Lautstärke (wenn vorhanden) einstellen</sys:String>
+
+    <sys:String x:Key="nc_as_header">Umgebungssound Einstellungen</sys:String>
+    <sys:String x:Key="nc_as_custom">Erweiterte Personalisierung</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_l">Umgebungssound Lautstärke (Links)</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_r">Umgebungssound Lautstärke (Rechts)</sys:String>
+    <sys:String x:Key="nc_as_custom_tone">Umgebungssound Lautstärke Ton</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_clear">Durchlass</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_soft">Weich</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_neutral">Neutral</sys:String>
+    <sys:String x:Key="nc_as_custom_vol_normal">Normal</sys:String>
+
+    <sys:String x:Key="adv_bixby_remap">Bixby Wakeup neu festlegen</sys:String>
+    <sys:String x:Key="adv_bixby_remap_desc">Definieren was passiert, wenn man 'Hey Bixby!' sagt</sys:String>
+
+    <sys:String x:Key="bixby_remap_header">Bixby Wakeup neu festlegen</sys:String>
+    <sys:String x:Key="bixby_remap_enable">Bixby Wakeup aktivieren</sys:String>
+    <sys:String x:Key="bixby_remap_enable_desc">Bixby auf deinem Samsung Smartphone starten oder eine personalisierte Aktion auf diesem PC ausführen wenn man aufwacht</sys:String>
+    <sys:String x:Key="bixby_remap_lang">Bixby Wakeup Sprache</sys:String>
+    <sys:String x:Key="bixby_remap_action">Personalisierte Wakeup Aktion</sys:String>
+    <sys:String x:Key="bixby_remap_note">Sag 'Hey Bixby!' zum aktivieren. Die Aktivierungsphrase kann bei einigen Sprachen anders sein.&#10;&#10;Die neu festgelegte Konfiguratioen ist nur auf diesem Gerät aktiv. Wenn du deine Buds mit einem Samsung Gerät verbindest wird sich Bixby normal aktivieren. Auf anderen Geräten, also nicht dieses Gerät und non-Samsung Smartphones, führt dies keine Aktion aus.</sys:String>
+    
+    <sys:String x:Key="fw_disclaimer">Disclaimer</sys:String>
+    <sys:String x:Key="fw_disclaimer_desc">Dieses Firmware Update Tool ist ein genaues Replikat des offiziellen Updaters, welcher in Samsung's offizieler App gefunden werden kann. Ich habe diese Implementierung genaustens unter verschiedensten Umständen (normal, Verbindungsabbruch, falsche Bluetooth Pakete, ...) getestet ohne irgend welche Problem zu haben. Trotzdem überneheme ich keine Verantwortung für irgendwelche Fehler die während eines Updates passieren da ein Firmware Update wichtige System Komponenten modifiziert und dies trotzdem mit Respekt behandelt werden sollte.&#10;&#10;DOWNGRADING: Auch wenn downgraden zu ältere firmware versionen möglich ist und bei mir noch keine Probleme aufgetreten sind kann es trotzdem zu Fehlern kommen. Daher sollte ein Downgrade nur ausgeführt werden wenn dieses auch notwendig ist. Ein Zurücksetztn auf Werkseinstellungen ist empfohlen aber normalerweise nicht notwendig. &#10;CUSTOM FLASHING: Es ist auch möglich eigene Firmware Dateien auf dem Gerät zu installieren. Installieren aufjedenfall NICHT Firmware Versionen die für andere Modelle entwickelt worden sind.&#10;&#10; This Anwendung ist lizensiert unter der GPLv3 Lizenz. Wenn Sie fortfahren und die Software nutzen, akzeptieren Sie Lizenzbedingungen und ihre Limitierungen. Drücken sie 'Fortfahren' zum akzeptieren. </sys:String>
+
+    <sys:String x:Key="fw_select_header">Firmware Updates</sys:String>
+    <sys:String x:Key="fw_select_instructions">Bitte wählen Sie eine Firmware Version zum herunterladen und installieren aus. Alternativ können Sie auch eine eigene Firmware Version hochladen indem sie 'Erweitert... > Image hochladen' auswählen.</sys:String>
+    <sys:String x:Key="fw_select_no_results">Zurzeit ist kein Firmware Update verfügbar. Bitte versuchen Sie es später erneut.</sys:String>
+    <sys:String x:Key="fw_select_downgrade">Firmware Downgrading erlauben</sys:String>
+    <sys:String x:Key="fw_select_downgrade_desc">Versionen Überprüfung deaktivieren und eine Liste von älteren Firmware Versionen anzeigen (könnte zu unerwartenten Fehler führen; nur für erfahrene Benutzer empfohlen)</sys:String>
+    <sys:String x:Key="fw_select_advanced">Erweitert...</sys:String>
+    <sys:String x:Key="fw_select_install">Firmware installieren</sys:String>
+    <sys:String x:Key="fw_select_from_disk">Image von Festplatte auswählen...</sys:String>
+    <sys:String x:Key="fw_select_external_note">Installieren aufjedenfall NICHT Firmware Versionen die für andere Modelle entwickelt worden sind. Installieren einer Buds Pro Firmware auf ein Buds Plus Modell schlatet keine neunen Features frei, stattdessen zerstört es das Gerät permanent.&#10;&#10;Drücken Sie 'Forfahren' um  ein Firmware Image auszuwählen.</sys:String>
+    <sys:String x:Key="fw_select_unsupported_selection">Ungültige Auswahl. Bitte wählen Sie ein kompatibles Image aus der Liste.</sys:String>
+    <sys:String x:Key="fw_select_downloading">Wird heruntergeladen...</sys:String>
+    <sys:String x:Key="fw_select_net_error">Fehler beim kontaktieren des Servers. Herunterladen der Firmware ist zurzeit nicht möglich.</sys:String>
+    <sys:String x:Key="fw_select_net_index_error">Fehler beim kontaktieren des Servers. Herunterladen des Firmware Indexes ist zurzeit nicht möglich.</sys:String>
+    <sys:String x:Key="fw_select_http_error">HTTP Fehler Code:</sys:String>
+    <sys:String x:Key="fw_select_unknown_build">Unbekannter Build Name</sys:String>
+    <sys:String x:Key="fw_select_verify_fail">Überprüfen der Firmware ist fehlgeschlagen</sys:String>
+    <sys:String x:Key="fw_select_confirm">Sie sind dabei '{0}' auf dein '{1}' Gerät zu installieren</sys:String>
+    <sys:String x:Key="fw_select_confirm_desc">Stellen Sie sicher das ist Informationen richtig sind, ansonsten drücken sie 'Abbrechen' und überprüfen Sie erneut Ihr Setup.&#10;&#10;Wenn möglich, stellen Sie sicher das beide Earbuds verbunden sind bevor Sie starten. Es wird keine Probleme verursachen sollte ein Fehler beim übertragen des Updates passieren. Sollte dies passieren werden die Earbuds die Übertragung automatisch abbrechen und der Firmware Update Modus wird verlassen.&#10;&#10;Drücken Sie 'Fortfahren' um das Update zu starten</sys:String>
+  
+    <sys:String x:Key="fw_upload_header">Firmware wird installiert...</sys:String>
+    <sys:String x:Key="fw_upload_progress_session">Neue Session wird erstellt...</sys:String>
+    <sys:String x:Key="fw_upload_progress_prepare">Upload wird vorbereitet...</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished">Upload fertiggestellt</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished_desc">Das Update wurd erfolgreicht übertrang und wird zurzeit auf deinem Gerät installiert. Während diesem Prozess reagieren die EarBuds für ca. 30 Sekunen nicht. In den meisten Fällen probieren die EarBuds die Verbindungen nach dem Update automatisch wieder herzustellen.</sys:String>
+    <sys:String x:Key="fw_upload_progress_error">Upload der Firmware fehlgeschlagen</sys:String>
+    <sys:String x:Key="fw_upload_progress">Firmware Update wird hochlgeladen... {0}%</sys:String>
+    <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats">Statistiken</sys:String>
+    <sys:String x:Key="fw_upload_note">Deine EarBuds werden die Verbindung abbrechen und werden die Installation des hochgeladenen Firmware Updates starten sobald das Update erfolgreich übertragen worden ist. Während diesem Prozess reagieren die EarBuds für ca. 30 Sekunen nicht. In den meisten Fällen probieren die EarBuds die Verbindungen nach dem Update automatisch wieder herzustellen. Bitte schließen Sie das Case während dem Update nicht.</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_mtu">Maximale Übertragungseinheitsgröße: {0} bytes</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_offset">Verarbeiten der Daten des Offsets von 0x{0:X6} bis 0x{1:X6}</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_segment">Hochladen der Segments #{0} ({1} Bytes, Checksum 0x{2:X6})</sys:String>
+
+    <sys:String x:Key="fw_fail_no_magic">Dies ist kein gültiges Firmware Image. Ungültiges 'magic value' wurde im Header der Datei gefunden.</sys:String>
+    <sys:String x:Key="fw_fail_size_null">Die Größe dieses Firmware Images hat eine Größe von 0 und kann somit nicht fürs flashing verwendet werden. Bitte wählen Sie ein anderes Image.</sys:String>
+    <sys:String x:Key="fw_fail_no_segments">Dieses Firmware Image enthält kein Binäres Segment and ist leer. Bitte wählen Sie ein anderes Image</sys:String>
+    <sys:String x:Key="fw_fail_unknown">Ein unerwarteter Fehler ist während dem entpacken des Firmware Images passiert. Das Firmware Archiv könnte kaputt sein.&#10;&#10;Details:</sys:String>
+    
+    <sys:String x:Key="fw_fail_connection">Verbindung zum Gerät verloren. Die Übertragung wurde abgebrochen.</sys:String>
+    <sys:String x:Key="fw_fail_session">Öffnen einer neunen Session fehlgeschlage. Das Gerät hat den Fehler Code ({0}) zurückgegeben</sys:String>
+    <sys:String x:Key="fw_fail_copy">Kopieren des Firmware Images fehlgeschlagen. Bitte verbinden Sie das Gerät neu und versuchen Sie es erneut. Error code der vom Gerät zurückgegeben wurde: {0}</sys:String>
+    <sys:String x:Key="fw_fail_verify">Verifizieren/Installieren des Firmware Images fehlgeschlagen. Bitte verbindne Sie die Buds neu und versuchen Sie es erneut. Error code der vom Gerät zurückgegeben worden ist: {0}</sys:String>
+    <sys:String x:Key="fw_fail_connection_precheck">Das Gerät ist zurzeit nicht verbunden. Bitte überprüfen Sie die Bluetooth System Einstellung und verbinden Sie das Gerät neu.</sys:String>
+    <sys:String x:Key="fw_fail_pending">Ein anderes Firmware Image wird zurzeit übertragen. Bitte beenden Sie es zuerst.</sys:String>
+    <sys:String x:Key="fw_fail_lowbattery">Batterie zu schwach. Bitte laden Sie ihre earbuds über 15% zuerst.</sys:String>
+    <sys:String x:Key="fw_fail_session_timeout">Zeitüberschreitung während das Gerät auf das öffnen einer neuen Session gewartet hat</sys:String>
+    <sys:String x:Key="fw_fail_control_timeout">Zeitüberschreitung während auf das zurückgeben eines control blocks gewartet wurde</sys:String>
+    <sys:String x:Key="fw_fail_copy_timeout">Zeitüberschreitung während gewartet wurde, das die Übertragung abgeschlossen wird</sys:String>    
+    
+    <sys:String x:Key="spatial_header">Spatial Sensor</sys:String>
+    <sys:String x:Key="spatial_dump_quaternion">Raw quaternion Vektor:</sys:String>
+    <sys:String x:Key="spatial_dump_rpy">RPY Werte:</sys:String>
+    
+    <sys:String x:Key="budsapp_header">Bluetooth Kompatibilitäts Info</sys:String>
+    <sys:String x:Key="budsapp_text_p1">Die offizielle Galaxy Buds App für Windows 10 ist installiert gemeinsam mit dieser.</sys:String>
+    <sys:String x:Key="budsapp_text_p2">
+        Wenn Sie offen und verbunden ist, kann es beim GalaxyBudsClient möglicherweise zu unerwarteten Problemen kommen. Schließen die offizielle App bevor Sie diese hier verwenden. Wenn Sie dies nicht tun kann der Galaxy Buds Manager keine Verbinung zu den Buds herstellen.
+    </sys:String>
+    <sys:String x:Key="budsapp_text_p3">
+        Bitte beachten Sie, dass beide Apps nicht gleichzeitig mit deinen Buds kommunizieren können.
+    </sys:String>
+
 </ResourceDictionary>
