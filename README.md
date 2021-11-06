@@ -142,7 +142,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@Buashei](https://github.com/Buashei) - Polish translation
 * [@KatJillianne](https://github.com/KatJillianne) - Vietnamese translation
 * [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - Czech translation
-* [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - German translation
+* [@Benni0109](https://github.com/Benni0109), [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - German translation
 * [@nikossyr](https://github.com/nikossyr) - Greek translation
 * [@grigorem](https://github.com/grigorem) - Romanian translation
 * [@tretre91](https://github.com/tretre91) - French translation
