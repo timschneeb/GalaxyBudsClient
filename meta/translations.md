@@ -12,7 +12,7 @@ Translation instructions are available [in the wiki](https://github.com/ThePBone
 <tr><td>es (Spain)</td><td>48%</td><td>221 missing string(s)</td><td><a href="es.md">View details</a></td></tr>
 <tr><td>fr (France)</td><td>92%</td><td>32 missing string(s)</td><td><a href="fr.md">View details</a></td></tr>
 <tr><td>gr (Greece)</td><td>76%</td><td>101 missing string(s)</td><td><a href="gr.md">View details</a></td></tr>
-<tr><td>he (undefined)</td><td>92%</td><td>32 missing string(s)</td><td><a href="he.md">View details</a></td></tr>
+<tr><td>il (Israel)</td><td>100%</td><td>No missing strings</td><td><a href="il.md">View details</a></td></tr>
 <tr><td>in (India)</td><td>48%</td><td>218 missing string(s)</td><td><a href="in.md">View details</a></td></tr>
 <tr><td>it (Italy)</td><td>64%</td><td>153 missing string(s)</td><td><a href="it.md">View details</a></td></tr>
 <tr><td>ja (undefined)</td><td>48%</td><td>221 missing string(s)</td><td><a href="ja.md">View details</a></td></tr>
