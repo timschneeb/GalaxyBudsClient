@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <sys:String x:Key="ResourceDictionaryName">Loc-he</sys:String>
+    <sys:String x:Key="ResourceDictionaryName">Loc-il</sys:String>
 
     <!-- :::::::: Source code :::::::: -->
 
@@ -19,7 +19,7 @@
     <sys:String x:Key="unknown">ידוע לא</sys:String>
     <sys:String x:Key="back">חזור</sys:String>
 
-    <sys:String x:Key="nobluetoothdev">שוב ונסה 'בלוטות הפעל מחובר 'בלוטות מתאם אין</sys:String>
+    <sys:String x:Key="nobluetoothdev">.שוב ונסה 'בלוטות הפעל אנא .מחובר 'בלוטות מתאם אין</sys:String>
 
     <sys:String x:Key="anc">אקטיבי רעשים ביטול</sys:String>
 
@@ -29,8 +29,8 @@
     <!-- Context: SOM = Start of message -->
     <sys:String x:Key="sppmsg_invalid_eom">EOM שגוי</sys:String>
     <!-- Context: EOM = End of message -->
-    <sys:String x:Key="sppmsg_size_mismatch">Payload size mismatch</sys:String>
-    <sys:String x:Key="sppmsg_crc_fail">Checksum incorrect</sys:String>
+    <sys:String x:Key="sppmsg_size_mismatch">חוסר התאמה בגודל מטען</sys:String>
+    <sys:String x:Key="sppmsg_crc_fail">סיכום בדיקה שגוי</sys:String>
     <sys:String x:Key="sppmsg_tl">גודל חבילה קטן מדי</sys:String>
 
     <!-- Dark Mode States -->
@@ -41,11 +41,11 @@
     <!-- Connection popup -->
     <sys:String x:Key="connpopup_placement_tl">שמאל למעלה</sys:String>
     <sys:String x:Key="connpopup_placement_tc">מרכז למעלה</sys:String>
-    <sys:String x:Key="connpopup_placement_tr">ימינה למעלה</sys:String>
-    <sys:String x:Key="connpopup_placement_bl">שמאלה למטה</sys:String>
+    <sys:String x:Key="connpopup_placement_tr">ימין למעלה</sys:String>
+    <sys:String x:Key="connpopup_placement_bl">שמאל למטה</sys:String>
     <sys:String x:Key="connpopup_placement_bc">מרכז למטה</sys:String>
-    <sys:String x:Key="connpopup_placement_br">ימינה למטה</sys:String>
-    <sys:String x:Key="connpopup_title">{0}'s Galaxy Buds{1}</sys:String>
+    <sys:String x:Key="connpopup_placement_br">ימין  למטה</sys:String>
+    <sys:String x:Key="connpopup_title">.{0} של Galaxy Buds{1}ה</sys:String>
     <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
 
     <!-- Placement  (Buds+) -->
@@ -56,16 +56,16 @@
 
     <!-- Touch options -->
     <sys:String x:Key="touchoption_voice">קולי עוזר</sys:String>
-    <sys:String x:Key="touchoption_quickambientsound"> סביבה צלילי</sys:String>
-    <sys:String x:Key="touchoption_volume"> שמע עוצמת</sys:String>
+    <sys:String x:Key="touchoption_quickambientsound">סביבה צלילי</sys:String>
+    <sys:String x:Key="touchoption_volume">שמע עוצמת</sys:String>
     <sys:String x:Key="touchoption_volume_up">שמע עוצמת הגבר</sys:String>
     <sys:String x:Key="touchoption_volume_down">שמע עוצמת הנמך</sys:String>
     <sys:String x:Key="touchoption_ambientsound">סביבה צלילי</sys:String>
-    <sys:String x:Key="touchoption_switch_noisecontrols">שנה כפתורי רעש</sys:String>
+    <sys:String x:Key="touchoption_switch_noisecontrols">ברעשים שליטה שנה</sys:String>
     <sys:String x:Key="touchoption_spotify">Spotify (בלבד אנדרואיד)</sys:String>
     <sys:String x:Key="touchoption_custom">...אישית מותאמת פעולה</sys:String>
-    <sys:String x:Key="touchoption_custom_null"> מוגדר לא</sys:String>
-    <sys:String x:Key="touchoption_custom_unknown"> ידוע לא</sys:String>
+    <sys:String x:Key="touchoption_custom_null">מוגדר לא</sys:String>
+    <sys:String x:Key="touchoption_custom_unknown">ידוע לא</sys:String>
     <sys:String x:Key="touchoption_custom_prefix">אישית מותאם</sys:String>
     <sys:String x:Key="touchoption_custom_trigger_hotkey">מקשים קיצור</sys:String>
     <sys:String x:Key="touchoption_custom_external_app">...חיצונית תוכנה הפעל</sys:String>
@@ -73,9 +73,9 @@
     <!-- Options menu -->
     <sys:String x:Key="optionsmenu_title">אפשרויות</sys:String>
     <sys:String x:Key="optionsmenu_settings">הגדרות</sys:String>
-    <sys:String x:Key="optionsmenu_refresh">רענן</sys:String>
-    <sys:String x:Key="optionsmenu_deregister">מכשיר רישום ביטול</sys:String>
-    <sys:String x:Key="optionsmenu_update">עדכונים חפש</sys:String>
+    <sys:String x:Key="optionsmenu_refresh">מחוונים לוח רענן</sys:String>
+    <sys:String x:Key="optionsmenu_deregister">מכשיר רישום בטל</sys:String>
+    <sys:String x:Key="optionsmenu_update">עדכונים יש אם בדוק</sys:String>
     <sys:String x:Key="optionsmenu_credits">קרדיטים</sys:String>
 
     <!-- Tray context menu -->
@@ -87,7 +87,7 @@
     <sys:String x:Key="tray_disable_eq">כבה אקוולייזר</sys:String>
     <sys:String x:Key="tray_enable_anc">הפעל סינון רעשים אקטיבי</sys:String>
     <sys:String x:Key="tray_disable_anc">כבה סינון רעשים אקטיבי</sys:String>
-    <sys:String x:Key="tray_switch_noise">כבה שליטה ברעשים</sys:String>
+    <sys:String x:Key="tray_switch_noise">שנה שליטה ברעשים</sys:String>
     <sys:String x:Key="tray_quit">יציאה</sys:String>
 
 
@@ -118,7 +118,7 @@
     <!-- Hotkey page -->
     <sys:String x:Key="hotkey_header">מקשים קיצורי</sys:String>
     <sys:String x:Key="hotkey_add">חדש מקשים קיצור צור</sys:String>
-    <sys:String x:Key="hotkey_empty">קיצורי מקשים אין</sys:String>
+    <sys:String x:Key="hotkey_empty">מקשים קיצורי אין</sys:String>
     <sys:String x:Key="hotkey_empty_desc">הכפתור על בלחיצה חדש מקשים קיצור צור</sys:String>
     <sys:String x:Key="hotkey_edit">עריכה</sys:String>
     <sys:String x:Key="hotkey_delete">מחק</sys:String>
@@ -142,7 +142,7 @@
     <sys:String x:Key="event_start_stop_find">האוזניות איתור של התחלה/הפסקה</sys:String>
     <sys:String x:Key="event_start_find">האוזניות באיתור התחל</sys:String>
     <sys:String x:Key="event_stop_find">האוזניות איתור את עצור</sys:String>
-    <sys:String x:Key="event_paring_mode">התאמה מצב (Pairing)</sys:String>
+    <sys:String x:Key="event_paring_mode">התחברות מצב (Pairing)</sys:String>
     <sys:String x:Key="event_media_play">מדיה הפעל</sys:String>
     <sys:String x:Key="event_media_pause">מדיה השהה</sys:String>
     <sys:String x:Key="event_media_play_pause">מדיה הפעל/השהה</sys:String>
@@ -151,7 +151,7 @@
     <sys:String x:Key="event_connect">למכשיר התחבר</sys:String>
 
     <!-- Welcome page -->
-        <sys:String x:Key="welcome_textblock_header">!הבאים ברוכים</sys:String>
+    <sys:String x:Key="welcome_textblock_header">!הבאים ברוכים</sys:String>
     <sys:String x:Key="welcome_textblock_p1">
       .אופן בשום לסמסונג מקושרת ואינה רשמית אינה זו תוכנה ,לב שימו
       המקורי היישום מאשר יותר טובה פונקציונליות להעניק כדי עוצבה זו תוכנה
@@ -217,7 +217,7 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="devsel_header">שלך האוזניות את בחר</sys:String>
     <sys:String x:Key="devsel_refresh">מותאמים מכשירים רענן</sys:String>
     <sys:String x:Key="devsel_device_name">מכשיר שם</sys:String>
-    <sys:String x:Key="devsel_btaddr">MAC-Address</sys:String>
+    <sys:String x:Key="devsel_btaddr">כתובת MAC</sys:String>
     <sys:String x:Key="devsel_model">דגם</sys:String>
     <sys:String x:Key="devsel_nodevices">האוזניות את ולהתאים לחבר יש תחילה</sys:String>
     <sys:String x:Key="devsel_nodevices_title">מותאמים מכשירים נמצאו לא</sys:String>
@@ -241,14 +241,30 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="unsupported_feature_description_p2">עדכן לתוכנת האוזניות העדכנית באמצעות הטלפון או המחשב</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">את בבת האוזניות עם לדבר יכולה אחת תוכנה רק ווינדוס במעדכן שימוש בזמן זו תוכנה סגור</sys:String>
 
+    <!-- Touchpad gestures -->
+    <sys:String x:Key="touchpad_gesture_header">מגע מחוות אפשר</sys:String>
+    <sys:String x:Key="touchpad_gesture_single">אחת הקשה</sys:String>
+    <sys:String x:Key="touchpad_gesture_single_desc">שיר נגן/השהה</sys:String>
+    <sys:String x:Key="touchpad_gesture_double">כפולה הקשה</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_desc">הבא שיר נגן</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple">משלושת הקשה</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple_desc">קודם שיר נגן</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold">ממושכת נגיעה</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_desc">אישית מותאמת פעולה בצע</sys:String>
+
     <!-- Touchpad page -->
     <sys:String x:Key="touchpad_header">מגע פקדי</sys:String>
     <sys:String x:Key="touchpad_lock">מגע פקדי נעל</sys:String>
     <sys:String x:Key="touchpad_left_action">שמאל אוזן פעולת</sys:String>
     <sys:String x:Key="touchpad_right_action">ימין אוזן פעולת</sys:String>
 
+    <sys:String x:Key="touchpad_gestures">מתקדמת מגע פקדי נעילת</sys:String>
+    <sys:String x:Key="touchpad_gestures_description">מחדל ברירת מגע מחוות בטל או אפשר</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume">בקצה כפולה הקשה</sys:String>
-    <sys:String x:Key="touchpad_double_tap_volume_description">ולהנמיך להגביר כדי האוזניה בקצה כפולה הקשה</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">
+    או להנמיך כדי הימנית או השמאלית האוזניה בקצה כפולה הקשה
+                                                           השמע עוצמת את להגביר 
+    </sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">ברעשים שליטה מצב החלפת</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC &lt;-&gt; סביבה צלילי</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; כבוי</sys:String>
@@ -275,7 +291,7 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="system_selftest_desc">כראוי מתפקדים באוזנייה הרכיבים כל אם בדוק</sys:String>
     <sys:String x:Key="system_factory_reset">יצרן לנתוני איפוס</sys:String>
     <sys:String x:Key="system_factory_reset_desc">ומתנתק היצרן להגדרות שלך האוזניות את משחזר</sys:String>
-    <sys:String x:Key="system_pairing_mode">(Pairing) התאמה למצב הכנס</sys:String>
+    <sys:String x:Key="system_pairing_mode">(Pairing) חיבור למצב הכנס</sys:String>
     <sys:String x:Key="system_pairing_mode_desc">אחרים למכשירים לגלויות והפיכתן זה ממחשב האוזניות ניתוק</sys:String>
     <sys:String x:Key="system_trace_core_dump">באגים ניפוי נתוני הורדת</sys:String>
     <sys:String x:Key="system_trace_core_dump_desc"> מהאוזניות Coredumps-ו Trace פולט</sys:String>
@@ -352,6 +368,7 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
 
     <sys:String x:Key="settings_connpopup">קופצת הודעה הגדר</sys:String>
     <sys:String x:Key="settings_devmode">למפתחים אפשרויות</sys:String>
+    <sys:String x:Key="settings_crowdsourcing">המונים מיקור</sys:String>
 
     <!-- Settings >>> Connection popup -->
     <sys:String x:Key="settings_cpopup_header">בחיבור קופץ חלון</sys:String>
@@ -368,6 +385,19 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen_description">בלבד הראשי במסך קופץ חלון הצג</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state">בנרתיק כשהאוזניות אחר צבע</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state_description">בנרתיק כשהאוזניות אפור אוזניות סמל</sys:String>
+    
+    <!-- Settings >>> Crowdsourcing settings -->
+    <sys:String x:Key="settings_crowd_header">המונים מיקור</sys:String>
+    <sys:String x:Key="settings_crowd_allow">המונים למיקור תרומה אפשר</sys:String>
+    <sys:String x:Key="settings_crowd_allow_description">דרישה-לפי-ונתונים הקנייני 'הבלוטות פרוטוקול מבנה על מידע אסוף
+                                                                                        .סמסונג של
+   בלי ,יותר רבה בקלות Galaxy Budsה דגמי בכל לתמוך לי מאפשר זה
+                                                                                      .אותם לקנות</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport">תוכנה קריסת דיווחי אפשר</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport_description">קריסות של במקרה אוטומטי באופן האפליקציה של קריסה דוחות שלח
+                                                .Sentry באמצעות קטלניות שגיאות או
+          .ומפריעים בעיתיים אפליקציה לבאגי יותר מהר להגיב לי עוזר זה
+    </sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">יצרן להגדרות איפוס</sys:String>
@@ -390,7 +420,7 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="eq_header">אקוולייזר</sys:String>
     <sys:String x:Key="eq_enable">הפעל אקוולייזר</sys:String>
     <sys:String x:Key="eq_preset">תבניות</sys:String>
-    <sys:String x:Key="eq_dolby">דולבי עם לשימוש מטב</sys:String>
+    <sys:String x:Key="eq_dolby">דולבי עם לשימוש התאם</sys:String>
     <sys:String x:Key="eq_stereo_balance">שמאל ימין איזון</sys:String>
     <sys:String x:Key="eq_stereo_balance_value">{0}% שמאל; {1}% ימין</sys:String>
     <sys:String x:Key="eq_stereo_balance_neutral">נייטרלי</sys:String>
@@ -405,10 +435,23 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="nc_header">ברעש שליטה</sys:String>
     <sys:String x:Key="nc_anc_level">גבוהה רגישות</sys:String>
     <sys:String x:Key="nc_anc_level_description">משופר רעשים ביטול</sys:String>
+    <sys:String x:Key="nc_ambient">סביבה צלילי אישית התאם</sys:String>
+    <sys:String x:Key="nc_ambient_description">(זמין אם) סביבה צלילי של קול ועוצמת טון הגדר</sys:String>
     <sys:String x:Key="nc_voicedetect">שיחה זיהוי</sys:String>
     <sys:String x:Key="nc_voicedetect_description">השיחה על להקל כדי תוחלש המדיה ועוצמת אוטומטית יופעלו סביבה צלילי מזוההה שלך כשהקול</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">שיחה זמן פסק</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} שניות</sys:String>
+
+    <!-- Noise control >>> Ambient sound -->
+    <sys:String x:Key="nc_as_header">סביבה צלילי הגדרות</sys:String>
+    <sys:String x:Key="nc_as_custom">מתקדמת אישית התאמה</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_l">(שמאל) סביבה צלילי עוצמת</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_r">(ימין) סביבה צלילי עוצמת</sys:String>
+    <sys:String x:Key="nc_as_custom_tone">סביבה צלילי טון</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_clear">צלול</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_soft">רך</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_neutral">ניטראלי</sys:String>
+    <sys:String x:Key="nc_as_custom_vol_normal">רגיל</sys:String>
 
     <!-- Ambient sound -->
     <sys:String x:Key="as_header">סביבה צלילי</sys:String>
@@ -447,8 +490,7 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="bixby_remap_enable_desc">שלך מהמחשב אישית מותאמת פעולה הרץ או שלך הסמסונג במכשיר ביקסבי את הפעל</sys:String>
     <sys:String x:Key="bixby_remap_lang">ביקסבי הפעלת שפת</sys:String>
     <sys:String x:Key="bixby_remap_action">אישית מותאמת הפעלה פעולת</sys:String>
-    <sys:String x:Key="bixby_remap_note">שונות בשפות שונה להיות יכול ההפעלה משפט .להפעיל כדי ביקסבי היי אמור&#10;&#10;זה במכשיר רק זמינה זו הגדרה. כרגיל ביקסבי את יפעיל ביקסבי היי סמסונג למכשיר האוזניות את תחבר אם. דבר שום תפעיל לא זו תכונה אחרים במכשירים
-.</sys:String>
+    <sys:String x:Key="bixby_remap_note">שונות בשפות שונה להיות יכול ההפעלה משפט .להפעיל כדי ביקסבי היי אמור&#10;&#10;זה במכשיר רק זמינה זו הגדרה. כרגיל ביקסבי את יפעיל ביקסבי היי סמסונג למכשיר האוזניות את תחבר אם. דבר שום תפעיל לא זו תכונה אחרים במכשירים.</sys:String>
 
 
     <!-- Credits -->
@@ -560,5 +602,19 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <!-- Header -->
     <sys:String x:Key="window_minimize">מזער</sys:String>
     <sys:String x:Key="window_close">סגור</sys:String>
+
+    <!-- Buds app detected page -->
+    <sys:String x:Key="budsapp_header">'בלוטות תאימות מידע</sys:String>
+    <sys:String x:Key="budsapp_text_p1">לצד מותקנת Windows 10 עבור Galaxy Buds של הרשמית האפליקציה
+                                                                                         .זו אפליקציה</sys:String>
+    <sys:String x:Key="budsapp_text_p2">‏‎ ‎‏‏‎‏ ‎‎‎‎‎בעיות יהיו Galaxy Buds Manager-של ייתכן ,ומחוברת פתוחה היא אם
+                         .שתמשיך לפני אותה לסגור הקפד ,שלך לאוזניות בחיבור
+          להתחבר יכולה לא Galaxy Buds של הרשמית האפליקציה ,כן כמו
+          חיבורים ובעל פעיל Galaxy Buds Manager-ש בזמן שלך לאוזניות
+                                                                       .לאוזניות פעילים חיבורים
+    </sys:String>
+    <sys:String x:Key="budsapp_text_p3">‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎בכל שלך Galaxy Buds-ה עם לדבר יכולה אחת אפליקציה שרק זכור
+                                                                                                                    .נתון זמן
+    </sys:String>
 
 </ResourceDictionary>
