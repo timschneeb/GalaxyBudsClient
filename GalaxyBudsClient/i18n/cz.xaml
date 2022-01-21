@@ -225,6 +225,8 @@
     <sys:String x:Key="touchpad_left_action">Akce na levém sluchátku</sys:String>
     <sys:String x:Key="touchpad_right_action">Akce na pravém sluchátku</sys:String>
 
+    <sys:String x:Key="touchpad_gestures">Pokročilé uzamknutí dotyku</sys:String>
+    <sys:String x:Key="touchpad_gestures_description">Povolit nebo zakázat výchozí dotyková gesta</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume">Dvojité klepnutí na hranu sluchátka</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Dvakrát klepnout na hranu levého nebo pravého sluchátka pro zeslabení nebo zesílení hlasitosti.</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Režim přepínání regulace šumu</sys:String>
