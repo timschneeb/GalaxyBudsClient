@@ -62,8 +62,18 @@ Získejte binární soubory pro Windows a Linux v sekci [vydání](https://githu
 
 Balíček windows je také dostupný ke stažení pomocí Manažeru Balíčku Windows (winget)
 
+### winget
+
 ```
 winget install ThePBone.GalaxyBudsClient
+```
+
+### AUR balíček
+
+[AUR balíček](https://aur.archlinux.org/packages/galaxybudsclient-bin/) pro Arch Linux, který je udržovaný u6ivatelem @joscdk je také dostupný:
+
+```
+yay -S galaxybudsclient-bin
 ```
 
 ## Jak to funguje
@@ -115,6 +125,7 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 * [@AndriesK](https://github.com/AndriesK) - Oprava chyby u Buds Live
 * [@githubcatw](https://github.com/githubcatw) - Základní dialogové okno připojení
 * [@GaryGadget9](https://github.com/GaryGadget9) - Balíček WinGet
+* [@joscdk](https://github.com/joscdk) - AUR balíček
 
 #### Překladatelé
 
@@ -134,6 +145,7 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 * [@nikossyr](https://github.com/nikossyr) - řecký překlad
 * [@grigorem](https://github.com/grigorem) - romský překlad
 * [@tretre91](https://github.com/tretre91) - francouzský překlad
+* [@Sigarya](https://github.com/Sigarya) - hebrejský překlad
 
 ## Licence
 

@@ -233,6 +233,17 @@
     <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambientní režim &lt;-&gt; Vypnuto</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Cyklování mezi režimy (Potlačení okolního hluku, Ambientní režim, Vypnuto)</sys:String>
 
+<!-- Touchpad gestures -->
+    <sys:String x:Key="touchpad_gesture_header">Povolit ovládání dotykem</sys:String>
+    <sys:String x:Key="touchpad_gesture_single">Jednoduchý dotyk</sys:String>
+    <sys:String x:Key="touchpad_gesture_single_desc">Spustit nebo zastavit skladbu</sys:String>
+    <sys:String x:Key="touchpad_gesture_double">Dvojitý dotyl</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_desc">Přehrát další skladbu</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple">Trojitý dotyl</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple_desc">Přehrát předchozí skladbu</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold">Dotknout se a podržet</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_desc">Spustit vlastní akci</sys:String>
+
     <!-- Custom touchpad action page -->
     <sys:String x:Key="cact_header">Definovat vlastní akci při podržení</sys:String>
     <sys:String x:Key="cact_external_app_dialog_title">Zvolit aplikaci...</sys:String>
@@ -318,6 +329,7 @@
 
     <sys:String x:Key="settings_connpopup">Nastavení vyskakovacího okna připojení</sys:String>
     <sys:String x:Key="settings_devmode">Vývojářský režim</sys:String>
+    <sys:String x:Key="settings_crowdsourcing">Crowdsourcing</sys:String>
 
     <!-- Settings >>> Connection popup -->
     <sys:String x:Key="settings_cpopup_header">Vyskakovací okno připojení</sys:String>
@@ -334,6 +346,13 @@
     <sys:String x:Key="settings_cpopup_primary_screen_description">Zobrazit vyskakovací okno pouze na primárním monitoru</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state">Použít jinou barvu, když se nachází v pouzdře</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state_description">Šedivá ikona sluchátek, když se nachází v pouzdře</sys:String>
+
+    <!-- Settings >>> Crowdsourcing settings -->
+    <sys:String x:Key="settings_crowd_header">Crowdsourcing</sys:String>
+    <sys:String x:Key="settings_crowd_allow">Povolit příspívání crowdsourcingu</sys:String>
+    <sys:String x:Key="settings_crowd_allow_description">Shromažďovat informace o vlastní struktuře protokolu Bluetooth společnosti Samsung a data na vyžádání. Umožňuje mi to mnohem snadněji podporovat všechny dostupné modely Galaxy Buds, aniž bych je vlastnil.</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport">Povolit zprávy o selhání aplikace</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport_description">Odesílá zprávy o selhání aplikace automaticky v případě selhání nebo fatálních chyb pomocí Sentry. Pomáhá mi to rychleji reagovat na problematické a rušivé chyby v aplikaci.</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">Obnova továrního nastavení</sys:String>
@@ -369,10 +388,23 @@
     <sys:String x:Key="nc_header">Ovládání potlačení šumu</sys:String>
     <sys:String x:Key="nc_anc_level">Vysoká citlivost</sys:String>
     <sys:String x:Key="nc_anc_level_description">Silnější efekt potlačení šumu</sys:String>
+    <sys:String x:Key="nc_ambient">Přispůsobit okolní zvuk</sys:String>
+    <sys:String x:Key="nc_ambient_description">Konfigurace tónu a hlasitosti okolního zvuku (pokud je k dispozici)</sys:String>
     <sys:String x:Key="nc_voicedetect">Detekce konverzace</sys:String>
     <sys:String x:Key="nc_voicedetect_description">Když je váš hlas detekován, automaticky zapne ambientní režim a sníží hlasitost médií, pro usnadnění konverzace</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">Časový limit konverzace</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} sekund</sys:String>
+
+    <!-- Noise control >>> Ambient sound -->
+    <sys:String x:Key="nc_as_header">Nastavení okolního zvuku</sys:String>
+    <sys:String x:Key="nc_as_custom">Pokročilá konfigurace</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_l">Hlasitost okolního zvuku (levé)</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_r">Hlasitost okolního zvuku (pravé)</sys:String>
+    <sys:String x:Key="nc_as_custom_tone">Tón okolního zvuku</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_clear">Vymazat</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_soft">Jemné</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_neutral">Neutrální</sys:String>
+    <sys:String x:Key="nc_as_custom_vol_normal">Normální</sys:String>
 
     <!-- Ambient sound -->
     <sys:String x:Key="as_header">Ambientní režim</sys:String>
@@ -499,5 +531,15 @@
     <!-- Header -->
     <sys:String x:Key="window_minimize">Minimalizovat</sys:String>
     <sys:String x:Key="window_close">Zavřít</sys:String>
+
+    <!-- Buds app detected page -->
+    <sys:String x:Key="budsapp_header">Informace o kompatibilitě Bluetooth</sys:String>
+    <sys:String x:Key="budsapp_text_p1">Spolu s touto aplikací je nainstalována oficiální aplikace Galaxy Buds pro Windows 10.</sys:String>
+    <sys:String x:Key="budsapp_text_p2">
+        Pokud je otevřený a připojený, GalaxyBudsClient může mít problémy s připojením k vašim sluchátkům. Než budete pokračovat, nezapomeňte jej zavřít. Stejně tak se oficiální aplikace Galaxy Buds nemůže připojit k vašim sluchátkům, když je Galaxy Buds Manager aktivní a otevřel připojení ke sluchátkům.
+    </sys:String>
+    <sys:String x:Key="budsapp_text_p3">
+        Mějte na paměti, že s vašimi sluchátky Galaxy Buds může hovořit vždy pouze jedna aplikace.
+    </sys:String>
 
 </ResourceDictionary>
