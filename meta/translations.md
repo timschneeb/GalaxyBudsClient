@@ -19,7 +19,7 @@ Translation instructions are available [in the wiki](https://github.com/ThePBone
 <tr><td>ko (undefined)</td><td>100%</td><td>No missing strings</td><td><a href="ko.md">View details</a></td></tr>
 <tr><td>pt (Portugal)</td><td>48%</td><td>218 missing string(s)</td><td><a href="pt.md">View details</a></td></tr>
 <tr><td>ro (Romania)</td><td>92%</td><td>32 missing string(s)</td><td><a href="ro.md">View details</a></td></tr>
-<tr><td>ru (Russian Federation)</td><td>92%</td><td>32 missing string(s)</td><td><a href="ru.md">View details</a></td></tr>
+<tr><td>ru (Russian Federation)</td><td>97%</td><td>11 missing string(s)</td><td><a href="ru.md">View details</a></td></tr>
 <tr><td>tr (Turkey)</td><td>46%</td><td>227 missing string(s)</td><td><a href="tr.md">View details</a></td></tr>
 <tr><td>tw (Taiwan, Province of China)</td><td>93%</td><td>26 missing string(s)</td><td><a href="tw.md">View details</a></td></tr>
 <tr><td>ua (Ukraine)</td><td>92%</td><td>32 missing string(s)</td><td><a href="ua.md">View details</a></td></tr>
