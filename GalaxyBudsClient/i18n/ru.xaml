@@ -230,6 +230,17 @@
     <sys:String x:Key="unsupported_feature_description_p2">Пожалуйста, обновитесь до последней версии используя официальную утилиту обновлений для Windows или официальное приложение Wearable на Android</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">Убедитесь, что вы закрыли эту программу, для использования утилиты обновлений для Windows. Только одно приложение за раз может общаться с устройством Buds.</sys:String>
 
+	<!-- Touchpad gestures -->
+    <sys:String x:Key="touchpad_gesture_header">Enable touchpad gestures</sys:String>
+    <sys:String x:Key="touchpad_gesture_single">Единичное нажатие</sys:String>
+    <sys:String x:Key="touchpad_gesture_single_desc">Воспроизведение/Пауза</sys:String>
+    <sys:String x:Key="touchpad_gesture_double">Двойное нажатие</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_desc">Следующий</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple">Тройное нажатие</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple_desc">Предыдущий</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold">Нажатие и удерживание</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_desc">Настраиваемое действие</sys:String>
+
     <!-- Touchpad page -->
     <sys:String x:Key="touchpad_header">Сенсорная панель</sys:String>
     <sys:String x:Key="touchpad_lock">Блокировка сенсорной панели</sys:String>
@@ -390,6 +401,17 @@
     <sys:String x:Key="nc_voicedetect_description">Автоматически включить звуковой фон и приглушить звук медиа, чтобы упростить разговор</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">Завершение разговора</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} секунд</sys:String>
+	
+    <!-- Noise control >>> Ambient sound -->
+    <sys:String x:Key="nc_as_header">Настройки звукового фона</sys:String>
+    <sys:String x:Key="nc_as_custom">Расширенная кастомизация</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_l">Уровень звукового фона (слева)</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_r">Уровень звукового фона (справа)</sys:String>
+    <sys:String x:Key="nc_as_custom_tone">Тон звукового фона</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_clear">Чистый</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_soft">Мягкий</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_neutral">Нейтральный</sys:String>
+    <sys:String x:Key="nc_as_custom_vol_normal">Нормальный</sys:String>
 
     <!-- Ambient sound -->
     <sys:String x:Key="as_header">Звуковой фон</sys:String>
@@ -519,5 +541,12 @@
     <!-- Header -->
     <sys:String x:Key="window_minimize">Свернуть</sys:String>
     <sys:String x:Key="window_close">Закрыть</sys:String>
+	
+    <!-- Buds app detected page -->
+    <sys:String x:Key="budsapp_header">Информация о Bluetooth совместимости</sys:String>
+    <sys:String x:Key="budsapp_text_p1">Официальный клиент Galaxy Buds для Windows 10 установлен вместе с данным приложением.</sys:String>
+    <sys:String x:Key="budsapp_text_p3">
+		Имейте в виду, что только одно приложение может общаться с вашими Galaxy Buds одновременно.
+    </sys:String>
 
 </ResourceDictionary>
