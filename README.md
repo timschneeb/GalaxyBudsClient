@@ -78,26 +78,26 @@ yay -S galaxybudsclient-bin
 
 ## How it works
 
-To use Bluetooth wireless technology, a device must be able to interpret certain Bluetooth profiles, which are definitions of possible applications and specify general behaviors that Bluetooth-enabled devices use to communicate with other Bluetooth devices.
+In order to use Bluetooth wireless technology, a device must be able to interpret specific Bluetooth profiles that enable Bluetooth devices to communicate efficiently with each other.
 
-The Galaxy Buds define two Bluetooth profiles: A2DP (Advanced Audio Distribution Profile) for audio streaming/controlling and SPP (Serial Port Profile) for transmitting a binary stream. Manufacturers often use this profile (which relies on the RFCOMM protocol) to exchange configuration data, perform firmware updates or send other commands to the Bluetooth device.
+The Galaxy Buds define two Bluetooth profiles: A2DP (Advanced Audio Distribution Profile) for audio streaming/controlling and SPP (Serial Port Profile) for transmitting binary streams. Manufacturers often use this profile (which relies on the RFCOMM protocol) to exchange configuration data, perform firmware updates, or send other commands to the Bluetooth device.
 
-Even though the A2DP profile is standardized and documented, the format of the actual binary data exchanged by this RFCOMM protocol is usually not documented and proprietary.
+Even though the A2DP profile is standardized and documented, the format of the binary data exchanged by this RFCOMM protocol is usually proprietary.
 
-In order to reverse-engineer this data format, I started off by analyzing the structure of the binary stream send by the earbuds. Later on, I also disassembled the official Galaxy Buds apps for Android to gain more insight of the inner workings of these devices. While working on this, I wrote my thoughts down into a small scratchpad. Even though they are not that beautiful, I've linked them down below. Keep in mind that I didn't bother to write every single detail down. Check the source code to get more detailed information on the structure of the protocol.
+To reverse-engineer this data format, I started by analyzing the structure of the binary stream sent by the earbuds. Later on, I also disassembled the official Galaxy Buds apps for Android to gain more insight into these devices' inner workings. You can find some (incomplete) notes I took down below. Check the source code to get more detailed information on the structure of the protocol.
 
 <p align="center">
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsRFCommProtocol.md">Galaxy Buds (2019) Notes</a> •
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md">Galaxy Buds Plus Notes</a>
 </p>
 
-While taking a closer look at the Galaxy Buds Plus, I also noticed some unusual features, such as a firmware debug mode, an unused pairing mode and a Bluetooth key dumper. I documented these findings here:
+While taking a closer look at the Galaxy Buds Plus, I also noticed some unusual features, such as a firmware debug mode, an unused pairing mode, and a Bluetooth key dumper. I documented these findings here:
 
 <p align="center">
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsPlus_HiddenDebugFeatures.md">Galaxy Buds Plus: Unusual features</a>
 </p>
 
-Currently, I'm looking into modifying and reverse-engineering the firmware for the Buds+. At time of writing I have two tools to fetch and analyse with official firmware binaries. Check them out here:
+Currently, I'm looking into modifying and reverse-engineering the firmware for the Buds+. At time of writing I have created two tools to fetch and analyze official firmware binaries. Check them out here:
 
 <p align="center">
   <a href="https://github.com/ThePBone/GalaxyBudsFirmwareDownloader">Firmware Downloader</a> •
