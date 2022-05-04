@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
+using System.Threading.Tasks;
+using System.Timers;
+using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Threading;
 using GalaxyBudsClient.Interface.Pages;
-using GalaxyBudsClient.Interop.TrayIcon;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Specifications;
@@ -17,16 +17,37 @@ namespace GalaxyBudsClient.Utils
 {
     class TrayManager
     {
+        private Timer _timer = new();
         public TrayManager()
         {
-            NotifyIconImpl.Instance.TrayMenuItemSelected += InstanceOnTrayMenuItemSelected;
-            NotifyIconImpl.Instance.RightClicked += (sender, args) => Rebuild();
-            BluetoothImpl.Instance.Connected += (sender, args) => Rebuild();
+            (Application.Current as App)!.TrayMenu.NeedsUpdate += async (sender, args) =>
+            {
+                Log.Debug("NEED UPDATE");
+                await RebuildAsync();
+            }; 
+            (Application.Current as App)!.TrayMenu.Opening += async (sender, args) =>
+            {
+                Log.Debug("OPENING");
+                await RebuildAsync();
+            };
+            BluetoothImpl.Instance.Connected += (sender, args) => _ = RebuildAsync();
+            
+            // TODO Avalonia bug workaround https://github.com/AvaloniaUI/Avalonia/issues/8076
+            _timer.Interval = 2000;
+            _timer.AutoReset = true;
+            _timer.Elapsed += async (sender, args) => await RebuildAsync();
+            _timer.Start();
         }
 
-        private async void InstanceOnTrayMenuItemSelected(object? sender, TrayMenuItem e)
+        private async void OnTrayMenuCommand(object? type)
         {
-            switch (e.Id)
+            if (type is not ItemType e)
+            {
+                Log.Error($"TrayManager.OnTrayMenuCommand: Unknown item type: {type}");
+                return;
+            }
+            
+            switch (e)
             {
                 case ItemType.ToggleNoiseControl:
                     var noisePage = MainWindow.Instance.Pager.FindPage(AbstractPage.Pages.NoiseControlPro);
@@ -74,10 +95,10 @@ namespace GalaxyBudsClient.Utils
                     break;
             }
             
-            Rebuild();
+            await RebuildAsync();
         }
 
-        private List<TrayMenuItem?> RebuildBatteryInfo()
+        private List<NativeMenuItemBase?> RebuildBatteryInfo()
         {
             var bsu = DeviceMessageCache.Instance.BasicStatusUpdate!;
             if (bsu.BatteryCase > 100)
@@ -85,32 +106,40 @@ namespace GalaxyBudsClient.Utils
                 bsu.BatteryCase = DeviceMessageCache.Instance.BasicStatusUpdateWithValidCase?.BatteryCase ?? bsu.BatteryCase;
             }
             
-            return new List<TrayMenuItem?>
+            return new List<NativeMenuItemBase?>
             {
-                bsu.BatteryL > 0 ? new TrayMenuItem($"{Loc.Resolve("left")}: {bsu.BatteryL}%", false) : null,
-                bsu.BatteryR > 0 ? new TrayMenuItem($"{Loc.Resolve("right")}: {bsu.BatteryR}%", false) : null,
-                (bsu.BatteryCase > 0 && bsu.BatteryCase <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery)) ?
-                    new TrayMenuItem($"{Loc.Resolve("case")}: {bsu.BatteryCase}%", false) : null,
-                new TrayMenuSeparator(),
+                bsu.BatteryL > 0 ? new NativeMenuItem($"{Loc.Resolve("left")}: {bsu.BatteryL}%"){IsEnabled = false} : null,
+                bsu.BatteryR > 0 ? new NativeMenuItem($"{Loc.Resolve("right")}: {bsu.BatteryR}%"){IsEnabled = false} : null,
+                (bsu.BatteryCase is > 0 and <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery)) ?
+                    new NativeMenuItem($"{Loc.Resolve("case")}: {bsu.BatteryCase}%"){IsEnabled = false} : null,
+                new NativeMenuItemSeparator(),
             };
         }
 
-        private List<TrayMenuItem> RebuildDynamicActions()
+        private List<NativeMenuItemBase> RebuildDynamicActions()
         {
-            var items = new List<TrayMenuItem>();
+            var items = new List<NativeMenuItemBase>();
 
             foreach (var type in BluetoothImpl.Instance.DeviceSpec.TrayShortcuts)
             {
                 switch (type)
                 {
                     case ItemType.ToggleNoiseControl:
-                        items.Add(new TrayMenuItem(Loc.Resolve("tray_switch_noise"), type));
+                        items.Add(new NativeMenuItem(Loc.Resolve("tray_switch_noise"))
+                        {  
+                            Command = new MiniCommand(OnTrayMenuCommand),
+                            CommandParameter = type
+                        });
                         break;
                     case ItemType.ToggleEqualizer:
-                        bool eqEnabled =
+                        var eqEnabled =
                             (MainWindow.Instance.Pager.FindPage(AbstractPage.Pages.Equalizer) as EqualizerPage)
                             ?.EqualizerEnabled ?? DeviceMessageCache.Instance.ExtendedStatusUpdate?.EqualizerEnabled ?? false;
-                        items.Add(new TrayMenuItem(eqEnabled ? Loc.Resolve("tray_disable_eq") : Loc.Resolve("tray_enable_eq"), type));
+                        items.Add(new NativeMenuItem(eqEnabled ? Loc.Resolve("tray_disable_eq") : Loc.Resolve("tray_enable_eq"))
+                        {  
+                            Command = new MiniCommand(OnTrayMenuCommand),
+                            CommandParameter = type
+                        });
                         break;
                     case ItemType.ToggleAmbient:
                         bool ambEnabled;
@@ -125,7 +154,11 @@ namespace GalaxyBudsClient.Utils
                                 (MainWindow.Instance.Pager.FindPage(AbstractPage.Pages.AmbientSound) as AmbientSoundPage)
                                 ?.AmbientEnabled ?? DeviceMessageCache.Instance.ExtendedStatusUpdate?.AmbientSoundEnabled ?? false;
                         }
-                        items.Add(new TrayMenuItem(ambEnabled ? Loc.Resolve("tray_disable_ambient_sound") : Loc.Resolve("tray_enable_ambient_sound"), type));
+                        items.Add(new NativeMenuItem(ambEnabled ? Loc.Resolve("tray_disable_ambient_sound") : Loc.Resolve("tray_enable_ambient_sound"))
+                        {  
+                            Command = new MiniCommand(OnTrayMenuCommand),
+                            CommandParameter = type
+                        });
                         break;
                     case ItemType.ToggleAnc:
                         bool ancEnabled;
@@ -140,13 +173,21 @@ namespace GalaxyBudsClient.Utils
                                 (MainWindow.Instance.Pager.FindPage(AbstractPage.Pages.Home) as HomePage)
                                 ?.AncEnabled ?? DeviceMessageCache.Instance.ExtendedStatusUpdate?.NoiseCancelling ?? false;
                         }
-                        items.Add(new TrayMenuItem(ancEnabled ? Loc.Resolve("tray_disable_anc") : Loc.Resolve("tray_enable_anc"), type));
+                        items.Add(new NativeMenuItem(ancEnabled ? Loc.Resolve("tray_disable_anc") : Loc.Resolve("tray_enable_anc"))
+                        {  
+                            Command = new MiniCommand(OnTrayMenuCommand),
+                            CommandParameter = type
+                        });
                         break;
                     case ItemType.LockTouchpad:
-                        bool lockEnabled =
+                        var lockEnabled =
                             (MainWindow.Instance.Pager.FindPage(AbstractPage.Pages.Touch) as TouchpadPage)
                             ?.TouchpadLocked ?? DeviceMessageCache.Instance.ExtendedStatusUpdate?.TouchpadLock ?? false;
-                        items.Add(new TrayMenuItem(lockEnabled ? Loc.Resolve("tray_unlock_touchpad") : Loc.Resolve("tray_lock_touchpad"), type));
+                        items.Add(new NativeMenuItem(lockEnabled ? Loc.Resolve("tray_unlock_touchpad") : Loc.Resolve("tray_lock_touchpad"))
+                        {  
+                            Command = new MiniCommand(OnTrayMenuCommand),
+                            CommandParameter = type
+                        });
                         break;
                 }
             }
@@ -154,28 +195,39 @@ namespace GalaxyBudsClient.Utils
             return items;
         }
 
-        public void Rebuild()
+        public async Task RebuildAsync()
         {
-            Dispatcher.UIThread.Post(() =>
+            await Dispatcher.UIThread.InvokeAsync(() =>
             {
-                List<TrayMenuItem> items = new List<TrayMenuItem>();
+                var items = new List<NativeMenuItemBase>();
                 if (BluetoothImpl.Instance.IsConnected && DeviceMessageCache.Instance.BasicStatusUpdate != null)
                 {
-                    items.AddRange(RebuildBatteryInfo().OfType<TrayMenuItem>());
+                    items.AddRange(RebuildBatteryInfo().OfType<NativeMenuItemBase>());
                     items.AddRange(RebuildDynamicActions());
                 }
                 else if (BluetoothImpl.Instance.RegisteredDeviceValid)
                 {
-                    items.Add(new TrayMenuItem(Loc.Resolve("connlost_connect"), ItemType.Connect));
-                    items.Add(new TrayMenuSeparator());
+                    items.Add(new NativeMenuItem(Loc.Resolve("connlost_connect"))
+                    {
+                        Command = new MiniCommand(OnTrayMenuCommand),
+                        CommandParameter = ItemType.Connect
+                    });
+                    items.Add(new NativeMenuItemSeparator());
                 }
 
-                items.Add(new TrayMenuSeparator());
-                items.Add(new TrayMenuItem(Loc.Resolve("tray_quit"), ItemType.Quit));
-
-                NotifyIconImpl.Instance.MenuItems = items;
-
-            });
+                items.Add(new NativeMenuItemSeparator());
+                items.Add(new NativeMenuItem(Loc.Resolve("tray_quit"))
+                {
+                    Command = new MiniCommand(OnTrayMenuCommand),
+                    CommandParameter = ItemType.Quit
+                });
+                
+                (Application.Current as App)?.TrayMenu.Items.Clear();
+                foreach (var item in items)
+                {
+                    (Application.Current as App)?.TrayMenu.Items.Add(item);
+                }
+            }, DispatcherPriority.MaxValue);
         }
 
         #region Singleton

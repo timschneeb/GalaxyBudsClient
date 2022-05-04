@@ -174,8 +174,8 @@ namespace GalaxyBudsClient
             SPPMessageHandler.Instance.AnyMessageReceived += OnAnyMessageReceived;
 
             EventDispatcher.Instance.EventReceived += OnEventReceived;
-            NotifyIconImpl.Instance.LeftClicked += TrayIcon_OnLeftClicked;
-            TrayManager.Instance.Rebuild();
+            (Application.Current as App)!.TrayIconClicked += TrayIcon_OnLeftClicked;
+            _ = TrayManager.Instance.RebuildAsync();
             
             Pager.PageSwitched += (sender, pages) => BuildOptionsMenu();
             Loc.LanguageUpdated += BuildOptionsMenu;
@@ -299,7 +299,7 @@ namespace GalaxyBudsClient
             SPPMessageHandler.Instance.StatusUpdate -= OnStatusUpdate;
             SPPMessageHandler.Instance.OtherOption -= HandleOtherTouchOption;
 
-            NotifyIconImpl.Instance.LeftClicked -= TrayIcon_OnLeftClicked;
+            (Application.Current as App)!.TrayIconClicked -= TrayIcon_OnLeftClicked;
             EventDispatcher.Instance.EventReceived -= OnEventReceived;
 
             Loc.LanguageUpdated -= BuildOptionsMenu;
@@ -344,7 +344,7 @@ namespace GalaxyBudsClient
             });
         }
         
-        private void TrayIcon_OnLeftClicked(object? sender, EventArgs e)
+        private void TrayIcon_OnLeftClicked()
         {
             Dispatcher.UIThread.InvokeAsync(() =>
             {

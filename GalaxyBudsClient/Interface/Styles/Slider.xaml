@@ -11,7 +11,7 @@
     <StaticResource x:Key="SliderThumbBackground" ResourceKey="SliderThumbBrush" />
     <StaticResource x:Key="SliderThumbBackgroundPointerOver" ResourceKey="SliderThumbHoverBrush" />
     <StaticResource x:Key="SliderThumbBackgroundPressed" ResourceKey="SliderThumbHoverBrush" />
-    <StaticResource x:Key="SliderTrackFill" ResourceKey="SliderTrackBackgroundThemeBrush" />
+    <!--<StaticResource x:Key="SliderTrackFill" ResourceKey="SliderTrackBackgroundThemeBrush" />-->
     <StaticResource x:Key="SliderTrackFillPointerOver" ResourceKey="SystemControlForegroundBaseMediumLowBrush" />
     <StaticResource x:Key="SliderTrackFillPressed" ResourceKey="SystemControlForegroundBaseLowBrush" />
   </Styles.Resources>

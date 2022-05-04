@@ -9,7 +9,7 @@ using Avalonia.Media;
 using Avalonia.Threading;
 using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Interface.Items;
-using GalaxyBudsClient.Interop.TrayIcon;
+
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model;

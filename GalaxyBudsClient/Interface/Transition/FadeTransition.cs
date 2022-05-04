@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Animation;
@@ -105,7 +106,7 @@ namespace GalaxyBudsClient.Interface.Transition
             if (from != null)
             {
                 FadeOutBegin?.Invoke(this, EventArgs.Empty);
-                await _fadeOutAnimation.RunAsync(from);
+                await _fadeOutAnimation.RunAsync(from, null);
                 FadeOutComplete?.Invoke(this, EventArgs.Empty);
             }
             
@@ -120,7 +121,7 @@ namespace GalaxyBudsClient.Interface.Transition
             {
                 to.IsVisible = true;
                 FadeInBegin?.Invoke(this, EventArgs.Empty);
-                await _fadeInAnimation.RunAsync(to);
+                await _fadeInAnimation.RunAsync(to, null);
                 FadeInComplete?.Invoke(this, EventArgs.Empty);
             }
             
@@ -145,7 +146,7 @@ namespace GalaxyBudsClient.Interface.Transition
         /// <returns>
         /// A <see cref="Task"/> that tracks the progress of the animation.
         /// </returns>
-        Task IPageTransition.Start(Visual? from, Visual? to, bool forward)
+        Task IPageTransition.Start(Visual? from, Visual? to, bool forward, CancellationToken cancellationToken)
         {
             return Start(from, to);
         }

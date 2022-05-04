@@ -20,4 +20,13 @@
         <StyleInclude Source="/Interface/Styles/Slider.xaml"/>
         <StyleInclude Source="/Interface/Styles/ListBox.xaml"/>
     </Application.Styles>
+    <TrayIcon.Icons>
+        <TrayIcons>
+            <TrayIcon Menu="{Binding TrayMenu}"
+                      Icon="/Resources/icon_white.ico" 
+                      ToolTipText="Galaxy Buds Client" 
+                      Clicked="TrayIcon_OnClicked">
+            </TrayIcon>
+        </TrayIcons>
+    </TrayIcon.Icons>
 </Application>

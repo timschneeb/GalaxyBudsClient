@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using GalaxyBudsClient.Interop.TrayIcon;
+
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Touchpad;
 using Serilog;

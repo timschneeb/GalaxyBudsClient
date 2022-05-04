@@ -1,15 +1,12 @@
 using System;
-using System.Linq;
-using System.Threading;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Data;
 using Avalonia.Markup.Xaml;
-using Avalonia.Threading;
-using GalaxyBudsClient.Interface.Developer;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Model.Firmware;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Scripting.Experiment;
@@ -17,7 +14,6 @@ using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using Serilog;
 using Application = Avalonia.Application;
-using Environment = System.Environment;
 
 namespace GalaxyBudsClient
 {
@@ -25,6 +21,8 @@ namespace GalaxyBudsClient
     {
         public override void Initialize()
         {
+            DataContext = this;
+            
             AvaloniaXamlLoader.Load(this);
             
             if (Loc.IsTranslatorModeEnabled())
@@ -35,6 +33,7 @@ namespace GalaxyBudsClient
             ThemeUtils.Reload();
             Loc.Load();
             
+            TrayManager.Init();
             MediaKeyRemoteImpl.Init();
             DeviceMessageCache.Init();
             UpdateManager.Init();
@@ -47,13 +46,14 @@ namespace GalaxyBudsClient
         
         public override void OnFrameworkInitializationCompleted()
         {
+            TrayManager.Init();
+            
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 desktop.MainWindow = MainWindow.Instance;
                 desktop.Exit += (sender, args) =>
                 {
                     SettingsProvider.Instance.FirstLaunch = false;
-                    NotifyIconImpl.Shutdown();
                 };
             }
             
@@ -67,7 +67,6 @@ namespace GalaxyBudsClient
 
         public void RestartApp(AbstractPage.Pages target)
         {
-
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 MainWindow.Instance.DisableApplicationExit = true;
@@ -86,6 +85,18 @@ namespace GalaxyBudsClient
                 SPPMessageHandler.Instance.DispatchEvent(DeviceMessageCache.Instance.ExtendedStatusUpdate);
                 SPPMessageHandler.Instance.DispatchEvent(DeviceMessageCache.Instance.StatusUpdate);
             }
+        }
+
+        public event Action? TrayIconClicked;
+
+        public static readonly StyledProperty<NativeMenu> TrayMenuProperty =
+            AvaloniaProperty.Register<App, NativeMenu>(nameof(TrayMenu),
+                defaultBindingMode: BindingMode.OneWay, defaultValue: new NativeMenu());
+        public NativeMenu TrayMenu => GetValue(TrayMenuProperty);
+
+        private void TrayIcon_OnClicked(object? sender, EventArgs e)
+        {
+            TrayIconClicked?.Invoke();
         }
     }
 }

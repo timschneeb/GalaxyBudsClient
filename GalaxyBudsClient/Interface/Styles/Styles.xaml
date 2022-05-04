@@ -68,8 +68,7 @@
         <Setter Property="Margin" Value="0,2,3,0" />
     </Style>
 
-    <Style Selector="ContextMenu.RoundMenuStyle">
-        <Setter Property="Grid.IsSharedSizeScope" Value="true" />
+   <Style Selector="ContextMenu.RoundMenuStyle">
         <Setter Property="Margin" Value="0" />
         <Setter Property="Foreground" Value="{DynamicResource ContextForegroundBrush}" />
         <Setter Property="Template">
@@ -89,8 +88,7 @@
                                             ItemsPanel="{TemplateBinding ItemsPanel}"
                                             ItemTemplate="{TemplateBinding ItemTemplate}"
                                             Margin="{DynamicResource MenuFlyoutScrollerMargin}"
-                                            KeyboardNavigation.TabNavigation="Continue"
-                                            Grid.IsSharedSizeScope="True" />
+                                            KeyboardNavigation.TabNavigation="Continue"/>
                         </ScrollViewer>
                     </Border>
                 </ControlTemplate>
