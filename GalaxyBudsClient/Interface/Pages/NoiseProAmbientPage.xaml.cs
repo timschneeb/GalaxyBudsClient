@@ -190,10 +190,10 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private void UpdateUiState(bool isAdvancedOn)
         {
-            _volumeSlider.Parent.Parent.IsVisible = !isAdvancedOn;
-            _ambientTone.Parent.IsVisible = isAdvancedOn;
-            _ambientVolLeft.Parent.IsVisible = isAdvancedOn;
-            _ambientVolRight.Parent.IsVisible = isAdvancedOn;
+            _volumeSlider.Parent!.Parent!.IsVisible = !isAdvancedOn;
+            _ambientTone.Parent!.IsVisible = isAdvancedOn;
+            _ambientVolLeft.Parent!.IsVisible = isAdvancedOn;
+            _ambientVolRight.Parent!.IsVisible = isAdvancedOn;
             for (var i = 1; i <= 3; i++)
             {
                 this.FindControl<Separator>($"AmbSep{i}").IsVisible = isAdvancedOn;

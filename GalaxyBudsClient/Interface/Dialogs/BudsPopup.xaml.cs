@@ -113,20 +113,20 @@ namespace GalaxyBudsClient.Interface.Dialogs
             var type = BluetoothImpl.Instance.DeviceSpec.IconResourceKey;
             if (isLeftOnline)
             {
-                _iconLeft.Source = (IImage?)Application.Current.FindResource($"Left{type}Connected");
+                _iconLeft.Source = (IImage?)Application.Current?.FindResource($"Left{type}Connected");
             }
             else
             {
-                _iconLeft.Source = (IImage?)Application.Current.FindResource($"Left{type}Disconnected");
+                _iconLeft.Source = (IImage?)Application.Current?.FindResource($"Left{type}Disconnected");
             }
 
             if (isRightOnline)
             {
-                _iconRight.Source = (IImage?)Application.Current.FindResource($"Right{type}Connected");
+                _iconRight.Source = (IImage?)Application.Current?.FindResource($"Right{type}Connected");
             }
             else
             {
-                _iconRight.Source = (IImage?)Application.Current.FindResource($"Right{type}Disconnected");
+                _iconRight.Source = (IImage?)Application.Current?.FindResource($"Right{type}Disconnected");
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -84,7 +85,7 @@ namespace GalaxyBudsClient.Interface.Pages
         {
             if (sender is Control control)
             {
-                if (control.Parent.DataContext is Hotkey hotkey)
+                if (control.Parent!.DataContext is Hotkey hotkey)
                 {
                     MenuFactory.BuildContextMenu(new Dictionary<string, EventHandler<RoutedEventArgs>?>()
                     {

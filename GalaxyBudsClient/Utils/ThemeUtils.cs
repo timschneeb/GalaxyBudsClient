@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using Avalonia;
@@ -35,6 +36,11 @@ namespace GalaxyBudsClient.Utils
 
         public static void Reload()
         {
+            if (Application.Current == null)
+            {
+                return;
+            }
+            
             if (SettingsProvider.Instance.DarkMode == DarkModes.Light)
             {
                 Application.Current.Styles[1] = FluentLight;
@@ -51,10 +57,14 @@ namespace GalaxyBudsClient.Utils
 
         private static void SetBrushSource(string name)
         {
+            if (Application.Current == null)
+            {
+                return;
+            }
+            
             try
             {
-                int dictId = ResourceIndexer.Find("Brushes-");
-
+                var dictId = ResourceIndexer.Find("Brushes-");
                 if (dictId == -1)
                 {
                     Log.Error("ThemeUtils: No active brushes resource found. Cannot switch themes.");

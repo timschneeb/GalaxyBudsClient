@@ -39,7 +39,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		{
 			var rpy = e.ToRollPitchYaw();
 			var degree = rpy[0].Remap(-3, 3, 0, 360);
-			((RotateTransform) _arrow.RenderTransform).Angle = degree;
+			((RotateTransform) _arrow.RenderTransform!).Angle = degree;
 
 			_details.Text = $"{Loc.Resolve("spatial_dump_quaternion")}\n" +
 			                $"X={e.X}\nY={e.Y}\nZ={e.Z}\nW={e.W}\n\n" + 

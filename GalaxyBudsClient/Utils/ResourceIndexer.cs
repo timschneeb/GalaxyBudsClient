@@ -8,7 +8,12 @@ namespace GalaxyBudsClient.Utils
     {
         public static int Find(string prefix)
         {
-            int dictId = -1;
+            if (Application.Current == null)
+            {
+                return -1;
+            }
+            
+            var dictId = -1;
             for (var i = Application.Current.Resources.MergedDictionaries.Count - 1; i >= 0; i--)
             {
                 var md = Application.Current.Resources.MergedDictionaries[i];

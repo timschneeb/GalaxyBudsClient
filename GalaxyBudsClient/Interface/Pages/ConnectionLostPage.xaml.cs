@@ -94,7 +94,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		public override void OnPageShown()
 		{
-			_retry.Source = (IImage?)Application.Current.FindResource($"Neutral{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
+			_retry.Source = (IImage?)Application.Current?.FindResource($"Neutral{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
 		}
 
 		public override void OnPageHidden()

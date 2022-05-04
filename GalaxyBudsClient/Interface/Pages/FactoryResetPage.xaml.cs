@@ -59,7 +59,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			_pageHeader.LoadingSpinnerVisible = false;
 			
 			this.FindControl<IconListItem>("FactoryReset").Source =
-				(IImage?)Application.Current.FindResource($"Neutral{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
+				(IImage?)Application.Current?.FindResource($"Neutral{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
 		}
 
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)

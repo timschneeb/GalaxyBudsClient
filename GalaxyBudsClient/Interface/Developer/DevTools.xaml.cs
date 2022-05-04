@@ -117,7 +117,7 @@ namespace GalaxyBudsClient.Interface.Developer
             var item = (RecvMsgViewHolder?)_msgTable.SelectedItem;
             if (item != null)
             {
-                Application.Current.Clipboard.SetTextAsync(item.Payload);
+                Application.Current?.Clipboard?.SetTextAsync(item.Payload);
             }
         }
        

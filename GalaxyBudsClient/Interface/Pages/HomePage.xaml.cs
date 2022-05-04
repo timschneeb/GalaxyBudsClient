@@ -220,8 +220,8 @@ namespace GalaxyBudsClient.Interface.Pages
 
             UpdateList();
             
-            _findMyGear.Source = (IImage?)Application.Current.FindResource($"FindMyGear{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
-            _touch.Source = (IImage?)Application.Current.FindResource($"Touch{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
+            _findMyGear.Source = (IImage?)Application.Current?.FindResource($"FindMyGear{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
+            _touch.Source = (IImage?)Application.Current?.FindResource($"Touch{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
 
             _loadingSpinner.IsVisible = !BluetoothImpl.Instance.IsConnected;
         }
@@ -344,20 +344,20 @@ namespace GalaxyBudsClient.Interface.Pages
             var type = BluetoothImpl.Instance.DeviceSpec.IconResourceKey;
             if (isLeftOnline)
             {
-                _iconLeft.Source = (IImage?)Application.Current.FindResource($"Left{type}Connected");
+                _iconLeft.Source = (IImage?)Application.Current?.FindResource($"Left{type}Connected");
             }
             else
             {
-                _iconLeft.Source = (IImage?)Application.Current.FindResource($"Left{type}Disconnected");
+                _iconLeft.Source = (IImage?)Application.Current?.FindResource($"Left{type}Disconnected");
             }
 
             if (isRightOnline)
             {
-                _iconRight.Source = (IImage?)Application.Current.FindResource($"Right{type}Connected");
+                _iconRight.Source = (IImage?)Application.Current?.FindResource($"Right{type}Connected");
             }
             else
             {
-                _iconRight.Source = (IImage?)Application.Current.FindResource($"Right{type}Disconnected");
+                _iconRight.Source = (IImage?)Application.Current?.FindResource($"Right{type}Disconnected");
             }
         }
 
@@ -366,23 +366,23 @@ namespace GalaxyBudsClient.Interface.Pages
             IImage? batteryIcon;
             if (p <= 0)
             {
-                batteryIcon = (IImage?)Application.Current.FindResource("BatteryDisconnected");
+                batteryIcon = (IImage?)Application.Current?.FindResource("BatteryDisconnected");
             }
             else if (p <= 25)
             {
-                batteryIcon = (IImage?)Application.Current.FindResource("BatteryLow");
+                batteryIcon = (IImage?)Application.Current?.FindResource("BatteryLow");
             }
             else if (p <= 50)
             {
-                batteryIcon = (IImage?)Application.Current.FindResource("BatteryMedium");
+                batteryIcon = (IImage?)Application.Current?.FindResource("BatteryMedium");
             }
             else if (p <= 90)
             {
-                batteryIcon = (IImage?)Application.Current.FindResource("BatteryHigh");
+                batteryIcon = (IImage?)Application.Current?.FindResource("BatteryHigh");
             }
             else
             {
-                batteryIcon = (IImage?)Application.Current.FindResource("BatteryFull");
+                batteryIcon = (IImage?)Application.Current?.FindResource("BatteryFull");
             }
             
             switch (side)

@@ -241,9 +241,9 @@ namespace GalaxyBudsClient.Interface.Pages
 			var supportsEdgeTouch = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DoubleTapVolume);
 			var supportAdvTouchLock = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AdvancedTouchLock);
 			
-			_edgeTouch.Parent.IsVisible = supportsEdgeTouch;
+			_edgeTouch.Parent!.IsVisible = supportsEdgeTouch;
 			this.FindControl<Separator>("GesturesSeparator").IsVisible = supportsEdgeTouch && supportAdvTouchLock;
-			this.FindControl<DetailListItem>("Gestures").Parent.IsVisible = supportAdvTouchLock;
+			this.FindControl<DetailListItem>("Gestures").Parent!.IsVisible = supportAdvTouchLock;
 
 			UpdateNoiseSwitchModeVisible();
 			
@@ -255,7 +255,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		public void UpdateNoiseSwitchModeVisible()
 		{
-			_noiseControlMode.Parent.IsVisible =
+			_noiseControlMode.Parent!.IsVisible =
 				BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl) 
 				&& (_lastLeftOption == TouchOptions.NoiseControl || _lastRightOption == TouchOptions.NoiseControl);
 		}
@@ -286,7 +286,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			MainWindow.Instance.Pager.SwitchPage(Pages.Home);
 		}
 
-		private async void LockToggle_OnToggled(object? sender, bool e)
+		private void LockToggle_OnToggled(object? sender, bool e)
 		{
 			SendLockState();
 		}

@@ -12,36 +12,37 @@ namespace GalaxyBudsClient.Utils
     {
         public static BitmapAssetValueConverter Instance = new BitmapAssetValueConverter();
 
-        public object? Convert(object? value, Type targetType, object parameter, CultureInfo culture)
+        public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
-            if (value == null)
-                return null;
-
-            if (value is string rawUri && targetType == typeof(IBitmap))
+            switch (value)
             {
-                Uri uri;
-
-                // Allow for assembly overrides
-                if (rawUri.StartsWith("avares://"))
+                case null:
+                    return null;
+                case string rawUri when targetType == typeof(IBitmap):
                 {
-                    uri = new Uri(rawUri);
-                }
-                else
-                {
-                    string? assemblyName = Assembly.GetEntryAssembly()?.GetName().Name;
-                    uri = new Uri($"avares://{assemblyName}{rawUri}");
-                }
+                    Uri uri;
 
-                var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
-                var asset = assets.Open(uri);
+                    // Allow for assembly overrides
+                    if (rawUri.StartsWith("avares://"))
+                    {
+                        uri = new Uri(rawUri);
+                    }
+                    else
+                    {
+                        var assemblyName = Assembly.GetEntryAssembly()?.GetName().Name;
+                        uri = new Uri($"avares://{assemblyName}{rawUri}");
+                    }
 
-                return new Bitmap(asset);
+                    var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
+                    var asset = assets?.Open(uri);
+                    return asset == null ? null : new Bitmap(asset);
+                }
+                default:
+                    throw new NotSupportedException();
             }
-
-            throw new NotSupportedException();
         }
 
-        public object ConvertBack(object? value, Type targetType, object parameter, CultureInfo culture)
+        public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             throw new NotSupportedException();
         }

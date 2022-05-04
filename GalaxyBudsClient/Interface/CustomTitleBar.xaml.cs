@@ -87,20 +87,22 @@ namespace GalaxyBudsClient.Interface
         
         private void MinimizeWindow(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            Window hostWindow = (Window)this.VisualRoot;
-            hostWindow.WindowState = WindowState.Minimized;
+            var hostWindow = (Window?)VisualRoot;
+            if (hostWindow != null)
+            {
+                hostWindow.WindowState = WindowState.Minimized;
+            }
         }
 
         private async void SubscribeToWindowState()
         {
-            Window? hostWindow = (Window?)this.VisualRoot;
+            var hostWindow = (Window?)VisualRoot;
 
             while (hostWindow == null)
             {
-                hostWindow = (Window?)this.VisualRoot;
+                hostWindow = (Window?)VisualRoot;
                 await Task.Delay(50);
             }
-            
         }
     }
 }

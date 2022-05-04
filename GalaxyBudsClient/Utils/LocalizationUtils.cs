@@ -39,7 +39,7 @@ namespace GalaxyBudsClient.Utils
 
             public static string Resolve(string resName)
             {
-                var resource = Application.Current.FindResource(resName);
+                var resource = Application.Current?.FindResource(resName);
                 if (resource is string str)
                 {
                     return str;
@@ -96,9 +96,10 @@ namespace GalaxyBudsClient.Utils
                             using var stream = new MemoryStream(Encoding.UTF8.GetBytes(File.ReadAllText(path)));
                             try
                             {
-                                if (loader.Load(stream, null, null, null, false) is ResourceDictionary dict)
+                                if (loader?.Load(stream, null, null, null, false) is ResourceDictionary dict)
                                 {
-                                    Application.Current.Resources.MergedDictionaries[langDictId] = dict;
+                                    if (Application.Current != null)
+                                        Application.Current.Resources.MergedDictionaries[langDictId] = dict;
                                 }
                                 else
                                 {
@@ -116,7 +117,9 @@ namespace GalaxyBudsClient.Utils
                         }
                         else
                         {
-                            Application.Current.Resources.MergedDictionaries[langDictId] = new ResourceInclude {Source = new Uri(path)};
+                            if (Application.Current != null)
+                                Application.Current.Resources.MergedDictionaries[langDictId] =
+                                    new ResourceInclude { Source = new Uri(path) };
                         }
                     }
                 }

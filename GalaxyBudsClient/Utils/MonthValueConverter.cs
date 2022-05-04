@@ -10,9 +10,9 @@ namespace GalaxyBudsClient.Utils
 {
     public class MonthValueConverter : IValueConverter
     {
-        public static MonthValueConverter Instance = new MonthValueConverter();
+        public static MonthValueConverter Instance = new();
 
-        public object? Convert(object? value, Type targetType, object parameter, CultureInfo culture)
+        public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             return value switch
             {
@@ -23,7 +23,7 @@ namespace GalaxyBudsClient.Utils
             };
         }
 
-        public object ConvertBack(object? value, Type targetType, object parameter, CultureInfo culture)
+        public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             throw new NotSupportedException();
         }

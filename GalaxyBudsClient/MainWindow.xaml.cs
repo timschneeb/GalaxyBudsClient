@@ -277,7 +277,7 @@ namespace GalaxyBudsClient
             HotkeyReceiverImpl.Reset();
             HotkeyReceiverImpl.Instance.Update(silent: true);
             
-            if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 if (desktop.Args.Contains("/StartMinimized") && PlatformUtils.SupportsTrayIcon && _firstShow)
                 {
