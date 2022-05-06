@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>netstandard2.1</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
 		    <RootNamespace>InTheHand</RootNamespace>
 		    <AssemblyName>InTheHand.Net.Personal</AssemblyName>
         <AssemblyVersion>3.9.0.0</AssemblyVersion>
