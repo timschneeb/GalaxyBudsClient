@@ -128,7 +128,9 @@ namespace GalaxyBudsClient
             if (PlatformUtils.IsOSX)
             {
                 SystemDecorations = SystemDecorations.Full;
+#pragma warning disable CS0618
                 HasSystemDecorations = false;
+#pragma warning restore CS0618
             }
             
             Pager = this.FindControl<PageContainer>("Container");

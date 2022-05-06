@@ -6,6 +6,8 @@ using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using Microsoft.Win32;
 
+#pragma warning disable CA1416
+
 namespace GalaxyBudsClient.Platform.Windows
 {
     public class AutoStartHelper : IAutoStartHelper
@@ -16,6 +18,11 @@ namespace GalaxyBudsClient.Platform.Windows
             {
                 try
                 {
+                    if (!PlatformUtils.IsWindows)
+                    {
+                        return false;
+                    }
+                    
                     RegistryKey? key =
                         Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", false);
                     return key?.GetValue("Galaxy Buds Client", null) != null;
@@ -29,16 +36,21 @@ namespace GalaxyBudsClient.Platform.Windows
             {
                 try
                 {
+                    if (!PlatformUtils.IsWindows)
+                    {
+                        return;
+                    }
+                    
                     if (value)
                     {
-                        RegistryKey? key =
+                        var key =
                             Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
                         key?.SetValue("Galaxy Buds Client",
-                            "\"" + Process.GetCurrentProcess().MainModule.FileName + "\" /StartMinimized");
+                            "\"" + Process.GetCurrentProcess().MainModule?.FileName + "\" /StartMinimized");
                     }
                     else
                     {
-                        RegistryKey? key =
+                        var key =
                             Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
                         key?.DeleteValue("Galaxy Buds Client");
                     }

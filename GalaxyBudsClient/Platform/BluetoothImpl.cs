@@ -193,7 +193,7 @@ namespace GalaxyBudsClient.Platform
             /* Load from configuration */
             if (macAddress == null && model == null)
             {
-                if (RegisteredDeviceValid && ServiceUuid != null)
+                if (RegisteredDeviceValid && ServiceUuid != new StubDeviceSpec().ServiceUuid)
                 {
                     try
                     {

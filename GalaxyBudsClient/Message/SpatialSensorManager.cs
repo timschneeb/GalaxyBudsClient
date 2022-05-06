@@ -80,7 +80,7 @@ namespace GalaxyBudsClient.Message
             _keepAliveTimer.Stop();
         }
         
-        private static async void KeepAliveOnElapsed(object sender, ElapsedEventArgs e)
+        private static async void KeepAliveOnElapsed(object? sender, ElapsedEventArgs e)
         {
             await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SPATIAL_AUDIO_CONTROL, (byte)SpatialAudioControl.KeepAlive);
         }

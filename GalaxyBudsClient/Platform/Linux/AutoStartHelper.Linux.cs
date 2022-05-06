@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Serilog;
 
@@ -10,7 +11,7 @@ namespace GalaxyBudsClient.Platform.Linux
         /* Self -> Disadvantage: includes arguments */
         private static string Self => File.ReadAllText("/proc/self/cmdline").Replace('\0', ' '); 
         /* SelfAlt -> Disadvantage: only includes executable path -> problematic when called via /usr/bin/dotnet */
-        private static string SelfAlt => System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName; 
+        private static string SelfAlt => System.Diagnostics.Process.GetCurrentProcess().MainModule?.FileName ?? string.Empty; 
         
         public bool Enabled
         {

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework> <!-- netstandard2.1 -->
 		    <RootNamespace>InTheHand</RootNamespace>
 		    <AssemblyName>InTheHand.Net.Personal</AssemblyName>
         <AssemblyVersion>3.9.0.0</AssemblyVersion>
@@ -12,6 +12,7 @@
         <DefineConstants>NO_WINFORMS;WinXP;V2</DefineConstants>
         <Configurations>Debug;Release;Debug (Local server);Release - Windows ARM</Configurations>
         <Platforms>AnyCPU</Platforms>
+        <NoWarn>*</NoWarn>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug (Local server)' ">
       <DebugSymbols Condition=" '$(DebugSymbols)' == '' ">true</DebugSymbols>

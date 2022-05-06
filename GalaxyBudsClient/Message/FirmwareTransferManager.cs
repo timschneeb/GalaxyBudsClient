@@ -288,19 +288,19 @@ namespace GalaxyBudsClient.Message
             await BluetoothImpl.Instance.ConnectAsync();
         }
 
-        private void OnSessionTimeoutElapsed(object sender, ElapsedEventArgs e)
+        private void OnSessionTimeoutElapsed(object? sender, ElapsedEventArgs e)
         {
             Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.SessionTimeout, 
                 Loc.Resolve("fw_fail_session_timeout")));
         } 
         
-        private void OnControlTimeoutElapsed(object sender, ElapsedEventArgs e)
+        private void OnControlTimeoutElapsed(object? sender, ElapsedEventArgs e)
         {
             Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.ControlTimeout, 
                 Loc.Resolve("fw_fail_control_timeout")));
         }
         
-        private void OnCopyTimeoutElapsed(object sender, ElapsedEventArgs e)
+        private void OnCopyTimeoutElapsed(object? sender, ElapsedEventArgs e)
         {
             Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.CopyTimeout, 
                 Loc.Resolve("fw_fail_copy_timeout")));

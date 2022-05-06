@@ -323,7 +323,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             _cancelSource = new CancellationTokenSource();
             _loop = Task.Run(BluetoothServiceLoop, _cancelSource.Token);
                 
-            RfcommConnected?.Invoke(this, null);
+            RfcommConnected?.Invoke(this, EventArgs.Empty);
         }
         #endregion     
         

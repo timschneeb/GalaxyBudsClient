@@ -89,7 +89,7 @@ namespace GalaxyBudsClient.Bluetooth.Windows
             }
         }
         
-        private async void DeviceInRange(object sender, BluetoothWin32RadioInRangeEventArgs? e)
+        private async void DeviceInRange(object? sender, BluetoothWin32RadioInRangeEventArgs? e)
         {
             if(e?.Device == null)
             {

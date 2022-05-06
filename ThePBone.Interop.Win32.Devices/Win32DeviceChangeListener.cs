@@ -140,8 +140,14 @@ namespace ThePBone.Interop.Win32.Devices
         private void DoBroadcastHdr(WndProcClient.WindowMessage m)
         {
             //IntPtr pXXX;
-            String text = String.Empty;
-            DEV_BROADCAST_HDR hdr = (DEV_BROADCAST_HDR) Marshal.PtrToStructure(m.lParam, typeof(DEV_BROADCAST_HDR));
+            var text = String.Empty;
+            DEV_BROADCAST_HDR? hdrM = (DEV_BROADCAST_HDR?) Marshal.PtrToStructure(m.lParam, typeof(DEV_BROADCAST_HDR));
+            if (hdrM == null)
+            {
+                return;
+            }
+            
+            DEV_BROADCAST_HDR hdr = (DEV_BROADCAST_HDR)hdrM;
             if (hdr.dbch_devicetype == DbtDevTyp.Port)
             {
                 DoDevTypPort(ref m, ref text, ref hdr);
@@ -154,66 +160,71 @@ namespace ThePBone.Interop.Win32.Devices
 
         private void DoDevTypHandle(ref WndProcClient.WindowMessage m, ref String text)
         {
-            DEV_BROADCAST_HANDLE hdrHandle = (DEV_BROADCAST_HANDLE) Marshal.PtrToStructure(m.lParam, typeof(DEV_BROADCAST_HANDLE));
+            DEV_BROADCAST_HANDLE? hdrHandle = (DEV_BROADCAST_HANDLE?) Marshal.PtrToStructure(m.lParam, typeof(DEV_BROADCAST_HANDLE));
             var pData = PointerUtils.Add(m.lParam, _OffsetOfData);
-            if (BluetoothDeviceNotificationEvent.BthPortDeviceInterface == hdrHandle.dbch_eventguid)
+            if (BluetoothDeviceNotificationEvent.BthPortDeviceInterface == hdrHandle?.dbch_eventguid)
             {
                 text += "GUID_BTHPORT_DEVICE_INTERFACE";
             }
-            else if (BluetoothDeviceNotificationEvent.RadioInRange == hdrHandle.dbch_eventguid)
+            else if (BluetoothDeviceNotificationEvent.RadioInRange == hdrHandle?.dbch_eventguid)
             {
                 text += "GUID_BLUETOOTH_RADIO_IN_RANGE";
-                BTH_RADIO_IN_RANGE inRange
-                    = (BTH_RADIO_IN_RANGE)Marshal.PtrToStructure(pData, typeof(BTH_RADIO_IN_RANGE));
-                text += String.Format(" 0x{0:X12}", inRange.deviceInfo.address);
-                text += String.Format(" is ({0}) 0x{0:X}", inRange.deviceInfo.flags);
-                text += String.Format(" was ({0}) 0x{0:X}", inRange.previousDeviceFlags);
-                var bdi0 = BLUETOOTH_DEVICE_INFO.Create(inRange.deviceInfo);
-                var e = BluetoothWin32RadioInRangeEventArgs.Create(
-                        inRange.previousDeviceFlags,
-                        inRange.deviceInfo.flags, bdi0);
-                DeviceInRange?.Invoke(this, e);
-
+                BTH_RADIO_IN_RANGE? inRange
+                    = (BTH_RADIO_IN_RANGE?)Marshal.PtrToStructure(pData, typeof(BTH_RADIO_IN_RANGE));
+                text += String.Format(" 0x{0:X12}", inRange?.deviceInfo.address);
+                text += String.Format(" is ({0}) 0x{0:X}", inRange?.deviceInfo.flags);
+                text += String.Format(" was ({0}) 0x{0:X}", inRange?.previousDeviceFlags);
+                if (inRange?.deviceInfo != null && inRange?.previousDeviceFlags != null)
+                {
+                    var bdi0 = BLUETOOTH_DEVICE_INFO.Create(inRange.Value.deviceInfo);
+                    var e = BluetoothWin32RadioInRangeEventArgs.Create(
+                        inRange.Value.previousDeviceFlags,
+                        inRange.Value.deviceInfo.flags, bdi0);
+                    DeviceInRange?.Invoke(this, e);
+                }
             }
-            else if (BluetoothDeviceNotificationEvent.RadioOutOfRange == hdrHandle.dbch_eventguid)
+            else if (BluetoothDeviceNotificationEvent.RadioOutOfRange == hdrHandle?.dbch_eventguid)
             {
-                BTH_RADIO_OUT_OF_RANGE outOfRange
-                    = (BTH_RADIO_OUT_OF_RANGE)Marshal.PtrToStructure(pData, typeof(BTH_RADIO_OUT_OF_RANGE));
+                BTH_RADIO_OUT_OF_RANGE? outOfRange
+                    = (BTH_RADIO_OUT_OF_RANGE?)Marshal.PtrToStructure(pData, typeof(BTH_RADIO_OUT_OF_RANGE));
                 text += "GUID_BLUETOOTH_RADIO_OUT_OF_RANGE";
                 text += String.Format(System.Globalization.CultureInfo.InvariantCulture,
-                    " 0x{0:X12}", outOfRange.deviceAddress);
-                var e = BluetoothWin32RadioOutOfRangeEventArgs.Create(
-                        outOfRange.deviceAddress);
+                    " 0x{0:X12}", outOfRange?.deviceAddress);
+                if (outOfRange?.deviceAddress != null)
+                {
+                    var e = BluetoothWin32RadioOutOfRangeEventArgs.Create(
+                        outOfRange.Value.deviceAddress);
 
-                DeviceOutOfRange?.Invoke(this, e);
+                    DeviceOutOfRange?.Invoke(this, e);
+                }
             }
-            else if (BluetoothDeviceNotificationEvent.PinRequest == hdrHandle.dbch_eventguid)
+            else if (BluetoothDeviceNotificationEvent.PinRequest == hdrHandle?.dbch_eventguid)
             {
                 text += "GUID_BLUETOOTH_PIN_REQUEST";
             }
-            else if (BluetoothDeviceNotificationEvent.L2capEvent == hdrHandle.dbch_eventguid)
+            else if (BluetoothDeviceNotificationEvent.L2capEvent == hdrHandle?.dbch_eventguid)
             {
                 text += "GUID_BLUETOOTH_L2CAP_EVENT";
             }
-            else if (BluetoothDeviceNotificationEvent.HciEvent == hdrHandle.dbch_eventguid)
+            else if (BluetoothDeviceNotificationEvent.HciEvent == hdrHandle?.dbch_eventguid)
             {
                 text += "GUID_BLUETOOTH_HCI_EVENT";
             }
-            else if (BluetoothDeviceNotificationEvent.AuthenticationRequestEvent == hdrHandle.dbch_eventguid)
+            else if (BluetoothDeviceNotificationEvent.AuthenticationRequestEvent == hdrHandle?.dbch_eventguid)
             {
                 text += "GUID_BLUETOOTH_AUTHENTICATION_REQUEST";
             }
-            else if (BluetoothDeviceNotificationEvent.KeyPressEvent == hdrHandle.dbch_eventguid)
+            else if (BluetoothDeviceNotificationEvent.KeyPressEvent == hdrHandle?.dbch_eventguid)
             {
                 text += "GUID_BLUETOOTH_KEYPRESS_EVENT";
             }
-            else if (BluetoothDeviceNotificationEvent.HciVendorEvent == hdrHandle.dbch_eventguid)
+            else if (BluetoothDeviceNotificationEvent.HciVendorEvent == hdrHandle?.dbch_eventguid)
             {
                 text += "GUID_BLUETOOTH_HCI_VENDOR_EVENT";
             }
             else
             {
-                text += "Unknown event: " + hdrHandle.dbch_eventguid;
+                text += "Unknown event: " + hdrHandle?.dbch_eventguid;
             }
             
             Log.Verbose("Interop.Win32: Device changed: " + text);
