@@ -69,6 +69,7 @@ namespace GalaxyBudsClient.Platform
         {
             try
             {
+#if Windows
                 if (PlatformUtils.IsWindows && SettingsProvider.Instance.UseBluetoothWinRT
                                             && PlatformUtils.IsWindowsContractsSdkSupported)
                 {
@@ -89,11 +90,14 @@ namespace GalaxyBudsClient.Platform
                 }
 #endif
                 else if (PlatformUtils.IsLinux)
+#else
+                if(PlatformUtils.IsLinux)
+#endif
                 {   
                     Log.Debug("BluetoothImpl: Using Linux.BluetoothService");
                     _backend = new Bluetooth.Linux.BluetoothService();
                 }
-                else
+                else if(_backend == null)
                 {
                     Log.Warning("BluetoothImpl: Using Dummy.BluetoothService");
                     _backend = new Dummy.BluetoothService();
