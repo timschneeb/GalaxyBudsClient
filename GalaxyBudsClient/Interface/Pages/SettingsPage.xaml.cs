@@ -35,11 +35,11 @@ namespace GalaxyBudsClient.Interface.Pages
             _minimizeTray = this.FindControl<SwitchDetailListItem>("MinimizeTrayToggle");
             _autostart = this.FindControl<SwitchDetailListItem>("AutostartToggle");
             
-            this.FindControl<Separator>("AutostartToggleSeparator").IsVisible = PlatformUtils.SupportsTrayIcon;
+            this.FindControl<Separator>("AutostartToggleSeparator").IsVisible = PlatformUtils.SupportsTrayIcon && PlatformUtils.SupportsAutoboot;
             this.FindControl<Separator>("MinimizeTrayToggleSeparator").IsVisible = PlatformUtils.SupportsTrayIcon;
 
             _minimizeTray.IsVisible = PlatformUtils.SupportsTrayIcon;
-            _autostart.IsVisible = PlatformUtils.SupportsTrayIcon;
+            _autostart.IsVisible = PlatformUtils.SupportsTrayIcon && PlatformUtils.SupportsAutoboot;
         }
 
         public override void OnPageShown()

@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using Org.BouncyCastle.Bcpg.Sig;
 using Serilog;
 
 namespace GalaxyBudsClient.Platform
@@ -26,7 +27,8 @@ namespace GalaxyBudsClient.Platform
         public static bool IsLinux => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
         public static bool IsOSX => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
 
-        public static bool SupportsTrayIcon => IsWindows && !IsARMCompileTarget;
+        public static bool SupportsTrayIcon => (IsWindows && !IsARMCompileTarget) || IsLinux;
+        public static bool SupportsAutoboot => IsWindows;
         public static bool SupportsHotkeys => IsWindows;
         
         public static Platforms Platform
