@@ -22,20 +22,5 @@ namespace GalaxyBudsClient.Message.Decoder
                              (((long) msg.Payload[2] & 255) << 16) | (((long) msg.Payload[3] & 127) << 24);
             RequestPacketNumber = msg.Payload[4];
         }
-
-        public override Dictionary<String, String> ToStringMap()
-        {
-            Dictionary<String, String> map = new Dictionary<string, string>();
-            PropertyInfo[] properties = this.GetType().GetProperties();
-            foreach (PropertyInfo property in properties)
-            {
-                if (property.Name == "HandledType" || property.Name == "ActiveModel")
-                    continue;
-
-                map.Add(property.Name, property?.GetValue(this)?.ToString() ?? "null");
-            }
-
-            return map;
-        }
     }
 }

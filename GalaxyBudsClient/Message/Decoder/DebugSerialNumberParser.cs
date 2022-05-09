@@ -23,20 +23,5 @@ namespace GalaxyBudsClient.Message.Decoder
             LeftSerialNumber = System.Text.Encoding.ASCII.GetString(left, 0, 11);
             RightSerialNumber = System.Text.Encoding.ASCII.GetString(right, 0, 11);
         }
-
-        public override Dictionary<String, String> ToStringMap()
-        {
-            Dictionary<String, String> map = new Dictionary<string, string>();
-            PropertyInfo[] properties = this.GetType().GetProperties();
-            foreach (PropertyInfo property in properties)
-            {
-                if (property.Name == "HandledType" || property.Name == "ActiveModel")
-                    continue;
-
-                map.Add(property.Name, property.GetValue(this)?.ToString() ?? "null");
-            }
-
-            return map;
-        }
     }
 }

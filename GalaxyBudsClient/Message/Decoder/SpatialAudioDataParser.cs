@@ -145,7 +145,7 @@ namespace GalaxyBudsClient.Message.Decoder
             PropertyInfo[] properties = this.GetType().GetProperties();
             foreach (PropertyInfo property in properties)
             {
-                if (property.Name == "HandledType" || property.Name == "ActiveModel")
+                if (IsHiddenProperty(property))
                     continue;
 
                 switch (EventId)

@@ -257,36 +257,5 @@ namespace GalaxyBudsClient.Message.Decoder
                        _swRelVer[swRelVerIndex];
             }
         }
-
-        public override Dictionary<String, String> ToStringMap()
-        {
-            Dictionary<String, String> map = new Dictionary<string, string>();
-            PropertyInfo[] properties = GetType().GetProperties();
-            foreach (PropertyInfo property in properties)
-            {
-                if (property.Name == "HandledType" || property.Name == "ActiveModel")
-                    continue;
-
-                var customAttributes = (PostfixAttribute[])property.GetCustomAttributes(typeof(PostfixAttribute), true);
-                var customAttributesB = (DeviceAttribute[])property.GetCustomAttributes(typeof(DeviceAttribute), true);
-
-                String valuePostfix = "";
-                if (customAttributes.Length > 0)
-                {
-                    valuePostfix = customAttributes[0].Text ?? string.Empty;
-                }
-
-                if (customAttributesB.Length <= 0)
-                {
-                    map.Add(property.Name, property.GetValue(this)?.ToString() ?? "null" + valuePostfix);
-                }
-                else if (customAttributesB[0].Models.Contains(ActiveModel))
-                {
-                    map.Add($"{property.Name} ({customAttributesB[0]})", property.GetValue(this) + valuePostfix);
-                }
-            }
-
-            return map;
-        }
     }
 }

@@ -19,19 +19,5 @@ namespace GalaxyBudsClient.Message.Decoder
             LeftMuted = Convert.ToBoolean(msg.Payload[0]);
             RightMuted = Convert.ToBoolean(msg.Payload[1]);
         }
-        public override Dictionary<String, String> ToStringMap()
-        {
-            Dictionary<String, String> map = new Dictionary<string, string>();
-            PropertyInfo[] properties = this.GetType().GetProperties();
-            foreach (PropertyInfo property in properties)
-            {
-                if (property.Name == "HandledType" || property.Name == "ActiveModel")
-                    continue;
-
-                map.Add(property.Name, property.GetValue(this)?.ToString() ?? "null");
-            }
-
-            return map;
-        }
     }
 }

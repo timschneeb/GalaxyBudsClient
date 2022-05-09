@@ -67,29 +67,5 @@ namespace GalaxyBudsClient.Message.Decoder
                 BatteryCase = msg.Payload[6];
             }
         }
-
-        public override Dictionary<String, String> ToStringMap()
-        {
-            Dictionary<String, String> map = new Dictionary<string, string>();
-            PropertyInfo[] properties = GetType().GetProperties();
-            foreach (PropertyInfo property in properties)
-            {
-                if (property.Name == "HandledType" || property.Name == "ActiveModel")
-                    continue;
-
-                var customAttributes = (DeviceAttribute[])property.GetCustomAttributes(typeof(DeviceAttribute), true);
-
-                if (customAttributes.Length <= 0)
-                {
-                    map.Add(property.Name, property?.GetValue(this)?.ToString() ?? "null");
-                }
-                else if (customAttributes[0].Models.Contains(ActiveModel))
-                {
-                    map.Add($"{property?.Name} ({customAttributes[0]})", property?.GetValue(this)?.ToString() ?? "null");
-                }
-            }
-
-            return map;
-        }
     }
 }

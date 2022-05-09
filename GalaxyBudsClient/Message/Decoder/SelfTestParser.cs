@@ -88,21 +88,5 @@ namespace GalaxyBudsClient.Message.Decoder
             AllRightAccelerator = RightAcceleratorX && RightAcceleratorY && RightAcceleratorZ;
             AllChecks = result;
         }
-
-        public override Dictionary<String, String> ToStringMap()
-        {
-            Dictionary<String, String> map = new Dictionary<string, string>();
-            PropertyInfo[] properties = this.GetType().GetProperties();
-            foreach (PropertyInfo property in properties)
-            {
-                if (property.Name == "HandledType" || property.Name == "ActiveModel")
-                    continue;
-
-                map.Add(property.Name, ((bool)(property.GetValue(this) ?? "null")) ?
-                    Loc.Resolve("selftest_pass") : Loc.Resolve("selftest_fail"));
-            }
-
-            return map;
-        }
     }
 }

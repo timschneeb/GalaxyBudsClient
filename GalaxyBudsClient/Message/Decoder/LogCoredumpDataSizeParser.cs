@@ -22,20 +22,5 @@ namespace GalaxyBudsClient.Message.Decoder
             PartialDataMaxSize = BitConverter.ToInt16(msg.Payload, 4);
             FragmentCount = (int)Math.Ceiling((double)DataSize/(double)PartialDataMaxSize);
         }
-
-        public override Dictionary<String, String> ToStringMap()
-        {
-            Dictionary<String, String> map = new Dictionary<string, string>();
-            PropertyInfo[] properties = this.GetType().GetProperties();
-            foreach (PropertyInfo property in properties)
-            {
-                if (property.Name == "HandledType" || property.Name == "ActiveModel")
-                    continue;
-
-                map.Add(property.Name, property?.GetValue(this)?.ToString() ?? "null");
-            }
-
-            return map;
-        }
     }
 }
