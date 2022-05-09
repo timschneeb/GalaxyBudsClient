@@ -264,7 +264,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             }
             else
             {
-                Disconnected?.Invoke(this, "Reported as disconnected by Bluez");
+                Disconnected?.Invoke(this, "Disconnected");
                 Log.Debug("Linux.BluetoothService: Disconnected");
             }
         }
