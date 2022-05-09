@@ -97,6 +97,9 @@ namespace GalaxyBudsClient.Interface.Developer
                     RecvMsgViewHolder holder = new RecvMsgViewHolder(SPPMessage.DecodeMessage(raw));
                     _vm.MsgTableDataSource?.Add(holder);
                     _vm.MsgTableDataView.Refresh();
+                    
+                    _hexDump.CaretIndex = int.MaxValue;
+                    _msgTable.ScrollIntoView(holder, null);
                 }
                 catch(InvalidPacketException){}
             });
