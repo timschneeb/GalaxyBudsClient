@@ -33,7 +33,7 @@ namespace GalaxyBudsClient.Utils
             BluetoothImpl.Instance.Connected += (sender, args) => _ = RebuildAsync();
             
             // TODO Avalonia bug workaround https://github.com/AvaloniaUI/Avalonia/issues/8076
-            _timer.Interval = 2000;
+            _timer.Interval = 1000;
             _timer.AutoReset = true;
             _timer.Elapsed += async (sender, args) => await RebuildAsync();
             _timer.Start();

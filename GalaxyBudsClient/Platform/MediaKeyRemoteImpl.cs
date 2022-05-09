@@ -14,10 +14,12 @@ namespace GalaxyBudsClient.Platform
             {
                 Instance = new Windows.MediaKeyRemote();
             }
+#if Linux
             else if (PlatformUtils.IsLinux)
             {
                 Instance = new Linux.MediaKeyRemote();
             }
+#endif
             else
             {
                 Instance = new Dummy.MediaKeyRemote();

@@ -4,8 +4,6 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
-using Avalonia.Threading;
-using GalaxyBudsClient.Bluetooth.Linux;
 using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;

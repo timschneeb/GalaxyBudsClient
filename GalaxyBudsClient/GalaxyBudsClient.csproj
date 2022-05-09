@@ -1,7 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <OutputType>WinExe</OutputType>
+        <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
+        <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
+        <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsWindows)'=='true'">
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsWindows)'!='true'">
         <TargetFramework>net6.0</TargetFramework>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
         <ApplicationIcon>Resources/icon_white.ico</ApplicationIcon>
         <AssemblyVersion>4.5.1.0</AssemblyVersion>
         <Version>4.5.1.0</Version>
@@ -15,12 +26,11 @@
         
         <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
     </PropertyGroup>
-    
-    <PropertyGroup>
-        <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
-        <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
-        <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+
+    <PropertyGroup Condition="'$(IsWindows)'=='true' And '$(Configuration)' != 'Release - Windows ARM'">
+        <DefineConstants>WindowsNoARM</DefineConstants>
     </PropertyGroup>
+
     <PropertyGroup Condition="'$(IsWindows)'=='true'">
         <DefineConstants>Windows</DefineConstants>
     </PropertyGroup>
@@ -29,10 +39,6 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <DefineConstants>Linux</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(IsWindows)'=='true' And '$(Configuration)' != 'Release - Windows ARM'">
-        <DefineConstants>WindowsNoARM</DefineConstants>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug (Local server)' ">
@@ -64,12 +70,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="0.10.13" />
-        <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.13" />
-        <PackageReference Include="Avalonia.Desktop" Version="0.10.13" />
-        <PackageReference Include="Avalonia.Diagnostics" Version="0.10.13" />
-        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.13" />
-        <PackageReference Include="Avalonia.Svg.Skia" Version="0.10.12" />
+        <PackageReference Include="Avalonia" Version="0.10.14" />
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.14" />
+        <PackageReference Include="Avalonia.Desktop" Version="0.10.14" />
+        <PackageReference Include="Avalonia.Diagnostics" Version="0.10.14" />
+        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.14" />
+        <PackageReference Include="Avalonia.Svg.Skia" Version="0.10.13" />
         <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.13" />
         <PackageReference Include="Config.Net" Version="4.15.0" />
         <PackageReference Include="Config.Net.Json" Version="4.15.0" />
@@ -91,15 +97,17 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsWindows)'=='true'">
-        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.WindowsRT\GalaxyBudsClient.Bluetooth.WindowsRT.csproj" />
+        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.WindowsRT\GalaxyBudsClient.Bluetooth.WindowsRT.csproj"/>
         <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Windows\GalaxyBudsClient.Bluetooth.Windows.csproj" />
-    </ItemGroup>
-    
-    <ItemGroup>
-        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Linux\GalaxyBudsClient.Bluetooth.Linux.csproj" />
-        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj" />
-        <ProjectReference Include="..\ThePBone.MprisClient\ThePBone.MprisClient.csproj" />
         <ProjectReference Include="..\ThePBone.Interop.Win32\ThePBone.Interop.Win32.csproj" />
     </ItemGroup>
+    
+    <ItemGroup Condition="'$(IsLinux)'=='true'">
+        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Linux\GalaxyBudsClient.Bluetooth.Linux.csproj" />
+        <ProjectReference Include="..\ThePBone.MprisClient\ThePBone.MprisClient.csproj" />
+    </ItemGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj" />
+    </ItemGroup>
 </Project>
