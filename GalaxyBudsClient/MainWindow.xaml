@@ -9,7 +9,7 @@
         Height="640" Width="700"
         MaxHeight="640" MaxWidth="700"
         MinHeight="640" MinWidth="700"
-        CanResize="True"
+        CanResize="False"
         WindowStartupLocation="CenterScreen"
         ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaChromeHints="NoChrome"
@@ -23,8 +23,7 @@
     
     <Border CornerRadius="{StaticResource DefaultCornerRadius}"
             BorderBrush="{DynamicResource WindowBorderBrush}"
-            BorderThickness="1"
-            ClipToBounds="True" Padding="1"
+            BorderThickness="1" Padding="1"
             Background="{DynamicResource WindowBackgroundBrush}">
         <DockPanel HorizontalAlignment="Stretch"
                    VerticalAlignment="Stretch"
