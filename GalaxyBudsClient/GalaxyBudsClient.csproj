@@ -12,6 +12,8 @@
         <DisableWinExeOutputInference>false</DisableWinExeOutputInference>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <LangVersion>9</LangVersion>
+        
+        <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
     </PropertyGroup>
     
     <PropertyGroup>
