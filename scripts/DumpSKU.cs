@@ -22,7 +22,7 @@ public class DumpSKU : IMessageHook
 
         if (BluetoothImpl.Instance.IsConnected)
         {
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_SKU);
+            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_SKU);
         }
         else
         {
@@ -38,12 +38,12 @@ public class DumpSKU : IMessageHook
     private async void OnConnected(object? sender, EventArgs e)
     {
         await Task.Delay(100);
-        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.MSG_ID_DEBUG_SKU);
+        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_SKU);
     }
     
     public void OnMessageAvailable(ref SPPMessage msg)
     {
-        if (msg.Id == SPPMessage.MessageIds.MSG_ID_DEBUG_SKU)
+        if (msg.Id == SPPMessage.MessageIds.DEBUG_SKU)
         {
             Log.Information("[Script] DumpSKU: " + HexUtils.Dump(msg.Payload, showAscii: true, showHeader: false, showOffset: false));
             ScriptManager.Instance.UnregisterHook(this);
