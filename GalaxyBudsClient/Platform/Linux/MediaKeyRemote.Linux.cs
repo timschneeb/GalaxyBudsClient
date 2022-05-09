@@ -1,20 +1,23 @@
-﻿using System;
+﻿#if Linux
+
+using System;
 using GalaxyBudsClient.Platform.Interfaces;
 using Serilog;
 using Tmds.DBus;
+using ThePBone.MprisClient;
 
 namespace GalaxyBudsClient.Platform.Linux
 {
     public class MediaKeyRemote : IMediaKeyRemote
     {
-#if Linux
-        private readonly ThePBone.MprisClient? _client;
+
+        private readonly MprisClient? _client;
 
         public MediaKeyRemote()
         {
             try
             {
-                _client = new ThePBone.MprisClient();
+                _client = new MprisClient();
             }
             catch (PlatformNotSupportedException)
             {
@@ -60,23 +63,6 @@ namespace GalaxyBudsClient.Platform.Linux
                 Log.Error($"{ex.ErrorName}: {ex.ErrorMessage}");
             }
         }
-#else
-        public void Play()
-        {
-            _dummy.Play();
-        }
-
-        public void Pause()
-        {
-            _dummy.Pause();
-        }
-
-        public void PlayPause()
-        {
-            _dummy.PlayPause();
-        }
-        
-        private readonly IMediaKeyRemote _dummy = new Dummy.MediaKeyRemote();
-#endif
     }
 }
+#endif
