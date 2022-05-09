@@ -12,26 +12,12 @@ namespace GalaxyBudsClient.Model.Specifications
         
         static DeviceSpecHelper()
         {
-            Assembly? a = Assembly.GetEntryAssembly();
-            
-            if (a?.DefinedTypes != null)
-            {
-                foreach (TypeInfo ti in a.DefinedTypes)
-                {
-                    if (ti.ImplementedInterfaces.Contains(typeof(IDeviceSpec)))
-                    {
-                        var inst = a.CreateInstance(ti.FullName ?? string.Empty) as IDeviceSpec;
-                        if (inst != null)
-                        {
-                            _specs.Add(inst);
-                        }
-                        else
-                        {
-                            Log.Error($"DeviceSpecHelper: unable to instantiate '{ti.FullName}'");
-                        }
-                    }
-                }
-            }
+            _specs.Add(new StubDeviceSpec());
+            _specs.Add(new BudsDeviceSpec());
+            _specs.Add(new BudsPlusDeviceSpec());
+            _specs.Add(new BudsLiveDeviceSpec());
+            _specs.Add(new BudsProDeviceSpec());
+            _specs.Add(new Buds2DeviceSpec());
         }
         
         public static IDeviceSpec? FindByDeviceName(string deviceName)
@@ -44,5 +30,4 @@ namespace GalaxyBudsClient.Model.Specifications
             return _specs.FirstOrDefault(spec => model == spec.Device);
         }
     }
-
 }
