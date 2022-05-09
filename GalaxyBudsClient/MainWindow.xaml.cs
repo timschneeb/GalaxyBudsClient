@@ -84,11 +84,16 @@ namespace GalaxyBudsClient
                     IWindowImpl impl;
                     if (platform.GetType().Name == "Win32Platform")
                     {
+#if Windows
                         Log.Debug("MainWindow.Instance: Initializing window with WndProc proxy");
                         impl = new Win32ProcWindowImpl();
+#else
+                        impl = platform.CreateWindow();
+#endif
                     }
                     else
                     {
+                        
                         Log.Debug("MainWindow.Instance: Initializing window with default WindowImpl");
                         impl = platform.CreateWindow();
                     }

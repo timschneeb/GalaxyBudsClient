@@ -3,6 +3,8 @@ using Avalonia;
 using Avalonia.Platform;
 using Avalonia.Threading;
 using Serilog;
+
+#if Windows
 using ThePBone.Interop.Win32;
 
 namespace GalaxyBudsClient.Platform.Windows
@@ -30,3 +32,4 @@ namespace GalaxyBudsClient.Platform.Windows
         }
     }
 }
+#endif

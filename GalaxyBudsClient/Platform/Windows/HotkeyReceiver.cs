@@ -11,7 +11,6 @@ using GalaxyBudsClient.Platform.Interfaces;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using JetBrains.Annotations;
 using Serilog;
-using ThePBone.Interop.Win32;
 
 namespace GalaxyBudsClient.Platform.Windows
 {
@@ -45,16 +44,16 @@ namespace GalaxyBudsClient.Platform.Windows
                 Log.Error("Windows.HotkeyReceiver: MainWindow not ready. Cannot access WndProc callback.");
                 return;
             }
-            
+#if Windows
             if (MainWindow.Instance.PlatformImpl is Win32ProcWindowImpl impl)
             {
+
                 Log.Debug($"Windows.HotkeyReceiver: WndProc probes attached");
                 impl.MessageReceived += OnMessageReceived;
+                return;
             }
-            else
-            {
-                Log.Error("Windows.HotkeyReceiver: This platform configuration is not supported.");
-            }
+#endif
+            Log.Error("Windows.HotkeyReceiver: This platform configuration is not supported.");
         }
         
         public void Dispose()
@@ -65,19 +64,20 @@ namespace GalaxyBudsClient.Platform.Windows
                 {
                     return;
                 }
-                
+#if Windows                
                 if (MainWindow.Instance.PlatformImpl is Win32ProcWindowImpl impl)
                 {
                     impl.MessageReceived -= OnMessageReceived;
                 }   
-                
+#endif              
                 var _ = UnregisterAllAsync();
             });
         }
 
-        private void OnMessageReceived(object? sender, WndProcClient.WindowMessage msg)
+#if Windows
+        private void OnMessageReceived(object? sender, ThePBone.Interop.Win32.WndProcClient.WindowMessage msg)
         {            
-            if (msg.Msg == WndProcClient.WindowsMessage.WM_HOTKEY)
+            if (msg.Msg == ThePBone.Interop.Win32.WndProcClient.WindowsMessage.WM_HOTKEY)
             {
                 var key = (Keys)(((int)msg.lParam >> 16) & 0xFFFF);
                 var modifier = (ModifierKeys)((int)msg.lParam & 0xFFFF);
@@ -90,9 +90,11 @@ namespace GalaxyBudsClient.Platform.Windows
                     .ForEach(x => EventDispatcher.Instance.Dispatch(x.Action));
             }
         }
+#endif
 
         public async Task RegisterHotkeyAsync(Hotkey hotkey)
         {
+#if Windows
             if (MainWindow.Instance.PlatformImpl is Win32ProcWindowImpl impl)
             {
                 if (impl.Dispatcher == null)
@@ -128,10 +130,12 @@ namespace GalaxyBudsClient.Platform.Windows
                 throw new HotkeyRegisterException(
                     "Your platform configuration is not supported. WndProc provider unavailable.", hotkey);
             }
+#endif
         }
 
         public async Task UnregisterAllAsync()
         {
+#if Windows
             if (MainWindow.Instance.PlatformImpl is Win32ProcWindowImpl impl)
             {
                 // Unregister all the registered hotkeys.
@@ -148,6 +152,7 @@ namespace GalaxyBudsClient.Platform.Windows
             }
             
             await Task.CompletedTask;
+#endif
         }
 
         public async Task ValidateHotkeyAsync(Hotkey hotkey)
