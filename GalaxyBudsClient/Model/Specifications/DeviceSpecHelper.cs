@@ -8,26 +8,26 @@ namespace GalaxyBudsClient.Model.Specifications
 {
     public static class DeviceSpecHelper
     {
-        private static readonly Collection<IDeviceSpec> _specs = new Collection<IDeviceSpec>();
+        private static readonly Collection<IDeviceSpec> Specs = new();
         
         static DeviceSpecHelper()
         {
-            _specs.Add(new StubDeviceSpec());
-            _specs.Add(new BudsDeviceSpec());
-            _specs.Add(new BudsPlusDeviceSpec());
-            _specs.Add(new BudsLiveDeviceSpec());
-            _specs.Add(new BudsProDeviceSpec());
-            _specs.Add(new Buds2DeviceSpec());
+            Specs.Add(new StubDeviceSpec());
+            Specs.Add(new BudsDeviceSpec());
+            Specs.Add(new BudsPlusDeviceSpec());
+            Specs.Add(new BudsLiveDeviceSpec());
+            Specs.Add(new BudsProDeviceSpec());
+            Specs.Add(new Buds2DeviceSpec());
         }
         
         public static IDeviceSpec? FindByDeviceName(string deviceName)
         {
-            return _specs.FirstOrDefault(spec => deviceName.StartsWith(spec.DeviceBaseName));
+            return Specs.FirstOrDefault(spec => deviceName.Contains(spec.DeviceBaseName));
         }
         
         public static IDeviceSpec? FindByModel(Models model)
         {
-            return _specs.FirstOrDefault(spec => model == spec.Device);
+            return Specs.FirstOrDefault(spec => model == spec.Device);
         }
     }
 }
