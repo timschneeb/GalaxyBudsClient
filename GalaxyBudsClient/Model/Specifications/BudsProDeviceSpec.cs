@@ -28,7 +28,7 @@ namespace GalaxyBudsClient.Model.Specifications
             };
         
         public Models Device => Models.BudsPro;
-        public string DeviceBaseName => "Galaxy Buds Pro (";
+        public string DeviceBaseName => "Buds Pro";
         public ITouchOption TouchMap => new BudsProTouchOption();
         public Guid ServiceUuid => Uuids.BudsPro;
 

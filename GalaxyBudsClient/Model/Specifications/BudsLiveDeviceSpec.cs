@@ -23,7 +23,7 @@ namespace GalaxyBudsClient.Model.Specifications
             };
         
         public Models Device => Models.BudsLive;
-        public string DeviceBaseName => "Galaxy Buds Live (";
+        public string DeviceBaseName => "Buds Live";
         public ITouchOption TouchMap => new BudsLiveTouchOption();
         public Guid ServiceUuid => Uuids.BudsLive;
 
