@@ -56,11 +56,11 @@ namespace GalaxyBudsClient.Platform
         {
             get
             {
-#if WindowsNoARM
+//#if WindowsNoARM
                 return false;
-#else
-                return true;
-#endif
+//#else
+//                return true;
+//#endif
             }
         }
 
