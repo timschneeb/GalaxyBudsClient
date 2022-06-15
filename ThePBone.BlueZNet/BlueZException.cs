@@ -14,6 +14,7 @@ namespace ThePBone.BlueZNet
             ConnectFailed,
             DoesNotExist,
             Failed,
+            NotPermitted,
             
             NoAdaptersAvailable,
             Unknown
@@ -36,6 +37,9 @@ namespace ThePBone.BlueZNet
                     break;
                 case "org.bluez.Error.AlreadyConnected":
                     ErrorCode = ErrorCodes.AlreadyConnected;
+                    break;
+                case "org.bluez.Error.NotPermitted":
+                    ErrorCode = ErrorCodes.NotPermitted;
                     break;
                 case "org.bluez.Error.AlreadyExists":
                     ErrorCode = ErrorCodes.AlreadyExists;

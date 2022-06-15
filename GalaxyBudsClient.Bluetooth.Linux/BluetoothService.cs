@@ -177,7 +177,16 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 switch (ex.ErrorCode)
                 {
                     case BlueZException.ErrorCodes.AlreadyExists:
-                        Log.Warning("Linux.BluetoothService: Already registered. This may be fatal when multiple instances are active.");
+                        Log.Warning("Linux.BluetoothService:  UUID already registered. This may be fatal when multiple instances are active.");
+                        break;
+                    case BlueZException.ErrorCodes.NotPermitted:
+                        if(ex.ErrorMessage.Contains("UUID already registered"))
+                        {
+                            Log.Warning("Linux.BluetoothService: UUID already registered. This may be fatal when multiple instances are active.");
+                            break;
+                        }
+                        
+                        Log.Warning($"Linux.BluetoothService: Not permitted. Cannot register profile: {ex.ErrorMessage}");
                         break;
                     case BlueZException.ErrorCodes.InvalidArguments:
                         Log.Error($"Linux.BluetoothService: Invalid arguments. Cannot register profile: {ex.ErrorMessage}");
@@ -212,7 +221,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                                 throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, $"Failed to connect to profile: '{ex.ErrorMessage}'");
                             }
                             
-                            await Task.Delay(250);
+                            await Task.Delay(500);
                             break;
                         case BlueZException.ErrorCodes.InProgress:
                             Log.Debug("Linux.BluetoothService: Already connecting.");
@@ -222,7 +231,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                                 throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, $"Already connecting to profile. Please wait and try again later: '{ex.ErrorMessage}'");
                             }
                             
-                            await Task.Delay(250);
+                            await Task.Delay(500);
                             break;
                         case BlueZException.ErrorCodes.AlreadyConnected:
                             Log.Debug("Linux.BluetoothService: Success. Already connected.");
@@ -299,7 +308,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                             throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, $"Already connecting, please wait and try again: '{ex.ErrorMessage}'");
                         }
                         
-                        await Task.Delay(250);
+                        await Task.Delay(500);
                         return false;
                         
                     case BlueZException.ErrorCodes.AlreadyConnected:
@@ -487,6 +496,13 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 {
                     Log.Error(
                         $"Linux.BluetoothService: BluetoothServiceLoop: UnixException thrown while handling unsafe stream: {ex.Message}. Cancelled.");
+
+                    if (ex.Errno == 104) // Connection reset by peer
+                    {
+                        Disconnected?.Invoke(this, "Connection reset by peer");
+                        return;
+                    }
+                    
                     BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.Unknown, ex.Message));
                     return;
                 }
