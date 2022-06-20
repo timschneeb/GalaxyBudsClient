@@ -30,6 +30,7 @@ namespace GalaxyBudsClient.Model
                 (6, "ko-KR"),
                 (7, "pt-BR"),
                 (8, "zh-CN"),
+                (9, "hu-HU"),
             };
         }
         
@@ -73,6 +74,8 @@ namespace GalaxyBudsClient.Model
             il,
             [Description("French")]
             fr,
+            [Description("Magyar")]
+            hu,
 
             [Description("custom_language.xaml")]
             custom
