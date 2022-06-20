@@ -52,7 +52,7 @@ namespace GalaxyBudsClient
 
         private readonly CustomTitleBar _titleBar;
         private BudsPopup _popup;
-        private DateTime _lastPopupTime = DateTime.UtcNow;
+        private bool _popupShown = false;
         private WearStates _lastWearState = WearStates.Both;
         
         private bool _firstShow = true;
@@ -391,6 +391,7 @@ namespace GalaxyBudsClient
 
         private void OnConnected(object? sender, EventArgs e)
         {
+            _popupShown = false;
             Pager.SwitchPage(AbstractPage.Pages.Home);
         }
 
@@ -409,6 +410,7 @@ namespace GalaxyBudsClient
                     Pager.SwitchPage(BluetoothImpl.Instance.RegisteredDeviceValid
                         ? AbstractPage.Pages.NoConnection
                         : AbstractPage.Pages.Welcome);
+                    _popupShown = false;
                     break;
             }
         }
@@ -418,6 +420,7 @@ namespace GalaxyBudsClient
             Pager.SwitchPage(BluetoothImpl.Instance.RegisteredDeviceValid
                 ? AbstractPage.Pages.NoConnection
                 : AbstractPage.Pages.Welcome);
+            _popupShown = false;
         }
 
         private void HandleOtherTouchOption(object? sender, TouchOptions e)
@@ -564,8 +567,8 @@ namespace GalaxyBudsClient
 
         public void ShowPopup(bool ignoreRestrictions = false)
         {
-            DateTime now = DateTime.UtcNow;
-            if ((now.Subtract(_lastPopupTime).TotalSeconds >= 5 && !IsActive) || ignoreRestrictions)
+            Log.Debug($"MainWindow.ShowPopup: {(_popupShown ? "Popup already shown" : "Popup not yet shown")}; Ignore conditional check: {ignoreRestrictions}");
+            if (!_popupShown || ignoreRestrictions)
             {
                 if (_popup.IsVisible)
                 {
@@ -583,9 +586,17 @@ namespace GalaxyBudsClient
                     _popup = new BudsPopup();
                     _popup.Show();
                 }
-                _lastPopupTime = now;
-            }
 
+
+                if (!BluetoothImpl.Instance.IsConnected)
+                {
+                    Log.Warning("MainWindow.ShowPopup: Not connected");
+                }
+                else
+                {
+                    _popupShown = true;
+                }
+            }
         }
     }
 }
