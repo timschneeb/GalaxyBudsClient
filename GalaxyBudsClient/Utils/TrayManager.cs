@@ -17,7 +17,7 @@ namespace GalaxyBudsClient.Utils
 {
     class TrayManager
     {
-        private Timer _timer = new();
+        private readonly Timer _timer = new();
         public TrayManager()
         {
             (Application.Current as App)!.TrayMenu.NeedsUpdate += async (sender, args) =>

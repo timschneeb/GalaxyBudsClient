@@ -70,13 +70,13 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="0.10.14" />
-        <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.14" />
-        <PackageReference Include="Avalonia.Desktop" Version="0.10.14" />
-        <PackageReference Include="Avalonia.Diagnostics" Version="0.10.14" />
-        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.14" />
-        <PackageReference Include="Avalonia.Svg.Skia" Version="0.10.13" />
-        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.13" />
+        <PackageReference Include="Avalonia" Version="0.10.17" />
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.17" />
+        <PackageReference Include="Avalonia.Desktop" Version="0.10.17" />
+        <PackageReference Include="Avalonia.Diagnostics" Version="0.10.17" />
+        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.17" />
+        <PackageReference Include="Avalonia.Svg.Skia" Version="0.10.16" />
+        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.17" />
         <PackageReference Include="Config.Net" Version="4.15.0" />
         <PackageReference Include="Config.Net.Json" Version="4.15.0" />
         <PackageReference Include="CS-Script.Core" Version="1.4.2-preview" />
