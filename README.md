@@ -74,7 +74,18 @@ An [AUR package](https://aur.archlinux.org/packages/galaxybudsclient-bin/) for A
 ```
 yay -S galaxybudsclient-bin
 ```
+### Ubuntu installation
 
+Download the latest release package then do the following 
+```
+chmod +x GalaxyBudsClient_Linux_64bit_Portable.bin
+mv GalaxyBudsClient_Linux_64bit_Portable.bin GalaxyBudsClient
+sudo mv GalaxyBudsClient /usr/bin/
+
+For desktop entry or icon in menu (requires root access)
+move galaxy.png to /usr/share/icons/ 
+move the GalaxyBudsClient.desktop to /usr/share/applications/ 
+```
 
 ## How it works
 

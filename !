@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Icon=/home/"username"/.config/galaxy.png
+Name="Galaxy Buds Client"
+Exec=/usr/bin/galaxybudsclient
+Categories=Utility;

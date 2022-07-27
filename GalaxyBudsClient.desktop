@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Icon=/usr/share/icons/galaxy.png
+Name="Galaxy Buds"
+Exec=/usr/bin/galaxybudsclient
+Categories=Utility;
