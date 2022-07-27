@@ -159,7 +159,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@grigorem](https://github.com/grigorem) - Romanian translation
 * [@tretre91](https://github.com/tretre91) - French translation
 * [@Sigarya](https://github.com/Sigarya) - Hebrew translation
-
+```
 ## License
 
 This project is licensed under [GPLv3](https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE). It is not affiliated with Samsung nor supervised by them in any way.
