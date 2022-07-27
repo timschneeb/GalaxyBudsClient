@@ -2,6 +2,6 @@
 Type=Application
 Terminal=false
 Icon=/usr/share/icons/galaxy.png
-Name="Galaxy Buds"
-Exec=/usr/bin/galaxybudsclient
+Name=GalaxyBuds
+Exec=/usr/bin/GalaxyBudsClient
 Categories=Utility;
