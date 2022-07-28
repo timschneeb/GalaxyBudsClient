@@ -249,8 +249,8 @@
 
     <sys:String x:Key="touchpad_gestures">高级触摸锁定</sys:String>
     <sys:String x:Key="touchpad_gestures_description">启用/禁用默认触摸手势</sys:String>
-    <sys:String x:Key="touchpad_double_tap_volume">双击耳机</sys:String>
-    <sys:String x:Key="touchpad_double_tap_volume_description">双击以提高音量</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume">双击耳机边缘</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">双击左侧耳机边缘以降低音量，双击右侧耳机边缘以提高音量</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">切换降噪模式</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_amb">主动降噪 &lt;-&gt; 环境音</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_off">主动降噪 &lt;-&gt; 关闭</sys:String>
