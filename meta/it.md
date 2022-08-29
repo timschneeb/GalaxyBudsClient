@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>64%</td><td>153 missing string(s)</td></tr>
+<tr><td>63%</td><td>158 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -28,6 +28,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>updater_dl_progress</code></td><td>Downloading... {0}%</td></tr>
 <tr><td><code>updater_dl_progress_size</code></td><td>({0}/{1} megabytes)</td></tr>
 <tr><td><code>updater_dl_note</code></td><td>When the download finishes, this app will automatically close itself and launch a separate update installer. It may take a few seconds until it shows up.</td></tr>
+<tr><td><code>devsel_manual_pair</code></td><td>Manual connection</td></tr>
 <tr><td><code>devsel_winrt_title</code></td><td>Use alternative Bluetooth backend</td></tr>
 <tr><td><code>devsel_winrt</code></td><td>Much better stability, but may not work on all PCs with some Bluetooth adapters</td></tr>
 <tr><td><code>touchpad_gesture_header</code></td><td>Enable touchpad gestures</td></tr>
@@ -189,6 +190,10 @@ Details:</td></tr>
 <tr><td><code>budsapp_text_p3</code></td><td>
         Keep in mind that only one application can talk to your Galaxy Buds at a time.
     </td></tr>
+<tr><td><code>manualpair_title</code></td><td>Manual device selection</td></tr>
+<tr><td><code>manualpair_title_dialog</code></td><td>Choose your Galaxy Buds device</td></tr>
+<tr><td><code>manualpair_model</code></td><td>Choose the correct model type</td></tr>
+<tr><td><code>manualpair_note</code></td><td>Note: You should only manually connect your earbuds if the setup wizard does not recognize them correctly.</td></tr>
 
 </table>
 

@@ -4,13 +4,14 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>76%</td><td>101 missing string(s)</td></tr>
+<tr><td>75%</td><td>106 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
 
 <table>
 <tr><th>Key</th><th>Original string</th></tr>
+<tr><td><code>devsel_manual_pair</code></td><td>Manual connection</td></tr>
 <tr><td><code>touchpad_gesture_header</code></td><td>Enable touchpad gestures</td></tr>
 <tr><td><code>touchpad_gesture_single</code></td><td>Single tap</td></tr>
 <tr><td><code>touchpad_gesture_single_desc</code></td><td>Play or pause track</td></tr>
@@ -131,6 +132,10 @@ Details:</td></tr>
 <tr><td><code>budsapp_text_p3</code></td><td>
         Keep in mind that only one application can talk to your Galaxy Buds at a time.
     </td></tr>
+<tr><td><code>manualpair_title</code></td><td>Manual device selection</td></tr>
+<tr><td><code>manualpair_title_dialog</code></td><td>Choose your Galaxy Buds device</td></tr>
+<tr><td><code>manualpair_model</code></td><td>Choose the correct model type</td></tr>
+<tr><td><code>manualpair_note</code></td><td>Note: You should only manually connect your earbuds if the setup wizard does not recognize them correctly.</td></tr>
 
 </table>
 

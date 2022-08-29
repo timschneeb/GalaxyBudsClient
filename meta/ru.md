@@ -4,13 +4,14 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>97%</td><td>11 missing string(s)</td></tr>
+<tr><td>96%</td><td>16 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
 
 <table>
 <tr><th>Key</th><th>Original string</th></tr>
+<tr><td><code>devsel_manual_pair</code></td><td>Manual connection</td></tr>
 <tr><td><code>touchpad_gestures</code></td><td>Advanced touch lock</td></tr>
 <tr><td><code>touchpad_gestures_description</code></td><td>Enable or disable default touch gestures</td></tr>
 <tr><td><code>settings_crowdsourcing</code></td><td>Crowdsourcing</td></tr>
@@ -24,6 +25,10 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>budsapp_text_p2</code></td><td>
         If it is open and connected, GalaxyBudsClient might have issues connecting to your earbuds. Make sure to close it before continuing. Likewise, the official Galaxy Buds app can't connect to your earbuds while Galaxy Buds Manager is active and has opened connections to the earbuds.
     </td></tr>
+<tr><td><code>manualpair_title</code></td><td>Manual device selection</td></tr>
+<tr><td><code>manualpair_title_dialog</code></td><td>Choose your Galaxy Buds device</td></tr>
+<tr><td><code>manualpair_model</code></td><td>Choose the correct model type</td></tr>
+<tr><td><code>manualpair_note</code></td><td>Note: You should only manually connect your earbuds if the setup wizard does not recognize them correctly.</td></tr>
 
 </table>
 

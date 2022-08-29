@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>48%</td><td>221 missing string(s)</td></tr>
+<tr><td>47%</td><td>226 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -78,6 +78,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>updater_dl_progress_size</code></td><td>({0}/{1} megabytes)</td></tr>
 <tr><td><code>updater_dl_note</code></td><td>When the download finishes, this app will automatically close itself and launch a separate update installer. It may take a few seconds until it shows up.</td></tr>
 <tr><td><code>devsel_refresh</code></td><td>Refresh paired devices</td></tr>
+<tr><td><code>devsel_manual_pair</code></td><td>Manual connection</td></tr>
 <tr><td><code>devsel_nodevices</code></td><td>Please connect and pair your Buds first</td></tr>
 <tr><td><code>devsel_nodevices_title</code></td><td>No paired devices found</td></tr>
 <tr><td><code>devsel_dialog_footer</code></td><td>If you don't see your earbuds, make sure you've paired and connected them in your computer's Bluetooth settings, and then click Refresh.</td></tr>
@@ -257,6 +258,10 @@ Details:</td></tr>
 <tr><td><code>budsapp_text_p3</code></td><td>
         Keep in mind that only one application can talk to your Galaxy Buds at a time.
     </td></tr>
+<tr><td><code>manualpair_title</code></td><td>Manual device selection</td></tr>
+<tr><td><code>manualpair_title_dialog</code></td><td>Choose your Galaxy Buds device</td></tr>
+<tr><td><code>manualpair_model</code></td><td>Choose the correct model type</td></tr>
+<tr><td><code>manualpair_note</code></td><td>Note: You should only manually connect your earbuds if the setup wizard does not recognize them correctly.</td></tr>
 
 </table>
 
