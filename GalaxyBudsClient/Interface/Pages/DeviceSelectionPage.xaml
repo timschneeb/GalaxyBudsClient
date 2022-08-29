@@ -93,8 +93,8 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Classes="BorderHoverStyle" PointerPressed="BackButton_OnPointerPressed">
-                    <Label Content="{DynamicResource back}"
+                <Border Grid.Column="0" Classes="BorderHoverStyle" PointerPressed="ManualPair_OnPointerPressed">
+                    <Label Content="{DynamicResource devsel_manual_pair}"
                            Height="50" FontSize="18"
                            Foreground="{DynamicResource ForegroundTextBrush}"
                            Margin="20,0,20,0"

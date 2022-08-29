@@ -23,7 +23,7 @@ namespace GalaxyBudsClient.Bluetooth
 
         public override string ToString()
         {
-            return $"BluetoothDevice[Name={Name},Address={Address},IsConnected={IsConnected},IsPaired='{IsPaired}',CoD='{Class}']";
+            return $"{Name} ({Address})"; //$"BluetoothDevice[Name={Name},Address={Address},IsConnected={IsConnected},IsPaired='{IsPaired}',CoD='{Class}']";
         }
 
         public virtual string Name { get; }

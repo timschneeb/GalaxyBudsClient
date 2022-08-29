@@ -90,6 +90,26 @@ namespace GalaxyBudsClient.Interface.Pages
         {
             RefreshList(true);
         }
+        
+        private async void ManualPair_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+        {
+            var dialog = new ManualPairDialog();
+            var accepted = await dialog.ShowDialog<bool>(MainWindow.Instance);
+            if (accepted)
+            {
+                if (dialog.SelectedModel == Models.NULL || dialog.SelectedDeviceMac == null)
+                {
+                    await new MessageBox()
+                    {
+                        Title = Loc.Resolve("error"),
+                        Description = Loc.Resolve("devsel_invalid_selection")
+                    }.ShowDialog(MainWindow.Instance);
+                    return;
+                }
+                
+                RegisterDevice(dialog.SelectedModel, dialog.SelectedDeviceMac);
+            }
+        }
 
         private void Next_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
@@ -119,12 +139,17 @@ namespace GalaxyBudsClient.Interface.Pages
                 return;
             }
 
-            SettingsProvider.Instance.RegisteredDevice.Model = spec.Device;
-            SettingsProvider.Instance.RegisteredDevice.MacAddress = selection.Address;
+            RegisterDevice(spec.Device, selection.Address);
+        }
+
+        private async void RegisterDevice(Models model, string mac)
+        {
+            SettingsProvider.Instance.RegisteredDevice.Model = model;
+            SettingsProvider.Instance.RegisteredDevice.MacAddress = mac;
 
             MainWindow.Instance.Pager.SwitchPage(Pages.Home);
 
-            Task.Factory.StartNew(async () =>
+            await Task.Factory.StartNew(async () =>
             {
                 MainWindow.Instance.HomePage.ResetCache();
                 

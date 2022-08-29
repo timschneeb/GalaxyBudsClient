@@ -426,6 +426,64 @@ namespace GalaxyBudsClient.Message.Decoder
                         SideToneEnabled = msg.Payload[33] == 1;
                     }
                 }
+                else if (ActiveModel == Models.Buds2Pro)
+                {
+                    AdjustSoundSync = msg.Payload[8] == 1;
+                    EqualizerMode = msg.Payload[9];
+
+                    TouchHoldOn = (msg.Payload[10] & (1 << 0)) == 1;
+                    TripleTapOn = (msg.Payload[10] & (1 << 1)) == 2;
+                    DoubleTapOn = (msg.Payload[10] & (1 << 2)) == 4;
+                    SingleTapOn = (msg.Payload[10] & (1 << 3)) == 8;
+                    TouchpadLock = (msg.Payload[10] & (1 << 7)) == 128;
+
+                    TouchpadOptionL = DeviceSpec.TouchMap.FromByte((byte)((msg.Payload[11] & 240) >> 4));
+                    TouchpadOptionR = DeviceSpec.TouchMap.FromByte((byte)(msg.Payload[11] & 15));
+
+                    NoiseControlMode = (NoiseControlMode)msg.Payload[12];
+                    VoiceWakeUp = msg.Payload[13] == 1;
+
+                    short leftColor = BitConverter.ToInt16(msg.Payload, 14);
+                    short rightColor = BitConverter.ToInt16(msg.Payload, 16);
+                    DeviceColor = (Color)(leftColor != rightColor ? 0 : leftColor);
+
+                    VoiceWakeUpLang = msg.Payload[18];
+                    SeamlessConnectionEnabled = msg.Payload[19] == 0;
+                    FmmRevision = msg.Payload[20];
+
+                    NoiseControlTouchOff = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 0) == 1;
+                    NoiseControlTouchAmbient = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 1) == 2;
+                    NoiseControlTouchAnc = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 2) == 4;
+
+                    NoiseControlTouchLeftOff = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 4) == 16;
+                    NoiseControlTouchLeftAmbient = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 5) == 32;
+                    NoiseControlTouchLeftAnc = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 6) == 64;
+  
+                    SpeakSeamlessly = msg.Payload[22] == 1;
+                    AmbientSoundVolume = msg.Payload[23];
+                    NoiseReductionLevel = msg.Payload[24];
+                    HearingEnhancements = msg.Payload[25];
+                    
+                    DetectConversations = msg.Payload[26] == 1;
+                    DetectConversationsDuration = msg.Payload[27];
+                    if (DetectConversationsDuration > 2)
+                    {
+                        DetectConversationsDuration = 1;
+                    }
+                    
+                    AncWithOneEarbud = msg.Payload[28] == 1;
+                    NoiseControlsWithOneEarbud = msg.Payload[28] == 1;
+                    
+                    AmbientCustomVolumeOn = msg.Payload[29] == 1;
+                    AmbientCustomVolumeLeft = ByteArrayUtils.ValueOfLeft(msg.Payload[30]);
+                    AmbientCustomVolumeRight = ByteArrayUtils.ValueOfRight(msg.Payload[30]);
+                    AmbientCustomSoundTone = msg.Payload[31];
+                    OutsideDoubleTap = msg.Payload[32] == 1;
+  
+                    SideToneEnabled = msg.Payload[33] == 1;
+                    
+                    SpatialAudio = msg.Payload[34] == 1;
+                }
             }
         }
     }

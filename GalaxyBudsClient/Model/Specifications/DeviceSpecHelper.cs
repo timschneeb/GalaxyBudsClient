@@ -18,6 +18,7 @@ namespace GalaxyBudsClient.Model.Specifications
             Specs.Add(new BudsLiveDeviceSpec());
             Specs.Add(new BudsProDeviceSpec());
             Specs.Add(new Buds2DeviceSpec());
+            Specs.Add(new Buds2ProDeviceSpec());
         }
         
         public static IDeviceSpec? FindByDeviceName(string deviceName)

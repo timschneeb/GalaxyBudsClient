@@ -6,30 +6,31 @@ using GalaxyBudsClient.Model.Touchpad;
 
 namespace GalaxyBudsClient.Model.Specifications
 {
-    public class Buds2DeviceSpec : IDeviceSpec
+    public class Buds2ProDeviceSpec : IDeviceSpec
     {
         public Dictionary<IDeviceSpec.Feature, FeatureRule?> Rules =>
             new Dictionary<IDeviceSpec.Feature, FeatureRule?>()
             {
                 { IDeviceSpec.Feature.SeamlessConnection, null },
-                { IDeviceSpec.Feature.StereoPan, null},
+                { IDeviceSpec.Feature.StereoPan, null },
+                { IDeviceSpec.Feature.DoubleTapVolume, null },
                 { IDeviceSpec.Feature.FirmwareUpdates, null },
+                { IDeviceSpec.Feature.DetectConversations, null },
                 { IDeviceSpec.Feature.NoiseControl, null },
                 { IDeviceSpec.Feature.GamingMode, null },
                 { IDeviceSpec.Feature.CaseBattery, null },
                 { IDeviceSpec.Feature.FragmentedMessages, null },
+                { IDeviceSpec.Feature.SpatialSensor, null },
                 { IDeviceSpec.Feature.BixbyWakeup, null },
-                { IDeviceSpec.Feature.DoubleTapVolume, new FeatureRule(5, "R177XXU0AUI2") },
-                { IDeviceSpec.Feature.AdvancedTouchLock, new FeatureRule(4, "R177XXU0AUH1") },
-                { IDeviceSpec.Feature.AncWithOneEarbud, new FeatureRule(5, "R177XXU0AUH1") },
-                { IDeviceSpec.Feature.AmbientCustomize, new FeatureRule(5, "R177XXU0AUH1") },
-                { IDeviceSpec.Feature.AmbientSidetone, new FeatureRule(6, "R177XXU0AUI2")  },
+                { IDeviceSpec.Feature.AncNoiseReductionLevels, null },
+                { IDeviceSpec.Feature.AmbientSidetone, null  },
+                { IDeviceSpec.Feature.AmbientCustomize, null},
             };
         
-        public Models Device => Models.Buds2;
+        public Models Device => Models.Buds2Pro;
         public string DeviceBaseName => "Buds2 Pro";
-        public ITouchOption TouchMap => new Buds2TouchOption();
-        public Guid ServiceUuid => Uuids.Buds2;
+        public ITouchOption TouchMap => new BudsPro2TouchOption();
+        public Guid ServiceUuid => Uuids.Buds2Pro;
 
         public IReadOnlyCollection<ItemType> TrayShortcuts => Array.AsReadOnly(
             new[] {

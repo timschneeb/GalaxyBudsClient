@@ -70,11 +70,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="0.10.17" />
-        <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.17" />
-        <PackageReference Include="Avalonia.Desktop" Version="0.10.17" />
-        <PackageReference Include="Avalonia.Diagnostics" Version="0.10.17" />
-        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.17" />
+        <PackageReference Include="Avalonia" Version="0.10.18" />
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.18" />
+        <PackageReference Include="Avalonia.Desktop" Version="0.10.18" />
+        <PackageReference Include="Avalonia.Diagnostics" Version="0.10.18" />
+        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.18" />
         <PackageReference Include="Avalonia.Svg.Skia" Version="0.10.16" />
         <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.17" />
         <PackageReference Include="Config.Net" Version="4.15.0" />
@@ -97,7 +97,7 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsWindows)'=='true'">
-        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.WindowsRT\GalaxyBudsClient.Bluetooth.WindowsRT.csproj"/>
+        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.WindowsRT\GalaxyBudsClient.Bluetooth.WindowsRT.csproj" />
         <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Windows\GalaxyBudsClient.Bluetooth.Windows.csproj" />
         <ProjectReference Include="..\ThePBone.Interop.Win32\ThePBone.Interop.Win32.csproj" />
     </ItemGroup>

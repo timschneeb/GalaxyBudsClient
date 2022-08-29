@@ -209,6 +209,7 @@
     <sys:String x:Key="devsel_device_name">Device Name</sys:String>
     <sys:String x:Key="devsel_btaddr">MAC-Address</sys:String>
     <sys:String x:Key="devsel_model">Model</sys:String>
+    <sys:String x:Key="devsel_manual_pair">Manual connection</sys:String>
     <sys:String x:Key="devsel_nodevices">Please connect and pair your Buds first</sys:String>
     <sys:String x:Key="devsel_nodevices_title">No paired devices found</sys:String>
     <sys:String x:Key="devsel_noselection">No device selected</sys:String>
@@ -563,5 +564,10 @@
     <sys:String x:Key="budsapp_text_p3">
         Keep in mind that only one application can talk to your Galaxy Buds at a time.
     </sys:String>
-
+    
+    <!-- Manual pairing -->
+    <sys:String x:Key="manualpair_title">Manual device selection</sys:String>
+    <sys:String x:Key="manualpair_title_dialog">Choose your Galaxy Buds device</sys:String>
+    <sys:String x:Key="manualpair_model">Choose the correct model type</sys:String>
+    <sys:String x:Key="manualpair_note">Note: You should only manually connect your earbuds if the setup wizard does not recognize them correctly.</sys:String>
 </ResourceDictionary>
