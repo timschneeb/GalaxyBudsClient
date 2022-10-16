@@ -148,6 +148,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@grigorem](https://github.com/grigorem) - Romanian translation
 * [@tretre91](https://github.com/tretre91) - French translation
 * [@Sigarya](https://github.com/Sigarya) - Hebrew translation
+* [@domroaft](https://github.com/domroaft) - Hungarian translation
 
 ## License
 

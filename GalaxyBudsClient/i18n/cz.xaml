@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
- 
+
     <sys:String x:Key="ResourceDictionaryName">Loc-en</sys:String>
 
     <!-- :::::::: Source code :::::::: -->
@@ -90,6 +90,7 @@
     <sys:String x:Key="tray_switch_noise">Přepnout ovládání šumu</sys:String>
     <sys:String x:Key="tray_quit">Zavřít</sys:String>
 
+
     <!-- :::::::: XAML files (static) :::::::: -->
 
     <!-- General -->
@@ -113,7 +114,7 @@
     <sys:String x:Key="hotkey_edit_action">Akce</sys:String>
     <sys:String x:Key="hotkey_edit_preview">Přehled zkratek: </sys:String>
     <sys:String x:Key="hotkey_edit_header">Zvolte klávesovou zkratku</sys:String>
-    
+
     <!-- Hotkey page -->
     <sys:String x:Key="hotkey_header">Klávesové zkratky</sys:String>
     <sys:String x:Key="hotkey_add">Přidat novou zkratku</sys:String>
@@ -198,6 +199,7 @@
     <sys:String x:Key="devsel_device_name">Název zařízení</sys:String>
     <sys:String x:Key="devsel_btaddr">Adresa MAC</sys:String>
     <sys:String x:Key="devsel_model">Model</sys:String>
+    <sys:String x:Key="devsel_manual_pair">Ruční připojení</sys:String>
     <sys:String x:Key="devsel_nodevices">Prosím, nejprve připojte a spárujte vaše sluchátka.</sys:String>
     <sys:String x:Key="devsel_nodevices_title">Nenalezeno žádné spárované zařízení</sys:String>
     <sys:String x:Key="devsel_noselection">Nebylo vybráno žádné zařízení</sys:String>
@@ -219,6 +221,17 @@
     <sys:String x:Key="unsupported_feature_description_p2">Prosím aktualizujte svůj firmware pomocí oficiální aplikace pro Android nebo Windows.</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">Pokud používáte aktualizační nástroj pro Windows, ukončete tuto aplikaci. S Galaxy Buds může komunikovat vždy pouze jedna aplikace zároveň.</sys:String>
 
+    <!-- Touchpad gestures -->
+    <sys:String x:Key="touchpad_gesture_header">Povolit ovládání dotykem</sys:String>
+    <sys:String x:Key="touchpad_gesture_single">Jednoduchý dotyk</sys:String>
+    <sys:String x:Key="touchpad_gesture_single_desc">Spustit nebo zastavit skladbu</sys:String>
+    <sys:String x:Key="touchpad_gesture_double">Dvojitý dotyl</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_desc">Přehrát další skladbu</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple">Trojitý dotyl</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple_desc">Přehrát předchozí skladbu</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold">Dotknout se a podržet</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_desc">Spustit vlastní akci</sys:String>
+
     <!-- Touchpad page -->
     <sys:String x:Key="touchpad_header">Dotykové ovládání</sys:String>
     <sys:String x:Key="touchpad_lock">Zamknout dotykové ovládání</sys:String>
@@ -234,17 +247,6 @@
     <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; Vypnuto</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambientní režim &lt;-&gt; Vypnuto</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Cyklování mezi režimy (Potlačení okolního hluku, Ambientní režim, Vypnuto)</sys:String>
-
-<!-- Touchpad gestures -->
-    <sys:String x:Key="touchpad_gesture_header">Povolit ovládání dotykem</sys:String>
-    <sys:String x:Key="touchpad_gesture_single">Jednoduchý dotyk</sys:String>
-    <sys:String x:Key="touchpad_gesture_single_desc">Spustit nebo zastavit skladbu</sys:String>
-    <sys:String x:Key="touchpad_gesture_double">Dvojitý dotyl</sys:String>
-    <sys:String x:Key="touchpad_gesture_double_desc">Přehrát další skladbu</sys:String>
-    <sys:String x:Key="touchpad_gesture_triple">Trojitý dotyl</sys:String>
-    <sys:String x:Key="touchpad_gesture_triple_desc">Přehrát předchozí skladbu</sys:String>
-    <sys:String x:Key="touchpad_gesture_hold">Dotknout se a podržet</sys:String>
-    <sys:String x:Key="touchpad_gesture_hold_desc">Spustit vlastní akci</sys:String>
 
     <!-- Custom touchpad action page -->
     <sys:String x:Key="cact_header">Definovat vlastní akci při podržení</sys:String>
@@ -299,7 +301,7 @@
     <sys:String x:Key="selftest_fail">Selhalo</sys:String>
     <sys:String x:Key="selftest_pass_long">Všechny kontroly prošly</sys:String>
     <sys:String x:Key="selftest_fail_long">Jedna nebo více kontrol selhala</sys:String>
-    
+
     <sys:String x:Key="coredump_header">Shromažďování dat...</sys:String>
     <sys:String x:Key="coredump_dl_progress_prepare">Příprava stahování...</sys:String>
     <sys:String x:Key="coredump_dl_progress_cancelled">Stahování zrušeno</sys:String>
@@ -469,7 +471,7 @@
     <!-- Firmware update disclaimer -->
     <sys:String x:Key="fw_disclaimer">Zřeknutí se odpovědnosti </sys:String>
     <sys:String x:Key="fw_disclaimer_desc">Tento nástroj pro aktualizaci firmwaru je přesnou replikou oficiálního aktualizátoru nalezeného v oficiální aplikaci pro Android od společnosti Samsung. Tuto implementaci jsem důkladně otestoval za různých okolností (normální provoz, ztráta připojení, záměrně poškozené pakety Bluetooth, ...), aniž by došlo k jakýmkoliv problémům. Přesto nebudu nést žádnou odpovědnost, pokud se něco pokazí, protože aktualizace firmwaru mění důležité součásti systému a mělo by se s nimi zacházet vždy opatrně.&#10;&#10;DOWNGRADE: Při přechodu na starší verze firmwaru jsem nenarazil na problémy, přesto mohou nastat a mohou způsobit neočekávané problémy. Mělo by to být provedeno pouze v případě potřeby. Obnovení továrního nastavení po downgradu je doporučené, ale obvykle není nutné.&#10;VLASTNÍ NAHRÁVÁNÍ: Je vám také umožněno načíst soubory firmwaru z vašeho pevného disku. NENAHRÁVEJTE do svého zařízení firmware určenéný pro JINÉ modely.&#10;&#10;Tato aplikace podléhá licenci GPLv3. Jeho používáním přijímáte licenci a její omezení odpovědnosti. Potvrďte stisknutím tlačítka 'Pokračovat'.</sys:String>
-    
+
     <!-- Firmware selection -->
     <sys:String x:Key="fw_select_header">Aktualizace firmwaru</sys:String>
     <sys:String x:Key="fw_select_instructions">Prosím, vyberte firmware ke stažení a instalaci. Případně můžete zvolit soubory z vašeho zařízení pomocí zvolení 'Pokročilé... > Zvolit obraz z disku...'</sys:String>
@@ -489,7 +491,7 @@
     <sys:String x:Key="fw_select_verify_fail">Selhalo ověření firmwaru</sys:String>
     <sys:String x:Key="fw_select_confirm">Chystáte se nahrát '{0}' na vaše zařízení '{1}'</sys:String>
     <sys:String x:Key="fw_select_confirm_desc">Ujistěte se, že tyto informace jsou správné, jinak stiskněte 'Zrušit' a dvakrát zkontrolujte své nastavení.&#10;&#10;Pokud možno, ujistěte se, že jsou obě sluchátka připojena před spuštěním. Nezpůsobí to žádné problémy, pokud selže spojení při přenosu aktualizace. V takovém případě sluchátka automaticky zruší proces přenosu a opustí mód aktualizace firmwaru.&#10;&#10;Stiskněte 'Pokračovat' pro spuštění aktualizace.</sys:String>
-  
+
     <!-- Firmware transfer -->
     <sys:String x:Key="fw_upload_header">Instalace firmwaru...</sys:String>
     <sys:String x:Key="fw_upload_progress_session">Vytváření nové relace...</sys:String>
@@ -510,7 +512,7 @@
     <sys:String x:Key="fw_fail_size_null">Velikost tohoto firmwaru je nastavena na nulu a nelze jej použít k nahrání. Vyberte prosím jinou.</sys:String>
     <sys:String x:Key="fw_fail_no_segments">Tato verze firmwaru neobsahuje žádné binární segmenty a je prázdná. Vyberte prosím jinou.</sys:String>
     <sys:String x:Key="fw_fail_unknown">Neočekávaná chyba při dekódování firmwaru. Tento archiv firmwaru může být poškozen.&#10;&#10;Detaily:</sys:String>
-    
+
     <!-- Firmware transfer errors -->
     <sys:String x:Key="fw_fail_connection">Ztráta připojení k zařízení. Přenos firmwaru byl zrušen.</sys:String>
     <sys:String x:Key="fw_fail_session">Nepodařilo se otevřít novou relaci. Zařízení vrátilo chybový kód ({0})</sys:String>
@@ -544,4 +546,9 @@
         Mějte na paměti, že s vašimi sluchátky Galaxy Buds může hovořit vždy pouze jedna aplikace.
     </sys:String>
 
+<!-- Manual pairing -->
+    <sys:String x:Key="manualpair_title">Ruční výběr zařízení</sys:String>
+    <sys:String x:Key="manualpair_title_dialog">Zvolte své zařízení Galaxy Buds</sys:String>
+    <sys:String x:Key="manualpair_model">Zvolte správný model</sys:String>
+    <sys:String x:Key="manualpair_note">Sluchátka byste měli ručně připojit pouze v případě, že je průvodce nastavením správně nerozpozná.</sys:String>
 </ResourceDictionary>

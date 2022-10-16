@@ -60,9 +60,9 @@ Získejte binární soubory pro Windows a Linux v sekci [vydání](https://githu
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
-Balíček windows je také dostupný ke stažení pomocí Manažeru Balíčku Windows (winget)
-
 ### winget
+
+Balíček pro windows je také dostupný ke stažení pomocí Manažeru Balíčku pro Windows (winget).
 
 ```
 winget install ThePBone.GalaxyBudsClient
@@ -146,15 +146,16 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 * [@grigorem](https://github.com/grigorem) - romský překlad
 * [@tretre91](https://github.com/tretre91) - francouzský překlad
 * [@Sigarya](https://github.com/Sigarya) - hebrejský překlad
+* [@domroaft](https://github.com/domroaft) - maďarský překlad
 
 ## Licence
 
 Tento projekt je licencován pod [GPLv3](https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE). Není přidružený se společností Samsung nebo pod jejich dohledem v jakémkoliv ohledu.
 
 ```
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
