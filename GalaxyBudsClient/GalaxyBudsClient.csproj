@@ -39,6 +39,7 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <DefineConstants>Linux</DefineConstants>
+        <InvariantGlobalization>true</InvariantGlobalization>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug (Local server)' ">
