@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>63%</td><td>158 missing string(s)</td></tr>
+<tr><td>68%</td><td>135 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -167,33 +167,6 @@ Press 'Continue' to start the update.</td></tr>
 <tr><td><code>fw_fail_unknown</code></td><td>Unexpected error while decoding the firmware binary. This firmware archive might be corrupted.
 
 Details:</td></tr>
-<tr><td><code>fw_fail_connection</code></td><td>Lost connection to the device. The firmware transfer has been cancelled.</td></tr>
-<tr><td><code>fw_fail_session</code></td><td>Failed to open a new session. The device returned an error code ({0})</td></tr>
-<tr><td><code>fw_fail_copy</code></td><td>Failed to copy firmware binary. Please reconnect and try again. Error code returned by device: {0}</td></tr>
-<tr><td><code>fw_fail_verify</code></td><td>Failed to verify/install firmware binary. Please reconnect and try again. Error code returned by device: {0}</td></tr>
-<tr><td><code>fw_fail_connection_precheck</code></td><td>The device is currently not connected. Please check your Bluetooth system settings and reconnect.</td></tr>
-<tr><td><code>fw_fail_pending</code></td><td>Another firmware transfer is already in progress. Please cancel it properly first.</td></tr>
-<tr><td><code>fw_fail_lowbattery</code></td><td>Battery too low. Please charge your earbuds over 15% first.</td></tr>
-<tr><td><code>fw_fail_session_timeout</code></td><td>Timed out while waiting for the device to open a new session</td></tr>
-<tr><td><code>fw_fail_control_timeout</code></td><td>Timed out while waiting for the device to return a control block</td></tr>
-<tr><td><code>fw_fail_copy_timeout</code></td><td>Timed out while waiting for the transfer process to finish</td></tr>
-<tr><td><code>spatial_header</code></td><td>Spatial sensor</td></tr>
-<tr><td><code>spatial_dump_quaternion</code></td><td>Raw quaternion vector:</td></tr>
-<tr><td><code>spatial_dump_rpy</code></td><td>RPY values:</td></tr>
-<tr><td><code>window_minimize</code></td><td>Minimize</td></tr>
-<tr><td><code>window_close</code></td><td>Close</td></tr>
-<tr><td><code>budsapp_header</code></td><td>Bluetooth compatibility info</td></tr>
-<tr><td><code>budsapp_text_p1</code></td><td>The official Galaxy Buds app for Windows 10 is installed alongside this application.</td></tr>
-<tr><td><code>budsapp_text_p2</code></td><td>
-        If it is open and connected, GalaxyBudsClient might have issues connecting to your earbuds. Make sure to close it before continuing. Likewise, the official Galaxy Buds app can't connect to your earbuds while Galaxy Buds Manager is active and has opened connections to the earbuds.
-    </td></tr>
-<tr><td><code>budsapp_text_p3</code></td><td>
-        Keep in mind that only one application can talk to your Galaxy Buds at a time.
-    </td></tr>
-<tr><td><code>manualpair_title</code></td><td>Manual device selection</td></tr>
-<tr><td><code>manualpair_title_dialog</code></td><td>Choose your Galaxy Buds device</td></tr>
-<tr><td><code>manualpair_model</code></td><td>Choose the correct model type</td></tr>
-<tr><td><code>manualpair_note</code></td><td>Note: You should only manually connect your earbuds if the setup wizard does not recognize them correctly.</td></tr>
 
 </table>
 
