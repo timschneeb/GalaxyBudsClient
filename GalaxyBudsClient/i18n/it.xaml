@@ -357,7 +357,7 @@
         <sys:String x:Key="adv_seamless">Connessione senza interruzione</sys:String>
         <sys:String x:Key="adv_seamless_desc">Passa rapidamente ai dispositivi nelle vicinanze senza disconnettere gli auricolari o attivare la modalità di associazione</sys:String>
         <sys:String x:Key="adv_resume_playback">Riprendi/avvia la riproduzione se gli auricolari sono indossati</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">Invia un evento globale di cambiamento di play/pausa quando almeno uno dei sensori di prossimità è coperto (solo Desktop)</sys:String>
+        <sys:String x:Key="adv_resume_playback_desc">Invia un evento globale di cambiamento di play/pausa quando almeno uno dei sensori di prossimità è coperto (solo Desktop)</sys:String>
         <sys:String x:Key="adv_sidetone">Usa il Suono Ambientale durante le chiamate</sys:String>
         <sys:String x:Key="adv_sidetone_desc">Senti la tua voce più chiaramente quando sei al telefono</sys:String>
         <sys:String x:Key="adv_passthrough">Allevia la pressione con il suono ambientale</sys:String>
@@ -386,4 +386,44 @@
         <sys:String x:Key="connlost_noinfo">Non è stato possibile raccogliere informazioni dell'errore</sys:String>
         <sys:String x:Key="connlost_connect">Connetti</sys:String>
         <sys:String x:Key="connlost_connecting">Connessione...</sys:String>
+
+        <!-- Firmware transfer errors -->
+        <sys:String x:Key="fw_fail_connection">Connessione al dispositivo persa. Il trasferimento del firmware è stato cancellato.</sys:String>
+        <sys:String x:Key="fw_fail_session">Apertura di una nuova sessione fallita. Il dispositivo ha restituito un codice di errore ({0})</sys:String>
+        <sys:String x:Key="fw_fail_copy">Fallita la copia del binario del firmware. Si prega di riconnettere e ritentare. Codice di errore restituito dal dispositivo: {0}</sys:String>
+        <sys:String x:Key="fw_fail_verify">Fallita la verifica/installazione del binario del firmware. Si prega di riconnettere e ritentare. Codice di errore restituito dal dispositivo: {0}</sys:String>
+        <sys:String x:Key="fw_fail_connection_precheck">Il dispositivo non è attualmente connesso. Si prega di controllare le impostazioni Bluetooth di sistema e riconnettere.</sys:String>
+        <sys:String x:Key="fw_fail_pending">Un altro trasferimento di firmware è in corso. Si prega di cancellarlo propriamente prima.</sys:String>
+        <sys:String x:Key="fw_fail_lowbattery">Batteria quasi scarica. Si prega di ricaricare le tue earbuds sopra il 15% prima.</sys:String>
+        <sys:String x:Key="fw_fail_session_timeout">Tempo scaduto per l'attesa di risposta del dispositivo di aprire una nuova sessione</sys:String>
+        <sys:String x:Key="fw_fail_control_timeout">Tempo scaduto per l'attesa di risposta del dispositivo di un blocco di controllo</sys:String>
+        <sys:String x:Key="fw_fail_copy_timeout">Tempo scaduto per l'attesa della conclusione del processo di trasferimento</sys:String>
+
+         <!-- Spatial test -->
+        <sys:String x:Key="spatial_header">Sensore spaziale</sys:String>
+        <!-- Note: Quaternion = 4-dimensional vector -->
+        <sys:String x:Key="spatial_dump_quaternion">Vettore quaternione grezzo:</sys:String>
+        <!-- Note: RPY = Roll, pitch, yaw -->
+        <sys:String x:Key="spatial_dump_rpy">Valori RPY:</sys:String>
+
+        <!-- Header -->
+        <sys:String x:Key="window_minimize">Minimizza</sys:String>
+        <sys:String x:Key="window_close">Chiudi</sys:String>
+
+        <!-- Buds app detected page -->
+        <sys:String x:Key="budsapp_header">Informazioni compatibilità Bluetooth</sys:String>
+        <sys:String x:Key="budsapp_text_p1">L'app ufficiale Galaxy Buds per Windows 10 è installata accanto a questa applicazione.</sys:String>
+        <sys:String x:Key="budsapp_text_p2">
+            Se è aperta e connessa, GalaxyBudsClient potrebbe avere dei problemi nel connettersi alle tue earbuds. Assicurati di chiuderla prima di continuare. Allo stesso modo, l'app ufficiale Galaxy Buds non potrà connettersi alle tue earbuds se Galaxy Buds Manager è attiva ed è in connessione con le tue earbuds.
+        </sys:String>
+        <sys:String x:Key="budsapp_text_p3">
+            Tieni a mente che solo un'applicazione alla volta può communicare con le tue Galaxy Buds.
+        </sys:String>
+
+         <!-- Manual pairing -->
+        <sys:String x:Key="manualpair_title">Seleziona il dispositivo manualmente</sys:String>
+        <sys:String x:Key="manualpair_title_dialog">Seleziona il dispositivo Galaxy Buds</sys:String>
+        <sys:String x:Key="manualpair_model">Seleziona il modello corretto</sys:String>
+        <sys:String x:Key="manualpair_note">Nota: Dovresti connettere solo manualmente le tue earbus se durante l'installazione guidata non sono state riconosciute correttamente.</sys:String>
+
 </ResourceDictionary>
