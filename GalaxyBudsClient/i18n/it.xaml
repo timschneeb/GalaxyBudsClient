@@ -387,6 +387,62 @@
         <sys:String x:Key="connlost_connect">Connetti</sys:String>
         <sys:String x:Key="connlost_connecting">Connessione...</sys:String>
 
+        <!-- Firmware update disclaimer -->
+        <sys:String x:Key="fw_disclaimer">Attenzione</sys:String>
+        <sys:String x:Key="fw_disclaimer_desc">
+            Questo strumento di aggiornamento del firmware è una replica accurata dello strumento ufficiale che si trova nell'app ufficiale di Android di Samsung. Ho testato più volte questa implementazione in varie circostanze (normali operazioni, connessione persa, pacchetti Bluetooth intenzionalmente corrotti, ecc...) senza mai riscontrare problemi. Tuttavia, non mi assumo nessuna responsabilità se qualcosa andasse storto, dal momento che l'aggiornament del software modifica dei componenti di sistema vitali e dovrebbero essere sempre maneggiati con attenzione.&#10;&#10;DOWNGRADING: Mentre effettui il downgrade ad una versione del firmware precedente è possibile che, e non mi è mai successo, possano verificarsi dei problemi inaspettati e andrebbe fatto solo se necessario. È raccomandato un reset di fabbrica dopo il downgrade ma di solito non è necessario. &#10;FLASH Personalizzato: Puoi caricare i file dei firmware dal tuo hard-drive. NON flashare binari dei firmware sul tuo dispostivo creati per ALTRI modelli.&#10;&#10;Questa applicazione è protetta dalla licenza GPLv3. Usandola, stai accettando la licenza e le sue limitazioni della responsabilità. Premi 'Continua' per accettare.
+        </sys:String>
+  
+  
+        <!-- Firmware selection -->
+        <sys:String x:Key="fw_select_header">Aggiornamenti del firmware</sys:String>
+        <sys:String x:Key="fw_select_instructions">Si prega di scegliere un binario del firmware da scaricare e installare. In alternativa, puoi selezionare anche un binario del firmware dal tuo hard-drive andando in 'Impostazioni avanzate... > Seleziona un 'immagne dal disco'</sys:String>
+        <sys:String x:Key="fw_select_no_results">Al momento non ci sono aggiornamenti del firmware disponibili. Si prega di riprovare più tardi.</sys:String>
+        <sys:String x:Key="fw_select_downgrade">Abilita il downgrade del firmware</sys:String>
+        <sys:String x:Key="fw_select_downgrade_desc">Disabilita il controllo della versione e mostra i firmware più vecchi nella lista (potrebbe causare dei problemi inaspettati; solo per gli utenti esperti)</sys:String>
+        <sys:String x:Key="fw_select_advanced">Impostazioni avanzate...</sys:String>
+        <sys:String x:Key="fw_select_install">Installa firmware</sys:String>
+        <sys:String x:Key="fw_select_from_disk">Seleziona un'immagine dal disco...</sys:String>
+        <sys:String x:Key="fw_select_external_note">
+            NON flashare sul tuo dispositivo binari di firmware pensati per dispositivi DIVERSI dal tuo modello. Flashare un firmware per le Buds Pro su un paio di of Buds Plus non sbloccherà nessuna funzionalità aggiuntiva, anzi corromperà permanente il tuo dispositivo.&#10;&#10;Clicca su 'Continua' per selezionare un binario del firmware.
+        </sys:String>
+        <sys:String x:Key="fw_select_unsupported_selection">Selezione non valida. Si prega di selezionare un elemento compatibile dalla lista.</sys:String>
+        <sys:String x:Key="fw_select_downloading">Scaricamento...</sys:String>
+        <sys:String x:Key="fw_select_net_error">Comunicazione con il server fallita. Impossibile scaricare il firmware al momento.</sys:String>
+        <sys:String x:Key="fw_select_net_index_error">Comunicazione con il server fallita. Impossibile scaricare l'indice del firmware al momento.</sys:String>
+        <sys:String x:Key="fw_select_http_error">HTTP error code:</sys:String>
+        <sys:String x:Key="fw_select_unknown_build">Nome della build sconosciuto</sys:String>
+        <sys:String x:Key="fw_select_verify_fail">Verifica del firmware fallita</sys:String>
+        <sys:String x:Key="fw_select_confirm">Stai per flashare '{0}' sul tuo dispositivo '{1}'</sys:String>
+        <sys:String x:Key="fw_select_confirm_desc">
+            Controlla che queste informazioni siano corrette, se così non fosse premi 'Annulla' e controlla meglio il tuo setup.&#10;&#10;Se possibile, controlla che entrambe le earbuds siano connesse prima di iniziare. Se la connessione sarà persa durante il trasferimento dell'aggiornamento non ci sarà nessun problema. Nella maggior parte dei casi, le earbuds annulleranno automaticamente il processo di trasferimento e usciranno dalla modalità di aggiornamento del firmware.&#10;&#10;Premi 'Continua' per iniziare l'aggiornamento.
+        </sys:String>
+
+         <!-- Firmware transfer -->
+        <sys:String x:Key="fw_upload_header">Installazione del firmware...</sys:String>
+        <sys:String x:Key="fw_upload_progress_session">Creazione di una nuova sessione...</sys:String>
+        <sys:String x:Key="fw_upload_progress_prepare">Preparazione del caricamento...</sys:String>
+        <sys:String x:Key="fw_upload_progress_finished">Caricamento completato</sys:String>
+        <sys:String x:Key="fw_upload_progress_finished_desc">
+            L'aggiornamento è stato trasferito con successo e si sta installando sul dispositivo. Durante questo processo le tue earbuds saranno irraggiungibili per circa 30 secondi. Nella maggior parte dei casi, le earbuds proveranno a connettersi automaticamente dopo che il processo di aggiornamento nel dispositivo sarà concluso.
+        </sys:String>
+        <sys:String x:Key="fw_upload_progress_error">Fallito il caricamento del firmware</sys:String>
+        <sys:String x:Key="fw_upload_progress">Caricamento del firmware di aggiornamento... {0}%</sys:String>
+        <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>
+        <sys:String x:Key="fw_upload_progress_stats">Statistiche</sys:String>
+        <sys:String x:Key="fw_upload_note">
+            Le tue earbuds verranno disconnesse, e partirà l'installazione del firmware di aggiornamento caricato non appena la trasmissione sarà conclusa. Durante questo processo le tue earbuds saranno irraggiungibili e rifiuteranno qualsiasi richiesta di connessione Bluetooth. Nella maggior parte dei casi, le earbuds proveranno a connettersi automaticamente dopo che il processo di aggiornamento nel dispositivo sarà concluso.
+        </sys:String>
+        <sys:String x:Key="fw_upload_progress_stats_mtu">Massima unità di trasferimento: {0} bytes</sys:String>
+        <sys:String x:Key="fw_upload_progress_stats_offset">Processazione dei dati dall'indice 0x{0:X6} al 0x{1:X6}</sys:String>
+        <sys:String x:Key="fw_upload_progress_stats_segment">Caricamento del segmento #{0} ({1} bytes, checksum 0x{2:X6})</sys:String>
+
+        <!-- Firmware parse errors -->
+        <sys:String x:Key="fw_fail_no_magic">Questo binario del firmware non è valido. Sono stati trovati "valori magici" nell'intestazione del file.</sys:String>
+        <sys:String x:Key="fw_fail_size_null">Questo binario del firmware ha la dimensione impostata a zero e non può essere usato per flashare. Si prega di sceglierne un altro.</sys:String>
+        <sys:String x:Key="fw_fail_no_segments">Questo binario del firmware non contiene nessun segmento binario ed è vuoto. Si prega di sceglierne un altro.</sys:String>
+        <sys:String x:Key="fw_fail_unknown">Errore inaspettato durante la decodifica del binario del firmware. L'archivio del firmware potrebbe essere corrotto.&#10;&#10;Dettagli:</sys:String>
+
         <!-- Firmware transfer errors -->
         <sys:String x:Key="fw_fail_connection">Connessione al dispositivo persa. Il trasferimento del firmware è stato cancellato.</sys:String>
         <sys:String x:Key="fw_fail_session">Apertura di una nuova sessione fallita. Il dispositivo ha restituito un codice di errore ({0})</sys:String>
