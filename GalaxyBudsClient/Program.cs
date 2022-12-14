@@ -101,6 +101,7 @@ namespace GalaxyBudsClient
             }
 
             /* Fix Avalonia font issue */
+            // TODO implement an actual fix
             if (PlatformUtils.IsLinux)
             {
                 try
@@ -110,9 +111,7 @@ namespace GalaxyBudsClient
                 }
                 catch (CultureNotFoundException ex)
                 {
-                    Log.Warning("Startup: Culture en-US unavailable. Falling back to C. " + ex);
-                    Thread.CurrentThread.CurrentCulture = new CultureInfo("C");
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("C");
+                    
                 }
             }
 
