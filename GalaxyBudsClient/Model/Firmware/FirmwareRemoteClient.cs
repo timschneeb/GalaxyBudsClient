@@ -18,9 +18,9 @@ namespace GalaxyBudsClient.Model.Firmware
     public class FirmwareRemoteClient
     {
 #if UseLocalServer
-        const string API_BASE = "http://localhost:5101";
+        const string API_BASE = "http://localhost:5101/v2";
 #else
-        const string API_BASE = "https://fw.timschneeberger.me";
+        const string API_BASE = "https://fw.timschneeberger.me/v2";
 #endif
         const string API_GET_FIRMWARE = API_BASE + "/firmware";
         const string API_DOWNLOAD_FIRMWARE = API_BASE + "/firmware/download";
