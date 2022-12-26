@@ -22,7 +22,7 @@
   </a>
 </p>
 <p align="center">
-  <a href="#key-features">Key Features</a> •
+  <a href="#funções-principais">Funções Principais</a> •
   <a href="#download">Download</a> •
   <a href="#como-funciona">Como funciona</a> •
   <a href="#contribuindo">Contribuindo</a> •
@@ -38,7 +38,7 @@
     <a href="#"><img alt="Screenshot" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/screencap.gif"></a>
 </p>
 
-## Key Features
+## Funções Principais
 
 Configurar e controlar qualquer aparelho da linha Samsung Galaxy Buds e integra-los ao seu desktop.
 
@@ -77,33 +77,33 @@ yay -S galaxybudsclient-bin
 
 ## Como funciona
 
-In order to use Bluetooth wireless technology, a device must be able to interpret specific Bluetooth profiles that enable Bluetooth devices to communicate efficiently with each other.
+Para utilizar a técnologia sem fio, Bluetooth, o aparelho deve ser capaz de intepretar perfis especificos de Bluetooth que permitem a comunicação eficiente entre um aparelho e o outro.
 
-The Galaxy Buds define two Bluetooth profiles: A2DP (Advanced Audio Distribution Profile) for audio streaming/controlling and SPP (Serial Port Profile) for transmitting binary streams. Manufacturers often use this profile (which relies on the RFCOMM protocol) to exchange configuration data, perform firmware updates, or send other commands to the Bluetooth device.
+O Galaxy Buds define dois perfis Bluetooth: AD2P (Perfil de Distribuição de Audio Avançado) para controle/transmissão de áudio e SPP (Perfil de Serial Port) para transmissão de streams binários. Os fabricantes frequentemente usam esse perfil (que depende do protocolo RFCOMM) para configurar a troca de informação, realizar updates de firmware, ou enviar outros comandos para o aparelho Bluetooth.
 
-Even though the A2DP profile is standardized and documented, the format of the binary data exchanged by this RFCOMM protocol is usually proprietary.
+Mesmo que o perfil A2DP é padronizado e documentado, o formato que a troca de dados binarios realizados por esse protocolo RFCOMM é normlamente próprio da empresa.
 
-To reverse-engineer this data format, I started by analyzing the structure of the binary stream sent by the earbuds. Later on, I also disassembled the official Galaxy Buds apps for Android to gain more insight into these devices' inner workings. You can find some (incomplete) notes I took down below. Check the source code to get more detailed information on the structure of the protocol.
-
-<p align="center">
-  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsRFCommProtocol.md">Galaxy Buds (2019) Notes</a> •
-  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md">Galaxy Buds Plus Notes</a>
-</p>
-
-While taking a closer look at the Galaxy Buds Plus, I also noticed some unusual features, such as a firmware debug mode, an unused pairing mode, and a Bluetooth key dumper. I documented these findings here:
+Para realizar engenharia-reversa desse formato de dados eu comecei analisando a estrutura da transmissão binaria enviada pelos earbuds. Mais tarde eu também dissequei o aplicativo oficial dos Galaxy Buds para conseguir mais entendimento sobre o funcionamento interno dos fones. Você pode encontrar algumas notas (incompletas) que eu tomei abaixo. Confira o código fonte para obter informações mais detalhadas na estrutura do protocolo.
 
 <p align="center">
-  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsPlus_HiddenDebugFeatures.md">Galaxy Buds Plus: Unusual features</a>
+  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsRFCommProtocol.md">Galaxy Buds (2019) Notas</a> •
+  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md">Galaxy Buds Plus Notas</a>
 </p>
 
-Currently, I'm looking into modifying and reverse-engineering the firmware for the Buds+. At time of writing I have created two tools to fetch and analyze official firmware binaries. Check them out here:
+Enquanto me aprofundava nos Galaxy Buds Plus eu também notei algumas particularidades, como um modo de debug de firmware, um modo de pareamento não utilizado e a enumeração de chaves Bluetooth. Eu documentei esses achados aqui:
+
+<p align="center">
+  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsPlus_HiddenDebugFeatures.md">Galaxy Buds Plus: Funções incomuns</a>
+</p>
+
+No momento eu estou tentando modificar e realizar engenharia-reversa no firmware dos Buds+. No momento que eu escrevo isso, já fiz duas ferramentas para acessar e analzar os firmware em binario. Confira eles aqui:
 
 <p align="center">
   <a href="https://github.com/ThePBone/GalaxyBudsFirmwareDownloader">Firmware Downloader</a> •
   <a href="https://github.com/ThePBone/GalaxyBudsFirmwareExtractor">Firmware Extractor</a>
 </p>
 
-Stream head-tracking data in realtime from your Buds Pro using this script: [ThePBone/BudsPro-Headtracking](https://github.com/ThePBone/BudsPro-Headtracking)
+Transmita o monitoramento de informação em tempo real dos seus Buds Pro usando esse script: [ThePBone/BudsPro-Headtracking](https://github.com/ThePBone/BudsPro-Headtracking)
 
 ## Contribuindo
 
