@@ -1,6 +1,6 @@
 
 <p align="center">
-  <a href="../README.md">English</a> | <a href="./README_chn.md">中文</a> | <a href="./README_rus.md">Русский</a> | 日本語 | <a href="./README_ukr.md">Українська</a> | <a href="./README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> <br>
+  <a href="../README.md">English</a> | <a href="./README_chn.md">中文</a> | <a href="./README_rus.md">Русский</a> | 日本語 | <a href="./README_ukr.md">Українська</a> | <a href="./README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> <br>
     <sub>注意: readmeは翻訳者により翻訳されており、時間により最新ではない場合があります。最新の情報は英語版をご覧ください。</sub>
 </p>
 <h1 align="center">
