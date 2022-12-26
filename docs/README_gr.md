@@ -1,6 +1,6 @@
 
 <p align="center">
-  <a href="../README.md">English</a> | <a href="/docs/README_chs.md">中文</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | Ελληνικά <br>
+  <a href="../README.md">English</a> | <a href="/docs/README_chs.md">中文</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | Ελληνικά | <a href="/docs/README_pt.md">Português</a><br>
     <sub>Προσοχή: Τα αρχεία readme συντηρούνται από μεταφραστές και ενδέχεται να καθίστανται απαρχαιωμένα κατά καιρούς. Για τις πιο πρόσφατες πληροφορίες στηριχτείτε στην αγγλική έκδοση.</sub>
 </p>
 <h1 align="center">
