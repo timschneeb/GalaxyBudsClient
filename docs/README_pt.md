@@ -6,7 +6,7 @@
   Galaxy Buds Client
   <br>
 </h1>
-<h4 align="center">An unofficial manager for the Buds, Buds+, Buds Live and Buds Pro</h4>
+<h4 align="center">Um gerenciador não oficial para os Buds, Buds+, Buds Live e Buds Pro</h4>
 <p align="center">
   <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
     <img alt="GitHub downloads count" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
@@ -24,10 +24,10 @@
 <p align="center">
   <a href="#key-features">Key Features</a> •
   <a href="#download">Download</a> •
-  <a href="#how-it-works">How it works</a> •
-  <a href="#contributing">Contributing</a> •
-  <a href="#credits">Credits</a> •
-  <a href="#license">License</a>
+  <a href="#como-funciona">Como funciona</a> •
+  <a href="#contribuindo">Contribuindo</a> •
+  <a href="#creditos">Creditos</a> •
+  <a href="#licença">Licença</a>
 </p>
 
 <p align="center">
@@ -40,20 +40,20 @@
 
 ## Key Features
 
-Configure and control any Samsung Galaxy Buds device and integrate them into your desktop.
+Configurar e controlar qualquer aparelho da linha Samsung Galaxy Buds e integra-los ao seu desktop.
 
-Aside from standard features known from the official Android app, this project helps you to release the full potential of your earbuds and implements new functionality such as:
+Além das funções conhecidas do aplicativo oficial de Android esse projeto também ajuda você a desbloquear o potencial máximo de seus earbuds e implementa novas funcionalidades como:
 
-* Detailed battery statistics
-* Diagnostics and factory self-tests
-* Loads of hidden debugging information
-* Customizable long-press touch actions
+* Estátisticas detalhadas das baterias
+* Diagnósticos e auto-testes de fabrica
+* Diversas informações ocultas de debugging
+* Customização nas ações de toque longo
 * Firmware flashing, downgrading (Buds+, Buds Pro)
-* and much more...
+* e muito mais...
 
 ## Download
 
-Get binaries for Windows and Linux in the [release](https://github.com/ThePBone/GalaxyBudsClient/releases) section. Please read the release notes before installing.
+Para obter os binaries para Windows e Linux na página de [versões](https://github.com/ThePBone/GalaxyBudsClient/releases). Por favor, leia as notas antes de realizar a instação. 
 
 <p align="center">
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
@@ -61,7 +61,7 @@ Get binaries for Windows and Linux in the [release](https://github.com/ThePBone/
 
 ### winget
 
-The Windows package is also available to install with Windows Package Manager (winget)
+O pacote para Windows também está disponivel para instalação com o Windows Package Manager (winget)
 
 ```
 winget install ThePBone.GalaxyBudsClient
@@ -69,13 +69,13 @@ winget install ThePBone.GalaxyBudsClient
 
 ### AUR package 
 
-An [AUR package](https://aur.archlinux.org/packages/galaxybudsclient-bin/) for Arch Linux maintained by @joscdk is also available:
+Um [AUR package](https://aur.archlinux.org/packages/galaxybudsclient-bin/) para Arch Linux mantido por @joscdk também está disponivel:
 ```
 yay -S galaxybudsclient-bin
 ```
 
 
-## How it works
+## Como funciona
 
 In order to use Bluetooth wireless technology, a device must be able to interpret specific Bluetooth profiles that enable Bluetooth devices to communicate efficiently with each other.
 
@@ -105,7 +105,7 @@ Currently, I'm looking into modifying and reverse-engineering the firmware for t
 
 Stream head-tracking data in realtime from your Buds Pro using this script: [ThePBone/BudsPro-Headtracking](https://github.com/ThePBone/BudsPro-Headtracking)
 
-## Contributing
+## Contribuindo
 
 Feature requests, bug reports, and pull requests of any kind are always welcome.
 
@@ -116,7 +116,7 @@ You can find auto-generated progress reports for existing translations [here](ht
 
 If you want to contribute your own code, you can simply submit a plain pull request explaining you changes. For larger and complex contributions it would be nice if you could open an issue (or message me via Telegram [@thepbone](https://t.me/thepbone)) before starting to work on it.
 
-## Credits
+## Creditos
 
 ### Contributors
 
@@ -149,7 +149,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@Sigarya](https://github.com/Sigarya) - Hebrew translation
 * [@domroaft](https://github.com/domroaft) - Hungarian translation
 
-## License
+## Licença
 
 This project is licensed under [GPLv3](https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE). It is not affiliated with Samsung nor supervised by them in any way.
 
