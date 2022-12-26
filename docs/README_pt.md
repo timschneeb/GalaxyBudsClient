@@ -103,55 +103,54 @@ No momento eu estou tentando modificar e realizar engenharia-reversa no firmware
   <a href="https://github.com/ThePBone/GalaxyBudsFirmwareExtractor">Firmware Extractor</a>
 </p>
 
-Transmita o monitoramento de informação em tempo real dos seus Buds Pro usando esse script: [ThePBone/BudsPro-Headtracking](https://github.com/ThePBone/BudsPro-Headtracking)
+Observe o monitoramento de informação em tempo real dos seus Buds Pro usando esse script: [ThePBone/BudsPro-Headtracking](https://github.com/ThePBone/BudsPro-Headtracking)
 
 ## Contribuindo
 
-Feature requests, bug reports, and pull requests of any kind are always welcome.
+Pedidos de funcionalidades, relatos de bugs ou qualquer tipo de pull requests são sempre bem-vindos. 
 
-If you want to report bugs or propose your ideas for this project, you are welcome to [open a new issue](https://github.com/ThePBone/GalaxyBudsClient/issues/new/choose) with a suitable template. [Visit our wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/2.-How-to-submit-issues) for a detailed explanation.
+Se você deseja avisar sobre algum bug ou propor ideias para esse projeto, você é livre para [relatar tudo](https://github.com/ThePBone/GalaxyBudsClient/issues/new/choose) com um template adequado. [Visite a nossa Wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/2.-How-to-submit-issues) para uma explicação detalhada.
 
-If you are planning to help us translating this app, [refer to the instructions on our wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations). No programming knowledge is required, you can test your custom translations without installing any development tools before submitting a pull request.
-You can find auto-generated progress reports for existing translations [here](https://github.com/ThePBone/GalaxyBudsClient/blob/master/meta/translations.md).
+Se você planeja nos ajudar traduzindo esse aplicativo, [confira as instrunções em nossa wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations). Nenhum conhecimento de programação é necessário, você pode testar as suas traduções sem instalar nenhuma ferramenta de desenvolvedor antes de enviar um pull request. Você pode achar relatorios automáticos do progresso de traduções existentes [aqui] (https://github.com/ThePBone/GalaxyBudsClient/blob/master/meta/translations.md).
 
-If you want to contribute your own code, you can simply submit a plain pull request explaining you changes. For larger and complex contributions it would be nice if you could open an issue (or message me via Telegram [@thepbone](https://t.me/thepbone)) before starting to work on it.
+Se você deseja contribuir com seu próprio código, você pode simplesmente enviar um pull request explicando suas mudanças. Para contribuições maiores e complexas é interessante abrir um "issue" (ou me contactar via telegram [@thepbone](https://t.me/thepbone)) antes de começar a trabalhar nisso.
 
 ## Creditos
 
-### Contributors
+### Colaboradores
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue templates, wiki and translations
+* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue templates, wiki and traduções
 * [@AndriesK](https://github.com/AndriesK) - Buds Live bug fix
-* [@TheLastFrame](https://github.com/TheLastFrame) - Buds Pro icons
-* [@githubcatw](https://github.com/githubcatw) - Connection dialog base
-* [@GaryGadget9](https://github.com/GaryGadget9) - WinGet package
-* [@joscdk](https://github.com/joscdk) - AUR package
+* [@TheLastFrame](https://github.com/TheLastFrame) - Icones Buds Pro
+* [@githubcatw](https://github.com/githubcatw) - Conecções baseada em dialogo
+* [@GaryGadget9](https://github.com/GaryGadget9) - Pacotes WinGet 
+* [@joscdk](https://github.com/joscdk) - Pacotes AUR
 
-### Translators
+### Tradutores
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Russian and Ukrainian translation
-* [@PlasticBrain](https://github.com/fhalfkg) - Korean and Japanese translation
-* [@cozyplanes](https://github.com/cozyplanes) - Korean translation
-* [@erenbektas](https://github.com/erenbektas) - Turkish translation
-* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) and [@pseudor](https://github.com/pseudor) - Chinese translation
-* [@YiJhu](https://github.com/YiJhu) - Chinese-Traditional translation
-* [@efrenbg1](https://github.com/efrenbg1) and Andrew Gonza - Spanish translation
-* [@giovankabisano](https://github.com/giovankabisano) - Indonesian translation
-* [@lucasskluser](https://github.com/lucasskluser) - Portuguese translation
-* [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Italian translation
-* [@Buashei](https://github.com/Buashei) - Polish translation
-* [@KatJillianne](https://github.com/KatJillianne) - Vietnamese translation
-* [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - Czech translation
-* [@Benni0109](https://github.com/Benni0109), [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - German translation
-* [@nikossyr](https://github.com/nikossyr) - Greek translation
-* [@grigorem](https://github.com/grigorem) - Romanian translation
-* [@tretre91](https://github.com/tretre91) - French translation
-* [@Sigarya](https://github.com/Sigarya) - Hebrew translation
-* [@domroaft](https://github.com/domroaft) - Hungarian translation
+* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Tradução Russa e Ucraniana
+* [@PlasticBrain](https://github.com/fhalfkg) - Tradução Coreana and Japonesa
+* [@cozyplanes](https://github.com/cozyplanes) - Tradução Coreana
+* [@erenbektas](https://github.com/erenbektas) - Tradução Turca
+* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) e [@pseudor](https://github.com/pseudor) - Tradução Chinesa
+* [@YiJhu](https://github.com/YiJhu) - Tradução Chines-Tradicional
+* [@efrenbg1](https://github.com/efrenbg1) e Andrew Gonza - Tradução Hispânica
+* [@giovankabisano](https://github.com/giovankabisano) - Tradução Indonésia
+* [@lucasskluser](https://github.com/lucasskluser) - Tradução Portuguesa
+* [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Tradução Italiana
+* [@Buashei](https://github.com/Buashei) - Tradução Polonesa
+* [@KatJillianne](https://github.com/KatJillianne) - Tradução Vietnamita
+* [@joskaja](https://github.com/joskaja) e [@Joedmin](https://github.com/Joedmin) - Tradução Tcheca
+* [@Benni0109](https://github.com/Benni0109), [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - Tradução Alemã
+* [@nikossyr](https://github.com/nikossyr) - Tradução Grega
+* [@grigorem](https://github.com/grigorem) - Tradução Romena
+* [@tretre91](https://github.com/tretre91) - Tradução Francesa
+* [@Sigarya](https://github.com/Sigarya) - Tradução Hebraica
+* [@domroaft](https://github.com/domroaft) - Traudução Húngara
 
 ## Licença
 
-This project is licensed under [GPLv3](https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE). It is not affiliated with Samsung nor supervised by them in any way.
+Esse projeto é licenciado sob [GPLv3](https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE). Ele não é afiliado com a Samsung nem supervisionado por eles de alguma maneira.
 
 ```
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
