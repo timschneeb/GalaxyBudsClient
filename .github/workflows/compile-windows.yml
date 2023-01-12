@@ -136,7 +136,7 @@ jobs:
         releases-only: true
       id: last_release  
     - name: Prepare version information (2/3)
-      uses: benjlevesque/short-sha@v1.2
+      uses: benjlevesque/short-sha@v2.1
       id: short-sha
       with:
         length: 6
@@ -221,7 +221,7 @@ jobs:
         releases-only: true
       id: last_release  
     - name: Prepare version information (2/3)
-      uses: benjlevesque/short-sha@v1.2
+      uses: benjlevesque/short-sha@v2.1
       id: short-sha
       with:
         length: 6
@@ -306,7 +306,7 @@ jobs:
       id: last_release  
       
     - name: Prepare version information (2/3)
-      uses: benjlevesque/short-sha@v1.2
+      uses: benjlevesque/short-sha@v2.1
       id: short-sha
       with:
         length: 6
