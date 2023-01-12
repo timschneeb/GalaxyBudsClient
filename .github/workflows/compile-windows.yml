@@ -37,7 +37,7 @@ jobs:
     #    timestamp-server: http://timestamp.digicert.com
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_win64_portable
         path: bin_win64/
@@ -58,7 +58,7 @@ jobs:
       run: dotnet publish -r win-x86 -o bin_win32 -c Release -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_win32_portable
         path: bin_win32/
@@ -88,7 +88,7 @@ jobs:
     #    timestamp-server: http://timestamp.digicert.com
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_win-arm_portable
         path: bin_win-arm/
@@ -118,7 +118,7 @@ jobs:
     #    timestamp-server: http://timestamp.digicert.com
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_win-arm64_portable
         path: bin_win-arm64/
@@ -169,7 +169,7 @@ jobs:
     #    timestamp-server: http://timestamp.digicert.com
 
     - name: Upload artifact (x64)
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
         path: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
@@ -202,7 +202,7 @@ jobs:
     #    timestamp-server: http://timestamp.digicert.com
 
     - name: Upload artifact (x86)
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_Setup_32bit_${{steps.version.outputs.version}}.exe
         path: GalaxyBudsClient_Setup_32bit_${{steps.version.outputs.version}}.exe
@@ -254,7 +254,7 @@ jobs:
     #    timestamp-server: http://timestamp.digicert.com
 
     - name: Upload artifact (arm)
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_Setup_arm_${{steps.version.outputs.version}}.exe
         path: GalaxyBudsClient_Setup_arm_${{steps.version.outputs.version}}.exe
@@ -287,7 +287,7 @@ jobs:
     #    timestamp-server: http://timestamp.digicert.com
 
     - name: Upload artifact (arm64)
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_Setup_arm64_${{steps.version.outputs.version}}.exe
         path: GalaxyBudsClient_Setup_arm64_${{steps.version.outputs.version}}.exe

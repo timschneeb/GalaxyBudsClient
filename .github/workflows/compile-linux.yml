@@ -31,7 +31,7 @@ jobs:
       run: cd bin_linux64 && chmod +x GalaxyBudsClient
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_linux-amd64_portable
         path: bin_linux64/GalaxyBudsClient
@@ -55,7 +55,7 @@ jobs:
       run: cd bin_linux64_musl && chmod +x GalaxyBudsClient
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_linux-amd64-musl_portable
         path: bin_linux64_musl/GalaxyBudsClient
@@ -79,7 +79,7 @@ jobs:
       run: cd bin_linux_arm && chmod +x GalaxyBudsClient
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_linux-arm_portable
         path: bin_linux_arm/GalaxyBudsClient
@@ -103,7 +103,7 @@ jobs:
       run: cd bin_linux_arm64 && chmod +x GalaxyBudsClient
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_linux-arm64_portable
         path: bin_linux_arm64/GalaxyBudsClient
