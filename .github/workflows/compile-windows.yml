@@ -9,6 +9,7 @@ on:
      types: 
        - published
        - prereleased
+  workflow_dispatch:
 
 jobs:
   build-x64:

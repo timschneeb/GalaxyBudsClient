@@ -3,6 +3,8 @@ name: Sentry release
 on:
   release:  
     types: [published, prereleased]
+  workflow_dispatch:
+
 
 jobs:
   sentry:

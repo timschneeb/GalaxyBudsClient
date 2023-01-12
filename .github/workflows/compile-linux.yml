@@ -9,6 +9,8 @@ on:
      types: 
        - published
        - prereleased
+  workflow_dispatch:
+
 jobs:
   build-x64:
     runs-on: ubuntu-latest
