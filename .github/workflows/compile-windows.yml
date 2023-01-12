@@ -146,7 +146,7 @@ jobs:
       
     # Make x64 installer
     - name: Download artifact (x64)
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: GalaxyBudsClient_win64_portable
         
@@ -179,7 +179,7 @@ jobs:
 
     # Make x86 installer
     - name: Download artifact (x86)
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: GalaxyBudsClient_win32_portable
         
@@ -231,7 +231,7 @@ jobs:
       
     # Make arm installer
     - name: Download artifact (arm)
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: GalaxyBudsClient_win-arm_portable
         
@@ -264,7 +264,7 @@ jobs:
 
     # Make arm64 installer
     - name: Download artifact (arm64)
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: GalaxyBudsClient_win-arm64_portable
         
@@ -315,17 +315,17 @@ jobs:
       id: version
       
     - name: Download setup artifact (x64)
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
       
     - name: Download artifact (arm)
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: GalaxyBudsClient_Setup_arm_${{steps.version.outputs.version}}.exe
 
     - name: Download artifact (arm64)
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: GalaxyBudsClient_Setup_arm64_${{steps.version.outputs.version}}.exe
 
