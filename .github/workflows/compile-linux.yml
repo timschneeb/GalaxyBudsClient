@@ -26,7 +26,10 @@ jobs:
       run: dotnet restore -r linux-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build x64
       run: dotnet publish -r linux-x64 -o bin_linux64 -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
-    
+
+    - name: Change Permissions
+      run: cd bin_linux64 && chmod +x GalaxyBudsClient
+
     - name: Upload artifacts
       uses: actions/upload-artifact@v2.2.2
       with:
@@ -47,7 +50,10 @@ jobs:
       run: dotnet restore -r linux-musl-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build x64 musl
       run: dotnet publish -r linux-musl-x64  -o bin_linux64_musl -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
-    
+
+    - name: Change Permissions
+      run: cd bin_linux64_musl && chmod +x GalaxyBudsClient
+
     - name: Upload artifacts
       uses: actions/upload-artifact@v2.2.2
       with:
@@ -68,7 +74,10 @@ jobs:
       run: dotnet restore -r linux-arm --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build arm
       run: dotnet publish -r linux-arm -o bin_linux_arm -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
-    
+
+    - name: Change Permissions
+      run: cd bin_linux_arm && chmod +x GalaxyBudsClient
+
     - name: Upload artifacts
       uses: actions/upload-artifact@v2.2.2
       with:
@@ -89,7 +98,10 @@ jobs:
       run: dotnet restore -r linux-arm64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build arm64
       run: dotnet publish -r linux-arm64 -o bin_linux_arm64 -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
-    
+
+    - name: Change Permissions
+      run: cd bin_linux_arm64 && chmod +x GalaxyBudsClient
+
     - name: Upload artifacts
       uses: actions/upload-artifact@v2.2.2
       with:
