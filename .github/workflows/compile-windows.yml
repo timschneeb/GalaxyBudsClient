@@ -16,7 +16,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
@@ -46,7 +46,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
@@ -67,7 +67,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
@@ -97,7 +97,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
@@ -128,7 +128,7 @@ jobs:
     needs: [build-x64, build-x86]
         
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Prepare version information (1/3)
       uses: oprypin/find-latest-tag@v1
       with:
@@ -213,7 +213,7 @@ jobs:
     needs: [build-arm, build-arm64]
         
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Prepare version information (1/3)
       uses: oprypin/find-latest-tag@v1
       with:
