@@ -216,7 +216,8 @@
     <sys:String x:Key="devsel_footer_continue">Hoàn tất thiết lập</sys:String>
     <sys:String x:Key="devsel_dialog_footer">Nếu bạn không thấy tai nghe Buds của bạn, hãy đảm bảo rằng chúng đã được ghép đôi và kết nối với máy tính của bạn - kiểm tra trong cài đặt Bluetooth, rồi nhấn Làm mới.</sys:String>
     <sys:String x:Key="devsel_winrt_title">Dùng Bluetooth backend khác</sys:String>
-    <sys:String x:Key="devsel_winrt">Ổn định hơn rất nhiều, nhưng có thể không hoạt động trên máy tính với một vài thiết bị tiếp hợp Bluetooth nào đó</sys:String>
+    <sys:String x:Key="devsel_winrt">Ổn định hơn rất nhiều, nhưng có thể không hoạt động trên máy tính với một vài thiết bị tiếp hợp Bluetooth</sys:String>
+    <sys:String x:Key="devsel_manual_pair">Kết nối thủ công</sys:String>
 
     <!-- Unsupported feature page -->
     <sys:String x:Key="unsupported_feature_current_fwver">Phiên bản Firmware hiện tại:</sys:String>
@@ -230,14 +231,32 @@
     <sys:String x:Key="unsupported_feature_description_p2">Vui lòng cập nhật firmware mới nhất bằng trình cập nhật chính thức dành cho Windows hoặc Android.</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">Đảm bảo rằng bạn đã đóng ứng dụng này khi sử dụng trình cập nhật trên Windows. Chỉ một ứng dụng mới có thể liên lạc với tai nghe Buds cùng một lúc.</sys:String>
 
+    <!-- Touchpad gestures -->
+    <sys:String x:Key="touchpad_gesture_header">Kích hoạt các thao tác chạm</sys:String>
+    <sys:String x:Key="touchpad_gesture_single">Chạm một lần</sys:String>
+    <sys:String x:Key="touchpad_gesture_single_desc">Chơi hoặc dừng nhạc</sys:String>
+    <sys:String x:Key="touchpad_gesture_double">Chạm đúp</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_desc">Chơi bài tiếp theo</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple">Chạm ba lần</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple_desc">Chơi bài trước</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold">Chạm và giữ</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_desc">Thi hành tác vụ tùy chọn</sys:String>
+   
     <!-- Touchpad page -->
     <sys:String x:Key="touchpad_header">Mặt cảm ứng</sys:String>
     <sys:String x:Key="touchpad_lock">Khóa mặt cảm ứng</sys:String>
     <sys:String x:Key="touchpad_left_action">Thao tác trái</sys:String>
     <sys:String x:Key="touchpad_right_action">Thao tác phải</sys:String>
-
+   
+    <sys:String x:Key="touchpad_gestures">Khóa chạm nâng cao</sys:String>
+    <sys:String x:Key="touchpad_gestures_description">Kích hoạt hoặc vô hiệu hóa các thao tác chạm mặc định</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume">Gõ đúp cạnh tai nghe</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Gõ đúp cạnh tai nghe bên trái hay phải để giảm hoặc tăng âm lượng</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode">Chuyển đổi chế độ điều chỉnh tiếng ồn</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">Khử tiếng ồn &lt;-&gt; Xuyên âm</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">Khử tiếng ồn &lt;-&gt; Tắt</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Xuyên âm &lt;-&gt; Tắt</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_threeway">Xoay vòng giữa các chế độ (Khử tiếng ồn, Xuyên âm, Tắt)</sys:String>
 
     <!-- Custom touchpad action page -->
     <sys:String x:Key="cact_header">Thiết lập thao tác chạm-giữ</sys:String>
@@ -263,6 +282,10 @@
     <sys:String x:Key="system_trace_core_dump_desc">Nhận dữ liệu gỡ lỗi gốc từ tai nghe của bạn</sys:String>
     <sys:String x:Key="system_info">Xem thông tin hệ thống</sys:String>
     <sys:String x:Key="system_info_desc">Hiển thị thông tin chi tiết về tai nghe của bạn</sys:String>
+    <sys:String x:Key="system_flasher">Cài đặt các cập nhật firmware</sys:String>
+    <sys:String x:Key="system_flasher_desc">Nâng cấp, hạ cấp, hoặc cài đặt custom firmware</sys:String>
+    <sys:String x:Key="system_spatial">Dump dữ liệu số đo từ cảm biến không gian</sys:String>
+    <sys:String x:Key="system_spatial_desc">Đọc dữ liệu theo dõi đầu không gian sử dụng cho âm thanh 3D</sys:String>
 
     <sys:String x:Key="system_battery_type_unknown">Không xác định</sys:String>
     <sys:String x:Key="system_waiting_for_device">Đang chờ phản hồi...</sys:String>
@@ -337,6 +360,15 @@
     <sys:String x:Key="settings_cpopup_override_title_dialog">Vui lòng nhập tiêu đề tùy ý. Bạn có thể đặt lại tiêu đề mặc định bằng cách để trống ô nhập liệu này.</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen">Chỉ màn hình chính</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen_description">Chỉ hiển thị thông báo trên màn hình chính</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state">Sử dụng màu khác khi nằm trong hộp</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state_description">Làm xám biểu tượng tai nghe khi đang trong hộp</sys:String>
+
+     <!-- Settings >>> Crowdsourcing settings -->
+    <sys:String x:Key="settings_crowd_header">Nguồn cung ứng cộng đồng</sys:String>
+    <sys:String x:Key="settings_crowd_allow">Cho phép đóng góp bằng nguồn cung ứng cộng đồng</sys:String>
+    <sys:String x:Key="settings_crowd_allow_description">Thu thập thông tin về cấu trúc và dữ liệu giao thức Bluetooth độc quyền của Samsung theo yêu cầu. Điều này cho phép tôi dễ dàng hỗ trợ hơn các dòng Galaxy Buds hiện có mà không cần sở hữu chúng.</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport">Cho phép tạo báo cáo sự cố văng ứng dụng</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport_description">Gửi báo cáo sự cố tự động trong trường hợp bị văng ứng dụng hoặc gặp lỗi nghiêm trọng bằng Sentry. Điều này giúp tôi đáp ứng nhanh hơn với các lỗi gây khó chịu và có thể gây hỏng.</sys:String>
 
     <!-- Factory reset -->
     <sys:String x:Key="factory_header">Khôi phục thiết lập gốc</sys:String>
@@ -360,6 +392,9 @@
     <sys:String x:Key="eq_enable">Kích hoạt bộ cân bằng âm (EQ)</sys:String>
     <sys:String x:Key="eq_preset">Preset</sys:String>
     <sys:String x:Key="eq_dolby">Tối ưu hóa để sử dụng với Dolby</sys:String>
+    <sys:String x:Key="eq_stereo_balance">Cân bằng âm trái/phải</sys:String>
+    <sys:String x:Key="eq_stereo_balance_value">{0}% trái; {1}% phải</sys:String>
+    <sys:String x:Key="eq_stereo_balance_neutral">Trung hòa</sys:String>
 
     <sys:String x:Key="eq_bass">Tăng âm trầm (Bass Boost)</sys:String>
     <sys:String x:Key="eq_soft">Nhẹ nhàng (Soft)</sys:String>
@@ -371,10 +406,23 @@
     <sys:String x:Key="nc_header">Kiểm soát tiếng ồn</sys:String>
     <sys:String x:Key="nc_anc_level">Độ nhạy cao</sys:String>
     <sys:String x:Key="nc_anc_level_description">Hiệu ứng khử tiếng ồn mạnh hơn</sys:String>
+    <sys:String x:Key="nc_ambient">Tùy chỉnh xuyên âm</sys:String>
+    <sys:String x:Key="nc_ambient_description">Tùy chỉnh âm điệu và âm lượng xuyên âm (nếu khả dụng)</sys:String>
     <sys:String x:Key="nc_voicedetect">Phát hiện cuộc trò chuyện</sys:String>
     <sys:String x:Key="nc_voicedetect_description">Khi giọng của bạn được phát hiện, tự động bật xuyên âm và giảm âm lượng đa phương tiện nhằm giúp bạn trò chuyện dễ dàng hơn</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">Thời gian chờ hội thoại</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} giây</sys:String>
+   
+    <!-- Noise control >>> Ambient sound -->
+    <sys:String x:Key="nc_as_header">Cài đặt xuyên âm</sys:String>
+    <sys:String x:Key="nc_as_custom">Tùy chỉnh nâng cao</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_l">Âm lượng xuyên âm (trái)</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_r">Âm lượng xuyên âm (phải)</sys:String>
+    <sys:String x:Key="nc_as_custom_tone">Âm điệu xuyên âm</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_clear">Trong</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_soft">Mềm</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_neutral">Trung hòa</sys:String>
+    <sys:String x:Key="nc_as_custom_vol_normal">Bình thường</sys:String>
     
     <!-- Ambient sound -->
     <sys:String x:Key="as_header">Xuyên âm</sys:String>
