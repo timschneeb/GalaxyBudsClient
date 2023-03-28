@@ -14,8 +14,8 @@
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
         <ApplicationIcon>Resources/icon_white.ico</ApplicationIcon>
-        <AssemblyVersion>4.5.1.0</AssemblyVersion>
-        <Version>4.5.1.0</Version>
+        <AssemblyVersion>4.5.3.0</AssemblyVersion>
+        <Version>4.5.3.0</Version>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <Configurations>Debug;Release;Debug (Local server);Release - Windows ARM</Configurations>
