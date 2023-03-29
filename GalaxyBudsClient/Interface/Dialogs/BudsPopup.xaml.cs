@@ -160,9 +160,27 @@ namespace GalaxyBudsClient.Interface.Dialogs
         {
             /* Load strings */
             string modifier = string.Empty;
-            if (BluetoothImpl.Instance.ActiveModel == Models.BudsPlus) modifier = "+";
-            else if (BluetoothImpl.Instance.ActiveModel == Models.BudsLive) modifier = " Live";
-            else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPro) modifier = " Pro";
+
+            switch (BluetoothImpl.Instance.ActiveModel)
+            {
+                case Models.Buds:
+                    break;
+                case Models.BudsPlus:
+                    modifier = "+";
+                    break;
+                case Models.BudsLive:
+                    modifier = " Live";
+                    break;
+                case Models.BudsPro:
+                    modifier = " Pro";
+                    break;
+                case Models.Buds2:
+                    modifier = "2";
+                    break;
+                case Models.Buds2Pro:
+                    modifier = "2 Pro";
+                    break;
+            }
 
             string name = Environment.UserName.Split(' ')[0];
 
