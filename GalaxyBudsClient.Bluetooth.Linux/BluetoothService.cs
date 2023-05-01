@@ -280,6 +280,9 @@ namespace GalaxyBudsClient.Bluetooth.Linux
 
         private async Task<bool> AttemptBasicConnectionAsync(bool noRetry)
         {
+            if (await _device.GetConnectedAsync())
+                return true;
+
             try
             {
                 await _device?.ConnectAsync()!;
