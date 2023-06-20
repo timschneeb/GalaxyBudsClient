@@ -275,7 +275,7 @@
     <sys:String x:Key="system_selftest">自检</sys:String>
     <sys:String x:Key="system_selftest_desc">检查耳机的所有模块是否正常工作</sys:String>
     <sys:String x:Key="system_factory_reset">恢复出厂设置</sys:String>
-    <sys:String x:Key="system_factory_reset_desc">降耳机恢复到出厂设置并断开连接</sys:String>
+    <sys:String x:Key="system_factory_reset_desc">将耳机恢复到出厂设置并断开连接</sys:String>
     <sys:String x:Key="system_pairing_mode">进入配对模式</sys:String>
     <sys:String x:Key="system_pairing_mode_desc">断开耳机与该设备的连接并使其对其他设备可见</sys:String>
     <sys:String x:Key="system_trace_core_dump">获取跟踪数据</sys:String>
