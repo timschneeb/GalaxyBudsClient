@@ -4,57 +4,15 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>74%</td><td>111 missing string(s)</td></tr>
+<tr><td>83%</td><td>69 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
 
 <table>
 <tr><th>Key</th><th>Original string</th></tr>
-<tr><td><code>devsel_manual_pair</code></td><td>Manual connection</td></tr>
-<tr><td><code>touchpad_gesture_header</code></td><td>Enable touchpad gestures</td></tr>
-<tr><td><code>touchpad_gesture_single</code></td><td>Single tap</td></tr>
-<tr><td><code>touchpad_gesture_single_desc</code></td><td>Play or pause track</td></tr>
-<tr><td><code>touchpad_gesture_double</code></td><td>Double tap</td></tr>
-<tr><td><code>touchpad_gesture_double_desc</code></td><td>Play next track</td></tr>
-<tr><td><code>touchpad_gesture_triple</code></td><td>Triple tap</td></tr>
-<tr><td><code>touchpad_gesture_triple_desc</code></td><td>Play previous track</td></tr>
-<tr><td><code>touchpad_gesture_hold</code></td><td>Touch and hold</td></tr>
-<tr><td><code>touchpad_gesture_hold_desc</code></td><td>Execute custom action</td></tr>
-<tr><td><code>touchpad_gestures</code></td><td>Advanced touch lock</td></tr>
-<tr><td><code>touchpad_gestures_description</code></td><td>Enable or disable default touch gestures</td></tr>
-<tr><td><code>touchpad_noise_control_mode</code></td><td>Noise control switching mode</td></tr>
-<tr><td><code>touchpad_noise_control_mode_anc_amb</code></td><td>ANC <-> Ambient sound</td></tr>
-<tr><td><code>touchpad_noise_control_mode_anc_off</code></td><td>ANC <-> Off</td></tr>
-<tr><td><code>touchpad_noise_control_mode_amb_off</code></td><td>Ambient sound <-> Off</td></tr>
-<tr><td><code>touchpad_noise_control_mode_threeway</code></td><td>Cycle between modes (ANC, Ambient, Off)</td></tr>
-<tr><td><code>system_flasher</code></td><td>Install firmware updates</td></tr>
-<tr><td><code>system_flasher_desc</code></td><td>Upgrade, downgrade, or flash custom firmware binaries</td></tr>
-<tr><td><code>system_spatial</code></td><td>Dump spatial sensor measurements</td></tr>
-<tr><td><code>system_spatial_desc</code></td><td>Read spatial head-tracking data used for 3D audio</td></tr>
 <tr><td><code>settings_autostart_permission</code></td><td>Cannot update auto-start entry in registry. Registry access (HKCU) was explicitly disabled by your system administrator.</td></tr>
 <tr><td><code>settings_crowdsourcing</code></td><td>Crowdsourcing</td></tr>
-<tr><td><code>settings_cpopup_wear_state</code></td><td>Use different color when in case</td></tr>
-<tr><td><code>settings_cpopup_wear_state_description</code></td><td>Gray earbud icon out when your earbuds are in the case</td></tr>
-<tr><td><code>settings_crowd_header</code></td><td>Crowdsourcing</td></tr>
-<tr><td><code>settings_crowd_allow</code></td><td>Allow crowdsourcing contribution</td></tr>
-<tr><td><code>settings_crowd_allow_description</code></td><td>Collect information about Samsung's proprietary Bluetooth protocol structure and data on demand. This allows me to keep all available Galaxy Buds models supported much more easily without owning them.</td></tr>
-<tr><td><code>settings_crowd_crashreport</code></td><td>Allow app crash reports</td></tr>
-<tr><td><code>settings_crowd_crashreport_description</code></td><td>Send application crash reports automatically in case of crashes or fatal errors using Sentry. This helps me to respond more quickly to problematic and disruptive application bugs.</td></tr>
-<tr><td><code>eq_stereo_balance</code></td><td>Left/right sound balance</td></tr>
-<tr><td><code>eq_stereo_balance_value</code></td><td>{0}% left; {1}% right</td></tr>
-<tr><td><code>eq_stereo_balance_neutral</code></td><td>Neutral</td></tr>
-<tr><td><code>nc_ambient</code></td><td>Customize ambient sound</td></tr>
-<tr><td><code>nc_ambient_description</code></td><td>Configure ambient sound tone and volume (if available)</td></tr>
-<tr><td><code>nc_as_header</code></td><td>Ambient sound settings</td></tr>
-<tr><td><code>nc_as_custom</code></td><td>Advanced customization</td></tr>
-<tr><td><code>nc_as_custom_volume_l</code></td><td>Ambient sound volume (left)</td></tr>
-<tr><td><code>nc_as_custom_volume_r</code></td><td>Ambient sound volume (right)</td></tr>
-<tr><td><code>nc_as_custom_tone</code></td><td>Ambient sound tone</td></tr>
-<tr><td><code>nc_as_custom_tone_clear</code></td><td>Clear</td></tr>
-<tr><td><code>nc_as_custom_tone_soft</code></td><td>Soft</td></tr>
-<tr><td><code>nc_as_custom_tone_neutral</code></td><td>Neutral</td></tr>
-<tr><td><code>nc_as_custom_vol_normal</code></td><td>Normal</td></tr>
 <tr><td><code>adv_bixby_remap</code></td><td>Remap Bixby wakeup</td></tr>
 <tr><td><code>adv_bixby_remap_desc</code></td><td>Define what should happen when you say 'Hey Bixby!'</td></tr>
 <tr><td><code>bixby_remap_header</code></td><td>Remap Bixby wakeup</td></tr>
