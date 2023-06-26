@@ -54,19 +54,27 @@ Aside from standard features known from the official Android app, this project h
 
 ## Download
 
-Get binaries for Windows and Linux in the [release](https://github.com/ThePBone/GalaxyBudsClient/releases) section. Please read the release notes before installing.
+There are several Linux packages available:
+* [Flatpak (All Linux distros)](#flatpak)
+* [AUR package (Arch Linux)](#aur-package)
 
+Get binaries for Windows in the [release](https://github.com/ThePBone/GalaxyBudsClient/releases) section. Please read the release notes before installation:
 <p align="center">
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
-### winget
+### Flatpak
 
-The Windows package is also available to install with Windows Package Manager (winget)
+Universal binary packages for all Linux distributions. This is the recommended way of installing GalaxyBudsClient on Linux.
 
+Available for download on FlatHub: https://flathub.org/apps/me.timschneeberger.GalaxyBudsClient
 ```
-winget install ThePBone.GalaxyBudsClient
+flatpak install me.timschneeberger.GalaxyBudsClient
 ```
+
+<a href='https://flathub.org/apps/me.timschneeberger.GalaxyBudsClient'><img width='240' alt='Download on Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.png'/></a>
+
+> **Note**: Flatpaks are sandboxed. This application can only access `~/.var/app/me.timschneeberger.GalaxyBudsClient/` by default.
 
 ### AUR package 
 
@@ -75,6 +83,13 @@ An [AUR package](https://aur.archlinux.org/packages/galaxybudsclient-bin/) for A
 yay -S galaxybudsclient-bin
 ```
 
+### winget
+
+The Windows package is also available to install with Windows Package Manager (winget)
+
+```
+winget install ThePBone.GalaxyBudsClient
+```
 
 ## How it works
 
