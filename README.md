@@ -134,6 +134,8 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 
 ## Credits
 
+This project is sponsored by [Cloudflare](https://cloudflare.com).
+
 ### Contributors
 
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue templates, wiki and translations
