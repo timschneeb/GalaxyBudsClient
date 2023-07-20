@@ -1,0 +1,33 @@
+#ifndef enums_h
+#define enums_h
+
+enum BT_CONN_RESULT {
+    BT_CONN_SUCCESS = 0x00,
+    BT_CONN_EBASECONN,
+    BT_CONN_ENOTFOUND,
+    BT_CONN_ESDP,
+    BT_CONN_ECID,
+    BT_CONN_EOPEN,
+    BT_CONN_ENULL
+};
+
+enum BT_SEND_RESULT {
+    BT_SEND_SUCCESS = 0x00,
+    BT_SEND_EPARTIAL,
+    BT_SEND_EUNKNOWN,
+    BT_SEND_ENULL
+};
+
+enum UI_BTSEL_RESULT {
+    UI_BTSEL_SUCCESS = 0x00,
+    UI_BTSEL_CANCELLED,
+    UI_BTSEL_EALLOC
+};
+
+enum LOG_LEVELS {
+    LOG_DEBUG,
+    LOG_WARN,
+    LOG_ERROR,
+    LOG_INFO
+};
+#endif
