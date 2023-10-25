@@ -76,7 +76,8 @@ namespace GalaxyBudsClient.Model
             fr,
             [Description("Magyar")]
             hu,
-
+			[Description("Nederlands")]
+			nl,
             [Description("custom_language.xaml")]
             custom
         }
