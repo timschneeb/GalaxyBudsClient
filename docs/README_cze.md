@@ -135,8 +135,6 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 
 ## Zásluhy
 
-Tento projekt sponzorovuje [Cloudflare](https://cloudflare.com).
-
 #### Přispěvatelé
 
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Vydání šablon, wiki a překlady
@@ -166,6 +164,7 @@ Tento projekt sponzorovuje [Cloudflare](https://cloudflare.com).
 * [@tretre91](https://github.com/tretre91) - francouzský překlad
 * [@Sigarya](https://github.com/Sigarya) - hebrejský překlad
 * [@domroaft](https://github.com/domroaft) - maďarský překlad
+* [@lampi8426](https://github.com/lampi8426) - nizozemský překlad
 
 ## Licence
 
