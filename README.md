@@ -166,6 +166,7 @@ This project is sponsored by [Cloudflare](https://cloudflare.com).
 * [@tretre91](https://github.com/tretre91) - French translation
 * [@Sigarya](https://github.com/Sigarya) - Hebrew translation
 * [@domroaft](https://github.com/domroaft) - Hungarian translation
+* [@lampi8426](https://github.com/lampi8426) - Dutch translation
 
 ## License
 
