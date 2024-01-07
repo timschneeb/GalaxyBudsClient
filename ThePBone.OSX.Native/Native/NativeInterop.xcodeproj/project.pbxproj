@@ -1,0 +1,387 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C0981FF3780B7B91E37D9D4 /* Enums.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C0982499301F225484DD35D /* Enums.h */; };
+		1C0982D29F6D26FF02DE32EF /* Logger.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C0986C198273C592B13C5A7 /* Logger.h */; };
+		1C0983CB4A36B117AF41155E /* Bluetooth.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098F273A7E24715983E630 /* Bluetooth.mm */; };
+		1C098973C8D4DA3095C6B6CE /* Logger.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098D9ACC5A0D3D04C265F3 /* Logger.mm */; };
+		1C0989E232D8E7E0534F2834 /* BluetoothDeviceWatcher.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098325C88AD4809959EDBE /* BluetoothDeviceWatcher.mm */; };
+		1C098A725823126AC5BA80A1 /* Native.Logger.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C0984A1AD7CC2C468185656 /* Native.Logger.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1C098AE4A9BA02B8EDE3DA5B /* Native.Bluetooth.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098B72451782C32C519A71 /* Native.Bluetooth.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1C098B613CEC04F9649368B7 /* Native.SystemDialogs.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C0983819DF9A4733D692343 /* Native.SystemDialogs.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1C098B64B53B65C527FA069C /* SystemDialogs.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C098F29E8C7A8B50D157D2C /* SystemDialogs.h */; };
+		1C098CEE45D021CBF857A569 /* Native.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C0984E6D93230E41397FA0D /* Native.h */; };
+		1C098D2FA9AEC3B92E0EA09D /* Bluetooth.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C09879DB3B0035983B5B99A /* Bluetooth.h */; };
+		1C098E958CA148B20DCB4F6D /* BluetoothDeviceWatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C098B5CA5C8E76FE0849D49 /* BluetoothDeviceWatcher.h */; };
+		1C098F6618172671524FDB0A /* SystemDialogs.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098F043E0D6FB5CDFA6D69 /* SystemDialogs.mm */; };
+		1C098FD7AF270DE474ED52EB /* Native.Memory.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098422B9BFF59462222A36 /* Native.Memory.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2276033B2651CDB000D756A8 /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2276033A2651CDB000D756A8 /* IOBluetooth.framework */; };
+		2276033D2651CDB500D756A8 /* IOBluetoothUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2276033C2651CDB500D756A8 /* IOBluetoothUI.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1C0982499301F225484DD35D /* Enums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enums.h; sourceTree = "<group>"; };
+		1C098325C88AD4809959EDBE /* BluetoothDeviceWatcher.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BluetoothDeviceWatcher.mm; sourceTree = "<group>"; };
+		1C0983819DF9A4733D692343 /* Native.SystemDialogs.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Native.SystemDialogs.mm; sourceTree = "<group>"; };
+		1C098422B9BFF59462222A36 /* Native.Memory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Native.Memory.mm; sourceTree = "<group>"; };
+		1C0984A1AD7CC2C468185656 /* Native.Logger.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Native.Logger.mm; sourceTree = "<group>"; };
+		1C0984E6D93230E41397FA0D /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Native.h; sourceTree = "<group>"; };
+		1C0986C198273C592B13C5A7 /* Logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
+		1C09879DB3B0035983B5B99A /* Bluetooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bluetooth.h; sourceTree = "<group>"; };
+		1C09896C4A560632CA6CF376 /* libNativeInterop.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libNativeInterop.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C098B5CA5C8E76FE0849D49 /* BluetoothDeviceWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothDeviceWatcher.h; sourceTree = "<group>"; };
+		1C098B72451782C32C519A71 /* Native.Bluetooth.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Native.Bluetooth.mm; sourceTree = "<group>"; };
+		1C098D9ACC5A0D3D04C265F3 /* Logger.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Logger.mm; sourceTree = "<group>"; };
+		1C098F043E0D6FB5CDFA6D69 /* SystemDialogs.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SystemDialogs.mm; sourceTree = "<group>"; };
+		1C098F273A7E24715983E630 /* Bluetooth.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Bluetooth.mm; sourceTree = "<group>"; };
+		1C098F29E8C7A8B50D157D2C /* SystemDialogs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemDialogs.h; sourceTree = "<group>"; };
+		2276033A2651CDB000D756A8 /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = System/Library/Frameworks/IOBluetooth.framework; sourceTree = SDKROOT; };
+		2276033C2651CDB500D756A8 /* IOBluetoothUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetoothUI.framework; path = System/Library/Frameworks/IOBluetoothUI.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1C0989DF3D3B6BB25C5A4532 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2276033D2651CDB500D756A8 /* IOBluetoothUI.framework in Frameworks */,
+				2276033B2651CDB000D756A8 /* IOBluetooth.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C0986D6038D35A3E0088401 = {
+			isa = PBXGroup;
+			children = (
+				1C098846E0A1E463C39CF74F /* Products */,
+				1C098F4E31B5C740FB51BB0F /* src */,
+				1C09892EFD59C21B32D31777 /* include */,
+				227603392651CDB000D756A8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1C098846E0A1E463C39CF74F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1C09896C4A560632CA6CF376 /* libNativeInterop.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1C09892EFD59C21B32D31777 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				1C0984E6D93230E41397FA0D /* Native.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		1C098C4BB6B054DCFF1D9264 /* bridge */ = {
+			isa = PBXGroup;
+			children = (
+				1C098422B9BFF59462222A36 /* Native.Memory.mm */,
+				1C098B72451782C32C519A71 /* Native.Bluetooth.mm */,
+				1C0983819DF9A4733D692343 /* Native.SystemDialogs.mm */,
+				1C0984A1AD7CC2C468185656 /* Native.Logger.mm */,
+			);
+			path = bridge;
+			sourceTree = "<group>";
+		};
+		1C098F4E31B5C740FB51BB0F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				1C09879DB3B0035983B5B99A /* Bluetooth.h */,
+				1C098F273A7E24715983E630 /* Bluetooth.mm */,
+				1C098F043E0D6FB5CDFA6D69 /* SystemDialogs.mm */,
+				1C098F29E8C7A8B50D157D2C /* SystemDialogs.h */,
+				1C098325C88AD4809959EDBE /* BluetoothDeviceWatcher.mm */,
+				1C098B5CA5C8E76FE0849D49 /* BluetoothDeviceWatcher.h */,
+				1C098C4BB6B054DCFF1D9264 /* bridge */,
+				1C098D9ACC5A0D3D04C265F3 /* Logger.mm */,
+				1C0986C198273C592B13C5A7 /* Logger.h */,
+				1C0982499301F225484DD35D /* Enums.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		227603392651CDB000D756A8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2276033C2651CDB500D756A8 /* IOBluetoothUI.framework */,
+				2276033A2651CDB000D756A8 /* IOBluetooth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1C098BE86AD9A483455FA215 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C098D2FA9AEC3B92E0EA09D /* Bluetooth.h in Headers */,
+				1C098CEE45D021CBF857A569 /* Native.h in Headers */,
+				1C098B64B53B65C527FA069C /* SystemDialogs.h in Headers */,
+				1C098E958CA148B20DCB4F6D /* BluetoothDeviceWatcher.h in Headers */,
+				1C0982D29F6D26FF02DE32EF /* Logger.h in Headers */,
+				1C0981FF3780B7B91E37D9D4 /* Enums.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1C098FD2EFC95C46A8BD2F9B /* NativeInterop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C098C20BB23AA8934D77F5B /* Build configuration list for PBXNativeTarget "NativeInterop" */;
+			buildPhases = (
+				1C098BE86AD9A483455FA215 /* Headers */,
+				1C0982AA8501763AEDE5F18D /* Sources */,
+				1C0989DF3D3B6BB25C5A4532 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NativeInterop;
+			productName = NativeInterop;
+			productReference = 1C09896C4A560632CA6CF376 /* libNativeInterop.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1C0984D130776B708AC54F6D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Tim Schneeberger";
+			};
+			buildConfigurationList = 1C098E4A108E9474A6479BF4 /* Build configuration list for PBXProject "NativeInterop" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1C0986D6038D35A3E0088401;
+			productRefGroup = 1C098846E0A1E463C39CF74F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1C098FD2EFC95C46A8BD2F9B /* NativeInterop */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1C0982AA8501763AEDE5F18D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C0983CB4A36B117AF41155E /* Bluetooth.mm in Sources */,
+				1C098F6618172671524FDB0A /* SystemDialogs.mm in Sources */,
+				1C0989E232D8E7E0534F2834 /* BluetoothDeviceWatcher.mm in Sources */,
+				1C098FD7AF270DE474ED52EB /* Native.Memory.mm in Sources */,
+				1C098AE4A9BA02B8EDE3DA5B /* Native.Bluetooth.mm in Sources */,
+				1C098B613CEC04F9649368B7 /* Native.SystemDialogs.mm in Sources */,
+				1C098973C8D4DA3095C6B6CE /* Logger.mm in Sources */,
+				1C098A725823126AC5BA80A1 /* Native.Logger.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1C098074F924FC0864305F1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CONFIGURATION_BUILD_DIR = Build/Debug;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-v",
+				);
+				SDKROOT = macosx;
+				SYMROOT = Build;
+			};
+			name = Debug;
+		};
+		1C09827AF52EA0F761CAE858 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CONFIGURATION_BUILD_DIR = Build/Release;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-v",
+				);
+				SDKROOT = macosx;
+				SYMROOT = Build;
+			};
+			name = Release;
+		};
+		1C098E88951D039B002D5EF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = include/;
+				OTHER_CFLAGS = "-v";
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-v",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SYMROOT = Build;
+			};
+			name = Debug;
+		};
+		1C098E8DC44A098A7EEA933F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = include/;
+				OTHER_CFLAGS = "-v";
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-v",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SYMROOT = Build;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1C098C20BB23AA8934D77F5B /* Build configuration list for PBXNativeTarget "NativeInterop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C098E88951D039B002D5EF3 /* Debug */,
+				1C098E8DC44A098A7EEA933F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C098E4A108E9474A6479BF4 /* Build configuration list for PBXProject "NativeInterop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C098074F924FC0864305F1E /* Debug */,
+				1C09827AF52EA0F761CAE858 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1C0984D130776B708AC54F6D /* Project object */;
+}
