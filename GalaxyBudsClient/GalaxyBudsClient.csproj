@@ -18,11 +18,23 @@
         <Version>4.5.3.0</Version>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
         <Configurations>Debug;Release;Debug (Local server);Release - Windows ARM</Configurations>
         <Platforms>AnyCPU</Platforms>
         <DisableWinExeOutputInference>false</DisableWinExeOutputInference>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <LangVersion>9</LangVersion>
+        <RuntimeIdentifiers>osx-x64</RuntimeIdentifiers>
+        <CFBundleName>GalaxyBudsClient</CFBundleName> <!-- Also defines .app file name -->
+        <CFBundleDisplayName>GalaxyBudsClient</CFBundleDisplayName>
+        <CFBundleIdentifier>com.galaxy.buds</CFBundleIdentifier>
+        <CFBundleVersion>1.0.0</CFBundleVersion>
+        <CFBundleShortVersionString>1.0.0</CFBundleShortVersionString>
+        <CFBundlePackageType>APPL</CFBundlePackageType>
+        <CFBundleExecutable>GalaxyBudsClient</CFBundleExecutable>
+        <CFBundleIconFile>Logo.icns</CFBundleIconFile> <!-- Will be copied from output directory -->
+        <NSPrincipalClass>NSApplication</NSPrincipalClass>
+        <NSHighResolutionCapable>true</NSHighResolutionCapable>
         
         <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
     </PropertyGroup>
@@ -48,6 +60,13 @@
         <DefineConstants>UseLocalServer</DefineConstants>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+      <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+      <DebugSymbols>true</DebugSymbols>
+      <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
     <ItemGroup>
         <AvaloniaResource Include="Resources\**" />
         <EmbeddedResource Include="Resources\**" />
@@ -95,6 +114,7 @@
         <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
         <PackageReference Include="Tmds.DBus" Version="0.9.1" />
         <PackageReference Include="Trinet.Core.IO.Ntfs" Version="4.1.1" />
+        <PackageReference Include="Dotnet.Bundle" Version="*" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsWindows)'=='true'">
@@ -107,8 +127,13 @@
         <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Linux\GalaxyBudsClient.Bluetooth.Linux.csproj" />
         <ProjectReference Include="..\ThePBone.MprisClient\ThePBone.MprisClient.csproj" />
     </ItemGroup>
+    
+    <ItemGroup Condition="'$(IsOSX)'=='true'">
+    </ItemGroup>
 
     <ItemGroup>
+        <!-- TODO find out why i cant move this to conditional without breaking ide (cli works) -->
+        <ProjectReference Include="..\ThePBone.OSX.Native\ThePBone.OSX.Native.csproj" />
         <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj" />
     </ItemGroup>
 </Project>

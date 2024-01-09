@@ -121,6 +121,28 @@
     return [mRFCOMMChannel isOpen];
 }
 
+- (BT_ENUM_RESULT)enumerate:(EnumerationResult*)result {
+    NSArray *inDevices = [IOBluetoothDevice pairedDevices];
+    result->length = (unsigned long)[inDevices count];
+    result->devices = new Device[result->length];
+    
+    for (int i = 0; i < result->length; i++) {
+        Device* resultDevice = &result->devices[i];
+        IOBluetoothDevice *device = [inDevices objectAtIndex:i];
+        NSLog(@"found %@", [device name]);
+        resultDevice->device_name = (char*)malloc([device.name lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
+        resultDevice->mac_address = (char*)malloc([device.addressString lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
+        strcpy(resultDevice->device_name, device.name.UTF8String);
+        strcpy(resultDevice->mac_address, device.addressString.UTF8String);
+        resultDevice->is_connected = device.isConnected;
+        resultDevice->is_paired = device.isPaired;
+        resultDevice->cod = device.classOfDevice;
+    }
+    
+    return BT_ENUM_SUCCESS;
+    //return BT_ENUM_EUNKNOWN;
+}
+
 - (BT_SEND_RESULT)sendData:(char*)buffer length:(UInt32)length
 {
     if (mRFCOMMChannel != nil)

@@ -18,13 +18,6 @@ struct BluetoothImpl {
     BluetoothDeviceWatcher *watcher;
 };
 
-struct Device {
-    char* mac_address;
-    char* device_name;
-    bool is_connected;
-    bool is_paired;
-};
-
 extern "C" {
     /* Bluetooth manager */
     extern bool bt_alloc(BluetoothImpl** self);
@@ -33,6 +26,7 @@ extern "C" {
     extern BT_CONN_RESULT bt_connect(BluetoothImpl* self, const char* mac, const unsigned char* uuid);
     extern bool bt_disconnect(BluetoothImpl* self);
     extern BT_SEND_RESULT bt_send(BluetoothImpl* self, void* data, unsigned int length);
+    extern BT_ENUM_RESULT bt_enumerate(BluetoothImpl* self, EnumerationResult* result);
     extern bool bt_is_connected(BluetoothImpl* self);
 
     extern void bt_set_on_channel_data(BluetoothImpl* self, Bt_OnChannelData cb);

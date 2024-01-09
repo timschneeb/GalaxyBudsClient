@@ -51,6 +51,7 @@
     strcpy(result->mac_address, selectedDevice.addressString.UTF8String);
     result->is_connected = selectedDevice.isConnected;
     result->is_paired = selectedDevice.isPaired;
+    result->cod = selectedDevice.classOfDevice;
     return UI_BTSEL_SUCCESS;
 }
 @end

@@ -12,6 +12,7 @@ namespace GalaxyBudsClient.Bluetooth
             ConnectFailed,
             ReceiveFailed,
             SendFailed,
+            AllocationFailed,
             Unknown
         }
         

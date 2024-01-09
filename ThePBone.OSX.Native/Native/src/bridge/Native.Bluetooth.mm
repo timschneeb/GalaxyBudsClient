@@ -39,6 +39,10 @@ BT_SEND_RESULT bt_send(BluetoothImpl *self, void *data, unsigned int length) {
     return [self->client sendData:static_cast<char *>(data) length:length];
 }
 
+BT_ENUM_RESULT bt_enumerate(BluetoothImpl *self, EnumerationResult *result) {
+    return [self->client enumerate:result];
+}
+
 bool bt_is_connected(BluetoothImpl *self) {
     return [self->client isConnected];
 }

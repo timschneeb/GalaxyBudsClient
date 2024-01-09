@@ -17,8 +17,15 @@ namespace ThePBone.OSX.Native.Unmanaged
         internal IntPtr device_name;
         internal bool is_connected;
         internal bool is_paired;
+        internal uint cod;
     };
-    
+
+    public struct EnumerationResult
+    {
+        internal int length;
+        internal unsafe Device* devices;
+    };
+
     enum BT_CONN_RESULT {
         BT_CONN_SUCCESS = 0x00,
         BT_CONN_EBASECONN,
@@ -26,6 +33,11 @@ namespace ThePBone.OSX.Native.Unmanaged
         BT_CONN_ESDP,
         BT_CONN_ECID,
         BT_CONN_EOPEN
+    };
+
+    enum BT_ENUM_RESULT {
+        BT_ENUM_SUCCESS = 0x00,
+        BT_ENUM_EUNKNOWN
     };
 
     enum BT_SEND_RESULT {
@@ -68,6 +80,8 @@ namespace ThePBone.OSX.Native.Unmanaged
         internal static extern unsafe bool bt_disconnect(BluetoothImpl* self);
         [DllImport(DSO.Name)]
         internal static extern unsafe BT_SEND_RESULT bt_send(BluetoothImpl* self, byte* data, uint length);
+        [DllImport(DSO.Name)]
+        internal static extern unsafe BT_ENUM_RESULT bt_enumerate(BluetoothImpl* self, ref EnumerationResult result);
         [DllImport(DSO.Name)]
         internal static extern unsafe bool bt_is_connected(BluetoothImpl* self);
         

@@ -4,7 +4,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <IOBluetooth/IOBluetooth.h>
 #import "Enums.h"
+
+struct Device {
+    char* mac_address;
+    char* device_name;
+    bool is_connected;
+    bool is_paired;
+    uint32_t cod;
+};
+
+struct EnumerationResult
+{
+    int length;
+    Device* devices;
+};
 
 @class IOBluetoothDevice;
 @class IOBluetoothRFCOMMChannel;
@@ -12,13 +27,15 @@
 typedef void (*Bt_OnChannelData)(void* data, unsigned long size);
 typedef void (*Bt_OnChannelClosed)();
 
-@interface Bluetooth<IOBluetoothRFCOMMChannelDelegate> : NSObject
+@interface Bluetooth<IOBluetoothRFCOMMChannelDelegate, IOBluetoothDeviceInquiryDelegate> : NSObject
 {
     __strong IOBluetoothRFCOMMChannel	*mRFCOMMChannel;
 }
 
+
 - (id)              init;
 - (BT_CONN_RESULT)  connect:(NSString*)mac uuid:(const UInt8*)uuid;
+- (BT_ENUM_RESULT)  enumerate:(EnumerationResult*)result;
 - (BOOL)            disconnect;
 - (BOOL)            isConnected;
 - (BT_SEND_RESULT)  sendData:(char *)buffer length:(UInt32)length;

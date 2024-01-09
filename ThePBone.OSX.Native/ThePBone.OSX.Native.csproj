@@ -1,11 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
-        <LangVersion>latest</LangVersion>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <Nullable>enable</Nullable>
+        <TargetFrameworks>net6.0;netstandard2.1</TargetFrameworks>
+        <nullable>enable</nullable>
+        <Configurations>Debug;Release;Debug (Local server)</Configurations>
+        <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -14,6 +13,18 @@
         <IsPackable Condition="'$([MSBuild]::IsOSPlatform(OSX))' == 'True'">true</IsPackable>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+      <LangVersion>9.0</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+      <LangVersion>9.0</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug (Local server)|AnyCPU' ">
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+      <LangVersion>9.0</LangVersion>
+    </PropertyGroup>
     <ItemGroup Condition="'$(PackNative)' == 'true'">
         <Content Include="Native/Build/Release/libNativeInterop.dylib">
             <Link>libNativeInterop.dylib</Link>
@@ -30,6 +41,10 @@
         <AvaloniaResource Include="**\*.xaml">
             <SubType>Designer</SubType>
         </AvaloniaResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj" />
     </ItemGroup>
 
     <ItemGroup>

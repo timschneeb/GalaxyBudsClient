@@ -4,13 +4,17 @@ using System.Threading;
 using System.Threading.Tasks;
 using Serilog;
 using ThePBone.OSX.Native.Unmanaged;
+using GalaxyBudsClient.Bluetooth;
+using System.Net.Mail;
+using System.Security.Cryptography;
 
 namespace ThePBone.OSX.Native
 {
-    public class BluetoothService : IDisposable
+    public class BluetoothService : IBluetoothService
     {
         private static readonly SemaphoreSlim ConnSemaphore = new SemaphoreSlim(1, 1);
-        
+        private static readonly SemaphoreSlim SearchSemaphore = new SemaphoreSlim(1, 1);
+
         private string _currentMac = string.Empty;
         private string _currentUuid = string.Empty;
 
@@ -91,7 +95,7 @@ namespace ThePBone.OSX.Native
             Console.WriteLine("OSX.BluetoothService: Channel closed. Disconnected.");
         }
         
-        private bool IsStreamConnected
+        public bool IsStreamConnected
         {
             get
             {
@@ -103,6 +107,58 @@ namespace ThePBone.OSX.Native
         }
 
         #region Detection
+        public async Task<BluetoothDevice[]> GetDevicesAsync()
+        {
+            var semResult = await SearchSemaphore.WaitAsync(5000);
+            if (semResult == false)
+            {
+                Log.Error($"OSX.BluetoothService: Enumerate attempt timed out due to blocked semaphore");
+                throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "Timed out while waiting to enter enumerate phase. Another task is already enumerating.");
+            }
+
+            BT_ENUM_RESULT status;
+            BluetoothDevice[] devices;
+            unsafe
+            {
+                EnumerationResult result = new EnumerationResult();
+                status = Bluetooth.bt_enumerate(_nativePtr, ref result);
+                if (status == BT_ENUM_RESULT.BT_ENUM_SUCCESS)
+                {
+                    devices = new BluetoothDevice[result.length];
+                    Device* /* Device[] */ rawDevices = (Device*)result.devices;
+                    for (int i = 0; i < result.length; i++)
+                    {
+                        Device* d = &rawDevices[i];
+                        devices[i] = new BluetoothDevice(
+                            Marshal.PtrToStringUTF8(d->device_name) ?? String.Empty,
+                            (Marshal.PtrToStringUTF8(d->mac_address) ?? String.Empty).Replace("-", ":"),
+                            d->is_connected,
+                            d->is_paired,
+                            new BluetoothCoD(d->cod));
+                        Memory.btdev_free(ref *d);
+                    }
+                    Memory.mem_free(rawDevices);
+                }
+                else
+                {
+                    devices = new BluetoothDevice[0];
+                }
+            }
+
+            Log.Debug($"OSX.BluetoothService: found {devices.Length} paired devices");
+
+            if (status != BT_ENUM_RESULT.BT_ENUM_SUCCESS)
+            {
+                Log.Error($"OSX.BluetoothService: Enumerate attempt failed due to error code {status.ToString()}");
+                SearchSemaphore.Release();
+                throw new BluetoothException(BluetoothException.ErrorCodes.Unknown, "Search failed.");
+            }
+
+            SearchSemaphore.Release();
+
+            return devices;
+        }
+
         private void OnDisconnected(IntPtr mac)
         {
             var macAddr = Marshal.PtrToStringAnsi(mac) ?? string.Empty;
@@ -153,8 +209,9 @@ namespace ThePBone.OSX.Native
         #endregion
 
         #region Connection
-        public async Task ConnectAsync(string macAddress, string uuid)
+        public async Task ConnectAsync(string macAddress, string uuid, bool noRetry = false)
         {
+            //TODO osx, do we need noRetry?
             var semResult = await ConnSemaphore.WaitAsync(5000);
             if (semResult == false)
             {

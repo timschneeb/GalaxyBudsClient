@@ -96,8 +96,15 @@ namespace GalaxyBudsClient.Platform
                     Log.Debug("BluetoothImpl: Using Linux.BluetoothService");
                     _backend = new Bluetooth.Linux.BluetoothService();
                 }
+#elif OSX
+                if (PlatformUtils.IsOSX)
+
+                {
+                    Log.Debug("BluetoothImpl: Using OSX.BluetoothService");
+                    _backend = new ThePBone.OSX.Native.BluetoothService();
+                }
 #endif
-                if(_backend == null)
+                if (_backend == null)
                 {
                     Log.Warning("BluetoothImpl: Using Dummy.BluetoothService");
                     _backend = new Dummy.BluetoothService();
