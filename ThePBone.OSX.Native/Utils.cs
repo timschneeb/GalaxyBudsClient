@@ -34,6 +34,7 @@ namespace ThePBone.OSX.Native
         {
             self.SwapBytes(0, 3);
             self.SwapBytes(1, 2);
+            self.SwapBytes(4, 5);//TODO is it correct??
             self.SwapBytes(6, 7);
         }
     }

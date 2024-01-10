@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 using Serilog;
 using ThePBone.OSX.Native.Unmanaged;
 using GalaxyBudsClient.Bluetooth;
-using System.Net.Mail;
-using System.Security.Cryptography;
 
 namespace ThePBone.OSX.Native
 {
@@ -218,61 +216,67 @@ namespace ThePBone.OSX.Native
                 Log.Error($"OSX.BluetoothService: Connection attempt timed out due to blocked semaphore");
                 throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "Timed out while waiting to enter connection phase. Another task is already preparing a connection.");
             }
-            
-            if (IsStreamConnected)
-            {
-                Log.Debug("OSX.BluetoothService: Already connected, skipped.");
-                ConnSemaphore.Release();
-                return;
-            }
 
-            Connecting?.Invoke(this, EventArgs.Empty);
-            Log.Debug($"OSX.BluetoothService: Connecting...");
-            
-            _currentMac = macAddress;
-            _currentUuid = uuid;
-
-            BT_CONN_RESULT result;
-            unsafe
+            try
             {
-                var uuidBytes = new Guid(uuid).ToByteArray();
-                uuidBytes.FixEndiannessOfGuidBytes();
-                fixed (byte* rawUuid = uuidBytes)
+
+                if (IsStreamConnected)
                 {
-                    result = Bluetooth.bt_connect(_nativePtr, macAddress, rawUuid);
+                    Log.Debug("OSX.BluetoothService: Already connected, skipped.");
+                    ConnSemaphore.Release();
+                    return;
                 }
-            }
 
-            switch (result)
+                Connecting?.Invoke(this, EventArgs.Empty);
+                Log.Debug($"OSX.BluetoothService: Connecting ... {macAddress} {uuid}");
+
+                _currentMac = macAddress;
+                _currentUuid = uuid;
+
+                BT_CONN_RESULT result;
+                unsafe
+                {
+                    var uuidBytes = new Guid(uuid).ToByteArray();
+                    uuidBytes.FixEndiannessOfGuidBytes();
+                    fixed (byte* rawUuid = uuidBytes)
+                    {
+                        result = Bluetooth.bt_connect(_nativePtr, macAddress, rawUuid);
+                    }
+                }
+
+                switch (result)
+                {
+                    case BT_CONN_RESULT.BT_CONN_EBASECONN:
+                        throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
+                            "Unable to connect to the Bluetooth device");
+                    case BT_CONN_RESULT.BT_CONN_ENOTFOUND:
+                        throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
+                            "Bluetooth device not found nearby. Make sure it is turned on and discoverable.");
+                    case BT_CONN_RESULT.BT_CONN_ESDP:
+                        throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
+                            "Unable to read SDP records of the Bluetooth device. It appears to be unsupported by this app.");
+                    case BT_CONN_RESULT.BT_CONN_ECID:
+                        throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
+                            "Device returned invalid Bluetooth channel id. Cannot open connection, please try again.");
+                    case BT_CONN_RESULT.BT_CONN_EOPEN:
+                        throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
+                            "Unable to open serial channel on the target device. Please make sure the device is responsive and accessible.");
+                }
+
+                Log.Debug($"OSX.BluetoothService: Registering disconnection notification for connected device");
+                unsafe
+                {
+                    Bluetooth.bt_register_disconnect_notification(_nativePtr, macAddress);
+                }
+
+                Connected?.Invoke(this, EventArgs.Empty);
+                RfcommConnected?.Invoke(this, EventArgs.Empty);
+                Log.Debug($"OSX.BluetoothService: Connected.");
+            }
+            finally
             {
-                case BT_CONN_RESULT.BT_CONN_EBASECONN:
-                    throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, 
-                        "Unable to connect to the Bluetooth device");
-                case BT_CONN_RESULT.BT_CONN_ENOTFOUND:
-                    throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, 
-                        "Bluetooth device not found nearby. Make sure it is turned on and discoverable.");
-                case BT_CONN_RESULT.BT_CONN_ESDP:
-                    throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
-                        "Unable to read SDP records of the Bluetooth device. It appears to be unsupported by this app.");
-                case BT_CONN_RESULT.BT_CONN_ECID:
-                    throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
-                        "Device returned invalid Bluetooth channel id. Cannot open connection, please try again.");
-                case BT_CONN_RESULT.BT_CONN_EOPEN:
-                    throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
-                        "Unable to open serial channel on the target device. Please make sure the device is responsive and accessible.");
+                ConnSemaphore.Release();
             }
-
-            Log.Debug($"OSX.BluetoothService: Registering disconnection notification for connected device");
-            unsafe
-            {
-                Bluetooth.bt_register_disconnect_notification(_nativePtr, macAddress);
-            }
-            
-            Connected?.Invoke(this, EventArgs.Empty);
-            RfcommConnected?.Invoke(this, EventArgs.Empty);
-            Log.Debug($"OSX.BluetoothService: Connected.");
-
-            ConnSemaphore.Release();
         }
         #endregion
 

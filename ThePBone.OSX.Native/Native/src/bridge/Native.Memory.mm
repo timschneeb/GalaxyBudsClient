@@ -6,7 +6,6 @@
 #import "Native.h"
 
 void btdev_free(Device *self) {
-    NSLog(@"name:%s",self->device_name);
     if(self->mac_address)
         free(self->mac_address);
 

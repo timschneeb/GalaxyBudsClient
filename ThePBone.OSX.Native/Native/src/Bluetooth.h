@@ -27,9 +27,10 @@ struct EnumerationResult
 typedef void (*Bt_OnChannelData)(void* data, unsigned long size);
 typedef void (*Bt_OnChannelClosed)();
 
-@interface Bluetooth<IOBluetoothRFCOMMChannelDelegate, IOBluetoothDeviceInquiryDelegate> : NSObject
+@interface Bluetooth<IOBluetoothRFCOMMChannelDelegate, IOBluetoothDeviceAsyncCallbacks> : NSObject
 {
     __strong IOBluetoothRFCOMMChannel	*mRFCOMMChannel;
+    bool sdpQueryDone;
 }
 
 
@@ -50,5 +51,5 @@ typedef void (*Bt_OnChannelClosed)();
 // Implementation of delegate calls (see IOBluetoothRFCOMMChannel.h)
 - (void)            rfcommChannelData:(IOBluetoothRFCOMMChannel *)rfcommChannel data:(void *)dataPointer length:(size_t)dataLength;
 - (void)            rfcommChannelClosed:(IOBluetoothRFCOMMChannel *)rfcommChannel;
-
+- (void)            sdpQueryComplete:(IOBluetoothDevice *)device status:(IOReturn)status;
 @end

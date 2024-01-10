@@ -32,10 +32,38 @@
     {
         return BT_CONN_ENOTFOUND;
     }
+    
+    IOBluetoothSDPUUID* parsedUuid = [IOBluetoothSDPUUID uuidWithBytes:uuid length:16];
 
-    IOBluetoothSDPServiceRecord* serviceRecord = [device getServiceRecordForUUID:[IOBluetoothSDPUUID uuidWithBytes:uuid length:16]];
-
+    // Before we can open the RFCOMM channel, we need to open a connection to the device.
+    // The openRFCOMMChannel... API probably should do this for us, but for now we have to
+    // do it manually.
+    // (needed for sdp too: https://github.com/NSTerminal/terminal/blob/78316cee045c5156c12606e78fa58d1e01e7e0ef/swift/Sources/btutils.swift#L76)
+    IOReturn status = [device openConnection];
+    if ( status != kIOReturnSuccess )
+    {
+        NSLError( @"Error: %s opening connection to device.\n", mach_error_string(status) );
+        return BT_CONN_EBASECONN;
+    }
     NSLDebug(@"connect: 2");
+
+    sdpQueryDone = NO;
+    // sdp query with uuids specified apparently silently fails since Ventura, can reproduce https://developer.apple.com/forums/thread/722228
+    status = [device performSDPQuery:self];
+    if ( status != kIOReturnSuccess )
+    {
+        NSLog(@"Error: %s starting SDP query.\n", mach_error_string(status));
+        // return BT_CONN_ECID; TODO do we want to fail? does it matter that much?
+    }
+    
+    //TODO do we want to poll?
+    while (!sdpQueryDone) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+    }
+
+    IOBluetoothSDPServiceRecord* serviceRecord = [device getServiceRecordForUUID:parsedUuid];
+
+    NSLDebug(@"connect: 3");
 
     if ( serviceRecord == nil )
     {
@@ -45,31 +73,19 @@
 
     // To connect we need a device to connect and an RFCOMM channel ID to open on the device:
     UInt8 rfcommChannelID;
-    IOReturn status = [serviceRecord getRFCOMMChannelID:&rfcommChannelID];
+    status = [serviceRecord getRFCOMMChannelID:&rfcommChannelID];
 
-    NSLDebug(@"connect: 3");
+    NSLDebug(@"connect: 4");
 
 
     // Check to make sure the service record actually had an RFCOMM channel ID
     if ( status != kIOReturnSuccess )
     {
-        NSLError(@"Error: 0x%i getting RFCOMM channel ID from service.\n", status);
+        NSLog(@"Error: %s getting RFCOMM channel ID from service.\n", mach_error_string(status));
         return BT_CONN_ECID;
     }
 
-    NSLDebug(@"Service selected '%s' - RFCOMM Channel ID = %u\n", [serviceRecord getServiceName], rfcommChannelID );
-
-    // Before we can open the RFCOMM channel, we need to open a connection to the device.
-    // The openRFCOMMChannel... API probably should do this for us, but for now we have to
-    // do it manually.
-    status = [device openConnection];
-    if ( status != kIOReturnSuccess )
-    {
-        NSLError( @"Error: 0x%i opening connection to device.\n", status );
-        return BT_CONN_EBASECONN;
-    }
-
-    NSLDebug(@"connect: 4");
+    NSLog(@"Service selected '%@' - RFCOMM Channel ID = %u\n", [serviceRecord getServiceName], rfcommChannelID );
 
     // Open the RFCOMM channel on the new device connection
     IOBluetoothRFCOMMChannel *tempRFCOMMChannel = mRFCOMMChannel;
@@ -78,17 +94,26 @@
 
     NSLDebug(@"connect: 5");
 
-
-    if ( ( status == kIOReturnSuccess ) && ( mRFCOMMChannel != nil ) )
+    // Ignoring the returned error because it works anyway and it appears to be a macOS bug
+    // (Documentation states that if status is not success, RFCOMM channel won't be set but I guess Apple Documentation is hopeless anyway)
+    if ( /*( status != kIOReturnSuccess ) ||*/ ( mRFCOMMChannel == nil ) || ( ! [mRFCOMMChannel isOpen] ))
+    {
+        NSLog( @"Error: %s - unable to open RFCOMM channel.\n", mach_error_string(status) );
+        return BT_CONN_EOPEN;
+    }
+    else
     {
         _macAddress = [[NSString alloc] initWithString:mac];
         return BT_CONN_SUCCESS;
     }
-    else
+}
+
+- (void)sdpQueryComplete:(IOBluetoothDevice *)device status:(IOReturn)status {
+    if ( status != kIOReturnSuccess )
     {
-        NSLError( @"Error: 0x%i - unable to open RFCOMM channel.\n", status );
-        return BT_CONN_EOPEN;
+        NSLog(@"Error: %s performing SDP query.\n", mach_error_string(status));
     }
+    sdpQueryDone = YES;
 }
 
 
@@ -129,7 +154,6 @@
     for (int i = 0; i < result->length; i++) {
         Device* resultDevice = &result->devices[i];
         IOBluetoothDevice *device = [inDevices objectAtIndex:i];
-        NSLog(@"found %@", [device name]);
         resultDevice->device_name = (char*)malloc([device.name lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
         resultDevice->mac_address = (char*)malloc([device.addressString lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
         strcpy(resultDevice->device_name, device.name.UTF8String);
