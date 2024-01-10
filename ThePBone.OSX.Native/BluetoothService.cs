@@ -10,8 +10,8 @@ namespace ThePBone.OSX.Native
 {
     public class BluetoothService : IBluetoothService
     {
-        private static readonly SemaphoreSlim ConnSemaphore = new SemaphoreSlim(1, 1);
-        private static readonly SemaphoreSlim SearchSemaphore = new SemaphoreSlim(1, 1);
+        private static readonly SemaphoreSlim ConnSemaphore = new(1, 1);
+        private static readonly SemaphoreSlim SearchSemaphore = new(1, 1);
 
         private string _currentMac = string.Empty;
         private string _currentUuid = string.Empty;
@@ -25,7 +25,7 @@ namespace ThePBone.OSX.Native
         public event EventHandler<BluetoothException>? BluetoothErrorAsync;
         public event EventHandler<byte[]>? NewDataAvailable;
 
-        private unsafe BluetoothImpl* _nativePtr = null;
+        private readonly unsafe BluetoothImpl* _nativePtr = null;
 
         private Bluetooth.Bt_OnChannelData? _onChannelData;
         private Bluetooth.Bt_OnChannelClosed? _onChannelClosed;
@@ -33,11 +33,6 @@ namespace ThePBone.OSX.Native
         private Bluetooth.BtDev_OnDisconnected? _onDisconnected;
 
         public BluetoothService()
-        {
-            Allocate();
-        }
-
-        private void Allocate()
         {
             bool allocationResult;
             unsafe
@@ -63,8 +58,7 @@ namespace ThePBone.OSX.Native
                 _onChannelClosed = OnChannelClosed;
                 Bluetooth.bt_set_on_channel_closed(_nativePtr, _onChannelClosed);
             }
-            
-            Log.Debug("OSX.BluetoothService: Setting device detection up");
+
 
             unsafe
             {
@@ -81,8 +75,6 @@ namespace ThePBone.OSX.Native
             unsafe
             {
                 var byteArray = new Span<byte>(data.ToPointer(), (int) size).ToArray();
-                Console.WriteLine($"NEW DATA PACKET size={size}; content={BitConverter.ToString(byteArray)}");
-
                 NewDataAvailable?.Invoke(this, byteArray);
             }
         }
@@ -114,57 +106,58 @@ namespace ThePBone.OSX.Native
                 throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "Timed out while waiting to enter enumerate phase. Another task is already enumerating.");
             }
 
-            BT_ENUM_RESULT status;
-            BluetoothDevice[] devices;
-            unsafe
+            try
             {
-                EnumerationResult result = new EnumerationResult();
-                status = Bluetooth.bt_enumerate(_nativePtr, ref result);
-                if (status == BT_ENUM_RESULT.BT_ENUM_SUCCESS)
+                BT_ENUM_RESULT status;
+                BluetoothDevice[] devices;
+                unsafe
                 {
-                    devices = new BluetoothDevice[result.length];
-                    Device* /* Device[] */ rawDevices = (Device*)result.devices;
-                    for (int i = 0; i < result.length; i++)
+                    EnumerationResult result = new();
+                    status = Bluetooth.bt_enumerate(_nativePtr, ref result);
+                    if (status == BT_ENUM_RESULT.BT_ENUM_SUCCESS)
                     {
-                        Device* d = &rawDevices[i];
-                        devices[i] = new BluetoothDevice(
-                            Marshal.PtrToStringUTF8(d->device_name) ?? String.Empty,
-                            (Marshal.PtrToStringUTF8(d->mac_address) ?? String.Empty).Replace("-", ":"),
-                            d->is_connected,
-                            d->is_paired,
-                            new BluetoothCoD(d->cod));
-                        Memory.btdev_free(ref *d);
+                        devices = new BluetoothDevice[result.length];
+                        Device* /* Device[] */ rawDevices = (Device*)result.devices;
+                        for (int i = 0; i < result.length; i++)
+                        {
+                            Device* d = &rawDevices[i];
+                            devices[i] = new BluetoothDevice(
+                                Marshal.PtrToStringUTF8(d->device_name) ?? String.Empty,
+                                (Marshal.PtrToStringUTF8(d->mac_address) ?? String.Empty).Replace("-", ":"),
+                                d->is_connected,
+                                d->is_paired,
+                                new BluetoothCoD(d->cod));
+                            Memory.btdev_free(ref *d);
+                        }
+                        Memory.mem_free(rawDevices);
                     }
-                    Memory.mem_free(rawDevices);
+                    else
+                    {
+                        devices = Array.Empty<BluetoothDevice>();
+                    }
                 }
-                else
+
+                Log.Debug($"OSX.BluetoothService: found {devices.Length} paired devices");
+
+                if (status != BT_ENUM_RESULT.BT_ENUM_SUCCESS)
                 {
-                    devices = new BluetoothDevice[0];
+                    Log.Error($"OSX.BluetoothService: Enumerate attempt failed due to error code {status}");
+                    throw new BluetoothException(BluetoothException.ErrorCodes.Unknown, "Search failed.");
                 }
-            }
 
-            Log.Debug($"OSX.BluetoothService: found {devices.Length} paired devices");
-
-            if (status != BT_ENUM_RESULT.BT_ENUM_SUCCESS)
+                return devices;
+            } finally
             {
-                Log.Error($"OSX.BluetoothService: Enumerate attempt failed due to error code {status.ToString()}");
                 SearchSemaphore.Release();
-                throw new BluetoothException(BluetoothException.ErrorCodes.Unknown, "Search failed.");
             }
-
-            SearchSemaphore.Release();
-
-            return devices;
         }
 
         private void OnDisconnected(IntPtr mac)
         {
             var macAddr = Marshal.PtrToStringAnsi(mac) ?? string.Empty;
             macAddr = macAddr.Replace("-", ":");
-            Log.Information($"BOD: PARTIAL DISCONNECTION {macAddr}");
             if (string.Equals(macAddr, _currentMac, StringComparison.CurrentCultureIgnoreCase))
             {
-                Log.Information("BOD: MATCH");
                 Disconnected?.Invoke(this, "Bluetooth channel closed");
             }
 
@@ -190,10 +183,8 @@ namespace ThePBone.OSX.Native
             
             var macAddr = Marshal.PtrToStringAnsi(mac) ?? string.Empty;
             macAddr = macAddr.Replace("-", ":");
-            Log.Information($"BOC: PARTIAL CONNECTION {macAddr}");
             if (string.Equals(macAddr, _currentMac, StringComparison.CurrentCultureIgnoreCase))
             {
-                Log.Information("BOC: MATCH");
                 reconnect();
             }
 
@@ -217,18 +208,15 @@ namespace ThePBone.OSX.Native
                 throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "Timed out while waiting to enter connection phase. Another task is already preparing a connection.");
             }
 
-            try
-            {
-
+            try {
                 if (IsStreamConnected)
                 {
                     Log.Debug("OSX.BluetoothService: Already connected, skipped.");
-                    ConnSemaphore.Release();
                     return;
                 }
 
                 Connecting?.Invoke(this, EventArgs.Empty);
-                Log.Debug($"OSX.BluetoothService: Connecting ... {macAddress} {uuid}");
+                Log.Debug($"OSX.BluetoothService: Connecting ...");
 
                 _currentMac = macAddress;
                 _currentUuid = uuid;
@@ -261,9 +249,11 @@ namespace ThePBone.OSX.Native
                     case BT_CONN_RESULT.BT_CONN_EOPEN:
                         throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
                             "Unable to open serial channel on the target device. Please make sure the device is responsive and accessible.");
+                    case BT_CONN_RESULT.BT_CONN_EUNKNOWN:
+                        throw new BluetoothException(BluetoothException.ErrorCodes.Unknown,
+                            "Unknown error");
                 }
 
-                Log.Debug($"OSX.BluetoothService: Registering disconnection notification for connected device");
                 unsafe
                 {
                     Bluetooth.bt_register_disconnect_notification(_nativePtr, macAddress);
@@ -339,85 +329,5 @@ namespace ThePBone.OSX.Native
                 Bluetooth.bt_free(_nativePtr);
             }
         }
-        
-        
-        
-           /*
-            The C interop code below is now mostly wrapped into the BluetoothService class. I'll temporarily leave it for reference here.
-            
-            IntPtr iptr;
-            unsafe
-            {
-                BluetoothImpl* ptr = null;
-                
-                var allocResult = Bluetooth.bt_alloc(&ptr);
-                iptr = (IntPtr)ptr;
-                Console.WriteLine(allocResult);
-                
-                Bluetooth.bt_set_on_channel_data(ptr, (data, size) =>
-                {
-                    var byteArray = new Span<byte>(data.ToPointer(), (int)size).ToArray();
-                    Console.WriteLine($"NEW DATA PACKET size={size}; content={BitConverter.ToString(byteArray)}");
-                });
-                
-                Bluetooth.bt_set_on_channel_closed(ptr, () =>
-                {
-                    Console.WriteLine("CHANNEL CLOSED!");
-                });
-                
-                fixed (byte* sUuid = standardUuid)
-                {
-                    var conn_result = Bluetooth.bt_connect(ptr, "80:7b:3e:21:79:ec", sUuid);
-                    Console.WriteLine($"Connection result: {conn_result}");
-                }
-
-                
-                
-                Bluetooth.bt_set_on_connected(ptr, (mac, name) =>
-                {
-                    Console.WriteLine("OKAY!");
-                    Console.WriteLine($"{Marshal.PtrToStringAnsi(mac)}, {Marshal.PtrToStringAnsi(name)}");
-                    Memory.mem_free(mac.ToPointer());
-                    Memory.mem_free(name.ToPointer());
-                });
-                
-                
-                           
-                unsafe
-                {
-                    fixed (byte* b = fmgStart)
-                        Bluetooth.bt_send((BluetoothImpl*) iptr, b, (uint) fmgStart.Length);
-                }
-
-                await Task.Delay(5000);
-                
-                unsafe
-                {
-                    fixed (byte* b = fmgStop)
-                        Bluetooth.bt_send((BluetoothImpl*) iptr, b, (uint) fmgStop.Length);
-                }
-
-                
-                Bluetooth.bt_free(ptr);
-
-                var result = new Device();
-                var arrayPtr = new byte*[2];
-                fixed (byte* sUuid = standardUuid, lUuid = legacyUuid)
-                {
-                    arrayPtr[0] = sUuid;
-                    arrayPtr[1] = lUuid;
-                    fixed (byte** uuids = arrayPtr)
-                    {
-                        Unmanaged.SystemDialogs.ui_select_bt_device(uuids, 2, ref result);
-                    }
-                }
-                
-                Console.WriteLine(result.device_name);
-                Console.WriteLine(result.mac_address);
-                Console.WriteLine(result.is_connected);
-                Console.WriteLine(result.is_paired);
-                
-                Memory.btdev_free(ref result);
-            }*/
     }
 }

@@ -4,9 +4,9 @@
 //
 
 #import <IOBluetooth/IOBluetooth.h>
+#import "Bluetooth.h"
 #import "BluetoothDeviceWatcher.h"
 #import "Native.h"
-#import "Bluetooth.h"
 
 
 @implementation BluetoothDeviceWatcher {
@@ -18,15 +18,15 @@
         [IOBluetoothDevice registerForConnectNotifications:self
                                                   selector:@selector(onConnected:fromDevice:)];
     }
+
     return self;
 }
 
-- (BOOL)registerForDisconnectNotification:(NSString*)mac {
-    IOBluetoothDevice* dev;
+- (BOOL)registerForDisconnectNotification:(NSString *)mac {
+    IOBluetoothDevice *dev;
     BOOL found = [Bluetooth getDevice:mac result:&dev];
 
-    if(!found)
-    {
+    if (!found) {
         return FALSE;
     }
 
@@ -44,9 +44,9 @@
 }
 
 - (void)onConnected:(IOBluetoothUserNotification *)notification fromDevice:(IOBluetoothDevice *)device {
-    if(_onConnected) {
-        char *mac = (char *) malloc(sizeof(char) * [[device addressString] length]);
-        char *name = (char *) malloc(sizeof(char) * [[device nameOrAddress] length]);
+    if (_onConnected) {
+        char *mac = (char *)malloc(sizeof(char) * [[device addressString] length]);
+        char *name = (char *)malloc(sizeof(char) * [[device nameOrAddress] length]);
         strcpy(mac, device.addressString.UTF8String);
         strcpy(name, device.nameOrAddress.UTF8String);
         _onConnected(mac, name);
@@ -55,7 +55,7 @@
 
 - (void)onDisconnected:(IOBluetoothUserNotification *)notification fromDevice:(IOBluetoothDevice *)device {
     if (_onDisconnected) {
-        char *mac = (char *) malloc(sizeof(char) * [[device addressString] length]);
+        char *mac = (char *)malloc(sizeof(char) * [[device addressString] length]);
         strcpy(mac, device.addressString.UTF8String);
         _onDisconnected(mac);
     }

@@ -6,15 +6,17 @@
 #import "Native.h"
 
 void btdev_free(Device *self) {
-    if(self->mac_address)
+    if (self->mac_address) {
         free(self->mac_address);
+    }
 
-    if(self->device_name)
+    if (self->device_name) {
         free(self->device_name);
+    }
 }
 
 void mem_free(void *ptr) {
-    if(ptr){
+    if (ptr) {
         free(ptr);
     }
 }

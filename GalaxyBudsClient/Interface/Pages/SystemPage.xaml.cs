@@ -66,6 +66,7 @@ namespace GalaxyBudsClient.Interface.Pages
         
         private async void Firmware_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
+#if !OSX
             if (!SettingsProvider.Instance.FirmwareWarningAccepted)
             {
                 var result = await new QuestionBox()
@@ -86,6 +87,15 @@ namespace GalaxyBudsClient.Interface.Pages
             {
                 MainWindow.Instance.Pager.SwitchPage(Pages.FirmwareSelect);
             }
+#else
+            // at time of writing, OSX suffers from random, frequent SEGFAULTs and connection issues
+            // don't allow anyone to shoot themselves in their own foot until its absolutely 100% stable
+            await new MessageBox()
+            {
+                Title = "Firmware update",
+                Description = "Firmware update is not supported in the OSX port for now, it is too unstable!!",
+            }.ShowDialog<bool>(MainWindow.Instance);
+#endif
         }
 
         private void SpatialSensor_OnPointerPressed(object? sender, PointerPressedEventArgs e)

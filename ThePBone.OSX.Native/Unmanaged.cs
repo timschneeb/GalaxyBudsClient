@@ -32,7 +32,8 @@ namespace ThePBone.OSX.Native.Unmanaged
         BT_CONN_ENOTFOUND,
         BT_CONN_ESDP,
         BT_CONN_ECID,
-        BT_CONN_EOPEN
+        BT_CONN_EOPEN,
+        BT_CONN_EUNKNOWN
     };
 
     enum BT_ENUM_RESULT {
@@ -45,20 +46,6 @@ namespace ThePBone.OSX.Native.Unmanaged
         BT_SEND_EPARTIAL,
         BT_SEND_EUNKNOWN,
         BT_SEND_ENULL
-    };
-
-    enum UI_BTSEL_RESULT
-    {
-        UI_BTSEL_SUCCESS = 0x00,
-        UI_BTSEL_CANCELLED,
-        UI_BTSEL_EALLOC
-    };
-    
-    enum LOG_LEVELS {
-        LOG_DEBUG,
-        LOG_WARN,
-        LOG_ERROR,
-        LOG_INFO
     };
 
     internal static class DSO
@@ -108,21 +95,6 @@ namespace ThePBone.OSX.Native.Unmanaged
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         internal delegate void BtDev_OnDisconnected(IntPtr mac);
 
-    }
-
-    internal static class SystemDialogs
-    {
-        [DllImport(DSO.Name)]
-        internal static extern unsafe UI_BTSEL_RESULT ui_select_bt_device(byte** uuids, byte uuid_count, ref Device result);
-    }
-
-    internal static class Logger
-    {
-        [DllImport(DSO.Name)]
-        internal static extern void logger_set_on_event(Logger_OnEvent cb);
-
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        internal delegate void Logger_OnEvent(LOG_LEVELS level, IntPtr message);
     }
 
     internal static class Memory

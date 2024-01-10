@@ -7,40 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C0981FF3780B7B91E37D9D4 /* Enums.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C0982499301F225484DD35D /* Enums.h */; };
-		1C0982D29F6D26FF02DE32EF /* Logger.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C0986C198273C592B13C5A7 /* Logger.h */; };
 		1C0983CB4A36B117AF41155E /* Bluetooth.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098F273A7E24715983E630 /* Bluetooth.mm */; };
-		1C098973C8D4DA3095C6B6CE /* Logger.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098D9ACC5A0D3D04C265F3 /* Logger.mm */; };
 		1C0989E232D8E7E0534F2834 /* BluetoothDeviceWatcher.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098325C88AD4809959EDBE /* BluetoothDeviceWatcher.mm */; };
-		1C098A725823126AC5BA80A1 /* Native.Logger.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C0984A1AD7CC2C468185656 /* Native.Logger.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1C098AE4A9BA02B8EDE3DA5B /* Native.Bluetooth.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098B72451782C32C519A71 /* Native.Bluetooth.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		1C098B613CEC04F9649368B7 /* Native.SystemDialogs.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C0983819DF9A4733D692343 /* Native.SystemDialogs.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		1C098B64B53B65C527FA069C /* SystemDialogs.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C098F29E8C7A8B50D157D2C /* SystemDialogs.h */; };
 		1C098CEE45D021CBF857A569 /* Native.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C0984E6D93230E41397FA0D /* Native.h */; };
 		1C098D2FA9AEC3B92E0EA09D /* Bluetooth.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C09879DB3B0035983B5B99A /* Bluetooth.h */; };
 		1C098E958CA148B20DCB4F6D /* BluetoothDeviceWatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C098B5CA5C8E76FE0849D49 /* BluetoothDeviceWatcher.h */; };
-		1C098F6618172671524FDB0A /* SystemDialogs.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098F043E0D6FB5CDFA6D69 /* SystemDialogs.mm */; };
 		1C098FD7AF270DE474ED52EB /* Native.Memory.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098422B9BFF59462222A36 /* Native.Memory.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2276033B2651CDB000D756A8 /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2276033A2651CDB000D756A8 /* IOBluetooth.framework */; };
 		2276033D2651CDB500D756A8 /* IOBluetoothUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2276033C2651CDB500D756A8 /* IOBluetoothUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C0982499301F225484DD35D /* Enums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enums.h; sourceTree = "<group>"; };
 		1C098325C88AD4809959EDBE /* BluetoothDeviceWatcher.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BluetoothDeviceWatcher.mm; sourceTree = "<group>"; };
-		1C0983819DF9A4733D692343 /* Native.SystemDialogs.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Native.SystemDialogs.mm; sourceTree = "<group>"; };
 		1C098422B9BFF59462222A36 /* Native.Memory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Native.Memory.mm; sourceTree = "<group>"; };
-		1C0984A1AD7CC2C468185656 /* Native.Logger.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Native.Logger.mm; sourceTree = "<group>"; };
 		1C0984E6D93230E41397FA0D /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Native.h; sourceTree = "<group>"; };
-		1C0986C198273C592B13C5A7 /* Logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
 		1C09879DB3B0035983B5B99A /* Bluetooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bluetooth.h; sourceTree = "<group>"; };
 		1C09896C4A560632CA6CF376 /* libNativeInterop.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libNativeInterop.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C098B5CA5C8E76FE0849D49 /* BluetoothDeviceWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothDeviceWatcher.h; sourceTree = "<group>"; };
 		1C098B72451782C32C519A71 /* Native.Bluetooth.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Native.Bluetooth.mm; sourceTree = "<group>"; };
-		1C098D9ACC5A0D3D04C265F3 /* Logger.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Logger.mm; sourceTree = "<group>"; };
-		1C098F043E0D6FB5CDFA6D69 /* SystemDialogs.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SystemDialogs.mm; sourceTree = "<group>"; };
 		1C098F273A7E24715983E630 /* Bluetooth.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Bluetooth.mm; sourceTree = "<group>"; };
-		1C098F29E8C7A8B50D157D2C /* SystemDialogs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemDialogs.h; sourceTree = "<group>"; };
 		2276033A2651CDB000D756A8 /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = System/Library/Frameworks/IOBluetooth.framework; sourceTree = SDKROOT; };
 		2276033C2651CDB500D756A8 /* IOBluetoothUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetoothUI.framework; path = System/Library/Frameworks/IOBluetoothUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -89,8 +75,6 @@
 			children = (
 				1C098422B9BFF59462222A36 /* Native.Memory.mm */,
 				1C098B72451782C32C519A71 /* Native.Bluetooth.mm */,
-				1C0983819DF9A4733D692343 /* Native.SystemDialogs.mm */,
-				1C0984A1AD7CC2C468185656 /* Native.Logger.mm */,
 			);
 			path = bridge;
 			sourceTree = "<group>";
@@ -100,14 +84,9 @@
 			children = (
 				1C09879DB3B0035983B5B99A /* Bluetooth.h */,
 				1C098F273A7E24715983E630 /* Bluetooth.mm */,
-				1C098F043E0D6FB5CDFA6D69 /* SystemDialogs.mm */,
-				1C098F29E8C7A8B50D157D2C /* SystemDialogs.h */,
 				1C098325C88AD4809959EDBE /* BluetoothDeviceWatcher.mm */,
 				1C098B5CA5C8E76FE0849D49 /* BluetoothDeviceWatcher.h */,
 				1C098C4BB6B054DCFF1D9264 /* bridge */,
-				1C098D9ACC5A0D3D04C265F3 /* Logger.mm */,
-				1C0986C198273C592B13C5A7 /* Logger.h */,
-				1C0982499301F225484DD35D /* Enums.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -130,10 +109,7 @@
 			files = (
 				1C098D2FA9AEC3B92E0EA09D /* Bluetooth.h in Headers */,
 				1C098CEE45D021CBF857A569 /* Native.h in Headers */,
-				1C098B64B53B65C527FA069C /* SystemDialogs.h in Headers */,
 				1C098E958CA148B20DCB4F6D /* BluetoothDeviceWatcher.h in Headers */,
-				1C0982D29F6D26FF02DE32EF /* Logger.h in Headers */,
-				1C0981FF3780B7B91E37D9D4 /* Enums.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,13 +167,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C0983CB4A36B117AF41155E /* Bluetooth.mm in Sources */,
-				1C098F6618172671524FDB0A /* SystemDialogs.mm in Sources */,
 				1C0989E232D8E7E0534F2834 /* BluetoothDeviceWatcher.mm in Sources */,
 				1C098FD7AF270DE474ED52EB /* Native.Memory.mm in Sources */,
 				1C098AE4A9BA02B8EDE3DA5B /* Native.Bluetooth.mm in Sources */,
-				1C098B613CEC04F9649368B7 /* Native.SystemDialogs.mm in Sources */,
-				1C098973C8D4DA3095C6B6CE /* Logger.mm in Sources */,
-				1C098A725823126AC5BA80A1 /* Native.Logger.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
