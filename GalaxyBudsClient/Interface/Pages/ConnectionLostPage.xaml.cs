@@ -69,13 +69,11 @@ namespace GalaxyBudsClient.Interface.Pages
 				{
 					ResetRetryButton();
 
-#if !OSX
 					if (s.ErrorCode == BluetoothException.ErrorCodes.SendFailed)
 					{
 						/* Hide "message couldn't be sent" because it'll shadow the actual error in most situations */
 						return;
 					}
-#endif
 					
 					ErrorDescription = s.Message;
 				}, DispatcherPriority.Render);
