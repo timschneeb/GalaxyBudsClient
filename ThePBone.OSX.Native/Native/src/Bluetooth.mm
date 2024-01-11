@@ -53,7 +53,7 @@
 
     if (status != kIOReturnSuccess) {
         NSLog(@"Error: %s starting SDP query.\n", mach_error_string(status));
-        // Do not fail hard, instead get a proper error message if we need it
+        // Do not fail hard, instead get a proper error message and let it be
     } else {
         // TODO do we want to poll?
         while (!sdpQueryDone)
@@ -83,7 +83,6 @@
     IOBluetoothRFCOMMChannel *tempRFCOMMChannel = mRFCOMMChannel;
     status = [device openRFCOMMChannelSync:&tempRFCOMMChannel withChannelID:rfcommChannelID delegate:self];
     mRFCOMMChannel = tempRFCOMMChannel;
-
 
     // Ignoring the returned error because it works anyway and it appears to be a macOS bug
     // (Documentation states that if status is not success, RFCOMM channel won't be set but I guess Apple Documentation is hopeless anyway)
@@ -146,7 +145,7 @@
     NSArray *inDevices = [IOBluetoothDevice pairedDevices];
 
     result->length = (int)(unsigned long)[inDevices count];
-    result->devices = new Device[result->length];
+    result->devices = (Device*)malloc(sizeof(Device) * result->length);
     if (!result->devices) {
         NSLog(@"Error - failed to enumerate - out of memory!");
         return BT_ENUM_EUNKNOWN;

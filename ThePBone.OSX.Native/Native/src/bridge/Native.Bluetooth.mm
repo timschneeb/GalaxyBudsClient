@@ -17,19 +17,12 @@ bool bt_alloc(BluetoothImpl **self) {
 }
 
 void bt_free(BluetoothImpl *self) {
-    if (self) {
-        [self->client release];
-        [self->watcher release];
-    }
-
-    delete self;
+    free(self);
 }
 
 BT_CONN_RESULT bt_connect(BluetoothImpl *self, const char *mac, const unsigned char *uuid) {
     NSString *nsMac = [NSString stringWithCString:mac encoding:[NSString defaultCStringEncoding]];
     BT_CONN_RESULT res = [self->client connect:nsMac uuid:uuid];
-
-    [nsMac release];
     return res;
 }
 
@@ -62,8 +55,6 @@ void bt_set_on_channel_closed(BluetoothImpl *self, Bt_OnChannelClosed cb) {
 bool bt_register_disconnect_notification(BluetoothImpl *self, const char *mac) {
     NSString *nsMac = [NSString stringWithCString:mac encoding:[NSString defaultCStringEncoding]];
     BOOL result = [self->watcher registerForDisconnectNotification:nsMac];
-
-    [nsMac release];
     return result;
 }
 
