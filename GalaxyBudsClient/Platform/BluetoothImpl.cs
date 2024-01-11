@@ -260,7 +260,7 @@ namespace GalaxyBudsClient.Platform
         {
             if (!IsConnected)
             {
-                OnBluetoothError(new BluetoothException(BluetoothException.ErrorCodes.SendFailed, "Attempted to send command to disconnected device"));
+                OnBluetoothError(new BluetoothException(BluetoothException.ErrorCodes.SendFailed, $"Attempted to send command to disconnected device in {Environment.StackTrace}"));
                 return;
             }
             

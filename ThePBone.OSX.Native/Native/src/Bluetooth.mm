@@ -84,6 +84,7 @@
     status = [device openRFCOMMChannelSync:&tempRFCOMMChannel withChannelID:rfcommChannelID delegate:self];
     mRFCOMMChannel = tempRFCOMMChannel;
 
+
     // Ignoring the returned error because it works anyway and it appears to be a macOS bug
     // (Documentation states that if status is not success, RFCOMM channel won't be set but I guess Apple Documentation is hopeless anyway)
     // because isOpen returns false while the channel is opening, we have no choice but to assume it is valid
@@ -92,6 +93,9 @@
         [self disconnect];
         return BT_CONN_EOPEN;
     } else {
+        if ( status != kIOReturnSuccess ) {
+            NSLog(@"Warning: %s - unable to open RFCOMM channel.\n", mach_error_string(status) );
+        }
         _macAddress = [[NSString alloc] initWithString:mac];
         return BT_CONN_SUCCESS;
     }
@@ -116,8 +120,7 @@
 
         mRFCOMMChannel = nil;
 
-        // This signals to the system that we are done with the baseband connection to the device.  If no other
-        // channels are open, it will immediately close the baseband connection.
+        // This signals to the system that we are done with the baseband connection to the device. Will disconnect audio and other channels as well.
         [device closeConnection];
     }
     
@@ -131,7 +134,12 @@
         return NO;
     }
 
-    return [mRFCOMMChannel isOpen];
+    //TODO proper fix, because it's complicated
+    //isOpen returns false while opening so if someone calls it too early, it will return false information
+    //but we have no way of knowing if its just not open because it failed because the api always returns error code
+    //so theres no surefire way to know if we are in "opening" state
+    //return [mRFCOMMChannel isOpen];
+    return YES;
 }
 
 - (BT_ENUM_RESULT)enumerate:(EnumerationResult *)result {

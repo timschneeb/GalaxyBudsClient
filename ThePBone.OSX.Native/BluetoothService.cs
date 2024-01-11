@@ -259,9 +259,9 @@ namespace ThePBone.OSX.Native
                     Bluetooth.bt_register_disconnect_notification(_nativePtr, macAddress);
                 }
 
+                Log.Debug($"OSX.BluetoothService: Connected.");
                 Connected?.Invoke(this, EventArgs.Empty);
                 RfcommConnected?.Invoke(this, EventArgs.Empty);
-                Log.Debug($"OSX.BluetoothService: Connected.");
             }
             finally
             {
