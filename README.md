@@ -52,7 +52,7 @@ Aside from standard features known from the official Android app, this project h
 * Firmware flashing, downgrading (Buds+, Buds Pro)
 * and much more...
 
-If you're looking for older firmware binaries, have a look here: https://github.com/ThePBone/galaxy-buds-firmware-archive
+If you're looking for older firmware binaries, have a look here: [https://github.com/ThePBone/galaxy-buds-firmware-archive](https://github.com/ThePBone/galaxy-buds-firmware-archive#galaxy-buds-firmware-archive)
 
 ## Download
 
