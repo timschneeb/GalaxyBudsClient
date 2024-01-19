@@ -52,6 +52,8 @@ Kromě standardních funkcí známých z oficiální Androidí aplikace, Vám te
 * Stahování nových a starých verzí firmwaru (Buds+, Buds Pro)
 * a spousty dalších...
 
+Pokud hledáte starší binární soubory firmwaru, podívejte se sem: https://github.com/ThePBone/galaxy-buds-firmware-archive
+
 ## Stažení
 
 Pro Linux je zde několik dostupných způsobů:
