@@ -111,8 +111,9 @@ namespace GalaxyBudsClient.Interface.Pages
             SPPMessageHandler.Instance.AncEnabledUpdateResponse += (sender, b) => _ancSwitch.IsChecked = b;
             SPPMessageHandler.Instance.AnyMessageReceived += (sender, parser) =>
             {
-                SetWarning(false);
-                _loadingSpinner.IsVisible = false;
+                /*SetWarning(false);
+                _loadingSpinner.IsVisible = false;*/
+                //TODO why is this needed, if its not, delete it, if it is, make sure to set refreshTimer+data request
             };
             BluetoothImpl.Instance.BluetoothError += (sender, exception) =>
             {
@@ -128,11 +129,20 @@ namespace GalaxyBudsClient.Interface.Pages
             }; 
             BluetoothImpl.Instance.Connected += (sender, args) =>
             {
-                Dispatcher.UIThread.Post((() => _loadingSpinner.IsVisible = false), DispatcherPriority.Render);
+                Dispatcher.UIThread.Post((async() =>
+                {
+                    _loadingSpinner.IsVisible = false;
+                    await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA);
+                    _refreshTimer.Start();
+                }), DispatcherPriority.Render);
             };
             BluetoothImpl.Instance.Connecting += (sender, args) =>
             {  
-                Dispatcher.UIThread.Post((() => _loadingSpinner.IsVisible = true), DispatcherPriority.Render);
+                Dispatcher.UIThread.Post((() =>
+                {
+                    _loadingSpinner.IsVisible = true;
+                    _refreshTimer.Stop();
+                }), DispatcherPriority.Render);
             };
             BluetoothImpl.Instance.InvalidDataReceived += InstanceOnInvalidDataReceived;
 
@@ -194,10 +204,14 @@ namespace GalaxyBudsClient.Interface.Pages
         public override async void OnPageShown()
 		{
             SetWarning(false);
-            
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA);
-            
-			_refreshTimer.Start();
+
+            if (BluetoothImpl.Instance.IsConnected)
+            {
+                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA);
+
+                _refreshTimer.Start();
+            }
+
             _caseLabel.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery) && 
                                    (DeviceMessageCache.Instance.BasicStatusUpdate?.BatteryCase ?? 101) <= 100;
 
@@ -237,9 +251,11 @@ namespace GalaxyBudsClient.Interface.Pages
             {
                 parser.BatteryCase = DeviceMessageCache.Instance.BasicStatusUpdateWithValidCase?.BatteryCase ?? parser.BatteryCase;
             }
-            
-            _batteryCase.Content = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery) && parser.BatteryCase <= 100 ? $"{parser.BatteryCase}%" : string.Empty;
-            _caseLabel.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery) && parser.BatteryCase <= 100;
+
+            var hasCaseBattery = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery) &&
+                               parser.BatteryCase <= 100;
+            _batteryCase.Content = hasCaseBattery ? $"{parser.BatteryCase}%" : string.Empty;
+            _batteryCase.IsVisible = _caseLabel.IsVisible = hasCaseBattery;
 
             if (BluetoothImpl.Instance.ActiveModel != Models.Buds)
             {
@@ -332,6 +348,8 @@ namespace GalaxyBudsClient.Interface.Pages
             _batteryIconRight.IsVisible = isRightOnline;
             _batteryPercentageLeft.IsVisible = isLeftOnline;
             _batteryPercentageRight.IsVisible = isRightOnline;
+            _caseLabel.IsVisible = isLeftOnline || isRightOnline;
+            _batteryCase.IsVisible = isLeftOnline || isRightOnline;
 
             UpdateConnectionState(isLeftOnline, isRightOnline);
         }

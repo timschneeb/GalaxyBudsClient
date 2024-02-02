@@ -26,12 +26,14 @@
         [self disconnect];
         return BT_CONN_EUNKNOWN;
     }
+    IOReturn status;
+    int i;
     IOBluetoothDevice *device = NULL;
 
     bool found = [Bluetooth getDevice:mac result:&device];
 
     if (!found) {
-        return BT_CONN_ENOTFOUND;
+        return BT_CONN_ENOTPAIRED;
     }
 
     IOBluetoothSDPUUID *parsedUuid = [IOBluetoothSDPUUID uuidWithBytes:uuid length:16];
@@ -40,11 +42,16 @@
     // The openRFCOMMChannel... API probably should do this for us, but for now we have to
     // do it manually.
     // (needed for sdp too: https://github.com/NSTerminal/terminal/blob/78316cee045c5156c12606e78fa58d1e01e7e0ef/swift/Sources/btutils.swift#L76)
-    IOReturn status = [device openConnection];
-
-    if (status != kIOReturnSuccess) {
-        NSLog(@"Error: %s opening connection to device.\n", mach_error_string(status) );
-        return BT_CONN_EBASECONN;
+    if (![device isConnected]) {
+        status = [device openConnection];
+        
+        if (status == kIOReturnTimeout) {
+            return BT_CONN_ENOTFOUND;
+        }
+        if (status != kIOReturnSuccess) {
+            NSLog(@"Error: %s opening connection to device.\n", mach_error_string(status) );
+            return BT_CONN_EBASECONN;
+        }
     }
 
     sdpQueryDone = NO;
@@ -55,9 +62,13 @@
         NSLog(@"Error: %s starting SDP query.\n", mach_error_string(status));
         // Do not fail hard, instead get a proper error message and let it be
     } else {
-        // TODO do we want to poll?
-        while (!sdpQueryDone)
-            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+        // Poll until SDP query is done, to keep code and threading simple.
+        i = 0;
+        while (!sdpQueryDone && i++ < 15)
+            //[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+            [NSThread sleepForTimeInterval:0.1];
+        if (!sdpQueryDone)
+            NSLog(@"Warning: SDP query timed out.\n");
     }
 
     IOBluetoothSDPServiceRecord *serviceRecord = [device getServiceRecordForUUID:parsedUuid];
@@ -83,17 +94,32 @@
     IOBluetoothRFCOMMChannel *tempRFCOMMChannel = mRFCOMMChannel;
     status = [device openRFCOMMChannelSync:&tempRFCOMMChannel withChannelID:rfcommChannelID delegate:self];
     mRFCOMMChannel = tempRFCOMMChannel;
+    
+    if (mRFCOMMChannel == nil) {
+        NSLog(@"Error: %s - unable to open RFCOMM channel.\n", mach_error_string(status) );
+        [self disconnect];
+        return BT_CONN_EOPEN;
+    }
 
-    // Ignoring the returned error because it works anyway and it appears to be a macOS bug
-    // (Documentation states that if status is not success, RFCOMM channel won't be set but I guess Apple Documentation is hopeless anyway)
-    // because isOpen returns false while the channel is opening, we have no choice but to assume it is valid
-    if (/*( status != kIOReturnSuccess ) || (*/mRFCOMMChannel == nil/*) || (![mRFCOMMChannel isOpen])*/) {
+    // Poll until RFCOMM channel is open, to keep code and threading simple.
+    i = 0;
+    while (![mRFCOMMChannel isOpen] && i++ < 15)
+        //[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+        [NSThread sleepForTimeInterval:0.1];
+
+    // Ignoring the returned error if RFCOMM channel is open
+    // Documentation states that if status is not success, RFCOMM channel won't be set
+    // For unknown reasons, status is always kIOReturnError even if connection was successful
+    // As it appears to be a macOS bug, we work it around by using openRFCOMMChannelSync
+    // then relying on RFCOMM channel to open after at most 1.5s (it does not open instantly even
+    // though it's the Sync API)
+    if (/*( status != kIOReturnSuccess ) || (*/ ![mRFCOMMChannel isOpen] /*)*/) {
         NSLog(@"Error: %s - unable to open RFCOMM channel.\n", mach_error_string(status) );
         [self disconnect];
         return BT_CONN_EOPEN;
     } else {
         if ( status != kIOReturnSuccess ) {
-            NSLog(@"Warning: %s - unable to open RFCOMM channel.\n", mach_error_string(status) );
+            NSLog(@"Warning: got %s while trying to open RFCOMM channel, but it's open anyway\n", mach_error_string(status) );
         }
         _macAddress = [[NSString alloc] initWithString:mac];
         return BT_CONN_SUCCESS;
@@ -111,16 +137,12 @@
 - (BOOL)disconnect
 {
     if (mRFCOMMChannel != nil) {
-        IOBluetoothDevice *device = [mRFCOMMChannel getDevice];
-
         // This will close the RFCOMM channel and start an inactivity timer to close the baseband connection if no
         // other channels (L2CAP or RFCOMM) are open.
+        [mRFCOMMChannel setDelegate:nil];
         [mRFCOMMChannel closeChannel];
-
+        
         mRFCOMMChannel = nil;
-
-        // This signals to the system that we are done with the baseband connection to the device. Will disconnect audio and other channels as well.
-        [device closeConnection];
     }
     
     _macAddress = NULL;
@@ -129,16 +151,7 @@
 }
 
 - (BOOL)isConnected {
-    if (mRFCOMMChannel == nil) {
-        return NO;
-    }
-
-    //TODO proper fix, because it's complicated
-    //isOpen returns false while opening so if someone calls it too early, it will return false information
-    //but we have no way of knowing if its just not open because it failed because the api always returns error code
-    //so theres no surefire way to know if we are in "opening" state
-    //return [mRFCOMMChannel isOpen];
-    return YES;
+    return mRFCOMMChannel != nil;
 }
 
 - (BT_ENUM_RESULT)enumerate:(EnumerationResult *)result {
@@ -169,6 +182,11 @@
 - (BT_SEND_RESULT)sendData:(char *)buffer length:(UInt32)length
 {
     if (mRFCOMMChannel != nil) {
+        if (![mRFCOMMChannel isOpen]) {
+            [self disconnect];
+            _onChannelClosed();
+            return BT_SEND_ENULL;
+        }
         UInt32 numBytesRemaining;
         IOReturn result;
         BluetoothRFCOMMMTU rfcommChannelMTU;
@@ -235,6 +253,7 @@
 }
 
 - (void)rfcommChannelClosed:(IOBluetoothRFCOMMChannel *)rfcommChannel {
+    [self disconnect];
     if (_onChannelClosed) {
         _onChannelClosed();
     }

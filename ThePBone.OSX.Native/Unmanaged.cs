@@ -30,6 +30,7 @@ namespace ThePBone.OSX.Native.Unmanaged
         BT_CONN_SUCCESS = 0x00,
         BT_CONN_EBASECONN,
         BT_CONN_ENOTFOUND,
+        BT_CONN_ENOTPAIRED,
         BT_CONN_ESDP,
         BT_CONN_ECID,
         BT_CONN_EOPEN,

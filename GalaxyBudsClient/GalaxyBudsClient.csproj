@@ -7,13 +7,16 @@
     <PropertyGroup Condition="'$(IsWindows)'=='true'">
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(IsWindows)'!='true'">
+    <PropertyGroup Condition="'$(IsOSX)'=='true'">
+        <TargetFramework>net6.0-macos</TargetFramework>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
     
     <PropertyGroup>
-        <OutputType>WinExe</OutputType>
-        <ApplicationIcon>Resources/icon_white.ico</ApplicationIcon>
+        <OutputType>Exe</OutputType>
+        <ApplicationIcon>Resources\icon_white.ico</ApplicationIcon>
         <AssemblyVersion>4.5.3.0</AssemblyVersion>
         <Version>4.5.3.0</Version>
         <Nullable>enable</Nullable>
@@ -25,16 +28,7 @@
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <LangVersion>9</LangVersion>
         <RuntimeIdentifiers>osx-x64</RuntimeIdentifiers>
-        <CFBundleName>GalaxyBudsClient</CFBundleName> <!-- Also defines .app file name -->
-        <CFBundleDisplayName>GalaxyBudsClient</CFBundleDisplayName>
-        <CFBundleIdentifier>com.galaxy.buds</CFBundleIdentifier>
-        <CFBundleVersion>1.0.0</CFBundleVersion>
-        <CFBundleShortVersionString>1.0.0</CFBundleShortVersionString>
-        <CFBundlePackageType>APPL</CFBundlePackageType>
-        <CFBundleExecutable>GalaxyBudsClient</CFBundleExecutable>
-        <CFBundleIconFile>Logo.icns</CFBundleIconFile> <!-- Will be copied from output directory -->
-        <NSPrincipalClass>NSApplication</NSPrincipalClass>
-        <NSHighResolutionCapable>true</NSHighResolutionCapable>
+        <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>
         
         <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
     </PropertyGroup>
@@ -114,7 +108,6 @@
         <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
         <PackageReference Include="Tmds.DBus" Version="0.9.1" />
         <PackageReference Include="Trinet.Core.IO.Ntfs" Version="4.1.1" />
-        <PackageReference Include="Dotnet.Bundle" Version="*" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsWindows)'=='true'">
@@ -129,11 +122,10 @@
     </ItemGroup>
     
     <ItemGroup Condition="'$(IsOSX)'=='true'">
+        <ProjectReference Include="..\ThePBone.OSX.Native\ThePBone.OSX.Native.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <!-- TODO find out why i cant move this to conditional without breaking ide (cli works) -->
-        <ProjectReference Include="..\ThePBone.OSX.Native\ThePBone.OSX.Native.csproj" />
         <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj" />
     </ItemGroup>
 </Project>

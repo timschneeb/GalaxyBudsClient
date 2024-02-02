@@ -81,8 +81,8 @@ namespace ThePBone.OSX.Native
 
         private void OnChannelClosed()
         {
-            Disconnected?.Invoke(this, "Bluetooth channel closed");
             Console.WriteLine("OSX.BluetoothService: Channel closed. Disconnected.");
+            Disconnected?.Invoke(this, "Device lost connection");
         }
         
         public bool IsStreamConnected
@@ -158,7 +158,7 @@ namespace ThePBone.OSX.Native
             macAddr = macAddr.Replace("-", ":");
             if (string.Equals(macAddr, _currentMac, StringComparison.CurrentCultureIgnoreCase))
             {
-                Disconnected?.Invoke(this, "Bluetooth channel closed");
+                Disconnected?.Invoke(this, "Device was disconnected");
             }
 
             unsafe
@@ -169,23 +169,27 @@ namespace ThePBone.OSX.Native
 
         private void OnConnected(IntPtr mac, IntPtr name)
         {
-            var reconnect = new Action(async() =>
+            if (ConnSemaphore.CurrentCount == 1)
             {
-                try
+                var reconnect = new Action(async () =>
                 {
-                    await ConnectAsync(_currentMac, _currentUuid);
-                }
-                catch (BluetoothException ex)
+                    try
+                    {
+                        await ConnectAsync(_currentMac, _currentUuid);
+                    }
+                    catch (BluetoothException ex)
+                    {
+                        BluetoothErrorAsync?.Invoke(this, ex);
+                    }
+                });
+
+                var macAddr = Marshal.PtrToStringAnsi(mac) ?? string.Empty;
+                macAddr = macAddr.Replace("-", ":");
+                if (string.Equals(macAddr, _currentMac, StringComparison.CurrentCultureIgnoreCase))
                 {
-                    BluetoothErrorAsync?.Invoke(this, ex);
+                    Log.Debug($"OSX.BluetoothService: Reconnecting to {macAddr}");
+                    reconnect();
                 }
-            });
-            
-            var macAddr = Marshal.PtrToStringAnsi(mac) ?? string.Empty;
-            macAddr = macAddr.Replace("-", ":");
-            if (string.Equals(macAddr, _currentMac, StringComparison.CurrentCultureIgnoreCase))
-            {
-                reconnect();
             }
 
             unsafe
@@ -200,7 +204,6 @@ namespace ThePBone.OSX.Native
         #region Connection
         public async Task ConnectAsync(string macAddress, string uuid, bool noRetry = false)
         {
-            //TODO osx, do we need noRetry?
             var semResult = await ConnSemaphore.WaitAsync(5000);
             if (semResult == false)
             {
@@ -216,8 +219,7 @@ namespace ThePBone.OSX.Native
                 }
 
                 Connecting?.Invoke(this, EventArgs.Empty);
-                Log.Debug($"OSX.BluetoothService: Connecting ...");
-
+                Log.Debug("OSX.BluetoothService: Connecting...");
                 _currentMac = macAddress;
                 _currentUuid = uuid;
 
@@ -232,26 +234,33 @@ namespace ThePBone.OSX.Native
                     }
                 }
 
-                switch (result)
+                if (result != BT_CONN_RESULT.BT_CONN_SUCCESS)
                 {
-                    case BT_CONN_RESULT.BT_CONN_EBASECONN:
-                        throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
-                            "Unable to connect to the Bluetooth device");
-                    case BT_CONN_RESULT.BT_CONN_ENOTFOUND:
-                        throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
-                            "Bluetooth device not found nearby. Make sure it is turned on and discoverable.");
-                    case BT_CONN_RESULT.BT_CONN_ESDP:
-                        throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
-                            "Unable to read SDP records of the Bluetooth device. It appears to be unsupported by this app.");
-                    case BT_CONN_RESULT.BT_CONN_ECID:
-                        throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
-                            "Device returned invalid Bluetooth channel id. Cannot open connection, please try again.");
-                    case BT_CONN_RESULT.BT_CONN_EOPEN:
-                        throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
-                            "Unable to open serial channel on the target device. Please make sure the device is responsive and accessible.");
-                    case BT_CONN_RESULT.BT_CONN_EUNKNOWN:
-                        throw new BluetoothException(BluetoothException.ErrorCodes.Unknown,
-                            "Unknown error");
+                    Log.Error($"OSX.BluetoothService: connect returned {result.ToString()}");
+                    switch (result)
+                    {
+                        case BT_CONN_RESULT.BT_CONN_EBASECONN:
+                            throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
+                                "Unable to connect to the Bluetooth device");
+                        case BT_CONN_RESULT.BT_CONN_ENOTFOUND:
+                            throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
+                                "Bluetooth device not found nearby. Make sure it is turned on and discoverable.");
+                        case BT_CONN_RESULT.BT_CONN_ENOTPAIRED:
+                            throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
+                                "Bluetooth device not paired to computer.");
+                        case BT_CONN_RESULT.BT_CONN_ESDP:
+                            throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
+                                "Unable to read SDP records of the Bluetooth device. It appears to be unsupported by this app.");
+                        case BT_CONN_RESULT.BT_CONN_ECID:
+                            throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
+                                "Device returned invalid Bluetooth channel id. Cannot open connection, please try again.");
+                        case BT_CONN_RESULT.BT_CONN_EOPEN:
+                            throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
+                                "Unable to open serial channel on the target device. Please make sure the device is responsive and accessible.");
+                        default:
+                            throw new BluetoothException(BluetoothException.ErrorCodes.Unknown,
+                                "Unknown error");
+                    }
                 }
 
                 unsafe
@@ -274,22 +283,34 @@ namespace ThePBone.OSX.Native
         public async Task DisconnectAsync()
         {
             Log.Debug("OSX.BluetoothService: Disconnecting...");
-            bool result;
-            unsafe
+            var semResult = await ConnSemaphore.WaitAsync(5000);
+            if (semResult == false)
             {
-                result = Bluetooth.bt_disconnect(_nativePtr);
+                Log.Error($"OSX.BluetoothService: Disconnection attempt timed out due to blocked semaphore");
+                throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "Timed out while waiting to enter connection phase. Another task is already preparing a connection.");
             }
 
-            if (!result)
+            try
             {
-                Log.Error("Disconnecting failed");
-            }
-            else
-            {
-                Log.Error("Disconnection successful");
-            }
+                bool result;
+                unsafe
+                {
+                    result = Bluetooth.bt_disconnect(_nativePtr);
+                }
 
-            await Task.CompletedTask;
+                if (!result)
+                {
+                    Log.Error("Disconnecting failed");
+                }
+                else
+                {
+                    Log.Debug("Disconnection successful");
+                }
+            }
+            finally
+            {
+                ConnSemaphore.Release();
+            }
         }
         #endregion
 
@@ -305,19 +326,26 @@ namespace ThePBone.OSX.Native
                 }
             }
 
-            switch (result)
+            if (result != BT_SEND_RESULT.BT_SEND_SUCCESS)
             {
-                case BT_SEND_RESULT.BT_SEND_EPARTIAL:
-                    Log.Error("OSX.BluetoothService.SendAsync: Data has been partially sent. Data loss is very likely.");
-                    break;
-                case BT_SEND_RESULT.BT_SEND_EUNKNOWN:
-                    Log.Error("OSX.BluetoothService.SendAsync: Non-null status value returned by native Bluetooth implementation");
-                    break;
-                case BT_SEND_RESULT.BT_SEND_ENULL:
-                    Log.Error("OSX.BluetoothService.SendAsync: Native object not properly allocated");
-                    break;
+                switch (result)
+                {
+                    case BT_SEND_RESULT.BT_SEND_EPARTIAL:
+                        Log.Error(
+                            "OSX.BluetoothService.SendAsync: Data has been partially sent. Data loss is very likely.");
+                        break;                    
+                    case BT_SEND_RESULT.BT_SEND_ENULL:
+                        Log.Error(
+                            "OSX.BluetoothService.SendAsync: RFCOMM channel is apparently closed");
+                        break;
+                    case BT_SEND_RESULT.BT_SEND_EUNKNOWN:
+                        Log.Error(
+                            "OSX.BluetoothService.SendAsync: Non-null status value returned by native Bluetooth implementation");
+                        break;
+                }
+                await DisconnectAsync();
             }
-            
+
             await Task.CompletedTask;
         }
         #endregion
