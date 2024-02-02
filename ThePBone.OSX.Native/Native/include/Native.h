@@ -42,4 +42,6 @@ extern void btdev_free(Device *self);
 extern void mem_free(void *ptr);
 
 extern void setHideInDock(bool doHide);
+extern void setAutoStartEnabled(bool autoStart);
+extern bool isAutoStartEnabled();
 };

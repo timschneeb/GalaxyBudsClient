@@ -109,6 +109,10 @@ namespace ThePBone.OSX.Native.Unmanaged
     public static class AppUtils
     {
         [DllImport(DSO.Name)]
-        public static extern bool setHideInDock(bool hide);
+        public static extern void setHideInDock(bool hide);
+        [DllImport(DSO.Name)]
+        public static extern bool setAutoStartEnabled(bool autoStart);
+        [DllImport(DSO.Name)]
+        public static extern bool isAutoStartEnabled();
     }
 }

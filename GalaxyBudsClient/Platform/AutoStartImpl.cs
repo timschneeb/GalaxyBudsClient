@@ -17,6 +17,10 @@ namespace GalaxyBudsClient.Platform
             {
                 Instance = new Linux.AutoStartHelper();
             }
+            else if (PlatformUtils.IsOSX)
+            {
+                Instance = new OSX.AutoStartHelper();
+            }
             else
             {
                 Log.Warning("AutoStartHelper.Dummy: Platform not supported");
