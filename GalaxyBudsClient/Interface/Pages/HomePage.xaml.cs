@@ -243,6 +243,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		public override void OnPageHidden()
 		{
             _refreshTimer.Stop();
+            _batteryCase.IsVisible = _caseLabel.IsVisible = false;
         }
         
 		public async void ProcessBasicUpdate(IBasicStatusUpdate parser)
@@ -348,8 +349,6 @@ namespace GalaxyBudsClient.Interface.Pages
             _batteryIconRight.IsVisible = isRightOnline;
             _batteryPercentageLeft.IsVisible = isLeftOnline;
             _batteryPercentageRight.IsVisible = isRightOnline;
-            _caseLabel.IsVisible = isLeftOnline || isRightOnline;
-            _batteryCase.IsVisible = isLeftOnline || isRightOnline;
 
             UpdateConnectionState(isLeftOnline, isRightOnline);
         }

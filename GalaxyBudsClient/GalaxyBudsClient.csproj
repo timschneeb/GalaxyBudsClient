@@ -27,7 +27,6 @@
         <DisableWinExeOutputInference>false</DisableWinExeOutputInference>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <LangVersion>9</LangVersion>
-        <RuntimeIdentifiers>osx-x64</RuntimeIdentifiers>
         <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>
         
         <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
@@ -42,6 +41,8 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsOSX)'=='true'">
         <DefineConstants>OSX</DefineConstants>
+        <RuntimeIdentifiers>osx-x64;osx-arm64</RuntimeIdentifiers>
+        <_XSAppIconAssets>Assets.xcassets/AppIcon.appiconset</_XSAppIconAssets>
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <DefineConstants>Linux</DefineConstants>
@@ -63,7 +64,7 @@
     </PropertyGroup>
     <ItemGroup>
         <AvaloniaResource Include="Resources\**" />
-        <EmbeddedResource Include="Resources\**" />
+        <!--<EmbeddedResource Include="Resources\**" />-->
         <AvaloniaResource Include="i18n\*" /> 
         <AvaloniaResource Include="ui\style\*" />
     </ItemGroup>

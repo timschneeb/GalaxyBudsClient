@@ -40,4 +40,6 @@ extern void btdev_free(Device *self);
 
 /* General memory management */
 extern void mem_free(void *ptr);
+
+extern void setHideInDock(bool doHide);
 };

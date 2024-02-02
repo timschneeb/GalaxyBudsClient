@@ -88,6 +88,9 @@ namespace GalaxyBudsClient.Utils
                         await BluetoothImpl.Instance.ConnectAsync();
                     }
                     break;
+                case ItemType.Open:
+                    Dispatcher.UIThread.Post(MainWindow.Instance.BringToFront);
+                    break;
                 case ItemType.Quit:
                     Log.Information("TrayManager: Exit requested by user");
                     MainWindow.Instance.OverrideMinimizeTray = true;
@@ -200,6 +203,15 @@ namespace GalaxyBudsClient.Utils
             await Dispatcher.UIThread.InvokeAsync(() =>
             {
                 var items = new List<NativeMenuItemBase>();
+                if (PlatformUtils.IsOSX)
+                {
+                    items.Add(new NativeMenuItem(Loc.Resolve("window_open"))
+                    {
+                        Command = new MiniCommand(OnTrayMenuCommand),
+                        CommandParameter = ItemType.Open
+                    });
+                    items.Add(new NativeMenuItemSeparator());
+                }
                 if (BluetoothImpl.Instance.IsConnected && DeviceMessageCache.Instance.BasicStatusUpdate != null)
                 {
                     items.AddRange(RebuildBatteryInfo().OfType<NativeMenuItemBase>());
@@ -212,7 +224,6 @@ namespace GalaxyBudsClient.Utils
                         Command = new MiniCommand(OnTrayMenuCommand),
                         CommandParameter = ItemType.Connect
                     });
-                    items.Add(new NativeMenuItemSeparator());
                 }
 
                 items.Add(new NativeMenuItemSeparator());

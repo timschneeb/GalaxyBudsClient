@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01C1987F2B6D8F0C009EEA07 /* Native.AppUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 01C1987E2B6D8F0C009EEA07 /* Native.AppUtils.mm */; };
+		01C198812B6D9023009EEA07 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C198802B6D9023009EEA07 /* AppKit.framework */; };
 		1C0983CB4A36B117AF41155E /* Bluetooth.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098F273A7E24715983E630 /* Bluetooth.mm */; };
 		1C0989E232D8E7E0534F2834 /* BluetoothDeviceWatcher.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098325C88AD4809959EDBE /* BluetoothDeviceWatcher.mm */; };
 		1C098AE4A9BA02B8EDE3DA5B /* Native.Bluetooth.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098B72451782C32C519A71 /* Native.Bluetooth.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01C1987E2B6D8F0C009EEA07 /* Native.AppUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Native.AppUtils.mm; sourceTree = "<group>"; };
+		01C198802B6D9023009EEA07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		1C098325C88AD4809959EDBE /* BluetoothDeviceWatcher.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BluetoothDeviceWatcher.mm; sourceTree = "<group>"; };
 		1C098422B9BFF59462222A36 /* Native.Memory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Native.Memory.mm; sourceTree = "<group>"; };
 		1C0984E6D93230E41397FA0D /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Native.h; sourceTree = "<group>"; };
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01C198812B6D9023009EEA07 /* AppKit.framework in Frameworks */,
 				2276033D2651CDB500D756A8 /* IOBluetoothUI.framework in Frameworks */,
 				2276033B2651CDB000D756A8 /* IOBluetooth.framework in Frameworks */,
 			);
@@ -73,6 +78,7 @@
 		1C098C4BB6B054DCFF1D9264 /* bridge */ = {
 			isa = PBXGroup;
 			children = (
+				01C1987E2B6D8F0C009EEA07 /* Native.AppUtils.mm */,
 				1C098422B9BFF59462222A36 /* Native.Memory.mm */,
 				1C098B72451782C32C519A71 /* Native.Bluetooth.mm */,
 			);
@@ -94,6 +100,7 @@
 		227603392651CDB000D756A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01C198802B6D9023009EEA07 /* AppKit.framework */,
 				2276033C2651CDB500D756A8 /* IOBluetoothUI.framework */,
 				2276033A2651CDB000D756A8 /* IOBluetooth.framework */,
 			);
@@ -170,6 +177,7 @@
 				1C0989E232D8E7E0534F2834 /* BluetoothDeviceWatcher.mm in Sources */,
 				1C098FD7AF270DE474ED52EB /* Native.Memory.mm in Sources */,
 				1C098AE4A9BA02B8EDE3DA5B /* Native.Bluetooth.mm in Sources */,
+				01C1987F2B6D8F0C009EEA07 /* Native.AppUtils.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,12 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="GalaxyBudsClient.App">
+    <Application.Name>Galaxy Buds Manager</Application.Name>
+    <NativeMenu.Menu>
+        <NativeMenu>
+            <!-- eternal emptiness -->
+        </NativeMenu>
+    </NativeMenu.Menu>
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

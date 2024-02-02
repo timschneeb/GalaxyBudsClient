@@ -144,7 +144,7 @@ namespace GalaxyBudsClient
                 .LogToTrace()
                 .With(new Win32PlatformOptions()
                 {
-                    EnableMultitouch = true, 
+                    EnableMultitouch = true,
                     UseWindowsUIComposition = true,
                     CompositionBackdropCornerRadius = 20f
                 });

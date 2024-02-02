@@ -105,4 +105,10 @@ namespace ThePBone.OSX.Native.Unmanaged
         [DllImport(DSO.Name)]
         internal static extern unsafe void mem_free(void* ptr);
     }
+
+    public static class AppUtils
+    {
+        [DllImport(DSO.Name)]
+        public static extern bool setHideInDock(bool hide);
+    }
 }

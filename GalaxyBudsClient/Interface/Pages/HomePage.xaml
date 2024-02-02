@@ -30,8 +30,8 @@
                 <Label Name="BatteryPercentageRight" Content="--%" Margin="381,46,0,102" FontSize="20" HorizontalAlignment="Left" Foreground="{DynamicResource ForegroundTextAltBrush}"/>
                 <Label Name="BatteryCurrentRight" Content="--.--mA" Margin="360,90,0,54" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" PointerPressed="RequestTempUnitChange_OnPointerPressed" />
                 <Label Name="BatteryTemperatureRight" Content="{DynamicResource unknown}" Margin="360,109,0,35" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" PointerPressed="RequestTempUnitChange_OnPointerPressed" />
-                <Label Name="BatteryCase" Margin="204,130,204,14" FontSize="16" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalContentAlignment="Center" />
-                <Label Name="CaseLabel" Foreground="{DynamicResource SubtitleTextBrush}"
+                <Label Name="BatteryCase" IsVisible="False" Margin="204,130,204,14" FontSize="16" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalContentAlignment="Center" />
+                <Label Name="CaseLabel" Foreground="{DynamicResource SubtitleTextBrush}" IsVisible="False"
                        FontSize="13" VerticalAlignment="Top" Content="{DynamicResource case}" Margin="216,113,216,0" HorizontalContentAlignment="Center"/>
 
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" x:Name="WarningContainer">
