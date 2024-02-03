@@ -1,3 +1,6 @@
+// #define Windows // TODO
+// TODO https://github.com/AvaloniaUI/Avalonia/discussions/8823#discussioncomment-4256133
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,11 +8,13 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Avalonia.Platform;
 using Avalonia.Threading;
+using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform.Interfaces;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using Serilog;
+
 
 namespace GalaxyBudsClient.Platform.Windows
 {
@@ -36,23 +41,21 @@ namespace GalaxyBudsClient.Platform.Windows
     {
         private readonly IList<Hotkey> _hotkeys = new List<Hotkey>();
         
+        private readonly ThePBone.Interop.Win32.WndProcClient _wndProc = new ThePBone.Interop.Win32.WndProcClient();
+        
         public HotkeyReceiver()
         {
             if (!MainWindow.IsReady())
             {
-                Log.Error("Windows.HotkeyReceiver: MainWindow not ready. Cannot access WndProc callback.");
+                Log.Error("Windows.HotkeyReceiver: MainWindow not ready. Cannot access WndProc callback");
                 return;
             }
 #if Windows
-            if (MainWindow.Instance.PlatformImpl is Win32ProcWindowImpl impl)
-            {
-
-                Log.Debug($"Windows.HotkeyReceiver: WndProc probes attached");
-                impl.MessageReceived += OnMessageReceived;
-                return;
-            }
+            _wndProc.MessageReceived += WndProcClient_MessageReceived;
+            Log.Debug("Windows.HotkeyReceiver: WndProc probes attached");
+            return;
 #endif
-            Log.Error("Windows.HotkeyReceiver: This platform configuration is not supported.");
+            Log.Error("Windows.HotkeyReceiver: This platform configuration is not supported");
         }
         
         public void Dispose()
@@ -64,17 +67,14 @@ namespace GalaxyBudsClient.Platform.Windows
                     return;
                 }
 #if Windows                
-                if (MainWindow.Instance.PlatformImpl is Win32ProcWindowImpl impl)
-                {
-                    impl.MessageReceived -= OnMessageReceived;
-                }   
+                _wndProc.MessageReceived -= WndProcClient_MessageReceived;
 #endif              
                 var _ = UnregisterAllAsync();
             });
         }
 
 #if Windows
-        private void OnMessageReceived(object? sender, ThePBone.Interop.Win32.WndProcClient.WindowMessage msg)
+        private void WndProcClient_MessageReceived(object? sender, ThePBone.Interop.Win32.WndProcClient.WindowMessage msg)
         {            
             if (msg.Msg == ThePBone.Interop.Win32.WndProcClient.WindowsMessage.WM_HOTKEY)
             {
