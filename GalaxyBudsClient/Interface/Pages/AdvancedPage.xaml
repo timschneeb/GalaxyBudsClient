@@ -55,7 +55,7 @@
                 </Border>
             </Grid>
         </Border>
-        <Border Grid.Row="4" x:Name="Hotkeys" Classes="RoundedBorderListItem BottomSpacer10">
+        <Border Grid.Row="4" x:Name="HotkeysBixby" Classes="RoundedBorderListItem BottomSpacer10">
             <Grid ClipToBounds="True">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -65,7 +65,7 @@
                 
                 <items:DetailListItem Grid.Row="0" Text="{DynamicResource adv_hotkey}"
                                       Description="{DynamicResource adv_hotkey_desc}"
-                                      PointerPressed="Hotkeys_OnPointerPressed"/>
+                                      PointerPressed="Hotkeys_OnPointerPressed" x:Name="Hotkeys" />
                 <Separator Grid.Row="1" x:Name="BixbyRemapS"  Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
                 <Border Grid.Row="2" x:Name="BixbyRemap">
                     <items:DetailListItem Text="{DynamicResource adv_bixby_remap}"
