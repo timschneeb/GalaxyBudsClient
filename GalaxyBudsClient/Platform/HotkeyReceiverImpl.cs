@@ -36,11 +36,15 @@ namespace GalaxyBudsClient.Platform
 
         private readonly IHotkeyReceiver _backend;
 
-        public HotkeyReceiverImpl()
+        private HotkeyReceiverImpl()
         {
             if (PlatformUtils.IsWindows)
             {
                 _backend = new Windows.HotkeyReceiver();
+            }
+            else if (PlatformUtils.IsOSX)
+            {
+                _backend = new OSX.HotkeyReceiver();
             }
             else
             {

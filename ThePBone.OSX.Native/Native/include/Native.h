@@ -11,10 +11,19 @@
 @class Bluetooth;
 @class BluetoothDeviceWatcher;
 
+typedef void (*HotkeyOnDispatch)(const uint identifier);
+
 struct BluetoothImpl {
     Bluetooth *client;
     BluetoothDeviceWatcher *watcher;
 };
+
+struct HotkeyMgrImpl {
+    NSMutableArray *hotkeys;
+    HotkeyOnDispatch onDispatchHotkey;
+};
+
+void dispatchHotkey(HotkeyMgrImpl *self, NSNumber* identifier);
 
 extern "C" {
 /* Bluetooth manager */
@@ -44,4 +53,9 @@ extern void mem_free(void *ptr);
 extern void setHideInDock(bool doHide);
 extern void setAutoStartEnabled(bool autoStart);
 extern bool isAutoStartEnabled();
+
+extern void allocHotkeyMgr(HotkeyMgrImpl **self, HotkeyOnDispatch cb);
+extern bool registerHotKey(HotkeyMgrImpl *self, uint win32Keyflags, uint win32Modflags);
+extern void deallocHotkeyMgr(HotkeyMgrImpl *self);
+extern void unregisterAllHotkeys(HotkeyMgrImpl *self);
 };

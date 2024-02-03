@@ -40,20 +40,19 @@ struct Device {
 
 struct EnumerationResult {
     int length;
-    Device *devices;
+    struct Device *devices;
 };
 
 @class IOBluetoothDevice;
 @class IOBluetoothRFCOMMChannel;
 
 typedef void (*Bt_OnChannelData)(void *data, unsigned long size);
-typedef void (*Bt_OnChannelClosed)();
+typedef void (*Bt_OnChannelClosed)(void);
 
 @interface Bluetooth<IOBluetoothRFCOMMChannelDelegate, IOBluetoothDeviceAsyncCallbacks> : NSObject {
     __strong IOBluetoothRFCOMMChannel *mRFCOMMChannel;
     bool sdpQueryDone;
 }
-
 
 - (id)init;
 - (BT_CONN_RESULT)connect:(NSString *)mac uuid:(const UInt8 *)uuid;

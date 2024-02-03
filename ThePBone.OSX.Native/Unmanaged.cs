@@ -114,5 +114,15 @@ namespace ThePBone.OSX.Native.Unmanaged
         public static extern bool setAutoStartEnabled(bool autoStart);
         [DllImport(DSO.Name)]
         public static extern bool isAutoStartEnabled();
+        [DllImport(DSO.Name)]
+        public static extern unsafe void allocHotkeyMgr(void *self, HotkeyOnDispatch cb);
+        [DllImport(DSO.Name)]
+        public static extern unsafe bool registerHotKey(void *self, uint win32Keyflags, uint win32Modflags);
+        [DllImport(DSO.Name)]
+        public static extern unsafe void deallocHotkeyMgr(void* hotkeyMgrPtr);
+        [DllImport(DSO.Name)]
+        public static extern unsafe void unregisterAllHotkeys(void* hotkeyMgrPtr);
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate void HotkeyOnDispatch(uint identifier);
     }
 }

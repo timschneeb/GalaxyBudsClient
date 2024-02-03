@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		015D13832B6E845000D342D8 /* HotkeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D13822B6E845000D342D8 /* HotkeyManager.swift */; };
+		015D13852B6E852A00D342D8 /* Magnet in Frameworks */ = {isa = PBXBuildFile; productRef = 015D13842B6E852A00D342D8 /* Magnet */; };
 		01C1987F2B6D8F0C009EEA07 /* Native.AppUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 01C1987E2B6D8F0C009EEA07 /* Native.AppUtils.mm */; };
 		01C198812B6D9023009EEA07 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C198802B6D9023009EEA07 /* AppKit.framework */; };
 		01C198842B6D9C9E009EEA07 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C198832B6D9C9E009EEA07 /* LaunchAtLoginController.m */; };
+		01F5A1C32B6EB04F001B8206 /* NIBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 01F5A1C22B6EB04F001B8206 /* NIBridge.mm */; };
+		01F5A1C52B6EB150001B8206 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F5A1C42B6EB150001B8206 /* Foundation.framework */; };
 		1C0983CB4A36B117AF41155E /* Bluetooth.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098F273A7E24715983E630 /* Bluetooth.mm */; };
 		1C0989E232D8E7E0534F2834 /* BluetoothDeviceWatcher.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098325C88AD4809959EDBE /* BluetoothDeviceWatcher.mm */; };
 		1C098AE4A9BA02B8EDE3DA5B /* Native.Bluetooth.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098B72451782C32C519A71 /* Native.Bluetooth.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -18,14 +22,18 @@
 		1C098E958CA148B20DCB4F6D /* BluetoothDeviceWatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C098B5CA5C8E76FE0849D49 /* BluetoothDeviceWatcher.h */; };
 		1C098FD7AF270DE474ED52EB /* Native.Memory.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098422B9BFF59462222A36 /* Native.Memory.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2276033B2651CDB000D756A8 /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2276033A2651CDB000D756A8 /* IOBluetooth.framework */; };
-		2276033D2651CDB500D756A8 /* IOBluetoothUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2276033C2651CDB500D756A8 /* IOBluetoothUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		015D13812B6E845000D342D8 /* NativeInterop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NativeInterop-Bridging-Header.h"; sourceTree = "<group>"; };
+		015D13822B6E845000D342D8 /* HotkeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyManager.swift; sourceTree = "<group>"; };
 		01C1987E2B6D8F0C009EEA07 /* Native.AppUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Native.AppUtils.mm; sourceTree = "<group>"; };
 		01C198802B6D9023009EEA07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		01C198822B6D9C7F009EEA07 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
 		01C198832B6D9C9E009EEA07 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
+		01F5A1C22B6EB04F001B8206 /* NIBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NIBridge.mm; sourceTree = "<group>"; };
+		01F5A1C42B6EB150001B8206 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		01F6DD892B6EAC56008A2A4F /* NIBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIBridge.h; sourceTree = "<group>"; };
 		1C098325C88AD4809959EDBE /* BluetoothDeviceWatcher.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BluetoothDeviceWatcher.mm; sourceTree = "<group>"; };
 		1C098422B9BFF59462222A36 /* Native.Memory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Native.Memory.mm; sourceTree = "<group>"; };
 		1C0984E6D93230E41397FA0D /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Native.h; sourceTree = "<group>"; };
@@ -35,7 +43,6 @@
 		1C098B72451782C32C519A71 /* Native.Bluetooth.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Native.Bluetooth.mm; sourceTree = "<group>"; };
 		1C098F273A7E24715983E630 /* Bluetooth.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Bluetooth.mm; sourceTree = "<group>"; };
 		2276033A2651CDB000D756A8 /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = System/Library/Frameworks/IOBluetooth.framework; sourceTree = SDKROOT; };
-		2276033C2651CDB500D756A8 /* IOBluetoothUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetoothUI.framework; path = System/Library/Frameworks/IOBluetoothUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,8 +51,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				01C198812B6D9023009EEA07 /* AppKit.framework in Frameworks */,
-				2276033D2651CDB500D756A8 /* IOBluetoothUI.framework in Frameworks */,
+				015D13852B6E852A00D342D8 /* Magnet in Frameworks */,
 				2276033B2651CDB000D756A8 /* IOBluetooth.framework in Frameworks */,
+				01F5A1C52B6EB150001B8206 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +106,10 @@
 				1C098C4BB6B054DCFF1D9264 /* bridge */,
 				01C198822B6D9C7F009EEA07 /* LaunchAtLoginController.h */,
 				01C198832B6D9C9E009EEA07 /* LaunchAtLoginController.m */,
+				015D13822B6E845000D342D8 /* HotkeyManager.swift */,
+				015D13812B6E845000D342D8 /* NativeInterop-Bridging-Header.h */,
+				01F6DD892B6EAC56008A2A4F /* NIBridge.h */,
+				01F5A1C22B6EB04F001B8206 /* NIBridge.mm */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -105,8 +117,8 @@
 		227603392651CDB000D756A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01F5A1C42B6EB150001B8206 /* Foundation.framework */,
 				01C198802B6D9023009EEA07 /* AppKit.framework */,
-				2276033C2651CDB500D756A8 /* IOBluetoothUI.framework */,
 				2276033A2651CDB000D756A8 /* IOBluetooth.framework */,
 			);
 			name = Frameworks;
@@ -141,6 +153,9 @@
 			dependencies = (
 			);
 			name = NativeInterop;
+			packageProductDependencies = (
+				015D13842B6E852A00D342D8 /* Magnet */,
+			);
 			productName = NativeInterop;
 			productReference = 1C09896C4A560632CA6CF376 /* libNativeInterop.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
@@ -152,11 +167,16 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1520;
 				ORGANIZATIONNAME = "Tim Schneeberger";
+				TargetAttributes = {
+					1C098FD2EFC95C46A8BD2F9B = {
+						LastSwiftMigration = 1520;
+					};
+				};
 			};
 			buildConfigurationList = 1C098E4A108E9474A6479BF4 /* Build configuration list for PBXProject "NativeInterop" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -164,6 +184,9 @@
 				Base,
 			);
 			mainGroup = 1C0986D6038D35A3E0088401;
+			packageReferences = (
+				01A76C032B6E7BAE004D46D6 /* XCRemoteSwiftPackageReference "Magnet" */,
+			);
 			productRefGroup = 1C098846E0A1E463C39CF74F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -183,7 +206,9 @@
 				1C098FD7AF270DE474ED52EB /* Native.Memory.mm in Sources */,
 				01C198842B6D9C9E009EEA07 /* LaunchAtLoginController.m in Sources */,
 				1C098AE4A9BA02B8EDE3DA5B /* Native.Bluetooth.mm in Sources */,
+				015D13832B6E845000D342D8 /* HotkeyManager.swift in Sources */,
 				01C1987F2B6D8F0C009EEA07 /* Native.AppUtils.mm in Sources */,
+				01F5A1C32B6EB04F001B8206 /* NIBridge.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,40 +347,63 @@
 		1C098E88951D039B002D5EF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
 				HEADER_SEARCH_PATHS = include/;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OTHER_CFLAGS = "-v";
+				OTHER_CFLAGS = (
+					"-v",
+					"-fcxx-modules",
+					"-fmodules",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-fmodules",
+					"-fcxx-modules",
+				);
 				OTHER_LDFLAGS = (
 					"-Xlinker",
 					"-v",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SYMROOT = Build;
+				SWIFT_OBJC_BRIDGING_HEADER = "src/NativeInterop-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		1C098E8DC44A098A7EEA933F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
 				HEADER_SEARCH_PATHS = include/;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OTHER_CFLAGS = "-v";
+				OTHER_CFLAGS = (
+					"-v",
+					"-fcxx-modules",
+					"-fmodules",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-fmodules",
+					"-fcxx-modules",
+				);
 				OTHER_LDFLAGS = (
 					"-Xlinker",
 					"-v",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SYMROOT = Build;
+				SWIFT_OBJC_BRIDGING_HEADER = "src/NativeInterop-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -381,6 +429,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		01A76C032B6E7BAE004D46D6 /* XCRemoteSwiftPackageReference "Magnet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Clipy/Magnet";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		015D13842B6E852A00D342D8 /* Magnet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01A76C032B6E7BAE004D46D6 /* XCRemoteSwiftPackageReference "Magnet" */;
+			productName = Magnet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1C0984D130776B708AC54F6D /* Project object */;
 }
