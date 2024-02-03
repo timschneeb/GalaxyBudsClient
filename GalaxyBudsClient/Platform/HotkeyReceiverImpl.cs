@@ -29,7 +29,6 @@ namespace GalaxyBudsClient.Platform
 
         public static void Reset()
         {
-            _instance?.UnregisterAll();
             _instance?.Dispose();
             _instance = null;
         }
@@ -55,7 +54,7 @@ namespace GalaxyBudsClient.Platform
         public async Task<HotkeyRegisterException?> UpdateVerifySingleAsync(Hotkey target)
         {
             HotkeyRegisterException? targetResult = null;
-            UnregisterAll();
+            await UnregisterAll();
             foreach (var hotkey in SettingsProvider.Instance.Hotkeys)
             {
                 var error = await RegisterAsync(hotkey, true);
@@ -83,7 +82,7 @@ namespace GalaxyBudsClient.Platform
         
         public async void Update(bool silent = false)
         {
-            UnregisterAll();
+            await UnregisterAll();
             foreach (var hotkey in SettingsProvider.Instance?.Hotkeys ?? new Hotkey[0])
             {
                 await RegisterAsync(hotkey, silent);
@@ -115,7 +114,7 @@ namespace GalaxyBudsClient.Platform
             }
         }
 
-        public async void UnregisterAll()
+        public async Task UnregisterAll()
         {
             await _backend.UnregisterAllAsync();
         }

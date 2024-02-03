@@ -168,7 +168,7 @@ import Magnet
             if let keyCombo = KeyCombo(key: cocoaKeyflags!, cocoaModifiers: NSEvent.ModifierFlags(rawValue:cocoaModflags)) {
                 // this (or more precisely any code using .keyEquivalent)
                 // needs to run on main thread to avoid hanging forever
-                DispatchQueue.main.async {
+                DispatchQueue.main.sync {
                     NSLog("Registering key combo in HotkeyManager... " + keyCombo.keyEquivalentModifierMaskString + keyCombo.keyEquivalent);
                     let hotKey = HotKey(identifier: String(identifier), keyCombo: keyCombo) { hotKey in
                         onHotKeyReceived(str: str, identifier: identifier)

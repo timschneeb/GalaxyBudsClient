@@ -38,8 +38,33 @@ namespace GalaxyBudsClient.Platform.OSX
 
         private void OnDispatchHotkey(uint identifier)
         {
-            var key = _hotkeys[(int)identifier - 1];
-            EventDispatcher.Instance.Dispatch(key.Action);
+            Task.Run(async () => {
+                if (!await Semaphore.WaitAsync(5000))
+                {
+                    Log.Error("OSX.HotkeyReceiver: Blocked while trying to process hotkey");
+                    return;
+                }
+
+                try
+                {
+                    Hotkey key;
+                    try
+                    {
+                        key = _hotkeys[(int)identifier - 1];
+                    }
+                    finally
+                    {
+                        Semaphore.Release();
+                    }
+
+                    EventDispatcher.Instance.Dispatch(key.Action);
+                }
+                catch(Exception ex)
+                {
+                    Log.Error("OSX.HotkeyReceiver: Exception while processing hotkey " +
+                              $"{(int)identifier - 1} / {_hotkeys.Count}: {ex}");
+                }
+            });
         }
 #endif
         
@@ -64,15 +89,19 @@ namespace GalaxyBudsClient.Platform.OSX
                     throw new HotkeyRegisterException("Hotkey processing blocked, this shouldn't happen", hotkey);
                 }
                 Log.Debug("OSX.HotkeyReceiver: Registering hotkey...");
-                _hotkeys.Add(hotkey);
                 bool result;
                 unsafe
                 {
                     result = AppUtils.registerHotKey(_hotkeyMgrObjc, (uint)keyFlags, (uint)modFlags);
                 }
+                if (result)
+                {
+                    _hotkeys.Add(hotkey);
+                }
+
+                Log.Debug("OSX.HotkeyReceiver: Registered hotkey.");
 
                 Semaphore.Release();
-                Log.Debug("OSX.HotkeyReceiver: Registered hotkey.");
 
                 if (!result)
                 {
@@ -134,10 +163,10 @@ namespace GalaxyBudsClient.Platform.OSX
 
                 // Unregister all the registered hotkeys.
                 _hotkeys.Clear();
-
-                Semaphore.Release();
             
                 Log.Debug("OSX.HotkeyReceiver: All hotkeys unregistered");
+
+                Semaphore.Release();
             });
 #endif
         }
