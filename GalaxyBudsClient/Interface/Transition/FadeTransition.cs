@@ -106,7 +106,7 @@ namespace GalaxyBudsClient.Interface.Transition
             if (from != null)
             {
                 FadeOutBegin?.Invoke(this, EventArgs.Empty);
-                await _fadeOutAnimation.RunAsync(from, null);
+                await _fadeOutAnimation.RunAsync(from);
                 FadeOutComplete?.Invoke(this, EventArgs.Empty);
             }
             
@@ -121,7 +121,7 @@ namespace GalaxyBudsClient.Interface.Transition
             {
                 to.IsVisible = true;
                 FadeInBegin?.Invoke(this, EventArgs.Empty);
-                await _fadeInAnimation.RunAsync(to, null);
+                await _fadeInAnimation.RunAsync(to);
                 FadeInComplete?.Invoke(this, EventArgs.Empty);
             }
             

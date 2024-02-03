@@ -93,7 +93,7 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Classes="BorderHoverStyle" PointerPressed="ManualPair_OnPointerPressed">
+                <Border Grid.Column="0" Classes="BorderHoverStyle" x:Name="ManualPair" PointerPressed="ManualPair_OnPointerPressed">
                     <Label Content="{DynamicResource devsel_manual_pair}"
                            Height="50" FontSize="18"
                            Foreground="{DynamicResource ForegroundTextBrush}"

@@ -18,7 +18,7 @@ namespace GalaxyBudsClient.Utils
             {
                 case null:
                     return null;
-                case string rawUri when targetType == typeof(IBitmap):
+                case string rawUri when targetType == typeof(Bitmap):
                 {
                     Uri uri;
 
@@ -33,9 +33,7 @@ namespace GalaxyBudsClient.Utils
                         uri = new Uri($"avares://{assemblyName}{rawUri}");
                     }
 
-                    var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
-                    var asset = assets?.Open(uri);
-                    return asset == null ? null : new Bitmap(asset);
+                    return new Bitmap(AssetLoader.Open(uri));
                 }
                 default:
                     throw new NotSupportedException();

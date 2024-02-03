@@ -1,6 +1,7 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
+using Avalonia.VisualTree;
 using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
@@ -49,8 +50,8 @@ namespace GalaxyBudsClient.Interface.Pages
 			this.FindControl<Separator>("BixbyRemapS").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.BixbyWakeup);
 			this.FindControl<Separator>("SidetoneS").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSidetone);
 			this.FindControl<Separator>("PassthroughS").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientPassthrough);
-			_sidetone.Parent!.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSidetone);
-			_passthrough.Parent!.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientPassthrough);
+			_sidetone.GetVisualParent()!.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSidetone);
+			_passthrough.GetVisualParent()!.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientPassthrough);
 		}
 		
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)

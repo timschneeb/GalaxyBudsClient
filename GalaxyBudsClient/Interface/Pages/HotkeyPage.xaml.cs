@@ -78,7 +78,7 @@ namespace GalaxyBudsClient.Interface.Pages
             var items = new List<Hotkey>(hotkeys);
             items.ForEach(x => x.IsLastInList = false);
             items.Last().IsLastInList = true;
-            _itemsControl.Items = items;
+            _itemsControl.ItemsSource = items;
         }
 
         private void Item_OnPointerReleased(object? sender, PointerReleasedEventArgs e)

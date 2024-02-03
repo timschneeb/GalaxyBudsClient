@@ -32,7 +32,7 @@
                    TextWrapping="Wrap" Margin="0,0,0,5"/>
         <ComboBox Grid.Row="3"
                   Name="Model"
-                  Items="{Binding ModelSource}"
+                  ItemsSource="{Binding ModelSource}"
                   Margin="0,0,0,5"
                   HorizontalAlignment="Stretch"/>
         <TextBlock Grid.Row="4"

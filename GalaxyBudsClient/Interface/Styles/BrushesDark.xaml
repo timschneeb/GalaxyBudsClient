@@ -29,6 +29,8 @@
     
     <!-- Elements -->
     <SolidColorBrush x:Key="SliderBrush" Color="Orange" />
+    <SolidColorBrush x:Key="SliderThumbBrush" Color="Orange" />
+    <SolidColorBrush x:Key="SliderThumbHoverBrush" Color="#f7b439" />
     <SolidColorBrush x:Key="ToggleOnBrush" Color="Orange" />
     <SolidColorBrush x:Key="ToggleOffBrush" Color="#444444" />
 

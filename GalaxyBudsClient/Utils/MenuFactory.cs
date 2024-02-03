@@ -14,7 +14,7 @@ namespace GalaxyBudsClient.Utils
         {
             var menu = new ContextMenu {PlacementMode = PlacementMode.Bottom, PlacementTarget = placementTarget};
             menu.Classes.Add(MenuStyle);
-            menu.Items = BuildMenu(content, embedSeparators);
+            menu.ItemsSource = BuildMenu(content, embedSeparators);
             return menu;
         }
         

@@ -207,8 +207,9 @@ namespace GalaxyBudsClient.Interface.Dialogs
             
             /* Window positioning */
             var workArea = (Screens.Primary ?? Screens.All[0]).WorkingArea;
-            int padding = 20;
-            var scaling = PlatformImpl.DesktopScaling;
+            const int padding = 20;
+            
+            var scaling = PlatformImpl?.GetPropertyValue<double>("DesktopScaling") ?? 1.0;
             switch (SettingsProvider.Instance.Popup.Placement)
             {
                 case PopupPlacement.TopLeft:
@@ -218,7 +219,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
                     Position = new PixelPoint((int) ((workArea.Width / 2f) - (this.Width  * scaling / 2) + workArea.X), workArea.Y + padding);
                     break;
                 case PopupPlacement.TopRight:
-                    Position = new PixelPoint((int) (workArea.Width - this.Width  * scaling + workArea.X - padding), workArea.Y + padding);
+                    Position = new PixelPoint((int) (workArea.Width - this.Width * scaling + workArea.X - padding), workArea.Y + padding);
                     break;
                 case PopupPlacement.BottomLeft:
                     Position = new PixelPoint(workArea.X + padding, (int) (workArea.Height - this.Height * scaling + workArea.Y - padding));

@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Avalonia.Platform;
 using Avalonia.Threading;
-using csscript;
-using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform.Interfaces;
+using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
-using JetBrains.Annotations;
 using Serilog;
 
 namespace GalaxyBudsClient.Platform.Windows
@@ -201,8 +200,9 @@ namespace GalaxyBudsClient.Platform.Windows
         private int RegisterHotKey(ModifierKeys modifier, Keys key)
         {
             _currentId += 1;
-        
-            if (!RegisterHotKey(MainWindow.Instance.PlatformImpl.Handle.Handle, _currentId, (uint) modifier, (uint) key))
+
+            var hwnd = MainWindow.Instance.PlatformImpl.GetPropertyValue<IPlatformHandle>("Handle").Handle;
+            if (!RegisterHotKey(hwnd, _currentId, (uint) modifier, (uint) key))
             {
                 var code = Marshal.GetLastWin32Error();
                 Log.Error($"Windows.HotkeyReceiver.Register: Unable to register hotkey (Error code: {code}) (Modifiers: {modifier}; Key: {key})");

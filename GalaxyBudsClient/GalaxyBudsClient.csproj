@@ -8,7 +8,7 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsWindows)'!='true'">
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
     
     <PropertyGroup>
@@ -71,13 +71,15 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="0.10.18" />
-        <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.18" />
-        <PackageReference Include="Avalonia.Desktop" Version="0.10.18" />
-        <PackageReference Include="Avalonia.Diagnostics" Version="0.10.18" />
-        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.18" />
-        <PackageReference Include="Avalonia.Svg.Skia" Version="0.10.16" />
-        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.17" />
+        <PackageReference Include="Avalonia" Version="11.0.7" />
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.7" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.0.7" />
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.0.7" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.7" />
+        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="11.0.7" />
+        <PackageReference Include="Avalonia.Svg.Skia" Version="11.0.0.13" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.7" />
+        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.0.6" />
         <PackageReference Include="Config.Net" Version="4.15.0" />
         <PackageReference Include="Config.Net.Json" Version="4.15.0" />
         <PackageReference Include="CS-Script.Core" Version="1.4.2-preview" />

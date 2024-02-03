@@ -1,5 +1,6 @@
 ﻿using System;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 
@@ -30,7 +31,7 @@ namespace GalaxyBudsClient.Interface.Elements
             _glow = this.FindControl<Image>("Glow");
         }
 
-        private void Button_OnTapped(object? sender, RoutedEventArgs e)
+        private void Button_OnTapped(object? sender, TappedEventArgs? e)
         {
             IsSearching = !IsSearching;
             ScanningStatusChanged?.Invoke(this, IsSearching);
