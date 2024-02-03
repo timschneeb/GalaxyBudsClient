@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
@@ -367,7 +364,7 @@ namespace GalaxyBudsClient.Message.Decoder
                         TripleTapOn = (msg.Payload[10] & (1 << 1)) == 2;
                         DoubleTapOn = (msg.Payload[10] & (1 << 2)) == 4;
                         SingleTapOn = (msg.Payload[10] & (1 << 3)) == 8;
-                        TouchpadLock = (msg.Payload[10] & (1 << 7)) == 128;
+                        TouchpadLock = (msg.Payload[10] & (1 << 7)) != 128;
                     }
 
                     TouchpadOptionL = DeviceSpec.TouchMap.FromByte((byte)((msg.Payload[11] & 240) >> 4));
@@ -435,7 +432,7 @@ namespace GalaxyBudsClient.Message.Decoder
                     TripleTapOn = (msg.Payload[10] & (1 << 1)) == 2;
                     DoubleTapOn = (msg.Payload[10] & (1 << 2)) == 4;
                     SingleTapOn = (msg.Payload[10] & (1 << 3)) == 8;
-                    TouchpadLock = (msg.Payload[10] & (1 << 7)) == 128;
+                    TouchpadLock = (msg.Payload[10] & (1 << 7)) != 128;
 
                     TouchpadOptionL = DeviceSpec.TouchMap.FromByte((byte)((msg.Payload[11] & 240) >> 4));
                     TouchpadOptionR = DeviceSpec.TouchMap.FromByte((byte)(msg.Payload[11] & 15));
