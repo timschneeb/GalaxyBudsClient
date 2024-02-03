@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
@@ -8,7 +9,7 @@ namespace GalaxyBudsClient.Model.Specifications
 {
     public static class DeviceSpecHelper
     {
-        private static readonly Collection<IDeviceSpec> Specs = new();
+        private static readonly List<IDeviceSpec> Specs = new List<IDeviceSpec>();
         
         static DeviceSpecHelper()
         {
