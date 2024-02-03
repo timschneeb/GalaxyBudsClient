@@ -71,6 +71,13 @@ namespace GalaxyBudsClient.Interface.Pages
 					Select(item, silent);
 					break;
 				}
+
+				if (item.IsMacOSUpdate && PlatformUtils.IsOSX)
+				{
+					UpdateInstallerHandler = OnInstall_OSX;
+					Select(item, silent);
+					break;
+				}
 			}
 		}
 
@@ -88,6 +95,11 @@ namespace GalaxyBudsClient.Interface.Pages
         }
 
 		private void OnInstall_Linux(object? sender, AppCastItem e)
+		{
+			OpenWebsite("https://github.com/ThePBone/GalaxyBudsClient/releases");
+		}
+
+		private void OnInstall_OSX(object? sender, AppCastItem e)
 		{
 			OpenWebsite("https://github.com/ThePBone/GalaxyBudsClient/releases");
 		}

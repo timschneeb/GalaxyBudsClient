@@ -69,7 +69,7 @@ namespace GalaxyBudsClient.Interface.Pages
                             continue;
                         }
                         
-                        if (!PlatformUtils.IsWindows && action == CustomAction.Actions.TriggerHotkey)
+                        if (!PlatformUtils.SupportsHotkeysBroadcast && action == CustomAction.Actions.TriggerHotkey)
                         {
                             continue;
                         }
