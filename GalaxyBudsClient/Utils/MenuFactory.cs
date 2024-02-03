@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 
 namespace GalaxyBudsClient.Utils
@@ -12,15 +13,15 @@ namespace GalaxyBudsClient.Utils
 
         public static ContextMenu BuildContextMenu(Dictionary<string, EventHandler<RoutedEventArgs>?> content, Control? placementTarget = null, bool embedSeparators = true)
         {
-            var menu = new ContextMenu {PlacementMode = PlacementMode.Bottom, PlacementTarget = placementTarget};
+            var menu = new ContextMenu {Placement = PlacementMode.BottomEdgeAlignedLeft, PlacementTarget = placementTarget};
             menu.Classes.Add(MenuStyle);
             menu.ItemsSource = BuildMenu(content, embedSeparators);
             return menu;
         }
         
-        public static List<MenuItem> BuildMenu(Dictionary<string, EventHandler<RoutedEventArgs>?> content, bool embedSeparators = true)
+        public static List<TemplatedControl> BuildMenu(Dictionary<string, EventHandler<RoutedEventArgs>?> content, bool embedSeparators = true)
         {
-            var items = new List<MenuItem>();
+            var items = new List<TemplatedControl>();
             foreach(KeyValuePair<string, EventHandler<RoutedEventArgs>?> entry in content)
             {
                 items.Add(BuildMenuItem(entry.Key, entry.Value));
@@ -44,9 +45,11 @@ namespace GalaxyBudsClient.Utils
             return item;
         }
         
-        public static MenuItem BuildSeparator()
+        public static Separator BuildSeparator()
         {
-            return BuildMenuItem("-");
+            var sep = new Separator();
+            sep.Classes.Add(MenuStyle);
+            return sep;
         }
     }
 }
