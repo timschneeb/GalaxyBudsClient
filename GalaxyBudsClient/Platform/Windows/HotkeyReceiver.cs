@@ -1,17 +1,12 @@
-// #define Windows // TODO
-// TODO https://github.com/AvaloniaUI/Avalonia/discussions/8823#discussioncomment-4256133
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using Avalonia.Platform;
 using Avalonia.Threading;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform.Interfaces;
-using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using Serilog;
 
@@ -40,8 +35,10 @@ namespace GalaxyBudsClient.Platform.Windows
     public class HotkeyReceiver : IHotkeyReceiver, IDisposable
     {
         private readonly IList<Hotkey> _hotkeys = new List<Hotkey>();
-        
+       
+#if Windows
         private readonly ThePBone.Interop.Win32.WndProcClient _wndProc = new ThePBone.Interop.Win32.WndProcClient();
+#endif
         
         public HotkeyReceiver()
         {
@@ -62,10 +59,6 @@ namespace GalaxyBudsClient.Platform.Windows
         {
             Dispatcher.UIThread.Post(() =>
             {
-                if (!MainWindow.IsReady())
-                {
-                    return;
-                }
 #if Windows                
                 _wndProc.MessageReceived -= WndProcClient_MessageReceived;
 #endif              
@@ -93,65 +86,41 @@ namespace GalaxyBudsClient.Platform.Windows
 
         public async Task RegisterHotkeyAsync(Hotkey hotkey)
         {
-#if Windows
-            if (MainWindow.Instance.PlatformImpl is Win32ProcWindowImpl impl)
+            ModifierKeys modFlags = 0;
+            if (hotkey.Modifier.ToList().Count > 0)
             {
-                if (impl.Dispatcher == null)
-                {
-                    Log.Error(
-                        "Windows.HotkeyReceiver.Register: Abnormal state: Win32Proc dispatcher not yet initialized");
-                    throw new HotkeyRegisterException(
-                        "Windows hotkey registry not yet initialized. Please try again later.", hotkey);
-                }
-                
-                ModifierKeys modFlags = 0;
-                if (hotkey.Modifier.ToList().Count > 0)
-                {
-                    modFlags = hotkey.Modifier.Aggregate((prev, next) => prev | next);
-                }
-
-                Keys keyFlags = 0;
-                if (hotkey.Keys.ToList().Count > 0)
-                {
-                    keyFlags = hotkey.Keys.Aggregate((prev, next) => prev | next);
-                }
-
-                _hotkeys.Add(hotkey);
-                int Register() => RegisterHotKey(modFlags, keyFlags);
-                var result = await impl.Dispatcher.InvokeAsync(Register);
-                if (result != 0)
-                {
-                    throw new HotkeyRegisterExceptionWin32(result, hotkey);
-                }
+                modFlags = hotkey.Modifier.Aggregate((prev, next) => prev | next);
             }
-            else
+
+            Keys keyFlags = 0;
+            if (hotkey.Keys.ToList().Count > 0)
             {
-                throw new HotkeyRegisterException(
-                    "Your platform configuration is not supported. WndProc provider unavailable.", hotkey);
+                keyFlags = hotkey.Keys.Aggregate((prev, next) => prev | next);
             }
-#endif
+
+            _hotkeys.Add(hotkey);
+            
+            var result = RegisterHotKey(modFlags, keyFlags);
+            if (result != 0)
+            {
+                throw new HotkeyRegisterExceptionWin32(result, hotkey);
+            }
         }
 
         public async Task UnregisterAllAsync()
         {
-#if Windows
-            if (MainWindow.Instance.PlatformImpl is Win32ProcWindowImpl impl)
+
+            for (var i = _currentId; i > 0; i--)
             {
-                // Unregister all the registered hotkeys.
-                impl.Dispatcher?.Post(() =>
-                {
-                    for (var i = _currentId; i > 0; i--)
-                    {
-                        UnregisterHotKey(impl.Handle.Handle, i);
-                    }
-                });
-                _hotkeys.Clear();
-                
-                Log.Debug("Windows.HotkeyReceiver: All hotkeys unregistered");
-            }
-            
-            await Task.CompletedTask;
+#if Windows
+                UnregisterHotKey(_wndProc.WindowHandle, i);
 #endif
+            }
+            _hotkeys.Clear();
+            
+            Log.Debug("Windows.HotkeyReceiver: All hotkeys unregistered");
+         
+            await Task.CompletedTask;
         }
 
         public async Task ValidateHotkeyAsync(Hotkey hotkey)
@@ -199,10 +168,10 @@ namespace GalaxyBudsClient.Platform.Windows
         /// <param name="key">The key itself that is associated with the hot key.</param>
         private int RegisterHotKey(ModifierKeys modifier, Keys key)
         {
+#if Windows
             _currentId += 1;
 
-            var hwnd = MainWindow.Instance.PlatformImpl.GetPropertyValue<IPlatformHandle>("Handle").Handle;
-            if (!RegisterHotKey(hwnd, _currentId, (uint) modifier, (uint) key))
+            if (!RegisterHotKey(_wndProc.WindowHandle, _currentId, (uint) modifier, (uint) key))
             {
                 var code = Marshal.GetLastWin32Error();
                 Log.Error($"Windows.HotkeyReceiver.Register: Unable to register hotkey (Error code: {code}) (Modifiers: {modifier}; Key: {key})");
@@ -210,6 +179,7 @@ namespace GalaxyBudsClient.Platform.Windows
             }
             
             Log.Debug($"Hotkey successfully registered (Modifiers: {modifier}; Key: {key})");
+#endif
             return 0;
         }
     }
