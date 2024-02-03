@@ -2,7 +2,7 @@ name: Compile Linux binaries
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, project-upgrade ]
   pull_request:
     branches: [ master ]
   release:
@@ -14,11 +14,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 6.0.200
+        dotnet-version: 8.0.101
        
     - name: Restore dependencies
       run: dotnet restore -r linux-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
@@ -39,7 +39,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.0.200
+        dotnet-version: 8.0.101
        
     - name: Restore dependencies
       run: dotnet restore -r linux-musl-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
@@ -60,7 +60,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.0.200
+        dotnet-version: 8.0.101
        
     - name: Restore dependencies
       run: dotnet restore -r linux-arm --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
@@ -81,7 +81,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.0.200
+        dotnet-version: 8.0.101
        
     - name: Restore dependencies
       run: dotnet restore -r linux-arm64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
