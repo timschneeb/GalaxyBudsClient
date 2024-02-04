@@ -61,66 +61,7 @@ jobs:
       with:
         name: GalaxyBudsClient_win32_portable
         path: bin_win32/
-
-  build-arm:
-    runs-on: windows-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 8.0.0-preview.4.23260.4
         
-    - name: Restore dependencies
-      run: dotnet restore -r win-arm --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
-    - name: Build arm
-      run: dotnet publish -r win-arm -o bin_win-arm -c "Release - Windows ARM" -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
-    
-    #- name: Sign executable
-    #  uses: GabrielAcostaEngler/signtool-code-sign@v1.0.2
-    #  with:
-    #    certificate: ${{ secrets.SIGN_CERTIFICATE }}
-    #    cert-password: ${{ secrets.SIGN_PASSWORD }}
-    #    cert-sha1: 048de957759a1837a967e61b8c97c442f7b9ec24
-    #    folder: bin_win-arm/
-    #    timestamp-server: http://timestamp.digicert.com
-    
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v2.2.2
-      with:
-        name: GalaxyBudsClient_win-arm_portable
-        path: bin_win-arm/
-
-  build-arm64:
-    runs-on: windows-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.0-preview.4.23260.4
-              
-    - name: Restore dependencies
-      run: dotnet restore -r win-arm64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
-    - name: Build arm64
-      run: dotnet publish -r win-arm64 -o bin_win-arm64 -c "Release - Windows ARM" -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
-    
-    #- name: Sign executable
-    #  uses: GabrielAcostaEngler/signtool-code-sign@v1.0.2
-    #  with:
-    #    certificate: ${{ secrets.SIGN_CERTIFICATE }}
-    #    cert-password: ${{ secrets.SIGN_PASSWORD }}
-    #    cert-sha1: 048de957759a1837a967e61b8c97c442f7b9ec24
-    #    folder: bin_win-arm64/
-    #    timestamp-server: http://timestamp.digicert.com
-    
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v2.2.2
-      with:
-        name: GalaxyBudsClient_win-arm64_portable
-        path: bin_win-arm64/
 
   make-nsis-installer:
     runs-on: windows-latest
@@ -206,94 +147,9 @@ jobs:
         name: GalaxyBudsClient_Setup_32bit_${{steps.version.outputs.version}}.exe
         path: GalaxyBudsClient_Setup_32bit_${{steps.version.outputs.version}}.exe
 
-
-  make-nsis-installer-arm:
-    runs-on: windows-latest
-    needs: [build-arm, build-arm64]
-        
-    steps:
-    - uses: actions/checkout@v2
-    - name: Prepare version information (1/3)
-      uses: oprypin/find-latest-tag@v1
-      with:
-        repository: ThePBone/GalaxyBudsClient
-        releases-only: true
-      id: last_release  
-    - name: Prepare version information (2/3)
-      uses: benjlevesque/short-sha@v1.2
-      id: short-sha
-      with:
-        length: 6
-    - name: Prepare version information (3/3)
-      run: echo '::set-output name=version::${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}'
-      id: version
-      
-    # Make arm installer
-    - name: Download artifact (arm)
-      uses: actions/download-artifact@v2
-      with:
-        name: GalaxyBudsClient_win-arm_portable
-        
-    - name: Rename artifact (arm)
-      run: ren GalaxyBudsClient.exe "Galaxy Buds Client.exe"
-    
-    - name: Create nsis installer (arm)
-      uses: joncloud/makensis-action@v3.3
-      with:
-        script-file: "install.nsi"
-        arguments: "-DBASE_DIR=\"D:\\a\\GalaxyBudsClient\\GalaxyBudsClient\" -DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"arm\""
-
-    #- name: Sign installer
-    #  uses: GabrielAcostaEngler/signtool-code-sign@v1.0.2
-    #  with:
-    #    certificate: ${{ secrets.SIGN_CERTIFICATE }}
-    #    cert-password: ${{ secrets.SIGN_PASSWORD }}
-    #    cert-sha1: 048de957759a1837a967e61b8c97c442f7b9ec24
-    #    folder: .
-    #    timestamp-server: http://timestamp.digicert.com
-
-    - name: Upload artifact (arm)
-      uses: actions/upload-artifact@v2.2.2
-      with:
-        name: GalaxyBudsClient_Setup_arm_${{steps.version.outputs.version}}.exe
-        path: GalaxyBudsClient_Setup_arm_${{steps.version.outputs.version}}.exe
-
-    - name: Clean artifacts
-      run: del "Galaxy Buds Client.exe"
-
-    # Make arm64 installer
-    - name: Download artifact (arm64)
-      uses: actions/download-artifact@v2
-      with:
-        name: GalaxyBudsClient_win-arm64_portable
-        
-    - name: Rename artifact (arm64)
-      run: ren GalaxyBudsClient.exe "Galaxy Buds Client.exe"
-
-    - name: Create nsis installer (arm64)
-      uses: joncloud/makensis-action@v3.3
-      with:
-        script-file: "install.nsi"
-        arguments: "-DBASE_DIR=\"D:\\a\\GalaxyBudsClient\\GalaxyBudsClient\" -DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"arm64\""
-
-    #- name: Sign installer
-    #  uses: GabrielAcostaEngler/signtool-code-sign@v1.0.2
-    #  with:
-    #    certificate: ${{ secrets.SIGN_CERTIFICATE }}
-    #    cert-password: ${{ secrets.SIGN_PASSWORD }}
-    #    cert-sha1: 048de957759a1837a967e61b8c97c442f7b9ec24
-    #    folder: .
-    #    timestamp-server: http://timestamp.digicert.com
-
-    - name: Upload artifact (arm64)
-      uses: actions/upload-artifact@v2.2.2
-      with:
-        name: GalaxyBudsClient_Setup_arm64_${{steps.version.outputs.version}}.exe
-        path: GalaxyBudsClient_Setup_arm64_${{steps.version.outputs.version}}.exe
-
   attach-to-release:
     runs-on: windows-latest
-    needs: [make-nsis-installer, make-nsis-installer-arm]
+    needs: [make-nsis-installer]
     if: github.event_name == 'release'
     
     steps:
@@ -317,25 +173,9 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
-      
-    - name: Download artifact (arm)
-      uses: actions/download-artifact@v2
-      with:
-        name: GalaxyBudsClient_Setup_arm_${{steps.version.outputs.version}}.exe
-
-    - name: Download artifact (arm64)
-      uses: actions/download-artifact@v2
-      with:
-        name: GalaxyBudsClient_Setup_arm64_${{steps.version.outputs.version}}.exe
 
     - name: Rename (x64)
       run: ren GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe GalaxyBudsClient_Windows_64bit_Setup.exe
-
-    - name: Rename (arm)
-      run: ren GalaxyBudsClient_Setup_arm_${{steps.version.outputs.version}}.exe GalaxyBudsClient_Windows_arm_Setup.exe
-
-    - name: Rename (arm64)
-      run: ren GalaxyBudsClient_Setup_arm64_${{steps.version.outputs.version}}.exe GalaxyBudsClient_Windows_arm64_Setup.exe
 
     - uses: AButler/upload-release-assets@v2.0
       with:
