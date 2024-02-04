@@ -3,7 +3,6 @@
     <PropertyGroup>
         <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
         <Nullable>enable</Nullable>
-        <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm;win10-arm64</RuntimeIdentifiers>
         <Configurations>Debug;Release;Release - Windows ARM</Configurations>
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
