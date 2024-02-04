@@ -15,7 +15,7 @@ namespace GalaxyBudsClient.Utils
         /// <returns>PropertyValue</returns>
         public static T? GetPropertyValue<T>(this object obj, string propName)
         {
-            ArgumentNullException.ThrowIfNull(obj);
+            if(obj == null) throw new ArgumentNullException(nameof(obj));
             var pi = obj.GetType().GetProperty(propName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
             if (pi == null) throw new ArgumentOutOfRangeException("propName", string.Format("Property {0} was not found in Type {1}", propName, obj.GetType().FullName));
             return (T?)pi.GetValue(obj, null);
@@ -31,7 +31,7 @@ namespace GalaxyBudsClient.Utils
         /// <returns>PropertyValue</returns>
         public static T? GetFieldValue<T>(this object obj, string propName)
         {
-            ArgumentNullException.ThrowIfNull(obj);
+            if(obj == null) throw new ArgumentNullException(nameof(obj));
             var t = obj.GetType();
             FieldInfo? fi = null;
             while (fi == null && t != null)
