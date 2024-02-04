@@ -1,12 +1,10 @@
-﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
- 
-    <sys:String x:Key="ResourceDictionaryName">Loc-en</sys:String>
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- :::::::: Source code :::::::: -->
+    <sys:String x:Key="ResourceDictionaryName">Loc-ro</sys:String>
 
-    <!-- General -->
+    <!--:::::::: Source code ::::::::-->
+
+    <!--General-->
     <sys:String x:Key="okay">OK</sys:String>
     <sys:String x:Key="left">Stânga</sys:String>
     <sys:String x:Key="right">Dreapta</sys:String>
@@ -23,22 +21,22 @@
 
     <sys:String x:Key="anc">Anularea activă a zgomotului</sys:String>
 
-    <!-- SPP Message Parser -->
+    <!--SPP Message Parser-->
     <sys:String x:Key="sppmsg_too_small">Dimensiunea pachetului este prea mică</sys:String>
     <sys:String x:Key="sppmsg_invalid_som">SOM invalid</sys:String>
-    <!-- Context: SOM = Start of message -->
+    <!--Context: SOM = Start of message-->
     <sys:String x:Key="sppmsg_invalid_eom">EOM invalid</sys:String>
-    <!-- Context: EOM = End of message -->
+    <!--Context: EOM = End of message-->
     <sys:String x:Key="sppmsg_size_mismatch">Dimensiunea sarcinii este nepotrivită</sys:String>
     <sys:String x:Key="sppmsg_crc_fail">Sumă de verificare incorectă</sys:String>
     <sys:String x:Key="sppmsg_tl">Dimensiunea pachetului este prea mică</sys:String>
 
-    <!-- Dark Mode States -->
+    <!--Dark Mode States-->
     <sys:String x:Key="darkmode_disabled">Dezactivat</sys:String>
     <sys:String x:Key="darkmode_enabled">Activat</sys:String>
     <sys:String x:Key="darkmode_system">Folesește setarea din sistem</sys:String>
 
-    <!-- Connection popup -->
+    <!--Connection popup-->
     <sys:String x:Key="connpopup_placement_tl">Stânga sus</sys:String>
     <sys:String x:Key="connpopup_placement_tc">Centru sus</sys:String>
     <sys:String x:Key="connpopup_placement_tr">Dreapta sus</sys:String>
@@ -46,22 +44,22 @@
     <sys:String x:Key="connpopup_placement_bc">Centru jos</sys:String>
     <sys:String x:Key="connpopup_placement_br">Dreapta jos</sys:String>
     <sys:String x:Key="connpopup_title">Galaxy Buds{1}-urile lui {0}</sys:String>
-    <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
+    <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
 
-    <!-- Placement  (Buds+) -->
+    <!--Placement  (Buds+)-->
     <sys:String x:Key="placement_disconnected">Deconectat</sys:String>
     <sys:String x:Key="placement_wearing">În ureche</sys:String>
     <sys:String x:Key="placement_not_wearing">Inactiv</sys:String>
     <sys:String x:Key="placement_in_case">Carcasă</sys:String>
 
-    <!-- Touch options -->
+    <!--Touch options-->
     <sys:String x:Key="touchoption_voice">Asistent vocal</sys:String>
     <sys:String x:Key="touchoption_quickambientsound">Sunet ambiental rapid</sys:String>
     <sys:String x:Key="touchoption_volume">Volum</sys:String>
     <sys:String x:Key="touchoption_volume_up">Crește volumul</sys:String>
     <sys:String x:Key="touchoption_volume_down">Scade volumul</sys:String>
     <sys:String x:Key="touchoption_ambientsound">Sunet ambiental</sys:String>
-    <sys:String x:Key="touchoption_switch_noisecontrols">Schimbă controalele zgomotului</sys:String> <!-- TODO -->
+    <sys:String x:Key="touchoption_switch_noisecontrols">Schimbă controalele zgomotului</sys:String> <!--TODO-->
     <sys:String x:Key="touchoption_spotify">Spotify (doar pe Android)</sys:String>
     <sys:String x:Key="touchoption_custom">Acțiune personalizată...</sys:String>
     <sys:String x:Key="touchoption_custom_null">Nesetat</sys:String>
@@ -70,7 +68,7 @@
     <sys:String x:Key="touchoption_custom_trigger_hotkey">Apăsați tasta rapidă...</sys:String>
     <sys:String x:Key="touchoption_custom_external_app">Rulați un program extern...</sys:String>
 
-    <!-- Options menu -->
+    <!--Options menu-->
     <sys:String x:Key="optionsmenu_title">Opțiuni</sys:String>
     <sys:String x:Key="optionsmenu_settings">Setări</sys:String>
     <sys:String x:Key="optionsmenu_refresh">Reîmprospătează tabloul de bord</sys:String>
@@ -78,7 +76,7 @@
     <sys:String x:Key="optionsmenu_update">Verifică pentru actualizări</sys:String>
     <sys:String x:Key="optionsmenu_credits">Credite</sys:String>
 
-    <!-- Tray context menu -->
+    <!--Tray context menu-->
     <sys:String x:Key="tray_unlock_touchpad">Deblocați touchpad-ul</sys:String>
     <sys:String x:Key="tray_lock_touchpad">Blocați touchpad-ul</sys:String>
     <sys:String x:Key="tray_enable_ambient_sound">Activează sunetul ambiental</sys:String>
@@ -91,18 +89,18 @@
     <sys:String x:Key="tray_quit">Ieși</sys:String>
 
 
-    <!-- :::::::: XAML files (static) :::::::: -->
+    <!--:::::::: XAML files (static) ::::::::-->
 
-    <!-- General -->
+    <!--General-->
     <sys:String x:Key="continue_button">Continuă</sys:String>
 
-    <!-- Hotkey Recorder Dialog (Custom action) -->
+    <!--Hotkey Recorder Dialog (Custom action)-->
     <sys:String x:Key="hotrec_title">Înregistrator de comenzi rapide</sys:String>
     <sys:String x:Key="hotrec_content">Introduceți o combinație de taste (țineți apăsat):</sys:String>
     <sys:String x:Key="hotrec_empty">Nimic</sys:String>
     <sys:String x:Key="hotrec_note">Observație: Datorită izolării de confidențialitate a interfeței cu utilizatorul (UIPI), numai aplicațiile cu același nivel al permisiunilor sau cu un nivel mai mic pot primi în mod corespunzător comenzi rapide.</sys:String>
 
-    <!-- Hotkey Action Builder Dialog -->
+    <!--Hotkey Action Builder Dialog-->
     <sys:String x:Key="hotkey_edit_title">Editor de comenzi rapide</sys:String>
     <sys:String x:Key="hotkey_edit_invalid">Selecție de comandă rapidă invalidă</sys:String>
     <sys:String x:Key="hotkey_edit_invalid_desc">Alegeți cel puțin o tastă și un modificator</sys:String>
@@ -112,10 +110,10 @@
     <sys:String x:Key="hotkey_edit_modifier">Modificatori</sys:String>
     <sys:String x:Key="hotkey_edit_keys">Taste</sys:String>
     <sys:String x:Key="hotkey_edit_action">Acțiuni</sys:String>
-    <sys:String x:Key="hotkey_edit_preview">Previzualizare scurtătură: </sys:String>
+    <sys:String x:Key="hotkey_edit_preview">Previzualizare scurtătură:</sys:String>
     <sys:String x:Key="hotkey_edit_header">Selectați o comandă rapidă de la tastatură</sys:String>
     
-    <!-- Hotkey page -->
+    <!--Hotkey page-->
     <sys:String x:Key="hotkey_header">Comenzi rapide</sys:String>
     <sys:String x:Key="hotkey_add">Atribuiți o comandă rapidă</sys:String>
     <sys:String x:Key="hotkey_empty">Nicio comandă rapidă atribuită</sys:String>
@@ -127,7 +125,7 @@
     <sys:String x:Key="hotkey_add_error_duplicate">Combinația de tast selectată a fost deja înregistrată ca tastă rapidă de această aplicație sau de o altă aplicație. Alegeți altă combinație.</sys:String>
     <sys:String x:Key="hotkey_add_error_unknown">Sistemul de operare a răspuns cu eroarea '{0}'</sys:String>
 
-    <!-- EventDispatcher module -->
+    <!--EventDispatcher module-->
     <sys:String x:Key="event_none">Nimic</sys:String>
     <sys:String x:Key="event_ambient_toggle">Comutați sunetul ambiental</sys:String>
     <sys:String x:Key="event_ambient_volume_up">Crește volumul ambiental</sys:String>
@@ -150,21 +148,16 @@
     <sys:String x:Key="event_display_battery_popup">Afișați fereastra pop-up a bateriei</sys:String>
     <sys:String x:Key="event_connect">Conectați-vă la dispozitiv</sys:String>
     
-    <!-- Welcome page -->
+    <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Bine ați venit!</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">
-        Salut! Acest Galaxy Buds Manager nu este oficial și nu este afiliat în niciun fel cu Samsung, vă rugăm să țineți cont de asta.&#10;Acest program este conceput pentru a oferi mult mai multe funcționalități decât aplicația oficială Samsung; cu toate acestea, nu toate aceste caracteristici sunt disponibile pe dispozitive fără această aplicație instalată.
-    </sys:String>
-    <sys:String x:Key="welcome_textblock_p2">
-        Dacă sunteți interesat de ceea ce se întâmplă în culise, puteți consulta proiectul meu pe GitHub care include un mic jurnal de inginerie inversă. De asemenea, puteți să îmi trimiteți mesaje pe Github sau pe Telegram @thepbone dacă întâmpinați orice problemă.
-    </sys:String>
-    <sys:String x:Key="welcome_textblock_p3">
-        Această aplicație suportă toate modelele Galaxy Buds.
-    </sys:String>
+    <sys:String x:Key="welcome_textblock_p1">Salut! Acest Galaxy Buds Manager nu este oficial și nu este afiliat în niciun fel cu Samsung, vă rugăm să țineți cont de asta.
+Acest program este conceput pentru a oferi mult mai multe funcționalități decât aplicația oficială Samsung; cu toate acestea, nu toate aceste caracteristici sunt disponibile pe dispozitive fără această aplicație instalată.</sys:String>
+    <sys:String x:Key="welcome_textblock_p2">Dacă sunteți interesat de ceea ce se întâmplă în culise, puteți consulta proiectul meu pe GitHub care include un mic jurnal de inginerie inversă. De asemenea, puteți să îmi trimiteți mesaje pe Github sau pe Telegram @thepbone dacă întâmpinați orice problemă.</sys:String>
+    <sys:String x:Key="welcome_textblock_p3">Această aplicație suportă toate modelele Galaxy Buds.</sys:String>
     <sys:String x:Key="welcome_darkmode">Mod întunecat</sys:String>
     <sys:String x:Key="welcome_darkmode_content">Deja îți ard ochii? Folosiți în schimb o schemă de culori mai închisă! (repornirea aplicației necesară)</sys:String>
 
-    <!-- Main page -->
+    <!--Main page-->
     <sys:String x:Key="mainpage_corrupt_data">Aplicația a primit date corupte. Reconectare...</sys:String>
     <sys:String x:Key="mainpage_find_my_earbuds">Găsește-mi Buds-urile</sys:String>
     <sys:String x:Key="mainpage_touchpad">Touchpad</sys:String>
@@ -174,14 +167,10 @@
     <sys:String x:Key="mainpage_advanced">Setări avansate</sys:String>
     <sys:String x:Key="mainpage_system">Sistem</sys:String>
 
-    <!-- Update page -->
+    <!--Update page-->
     <sys:String x:Key="updater_header">Actualizare manager disponibilă</sys:String>
-    <sys:String x:Key="updater_message_p1">
-        Descărcarea este complet automatizată și actualizarea va fi lansată după ce a terminat descărcarea. Vă recomand să actualizați aplicația pentru a primi cele mai recente remedieri de erori și funcții noi.
-    </sys:String>
-    <sys:String x:Key="updater_message_p2">
-        Puteți vedea jurnalul de schimbări apăsând pe butonul de mai jos.
-    </sys:String>
+    <sys:String x:Key="updater_message_p1">Descărcarea este complet automatizată și actualizarea va fi lansată după ce a terminat descărcarea. Vă recomand să actualizați aplicația pentru a primi cele mai recente remedieri de erori și funcții noi.</sys:String>
+    <sys:String x:Key="updater_message_p2">Puteți vedea jurnalul de schimbări apăsând pe butonul de mai jos.</sys:String>
 
     <sys:String x:Key="updater_view_changelog">Vedeți jurnalul de schimbări complet pe GitHub</sys:String>
     <sys:String x:Key="updater_footer_remindmelater">Reamintește-mi</sys:String>
@@ -195,7 +184,7 @@
     <sys:String x:Key="updater_dl_header">Se descarcă...</sys:String>
     <sys:String x:Key="updater_dl_manual">Vezi pe GitHub</sys:String>
     <sys:String x:Key="updater_dl_fail_title">Descărcare eșuată</sys:String>
-    <sys:String x:Key="updater_dl_fail">Motiv:&#10;</sys:String>
+    <sys:String x:Key="updater_dl_fail">Motiv:</sys:String>
     <sys:String x:Key="updater_dl_progress_prepare">Se pregătește descărcarea...</sys:String>
     <sys:String x:Key="updater_dl_progress_cancelled">Descărcare anulată</sys:String>
     <sys:String x:Key="updater_dl_progress_finished">Descărcare finalizată. Se lansează programul de instalare...</sys:String>
@@ -203,7 +192,7 @@
     <sys:String x:Key="updater_dl_progress_size">({0}/{1} megaocteți)</sys:String>
     <sys:String x:Key="updater_dl_note">Când descărcarea se termină, această aplicație se va închide automat și va lansa separat un program de instalare a actualizării. Poate dura câteva secunde până își va face apariția.</sys:String>
 
-    <!-- Device selection page (setup) -->
+    <!--Device selection page (setup)-->
     <sys:String x:Key="devsel_header">Selectați Galaxy Buds-urile dvs.</sys:String>
     <sys:String x:Key="devsel_refresh">Reîmprospătați dispozitivele asociate</sys:String>
     <sys:String x:Key="devsel_device_name">Numele dispozitivului</sys:String>
@@ -218,7 +207,7 @@
     <sys:String x:Key="devsel_winrt_title">Folosiți backend Bluetooth alternativ</sys:String>
     <sys:String x:Key="devsel_winrt">Stabilitate mult mai bună, dar este posibil să nu funcționeze pe toate computerele cu anumite adaptoare Bluetooth</sys:String>
 
-    <!-- Unsupported feature page -->
+    <!--Unsupported feature page-->
     <sys:String x:Key="unsupported_feature_current_fwver">Versiunea actuală a firmware-ului:</sys:String>
     <sys:String x:Key="unsupported_feature_required_fwver">Versiune firmware necesară:</sys:String>
 
@@ -230,7 +219,7 @@
     <sys:String x:Key="unsupported_feature_description_p2">Vă rugăm să actualizați la cel mai recent firmware folosind actualizatorul oficial Windows sau Android</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">Asigurați-vă că închideți această aplicație dacă utilizați actualizatorul Windows. Doar o singură aplicație poate comunica cu Buds-urile.</sys:String>
 
-    <!-- Touchpad page -->
+    <!--Touchpad page-->
     <sys:String x:Key="touchpad_header">Touchpad</sys:String>
     <sys:String x:Key="touchpad_lock">Blochează touchpad</sys:String>
     <sys:String x:Key="touchpad_left_action">Acțiune stânga</sys:String>
@@ -244,18 +233,17 @@
     <sys:String x:Key="touchpad_noise_control_mode_amb_off">Sunet ambiental &lt;-&gt; Oprit</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Schimbă între moduri (ANC, Sunet ambiental, Oprit)</sys:String>
 
-    <!-- Custom touchpad action page -->
+    <!--Custom touchpad action page-->
     <sys:String x:Key="cact_header">Acțiune personalizată la apăsare lungă</sys:String>
     <sys:String x:Key="cact_external_app_dialog_title">Selectează executabil...</sys:String>
     <sys:String x:Key="cact_action">Acțiune personalizată</sys:String>
     <sys:String x:Key="cact_notice">Înștiințare</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Acțiunile personalizate la apăsare lungă sunt disponibile doar atunci când această aplicație este activă în fundal.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">Nu are niciun efect asupra Android-ului sau a altor dispozitive</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">
-        Pentru a oferi o asistență consecventă pentru această opțiune, această aplicație va porni automat când PC-ul se va deschide.&#10;Puteți dezactiva acest comportament în secțiunea de setări.
-    </sys:String>
+    <sys:String x:Key="cact_notice_content_p3">Pentru a oferi o asistență consecventă pentru această opțiune, această aplicație va porni automat când PC-ul se va deschide.
+Puteți dezactiva acest comportament în secțiunea de setări.</sys:String>
 
-    <!-- System/Self-Test -->
+    <!--System/Self-Test-->
     <sys:String x:Key="system_overview_header">Sistem</sys:String>
     <sys:String x:Key="system_header">Informații de sistem</sys:String>
     <sys:String x:Key="system_selftest">Rulați autotestul</sys:String>
@@ -288,9 +276,9 @@
     <sys:String x:Key="system_thermo">Măsură Thermistor</sys:String>
     <sys:String x:Key="system_hall">Măsură Hall</sys:String>
     <sys:String x:Key="system_accel">Stare Accelerometru</sys:String>
-    <!-- Note: system_accel only used on the self-test page -->
+    <!--Note: system_accel only used on the self-test page-->
     <sys:String x:Key="system_adc_soc">SoC ADC</sys:String>
-    <!-- Context: SoC = State of charge (battery percentage) -->
+    <!--Context: SoC = State of charge (battery percentage)-->
     <sys:String x:Key="system_adc_voltage">Voltaj ADC</sys:String>
     <sys:String x:Key="system_adc_current">Curent ADC</sys:String>
 
@@ -307,16 +295,17 @@
     <sys:String x:Key="coredump_dl_trace_progress">Se descarcă trace dump-ul... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">Se descarcă core dump-ul... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} octeți)</sys:String>
-    <sys:String x:Key="coredump_dl_note">
-        Fluxul audio este întrerupt temporar în timpul descărcării. Buds-urile dvs. vor fi deconectate imediat ce transmiterea se termină, vă rugăm să le conectați manual.&#10;Odată ce s-a terminat, vi se va solicita să selectați un director (folder) pentru toate datele colectate.&#10;&#10;Dacă transmiterea este blocată sau dispozitivul se deconectează prematur, trebuie să reporniți descărcarea. Această caracteristică este în prezent foarte instabilă.
-	</sys:String>
+    <sys:String x:Key="coredump_dl_note">Fluxul audio este întrerupt temporar în timpul descărcării. Buds-urile dvs. vor fi deconectate imediat ce transmiterea se termină, vă rugăm să le conectați manual.
+Odată ce s-a terminat, vi se va solicita să selectați un director (folder) pentru toate datele colectate.
+
+Dacă transmiterea este blocată sau dispozitivul se deconectează prematur, trebuie să reporniți descărcarea. Această caracteristică este în prezent foarte instabilă.</sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">Salvarea dump-ului a eșuat</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">Nu se poate copia dump-ul din locația temporară. Motiv: {0}</sys:String>
     <sys:String x:Key="coredump_dl_save_success_title">Dump salvat cu succes</sys:String>
     <sys:String x:Key="coredump_dl_save_success">{0} dump-uri salvate în '{1}'</sys:String>
     <sys:String x:Key="coredump_dl_save_dialog_title">Selectați un director (folder) pentru descărcare...</sys:String>
     
-    <!-- Settings -->
+    <!--Settings-->
     <sys:String x:Key="settings_header">Setări</sys:String>
 
     <sys:String x:Key="settings_darkmode">Mod întunecat</sys:String>
@@ -334,7 +323,7 @@
     <sys:String x:Key="settings_connpopup">Configurați fereastra pop-up de conexiune</sys:String>
     <sys:String x:Key="settings_devmode">Opțiuni de dezvoltator</sys:String>
 
-    <!-- Settings >>> Connection popup -->
+    <!--Settings >>> Connection popup-->
     <sys:String x:Key="settings_cpopup_header">Pop-up de conexiune</sys:String>
     <sys:String x:Key="settings_cpopup_enable">Activează pop-up-ul de conexiune</sys:String>
     <sys:String x:Key="settings_cpopup_enable_description">Afișați o fereastră de notificare mică, informând despre nivelul bateriei atunci când Buds-urile sunt conectate</sys:String>
@@ -350,24 +339,24 @@
     <sys:String x:Key="settings_cpopup_wear_state">Folosiți o culoare diferită când Buds-urile sunt în carcasă</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state_description">Afișează cu gri iconița Buds-urilor atunci când acestea sunt în carcasă</sys:String>
 
-    <!-- Factory reset -->
+    <!--Factory reset-->
     <sys:String x:Key="factory_header">Resetare din fabrică</sys:String>
     <sys:String x:Key="factory_confirm">Confirmă resetarea din fabrică</sys:String>
     <sys:String x:Key="factory_error_title">Resetare din fabrică eșuată</sys:String>
-    <sys:String x:Key="factory_error">
-        Dispozitivul a returnat codul de eroare: {0}&#10;Asigurați-vă că ambele Buds-uri sunt pornite și accesibile.&#10;S-ar putea să fie nevoie să vă reconectați manual Buds-urile.&#10;
-    </sys:String>
+    <sys:String x:Key="factory_error">Dispozitivul a returnat codul de eroare: {0}
+Asigurați-vă că ambele Buds-uri sunt pornite și accesibile.
+S-ar putea să fie nevoie să vă reconectați manual Buds-urile.</sys:String>
     <sys:String x:Key="factory_text_p1">Sigur doriți să vă resetați Buds-urile?</sys:String>
     <sys:String x:Key="factory_text_p2">După efectuarea unei resetări din fabrică, va trebui să vă reconectați manual Buds-urile la computer.</sys:String>
     <sys:String x:Key="factory_text_p3">Asigurați-vă că ambele Buds-uri sunt pornite înainte de a continua!</sys:String>
 
-    <!-- Find my Gear -->
+    <!--Find my Gear-->
     <sys:String x:Key="fmg_warning_both">Scoateți ambele Buds-uri din urechi.</sys:String>
     <sys:String x:Key="fmg_warning_left">Scoateți Bud-ul stâng din ureche.</sys:String>
     <sys:String x:Key="fmg_warning_right">Scoateți Bud-ul drept din ureche.</sys:String>
     <sys:String x:Key="fmg_header">Găsește-mi Buds-urile</sys:String>
 
-    <!-- Equalizer -->
+    <!--Equalizer-->
     <sys:String x:Key="eq_header">Egalizator</sys:String>
     <sys:String x:Key="eq_enable">Activează egalizatorul</sys:String>
     <sys:String x:Key="eq_preset">Presetare</sys:String>
@@ -382,7 +371,7 @@
     <sys:String x:Key="eq_clear">Clar</sys:String>
     <sys:String x:Key="eq_treble">Amplificare înalte</sys:String>
 
-    <!-- Noise control -->
+    <!--Noise control-->
     <sys:String x:Key="nc_header">Control zgomot</sys:String>
     <sys:String x:Key="nc_anc_level">Sensitivitate mare</sys:String>
     <sys:String x:Key="nc_anc_level_description">Efect mai puternic de anulare al zgomotului</sys:String>
@@ -391,7 +380,7 @@
     <sys:String x:Key="nc_voicedetect_timeout">Timeout conversație</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} secunde</sys:String>
     
-    <!-- Ambient sound -->
+    <!--Ambient sound-->
     <sys:String x:Key="as_header">Sunet ambiental</sys:String>
     <sys:String x:Key="as_enable">Activează sunet ambiental</sys:String>
     <sys:String x:Key="as_volume">Volum sunet ambiental</sys:String>
@@ -404,7 +393,7 @@
     <sys:String x:Key="as_scale_high">Ridicat</sys:String>
     <sys:String x:Key="as_scale_extraloud">Foarte ridicat</sys:String>
     
-    <!-- Advanced page -->
+    <!--Advanced page-->
     <sys:String x:Key="adv_header">Setări Avansate</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} sau o versiune ulterioară</sys:String>
     <sys:String x:Key="adv_seamless">Conexiunea rapidă a Buds-urilor</sys:String>
@@ -422,16 +411,18 @@
     <sys:String x:Key="adv_bixby_remap">Remapează trezirea Bixby</sys:String>
     <sys:String x:Key="adv_bixby_remap_desc">Definiți ce ar trebui să se întâmple când spuneți 'Hey Bixby!'</sys:String>
 
-    <!-- Remap bixby wakeup -->
+    <!--Remap bixby wakeup-->
     <sys:String x:Key="bixby_remap_header">Remapare trezire Bixby</sys:String>
     <sys:String x:Key="bixby_remap_enable">Activează trezirea Bixby</sys:String>
     <sys:String x:Key="bixby_remap_enable_desc">Lansați Bixby pe telefonul dvs. Samsung sau executați o acțiune personalizată pe acest computer</sys:String>
     <sys:String x:Key="bixby_remap_lang">Limba de trezire Bixby</sys:String>
     <sys:String x:Key="bixby_remap_action">Acțiune de trezire personalizată</sys:String>
-    <sys:String x:Key="bixby_remap_note">Spune 'Hey Bixby!' pentru a activa. Fraza de activare poate fi diferită cu anumite setări de limbă&#10;&#10;Configurația remapată este activă doar pe acest dispozitiv. Dacă vă conectați Buds-urile la un dispozitiv Samsung, trezirea vocală va activa Bixby în mod normal. Pe alte dispozitive decât acest dispozitiv și telefoanele care nu sunt Samsung, această caracteristică nu va declanșa nicio acțiune.</sys:String>
+    <sys:String x:Key="bixby_remap_note">Spune 'Hey Bixby!' pentru a activa. Fraza de activare poate fi diferită cu anumite setări de limbă
+
+Configurația remapată este activă doar pe acest dispozitiv. Dacă vă conectați Buds-urile la un dispozitiv Samsung, trezirea vocală va activa Bixby în mod normal. Pe alte dispozitive decât acest dispozitiv și telefoanele care nu sunt Samsung, această caracteristică nu va declanșa nicio acțiune.</sys:String>
 
     
-    <!-- Credits -->
+    <!--Credits-->
     <sys:String x:Key="credits_header">Credite</sys:String>
     <sys:String x:Key="credits_developer">Dezvoltator</sys:String>
     <sys:String x:Key="credits_license">Licență</sys:String>
@@ -440,32 +431,38 @@
     <sys:String x:Key="credits_translator">Traducători</sys:String>
     <sys:String x:Key="credits_sponsor">Sponsorizează acest proiect</sys:String>
 
-    <!-- Connection lost page -->
+    <!--Connection lost page-->
     <sys:String x:Key="connlost_header">Nu se poate stabili conexiunea</sys:String>
     <sys:String x:Key="connlost_description_p1">Nu se poate stabili conexiunea cu Buds-urile.</sys:String>
-    <sys:String x:Key="connlost_description_p2">
-        Vă rugăm să verificați setările Bluetooth și să vă asigurați că Buds-urile sunt pornite și asociate la acest computer.&#10;De asemenea, puteți înregistra o nouă pereche, dacă este necesar. În acest caz, selectați "Opțiuni > Anulați înregistrarea dispozitivului".
-    </sys:String>
+    <sys:String x:Key="connlost_description_p2">Vă rugăm să verificați setările Bluetooth și să vă asigurați că Buds-urile sunt pornite și asociate la acest computer.
+De asemenea, puteți înregistra o nouă pereche, dacă este necesar. În acest caz, selectați "Opțiuni &gt; Anulați înregistrarea dispozitivului".</sys:String>
     <sys:String x:Key="connlost_description_p3">Informații adiționale:</sys:String>
     <sys:String x:Key="connlost_noinfo">Nu s-au putut colecta informații despre erori</sys:String>
     <sys:String x:Key="connlost_disconnected">Dispozitiv deconectat</sys:String>
     <sys:String x:Key="connlost_connect">Conectează</sys:String>
     <sys:String x:Key="connlost_connecting">Se conectează...</sys:String>
     
-    <!-- Firmware update disclaimer -->
+    <!--Firmware update disclaimer-->
     <sys:String x:Key="fw_disclaimer">Responsabilitate</sys:String>
-    <sys:String x:Key="fw_disclaimer_desc">Acest instrument de actualizare a firmware-ului este o replică exactă a actualizatorului oficial găsit în aplicația oficială Samsung pentru Android. Am testat amănunțit acestă implementare în diverse circumstanțe (funcționare normală, pierderea conexiunii, pachete Bluetooth corupte intenționat, ...) fără a întâmpina probleme. Cu toate acestea, nu îmi asum nici o răspundere dacă ceva nu va merge bine, deoarece actualizările de firmware modifică componentele vitale ale sistemului și ar trebui să fie tratate întotdeanua cu precauție.&#10;&#10;RETROGRADARE: În timp ce este posibilă trecerea la o versiune mai veche de firmware și nu am întâmpinat probleme cu acesta, aceasta poate cauza probleme neașteptate și ar trebui făcută numai dacă este necesar. Se recomandă o resetare din fabrică după retrogradare, dar de obicei nu este necesară.&#10;FLASH-UIRE PERSONALIZATĂ: De asemenea, puteți încărca fișiere firmware de pe hard disk. NU flash-uiți pe dispozitivul dvs. binare de firmware concepute pentru ALTE modele.&#10;&#10;Această aplicație este licențiată conform GPLv3. Prin utilizarea acesteia, acceptați licența și limitarea responsabilității acesteia. Apăsați 'Continuați' pentru a accepta.</sys:String>
+    <sys:String x:Key="fw_disclaimer_desc">Acest instrument de actualizare a firmware-ului este o replică exactă a actualizatorului oficial găsit în aplicația oficială Samsung pentru Android. Am testat amănunțit acestă implementare în diverse circumstanțe (funcționare normală, pierderea conexiunii, pachete Bluetooth corupte intenționat, ...) fără a întâmpina probleme. Cu toate acestea, nu îmi asum nici o răspundere dacă ceva nu va merge bine, deoarece actualizările de firmware modifică componentele vitale ale sistemului și ar trebui să fie tratate întotdeanua cu precauție.
+
+RETROGRADARE: În timp ce este posibilă trecerea la o versiune mai veche de firmware și nu am întâmpinat probleme cu acesta, aceasta poate cauza probleme neașteptate și ar trebui făcută numai dacă este necesar. Se recomandă o resetare din fabrică după retrogradare, dar de obicei nu este necesară.
+FLASH-UIRE PERSONALIZATĂ: De asemenea, puteți încărca fișiere firmware de pe hard disk. NU flash-uiți pe dispozitivul dvs. binare de firmware concepute pentru ALTE modele.
+
+Această aplicație este licențiată conform GPLv3. Prin utilizarea acesteia, acceptați licența și limitarea responsabilității acesteia. Apăsați 'Continuați' pentru a accepta.</sys:String>
     
-    <!-- Firmware selection -->
+    <!--Firmware selection-->
     <sys:String x:Key="fw_select_header">Actualizări de firmware</sys:String>
-    <sys:String x:Key="fw_select_instructions">Vă rugăm să alegeți un binar de firmware pentru descărcare și instalare. Alternativ, puteți selecta, de asemenea, un firmware binar de pe hard diask, navigând la 'Avansat... > Selectați imaginea de pe disc'</sys:String>
+    <sys:String x:Key="fw_select_instructions">Vă rugăm să alegeți un binar de firmware pentru descărcare și instalare. Alternativ, puteți selecta, de asemenea, un firmware binar de pe hard diask, navigând la 'Avansat... &gt; Selectați imaginea de pe disc'</sys:String>
     <sys:String x:Key="fw_select_no_results">În prezent nu sunt disponibile actualizări de firmware. Vă rugăm să încercați mai târziu</sys:String>
     <sys:String x:Key="fw_select_downgrade">Permiteți retrogradarea firmware-ului</sys:String>
     <sys:String x:Key="fw_select_downgrade_desc">Dezactivați verificările de versiune și afișați firmware-urile mai vechi din listă (pot cauza probleme neașteptate; numai pentru utilizatori avansați)</sys:String>
     <sys:String x:Key="fw_select_advanced">Avansat...</sys:String>
     <sys:String x:Key="fw_select_install">Instalare firmware</sys:String>
     <sys:String x:Key="fw_select_from_disk">Selectați imaginea de pe disc...</sys:String>
-    <sys:String x:Key="fw_select_external_note">NU flash-uiți pe dispozitivul dvs. binare de firmware create pentru ALTE modele. Flash-uirea unui firmware de Buds Pro pe o pereche de Buds Plus nu va debloca nicio caracteristică nouă, ci vă va distruge definitiv dispozitivul.&#10;&#10;Apăsați pe 'Continuați' pentru a selecta un binar de firmware</sys:String>
+    <sys:String x:Key="fw_select_external_note">NU flash-uiți pe dispozitivul dvs. binare de firmware create pentru ALTE modele. Flash-uirea unui firmware de Buds Pro pe o pereche de Buds Plus nu va debloca nicio caracteristică nouă, ci vă va distruge definitiv dispozitivul.
+
+Apăsați pe 'Continuați' pentru a selecta un binar de firmware</sys:String>
     <sys:String x:Key="fw_select_unsupported_selection">Selecție invalidă. Vă rugăm să alegeți o selecție compatibilă din listă.</sys:String>
     <sys:String x:Key="fw_select_downloading">Se descarcă...</sys:String>
     <sys:String x:Key="fw_select_net_error">Comunicarea cu serverul a eșuat. Nu se poate descărca firmware-ul momentan.</sys:String>
@@ -474,9 +471,13 @@
     <sys:String x:Key="fw_select_unknown_build">Nume build necunoscut</sys:String>
     <sys:String x:Key="fw_select_verify_fail">Verificarea firmware-ului a eșuat</sys:String>
     <sys:String x:Key="fw_select_confirm">Sunteți pe cale să flash-uiți '{0}' pe '{1}'-urile dvs.</sys:String>
-    <sys:String x:Key="fw_select_confirm_desc">Asigurați-vă că aceste informații sunt corecte, altfel apăsați 'Anulare' și verificați din nou configurarea.&#10;&#10;Dacă este posibil, asigurați-vă că ambele Buds-uri sunt conectate înainte de a începe. Nu va cauza probleme dacă conexiunea eșuează în timpul transferului actualizării. Într-un astfel de caz, Buds-urile vor anula automat procesul de transfer și vor ieși din modul de actualizare firmware.&#10;&#10;Apăsați 'Continuați' pentru a începe actualizarea</sys:String>
+    <sys:String x:Key="fw_select_confirm_desc">Asigurați-vă că aceste informații sunt corecte, altfel apăsați 'Anulare' și verificați din nou configurarea.
+
+Dacă este posibil, asigurați-vă că ambele Buds-uri sunt conectate înainte de a începe. Nu va cauza probleme dacă conexiunea eșuează în timpul transferului actualizării. Într-un astfel de caz, Buds-urile vor anula automat procesul de transfer și vor ieși din modul de actualizare firmware.
+
+Apăsați 'Continuați' pentru a începe actualizarea</sys:String>
   
-    <!-- Firmware transfer -->
+    <!--Firmware transfer-->
     <sys:String x:Key="fw_upload_header">Se instalează firmware-ul...</sys:String>
     <sys:String x:Key="fw_upload_progress_session">Se creează o sesiune nouă...</sys:String>
     <sys:String x:Key="fw_upload_progress_prepare">Se pregătește încărcarea...</sys:String>
@@ -491,13 +492,15 @@
     <sys:String x:Key="fw_upload_progress_stats_offset">Se procesează datele de la decalajul 0x{0:X6} la 0x{1:X6}</sys:String>
     <sys:String x:Key="fw_upload_progress_stats_segment">Se încarcă segmentul #{0} ({1} octeți, suma de control 0x{2:X6})</sys:String>
 
-    <!-- Firmware parse errors -->
+    <!--Firmware parse errors-->
     <sys:String x:Key="fw_fail_no_magic">Acesta nu este un binar firmware valid. Valoare magică eronată găsită în antetul fișierului.</sys:String>
     <sys:String x:Key="fw_fail_size_null">Acest binar firmware are dimensiunea setată pe zero și nu poate fi flash-uit. Vă rugăm să alegeți altul.</sys:String>
     <sys:String x:Key="fw_fail_no_segments">Acest binar firmware nu conține niciun segment binar și este gol. Vă rugăm să alegeți altul.</sys:String>
-    <sys:String x:Key="fw_fail_unknown">Eroare neașteptată la decodarea binarului firmware. Această arhivă firmware ar putea fi coruptă.&#10;&#10;Detalii:</sys:String>
+    <sys:String x:Key="fw_fail_unknown">Eroare neașteptată la decodarea binarului firmware. Această arhivă firmware ar putea fi coruptă.
+
+Detalii:</sys:String>
     
-    <!-- Firmware transfer errors -->
+    <!--Firmware transfer errors-->
     <sys:String x:Key="fw_fail_connection">S-a pierdut conexiunea la dispozitiv. Transferul firmware-ului a fost anulat.</sys:String>
     <sys:String x:Key="fw_fail_session">Deschiderea unei noi sesiuni a eșuat. Dispozitivul a returnat un cod de eroare ({0})</sys:String>
     <sys:String x:Key="fw_fail_copy">Compierea binarului firmware a eșuat. Reconectați-vă și încercați din nou. Codul de eroare returnat de dispozitiv: {0}</sys:String>
@@ -509,14 +512,14 @@
     <sys:String x:Key="fw_fail_control_timeout">A expirat timpul de așteptare pentru ca dispozitivul să returneze un bloc de control.</sys:String>
     <sys:String x:Key="fw_fail_copy_timeout">A expirat timpul de așteptare pentru ca procesul de transfer să se finalizeze.</sys:String>
     
-    <!-- Spatial test -->
+    <!--Spatial test-->
     <sys:String x:Key="spatial_header">Senzor spațial</sys:String>
-    <!-- Note: Quaternion = 4-dimensional vector -->
+    <!--Note: Quaternion = 4-dimensional vector-->
     <sys:String x:Key="spatial_dump_quaternion">Vector cuaternion brut:</sys:String>
-    <!-- Note: RPY = Roll, pitch, yaw -->
+    <!--Note: RPY = Roll, pitch, yaw-->
     <sys:String x:Key="spatial_dump_rpy">Valori RPY:</sys:String>
     
-    <!-- Header -->
+    <!--Header-->
     <sys:String x:Key="window_minimize">Minimizează</sys:String>
     <sys:String x:Key="window_close">Închide</sys:String>
 
