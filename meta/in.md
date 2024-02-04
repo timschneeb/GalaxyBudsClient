@@ -30,7 +30,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>hotkey_edit_modifier</code></td><td>Modifiers</td></tr>
 <tr><td><code>hotkey_edit_keys</code></td><td>Keys</td></tr>
 <tr><td><code>hotkey_edit_action</code></td><td>Action</td></tr>
-<tr><td><code>hotkey_edit_preview</code></td><td>Shortcut preview: </td></tr>
+<tr><td><code>hotkey_edit_preview</code></td><td>Shortcut preview:</td></tr>
 <tr><td><code>hotkey_edit_header</code></td><td>Select a keyboard hotkey</td></tr>
 <tr><td><code>hotkey_header</code></td><td>Keyboard hotkeys</td></tr>
 <tr><td><code>hotkey_add</code></td><td>Assign new hotkey</td></tr>
@@ -68,8 +68,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>updater_dl_header</code></td><td>Downloading...</td></tr>
 <tr><td><code>updater_dl_manual</code></td><td>View on GitHub</td></tr>
 <tr><td><code>updater_dl_fail_title</code></td><td>Download failed</td></tr>
-<tr><td><code>updater_dl_fail</code></td><td>Reason:
-</td></tr>
+<tr><td><code>updater_dl_fail</code></td><td>Reason:</td></tr>
 <tr><td><code>updater_dl_progress_prepare</code></td><td>Preparing download...</td></tr>
 <tr><td><code>updater_dl_progress_cancelled</code></td><td>Download cancelled</td></tr>
 <tr><td><code>updater_dl_progress_finished</code></td><td>Download finished. Launching installer...</td></tr>
@@ -119,12 +118,10 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>coredump_dl_trace_progress</code></td><td>Downloading trace dump... {0}%</td></tr>
 <tr><td><code>coredump_dl_core_progress</code></td><td>Downloading core dump... {0}%</td></tr>
 <tr><td><code>coredump_dl_progress_size</code></td><td>({0}/{1} bytes)</td></tr>
-<tr><td><code>coredump_dl_note</code></td><td>
-        The audio stream is temporarily paused while downloading. Your earbuds will be disconnected as soon as the transmission finishes, please reconnect them manually.
+<tr><td><code>coredump_dl_note</code></td><td>The audio stream is temporarily paused while downloading. Your earbuds will be disconnected as soon as the transmission finishes, please reconnect them manually.
 Once finished, you will be prompted to select a directory for all collected data.
 
-If the transmission is stuck or the device disconnected prematurely, you need to restart the download. This feature is currently very unstable. 
-    </td></tr>
+If the transmission is stuck or the device disconnected prematurely, you need to restart the download. This feature is currently very unstable.</td></tr>
 <tr><td><code>coredump_dl_save_fail_title</code></td><td>Failed to save dump</td></tr>
 <tr><td><code>coredump_dl_save_fail</code></td><td>Unable to copy dump from temporary location. Reason: {0}</td></tr>
 <tr><td><code>coredump_dl_save_success_title</code></td><td>Successfully saved dumps</td></tr>
@@ -249,12 +246,8 @@ Details:</td></tr>
 <tr><td><code>window_close</code></td><td>Close</td></tr>
 <tr><td><code>budsapp_header</code></td><td>Bluetooth compatibility info</td></tr>
 <tr><td><code>budsapp_text_p1</code></td><td>The official Galaxy Buds app for Windows 10 is installed alongside this application.</td></tr>
-<tr><td><code>budsapp_text_p2</code></td><td>
-        If it is open and connected, GalaxyBudsClient might have issues connecting to your earbuds. Make sure to close it before continuing. Likewise, the official Galaxy Buds app can't connect to your earbuds while Galaxy Buds Manager is active and has opened connections to the earbuds.
-    </td></tr>
-<tr><td><code>budsapp_text_p3</code></td><td>
-        Keep in mind that only one application can talk to your Galaxy Buds at a time.
-    </td></tr>
+<tr><td><code>budsapp_text_p2</code></td><td>If it is open and connected, GalaxyBudsClient might have issues connecting to your earbuds. Make sure to close it before continuing. Likewise, the official Galaxy Buds app can't connect to your earbuds while Galaxy Buds Manager is active and has opened connections to the earbuds.</td></tr>
+<tr><td><code>budsapp_text_p3</code></td><td>Keep in mind that only one application can talk to your Galaxy Buds at a time.</td></tr>
 <tr><td><code>manualpair_title</code></td><td>Manual device selection</td></tr>
 <tr><td><code>manualpair_title_dialog</code></td><td>Choose your Galaxy Buds device</td></tr>
 <tr><td><code>manualpair_model</code></td><td>Choose the correct model type</td></tr>
