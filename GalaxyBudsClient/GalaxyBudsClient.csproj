@@ -5,7 +5,7 @@
         <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsWindows)'=='true'">
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsWindows)'!='true'">
         <TargetFramework>net8.0</TargetFramework>
