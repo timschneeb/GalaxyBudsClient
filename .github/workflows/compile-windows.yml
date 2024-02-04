@@ -9,15 +9,16 @@ on:
      types: 
        - published
        - prereleased
+  workflow_dispatch:
 
 jobs:
   build-x64:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.101
        
@@ -36,7 +37,7 @@ jobs:
     #    timestamp-server: http://timestamp.digicert.com
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_win64_portable
         path: bin_win64/
@@ -45,9 +46,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.101
        
@@ -57,7 +58,7 @@ jobs:
       run: dotnet publish -r win-x86 -o bin_win32 -c Release -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_win32_portable
         path: bin_win32/
@@ -68,7 +69,7 @@ jobs:
     needs: [build-x64, build-x86]
         
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Prepare version information (1/3)
       uses: oprypin/find-latest-tag@v1
       with:
@@ -76,17 +77,17 @@ jobs:
         releases-only: true
       id: last_release  
     - name: Prepare version information (2/3)
-      uses: benjlevesque/short-sha@v1.2
+      uses: benjlevesque/short-sha@v2.1
       id: short-sha
       with:
         length: 6
     - name: Prepare version information (3/3)
-      run: echo '::set-output name=version::${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}'
+      run: echo '{name}={${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}}' >> $GITHUB_OUTPUT
       id: version
       
     # Make x64 installer
     - name: Download artifact (x64)
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: GalaxyBudsClient_win64_portable
         
@@ -94,7 +95,7 @@ jobs:
       run: ren GalaxyBudsClient.exe "Galaxy Buds Client.exe"
     
     - name: Create nsis installer (x64)
-      uses: joncloud/makensis-action@v3.3
+      uses: joncloud/makensis-action@v3.7
       with:
         script-file: "install.nsi"
         arguments: "-DBASE_DIR=\"D:\\a\\GalaxyBudsClient\\GalaxyBudsClient\" -DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"64bit\""
@@ -109,7 +110,7 @@ jobs:
     #    timestamp-server: http://timestamp.digicert.com
 
     - name: Upload artifact (x64)
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
         path: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
@@ -119,7 +120,7 @@ jobs:
 
     # Make x86 installer
     - name: Download artifact (x86)
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: GalaxyBudsClient_win32_portable
         
@@ -127,7 +128,7 @@ jobs:
       run: ren GalaxyBudsClient.exe "Galaxy Buds Client.exe"
 
     - name: Create nsis installer (x86)
-      uses: joncloud/makensis-action@v3.3
+      uses: joncloud/makensis-action@v3.7
       with:
         script-file: "install.nsi"
         arguments: "-DBASE_DIR=\"D:\\a\\GalaxyBudsClient\\GalaxyBudsClient\" -DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"32bit\""
@@ -142,7 +143,7 @@ jobs:
     #    timestamp-server: http://timestamp.digicert.com
 
     - name: Upload artifact (x86)
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_Setup_32bit_${{steps.version.outputs.version}}.exe
         path: GalaxyBudsClient_Setup_32bit_${{steps.version.outputs.version}}.exe
@@ -161,16 +162,16 @@ jobs:
       id: last_release  
       
     - name: Prepare version information (2/3)
-      uses: benjlevesque/short-sha@v1.2
+      uses: benjlevesque/short-sha@v2.1
       id: short-sha
       with:
         length: 6
     - name: Prepare version information (3/3)
-      run: echo '::set-output name=version::${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}'
+      run: echo '{name}={${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}}' >> $GITHUB_OUTPUT
       id: version
       
     - name: Download setup artifact (x64)
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
 
@@ -180,7 +181,7 @@ jobs:
     - uses: AButler/upload-release-assets@v2.0
       with:
         files: '*.exe'
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: ${{ secrets.GH_TOKEN }}
     
 
 

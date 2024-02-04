@@ -9,6 +9,8 @@ on:
      types: 
        - published
        - prereleased
+  workflow_dispatch:
+
 jobs:
   build-x64:
     runs-on: ubuntu-latest
@@ -24,9 +26,12 @@ jobs:
       run: dotnet restore -r linux-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build x64
       run: dotnet publish -r linux-x64 -o bin_linux64 -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
-    
+
+    - name: Change Permissions
+      run: cd bin_linux64 && chmod +x GalaxyBudsClient
+
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_linux-amd64_portable
         path: bin_linux64/GalaxyBudsClient
@@ -35,9 +40,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.101
        
@@ -45,9 +50,12 @@ jobs:
       run: dotnet restore -r linux-musl-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build x64 musl
       run: dotnet publish -r linux-musl-x64  -o bin_linux64_musl -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
-    
+
+    - name: Change Permissions
+      run: cd bin_linux64_musl && chmod +x GalaxyBudsClient
+
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_linux-amd64-musl_portable
         path: bin_linux64_musl/GalaxyBudsClient
@@ -56,9 +64,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.101
        
@@ -66,9 +74,12 @@ jobs:
       run: dotnet restore -r linux-arm --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build arm
       run: dotnet publish -r linux-arm -o bin_linux_arm -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
-    
+
+    - name: Change Permissions
+      run: cd bin_linux_arm && chmod +x GalaxyBudsClient
+
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_linux-arm_portable
         path: bin_linux_arm/GalaxyBudsClient
@@ -77,9 +88,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.101
        
@@ -87,9 +98,12 @@ jobs:
       run: dotnet restore -r linux-arm64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build arm64
       run: dotnet publish -r linux-arm64 -o bin_linux_arm64 -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
-    
+
+    - name: Change Permissions
+      run: cd bin_linux_arm64 && chmod +x GalaxyBudsClient
+
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: GalaxyBudsClient_linux-arm64_portable
         path: bin_linux_arm64/GalaxyBudsClient
@@ -102,7 +116,7 @@ jobs:
      
     steps:
     - name: Download setup artifact (x64)
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: GalaxyBudsClient_linux-amd64_portable
     
@@ -110,7 +124,7 @@ jobs:
       run: ren GalaxyBudsClient GalaxyBudsClient_Linux_64bit_Portable.bin
     
     - name: Download setup artifact (x64-musl)
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: GalaxyBudsClient_linux-amd64-musl_portable
     
@@ -118,7 +132,7 @@ jobs:
       run: ren GalaxyBudsClient GalaxyBudsClient_Linux_64bit-musl_Portable.bin
     
     - name: Download artifact (arm)
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: GalaxyBudsClient_linux-arm_portable
 
@@ -126,7 +140,7 @@ jobs:
       run: ren GalaxyBudsClient GalaxyBudsClient_Linux_arm_Portable.bin
 
     - name: Download artifact (arm64)
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: GalaxyBudsClient_linux-arm64_portable
 
@@ -136,4 +150,4 @@ jobs:
     - uses: AButler/upload-release-assets@v2.0
       with:
         files: '*.bin'
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: ${{ secrets.GH_TOKEN }}
