@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml.MarkupExtensions;
+using Avalonia.Markup.Xaml.Styling;
 
 namespace GalaxyBudsClient.Utils
 {
@@ -19,7 +20,7 @@ namespace GalaxyBudsClient.Utils
                 var md = Application.Current.Resources.MergedDictionaries[i];
                 if (md is ResourceInclude include)
                 {
-                    if (include.Loaded.TryGetResource("ResourceDictionaryName", out var name))
+                    if (include.Loaded.TryGetResource("ResourceDictionaryName", null, out var name))
                     {
                         if (name?.ToString() == null)
                         {
@@ -35,7 +36,7 @@ namespace GalaxyBudsClient.Utils
                 }
                 else if (md is ResourceDictionary dict)
                 {
-                    if (dict.TryGetResource("ResourceDictionaryName", out var name))
+                    if (dict.TryGetResource("ResourceDictionaryName", null, out var name))
                     {
                         if (name?.ToString() == null)
                         {

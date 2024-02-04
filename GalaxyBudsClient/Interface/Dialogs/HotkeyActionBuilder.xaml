@@ -35,7 +35,7 @@
                 <Grid RowDefinitions="Auto">
                     <ComboBox Grid.Row="0"
                               Name="Key1"
-                              Items="{Binding KeySource}"
+                              ItemsSource="{Binding KeySource}"
                               HorizontalAlignment="Stretch"
                               SelectionChanged="OnKeySelectionChanged" />
                 </Grid>
@@ -47,7 +47,7 @@
                                 Header="{DynamicResource hotkey_edit_action}">
             <ComboBox Name="Action"
                       HorizontalAlignment="Stretch"
-                      Items="{Binding ActionSource}"
+                      ItemsSource="{Binding ActionSource}"
                       SelectionChanged="Action_OnSelectionChanged">
             </ComboBox>
         </HeaderedContentControl>

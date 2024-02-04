@@ -1,12 +1,10 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
- 
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
     <sys:String x:Key="ResourceDictionaryName">Loc-ua</sys:String>
 
-    <!-- :::::::: Source code :::::::: -->
+    <!--:::::::: Source code ::::::::-->
 
-    <!-- General -->
+    <!--General-->
     <sys:String x:Key="okay">Добре</sys:String>
     <sys:String x:Key="left">Лівий</sys:String>
     <sys:String x:Key="right">Правий</sys:String>
@@ -23,22 +21,22 @@
 
     <sys:String x:Key="anc">Активне шумозаглушення</sys:String>
 
-    <!-- SPP Message Parser -->
+    <!--SPP Message Parser-->
     <sys:String x:Key="sppmsg_too_small">Розмір пакету занадто малий</sys:String>
     <sys:String x:Key="sppmsg_invalid_som">Поганий початок пакету</sys:String>
-    <!-- Context: SOM = Start of message -->
+    <!--Context: SOM = Start of message-->
     <sys:String x:Key="sppmsg_invalid_eom">Поганий кінець пакету</sys:String>
-    <!-- Context: EOM = End of message -->
+    <!--Context: EOM = End of message-->
     <sys:String x:Key="sppmsg_size_mismatch">Невідповідність розміру пакету</sys:String>
     <sys:String x:Key="sppmsg_crc_fail">Невірна контрольна сума</sys:String>
     <sys:String x:Key="sppmsg_tl">Розмір пакету занадто малий</sys:String>
 
-    <!-- Dark Mode States -->
+    <!--Dark Mode States-->
     <sys:String x:Key="darkmode_disabled">Вимкнена</sys:String>
     <sys:String x:Key="darkmode_enabled">Ввімкнена</sys:String>
     <sys:String x:Key="darkmode_system">Використовувати налаштування системи</sys:String>
 
-    <!-- Connection popup -->
+    <!--Connection popup-->
     <sys:String x:Key="connpopup_placement_tl">Згори ліворуч</sys:String>
     <sys:String x:Key="connpopup_placement_tc">Згори по центру</sys:String>
     <sys:String x:Key="connpopup_placement_tr">Згори праворуч</sys:String>
@@ -46,15 +44,15 @@
     <sys:String x:Key="connpopup_placement_bc">Знизу по центру</sys:String>
     <sys:String x:Key="connpopup_placement_br">Знизу праворуч</sys:String>
     <sys:String x:Key="connpopup_title">{0}'s Galaxy Buds{1}</sys:String>
-    <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
+    <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
 
-    <!-- Placement  (Buds+) -->
+    <!--Placement  (Buds+)-->
     <sys:String x:Key="placement_disconnected">Відключений</sys:String>
     <sys:String x:Key="placement_wearing">Одягнутий</sys:String>
     <sys:String x:Key="placement_not_wearing">Знятий</sys:String>
     <sys:String x:Key="placement_in_case">У кейсі</sys:String>
 
-    <!-- Touch options -->
+    <!--Touch options-->
     <sys:String x:Key="touchoption_voice">Голосовий помічник</sys:String>
     <sys:String x:Key="touchoption_quickambientsound">Прослухати оточення</sys:String>
     <sys:String x:Key="touchoption_volume">Гучність</sys:String>
@@ -70,7 +68,7 @@
     <sys:String x:Key="touchoption_custom_trigger_hotkey">Наберіть комбінацію клавіш...</sys:String>
     <sys:String x:Key="touchoption_custom_external_app">Запуск програми...</sys:String>
 
-    <!-- Options menu -->
+    <!--Options menu-->
     <sys:String x:Key="optionsmenu_title">Опції</sys:String>
     <sys:String x:Key="optionsmenu_settings">Налаштування</sys:String>
     <sys:String x:Key="optionsmenu_refresh">Перезавантажити інтерфейс</sys:String>
@@ -78,7 +76,7 @@
     <sys:String x:Key="optionsmenu_update">Перевірити оновлення</sys:String>
     <sys:String x:Key="optionsmenu_credits">Автори</sys:String>
 
-    <!-- Tray context menu -->
+    <!--Tray context menu-->
     <sys:String x:Key="tray_unlock_touchpad">Розблокувати сенсорну панель</sys:String>
     <sys:String x:Key="tray_lock_touchpad">Заблокувати сенсорну панель</sys:String>
     <sys:String x:Key="tray_enable_ambient_sound">Ввімкнути звукове оточення</sys:String>
@@ -91,18 +89,18 @@
     <sys:String x:Key="tray_quit">Вихід</sys:String>
 
 
-    <!-- :::::::: XAML files (static) :::::::: -->
+    <!--:::::::: XAML files (static) ::::::::-->
 
-    <!-- General -->
+    <!--General-->
     <sys:String x:Key="continue_button">Продовжити</sys:String>
 
-    <!-- Hotkey Recorder Dialog (Custom action) -->
+    <!--Hotkey Recorder Dialog (Custom action)-->
     <sys:String x:Key="hotrec_title">Запис комбінації клавиш</sys:String>
     <sys:String x:Key="hotrec_content">Будь ласка, введіть комбінацію клавіш:</sys:String>
     <sys:String x:Key="hotrec_empty">Немає комбінації</sys:String>
     <sys:String x:Key="hotrec_note">Нотатка: Завдяки ізоляції конфіденційності користувальницького інтерфейсу (ENG: UIPI) лише програми однакового або нижчого рівня можуть правильно отримувати команди від комбінацій клавіш.</sys:String>
 
-    <!-- Hotkey Action Builder Dialog -->
+    <!--Hotkey Action Builder Dialog-->
     <sys:String x:Key="hotkey_edit_title">Редактор комбінацій</sys:String>
     <sys:String x:Key="hotkey_edit_invalid">Невірний вибір</sys:String>
     <sys:String x:Key="hotkey_edit_invalid_desc">Будь ласка, оберіть щонайменше одну клавішу і один модифікатор</sys:String>
@@ -112,10 +110,10 @@
     <sys:String x:Key="hotkey_edit_modifier">Модифікатори</sys:String>
     <sys:String x:Key="hotkey_edit_keys">Клавіші</sys:String>
     <sys:String x:Key="hotkey_edit_action">Дія</sys:String>
-    <sys:String x:Key="hotkey_edit_preview">Перегляд комбінації: </sys:String>
+    <sys:String x:Key="hotkey_edit_preview">Перегляд комбінації:</sys:String>
     <sys:String x:Key="hotkey_edit_header">Оберіть комбінацію клавіш</sys:String>
     
-    <!-- Hotkey page -->
+    <!--Hotkey page-->
     <sys:String x:Key="hotkey_header">Комбінації клавіш</sys:String>
     <sys:String x:Key="hotkey_add">Призначити нову комбінацію</sys:String>
     <sys:String x:Key="hotkey_empty">Немає комбінацій</sys:String>
@@ -127,7 +125,7 @@
     <sys:String x:Key="hotkey_add_error_duplicate">Обрана комбінація вже зайнята цим або іншим додатком. Будь ласка, оберіть іншу.</sys:String>
     <sys:String x:Key="hotkey_add_error_unknown">Операційна система відповіла помилкою '{0}'</sys:String>
 
-    <!-- EventDispatcher module -->
+    <!--EventDispatcher module-->
     <sys:String x:Key="event_none">Нічого</sys:String>
     <sys:String x:Key="event_ambient_toggle">Увімк / вимк звукове оточення</sys:String>
     <sys:String x:Key="event_ambient_volume_up">Посилити звукове оточення</sys:String>
@@ -150,21 +148,17 @@
     <sys:String x:Key="event_display_battery_popup">Показати заряд батареї</sys:String>
     <sys:String x:Key="event_connect">Підключитися до пристрою</sys:String>
     
-    <!-- Welcome page -->
+    <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Ласкаво просимо!</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">
-        Вітаю! Цей менеджер для Galaxy Buds не офіційний, тож майте на увазі, що він ніяк не пов'язаний із Samsung.&#10;Незважаючи на розширений по відношенню до оригінального &#10;Samsung Wearable на Android, функціонал цієї програми, я все ж вирішив виключити утиліту оновлення прошивки заради безпеки. Будь ласка, скористайтесь офіційним засобом якщо він вам знадобится.
-    </sys:String>
-    <sys:String x:Key="welcome_textblock_p2">
-        Якщо вам цікаво про те що відбувається за лаштунками, можете відвідати мій репозиторій на GitHub. Також там можна знайти невеликий журнал по реверс-інжинірингу. Можете написати мені повідомлення на GitHub або в Telegram @thepbone якщо у вас з'являться проблеми.  
-    </sys:String>
-    <sys:String x:Key="welcome_textblock_p3">
-        Ця программа підтримує усі моделі Galaxy Buds.
-    </sys:String>
+    <sys:String x:Key="welcome_textblock_p1">Вітаю! Цей менеджер для Galaxy Buds не офіційний, тож майте на увазі, що він ніяк не пов'язаний із Samsung.
+Незважаючи на розширений по відношенню до оригінального 
+Samsung Wearable на Android, функціонал цієї програми, я все ж вирішив виключити утиліту оновлення прошивки заради безпеки. Будь ласка, скористайтесь офіційним засобом якщо він вам знадобится.</sys:String>
+    <sys:String x:Key="welcome_textblock_p2">Якщо вам цікаво про те що відбувається за лаштунками, можете відвідати мій репозиторій на GitHub. Також там можна знайти невеликий журнал по реверс-інжинірингу. Можете написати мені повідомлення на GitHub або в Telegram @thepbone якщо у вас з'являться проблеми.</sys:String>
+    <sys:String x:Key="welcome_textblock_p3">Ця программа підтримує усі моделі Galaxy Buds.</sys:String>
     <sys:String x:Key="welcome_darkmode">Темна тема</sys:String>
     <sys:String x:Key="welcome_darkmode_content">Ваші очі вже палають? Скористайтесь кольорами потемніше! (Знадобиться перезапуск)</sys:String>
 
-    <!-- Main page -->
+    <!--Main page-->
     <sys:String x:Key="mainpage_corrupt_data">Отримані пошкоджені дані. Повторне підключення...</sys:String>
     <sys:String x:Key="mainpage_find_my_earbuds">Пошук навушників</sys:String>
     <sys:String x:Key="mainpage_touchpad">Сенсорна панель</sys:String>
@@ -174,14 +168,10 @@
     <sys:String x:Key="mainpage_advanced">Додатково</sys:String>
     <sys:String x:Key="mainpage_system">Про навушники</sys:String>
 
-    <!-- Update page -->
+    <!--Update page-->
     <sys:String x:Key="updater_header">Доступне оновлення програми</sys:String>
-    <sys:String x:Key="updater_message_p1">
-        Завантаження повністю автоматизоване і майстер встановлення буде запущений по завершенню завантаження. Я наполегливо рекомендую вам оновитися щоб отримати останні виправлення та функції. 
-    </sys:String>
-    <sys:String x:Key="updater_message_p2">
-        Ви можете подивитися історію змін натиснувши на кнопку нижче.
-    </sys:String>
+    <sys:String x:Key="updater_message_p1">Завантаження повністю автоматизоване і майстер встановлення буде запущений по завершенню завантаження. Я наполегливо рекомендую вам оновитися щоб отримати останні виправлення та функції.</sys:String>
+    <sys:String x:Key="updater_message_p2">Ви можете подивитися історію змін натиснувши на кнопку нижче.</sys:String>
 
     <sys:String x:Key="updater_view_changelog">Подивитися історію змін на GitHub</sys:String>
     <sys:String x:Key="updater_footer_remindmelater">Пізніше</sys:String>
@@ -195,7 +185,7 @@
     <sys:String x:Key="updater_dl_header">Завантаження...</sys:String>
     <sys:String x:Key="updater_dl_manual">Переглянути на GitHub</sys:String>
     <sys:String x:Key="updater_dl_fail_title">Помилка завантаження</sys:String>
-    <sys:String x:Key="updater_dl_fail">Причина:&#10;</sys:String>
+    <sys:String x:Key="updater_dl_fail">Причина:</sys:String>
     <sys:String x:Key="updater_dl_progress_prepare">Підготовка завантаження...</sys:String>
     <sys:String x:Key="updater_dl_progress_cancelled">Завантаження відмінене</sys:String>
     <sys:String x:Key="updater_dl_progress_finished">Завантаження завершене. Запуск майстра...</sys:String>
@@ -203,7 +193,7 @@
     <sys:String x:Key="updater_dl_progress_size">({0}/{1} мегабайт)</sys:String>
     <sys:String x:Key="updater_dl_note">По завершенню завантаження, ця програма завершить роботу і запустить окремий установник. Може потребоватся кілька секунд на запуск.</sys:String>
 
-    <!-- Device selection page (setup) -->
+    <!--Device selection page (setup)-->
     <sys:String x:Key="devsel_header">Оберіть ваші Galaxy Buds</sys:String>
     <sys:String x:Key="devsel_refresh">Оновити список пристроїв</sys:String>
     <sys:String x:Key="devsel_device_name">Ім'я пристрою</sys:String>
@@ -218,7 +208,7 @@
     <sys:String x:Key="devsel_winrt_title">Використовувати інші бібліотеки Bluetooth</sys:String>
     <sys:String x:Key="devsel_winrt">Краща стабільність, але може не працювати на деяких комп'ютерах з деякими адаптерами</sys:String>
 
-    <!-- Unsupported feature page -->
+    <!--Unsupported feature page-->
     <sys:String x:Key="unsupported_feature_current_fwver">Поточна версія прошивки:</sys:String>
     <sys:String x:Key="unsupported_feature_required_fwver">Необхідна версія прошивки:</sys:String>
 
@@ -230,7 +220,7 @@
     <sys:String x:Key="unsupported_feature_description_p2">Будь ласка, оновіться до останньої версії використовуючи офіційну утиліту оновлень для Windows або офіційний додаток Wearable на Android</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">Переконайтесь що ви закрили цю програму для використання офіційної утиліти оновлень для Windows. Тільки одна програма за раз може спілкуватися з пристроєм Buds.</sys:String>
 
-    <!-- Touchpad page -->
+    <!--Touchpad page-->
     <sys:String x:Key="touchpad_header">Сенсорна панель</sys:String>
     <sys:String x:Key="touchpad_lock">Блокування сенсорної панелі</sys:String>
     <sys:String x:Key="touchpad_left_action">Дія зліва</sys:String>
@@ -244,18 +234,17 @@
     <sys:String x:Key="touchpad_noise_control_mode_amb_off">Звукове оточення &lt;-&gt; Вимк</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Чергувати режими (АШЗ, Оточення, Вимк)</sys:String>
 
-    <!-- Custom touchpad action page -->
+    <!--Custom touchpad action page-->
     <sys:String x:Key="cact_header">Оберіть налаштовану дію</sys:String>
     <sys:String x:Key="cact_external_app_dialog_title">Оберіть виконуваний файл...</sys:String>
     <sys:String x:Key="cact_action">Налаштована дія</sys:String>
     <sys:String x:Key="cact_notice">Попередження</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Налаштовані дії доступні лише за умови роботи цієї програми в фоні.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">Ці налаштування неможливо застосувати до Android або інших пристроїв.</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">
-        Для того щоб забезпечити роботу цієї функції, програма буде запускатися разом з операційною системоб і працювати в фоні.&#10;Ви можете вимкнути автоматичний запуск в налаштуваннях.
-    </sys:String>
+    <sys:String x:Key="cact_notice_content_p3">Для того щоб забезпечити роботу цієї функції, програма буде запускатися разом з операційною системоб і працювати в фоні.
+Ви можете вимкнути автоматичний запуск в налаштуваннях.</sys:String>
 
-    <!-- System/Self-Test -->
+    <!--System/Self-Test-->
     <sys:String x:Key="system_overview_header">Про навушники</sys:String>
     <sys:String x:Key="system_header">Дані про систему</sys:String>
     <sys:String x:Key="system_selftest">Самодіагностика</sys:String>
@@ -288,9 +277,9 @@
     <sys:String x:Key="system_thermo">Покази термістора</sys:String>
     <sys:String x:Key="system_hall">Показания датчика Холла</sys:String>
     <sys:String x:Key="system_accel">Статус акселерометра</sys:String>
-    <!-- Note: system_accel only used on the self-test page -->
+    <!--Note: system_accel only used on the self-test page-->
     <sys:String x:Key="system_adc_soc">АЦП: Батарея</sys:String>
-    <!-- Context: SoC = State of charge (battery percentage) -->
+    <!--Context: SoC = State of charge (battery percentage)-->
     <sys:String x:Key="system_adc_voltage">АЦП: Вольти</sys:String>
     <sys:String x:Key="system_adc_current">АЦП: Напруга</sys:String>
 
@@ -307,20 +296,22 @@
     <sys:String x:Key="coredump_dl_trace_progress">Завантажую трассування... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">Завантажую дампи... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} байтів)</sys:String>
-    <sys:String x:Key="coredump_dl_note">
-        Аудіопотік тимчасово зупинений під час завантаження. Ваші навушники будуть відключені по завершенню завантаження, будь ласка, відновіть зв'язок самостійно.&#10;По завершенню, вам буде запропоновано обрати місце збереження даних.&#10;&#10;Якщо передача застрягла або пристрій відключився передчасно, вам потрібно перезапустити завантаження. Поки що, ця функція дуже нестабільна. 
-    </sys:String>
+    <sys:String x:Key="coredump_dl_note">Аудіопотік тимчасово зупинений під час завантаження. Ваші навушники будуть відключені по завершенню завантаження, будь ласка, відновіть зв'язок самостійно.
+По завершенню, вам буде запропоновано обрати місце збереження даних.
+
+Якщо передача застрягла або пристрій відключився передчасно, вам потрібно перезапустити завантаження. Поки що, ця функція дуже нестабільна.</sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">Не вдалось зберігти дампи</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">Не вдалось скопіювати дампи із тимчасового сховища. Причина: {0}</sys:String>
     <sys:String x:Key="coredump_dl_save_success_title">Дампи успішно збережені</sys:String>
     <sys:String x:Key="coredump_dl_save_success">{0} дамп(и/ів) були записані в '{1}'</sys:String>
     <sys:String x:Key="coredump_dl_save_dialog_title">Оберіть місце збереження...</sys:String>
 
-    <!-- Settings -->
+    <!--Settings-->
     <sys:String x:Key="settings_header">Налаштування</sys:String>
 
     <sys:String x:Key="settings_darkmode">Темна тема</sys:String>
-    <sys:String x:Key="settings_darkmode_description">Скористайтесь кольорами потемніше &#10;(Знадобиться перезапуск)</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Скористайтесь кольорами потемніше 
+(Знадобиться перезапуск)</sys:String>
     <sys:String x:Key="settings_transitions">Анімації</sys:String>
     <sys:String x:Key="settings_transitions_description">Увімкнути слайдову анімацію</sys:String>
     <sys:String x:Key="settings_localization_disable">Мова</sys:String>
@@ -334,7 +325,7 @@
     <sys:String x:Key="settings_connpopup">Налаштувати повідомлення про підключення</sys:String>
     <sys:String x:Key="settings_devmode">Ввімкнути режим розробника</sys:String>
 
-    <!-- Settings >>> Connection popup -->
+    <!--Settings >>> Connection popup-->
     <sys:String x:Key="settings_cpopup_header">Повідомлення про підключення</sys:String>
     <sys:String x:Key="settings_cpopup_enable">Ввімкнути повідомлення про підключення</sys:String>
     <sys:String x:Key="settings_cpopup_enable_description">Показати невелике повідомлення зі статусом заряду при підключнні пристроїв Buds</sys:String>
@@ -350,24 +341,24 @@
     <sys:String x:Key="settings_cpopup_wear_state">Використовувати інший колір поки в кейсі</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state_description">Затінити іконку навушника якщо він знаходиться в кейсі</sys:String>
 
-    <!-- Factory reset -->
+    <!--Factory reset-->
     <sys:String x:Key="factory_header">Скидання налаштувань</sys:String>
     <sys:String x:Key="factory_confirm">Підтвердіть скидання налаштувань</sys:String>
     <sys:String x:Key="factory_error_title">Скидання налаштувань не вдалося</sys:String>
-    <sys:String x:Key="factory_error">
-        Пристрій повернув код помилки: {0}&#10;Переконайтеся що обидва навушника включені і досяжні.&#10;Вам може знадобиться повторно підключити навушники вручну.
-    </sys:String>
+    <sys:String x:Key="factory_error">Пристрій повернув код помилки: {0}
+Переконайтеся що обидва навушника включені і досяжні.
+Вам може знадобиться повторно підключити навушники вручну.</sys:String>
     <sys:String x:Key="factory_text_p1">Ви впевнені що хочете скинути налаштування навушників?</sys:String>
     <sys:String x:Key="factory_text_p2">Після скидання налаштувань, вам знадобиться повторно підключити навушники до комп'ютера.</sys:String>
     <sys:String x:Key="factory_text_p3">Переконайтеся що обидва навушника включені перед продовженням!</sys:String>
 
-    <!-- Find my Gear -->
+    <!--Find my Gear-->
     <sys:String x:Key="fmg_warning_both">Будь ласка витягніть обидва навушника з вух.</sys:String>
     <sys:String x:Key="fmg_warning_left">Будь ласка витягніть лівий навушник з вуха.</sys:String>
     <sys:String x:Key="fmg_warning_right">Будь ласка витягніть правий навушник з вуха.</sys:String>
     <sys:String x:Key="fmg_header">Знайти мої навушники</sys:String>
 
-    <!-- Equalizer -->
+    <!--Equalizer-->
     <sys:String x:Key="eq_header">Еквалайзер</sys:String>
     <sys:String x:Key="eq_enable">Ввімкнути еквалайзер</sys:String>
     <sys:String x:Key="eq_preset">Режим:</sys:String>
@@ -382,7 +373,7 @@
     <sys:String x:Key="eq_clear">Чистий</sys:String>
     <sys:String x:Key="eq_treble">Більше високих</sys:String>
 
-    <!-- Noise control -->
+    <!--Noise control-->
     <sys:String x:Key="nc_header">Керування шумозаглушенням</sys:String>
     <sys:String x:Key="nc_anc_level">Підвищена чутливість</sys:String>
     <sys:String x:Key="nc_anc_level_description">Підсилити ефект шумозаглушення</sys:String>
@@ -391,7 +382,7 @@
     <sys:String x:Key="nc_voicedetect_timeout">Скінчення розмови</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} секунд</sys:String>
 
-    <!-- Ambient sound -->
+    <!--Ambient sound-->
     <sys:String x:Key="as_header">Звукове оточення</sys:String>
     <sys:String x:Key="as_enable">Ввімкнути звукове оточення</sys:String>
     <sys:String x:Key="as_volume">Гучність звукове оточення</sys:String>
@@ -404,7 +395,7 @@
     <sys:String x:Key="as_scale_high">Гучне</sys:String>
     <sys:String x:Key="as_scale_extraloud">Дуже гучне</sys:String>
 
-    <!-- Advanced page -->
+    <!--Advanced page-->
     <sys:String x:Key="adv_header">Розширені налаштування</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} або пізніше</sys:String>
     <sys:String x:Key="adv_seamless">Зручне підключення до навушників</sys:String>
@@ -422,16 +413,18 @@
     <sys:String x:Key="adv_bixby_remap">Переназначити прокидання Bixby</sys:String>
     <sys:String x:Key="adv_bixby_remap_desc">Призначити що має ставатися коли ви говорите 'Hey Bixby!'</sys:String>
 
-    <!-- Remap bixby wakeup -->
+    <!--Remap bixby wakeup-->
     <sys:String x:Key="bixby_remap_header">Переназначити прокидання Bixby</sys:String>
     <sys:String x:Key="bixby_remap_enable">Увімкнути прокидання Bixby</sys:String>
     <sys:String x:Key="bixby_remap_enable_desc">Запустіть Bixby на вашому телефоні Samsung або виконайте свою дію на цьому ПК під час прокидання</sys:String>
     <sys:String x:Key="bixby_remap_lang">Мова прокидання Bixby</sys:String>
     <sys:String x:Key="bixby_remap_action">Своя дія при прокиданні</sys:String>
-    <sys:String x:Key="bixby_remap_note">Скажіть 'Hey Bixby!' для активації. Фраза активації може відрізнятися в залежності від налаштувань мови.&#10;&#10;Переназначення діє лише на цьому пристрої. Якщо ви підключите ваші навушники до устройства Samsung, голосове прокидання буде викликати Bixby. На інших пристроях і телефонах інших марок, ця опція не буде нічого робити.</sys:String>
+    <sys:String x:Key="bixby_remap_note">Скажіть 'Hey Bixby!' для активації. Фраза активації може відрізнятися в залежності від налаштувань мови.
+
+Переназначення діє лише на цьому пристрої. Якщо ви підключите ваші навушники до устройства Samsung, голосове прокидання буде викликати Bixby. На інших пристроях і телефонах інших марок, ця опція не буде нічого робити.</sys:String>
 
 
-    <!-- Credits -->
+    <!--Credits-->
     <sys:String x:Key="credits_header">Автори</sys:String>
     <sys:String x:Key="credits_developer">Розробник</sys:String>
     <sys:String x:Key="credits_license">Ліцензійна угода</sys:String>
@@ -440,30 +433,38 @@
     <sys:String x:Key="credits_translator">Перекладач</sys:String>
     <sys:String x:Key="credits_sponsor">Підтримати проект</sys:String>
 
-    <!-- Connection lost page -->
+    <!--Connection lost page-->
     <sys:String x:Key="connlost_header">Не вдалося встановити з'єднання</sys:String>
     <sys:String x:Key="connlost_description_p1">Помилка з'єднання із вашими навушниками.</sys:String>
-    <sys:String x:Key="connlost_description_p2">Будь ласка перевірте настройки Bluetooth і переконайтеся що ваші навушники включені і прив'язані до цього комп'ютера.&#10;Ви також можете зареєструвати нову пару навушників. У такому випадку виберіть "Опції > Відмінити сполучення"</sys:String>
+    <sys:String x:Key="connlost_description_p2">Будь ласка перевірте настройки Bluetooth і переконайтеся що ваші навушники включені і прив'язані до цього комп'ютера.
+Ви також можете зареєструвати нову пару навушників. У такому випадку виберіть "Опції &gt; Відмінити сполучення"</sys:String>
     <sys:String x:Key="connlost_description_p3">Додаткова інформація:</sys:String>
     <sys:String x:Key="connlost_noinfo">Не вдалося зібрати додаткову інформацію</sys:String>
     <sys:String x:Key="connlost_connect">Підключитися</sys:String>
     <sys:String x:Key="connlost_connecting">Підключення...</sys:String>
     <sys:String x:Key="connlost_disconnected">Пристрій відключено</sys:String>
 
-    <!-- Firmware update disclaimer -->
+    <!--Firmware update disclaimer-->
     <sys:String x:Key="fw_disclaimer">Відмова від відповідальності</sys:String>
-    <sys:String x:Key="fw_disclaimer_desc">Цей інструмент оновлення прошивки є точною копією офіційного засобу оновлення, яке можна знайти в офіційному додатку Samsung для Android. Я ретельно протестував цю реалізацію в різних обставинах (нормальна робота, втрата з'єднання, навмисно пошкоджені пакети Bluetooth і т. д.), не відчуваючи ніяких проблем. Проте, я не буду нести ніякої відповідальності, якщо щось піде не так, оскільки оновлення прошивки змінюють життєво важливі компоненти системи, і з ними завжди слід звертатися з обережністю. &#10;&#10;ДАУНГРЕЙДІНГ: Не дивлячись на те що даунгрейдінг до старших версій можливий і я не зіткнувся з проблемами, це може викликати непередбачені проблеми і має виконуватися тільки в разі потреби. Відновлення заводських налаштувань після переходу на більш ранню версію рекомендується, але зазвичай не потрібне. &#10;КОРСИТУВАЦЬКА ПРОШИВКА: Ви також можете завантажувати файли прошивки з жорсткого диска. НЕ прошивайте на ваш пристрій бінарні файли прошивки, призначені для ІНШИХ моделей. &#10; &#10;Ця програма поширюється під ліцензією GPLv3. Використовуючи його, ви приймаєте ліцензію і обмеження відповідальності. Натисніть «Продовжити», щоб прийняти.</sys:String>
+    <sys:String x:Key="fw_disclaimer_desc">Цей інструмент оновлення прошивки є точною копією офіційного засобу оновлення, яке можна знайти в офіційному додатку Samsung для Android. Я ретельно протестував цю реалізацію в різних обставинах (нормальна робота, втрата з'єднання, навмисно пошкоджені пакети Bluetooth і т. д.), не відчуваючи ніяких проблем. Проте, я не буду нести ніякої відповідальності, якщо щось піде не так, оскільки оновлення прошивки змінюють життєво важливі компоненти системи, і з ними завжди слід звертатися з обережністю. 
+
+ДАУНГРЕЙДІНГ: Не дивлячись на те що даунгрейдінг до старших версій можливий і я не зіткнувся з проблемами, це може викликати непередбачені проблеми і має виконуватися тільки в разі потреби. Відновлення заводських налаштувань після переходу на більш ранню версію рекомендується, але зазвичай не потрібне. 
+КОРСИТУВАЦЬКА ПРОШИВКА: Ви також можете завантажувати файли прошивки з жорсткого диска. НЕ прошивайте на ваш пристрій бінарні файли прошивки, призначені для ІНШИХ моделей. 
+ 
+Ця програма поширюється під ліцензією GPLv3. Використовуючи його, ви приймаєте ліцензію і обмеження відповідальності. Натисніть «Продовжити», щоб прийняти.</sys:String>
     
-    <!-- Firmware selection -->
+    <!--Firmware selection-->
     <sys:String x:Key="fw_select_header">Оновлення прошивки</sys:String>
-    <sys:String x:Key="fw_select_instructions">Будь ласка, оберіть образ прошивки для завантаження і встановлення. Або як варіант, ви можеие обрати образ прошивки з вашого жорсткого диску скориставшись 'Розширені... > Обрати образ з диску'</sys:String>
+    <sys:String x:Key="fw_select_instructions">Будь ласка, оберіть образ прошивки для завантаження і встановлення. Або як варіант, ви можеие обрати образ прошивки з вашого жорсткого диску скориставшись 'Розширені... &gt; Обрати образ з диску'</sys:String>
     <sys:String x:Key="fw_select_no_results">На даний момент немає оновлень. Будь ласка, спробуйте знову пізніше.</sys:String>
     <sys:String x:Key="fw_select_downgrade">Дозволити даунгрейдінг</sys:String>
     <sys:String x:Key="fw_select_downgrade_desc">Відключити перевірку версій і показати старіші прошивки в списку (може привести до непердбачуваних помилок; тільки для досвідчених корситувачів)</sys:String>
     <sys:String x:Key="fw_select_advanced">Розширені...</sys:String>
     <sys:String x:Key="fw_select_install">Встановити прошивку</sys:String>
     <sys:String x:Key="fw_select_from_disk">Обрати образ з диску...</sys:String>
-    <sys:String x:Key="fw_select_external_note">НЕ ПРОШИВАЙТЕ бінарні файли призначені для ІНШИХ моделей на ваш пристрій. Прошивка Buds Pro на Buds Plus не розблокує додаткових функцій, замість цього вона назавжди зламає ваш пристрій.&#10;&#10;Натисніть 'Продовжити' щоб обрати бінарний файл.</sys:String>
+    <sys:String x:Key="fw_select_external_note">НЕ ПРОШИВАЙТЕ бінарні файли призначені для ІНШИХ моделей на ваш пристрій. Прошивка Buds Pro на Buds Plus не розблокує додаткових функцій, замість цього вона назавжди зламає ваш пристрій.
+
+Натисніть 'Продовжити' щоб обрати бінарний файл.</sys:String>
     <sys:String x:Key="fw_select_unsupported_selection">Невірний вибір. Будь ласка, оберіть сумісну прошивку зі списку.</sys:String>
     <sys:String x:Key="fw_select_downloading">Завантаження...</sys:String>
     <sys:String x:Key="fw_select_net_error">Помилка зв'язку з сервером. Завантаження прошивок зараз неможливе.</sys:String>
@@ -472,9 +473,13 @@
     <sys:String x:Key="fw_select_unknown_build">Невідоме ім'я збірки</sys:String>
     <sys:String x:Key="fw_select_verify_fail">Не вдалося перевірити прошивку</sys:String>
     <sys:String x:Key="fw_select_confirm">Ви збираєтеся прошити '{0}' на ваш '{1}' пристрій</sys:String>
-    <sys:String x:Key="fw_select_confirm_desc">Убедитесь что эта информация правильная, в ином случае нажмите 'Отмена' и проверьте настройки.&#10;&#10;По возможности, проверьте что оба наушника подключены перед началом. Это не приведет к проблемам во время передачи. В таком случае наушники автоматически отменят передачу и выйдут из режима обновления.&#10;&#10;Нажмите 'Продолжить' чтобы начать обновление.</sys:String>
+    <sys:String x:Key="fw_select_confirm_desc">Убедитесь что эта информация правильная, в ином случае нажмите 'Отмена' и проверьте настройки.
+
+По возможности, проверьте что оба наушника подключены перед началом. Это не приведет к проблемам во время передачи. В таком случае наушники автоматически отменят передачу и выйдут из режима обновления.
+
+Нажмите 'Продолжить' чтобы начать обновление.</sys:String>
   
-    <!-- Firmware transfer -->
+    <!--Firmware transfer-->
     <sys:String x:Key="fw_upload_header">Встановлюю прошивку...</sys:String>
     <sys:String x:Key="fw_upload_progress_session">Створюю нову сесію...</sys:String>
     <sys:String x:Key="fw_upload_progress_prepare">Підготовлюю нову сесію...</sys:String>
@@ -489,13 +494,15 @@
     <sys:String x:Key="fw_upload_progress_stats_offset">Оброблюю дані зсуву від 0x{0:X6} до 0x{1:X6}</sys:String>
     <sys:String x:Key="fw_upload_progress_stats_segment">Завантажую блок #{0} ({1} байт(ів), контрольна сума 0x{2:X6})</sys:String>
 
-    <!-- Firmware parse errors -->
+    <!--Firmware parse errors-->
     <sys:String x:Key="fw_fail_no_magic">Це некоректний бінарний файл. Невірне чарівне число виявлено у заголовці файлу.</sys:String>
     <sys:String x:Key="fw_fail_size_null">Розмір цього бінарного файлу рівний нулю, а значить файл не може бути використаний для прошивки. Будь ласка, оберіть інший файл.</sys:String>
     <sys:String x:Key="fw_fail_no_segments">Этот бинарный файл не содержит никаких блоков или пуст. Будь ласка, оберіть інший файл.</sys:String>
-    <sys:String x:Key="fw_fail_unknown">Непередбачувана помилка сталася під час розшифрування бінарного файлу. Цей файл прошивки може бути пошкоджений.&#10;&#10;Деталі:</sys:String>
+    <sys:String x:Key="fw_fail_unknown">Непередбачувана помилка сталася під час розшифрування бінарного файлу. Цей файл прошивки може бути пошкоджений.
+
+Деталі:</sys:String>
     
-    <!-- Firmware transfer errors -->
+    <!--Firmware transfer errors-->
     <sys:String x:Key="fw_fail_connection">Втрачений зв'язок з пристроєм. Передача оновлення відмінена.</sys:String>
     <sys:String x:Key="fw_fail_session">Не вдалося відкрити сесію. Пристрій повернув код помилки ({0})</sys:String>
     <sys:String x:Key="fw_fail_copy">Не вдалося передати прошивку. Будь ласка, перепідключиться і спробуйте знову. Пристрій повернув код помилки: {0}</sys:String>
@@ -507,14 +514,14 @@
     <sys:String x:Key="fw_fail_control_timeout">Скінчився час очікування на відповідь контрольним блоком від пристрою</sys:String>
     <sys:String x:Key="fw_fail_copy_timeout">Скінчився час очікування під час процесу передачі</sys:String>
     
-    <!-- Spatial test -->
+    <!--Spatial test-->
     <sys:String x:Key="spatial_header">Просторовий сенсор</sys:String>
-    <!-- Note: Quaternion = 4-dimensional vector -->
+    <!--Note: Quaternion = 4-dimensional vector-->
     <sys:String x:Key="spatial_dump_quaternion">Необроблений вектор кватерниона:</sys:String>
-    <!-- Note: RPY = Roll, pitch, yaw -->
+    <!--Note: RPY = Roll, pitch, yaw-->
     <sys:String x:Key="spatial_dump_rpy">Значення RPY:</sys:String>
 
-    <!-- Header -->
+    <!--Header-->
     <sys:String x:Key="window_minimize">Згорнути</sys:String>
     <sys:String x:Key="window_close">Закрити</sys:String>
 

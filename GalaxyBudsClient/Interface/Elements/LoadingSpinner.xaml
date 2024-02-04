@@ -7,7 +7,7 @@
                 <RotateTransform Angle="0.0" />
             </Image.RenderTransform>
             <Image.Styles>
-                <Style Selector="Image">
+                <Style Selector="Image[IsVisible=True]">
                     <Style.Animations>
                         <Animation IterationCount="Infinite"
                                    Duration="0:0:.5"> 

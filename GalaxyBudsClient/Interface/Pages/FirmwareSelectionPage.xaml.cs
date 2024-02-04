@@ -28,8 +28,8 @@ namespace GalaxyBudsClient.Interface.Pages
         
         public ObservableCollection<FirmwareRemoteBinary>? AvailableFirmwares
         {
-            get => _firmwareBox.Items as ObservableCollection<FirmwareRemoteBinary>;
-            set => _firmwareBox.Items = value;
+            get => _firmwareBox.ItemsSource as ObservableCollection<FirmwareRemoteBinary>;
+            set => _firmwareBox.ItemsSource = value;
         }
 
         public SelectionModel<FirmwareRemoteBinary>? Selection

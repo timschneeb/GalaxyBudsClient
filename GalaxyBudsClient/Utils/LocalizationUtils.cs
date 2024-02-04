@@ -1,13 +1,11 @@
 using System;
-using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 using System.Text;
 using System.Xml;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using Avalonia.Markup.Xaml.MarkupExtensions;
+using Avalonia.Markup.Xaml.Styling;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using Serilog;
@@ -16,12 +14,6 @@ namespace GalaxyBudsClient.Utils
 {
     namespace DynamicLocalization
     {
-        class XamlLoaderShim : AvaloniaXamlLoader.IRuntimeXamlLoader
-        {
-            public object Load(Stream stream, Assembly localAsm, object o, Uri baseUri, bool designMode) 
-                => AvaloniaRuntimeXamlLoader.Load(stream, localAsm, o, baseUri, designMode);
-        }
-        
         public static class Loc
         {
             public static Action</* Title */string,/* Content */string>? ErrorDetected { set; get; }
@@ -87,16 +79,10 @@ namespace GalaxyBudsClient.Utils
                         // Replace the current language dictionary with the new one  
                         if (external)
                         {
-                            if (AvaloniaLocator.Current.GetService<AvaloniaXamlLoader.IRuntimeXamlLoader>() == null)
-                                AvaloniaLocator.CurrentMutable.Bind<AvaloniaXamlLoader.IRuntimeXamlLoader>()
-                                    .ToConstant(new XamlLoaderShim());
-                    
-                            var loader = AvaloniaLocator.Current.GetService<AvaloniaXamlLoader.IRuntimeXamlLoader>();
-      
                             using var stream = new MemoryStream(Encoding.UTF8.GetBytes(File.ReadAllText(path)));
                             try
                             {
-                                if (loader?.Load(stream, null, null, null, false) is ResourceDictionary dict)
+                                if (AvaloniaRuntimeXamlLoader.Load(stream) is ResourceDictionary dict)
                                 {
                                     if (Application.Current != null)
                                         Application.Current.Resources.MergedDictionaries[langDictId] = dict;
@@ -119,7 +105,7 @@ namespace GalaxyBudsClient.Utils
                         {
                             if (Application.Current != null)
                                 Application.Current.Resources.MergedDictionaries[langDictId] =
-                                    new ResourceInclude { Source = new Uri(path) };
+                                    new ResourceInclude((Uri?)null) { Source = new Uri(path) };
                         }
                     }
                 }

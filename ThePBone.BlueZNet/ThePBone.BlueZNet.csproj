@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net6.0;netstandard2.1</TargetFrameworks>
+        <TargetFrameworks>net8.0;netstandard2.1</TargetFrameworks>
         <RootNamespace>ThePBone.BlueZNet</RootNamespace>
         <Configurations>Debug;Release;Debug (Local server);Release - Windows ARM</Configurations>
         <Platforms>AnyCPU</Platforms>
@@ -28,7 +28,7 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <PackageReference Include="Tmds.DBus" Version="0.9.1" />
+        <PackageReference Include="Tmds.DBus" Version="0.16.0" />
     </ItemGroup>
 
 </Project>

@@ -160,9 +160,27 @@ namespace GalaxyBudsClient.Interface.Dialogs
         {
             /* Load strings */
             string modifier = string.Empty;
-            if (BluetoothImpl.Instance.ActiveModel == Models.BudsPlus) modifier = "+";
-            else if (BluetoothImpl.Instance.ActiveModel == Models.BudsLive) modifier = " Live";
-            else if (BluetoothImpl.Instance.ActiveModel == Models.BudsPro) modifier = " Pro";
+
+            switch (BluetoothImpl.Instance.ActiveModel)
+            {
+                case Models.Buds:
+                    break;
+                case Models.BudsPlus:
+                    modifier = "+";
+                    break;
+                case Models.BudsLive:
+                    modifier = " Live";
+                    break;
+                case Models.BudsPro:
+                    modifier = " Pro";
+                    break;
+                case Models.Buds2:
+                    modifier = "2";
+                    break;
+                case Models.Buds2Pro:
+                    modifier = "2 Pro";
+                    break;
+            }
 
             string name = Environment.UserName.Split(' ')[0];
 
@@ -189,8 +207,9 @@ namespace GalaxyBudsClient.Interface.Dialogs
             
             /* Window positioning */
             var workArea = (Screens.Primary ?? Screens.All[0]).WorkingArea;
-            int padding = 20;
-            var scaling = PlatformImpl.DesktopScaling;
+            const int padding = 20;
+            
+            var scaling = PlatformImpl?.GetPropertyValue<double>("DesktopScaling") ?? 1.0;
             switch (SettingsProvider.Instance.Popup.Placement)
             {
                 case PopupPlacement.TopLeft:
@@ -200,7 +219,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
                     Position = new PixelPoint((int) ((workArea.Width / 2f) - (this.Width  * scaling / 2) + workArea.X), workArea.Y + padding);
                     break;
                 case PopupPlacement.TopRight:
-                    Position = new PixelPoint((int) (workArea.Width - this.Width  * scaling + workArea.X - padding), workArea.Y + padding);
+                    Position = new PixelPoint((int) (workArea.Width - this.Width * scaling + workArea.X - padding), workArea.Y + padding);
                     break;
                 case PopupPlacement.BottomLeft:
                     Position = new PixelPoint(workArea.X + padding, (int) (workArea.Height - this.Height * scaling + workArea.Y - padding));

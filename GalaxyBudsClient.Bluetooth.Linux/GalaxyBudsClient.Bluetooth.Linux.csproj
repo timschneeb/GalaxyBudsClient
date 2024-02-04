@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <RootNamespace>GalaxyBudsClient.Bluetooth.Linux</RootNamespace>
         <Configurations>Debug;Release;Debug (Local server);Release - Windows ARM</Configurations>
@@ -31,7 +31,7 @@
     </ItemGroup>
     
     <ItemGroup>
-      <PackageReference Include="Serilog" Version="2.10.0" />
-      <PackageReference Include="Tmds.DBus" Version="0.9.1" />
+      <PackageReference Include="Serilog" Version="3.1.1" />
+      <PackageReference Include="Tmds.DBus" Version="0.16.0" />
     </ItemGroup>
 </Project>

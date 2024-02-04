@@ -9,7 +9,7 @@ namespace GalaxyBudsClient.Message.Encoder
             MemoryStream stream = new MemoryStream();
             BinaryWriter writer = new BinaryWriter(stream);
 
-            writer.Write(lockAll);
+            writer.Write(!lockAll);
             writer.Write(tapOn);
             writer.Write(doubleTapOn);
             writer.Write(tripleTapOn);

@@ -76,7 +76,8 @@ namespace GalaxyBudsClient.Model
             fr,
             [Description("Magyar")]
             hu,
-
+			[Description("Nederlands")]
+			nl,
             [Description("custom_language.xaml")]
             custom
         }
@@ -146,6 +147,8 @@ namespace GalaxyBudsClient.Model
             Buds2 = 5,
             [Description("Galaxy Buds2 Pro (2022)")]
             Buds2Pro = 6,
+            [Description("Galaxy Buds FE (2023)")]
+            BudsFe = 7,
         }
 
         public enum Color

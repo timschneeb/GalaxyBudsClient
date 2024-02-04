@@ -4,14 +4,14 @@
     <x:Double x:Key="SliderHorizontalThumbHeight">15</x:Double>
     <x:Double x:Key="SliderVerticalThumbWidth">15</x:Double>
     <x:Double x:Key="SliderVerticalThumbHeight">15</x:Double>
-  
+    
     <StaticResource x:Key="SliderTrackValueFill" ResourceKey="SliderBrush" />
     <StaticResource x:Key="SliderTrackValueFillPointerOver" ResourceKey="SliderBrush" />
     <StaticResource x:Key="SliderTrackValueFillPressed" ResourceKey="SliderBrush" />
     <StaticResource x:Key="SliderThumbBackground" ResourceKey="SliderThumbBrush" />
     <StaticResource x:Key="SliderThumbBackgroundPointerOver" ResourceKey="SliderThumbHoverBrush" />
     <StaticResource x:Key="SliderThumbBackgroundPressed" ResourceKey="SliderThumbHoverBrush" />
-    <!--<StaticResource x:Key="SliderTrackFill" ResourceKey="SliderTrackBackgroundThemeBrush" />-->
+    <StaticResource x:Key="SliderTrackFill" ResourceKey="SystemControlForegroundBaseLowBrush" />
     <StaticResource x:Key="SliderTrackFillPointerOver" ResourceKey="SystemControlForegroundBaseMediumLowBrush" />
     <StaticResource x:Key="SliderTrackFillPressed" ResourceKey="SystemControlForegroundBaseLowBrush" />
   </Styles.Resources>

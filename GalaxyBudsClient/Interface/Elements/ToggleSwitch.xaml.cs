@@ -112,13 +112,13 @@ namespace GalaxyBudsClient.Interface.Elements
                 if (_isChecked)
                 {
                     _marginAnimation.PlaybackDirection = PlaybackDirection.Normal;
-                    await _marginAnimation.RunAsync(_dot, null);
+                    await _marginAnimation.RunAsync(_dot);
                     _dot.Margin = new Thickness(39, 0, 0, 0);
                 }
                 else
                 {
                     _marginAnimation.PlaybackDirection = PlaybackDirection.Reverse;
-                    await _marginAnimation.RunAsync(_dot, null);
+                    await _marginAnimation.RunAsync(_dot);
                     _dot.Margin = new Thickness(-39, 0, 0, 0);
                 }
             });

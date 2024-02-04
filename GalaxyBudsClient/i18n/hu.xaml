@@ -1,12 +1,10 @@
-﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
- 
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
     <sys:String x:Key="ResourceDictionaryName">Loc-hu</sys:String>
 
-    <!-- :::::::: Source code :::::::: -->
+    <!--:::::::: Source code ::::::::-->
 
-    <!-- General -->
+    <!--General-->
     <sys:String x:Key="okay">Oké</sys:String>
     <sys:String x:Key="left">Bal</sys:String>
     <sys:String x:Key="right">Jobb</sys:String>
@@ -23,22 +21,22 @@
 
     <sys:String x:Key="anc">Aktív zajszűrés</sys:String>
 
-    <!-- SPP Message Parser -->
+    <!--SPP Message Parser-->
     <sys:String x:Key="sppmsg_too_small">A csomag mérete túl kicsi</sys:String>
     <sys:String x:Key="sppmsg_invalid_som">Érvénytelen SOM</sys:String>
-    <!-- Context: SOM = Start of message -->
+    <!--Context: SOM = Start of message-->
     <sys:String x:Key="sppmsg_invalid_eom">Érvénytelen EOM</sys:String>
-    <!-- Context: EOM = End of message -->
+    <!--Context: EOM = End of message-->
     <sys:String x:Key="sppmsg_size_mismatch">A rakomány mérete nem egyezik</sys:String>
     <sys:String x:Key="sppmsg_crc_fail">Az ellenőrző összeg hibás</sys:String>
     <sys:String x:Key="sppmsg_tl">A csomag mérete túl kicsi</sys:String>
 
-    <!-- Dark Mode States -->
+    <!--Dark Mode States-->
     <sys:String x:Key="darkmode_disabled">Kikapcsolás</sys:String>
     <sys:String x:Key="darkmode_enabled">Bekapcsolás</sys:String>
     <sys:String x:Key="darkmode_system">Használja a rendszer beállításait</sys:String>
 
-    <!-- Connection popup -->
+    <!--Connection popup-->
     <sys:String x:Key="connpopup_placement_tl">Bal felső</sys:String>
     <sys:String x:Key="connpopup_placement_tc">Középső felső</sys:String>
     <sys:String x:Key="connpopup_placement_tr">Jobb felső</sys:String>
@@ -46,15 +44,15 @@
     <sys:String x:Key="connpopup_placement_bc">Középső alsó</sys:String>
     <sys:String x:Key="connpopup_placement_br">Jobb alsó</sys:String>
     <sys:String x:Key="connpopup_title">{0} Galaxy Buds-ja{1}</sys:String>
-    <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
+    <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
 
-    <!-- Placement  (Buds+) -->
+    <!--Placement  (Buds+)-->
     <sys:String x:Key="placement_disconnected">Szétkapcsolt</sys:String>
     <sys:String x:Key="placement_wearing">Visel</sys:String>
     <sys:String x:Key="placement_not_wearing">Tétlen</sys:String>
     <sys:String x:Key="placement_in_case">Tok</sys:String>
 
-    <!-- Touch options -->
+    <!--Touch options-->
     <sys:String x:Key="touchoption_voice">Hang asszisztens</sys:String>
     <sys:String x:Key="touchoption_quickambientsound">Gyors környezeti hangzás</sys:String>
     <sys:String x:Key="touchoption_volume">Hangerő</sys:String>
@@ -70,7 +68,7 @@
     <sys:String x:Key="touchoption_custom_trigger_hotkey">Nyomja meg a gyorsbillentyűt...</sys:String>
     <sys:String x:Key="touchoption_custom_external_app">Külső program futtatása...</sys:String>
 
-    <!-- Options menu -->
+    <!--Options menu-->
     <sys:String x:Key="optionsmenu_title">Opciók</sys:String>
     <sys:String x:Key="optionsmenu_settings">Beállítások</sys:String>
     <sys:String x:Key="optionsmenu_refresh">Az irányítópult frissítése</sys:String>
@@ -78,7 +76,7 @@
     <sys:String x:Key="optionsmenu_update">Frissítés keresése</sys:String>
     <sys:String x:Key="optionsmenu_credits">Credits</sys:String>
 
-    <!-- Tray context menu -->
+    <!--Tray context menu-->
     <sys:String x:Key="tray_unlock_touchpad">Érintőpad zárolás feloldása</sys:String>
     <sys:String x:Key="tray_lock_touchpad">Érintőpad zárolása</sys:String>
     <sys:String x:Key="tray_enable_ambient_sound">Környezeti hang engedélyezése</sys:String>
@@ -91,18 +89,18 @@
     <sys:String x:Key="tray_quit">Kilépés</sys:String>
 
 
-    <!-- :::::::: XAML files (static) :::::::: -->
+    <!--:::::::: XAML files (static) ::::::::-->
 
-    <!-- General -->
+    <!--General-->
     <sys:String x:Key="continue_button">Tovább</sys:String>
 
-    <!-- Hotkey Recorder Dialog (Custom action) -->
+    <!--Hotkey Recorder Dialog (Custom action)-->
     <sys:String x:Key="hotrec_title">Gyorsbillentyű felvevő</sys:String>
     <sys:String x:Key="hotrec_content">Adjon meg egy kulcskombinációt (tartsa lenyomva):</sys:String>
     <sys:String x:Key="hotrec_empty">Semmi</sys:String>
     <sys:String x:Key="hotrec_note">Megjegyzés: A felhasználói felület adatvédelmi elkülönítésének (UIPI) köszönhetően, csak az azonos, vagy alacsonyabb magasságú alkalmazások képesek megfelelően fogadni a gyorsbillentyű-parancsokat.</sys:String>
 
-    <!-- Hotkey Action Builder Dialog -->
+    <!--Hotkey Action Builder Dialog-->
     <sys:String x:Key="hotkey_edit_title">Gyorsbillentyű szerkesztő</sys:String>
     <sys:String x:Key="hotkey_edit_invalid">Érvénytelen gyorsbillentyű-választás</sys:String>
     <sys:String x:Key="hotkey_edit_invalid_desc">Kérjük, válasszon legalább egy kulcsot és egy módosítót</sys:String>
@@ -112,10 +110,10 @@
     <sys:String x:Key="hotkey_edit_modifier">Módosítók</sys:String>
     <sys:String x:Key="hotkey_edit_keys">Kulcsok</sys:String>
     <sys:String x:Key="hotkey_edit_action">Művelet</sys:String>
-    <sys:String x:Key="hotkey_edit_preview">Parancsikon előnézete: </sys:String>
+    <sys:String x:Key="hotkey_edit_preview">Parancsikon előnézete:</sys:String>
     <sys:String x:Key="hotkey_edit_header">Válasszon ki egy gyorsbillentyűt a billentyűzeten</sys:String>
     
-    <!-- Hotkey page -->
+    <!--Hotkey page-->
     <sys:String x:Key="hotkey_header">Billentyűzet gyorsbillentyűk</sys:String>
     <sys:String x:Key="hotkey_add">Új gyorsbillentyű hozzárendelése</sys:String>
     <sys:String x:Key="hotkey_empty">Nincsenek hozzárendelve gyorsbillentyűk</sys:String>
@@ -127,7 +125,7 @@
     <sys:String x:Key="hotkey_add_error_duplicate">A kiválasztott billentyűkombinációt ez vagy egy másik alkalmazás már regisztrálta gyorsbillentyűként. Kérjük, válasszon másikat.</sys:String>
     <sys:String x:Key="hotkey_add_error_unknown">Az operációs rendszer hibával válaszolt '{0}'</sys:String>
 
-    <!-- EventDispatcher module -->
+    <!--EventDispatcher module-->
     <sys:String x:Key="event_none">Semmi</sys:String>
     <sys:String x:Key="event_ambient_toggle">Környezeti hang váltása</sys:String>
     <sys:String x:Key="event_ambient_volume_up">Környezeti hangerő növelése</sys:String>
@@ -150,21 +148,16 @@
     <sys:String x:Key="event_display_battery_popup">Az akkumulátor előugró ablak megjelenítése</sys:String>
     <sys:String x:Key="event_connect">Csatlakozás az eszközhöz</sys:String>
     
-    <!-- Welcome page -->
+    <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Üdvözöljük!</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">
-    Halihó! Ez a Galaxy Buds Manager nem hivatalos, és semmilyen módon nem áll kapcsolatban a Samsunggal, kérjük, tartsa ezt szem előtt.&#10;Ez a program sokkal több funkciót biztosít a hivatalos Samsung hordható alkalmazáshoz képest; azonban nem mindegyik funkció érhető el azokon az eszközökön, amelyeken nincs telepítve ez az alkalmazás.
-    </sys:String>
-    <sys:String x:Key="welcome_textblock_p2">
-    Ha érdekli, mi folyik a színfalak mögött, megtekintheti a GitHub tárhelyemet, amely egy kis visszafejtési naplót tartalmaz. Üzenetet is küldhet nekem a GitHubon vagy a Telegram @thepbone címen, ha bármilyen problémába ütközik.
-    </sys:String>
-    <sys:String x:Key="welcome_textblock_p3">
-        Ez az alkalmazás támogatja az összes Galaxy Buds modellt.
-    </sys:String>
+    <sys:String x:Key="welcome_textblock_p1">Halihó! Ez a Galaxy Buds Manager nem hivatalos, és semmilyen módon nem áll kapcsolatban a Samsunggal, kérjük, tartsa ezt szem előtt.
+Ez a program sokkal több funkciót biztosít a hivatalos Samsung hordható alkalmazáshoz képest; azonban nem mindegyik funkció érhető el azokon az eszközökön, amelyeken nincs telepítve ez az alkalmazás.</sys:String>
+    <sys:String x:Key="welcome_textblock_p2">Ha érdekli, mi folyik a színfalak mögött, megtekintheti a GitHub tárhelyemet, amely egy kis visszafejtési naplót tartalmaz. Üzenetet is küldhet nekem a GitHubon vagy a Telegram @thepbone címen, ha bármilyen problémába ütközik.</sys:String>
+    <sys:String x:Key="welcome_textblock_p3">Ez az alkalmazás támogatja az összes Galaxy Buds modellt.</sys:String>
     <sys:String x:Key="welcome_darkmode">Sötét mód</sys:String>
     <sys:String x:Key="welcome_darkmode_content">Már ég a szemed? Inkább használj sötétebb színvilágot! (Újraindítás szükséges)</sys:String>
 
-    <!-- Main page -->
+    <!--Main page-->
     <sys:String x:Key="mainpage_corrupt_data">Sérült adatokat kapott. Újracsatlakozás...</sys:String>
     <sys:String x:Key="mainpage_find_my_earbuds">Fülhallgatóm megkeresése</sys:String>
     <sys:String x:Key="mainpage_touchpad">Érintőpad</sys:String>
@@ -174,14 +167,10 @@
     <sys:String x:Key="mainpage_advanced">További beállítások</sys:String>
     <sys:String x:Key="mainpage_system">Rendszer</sys:String>
 
-    <!-- Update page -->
+    <!--Update page-->
     <sys:String x:Key="updater_header">Manager frissítés elérhető</sys:String>
-    <sys:String x:Key="updater_message_p1">
-    A letöltés teljesen automatizált, és a frissítési varázsló a letöltés befejezése után elindul. Erősen ajánlom, hogy frissítse, hogy megkapja a legújabb hibajavításokat és funkciókat.
-    </sys:String>
-    <sys:String x:Key="updater_message_p2">
-        A változásnaplót az alábbi gombra kattintva tekintheti meg..
-    </sys:String>
+    <sys:String x:Key="updater_message_p1">A letöltés teljesen automatizált, és a frissítési varázsló a letöltés befejezése után elindul. Erősen ajánlom, hogy frissítse, hogy megkapja a legújabb hibajavításokat és funkciókat.</sys:String>
+    <sys:String x:Key="updater_message_p2">A változásnaplót az alábbi gombra kattintva tekintheti meg..</sys:String>
 
     <sys:String x:Key="updater_view_changelog">Tekintse meg a teljes változásnaplót a GitHubon</sys:String>
     <sys:String x:Key="updater_footer_remindmelater">Emlékeztess később</sys:String>
@@ -195,7 +184,7 @@
     <sys:String x:Key="updater_dl_header">Letöltés...</sys:String>
     <sys:String x:Key="updater_dl_manual">Megtekintés a GitHubon</sys:String>
     <sys:String x:Key="updater_dl_fail_title">Sikertelen letöltés</sys:String>
-    <sys:String x:Key="updater_dl_fail">Ok:&#10;</sys:String>
+    <sys:String x:Key="updater_dl_fail">Ok:</sys:String>
     <sys:String x:Key="updater_dl_progress_prepare">Letöltés előkészítése...</sys:String>
     <sys:String x:Key="updater_dl_progress_cancelled">Letöltés megszakítva</sys:String>
     <sys:String x:Key="updater_dl_progress_finished">Letöltés kész. Telepítő indítása...</sys:String>
@@ -203,7 +192,7 @@
     <sys:String x:Key="updater_dl_progress_size">({0}/{1} megabájt)</sys:String>
     <sys:String x:Key="updater_dl_note">Amikor a letöltés befejeződik, ez az alkalmazás automatikusan bezárja magát, és elindít egy külön frissítés telepítőt. Eltarthat néhány másodpercig, amíg megjelenik.</sys:String>
 
-    <!-- Device selection page (setup) -->
+    <!--Device selection page (setup)-->
     <sys:String x:Key="devsel_header">Válassza ki Galaxy Buds készülékét</sys:String>
     <sys:String x:Key="devsel_refresh">A párosított eszközök frissítése</sys:String>
     <sys:String x:Key="devsel_device_name">Eszköz neve</sys:String>
@@ -218,7 +207,7 @@
     <sys:String x:Key="devsel_winrt_title">Használjon alternatív Bluetooth-háttérrendszert</sys:String>
     <sys:String x:Key="devsel_winrt">Sokkal jobb stabilitás, de előfordulhat, hogy nem működik minden számítógépen bizonyos Bluetooth-adapterekkel</sys:String>
 
-    <!-- Unsupported feature page -->
+    <!--Unsupported feature page-->
     <sys:String x:Key="unsupported_feature_current_fwver">Jelenlegi Firmware verzió:</sys:String>
     <sys:String x:Key="unsupported_feature_required_fwver">Szükséges Firmware verzió:</sys:String>
 
@@ -230,7 +219,7 @@
     <sys:String x:Key="unsupported_feature_description_p2">Kérjük, frissítsen a legújabb firmware-re a hivatalos Windows vagy Android frissítő segítségével.</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">Ha a Windows frissítőt használja, feltétlenül zárja be ezt az alkalmazást. Egyszerre csak egy alkalmazás tud beszélni a Buds-szal.</sys:String>
 
-    <!-- Touchpad gestures -->
+    <!--Touchpad gestures-->
     <sys:String x:Key="touchpad_gesture_header">Érintőpad kézmozdulatainak engedélyezése</sys:String>
     <sys:String x:Key="touchpad_gesture_single">Egyetlen érintés</sys:String>
     <sys:String x:Key="touchpad_gesture_single_desc">Zeneszám lejátszása vagy szüneteltetése</sys:String>
@@ -241,7 +230,7 @@
     <sys:String x:Key="touchpad_gesture_hold">Érintse meg és tartsa lenyomva</sys:String>
     <sys:String x:Key="touchpad_gesture_hold_desc">Egyéni művelet végrehajtása</sys:String>
     
-    <!-- Touchpad page -->
+    <!--Touchpad page-->
     <sys:String x:Key="touchpad_header">Érintőpad</sys:String>
     <sys:String x:Key="touchpad_lock">Érintőpad zárolása</sys:String>
     <sys:String x:Key="touchpad_left_action">Bal művelet</sys:String>
@@ -257,18 +246,17 @@
     <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambient sound &lt;-&gt; Ki</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Váltás a módok között (ANC, Ambient, Ki)</sys:String>
     
-    <!-- Custom touchpad action page -->
+    <!--Custom touchpad action page-->
     <sys:String x:Key="cact_header">Saját művelet</sys:String>
     <sys:String x:Key="cact_external_app_dialog_title">Válassza ki a végrehajtható fájlt...</sys:String>
     <sys:String x:Key="cact_action">Saját művelet</sys:String>
     <sys:String x:Key="cact_notice">Értesítés</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Az egyéni hosszan lenyomott műveletek csak akkor érhetők el, ha ez az alkalmazás aktív a háttérben.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">Nincs hatása Androidra vagy más eszközökre.</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">
-    A funkció következetes támogatása érdekében ez az alkalmazás automatikusan elindul a rendszerindításkor, és a háttérben fut.&#10;Ezt a viselkedést a beállítások részben letilthatja.
-    </sys:String>
+    <sys:String x:Key="cact_notice_content_p3">A funkció következetes támogatása érdekében ez az alkalmazás automatikusan elindul a rendszerindításkor, és a háttérben fut.
+Ezt a viselkedést a beállítások részben letilthatja.</sys:String>
 
-    <!-- System/Self-Test -->
+    <!--System/Self-Test-->
     <sys:String x:Key="system_overview_header">Rendszer</sys:String>
     <sys:String x:Key="system_header">Rendszer Információ</sys:String>
     <sys:String x:Key="system_selftest">Futtasson öntesztet</sys:String>
@@ -301,9 +289,9 @@
     <sys:String x:Key="system_thermo">Termisztor Mérés</sys:String>
     <sys:String x:Key="system_hall">Csarnok mérése</sys:String>
     <sys:String x:Key="system_accel">Gyorsulásmérő állapota</sys:String>
-    <!-- Note: system_accel only used on the self-test page -->
+    <!--Note: system_accel only used on the self-test page-->
     <sys:String x:Key="system_adc_soc">ADC SoC</sys:String>
-    <!-- Context: SoC = State of charge (battery percentage) -->
+    <!--Context: SoC = State of charge (battery percentage)-->
     <sys:String x:Key="system_adc_voltage">ADC Feszültség</sys:String>
     <sys:String x:Key="system_adc_current">ADC Jelenlegi</sys:String>
 
@@ -320,16 +308,17 @@
     <sys:String x:Key="coredump_dl_trace_progress">Nyomdír letöltése... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">Core dump letöltése... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bájtok)</sys:String>
-    <sys:String x:Key="coredump_dl_note">
-    A hangfolyam átmenetileg szünetel a letöltés alatt. A fülhallgató le lesz választva, amint az átvitel befejeződött, manuálisan csatlakoztassa újra.&#10;Ha végzett, a rendszer felkéri, hogy válasszon ki egy könyvtárat az összes gyűjtött adat számára.&#10;&#10;Ha az átvitel elakad. vagy az eszköz idő előtt lekapcsolódott, újra kell indítani a letöltést. Ez a funkció jelenleg nagyon instabil.
-    </sys:String>
+    <sys:String x:Key="coredump_dl_note">A hangfolyam átmenetileg szünetel a letöltés alatt. A fülhallgató le lesz választva, amint az átvitel befejeződött, manuálisan csatlakoztassa újra.
+Ha végzett, a rendszer felkéri, hogy válasszon ki egy könyvtárat az összes gyűjtött adat számára.
+
+Ha az átvitel elakad. vagy az eszköz idő előtt lekapcsolódott, újra kell indítani a letöltést. Ez a funkció jelenleg nagyon instabil.</sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">Nem sikerült menteni a kiírást</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">A kiíratást nem lehet átmásolni az ideiglenes helyről. Ok: {0}</sys:String>
     <sys:String x:Key="coredump_dl_save_success_title">A szemétlerakatok sikeresen elmentve</sys:String>
     <sys:String x:Key="coredump_dl_save_success">{0} dump(ok) címére írták '{1}'</sys:String>
     <sys:String x:Key="coredump_dl_save_dialog_title">Válasszon ki egy letöltési könyvtárat...</sys:String>
     
-    <!-- Settings -->
+    <!--Settings-->
     <sys:String x:Key="settings_header">Beállítások</sys:String>
 
     <sys:String x:Key="settings_darkmode">Sötét mód</sys:String>
@@ -348,7 +337,7 @@
     <sys:String x:Key="settings_devmode">Fejlesztői beállítások</sys:String>
     <sys:String x:Key="settings_crowdsourcing">Crowdsourcing</sys:String>
 
-    <!-- Settings >>> Connection popup -->
+    <!--Settings >>> Connection popup-->
     <sys:String x:Key="settings_cpopup_header">Kapcsolat előugró ablak</sys:String>
     <sys:String x:Key="settings_cpopup_enable">Felugró ablak engedélyezése csatlakozáskor</sys:String>
     <sys:String x:Key="settings_cpopup_enable_description">Ha a Buds csatlakoztatva van, jelenítsen meg egy kis értesítési előugró ablakot, amely tájékoztat az akkumulátor töltöttségi szintjéről</sys:String>
@@ -364,31 +353,31 @@
     <sys:String x:Key="settings_cpopup_wear_state">Ha szükséges, használjon más színt</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state_description">Szürke fülhallgató ikon látható, ha a fülhallgató a tokban van</sys:String>
     
-    <!-- Settings >>> Crowdsourcing settings -->
+    <!--Settings >>> Crowdsourcing settings-->
     <sys:String x:Key="settings_crowd_header">Közös beszerzési hozzájárulás</sys:String>
     <sys:String x:Key="settings_crowd_allow">Közös beszerzési hozzájárulás engedélyezése</sys:String>
     <sys:String x:Key="settings_crowd_allow_description">Gyűjtsön információkat a Samsung szabadalmaztatott Bluetooth-protokoll-struktúrájáról és igény szerint adatokat. Ez lehetővé teszi számomra, hogy az összes elérhető Galaxy Buds modellt sokkal könnyebben támogathassam anélkül, hogy birtokolnám azokat.</sys:String>
     <sys:String x:Key="settings_crowd_crashreport">Alkalmazás-összeomlási jelentések engedélyezése</sys:String>
     <sys:String x:Key="settings_crowd_crashreport_description">Alkalmazás-összeomlási jelentések automatikus küldése összeomlás vagy végzetes hiba esetén a Sentry használatával. Ez segít gyorsabban reagálni a problémás és zavaró alkalmazáshibákra.</sys:String>
 
-    <!-- Factory reset -->
+    <!--Factory reset-->
     <sys:String x:Key="factory_header">Gyári beállítások visszaállítása</sys:String>
     <sys:String x:Key="factory_confirm">Erősítse meg a gyári beállítások visszaállítását</sys:String>
     <sys:String x:Key="factory_error_title">A gyári beállítások visszaállítása nem sikerült</sys:String>
-    <sys:String x:Key="factory_error">
-    Az eszköz hibakódot adott vissza: {0}&#10;Győződjön meg arról, hogy mindkét fülhallgató be van kapcsolva és elérhető.&#10;Lehet, hogy manuálisan kell újra csatlakoztatnia a fülhallgatót.&#10;
-    </sys:String>
+    <sys:String x:Key="factory_error">Az eszköz hibakódot adott vissza: {0}
+Győződjön meg arról, hogy mindkét fülhallgató be van kapcsolva és elérhető.
+Lehet, hogy manuálisan kell újra csatlakoztatnia a fülhallgatót.</sys:String>
     <sys:String x:Key="factory_text_p1">Biztosan visszaállítja a fülhallgatót?</sys:String>
     <sys:String x:Key="factory_text_p2">A gyári beállítások visszaállítása után manuálisan kell újra csatlakoztatnia a fülhallgatót a számítógéphez.</sys:String>
     <sys:String x:Key="factory_text_p3">Mielőtt folytatná, győződjön meg arról, hogy mindkét fülhallgató be van kapcsolva!</sys:String>
 
-    <!-- Find my Gear -->
+    <!--Find my Gear-->
     <sys:String x:Key="fmg_warning_both">Kérjük, vegye le mindkét füldugót a füléből.</sys:String>
     <sys:String x:Key="fmg_warning_left">Kérjük, vegye ki a bal füldugót a füléből.</sys:String>
     <sys:String x:Key="fmg_warning_right">Kérjük, vegye ki a jobb füldugót a füléből.</sys:String>
     <sys:String x:Key="fmg_header">Fülhallgatóm megkeresése</sys:String>
 
-    <!-- Equalizer -->
+    <!--Equalizer-->
     <sys:String x:Key="eq_header">Hangszínszabályozó</sys:String>
     <sys:String x:Key="eq_enable">Engedélyezze a hangszínszabályozót</sys:String>
     <sys:String x:Key="eq_preset">Előre beállított</sys:String>
@@ -403,7 +392,7 @@
     <sys:String x:Key="eq_clear">Tiszta</sys:String>
     <sys:String x:Key="eq_treble">Tripla Boost</sys:String>
 
-    <!-- Noise control -->
+    <!--Noise control-->
     <sys:String x:Key="nc_header">Zajszabályozás</sys:String>
     <sys:String x:Key="nc_anc_level">Magas érzékenység</sys:String>
     <sys:String x:Key="nc_anc_level_description">Erősebb zajszűrő hatás</sys:String>
@@ -414,7 +403,7 @@
     <sys:String x:Key="nc_voicedetect_timeout">A beszélgetés időtúllépése</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} másodpercig</sys:String>
     
-    <!-- Noise control >>> Ambient sound -->
+    <!--Noise control >>> Ambient sound-->
     <sys:String x:Key="nc_as_header">Környezeti hangbeállítások</sys:String>
     <sys:String x:Key="nc_as_custom">Speciális testreszabás</sys:String>
     <sys:String x:Key="nc_as_custom_volume_l">Környezeti hangerő (bal)</sys:String>
@@ -425,7 +414,7 @@
     <sys:String x:Key="nc_as_custom_tone_neutral">Semleges</sys:String>
     <sys:String x:Key="nc_as_custom_vol_normal">Normal</sys:String>
     
-    <!-- Ambient sound -->
+    <!--Ambient sound-->
     <sys:String x:Key="as_header">Környezeti hang</sys:String>
     <sys:String x:Key="as_enable">Környezeti hang engedélyezése</sys:String>
     <sys:String x:Key="as_volume">Környezeti hangerő</sys:String>
@@ -438,7 +427,7 @@
     <sys:String x:Key="as_scale_high">Magas</sys:String>
     <sys:String x:Key="as_scale_extraloud">Extra hangos</sys:String>
     
-    <!-- Advanced page -->
+    <!--Advanced page-->
     <sys:String x:Key="adv_header">További beállítások</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} vagy későbbi</sys:String>
     <sys:String x:Key="adv_seamless">Zökkenőmentes fülhallgató csatlakozás</sys:String>
@@ -456,16 +445,18 @@
     <sys:String x:Key="adv_bixby_remap">A Bixby ébresztésének újratervezése</sys:String>
     <sys:String x:Key="adv_bixby_remap_desc">Határozza meg, mi történjen, amikor azt mondja, hogy 'Hey Bixby!'</sys:String>
 
-    <!-- Remap bixby wakeup -->
+    <!--Remap bixby wakeup-->
     <sys:String x:Key="bixby_remap_header">A Bixby ébresztésének újratervezése</sys:String>
     <sys:String x:Key="bixby_remap_enable">Bixby ébresztés engedélyezése</sys:String>
     <sys:String x:Key="bixby_remap_enable_desc">Indítsa el a Bixby alkalmazást Samsung telefonján, vagy hajtson végre egyéni műveletet ezen a számítógépen, amikor felébred</sys:String>
     <sys:String x:Key="bixby_remap_lang">Bixby ébresztő nyelv</sys:String>
     <sys:String x:Key="bixby_remap_action">Egyéni ébresztési művelet</sys:String>
-    <sys:String x:Key="bixby_remap_note">Mondd: 'Hey Bixby!'. Az aktiválási kifejezés bizonyos nyelvi beállításoknál eltérhet.&#10;&#10;Az újratérképezési konfiguráció csak ezen az eszközön aktív. Ha a fülhallgatót Samsung-eszközhöz csatlakoztatja, a hangébresztés a szokásos módon aktiválja a Bixbyt. Ezen az eszközön és a nem Samsung telefonokon kívül ez a funkció nem indít semmilyen műveletet.</sys:String>
+    <sys:String x:Key="bixby_remap_note">Mondd: 'Hey Bixby!'. Az aktiválási kifejezés bizonyos nyelvi beállításoknál eltérhet.
+
+Az újratérképezési konfiguráció csak ezen az eszközön aktív. Ha a fülhallgatót Samsung-eszközhöz csatlakoztatja, a hangébresztés a szokásos módon aktiválja a Bixbyt. Ezen az eszközön és a nem Samsung telefonokon kívül ez a funkció nem indít semmilyen műveletet.</sys:String>
 
     
-    <!-- Credits -->
+    <!--Credits-->
     <sys:String x:Key="credits_header">Kreditek</sys:String>
     <sys:String x:Key="credits_developer">Fejlesztő</sys:String>
     <sys:String x:Key="credits_license">Engedély</sys:String>
@@ -474,32 +465,38 @@
     <sys:String x:Key="credits_translator">Fordítók</sys:String>
     <sys:String x:Key="credits_sponsor">Szponzorálja ezt a projektet</sys:String>
 
-    <!-- Connection lost page -->
+    <!--Connection lost page-->
     <sys:String x:Key="connlost_header">Nem lehet kapcsolatot létesíteni</sys:String>
     <sys:String x:Key="connlost_description_p1">Nem lehet kapcsolatot létesíteni a fülhallgatóval.</sys:String>
-    <sys:String x:Key="connlost_description_p2">
-        Kérjük, ellenőrizze Bluetooth-beállításait, és győződjön meg arról, hogy a fülhallgató be van kapcsolva, és párosítva van a számítógéppel.&#10;Ha szükséges, új párat is regisztrálhat. Ebben az esetben válassza az "Opciók > Eszköz regisztrációjának törlése" lehetőséget..
-    </sys:String>
+    <sys:String x:Key="connlost_description_p2">Kérjük, ellenőrizze Bluetooth-beállításait, és győződjön meg arról, hogy a fülhallgató be van kapcsolva, és párosítva van a számítógéppel.
+Ha szükséges, új párat is regisztrálhat. Ebben az esetben válassza az "Opciók &gt; Eszköz regisztrációjának törlése" lehetőséget..</sys:String>
     <sys:String x:Key="connlost_description_p3">Additional information:</sys:String>
     <sys:String x:Key="connlost_noinfo">Nem sikerült összegyűjteni a hibainformációkat</sys:String>
     <sys:String x:Key="connlost_disconnected">Az eszköz leválasztva</sys:String>
     <sys:String x:Key="connlost_connect">Csatlakozás</sys:String>
     <sys:String x:Key="connlost_connecting">Csatlakozás...</sys:String>
     
-    <!-- Firmware update disclaimer -->
+    <!--Firmware update disclaimer-->
     <sys:String x:Key="fw_disclaimer">Jogi nyilatkozat</sys:String>
-    <sys:String x:Key="fw_disclaimer_desc">Ez a firmware-frissítő eszköz a Samsung hivatalos Android-alkalmazásában található hivatalos frissítő pontos mása. Alaposan teszteltem ezt a megvalósítást különféle körülmények között (normál működés, kapcsolat megszakadása, szándékosan sérült Bluetooth-csomagok stb.), anélkül, hogy bármiféle problémát tapasztaltam volna. Mindazonáltal nem vállalok felelősséget, ha bármi elromlik, mivel a firmware-frissítések módosítják a rendszer létfontosságú összetevőit, és mindig óvatosan kell kezelni őket.&#10;&#10;LERÉSÍTÉS: A régebbi firmware-verziókra való visszaminősítés ugyan lehetséges, de én soha nem problémákba ütközött vele, váratlan problémákat okozhat, és csak szükség esetén szabad megtenni. A gyári beállítások visszaállítása a leminősítés után javasolt, de általában nem szükséges. &#10;EGYEDI VILLOGÁS: A merevlemezről firmware-fájlokat is betölthet. NE villogtasson MÁS modellekhez tervezett firmware bináris fájlokat az eszközére.&#10;&#10;Ez az alkalmazás a GPLv3 licenc alatt áll. Használatával Ön elfogadja a licencet és a felelősség korlátozását. Nyomja meg a „Tovább” gombot az elfogadáshoz.</sys:String>
+    <sys:String x:Key="fw_disclaimer_desc">Ez a firmware-frissítő eszköz a Samsung hivatalos Android-alkalmazásában található hivatalos frissítő pontos mása. Alaposan teszteltem ezt a megvalósítást különféle körülmények között (normál működés, kapcsolat megszakadása, szándékosan sérült Bluetooth-csomagok stb.), anélkül, hogy bármiféle problémát tapasztaltam volna. Mindazonáltal nem vállalok felelősséget, ha bármi elromlik, mivel a firmware-frissítések módosítják a rendszer létfontosságú összetevőit, és mindig óvatosan kell kezelni őket.
+
+LERÉSÍTÉS: A régebbi firmware-verziókra való visszaminősítés ugyan lehetséges, de én soha nem problémákba ütközött vele, váratlan problémákat okozhat, és csak szükség esetén szabad megtenni. A gyári beállítások visszaállítása a leminősítés után javasolt, de általában nem szükséges. 
+EGYEDI VILLOGÁS: A merevlemezről firmware-fájlokat is betölthet. NE villogtasson MÁS modellekhez tervezett firmware bináris fájlokat az eszközére.
+
+Ez az alkalmazás a GPLv3 licenc alatt áll. Használatával Ön elfogadja a licencet és a felelősség korlátozását. Nyomja meg a „Tovább” gombot az elfogadáshoz.</sys:String>
     
-    <!-- Firmware selection -->
+    <!--Firmware selection-->
     <sys:String x:Key="fw_select_header">Firmware frissítések</sys:String>
-    <sys:String x:Key="fw_select_instructions">Kérjük, válasszon egy firmware bináris fájlt a letöltéshez és telepítéshez. Alternatív megoldásként kiválaszthat egy firmware bináris fájlt a merevlemezről a 'Fejlett > Válassza ki a képet a lemezről' menüben.</sys:String>
+    <sys:String x:Key="fw_select_instructions">Kérjük, válasszon egy firmware bináris fájlt a letöltéshez és telepítéshez. Alternatív megoldásként kiválaszthat egy firmware bináris fájlt a merevlemezről a 'Fejlett &gt; Válassza ki a képet a lemezről' menüben.</sys:String>
     <sys:String x:Key="fw_select_no_results">Jelenleg nem érhetők el firmware-frissítések. Kérjük, próbálja újra egy későbbi időpontban..</sys:String>
     <sys:String x:Key="fw_select_downgrade">Engedélyezze a firmware leminősítését</sys:String>
     <sys:String x:Key="fw_select_downgrade_desc">A verzióellenőrzés letiltása és a régebbi firmware megjelenítése a listában (váratlan problémákat okozhat; csak haladó felhasználók)</sys:String>
     <sys:String x:Key="fw_select_advanced">Fejlett</sys:String>
     <sys:String x:Key="fw_select_install">Telepítse a firmware-t</sys:String>
     <sys:String x:Key="fw_select_from_disk">Válassza ki a képet a lemezről</sys:String>
-    <sys:String x:Key="fw_select_external_note">NE villogtasson MÁS modellekhez készült firmware bináris fájlokat az eszközére. Ha egy Buds Pro firmware-t egy pár Buds Plus-ra villogtat, nem old fel semmilyen új funkciót, hanem végleg tönkreteszi az eszközt.&#10;&#10;Nyomja meg a „Folytatás” gombot a firmware bináris kiválasztásához.</sys:String>
+    <sys:String x:Key="fw_select_external_note">NE villogtasson MÁS modellekhez készült firmware bináris fájlokat az eszközére. Ha egy Buds Pro firmware-t egy pár Buds Plus-ra villogtat, nem old fel semmilyen új funkciót, hanem végleg tönkreteszi az eszközt.
+
+Nyomja meg a „Folytatás” gombot a firmware bináris kiválasztásához.</sys:String>
     <sys:String x:Key="fw_select_unsupported_selection">Érvénytelen kijelölés. Kérjük, válasszon egy kompatibilis elemet a listából.</sys:String>
     <sys:String x:Key="fw_select_downloading">Letöltés...</sys:String>
     <sys:String x:Key="fw_select_net_error">Nem sikerült kommunikálni a szerverrel. Jelenleg nem lehet letölteni a firmware-t.</sys:String>
@@ -508,9 +505,13 @@
     <sys:String x:Key="fw_select_unknown_build">Ismeretlen build név</sys:String>
     <sys:String x:Key="fw_select_verify_fail">Nem sikerült ellenőrizni a firmware-t</sys:String>
     <sys:String x:Key="fw_select_confirm">Arra készül, hogy a(z) '{0}' jelet felvillantja '{1}' eszközére</sys:String>
-    <sys:String x:Key="fw_select_confirm_desc">Győződjön meg arról, hogy ez az információ helyes, ellenkező esetben nyomja meg a „Mégse” gombot, és ellenőrizze még egyszer a beállítást.&#10;&#10;Ha lehetséges, a kezdés előtt győződjön meg arról, hogy mindkét fülhallgató csatlakoztatva van. Nem okoz problémát, ha a kapcsolat megszakad a frissítés átvitele közben. Ilyen esetben a fülhallgatók automatikusan megszakítják az átviteli folyamatot, és kilépnek a firmware-frissítési módból.&#10;&#10;Nyomja meg a „Folytatás” gombot a frissítés elindításához.</sys:String>
+    <sys:String x:Key="fw_select_confirm_desc">Győződjön meg arról, hogy ez az információ helyes, ellenkező esetben nyomja meg a „Mégse” gombot, és ellenőrizze még egyszer a beállítást.
+
+Ha lehetséges, a kezdés előtt győződjön meg arról, hogy mindkét fülhallgató csatlakoztatva van. Nem okoz problémát, ha a kapcsolat megszakad a frissítés átvitele közben. Ilyen esetben a fülhallgatók automatikusan megszakítják az átviteli folyamatot, és kilépnek a firmware-frissítési módból.
+
+Nyomja meg a „Folytatás” gombot a frissítés elindításához.</sys:String>
   
-    <!-- Firmware transfer -->
+    <!--Firmware transfer-->
     <sys:String x:Key="fw_upload_header">Firmware telepítése...</sys:String>
     <sys:String x:Key="fw_upload_progress_session">Új munkamenet létrehozása...</sys:String>
     <sys:String x:Key="fw_upload_progress_prepare">Feltöltés előkészítése...</sys:String>
@@ -525,13 +526,15 @@
     <sys:String x:Key="fw_upload_progress_stats_offset">Adatok feldolgozása 0x{0:X6} eltolásról 0x{1:X6} értékre</sys:String>
     <sys:String x:Key="fw_upload_progress_stats_segment">#{0}. szegmens feltöltése ({1} bájt, ellenőrző összeg 0x{2:X6})</sys:String>
 
-    <!-- Firmware parse errors -->
+    <!--Firmware parse errors-->
     <sys:String x:Key="fw_fail_no_magic">Ez nem érvényes bináris firmware. Érvénytelen mágikus érték található a fájl fejlécében.</sys:String>
     <sys:String x:Key="fw_fail_size_null">Ennek a bináris firmware-nek a mérete nullára van állítva, és nem használható villogásra. Kérjük, válasszon másikat.</sys:String>
     <sys:String x:Key="fw_fail_no_segments">Ez a firmware bináris fájl nem tartalmaz bináris szegmenst, és üres. Kérjük, válasszon másikat.</sys:String>
-    <sys:String x:Key="fw_fail_unknown">Váratlan hiba történt a firmware bináris dekódolása közben. Lehetséges, hogy ez a firmware-archívum sérült.&#10;&#10;Részletek:</sys:String>
+    <sys:String x:Key="fw_fail_unknown">Váratlan hiba történt a firmware bináris dekódolása közben. Lehetséges, hogy ez a firmware-archívum sérült.
+
+Részletek:</sys:String>
     
-    <!-- Firmware transfer errors -->
+    <!--Firmware transfer errors-->
     <sys:String x:Key="fw_fail_connection">Megszakadt a kapcsolat az eszközzel. A firmware átvitel megszakadt.</sys:String>
     <sys:String x:Key="fw_fail_session">Nem sikerült megnyitni az új munkamenetet. A készülék hibakódot adott ki ({0})</sys:String>
     <sys:String x:Key="fw_fail_copy">Nem sikerült a firmware bináris másolása. Kérjük, csatlakozzon újra, és próbálja újra. Az eszköz által visszaadott hibakód: {0}</sys:String>
@@ -543,25 +546,21 @@
     <sys:String x:Key="fw_fail_control_timeout">Időtúllépés történt, miközben arra vár, hogy az eszköz visszaadja a vezérlőblokkot</sys:String>
     <sys:String x:Key="fw_fail_copy_timeout">Időtúllépés történt, miközben az átviteli folyamat befejezésére vár</sys:String>
     
-    <!-- Spatial test -->
+    <!--Spatial test-->
     <sys:String x:Key="spatial_header">Térérzékelő</sys:String>
-    <!-- Note: Quaternion = 4-dimensional vector -->
+    <!--Note: Quaternion = 4-dimensional vector-->
     <sys:String x:Key="spatial_dump_quaternion">Nyers kvaternióvektor:</sys:String>
-    <!-- Note: RPY = Roll, pitch, yaw -->
+    <!--Note: RPY = Roll, pitch, yaw-->
     <sys:String x:Key="spatial_dump_rpy">RPY értékek:</sys:String>
     
-    <!-- Header -->
+    <!--Header-->
     <sys:String x:Key="window_minimize">Kis méret</sys:String>
     <sys:String x:Key="window_close">Bezárás</sys:String>
 
-    <!-- Buds app detected page -->
+    <!--Buds app detected page-->
     <sys:String x:Key="budsapp_header">Bluetooth kompatibilitási információ</sys:String>
     <sys:String x:Key="budsapp_text_p1">Az alkalmazás mellé telepítve van a hivatalos Galaxy Buds alkalmazás a Windows 10 rendszerhez.</sys:String>
-    <sys:String x:Key="budsapp_text_p2">
-    Ha nyitva van és csatlakoztatva van, a GalaxyBudsClient problémába ütközhet a fülhallgatóhoz való csatlakozással. A folytatás előtt feltétlenül zárja be. Hasonlóképpen, a hivatalos Galaxy Buds alkalmazás nem tud csatlakozni a fülhallgatóhoz, amíg a Galaxy Buds Manager aktív, és megnyitotta a kapcsolatot a fülhallgatókkal.    
-    </sys:String>
-    <sys:String x:Key="budsapp_text_p3">
-        Ne feledje, hogy egyszerre csak egy alkalmazás képes kommunikálni a Galaxy Buds készülékkel.
-    </sys:String>
+    <sys:String x:Key="budsapp_text_p2">Ha nyitva van és csatlakoztatva van, a GalaxyBudsClient problémába ütközhet a fülhallgatóhoz való csatlakozással. A folytatás előtt feltétlenül zárja be. Hasonlóképpen, a hivatalos Galaxy Buds alkalmazás nem tud csatlakozni a fülhallgatóhoz, amíg a Galaxy Buds Manager aktív, és megnyitotta a kapcsolatot a fülhallgatókkal.</sys:String>
+    <sys:String x:Key="budsapp_text_p3">Ne feledje, hogy egyszerre csak egy alkalmazás képes kommunikálni a Galaxy Buds készülékkel.</sys:String>
 
 </ResourceDictionary>

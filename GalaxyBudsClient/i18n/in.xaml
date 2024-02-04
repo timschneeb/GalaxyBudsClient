@@ -1,12 +1,10 @@
-﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
- 
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
     <sys:String x:Key="ResourceDictionaryName">Loc-in</sys:String>
 
-    <!-- :::::::: Source code :::::::: -->
+    <!--:::::::: Source code ::::::::-->
 
-    <!-- General -->
+    <!--General-->
     <sys:String x:Key="left">Kiri</sys:String>
     <sys:String x:Key="right">Kanan</sys:String>
     <sys:String x:Key="case">Case</sys:String>
@@ -18,21 +16,21 @@
 
     <sys:String x:Key="anc">Peredam Suara</sys:String>
 
-    <!-- SPP Message Parser -->
+    <!--SPP Message Parser-->
     <sys:String x:Key="sppmsg_too_small">Ukuran paket terlalu kecil</sys:String>
     <sys:String x:Key="sppmsg_invalid_som">SOM tidak valid</sys:String>
-    <!-- Context: SOM = Start of message -->
+    <!--Context: SOM = Start of message-->
     <sys:String x:Key="sppmsg_invalid_eom">EOM tidak valid</sys:String>
-    <!-- Context: EOM = End of message -->
+    <!--Context: EOM = End of message-->
     <sys:String x:Key="sppmsg_size_mismatch">Ukuran paket tidak cocok</sys:String>
     <sys:String x:Key="sppmsg_tl">Ukuran paket terlalu kecil</sys:String>
 
-    <!-- Dark Mode States -->
+    <!--Dark Mode States-->
     <sys:String x:Key="darkmode_disabled">Mati</sys:String>
     <sys:String x:Key="darkmode_enabled">Nyala</sys:String>
     <sys:String x:Key="darkmode_system">Gunakan aturan pabrik</sys:String>
 
-    <!-- Connection popup -->
+    <!--Connection popup-->
     <sys:String x:Key="connpopup_placement_tl">Kiri atas</sys:String>
     <sys:String x:Key="connpopup_placement_tc">Tengah atas</sys:String>
     <sys:String x:Key="connpopup_placement_tr">Kanan atas</sys:String>
@@ -40,15 +38,15 @@
     <sys:String x:Key="connpopup_placement_bc">Tengah bawah</sys:String>
     <sys:String x:Key="connpopup_placement_br">Kanan bawah</sys:String>
     <sys:String x:Key="connpopup_title">{0}'s Galaxy Buds{1}</sys:String>
-    <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
+    <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
 
-    <!-- Placement  (Buds+) -->
+    <!--Placement  (Buds+)-->
     <sys:String x:Key="placement_disconnected">Tidak terhubung</sys:String>
     <sys:String x:Key="placement_wearing">Dipakai</sys:String>
     <sys:String x:Key="placement_not_wearing">Tidak terpakai</sys:String>
     <sys:String x:Key="placement_in_case">Kotak</sys:String>
 
-    <!-- Touch options -->
+    <!--Touch options-->
     <sys:String x:Key="touchoption_voice">Asisten suara</sys:String>
     <sys:String x:Key="touchoption_quickambientsound">Suara sekitar</sys:String>
     <sys:String x:Key="touchoption_volume">Volume</sys:String>
@@ -68,7 +66,7 @@
     <sys:String x:Key="touchoption_custom_trigger_hotkey">Tekan Hotkey...</sys:String>
     <sys:String x:Key="touchoption_custom_external_app">Jalankan Program External...</sys:String>
 
-    <!-- Options menu -->
+    <!--Options menu-->
     <sys:String x:Key="optionsmenu_title">Opsi</sys:String>
     <sys:String x:Key="optionsmenu_settings">Pengaturan</sys:String>
     <sys:String x:Key="optionsmenu_refresh">Muat ulang</sys:String>
@@ -76,7 +74,7 @@
     <sys:String x:Key="optionsmenu_update">Periksa pembaruan</sys:String>
     <sys:String x:Key="optionsmenu_credits">Kredit</sys:String>
 
-    <!-- Tray context menu -->
+    <!--Tray context menu-->
     <sys:String x:Key="tray_unlock_touchpad">Buka Touchpad</sys:String>
     <sys:String x:Key="tray_lock_touchpad">Kunci Touchpad</sys:String>
     <sys:String x:Key="tray_enable_ambient_sound">Aktifkan Pendengaran Suara Sekitar</sys:String>
@@ -86,32 +84,26 @@
     <sys:String x:Key="tray_quit">Keluar</sys:String>
 
 
-    <!-- :::::::: XAML files (static) :::::::: -->
+    <!--:::::::: XAML files (static) ::::::::-->
 
-    <!-- General -->
+    <!--General-->
     <sys:String x:Key="continue_button">Lanjut</sys:String>
 
-    <!-- Hotkey Recorder Dialog (Custom action) -->
+    <!--Hotkey Recorder Dialog (Custom action)-->
     <sys:String x:Key="hotrec_title">Perekam Hotkey</sys:String>
     <sys:String x:Key="hotrec_content">Masukan kunci kombinasi (tahan):</sys:String>
     <sys:String x:Key="hotrec_empty">Tidak ada</sys:String>
 
-    <!-- Welcome page -->
+    <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Selamat Datang!</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">
-        Hallo! Aplikasi Galaxy Buds Manager ini bukan merupakan aplikasi resmi dari Samsung.
-        Program ini tidak dapat melakukan banyak hal seperti aplikasi Samsung Wearable di Android. Saya memutuskan untuk tidak mengikut sertakan Firmware OTA untuk alasan keamanan. Jika anda membutuhkannya, anda bisa menggunakan aplikasi resmi.
-    </sys:String>
-    <sys:String x:Key="welcome_textblock_p2">
-        Jika anda tertarik dengan project ini, anda dapat membuka proyek Github saya yang sudah saya sertakan jurnal reverse-engineering. Anda juga bisa menghubungi saya melalui Github atau Telegram @thepbone jika anda menemukan masalah.
-    </sys:String>
-    <sys:String x:Key="welcome_textblock_p3">
-        Aplikasi ini dapat digunakan untuk seri Buds (2019), Buds+ (2020) dan Buds Live.
-    </sys:String>
+    <sys:String x:Key="welcome_textblock_p1">Hallo! Aplikasi Galaxy Buds Manager ini bukan merupakan aplikasi resmi dari Samsung.
+        Program ini tidak dapat melakukan banyak hal seperti aplikasi Samsung Wearable di Android. Saya memutuskan untuk tidak mengikut sertakan Firmware OTA untuk alasan keamanan. Jika anda membutuhkannya, anda bisa menggunakan aplikasi resmi.</sys:String>
+    <sys:String x:Key="welcome_textblock_p2">Jika anda tertarik dengan project ini, anda dapat membuka proyek Github saya yang sudah saya sertakan jurnal reverse-engineering. Anda juga bisa menghubungi saya melalui Github atau Telegram @thepbone jika anda menemukan masalah.</sys:String>
+    <sys:String x:Key="welcome_textblock_p3">Aplikasi ini dapat digunakan untuk seri Buds (2019), Buds+ (2020) dan Buds Live.</sys:String>
     <sys:String x:Key="welcome_darkmode">Dark Mode</sys:String>
     <sys:String x:Key="welcome_darkmode_content">Mata anda terasa panas? Gunakan dark mode!</sys:String>
 
-    <!-- Main page -->
+    <!--Main page-->
     <sys:String x:Key="mainpage_corrupt_data">Sedang mendapatkan data yang korup. Menghubungkan...</sys:String>
     <sys:String x:Key="mainpage_find_my_earbuds">Temukan Earbuds saya</sys:String>
     <sys:String x:Key="mainpage_touchpad">Panel Sentuh</sys:String>
@@ -120,14 +112,10 @@
     <sys:String x:Key="mainpage_advanced">Pengaturan Lebih Lanjut</sys:String>
     <sys:String x:Key="mainpage_system">Informasi Sistem</sys:String>
 
-    <!-- Update page -->
+    <!--Update page-->
     <sys:String x:Key="updater_header">Pembaruan tersedia</sys:String>
-    <sys:String x:Key="updater_message_p1">
-        Pengunduhan terjadi secara otomatis dan layar pembaruan akan muncul setelah pengunduhan selesai. Pembaruan sangat direkomendasikan agar mendapatkan perbaikan fitur serta fitur terbaru.
-    </sys:String>
-    <sys:String x:Key="updater_message_p2">
-        Anda dapat melihat daftar perubahan melalui tombol dibawah ini.
-    </sys:String>
+    <sys:String x:Key="updater_message_p1">Pengunduhan terjadi secara otomatis dan layar pembaruan akan muncul setelah pengunduhan selesai. Pembaruan sangat direkomendasikan agar mendapatkan perbaikan fitur serta fitur terbaru.</sys:String>
+    <sys:String x:Key="updater_message_p2">Anda dapat melihat daftar perubahan melalui tombol dibawah ini.</sys:String>
 
     <sys:String x:Key="updater_view_changelog">Lihat daftar perubahan lengkap di Github</sys:String>
     <sys:String x:Key="updater_footer_remindmelater">Ingatkan nanti</sys:String>
@@ -138,7 +126,7 @@
     <sys:String x:Key="updater_noupdate_title">Tidak ada pembaruan</sys:String>
     <sys:String x:Key="updater_newrelease">{0} Pembaruan untuk Galaxy Buds Manager tersedia</sys:String>
 
-    <!-- Device selection page (setup) -->
+    <!--Device selection page (setup)-->
     <sys:String x:Key="devsel_header">Pilih Galaxy Buds anda</sys:String>
     <sys:String x:Key="devsel_search">Cari perangkat</sys:String>
     <sys:String x:Key="devsel_device_name">Nama perangkat</sys:String>
@@ -148,7 +136,7 @@
     <sys:String x:Key="devsel_invalid_selection">Tolong pilih perangkat yang valid</sys:String>
     <sys:String x:Key="devsel_footer_continue">Lanjut</sys:String>
 
-    <!-- Unsupported feature page -->
+    <!--Unsupported feature page-->
     <sys:String x:Key="unsupported_feature_current_fwver">Versi Firmware sekarang:</sys:String>
     <sys:String x:Key="unsupported_feature_required_fwver">Versi Firmware yang dibutuhkan:</sys:String>
 
@@ -160,7 +148,7 @@
     <sys:String x:Key="unsupported_feature_description_p2">Mohon perbarui Firmware anda menggunakan aplikasi pembaruan Windows atau aplikasi Wearable di android</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">Pastikan anda menutup aplikasi ini jika anda menggunakan pembaruan Windows. Hanya satu aplikasi yang dapat terhubung dengan Galaxy Buds anda.</sys:String>
 
-    <!-- Touchpad page -->
+    <!--Touchpad page-->
     <sys:String x:Key="touchpad_header">Panel Sentuh</sys:String>
     <sys:String x:Key="touchpad_lock">Kunci Panel Sentuh</sys:String>
     <sys:String x:Key="touchpad_left_action">Aksi Panel Kiri</sys:String>
@@ -169,19 +157,17 @@
     <sys:String x:Key="touchpad_double_tap_volume">Ketukan Dua Kali di Ujung Earbud</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Ketukan dua kali di ujung Earbud kiri atau kanan untuk menurunkan atau menaikan volume</sys:String>
 
-    <!-- Custom touchpad action page -->
+    <!--Custom touchpad action page-->
     <sys:String x:Key="cact_header">Buat aksi saat tekan dan tahan panel</sys:String>
     <sys:String x:Key="cact_external_app_dialog_title">Pilih program...</sys:String>
     <sys:String x:Key="cact_action">Buat aksi</sys:String>
     <sys:String x:Key="cact_notice">Perhatian</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Aksi tekan dan tahan akan dijalankan saat aplikasi ini ditutup.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">Aksi ini tidak akan berdampak pada Android atau device yang lain.</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">
-        Untuk memastikan konsistensi dalam penjalanann fitur ini, aplikasi ini akan otomatis aktif saat komputer anda hidup.
-        Anda dapat mematikan perilaku ini melalui menu pengaturan.
-    </sys:String>
+    <sys:String x:Key="cact_notice_content_p3">Untuk memastikan konsistensi dalam penjalanann fitur ini, aplikasi ini akan otomatis aktif saat komputer anda hidup.
+        Anda dapat mematikan perilaku ini melalui menu pengaturan.</sys:String>
 
-    <!-- System/Self-Test -->
+    <!--System/Self-Test-->
     <sys:String x:Key="system_header">Informasi Sistem</sys:String>
     <sys:String x:Key="system_selftest">Jalankan pengujian</sys:String>
     <sys:String x:Key="system_factory_reset">Reset Ulang</sys:String>
@@ -201,9 +187,9 @@
     <sys:String x:Key="system_thermo">Pengukur Suhu</sys:String>
     <sys:String x:Key="system_hall">Pengukur Kelistrikan</sys:String>
     <sys:String x:Key="system_accel">Status Akselerometer</sys:String>
-    <!-- Note: system_accel only used on the self-test page -->
+    <!--Note: system_accel only used on the self-test page-->
     <sys:String x:Key="system_adc_soc">ADC SoC</sys:String>
-    <!-- Context: SoC = State of charge (battery percentage) -->
+    <!--Context: SoC = State of charge (battery percentage)-->
     <sys:String x:Key="system_adc_voltage">Voltasi ADC</sys:String>
     <sys:String x:Key="system_adc_current">Arus ADC</sys:String>
 
@@ -214,7 +200,7 @@
     <sys:String x:Key="selftest_pass_long">Semua uji pengecekan berhasil</sys:String>
     <sys:String x:Key="selftest_fail_long">Beberapa uji pengecekan gagal</sys:String>
 
-    <!-- Settings -->
+    <!--Settings-->
     <sys:String x:Key="settings_header">Pengaturan</sys:String>
 
     <sys:String x:Key="settings_darkmode">Dark Mode</sys:String>
@@ -231,7 +217,7 @@
     <sys:String x:Key="settings_connpopup">Konfigurasi popup koneksi</sys:String>
     <sys:String x:Key="settings_devmode">Mode pengembang</sys:String>
 
-    <!-- Settings >>> Connection popup -->
+    <!--Settings >>> Connection popup-->
     <sys:String x:Key="settings_cpopup_header">Popup Koneksi</sys:String>
     <sys:String x:Key="settings_cpopup_enable">Tampilkan popup saat terhubung</sys:String>
     <sys:String x:Key="settings_cpopup_enable_description">Tampilkan notifikasi yang memberitahukan tentang persentasi baterai saat terhubung dengan Buds.</sys:String>
@@ -243,26 +229,24 @@
     <sys:String x:Key="settings_cpopup_override_title">Ganti judul popup</sys:String>
     <sys:String x:Key="settings_cpopup_override_title_dialog">Masukan judul popup yang anda inginkan. Anda dapat mengembalikannya seperti awal dengan tidak mengisi bagian ini.</sys:String>
 
-    <!-- Factory reset -->
+    <!--Factory reset-->
     <sys:String x:Key="factory_header">Setelan Pabrik</sys:String>
     <sys:String x:Key="factory_confirm">Konfirmasi Reset</sys:String>
     <sys:String x:Key="factory_error_title">Reset gagal</sys:String>
-    <sys:String x:Key="factory_error">
-        Perangkat memberikan kode error: {0}
+    <sys:String x:Key="factory_error">Perangkat memberikan kode error: {0}
         Pastikan kedua Earbuds menyala dan tidak terlalu jauh.
-        Anda mungkin perlu menghubungkan Earbuds kembali ke komputer anda.
-    </sys:String>
+        Anda mungkin perlu menghubungkan Earbuds kembali ke komputer anda.</sys:String>
     <sys:String x:Key="factory_text_p1">Apakah anda yakin untuk melakukan reset pada Earbuds anda?</sys:String>
     <sys:String x:Key="factory_text_p2">Setelah melakukan reset ke setelan pabrik, anda perlu untuk menghubungkan kembali Earbuds dengan komputer anda.</sys:String>
     <sys:String x:Key="factory_text_p3">Pastikan kedua Earbuds anda aktif sebelum melanjutkan langkah selanjutnya!</sys:String>
 
-    <!-- Find my Gear -->
+    <!--Find my Gear-->
     <sys:String x:Key="fmg_warning_both">Lepaskan kedua Earbud dari telinga anda.</sys:String>
     <sys:String x:Key="fmg_warning_left">Lepaskan Earbud kiri dari telinga anda.</sys:String>
     <sys:String x:Key="fmg_warning_right">Lepaskan Earbud kanan dari telinga anda.</sys:String>
     <sys:String x:Key="fmg_header">Cari Earbuds Saya</sys:String>
 
-    <!-- Equalizer -->
+    <!--Equalizer-->
     <sys:String x:Key="eq_header">Mode Suara (Equalizer)</sys:String>
     <sys:String x:Key="eq_enable">Aktifkan Equalizer</sys:String>
     <sys:String x:Key="eq_mode">Mode:</sys:String>
@@ -274,7 +258,7 @@
     <sys:String x:Key="eq_clear">Bersih</sys:String>
     <sys:String x:Key="eq_treble">Ekstra Treble</sys:String>
 
-    <!-- Ambient sound -->
+    <!--Ambient sound-->
     <sys:String x:Key="as_header">Suara Sekitar</sys:String>
     <sys:String x:Key="as_enable">Aktifkan Pendengaran Suara Sekitar</sys:String>
     <sys:String x:Key="as_volume">Volume Suara Sekitar</sys:String>
@@ -282,7 +266,7 @@
     <sys:String x:Key="as_extrahigh">Pendengaran Suara Sekitar Ekstra</sys:String>
     <sys:String x:Key="as_extrahigh_description">Menambah skala volume di pilihan pendengaran Suara Sekitar</sys:String>
 
-    <!-- Advanced page -->
+    <!--Advanced page-->
     <sys:String x:Key="adv_header">Pengaturan Lebih Lanjut</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} atau terbaru</sys:String>
     <sys:String x:Key="adv_seamless">Koneksi Earbud Otomatis</sys:String>
@@ -296,7 +280,7 @@
     <sys:String x:Key="adv_gaming_mode">Mode Gaming</sys:String>
     <sys:String x:Key="adv_gaming_mode_desc">Mengurangi latensi dan peningkaran sinkronisasi audio (Hanya berlaku untuk Samsung)</sys:String>
 
-    <!-- Credits -->
+    <!--Credits-->
     <sys:String x:Key="credits_header">Penghargaan</sys:String>
     <sys:String x:Key="credits_developer">Pengembang Perangkat Lunak</sys:String>
     <sys:String x:Key="credits_license">Lisensi</sys:String>
@@ -304,13 +288,11 @@
     <sys:String x:Key="credits_contributor">Kontributor</sys:String>
     <sys:String x:Key="credits_translator">Penerjemah</sys:String>
 
-    <!-- Connection lost page -->
+    <!--Connection lost page-->
     <sys:String x:Key="connlost_header">Koneksi terputus</sys:String>
     <sys:String x:Key="connlost_description_p1">Tidak dapat melakukan koneksi dengan Earbuds anda.</sys:String>
-    <sys:String x:Key="connlost_description_p2">
-        Pastikan Bluetooth anda sudah hidup dan Earbuds telah terhubung dengan komputer ini.
-        Anda juga dapat mendaftarkan Earbuds baru. Jika anda ingin melakukannya, pilih "Opsi -> Hapus Perangkat" disebelah kiri atas.
-    </sys:String>
+    <sys:String x:Key="connlost_description_p2">Pastikan Bluetooth anda sudah hidup dan Earbuds telah terhubung dengan komputer ini.
+        Anda juga dapat mendaftarkan Earbuds baru. Jika anda ingin melakukannya, pilih "Opsi -&gt; Hapus Perangkat" disebelah kiri atas.</sys:String>
     <sys:String x:Key="connlost_description_p3">Informasi tambahan:</sys:String>
     <sys:String x:Key="connlost_noinfo">Gagal mendapatkan informasi kesalahan</sys:String>
     <sys:String x:Key="connlost_connect">Hubungkan</sys:String>

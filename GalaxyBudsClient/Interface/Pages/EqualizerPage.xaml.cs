@@ -4,6 +4,7 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
+using Avalonia.VisualTree;
 using GalaxyBudsClient.Interface.Items;
 
 using GalaxyBudsClient.Message;
@@ -44,7 +45,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		public override void OnPageShown()
 		{
-			_stereoPan.Parent!.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.StereoPan);
+			_stereoPan.GetVisualParent()!.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.StereoPan);
 		}
 
 		private void OnEventReceived(EventDispatcher.Event e, object? arg)

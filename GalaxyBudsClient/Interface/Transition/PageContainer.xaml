@@ -6,7 +6,7 @@
              x:Class="GalaxyBudsClient.Interface.Transition.PageContainer"
              DockPanel.Dock="Top" Margin="10,0">
         <Carousel
-            Items="{Binding $parent.DataContext.Items}" 
+            ItemsSource="{Binding $parent.DataContext.Items}" 
             Name="Pager">
         </Carousel>
 </UserControl>

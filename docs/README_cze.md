@@ -1,6 +1,6 @@
 <p align="center">
   <a href="../README.md">English</a> | <a href="./README_chs.md">中文</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="./README_jpn.md">日本語</a> | <a href="./README_ukr.md">Українська</a> | <a href="./README_kor.md">한국어</a> | Česky | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> <br>
-    <sub>Upozornění: README soubory jsou spravovány překladateli, a proto mohou být zaostalé. Pro nejnovější informace se spoléhejte na anglickou verzi.</sub>
+    <sub>Upozornění: Soubory README jsou spravovány překladateli, a proto mohou být zaostalé. Pro nejnovější informace se spoléhejte na anglickou verzi.</sub>
 </p>
 
 <h1 align="center">
@@ -52,28 +52,46 @@ Kromě standardních funkcí známých z oficiální Androidí aplikace, Vám te
 * Stahování nových a starých verzí firmwaru (Buds+, Buds Pro)
 * a spousty dalších...
 
+Pokud hledáte starší binární soubory firmwaru, podívejte se sem: https://github.com/ThePBone/galaxy-buds-firmware-archive
+
 ## Stažení
 
-Získejte binární soubory pro Windows a Linux v sekci [vydání](https://github.com/ThePBone/GalaxyBudsClient/releases). Prosím přečtěte si poznámky k vydání před stažením (v angličtině).
+Pro Linux je zde několik dostupných způsobů:
+* [Flatpak (všechny Linuxové distribuce)](#flatpak)
+* [Balíček AUR (Arch Linux)](#balíček-aur)
 
+Získejte binární soubory pro Windows v sekci [release](https://github.com/ThePBone/GalaxyBudsClient/releases). Před instalací si přečtěte poznámky k vydání:
 <p align="center">
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
-### winget
+### Flatpak
 
-Balíček pro windows je také dostupný ke stažení pomocí Manažeru Balíčku pro Windows (winget).
+Univerzální binární balíčky pro všechny distribuce Linuxu. Toto je doporučený způsob instalace GalaxyBudsClient v Linuxu.
 
+K dispozici ke stažení na FlatHubu: https://flathub.org/apps/me.timschneeberger.GalaxyBudsClient
 ```
-winget install ThePBone.GalaxyBudsClient
+flatpak install me.timschneeberger.GalaxyBudsClient
 ```
 
-### AUR balíček
+<a href='https://flathub.org/apps/me.timschneeberger.GalaxyBudsClient'><img width='240' alt='Download on Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.png'/></a>
 
-[AUR balíček](https://aur.archlinux.org/packages/galaxybudsclient-bin/) pro Arch Linux, který je udržovaný u6ivatelem @joscdk je také dostupný:
+> **Poznámka**: Flatpaky jsou v sandboxu. Tato aplikace má ve výchozím nastavení přístup pouze k `~/.var/app/me.timschneeberger.GalaxyBudsClient/`.
+
+### Balíček AUR
+
+[Balíček AUR](https://aur.archlinux.org/packages/galaxybudsclient-bin/) pro Arch Linux, udržovaný uživatelem [@joscdk](https://github.com/joscdk), je dostupný skrze:
 
 ```
 yay -S galaxybudsclient-bin
+```
+
+### winget
+
+Balíček pro Windows je dostupný ke stažení zapomocí Manažera Balíčků pro Windows (winget).
+
+```
+winget install ThePBone.GalaxyBudsClient
 ```
 
 ## Jak to funguje
@@ -134,6 +152,7 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 * [@cozyplanes](https://github.com/cozyplanes) - korejský překlad
 * [@erenbektas](https://github.com/erenbektas) - turecký překlad
 * [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) a [@pseudor](https://github.com/pseudor) - čínský překlad
+* [@YiJhu](https://github.com/YiJhu) - čínština-tradiční překlad
 * [@efrenbg1](https://github.com/efrenbg1) a Andrew Gonza - španělský překlad
 * [@giovankabisano](https://github.com/giovankabisano) - indonéský překlad
 * [@lucasskluser](https://github.com/lucasskluser) - portugalský překlad
@@ -143,10 +162,11 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 * [@joskaja](https://github.com/joskaja) a [@Joedmin](https://github.com/Joedmin) - český překlad
 * [@TheLastFrame](https://github.com/TheLastFrame) a [@ThePBone](https://github.com/ThePBone) - německý překlad
 * [@nikossyr](https://github.com/nikossyr) - řecký překlad
-* [@grigorem](https://github.com/grigorem) - romský překlad
+* [@grigorem](https://github.com/grigorem) - rumunský překlad
 * [@tretre91](https://github.com/tretre91) - francouzský překlad
 * [@Sigarya](https://github.com/Sigarya) - hebrejský překlad
 * [@domroaft](https://github.com/domroaft) - maďarský překlad
+* [@lampi8426](https://github.com/lampi8426) - nizozemský překlad
 
 ## Licence
 

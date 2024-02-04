@@ -38,7 +38,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" MinWidth="80" />
                     </Grid.ColumnDefinitions>
-                    <ComboBox Grid.Column="0" x:Name="Pages" HorizontalAlignment="Stretch" Items="{Binding PagesSource}" Margin="0,0,5,0"/>
+                    <ComboBox Grid.Column="0" x:Name="Pages" HorizontalAlignment="Stretch" ItemsSource="{Binding PagesSource}" Margin="0,0,5,0"/>
                     <Button Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="Go to..." Click="GoToPage_OnClick"/>
                 </Grid>
                 <TextBlock Grid.Row="2" TextWrapping="Wrap">
@@ -61,7 +61,7 @@
                         <ColumnDefinition Width="Auto" MinWidth="80" />
                     </Grid.ColumnDefinitions>
                     <TextBox Grid.Column="0" x:Name="XamlPath" IsReadOnly="True" Margin="0,0,5,0"/>
-                    <ComboBox Grid.Column="1" x:Name="Locales" HorizontalAlignment="Stretch" Items="{Binding LocaleSource}" Margin="0,0,5,0"/>
+                    <ComboBox Grid.Column="1" x:Name="Locales" HorizontalAlignment="Stretch" ItemsSource="{Binding LocaleSource}" Margin="0,0,5,0"/>
                     <Button Grid.Column="2" x:Name="ReloadXaml" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="Reload" Click="ReloadXaml_OnClick" />
                 </Grid>
                 <TextBlock Grid.Row="2" TextWrapping="Wrap">

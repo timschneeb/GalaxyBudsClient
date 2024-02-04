@@ -52,21 +52,31 @@ Aside from standard features known from the official Android app, this project h
 * Firmware flashing, downgrading (Buds+, Buds Pro)
 * and much more...
 
+If you're looking for older firmware binaries, have a look here: [https://github.com/ThePBone/galaxy-buds-firmware-archive](https://github.com/ThePBone/galaxy-buds-firmware-archive#galaxy-buds-firmware-archive)
+
 ## Download
 
-Get binaries for Windows and Linux in the [release](https://github.com/ThePBone/GalaxyBudsClient/releases) section. Please read the release notes before installing.
+There are several Linux packages available:
+* [Flatpak (All Linux distros)](#flatpak)
+* [AUR package (Arch Linux)](#aur-package)
 
+Get binaries for Windows in the [release](https://github.com/ThePBone/GalaxyBudsClient/releases) section. Please read the release notes before installation:
 <p align="center">
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
-### winget
+### Flatpak
 
-The Windows package is also available to install with Windows Package Manager (winget)
+Universal binary packages for all Linux distributions. This is the recommended way of installing GalaxyBudsClient on Linux.
 
+Available for download on FlatHub: https://flathub.org/apps/me.timschneeberger.GalaxyBudsClient
 ```
-winget install ThePBone.GalaxyBudsClient
+flatpak install me.timschneeberger.GalaxyBudsClient
 ```
+
+<a href='https://flathub.org/apps/me.timschneeberger.GalaxyBudsClient'><img width='240' alt='Download on Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.png'/></a>
+
+> **Note**: Flatpaks are sandboxed. This application can only access `~/.var/app/me.timschneeberger.GalaxyBudsClient/` by default.
 
 ### AUR package 
 
@@ -75,6 +85,13 @@ An [AUR package](https://aur.archlinux.org/packages/galaxybudsclient-bin/) for A
 yay -S galaxybudsclient-bin
 ```
 
+### winget
+
+The Windows package is also available to install with Windows Package Manager (winget)
+
+```
+winget install ThePBone.GalaxyBudsClient
+```
 
 ## How it works
 
@@ -134,7 +151,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@PlasticBrain](https://github.com/fhalfkg) - Korean and Japanese translation
 * [@cozyplanes](https://github.com/cozyplanes) - Korean translation
 * [@erenbektas](https://github.com/erenbektas) - Turkish translation
-* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) and [@pseudor](https://github.com/pseudor) - Chinese translation
+* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad), [@pseudor](https://github.com/pseudor) and [@YexuanXiao](https://github.com/YexuanXiao) - Chinese translation
 * [@YiJhu](https://github.com/YiJhu) - Chinese-Traditional translation
 * [@efrenbg1](https://github.com/efrenbg1) and Andrew Gonza - Spanish translation
 * [@giovankabisano](https://github.com/giovankabisano) - Indonesian translation
@@ -149,6 +166,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@tretre91](https://github.com/tretre91) - French translation
 * [@Sigarya](https://github.com/Sigarya) - Hebrew translation
 * [@domroaft](https://github.com/domroaft) - Hungarian translation
+* [@lampi8426](https://github.com/lampi8426) - Dutch translation
 
 ## License
 

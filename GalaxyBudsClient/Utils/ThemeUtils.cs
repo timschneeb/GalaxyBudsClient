@@ -8,6 +8,7 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Markup.Xaml.MarkupExtensions;
 using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Styling;
+using Avalonia.Themes.Fluent;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 using Serilog;
@@ -18,22 +19,6 @@ namespace GalaxyBudsClient.Utils
     {
         public static event EventHandler<DarkModes>? ThemeReloaded; 
         
-        public static Styles FluentDark = new Styles
-        {
-            new StyleInclude(new Uri("avares://ControlCatalog/Styles"))
-            {
-                Source = new Uri("avares://Avalonia.Themes.Fluent/FluentDark.xaml")
-            },
-        };
-
-        public static Styles FluentLight = new Styles
-        {
-            new StyleInclude(new Uri("avares://ControlCatalog/Styles"))
-            {
-                Source = new Uri("avares://Avalonia.Themes.Fluent/FluentLight.xaml")
-            },
-        };
-
         public static void Reload()
         {
             if (Application.Current == null)
@@ -43,12 +28,12 @@ namespace GalaxyBudsClient.Utils
             
             if (SettingsProvider.Instance.DarkMode == DarkModes.Light)
             {
-                Application.Current.Styles[1] = FluentLight;
+                MainWindow.Instance.RequestedThemeVariant = ThemeVariant.Light;
                 SetBrushSource("Brushes");
             }
             else
             {
-                Application.Current.Styles[1] = FluentDark;
+                MainWindow.Instance.RequestedThemeVariant = ThemeVariant.Dark;
                 SetBrushSource("BrushesDark");
             }
             
@@ -72,7 +57,10 @@ namespace GalaxyBudsClient.Utils
                 else
                 {
                     Application.Current.Resources.MergedDictionaries[dictId] =
-                        new ResourceInclude {Source = new Uri($"avares://GalaxyBudsClient/Interface/Styles/{name}.xaml")};
+                        new ResourceInclude((Uri?)null)
+                        {
+                            Source = new Uri($"avares://GalaxyBudsClient/Interface/Styles/{name}.xaml")
+                        };
                 }
             }
             catch (IOException e)
