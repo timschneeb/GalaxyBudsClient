@@ -7,7 +7,9 @@ using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform.Interfaces;
 using Serilog;
+#if OSX
 using ThePBone.OSX.Native.Unmanaged;
+#endif
 
 namespace GalaxyBudsClient.Platform.OSX
 {

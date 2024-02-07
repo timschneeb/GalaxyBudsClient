@@ -5,12 +5,15 @@ using Avalonia.Input;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform.Interfaces;
 using Serilog;
+#if OSX
 using ThePBone.OSX.Native.Unmanaged;
+#endif
 
 namespace GalaxyBudsClient.Platform.OSX
 {
     public class HotkeyBroadcast : IHotkeyBroadcast
     {
+#if OSX
         private readonly unsafe void* _hotkeySimObjc;
 
         public HotkeyBroadcast()
@@ -28,6 +31,7 @@ namespace GalaxyBudsClient.Platform.OSX
                 }
             }
         }
+#endif
 
         public void SendKeys(IEnumerable<Key> keys)
         {
@@ -422,12 +426,15 @@ namespace GalaxyBudsClient.Platform.OSX
         private void SimulateHotkeyInternal(uint keyCode, bool down, bool maskCmd, bool maskOpt, bool maskCtrl,
             bool maskShft)
         {
+#if OSX
             unsafe
             {
                 AppUtils.simulateHotKey(_hotkeySimObjc, keyCode, down, maskCmd, maskOpt, maskCtrl, maskShft);
             }
+#endif
         }
 
+#if OSX
         ~HotkeyBroadcast()
         {
             unsafe
@@ -435,6 +442,6 @@ namespace GalaxyBudsClient.Platform.OSX
                 AppUtils.deallocHotkeySim(_hotkeySimObjc);
             }
         }
-
+#endif
     }
 }

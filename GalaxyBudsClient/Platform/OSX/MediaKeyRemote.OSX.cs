@@ -1,6 +1,8 @@
 using Avalonia.Input;
 using GalaxyBudsClient.Platform.Interfaces;
+#if OSX
 using ThePBone.OSX.Native.Unmanaged;
+#endif
 
 namespace GalaxyBudsClient.Platform.OSX
 {
