@@ -106,7 +106,7 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 <tr><td><code>adv_bixby_remap_desc</code></td><td>Define what should happen when you say 'Hey Bixby!'</td></tr>
 <tr><td><code>bixby_remap_header</code></td><td>Remap Bixby wakeup</td></tr>
 <tr><td><code>bixby_remap_enable</code></td><td>Enable Bixby wakeup</td></tr>
-<tr><td><code>bixby_remap_enable_desc</code></td><td>Launch Bixby on your Samsung phone or execute a custom action on this PC when waken up</td></tr>
+<tr><td><code>bixby_remap_enable_desc</code></td><td>Launch Bixby on your Samsung phone or execute a custom action on this PC when woken up</td></tr>
 <tr><td><code>bixby_remap_lang</code></td><td>Bixby wakeup language</td></tr>
 <tr><td><code>bixby_remap_action</code></td><td>Custom wakeup action</td></tr>
 <tr><td><code>bixby_remap_note</code></td><td>Say 'Hey Bixby!' to activate. The activation phrase may be different with some language settings.
