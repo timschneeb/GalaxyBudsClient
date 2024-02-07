@@ -449,7 +449,7 @@ You might need to manually reconnect your Earbuds.</sys:String>
     <!--Remap bixby wakeup-->
     <sys:String x:Key="bixby_remap_header">Remap Bixby wakeup</sys:String>
     <sys:String x:Key="bixby_remap_enable">Enable Bixby wakeup</sys:String>
-    <sys:String x:Key="bixby_remap_enable_desc">Launch Bixby on your Samsung phone or execute a custom action on this PC when waken up</sys:String>
+    <sys:String x:Key="bixby_remap_enable_desc">Launch Bixby on your Samsung phone or execute a custom action on this PC when woken up</sys:String>
     <sys:String x:Key="bixby_remap_lang">Bixby wakeup language</sys:String>
     <sys:String x:Key="bixby_remap_action">Custom wakeup action</sys:String>
     <sys:String x:Key="bixby_remap_note">Say 'Hey Bixby!' to activate. The activation phrase may be different with some language settings.
