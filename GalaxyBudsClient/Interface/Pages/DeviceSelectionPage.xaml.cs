@@ -99,11 +99,7 @@ namespace GalaxyBudsClient.Interface.Pages
                 {
                     if (dialog.SelectedModel == Models.NULL || dialog.SelectedDeviceMac == null)
                     {
-                        await new MessageBox()
-                        {
-                            Title = Loc.Resolve("error"),
-                            Description = Loc.Resolve("devsel_invalid_selection")
-                        }.ShowDialog(MainWindow.Instance);
+                        ShowErrorDialogSafely();
                         return;
                     }
                 
@@ -115,15 +111,9 @@ namespace GalaxyBudsClient.Interface.Pages
         private void Next_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
             
-            if (Selection == null || 
-                Selection.Count <= 0 || 
-                Selection.SelectedItem == null)
+            if (Selection is not { Count: > 0 } || Selection.SelectedItem == null)
             {
-                new MessageBox()
-                {
-                    Title = Loc.Resolve("error"),
-                    Description = Loc.Resolve("devsel_invalid_selection")
-                }.ShowDialog(MainWindow.Instance);
+                ShowErrorDialogSafely();
                 return;
             }
 
@@ -132,15 +122,25 @@ namespace GalaxyBudsClient.Interface.Pages
 
             if (spec == null || selection.IsConnected == false || selection.Address == string.Empty)
             {
-                new MessageBox()
-                {
-                    Title = Loc.Resolve("error"),
-                    Description = Loc.Resolve("devsel_invalid_selection")
-                }.ShowDialog(MainWindow.Instance);
+                ShowErrorDialogSafely();
                 return;
             }
 
             RegisterDevice(spec.Device, selection.Address);
+        }
+
+        // Workaround for Avalonia 11 focusing bug
+        private static void ShowErrorDialogSafely()
+        {
+            Avalonia.Threading.Dispatcher.UIThread.Post(async () =>
+            {
+                await Task.Delay(300);
+                await new MessageBox()
+                {
+                    Title = Loc.Resolve("error"),
+                    Description = Loc.Resolve("devsel_invalid_selection")
+                }.ShowDialog(MainWindow.Instance);
+            });
         }
 
         private async void RegisterDevice(Models model, string mac)
@@ -214,6 +214,10 @@ namespace GalaxyBudsClient.Interface.Pages
                 AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds Pro (E43F) [Dummy]", "E4:25:FA:6D:B9:3F", true,
                     true, new BluetoothCoD(0)));
                 AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds2 (D592) [Dummy]", "D5:97:B8:23:AB:92", true,
+                    true, new BluetoothCoD(0)));
+                AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds2 Pro (3292) [Dummy]", "32:97:B8:23:AB:92", true,
+                    true, new BluetoothCoD(0)));
+                AvailableDevices?.Add(new BluetoothDevice("Galaxy Buds FE (A7D4) [Dummy]", "A7:97:B8:23:AB:D4", true,
                     true, new BluetoothCoD(0)));
             }
             
