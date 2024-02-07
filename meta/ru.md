@@ -23,9 +23,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>nc_ambient</code></td><td>Customize ambient sound</td></tr>
 <tr><td><code>nc_ambient_description</code></td><td>Configure ambient sound tone and volume (if available)</td></tr>
 <tr><td><code>window_open</code></td><td>Open</td></tr>
-<tr><td><code>budsapp_text_p2</code></td><td>
-        If it is open and connected, GalaxyBudsClient might have issues connecting to your earbuds. Make sure to close it before continuing. Likewise, the official Galaxy Buds app can't connect to your earbuds while Galaxy Buds Manager is active and has opened connections to the earbuds.
-    </td></tr>
+<tr><td><code>budsapp_text_p2</code></td><td>If it is open and connected, GalaxyBudsClient might have issues connecting to your earbuds. Make sure to close it before continuing. Likewise, the official Galaxy Buds app can't connect to your earbuds while Galaxy Buds Manager is active and has opened connections to the earbuds.</td></tr>
 <tr><td><code>manualpair_title</code></td><td>Manual device selection</td></tr>
 <tr><td><code>manualpair_title_dialog</code></td><td>Choose your Galaxy Buds device</td></tr>
 <tr><td><code>manualpair_model</code></td><td>Choose the correct model type</td></tr>
