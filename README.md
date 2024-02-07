@@ -138,6 +138,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 
 ### Contributors
 
+* [@nift4](https://github.com/nift4) - macOS support and bug fixes
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue templates, wiki and translations
 * [@AndriesK](https://github.com/AndriesK) - Buds Live bug fix
 * [@TheLastFrame](https://github.com/TheLastFrame) - Buds Pro icons
