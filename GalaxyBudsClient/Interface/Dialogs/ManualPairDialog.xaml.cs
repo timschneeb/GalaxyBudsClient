@@ -17,7 +17,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
     public sealed class ManualPairDialog : Window
     {
         private readonly IReadOnlyList<String> _modelCache
-            = Enum.GetValues(typeof(Models)).Cast<Models>().Where(x => x != Models.NULL && x != Models.BudsFe)
+            = Enum.GetValues(typeof(Models)).Cast<Models>().Where(x => x != Models.NULL)
                 .Select(x => x.GetDescription()).ToList();
 
         public IEnumerable ModelSource => _modelCache;
