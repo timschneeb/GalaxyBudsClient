@@ -7,6 +7,7 @@
 
 import Foundation
 import AppKit
+import Carbon.HIToolbox
 import Sauce // for me, xcode claims there is "no such module" but build works fine
 import Magnet
 
@@ -22,146 +23,7 @@ import Magnet
         cocoaModflags |= (win32Modflags & 4) != 0 ? NSEvent.ModifierFlags.shift.rawValue : 0
         cocoaModflags |= (win32Modflags & 8) != 0 ? NSEvent.ModifierFlags.command.rawValue : 0
         if let win32Key = Keys(rawValue:win32Keyflags) {
-            let cocoaKeyflags: Key? = switch (win32Key) {
-            case .Backspace: .delete
-            case .Tab: .tab
-            case .LineFeed: .keypadEnter
-            case .Clear: .keypadClear
-            case .Enter: .return
-            // case .Pause:
-            // case .CapsLock:
-            case .Escape: .escape
-            case .Space: .space
-            case .PageUp: .pageUp
-            case .PageDown: .pageDown
-            case .End: .end
-            case .Home: .home
-            case .Left: .leftArrow
-            case .Up: .upArrow
-            case .Right: .rightArrow
-            case .Down: .downArrow
-            // case .Select:
-            // case .Print:
-            // case .Execute: what even is that
-            // case .PrintScreen:
-            // case .Insert:
-            case .Delete: .forwardDelete
-            case .Help: .help
-            case .Decimal0: .zero
-            case .Decimal1: .one
-            case .Decimal2: .two
-            case .Decimal3: .three
-            case .Decimal4: .four
-            case .Decimal5: .five
-            case .Decimal6: .six
-            case .Decimal7: .seven
-            case .Decimal8: .eight
-            case .Decimal9: .nine
-            case .A: .a
-            case .B: .b
-            case .C: .c
-            case .D: .d
-            case .E: .e
-            case .F: .f
-            case .G: .g
-            case .H: .h
-            case .I: .i
-            case .J: .j
-            case .K: .k
-            case .L: .l
-            case .M: .m
-            case .N: .n
-            case .O: .o
-            case .P: .p
-            case .Q: .q
-            case .R: .r
-            case .S: .s
-            case .U: .u
-            case .T: .t
-            case .V: .v
-            case .W: .w
-            case .X: .x
-            case .Y: .y
-            case .Z: .z
-            // case .Apps:
-            case .NumPad0: .keypadZero
-            case .NumPad1: .keypadOne
-            case .NumPad2: .keypadTwo
-            case .NumPad3: .keypadThree
-            case .NumPad4: .keypadFour
-            case .NumPad5: .keypadFive
-            case .NumPad6: .keypadSix
-            case .NumPad7: .keypadSeven
-            case .NumPad8: .keypadEight
-            case .NumPad9: .keypadNine
-            case .Multiply: .keypadMultiply
-            case .Add: .keypadPlus
-            case .Separator: .keypadDecimal // <-- mapped twice
-            case .Subtract: .keypadMinus
-            case .Decimal: .keypadDecimal // <-- mapped twice
-            case .Divide: .keypadDivide
-            case .F1: .f1
-            case .F2: .f2
-            case .F3: .f3
-            case .F4: .f4
-            case .F5: .f5
-            case .F6: .f6
-            case .F7: .f7
-            case .F8: .f8
-            case .F9: .f9
-            case .F10: .f10
-            case .F11: .f11
-            case .F12: .f12
-            case .F13: .f13
-            case .F14: .f14
-            case .F15: .f15
-            case .F16: .f16
-            case .F17: .f17
-            case .F18: .f18
-            case .F19: .f19
-            case .F20: .f20
-            // case .F21:
-            // case .F22:
-            // case .F23:
-            // case .F24:
-            // case .NumLock:
-            // case .ScrollLock:
-            // case .BrowserBack:
-            // case .BrowserForward:
-            // case .BrowserRefresh:
-            // case .BrowserStop:
-            // case .BrowserSearch:
-            // case .BrowserFavorites:
-            // case .BrowserHome:
-            // case .VolumeMute:
-            // case .VolumeDown:
-            // case .VolumeUp:
-            // case .MediaNextTrack:
-            // case .MediaPreviousTrack:
-            // case .MediaStop:
-            // case .MediaPlayPause:
-            // case .LaunchMail:
-            // case .SelectMedia:
-            // case .LaunchApplication1:
-            // case .LaunchApplication2:
-            // case .OemSemicolon:
-            // case .OemPlus:
-            // case .OemComma:
-            // case .OemMinus:
-            // case .OemPeriod:
-            // case .OemQuestion:
-            // case .OemTilde:
-            // case .OemOpenBrackets:
-            // case .OemPipe:
-            // case .OemCloseBrackets:
-            // case .OemQuotes:
-            // case .Oem8:
-            // case .OemBackslash:
-            // case .Play:
-            // case .Zoom:
-            // case .CancelKey:
-            default: nil
-            }
+            let cocoaKeyflags = convertWin32KeysToCocoa(keys:win32Key)
             if (cocoaKeyflags == nil) {
                 return false
             }
@@ -186,6 +48,416 @@ import Magnet
     
     private static func onHotKeyReceived(str: UnsafeMutableRawPointer, identifier: UInt) {
         NIBridge.dispatchHotkeyEvent(str, identifier: NSNumber(value:identifier))
+    }
+    
+    private static func convertWin32KeysToCocoa(keys: Keys) -> Key? {
+        return switch (keys) {
+        case .Backspace: .delete
+        case .Tab: .tab
+        case .LineFeed: .keypadEnter
+        case .Clear: .keypadClear
+        case .Enter: .return
+        // case .ShiftKey: kVK_Shift
+        // case .ControlKey: kVK_Control
+        // case .Menu: kVK_Option
+        // case .Pause:
+        // case .CapsLock: kVK_CapsLock
+        // case .HanguelMode:
+        // case .HangulMode:
+        // case .JunjaMode:
+        // case .FinalMode:
+        // case .HanjaMode:
+        // case .KanjiMode:
+        case .Escape: .escape
+        // case .IMEConvert:
+        // case .IMENonconvert:
+        // case .IMEAccept:
+        // case .IMEModeChange:
+        case .Space: .space
+        case .PageUp: .pageUp
+        case .PageDown: .pageDown
+        case .End: .end
+        case .Home: .home
+        case .Left: .leftArrow
+        case .Up: .upArrow
+        case .Right: .rightArrow
+        case .Down: .downArrow
+        // case .Select:
+        // case .Print:
+        // case .Execute: what even is that
+        // case .PrintScreen:
+        // case .Insert:
+        case .Delete: .forwardDelete
+        case .Help: .help
+        case .Decimal0: .zero
+        case .Decimal1: .one
+        case .Decimal2: .two
+        case .Decimal3: .three
+        case .Decimal4: .four
+        case .Decimal5: .five
+        case .Decimal6: .six
+        case .Decimal7: .seven
+        case .Decimal8: .eight
+        case .Decimal9: .nine
+        case .A: .a
+        case .B: .b
+        case .C: .c
+        case .D: .d
+        case .E: .e
+        case .F: .f
+        case .G: .g
+        case .H: .h
+        case .I: .i
+        case .J: .j
+        case .K: .k
+        case .L: .l
+        case .M: .m
+        case .N: .n
+        case .O: .o
+        case .P: .p
+        case .Q: .q
+        case .R: .r
+        case .S: .s
+        case .U: .u
+        case .T: .t
+        case .V: .v
+        case .W: .w
+        case .X: .x
+        case .Y: .y
+        case .Z: .z
+        // case .LWin: kVK_Command
+        // case .RWin: kVK_Command
+        // case .Apps:
+        // case .Sleep:
+        case .NumPad0: .keypadZero
+        case .NumPad1: .keypadOne
+        case .NumPad2: .keypadTwo
+        case .NumPad3: .keypadThree
+        case .NumPad4: .keypadFour
+        case .NumPad5: .keypadFive
+        case .NumPad6: .keypadSix
+        case .NumPad7: .keypadSeven
+        case .NumPad8: .keypadEight
+        case .NumPad9: .keypadNine
+        case .Multiply: .keypadMultiply
+        case .Add: .keypadPlus
+        case .Separator: .keypadDecimal // <-- mapped twice
+        case .Subtract: .keypadMinus
+        case .Decimal: .keypadDecimal // <-- mapped twice
+        case .Divide: .keypadDivide
+        case .F1: .f1
+        case .F2: .f2
+        case .F3: .f3
+        case .F4: .f4
+        case .F5: .f5
+        case .F6: .f6
+        case .F7: .f7
+        case .F8: .f8
+        case .F9: .f9
+        case .F10: .f10
+        case .F11: .f11
+        case .F12: .f12
+        case .F13: .f13
+        case .F14: .f14
+        case .F15: .f15
+        case .F16: .f16
+        case .F17: .f17
+        case .F18: .f18
+        case .F19: .f19
+        case .F20: .f20
+        // case .F21:
+        // case .F22:
+        // case .F23:
+        // case .F24:
+        // case .NumLock:
+        // case .ScrollLock:
+        // case .LShiftKey: kVK_Shift
+        // case .RShiftKey: kVK_RightShift
+        // case .LControlKey: kVK_Control
+        // case .RControlKey: kVK_RightControl
+        // case .LMenu: kVK_Option
+        // case .RMenu: kVK_RightOption
+        // case .BrowserBack:
+        // case .BrowserForward:
+        // case .BrowserRefresh:
+        // case .BrowserStop:
+        // case .BrowserSearch:
+        // case .BrowserFavorites:
+        // case .BrowserHome:
+        // case .VolumeMute: kVK_Mute
+        // case .VolumeDown: kVK_VolumeDown
+        // case .VolumeUp: kVK_VolumeUp
+        // case .MediaNextTrack: NX_KEYTYPE_NEXT
+        // case .MediaPreviousTrack: NX_KEYTYPE_PREVIOUS
+        // case .MediaStop:
+        // case .MediaPlayPause: NX_KEYTYPE_PLAY
+        // case .LaunchMail:
+        // case .SelectMedia:
+        // case .LaunchApplication1:
+        // case .LaunchApplication2:
+        case .OemSemicolon: .semicolon
+        // case .OemPlus:
+        case .OemComma: .comma
+        case .OemMinus: .minus
+        case .OemPeriod: .period
+        // case .OemQuestion:
+        // case .OemTilde:
+        case .OemOpenBrackets: .leftBracket
+        // case .OemPipe:
+        case .OemCloseBrackets: .rightBracket
+        case .OemQuotes: .quote
+        // case .Oem8:
+        case .OemBackslash: .backslash
+        // case .Play:
+        // case .Zoom:
+        // case .CancelKey:
+        default: nil
+        }
+    }
+
+    @objc public static func convertWin32KeysToCarbon(key: uint) -> Int {
+        return if let keys = Keys(rawValue: UInt(key)) {
+            if let out = convertWin32KeysToCarbon(keys: keys) {
+                out
+            } else {
+                0
+            }
+        } else {
+            0
+        }
+    }
+
+    private static func convertWin32KeysToCarbon(keys: Keys) -> Int? {
+        return switch (keys) {
+        // case .Backspace: .delete
+        // case .Tab: .tab
+        // case .LineFeed: .keypadEnter
+        // case .Clear: .keypadClear
+        // case .Enter: .return
+        case .ShiftKey: kVK_Shift
+        case .ControlKey: kVK_Control
+        case .Menu: kVK_Option
+        // case .Pause:
+        case .CapsLock: kVK_CapsLock
+        // case .HanguelMode:
+        // case .HangulMode:
+        // case .JunjaMode:
+        // case .FinalMode:
+        // case .HanjaMode:
+        // case .KanjiMode:
+        // case .Escape: .escape
+        // case .IMEConvert:
+        // case .IMENonconvert:
+        // case .IMEAccept:
+        // case .IMEModeChange:
+        // case .Space: .space
+        // case .PageUp: .pageUp
+        // case .PageDown: .pageDown
+        // case .End: .end
+        // case .Home: .home
+        // case .Left: .leftArrow
+        // case .Up: .upArrow
+        // case .Right: .rightArrow
+        // case .Down: .downArrow
+        // case .Select:
+        // case .Print:
+        // case .Execute:
+        // case .PrintScreen:
+        // case .Insert:
+        // case .Delete: .forwardDelete
+        // case .Help: .help
+        // case .Decimal0: .zero
+        // case .Decimal1: .one
+        // case .Decimal2: .two
+        // case .Decimal3: .three
+        // case .Decimal4: .four
+        // case .Decimal5: .five
+        // case .Decimal6: .six
+        // case .Decimal7: .seven
+        // case .Decimal8: .eight
+        // case .Decimal9: .nine
+        // case .A: .a
+        // case .B: .b
+        // case .C: .c
+        // case .D: .d
+        // case .E: .e
+        // case .F: .f
+        // case .G: .g
+        // case .H: .h
+        // case .I: .i
+        // case .J: .j
+        // case .K: .k
+        // case .L: .l
+        // case .M: .m
+        // case .N: .n
+        // case .O: .o
+        // case .P: .p
+        // case .Q: .q
+        // case .R: .r
+        // case .S: .s
+        // case .U: .u
+        // case .T: .t
+        // case .V: .v
+        // case .W: .w
+        // case .X: .x
+        // case .Y: .y
+        // case .Z: .z
+        case .LWin: kVK_Command
+        case .RWin: kVK_Command
+        // case .Apps:
+        // case .Sleep:
+        // case .NumPad0: .keypadZero
+        // case .NumPad1: .keypadOne
+        // case .NumPad2: .keypadTwo
+        // case .NumPad3: .keypadThree
+        // case .NumPad4: .keypadFour
+        // case .NumPad5: .keypadFive
+        // case .NumPad6: .keypadSix
+        // case .NumPad7: .keypadSeven
+        // case .NumPad8: .keypadEight
+        // case .NumPad9: .keypadNine
+        // case .Multiply: .keypadMultiply
+        // case .Add: .keypadPlus
+        // case .Separator: .keypadDecimal // <-- mapped twice
+        // case .Subtract: .keypadMinus
+        // case .Decimal: .keypadDecimal // <-- mapped twice
+        // case .Divide: .keypadDivide
+        // case .F1: .f1
+        // case .F2: .f2
+        // case .F3: .f3
+        // case .F4: .f4
+        // case .F5: .f5
+        // case .F6: .f6
+        // case .F7: .f7
+        // case .F8: .f8
+        // case .F9: .f9
+        // case .F10: .f10
+        // case .F11: .f11
+        // case .F12: .f12
+        // case .F13: .f13
+        // case .F14: .f14
+        // case .F15: .f15
+        // case .F16: .f16
+        // case .F17: .f17
+        // case .F18: .f18
+        // case .F19: .f19
+        // case .F20: .f20
+        // case .F21:
+        // case .F22:
+        // case .F23:
+        // case .F24:
+        // case .NumLock:
+        // case .ScrollLock:
+        case .LShiftKey: kVK_Shift
+        case .RShiftKey: kVK_RightShift
+        case .LControlKey: kVK_Control
+        case .RControlKey: kVK_RightControl
+        case .LMenu: kVK_Option
+        case .RMenu: kVK_RightOption
+        // case .BrowserBack:
+        // case .BrowserForward:
+        // case .BrowserRefresh:
+        // case .BrowserStop:
+        // case .BrowserSearch:
+        // case .BrowserFavorites:
+        // case .BrowserHome:
+        case .VolumeMute: kVK_Mute
+        case .VolumeDown: kVK_VolumeDown
+        case .VolumeUp: kVK_VolumeUp
+        // case .MediaNextTrack: NX_KEYTYPE_NEXT
+        // case .MediaPreviousTrack: NX_KEYTYPE_PREVIOUS
+        // case .MediaStop:
+        // case .MediaPlayPause: NX_KEYTYPE_PLAY
+        // case .LaunchMail:
+        // case .SelectMedia:
+        // case .LaunchApplication1:
+        // case .LaunchApplication2:
+        // case .OemSemicolon: .semicolon
+        // case .OemPlus:
+        // case .OemComma: .comma
+        // case .OemMinus: .minus
+        // case .OemPeriod: .period
+        // case .OemQuestion:
+        // case .OemTilde:
+        // case .OemOpenBrackets: .leftBracket
+        // case .OemPipe:
+        // case .OemCloseBrackets: .rightBracket
+        // case .OemQuotes: .quote
+        // case .Oem8:
+        // case .OemBackslash: .backslash
+        // case .Play:
+        // case .Zoom:
+        // case .CancelKey:
+        default: if let cocoaKey = convertWin32KeysToCocoa(keys:keys) {
+            // this (or more precisely any code using .keyEquivalent)
+            // needs to run on main thread to avoid hanging forever
+            //note: to translate keycode ASCII_Z to physical Z on qwertz, uncomment this
+            //as avalonia gives us qwerty codes, we don't bother translating back and forth to insanity
+            /*if let out = (DispatchQueue.main.sync {
+                Sauce.shared.currentKeyCode(for:cocoaKey)
+            }) {
+                Int(out)
+            } else {
+                nil
+            }*/
+            Int(cocoaKey.QWERTYKeyCode)
+        } else {
+            nil
+        }
+        }
+    }
+
+    private static let NX_KEYTYPE_PLAY: UInt32 = 16
+    private static let NX_KEYTYPE_NEXT: UInt32 = 17
+    private static let NX_KEYTYPE_PREVIOUS: UInt32 = 18
+    // https://stackoverflow.com/a/55854051
+    private static func HIDPostAuxKey(key: UInt32, down: Bool) {
+        let flags = NSEvent.ModifierFlags(rawValue: (down ? 0xa00 : 0xb00))
+        let data1 = Int((key<<16) | (down ? 0xa00 : 0xb00))
+
+        let ev = NSEvent.otherEvent(with: NSEvent.EventType.systemDefined,
+                                    location: NSPoint(x:0,y:0),
+                                    modifierFlags: flags,
+                                    timestamp: 0,
+                                    windowNumber: 0,
+                                    context: nil,
+                                    subtype: 8,
+                                    data1: data1,
+                                    data2: -1
+                                    )
+        let cev = ev?.cgEvent
+        cev?.post(tap: CGEventTapLocation.cghidEventTap)
+    }
+
+    @objc public static func submitMediaKeyIfPossible(key: UInt, down:Bool) -> Bool {
+        if (key == Keys.MediaNextTrack.rawValue) {
+            HIDPostAuxKey(key: NX_KEYTYPE_NEXT, down:down)
+        } else if (key == Keys.MediaPreviousTrack.rawValue) {
+            HIDPostAuxKey(key: NX_KEYTYPE_PREVIOUS, down:down)
+        } else if (key == Keys.MediaPlayPause.rawValue) {
+            HIDPostAuxKey(key: NX_KEYTYPE_PLAY, down:down)
+        } else {
+            return false
+        }
+        return true
+    }
+    
+    private typealias MRMediaRemoteGetNowPlayingApplicationIsPlayingFunction = @convention(c) (DispatchQueue, @escaping (Bool) -> Void) -> Void
+    private static let bundle = CFBundleCreate(kCFAllocatorDefault, NSURL(fileURLWithPath: "/System/Library/PrivateFrameworks/MediaRemote.framework"))
+    private static let MRMediaRemoteGetNowPlayingApplicationIsPlayingPointer = CFBundleGetFunctionPointerForName(bundle, "MRMediaRemoteGetNowPlayingApplicationIsPlaying" as CFString)
+
+    @objc public static func sendMagicMediaCmd(play: Bool) {
+        if (MRMediaRemoteGetNowPlayingApplicationIsPlayingPointer != nil) {
+            let MRMediaRemoteGetNowPlayingApplicationIsPlaying = unsafeBitCast(MRMediaRemoteGetNowPlayingApplicationIsPlayingPointer, to: MRMediaRemoteGetNowPlayingApplicationIsPlayingFunction.self)
+            MRMediaRemoteGetNowPlayingApplicationIsPlaying(DispatchQueue.main, { (isPlaying) in
+                if (isPlaying != play) {
+                    HIDPostAuxKey(key: NX_KEYTYPE_PLAY, down:true)
+                    HIDPostAuxKey(key: NX_KEYTYPE_PLAY, down:false)
+                }
+            })
+        } else {
+            fatalError("can't find MRMediaRemoteGetNowPlayingApplicationIsPlaying")
+        }
     }
 }
 
@@ -221,17 +493,17 @@ private enum Keys : UInt {
     /// <summary>
     ///  The SHIFT key.
     /// </summary>
-    /// ShiftKey = 0x10
+    case ShiftKey = 0x10
 
     /// <summary>
     ///  The CTRL key.
     /// </summary>
-    /// ControlKey = 0x11,
+    case ControlKey = 0x11
 
     /// <summary>
     ///  The ALT key.
     /// </summary>
-    /// Menu = 0x12,
+    case Menu = 0x12
 
     /// <summary>
     ///  The PAUSE key.
@@ -246,37 +518,37 @@ private enum Keys : UInt {
     /// <summary>
     ///  The IME Kana mode key.
     /// </summary>
-    /// KanaMode = 0x15,
+    case KanaMode = 0x15
 
     /// <summary>
     ///  The IME Hanguel mode key.
     /// </summary>
-    /// HanguelMode = 0x15,
+    // case HanguelMode = 0x15
 
     /// <summary>
     ///  The IME Hangul mode key.
     /// </summary>
-    /// HangulMode = 0x15,
+    // case HangulMode = 0x15
 
     /// <summary>
     ///  The IME Junja mode key.
     /// </summary>
-    /// JunjaMode = 0x17,
+    case JunjaMode = 0x17
 
     /// <summary>
     ///  The IME Final mode key.
     /// </summary>
-    /// FinalMode = 0x18,
+    case FinalMode = 0x18
 
     /// <summary>
     ///  The IME Hanja mode key.
     /// </summary>
-    /// HanjaMode = 0x19,
+    case HanjaMode = 0x19
 
     /// <summary>
     ///  The IME Kanji mode key.
     /// </summary>
-    /// KanjiMode = 0x19,
+    // case KanjiMode = 0x19
 
     /// <summary>
     ///  The ESC key.
@@ -286,22 +558,22 @@ private enum Keys : UInt {
     /// <summary>
     ///  The IME Convert key.
     /// </summary>
-    /// IMEConvert = 0x1C,
+    case IMEConvert = 0x1C
 
     /// <summary>
     ///  The IME NonConvert key.
     /// </summary>
-    /// IMENonconvert = 0x1D,
+    case IMENonconvert = 0x1D
 
     /// <summary>
     ///  The IME Accept key.
     /// </summary>
-    /// IMEAccept = 0x1E,
+    case IMEAccept = 0x1E
     
     /// <summary>
     ///  The IME Mode change request.
     /// </summary>
-    /// IMEModeChange = 0x1F,
+    case IMEModeChange = 0x1F
 
     /// <summary>
     ///  The SPACEBAR key.
@@ -566,12 +838,12 @@ private enum Keys : UInt {
     /// <summary>
     ///  The left Windows logo key (Microsoft Natural Keyboard).
     /// </summary>
-    /// LWin = 0x5B,
+    case LWin = 0x5B
 
     /// <summary>
     ///  The right Windows logo key (Microsoft Natural Keyboard).
     /// </summary>
-    /// RWin = 0x5C,
+    case RWin = 0x5C
 
     /// <summary>
     ///  The Application key (Microsoft Natural Keyboard).
@@ -581,7 +853,7 @@ private enum Keys : UInt {
     /// <summary>
     ///  The Computer Sleep key.
     /// </summary>
-    /// Sleep = 0x5F,
+    case Sleep = 0x5F
 
     /// <summary>
     ///  The 0 key on the numeric keypad.
@@ -796,32 +1068,32 @@ private enum Keys : UInt {
     /// <summary>
     ///  The left SHIFT key.
     /// </summary>
-    /// LShiftKey = 0xA0,
+    case LShiftKey = 0xA0
 
     /// <summary>
     ///  The right SHIFT key.
     /// </summary>
-    /// RShiftKey = 0xA1,
+    case RShiftKey = 0xA1
 
     /// <summary>
     ///  The left CTRL key.
     /// </summary>
-    /// LControlKey = 0xA2,
+    case LControlKey = 0xA2
 
     /// <summary>
     ///  The right CTRL key.
     /// </summary>
-    /// RControlKey = 0xA3,
+    case RControlKey = 0xA3
 
     /// <summary>
     ///  The left ALT key.
     /// </summary>
-    /// LMenu = 0xA4,
+    case LMenu = 0xA4
 
     /// <summary>
     ///  The right ALT key.
     /// </summary>
-    /// RMenu = 0xA5,
+    case RMenu = 0xA5
 
     /// <summary>
     ///  The Browser Back key.

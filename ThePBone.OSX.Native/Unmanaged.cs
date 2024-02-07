@@ -109,6 +109,8 @@ namespace ThePBone.OSX.Native.Unmanaged
     public static class AppUtils
     {
         [DllImport(DSO.Name)]
+        public static extern void sendMagicMediaCmd(bool play);
+        [DllImport(DSO.Name)]
         public static extern void setHideInDock(bool hide);
         [DllImport(DSO.Name)]
         public static extern bool setAutoStartEnabled(bool autoStart);
@@ -124,5 +126,11 @@ namespace ThePBone.OSX.Native.Unmanaged
         public static extern unsafe void unregisterAllHotkeys(void* hotkeyMgrPtr);
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate void HotkeyOnDispatch(uint identifier);
+        [DllImport(DSO.Name)]
+        public static extern unsafe void allocHotkeySim(void *self);
+        [DllImport(DSO.Name)]
+        public static extern unsafe void deallocHotkeySim(void *self);
+        [DllImport(DSO.Name)]
+        public static extern unsafe void simulateHotKey(void *self, uint keyCode, bool down, bool maskCmd, bool maskOpt, bool maskCtrl, bool maskShft);
     }
 }

@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace GalaxyBudsClient.Model.Hotkeys
@@ -10,6 +12,150 @@ namespace GalaxyBudsClient.Model.Hotkeys
         Control = 2,
         Shift = 4,
         Win = 8
+    }
+
+    public static class UserKeys
+    {
+        public static readonly Keys[] KeyList =
+        {
+            Keys.Backspace,
+            Keys.Tab,
+            Keys.LineFeed,
+            Keys.Clear,
+            Keys.Enter,
+            Keys.Pause,
+            Keys.CapsLock,
+            Keys.Escape,
+            Keys.Space,
+            Keys.PageUp,
+            Keys.PageDown,
+            Keys.End,
+            Keys.Home,
+            Keys.Left,
+            Keys.Up,
+            Keys.Right,
+            Keys.Down,
+            Keys.Select,
+            Keys.Print,
+            Keys.Execute,
+            Keys.PrintScreen,
+            Keys.Insert,
+            Keys.Delete,
+            Keys.Help,
+            Keys.Decimal0,
+            Keys.Decimal1,
+            Keys.Decimal2,
+            Keys.Decimal3,
+            Keys.Decimal4,
+            Keys.Decimal5,
+            Keys.Decimal6,
+            Keys.Decimal7,
+            Keys.Decimal8,
+            Keys.Decimal9,
+            Keys.A,
+            Keys.B,
+            Keys.C,
+            Keys.D,
+            Keys.E,
+            Keys.F,
+            Keys.G,
+            Keys.H,
+            Keys.I,
+            Keys.J,
+            Keys.K,
+            Keys.L,
+            Keys.M,
+            Keys.N,
+            Keys.O,
+            Keys.P,
+            Keys.Q,
+            Keys.R,
+            Keys.S,
+            Keys.T,
+            Keys.U,
+            Keys.V,
+            Keys.W,
+            Keys.X,
+            Keys.Y,
+            Keys.Z,
+            Keys.Apps,
+            Keys.NumPad0,
+            Keys.NumPad1,
+            Keys.NumPad2,
+            Keys.NumPad3,
+            Keys.NumPad4,
+            Keys.NumPad5,
+            Keys.NumPad6,
+            Keys.NumPad7,
+            Keys.NumPad8,
+            Keys.NumPad9,
+            Keys.Multiply,
+            Keys.Add,
+            Keys.Separator,
+            Keys.Subtract,
+            Keys.Decimal,
+            Keys.Divide,
+            Keys.F1,
+            Keys.F2,
+            Keys.F3,
+            Keys.F4,
+            Keys.F5,
+            Keys.F6,
+            Keys.F7,
+            Keys.F8,
+            Keys.F9,
+            Keys.F10,
+            Keys.F11,
+            Keys.F12,
+            Keys.F13,
+            Keys.F14,
+            Keys.F15,
+            Keys.F16,
+            Keys.F17,
+            Keys.F18,
+            Keys.F19,
+            Keys.F20,
+            Keys.F21,
+            Keys.F22,
+            Keys.F23,
+            Keys.F24,
+            Keys.NumLock,
+            Keys.ScrollLock,
+            Keys.BrowserBack,
+            Keys.BrowserForward,
+            Keys.BrowserRefresh,
+            Keys.BrowserStop,
+            Keys.BrowserSearch,
+            Keys.BrowserFavorites,
+            Keys.BrowserHome,
+            Keys.VolumeMute,
+            Keys.VolumeDown,
+            Keys.VolumeUp,
+            Keys.MediaNextTrack,
+            Keys.MediaPreviousTrack,
+            Keys.MediaStop,
+            Keys.MediaPlayPause,
+            Keys.LaunchMail,
+            Keys.SelectMedia,
+            Keys.LaunchApplication1,
+            Keys.LaunchApplication2,
+            Keys.OemSemicolon,
+            Keys.OemPlus,
+            Keys.OemComma,
+            Keys.OemMinus,
+            Keys.OemPeriod,
+            Keys.OemQuestion,
+            Keys.OemTilde,
+            Keys.OemOpenBrackets,
+            Keys.OemPipe,
+            Keys.OemCloseBrackets,
+            Keys.OemQuotes,
+            Keys.Oem8,
+            Keys.OemBackslash,
+            Keys.Play,
+            Keys.Zoom,
+            Keys.CancelKey
+        };
     }
     
     [Flags]
@@ -45,17 +191,17 @@ namespace GalaxyBudsClient.Model.Hotkeys
         /// <summary>
         ///  The SHIFT key.
         /// </summary>
-        /// ShiftKey = 0x10,
+        ShiftKey = 0x10,
 
         /// <summary>
         ///  The CTRL key.
         /// </summary>
-        /// ControlKey = 0x11,
+        ControlKey = 0x11,
 
         /// <summary>
         ///  The ALT key.
         /// </summary>
-        /// Menu = 0x12,
+        Menu = 0x12,
 
         /// <summary>
         ///  The PAUSE key.
@@ -70,7 +216,7 @@ namespace GalaxyBudsClient.Model.Hotkeys
         /// <summary>
         ///  The IME Kana mode key.
         /// </summary>
-        /// KanaMode = 0x15,
+        KanaMode = 0x15,
 
         /// <summary>
         ///  The IME Hanguel mode key.
@@ -85,12 +231,12 @@ namespace GalaxyBudsClient.Model.Hotkeys
         /// <summary>
         ///  The IME Junja mode key.
         /// </summary>
-        /// JunjaMode = 0x17,
+        JunjaMode = 0x17,
 
         /// <summary>
         ///  The IME Final mode key.
         /// </summary>
-        /// FinalMode = 0x18,
+        FinalMode = 0x18,
 
         /// <summary>
         ///  The IME Hanja mode key.
@@ -100,7 +246,7 @@ namespace GalaxyBudsClient.Model.Hotkeys
         /// <summary>
         ///  The IME Kanji mode key.
         /// </summary>
-        /// KanjiMode = 0x19,
+        KanjiMode = 0x19,
 
         /// <summary>
         ///  The ESC key.
@@ -110,22 +256,22 @@ namespace GalaxyBudsClient.Model.Hotkeys
         /// <summary>
         ///  The IME Convert key.
         /// </summary>
-        /// IMEConvert = 0x1C,
+        IMEConvert = 0x1C,
 
         /// <summary>
         ///  The IME NonConvert key.
         /// </summary>
-        /// IMENonconvert = 0x1D,
+        IMENonconvert = 0x1D,
 
         /// <summary>
         ///  The IME Accept key.
         /// </summary>
-        /// IMEAccept = 0x1E,
+        IMEAccept = 0x1E,
         
         /// <summary>
         ///  The IME Mode change request.
         /// </summary>
-        /// IMEModeChange = 0x1F,
+        IMEModeChange = 0x1F,
 
         /// <summary>
         ///  The SPACEBAR key.
@@ -207,7 +353,7 @@ namespace GalaxyBudsClient.Model.Hotkeys
         /// </summary>
         Help = 0x2F,
         
-                /// <summary>
+        /// <summary>
         ///  The 0 key.
         /// </summary>
         Decimal0 = 0x30, // 0
@@ -390,12 +536,12 @@ namespace GalaxyBudsClient.Model.Hotkeys
         /// <summary>
         ///  The left Windows logo key (Microsoft Natural Keyboard).
         /// </summary>
-        /// LWin = 0x5B,
+        LWin = 0x5B,
 
         /// <summary>
         ///  The right Windows logo key (Microsoft Natural Keyboard).
         /// </summary>
-        /// RWin = 0x5C,
+        RWin = 0x5C,
 
         /// <summary>
         ///  The Application key (Microsoft Natural Keyboard).
@@ -405,7 +551,7 @@ namespace GalaxyBudsClient.Model.Hotkeys
         /// <summary>
         ///  The Computer Sleep key.
         /// </summary>
-        /// Sleep = 0x5F,
+        Sleep = 0x5F,
 
         /// <summary>
         ///  The 0 key on the numeric keypad.
@@ -620,32 +766,32 @@ namespace GalaxyBudsClient.Model.Hotkeys
         /// <summary>
         ///  The left SHIFT key.
         /// </summary>
-        /// LShiftKey = 0xA0,
+        LShiftKey = 0xA0,
 
         /// <summary>
         ///  The right SHIFT key.
         /// </summary>
-        /// RShiftKey = 0xA1,
+        RShiftKey = 0xA1,
 
         /// <summary>
         ///  The left CTRL key.
         /// </summary>
-        /// LControlKey = 0xA2,
+        LControlKey = 0xA2,
 
         /// <summary>
         ///  The right CTRL key.
         /// </summary>
-        /// RControlKey = 0xA3,
+        RControlKey = 0xA3,
 
         /// <summary>
         ///  The left ALT key.
         /// </summary>
-        /// LMenu = 0xA4,
+        LMenu = 0xA4,
 
         /// <summary>
         ///  The right ALT key.
         /// </summary>
-        /// RMenu = 0xA5,
+        RMenu = 0xA5,
 
         /// <summary>
         ///  The Browser Back key.

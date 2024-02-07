@@ -20,6 +20,10 @@ namespace GalaxyBudsClient.Platform
                 Instance = new Linux.MediaKeyRemote();
             }
 #endif
+            else if (PlatformUtils.IsOSX)
+            {
+                Instance = new OSX.MediaKeyRemote();
+            }
             else
             {
                 Instance = new Dummy.MediaKeyRemote();
@@ -38,7 +42,7 @@ namespace GalaxyBudsClient.Platform
                     Instance.Play();
                     break;
                 case EventDispatcher.Event.Pause:
-                    Instance.Play();
+                    Instance.Pause();
                     break;
                 case EventDispatcher.Event.TogglePlayPause:
                     Instance.PlayPause();

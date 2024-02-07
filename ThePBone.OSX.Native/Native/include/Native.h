@@ -7,6 +7,7 @@
 
 #import "Bluetooth.h"
 #import "BluetoothDeviceWatcher.h"
+#import <CoreGraphics/CGEventTypes.h>
 
 @class Bluetooth;
 @class BluetoothDeviceWatcher;
@@ -21,6 +22,10 @@ struct BluetoothImpl {
 struct HotkeyMgrImpl {
     NSMutableArray *hotkeys;
     HotkeyOnDispatch onDispatchHotkey;
+};
+
+struct HotkeySimImpl {
+    CGEventSourceRef src;
 };
 
 void dispatchHotkey(HotkeyMgrImpl *self, NSNumber* identifier);
@@ -50,6 +55,7 @@ extern void btdev_free(Device *self);
 /* General memory management */
 extern void mem_free(void *ptr);
 
+extern void sendMagicMediaCmd(bool play);
 extern void setHideInDock(bool doHide);
 extern void setAutoStartEnabled(bool autoStart);
 extern bool isAutoStartEnabled();
@@ -58,4 +64,7 @@ extern void allocHotkeyMgr(HotkeyMgrImpl **self, HotkeyOnDispatch cb);
 extern bool registerHotKey(HotkeyMgrImpl *self, uint win32Keyflags, uint win32Modflags);
 extern void deallocHotkeyMgr(HotkeyMgrImpl *self);
 extern void unregisterAllHotkeys(HotkeyMgrImpl *self);
+extern void allocHotkeySim(HotkeySimImpl **self);
+extern void deallocHotkeySim(HotkeySimImpl *self);
+extern void simulateHotKey(HotkeySimImpl *self, uint keyCode, bool down, bool maskCmd, bool maskOpt, bool maskCtrl, bool maskShft);
 };

@@ -68,8 +68,6 @@ namespace GalaxyBudsClient.Model
                 case Event.StartStopFind:
                 case Event.StartFind:
                 case Event.StopFind:
-                case Event.Play:
-                case Event.Pause:
                 case Event.Connect:
                     return false;
                 default:
