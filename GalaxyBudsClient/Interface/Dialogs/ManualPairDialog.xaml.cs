@@ -43,7 +43,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
 
         private async void Init()
         {
-            Device.Items = await BluetoothImpl.Instance.GetDevicesAsync();
+            Device.ItemsSource = await BluetoothImpl.Instance.GetDevicesAsync();
         }
         
         private void Cancel_OnClick(object? sender, RoutedEventArgs e)

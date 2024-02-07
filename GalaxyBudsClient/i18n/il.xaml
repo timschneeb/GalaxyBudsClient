@@ -1,12 +1,10 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
-
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
     <sys:String x:Key="ResourceDictionaryName">Loc-il</sys:String>
 
-    <!-- :::::::: Source code :::::::: -->
+    <!--:::::::: Source code ::::::::-->
 
-    <!-- General -->
+    <!--General-->
     <sys:String x:Key="okay">אוקיי</sys:String>
     <sys:String x:Key="left">שמאל</sys:String>
     <sys:String x:Key="right">ימין</sys:String>
@@ -23,22 +21,22 @@
 
     <sys:String x:Key="anc">אקטיבי רעשים ביטול</sys:String>
 
-    <!-- SPP Message Parser -->
+    <!--SPP Message Parser-->
     <sys:String x:Key="sppmsg_too_small">גודל חבילה קטן מדי</sys:String>
     <sys:String x:Key="sppmsg_invalid_som">SOM שגוי</sys:String>
-    <!-- Context: SOM = Start of message -->
+    <!--Context: SOM = Start of message-->
     <sys:String x:Key="sppmsg_invalid_eom">EOM שגוי</sys:String>
-    <!-- Context: EOM = End of message -->
+    <!--Context: EOM = End of message-->
     <sys:String x:Key="sppmsg_size_mismatch">חוסר התאמה בגודל מטען</sys:String>
     <sys:String x:Key="sppmsg_crc_fail">סיכום בדיקה שגוי</sys:String>
     <sys:String x:Key="sppmsg_tl">גודל חבילה קטן מדי</sys:String>
 
-    <!-- Dark Mode States -->
+    <!--Dark Mode States-->
     <sys:String x:Key="darkmode_disabled">כבוי</sys:String>
     <sys:String x:Key="darkmode_enabled">מופעל</sys:String>
     <sys:String x:Key="darkmode_system">המערכת בהגדרת השתמש</sys:String>
 
-    <!-- Connection popup -->
+    <!--Connection popup-->
     <sys:String x:Key="connpopup_placement_tl">שמאל למעלה</sys:String>
     <sys:String x:Key="connpopup_placement_tc">מרכז למעלה</sys:String>
     <sys:String x:Key="connpopup_placement_tr">ימין למעלה</sys:String>
@@ -46,15 +44,15 @@
     <sys:String x:Key="connpopup_placement_bc">מרכז למטה</sys:String>
     <sys:String x:Key="connpopup_placement_br">ימין  למטה</sys:String>
     <sys:String x:Key="connpopup_title">.{0} של Galaxy Buds{1}ה</sys:String>
-    <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
+    <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
 
-    <!-- Placement  (Buds+) -->
+    <!--Placement  (Buds+)-->
     <sys:String x:Key="placement_disconnected">מנותק</sys:String>
     <sys:String x:Key="placement_wearing">באוזן</sys:String>
     <sys:String x:Key="placement_not_wearing">מחובר</sys:String>
     <sys:String x:Key="placement_in_case">בנרתיק</sys:String>
 
-    <!-- Touch options -->
+    <!--Touch options-->
     <sys:String x:Key="touchoption_voice">קולי עוזר</sys:String>
     <sys:String x:Key="touchoption_quickambientsound">סביבה צלילי</sys:String>
     <sys:String x:Key="touchoption_volume">שמע עוצמת</sys:String>
@@ -70,7 +68,7 @@
     <sys:String x:Key="touchoption_custom_trigger_hotkey">מקשים קיצור</sys:String>
     <sys:String x:Key="touchoption_custom_external_app">...חיצונית תוכנה הפעל</sys:String>
 
-    <!-- Options menu -->
+    <!--Options menu-->
     <sys:String x:Key="optionsmenu_title">אפשרויות</sys:String>
     <sys:String x:Key="optionsmenu_settings">הגדרות</sys:String>
     <sys:String x:Key="optionsmenu_refresh">מחוונים לוח רענן</sys:String>
@@ -78,7 +76,7 @@
     <sys:String x:Key="optionsmenu_update">עדכונים יש אם בדוק</sys:String>
     <sys:String x:Key="optionsmenu_credits">קרדיטים</sys:String>
 
-    <!-- Tray context menu -->
+    <!--Tray context menu-->
     <sys:String x:Key="tray_unlock_touchpad">בטל נעילת משטח מגע</sys:String>
     <sys:String x:Key="tray_lock_touchpad">נעל משטח מגע</sys:String>
     <sys:String x:Key="tray_enable_ambient_sound">הפעל צלילי סביבה</sys:String>
@@ -91,18 +89,18 @@
     <sys:String x:Key="tray_quit">יציאה</sys:String>
 
 
-    <!-- :::::::: XAML files (static) :::::::: -->
+    <!--:::::::: XAML files (static) ::::::::-->
 
-    <!-- General -->
+    <!--General-->
     <sys:String x:Key="continue_button">המשך</sys:String>
 
-    <!-- Hotkey Recorder Dialog (Custom action) -->
+    <!--Hotkey Recorder Dialog (Custom action)-->
     <sys:String x:Key="hotrec_title">מקליט קיצורי מקשים</sys:String>
     <sys:String x:Key="hotrec_content">יש ללחוץ על קיצור המקשים הרצוי:</sys:String>
     <sys:String x:Key="hotrec_empty">ריק</sys:String>
     <sys:String x:Key="hotrec_note">הערה: בגלל מדיניות הפרטיות במחשב (UIPI), רק יישומים באותה רמה או נמוכה יותר יוכלו לקבל פקודות קיצורי מקשים</sys:String>
 
-    <!-- Hotkey Action Builder Dialog -->
+    <!--Hotkey Action Builder Dialog-->
     <sys:String x:Key="hotkey_edit_title">עורך קיצורי המקשים</sys:String>
     <sys:String x:Key="hotkey_edit_invalid">זמין לא מקשים קיצור</sys:String>
     <sys:String x:Key="hotkey_edit_invalid_desc">יש לבחור לפחות מקש אחד בשילוב מקש Ctrl, Alt, Shift</sys:String>
@@ -112,10 +110,10 @@
     <sys:String x:Key="hotkey_edit_modifier">מצב מקשי</sys:String>
     <sys:String x:Key="hotkey_edit_keys">מקשים</sys:String>
     <sys:String x:Key="hotkey_edit_action">פעולה</sys:String>
-    <sys:String x:Key="hotkey_edit_preview">מקדימה תצוגה: </sys:String>
+    <sys:String x:Key="hotkey_edit_preview">מקדימה תצוגה:</sys:String>
     <sys:String x:Key="hotkey_edit_header">מקשים קיצור בחר</sys:String>
 
-    <!-- Hotkey page -->
+    <!--Hotkey page-->
     <sys:String x:Key="hotkey_header">מקשים קיצורי</sys:String>
     <sys:String x:Key="hotkey_add">חדש מקשים קיצור צור</sys:String>
     <sys:String x:Key="hotkey_empty">מקשים קיצורי אין</sys:String>
@@ -127,7 +125,7 @@
     <sys:String x:Key="hotkey_add_error_duplicate">.שונה קיצור בחר .אחר או זה ביישום כבר רשום שנבחר הקיצור</sys:String>
     <sys:String x:Key="hotkey_add_error_unknown">מערכת ההפעלה הגיבה בשגיאה '{0}'</sys:String>
 
-    <!-- EventDispatcher module -->
+    <!--EventDispatcher module-->
     <sys:String x:Key="event_none">None</sys:String>
     <sys:String x:Key="event_ambient_toggle">סביבה רעשי הפעלת</sys:String>
     <sys:String x:Key="event_ambient_volume_up">סביבה רעשי הגבר</sys:String>
@@ -150,31 +148,25 @@
     <sys:String x:Key="event_display_battery_popup">סוללה פרטי עם קופץ חלון הצג</sys:String>
     <sys:String x:Key="event_connect">למכשיר התחבר</sys:String>
 
-    <!-- Welcome page -->
+    <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">!הבאים ברוכים</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">
-      .אופן בשום לסמסונג מקושרת ואינה רשמית אינה זו תוכנה ,לב שימו
+    <sys:String x:Key="welcome_textblock_p1">.אופן בשום לסמסונג מקושרת ואינה רשמית אינה זו תוכנה ,לב שימו
       המקורי היישום מאשר יותר טובה פונקציונליות להעניק כדי עוצבה זו תוכנה
       זמינות האפשרויות כל לא ,זאת למרות
-      .מותקנת אינה זו תוכנה בהם במכשירים
-    </sys:String>
-    <sys:String x:Key="welcome_textblock_p2">
-
-      הקלעים מאחורי קורה מה לדעת תרצו אם
+      .מותקנת אינה זו תוכנה בהם במכשירים</sys:String>
+    <sys:String x:Key="welcome_textblock_p2">הקלעים מאחורי קורה מה לדעת תרצו אם
       שלי הגיטהאב לספריית להיכנס תוכלו
       יומן למצוא תוכלו שם
       קטן הפוכה הנדסה
        הודעה לשלוח גם תוכלו בבעיה ותתקלו במידה
       בטלגרם או בגיטהאב הודעה
 
-      @thepbone
-    </sys:String>
-    <sys:String x:Key="welcome_textblock_p3">
-Galaxy Buds דגמי בכל תומך היישום    </sys:String>
+      @thepbone</sys:String>
+    <sys:String x:Key="welcome_textblock_p3">Galaxy Buds דגמי בכל תומך היישום</sys:String>
     <sys:String x:Key="welcome_darkmode">חשוך מצב</sys:String>
     <sys:String x:Key="welcome_darkmode_content">מחדש הפעלה נדרשת -  יותר כהים בצבעים השתמש ?שורפות העיניים</sys:String>
 
-    <!-- Main page -->
+    <!--Main page-->
     <sys:String x:Key="mainpage_corrupt_data">...מחדש מתחבר .שגוי מידע התקבל</sys:String>
     <sys:String x:Key="mainpage_find_my_earbuds">שלי הכפתור אוזניות את אתר</sys:String>
     <sys:String x:Key="mainpage_touchpad">מגע פקדי</sys:String>
@@ -184,14 +176,11 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="mainpage_advanced">מתקדמות הגדרות</sys:String>
     <sys:String x:Key="mainpage_system">מערכת</sys:String>
 
-    <!-- Update page -->
+    <!--Update page-->
     <sys:String x:Key="updater_header">זמין תוכנה עדכון</sys:String>
-    <sys:String x:Key="updater_message_p1">
-      תסתיים שההורדה לאחר יפתח העדכון ואשף לחלוטין אוטומטית ההורדה
-      החדשים והתכונות הבאגים תיקוני כל את לקבל מנת על לעדכן בחום מומלץ
-    </sys:String>
-    <sys:String x:Key="updater_message_p2">
-.הכפתור על בלחיצה השינויים ביומן לצפות ניתן    </sys:String>
+    <sys:String x:Key="updater_message_p1">תסתיים שההורדה לאחר יפתח העדכון ואשף לחלוטין אוטומטית ההורדה
+      החדשים והתכונות הבאגים תיקוני כל את לקבל מנת על לעדכן בחום מומלץ</sys:String>
+    <sys:String x:Key="updater_message_p2">.הכפתור על בלחיצה השינויים ביומן לצפות ניתן</sys:String>
 
     <sys:String x:Key="updater_view_changelog">בגיטהאב המלא השינויים ביומן צפה</sys:String>
     <sys:String x:Key="updater_footer_remindmelater">יותר מאוחר</sys:String>
@@ -205,7 +194,7 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="updater_dl_header">מוריד</sys:String>
     <sys:String x:Key="updater_dl_manual">בגיטאהב צפה</sys:String>
     <sys:String x:Key="updater_dl_fail_title">נכשלה ההורדה</sys:String>
-    <sys:String x:Key="updater_dl_fail">סיבה:&#10;</sys:String>
+    <sys:String x:Key="updater_dl_fail">סיבה:</sys:String>
     <sys:String x:Key="updater_dl_progress_prepare">...הורדה מכין</sys:String>
     <sys:String x:Key="updater_dl_progress_cancelled">בוטלה הורדה</sys:String>
     <sys:String x:Key="updater_dl_progress_finished">מתקין הסתיימה הורדה...</sys:String>
@@ -213,7 +202,7 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="updater_dl_progress_size">({0}/{1} מגה-בייט)</sys:String>
     <sys:String x:Key="updater_dl_note">.שניות מספר לקחת יכול זה .חדש בחלון תפתח וההתקנה ייסגר החלון תסתיים כשההורדה</sys:String>
 
-    <!-- Device selection page (setup) -->
+    <!--Device selection page (setup)-->
     <sys:String x:Key="devsel_header">שלך האוזניות את בחר</sys:String>
     <sys:String x:Key="devsel_refresh">מותאמים מכשירים רענן</sys:String>
     <sys:String x:Key="devsel_device_name">מכשיר שם</sys:String>
@@ -224,12 +213,11 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="devsel_noselection">מכשירים נבחרו לא</sys:String>
     <sys:String x:Key="devsel_invalid_selection">בחר מכשיר נתמך</sys:String>
     <sys:String x:Key="devsel_footer_continue">הגדרה סיים</sys:String>
-    <sys:String x:Key="devsel_dialog_footer">'הבלוטות בהגדרות למחשב מחוברות שהן וודא מופיעות לא האוזניות אם
-	</sys:String>
+    <sys:String x:Key="devsel_dialog_footer">'הבלוטות בהגדרות למחשב מחוברות שהן וודא מופיעות לא האוזניות אם</sys:String>
     <sys:String x:Key="devsel_winrt_title">חלופי 'בלוטות בשירות השתמש</sys:String>
     <sys:String x:Key="devsel_winrt">מסוימים מתאמים ועם מחשב בכל לעבוד לא עלול אך יותר יציב</sys:String>
 
-    <!-- Unsupported feature page -->
+    <!--Unsupported feature page-->
     <sys:String x:Key="unsupported_feature_current_fwver">תוכנה גרסת:</sys:String>
     <sys:String x:Key="unsupported_feature_required_fwver">נדרשת תוכנה גרסת:</sys:String>
 
@@ -241,7 +229,7 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="unsupported_feature_description_p2">עדכן לתוכנת האוזניות העדכנית באמצעות הטלפון או המחשב</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">את בבת האוזניות עם לדבר יכולה אחת תוכנה רק ווינדוס במעדכן שימוש בזמן זו תוכנה סגור</sys:String>
 
-    <!-- Touchpad gestures -->
+    <!--Touchpad gestures-->
     <sys:String x:Key="touchpad_gesture_header">מגע מחוות אפשר</sys:String>
     <sys:String x:Key="touchpad_gesture_single">אחת הקשה</sys:String>
     <sys:String x:Key="touchpad_gesture_single_desc">שיר נגן/השהה</sys:String>
@@ -252,7 +240,7 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="touchpad_gesture_hold">ממושכת נגיעה</sys:String>
     <sys:String x:Key="touchpad_gesture_hold_desc">אישית מותאמת פעולה בצע</sys:String>
 
-    <!-- Touchpad page -->
+    <!--Touchpad page-->
     <sys:String x:Key="touchpad_header">מגע פקדי</sys:String>
     <sys:String x:Key="touchpad_lock">מגע פקדי נעל</sys:String>
     <sys:String x:Key="touchpad_left_action">שמאל אוזן פעולת</sys:String>
@@ -261,30 +249,26 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="touchpad_gestures">מתקדמת מגע פקדי נעילת</sys:String>
     <sys:String x:Key="touchpad_gestures_description">מחדל ברירת מגע מחוות בטל או אפשר</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume">בקצה כפולה הקשה</sys:String>
-    <sys:String x:Key="touchpad_double_tap_volume_description">
-    או להנמיך כדי הימנית או השמאלית האוזניה בקצה כפולה הקשה
-                                                           השמע עוצמת את להגביר 
-    </sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">או להנמיך כדי הימנית או השמאלית האוזניה בקצה כפולה הקשה
+                                                           השמע עוצמת את להגביר</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">ברעשים שליטה מצב החלפת</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC &lt;-&gt; סביבה צלילי</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; כבוי</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_amb_off">סביבה צלילי &lt;-&gt; כבוי</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">סביבה צלילי מצבי בין החלף</sys:String>
 
-    <!-- Custom touchpad action page -->
+    <!--Custom touchpad action page-->
     <sys:String x:Key="cact_header">ארוכה ללחיצה פעולה הגדר</sys:String>
     <sys:String x:Key="cact_external_app_dialog_title">קובץ בחר</sys:String>
     <sys:String x:Key="cact_action">אישית מותאמת פעולה</sys:String>
     <sys:String x:Key="cact_notice">הערה</sys:String>
     <sys:String x:Key="cact_notice_content_p1">ברקע פתוחה זו כשתוכנה רק זמינות אישית מותאמות ארוכה לחיצה פעולות</sys:String>
     <sys:String x:Key="cact_notice_content_p2">.אחרים במכשירים או באנדרואיד השפעה זו להגדרה אין</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">
-     ברקע ותרוץ ההפעלה מערכת עליית עם אוטומטית תעלה התוכנה
+    <sys:String x:Key="cact_notice_content_p3">ברקע ותרוץ ההפעלה מערכת עליית עם אוטומטית תעלה התוכנה
      זו תכונה פעילות על לשמור מנת על
-     ההגדרות בתפריט זאת לבטל ניתן
-    </sys:String>
+     ההגדרות בתפריט זאת לבטל ניתן</sys:String>
 
-    <!-- System/Self-Test -->
+    <!--System/Self-Test-->
     <sys:String x:Key="system_overview_header">מערכת</sys:String>
     <sys:String x:Key="system_header">מערכת מידע</sys:String>
     <sys:String x:Key="system_selftest">עצמאית בדיקה הרץ</sys:String>
@@ -294,7 +278,7 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="system_pairing_mode">(Pairing) חיבור למצב הכנס</sys:String>
     <sys:String x:Key="system_pairing_mode_desc">אחרים למכשירים לגלויות והפיכתן זה ממחשב האוזניות ניתוק</sys:String>
     <sys:String x:Key="system_trace_core_dump">באגים ניפוי נתוני הורדת</sys:String>
-    <sys:String x:Key="system_trace_core_dump_desc"> מהאוזניות Coredumps-ו Trace פולט</sys:String>
+    <sys:String x:Key="system_trace_core_dump_desc">מהאוזניות Coredumps-ו Trace פולט</sys:String>
     <sys:String x:Key="system_info">מערכת מידע הצג</sys:String>
     <sys:String x:Key="system_info_desc">האוזניות אודות מפורט מידע הצגת</sys:String>
     <sys:String x:Key="system_flasher">תוכנה עדכוני התקן</sys:String>
@@ -317,9 +301,9 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="system_thermo">טמפרטורה מד</sys:String>
     <sys:String x:Key="system_hall">Hall Measurement מתח מד</sys:String>
     <sys:String x:Key="system_accel">תאוצה מד מצב</sys:String>
-    <!-- Note: system_accel only used on the self-test page -->
+    <!--Note: system_accel only used on the self-test page-->
     <sys:String x:Key="system_adc_soc">ADC SoC</sys:String>
-    <!-- Context: SoC = State of charge (battery percentage) -->
+    <!--Context: SoC = State of charge (battery percentage)-->
     <sys:String x:Key="system_adc_voltage">ADC מתח</sys:String>
     <sys:String x:Key="system_adc_current">ADC זרם</sys:String>
 
@@ -343,15 +327,14 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
      שנאסף המידע לשמירת
      נתקע התהליך ואם כרגע כלל יציבה אינה זו תכונה
      מדי מוקדם מתנתק שהמכשיר או
-     התהליך את לשחזר עליך
-    </sys:String>
+     התהליך את לשחזר עליך</sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">נכשלה השמירה</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">סיבה: זמני ממיקום Dump להעתיק ניתן לא: {0}</sys:String>
     <sys:String x:Key="coredump_dl_save_success_title">בהצלחה נשמר</sys:String>
     <sys:String x:Key="coredump_dl_save_success">{0} אל נשמרו דאמפים '{1}'</sys:String>
     <sys:String x:Key="coredump_dl_save_dialog_title">הורדה תיקיית בחר...</sys:String>
 
-    <!-- Settings -->
+    <!--Settings-->
     <sys:String x:Key="settings_header">הגדרות</sys:String>
 
     <sys:String x:Key="settings_darkmode">חשוך מצב</sys:String>
@@ -370,7 +353,7 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="settings_devmode">למפתחים אפשרויות</sys:String>
     <sys:String x:Key="settings_crowdsourcing">המונים מיקור</sys:String>
 
-    <!-- Settings >>> Connection popup -->
+    <!--Settings >>> Connection popup-->
     <sys:String x:Key="settings_cpopup_header">בחיבור קופץ חלון</sys:String>
     <sys:String x:Key="settings_cpopup_enable">בחיבור קופץ חלון אפשר</sys:String>
     <sys:String x:Key="settings_cpopup_enable_description">האוזניות חיבור בזמן סוללה על מידע עם קטנה קופצת התראה מציג</sys:String>
@@ -386,7 +369,7 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="settings_cpopup_wear_state">בנרתיק כשהאוזניות אחר צבע</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state_description">בנרתיק כשהאוזניות אפור אוזניות סמל</sys:String>
     
-    <!-- Settings >>> Crowdsourcing settings -->
+    <!--Settings >>> Crowdsourcing settings-->
     <sys:String x:Key="settings_crowd_header">המונים מיקור</sys:String>
     <sys:String x:Key="settings_crowd_allow">המונים למיקור תרומה אפשר</sys:String>
     <sys:String x:Key="settings_crowd_allow_description">דרישה-לפי-ונתונים הקנייני 'הבלוטות פרוטוקול מבנה על מידע אסוף
@@ -396,27 +379,26 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="settings_crowd_crashreport">תוכנה קריסת דיווחי אפשר</sys:String>
     <sys:String x:Key="settings_crowd_crashreport_description">קריסות של במקרה אוטומטי באופן האפליקציה של קריסה דוחות שלח
                                                 .Sentry באמצעות קטלניות שגיאות או
-          .ומפריעים בעיתיים אפליקציה לבאגי יותר מהר להגיב לי עוזר זה
-    </sys:String>
+          .ומפריעים בעיתיים אפליקציה לבאגי יותר מהר להגיב לי עוזר זה</sys:String>
 
-    <!-- Factory reset -->
+    <!--Factory reset-->
     <sys:String x:Key="factory_header">יצרן להגדרות איפוס</sys:String>
     <sys:String x:Key="factory_confirm">איפוס אשר</sys:String>
     <sys:String x:Key="factory_error_title">נכשל איפוס</sys:String>
-    <sys:String x:Key="factory_error">
-        שגיאה קוד החזיר המכשיר: {0}&#10;וזמינות דולקות שהאוזניות וודא.&#10;ידנית האוזניות את לחבר שעליך ייתכן.&#10;
-    </sys:String>
+    <sys:String x:Key="factory_error">שגיאה קוד החזיר המכשיר: {0}
+וזמינות דולקות שהאוזניות וודא.
+ידנית האוזניות את לחבר שעליך ייתכן.</sys:String>
     <sys:String x:Key="factory_text_p1">?האוזניות את לאפס</sys:String>
     <sys:String x:Key="factory_text_p2">.ידנית האוזניות את לחבר עליך האיפוס לאחר</sys:String>
     <sys:String x:Key="factory_text_p3">!שממשיכים לפני דולקות האוזניות ששתי לוודא יש</sys:String>
 
-    <!-- Find my Gear -->
+    <!--Find my Gear-->
     <sys:String x:Key="fmg_warning_both">.מהאוזניים האוזניות שתי את אסר אנא</sys:String>
     <sys:String x:Key="fmg_warning_left">.מהאוזן השמאלית האוזנייה את הסר אנא</sys:String>
     <sys:String x:Key="fmg_warning_right">.מהאוזן הימנית האוזנייה את הסר אנא</sys:String>
     <sys:String x:Key="fmg_header">האוזניות את אתר</sys:String>
 
-    <!-- Equalizer -->
+    <!--Equalizer-->
     <sys:String x:Key="eq_header">אקוולייזר</sys:String>
     <sys:String x:Key="eq_enable">הפעל אקוולייזר</sys:String>
     <sys:String x:Key="eq_preset">תבניות</sys:String>
@@ -431,7 +413,7 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="eq_clear">נקי</sys:String>
     <sys:String x:Key="eq_treble">טרבל הגברת</sys:String>
 
-    <!-- Noise control -->
+    <!--Noise control-->
     <sys:String x:Key="nc_header">ברעש שליטה</sys:String>
     <sys:String x:Key="nc_anc_level">גבוהה רגישות</sys:String>
     <sys:String x:Key="nc_anc_level_description">משופר רעשים ביטול</sys:String>
@@ -442,7 +424,7 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">שיחה זמן פסק</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} שניות</sys:String>
 
-    <!-- Noise control >>> Ambient sound -->
+    <!--Noise control >>> Ambient sound-->
     <sys:String x:Key="nc_as_header">סביבה צלילי הגדרות</sys:String>
     <sys:String x:Key="nc_as_custom">מתקדמת אישית התאמה</sys:String>
     <sys:String x:Key="nc_as_custom_volume_l">(שמאל) סביבה צלילי עוצמת</sys:String>
@@ -453,7 +435,7 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="nc_as_custom_tone_neutral">ניטראלי</sys:String>
     <sys:String x:Key="nc_as_custom_vol_normal">רגיל</sys:String>
 
-    <!-- Ambient sound -->
+    <!--Ambient sound-->
     <sys:String x:Key="as_header">סביבה צלילי</sys:String>
     <sys:String x:Key="as_enable">סביבה צלילי אפשר</sys:String>
     <sys:String x:Key="as_volume">סביבה צלילי עוצמת</sys:String>
@@ -466,7 +448,7 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="as_scale_high">חזק</sys:String>
     <sys:String x:Key="as_scale_extraloud">מאוד חזק</sys:String>
 
-    <!-- Advanced page -->
+    <!--Advanced page-->
     <sys:String x:Key="adv_header">מתקדמות הגדרות</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} יותר חדש או</sys:String>
     <sys:String x:Key="adv_seamless">קליל אוזניות חיבור</sys:String>
@@ -484,16 +466,18 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="adv_bixby_remap">ביקסבי הפעלת את הגדר</sys:String>
     <sys:String x:Key="adv_bixby_remap_desc">ביקסבי היי כשתאמר יקרה מה לבחור ניתן</sys:String>
 
-    <!-- Remap bixby wakeup -->
+    <!--Remap bixby wakeup-->
     <sys:String x:Key="bixby_remap_header">ביקסבי הפעלת את הגדר</sys:String>
     <sys:String x:Key="bixby_remap_enable">ביקסבי הפעלת את הפעל</sys:String>
     <sys:String x:Key="bixby_remap_enable_desc">שלך מהמחשב אישית מותאמת פעולה הרץ או שלך הסמסונג במכשיר ביקסבי את הפעל</sys:String>
     <sys:String x:Key="bixby_remap_lang">ביקסבי הפעלת שפת</sys:String>
     <sys:String x:Key="bixby_remap_action">אישית מותאמת הפעלה פעולת</sys:String>
-    <sys:String x:Key="bixby_remap_note">שונות בשפות שונה להיות יכול ההפעלה משפט .להפעיל כדי ביקסבי היי אמור&#10;&#10;זה במכשיר רק זמינה זו הגדרה. כרגיל ביקסבי את יפעיל ביקסבי היי סמסונג למכשיר האוזניות את תחבר אם. דבר שום תפעיל לא זו תכונה אחרים במכשירים.</sys:String>
+    <sys:String x:Key="bixby_remap_note">שונות בשפות שונה להיות יכול ההפעלה משפט .להפעיל כדי ביקסבי היי אמור
+
+זה במכשיר רק זמינה זו הגדרה. כרגיל ביקסבי את יפעיל ביקסבי היי סמסונג למכשיר האוזניות את תחבר אם. דבר שום תפעיל לא זו תכונה אחרים במכשירים.</sys:String>
 
 
-    <!-- Credits -->
+    <!--Credits-->
     <sys:String x:Key="credits_header">קרדיטים</sys:String>
     <sys:String x:Key="credits_developer">מפתח</sys:String>
     <sys:String x:Key="credits_license">רישיון</sys:String>
@@ -502,22 +486,20 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="credits_translator">מתרגמים</sys:String>
     <sys:String x:Key="credits_sponsor">בפרויקט תמוך</sys:String>
 
-    <!-- Connection lost page -->
+    <!--Connection lost page-->
     <sys:String x:Key="connlost_header">חיבור לבסס ניתן לא</sys:String>
     <sys:String x:Key="connlost_description_p1">שלך לאוזניות חיבור לבסס ניתן לא.</sys:String>
-    <sys:String x:Key="connlost_description_p2">
-        למחשב ומותאמות פועלות האוזניות כי ולוודא 'הבלוטות הגדרות את לבדוק יש.&#10;האפשרויות בתפריט מכשיר רישום לבטל ניתן צורך יש אם 
-    </sys:String>
+    <sys:String x:Key="connlost_description_p2">למחשב ומותאמות פועלות האוזניות כי ולוודא 'הבלוטות הגדרות את לבדוק יש.
+האפשרויות בתפריט מכשיר רישום לבטל ניתן צורך יש אם</sys:String>
     <sys:String x:Key="connlost_description_p3">:נוסף מידע</sys:String>
     <sys:String x:Key="connlost_noinfo">השגיאה על מידע בהצגת נכשל</sys:String>
     <sys:String x:Key="connlost_disconnected">נותק מכשיר</sys:String>
     <sys:String x:Key="connlost_connect">התחבר</sys:String>
     <sys:String x:Key="connlost_connecting">...מתחבר</sys:String>
 
-    <!-- Firmware update disclaimer -->
+    <!--Firmware update disclaimer-->
     <sys:String x:Key="fw_disclaimer">הצהרה</sys:String>
-    <sys:String x:Key="fw_disclaimer_desc">
-     לאישור המשך לחץ
+    <sys:String x:Key="fw_disclaimer_desc">לאישור המשך לחץ
      רבה בזהירות בהם לנהוג ויש
      חיוניים מערכת חלקי משנים התוכה שעדכוני מפני
      יקרה רע משהו אם אחריות לוקח אינני עדיין אך
@@ -532,23 +514,21 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
      אחרים לדגמים שמיועדת תוכנה לצרוב אסור
      שלך מהכונן תוכנה קבצי לטעון ניתן אישית בהתאמה צריבה לגבי
      וההגבלות הרישיון תנאי את מקבל אתה בה ובשימוש
-     GPLv3 רישיון תחת נמצאת זו תוכנה
-</sys:String>
+     GPLv3 רישיון תחת נמצאת זו תוכנה</sys:String>
 
-    <!-- Firmware selection -->
+    <!--Firmware selection-->
     <sys:String x:Key="fw_select_header">תוכנה עדכוני</sys:String>
-    <sys:String x:Key="fw_select_instructions"> בינארי קובץ בחר אנא
-     מהמחשב תמונה ובחר מתקדם על בלחיצה שלך מהכונן בחר או להתקנה
-</sys:String>
-    <sys:String x:Key="fw_select_no_results">יותר מאוחר שוב נסה זמינים תוכנה עדכוני אין
-</sys:String>
+    <sys:String x:Key="fw_select_instructions">בינארי קובץ בחר אנא
+     מהמחשב תמונה ובחר מתקדם על בלחיצה שלך מהכונן בחר או להתקנה</sys:String>
+    <sys:String x:Key="fw_select_no_results">יותר מאוחר שוב נסה זמינים תוכנה עדכוני אין</sys:String>
     <sys:String x:Key="fw_select_downgrade">שנמוך אפשר</sys:String>
     <sys:String x:Key="fw_select_downgrade_desc">בלבד מתקדמים למשתמשים ומיועד צפויות לא לבעיות לגרום עלול ישנות גרסאות והצג גרסה בדיקת השבת</sys:String>
     <sys:String x:Key="fw_select_advanced">...מתקדם</sys:String>
     <sys:String x:Key="fw_select_install">תוכנה התקן</sys:String>
     <sys:String x:Key="fw_select_from_disk">...מדיסק תמונה בחר</sys:String>
-    <sys:String x:Key="fw_select_external_note">שימוש מכלל אותו יוציא אלא חדשות תכונות למכשיר יוסיף לא והדבר שלך במכשיר שונים לדגמים המיועדות גרסאות לצרוב אסור&#10;&#10;להתקנה תמונה לבחור כדי המשך לחץ
-</sys:String>
+    <sys:String x:Key="fw_select_external_note">שימוש מכלל אותו יוציא אלא חדשות תכונות למכשיר יוסיף לא והדבר שלך במכשיר שונים לדגמים המיועדות גרסאות לצרוב אסור
+
+להתקנה תמונה לבחור כדי המשך לחץ</sys:String>
     <sys:String x:Key="fw_select_unsupported_selection">מהרשימה תואם פריט בחר אנא זמינה לא בחירה</sys:String>
     <sys:String x:Key="fw_select_downloading">...מוריד</sys:String>
     <sys:String x:Key="fw_select_net_error">כרגע התוכנה את להוריד ניתן ולא נכשלה השרת עם התקשורת</sys:String>
@@ -557,9 +537,13 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="fw_select_unknown_build">ידוע לא בילד מספר</sys:String>
     <sys:String x:Key="fw_select_verify_fail">התוכנה את לאמת הצלחנו לא</sys:String>
     <sys:String x:Key="fw_select_confirm">'{1}'  המכשיר על יצרב '{0}'</sys:String>
-    <sys:String x:Key="fw_select_confirm_desc">ההגדרות את מחדש ולבדוק ביטול על ללחוץ יש ולא ובמידה נכון זה מידע כי לוודא יש&#10;&#10;העדכון ממצב ויצאו העדכון את יבטלו האוזניות כזה במקרה לדאגה סיבה אין העדכון בזמן ייכשל והחיבור ובמידה שמתחילים לפני מחוברות האוזניות ששתי לוודא יש אפשר אם&#10;&#10;העדכון להתחלת המשך לחץ</sys:String>
+    <sys:String x:Key="fw_select_confirm_desc">ההגדרות את מחדש ולבדוק ביטול על ללחוץ יש ולא ובמידה נכון זה מידע כי לוודא יש
 
-    <!-- Firmware transfer -->
+העדכון ממצב ויצאו העדכון את יבטלו האוזניות כזה במקרה לדאגה סיבה אין העדכון בזמן ייכשל והחיבור ובמידה שמתחילים לפני מחוברות האוזניות ששתי לוודא יש אפשר אם
+
+העדכון להתחלת המשך לחץ</sys:String>
+
+    <!--Firmware transfer-->
     <sys:String x:Key="fw_upload_header">...עדכון מתקין</sys:String>
     <sys:String x:Key="fw_upload_progress_session">...חדש סשן יוצר</sys:String>
     <sys:String x:Key="fw_upload_progress_prepare">...העלאה מכין</sys:String>
@@ -574,13 +558,15 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="fw_upload_progress_stats_offset">Processing data from offset 0x{0:X6} to 0x{1:X6}</sys:String>
     <sys:String x:Key="fw_upload_progress_stats_segment">Uploading segment #{0} ({1} bytes, checksum 0x{2:X6})</sys:String>
 
-    <!-- Firmware parse errors -->
+    <!--Firmware parse errors-->
     <sys:String x:Key="fw_fail_no_magic">הקובץ בהאדר נמצא תקין לא מגיק ערך תקין בינארי תוכנה עדכון לא זה</sys:String>
     <sys:String x:Key="fw_fail_size_null">אחר קובץ בחר אנא .לצריבה לשמש יכול ולא כאפס מוגדר העדכון קובץ גודל</sys:String>
     <sys:String x:Key="fw_fail_no_segments">אחר קובץ בחר אנא .ריק והוא בינאריים סגמנטים מכיל לא הבינארי ההתקנה קובץ</sys:String>
-    <sys:String x:Key="fw_fail_unknown">פגום הקובץ שארכיון ייתכן הקובץ פענוח בזמן התרחשה צפויה לא שגיאה.&#10;&#10;:פרטים</sys:String>
+    <sys:String x:Key="fw_fail_unknown">פגום הקובץ שארכיון ייתכן הקובץ פענוח בזמן התרחשה צפויה לא שגיאה.
 
-    <!-- Firmware transfer errors -->
+:פרטים</sys:String>
+
+    <!--Firmware transfer errors-->
     <sys:String x:Key="fw_fail_connection">.בוטלה התוכנה העברת .אבד למכשיר החיבור</sys:String>
     <sys:String x:Key="fw_fail_session">שגיאה קוד החזיר המכשיר נכשלה חדש סשן פתיחת ({0})</sys:String>
     <sys:String x:Key="fw_fail_copy">:המכשיר ידי על הוחזר שגיאה קוד .שוב ונסה מחדש התחבר אנא .נכשלה התוכנה העתקת {0}</sys:String>
@@ -592,18 +578,18 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
     <sys:String x:Key="fw_fail_control_timeout">פג מהמכשיר שליטה בלוק לקבלת התגובה זמן</sys:String>
     <sys:String x:Key="fw_fail_copy_timeout">פג ההעברה לתהליך התגובה זמן</sys:String>
 
-    <!-- Spatial test -->
+    <!--Spatial test-->
     <sys:String x:Key="spatial_header">חיישן סביבה</sys:String>
-    <!-- Note: Quaternion = 4-dimensional vector -->
+    <!--Note: Quaternion = 4-dimensional vector-->
     <sys:String x:Key="spatial_dump_quaternion">Raw quaternion vector:</sys:String>
-    <!-- Note: RPY = Roll, pitch, yaw -->
+    <!--Note: RPY = Roll, pitch, yaw-->
     <sys:String x:Key="spatial_dump_rpy">RPY ערכי:</sys:String>
 
-    <!-- Header -->
+    <!--Header-->
     <sys:String x:Key="window_minimize">מזער</sys:String>
     <sys:String x:Key="window_close">סגור</sys:String>
 
-    <!-- Buds app detected page -->
+    <!--Buds app detected page-->
     <sys:String x:Key="budsapp_header">'בלוטות תאימות מידע</sys:String>
     <sys:String x:Key="budsapp_text_p1">לצד מותקנת Windows 10 עבור Galaxy Buds של הרשמית האפליקציה
                                                                                          .זו אפליקציה</sys:String>
@@ -611,10 +597,8 @@ Galaxy Buds דגמי בכל תומך היישום    </sys:String>
                          .שתמשיך לפני אותה לסגור הקפד ,שלך לאוזניות בחיבור
           להתחבר יכולה לא Galaxy Buds של הרשמית האפליקציה ,כן כמו
           חיבורים ובעל פעיל Galaxy Buds Manager-ש בזמן שלך לאוזניות
-                                                                       .לאוזניות פעילים חיבורים
-    </sys:String>
+                                                                       .לאוזניות פעילים חיבורים</sys:String>
     <sys:String x:Key="budsapp_text_p3">‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎בכל שלך Galaxy Buds-ה עם לדבר יכולה אחת אפליקציה שרק זכור
-                                                                                                                    .נתון זמן
-    </sys:String>
+                                                                                                                    .נתון זמן</sys:String>
 
 </ResourceDictionary>

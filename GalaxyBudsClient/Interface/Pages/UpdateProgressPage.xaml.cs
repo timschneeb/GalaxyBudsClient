@@ -53,7 +53,7 @@ namespace GalaxyBudsClient.Interface.Pages
             new MessageBox
             {
                 Title = Loc.Resolve("updater_dl_fail_title"),
-                Description = Loc.Resolve("updater_dl_fail") + exception.Message
+                Description = Loc.Resolve("updater_dl_fail") + " " + exception.Message
             }.ShowDialog(MainWindow.Instance);
         }
 

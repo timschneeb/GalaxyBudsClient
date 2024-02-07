@@ -141,13 +141,7 @@ namespace GalaxyBudsClient
         public static AppBuilder BuildAvaloniaApp()
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
-                .LogToTrace()
-                .With(new Win32PlatformOptions()
-                {
-                    EnableMultitouch = true,
-                    UseWindowsUIComposition = true,
-                    CompositionBackdropCornerRadius = 20f
-                });
+                .LogToTrace();
 
     }
 }

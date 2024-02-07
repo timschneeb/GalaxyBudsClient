@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
+using Avalonia.VisualTree;
 using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
@@ -190,10 +191,10 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private void UpdateUiState(bool isAdvancedOn)
         {
-            _volumeSlider.Parent!.Parent!.IsVisible = !isAdvancedOn;
-            _ambientTone.Parent!.IsVisible = isAdvancedOn;
-            _ambientVolLeft.Parent!.IsVisible = isAdvancedOn;
-            _ambientVolRight.Parent!.IsVisible = isAdvancedOn;
+            _volumeSlider.GetVisualParent()!.GetVisualParent()!.IsVisible = !isAdvancedOn;
+            _ambientTone.GetVisualParent()!.IsVisible = isAdvancedOn;
+            _ambientVolLeft.GetVisualParent()!.IsVisible = isAdvancedOn;
+            _ambientVolRight.GetVisualParent()!.IsVisible = isAdvancedOn;
             for (var i = 1; i <= 3; i++)
             {
                 this.FindControl<Separator>($"AmbSep{i}").IsVisible = isAdvancedOn;

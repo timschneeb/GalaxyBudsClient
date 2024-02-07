@@ -69,40 +69,7 @@ namespace GalaxyBudsClient
         public PageContainer Pager { get; }
         
         private static MainWindow? _instance;
-        public static MainWindow Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    var platform = AvaloniaLocator.Current.GetService<IWindowingPlatform>();
-                    if (platform == null)
-                    {
-                        throw new Exception("Could not CreateWindow(): IWindowingPlatform is not registered.");
-                    }
-
-                    IWindowImpl impl;
-                    if (platform.GetType().Name == "Win32Platform")
-                    {
-#if Windows
-                        Log.Debug("MainWindow.Instance: Initializing window with WndProc proxy");
-                        impl = new Win32ProcWindowImpl();
-#else
-                        impl = platform.CreateWindow();
-#endif
-                    }
-                    else
-                    {
-                        
-                        Log.Debug("MainWindow.Instance: Initializing window with default WindowImpl");
-                        impl = platform.CreateWindow();
-                    }
-
-                    _instance = new MainWindow(impl);
-                }
-                return _instance;
-            }
-        }
+        public static MainWindow Instance => _instance ??= new MainWindow();
 
         public static bool IsReady()
         {
@@ -113,18 +80,8 @@ namespace GalaxyBudsClient
         {
             _instance = null;
         }
-
-        /* Public constructor for XAMLIL only */
-        public MainWindow()
-        {
-            /* Init with dummy objects */
-            _titleBar = new CustomTitleBar();
-            _popup = new BudsPopup();
-            Pager = new PageContainer();
-            Log.Error("MainWindow: Initialized without modified PlatformImpl. Features making use of legacy Win32 APIs may be unavailable.");
-        }
         
-        public MainWindow(IWindowImpl impl) : base(impl)
+        public MainWindow()
         {
             AvaloniaXamlLoader.Load(this);
             this.AttachDevTools();
@@ -133,9 +90,6 @@ namespace GalaxyBudsClient
             if (PlatformUtils.IsOSX)
             {
                 SystemDecorations = SystemDecorations.Full;
-#pragma warning disable CS0618
-                HasSystemDecorations = false;
-#pragma warning restore CS0618
             }
             
             Pager = this.FindControl<PageContainer>("Container");
@@ -150,7 +104,7 @@ namespace GalaxyBudsClient
                 new NoiseProAmbientPage());
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
-            _titleBar.PointerPressed += (i, e) => PlatformImpl?.BeginMoveDrag(e);
+            _titleBar.PointerPressed += (i, e) => BeginMoveDrag(e);
             _titleBar.OptionsPressed += (i, e) =>
             {
                 _titleBar.OptionsButton.ContextMenu?.Open(_titleBar.OptionsButton);
@@ -260,8 +214,13 @@ namespace GalaxyBudsClient
             }
             base.OnInitialized();
         }
+
+        protected override void OnUnloaded(RoutedEventArgs e)
+        {
+            base.OnUnloaded(e);
+        }
         
-        protected override async void OnClosing(CancelEventArgs e)
+        protected override async void OnClosing(WindowClosingEventArgs e)
         {
             await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.FIND_MY_EARBUDS_STOP);
             

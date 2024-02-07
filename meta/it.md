@@ -20,8 +20,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>updater_dl_header</code></td><td>Downloading...</td></tr>
 <tr><td><code>updater_dl_manual</code></td><td>View on GitHub</td></tr>
 <tr><td><code>updater_dl_fail_title</code></td><td>Download failed</td></tr>
-<tr><td><code>updater_dl_fail</code></td><td>Reason:
-</td></tr>
+<tr><td><code>updater_dl_fail</code></td><td>Reason:</td></tr>
 <tr><td><code>updater_dl_progress_prepare</code></td><td>Preparing download...</td></tr>
 <tr><td><code>updater_dl_progress_cancelled</code></td><td>Download cancelled</td></tr>
 <tr><td><code>updater_dl_progress_finished</code></td><td>Download finished. Launching installer...</td></tr>
@@ -58,12 +57,10 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>coredump_dl_trace_progress</code></td><td>Downloading trace dump... {0}%</td></tr>
 <tr><td><code>coredump_dl_core_progress</code></td><td>Downloading core dump... {0}%</td></tr>
 <tr><td><code>coredump_dl_progress_size</code></td><td>({0}/{1} bytes)</td></tr>
-<tr><td><code>coredump_dl_note</code></td><td>
-        The audio stream is temporarily paused while downloading. Your earbuds will be disconnected as soon as the transmission finishes, please reconnect them manually.
+<tr><td><code>coredump_dl_note</code></td><td>The audio stream is temporarily paused while downloading. Your earbuds will be disconnected as soon as the transmission finishes, please reconnect them manually.
 Once finished, you will be prompted to select a directory for all collected data.
 
-If the transmission is stuck or the device disconnected prematurely, you need to restart the download. This feature is currently very unstable. 
-    </td></tr>
+If the transmission is stuck or the device disconnected prematurely, you need to restart the download. This feature is currently very unstable.</td></tr>
 <tr><td><code>coredump_dl_save_fail_title</code></td><td>Failed to save dump</td></tr>
 <tr><td><code>coredump_dl_save_fail</code></td><td>Unable to copy dump from temporary location. Reason: {0}</td></tr>
 <tr><td><code>coredump_dl_save_success_title</code></td><td>Successfully saved dumps</td></tr>

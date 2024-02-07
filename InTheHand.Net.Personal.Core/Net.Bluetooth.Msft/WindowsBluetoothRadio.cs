@@ -366,8 +366,8 @@ namespace InTheHand.Net.Bluetooth.Msft
                 string fullRegKey = String.Format("SYSTEM\\CurrentControlSet\\Enum\\{0}\\Device Parameters", regKey);
 
                 // now try and slam dunk our new name in there - this requires the app to be running as Administrator or equivalent
-                System.Security.Permissions.RegistryPermission rp = new System.Security.Permissions.RegistryPermission(System.Security.Permissions.PermissionState.Unrestricted);
-                rp.Demand();
+                // System.Security.Permissions.RegistryPermission rp = new System.Security.Permissions.RegistryPermission(System.Security.Permissions.PermissionState.Unrestricted);
+                // rp.Demand();
                 Microsoft.Win32.RegistryKey rk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(fullRegKey, true);
                 if (null == rk) {
                     Debug.WriteLine("!! set_Name failed to open key");

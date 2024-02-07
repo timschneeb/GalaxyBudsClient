@@ -12,11 +12,13 @@ namespace ThePBone.Interop.Win32
         public event EventHandler<WindowMessage>? MessageReceived;
 
         private readonly IntPtr _hwnd;
+        /* prevent garbage collection */
+        private readonly Unmanaged.WNDCLASSEX _wndClassEx;
         public IntPtr WindowHandle => _hwnd;
 
         public WndProcClient()
         {
-            Unmanaged.WNDCLASSEX wndClassEx = new Unmanaged.WNDCLASSEX
+            _wndClassEx = new Unmanaged.WNDCLASSEX
             {
                 cbSize = Marshal.SizeOf<Unmanaged.WNDCLASSEX>(),
                 lpfnWndProc = delegate(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam) { 
@@ -36,7 +38,7 @@ namespace ThePBone.Interop.Win32
                 lpszClassName = "MessageWindow " + Guid.NewGuid(),
             };
 
-            ushort atom = Unmanaged.RegisterClassEx(ref wndClassEx);
+            ushort atom = Unmanaged.RegisterClassEx(ref _wndClassEx);
 
             if (atom == 0)
             {

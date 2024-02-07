@@ -77,8 +77,8 @@ namespace GalaxyBudsClient.Interface.Developer
             _msgTypeSend = this.FindControl<ComboBox>("SendMsgType");
             _hexPayloadSend = this.FindControl<TextBox>("SendMsgPayload");
 
-            _msgTable.Items = _vm.MsgTableDataView;
-            _propTable.Items = _vm.PropTableDataView;
+            _msgTable.ItemsSource = _vm.MsgTableDataView;
+            _propTable.ItemsSource = _vm.PropTableDataView;
             
             Closing += OnClosing;
             BluetoothImpl.Instance.NewDataReceived += OnNewDataReceived;
@@ -119,7 +119,7 @@ namespace GalaxyBudsClient.Interface.Developer
             var item = (RecvMsgViewHolder?)_msgTable.SelectedItem;
             if (item != null)
             {
-                Application.Current?.Clipboard?.SetTextAsync(item.Payload);
+                GetTopLevel(this)?.Clipboard?.SetTextAsync(item.Payload);
             }
         }
        

@@ -5,6 +5,7 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
+using Avalonia.VisualTree;
 using GalaxyBudsClient.Interface.Items;
 
 using GalaxyBudsClient.Message;
@@ -241,9 +242,9 @@ namespace GalaxyBudsClient.Interface.Pages
 			var supportsEdgeTouch = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DoubleTapVolume);
 			var supportAdvTouchLock = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AdvancedTouchLock);
 			
-			_edgeTouch.Parent!.IsVisible = supportsEdgeTouch;
+			_edgeTouch.GetVisualParent()!.IsVisible = supportsEdgeTouch;
 			this.FindControl<Separator>("GesturesSeparator").IsVisible = supportsEdgeTouch && supportAdvTouchLock;
-			this.FindControl<DetailListItem>("Gestures").Parent!.IsVisible = supportAdvTouchLock;
+			this.FindControl<DetailListItem>("Gestures").GetVisualParent()!.IsVisible = supportAdvTouchLock;
 
 			UpdateNoiseSwitchModeVisible();
 			
@@ -255,7 +256,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		public void UpdateNoiseSwitchModeVisible()
 		{
-			_noiseControlMode.Parent!.IsVisible =
+			_noiseControlMode.GetVisualParent()!.IsVisible =
 				BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl) 
 				&& (_lastLeftOption == TouchOptions.NoiseControl || _lastRightOption == TouchOptions.NoiseControl);
 		}

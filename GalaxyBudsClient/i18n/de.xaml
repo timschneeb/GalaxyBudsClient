@@ -1,12 +1,10 @@
-﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <sys:String x:Key="ResourceDictionaryName">Loc-de</sys:String>
 
-    <sys:String x:Key="ResourceDictionaryName">Loc-custom</sys:String>
+    <!--:::::::: Source code ::::::::-->
 
-    <!-- :::::::: Source code :::::::: -->
-
-    <!-- General -->
+    <!--General-->
     <sys:String x:Key="okay">Okay</sys:String>
     <sys:String x:Key="left">Links</sys:String>
     <sys:String x:Key="right">Rechts</sys:String>
@@ -23,22 +21,22 @@
 
     <sys:String x:Key="anc">Aktive Geräuschunterdrückung</sys:String>
 
-    <!-- SPP Message Parser -->
+    <!--SPP Message Parser-->
     <sys:String x:Key="sppmsg_too_small">Nachricht zu klein</sys:String>
     <sys:String x:Key="sppmsg_invalid_som">Ungültige SOM</sys:String>
-    <!-- Context: SOM = Start of message -->
+    <!--Context: SOM = Start of message-->
     <sys:String x:Key="sppmsg_invalid_eom">Ungültige EOM</sys:String>
-    <!-- Context: EOM = End of message -->
+    <!--Context: EOM = End of message-->
     <sys:String x:Key="sppmsg_size_mismatch">Payloadgröße stimmt nicht überein</sys:String>
     <sys:String x:Key="sppmsg_crc_fail">Checksumme falsch</sys:String>
     <sys:String x:Key="sppmsg_tl">Nachricht zu klein</sys:String>
 
-    <!-- Dark Mode States -->
+    <!--Dark Mode States-->
     <sys:String x:Key="darkmode_disabled">Ausgeschalten</sys:String>
     <sys:String x:Key="darkmode_enabled">Eingeschalten</sys:String>
     <sys:String x:Key="darkmode_system">Systemeinstellung verwenden</sys:String>
 
-    <!-- Connection popup -->
+    <!--Connection popup-->
     <sys:String x:Key="connpopup_placement_tl">Oben links</sys:String>
     <sys:String x:Key="connpopup_placement_tc">Oben mittig</sys:String>
     <sys:String x:Key="connpopup_placement_tr">Oben rechts</sys:String>
@@ -46,15 +44,15 @@
     <sys:String x:Key="connpopup_placement_bc">Unten mittig</sys:String>
     <sys:String x:Key="connpopup_placement_br">Unten rechts</sys:String>
     <sys:String x:Key="connpopup_title">{0}'s Galaxy Buds{1}</sys:String>
-    <!-- Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title -->
+    <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
 
-    <!-- Placement  (Buds+) -->
+    <!--Placement  (Buds+)-->
     <sys:String x:Key="placement_disconnected">Nicht verbunden</sys:String>
     <sys:String x:Key="placement_wearing">Bereit</sys:String>
     <sys:String x:Key="placement_not_wearing">Standby</sys:String>
     <sys:String x:Key="placement_in_case">Ladeetui</sys:String>
 
-    <!-- Touch options -->
+    <!--Touch options-->
     <sys:String x:Key="touchoption_voice">Sprachassistent</sys:String>
     <sys:String x:Key="touchoption_quickambientsound">Quick Ambient Sound</sys:String>
     <sys:String x:Key="touchoption_volume">Lautstärke</sys:String>
@@ -75,7 +73,7 @@
     <sys:String x:Key="touchoption_custom_trigger_hotkey">Hotkey auslösen...</sys:String>
     <sys:String x:Key="touchoption_custom_external_app">Externes Programm starten...</sys:String>
 
-    <!-- Options menu -->
+    <!--Options menu-->
     <sys:String x:Key="optionsmenu_title">Optionen</sys:String>
     <sys:String x:Key="optionsmenu_settings">Einstellungen</sys:String>
     <sys:String x:Key="optionsmenu_refresh">Dashboard neuladen</sys:String>
@@ -83,7 +81,7 @@
     <sys:String x:Key="optionsmenu_update">Auf Updates überprüfen...</sys:String>
     <sys:String x:Key="optionsmenu_credits">Credits</sys:String>
 
-    <!-- Tray context menu -->
+    <!--Tray context menu-->
     <sys:String x:Key="tray_unlock_touchpad">Touchpad entsperren</sys:String>
     <sys:String x:Key="tray_lock_touchpad">Touchpad sperren</sys:String>
     <sys:String x:Key="tray_enable_ambient_sound">Ambient Sound aktvieren</sys:String>
@@ -96,18 +94,18 @@
     <sys:String x:Key="tray_quit">Verlassen</sys:String>
 
 
-    <!-- :::::::: XAML files (static) :::::::: -->
+    <!--:::::::: XAML files (static) ::::::::-->
 
-    <!-- General -->
+    <!--General-->
     <sys:String x:Key="continue_button">Weiter</sys:String>
 
-    <!-- Hotkey Recorder Dialog (Custom action) -->
+    <!--Hotkey Recorder Dialog (Custom action)-->
     <sys:String x:Key="hotrec_title">Hotkey Recorder</sys:String>
     <sys:String x:Key="hotrec_content">Bitte gebe eine Tastenkombination ein (gedrückt halten):</sys:String>
     <sys:String x:Key="hotrec_empty">Leer</sys:String>
     <sys:String x:Key="hotrec_note">Hinweis: Aufgrund von User Interface Privacy Isolation (UIPI) können nur Programme welche auf der gleichen oder niedrigen Berechtigungsstufe gestartet wurden, Hotkey-Befehle erhalten.</sys:String>
 
-    <!-- Hotkey Action Builder Dialog -->
+    <!--Hotkey Action Builder Dialog-->
     <sys:String x:Key="hotkey_edit_title">Hotkey bearbeiten</sys:String>
     <sys:String x:Key="hotkey_edit_invalid">Ungültige Hotkeyauswahl</sys:String>
     <sys:String x:Key="hotkey_edit_invalid_desc">Bitte wähle mindestens eine Taste neben den Modifikatoren aus</sys:String>
@@ -117,10 +115,10 @@
     <sys:String x:Key="hotkey_edit_modifier">Modifikatoren</sys:String>
     <sys:String x:Key="hotkey_edit_keys">Tasten</sys:String>
     <sys:String x:Key="hotkey_edit_action">Aktion</sys:String>
-    <sys:String x:Key="hotkey_edit_preview">Vorschau: </sys:String>
+    <sys:String x:Key="hotkey_edit_preview">Vorschau:</sys:String>
     <sys:String x:Key="hotkey_edit_header">Wähle eine Tastaturkombination aus</sys:String>
     
-    <!-- Hotkey page -->
+    <!--Hotkey page-->
     <sys:String x:Key="hotkey_header">Tastatur Hotkeys</sys:String>
     <sys:String x:Key="hotkey_add">Neuen Hotkey festlegen</sys:String>
     <sys:String x:Key="hotkey_empty">Keine Hotkeys festgelegt</sys:String>
@@ -132,7 +130,7 @@
     <sys:String x:Key="hotkey_add_error_duplicate">Your selected key-combination was already registered as a hotkey by this or another application. Please choose another one.</sys:String>
     <sys:String x:Key="hotkey_add_error_unknown">Betriebssystem hat mit folgendem Fehler Code geantwortet: '{0}'</sys:String>
 
-    <!-- EventDispatcher module -->
+    <!--EventDispatcher module-->
     <sys:String x:Key="event_none">Keine Auswahl</sys:String>
     <sys:String x:Key="event_ambient_toggle">Umgebungsgeräusche umschalten</sys:String>
     <sys:String x:Key="event_ambient_volume_up">Umgebungsgeräusche Lauter</sys:String>
@@ -155,21 +153,15 @@
     <sys:String x:Key="event_display_battery_popup">Batterie-Popup anzeigen</sys:String>
     <sys:String x:Key="event_connect">Verbindung herstellen</sys:String>
     
-    <!-- Welcome page -->
+    <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Willkommen!</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">
-Hallo! Dieser Galaxy Buds Manager ist inoffiziell und ist in keiner Weise mit Samsung verbunden. Diese Programm wurde dazu entworfen, viele neue Funktionen für die Galaxy Buds-Reihe freizuschalten, allerdings sind einige dieser Funktionen auf Geräten ohne diese App aus technischen Gründen nicht verfügbar.
-    </sys:String>
-    <sys:String x:Key="welcome_textblock_p2">
-Falls es Dich interessiert was hinter den Kulissen vorgeht, kannst du im GitHub Repository eine kurze Dokumentation des reverse-engineerten Protokolls ansehen. Du kannst mich auch auf Telegram oder GitHub unter @thepbone erreichen, sollten irgendwelche Probleme auftreten.
-    </sys:String>
-    <sys:String x:Key="welcome_textblock_p3">
-Diese App unterstützt alle Galaxy Buds Modelle.
-    </sys:String>
+    <sys:String x:Key="welcome_textblock_p1">Hallo! Dieser Galaxy Buds Manager ist inoffiziell und ist in keiner Weise mit Samsung verbunden. Diese Programm wurde dazu entworfen, viele neue Funktionen für die Galaxy Buds-Reihe freizuschalten, allerdings sind einige dieser Funktionen auf Geräten ohne diese App aus technischen Gründen nicht verfügbar.</sys:String>
+    <sys:String x:Key="welcome_textblock_p2">Falls es Dich interessiert was hinter den Kulissen vorgeht, kannst du im GitHub Repository eine kurze Dokumentation des reverse-engineerten Protokolls ansehen. Du kannst mich auch auf Telegram oder GitHub unter @thepbone erreichen, sollten irgendwelche Probleme auftreten.</sys:String>
+    <sys:String x:Key="welcome_textblock_p3">Diese App unterstützt alle Galaxy Buds Modelle.</sys:String>
     <sys:String x:Key="welcome_darkmode">Dark-Mode</sys:String>
     <sys:String x:Key="welcome_darkmode_content">Brennen deine Augen schon? Verwende doch ein dunkleres Farbschema! (Neustart notwendig)</sys:String>
 
-    <!-- Main page -->
+    <!--Main page-->
     <sys:String x:Key="mainpage_corrupt_data">Korrupte Daten erhalten. Neuverbinden...</sys:String>
     <sys:String x:Key="mainpage_find_my_earbuds">Meine Buds finden</sys:String>
     <sys:String x:Key="mainpage_touchpad">Touchpad</sys:String>
@@ -179,7 +171,7 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="mainpage_advanced">Erweiterte Einstellungen</sys:String>
     <sys:String x:Key="mainpage_system">System</sys:String>
 
-    <!-- Update page -->
+    <!--Update page-->
     <sys:String x:Key="updater_header">Neues Manager-Update verfügbar</sys:String>
     <sys:String x:Key="updater_message_p1">Der Download ist automatisiert und started das Updateprogramm nachdem es heruntergeladen wurden. Updates enthalten neueste Fehlerbehebungen, Kompatibilitäts- und Featureupdates.</sys:String>
     <sys:String x:Key="updater_message_p2">Der Changelog dieses Updates ist unten verlinkt.</sys:String>
@@ -196,7 +188,7 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="updater_dl_header">Herunterladen...</sys:String>
     <sys:String x:Key="updater_dl_manual">Auf GitHub ansehen</sys:String>
     <sys:String x:Key="updater_dl_fail_title">Download fehlgeschlagen</sys:String>
-    <sys:String x:Key="updater_dl_fail">Grund: &#10;</sys:String>
+    <sys:String x:Key="updater_dl_fail">Grund:</sys:String>
     <sys:String x:Key="updater_dl_progress_prepare">Bereite Download vor...</sys:String>
     <sys:String x:Key="updater_dl_progress_cancelled">Download abgebrochen</sys:String>
     <sys:String x:Key="updater_dl_progress_finished">Download beendet. Installation wird gestartet...</sys:String>
@@ -204,7 +196,7 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="updater_dl_progress_size">({0}/{1} Megabytes)</sys:String>
     <sys:String x:Key="updater_dl_note">Wenn der Download fertig ist, wird sich dieses Programm selbst schließen und den Updateprozess starten. Es kann einige Sekunden dauern, bis er angezeigt wird.</sys:String>
 
-    <!-- Device selection page (setup) -->
+    <!--Device selection page (setup)-->
     <sys:String x:Key="devsel_header">Galaxy Buds auswählen</sys:String>
     <sys:String x:Key="devsel_refresh">Gekoppelte Geräte neu laden</sys:String>
     <sys:String x:Key="devsel_device_name">Gerätename</sys:String>
@@ -219,7 +211,7 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="devsel_winrt_title">Alternative Bluetooth-Verbindungsmethode</sys:String>
     <sys:String x:Key="devsel_winrt">Bessere Stabilität, allerdings nicht mit einigen PCs und Bluetooth Adaptern kompatibel</sys:String>
 
-    <!-- Unsupported feature page -->
+    <!--Unsupported feature page-->
     <sys:String x:Key="unsupported_feature_current_fwver">Installierte Firmwareversion:</sys:String>
     <sys:String x:Key="unsupported_feature_required_fwver">Erforderliche Firmwareversion:</sys:String>
 
@@ -231,7 +223,7 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="unsupported_feature_description_p2">Bitte führe mithilfe einer der offiziellen Apps ein Update durch.</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">Sollte der offizielle Windows Updater verwendet werden, muss dieses Programm geschlossen sein, da mehrere Programme nicht gleichzeitig auf das Gerät zugreifen können.</sys:String>
 
-    <!-- Touchpad page -->
+    <!--Touchpad page-->
     <sys:String x:Key="touchpad_header">Touchpad</sys:String>
     <sys:String x:Key="touchpad_lock">Touchpad sperren</sys:String>
     <sys:String x:Key="touchpad_left_action">Links</sys:String>
@@ -240,7 +232,7 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="touchpad_double_tap_volume">Zweimaliges Tippen auf den Ohrhörerrand</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Tippe auf den Rand des linken Ohrhörers, um die Lautstärke zu verringern, oder auf den Rand des rechten Ohrhörers, um sie zu erhöhen.</sys:String>
 
-    <!-- Custom touchpad action page -->
+    <!--Custom touchpad action page-->
     <sys:String x:Key="cact_header">Benutzerdefinierte Aktion definieren</sys:String>
     <sys:String x:Key="cact_external_app_dialog_title">Programm auswählen...</sys:String>
     <sys:String x:Key="cact_action">Benutzerdefinierte Aktion</sys:String>
@@ -249,7 +241,7 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="cact_notice_content_p2">Es hat keinen Effekt auf Android oder anderen Geräten.</sys:String>
     <sys:String x:Key="cact_notice_content_p3">Um eine konsistente Funktionsweise zu gewährleisten, wird sich diese App automatisch mit dem Systemstart starten und in den Hintergrund versetzen, wenn sie geschlossen wird. Dieses Verhalten kann in den Einstellungen deaktiviert werden.</sys:String>
 
-    <!-- System/Self-Test -->
+    <!--System/Self-Test-->
     <sys:String x:Key="system_overview_header">System</sys:String>
     <sys:String x:Key="system_header">Systeminformation</sys:String>
     <sys:String x:Key="system_selftest">Selbsttest starten</sys:String>
@@ -278,9 +270,9 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="system_thermo">Thermistormessung</sys:String>
     <sys:String x:Key="system_hall">Magnetmessung</sys:String>
     <sys:String x:Key="system_accel">Beschleunigungsmesserstatus</sys:String>
-    <!-- Note: system_accel only used on the self-test page -->
+    <!--Note: system_accel only used on the self-test page-->
     <sys:String x:Key="system_adc_soc">ADC SoC</sys:String>
-    <!-- Context: SoC = State of charge (battery percentage) -->
+    <!--Context: SoC = State of charge (battery percentage)-->
     <sys:String x:Key="system_adc_voltage">ADC Spannung</sys:String>
     <sys:String x:Key="system_adc_current">ADC Stromstärke</sys:String>
 
@@ -298,16 +290,16 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="coredump_dl_trace_progress">Trace dump wird heruntergeladen... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">Core dump wird heruntergeladen... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytes)</sys:String>
-    <sys:String x:Key="coredump_dl_note">
-        Die Audioübertragung ist während diesem Vorgang temporär deaktiviert. Die Ohrhörer werden getrennt, sobald die Übertragung fertiggestellt wurde; bitte manuell neu verbinden&#10;&#10;Falls die Übertragung einfriert oder das Gerät vorzeitig getrennt wird, kann der Download nicht weiter fortgeführt werden. Diese Funktion ist zurzeit sehr instabil und experimentell. 
-    </sys:String>
+    <sys:String x:Key="coredump_dl_note">Die Audioübertragung ist während diesem Vorgang temporär deaktiviert. Die Ohrhörer werden getrennt, sobald die Übertragung fertiggestellt wurde; bitte manuell neu verbinden
+
+Falls die Übertragung einfriert oder das Gerät vorzeitig getrennt wird, kann der Download nicht weiter fortgeführt werden. Diese Funktion ist zurzeit sehr instabil und experimentell.</sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">Speichern fehlgeschlagen</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">Die Daten konnten nicht von temporärem Speicherort zum Zielordner kopiert werden. Grund: {0}</sys:String>
     <sys:String x:Key="coredump_dl_save_success_title">Daten erfolgreich gespeichert</sys:String>
     <sys:String x:Key="coredump_dl_save_success">{0} Datei(en) wurden in '{1}' gespeichert</sys:String>
     <sys:String x:Key="coredump_dl_save_dialog_title">Wähle einen Zielordner aus...</sys:String>
 
-    <!-- Settings -->
+    <!--Settings-->
     <sys:String x:Key="settings_header">Einstellungen</sys:String>
 
     <sys:String x:Key="settings_darkmode">Dark-Mode</sys:String>
@@ -325,7 +317,7 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="settings_connpopup">Verbindungspopup einstellen</sys:String>
     <sys:String x:Key="settings_devmode">Entwickleroptionen</sys:String>
 
-    <!-- Settings >>> Connection popup -->
+    <!--Settings >>> Connection popup-->
     <sys:String x:Key="settings_cpopup_header">Verbindungspopup</sys:String>
     <sys:String x:Key="settings_cpopup_enable">Popup bei Verbindung anzeigen</sys:String>
     <sys:String x:Key="settings_cpopup_enable_description">Popupbenachrichtigung mit Batteriestand anzeigen, wenn die Ohrhörer verbunden werden.</sys:String>
@@ -339,22 +331,24 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="settings_cpopup_primary_screen">Nur am Hauptmonitor</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen_description">Zeige das Popup nur am Hauptmonitor</sys:String>
 
-    <!-- Factory reset -->
+    <!--Factory reset-->
     <sys:String x:Key="factory_header">Auf Werkseinstellungen zurücksetzen</sys:String>
     <sys:String x:Key="factory_confirm">Zurücksetzten auf Werkseinstellungen bestätigen</sys:String>
     <sys:String x:Key="factory_error_title">Zurücksetzen fehlgeschlagen</sys:String>
-    <sys:String x:Key="factory_error">Gerät antwortete mit Fehlercode: {0}&#10;Stelle sicher dass beide Ohrhörer eingeschalten und erreichbar sind.&#10;Möglicherweise musst du sie manuell neuverbinden.</sys:String>
+    <sys:String x:Key="factory_error">Gerät antwortete mit Fehlercode: {0}
+Stelle sicher dass beide Ohrhörer eingeschalten und erreichbar sind.
+Möglicherweise musst du sie manuell neuverbinden.</sys:String>
     <sys:String x:Key="factory_text_p1">Bist du sicher dass du deine Ohrhörer zurücksetzen willst?</sys:String>
     <sys:String x:Key="factory_text_p2">Nach dem Zurücksetzen müssen die Ohrörer erneut manuell mit dem Computer verbunden werden.</sys:String>
     <sys:String x:Key="factory_text_p3">Stelle sicher dass beide Ohrhörer eingeschalten und erreichbar sind, bevor du sie zurücksetzt.</sys:String>
 
-    <!-- Find my Gear -->
+    <!--Find my Gear-->
     <sys:String x:Key="fmg_warning_both">Bitte entferne beide Ohrhörer aus Deinen Ohren.</sys:String>
     <sys:String x:Key="fmg_warning_left">Bitte entferne den linken Ohrhörer aus deinem Ohr.</sys:String>
     <sys:String x:Key="fmg_warning_right">Bitte entferne den rechten Ohrhörer aus deinem Ohr.</sys:String>
     <sys:String x:Key="fmg_header">Ohrhörersuche</sys:String>
 
-    <!-- Equalizer -->
+    <!--Equalizer-->
     <sys:String x:Key="eq_header">Equalizer</sys:String>
     <sys:String x:Key="eq_enable">Equalizer einschalten</sys:String>
     <sys:String x:Key="eq_preset">Voreinstellung</sys:String>
@@ -366,7 +360,7 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="eq_clear">Klar</sys:String>
     <sys:String x:Key="eq_treble">Höhen Verstärkung</sys:String>
 
-    <!-- Noise control -->
+    <!--Noise control-->
     <sys:String x:Key="nc_header">Geräuschverhalten</sys:String>
     <sys:String x:Key="nc_anc_level">Hohe Empfindlichkeit</sys:String>
     <sys:String x:Key="nc_anc_level_description">Stärkerer Geräuschunterdrückungseffekt</sys:String>
@@ -375,7 +369,7 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="nc_voicedetect_timeout">Abklingzeit nach Ende der Konversation</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} Sekunden</sys:String>
     
-    <!-- Ambient sound -->
+    <!--Ambient sound-->
     <sys:String x:Key="as_header">Umgebungsgeräusche</sys:String>
     <sys:String x:Key="as_enable">Umgebungsgeräusche einschalten</sys:String>
     <sys:String x:Key="as_volume">Lautstärke für Umgebungsgeräusche</sys:String>
@@ -390,7 +384,7 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="adv_hotkey">Tastaturabkürzungen</sys:String>
     <sys:String x:Key="adv_hotkey_desc">Definiere Hotkeys, um die Ohrhörer mit der Tastatur zu steuern</sys:String>
 
-    <!-- Advanced page -->
+    <!--Advanced page-->
     <sys:String x:Key="adv_header">Erweiterte Einstellungen</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} oder höher</sys:String>
     <sys:String x:Key="adv_seamless">Nahtlose Verbindung</sys:String>
@@ -404,7 +398,7 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="adv_gaming_mode">Gaming-Modus</sys:String>
     <sys:String x:Key="adv_gaming_mode_desc">Minimiere die Audioverzögerung für einen lebendigen, synchronisierten Spieleton (nur Samsung)</sys:String>
 
-    <!-- Credits -->
+    <!--Credits-->
     <sys:String x:Key="credits_header">Credits</sys:String>
     <sys:String x:Key="credits_developer">Entwickler</sys:String>
     <sys:String x:Key="credits_license">Lizenz</sys:String>
@@ -413,17 +407,18 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="credits_translator">Übersetzer</sys:String>
     <sys:String x:Key="credits_sponsor">Unterstütze dieses Projekt</sys:String>
 
-    <!-- Connection lost page -->
+    <!--Connection lost page-->
     <sys:String x:Key="connlost_header">Verbindung konnte nicht hergestellt werden</sys:String>
     <sys:String x:Key="connlost_description_p1">Es konnte keine Verbindung hergestellt werden</sys:String>
-    <sys:String x:Key="connlost_description_p2">Bitte überprüfe deine Bluetooth-Einstellungen und stelle sicher, dass die Ohrhörer mit diesem Computer gekoppelt und verbunden sind.&#10;Du kannst auch bei "Optionen > Gerät entfernen" ein neues Paar registrieren.</sys:String>
+    <sys:String x:Key="connlost_description_p2">Bitte überprüfe deine Bluetooth-Einstellungen und stelle sicher, dass die Ohrhörer mit diesem Computer gekoppelt und verbunden sind.
+Du kannst auch bei "Optionen &gt; Gerät entfernen" ein neues Paar registrieren.</sys:String>
     <sys:String x:Key="connlost_description_p3">Zusätzliche Informationen:</sys:String>
     <sys:String x:Key="connlost_noinfo">Keine Informationen verfügbar</sys:String>
     <sys:String x:Key="connlost_disconnected">Gerät hat die Verbindung getrennt</sys:String>
     <sys:String x:Key="connlost_connect">Verbinden</sys:String>
     <sys:String x:Key="connlost_connecting">Verbindung wird hergestellt...</sys:String>
     
-    <!-- Header -->
+    <!--Header-->
     <sys:String x:Key="window_minimize">Minimieren</sys:String>
     <sys:String x:Key="window_close">Schließen</sys:String>
 
@@ -486,20 +481,29 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="bixby_remap_enable_desc">Bixby auf deinem Samsung Smartphone starten oder eine personalisierte Aktion auf diesem PC ausführen wenn man aufwacht</sys:String>
     <sys:String x:Key="bixby_remap_lang">Bixby Wakeup Sprache</sys:String>
     <sys:String x:Key="bixby_remap_action">Personalisierte Wakeup Aktion</sys:String>
-    <sys:String x:Key="bixby_remap_note">Sag 'Hey Bixby!' zum aktivieren. Die Aktivierungsphrase kann bei einigen Sprachen anders sein.&#10;&#10;Die neu festgelegte Konfiguratioen ist nur auf diesem Gerät aktiv. Wenn du deine Buds mit einem Samsung Gerät verbindest wird sich Bixby normal aktivieren. Auf anderen Geräten, also nicht dieses Gerät und non-Samsung Smartphones, führt dies keine Aktion aus.</sys:String>
+    <sys:String x:Key="bixby_remap_note">Sag 'Hey Bixby!' zum aktivieren. Die Aktivierungsphrase kann bei einigen Sprachen anders sein.
+
+Die neu festgelegte Konfiguratioen ist nur auf diesem Gerät aktiv. Wenn du deine Buds mit einem Samsung Gerät verbindest wird sich Bixby normal aktivieren. Auf anderen Geräten, also nicht dieses Gerät und non-Samsung Smartphones, führt dies keine Aktion aus.</sys:String>
     
     <sys:String x:Key="fw_disclaimer">Disclaimer</sys:String>
-    <sys:String x:Key="fw_disclaimer_desc">Dieses Firmware Update Tool ist ein genaues Replikat des offiziellen Updaters, welcher in Samsung's offizieler App gefunden werden kann. Ich habe diese Implementierung genaustens unter verschiedensten Umständen (normal, Verbindungsabbruch, falsche Bluetooth Pakete, ...) getestet ohne irgend welche Problem zu haben. Trotzdem überneheme ich keine Verantwortung für irgendwelche Fehler die während eines Updates passieren da ein Firmware Update wichtige System Komponenten modifiziert und dies trotzdem mit Respekt behandelt werden sollte.&#10;&#10;DOWNGRADING: Auch wenn downgraden zu ältere firmware versionen möglich ist und bei mir noch keine Probleme aufgetreten sind kann es trotzdem zu Fehlern kommen. Daher sollte ein Downgrade nur ausgeführt werden wenn dieses auch notwendig ist. Ein Zurücksetztn auf Werkseinstellungen ist empfohlen aber normalerweise nicht notwendig. &#10;CUSTOM FLASHING: Es ist auch möglich eigene Firmware Dateien auf dem Gerät zu installieren. Installieren aufjedenfall NICHT Firmware Versionen die für andere Modelle entwickelt worden sind.&#10;&#10; This Anwendung ist lizensiert unter der GPLv3 Lizenz. Wenn Sie fortfahren und die Software nutzen, akzeptieren Sie Lizenzbedingungen und ihre Limitierungen. Drücken sie 'Fortfahren' zum akzeptieren. </sys:String>
+    <sys:String x:Key="fw_disclaimer_desc">Dieses Firmware Update Tool ist ein genaues Replikat des offiziellen Updaters, welcher in Samsung's offizieler App gefunden werden kann. Ich habe diese Implementierung genaustens unter verschiedensten Umständen (normal, Verbindungsabbruch, falsche Bluetooth Pakete, ...) getestet ohne irgend welche Problem zu haben. Trotzdem überneheme ich keine Verantwortung für irgendwelche Fehler die während eines Updates passieren da ein Firmware Update wichtige System Komponenten modifiziert und dies trotzdem mit Respekt behandelt werden sollte.
+
+DOWNGRADING: Auch wenn downgraden zu ältere firmware versionen möglich ist und bei mir noch keine Probleme aufgetreten sind kann es trotzdem zu Fehlern kommen. Daher sollte ein Downgrade nur ausgeführt werden wenn dieses auch notwendig ist. Ein Zurücksetztn auf Werkseinstellungen ist empfohlen aber normalerweise nicht notwendig. 
+CUSTOM FLASHING: Es ist auch möglich eigene Firmware Dateien auf dem Gerät zu installieren. Installieren aufjedenfall NICHT Firmware Versionen die für andere Modelle entwickelt worden sind.
+
+ This Anwendung ist lizensiert unter der GPLv3 Lizenz. Wenn Sie fortfahren und die Software nutzen, akzeptieren Sie Lizenzbedingungen und ihre Limitierungen. Drücken sie 'Fortfahren' zum akzeptieren.</sys:String>
 
     <sys:String x:Key="fw_select_header">Firmware Updates</sys:String>
-    <sys:String x:Key="fw_select_instructions">Bitte wählen Sie eine Firmware Version zum herunterladen und installieren aus. Alternativ können Sie auch eine eigene Firmware Version hochladen indem sie 'Erweitert... > Image hochladen' auswählen.</sys:String>
+    <sys:String x:Key="fw_select_instructions">Bitte wählen Sie eine Firmware Version zum herunterladen und installieren aus. Alternativ können Sie auch eine eigene Firmware Version hochladen indem sie 'Erweitert... &gt; Image hochladen' auswählen.</sys:String>
     <sys:String x:Key="fw_select_no_results">Zurzeit ist kein Firmware Update verfügbar. Bitte versuchen Sie es später erneut.</sys:String>
     <sys:String x:Key="fw_select_downgrade">Firmware Downgrading erlauben</sys:String>
     <sys:String x:Key="fw_select_downgrade_desc">Versionen Überprüfung deaktivieren und eine Liste von älteren Firmware Versionen anzeigen (könnte zu unerwartenten Fehler führen; nur für erfahrene Benutzer empfohlen)</sys:String>
     <sys:String x:Key="fw_select_advanced">Erweitert...</sys:String>
     <sys:String x:Key="fw_select_install">Firmware installieren</sys:String>
     <sys:String x:Key="fw_select_from_disk">Image von Festplatte auswählen...</sys:String>
-    <sys:String x:Key="fw_select_external_note">Installieren aufjedenfall NICHT Firmware Versionen die für andere Modelle entwickelt worden sind. Installieren einer Buds Pro Firmware auf ein Buds Plus Modell schlatet keine neunen Features frei, stattdessen zerstört es das Gerät permanent.&#10;&#10;Drücken Sie 'Forfahren' um  ein Firmware Image auszuwählen.</sys:String>
+    <sys:String x:Key="fw_select_external_note">Installieren aufjedenfall NICHT Firmware Versionen die für andere Modelle entwickelt worden sind. Installieren einer Buds Pro Firmware auf ein Buds Plus Modell schlatet keine neunen Features frei, stattdessen zerstört es das Gerät permanent.
+
+Drücken Sie 'Forfahren' um  ein Firmware Image auszuwählen.</sys:String>
     <sys:String x:Key="fw_select_unsupported_selection">Ungültige Auswahl. Bitte wählen Sie ein kompatibles Image aus der Liste.</sys:String>
     <sys:String x:Key="fw_select_downloading">Wird heruntergeladen...</sys:String>
     <sys:String x:Key="fw_select_net_error">Fehler beim kontaktieren des Servers. Herunterladen der Firmware ist zurzeit nicht möglich.</sys:String>
@@ -508,7 +512,11 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="fw_select_unknown_build">Unbekannter Build Name</sys:String>
     <sys:String x:Key="fw_select_verify_fail">Überprüfen der Firmware ist fehlgeschlagen</sys:String>
     <sys:String x:Key="fw_select_confirm">Sie sind dabei '{0}' auf dein '{1}' Gerät zu installieren</sys:String>
-    <sys:String x:Key="fw_select_confirm_desc">Stellen Sie sicher das ist Informationen richtig sind, ansonsten drücken sie 'Abbrechen' und überprüfen Sie erneut Ihr Setup.&#10;&#10;Wenn möglich, stellen Sie sicher das beide Earbuds verbunden sind bevor Sie starten. Es wird keine Probleme verursachen sollte ein Fehler beim übertragen des Updates passieren. Sollte dies passieren werden die Earbuds die Übertragung automatisch abbrechen und der Firmware Update Modus wird verlassen.&#10;&#10;Drücken Sie 'Fortfahren' um das Update zu starten</sys:String>
+    <sys:String x:Key="fw_select_confirm_desc">Stellen Sie sicher das ist Informationen richtig sind, ansonsten drücken sie 'Abbrechen' und überprüfen Sie erneut Ihr Setup.
+
+Wenn möglich, stellen Sie sicher das beide Earbuds verbunden sind bevor Sie starten. Es wird keine Probleme verursachen sollte ein Fehler beim übertragen des Updates passieren. Sollte dies passieren werden die Earbuds die Übertragung automatisch abbrechen und der Firmware Update Modus wird verlassen.
+
+Drücken Sie 'Fortfahren' um das Update zu starten</sys:String>
   
     <sys:String x:Key="fw_upload_header">Firmware wird installiert...</sys:String>
     <sys:String x:Key="fw_upload_progress_session">Neue Session wird erstellt...</sys:String>
@@ -527,7 +535,9 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     <sys:String x:Key="fw_fail_no_magic">Dies ist kein gültiges Firmware Image. Ungültiges 'magic value' wurde im Header der Datei gefunden.</sys:String>
     <sys:String x:Key="fw_fail_size_null">Die Größe dieses Firmware Images hat eine Größe von 0 und kann somit nicht fürs flashing verwendet werden. Bitte wählen Sie ein anderes Image.</sys:String>
     <sys:String x:Key="fw_fail_no_segments">Dieses Firmware Image enthält kein Binäres Segment and ist leer. Bitte wählen Sie ein anderes Image</sys:String>
-    <sys:String x:Key="fw_fail_unknown">Ein unerwarteter Fehler ist während dem entpacken des Firmware Images passiert. Das Firmware Archiv könnte kaputt sein.&#10;&#10;Details:</sys:String>
+    <sys:String x:Key="fw_fail_unknown">Ein unerwarteter Fehler ist während dem entpacken des Firmware Images passiert. Das Firmware Archiv könnte kaputt sein.
+
+Details:</sys:String>
     
     <sys:String x:Key="fw_fail_connection">Verbindung zum Gerät verloren. Die Übertragung wurde abgebrochen.</sys:String>
     <sys:String x:Key="fw_fail_session">Öffnen einer neunen Session fehlgeschlage. Das Gerät hat den Fehler Code ({0}) zurückgegeben</sys:String>
@@ -546,11 +556,7 @@ Diese App unterstützt alle Galaxy Buds Modelle.
     
     <sys:String x:Key="budsapp_header">Bluetooth Kompatibilitäts Info</sys:String>
     <sys:String x:Key="budsapp_text_p1">Die offizielle Galaxy Buds App für Windows 10 ist installiert gemeinsam mit dieser.</sys:String>
-    <sys:String x:Key="budsapp_text_p2">
-        Wenn Sie offen und verbunden ist, kann es beim GalaxyBudsClient möglicherweise zu unerwarteten Problemen kommen. Schließen die offizielle App bevor Sie diese hier verwenden. Wenn Sie dies nicht tun kann der Galaxy Buds Manager keine Verbinung zu den Buds herstellen.
-    </sys:String>
-    <sys:String x:Key="budsapp_text_p3">
-        Bitte beachten Sie, dass beide Apps nicht gleichzeitig mit deinen Buds kommunizieren können.
-    </sys:String>
+    <sys:String x:Key="budsapp_text_p2">Wenn Sie offen und verbunden ist, kann es beim GalaxyBudsClient möglicherweise zu unerwarteten Problemen kommen. Schließen die offizielle App bevor Sie diese hier verwenden. Wenn Sie dies nicht tun kann der Galaxy Buds Manager keine Verbinung zu den Buds herstellen.</sys:String>
+    <sys:String x:Key="budsapp_text_p3">Bitte beachten Sie, dass beide Apps nicht gleichzeitig mit deinen Buds kommunizieren können.</sys:String>
 
 </ResourceDictionary>

@@ -5,19 +5,16 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Controls.Selection;
 using Avalonia.Input;
-using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Interface.Items;
-using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
-using JetBrains.Annotations;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages
@@ -28,8 +25,8 @@ namespace GalaxyBudsClient.Interface.Pages
         
         public ObservableCollection<BluetoothDevice>? AvailableDevices
         {
-            get => _deviceBox.Items as ObservableCollection<BluetoothDevice>;
-            set => _deviceBox.Items = value;
+            get => _deviceBox.ItemsSource as ObservableCollection<BluetoothDevice>;
+            set => _deviceBox.ItemsSource = value;
         }
 
         public SelectionModel<BluetoothDevice>? Selection
@@ -91,24 +88,28 @@ namespace GalaxyBudsClient.Interface.Pages
             RefreshList(true);
         }
         
-        private async void ManualPair_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+        private void ManualPair_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
-            var dialog = new ManualPairDialog();
-            var accepted = await dialog.ShowDialog<bool>(MainWindow.Instance);
-            if (accepted)
+            Avalonia.Threading.Dispatcher.UIThread.Post(async () =>
             {
-                if (dialog.SelectedModel == Models.NULL || dialog.SelectedDeviceMac == null)
+                await Task.Delay(300);
+                var dialog = new ManualPairDialog();
+                var accepted = await dialog.ShowDialog<bool>(MainWindow.Instance);
+                if (accepted)
                 {
-                    await new MessageBox()
+                    if (dialog.SelectedModel == Models.NULL || dialog.SelectedDeviceMac == null)
                     {
-                        Title = Loc.Resolve("error"),
-                        Description = Loc.Resolve("devsel_invalid_selection")
-                    }.ShowDialog(MainWindow.Instance);
-                    return;
-                }
+                        await new MessageBox()
+                        {
+                            Title = Loc.Resolve("error"),
+                            Description = Loc.Resolve("devsel_invalid_selection")
+                        }.ShowDialog(MainWindow.Instance);
+                        return;
+                    }
                 
-                RegisterDevice(dialog.SelectedModel, dialog.SelectedDeviceMac);
-            }
+                    RegisterDevice(dialog.SelectedModel, dialog.SelectedDeviceMac);
+                }
+            });
         }
 
         private void Next_OnPointerPressed(object? sender, PointerPressedEventArgs e)

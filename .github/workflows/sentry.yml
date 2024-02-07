@@ -3,13 +3,15 @@ name: Sentry release
 on:
   release:  
     types: [published, prereleased]
+  workflow_dispatch:
+
 
 jobs:
   sentry:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Create Sentry Release
         uses: getsentry/action-release@v1.1.0
         env:
