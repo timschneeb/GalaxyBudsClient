@@ -7,22 +7,27 @@
     <PropertyGroup Condition="'$(IsWindows)'=='true'">
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(IsWindows)'!='true'">
+    <PropertyGroup Condition="'$(IsOSX)'=='true'">
+        <TargetFramework>net6.0-macos</TargetFramework>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
     
     <PropertyGroup>
-        <OutputType>WinExe</OutputType>
-        <ApplicationIcon>Resources/icon_white.ico</ApplicationIcon>
+        <OutputType>Exe</OutputType>
+        <ApplicationIcon>Resources\icon_white.ico</ApplicationIcon>
         <AssemblyVersion>4.5.3.0</AssemblyVersion>
         <Version>4.5.3.0</Version>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
         <Configurations>Debug;Release;Debug (Local server);Release - Windows ARM</Configurations>
         <Platforms>AnyCPU</Platforms>
         <DisableWinExeOutputInference>false</DisableWinExeOutputInference>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <LangVersion>9</LangVersion>
+        <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>
         
         <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
     </PropertyGroup>
@@ -36,6 +41,8 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsOSX)'=='true'">
         <DefineConstants>OSX</DefineConstants>
+        <RuntimeIdentifiers>osx-x64;osx-arm64</RuntimeIdentifiers>
+        <_XSAppIconAssets>Assets.xcassets/AppIcon.appiconset</_XSAppIconAssets>
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <DefineConstants>Linux</DefineConstants>
@@ -48,9 +55,16 @@
         <DefineConstants>UseLocalServer</DefineConstants>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+      <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+      <DebugSymbols>true</DebugSymbols>
+      <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
     <ItemGroup>
         <AvaloniaResource Include="Resources\**" />
-        <EmbeddedResource Include="Resources\**" />
+        <!--<EmbeddedResource Include="Resources\**" />-->
         <AvaloniaResource Include="i18n\*" /> 
         <AvaloniaResource Include="ui\style\*" />
     </ItemGroup>
@@ -106,6 +120,10 @@
     <ItemGroup Condition="'$(IsLinux)'=='true'">
         <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Linux\GalaxyBudsClient.Bluetooth.Linux.csproj" />
         <ProjectReference Include="..\ThePBone.MprisClient\ThePBone.MprisClient.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup Condition="'$(IsOSX)'=='true'">
+        <ProjectReference Include="..\ThePBone.OSX.Native\ThePBone.OSX.Native.csproj" />
     </ItemGroup>
 
     <ItemGroup>

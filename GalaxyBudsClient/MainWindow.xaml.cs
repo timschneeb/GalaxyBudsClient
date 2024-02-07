@@ -160,7 +160,7 @@ namespace GalaxyBudsClient
                 if (SettingsProvider.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
                 {
                     Log.Information("MainWindow.TitleBar: Close requested, minimizing to tray bar");
-                    Hide();
+                    BringToTray();
                 }
                 else
                 { 
@@ -234,7 +234,7 @@ namespace GalaxyBudsClient
                     }
                     else
                     {
-                        Hide();
+                        BringToTray();
                     }
                     break;
                 case EventDispatcher.Event.Connect:
@@ -267,7 +267,7 @@ namespace GalaxyBudsClient
             
             if (SettingsProvider.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
             {
-                Hide();
+                BringToTray();
                 e.Cancel = true;
                 Log.Debug("MainWindow.OnClosing: Termination cancelled");
             }
@@ -289,7 +289,7 @@ namespace GalaxyBudsClient
                 if (desktop.Args.Contains("/StartMinimized") && PlatformUtils.SupportsTrayIcon && _firstShow)
                 {
                     Log.Debug("MainWindow: Launched minimized.");
-                    Hide();
+                    BringToTray();
                 }
             }
 
@@ -341,7 +341,10 @@ namespace GalaxyBudsClient
                 {
                     Hide(); // Workaround for some Linux DMs
                 }
-                
+
+                #if OSX
+                ThePBone.OSX.Native.Unmanaged.AppUtils.setHideInDock(false);
+                #endif
                 Show();
                 
                 Activate();
@@ -349,6 +352,14 @@ namespace GalaxyBudsClient
                 Topmost = false;
                 Focus();
             });
+        }
+
+        private void BringToTray()
+        {
+#if OSX
+            ThePBone.OSX.Native.Unmanaged.AppUtils.setHideInDock(true);
+#endif
+            Hide();
         }
         
         private void TrayIcon_OnLeftClicked()
@@ -361,7 +372,7 @@ namespace GalaxyBudsClient
                 }
                 else
                 {
-                    Hide();
+                    BringToTray();
                 }
             });
         }

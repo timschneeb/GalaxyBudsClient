@@ -7,7 +7,7 @@
         ToggleAnc,
         ToggleNoiseControl,
         LockTouchpad,
-        
+        Open,
         Connect,
         Quit,
         User

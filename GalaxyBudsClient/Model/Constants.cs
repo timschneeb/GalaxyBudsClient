@@ -147,6 +147,9 @@ namespace GalaxyBudsClient.Model
             Buds2 = 5,
             [Description("Galaxy Buds2 Pro (2022)")]
             Buds2Pro = 6,
+            // even if the app does not support BudsFe, this is required for working firmware fetching
+            [Description("Galaxy Buds FE (2023)")]
+            BudsFe = 7
         }
 
         public enum Color

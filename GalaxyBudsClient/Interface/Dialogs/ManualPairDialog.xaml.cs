@@ -6,7 +6,9 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using CSScriptLib;
 using GalaxyBudsClient.Bluetooth;
+using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 
@@ -14,8 +16,9 @@ namespace GalaxyBudsClient.Interface.Dialogs
 {
     public sealed class ManualPairDialog : Window
     {
-        private readonly IReadOnlyList<Models> _modelCache
-            = Enum.GetValues(typeof(Models)).Cast<Models>().Where(x => x != Models.NULL).ToList();
+        private readonly IReadOnlyList<String> _modelCache
+            = Enum.GetValues(typeof(Models)).Cast<Models>().Where(x => x != Models.NULL && x != Models.BudsFe)
+                .Select(x => x.GetDescription()).ToList();
 
         public IEnumerable ModelSource => _modelCache;
     

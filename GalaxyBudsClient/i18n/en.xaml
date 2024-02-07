@@ -552,6 +552,7 @@
     <sys:String x:Key="spatial_dump_rpy">RPY values:</sys:String>
     
     <!-- Header -->
+    <sys:String x:Key="window_open">Open</sys:String>
     <sys:String x:Key="window_minimize">Minimize</sys:String>
     <sys:String x:Key="window_close">Close</sys:String>
 

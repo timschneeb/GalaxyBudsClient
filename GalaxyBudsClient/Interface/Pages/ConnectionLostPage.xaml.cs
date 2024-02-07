@@ -68,7 +68,7 @@ namespace GalaxyBudsClient.Interface.Pages
 				Dispatcher.UIThread.Post(() =>
 				{
 					ResetRetryButton();
-					
+
 					if (s.ErrorCode == BluetoothException.ErrorCodes.SendFailed)
 					{
 						/* Hide "message couldn't be sent" because it'll shadow the actual error in most situations */

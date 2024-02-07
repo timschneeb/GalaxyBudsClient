@@ -13,6 +13,10 @@ namespace GalaxyBudsClient.Platform
             {
                 Instance = new Windows.HotkeyBroadcast();
             }
+            else if (PlatformUtils.IsOSX)
+            {
+                Instance = new OSX.HotkeyBroadcast();
+            }
             else
             {
                 Instance = new Dummy.HotkeyBroadcast();

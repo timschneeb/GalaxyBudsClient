@@ -96,8 +96,14 @@ namespace GalaxyBudsClient.Platform
                     Log.Debug("BluetoothImpl: Using Linux.BluetoothService");
                     _backend = new Bluetooth.Linux.BluetoothService();
                 }
+#elif OSX
+                if (PlatformUtils.IsOSX)
+                {
+                    Log.Debug("BluetoothImpl: Using OSX.BluetoothService");
+                    _backend = new ThePBone.OSX.Native.BluetoothService();
+                }
 #endif
-                if(_backend == null)
+                if (_backend == null)
                 {
                     Log.Warning("BluetoothImpl: Using Dummy.BluetoothService");
                     _backend = new Dummy.BluetoothService();
@@ -253,7 +259,8 @@ namespace GalaxyBudsClient.Platform
         {
             if (!IsConnected)
             {
-                OnBluetoothError(new BluetoothException(BluetoothException.ErrorCodes.SendFailed, "Attempted to send command to disconnected device"));
+                // ConnectionLostPage hides error details for SendFailed, so add stack trace for the times we do need to debug this
+                OnBluetoothError(new BluetoothException(BluetoothException.ErrorCodes.SendFailed, $"Attempted to send command to disconnected device: {Environment.StackTrace.Substring(700)}"));
                 return;
             }
             
@@ -293,7 +300,7 @@ namespace GalaxyBudsClient.Platform
         
         public async Task SendRequestAsync(SPPMessage.MessageIds id, bool payload)
         {
-            await SendAsync(new SPPMessage{Id = id, Payload = payload ? new byte[]{0x01} : new byte[]{0x00}, Type = SPPMessage.MsgType.Request});
+            await SendRequestAsync(id, payload ? new byte[]{0x01} : new byte[]{0x00});
         }
         
         public async Task UnregisterDevice()

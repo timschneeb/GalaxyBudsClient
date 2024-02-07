@@ -33,8 +33,9 @@ namespace GalaxyBudsClient.Interface.Transition
 				if (_lastPageCache is AbstractPage page)
 				{
 					page.OnPageHidden();
-				}
-			};
+                }
+                _lastPageCache = null;
+            };
 			Pager.PageTransition = fadeTransition;
 
 			// Add placeholder page
@@ -96,6 +97,14 @@ namespace GalaxyBudsClient.Interface.Transition
 
 			Dispatcher.UIThread.Post(() =>
 			{
+				if (_lastPageCache != null)
+				{
+                    if (_lastPageCache is AbstractPage page)
+                    {
+                        page.OnPageHidden();
+                    }
+					_lastPageCache = null;
+                }
 				if (target != null)
                 {
                 	_lastPageCache = Pager.SelectedItem;

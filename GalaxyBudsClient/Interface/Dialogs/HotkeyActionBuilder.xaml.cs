@@ -25,7 +25,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
     {
         private class ViewModel
         {
-            public IEnumerable KeySource => Enum.GetValues(typeof(Keys)).Cast<Keys>().ToList();
+            public IEnumerable KeySource => UserKeys.KeyList;
             public IEnumerable ActionSource
             {
                 get

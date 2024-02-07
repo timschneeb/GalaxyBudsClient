@@ -1,0 +1,453 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		015D13832B6E845000D342D8 /* HotkeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D13822B6E845000D342D8 /* HotkeyManager.swift */; };
+		015D13852B6E852A00D342D8 /* Magnet in Frameworks */ = {isa = PBXBuildFile; productRef = 015D13842B6E852A00D342D8 /* Magnet */; };
+		01C1987F2B6D8F0C009EEA07 /* Native.AppUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 01C1987E2B6D8F0C009EEA07 /* Native.AppUtils.mm */; };
+		01C198812B6D9023009EEA07 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C198802B6D9023009EEA07 /* AppKit.framework */; };
+		01C198842B6D9C9E009EEA07 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C198832B6D9C9E009EEA07 /* LaunchAtLoginController.m */; };
+		01F5A1C32B6EB04F001B8206 /* NIBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 01F5A1C22B6EB04F001B8206 /* NIBridge.mm */; };
+		01F5A1C52B6EB150001B8206 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F5A1C42B6EB150001B8206 /* Foundation.framework */; };
+		1C0983CB4A36B117AF41155E /* Bluetooth.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098F273A7E24715983E630 /* Bluetooth.mm */; };
+		1C0989E232D8E7E0534F2834 /* BluetoothDeviceWatcher.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098325C88AD4809959EDBE /* BluetoothDeviceWatcher.mm */; };
+		1C098AE4A9BA02B8EDE3DA5B /* Native.Bluetooth.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098B72451782C32C519A71 /* Native.Bluetooth.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1C098CEE45D021CBF857A569 /* Native.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C0984E6D93230E41397FA0D /* Native.h */; };
+		1C098D2FA9AEC3B92E0EA09D /* Bluetooth.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C09879DB3B0035983B5B99A /* Bluetooth.h */; };
+		1C098E958CA148B20DCB4F6D /* BluetoothDeviceWatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C098B5CA5C8E76FE0849D49 /* BluetoothDeviceWatcher.h */; };
+		1C098FD7AF270DE474ED52EB /* Native.Memory.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1C098422B9BFF59462222A36 /* Native.Memory.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2276033B2651CDB000D756A8 /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2276033A2651CDB000D756A8 /* IOBluetooth.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		015D13812B6E845000D342D8 /* NativeInterop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NativeInterop-Bridging-Header.h"; sourceTree = "<group>"; };
+		015D13822B6E845000D342D8 /* HotkeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyManager.swift; sourceTree = "<group>"; };
+		01C1987E2B6D8F0C009EEA07 /* Native.AppUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Native.AppUtils.mm; sourceTree = "<group>"; };
+		01C198802B6D9023009EEA07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		01C198822B6D9C7F009EEA07 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
+		01C198832B6D9C9E009EEA07 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
+		01F5A1C22B6EB04F001B8206 /* NIBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NIBridge.mm; sourceTree = "<group>"; };
+		01F5A1C42B6EB150001B8206 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		01F6DD892B6EAC56008A2A4F /* NIBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIBridge.h; sourceTree = "<group>"; };
+		1C098325C88AD4809959EDBE /* BluetoothDeviceWatcher.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BluetoothDeviceWatcher.mm; sourceTree = "<group>"; };
+		1C098422B9BFF59462222A36 /* Native.Memory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Native.Memory.mm; sourceTree = "<group>"; };
+		1C0984E6D93230E41397FA0D /* Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Native.h; sourceTree = "<group>"; };
+		1C09879DB3B0035983B5B99A /* Bluetooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bluetooth.h; sourceTree = "<group>"; };
+		1C09896C4A560632CA6CF376 /* libNativeInterop.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libNativeInterop.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C098B5CA5C8E76FE0849D49 /* BluetoothDeviceWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothDeviceWatcher.h; sourceTree = "<group>"; };
+		1C098B72451782C32C519A71 /* Native.Bluetooth.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Native.Bluetooth.mm; sourceTree = "<group>"; };
+		1C098F273A7E24715983E630 /* Bluetooth.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Bluetooth.mm; sourceTree = "<group>"; };
+		2276033A2651CDB000D756A8 /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = System/Library/Frameworks/IOBluetooth.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1C0989DF3D3B6BB25C5A4532 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01C198812B6D9023009EEA07 /* AppKit.framework in Frameworks */,
+				015D13852B6E852A00D342D8 /* Magnet in Frameworks */,
+				2276033B2651CDB000D756A8 /* IOBluetooth.framework in Frameworks */,
+				01F5A1C52B6EB150001B8206 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C0986D6038D35A3E0088401 = {
+			isa = PBXGroup;
+			children = (
+				1C098846E0A1E463C39CF74F /* Products */,
+				1C098F4E31B5C740FB51BB0F /* src */,
+				1C09892EFD59C21B32D31777 /* include */,
+				227603392651CDB000D756A8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1C098846E0A1E463C39CF74F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1C09896C4A560632CA6CF376 /* libNativeInterop.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1C09892EFD59C21B32D31777 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				1C0984E6D93230E41397FA0D /* Native.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		1C098C4BB6B054DCFF1D9264 /* bridge */ = {
+			isa = PBXGroup;
+			children = (
+				01C1987E2B6D8F0C009EEA07 /* Native.AppUtils.mm */,
+				1C098422B9BFF59462222A36 /* Native.Memory.mm */,
+				1C098B72451782C32C519A71 /* Native.Bluetooth.mm */,
+			);
+			path = bridge;
+			sourceTree = "<group>";
+		};
+		1C098F4E31B5C740FB51BB0F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				1C09879DB3B0035983B5B99A /* Bluetooth.h */,
+				1C098F273A7E24715983E630 /* Bluetooth.mm */,
+				1C098325C88AD4809959EDBE /* BluetoothDeviceWatcher.mm */,
+				1C098B5CA5C8E76FE0849D49 /* BluetoothDeviceWatcher.h */,
+				1C098C4BB6B054DCFF1D9264 /* bridge */,
+				01C198822B6D9C7F009EEA07 /* LaunchAtLoginController.h */,
+				01C198832B6D9C9E009EEA07 /* LaunchAtLoginController.m */,
+				015D13822B6E845000D342D8 /* HotkeyManager.swift */,
+				015D13812B6E845000D342D8 /* NativeInterop-Bridging-Header.h */,
+				01F6DD892B6EAC56008A2A4F /* NIBridge.h */,
+				01F5A1C22B6EB04F001B8206 /* NIBridge.mm */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		227603392651CDB000D756A8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				01F5A1C42B6EB150001B8206 /* Foundation.framework */,
+				01C198802B6D9023009EEA07 /* AppKit.framework */,
+				2276033A2651CDB000D756A8 /* IOBluetooth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1C098BE86AD9A483455FA215 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C098D2FA9AEC3B92E0EA09D /* Bluetooth.h in Headers */,
+				1C098CEE45D021CBF857A569 /* Native.h in Headers */,
+				1C098E958CA148B20DCB4F6D /* BluetoothDeviceWatcher.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1C098FD2EFC95C46A8BD2F9B /* NativeInterop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C098C20BB23AA8934D77F5B /* Build configuration list for PBXNativeTarget "NativeInterop" */;
+			buildPhases = (
+				1C098BE86AD9A483455FA215 /* Headers */,
+				1C0982AA8501763AEDE5F18D /* Sources */,
+				1C0989DF3D3B6BB25C5A4532 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NativeInterop;
+			packageProductDependencies = (
+				015D13842B6E852A00D342D8 /* Magnet */,
+			);
+			productName = NativeInterop;
+			productReference = 1C09896C4A560632CA6CF376 /* libNativeInterop.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1C0984D130776B708AC54F6D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1520;
+				ORGANIZATIONNAME = "Tim Schneeberger";
+				TargetAttributes = {
+					1C098FD2EFC95C46A8BD2F9B = {
+						LastSwiftMigration = 1520;
+					};
+				};
+			};
+			buildConfigurationList = 1C098E4A108E9474A6479BF4 /* Build configuration list for PBXProject "NativeInterop" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1C0986D6038D35A3E0088401;
+			packageReferences = (
+				01A76C032B6E7BAE004D46D6 /* XCRemoteSwiftPackageReference "Magnet" */,
+			);
+			productRefGroup = 1C098846E0A1E463C39CF74F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1C098FD2EFC95C46A8BD2F9B /* NativeInterop */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1C0982AA8501763AEDE5F18D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C0983CB4A36B117AF41155E /* Bluetooth.mm in Sources */,
+				1C0989E232D8E7E0534F2834 /* BluetoothDeviceWatcher.mm in Sources */,
+				1C098FD7AF270DE474ED52EB /* Native.Memory.mm in Sources */,
+				01C198842B6D9C9E009EEA07 /* LaunchAtLoginController.m in Sources */,
+				1C098AE4A9BA02B8EDE3DA5B /* Native.Bluetooth.mm in Sources */,
+				015D13832B6E845000D342D8 /* HotkeyManager.swift in Sources */,
+				01C1987F2B6D8F0C009EEA07 /* Native.AppUtils.mm in Sources */,
+				01F5A1C32B6EB04F001B8206 /* NIBridge.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1C098074F924FC0864305F1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CONFIGURATION_BUILD_DIR = Build/Debug;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-v",
+				);
+				SDKROOT = macosx;
+				SYMROOT = Build;
+			};
+			name = Debug;
+		};
+		1C09827AF52EA0F761CAE858 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CONFIGURATION_BUILD_DIR = Build/Release;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-v",
+				);
+				SDKROOT = macosx;
+				SYMROOT = Build;
+			};
+			name = Release;
+		};
+		1C098E88951D039B002D5EF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = include/;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = (
+					"-v",
+					"-fcxx-modules",
+					"-fmodules",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-fmodules",
+					"-fcxx-modules",
+				);
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-v",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "src/NativeInterop-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1C098E8DC44A098A7EEA933F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = include/;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = (
+					"-v",
+					"-fcxx-modules",
+					"-fmodules",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-fmodules",
+					"-fcxx-modules",
+				);
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-v",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "src/NativeInterop-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1C098C20BB23AA8934D77F5B /* Build configuration list for PBXNativeTarget "NativeInterop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C098E88951D039B002D5EF3 /* Debug */,
+				1C098E8DC44A098A7EEA933F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C098E4A108E9474A6479BF4 /* Build configuration list for PBXProject "NativeInterop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C098074F924FC0864305F1E /* Debug */,
+				1C09827AF52EA0F761CAE858 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		01A76C032B6E7BAE004D46D6 /* XCRemoteSwiftPackageReference "Magnet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Clipy/Magnet";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		015D13842B6E852A00D342D8 /* Magnet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01A76C032B6E7BAE004D46D6 /* XCRemoteSwiftPackageReference "Magnet" */;
+			productName = Magnet;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 1C0984D130776B708AC54F6D /* Project object */;
+}
