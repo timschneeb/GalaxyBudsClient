@@ -32,6 +32,6 @@
     
     <ItemGroup>
       <PackageReference Include="Serilog" Version="3.1.1" />
-      <PackageReference Include="Tmds.DBus" Version="0.16.0" />
+      <PackageReference Include="Tmds.DBus" Version="0.9.1" />
     </ItemGroup>
 </Project>

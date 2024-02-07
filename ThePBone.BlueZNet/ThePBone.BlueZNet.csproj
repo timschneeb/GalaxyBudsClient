@@ -28,7 +28,7 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <PackageReference Include="Tmds.DBus" Version="0.16.0" />
+        <PackageReference Include="Tmds.DBus" Version="0.9.1" />
     </ItemGroup>
 
 </Project>
