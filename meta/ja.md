@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>47%</td><td>226 missing string(s)</td></tr>
+<tr><td>47%</td><td>227 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -248,6 +248,7 @@ Details:</td></tr>
 <tr><td><code>spatial_header</code></td><td>Spatial sensor</td></tr>
 <tr><td><code>spatial_dump_quaternion</code></td><td>Raw quaternion vector:</td></tr>
 <tr><td><code>spatial_dump_rpy</code></td><td>RPY values:</td></tr>
+<tr><td><code>window_open</code></td><td>Open</td></tr>
 <tr><td><code>window_minimize</code></td><td>Minimize</td></tr>
 <tr><td><code>window_close</code></td><td>Close</td></tr>
 <tr><td><code>budsapp_header</code></td><td>Bluetooth compatibility info</td></tr>

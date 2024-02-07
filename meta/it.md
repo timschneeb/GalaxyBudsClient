@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>77%</td><td>98 missing string(s)</td></tr>
+<tr><td>77%</td><td>99 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -117,6 +117,7 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 The remap configuration is only active on this device. If you connect your earbuds to a Samsung device, voice wakeup will activate Bixby normally. On other devices than this device and non-Samsung phones, this feature won't trigger any action.</td></tr>
 <tr><td><code>credits_sponsor</code></td><td>Sponsor this project</td></tr>
 <tr><td><code>connlost_disconnected</code></td><td>Device disconnected</td></tr>
+<tr><td><code>window_open</code></td><td>Open</td></tr>
 
 </table>
 
