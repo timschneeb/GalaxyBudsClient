@@ -111,9 +111,9 @@ namespace GalaxyBudsClient.Interface.Pages
             SPPMessageHandler.Instance.AncEnabledUpdateResponse += (sender, b) => _ancSwitch.IsChecked = b;
             SPPMessageHandler.Instance.AnyMessageReceived += (sender, parser) =>
             {
-                /*SetWarning(false);
-                _loadingSpinner.IsVisible = false;*/
-                //TODO why is this needed, if its not, delete it, if it is, make sure to set refreshTimer+data request
+                /* A warning label is shown when a corrupted/invalid message has been received.
+                   As soon as we receive the next valid message, we can hide the warning. */
+                SetWarning(false);
             };
             BluetoothImpl.Instance.BluetoothError += (sender, exception) =>
             {
