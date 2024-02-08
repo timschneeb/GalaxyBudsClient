@@ -18,6 +18,9 @@
         Icon="/Resources/icon_white.ico"
         ShowInTaskbar="False"
         Topmost="True"
+        ShowActivated="False"
+        IsEnabled="False"
+        Focusable="False"
         Title="Galaxy Buds Manager (Popup)"
         PointerPressed="Window_OnPointerPressed">
     <Border x:Name="OuterBorder"
