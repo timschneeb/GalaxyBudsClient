@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net6.0;netstandard2.1</TargetFrameworks>
+        <TargetFramework>net8.0-macos</TargetFramework>
         <nullable>enable</nullable>
         <Configurations>Debug;Release;Debug (Local server)</Configurations>
         <Platforms>AnyCPU</Platforms>
@@ -48,10 +48,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Avalonia" Version="0.10.0" />
-      <PackageReference Include="Avalonia.Desktop" Version="0.10.0" />
-      <PackageReference Include="Serilog" Version="2.10.1-dev-01308" />
-      <PackageReference Include="Serilog.Sinks.Console" Version="4.0.0-dev-00839" />
+      <PackageReference Include="Serilog" Version="3.1.1" />
     </ItemGroup>
     <ItemGroup>
       <None Remove="Native\Build\NativeInterop.build\Release\NativeInterop.build\Objects-normal\arm64\BluetoothDeviceWatcher.d" />

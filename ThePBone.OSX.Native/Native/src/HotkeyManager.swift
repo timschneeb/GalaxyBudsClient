@@ -30,7 +30,7 @@ import Magnet
             if let keyCombo = KeyCombo(key: cocoaKeyflags!, cocoaModifiers: NSEvent.ModifierFlags(rawValue:cocoaModflags)) {
                 // this (or more precisely any code using .keyEquivalent)
                 // needs to run on main thread to avoid hanging forever
-                DispatchQueue.main.sync {
+                runOnMainThread {
                     NSLog("Registering key combo in HotkeyManager... " + keyCombo.keyEquivalentModifierMaskString + keyCombo.keyEquivalent);
                     let hotKey = HotKey(identifier: String(identifier), keyCombo: keyCombo) { hotKey in
                         onHotKeyReceived(str: str, identifier: identifier)
@@ -391,16 +391,14 @@ import Magnet
         default: if let cocoaKey = convertWin32KeysToCocoa(keys:keys) {
             // this (or more precisely any code using .keyEquivalent)
             // needs to run on main thread to avoid hanging forever
-            //note: to translate keycode ASCII_Z to physical Z on qwertz, uncomment this
-            //as avalonia gives us qwerty codes, we don't bother translating back and forth to insanity
-            /*if let out = (DispatchQueue.main.sync {
+            if let out = (runOnMainThread {
                 Sauce.shared.currentKeyCode(for:cocoaKey)
             }) {
                 Int(out)
             } else {
                 nil
-            }*/
-            Int(cocoaKey.QWERTYKeyCode)
+            }
+            // Int(cocoaKey.QWERTYKeyCode)
         } else {
             nil
         }
@@ -427,6 +425,16 @@ import Magnet
                                     )
         let cev = ev?.cgEvent
         cev?.post(tap: CGEventTapLocation.cghidEventTap)
+    }
+
+    private static func runOnMainThread<T>(block: () -> T) -> T {
+        if (Thread.isMainThread) {
+            return block()
+        } else {
+            return DispatchQueue.main.sync {
+                return block()
+            }
+        }
     }
 
     @objc public static func submitMediaKeyIfPossible(key: UInt, down:Bool) -> Bool {
