@@ -139,7 +139,8 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 
 #### Přispěvatelé
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Vydání šablon, wiki a překlady
+* [@nift4](https://github.com/nift4) - Podpora pro macOS a opravy chyb
+* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Šablony pro problémy, wiki a překlady
 * [@AndriesK](https://github.com/AndriesK) - Oprava chyby u Buds Live
 * [@githubcatw](https://github.com/githubcatw) - Základní dialogové okno připojení
 * [@GaryGadget9](https://github.com/GaryGadget9) - Balíček WinGet
