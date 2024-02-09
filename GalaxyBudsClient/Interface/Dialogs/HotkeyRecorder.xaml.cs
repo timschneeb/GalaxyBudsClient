@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -74,6 +75,15 @@ namespace GalaxyBudsClient.Interface.Dialogs
                 Result = false;
             }
             base.OnClosed(e);
+        }
+
+        public new async Task ShowDialog(Window owner)
+        {
+            await Avalonia.Threading.Dispatcher.UIThread.InvokeAsync(async () =>
+            {
+                await Task.Delay(300);
+                await base.ShowDialog(owner);
+            });
         }
     }
 }

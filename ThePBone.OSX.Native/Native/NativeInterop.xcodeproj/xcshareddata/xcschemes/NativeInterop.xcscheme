@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1C098FD2EFC95C46A8BD2F9B"
+               BlueprintIdentifier = "0184E2F52B76502D00875BB7"
                BuildableName = "libNativeInterop.dylib"
                BlueprintName = "NativeInterop"
                ReferencedContainer = "container:NativeInterop.xcodeproj">
@@ -49,7 +49,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1C098FD2EFC95C46A8BD2F9B"
+            BlueprintIdentifier = "0184E2F52B76502D00875BB7"
             BuildableName = "libNativeInterop.dylib"
             BlueprintName = "NativeInterop"
             ReferencedContainer = "container:NativeInterop.xcodeproj">

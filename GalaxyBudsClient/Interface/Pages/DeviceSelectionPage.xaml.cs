@@ -92,14 +92,13 @@ namespace GalaxyBudsClient.Interface.Pages
         {
             Avalonia.Threading.Dispatcher.UIThread.Post(async () =>
             {
-                await Task.Delay(300);
                 var dialog = new ManualPairDialog();
                 var accepted = await dialog.ShowDialog<bool>(MainWindow.Instance);
                 if (accepted)
                 {
                     if (dialog.SelectedModel == Models.NULL || dialog.SelectedDeviceMac == null)
                     {
-                        ShowErrorDialogSafely();
+                        ShowErrorDialog();
                         return;
                     }
                 
@@ -113,7 +112,7 @@ namespace GalaxyBudsClient.Interface.Pages
             
             if (Selection is not { Count: > 0 } || Selection.SelectedItem == null)
             {
-                ShowErrorDialogSafely();
+                ShowErrorDialog();
                 return;
             }
 
@@ -122,25 +121,20 @@ namespace GalaxyBudsClient.Interface.Pages
 
             if (spec == null || selection.IsConnected == false || selection.Address == string.Empty)
             {
-                ShowErrorDialogSafely();
+                ShowErrorDialog();
                 return;
             }
 
             RegisterDevice(spec.Device, selection.Address);
         }
 
-        // Workaround for Avalonia 11 focusing bug
-        private static void ShowErrorDialogSafely()
+        private static void ShowErrorDialog()
         {
-            Avalonia.Threading.Dispatcher.UIThread.Post(async () =>
+            new MessageBox()
             {
-                await Task.Delay(300);
-                await new MessageBox()
-                {
-                    Title = Loc.Resolve("error"),
-                    Description = Loc.Resolve("devsel_invalid_selection")
-                }.ShowDialog(MainWindow.Instance);
-            });
+                Title = Loc.Resolve("error"),
+                Description = Loc.Resolve("devsel_invalid_selection")
+            }.ShowDialog(MainWindow.Instance);
         }
 
         private async void RegisterDevice(Models model, string mac)

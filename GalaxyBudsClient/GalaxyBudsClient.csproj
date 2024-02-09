@@ -44,6 +44,7 @@
         <RuntimeIdentifiers>osx-x64;osx-arm64</RuntimeIdentifiers>
         <_XSAppIconAssets>Assets.xcassets/AppIcon.appiconset</_XSAppIconAssets>
         <ApplicationVersion>$(Version)</ApplicationVersion>
+	<SupportedOSPlatformVersion>12.0</SupportedOSPlatformVersion>
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <DefineConstants>Linux</DefineConstants>
