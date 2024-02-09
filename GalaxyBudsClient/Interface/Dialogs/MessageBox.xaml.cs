@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -21,7 +22,16 @@ namespace GalaxyBudsClient.Interface.Dialogs
             DataContext = this;
             AvaloniaXamlLoader.Load(this);
         }
-        
+
+        public new Task ShowDialog(Window owner)
+        {
+            return Avalonia.Threading.Dispatcher.UIThread.InvokeAsync(async () =>
+            {
+                await Task.Delay(300);
+                await base.ShowDialog(owner);
+            });
+        }
+
         private void Apply_OnClick(object? sender, RoutedEventArgs e)
         {
             Close();

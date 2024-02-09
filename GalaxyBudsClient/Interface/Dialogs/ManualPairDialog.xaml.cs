@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -39,6 +40,15 @@ namespace GalaxyBudsClient.Interface.Dialogs
             Model = this.FindControl<ComboBox>("Model");
             
             Init();
+        }
+
+        public new async Task<TResult> ShowDialog<TResult>(Window owner)
+        {
+            return await Avalonia.Threading.Dispatcher.UIThread.InvokeAsync(async () =>
+            {
+                await Task.Delay(300);
+                return await base.ShowDialog<TResult>(owner);
+            });
         }
 
         private async void Init()

@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -15,6 +16,15 @@ namespace GalaxyBudsClient.Interface.Dialogs
             this.AttachDevTools();
 
             Input = this.FindControl<TextBox>("Input");
+        }
+
+        public new async Task<TResult> ShowDialog<TResult>(Window owner)
+        {
+            return await Avalonia.Threading.Dispatcher.UIThread.InvokeAsync(async () =>
+            {
+                await Task.Delay(300);
+                return await base.ShowDialog<TResult>(owner);
+            });
         }
         
         private void Cancel_OnClick(object? sender, RoutedEventArgs e)

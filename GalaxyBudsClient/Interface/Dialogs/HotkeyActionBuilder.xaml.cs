@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -223,6 +224,15 @@ namespace GalaxyBudsClient.Interface.Dialogs
         private void Action_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
         {
             UpdateKeyCombo();
+        }
+
+        public new async Task ShowDialog(Window owner)
+        {
+            await Avalonia.Threading.Dispatcher.UIThread.InvokeAsync(async () =>
+            {
+                await Task.Delay(300);
+                await base.ShowDialog(owner);
+            });
         }
     }
 }
