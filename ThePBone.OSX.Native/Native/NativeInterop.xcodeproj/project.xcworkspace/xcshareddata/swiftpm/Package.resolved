@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Clipy/Sauce",
       "state" : {
-        "revision" : "8f8fabaa8509c1a653d6c2c3c87396a4c493d876",
-        "version" : "2.4.0"
+        "branch" : "master",
+        "revision" : "4fa210cc79207a9570b5620119f887fbdea99a06"
       }
     }
   ],

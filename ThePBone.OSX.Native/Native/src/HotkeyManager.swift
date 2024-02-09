@@ -8,7 +8,7 @@
 import Foundation
 import AppKit
 import Carbon.HIToolbox
-import Sauce // for me, xcode claims there is "no such module" but build works fine
+import Sauce
 import Magnet
 
 // This briding class exists because Magnet package does not export classes into Obj-C
