@@ -1,0 +1,115 @@
+name: Compile macOS binaries
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  release:
+     types: 
+       - published
+       - prereleased
+  workflow_dispatch:
+
+jobs:
+  build-x64:
+    runs-on: macos-14
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '15.2'
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.101
+        
+    - name: Build NativeInterop.xcodeproj
+      uses: sersoft-gmbh/xcodebuild-action@v3
+      with:
+        project: ThePBone.OSX.Native/Native/NativeInterop.xcodeproj
+        scheme: NativeInterop
+        destination: platform=macOS,arch=x86_64
+        build-settings: CONFIGURATION_BUILD_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/ThePBone.OSX.Native/Native/Build/Release CONFIGURATION_TEMP_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/ThePBone.OSX.Native/Native/Build/Intermediates.noindex
+        action: build
+       
+    - name: Restore workloads
+      run: dotnet workload restore
+    - name: Restore dependencies
+      run: dotnet restore -r osx-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
+    - name: Build x64
+      run: dotnet publish -r osx-x64 -o bin_osxx64 -c Release --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: GalaxyBudsClient_osx-x64
+        path: bin_osxx64/GalaxyBudsClient-*.pkg
+
+  build-arm64:
+    runs-on: macos-14
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '15.2'
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.101
+        
+    - name: Build NativeInterop.xcodeproj
+      uses: sersoft-gmbh/xcodebuild-action@v3
+      with:
+        project: ThePBone.OSX.Native/Native/NativeInterop.xcodeproj
+        scheme: NativeInterop
+        destination: platform=macOS,arch=arm64
+        build-settings: CONFIGURATION_BUILD_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/ThePBone.OSX.Native/Native/Build/Release CONFIGURATION_TEMP_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/ThePBone.OSX.Native/Native/Build/Intermediates.noindex
+        action: build
+
+    - name: Restore workloads
+      run: dotnet workload restore
+    - name: Restore dependencies
+      run: dotnet restore -r osx-arm64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
+    - name: Build arm64
+      run: dotnet publish -r osx-arm64 -o bin_osxarm64 -c Release --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: GalaxyBudsClient_osx-arm64
+        path: bin_osxarm64/GalaxyBudsClient-*.pkg
+
+
+  attach-to-release:
+    runs-on: ubuntu-latest
+    needs: [build-x64, build-arm64]
+    if: github.event_name == 'release'
+     
+    steps:
+    - name: Download setup artifact (x64)
+      uses: actions/download-artifact@v3
+      with:
+        name: GalaxyBudsClient_osx-x64
+    
+    - name: Rename (x64)
+      run: mv GalaxyBudsClient-*.pkg GalaxyBudsClient_macOS_x64.pkg
+
+    - name: Download artifact (arm64)
+      uses: actions/download-artifact@v3
+      with:
+        name: GalaxyBudsClient_osx-arm64
+
+    - name: Rename (arm64)
+      run: mv GalaxyBudsClient-*.pkg GalaxyBudsClient_macOS_arm64.pkg
+
+    - uses: AButler/upload-release-assets@v2.0
+      with:
+        files: '*.pkg'
+        repo-token: ${{ secrets.GH_TOKEN }}
