@@ -43,6 +43,7 @@
         <DefineConstants>OSX</DefineConstants>
         <RuntimeIdentifiers>osx-x64;osx-arm64</RuntimeIdentifiers>
         <_XSAppIconAssets>Assets.xcassets/AppIcon.appiconset</_XSAppIconAssets>
+        <ApplicationVersion>$(Version)</ApplicationVersion>
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <DefineConstants>Linux</DefineConstants>

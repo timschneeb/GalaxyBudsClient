@@ -9,7 +9,6 @@ using Avalonia.Media;
 using Avalonia.Threading;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
-using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
@@ -141,8 +140,6 @@ namespace GalaxyBudsClient.Interface.Dialogs
         public override void Show()
         {
             base.Show();
-            Activate();
-            Focus();
             
             UpdateSettings();
             _outerBorder.Tag = "showing";
