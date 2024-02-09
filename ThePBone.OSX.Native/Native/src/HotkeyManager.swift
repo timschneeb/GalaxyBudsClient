@@ -200,10 +200,10 @@ import Magnet
         case .OemComma: .comma
         case .OemMinus: .minus
         case .OemPeriod: .period
-        // case .OemQuestion:
-        // case .OemTilde:
+        case .OemQuestion: .slash
+        case .OemTilde: .grave
         case .OemOpenBrackets: .leftBracket
-        // case .OemPipe:
+        case .OemPipe: .section
         case .OemCloseBrackets: .rightBracket
         case .OemQuotes: .quote
         // case .Oem8:
@@ -377,10 +377,10 @@ import Magnet
         // case .OemComma: .comma
         // case .OemMinus: .minus
         // case .OemPeriod: .period
-        // case .OemQuestion:
-        // case .OemTilde:
+        // case .OemQuestion: .slash
+        // case .OemTilde: .grave
         // case .OemOpenBrackets: .leftBracket
-        // case .OemPipe:
+        // case .OemPipe: .section
         // case .OemCloseBrackets: .rightBracket
         // case .OemQuotes: .quote
         // case .Oem8:
