@@ -34,8 +34,8 @@
     <TrayIcon.Icons>
         <TrayIcons>
             <TrayIcon Menu="{Binding TrayMenu}"
-                      Icon="/Resources/icon_white.ico" 
-                      ToolTipText="Galaxy Buds Client" 
+                      Icon="/Resources/icon_white_tray.ico" 
+                      ToolTipText="Galaxy Buds"
                       Clicked="TrayIcon_OnClicked">
             </TrayIcon>
         </TrayIcons>
