@@ -22,12 +22,10 @@ namespace GalaxyBudsClient.Utils
         {
             (Application.Current as App)!.TrayMenu.NeedsUpdate += async (sender, args) =>
             {
-                Log.Debug("NEED UPDATE");
                 await RebuildAsync();
             }; 
             (Application.Current as App)!.TrayMenu.Opening += async (sender, args) =>
             {
-                Log.Debug("OPENING");
                 await RebuildAsync();
             };
             BluetoothImpl.Instance.Connected += (sender, args) => _ = RebuildAsync();
