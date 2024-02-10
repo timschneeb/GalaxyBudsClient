@@ -64,40 +64,54 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             {
                 preferred = Environment.GetEnvironmentVariable("BT_ADAPTER") ?? string.Empty;
             }
-            
-            if (preferred.Length > 0)
+
+            try
             {
-                try
+                if (preferred.Length > 0)
                 {
-                    _adapter = await BlueZManager.GetAdapterAsync(preferred);
-                }
-                catch (BlueZException ex)
-                {
-                    Log.Warning($"Preferred adapter not available: " + ex.ErrorName);
-                    _adapter = null;
-                }
-                catch (DBusException ex)
-                {
-                    BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.NoAdaptersAvailable, $"BlueZ not available. Make sure you've installed BlueZ and enabled that driver properly. {ex.Message}"));
-                    return;
-                }
-            }
-            
-            if(_adapter == null || preferred.Length == 0)
-            {
-                var adapters = await BlueZManager.GetAdaptersAsync();
-                if (adapters.Count == 0)
-                {
-                    throw new BluetoothException(BluetoothException.ErrorCodes.NoAdaptersAvailable);
+                    try
+                    {
+                        _adapter = await BlueZManager.GetAdapterAsync(preferred);
+                    }
+                    catch (BlueZException ex)
+                    {
+                        Log.Warning($"Preferred adapter not available: " + ex.ErrorName);
+                        _adapter = null;
+                    }
+                    catch (DBusException ex)
+                    {
+                        BluetoothErrorAsync?.Invoke(this,
+                            new BluetoothException(BluetoothException.ErrorCodes.NoAdaptersAvailable,
+                                $"BlueZ not available. Make sure you've installed BlueZ and enabled that driver properly. {ex.Message}"));
+                        return;
+                    }
                 }
 
-                _adapter = adapters.First();
+                if (_adapter == null || preferred.Length == 0)
+                {
+                    var adapters = await BlueZManager.GetAdaptersAsync();
+                    if (adapters.Count == 0)
+                    {
+                        throw new BluetoothException(BluetoothException.ErrorCodes.NoAdaptersAvailable);
+                    }
+
+                    _adapter = adapters.First();
+                }
+
+                var adapterPath = _adapter.ObjectPath.ToString();
+                var adapterName = adapterPath.Substring(adapterPath.LastIndexOf("/", StringComparison.Ordinal) + 1);
+
+                Log.Debug($"Linux.BluetoothService: Using Bluetooth adapter: {adapterName}");
             }
-            
-            var adapterPath = _adapter.ObjectPath.ToString();
-            var adapterName = adapterPath.Substring(adapterPath.LastIndexOf("/", StringComparison.Ordinal) + 1);
-            
-            Log.Debug($"Linux.BluetoothService: Using Bluetooth adapter: {adapterName}");
+            catch (DBusException ex)
+            {
+                Log.Error(ex, "Failed to select adapter");
+                if (ex.ErrorName == "org.freedesktop.DBus.Error.TimedOut")
+                {
+                    throw new PlatformNotSupportedException(
+                        "BlueZ not available. Make sure you've installed BlueZ and enabled that driver properly.");
+                }
+            }
         }
         #endregion
 
