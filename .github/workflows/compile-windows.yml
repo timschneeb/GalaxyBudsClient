@@ -82,7 +82,7 @@ jobs:
       with:
         length: 6
     - name: Prepare version information (3/3)
-      run: echo '{name}={${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}}' >> $GITHUB_OUTPUT
+      run: echo 'version={${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}}' >> $GITHUB_OUTPUT
       id: version
       
     # Make x64 installer
@@ -167,7 +167,7 @@ jobs:
       with:
         length: 6
     - name: Prepare version information (3/3)
-      run: echo '{name}={${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}}' >> $GITHUB_OUTPUT
+      run: echo 'version={${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}}' >> $GITHUB_OUTPUT
       id: version
       
     - name: Download setup artifact (x64)
