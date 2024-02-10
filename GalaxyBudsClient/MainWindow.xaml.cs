@@ -226,9 +226,17 @@ namespace GalaxyBudsClient
             
             if (SettingsProvider.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
             {
-                BringToTray();
-                e.Cancel = true;
-                Log.Debug("MainWindow.OnClosing: Termination cancelled");
+                // check if the cause of the termination is due to shutdown or application close request
+                if (e.CloseReason == WindowCloseReason.OSShutdown || e.CloseReason == WindowCloseReason.ApplicationShutdown)
+                {
+                    Log.Debug("MainWindow.OnClosing: closing event, continuing termination");
+                }
+                else
+                {
+                    BringToTray();
+                    e.Cancel = true;
+                    Log.Debug("MainWindow.OnClosing: Termination cancelled");
+                }
             }
             else
             {
