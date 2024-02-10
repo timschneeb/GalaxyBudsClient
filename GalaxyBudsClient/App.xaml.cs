@@ -1,4 +1,8 @@
 using System;
+#if OSX
+using AppKit;
+using Avalonia.Threading;
+#endif
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -23,6 +27,17 @@ namespace GalaxyBudsClient
         {
             DataContext = this;
             
+#if OSX
+            NSApplication.Init();
+            NSApplication.Notifications.ObserveDidBecomeActive((_, _) =>
+            {
+                Dispatcher.UIThread.InvokeAsync(delegate
+                {
+                    MainWindow.Instance.BringToFront();
+                });
+            });
+#endif
+
             AvaloniaXamlLoader.Load(this);
             
             if (Loc.IsTranslatorModeEnabled())
@@ -51,7 +66,7 @@ namespace GalaxyBudsClient
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 desktop.MainWindow = MainWindow.Instance;
-                desktop.Exit += (sender, args) =>
+                desktop.Exit += (_, _) =>
                 {
                     SettingsProvider.Instance.FirstLaunch = false;
                 };

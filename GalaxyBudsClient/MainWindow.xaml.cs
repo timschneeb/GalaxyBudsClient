@@ -248,9 +248,12 @@ namespace GalaxyBudsClient
 
         protected override void OnOpened(EventArgs e)
         {
-            HotkeyReceiverImpl.Reset();
-            HotkeyReceiverImpl.Instance.Update(silent: true);
-            
+            if (_firstShow)
+            {
+                HotkeyReceiverImpl.Reset();
+                HotkeyReceiverImpl.Instance.Update(silent: true);
+            }
+
             if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 if (desktop.Args.Contains("/StartMinimized") && PlatformUtils.SupportsTrayIcon && _firstShow)

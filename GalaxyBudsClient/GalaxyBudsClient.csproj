@@ -85,15 +85,20 @@
         <None Remove="bin\**" />
     </ItemGroup>
 
+    <PropertyGroup>
+        <!-- https://github.com/AvaloniaUI/Avalonia/commit/76caeedfd2baf1911f889011189d1c21657d2987,
+            last release at time of writing is 11.0.9, so anything newer should include a fix -->
+        <AvaloniaVersion>11.1.999-cibuild0044753-beta</AvaloniaVersion>
+    </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.0.7" />
-        <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.0.7" />
-        <PackageReference Include="Avalonia.Desktop" Version="11.0.7" />
-        <PackageReference Include="Avalonia.Diagnostics" Version="11.0.7" />
-        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.7" />
-        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="11.0.7" />
+        <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="$(AvaloniaVersion)" />
         <PackageReference Include="Avalonia.Svg.Skia" Version="11.0.0.13" />
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.7" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
         <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.0.6" />
         <PackageReference Include="Config.Net" Version="5.1.5" />
         <PackageReference Include="CS-Script.Core" Version="2.0.0" />
