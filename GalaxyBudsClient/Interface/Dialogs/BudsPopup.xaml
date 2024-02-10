@@ -8,7 +8,6 @@
         MaxWidth="370"
         CanResize="False"
         WindowStartupLocation="Manual"
-        ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaChromeHints="NoChrome"
         ExtendClientAreaTitleBarHeightHint="-1"
         TransparencyLevelHint="Transparent"

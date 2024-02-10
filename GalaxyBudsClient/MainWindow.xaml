@@ -11,7 +11,6 @@
         MinHeight="640" MinWidth="700"
         CanResize="False"
         WindowStartupLocation="CenterScreen"
-        ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaChromeHints="NoChrome"
         ExtendClientAreaTitleBarHeightHint="-1"
         TransparencyLevelHint="Transparent"
