@@ -51,7 +51,7 @@ namespace GalaxyBudsClient
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 desktop.MainWindow = MainWindow.Instance;
-                desktop.Exit += (sender, args) =>
+                desktop.Exit += (_, _) =>
                 {
                     SettingsProvider.Instance.FirstLaunch = false;
                 };
