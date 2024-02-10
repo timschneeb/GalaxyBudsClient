@@ -201,7 +201,7 @@ namespace GalaxyBudsClient.Utils
             await Dispatcher.UIThread.InvokeAsync(() =>
             {
                 var items = new List<NativeMenuItemBase>();
-                if (PlatformUtils.IsOSX)
+                if (PlatformUtils.IsOSX || PlatformUtils.IsLinux)
                 {
                     items.Add(new NativeMenuItem(Loc.Resolve("window_open"))
                     {
@@ -214,6 +214,7 @@ namespace GalaxyBudsClient.Utils
                 {
                     items.AddRange(RebuildBatteryInfo().OfType<NativeMenuItemBase>());
                     items.AddRange(RebuildDynamicActions());
+                    items.Add(new NativeMenuItemSeparator());
                 }
                 else if (BluetoothImpl.Instance.RegisteredDeviceValid)
                 {
@@ -222,9 +223,9 @@ namespace GalaxyBudsClient.Utils
                         Command = new MiniCommand(OnTrayMenuCommand),
                         CommandParameter = ItemType.Connect
                     });
+                    items.Add(new NativeMenuItemSeparator());
                 }
-
-                items.Add(new NativeMenuItemSeparator());
+                
                 items.Add(new NativeMenuItem(Loc.Resolve("tray_quit"))
                 {
                     Command = new MiniCommand(OnTrayMenuCommand),
