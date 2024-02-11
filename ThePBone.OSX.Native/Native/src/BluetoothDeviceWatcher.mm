@@ -1,6 +1,6 @@
 //
 // Created by Tim Schneeberger on 18.05.21.
-// Copyright (c) 2021 Tim Schneeberger. All rights reserved.
+// Copyright (c) 2021 Tim Schneeberger. Licensed under GPLv3.
 //
 
 #import <IOBluetooth/IOBluetooth.h>
