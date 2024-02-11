@@ -64,6 +64,7 @@ namespace GalaxyBudsClient.Interface.Pages
                         await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_AMBIENT_MODE,
                             !_ambientSwitch.IsChecked);
                         _ambientSwitch.Toggle();
+                        EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
                         break;
                     case EventDispatcher.Event.AmbientVolumeUp:
                         _ambientSwitch.IsChecked = true;
@@ -76,6 +77,7 @@ namespace GalaxyBudsClient.Interface.Pages
                             true);
                         await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.AMBIENT_VOLUME,
                             (byte) _volumeSlider.Value);
+                        EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
                         break;
                     case EventDispatcher.Event.AmbientVolumeDown:
                         if (_volumeSlider.Value <= 0)
@@ -94,6 +96,7 @@ namespace GalaxyBudsClient.Interface.Pages
                             await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.AMBIENT_VOLUME,
                                 (byte) _volumeSlider.Value);
                         }
+                        EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
 
                         break;
                 }
@@ -148,6 +151,7 @@ namespace GalaxyBudsClient.Interface.Pages
         private async void AmbientToggle_OnToggled(object? sender, bool e)
         {
             await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_AMBIENT_MODE, e);
+            EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
         }
 
         private async void VoiceFocusToggle_OnToggled(object? sender, bool e)

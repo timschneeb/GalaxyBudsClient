@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 
@@ -62,6 +63,7 @@ namespace GalaxyBudsClient.Message
                 payload[0] = !enable ? (byte) 0 : Convert.ToByte(preset + 1);
                 await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.EQUALIZER, payload);
             }
+            EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
         }
         
 
@@ -96,12 +98,12 @@ namespace GalaxyBudsClient.Message
             }
         }
         
-        /* Buds Pro only */
         public static class NoiseControl
         {
             public static async Task SetMode(NoiseControlMode mode)
             {
                 await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.NOISE_CONTROLS, (byte)mode);
+                EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
             }
 
             public static async Task SetTouchNoiseControls(bool anc, bool ambient, bool off)

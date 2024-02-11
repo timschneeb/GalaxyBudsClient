@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using Avalonia;
 using Avalonia.Controls;
@@ -56,10 +57,11 @@ namespace GalaxyBudsClient.Utils
                 }
                 else
                 {
+                    var assemblyName = Assembly.GetEntryAssembly()?.GetName().Name;
                     Application.Current.Resources.MergedDictionaries[dictId] =
                         new ResourceInclude((Uri?)null)
                         {
-                            Source = new Uri($"avares://GalaxyBudsClient/Interface/Styles/{name}.xaml")
+                            Source = new Uri($"avares://{assemblyName}/Interface/Styles/{name}.xaml")
                         };
                 }
             }

@@ -3,6 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>GalaxyBudsClient uses Bluetooth to access Galaxy Buds devices</string>
+	<string>Galaxy Buds Manager uses Bluetooth to access Galaxy Buds devices</string>
+	<key>CFBundleName</key>
+	<string>Galaxy Buds Manager</string>
+	<key>CFBundleDisplayName</key>
+	<string>Galaxy Buds Manager</string>
 </dict>
 </plist>

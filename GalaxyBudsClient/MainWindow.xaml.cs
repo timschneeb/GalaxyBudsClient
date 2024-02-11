@@ -90,6 +90,7 @@ namespace GalaxyBudsClient
             if (PlatformUtils.IsOSX)
             {
                 SystemDecorations = SystemDecorations.Full;
+                ExtendClientAreaToDecorationsHint = true;
             }
             
             Pager = this.FindControl<PageContainer>("Container");

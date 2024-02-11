@@ -58,6 +58,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			var items_act = new Dictionary<string, EventHandler<RoutedEventArgs>?>{};
 			foreach (var id in ((EventDispatcher.Event[]) Enum.GetValues(typeof(EventDispatcher.Event))))
 			{
+				if (!EventDispatcher.CheckDeviceSupport(id)) continue;
 				items_act.Add(id.GetDescription(), (sender, args) =>
 				{
 					if (id == EventDispatcher.Event.Connect)
