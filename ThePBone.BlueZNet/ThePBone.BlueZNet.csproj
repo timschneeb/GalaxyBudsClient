@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net8.0;netstandard2.1</TargetFrameworks>
+        <TargetFrameworks>net8.0</TargetFrameworks>
         <RootNamespace>ThePBone.BlueZNet</RootNamespace>
         <Configurations>Debug;Release;Debug (Local server);Release - Windows ARM</Configurations>
         <Platforms>AnyCPU</Platforms>
