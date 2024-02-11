@@ -54,6 +54,7 @@ namespace GalaxyBudsClient.Model
             Connect,
             
             /* INTERNAL */
+            UpdateTrayIcon,
             SetNoiseControlState
         }
 
@@ -101,6 +102,7 @@ namespace GalaxyBudsClient.Model
                     return BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DetectConversations);
                 
                 /* INTERNAL */
+                case Event.UpdateTrayIcon:
                 case Event.SetNoiseControlState:
                     return false;
             }

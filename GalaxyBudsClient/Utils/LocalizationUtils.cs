@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Xml;
 using Avalonia;
@@ -48,7 +49,6 @@ namespace GalaxyBudsClient.Utils
 
             public static void Load()
             {
-
                 string lang = SettingsProvider.Instance.Locale.ToString();
                 if (lang.EndsWith("_"))
                     lang = lang.TrimEnd('_');
@@ -63,8 +63,8 @@ namespace GalaxyBudsClient.Utils
                     lang = Locales.en.ToString();
                     SettingsProvider.Instance.Locale = Locales.en;
                 }
-
-                SetLanguageResourceDictionary($"avares://GalaxyBudsClient/i18n/{lang}.xaml", external: false);
+                var assemblyName = Assembly.GetEntryAssembly()?.GetName().Name;
+                SetLanguageResourceDictionary($"avares://{assemblyName}/i18n/{lang}.xaml", external: false);
             }
             
             private static void SetLanguageResourceDictionary(string path, bool external)

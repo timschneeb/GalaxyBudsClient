@@ -76,6 +76,7 @@ namespace GalaxyBudsClient.Interface.Pages
 				case EventDispatcher.Event.ToggleDoubleEdgeTouch:
 					_edgeTouch.Toggle();
 					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.OUTSIDE_DOUBLE_TAP, _edgeTouch.IsChecked);
+					EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
 					break;
 			}
 		}
@@ -280,6 +281,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			{
 				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOCK_TOUCHPAD, _lock.IsChecked);
 			}
+			EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
 		}
 		
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
@@ -295,6 +297,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		private async void DoubleTapVolume_OnToggled(object? sender, bool e)
 		{
 			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.OUTSIDE_DOUBLE_TAP, e);
+			EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
 		}
 
 		private void Gestures_OnPointerPressed(object? sender, PointerPressedEventArgs e)

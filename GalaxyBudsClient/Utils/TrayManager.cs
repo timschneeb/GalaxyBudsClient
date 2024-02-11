@@ -18,23 +18,54 @@ namespace GalaxyBudsClient.Utils
     class TrayManager
     {
         private readonly Timer _timer = new();
+        private bool _allowUpdate = true;
+        private bool _missedUpdate = false;
         public TrayManager()
         {
-            (Application.Current as App)!.TrayMenu.NeedsUpdate += async (sender, args) =>
+            // Make sure nobody is updating the menu while it's open
+            // because it crashes mac https://github.com/AvaloniaUI/Avalonia/issues/14578
+            (Application.Current as App)!.TrayMenu.Opening += (_, _) =>
             {
-                await RebuildAsync();
-            }; 
-            (Application.Current as App)!.TrayMenu.Opening += async (sender, args) =>
+                _allowUpdate = false;
+            };
+            (Application.Current as App)!.TrayMenu.Closed += (_, _) =>
             {
-                await RebuildAsync();
+                _allowUpdate = true;
+                if (_missedUpdate)
+                {
+                    Dispatcher.UIThread.Post(async () =>
+                    {
+                        await RebuildAsync();
+                    });
+                }
+            };
+            // It's important to trigger a rebuild every time some event happens
+            // otherwise tray will show outdated infos
+            (Application.Current as App)!.TrayMenu.NeedsUpdate += (_, _) =>
+            {
+                Dispatcher.UIThread.Post(async () =>
+                {
+                    await RebuildAsync();
+                });
             };
             BluetoothImpl.Instance.Connected += (sender, args) => _ = RebuildAsync();
-            
-            // TODO Avalonia bug workaround https://github.com/AvaloniaUI/Avalonia/issues/8076
-            _timer.Interval = 1000;
-            _timer.AutoReset = true;
-            _timer.Elapsed += async (sender, args) => await RebuildAsync();
-            _timer.Start();
+            BluetoothImpl.Instance.Disconnected += (sender, args) => _ = RebuildAsync();
+            EventDispatcher.Instance.EventReceived += (ev, _) =>
+            {
+                if (ev == EventDispatcher.Event.UpdateTrayIcon)
+                {
+                    Dispatcher.UIThread.Post(async () =>
+                    {
+                        await RebuildAsync();
+                    });
+                }
+            };
+            // triggering rebuild when battery % changes
+            SPPMessageHandler.Instance.StatusUpdate += (_, _) => RebuildAsync();
+            SPPMessageHandler.Instance.ExtendedStatusUpdate += (_, _) => RebuildAsync();
+            // triggering rebuild when noise control / ambient / anc state changes is handled in MessageComposer.cs
+            // triggering rebuild when lock touchpad changes is handled in TouchpadPage.xaml.cs
+            // triggering rebuild when eq state changes is handled in MessageComposer.cs
         }
 
         private async void OnTrayMenuCommand(object? type)
@@ -200,6 +231,12 @@ namespace GalaxyBudsClient.Utils
         {
             await Dispatcher.UIThread.InvokeAsync(() =>
             {
+                if (!_allowUpdate)
+                {
+                    _missedUpdate = true;
+                    return;
+                }
+                _missedUpdate = false;
                 var items = new List<NativeMenuItemBase>();
                 if (PlatformUtils.IsOSX || PlatformUtils.IsLinux)
                 {

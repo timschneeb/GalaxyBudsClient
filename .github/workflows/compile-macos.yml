@@ -47,7 +47,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: GalaxyBudsClient_osx-universal
-        path: bin_osx/GalaxyBudsClient-*.pkg
+        path: bin_osx/Galaxy Buds Manager-*.pkg
 
   build-x64:
     runs-on: macos-14
@@ -84,7 +84,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: GalaxyBudsClient_osx-x64
-        path: bin_osxx64/GalaxyBudsClient-*.pkg
+        path: bin_osxx64/Galaxy Buds Manager-*.pkg
 
   build-arm64:
     runs-on: macos-14
@@ -121,7 +121,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: GalaxyBudsClient_osx-arm64
-        path: bin_osxarm64/GalaxyBudsClient-*.pkg
+        path: bin_osxarm64/Galaxy Buds Manager-*.pkg
 
 
   attach-to-release:
@@ -136,7 +136,7 @@ jobs:
         name: GalaxyBudsClient_osx-universal
 
     - name: Rename (Universal)
-      run: mv GalaxyBudsClient-*.pkg GalaxyBudsClient_macOS_universal.pkg
+      run: mv "Galaxy Buds Manager"-*.pkg GalaxyBudsClient_macOS_universal.pkg
 
     - name: Download setup artifact (x64)
       uses: actions/download-artifact@v3
@@ -144,7 +144,7 @@ jobs:
         name: GalaxyBudsClient_osx-x64
     
     - name: Rename (x64)
-      run: mv GalaxyBudsClient-*.pkg GalaxyBudsClient_macOS_x64.pkg
+      run: mv "Galaxy Buds Manager"-*.pkg GalaxyBudsClient_macOS_x64.pkg
 
     - name: Download artifact (arm64)
       uses: actions/download-artifact@v3
@@ -152,7 +152,7 @@ jobs:
         name: GalaxyBudsClient_osx-arm64
 
     - name: Rename (arm64)
-      run: mv GalaxyBudsClient-*.pkg GalaxyBudsClient_macOS_arm64.pkg
+      run: mv "Galaxy Buds Manager"-*.pkg GalaxyBudsClient_macOS_arm64.pkg
 
     - uses: AButler/upload-release-assets@v2.0
       with:
