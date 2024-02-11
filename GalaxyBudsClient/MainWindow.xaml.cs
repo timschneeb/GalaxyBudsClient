@@ -139,7 +139,7 @@ namespace GalaxyBudsClient
             _ = TrayManager.Instance.RebuildAsync();
             
             Pager.PageSwitched += (sender, pages) => BuildOptionsMenu();
-            Loc.LanguageUpdated += BuildOptionsMenu;
+            Loc.LanguageUpdated += LocOnLanguageUpdated;
             BuildOptionsMenu();
             
             if (BluetoothImpl.Instance.RegisteredDeviceValid)
@@ -159,6 +159,12 @@ namespace GalaxyBudsClient
                     WindowState = WindowState.Minimized;
                 }
             }
+        }
+
+        private void LocOnLanguageUpdated()
+        {
+            BuildOptionsMenu();
+            FlowDirection = Loc.ResolveFlowDirection();
         }
 
         private void OnAnyMessageReceived(object? sender, BaseMessageParser? e)
@@ -279,7 +285,7 @@ namespace GalaxyBudsClient
             (Application.Current as App)!.TrayIconClicked -= TrayIcon_OnLeftClicked;
             EventDispatcher.Instance.EventReceived -= OnEventReceived;
 
-            Loc.LanguageUpdated -= BuildOptionsMenu;
+            Loc.LanguageUpdated -= LocOnLanguageUpdated;
 
             if (DisableApplicationExit)
             {

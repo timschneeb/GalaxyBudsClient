@@ -2,6 +2,8 @@
     
     <sys:String x:Key="ResourceDictionaryName">Loc-il</sys:String>
 
+    <sys:Boolean x:Key="IsRightToLeft">True</sys:Boolean>
+    
     <!--:::::::: Source code ::::::::-->
 
     <!--General-->

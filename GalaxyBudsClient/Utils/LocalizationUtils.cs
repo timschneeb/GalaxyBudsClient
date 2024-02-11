@@ -6,6 +6,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Markup.Xaml.Styling;
+using Avalonia.Media;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using Serilog;
@@ -38,6 +39,11 @@ namespace GalaxyBudsClient.Utils
                 }
 
                 return $"<Missing resource: {resName}>";
+            }
+            
+            public static FlowDirection ResolveFlowDirection()
+            {
+                return (Application.Current?.FindResource("IsRightToLeft") as bool?) == true ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             }
 
             public static void Load()
