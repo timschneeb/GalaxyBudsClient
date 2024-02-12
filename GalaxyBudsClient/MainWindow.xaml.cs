@@ -338,7 +338,19 @@ namespace GalaxyBudsClient
 #endif
             Hide();
         }
-        
+
+        public override void Show()
+        {
+            base.Show();
+            Pager.Suspended = false;
+        }
+
+        public override void Hide()
+        {
+            base.Hide();
+            Pager.Suspended = true;
+        }
+
         private void TrayIcon_OnLeftClicked()
         {
             Dispatcher.UIThread.InvokeAsync(() =>

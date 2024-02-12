@@ -21,7 +21,25 @@ namespace GalaxyBudsClient.Interface.Transition
 	    private readonly IPageTransition _pageTransition;
 		private readonly ViewModel _pageViewModel = new ViewModel();
 		private readonly SemaphoreSlim _pageSemaphore = new SemaphoreSlim(1, 1);
+		private bool _suspended;
+		private bool _lastWasSuspended;
 
+		public bool Suspended
+		{
+			set
+			{
+				if (_suspended == value) return;
+				_suspended = value;
+				if (_suspended)
+				{
+					_currentPage?.OnPageHidden();
+				}
+				else
+				{
+					_currentPage?.OnPageShown();
+				}
+			}
+		}
 		public event EventHandler<AbstractPage.Pages>? PageSwitched;
 		
 		public PageContainer()
@@ -37,9 +55,13 @@ namespace GalaxyBudsClient.Interface.Transition
 				{
 					return;
 				}
-				_lastPageCache.OnPageHidden();
+				if (!_lastWasSuspended)
+				{
+					_lastPageCache.OnPageHidden();
+				}
 				Children.Remove(_lastPageCache);
 				_lastPageCache = null;
+				_lastWasSuspended = false;
 				source = null;
 			};
 			_pageTransition = fadeTransition;
@@ -116,10 +138,14 @@ namespace GalaxyBudsClient.Interface.Transition
 					if (_lastPageCache != null)
 					{
 						source!.Cancel();
-						source = null;
-						_lastPageCache.OnPageHidden();
+						if (!_lastWasSuspended)
+						{
+							_lastPageCache.OnPageHidden();
+						}
 						Children.Remove(_lastPageCache);
 						_lastPageCache = null;
+						_lastWasSuspended = false;
+						source = null;
 					}
 
 					if (Children.Count != 1)
@@ -130,10 +156,14 @@ namespace GalaxyBudsClient.Interface.Transition
 					if (target != null)
 					{
 						_lastPageCache = _currentPage;
+						_lastWasSuspended = _suspended;
 						_currentPage = target;
 						source = new CancellationTokenSource();
 						Children.Add(_currentPage);
-						_currentPage.OnPageShown();
+						if (!_suspended)
+						{
+							_currentPage.OnPageShown();
+						}
 						// don't await here, we don't want to wait until animation finished
 						_pageTransition.Start(_lastPageCache, _currentPage, true, source.Token);
 						PageSwitched?.Invoke(this, page);
