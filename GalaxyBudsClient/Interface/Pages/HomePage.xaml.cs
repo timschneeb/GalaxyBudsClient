@@ -147,13 +147,6 @@ namespace GalaxyBudsClient.Interface.Pages
             BluetoothImpl.Instance.InvalidDataReceived += InstanceOnInvalidDataReceived;
 
             EventDispatcher.Instance.EventReceived += OnEventReceived;
-            
-            /* Restore data if restarted */
-            var cache = DeviceMessageCache.Instance.BasicStatusUpdate;
-            if (cache != null)
-            {
-                ProcessBasicUpdate(cache);
-            }
         }
 
         public void ResetCache()
@@ -238,6 +231,13 @@ namespace GalaxyBudsClient.Interface.Pages
             _touch.Source = (IImage?)Application.Current?.FindResource($"Touch{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
 
             _loadingSpinner.IsVisible = !BluetoothImpl.Instance.IsConnected;
+
+            /* Restore data if restarted */
+            var cache = DeviceMessageCache.Instance.BasicStatusUpdate;
+            if (cache != null)
+            {
+                ProcessBasicUpdate(cache);
+            }
         }
 
 		public override void OnPageHidden()
