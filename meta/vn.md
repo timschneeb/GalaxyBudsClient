@@ -4,15 +4,23 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>83%</td><td>70 missing string(s)</td></tr>
+<tr><td>82%</td><td>78 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
 
 <table>
 <tr><th>Key</th><th>Original string</th></tr>
+<tr><td><code>event_anc_switch_one</code></td><td>Switch ANC with one earbud</td></tr>
+<tr><td><code>mainpage_fit_test</code></td><td>Earbud fit test</td></tr>
 <tr><td><code>settings_autostart_permission</code></td><td>Cannot update auto-start entry in registry. Registry access (HKCU) was explicitly disabled by your system administrator.</td></tr>
 <tr><td><code>settings_crowdsourcing</code></td><td>Crowdsourcing</td></tr>
+<tr><td><code>gft_warning</code></td><td>Please wear both earbuds.</td></tr>
+<tr><td><code>gft_bad</code></td><td>Bad fit</td></tr>
+<tr><td><code>gft_good</code></td><td>Good fit</td></tr>
+<tr><td><code>gft_fail</code></td><td>Test failed</td></tr>
+<tr><td><code>nc_anc_one</code></td><td>Noise cancelling with one earbud</td></tr>
+<tr><td><code>nc_anc_one_description</code></td><td>Noise cancelling normally requires two earbuds to prevent discomfort, enable this to allow noise cancelling with only one earbud</td></tr>
 <tr><td><code>adv_bixby_remap</code></td><td>Remap Bixby wakeup</td></tr>
 <tr><td><code>adv_bixby_remap_desc</code></td><td>Define what should happen when you say 'Hey Bixby!'</td></tr>
 <tr><td><code>bixby_remap_header</code></td><td>Remap Bixby wakeup</td></tr>
