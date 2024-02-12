@@ -215,9 +215,6 @@ namespace GalaxyBudsClient.Interface.Pages
                 _refreshTimer.Start();
             }
 
-            _caseLabel.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery) && 
-                                   (DeviceMessageCache.Instance.BasicStatusUpdate?.BatteryCase ?? 101) <= 100;
-
             /* Initial properties */
             if (_lastGetAllDataParser == null)
             {
@@ -283,40 +280,50 @@ namespace GalaxyBudsClient.Interface.Pages
             await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA);
         }
 
-        private void UpdatePlusPlacement(PlacementStates l ,PlacementStates r)
+        private void UpdatePlusPlacement(PlacementStates l, PlacementStates r)
         {
-            _batteryTemperatureLeft.Content = l.GetDescription();
-            _batteryTemperatureRight.Content = r.GetDescription();
+            if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Voltage))
+            {
+                _batteryTemperatureLeft.Content = l.GetDescription();
+                _batteryTemperatureRight.Content = r.GetDescription();
+            }
+            else
+            {
+                _batteryTemperatureRight.Content = "";
+                _batteryTemperatureLeft.Content = "";
+                _batteryCurrentLeft.Content = l.GetDescription();
+                _batteryCurrentRight.Content = r.GetDescription();
+            }
         }
         
         private void UpdateTemperature(double left, double right)
         {
-            if (BluetoothImpl.Instance.ActiveModel == Models.Buds)
+            String tempLeft, tempRight;
+            if (SettingsProvider.Instance.TemperatureUnit == TemperatureUnits.Fahrenheit)
             {
-                if (SettingsProvider.Instance.TemperatureUnit == TemperatureUnits.Fahrenheit)
-                {
-                    _batteryTemperatureLeft.Content = $"{((9.0 / 5.0) * left) + 32:N1} °F";
-                    _batteryTemperatureRight.Content = $"{((9.0 / 5.0) * right) + 32:N1} °F";
-                }
-                else
-                {
-                    _batteryTemperatureLeft.Content = $"{left:N1} °C";
-                    _batteryTemperatureRight.Content = $"{right:N1} °C";
-                }
+                 tempLeft = $"{((9.0 / 5.0) * left) + 32:N1} °F";
+                 tempRight = $"{((9.0 / 5.0) * right) + 32:N1} °F";
             }
             else
             {
-                //Switch positions for a better layout
-                if (SettingsProvider.Instance.TemperatureUnit == TemperatureUnits.Fahrenheit)
-                {
-                    _batteryCurrentLeft.Content = $"{((9.0 / 5.0) * left) + 32:N1} °F";
-                    _batteryCurrentRight.Content = $"{((9.0 / 5.0) * right) + 32:N1} °F";
-                }
-                else
-                {
-                    _batteryCurrentLeft.Content = $"{left:N1} °C";
-                    _batteryCurrentRight.Content = $"{right:N1} °C";
-                }
+                tempLeft = $"{left:N1} °C";
+                tempRight = $"{right:N1} °C";
+            }
+            if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Current))
+            {
+                _batteryTemperatureLeft.Content = tempLeft;
+                _batteryTemperatureRight.Content = tempRight;
+            }
+            //Switch positions for a better layout
+            else if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Voltage))
+            {
+                _batteryCurrentLeft.Content = tempLeft;
+                _batteryCurrentRight.Content = tempRight;
+            }
+            else
+            {
+                _batteryVoltLeft.Content = tempLeft;
+                _batteryVoltRight.Content = tempRight;
             }
         }
 
@@ -326,11 +333,14 @@ namespace GalaxyBudsClient.Interface.Pages
 
             UpdateBatteryPercentage((int) Math.Round(p.LeftAdcSOC), Devices.L);
             UpdateBatteryPercentage((int) Math.Round(p.RightAdcSOC), Devices.R);
-            
-            _batteryVoltLeft.Content = $"{p.LeftAdcVCell:N2}V";
-            _batteryVoltRight.Content = $"{p.RightAdcVCell:N2}V";
 
-            if (BluetoothImpl.Instance.ActiveModel == Models.Buds)
+            if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Voltage))
+            {
+                _batteryVoltLeft.Content = $"{p.LeftAdcVCell:N2}V";
+                _batteryVoltRight.Content = $"{p.RightAdcVCell:N2}V";
+            }
+
+            if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Current))
             {
                 _batteryCurrentLeft.Content = $"{p.LeftAdcCurrent:N2}mA";
                 _batteryCurrentRight.Content = $"{p.RightAdcCurrent:N2}mA";

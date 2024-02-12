@@ -20,6 +20,9 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.DoubleTapVolume, null },
                 { IDeviceSpec.Feature.CaseBattery, null },
                 { IDeviceSpec.Feature.FragmentedMessages, null },
+                { IDeviceSpec.Feature.LegacyNoiseControlMode, null },
+                { IDeviceSpec.Feature.DebugInfoLegacy, null },
+                { IDeviceSpec.Feature.Voltage, null }
             };
         
         public Models Device => Models.BudsPlus;

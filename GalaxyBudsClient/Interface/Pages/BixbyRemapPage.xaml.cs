@@ -89,6 +89,10 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		public override void OnPageShown()
 		{
+			if (DeviceMessageCache.Instance.ExtendedStatusUpdate != null)
+			{
+				OnExtendedStatusUpdate(null, DeviceMessageCache.Instance.ExtendedStatusUpdate);
+			}
 			_bixbyAction.Description = SettingsProvider.Instance.BixbyRemapEvent.GetDescription();
 		}
 		

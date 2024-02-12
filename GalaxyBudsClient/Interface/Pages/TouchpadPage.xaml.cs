@@ -18,7 +18,6 @@ using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages
@@ -40,13 +39,22 @@ namespace GalaxyBudsClient.Interface.Pages
 		private (bool, bool, bool) _lastNoiseControlMode;
 		
 		/* ANC, Ambient, Off */
-		private static readonly (bool, bool, bool, string)[] NoiseControlModeMap = new[]
+		private static readonly (bool, bool, bool, string)[] NoiseControlModeMapLegacy =
 		{
 			(true, true, false, "touchpad_noise_control_mode_anc_amb"),
 			(true, false, true, "touchpad_noise_control_mode_anc_off"),
 			(false, true, true, "touchpad_noise_control_mode_amb_off"),
-			(true, true, true, "touchpad_noise_control_mode_threeway"),
+			(true, true, true, "touchpad_noise_control_mode_threeway")
 		};
+		private static readonly (bool, bool, bool, string)[] NoiseControlModeMapNew =
+		{
+			(true, true, false, "touchpad_noise_control_mode_anc_amb"),
+			(true, false, true, "touchpad_noise_control_mode_anc_off"),
+			(false, true, true, "touchpad_noise_control_mode_amb_off")
+		};
+		private static (bool, bool, bool, string)[] NoiseControlModeMap =>
+			BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.LegacyNoiseControlMode)
+				? NoiseControlModeMapLegacy : NoiseControlModeMapNew;
 		
 		public TouchpadPage()
 		{   
@@ -248,11 +256,16 @@ namespace GalaxyBudsClient.Interface.Pages
 			this.FindControl<DetailListItem>("Gestures").GetVisualParent()!.IsVisible = supportAdvTouchLock;
 
 			UpdateNoiseSwitchModeVisible();
-			
+
 			MainWindow.Instance.CustomTouchActionPage.Accepted += CustomTouchActionPageOnAccepted;
 
 			UpdateMenus();
 			UpdateMenuDescriptions();
+		}
+
+		public override void OnPageHidden()
+		{
+			MainWindow.Instance.CustomTouchActionPage.Accepted -= CustomTouchActionPageOnAccepted;
 		}
 
 		public void UpdateNoiseSwitchModeVisible()

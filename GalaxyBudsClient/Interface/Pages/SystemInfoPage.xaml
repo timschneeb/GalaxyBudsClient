@@ -74,13 +74,13 @@
                         <items:DetailListItem x:Name="SerialNumber" Text="{DynamicResource system_serial}"
                                               Description="Left: RFAM8001KWZ, Right: RFAM8001QWA" />
                     </Border>
-                    <Separator Grid.Row="11" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
+                    <Separator Grid.Row="11" x:Name="SeparatorLegacyDebug1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
                     <Border Grid.Row="12" CornerRadius="{DynamicResource DefaultCornerRadius}"
                             Classes="BorderHoverStyle">
                         <items:DetailListItem x:Name="BuildString" Text="{DynamicResource system_build_info}"
                                               Description="Left: RFAM8001KWZ, Right: RFAM8001QWA" />
                     </Border>
-                    <Separator Grid.Row="13" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
+                    <Separator Grid.Row="13" x:Name="SeparatorLegacyDebug2" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
                     <Border Grid.Row="14" CornerRadius="{DynamicResource DefaultCornerRadius}"
                             Classes="BorderHoverStyle">
                         <items:DetailListItem x:Name="BatteryType" Text="{DynamicResource system_battery_type}"

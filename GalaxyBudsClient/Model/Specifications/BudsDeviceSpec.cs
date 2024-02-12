@@ -15,6 +15,10 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.SeamlessConnection, new FeatureRule(3, "R170XXU0ATF2") },
                 { IDeviceSpec.Feature.AmbientVoiceFocus, null },
                 { IDeviceSpec.Feature.AmbientSound, null },
+                { IDeviceSpec.Feature.LegacyNoiseControlMode, null },
+                { IDeviceSpec.Feature.DebugInfoLegacy, null },
+                { IDeviceSpec.Feature.Voltage, null },
+                { IDeviceSpec.Feature.Current, null }
             };
 
         public Models Device => Models.Buds;
