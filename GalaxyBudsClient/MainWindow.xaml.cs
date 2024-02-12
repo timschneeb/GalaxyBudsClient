@@ -498,8 +498,11 @@ namespace GalaxyBudsClient
                 [Loc.Resolve("optionsmenu_refresh")] = async (sender, args) =>
                     await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA),
                
-                [Loc.Resolve("optionsmenu_deregister")] = (sender, args) => BluetoothImpl.Instance.UnregisterDevice()
-                    .ContinueWith((_) => Pager.SwitchPage(AbstractPage.Pages.Welcome))
+                [Loc.Resolve("optionsmenu_deregister")] = (sender, args) =>
+                {
+                    BluetoothImpl.Instance.UnregisterDevice();
+                    Pager.SwitchPage(AbstractPage.Pages.Welcome);
+                }
             };
 
             if (restricted)

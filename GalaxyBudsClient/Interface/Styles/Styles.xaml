@@ -160,32 +160,4 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    <!-- Carousel scroll bug workaround: disable scroll gestures and remove scroll bars -->
-    <Style Selector="Carousel > ScrollViewer">
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Template">
-            <ControlTemplate>
-                <Grid ColumnDefinitions="*,Auto"
-                      RowDefinitions="*,Auto">
-                    <ScrollContentPresenter Name="PART_ContentPresenter"
-                                            Padding="{TemplateBinding Padding}"
-                                            HorizontalSnapPointsType="{TemplateBinding HorizontalSnapPointsType}"
-                                            VerticalSnapPointsType="{TemplateBinding VerticalSnapPointsType}"
-                                            HorizontalSnapPointsAlignment="{TemplateBinding HorizontalSnapPointsAlignment}"
-                                            VerticalSnapPointsAlignment="{TemplateBinding VerticalSnapPointsAlignment}"
-                                            Background="{TemplateBinding Background}"
-                                            ScrollViewer.IsScrollInertiaEnabled="{TemplateBinding IsScrollInertiaEnabled}">
-                        <ScrollContentPresenter.GestureRecognizers>
-                            <ScrollGestureRecognizer CanHorizontallyScroll="False"
-                                                     CanVerticallyScroll="False"/>
-                        </ScrollContentPresenter.GestureRecognizers>
-                    </ScrollContentPresenter>
-                    <Panel Grid.Row="1"
-                           Grid.Column="1"
-                           Background="{DynamicResource ThemeControlMidBrush}"/>
-                </Grid>
-            </ControlTemplate>
-        </Setter>
-    </Style>
 </Styles>
