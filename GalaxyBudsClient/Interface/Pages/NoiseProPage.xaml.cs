@@ -25,6 +25,7 @@ namespace GalaxyBudsClient.Interface.Pages
         private readonly SwitchListItem _ambientSwitch;
         
         private readonly SwitchListItem _ancSwitch;
+        private readonly SwitchDetailListItem _ancOne;
         private readonly SwitchDetailListItem _ancLevel;       
         
         private readonly SwitchDetailListItem _voiceDetect;
@@ -37,6 +38,7 @@ namespace GalaxyBudsClient.Interface.Pages
             _ambientSwitch = this.FindControl<SwitchListItem>("AmbientToggle");
             
             _ancSwitch = this.FindControl<SwitchListItem>("AncToggle");
+            _ancOne = this.FindControl<SwitchDetailListItem>("AncOneToggle");
             _ancLevel = this.FindControl<SwitchDetailListItem>("AncLevelToggle");
 
             _voiceDetect = this.FindControl<SwitchDetailListItem>("VoiceDetect");
@@ -94,6 +96,10 @@ namespace GalaxyBudsClient.Interface.Pages
                         _ancLevel.Toggle();
                         await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.NOISE_REDUCTION_LEVEL, _ancLevel.IsChecked);
                         break;
+                    case EventDispatcher.Event.SwitchAncOne:
+                        _ancOne.Toggle();
+                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_ANC_WITH_ONE_EARBUD, _ancOne.IsChecked);
+                        break;
                     case EventDispatcher.Event.AmbientToggle:
                         _ambientSwitch.Toggle();
                         AmbientToggle_OnToggled(this, _ambientSwitch.IsChecked);
@@ -115,9 +121,11 @@ namespace GalaxyBudsClient.Interface.Pages
             _voiceBorder.IsVisible =
                 BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DetectConversations);
             this.FindControl<Border>("AncLevelToggleBorder").IsVisible =
+                this.FindControl<Separator>("AncLevelToggleSeparator").IsVisible =
                 BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AncNoiseReductionLevels);
-            this.FindControl<Separator>("AncLevelToggleSeparator").IsVisible =
-                BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AncNoiseReductionLevels);
+            this.FindControl<Border>("AncOneToggleBorder").IsVisible =
+                this.FindControl<Separator>("AncOneToggleSeparator").IsVisible =
+                    BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AncWithOneEarbud);
         }
         
         private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
@@ -125,6 +133,7 @@ namespace GalaxyBudsClient.Interface.Pages
             _ambientSwitch.IsChecked = e.NoiseControlMode == NoiseControlMode.AmbientSound;
             _ancSwitch.IsChecked = e.NoiseControlMode == NoiseControlMode.NoiseReduction;
             _ancLevel.IsChecked = e.NoiseReductionLevel == 1;
+            _ancOne.IsChecked = e.AncWithOneEarbud;
             _voiceDetect.IsChecked = e.DetectConversations;
 
             byte seconds;
@@ -194,6 +203,11 @@ namespace GalaxyBudsClient.Interface.Pages
         private async void AncLevelToggle_OnToggled(object? sender, bool e)
         {
             await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.NOISE_REDUCTION_LEVEL, e);
+        }
+
+        private async void AncOneToggle_OnToggled(object? sender, bool e)
+        {
+            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_ANC_WITH_ONE_EARBUD, e);
         }
 
         private async void VoiceDetect_OnToggled(object? sender, bool e)

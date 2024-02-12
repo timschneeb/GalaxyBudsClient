@@ -55,6 +55,8 @@ namespace GalaxyBudsClient.Interface.Pages
 			this.FindControl<Separator>("PassthroughS").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientPassthrough);
 			_sidetone.GetVisualParent()!.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSidetone);
 			_passthrough.GetVisualParent()!.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientPassthrough);
+			this.FindControl<Border>("GearFitTest").IsVisible =
+				BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.GearFitTest);
 		}
 		
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
@@ -106,6 +108,11 @@ namespace GalaxyBudsClient.Interface.Pages
 		private void BixbyRemap_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
 			MainWindow.Instance.Pager.SwitchPage(Pages.BixbyRemap);
+		}
+
+		private void GearFitTest_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+		{
+			MainWindow.Instance.Pager.SwitchPage(Pages.GearFitTest);
 		}
 	}
 }

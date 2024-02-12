@@ -21,7 +21,7 @@ namespace GalaxyBudsClient.Message
             typeof(LogTraceStartParser), typeof(LogTraceDataParser), typeof(LogCoredumpDataParser), typeof(LogCoredumpDataSizeParser),
             typeof(NoiseControlUpdateParser), typeof(FotaSessionParser), typeof(FotaControlParser), typeof(FotaDownloadDataParser), 
             typeof(FotaUpdateParser), typeof(FotaResultParser), typeof(SpatialAudioDataParser), typeof(SpatialAudioControlParser),
-            typeof(VoiceWakeupEventParser)
+            typeof(VoiceWakeupEventParser), typeof(FitTestParser)
         };
 
         public static BaseMessageParser? BuildParser(SPPMessage msg)

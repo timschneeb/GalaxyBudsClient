@@ -134,6 +134,7 @@
     <sys:String x:Key="event_eq_switch">Iterate equalizer presets</sys:String>
     <sys:String x:Key="event_anc_toggle">Toggle noise cancelling</sys:String>
     <sys:String x:Key="event_anc_switch_sensitivity">Switch ANC sensitivity</sys:String>
+    <sys:String x:Key="event_anc_switch_one">Switch ANC with one earbud</sys:String>
     <sys:String x:Key="event_touch_lock_toggle">Toggle touchpad lock</sys:String>
     <sys:String x:Key="event_double_edge_touch_toggle">Toggle double-edge touch feature</sys:String>
     <sys:String x:Key="event_conversation_toggle">Toggle conversation detection</sys:String>
@@ -159,6 +160,7 @@ This program is designed to provide much more functionality over the official Sa
 
     <!--Main page-->
     <sys:String x:Key="mainpage_corrupt_data">Received corrupted data. Reconnecting...</sys:String>
+    <sys:String x:Key="mainpage_fit_test">Earbud fit test</sys:String>
     <sys:String x:Key="mainpage_find_my_earbuds">Find my earbuds</sys:String>
     <sys:String x:Key="mainpage_touchpad">Touchpad</sys:String>
     <sys:String x:Key="mainpage_ambient_sound">Ambient sound</sys:String>
@@ -377,6 +379,12 @@ You might need to manually reconnect your Earbuds.</sys:String>
     <sys:String x:Key="fmg_warning_left">Please remove the left earbud from your ear.</sys:String>
     <sys:String x:Key="fmg_warning_right">Please remove the right earbud from your ear.</sys:String>
     <sys:String x:Key="fmg_header">Find my earbuds</sys:String>
+    
+    <!-- Fit test-->
+    <sys:String x:Key="gft_warning">Please wear both earbuds.</sys:String>
+    <sys:String x:Key="gft_bad">Bad fit</sys:String>
+    <sys:String x:Key="gft_good">Good fit</sys:String>
+    <sys:String x:Key="gft_fail">Test failed</sys:String>
 
     <!--Equalizer-->
     <sys:String x:Key="eq_header">Equalizer</sys:String>
@@ -395,6 +403,8 @@ You might need to manually reconnect your Earbuds.</sys:String>
 
     <!--Noise control-->
     <sys:String x:Key="nc_header">Noise control</sys:String>
+    <sys:String x:Key="nc_anc_one">Noise cancelling with one earbud</sys:String>
+    <sys:String x:Key="nc_anc_one_description">Noise cancelling normally requires two earbuds to prevent discomfort, enable this to allow noise cancelling with only one earbud</sys:String>
     <sys:String x:Key="nc_anc_level">High sensitivity</sys:String>
     <sys:String x:Key="nc_anc_level_description">Stronger noise cancelling effect</sys:String>
     <sys:String x:Key="nc_ambient">Customize ambient sound</sys:String>

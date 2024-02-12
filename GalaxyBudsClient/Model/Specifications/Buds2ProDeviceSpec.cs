@@ -22,9 +22,11 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.FragmentedMessages, null },
                 { IDeviceSpec.Feature.SpatialSensor, null },
                 { IDeviceSpec.Feature.BixbyWakeup, null },
+                { IDeviceSpec.Feature.GearFitTest, null },
                 { IDeviceSpec.Feature.AncNoiseReductionLevels, null },
-                { IDeviceSpec.Feature.AmbientSidetone, null  },
-                { IDeviceSpec.Feature.AmbientCustomize, null},
+                { IDeviceSpec.Feature.AmbientSidetone, null },
+                { IDeviceSpec.Feature.AmbientCustomize, null },
+                { IDeviceSpec.Feature.AncWithOneEarbud, null }
             };
         
         public Models Device => Models.Buds2Pro;

@@ -38,7 +38,8 @@ namespace GalaxyBudsClient.Model.Specifications
             AncNoiseReductionLevels,
             AdvancedTouchLock,
             LegacyNoiseControlMode,
-            DebugInfoLegacy
+            DebugInfoLegacy,
+            GearFitTest
         }
         
         public Dictionary<Feature, FeatureRule?> Rules { get; }

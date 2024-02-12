@@ -11,6 +11,7 @@ namespace GalaxyBudsClient.Interface.Pages
             Dummy2,
             Home,
             FindMyGear,
+            GearFitTest,
             Touch,
             TouchGesture,
             TouchCustomAction,

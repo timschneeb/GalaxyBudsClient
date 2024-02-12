@@ -142,6 +142,7 @@ namespace GalaxyBudsClient.Interface.Transition
 						{
 							_lastPageCache.OnPageHidden();
 						}
+
 						Children.Remove(_lastPageCache);
 						_lastPageCache = null;
 						_lastWasSuspended = false;
@@ -164,10 +165,15 @@ namespace GalaxyBudsClient.Interface.Transition
 						{
 							_currentPage.OnPageShown();
 						}
+
 						// don't await here, we don't want to wait until animation finished
 						_pageTransition.Start(_lastPageCache, _currentPage, true, source.Token);
 						PageSwitched?.Invoke(this, page);
 					}
+				}
+				catch (Exception ex)
+				{
+					Log.Error(ex.ToString());
 				}
 				finally
 				{

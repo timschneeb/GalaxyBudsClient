@@ -18,11 +18,13 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.NoiseControl, null },
                 { IDeviceSpec.Feature.GamingMode, null },
                 { IDeviceSpec.Feature.CaseBattery, null },
+                { IDeviceSpec.Feature.GearFitTest, null },
                 { IDeviceSpec.Feature.FragmentedMessages, null },
                 { IDeviceSpec.Feature.BixbyWakeup, null },
                 { IDeviceSpec.Feature.AncNoiseReductionLevels, null },
-                { IDeviceSpec.Feature.AmbientSidetone, null  },
-                { IDeviceSpec.Feature.AmbientCustomize, null},
+                { IDeviceSpec.Feature.AmbientSidetone, null },
+                { IDeviceSpec.Feature.AmbientCustomize, null },
+                { IDeviceSpec.Feature.AncWithOneEarbud, null }
             };
         
         public Models Device => Models.BudsFe;

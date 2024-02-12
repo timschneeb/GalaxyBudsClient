@@ -73,8 +73,17 @@
                                           PointerPressed="BixbyRemap_OnPointerPressed"/>
                 </Border>
             </Grid>
-            
+        </Border>
 
+        <Border x:Name="GearFitTest" Grid.Row="5" Classes="RoundedBorderListItem BottomSpacer10">
+            <Grid ClipToBounds="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" CornerRadius="{StaticResource DefaultCornerRadius}" Classes="BorderHoverStyle" PointerPressed="GearFitTest_OnPointerPressed">
+                    <items:IconListItem FontSize="18" Source="{DynamicResource FitTest}" Text="{DynamicResource mainpage_fit_test}"/>
+                </Border>
+            </Grid>
         </Border>
 
     </Grid>
