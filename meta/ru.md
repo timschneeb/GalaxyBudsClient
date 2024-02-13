@@ -4,13 +4,15 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>96%</td><td>17 missing string(s)</td></tr>
+<tr><td>94%</td><td>25 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
 
 <table>
 <tr><th>Key</th><th>Original string</th></tr>
+<tr><td><code>event_anc_switch_one</code></td><td>Switch ANC with one earbud</td></tr>
+<tr><td><code>mainpage_fit_test</code></td><td>Earbud fit test</td></tr>
 <tr><td><code>devsel_manual_pair</code></td><td>Manual connection</td></tr>
 <tr><td><code>touchpad_gestures</code></td><td>Advanced touch lock</td></tr>
 <tr><td><code>touchpad_gestures_description</code></td><td>Enable or disable default touch gestures</td></tr>
@@ -20,6 +22,12 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>settings_crowd_allow_description</code></td><td>Collect information about Samsung's proprietary Bluetooth protocol structure and data on demand. This allows me to keep all available Galaxy Buds models supported much more easily without owning them.</td></tr>
 <tr><td><code>settings_crowd_crashreport</code></td><td>Allow app crash reports</td></tr>
 <tr><td><code>settings_crowd_crashreport_description</code></td><td>Send application crash reports automatically in case of crashes or fatal errors using Sentry. This helps me to respond more quickly to problematic and disruptive application bugs.</td></tr>
+<tr><td><code>gft_warning</code></td><td>Please wear both earbuds.</td></tr>
+<tr><td><code>gft_bad</code></td><td>Bad fit</td></tr>
+<tr><td><code>gft_good</code></td><td>Good fit</td></tr>
+<tr><td><code>gft_fail</code></td><td>Test failed</td></tr>
+<tr><td><code>nc_anc_one</code></td><td>Noise cancelling with one earbud</td></tr>
+<tr><td><code>nc_anc_one_description</code></td><td>Noise cancelling normally requires two earbuds to prevent discomfort, enable this to allow noise cancelling with only one earbud</td></tr>
 <tr><td><code>nc_ambient</code></td><td>Customize ambient sound</td></tr>
 <tr><td><code>nc_ambient_description</code></td><td>Configure ambient sound tone and volume (if available)</td></tr>
 <tr><td><code>window_open</code></td><td>Open</td></tr>

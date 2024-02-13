@@ -102,7 +102,7 @@ namespace GalaxyBudsClient
                 new WelcomePage(), UnsupportedFeaturePage, UpdatePage, UpdateProgressPage, new SystemCoredumpPage(),
                 new HotkeyPage(), new FirmwareSelectionPage(), new FirmwareTransferPage(), new SpatialTestPage(),
                 new BixbyRemapPage(), new CrowdsourcingSettingsPage(), new BudsAppDetectedPage(), new TouchpadGesturePage(),
-                new NoiseProAmbientPage());
+                new NoiseProAmbientPage(), new GearFitPage());
 
             _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => BeginMoveDrag(e);
@@ -338,7 +338,19 @@ namespace GalaxyBudsClient
 #endif
             Hide();
         }
-        
+
+        public override void Show()
+        {
+            base.Show();
+            Pager.Suspended = false;
+        }
+
+        public override void Hide()
+        {
+            base.Hide();
+            Pager.Suspended = true;
+        }
+
         private void TrayIcon_OnLeftClicked()
         {
             Dispatcher.UIThread.InvokeAsync(() =>
@@ -498,8 +510,11 @@ namespace GalaxyBudsClient
                 [Loc.Resolve("optionsmenu_refresh")] = async (sender, args) =>
                     await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA),
                
-                [Loc.Resolve("optionsmenu_deregister")] = (sender, args) => BluetoothImpl.Instance.UnregisterDevice()
-                    .ContinueWith((_) => Pager.SwitchPage(AbstractPage.Pages.Welcome))
+                [Loc.Resolve("optionsmenu_deregister")] = (sender, args) =>
+                {
+                    BluetoothImpl.Instance.UnregisterDevice();
+                    Pager.SwitchPage(AbstractPage.Pages.Welcome);
+                }
             };
 
             if (restricted)

@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
+using Avalonia.VisualTree;
 using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Message;
@@ -32,6 +33,8 @@ namespace GalaxyBudsClient.Interface.Pages
 		private readonly DetailListItem _buildString;
 		private readonly DetailListItem _batteryType;
 		private readonly DetailListItem _revision;
+		private readonly Separator _separatorLegacyDebug1;
+		private readonly Separator _separatorLegacyDebug2;
 		
 		public SystemInfoPage()
 		{   
@@ -45,6 +48,8 @@ namespace GalaxyBudsClient.Interface.Pages
 			_buildString = this.FindControl<DetailListItem>("BuildString");
 			_batteryType = this.FindControl<DetailListItem>("BatteryType");
 			_revision = this.FindControl<DetailListItem>("ProtocolRevision");
+			_separatorLegacyDebug1 = this.FindControl<Separator>("SeparatorLegacyDebug1");
+			_separatorLegacyDebug2 = this.FindControl<Separator>("SeparatorLegacyDebug2");
 
 			SPPMessageHandler.Instance.GetAllDataResponse += InstanceOnGetAllDataResponse;
 			SPPMessageHandler.Instance.BatteryTypeResponse += InstanceOnBatteryTypeResponse;
@@ -96,9 +101,13 @@ namespace GalaxyBudsClient.Interface.Pages
 		{
 			if (MainWindow.Instance.Pager.CurrentPage == Pages.SystemInfo)
 			{
-				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.BATTERY_TYPE);
+				if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DebugInfoLegacy))
+				{
+					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.BATTERY_TYPE);
+					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_BUILD_INFO);
+				}
+
 				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_SERIAL_NUMBER);
-				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_BUILD_INFO);
 				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA);
 			}
 		}
@@ -118,9 +127,17 @@ namespace GalaxyBudsClient.Interface.Pages
 			_batteryType.Description = Waiting;
 			_revision.Description = DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision.ToString() ?? Waiting;
 
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.BATTERY_TYPE);
+			_buildString.IsVisible = _buildString.GetVisualParent()!.IsVisible
+				= _batteryType.IsVisible = _batteryType.GetVisualParent()!.IsVisible =
+					_separatorLegacyDebug1.IsVisible = _separatorLegacyDebug2.IsVisible =
+				BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DebugInfoLegacy);
+			if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DebugInfoLegacy))
+			{
+				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.BATTERY_TYPE);
+				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_BUILD_INFO);
+			}
+
 			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_SERIAL_NUMBER);
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_BUILD_INFO);
 			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA);
 		}
 

@@ -21,10 +21,14 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.CaseBattery, null },
                 { IDeviceSpec.Feature.FragmentedMessages, null },
                 { IDeviceSpec.Feature.SpatialSensor, null },
+                { IDeviceSpec.Feature.Voltage, null },
                 { IDeviceSpec.Feature.BixbyWakeup, null },
                 { IDeviceSpec.Feature.AncNoiseReductionLevels, null },
+                { IDeviceSpec.Feature.LegacyNoiseControlMode, null },
+                { IDeviceSpec.Feature.DebugInfoLegacy, null },
                 { IDeviceSpec.Feature.AmbientSidetone, new FeatureRule(8, "R190XXU0AUI2")  },
                 { IDeviceSpec.Feature.AmbientCustomize, new FeatureRule(8, "R190XXU0AUI2") },
+                { IDeviceSpec.Feature.AmbientCustomizeLegacy, new FeatureRule(8, "R190XXU0AUI2") }
             };
         
         public Models Device => Models.BudsPro;

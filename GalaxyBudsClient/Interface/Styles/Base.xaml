@@ -23,6 +23,7 @@
     <CroppedBitmap x:Key="TouchBud" Source="/Resources/features/touch_color.png"/>
     <CroppedBitmap x:Key="TouchBean" Source="/Resources/features/touch_bean.png"/>
     <CroppedBitmap x:Key="TouchPro" Source="/Resources/features/touch_pro.png"/>
+    <CroppedBitmap x:Key="FitTest" Source="/Resources/features/earbud_fit_test.png"/>
 
     <!-- Value converters -->
     <utils:BitmapAssetValueConverter x:Key="BitmapAssetValueConverter"/>

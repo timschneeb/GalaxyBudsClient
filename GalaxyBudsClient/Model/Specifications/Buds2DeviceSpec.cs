@@ -19,11 +19,12 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.CaseBattery, null },
                 { IDeviceSpec.Feature.FragmentedMessages, null },
                 { IDeviceSpec.Feature.BixbyWakeup, null },
+                { IDeviceSpec.Feature.GearFitTest, null },
                 { IDeviceSpec.Feature.DoubleTapVolume, new FeatureRule(5, "R177XXU0AUI2") },
                 { IDeviceSpec.Feature.AdvancedTouchLock, new FeatureRule(4, "R177XXU0AUH1") },
-                { IDeviceSpec.Feature.AncWithOneEarbud, new FeatureRule(5, "R177XXU0AUH1") },
+                { IDeviceSpec.Feature.AncWithOneEarbud, new FeatureRule(3, "R177XXU0AUH1") },
                 { IDeviceSpec.Feature.AmbientCustomize, new FeatureRule(5, "R177XXU0AUH1") },
-                { IDeviceSpec.Feature.AmbientSidetone, new FeatureRule(6, "R177XXU0AUI2")  },
+                { IDeviceSpec.Feature.AmbientSidetone, new FeatureRule(6, "R177XXU0AUI2")  }
             };
         
         public Models Device => Models.Buds2;

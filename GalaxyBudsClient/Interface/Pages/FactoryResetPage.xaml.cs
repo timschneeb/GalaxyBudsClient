@@ -49,8 +49,8 @@ namespace GalaxyBudsClient.Interface.Pages
 				return;
 			}
 
-			BluetoothImpl.Instance.UnregisterDevice()
-				.ContinueWith((_) => MainWindow.Instance.Pager.SwitchPage(Pages.Welcome));
+			BluetoothImpl.Instance.UnregisterDevice();
+			MainWindow.Instance.Pager.SwitchPage(Pages.Welcome);
 		}
 
 		public override void OnPageShown()

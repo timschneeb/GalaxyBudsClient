@@ -17,7 +17,6 @@ namespace GalaxyBudsClient.Utils
 {
     class TrayManager
     {
-        private readonly Timer _timer = new();
         private bool _allowUpdate = true;
         private bool _missedUpdate = false;
         public TrayManager()

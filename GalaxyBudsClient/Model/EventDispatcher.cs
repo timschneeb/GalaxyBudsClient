@@ -22,6 +22,8 @@ namespace GalaxyBudsClient.Model
             AncToggle,
             [LocalizedDescription("event_anc_switch_sensitivity")]
             SwitchAncSensitivity,
+            [LocalizedDescription("event_anc_switch_one")]
+            SwitchAncOne,
             [LocalizedDescription("event_eq_toggle")]
             EqualizerToggle,
             [LocalizedDescription("event_eq_switch")]
@@ -96,6 +98,10 @@ namespace GalaxyBudsClient.Model
                     return (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Anc) ||
                             BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl))
                            && BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AncNoiseReductionLevels);
+                case Event.SwitchAncOne:
+                    return (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Anc) ||
+                            BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl))
+                           && BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AncWithOneEarbud);
                 case Event.ToggleDoubleEdgeTouch:
                     return BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DoubleTapVolume);
                 case Event.ToggleConversationDetect:

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using Avalonia.Animation;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
@@ -10,49 +13,74 @@ using Serilog;
 
 namespace GalaxyBudsClient.Interface.Transition
 {
- 	public class PageContainer : UserControl
-	{
-		public Carousel Pager { get; }
+ 	public class PageContainer : Grid
+    {
+	    private AbstractPage? _lastPageCache;
+	    private AbstractPage? _currentPage;
+	    private CancellationTokenSource? source;
+	    private readonly IPageTransition _pageTransition;
+		private readonly ViewModel _pageViewModel = new ViewModel();
+		private readonly SemaphoreSlim _pageSemaphore = new SemaphoreSlim(1, 1);
+		private bool _suspended;
+		private bool _lastWasSuspended;
 
-		private object? _lastPageCache = null;
-		
-		public ViewModel PageViewModel = new ViewModel();
-
+		public bool Suspended
+		{
+			set
+			{
+				if (_suspended == value) return;
+				_suspended = value;
+				if (_suspended)
+				{
+					_currentPage?.OnPageHidden();
+				}
+				else
+				{
+					_currentPage?.OnPageShown();
+				}
+			}
+		}
 		public event EventHandler<AbstractPage.Pages>? PageSwitched;
 		
 		public PageContainer()
 		{   
 			InitializeComponent();
 			
-			DataContext = PageViewModel;
+			DataContext = _pageViewModel;
 			
-			Pager = this.FindControl<Carousel>("Pager");
 			var fadeTransition = new FadeTransition();
-			fadeTransition.FadeOutComplete += (sender, args) =>
-			{		
-				if (_lastPageCache is AbstractPage page)
+			fadeTransition.FadeOutComplete += (_, _) =>
+			{
+				if (_lastPageCache == null)
 				{
-					page.OnPageHidden();
-                }
-                _lastPageCache = null;
-            };
-			Pager.PageTransition = fadeTransition;
+					return;
+				}
+				if (!_lastWasSuspended)
+				{
+					_lastPageCache.OnPageHidden();
+				}
+				Children.Remove(_lastPageCache);
+				_lastPageCache = null;
+				_lastWasSuspended = false;
+				source = null;
+			};
+			_pageTransition = fadeTransition;
 
 			// Add placeholder page
 			RegisterPages(new DummyPage(), new DummyPage2());
-			SwitchPage(AbstractPage.Pages.Dummy);
+			_currentPage = new DummyPage();
+			Children.Add(_currentPage);
 		}
 
-        public AbstractPage.Pages CurrentPage
+		public AbstractPage.Pages CurrentPage
 		{
 			get
 			{
-				if (Pager.SelectedItem is AbstractPage page)
+				if (_currentPage == null)
 				{
-					return page.PageType;
+					return AbstractPage.Pages.Undefined;
 				}
-
-				return AbstractPage.Pages.Undefined;
+				return _currentPage.PageType;
 			}
 		}
 
@@ -63,7 +91,7 @@ namespace GalaxyBudsClient.Interface.Transition
 				Log.Warning($"Page type '${page.PageType}' is already assigned. Disposing old page.");
 				UnregisterPage(page);
 			}
-			PageViewModel.Items.Add(page);
+			_pageViewModel.Items.Add(page);
 		}
 
 		public void RegisterPages(params AbstractPage[] pages)
@@ -76,44 +104,81 @@ namespace GalaxyBudsClient.Interface.Transition
         
 		public bool UnregisterPage(AbstractPage page)
 		{
-			if (Equals(Pager.SelectedItem, page))
+			if (Equals(_currentPage, page))
 			{
 				Log.Warning($"Page '${page.PageType}' to be unregistered is currently loaded");
 			}
 
-			return PageViewModel.Items.Remove(page);
+			return _pageViewModel.Items.Remove(page);
 		}
 		
-		        
+		
 		public void UnregisterAll()
 		{
-			PageViewModel.Items.Clear();
+			_pageViewModel.Items.Clear();
 		}
 
 
 		public bool SwitchPage(AbstractPage.Pages page)
 		{
 			var target = FindPage(page);
-
-			Dispatcher.UIThread.Post(() =>
+			Dispatcher.UIThread.InvokeAsync(async () =>
 			{
-				if (_lastPageCache != null)
+				// This uses a Semaphore to ensure requests are processed in order, which is required to avoid
+				// "Control already has a visual parent" and pages not opening due to a race condition
+				if (!await _pageSemaphore.WaitAsync(1000))
 				{
-                    if (_lastPageCache is AbstractPage page)
-                    {
-                        page.OnPageHidden();
-                    }
-					_lastPageCache = null;
-                }
-				if (target != null)
-                {
-                	_lastPageCache = Pager.SelectedItem;
-                	Pager.SelectedItem = target;
-                	/* Call OnPageShown prematurely */
-                	target.OnPageShown();
-                    PageSwitched?.Invoke(this, page);
-                }
-                
+					Log.Error($"Timed out while waiting for page to show?");
+					return;
+				}
+
+				try
+				{
+					if (CurrentPage == page) return;
+					if (_lastPageCache != null)
+					{
+						source!.Cancel();
+						if (!_lastWasSuspended)
+						{
+							_lastPageCache.OnPageHidden();
+						}
+
+						Children.Remove(_lastPageCache);
+						_lastPageCache = null;
+						_lastWasSuspended = false;
+						source = null;
+					}
+
+					if (Children.Count != 1)
+					{
+						throw new InvalidOperationException();
+					}
+
+					if (target != null)
+					{
+						_lastPageCache = _currentPage;
+						_lastWasSuspended = _suspended;
+						_currentPage = target;
+						source = new CancellationTokenSource();
+						Children.Add(_currentPage);
+						if (!_suspended)
+						{
+							_currentPage.OnPageShown();
+						}
+
+						// don't await here, we don't want to wait until animation finished
+						_pageTransition.Start(_lastPageCache, _currentPage, true, source.Token);
+						PageSwitched?.Invoke(this, page);
+					}
+				}
+				catch (Exception ex)
+				{
+					Log.Error(ex.ToString());
+				}
+				finally
+				{
+					_pageSemaphore.Release();
+				}
 			}, DispatcherPriority.Render);
 			return target != null;
 		}
@@ -125,7 +190,7 @@ namespace GalaxyBudsClient.Interface.Transition
 
 		public AbstractPage? FindPage(AbstractPage.Pages page, bool nullAware = false)
         {
-            AbstractPage[] matches = PageViewModel.Items.Where(abstractPage => abstractPage.PageType == page).ToArray();
+            AbstractPage[] matches = _pageViewModel.Items.Where(abstractPage => abstractPage.PageType == page).ToArray();
             if (matches.Length < 1)
             {
                 if (!nullAware)

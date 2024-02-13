@@ -57,6 +57,13 @@
                                           Description="{DynamicResource nc_anc_level_description}"
                                           Toggled="AncLevelToggle_OnToggled"/>
                 </Border>
+                <Separator Grid.Row="1" x:Name="AncOneToggleSeparator" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
+                <Border Grid.Row="2" x:Name="AncOneToggleBorder"  CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                    <items:SwitchDetailListItem x:Name="AncOneToggle" 
+                                                Text="{DynamicResource nc_anc_one}" 
+                                                Description="{DynamicResource nc_anc_one_description}"
+                                                Toggled="AncOneToggle_OnToggled"/>
+                </Border>
             </Grid>
         </Border>
         <Border Grid.Row="5" Classes="RoundedBorderListItem BottomSpacer10" x:Name="VoiceDetectBorder" >

@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>77%</td><td>99 missing string(s)</td></tr>
+<tr><td>75%</td><td>107 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -15,6 +15,8 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>touchoption_switch_noisecontrols</code></td><td>Switch noise controls</td></tr>
 <tr><td><code>tray_switch_noise</code></td><td>Switch noise controls</td></tr>
 <tr><td><code>hotrec_note</code></td><td>Note: Due to User Interface Privacy Isolation (UIPI) only applications of the same or lower elevation can properly receive hotkey commands.</td></tr>
+<tr><td><code>event_anc_switch_one</code></td><td>Switch ANC with one earbud</td></tr>
+<tr><td><code>mainpage_fit_test</code></td><td>Earbud fit test</td></tr>
 <tr><td><code>mainpage_noise</code></td><td>Noise control</td></tr>
 <tr><td><code>updater_appcast_null</code></td><td>New update available but no valid appcast data found. Please try again later.</td></tr>
 <tr><td><code>updater_dl_header</code></td><td>Downloading...</td></tr>
@@ -75,11 +77,17 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 <tr><td><code>settings_crowd_allow_description</code></td><td>Collect information about Samsung's proprietary Bluetooth protocol structure and data on demand. This allows me to keep all available Galaxy Buds models supported much more easily without owning them.</td></tr>
 <tr><td><code>settings_crowd_crashreport</code></td><td>Allow app crash reports</td></tr>
 <tr><td><code>settings_crowd_crashreport_description</code></td><td>Send application crash reports automatically in case of crashes or fatal errors using Sentry. This helps me to respond more quickly to problematic and disruptive application bugs.</td></tr>
+<tr><td><code>gft_warning</code></td><td>Please wear both earbuds.</td></tr>
+<tr><td><code>gft_bad</code></td><td>Bad fit</td></tr>
+<tr><td><code>gft_good</code></td><td>Good fit</td></tr>
+<tr><td><code>gft_fail</code></td><td>Test failed</td></tr>
 <tr><td><code>eq_preset</code></td><td>Preset</td></tr>
 <tr><td><code>eq_stereo_balance</code></td><td>Left/right sound balance</td></tr>
 <tr><td><code>eq_stereo_balance_value</code></td><td>{0}% left; {1}% right</td></tr>
 <tr><td><code>eq_stereo_balance_neutral</code></td><td>Neutral</td></tr>
 <tr><td><code>nc_header</code></td><td>Noise control</td></tr>
+<tr><td><code>nc_anc_one</code></td><td>Noise cancelling with one earbud</td></tr>
+<tr><td><code>nc_anc_one_description</code></td><td>Noise cancelling normally requires two earbuds to prevent discomfort, enable this to allow noise cancelling with only one earbud</td></tr>
 <tr><td><code>nc_anc_level</code></td><td>High sensitivity</td></tr>
 <tr><td><code>nc_anc_level_description</code></td><td>Stronger noise cancelling effect</td></tr>
 <tr><td><code>nc_ambient</code></td><td>Customize ambient sound</td></tr>

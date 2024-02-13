@@ -20,6 +20,9 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.StereoPan, new FeatureRule(7, "R180XXU0AUB5") },
                 { IDeviceSpec.Feature.BixbyWakeup, null },
                 { IDeviceSpec.Feature.FirmwareUpdates, null },
+                { IDeviceSpec.Feature.LegacyNoiseControlMode, null },
+                { IDeviceSpec.Feature.DebugInfoLegacy, null },
+                { IDeviceSpec.Feature.Voltage, null }
             };
         
         public Models Device => Models.BudsLive;

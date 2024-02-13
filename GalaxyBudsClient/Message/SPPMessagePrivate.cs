@@ -103,6 +103,7 @@
             SET_SIDETONE = 139,
             VERSION_INFO = 99,
 
+            SET_ANC_WITH_ONE_EARBUD = 111,
             CHECK_THE_FIT_OF_EARBUDS = 157,
             CHECK_THE_FIT_OF_EARBUDS_RESULT = 158,
             GET_FMM_CONFIG = 173,

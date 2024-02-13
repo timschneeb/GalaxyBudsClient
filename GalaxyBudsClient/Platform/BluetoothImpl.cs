@@ -303,12 +303,13 @@ namespace GalaxyBudsClient.Platform
             await SendRequestAsync(id, payload ? new byte[]{0x01} : new byte[]{0x00});
         }
         
-        public async Task UnregisterDevice()
+        public void UnregisterDevice()
         {
             SettingsProvider.Instance.RegisteredDevice.Model = Models.NULL;
             SettingsProvider.Instance.RegisteredDevice.MacAddress = string.Empty;
             DeviceMessageCache.Instance.Clear();
-            await DisconnectAsync();
+            // don't wait for this to complete as it may confuse users if the menu option waits until connect timed out
+            DisconnectAsync();
         }
         
         public bool RegisteredDeviceValid =>

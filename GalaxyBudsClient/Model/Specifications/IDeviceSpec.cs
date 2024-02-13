@@ -26,14 +26,20 @@ namespace GalaxyBudsClient.Model.Specifications
             GamingMode,
             DoubleTapVolume,
             CaseBattery,
+            Voltage,
+            Current,
             FragmentedMessages,
             StereoPan,
             FirmwareUpdates,
             SpatialSensor,
             AmbientCustomize,
+            AmbientCustomizeLegacy,
             AncWithOneEarbud,
             AncNoiseReductionLevels,
-            AdvancedTouchLock
+            AdvancedTouchLock,
+            LegacyNoiseControlMode,
+            DebugInfoLegacy,
+            GearFitTest
         }
         
         public Dictionary<Feature, FeatureRule?> Rules { get; }

@@ -41,6 +41,7 @@ namespace GalaxyBudsClient.Message
         public event EventHandler<UsageReportParser>? UsageReport;
         public event EventHandler<MuteUpdateParser>? FindMyGearMuteUpdate;
         public event EventHandler? FindMyGearStopped;
+        public event EventHandler<FitTestParser>? FitTestResult;
 
         public void MessageReceiver(object? sender, SPPMessage e)
         {
@@ -84,6 +85,9 @@ namespace GalaxyBudsClient.Message
                     break;
                 case SPPMessage.MessageIds.FIND_MY_EARBUDS_STOP:
                     FindMyGearStopped?.Invoke(this, EventArgs.Empty);
+                    break;
+                case SPPMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS_RESULT:
+                    FitTestResult?.Invoke(this, (parser as FitTestParser)!);
                     break;
                 case SPPMessage.MessageIds.RESP:
                     GenericResponse?.Invoke(this, (parser as GenericResponseParser)!);
