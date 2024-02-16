@@ -127,11 +127,13 @@ namespace GalaxyBudsClient.Interface.Pages
 			_batteryType.Description = Waiting;
 			_revision.Description = DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision.ToString() ?? Waiting;
 
-			_buildString.IsVisible = _buildString.GetVisualParent()!.IsVisible
-				= _batteryType.IsVisible = _batteryType.GetVisualParent()!.IsVisible =
-					_separatorLegacyDebug1.IsVisible = _separatorLegacyDebug2.IsVisible =
-				BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DebugInfoLegacy);
-			if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DebugInfoLegacy))
+			var supportsLegacyDebug = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DebugInfoLegacy);
+
+			_buildString.IsVisible = _buildString.GetVisualParent()!.IsVisible = supportsLegacyDebug;
+			_batteryType.IsVisible = _batteryType.GetVisualParent()!.IsVisible = supportsLegacyDebug;
+			_separatorLegacyDebug1.IsVisible = _separatorLegacyDebug2.IsVisible = supportsLegacyDebug;
+				
+			if (supportsLegacyDebug)
 			{
 				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.BATTERY_TYPE);
 				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_BUILD_INFO);
