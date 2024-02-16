@@ -8,6 +8,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
@@ -45,9 +46,12 @@ namespace GalaxyBudsClient
                 SettingsProvider.Instance.Locale = Locales.custom;
             }
             
-            ThemeUtils.Reload();
-            Loc.Load();
-            
+            Dispatcher.UIThread.Post(() =>
+            {
+                ThemeUtils.Reload();
+                Loc.Load();
+            }, DispatcherPriority.Render);
+
             TrayManager.Init();
             MediaKeyRemoteImpl.Init();
             DeviceMessageCache.Init();

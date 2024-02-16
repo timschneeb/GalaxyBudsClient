@@ -19,7 +19,8 @@ namespace GalaxyBudsClient.Utils
     {
         private bool _allowUpdate = true;
         private bool _missedUpdate = false;
-        public TrayManager()
+
+        private TrayManager()
         {
             // Make sure nobody is updating the menu while it's open
             // because it crashes mac https://github.com/AvaloniaUI/Avalonia/issues/14578
@@ -60,8 +61,8 @@ namespace GalaxyBudsClient.Utils
                 }
             };
             // triggering rebuild when battery % changes
-            SPPMessageHandler.Instance.StatusUpdate += (_, _) => RebuildAsync();
-            SPPMessageHandler.Instance.ExtendedStatusUpdate += (_, _) => RebuildAsync();
+            SPPMessageHandler.Instance.StatusUpdate += (_, _) => _ = RebuildAsync();
+            SPPMessageHandler.Instance.ExtendedStatusUpdate += (_, _) => _ = RebuildAsync();
             // triggering rebuild when noise control / ambient / anc state changes is handled in MessageComposer.cs
             // triggering rebuild when lock touchpad changes is handled in TouchpadPage.xaml.cs
             // triggering rebuild when eq state changes is handled in MessageComposer.cs
