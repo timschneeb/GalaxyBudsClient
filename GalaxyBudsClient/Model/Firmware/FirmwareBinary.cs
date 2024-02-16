@@ -16,8 +16,8 @@ namespace GalaxyBudsClient.Model.Firmware
         private readonly long _magic;
         private byte[] _data;
         
-        private static readonly long FOTA_BIN_MAGIC = 3405695742L;
-        private static readonly long FOTA_BIN_MAGIC_COMBINATION = 1111707469L;
+        private static readonly long FOTA_BIN_MAGIC = 0xCAFECAFE;
+        private static readonly long FOTA_BIN_MAGIC_COMBINATION = 0x42434F4D;
 
         public string BuildName { get; }
         public long SegmentsCount { get; }
