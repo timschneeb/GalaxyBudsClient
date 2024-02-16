@@ -42,7 +42,7 @@ namespace GalaxyBudsClient.Model.Firmware
             try
             {
                 FirmwareRemoteBinary[] firmwares;
-                HttpResponseMessage response = await _client.GetAsync(API_GET_FIRMWARE);
+                HttpResponseMessage response = await _client.GetAsync(API_GET_FIRMWARE + $"/{BluetoothImpl.Instance.ActiveModel.ToString()}");
                 if (response.IsSuccessStatusCode)
                 {
                     MediaTypeFormatterCollection formatters = new MediaTypeFormatterCollection();
