@@ -5,26 +5,15 @@ namespace GalaxyBudsClient.Interface.Elements
 {
     public class LoadingSpinner : UserControl
     {
-        private readonly Image _spinnerImage;
-
         public LoadingSpinner()
         {
             AvaloniaXamlLoader.Load(this);
 
-            _spinnerImage = this.FindControl<Image>("Spinner");
-
             PropertyChanged += (o, e) =>
             {
-                if (e.Property.Name == nameof(IsVisible))
-                {
-                    if (e.NewValue != null)
-                    {
-                        if ((bool)e.NewValue)
-                            _spinnerImage.IsVisible = true;
-                        else
-                            _spinnerImage.IsVisible = false;
-                    }
-                }
+                if (e.Property.Name != nameof(IsVisible) || e.NewValue == null) 
+                    return;
+                this.GetControl<Image>("Spinner").IsVisible = ((bool)e.NewValue);
             };
         }
     }

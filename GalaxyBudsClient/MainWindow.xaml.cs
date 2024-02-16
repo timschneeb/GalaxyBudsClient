@@ -93,7 +93,7 @@ namespace GalaxyBudsClient
                 ExtendClientAreaToDecorationsHint = true;
             }
             
-            Pager = this.FindControl<PageContainer>("Container")!;
+            Pager = this.GetControl<PageContainer>("Container");
 
             // Allocate essential pages immediately
             Pager.RegisterPages(HomePage, ConnectionLostPage, new WelcomePage());
@@ -108,7 +108,7 @@ namespace GalaxyBudsClient
                 new CrowdsourcingSettingsPage(), new BudsAppDetectedPage(), new TouchpadGesturePage(), 
                 new NoiseProAmbientPage(), new GearFitPage()), DispatcherPriority.ApplicationIdle);
             
-            _titleBar = this.FindControl<CustomTitleBar>("TitleBar")!;
+            _titleBar = this.GetControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => BeginMoveDrag(e);
             _titleBar.OptionsPressed += (i, e) =>
             {

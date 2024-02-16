@@ -27,8 +27,8 @@ namespace GalaxyBudsClient.Interface.Elements
         public ScanButton()
         {
             AvaloniaXamlLoader.Load(this);
-            _button = this.FindControl<Image>("Button");
-            _glow = this.FindControl<Image>("Glow");
+            _button = this.GetControl<Image>("Button");
+            _glow = this.GetControl<Image>("Glow");
         }
 
         private void Button_OnTapped(object? sender, TappedEventArgs? e)

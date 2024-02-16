@@ -15,7 +15,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
             AvaloniaXamlLoader.Load(this);
             this.AttachDevTools();
 
-            Input = this.FindControl<TextBox>("Input");
+            Input = this.GetControl<TextBox>("Input");
         }
 
         public new async Task<TResult> ShowDialog<TResult>(Window owner)

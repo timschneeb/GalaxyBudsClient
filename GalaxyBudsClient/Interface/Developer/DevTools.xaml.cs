@@ -70,12 +70,12 @@ namespace GalaxyBudsClient.Interface.Developer
             AvaloniaXamlLoader.Load(this);
             this.AttachDevTools();
 
-            _msgTable = this.FindControl<DataGrid>("MsgTable");
-            _propTable = this.FindControl<DataGrid>("PropTable");
-            _hexDump = this.FindControl<TextBox>("HexDump");
-            _msgIdSend = this.FindControl<ComboBox>("SendMsgId"); 
-            _msgTypeSend = this.FindControl<ComboBox>("SendMsgType");
-            _hexPayloadSend = this.FindControl<TextBox>("SendMsgPayload");
+            _msgTable = this.GetControl<DataGrid>("MsgTable");
+            _propTable = this.GetControl<DataGrid>("PropTable");
+            _hexDump = this.GetControl<TextBox>("HexDump");
+            _msgIdSend = this.GetControl<ComboBox>("SendMsgId"); 
+            _msgTypeSend = this.GetControl<ComboBox>("SendMsgType");
+            _hexPayloadSend = this.GetControl<TextBox>("SendMsgPayload");
 
             _msgTable.ItemsSource = _vm.MsgTableDataView;
             _propTable.ItemsSource = _vm.PropTableDataView;

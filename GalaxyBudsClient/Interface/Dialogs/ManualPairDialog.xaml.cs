@@ -36,8 +36,8 @@ namespace GalaxyBudsClient.Interface.Dialogs
 
             DataContext = this;
             
-            Device = this.FindControl<ComboBox>("Device");
-            Model = this.FindControl<ComboBox>("Model");
+            Device = this.GetControl<ComboBox>("Device");
+            Model = this.GetControl<ComboBox>("Model");
             
             Init();
         }

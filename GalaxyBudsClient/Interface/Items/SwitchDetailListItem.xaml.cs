@@ -22,7 +22,7 @@ namespace GalaxyBudsClient.Interface.Items
         public SwitchDetailListItem()
         {
             AvaloniaXamlLoader.Load(this);
-            _toggle = this.FindControl<ToggleSwitch>("Toggle");
+            _toggle = this.GetControl<ToggleSwitch>("Toggle");
             DataContext = this;
         }
 

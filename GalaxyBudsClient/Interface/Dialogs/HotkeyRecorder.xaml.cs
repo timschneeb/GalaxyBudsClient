@@ -16,7 +16,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
     {
         private readonly TextBlock _keyLabel;
         private bool _recording;
-        private bool _result_once;
+        private bool _resultOnce;
 
         public bool Result { set; get; } = false; 
         
@@ -24,7 +24,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
         {
             AvaloniaXamlLoader.Load(this);
 
-            _keyLabel = this.FindControl<TextBlock>("KeyString");
+            _keyLabel = this.GetControl<TextBlock>("KeyString");
         }
         
         public List<Key>? Hotkeys { get; private set; }
@@ -57,20 +57,20 @@ namespace GalaxyBudsClient.Interface.Dialogs
         private void Cancel_OnClick(object? sender, RoutedEventArgs e)
         {
             Result = false;
-            _result_once = true;
+            _resultOnce = true;
             Close();
         }
 
         private void Apply_OnClick(object? sender, RoutedEventArgs e)
         {
             Result = true;
-            _result_once = true;
+            _resultOnce = true;
             Close();
         }
 
         protected override void OnClosed(EventArgs e)
         {
-            if (!_result_once)
+            if (!_resultOnce)
             {
                 Result = false;
             }

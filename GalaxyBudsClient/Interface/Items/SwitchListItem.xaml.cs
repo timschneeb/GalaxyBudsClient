@@ -9,17 +9,17 @@ namespace GalaxyBudsClient.Interface.Items
 {
     public class SwitchListItem : UserControl
     {
-        public static readonly StyledProperty<String> TextProperty =
-            AvaloniaProperty.Register<SwitchListItem, String>(nameof(Text));
+        public static readonly StyledProperty<string> TextProperty =
+            AvaloniaProperty.Register<SwitchListItem, string>(nameof(Text));
         
         public event EventHandler<bool>? Toggled;
 
-        private ToggleSwitch _toggle;
+        private readonly ToggleSwitch _toggle;
         
         public SwitchListItem()
         {
             AvaloniaXamlLoader.Load(this);
-            _toggle = this.FindControl<ToggleSwitch>("Toggle");
+            _toggle = this.GetControl<ToggleSwitch>("Toggle");
             DataContext = this;
         }
         

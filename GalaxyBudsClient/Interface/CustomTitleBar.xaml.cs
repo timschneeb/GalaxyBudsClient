@@ -68,15 +68,15 @@ namespace GalaxyBudsClient.Interface
         {
             AvaloniaXamlLoader.Load(this);
 
-            minimizeButton = this.FindControl<Button>("MinimizeButton");
-            closeButton = this.FindControl<Button>("CloseButton");
-            optionsButton = this.FindControl<Button>("OptionsButton");
+            minimizeButton = this.GetControl<Button>("MinimizeButton");
+            closeButton = this.GetControl<Button>("CloseButton");
+            optionsButton = this.GetControl<Button>("OptionsButton");
             
             minimizeButton.Click += MinimizeWindow;
             closeButton.Click += (sender, args) => ClosePressed?.Invoke(sender, EventArgs.Empty);
             optionsButton.Click += (sender, args) => OptionsPressed?.Invoke(sender, EventArgs.Empty);
 
-            titleBar = this.FindControl<DockPanel>("TitleBar");
+            titleBar = this.GetControl<DockPanel>("TitleBar");
             titleBarBackground = this.FindControl<Control>("TitleBarBackground");
             systemChromeTitle = this.FindControl<TextBlock>("SystemChromeTitle");
             seamlessMenuBar = this.FindControl<NativeMenuBar>("SeamlessMenuBar");

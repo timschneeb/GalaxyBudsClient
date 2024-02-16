@@ -44,16 +44,16 @@ namespace GalaxyBudsClient.Interface.Dialogs
             AvaloniaXamlLoader.Load(this);
             this.AttachDevTools();
 
-            _outerBorder = this.FindControl<Border>("OuterBorder");
+            _outerBorder = this.GetControl<Border>("OuterBorder");
             
-            _header = this.FindControl<Label>("Header");
-            _batteryL = this.FindControl<Label>("BatteryL");
-            _batteryR = this.FindControl<Label>("BatteryR");
-            _batteryC = this.FindControl<Label>("BatteryC");
-            _caseLabel = this.FindControl<Label>("CaseLabel");
+            _header = this.GetControl<Label>("Header");
+            _batteryL = this.GetControl<Label>("BatteryL");
+            _batteryR = this.GetControl<Label>("BatteryR");
+            _batteryC = this.GetControl<Label>("BatteryC");
+            _caseLabel = this.GetControl<Label>("CaseLabel");
             
-            _iconLeft = this.FindControl<Image>("ImageLeft");
-            _iconRight = this.FindControl<Image>("ImageRight");
+            _iconLeft = this.GetControl<Image>("ImageLeft");
+            _iconRight = this.GetControl<Image>("ImageRight");
             
             var cachedStatus = DeviceMessageCache.Instance.BasicStatusUpdate;
             UpdateContent(cachedStatus?.BatteryL ?? 0, cachedStatus?.BatteryR ?? 0, cachedStatus?.BatteryCase ?? 0);
@@ -149,7 +149,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
                 : SettingsProvider.Instance.Popup.CustomTitle;
 
             /* Header */
-            var grid = this.FindControl<Grid>("Grid")!;
+            var grid = this.GetControl<Grid>("Grid");
             if (SettingsProvider.Instance.Popup.Compact)
             {
                 MaxHeight = 205 - 35;

@@ -34,7 +34,7 @@ namespace GalaxyBudsClient.Interface.Items
         {
             AvaloniaXamlLoader.Load(this);
             
-            _slider = this.FindControl<Slider>("Slider");
+            _slider = this.GetControl<Slider>("Slider");
 
             _slider.AddHandler(PointerReleasedEvent,
                 (sender, args) =>

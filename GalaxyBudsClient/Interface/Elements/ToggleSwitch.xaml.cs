@@ -52,8 +52,8 @@ namespace GalaxyBudsClient.Interface.Elements
         {
             AvaloniaXamlLoader.Load(this);
             
-            _back = this.FindControl<Border>("Back");
-            _dot = this.FindControl<Ellipse>("Dot");
+            _back = this.GetControl<Border>("Back");
+            _dot = this.GetControl<Ellipse>("Dot");
 
             ColorOffProperty.Changed.Subscribe(args => _back.Background = _isChecked ? ColorOn : ColorOff);
             ColorOnProperty.Changed.Subscribe(args => _back.Background = _isChecked ? ColorOn : ColorOff);
@@ -71,7 +71,7 @@ namespace GalaxyBudsClient.Interface.Elements
                         {
                             new Setter
                             {
-                                Property = Layoutable.MarginProperty,
+                                Property = MarginProperty,
                                 Value = new Thickness(-39, 0, 0, 0)
                             }
                         },
@@ -83,7 +83,7 @@ namespace GalaxyBudsClient.Interface.Elements
                         {
                             new Setter
                             {
-                                Property = Layoutable.MarginProperty,
+                                Property = MarginProperty,
                                 Value = new Thickness(39, 0, 0, 0)
                             }
                         },

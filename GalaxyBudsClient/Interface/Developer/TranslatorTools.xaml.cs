@@ -37,11 +37,11 @@ namespace GalaxyBudsClient.Interface.Developer
             AvaloniaXamlLoader.Load(this);
             this.AttachDevTools();
 
-            _ignoreConnLoss = this.FindControl<CheckBox>("IgnoreConnLoss");
-            _dummyDevices = this.FindControl<CheckBox>("DummyDevices");
-            _pages = this.FindControl<ComboBox>("Pages");
-            _locales = this.FindControl<ComboBox>("Locales");
-            _xamlPath = this.FindControl<TextBox>("XamlPath");
+            _ignoreConnLoss = this.GetControl<CheckBox>("IgnoreConnLoss");
+            _dummyDevices = this.GetControl<CheckBox>("DummyDevices");
+            _pages = this.GetControl<ComboBox>("Pages");
+            _locales = this.GetControl<ComboBox>("Locales");
+            _xamlPath = this.GetControl<TextBox>("XamlPath");
 
             _locales.SelectedItem = SettingsProvider.Instance.Locale;
             _xamlPath.Text = Loc.GetTranslatorModeFile();

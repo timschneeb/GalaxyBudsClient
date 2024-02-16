@@ -68,13 +68,13 @@ namespace GalaxyBudsClient.Interface.Dialogs
 
             Hotkey = hotkey;
             
-            _keyLabel = this.FindControl<TextBlock>("KeyString");
-            _key1 = this.FindControl<ComboBox>("Key1");
-            _action = this.FindControl<ComboBox>("Action");
-            _modCtrl = this.FindControl<CheckBox>("ModCtrl");
-            _modAlt = this.FindControl<CheckBox>("ModAlt");
-            _modShift = this.FindControl<CheckBox>("ModShift");
-            _modWin = this.FindControl<CheckBox>("ModWin");
+            _keyLabel = this.GetControl<TextBlock>("KeyString");
+            _key1 = this.GetControl<ComboBox>("Key1");
+            _action = this.GetControl<ComboBox>("Action");
+            _modCtrl = this.GetControl<CheckBox>("ModCtrl");
+            _modAlt = this.GetControl<CheckBox>("ModAlt");
+            _modShift = this.GetControl<CheckBox>("ModShift");
+            _modWin = this.GetControl<CheckBox>("ModWin");
 
             _key1.SelectedItem = Keys.None;
             _action.SelectedItem = _action.Items
