@@ -117,10 +117,12 @@ namespace GalaxyBudsClient.Interface.Pages
 
         public override void OnPageShown()
         {
+            var supportsExtraLoud = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientExtraLoud);
+            
             _voiceFocusBorder.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientVoiceFocus);
-            _extraLoudBorder.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientExtraLoud);
+            _extraLoudBorder.IsVisible = supportsExtraLoud;
 			
-            if (BluetoothImpl.Instance.ActiveModel != Models.BudsPlus)
+            if (!supportsExtraLoud)
             {
                 _volumeSlider.Maximum = 4;
             }
@@ -129,12 +131,13 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
         { 
-            if (BluetoothImpl.Instance.ActiveModel == Models.BudsPlus)
+            if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientExtraLoud))
             {
                 _extraLoud.IsChecked = e.ExtraHighAmbientEnabled;
                 _volumeSlider.Maximum = e.ExtraHighAmbientEnabled ? 3 : 2;
             }
-            else
+            
+            if(BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientVoiceFocus))
             {
                 _voiceFocusSwitch.IsChecked = e.AmbientSoundMode == AmbientType.VoiceFocus;
             }
