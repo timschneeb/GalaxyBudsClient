@@ -76,19 +76,11 @@ namespace GalaxyBudsClient.Platform
                     Log.Debug("BluetoothImpl: Using WinRT.BluetoothService");
                     _backend = new Bluetooth.WindowsRT.BluetoothService();
                 }
-//#if WindowsNoARM
                 else if (PlatformUtils.IsWindows)
                 {
                     Log.Debug("BluetoothImpl: Using Windows.BluetoothService");
                     _backend = new Bluetooth.Windows.BluetoothService();
                 }
-//#else
-                /*else if (PlatformUtils.IsWindows && PlatformUtils.IsWindowsContractsSdkSupported)
-                {
-                    Log.Debug("BluetoothImpl: Using WinRT.BluetoothService (ARM)");
-                    _backend = new Bluetooth.WindowsRT.BluetoothService();
-                }*/
-//#endif
 #elif Linux
                 if(PlatformUtils.IsLinux)
 

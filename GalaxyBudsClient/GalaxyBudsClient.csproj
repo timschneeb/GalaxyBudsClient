@@ -24,7 +24,7 @@
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
-        <Configurations>Debug;Release;Debug (Local server);Release - Windows ARM</Configurations>
+        <Configurations>Debug;Release;Debug (Local server)</Configurations>
         <Platforms>AnyCPU</Platforms>
         <DisableWinExeOutputInference>false</DisableWinExeOutputInference>
         <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -32,10 +32,6 @@
         <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>
         
         <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(IsWindows)'=='true' And '$(Configuration)' != 'Release - Windows ARM'">
-        <DefineConstants>WindowsNoARM</DefineConstants>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(IsWindows)'=='true'">

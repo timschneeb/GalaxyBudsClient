@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net8.0</TargetFrameworks>
+        <TargetFramework>net8.0</TargetFramework>
         <nullable>enable</nullable>
-        <Configurations>Debug;Release;Debug (Local server);Release - Windows ARM</Configurations>
+        <Configurations>Debug;Release;Debug (Local server)</Configurations>
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
 

@@ -4,7 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <RootNamespace>GalaxyBudsClient.Bluetooth.Windows</RootNamespace>
-        <Configurations>Debug;Release;Debug (Local server);Release - Windows ARM</Configurations>
+        <Configurations>Debug;Release;Debug (Local server)</Configurations>
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
 

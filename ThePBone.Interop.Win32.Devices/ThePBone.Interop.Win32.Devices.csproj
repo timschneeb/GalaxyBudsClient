@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Nullable>enable</Nullable>
-    <Configurations>Debug;Release;Debug (Local server);Release - Windows ARM</Configurations>
+    <Configurations>Debug;Release;Debug (Local server)</Configurations>
     <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
 

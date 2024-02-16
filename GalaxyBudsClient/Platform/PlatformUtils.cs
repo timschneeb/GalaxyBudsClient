@@ -27,7 +27,7 @@ namespace GalaxyBudsClient.Platform
         public static bool IsLinux => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
         public static bool IsOSX => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
 
-        public static bool SupportsTrayIcon => (IsWindows && !IsARMCompileTarget) || IsLinux || IsOSX;
+        public static bool SupportsTrayIcon => IsWindows || IsLinux || IsOSX;
         public static bool SupportsAutoboot => IsWindows || IsOSX;
         public static bool SupportsHotkeys => IsWindows || IsOSX;
         public static bool SupportsHotkeysBroadcast => IsWindows || IsOSX;
@@ -52,19 +52,7 @@ namespace GalaxyBudsClient.Platform
                 return Platforms.Other;
             }
         }
-
-        public static bool IsARMCompileTarget
-        {
-            get
-            {
-//#if WindowsNoARM
-                return false;
-//#else
-//                return true;
-//#endif
-            }
-        }
-
+        
         public static bool IsWindowsContractsSdkSupported
         {
             get
