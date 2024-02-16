@@ -80,8 +80,8 @@ namespace GalaxyBudsClient
         {
             _instance = null;
         }
-        
-        public MainWindow()
+
+        private MainWindow()
         {
             AvaloniaXamlLoader.Load(this);
             this.AttachDevTools();
@@ -93,18 +93,22 @@ namespace GalaxyBudsClient
                 ExtendClientAreaToDecorationsHint = true;
             }
             
-            Pager = this.FindControl<PageContainer>("Container");
+            Pager = this.FindControl<PageContainer>("Container")!;
 
-            Pager.RegisterPages(HomePage, new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(),
+            // Allocate essential pages immediately
+            Pager.RegisterPages(HomePage, ConnectionLostPage, new WelcomePage());
+            
+            // Defer the rest of the page registration
+            Dispatcher.UIThread.Post(() => Pager.RegisterPages(new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(),
                 new CreditsPage(), new TouchpadPage(), new EqualizerPage(), new AdvancedPage(), new NoiseProPage(),
                 new SystemPage(), new SelfTestPage(), new SettingsPage(), new PopupSettingsPage(),
-                ConnectionLostPage, CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(),
-                new WelcomePage(), UnsupportedFeaturePage, UpdatePage, UpdateProgressPage, new SystemCoredumpPage(),
-                new HotkeyPage(), new FirmwareSelectionPage(), new FirmwareTransferPage(), new SpatialTestPage(),
-                new BixbyRemapPage(), new CrowdsourcingSettingsPage(), new BudsAppDetectedPage(), new TouchpadGesturePage(),
-                new NoiseProAmbientPage(), new GearFitPage());
-
-            _titleBar = this.FindControl<CustomTitleBar>("TitleBar");
+                CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(), UnsupportedFeaturePage,
+                UpdatePage, UpdateProgressPage, new SystemCoredumpPage(), new HotkeyPage(), new FirmwareSelectionPage(),
+                new FirmwareTransferPage(), new SpatialTestPage(), new BixbyRemapPage(),
+                new CrowdsourcingSettingsPage(), new BudsAppDetectedPage(), new TouchpadGesturePage(), 
+                new NoiseProAmbientPage(), new GearFitPage()), DispatcherPriority.ApplicationIdle);
+            
+            _titleBar = this.FindControl<CustomTitleBar>("TitleBar")!;
             _titleBar.PointerPressed += (i, e) => BeginMoveDrag(e);
             _titleBar.OptionsPressed += (i, e) =>
             {
@@ -155,7 +159,7 @@ namespace GalaxyBudsClient
             
             if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                if (desktop.Args.Contains("/StartMinimized") && PlatformUtils.SupportsTrayIcon)
+                if ((desktop.Args?.Contains("/StartMinimized") ?? false) && PlatformUtils.SupportsTrayIcon)
                 {
                     WindowState = WindowState.Minimized;
                 }
