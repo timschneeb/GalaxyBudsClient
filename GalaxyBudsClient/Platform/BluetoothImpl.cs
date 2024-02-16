@@ -1,20 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using GalaxyBudsClient.Bluetooth;
-using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;
+using GalaxyBudsClient.Utils.DynamicLocalization;
 using Serilog;
 using Task = System.Threading.Tasks.Task;
 
@@ -56,6 +54,7 @@ namespace GalaxyBudsClient.Platform
         public bool SuppressDisconnectionEvents { set; get; } = false;
         public Models ActiveModel => SettingsProvider.Instance.RegisteredDevice.Model;
         public IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(ActiveModel) ?? new StubDeviceSpec();
+        public string DeviceName { set; get; } = "Galaxy Buds";
         public bool IsConnected => _backend.IsStreamConnected;
         
         public readonly ArrayList IncomingData = new ArrayList();
@@ -183,9 +182,25 @@ namespace GalaxyBudsClient.Platform
                 OnBluetoothError(ex);
             }
 
-            return new BluetoothDevice[0];
+            return Array.Empty<BluetoothDevice>();
         }
 
+        public async Task<string> GetDeviceNameAsync()
+        {
+            var fallbackName = ActiveModel.GetModelMetadata()?.Name ?? Loc.Resolve("unknown");
+            try
+            {
+                var devices = await _backend.GetDevicesAsync();
+                var device = devices.FirstOrDefault(d => d.Address == SettingsProvider.Instance.RegisteredDevice.MacAddress);
+                return device?.Name ?? fallbackName;
+            }
+            catch (BluetoothException ex)
+            {
+                Log.Error(ex, "BluetoothImpl.GetDeviceName: Error while fetching device name");
+                return fallbackName;
+            }
+        }
+        
         public async Task<bool> ConnectAsync(string? macAddress = null, Models? model = null, bool noRetry = false)
         {
             /* Load from configuration */
@@ -195,6 +210,7 @@ namespace GalaxyBudsClient.Platform
                 {
                     try
                     {
+                        DeviceName = await GetDeviceNameAsync();
                         await _backend.ConnectAsync(SettingsProvider.Instance.RegisteredDevice.MacAddress,
                             ServiceUuid.ToString()!, noRetry);
                         return true;
@@ -301,7 +317,7 @@ namespace GalaxyBudsClient.Platform
             SettingsProvider.Instance.RegisteredDevice.MacAddress = string.Empty;
             DeviceMessageCache.Instance.Clear();
             // don't wait for this to complete as it may confuse users if the menu option waits until connect timed out
-            DisconnectAsync();
+            _ = DisconnectAsync();
         }
         
         public bool RegisteredDeviceValid =>
@@ -341,7 +357,7 @@ namespace GalaxyBudsClient.Platform
                 
                 lock (IncomingQueue)
                 {
-                    if (IncomingQueue.Count <= 0) continue;
+                    if (IncomingQueue.IsEmpty) continue;
                     while (IncomingQueue.TryDequeue(out var frame))
                     {
                         IncomingData.AddRange(frame);
@@ -352,7 +368,6 @@ namespace GalaxyBudsClient.Platform
                 do
                 {
                     var msgSize = 0;
-                    SPPMessage? msg = null;
                     try
                     {
                         var raw = IncomingData.OfType<byte>().ToArray();
@@ -362,7 +377,7 @@ namespace GalaxyBudsClient.Platform
                             hook?.OnRawDataAvailable(ref raw);
                         }
 
-                        msg = SPPMessage.DecodeMessage(raw);
+                        var msg = SPPMessage.DecodeMessage(raw);
                         msgSize = msg.TotalPacketSize;
 
                         Log.Verbose($">> Incoming: {msg}");

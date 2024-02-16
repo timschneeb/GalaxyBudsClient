@@ -155,15 +155,12 @@ namespace GalaxyBudsClient.Interface.Dialogs
 
         public void UpdateSettings()
         {
-            var name = Environment.UserName.Split(' ')[0];
-            var title = SettingsProvider.Instance.Popup.CustomTitle == string.Empty
-                ? Loc.Resolve("connpopup_title")
+            _header.Content = SettingsProvider.Instance.Popup.CustomTitle == string.Empty
+                ? BluetoothImpl.Instance.DeviceName
                 : SettingsProvider.Instance.Popup.CustomTitle;
 
-            _header.Content = string.Format(title, name, BluetoothImpl.Instance.DeviceSpec.FriendlyName);
-            
             /* Header */
-            var grid = this.FindControl<Grid>("Grid");
+            var grid = this.FindControl<Grid>("Grid")!;
             if (SettingsProvider.Instance.Popup.Compact)
             {
                 MaxHeight = 205 - 35;
