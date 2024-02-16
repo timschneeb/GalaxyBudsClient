@@ -51,7 +51,7 @@ namespace GalaxyBudsClient
         private DevOptions? _devOptions;
 
         private readonly CustomTitleBar _titleBar;
-        private BudsPopup _popup;
+        private BudsPopup? _popup;
         private bool _popupShown = false;
         private WearStates _lastWearState = WearStates.Both;
         
@@ -127,9 +127,7 @@ namespace GalaxyBudsClient
                     Close();
                 }
             };
-
-            _popup = new BudsPopup();
-
+            
             BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
             BluetoothImpl.Instance.Disconnected += OnDisconnected;
             BluetoothImpl.Instance.Connected += OnConnected;
@@ -578,34 +576,35 @@ namespace GalaxyBudsClient
         public void ShowPopup(bool ignoreRestrictions = false)
         {
             Log.Debug($"MainWindow.ShowPopup: {(_popupShown ? "Popup already shown" : "Popup not yet shown")}; Ignore conditional check: {ignoreRestrictions}");
-            if (!_popupShown || ignoreRestrictions)
+            if (_popupShown && !ignoreRestrictions)
+                return;
+            
+            _popup ??= new BudsPopup();
+                
+            if (_popup.IsVisible)
             {
-                if (_popup.IsVisible)
-                {
-                    _popup.UpdateSettings();
-                    _popup.RearmTimer();
-                }
+                _popup.UpdateSettings();
+                _popup.RearmTimer();
+            }
 
-                try
-                {
-                    _popup.Show();
-                }
-                catch (InvalidOperationException)
-                {
-                    /* Window already closed down */
-                    _popup = new BudsPopup();
-                    _popup.Show();
-                }
-
-
-                if (!BluetoothImpl.Instance.IsConnected)
-                {
-                    Log.Warning("MainWindow.ShowPopup: Not connected");
-                }
-                else
-                {
-                    _popupShown = true;
-                }
+            try
+            {
+                _popup.Show();
+            }
+            catch (InvalidOperationException)
+            {
+                /* Window already closed down */
+                _popup = new BudsPopup();
+                _popup.Show();
+            }
+            
+            if (!BluetoothImpl.Instance.IsConnected)
+            {
+                Log.Warning("MainWindow.ShowPopup: Not connected");
+            }
+            else
+            {
+                _popupShown = true;
             }
         }
     }
