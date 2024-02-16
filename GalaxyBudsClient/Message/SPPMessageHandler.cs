@@ -48,10 +48,10 @@ namespace GalaxyBudsClient.Message
         {
             Dispatcher.UIThread.InvokeAsync(() =>
             {
-                BaseMessageParser? parser = SPPMessageParserFactory.BuildParser(e);
+                var parser = SPPMessageParserFactory.BuildParser(e);
                 DispatchEvent(parser, e.Id);
                 
-            }, DispatcherPriority.DataBind);
+            }, DispatcherPriority.Normal);
         }
 
         public void DispatchEvent(BaseMessageParser? parser, SPPMessage.MessageIds? ids = null)

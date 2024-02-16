@@ -21,7 +21,7 @@ namespace GalaxyBudsClient
         // Initialization code. Don't use any Avalonia, third-party APIs or any
         // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
         // yet and stuff might break.
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
             StartedAt = Stopwatch.GetTimestamp();
             
@@ -114,10 +114,7 @@ namespace GalaxyBudsClient
                     Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
                     Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
                 }
-                catch (CultureNotFoundException ex)
-                {
-                    
-                }
+                catch (CultureNotFoundException) {}
             }
 
             try

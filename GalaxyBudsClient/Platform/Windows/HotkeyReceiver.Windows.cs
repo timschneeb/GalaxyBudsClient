@@ -105,17 +105,20 @@ namespace GalaxyBudsClient.Platform.Windows
             {
                 throw new HotkeyRegisterExceptionWin32(result, hotkey);
             }
+
+            await Task.CompletedTask;
         }
 
         public async Task UnregisterAllAsync()
         {
-
+#if Windows
             for (var i = _currentId; i > 0; i--)
             {
-#if Windows
+
                 UnregisterHotKey(_wndProc.WindowHandle, i);
-#endif
+
             }
+#endif
             _hotkeys.Clear();
             
             Log.Debug("Windows.HotkeyReceiver: All hotkeys unregistered");
@@ -158,8 +161,10 @@ namespace GalaxyBudsClient.Platform.Windows
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
         [DllImport("user32.dll")]
         private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
-    
+
+#if Windows
         private int _currentId;
+#endif
     
         /// <summary>
         /// Registers a hot key in the system.

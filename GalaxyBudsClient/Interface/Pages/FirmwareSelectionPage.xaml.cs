@@ -37,7 +37,7 @@ namespace GalaxyBudsClient.Interface.Pages
         public SelectionModel<FirmwareRemoteBinary>? Selection
         {
             get => _firmwareBox.Selection as SelectionModel<FirmwareRemoteBinary>;
-            set => _firmwareBox.Selection = value;
+            set => _firmwareBox.Selection = value!;
         }
         
         public bool IsSearching
@@ -78,7 +78,7 @@ namespace GalaxyBudsClient.Interface.Pages
         {
             _advancedMenu = MenuFactory.BuildContextMenu(new Dictionary<string, EventHandler<RoutedEventArgs>?>()
             {
-                [Loc.Resolve("fw_select_from_disk")] = (sender, args) => SelectFromDisk()
+                [Loc.Resolve("fw_select_from_disk")] = (_, _) => SelectFromDisk()
             }, _navBarAdvanced);
         }
 
@@ -181,7 +181,7 @@ namespace GalaxyBudsClient.Interface.Pages
                         $"{Loc.Resolve("fw_select_net_error")}\n\n{ex.Message}"
                 }.ShowDialog(MainWindow.Instance);
 
-                Log.Error("FirmwareSelectionPage.Next: " + ex);
+                Log.Error(ex, "FirmwareSelectionPage.Next: Network error");
                 return;
             }
             
@@ -193,7 +193,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private async Task PrepareInstallation(byte[] data, string buildName)
         {
-            FirmwareBinary? binary = null;
+            FirmwareBinary? binary;
             try
             {
                 binary = new FirmwareBinary(data, buildName);
@@ -284,7 +284,7 @@ namespace GalaxyBudsClient.Interface.Pages
                             $"{Loc.Resolve("fw_select_net_index_error")}\n{Loc.Resolve("fw_select_http_error")} {ex.ErrorCode}"
                     }.ShowDialog(MainWindow.Instance);
                 }
-                Log.Error("FirmwareSelectionPage.RefreshList: " + ex);
+                Log.Error(ex, "FirmwareSelectionPage.RefreshList: Network error");
                 
                 SetEmptyView(true);
                 return;
@@ -302,7 +302,7 @@ namespace GalaxyBudsClient.Interface.Pages
                     }.ShowDialog(MainWindow.Instance);
                 }
                 
-                Log.Error("FirmwareSelectionPage.RefreshList: " + ex);
+                Log.Error(ex, "FirmwareSelectionPage.RefreshList: Network error");
 
                 SetEmptyView(true);
                 return;

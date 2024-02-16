@@ -32,7 +32,7 @@ namespace GalaxyBudsClient.Interface.Pages
         public SelectionModel<BluetoothDevice>? Selection
         {
             get => _deviceBox.Selection as SelectionModel<BluetoothDevice>;
-            set => _deviceBox.Selection = value;
+            set => _deviceBox.Selection = value!;
         }
         
         public bool IsSearching

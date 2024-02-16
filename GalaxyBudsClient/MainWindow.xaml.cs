@@ -81,7 +81,8 @@ namespace GalaxyBudsClient
             _instance = null;
         }
 
-        private MainWindow()
+        // ReSharper disable once MemberCanBePrivate.Global
+        public MainWindow()
         {
             AvaloniaXamlLoader.Load(this);
             this.AttachDevTools();
@@ -265,15 +266,15 @@ namespace GalaxyBudsClient
 
             if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                if (desktop.Args.Contains("/StartMinimized") && PlatformUtils.SupportsTrayIcon && _firstShow)
+                if ((desktop.Args?.Contains("/StartMinimized") ?? false) && PlatformUtils.SupportsTrayIcon && _firstShow)
                 {
-                    Log.Debug("MainWindow: Launched minimized.");
+                    Log.Debug("MainWindow: Launched minimized");
                     BringToTray();
                 }
             }
 
             if(_firstShow)
-                Log.Information("Startup time: " + Stopwatch.GetElapsedTime(Program.StartedAt));
+                Log.Information("Startup time: {Time}",  Stopwatch.GetElapsedTime(Program.StartedAt));
             
             _firstShow = false;
         }

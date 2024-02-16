@@ -110,6 +110,8 @@ namespace GalaxyBudsClient.Platform.OSX
                     throw new HotkeyRegisterException($"Failed to register hotkey", hotkey);
                 }
             });
+#else
+            await Task.CompletedTask;
 #endif
         }
         
@@ -145,6 +147,8 @@ namespace GalaxyBudsClient.Platform.OSX
             }
 
             Log.Debug("OSX.HotkeyReceiver: Done validating hotkey.");
+#else
+            await Task.CompletedTask;
 #endif
         }
 
@@ -170,6 +174,8 @@ namespace GalaxyBudsClient.Platform.OSX
 
                 Semaphore.Release();
             });
+#else
+            await Task.CompletedTask;
 #endif
         }
 
@@ -185,6 +191,8 @@ namespace GalaxyBudsClient.Platform.OSX
                     _hotkeyMgrObjc = null;
                 }
             }
+#else
+            await Task.CompletedTask;
 #endif
             GC.SuppressFinalize(this);
         }

@@ -26,23 +26,16 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		private string ErrorDescription
 		{
-			set {
-				string text = "";
-				if (value == string.Empty)
+			set
+			{
+				_additionalInfo.Text = value switch
 				{
-					text = Loc.Resolve("connlost_noinfo");
-				}
-				else if (value == "Device disconnected")
-				{
-					text = Loc.Resolve("connlost_disconnected");
-				}
-				else
-				{
-					text = value;				
-				}
-				_additionalInfo.Text = text;
+					"" => Loc.Resolve("connlost_noinfo"),
+					"Device disconnected" => Loc.Resolve("connlost_disconnected"),
+					_ => value
+				};
 			}
-			get => _additionalInfo.Text;
+			get => _additionalInfo.Text ?? string.Empty;
 		}
 		
 		public ConnectionLostPage()
@@ -84,8 +77,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			};
 		}
 		
-
-		public void ResetRetryButton()
+		private void ResetRetryButton()
 		{
 			_loadingSpinner.IsVisible = false;
 			_retry.IsEnabled = true;

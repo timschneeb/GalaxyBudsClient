@@ -11,7 +11,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		public string RequiredVersion
 		{
 			set => _requiredFw.Text = value;
-			get => _requiredFw.Text;
+			get => _requiredFw.Text ?? string.Empty;
 		}
 
 		private readonly TextBlock _requiredFw;
