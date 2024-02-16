@@ -2,12 +2,10 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using Avalonia.Animation;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
-using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Interface.Pages;
 using Serilog;
 
@@ -17,7 +15,7 @@ namespace GalaxyBudsClient.Interface.Transition
     {
 	    private AbstractPage? _lastPageCache;
 	    private AbstractPage? _currentPage;
-	    private CancellationTokenSource? source;
+	    private CancellationTokenSource? _source;
 	    private readonly IPageTransition _pageTransition;
 		private readonly ViewModel _pageViewModel = new ViewModel();
 		private readonly SemaphoreSlim _pageSemaphore = new SemaphoreSlim(1, 1);
@@ -62,7 +60,7 @@ namespace GalaxyBudsClient.Interface.Transition
 				Children.Remove(_lastPageCache);
 				_lastPageCache = null;
 				_lastWasSuspended = false;
-				source = null;
+				_source = null;
 			};
 			_pageTransition = fadeTransition;
 
@@ -88,7 +86,7 @@ namespace GalaxyBudsClient.Interface.Transition
 		{
 			if (HasPageType(page.PageType))
 			{
-				Log.Warning($"Page type '${page.PageType}' is already assigned. Disposing old page.");
+				Log.Warning("Page type \'${PagePageType}\' is already assigned. Disposing old page", page.PageType);
 				UnregisterPage(page);
 			}
 			_pageViewModel.Items.Add(page);
@@ -106,7 +104,7 @@ namespace GalaxyBudsClient.Interface.Transition
 		{
 			if (Equals(_currentPage, page))
 			{
-				Log.Warning($"Page '${page.PageType}' to be unregistered is currently loaded");
+				Log.Warning("Page \'${PagePageType}\' to be unregistered is currently loaded", page.PageType);
 			}
 
 			return _pageViewModel.Items.Remove(page);
@@ -137,7 +135,7 @@ namespace GalaxyBudsClient.Interface.Transition
 					if (CurrentPage == page) return;
 					if (_lastPageCache != null)
 					{
-						source!.Cancel();
+						_source!.Cancel();
 						if (!_lastWasSuspended)
 						{
 							_lastPageCache.OnPageHidden();
@@ -146,7 +144,7 @@ namespace GalaxyBudsClient.Interface.Transition
 						Children.Remove(_lastPageCache);
 						_lastPageCache = null;
 						_lastWasSuspended = false;
-						source = null;
+						_source = null;
 					}
 
 					if (Children.Count != 1)
@@ -159,7 +157,7 @@ namespace GalaxyBudsClient.Interface.Transition
 						_lastPageCache = _currentPage;
 						_lastWasSuspended = _suspended;
 						_currentPage = target;
-						source = new CancellationTokenSource();
+						_source = new CancellationTokenSource();
 						Children.Add(_currentPage);
 						if (!_suspended)
 						{
@@ -167,13 +165,13 @@ namespace GalaxyBudsClient.Interface.Transition
 						}
 
 						// don't await here, we don't want to wait until animation finished
-						_pageTransition.Start(_lastPageCache, _currentPage, true, source.Token);
+						_ = _pageTransition.Start(_lastPageCache, _currentPage, true, _source.Token);
 						PageSwitched?.Invoke(this, page);
 					}
 				}
 				catch (Exception ex)
 				{
-					Log.Error(ex.ToString());
+					Log.Error(ex, "Failed to switch page");
 				}
 				finally
 				{
@@ -190,36 +188,32 @@ namespace GalaxyBudsClient.Interface.Transition
 
 		public AbstractPage? FindPage(AbstractPage.Pages page, bool nullAware = false)
         {
-            AbstractPage[] matches = _pageViewModel.Items.Where(abstractPage => abstractPage.PageType == page).ToArray();
+            var matches = _pageViewModel.Items.Where(abstractPage => abstractPage.PageType == page).ToArray();
             if (matches.Length < 1)
             {
                 if (!nullAware)
                 {
-                    Log.Error($"Page '{page}' is not assigned");
+                    Log.Error("Page \'{Page}\' is not assigned", page);
                 }
 
                 return null;
             }
             if (matches.Length > 1)
             {
-                Log.Warning($"Page '{page}' has multiple assignments. Choosing first one.");
+                Log.Warning("Page \'{Page}\' has multiple assignments. Choosing first one", page);
             }
 
             return matches[0];
         }
-        public bool HasPageType(AbstractPage.Pages page)
+
+        private bool HasPageType(AbstractPage.Pages page)
         {
             return FindPage(page, nullAware: true) != null;
         }
 
-		public class ViewModel
+        private class ViewModel
 		{
-			public ViewModel()
-			{
-				Items = new ObservableCollection<AbstractPage>();
-			}
-
-			public ObservableCollection<AbstractPage> Items { get; }
-        }
+			public ObservableCollection<AbstractPage> Items { get; } = new();
+		}
     }
 }
