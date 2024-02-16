@@ -145,7 +145,7 @@ namespace GalaxyBudsClient
             
             if (BluetoothImpl.Instance.RegisteredDeviceValid)
             {
-                Task.Factory.StartNew(() => BluetoothImpl.Instance.ConnectAsync());
+                Task.Run(() => BluetoothImpl.Instance.ConnectAsync());
                 Pager.SwitchPage(AbstractPage.Pages.Home);
             }
             else
@@ -217,7 +217,7 @@ namespace GalaxyBudsClient
             
             if (BluetoothImpl.Instance.RegisteredDeviceValid)
             {
-                await Task.Delay(3000).ContinueWith((_) => UpdateManager.Instance.SilentCheck());
+                await Task.Delay(6000).ContinueWith((_) => UpdateManager.Instance.SilentCheck());
             }
             base.OnInitialized();
         }
