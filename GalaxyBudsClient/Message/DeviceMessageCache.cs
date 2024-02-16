@@ -26,8 +26,9 @@ namespace GalaxyBudsClient.Message
             }
         }
 
-        public DeviceMessageCache()
+        private DeviceMessageCache()
         {
+            SPPMessageHandler.Instance.DebugSkuUpdate += (sender, parser) => DebugSku = parser;
             SPPMessageHandler.Instance.ExtendedStatusUpdate += (sender, parser) => ExtendedStatusUpdate = parser;
             SPPMessageHandler.Instance.StatusUpdate += (sender, parser) => StatusUpdate = parser;
             SPPMessageHandler.Instance.GetAllDataResponse += (sender, parser) => DebugGetAllData = parser;
@@ -45,9 +46,11 @@ namespace GalaxyBudsClient.Message
             DebugGetAllData = null;
             ExtendedStatusUpdate = null;
             StatusUpdate = null;
+            DebugSku = null;
         }
         
         public DebugGetAllDataParser? DebugGetAllData { set; get; }
+        public DebugSkuParser? DebugSku { set; get; }
         public ExtendedStatusUpdateParser? ExtendedStatusUpdate { set; get; }
         public StatusUpdateParser? StatusUpdate { set; get; }
 

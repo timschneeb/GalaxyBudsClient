@@ -26,7 +26,8 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.AncNoiseReductionLevels, null },
                 { IDeviceSpec.Feature.AmbientSidetone, null },
                 { IDeviceSpec.Feature.AmbientCustomize, null },
-                { IDeviceSpec.Feature.AncWithOneEarbud, null }
+                { IDeviceSpec.Feature.AncWithOneEarbud, null },
+                { IDeviceSpec.Feature.DebugSku, null }
             };
         
         public Models Device => Models.Buds2Pro;

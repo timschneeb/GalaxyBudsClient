@@ -102,7 +102,7 @@ namespace GalaxyBudsClient.Message.Decoder
                 int hw2 = (msg.Payload[0] & 15);
 
                 HardwareVersion = "rev" + hw1.ToString("X") + "." + hw2.ToString("X");
-                SoftwareVersion = VersionDataToString(msg.Payload, 1, "R");
+                SoftwareVersion = VersionDataToString(msg.Payload, 1);
                 TouchSoftwareVersion = $"0x{msg.Payload[4]:X}";
                 LeftBluetoothAddress = BytesToMacString(msg.Payload, 5);
                 RightBluetoothAddress = BytesToMacString(msg.Payload, 11);
@@ -138,7 +138,7 @@ namespace GalaxyBudsClient.Message.Decoder
                 MsgVersion = msg.Payload[0];
 
                 HardwareVersion = "rev" + hw1.ToString("X") + "." + hw2.ToString("X");
-                SoftwareVersion = VersionDataToString(msg.Payload, 2, "R");
+                SoftwareVersion = VersionDataToString(msg.Payload, 2);
                 TouchSoftwareVersion = $"0x{msg.Payload[5]:X}";
                 LeftBluetoothAddress = BytesToMacString(msg.Payload, 6);
                 RightBluetoothAddress = BytesToMacString(msg.Payload, 12);
@@ -190,10 +190,11 @@ namespace GalaxyBudsClient.Message.Decoder
                 RightCradleBatt = msg.Payload[82];
             }
         }
-        private String BytesToMacString(byte[] payload, int startIndex)
+        
+        private string BytesToMacString(IReadOnlyList<byte> payload, int startIndex)
         {
-            StringBuilder sb = new StringBuilder();
-            for (int i13 = 0; i13 < 6; i13++)
+            var sb = new StringBuilder();
+            for (var i13 = 0; i13 < 6; i13++)
             {
                 if (i13 != 0)
                 {
@@ -205,16 +206,18 @@ namespace GalaxyBudsClient.Message.Decoder
             return sb.ToString();
         }
 
-        private String VersionDataToString(byte[] payload, int startIndex, String side)
+        private string VersionDataToString(IReadOnlyList<byte> payload, int startIndex)
         {
+            var buildPrefix = ActiveModel.GetModelMetadata()?.BuildPrefix ?? "R???";
+            
             if (ActiveModel == Models.Buds)
             {
                 int swVarIndex = payload[startIndex];
-                int swYearIndex = (payload[startIndex + 1] & 240) >> 4;
-                int swMonthIndex = payload[startIndex + 1] & 15;
-                byte swRelVerIndex = payload[startIndex + 2];
+                var swYearIndex = (payload[startIndex + 1] & 240) >> 4;
+                var swMonthIndex = payload[startIndex + 1] & 15;
+                var swRelVerIndex = payload[startIndex + 2];
 
-                String swRelVarString;
+                string swRelVarString;
                 if (swRelVerIndex <= 15)
                 {
                     swRelVarString = (swRelVerIndex & 255).ToString("X");
@@ -224,37 +227,20 @@ namespace GalaxyBudsClient.Message.Decoder
                     swRelVarString = _swRelVer[swRelVerIndex - 16];
                 }
 
-                return side + "170XX" + _swVer[swVarIndex] + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] +
+                return buildPrefix + "XX" + _swVer[swVarIndex] + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] +
                        swRelVarString;
             }
             else
             {
-                String swVar = (payload[startIndex] & 1) == 0 ? "E" : "U";
-                int isFotaDm = (payload[startIndex] & 240) >> 4;
+                var swVar = (payload[startIndex] & 1) == 0 ? "E" : "U";
+                var isFotaDm = (payload[startIndex] & 240) >> 4;
                 
-                int swYearIndex = (payload[startIndex + 1] & 240) >> 4;
-                int swMonthIndex = payload[startIndex + 1] & 15;
-                byte swRelVerIndex = payload[startIndex + 2];
-
-                string pre;
-                switch (ActiveModel)
-                {
-                    case Models.BudsPlus:
-                        pre = "175XX";
-                        break;
-                    case Models.BudsLive:
-                        pre = "180XX";
-                        break;
-                    case Models.BudsPro:
-                        pre = "190XX";
-                        break;
-                    default:
-                        pre = "???XX";
-                        break;
-                }
+                var swYearIndex = (payload[startIndex + 1] & 240) >> 4;
+                var swMonthIndex = payload[startIndex + 1] & 15;
+                var swRelVerIndex = payload[startIndex + 2];
                 
-                return side + pre + swVar + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] +
-                       _swRelVer[swRelVerIndex];
+                return buildPrefix + "XX" + swVar + "0A" 
+                       + _swYear[swYearIndex] + _swMonth[swMonthIndex] + _swRelVer[swRelVerIndex];
             }
         }
     }

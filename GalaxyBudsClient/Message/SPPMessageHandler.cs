@@ -42,6 +42,7 @@ namespace GalaxyBudsClient.Message
         public event EventHandler<MuteUpdateParser>? FindMyGearMuteUpdate;
         public event EventHandler? FindMyGearStopped;
         public event EventHandler<FitTestParser>? FitTestResult;
+        public event EventHandler<DebugSkuParser>? DebugSkuUpdate;
 
         public void MessageReceiver(object? sender, SPPMessage e)
         {
@@ -115,6 +116,9 @@ namespace GalaxyBudsClient.Message
                 case SPPMessage.MessageIds.NOISE_CONTROLS_UPDATE:
                     NoiseControlUpdateResponse?.Invoke(this,
                         (parser as NoiseControlUpdateParser)?.Mode ?? NoiseControlMode.Off);
+                    break;
+                case SPPMessage.MessageIds.DEBUG_SKU:
+                    DebugSkuUpdate?.Invoke(this, (parser as DebugSkuParser)!);
                     break;
             }
         }

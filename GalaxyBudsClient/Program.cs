@@ -83,6 +83,7 @@ namespace GalaxyBudsClient
 
                             sentryEvent.SetTag("bluetooth-model", BluetoothImpl.Instance.ActiveModel.ToString());
                             sentryEvent.SetExtra("bluetooth-model", BluetoothImpl.Instance.ActiveModel);
+                            sentryEvent.SetExtra("bluetooth-sku", DeviceMessageCache.Instance.DebugSku?.LeftSku ?? "null");
                             sentryEvent.SetExtra("bluetooth-connected", BluetoothImpl.Instance.IsConnected);
                         }
                         catch (Exception ex)

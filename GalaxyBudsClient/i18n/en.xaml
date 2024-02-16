@@ -515,6 +515,9 @@ Press 'Continue' to select a firmware binary.</sys:String>
     <sys:String x:Key="fw_select_http_error">HTTP error code:</sys:String>
     <sys:String x:Key="fw_select_unknown_build">Unknown build name</sys:String>
     <sys:String x:Key="fw_select_verify_fail">Failed to verify firmware</sys:String>
+    <sys:String x:Key="fw_select_verify_model_mismatch_fail">Device model mismatch detected! The firmware transfer has been cancelled.
+
+You are attempting to flash a firmware for the {0} onto your {1}. This can permanently brick your earbuds.</sys:String>
     <sys:String x:Key="fw_select_confirm">You are about to flash '{0}' onto your '{1}' device</sys:String>
     <sys:String x:Key="fw_select_confirm_desc">Make sure this information is correct, otherwise press 'Cancel' and double-check your setup.
 

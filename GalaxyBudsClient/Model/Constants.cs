@@ -136,19 +136,19 @@ namespace GalaxyBudsClient.Model
         public enum Models
         {
             NULL = 0,
-            [Description("Galaxy Buds (2019)")]
+            [ModelMetadata(Name = "Galaxy Buds (2019)", FwPattern = "R170", BuildPrefix = "R170")]
             Buds = 1,
-            [Description("Galaxy Buds+ (2020)")]
+            [ModelMetadata(Name = "Galaxy Buds+ (2020)", FwPattern = "SM-R175", BuildPrefix = "R175")]
             BudsPlus = 2,
-            [Description("Galaxy Buds Live (2020)")]
+            [ModelMetadata(Name = "Galaxy Buds Live (2020)", FwPattern = "SM-R180", BuildPrefix = "R180")]
             BudsLive = 3,
-            [Description("Galaxy Buds Pro (2021)")]
+            [ModelMetadata(Name = "Galaxy Buds Pro (2021)", FwPattern = "SM-R190", BuildPrefix = "R190")]
             BudsPro = 4,
-            [Description("Galaxy Buds2 (2021)")]
+            [ModelMetadata(Name = "Galaxy Buds2 (2021)", FwPattern = "SM-R177", BuildPrefix = "R177")]
             Buds2 = 5,
-            [Description("Galaxy Buds2 Pro (2022)")]
+            [ModelMetadata(Name = "Galaxy Buds2 Pro (2022)", FwPattern = "SM-R510", BuildPrefix = "R510")]
             Buds2Pro = 6,
-            [Description("Galaxy Buds FE (2023)")]
+            [ModelMetadata(Name = "Galaxy Buds FE (2023)", FwPattern = "SM-R400N", BuildPrefix = "R400N")]
             BudsFe = 7
         }
 

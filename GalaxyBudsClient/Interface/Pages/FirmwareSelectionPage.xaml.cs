@@ -13,8 +13,10 @@ using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Interface.Items;
+using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Firmware;
+using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
@@ -89,7 +91,9 @@ namespace GalaxyBudsClient.Interface.Pages
                 Title = Loc.Resolve("cact_notice"),
                 Description = Loc.Resolve("fw_select_external_note"),
             }.ShowDialog<bool>(MainWindow.Instance);
-
+            
+            _ = BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_SKU);
+            
             if (result)
             {
                 OpenFileDialog dlg = new OpenFileDialog {Filters = new List<FileDialogFilter>()
@@ -110,6 +114,10 @@ namespace GalaxyBudsClient.Interface.Pages
         
         public override void OnPageShown()
         {
+            // Make sure that we have the current hardware model cached, if supported
+            if(BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DebugSku))
+                _ = BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_SKU);
+            
             RefreshList();
         }
 
@@ -202,9 +210,39 @@ namespace GalaxyBudsClient.Interface.Pages
                 return;
             }
             
+            /*
+             * Safety check: Verify whether the firmware binary is compatible with the current device to avoid hard bricks.
+             * 
+             * We cannot rely on BluetoothImpl.Instance.ActiveModel here, because users can spoof the device model
+             * during setup using the "Advanced" menu for troubleshooting. If available, we use the SKU instead.
+             */
+            var connectedModel = DeviceMessageCache.Instance.DebugSku?.ModelFromSku() ?? BluetoothImpl.Instance.ActiveModel;
+            var firmwareModel = binary.DetectModel();
+            if (firmwareModel == null)
+            {
+                Log.Warning("FirmwareSelectionPage.PrepareInstallation: Firmware model is null; skipping verification");
+            }
+            else if(connectedModel != firmwareModel)
+            {
+                await new MessageBox()
+                {
+                    Title = Loc.Resolve("fw_select_verify_fail"),
+                    Description = string.Format(
+                        Loc.Resolve("fw_select_verify_model_mismatch_fail"), 
+                        firmwareModel.Value.GetModelMetadata()?.Name ?? Loc.Resolve("unknown"), 
+                        connectedModel.GetModelMetadata()?.Name
+                    )
+                }.ShowDialog(MainWindow.Instance);
+                return;
+            }
+            
             var result = await new QuestionBox()
             {
-                Title = string.Format(Loc.Resolve("fw_select_confirm"), binary.BuildName, BluetoothImpl.Instance.ActiveModel.GetDescription()),
+                Title = string.Format(
+                    Loc.Resolve("fw_select_confirm"),
+                    binary.BuildName, 
+                    BluetoothImpl.Instance.ActiveModel.GetModelMetadata()?.Name ?? Loc.Resolve("unknown")
+                    ),
                 Description = Loc.Resolve("fw_select_confirm_desc"),
                 MinWidth = 600,
                 MaxWidth = 600,

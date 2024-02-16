@@ -19,7 +19,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
     {
         private readonly IReadOnlyList<String> _modelCache
             = Enum.GetValues(typeof(Models)).Cast<Models>().Where(x => x != Models.NULL)
-                .Select(x => x.GetDescription()).ToList();
+                .Select(x => x.GetModelMetadata()?.Name ?? string.Empty).ToList();
 
         public IEnumerable ModelSource => _modelCache;
     

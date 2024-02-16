@@ -160,6 +160,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
 
             switch (BluetoothImpl.Instance.ActiveModel)
             {
+                // TODO: put this in DeviceSpec
                 case Models.Buds:
                     break;
                 case Models.BudsPlus:

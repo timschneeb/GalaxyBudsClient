@@ -22,7 +22,8 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.FirmwareUpdates, null },
                 { IDeviceSpec.Feature.LegacyNoiseControlMode, null },
                 { IDeviceSpec.Feature.DebugInfoLegacy, null },
-                { IDeviceSpec.Feature.Voltage, null }
+                { IDeviceSpec.Feature.Voltage, null },
+                { IDeviceSpec.Feature.DebugSku, null }
             };
         
         public Models Device => Models.BudsLive;

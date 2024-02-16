@@ -260,7 +260,6 @@ namespace GalaxyBudsClient.Message
         
         public async void Cancel()
         {
-            _binary?.Dispose();
             _binary = null;
             _mtuSize = 0;
             _currentSegment = 0;

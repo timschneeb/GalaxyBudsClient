@@ -28,7 +28,8 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.DebugInfoLegacy, null },
                 { IDeviceSpec.Feature.AmbientSidetone, new FeatureRule(8, "R190XXU0AUI2")  },
                 { IDeviceSpec.Feature.AmbientCustomize, new FeatureRule(8, "R190XXU0AUI2") },
-                { IDeviceSpec.Feature.AmbientCustomizeLegacy, new FeatureRule(8, "R190XXU0AUI2") }
+                { IDeviceSpec.Feature.AmbientCustomizeLegacy, new FeatureRule(8, "R190XXU0AUI2") },
+                { IDeviceSpec.Feature.DebugSku, null }
             };
         
         public Models Device => Models.BudsPro;
