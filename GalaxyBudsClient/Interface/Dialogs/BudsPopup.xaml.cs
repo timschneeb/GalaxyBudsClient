@@ -155,38 +155,12 @@ namespace GalaxyBudsClient.Interface.Dialogs
 
         public void UpdateSettings()
         {
-            /* Load strings */
-            string modifier = string.Empty;
-
-            switch (BluetoothImpl.Instance.ActiveModel)
-            {
-                // TODO: put this in DeviceSpec
-                case Models.Buds:
-                    break;
-                case Models.BudsPlus:
-                    modifier = "+";
-                    break;
-                case Models.BudsLive:
-                    modifier = " Live";
-                    break;
-                case Models.BudsPro:
-                    modifier = " Pro";
-                    break;
-                case Models.Buds2:
-                    modifier = "2";
-                    break;
-                case Models.Buds2Pro:
-                    modifier = "2 Pro";
-                    break;
-            }
-
-            string name = Environment.UserName.Split(' ')[0];
-
-            string title = SettingsProvider.Instance.Popup.CustomTitle == string.Empty
+            var name = Environment.UserName.Split(' ')[0];
+            var title = SettingsProvider.Instance.Popup.CustomTitle == string.Empty
                 ? Loc.Resolve("connpopup_title")
                 : SettingsProvider.Instance.Popup.CustomTitle;
 
-            _header.Content = string.Format(title, name, modifier);
+            _header.Content = string.Format(title, name, BluetoothImpl.Instance.DeviceSpec.FriendlyName);
             
             /* Header */
             var grid = this.FindControl<Grid>("Grid");

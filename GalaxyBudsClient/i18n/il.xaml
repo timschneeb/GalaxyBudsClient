@@ -45,7 +45,7 @@
     <sys:String x:Key="connpopup_placement_bl">שמאל למטה</sys:String>
     <sys:String x:Key="connpopup_placement_bc">מרכז למטה</sys:String>
     <sys:String x:Key="connpopup_placement_br">ימין  למטה</sys:String>
-    <sys:String x:Key="connpopup_title">.{0} של Galaxy Buds{1}ה</sys:String>
+    <sys:String x:Key="connpopup_title">.{0} של {1}ה</sys:String>
     <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
 
     <!--Placement  (Buds+)-->

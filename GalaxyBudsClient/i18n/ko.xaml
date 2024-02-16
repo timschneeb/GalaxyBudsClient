@@ -50,7 +50,7 @@
     <sys:String x:Key="connpopup_placement_bl">좌측 하단</sys:String>
     <sys:String x:Key="connpopup_placement_bc">하단 중앙</sys:String>
     <sys:String x:Key="connpopup_placement_br">우측 하단</sys:String>
-    <sys:String x:Key="connpopup_title">{0}의 Galaxy Buds{1}</sys:String>
+    <sys:String x:Key="connpopup_title">{0}의 {1}</sys:String>
     <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
 
     <!--Placement  (Buds+)-->

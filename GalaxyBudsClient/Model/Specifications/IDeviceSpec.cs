@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Touchpad;
 using Serilog;
@@ -46,6 +47,7 @@ namespace GalaxyBudsClient.Model.Specifications
         public Dictionary<Feature, FeatureRule?> Rules { get; }
         public Models Device { get; }
         public string DeviceBaseName { get; }
+        public string FriendlyName => Device.GetModelMetadata()?.Name ?? "null";
         public ITouchOption TouchMap { get; }
         public Guid ServiceUuid { get; }
         public IReadOnlyCollection<ItemType> TrayShortcuts { get; }

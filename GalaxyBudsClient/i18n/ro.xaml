@@ -43,7 +43,7 @@
     <sys:String x:Key="connpopup_placement_bl">Stânga jos</sys:String>
     <sys:String x:Key="connpopup_placement_bc">Centru jos</sys:String>
     <sys:String x:Key="connpopup_placement_br">Dreapta jos</sys:String>
-    <sys:String x:Key="connpopup_title">Galaxy Buds{1}-urile lui {0}</sys:String>
+    <sys:String x:Key="connpopup_title">{1}-urile lui {0}</sys:String>
     <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
 
     <!--Placement  (Buds+)-->

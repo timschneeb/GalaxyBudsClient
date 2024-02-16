@@ -43,7 +43,7 @@
     <sys:String x:Key="connpopup_placement_bl">Κάτω αριστερά</sys:String>
     <sys:String x:Key="connpopup_placement_bc">Κάτω κεντρικά</sys:String>
     <sys:String x:Key="connpopup_placement_br">Κάτω δεξιά</sys:String>
-    <sys:String x:Key="connpopup_title">Τα Galaxy Buds{1} του χρήστη {0}</sys:String>
+    <sys:String x:Key="connpopup_title">Τα {1} του χρήστη {0}</sys:String>
     <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
 
     <!--Placement  (Buds+)-->

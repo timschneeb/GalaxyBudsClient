@@ -35,7 +35,7 @@
     <sys:String x:Key="connpopup_placement_bl">Abajo izquierda</sys:String>
     <sys:String x:Key="connpopup_placement_bc">Abajo centro</sys:String>
     <sys:String x:Key="connpopup_placement_br">Abajo derecha</sys:String>
-    <sys:String x:Key="connpopup_title">Galaxy Buds{1} de {0}</sys:String>
+    <sys:String x:Key="connpopup_title">{1} de {0}</sys:String>
     <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
 
     <!--Placement  (Buds+)-->
