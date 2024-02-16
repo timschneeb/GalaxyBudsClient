@@ -77,7 +77,7 @@ jobs:
         releases-only: true
       id: last_release  
     - name: Prepare version information (2/3)
-      uses: benjlevesque/short-sha@v2.1
+      uses: benjlevesque/short-sha@v3
       id: short-sha
       with:
         length: 6
@@ -95,7 +95,7 @@ jobs:
       run: ren GalaxyBudsClient.exe "Galaxy Buds Client.exe"
     
     - name: Create nsis installer (x64)
-      uses: joncloud/makensis-action@v3.7
+      uses: joncloud/makensis-action@v4.1
       with:
         script-file: "install.nsi"
         arguments: "-DBASE_DIR=\"D:\\a\\GalaxyBudsClient\\GalaxyBudsClient\" -DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"64bit\""
@@ -128,7 +128,7 @@ jobs:
       run: ren GalaxyBudsClient.exe "Galaxy Buds Client.exe"
 
     - name: Create nsis installer (x86)
-      uses: joncloud/makensis-action@v3.7
+      uses: joncloud/makensis-action@v4.1
       with:
         script-file: "install.nsi"
         arguments: "-DBASE_DIR=\"D:\\a\\GalaxyBudsClient\\GalaxyBudsClient\" -DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"32bit\""
@@ -162,7 +162,7 @@ jobs:
       id: last_release  
       
     - name: Prepare version information (2/3)
-      uses: benjlevesque/short-sha@v2.1
+      uses: benjlevesque/short-sha@v3
       id: short-sha
       with:
         length: 6
