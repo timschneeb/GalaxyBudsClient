@@ -70,8 +70,6 @@ namespace GalaxyBudsClient.Interface.Pages
             
             IsSearching = false;
             
-            RefreshList();
-            
             Loc.LanguageUpdated += UpdateStrings;
             UpdateStrings();
         }
