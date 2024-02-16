@@ -1,6 +1,7 @@
 ﻿#if Linux
 
 using System;
+using System.Threading.Tasks;
 using GalaxyBudsClient.Platform.Interfaces;
 using Serilog;
 using Tmds.DBus;
@@ -11,18 +12,21 @@ namespace GalaxyBudsClient.Platform.Linux
     public class MediaKeyRemote : IMediaKeyRemote
     {
 
-        private readonly MprisClient? _client;
+        private MprisClient? _client;
 
         public MediaKeyRemote()
         {
-            try
+            Task.Run(() =>
             {
-                _client = new MprisClient();
-            }
-            catch (PlatformNotSupportedException)
-            {
-                _client = null;
-            }
+                try
+                {
+                    _client = new MprisClient();
+                }
+                catch (PlatformNotSupportedException)
+                {
+                    _client = null;
+                }
+            });
         }
         
         public void Play()
