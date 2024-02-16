@@ -179,27 +179,23 @@ namespace GalaxyBudsClient.Interface.Dialogs
             const int padding = 20;
             
             var scaling = PlatformImpl?.GetPropertyValue<double>("DesktopScaling") ?? 1.0;
-            switch (SettingsProvider.Instance.Popup.Placement)
+            Position = SettingsProvider.Instance.Popup.Placement switch
             {
-                case PopupPlacement.TopLeft:
-                    Position = new PixelPoint(workArea.X + padding, workArea.Y + padding);
-                    break;
-                case PopupPlacement.TopCenter:
-                    Position = new PixelPoint((int) ((workArea.Width / 2f) - (this.Width  * scaling / 2) + workArea.X), workArea.Y + padding);
-                    break;
-                case PopupPlacement.TopRight:
-                    Position = new PixelPoint((int) (workArea.Width - this.Width * scaling + workArea.X - padding), workArea.Y + padding);
-                    break;
-                case PopupPlacement.BottomLeft:
-                    Position = new PixelPoint(workArea.X + padding, (int) (workArea.Height - this.Height * scaling + workArea.Y - padding));
-                    break;
-                case PopupPlacement.BottomCenter:
-                    Position = new PixelPoint((int) ((workArea.Width / 2f) - (this.Width * scaling / 2) + workArea.X), (int) (workArea.Height - this.Height * scaling + workArea.Y - padding));
-                    break;
-                case PopupPlacement.BottomRight:
-                    Position = new PixelPoint((int) ((workArea.Width - this.Width * scaling) + workArea.X - padding), (int) (workArea.Height - this.Height * scaling + workArea.Y - padding));
-                    break;
-            }
+                PopupPlacement.TopLeft => new PixelPoint(workArea.X + padding, workArea.Y + padding),
+                PopupPlacement.TopCenter => new PixelPoint(
+                    (int)((workArea.Width / 2f) - (this.Width * scaling / 2) + workArea.X), workArea.Y + padding),
+                PopupPlacement.TopRight => new PixelPoint(
+                    (int)(workArea.Width - this.Width * scaling + workArea.X - padding), workArea.Y + padding),
+                PopupPlacement.BottomLeft => new PixelPoint(workArea.X + padding,
+                    (int)(workArea.Height - this.Height * scaling + workArea.Y - padding)),
+                PopupPlacement.BottomCenter => new PixelPoint(
+                    (int)((workArea.Width / 2f) - (this.Width * scaling / 2) + workArea.X),
+                    (int)(workArea.Height - this.Height * scaling + workArea.Y - padding)),
+                PopupPlacement.BottomRight => new PixelPoint(
+                    (int)((workArea.Width - this.Width * scaling) + workArea.X - padding),
+                    (int)(workArea.Height - this.Height * scaling + workArea.Y - padding)),
+                _ => Position
+            };
         }
     }
 }
