@@ -42,17 +42,12 @@ namespace GalaxyBudsClient.Platform.Windows
         
         public HotkeyReceiver()
         {
-            if (!MainWindow.IsReady())
-            {
-                Log.Error("Windows.HotkeyReceiver: MainWindow not ready. Cannot access WndProc callback");
-                return;
-            }
 #if Windows
             _wndProc.MessageReceived += WndProcClient_MessageReceived;
             Log.Debug("Windows.HotkeyReceiver: WndProc probes attached");
-            return;
-#endif
+#else
             Log.Error("Windows.HotkeyReceiver: This platform configuration is not supported");
+#endif
         }
         
         public void Dispose()
