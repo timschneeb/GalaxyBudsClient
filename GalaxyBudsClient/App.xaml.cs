@@ -1,7 +1,6 @@
 using System;
 #if OSX
 using AppKit;
-using Avalonia.Threading;
 #endif
 using Avalonia;
 using Avalonia.Controls;
