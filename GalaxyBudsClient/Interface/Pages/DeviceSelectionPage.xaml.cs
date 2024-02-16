@@ -71,6 +71,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
         public override void OnPageShown()
         {
+            RefreshList();
             this.FindControl<Separator>("UseWinRTSep").IsVisible = PlatformUtils.IsWindowsContractsSdkSupported;
             this.FindControl<SwitchDetailListItem>("UseWinRT").IsVisible = PlatformUtils.IsWindowsContractsSdkSupported;
             this.FindControl<SwitchDetailListItem>("UseWinRT").IsChecked = SettingsProvider.Instance.UseBluetoothWinRT;
