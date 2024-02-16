@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>96%</td><td>14 missing string(s)</td></tr>
+<tr><td>96%</td><td>15 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -20,6 +20,9 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>gft_fail</code></td><td>Test failed</td></tr>
 <tr><td><code>nc_anc_one</code></td><td>Noise cancelling with one earbud</td></tr>
 <tr><td><code>nc_anc_one_description</code></td><td>Noise cancelling normally requires two earbuds to prevent discomfort, enable this to allow noise cancelling with only one earbud</td></tr>
+<tr><td><code>fw_select_verify_model_mismatch_fail</code></td><td>Device model mismatch detected! The firmware transfer has been cancelled.
+
+You are attempting to flash a firmware for the {0} onto your {1}. This can permanently brick your earbuds.</td></tr>
 <tr><td><code>window_open</code></td><td>Open</td></tr>
 <tr><td><code>manualpair_title</code></td><td>Manual device selection</td></tr>
 <tr><td><code>manualpair_title_dialog</code></td><td>Choose your Galaxy Buds device</td></tr>

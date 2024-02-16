@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>82%</td><td>78 missing string(s)</td></tr>
+<tr><td>82%</td><td>79 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -57,6 +57,9 @@ Press 'Continue' to select a firmware binary.</td></tr>
 <tr><td><code>fw_select_http_error</code></td><td>HTTP error code:</td></tr>
 <tr><td><code>fw_select_unknown_build</code></td><td>Unknown build name</td></tr>
 <tr><td><code>fw_select_verify_fail</code></td><td>Failed to verify firmware</td></tr>
+<tr><td><code>fw_select_verify_model_mismatch_fail</code></td><td>Device model mismatch detected! The firmware transfer has been cancelled.
+
+You are attempting to flash a firmware for the {0} onto your {1}. This can permanently brick your earbuds.</td></tr>
 <tr><td><code>fw_select_confirm</code></td><td>You are about to flash '{0}' onto your '{1}' device</td></tr>
 <tr><td><code>fw_select_confirm_desc</code></td><td>Make sure this information is correct, otherwise press 'Cancel' and double-check your setup.
 

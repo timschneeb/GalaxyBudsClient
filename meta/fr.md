@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>89%</td><td>46 missing string(s)</td></tr>
+<tr><td>89%</td><td>47 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -48,6 +48,9 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>nc_as_custom_tone_soft</code></td><td>Soft</td></tr>
 <tr><td><code>nc_as_custom_tone_neutral</code></td><td>Neutral</td></tr>
 <tr><td><code>nc_as_custom_vol_normal</code></td><td>Normal</td></tr>
+<tr><td><code>fw_select_verify_model_mismatch_fail</code></td><td>Device model mismatch detected! The firmware transfer has been cancelled.
+
+You are attempting to flash a firmware for the {0} onto your {1}. This can permanently brick your earbuds.</td></tr>
 <tr><td><code>window_open</code></td><td>Open</td></tr>
 <tr><td><code>budsapp_header</code></td><td>Bluetooth compatibility info</td></tr>
 <tr><td><code>budsapp_text_p1</code></td><td>The official Galaxy Buds app for Windows 10 is installed alongside this application.</td></tr>
