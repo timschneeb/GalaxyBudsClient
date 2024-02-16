@@ -203,6 +203,8 @@ namespace GalaxyBudsClient.Interface.Pages
 		{
 			if (option == TouchOptions.OtherL || option == TouchOptions.OtherR)
 			{
+				MainWindow.Instance.CustomTouchActionPage.Accepted += CustomTouchActionPageOnAccepted;
+				
 				/* Open custom action selector first and await user input,
 				 do not send the updated options ids just yet  */
                 MainWindow.Instance.ShowCustomActionSelection(device);
@@ -231,6 +233,8 @@ namespace GalaxyBudsClient.Interface.Pages
 		
 		private async void CustomTouchActionPageOnAccepted(object? sender, CustomAction e)
 		{
+			MainWindow.Instance.CustomTouchActionPage.Accepted -= CustomTouchActionPageOnAccepted;
+			
 			if (MainWindow.Instance.CustomTouchActionPage.CurrentSide == Devices.L)
 			{
 				_lastLeftOption = TouchOptions.OtherL;
@@ -257,17 +261,10 @@ namespace GalaxyBudsClient.Interface.Pages
 
 			UpdateNoiseSwitchModeVisible();
 
-			MainWindow.Instance.CustomTouchActionPage.Accepted += CustomTouchActionPageOnAccepted;
-
 			UpdateMenus();
 			UpdateMenuDescriptions();
 		}
-
-		public override void OnPageHidden()
-		{
-			MainWindow.Instance.CustomTouchActionPage.Accepted -= CustomTouchActionPageOnAccepted;
-		}
-
+		
 		public void UpdateNoiseSwitchModeVisible()
 		{
 			_noiseControlMode.GetVisualParent()!.IsVisible =
