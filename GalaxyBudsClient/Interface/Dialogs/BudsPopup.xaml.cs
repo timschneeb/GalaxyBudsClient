@@ -113,7 +113,6 @@ namespace GalaxyBudsClient.Interface.Dialogs
 
             var leftSourceName = $"Left{type}{(isLeftOnline ? "Connected" : "Disconnected")}";
             _iconLeft.Source = (IImage?)Application.Current?.FindResource(leftSourceName);
-            
             var rightSourceName = $"Right{type}{(isRightOnline ? "Connected" : "Disconnected")}";
             _iconRight.Source = (IImage?)Application.Current?.FindResource(rightSourceName);
         }

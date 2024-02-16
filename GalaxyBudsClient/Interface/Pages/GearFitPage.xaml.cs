@@ -114,23 +114,11 @@ namespace GalaxyBudsClient.Interface.Pages
             bool isRightOnline = right > 0;
 
             var type = BluetoothImpl.Instance.DeviceSpec.IconResourceKey;
-            if (isLeftOnline)
-            {
-                _iconLeft.Source = (IImage?)Application.Current?.FindResource($"Left{type}Connected");
-            }
-            else
-            {
-                _iconLeft.Source = (IImage?)Application.Current?.FindResource($"Left{type}Disconnected");
-            }
-
-            if (isRightOnline)
-            {
-                _iconRight.Source = (IImage?)Application.Current?.FindResource($"Right{type}Connected");
-            }
-            else
-            {
-                _iconRight.Source = (IImage?)Application.Current?.FindResource($"Right{type}Disconnected");
-            }
+            
+            var leftSourceName = $"Left{type}{(isLeftOnline ? "Connected" : "Disconnected")}";
+            _iconLeft.Source = (IImage?)Application.Current?.FindResource(leftSourceName);
+            var rightSourceName = $"Right{type}{(isRightOnline ? "Connected" : "Disconnected")}";
+            _iconRight.Source = (IImage?)Application.Current?.FindResource(rightSourceName);
         }
 
         private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
