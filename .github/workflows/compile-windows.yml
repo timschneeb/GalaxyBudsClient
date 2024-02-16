@@ -16,9 +16,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.101
        
@@ -37,7 +37,7 @@ jobs:
     #    timestamp-server: http://timestamp.digicert.com
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: GalaxyBudsClient_win64_portable
         path: bin_win64/
@@ -46,9 +46,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.101
        
@@ -58,7 +58,7 @@ jobs:
       run: dotnet publish -r win-x86 -o bin_win32 -c Release -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: GalaxyBudsClient_win32_portable
         path: bin_win32/
@@ -69,7 +69,7 @@ jobs:
     needs: [build-x64, build-x86]
         
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Prepare version information (1/3)
       uses: oprypin/find-latest-tag@v1
       with:
@@ -87,7 +87,7 @@ jobs:
       
     # Make x64 installer
     - name: Download artifact (x64)
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: GalaxyBudsClient_win64_portable
         
@@ -110,7 +110,7 @@ jobs:
     #    timestamp-server: http://timestamp.digicert.com
 
     - name: Upload artifact (x64)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
         path: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
@@ -120,7 +120,7 @@ jobs:
 
     # Make x86 installer
     - name: Download artifact (x86)
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: GalaxyBudsClient_win32_portable
         
@@ -143,7 +143,7 @@ jobs:
     #    timestamp-server: http://timestamp.digicert.com
 
     - name: Upload artifact (x86)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: GalaxyBudsClient_Setup_32bit_${{steps.version.outputs.version}}.exe
         path: GalaxyBudsClient_Setup_32bit_${{steps.version.outputs.version}}.exe
@@ -171,7 +171,7 @@ jobs:
       id: version
       
     - name: Download setup artifact (x64)
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
 
