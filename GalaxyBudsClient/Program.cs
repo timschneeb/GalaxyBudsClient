@@ -16,11 +16,15 @@ namespace GalaxyBudsClient
 {
     internal static class Program
     {
+        public static long StartedAt = 0;
+        
         // Initialization code. Don't use any Avalonia, third-party APIs or any
         // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
         // yet and stuff might break.
         public static async Task Main(string[] args)
-        {   
+        {
+            StartedAt = Stopwatch.GetTimestamp();
+            
             var config = new LoggerConfiguration()
                 .WriteTo.Sentry(o =>
                 {
@@ -118,17 +122,14 @@ namespace GalaxyBudsClient
 
             try
             {
-                // OSX: Graphics must be drawn on the main thread.
-                // Awaiting this call would implicitly cause the next code to run as a async continuation task
-                if (PlatformUtils.IsOSX)
-                {
-                    SingleInstanceWatcher.Setup().Wait();
-                }
-                else
-                {
-                    await SingleInstanceWatcher.Setup();
-                }
-
+                /* OSX: Graphics must be drawn on the main thread.
+                 * Awaiting this call would implicitly cause the next code to run as a async continuation task.
+                 * 
+                 * In general: Don't await this call to shave off about 1000ms of startup time.
+                 * The SingleInstanceWatcher will terminate the app in time if another instance is already running.
+                 */
+                _ = Task.Run(SingleInstanceWatcher.Setup);
+                
                 BuildAvaloniaApp().StartWithClassicDesktopLifetime(args, ShutdownMode.OnExplicitShutdown);
             }
             catch (Exception ex)

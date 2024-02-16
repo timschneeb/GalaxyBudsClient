@@ -270,6 +270,9 @@ namespace GalaxyBudsClient
                 }
             }
 
+            if(_firstShow)
+                Log.Information("Startup time: " + Stopwatch.GetElapsedTime(Program.StartedAt));
+            
             _firstShow = false;
         }
 
