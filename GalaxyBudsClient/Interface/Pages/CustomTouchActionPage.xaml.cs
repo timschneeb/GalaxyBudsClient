@@ -5,18 +5,16 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Platform.Storage;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Interface.Items;
-using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
-using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages
 {
@@ -99,18 +97,16 @@ namespace GalaxyBudsClient.Interface.Pages
             {
                 case CustomAction.Actions.RunExternalProgram:
                 {
-                    OpenFileDialog dlg = new OpenFileDialog
+                    var filters = new List<FilePickerFileType>()
                     {
-                        Title = Loc.Resolve("cact_external_app_dialog_title"), 
-                        AllowMultiple = false
+                        new("All files") { Patterns = new List<string> { "*" } },
                     };
+                
+                    var file = await MainWindow.Instance.OpenFilePickerAsync(filters);
+                    if (file == null)
+                        return;
                     
-                    string[]? result = await dlg.ShowAsync(MainWindow.Instance);
-                    if (result != null && result.Length > 0)
-                    {
-                        _currentAction = new CustomAction(action.Action, result[0]);
-                    }
-
+                    _currentAction = new CustomAction(action.Action, file);
                     break;
                 }
                 case CustomAction.Actions.TriggerHotkey:

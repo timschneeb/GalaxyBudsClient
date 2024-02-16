@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using Avalonia.Controls;
@@ -8,11 +7,8 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Message;
-using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
-using NetSparkleUpdater;
-using NetSparkleUpdater.Events;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages
@@ -43,16 +39,9 @@ namespace GalaxyBudsClient.Interface.Pages
             {
                 _progressText.Text = Loc.Resolve("coredump_dl_progress_finished");
 
-                OpenFolderDialog dlg = new OpenFolderDialog()
-                {
-                    Title = Loc.Resolve("coredump_dl_save_dialog_title")
-                };
-                string? path = await dlg.ShowAsync(MainWindow.Instance);
-    
+                var path = await MainWindow.Instance.OpenFolderPickerAsync(Loc.Resolve("coredump_dl_save_dialog_title"));
                 if (string.IsNullOrEmpty(path))
-                {
                     return;
-                }
 
                 e.CoreDumpPaths.ForEach(x => CopyFile(x, path));
                 e.TraceDumpPaths.ForEach(x => CopyFile(x, path));

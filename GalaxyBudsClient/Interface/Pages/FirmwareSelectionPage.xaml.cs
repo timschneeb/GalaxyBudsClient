@@ -10,6 +10,7 @@ using Avalonia.Controls.Selection;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Platform.Storage;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Elements;
 using GalaxyBudsClient.Interface.Items;
@@ -91,23 +92,21 @@ namespace GalaxyBudsClient.Interface.Pages
             }.ShowDialog<bool>(MainWindow.Instance);
             
             _ = BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_SKU);
+
+            if (!result) 
+                return;
             
-            if (result)
+            var filters = new List<FilePickerFileType>()
             {
-                OpenFileDialog dlg = new OpenFileDialog {Filters = new List<FileDialogFilter>()
-                {
-                    new FileDialogFilter {Name = "Firmware binary", Extensions = new List<string>() {"bin"}},
-                    new FileDialogFilter {Name = "All files", Extensions = new List<string>() {"*"}},
-                }, AllowMultiple = false};
-                string[]? paths = await dlg.ShowAsync(MainWindow.Instance);
-            
-                if (paths == null || paths.Length < 1)
-                {
-                    return;
-                }
+                new("Firmware binary") { Patterns = new List<string> { "*.bin" } },
+                new("All files") { Patterns = new List<string> { "*" } },
+            };
                 
-                await PrepareInstallation(await File.ReadAllBytesAsync(paths[0]), Path.GetFileName(paths[0]));
-            }
+            var file = await MainWindow.Instance.OpenFilePickerAsync(filters);
+            if (file == null)
+                return;
+       
+            await PrepareInstallation(await File.ReadAllBytesAsync(file), Path.GetFileName(file));
         }
         
         public override void OnPageShown()

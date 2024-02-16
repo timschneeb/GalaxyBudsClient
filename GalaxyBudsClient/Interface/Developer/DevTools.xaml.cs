@@ -7,10 +7,9 @@ using System.Linq;
 using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
-using Avalonia.Input;
-using Avalonia.Input.Raw;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Platform.Storage;
 using Avalonia.Threading;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Message;
@@ -26,10 +25,6 @@ namespace GalaxyBudsClient.Interface.Developer
     {
         private class ViewModel
         {
-            public ViewModel()
-            {
-            }
-            
             private readonly IReadOnlyList<SPPMessage.MessageIds> _msgIdCache
                 = Enum.GetValues(typeof(SPPMessage.MessageIds)).Cast<SPPMessage.MessageIds>().ToList();
             private readonly IReadOnlyList<SPPMessage.MsgType> _msgTypeCache
@@ -56,10 +51,10 @@ namespace GalaxyBudsClient.Interface.Developer
         private readonly ComboBox _msgIdSend;
         private readonly ComboBox _msgTypeSend;
 
-        private readonly List<FileDialogFilter> _filters = new List<FileDialogFilter>()
+        private readonly List<FilePickerFileType> _filters = new List<FilePickerFileType>()
         {
-            new FileDialogFilter {Name = "Hex dump", Extensions = new List<string>() {"bin", "hex"}},
-            new FileDialogFilter {Name = "All files", Extensions = new List<string>() {"*"}},
+            new ("Hex dump") { Patterns = new List<string>() {"*.bin", "*.hex"}},
+            new ("All files"){ Patterns = new List<string>() {"*"}},
         };
 
         private readonly ViewModel _vm = new ViewModel();
@@ -159,13 +154,13 @@ namespace GalaxyBudsClient.Interface.Developer
                 return;
             }
 
-            SPPMessage msg = new SPPMessage
+            var msg = new SPPMessage
             {
                 Id = (SPPMessage.MessageIds) _msgIdSend.SelectedItem,
                 Payload = payload,
                 Type = (SPPMessage.MsgType) _msgTypeSend.SelectedItem
             };
-            var _ = BluetoothImpl.Instance.SendAsync(msg);
+            _ = BluetoothImpl.Instance.SendAsync(msg);
         }
         
         private void Clear_OnClick(object? sender, RoutedEventArgs e)
@@ -178,18 +173,14 @@ namespace GalaxyBudsClient.Interface.Developer
 
         private async void LoadDump_OnClick(object? sender, RoutedEventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog {Filters = _filters, AllowMultiple = false};
-            string[]? paths = await dlg.ShowAsync(this);
-            
-            if (paths == null || paths.Length < 1)
-            {
+            var file = await this.OpenFilePickerAsync(_filters);
+            if (file == null)
                 return;
-            }
-
+            
             ArrayList data;
             try
             {
-                data = new ArrayList(await File.ReadAllBytesAsync(paths[0]));
+                data = new ArrayList(await File.ReadAllBytesAsync(file));
                 _cache.Clear();
                 _cache.AddRange((byte[]) data.ToArray(typeof(byte)));
                 _hexDump.Text = HexUtils.Dump(_cache.ToArray());
@@ -272,13 +263,9 @@ namespace GalaxyBudsClient.Interface.Developer
 
         private async void SaveDump_OnClick(object? sender, RoutedEventArgs e)
         {
-            SaveFileDialog dlg = new SaveFileDialog {Filters = _filters};
-            string? path = await dlg.ShowAsync(this);
-            
+            var path = await this.SaveFilePickerAsync(_filters, "*.bin", "dump.bin");
             if (path == null)
-            {
                 return;
-            }
             
             try
             {
@@ -297,7 +284,7 @@ namespace GalaxyBudsClient.Interface.Developer
 
         private void MsgTable_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
         {
-            RecvMsgViewHolder? item = (RecvMsgViewHolder?)_msgTable.SelectedItem;
+            var item = (RecvMsgViewHolder?)_msgTable.SelectedItem;
             if (item?.Message == null)
             {
                 _vm.PropTableDataSource?.Clear();
