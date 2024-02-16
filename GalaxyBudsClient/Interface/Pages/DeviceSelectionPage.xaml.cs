@@ -67,8 +67,6 @@ namespace GalaxyBudsClient.Interface.Pages
             Selection = new SelectionModel<BluetoothDevice>();
             
             IsSearching = false;
-            
-            RefreshList();
         }
 
         public override void OnPageShown()
