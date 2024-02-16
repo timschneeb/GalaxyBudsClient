@@ -38,20 +38,20 @@ namespace GalaxyBudsClient.Interface.Pages
 		{   
 			AvaloniaXamlLoader.Load(this);
 			
-			_pageHeader = this.FindControl<PageHeader>("PageHeader");
-			_hwVer = this.FindControl<DetailListItem>("HwVer");
-			_swVer = this.FindControl<DetailListItem>("SwVer");
-			_touchFwVer = this.FindControl<DetailListItem>("TouchFwVer");
-			_btAddr = this.FindControl<DetailListItem>("BtAddr");
-			_proximity = this.FindControl<DetailListItem>("Proximity");
-			_thermo = this.FindControl<DetailListItem>("Thermo");
-			_adcSoc = this.FindControl<DetailListItem>("AdcSoc");
-			_adcVoltage = this.FindControl<DetailListItem>("AdcVoltage");
-			_adcCurrent = this.FindControl<DetailListItem>("AdcCurrent");
-			_hall = this.FindControl<DetailListItem>("Hall");
-			_accel = this.FindControl<DetailListItem>("Accelerator");
+			_pageHeader = this.GetControl<PageHeader>("PageHeader");
+			_hwVer = this.GetControl<DetailListItem>("HwVer");
+			_swVer = this.GetControl<DetailListItem>("SwVer");
+			_touchFwVer = this.GetControl<DetailListItem>("TouchFwVer");
+			_btAddr = this.GetControl<DetailListItem>("BtAddr");
+			_proximity = this.GetControl<DetailListItem>("Proximity");
+			_thermo = this.GetControl<DetailListItem>("Thermo");
+			_adcSoc = this.GetControl<DetailListItem>("AdcSoc");
+			_adcVoltage = this.GetControl<DetailListItem>("AdcVoltage");
+			_adcCurrent = this.GetControl<DetailListItem>("AdcCurrent");
+			_hall = this.GetControl<DetailListItem>("Hall");
+			_accel = this.GetControl<DetailListItem>("Accelerator");
 			
-			_result = this.FindControl<IconListItem>("SelfTestResult");
+			_result = this.GetControl<IconListItem>("SelfTestResult");
 			
 			SPPMessageHandler.Instance.SelfTestResponse += InstanceOnSelfTestResponse;
 		}

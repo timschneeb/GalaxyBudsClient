@@ -26,14 +26,14 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		private ContextMenu? _localeMenu;
 
-		private bool officialAppInstalled = false;
+		private bool _officialAppInstalled = false;
 
 		public WelcomePage()
 		{   
 			AvaloniaXamlLoader.Load(this);
 
-			_darkMode = this.FindControl<SwitchDetailListItem>("DarkMode");
-			_locale = this.FindControl<Border>("Locales");
+			_darkMode = this.GetControl<SwitchDetailListItem>("DarkMode");
+			_locale = this.GetControl<Border>("Locales");
 			
 		}
 
@@ -80,7 +80,7 @@ namespace GalaxyBudsClient.Interface.Pages
 							var process = Process.Start(si);
 							if(process?.WaitForExit(4000) ?? false) 
 							{
-								officialAppInstalled = process?.StandardOutput.ReadToEnd().Contains("SAMSUNGELECTRONICSCO.LTD.GalaxyBuds") ?? false;
+								_officialAppInstalled = process?.StandardOutput.ReadToEnd().Contains("SAMSUNGELECTRONICSCO.LTD.GalaxyBuds") ?? false;
 							} 
 						}
 						catch(Exception exception)
@@ -98,7 +98,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		
 		private void Next_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
-			MainWindow.Instance.Pager.SwitchPage(officialAppInstalled ? Pages.BudsAppDetected : Pages.DeviceSelect);
+			MainWindow.Instance.Pager.SwitchPage(_officialAppInstalled ? Pages.BudsAppDetected : Pages.DeviceSelect);
 		}
 
 		private void DarkMode_OnToggled(object? sender, bool e)

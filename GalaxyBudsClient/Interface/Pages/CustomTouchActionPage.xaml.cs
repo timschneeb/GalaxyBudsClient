@@ -36,8 +36,8 @@ namespace GalaxyBudsClient.Interface.Pages
         public CustomTouchActionPage()
         {   
             AvaloniaXamlLoader.Load(this);
-            _pageHeader = this.FindControl<PageHeader>("PageHeader");
-            _menuDetail = this.FindControl<MenuDetailListItem>("Menu");
+            _pageHeader = this.GetControl<PageHeader>("PageHeader");
+            _menuDetail = this.GetControl<MenuDetailListItem>("Menu");
 
             Loc.LanguageUpdated += UpdateStrings;
         }

@@ -28,9 +28,9 @@ namespace GalaxyBudsClient.Interface.Pages
 		{   
 			AvaloniaXamlLoader.Load(this);
 			
-			_pageHeader = this.FindControl<PageHeader>("PageHeader");
-			_arrow = this.FindControl<Image>("Arrow");
-			_details = this.FindControl<TextBlock>("SpatialDetails");
+			_pageHeader = this.GetControl<PageHeader>("PageHeader");
+			_arrow = this.GetControl<Image>("Arrow");
+			_details = this.GetControl<TextBlock>("SpatialDetails");
 			
 			_spatialSensorManager.NewQuaternionReceived += OnNewQuaternionReceived;
 		}

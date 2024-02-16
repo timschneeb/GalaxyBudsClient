@@ -25,8 +25,8 @@ namespace GalaxyBudsClient.Interface.Pages
 		{   
 			AvaloniaXamlLoader.Load(this);
 
-			_pageHeader = this.FindControl<PageHeader>("PageHeader");
-			_resetButton = this.FindControl<IconListItem>("FactoryReset");
+			_pageHeader = this.GetControl<PageHeader>("PageHeader");
+			_resetButton = this.GetControl<IconListItem>("FactoryReset");
 			
 			SPPMessageHandler.Instance.ResetResponse += InstanceOnResetResponse;
 		}
@@ -58,7 +58,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			_pageHeader.BackButtonVisible = true;
 			_pageHeader.LoadingSpinnerVisible = false;
 			
-			this.FindControl<IconListItem>("FactoryReset").Source =
+			this.GetControl<IconListItem>("FactoryReset").Source =
 				(IImage?)Application.Current?.FindResource($"Neutral{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
 		}
 

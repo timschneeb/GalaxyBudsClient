@@ -30,13 +30,13 @@ namespace GalaxyBudsClient.Interface.Pages
         public NoiseProAmbientPage()
         {   
             AvaloniaXamlLoader.Load(this);
-            _volumeSlider = this.FindControl<SliderListItem>("AmbientVolume");
+            _volumeSlider = this.GetControl<SliderListItem>("AmbientVolume");
 
-            _ambientCustomize = this.FindControl<SwitchListItem>("AmbientCustomize");
-            _ambientTone = this.FindControl<SliderListItem>("AmbientTone");
-            _ambientVolLeft = this.FindControl<SliderListItem>("AmbientLeftVol");
-            _ambientVolRight = this.FindControl<SliderListItem>("AmbientRightVol");
-            _ambientCustomBorder = this.FindControl<Border>("AmbientCustomBorder");
+            _ambientCustomize = this.GetControl<SwitchListItem>("AmbientCustomize");
+            _ambientTone = this.GetControl<SliderListItem>("AmbientTone");
+            _ambientVolLeft = this.GetControl<SliderListItem>("AmbientLeftVol");
+            _ambientVolRight = this.GetControl<SliderListItem>("AmbientRightVol");
+            _ambientCustomBorder = this.GetControl<Border>("AmbientCustomBorder");
             
             SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
 
@@ -213,7 +213,7 @@ namespace GalaxyBudsClient.Interface.Pages
             _ambientVolRight.GetVisualParent()!.IsVisible = isAdvancedOn;
             for (var i = 1; i <= 3; i++)
             {
-                this.FindControl<Separator>($"AmbSep{i}").IsVisible = isAdvancedOn;
+                this.GetControl<Separator>($"AmbSep{i}").IsVisible = isAdvancedOn;
             }
         }
         

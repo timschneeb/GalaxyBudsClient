@@ -20,8 +20,8 @@ namespace GalaxyBudsClient.Interface.Pages
 		public UnsupportedFeaturePage()
 		{   
 			AvaloniaXamlLoader.Load(this);
-			_requiredFw = this.FindControl<TextBlock>("RequiredFw");
-			_currentFw = this.FindControl<TextBlock>("CurrentFw");
+			_requiredFw = this.GetControl<TextBlock>("RequiredFw");
+			_currentFw = this.GetControl<TextBlock>("CurrentFw");
 		}
 
 		/*private void InstanceOnSwVersionResponse(object sender, string e)

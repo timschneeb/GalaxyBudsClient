@@ -26,7 +26,7 @@ namespace GalaxyBudsClient.Interface.Pages
         public HotkeyPage()
         {   
             AvaloniaXamlLoader.Load(this);
-            _itemsControl = this.FindControl<ItemsControl>("ItemsControl");
+            _itemsControl = this.GetControl<ItemsControl>("ItemsControl");
         }
 		
         public override void OnPageShown()
@@ -36,8 +36,8 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private void UpdateEmptyView(bool empty)
         {
-            this.FindControl<Border>("EmptyViewBorder").IsVisible = empty;
-            this.FindControl<Border>("ContainerBorder").IsVisible = !empty;
+            this.GetControl<Border>("EmptyViewBorder").IsVisible = empty;
+            this.GetControl<Border>("ContainerBorder").IsVisible = !empty;
         }
 		
         private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)

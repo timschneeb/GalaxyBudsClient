@@ -27,13 +27,13 @@ namespace GalaxyBudsClient.Interface.Pages
 
         public override void OnPageShown()
         {	
-            this.FindControl<Control>("FirmwareSeparator").IsVisible =
+            this.GetControl<Control>("FirmwareSeparator").IsVisible =
                 BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.FirmwareUpdates);
-            this.FindControl<Control>("FirmwareItem").IsVisible =
+            this.GetControl<Control>("FirmwareItem").IsVisible =
                 BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.FirmwareUpdates);
-            this.FindControl<Control>("SpatialSensorSeparator").IsVisible =
+            this.GetControl<Control>("SpatialSensorSeparator").IsVisible =
                 BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.SpatialSensor);
-            this.FindControl<Control>("SpatialSensorItem").IsVisible =
+            this.GetControl<Control>("SpatialSensorItem").IsVisible =
                 BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.SpatialSensor);
 
         }

@@ -22,9 +22,9 @@ namespace GalaxyBudsClient.Interface.Pages
         {   
             AvaloniaXamlLoader.Load(this);
 
-            _progressText = this.FindControl<TextBlock>("ProgressText");
-            _progressSizeText = this.FindControl<TextBlock>("ProgressSizeText");
-            _progress = this.FindControl<ProgressBar>("Progress");
+            _progressText = this.GetControl<TextBlock>("ProgressText");
+            _progressSizeText = this.GetControl<TextBlock>("ProgressSizeText");
+            _progress = this.GetControl<ProgressBar>("Progress");
             
             FirmwareTransferManager.Instance.Finished += OnFinished;
             FirmwareTransferManager.Instance.Error += OnError;
@@ -36,13 +36,13 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private void OnCurrentBlockChanged(object? sender, FirmwareBlockChangedEventArgs e)
         {
-            this.FindControl<TextBlock>("StatOffset").Text = string.Format(Loc.Resolve("fw_upload_progress_stats_offset"), e.Offset, e.OffsetEnd);
-            this.FindControl<TextBlock>("StatPacket").Text = string.Format(Loc.Resolve("fw_upload_progress_stats_segment"), e.SegmentId, e.SegmentSize, e.SegmentCrc32);
+            this.GetControl<TextBlock>("StatOffset").Text = string.Format(Loc.Resolve("fw_upload_progress_stats_offset"), e.Offset, e.OffsetEnd);
+            this.GetControl<TextBlock>("StatPacket").Text = string.Format(Loc.Resolve("fw_upload_progress_stats_segment"), e.SegmentId, e.SegmentSize, e.SegmentCrc32);
         }
 
         private void OnMtuChanged(object? sender, short e)
         {
-            this.FindControl<TextBlock>("StatMTU").Text = string.Format(Loc.Resolve("fw_upload_progress_stats_mtu"), e);
+            this.GetControl<TextBlock>("StatMTU").Text = string.Format(Loc.Resolve("fw_upload_progress_stats_mtu"), e);
         }
         
         private void OnStateChanged(object? sender, FirmwareTransferManager.States e)

@@ -49,9 +49,9 @@ namespace GalaxyBudsClient.Interface.Pages
 		{   
 			AvaloniaXamlLoader.Load(this);
 
-			_loadingSpinner = this.FindControl<LoadingSpinner>("LoadingSpinner");
-			_additionalInfo = this.FindControl<TextBlock>("AdditionalInfo");
-			_retry = this.FindControl<IconListItem>("Retry");
+			_loadingSpinner = this.GetControl<LoadingSpinner>("LoadingSpinner");
+			_additionalInfo = this.GetControl<TextBlock>("AdditionalInfo");
+			_retry = this.GetControl<IconListItem>("Retry");
 			
 			ErrorDescription = string.Empty;
 

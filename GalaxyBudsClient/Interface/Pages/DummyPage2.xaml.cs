@@ -14,7 +14,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		public DummyPage2()
 		{   
 			AvaloniaXamlLoader.Load(this);
-			_grid = this.FindControl<Grid>("Grid");
+			_grid = this.GetControl<Grid>("Grid");
 		}
 
 		public override void OnPageShown()

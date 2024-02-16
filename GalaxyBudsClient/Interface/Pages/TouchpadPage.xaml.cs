@@ -59,11 +59,11 @@ namespace GalaxyBudsClient.Interface.Pages
 		public TouchpadPage()
 		{   
 			AvaloniaXamlLoader.Load(this);
-			_lock = this.FindControl<SwitchListItem>("LockToggle");
-			_noiseControlMode = this.FindControl<MenuDetailListItem>("NoiseSwitchMode");
-			_edgeTouch = this.FindControl<SwitchDetailListItem>("DoubleTapVolume");
-			_leftOption = this.FindControl<MenuDetailListItem>("LeftOption");
-			_rightOption = this.FindControl<MenuDetailListItem>("RightOption");
+			_lock = this.GetControl<SwitchListItem>("LockToggle");
+			_noiseControlMode = this.GetControl<MenuDetailListItem>("NoiseSwitchMode");
+			_edgeTouch = this.GetControl<SwitchDetailListItem>("DoubleTapVolume");
+			_leftOption = this.GetControl<MenuDetailListItem>("LeftOption");
+			_rightOption = this.GetControl<MenuDetailListItem>("RightOption");
 
             SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
             EventDispatcher.Instance.EventReceived += OnEventReceived;
@@ -252,8 +252,8 @@ namespace GalaxyBudsClient.Interface.Pages
 			var supportAdvTouchLock = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AdvancedTouchLock);
 			
 			_edgeTouch.GetVisualParent()!.IsVisible = supportsEdgeTouch;
-			this.FindControl<Separator>("GesturesSeparator").IsVisible = supportsEdgeTouch && supportAdvTouchLock;
-			this.FindControl<DetailListItem>("Gestures").GetVisualParent()!.IsVisible = supportAdvTouchLock;
+			this.GetControl<Separator>("GesturesSeparator").IsVisible = supportsEdgeTouch && supportAdvTouchLock;
+			this.GetControl<DetailListItem>("Gestures").GetVisualParent()!.IsVisible = supportAdvTouchLock;
 
 			UpdateNoiseSwitchModeVisible();
 

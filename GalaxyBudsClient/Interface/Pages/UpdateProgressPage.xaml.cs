@@ -30,9 +30,9 @@ namespace GalaxyBudsClient.Interface.Pages
 		{   
 			AvaloniaXamlLoader.Load(this);
 
-            _progressText = this.FindControl<TextBlock>("ProgressText");
-            _progressSizeText = this.FindControl<TextBlock>("ProgressSizeText");
-            _progress = this.FindControl<ProgressBar>("Progress");
+            _progressText = this.GetControl<TextBlock>("ProgressText");
+            _progressSizeText = this.GetControl<TextBlock>("ProgressSizeText");
+            _progress = this.GetControl<ProgressBar>("Progress");
 
             UpdateManager.Instance.Core.DownloadCanceled += OnDownloadCanceled;
             UpdateManager.Instance.Core.DownloadFinished += OnDownloadFinished;

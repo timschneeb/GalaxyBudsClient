@@ -31,12 +31,12 @@ namespace GalaxyBudsClient.Interface.Pages
         {   
             AvaloniaXamlLoader.Load(this);
 
-            _scanButton = this.FindControl<ScanButton>("ScanButton");
-            _iconLeft = this.FindControl<Image>("LeftIcon");
-            _iconRight = this.FindControl<Image>("RightIcon");
-            _statusLeft = this.FindControl<Label>("LeftStatus");
-            _statusRight = this.FindControl<Label>("RightStatus");
-            _warningContainer = this.FindControl<Grid>("EarbudWarningContainer");
+            _scanButton = this.GetControl<ScanButton>("ScanButton");
+            _iconLeft = this.GetControl<Image>("LeftIcon");
+            _iconRight = this.GetControl<Image>("RightIcon");
+            _statusLeft = this.GetControl<Label>("LeftStatus");
+            _statusRight = this.GetControl<Label>("RightStatus");
+            _warningContainer = this.GetControl<Grid>("EarbudWarningContainer");
             
             SPPMessageHandler.Instance.BaseUpdate += (_, update) => UpdateDashboard(update);
             SPPMessageHandler.Instance.FitTestResult += (_, update) => ShowResults(update);

@@ -31,9 +31,9 @@ namespace GalaxyBudsClient.Interface.Pages
 		public EqualizerPage()
 		{   
 			AvaloniaXamlLoader.Load(this);
-			_eqSwitch = this.FindControl<SwitchListItem>("EqToggle");
-			_presetSlider = this.FindControl<SliderListItem>("EqPreset");
-			_stereoPan = this.FindControl<SliderListItem>("StereoPan");
+			_eqSwitch = this.GetControl<SwitchListItem>("EqToggle");
+			_presetSlider = this.GetControl<SliderListItem>("EqPreset");
+			_stereoPan = this.GetControl<SliderListItem>("StereoPan");
 			
 			SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
 			

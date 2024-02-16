@@ -59,11 +59,11 @@ namespace GalaxyBudsClient.Interface.Pages
         public FirmwareSelectionPage()
         {
             AvaloniaXamlLoader.Load(this);
-            _navBarNextLabel = this.FindControl<Label>("NavBarNextLabel");
-            _navBarNext = this.FindControl<Border>("NavBarNext");
-            _navBarAdvanced = this.FindControl<Border>("NavBarAdvanced");
-            _pageHeader = this.FindControl<PageHeader>("PageHeader");
-            _firmwareBox = this.FindControl<ListBox>("FirmwareList");
+            _navBarNextLabel = this.GetControl<Label>("NavBarNextLabel");
+            _navBarNext = this.GetControl<Border>("NavBarNext");
+            _navBarAdvanced = this.GetControl<Border>("NavBarAdvanced");
+            _pageHeader = this.GetControl<PageHeader>("PageHeader");
+            _firmwareBox = this.GetControl<ListBox>("FirmwareList");
 
             AvailableFirmwares = new ObservableCollection<FirmwareRemoteBinary>();
             Selection = new SelectionModel<FirmwareRemoteBinary>();
@@ -270,7 +270,7 @@ namespace GalaxyBudsClient.Interface.Pages
             FirmwareRemoteBinary[] firmwareBins;
             try
             {
-                firmwareBins = await _client.SearchForFirmware(this.FindControl<SwitchDetailListItem>("AllowDowngrade").IsChecked);
+                firmwareBins = await _client.SearchForFirmware(this.GetControl<SwitchDetailListItem>("AllowDowngrade").IsChecked);
             }
             catch (NetworkInformationException ex)
             {
@@ -319,8 +319,8 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private void SetEmptyView(bool b)
         {
-            this.FindControl<Border>("FirmwareContainer").IsVisible = !b;
-            this.FindControl<Border>("EmptyView").IsVisible = b;
+            this.GetControl<Border>("FirmwareContainer").IsVisible = !b;
+            this.GetControl<Border>("EmptyView").IsVisible = b;
         }
 
         private void Firmwares_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)

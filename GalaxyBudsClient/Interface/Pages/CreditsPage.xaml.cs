@@ -14,14 +14,12 @@ namespace GalaxyBudsClient.Interface.Pages
  	public class CreditsPage : AbstractPage
 	{
 		public override Pages PageType => Pages.Credits;
-		
-		private readonly DetailListItem _versionItem;
-		
+
 		public CreditsPage()
-		{   
+		{
 			AvaloniaXamlLoader.Load(this);
-			_versionItem = this.FindControl<DetailListItem>("Version");
-			_versionItem.Description = (Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? "?.?.?.?") + $" (GPLv3)";
+			var versionItem = this.GetControl<DetailListItem>("Version");
+			versionItem.Description = (Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? "?.?.?.?") + $" (GPLv3)";
 		}
 
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)

@@ -38,17 +38,17 @@ namespace GalaxyBudsClient.Interface.Pages
         {   
             AvaloniaXamlLoader.Load(this);
 
-            _scanButton = this.FindControl<ScanButton>("ScanButton");
-            _leftMuteButton = this.FindControl<MuteButton>("LeftMuteButton");
-            _rightMuteButton = this.FindControl<MuteButton>("RightMuteButton");
+            _scanButton = this.GetControl<ScanButton>("ScanButton");
+            _leftMuteButton = this.GetControl<MuteButton>("LeftMuteButton");
+            _rightMuteButton = this.GetControl<MuteButton>("RightMuteButton");
             
-            _batteryIconLeft = this.FindControl<Image>("BatteryIconLeft");
-            _batteryIconRight = this.FindControl<Image>("BatteryIconRight");
-            _iconLeft = this.FindControl<Image>("LeftIcon");
-            _iconRight = this.FindControl<Image>("RightIcon");
+            _batteryIconLeft = this.GetControl<Image>("BatteryIconLeft");
+            _batteryIconRight = this.GetControl<Image>("BatteryIconRight");
+            _iconLeft = this.GetControl<Image>("LeftIcon");
+            _iconRight = this.GetControl<Image>("RightIcon");
 
-            _warningText = this.FindControl<Label>("EarbudWarningText");
-            _warningContainer = this.FindControl<Grid>("EarbudWarningContainer");
+            _warningText = this.GetControl<Label>("EarbudWarningText");
+            _warningContainer = this.GetControl<Grid>("EarbudWarningContainer");
             
             SPPMessageHandler.Instance.BaseUpdate += (sender, update) => UpdateDashboard(update);
             SPPMessageHandler.Instance.FindMyGearStopped += InstanceOnFindMyGearStopped;

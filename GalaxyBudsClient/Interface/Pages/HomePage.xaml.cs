@@ -71,34 +71,34 @@ namespace GalaxyBudsClient.Interface.Pages
 		public HomePage()
 		{   
             AvaloniaXamlLoader.Load(this);
-            _ancSwitch = this.FindControl<ToggleSwitch>("AncToggle");
-            _loadingSpinner = this.FindControl<LoadingSpinner>("LoadingSpinner");
+            _ancSwitch = this.GetControl<ToggleSwitch>("AncToggle");
+            _loadingSpinner = this.GetControl<LoadingSpinner>("LoadingSpinner");
             
-            _caseLabel = this.FindControl<Label>("CaseLabel");
-            _batteryCase = this.FindControl<Label>("BatteryCase");
-            _batteryVoltLeft = this.FindControl<Label>("BatteryVoltLeft");
-            _batteryVoltRight = this.FindControl<Label>("BatteryVoltRight");
-            _batteryPercentageLeft = this.FindControl<Label>("BatteryPercentageLeft");
-            _batteryPercentageRight = this.FindControl<Label>("BatteryPercentageRight");
-            _batteryCurrentLeft = this.FindControl<Label>("BatteryCurrentLeft");
-            _batteryCurrentRight = this.FindControl<Label>("BatteryCurrentRight");
-            _batteryTemperatureLeft = this.FindControl<Label>("BatteryTemperatureLeft");
-            _batteryTemperatureRight = this.FindControl<Label>("BatteryTemperatureRight");
+            _caseLabel = this.GetControl<Label>("CaseLabel");
+            _batteryCase = this.GetControl<Label>("BatteryCase");
+            _batteryVoltLeft = this.GetControl<Label>("BatteryVoltLeft");
+            _batteryVoltRight = this.GetControl<Label>("BatteryVoltRight");
+            _batteryPercentageLeft = this.GetControl<Label>("BatteryPercentageLeft");
+            _batteryPercentageRight = this.GetControl<Label>("BatteryPercentageRight");
+            _batteryCurrentLeft = this.GetControl<Label>("BatteryCurrentLeft");
+            _batteryCurrentRight = this.GetControl<Label>("BatteryCurrentRight");
+            _batteryTemperatureLeft = this.GetControl<Label>("BatteryTemperatureLeft");
+            _batteryTemperatureRight = this.GetControl<Label>("BatteryTemperatureRight");
 
-            _batteryIconLeft = this.FindControl<Image>("BatteryIconLeft");
-            _batteryIconRight = this.FindControl<Image>("BatteryIconRight");
-            _iconLeft = this.FindControl<Image>("LeftIcon");
-            _iconRight = this.FindControl<Image>("RightIcon");
+            _batteryIconLeft = this.GetControl<Image>("BatteryIconLeft");
+            _batteryIconRight = this.GetControl<Image>("BatteryIconRight");
+            _iconLeft = this.GetControl<Image>("LeftIcon");
+            _iconRight = this.GetControl<Image>("RightIcon");
 
-            _warningText = this.FindControl<Label>("WarningText");
-            _warningContainer = this.FindControl<Grid>("WarningContainer");
+            _warningText = this.GetControl<Label>("WarningText");
+            _warningContainer = this.GetControl<Grid>("WarningContainer");
             
-            _ancBorder = this.FindControl<Border>("AncBorder");
-            _ambientBorder = this.FindControl<Border>("AmbientBorder");
-            _noiseBorder = this.FindControl<Border>("NoiseBorder");
+            _ancBorder = this.GetControl<Border>("AncBorder");
+            _ambientBorder = this.GetControl<Border>("AmbientBorder");
+            _noiseBorder = this.GetControl<Border>("NoiseBorder");
             
-            _findMyGear = this.FindControl<IconListItem>("FindMyGear");
-            _touch = this.FindControl<IconListItem>("Touch");
+            _findMyGear = this.GetControl<IconListItem>("FindMyGear");
+            _touch = this.GetControl<IconListItem>("Touch");
             
             Loc.LanguageUpdated += OnLanguageUpdated;
             

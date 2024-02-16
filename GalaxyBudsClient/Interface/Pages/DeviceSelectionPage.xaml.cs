@@ -59,9 +59,9 @@ namespace GalaxyBudsClient.Interface.Pages
         public DeviceSelectionPage()
         {
             AvaloniaXamlLoader.Load(this);
-            _navBarNext = this.FindControl<Border>("NavBarNext");
-            _pageHeader = this.FindControl<PageHeader>("PageHeader");
-            _deviceBox = this.FindControl<ListBox>("Devices");
+            _navBarNext = this.GetControl<Border>("NavBarNext");
+            _pageHeader = this.GetControl<PageHeader>("PageHeader");
+            _deviceBox = this.GetControl<ListBox>("Devices");
 
             AvailableDevices = new ObservableCollection<BluetoothDevice>();
             Selection = new SelectionModel<BluetoothDevice>();
@@ -72,9 +72,9 @@ namespace GalaxyBudsClient.Interface.Pages
         public override void OnPageShown()
         {
             RefreshList();
-            this.FindControl<Separator>("UseWinRTSep").IsVisible = PlatformUtils.IsWindowsContractsSdkSupported;
-            this.FindControl<SwitchDetailListItem>("UseWinRT").IsVisible = PlatformUtils.IsWindowsContractsSdkSupported;
-            this.FindControl<SwitchDetailListItem>("UseWinRT").IsChecked = SettingsProvider.Instance.UseBluetoothWinRT;
+            this.GetControl<Separator>("UseWinRTSep").IsVisible = PlatformUtils.IsWindowsContractsSdkSupported;
+            this.GetControl<SwitchDetailListItem>("UseWinRT").IsVisible = PlatformUtils.IsWindowsContractsSdkSupported;
+            this.GetControl<SwitchDetailListItem>("UseWinRT").IsChecked = SettingsProvider.Instance.UseBluetoothWinRT;
         }
 
         private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)

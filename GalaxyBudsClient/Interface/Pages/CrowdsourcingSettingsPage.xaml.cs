@@ -16,8 +16,8 @@ namespace GalaxyBudsClient.Interface.Pages
 		public CrowdsourcingSettingsPage()
 		{   
 			AvaloniaXamlLoader.Load(this);
-			_crowdToggle = this.FindControl<SwitchDetailListItem>("CrowdsourcingToggle");
-			_crashToggle = this.FindControl<SwitchDetailListItem>("CrashToggle");
+			_crowdToggle = this.GetControl<SwitchDetailListItem>("CrowdsourcingToggle");
+			_crashToggle = this.GetControl<SwitchDetailListItem>("CrashToggle");
 		}
 
 		public override void OnPageShown()

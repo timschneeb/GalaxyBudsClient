@@ -31,11 +31,11 @@ namespace GalaxyBudsClient.Interface.Pages
 		public PopupSettingsPage()
 		{   
 			AvaloniaXamlLoader.Load(this);
-			_popupToggle = this.FindControl<SwitchDetailListItem>("PopupToggle");
-			_compactToggle = this.FindControl<SwitchDetailListItem>("CompactPopup");
-			_overrideTitle = this.FindControl<DetailListItem>("OverrideTitle");
-			_placement = this.FindControl<MenuDetailListItem>("PositionPopup");
-			_wearToggle = this.FindControl<SwitchDetailListItem>("WearState");
+			_popupToggle = this.GetControl<SwitchDetailListItem>("PopupToggle");
+			_compactToggle = this.GetControl<SwitchDetailListItem>("CompactPopup");
+			_overrideTitle = this.GetControl<DetailListItem>("OverrideTitle");
+			_placement = this.GetControl<MenuDetailListItem>("PositionPopup");
+			_wearToggle = this.GetControl<SwitchDetailListItem>("WearState");
 
 			Loc.LanguageUpdated += UpdateMenuDescriptions;
 			Loc.LanguageUpdated += UpdateMenus;

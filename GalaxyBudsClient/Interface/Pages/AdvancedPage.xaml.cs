@@ -26,10 +26,10 @@ namespace GalaxyBudsClient.Interface.Pages
 		public AdvancedPage()
 		{   
 			AvaloniaXamlLoader.Load(this);
-			_seamlessConnection = this.FindControl<SwitchDetailListItem>("SeamlessConnection");
-			_resumeSensor = this.FindControl<SwitchDetailListItem>("ResumeSensor");
-			_sidetone = this.FindControl<SwitchDetailListItem>("Sidetone");
-			_passthrough = this.FindControl<SwitchDetailListItem>("Passthrough");
+			_seamlessConnection = this.GetControl<SwitchDetailListItem>("SeamlessConnection");
+			_resumeSensor = this.GetControl<SwitchDetailListItem>("ResumeSensor");
+			_sidetone = this.GetControl<SwitchDetailListItem>("Sidetone");
+			_passthrough = this.GetControl<SwitchDetailListItem>("Passthrough");
 			
 			SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
 		}
@@ -45,17 +45,17 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		public override void OnPageShown()
 		{
-			this.FindControl<Border>("HotkeysBixby").IsVisible =
+			this.GetControl<Border>("HotkeysBixby").IsVisible =
 					PlatformUtils.SupportsHotkeys || BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.BixbyWakeup);
-			this.FindControl<Separator>("BixbyRemapS").IsVisible =
+			this.GetControl<Separator>("BixbyRemapS").IsVisible =
 				PlatformUtils.SupportsHotkeys && BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.BixbyWakeup);
-			this.FindControl<DetailListItem>("Hotkeys").IsVisible = PlatformUtils.SupportsHotkeys;
-			this.FindControl<Border>("BixbyRemap").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.BixbyWakeup);
-			this.FindControl<Separator>("SidetoneS").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSidetone);
-			this.FindControl<Separator>("PassthroughS").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientPassthrough);
+			this.GetControl<DetailListItem>("Hotkeys").IsVisible = PlatformUtils.SupportsHotkeys;
+			this.GetControl<Border>("BixbyRemap").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.BixbyWakeup);
+			this.GetControl<Separator>("SidetoneS").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSidetone);
+			this.GetControl<Separator>("PassthroughS").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientPassthrough);
 			_sidetone.GetVisualParent()!.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSidetone);
 			_passthrough.GetVisualParent()!.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientPassthrough);
-			this.FindControl<Border>("GearFitTest").IsVisible =
+			this.GetControl<Border>("GearFitTest").IsVisible =
 				BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.GearFitTest);
 		}
 		

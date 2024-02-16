@@ -31,9 +31,9 @@ namespace GalaxyBudsClient.Interface.Pages
 		public BixbyRemapPage()
 		{   
 			AvaloniaXamlLoader.Load(this);
-			_bixbyToggle = this.FindControl<SwitchDetailListItem>("BixbyToggle");
-			_bixbyLang = this.FindControl<MenuDetailListItem>("BixbyLanguage");
-			_bixbyAction = this.FindControl<MenuDetailListItem>("BixbyRemapAction");
+			_bixbyToggle = this.GetControl<SwitchDetailListItem>("BixbyToggle");
+			_bixbyLang = this.GetControl<MenuDetailListItem>("BixbyLanguage");
+			_bixbyAction = this.GetControl<MenuDetailListItem>("BixbyRemapAction");
 			
 			SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
 			Loc.LanguageUpdated += UpdateMenu;

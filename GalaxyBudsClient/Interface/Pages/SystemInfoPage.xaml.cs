@@ -39,17 +39,17 @@ namespace GalaxyBudsClient.Interface.Pages
 		public SystemInfoPage()
 		{   
 			AvaloniaXamlLoader.Load(this);
-			_pageHeader = this.FindControl<PageHeader>("PageHeader");
-			_hwVer = this.FindControl<DetailListItem>("HwVer");
-			_swVer = this.FindControl<DetailListItem>("SwVer");
-			_touchFwVer = this.FindControl<DetailListItem>("TouchFwVer");
-			_btAddr = this.FindControl<DetailListItem>("BtAddr");
-			_serialNumber = this.FindControl<DetailListItem>("SerialNumber");
-			_buildString = this.FindControl<DetailListItem>("BuildString");
-			_batteryType = this.FindControl<DetailListItem>("BatteryType");
-			_revision = this.FindControl<DetailListItem>("ProtocolRevision");
-			_separatorLegacyDebug1 = this.FindControl<Separator>("SeparatorLegacyDebug1");
-			_separatorLegacyDebug2 = this.FindControl<Separator>("SeparatorLegacyDebug2");
+			_pageHeader = this.GetControl<PageHeader>("PageHeader");
+			_hwVer = this.GetControl<DetailListItem>("HwVer");
+			_swVer = this.GetControl<DetailListItem>("SwVer");
+			_touchFwVer = this.GetControl<DetailListItem>("TouchFwVer");
+			_btAddr = this.GetControl<DetailListItem>("BtAddr");
+			_serialNumber = this.GetControl<DetailListItem>("SerialNumber");
+			_buildString = this.GetControl<DetailListItem>("BuildString");
+			_batteryType = this.GetControl<DetailListItem>("BatteryType");
+			_revision = this.GetControl<DetailListItem>("ProtocolRevision");
+			_separatorLegacyDebug1 = this.GetControl<Separator>("SeparatorLegacyDebug1");
+			_separatorLegacyDebug2 = this.GetControl<Separator>("SeparatorLegacyDebug2");
 
 			SPPMessageHandler.Instance.GetAllDataResponse += InstanceOnGetAllDataResponse;
 			SPPMessageHandler.Instance.BatteryTypeResponse += InstanceOnBatteryTypeResponse;
@@ -114,7 +114,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		public override async void OnPageShown()
 		{
-			this.FindControl<Control>("TraceCoreDump").IsVisible =
+			this.GetControl<Control>("TraceCoreDump").IsVisible =
 				BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.FragmentedMessages);
 			
 			_pageHeader.LoadingSpinnerVisible = true;

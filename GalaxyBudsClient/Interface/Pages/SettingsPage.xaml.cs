@@ -30,13 +30,13 @@ namespace GalaxyBudsClient.Interface.Pages
         public SettingsPage()
         {
             AvaloniaXamlLoader.Load(this);
-            _darkMode = this.FindControl<SwitchDetailListItem>("DarkModeSelect");
-            _locale = this.FindControl<MenuDetailListItem>("LocaleSelect");
-            _minimizeTray = this.FindControl<SwitchDetailListItem>("MinimizeTrayToggle");
-            _autostart = this.FindControl<SwitchDetailListItem>("AutostartToggle");
+            _darkMode = this.GetControl<SwitchDetailListItem>("DarkModeSelect");
+            _locale = this.GetControl<MenuDetailListItem>("LocaleSelect");
+            _minimizeTray = this.GetControl<SwitchDetailListItem>("MinimizeTrayToggle");
+            _autostart = this.GetControl<SwitchDetailListItem>("AutostartToggle");
             
-            this.FindControl<Separator>("AutostartToggleSeparator").IsVisible = PlatformUtils.SupportsTrayIcon && PlatformUtils.SupportsAutoboot;
-            this.FindControl<Separator>("MinimizeTrayToggleSeparator").IsVisible = PlatformUtils.SupportsTrayIcon;
+            this.GetControl<Separator>("AutostartToggleSeparator").IsVisible = PlatformUtils.SupportsTrayIcon && PlatformUtils.SupportsAutoboot;
+            this.GetControl<Separator>("MinimizeTrayToggleSeparator").IsVisible = PlatformUtils.SupportsTrayIcon;
 
             _minimizeTray.IsVisible = PlatformUtils.SupportsTrayIcon;
             _autostart.IsVisible = PlatformUtils.SupportsTrayIcon && PlatformUtils.SupportsAutoboot;

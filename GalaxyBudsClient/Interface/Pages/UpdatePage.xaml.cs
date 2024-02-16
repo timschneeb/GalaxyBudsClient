@@ -29,7 +29,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		public UpdatePage()
 		{   
 			AvaloniaXamlLoader.Load(this);
-			_versionTitle = this.FindControl<TextBlock>("VersionTitle");
+			_versionTitle = this.GetControl<TextBlock>("VersionTitle");
 			
 			Loc.LanguageUpdated += OnLanguageUpdated;
 		}

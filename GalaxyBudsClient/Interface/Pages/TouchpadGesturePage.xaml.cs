@@ -22,10 +22,10 @@ namespace GalaxyBudsClient.Interface.Pages
 		public TouchpadGesturePage()
 		{   
 			AvaloniaXamlLoader.Load(this);
-			Single = this.FindControl<SwitchDetailListItem>("SingleTouch");
-			Double = this.FindControl<SwitchDetailListItem>("DoubleTouch");
-			Triple = this.FindControl<SwitchDetailListItem>("TripleTouch");
-			Hold = this.FindControl<SwitchDetailListItem>("HoldTouch");
+			Single = this.GetControl<SwitchDetailListItem>("SingleTouch");
+			Double = this.GetControl<SwitchDetailListItem>("DoubleTouch");
+			Triple = this.GetControl<SwitchDetailListItem>("TripleTouch");
+			Hold = this.GetControl<SwitchDetailListItem>("HoldTouch");
 
             SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
 		}

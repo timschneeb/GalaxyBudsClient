@@ -32,13 +32,13 @@ namespace GalaxyBudsClient.Interface.Pages
         public AmbientSoundPage()
         {   
             AvaloniaXamlLoader.Load(this);
-            _ambientSwitch = this.FindControl<SwitchListItem>("AmbientToggle");
-            _voiceFocusSwitch = this.FindControl<SwitchListItem>("AmbientVoiceFocusToggle");
-            _volumeSlider = this.FindControl<SliderListItem>("AmbientVolume");
-            _extraLoud = this.FindControl<SwitchDetailListItem>("AmbientExtraLoud");
+            _ambientSwitch = this.GetControl<SwitchListItem>("AmbientToggle");
+            _voiceFocusSwitch = this.GetControl<SwitchListItem>("AmbientVoiceFocusToggle");
+            _volumeSlider = this.GetControl<SliderListItem>("AmbientVolume");
+            _extraLoud = this.GetControl<SwitchDetailListItem>("AmbientExtraLoud");
 			
-            _voiceFocusBorder = this.FindControl<Border>("AmbientVoiceFocusBorder");
-            _extraLoudBorder = this.FindControl<Border>("AmbientExtraLoudBorder");
+            _voiceFocusBorder = this.GetControl<Border>("AmbientVoiceFocusBorder");
+            _extraLoudBorder = this.GetControl<Border>("AmbientExtraLoudBorder");
 
             SPPMessageHandler.Instance.AmbientEnabledUpdateResponse += (sender, b) => _ambientSwitch.IsChecked = b; 
             SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
