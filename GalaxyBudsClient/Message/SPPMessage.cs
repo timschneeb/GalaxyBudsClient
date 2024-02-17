@@ -80,10 +80,10 @@ namespace GalaxyBudsClient.Message
 
             Array.Copy(Payload, 0, msg, 4, Payload.Length);
 
-            byte[] crcData = new byte[Size - 2];
+            var crcData = new byte[Size - 2];
             crcData[0] = msg[3];
             Array.Copy(Payload, 0, crcData, 1, Payload.Length);
-            int crc16 = Utils.CRC16.crc16_ccitt(crcData);
+            var crc16 = Utils.Crc16.crc16_ccitt(crcData);
             msg[4 + Payload.Length] = (byte)(crc16 & 255);
             msg[4 + Payload.Length + 1] = (byte)((crc16 >> 8) & 255);
 
@@ -170,7 +170,7 @@ namespace GalaxyBudsClient.Message
                 crcData[^1] = crc1;
 
                 draft.Payload = payload;
-                draft.Crc16 = Utils.CRC16.crc16_ccitt(crcData);
+                draft.Crc16 = Utils.Crc16.crc16_ccitt(crcData);
 
                 if (size != draft.Size)
                 {
