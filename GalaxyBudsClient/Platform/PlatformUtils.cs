@@ -15,20 +15,14 @@ namespace GalaxyBudsClient.Platform
             OSX,
             Other
         }
-        
-        public static bool IsPlatformSupported()
-        {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||
-                   RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || 
-                   RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
-        }
 
         public static bool IsWindows => RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         public static bool IsLinux => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
         public static bool IsOSX => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
+        public static bool IsRunningInFlatpak => Environment.GetEnvironmentVariable("container") != null;
 
         public static bool SupportsTrayIcon => IsWindows || IsLinux || IsOSX;
-        public static bool SupportsAutoboot => IsWindows || IsOSX;
+        public static bool SupportsAutoboot => IsWindows || (IsLinux && !IsRunningInFlatpak) || IsOSX;
         public static bool SupportsHotkeys => IsWindows || IsLinux || IsOSX;
         public static bool SupportsHotkeysBroadcast => IsWindows || IsLinux || IsOSX;
         
@@ -79,8 +73,7 @@ namespace GalaxyBudsClient.Platform
                 }
             }
         }
-
-
+        
         public static string CombineDataPath(string postfix)
         {
             return Path.Combine(AppDataPath, postfix);

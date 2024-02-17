@@ -23,7 +23,7 @@ namespace GalaxyBudsClient.Platform.Linux
                     File.WriteAllText(
                         AutostartFile,
                         $@"[Desktop Entry]
-Exec={Self}
+Exec={Self} /StartMinimized
 Name=GalaxyBudsClient
 StartupNotify=false
 Terminal=false
