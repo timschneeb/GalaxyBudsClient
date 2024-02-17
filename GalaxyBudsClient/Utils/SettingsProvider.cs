@@ -11,7 +11,7 @@ namespace GalaxyBudsClient.Utils
         public static ISettings Instance { get; }
         static SettingsProvider()
         {
-            Log.Information($"Using settings file at: {SettingsPath}");
+            Log.Information("Using settings file at: {SettingsPath}", SettingsPath);
             Instance = new ConfigurationBuilder<ISettings>()
                 .UseJsonFile(SettingsPath)
                 .UseTypeParser(new ConfigArrayParser<long>())
@@ -19,20 +19,6 @@ namespace GalaxyBudsClient.Utils
                 .Build();
         }
 
-        public static string SettingsPath
-        {
-            get
-            {
-                if (PlatformUtils.IsPlatformSupported())
-                {
-                    return PlatformUtils.CombineDataPath("config.json");
-                }
-                else 
-                {
-                    Log.Fatal("SettingsProvider: Unsupported OS");
-                }
-                return "";
-            }
-        }
+        private static string SettingsPath => PlatformUtils.CombineDataPath("config.json");
     }
 }
