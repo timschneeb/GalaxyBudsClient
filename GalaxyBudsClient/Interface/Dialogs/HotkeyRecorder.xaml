@@ -22,6 +22,7 @@
                    Background="{DynamicResource RoundBorderHoverBrush}" />
         
         <TextBlock Grid.Row="4"
+                   x:Name="WindowsUipiWarning"
                    TextWrapping="Wrap"
                    Text="{DynamicResource hotrec_note}" />
         

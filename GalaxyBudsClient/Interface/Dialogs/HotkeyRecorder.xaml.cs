@@ -6,6 +6,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using Key = Avalonia.Input.Key;
 using KeyEventArgs = Avalonia.Input.KeyEventArgs;
@@ -25,6 +26,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
             AvaloniaXamlLoader.Load(this);
 
             _keyLabel = this.GetControl<TextBlock>("KeyString");
+            this.GetControl<TextBlock>("WindowsUipiWarning").IsVisible = PlatformUtils.IsWindows;
         }
         
         public List<Key>? Hotkeys { get; private set; }
