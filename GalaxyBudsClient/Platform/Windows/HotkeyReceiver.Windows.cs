@@ -7,7 +7,7 @@ using Avalonia.Threading;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform.Interfaces;
-using GalaxyBudsClient.Utils.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Serilog;
 
 

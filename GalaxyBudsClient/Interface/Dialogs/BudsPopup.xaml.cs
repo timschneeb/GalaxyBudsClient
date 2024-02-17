@@ -13,7 +13,6 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.DynamicLocalization;
 using GalaxyBudsClient.Utils.Extensions;
 using Application = Avalonia.Application;
 using Grid = Avalonia.Controls.Grid;

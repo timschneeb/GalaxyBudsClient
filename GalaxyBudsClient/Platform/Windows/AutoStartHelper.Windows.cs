@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Security;
 using GalaxyBudsClient.Interface.Dialogs;
-using GalaxyBudsClient.Utils.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Microsoft.Win32;
 
 #pragma warning disable CA1416

@@ -11,7 +11,8 @@ using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+
 namespace GalaxyBudsClient.Interface.Pages
 {
     public class NoiseProAmbientPage : AbstractPage

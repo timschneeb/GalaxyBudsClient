@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using GalaxyBudsClient.Utils.DynamicLocalization;
 
 namespace GalaxyBudsClient.Message.Decoder
 {

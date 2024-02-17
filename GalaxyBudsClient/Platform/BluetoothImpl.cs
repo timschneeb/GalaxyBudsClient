@@ -12,7 +12,7 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Serilog;
 using Task = System.Threading.Tasks.Task;
 

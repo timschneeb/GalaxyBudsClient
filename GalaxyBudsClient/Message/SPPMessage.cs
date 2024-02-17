@@ -5,7 +5,7 @@ using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Sentry;
 using Sentry.Protocol;
 using Serilog;

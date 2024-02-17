@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Timers;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Threading;
@@ -10,10 +9,10 @@ using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Serilog;
 
-namespace GalaxyBudsClient.Utils
+namespace GalaxyBudsClient.Utils.Interface
 {
     class TrayManager
     {

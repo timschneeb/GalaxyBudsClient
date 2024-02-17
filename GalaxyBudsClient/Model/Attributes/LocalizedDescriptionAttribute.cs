@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel;
-using GalaxyBudsClient.Utils.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 
 namespace GalaxyBudsClient.Model.Attributes
 {

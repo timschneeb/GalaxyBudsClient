@@ -13,7 +13,7 @@ using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages

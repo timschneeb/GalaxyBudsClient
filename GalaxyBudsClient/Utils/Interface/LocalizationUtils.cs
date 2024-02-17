@@ -12,7 +12,7 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using Serilog;
 
-namespace GalaxyBudsClient.Utils
+namespace GalaxyBudsClient.Utils.Interface
 {
     namespace DynamicLocalization
     {

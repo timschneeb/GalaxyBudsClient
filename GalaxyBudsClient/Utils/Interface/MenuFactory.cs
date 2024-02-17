@@ -5,7 +5,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 
-namespace GalaxyBudsClient.Utils
+namespace GalaxyBudsClient.Utils.Interface
 {
      public static class MenuFactory
     {

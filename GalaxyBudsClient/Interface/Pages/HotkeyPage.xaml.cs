@@ -11,8 +11,9 @@ using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.DynamicLocalization;
 using GalaxyBudsClient.Utils.Extensions;
+using GalaxyBudsClient.Utils.Interface;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages

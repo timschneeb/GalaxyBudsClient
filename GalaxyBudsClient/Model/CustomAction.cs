@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using Avalonia.Input;
 using GalaxyBudsClient.Model.Attributes;
-using GalaxyBudsClient.Utils.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Serilog;
 
 namespace GalaxyBudsClient.Model

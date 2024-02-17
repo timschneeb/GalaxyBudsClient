@@ -6,7 +6,6 @@ using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.DynamicLocalization;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages

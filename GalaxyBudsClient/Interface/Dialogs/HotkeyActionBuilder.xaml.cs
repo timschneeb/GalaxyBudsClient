@@ -16,8 +16,8 @@ using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.DynamicLocalization;
 using GalaxyBudsClient.Utils.Extensions;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Key = Avalonia.Input.Key;
 using KeyEventArgs = Avalonia.Input.KeyEventArgs;
 

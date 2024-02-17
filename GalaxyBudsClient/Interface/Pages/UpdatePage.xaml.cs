@@ -9,7 +9,7 @@ using Avalonia.Threading;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using NetSparkleUpdater;
 using NetSparkleUpdater.Events;
 using Serilog;

@@ -1,9 +1,8 @@
 using System;
 using Avalonia.Controls;
-using Avalonia.Interactivity;
 using GalaxyBudsClient.Interface.Developer;
 
-namespace GalaxyBudsClient.Utils
+namespace GalaxyBudsClient.Utils.Interface
 {
     public static class DialogLauncher
     {

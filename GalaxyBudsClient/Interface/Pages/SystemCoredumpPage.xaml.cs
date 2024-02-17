@@ -8,8 +8,8 @@ using Avalonia.Threading;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.DynamicLocalization;
 using GalaxyBudsClient.Utils.Extensions;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages

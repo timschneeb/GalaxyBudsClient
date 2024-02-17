@@ -5,7 +5,7 @@ using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model.Firmware;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Serilog;
 
 namespace GalaxyBudsClient.Message

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Platform.Storage;
 using GalaxyBudsClient.Interface.Dialogs;
-using GalaxyBudsClient.Utils.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 
 namespace GalaxyBudsClient.Utils.Extensions;
 

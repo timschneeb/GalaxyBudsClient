@@ -1,20 +1,13 @@
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using System.Text;
 using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
-using Avalonia.Markup.Xaml.MarkupExtensions;
 using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Styling;
-using Avalonia.Themes.Fluent;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Utils.DynamicLocalization;
 using Serilog;
 
-namespace GalaxyBudsClient.Utils
+namespace GalaxyBudsClient.Utils.Interface
 {
     public static class ThemeUtils
     {

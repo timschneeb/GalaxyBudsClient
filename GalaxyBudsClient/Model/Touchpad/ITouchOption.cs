@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Utils.DynamicLocalization;
 
 namespace GalaxyBudsClient.Model.Touchpad
 {

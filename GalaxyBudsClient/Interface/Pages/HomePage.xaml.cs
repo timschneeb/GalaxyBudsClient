@@ -18,7 +18,7 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using SettingsProvider = GalaxyBudsClient.Utils.SettingsProvider;
 using ToggleSwitch = GalaxyBudsClient.Interface.Elements.ToggleSwitch;
 

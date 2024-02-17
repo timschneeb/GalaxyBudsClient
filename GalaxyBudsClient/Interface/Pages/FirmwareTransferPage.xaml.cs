@@ -6,7 +6,7 @@ using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Firmware;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 
 namespace GalaxyBudsClient.Interface.Pages
 {

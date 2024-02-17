@@ -10,7 +10,7 @@ using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 
 namespace GalaxyBudsClient.Interface.Developer
 {

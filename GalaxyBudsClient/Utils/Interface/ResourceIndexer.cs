@@ -1,9 +1,8 @@
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml.MarkupExtensions;
 using Avalonia.Markup.Xaml.Styling;
 
-namespace GalaxyBudsClient.Utils
+namespace GalaxyBudsClient.Utils.Interface
 {
     public static class ResourceIndexer
     {

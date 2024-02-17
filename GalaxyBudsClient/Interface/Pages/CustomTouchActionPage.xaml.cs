@@ -14,8 +14,8 @@ using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.DynamicLocalization;
 using GalaxyBudsClient.Utils.Extensions;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 
 namespace GalaxyBudsClient.Interface.Pages
 {
