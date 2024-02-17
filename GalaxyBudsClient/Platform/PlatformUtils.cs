@@ -30,7 +30,7 @@ namespace GalaxyBudsClient.Platform
         public static bool SupportsTrayIcon => IsWindows || IsLinux || IsOSX;
         public static bool SupportsAutoboot => IsWindows || IsOSX;
         public static bool SupportsHotkeys => IsWindows || IsLinux || IsOSX;
-        public static bool SupportsHotkeysBroadcast => IsWindows || IsOSX;
+        public static bool SupportsHotkeysBroadcast => IsWindows || IsLinux || IsOSX;
         
         public static Platforms Platform
         {

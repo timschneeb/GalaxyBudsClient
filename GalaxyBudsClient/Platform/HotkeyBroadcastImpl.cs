@@ -1,5 +1,4 @@
-﻿using System;
-using GalaxyBudsClient.Platform.Interfaces;
+﻿using GalaxyBudsClient.Platform.Interfaces;
 
 namespace GalaxyBudsClient.Platform
 {
@@ -13,6 +12,10 @@ namespace GalaxyBudsClient.Platform
             {
                 Instance = new Windows.HotkeyBroadcast();
             }
+            else if (PlatformUtils.IsLinux)
+            {
+                Instance = new Linux.HotkeyBroadcast();
+            }  
             else if (PlatformUtils.IsOSX)
             {
                 Instance = new OSX.HotkeyBroadcast();
