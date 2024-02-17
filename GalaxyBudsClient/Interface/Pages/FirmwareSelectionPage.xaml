@@ -5,7 +5,7 @@
                     xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.Pages"
                     xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
                     xmlns:items="clr-namespace:GalaxyBudsClient.Interface.Items"
-                    xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
+                    xmlns:converters="clr-namespace:GalaxyBudsClient.Utils.Converters"
                     mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
                     x:Class="GalaxyBudsClient.Interface.Pages.FirmwareSelectionPage"
                     DockPanel.Dock="Top" Margin="10,0">
@@ -68,7 +68,7 @@
                                 <TextBlock.Text>
                                     <MultiBinding StringFormat="{} {1} {0}, rev{2} ({3})">
                                         <Binding Path="Year"></Binding>
-                                        <Binding Path="Month" Converter="{x:Static utils:MonthValueConverter.Instance}"></Binding>
+                                        <Binding Path="Month" Converter="{x:Static converters:MonthValueConverter.Instance}"></Binding>
                                         <Binding Path="Revision"></Binding>
                                         <Binding Path="Model"></Binding>
                                     </MultiBinding>

@@ -1,12 +1,8 @@
 using System;
 using System.Globalization;
-using System.Reflection;
-using Avalonia;
 using Avalonia.Data.Converters;
-using Avalonia.Media.Imaging;
-using Avalonia.Platform;
 
-namespace GalaxyBudsClient.Utils
+namespace GalaxyBudsClient.Utils.Converters
 {
     public class MonthValueConverter : IValueConverter
     {
