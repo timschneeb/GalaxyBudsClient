@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Globalization;
 using System.Reflection;
-using System.Threading;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Media;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
@@ -105,18 +104,6 @@ namespace GalaxyBudsClient
                 Log.Information("App crash reports disabled by user");
             }
 
-            /* Fix Avalonia font issue */
-            // TODO implement an actual fix
-            if (PlatformUtils.IsLinux)
-            {
-                try
-                {
-                    Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
-                }
-                catch (CultureNotFoundException) {}
-            }
-
             try
             {
                 /* OSX: Graphics must be drawn on the main thread.
@@ -132,17 +119,22 @@ namespace GalaxyBudsClient
             catch (Exception ex)
             {
                 SentrySdk.CaptureException(ex);
-                Log.Error(ex.ToString());
+                Log.Error(ex, "Unhandled exception in main thread");
             }
         } 
 
         // Avalonia configuration, don't remove; also used by visual designer.
-        public static AppBuilder BuildAvaloniaApp()
+        private static AppBuilder BuildAvaloniaApp()
             => AppBuilder.Configure<App>()
                 .With(new MacOSPlatformOptions
                 {
                     // https://github.com/AvaloniaUI/Avalonia/issues/14577
                     DisableSetProcessName = true
+                })
+                .With(new FontManagerOptions()
+                {
+                    // https://github.com/AvaloniaUI/Avalonia/issues/4427#issuecomment-1295012860
+                    DefaultFamilyName = "avares://GalaxyBudsClient/Resources/fonts#Noto Sans"
                 })
                 .UsePlatformDetect()
                 .LogToTrace();
