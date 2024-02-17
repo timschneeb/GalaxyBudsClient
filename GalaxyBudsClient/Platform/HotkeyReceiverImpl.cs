@@ -41,6 +41,10 @@ namespace GalaxyBudsClient.Platform
             {
                 _backend = new Windows.HotkeyReceiver();
             }
+            else if (PlatformUtils.IsLinux)
+            {
+                _backend = new Linux.HotkeyReceiver();
+            }    
             else if (PlatformUtils.IsOSX)
             {
                 _backend = new OSX.HotkeyReceiver();
