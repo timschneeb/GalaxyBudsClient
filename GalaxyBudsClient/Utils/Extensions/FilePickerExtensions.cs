@@ -5,9 +5,9 @@ using Avalonia.Platform.Storage;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Utils.DynamicLocalization;
 
-namespace GalaxyBudsClient.Utils;
+namespace GalaxyBudsClient.Utils.Extensions;
 
-public static class FilePickers
+public static class FilePickerExtensions
 {
     public static async Task<string?> SaveFilePickerAsync(this Window host,
         IReadOnlyList<FilePickerFileType>? filters = null, 

@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Avalonia.Input;
-using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Hotkeys;
 
-namespace GalaxyBudsClient.Utils
+namespace GalaxyBudsClient.Utils.Extensions
 {
     public static class HotkeyExtensions
     {

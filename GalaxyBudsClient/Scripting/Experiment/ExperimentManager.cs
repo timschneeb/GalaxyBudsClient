@@ -7,6 +7,7 @@ using CSScriptLib;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Scripting.Hooks;
 using GalaxyBudsClient.Utils;
+using GalaxyBudsClient.Utils.Extensions;
 using Sentry;
 using Log = Serilog.Log;
 using Task = System.Threading.Tasks.Task;

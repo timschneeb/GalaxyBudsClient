@@ -8,6 +8,7 @@ using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
+using GalaxyBudsClient.Utils.Extensions;
 using Key = Avalonia.Input.Key;
 using KeyEventArgs = Avalonia.Input.KeyEventArgs;
 

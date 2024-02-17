@@ -18,6 +18,7 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.ViewModels;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
+using GalaxyBudsClient.Utils.Extensions;
 
 namespace GalaxyBudsClient.Interface.Developer
 {

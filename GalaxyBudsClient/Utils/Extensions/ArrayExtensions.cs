@@ -1,10 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
-namespace GalaxyBudsClient.Utils
+namespace GalaxyBudsClient.Utils.Extensions
 {
-    public static class ArrayUtils
+    public static class ArrayExtensions
     {
         public static T[] Add<T>(this T[]? a, T n)
         {

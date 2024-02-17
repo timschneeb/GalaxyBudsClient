@@ -9,6 +9,7 @@ using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.DynamicLocalization;
+using GalaxyBudsClient.Utils.Extensions;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages

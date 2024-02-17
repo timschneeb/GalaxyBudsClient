@@ -1,9 +1,9 @@
 using System;
 using System.Reflection;
 
-namespace GalaxyBudsClient.Utils
+namespace GalaxyBudsClient.Utils.Extensions
 {
-    public static class ReflectionUtils
+    public static class ReflectionExtensions
     {
         /// <summary>
         /// Returns a _private_ Property Value from a given Object. Uses Reflection.
