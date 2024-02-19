@@ -134,7 +134,7 @@ namespace GalaxyBudsClient
                 .With(new FontManagerOptions()
                 {
                     // https://github.com/AvaloniaUI/Avalonia/issues/4427#issuecomment-1295012860
-                    DefaultFamilyName = !PlatformUtils.IsLinux ? 
+                    DefaultFamilyName = PlatformUtils.IsLinux ? 
                         "avares://GalaxyBudsClient/Resources/fonts#Noto Sans" : null
                 })
                 .UsePlatformDetect()
