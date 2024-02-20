@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>81%</td><td>83 missing string(s)</td></tr>
+<tr><td>80%</td><td>85 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -13,6 +13,8 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><th>Key</th><th>Original string</th></tr>
 <tr><td><code>event_anc_switch_one</code></td><td>Switch ANC with one earbud</td></tr>
 <tr><td><code>mainpage_fit_test</code></td><td>Earbud fit test</td></tr>
+<tr><td><code>settings_tray_settings</code></td><td>Auto-start and tray icon</td></tr>
+<tr><td><code>settings_tray_settings_description</code></td><td>Configure auto-start and tray icon behavior</td></tr>
 <tr><td><code>settings_dyn_tray_mode</code></td><td>Dynamic tray icon</td></tr>
 <tr><td><code>settings_dyn_tray_mode_off</code></td><td>Off</td></tr>
 <tr><td><code>settings_dyn_tray_mode_battery_min</code></td><td>Show lowest battery level</td></tr>
