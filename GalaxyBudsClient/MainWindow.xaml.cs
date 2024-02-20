@@ -179,7 +179,7 @@ namespace GalaxyBudsClient
             if (e is IBasicStatusUpdate b)
             {
                 var level = Math.Min(b.BatteryL, b.BatteryR);
-                TrayIcon.GetIcons(App.Current)[0].Icon = TrayIconFactory.MakeFromBatteryLevel(level);
+                TrayIcon.GetIcons(App.Current)[0].Icon = WindowIconFactory.MakeFromBatteryLevel(level);
             }
 
             

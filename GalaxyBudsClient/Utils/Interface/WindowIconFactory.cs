@@ -5,16 +5,14 @@ using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
-using Avalonia.Rendering.Composition;
 using GalaxyBudsClient.Platform;
 using Bitmap = Avalonia.Media.Imaging.Bitmap;
 using Brushes = Avalonia.Media.Brushes;
 using Point = Avalonia.Point;
-using Size = Avalonia.Size;
 
 namespace GalaxyBudsClient.Utils.Interface;
 
-public static class TrayIconFactory
+public static class WindowIconFactory
 {
     public static WindowIcon MakeFromBatteryLevel(int level)
     {
@@ -45,26 +43,15 @@ public static class TrayIconFactory
                 EdgeMode = EdgeMode.Antialias,
                 RequiresFullOpacityHandling = true
             });
-            //ctx.DrawImage(MakeDefaultBitmap(), new Rect(0, 0, 256, 256));
-            ctx.DrawGeometry(Brushes.Transparent, new Pen(Brushes.Black, 3), textHighLightGeometry);
-            ctx.DrawGeometry(Brushes.White, new Pen(Brushes.Transparent, 0), textGeometry);
+            
+            var outlineColor = PlatformUtils.IsOSX ? Brushes.White : Brushes.Black;
+            var fillColor = PlatformUtils.IsOSX ? Brushes.Black : Brushes.White;
+            
+            ctx.DrawGeometry(Brushes.Transparent, new Pen(outlineColor, 3), textHighLightGeometry!);
+            ctx.DrawGeometry(fillColor, new Pen(Brushes.Transparent, 0), textGeometry!);
         }
         
         return new WindowIcon(render);
-    }
-
-    private static Bitmap RenderToBitmap(int width, int height, params Control[] targets)
-    {
-        var pixelSize = new PixelSize(width, height);
-        var size = new Size(width, height);
-        var bitmap = new RenderTargetBitmap(pixelSize, new Vector(96, 96));
-        foreach (var target in targets)
-        {
-            target.Measure(size);
-            target.Arrange(new Rect(size));
-            bitmap.Render(target);
-        }
-        return bitmap;
     }
 
     public static WindowIcon MakeDefaultIcon()
@@ -78,5 +65,4 @@ public static class TrayIconFactory
         var uri = $"avares://GalaxyBudsClient/Resources/icon_{(PlatformUtils.IsOSX ? "black" : "white")}_tray.ico";
         return new Bitmap(AssetLoader.Open(new Uri(uri)));
     }
-    
 }
