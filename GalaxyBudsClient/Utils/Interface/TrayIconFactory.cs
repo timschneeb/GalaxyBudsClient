@@ -4,6 +4,7 @@ using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
+using GalaxyBudsClient.Platform;
 
 namespace GalaxyBudsClient.Utils.Interface;
 
@@ -36,7 +37,8 @@ public static class TrayIconFactory
 
     public static WindowIcon MakeDefaultIcon()
     {
-        return new WindowIcon(
-            new Bitmap(AssetLoader.Open(new Uri("avares://GalaxyBudsClient/Resources/icon_white_tray.ico"))));
+        // OSX uses templated icons
+        var uri = $"avares://GalaxyBudsClient/Resources/icon_{(PlatformUtils.IsOSX ? "black" : "white")}_tray.ico";
+        return new WindowIcon(new Bitmap(AssetLoader.Open(new Uri(uri))));
     }
 }
