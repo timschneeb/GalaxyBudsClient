@@ -11,6 +11,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Platform;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using Avalonia.Threading;
 using Avalonia.Win32;
@@ -174,6 +175,14 @@ namespace GalaxyBudsClient
 
         private void OnAnyMessageReceived(object? sender, BaseMessageParser? e)
         {
+            // TODO remove test code
+            if (e is IBasicStatusUpdate b)
+            {
+                var level = Math.Min(b.BatteryL, b.BatteryR);
+                TrayIcon.GetIcons(App.Current)[0].Icon = TrayIconFactory.MakeFromBatteryLevel(level);
+            }
+
+            
             if (e is VoiceWakeupEventParser wakeup)
             {
                 if (wakeup.ResultCode == 1)
