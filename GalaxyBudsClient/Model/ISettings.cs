@@ -60,9 +60,9 @@ namespace GalaxyBudsClient.Model
         string UpdateSkippedVersion { set; get; }
         [Option(DefaultValue = true)]
         bool MinimizeToTray { set; get; }
-        [Option(DefaultValue = DynamicTrayIconMode.Disabled)]
+        [Option(DefaultValue = DynamicTrayIconModes.Disabled)]
         
-        DynamicTrayIconMode DynamicTrayIconMode { set; get; }
+        DynamicTrayIconModes DynamicTrayIconMode { set; get; }
         bool ResumePlaybackOnSensor { set; get; }
         
         IExperiments Experiments { set; get; }

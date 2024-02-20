@@ -250,7 +250,7 @@ namespace GalaxyBudsClient.Model
             VoiceFocus = 1
         }
         
-        public enum DynamicTrayIconMode
+        public enum DynamicTrayIconModes
         {
             [LocalizedDescription("settings_dyn_tray_mode_off")]
             Disabled = 0,

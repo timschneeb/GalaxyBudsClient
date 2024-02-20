@@ -107,7 +107,7 @@ namespace GalaxyBudsClient
                 new SystemPage(), new SelfTestPage(), new SettingsPage(), new PopupSettingsPage(),
                 CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(), UnsupportedFeaturePage,
                 UpdatePage, UpdateProgressPage, new SystemCoredumpPage(), new HotkeyPage(), new FirmwareSelectionPage(),
-                new FirmwareTransferPage(), new SpatialTestPage(), new BixbyRemapPage(),
+                new FirmwareTransferPage(), new SpatialTestPage(), new BixbyRemapPage(), new TraySettingsPage(),
                 new CrowdsourcingSettingsPage(), new BudsAppDetectedPage(), new TouchpadGesturePage(), 
                 new NoiseProAmbientPage(), new GearFitPage()), DispatcherPriority.ApplicationIdle);
             
@@ -398,6 +398,12 @@ namespace GalaxyBudsClient
             if (SettingsProvider.Instance.Popup.Enabled)
             {
                 ShowPopup();
+            }
+            
+            // Update dynamic tray icon
+            if (e is IBasicStatusUpdate status)
+            {
+                WindowIconRenderer.UpdateDynamicIcon(status);
             }
             
             await MessageComposer.SetManagerInfo();

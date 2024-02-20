@@ -24,28 +24,18 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private readonly SwitchDetailListItem _darkMode;
         private readonly MenuDetailListItem _locale;
-        private readonly SwitchDetailListItem _minimizeTray;
-        private readonly SwitchDetailListItem _autostart;
         
         public SettingsPage()
         {
             AvaloniaXamlLoader.Load(this);
             _darkMode = this.GetControl<SwitchDetailListItem>("DarkModeSelect");
             _locale = this.GetControl<MenuDetailListItem>("LocaleSelect");
-            _minimizeTray = this.GetControl<SwitchDetailListItem>("MinimizeTrayToggle");
-            _autostart = this.GetControl<SwitchDetailListItem>("AutostartToggle");
-            
-            this.GetControl<Separator>("AutostartToggleSeparator").IsVisible = PlatformUtils.SupportsTrayIcon && PlatformUtils.SupportsAutoboot;
-            this.GetControl<Separator>("MinimizeTrayToggleSeparator").IsVisible = PlatformUtils.SupportsTrayIcon;
-
-            _minimizeTray.IsVisible = PlatformUtils.SupportsTrayIcon;
-            _autostart.IsVisible = PlatformUtils.SupportsTrayIcon && PlatformUtils.SupportsAutoboot;
         }
 
         public override void OnPageShown()
         {
-            _minimizeTray.IsChecked = SettingsProvider.Instance.MinimizeToTray;
-            _autostart.IsChecked = AutoStartImpl.Instance.Enabled;
+            this.GetControl<DetailListItem>("TraySettings").IsVisible = PlatformUtils.SupportsTrayIcon || PlatformUtils.SupportsAutoboot;
+            
             _darkMode.IsChecked = SettingsProvider.Instance.DarkMode == DarkModes.Dark;
             _locale.Description = SettingsProvider.Instance.Locale.GetDescription();
 
@@ -102,30 +92,14 @@ namespace GalaxyBudsClient.Interface.Pages
             }
         }
 
-        private void Autostart_OnPointerPressed(object? sender, PointerPressedEventArgs e)
-        {
-            if (!_minimizeTray.IsChecked && _autostart.IsChecked)
-            {
-                _minimizeTray.Toggle();
-                SettingsProvider.Instance.MinimizeToTray = _minimizeTray.IsChecked;
-            }
-
-            AutoStartImpl.Instance.Enabled = _autostart.IsChecked;
-        }
-
-        private void MinimizeToTray_OnPointerPressed(object? sender, PointerPressedEventArgs e)
-        {
-            if (!_minimizeTray.IsChecked && _autostart.IsChecked)
-            {
-                _autostart.Toggle();
-                AutoStartImpl.Instance.Enabled = _autostart.IsChecked;
-            }
-            SettingsProvider.Instance.MinimizeToTray = _minimizeTray.IsChecked;
-        }
-
         private void Crowdsourcing_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
             MainWindow.Instance.Pager.SwitchPage(Pages.SettingsCrowdsourcing);
+        }
+
+        private void TraySettings_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+        {
+            MainWindow.Instance.Pager.SwitchPage(Pages.SettingsTray);
         }
     }
 }
