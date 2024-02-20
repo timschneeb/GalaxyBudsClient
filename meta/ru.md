@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>94%</td><td>26 missing string(s)</td></tr>
+<tr><td>93%</td><td>30 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -16,6 +16,10 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>devsel_manual_pair</code></td><td>Manual connection</td></tr>
 <tr><td><code>touchpad_gestures</code></td><td>Advanced touch lock</td></tr>
 <tr><td><code>touchpad_gestures_description</code></td><td>Enable or disable default touch gestures</td></tr>
+<tr><td><code>settings_dyn_tray_mode</code></td><td>Dynamic tray icon</td></tr>
+<tr><td><code>settings_dyn_tray_mode_off</code></td><td>Off</td></tr>
+<tr><td><code>settings_dyn_tray_mode_battery_min</code></td><td>Show lowest battery level</td></tr>
+<tr><td><code>settings_dyn_tray_mode_battery_avg</code></td><td>Show average battery level</td></tr>
 <tr><td><code>settings_crowdsourcing</code></td><td>Crowdsourcing</td></tr>
 <tr><td><code>settings_crowd_header</code></td><td>Crowdsourcing</td></tr>
 <tr><td><code>settings_crowd_allow</code></td><td>Allow crowdsourcing contribution</td></tr>
