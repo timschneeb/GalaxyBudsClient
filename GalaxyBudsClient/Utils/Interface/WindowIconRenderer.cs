@@ -5,6 +5,8 @@ using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
+using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using Bitmap = Avalonia.Media.Imaging.Bitmap;
 using Brushes = Avalonia.Media.Brushes;
@@ -12,9 +14,43 @@ using Point = Avalonia.Point;
 
 namespace GalaxyBudsClient.Utils.Interface;
 
-public static class WindowIconFactory
+public static class WindowIconRenderer
 {
-    public static WindowIcon MakeFromBatteryLevel(int level)
+    public static void UpdateDynamicIcon(IBasicStatusUpdate status)
+    {
+        var trayIcons = TrayIcon.GetIcons(Application.Current!);
+        if (trayIcons == null) 
+            return;
+
+        // Ignore battery level of disconnected earbuds
+        if (status.BatteryL <= 0)
+            status.BatteryL = status.BatteryR;
+        if (status.BatteryR <= 0)
+            status.BatteryR = status.BatteryL;
+        
+        int? level = SettingsProvider.Instance.DynamicTrayIconMode switch
+        {
+            DynamicTrayIconMode.BatteryMin => Math.Min(status.BatteryL, status.BatteryR),
+            DynamicTrayIconMode.BatteryAvg => (status.BatteryL + status.BatteryR) / 2,
+            _ => null
+        };
+
+        if (level != null)
+        {
+            trayIcons[0].Icon = MakeFromBatteryLevel(level.Value);
+        }
+    }
+
+    public static void ResetIconToDefault()
+    {
+        var trayIcons = TrayIcon.GetIcons(Application.Current!);
+        if (trayIcons == null) 
+            return;
+        
+        trayIcons[0].Icon = MakeDefaultIcon();
+    }
+
+    private static WindowIcon MakeFromBatteryLevel(int level)
     {
         // Create the formatted text based on the properties set.
         var formattedText = new FormattedText(

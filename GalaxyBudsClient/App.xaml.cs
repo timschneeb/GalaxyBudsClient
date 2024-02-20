@@ -117,7 +117,7 @@ namespace GalaxyBudsClient
         
         public static readonly StyledProperty<WindowIcon> TrayIconProperty =
             AvaloniaProperty.Register<App, WindowIcon>(nameof(TrayMenu),
-                defaultBindingMode: BindingMode.TwoWay, defaultValue: WindowIconFactory.MakeDefaultIcon());
+                defaultBindingMode: BindingMode.TwoWay, defaultValue: WindowIconRenderer.MakeDefaultIcon());
        
         public WindowIcon TrayIcon
         {

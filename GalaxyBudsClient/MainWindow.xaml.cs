@@ -175,14 +175,6 @@ namespace GalaxyBudsClient
 
         private void OnAnyMessageReceived(object? sender, BaseMessageParser? e)
         {
-            // TODO remove test code
-            if (e is IBasicStatusUpdate b)
-            {
-                var level = Math.Min(b.BatteryL, b.BatteryR);
-                TrayIcon.GetIcons(App.Current)[0].Icon = WindowIconFactory.MakeFromBatteryLevel(level);
-            }
-
-            
             if (e is VoiceWakeupEventParser wakeup)
             {
                 if (wakeup.ResultCode == 1)
@@ -392,6 +384,12 @@ namespace GalaxyBudsClient
                 MediaKeyRemoteImpl.Instance.Play();
             }
             
+            // Update dynamic tray icon
+            if (e is IBasicStatusUpdate status)
+            {
+                WindowIconRenderer.UpdateDynamicIcon(status);
+            }
+            
             _lastWearState = e.WearState;
         }
 
@@ -413,6 +411,8 @@ namespace GalaxyBudsClient
 
         private void OnBluetoothError(object? sender, BluetoothException e)
         {
+            WindowIconRenderer.ResetIconToDefault();
+            
             switch (e.ErrorCode)
             {
                 case BluetoothException.ErrorCodes.NoAdaptersAvailable:
@@ -433,6 +433,8 @@ namespace GalaxyBudsClient
 
         private void OnDisconnected(object? sender, string e)
         {
+            WindowIconRenderer.ResetIconToDefault();
+            
             Pager.SwitchPage(BluetoothImpl.Instance.RegisteredDeviceValid
                 ? AbstractPage.Pages.NoConnection
                 : AbstractPage.Pages.Welcome);
