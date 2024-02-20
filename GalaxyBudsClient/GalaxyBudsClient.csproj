@@ -82,9 +82,6 @@
         <AvaloniaXaml Remove="bin\**" />
         <EmbeddedResource Remove="bin\**" />
         <None Remove="bin\**" />
-        <Compile Remove="Cli\IpcService.cs" />
-        <Compile Remove="Utils\Interface\TrayIconFactory.cs" />
-        <Compile Remove="Utils\Interface\WindowIconFactory.cs" />
     </ItemGroup>
 
     <PropertyGroup>
