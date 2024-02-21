@@ -16,6 +16,7 @@ namespace GalaxyBudsClient
     internal static class Program
     {
         public static long StartedAt = 0;
+        public static string AvaresUrl = "avares://" + Assembly.GetEntryAssembly()?.GetName().Name;
         
         // Initialization code. Don't use any Avalonia, third-party APIs or any
         // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
@@ -135,7 +136,7 @@ namespace GalaxyBudsClient
                 {
                     // https://github.com/AvaloniaUI/Avalonia/issues/4427#issuecomment-1295012860
                     DefaultFamilyName = PlatformUtils.IsLinux ? 
-                        "avares://GalaxyBudsClient/Resources/fonts#Noto Sans" : null
+                        $"{AvaresUrl}/Resources/fonts#Noto Sans" : null
                 })
                 .UsePlatformDetect()
                 .LogToTrace();

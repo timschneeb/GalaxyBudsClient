@@ -50,11 +50,10 @@ namespace GalaxyBudsClient.Utils.Interface
                 }
                 else
                 {
-                    var assemblyName = Assembly.GetEntryAssembly()?.GetName().Name;
                     Application.Current.Resources.MergedDictionaries[dictId] =
                         new ResourceInclude((Uri?)null)
                         {
-                            Source = new Uri($"avares://{assemblyName}/Interface/Styles/{name}.xaml")
+                            Source = new Uri($"{Program.AvaresUrl}/Interface/Styles/{name}.xaml")
                         };
                 }
             }
