@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CommandLine;
+using CommandLine.Text;
 using GalaxyBudsClient.Cli.Ipc;
 using GalaxyBudsClient.Cli.Ipc.Objects;
 using GalaxyBudsClient.Utils.Extensions;
@@ -42,7 +43,11 @@ public static class CliHandler
         [Option( 'j', "json", Required = false, HelpText = "Serialize output as JSON")]
         public bool UseJson { get; set; }    
     }
-
+    
+    private static void NoParameters()
+    {
+        Console.WriteLine("No options were specified. Append --help for more information.");
+    }
     
     public static void ProcessArguments(IEnumerable<string> args)
     {
@@ -55,12 +60,12 @@ public static class CliHandler
 
         try
         {
-            parser.ParseArguments<ActionOptions, AppOptions, DeviceOptions>(args)
-                .MapResult(
-                    (ActionOptions opts) => ProcessActionVerb(opts).WaitAndReturnResult(),
-                    (AppOptions opts) => ProcessAppVerb(opts).WaitAndReturnResult(),
-                    (DeviceOptions opts) => ProcessDeviceVerb(opts).WaitAndReturnResult(),
-                    errs => false);
+            var parserResult = parser.ParseArguments<ActionOptions, AppOptions, DeviceOptions>(args);
+            parserResult.MapResult(
+                (ActionOptions opts) => parserResult.ProcessActionVerb(opts).WaitAndReturnResult(),
+                (AppOptions opts) => parserResult.ProcessAppVerb(opts).WaitAndReturnResult(),
+                (DeviceOptions opts) => parserResult.ProcessDeviceVerb(opts).WaitAndReturnResult(),
+                errs =>  false);
         }
         catch (AggregateException e)
         {
@@ -94,7 +99,7 @@ public static class CliHandler
         }
     }
     
-    private static async Task<bool> ProcessActionVerb(ActionOptions opts)
+    private static async Task<bool> ProcessActionVerb<T>(this ParserResult<T> result, ActionOptions opts)
     {
         using var client = await OpenConnection();
         if (client is null)
@@ -116,13 +121,14 @@ public static class CliHandler
         }
         else
         {
+            NoParameters();
             return false;
         }
 
         return true;
     }
 
-    private static async Task<bool> ProcessAppVerb(AppOptions opts)
+    private static async Task<bool> ProcessAppVerb<T>(this ParserResult<T> result, AppOptions opts)
     {
         using var client = await OpenConnection();
         if (client is null)
@@ -135,11 +141,15 @@ public static class CliHandler
         else if (opts.ShowBatteryPopup)
             await proxy.ShowBatteryPopupAsync();
         else
+        {
+            NoParameters();
             return false;
+        }
+
         return true;
     }
     
-    private static async Task<bool> ProcessDeviceVerb(DeviceOptions opts)
+    private static async Task<bool> ProcessDeviceVerb<T>(this ParserResult<T> result, DeviceOptions opts)
     {
         using var client = await OpenConnection();
         if (client is null)
@@ -169,7 +179,10 @@ public static class CliHandler
                 Console.WriteLine(opts.UseJson ? JsonConvert.SerializeObject(prop, Formatting.Indented) : $"{prop}");
             }
             else
+            {
+                NoParameters();
                 return false;
+            }
         }
         catch (DBusException e)
         {
