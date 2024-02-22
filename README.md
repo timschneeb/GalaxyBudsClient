@@ -151,7 +151,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Russian and Ukrainian translation
 * [@PlasticBrain](https://github.com/fhalfkg) - Korean and Japanese translation
 * [@cozyplanes](https://github.com/cozyplanes) - Korean translation
-* [@erenbektas](https://github.com/erenbektas) - Turkish translation
+* [@erenbektas](https://github.com/erenbektas) and [@Eta06](https://github.com/Eta06)  - Turkish translation
 * [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad), [@pseudor](https://github.com/pseudor) and [@YexuanXiao](https://github.com/YexuanXiao) - Chinese translation
 * [@YiJhu](https://github.com/YiJhu) - Chinese-Traditional translation
 * [@efrenbg1](https://github.com/efrenbg1) and Andrew Gonza - Spanish translation
