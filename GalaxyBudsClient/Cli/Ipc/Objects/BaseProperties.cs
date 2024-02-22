@@ -2,13 +2,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Reflection.Emit;
-using Serilog;
 
 namespace GalaxyBudsClient.Cli.Ipc.Objects;
 
 public abstract class BaseProperties
 {
+    /// <summary>
+    /// Gets all properties by its key using reflection
+    /// </summary>
+    /// <returns>Property map</returns>
+    internal IDictionary<string, object> GetAll()
+    {
+        return GetType()
+                   .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                   .Select(x => new KeyValuePair<string, object?>(StripFieldName(x), x.GetValue(this)))
+                   .Where(kv => kv.Value != null)
+                   .Cast<KeyValuePair<string, object>>()
+                   .ToDictionary();
+    } 
+    
     /// <summary>
     /// Gets a property by its key using reflection
     /// </summary>
@@ -54,6 +66,8 @@ public abstract class BaseProperties
     private static bool CompareKeys(string key, MemberInfo field)
     {
         // We may have to remove the first character of the property name because it is a private field and starts with an underscore
-        return key == field.Name || key == field.Name.Remove(0, 1);
+        return key == field.Name || key == StripFieldName(field);
     }
+
+    private static string StripFieldName(MemberInfo field) => field.Name.Remove(0, 1);
 }
