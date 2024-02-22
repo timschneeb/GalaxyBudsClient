@@ -5,6 +5,7 @@ using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
+using Avalonia.Threading;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
@@ -37,17 +38,20 @@ public static class WindowIconRenderer
 
         if (level != null)
         {
-            trayIcons[0].Icon = MakeFromBatteryLevel(level.Value);
+            Dispatcher.UIThread.Post(() => { trayIcons[0].Icon = MakeFromBatteryLevel(level.Value); });
         }
     }
 
     public static void ResetIconToDefault()
     {
-        var trayIcons = TrayIcon.GetIcons(Application.Current!);
-        if (trayIcons == null) 
-            return;
-        
-        trayIcons[0].Icon = MakeDefaultIcon();
+        Dispatcher.UIThread.Post(() =>
+        {
+            var trayIcons = TrayIcon.GetIcons(Application.Current!);
+            if (trayIcons == null)
+                return;
+
+            trayIcons[0].Icon = MakeDefaultIcon();
+        });
     }
 
     private static WindowIcon MakeFromBatteryLevel(int level)
