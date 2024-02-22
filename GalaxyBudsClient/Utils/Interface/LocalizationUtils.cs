@@ -58,13 +58,12 @@ namespace GalaxyBudsClient.Utils.Interface
                     SetLanguageResourceDictionary(GetTranslatorModeFile(), external: true);
                     return;
                 }
-                else if (SettingsProvider.Instance.Locale == Locales.custom && !IsTranslatorModeEnabled())
+                if (SettingsProvider.Instance.Locale == Locales.custom && !IsTranslatorModeEnabled())
                 {
                     lang = Locales.en.ToString();
                     SettingsProvider.Instance.Locale = Locales.en;
                 }
-                var assemblyName = Assembly.GetEntryAssembly()?.GetName().Name;
-                SetLanguageResourceDictionary($"avares://{assemblyName}/i18n/{lang}.xaml", external: false);
+                SetLanguageResourceDictionary($"{Program.AvaresUrl}/i18n/{lang}.xaml", external: false);
             }
             
             private static void SetLanguageResourceDictionary(string path, bool external)

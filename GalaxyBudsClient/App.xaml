@@ -34,7 +34,8 @@
     <TrayIcon.Icons>
         <TrayIcons>
             <TrayIcon Menu="{Binding TrayMenu}"
-                      Icon="/Resources/icon_white_tray.ico" 
+                      Icon="{OnPlatform '/Resources/icon_white_tray.ico', macOS='/Resources/icon_black_tray.ico'}"
+                      MacOSProperties.IsTemplateIcon="true"
                       ToolTipText="Galaxy Buds"
                       Clicked="TrayIcon_OnClicked">
             </TrayIcon>

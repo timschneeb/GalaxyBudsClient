@@ -137,4 +137,8 @@
     <ItemGroup>
         <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Cli\" />
+    </ItemGroup>
 </Project>

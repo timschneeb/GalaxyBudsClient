@@ -249,6 +249,15 @@ namespace GalaxyBudsClient.Model
             Default = 0,
             VoiceFocus = 1
         }
-
+        
+        public enum DynamicTrayIconModes
+        {
+            [LocalizedDescription("settings_dyn_tray_mode_off")]
+            Disabled = 0,
+            [LocalizedDescription("settings_dyn_tray_mode_battery_min")]
+            BatteryMin = 1,
+            [LocalizedDescription("settings_dyn_tray_mode_battery_avg")]
+            BatteryAvg = 2
+        }
     }
 }

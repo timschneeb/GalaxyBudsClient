@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>73%</td><td>116 missing string(s)</td></tr>
+<tr><td>72%</td><td>122 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -34,6 +34,12 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>system_flasher_desc</code></td><td>Upgrade, downgrade, or flash custom firmware binaries</td></tr>
 <tr><td><code>system_spatial</code></td><td>Dump spatial sensor measurements</td></tr>
 <tr><td><code>system_spatial_desc</code></td><td>Read spatial head-tracking data used for 3D audio</td></tr>
+<tr><td><code>settings_tray_settings</code></td><td>Auto-start and tray icon</td></tr>
+<tr><td><code>settings_tray_settings_description</code></td><td>Configure auto-start and tray icon behavior</td></tr>
+<tr><td><code>settings_dyn_tray_mode</code></td><td>Dynamic tray icon</td></tr>
+<tr><td><code>settings_dyn_tray_mode_off</code></td><td>Off</td></tr>
+<tr><td><code>settings_dyn_tray_mode_battery_min</code></td><td>Show lowest battery level</td></tr>
+<tr><td><code>settings_dyn_tray_mode_battery_avg</code></td><td>Show average battery level</td></tr>
 <tr><td><code>settings_crowdsourcing</code></td><td>Crowdsourcing</td></tr>
 <tr><td><code>settings_cpopup_wear_state</code></td><td>Use different color when in case</td></tr>
 <tr><td><code>settings_cpopup_wear_state_description</code></td><td>Gray earbud icon out when your earbuds are in the case</td></tr>

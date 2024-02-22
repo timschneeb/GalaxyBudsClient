@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>46%</td><td>236 missing string(s)</td></tr>
+<tr><td>45%</td><td>242 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -130,6 +130,12 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 <tr><td><code>coredump_dl_save_success_title</code></td><td>Successfully saved dumps</td></tr>
 <tr><td><code>coredump_dl_save_success</code></td><td>{0} dump(s) were written to '{1}'</td></tr>
 <tr><td><code>coredump_dl_save_dialog_title</code></td><td>Select a download directory...</td></tr>
+<tr><td><code>settings_tray_settings</code></td><td>Auto-start and tray icon</td></tr>
+<tr><td><code>settings_tray_settings_description</code></td><td>Configure auto-start and tray icon behavior</td></tr>
+<tr><td><code>settings_dyn_tray_mode</code></td><td>Dynamic tray icon</td></tr>
+<tr><td><code>settings_dyn_tray_mode_off</code></td><td>Off</td></tr>
+<tr><td><code>settings_dyn_tray_mode_battery_min</code></td><td>Show lowest battery level</td></tr>
+<tr><td><code>settings_dyn_tray_mode_battery_avg</code></td><td>Show average battery level</td></tr>
 <tr><td><code>settings_autostart_permission</code></td><td>Cannot update auto-start entry in registry. Registry access (HKCU) was explicitly disabled by your system administrator.</td></tr>
 <tr><td><code>settings_crowdsourcing</code></td><td>Crowdsourcing</td></tr>
 <tr><td><code>settings_cpopup_primary_screen</code></td><td>Primary screen only</td></tr>

@@ -33,6 +33,7 @@ namespace GalaxyBudsClient.Interface.Pages
             Settings,
             SettingsPopup,
             SettingsCrowdsourcing,
+            SettingsTray,
             Advanced,
             Hotkeys,
             FirmwareSelect,

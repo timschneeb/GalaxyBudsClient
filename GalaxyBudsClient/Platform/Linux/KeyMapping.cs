@@ -11,7 +11,7 @@ public static class KeyMapping
     public static KeyCode? ToLinuxKeyCode(this Keys key) => 
         KeyMap.SingleOrDefault(x => x.Value == key).Key;
     
-    public static Keys? ToKeys(this KeyCode key) => KeyMap[key];
+    public static Keys? ToKeys(this KeyCode key) => KeyMap.SingleOrDefault(x => x.Key == key).Value;
 
     private static readonly Dictionary<KeyCode, Keys?> KeyMap = new()
     {

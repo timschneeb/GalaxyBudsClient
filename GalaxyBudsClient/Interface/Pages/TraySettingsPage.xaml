@@ -1,0 +1,54 @@
+﻿<pages:AbstractPage xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.Pages"
+                    xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Elements"
+                    xmlns:items="clr-namespace:GalaxyBudsClient.Interface.Items"
+                    mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+                    x:Class="GalaxyBudsClient.Interface.Pages.TraySettingsPage"
+                    DockPanel.Dock="Top" Margin="10,0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <elements:PageHeader Grid.Row="1" Title="{DynamicResource settings_tray_settings}"
+                             BackPressed="BackButton_OnPointerPressed" />
+
+        <Border Grid.Row="3" Classes="RoundedBorderListItem" VerticalAlignment="Top">
+            <Grid HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Classes="BorderHoverStyle" PointerPressed="MinimizeToTray_OnPointerPressed">
+                    <items:SwitchDetailListItem x:Name="MinimizeTrayToggle"
+                                                Text="{DynamicResource settings_minimize_tray}"
+                                                Description="{DynamicResource settings_minimize_tray_description}" />
+                </Border>
+                <Separator Grid.Row="1" x:Name="MinimizeTrayToggleSeparator" Classes="HSeparatorSpacer20" />
+                <Border Grid.Row="2" CornerRadius="20" Classes="BorderHoverStyle">
+                    <items:MenuDetailListItem x:Name="DynTrayMode"
+                                              Text="{DynamicResource settings_dyn_tray_mode}"
+                                              Description="Off" />
+                </Border>
+                <Separator Grid.Row="3" x:Name="AutostartToggleSeparator" Classes="HSeparatorSpacer20" />
+                <Border Grid.Row="4" Classes="BorderHoverStyle" PointerPressed="Autostart_OnPointerPressed">
+                    <items:SwitchDetailListItem x:Name="AutostartToggle"
+                                                Text="{DynamicResource settings_autostart}"
+                                                Description="{DynamicResource settings_autostart_description}" />
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</pages:AbstractPage>

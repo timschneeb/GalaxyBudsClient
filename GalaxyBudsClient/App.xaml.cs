@@ -9,6 +9,8 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media.Imaging;
+using Avalonia.Platform;
 using Avalonia.Threading;
 using GalaxyBudsClient.Cli;
 using GalaxyBudsClient.Cli.Ipc;
@@ -116,6 +118,16 @@ namespace GalaxyBudsClient
             AvaloniaProperty.Register<App, NativeMenu>(nameof(TrayMenu),
                 defaultBindingMode: BindingMode.OneWay, defaultValue: new NativeMenu());
         public NativeMenu TrayMenu => GetValue(TrayMenuProperty);
+        
+        public static readonly StyledProperty<WindowIcon> TrayIconProperty =
+            AvaloniaProperty.Register<App, WindowIcon>(nameof(TrayMenu),
+                defaultBindingMode: BindingMode.TwoWay, defaultValue: WindowIconRenderer.MakeDefaultIcon());
+       
+        public WindowIcon TrayIcon
+        {
+            get => GetValue(TrayIconProperty);
+            set => SetValue(TrayIconProperty, value);
+        }
 
         private void TrayIcon_OnClicked(object? sender, EventArgs e)
         {

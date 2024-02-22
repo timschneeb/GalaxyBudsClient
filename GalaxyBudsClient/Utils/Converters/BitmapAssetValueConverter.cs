@@ -28,8 +28,7 @@ namespace GalaxyBudsClient.Utils.Converters
                     }
                     else
                     {
-                        var assemblyName = Assembly.GetEntryAssembly()?.GetName().Name;
-                        uri = new Uri($"avares://{assemblyName}{rawUri}");
+                        uri = new Uri($"{Program.AvaresUrl}{rawUri}");
                     }
 
                     return new Bitmap(AssetLoader.Open(uri));

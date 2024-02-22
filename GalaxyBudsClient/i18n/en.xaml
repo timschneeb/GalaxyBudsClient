@@ -332,6 +332,12 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="settings_localization_disable_description">Force English language</sys:String>
     <sys:String x:Key="settings_minimize_tray">Minimize to tray</sys:String>
     <sys:String x:Key="settings_minimize_tray_description">Keep in background instead of terminating the app</sys:String>
+    <sys:String x:Key="settings_tray_settings">Auto-start and tray icon</sys:String>
+    <sys:String x:Key="settings_tray_settings_description">Configure auto-start and tray icon behavior</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode">Dynamic tray icon</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_off">Off</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_min">Show lowest battery level</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_avg">Show average battery level</sys:String>
     <sys:String x:Key="settings_autostart">Launch on boot</sys:String>
     <sys:String x:Key="settings_autostart_description">Start minimized on system boot</sys:String>
     <sys:String x:Key="settings_autostart_permission">Cannot update auto-start entry in registry. Registry access (HKCU) was explicitly disabled by your system administrator.</sys:String>

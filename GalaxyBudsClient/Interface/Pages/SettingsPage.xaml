@@ -45,17 +45,11 @@
                                             Text="{DynamicResource settings_localization_disable}" 
                                             Description="English" />
                 </Border>
-                <Separator Grid.Row="3" x:Name="MinimizeTrayToggleSeparator" Classes="HSeparatorSpacer20"/>
-                <Border Grid.Row="4" Classes="BorderHoverStyle" PointerPressed="MinimizeToTray_OnPointerPressed">
-                    <items:SwitchDetailListItem x:Name="MinimizeTrayToggle" 
-                                                Text="{DynamicResource settings_minimize_tray}"
-                                                Description="{DynamicResource settings_minimize_tray_description}"/>
-                </Border>
-                <Separator Grid.Row="5" x:Name="AutostartToggleSeparator" Classes="HSeparatorSpacer20"/>
-                <Border Grid.Row="6" Classes="BorderHoverStyle" PointerPressed="Autostart_OnPointerPressed">
-                    <items:SwitchDetailListItem x:Name="AutostartToggle"
-                                                Text="{DynamicResource settings_autostart}" 
-                                                Description="{DynamicResource settings_autostart_description}"/>
+                <Separator Grid.Row="3" x:Name="TraySeparator" Classes="HSeparatorSpacer20"/>
+                <Border Grid.Row="4" Classes="BorderHoverStyle" PointerPressed="TraySettings_OnPointerPressed">
+                    <items:DetailListItem x:Name="TraySettings" 
+                                                Text="{DynamicResource settings_tray_settings}"
+                                                Description="{DynamicResource settings_tray_settings_description}"/>
                 </Border>
             </Grid>
         </Border>

@@ -111,7 +111,6 @@ namespace GalaxyBudsClient.Platform.Linux
         public async void Dispose()
         {
             await UnregisterAllAsync();
-            _hookTask?.Dispose();
             _hook.Dispose();
             GC.SuppressFinalize(this);
         }

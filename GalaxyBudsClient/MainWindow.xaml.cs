@@ -11,6 +11,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Platform;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using Avalonia.Threading;
 using Avalonia.Win32;
@@ -106,7 +107,7 @@ namespace GalaxyBudsClient
                 new SystemPage(), new SelfTestPage(), new SettingsPage(), new PopupSettingsPage(),
                 CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(), UnsupportedFeaturePage,
                 UpdatePage, UpdateProgressPage, new SystemCoredumpPage(), new HotkeyPage(), new FirmwareSelectionPage(),
-                new FirmwareTransferPage(), new SpatialTestPage(), new BixbyRemapPage(),
+                new FirmwareTransferPage(), new SpatialTestPage(), new BixbyRemapPage(), new TraySettingsPage(),
                 new CrowdsourcingSettingsPage(), new BudsAppDetectedPage(), new TouchpadGesturePage(), 
                 new NoiseProAmbientPage(), new GearFitPage()), DispatcherPriority.ApplicationIdle);
             
@@ -381,6 +382,12 @@ namespace GalaxyBudsClient
                 MediaKeyRemoteImpl.Instance.Play();
             }
             
+            // Update dynamic tray icon
+            if (e is IBasicStatusUpdate status)
+            {
+                WindowIconRenderer.UpdateDynamicIcon(status);
+            }
+            
             _lastWearState = e.WearState;
         }
 
@@ -389,6 +396,12 @@ namespace GalaxyBudsClient
             if (SettingsProvider.Instance.Popup.Enabled)
             {
                 ShowPopup();
+            }
+            
+            // Update dynamic tray icon
+            if (e is IBasicStatusUpdate status)
+            {
+                WindowIconRenderer.UpdateDynamicIcon(status);
             }
             
             await MessageComposer.SetManagerInfo();
@@ -402,6 +415,8 @@ namespace GalaxyBudsClient
 
         private void OnBluetoothError(object? sender, BluetoothException e)
         {
+            WindowIconRenderer.ResetIconToDefault();
+            
             switch (e.ErrorCode)
             {
                 case BluetoothException.ErrorCodes.NoAdaptersAvailable:
@@ -422,6 +437,8 @@ namespace GalaxyBudsClient
 
         private void OnDisconnected(object? sender, string e)
         {
+            WindowIconRenderer.ResetIconToDefault();
+            
             Pager.SwitchPage(BluetoothImpl.Instance.RegisteredDeviceValid
                 ? AbstractPage.Pages.NoConnection
                 : AbstractPage.Pages.Welcome);
