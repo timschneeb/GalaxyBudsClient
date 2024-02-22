@@ -1,0 +1,49 @@
+using System;
+using System.Linq;
+using System.Reflection;
+
+namespace GalaxyBudsClient.Cli.Ipc.Objects;
+
+public abstract class BaseProperties
+{
+    /// <summary>
+    /// Gets a property by its key using reflection
+    /// </summary>
+    /// <param name="prop">Property key</param>
+    /// <returns>Object with requested key</returns>
+    /// <exception cref="System.ArgumentException">Thrown if the key does not exist</exception>
+    internal object Get(string prop)
+    {
+        return GetType()
+                   .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                   .FirstOrDefault(f => CompareKeys(prop, f))?
+                   .GetValue(this)
+               ?? throw new ArgumentException("Property not found", prop);
+    }
+
+    /// <summary>
+    /// Sets a property to a value by its key using reflection
+    /// </summary>
+    /// <param name="prop">Property key</param>
+    /// <param name="val">New value</param>
+    /// <returns>True if the value has been modified, otherwise false</returns>
+    /// <exception cref="System.ArgumentException">Thrown if the key does not exist</exception>
+    internal bool Set(string prop, object val)
+    {
+        var oldValue = Get(prop);
+            
+        GetType()
+            .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+            .FirstOrDefault(f => CompareKeys(prop, f))?
+            .SetValue(this, val);
+
+        // Has value changed?
+        return oldValue != val;
+    }
+    
+    private static bool CompareKeys(string key, MemberInfo field)
+    {
+        // We may have to remove the first character of the property name because it is a private field and starts with an underscore
+        return key == field.Name || key == field.Name.Remove(0, 1);
+    }
+}

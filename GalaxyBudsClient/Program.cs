@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
+using GalaxyBudsClient.Cli;
+using GalaxyBudsClient.Cli.Ipc;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
@@ -36,12 +39,18 @@ namespace GalaxyBudsClient
             config = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("VERBOSE")) ?
                 config.MinimumLevel.Verbose() : config.MinimumLevel.Debug();
             
-            Log.Logger = config.CreateLogger();
+            // Divert program startup flow if the app was started with arguments (except /StartMinimized)
+            var cliMode = args.Length > 0 && !args.Contains("/StartMinimized");
+            if (cliMode)
+            {
+                // Disable excessive logging in CLI mode
+                config = config.MinimumLevel.Warning();
+            }
             
+            Log.Logger = config.CreateLogger();
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-
             Trace.Listeners.Add(new ConsoleTraceListener());
-
+            
             if (!SettingsProvider.Instance.DisableCrashReporting)
             {
                 SentrySdk.Init(o =>
@@ -99,20 +108,22 @@ namespace GalaxyBudsClient
                     };
                 });
             }
-            else
+            
+            if (cliMode)
             {
-                Log.Information("App crash reports disabled by user");
+                CliHandler.ProcessArguments(args);
+                return;
             }
-
+            
             try
             {
                 /* OSX: Graphics must be drawn on the main thread.
                  * Awaiting this call would implicitly cause the next code to run as a async continuation task.
                  * 
                  * In general: Don't await this call to shave off about 1000ms of startup time.
-                 * The SingleInstanceWatcher will terminate the app in time if another instance is already running.
+                 * The IpcService will terminate the app in time if another instance is already running.
                  */
-                _ = Task.Run(SingleInstanceWatcher.Setup);
+                _ = Task.Run(IpcService.Setup);
                 
                 BuildAvaloniaApp().StartWithClassicDesktopLifetime(args, ShutdownMode.OnExplicitShutdown);
             }

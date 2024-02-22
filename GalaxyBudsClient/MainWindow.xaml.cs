@@ -217,8 +217,6 @@ namespace GalaxyBudsClient
         #region Window management
         protected override async void OnInitialized()
         {
-            SingleInstanceWatcher.Activated += BringToFront;
-            
             if (BluetoothImpl.Instance.RegisteredDeviceValid)
             {
                 await Task.Delay(6000).ContinueWith((_) => UpdateManager.Instance.SilentCheck());
