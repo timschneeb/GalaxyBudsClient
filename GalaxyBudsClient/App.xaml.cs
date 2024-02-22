@@ -1,4 +1,6 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 #if OSX
 using AppKit;
 #endif
@@ -10,6 +12,8 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using Avalonia.Threading;
+using GalaxyBudsClient.Cli;
+using GalaxyBudsClient.Cli.Ipc;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
@@ -53,14 +57,14 @@ namespace GalaxyBudsClient
                 ThemeUtils.Reload();
                 Loc.Load();
             }, DispatcherPriority.Render);
-
+            
             TrayManager.Init();
             MediaKeyRemoteImpl.Init();
             DeviceMessageCache.Init();
             UpdateManager.Init();
             ExperimentManager.Init();
            
-            Log.Information($"Translator mode file location: {Loc.GetTranslatorModeFile()}");
+            Log.Information("Translator mode file location: {File}", Loc.GetTranslatorModeFile());
 
             ScriptManager.Instance.RegisterUserHooks();
         }
