@@ -48,7 +48,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
 
         public async Task<bool> PostResult(ExperimentResult result)
         {
-            Log.Debug($"ExperimentClient: Posting results for experiment #{result.ExperimentId}...");
+            Log.Debug("ExperimentClient: Posting results for experiment #{Id}...", result.ExperimentId);
             try
             {
                 var jsonBody = JsonConvert.SerializeObject(result, new StringEnumConverter());
@@ -56,9 +56,8 @@ namespace GalaxyBudsClient.Scripting.Experiment
                 var httpResponse = await _client.PostAsync(API_POST_RESULT, httpContent);
                 if (!httpResponse.IsSuccessStatusCode)
                 {
-                    Log.Warning(
-                        $"ExperimentClient: Server returned error code after posting: " +
-                        $"{(int)httpResponse.StatusCode} ({httpResponse.ReasonPhrase}); Content: {await httpResponse.Content.ReadAsStringAsync()}");
+                    Log.Warning("ExperimentClient: Server returned error code after posting: {Code} ({ReasonPhrase}); Content: {Content}", 
+                        (int)httpResponse.StatusCode, httpResponse.ReasonPhrase, await httpResponse.Content.ReadAsStringAsync());
                 }
                 else
                 {
@@ -67,11 +66,11 @@ namespace GalaxyBudsClient.Scripting.Experiment
             }
             catch (HttpRequestException ex)
             {
-                Log.Error("ExperimentClient: Post failed due to network issues: " + ex.Message);
+                Log.Error("ExperimentClient: Post failed due to network issues: {Message}", ex.Message);
             }
             catch (Exception ex)
             {
-                Log.Error("ExperimentClient: Post failed: " + ex.Message);
+                Log.Error("ExperimentClient: Post failed: {Message}", ex.Message);
             }
 
             return false;
@@ -90,7 +89,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
 
             if (SettingsProvider.Instance.Experiments.Disabled)
             {
-                Log.Information("ExperimentClient: Feature is disabled. You can enable it here: 'Options > Crowdsourcing'");
+                Log.Information("ExperimentClient: Feature is disabled");
                 return;
             }
 
@@ -108,7 +107,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
                 }
                 else
                 {
-                    Log.Error($"ExperimentClient: HTTP error {response.StatusCode}");
+                    Log.Error("ExperimentClient: HTTP error {Code}", response.StatusCode);
                 }
 
                 if (requests == null)
@@ -125,16 +124,16 @@ namespace GalaxyBudsClient.Scripting.Experiment
                     .ToList()
                     .AsReadOnly();
 
-                Log.Debug($"ExperimentClient: {results.Count} experiment(s) found.");
+                Log.Debug("ExperimentClient: {Count} experiment(s) found", results.Count);
                 NewResultsFound?.Invoke(this, results);
             }
             catch (HttpRequestException ex)
             {
-                Log.Error("ExperimentClient: Scan failed due to network issues: " + ex.Message);
+                Log.Error("ExperimentClient: Scan failed due to network issues: {Message}", ex.Message);
             }
             catch (Exception ex)
             {
-                Log.Error("ExperimentClient: Scan failed: " + ex.Message);
+                Log.Error("ExperimentClient: Scan failed: {Message}", ex.Message);
             }
         }
     }

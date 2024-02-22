@@ -90,21 +90,21 @@ namespace GalaxyBudsClient.Scripting
             }
             catch (Exception ex)
             {
-                Log.Error("ScriptManager.UnregisterHook: " + ex);
+                Log.Error(ex, "ScriptManager.UnregisterHook: Exception caught");
             }
         }
 
         public void RegisterUserHooks()
         {
             var directory = PlatformUtils.CombineDataPath("scripts");
-            Log.Information($"User script directory: {directory}");
+            Log.Information("User script directory: {Directory}", directory);
             
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }
             var files = Directory.GetFiles(directory, "*.cs", SearchOption.TopDirectoryOnly);
-            Log.Information($"ScriptManager: {files.Length} user script(s) found");
+            Log.Information("ScriptManager: {Count} user script(s) found", files.Length);
 
             foreach (var file in files.Where(x => x != null))
             {
@@ -112,15 +112,15 @@ namespace GalaxyBudsClient.Scripting
                 {
                     var script = File.ReadAllText(file);
                     RegisterHook((IHook)CSScript.Evaluator.LoadCode(script));
-                    Log.Debug($"ScriptManager: {Path.GetFileName(file)} hooked successfully");
+                    Log.Debug("ScriptManager: {FileName} hooked successfully", Path.GetFileName(file));
                 }
                 catch (CompilerException ex)
                 {
-                    Log.Error($"[{Path.GetFileName(file)}]: Compiler error in user script : {ex.Message}");
+                    Log.Error("[{FileName}]: Compiler error in user script : {ExMessage}", Path.GetFileName(file), ex.Message);
                 }
                 catch (Exception ex)
                 {
-                    Log.Error($"[{Path.GetFileName(file)}]: Failed to hook user script: {ex.Message}");
+                    Log.Error("[{FileName}]: Failed to hook user script: {ExMessage}", Path.GetFileName(file), ex.Message);
                 }
             }
         }

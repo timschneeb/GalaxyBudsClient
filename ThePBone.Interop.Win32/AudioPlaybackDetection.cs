@@ -32,7 +32,7 @@ namespace ThePBone.Interop.Win32
             }
             catch (Exception e)
             {
-                Log.Error($"IsWindowsPlayingSound: {e.Message}");
+                Log.Error("IsWindowsPlayingSound: {Message}", e.Message);
                 return true;
             }
         }

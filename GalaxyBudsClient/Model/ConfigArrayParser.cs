@@ -23,7 +23,7 @@ namespace GalaxyBudsClient.Model
         {
             if(string.IsNullOrEmpty(value))
             {
-                result = new T[0];
+                result = Array.Empty<T>();
                 return false;
             }
 
@@ -38,15 +38,15 @@ namespace GalaxyBudsClient.Model
                 }
                 catch (FormatException ex)
                 {
-                    Log.Warning($"ConfigArrayParser<{typeof(T)}>: FormatException raised ({ex.Message})");
-                    result = new T[0];
+                    Log.Warning("ConfigArrayParser<{Type}>: FormatException raised ({Message})", typeof(T), ex.Message);
+                    result = Array.Empty<T>();
                     return false;
                 }
 
                 return true;
             }
 
-            result = new T[0];
+            result = Array.Empty<T>();
             return false;
         }
     }

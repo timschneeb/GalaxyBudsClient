@@ -86,13 +86,13 @@ namespace GalaxyBudsClient.Interface.Pages
 						}
 						catch(Exception exception)
 						{
-						        Log.Warning("WelcomePage.BudsAppDetected.ThreadPool: " + exception);
+							Log.Warning(exception, "WelcomePage.BudsAppDetected.ThreadPool");
 						}
 					});
 				}
 				catch (Exception exception)
 				{
-					Log.Warning("WelcomePage.BudsAppDetected: " + exception);
+					Log.Warning(exception, "WelcomePage.BudsAppDetected");
 				}
 			}
 		}

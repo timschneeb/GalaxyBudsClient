@@ -71,7 +71,7 @@ namespace GalaxyBudsClient.Utils.Interface
         {
             if (type is not ItemType e)
             {
-                Log.Error($"TrayManager.OnTrayMenuCommand: Unknown item type: {type}");
+                Log.Error("TrayManager.OnTrayMenuCommand: Unknown item type: {Type}", type);
                 return;
             }
             

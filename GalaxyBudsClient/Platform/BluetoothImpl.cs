@@ -143,12 +143,12 @@ namespace GalaxyBudsClient.Platform
             }
             catch (Exception ex)
             {
-                Log.Warning("BluetoothImpl.Dispose: Error while disconnecting: " + ex);
+                Log.Warning(ex, "BluetoothImpl.Dispose: Error while disconnecting");
             }
 
             MessageReceived -= SPPMessageHandler.Instance.MessageReceiver;
             
-            _cancelSource.Cancel();
+            await _cancelSource.CancelAsync();
 
             await Task.Delay(50);
 
@@ -159,7 +159,7 @@ namespace GalaxyBudsClient.Platform
             }
             catch (Exception ex)
             {
-                Log.Error("BluetoothImpl.Dispose: Error while disposing children: " + ex);
+                Log.Error(ex, "BluetoothImpl.Dispose: Error while disposing children");
             }
         }
         
@@ -274,7 +274,7 @@ namespace GalaxyBudsClient.Platform
             
             try
             {
-                Log.Verbose($"<< Outgoing: {msg}");
+                Log.Verbose("<< Outgoing: {Msg}", msg);
                 
                 foreach(var hook in ScriptManager.Instance.MessageHooks)
                 {
@@ -380,7 +380,7 @@ namespace GalaxyBudsClient.Platform
                         var msg = SPPMessage.DecodeMessage(raw);
                         msgSize = msg.TotalPacketSize;
 
-                        Log.Verbose($">> Incoming: {msg}");
+                        Log.Verbose(">> Incoming: {Msg}", msg);
 
                         foreach (var hook in ScriptManager.Instance.MessageHooks)
                         {

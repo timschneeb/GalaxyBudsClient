@@ -67,7 +67,7 @@ namespace GalaxyBudsClient.Model.Specifications
 
             if (DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision == null)
             {
-                Log.Warning("IDeviceSpec: Cannot compare revision. No ExtendedStatusUpdate cached.");
+                Log.Warning("IDeviceSpec: Cannot compare revision. No ExtendedStatusUpdate cached");
                 return true;
             }
 

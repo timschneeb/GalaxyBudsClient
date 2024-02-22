@@ -64,24 +64,24 @@ namespace GalaxyBudsClient.Model.Firmware
                 }
 
                 results = results.ToList().AsReadOnly();
-                Log.Debug($"FirmwareRemoteClient: {results.Count()} firmware found.");
+                Log.Debug("FirmwareRemoteClient: {Count} firmware found", results.Count());
                 return results.ToArray();
             }
             catch (HttpRequestException ex)
             {
-                Log.Error("FirmwareRemoteClient: Search failed due to network issues: " + ex.Message);
+                Log.Error("FirmwareRemoteClient: Search failed due to network issues: {Message}", ex.Message);
                 throw;
             }
             catch (Exception ex)
             {
-                Log.Error("FirmwareRemoteClient: Search failed: " + ex.Message);
+                Log.Error("FirmwareRemoteClient: Search failed: {Message}", ex.Message);
                 throw;
             }
         }
         
         public async Task<byte[]> DownloadFirmware(FirmwareRemoteBinary target)
         {
-            Log.Debug($"FirmwareRemoteClient: Downloading firmware '{target.BuildName}'...");
+            Log.Debug("FirmwareRemoteClient: Downloading firmware \'{Name}\'...", target.BuildName);
 
             try
             {
@@ -96,7 +96,7 @@ namespace GalaxyBudsClient.Model.Firmware
                 }
                 else
                 {
-                    Log.Debug($"FirmwareRemoteClient: Error code: " + response.StatusCode);
+                    Log.Debug("FirmwareRemoteClient: Error code: {Code}", response.StatusCode);
                     throw new NetworkInformationException((int)response.StatusCode);
                 }
                 
@@ -104,12 +104,12 @@ namespace GalaxyBudsClient.Model.Firmware
             }
             catch (HttpRequestException ex)
             {
-                Log.Error("FirmwareRemoteClient: Search failed due to network issues: " + ex.Message);
+                Log.Error("FirmwareRemoteClient: Search failed due to network issues: {Message}", ex.Message);
                 throw;
             }
             catch (Exception ex)
             {
-                Log.Error("FirmwareRemoteClient: Search failed: " + ex.Message);
+                Log.Error("FirmwareRemoteClient: Search failed: {Message}", ex.Message);
                 throw;
             }
         }

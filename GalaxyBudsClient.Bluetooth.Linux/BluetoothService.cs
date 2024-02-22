@@ -75,7 +75,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                     }
                     catch (BlueZException ex)
                     {
-                        Log.Warning($"Preferred adapter not available: " + ex.ErrorName);
+                        Log.Warning("Preferred adapter not available: {ErrorName}", ex.ErrorName);
                         _adapter = null;
                     }
                     catch (DBusException ex)
@@ -101,7 +101,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 var adapterPath = _adapter.ObjectPath.ToString();
                 var adapterName = adapterPath.Substring(adapterPath.LastIndexOf("/", StringComparison.Ordinal) + 1);
 
-                Log.Debug($"Linux.BluetoothService: Using Bluetooth adapter: {adapterName}");
+                Log.Debug("Linux.BluetoothService: Using Bluetooth adapter: {AdapterName}", adapterName);
             }
             catch (DBusException ex)
             {
@@ -122,7 +122,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             
             if (_adapter == null)
             {
-                Log.Debug("Linux.BluetoothService: No adapter preselected. Choosing default one.");
+                Log.Debug("Linux.BluetoothService: No adapter preselected. Choosing default one");
                 await SelectAdapter();
             }
             
@@ -146,7 +146,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
 
             for (int attempt = 1; attempt <= 5; attempt++)
             {
-                Log.Debug($"Linux.BluetoothService: Connecting... (attempt {attempt}/5)");
+                Log.Debug("Linux.BluetoothService: Connecting... (attempt {Attempt}/5)", attempt);
                 try
                 {
                     if (await AttemptBasicConnectionAsync(noRetry))
@@ -161,7 +161,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
 
                 if (attempt >= 5)
                 {
-                    Log.Error("Linux.BluetoothService: Gave up after 5 attempts. Timed out.");
+                    Log.Error("Linux.BluetoothService: Gave up after 5 attempts. Timed out");
                     throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "BlueZ timed out while connecting to device.");
                 }
             }
@@ -169,7 +169,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             await _device.WaitForPropertyValueAsync("Connected", value: true, Timeout);
             Connected?.Invoke(this, EventArgs.Empty);
             ConnectionWatchdog = _device.WatchForPropertyChangeAsync("Connected", true, ConnectionWatcherCallback);
-            Log.Debug($"Linux.BluetoothService: Device ready. Registering profile client for UUID {uuid}...");
+            Log.Debug("Linux.BluetoothService: Device ready. Registering profile client for UUID {Uuid}...", uuid);
 
             var properties = new Dictionary<string, object>
             {
@@ -191,30 +191,30 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 switch (ex.ErrorCode)
                 {
                     case BlueZException.ErrorCodes.AlreadyExists:
-                        Log.Warning("Linux.BluetoothService:  UUID already registered. This may be fatal when multiple instances are active.");
+                        Log.Warning("Linux.BluetoothService:  UUID already registered. This may be fatal when multiple instances are active");
                         break;
                     case BlueZException.ErrorCodes.NotPermitted:
                         if(ex.ErrorMessage.Contains("UUID already registered"))
                         {
-                            Log.Warning("Linux.BluetoothService: UUID already registered. This may be fatal when multiple instances are active.");
+                            Log.Warning("Linux.BluetoothService: UUID already registered. This may be fatal when multiple instances are active");
                             break;
                         }
                         
-                        Log.Warning($"Linux.BluetoothService: Not permitted. Cannot register profile: {ex.ErrorMessage}");
+                        Log.Warning("Linux.BluetoothService: Not permitted. Cannot register profile: {ExErrorMessage}", ex.ErrorMessage);
                         break;
                     case BlueZException.ErrorCodes.InvalidArguments:
-                        Log.Error($"Linux.BluetoothService: Invalid arguments. Cannot register profile: {ex.ErrorMessage}");
+                        Log.Error("Linux.BluetoothService: Invalid arguments. Cannot register profile: {ExErrorMessage}", ex.ErrorMessage);
                         throw new BluetoothException(BluetoothException.ErrorCodes.Unknown, $"{ex.ErrorName}: {ex.ErrorMessage}");
                     default:
                         /* Other unknown dbus errors */
-                        Log.Error($"Linux.BluetoothService: Cannot register profile. {ex.ErrorName}: {ex.ErrorMessage}");
+                        Log.Error("Linux.BluetoothService: Cannot register profile. {ExErrorName}: {ExErrorMessage}", ex.ErrorName, ex.ErrorMessage);
                         throw new BluetoothException(BluetoothException.ErrorCodes.Unknown, $"{ex.ErrorName}: {ex.ErrorMessage}");
                 }
             }
             
             for (int attempt = 1; attempt <= 10; attempt++)
             {
-                Log.Debug($"Linux.BluetoothService: Connecting to profile... (attempt {attempt}/10)");
+                Log.Debug("Linux.BluetoothService: Connecting to profile... (attempt {Attempt}/10)", attempt);
 
                 try
                 {
@@ -228,7 +228,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                     switch (ex.ErrorCode)
                     {
                         case BlueZException.ErrorCodes.Failed:
-                            Log.Debug($"Linux.BluetoothService: Failed: '{ex.ErrorMessage}'.");
+                            Log.Debug("Linux.BluetoothService: Failed: \'{ExErrorMessage}\'", ex.ErrorMessage);
                             
                             if (noRetry)
                             {
@@ -238,7 +238,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                             await Task.Delay(500);
                             break;
                         case BlueZException.ErrorCodes.InProgress:
-                            Log.Debug("Linux.BluetoothService: Already connecting.");
+                            Log.Debug("Linux.BluetoothService: Already connecting");
                             
                             if (noRetry)
                             {
@@ -248,23 +248,23 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                             await Task.Delay(500);
                             break;
                         case BlueZException.ErrorCodes.AlreadyConnected:
-                            Log.Debug("Linux.BluetoothService: Success. Already connected.");
+                            Log.Debug("Linux.BluetoothService: Success. Already connected");
                             return; /* We return here */
                         case BlueZException.ErrorCodes.ConnectFailed:
                             throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, $"{ex.ErrorName}: {ex.ErrorMessage}");
                         case BlueZException.ErrorCodes.DoesNotExist:
-                            Log.Error("Linux.BluetoothService: Unsupported device. Device does not provide requested Bluetooth profile.");
+                            Log.Error("Linux.BluetoothService: Unsupported device. Device does not provide requested Bluetooth profile");
                             throw new BluetoothException(BluetoothException.ErrorCodes.UnsupportedDevice, $"Device does not provide required Bluetooth profile");
                         default:
                             /* Other unknown dbus errors */
-                            Log.Error($"Linux.BluetoothService: Cannot connect to profile. {ex.ErrorName}: {ex.ErrorMessage}");
+                            Log.Error("Linux.BluetoothService: Cannot connect to profile. {ExErrorName}: {ExErrorMessage}", ex.ErrorName, ex.ErrorMessage);
                             throw new BluetoothException(BluetoothException.ErrorCodes.Unknown, $"{ex.ErrorName}: {ex.ErrorMessage}");
                     }
                 }
 
                 if (attempt >= 10)
                 {
-                    Log.Error("Linux.BluetoothService: Gave up after 10 attempts. Timed out.");
+                    Log.Error("Linux.BluetoothService: Gave up after 10 attempts. Timed out");
                     throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "BlueZ timed out while connecting to profile");
                 }
             }
@@ -307,7 +307,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 switch (ex.ErrorCode)
                 {    
                     case BlueZException.ErrorCodes.Failed:
-                        Log.Debug($"Linux.BluetoothService: Failed: '{ex.ErrorMessage}'");
+                        Log.Debug("Linux.BluetoothService: Failed: \'{ExErrorMessage}\'", ex.ErrorMessage);
                         
                         if (noRetry || ex.ErrorMessage.Contains("Host is down", StringComparison.OrdinalIgnoreCase))
                         {
@@ -333,7 +333,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                         break;
                     default:
                         /* org.bluez.Error.NotReady, org.bluez.Error.Failed */
-                        Log.Error($"Linux.BluetoothService: Connect call failed due to: {ex.ErrorMessage} ({ex.ErrorCode})");
+                        Log.Error("Linux.BluetoothService: Connect call failed due to: {ExErrorMessage} ({ExErrorCode})", ex.ErrorMessage, ex.ErrorCode);
                         throw new BluetoothException(BluetoothException.ErrorCodes.Unknown, $"{ex.ErrorName}: {ex.ErrorMessage}");
                 }
             }
@@ -343,7 +343,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
         
         private void OnConnectionEstablished()
         {
-            Log.Debug("Linux.BluetoothService: Connection established. Launching BluetoothServiceLoop.");
+            Log.Debug("Linux.BluetoothService: Connection established. Launching BluetoothServiceLoop");
 
             _loop?.Dispose();
             _cancelSource = new CancellationTokenSource();
@@ -359,7 +359,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             Log.Debug("Linux.BluetoothService: Disconnecting...");
             if (_loop == null || _loop.Status == TaskStatus.Created)
             {
-                Log.Debug("Linux.BluetoothService: BluetoothServiceLoop not yet launched. No need to cancel.");
+                Log.Debug("Linux.BluetoothService: BluetoothServiceLoop not yet launched. No need to cancel");
             }
             else
             {  
@@ -377,7 +377,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 }
                 catch (DBusException ex)
                 {
-                    Log.Warning($"Linux.BluetoothService: (Non-critical) Exception raised while disconnecting profile: {ex.ErrorName}: {ex.ErrorMessage}");
+                    Log.Warning("Linux.BluetoothService: (Non-critical) Exception raised while disconnecting profile: {ExErrorName}: {ExErrorMessage}", ex.ErrorName, ex.ErrorMessage);
                     /* Discard non-critical exceptions. */
                 }
             }
@@ -391,7 +391,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             }
             catch (DBusException ex)
             {
-                Log.Warning($"Linux.BluetoothService: (Non-critical) Exception raised while unregistering profile: {ex.ErrorName}: {ex.ErrorMessage}");
+                Log.Warning("Linux.BluetoothService: (Non-critical) Exception raised while unregistering profile: {ExErrorName}: {ExErrorMessage}", ex.ErrorName, ex.ErrorMessage);
                 /* Discard non-critical exceptions. */
             }
         }
@@ -471,8 +471,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                         }
                         catch (UnixSocketException ex)
                         {
-                            Log.Error(
-                                $"Linux.BluetoothService: BluetoothServiceLoop: SocketException thrown while reading unsafe stream: {ex.Message}. Cancelled.");
+                            Log.Error("Linux.BluetoothService: BluetoothServiceLoop: SocketException thrown while reading unsafe stream: {ExMessage}. Cancelled", ex.Message);
                             Disconnected?.Invoke(this, ex.Message);
                             throw;
                         }
@@ -486,7 +485,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                     /* Handle outgoing stream */
                     lock (TransmitterQueue)
                     {
-                        if (TransmitterQueue.Count <= 0) continue;
+                        if (TransmitterQueue.IsEmpty) continue;
                         if (!TransmitterQueue.TryDequeue(out var raw)) continue;
                         try
                         {
@@ -494,16 +493,14 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                         }
                         catch (SocketException ex)
                         {
-                            Log.Error(
-                                $"Linux.BluetoothService: BluetoothServiceLoop: SocketException thrown while writing unsafe stream: {ex.Message}. Cancelled.");
+                            Log.Error("Linux.BluetoothService: BluetoothServiceLoop: SocketException thrown while writing unsafe stream: {ExMessage}. Cancelled", ex.Message);
                             Disconnected?.Invoke(this, ex.Message);
                         }
                         catch (IOException ex)
                         {
                             if (ex.InnerException != null && ex.InnerException.GetType() == typeof(SocketException))
                             {
-                                Log.Error(
-                                    $"Linux.BluetoothService: BluetoothServiceLoop: IO and SocketException thrown while writing unsafe stream: {ex.Message}. Cancelled.");
+                                Log.Error("Linux.BluetoothService: BluetoothServiceLoop: IO and SocketException thrown while writing unsafe stream: {ExMessage}. Cancelled", ex.Message);
                                 Disconnected?.Invoke(this, ex.Message);
                             }
                         }
@@ -511,8 +508,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 }
                 catch (UnixException ex)
                 {
-                    Log.Error(
-                        $"Linux.BluetoothService: BluetoothServiceLoop: UnixException thrown while handling unsafe stream: {ex.Message}. Cancelled.");
+                    Log.Error("Linux.BluetoothService: BluetoothServiceLoop: UnixException thrown while handling unsafe stream: {ExMessage}. Cancelled", ex.Message);
 
                     if (ex.Errno == 104) // Connection reset by peer
                     {

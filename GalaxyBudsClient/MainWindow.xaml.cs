@@ -507,8 +507,8 @@ namespace GalaxyBudsClient
                     }
                     catch (Exception ex)
                     {
-                        Log.Error("CustomAction.HotkeyBroadcast: Cannot parse saved key-combo: " + ex.Message);
-                        Log.Error("CustomAction.HotkeyBroadcast: Caused by combo: " + action.Parameter);
+                        Log.Error("CustomAction.HotkeyBroadcast: Cannot parse saved key-combo: {Message}", ex.Message);
+                        Log.Error("CustomAction.HotkeyBroadcast: Caused by combo: {Param}", action.Parameter);
                         return;
                     }
 
@@ -592,7 +592,7 @@ namespace GalaxyBudsClient
 
         public void ShowPopup(bool ignoreRestrictions = false)
         {
-            Log.Debug($"MainWindow.ShowPopup: {(_popupShown ? "Popup already shown" : "Popup not yet shown")}; Ignore conditional check: {ignoreRestrictions}");
+            Log.Debug("MainWindow.ShowPopup: {PopupState}; Ignore conditional check: {IgnoreRestrictions}", (_popupShown ? "Popup already shown" : "Popup not yet shown"), ignoreRestrictions);
             if (_popupShown && !ignoreRestrictions)
                 return;
             

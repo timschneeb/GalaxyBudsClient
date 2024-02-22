@@ -97,7 +97,7 @@ namespace GalaxyBudsClient.Interface.Pages
             }
             catch (Exception ex)
             {
-                Log.Error($"CoredumpPage: Failed to copy dumps: {ex}");
+                Log.Error(ex, "CoredumpPage: Failed to copy dumps");
                 new MessageBox()
                 {
                     Title = Loc.Resolve("coredump_dl_save_fail_title"),

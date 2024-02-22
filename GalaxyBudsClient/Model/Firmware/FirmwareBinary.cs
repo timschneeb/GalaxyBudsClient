@@ -49,8 +49,8 @@ namespace GalaxyBudsClient.Model.Firmware
                         // Notify tracker about this event and submit firmware build info
                         SentrySdk.CaptureMessage($"BCOM-Firmware discovered. Build: {buildName}, Content: {Convert.ToBase64String(data)}", SentryLevel.Fatal);
                       
-                        Log.Fatal($"FirmwareBinary: Parsing internal debug firmware '{buildName}'. " +
-                                  "This is unsupported by this application as these binaries are not meant for retail devices.");
+                        Log.Fatal("FirmwareBinary: Parsing internal debug firmware \'{Name}\'. " +
+                                  "This is unsupported by this application as these binaries are not meant for retail devices", buildName);
                         throw new FirmwareParseException(FirmwareParseException.ErrorCodes.InvalidMagic,
                             Loc.Resolve("fw_fail_no_magic"));
                     }
@@ -94,7 +94,7 @@ namespace GalaxyBudsClient.Model.Firmware
             }
             catch (Exception ex) when (!(ex is FirmwareParseException))
             {
-                Log.Error($"FirmwareBinary: Failed to decode binary: {ex}");
+                Log.Error(ex, "FirmwareBinary: Failed to decode binary");
                 throw new FirmwareParseException(FirmwareParseException.ErrorCodes.Unknown,
                     $"{Loc.Resolve("fw_fail_unknown")}\n{ex}");
             }

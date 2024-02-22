@@ -65,8 +65,8 @@ namespace GalaxyBudsClient.Model
                     }
                     catch (Exception ex)
                     {
-                        Log.Error($"CustomAction.HotkeyBroadcast: Cannot parse saved key-combo: {ex.Message}");
-                        Log.Error($"CustomAction.HotkeyBroadcast: Caused by combo: {Parameter}");
+                        Log.Error("CustomAction.HotkeyBroadcast: Cannot parse saved key-combo: {Message}", ex.Message);
+                        Log.Error("CustomAction.HotkeyBroadcast: Caused by combo: {Parameter}", Parameter);
                         return Loc.Resolve("unknown");
                     }
             }

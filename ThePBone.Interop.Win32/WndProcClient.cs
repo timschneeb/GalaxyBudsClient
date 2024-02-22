@@ -65,7 +65,7 @@ namespace ThePBone.Interop.Win32
             }
             else
             {
-                Log.Error("WndProcClient: Unmanaged error in {0}. Error Code: {1}", nameof(ProcessMessage),
+                Log.Error("WndProcClient: Unmanaged error in {This}. Error Code: {Code}", nameof(ProcessMessage),
                     Marshal.GetLastWin32Error());
             }
         }
@@ -81,7 +81,7 @@ namespace ThePBone.Interop.Win32
             }
             if (result < 0)
             {
-                Log.Error("WndProcClient: Unmanaged error in {0}. Error Code: {1}", nameof(RunLoop),
+                Log.Error("WndProcClient: Unmanaged error in {This}. Error Code: {Code}", nameof(RunLoop),
                     Marshal.GetLastWin32Error());
             }
         }

@@ -41,13 +41,13 @@ namespace GalaxyBudsClient.Message.Decoder
             {
                 case SpatialAudioData.BudGrv:
                     if (data.Length < 9) {
-                        Log.Error("SpatialAudioDataParser.GRV: wrong data length: " + data.Length);
+                        Log.Error("SpatialAudioDataParser.GRV: wrong data length: {Length}", data.Length);
                         return;
                     }
                     
-                    float[] fArr = new float[4];
+                    var fArr = new float[4];
                     for (var i = 0; i < 4; i++) {
-                        fArr[i] = ((float) ((short) byteBufferToInt(data, i * 2, 2, false))) / 10000.0f;
+                        fArr[i] = ((float) ((short) ByteBufferToInt(data, i * 2, 2, false))) / 10000.0f;
                     }
 
                     GrvFloatArray = fArr;
@@ -60,24 +60,24 @@ namespace GalaxyBudsClient.Message.Decoder
                         return;
                     }
                     
-                    int[] iArr = {(short) byteBufferToInt(data, 0, 2, false), (short) byteBufferToInt(data, 2, 2, false), (short) byteBufferToInt(data, 4, 2, false)};
+                    int[] iArr = {(short) ByteBufferToInt(data, 0, 2, false), (short) ByteBufferToInt(data, 2, 2, false), (short) ByteBufferToInt(data, 4, 2, false)};
                     var list = new List<int>();
                     list.AddRange(iArr);
                     if (data.Length >= 9) 
                     {
                         list.Add(data[6]);
-                        list.Add(byteBufferToInt(data, 7, 2, false));
-                        Log.Debug( "SpatialAudioDataParser.Gyrocal: Bias: " +  string.Join(",", list));
+                        list.Add(ByteBufferToInt(data, 7, 2, false));
+                        Log.Debug( "SpatialAudioDataParser.Gyrocal: Bias: {Bias}", string.Join(",", list));
                     }
                     else
                     {
-                        Log.Debug("SpatialAudioDataParser.Gyrocal: Bias: " + iArr);
+                        Log.Debug("SpatialAudioDataParser.Gyrocal: Bias: {Bias}", iArr);
                     }
 
                     GyrocalBias = list.ToArray();
                     break;
                 case SpatialAudioData.BudSensorStuck:
-                    Log.Debug("SpatialAudioDataParser.SensorStuck: " + data[0]);
+                    Log.Debug("SpatialAudioDataParser.SensorStuck: {Param}", data[0]);
                     StuckParameter = data[0];
                     break;
                 case SpatialAudioData.WearOff:
@@ -102,12 +102,12 @@ namespace GalaxyBudsClient.Message.Decoder
                     Log.Warning("SpatialAudioDataParser: Wear on updated, but wrong message format");
                     break;
                 default:
-                    Log.Debug($"SpatialAudioDataParser: Unknown id ({msg.Payload[0]})");
+                    Log.Debug("SpatialAudioDataParser: Unknown id ({Id})", msg.Payload[0]);
                     break;
             }
         }
 
-        private static int byteBufferToInt(byte[] bArr, int i, int i2, bool z)
+        private static int ByteBufferToInt(byte[] bArr, int i, int i2, bool z)
         {
             if (bArr.Length >= i + i2)
             {

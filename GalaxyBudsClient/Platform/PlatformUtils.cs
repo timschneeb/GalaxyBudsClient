@@ -68,7 +68,7 @@ namespace GalaxyBudsClient.Platform
                 }
                 catch (Exception ex)
                 {
-                    Log.Error($"PlatformUtils: Cannot determine build version: {ex.Message}");
+                    Log.Error("PlatformUtils: Cannot determine build version: {ExMessage}", ex.Message);
                     return false;
                 }
             }

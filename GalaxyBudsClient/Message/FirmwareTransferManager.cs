@@ -78,10 +78,10 @@ namespace GalaxyBudsClient.Message
 
             Error += (sender, exception) =>
             {
-                Log.Error($"FirmwareTransferManager.OnError: {exception}");
+                Log.Error(exception, "FirmwareTransferManager.OnError");
                 Cancel();
             };
-            StateChanged += (sender, state) => Log.Debug($"FirmwareTransferManager: Status changed to {state}");
+            StateChanged += (sender, state) => Log.Debug("FirmwareTransferManager: Status changed to {State}", state);
             
             BluetoothImpl.Instance.Disconnected += (sender, s) =>
             {
@@ -115,7 +115,7 @@ namespace GalaxyBudsClient.Message
             {
                 case FotaSessionParser session:
                 {
-                    Log.Debug($"FirmwareTransferManager.OnMessageReceived: Session result is {session.ResultCode}");
+                    Log.Debug("FirmwareTransferManager.OnMessageReceived: Session result is {Code}", session.ResultCode);
                 
                     _sessionTimeout.Stop();
                     if (session.ResultCode != 0)
@@ -131,7 +131,7 @@ namespace GalaxyBudsClient.Message
                     break;
                 }
                 case FotaControlParser control:
-                    Log.Debug($"FirmwareTransferManager.OnMessageReceived: Control block has CID: {control.ControlId}");
+                    Log.Debug("FirmwareTransferManager.OnMessageReceived: Control block has CID: {Id}", control.ControlId);
                     switch (control.ControlId)
                     {
                         case FirmwareConstants.ControlIds.SendMtu:
@@ -140,14 +140,14 @@ namespace GalaxyBudsClient.Message
                             MtuChanged?.Invoke(this, control.MtuSize);
 
                             await BluetoothImpl.Instance.SendAsync(FotaControlEncoder.Build(control.ControlId, control.MtuSize));
-                            Log.Debug($"FirmwareTransferManager.OnMessageReceived: MTU size set to {control.MtuSize}");
+                            Log.Debug("FirmwareTransferManager.OnMessageReceived: MTU size set to {MtuSize}", control.MtuSize);
                             break;
                         case FirmwareConstants.ControlIds.ReadyToDownload:
                             _currentSegment = control.Id;
                             CurrentSegmentIdChanged?.Invoke(this, control.Id);
                             
                             await BluetoothImpl.Instance.SendAsync(FotaControlEncoder.Build(control.ControlId, control.Id));
-                            Log.Debug($"FirmwareTransferManager.OnMessageReceived: Ready to download segment {control.Id}");
+                            Log.Debug("FirmwareTransferManager.OnMessageReceived: Ready to download segment {Id}", control.Id);
                             break;
                     }
                     break;
@@ -176,11 +176,15 @@ namespace GalaxyBudsClient.Message
                                 _currentProgress, 
                                 (long)Math.Round(_binary.TotalSize * (_currentProgress / 100f)), 
                                 _binary.TotalSize));
-                            Log.Debug($"FirmwareTransferManager.OnMessageReceived: Copy progress: {update.Percent}% ({(long)Math.Round(_binary.TotalSize * (_currentProgress / 100f)) / 1000f}KB/{_binary.TotalSize / 1000f}KB)");
+                            Log.Debug("FirmwareTransferManager.OnMessageReceived: Copy progress: {Percent}% ({Done}KB/{TotalSize}KB)", 
+                                update.Percent, 
+                                (long)Math.Round(_binary.TotalSize * (_currentProgress / 100f)) / 1000f, 
+                                _binary.TotalSize / 1000f);
                             break;
                         case FirmwareConstants.UpdateIds.StateChange:
                             await BluetoothImpl.Instance.SendResponseAsync(SPPMessage.MessageIds.FOTA_UPDATE, 1);
-                            Log.Debug($"FirmwareTransferManager.OnMessageReceived: State changed: {update.State}, result code: {update.ResultCode}");
+                            Log.Debug("FirmwareTransferManager.OnMessageReceived: State changed: {State}, result code: {ResultCode}", 
+                                update.State, update.ResultCode);
 
                             if (update.State == 0)
                             {
@@ -190,7 +194,7 @@ namespace GalaxyBudsClient.Message
                             }
                             else
                             {
-                                Log.Debug($"FirmwareTransferManager.OnMessageReceived: Copy failed, result code: {update.ResultCode}");
+                                Log.Debug("FirmwareTransferManager.OnMessageReceived: Copy failed, result code: {Code}", update.ResultCode);
                                 Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.CopyFail, 
                                     string.Format(Loc.Resolve("fw_fail_copy"), update.ResultCode)));
                             }
@@ -199,7 +203,8 @@ namespace GalaxyBudsClient.Message
                     break;
                 case FotaResultParser result:
                     await BluetoothImpl.Instance.SendResponseAsync(SPPMessage.MessageIds.FOTA_RESULT, 1);
-                    Log.Debug($"FirmwareTransferManager.OnMessageReceived: Finished. Result: {result.Result}, error code: {result.ErrorCode}");
+                    Log.Debug("FirmwareTransferManager.OnMessageReceived: Finished. Result: {Result}, error code: {Code}", 
+                        result.Result, result.ErrorCode);
 
                     if (result.Result == 0)
                     {

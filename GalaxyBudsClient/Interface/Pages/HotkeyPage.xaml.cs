@@ -114,7 +114,7 @@ namespace GalaxyBudsClient.Interface.Pages
                                     {
                                         if (saved[i].Compare(hotkey))
                                         {
-                                            Log.Debug($"HotkeyPage.Edit: Updated hotkey '{saved[i]}' to '{_builder.Hotkey}'");
+                                            Log.Debug("HotkeyPage.Edit: Updated hotkey '{Old}' to '{New}'", saved[i], _builder.Hotkey);
                                             temp[i] = _builder.Hotkey;
                                         }
                                         else
@@ -133,11 +133,11 @@ namespace GalaxyBudsClient.Interface.Pages
                             Loc.Resolve("hotkey_delete"),
                             (_, args) =>
                             {
-                                var saved = (SettingsProvider.Instance?.Hotkeys ?? new Hotkey[0]);
+                                var saved = (SettingsProvider.Instance?.Hotkeys ?? Array.Empty<Hotkey>());
                                 if (saved.Length <= 1)
                                 {
-                                    Log.Debug($"HotkeyPage.Delete: Removed hotkey '{saved[0]}'");
-                                    SettingsProvider.Instance!.Hotkeys = new Hotkey[0];
+                                    Log.Debug("HotkeyPage.Delete: Removed hotkey '{Key}'", saved[0]);
+                                    SettingsProvider.Instance!.Hotkeys = Array.Empty<Hotkey>();
                                     ReloadList();
                                     HotkeyReceiverImpl.Instance.Update();
                                     return;
@@ -148,7 +148,7 @@ namespace GalaxyBudsClient.Interface.Pages
                                 {
                                     if (saved[i].Compare(hotkey))
                                     {
-                                        Log.Debug($"HotkeyPage.Delete: Removed hotkey '{saved[i]}'");
+                                        Log.Debug("HotkeyPage.Delete: Removed hotkey '{Key}'", saved[i]);
                                         temp[i] = null;
                                     }
                                     else

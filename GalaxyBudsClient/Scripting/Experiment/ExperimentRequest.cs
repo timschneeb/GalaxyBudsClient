@@ -72,7 +72,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
             }
             catch (InvalidCipherTextException ex)
             {
-                Log.Error($"ExperimentRequest.VerifyDecode: Malformed cipher text, discarding entry! ({ex.Message})");
+                Log.Error("ExperimentRequest.VerifyDecode: Malformed cipher text, discarding entry! ({ExMessage})", ex.Message);
                 return null;
             }
         }

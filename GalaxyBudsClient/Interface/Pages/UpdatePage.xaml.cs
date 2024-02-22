@@ -89,7 +89,7 @@ namespace GalaxyBudsClient.Interface.Pages
 	        }
 	        else
 	        {
-		        Log.Warning("UpdatePage: Only x64 Windows builds have updater support. Opening download website for manual installation instead.");
+		        Log.Warning("UpdatePage: Only x64 Windows builds have updater support");
 		        OpenWebsite("https://github.com/ThePBone/GalaxyBudsClient/releases");
 	        }
         }
@@ -110,7 +110,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
 			if (silent && SettingsProvider.Instance.UpdateSkippedVersion == item.Version)
 			{
-				Log.Information($"UpdateManager: Ignoring new update {item.Version}; skipped by user");
+				Log.Information("UpdateManager: Ignoring new update {Version}; skipped by user", item.Version);
 				return;
 			}
 			

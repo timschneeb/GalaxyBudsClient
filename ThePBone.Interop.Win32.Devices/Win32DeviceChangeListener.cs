@@ -227,7 +227,7 @@ namespace ThePBone.Interop.Win32.Devices
                 text += "Unknown event: " + hdrHandle?.dbch_eventguid;
             }
             
-            Log.Verbose("Interop.Win32: Device changed: " + text);
+            Log.Verbose("Interop.Win32: Device changed: {Name}", text);
         }
 
         private static void DoDevTypPort(ref WndProcClient.WindowMessage m, ref String text, ref DEV_BROADCAST_HDR hdr)

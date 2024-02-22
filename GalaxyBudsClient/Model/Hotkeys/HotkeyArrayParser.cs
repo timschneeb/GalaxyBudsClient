@@ -23,7 +23,7 @@ namespace GalaxyBudsClient.Model.Hotkeys
         {
             if(string.IsNullOrEmpty(value))
             {
-                result = new Hotkey[0];
+                result = Array.Empty<Hotkey>();
                 return false;
             }
 
@@ -35,15 +35,15 @@ namespace GalaxyBudsClient.Model.Hotkeys
                 }
                 catch (Exception ex)
                 {
-                    Log.Warning($"HotkeyArrayParser: Exception raised ({ex.Message})");
-                    result = new Hotkey[0];
+                    Log.Warning("HotkeyArrayParser: Exception raised ({Message})", ex.Message);
+                    result = Array.Empty<Hotkey>();
                     return false;
                 }
 
                 return true;
             }
 
-            result = new Hotkey[0];
+            result = Array.Empty<Hotkey>();
             return false;
         }
     }

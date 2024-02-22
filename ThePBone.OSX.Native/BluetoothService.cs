@@ -45,7 +45,7 @@ namespace ThePBone.OSX.Native
 
             if (!allocationResult)
             {
-                Log.Error("OSX.BluetoothService: Unable to allocate native object. Please free some RAM up.");
+                Log.Error("OSX.BluetoothService: Unable to allocate native object. Please free some RAM up");
                 throw new BluetoothException(BluetoothException.ErrorCodes.AllocationFailed,
                     "Unable to allocate memory for native Bluetooth object. Please free some RAM up.");
             }
@@ -102,7 +102,7 @@ namespace ThePBone.OSX.Native
             var semResult = await SearchSemaphore.WaitAsync(5000);
             if (semResult == false)
             {
-                Log.Error($"OSX.BluetoothService: Enumerate attempt timed out due to blocked semaphore");
+                Log.Error("OSX.BluetoothService: Enumerate attempt timed out due to blocked semaphore");
                 throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "Timed out while waiting to enter enumerate phase. Another task is already enumerating.");
             }
 
@@ -137,11 +137,11 @@ namespace ThePBone.OSX.Native
                     }
                 }
 
-                Log.Debug($"OSX.BluetoothService: found {devices.Length} paired devices");
+                Log.Debug("OSX.BluetoothService: found {Count} paired devices", devices.Length);
 
                 if (status != BT_ENUM_RESULT.BT_ENUM_SUCCESS)
                 {
-                    Log.Error($"OSX.BluetoothService: Enumerate attempt failed due to error code {status}");
+                    Log.Error("OSX.BluetoothService: Enumerate attempt failed due to error code {Status}", status);
                     throw new BluetoothException(BluetoothException.ErrorCodes.Unknown, "Search failed.");
                 }
 
@@ -187,7 +187,7 @@ namespace ThePBone.OSX.Native
                 macAddr = macAddr.Replace("-", ":");
                 if (string.Equals(macAddr, _currentMac, StringComparison.CurrentCultureIgnoreCase))
                 {
-                    Log.Debug($"OSX.BluetoothService: Reconnecting to {macAddr}");
+                    Log.Debug("OSX.BluetoothService: Reconnecting to {MacAddr}", macAddr);
                     reconnect();
                 }
             }
@@ -207,14 +207,14 @@ namespace ThePBone.OSX.Native
             var semResult = await ConnSemaphore.WaitAsync(5000);
             if (semResult == false)
             {
-                Log.Error($"OSX.BluetoothService: Connection attempt timed out due to blocked semaphore");
+                Log.Error("OSX.BluetoothService: Connection attempt timed out due to blocked semaphore");
                 throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "Timed out while waiting to enter connection phase. Another task is already preparing a connection.");
             }
 
             try {
                 if (IsStreamConnected)
                 {
-                    Log.Debug("OSX.BluetoothService: Already connected, skipped.");
+                    Log.Debug("OSX.BluetoothService: Already connected, skipped");
                     return;
                 }
 
@@ -236,7 +236,7 @@ namespace ThePBone.OSX.Native
 
                 if (result != BT_CONN_RESULT.BT_CONN_SUCCESS)
                 {
-                    Log.Error($"OSX.BluetoothService: connect returned {result.ToString()}");
+                    Log.Error("OSX.BluetoothService: connect returned {Result}", result.ToString());
                     switch (result)
                     {
                         case BT_CONN_RESULT.BT_CONN_EBASECONN:
@@ -268,7 +268,7 @@ namespace ThePBone.OSX.Native
                     Bluetooth.bt_register_disconnect_notification(_nativePtr, macAddress);
                 }
 
-                Log.Debug($"OSX.BluetoothService: Connected.");
+                Log.Debug("OSX.BluetoothService: Connected");
                 Connected?.Invoke(this, EventArgs.Empty);
                 RfcommConnected?.Invoke(this, EventArgs.Empty);
             }
@@ -286,7 +286,7 @@ namespace ThePBone.OSX.Native
             var semResult = await ConnSemaphore.WaitAsync(5000);
             if (semResult == false)
             {
-                Log.Error($"OSX.BluetoothService: Disconnection attempt timed out due to blocked semaphore");
+                Log.Error("OSX.BluetoothService: Disconnection attempt timed out due to blocked semaphore");
                 throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "Timed out while waiting to enter connection phase. Another task is already preparing a connection.");
             }
 
@@ -332,7 +332,7 @@ namespace ThePBone.OSX.Native
                 {
                     case BT_SEND_RESULT.BT_SEND_EPARTIAL:
                         Log.Error(
-                            "OSX.BluetoothService.SendAsync: Data has been partially sent. Data loss is very likely.");
+                            "OSX.BluetoothService.SendAsync: Data has been partially sent. Data loss is very likely");
                         break;                    
                     case BT_SEND_RESULT.BT_SEND_ENULL:
                         Log.Error(

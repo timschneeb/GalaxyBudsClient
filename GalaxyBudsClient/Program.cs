@@ -102,7 +102,7 @@ namespace GalaxyBudsClient
                         catch (Exception ex)
                         {
                             sentryEvent.SetExtra("beforesend-error", ex);
-                            Log.Error("Sentry.BeforeSend: Error while adding attachments: " + ex.Message);
+                            Log.Error(ex, "Sentry.BeforeSend: Error while adding attachments");
                         }
 
                         return sentryEvent;

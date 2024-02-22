@@ -112,7 +112,7 @@ namespace GalaxyBudsClient.Message
                 {
                     SentrySdk.AddBreadcrumb($"Message too small (Length: {raw.Length})", "spp",
                         level: BreadcrumbLevel.Warning);
-                    Log.Error($"Message too small (Length: {raw.Length})");
+                    Log.Error("Message too small (Length: {Length})", raw.Length);
                     throw new InvalidPacketException(InvalidPacketException.ErrorCodes.TooSmall,Loc.Resolve("sppmsg_too_small"));
                 }
                 
@@ -123,7 +123,7 @@ namespace GalaxyBudsClient.Message
                 {
                     SentrySdk.AddBreadcrumb($"Invalid SOM (Received: {raw[0]})", "spp",
                         level: BreadcrumbLevel.Warning);
-                    Log.Error($"Invalid SOM (Received: {raw[0]})");
+                    Log.Error("Invalid SOM (Received: {SomByte})", raw[0]);
                     throw new InvalidPacketException(InvalidPacketException.ErrorCodes.SOM,Loc.Resolve("sppmsg_invalid_som"));
                 }
 
@@ -176,7 +176,7 @@ namespace GalaxyBudsClient.Message
                 {
                     SentrySdk.AddBreadcrumb($"Invalid size (Reported: {size}, Calculated: {draft.Size})", "spp",
                         level: BreadcrumbLevel.Warning);
-                    Log.Error($"Invalid size (Reported: {size}, Calculated: {draft.Size})");
+                    Log.Error("Invalid size (Reported: {Size}, Calculated: {DraftSize})", size, draft.Size);
                     throw new InvalidPacketException(InvalidPacketException.ErrorCodes.SizeMismatch,Loc.Resolve("sppmsg_size_mismatch"));
                 }
 
@@ -184,7 +184,7 @@ namespace GalaxyBudsClient.Message
                 {
                     SentrySdk.AddBreadcrumb($"CRC checksum failed (ID: {draft.Id}, Size: {draft.Size})", "spp",
                         level: BreadcrumbLevel.Warning);
-                    Log.Error($"CRC checksum failed (ID: {draft.Id}, Size: {draft.Size})");
+                    Log.Error("CRC checksum failed (ID: {Id}, Size: {Size})", draft.Id, draft.Size);
                     //throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Checksum,Loc.Resolve("sppmsg_crc_fail"), draft);
                 }
 
@@ -193,7 +193,7 @@ namespace GalaxyBudsClient.Message
                 {
                     SentrySdk.AddBreadcrumb($"Invalid EOM (Received: {raw[4 + rawPayloadSize + 2]})", "spp",
                         level: BreadcrumbLevel.Warning);
-                    Log.Error($"Invalid EOM (Received: {raw[4 + rawPayloadSize + 2]}");
+                    Log.Error("Invalid EOM (Received: {EomByte}", raw[4 + rawPayloadSize + 2]);
                     throw new InvalidPacketException(InvalidPacketException.ErrorCodes.EOM,Loc.Resolve("sppmsg_invalid_eom"), draft);
                 }
 
@@ -202,7 +202,7 @@ namespace GalaxyBudsClient.Message
                 {
                     SentrySdk.AddBreadcrumb($"Invalid EOM (Received: {raw[4 + rawPayloadSize + 2]})", "spp",
                         level: BreadcrumbLevel.Warning);
-                    Log.Error($"Invalid EOM (Received: {raw[4 + rawPayloadSize + 2]}");
+                    Log.Error("Invalid EOM (Received: {EomByte}", raw[4 + rawPayloadSize + 2]);
                     throw new InvalidPacketException(InvalidPacketException.ErrorCodes.EOM,Loc.Resolve("sppmsg_invalid_eom"), draft);
                 }
 

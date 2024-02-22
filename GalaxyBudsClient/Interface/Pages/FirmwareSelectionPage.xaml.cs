@@ -167,7 +167,7 @@ namespace GalaxyBudsClient.Interface.Pages
                         $"{Loc.Resolve("fw_select_net_error")}\n{Loc.Resolve("fw_select_http_error")} {ex.ErrorCode}"
                 }.ShowDialog(MainWindow.Instance);
 
-                Log.Error("FirmwareSelectionPage.Next: " + ex);
+                Log.Error(ex, "FirmwareSelectionPage.Next");
                 return;
             }
             catch (Exception ex)

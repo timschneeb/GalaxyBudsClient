@@ -97,7 +97,8 @@ namespace GalaxyBudsClient.Message
             }
             catch (Exception ex)
             {
-                Log.Error($"DeviceLogManager.WriteTempFile: Cannot write '{filename}': {ex.Message}");
+                Log.Error("DeviceLogManager.WriteTempFile: Cannot write '{File}': {Message}", 
+                    filename, ex.Message);
             }
 
             return null;

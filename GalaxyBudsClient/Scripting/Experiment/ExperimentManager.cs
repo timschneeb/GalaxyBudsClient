@@ -33,13 +33,13 @@ namespace GalaxyBudsClient.Scripting.Experiment
         {
             if (_activeExperiment != null)
             {
-                Log.Warning($"ExperimentRuntime: Skipped. Another experiment (#{_activeExperiment?.Id}) is already running.");
+                Log.Warning("ExperimentRuntime: Skipped. Another experiment (#{Id}) is already running", _activeExperiment?.Id);
                 return;
             }
 
             if (string.IsNullOrEmpty(e.Script))
             {
-                Log.Warning($"ExperimentRuntime: Experiment #{_activeExperiment?.Id} has an empty script.");
+                Log.Warning("ExperimentRuntime: Experiment #{Id} has an empty script", _activeExperiment?.Id);
                 return;
             }
             
@@ -52,12 +52,12 @@ namespace GalaxyBudsClient.Scripting.Experiment
             };
             _experimentTimeLimit.Elapsed += (sender, args) =>
             {
-                Log.Warning($"ExperimentRuntime: Experiment #{e.Id} cancelled. Time constraint of {_experimentTimeLimit.Interval / 1000} seconds exceeded");
+                Log.Warning("ExperimentRuntime: Experiment #{Id} cancelled. Time constraint of {Interval} seconds exceeded", e.Id, _experimentTimeLimit.Interval / 1000);
                 ReportResult(new ExperimentRuntimeResult(-2, string.Empty, $"TIMEOUT ({_experimentTimeLimit.Interval / 1000}s)"));
             };
             _experimentTimeLimit.Start();
             
-            Log.Debug($"ExperimentRuntime: Launching experiment id #{e.Id} ({e.Name})");
+            Log.Debug("ExperimentRuntime: Launching experiment id #{Id} ({Name})", e.Id, e.Name);
             try
             {
                 try
@@ -65,19 +65,19 @@ namespace GalaxyBudsClient.Scripting.Experiment
                     _activeExperimentHook = (IExperimentBase)CSScript.Evaluator.LoadCode(e.Script);
                     _activeExperimentHook.Finished += ReportResult;
                     
-                    Log.Debug($"ExperimentRuntime: Experiment #{e.Id} hooked");
+                    Log.Debug("ExperimentRuntime: Experiment #{Id} hooked", e.Id);
                     
                     ScriptManager.Instance.RegisterHook(_activeExperimentHook);
                 }
                 catch(CompilerException ex)
                 {
-                    Log.Error($"ScriptManager.RegisterHook: Compiler error: {ex.Message}");
+                    Log.Error("ScriptManager.RegisterHook: Compiler error: {Message}", ex.Message);
                     ReportResult(new ExperimentRuntimeResult(-3, ex.Message, $"COMPILER_ERROR"));
                 }
             }
             catch (Exception ex)
             {
-                Log.Error($"ExperimentRuntime: Failed to execute #{e.Id}. Reason: {ex.Message}; Source: {ex.Source}; ({ex})");
+                Log.Error(ex, "ExperimentRuntime: Failed to execute #{Id}. Reason: {Message}; Source: {Source}", e.Id, ex.Message, ex.Source);
                 ReportResult(new ExperimentRuntimeResult(-1, $"{ex.Message} (Source: {ex.Source}; Type: {ex.GetType()})", $"GENERIC_LAUNCH_ERROR"));
             }
         }
@@ -123,7 +123,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
                     return;
                 }
 
-                Log.Debug($"ExperimentRuntime: Experiment finished with result code {runtimeResult.ResultCode}");
+                Log.Debug("ExperimentRuntime: Experiment finished with result code {Code}", runtimeResult.ResultCode);
 
                 if (_activeExperimentHook != null)
                 {
@@ -142,7 +142,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
             }
             catch (Exception ex)
             {
-                Log.Error("ExperimentManager: Error while posting results: " + ex);
+                Log.Error(ex, "ExperimentManager: Error while posting results");
                 SentrySdk.CaptureException(ex);
             } 
 

@@ -66,7 +66,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
 
                 _deviceWatcher.Added += (watcher, deviceInfo) =>
                 {
-                    Log.Debug($"WindowsRT.BluetoothService: Device added: {deviceInfo.Id}");
+                    Log.Debug("WindowsRT.BluetoothService: Device added: {DeviceInfoId}", deviceInfo.Id);
                     if (deviceInfo.Name != string.Empty)
                     {
                         _deviceCache?.Add(new BluetoothDeviceRT(deviceInfo));
@@ -75,7 +75,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
 
                 _deviceWatcher.Updated += (watcher, deviceInfoUpdate) =>
                 {
-                    Log.Debug($"WindowsRT.BluetoothService: Device updated: {deviceInfoUpdate?.Id}");
+                    Log.Debug("WindowsRT.BluetoothService: Device updated: {Id}", deviceInfoUpdate?.Id);
 
                     _deviceCache?.Where(x => x?.Id == deviceInfoUpdate?.Id).ToList().ForEach(async x =>
                     {
@@ -103,7 +103,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
 
                 _deviceWatcher.Removed += (watcher, deviceInfoUpdate) =>
                 {
-                    Log.Debug($"WindowsRT.BluetoothService: Device removed: {deviceInfoUpdate.Id}");
+                    Log.Debug("WindowsRT.BluetoothService: Device removed: {Id}", deviceInfoUpdate.Id);
 
                     _deviceCache?.Where(x => x?.Id == deviceInfoUpdate?.Id).ToList().ForEach(x =>
                     {
@@ -133,8 +133,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
             }
             catch (ArgumentException ex)
             {
-                Log.Error(
-                    $"WindowsRT.BluetoothService: Failed to set up device watcher. Protocol GUID probably not found. Details: {ex}");
+                Log.Error(ex, "WindowsRT.BluetoothService: Failed to set up device watcher. Protocol GUID probably not found");
                 throw new PlatformNotSupportedException("Failed to set up device watcher. Make sure you have a compatible Bluetooth driver installed.");
             }
         }
@@ -160,16 +159,14 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                     string.Equals(x.Address, macAddress, StringComparison.CurrentCultureIgnoreCase)).ToList();
                 if (matches.Count <= 0)
                 {
-                    Log.Error(
-                        $"WindowsRT.BluetoothService: Registered device not available. Expected MAC: {macAddress}");
+                    Log.Error("WindowsRT.BluetoothService: Registered device not available. Expected MAC: {MacAddress}", macAddress);
                     BluetoothErrorAsync?.Invoke(this, new BluetoothException(
                         BluetoothException.ErrorCodes.ConnectFailed,
                         "Device unavailable. Not device with registered MAC address not found nearby. If you are certain that your earbuds are connected to this computer, please unregister them and try again."));
                 }
                 else
                 {
-                    Log.Debug(
-                        $"WindowsRT.BluetoothService: Selected '{matches[0].Name}' ({matches[0].Address}) from cache as target");
+                    Log.Debug("WindowsRT.BluetoothService: Selected \'{Name}\' ({Address}) from cache as target", matches[0].Name, matches[0].Address);
                 }
 
                 // Perform device access checks before trying to get the device.
@@ -200,8 +197,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(
-                        $"WindowsRT.BluetoothService: Error while getting Bluetooth device from cached id: {ex.Message}");
+                    Log.Error("WindowsRT.BluetoothService: Error while getting Bluetooth device from cached id: {Message}", ex.Message);
                     BluetoothErrorAsync?.Invoke(this,
                         new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
                             ex.Message));
@@ -261,8 +257,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                 catch (Exception ex) when ((uint) ex.HResult == 0x80070490) // ERROR_ELEMENT_NOT_FOUND
                 {
                     Log.Error(
-                        "WindowsRT.BluetoothService: Error while connecting (HRESULT: ERROR_ELEMENT_NOT_FOUND): " +
-                        ex.Message);
+                        "WindowsRT.BluetoothService: Error while connecting (HRESULT: ERROR_ELEMENT_NOT_FOUND): {Message}", ex.Message);
                     BluetoothErrorAsync?.Invoke(this,
                         new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
                             "SPP server on remote device unavailable. Please reboot your earbuds by placing both into the case and closing it. (ERROR_ELEMENT_NOT_FOUND)"));
@@ -278,7 +273,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
             }
             catch (Exception ex)
             {
-                Log.Error("WindowsRT.BluetoothService: Unknown error while connecting: " + ex);
+                Log.Error(ex, "WindowsRT.BluetoothService: Unknown error while connecting");
                 BluetoothErrorAsync?.Invoke(this,
                     new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
                         ex.Message));
@@ -301,7 +296,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                 }
                 catch (Exception ex)
                 {
-                    Log.Error($"WindowsRT.BluetoothService: Exception while detaching writer stream: {ex}");
+                    Log.Error(ex, "WindowsRT.BluetoothService: Exception while detaching writer stream");
                 }
             }
 
@@ -320,7 +315,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
             }
 
             IsStreamConnected = false;
-            Log.Debug("WindowsRT.BluetoothService: Memory freed. Disconnected.");
+            Log.Debug("WindowsRT.BluetoothService: Memory freed. Disconnected");
             await Task.CompletedTask;
         }
 
@@ -328,7 +323,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
         {
             if (!IsStreamConnected)
             {
-                Log.Error("WindowsRT.BluetoothService: Cannot send message. Not connected.");
+                Log.Error("WindowsRT.BluetoothService: Cannot send message. Not connected");
                 BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.SendFailed,
                     "Stream disconnected while dispatching a message"));
                 await DisconnectAsync();
@@ -356,15 +351,15 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                 Log.Error("WindowsRT.BluetoothService: Remote closed connection while dispatching message");
                 BluetoothErrorAsync?.Invoke(this,
                     new BluetoothException(BluetoothException.ErrorCodes.SendFailed,
-                        "Remote device closed connection: " + ex.HResult.ToString() + " - " + ex.Message));
+                        "Remote device closed connection: " + ex.HResult + " - " + ex.Message));
                 await DisconnectAsync();
             }
             catch (Exception ex)
             {
-                Log.Error("WindowsRT.BluetoothService: Error while sending: " + ex.Message);       
+                Log.Error("WindowsRT.BluetoothService: Error while sending: {Message}", ex.Message);       
                 BluetoothErrorAsync?.Invoke(this,                                                                  
                     new BluetoothException(BluetoothException.ErrorCodes.SendFailed,                               
-                        "Remote device closed connection: " + ex.HResult.ToString() + " - " + ex.Message));  
+                        "Remote device closed connection: " + ex.HResult + " - " + ex.Message));  
                 await DisconnectAsync();      
             }
         }
@@ -387,7 +382,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                 catch (OperationCanceledException)
                 {
                     IsStreamConnected = false;
-                    Log.Debug("WindowsRT.BluetoothService: BluetoothServiceLoop cancelled.");
+                    Log.Debug("WindowsRT.BluetoothService: BluetoothServiceLoop cancelled");
                     return;
                 }
                 

@@ -67,8 +67,8 @@ namespace GalaxyBudsClient.Model.Firmware
             }
             else
             {   
-                Log.Warning("FirmwareRemoteBinary: Device version info length is wrong: " + 
-                            current.Length + " vs " + item.BuildName.Length);
+                Log.Warning("FirmwareRemoteBinary: Device version info length is wrong: {Current} vs {New}", 
+                    current.Length, item.BuildName.Length);
                 return false;
             }
         }

@@ -46,7 +46,7 @@ namespace GalaxyBudsClient.Utils.Interface
                 var dictId = ResourceIndexer.Find("Brushes-");
                 if (dictId == -1)
                 {
-                    Log.Error("ThemeUtils: No active brushes resource found. Cannot switch themes.");
+                    Log.Error("ThemeUtils: No active brushes resource found. Cannot switch themes");
                 }
                 else
                 {
@@ -59,7 +59,7 @@ namespace GalaxyBudsClient.Utils.Interface
             }
             catch (IOException e)
             {
-                Log.Error($"Localization: IOError while loading locales. Details: {e.Message}");
+                Log.Error("Localization: IOError while loading locales. Details: {EMessage}", e.Message);
             }
         }
     }

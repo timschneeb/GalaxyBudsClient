@@ -76,7 +76,7 @@ namespace GalaxyBudsClient.Utils.Interface
                     {
                         string msg = "Neither custom language nor fallback resource found. " +
                                      "Unwanted side-effects may occur.";
-                        Log.Error($"Localization: {msg}");
+                        Log.Error("Localization: {Msg}", msg);
                         ErrorDetected?.Invoke("Unable to resolve resource", msg);
                     }
                     else
@@ -103,7 +103,7 @@ namespace GalaxyBudsClient.Utils.Interface
                             {
                                 string msg = $"An external resource dictionary contains syntax errors.\n\nPlease check line {ex.LineNumber}, column {ex.LinePosition} in the affected XAML file.\n\n{path}";
                                 ErrorDetected?.Invoke("XAML syntax error", msg);
-                                Log.Error($"Localization: XAML syntax error. Line {ex.LineNumber}, column {ex.LinePosition}.");
+                                Log.Error("Localization: XAML syntax error. Line {Line}, column {Position}", ex.LineNumber, ex.LinePosition);
                             }
                         }
                         else
@@ -117,7 +117,7 @@ namespace GalaxyBudsClient.Utils.Interface
                 catch (IOException e)
                 {
                     ErrorDetected?.Invoke("IO-Exception", e.Message);
-                    Log.Error($"Localization: IOError while loading locales. Details: {e.Message}");
+                    Log.Error("Localization: IOError while loading locales. Details: {Message}", e.Message);
                 }
                 
                 LanguageUpdated?.Invoke();

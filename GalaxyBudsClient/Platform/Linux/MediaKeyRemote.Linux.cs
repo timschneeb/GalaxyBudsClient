@@ -38,7 +38,7 @@ namespace GalaxyBudsClient.Platform.Linux
             }
             catch (DBusException ex)
             {
-                Log.Error($"{ex.ErrorName}: {ex.ErrorMessage}");
+                Log.Error("{Name}: {Message}", ex.ErrorName, ex.ErrorMessage);
             }
         }
 
@@ -51,7 +51,7 @@ namespace GalaxyBudsClient.Platform.Linux
             }
             catch (DBusException ex)
             {
-                Log.Error($"{ex.ErrorName}: {ex.ErrorMessage}");
+                Log.Error("{Name}: {Message}", ex.ErrorName, ex.ErrorMessage);
             }
         }
 
@@ -64,7 +64,7 @@ namespace GalaxyBudsClient.Platform.Linux
             }
             catch (DBusException ex)
             {
-                Log.Error($"{ex.ErrorName}: {ex.ErrorMessage}");
+                Log.Error("{Name}: {Message}", ex.ErrorName, ex.ErrorMessage);
             }
         }
     }

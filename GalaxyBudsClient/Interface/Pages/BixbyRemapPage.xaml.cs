@@ -83,7 +83,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			catch (Exception ex)
 			{
 				_bixbyLang.Description = Loc.Resolve("unknown");
-				Log.Error("BixbyRemapPage: " + ex);
+				Log.Error(ex, "BixbyRemapPage");
 			}
 		}
 

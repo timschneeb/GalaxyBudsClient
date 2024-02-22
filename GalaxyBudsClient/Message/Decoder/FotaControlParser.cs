@@ -31,7 +31,7 @@ namespace GalaxyBudsClient.Message.Decoder
                     Id = BitConverter.ToInt16(msg.Payload, 1);
                     break;
                 default:
-                    Log.Debug($"FotaControlParser: Unknown ControlId {msg.Payload[0]}");
+                    Log.Debug("FotaControlParser: Unknown ControlId {Id}", msg.Payload[0]);
                     break;
             }
         }

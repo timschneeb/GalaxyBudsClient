@@ -75,7 +75,7 @@ namespace GalaxyBudsClient.Bluetooth.Windows
             }
             catch (Win32Exception ex)
             {
-                Log.Error($"Windows.BluetoothService.Win32DeviceChangeListener: Win32Exception: {ex.Message} (Win32ErrorCode = {ex.NativeErrorCode}; HRESULT = {ex.ErrorCode})");
+                Log.Error("Windows.BluetoothService.Win32DeviceChangeListener: Win32Exception: {ExMessage} (Win32ErrorCode = {ExNativeErrorCode}; HRESULT = {ExErrorCode})", ex.Message, ex.NativeErrorCode, ex.ErrorCode);
             }
             catch (InvalidOperationException)
             {
@@ -85,7 +85,8 @@ namespace GalaxyBudsClient.Bluetooth.Windows
             catch (ArgumentException ex)
             {
                 /* Listener will stay disabled */
-                Log.Error($"Windows.BluetoothService.Win32DeviceChangeListener: Invalid argument: {ex.Message}");
+                Log.Error("Windows.BluetoothService.Win32DeviceChangeListener: Invalid argument: {ExMessage}", ex.Message);
+                
             }
         }
         
@@ -99,7 +100,7 @@ namespace GalaxyBudsClient.Bluetooth.Windows
 
             if(e.Device.DeviceAddress == MacUtils.ToAddress(_currentMac))
             {
-                Log.Debug($"Windows.BluetoothService: Target device inbound ({_currentMac})");
+                Log.Debug("Windows.BluetoothService: Target device inbound ({CurrentMac})", _currentMac);
                 if (IsStreamConnected)
                 {
                     Log.Debug($"Windows.BluetoothService: Target device already connected");
@@ -113,12 +114,13 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                     catch (InvalidOperationException ex)
                     {
                         BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.Unknown, ex.Message));
-                        Log.Error($"Windows.BluetoothService: DeviceInRange: InvalidOperationException caught ({ex.Message})");
+                        Log.Error("Windows.BluetoothService: DeviceInRange: InvalidOperationException caught ({ExMessage})", ex.Message);
                     }
                     catch (BluetoothException ex)
                     {
                         BluetoothErrorAsync?.Invoke(this, ex);
-                        Log.Error($"Windows.BluetoothService: DeviceInRange: BluetoothException caught ({ex.Message})");
+                        Log.Error("Windows.BluetoothService: DeviceInRange: BluetoothException caught ({ExMessage})", ex.Message);
+                        
                     }
 
                 }
@@ -155,7 +157,7 @@ namespace GalaxyBudsClient.Bluetooth.Windows
 
             if (_client?.Connected ?? false)
             {
-                Log.Debug("Windows.BluetoothService: Already connected, skipped.");
+                Log.Debug("Windows.BluetoothService: Already connected, skipped");
                 _connSemaphore.Release();
                 return;
             }
@@ -172,7 +174,7 @@ namespace GalaxyBudsClient.Bluetooth.Windows
 
             if (_client == null)
             {
-                Log.Error("Windows.BluetoothService: Cannot create client and connect.");
+                Log.Error("Windows.BluetoothService: Cannot create client and connect");
                 BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.Unknown, "Cannot create client"));
                 _connSemaphore.Release();
                 return;
@@ -185,7 +187,7 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                     var addr = MacUtils.ToAddress(macAddress);
                     if (addr == null)
                     {
-                        Log.Error("Windows.BluetoothService: Invalid MAC address. Failed to connect.");
+                        Log.Error("Windows.BluetoothService: Invalid MAC address. Failed to connect");
                         throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, "Invalid MAC address. Please deregister your device and try again.");
                     }
 
@@ -231,7 +233,7 @@ namespace GalaxyBudsClient.Bluetooth.Windows
             Log.Debug("Windows.BluetoothService: Disconnecting...");
             if (_loop == null || _loop.Status == TaskStatus.Created)
             {
-                Log.Debug("Windows.BluetoothService: BluetoothServiceLoop not yet launched. No need to cancel.");
+                Log.Debug("Windows.BluetoothService: BluetoothServiceLoop not yet launched. No need to cancel");
             }
             else
             {
@@ -268,18 +270,18 @@ namespace GalaxyBudsClient.Bluetooth.Windows
 
             if (_client == null)
             {
-                Log.Error("Windows.BluetoothService: Cannot create client and get devices.");
-                return new BluetoothDevice[0];
+                Log.Error("Windows.BluetoothService: Cannot create client and get devices");
+                return Array.Empty<BluetoothDevice>();
             }
 
             var devs = await Task.Factory.FromAsync((callback, stateObject) => _client.BeginDiscoverDevices(20, true, true, false, false, callback, stateObject), _client.EndDiscoverDevices, null);
             if (devs == null)
             {
-                return new BluetoothDevice[0];
+                return Array.Empty<BluetoothDevice>();
             }
 
-            BluetoothDevice[] devices = new BluetoothDevice[devs.Length];
-            for (int i = 0; i < devs.Length; i++)
+            var devices = new BluetoothDevice[devs.Length];
+            for (var i = 0; i < devs.Length; i++)
             {
                 var formattedMac = Regex.Replace(devs[i].DeviceAddress.ToString(), ".{2}", "$0:").TrimEnd(':');
                 devices[i] = new BluetoothDevice(devs[i].DeviceName, formattedMac,
@@ -309,7 +311,7 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                     throw;
                 }
                 
-                if (_client == null || !_client.Connected)
+                if (_client is not { Connected: true })
                 {
                     continue;
                 }
@@ -334,20 +336,20 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                 var available = _client.Available;
                 if (available > 0 && peerStream.CanRead)
                 {
-                    byte[] buffer = new byte[available];
+                    var buffer = new byte[available];
                     try
                     {
                         peerStream.Read(buffer, 0, available);
                     }
                     catch (SocketException ex)
                     {
-                        Log.Error($"Windows.BluetoothService: BluetoothServiceLoop: SocketException thrown while reading from socket: {ex.Message}. Cancelled.");
+                        Log.Error("Windows.BluetoothService: BluetoothServiceLoop: SocketException thrown while reading from socket: {ExMessage}. Cancelled", ex.Message);
                         BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.ReceiveFailed, ex.Message));
                         return;
                     }
                     catch (IOException ex)
                     {
-                        Log.Error($"Windows.BluetoothService: BluetoothServiceLoop: IOException thrown while writing to socket: {ex.Message}. Cancelled.");
+                        Log.Error("Windows.BluetoothService: BluetoothServiceLoop: IOException thrown while writing to socket: {ExMessage}. Cancelled", ex.Message);
                         BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.ReceiveFailed, ex.Message));
                     }
 
@@ -367,12 +369,12 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                     }
                     catch (SocketException ex)
                     {
-                        Log.Error($"Windows.BluetoothService: BluetoothServiceLoop: SocketException thrown while writing to socket: {ex.Message}. Cancelled.");
+                        Log.Error("Windows.BluetoothService: BluetoothServiceLoop: SocketException thrown while writing to socket: {ExMessage}. Cancelled", ex.Message);
                         BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.SendFailed, ex.Message));
                     }
                     catch (IOException ex)
                     {
-                        Log.Error($"Windows.BluetoothService: BluetoothServiceLoop: IOException thrown while writing to socket: {ex.Message}. Cancelled.");
+                        Log.Error("Windows.BluetoothService: BluetoothServiceLoop: IOException thrown while writing to socket: {ExMessage}. Cancelled", ex.Message);
                         BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.SendFailed, ex.Message));
                     }
                 }

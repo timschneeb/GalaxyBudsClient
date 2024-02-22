@@ -20,7 +20,7 @@ namespace ThePBone.MprisClient
                 }
                 catch(DBusException ex)
                 {                        
-                    Log.Error($"MprisClient: Failed to update player target: {ex}");
+                    Log.Error(ex, "MprisClient: Failed to update player target");
                     return null;
                 }
                 return _player;
@@ -65,7 +65,7 @@ namespace ThePBone.MprisClient
                     }
                     catch (DBusException)
                     {
-                        Log.Error($"MprisClient: {name} is not ready");
+                        Log.Error("MprisClient: {Name} is not ready", name);
                     }
                 }
             }
