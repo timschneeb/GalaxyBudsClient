@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CommandLine;
@@ -66,13 +65,13 @@ public static class CliHandler
         catch (AggregateException e)
         {
             if(e.InnerExceptions.Any(x => x is DBusException { ErrorName: "org.freedesktop.DBus.Error.ServiceUnknown" }))
-                Console.Error.WriteLine("\nError: The Galaxy Buds Manager app is not running. The CLI can only be used while the app is running.");
+                Console.Error.WriteLine("error: the Galaxy Buds Manager app is not active. The CLI can only be used while the app is running.");
             else
-                Console.Error.WriteLine("\nError: " + e.Message);
+                Console.Error.WriteLine("error: " + e.Message);
         }
         catch (Exception e)
         {
-            Console.Error.WriteLine("\nError: " + e.Message);
+            Console.Error.WriteLine("error: " + e.Message);
         }
         
         Console.Out.Flush();
@@ -87,8 +86,8 @@ public static class CliHandler
         }
         catch (Exception e)
         {
-            Log.Error(e, "Failed to open connection to IPC service");
-            await Console.Error.WriteLineAsync("\nError: Failed to connect to the Galaxy Buds Manager app. The CLI can only be used while the app is running.");
+            Log.Error(e, "failed to open connection to IPC service");
+            await Console.Error.WriteLineAsync("error: failed to connect to the Galaxy Buds Manager app. The CLI can only be used while the app is running.");
             await Console.Error.FlushAsync();
             Environment.Exit(1);
             return null;
@@ -148,27 +147,38 @@ public static class CliHandler
         
         var proxy = client.CreateProxy<IDeviceObject>(IpcService.ServiceName, DeviceObject.Path);
 
-        if (opts.GetAllProperties)
+        try
         {
-            var props = await proxy.GetAllAsync();
-            var dict = props.GetAll();
-            if(opts.UseJson)
-                Console.WriteLine(JsonConvert.SerializeObject(dict, Formatting.Indented));
-            else
+            if (opts.GetAllProperties)
             {
-                foreach (var kv in dict)
+                var props = await proxy.GetAllAsync();
+                var dict = props.GetAll();
+                if (opts.UseJson)
+                    Console.WriteLine(JsonConvert.SerializeObject(dict, Formatting.Indented));
+                else
                 {
-                    Console.WriteLine($"{kv.Key} = {kv.Value}");
+                    foreach (var kv in dict)
+                    {
+                        Console.WriteLine($"{kv.Key} = {kv.Value}");
+                    }
                 }
             }
+            else if (opts.GetProperty != null)
+            {
+                var prop = await proxy.GetAsync(opts.GetProperty);
+                Console.WriteLine(opts.UseJson ? JsonConvert.SerializeObject(prop, Formatting.Indented) : $"{prop}");
+            }
+            else
+                return false;
         }
-        else if (opts.GetProperty != null)
+        catch (DBusException e)
         {
-            var prop = await proxy.GetAsync(opts.GetProperty);
-            Console.WriteLine(opts.UseJson ? JsonConvert.SerializeObject(prop, Formatting.Indented) : $"{prop}");
+            if (e.ErrorName == "org.freedesktop.DBus.Error.UnknownMethod")
+                await Console.Error.WriteLineAsync("error: there is currently no device connected");
+            else
+                throw;
         }
-        else
-            return false;
+
         return true;
     }
 }
