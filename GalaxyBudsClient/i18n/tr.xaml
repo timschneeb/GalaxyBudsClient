@@ -411,7 +411,7 @@ Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
     <sys:String x:Key="nc_anc_level">Yüksek hassaslık</sys:String>
     <sys:String x:Key="nc_anc_level_description">Daha güçlü gürültü engelleme efekti</sys:String>
     <sys:String x:Key="nc_ambient">Ortam sesini özellştir</sys:String>
-    <sys:String x:Key="nc_ambient_description">Ortam ses Noise cancelling with one earbudtonunu ve ses seviyesini yapılandırın (varsa)</sys:String>
+    <sys:String x:Key="nc_ambient_description">Ortam ses tonunu ve ses seviyesini yapılandırın (varsa)</sys:String>
     <sys:String x:Key="nc_voicedetect">Sohbet tespit edildi</sys:String>
     <sys:String x:Key="nc_voicedetect_description">Sesiniz algılandığında, konuşmayı kolaylaştırmak için Ortam sesini otomatik olarak açın ve medya sesini azaltın</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">Sohbet zaman-aşımı</sys:String>
