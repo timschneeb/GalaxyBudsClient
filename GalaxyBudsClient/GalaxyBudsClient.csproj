@@ -87,7 +87,7 @@
     <PropertyGroup>
         <!-- https://github.com/AvaloniaUI/Avalonia/commit/76caeedfd2baf1911f889011189d1c21657d2987,
             last release at time of writing is 11.0.9, so anything newer should include a fix -->
-        <AvaloniaVersion>11.1.999-cibuild0045193-beta</AvaloniaVersion>
+        <AvaloniaVersion>11.1.999-cibuild0045236-beta</AvaloniaVersion>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
