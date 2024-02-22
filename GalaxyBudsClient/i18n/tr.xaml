@@ -133,7 +133,8 @@
     <sys:String x:Key="event_eq_toggle">Ekolayzırı aç-kapat</sys:String>
     <sys:String x:Key="event_eq_switch">Ekolayzır modunu yenile</sys:String>
     <sys:String x:Key="event_anc_toggle">Aktif gürültü engellemeyi aç-kapat</sys:String>
-    <sys:String x:Key="event_anc_switch_sensitivity">ANS hassaslığını değiştir</sys:String>
+    <sys:String x:Key="event_anc_switch_sensitivity">ANC hassaslığını değiştir</sys:String>
+    <sys:String x:Key="event_anc_switch_one">Tek kulaklık ile ANC'yi değiştir</sys:String>
     <sys:String x:Key="event_touch_lock_toggle">Dokunma kontrolünü aç-kapat</sys:String>
     <sys:String x:Key="event_double_edge_touch_toggle">Kenar dokunma özelliğini aç-kapat</sys:String>
     <sys:String x:Key="event_conversation_toggle">Sohbet algılamayı aç-kapat</sys:String>
@@ -158,6 +159,7 @@
 
     <!--Main page-->
     <sys:String x:Key="mainpage_corrupt_data">Bozulmuş veri bulundu. Tekrar bağlanılıyor...</sys:String>
+    <sys:String x:Key="mainpage_fit_test">Kulaklık Uyum Testi</sys:String>
     <sys:String x:Key="mainpage_find_my_earbuds">Kulaklıklarımı Bul</sys:String>
     <sys:String x:Key="mainpage_touchpad">Dokunmatik Yüzey</sys:String>
     <sys:String x:Key="mainpage_ambient_sound">Ortam Sesi</sys:String>
@@ -326,8 +328,14 @@ Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
     <sys:String x:Key="settings_transitions_description">Kaydırma geçişlerini etkinleştir</sys:String>
     <sys:String x:Key="settings_localization_disable">Dil</sys:String>
     <sys:String x:Key="settings_localization_disable_description">İngilizce diline zorla</sys:String>
-    <sys:String x:Key="settings_minimize_tray">Uygulama tepsisine taşı</sys:String>
+    <sys:String x:Key="settings_minimize_tray">Sistem tepsisine taşı</sys:String>
     <sys:String x:Key="settings_minimize_tray_description">Uygulamayı kapatmak yerine arkaplana al</sys:String>
+    <sys:String x:Key="settings_tray_settings">Otomatik başlatma ve sistem tepsisi simgesi</sys:String>
+    <sys:String x:Key="settings_tray_settings_description">Otomatik başlatma ve sistem tepsisi simgesi davranışını düzenle</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode">Dinamik sistem tepsisi simgesi</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_off">Kapalı</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_min">En düşük pil seviyesini göster</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_avg">Ortalama pil seviyesini göster</sys:String>
     <sys:String x:Key="settings_autostart">Bilgisayar açılınca başlat</sys:String>
     <sys:String x:Key="settings_autostart_description">Küçültülmüş modda başlat</sys:String>
     <sys:String x:Key="settings_autostart_permission">Kayıt defterinde otomatik başlatma girişi güncellenemiyor. Kayıt defteri erişimi (HKCU), sistem yöneticiniz tarafından açıkça devre dışı bırakıldı.</sys:String>
@@ -374,9 +382,16 @@ Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
     <sys:String x:Key="fmg_warning_right">Lütfen sağ kulaklığı kulağınızdan çıkarın.</sys:String>
     <sys:String x:Key="fmg_header">Kulaklıklarımı bul</sys:String>
 
+    <!-- Fit test-->
+    <sys:String x:Key="gft_warning">Lütfen her iki kulaklığı da takın.</sys:String>
+    <sys:String x:Key="gft_bad">Kötü Uyum</sys:String>
+    <sys:String x:Key="gft_good">İyi Uyum</sys:String>
+    <sys:String x:Key="gft_fail">Test başarısız</sys:String>
+
     <!--Equalizer-->
     <sys:String x:Key="eq_header">Ekolayzır</sys:String>
     <sys:String x:Key="eq_enable">Ekolayzır'ı Etkinleştir</sys:String>
+    <sys:String x:Key="eq_preset">Hazır ayar</sys:String>
     <sys:String x:Key="eq_mode">Mod:</sys:String>
     <sys:String x:Key="eq_dolby">Dolby ile kullanım için optimize et</sys:String>
     <sys:String x:Key="eq_stereo_balance">Sağ/sol ses dengesi</sys:String>
@@ -391,6 +406,8 @@ Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
 
     <!--Noise control-->
     <sys:String x:Key="nc_header">Gürültü engelleyici</sys:String>
+    <sys:String x:Key="nc_anc_one">Tek kulaklık ile gürültü engelleme</sys:String>
+    <sys:String x:Key="nc_anc_one_description">Rahatsızlığı önlemek için gürültü engelleme normalde iki kulaklık gerektirir, bunu etkinleştirerek yalnızca bir kulaklık ile gürültü engellemeyi etkinleştirin</sys:String>
     <sys:String x:Key="nc_anc_level">Yüksek hassaslık</sys:String>
     <sys:String x:Key="nc_anc_level_description">Daha güçlü gürültü engelleme efekti</sys:String>
     <sys:String x:Key="nc_ambient">Ortam sesini özellştir</sys:String>
@@ -468,6 +485,7 @@ Yeniden eşleme yapılandırması yalnızca bu cihazda etkindir. Kulaklıkların
     <sys:String x:Key="connlost_description_p2">Lütfen Bluetooth ayarlarınızı kontrol edin ve kulaklıklarınızın bilgisayarınıza bağlı olduğundan emin olun. Gerekirse yeni kulaklıklara da bağlanabilirsiniz. Bunun için lütfen "Seçenekler &gt; Cihazı sil" seçeneğini kullanın.</sys:String>
     <sys:String x:Key="connlost_description_p3">Ek bilgi:</sys:String>
     <sys:String x:Key="connlost_noinfo">Hata bilgisi toplanılamadı</sys:String>
+    <sys:String x:Key="connlost_disconnected">Cihaz bağlantısı kesildi</sys:String>
     <sys:String x:Key="connlost_connect">Bağla</sys:String>
     <sys:String x:Key="connlost_connecting">Bağlanılıyor...</sys:String>
 
@@ -475,7 +493,7 @@ Yeniden eşleme yapılandırması yalnızca bu cihazda etkindir. Kulaklıkların
     <sys:String x:Key="fw_disclaimer">Sorumluluk Reddi</sys:String>
     <sys:String x:Key="fw_disclaimer_desc">Bu ürün yazılımı güncelleme aracı, Samsung'un resmi Android uygulamasında bulunan resmi güncelleyicinin doğru bir kopyasıdır. Bu uygulamayı çeşitli koşullar altında (normal çalışma, bağlantı kaybı, kasıtlı olarak bozulmuş Bluetooth paketleri, ...) herhangi bir sorun yaşamadan kapsamlı bir şekilde test ettim. Yine de, ürün yazılımı güncellemeleri hayati sistem bileşenlerini değiştirdiğinden ve her zaman dikkatli bir şekilde ele alınması gerektiğinden, bir şeyler ters giderse herhangi bir sorumluluk kabul etmem.
 
-İNDİRME: Daha eski ürün yazılımı sürümlerine geçmek mümkün olsa da ve bununla ilgili hiçbir sorunla karşılaşmadım, beklenmeyen sorunlara neden olabilir ve yalnızca gerektiğinde yapılmalıdır. Sürüm düşürmeden sonra fabrika ayarlarına sıfırlama önerilir, ancak genellikle gerekli değildir. 
+İNDİRME: Daha eski ürün yazılımı sürümlerine geçmek mümkün olsa da ve bununla ilgili hiçbir sorunla karşılaşmadım, beklenmeyen sorunlara neden olabilir ve yalnızca gerektiğinde yapılmalıdır. Sürüm düşürmeden sonra fabrika ayarlarına sıfırlama önerilir, ancak genellikle gerekli değildir.
 ÖZEL FLAŞ: Sabit sürücünüzden ürün yazılımı dosyalarını da yükleyebilirsiniz. DİĞER modeller için tasarlanmış ürün yazılımı binary dosyalarını cihazınıza FLAŞ ETMEYİN.
 
 Bu uygulama GPLv3 kapsamında lisanslanmıştır. Bunu kullanarak, lisansı ve sorumluluk sınırlamasını kabul etmiş olursunuz. Kabul etmek için 'Devam'a basın.</sys:String>
@@ -499,6 +517,9 @@ Bu uygulama GPLv3 kapsamında lisanslanmıştır. Bunu kullanarak, lisansı ve s
     <sys:String x:Key="fw_select_http_error">HTTP hata kodu:</sys:String>
     <sys:String x:Key="fw_select_unknown_build">Bilinmeyen yapı adı</sys:String>
     <sys:String x:Key="fw_select_verify_fail">Ürün yazılımı doğrulanırken hata</sys:String>
+    <sys:String x:Key="fw_select_verify_model_mismatch_fail">Cihaz yazılımı uyumsuzluğu tespit edildi! Cihaz yazılımı aktarımı iptal edildi.
+
+{1} cihazınıza {0} cihazı için bir cihaz yazılımı yüklemeye çalışıyorsunuz. Bu, kulaklıklarınızı kalıcı olarak bozabilir.</sys:String>
     <sys:String x:Key="fw_select_confirm">'{1}' cihazınınzda şunu flaşlamak üzeresiniz: '{0}'</sys:String>
     <sys:String x:Key="fw_select_confirm_desc">Bu bilgilerin doğru olduğundan emin olun, aksi takdirde 'İptal'e basın ve kurulumunuzu iki kez kontrol edin.
 
@@ -549,6 +570,7 @@ Details:</sys:String>
     <sys:String x:Key="spatial_dump_rpy">RPY değerleri:</sys:String>
 
     <!--Header-->
+    <sys:String x:Key="window_open">Aç</sys:String>
     <sys:String x:Key="window_minimize">Küçült</sys:String>
     <sys:String x:Key="window_close">Kapat</sys:String>
 
