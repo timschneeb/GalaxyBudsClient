@@ -67,7 +67,7 @@ public static class CliHandler
     {
         try
         {
-            return await IpcService.OpenClientConnection();
+            return await IpcService.OpenClientConnectionAsync();
         }
         catch (Exception e)
         {

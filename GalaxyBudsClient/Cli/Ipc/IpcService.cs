@@ -15,8 +15,9 @@ namespace GalaxyBudsClient.Cli.Ipc
     {
         public static string ServiceName => "me.timschneeberger.galaxybudsclient";
         private static string TcpAddress => "tcp:host=localhost,port=54533";
-
-        public static async Task<Connection> OpenClientConnection()
+        private static DeviceObject? _deviceObject;
+        
+        public static async Task<Connection> OpenClientConnectionAsync()
         {
             var clientOptions = new ClientConnectionOptions(TcpAddress);
             var client = PlatformUtils.IsLinux ? new Connection(Address.Session) : new Connection(clientOptions);
@@ -24,12 +25,20 @@ namespace GalaxyBudsClient.Cli.Ipc
             return client;
         }
         
+        private static async Task UpdateDeviceObjectAsync(this IConnection connection)
+        {
+            if (!BluetoothImpl.Instance.IsConnected)
+                connection.UnregisterObject(DeviceObject.Path);
+            else if (_deviceObject != null)
+                await connection.RegisterObjectAsync(_deviceObject);
+        }
+        
         public static async Task Setup()
         {
             var server = new ServerConnectionOptions();
             // On Linux, we use the regular session bus. On other platforms, we host our own d-bus server.
             var useSessionBus = PlatformUtils.IsLinux;
-            using var connection = useSessionBus ? new Connection(Address.Session) : new Connection(server);
+            var connection = useSessionBus ? new Connection(Address.Session) : new Connection(server);
             
             try
             {
@@ -41,6 +50,11 @@ namespace GalaxyBudsClient.Cli.Ipc
                 
                 await connection.RegisterServiceAsync(ServiceName, ServiceRegistrationOptions.None);
                 await connection.RegisterObjectAsync(new ApplicationObject());
+                _deviceObject = new DeviceObject();
+                await connection.UpdateDeviceObjectAsync();
+
+                BluetoothImpl.Instance.Connected += (sender, args) => _ = connection.UpdateDeviceObjectAsync();
+                BluetoothImpl.Instance.Disconnected += (sender, args) => _ = connection.UpdateDeviceObjectAsync();
                 
                 if (!useSessionBus)
                 {
@@ -67,7 +81,7 @@ namespace GalaxyBudsClient.Cli.Ipc
             Connection client;
             try
             {
-                client = await OpenClientConnection();
+                client = await OpenClientConnectionAsync();
             }
             catch (Exception e)
             {

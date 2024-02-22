@@ -40,12 +40,10 @@ namespace GalaxyBudsClient.Cli.Ipc.Objects
     {
         public static readonly ObjectPath Path = new("/me/timschneeberger/galaxybudsclient");
         public ObjectPath ObjectPath => Path;
-        
-        protected override ApplicationProperties Properties { get; } = new();
             
         public ApplicationObject()
         {
-            Properties.Set(nameof(ApplicationProperties._AppVersion), Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "null");
+            Set(nameof(ApplicationProperties._AppVersion), Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "null");
         }
 
         public Task ShowBatteryPopupAsync()

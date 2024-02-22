@@ -4,9 +4,9 @@ using Tmds.DBus;
 
 namespace GalaxyBudsClient.Cli.Ipc.Objects;
 
-public abstract class BaseObjectWithProperties<T> where T : BaseProperties
+public abstract class BaseObjectWithProperties<T> where T : BaseProperties, new()
 {
-    protected abstract T Properties { get; }
+    private T Properties { get; } = new();
 
     public event Action<PropertyChanges>? OnPropertiesChanged;
 
@@ -17,21 +17,31 @@ public abstract class BaseObjectWithProperties<T> where T : BaseProperties
     
     public Task<object> GetAsync(string prop)
     {
-        return Task.FromResult(Properties.Get(prop));
+        return Task.FromResult(Get(prop));
     }
 
     public Task SetAsync(string prop, object val)
+    {
+        Set(prop, val);
+        return Task.CompletedTask;
+    }
+    
+    public Task<IDisposable> WatchPropertiesAsync(Action<PropertyChanges> handler)
+    {
+        return SignalWatcher.AddAsync(this, nameof(OnPropertiesChanged), handler);
+    }
+    
+    protected object Get(string prop)
+    {
+        return Properties.Get(prop);
+    }
+    
+    protected void Set(string prop, object val)
     {
         var changed = Properties.Set(prop, val);
         if (changed)
         {
             OnPropertiesChanged?.Invoke(PropertyChanges.ForProperty(prop, val));
         }
-        return Task.CompletedTask;
-    }
-
-    public Task<IDisposable> WatchPropertiesAsync(Action<PropertyChanges> handler)
-    {
-        return SignalWatcher.AddAsync(this, nameof(OnPropertiesChanged), handler);
     }
 }

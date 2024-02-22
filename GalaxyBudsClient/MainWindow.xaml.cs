@@ -25,6 +25,7 @@ using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Platform.Windows;
 using GalaxyBudsClient.Utils;
@@ -391,7 +392,7 @@ namespace GalaxyBudsClient
             _lastWearState = e.WearState;
         }
 
-        private async void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
+        private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
         {
             if (SettingsProvider.Instance.Popup.Enabled)
             {
@@ -404,7 +405,10 @@ namespace GalaxyBudsClient
                 WindowIconRenderer.UpdateDynamicIcon(status);
             }
             
-            await MessageComposer.SetManagerInfo();
+            // Reply manager info and request & cache SKU info
+            _ = MessageComposer.SetManagerInfo();
+            if(BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DebugSku))
+                _ = BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_SKU);
         }
 
         private void OnConnected(object? sender, EventArgs e)

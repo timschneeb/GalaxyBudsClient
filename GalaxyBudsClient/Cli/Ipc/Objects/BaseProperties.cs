@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
+using Serilog;
 
 namespace GalaxyBudsClient.Cli.Ipc.Objects;
 
@@ -36,9 +39,16 @@ public abstract class BaseProperties
             .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
             .FirstOrDefault(f => CompareKeys(prop, f))?
             .SetValue(this, val);
-
+        
         // Has value changed?
-        return oldValue != val;
+        return val switch
+        {
+            // Handle special cases
+            double d => Math.Abs((double)oldValue - d) > 0.0001,
+            int i => (int)oldValue != i,
+            string s => (string)oldValue != s,
+            _ => oldValue != val
+        };
     }
     
     private static bool CompareKeys(string key, MemberInfo field)
