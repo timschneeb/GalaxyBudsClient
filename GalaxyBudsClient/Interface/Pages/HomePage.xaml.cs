@@ -106,10 +106,10 @@ namespace GalaxyBudsClient.Interface.Pages
 			_refreshTimer.Tick += async (sender, args) =>
 				await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
             
-            SPPMessageHandler.Instance.BaseUpdate += (sender, update) => ProcessBasicUpdate(update);
-            SPPMessageHandler.Instance.GetAllDataResponse += (sender, parser) => UpdateDetails(parser);
-            SPPMessageHandler.Instance.AncEnabledUpdateResponse += (sender, b) => _ancSwitch.IsChecked = b;
-            SPPMessageHandler.Instance.AnyMessageReceived += (sender, parser) =>
+            SppMessageHandler.Instance.BaseUpdate += (sender, update) => ProcessBasicUpdate(update);
+            SppMessageHandler.Instance.GetAllDataResponse += (sender, parser) => UpdateDetails(parser);
+            SppMessageHandler.Instance.AncEnabledUpdateResponse += (sender, b) => _ancSwitch.IsChecked = b;
+            SppMessageHandler.Instance.AnyMessageReceived += (sender, parser) =>
             {
                 /* A warning label is shown when a corrupted/invalid message has been received.
                    As soon as we receive the next valid message, we can hide the warning. */

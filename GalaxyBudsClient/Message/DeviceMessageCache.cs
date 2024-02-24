@@ -28,11 +28,11 @@ namespace GalaxyBudsClient.Message
 
         private DeviceMessageCache()
         {
-            SPPMessageHandler.Instance.DebugSkuUpdate += (sender, parser) => DebugSku = parser;
-            SPPMessageHandler.Instance.ExtendedStatusUpdate += (sender, parser) => ExtendedStatusUpdate = parser;
-            SPPMessageHandler.Instance.StatusUpdate += (sender, parser) => StatusUpdate = parser;
-            SPPMessageHandler.Instance.GetAllDataResponse += (sender, parser) => DebugGetAllData = parser;
-            SPPMessageHandler.Instance.BaseUpdate += (sender, update) =>
+            SppMessageHandler.Instance.DebugSkuUpdate += (sender, parser) => DebugSku = parser;
+            SppMessageHandler.Instance.ExtendedStatusUpdate += (sender, parser) => ExtendedStatusUpdate = parser;
+            SppMessageHandler.Instance.StatusUpdate += (sender, parser) => StatusUpdate = parser;
+            SppMessageHandler.Instance.GetAllDataResponse += (sender, parser) => DebugGetAllData = parser;
+            SppMessageHandler.Instance.BaseUpdate += (sender, update) =>
             {
                 if (update.BatteryCase <= 100 || BasicStatusUpdateWithValidCase == null) // 101 = Disconnected
                 {

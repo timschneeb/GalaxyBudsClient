@@ -60,8 +60,8 @@ namespace GalaxyBudsClient.Utils.Interface
                 }
             };
             // triggering rebuild when battery % changes
-            SPPMessageHandler.Instance.StatusUpdate += (_, _) => _ = RebuildAsync();
-            SPPMessageHandler.Instance.ExtendedStatusUpdate += (_, _) => _ = RebuildAsync();
+            SppMessageHandler.Instance.StatusUpdate += (_, _) => _ = RebuildAsync();
+            SppMessageHandler.Instance.ExtendedStatusUpdate += (_, _) => _ = RebuildAsync();
             // triggering rebuild when noise control / ambient / anc state changes is handled in MessageComposer.cs
             // triggering rebuild when lock touchpad changes is handled in TouchpadPage.xaml.cs
             // triggering rebuild when eq state changes is handled in MessageComposer.cs

@@ -58,7 +58,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
             var cachedStatus = DeviceMessageCache.Instance.BasicStatusUpdate;
             UpdateContent(cachedStatus?.BatteryL ?? 0, cachedStatus?.BatteryR ?? 0, cachedStatus?.BatteryCase ?? 0);
             
-            SPPMessageHandler.Instance.BaseUpdate += InstanceOnBaseUpdate;
+            SppMessageHandler.Instance.BaseUpdate += InstanceOnBaseUpdate;
             _timer.Elapsed += (sender, args) =>
             {
                 Dispatcher.UIThread.Post(Hide, DispatcherPriority.Render);

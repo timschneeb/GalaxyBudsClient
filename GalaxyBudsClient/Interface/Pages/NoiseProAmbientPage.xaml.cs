@@ -39,7 +39,7 @@ namespace GalaxyBudsClient.Interface.Pages
             _ambientVolRight = this.GetControl<SliderListItem>("AmbientRightVol");
             _ambientCustomBorder = this.GetControl<Border>("AmbientCustomBorder");
             
-            SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+            SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
 
             EventDispatcher.Instance.EventReceived += OnEventReceived;
             Loc.LanguageUpdated += UpdateStrings;

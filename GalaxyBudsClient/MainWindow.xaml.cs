@@ -136,10 +136,10 @@ namespace GalaxyBudsClient
             BluetoothImpl.Instance.Disconnected += OnDisconnected;
             BluetoothImpl.Instance.Connected += OnConnected;
 
-            SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
-            SPPMessageHandler.Instance.StatusUpdate += OnStatusUpdate;
-            SPPMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
-            SPPMessageHandler.Instance.AnyMessageReceived += OnAnyMessageReceived;
+            SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+            SppMessageHandler.Instance.StatusUpdate += OnStatusUpdate;
+            SppMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
+            SppMessageHandler.Instance.AnyMessageReceived += OnAnyMessageReceived;
 
             EventDispatcher.Instance.EventReceived += OnEventReceived;
             (Application.Current as App)!.TrayIconClicked += TrayIcon_OnLeftClicked;
@@ -286,9 +286,9 @@ namespace GalaxyBudsClient
             BluetoothImpl.Instance.Disconnected -= OnDisconnected;
             BluetoothImpl.Instance.Connected -= OnConnected;
 
-            SPPMessageHandler.Instance.ExtendedStatusUpdate -= OnExtendedStatusUpdate;
-            SPPMessageHandler.Instance.StatusUpdate -= OnStatusUpdate;
-            SPPMessageHandler.Instance.OtherOption -= HandleOtherTouchOption;
+            SppMessageHandler.Instance.ExtendedStatusUpdate -= OnExtendedStatusUpdate;
+            SppMessageHandler.Instance.StatusUpdate -= OnStatusUpdate;
+            SppMessageHandler.Instance.OtherOption -= HandleOtherTouchOption;
 
             (Application.Current as App)!.TrayIconClicked -= TrayIcon_OnLeftClicked;
             EventDispatcher.Instance.EventReceived -= OnEventReceived;

@@ -40,8 +40,8 @@ namespace GalaxyBudsClient.Interface.Pages
             _voiceFocusBorder = this.GetControl<Border>("AmbientVoiceFocusBorder");
             _extraLoudBorder = this.GetControl<Border>("AmbientExtraLoudBorder");
 
-            SPPMessageHandler.Instance.AmbientEnabledUpdateResponse += (sender, b) => _ambientSwitch.IsChecked = b; 
-            SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+            SppMessageHandler.Instance.AmbientEnabledUpdateResponse += (sender, b) => _ambientSwitch.IsChecked = b; 
+            SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
 
             EventDispatcher.Instance.EventReceived += OnEventReceived;
             

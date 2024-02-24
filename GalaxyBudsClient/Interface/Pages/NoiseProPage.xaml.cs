@@ -45,8 +45,8 @@ namespace GalaxyBudsClient.Interface.Pages
             _voiceDetectTimeout = this.GetControl<MenuDetailListItem>("VoiceDetectTimeout");
             _voiceBorder = this.GetControl<Border>("VoiceDetectBorder");
             
-            SPPMessageHandler.Instance.NoiseControlUpdateResponse += (sender, mode) => SetNoiseControlState(mode);
-            SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+            SppMessageHandler.Instance.NoiseControlUpdateResponse += (sender, mode) => SetNoiseControlState(mode);
+            SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
 
             EventDispatcher.Instance.EventReceived += OnEventReceived;
             Loc.LanguageUpdated += UpdateVoiceDetectTimeout;

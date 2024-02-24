@@ -2,22 +2,21 @@
 using Avalonia.Threading;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Constants;
-using Serilog;
 
 namespace GalaxyBudsClient.Message
 {
-    public class SPPMessageHandler
+    public class SppMessageHandler
     {
-        private static SPPMessageHandler? _instance = null;
+        private static SppMessageHandler? _instance = null;
         private static readonly object SingletonPadlock = new object();
 
-        public static SPPMessageHandler Instance
+        public static SppMessageHandler Instance
         {
             get
             {
                 lock (SingletonPadlock)
                 {
-                    return _instance ??= new SPPMessageHandler();
+                    return _instance ??= new SppMessageHandler();
                 }
             }
         }
@@ -48,7 +47,7 @@ namespace GalaxyBudsClient.Message
         {
             Dispatcher.UIThread.InvokeAsync(() =>
             {
-                var parser = SPPMessageParserFactory.BuildParser(e);
+                var parser = SppMessageParserFactory.BuildParser(e);
                 DispatchEvent(parser, e.Id);
                 
             }, DispatcherPriority.Normal);

@@ -38,8 +38,8 @@ namespace GalaxyBudsClient.Interface.Pages
             _statusRight = this.GetControl<Label>("RightStatus");
             _warningContainer = this.GetControl<Grid>("EarbudWarningContainer");
             
-            SPPMessageHandler.Instance.BaseUpdate += (_, update) => UpdateDashboard(update);
-            SPPMessageHandler.Instance.FitTestResult += (_, update) => ShowResults(update);
+            SppMessageHandler.Instance.BaseUpdate += (_, update) => UpdateDashboard(update);
+            SppMessageHandler.Instance.FitTestResult += (_, update) => ShowResults(update);
             _scanButton.ScanningStatusChanged += ScanButton_OnScanningStatusChanged;
         }
 

@@ -65,7 +65,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			_leftOption = this.GetControl<MenuDetailListItem>("LeftOption");
 			_rightOption = this.GetControl<MenuDetailListItem>("RightOption");
 
-            SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
+            SppMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
             EventDispatcher.Instance.EventReceived += OnEventReceived;
             
 			Loc.LanguageUpdated += UpdateMenus;

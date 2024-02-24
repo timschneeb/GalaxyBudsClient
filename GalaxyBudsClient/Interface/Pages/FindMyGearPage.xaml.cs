@@ -50,9 +50,9 @@ namespace GalaxyBudsClient.Interface.Pages
             _warningText = this.GetControl<Label>("EarbudWarningText");
             _warningContainer = this.GetControl<Grid>("EarbudWarningContainer");
             
-            SPPMessageHandler.Instance.BaseUpdate += (sender, update) => UpdateDashboard(update);
-            SPPMessageHandler.Instance.FindMyGearStopped += InstanceOnFindMyGearStopped;
-            SPPMessageHandler.Instance.FindMyGearMuteUpdate += InstanceOnFindMyGearMuteUpdate;
+            SppMessageHandler.Instance.BaseUpdate += (sender, update) => UpdateDashboard(update);
+            SppMessageHandler.Instance.FindMyGearStopped += InstanceOnFindMyGearStopped;
+            SppMessageHandler.Instance.FindMyGearMuteUpdate += InstanceOnFindMyGearMuteUpdate;
             
             EventDispatcher.Instance.EventReceived += OnEventReceived;
             

@@ -101,7 +101,7 @@ namespace GalaxyBudsClient.Message
                 }
             };
             
-            SPPMessageHandler.Instance.AnyMessageReceived += OnMessageReceived;
+            SppMessageHandler.Instance.AnyMessageReceived += OnMessageReceived;
         }
 
         private async void OnMessageReceived(object? sender, BaseMessageParser? e)

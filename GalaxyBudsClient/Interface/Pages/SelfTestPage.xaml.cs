@@ -53,7 +53,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			
 			_result = this.GetControl<IconListItem>("SelfTestResult");
 			
-			SPPMessageHandler.Instance.SelfTestResponse += InstanceOnSelfTestResponse;
+			SppMessageHandler.Instance.SelfTestResponse += InstanceOnSelfTestResponse;
 		}
 
 		private void InstanceOnSelfTestResponse(object? sender, SelfTestParser e)

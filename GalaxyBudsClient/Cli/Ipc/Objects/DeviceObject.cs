@@ -54,9 +54,9 @@ namespace GalaxyBudsClient.Cli.Ipc.Objects
             
         public DeviceObject()
         {
-            SPPMessageHandler.Instance.BaseUpdate += OnBaseUpdate;
-            SPPMessageHandler.Instance.GetAllDataResponse += OnGetAllDataResponse;
-            SPPMessageHandler.Instance.DebugSkuUpdate += OnDebugSkuUpdate;
+            SppMessageHandler.Instance.BaseUpdate += OnBaseUpdate;
+            SppMessageHandler.Instance.GetAllDataResponse += OnGetAllDataResponse;
+            SppMessageHandler.Instance.DebugSkuUpdate += OnDebugSkuUpdate;
             
             BluetoothImpl.Instance.Connected += OnConnected;
         }
@@ -102,9 +102,9 @@ namespace GalaxyBudsClient.Cli.Ipc.Objects
 
         public void Dispose()
         {
-            SPPMessageHandler.Instance.BaseUpdate -= OnBaseUpdate;
-            SPPMessageHandler.Instance.GetAllDataResponse -= OnGetAllDataResponse;
-            SPPMessageHandler.Instance.DebugSkuUpdate -= OnDebugSkuUpdate;
+            SppMessageHandler.Instance.BaseUpdate -= OnBaseUpdate;
+            SppMessageHandler.Instance.GetAllDataResponse -= OnGetAllDataResponse;
+            SppMessageHandler.Instance.DebugSkuUpdate -= OnDebugSkuUpdate;
             
             BluetoothImpl.Instance.Connected -= OnConnected;
         }

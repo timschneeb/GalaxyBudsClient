@@ -51,11 +51,11 @@ namespace GalaxyBudsClient.Interface.Pages
 			_separatorLegacyDebug1 = this.GetControl<Separator>("SeparatorLegacyDebug1");
 			_separatorLegacyDebug2 = this.GetControl<Separator>("SeparatorLegacyDebug2");
 
-			SPPMessageHandler.Instance.GetAllDataResponse += InstanceOnGetAllDataResponse;
-			SPPMessageHandler.Instance.BatteryTypeResponse += InstanceOnBatteryTypeResponse;
-			SPPMessageHandler.Instance.BuildStringResponse += InstanceOnBuildStringResponse;
-			SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
-			SPPMessageHandler.Instance.SerialNumberResponse += InstanceOnSerialNumberResponse;
+			SppMessageHandler.Instance.GetAllDataResponse += InstanceOnGetAllDataResponse;
+			SppMessageHandler.Instance.BatteryTypeResponse += InstanceOnBatteryTypeResponse;
+			SppMessageHandler.Instance.BuildStringResponse += InstanceOnBuildStringResponse;
+			SppMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
+			SppMessageHandler.Instance.SerialNumberResponse += InstanceOnSerialNumberResponse;
 			
 			Loc.LanguageUpdated += OnLanguageUpdated;
 		}

@@ -43,7 +43,7 @@ namespace GalaxyBudsClient.Message
 
         public BaseMessageParser? BuildParser()
         {
-            return SPPMessageParserFactory.BuildParser(this);
+            return SppMessageParserFactory.BuildParser(this);
         }
 
         public byte[] EncodeMessage()

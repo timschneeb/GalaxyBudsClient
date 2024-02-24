@@ -107,8 +107,8 @@ namespace GalaxyBudsClient
                 MainWindow.Instance.Pager.SwitchPage(target);
                 
                 /* Restore crucial information */
-                SPPMessageHandler.Instance.DispatchEvent(DeviceMessageCache.Instance.ExtendedStatusUpdate);
-                SPPMessageHandler.Instance.DispatchEvent(DeviceMessageCache.Instance.StatusUpdate);
+                SppMessageHandler.Instance.DispatchEvent(DeviceMessageCache.Instance.ExtendedStatusUpdate);
+                SppMessageHandler.Instance.DispatchEvent(DeviceMessageCache.Instance.StatusUpdate);
             }
         }
 

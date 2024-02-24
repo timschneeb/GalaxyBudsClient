@@ -132,7 +132,7 @@ namespace GalaxyBudsClient.Platform
                 }
             };
             
-            MessageReceived += SPPMessageHandler.Instance.MessageReceiver;
+            MessageReceived += SppMessageHandler.Instance.MessageReceiver;
         }
 
         public async void Dispose()
@@ -146,7 +146,7 @@ namespace GalaxyBudsClient.Platform
                 Log.Warning(ex, "BluetoothImpl.Dispose: Error while disconnecting");
             }
 
-            MessageReceived -= SPPMessageHandler.Instance.MessageReceiver;
+            MessageReceived -= SppMessageHandler.Instance.MessageReceiver;
             
             await _cancelSource.CancelAsync();
 

@@ -28,7 +28,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			_pageHeader = this.GetControl<PageHeader>("PageHeader");
 			_resetButton = this.GetControl<IconListItem>("FactoryReset");
 			
-			SPPMessageHandler.Instance.ResetResponse += InstanceOnResetResponse;
+			SppMessageHandler.Instance.ResetResponse += InstanceOnResetResponse;
 		}
 
 		private void InstanceOnResetResponse(object? sender, int e)

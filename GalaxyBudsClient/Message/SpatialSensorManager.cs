@@ -18,7 +18,7 @@ namespace GalaxyBudsClient.Message
             _keepAliveTimer.Elapsed += KeepAliveOnElapsed;
             _keepAliveTimer.AutoReset = true;
             
-            SPPMessageHandler.Instance.AnyMessageReceived += OnMessageReceived;
+            SppMessageHandler.Instance.AnyMessageReceived += OnMessageReceived;
         }
 
         private void OnMessageReceived(object? sender, BaseMessageParser? e)
@@ -62,7 +62,7 @@ namespace GalaxyBudsClient.Message
         
         public void Dispose()
         {
-            SPPMessageHandler.Instance.AnyMessageReceived -= OnMessageReceived;
+            SppMessageHandler.Instance.AnyMessageReceived -= OnMessageReceived;
             Detach();
         }
 

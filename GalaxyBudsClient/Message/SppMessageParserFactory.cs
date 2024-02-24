@@ -7,12 +7,12 @@ using Sentry;
 
 namespace GalaxyBudsClient.Message
 {
-    public static class SPPMessageParserFactory
+    public static class SppMessageParserFactory
     {
 
-        static SPPMessageParserFactory()
+        static SppMessageParserFactory()
         {
-            RegisteredParsers = typeof(SPPMessageParserFactory).Assembly
+            RegisteredParsers = typeof(SppMessageParserFactory).Assembly
                 .GetTypes()
                 .Where(t => t is { Namespace: "GalaxyBudsClient.Message.Decoder", IsClass: true, IsAbstract: false } && t.IsSubclassOf(typeof(BaseMessageParser)))
                 .ToArray();

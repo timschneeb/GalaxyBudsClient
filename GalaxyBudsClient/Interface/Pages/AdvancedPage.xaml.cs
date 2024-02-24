@@ -31,7 +31,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			_sidetone = this.GetControl<SwitchDetailListItem>("Sidetone");
 			_passthrough = this.GetControl<SwitchDetailListItem>("Passthrough");
 			
-			SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
+			SppMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
 		}
 
 		private void InstanceOnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)

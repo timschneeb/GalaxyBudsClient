@@ -35,7 +35,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			_bixbyLang = this.GetControl<MenuDetailListItem>("BixbyLanguage");
 			_bixbyAction = this.GetControl<MenuDetailListItem>("BixbyRemapAction");
 			
-			SPPMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+			SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
 			Loc.LanguageUpdated += UpdateMenu;
 			
 			UpdateMenu();

@@ -35,7 +35,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			_presetSlider = this.GetControl<SliderListItem>("EqPreset");
 			_stereoPan = this.GetControl<SliderListItem>("StereoPan");
 			
-			SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
+			SppMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
 			
 			EventDispatcher.Instance.EventReceived += OnEventReceived;
 

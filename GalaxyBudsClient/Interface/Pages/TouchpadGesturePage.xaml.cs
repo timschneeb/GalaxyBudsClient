@@ -27,7 +27,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			Triple = this.GetControl<SwitchDetailListItem>("TripleTouch");
 			Hold = this.GetControl<SwitchDetailListItem>("HoldTouch");
 
-            SPPMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
+            SppMessageHandler.Instance.ExtendedStatusUpdate += InstanceOnExtendedStatusUpdate;
 		}
 		
         private void InstanceOnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
