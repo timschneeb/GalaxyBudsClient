@@ -12,14 +12,14 @@ namespace GalaxyBudsClient.Model.ViewModels
         public String Type { get; }
         public String Size { get; }
         public String CRC16 { get; }
-        public SPPMessage Message { get; }
+        public SppMessage Message { get; }
 
-        public RecvMsgViewHolder(SPPMessage msg)
+        public RecvMsgViewHolder(SppMessage msg)
         {
-            Id = GetEnumName(typeof(SPPMessage.MessageIds),msg.Id);
+            Id = GetEnumName(typeof(SppMessage.MessageIds),msg.Id);
             Payload = BitConverter.ToString(msg.Payload).Replace("-", " ");
             PayloadAscii = HexUtils.DumpAscii(msg.Payload);
-            Type = msg.IsFragment ? "Fragment/" : string.Empty + GetEnumName(typeof(SPPMessage.MsgType), msg.Type);
+            Type = msg.IsFragment ? "Fragment/" : string.Empty + GetEnumName(typeof(SppMessage.MsgType), msg.Type);
             Size = $"{msg.Size} bytes";
             CRC16 = (msg.Crc16 == 0 ? "Pass" : "Fail");
             Message = msg;

@@ -1,6 +1,7 @@
-﻿namespace GalaxyBudsClient.Message
+﻿// ReSharper disable InconsistentNaming
+namespace GalaxyBudsClient.Message
 {
-    public partial class SPPMessage
+    public partial class SppMessage
     {
         public enum MsgType : byte
         {

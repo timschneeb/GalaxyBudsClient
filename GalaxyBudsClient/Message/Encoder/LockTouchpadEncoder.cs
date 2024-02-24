@@ -4,7 +4,7 @@ namespace GalaxyBudsClient.Message.Encoder
 {
     public static class LockTouchpadEncoder
     {
-        public static SPPMessage Build(bool lockAll, bool tapOn, bool doubleTapOn, bool tripleTapOn, bool holdTapOn)
+        public static SppMessage Build(bool lockAll, bool tapOn, bool doubleTapOn, bool tripleTapOn, bool holdTapOn)
         {
             MemoryStream stream = new MemoryStream();
             BinaryWriter writer = new BinaryWriter(stream);
@@ -18,7 +18,7 @@ namespace GalaxyBudsClient.Message.Encoder
             var data = stream.ToArray();
             stream.Close();
             
-            return new SPPMessage(SPPMessage.MessageIds.LOCK_TOUCHPAD, SPPMessage.MsgType.Request, data);
+            return new SppMessage(SppMessage.MessageIds.LOCK_TOUCHPAD, SppMessage.MsgType.Request, data);
         }
     }
 }

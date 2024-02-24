@@ -6,9 +6,9 @@ namespace GalaxyBudsClient.Scripting.Hooks
     public interface IMessageHook : IHook
     {
         ///<summary>Handle incoming messages. Message objects are passed as reference so they can be easily modified.</summary>
-        void OnMessageAvailable(ref SPPMessage msg);
+        void OnMessageAvailable(ref SppMessage msg);
         
         ///<summary>Handle outgoing messages. Message objects are passed as reference so they can be easily modified.</summary>
-        void OnMessageSend(ref SPPMessage msg);
+        void OnMessageSend(ref SppMessage msg);
     }
 }

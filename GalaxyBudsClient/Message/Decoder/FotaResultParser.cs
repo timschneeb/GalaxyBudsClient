@@ -7,12 +7,12 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     class FotaResultParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.FOTA_RESULT;
+        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.FOTA_RESULT;
 
         public byte Result { set; get; }
         public byte ErrorCode { set; get; }
 
-        public override void ParseMessage(SPPMessage msg)
+        public override void ParseMessage(SppMessage msg)
         {
             if (msg.Id != HandledType)
                 return;

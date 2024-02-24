@@ -83,7 +83,7 @@ namespace GalaxyBudsClient.Interface.Pages
 					break;
 				case EventDispatcher.Event.ToggleDoubleEdgeTouch:
 					_edgeTouch.Toggle();
-					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.OUTSIDE_DOUBLE_TAP, _edgeTouch.IsChecked);
+					await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.OUTSIDE_DOUBLE_TAP, _edgeTouch.IsChecked);
 					EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
 					break;
 			}
@@ -188,7 +188,7 @@ namespace GalaxyBudsClient.Interface.Pages
 				{
 					_lastNoiseControlMode = (value.Item1, value.Item2, value.Item3);
 
-					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS, 
+					await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS, 
 						BitConverter.GetBytes(value.Item1)[0], 
 						BitConverter.GetBytes(value.Item2)[0], 
 						BitConverter.GetBytes(value.Item3)[0]);
@@ -223,7 +223,7 @@ namespace GalaxyBudsClient.Interface.Pages
 				UpdateMenuDescriptions();
 				UpdateNoiseSwitchModeVisible();
 				await MessageComposer.Touch.SetOptions(_lastLeftOption, _lastRightOption);
-				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS, 
+				await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS, 
 					BitConverter.GetBytes(_lastNoiseControlMode.Item1)[0], 
 					BitConverter.GetBytes(_lastNoiseControlMode.Item2)[0], 
 					BitConverter.GetBytes(_lastNoiseControlMode.Item3)[0]);
@@ -289,7 +289,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			}
 			else
 			{
-				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOCK_TOUCHPAD, _lock.IsChecked);
+				await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOCK_TOUCHPAD, _lock.IsChecked);
 			}
 			EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
 		}
@@ -306,7 +306,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		private async void DoubleTapVolume_OnToggled(object? sender, bool e)
 		{
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.OUTSIDE_DOUBLE_TAP, e);
+			await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.OUTSIDE_DOUBLE_TAP, e);
 			EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
 		}
 

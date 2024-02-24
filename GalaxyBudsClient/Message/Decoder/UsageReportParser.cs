@@ -49,11 +49,11 @@ namespace GalaxyBudsClient.Message.Decoder
             { "LRLP", "LongPress/LeftRight" },
         };
 
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.USAGE_REPORT;
+        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.USAGE_REPORT;
 
         public Dictionary<String, long>? Statistics { set; get; }
 
-        public override void ParseMessage(SPPMessage msg)
+        public override void ParseMessage(SppMessage msg)
         {
             if (msg.Id != HandledType)
                 return;

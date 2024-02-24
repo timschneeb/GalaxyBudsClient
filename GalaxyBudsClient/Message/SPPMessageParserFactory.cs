@@ -20,7 +20,7 @@ namespace GalaxyBudsClient.Message
 
         private static readonly Type[] RegisteredParsers;
 
-        public static BaseMessageParser? BuildParser(SPPMessage msg)
+        public static BaseMessageParser? BuildParser(SppMessage msg)
         {
             BaseMessageParser? b = null;
             foreach (var t in RegisteredParsers)

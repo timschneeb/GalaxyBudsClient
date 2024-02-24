@@ -8,7 +8,7 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     class DebugModeVersionParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.VERSION_INFO;
+        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.VERSION_INFO;
 
         readonly String[] _swMonth = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" };
         readonly String[] _swRelVer = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
@@ -22,7 +22,7 @@ namespace GalaxyBudsClient.Message.Decoder
         public String? LeftTouchSoftwareVersion { set; get; }
         public String? RightTouchSoftwareVersion { set; get; }
 
-        public override void ParseMessage(SPPMessage msg)
+        public override void ParseMessage(SppMessage msg)
         {
             if (msg.Id != HandledType)
                 return;

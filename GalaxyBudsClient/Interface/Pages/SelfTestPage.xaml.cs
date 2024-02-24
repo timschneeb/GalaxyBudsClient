@@ -82,7 +82,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		
 		public override async void OnPageShown()
 		{
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SELF_TEST);
+			await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SELF_TEST);
 			_pageHeader.LoadingSpinnerVisible = true;
 			
 			_hwVer.Description = Waiting;

@@ -86,7 +86,7 @@ namespace GalaxyBudsClient.Interface.Pages
                 {
                     case EventDispatcher.Event.ToggleConversationDetect:
                         _voiceDetect.Toggle();
-                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_DETECT_CONVERSATIONS, _voiceDetect.IsChecked);
+                        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_DETECT_CONVERSATIONS, _voiceDetect.IsChecked);
                         break;
                     case EventDispatcher.Event.AncToggle:
                         _ancSwitch.Toggle();
@@ -94,11 +94,11 @@ namespace GalaxyBudsClient.Interface.Pages
                         break;
                     case EventDispatcher.Event.SwitchAncSensitivity:
                         _ancLevel.Toggle();
-                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.NOISE_REDUCTION_LEVEL, _ancLevel.IsChecked);
+                        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.NOISE_REDUCTION_LEVEL, _ancLevel.IsChecked);
                         break;
                     case EventDispatcher.Event.SwitchAncOne:
                         _ancOne.Toggle();
-                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_ANC_WITH_ONE_EARBUD, _ancOne.IsChecked);
+                        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_ANC_WITH_ONE_EARBUD, _ancOne.IsChecked);
                         break;
                     case EventDispatcher.Event.AmbientToggle:
                         _ambientSwitch.Toggle();
@@ -162,7 +162,7 @@ namespace GalaxyBudsClient.Interface.Pages
                 {
                     _voiceDetectTimeout.Description =
                         string.Format(Loc.Resolve("nc_voicedetect_timeout_item"), sec.Item2);
-                    await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_DETECT_CONVERSATIONS_DURATION, sec.Item1);
+                    await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_DETECT_CONVERSATIONS_DURATION, sec.Item1);
                 });
             }
 
@@ -202,17 +202,17 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private async void AncLevelToggle_OnToggled(object? sender, bool e)
         {
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.NOISE_REDUCTION_LEVEL, e);
+            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.NOISE_REDUCTION_LEVEL, e);
         }
 
         private async void AncOneToggle_OnToggled(object? sender, bool e)
         {
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_ANC_WITH_ONE_EARBUD, e);
+            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_ANC_WITH_ONE_EARBUD, e);
         }
 
         private async void VoiceDetect_OnToggled(object? sender, bool e)
         {
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_DETECT_CONVERSATIONS, e);
+            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_DETECT_CONVERSATIONS, e);
         }
 
         private void AmbientSettings_OnPointerPressed(object? sender, PointerPressedEventArgs e)

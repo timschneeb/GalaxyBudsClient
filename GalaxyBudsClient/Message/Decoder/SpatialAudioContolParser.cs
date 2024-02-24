@@ -7,10 +7,10 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     class SpatialAudioControlParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.SPATIAL_AUDIO_CONTROL;
+        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.SPATIAL_AUDIO_CONTROL;
         public SpatialAudioControl ResultCode { set; get; }
 
-        public override void ParseMessage(SPPMessage msg)
+        public override void ParseMessage(SppMessage msg)
         {
             if (msg.Id != HandledType)
                 return;

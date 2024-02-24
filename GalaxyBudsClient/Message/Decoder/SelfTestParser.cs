@@ -6,7 +6,7 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     public class SelfTestParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.SELF_TEST;
+        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.SELF_TEST;
 
         public bool AllChecks { set; get; }
         public bool AllLeftAccelerator { set; get; }
@@ -37,7 +37,7 @@ namespace GalaxyBudsClient.Message.Decoder
         public bool LeftHall { set; get; }
         public bool RightHall { set; get; }
 
-        public override void ParseMessage(SPPMessage msg)
+        public override void ParseMessage(SppMessage msg)
         {
             if (msg.Id != HandledType)
                 return;

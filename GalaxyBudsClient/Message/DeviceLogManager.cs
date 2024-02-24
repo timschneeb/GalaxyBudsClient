@@ -68,12 +68,12 @@ namespace GalaxyBudsClient.Message
             _hasCompletedRoleSwitch = false;
             _startTimestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
             BluetoothImpl.Instance.MessageReceived += OnMessageReceived;
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOG_SESSION_OPEN);
+            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_SESSION_OPEN);
         }
 
         public async Task CancelDownload()
         {
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOG_SESSION_CLOSE);
+            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_SESSION_CLOSE);
             BluetoothImpl.Instance.MessageReceived -= OnMessageReceived;
             
             /* TODO: Check whether disconnecting is only necessary on Linux */
@@ -104,24 +104,24 @@ namespace GalaxyBudsClient.Message
             return null;
         }
         
-        private async void OnMessageReceived(object? sender, SPPMessage e)
+        private async void OnMessageReceived(object? sender, SppMessage e)
         {
             switch (e.Id)
             {
                 #region SESSION
-                case SPPMessage.MessageIds.LOG_SESSION_OPEN:
+                case SppMessage.MessageIds.LOG_SESSION_OPEN:
                     _hasCompletedRoleSwitch = false;
                     if (e.Payload[0] == 0)
                     {
-                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOG_TRACE_START, 0);
+                        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_TRACE_START, 0);
                     }
                     break;
-                case SPPMessage.MessageIds.LOG_SESSION_CLOSE:
+                case SppMessage.MessageIds.LOG_SESSION_CLOSE:
                     break;
                 #endregion
                 
                 #region TRACE
-                case SPPMessage.MessageIds.LOG_TRACE_START:
+                case SppMessage.MessageIds.LOG_TRACE_START:
                     _traceContext = e.BuildParser() as LogTraceStartParser;
 
                     _traceBuffer = new byte[_traceContext!.DataSize];
@@ -129,7 +129,7 @@ namespace GalaxyBudsClient.Message
                     
                     await BluetoothImpl.Instance.SendAsync(LogTraceDataEncoder.Build(0, _traceContext.DataSize));
                     break;
-                case SPPMessage.MessageIds.LOG_TRACE_DATA:
+                case SppMessage.MessageIds.LOG_TRACE_DATA:
                     var data = e.BuildParser() as LogTraceDataParser;
                     UpdateOffsetList(data!.PartialDataOffset);
                     
@@ -137,20 +137,20 @@ namespace GalaxyBudsClient.Message
                     
                     ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(data.PartialDataOffset, _traceContext!.DataSize, LogDownloadProgressEventArgs.Type.Trace));
                     break;
-                case SPPMessage.MessageIds.LOG_TRACE_ROLE_SWITCH:
+                case SppMessage.MessageIds.LOG_TRACE_ROLE_SWITCH:
                     var result = e.Payload[0] == 0;
                     _hasCompletedRoleSwitch = true;
 
                     if (result)
                     {
-                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOG_TRACE_START, 0);
+                        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_TRACE_START, 0);
                     }
                     else
                     {
-                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOG_SESSION_CLOSE);
+                        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_SESSION_CLOSE);
                     }
                     break;
-                case SPPMessage.MessageIds.LOG_TRACE_DATA_DONE:
+                case SppMessage.MessageIds.LOG_TRACE_DATA_DONE:
                     int remainOffset = GetRemainOffset();
                     if (remainOffset >= 0)
                     {
@@ -167,7 +167,7 @@ namespace GalaxyBudsClient.Message
                     }
 
                     ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(0,0, LogDownloadProgressEventArgs.Type._Switching));
-                    await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOG_TRACE_COMPLETE);
+                    await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_TRACE_COMPLETE);
 
                     var path = WriteTempFile($"{BluetoothImpl.Instance.ActiveModel.ToString()}_traceDump_{_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _traceBuffer ?? new byte[0]);
                     if (path != null)
@@ -175,13 +175,13 @@ namespace GalaxyBudsClient.Message
                         _traceDumpPaths.Add(path);
                     }
                     break;
-                case SPPMessage.MessageIds.LOG_TRACE_COMPLETE:
-                    await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOG_COREDUMP_DATA_SIZE);
+                case SppMessage.MessageIds.LOG_TRACE_COMPLETE:
+                    await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_COREDUMP_DATA_SIZE);
                     break;
                 #endregion
 
                 #region COREDUMP
-                case SPPMessage.MessageIds.LOG_COREDUMP_DATA_SIZE:
+                case SppMessage.MessageIds.LOG_COREDUMP_DATA_SIZE:
                     _coredumpContext = e.BuildParser() as LogCoredumpDataSizeParser;
                     MakeOffsetList(_coredumpContext!.FragmentCount, _coredumpContext.PartialDataMaxSize);
 
@@ -196,10 +196,10 @@ namespace GalaxyBudsClient.Message
                     } 
                     else
                     {
-                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOG_TRACE_ROLE_SWITCH);
+                        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_TRACE_ROLE_SWITCH);
                     }
                     break;
-                case SPPMessage.MessageIds.LOG_COREDUMP_DATA:
+                case SppMessage.MessageIds.LOG_COREDUMP_DATA:
                     var coredumpData = e.BuildParser() as LogCoredumpDataParser;
                     UpdateOffsetList(coredumpData!.PartialDataOffset);
                     
@@ -207,7 +207,7 @@ namespace GalaxyBudsClient.Message
                     
                     ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(coredumpData.PartialDataOffset, _traceContext!.DataSize, LogDownloadProgressEventArgs.Type.Coredump));
                     break;
-                case SPPMessage.MessageIds.LOG_COREDUMP_DATA_DONE:
+                case SppMessage.MessageIds.LOG_COREDUMP_DATA_DONE:
                     int remainOffsetCore = GetRemainOffset();
                     if (remainOffsetCore >= 0)
                     {
@@ -224,7 +224,7 @@ namespace GalaxyBudsClient.Message
                     }
                     
                     ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(0,0, LogDownloadProgressEventArgs.Type._Switching));
-                    await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOG_COREDUMP_COMPLETE);
+                    await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_COREDUMP_COMPLETE);
                     
                     var pathCore = WriteTempFile($"{BluetoothImpl.Instance.ActiveModel.ToString()}_coreDump_{/* this is intentional -> */_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _coredumpBuffer ?? new byte[0]);
                     if (pathCore != null)
@@ -232,7 +232,7 @@ namespace GalaxyBudsClient.Message
                         _coreDumpPaths.Add(pathCore);
                     }
                     break;
-                case SPPMessage.MessageIds.LOG_COREDUMP_COMPLETE:
+                case SppMessage.MessageIds.LOG_COREDUMP_COMPLETE:
                     if (_hasCompletedRoleSwitch)
                     {
                         /* Everything is done */
@@ -240,7 +240,7 @@ namespace GalaxyBudsClient.Message
                     }
                     else
                     {
-                        await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.LOG_TRACE_ROLE_SWITCH);
+                        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_TRACE_ROLE_SWITCH);
                     }
                     break;
                 #endregion

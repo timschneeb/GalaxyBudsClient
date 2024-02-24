@@ -93,7 +93,7 @@ namespace GalaxyBudsClient.Interface.Pages
                 Description = Loc.Resolve("fw_select_external_note"),
             }.ShowDialog<bool>(MainWindow.Instance);
             
-            _ = BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_SKU);
+            _ = BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
 
             if (!result) 
                 return;
@@ -115,7 +115,7 @@ namespace GalaxyBudsClient.Interface.Pages
         {
             // Make sure that we have the current hardware model cached, if supported
             if(BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DebugSku))
-                _ = BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_SKU);
+                _ = BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
             
             RefreshList();
         }

@@ -44,7 +44,7 @@ namespace GalaxyBudsClient.Message
         public event EventHandler<FitTestParser>? FitTestResult;
         public event EventHandler<DebugSkuParser>? DebugSkuUpdate;
 
-        public void MessageReceiver(object? sender, SPPMessage e)
+        public void MessageReceiver(object? sender, SppMessage e)
         {
             Dispatcher.UIThread.InvokeAsync(() =>
             {
@@ -54,70 +54,70 @@ namespace GalaxyBudsClient.Message
             }, DispatcherPriority.Normal);
         }
 
-        public void DispatchEvent(BaseMessageParser? parser, SPPMessage.MessageIds? ids = null)
+        public void DispatchEvent(BaseMessageParser? parser, SppMessage.MessageIds? ids = null)
         {
             AnyMessageReceived?.Invoke(this, parser);
             switch (ids ?? parser?.HandledType ?? 0)
             {
-                case SPPMessage.MessageIds.RESET:
+                case SppMessage.MessageIds.RESET:
                     ResetResponse?.Invoke(this, (parser as ResetResponseParser)?.ResultCode ?? -1);
                     break;
-                case SPPMessage.MessageIds.FOTA_DEVICE_INFO_SW_VERSION:
+                case SppMessage.MessageIds.FOTA_DEVICE_INFO_SW_VERSION:
                     SwVersionResponse?.Invoke(this, (parser as SoftwareVersionOTAParser)?.SoftwareVersion ?? "null");
                     break;
-                case SPPMessage.MessageIds.BATTERY_TYPE:
+                case SppMessage.MessageIds.BATTERY_TYPE:
                     BatteryTypeResponse?.Invoke(this, (parser as BatteryTypeParser)!);
                     break;
-                case SPPMessage.MessageIds.AMBIENT_MODE_UPDATED:
+                case SppMessage.MessageIds.AMBIENT_MODE_UPDATED:
                     AmbientEnabledUpdateResponse?.Invoke(this, (parser as AmbientModeUpdateParser)?.Enabled ?? false);
                     break;
-                case SPPMessage.MessageIds.DEBUG_BUILD_INFO:
+                case SppMessage.MessageIds.DEBUG_BUILD_INFO:
                     BuildStringResponse?.Invoke(this, (parser as DebugBuildInfoParser)?.BuildString ?? "null");
                     break;
-                case SPPMessage.MessageIds.DEBUG_GET_ALL_DATA:
+                case SppMessage.MessageIds.DEBUG_GET_ALL_DATA:
                     GetAllDataResponse?.Invoke(this, (parser as DebugGetAllDataParser)!);
                     break;
-                case SPPMessage.MessageIds.DEBUG_SERIAL_NUMBER:
+                case SppMessage.MessageIds.DEBUG_SERIAL_NUMBER:
                     SerialNumberResponse?.Invoke(this, (parser as DebugSerialNumberParser)!);
                     break;
-                case SPPMessage.MessageIds.EXTENDED_STATUS_UPDATED:
+                case SppMessage.MessageIds.EXTENDED_STATUS_UPDATED:
                     BaseUpdate?.Invoke(this, (parser as IBasicStatusUpdate)!);
                     ExtendedStatusUpdate?.Invoke(this, (parser as ExtendedStatusUpdateParser)!);
                     break;
-                case SPPMessage.MessageIds.FIND_MY_EARBUDS_STOP:
+                case SppMessage.MessageIds.FIND_MY_EARBUDS_STOP:
                     FindMyGearStopped?.Invoke(this, EventArgs.Empty);
                     break;
-                case SPPMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS_RESULT:
+                case SppMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS_RESULT:
                     FitTestResult?.Invoke(this, (parser as FitTestParser)!);
                     break;
-                case SPPMessage.MessageIds.RESP:
+                case SppMessage.MessageIds.RESP:
                     GenericResponse?.Invoke(this, (parser as GenericResponseParser)!);
                     break;
-                case SPPMessage.MessageIds.SELF_TEST:
+                case SppMessage.MessageIds.SELF_TEST:
                     SelfTestResponse?.Invoke(this, (parser as SelfTestParser)!);
                     break;
-                case SPPMessage.MessageIds.SET_TOUCHPAD_OTHER_OPTION:
+                case SppMessage.MessageIds.SET_TOUCHPAD_OTHER_OPTION:
                     OtherOption?.Invoke(this, (parser as SetOtherOptionParser)!.OptionType);
                     break;
-                case SPPMessage.MessageIds.STATUS_UPDATED:
+                case SppMessage.MessageIds.STATUS_UPDATED:
                     StatusUpdate?.Invoke(this, (parser as StatusUpdateParser)!);
                     BaseUpdate?.Invoke(this, (parser as IBasicStatusUpdate)!);
                     break;
-                case SPPMessage.MessageIds.USAGE_REPORT:
+                case SppMessage.MessageIds.USAGE_REPORT:
                     UsageReport?.Invoke(this, (parser as UsageReportParser)!);
                     break;
-                case SPPMessage.MessageIds.MUTE_EARBUD_STATUS_UPDATED:
+                case SppMessage.MessageIds.MUTE_EARBUD_STATUS_UPDATED:
                     FindMyGearMuteUpdate?.Invoke(this, (parser as MuteUpdateParser)!);
                     break;
-                case SPPMessage.MessageIds.NOISE_REDUCTION_MODE_UPDATE:
+                case SppMessage.MessageIds.NOISE_REDUCTION_MODE_UPDATE:
                     AncEnabledUpdateResponse?.Invoke(this,
                         (parser as NoiseReductionModeUpdateParser)?.Enabled ?? false);
                     break;
-                case SPPMessage.MessageIds.NOISE_CONTROLS_UPDATE:
+                case SppMessage.MessageIds.NOISE_CONTROLS_UPDATE:
                     NoiseControlUpdateResponse?.Invoke(this,
                         (parser as NoiseControlUpdateParser)?.Mode ?? NoiseControlMode.Off);
                     break;
-                case SPPMessage.MessageIds.DEBUG_SKU:
+                case SppMessage.MessageIds.DEBUG_SKU:
                     DebugSkuUpdate?.Invoke(this, (parser as DebugSkuParser)!);
                     break;
             }

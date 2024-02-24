@@ -49,7 +49,7 @@ namespace GalaxyBudsClient.Interface.Pages
 				items.Add(name, async (sender, args) =>
 				{
 					_bixbyLang.Description = name;
-					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.VOICE_WAKE_UP_LANGUAGE, id);
+					await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.VOICE_WAKE_UP_LANGUAGE, id);
 				});
 			}
 
@@ -103,7 +103,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		
 		private async void BixbyEnable_OnToggled(object? sender, bool e)
 		{
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_VOICE_WAKE_UP, e);
+			await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_VOICE_WAKE_UP, e);
 		}
 	}
 }

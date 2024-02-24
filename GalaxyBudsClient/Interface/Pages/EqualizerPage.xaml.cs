@@ -144,7 +144,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		private async void StereoPan_OnChanged(object? sender, int e)
 		{
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_HEARING_ENHANCEMENTS, (byte)e);
+			await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_HEARING_ENHANCEMENTS, (byte)e);
 		}
 	}
 }

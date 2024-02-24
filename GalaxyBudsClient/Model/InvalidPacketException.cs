@@ -18,9 +18,9 @@ namespace GalaxyBudsClient.Model
         }
 
         public ErrorCodes ErrorCode;
-        public SPPMessage? Draft;
+        public SppMessage? Draft;
 
-        public InvalidPacketException(ErrorCodes errorCode, string message, SPPMessage? draft = null) : base(message)
+        public InvalidPacketException(ErrorCodes errorCode, string message, SppMessage? draft = null) : base(message)
         {
             ErrorCode = errorCode;
             Draft = draft;

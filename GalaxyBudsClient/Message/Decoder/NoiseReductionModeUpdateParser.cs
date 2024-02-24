@@ -6,10 +6,10 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     class NoiseReductionModeUpdateParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.NOISE_REDUCTION_MODE_UPDATE;
+        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.NOISE_REDUCTION_MODE_UPDATE;
         public bool Enabled { set; get; }
 
-        public override void ParseMessage(SPPMessage msg)
+        public override void ParseMessage(SppMessage msg)
         {
             if (msg.Id != HandledType)
                 return;

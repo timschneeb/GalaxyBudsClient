@@ -6,13 +6,13 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     class FotaDownloadDataParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.FOTA_DOWNLOAD_DATA;
+        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.FOTA_DOWNLOAD_DATA;
 
         public bool NAK { set; get; }
         public long ReceivedOffset { set; get; }
         public byte RequestPacketNumber { set; get; }
 
-        public override void ParseMessage(SPPMessage msg)
+        public override void ParseMessage(SppMessage msg)
         {
             if (msg.Id != HandledType)
                 return;

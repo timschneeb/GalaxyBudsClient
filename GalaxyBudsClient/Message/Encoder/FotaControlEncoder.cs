@@ -7,7 +7,7 @@ namespace GalaxyBudsClient.Message.Encoder
 {
     public static class FotaControlEncoder
     {
-        public static SPPMessage Build(FirmwareConstants.ControlIds controlId, short parameter)
+        public static SppMessage Build(FirmwareConstants.ControlIds controlId, short parameter)
         {
             MemoryStream stream = new MemoryStream();
             BinaryWriter writer = new BinaryWriter(stream);
@@ -23,7 +23,7 @@ namespace GalaxyBudsClient.Message.Encoder
             var data = stream.ToArray();
             stream.Close();
             
-            return new SPPMessage(SPPMessage.MessageIds.FOTA_CONTROL, SPPMessage.MsgType.Response, data);
+            return new SppMessage(SppMessage.MessageIds.FOTA_CONTROL, SppMessage.MsgType.Response, data);
         }
     }
 }

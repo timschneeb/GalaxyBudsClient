@@ -7,12 +7,12 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     class SppRoleStateParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => (SPPMessage.MessageIds)115; //SPPMessage.MessageIds.SPP_ROLE_STATE;
+        public override SppMessage.MessageIds HandledType => (SppMessage.MessageIds)115; //SPPMessage.MessageIds.SPP_ROLE_STATE;
 
         public Devices Device { set; get; }
         public SppRoleStates SppRoleState { set; get; }
 
-        public override void ParseMessage(SPPMessage msg)
+        public override void ParseMessage(SppMessage msg)
         {
             if (msg.Id != HandledType)
                 return;

@@ -8,7 +8,7 @@ namespace GalaxyBudsClient.Message.Decoder
     public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
     {
 
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.EXTENDED_STATUS_UPDATED;
+        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.EXTENDED_STATUS_UPDATED;
 
         public int Revision { set; get; }
         public int EarType { set; get; }
@@ -131,7 +131,7 @@ namespace GalaxyBudsClient.Message.Decoder
         public byte AmbientCustomSoundTone { set; get; }
 
 
-        public override void ParseMessage(SPPMessage msg)
+        public override void ParseMessage(SppMessage msg)
         {
             if (msg.Id != HandledType)
                 return;

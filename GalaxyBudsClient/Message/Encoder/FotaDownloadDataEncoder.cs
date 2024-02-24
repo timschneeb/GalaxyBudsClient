@@ -30,7 +30,7 @@ namespace GalaxyBudsClient.Message.Encoder
             return next == null || Offset + ((long) _mtuSize) >= next.Size;
         }
         
-        public SPPMessage Build()
+        public SppMessage Build()
         {
             var segment = _binary.GetSegmentById(_entryId);
             if (segment == null)
@@ -70,13 +70,13 @@ namespace GalaxyBudsClient.Message.Encoder
                 i3 = i4;
             }
 
-            return new SPPMessage(SPPMessage.MessageIds.FOTA_DOWNLOAD_DATA, SPPMessage.MsgType.Response, bArr)
+            return new SppMessage(SppMessage.MessageIds.FOTA_DOWNLOAD_DATA, SppMessage.MsgType.Response, bArr)
             {
                 IsFragment = true
             };
             
             RET_NULL:
-            return new SPPMessage(SPPMessage.MessageIds.FOTA_DOWNLOAD_DATA, SPPMessage.MsgType.Response, new byte[0])
+            return new SppMessage(SppMessage.MessageIds.FOTA_DOWNLOAD_DATA, SppMessage.MsgType.Response, new byte[0])
             {
                 IsFragment = true
             };

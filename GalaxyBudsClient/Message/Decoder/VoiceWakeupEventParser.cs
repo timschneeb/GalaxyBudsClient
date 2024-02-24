@@ -6,11 +6,11 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     class VoiceWakeupEventParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.VOICE_WAKE_UP_EVENT;
+        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.VOICE_WAKE_UP_EVENT;
         public byte ResultCode { set; get; }
         public byte Confidence { set; get; }
 
-        public override void ParseMessage(SPPMessage msg)
+        public override void ParseMessage(SppMessage msg)
         {
             if (msg.Id != HandledType)
                 return;

@@ -103,12 +103,12 @@ namespace GalaxyBudsClient.Interface.Pages
 			{
 				if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DebugInfoLegacy))
 				{
-					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.BATTERY_TYPE);
-					await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_BUILD_INFO);
+					await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.BATTERY_TYPE);
+					await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_BUILD_INFO);
 				}
 
-				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_SERIAL_NUMBER);
-				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA);
+				await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SERIAL_NUMBER);
+				await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
 			}
 		}
 
@@ -135,12 +135,12 @@ namespace GalaxyBudsClient.Interface.Pages
 				
 			if (supportsLegacyDebug)
 			{
-				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.BATTERY_TYPE);
-				await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_BUILD_INFO);
+				await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.BATTERY_TYPE);
+				await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_BUILD_INFO);
 			}
 
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_SERIAL_NUMBER);
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA);
+			await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SERIAL_NUMBER);
+			await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
 		}
 
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)

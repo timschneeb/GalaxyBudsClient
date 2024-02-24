@@ -10,7 +10,7 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     public class DebugGetAllDataParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.DEBUG_GET_ALL_DATA;
+        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.DEBUG_GET_ALL_DATA;
 
         readonly String[] _swMonth = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" };
         readonly String[] _swRelVer = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
@@ -90,7 +90,7 @@ namespace GalaxyBudsClient.Message.Decoder
         [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
         public byte RightCradleBatt { set; get; }
 
-        public override void ParseMessage(SPPMessage msg)
+        public override void ParseMessage(SppMessage msg)
         {
             if (msg.Id != HandledType)
                 return;

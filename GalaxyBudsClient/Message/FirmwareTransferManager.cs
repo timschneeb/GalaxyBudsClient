@@ -182,7 +182,7 @@ namespace GalaxyBudsClient.Message
                                 _binary.TotalSize / 1000f);
                             break;
                         case FirmwareConstants.UpdateIds.StateChange:
-                            await BluetoothImpl.Instance.SendResponseAsync(SPPMessage.MessageIds.FOTA_UPDATE, 1);
+                            await BluetoothImpl.Instance.SendResponseAsync(SppMessage.MessageIds.FOTA_UPDATE, 1);
                             Log.Debug("FirmwareTransferManager.OnMessageReceived: State changed: {State}, result code: {ResultCode}", 
                                 update.State, update.ResultCode);
 
@@ -202,7 +202,7 @@ namespace GalaxyBudsClient.Message
                     }
                     break;
                 case FotaResultParser result:
-                    await BluetoothImpl.Instance.SendResponseAsync(SPPMessage.MessageIds.FOTA_RESULT, 1);
+                    await BluetoothImpl.Instance.SendResponseAsync(SppMessage.MessageIds.FOTA_RESULT, 1);
                     Log.Debug("FirmwareTransferManager.OnMessageReceived: Finished. Result: {Result}, error code: {Code}", 
                         result.Result, result.ErrorCode);
 
@@ -253,7 +253,7 @@ namespace GalaxyBudsClient.Message
             
             State = States.InitializingSession;
             
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.FOTA_OPEN, _binary.SerializeTable());
+            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.FOTA_OPEN, _binary.SerializeTable());
             _sessionTimeout.Start();
             _genericTimeout.Start();
         }

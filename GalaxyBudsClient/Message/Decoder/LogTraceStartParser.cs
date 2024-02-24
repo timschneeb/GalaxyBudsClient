@@ -7,7 +7,7 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     class LogTraceStartParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.LOG_TRACE_START;
+        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.LOG_TRACE_START;
         
         public int DataSize { set; get; }
         public short PartialDataMaxSize { set; get; }
@@ -15,7 +15,7 @@ namespace GalaxyBudsClient.Message.Decoder
         public bool Coupled { set; get; }
         public int FragmentCount { set; get; }
 
-        public override void ParseMessage(SPPMessage msg)
+        public override void ParseMessage(SppMessage msg)
         {
             if (msg.Id != HandledType)
                 return;

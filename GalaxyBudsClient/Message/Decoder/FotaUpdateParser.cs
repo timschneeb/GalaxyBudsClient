@@ -7,14 +7,14 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     class FotaUpdateParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.FOTA_UPDATE;
+        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.FOTA_UPDATE;
 
         public byte ResultCode { set; get; }
         public FirmwareConstants.UpdateIds UpdateId { set; get; }
         public byte Percent { set; get; }
         public byte State { set; get; }
         
-        public override void ParseMessage(SPPMessage msg)
+        public override void ParseMessage(SppMessage msg)
         {
             if (msg.Id != HandledType)
                 return;

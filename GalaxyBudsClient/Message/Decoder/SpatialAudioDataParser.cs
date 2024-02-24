@@ -9,7 +9,7 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     class SpatialAudioDataParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.SPATIAL_AUDIO_DATA;
+        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.SPATIAL_AUDIO_DATA;
         public SpatialAudioData EventId { set; get; }
         
         /* Wear on/off */
@@ -26,7 +26,7 @@ namespace GalaxyBudsClient.Message.Decoder
         /* SensorStuck */
         public int StuckParameter { set; get; }
 
-        public override void ParseMessage(SPPMessage msg)
+        public override void ParseMessage(SppMessage msg)
         {
             if (msg.Id != HandledType)
                 return;

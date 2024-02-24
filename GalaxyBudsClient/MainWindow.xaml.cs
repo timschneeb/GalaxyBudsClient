@@ -192,7 +192,7 @@ namespace GalaxyBudsClient
             switch (e)
             {
                 case EventDispatcher.Event.PairingMode:
-                    await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.UNK_PAIRING_MODE);
+                    await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.UNK_PAIRING_MODE);
                     break;
                 case EventDispatcher.Event.ToggleManagerVisibility:
                     if (!IsVisible)
@@ -233,7 +233,7 @@ namespace GalaxyBudsClient
         
         protected override async void OnClosing(WindowClosingEventArgs e)
         {
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.FIND_MY_EARBUDS_STOP);
+            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.FIND_MY_EARBUDS_STOP);
             
             if (SettingsProvider.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
             {
@@ -408,7 +408,7 @@ namespace GalaxyBudsClient
             // Reply manager info and request & cache SKU info
             _ = MessageComposer.SetManagerInfo();
             if(BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DebugSku))
-                _ = BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_SKU);
+                _ = BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
         }
 
         private void OnConnected(object? sender, EventArgs e)
@@ -534,7 +534,7 @@ namespace GalaxyBudsClient
                 [Loc.Resolve("optionsmenu_settings")] =
                     (sender, args) => Pager.SwitchPage(AbstractPage.Pages.Settings),
                 [Loc.Resolve("optionsmenu_refresh")] = async (sender, args) =>
-                    await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.DEBUG_GET_ALL_DATA),
+                    await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA),
                
                 [Loc.Resolve("optionsmenu_deregister")] = (sender, args) =>
                 {

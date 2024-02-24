@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
@@ -7,37 +6,35 @@ using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Sentry;
-using Sentry.Protocol;
 using Serilog;
 
 namespace GalaxyBudsClient.Message
 {
-    public partial class SPPMessage
+    public partial class SppMessage
     {
-
-        private readonly int crcSize = 2;
-        private readonly int msgIdSize = 1;
-        private readonly int somSize = 1;
-        private readonly int eomSize = 1;
-        private readonly int typeSize = 1;
-        private readonly int bytesSize = 1;
+        private const int CrcSize = 2;
+        private const int MsgIdSize = 1;
+        private const int SomSize = 1;
+        private const int EomSize = 1;
+        private const int TypeSize = 1;
+        private const int BytesSize = 1;
 
         public MsgType Type { set; get; }
         public MessageIds Id { set; get; }
-        public int Size => msgIdSize + Payload.Length + crcSize;
-        public int TotalPacketSize => somSize + typeSize + bytesSize + msgIdSize + Payload.Length + crcSize + eomSize;
+        public int Size => MsgIdSize + Payload.Length + CrcSize;
+        public int TotalPacketSize => SomSize + TypeSize + BytesSize + MsgIdSize + Payload.Length + CrcSize + EomSize;
         public byte[] Payload { set; get; }
         public int Crc16 { private set; get; }
         
         /* No Buds support at the moment */
         public bool IsFragment { set; get; }
 
-        public SPPMessage()
+        public SppMessage()
         {
-            Payload = new byte[0];
+            Payload = Array.Empty<byte>();
         }
 
-        public SPPMessage(MessageIds id, MsgType type, byte[] payload)
+        public SppMessage(MessageIds id, MsgType type, byte[] payload)
         {
             Id = id;
             Type = type;
@@ -51,7 +48,7 @@ namespace GalaxyBudsClient.Message
 
         public byte[] EncodeMessage()
         {
-            byte[] msg = new byte[TotalPacketSize];
+            var msg = new byte[TotalPacketSize];
             
             if (BluetoothImpl.Instance.ActiveModel != Models.Buds)
             {
@@ -102,11 +99,11 @@ namespace GalaxyBudsClient.Message
         /**
           * Static "constructors" 
           */
-        public static SPPMessage DecodeMessage(byte[] raw)
+        public static SppMessage DecodeMessage(byte[] raw)
         {
             try
             {
-                SPPMessage draft = new SPPMessage();
+                var draft = new SppMessage();
 
                 if (raw.Length < 6)
                 {
@@ -152,9 +149,9 @@ namespace GalaxyBudsClient.Message
                     rawPayloadSize = 0;
                     size = 3;
                 }
-                byte[] payload = new byte[rawPayloadSize];
+                var payload = new byte[rawPayloadSize];
 
-                byte[] crcData = new byte[size];
+                var crcData = new byte[size];
                 crcData[0] = raw[3]; //Msg ID
 
                 for (var i = 0; i < rawPayloadSize; i++)
@@ -188,17 +185,8 @@ namespace GalaxyBudsClient.Message
                     //throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Checksum,Loc.Resolve("sppmsg_crc_fail"), draft);
                 }
 
-                if (raw[draft.TotalPacketSize - 1] != (byte) Constants.EOM &&
-                    BluetoothImpl.Instance.ActiveModel == Models.Buds)
-                {
-                    SentrySdk.AddBreadcrumb($"Invalid EOM (Received: {raw[4 + rawPayloadSize + 2]})", "spp",
-                        level: BreadcrumbLevel.Warning);
-                    Log.Error("Invalid EOM (Received: {EomByte}", raw[4 + rawPayloadSize + 2]);
-                    throw new InvalidPacketException(InvalidPacketException.ErrorCodes.EOM,Loc.Resolve("sppmsg_invalid_eom"), draft);
-                }
-
-                if (raw[draft.TotalPacketSize - 1] != (byte) Constants.EOMPlus &&
-                    BluetoothImpl.Instance.ActiveModel != Models.Buds)
+                if (raw[draft.TotalPacketSize - 1] != (byte) Constants.EOM && BluetoothImpl.Instance.ActiveModel == Models.Buds ||
+                    raw[draft.TotalPacketSize - 1] != (byte) Constants.EOMPlus && BluetoothImpl.Instance.ActiveModel != Models.Buds)
                 {
                     SentrySdk.AddBreadcrumb($"Invalid EOM (Received: {raw[4 + rawPayloadSize + 2]})", "spp",
                         level: BreadcrumbLevel.Warning);

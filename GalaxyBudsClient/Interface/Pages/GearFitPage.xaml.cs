@@ -49,11 +49,11 @@ namespace GalaxyBudsClient.Interface.Pages
             {
                 _statusLeft.Content = "";
                 _statusRight.Content = "";
-                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS, 1);
+                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS, 1);
             }
             else
             {
-                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS, 0);
+                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS, 0);
             }
         }
         
@@ -82,13 +82,13 @@ namespace GalaxyBudsClient.Interface.Pages
         public override void OnPageHidden()
         {
             _scanButton.IsSearching = false;
-            _ = BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS, 0);
+            _ = BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS, 0);
         }
 
         private void ShowResults(FitTestParser result)
         {
             _scanButton.IsSearching = false;
-            _ = BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS, 0);
+            _ = BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS, 0);
             _statusLeft.Content = GetTextFor(result.Left);
             _statusRight.Content = GetTextFor(result.Right);
         }

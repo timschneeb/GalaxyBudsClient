@@ -4,7 +4,7 @@ namespace GalaxyBudsClient.Message.Encoder
 {
     public static class CustomizeAmbientEncoder
     {
-        public static SPPMessage Build(bool enable, byte ambientVolumeLeft, byte ambientVolumeRight, byte ambientTone)
+        public static SppMessage Build(bool enable, byte ambientVolumeLeft, byte ambientVolumeRight, byte ambientTone)
         {
             MemoryStream stream = new MemoryStream();
             BinaryWriter writer = new BinaryWriter(stream);
@@ -17,7 +17,7 @@ namespace GalaxyBudsClient.Message.Encoder
             var data = stream.ToArray();
             stream.Close();
             
-            return new SPPMessage(SPPMessage.MessageIds.CUSTOMIZE_AMBIENT_SOUND, SPPMessage.MsgType.Request, data);
+            return new SppMessage(SppMessage.MessageIds.CUSTOMIZE_AMBIENT_SOUND, SppMessage.MsgType.Request, data);
         }
     }
 }

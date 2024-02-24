@@ -6,10 +6,10 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     class AmbientModeUpdateParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.AMBIENT_MODE_UPDATED;
+        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.AMBIENT_MODE_UPDATED;
         public bool Enabled { set; get; }
 
-        public override void ParseMessage(SPPMessage msg)
+        public override void ParseMessage(SppMessage msg)
         {
             if (msg.Id != HandledType)
                 return;

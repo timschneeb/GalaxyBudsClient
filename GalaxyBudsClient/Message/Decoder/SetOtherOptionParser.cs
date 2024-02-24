@@ -7,10 +7,10 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     class SetOtherOptionParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.SET_TOUCHPAD_OTHER_OPTION;
+        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.SET_TOUCHPAD_OTHER_OPTION;
         public TouchOptions OptionType { set; get; }
 
-        public override void ParseMessage(SPPMessage msg)
+        public override void ParseMessage(SppMessage msg)
         {
             if (msg.Id != HandledType)
                 return;

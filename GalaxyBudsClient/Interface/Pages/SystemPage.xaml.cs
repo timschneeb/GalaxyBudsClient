@@ -60,7 +60,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private async void PairingMode_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.UNK_PAIRING_MODE);
+            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.UNK_PAIRING_MODE);
             await BluetoothImpl.Instance.DisconnectAsync();
         }
         

@@ -46,7 +46,7 @@ namespace GalaxyBudsClient.Platform
         public event EventHandler? Connected;
         public event EventHandler? Connecting;
         public event EventHandler<string>? Disconnected;
-        public event EventHandler<SPPMessage>? MessageReceived;
+        public event EventHandler<SppMessage>? MessageReceived;
         public event EventHandler<InvalidPacketException>? InvalidDataReceived;
         public event EventHandler<byte[]>? NewDataReceived;
         public event EventHandler<BluetoothException>? BluetoothError;
@@ -263,7 +263,7 @@ namespace GalaxyBudsClient.Platform
             }
         }
         
-        public async Task SendAsync(SPPMessage msg)
+        public async Task SendAsync(SppMessage msg)
         {
             if (!IsConnected)
             {
@@ -296,17 +296,17 @@ namespace GalaxyBudsClient.Platform
             }
         }
         
-        public async Task SendResponseAsync(SPPMessage.MessageIds id, params byte[]? payload)
+        public async Task SendResponseAsync(SppMessage.MessageIds id, params byte[]? payload)
         {
-            await SendAsync(new SPPMessage{Id = id, Payload = payload ?? new byte[0], Type = SPPMessage.MsgType.Response});
+            await SendAsync(new SppMessage{Id = id, Payload = payload ?? new byte[0], Type = SppMessage.MsgType.Response});
         }
 
-        public async Task SendRequestAsync(SPPMessage.MessageIds id, params byte[]? payload)
+        public async Task SendRequestAsync(SppMessage.MessageIds id, params byte[]? payload)
         {
-            await SendAsync(new SPPMessage{Id = id, Payload = payload ?? new byte[0], Type = SPPMessage.MsgType.Request});
+            await SendAsync(new SppMessage{Id = id, Payload = payload ?? new byte[0], Type = SppMessage.MsgType.Request});
         }
         
-        public async Task SendRequestAsync(SPPMessage.MessageIds id, bool payload)
+        public async Task SendRequestAsync(SppMessage.MessageIds id, bool payload)
         {
             await SendRequestAsync(id, payload ? new byte[]{0x01} : new byte[]{0x00});
         }
@@ -377,7 +377,7 @@ namespace GalaxyBudsClient.Platform
                             hook?.OnRawDataAvailable(ref raw);
                         }
 
-                        var msg = SPPMessage.DecodeMessage(raw);
+                        var msg = SppMessage.DecodeMessage(raw);
                         msgSize = msg.TotalPacketSize;
 
                         Log.Verbose(">> Incoming: {Msg}", msg);
@@ -396,9 +396,9 @@ namespace GalaxyBudsClient.Platform
                         for (var i = 1; i < IncomingData.Count; i++)
                         {
                             if ((ActiveModel == Models.Buds &&
-                                 (byte)(IncomingData[i] ?? 0) == (byte)SPPMessage.Constants.SOM) ||
+                                 (byte)(IncomingData[i] ?? 0) == (byte)SppMessage.Constants.SOM) ||
                                 (ActiveModel != Models.Buds &&
-                                 (byte)(IncomingData[i] ?? 0) == (byte)SPPMessage.Constants.SOMPlus))
+                                 (byte)(IncomingData[i] ?? 0) == (byte)SppMessage.Constants.SOMPlus))
                             {
                                 somIndex = i;
                                 break;

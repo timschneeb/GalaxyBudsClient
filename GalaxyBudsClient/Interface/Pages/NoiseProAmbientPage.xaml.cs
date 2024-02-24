@@ -82,7 +82,7 @@ namespace GalaxyBudsClient.Interface.Pages
                                 _volumeSlider.Value += 1;
                             }
 
-                            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.AMBIENT_VOLUME,
+                            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.AMBIENT_VOLUME,
                                 (byte)_volumeSlider.Value);
                         }
 
@@ -128,7 +128,7 @@ namespace GalaxyBudsClient.Interface.Pages
                                     NoiseControlMode.AmbientSound);
                                 _volumeSlider.Value -= 1;
 
-                                await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.AMBIENT_VOLUME,
+                                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.AMBIENT_VOLUME,
                                     (byte)_volumeSlider.Value);
                             }
                         }
@@ -225,7 +225,7 @@ namespace GalaxyBudsClient.Interface.Pages
 		
         private async void VolumeSlider_OnChanged(object? sender, int e)
         {
-            await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.AMBIENT_VOLUME, (byte)e);
+            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.AMBIENT_VOLUME, (byte)e);
         }
 
         private void AmbientCustomize_OnToggled(object? sender, bool e)

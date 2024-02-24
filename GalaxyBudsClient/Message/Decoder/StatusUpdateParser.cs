@@ -10,7 +10,7 @@ namespace GalaxyBudsClient.Message.Decoder
     public class StatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
     {
 
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.STATUS_UPDATED;
+        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.STATUS_UPDATED;
         public int BatteryL { set; get; }
         public int BatteryR { set; get; }
         public bool IsCoupled { set; get; }
@@ -31,7 +31,7 @@ namespace GalaxyBudsClient.Message.Decoder
         [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
         public int BatteryCase { set; get; }
 
-        public override void ParseMessage(SPPMessage msg)
+        public override void ParseMessage(SppMessage msg)
         {
             if (msg.Id != HandledType)
                 return;

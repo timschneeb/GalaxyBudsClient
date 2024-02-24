@@ -26,10 +26,10 @@ namespace GalaxyBudsClient.Interface.Developer
     {
         private class ViewModel
         {
-            private readonly IReadOnlyList<SPPMessage.MessageIds> _msgIdCache
-                = Enum.GetValues(typeof(SPPMessage.MessageIds)).Cast<SPPMessage.MessageIds>().ToList();
-            private readonly IReadOnlyList<SPPMessage.MsgType> _msgTypeCache
-                = Enum.GetValues(typeof(SPPMessage.MsgType)).Cast<SPPMessage.MsgType>().ToList();
+            private readonly IReadOnlyList<SppMessage.MessageIds> _msgIdCache
+                = Enum.GetValues(typeof(SppMessage.MessageIds)).Cast<SppMessage.MessageIds>().ToList();
+            private readonly IReadOnlyList<SppMessage.MsgType> _msgTypeCache
+                = Enum.GetValues(typeof(SppMessage.MsgType)).Cast<SppMessage.MsgType>().ToList();
 
             public IEnumerable MsgIdSource => _msgIdCache;
             public IEnumerable MsgTypeSource => _msgTypeCache;
@@ -89,7 +89,7 @@ namespace GalaxyBudsClient.Interface.Developer
                     _cache.AddRange(raw);
                     _hexDump.Text = HexUtils.Dump(_cache.ToArray());
 
-                    RecvMsgViewHolder holder = new RecvMsgViewHolder(SPPMessage.DecodeMessage(raw));
+                    RecvMsgViewHolder holder = new RecvMsgViewHolder(SppMessage.DecodeMessage(raw));
                     _vm.MsgTableDataSource?.Add(holder);
                     _vm.MsgTableDataView.Refresh();
                     
@@ -155,11 +155,11 @@ namespace GalaxyBudsClient.Interface.Developer
                 return;
             }
 
-            var msg = new SPPMessage
+            var msg = new SppMessage
             {
-                Id = (SPPMessage.MessageIds) _msgIdSend.SelectedItem,
+                Id = (SppMessage.MessageIds) _msgIdSend.SelectedItem,
                 Payload = payload,
-                Type = (SPPMessage.MsgType) _msgTypeSend.SelectedItem
+                Type = (SppMessage.MsgType) _msgTypeSend.SelectedItem
             };
             _ = BluetoothImpl.Instance.SendAsync(msg);
         }
@@ -196,17 +196,17 @@ namespace GalaxyBudsClient.Interface.Developer
                 return;
             }
 
-            var msgs = new List<SPPMessage>();
+            var msgs = new List<SppMessage>();
             int failCount = 0;
             do
             {
                 int msgSize = 0;
-                SPPMessage? msg = null;
+                SppMessage? msg = null;
                 try
                 {
                     var raw = data.OfType<byte>().ToArray();
 
-                    msg = SPPMessage.DecodeMessage(raw);
+                    msg = SppMessage.DecodeMessage(raw);
                     msgSize = msg.TotalPacketSize;
                     
                     msgs.Add(msg);
@@ -220,9 +220,9 @@ namespace GalaxyBudsClient.Interface.Developer
                     for (int i = 1; i < data.Count; i++)
                     {
                         if ((BluetoothImpl.Instance.ActiveModel == Models.Buds &&
-                            (byte)(data[i] ?? 0) == (byte)SPPMessage.Constants.SOM) ||
+                            (byte)(data[i] ?? 0) == (byte)SppMessage.Constants.SOM) ||
                             (BluetoothImpl.Instance.ActiveModel != Models.Buds &&
-                             (byte)(data[i] ?? 0) == (byte)SPPMessage.Constants.SOMPlus))
+                             (byte)(data[i] ?? 0) == (byte)SppMessage.Constants.SOMPlus))
                         {
                             somIndex = i;
                             break;

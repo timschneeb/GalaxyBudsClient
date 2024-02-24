@@ -74,7 +74,7 @@ namespace GalaxyBudsClient.Interface.Pages
 						BluetoothImpl.Instance.DeviceSpec.RecommendedFwVersion(IDeviceSpec.Feature.SeamlessConnection)));
 				return;
 			}
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_SEAMLESS_CONNECTION, !e);
+			await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SEAMLESS_CONNECTION, !e);
 		}
 
 		private void ResumeSensor_OnToggled(object? sender, bool e)
@@ -92,12 +92,12 @@ namespace GalaxyBudsClient.Interface.Pages
 						BluetoothImpl.Instance.DeviceSpec.RecommendedFwVersion(IDeviceSpec.Feature.AmbientSidetone)));
 				return;
 			}
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.SET_SIDETONE, e);
+			await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SIDETONE, e);
 		}
 
 		private async void Passthrough_OnToggled(object? sender, bool e)
 		{
-			await BluetoothImpl.Instance.SendRequestAsync(SPPMessage.MessageIds.PASS_THROUGH, e);
+			await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.PASS_THROUGH, e);
 		}
 
 		private void Hotkeys_OnPointerPressed(object? sender, PointerPressedEventArgs e)

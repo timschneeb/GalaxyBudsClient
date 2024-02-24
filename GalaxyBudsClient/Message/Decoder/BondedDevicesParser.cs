@@ -6,11 +6,11 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     class BondedDevicesParser : BaseMessageParser
     {
-        public override SPPMessage.MessageIds HandledType => SPPMessage.MessageIds.UNK_BONDED_DEVICES;
+        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.UNK_BONDED_DEVICES;
 
         public String? Content { set; get; }
 
-        public override void ParseMessage(SPPMessage msg)
+        public override void ParseMessage(SppMessage msg)
         {
             if (msg.Id != HandledType)
                 return;
