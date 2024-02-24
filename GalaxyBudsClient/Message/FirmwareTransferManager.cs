@@ -58,7 +58,6 @@ namespace GalaxyBudsClient.Message
         
         private readonly Timer _sessionTimeout;
         private readonly Timer _controlTimeout;
-        private readonly Timer _genericTimeout;
 
         private int _mtuSize;
         private int _currentSegment;
@@ -71,10 +70,8 @@ namespace GalaxyBudsClient.Message
         {
             _sessionTimeout = new Timer(20000);
             _controlTimeout = new Timer(20000);
-            _genericTimeout = new Timer(600000 * 2); // 20 min
             _sessionTimeout.Elapsed += OnSessionTimeoutElapsed;
             _controlTimeout.Elapsed += OnControlTimeoutElapsed;
-            _genericTimeout.Elapsed += OnCopyTimeoutElapsed;
 
             Error += (sender, exception) =>
             {
@@ -255,7 +252,6 @@ namespace GalaxyBudsClient.Message
             
             await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.FOTA_OPEN, _binary.SerializeTable());
             _sessionTimeout.Start();
-            _genericTimeout.Start();
         }
 
         public bool IsInProgress()
@@ -275,7 +271,6 @@ namespace GalaxyBudsClient.Message
             
             _sessionTimeout.Stop();
             _controlTimeout.Stop();
-            _genericTimeout.Stop();
 
             await BluetoothImpl.Instance.DisconnectAsync();
             await Task.Delay(100);
@@ -292,12 +287,6 @@ namespace GalaxyBudsClient.Message
         {
             Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.ControlTimeout, 
                 Loc.Resolve("fw_fail_control_timeout")));
-        }
-        
-        private void OnCopyTimeoutElapsed(object? sender, ElapsedEventArgs e)
-        {
-            Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.CopyTimeout, 
-                Loc.Resolve("fw_fail_copy_timeout")));
         }
     }
 }
