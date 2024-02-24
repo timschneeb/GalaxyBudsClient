@@ -225,7 +225,6 @@ namespace GalaxyBudsClient.Message
             UNKNOWN_108 = 108,
             UNKNOWN_109 = 109,
             UNKNOWN_110 = 110,
-            UNKNOWN_111 = 111,
             UNKNOWN_116 = 116,
             UNKNOWN_117 = 117,
             UNKNOWN_118 = 118,
