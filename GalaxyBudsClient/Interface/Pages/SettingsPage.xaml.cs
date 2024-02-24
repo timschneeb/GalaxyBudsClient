@@ -62,14 +62,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
-            if (BluetoothImpl.Instance.IsConnected)
-            {
-                MainWindow.Instance.Pager.SwitchPage(Pages.Home);
-            }
-            else
-            {
-                MainWindow.Instance.Pager.SwitchPage(Pages.NoConnection);
-            }
+            MainWindow.Instance.Pager.SwitchPage(BluetoothImpl.Instance.IsConnected ? Pages.Home : Pages.NoConnection);
         }
 
         private void PopupSettings_OnPointerPressed(object? sender, PointerPressedEventArgs e)

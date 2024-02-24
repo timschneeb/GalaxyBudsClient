@@ -49,20 +49,21 @@ namespace GalaxyBudsClient.Utils.Interface
 
             public static void Load()
             {
-                string lang = SettingsProvider.Instance.Locale.ToString();
-                if (lang.EndsWith("_"))
+                var lang = SettingsProvider.Instance.Locale.ToString();
+                if (lang.EndsWith('_'))
                     lang = lang.TrimEnd('_');
 
-                if (SettingsProvider.Instance.Locale == Locales.custom && IsTranslatorModeEnabled())
-                {    
-                    SetLanguageResourceDictionary(GetTranslatorModeFile(), external: true);
-                    return;
-                }
-                if (SettingsProvider.Instance.Locale == Locales.custom && !IsTranslatorModeEnabled())
+                switch (SettingsProvider.Instance.Locale)
                 {
-                    lang = Locales.en.ToString();
-                    SettingsProvider.Instance.Locale = Locales.en;
+                    case Locales.custom when IsTranslatorModeEnabled():
+                        SetLanguageResourceDictionary(GetTranslatorModeFile(), external: true);
+                        return;
+                    case Locales.custom when !IsTranslatorModeEnabled():
+                        lang = Locales.en.ToString();
+                        SettingsProvider.Instance.Locale = Locales.en;
+                        break;
                 }
+
                 SetLanguageResourceDictionary($"{Program.AvaresUrl}/i18n/{lang}.xaml", external: false);
             }
             

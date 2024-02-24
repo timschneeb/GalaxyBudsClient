@@ -92,24 +92,24 @@ namespace GalaxyBudsClient
 
         public void RestartApp(AbstractPage.Pages target)
         {
-            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-            {
-                MainWindow.Instance.DisableApplicationExit = true;
-                MainWindow.Instance.OverrideMinimizeTray = true;
-                MainWindow.Instance.Close();
-                MainWindow.Kill();
+            if (ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop)
+                return;
+            
+            MainWindow.Instance.DisableApplicationExit = true;
+            MainWindow.Instance.OverrideMinimizeTray = true;
+            MainWindow.Instance.Close();
+            MainWindow.Kill();
 
-                ThemeUtils.Reload();
+            ThemeUtils.Reload();
 
-                desktop.MainWindow = MainWindow.Instance;
-                desktop.MainWindow.Show();
+            desktop.MainWindow = MainWindow.Instance;
+            desktop.MainWindow.Show();
                 
-                MainWindow.Instance.Pager.SwitchPage(target);
+            MainWindow.Instance.Pager.SwitchPage(target);
                 
-                /* Restore crucial information */
-                SppMessageHandler.Instance.DispatchEvent(DeviceMessageCache.Instance.ExtendedStatusUpdate);
-                SppMessageHandler.Instance.DispatchEvent(DeviceMessageCache.Instance.StatusUpdate);
-            }
+            /* Restore crucial information */
+            SppMessageHandler.Instance.DispatchEvent(DeviceMessageCache.Instance.ExtendedStatusUpdate);
+            SppMessageHandler.Instance.DispatchEvent(DeviceMessageCache.Instance.StatusUpdate);
         }
 
         public event Action? TrayIconClicked;

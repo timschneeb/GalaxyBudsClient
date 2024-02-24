@@ -25,7 +25,7 @@ namespace GalaxyBudsClient.Platform.Windows
                     }
                     
                     RegistryKey? key =
-                        Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", false);
+                        Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", false);
                     return key?.GetValue("Galaxy Buds Client", null) != null;
                 }
                 catch (SecurityException)
@@ -45,14 +45,14 @@ namespace GalaxyBudsClient.Platform.Windows
                     if (value)
                     {
                         var key =
-                            Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+                            Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
                         key?.SetValue("Galaxy Buds Client",
                             "\"" + Process.GetCurrentProcess().MainModule?.FileName + "\" /StartMinimized");
                     }
                     else
                     {
                         var key =
-                            Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+                            Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
                         key?.DeleteValue("Galaxy Buds Client");
                     }
 

@@ -176,14 +176,11 @@ namespace GalaxyBudsClient
 
         private void OnAnyMessageReceived(object? sender, BaseMessageParser? e)
         {
-            if (e is VoiceWakeupEventParser wakeup)
+            if (e is VoiceWakeupEventParser { ResultCode: 1 })
             {
-                if (wakeup.ResultCode == 1)
-                {
-                    Log.Debug("MainWindow.OnAnyMessageReceived: Voice wakeup event received");
+                Log.Debug("MainWindow.OnAnyMessageReceived: Voice wakeup event received");
                     
-                    EventDispatcher.Instance.Dispatch(SettingsProvider.Instance.BixbyRemapEvent);
-                }
+                EventDispatcher.Instance.Dispatch(SettingsProvider.Instance.BixbyRemapEvent);
             }
         }
 
@@ -238,7 +235,7 @@ namespace GalaxyBudsClient
             if (SettingsProvider.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
             {
                 // check if the cause of the termination is due to shutdown or application close request
-                if (e.CloseReason == WindowCloseReason.OSShutdown || e.CloseReason == WindowCloseReason.ApplicationShutdown)
+                if (e.CloseReason is WindowCloseReason.OSShutdown or WindowCloseReason.ApplicationShutdown)
                 {
                     Log.Debug("MainWindow.OnClosing: closing event, continuing termination");
                 }

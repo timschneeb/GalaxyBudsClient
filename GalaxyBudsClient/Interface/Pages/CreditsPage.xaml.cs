@@ -23,14 +23,9 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
-			if (BluetoothImpl.Instance.RegisteredDeviceValid)
-			{
-				MainWindow.Instance.Pager.SwitchPage(Pages.Home);
-			}
-			else
-			{
-				MainWindow.Instance.Pager.SwitchPage(Pages.Welcome);
-			}
+			MainWindow.Instance.Pager.SwitchPage(BluetoothImpl.Instance.RegisteredDeviceValid
+				? Pages.Home
+				: Pages.Welcome);
 		}
 
 		private void OpenWebsite(String url)

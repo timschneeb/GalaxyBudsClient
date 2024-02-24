@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Platform;
@@ -255,26 +256,25 @@ namespace GalaxyBudsClient.Message
             }
         }
         
-        private void UpdateOffsetList(int i) {
-            if (_offsetList.Count > 0) {
-                foreach (var pair in _offsetList)
-                {
-                    if (pair.Value == i)
-                    {
-                        _offsetList.Remove(pair.Key);
-                    }
-                }
+        private void UpdateOffsetList(int i)
+        {
+            if (_offsetList.Count <= 0) 
+                return;
+            
+            foreach (var pair in _offsetList.Where(pair => pair.Value == i))
+            {
+                _offsetList.Remove(pair.Key);
             }
         }
 
         private int GetRemainOffset() {
-            if (_offsetList.Count > 0)
+            if (_offsetList.Count <= 0)
+                return -1;
+            
+            using var it = _offsetList.GetEnumerator();
+            if (it.MoveNext())
             {
-                using var it = _offsetList.GetEnumerator();
-                if (it.MoveNext())
-                {
-                    return it.Current.Value;
-                }
+                return it.Current.Value;
             }
             return -1;
         }

@@ -22,20 +22,20 @@ namespace GalaxyBudsClient.Interface.Pages
     public class DeviceSelectionPage : AbstractPage
     {
         public override Pages PageType => Pages.DeviceSelect;
-        
-        public ObservableCollection<BluetoothDevice>? AvailableDevices
+
+        private ObservableCollection<BluetoothDevice>? AvailableDevices
         {
             get => _deviceBox.ItemsSource as ObservableCollection<BluetoothDevice>;
             set => _deviceBox.ItemsSource = value;
         }
 
-        public SelectionModel<BluetoothDevice>? Selection
+        private SelectionModel<BluetoothDevice>? Selection
         {
             get => _deviceBox.Selection as SelectionModel<BluetoothDevice>;
             set => _deviceBox.Selection = value!;
         }
-        
-        public bool IsSearching
+
+        private bool IsSearching
         {
             set => _pageHeader.LoadingSpinnerVisible = value;
             get => _pageHeader.LoadingSpinnerVisible;

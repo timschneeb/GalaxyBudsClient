@@ -47,12 +47,11 @@ namespace GalaxyBudsClient.Interface.Pages
         
         private void OnStateChanged(object? sender, FirmwareTransferManager.States e)
         {
-            switch (e)
+            _progressText.Text = e switch
             {
-                case FirmwareTransferManager.States.InitializingSession:
-                    _progressText.Text = Loc.Resolve("fw_upload_progress_session");
-                    break;
-            }
+                FirmwareTransferManager.States.InitializingSession => Loc.Resolve("fw_upload_progress_session"),
+                _ => _progressText.Text
+            };
         }
 
         private void OnProgressChanged(object? sender, FirmwareProgressEventArgs e)

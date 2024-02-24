@@ -48,7 +48,7 @@ namespace GalaxyBudsClient.Interface.Pages
             UpdateStrings();
         }
 
-        public void UpdateStrings()
+        private void UpdateStrings()
         {
             _pageHeader.Title = $"{Loc.Resolve("cact_header")} ({Loc.Resolve(CurrentSide == Devices.L ? "left" : "right")})";
             UpdateTouchActionMenus();

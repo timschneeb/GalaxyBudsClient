@@ -123,14 +123,14 @@ namespace GalaxyBudsClient.Interface.Pages
             _leftMuteButton.IsMuted = false;
             _rightMuteButton.IsMuted = false;
         }
-        
-        public void UpdateDashboard(IBasicStatusUpdate ext)
+
+        private void UpdateDashboard(IBasicStatusUpdate ext)
         {
             UpdateBatteryIcons(ext.BatteryL, Devices.L);
             UpdateBatteryIcons(ext.BatteryR, Devices.R);
             UpdateIcons(ext.BatteryL, ext.BatteryR);
-            EarbudWarning(ext.WearState == WearStates.L || ext.WearState == WearStates.Both,
-                ext.WearState == WearStates.R || ext.WearState == WearStates.Both);
+            EarbudWarning(ext.WearState is WearStates.L or WearStates.Both,
+                ext.WearState is WearStates.R or WearStates.Both);
         }
 
         public override void OnPageShown()
@@ -164,7 +164,7 @@ namespace GalaxyBudsClient.Interface.Pages
             _lastWarningLeft = l;
             _lastWarningRight = r;
 
-            string notice = "";
+            var notice = "";
             if (l && r)
             {
                 notice = Loc.Resolve("fmg_warning_both");
@@ -195,8 +195,8 @@ namespace GalaxyBudsClient.Interface.Pages
             UpdateBatteryIcons((int) Math.Round(left), Devices.L);
             UpdateBatteryIcons((int) Math.Round(right), Devices.R);
             
-            bool isLeftOnline = left > 0;
-            bool isRightOnline = right > 0;
+            var isLeftOnline = left > 0;
+            var isRightOnline = right > 0;
 
             var type = BluetoothImpl.Instance.DeviceSpec.IconResourceKey;
             
@@ -208,28 +208,15 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private void UpdateBatteryIcons(int p, Devices side)
         {
-            IImage? batteryIcon;
-            if (p <= 0)
+            var batteryIcon = p switch
             {
-                batteryIcon = null;
-            }
-            else if (p <= 25)
-            {
-                batteryIcon = (IImage?)Application.Current?.FindResource("BatteryLow");
-            }
-            else if (p <= 50)
-            {
-                batteryIcon = (IImage?)Application.Current?.FindResource("BatteryMedium");
-            }
-            else if (p <= 90)
-            {
-                batteryIcon = (IImage?)Application.Current?.FindResource("BatteryHigh");
-            }
-            else
-            {
-                batteryIcon = (IImage?)Application.Current?.FindResource("BatteryFull");
-            }
-            
+                <= 0 => null,
+                <= 25 => (IImage?)Application.Current?.FindResource("BatteryLow"),
+                <= 50 => (IImage?)Application.Current?.FindResource("BatteryMedium"),
+                <= 90 => (IImage?)Application.Current?.FindResource("BatteryHigh"),
+                _ => (IImage?)Application.Current?.FindResource("BatteryFull")
+            };
+
             switch (side)
             {
                 case Devices.L:
@@ -245,6 +232,5 @@ namespace GalaxyBudsClient.Interface.Pages
         {
             MainWindow.Instance.Pager.SwitchPage(Pages.Home);
         }
-		
     }
 }

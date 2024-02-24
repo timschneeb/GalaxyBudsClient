@@ -5,29 +5,24 @@ using System.Linq;
 
 namespace GalaxyBudsClient.Model.Attributes
 {
-    static class DescriptionAttributeExtension
+    public static class DescriptionAttributeExtension
     {
         public static string GetDescription<T>(this T e) where T : IConvertible
         {
-            if (e is Enum)
+            if (e is not Enum) 
+                return string.Empty;
+            
+            var type = e.GetType();
+            foreach (var obj in Enum.GetValues(type))
             {
-                Type type = e.GetType();
-                foreach (var obj in Enum.GetValues(type))
+                if (obj == null || (int)obj != e.ToInt32(CultureInfo.InvariantCulture)) 
+                    continue;
+                
+                if (type.GetMember(type.GetEnumName((int) obj) ?? string.Empty)[0]
+                        .GetCustomAttributes(typeof(DescriptionAttribute), false)
+                        .FirstOrDefault() is DescriptionAttribute descriptionAttribute)
                 {
-                    if (obj is {} val)
-                    {
-                        if ((int) val == e.ToInt32(CultureInfo.InvariantCulture))
-                        {
-                            var memInfo = type.GetMember(type.GetEnumName((int) val) ?? string.Empty);
-
-                            if (memInfo[0]
-                                .GetCustomAttributes(typeof(DescriptionAttribute), false)
-                                .FirstOrDefault() is DescriptionAttribute descriptionAttribute)
-                            {
-                                return descriptionAttribute.Description;
-                            }
-                        }
-                    }
+                    return descriptionAttribute.Description;
                 }
             }
 

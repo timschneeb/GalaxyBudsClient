@@ -92,7 +92,7 @@ namespace GalaxyBudsClient.Model.Firmware
                 stream.Read(bArr, 0, 4);
                 Crc32 = BitConverter.ToInt32(bArr);
             }
-            catch (Exception ex) when (!(ex is FirmwareParseException))
+            catch (Exception ex) when (ex is not FirmwareParseException)
             {
                 Log.Error(ex, "FirmwareBinary: Failed to decode binary");
                 throw new FirmwareParseException(FirmwareParseException.ErrorCodes.Unknown,

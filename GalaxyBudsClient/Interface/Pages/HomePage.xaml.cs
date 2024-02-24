@@ -245,8 +245,8 @@ namespace GalaxyBudsClient.Interface.Pages
             _refreshTimer.Stop();
             _batteryCase.IsVisible = _caseLabel.IsVisible = false;
         }
-        
-		public async void ProcessBasicUpdate(IBasicStatusUpdate parser)
+
+        private async void ProcessBasicUpdate(IBasicStatusUpdate parser)
         {
             if (parser.BatteryCase > 100)
             {
@@ -381,28 +381,15 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private void UpdateBatteryPercentage(int p, Devices side)
         {
-            IImage? batteryIcon;
-            if (p <= 0)
+            var batteryIcon = p switch
             {
-                batteryIcon = (IImage?)Application.Current?.FindResource("BatteryDisconnected");
-            }
-            else if (p <= 25)
-            {
-                batteryIcon = (IImage?)Application.Current?.FindResource("BatteryLow");
-            }
-            else if (p <= 50)
-            {
-                batteryIcon = (IImage?)Application.Current?.FindResource("BatteryMedium");
-            }
-            else if (p <= 90)
-            {
-                batteryIcon = (IImage?)Application.Current?.FindResource("BatteryHigh");
-            }
-            else
-            {
-                batteryIcon = (IImage?)Application.Current?.FindResource("BatteryFull");
-            }
-            
+                <= 0 => (IImage?)Application.Current?.FindResource("BatteryDisconnected"),
+                <= 25 => (IImage?)Application.Current?.FindResource("BatteryLow"),
+                <= 50 => (IImage?)Application.Current?.FindResource("BatteryMedium"),
+                <= 90 => (IImage?)Application.Current?.FindResource("BatteryHigh"),
+                _ => (IImage?)Application.Current?.FindResource("BatteryFull")
+            };
+
             switch (side)
             {
                 case Devices.L:
@@ -416,14 +403,14 @@ namespace GalaxyBudsClient.Interface.Pages
             }
         }
 
-        public void UpdateList()
+        private void UpdateList()
         {
             _ancBorder.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Anc);
             _ambientBorder.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSound);
             _noiseBorder.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl);
         }
 
-        public void SetWarning(bool visible, string message = "")
+        private void SetWarning(bool visible, string message = "")
         {
             _warningContainer.IsVisible = message != string.Empty;
             _warningText.Content = message;

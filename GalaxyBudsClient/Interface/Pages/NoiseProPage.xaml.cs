@@ -136,19 +136,12 @@ namespace GalaxyBudsClient.Interface.Pages
             _ancOne.IsChecked = e.AncWithOneEarbud;
             _voiceDetect.IsChecked = e.DetectConversations;
 
-            byte seconds;
-            switch (e.DetectConversationsDuration)
+            byte seconds = e.DetectConversationsDuration switch
             {
-                case 1:
-                    seconds = 10;
-                    break;
-                case 2:
-                    seconds = 15;
-                    break;
-                default:
-                    seconds = 5;
-                    break;
-            }
+                1 => 10,
+                2 => 15,
+                _ => 5
+            };
             _voiceDetectTimeout.Description = _voiceDetectTimeout.Description =
                 string.Format(Loc.Resolve("nc_voicedetect_timeout_item"), seconds); 
         }

@@ -30,20 +30,20 @@ namespace GalaxyBudsClient.Interface.Pages
     public class FirmwareSelectionPage : AbstractPage
     {
         public override Pages PageType => Pages.FirmwareSelect;
-        
-        public ObservableCollection<FirmwareRemoteBinary>? AvailableFirmwares
+
+        private ObservableCollection<FirmwareRemoteBinary>? AvailableFirmwares
         {
             get => _firmwareBox.ItemsSource as ObservableCollection<FirmwareRemoteBinary>;
             set => _firmwareBox.ItemsSource = value;
         }
 
-        public SelectionModel<FirmwareRemoteBinary>? Selection
+        private SelectionModel<FirmwareRemoteBinary>? Selection
         {
             get => _firmwareBox.Selection as SelectionModel<FirmwareRemoteBinary>;
             set => _firmwareBox.Selection = value!;
         }
-        
-        public bool IsSearching
+
+        private bool IsSearching
         {
             set => _pageHeader.LoadingSpinnerVisible = value;
             get => _pageHeader.LoadingSpinnerVisible;
@@ -128,8 +128,7 @@ namespace GalaxyBudsClient.Interface.Pages
         private async void Next_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
             
-            if (Selection == null || 
-                Selection.Count <= 0 || 
+            if (Selection is not { Count: > 0 } || 
                 Selection.SelectedItem == null ||
                 Selection.SelectedItem.Model != BluetoothImpl.Instance.ActiveModel)
             {

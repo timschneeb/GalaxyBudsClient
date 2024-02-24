@@ -55,10 +55,10 @@ namespace GalaxyBudsClient.Platform.OSX
             win32Keys.Reverse();
             foreach (var key in win32Keys)
             {
-                maskCmd = !(key == Keys.LWin || key == Keys.RWin) && maskCmd;
-                maskShft = !(key == Keys.ShiftKey || key == Keys.LShiftKey || key == Keys.RShiftKey) && maskShft;
-                maskOpt = !(key == Keys.Menu || key == Keys.LMenu || key == Keys.RMenu) && maskOpt;
-                maskCtrl = !(key == Keys.ControlKey || key == Keys.LControlKey || key == Keys.RControlKey) && maskCtrl;
+                maskCmd = key is not (Keys.LWin or Keys.RWin) && maskCmd;
+                maskShft = key is not (Keys.ShiftKey or Keys.LShiftKey or Keys.RShiftKey) && maskShft;
+                maskOpt = key is not (Keys.Menu or Keys.LMenu or Keys.RMenu) && maskOpt;
+                maskCtrl = key is not (Keys.ControlKey or Keys.LControlKey or Keys.RControlKey) && maskCtrl;
                 SimulateHotkeyInternal((uint)key, false, maskCmd, maskOpt, maskCtrl, maskShft);
             }
         }

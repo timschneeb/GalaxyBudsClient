@@ -11,7 +11,6 @@ namespace GalaxyBudsClient.Interface
     {
         private readonly Button minimizeButton;
         private readonly Button closeButton;
-        private Button optionsButton;
 
         private readonly DockPanel titleBar;
         private readonly Control? titleBarBackground;
@@ -52,12 +51,8 @@ namespace GalaxyBudsClient.Interface
         public event EventHandler? OptionsPressed;
         public event EventHandler? ClosePressed;
         
-        public Button OptionsButton
-        {
-            set => optionsButton = value;
-            get => optionsButton;
-        }
-        
+        public Button OptionsButton { set; get; }
+
         public string Title
         {
             get => GetValue(TitleProperty);
@@ -70,11 +65,11 @@ namespace GalaxyBudsClient.Interface
 
             minimizeButton = this.GetControl<Button>("MinimizeButton");
             closeButton = this.GetControl<Button>("CloseButton");
-            optionsButton = this.GetControl<Button>("OptionsButton");
+            OptionsButton = this.GetControl<Button>("OptionsButton");
             
             minimizeButton.Click += MinimizeWindow;
             closeButton.Click += (sender, args) => ClosePressed?.Invoke(sender, EventArgs.Empty);
-            optionsButton.Click += (sender, args) => OptionsPressed?.Invoke(sender, EventArgs.Empty);
+            OptionsButton.Click += (sender, args) => OptionsPressed?.Invoke(sender, EventArgs.Empty);
 
             titleBar = this.GetControl<DockPanel>("TitleBar");
             titleBarBackground = this.FindControl<Control>("TitleBarBackground");

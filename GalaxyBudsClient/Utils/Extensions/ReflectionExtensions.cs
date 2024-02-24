@@ -17,7 +17,7 @@ namespace GalaxyBudsClient.Utils.Extensions
         {
             if(obj == null) throw new ArgumentNullException(nameof(obj));
             var pi = obj.GetType().GetProperty(propName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-            if (pi == null) throw new ArgumentOutOfRangeException("propName", string.Format("Property {0} was not found in Type {1}", propName, obj.GetType().FullName));
+            if (pi == null) throw new ArgumentOutOfRangeException(nameof(propName), $"Property {propName} was not found in Type {obj.GetType().FullName}");
             return (T?)pi.GetValue(obj, null);
         }
 
@@ -39,7 +39,7 @@ namespace GalaxyBudsClient.Utils.Extensions
                 fi = t.GetField(propName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
                 t = t.BaseType;
             }
-            if (fi == null) throw new ArgumentOutOfRangeException("propName", string.Format("Field {0} was not found in Type {1}", propName, obj.GetType().FullName));
+            if (fi == null) throw new ArgumentOutOfRangeException(nameof(propName), $"Field {propName} was not found in Type {obj.GetType().FullName}");
             return (T?)fi.GetValue(obj);
         }
     }

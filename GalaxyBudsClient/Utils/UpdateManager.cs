@@ -36,22 +36,20 @@ namespace GalaxyBudsClient.Utils
             }
         }
 
-        public SparkleUpdater Core => _sparkle;
-        
-        private readonly SparkleUpdater _sparkle;
+        public SparkleUpdater Core { get; }
 
-        public UpdateManager()
+        private UpdateManager()
         {
-            _sparkle = new SparkleUpdater("https://timschneeberger.me/updates/galaxybudsclient/appcast.xml", new Ed25519Checker(SecurityMode.Unsafe))
+            Core = new SparkleUpdater("https://timschneeberger.me/updates/galaxybudsclient/appcast.xml", new Ed25519Checker(SecurityMode.Unsafe))
             {
                 SecurityProtocolType = System.Net.SecurityProtocolType.Tls12
             };
-            _sparkle.StartLoop(false, false);
+            Core.StartLoop(false, false);
         }
 
         public async Task<UpdateStatus> DoManualCheck()
         {
-            var result = await _sparkle.CheckForUpdatesAtUserRequest();
+            var result = await Core.CheckForUpdatesAtUserRequest();
             if (result == null)
             {
                 return UpdateStatus.CouldNotDetermine;
@@ -67,7 +65,7 @@ namespace GalaxyBudsClient.Utils
 
         public async Task SilentCheck()
         {
-            var result = await _sparkle.CheckForUpdatesQuietly();
+            var result = await Core.CheckForUpdatesQuietly();
 
             if (result?.Status == UpdateStatus.UpdateAvailable)
             { 

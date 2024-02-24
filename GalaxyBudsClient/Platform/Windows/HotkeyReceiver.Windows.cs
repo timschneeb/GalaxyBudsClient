@@ -22,13 +22,11 @@ namespace GalaxyBudsClient.Platform.Windows
 
         private static string Resolve(int code)
         {
-            switch (code)
+            return code switch
             {
-                case 1409:
-                    return Loc.Resolve("hotkey_add_error_duplicate");
-            }
-
-            return string.Format(Loc.Resolve("hotkey_add_error_unknown"), code);
+                1409 => Loc.Resolve("hotkey_add_error_duplicate"),
+                _ => string.Format(Loc.Resolve("hotkey_add_error_unknown"), code)
+            };
         }
     } 
     
@@ -57,7 +55,7 @@ namespace GalaxyBudsClient.Platform.Windows
 #if Windows                
                 _wndProc.MessageReceived -= WndProcClient_MessageReceived;
 #endif              
-                var _ = UnregisterAllAsync();
+                _ = UnregisterAllAsync();
             });
         }
 

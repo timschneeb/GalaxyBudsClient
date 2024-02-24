@@ -27,11 +27,7 @@ namespace GalaxyBudsClient.Utils
 
         public static string Dump(byte[]? bytes, int bytesPerLine = 16, bool showHeader = true, bool showOffset = true, bool showAscii = true)
         {
-            if (bytes == null)
-            {
-                return "<null>";
-            }
-            return (new HexUtils(bytes, bytesPerLine, showHeader, showOffset, showAscii)).Dump();
+            return bytes == null ? "<null>" : new HexUtils(bytes, bytesPerLine, showHeader, showOffset, showAscii).Dump();
         }
         public static string DumpAscii(byte[]? bytes)
         {
@@ -40,10 +36,10 @@ namespace GalaxyBudsClient.Utils
                 return "<null>";
             }
 
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < bytes.Length; i++)
+            var sb = new StringBuilder();
+            foreach (var t in bytes)
             {
-                sb.Append(Translate(bytes[i]));
+                sb.Append(Translate(t));
             }
             return sb.ToString();
         }

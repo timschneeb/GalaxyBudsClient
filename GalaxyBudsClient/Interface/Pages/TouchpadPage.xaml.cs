@@ -158,7 +158,7 @@ namespace GalaxyBudsClient.Interface.Pages
                         if (value.Key.IsHidden())
                             continue;
                         
-                        menuActions.Add(value.Key.GetDescription(), (sender, args) => ItemClicked(device, value.Key));
+                        menuActions.Add(value.Key.GetDescription(), (_, _) => ItemClicked(device, value.Key));
                     }
                     
                     /* Inject custom actions if appropriate */
@@ -201,7 +201,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		private async void ItemClicked(Devices device, TouchOptions option)
 		{
-			if (option == TouchOptions.OtherL || option == TouchOptions.OtherR)
+			if (option is TouchOptions.OtherL or TouchOptions.OtherR)
 			{
 				MainWindow.Instance.CustomTouchActionPage.Accepted += CustomTouchActionPageOnAccepted;
 				

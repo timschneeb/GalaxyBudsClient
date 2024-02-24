@@ -86,9 +86,11 @@ namespace GalaxyBudsClient.Interface.Pages
 
 		private async void OverrideTitle_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
-			var dlg = new InputDialog();
-			dlg.Input.Text = SettingsProvider.Instance.Popup.CustomTitle;
-			dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+			var dlg = new InputDialog
+			{
+				Input = { Text = SettingsProvider.Instance.Popup.CustomTitle },
+				WindowStartupLocation = WindowStartupLocation.CenterOwner
+			};
 			var result = await dlg.ShowDialog<string?>(MainWindow.Instance);
 			if (result != null)
 			{

@@ -19,18 +19,9 @@ namespace GalaxyBudsClient.Utils.Converters
                     return null;
                 case string rawUri when targetType == typeof(Bitmap):
                 {
-                    Uri uri;
-
                     // Allow for assembly overrides
-                    if (rawUri.StartsWith("avares://"))
-                    {
-                        uri = new Uri(rawUri);
-                    }
-                    else
-                    {
-                        uri = new Uri($"{Program.AvaresUrl}{rawUri}");
-                    }
-
+                    var uri =
+                        rawUri.StartsWith("avares://") ? new Uri(rawUri) : new Uri($"{Program.AvaresUrl}{rawUri}");
                     return new Bitmap(AssetLoader.Open(uri));
                 }
                 default:

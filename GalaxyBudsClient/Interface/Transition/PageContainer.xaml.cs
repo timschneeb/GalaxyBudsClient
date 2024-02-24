@@ -70,17 +70,7 @@ namespace GalaxyBudsClient.Interface.Transition
 			Children.Add(_currentPage);
 		}
 
-		public AbstractPage.Pages CurrentPage
-		{
-			get
-			{
-				if (_currentPage == null)
-				{
-					return AbstractPage.Pages.Undefined;
-				}
-				return _currentPage.PageType;
-			}
-		}
+		public AbstractPage.Pages CurrentPage => _currentPage?.PageType ?? AbstractPage.Pages.Undefined;
 
 		public void RegisterPage(AbstractPage page)
 		{

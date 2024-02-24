@@ -23,40 +23,43 @@ namespace GalaxyBudsClient.Message
 
         private void OnMessageReceived(object? sender, BaseMessageParser? e)
         {
-            if (e is SpatialAudioControlParser control)
+            switch (e)
             {
-                switch (control.ResultCode)
-                {
-                    case SpatialAudioControl.AttachSuccess:
-                        Log.Debug("SpatialSensorManager: Attach successful");
-                        break;  
-                    case SpatialAudioControl.DetachSuccess:
-                        Log.Debug("SpatialSensorManager: Detach successful");
-                        break;
-                }
-            }
-            else if (e is SpatialAudioDataParser data)
-            {
-                switch (data.EventId)
-                {
-                    case SpatialAudioData.BudGrv:
-                        if (data.GrvFloatArray == null)
-                        {
+                case SpatialAudioControlParser control:
+                    switch (control.ResultCode)
+                    {
+                        case SpatialAudioControl.AttachSuccess:
+                            Log.Debug("SpatialSensorManager: Attach successful");
+                            break;  
+                        case SpatialAudioControl.DetachSuccess:
+                            Log.Debug("SpatialSensorManager: Detach successful");
                             break;
-                        }
-                        NewQuaternionReceived?.Invoke(this,
-                            new Quaternion(data.GrvFloatArray[0], data.GrvFloatArray[1],
-                                data.GrvFloatArray[2], data.GrvFloatArray[3]));
-                        break;
-                    case SpatialAudioData.BudGyrocal:
-                        break;
-                    case SpatialAudioData.BudSensorStuck:
-                        break;
-                    case SpatialAudioData.WearOff:
-                        break;
-                    case SpatialAudioData.WearOn:
-                        break;
-                }
+                    }
+
+                    break;
+                case SpatialAudioDataParser data:
+                    switch (data.EventId)
+                    {
+                        case SpatialAudioData.BudGrv:
+                            if (data.GrvFloatArray == null)
+                            {
+                                break;
+                            }
+                            NewQuaternionReceived?.Invoke(this,
+                                new Quaternion(data.GrvFloatArray[0], data.GrvFloatArray[1],
+                                    data.GrvFloatArray[2], data.GrvFloatArray[3]));
+                            break;
+                        case SpatialAudioData.BudGyrocal:
+                            break;
+                        case SpatialAudioData.BudSensorStuck:
+                            break;
+                        case SpatialAudioData.WearOff:
+                            break;
+                        case SpatialAudioData.WearOn:
+                            break;
+                    }
+
+                    break;
             }
         }
         

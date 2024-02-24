@@ -93,25 +93,21 @@ namespace GalaxyBudsClient.Interface.Pages
             _statusRight.Content = GetTextFor(result.Right);
         }
 
-        private String GetTextFor(FitTestParser.Result result)
+        private static string GetTextFor(FitTestParser.Result result)
         {
-            switch (result)
+            return result switch
             {
-                case FitTestParser.Result.Bad:
-                    return Loc.Resolve("gft_bad");
-                case FitTestParser.Result.Good:
-                    return Loc.Resolve("gft_good");
-                case FitTestParser.Result.TestFailed:
-                    return Loc.Resolve("gft_fail");
-            }
-
-            return result.ToString();
+                FitTestParser.Result.Bad => Loc.Resolve("gft_bad"),
+                FitTestParser.Result.Good => Loc.Resolve("gft_good"),
+                FitTestParser.Result.TestFailed => Loc.Resolve("gft_fail"),
+                _ => result.ToString()
+            };
         }
 
         private void UpdateIcons(double left, double right)
         {
-            bool isLeftOnline = left > 0;
-            bool isRightOnline = right > 0;
+            var isLeftOnline = left > 0;
+            var isRightOnline = right > 0;
 
             var type = BluetoothImpl.Instance.DeviceSpec.IconResourceKey;
             
