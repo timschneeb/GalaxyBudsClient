@@ -1,3 +1,4 @@
+// ReSharper disable RedundantUsingDirective
 using GalaxyBudsClient.Platform.Interfaces;
 
 namespace GalaxyBudsClient.Platform.OSX

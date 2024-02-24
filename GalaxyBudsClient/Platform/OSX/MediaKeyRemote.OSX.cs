@@ -1,3 +1,4 @@
+// ReSharper disable RedundantUsingDirective
 using Avalonia.Input;
 using GalaxyBudsClient.Platform.Interfaces;
 #if OSX
