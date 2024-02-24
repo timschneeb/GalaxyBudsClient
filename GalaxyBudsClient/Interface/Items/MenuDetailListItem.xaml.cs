@@ -3,7 +3,6 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
-using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface;
 using MenuEntries = System.Collections.Generic.Dictionary<string, System.EventHandler<Avalonia.Interactivity.RoutedEventArgs>?>;
 

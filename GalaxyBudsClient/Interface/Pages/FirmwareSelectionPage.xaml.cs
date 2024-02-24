@@ -19,7 +19,6 @@ using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Firmware;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
 using GalaxyBudsClient.Utils.Interface;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;

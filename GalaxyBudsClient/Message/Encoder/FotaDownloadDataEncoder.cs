@@ -1,9 +1,6 @@
 using System;
 using System.IO;
-using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Firmware;
-using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils;
 
 namespace GalaxyBudsClient.Message.Encoder
 {

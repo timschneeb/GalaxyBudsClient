@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Avalonia.Collections;
 using GalaxyBudsClient.Interface.Dialogs;
-using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform.Interfaces;
 using GalaxyBudsClient.Utils;

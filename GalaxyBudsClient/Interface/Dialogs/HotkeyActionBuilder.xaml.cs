@@ -2,24 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
-using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Model;
-using GalaxyBudsClient.Model.Attributes;
-using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Hotkeys;
-using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
-using Key = Avalonia.Input.Key;
-using KeyEventArgs = Avalonia.Input.KeyEventArgs;
 
 namespace GalaxyBudsClient.Interface.Dialogs
 {

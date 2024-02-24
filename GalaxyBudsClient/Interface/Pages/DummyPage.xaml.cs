@@ -1,5 +1,4 @@
 ﻿using Avalonia.Markup.Xaml;
-using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages
 {

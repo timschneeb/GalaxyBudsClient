@@ -1,9 +1,6 @@
 using System;
-using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using GalaxyBudsClient.Cli.Ipc.Objects;
-using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Platform;
 using Serilog;
 using Tmds.DBus;

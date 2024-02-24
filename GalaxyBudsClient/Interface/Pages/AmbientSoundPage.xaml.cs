@@ -2,17 +2,15 @@
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 using GalaxyBudsClient.Interface.Items;
-
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
-using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages
 {
@@ -56,7 +54,7 @@ namespace GalaxyBudsClient.Interface.Pages
                 return;
             }
 
-            Avalonia.Threading.Dispatcher.UIThread.Post(async () =>
+            Dispatcher.UIThread.Post(async () =>
             {
                 switch (e)
                 {

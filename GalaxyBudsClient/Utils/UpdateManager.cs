@@ -1,15 +1,7 @@
-using System;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
-using GalaxyBudsClient.Interface.Pages;
 using NetSparkleUpdater;
-using NetSparkleUpdater.Configurations;
 using NetSparkleUpdater.Enums;
-using NetSparkleUpdater.Events;
 using NetSparkleUpdater.SignatureVerifiers;
-using Serilog;
 
 namespace GalaxyBudsClient.Utils
 {

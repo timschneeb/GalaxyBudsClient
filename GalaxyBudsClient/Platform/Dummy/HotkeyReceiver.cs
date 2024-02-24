@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform.Interfaces;
 using Serilog;

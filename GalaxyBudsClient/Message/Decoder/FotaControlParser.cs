@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Reflection;
 using GalaxyBudsClient.Model.Firmware;
 using Serilog;
 

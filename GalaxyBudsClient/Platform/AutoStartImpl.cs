@@ -1,4 +1,3 @@
-using System;
 using GalaxyBudsClient.Platform.Interfaces;
 using Serilog;
 

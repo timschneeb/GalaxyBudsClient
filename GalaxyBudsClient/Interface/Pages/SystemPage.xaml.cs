@@ -2,17 +2,11 @@
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Interface.Dialogs;
-using GalaxyBudsClient.Interface.Elements;
-using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Message;
-using GalaxyBudsClient.Model;
-using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
-using Org.BouncyCastle.Crypto.Parameters;
-using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages
 {

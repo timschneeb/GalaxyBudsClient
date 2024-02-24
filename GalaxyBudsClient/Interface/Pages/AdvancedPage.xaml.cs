@@ -5,12 +5,10 @@ using Avalonia.VisualTree;
 using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
-using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
-using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages
 {

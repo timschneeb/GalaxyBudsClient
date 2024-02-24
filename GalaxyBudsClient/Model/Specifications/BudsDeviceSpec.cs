@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Touchpad;
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿// ReSharper disable RedundantUsingDirective
+using System;
 using WindowsInput;
 using WindowsInput.Native;
 using GalaxyBudsClient.Platform.Interfaces;

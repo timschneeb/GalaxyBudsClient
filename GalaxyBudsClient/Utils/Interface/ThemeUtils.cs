@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Reflection;
 using Avalonia;
 using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Styling;

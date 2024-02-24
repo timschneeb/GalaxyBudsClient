@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CommandLine;
-using CommandLine.Text;
 using GalaxyBudsClient.Cli.Ipc;
 using GalaxyBudsClient.Cli.Ipc.Objects;
 using GalaxyBudsClient.Utils.Extensions;

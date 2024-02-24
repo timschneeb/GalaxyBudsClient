@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-
-namespace GalaxyBudsClient.Message.Decoder
+﻿namespace GalaxyBudsClient.Message.Decoder
 {
     class ResetResponseParser : BaseMessageParser
     {

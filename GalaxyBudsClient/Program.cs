@@ -8,7 +8,6 @@ using Avalonia.Controls;
 using Avalonia.Media;
 using GalaxyBudsClient.Cli;
 using GalaxyBudsClient.Cli.Ipc;
-using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using Sentry;

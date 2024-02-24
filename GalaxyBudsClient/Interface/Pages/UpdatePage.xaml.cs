@@ -11,7 +11,6 @@ using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using NetSparkleUpdater;
-using NetSparkleUpdater.Events;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages

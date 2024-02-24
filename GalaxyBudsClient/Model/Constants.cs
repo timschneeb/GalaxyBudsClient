@@ -1,8 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using GalaxyBudsClient.Model.Attributes;
-using GalaxyBudsClient.Platform;
-using Serilog;
 
 namespace GalaxyBudsClient.Model
 {
@@ -35,6 +34,8 @@ namespace GalaxyBudsClient.Model
             };
         }
         
+        [SuppressMessage("ReSharper", "InconsistentNaming")]
+        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public enum Locales
         {
             [Description("English")]
@@ -158,9 +159,9 @@ namespace GalaxyBudsClient.Model
             Pink = 259,
             Black = 260,
             White = 261,
-            Thom_Brown = 262,
+            ThomBrown = 262,
             Red = 263,
-            Deep_Blue = 264,
+            DeepBlue = 264,
             Olympic = 265,
             Purple = 266
         }

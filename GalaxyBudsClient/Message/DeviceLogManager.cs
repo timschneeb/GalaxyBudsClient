@@ -5,7 +5,6 @@ using System.Linq;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Scripting.Experiment;
 using Serilog;
 using Task = System.Threading.Tasks.Task;
 

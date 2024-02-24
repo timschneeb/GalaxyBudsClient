@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
+using System.Text;
 
 namespace GalaxyBudsClient.Message.Decoder
 {
@@ -20,8 +19,8 @@ namespace GalaxyBudsClient.Message.Decoder
             byte[] right = new byte[11];
             Array.Copy(msg.Payload, 0, left, 0, 11);
             Array.Copy(msg.Payload, 11, right, 0, 11);
-            LeftSerialNumber = System.Text.Encoding.ASCII.GetString(left, 0, 11);
-            RightSerialNumber = System.Text.Encoding.ASCII.GetString(right, 0, 11);
+            LeftSerialNumber = Encoding.ASCII.GetString(left, 0, 11);
+            RightSerialNumber = Encoding.ASCII.GetString(right, 0, 11);
         }
     }
 }

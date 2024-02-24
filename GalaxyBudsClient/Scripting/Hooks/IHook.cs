@@ -1,5 +1,3 @@
-using Serilog;
-
 namespace GalaxyBudsClient.Scripting.Hooks
 {
     public interface IHook

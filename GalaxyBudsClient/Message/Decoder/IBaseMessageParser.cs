@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using GalaxyBudsClient.Model.Attributes;
+using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 
@@ -49,7 +49,7 @@ namespace GalaxyBudsClient.Message.Decoder
             return property.Name is "HandledType" or "ActiveModel" or "DeviceSpec";
         }
 
-        protected static Model.Constants.Models ActiveModel => BluetoothImpl.Instance.ActiveModel;
+        protected static Models ActiveModel => BluetoothImpl.Instance.ActiveModel;
         protected static IDeviceSpec DeviceSpec => BluetoothImpl.Instance.DeviceSpec;
     }
 }

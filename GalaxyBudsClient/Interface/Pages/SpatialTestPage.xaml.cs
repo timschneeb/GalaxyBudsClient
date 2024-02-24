@@ -4,14 +4,9 @@ using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using GalaxyBudsClient.Interface.Elements;
-using GalaxyBudsClient.Interface.Items;
 using GalaxyBudsClient.Message;
-using GalaxyBudsClient.Message.Decoder;
-using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
-using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages
 {

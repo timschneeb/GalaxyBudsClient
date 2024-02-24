@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
+using System.Text;
 
 namespace GalaxyBudsClient.Message.Decoder
 {
@@ -15,7 +14,7 @@ namespace GalaxyBudsClient.Message.Decoder
             if (msg.Id != HandledType)
                 return;
 
-            BuildString = System.Text.Encoding.ASCII.GetString(msg.Payload);
+            BuildString = Encoding.ASCII.GetString(msg.Payload);
         }
     }
 }

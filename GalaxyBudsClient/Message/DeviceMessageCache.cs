@@ -1,4 +1,3 @@
-using Castle.Components.DictionaryAdapter;
 using GalaxyBudsClient.Message.Decoder;
 
 namespace GalaxyBudsClient.Message

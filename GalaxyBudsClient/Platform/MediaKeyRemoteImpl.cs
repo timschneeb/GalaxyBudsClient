@@ -1,5 +1,4 @@
-﻿using System;
-using GalaxyBudsClient.Model;
+﻿using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Platform.Interfaces;
 
 namespace GalaxyBudsClient.Platform

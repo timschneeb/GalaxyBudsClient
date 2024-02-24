@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Input;
-using Avalonia.Interactivity;
+﻿using Avalonia.Input;
 using Avalonia.Markup.Xaml;
-using GalaxyBudsClient.Interface.Items;
-using GalaxyBudsClient.Model.Attributes;
-using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Utils;
-using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages
 {

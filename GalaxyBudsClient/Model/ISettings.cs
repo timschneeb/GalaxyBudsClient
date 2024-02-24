@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Config.Net;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Hotkeys;

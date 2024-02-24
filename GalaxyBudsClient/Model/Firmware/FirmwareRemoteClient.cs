@@ -1,15 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
-using System.Timers;
-using GalaxyBudsClient.Message;
-using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Scripting.Experiment;
 using Newtonsoft.Json.Converters;
 using Serilog;
 

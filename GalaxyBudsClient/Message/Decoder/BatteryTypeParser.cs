@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
+using System.Text;
 
 namespace GalaxyBudsClient.Message.Decoder
 {
@@ -20,8 +19,8 @@ namespace GalaxyBudsClient.Message.Decoder
             byte[] right = new byte[2];
             Array.Copy(msg.Payload, 0, left, 0, 2);
             Array.Copy(msg.Payload, 2, right, 0, 2);
-            LeftBatteryType = System.Text.Encoding.ASCII.GetString(left);
-            RightBatteryType = System.Text.Encoding.ASCII.GetString(right);
+            LeftBatteryType = Encoding.ASCII.GetString(left);
+            RightBatteryType = Encoding.ASCII.GetString(right);
         }
     }
 }

@@ -1,9 +1,6 @@
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Reflection;
 using GalaxyBudsClient.Model.Constants;
-using Serilog;
 
 namespace GalaxyBudsClient.Model.Specifications
 {
