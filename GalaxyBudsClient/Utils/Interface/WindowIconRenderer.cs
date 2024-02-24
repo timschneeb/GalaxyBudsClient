@@ -38,7 +38,7 @@ public static class WindowIconRenderer
 
         if (level != null)
         {
-            Dispatcher.UIThread.Post(() => { trayIcons[0].Icon = MakeFromBatteryLevel(level.Value); });
+            Dispatcher.UIThread.Post(() => { trayIcons[0].Icon = MakeFromBatteryLevel(Math.Min(level.Value, 99)); });
         }
     }
 
