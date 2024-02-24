@@ -20,7 +20,7 @@ namespace GalaxyBudsClient.Model
         }
         public static class Bixby
         {
-            public static (byte, string)[] Languages =
+            public static readonly (byte, string)[] Languages =
             {
                 (0, "de-DE"),
                 (1, "en-GB"),

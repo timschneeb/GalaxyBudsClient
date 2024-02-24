@@ -68,7 +68,7 @@ namespace GalaxyBudsClient.Interface.Pages
 
         private void ReloadList()
         {
-            var hotkeys = SettingsProvider.Instance?.Hotkeys ?? new Hotkey[0];
+            var hotkeys = SettingsProvider.Instance?.Hotkeys ?? Array.Empty<Hotkey>();
             if (hotkeys.Length < 1)
             {
                 UpdateEmptyView(true);
@@ -108,7 +108,7 @@ namespace GalaxyBudsClient.Interface.Pages
 			
                                 if (_builder.Result && _builder.Hotkey != null)
                                 {
-                                    var saved = (SettingsProvider.Instance?.Hotkeys ?? new Hotkey[0]);
+                                    var saved = (SettingsProvider.Instance?.Hotkeys ?? Array.Empty<Hotkey>());
                                     var temp = new Hotkey[saved.Length];
                                     for (var i = 0; i < saved.Length; i++)
                                     {

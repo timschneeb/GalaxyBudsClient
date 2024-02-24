@@ -42,16 +42,16 @@ namespace GalaxyBudsClient.Message.Decoder
             RightTouchSoftwareVersion = msg.Payload[9].ToString("x");
         }
 
-        private String VersionDataToString(byte[] payload, int startIndex, String side)
+        private string VersionDataToString(IReadOnlyList<byte> payload, int startIndex, string side)
         {
-            if (ActiveModel == Model.Constants.Models.Buds)
+            if (ActiveModel == Models.Buds)
             {
                 int swVarIndex = payload[startIndex];
-                int swYearIndex = (payload[startIndex + 1] & 240) >> 4;
-                int swMonthIndex = payload[startIndex + 1] & 15;
-                byte swRelVerIndex = payload[startIndex + 2];
+                var swYearIndex = (payload[startIndex + 1] & 240) >> 4;
+                var swMonthIndex = payload[startIndex + 1] & 15;
+                var swRelVerIndex = payload[startIndex + 2];
 
-                String swRelVarString;
+                string swRelVarString;
                 if (swRelVerIndex <= 15)
                 {
                     swRelVarString = (swRelVerIndex & 255).ToString("X");
@@ -66,28 +66,19 @@ namespace GalaxyBudsClient.Message.Decoder
             }
             else
             {
-                string swVar = payload[startIndex] == 0 ? "E" : "U";
-                int swYearIndex = (payload[startIndex + 1] & 240) >> 4;
-                int swMonthIndex = payload[startIndex + 1] & 15;
-                byte swRelVerIndex = payload[startIndex + 2];
+                var swVar = payload[startIndex] == 0 ? "E" : "U";
+                var swYearIndex = (payload[startIndex + 1] & 240) >> 4;
+                var swMonthIndex = payload[startIndex + 1] & 15;
+                var swRelVerIndex = payload[startIndex + 2];
 
-                string pre;
-                switch (ActiveModel)
+                var pre = ActiveModel switch
                 {
-                    case Models.BudsPlus:
-                        pre = "175XX";
-                        break;
-                    case Models.BudsLive:
-                        pre = "180XX";
-                        break;
-                    case Models.BudsPro:
-                        pre = "190XX";
-                        break;
-                    default:
-                        pre = "???XX";
-                        break;
-                }
-                
+                    Models.BudsPlus => "175XX",
+                    Models.BudsLive => "180XX",
+                    Models.BudsPro => "190XX",
+                    _ => "???XX"
+                };
+
                 return side + pre + swVar + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] +
                        _swRelVer[swRelVerIndex];
             }

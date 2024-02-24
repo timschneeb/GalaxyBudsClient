@@ -107,9 +107,9 @@ namespace GalaxyBudsClient.Message.Decoder
             }
         }
 
-        private static int ByteBufferToInt(byte[] bArr, int i, int i2, bool z)
+        private static int ByteBufferToInt(IReadOnlyList<byte> bArr, int i, int i2, bool z)
         {
-            if (bArr.Length >= i + i2)
+            if (bArr.Count >= i + i2)
             {
                 var i4 = 0;
                 int i3;

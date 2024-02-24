@@ -1,3 +1,5 @@
+using GalaxyBudsClient.Platform.Interfaces;
+
 namespace GalaxyBudsClient.Platform.OSX
 {
     public class AutoStartHelper : IAutoStartHelper

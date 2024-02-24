@@ -20,11 +20,11 @@ namespace GalaxyBudsClient.Interface.Pages
 	{
 		public override Pages PageType => Pages.UpdateProgress;
 
-        private TextBlock _progressText;
-        private TextBlock _progressSizeText;
-        private ProgressBar _progress;
+        private readonly TextBlock _progressText;
+        private readonly TextBlock _progressSizeText;
+        private readonly ProgressBar _progress;
 
-        private Random _rng = new Random();
+        private readonly Random _rng = new();
 
         public UpdateProgressPage()
 		{   
@@ -82,7 +82,7 @@ namespace GalaxyBudsClient.Interface.Pages
             }
             catch (Exception exception)
             {
-                Log.Warning(exception, "UpdateProgressPage: Exception raised while launching installer ({path})", path);
+                Log.Warning(exception, "UpdateProgressPage: Exception raised while launching installer ({Path})", path);
             }
 
             if (BluetoothImpl.Instance.IsConnected)

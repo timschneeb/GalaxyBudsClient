@@ -76,14 +76,14 @@ namespace GalaxyBudsClient.Utils.Extensions
         public static string AsHotkeyString(this IEnumerable<Keys>? keys, IEnumerable<ModifierKeys>? modifiers)
         {
             var first = true;
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             if (keys == null && modifiers == null)
             {
                 return "null";
             }
             
-            foreach (var modifier in modifiers ?? new ModifierKeys[0])
+            foreach (var modifier in modifiers ?? Array.Empty<ModifierKeys>())
             {
                 if (!first)
                 {
@@ -94,7 +94,7 @@ namespace GalaxyBudsClient.Utils.Extensions
                 first = false;
             }
             
-            foreach (var key in keys ?? new Keys[0])
+            foreach (var key in keys ?? Array.Empty<Keys>())
             {
                 if (!first)
                 {

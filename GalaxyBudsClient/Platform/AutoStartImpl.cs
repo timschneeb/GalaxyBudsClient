@@ -1,11 +1,12 @@
 using System;
+using GalaxyBudsClient.Platform.Interfaces;
 using Serilog;
 
 namespace GalaxyBudsClient.Platform
 {
     public static class AutoStartImpl
     {
-        public static IAutoStartHelper Instance;
+        public static readonly IAutoStartHelper Instance;
         
         static AutoStartImpl()
         {

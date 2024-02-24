@@ -6,7 +6,7 @@ namespace GalaxyBudsClient.Utils.Converters
 {
     public class MonthValueConverter : IValueConverter
     {
-        public static MonthValueConverter Instance = new();
+        public static readonly MonthValueConverter Instance = new();
 
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {

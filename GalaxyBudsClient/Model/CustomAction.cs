@@ -19,9 +19,9 @@ namespace GalaxyBudsClient.Model
             RunExternalProgram
         }
 
-        public Actions Action;
+        public readonly Actions Action;
 
-        public string Parameter;
+        public readonly string Parameter;
 
         public EventDispatcher.Event Event
         {

@@ -57,12 +57,11 @@ namespace GalaxyBudsClient.Utils
         {
             var bytesToDecrypt = Convert.FromBase64String(base64Input);
 
-            AsymmetricCipherKeyPair keyPair;
             var decryptEngine = new Pkcs1Encoding(new RsaEngine());
 
             using (var txtreader = new StringReader(privateKey))
             {
-                keyPair = (AsymmetricCipherKeyPair)new PemReader(txtreader).ReadObject();
+                var keyPair = (AsymmetricCipherKeyPair)new PemReader(txtreader).ReadObject();
 
                 decryptEngine.Init(false, keyPair.Private);
             }

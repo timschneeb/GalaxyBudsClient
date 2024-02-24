@@ -14,7 +14,7 @@ namespace GalaxyBudsClient.Model.Firmware
     public class FirmwareBinary
     {
         private readonly long _magic;
-        private byte[] _data;
+        private readonly byte[] _data;
         
         private static readonly long FOTA_BIN_MAGIC = 0xCAFECAFE;
         private static readonly long FOTA_BIN_MAGIC_COMBINATION = 0x42434F4D;

@@ -19,7 +19,7 @@ namespace GalaxyBudsClient
     internal static class Program
     {
         public static long StartedAt = 0;
-        public static string AvaresUrl = "avares://" + Assembly.GetEntryAssembly()?.GetName().Name;
+        public static readonly string AvaresUrl = "avares://" + Assembly.GetEntryAssembly()?.GetName().Name;
         
         // Initialization code. Don't use any Avalonia, third-party APIs or any
         // SynchronizationContext-reliant code before AppMain is called: things aren't initialized

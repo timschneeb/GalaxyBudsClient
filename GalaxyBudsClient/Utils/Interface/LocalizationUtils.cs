@@ -70,12 +70,12 @@ namespace GalaxyBudsClient.Utils.Interface
             {
                 try
                 {
-                    int langDictId = ResourceIndexer.Find("Loc-");
+                    var langDictId = ResourceIndexer.Find("Loc-");
 
                     if (langDictId == -1)
                     {
-                        string msg = "Neither custom language nor fallback resource found. " +
-                                     "Unwanted side-effects may occur.";
+                        const string msg = "Neither custom language nor fallback resource found. " +
+                                           "Unwanted side-effects may occur.";
                         Log.Error("Localization: {Msg}", msg);
                         ErrorDetected?.Invoke("Unable to resolve resource", msg);
                     }

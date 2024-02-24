@@ -17,8 +17,8 @@ namespace GalaxyBudsClient.Model
             Overflow
         }
 
-        public ErrorCodes ErrorCode;
-        public SppMessage? Draft;
+        public readonly ErrorCodes ErrorCode;
+        public readonly SppMessage? Draft;
 
         public InvalidPacketException(ErrorCodes errorCode, string message, SppMessage? draft = null) : base(message)
         {

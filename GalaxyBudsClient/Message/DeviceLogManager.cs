@@ -169,7 +169,7 @@ namespace GalaxyBudsClient.Message
                     ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(0,0, LogDownloadProgressEventArgs.Type._Switching));
                     await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_TRACE_COMPLETE);
 
-                    var path = WriteTempFile($"{BluetoothImpl.Instance.ActiveModel.ToString()}_traceDump_{_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _traceBuffer ?? new byte[0]);
+                    var path = WriteTempFile($"{BluetoothImpl.Instance.ActiveModel.ToString()}_traceDump_{_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _traceBuffer ?? Array.Empty<byte>());
                     if (path != null)
                     {
                         _traceDumpPaths.Add(path);
@@ -226,7 +226,7 @@ namespace GalaxyBudsClient.Message
                     ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(0,0, LogDownloadProgressEventArgs.Type._Switching));
                     await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_COREDUMP_COMPLETE);
                     
-                    var pathCore = WriteTempFile($"{BluetoothImpl.Instance.ActiveModel.ToString()}_coreDump_{/* this is intentional -> */_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _coredumpBuffer ?? new byte[0]);
+                    var pathCore = WriteTempFile($"{BluetoothImpl.Instance.ActiveModel.ToString()}_coreDump_{/* this is intentional -> */_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _coredumpBuffer ?? Array.Empty<byte>());
                     if (pathCore != null)
                     {
                         _coreDumpPaths.Add(pathCore);

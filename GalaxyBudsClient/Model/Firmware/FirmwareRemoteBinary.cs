@@ -3,6 +3,8 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Scripting.Experiment;
 using Serilog;
+// ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
+// ReSharper disable UnusedAutoPropertyAccessor.Global
 
 namespace GalaxyBudsClient.Model.Firmware
 {
@@ -32,9 +34,8 @@ namespace GalaxyBudsClient.Model.Firmware
     
     public static class FirmwareRemoteBinaryFilters
     {
-        
-        private static readonly string CHAR_ORDER = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        
+        private const string CharOrder = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
         public static bool FilterByModel(FirmwareRemoteBinary item)
         {
             return BluetoothImpl.Instance.ActiveModel == item.Model;
@@ -53,11 +54,11 @@ namespace GalaxyBudsClient.Model.Firmware
                 var versionData2 = item.BuildName.Substring(item.BuildName.Length - 3, 3).ToCharArray();
 
                 for (var i = 0; i < 3; i++) {
-                    if (CHAR_ORDER.IndexOf(versionData[i]) < CHAR_ORDER.IndexOf(versionData2[i])) {
+                    if (CharOrder.IndexOf(versionData[i]) < CharOrder.IndexOf(versionData2[i])) {
                         // Newer version
                         return true;
                     }
-                    if (CHAR_ORDER.IndexOf(versionData[i]) > CHAR_ORDER.IndexOf(versionData2[i])) {
+                    if (CharOrder.IndexOf(versionData[i]) > CharOrder.IndexOf(versionData2[i])) {
                         // Older version
                         return false;
                     }

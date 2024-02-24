@@ -143,9 +143,9 @@ namespace GalaxyBudsClient.Message.Decoder
             {
                 foreach (var statistic in Statistics)
                 {
-                    String readableKey;
-                    if (KeyLookup.ContainsKey(statistic.Key))
-                        readableKey = $"{KeyLookup[statistic.Key]} ({statistic.Key})";
+                    string readableKey;
+                    if (KeyLookup.TryGetValue(statistic.Key, out var value))
+                        readableKey = $"{value} ({statistic.Key})";
                     else
                         readableKey = $"Unknown ({statistic.Key})";
 

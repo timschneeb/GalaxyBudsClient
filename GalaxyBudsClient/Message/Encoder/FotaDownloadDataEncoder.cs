@@ -76,13 +76,13 @@ namespace GalaxyBudsClient.Message.Encoder
             };
             
             RET_NULL:
-            return new SppMessage(SppMessage.MessageIds.FOTA_DOWNLOAD_DATA, SppMessage.MsgType.Response, new byte[0])
+            return new SppMessage(SppMessage.MessageIds.FOTA_DOWNLOAD_DATA, SppMessage.MsgType.Response, Array.Empty<byte>())
             {
                 IsFragment = true
             };
         }
         
-        private int MakeFragmentHeader(bool z, long j) {
+        private static int MakeFragmentHeader(bool z, long j) {
             var i = (int) (j & 2147483647L);
             return z ? i : i | int.MinValue;
         }

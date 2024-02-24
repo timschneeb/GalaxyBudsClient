@@ -197,16 +197,15 @@ namespace GalaxyBudsClient.Interface.Developer
             }
 
             var msgs = new List<SppMessage>();
-            int failCount = 0;
+            var failCount = 0;
             do
             {
-                int msgSize = 0;
-                SppMessage? msg = null;
+                var msgSize = 0;
                 try
                 {
                     var raw = data.OfType<byte>().ToArray();
 
-                    msg = SppMessage.DecodeMessage(raw);
+                    var msg = SppMessage.DecodeMessage(raw);
                     msgSize = msg.TotalPacketSize;
                     
                     msgs.Add(msg);

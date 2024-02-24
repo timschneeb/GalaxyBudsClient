@@ -1,4 +1,4 @@
-namespace GalaxyBudsClient.Platform
+namespace GalaxyBudsClient.Platform.Interfaces
 {
     public interface IAutoStartHelper
     {

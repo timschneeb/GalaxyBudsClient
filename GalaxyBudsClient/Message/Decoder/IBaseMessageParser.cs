@@ -13,9 +13,9 @@ namespace GalaxyBudsClient.Message.Decoder
         public abstract SppMessage.MessageIds HandledType { get; }
 
         public abstract void ParseMessage(SppMessage msg);
-        public virtual Dictionary<String, String> ToStringMap()
+        public virtual Dictionary<string, string> ToStringMap()
         {
-            Dictionary<String, String> map = new Dictionary<string, string>();
+            var map = new Dictionary<string, string>();
             var properties = this.GetType().GetProperties();
             foreach (var property in properties)
             {
@@ -44,12 +44,12 @@ namespace GalaxyBudsClient.Message.Decoder
             return map;
         }
         
-        protected bool IsHiddenProperty(PropertyInfo property)
+        protected static bool IsHiddenProperty(PropertyInfo property)
         {
             return property.Name is "HandledType" or "ActiveModel" or "DeviceSpec";
         }
 
-        public Model.Constants.Models ActiveModel => BluetoothImpl.Instance.ActiveModel;
-        public IDeviceSpec DeviceSpec => BluetoothImpl.Instance.DeviceSpec;
+        protected static Model.Constants.Models ActiveModel => BluetoothImpl.Instance.ActiveModel;
+        protected static IDeviceSpec DeviceSpec => BluetoothImpl.Instance.DeviceSpec;
     }
 }

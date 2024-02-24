@@ -88,7 +88,7 @@ namespace GalaxyBudsClient.Platform
         public async void Update(bool silent = false)
         {
             await UnregisterAll();
-            foreach (var hotkey in SettingsProvider.Instance?.Hotkeys ?? new Hotkey[0])
+            foreach (var hotkey in SettingsProvider.Instance?.Hotkeys ?? Array.Empty<Hotkey>())
             {
                 await RegisterAsync(hotkey, silent);
             }

@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using GalaxyBudsClient.Platform.Interfaces;
 using Serilog;
 
 namespace GalaxyBudsClient.Platform.Linux

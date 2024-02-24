@@ -28,7 +28,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
         public Environment? Environment { set; get; }
 
         [JsonProperty(ItemConverterType = typeof(StringEnumConverter))]
-        public Models[] TargetDevices { set; get; } = new Models[0];
+        public Models[] TargetDevices { set; get; } = Array.Empty<Models>();
         public int? TimeConstraint { set; get; }
         public int? MinimumRevision { set; get; }
         public int? MaximumRevision { set; get; }

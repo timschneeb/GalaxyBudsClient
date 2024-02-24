@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Security;
 using GalaxyBudsClient.Interface.Dialogs;
+using GalaxyBudsClient.Platform.Interfaces;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Microsoft.Win32;
 

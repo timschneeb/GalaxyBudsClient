@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GalaxyBudsClient.Utils.Extensions
@@ -30,14 +31,14 @@ namespace GalaxyBudsClient.Utils.Extensions
             return dest;
         }
         
-        public static T[] Remove<T>(this T[]? source, T obj)
+        public static T[] Remove<T>(this IEnumerable<T>? source, T obj)
         {
             var list = source?.ToList();
             list?.Remove(obj);
-            return list?.ToArray() ?? new T[0];
+            return list?.ToArray() ?? Array.Empty<T>();
         }
         
-        public static int? FindIndex<T>(this T[]? source, T obj)
+        public static int? FindIndex<T>(this IEnumerable<T>? source, T obj)
         {
             var list = source?.ToList();
             return list?.IndexOf(obj);

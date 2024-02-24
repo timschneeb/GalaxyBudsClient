@@ -60,7 +60,7 @@ namespace GalaxyBudsClient.Platform
         public readonly ArrayList IncomingData = new ArrayList();
         private static readonly ConcurrentQueue<byte[]> IncomingQueue = new ConcurrentQueue<byte[]>();
         private readonly CancellationTokenSource _cancelSource;
-        private Task? _loop;
+        private readonly Task? _loop;
         
         private Guid ServiceUuid => DeviceSpec.ServiceUuid;
 
@@ -298,12 +298,12 @@ namespace GalaxyBudsClient.Platform
         
         public async Task SendResponseAsync(SppMessage.MessageIds id, params byte[]? payload)
         {
-            await SendAsync(new SppMessage{Id = id, Payload = payload ?? new byte[0], Type = SppMessage.MsgType.Response});
+            await SendAsync(new SppMessage{Id = id, Payload = payload ?? Array.Empty<byte>(), Type = SppMessage.MsgType.Response});
         }
 
         public async Task SendRequestAsync(SppMessage.MessageIds id, params byte[]? payload)
         {
-            await SendAsync(new SppMessage{Id = id, Payload = payload ?? new byte[0], Type = SppMessage.MsgType.Request});
+            await SendAsync(new SppMessage{Id = id, Payload = payload ?? Array.Empty<byte>(), Type = SppMessage.MsgType.Request});
         }
         
         public async Task SendRequestAsync(SppMessage.MessageIds id, bool payload)
