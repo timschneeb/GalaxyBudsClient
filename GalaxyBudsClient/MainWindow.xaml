@@ -11,7 +11,7 @@
         MinHeight="640" MinWidth="700"
         CanResize="False"
         WindowStartupLocation="CenterScreen"
-        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaChromeHints="{OnPlatform 'NoChrome', macOS='SystemChrome'}"
         ExtendClientAreaTitleBarHeightHint="-1"
         TransparencyLevelHint="Transparent"
         SystemDecorations="None"
@@ -20,7 +20,7 @@
         Icon="/Resources/icon_white.ico"
         Title="Galaxy Buds Manager">
     
-    <Border CornerRadius="{StaticResource DefaultCornerRadius}"
+    <Border CornerRadius="{OnPlatform Default={StaticResource DefaultCornerRadius}, macOS='10'}"
             BorderBrush="{DynamicResource WindowBorderBrush}"
             BorderThickness="1" Padding="1"
             Background="{DynamicResource WindowBackgroundBrush}">

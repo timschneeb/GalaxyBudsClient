@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ui="clr-namespace:GalaxyBudsClient.Interface"
-             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="{OnPlatform '36', macOS='30'}"
              x:Class="GalaxyBudsClient.Interface.CustomTitleBar"
              DockPanel.Dock="Top" Margin="10,0">
     <StackPanel>
@@ -14,7 +14,7 @@
                        Name="TitleBarBackground" />
             <DockPanel Name="TitleBar">
 
-                <Grid x:Name="PART_HeaderBar" Height="36"
+                <Grid x:Name="PART_HeaderBar" Height="{OnPlatform '36', macOS='30'}"
                       Background="{DynamicResource WindowHeaderBrush}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -23,7 +23,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Button x:Name="OptionsButton" Grid.Column="0"
-                            HorizontalAlignment="Left" BorderThickness="0">
+                            HorizontalAlignment="Left" BorderThickness="0" Margin="{OnPlatform '0,0,0,0', macOS='50,0,0,0'}">
                         <TextBlock Text="{DynamicResource optionsmenu_title}"
                                    FontSize="13"
                                    Foreground="{DynamicResource ForegroundTextBrush}"
@@ -58,8 +58,8 @@
 
                     <StackPanel x:Name="WindowControlsGrid" Grid.Column="2" Background="Transparent"
                                 Orientation="Horizontal">
-                        <Button Width="26"
-                                Height="26"
+                        <Button Width="{OnPlatform '26', macOS='0'}"
+                                Height="{OnPlatform '26', macOS='0'}"
                                 HorizontalContentAlignment="Center"
                                 BorderThickness="0"
                                 Name="MinimizeButton"
@@ -83,7 +83,8 @@
                                   Data="M2048 1229v-205h-2048v205h2048z" />
                         </Button>
 
-                        <Button Width="26" Height="26"
+                        <Button Width="{OnPlatform '26', macOS='0'}"
+                                Height="{OnPlatform '26', macOS='0'}"
                                 VerticalAlignment="Stretch"
                                 BorderThickness="0"
                                 Name="CloseButton"
