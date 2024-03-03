@@ -20,7 +20,7 @@
         Icon="/Resources/icon_white.ico"
         Title="Galaxy Buds Manager">
     
-    <Border CornerRadius="{OnPlatform Default={StaticResource DefaultCornerRadius}, macOS='10'}"
+    <Border CornerRadius="{OnPlatform Default={StaticResource DefaultCornerRadius}, macOS=10}"
             BorderBrush="{DynamicResource WindowBorderBrush}"
             BorderThickness="1" Padding="1"
             Background="{DynamicResource WindowBackgroundBrush}">
