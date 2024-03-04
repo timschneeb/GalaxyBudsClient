@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="GalaxyBudsClient.InterfaceOld.Elements.PageHeader"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns="https://github.com/avaloniaui"
+             xmlns:elements="clr-namespace:GalaxyBudsClient.InterfaceOld.Elements"
+             mc:Ignorable="d" x:Name="UserControl" Height="{StaticResource PageHeaderHeight}">
+    <Border Height="{StaticResource PageHeaderHeight}" Classes="RoundedBorderListItem">
+        <Grid HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="16" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" 
+                    CornerRadius="{StaticResource DefaultCornerRadius}" 
+                    Classes="BorderHoverStyle" 
+                    PointerPressed="BackButton_OnPointerPressed"
+                    IsVisible="{Binding $parent[elements:PageHeader].BackButtonVisible}">
+                <Image Margin="16 2 16 0" Height="24" Source="{DynamicResource BackButton}"/>
+            </Border>
+            <Label Grid.Column="1" x:Name="Title"
+                   Content="{Binding $parent[elements:PageHeader].Title}" 
+                   Foreground="{DynamicResource ForegroundTextBrush}" 
+                   VerticalContentAlignment="Center" 
+                   FontSize="20"/>
+            <elements:LoadingSpinner Grid.Column="3"
+                                     IsVisible="{Binding $parent[elements:PageHeader].LoadingSpinnerVisible}" 
+                                     Margin="0,19,23,19"/>
+        </Grid>
+    </Border>
+</UserControl>

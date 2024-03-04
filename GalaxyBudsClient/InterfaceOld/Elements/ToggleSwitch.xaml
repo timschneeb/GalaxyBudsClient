@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="GalaxyBudsClient.InterfaceOld.Elements.ToggleSwitch"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" Height="142" Width="288.667">
+
+    <Viewbox Margin="0,2,2,1">
+        <Grid HorizontalAlignment="Left" Height="70" Margin="0" VerticalAlignment="Top" Width="100">
+            <Border x:Name="Back" Background="#FFA0A0A0" Height="56" Width="96" 
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="2,2,0,0"
+                    Padding="0,0,10,10"
+                    CornerRadius="29"
+                    PointerPressed="Back_OnPointerPressed"
+                    BoxShadow="1 1 10 1 #22000000"/>
+            <Ellipse x:Name="Dot"
+                     Fill="White" 
+                     HorizontalAlignment="Center" 
+                     VerticalAlignment="Center"
+                     Height="57" 
+                     Width="57"
+                     PointerPressed="Dot_OnPointerPressed"
+                     StrokeThickness="20"/>
+        </Grid>
+    </Viewbox>
+
+</UserControl>
