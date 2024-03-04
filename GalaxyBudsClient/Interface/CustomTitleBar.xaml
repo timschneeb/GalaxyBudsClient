@@ -56,7 +56,7 @@
                                Padding="60 0 60 0"
                                Foreground="{DynamicResource ForegroundTextBrush}"/>
 
-                    <StackPanel x:Name="WindowControlsGrid" "{OnPlatform '2', macOS='0'}" Background="Transparent"
+                    <StackPanel x:Name="WindowControlsGrid" Grid.Column="{OnPlatform '2', macOS='0'}" Background="Transparent"
                                 Orientation="Horizontal">
                         <Button Width="{OnPlatform '26', macOS='0'}"
                                 Height="{OnPlatform '26', macOS='0'}"
