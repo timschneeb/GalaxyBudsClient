@@ -1,0 +1,70 @@
+﻿<pages:AbstractPage xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.InterfaceOld.Pages"
+             xmlns:elements="clr-namespace:GalaxyBudsClient.InterfaceOld.Elements"
+             xmlns:items="clr-namespace:GalaxyBudsClient.InterfaceOld.Items"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+             x:Class="GalaxyBudsClient.InterfaceOld.Pages.TouchpadGesturePage"
+             DockPanel.Dock="Top" Margin="10,0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <elements:PageHeader Grid.Row="1"
+                             Title="{DynamicResource touchpad_gesture_header}"
+                             BackPressed="BackButton_OnPointerPressed"/>
+        
+        <Border Grid.Row="3" Classes="RoundedBorderListItem BottomSpacer10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Classes="BorderHoverStyle">
+                    <items:SwitchDetailListItem x:Name="SingleTouch"
+                                                Text="{DynamicResource touchpad_gesture_single}" 
+                                                Description="{DynamicResource touchpad_gesture_single_desc}"
+                                                Toggled="UpdateLockState"/>
+
+                </Border>
+                <Separator Grid.Row="1" Classes="HSeparatorSpacer20"/>
+                <Border Grid.Row="2" Classes="BorderHoverStyle">
+                    <items:SwitchDetailListItem x:Name="DoubleTouch"
+                                                Text="{DynamicResource touchpad_gesture_double}" 
+                                                Description="{DynamicResource touchpad_gesture_double_desc}"
+                                                Toggled="UpdateLockState"/>
+
+                </Border>
+                <Separator Grid.Row="3" Classes="HSeparatorSpacer20"/>
+                <Border Grid.Row="4" Classes="BorderHoverStyle">
+                    <items:SwitchDetailListItem x:Name="TripleTouch"
+                                                Text="{DynamicResource touchpad_gesture_triple}" 
+                                                Description="{DynamicResource touchpad_gesture_triple_desc}"
+                                                Toggled="UpdateLockState"/>
+                </Border>
+                <Separator Grid.Row="5" Classes="HSeparatorSpacer20"/>
+                <Border Grid.Row="6" Classes="BorderHoverStyle" >
+                    <items:SwitchDetailListItem x:Name="HoldTouch"
+                                                Text="{DynamicResource touchpad_gesture_hold}" 
+                                                Description="{DynamicResource touchpad_gesture_hold_desc}"
+                                                Toggled="UpdateLockState"/>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</pages:AbstractPage>

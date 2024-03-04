@@ -1,0 +1,66 @@
+﻿<pages:AbstractPage xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.InterfaceOld.Pages"
+             xmlns:elements="clr-namespace:GalaxyBudsClient.InterfaceOld.Elements"
+             xmlns:items="clr-namespace:GalaxyBudsClient.InterfaceOld.Items"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+             x:Class="GalaxyBudsClient.InterfaceOld.Pages.NoiseProAmbientPage"
+             DockPanel.Dock="Top" Margin="10,0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <elements:PageHeader Grid.Row="1" Title="{DynamicResource nc_header}" BackPressed="BackButton_OnPointerPressed"/>
+
+        <Border Grid.Row="3" Classes="RoundedBorderListItem BottomSpacer10" x:Name="AmbientCustomBorder" >
+            <Grid ClipToBounds="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" CornerRadius="{DynamicResource DefaultCornerRadius}"
+                        Classes="BorderHoverStyle">
+                    <items:SwitchListItem x:Name="AmbientCustomize" 
+                                                Text="{DynamicResource nc_as_custom}"
+                                                Toggled="AmbientCustomize_OnToggled" />
+                </Border>
+                <Separator Grid.Row="1" x:Name="AmbSep1" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
+                <Border Grid.Row="2" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                    <items:SliderListItem x:Name="AmbientTone" Text="{DynamicResource nc_as_custom_tone}" Changed="AmbientTone_OnChanged"
+                                          Maximum="4" Minimum="0" />
+                </Border>
+                <Separator Grid.Row="3" x:Name="AmbSep2" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
+                <Border Grid.Row="4" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                    <items:SliderListItem x:Name="AmbientLeftVol" Text="{DynamicResource nc_as_custom_volume_l}" Changed="AmbientLeftVol_OnChanged"
+                                          Maximum="4" Minimum="0" />
+                </Border> 
+                <Separator Grid.Row="5" x:Name="AmbSep3" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
+                <Border Grid.Row="6" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                    <items:SliderListItem x:Name="AmbientRightVol" Text="{DynamicResource nc_as_custom_volume_r}" Changed="AmbientRightVol_OnChanged"
+                                          Maximum="4" Minimum="0" />
+                </Border>
+            </Grid>
+        </Border>
+        
+        <Border Grid.Row="4" Classes="RoundedBorderListItem BottomSpacer10">
+            <Border CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                <items:SliderListItem x:Name="AmbientVolume" Text="{DynamicResource as_volume}" Changed="VolumeSlider_OnChanged"
+                                      Maximum="3" Minimum="0" />
+            </Border>
+        </Border>
+
+    </Grid>
+</pages:AbstractPage>

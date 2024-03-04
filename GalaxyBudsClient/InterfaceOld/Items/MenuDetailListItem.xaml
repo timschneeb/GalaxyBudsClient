@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="GalaxyBudsClient.InterfaceOld.Items.MenuDetailListItem"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns="https://github.com/avaloniaui"
+             xmlns:items="clr-namespace:GalaxyBudsClient.InterfaceOld.Items"
+             mc:Ignorable="d">
+    <Border CornerRadius="{StaticResource DefaultCornerRadius}" Classes="BorderHoverStyle"
+            PointerPressed="OnPointerPressed">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Label Grid.Row="0" 
+                   Content="{Binding $parent[items:MenuDetailListItem].Text}"
+                   Foreground="{DynamicResource ForegroundTextBrush}"
+                   FontSize="16"
+                   VerticalAlignment="Top" 
+                   HorizontalAlignment="Left"/>
+            
+            <TextBlock Grid.Row="1"
+                       Margin="3,0,3,5"
+                       TextWrapping="Wrap" FontSize="14"
+                       Foreground="{DynamicResource SubtitleTextAltBrush}"
+                       Text="{Binding $parent[items:MenuDetailListItem].Description}"/>
+        </Grid>
+    </Border>
+</UserControl>

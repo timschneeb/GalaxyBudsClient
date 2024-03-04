@@ -1,0 +1,102 @@
+﻿<pages:AbstractPage xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.InterfaceOld.Pages"
+             xmlns:elements="clr-namespace:GalaxyBudsClient.InterfaceOld.Elements"
+             xmlns:items="clr-namespace:GalaxyBudsClient.InterfaceOld.Items"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+             x:Class="GalaxyBudsClient.InterfaceOld.Pages.SelfTestPage"
+             DockPanel.Dock="Top" Margin="10,0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <elements:PageHeader Grid.Row="1" x:Name="PageHeader" Title="{DynamicResource selftest_header}" BackPressed="BackButton_OnPointerPressed"/>
+
+        <Border Grid.Row="3" Classes="RoundedBorderListItem">
+            <Border CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                <items:IconListItem x:Name="SelfTestResult" FontSize="18" 
+                                    Text="{DynamicResource system_waiting_for_device}"
+                                    Source="/Resources/features/info_gray.png"/>
+            </Border>
+        </Border>
+        <Border Grid.Row="5" Classes="RoundedBorderListItem">
+            <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+                <Grid ClipToBounds="True" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                        <items:DetailListItem x:Name="HwVer" Text="{DynamicResource system_hwver}" Description="Pass" />
+                    </Border>
+                    <Separator Grid.Row="1" Classes="HSeparatorSpacer20" Background="{DynamicResource BorderSeparatorBrush}"/>
+                    <Border Grid.Row="2" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                        <items:DetailListItem x:Name="SwVer" Text="{DynamicResource system_swver}" Description="Pass" />
+                    </Border>
+                    <Separator Grid.Row="3" Classes="HSeparatorSpacer20" Background="{DynamicResource BorderSeparatorBrush}"/>
+                    <Border Grid.Row="4" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                        <items:DetailListItem x:Name="TouchFwVer" Text="{DynamicResource system_touchver}" Description="Pass" />
+                    </Border>
+                    <Separator Grid.Row="5" Classes="HSeparatorSpacer20" Background="{DynamicResource BorderSeparatorBrush}"/>
+                    <Border Grid.Row="6" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                        <items:DetailListItem x:Name="BtAddr" Text="{DynamicResource system_btaddr}" Description="Left: Pass, Right: Pass" />
+                    </Border>
+                    <Separator Grid.Row="7" Classes="HSeparatorSpacer20" Background="{DynamicResource BorderSeparatorBrush}"/>
+                    <Border Grid.Row="8" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                        <items:DetailListItem x:Name="Proximity" Text="{DynamicResource system_proximity}" Description="Left: Pass, Right: Pass" />
+                    </Border>
+                    <Separator Grid.Row="9" Classes="HSeparatorSpacer20" Background="{DynamicResource BorderSeparatorBrush}"/>
+                    <Border Grid.Row="10" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                        <items:DetailListItem x:Name="Thermo" Text="{DynamicResource system_thermo}" Description="Left: Pass, Right: Pass" />
+                    </Border>
+                    <Separator Grid.Row="11" Classes="HSeparatorSpacer20" Background="{DynamicResource BorderSeparatorBrush}"/>
+                    <Border Grid.Row="12" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                        <items:DetailListItem x:Name="AdcSoc" Text="{DynamicResource system_adc_soc}" Description="Left: Pass, Right: Pass" />
+                    </Border>
+                    <Separator Grid.Row="13" Classes="HSeparatorSpacer20" Background="{DynamicResource BorderSeparatorBrush}"/>
+                    <Border Grid.Row="14" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                        <items:DetailListItem x:Name="AdcVoltage" Text="{DynamicResource system_adc_voltage}" Description="Left: Pass, Right: Pass" />
+                    </Border>
+                    <Separator Grid.Row="15" Classes="HSeparatorSpacer20" Background="{DynamicResource BorderSeparatorBrush}"/>
+                    <Border Grid.Row="16" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                        <items:DetailListItem x:Name="AdcCurrent" Text="{DynamicResource system_adc_current}" Description="Left: Pass, Right: Pass" />
+                    </Border>
+                    <Separator Grid.Row="17" Classes="HSeparatorSpacer20" Background="{DynamicResource BorderSeparatorBrush}"/>
+                    <Border Grid.Row="18" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                        <items:DetailListItem x:Name="Hall" Text="{DynamicResource system_hall}" Description="Left: Pass, Right: Pass" />
+                    </Border>
+                    <Separator Grid.Row="19" Classes="HSeparatorSpacer20" Background="{DynamicResource BorderSeparatorBrush}"/>
+                    <Border Grid.Row="20" CornerRadius="{DynamicResource DefaultCornerRadius}" Classes="BorderHoverStyle">
+                        <items:DetailListItem x:Name="Accelerator" Text="{DynamicResource system_accel}" Description="Left: Pass, Right: Pass" />
+                    </Border>
+                </Grid>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</pages:AbstractPage>

@@ -1,0 +1,119 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="clr-namespace:GalaxyBudsClient.Interface"
+             xmlns:interfaceOld="clr-namespace:GalaxyBudsClient.InterfaceOld"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+             x:Class="GalaxyBudsClient.InterfaceOld.CustomTitleBar"
+             DockPanel.Dock="Top" Margin="10,0">
+    <StackPanel>
+        <Grid>
+            <!--The proper way would be not to use white as default, but somehow retrieve the users' window chrome color.-->
+            <DockPanel Background="White"
+                       IsHitTestVisible="False"
+                       Name="TitleBarBackground" />
+            <DockPanel Name="TitleBar">
+
+                <Grid x:Name="PART_HeaderBar" Height="36"
+                      Background="{DynamicResource WindowHeaderBrush}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="OptionsButton" Grid.Column="0"
+                            HorizontalAlignment="Left" BorderThickness="0">
+                        <TextBlock Text="{DynamicResource optionsmenu_title}"
+                                   FontSize="13"
+                                   Foreground="{DynamicResource ForegroundTextBrush}"
+                                   HorizontalAlignment="Left"
+                                   TextAlignment="Center"
+                                   VerticalAlignment="Center">
+                        </TextBlock>
+                        <Button.Resources>
+                            <CornerRadius x:Key="ControlCornerRadius">13</CornerRadius>
+                        </Button.Resources>
+                        <Button.Styles>
+                            <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                                <Setter Property="Background" Value="#44AAAAAA" />
+                            </Style>
+                            <Style
+                                Selector="Button:not(:pointerover) /template/ ContentPresenter#PART_ContentPresenter">
+                                <Setter Property="Background" Value="Transparent" />
+                            </Style>
+                        </Button.Styles>
+                    </Button>
+                    
+                    <TextBlock Text="{Binding $parent[interfaceOld:CustomTitleBar].Title}"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="3"
+                               TextTrimming="CharacterEllipsis"
+                               HorizontalAlignment="Center"
+                               FontSize="13"
+                               TextAlignment="Left"
+                               VerticalAlignment="Center"
+                               Padding="60 0 60 0"
+                               Foreground="{DynamicResource ForegroundTextBrush}"/>
+
+                    <StackPanel x:Name="WindowControlsGrid" Grid.Column="2" Background="Transparent"
+                                Orientation="Horizontal">
+                        <Button Width="26"
+                                Height="26"
+                                HorizontalContentAlignment="Center"
+                                BorderThickness="0"
+                                Name="MinimizeButton"
+                                ToolTip.Tip="{DynamicResource window_minimize}"
+                                Margin="10,0,0,0">
+                            <Button.Resources>
+                                <CornerRadius x:Key="ControlCornerRadius">13</CornerRadius>
+                            </Button.Resources>
+                            <Button.Styles>
+                                <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                                    <Setter Property="Background" Value="#44AAAAAA" />
+                                </Style>
+                                <Style
+                                    Selector="Button:not(:pointerover) /template/ ContentPresenter#PART_ContentPresenter">
+                                    <Setter Property="Background" Value="Transparent" />
+                                </Style>
+                            </Button.Styles>
+                            <Path Margin="0,7,0,0"
+                                  Stretch="Uniform"
+                                  Fill="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                                  Data="M2048 1229v-205h-2048v205h2048z" />
+                        </Button>
+
+                        <Button Width="26" Height="26"
+                                VerticalAlignment="Stretch"
+                                BorderThickness="0"
+                                Name="CloseButton"
+                                Margin="20,0,0,0"
+                                ToolTip.Tip="{DynamicResource window_close}">
+                            <Button.Resources>
+                                <CornerRadius x:Key="ControlCornerRadius">13</CornerRadius>
+                            </Button.Resources>
+                            <Button.Styles>
+                                <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                                    <Setter Property="Background" Value="#44AAAAAA" />
+                                </Style>
+                                <Style
+                                    Selector="Button:not(:pointerover) /template/ ContentPresenter#PART_ContentPresenter">
+                                    <Setter Property="Background" Value="Transparent" />
+                                </Style>
+                            </Button.Styles>
+                            <Path Margin="0,2,0,0"
+                                  Stretch="Uniform"
+                                  Fill="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                                  Data="M1169 1024l879 -879l-145 -145l-879 879l-879 -879l-145 145l879 879l-879 879l145 145l879 -879l879 879l145 -145z" />
+                        </Button>
+
+                    </StackPanel>
+                </Grid>
+
+
+            </DockPanel>
+        </Grid>
+
+    </StackPanel>
+</UserControl>
