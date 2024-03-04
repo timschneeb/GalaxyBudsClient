@@ -5,7 +5,7 @@
              xmlns:ui="clr-namespace:GalaxyBudsClient.Interface"
              mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="{OnPlatform '36', macOS='30'}"
              x:Class="GalaxyBudsClient.Interface.CustomTitleBar"
-             DockPanel.Dock="Top" Margin="10,0">
+             DockPanel.Dock="Top" Margin="{OnPlatform '10,0', macOS='0,0'}">
     <StackPanel>
         <Grid>
             <!--The proper way would be not to use white as default, but somehow retrieve the users' window chrome color.-->
@@ -22,8 +22,8 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <Button x:Name="OptionsButton" Grid.Column="0"
-                            HorizontalAlignment="Left" BorderThickness="0" Margin="{OnPlatform '0,0,0,0', macOS='50,0,0,0'}">
+                    <Button x:Name="OptionsButton" Grid.Column="{OnPlatform '0', macOS='2'}"
+                            HorizontalAlignment="Left" BorderThickness="0">
                         <TextBlock Text="{DynamicResource optionsmenu_title}"
                                    FontSize="13"
                                    Foreground="{DynamicResource ForegroundTextBrush}"
@@ -56,7 +56,7 @@
                                Padding="60 0 60 0"
                                Foreground="{DynamicResource ForegroundTextBrush}"/>
 
-                    <StackPanel x:Name="WindowControlsGrid" Grid.Column="2" Background="Transparent"
+                    <StackPanel x:Name="WindowControlsGrid" "{OnPlatform '2', macOS='0'}" Background="Transparent"
                                 Orientation="Horizontal">
                         <Button Width="{OnPlatform '26', macOS='0'}"
                                 Height="{OnPlatform '26', macOS='0'}"
