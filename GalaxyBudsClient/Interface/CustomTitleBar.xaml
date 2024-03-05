@@ -3,9 +3,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ui="clr-namespace:GalaxyBudsClient.Interface"
-             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="{OnPlatform '36', macOS='30'}"
              x:Class="GalaxyBudsClient.Interface.CustomTitleBar"
-             DockPanel.Dock="Top" Margin="10,0">
+             DockPanel.Dock="Top" Margin="{OnPlatform '10,0', macOS='0,0'}">
     <StackPanel>
         <Grid>
             <!--The proper way would be not to use white as default, but somehow retrieve the users' window chrome color.-->
@@ -14,7 +14,7 @@
                        Name="TitleBarBackground" />
             <DockPanel Name="TitleBar">
 
-                <Grid x:Name="PART_HeaderBar" Height="36"
+                <Grid x:Name="PART_HeaderBar" Height="{OnPlatform '36', macOS='30'}"
                       Background="{DynamicResource WindowHeaderBrush}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -22,11 +22,11 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <Button x:Name="OptionsButton" Grid.Column="0"
+                    <Button x:Name="OptionsButton" Grid.Column="{OnPlatform '0', macOS='2'}"
                             HorizontalAlignment="Left" BorderThickness="0">
                         <TextBlock Text="{DynamicResource optionsmenu_title}"
                                    FontSize="13"
-                                   Foreground="{DynamicResource ForegroundTextBrush}"
+                                   Foreground="{OnPlatform Default={DynamicResource ForegroundTextBrush}, macOS={DynamicResource SubtitleTextBrush}}"
                                    HorizontalAlignment="Left"
                                    TextAlignment="Center"
                                    VerticalAlignment="Center">
@@ -56,10 +56,10 @@
                                Padding="60 0 60 0"
                                Foreground="{DynamicResource ForegroundTextBrush}"/>
 
-                    <StackPanel x:Name="WindowControlsGrid" Grid.Column="2" Background="Transparent"
+                    <StackPanel x:Name="WindowControlsGrid" Grid.Column="{OnPlatform '2', macOS='0'}" Background="Transparent"
                                 Orientation="Horizontal">
-                        <Button Width="26"
-                                Height="26"
+                        <Button Width="{OnPlatform '26', macOS='0'}"
+                                Height="{OnPlatform '26', macOS='0'}"
                                 HorizontalContentAlignment="Center"
                                 BorderThickness="0"
                                 Name="MinimizeButton"
@@ -83,7 +83,8 @@
                                   Data="M2048 1229v-205h-2048v205h2048z" />
                         </Button>
 
-                        <Button Width="26" Height="26"
+                        <Button Width="{OnPlatform '26', macOS='0'}"
+                                Height="{OnPlatform '26', macOS='0'}"
                                 VerticalAlignment="Stretch"
                                 BorderThickness="0"
                                 Name="CloseButton"
