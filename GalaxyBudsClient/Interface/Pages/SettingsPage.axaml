@@ -1,0 +1,218 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="using:FluentAvalonia.UI.Controls"
+             xmlns:viewModels="clr-namespace:GalaxyBudsClient.Interface.ViewModels"
+             xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             xmlns:constants="clr-namespace:GalaxyBudsClient.Model.Constants"
+             xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="1200"
+             x:Class="GalaxyBudsClient.Interface.Pages.SettingsPage"
+             x:CompileBindings="True"
+             x:DataType="viewModels:SettingsPageViewModel">
+    <Design.DataContext>
+        <viewModels:SettingsPageViewModel />
+    </Design.DataContext>
+
+    <ScrollViewer>
+        <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
+            <DockPanel>
+                <Image Source="/Resources/icon_white.ico"
+                       DockPanel.Dock="Left"
+                       Height="78"
+                       RenderOptions.BitmapInterpolationMode="HighQuality" />
+
+                <StackPanel Spacing="0" Margin="12 0">
+                    <TextBlock Text="Galaxy Buds Manager"
+                               Theme="{StaticResource BoldTitleTextBlockStyle}" />
+
+                    <TextBlock Text="{Binding CurrentVersion}"
+                               Theme="{StaticResource BodyTextBlockStyle}" />
+
+                    <TextBlock Text="GPL-3.0"
+                               Theme="{StaticResource CaptionTextBlockStyle}" />
+
+                    <TextBlock Theme="{StaticResource CaptionTextBlockStyle}"
+                               Text="https://github.com/thepbone/GalaxyBudsClient"
+                               Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                               Cursor="Hand">
+                        <Interaction.Behaviors>
+                            <EventTriggerBehavior EventName="PointerPressed">
+                                <ext:OpenLinkAction TargetUri="https://github.com/thepbone/GalaxyBudsClient" />
+                            </EventTriggerBehavior>
+
+                        </Interaction.Behaviors>
+                    </TextBlock>
+                </StackPanel>
+            </DockPanel>
+
+            <ui:SettingsExpander Header="{DynamicResource settings_appearance}" IsExpanded="True">
+                <ui:SettingsExpander.IconSource>
+                    <ic:SymbolIconSource Symbol="PaintBrush" />
+                </ui:SettingsExpander.IconSource>
+
+                <controls:SettingsComboBoxItem Name="AppTheme"
+                                               Content="{DynamicResource settings_darkmode}"
+                                               Description="{DynamicResource settings_darkmode_description}"
+                                               IconSource="DarkTheme"
+                                               ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:DarkModes}}}"
+                                               SelectedValue="{Binding DarkMode, Source={x:Static utils:SettingsProvider.Instance}}" />
+
+                <controls:SettingsColorItem Name="AppAccent"
+                                               Content="{DynamicResource settings_accent}"
+                                               Description="{DynamicResource settings_accent_description}"
+                                               Symbol="Color"
+                                               Color="{Binding AccentColor, Source={x:Static utils:SettingsProvider.Instance}}" />
+                
+                <controls:SettingsComboBoxItem Name="AppLanguage"
+                                               Content="{DynamicResource settings_localization_disable}"
+                                               Description="{DynamicResource settings_localization_description}"
+                                               Symbol="LocalLanguage"
+                                               ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:Locales}}}"
+                                               SelectedValue="{Binding Locale, Source={x:Static utils:SettingsProvider.Instance}}" />
+            </ui:SettingsExpander>
+
+            <ui:SettingsExpander Header="{DynamicResource settings_tray_settings}"
+                                 IsExpanded="True"
+                                 IsVisible="{x:Static platform:PlatformUtils.SupportsTrayIcon}">
+                <ui:SettingsExpander.IconSource>
+                    <ic:SymbolIconSource Symbol="ChatSettings" />
+                </ui:SettingsExpander.IconSource>
+
+                <controls:SettingsSwitchItem
+                    Name="TrayIcon"
+                    Content="{DynamicResource settings_minimize_tray}"
+                    Description="{DynamicResource settings_minimize_tray_description}"
+                    Symbol="ArrowMinimize"
+                    IsChecked="{Binding MinimizeToTray, Source={x:Static utils:SettingsProvider.Instance}}" />
+
+                <controls:SettingsComboBoxItem
+                    Name="DynamicTrayIcon"
+                    Content="{DynamicResource settings_dyn_tray_mode}"
+                    Description="{DynamicResource settings_dyn_tray_mode_description}"
+                    IsEnabled="{Binding MinimizeToTray, Source={x:Static utils:SettingsProvider.Instance}}"
+                    ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:DynamicTrayIconModes}}}"
+                    SelectedValue="{Binding DynamicTrayIconMode, Source={x:Static utils:SettingsProvider.Instance}}" />
+
+                <controls:SettingsSwitchItem
+                    Content="{DynamicResource settings_autostart}"
+                    Description="{DynamicResource settings_autostart_description}"
+                    Symbol="KeyboardShiftUppercase"
+                    IsEnabled="{Binding MinimizeToTray, Source={x:Static utils:SettingsProvider.Instance}}"
+                    IsChecked="{Binding IsAutoStartEnabled}"
+                    IsVisible="{x:Static platform:PlatformUtils.SupportsAutoboot}" />
+
+            </ui:SettingsExpander>
+
+
+            <ui:SettingsExpander Header="{DynamicResource settings_connpopup}">
+                <ui:SettingsExpander.IconSource>
+                    <ic:SymbolIconSource Symbol="Badge" />
+                </ui:SettingsExpander.IconSource>
+
+                <controls:SettingsSwitchItem
+                    Content="{DynamicResource settings_cpopup_enable}"
+                    Description="{DynamicResource settings_cpopup_enable_description}"
+                    IsChecked="{Binding Popup.Enabled, Source={x:Static utils:SettingsProvider.Instance}}" />
+
+                <controls:SettingsSwitchItem
+                    Content="{DynamicResource settings_cpopup_compact}"
+                    Description="{DynamicResource settings_cpopup_compact_description}"
+                    Symbol="ArrowMinimizeVertical"
+                    IsChecked="{Binding Popup.Compact, Source={x:Static utils:SettingsProvider.Instance}}" />
+
+                <controls:SettingsComboBoxItem Name="PopupPosition"
+                                               Content="{DynamicResource settings_cpopup_position}"
+                                               Description="{DynamicResource settings_cpopup_position_description}"
+                                               Symbol="LayoutCellFourFocusBottomLeft"
+                                               ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:PopupPlacement}}}"
+                                               SelectedValue="{Binding Popup.Placement, Source={x:Static utils:SettingsProvider.Instance}}" />
+
+                <controls:SettingsSymbolItem Content="{DynamicResource settings_cpopup_demo}"
+                                             IsClickEnabled="True"
+                                             Symbol="SendBeaker">
+                    <Interaction.Behaviors>
+                        <EventTriggerBehavior EventName="Click">
+                            <ext:EventDispatcherAction Event="ShowBatteryPopup" />
+                        </EventTriggerBehavior>
+                    </Interaction.Behaviors>
+
+                </controls:SettingsSymbolItem>
+            </ui:SettingsExpander>
+
+
+            <ui:SettingsExpander Header="{DynamicResource settings_crowdsourcing}">
+                <ui:SettingsExpander.IconSource>
+                    <ic:SymbolIconSource Symbol="Lightbulb" />
+                </ui:SettingsExpander.IconSource>
+
+                <controls:SettingsSwitchItem
+                    Content="{DynamicResource settings_crowd_allow}"
+                    Description="{DynamicResource settings_crowd_allow_description}"
+                    IsChecked="{Binding !Experiments.Disabled, Source={x:Static utils:SettingsProvider.Instance}}" />
+
+                <controls:SettingsSwitchItem
+                    Content="{DynamicResource settings_crowd_crashreport}"
+                    Description="{DynamicResource settings_crowd_crashreport_description}"
+                    IsChecked="{Binding !DisableCrashReporting, Source={x:Static utils:SettingsProvider.Instance}}" />
+
+            </ui:SettingsExpander>
+
+
+            <ui:SettingsExpander Header="{DynamicResource credits_header}">
+                <ui:SettingsExpander.IconSource>
+                    <ic:SymbolIconSource Symbol="PeopleTeam" />
+                </ui:SettingsExpander.IconSource>
+
+                <ui:SettingsExpanderItem Content="{DynamicResource credits_github}"
+                                         ActionIconSource="Open"
+                                         IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <EventTriggerBehavior EventName="Click">
+                            <ext:OpenLinkAction TargetUri="https://github.com/thepbone/GalaxyBudsClient" />
+                        </EventTriggerBehavior>
+                    </Interaction.Behaviors>
+                </ui:SettingsExpanderItem>
+
+                <ui:SettingsExpanderItem Content="{DynamicResource credits_developer}"
+                                         Description="@thepbone" />
+                <ui:SettingsExpanderItem Content="{DynamicResource credits_contributor}"
+                                         Description="{StaticResource ContributorCreditsString}" />
+                <ui:SettingsExpanderItem Content="{DynamicResource credits_translator}"
+                                         Description="{StaticResource TranslatorCreditsString}" />
+            </ui:SettingsExpander>
+
+            <ui:SettingsExpander Name="DevSettings"
+                                 Header="{DynamicResource settings_devmode}"
+                                 Description="{DynamicResource settings_devmode_description}"
+                                 ActionIconSource="Open"
+                                 IsClickEnabled="True">
+                <ui:SettingsExpander.IconSource>
+                    <ic:SymbolIconSource Symbol="Beaker" />
+                </ui:SettingsExpander.IconSource>
+            </ui:SettingsExpander>
+
+            <ui:SettingsExpander Header="{DynamicResource credits_sponsor}"
+                                 Description="{DynamicResource credits_kofi}"
+                                 ActionIconSource="Open"
+                                 IsClickEnabled="True">
+
+                <Interaction.Behaviors>
+                    <EventTriggerBehavior EventName="Click">
+                        <ext:OpenLinkAction TargetUri="https://ko-fi.com/thepbone" />
+                    </EventTriggerBehavior>
+                </Interaction.Behaviors>
+
+                <ui:SettingsExpander.IconSource>
+                    <ic:SymbolIconSource Symbol="Heart" />
+                </ui:SettingsExpander.IconSource>
+            </ui:SettingsExpander>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</UserControl>

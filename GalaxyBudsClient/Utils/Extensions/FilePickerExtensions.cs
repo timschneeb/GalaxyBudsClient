@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Platform.Storage;
-using GalaxyBudsClient.Interface.Dialogs;
+using GalaxyBudsClient.InterfaceOld.Dialogs;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 
 namespace GalaxyBudsClient.Utils.Extensions;

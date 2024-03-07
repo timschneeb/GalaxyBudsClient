@@ -1,0 +1,56 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:GalaxyBudsClient.Interface.ViewModels"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             mc:Ignorable="d" d:DesignWidth="800"
+             x:Class="GalaxyBudsClient.Interface.Pages.HomePage"
+             x:DataType="viewModels:HomePageViewModel"
+             x:CompileBindings="True">
+
+    <Design.DataContext>
+        <viewModels:EqualizerPageViewModel />
+    </Design.DataContext>
+
+    <ScrollViewer>
+        <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
+            <controls:SettingsGroup>
+                <controls:SettingsSwitchItem Content="Active noise cancelling"
+                                             Symbol="HeadphonesSoundWave"
+                                             IsClickEnabled="True" />
+
+                <controls:SettingsSymbolItem Content="{DynamicResource mainpage_noise}"
+                                             Symbol="HeadphonesSoundWave"
+                                             ActionSymbol="ChevronRight"
+                                             IsClickEnabled="True" />
+
+                <controls:SettingsSymbolItem Content="{DynamicResource mainpage_equalizer}"
+                                             Symbol="DeviceEq"
+                                             ActionSymbol="ChevronRight"
+                                             IsClickEnabled="True" />
+
+                <controls:SettingsSymbolItem Content="{DynamicResource mainpage_find_my_earbuds}"
+                                             Symbol="LocationLive"
+                                             ActionSymbol="ChevronRight"
+                                             IsClickEnabled="True" />
+
+                <controls:SettingsSymbolItem Content="{DynamicResource mainpage_touchpad}"
+                                             Symbol="HandDraw"
+                                             ActionSymbol="ChevronRight"
+                                             IsClickEnabled="True" />
+
+                <controls:SettingsSymbolItem Content="{DynamicResource mainpage_advanced}"
+                                             Symbol="WrenchScrewdriver"
+                                             ActionSymbol="ChevronRight"
+                                             IsClickEnabled="True" />
+
+                <controls:SettingsSymbolItem Content="{DynamicResource mainpage_system}"
+                                             Symbol="Apps"
+                                             ActionSymbol="ChevronRight"
+                                             IsClickEnabled="True" />
+
+            </controls:SettingsGroup>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

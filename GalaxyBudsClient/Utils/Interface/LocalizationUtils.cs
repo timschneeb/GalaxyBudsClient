@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml;
@@ -56,6 +57,7 @@ namespace GalaxyBudsClient.Utils.Interface
                 {
                     case Locales.custom when IsTranslatorModeEnabled():
                         SetLanguageResourceDictionary(GetTranslatorModeFile(), external: true);
+                        NotifyObservers();
                         return;
                     case Locales.custom when !IsTranslatorModeEnabled():
                         lang = Locales.en.ToString();
@@ -64,6 +66,22 @@ namespace GalaxyBudsClient.Utils.Interface
                 }
 
                 SetLanguageResourceDictionary($"{Program.AvaresUrl}/i18n/{lang}.xaml", external: false);
+                NotifyObservers();
+            }
+
+            private static void NotifyObservers()
+            {
+                foreach (var item in s_langList)
+                {
+                    var value = Resolve(item.Key);
+                    foreach (var item1 in item.Value)
+                    {
+                        if (item1.TryGetTarget(out var target))
+                        { 
+                            target.OnNext(value);
+                        }
+                    }
+                }
             }
             
             private static void SetLanguageResourceDictionary(string path, bool external)
@@ -121,6 +139,39 @@ namespace GalaxyBudsClient.Utils.Interface
                 }
                 
                 LanguageUpdated?.Invoke();
+            }
+            
+            private static readonly Dictionary<string, List<WeakReference<IObserver<string>>>> s_langList = [];
+
+            public static IDisposable AddObserverForKey(string key, IObserver<string> observer)
+            {
+                if (s_langList.TryGetValue(key, out var list))
+                {
+                    list.Add(new(observer));
+                }
+                else
+                {
+                    list = [new(observer)];
+                    s_langList.Add(key, list);
+                }
+                var value = Loc.Resolve(key);
+                observer.OnNext(value);
+                return new Unsubscribable(list, observer);
+            }
+
+            private class Unsubscribable(List<WeakReference<IObserver<string>>> observers, IObserver<string> observer) : IDisposable
+            {
+                public void Dispose()
+                {
+                    foreach (var item in observers.ToArray())
+                    {
+                        if (!item.TryGetTarget(out var target)
+                            || target == observer)
+                        {
+                            observers.Remove(item);
+                        }
+                    }
+                }
             }
         }
     }

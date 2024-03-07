@@ -309,7 +309,7 @@ Dacă transmiterea este blocată sau dispozitivul se deconectează prematur, tre
     <sys:String x:Key="settings_header">Setări</sys:String>
 
     <sys:String x:Key="settings_darkmode">Mod întunecat</sys:String>
-    <sys:String x:Key="settings_darkmode_description">Folosiți o schemă de culori mai închisă (repornirea aplicației necesară)</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Folosiți o schemă de culori mai închisă</sys:String>
     <sys:String x:Key="settings_transitions">Tranziție</sys:String>
     <sys:String x:Key="settings_transitions_description">Activați tranzițiile la slide</sys:String>
     <sys:String x:Key="settings_localization_disable">Limbă</sys:String>

@@ -5,7 +5,7 @@ namespace GalaxyBudsClient.Model.Touchpad
 {
     public class BudsPlusTouchOption : ITouchOption
     {
-        public Dictionary<TouchOptions, byte> LookupTable => new Dictionary<TouchOptions, byte>()
+        public Dictionary<TouchOptions, byte> LookupTable => new()
         {
             {TouchOptions.VoiceAssistant, 1},
             {TouchOptions.AmbientSound, 2},

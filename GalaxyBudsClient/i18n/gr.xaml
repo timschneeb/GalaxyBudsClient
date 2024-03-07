@@ -300,7 +300,7 @@
     <sys:String x:Key="settings_header">Ρυθμίσεις</sys:String>
 
     <sys:String x:Key="settings_darkmode">Σκούρο θέμα</sys:String>
-    <sys:String x:Key="settings_darkmode_description">Χρήση σκούρου θέματος (Απαιτείται επαναφόρτιση)</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Χρήση σκούρου θέματος</sys:String>
     <sys:String x:Key="settings_transitions">Μετάβαση</sys:String>
     <sys:String x:Key="settings_transitions_description">Ενεργοποίηση μεταβάσεων διαφάνειας</sys:String>
     <sys:String x:Key="settings_localization_disable">Γλώσσα</sys:String>

@@ -3,9 +3,9 @@ using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Model.Touchpad
 {
-    public class BudsFeTouchOption : ITouchOption
+    public class StandardTouchOption : ITouchOption
     {
-        public Dictionary<TouchOptions, byte> LookupTable => new Dictionary<TouchOptions, byte>()
+        public Dictionary<TouchOptions, byte> LookupTable => new()
         {
             {TouchOptions.VoiceAssistant, 1},
             {TouchOptions.NoiseControl, 2},

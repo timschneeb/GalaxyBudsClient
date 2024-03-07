@@ -323,7 +323,7 @@ Als de transmissie vastloopt of de verbinding met het apparaat voortijdig verbro
     <sys:String x:Key="settings_header">Instellingen</sys:String>
 
     <sys:String x:Key="settings_darkmode">Donkere modus</sys:String>
-    <sys:String x:Key="settings_darkmode_description">Gebruik een donkerder kleurenschema (Herladen vereist)</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Gebruik een donkerder kleurenschema</sys:String>
     <sys:String x:Key="settings_transitions">Overgang</sys:String>
     <sys:String x:Key="settings_transitions_description">Diaovergangen inschakelen</sys:String>
     <sys:String x:Key="settings_localization_disable">Taal</sys:String>

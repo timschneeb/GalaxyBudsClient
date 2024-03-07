@@ -1,8 +1,6 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:system="clr-namespace:System;assembly=System.Runtime"
-                    xmlns:converters="clr-namespace:GalaxyBudsClient.Utils.Converters"
-                    xmlns:markupExtensions="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions">
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
 
     <!-- Dimensions -->
     <system:Double x:Key="ContentWidth">510</system:Double>
@@ -25,9 +23,5 @@
     <CroppedBitmap x:Key="TouchBean" Source="/Resources/features/touch_bean.png"/>
     <CroppedBitmap x:Key="TouchPro" Source="/Resources/features/touch_pro.png"/>
     <CroppedBitmap x:Key="FitTest" Source="/Resources/features/earbud_fit_test.png"/>
-
-    <!-- Value converters -->
-    <converters:BitmapAssetValueConverter x:Key="BitmapAssetValueConverter"/>
-    <markupExtensions:EnumToDescriptionConverter x:Key="EnumDescriptionConverter"/>
     
 </ResourceDictionary>

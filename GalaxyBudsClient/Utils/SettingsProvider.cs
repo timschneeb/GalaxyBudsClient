@@ -1,7 +1,11 @@
 using Config.Net;
+using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Utils.Interface;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Serilog;
 
 namespace GalaxyBudsClient.Utils
@@ -9,6 +13,8 @@ namespace GalaxyBudsClient.Utils
     public static class SettingsProvider
     {
         public static ISettings Instance { get; }
+        private static string SettingsPath => PlatformUtils.CombineDataPath("config.json");
+
         static SettingsProvider()
         {
             Log.Information("Using settings file at: {SettingsPath}", SettingsPath);
@@ -16,9 +22,36 @@ namespace GalaxyBudsClient.Utils
                 .UseJsonFile(SettingsPath)
                 .UseTypeParser(new ConfigArrayParser<long>())
                 .UseTypeParser(new HotkeyArrayParser())
+                .UseTypeParser(new AccentColorParser())
                 .Build();
+            
+            Instance.PropertyChanged += OnMainSettingsChanged;
         }
 
-        private static string SettingsPath => PlatformUtils.CombineDataPath("config.json");
+        private static void OnMainSettingsChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case nameof(ISettings.DarkMode):
+                    ThemeUtils.Reload();
+                    break;
+                case nameof(ISettings.AccentColor):
+                    ThemeUtils.ReloadAccentColor();
+                    break;
+                case nameof(ISettings.Locale):
+                    Loc.Load();
+                    break;
+                case nameof(ISettings.DynamicTrayIconMode):
+                {
+                    /* TODO maybe combine this with the other icon update in MainWindow2 */
+                    var cache = DeviceMessageCache.Instance.BasicStatusUpdate;
+                    if (Instance.DynamicTrayIconMode != DynamicTrayIconModes.Disabled && BluetoothImpl.Instance.IsConnected && cache != null)
+                        WindowIconRenderer.UpdateDynamicIcon(cache);
+                    else
+                        WindowIconRenderer.ResetIconToDefault();
+                    break;
+                }
+            }
+        }
     }
 }

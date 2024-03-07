@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
 using GalaxyBudsClient.Model.Attributes;
 
 namespace GalaxyBudsClient.Model
@@ -81,6 +82,7 @@ namespace GalaxyBudsClient.Model
 			[Description("Nederlands")]
 			nl,
             [Description("custom_language.xaml")]
+            [IgnoreDataMember]
             custom
         }
         
@@ -111,11 +113,13 @@ namespace GalaxyBudsClient.Model
         }
         
         public enum DarkModes
-        {
+        {    
             [LocalizedDescription("darkmode_disabled")]
             Light,
             [LocalizedDescription("darkmode_enabled")]
-            Dark
+            Dark,
+            [LocalizedDescription("darkmode_system")]
+            System,
         }
 
         public enum PopupPlacement

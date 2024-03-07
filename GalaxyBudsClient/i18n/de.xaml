@@ -303,7 +303,7 @@ Falls die Übertragung einfriert oder das Gerät vorzeitig getrennt wird, kann d
     <sys:String x:Key="settings_header">Einstellungen</sys:String>
 
     <sys:String x:Key="settings_darkmode">Dark-Mode</sys:String>
-    <sys:String x:Key="settings_darkmode_description">Verwende ein dunkleres Farbschema (Neustart nötig)</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Verwende ein dunkleres Farbschema</sys:String>
     <sys:String x:Key="settings_transitions">Übergang</sys:String>
     <sys:String x:Key="settings_transitions_description">Schiebeübergang aktivieren</sys:String>
     <sys:String x:Key="settings_localization_disable">Sprache</sys:String>
@@ -314,7 +314,7 @@ Falls die Übertragung einfriert oder das Gerät vorzeitig getrennt wird, kann d
     <sys:String x:Key="settings_autostart_description">Starte Anwendung minimiert mit dem Systemstart</sys:String>
     <sys:String x:Key="settings_autostart_permission">Registry-Eintrag konnte nicht aktualisiert werden. Zugriff auf die Registry (HKCU) wurde vom Systemadministrator explizit für den aktuellen Nutzer deaktiviert.</sys:String>
 
-    <sys:String x:Key="settings_connpopup">Verbindungspopup einstellen</sys:String>
+    <sys:String x:Key="settings_connpopup">Verbindungspopup</sys:String>
     <sys:String x:Key="settings_devmode">Entwickleroptionen</sys:String>
 
     <!--Settings >>> Connection popup-->

@@ -322,7 +322,7 @@ Je-li přenos zaseklý nebo se zařízení předčasně odpojilo, musíte restar
     <sys:String x:Key="settings_header">Nastavení</sys:String>
 
     <sys:String x:Key="settings_darkmode">Tmavý motiv</sys:String>
-    <sys:String x:Key="settings_darkmode_description">Použít tmavý motiv (potřeba znovu otevření aplikace)</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Použít tmavý motiv</sys:String>
     <sys:String x:Key="settings_transitions">Přechody</sys:String>
     <sys:String x:Key="settings_transitions_description">Povolit posuvný přechod</sys:String>
     <sys:String x:Key="settings_localization_disable">Jazyk</sys:String>

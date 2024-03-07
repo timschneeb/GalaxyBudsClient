@@ -1,0 +1,15 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:interface="clr-namespace:GalaxyBudsClient.Interface"
+        mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="640" 
+        x:Class="GalaxyBudsClient.MainWindow2"
+        Height="640" Width="700"
+        WindowStartupLocation="CenterScreen"
+        UseLayoutRounding="True"
+        Icon="/Resources/icon_white.ico"
+        Title="Galaxy Buds Manager">
+    
+    <interface:MainView />
+</Window>

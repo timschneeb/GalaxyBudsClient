@@ -323,18 +323,22 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     
     <!--Settings-->
     <sys:String x:Key="settings_header">Settings</sys:String>
-
-    <sys:String x:Key="settings_darkmode">Dark Mode</sys:String>
-    <sys:String x:Key="settings_darkmode_description">Use a darker color scheme (Reload required)</sys:String>
+    
+    <sys:String x:Key="settings_appearance">Appearance</sys:String>
+    <sys:String x:Key="settings_darkmode">Dark mode</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Use a darker color scheme</sys:String>
+    <sys:String x:Key="settings_accent">Accent color</sys:String>
+    <sys:String x:Key="settings_accent_description">Choose a custom accent color</sys:String>
     <sys:String x:Key="settings_transitions">Transition</sys:String>
     <sys:String x:Key="settings_transitions_description">Enable slide transitions</sys:String>
     <sys:String x:Key="settings_localization_disable">Language</sys:String>
+    <sys:String x:Key="settings_localization_description">Change the app language</sys:String>
     <sys:String x:Key="settings_localization_disable_description">Force English language</sys:String>
     <sys:String x:Key="settings_minimize_tray">Minimize to tray</sys:String>
     <sys:String x:Key="settings_minimize_tray_description">Keep in background instead of terminating the app</sys:String>
-    <sys:String x:Key="settings_tray_settings">Auto-start and tray icon</sys:String>
-    <sys:String x:Key="settings_tray_settings_description">Configure auto-start and tray icon behavior</sys:String>
+    <sys:String x:Key="settings_tray_settings">Tray icon &amp; startup</sys:String>
     <sys:String x:Key="settings_dyn_tray_mode">Dynamic tray icon</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_description">Display the battery status in the tray icon</sys:String>
     <sys:String x:Key="settings_dyn_tray_mode_off">Off</sys:String>
     <sys:String x:Key="settings_dyn_tray_mode_battery_min">Show lowest battery level</sys:String>
     <sys:String x:Key="settings_dyn_tray_mode_battery_avg">Show average battery level</sys:String>
@@ -342,8 +346,9 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="settings_autostart_description">Start minimized on system boot</sys:String>
     <sys:String x:Key="settings_autostart_permission">Cannot update auto-start entry in registry. Registry access (HKCU) was explicitly disabled by your system administrator.</sys:String>
     
-    <sys:String x:Key="settings_connpopup">Configure connection popup</sys:String>
+    <sys:String x:Key="settings_connpopup">Connection popup</sys:String>
     <sys:String x:Key="settings_devmode">Developer options</sys:String>
+    <sys:String x:Key="settings_devmode_description">Bluetooth traffic inspector and other developer tools</sys:String>
     <sys:String x:Key="settings_crowdsourcing">Crowdsourcing</sys:String>
 
     <!--Settings >>> Connection popup-->
@@ -353,7 +358,7 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="settings_cpopup_compact">Compact mode</sys:String>
     <sys:String x:Key="settings_cpopup_compact_description">Hide the header of the popup to save space</sys:String>
     <sys:String x:Key="settings_cpopup_position">Position</sys:String>
-    <sys:String x:Key="settings_cpopup_position_placeholder">Unknown</sys:String>
+    <sys:String x:Key="settings_cpopup_position_description">Select the position of the connection popup</sys:String>
     <sys:String x:Key="settings_cpopup_demo">Show demo popup</sys:String>
     <sys:String x:Key="settings_cpopup_override_title">Override popup title</sys:String>
     <sys:String x:Key="settings_cpopup_override_title_dialog">Please enter a custom popup title. You can restore the default one by leaving this field empty.</sys:String>
@@ -394,7 +399,8 @@ You might need to manually reconnect your Earbuds.</sys:String>
 
     <!--Equalizer-->
     <sys:String x:Key="eq_header">Equalizer</sys:String>
-    <sys:String x:Key="eq_enable">Enable equalizer</sys:String>
+    <sys:String x:Key="eq_enable">Equalizer</sys:String>
+    <sys:String x:Key="eq_enable_description">Apply EQ audio filters</sys:String>
     <sys:String x:Key="eq_preset">Preset</sys:String>
     <sys:String x:Key="eq_dolby">Optimize for use with Dolby</sys:String>
     <sys:String x:Key="eq_stereo_balance">Left/right sound balance</sys:String>
@@ -481,6 +487,8 @@ The remap configuration is only active on this device. If you connect your earbu
     <sys:String x:Key="credits_contributor">Contributors</sys:String>
     <sys:String x:Key="credits_translator">Translators</sys:String>
     <sys:String x:Key="credits_sponsor">Sponsor this project</sys:String>
+    <sys:String x:Key="credits_kofi">Visit my ko-fi page to support me!</sys:String>
+    <sys:String x:Key="credits_github">Visit this project on GitHub</sys:String>
 
     <!--Connection lost page-->
     <sys:String x:Key="connlost_header">Unable to establish connection</sys:String>

@@ -1,0 +1,48 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:GalaxyBudsClient.Interface.ViewModels"
+             xmlns:converters="clr-namespace:GalaxyBudsClient.Interface.Converters"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             mc:Ignorable="d" d:DesignWidth="800"
+             x:Class="GalaxyBudsClient.Interface.Pages.EqualizerPage"
+             x:DataType="viewModels:EqualizerPageViewModel"
+             x:CompileBindings="True">
+    
+    <Design.DataContext>
+        <viewModels:EqualizerPageViewModel />
+    </Design.DataContext>
+
+    <ScrollViewer>
+        <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
+  
+            <controls:SettingsGroup>
+                <controls:SettingsSwitchItem
+                    Content="{DynamicResource eq_enable}"
+                    Description="{DynamicResource eq_enable_description}"
+                    Symbol="DeviceEq"
+                    IsChecked="{Binding IsEqEnabled}" />
+                
+                <controls:SettingsSliderItem
+                    Content="{DynamicResource eq_preset}"
+                    Description="{Binding EqPreset, Converter={StaticResource EqPresetConverter}}" 
+                    IconSource="{StaticResource IconPlaceholder}"
+                    IsEnabled="{Binding IsEqEnabled}"
+                    Maximum="4"
+                    Value="{Binding EqPreset}" />
+            </controls:SettingsGroup>
+            
+            <controls:SettingsGroup>
+                <controls:SettingsSliderItem
+                    Content="{DynamicResource eq_stereo_balance}"
+                    Description="{Binding StereoBalance, Converter={StaticResource StereoBalanceConverter}}"
+                    Symbol="DualScreenSpan"
+                    Maximum="32"
+                    Value="{Binding StereoBalance}" />
+            </controls:SettingsGroup>
+        </StackPanel>
+    </ScrollViewer>
+    
+</UserControl>

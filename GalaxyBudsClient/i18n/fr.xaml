@@ -309,7 +309,7 @@ Si la transmission est bloquée ou les écouteurs déconnectés prématurément,
     <sys:String x:Key="settings_header">Paramètres</sys:String>
 
     <sys:String x:Key="settings_darkmode">Mode sombre</sys:String>
-    <sys:String x:Key="settings_darkmode_description">Utiliser une palette de couleurs plus sombre (Rechargement requis)</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Utiliser une palette de couleurs plus sombre</sys:String>
     <sys:String x:Key="settings_transitions">Transition</sys:String>
     <sys:String x:Key="settings_transitions_description">Activer les animations de transition</sys:String>
     <sys:String x:Key="settings_localization_disable">Langue</sys:String>

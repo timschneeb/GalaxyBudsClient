@@ -42,7 +42,7 @@ public static class CrashReports
                     sentryEvent.SetExtra("sw-version",
                         DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");
 
-                    if (MainWindow.IsReady())
+                    if (MainWindow2.IsReady())
                     {
                         sentryEvent.SetExtra("current-page", MainWindow.Instance.Pager.CurrentPage);
                     }

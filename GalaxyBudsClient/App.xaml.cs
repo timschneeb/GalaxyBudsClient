@@ -8,7 +8,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
-using GalaxyBudsClient.Interface.Pages;
+using GalaxyBudsClient.InterfaceOld.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
@@ -69,7 +69,7 @@ namespace GalaxyBudsClient
             
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                desktop.MainWindow = MainWindow.Instance;
+                desktop.MainWindow = MainWindow2.Instance;
                 desktop.Exit += (_, _) =>
                 {
                     SettingsProvider.Instance.FirstLaunch = false;
@@ -84,45 +84,13 @@ namespace GalaxyBudsClient
             base.OnFrameworkInitializationCompleted();
         }
 
-        public void RestartApp(AbstractPage.Pages target)
-        {
-            if (ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop)
-                return;
-            
-            MainWindow.Instance.DisableApplicationExit = true;
-            MainWindow.Instance.OverrideMinimizeTray = true;
-            MainWindow.Instance.Close();
-            MainWindow.Kill();
-
-            ThemeUtils.Reload();
-
-            desktop.MainWindow = MainWindow.Instance;
-            desktop.MainWindow.Show();
-                
-            MainWindow.Instance.Pager.SwitchPage(target);
-                
-            /* Restore crucial information */
-            SppMessageHandler.Instance.DispatchEvent(DeviceMessageCache.Instance.ExtendedStatusUpdate);
-            SppMessageHandler.Instance.DispatchEvent(DeviceMessageCache.Instance.StatusUpdate);
-        }
-
         public event Action? TrayIconClicked;
 
         public static readonly StyledProperty<NativeMenu> TrayMenuProperty =
             AvaloniaProperty.Register<App, NativeMenu>(nameof(TrayMenu),
-                defaultBindingMode: BindingMode.OneWay, defaultValue: new NativeMenu());
+                defaultBindingMode: BindingMode.OneWay, defaultValue: []);
         public NativeMenu TrayMenu => GetValue(TrayMenuProperty);
         
-        public static readonly StyledProperty<WindowIcon> TrayIconProperty =
-            AvaloniaProperty.Register<App, WindowIcon>(nameof(TrayMenu),
-                defaultBindingMode: BindingMode.TwoWay, defaultValue: WindowIconRenderer.MakeDefaultIcon());
-       
-        public WindowIcon TrayIcon
-        {
-            get => GetValue(TrayIconProperty);
-            set => SetValue(TrayIconProperty, value);
-        }
-
         private void TrayIcon_OnClicked(object? sender, EventArgs e)
         {
             TrayIconClicked?.Invoke();

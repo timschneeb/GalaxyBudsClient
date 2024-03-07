@@ -81,7 +81,7 @@ namespace GalaxyBudsClient.Cli.Ipc.Objects
 
         public Task ActivateAsync()
         {
-            MainWindow.Instance.BringToFront();
+            MainWindow2.Instance.BringToFront();
             return Task.CompletedTask;
         }
     }
