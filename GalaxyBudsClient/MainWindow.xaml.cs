@@ -122,7 +122,7 @@ namespace GalaxyBudsClient
             };
             _titleBar.ClosePressed += (sender, args) =>
             {
-                if (SettingsProvider.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
+                if (Settings.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
                 {
                     Log.Information("MainWindow.TitleBar: Close requested, minimizing to tray bar");
                     BringToTray();
@@ -182,7 +182,7 @@ namespace GalaxyBudsClient
             {
                 Log.Debug("MainWindow.OnAnyMessageReceived: Voice wakeup event received");
                     
-                EventDispatcher.Instance.Dispatch(SettingsProvider.Instance.BixbyRemapEvent);
+                EventDispatcher.Instance.Dispatch(Settings.Instance.BixbyRemapEvent);
             }
         }
 
@@ -234,7 +234,7 @@ namespace GalaxyBudsClient
         {
             await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.FIND_MY_EARBUDS_STOP);
             
-            if (SettingsProvider.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
+            if (Settings.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
             {
                 // check if the cause of the termination is due to shutdown or application close request
                 if (e.CloseReason is WindowCloseReason.OSShutdown or WindowCloseReason.ApplicationShutdown)
@@ -377,7 +377,7 @@ namespace GalaxyBudsClient
         private void OnStatusUpdate(object? sender, StatusUpdateParser e)
         {
             if (_lastWearState == WearStates.None &&
-                e.WearState != WearStates.None && SettingsProvider.Instance.ResumePlaybackOnSensor)
+                e.WearState != WearStates.None && Settings.Instance.ResumePlaybackOnSensor)
             {
                 MediaKeyRemoteImpl.Instance.Play();
             }
@@ -393,7 +393,7 @@ namespace GalaxyBudsClient
 
         private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
         {
-            if (SettingsProvider.Instance.Popup.Enabled)
+            if (Settings.Instance.Popup.Enabled)
             {
                 ShowPopup();
             }
@@ -451,7 +451,7 @@ namespace GalaxyBudsClient
         private void HandleOtherTouchOption(object? sender, TouchOptions e)
         {
             ICustomAction action = e == TouchOptions.OtherL ?
-                SettingsProvider.Instance.CustomActionLeft : SettingsProvider.Instance.CustomActionRight;
+                Settings.Instance.CustomActionLeft : Settings.Instance.CustomActionRight;
 
             switch (action.Action)
             {

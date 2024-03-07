@@ -60,7 +60,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
         
         private async void Firmware_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
-            if (!SettingsProvider.Instance.FirmwareWarningAccepted)
+            if (!Settings.Instance.FirmwareWarningAccepted)
             {
                 var result = await new QuestionBox()
                 {
@@ -70,7 +70,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                     MaxWidth = 600
                 }.ShowDialog<bool>(MainWindow.Instance);
 
-                SettingsProvider.Instance.FirmwareWarningAccepted = result;
+                Settings.Instance.FirmwareWarningAccepted = result;
                 if (result)
                 {
                     MainWindow.Instance.Pager.SwitchPage(Pages.FirmwareSelect);

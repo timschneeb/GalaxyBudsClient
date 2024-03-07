@@ -28,17 +28,17 @@ public static class CrashReports
                 {
                     sentryEvent.SetTag("arch",
                         System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString());
-                    sentryEvent.SetTag("bluetooth-mac", SettingsProvider.Instance.RegisteredDevice.MacAddress);
+                    sentryEvent.SetTag("bluetooth-mac", Settings.Instance.RegisteredDevice.MacAddress);
                     sentryEvent.SetTag("sw-version",
                         DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");
 
                     sentryEvent.SetExtra("arch",
                         System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString());
                     sentryEvent.SetExtra("bluetooth-mac",
-                        SettingsProvider.Instance.RegisteredDevice.MacAddress);
+                        Settings.Instance.RegisteredDevice.MacAddress);
                     sentryEvent.SetExtra("bluetooth-model-saved",
-                        SettingsProvider.Instance.RegisteredDevice.Model);
-                    sentryEvent.SetExtra("custom-locale", SettingsProvider.Instance.Locale);
+                        Settings.Instance.RegisteredDevice.Model);
+                    sentryEvent.SetExtra("custom-locale", Settings.Instance.Locale);
                     sentryEvent.SetExtra("sw-version",
                         DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");
 

@@ -43,7 +43,7 @@ namespace GalaxyBudsClient.InterfaceOld.Developer
             _locales = this.GetControl<ComboBox>("Locales");
             _xamlPath = this.GetControl<TextBox>("XamlPath");
 
-            _locales.SelectedItem = SettingsProvider.Instance.Locale;
+            _locales.SelectedItem = Settings.Instance.Locale;
             _xamlPath.Text = Loc.GetTranslatorModeFile();
             _ignoreConnLoss.IsChecked = BluetoothImpl.Instance.SuppressDisconnectionEvents;
             _dummyDevices.IsChecked = MainWindow.Instance.DeviceSelectionPage.EnableDummyDevices;
@@ -70,7 +70,7 @@ namespace GalaxyBudsClient.InterfaceOld.Developer
         {
             if (_locales.SelectedItem is Locales locale)
             {
-                SettingsProvider.Instance.Locale = locale;
+                Settings.Instance.Locale = locale;
             }
 
             Loc.Load();

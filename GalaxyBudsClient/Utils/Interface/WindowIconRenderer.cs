@@ -29,7 +29,7 @@ public static class WindowIconRenderer
         if (status.BatteryR <= 0)
             status.BatteryR = status.BatteryL;
         
-        int? level = SettingsProvider.Instance.DynamicTrayIconMode switch
+        int? level = Settings.Instance.DynamicTrayIconMode switch
         {
             DynamicTrayIconModes.BatteryMin => Math.Min(status.BatteryL, status.BatteryR),
             DynamicTrayIconModes.BatteryAvg => (status.BatteryL + status.BatteryR) / 2,

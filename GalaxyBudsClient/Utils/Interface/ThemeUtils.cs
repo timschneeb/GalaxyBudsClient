@@ -23,13 +23,13 @@ namespace GalaxyBudsClient.Utils.Interface
             }
             
             // TODO do not load light/dark resources this way. it does not regard the system theme settings 
-            if (SettingsProvider.Instance.DarkMode == DarkModes.Light)
+            if (Settings.Instance.DarkMode == DarkModes.Light)
             {
                 MainWindow2.Instance.RequestedThemeVariant = ThemeVariant.Light;
                 
                 SetBrushSource("Brushes");
             }
-            else if (SettingsProvider.Instance.DarkMode == DarkModes.Dark)
+            else if (Settings.Instance.DarkMode == DarkModes.Dark)
             {
                 MainWindow2.Instance.RequestedThemeVariant = ThemeVariant.Dark;
                 SetBrushSource("BrushesDark");
@@ -39,16 +39,16 @@ namespace GalaxyBudsClient.Utils.Interface
                 MainWindow2.Instance.RequestedThemeVariant = null;
             }
 
-            FaTheme.PreferSystemTheme = SettingsProvider.Instance.DarkMode == DarkModes.System;
+            FaTheme.PreferSystemTheme = Settings.Instance.DarkMode == DarkModes.System;
             ReloadAccentColor();
         }
 
         public static void ReloadAccentColor()
         {
-            var color = SettingsProvider.Instance.AccentColor;
+            var color = Settings.Instance.AccentColor;
             if (color.A == 0)
             {
-                color = SettingsProvider.Instance.AccentColor = AccentColorParser.DefaultColor;
+                color = Settings.Instance.AccentColor = AccentColorParser.DefaultColor;
             }
             FaTheme.CustomAccentColor = color;
         }

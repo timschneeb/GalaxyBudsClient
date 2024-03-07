@@ -41,10 +41,10 @@ public partial class SettingsPage : BasePage<SettingsPageViewModel>
                   which can be used to call expr.UpdateTarget(). 
                   This could be implemented in an XAML custom behavior or markup extension */ 
         AppTheme.ItemsSource = Enum.GetValues(typeof(DarkModes));
-        AppTheme.SelectedValue = SettingsProvider.Instance.DarkMode;
+        AppTheme.SelectedValue = Settings.Instance.DarkMode;
         DynamicTrayIcon.ItemsSource = Enum.GetValues(typeof(DynamicTrayIconModes));
-        DynamicTrayIcon.SelectedValue = SettingsProvider.Instance.DynamicTrayIconMode;
+        DynamicTrayIcon.SelectedValue = Settings.Instance.DynamicTrayIconMode;
         PopupPosition.ItemsSource = Enum.GetValues(typeof(PopupPlacement));
-        PopupPosition.SelectedValue = SettingsProvider.Instance.Popup.Placement;
+        PopupPosition.SelectedValue = Settings.Instance.Popup.Placement;
     }
 }

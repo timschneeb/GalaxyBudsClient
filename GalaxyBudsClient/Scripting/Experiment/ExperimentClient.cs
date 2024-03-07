@@ -86,7 +86,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
             
             Log.Debug("ExperimentClient: Scanning for experiments...");
 
-            if (SettingsProvider.Instance.Experiments.Disabled)
+            if (Settings.Instance.Experiments.Disabled)
             {
                 Log.Information("ExperimentClient: Feature is disabled");
                 return;

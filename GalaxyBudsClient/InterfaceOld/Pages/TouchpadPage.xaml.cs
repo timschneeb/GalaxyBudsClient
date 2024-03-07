@@ -126,7 +126,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 			if (_lastLeftOption == TouchOptions.OtherL)
 			{
 				_leftOption.Description =
-					$"{Loc.Resolve("touchoption_custom_prefix")} {new CustomAction(SettingsProvider.Instance.CustomActionLeft.Action, SettingsProvider.Instance.CustomActionLeft.Parameter)}";
+					$"{Loc.Resolve("touchoption_custom_prefix")} {new CustomAction(Settings.Instance.CustomActionLeft.Action, Settings.Instance.CustomActionLeft.Parameter)}";
 			}
 			else
 			{
@@ -136,7 +136,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 			if (_lastRightOption == TouchOptions.OtherR)
 			{
 				_rightOption.Description =
-					$"{Loc.Resolve("touchoption_custom_prefix")} {new CustomAction(SettingsProvider.Instance.CustomActionRight.Action, SettingsProvider.Instance.CustomActionRight.Parameter)}";
+					$"{Loc.Resolve("touchoption_custom_prefix")} {new CustomAction(Settings.Instance.CustomActionRight.Action, Settings.Instance.CustomActionRight.Parameter)}";
 			}
 			else
 			{

@@ -39,7 +39,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
 		public override void OnPageShown()
 		{
-			_darkMode.IsChecked = SettingsProvider.Instance.DarkMode == DarkModes.Dark;
+			_darkMode.IsChecked = Settings.Instance.DarkMode == DarkModes.Dark;
 			
 			var localeMenuActions =
 				new Dictionary<string,EventHandler<RoutedEventArgs>?>();
@@ -54,7 +54,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 				var locale = (Locales)value;
 				localeMenuActions[locale.GetDescription()] = (sender, args) =>
 				{
-					SettingsProvider.Instance.Locale = locale;
+					Settings.Instance.Locale = locale;
 					Loc.Load();
 				};
 			}
@@ -103,7 +103,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
 		private void DarkMode_OnToggled(object? sender, bool e)
 		{
-			SettingsProvider.Instance.DarkMode = e ? DarkModes.Dark : DarkModes.Light;
+			Settings.Instance.DarkMode = e ? DarkModes.Dark : DarkModes.Light;
 		}
 
 		private void Locales_OnPointerPressed(object? sender, PointerPressedEventArgs e)

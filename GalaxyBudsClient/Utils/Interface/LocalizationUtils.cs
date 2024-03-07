@@ -49,11 +49,11 @@ namespace GalaxyBudsClient.Utils.Interface
 
             public static void Load()
             {
-                var lang = SettingsProvider.Instance.Locale.ToString();
+                var lang = Settings.Instance.Locale.ToString();
                 if (lang.EndsWith('_'))
                     lang = lang.TrimEnd('_');
 
-                switch (SettingsProvider.Instance.Locale)
+                switch (Settings.Instance.Locale)
                 {
                     case Locales.custom when IsTranslatorModeEnabled():
                         SetLanguageResourceDictionary(GetTranslatorModeFile(), external: true);
@@ -61,7 +61,7 @@ namespace GalaxyBudsClient.Utils.Interface
                         return;
                     case Locales.custom when !IsTranslatorModeEnabled():
                         lang = Locales.en.ToString();
-                        SettingsProvider.Instance.Locale = Locales.en;
+                        Settings.Instance.Locale = Locales.en;
                         break;
                 }
 

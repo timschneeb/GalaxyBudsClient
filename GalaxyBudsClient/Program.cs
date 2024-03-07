@@ -49,7 +49,7 @@ namespace GalaxyBudsClient
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
             Trace.Listeners.Add(new ConsoleTraceListener());
             
-            if (!SettingsProvider.Instance.DisableCrashReporting)
+            if (!Settings.Instance.DisableCrashReporting)
             {
                 CrashReports.SetupCrashHandler();
             }

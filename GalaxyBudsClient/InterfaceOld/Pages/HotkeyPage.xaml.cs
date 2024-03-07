@@ -53,20 +53,20 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 			
             if (_builder.Result && _builder.Hotkey != null)
             {
-                SettingsProvider.Instance.Hotkeys = (SettingsProvider.Instance?.Hotkeys).Add(_builder.Hotkey);
+                Settings.Instance.Hotkeys = (Settings.Instance?.Hotkeys).Add(_builder.Hotkey);
                 ReloadList();
                 HotkeyReceiverImpl.Instance.Update();
 
                 if (PlatformUtils.SupportsTrayIcon)
                 {
-                    SettingsProvider.Instance!.MinimizeToTray = true;
+                    Settings.Instance!.MinimizeToTray = true;
                 }
             }
         }
 
         private void ReloadList()
         {
-            var hotkeys = SettingsProvider.Instance?.Hotkeys ?? Array.Empty<Hotkey>();
+            var hotkeys = Settings.Instance?.Hotkeys ?? Array.Empty<Hotkey>();
             if (hotkeys.Length < 1)
             {
                 UpdateEmptyView(true);
@@ -93,7 +93,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                             Loc.Resolve("hotkey_edit"),
                             async (_, args) =>
                             {
-                                var index = SettingsProvider.Instance.Hotkeys.IndexOf(hotkey);
+                                var index = Settings.Instance.Hotkeys.IndexOf(hotkey);
                                 if (index < 0)
                                 {
                                     Log.Debug("HotkeyPage.Edit: Cannot find hotkey in configuration");
@@ -106,7 +106,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 			
                                 if (_builder.Result && _builder.Hotkey != null)
                                 {
-                                    var saved = (SettingsProvider.Instance?.Hotkeys ?? Array.Empty<Hotkey>());
+                                    var saved = (Settings.Instance?.Hotkeys ?? Array.Empty<Hotkey>());
                                     var temp = new Hotkey[saved.Length];
                                     for (var i = 0; i < saved.Length; i++)
                                     {
@@ -121,7 +121,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                                         }
                                     }
 
-                                    SettingsProvider.Instance!.Hotkeys = temp;
+                                    Settings.Instance!.Hotkeys = temp;
                                     ReloadList();
                                     HotkeyReceiverImpl.Instance.Update();
                                 }
@@ -131,11 +131,11 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                             Loc.Resolve("hotkey_delete"),
                             (_, args) =>
                             {
-                                var saved = (SettingsProvider.Instance?.Hotkeys ?? Array.Empty<Hotkey>());
+                                var saved = (Settings.Instance?.Hotkeys ?? Array.Empty<Hotkey>());
                                 if (saved.Length <= 1)
                                 {
                                     Log.Debug("HotkeyPage.Delete: Removed hotkey '{Key}'", saved[0]);
-                                    SettingsProvider.Instance!.Hotkeys = Array.Empty<Hotkey>();
+                                    Settings.Instance!.Hotkeys = Array.Empty<Hotkey>();
                                     ReloadList();
                                     HotkeyReceiverImpl.Instance.Update();
                                     return;
@@ -155,7 +155,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                                     }
                                 }
 
-                                SettingsProvider.Instance!.Hotkeys = temp.Where(x => x != null).Cast<Hotkey>().ToArray();
+                                Settings.Instance!.Hotkeys = temp.Where(x => x != null).Cast<Hotkey>().ToArray();
                                 ReloadList();
                                 HotkeyReceiverImpl.Instance.Update();
                             }
