@@ -21,8 +21,9 @@ public class SettingsGroup : ItemsControl
     private void ItemsCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
     {
         IsVisible = ItemCount > 0;
+        Classes.Set("SingleItem", ItemCount == 1);
     }
-
+/*
     protected override bool NeedsContainerOverride(object? item, int index, out object? recycleKey)
     {
         var isItem = item is SettingsExpanderItem;
@@ -55,5 +56,5 @@ public class SettingsGroup : ItemsControl
         // initialized, to be sure the DataContext is set in CreateContainer
         if ((bool?)typeof(SettingsExpanderItem).GetProperty("IsContainerFromTemplate")?.GetValue(sei) == false)
             base.PrepareContainerForItemOverride(container, item, index);
-    }
+    }*/
 }
