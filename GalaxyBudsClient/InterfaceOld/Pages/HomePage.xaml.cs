@@ -15,8 +15,8 @@ using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
-using SettingsProvider = GalaxyBudsClient.Utils.SettingsProvider;
 using ToggleSwitch = GalaxyBudsClient.InterfaceOld.Elements.ToggleSwitch;
 
 namespace GalaxyBudsClient.InterfaceOld.Pages
@@ -296,7 +296,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
         private void UpdateTemperature(double left, double right)
         {
             String tempLeft, tempRight;
-            if (SettingsProvider.Instance.TemperatureUnit == TemperatureUnits.Fahrenheit)
+            if (Settings.Instance.TemperatureUnit == TemperatureUnits.Fahrenheit)
             {
                  tempLeft = $"{((9.0 / 5.0) * left) + 32:N1} °F";
                  tempRight = $"{((9.0 / 5.0) * right) + 32:N1} °F";
@@ -461,8 +461,8 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                 return;
             }
             
-            SettingsProvider.Instance.TemperatureUnit =
-                SettingsProvider.Instance.TemperatureUnit == TemperatureUnits.Celsius
+            Settings.Instance.TemperatureUnit =
+                Settings.Instance.TemperatureUnit == TemperatureUnits.Celsius
                     ? TemperatureUnits.Fahrenheit
                     : TemperatureUnits.Celsius;
             

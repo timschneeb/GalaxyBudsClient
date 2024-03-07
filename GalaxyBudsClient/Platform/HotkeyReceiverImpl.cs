@@ -56,7 +56,7 @@ namespace GalaxyBudsClient.Platform
         {
             HotkeyRegisterException? targetResult = null;
             await UnregisterAll();
-            foreach (var hotkey in SettingsProvider.Instance.Hotkeys)
+            foreach (var hotkey in Settings.Instance.Hotkeys)
             {
                 var error = await RegisterAsync(hotkey, true);
                 if (target == hotkey)
@@ -84,7 +84,7 @@ namespace GalaxyBudsClient.Platform
         public async void Update(bool silent = false)
         {
             await UnregisterAll();
-            foreach (var hotkey in SettingsProvider.Instance?.Hotkeys ?? Array.Empty<Hotkey>())
+            foreach (var hotkey in Settings.Instance?.Hotkeys ?? Array.Empty<Hotkey>())
             {
                 await RegisterAsync(hotkey, silent);
             }

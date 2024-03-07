@@ -142,13 +142,13 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                 
                 if (CurrentSide == Devices.L)
                 {
-                    SettingsProvider.Instance.CustomActionLeft.Action = _currentAction.Action;
-                    SettingsProvider.Instance.CustomActionLeft.Parameter = _currentAction.Parameter;
+                    Settings.Instance.CustomActionLeft.Action = _currentAction.Action;
+                    Settings.Instance.CustomActionLeft.Parameter = _currentAction.Parameter;
                 }
                 else
                 {
-                    SettingsProvider.Instance.CustomActionRight.Action = _currentAction.Action;
-                    SettingsProvider.Instance.CustomActionRight.Parameter = _currentAction.Parameter;
+                    Settings.Instance.CustomActionRight.Action = _currentAction.Action;
+                    Settings.Instance.CustomActionRight.Parameter = _currentAction.Parameter;
                 }
             }
 

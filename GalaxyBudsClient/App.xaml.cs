@@ -43,7 +43,7 @@ namespace GalaxyBudsClient
             
             if (Loc.IsTranslatorModeEnabled())
             {
-                SettingsProvider.Instance.Locale = Locales.custom;
+                Settings.Instance.Locale = Locales.custom;
             }
             
             Dispatcher.UIThread.Post(() =>
@@ -72,7 +72,7 @@ namespace GalaxyBudsClient
                 desktop.MainWindow = MainWindow2.Instance;
                 desktop.Exit += (_, _) =>
                 {
-                    SettingsProvider.Instance.FirstLaunch = false;
+                    Settings.Instance.FirstLaunch = false;
                 };
             }
             

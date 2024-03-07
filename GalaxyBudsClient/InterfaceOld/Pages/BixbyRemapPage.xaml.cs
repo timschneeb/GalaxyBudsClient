@@ -64,7 +64,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 					}
 					
 					_bixbyAction.Description = id.GetDescription();
-					SettingsProvider.Instance.BixbyRemapEvent = id;
+					Settings.Instance.BixbyRemapEvent = id;
 				});
 			}
 			_bixbyAction.Items = items_act;
@@ -90,7 +90,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 			{
 				OnExtendedStatusUpdate(null, DeviceMessageCache.Instance.ExtendedStatusUpdate);
 			}
-			_bixbyAction.Description = SettingsProvider.Instance.BixbyRemapEvent.GetDescription();
+			_bixbyAction.Description = Settings.Instance.BixbyRemapEvent.GetDescription();
 		}
 		
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)

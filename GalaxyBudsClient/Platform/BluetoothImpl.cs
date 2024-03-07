@@ -55,7 +55,7 @@ namespace GalaxyBudsClient.Platform
         public event EventHandler<BluetoothException>? BluetoothError;
 
         public bool SuppressDisconnectionEvents { set; get; } = false;
-        public Models ActiveModel => SettingsProvider.Instance.RegisteredDevice.Model;
+        public Models ActiveModel => Settings.Instance.RegisteredDevice.Model;
         public IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(ActiveModel) ?? new StubDeviceSpec();
         public string DeviceName { set; get; } = "Galaxy Buds";
         public bool IsConnected => _backend.IsStreamConnected;
@@ -194,7 +194,7 @@ namespace GalaxyBudsClient.Platform
             try
             {
                 var devices = await _backend.GetDevicesAsync();
-                var device = devices.FirstOrDefault(d => d.Address == SettingsProvider.Instance.RegisteredDevice.MacAddress);
+                var device = devices.FirstOrDefault(d => d.Address == Settings.Instance.RegisteredDevice.MacAddress);
                 return device?.Name ?? fallbackName;
             }
             catch (BluetoothException ex)
@@ -214,7 +214,7 @@ namespace GalaxyBudsClient.Platform
                     try
                     {
                         DeviceName = await GetDeviceNameAsync();
-                        await _backend.ConnectAsync(SettingsProvider.Instance.RegisteredDevice.MacAddress,
+                        await _backend.ConnectAsync(Settings.Instance.RegisteredDevice.MacAddress,
                             ServiceUuid.ToString()!, noRetry);
                         return true;
                     }
@@ -234,8 +234,8 @@ namespace GalaxyBudsClient.Platform
             {
                 if (IsDeviceValid((Models) model, macAddress))
                 {
-                    SettingsProvider.Instance.RegisteredDevice.Model = (Models) model;
-                    SettingsProvider.Instance.RegisteredDevice.MacAddress = macAddress;
+                    Settings.Instance.RegisteredDevice.Model = (Models) model;
+                    Settings.Instance.RegisteredDevice.MacAddress = macAddress;
 
                     /* Load from configuration this time */
                     return await ConnectAsync();
@@ -316,16 +316,16 @@ namespace GalaxyBudsClient.Platform
         
         public void UnregisterDevice()
         {
-            SettingsProvider.Instance.RegisteredDevice.Model = Models.NULL;
-            SettingsProvider.Instance.RegisteredDevice.MacAddress = string.Empty;
+            Settings.Instance.RegisteredDevice.Model = Models.NULL;
+            Settings.Instance.RegisteredDevice.MacAddress = string.Empty;
             DeviceMessageCache.Instance.Clear();
             // don't wait for this to complete as it may confuse users if the menu option waits until connect timed out
             _ = DisconnectAsync();
         }
         
         public bool RegisteredDeviceValid =>
-            IsDeviceValid(SettingsProvider.Instance.RegisteredDevice.Model,
-                SettingsProvider.Instance.RegisteredDevice.MacAddress);
+            IsDeviceValid(Settings.Instance.RegisteredDevice.Model,
+                Settings.Instance.RegisteredDevice.MacAddress);
 
         private static bool IsDeviceValid(Models model, string macAddress)
         {

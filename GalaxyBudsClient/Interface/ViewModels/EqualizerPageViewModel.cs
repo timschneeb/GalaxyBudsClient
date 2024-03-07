@@ -5,7 +5,6 @@ using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace GalaxyBudsClient.Interface.ViewModels;
 

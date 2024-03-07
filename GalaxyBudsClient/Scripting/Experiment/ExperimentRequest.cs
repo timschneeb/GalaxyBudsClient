@@ -120,7 +120,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
         
         public static bool IsNotDone(ExperimentRequest item)
         {
-            return !(SettingsProvider.Instance.Experiments.FinishedIds?.ToList()?.Contains(item.Id) ?? false);
+            return !(Settings.Instance.Experiments.FinishedIds?.ToList()?.Contains(item.Id) ?? false);
         }
     }
 }

@@ -134,7 +134,7 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
 
             /* Header */
             var grid = this.GetControl<Grid>("Grid");
-            if (SettingsProvider.Instance.Popup.Compact)
+            if (Settings.Instance.Popup.Compact)
             {
                 MaxHeight = 205 - 35;
                 Height = 205 - 35;
@@ -152,7 +152,7 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
             const int padding = 20;
             
             var scaling = PlatformImpl?.GetPropertyValue<double>("DesktopScaling") ?? 1.0;
-            Position = SettingsProvider.Instance.Popup.Placement switch
+            Position = Settings.Instance.Popup.Placement switch
             {
                 PopupPlacement.TopLeft => new PixelPoint(workArea.X + padding, workArea.Y + padding),
                 PopupPlacement.TopCenter => new PixelPoint(

@@ -74,7 +74,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             RefreshList();
             this.GetControl<Separator>("UseWinRTSep").IsVisible = PlatformUtils.IsWindowsContractsSdkSupported;
             this.GetControl<SwitchDetailListItem>("UseWinRT").IsVisible = PlatformUtils.IsWindowsContractsSdkSupported;
-            this.GetControl<SwitchDetailListItem>("UseWinRT").IsChecked = SettingsProvider.Instance.UseBluetoothWinRT;
+            this.GetControl<SwitchDetailListItem>("UseWinRT").IsChecked = Settings.Instance.UseBluetoothWinRT;
         }
 
         private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
@@ -138,8 +138,8 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
         private async void RegisterDevice(Models model, string mac)
         {
-            SettingsProvider.Instance.RegisteredDevice.Model = model;
-            SettingsProvider.Instance.RegisteredDevice.MacAddress = mac;
+            Settings.Instance.RegisteredDevice.Model = model;
+            Settings.Instance.RegisteredDevice.MacAddress = mac;
 
             MainWindow.Instance.Pager.SwitchPage(Pages.Home);
 
@@ -236,7 +236,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
         private void UseWinRT_OnToggled(object? sender, bool e)
         {
-            SettingsProvider.Instance.UseBluetoothWinRT = e;
+            Settings.Instance.UseBluetoothWinRT = e;
             BluetoothImpl.Reallocate();
             RefreshList(user: true);
         }

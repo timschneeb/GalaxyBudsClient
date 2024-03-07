@@ -38,7 +38,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 			_passthrough.IsChecked = e.RelieveAmbient;
 
 			_seamlessConnection.IsChecked = e.SeamlessConnectionEnabled;
-			_resumeSensor.IsChecked = SettingsProvider.Instance.ResumePlaybackOnSensor;
+			_resumeSensor.IsChecked = Settings.Instance.ResumePlaybackOnSensor;
 		}
 
 		public override void OnPageShown()
@@ -77,7 +77,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
 		private void ResumeSensor_OnToggled(object? sender, bool e)
 		{
-			SettingsProvider.Instance.ResumePlaybackOnSensor = e;
+			Settings.Instance.ResumePlaybackOnSensor = e;
 		}
 
 		private async void Sidetone_OnToggled(object? sender, bool e)

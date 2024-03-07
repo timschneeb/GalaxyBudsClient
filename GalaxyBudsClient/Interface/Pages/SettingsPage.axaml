@@ -60,20 +60,20 @@
                                                Description="{DynamicResource settings_darkmode_description}"
                                                IconSource="DarkTheme"
                                                ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:DarkModes}}}"
-                                               SelectedValue="{Binding DarkMode, Source={x:Static utils:SettingsProvider.Instance}}" />
+                                               SelectedValue="{Binding DarkMode, Source={x:Static utils:Settings.Instance}}" />
 
                 <controls:SettingsColorItem Name="AppAccent"
                                                Content="{DynamicResource settings_accent}"
                                                Description="{DynamicResource settings_accent_description}"
                                                Symbol="Color"
-                                               Color="{Binding AccentColor, Source={x:Static utils:SettingsProvider.Instance}}" />
+                                               Color="{Binding AccentColor, Source={x:Static utils:Settings.Instance}}" />
                 
                 <controls:SettingsComboBoxItem Name="AppLanguage"
                                                Content="{DynamicResource settings_localization_disable}"
                                                Description="{DynamicResource settings_localization_description}"
                                                Symbol="LocalLanguage"
                                                ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:Locales}}}"
-                                               SelectedValue="{Binding Locale, Source={x:Static utils:SettingsProvider.Instance}}" />
+                                               SelectedValue="{Binding Locale, Source={x:Static utils:Settings.Instance}}" />
             </ui:SettingsExpander>
 
             <ui:SettingsExpander Header="{DynamicResource settings_tray_settings}"
@@ -88,21 +88,21 @@
                     Content="{DynamicResource settings_minimize_tray}"
                     Description="{DynamicResource settings_minimize_tray_description}"
                     Symbol="ArrowMinimize"
-                    IsChecked="{Binding MinimizeToTray, Source={x:Static utils:SettingsProvider.Instance}}" />
+                    IsChecked="{Binding MinimizeToTray, Source={x:Static utils:Settings.Instance}}" />
 
                 <controls:SettingsComboBoxItem
                     Name="DynamicTrayIcon"
                     Content="{DynamicResource settings_dyn_tray_mode}"
                     Description="{DynamicResource settings_dyn_tray_mode_description}"
-                    IsEnabled="{Binding MinimizeToTray, Source={x:Static utils:SettingsProvider.Instance}}"
+                    IsEnabled="{Binding MinimizeToTray, Source={x:Static utils:Settings.Instance}}"
                     ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:DynamicTrayIconModes}}}"
-                    SelectedValue="{Binding DynamicTrayIconMode, Source={x:Static utils:SettingsProvider.Instance}}" />
+                    SelectedValue="{Binding DynamicTrayIconMode, Source={x:Static utils:Settings.Instance}}" />
 
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource settings_autostart}"
                     Description="{DynamicResource settings_autostart_description}"
                     Symbol="KeyboardShiftUppercase"
-                    IsEnabled="{Binding MinimizeToTray, Source={x:Static utils:SettingsProvider.Instance}}"
+                    IsEnabled="{Binding MinimizeToTray, Source={x:Static utils:Settings.Instance}}"
                     IsChecked="{Binding IsAutoStartEnabled}"
                     IsVisible="{x:Static platform:PlatformUtils.SupportsAutoboot}" />
 
@@ -117,20 +117,20 @@
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource settings_cpopup_enable}"
                     Description="{DynamicResource settings_cpopup_enable_description}"
-                    IsChecked="{Binding Popup.Enabled, Source={x:Static utils:SettingsProvider.Instance}}" />
+                    IsChecked="{Binding Popup.Enabled, Source={x:Static utils:Settings.Instance}}" />
 
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource settings_cpopup_compact}"
                     Description="{DynamicResource settings_cpopup_compact_description}"
                     Symbol="ArrowMinimizeVertical"
-                    IsChecked="{Binding Popup.Compact, Source={x:Static utils:SettingsProvider.Instance}}" />
+                    IsChecked="{Binding Popup.Compact, Source={x:Static utils:Settings.Instance}}" />
 
                 <controls:SettingsComboBoxItem Name="PopupPosition"
                                                Content="{DynamicResource settings_cpopup_position}"
                                                Description="{DynamicResource settings_cpopup_position_description}"
                                                Symbol="LayoutCellFourFocusBottomLeft"
                                                ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:PopupPlacement}}}"
-                                               SelectedValue="{Binding Popup.Placement, Source={x:Static utils:SettingsProvider.Instance}}" />
+                                               SelectedValue="{Binding Popup.Placement, Source={x:Static utils:Settings.Instance}}" />
 
                 <controls:SettingsSymbolItem Content="{DynamicResource settings_cpopup_demo}"
                                              IsClickEnabled="True"
@@ -153,12 +153,12 @@
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource settings_crowd_allow}"
                     Description="{DynamicResource settings_crowd_allow_description}"
-                    IsChecked="{Binding !Experiments.Disabled, Source={x:Static utils:SettingsProvider.Instance}}" />
+                    IsChecked="{Binding !Experiments.Disabled, Source={x:Static utils:Settings.Instance}}" />
 
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource settings_crowd_crashreport}"
                     Description="{DynamicResource settings_crowd_crashreport_description}"
-                    IsChecked="{Binding !DisableCrashReporting, Source={x:Static utils:SettingsProvider.Instance}}" />
+                    IsChecked="{Binding !DisableCrashReporting, Source={x:Static utils:Settings.Instance}}" />
 
             </ui:SettingsExpander>
 

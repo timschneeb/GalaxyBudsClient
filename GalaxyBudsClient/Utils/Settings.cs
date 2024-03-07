@@ -10,12 +10,12 @@ using Serilog;
 
 namespace GalaxyBudsClient.Utils
 {
-    public static class SettingsProvider
+    public static class Settings
     {
         public static ISettings Instance { get; }
         private static string SettingsPath => PlatformUtils.CombineDataPath("config.json");
 
-        static SettingsProvider()
+        static Settings()
         {
             Log.Information("Using settings file at: {SettingsPath}", SettingsPath);
             Instance = new ConfigurationBuilder<ISettings>()

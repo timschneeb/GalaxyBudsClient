@@ -107,7 +107,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 		{
 			_appcastItem = item;
 
-			if (silent && SettingsProvider.Instance.UpdateSkippedVersion == item.Version)
+			if (silent && Settings.Instance.UpdateSkippedVersion == item.Version)
 			{
 				Log.Information("UpdateManager: Ignoring new update {Version}; skipped by user", item.Version);
 				return;
@@ -126,7 +126,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
 		private void Skip_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
-			SettingsProvider.Instance.UpdateSkippedVersion = _appcastItem?.Version ?? string.Empty;
+			Settings.Instance.UpdateSkippedVersion = _appcastItem?.Version ?? string.Empty;
 			MainWindow.Instance.Pager.SwitchPage(_previousPage);
 		}
 
