@@ -79,7 +79,7 @@ public static class DialogHelper
             Text = "Bluetooth packet inspector",
             IconSource = new SymbolIconSource { Symbol = Symbol.BluetoothSearching },
             Description = "Inspect and send custom messages via Bluetooth",
-            Command = new MiniCommand((_) => { DialogLauncher.ShowDevTools(root as Window); })
+            Command = new MiniCommand((_) => { WindowLauncher.ShowDevTools(root as Window); })
         }; 
         
         var translatorMode = new TaskDialogCommand
@@ -87,7 +87,7 @@ public static class DialogHelper
             Text = "Translation utilities",
             IconSource = new SymbolIconSource { Symbol = Symbol.Translate },
             Description = "Hot-reload XAML dictionaries. Please refer to the wiki on GitHub for instructions.",
-            Command = new MiniCommand((_) => { DialogLauncher.ShowTranslatorTools(root as Window); })
+            Command = new MiniCommand((_) => { WindowLauncher.ShowTranslatorTools(root as Window); })
         };
 
         var td = new TaskDialog

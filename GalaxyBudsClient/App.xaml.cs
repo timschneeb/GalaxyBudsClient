@@ -78,7 +78,7 @@ namespace GalaxyBudsClient
             
             if (Loc.IsTranslatorModeEnabled())
             {
-                DialogLauncher.ShowTranslatorTools();
+                WindowLauncher.ShowTranslatorTools();
             }
             
             base.OnFrameworkInitializationCompleted();
