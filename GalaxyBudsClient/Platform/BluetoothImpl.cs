@@ -72,7 +72,7 @@ namespace GalaxyBudsClient.Platform
             try
             {
 #if Windows
-                if (PlatformUtils.IsWindows && SettingsProvider.Instance.UseBluetoothWinRT
+                if (PlatformUtils.IsWindows && Settings.Instance.UseBluetoothWinRT
                                             && PlatformUtils.IsWindowsContractsSdkSupported)
                 {
                     Log.Debug("BluetoothImpl: Using WinRT.BluetoothService");
