@@ -21,6 +21,11 @@
     <!-- For SettingsGroups we have to set the CornerRadius for the top edges of the first child to match the top of the group -->
     <Style Selector="controls|SettingsGroup > ui|SettingsExpanderItem:nth-child(1) /template/ ui|FABorder#Root">
         <Setter Property="CornerRadius" Value="{Binding Source={StaticResource ControlCornerRadius}, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
+    </Style>  
+    
+    <!-- For SettingsGroups with only one item -->
+    <Style Selector="controls|SettingsGroup.SingleItem > ui|SettingsExpanderItem:nth-child(1) /template/ ui|FABorder#Root">
+        <Setter Property="CornerRadius" Value="{Binding Source={StaticResource ControlCornerRadius}}" />
     </Style>
     
     <!-- NavView style in MainView for main app navigation -->
