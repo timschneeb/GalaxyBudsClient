@@ -33,14 +33,8 @@ public static class DialogHelper
             Content = "It looks like your platform doesn't support Process.Start " +
                       "and we are unable to open a link.",
             SubHeader = "Oh No!",
-            Commands =
-            {
-                copyLinkButton
-            },
-            Buttons =
-            {
-                TaskDialogButton.OKButton
-            },
+            Commands = { copyLinkButton },
+            Buttons = { TaskDialogButton.OKButton },
             IconSource = new SymbolIconSource { Symbol = Symbol.Important }
         };
 
