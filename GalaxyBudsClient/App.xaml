@@ -1,5 +1,6 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:styling="clr-namespace:FluentAvalonia.Styling;assembly=FluentAvalonia"
              x:Class="GalaxyBudsClient.App">
     <Application.Name>Galaxy Buds Manager</Application.Name>
     <NativeMenu.Menu>
@@ -15,21 +16,21 @@
                 <!-- User language -->
                 <ResourceInclude Source="/i18n/en.xaml" />
                 <!-- Palettes -->
-                <ResourceInclude Source="/Interface/Styles/Base.xaml" />
-                <ResourceInclude Source="/Interface/Styles/Brushes.xaml" />
+                <!-- TODO -->
+                <ResourceInclude Source="/InterfaceOld/Styles/Base.xaml" />
+                <ResourceInclude Source="/InterfaceOld/Styles/Brushes.xaml" />
+                <ResourceInclude Source="/Interface/Styling/Resources.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
     <Application.Styles>
-        <StyleInclude Source="/Interface/Styles/Slider.xaml"/>
-        <FluentTheme>
-            <FluentTheme.Palettes>
-                <ColorPaletteResources x:Key="Light" Accent="Orange" AltHigh="White" AltLow="White" AltMedium="White" AltMediumHigh="White" AltMediumLow="White" BaseHigh="Black" BaseLow="#ffcccccc" BaseMedium="#ff898989" BaseMediumHigh="#ff5d5d5d" BaseMediumLow="#ff737373" ChromeAltLow="#ff5d5d5d" ChromeBlackHigh="Black" ChromeBlackLow="#ffcccccc" ChromeBlackMedium="#ff5d5d5d" ChromeBlackMediumLow="#ff898989" ChromeDisabledHigh="#ffcccccc" ChromeDisabledLow="#ff898989" ChromeGray="#ff737373" ChromeHigh="#ffcccccc" ChromeLow="#ffececec" ChromeMedium="#ffe6e6e6" ChromeMediumLow="#ffececec" ChromeWhite="White" ListLow="#ffe6e6e6" ListMedium="#ffcccccc" RegionColor="White" />
-                <ColorPaletteResources x:Key="Dark" Accent="#ffdc8e00" AltHigh="Black" AltLow="Black" AltMedium="Black" AltMediumHigh="Black" AltMediumLow="Black" BaseHigh="White" BaseLow="#ff333333" BaseMedium="#ff9a9a9a" BaseMediumHigh="#ffb4b4b4" BaseMediumLow="#ff676767" ChromeAltLow="#ffb4b4b4" ChromeBlackHigh="Black" ChromeBlackLow="#ffb4b4b4" ChromeBlackMedium="Black" ChromeBlackMediumLow="Black" ChromeDisabledHigh="#ff333333" ChromeDisabledLow="#ff9a9a9a" ChromeGray="Gray" ChromeHigh="Gray" ChromeLow="#ff151515" ChromeMedium="#ff1d1d1d" ChromeMediumLow="#ff2c2c2c" ChromeWhite="White" ListLow="#ff1d1d1d" ListMedium="#ff333333" RegionColor="Black" />
-            </FluentTheme.Palettes>
-        </FluentTheme>
-        <StyleInclude Source="/Interface/Styles/Styles.xaml"/>
-        <StyleInclude Source="/Interface/Styles/ListBox.xaml"/>
+        <FluentTheme/>
+        <styling:FluentAvaloniaTheme PreferSystemTheme="True" CustomAccentColor="Orange" />
+        <StyleInclude Source="avares://FluentAvalonia.BreadcrumbBar/Styling/Styles.axaml" />
+        <!-- TODO <StyleInclude Source="/InterfaceOld/Styles/Slider.xaml"/>
+        <StyleInclude Source="/InterfaceOld/Styles/ListBox.xaml"/>-->
+        <StyleInclude Source="/InterfaceOld/Styles/Styles.xaml"/>
+        <StyleInclude Source="/Interface/Styling/AppStyles.axaml" />
     </Application.Styles>
     <TrayIcon.Icons>
         <TrayIcons>

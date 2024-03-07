@@ -1,0 +1,76 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="using:FluentAvalonia.UI.Controls"             
+             xmlns:vm="using:GalaxyBudsClient.Interface.ViewModels"
+             xmlns:interface="clr-namespace:GalaxyBudsClient.Interface"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
+             x:Class="GalaxyBudsClient.Interface.MainView"
+             x:DataType="vm:MainViewViewModel"
+             x:CompileBindings="True">
+   
+
+    <Grid RowDefinitions="Auto,*">
+        <Grid Name="TitleBarHost"
+              ColumnDefinitions="Auto,Auto,*,Auto" 
+              Background="Transparent">
+            <Image Margin="12 4"
+                   IsHitTestVisible="False"
+                   Source="/Resources/icon_white.ico"
+                   Width="18" Height="18"
+                   DockPanel.Dock="Left"
+                   Name="WindowIcon"
+                   RenderOptions.BitmapInterpolationMode="HighQuality">
+                <Image.IsVisible>
+                    <!-- TODO: check if this should be shown on Windows -->
+                    <OnPlatform Default="False">
+                        <On Options="Windows" Content="True" />
+                    </OnPlatform>
+                </Image.IsVisible>
+            </Image>
+
+            <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                       FontSize="12"
+                       IsHitTestVisible="False"
+                       VerticalAlignment="Center"
+                       Grid.Column="1">
+                <TextBlock.IsVisible>
+                    <OnPlatform Default="False">
+                        <On Options="Windows" Content="True" />
+                    </OnPlatform>
+                </TextBlock.IsVisible>
+            </TextBlock>
+        </Grid>
+
+        <ui:NavigationView Grid.Row="0" AlwaysShowHeader="False"
+                           PaneDisplayMode="Left"
+                           Grid.RowSpan="2"
+                           Name="NavView"
+                           IsSettingsVisible="False"
+                           IsBackEnabled="{Binding #FrameView.CanGoBack}">
+            <Grid RowDefinitions="Auto,Auto,*">
+                <ui:InfoBar Title="Disconnected"
+                            IsOpen="True" 
+                            IsClosable="False"
+                            IsVisible="True"
+                            Severity="Warning" 
+                            Message="Connection lost"
+                            Margin="20,16,20,0">
+                    <ui:InfoBar.ActionButton>
+                        <Button Content="Reconnect"
+                                HorizontalAlignment="Right" />
+                    </ui:InfoBar.ActionButton>
+                </ui:InfoBar>
+                <ui:BreadcrumbBar Grid.Row="1"  Margin="20,16" >
+                    <ui:BreadcrumbBarItem Content="System" />
+                    <ui:BreadcrumbBarItem Content="Firmware update" />
+                </ui:BreadcrumbBar>
+                <ui:Frame Grid.Row="2" Name="FrameView" />
+            </Grid>
+        </ui:NavigationView>
+
+    </Grid>
+    
+</UserControl>

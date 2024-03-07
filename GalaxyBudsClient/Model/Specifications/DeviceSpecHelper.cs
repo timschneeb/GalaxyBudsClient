@@ -6,7 +6,7 @@ namespace GalaxyBudsClient.Model.Specifications
 {
     public static class DeviceSpecHelper
     {
-        private static readonly List<IDeviceSpec> Specs = new List<IDeviceSpec>();
+        private static readonly List<IDeviceSpec> Specs = [];
         
         static DeviceSpecHelper()
         {

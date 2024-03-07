@@ -13,10 +13,11 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Interface;
-using GalaxyBudsClient.Interface.Developer;
-using GalaxyBudsClient.Interface.Dialogs;
-using GalaxyBudsClient.Interface.Pages;
-using GalaxyBudsClient.Interface.Transition;
+using GalaxyBudsClient.InterfaceOld;
+using GalaxyBudsClient.InterfaceOld.Developer;
+using GalaxyBudsClient.InterfaceOld.Dialogs;
+using GalaxyBudsClient.InterfaceOld.Pages;
+using GalaxyBudsClient.InterfaceOld.Transition;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model;
@@ -30,7 +31,8 @@ using NetSparkleUpdater.Enums;
 using Serilog;
 using Application = Avalonia.Application;
 using Environment = System.Environment;
-using MessageBox = GalaxyBudsClient.Interface.Dialogs.MessageBox;
+using EqualizerPage = GalaxyBudsClient.InterfaceOld.Pages.EqualizerPage;
+using MessageBox = GalaxyBudsClient.InterfaceOld.Dialogs.MessageBox;
 using RoutedEventArgs = Avalonia.Interactivity.RoutedEventArgs;
 using Window = Avalonia.Controls.Window;
 
@@ -46,8 +48,6 @@ namespace GalaxyBudsClient
         public readonly UpdateProgressPage UpdateProgressPage = new UpdateProgressPage();
         public readonly DeviceSelectionPage DeviceSelectionPage = new DeviceSelectionPage();
         
-        private DevOptions? _devOptions;
-
         private readonly CustomTitleBar _titleBar;
         private BudsPopup? _popup;
         private bool _popupShown = false;
@@ -67,7 +67,14 @@ namespace GalaxyBudsClient
         public PageContainer Pager { get; }
         
         private static MainWindow? _instance;
-        public static MainWindow Instance => _instance ??= new MainWindow();
+        public static MainWindow Instance
+        {
+            get
+            {
+                Log.Warning("LegacyMainWindow: Instance requested from {Ctx}", new StackTrace().GetFrame(1)?.ToString());
+                return _instance ??= new MainWindow();
+            }
+        }
 
         public static bool IsReady()
         {
@@ -100,11 +107,11 @@ namespace GalaxyBudsClient
             // Defer the rest of the page registration
             Dispatcher.UIThread.Post(() => Pager.RegisterPages(new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(),
                 new CreditsPage(), new TouchpadPage(), new EqualizerPage(), new AdvancedPage(), new NoiseProPage(),
-                new SystemPage(), new SelfTestPage(), new SettingsPage(), new PopupSettingsPage(),
+                new SystemPage(), new SelfTestPage(), 
                 CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(), UnsupportedFeaturePage,
                 UpdatePage, UpdateProgressPage, new SystemCoredumpPage(), new HotkeyPage(), new FirmwareSelectionPage(),
-                new FirmwareTransferPage(), new SpatialTestPage(), new BixbyRemapPage(), new TraySettingsPage(),
-                new CrowdsourcingSettingsPage(), new BudsAppDetectedPage(), new TouchpadGesturePage(), 
+                new FirmwareTransferPage(), /*new SpatialTestPage(),*/ new BixbyRemapPage(),
+                new BudsAppDetectedPage(), new TouchpadGesturePage(), 
                 new NoiseProAmbientPage(), new GearFitPage()), DispatcherPriority.ApplicationIdle);
             
             _titleBar = this.GetControl<CustomTitleBar>("TitleBar");
@@ -559,19 +566,6 @@ namespace GalaxyBudsClient
         #endregion
 
         #region Pages utils
-        public void ShowDevTools()
-        {
-            _devOptions ??= new DevOptions();
-            try
-            {
-                _devOptions.Show(this);
-            }
-            catch (InvalidOperationException)
-            {
-                _devOptions = new DevOptions();
-                _devOptions.Show(this);
-            }
-        }
 
         public void ShowUnsupportedFeaturePage(string assertion)
         {
@@ -588,7 +582,6 @@ namespace GalaxyBudsClient
 
         public void ShowPopup(bool ignoreRestrictions = false)
         {
-            Log.Debug("MainWindow.ShowPopup: {PopupState}; Ignore conditional check: {IgnoreRestrictions}", (_popupShown ? "Popup already shown" : "Popup not yet shown"), ignoreRestrictions);
             if (_popupShown && !ignoreRestrictions)
                 return;
             

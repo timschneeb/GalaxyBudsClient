@@ -8,8 +8,7 @@ namespace GalaxyBudsClient.Model.Specifications
 {
     public class BudsFeDeviceSpec : IDeviceSpec
     {
-        public Dictionary<IDeviceSpec.Feature, FeatureRule?> Rules =>
-            new Dictionary<IDeviceSpec.Feature, FeatureRule?>()
+        public Dictionary<IDeviceSpec.Feature, FeatureRule?> Rules => new()
             {
                 { IDeviceSpec.Feature.SeamlessConnection, null },
                 { IDeviceSpec.Feature.StereoPan, null },
@@ -30,15 +29,15 @@ namespace GalaxyBudsClient.Model.Specifications
         
         public Models Device => Models.BudsFe;
         public string DeviceBaseName => "Buds FE";
-        public ITouchOption TouchMap => new BudsFeTouchOption();
+        public ITouchOption TouchMap => new StandardTouchOption();
         public Guid ServiceUuid => Uuids.BudsFe;
 
         public IReadOnlyCollection<ItemType> TrayShortcuts => Array.AsReadOnly(
-            new[] {
+            [
                 ItemType.ToggleNoiseControl,
                 ItemType.ToggleEqualizer,
                 ItemType.LockTouchpad
-            }
+            ]
         );
         
         public string IconResourceKey => "Pro";

@@ -1,0 +1,49 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="using:FluentAvalonia.UI.Controls"
+                    xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls">
+    <Design.PreviewWith>
+        <Border Padding="20" Width="700" Height="150">
+            <controls:SettingsGroup>
+                <ui:SettingsExpanderItem Content="Item A" ActionIconSource="Pin" IsClickEnabled="True" />
+                <ui:SettingsExpanderItem Content="Item B">
+                    <ui:SettingsExpanderItem.Footer>
+                        <Button Content="FooterButton" />
+                    </ui:SettingsExpanderItem.Footer>
+                </ui:SettingsExpanderItem>
+            </controls:SettingsGroup>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Settings expander -->
+    <Thickness x:Key="SettingsExpanderPadding">16</Thickness>
+
+    <!-- Settings group -->
+    <ControlTheme x:Key="{x:Type controls:SettingsGroup}" TargetType="controls:SettingsGroup">
+        <Setter Property="Background" Value="{DynamicResource ExpanderBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ExpanderContentBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1,1,1,1" />
+        <Setter Property="Padding" Value="{DynamicResource SettingsExpanderPadding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <StackPanel Spacing="1" />
+            </ItemsPanelTemplate>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <StackPanel>
+                    <ui:FABorder Name="Border" BackgroundSizing="InnerBorderEdge"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            ClipToBounds="True">
+                        <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" />
+                    </ui:FABorder>
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+    
+</ResourceDictionary>

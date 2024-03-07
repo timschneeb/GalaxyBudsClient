@@ -1,17 +1,21 @@
+using System;
+using System.ComponentModel;
+using Avalonia.Media;
 using Config.Net;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Hotkeys;
+using Color = Avalonia.Media.Color;
 
 namespace GalaxyBudsClient.Model
 {
-    public interface ICustomAction
+    public interface ICustomAction : INotifyPropertyChanged
     {
         CustomAction.Actions Action { set; get; }
         [Option(DefaultValue = "")]
         string Parameter { set; get; }
     }
     
-    public interface IDevice
+    public interface IDevice : INotifyPropertyChanged
     {
         [Option(DefaultValue = Models.NULL)]
         Models Model { set; get; }
@@ -19,29 +23,30 @@ namespace GalaxyBudsClient.Model
         string MacAddress { set; get; }
     }
     
-    public interface IPopup
+    public interface IPopup : INotifyPropertyChanged
     {
         bool Enabled { set; get; }
         bool Compact { set; get; }
-        [Option(DefaultValue = "")]
-        string CustomTitle { set; get; }
-        
         [Option(DefaultValue = PopupPlacement.BottomRight)]
         PopupPlacement Placement  { set; get; }
-        
+        [Obsolete("Setting removed")]
         bool ShowWearableState { set; get; }
+        [Obsolete("Setting removed")]
+        [Option(DefaultValue = "")]
+        string CustomTitle { set; get; }
     }
     
-    public interface IExperiments
+    public interface IExperiments : INotifyPropertyChanged
     {
         bool Disabled { set; get; }
         long[] FinishedIds { set; get; }
     }
     
-    public interface ISettings
+    public interface ISettings : INotifyPropertyChanged
     {
         [Option(DefaultValue = DarkModes.Light)]
         DarkModes DarkMode { set; get; }
+        Color AccentColor { set; get; }
         [Option(DefaultValue = Locales.en)]
         
         Locales Locale { set; get; }

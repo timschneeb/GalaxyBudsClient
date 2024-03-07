@@ -322,7 +322,7 @@ Ha az átvitel elakad. vagy az eszköz idő előtt lekapcsolódott, újra kell i
     <sys:String x:Key="settings_header">Beállítások</sys:String>
 
     <sys:String x:Key="settings_darkmode">Sötét mód</sys:String>
-    <sys:String x:Key="settings_darkmode_description">Sötétebb színséma használata (Újraindítás szükséges)</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Sötétebb színséma használata</sys:String>
     <sys:String x:Key="settings_transitions">Átmenet</sys:String>
     <sys:String x:Key="settings_transitions_description">Diaátmenetek engedélyezése</sys:String>
     <sys:String x:Key="settings_localization_disable">Nyelv</sys:String>

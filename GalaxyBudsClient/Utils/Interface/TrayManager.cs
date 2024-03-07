@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Threading;
-using GalaxyBudsClient.Interface.Pages;
+using GalaxyBudsClient.InterfaceOld.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Specifications;
@@ -117,12 +117,12 @@ namespace GalaxyBudsClient.Utils.Interface
                     }
                     break;
                 case ItemType.Open:
-                    Dispatcher.UIThread.Post(MainWindow.Instance.BringToFront);
+                    Dispatcher.UIThread.Post(MainWindow2.Instance.BringToFront);
                     break;
                 case ItemType.Quit:
                     Log.Information("TrayManager: Exit requested by user");
-                    MainWindow.Instance.OverrideMinimizeTray = true;
-                    Dispatcher.UIThread.Post(MainWindow.Instance.Close);
+                    MainWindow2.Instance.OverrideMinimizeTray = true;
+                    Dispatcher.UIThread.Post(MainWindow2.Instance.Close);
                     break;
             }
             

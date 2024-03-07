@@ -39,7 +39,7 @@ namespace GalaxyBudsClient.InterfaceOld.Developer
 
             _ignoreConnLoss = this.GetControl<CheckBox>("IgnoreConnLoss");
             _dummyDevices = this.GetControl<CheckBox>("DummyDevices");
-            _pages = this.GetControl<ComboBox>("Pages");
+            //_pages = this.GetControl<ComboBox>("Pages");
             _locales = this.GetControl<ComboBox>("Locales");
             _xamlPath = this.GetControl<TextBox>("XamlPath");
 

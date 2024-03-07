@@ -28,7 +28,7 @@
         <Platforms>AnyCPU</Platforms>
         <DisableWinExeOutputInference>false</DisableWinExeOutputInference>
         <ApplicationManifest>app.manifest</ApplicationManifest>
-        <LangVersion>11</LangVersion>
+        <LangVersion>12</LangVersion>
         <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>
         
         <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
@@ -47,7 +47,7 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <DefineConstants>Linux</DefineConstants>
-        <InvariantGlobalization>true</InvariantGlobalization>
+        <!--<InvariantGlobalization>true</InvariantGlobalization>-->
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug (Local server)' ">
@@ -82,6 +82,18 @@
         <AvaloniaXaml Remove="bin\**" />
         <EmbeddedResource Remove="bin\**" />
         <None Remove="bin\**" />
+        <Compile Update="Interface\Pages\SettingsPage.axaml.cs">
+          <DependentUpon>SettingsPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="Interface\Pages\EqualizerPage.axaml.cs">
+          <DependentUpon>CoreControlsPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="Interface\Pages\HomePage.axaml.cs">
+          <DependentUpon>HomePage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
     <PropertyGroup>
@@ -102,6 +114,9 @@
         <PackageReference Include="CommandLineParser" Version="2.9.2-ci-210" />
         <PackageReference Include="Config.Net" Version="5.1.5" />
         <PackageReference Include="CS-Script.Core" Version="2.0.0" />
+        <PackageReference Include="FluentAvalonia.BreadcrumbBar" Version="2.0.2" />
+        <PackageReference Include="FluentAvaloniaUI" Version="2.0.5" />
+        <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="1.1.230" />
         <PackageReference Include="InputSimulatorCore" Version="1.0.5" />
         <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
         <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />

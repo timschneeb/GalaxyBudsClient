@@ -1,8 +1,11 @@
 using System;
 using System.IO;
+using System.Linq;
 using Avalonia;
 using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Styling;
+using FluentAvalonia.Styling;
+using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using Serilog;
 
@@ -10,7 +13,7 @@ namespace GalaxyBudsClient.Utils.Interface
 {
     public static class ThemeUtils
     {
-        public static event EventHandler<DarkModes>? ThemeReloaded; 
+        private static readonly FluentAvaloniaTheme FaTheme = (Application.Current?.Styles.Single(x => x is FluentAvaloniaTheme) as FluentAvaloniaTheme)!;
         
         public static void Reload()
         {
@@ -19,20 +22,38 @@ namespace GalaxyBudsClient.Utils.Interface
                 return;
             }
             
+            // TODO do not load light/dark resources this way. it does not regard the system theme settings 
             if (SettingsProvider.Instance.DarkMode == DarkModes.Light)
             {
-                MainWindow.Instance.RequestedThemeVariant = ThemeVariant.Light;
+                MainWindow2.Instance.RequestedThemeVariant = ThemeVariant.Light;
+                
                 SetBrushSource("Brushes");
+            }
+            else if (SettingsProvider.Instance.DarkMode == DarkModes.Dark)
+            {
+                MainWindow2.Instance.RequestedThemeVariant = ThemeVariant.Dark;
+                SetBrushSource("BrushesDark");
             }
             else
             {
-                MainWindow.Instance.RequestedThemeVariant = ThemeVariant.Dark;
-                SetBrushSource("BrushesDark");
+                MainWindow2.Instance.RequestedThemeVariant = null;
             }
-            
-            ThemeReloaded?.Invoke(nameof(ThemeUtils), SettingsProvider.Instance.DarkMode);
+
+            FaTheme.PreferSystemTheme = SettingsProvider.Instance.DarkMode == DarkModes.System;
+            ReloadAccentColor();
         }
 
+        public static void ReloadAccentColor()
+        {
+            var color = SettingsProvider.Instance.AccentColor;
+            if (color.A == 0)
+            {
+                color = SettingsProvider.Instance.AccentColor = AccentColorParser.DefaultColor;
+            }
+            FaTheme.CustomAccentColor = color;
+        }
+        
+        [Obsolete("TODO: get rid of custom brushes; except for some images maybe?")]
         private static void SetBrushSource(string name)
         {
             if (Application.Current == null)
@@ -52,7 +73,7 @@ namespace GalaxyBudsClient.Utils.Interface
                     Application.Current.Resources.MergedDictionaries[dictId] =
                         new ResourceInclude((Uri?)null)
                         {
-                            Source = new Uri($"{Program.AvaresUrl}/Interface/Styles/{name}.xaml")
+                            Source = new Uri($"{Program.AvaresUrl}/InterfaceOld/Styles/{name}.xaml")
                         };
                 }
             }

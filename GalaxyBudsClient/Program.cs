@@ -5,12 +5,10 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Media;
 using GalaxyBudsClient.Cli;
 using GalaxyBudsClient.Cli.Ipc;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
-using Sentry;
 using Serilog;
 
 namespace GalaxyBudsClient
@@ -18,7 +16,7 @@ namespace GalaxyBudsClient
     internal static class Program
     {
         public static long StartedAt = 0;
-        public static readonly string AvaresUrl = "avares://" + Assembly.GetEntryAssembly()?.GetName().Name;
+        public static readonly string AvaresUrl = "avares://" + typeof(Program).Assembly.GetName().Name;
         
         // Initialization code. Don't use any Avalonia, third-party APIs or any
         // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
@@ -76,8 +74,12 @@ namespace GalaxyBudsClient
             }
             catch (Exception ex)
             {
+#if DEBUG
+                throw;
+#else
                 SentrySdk.CaptureException(ex);
                 Log.Error(ex, "Unhandled exception in main thread");
+#endif
             }
         } 
 
@@ -89,12 +91,7 @@ namespace GalaxyBudsClient
                     // https://github.com/AvaloniaUI/Avalonia/issues/14577
                     DisableSetProcessName = true
                 })
-                .With(new FontManagerOptions()
-                {
-                    // https://github.com/AvaloniaUI/Avalonia/issues/4427#issuecomment-1295012860
-                    DefaultFamilyName = PlatformUtils.IsLinux ? 
-                        $"{AvaresUrl}/Resources/fonts#Noto Sans" : null
-                })
+                .WithInterFont()
                 .UsePlatformDetect()
                 .LogToTrace();
 

@@ -7,8 +7,7 @@ namespace GalaxyBudsClient.Model.Specifications
 {
     public class BudsDeviceSpec : IDeviceSpec
     {
-        public Dictionary<IDeviceSpec.Feature, FeatureRule?> Rules =>
-            new Dictionary<IDeviceSpec.Feature, FeatureRule?>()
+        public Dictionary<IDeviceSpec.Feature, FeatureRule?> Rules => new()
             {
                 { IDeviceSpec.Feature.SeamlessConnection, new FeatureRule(3, "R170XXU0ATF2") },
                 { IDeviceSpec.Feature.AmbientVoiceFocus, null },
@@ -25,11 +24,11 @@ namespace GalaxyBudsClient.Model.Specifications
         public Guid ServiceUuid => Uuids.Buds;
 
         public IReadOnlyCollection<ItemType> TrayShortcuts => Array.AsReadOnly(
-            new [] {
+            [
                 ItemType.ToggleAmbient,
                 ItemType.ToggleEqualizer,
                 ItemType.LockTouchpad
-            }
+            ]
         );
         
         public string IconResourceKey => "Bud";

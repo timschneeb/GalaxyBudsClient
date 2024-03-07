@@ -325,7 +325,7 @@
     <sys:String x:Key="settings_header">設定</sys:String>
 
     <sys:String x:Key="settings_darkmode">深色模式</sys:String>
-    <sys:String x:Key="settings_darkmode_description">使用較深的主題（需要重新加載）</sys:String>
+    <sys:String x:Key="settings_darkmode_description">使用較深的主題</sys:String>
     <sys:String x:Key="settings_transitions">轉換</sys:String>
     <sys:String x:Key="settings_transitions_description">開啟幻燈片轉換</sys:String>
     <sys:String x:Key="settings_localization_disable">選擇語言</sys:String>

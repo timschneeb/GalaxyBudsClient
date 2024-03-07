@@ -1,0 +1,35 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+                    xmlns:converters="clr-namespace:GalaxyBudsClient.Interface.Converters"
+                    xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia">
+
+    <converters:SymbolToIconSourceConverter x:Key="SymbolToIconSourceConverter" />
+    <converters:EnumToDescriptionConverter x:Key="EnumDescriptionConverter"/>
+    <converters:EqPresetConverter x:Key="EqPresetConverter" />
+    <converters:StereoBalanceConverter x:Key="StereoBalanceConverter" />
+    
+    <Thickness x:Key="AppPageMargin">20 0 20 20</Thickness>
+    
+    
+    <!-- Large BreadcrumbBar -->
+    <Thickness x:Key="BreadcrumbBarChevronPadding">4,4,4,0</Thickness>
+    <!-- 
+        TODO: For some reason, SemiBold is even more bold than Bold on Linux even with Avalonia's builtin Inter font.
+        https://github.com/AvaloniaUI/Avalonia/issues/14711
+    -->
+    <FontWeight x:Key="BreadcrumbBarItemFontWeight">Bold</FontWeight>
+    <system:Double x:Key="BreadcrumbBarItemThemeFontSize">24</system:Double>
+    <system:Double x:Key="BreadcrumbBarChevronFontSize">16</system:Double>
+    
+    <!-- Also use Bold instead of SemiBold here -->
+    <ControlTheme TargetType="TextBlock" 
+                  x:Key="BoldTitleTextBlockStyle"
+                  BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="{StaticResource TitleTextBlockFontSize}" />
+    </ControlTheme>
+    
+    <!-- Empty placeholder icon -->
+    <controls:PathIconSource x:Key="IconPlaceholder" Data="" />
+</ResourceDictionary>

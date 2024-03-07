@@ -323,7 +323,7 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="settings_header">Cài đặt</sys:String>
 
     <sys:String x:Key="settings_darkmode">Chế độ tối</sys:String>
-    <sys:String x:Key="settings_darkmode_description">Dùng tông màu tối hơn(Ứng dụng sẽ tự khởi chạy lại)</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Dùng tông màu tối hơn</sys:String>
     <sys:String x:Key="settings_transitions">Chuyển tiếp</sys:String>
     <sys:String x:Key="settings_transitions_description">Enable slide transitions</sys:String>
     <sys:String x:Key="settings_localization_disable">Ngôn ngữ</sys:String>

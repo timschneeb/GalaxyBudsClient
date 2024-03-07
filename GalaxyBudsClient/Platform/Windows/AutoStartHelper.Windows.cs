@@ -1,10 +1,11 @@
 using System;
 using System.Diagnostics;
 using System.Security;
-using GalaxyBudsClient.Interface.Dialogs;
+using GalaxyBudsClient.InterfaceOld.Dialogs;
 using GalaxyBudsClient.Platform.Interfaces;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Microsoft.Win32;
+using Serilog;
 
 #pragma warning disable CA1416
 
@@ -12,20 +13,17 @@ namespace GalaxyBudsClient.Platform.Windows
 {
     public class AutoStartHelper : IAutoStartHelper
     {
+        private const string PathName = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+        private const string KeyName = "Galaxy Buds Client";
+        
         public bool Enabled
         {
             get
             {
                 try
                 {
-                    if (!PlatformUtils.IsWindows)
-                    {
-                        return false;
-                    }
-                    
-                    RegistryKey? key =
-                        Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", false);
-                    return key?.GetValue("Galaxy Buds Client", null) != null;
+                    return Registry.CurrentUser.OpenSubKey(PathName, false)?
+                        .GetValue(KeyName, null) != null;
                 }
                 catch (SecurityException)
                 {
@@ -36,41 +34,28 @@ namespace GalaxyBudsClient.Platform.Windows
             {
                 try
                 {
-                    if (!PlatformUtils.IsWindows)
-                    {
-                        return;
-                    }
-                    
                     if (value)
                     {
-                        var key =
-                            Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
-                        key?.SetValue("Galaxy Buds Client",
-                            "\"" + Process.GetCurrentProcess().MainModule?.FileName + "\" /StartMinimized");
+                        Registry.CurrentUser.OpenSubKey(PathName, true)?
+                            .SetValue(KeyName, "\"" + Process.GetCurrentProcess().MainModule?.FileName + "\" /StartMinimized");
                     }
                     else
                     {
-                        var key =
-                            Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
-                        key?.DeleteValue("Galaxy Buds Client");
+                        Registry.CurrentUser.OpenSubKey(PathName, true)?.DeleteValue(KeyName);
                     }
 
                     return;
                 }
-                catch (UnauthorizedAccessException)
+                catch (Exception ex)
                 {
-                    goto NOTIFY_USER;
+                    Log.Error(ex, "Failed to set autostart");
                 }
-                catch (SecurityException)
-                {
-                    goto NOTIFY_USER;
-                }
-                NOTIFY_USER:
+                
                 new MessageBox()
                 {
                     Title = Loc.Resolve("error"),
                     Description = Loc.Resolve("settings_autostart_permission")
-                }.ShowDialog(MainWindow.Instance);
+                }.ShowDialog(MainWindow2.Instance);
             }
         }
     }
