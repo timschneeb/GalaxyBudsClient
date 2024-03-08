@@ -18,7 +18,7 @@ using FluentAvalonia.UI.Media;
 using FluentAvalonia.UI.Windowing;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Interface.Services;
-using GalaxyBudsClient.InterfaceOld.Developer;
+using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.InterfaceOld.Dialogs;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
@@ -49,18 +49,11 @@ namespace GalaxyBudsClient
         private static MainWindow2? _instance;
         public static MainWindow2 Instance => _instance ??= new MainWindow2();
 
-        public static bool IsReady()
-        {
-            return _instance != null;
-        }
-
         // ReSharper disable once MemberCanBePrivate.Global
         public MainWindow2()
         {
             AvaloniaXamlLoader.Load(this);
             this.AttachDevTools();
-
-            ClipboardService.Owner = this;
             
             BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
             BluetoothImpl.Instance.Disconnected += OnDisconnected;
@@ -75,7 +68,7 @@ namespace GalaxyBudsClient
             (Application.Current as App)!.TrayIconClicked += TrayIcon_OnLeftClicked;
             _ = TrayManager.Instance.RebuildAsync();
             
-            Loc.LanguageUpdated += LocOnLanguageUpdated;
+            Loc.LanguageUpdated += OnLanguageUpdated;
             
             if (BluetoothImpl.Instance.RegisteredDeviceValid)
             {
@@ -101,7 +94,7 @@ namespace GalaxyBudsClient
             Application.Current.ActualThemeVariantChanged += OnActualThemeVariantChanged;
         }
   
-        private void LocOnLanguageUpdated()
+        private void OnLanguageUpdated()
         {
             FlowDirection = Loc.ResolveFlowDirection();
         }
@@ -130,13 +123,13 @@ namespace GalaxyBudsClient
                         BringToFront();
                     break;
                 case EventDispatcher.Event.Connect:
-                    if (!BluetoothImpl.Instance.IsConnected)
+                    if (!BluetoothImpl.Instance.IsConnectedLegacy)
                     {
                         await BluetoothImpl.Instance.ConnectAsync();
                     }
                     break;
                 case EventDispatcher.Event.ShowBatteryPopup:
-                    ShowPopup(ignoreRestrictions: true);
+                    ShowPopup(noDebounce: true);
                     break;
             }
         }
@@ -273,7 +266,7 @@ namespace GalaxyBudsClient
             (Application.Current as App)!.TrayIconClicked -= TrayIcon_OnLeftClicked;
             EventDispatcher.Instance.EventReceived -= OnEventReceived;
 
-            Loc.LanguageUpdated -= LocOnLanguageUpdated;
+            Loc.LanguageUpdated -= OnLanguageUpdated;
 
             if(Application.Current.ApplicationLifetime is IControlledApplicationLifetime lifetime)
             {
@@ -380,23 +373,20 @@ namespace GalaxyBudsClient
             // Pager.SwitchPage(AbstractPage.Pages.Home);
         }
 
-        private void OnBluetoothError(object? sender, BluetoothException e)
+        private async void OnBluetoothError(object? sender, BluetoothException e)
         {
             WindowIconRenderer.ResetIconToDefault();
             
             switch (e.ErrorCode)
             {
                 case BluetoothException.ErrorCodes.NoAdaptersAvailable:
-                    new MessageBox()
+                    await new GalaxyBudsClient.Interface.Dialogs.MessageBox()
                     {
                         Title = Loc.Resolve("error"),
                         Description = Loc.Resolve("nobluetoothdev")
-                    }.ShowDialog(this);
+                    }.ShowAsync();
                     break;
                 default:
-                    /*Pager.SwitchPage(BluetoothImpl.Instance.RegisteredDeviceValid
-                        ? AbstractPage.Pages.NoConnection
-                        : AbstractPage.Pages.Welcome);*/
                     _popupShown = false;
                     break;
             }
@@ -405,14 +395,10 @@ namespace GalaxyBudsClient
         private void OnDisconnected(object? sender, string e)
         {
             WindowIconRenderer.ResetIconToDefault();
-            
-            /*Pager.SwitchPage(BluetoothImpl.Instance.RegisteredDeviceValid
-                ? AbstractPage.Pages.NoConnection
-                : AbstractPage.Pages.Welcome);*/
             _popupShown = false;
         }
 
-        private void HandleOtherTouchOption(object? sender, TouchOptions e)
+        private async void HandleOtherTouchOption(object? sender, TouchOptions e)
         {
             ICustomAction action = e == TouchOptions.OtherL ?
                 Settings.Instance.CustomActionLeft : Settings.Instance.CustomActionRight;
@@ -434,34 +420,34 @@ namespace GalaxyBudsClient
                     }
                     catch (FileNotFoundException ex)
                     {
-                        new MessageBox()
+                        await new GalaxyBudsClient.Interface.Dialogs.MessageBox()
                         {
                             Title = "Custom long-press action failed",
                             Description = $"Unable to launch external application.\n" +
                                           $"File not found: '{ex.FileName}'"
-                        }.Show(this);
+                        }.ShowAsync();
                     }
                     catch (Win32Exception ex)
                     {
                         if (ex.NativeErrorCode == 13 && PlatformUtils.IsLinux)
                         {
-                            new MessageBox()
+                            await new GalaxyBudsClient.Interface.Dialogs.MessageBox()
                             {
                                 Title = "Custom long-press action failed",
                                 Description = $"Unable to launch external application.\n\n" +
                                               $"Insufficient permissions. Please add execute permissions for your user/group to this file.\n\n" +
                                               $"Run this command in a terminal: chmod +x \"{action.Parameter}\""
-                            }.Show(this);
+                            }.ShowAsync();
                         }
                         else
                         {
-                            new MessageBox()
+                            await new GalaxyBudsClient.Interface.Dialogs.MessageBox()
                             {
                                 Title = "Custom long-press action failed",
                                 Description = $"Unable to launch external application.\n\n" +
                                               $"Detailed information:\n\n" +
                                               $"{ex.Message}"
-                            }.Show(this);
+                            }.ShowAsync();
                         }
                     }
 
@@ -485,9 +471,9 @@ namespace GalaxyBudsClient
         }
         #endregion
         
-        public void ShowPopup(bool ignoreRestrictions = false)
+        public void ShowPopup(bool noDebounce = false)
         {
-            if (_popupShown && !ignoreRestrictions)
+            if (_popupShown && !noDebounce)
                 return;
             
             _popup ??= new BudsPopup();

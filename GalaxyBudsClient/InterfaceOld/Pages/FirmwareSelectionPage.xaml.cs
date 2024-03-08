@@ -129,7 +129,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             
             if (Selection is not { Count: > 0 } || 
                 Selection.SelectedItem == null ||
-                Selection.SelectedItem.Model != BluetoothImpl.Instance.ActiveModel)
+                Selection.SelectedItem.Model != BluetoothImpl.ActiveModel)
             {
                 await new MessageBox()
                 {
@@ -213,7 +213,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
              * We cannot rely on BluetoothImpl.Instance.ActiveModel here, because users can spoof the device model
              * during setup using the "Advanced" menu for troubleshooting. If available, we use the SKU instead.
              */
-            var connectedModel = DeviceMessageCache.Instance.DebugSku?.ModelFromSku() ?? BluetoothImpl.Instance.ActiveModel;
+            var connectedModel = DeviceMessageCache.Instance.DebugSku?.ModelFromSku() ?? BluetoothImpl.ActiveModel;
             var firmwareModel = binary.DetectModel();
             if (firmwareModel == null)
             {
@@ -238,7 +238,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                 Title = string.Format(
                     Loc.Resolve("fw_select_confirm"),
                     binary.BuildName, 
-                    BluetoothImpl.Instance.ActiveModel.GetModelMetadata()?.Name ?? Loc.Resolve("unknown")
+                    BluetoothImpl.ActiveModel.GetModelMetadata()?.Name ?? Loc.Resolve("unknown")
                     ),
                 Description = Loc.Resolve("fw_select_confirm_desc"),
                 MinWidth = 600,

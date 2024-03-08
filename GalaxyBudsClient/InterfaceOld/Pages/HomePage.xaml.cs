@@ -188,7 +188,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
         private void OnLanguageUpdated()
         {
-            if (BluetoothImpl.Instance.IsConnected && BluetoothImpl.Instance.ActiveModel != Models.Buds)
+            if (BluetoothImpl.Instance.IsConnectedLegacy && BluetoothImpl.ActiveModel != Models.Buds)
             {
                 UpdatePlusPlacement(_lastPlacementL, _lastPlacementR);
             }
@@ -198,7 +198,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 		{
             SetWarning(false);
 
-            if (BluetoothImpl.Instance.IsConnected)
+            if (BluetoothImpl.Instance.IsConnectedLegacy)
             {
                 await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
 
@@ -227,7 +227,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             _findMyGear.Source = (IImage?)Application.Current?.FindResource($"FindMyGear{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
             _touch.Source = (IImage?)Application.Current?.FindResource($"Touch{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
 
-            _loadingSpinner.IsVisible = !BluetoothImpl.Instance.IsConnected;
+            _loadingSpinner.IsVisible = !BluetoothImpl.Instance.IsConnectedLegacy;
 
             /* Restore data if restarted */
             var cache = DeviceMessageCache.Instance.BasicStatusUpdate;
@@ -255,7 +255,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             _batteryCase.Content = hasCaseBattery ? $"{parser.BatteryCase}%" : string.Empty;
             _batteryCase.IsVisible = _caseLabel.IsVisible = hasCaseBattery;
 
-            if (BluetoothImpl.Instance.ActiveModel != Models.Buds)
+            if (BluetoothImpl.ActiveModel != Models.Buds)
             {
                 UpdatePlusPlacement(parser.PlacementL, parser.PlacementR);
                 _lastPlacementL = parser.PlacementL;

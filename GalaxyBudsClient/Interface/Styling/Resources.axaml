@@ -8,9 +8,14 @@
     <converters:EnumToDescriptionConverter x:Key="EnumDescriptionConverter"/>
     <converters:EqPresetConverter x:Key="EqPresetConverter" />
     <converters:StereoBalanceConverter x:Key="StereoBalanceConverter" />
+        
+    <!-- Global strings -->
+    <system:String x:Key="TranslatorCreditsString">@fhalfkg; @ArthurWolfhound; @erenbektas; Andrew Gonza; @kakkk; @giovankabisano; @lucasskluser; @alb-p; @joskaja; @buashei; @ssenkrad; @KevinZonda; @mario-donnarumma; @pseudor; @cozyplanes; @KatJillianne; @Joedmin; @papercore-dev; @grigorem; @tretre91; @Sigarya; @YexuanXiao; @Benni0109; @Eta06</system:String>
+    <system:String x:Key="ContributorCreditsString">@githubcatw; @AndriesK; @ArthurWolfhound; @TheLastFrame; @nift4</system:String>
+    <system:String x:Key="LicenseLiabilityString">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</system:String>
     
+    <!-- Dimensions -->
     <Thickness x:Key="AppPageMargin">20 0 20 20</Thickness>
-    
     
     <!-- Large BreadcrumbBar -->
     <Thickness x:Key="BreadcrumbBarChevronPadding">4,4,4,0</Thickness>

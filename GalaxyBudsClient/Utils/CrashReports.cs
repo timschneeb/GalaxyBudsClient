@@ -41,20 +41,11 @@ public static class CrashReports
                     sentryEvent.SetExtra("custom-locale", Settings.Instance.Locale);
                     sentryEvent.SetExtra("sw-version",
                         DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");
-
-                    if (MainWindow2.IsReady())
-                    {
-                        sentryEvent.SetExtra("current-page", MainWindow.Instance.Pager.CurrentPage);
-                    }
-                    else
-                    {
-                        sentryEvent.SetExtra("current-page", "instance_not_initialized");
-                    }
-
-                    sentryEvent.SetTag("bluetooth-model", BluetoothImpl.Instance.ActiveModel.ToString());
-                    sentryEvent.SetExtra("bluetooth-model", BluetoothImpl.Instance.ActiveModel);
+                    
+                    sentryEvent.SetTag("bluetooth-model", BluetoothImpl.ActiveModel.ToString());
+                    sentryEvent.SetExtra("bluetooth-model", BluetoothImpl.ActiveModel);
                     sentryEvent.SetExtra("bluetooth-sku", DeviceMessageCache.Instance.DebugSku?.LeftSku ?? "null");
-                    sentryEvent.SetExtra("bluetooth-connected", BluetoothImpl.Instance.IsConnected);
+                    sentryEvent.SetExtra("bluetooth-connected", BluetoothImpl.Instance.IsConnectedLegacy);
                 }
                 catch (Exception ex)
                 {

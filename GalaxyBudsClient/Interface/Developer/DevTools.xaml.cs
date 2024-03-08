@@ -20,7 +20,7 @@ using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
 
-namespace GalaxyBudsClient.InterfaceOld.Developer
+namespace GalaxyBudsClient.Interface.Developer
 {
     public sealed class DevTools : Window
     {
@@ -218,9 +218,9 @@ namespace GalaxyBudsClient.InterfaceOld.Developer
                     var somIndex = 0;
                     for (int i = 1; i < data.Count; i++)
                     {
-                        if ((BluetoothImpl.Instance.ActiveModel == Models.Buds &&
+                        if ((BluetoothImpl.ActiveModel == Models.Buds &&
                             (byte)(data[i] ?? 0) == (byte)SppMessage.Constants.SOM) ||
-                            (BluetoothImpl.Instance.ActiveModel != Models.Buds &&
+                            (BluetoothImpl.ActiveModel != Models.Buds &&
                              (byte)(data[i] ?? 0) == (byte)SppMessage.Constants.SOMPlus))
                         {
                             somIndex = i;

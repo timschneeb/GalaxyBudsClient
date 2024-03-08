@@ -69,7 +69,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 		
 		private void InstanceOnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
 		{
-			if (BluetoothImpl.Instance.ActiveModel == Models.Buds)
+			if (BluetoothImpl.ActiveModel == Models.Buds)
 			{
 				_eqSwitch.IsChecked = e.EqualizerEnabled;
 				

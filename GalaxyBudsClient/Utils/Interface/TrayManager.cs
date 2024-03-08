@@ -111,7 +111,7 @@ namespace GalaxyBudsClient.Utils.Interface
                     EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientToggle);
                     break;
                 case ItemType.Connect:
-                    if (!BluetoothImpl.Instance.IsConnected && BluetoothImpl.Instance.RegisteredDeviceValid)
+                    if (!BluetoothImpl.Instance.IsConnectedLegacy && BluetoothImpl.Instance.RegisteredDeviceValid)
                     {
                         await BluetoothImpl.Instance.ConnectAsync();
                     }
@@ -246,7 +246,7 @@ namespace GalaxyBudsClient.Utils.Interface
                     });
                     items.Add(new NativeMenuItemSeparator());
                 }
-                if (BluetoothImpl.Instance.IsConnected && DeviceMessageCache.Instance.BasicStatusUpdate != null)
+                if (BluetoothImpl.Instance.IsConnectedLegacy && DeviceMessageCache.Instance.BasicStatusUpdate != null)
                 {
                     items.AddRange(RebuildBatteryInfo().OfType<NativeMenuItemBase>());
                     items.AddRange(RebuildDynamicActions());

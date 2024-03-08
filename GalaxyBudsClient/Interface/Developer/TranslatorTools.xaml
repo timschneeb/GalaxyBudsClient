@@ -3,20 +3,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="463" d:DesignHeight="380"
-        x:Class="GalaxyBudsClient.InterfaceOld.Developer.TranslatorTools"
+        x:Class="GalaxyBudsClient.Interface.Developer.TranslatorTools"
         Height="380" Width="460" MaxWidth="460"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/icon_white.ico"
         Title="Galaxy Buds Manager - Translator Tools">
-
-    <!-- TODO <Window.Styles>
-        <Style Selector="TextBlock">
-            <Setter Property="Foreground" Value="{DynamicResource ForegroundTextDimBrush}"/>
-        </Style>
-        <Style Selector="TextBox">
-            <Setter Property="Foreground" Value="{DynamicResource ForegroundTextDimBrush}"/>
-        </Style>
-    </Window.Styles>-->
     
     <Grid Margin="10">
         <Grid.RowDefinitions>

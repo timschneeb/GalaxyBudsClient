@@ -6,6 +6,8 @@
              xmlns:vm="using:GalaxyBudsClient.Interface.ViewModels"
              xmlns:interface="clr-namespace:GalaxyBudsClient.Interface"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
              x:Class="GalaxyBudsClient.Interface.MainView"
              x:DataType="vm:MainViewViewModel"
@@ -52,15 +54,21 @@
                            IsBackEnabled="{Binding #FrameView.CanGoBack}">
             <Grid RowDefinitions="Auto,Auto,*">
                 <ui:InfoBar Title="Disconnected"
-                            IsOpen="True" 
+                            IsOpen="{Binding !IsConnected, Source={x:Static platform:BluetoothImpl.Instance}}" 
                             IsClosable="False"
-                            IsVisible="True"
                             Severity="Warning" 
-                            Message="Connection lost"
+                            Message="{Binding LastErrorMessage, Source={x:Static platform:BluetoothImpl.Instance}}"
                             Margin="20,16,20,0">
                     <ui:InfoBar.ActionButton>
                         <Button Content="Reconnect"
-                                HorizontalAlignment="Right" />
+                                HorizontalAlignment="Right">
+                            <Interaction.Behaviors>
+                                <!-- TODO this needs additional logic for progress indication -->
+                                <EventTriggerBehavior EventName="Click">
+                                    <ext:EventDispatcherAction Event="Connect" />
+                                </EventTriggerBehavior>
+                            </Interaction.Behaviors>
+                        </Button>
                     </ui:InfoBar.ActionButton>
                 </ui:InfoBar>
                 <ui:BreadcrumbBar Grid.Row="1"  Margin="20,16" >

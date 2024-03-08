@@ -14,6 +14,8 @@ using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 
 namespace GalaxyBudsClient.InterfaceOld.Dialogs
 {
+    [Obsolete("Class will be removed during the redesign")]
+
     public class HotkeyActionBuilder : Window
     {
         private class ViewModel

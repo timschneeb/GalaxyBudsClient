@@ -12,7 +12,7 @@ using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 
-namespace GalaxyBudsClient.InterfaceOld.Developer
+namespace GalaxyBudsClient.Interface.Developer
 {
     public sealed class TranslatorTools : Window
     {
@@ -57,15 +57,7 @@ namespace GalaxyBudsClient.InterfaceOld.Developer
                 }.ShowDialog(this);
             };
         }
-
-        private void GoToPage_OnClick(object? sender, RoutedEventArgs e)
-        {
-            if (_pages.SelectedItem is AbstractPage.Pages page)
-            {
-                MainWindow.Instance.Pager.SwitchPage(page);
-            }
-        }
-
+        
         private void ReloadXaml_OnClick(object? sender, RoutedEventArgs e)
         {
             if (_locales.SelectedItem is Locales locale)

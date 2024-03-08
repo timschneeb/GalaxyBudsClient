@@ -93,7 +93,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
 		private void Retry_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{	
-			if (BluetoothImpl.Instance.IsConnected)
+			if (BluetoothImpl.Instance.IsConnectedLegacy)
          	{
          		MainWindow.Instance.Pager.SwitchPage(Pages.Home);
          		return;

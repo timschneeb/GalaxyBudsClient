@@ -30,7 +30,7 @@ public partial class SettingsPage : BasePage<SettingsPageViewModel>
 
     private static async void OnDevSettingsClicked(object? sender, RoutedEventArgs e)
     {
-        await DialogHelper.ShowDeveloperOptions();
+        await DialogService.ShowDeveloperOptions();
     }
 
     protected override void OnLanguageUpdated()

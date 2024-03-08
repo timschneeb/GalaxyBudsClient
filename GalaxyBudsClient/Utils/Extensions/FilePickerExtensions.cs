@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Platform.Storage;
-using GalaxyBudsClient.InterfaceOld.Dialogs;
+using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 
 namespace GalaxyBudsClient.Utils.Extensions;
@@ -74,8 +74,7 @@ public static class FilePickerExtensions
         await new MessageBox()
         {
             Title = Loc.Resolve("error"),
-            Description = "This platform does not support this operation",
-            Topmost = true
-        }.ShowDialog(host);
+            Description = "This platform does not support this operation"
+        }.ShowAsync(host);
     }
 }

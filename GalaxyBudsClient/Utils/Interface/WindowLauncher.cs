@@ -1,6 +1,6 @@
 using System;
 using Avalonia.Controls;
-using GalaxyBudsClient.InterfaceOld.Developer;
+using GalaxyBudsClient.Interface.Developer;
 
 namespace GalaxyBudsClient.Utils.Interface
 {

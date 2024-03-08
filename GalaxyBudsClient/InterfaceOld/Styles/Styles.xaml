@@ -132,34 +132,4 @@
         <Setter Property="Background" Value="{DynamicResource BorderSeparatorBrush}" />
         <Setter Property="Margin" Value="10,1,10,1" />
     </Style>
-    
-    <Style Selector="HeaderedContentControl.GroupBox">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Border ZIndex="1" Padding="5,0,5,0" 
-                                Background="{DynamicResource WindowBackgroundBrush}" Margin="8,0,0,0"
-                                CornerRadius="4">
-                            <TextBlock FontWeight="Bold" Text="{TemplateBinding Header}" Foreground="{DynamicResource ForegroundTextDimBrush}" />
-                        </Border>
-                        <Border Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="0" Margin="0,10,0,0"
-                                BorderBrush="{DynamicResource SystemBaseLowColor}"
-                                BorderThickness="2"
-                                CornerRadius="10">
-                            <ContentPresenter Margin="15" Content="{TemplateBinding Content}" />
-                        </Border>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 </Styles>

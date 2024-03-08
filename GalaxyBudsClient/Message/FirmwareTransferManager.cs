@@ -220,7 +220,7 @@ namespace GalaxyBudsClient.Message
 
         public async Task Install(FirmwareBinary binary)
         {
-            if (!BluetoothImpl.Instance.IsConnected)
+            if (!BluetoothImpl.Instance.IsConnectedLegacy)
             {
                 Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.Disconnected,
                     Loc.Resolve("fw_fail_connection_precheck")));
