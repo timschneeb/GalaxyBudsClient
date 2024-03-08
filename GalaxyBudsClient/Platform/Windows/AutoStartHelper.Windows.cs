@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Security;
-using GalaxyBudsClient.InterfaceOld.Dialogs;
+using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Platform.Interfaces;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Microsoft.Win32;
@@ -51,11 +51,11 @@ namespace GalaxyBudsClient.Platform.Windows
                     Log.Error(ex, "Failed to set autostart");
                 }
                 
-                new MessageBox()
+                _ = new MessageBox()
                 {
                     Title = Loc.Resolve("error"),
                     Description = Loc.Resolve("settings_autostart_permission")
-                }.ShowDialog(MainWindow2.Instance);
+                }.ShowAsync();
             }
         }
     }

@@ -72,6 +72,7 @@ namespace GalaxyBudsClient
                 
                 BuildAvaloniaApp().StartWithClassicDesktopLifetime(args, ShutdownMode.OnExplicitShutdown);
             }
+            // ReSharper disable once RedundantCatchClause
             catch (Exception ex)
             {
 #if DEBUG

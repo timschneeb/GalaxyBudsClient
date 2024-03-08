@@ -38,7 +38,7 @@ public class OpenLinkAction : AvaloniaObject, IAction
         }
         catch
         {
-            await DialogHelper.ShowUnableToOpenLinkDialog(new Uri(uri));
+            await DialogService.ShowUnableToOpenLinkDialog(new Uri(uri));
         }
     }
 }

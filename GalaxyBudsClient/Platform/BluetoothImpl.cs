@@ -21,7 +21,7 @@ using Task = System.Threading.Tasks.Task;
 
 namespace GalaxyBudsClient.Platform
 {
-    public class BluetoothImpl : IDisposable
+    public class BluetoothImpl : IDisposable, INotifyPropertyChanged
     { 
         private static readonly object Padlock = new object();
         private static BluetoothImpl? _instance;
@@ -46,6 +46,7 @@ namespace GalaxyBudsClient.Platform
 
         private readonly IBluetoothService _backend;
         
+        public event PropertyChangedEventHandler? PropertyChanged;
         public event EventHandler? Connected;
         public event EventHandler? Connecting;
         public event EventHandler<string>? Disconnected;
@@ -55,16 +56,38 @@ namespace GalaxyBudsClient.Platform
         public event EventHandler<BluetoothException>? BluetoothError;
 
         public bool SuppressDisconnectionEvents { set; get; } = false;
-        public Models ActiveModel => Settings.Instance.RegisteredDevice.Model;
+        public static Models ActiveModel => Settings.Instance.RegisteredDevice.Model;
         public IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(ActiveModel) ?? new StubDeviceSpec();
-        public string DeviceName { set; get; } = "Galaxy Buds";
-        public bool IsConnected => _backend.IsStreamConnected;
-        
-        public readonly ArrayList IncomingData = new ArrayList();
-        private static readonly ConcurrentQueue<byte[]> IncomingQueue = new ConcurrentQueue<byte[]>();
+
+        public string DeviceName
+        {
+            private set => RaiseAndSet(ref _deviceName, value);
+            get => _deviceName;
+        }
+
+        public bool IsConnected
+        {
+            private set => RaiseAndSet(ref _isConnected, value);
+            get => _isConnected;
+        }
+
+        public string LastErrorMessage
+        {
+            set => RaiseAndSet(ref _lastErrorMessage, value);
+            get => _lastErrorMessage;
+        }
+
+        public bool IsConnectedLegacy => _backend.IsStreamConnected;
+
+        private readonly ArrayList IncomingData = [];
+        private static readonly ConcurrentQueue<byte[]> IncomingQueue = new();
         private readonly CancellationTokenSource _cancelSource;
         private readonly Task? _loop;
         
+        private string _deviceName = "Galaxy Buds";
+        private bool _isConnected;
+        private string _lastErrorMessage = string.Empty;
+
         private Guid ServiceUuid => DeviceSpec.ServiceUuid;
 
         private BluetoothImpl()
@@ -122,7 +145,10 @@ namespace GalaxyBudsClient.Platform
                 await Task.Delay(150).ContinueWith((_) =>
                 {
                     if (RegisteredDeviceValid)
+                    {
                         Connected?.Invoke(this, EventArgs.Empty);
+                        IsConnected = true;
+                    }
                     else
                         Log.Error("BluetoothImpl: Suppressing Connected event, device not properly registered");
                 }));
@@ -131,6 +157,8 @@ namespace GalaxyBudsClient.Platform
             {
                 if (!SuppressDisconnectionEvents)
                 {
+                    LastErrorMessage = "Connection lost"; // TODO: Localize
+                    IsConnected = false;
                     Disconnected?.Invoke(this, reason);
                 }
             };
@@ -170,6 +198,8 @@ namespace GalaxyBudsClient.Platform
         {
             if (!SuppressDisconnectionEvents)
             {
+                LastErrorMessage = exception.ErrorMessage ?? exception.Message; // TODO: needs better logic for error message handling
+                IsConnected = false;
                 BluetoothError?.Invoke(this, exception);
             }
         }
@@ -188,7 +218,7 @@ namespace GalaxyBudsClient.Platform
             return Array.Empty<BluetoothDevice>();
         }
 
-        public async Task<string> GetDeviceNameAsync()
+        private async Task<string> GetDeviceNameAsync()
         {
             var fallbackName = ActiveModel.GetModelMetadata()?.Name ?? Loc.Resolve("unknown");
             try
@@ -214,6 +244,7 @@ namespace GalaxyBudsClient.Platform
                     try
                     {
                         DeviceName = await GetDeviceNameAsync();
+                        
                         await _backend.ConnectAsync(Settings.Instance.RegisteredDevice.MacAddress,
                             ServiceUuid.ToString()!, noRetry);
                         return true;
@@ -223,10 +254,6 @@ namespace GalaxyBudsClient.Platform
                         OnBluetoothError(ex);
                         return false;
                     }
-                }
-                else
-                {
-                    Log.Error("BluetoothImpl: Connection attempt without valid cached device");
                 }
             }
             /* Update device registration */
@@ -240,17 +267,13 @@ namespace GalaxyBudsClient.Platform
                     /* Load from configuration this time */
                     return await ConnectAsync();
                 }
-                else
-                {
-                    Log.Error("BluetoothImpl: Connection attempt without valid device");
-                    return false;
-                }
             }
             else
             {
                 throw new ArgumentException("Either all or none arguments must be null");
             }
-
+            
+            Log.Error("BluetoothImpl: Connection attempt without valid device");
             return false;
         }
 
@@ -268,7 +291,7 @@ namespace GalaxyBudsClient.Platform
         
         public async Task SendAsync(SppMessage msg)
         {
-            if (!IsConnected)
+            if (!IsConnectedLegacy)
             {
                 // ConnectionLostPage hides error details for SendFailed, so add stack trace for the times we do need to debug this
                 OnBluetoothError(new BluetoothException(BluetoothException.ErrorCodes.SendFailed, $"Attempted to send command to disconnected device: {Environment.StackTrace.Substring(700)}"));
@@ -281,14 +304,14 @@ namespace GalaxyBudsClient.Platform
                 
                 foreach(var hook in ScriptManager.Instance.MessageHooks)
                 {
-                    hook?.OnMessageSend(ref msg);
+                    hook.OnMessageSend(ref msg);
                 }
 
                 var raw = msg.EncodeMessage();
                 
                 foreach(var hook in ScriptManager.Instance.RawStreamHooks)
                 {
-                    hook?.OnRawDataSend(ref raw);
+                    hook.OnRawDataSend(ref raw);
                 }
                 
                 await _backend.SendAsync(raw);
@@ -311,7 +334,7 @@ namespace GalaxyBudsClient.Platform
         
         public async Task SendRequestAsync(SppMessage.MessageIds id, bool payload)
         {
-            await SendRequestAsync(id, payload ? new byte[]{0x01} : new byte[]{0x00});
+            await SendRequestAsync(id, payload ? [0x01] : [0x00]);
         }
         
         public void UnregisterDevice()
@@ -326,7 +349,7 @@ namespace GalaxyBudsClient.Platform
         public bool RegisteredDeviceValid =>
             IsDeviceValid(Settings.Instance.RegisteredDevice.Model,
                 Settings.Instance.RegisteredDevice.MacAddress);
-
+        
         private static bool IsDeviceValid(Models model, string macAddress)
         {
             return model != Models.NULL && macAddress.Length >= 12;
@@ -340,6 +363,7 @@ namespace GalaxyBudsClient.Platform
                 return;
             }
 
+            IsConnected = true;
             IncomingQueue.Enqueue(frame);
         }
 
@@ -354,7 +378,7 @@ namespace GalaxyBudsClient.Platform
                 }
                 catch (OperationCanceledException)
                 {
-                    IncomingData?.Clear();
+                    IncomingData.Clear();
                     throw;
                 }
                 
@@ -377,7 +401,7 @@ namespace GalaxyBudsClient.Platform
 
                         foreach (var hook in ScriptManager.Instance.RawStreamHooks)
                         {
-                            hook?.OnRawDataAvailable(ref raw);
+                            hook.OnRawDataAvailable(ref raw);
                         }
 
                         var msg = SppMessage.DecodeMessage(raw);
@@ -387,7 +411,7 @@ namespace GalaxyBudsClient.Platform
 
                         foreach (var hook in ScriptManager.Instance.MessageHooks)
                         {
-                            hook?.OnMessageAvailable(ref msg);
+                            hook.OnMessageAvailable(ref msg);
                         }
 
                         MessageReceived?.Invoke(this, msg);
@@ -436,6 +460,19 @@ namespace GalaxyBudsClient.Platform
 
                 } while (IncomingData.Count > 0);
             }
+        }
+        
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private bool RaiseAndSet<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
+            field = value;
+            OnPropertyChanged(propertyName);
+            return true;
         }
     }
 }

@@ -85,7 +85,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                 Log.Warning(exception, "UpdateProgressPage: Exception raised while launching installer ({Path})", path);
             }
 
-            if (BluetoothImpl.Instance.IsConnected)
+            if (BluetoothImpl.Instance.IsConnectedLegacy)
             {
                 await BluetoothImpl.Instance.DisconnectAsync();
             }

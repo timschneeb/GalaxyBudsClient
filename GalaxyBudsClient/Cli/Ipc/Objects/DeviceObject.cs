@@ -63,7 +63,7 @@ namespace GalaxyBudsClient.Cli.Ipc.Objects
         {
             Set(nameof(DeviceProperties._Name), BluetoothImpl.Instance.DeviceName);
             Set(nameof(DeviceProperties._Address), Settings.Instance.RegisteredDevice.MacAddress);
-            Set(nameof(DeviceProperties._Model), BluetoothImpl.Instance.ActiveModel.ToString());
+            Set(nameof(DeviceProperties._Model), BluetoothImpl.ActiveModel.ToString());
 
             if (DeviceMessageCache.Instance.BasicStatusUpdate != null)
                 OnBaseUpdate(this, DeviceMessageCache.Instance.BasicStatusUpdate);

@@ -14,7 +14,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
         public long ExperimentId { set; get; }
         public Environment? Environment { set; get; }
         
-        public Models Device => BluetoothImpl.Instance.ActiveModel;
+        public Models Device => BluetoothImpl.ActiveModel;
         public int Revision => DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision ?? 0;
         public string FirmwareVersion => DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "Unknown";
         public string? MacAddress => DeviceMessageCache.Instance.DebugGetAllData?.LeftBluetoothAddress;

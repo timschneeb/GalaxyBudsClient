@@ -22,6 +22,7 @@ using Window = Avalonia.Controls.Window;
 
 namespace GalaxyBudsClient.InterfaceOld.Dialogs
 {
+    // TODO: redesign
     public sealed class BudsPopup : Window
     {
         public EventHandler? ClickedEventHandler { get; set; }

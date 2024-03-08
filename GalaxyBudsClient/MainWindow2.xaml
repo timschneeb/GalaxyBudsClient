@@ -7,7 +7,6 @@
         x:Class="GalaxyBudsClient.MainWindow2"
         Height="640" Width="700"
         WindowStartupLocation="CenterScreen"
-        UseLayoutRounding="True"
         Icon="/Resources/icon_white.ico"
         Title="Galaxy Buds Manager">
     

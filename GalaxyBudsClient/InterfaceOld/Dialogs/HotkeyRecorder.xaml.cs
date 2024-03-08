@@ -11,6 +11,8 @@ using KeyEventArgs = Avalonia.Input.KeyEventArgs;
 
 namespace GalaxyBudsClient.InterfaceOld.Dialogs
 {
+    [Obsolete("Class will be removed during the redesign")]
+
     public class HotkeyRecorder : Window
     {
         private readonly TextBlock _keyLabel;

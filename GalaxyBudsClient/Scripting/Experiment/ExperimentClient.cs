@@ -77,8 +77,8 @@ namespace GalaxyBudsClient.Scripting.Experiment
 
         public async void ScanForExperiments()
         {
-            if (!BluetoothImpl.Instance.IsConnected || 
-                BluetoothImpl.Instance.ActiveModel == Models.NULL ||
+            if (!BluetoothImpl.Instance.IsConnectedLegacy || 
+                BluetoothImpl.ActiveModel == Models.NULL ||
                 DeviceMessageCache.Instance.ExtendedStatusUpdate == null)
             {
                 return;
@@ -96,7 +96,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
             try
             {
                 HttpResponseMessage response =
-                    await _client.GetAsync($"{API_GET_EXPERIMENTS}/{BluetoothImpl.Instance.ActiveModel.ToString()}");
+                    await _client.GetAsync($"{API_GET_EXPERIMENTS}/{BluetoothImpl.ActiveModel.ToString()}");
                 if (response.IsSuccessStatusCode)
                 {
                     MediaTypeFormatterCollection formatters = new MediaTypeFormatterCollection();

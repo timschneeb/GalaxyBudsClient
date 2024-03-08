@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
@@ -6,6 +7,8 @@ using Avalonia.Markup.Xaml;
 
 namespace GalaxyBudsClient.InterfaceOld.Dialogs
 {
+    [Obsolete("Class will be removed during the redesign")]
+
     public sealed class MessageBox : Window
     {
         public static readonly StyledProperty<string> DescriptionProperty =

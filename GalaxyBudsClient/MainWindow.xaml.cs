@@ -14,7 +14,6 @@ using Avalonia.Threading;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Interface;
 using GalaxyBudsClient.InterfaceOld;
-using GalaxyBudsClient.InterfaceOld.Developer;
 using GalaxyBudsClient.InterfaceOld.Dialogs;
 using GalaxyBudsClient.InterfaceOld.Pages;
 using GalaxyBudsClient.InterfaceOld.Transition;
@@ -204,7 +203,7 @@ namespace GalaxyBudsClient
                     }
                     break;
                 case EventDispatcher.Event.Connect:
-                    if (!BluetoothImpl.Instance.IsConnected)
+                    if (!BluetoothImpl.Instance.IsConnectedLegacy)
                     {
                         await BluetoothImpl.Instance.ConnectAsync();
                     }
@@ -604,7 +603,7 @@ namespace GalaxyBudsClient
                 _popup.Show();
             }
             
-            if (!BluetoothImpl.Instance.IsConnected)
+            if (!BluetoothImpl.Instance.IsConnectedLegacy)
             {
                 Log.Warning("MainWindow.ShowPopup: Not connected");
             }

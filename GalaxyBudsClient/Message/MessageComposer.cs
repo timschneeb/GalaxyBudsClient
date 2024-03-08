@@ -46,7 +46,7 @@ namespace GalaxyBudsClient.Message
         public static async Task SetEqualizer(bool enable, EqPreset preset, bool dolbyMode)
         {
             // Dolby mode has no effect on the Buds+/Live/Pro
-            if (BluetoothImpl.Instance.ActiveModel == Models.Buds)
+            if (BluetoothImpl.ActiveModel == Models.Buds)
             {
                 int rawPreset = (int)preset;
                 if (!dolbyMode)

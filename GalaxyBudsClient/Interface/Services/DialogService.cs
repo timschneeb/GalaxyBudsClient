@@ -15,7 +15,7 @@ using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
 namespace GalaxyBudsClient.Interface.Services;
 
-public static class DialogHelper
+public static class DialogService
 {
     // TODO localization
     public static async Task ShowUnableToOpenLinkDialog(Uri uri)

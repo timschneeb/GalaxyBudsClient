@@ -14,8 +14,10 @@ using FluentAvalonia.UI.Controls;
 using FluentAvalonia.UI.Media.Animation;
 using FluentAvalonia.UI.Navigation;
 using FluentAvalonia.UI.Windowing;
+using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels;
+using GalaxyBudsClient.Platform;
 using Symbol = FluentIcons.Common.Symbol;
 using SymbolIcon = FluentIcons.Avalonia.Fluent.SymbolIcon;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
@@ -40,7 +42,7 @@ public partial class MainView : UserControl
         var vm = new MainViewViewModel();
         DataContext = vm;
         FrameView.NavigationPageFactory = vm.NavigationFactory;
-        NavigationService.Instance.SetFrame(FrameView);
+        NavigationService.Instance.Frame = FrameView;
 
         InitializeNavigationPages();
 
@@ -61,8 +63,6 @@ public partial class MainView : UserControl
 
     public void InitializeNavigationPages()
     {
-        var coreControls = ""; //GetControlsList("avares://FAControlsGallery/Assets/CoreControlsGroups.json");
-        var faControls = ""; //GetControlsList("avares://FAControlsGallery/Assets/FAControlsGroups.json");
 
         var mainPages = new IMainPageViewModel[]
         {
@@ -100,31 +100,27 @@ public partial class MainView : UserControl
             new SettingsPageViewModel()
         };
 
-        var menuItems = new List<NavigationViewItemBase>(4);
-        var footerItems = new List<NavigationViewItemBase>(2);
+        var menuItems = new List<NavigationViewItemBase>(6);
+        var footerItems = new List<NavigationViewItemBase>(1);
 
-        bool inDesign = Design.IsDesignMode;
         
         Dispatcher.UIThread.Post(() =>
         {
-            for (int i = 0; i < mainPages.Length; i++)
+            foreach (var page in mainPages)
             {
-                var pg = mainPages[i];
                 var nvi = new NavigationViewItem
                 {
-                    Content = pg.NavHeader,
-                    Tag = pg,
-                    IconSource = new SymbolIconSource { Symbol = pg.IconKey }
+                    Content = page.NavHeader,
+                    Tag = page,
+                    IconSource = new SymbolIconSource { Symbol = page.IconKey }
                 };
-
-                //ToolTip.SetTip(nvi, pg.NavHeader);
 
                 if (_isDesktop || OperatingSystem.IsBrowser())
                 {
                     nvi.Classes.Add("AppNav");
                 }
 
-                if (pg.ShowsInFooter)
+                if (page.ShowsInFooter)
                     footerItems.Add(nvi);
                 else
                     menuItems.Add(nvi);
@@ -142,7 +138,7 @@ public partial class MainView : UserControl
                 NavView.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftMinimal;
             }
 
-            FrameView.NavigateFromObject((IEnumerableExtensions.ElementAt(NavView.MenuItemsSource, 0) as Control).Tag);
+            FrameView.NavigateFromObject((NavView.MenuItemsSource.ElementAt(0) as Control)!.Tag);
         });
     }
 
@@ -220,11 +216,11 @@ public partial class MainView : UserControl
             if (nvi.Tag == mainPage)
             {
                 NavView.SelectedItem = nvi;
-                SetNVIIcon(nvi, true);
+                SetNvIcon(nvi, true);
             }
             else
             {
-                SetNVIIcon(nvi, false);
+                SetNvIcon(nvi, false);
             }
         }
 
@@ -233,11 +229,11 @@ public partial class MainView : UserControl
             if (nvi.Tag == mainPage)
             {
                 NavView.SelectedItem = nvi;
-                SetNVIIcon(nvi, true);
+                SetNvIcon(nvi, true);
             }
             else
             {
-                SetNVIIcon(nvi, false);
+                SetNvIcon(nvi, false);
             }
         }
 
@@ -251,19 +247,16 @@ public partial class MainView : UserControl
         }
     }
 
-    private void SetNVIIcon(NavigationViewItem? item, bool selected)
+    private static void SetNvIcon(NavigationViewItem? item, bool selected)
     {
         // Technically, yes you could set up binding and converters and whatnot to let the icon change
         // between filled and unfilled based on selection, but this is so much simpler 
 
-        if (item == null)
-            return;
+        var t = item?.Tag;
 
-        var t = item.Tag;
-
-        if (t is ViewModelBase)
+        if (t is ViewModelBase && item?.IconSource is SymbolIconSource source)
         {
-            (item.IconSource as SymbolIconSource).IsFilled = selected;
+            source.IsFilled = selected;
         }
     }
 

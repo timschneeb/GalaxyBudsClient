@@ -79,7 +79,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 		private void InstanceOnBatteryTypeResponse(object? sender, BatteryTypeParser e)
 		{
 			_batteryType.Description = $"{Left}: {e.LeftBatteryType}, {Right}: {e.RightBatteryType}";
-			if (BluetoothImpl.Instance.ActiveModel != Models.Buds)
+			if (BluetoothImpl.ActiveModel != Models.Buds)
 			{
 				_batteryType.Description = Loc.Resolve("system_battery_type_unknown");
 			}
