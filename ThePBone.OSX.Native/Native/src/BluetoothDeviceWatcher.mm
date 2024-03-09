@@ -45,8 +45,8 @@
 
 - (void)onConnected:(IOBluetoothUserNotification *)notification fromDevice:(IOBluetoothDevice *)device {
     if (_onConnected) {
-        char *mac = (char *)malloc(sizeof(char) * [[device addressString] length]);
-        char *name = (char *)malloc(sizeof(char) * [[device nameOrAddress] length]);
+        char *mac = (char *)malloc([[device addressString] lengthOfBytesUsingEncoding:NSUTF8StringEncoding]+1);
+        char *name = (char *)malloc([[device nameOrAddress] lengthOfBytesUsingEncoding:NSUTF8StringEncoding]+1);
         strcpy(mac, device.addressString.UTF8String);
         strcpy(name, device.nameOrAddress.UTF8String);
         _onConnected(mac, name);
@@ -55,7 +55,7 @@
 
 - (void)onDisconnected:(IOBluetoothUserNotification *)notification fromDevice:(IOBluetoothDevice *)device {
     if (_onDisconnected) {
-        char *mac = (char *)malloc(sizeof(char) * [[device addressString] length]);
+        char *mac = (char *)malloc([[device addressString] lengthOfBytesUsingEncoding:NSUTF8StringEncoding]+1);
         strcpy(mac, device.addressString.UTF8String);
         _onDisconnected(mac);
     }

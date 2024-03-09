@@ -167,8 +167,8 @@
     for (int i = 0; i < result->length; i++) {
         Device *resultDevice = &result->devices[i];
         IOBluetoothDevice *device = [inDevices objectAtIndex:i];
-        resultDevice->device_name = (char *)malloc([device.name lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
-        resultDevice->mac_address = (char *)malloc([device.addressString lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
+        resultDevice->device_name = (char *)malloc([device.name lengthOfBytesUsingEncoding:NSUTF8StringEncoding]+1);
+        resultDevice->mac_address = (char *)malloc([device.addressString lengthOfBytesUsingEncoding:NSUTF8StringEncoding]+1);
         strcpy(resultDevice->device_name, device.name.UTF8String);
         strcpy(resultDevice->mac_address, device.addressString.UTF8String);
         resultDevice->is_connected = device.isConnected;
