@@ -19,6 +19,6 @@ public class BreadcrumbViewModel : ViewModelBase
     }
 
     public Type PageType { get; set; }
-    public string TitleKey { get; }
+    protected string TitleKey { get; }
     public string Title => Loc.Resolve(TitleKey);
 }

@@ -10,5 +10,5 @@
         Icon="/Resources/icon_white.ico"
         Title="Galaxy Buds Manager">
     
-    <interface:MainView />
+    <interface:MainView Name="MainView" />
 </Window>

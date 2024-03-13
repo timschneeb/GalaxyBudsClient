@@ -7,6 +7,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Styling;
 using Avalonia.Threading;
+using CommandLine;
 using FluentAvalonia.Core;
 using FluentAvalonia.UI.Controls;
 using FluentAvalonia.UI.Media.Animation;
@@ -51,15 +52,34 @@ public partial class MainView : UserControl
         NavView.BackRequested += OnNavigationViewBackRequested;
     }
 
-    private PageViewModelBase? ResolveViewModelByType(Type arg)
+    public T? ResolveViewModelByType<T>()
+    {
+        return mainPages.FirstOrDefault(p => p.GetType() == typeof(T)).Cast<T?>();
+    }
+    
+    public PageViewModelBase? ResolveViewModelByType(Type arg)
     {
         return mainPages.FirstOrDefault(p => p.GetType() == arg);
     }
 
     private void OnBreadcrumbBarItemClicked(BreadcrumbBar sender, BreadcrumbBarItemClickedEventArgs args)
     {
-        if (args.Item is BreadcrumbViewModel vm)
+        if(ViewModel == null)
+            return;
+        
+        // Ignore the last item, as it's the current page
+        if (args.Item is BreadcrumbViewModel vm && args.Index != ViewModel.BreadcrumbItems.Count - 1)
         {
+            // Remove BreadcrumbItems from the end until the clicked item is the last one
+            for(var i = ViewModel.BreadcrumbItems.Count - 1; i >= 0; i--)
+            {
+                if (ViewModel.BreadcrumbItems[i] == vm)
+                {
+                    break;
+                }
+                
+                ViewModel.BreadcrumbItems.RemoveAt(i);
+            }
             NavigationService.Instance.Navigate(vm.PageType);
         }
     }
@@ -209,18 +229,12 @@ public partial class MainView : UserControl
 
         if (mainPage != null)
         {
-            switch (e.NavigationMode)
-            {
-                case NavigationMode.Back when ViewModel?.BreadcrumbItems.Count > 0:
-                    ViewModel?.BreadcrumbItems.RemoveAt(ViewModel.BreadcrumbItems.Count - 1);
-                    break;
-                case NavigationMode.New:
-                    ViewModel?.BreadcrumbItems.Add(new BreadcrumbViewModel(mainPage.TitleKey, mainPage.GetType()));
-                    break;
-            }
+            if (e.NavigationMode == NavigationMode.New || dc is MainPageViewModelBase) 
+                ViewModel?.BreadcrumbItems.Add(new BreadcrumbViewModel(mainPage.TitleKey, mainPage.GetType()));
+            else if (e.NavigationMode == NavigationMode.Back && ViewModel?.BreadcrumbItems.Count > 0)
+                ViewModel?.BreadcrumbItems.RemoveAt(ViewModel.BreadcrumbItems.Count - 1);
         }
-
-
+        
         foreach (NavigationViewItem nvi in NavView.MenuItemsSource)
         {
             if (nvi.Tag == mainPage)

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Threading;
+using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.InterfaceOld.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
@@ -163,9 +164,7 @@ namespace GalaxyBudsClient.Utils.Interface
                         });
                         break;
                     case ItemType.ToggleEqualizer:
-                        var eqEnabled =
-                            (MainWindow.Instance.Pager.FindPage(AbstractPage.Pages.Equalizer) as EqualizerPage)
-                            ?.EqualizerEnabled ?? DeviceMessageCache.Instance.ExtendedStatusUpdate?.EqualizerEnabled ?? false;
+                        var eqEnabled = MainWindow2.Instance.MainView.ResolveViewModelByType<EqualizerPageViewModel>()?.IsEqEnabled ?? false;
                         items.Add(new NativeMenuItem(eqEnabled ? Loc.Resolve("tray_disable_eq") : Loc.Resolve("tray_enable_eq"))
                         {  
                             Command = new MiniCommand(OnTrayMenuCommand),
