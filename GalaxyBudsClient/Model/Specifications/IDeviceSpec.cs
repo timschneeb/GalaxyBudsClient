@@ -17,10 +17,13 @@ namespace GalaxyBudsClient.Model.Specifications
             AmbientVoiceFocus,
             AmbientSidetone,
             AmbientPassthrough,
+            /// <summary>Device supports Ambient sound only</summary>
             AmbientSound,
+            /// <summary>Device supports ANC only</summary>
             Anc,
-            BixbyWakeup,
+            /// <summary>Device supports all noise controls</summary>
             NoiseControl,
+            BixbyWakeup,
             DetectConversations,
             GamingMode,
             DoubleTapVolume,

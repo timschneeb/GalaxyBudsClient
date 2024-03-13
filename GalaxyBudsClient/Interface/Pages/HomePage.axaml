@@ -5,13 +5,15 @@
              xmlns:viewModels="clr-namespace:GalaxyBudsClient.Interface.ViewModels"
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.HomePage"
-             x:DataType="viewModels:HomePageViewModel"
+             x:DataType="pages:HomePageViewModel"
              x:CompileBindings="True">
 
     <Design.DataContext>
-        <viewModels:EqualizerPageViewModel />
+        <pages:EqualizerPageViewModel />
     </Design.DataContext>
 
     <ScrollViewer>
@@ -23,20 +25,33 @@
             </controls:SettingsGroup>
             
             <controls:SettingsGroup>
-                <!-- TODO: hook up isVisible to BudsLive -->
                 <controls:SettingsSwitchItem Content="Active noise cancelling"
                                              Symbol="HeadphonesSoundWave"
                                              IsVisible="False"
-                                             IsClickEnabled="True" />
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="Anc" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
 
-                <!-- TODO: hook up !isVisible & classes=First to BudsLive -->
                 <controls:SettingsSymbolItem Name="NoiseControl"
                                              Classes="First"
                                              Content="{DynamicResource mainpage_noise}"
                                              Symbol="HeadphonesSoundWave"
                                              ActionSymbol="ChevronRight"
-                                             IsClickEnabled="True" />
-
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Not="True" Feature="Anc" />
+                        <!-- Workaround until ClipToBounds works with CornerRadius -->
+                        <ext:FeatureTrigger Not="True" Feature="Anc">
+                            <AddClassAction ClassName="First" RemoveIfExists="True"/>
+                        </ext:FeatureTrigger>
+                        <ext:FeatureTrigger Not="False" Feature="Anc">
+                            <RemoveClassAction ClassName="First"/>
+                        </ext:FeatureTrigger>
+                    </Interaction.Behaviors>
+                </controls:SettingsSymbolItem>
+                    
                 <controls:SettingsSymbolItem Name="Equalizer" 
                                              Content="{DynamicResource mainpage_equalizer}"
                                              Symbol="DeviceEq"

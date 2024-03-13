@@ -8,7 +8,7 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using ReactiveUI.Fody.Helpers;
 
-namespace GalaxyBudsClient.Interface.ViewModels;
+namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class EqualizerPageViewModel : MainPageViewModelBase
 {
@@ -81,7 +81,7 @@ public class EqualizerPageViewModel : MainPageViewModelBase
         PropertyChanged += OnPropertyChanged;
     }
 
-    public override Control CreateView() => new Pages.EqualizerPage();
+    public override Control CreateView() => new Interface.Pages.EqualizerPage();
     
     [Reactive] public bool IsEqEnabled { set; get; }
     [Reactive] public int EqPreset { set; get; }

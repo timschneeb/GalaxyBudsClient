@@ -5,6 +5,7 @@ using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Interface.Controls;
 using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels;
+using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
 

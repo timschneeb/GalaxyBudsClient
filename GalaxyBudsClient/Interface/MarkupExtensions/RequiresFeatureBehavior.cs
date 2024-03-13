@@ -16,16 +16,25 @@ public class RequiresFeatureBehavior : Behavior<Control>
     public static readonly StyledProperty<IDeviceSpec.Feature> FeatureProperty =
         AvaloniaProperty.Register<RequiresFeatureBehavior, IDeviceSpec.Feature>(nameof(Feature));
     
+    public static readonly StyledProperty<bool> NotProperty =
+        AvaloniaProperty.Register<RequiresFeatureBehavior, bool>(nameof(Not));
+    
     public IDeviceSpec.Feature Feature
     {
         get => GetValue(FeatureProperty);
         set => SetValue(FeatureProperty, value);
     }
     
+    public bool Not
+    {
+        get => GetValue(NotProperty);
+        set => SetValue(NotProperty, value);
+    }
+    
     /// <inheritdoc />
     protected override void OnAttachedToVisualTree()
     {
-        UpdateVisibility();
+        UpdateState();
         Settings.Instance.RegisteredDevice.PropertyChanged += OnDevicePropertyChanged;
     }
     
@@ -37,14 +46,16 @@ public class RequiresFeatureBehavior : Behavior<Control>
 
     private void OnDevicePropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        UpdateVisibility();
+        UpdateState();
     }
     
-    private void UpdateVisibility()
+    protected bool State => BluetoothImpl.Instance.DeviceSpec.Supports(Feature) && !Not ||
+                            !BluetoothImpl.Instance.DeviceSpec.Supports(Feature) && Not;
+    protected virtual void UpdateState()
     {
         if (AssociatedObject is null)
             return;
 
-        AssociatedObject.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(Feature);
+        AssociatedObject.IsVisible = State;
     }
 }

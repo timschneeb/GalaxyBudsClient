@@ -10,12 +10,13 @@
              xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
              mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="1200"
              x:Class="GalaxyBudsClient.Interface.Pages.SettingsPage"
              x:CompileBindings="True"
-             x:DataType="viewModels:SettingsPageViewModel">
+             x:DataType="pages:SettingsPageViewModel">
     <Design.DataContext>
-        <viewModels:SettingsPageViewModel />
+        <pages:SettingsPageViewModel />
     </Design.DataContext>
 
     <ScrollViewer>
