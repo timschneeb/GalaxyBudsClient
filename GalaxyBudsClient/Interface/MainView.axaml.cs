@@ -190,7 +190,11 @@ public partial class MainView : UserControl
         PageViewModelBase? mainPage = null;
         if (dc is MainPageViewModelBase mpvmb)
         {
-            FrameView.BackStack.Clear();
+            if (dc is HomePageViewModel)
+            {
+                FrameView.BackStack.Clear();
+            }
+
             ViewModel?.BreadcrumbItems.Clear();
             mainPage = mpvmb;
         }

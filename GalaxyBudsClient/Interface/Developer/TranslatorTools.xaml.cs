@@ -18,14 +18,12 @@ namespace GalaxyBudsClient.Interface.Developer
     {
         private class ViewModel
         {
-            public IEnumerable PagesSource => Enum.GetValues(typeof(AbstractPage.Pages)).Cast<AbstractPage.Pages>().ToList();
             public IEnumerable LocaleSource => Enum.GetValues(typeof(Locales)).Cast<Locales>().ToList();
             public IEnumerable ModelSource => Enum.GetValues(typeof(Model.Constants.Models)).Cast<Model.Constants.Models>().ToList();
         }
 
         private readonly CheckBox _ignoreConnLoss;
         private readonly CheckBox _dummyDevices;
-        private readonly ComboBox _pages;
         private readonly ComboBox _locales;
         private readonly TextBox _xamlPath;
 
@@ -39,7 +37,6 @@ namespace GalaxyBudsClient.Interface.Developer
 
             _ignoreConnLoss = this.GetControl<CheckBox>("IgnoreConnLoss");
             _dummyDevices = this.GetControl<CheckBox>("DummyDevices");
-            //_pages = this.GetControl<ComboBox>("Pages");
             _locales = this.GetControl<ComboBox>("Locales");
             _xamlPath = this.GetControl<TextBox>("XamlPath");
 

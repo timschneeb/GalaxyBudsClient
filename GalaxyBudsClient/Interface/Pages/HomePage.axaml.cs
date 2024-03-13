@@ -1,7 +1,7 @@
-using Avalonia.Controls;
+using System;
 using Avalonia.Interactivity;
 using FluentAvalonia.UI.Controls;
-using GalaxyBudsClient.Interface.Controls;
+using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels;
 
 namespace GalaxyBudsClient.Interface.Pages;
@@ -16,9 +16,13 @@ public partial class HomePage : BasePage<HomePageViewModel>
     }
 
     private void OnSettingsItemClicked(object? sender, RoutedEventArgs e)
-    { 
+    {
+        if (e.Source is not SettingsExpanderItem item)
+            return;
         
-        // TODO
+        var targetType = Type.GetType($"GalaxyBudsClient.Interface.ViewModels.{item.Name}PageViewModel");
+        if (targetType != null) 
+            NavigationService.Instance.Navigate(targetType);
     }
 
     protected override void OnLanguageUpdated()
