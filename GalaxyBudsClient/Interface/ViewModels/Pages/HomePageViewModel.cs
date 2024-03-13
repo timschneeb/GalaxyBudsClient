@@ -2,7 +2,7 @@
 using FluentIcons.Common;
 using GalaxyBudsClient.Interface.Pages;
 
-namespace GalaxyBudsClient.Interface.ViewModels;
+namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class HomePageViewModel : MainPageViewModelBase
 {

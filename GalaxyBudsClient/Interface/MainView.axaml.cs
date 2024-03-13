@@ -15,6 +15,7 @@ using FluentAvalonia.UI.Navigation;
 using FluentAvalonia.UI.Windowing;
 using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels;
+using GalaxyBudsClient.Interface.ViewModels.Pages;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
 namespace GalaxyBudsClient.Interface;

@@ -6,13 +6,14 @@
              xmlns:converters="clr-namespace:GalaxyBudsClient.Interface.Converters"
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.EqualizerPage"
-             x:DataType="viewModels:EqualizerPageViewModel"
+             x:DataType="pages:EqualizerPageViewModel"
              x:CompileBindings="True">
     
     <Design.DataContext>
-        <viewModels:EqualizerPageViewModel />
+        <pages:EqualizerPageViewModel />
     </Design.DataContext>
 
     <ScrollViewer>

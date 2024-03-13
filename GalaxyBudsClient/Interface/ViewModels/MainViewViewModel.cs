@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using Avalonia.Controls;
 using FluentAvalonia.UI.Controls;
+using GalaxyBudsClient.Interface.ViewModels.Pages;
 
 namespace GalaxyBudsClient.Interface.ViewModels;
 

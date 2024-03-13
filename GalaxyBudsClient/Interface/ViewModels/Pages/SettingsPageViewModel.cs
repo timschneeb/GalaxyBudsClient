@@ -4,11 +4,11 @@ using FluentIcons.Common;
 using GalaxyBudsClient.Platform;
 using ReactiveUI;
 
-namespace GalaxyBudsClient.Interface.ViewModels;
+namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class SettingsPageViewModel : MainPageViewModelBase
 {
-    public override Control CreateView() => new Pages.SettingsPage();
+    public override Control CreateView() => new Interface.Pages.SettingsPage();
     
     public bool IsAutoStartEnabled
     {

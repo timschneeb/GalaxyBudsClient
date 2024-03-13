@@ -5,6 +5,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Threading;
 using GalaxyBudsClient.Interface.ViewModels;
+using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.InterfaceOld.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;

@@ -16,7 +16,7 @@ public class EventDispatcherAction : AvaloniaObject, IAction
         set => SetValue(EventProperty, value);
     }
 
-    public virtual object Execute(object? sender, object? parameter)
+    public object Execute(object? sender, object? parameter)
     {
         EventDispatcher.Instance.Dispatch(Event);
         return true;
