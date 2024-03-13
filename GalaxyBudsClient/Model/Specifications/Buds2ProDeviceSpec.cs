@@ -26,7 +26,10 @@ namespace GalaxyBudsClient.Model.Specifications
                 { IDeviceSpec.Feature.AncNoiseReductionLevels, null },
                 { IDeviceSpec.Feature.AmbientSidetone, null },
                 { IDeviceSpec.Feature.AmbientCustomize, null },
-                { IDeviceSpec.Feature.AncWithOneEarbud, null },
+                /*{ IDeviceSpec.Feature.AncWithOneEarbud, null },
+                 TODO: conflicts with AncNoiseReductionLevels and overlaps in UI due to lack of space
+                 This will be fixed with the UI rewrite
+                  */
                 { IDeviceSpec.Feature.DebugSku, null }
             };
         
