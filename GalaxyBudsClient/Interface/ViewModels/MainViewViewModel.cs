@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using Avalonia.Controls;
 using FluentAvalonia.UI.Controls;
+using Reactive.Bindings;
 
 namespace GalaxyBudsClient.Interface.ViewModels;
 
@@ -11,24 +11,31 @@ public class MainViewViewModel : ViewModelBase
     {
         NavigationFactory = new NavigationFactory(this);
     }
-    
-    public override Control CreateView() => new();
 
     public NavigationFactory NavigationFactory { get; }
+    public required Func<Type, PageViewModelBase?> VmResolver { get; set; }
+    public ReactiveCollection<BreadcrumbViewModel> BreadcrumbItems { get; } = [
+        // Workaround: The Breadcrumb library crashes if there are no items when it tries to measure its width 
+        new BreadcrumbViewModel("", typeof(HomePageViewModel)) 
+    ];
 }
 
 public class NavigationFactory(MainViewViewModel owner) : INavigationPageFactory
 {
-    public MainViewViewModel Owner { get; } = owner;
+    private MainViewViewModel Owner { get; } = owner;
 
-    public Control? GetPage(Type srcType)
+    public Control GetPage(Type srcType)
     {
-        return null;
+        var model = Owner.VmResolver(srcType);
+        if (model is null) 
+            throw new ArgumentException("No view model found for type");
+        
+        return GetPageFromObject(model);
     }
 
     public Control GetPageFromObject(object target)
     {
-        if (target is not ViewModelBase model) 
+        if (target is not PageViewModelBase model) 
             throw new ArgumentException("Target must derive from ViewModelBase");
         
         var view = model.CreateView();

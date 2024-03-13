@@ -1,5 +1,4 @@
 using System;
-using Avalonia.Controls;
 using FluentAvalonia.UI.Controls;
 using FluentAvalonia.UI.Media.Animation;
 

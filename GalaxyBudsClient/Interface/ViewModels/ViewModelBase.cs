@@ -10,8 +10,6 @@ public abstract class ViewModelBase : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    public abstract Control CreateView(); 
-
     protected bool RaiseAndSetIfChanged<T>(ref T field, T value, [CallerMemberName] string propertyName = "")
     {
         if (!EqualityComparer<T>.Default.Equals(field, value))
@@ -29,13 +27,15 @@ public abstract class ViewModelBase : INotifyPropertyChanged
     }
 }
 
-
-public interface IMainPageViewModel
+public abstract class PageViewModelBase : ViewModelBase
 {
-    public string NavHeader { get; }
-
-    public Symbol IconKey { get; }
-
-    public bool ShowsInFooter { get; }
+    public abstract Control CreateView(); 
+    public abstract string TitleKey { get; }
 }
 
+public abstract class MainPageViewModelBase : PageViewModelBase
+{
+    public abstract Symbol IconKey { get; }
+
+    public abstract bool ShowsInFooter { get; }
+}
