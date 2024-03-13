@@ -15,8 +15,8 @@ namespace GalaxyBudsClient.Model.Specifications
             Specs.Add(new BudsPlusDeviceSpec());
             Specs.Add(new BudsLiveDeviceSpec());
             Specs.Add(new BudsProDeviceSpec());
+            Specs.Add(new Buds2ProDeviceSpec()); // important: B2Pro is added before B2 to avoid false positives
             Specs.Add(new Buds2DeviceSpec());
-            Specs.Add(new Buds2ProDeviceSpec());
             Specs.Add(new BudsFeDeviceSpec());
         }
         
