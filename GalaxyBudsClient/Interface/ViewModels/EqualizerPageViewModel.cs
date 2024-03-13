@@ -8,7 +8,7 @@ using GalaxyBudsClient.Platform;
 
 namespace GalaxyBudsClient.Interface.ViewModels;
 
-public class EqualizerPageViewModel : ViewModelBase, IMainPageViewModel
+public class EqualizerPageViewModel : MainPageViewModelBase
 {
     public EqualizerPageViewModel()
     {
@@ -63,7 +63,7 @@ public class EqualizerPageViewModel : ViewModelBase, IMainPageViewModel
         set => RaiseAndSetIfChanged(ref _stereoBalance, value);
     }
 
-    public string NavHeader => "Equalizer";
-    public Symbol IconKey => Symbol.DeviceEq;
-    public bool ShowsInFooter => false;
+    public override string TitleKey => "Equalizer";
+    public override Symbol IconKey => Symbol.DeviceEq;
+    public override bool ShowsInFooter => false;
 }

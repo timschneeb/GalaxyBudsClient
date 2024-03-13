@@ -71,9 +71,15 @@
                         </Button>
                     </ui:InfoBar.ActionButton>
                 </ui:InfoBar>
-                <ui:BreadcrumbBar Grid.Row="1"  Margin="20,16" >
-                    <ui:BreadcrumbBarItem Content="System" />
-                    <ui:BreadcrumbBarItem Content="Firmware update" />
+                <ui:BreadcrumbBar Name="BreadcrumbBar" 
+                                  Grid.Row="1"
+                                  ItemsSource="{Binding BreadcrumbItems}"
+                                  Margin="20,16">
+                    <ui:BreadcrumbBar.ItemTemplate>
+                        <DataTemplate x:DataType="vm:BreadcrumbViewModel">
+                            <ui:BreadcrumbBarItem Content="{Binding Title}" />
+                        </DataTemplate>
+                    </ui:BreadcrumbBar.ItemTemplate>
                 </ui:BreadcrumbBar>
                 <ui:Frame Grid.Row="2" Name="FrameView" />
             </Grid>

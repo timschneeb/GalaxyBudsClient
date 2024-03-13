@@ -5,7 +5,7 @@ using GalaxyBudsClient.Platform;
 
 namespace GalaxyBudsClient.Interface.ViewModels;
 
-public class SettingsPageViewModel : ViewModelBase, IMainPageViewModel
+public class SettingsPageViewModel : MainPageViewModelBase
 {
     public override Control CreateView() => new Pages.SettingsPage();
     
@@ -21,7 +21,7 @@ public class SettingsPageViewModel : ViewModelBase, IMainPageViewModel
     
     public string CurrentVersion => Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? "Unknown";
     
-    public string NavHeader => "Settings";
-    public Symbol IconKey => Symbol.Settings;
-    public bool ShowsInFooter => true;
+    public override string TitleKey => "Settings";
+    public override Symbol IconKey => Symbol.Settings;
+    public override bool ShowsInFooter => true;
 }

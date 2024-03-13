@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
 using Avalonia;
 using Avalonia.Animation;
 using Avalonia.Controls;
-using Avalonia.Input;
 using Avalonia.Interactivity;
-using Avalonia.Platform;
 using Avalonia.Styling;
 using Avalonia.Threading;
 using FluentAvalonia.Core;
@@ -14,12 +12,8 @@ using FluentAvalonia.UI.Controls;
 using FluentAvalonia.UI.Media.Animation;
 using FluentAvalonia.UI.Navigation;
 using FluentAvalonia.UI.Windowing;
-using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels;
-using GalaxyBudsClient.Platform;
-using Symbol = FluentIcons.Common.Symbol;
-using SymbolIcon = FluentIcons.Avalonia.Fluent.SymbolIcon;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
 namespace GalaxyBudsClient.Interface;
@@ -31,6 +25,8 @@ public partial class MainView : UserControl
         InitializeComponent();
     }
 
+    private MainViewViewModel? ViewModel => DataContext as MainViewViewModel;
+
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);
@@ -39,16 +35,33 @@ public partial class MainView : UserControl
         // Simple check - all desktop versions of this app will have a window as the TopLevel
         // Mobile and WASM will have something else
         _isDesktop = TopLevel.GetTopLevel(this) is Window;
-        var vm = new MainViewViewModel();
+        var vm = new MainViewViewModel
+        {
+            VmResolver = ResolveViewModelByType
+        };
         DataContext = vm;
         FrameView.NavigationPageFactory = vm.NavigationFactory;
         NavigationService.Instance.Frame = FrameView;
 
         InitializeNavigationPages();
 
+        BreadcrumbBar.ItemClicked += OnBreadcrumbBarItemClicked;
         FrameView.Navigated += OnFrameViewNavigated;
         NavView.ItemInvoked += OnNavigationViewItemInvoked;
-        NavView.BackRequested += OnNavigationViewBackRequested;        
+        NavView.BackRequested += OnNavigationViewBackRequested;
+    }
+
+    private PageViewModelBase? ResolveViewModelByType(Type arg)
+    {
+        return mainPages.FirstOrDefault(p => p.GetType() == arg);
+    }
+
+    private void OnBreadcrumbBarItemClicked(BreadcrumbBar sender, BreadcrumbBarItemClickedEventArgs args)
+    {
+        if (args.Item is BreadcrumbViewModel vm)
+        {
+            NavigationService.Instance.Navigate(vm.PageType);
+        }
     }
 
     protected override void OnLoaded(RoutedEventArgs e)
@@ -61,45 +74,40 @@ public partial class MainView : UserControl
         }
     }
 
-    public void InitializeNavigationPages()
-    {
-
-        var mainPages = new IMainPageViewModel[]
+    private readonly MainPageViewModelBase[] mainPages = [
+        new HomePageViewModel(),
+        /*new HomePageViewModel()
         {
-            new HomePageViewModel(),
-            /*new HomePageViewModel
-            {
-                //NavHeader = "Find My Buds",
-                //IconKey = Symbol.LocationLive
-            },
-            new CoreControlsPageViewModel(coreControls)
-            {
-                //NavHeader = "Ambient Sound",
-                //IconKey = Symbol.HeadphonesSoundWave
-            },
-            new FAControlsOverviewPageViewModel(faControls)
-            {
-                //NavHeader = "Touchpad",
-                //IconKey = Symbol.HandDraw
-            },*/
-            new EqualizerPageViewModel()
-            {
-                //NavHeader = "Equalizer",
-                //IconKey = Symbol.DeviceEq
-            },/*
-            new FAControlsOverviewPageViewModel(faControls)
-            {
-                //NavHeader = "Advanced settings",
-                //IconKey = Symbol.WrenchScrewdriver
-            },
-            new FAControlsOverviewPageViewModel(faControls)
-            {
-                //NavHeader = "System",
-                //IconKey = Symbol.Apps
-            }*/
-            new SettingsPageViewModel()
-        };
+            //NavHeader = "Find My Buds",
+            //IconKey = Symbol.LocationLive
+        },
+        new CoreControlsPageViewModel()
+        {
+            //NavHeader = "Ambient Sound",
+            //IconKey = Symbol.HeadphonesSoundWave
+        },
+        new FAControlsOverviewPageViewModel()
+        {
+            //NavHeader = "Touchpad",
+            //IconKey = Symbol.HandDraw
+        },*/
+        new EqualizerPageViewModel(),/*
+        new FAControlsOverviewPageViewModel()
+        {
+            //NavHeader = "Advanced settings",
+            //IconKey = Symbol.WrenchScrewdriver
+        },
+        new FAControlsOverviewPageViewModel()
+        {
+            //NavHeader = "System",
+            //IconKey = Symbol.Apps
+        }*/
+        new SettingsPageViewModel()
+    ];
 
+    private void InitializeNavigationPages()
+    {
+        
         var menuItems = new List<NavigationViewItemBase>(6);
         var footerItems = new List<NavigationViewItemBase>(1);
 
@@ -110,7 +118,7 @@ public partial class MainView : UserControl
             {
                 var nvi = new NavigationViewItem
                 {
-                    Content = page.NavHeader,
+                    Content = page.TitleKey,
                     Tag = page,
                     IconSource = new SymbolIconSource { Symbol = page.IconKey }
                 };
@@ -140,24 +148,6 @@ public partial class MainView : UserControl
 
             FrameView.NavigateFromObject((NavView.MenuItemsSource.ElementAt(0) as Control)!.Tag);
         });
-    }
-
-    protected override void OnPointerReleased(PointerReleasedEventArgs e)
-    {
-        var pt = e.GetCurrentPoint(this);
-
-        // Frame handles X1 -> BackRequested automatically, we can handle X2
-        // here to enable forward navigation
-        if (pt.Properties.PointerUpdateKind == PointerUpdateKind.XButton2Released)
-        {
-            if (FrameView.CanGoForward)
-            {
-                FrameView.GoForward();
-                e.Handled = true;
-            }
-        }
-
-        base.OnPointerReleased(e);
     }
 
     private void OnNavigationViewBackRequested(object? sender, NavigationViewBackRequestedEventArgs e)
@@ -195,14 +185,16 @@ public partial class MainView : UserControl
     {
         var page = e.Content as Control;
         var dc = page?.DataContext;
-
-        ViewModelBase? mainPage = null;
-
-        if (dc is IMainPageViewModel mpvmb)
+        
+        
+        PageViewModelBase? mainPage = null;
+        if (dc is MainPageViewModelBase mpvmb)
         {
-            mainPage = (ViewModelBase)mpvmb;
+            FrameView.BackStack.Clear();
+            ViewModel?.BreadcrumbItems.Clear();
+            mainPage = mpvmb;
         }
-       /* else if (dc is PageBaseViewModel pbvm)
+        /* else if (dc is PageBaseViewModel pbvm)
         {
             mainPage = pbvm.Parent;
         }
@@ -210,6 +202,20 @@ public partial class MainView : UserControl
         {
             mainPage = cpb.CreationContext.Parent;
         }*/
+
+        if (mainPage != null)
+        {
+            switch (e.NavigationMode)
+            {
+                case NavigationMode.Back when ViewModel?.BreadcrumbItems.Count > 0:
+                    ViewModel?.BreadcrumbItems.RemoveAt(ViewModel.BreadcrumbItems.Count - 1);
+                    break;
+                case NavigationMode.New:
+                    ViewModel?.BreadcrumbItems.Add(new BreadcrumbViewModel(mainPage.TitleKey, mainPage.GetType()));
+                    break;
+            }
+        }
+
 
         foreach (NavigationViewItem nvi in NavView.MenuItemsSource)
         {

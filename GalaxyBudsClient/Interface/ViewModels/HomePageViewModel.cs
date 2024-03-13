@@ -5,7 +5,7 @@ using GalaxyBudsClient.Interface.Pages;
 
 namespace GalaxyBudsClient.Interface.ViewModels;
 
-public class HomePageViewModel : ViewModelBase, IMainPageViewModel
+public class HomePageViewModel : MainPageViewModelBase
 {
     public override Control CreateView() => new HomePage();
     
@@ -14,9 +14,9 @@ public class HomePageViewModel : ViewModelBase, IMainPageViewModel
         
     }
 
-    public string NavHeader => "Home";
-    public Symbol IconKey => Symbol.Home;
-    public bool ShowsInFooter => false;
+    public override string TitleKey => "Home";
+    public override Symbol IconKey => Symbol.Home;
+    public override bool ShowsInFooter => false;
 }
 
 
