@@ -159,6 +159,7 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="welcome_darkmode_content">Your eyes are already burning? Use a darker color scheme instead! (Reload required)</sys:String>
 
     <!--Main page-->
+    <sys:String x:Key="mainpage_header">Home</sys:String>
     <sys:String x:Key="mainpage_corrupt_data">Received corrupted data. Reconnecting...</sys:String>
     <sys:String x:Key="mainpage_fit_test">Earbud fit test</sys:String>
     <sys:String x:Key="mainpage_find_my_earbuds">Find my earbuds</sys:String>

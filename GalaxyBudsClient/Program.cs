@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.ReactiveUI;
 using GalaxyBudsClient.Cli;
 using GalaxyBudsClient.Cli.Ipc;
 using GalaxyBudsClient.Platform;
@@ -94,6 +95,7 @@ namespace GalaxyBudsClient
                 })
                 .WithInterFont()
                 .UsePlatformDetect()
+                .UseReactiveUI()
                 .LogToTrace();
 
     }

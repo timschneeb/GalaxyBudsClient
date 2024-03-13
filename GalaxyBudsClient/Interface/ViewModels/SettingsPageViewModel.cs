@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using FluentIcons.Common;
 using GalaxyBudsClient.Platform;
+using ReactiveUI;
 
 namespace GalaxyBudsClient.Interface.ViewModels;
 
@@ -15,13 +16,13 @@ public class SettingsPageViewModel : MainPageViewModelBase
         set
         {
             AutoStartImpl.Instance.Enabled = value;
-            RaisePropertyChanged(nameof(IsAutoStartEnabled));
+            this.RaisePropertyChanged();
         }
     }
     
     public string CurrentVersion => Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? "Unknown";
     
-    public override string TitleKey => "Settings";
+    public override string TitleKey => "settings_header";
     public override Symbol IconKey => Symbol.Settings;
     public override bool ShowsInFooter => true;
 }

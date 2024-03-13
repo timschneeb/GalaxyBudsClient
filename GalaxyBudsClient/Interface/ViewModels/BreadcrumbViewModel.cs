@@ -1,5 +1,6 @@
 using System;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using ReactiveUI;
 
 namespace GalaxyBudsClient.Interface.ViewModels;
 
@@ -14,7 +15,7 @@ public class BreadcrumbViewModel : ViewModelBase
 
     private void OnLanguageUpdated()
     {
-        RaisePropertyChanged(nameof(Title));
+        this.RaisePropertyChanged(nameof(Title));
     }
 
     public Type PageType { get; set; }

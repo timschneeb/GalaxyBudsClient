@@ -1,5 +1,4 @@
-﻿using System;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using FluentIcons.Common;
 using GalaxyBudsClient.Interface.Pages;
 
@@ -14,7 +13,7 @@ public class HomePageViewModel : MainPageViewModelBase
         
     }
 
-    public override string TitleKey => "Home";
+    public override string TitleKey => "mainpage_header";
     public override Symbol IconKey => Symbol.Home;
     public override bool ShowsInFooter => false;
 }

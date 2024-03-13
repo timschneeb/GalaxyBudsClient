@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using Avalonia.Controls;
 using FluentAvalonia.UI.Controls;
-using Reactive.Bindings;
 
 namespace GalaxyBudsClient.Interface.ViewModels;
 
@@ -14,7 +14,7 @@ public class MainViewViewModel : ViewModelBase
 
     public NavigationFactory NavigationFactory { get; }
     public required Func<Type, PageViewModelBase?> VmResolver { get; set; }
-    public ReactiveCollection<BreadcrumbViewModel> BreadcrumbItems { get; } = [
+    public ObservableCollection<BreadcrumbViewModel> BreadcrumbItems { get; } = [
         // Workaround: The Breadcrumb library crashes if there are no items when it tries to measure its width 
         new BreadcrumbViewModel("", typeof(HomePageViewModel)) 
     ];
