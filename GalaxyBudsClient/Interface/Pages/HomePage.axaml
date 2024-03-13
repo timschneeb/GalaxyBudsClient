@@ -23,36 +23,46 @@
             </controls:SettingsGroup>
             
             <controls:SettingsGroup>
+                <!-- TODO: hook up isVisible to BudsLive -->
                 <controls:SettingsSwitchItem Content="Active noise cancelling"
                                              Symbol="HeadphonesSoundWave"
+                                             IsVisible="False"
                                              IsClickEnabled="True" />
 
-                <controls:SettingsSymbolItem Content="{DynamicResource mainpage_noise}"
+                <!-- TODO: hook up !isVisible & classes=First to BudsLive -->
+                <controls:SettingsSymbolItem Name="NoiseControl"
+                                             Classes="First"
+                                             Content="{DynamicResource mainpage_noise}"
                                              Symbol="HeadphonesSoundWave"
                                              ActionSymbol="ChevronRight"
                                              IsClickEnabled="True" />
 
-                <controls:SettingsSymbolItem Content="{DynamicResource mainpage_equalizer}"
+                <controls:SettingsSymbolItem Name="Equalizer" 
+                                             Content="{DynamicResource mainpage_equalizer}"
                                              Symbol="DeviceEq"
                                              ActionSymbol="ChevronRight"
                                              IsClickEnabled="True" />
 
-                <controls:SettingsSymbolItem Content="{DynamicResource mainpage_find_my_earbuds}"
+                <controls:SettingsSymbolItem Name="Find"
+                                             Content="{DynamicResource mainpage_find_my_earbuds}"
                                              Symbol="LocationLive"
                                              ActionSymbol="ChevronRight"
                                              IsClickEnabled="True" />
 
-                <controls:SettingsSymbolItem Content="{DynamicResource mainpage_touchpad}"
+                <controls:SettingsSymbolItem Name="Touchpad" 
+                                             Content="{DynamicResource mainpage_touchpad}"
                                              Symbol="HandDraw"
                                              ActionSymbol="ChevronRight"
                                              IsClickEnabled="True" />
 
-                <controls:SettingsSymbolItem Content="{DynamicResource mainpage_advanced}"
+                <controls:SettingsSymbolItem Name="Advanced" 
+                                             Content="{DynamicResource mainpage_advanced}"
                                              Symbol="WrenchScrewdriver"
                                              ActionSymbol="ChevronRight"
                                              IsClickEnabled="True" />
 
-                <controls:SettingsSymbolItem Content="{DynamicResource mainpage_system}"
+                <controls:SettingsSymbolItem Name="System"
+                                             Content="{DynamicResource mainpage_system}"
                                              Symbol="Apps"
                                              ActionSymbol="ChevronRight"
                                              IsClickEnabled="True" />

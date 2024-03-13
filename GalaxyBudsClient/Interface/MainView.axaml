@@ -4,8 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ui="using:FluentAvalonia.UI.Controls"             
              xmlns:vm="using:GalaxyBudsClient.Interface.ViewModels"
-             xmlns:interface="clr-namespace:GalaxyBudsClient.Interface"
-             xmlns:system="clr-namespace:System;assembly=System.Runtime"
              xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
@@ -53,6 +51,7 @@
                            IsSettingsVisible="False"
                            IsBackEnabled="{Binding #FrameView.CanGoBack}">
             <Grid RowDefinitions="Auto,Auto,*">
+                
                 <ui:InfoBar Title="Disconnected"
                             IsOpen="{Binding !IsConnected, Source={x:Static platform:BluetoothImpl.Instance}}" 
                             IsClosable="False"
@@ -71,7 +70,9 @@
                         </Button>
                     </ui:InfoBar.ActionButton>
                 </ui:InfoBar>
+                
                 <ui:BreadcrumbBar Name="BreadcrumbBar" 
+                                  MinHeight="39"
                                   Grid.Row="1"
                                   ItemsSource="{Binding BreadcrumbItems}"
                                   Margin="20,16">
@@ -81,6 +82,7 @@
                         </DataTemplate>
                     </ui:BreadcrumbBar.ItemTemplate>
                 </ui:BreadcrumbBar>
+                
                 <ui:Frame Grid.Row="2" Name="FrameView" />
             </Grid>
         </ui:NavigationView>
