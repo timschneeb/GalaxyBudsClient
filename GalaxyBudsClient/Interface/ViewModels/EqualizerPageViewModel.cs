@@ -5,6 +5,7 @@ using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
+using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels;
 
@@ -39,31 +40,12 @@ public class EqualizerPageViewModel : MainPageViewModelBase
     }
 
     public override Control CreateView() => new Pages.EqualizerPage();
+    
+    [Reactive] public bool IsEqEnabled { set; get; }
+    [Reactive] public int EqPreset { set; get; }
+    [Reactive] public int StereoBalance { set; get; }
 
-    private bool _isEqEnabled;
-    public bool IsEqEnabled
-    {
-        get => _isEqEnabled;
-        set => RaiseAndSetIfChanged(ref _isEqEnabled, value);
-    }
-
-    private int _eqPreset;
-
-    public int EqPreset
-    {
-        get => _eqPreset;
-        set => RaiseAndSetIfChanged(ref _eqPreset, value);
-    }
-
-    private int _stereoBalance;
-
-    public int StereoBalance
-    {
-        get => _stereoBalance;
-        set => RaiseAndSetIfChanged(ref _stereoBalance, value);
-    }
-
-    public override string TitleKey => "Equalizer";
+    public override string TitleKey => "eq_header";
     public override Symbol IconKey => Symbol.DeviceEq;
     public override bool ShowsInFooter => false;
 }

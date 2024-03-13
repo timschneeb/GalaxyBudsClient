@@ -293,8 +293,8 @@ namespace GalaxyBudsClient.Platform
         {
             if (!IsConnectedLegacy)
             {
-                // ConnectionLostPage hides error details for SendFailed, so add stack trace for the times we do need to debug this
-                OnBluetoothError(new BluetoothException(BluetoothException.ErrorCodes.SendFailed, $"Attempted to send command to disconnected device: {Environment.StackTrace.Substring(700)}"));
+                // TODO fail silently here?
+                OnBluetoothError(new BluetoothException(BluetoothException.ErrorCodes.SendFailed, $"Attempted to send command to disconnected device"));
                 return;
             }
             
