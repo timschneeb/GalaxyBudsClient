@@ -234,13 +234,13 @@ namespace GalaxyBudsClient.Message
                 return;
             }
 
-            if ((DeviceMessageCache.Instance.BasicStatusUpdate?.BatteryL ?? 100) < 15 ||
+            /*if ((DeviceMessageCache.Instance.BasicStatusUpdate?.BatteryL ?? 100) < 15 ||
                 (DeviceMessageCache.Instance.BasicStatusUpdate?.BatteryR ?? 100) < 15)
             {
                 Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.BatteryLow,
                     Loc.Resolve("fw_fail_lowbattery")));
                 return;
-            }
+            }*/
 
             _mtuSize = 0;
             _currentSegment = 0;
