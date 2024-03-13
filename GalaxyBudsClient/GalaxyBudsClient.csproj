@@ -99,7 +99,7 @@
     <PropertyGroup>
         <!-- https://github.com/AvaloniaUI/Avalonia/commit/76caeedfd2baf1911f889011189d1c21657d2987,
             last release at time of writing is 11.0.9, so anything newer should include a fix -->
-        <AvaloniaVersion>11.1.999-cibuild0045273-beta</AvaloniaVersion>
+        <AvaloniaVersion>11.1.0-beta1</AvaloniaVersion>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
@@ -110,14 +110,14 @@
         <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="$(AvaloniaVersion)" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
         <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.10" />
-        <PackageReference Include="Avalonia.Svg.Skia" Version="11.0.0.13" />
-        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.0.6" />
+        <PackageReference Include="Avalonia.Svg.Skia" Version="11.1.0-beta1" />
+        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.1.0-beta1" />
         <PackageReference Include="CommandLineParser" Version="2.9.2-ci-210" />
         <PackageReference Include="Config.Net" Version="5.1.5" />
         <PackageReference Include="CS-Script.Core" Version="2.0.0" />
         <PackageReference Include="FluentAvalonia.BreadcrumbBar" Version="2.0.2" />
         <PackageReference Include="FluentAvaloniaUI" Version="2.0.5" />
-        <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="1.1.230" />
+        <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="1.1.232" />
         <PackageReference Include="InputSimulatorCore" Version="1.0.5" />
         <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
         <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
@@ -130,7 +130,7 @@
         <PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
         <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
         <PackageReference Include="Serilog.Sinks.Trace" Version="3.0.0" />
-        <PackageReference Include="SharpHook" Version="5.2.3" />
+        <PackageReference Include="SharpHook" Version="5.3.1" />
         <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
         <PackageReference Include="Tmds.DBus" Version="0.16.0" />
         <PackageReference Include="Trinet.Core.IO.Ntfs" Version="4.1.1" />

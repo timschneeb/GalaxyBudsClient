@@ -26,16 +26,22 @@
                     IsChecked="{Binding IsEqEnabled}" />
                 
                 <controls:SettingsSliderItem
+                    Name="EqPreset"
                     Content="{DynamicResource eq_preset}"
                     Description="{Binding EqPreset, Converter={StaticResource EqPresetConverter}}" 
                     IconSource="{StaticResource IconPlaceholder}"
                     IsEnabled="{Binding IsEqEnabled}"
-                    Maximum="4"
+                    Maximum="{Binding MaximumEqPreset}"
                     Value="{Binding EqPreset}" />
             </controls:SettingsGroup>
             
             <controls:SettingsGroup>
+                <Interaction.Behaviors>
+                    <ext:RequiresFeatureBehavior Feature="StereoPan" />
+                </Interaction.Behaviors>
+                
                 <controls:SettingsSliderItem
+                    Name="StereoBalance"
                     Content="{DynamicResource eq_stereo_balance}"
                     Description="{Binding StereoBalance, Converter={StaticResource StereoBalanceConverter}}"
                     Symbol="DualScreenSpan"

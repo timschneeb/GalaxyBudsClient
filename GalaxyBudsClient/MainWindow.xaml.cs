@@ -30,7 +30,6 @@ using NetSparkleUpdater.Enums;
 using Serilog;
 using Application = Avalonia.Application;
 using Environment = System.Environment;
-using EqualizerPage = GalaxyBudsClient.InterfaceOld.Pages.EqualizerPage;
 using MessageBox = GalaxyBudsClient.InterfaceOld.Dialogs.MessageBox;
 using RoutedEventArgs = Avalonia.Interactivity.RoutedEventArgs;
 using Window = Avalonia.Controls.Window;
@@ -105,7 +104,7 @@ namespace GalaxyBudsClient
             
             // Defer the rest of the page registration
             Dispatcher.UIThread.Post(() => Pager.RegisterPages(new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(),
-                new CreditsPage(), new TouchpadPage(), new EqualizerPage(), new AdvancedPage(), new NoiseProPage(),
+                new CreditsPage(), new TouchpadPage(), new AdvancedPage(), new NoiseProPage(),
                 new SystemPage(), new SelfTestPage(), 
                 CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(), UnsupportedFeaturePage,
                 UpdatePage, UpdateProgressPage, new SystemCoredumpPage(), new HotkeyPage(), new FirmwareSelectionPage(),

@@ -17,8 +17,7 @@ using FluentAvalonia.Styling;
 using FluentAvalonia.UI.Media;
 using FluentAvalonia.UI.Windowing;
 using GalaxyBudsClient.Bluetooth;
-using GalaxyBudsClient.Interface.Services;
-using GalaxyBudsClient.Interface.Dialogs;
+using GalaxyBudsClient.Interface;
 using GalaxyBudsClient.InterfaceOld.Dialogs;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
@@ -32,18 +31,19 @@ using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Serilog;
 using Application = Avalonia.Application;
 using Environment = System.Environment;
-using MessageBox = GalaxyBudsClient.InterfaceOld.Dialogs.MessageBox;
 
 namespace GalaxyBudsClient
 {
-    public sealed class MainWindow2 : AppWindow
+    public class MainWindow2 : AppWindow
     {
         private BudsPopup? _popup;
-        
+
         private bool _popupShown = false;
         private bool _firstShow = true;
         private WearStates _lastWearState = WearStates.Both;
         
+        public MainView MainView { get; }
+
         public bool OverrideMinimizeTray { set; get; }
         
         private static MainWindow2? _instance;
@@ -54,6 +54,8 @@ namespace GalaxyBudsClient
         {
             AvaloniaXamlLoader.Load(this);
             this.AttachDevTools();
+
+            MainView = this.GetControl<MainView>("MainView");
             
             BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
             BluetoothImpl.Instance.Disconnected += OnDisconnected;

@@ -1,4 +1,3 @@
-using Avalonia.Controls;
 using GalaxyBudsClient.Interface.ViewModels;
 
 namespace GalaxyBudsClient.Interface.Pages;
@@ -12,7 +11,7 @@ public partial class EqualizerPage : BasePage<EqualizerPageViewModel>
 
     protected override void OnLanguageUpdated()
     {
-        // TODO: refresh slider bindings
+        // TODO Sliders descriptions don't update
         base.OnLanguageUpdated();
     }
 }

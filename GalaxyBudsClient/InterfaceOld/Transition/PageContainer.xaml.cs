@@ -65,7 +65,7 @@ namespace GalaxyBudsClient.InterfaceOld.Transition
 			_pageTransition = fadeTransition;
 
 			// Add placeholder page
-			RegisterPages(new DummyPage(), new DummyPage2());
+			RegisterPages(new DummyPage());
 			_currentPage = new DummyPage();
 			Children.Add(_currentPage);
 		}
