@@ -10,7 +10,6 @@ using Avalonia.Threading;
 using CommandLine;
 using FluentAvalonia.Core;
 using FluentAvalonia.UI.Controls;
-using FluentAvalonia.UI.Media.Animation;
 using FluentAvalonia.UI.Navigation;
 using FluentAvalonia.UI.Windowing;
 using GalaxyBudsClient.Interface.Services;
@@ -197,28 +196,14 @@ public partial class MainView : UserControl
 
     private void OnNavigationViewItemInvoked(object? sender, NavigationViewItemInvokedEventArgs e)
     {
-        // Change the current selected item back to normal
-        // SetNVIIcon(sender as NavigationViewItem, false);
+        if (e.InvokedItemContainer is not NavigationViewItem nvi) 
+            return;
 
-        if (e.InvokedItemContainer is NavigationViewItem nvi)
-        {
-            NavigationTransitionInfo info;
-
-            // Keep the frame navigation when not using connected animation but suppress it
-            // if we have a connected animation binding two pages
-           /* TODO if (FrameView.Content is ControlsPageBase cpb &&
-                ((cpb.TargetType == null && nvi.Tag is CoreControlsPageViewModel) ||
-                (cpb.TargetType != null && nvi.Tag is FAControlsOverviewPageViewModel)))
-            {
-                info = new SuppressNavigationTransitionInfo();
-            }
-            else*/
-            {
-                info = e.RecommendedNavigationTransitionInfo;
-            }
-
-            NavigationService.Instance.NavigateFromContext(nvi.Tag, info);
-        }
+        if (nvi.Tag == null)
+            throw new InvalidOperationException("Tag is null");
+            
+        // TODO: maybe customize transitions? (up/down for NVIs and left/right for subpages)
+        NavigationService.Instance.NavigateFromContext(nvi.Tag, e.RecommendedNavigationTransitionInfo);
     }
 
     private void OnFrameViewNavigated(object? sender, NavigationEventArgs e)
@@ -282,9 +267,6 @@ public partial class MainView : UserControl
 
     private static void SetNvIcon(NavigationViewItem? item, bool selected)
     {
-        // Technically, yes you could set up binding and converters and whatnot to let the icon change
-        // between filled and unfilled based on selection, but this is so much simpler 
-
         var t = item?.Tag;
 
         if (t is ViewModelBase && item?.IconSource is SymbolIconSource source)
