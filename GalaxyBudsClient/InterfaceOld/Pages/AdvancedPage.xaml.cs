@@ -44,17 +44,17 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 		public override void OnPageShown()
 		{
 			this.GetControl<Border>("HotkeysBixby").IsVisible =
-					PlatformUtils.SupportsHotkeys || BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.BixbyWakeup);
+					PlatformUtils.SupportsHotkeys || BluetoothImpl.Instance.DeviceSpec.Supports(Features.BixbyWakeup);
 			this.GetControl<Separator>("BixbyRemapS").IsVisible =
-				PlatformUtils.SupportsHotkeys && BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.BixbyWakeup);
+				PlatformUtils.SupportsHotkeys && BluetoothImpl.Instance.DeviceSpec.Supports(Features.BixbyWakeup);
 			this.GetControl<DetailListItem>("Hotkeys").IsVisible = PlatformUtils.SupportsHotkeys;
-			this.GetControl<Border>("BixbyRemap").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.BixbyWakeup);
-			this.GetControl<Separator>("SidetoneS").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSidetone);
-			this.GetControl<Separator>("PassthroughS").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientPassthrough);
-			_sidetone.GetVisualParent()!.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSidetone);
-			_passthrough.GetVisualParent()!.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientPassthrough);
+			this.GetControl<Border>("BixbyRemap").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(Features.BixbyWakeup);
+			this.GetControl<Separator>("SidetoneS").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientSidetone);
+			this.GetControl<Separator>("PassthroughS").IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientPassthrough);
+			_sidetone.GetVisualParent()!.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientSidetone);
+			_passthrough.GetVisualParent()!.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientPassthrough);
 			this.GetControl<Border>("GearFitTest").IsVisible =
-				BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.GearFitTest);
+				BluetoothImpl.Instance.DeviceSpec.Supports(Features.GearFitTest);
 		}
 		
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
@@ -64,12 +64,12 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
 		private async void SeamlessConnection_OnToggled(object? sender, bool e)
 		{
-			if (!BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.SeamlessConnection))
+			if (!BluetoothImpl.Instance.DeviceSpec.Supports(Features.SeamlessConnection))
 			{
 				MainWindow.Instance.ShowUnsupportedFeaturePage(
 					string.Format(
 						Loc.Resolve("adv_required_firmware_later"), 
-						BluetoothImpl.Instance.DeviceSpec.RecommendedFwVersion(IDeviceSpec.Feature.SeamlessConnection)));
+						BluetoothImpl.Instance.DeviceSpec.RecommendedFwVersion(Features.SeamlessConnection)));
 				return;
 			}
 			await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SEAMLESS_CONNECTION, !e);
@@ -82,12 +82,12 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
 		private async void Sidetone_OnToggled(object? sender, bool e)
 		{
-			if (!BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSidetone))
+			if (!BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientSidetone))
 			{
 				MainWindow.Instance.ShowUnsupportedFeaturePage(
 					string.Format(
 						Loc.Resolve("adv_required_firmware_later"),
-						BluetoothImpl.Instance.DeviceSpec.RecommendedFwVersion(IDeviceSpec.Feature.AmbientSidetone)));
+						BluetoothImpl.Instance.DeviceSpec.RecommendedFwVersion(Features.AmbientSidetone)));
 				return;
 			}
 			await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SIDETONE, e);

@@ -82,6 +82,19 @@ public partial class MainView : UserControl
                 ViewModel.BreadcrumbItems.RemoveAt(i);
             }
             NavigationService.Instance.Navigate(vm.PageType);
+            
+            // Also remove the items from the FrameView's back stack
+            for(var i = FrameView.BackStack.Count - 1; i >= 0; i--)
+            {
+                var stop = FrameView.BackStack[i].SourcePageType == vm.PageType;
+                
+                FrameView.BackStack.RemoveAt(i);
+                
+                if (stop)
+                {
+                    break;
+                }
+            }
         }
     }
 

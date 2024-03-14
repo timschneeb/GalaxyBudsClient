@@ -8,23 +8,25 @@ namespace GalaxyBudsClient.Model.Specifications
 {
     public class BudsFeDeviceSpec : IDeviceSpec
     {
-        public Dictionary<IDeviceSpec.Feature, FeatureRule?> Rules => new()
+        public Dictionary<Features, FeatureRule?> Rules => new()
             {
-                { IDeviceSpec.Feature.SeamlessConnection, null },
-                { IDeviceSpec.Feature.StereoPan, null },
-                { IDeviceSpec.Feature.DoubleTapVolume, null },
-                { IDeviceSpec.Feature.FirmwareUpdates, null },
-                { IDeviceSpec.Feature.NoiseControl, null },
-                { IDeviceSpec.Feature.GamingMode, null },
-                { IDeviceSpec.Feature.CaseBattery, null },
-                { IDeviceSpec.Feature.GearFitTest, null },
-                { IDeviceSpec.Feature.FragmentedMessages, null },
-                { IDeviceSpec.Feature.BixbyWakeup, null },
-                { IDeviceSpec.Feature.AncNoiseReductionLevels, null },
-                { IDeviceSpec.Feature.AmbientSidetone, null },
-                { IDeviceSpec.Feature.AmbientCustomize, null },
-                { IDeviceSpec.Feature.AncWithOneEarbud, null },
-                { IDeviceSpec.Feature.DebugSku, null }
+                { Features.SeamlessConnection, null },
+                { Features.StereoPan, null },
+                { Features.DoubleTapVolume, null },
+                { Features.FirmwareUpdates, null },
+                { Features.NoiseControl, null },
+                { Features.GamingMode, null },
+                { Features.CaseBattery, null },
+                { Features.GearFitTest, null },
+                { Features.FragmentedMessages, null },
+                { Features.BixbyWakeup, null },
+                { Features.AmbientSound, null },
+                { Features.Anc, null },
+                { Features.AncNoiseReductionLevels, null },
+                { Features.AmbientSidetone, null },
+                { Features.AmbientCustomize, null },
+                { Features.AncWithOneEarbud, null },
+                { Features.DebugSku, null }
             };
         
         public Models Device => Models.BudsFe;
@@ -41,5 +43,6 @@ namespace GalaxyBudsClient.Model.Specifications
         );
         
         public string IconResourceKey => "Pro";
+        public int MaximumAmbientVolume => 2;
     }
 }

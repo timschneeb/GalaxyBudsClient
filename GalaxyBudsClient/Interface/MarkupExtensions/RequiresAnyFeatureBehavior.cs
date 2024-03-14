@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Xaml.Interactivity;
@@ -11,24 +13,15 @@ namespace GalaxyBudsClient.Interface.MarkupExtensions;
 /// <summary>
 /// Behavior that hides the control if the connected device does not support the specified feature.
 /// </summary>
-public class RequiresFeatureBehavior : Behavior<Control>
+public class RequiresAnyFeatureBehavior : Behavior<Control>
 {
-    public static readonly StyledProperty<Features> FeatureProperty =
-        AvaloniaProperty.Register<RequiresFeatureBehavior, Features>(nameof(Feature));
+    public static readonly StyledProperty<IEnumerable<Features>> FeaturesProperty =
+        AvaloniaProperty.Register<RequiresAnyFeatureBehavior, IEnumerable<Features>>(nameof(Features));
     
-    public static readonly StyledProperty<bool> NotProperty =
-        AvaloniaProperty.Register<RequiresFeatureBehavior, bool>(nameof(Not));
-    
-    public Features Feature
+    public IEnumerable<Features> Features
     {
-        get => GetValue(FeatureProperty);
-        set => SetValue(FeatureProperty, value);
-    }
-    
-    public bool Not
-    {
-        get => GetValue(NotProperty);
-        set => SetValue(NotProperty, value);
+        get => GetValue(FeaturesProperty);
+        set => SetValue(FeaturesProperty, value);
     }
     
     /// <inheritdoc />
@@ -49,13 +42,11 @@ public class RequiresFeatureBehavior : Behavior<Control>
         UpdateState();
     }
     
-    protected bool State => BluetoothImpl.Instance.DeviceSpec.Supports(Feature) && !Not ||
-                            !BluetoothImpl.Instance.DeviceSpec.Supports(Feature) && Not;
     protected virtual void UpdateState()
     {
         if (AssociatedObject is null)
             return;
 
-        AssociatedObject.IsVisible = State;
+        AssociatedObject.IsVisible = Features.Any(BluetoothImpl.Instance.DeviceSpec.Supports);
     }
 }

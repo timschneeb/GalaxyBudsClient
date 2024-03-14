@@ -48,7 +48,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
         
         private void OnEventReceived(EventDispatcher.Event e, object? arg)
         {
-            if (!BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl))
+            if (!BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
             {
                 return;
             }
@@ -141,7 +141,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
         private void UpdateStrings()
         {
             _volumeSlider.SubtitleDictionary =
-                BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientCustomizeLegacy) ?
+                BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientCustomizeLegacy) ?
                 new Dictionary<int, string>
             {
                 { 0, Loc.Resolve("as_scale_low") },
@@ -155,7 +155,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                 { 2, Loc.Resolve("as_scale_high") }
             };
             _volumeSlider.Maximum =
-                BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientCustomizeLegacy) ? 3 : 2;
+                BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientCustomizeLegacy) ? 3 : 2;
             _ambientTone.SubtitleDictionary = new Dictionary<int, string>()
             {
                 { 0, Loc.Resolve("nc_as_custom_tone_soft") + " +2" },
@@ -165,7 +165,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                 { 4, Loc.Resolve("nc_as_custom_tone_clear") + " +2" }
             };
             
-            var volDictionary = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientCustomizeLegacy) 
+            var volDictionary = BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientCustomizeLegacy) 
                 ? new Dictionary<int, string>()
             {
                 { 0, "-2" },
@@ -181,13 +181,13 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             } ;
             _ambientVolLeft.SubtitleDictionary = _ambientVolRight.SubtitleDictionary = volDictionary;
             _ambientVolLeft.Maximum = _ambientVolRight.Maximum =
-                BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientCustomizeLegacy) ? 4 : 2;
+                BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientCustomizeLegacy) ? 4 : 2;
         }
 
         public override void OnPageShown()
         {
             _ambientCustomBorder.IsVisible =
-                BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientCustomize);
+                BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientCustomize);
         }
         
         private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)

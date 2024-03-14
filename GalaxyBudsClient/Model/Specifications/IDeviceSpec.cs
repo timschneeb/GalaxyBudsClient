@@ -10,42 +10,7 @@ namespace GalaxyBudsClient.Model.Specifications
 {
     public interface IDeviceSpec
     {
-        public enum Feature
-        {
-            SeamlessConnection,
-            AmbientExtraLoud,
-            AmbientVoiceFocus,
-            AmbientSidetone,
-            AmbientPassthrough,
-            /// <summary>Device supports Ambient sound only</summary>
-            AmbientSound,
-            /// <summary>Device supports ANC only</summary>
-            Anc,
-            /// <summary>Device supports all noise controls</summary>
-            NoiseControl,
-            BixbyWakeup,
-            DetectConversations,
-            GamingMode,
-            DoubleTapVolume,
-            CaseBattery,
-            Voltage,
-            Current,
-            FragmentedMessages,
-            StereoPan,
-            FirmwareUpdates,
-            SpatialSensor,
-            AmbientCustomize,
-            AmbientCustomizeLegacy,
-            AncWithOneEarbud,
-            AncNoiseReductionLevels,
-            AdvancedTouchLock,
-            LegacyNoiseControlMode,
-            DebugInfoLegacy,
-            GearFitTest,
-            DebugSku
-        }
-        
-        public Dictionary<Feature, FeatureRule?> Rules { get; }
+        public Dictionary<Features, FeatureRule?> Rules { get; }
         public Models Device { get; }
         public string DeviceBaseName { get; }
         public string FriendlyName => Device.GetModelMetadata()?.Name ?? "null";
@@ -53,18 +18,19 @@ namespace GalaxyBudsClient.Model.Specifications
         public Guid ServiceUuid { get; }
         public IReadOnlyCollection<ItemType> TrayShortcuts { get; }
         public string IconResourceKey { get; }
+        public int MaximumAmbientVolume { get; }
         
-        public bool Supports(Feature feature)
+        public bool Supports(Features features)
         {
             // TODO remove this
-            return feature != Feature.Anc;
+            return true;
             
-            if (!Rules.ContainsKey(feature))
+            if (!Rules.ContainsKey(features))
             {
                 return false;
             }
 
-            if (Rules[feature] == null)
+            if (Rules[features] == null)
             {
                 return true;
             }
@@ -75,12 +41,12 @@ namespace GalaxyBudsClient.Model.Specifications
                 return true;
             }
 
-            return DeviceMessageCache.Instance.ExtendedStatusUpdate.Revision >= Rules[feature]?.MinimumRevision;
+            return DeviceMessageCache.Instance.ExtendedStatusUpdate.Revision >= Rules[features]?.MinimumRevision;
         }
 
-        public string RecommendedFwVersion(Feature feature)
+        public string RecommendedFwVersion(Features features)
         {
-            return Rules.ContainsKey(feature) ? Rules[feature]?.RecommendedFirmwareVersion ?? "---" : "???";
+            return Rules.ContainsKey(features) ? Rules[features]?.RecommendedFirmwareVersion ?? "---" : "???";
         }
     }
     

@@ -20,44 +20,16 @@
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
             
-            <!-- TODO: replace eq_enable_description placeholders -->
             <controls:SettingsGroup>
+                <Interaction.Behaviors>
+                    <ext:RequiresFeatureBehavior Feature="AmbientSound" />
+                </Interaction.Behaviors>
+                
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource as_header}"
                     Description="{DynamicResource as_header_description}"
                     Symbol="MicSparkle"
                     IsChecked="{Binding IsAmbientSoundEnabled}" />
-                
-                <!-- TODO: add correct converter -->
-                <controls:SettingsSliderItem
-                    Content="{DynamicResource as_volume}"
-                    Description="{Binding AmbientSoundVolume, Converter={StaticResource EqPresetConverter}}" 
-                    Symbol="Gauge"
-                    IsEnabled="{Binding IsAmbientSoundEnabled}"
-                    Maximum="{Binding MaximumAmbientSoundVolume}"
-                    Value="{Binding AmbientSoundVolume}" />
-                
-                <controls:SettingsSwitchItem
-                    Content="{DynamicResource as_extrahigh}"
-                    Description="{DynamicResource as_extrahigh_description}"
-                    Symbol="GaugeAdd"
-                    IsEnabled="{Binding IsAmbientSoundEnabled}"
-                    IsChecked="{Binding IsAmbientExtraLoudEnabled}">
-                    <Interaction.Behaviors>
-                        <ext:RequiresFeatureBehavior Feature="AmbientExtraLoud" />
-                    </Interaction.Behaviors>
-                </controls:SettingsSwitchItem>
-
-                <controls:SettingsSwitchItem
-                    Content="{DynamicResource as_voicefocus}"
-                    Description="{DynamicResource as_voicefocus_description}"
-                    Symbol="PersonVoice"
-                    IsEnabled="{Binding IsAmbientSoundEnabled}"
-                    IsChecked="{Binding IsAmbientVoiceFocusEnabled}">
-                    <Interaction.Behaviors>
-                        <ext:RequiresFeatureBehavior Feature="AmbientVoiceFocus" />
-                    </Interaction.Behaviors>
-                </controls:SettingsSwitchItem>
 
                 <controls:SettingsSymbolItem Content="{DynamicResource nc_as_header}"
                                              Description="{DynamicResource nc_as_custom}"
@@ -66,7 +38,6 @@
                                              IsEnabled="{Binding IsAmbientSoundEnabled}"
                                              IsClickEnabled="True">
                     <Interaction.Behaviors>
-                        <ext:RequiresFeatureBehavior Feature="AmbientCustomize" />
                         <EventTriggerBehavior EventName="Click">
                             <ext:NavigationToPageAction PageType="{x:Type pages:AmbientCustomizePageViewModel}" />
                         </EventTriggerBehavior>
@@ -77,7 +48,7 @@
             
             <controls:SettingsGroup>
                 <Interaction.Behaviors>
-                    <ext:RequiresFeatureBehavior Feature="NoiseControl" />
+                    <ext:RequiresFeatureBehavior Feature="Anc" />
                 </Interaction.Behaviors>
                 
                 <controls:SettingsSwitchItem

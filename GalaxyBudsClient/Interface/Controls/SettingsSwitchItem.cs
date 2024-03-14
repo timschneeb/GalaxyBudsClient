@@ -12,6 +12,8 @@ public class SettingsSwitchItem : SettingsSymbolItem
     public SettingsSwitchItem()
     {
         _toggle = new ToggleSwitch();
+        _toggle.IsCheckedChanged += (_, _) => IsChecked = _toggle.IsChecked;
+        
         Click += OnClick;
         IsClickEnabled = true;
         Footer = _toggle;

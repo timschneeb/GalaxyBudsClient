@@ -113,7 +113,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
         public override void OnPageShown()
         {
             // Make sure that we have the current hardware model cached, if supported
-            if(BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DebugSku))
+            if(BluetoothImpl.Instance.DeviceSpec.Supports(Features.DebugSku))
                 _ = BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
             
             RefreshList();

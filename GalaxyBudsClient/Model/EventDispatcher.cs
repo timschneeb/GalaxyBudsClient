@@ -83,29 +83,29 @@ namespace GalaxyBudsClient.Model
             switch (arg)
             {
                 case Event.AmbientToggle:
-                    return (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSound) ||
-                            BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl));
+                    return (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientSound) ||
+                            BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl));
                 case Event.AmbientVolumeUp:
-                    return (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSound) ||
-                            BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl));
+                    return (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientSound) ||
+                            BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl));
                 case Event.AmbientVolumeDown:
-                    return (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSound) ||
-                            BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl));
+                    return (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientSound) ||
+                            BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl));
                 case Event.AncToggle:
-                    return (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Anc) ||
-                            BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl));
+                    return (BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc) ||
+                            BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl));
                 case Event.SwitchAncSensitivity:
-                    return (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Anc) ||
-                            BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl))
-                           && BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AncNoiseReductionLevels);
+                    return (BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc) ||
+                            BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
+                           && BluetoothImpl.Instance.DeviceSpec.Supports(Features.AncNoiseReductionLevels);
                 case Event.SwitchAncOne:
-                    return (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Anc) ||
-                            BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl))
-                           && BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AncWithOneEarbud);
+                    return (BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc) ||
+                            BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
+                           && BluetoothImpl.Instance.DeviceSpec.Supports(Features.AncWithOneEarbud);
                 case Event.ToggleDoubleEdgeTouch:
-                    return BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DoubleTapVolume);
+                    return BluetoothImpl.Instance.DeviceSpec.Supports(Features.DoubleTapVolume);
                 case Event.ToggleConversationDetect:
-                    return BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DetectConversations);
+                    return BluetoothImpl.Instance.DeviceSpec.Supports(Features.DetectConversations);
                 
                 /* INTERNAL */
                 case Event.UpdateTrayIcon:

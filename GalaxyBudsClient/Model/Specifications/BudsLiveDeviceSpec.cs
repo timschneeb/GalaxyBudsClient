@@ -8,21 +8,21 @@ namespace GalaxyBudsClient.Model.Specifications
 {
     public class BudsLiveDeviceSpec : IDeviceSpec
     {
-        public Dictionary<IDeviceSpec.Feature, FeatureRule?> Rules => new()
+        public Dictionary<Features, FeatureRule?> Rules => new()
             {
-                { IDeviceSpec.Feature.SeamlessConnection, new FeatureRule(3, "R180XXU0ATF2")  },
-                { IDeviceSpec.Feature.AmbientPassthrough, null },
-                { IDeviceSpec.Feature.Anc, null },
-                { IDeviceSpec.Feature.GamingMode, null },
-                { IDeviceSpec.Feature.CaseBattery, null },
-                { IDeviceSpec.Feature.FragmentedMessages, null },
-                { IDeviceSpec.Feature.StereoPan, new FeatureRule(7, "R180XXU0AUB5") },
-                { IDeviceSpec.Feature.BixbyWakeup, null },
-                { IDeviceSpec.Feature.FirmwareUpdates, null },
-                { IDeviceSpec.Feature.LegacyNoiseControlMode, null },
-                { IDeviceSpec.Feature.DebugInfoLegacy, null },
-                { IDeviceSpec.Feature.Voltage, null },
-                { IDeviceSpec.Feature.DebugSku, null }
+                { Features.SeamlessConnection, new FeatureRule(3, "R180XXU0ATF2")  },
+                { Features.AmbientPassthrough, null },
+                { Features.Anc, null },
+                { Features.GamingMode, null },
+                { Features.CaseBattery, null },
+                { Features.FragmentedMessages, null },
+                { Features.StereoPan, new FeatureRule(7, "R180XXU0AUB5") },
+                { Features.BixbyWakeup, null },
+                { Features.FirmwareUpdates, null },
+                { Features.LegacyNoiseControlMode, null },
+                { Features.DebugInfoLegacy, null },
+                { Features.Voltage, null },
+                { Features.DebugSku, null }
             };
         
         public Models Device => Models.BudsLive;
@@ -39,5 +39,6 @@ namespace GalaxyBudsClient.Model.Specifications
         );
         
         public string IconResourceKey => "Bean";
+        public int MaximumAmbientVolume => 0; /* ambient sound unsupported */
     }
 }

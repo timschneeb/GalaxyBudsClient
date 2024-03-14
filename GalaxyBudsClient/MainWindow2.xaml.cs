@@ -365,7 +365,7 @@ namespace GalaxyBudsClient
             
             // Reply manager info and request & cache SKU info
             _ = MessageComposer.SetManagerInfo();
-            if(BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DebugSku))
+            if(BluetoothImpl.Instance.DeviceSpec.Supports(Features.DebugSku))
                 _ = BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
         }
 

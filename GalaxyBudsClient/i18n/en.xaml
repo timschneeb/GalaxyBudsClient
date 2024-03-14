@@ -432,6 +432,7 @@ You might need to manually reconnect your Earbuds.</sys:String>
     <!--Noise control >>> Ambient sound-->
     <sys:String x:Key="nc_as_header">Ambient sound settings</sys:String>
     <sys:String x:Key="nc_as_custom">Advanced customization</sys:String>
+    <sys:String x:Key="nc_as_custom_description">Customize ambient sound settings</sys:String>
     <sys:String x:Key="nc_as_custom_volume_l">Ambient sound volume (left)</sys:String>
     <sys:String x:Key="nc_as_custom_volume_r">Ambient sound volume (right)</sys:String>
     <sys:String x:Key="nc_as_custom_tone">Ambient sound tone</sys:String>
