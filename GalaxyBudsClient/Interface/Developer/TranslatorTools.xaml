@@ -9,13 +9,7 @@
         Icon="/Resources/icon_white.ico"
         Title="Galaxy Buds Manager - Translator Tools">
     
-    <Grid Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+    <StackPanel Margin="10" Spacing="8">
         <!--<HeaderedContentControl Grid.Row="0" Classes="GroupBox" Header="Jump to page">
             <Grid>
                 <Grid.RowDefinitions>
@@ -36,8 +30,8 @@
                 </TextBlock>
             </Grid>
         </HeaderedContentControl>-->
-        <HeaderedContentControl Grid.Row="1" Classes="GroupBox"
-                           Header="Reload XAML" Margin="0,5,0,0">
+        <HeaderedContentControl Classes="GroupBox"
+                           Header="Reload XAML dictionary">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -59,26 +53,19 @@
                 </TextBlock>
             </Grid>
         </HeaderedContentControl>
-        <HeaderedContentControl Grid.Row="2" Classes="GroupBox"
-                                Header="Connection" Margin="0,5,0,0">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="5" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="5" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <CheckBox Grid.Row="0" x:Name="DummyDevices" Content="Show dummy devices (Device selection page)" Checked="DummyDevices_OnChecked"/>
-                <CheckBox Grid.Row="2" x:Name="IgnoreConnLoss" Content="Ignore connection loss" Checked="IgnoreConnLoss_OnChecked"/>
-                <TextBlock Grid.Row="4" TextWrapping="Wrap">
-                    This setting overrides platform-specific Bluetooth backend logic and may cause crashes and inconsistent behavior.
+        <HeaderedContentControl Classes="GroupBox"
+                                Header="Flags">
+            <StackPanel Spacing="5">
+                <CheckBox x:Name="DummyDevices" Content="Show dummy devices (Device selection page)" Checked="DummyDevices_OnChecked"/>
+                <CheckBox x:Name="IgnoreConnLoss" Content="Ignore connection loss" Checked="IgnoreConnLoss_OnChecked"/>
+                <TextBlock TextWrapping="Wrap">
+                    Some flags may cause crashes and inconsistent behavior.
                 </TextBlock>
-            </Grid>
+            </StackPanel>
         </HeaderedContentControl>
-        <HeaderedContentControl Grid.Row="3" Classes="GroupBox"
-                           Header="Exit translator mode" Margin="0,5,0,0">
+        <HeaderedContentControl Classes="GroupBox"
+                           Header="Exit translator/dev mode">
             <TextBlock TextWrapping="Wrap" Text="You can exit this debug mode by deleting the XAML file specified above."/>
         </HeaderedContentControl>
-    </Grid>
+    </StackPanel>
 </Window>

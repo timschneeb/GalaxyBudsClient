@@ -32,3 +32,7 @@ public abstract class MainPageViewModelBase : PageViewModelBase
 
     public abstract bool ShowsInFooter { get; }
 }
+
+public abstract class SubPageViewModelBase : PageViewModelBase
+{
+}

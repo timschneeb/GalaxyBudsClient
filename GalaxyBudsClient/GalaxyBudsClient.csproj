@@ -94,6 +94,14 @@
           <DependentUpon>HomePage.axaml</DependentUpon>
           <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Interface\Pages\NoiseControlPage.axaml.cs">
+          <DependentUpon>NoiseControlPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="Interface\Pages\AmbientCustomizePage.axaml.cs">
+          <DependentUpon>AmbientCustomizePage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
     <PropertyGroup>

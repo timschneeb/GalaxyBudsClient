@@ -10,7 +10,10 @@ public class EnumToDescriptionConverter : IValueConverter
     public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
         if (value is Enum e)
-            return e.GetDescription();
+        {
+            // Replace format argument with enum value if it exists
+            return e.GetDescription().Replace("{0}", ((int)(object)e).ToString());
+        }
         return "<null>";
     }
 
