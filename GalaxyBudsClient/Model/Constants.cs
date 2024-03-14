@@ -137,7 +137,17 @@ namespace GalaxyBudsClient.Model
             [LocalizedDescription("connpopup_placement_br")]
             BottomRight,
         }
-
+        
+        public enum VoiceDetectTimeouts
+        {    
+            [LocalizedDescription("nc_voicedetect_timeout_item")]
+            Sec5 = 5,
+            [LocalizedDescription("nc_voicedetect_timeout_item")]
+            Sec10 = 10,
+            [LocalizedDescription("nc_voicedetect_timeout_item")]
+            Sec15 = 15
+        }
+        
         public enum Models
         {
             NULL = 0,

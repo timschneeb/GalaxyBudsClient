@@ -45,7 +45,6 @@
                             <EventTriggerBehavior EventName="PointerPressed">
                                 <ext:OpenLinkAction TargetUri="https://github.com/thepbone/GalaxyBudsClient" />
                             </EventTriggerBehavior>
-
                         </Interaction.Behaviors>
                     </TextBlock>
                 </StackPanel>

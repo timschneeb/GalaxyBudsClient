@@ -56,6 +56,9 @@ namespace GalaxyBudsClient.Model.Specifications
         
         public bool Supports(Feature feature)
         {
+            // TODO remove this
+            return feature != Feature.Anc;
+            
             if (!Rules.ContainsKey(feature))
             {
                 return false;

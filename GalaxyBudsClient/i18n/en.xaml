@@ -416,6 +416,7 @@ You might need to manually reconnect your Earbuds.</sys:String>
 
     <!--Noise control-->
     <sys:String x:Key="nc_header">Noise control</sys:String>
+    <sys:String x:Key="nc_as_anc_description">Reduce background noises</sys:String>
     <sys:String x:Key="nc_anc_one">Noise cancelling with one earbud</sys:String>
     <sys:String x:Key="nc_anc_one_description">Noise cancelling normally requires two earbuds to prevent discomfort, enable this to allow noise cancelling with only one earbud</sys:String>
     <sys:String x:Key="nc_anc_level">High sensitivity</sys:String>
@@ -425,6 +426,7 @@ You might need to manually reconnect your Earbuds.</sys:String>
     <sys:String x:Key="nc_voicedetect">Conversation detection</sys:String>
     <sys:String x:Key="nc_voicedetect_description">When your voice is detected, automatically turn on Ambient sound and lower media volume to make conversation easier</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">Conversation timeout</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout_description">Revert settings when your voice is not detected for a certain amount of time</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} seconds</sys:String>
     
     <!--Noise control >>> Ambient sound-->
@@ -440,9 +442,11 @@ You might need to manually reconnect your Earbuds.</sys:String>
     
     <!--Ambient sound-->
     <sys:String x:Key="as_header">Ambient sound</sys:String>
+    <sys:String x:Key="as_header_description">Hear your surroundings</sys:String>
     <sys:String x:Key="as_enable">Enable ambient sound</sys:String>
     <sys:String x:Key="as_volume">Ambient sound volume</sys:String>
     <sys:String x:Key="as_voicefocus">Voice focus</sys:String>
+    <sys:String x:Key="as_voicefocus_description">Make voices stand out more</sys:String>
     <sys:String x:Key="as_extrahigh">Extra-high ambient volume</sys:String>
     <sys:String x:Key="as_extrahigh_description">Adds an extra volume level to the Ambient Volume slider</sys:String>
     <sys:String x:Key="as_scale_very_low">Very low</sys:String>

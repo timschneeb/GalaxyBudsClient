@@ -53,14 +53,14 @@ public partial class MainView : UserControl
         NavView.BackRequested += OnNavigationViewBackRequested;
     }
 
-    public T? ResolveViewModelByType<T>()
+    public T? ResolveViewModelByType<T>() where T : PageViewModelBase
     {
-        return mainPages.FirstOrDefault(p => p.GetType() == typeof(T)).Cast<T?>();
+        return mainPages.Concat<PageViewModelBase>(subPages).FirstOrDefault(p => p.GetType() == typeof(T)).Cast<T?>();
     }
     
     public PageViewModelBase? ResolveViewModelByType(Type arg)
     {
-        return mainPages.FirstOrDefault(p => p.GetType() == arg);
+        return mainPages.Concat<PageViewModelBase>(subPages).FirstOrDefault(p => p.GetType() == arg);
     }
 
     private void OnBreadcrumbBarItemClicked(BreadcrumbBar sender, BreadcrumbBarItemClickedEventArgs args)
@@ -97,8 +97,8 @@ public partial class MainView : UserControl
 
     private readonly MainPageViewModelBase[] mainPages = [
         new HomePageViewModel(),
-        /*new HomePageViewModel()
-        {
+        new NoiseControlPageViewModel(),
+        /*{
             //NavHeader = "Find My Buds",
             //IconKey = Symbol.LocationLive
         },
@@ -126,6 +126,12 @@ public partial class MainView : UserControl
         new SettingsPageViewModel()
     ];
 
+    private readonly SubPageViewModelBase[] subPages =
+    [
+        new AmbientCustomizePageViewModel()
+    ];
+
+    
     private void InitializeNavigationPages()
     {
         
@@ -204,41 +210,30 @@ public partial class MainView : UserControl
 
     private void OnFrameViewNavigated(object? sender, NavigationEventArgs e)
     {
-        var page = e.Content as Control;
-        var dc = page?.DataContext;
-        
-        
-        PageViewModelBase? mainPage = null;
-        if (dc is MainPageViewModelBase mpvmb)
+        var control = e.Content as Control;
+        var page = control?.DataContext as PageViewModelBase;
+
+        if (page is MainPageViewModelBase)
         {
-            if (dc is HomePageViewModel)
+            if (page is HomePageViewModel)
             {
                 FrameView.BackStack.Clear();
             }
 
             ViewModel?.BreadcrumbItems.Clear();
-            mainPage = mpvmb;
         }
-        /* else if (dc is PageBaseViewModel pbvm)
-        {
-            mainPage = pbvm.Parent;
-        }
-        else if (page is ControlsPageBase cpb)
-        {
-            mainPage = cpb.CreationContext.Parent;
-        }*/
 
-        if (mainPage != null)
+        if (page != null)
         {
-            if (e.NavigationMode == NavigationMode.New || dc is MainPageViewModelBase) 
-                ViewModel?.BreadcrumbItems.Add(new BreadcrumbViewModel(mainPage.TitleKey, mainPage.GetType()));
+            if (e.NavigationMode == NavigationMode.New || page is MainPageViewModelBase) 
+                ViewModel?.BreadcrumbItems.Add(new BreadcrumbViewModel(page.TitleKey, page.GetType()));
             else if (e.NavigationMode == NavigationMode.Back && ViewModel?.BreadcrumbItems.Count > 0)
                 ViewModel?.BreadcrumbItems.RemoveAt(ViewModel.BreadcrumbItems.Count - 1);
         }
         
         foreach (NavigationViewItem nvi in NavView.MenuItemsSource)
         {
-            if (nvi.Tag == mainPage)
+            if (nvi.Tag == page)
             {
                 NavView.SelectedItem = nvi;
                 SetNvIcon(nvi, true);
@@ -251,7 +246,7 @@ public partial class MainView : UserControl
 
         foreach (NavigationViewItem nvi in NavView.FooterMenuItemsSource)
         {
-            if (nvi.Tag == mainPage)
+            if (nvi.Tag == page)
             {
                 NavView.SelectedItem = nvi;
                 SetNvIcon(nvi, true);

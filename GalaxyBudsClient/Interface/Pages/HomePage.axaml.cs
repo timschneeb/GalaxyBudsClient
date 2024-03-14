@@ -1,9 +1,6 @@
-using System;
 using Avalonia.Interactivity;
 using FluentAvalonia.UI.Controls;
-using FluentAvalonia.UI.Media.Animation;
 using GalaxyBudsClient.Interface.Services;
-using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 
 namespace GalaxyBudsClient.Interface.Pages;
