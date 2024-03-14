@@ -156,8 +156,8 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
         private async void OnEventReceived(EventDispatcher.Event e, object? arg)
         {
             // NoiseControl case is handled in NoiseProPage.xaml.cs
-            if (!BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Anc)
-                || BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl))
+            if (!BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc)
+                || BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
             {
                 return;
             }
@@ -250,7 +250,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                 parser.BatteryCase = DeviceMessageCache.Instance.BasicStatusUpdateWithValidCase?.BatteryCase ?? parser.BatteryCase;
             }
 
-            var hasCaseBattery = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery) &&
+            var hasCaseBattery = BluetoothImpl.Instance.DeviceSpec.Supports(Features.CaseBattery) &&
                                parser.BatteryCase <= 100;
             _batteryCase.Content = hasCaseBattery ? $"{parser.BatteryCase}%" : string.Empty;
             _batteryCase.IsVisible = _caseLabel.IsVisible = hasCaseBattery;
@@ -263,7 +263,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             }
 
             if (parser is ExtendedStatusUpdateParser p &&
-                BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Anc))
+                BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc))
             {
                 _ancSwitch.SetChecked(p.NoiseCancelling);
             }
@@ -279,7 +279,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
         private void UpdatePlusPlacement(PlacementStates l, PlacementStates r)
         {
-            if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Voltage))
+            if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.Voltage))
             {
                 _batteryTemperatureLeft.Content = l.GetDescription();
                 _batteryTemperatureRight.Content = r.GetDescription();
@@ -306,13 +306,13 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                 tempLeft = $"{left:N1} °C";
                 tempRight = $"{right:N1} °C";
             }
-            if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Current))
+            if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.Current))
             {
                 _batteryTemperatureLeft.Content = tempLeft;
                 _batteryTemperatureRight.Content = tempRight;
             }
             //Switch positions for a better layout
-            else if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Voltage))
+            else if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.Voltage))
             {
                 _batteryCurrentLeft.Content = tempLeft;
                 _batteryCurrentRight.Content = tempRight;
@@ -331,13 +331,13 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             UpdateBatteryPercentage((int) Math.Round(p.LeftAdcSOC), Devices.L);
             UpdateBatteryPercentage((int) Math.Round(p.RightAdcSOC), Devices.R);
 
-            if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Voltage))
+            if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.Voltage))
             {
                 _batteryVoltLeft.Content = $"{p.LeftAdcVCell:N2}V";
                 _batteryVoltRight.Content = $"{p.RightAdcVCell:N2}V";
             }
 
-            if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Current))
+            if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.Current))
             {
                 _batteryCurrentLeft.Content = $"{p.LeftAdcCurrent:N2}mA";
                 _batteryCurrentRight.Content = $"{p.RightAdcCurrent:N2}mA";
@@ -402,9 +402,9 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
         private void UpdateList()
         {
-            _ancBorder.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.Anc);
-            _ambientBorder.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSound);
-            _noiseBorder.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl);
+            _ancBorder.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc);
+            _ambientBorder.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientSound);
+            _noiseBorder.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl);
         }
 
         private void SetWarning(bool visible, string message = "")

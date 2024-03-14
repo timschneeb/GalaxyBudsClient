@@ -25,32 +25,11 @@
             </controls:SettingsGroup>
             
             <controls:SettingsGroup>
-                <controls:SettingsSwitchItem Content="Active noise cancelling"
-                                             Symbol="HeadphonesSoundWave"
-                                             IsVisible="False"
-                                             IsClickEnabled="True">
-                    <Interaction.Behaviors>
-                        <ext:RequiresFeatureBehavior Feature="Anc" />
-                    </Interaction.Behaviors>
-                </controls:SettingsSwitchItem>
-
                 <controls:SettingsSymbolItem Name="NoiseControl"
-                                             Classes="First"
                                              Content="{DynamicResource mainpage_noise}"
                                              Symbol="HeadphonesSoundWave"
                                              ActionSymbol="ChevronRight"
-                                             IsClickEnabled="True">
-                    <Interaction.Behaviors>
-                        <ext:RequiresFeatureBehavior Not="True" Feature="Anc" />
-                        <!-- Workaround until ClipToBounds works with CornerRadius -->
-                        <ext:FeatureTrigger Not="True" Feature="Anc">
-                            <AddClassAction ClassName="First" RemoveIfExists="True"/>
-                        </ext:FeatureTrigger>
-                        <ext:FeatureTrigger Not="False" Feature="Anc">
-                            <RemoveClassAction ClassName="First"/>
-                        </ext:FeatureTrigger>
-                    </Interaction.Behaviors>
-                </controls:SettingsSymbolItem>
+                                             IsClickEnabled="True" />
                     
                 <controls:SettingsSymbolItem Name="Equalizer" 
                                              Content="{DynamicResource mainpage_equalizer}"

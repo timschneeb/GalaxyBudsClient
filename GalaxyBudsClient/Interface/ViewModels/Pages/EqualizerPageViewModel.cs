@@ -37,6 +37,7 @@ public class EqualizerPageViewModel : MainPageViewModelBase
         {
             case EventDispatcher.Event.EqualizerToggle:
                 IsEqEnabled = !IsEqEnabled;
+                EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
                 break;
             case EventDispatcher.Event.EqualizerNextPreset:
             {

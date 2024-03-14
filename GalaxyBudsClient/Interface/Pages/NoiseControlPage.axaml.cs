@@ -1,3 +1,4 @@
+using Avalonia.Diagnostics;
 using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 

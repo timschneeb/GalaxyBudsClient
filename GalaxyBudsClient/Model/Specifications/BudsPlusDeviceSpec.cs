@@ -8,20 +8,20 @@ namespace GalaxyBudsClient.Model.Specifications
 {
     public class BudsPlusDeviceSpec : IDeviceSpec
     {
-        public Dictionary<IDeviceSpec.Feature, FeatureRule?> Rules => new()
+        public Dictionary<Features, FeatureRule?> Rules => new()
             {
-                { IDeviceSpec.Feature.AmbientSound, null },
-                { IDeviceSpec.Feature.AmbientSidetone, new FeatureRule(8, "R175XXU0ASLE")  },
-                { IDeviceSpec.Feature.AmbientExtraLoud, new FeatureRule(9, "R175XXU0ATB3")  },
-                { IDeviceSpec.Feature.SeamlessConnection, new FeatureRule(11, "R175XXU0ATF2")  },
-                { IDeviceSpec.Feature.FirmwareUpdates, new FeatureRule(8, "R175XXU0ASLE") },
-                { IDeviceSpec.Feature.GamingMode, null },
-                { IDeviceSpec.Feature.DoubleTapVolume, null },
-                { IDeviceSpec.Feature.CaseBattery, null },
-                { IDeviceSpec.Feature.FragmentedMessages, null },
-                { IDeviceSpec.Feature.LegacyNoiseControlMode, null },
-                { IDeviceSpec.Feature.DebugInfoLegacy, null },
-                { IDeviceSpec.Feature.Voltage, null }
+                { Features.AmbientSound, null },
+                { Features.AmbientSidetone, new FeatureRule(8, "R175XXU0ASLE")  },
+                { Features.AmbientExtraLoud, new FeatureRule(9, "R175XXU0ATB3")  },
+                { Features.SeamlessConnection, new FeatureRule(11, "R175XXU0ATF2")  },
+                { Features.FirmwareUpdates, new FeatureRule(8, "R175XXU0ASLE") },
+                { Features.GamingMode, null },
+                { Features.DoubleTapVolume, null },
+                { Features.CaseBattery, null },
+                { Features.FragmentedMessages, null },
+                { Features.LegacyNoiseControlMode, null },
+                { Features.DebugInfoLegacy, null },
+                { Features.Voltage, null }
             };
         
         public Models Device => Models.BudsPlus;
@@ -38,5 +38,6 @@ namespace GalaxyBudsClient.Model.Specifications
         );
         
         public string IconResourceKey => "Bud";
+        public int MaximumAmbientVolume => 2; /* 3 if ExtraLoud is set */
     }
 }

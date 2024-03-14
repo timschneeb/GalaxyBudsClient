@@ -51,7 +51,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 			(false, true, true, "touchpad_noise_control_mode_amb_off")
 		};
 		private static (bool, bool, bool, string)[] NoiseControlModeMap =>
-			BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.LegacyNoiseControlMode)
+			BluetoothImpl.Instance.DeviceSpec.Supports(Features.LegacyNoiseControlMode)
 				? NoiseControlModeMapLegacy : NoiseControlModeMapNew;
 		
 		public TouchpadPage()
@@ -250,8 +250,8 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
 		public override void OnPageShown()
 		{
-			var supportsEdgeTouch = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DoubleTapVolume);
-			var supportAdvTouchLock = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AdvancedTouchLock);
+			var supportsEdgeTouch = BluetoothImpl.Instance.DeviceSpec.Supports(Features.DoubleTapVolume);
+			var supportAdvTouchLock = BluetoothImpl.Instance.DeviceSpec.Supports(Features.AdvancedTouchLock);
 			
 			_edgeTouch.GetVisualParent()!.IsVisible = supportsEdgeTouch;
 			this.GetControl<Separator>("GesturesSeparator").IsVisible = supportsEdgeTouch && supportAdvTouchLock;
@@ -266,13 +266,13 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 		public void UpdateNoiseSwitchModeVisible()
 		{
 			_noiseControlMode.GetVisualParent()!.IsVisible =
-				BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl) 
+				BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl) 
 				&& (_lastLeftOption == TouchOptions.NoiseControl || _lastRightOption == TouchOptions.NoiseControl);
 		}
 
 		private async void SendLockState()
 		{
-			if(BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AdvancedTouchLock))
+			if(BluetoothImpl.Instance.DeviceSpec.Supports(Features.AdvancedTouchLock))
 			{
 				if (MainWindow.Instance.Pager.FindPage(Pages.TouchGesture) is TouchpadGesturePage page)
 				{

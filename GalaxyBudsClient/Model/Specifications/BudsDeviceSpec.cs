@@ -7,15 +7,16 @@ namespace GalaxyBudsClient.Model.Specifications
 {
     public class BudsDeviceSpec : IDeviceSpec
     {
-        public Dictionary<IDeviceSpec.Feature, FeatureRule?> Rules => new()
+        public Dictionary<Features, FeatureRule?> Rules => new()
             {
-                { IDeviceSpec.Feature.SeamlessConnection, new FeatureRule(3, "R170XXU0ATF2") },
-                { IDeviceSpec.Feature.AmbientVoiceFocus, null },
-                { IDeviceSpec.Feature.AmbientSound, null },
-                { IDeviceSpec.Feature.LegacyNoiseControlMode, null },
-                { IDeviceSpec.Feature.DebugInfoLegacy, null },
-                { IDeviceSpec.Feature.Voltage, null },
-                { IDeviceSpec.Feature.Current, null }
+                { Features.SeamlessConnection, new FeatureRule(3, "R170XXU0ATF2") },
+                { Features.AmbientVoiceFocus, null },
+                { Features.AmbientSound, null },
+                { Features.LegacyNoiseControlMode, null },
+                { Features.LegacyAmbientSoundVolumeLevels, null },
+                { Features.DebugInfoLegacy, null },
+                { Features.Voltage, null },
+                { Features.Current, null }
             };
 
         public Models Device => Models.Buds;
@@ -32,5 +33,6 @@ namespace GalaxyBudsClient.Model.Specifications
         );
         
         public string IconResourceKey => "Bud";
+        public int MaximumAmbientVolume => 4;
     }
 }

@@ -8,31 +8,29 @@
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
              xmlns:constants="clr-namespace:GalaxyBudsClient.Model.Constants"
+             xmlns:specifications="clr-namespace:GalaxyBudsClient.Model.Specifications"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:collections="clr-namespace:System.Collections;assembly=System.Runtime"
+             xmlns:generic="clr-namespace:System.Collections.Generic;assembly=System.Collections"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.AmbientCustomizePage"
              x:DataType="pages:AmbientCustomizePageViewModel"
              x:CompileBindings="True">
     
     <Design.DataContext>
-        <pages:NoiseControlPageViewModel />
+        <pages:AmbientCustomizePageViewModel />
     </Design.DataContext>
 
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
             
-            <!--<controls:SettingsGroup>
-                <controls:SettingsSwitchItem
-                    Content="{DynamicResource as_header}"
-                    Description="{DynamicResource as_header_description}"
-                    Symbol="MicSparkle"
-                    IsChecked="{Binding IsAmbientSoundEnabled}" />
-                
-         
+            <controls:SettingsGroup>
+                <!-- TODO: add converter -->
                 <controls:SettingsSliderItem
                     Content="{DynamicResource as_volume}"
-                    Description="{Binding AmbientSoundVolume, Converter={StaticResource EqPresetConverter}}" 
+                    Description="{Binding AmbientSoundVolume}" 
                     Symbol="Gauge"
-                    IsEnabled="{Binding IsAmbientSoundEnabled}"
+                    IsEnabled="{Binding !IsAmbientCustomizationEnabled}"
                     Maximum="{Binding MaximumAmbientSoundVolume}"
                     Value="{Binding AmbientSoundVolume}" />
                 
@@ -40,7 +38,6 @@
                     Content="{DynamicResource as_extrahigh}"
                     Description="{DynamicResource as_extrahigh_description}"
                     Symbol="GaugeAdd"
-                    IsEnabled="{Binding IsAmbientSoundEnabled}"
                     IsChecked="{Binding IsAmbientExtraLoudEnabled}">
                     <Interaction.Behaviors>
                         <ext:RequiresFeatureBehavior Feature="AmbientExtraLoud" />
@@ -51,85 +48,50 @@
                     Content="{DynamicResource as_voicefocus}"
                     Description="{DynamicResource as_voicefocus_description}"
                     Symbol="PersonVoice"
-                    IsEnabled="{Binding IsAmbientSoundEnabled}"
                     IsChecked="{Binding IsAmbientVoiceFocusEnabled}">
                     <Interaction.Behaviors>
                         <ext:RequiresFeatureBehavior Feature="AmbientVoiceFocus" />
                     </Interaction.Behaviors>
                 </controls:SettingsSwitchItem>
-
-                <controls:SettingsSymbolItem Content="{DynamicResource nc_as_header}"
-                                             Description="{DynamicResource nc_as_custom}"
-                                             Symbol="Wrench"
-                                             ActionSymbol="ChevronRight"
-                                             IsEnabled="{Binding IsAmbientSoundEnabled}"
-                                             IsClickEnabled="True">
-                    <Interaction.Behaviors>
-                        <ext:RequiresFeatureBehavior Feature="AmbientCustomize" />
-                        <EventTriggerBehavior EventName="Click">
-                            <ext:NavigationToPageAction PageType="{x:Type Ambi}" />
-                        </EventTriggerBehavior>
-                    </Interaction.Behaviors>
-                </controls:SettingsSymbolItem>
-                
             </controls:SettingsGroup>
             
             <controls:SettingsGroup>
                 <Interaction.Behaviors>
-                    <ext:RequiresFeatureBehavior Feature="NoiseControl" />
+                    <ext:RequiresFeatureBehavior Feature="AmbientCustomize" />
                 </Interaction.Behaviors>
                 
                 <controls:SettingsSwitchItem
-                    Content="{DynamicResource anc}"
-                    Description="{DynamicResource nc_as_anc_description}"
-                    Symbol="HeadphonesSoundWave"
-                    IsChecked="{Binding IsAncEnabled}" />
+                    Content="{DynamicResource nc_as_custom}"
+                    Description="{DynamicResource nc_as_custom_description}"
+                    Symbol="MicSparkle"
+                    IsChecked="{Binding IsAmbientCustomizationEnabled}" />
                 
-                <controls:SettingsSwitchItem
-                    Content="{DynamicResource nc_anc_level}"
-                    Description="{DynamicResource nc_anc_level_description}"
-                    Symbol="AddCircle"
-                    IsEnabled="{Binding IsAncEnabled}"
-                    IsChecked="{Binding IsAncLevelHigh}">
-                    <Interaction.Behaviors>
-                        <ext:RequiresFeatureBehavior Feature="AncNoiseReductionLevels" />
-                    </Interaction.Behaviors>
-                </controls:SettingsSwitchItem>
+                <controls:SettingsSliderItem
+                    Content="{DynamicResource nc_as_custom_volume_l}"
+                    Description="{Binding AmbientSoundVolumeLeft, Converter={StaticResource AmbientCustomStrengthConverter}}" 
+                    Symbol="ArrowStepInLeft"
+                    IsEnabled="{Binding IsAmbientCustomizationEnabled}"
+                    Maximum="{Binding MaximumLeftRightAmbientSoundVolume}"
+                    Value="{Binding AmbientSoundVolumeLeft}" />
+                
+                <controls:SettingsSliderItem
+                    Content="{DynamicResource nc_as_custom_volume_r}"
+                    Description="{Binding AmbientSoundVolumeRight, Converter={StaticResource AmbientCustomStrengthConverter}}" 
+                    Symbol="ArrowStepInRight"
+                    IsEnabled="{Binding IsAmbientCustomizationEnabled}"
+                    Maximum="{Binding MaximumLeftRightAmbientSoundVolume}"
+                    Value="{Binding AmbientSoundVolumeRight}" />
 
-                <controls:SettingsSwitchItem
-                    Content="{DynamicResource nc_anc_one}"
-                    Description="{DynamicResource nc_anc_one_description}"
-                    Symbol="Accessibility"
-                    IsEnabled="{Binding IsAncEnabled}"
-                    IsChecked="{Binding IsAncWithOneEarbudAllowed}">
-                    <Interaction.Behaviors>
-                        <ext:RequiresFeatureBehavior Feature="AncWithOneEarbud" />
-                    </Interaction.Behaviors>
-                </controls:SettingsSwitchItem>
-            </controls:SettingsGroup>
+                <controls:SettingsSliderItem
+                    Content="{DynamicResource nc_as_custom_tone}"
+                    Description="{Binding AmbientSoundTone, Converter={StaticResource AmbientToneConverter}}" 
+                    Symbol="SoundSource"
+                    IsEnabled="{Binding IsAmbientCustomizationEnabled}"
+                    Maximum="4"
+                    Value="{Binding AmbientSoundTone}" />
 
-            <controls:SettingsGroup>
-                <Interaction.Behaviors>
-                    <ext:RequiresFeatureBehavior Feature="DetectConversations" />
-                </Interaction.Behaviors>
-                
-                <controls:SettingsSwitchItem
-                    Content="{DynamicResource nc_voicedetect}"
-                    Description="{DynamicResource nc_voicedetect_description}"
-                    Symbol="PersonVoice"
-                    IsChecked="{Binding IsVoiceDetectEnabled}" />
-                
-                <controls:SettingsComboBoxItem
-                    Content="{DynamicResource nc_voicedetect_timeout}"
-                    Description="{DynamicResource nc_voicedetect_timeout_description}"
-                    Symbol="Timer"
-                    IsEnabled="{Binding IsVoiceDetectEnabled}"
-                    ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:VoiceDetectTimeouts}}}"
-                    SelectedValue="{Binding VoiceDetectTimeout}" />
-                
-            </controls:SettingsGroup>-->
+                </controls:SettingsGroup>
             
         </StackPanel>
     </ScrollViewer>
-    
 </UserControl>

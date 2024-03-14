@@ -143,7 +143,7 @@ namespace GalaxyBudsClient.Utils.Interface
             {
                 bsu.BatteryL > 0 ? new NativeMenuItem($"{Loc.Resolve("left")}: {bsu.BatteryL}%"){IsEnabled = false} : null,
                 bsu.BatteryR > 0 ? new NativeMenuItem($"{Loc.Resolve("right")}: {bsu.BatteryR}%"){IsEnabled = false} : null,
-                (bsu.BatteryCase is > 0 and <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery)) ?
+                (bsu.BatteryCase is > 0 and <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(Features.CaseBattery)) ?
                     new NativeMenuItem($"{Loc.Resolve("case")}: {bsu.BatteryCase}%"){IsEnabled = false} : null,
                 new NativeMenuItemSeparator(),
             };
@@ -174,7 +174,7 @@ namespace GalaxyBudsClient.Utils.Interface
                         break;
                     case ItemType.ToggleAmbient:
                         bool ambEnabled;
-                        if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl))
+                        if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
                         {
                             ambEnabled = (MainWindow.Instance.Pager.FindPage(AbstractPage.Pages.NoiseControlPro) as NoiseProPage)
                                 ?.AmbientEnabled ?? DeviceMessageCache.Instance.ExtendedStatusUpdate?.AmbientSoundEnabled ?? false;
@@ -193,7 +193,7 @@ namespace GalaxyBudsClient.Utils.Interface
                         break;
                     case ItemType.ToggleAnc:
                         bool ancEnabled;
-                        if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl))
+                        if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
                         {
                             ancEnabled = (MainWindow.Instance.Pager.FindPage(AbstractPage.Pages.NoiseControlPro) as NoiseProPage)
                                 ?.AncEnabled ?? DeviceMessageCache.Instance.ExtendedStatusUpdate?.NoiseCancelling ?? false;

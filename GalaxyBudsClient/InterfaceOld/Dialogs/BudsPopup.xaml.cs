@@ -90,7 +90,7 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
             
             bool isLeftOnline = bl > 0;
             bool isRightOnline = br > 0;
-            bool isCaseOnline = bc > 0 && bc <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.CaseBattery);
+            bool isCaseOnline = bc > 0 && bc <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(Features.CaseBattery);
             
             _batteryL.IsVisible = isLeftOnline;
             _batteryR.IsVisible = isRightOnline;

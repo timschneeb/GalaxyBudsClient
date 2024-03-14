@@ -8,27 +8,29 @@ namespace GalaxyBudsClient.Model.Specifications
 {
     public class BudsProDeviceSpec : IDeviceSpec
     {
-        public Dictionary<IDeviceSpec.Feature, FeatureRule?> Rules => new()
+        public Dictionary<Features, FeatureRule?> Rules => new()
             {
-                { IDeviceSpec.Feature.SeamlessConnection, null },
-                { IDeviceSpec.Feature.StereoPan, new FeatureRule(5, "R190XXU0AUA5") },
-                { IDeviceSpec.Feature.DoubleTapVolume, new FeatureRule(7, "R190XXU0AUD1") },
-                { IDeviceSpec.Feature.FirmwareUpdates, null },
-                { IDeviceSpec.Feature.DetectConversations, null },
-                { IDeviceSpec.Feature.NoiseControl, null },
-                { IDeviceSpec.Feature.GamingMode, null },
-                { IDeviceSpec.Feature.CaseBattery, null },
-                { IDeviceSpec.Feature.FragmentedMessages, null },
-                { IDeviceSpec.Feature.SpatialSensor, null },
-                { IDeviceSpec.Feature.Voltage, null },
-                { IDeviceSpec.Feature.BixbyWakeup, null },
-                { IDeviceSpec.Feature.AncNoiseReductionLevels, null },
-                { IDeviceSpec.Feature.LegacyNoiseControlMode, null },
-                { IDeviceSpec.Feature.DebugInfoLegacy, null },
-                { IDeviceSpec.Feature.AmbientSidetone, new FeatureRule(8, "R190XXU0AUI2")  },
-                { IDeviceSpec.Feature.AmbientCustomize, new FeatureRule(8, "R190XXU0AUI2") },
-                { IDeviceSpec.Feature.AmbientCustomizeLegacy, new FeatureRule(8, "R190XXU0AUI2") },
-                { IDeviceSpec.Feature.DebugSku, null }
+                { Features.SeamlessConnection, null },
+                { Features.StereoPan, new FeatureRule(5, "R190XXU0AUA5") },
+                { Features.DoubleTapVolume, new FeatureRule(7, "R190XXU0AUD1") },
+                { Features.FirmwareUpdates, null },
+                { Features.DetectConversations, null },
+                { Features.NoiseControl, null },
+                { Features.GamingMode, null },
+                { Features.CaseBattery, null },
+                { Features.FragmentedMessages, null },
+                { Features.SpatialSensor, null },
+                { Features.Voltage, null },
+                { Features.BixbyWakeup, null },
+                { Features.AmbientSound, null },
+                { Features.Anc, null },
+                { Features.AncNoiseReductionLevels, null },
+                { Features.LegacyNoiseControlMode, null },
+                { Features.DebugInfoLegacy, null },
+                { Features.AmbientSidetone, new FeatureRule(8, "R190XXU0AUI2")  },
+                { Features.AmbientCustomize, new FeatureRule(8, "R190XXU0AUI2") },
+                { Features.AmbientCustomizeLegacy, new FeatureRule(8, "R190XXU0AUI2") },
+                { Features.DebugSku, null }
             };
         
         public Models Device => Models.BudsPro;
@@ -45,5 +47,6 @@ namespace GalaxyBudsClient.Model.Specifications
         );
         
         public string IconResourceKey => "Pro";
+        public int MaximumAmbientVolume => 3;
     }
 }

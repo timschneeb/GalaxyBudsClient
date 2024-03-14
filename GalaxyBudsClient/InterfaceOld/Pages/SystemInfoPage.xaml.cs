@@ -98,7 +98,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 		{
 			if (MainWindow.Instance.Pager.CurrentPage == Pages.SystemInfo)
 			{
-				if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DebugInfoLegacy))
+				if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.DebugInfoLegacy))
 				{
 					await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.BATTERY_TYPE);
 					await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_BUILD_INFO);
@@ -112,7 +112,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 		public override async void OnPageShown()
 		{
 			this.GetControl<Control>("TraceCoreDump").IsVisible =
-				BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.FragmentedMessages);
+				BluetoothImpl.Instance.DeviceSpec.Supports(Features.FragmentedMessages);
 			
 			_pageHeader.LoadingSpinnerVisible = true;
 			_hwVer.Description = Waiting;
@@ -124,7 +124,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 			_batteryType.Description = Waiting;
 			_revision.Description = DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision.ToString() ?? Waiting;
 
-			var supportsLegacyDebug = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DebugInfoLegacy);
+			var supportsLegacyDebug = BluetoothImpl.Instance.DeviceSpec.Supports(Features.DebugInfoLegacy);
 
 			_buildString.IsVisible = _buildString.GetVisualParent()!.IsVisible = supportsLegacyDebug;
 			_batteryType.IsVisible = _batteryType.GetVisualParent()!.IsVisible = supportsLegacyDebug;

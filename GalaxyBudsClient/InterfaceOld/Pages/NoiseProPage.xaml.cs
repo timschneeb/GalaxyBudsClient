@@ -75,7 +75,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
         private void OnEventReceived(EventDispatcher.Event e, object? arg)
         {
-            if (!BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.NoiseControl))
+            if (!BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
             {
                 return;
             }
@@ -110,6 +110,15 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                             break;
                         }
                         
+                        /* TODO: important: in new UI implementation, make sure to send Bluetooth messages directly here
+                           Something like this:
+                            if(BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
+                                await MessageComposer.NoiseControl.SetMode(NoiseControlMode.AmbientSound);
+                            else
+                                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_AMBIENT_MODE, true);
+                         */
+                        
+                        
                         SetNoiseControlState((NoiseControlMode)arg);
                         break;
                 }
@@ -119,13 +128,13 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
         public override void OnPageShown()
         {
             _voiceBorder.IsVisible =
-                BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.DetectConversations);
+                BluetoothImpl.Instance.DeviceSpec.Supports(Features.DetectConversations);
             this.GetControl<Border>("AncLevelToggleBorder").IsVisible =
                 this.GetControl<Separator>("AncLevelToggleSeparator").IsVisible =
-                BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AncNoiseReductionLevels);
+                BluetoothImpl.Instance.DeviceSpec.Supports(Features.AncNoiseReductionLevels);
             this.GetControl<Border>("AncOneToggleBorder").IsVisible =
                 this.GetControl<Separator>("AncOneToggleSeparator").IsVisible =
-                    BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AncWithOneEarbud);
+                    BluetoothImpl.Instance.DeviceSpec.Supports(Features.AncWithOneEarbud);
         }
         
         private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)

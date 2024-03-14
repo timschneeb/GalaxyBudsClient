@@ -49,7 +49,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
         private void OnEventReceived(EventDispatcher.Event e, object? arg)
         {
-            if (!BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientSound))
+            if (!BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientSound))
             {
                 return;
             }
@@ -115,9 +115,9 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
         public override void OnPageShown()
         {
-            var supportsExtraLoud = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientExtraLoud);
+            var supportsExtraLoud = BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientExtraLoud);
             
-            _voiceFocusBorder.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientVoiceFocus);
+            _voiceFocusBorder.IsVisible = BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientVoiceFocus);
             _extraLoudBorder.IsVisible = supportsExtraLoud;
 			
             if (!supportsExtraLoud)
@@ -129,13 +129,13 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
         private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
         { 
-            if (BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientExtraLoud))
+            if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientExtraLoud))
             {
                 _extraLoud.IsChecked = e.ExtraHighAmbientEnabled;
                 _volumeSlider.Maximum = e.ExtraHighAmbientEnabled ? 3 : 2;
             }
             
-            if(BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientVoiceFocus))
+            if(BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientVoiceFocus))
             {
                 _voiceFocusSwitch.IsChecked = e.AmbientSoundMode == AmbientType.VoiceFocus;
             }
@@ -157,7 +157,6 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
         private async void VoiceFocusToggle_OnToggled(object? sender, bool e)
         {
-            var type = _voiceFocusSwitch.IsChecked ? AmbientType.VoiceFocus : AmbientType.Default;
             await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.AMBIENT_VOICE_FOCUS, e);
         }
 
@@ -168,12 +167,12 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
         private async void ExtraLoud_OnToggled(object? sender, bool e)
         {
-            if (!BluetoothImpl.Instance.DeviceSpec.Supports(IDeviceSpec.Feature.AmbientExtraLoud))
+            if (!BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientExtraLoud))
             {
                 MainWindow.Instance.ShowUnsupportedFeaturePage(
                     string.Format(
                         Loc.Resolve("adv_required_firmware_later"), 
-                        BluetoothImpl.Instance.DeviceSpec.RecommendedFwVersion(IDeviceSpec.Feature.AmbientExtraLoud)));
+                        BluetoothImpl.Instance.DeviceSpec.RecommendedFwVersion(Features.AmbientExtraLoud)));
                 return;
             }
 			

@@ -1,6 +1,8 @@
 ﻿using Avalonia.Controls;
 using FluentIcons.Common;
+using GalaxyBudsClient.Interface.Converters;
 using GalaxyBudsClient.Interface.Pages;
+using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
 using ReactiveUI.Fody.Helpers;
 
@@ -12,14 +14,10 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
     
     public NoiseControlPageViewModel()
     {
-        
+        SppMessageHandler.Instance.AmbientEnabledUpdateResponse += (_, b) => IsAmbientSoundEnabled = b; 
     }
     
     [Reactive] public bool IsAmbientSoundEnabled { set; get; }
-    [Reactive] public int AmbientSoundVolume { set; get; }
-    [Reactive] public int MaximumAmbientSoundVolume { set; get; }
-    [Reactive] public bool IsAmbientExtraLoudEnabled { set; get; }
-    [Reactive] public bool IsAmbientVoiceFocusEnabled { set; get; }
     [Reactive] public bool IsAncEnabled { set; get; }
     [Reactive] public bool IsAncLevelHigh { set; get; }
     [Reactive] public bool IsAncWithOneEarbudAllowed { set; get; }

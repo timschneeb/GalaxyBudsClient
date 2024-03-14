@@ -8,28 +8,27 @@ namespace GalaxyBudsClient.Model.Specifications
 {
     public class Buds2ProDeviceSpec : IDeviceSpec
     {
-        public Dictionary<IDeviceSpec.Feature, FeatureRule?> Rules => new()
+        public Dictionary<Features, FeatureRule?> Rules => new()
             {
-                { IDeviceSpec.Feature.SeamlessConnection, null },
-                { IDeviceSpec.Feature.StereoPan, null },
-                { IDeviceSpec.Feature.DoubleTapVolume, null },
-                { IDeviceSpec.Feature.FirmwareUpdates, null },
-                { IDeviceSpec.Feature.DetectConversations, null },
-                { IDeviceSpec.Feature.NoiseControl, null },
-                { IDeviceSpec.Feature.GamingMode, null },
-                { IDeviceSpec.Feature.CaseBattery, null },
-                { IDeviceSpec.Feature.FragmentedMessages, null },
-                { IDeviceSpec.Feature.SpatialSensor, null },
-                { IDeviceSpec.Feature.BixbyWakeup, null },
-                { IDeviceSpec.Feature.GearFitTest, null },
-                { IDeviceSpec.Feature.AncNoiseReductionLevels, null },
-                { IDeviceSpec.Feature.AmbientSidetone, null },
-                { IDeviceSpec.Feature.AmbientCustomize, null },
-                /*{ IDeviceSpec.Feature.AncWithOneEarbud, null },
-                 TODO: conflicts with AncNoiseReductionLevels and overlaps in UI due to lack of space
-                 This will be fixed with the UI rewrite
-                  */
-                { IDeviceSpec.Feature.DebugSku, null }
+                { Features.SeamlessConnection, null },
+                { Features.StereoPan, null },
+                { Features.DoubleTapVolume, null },
+                { Features.FirmwareUpdates, null },
+                { Features.DetectConversations, null },
+                { Features.NoiseControl, null },
+                { Features.GamingMode, null },
+                { Features.CaseBattery, null },
+                { Features.FragmentedMessages, null },
+                { Features.SpatialSensor, null },
+                { Features.BixbyWakeup, null },
+                { Features.GearFitTest, null },
+                { Features.AmbientSound, null },
+                { Features.Anc, null },
+                { Features.AncNoiseReductionLevels, null },
+                { Features.AmbientSidetone, null },
+                { Features.AmbientCustomize, null },
+                { Features.AncWithOneEarbud, null },
+                { Features.DebugSku, null }
             };
         
         public Models Device => Models.Buds2Pro;
@@ -46,5 +45,6 @@ namespace GalaxyBudsClient.Model.Specifications
         );
         
         public string IconResourceKey => "Pro";
+        public int MaximumAmbientVolume => 2;
     }
 }
