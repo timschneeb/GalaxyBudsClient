@@ -34,8 +34,8 @@ namespace GalaxyBudsClient.Interface.Developer
             public IEnumerable MsgIdSource => _msgIdCache;
             public IEnumerable MsgTypeSource => _msgTypeCache;
         
-            public readonly DataGridCollectionView MsgTableDataView = new DataGridCollectionView(new List<RecvMsgViewHolder>());
-            public readonly DataGridCollectionView PropTableDataView = new DataGridCollectionView(new List<PropertyViewModel>());
+            public readonly DataGridCollectionView MsgTableDataView = new(new List<RecvMsgViewHolder>());
+            public readonly DataGridCollectionView PropTableDataView = new(new List<PropertyViewModel>());
 
             public List<RecvMsgViewHolder>? MsgTableDataSource =>
                 MsgTableDataView.SourceCollection as List<RecvMsgViewHolder>;
@@ -43,7 +43,7 @@ namespace GalaxyBudsClient.Interface.Developer
                 PropTableDataView.SourceCollection as List<PropertyViewModel>;
         }
 
-        private readonly List<byte> _cache = new List<byte>();
+        private readonly List<byte> _cache = new();
 
         private readonly DataGrid _msgTable;
         private readonly DataGrid _propTable;
@@ -52,13 +52,13 @@ namespace GalaxyBudsClient.Interface.Developer
         private readonly ComboBox _msgIdSend;
         private readonly ComboBox _msgTypeSend;
 
-        private readonly List<FilePickerFileType> _filters = new List<FilePickerFileType>()
+        private readonly List<FilePickerFileType> _filters = new()
         {
             new ("Hex dump") { Patterns = new List<string>() {"*.bin", "*.hex"}},
             new ("All files"){ Patterns = new List<string>() {"*"}},
         };
 
-        private readonly ViewModel _vm = new ViewModel();
+        private readonly ViewModel _vm = new();
         
         public DevTools()
         {

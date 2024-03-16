@@ -14,7 +14,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 	{
 		public override Pages PageType => Pages.SpatialTest;
 
-		private readonly SpatialSensorManager _spatialSensorManager = new SpatialSensorManager();
+		private readonly SpatialSensorManager _spatialSensorManager = new();
 		
 		private readonly PageHeader _pageHeader;
 		private readonly Image _arrow;

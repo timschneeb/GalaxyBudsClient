@@ -12,7 +12,7 @@ namespace GalaxyBudsClient.Message
     {
         public event EventHandler<Quaternion>? NewQuaternionReceived; 
         
-        private readonly Timer _keepAliveTimer = new Timer(2000);
+        private readonly Timer _keepAliveTimer = new(2000);
         public SpatialSensorManager()
         {
             _keepAliveTimer.Elapsed += KeepAliveOnElapsed;

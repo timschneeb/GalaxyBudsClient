@@ -12,7 +12,7 @@ namespace GalaxyBudsClient.Message
 {
     public class FirmwareTransferManager
     {
-        private static readonly object Padlock = new object();
+        private static readonly object Padlock = new();
         private static FirmwareTransferManager? _instance;
         public static FirmwareTransferManager Instance
         {

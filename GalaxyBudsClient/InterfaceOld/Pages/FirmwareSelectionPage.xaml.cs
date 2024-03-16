@@ -56,7 +56,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
         private ContextMenu? _advancedMenu;
 
-        private readonly FirmwareRemoteClient _client = new FirmwareRemoteClient();
+        private readonly FirmwareRemoteClient _client = new();
 
         public FirmwareSelectionPage()
         {

@@ -4,7 +4,7 @@ namespace GalaxyBudsClient.Message
 {
     public class DeviceMessageCache
     {
-        private static readonly object Padlock = new object();
+        private static readonly object Padlock = new();
         private static DeviceMessageCache? _instance;
         public static DeviceMessageCache Instance
         {

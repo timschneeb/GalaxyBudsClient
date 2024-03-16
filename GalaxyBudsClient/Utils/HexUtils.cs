@@ -13,7 +13,7 @@ namespace GalaxyBudsClient.Utils
         private readonly int _length;
 
         private int _index;
-        private readonly StringBuilder _sb = new StringBuilder();
+        private readonly StringBuilder _sb = new();
 
         private HexUtils(byte[] bytes, int bytesPerLine, bool showHeader, bool showOffset, bool showAscii)
         {
