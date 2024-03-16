@@ -2,7 +2,7 @@
 
 namespace GalaxyBudsClient.Model.Attributes
 {
-    class PostfixAttribute : Attribute
+    public class PostfixAttribute : Attribute
     {
         public string? Text { get; set; }
     }

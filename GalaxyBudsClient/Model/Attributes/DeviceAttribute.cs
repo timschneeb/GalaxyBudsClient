@@ -2,7 +2,7 @@
 
 namespace GalaxyBudsClient.Model.Attributes
 {
-    class DeviceAttribute : Attribute
+    public class DeviceAttribute : Attribute
     {
         public DeviceAttribute(Constants.Models[] models)
         {
@@ -16,8 +16,8 @@ namespace GalaxyBudsClient.Model.Attributes
 
         public override string ToString()
         {
-            string str = string.Empty;
-            int i = 0;
+            var str = string.Empty;
+            var i = 0;
             foreach (var model in Models)
             {
                 str += model.ToString();
