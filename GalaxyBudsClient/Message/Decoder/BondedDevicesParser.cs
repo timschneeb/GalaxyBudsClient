@@ -7,7 +7,7 @@ namespace GalaxyBudsClient.Message.Decoder
     {
         public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.UNK_BONDED_DEVICES;
 
-        public String? Content { set; get; }
+        public string? Content { set; get; }
 
         public override void ParseMessage(SppMessage msg)
         {

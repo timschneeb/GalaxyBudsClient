@@ -9,8 +9,8 @@ namespace GalaxyBudsClient.InterfaceOld.Items
     public class IconListItem : UserControl
     {  
        
-        public static readonly StyledProperty<String> TextProperty =
-            AvaloniaProperty.Register<IconListItem, String>(nameof(Text));
+        public static readonly StyledProperty<string> TextProperty =
+            AvaloniaProperty.Register<IconListItem, string>(nameof(Text));
         
         public static readonly StyledProperty<IImage?> SourceProperty =
             AvaloniaProperty.Register<IconListItem, IImage?>(nameof(Source));
@@ -21,7 +21,7 @@ namespace GalaxyBudsClient.InterfaceOld.Items
             DataContext = this;
         }
         
-        public String Text
+        public string Text
         {
             get => GetValue(TextProperty);
             set => SetValue(TextProperty, value);

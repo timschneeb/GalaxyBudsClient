@@ -7,7 +7,7 @@ namespace GalaxyBudsClient.Message.Decoder
     {
         public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.DEBUG_BUILD_INFO;
         
-        public String? BuildString { set; get; }
+        public string? BuildString { set; get; }
 
         public override void ParseMessage(SppMessage msg)
         {

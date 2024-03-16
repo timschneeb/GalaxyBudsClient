@@ -138,9 +138,9 @@ namespace GalaxyBudsClient.Message.Decoder
         }
 
         
-        public override Dictionary<String, String> ToStringMap()
+        public override Dictionary<string, string> ToStringMap()
         {
-            Dictionary<String, String> map = new Dictionary<string, string>();
+            Dictionary<string, string> map = new Dictionary<string, string>();
             PropertyInfo[] properties = this.GetType().GetProperties();
             foreach (PropertyInfo property in properties)
             {

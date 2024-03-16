@@ -9,11 +9,11 @@ namespace GalaxyBudsClient.InterfaceOld.Items
 {
     public class SwitchDetailListItem : UserControl
     {
-        public static readonly StyledProperty<String> TextProperty =
-            AvaloniaProperty.Register<SwitchDetailListItem, String>(nameof(Text));
+        public static readonly StyledProperty<string> TextProperty =
+            AvaloniaProperty.Register<SwitchDetailListItem, string>(nameof(Text));
         
-        public static readonly StyledProperty<String> DescriptionProperty =
-            AvaloniaProperty.Register<SwitchDetailListItem, String>(nameof(Description));
+        public static readonly StyledProperty<string> DescriptionProperty =
+            AvaloniaProperty.Register<SwitchDetailListItem, string>(nameof(Description));
         
         public event EventHandler<bool>? Toggled;
 
@@ -32,13 +32,13 @@ namespace GalaxyBudsClient.InterfaceOld.Items
             set => _toggle.IsChecked = value;
         }
 
-        public String Text
+        public string Text
         {
             get => GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
 
-        public String Description
+        public string Description
         {
             get => GetValue(DescriptionProperty);
             set => SetValue(DescriptionProperty, value);
