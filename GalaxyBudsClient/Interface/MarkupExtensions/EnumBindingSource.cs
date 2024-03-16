@@ -11,24 +11,24 @@ namespace GalaxyBudsClient.Interface.MarkupExtensions;
 
 public class EnumBindingSource : MarkupExtension
 {
-    private Type? _enumType;
+    private readonly Type? _enumType;
     public Type? EnumType
     {
         get => _enumType;
-        set
+        init
         {
-            if (value != _enumType)
+            if (value == _enumType) 
+                return;
+            
+            if (null != value)
             {
-                if (null != value)
-                {
-                    var enumType = Nullable.GetUnderlyingType(value) ?? value;
+                var enumType = Nullable.GetUnderlyingType(value) ?? value;
 
-                    if (!enumType.IsEnum)
-                        throw new ArgumentException("Type must be for an Enum.");
-                }
-
-                _enumType = value;
+                if (!enumType.IsEnum)
+                    throw new ArgumentException("Type must be for an Enum.");
             }
+
+            _enumType = value;
         }
     }
     

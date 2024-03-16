@@ -5,6 +5,7 @@ using GalaxyBudsClient.Platform;
 
 namespace GalaxyBudsClient.Interface.MarkupExtensions;
 
+// TODO: can probably be removed
 public class FeatureTrigger : RequiresFeatureBehavior, ITrigger
 {
     public static readonly DirectProperty<FeatureTrigger, ActionCollection> ActionsProperty =
