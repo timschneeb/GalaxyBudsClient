@@ -2,7 +2,8 @@ using System;
 
 namespace GalaxyBudsClient.Model.Firmware
 {
-    public class FirmwareParseException : Exception
+    public class FirmwareParseException(FirmwareParseException.ErrorCodes code, string message)
+        : Exception($"{code.ToString()}: {message}")
     {
         public enum ErrorCodes
         {
@@ -13,16 +14,8 @@ namespace GalaxyBudsClient.Model.Firmware
             Unknown
         }
         
-        public readonly string ErrorName;
-        public readonly string ErrorMessage;
-        public readonly ErrorCodes ErrorCode;
-
-        public FirmwareParseException(ErrorCodes code, string message)
-            : base($"{code.ToString()}: {message}")
-        {
-            ErrorName = code.ToString();
-            ErrorMessage = message;
-            ErrorCode = code;
-        }
+        public readonly string ErrorName = code.ToString();
+        public readonly string ErrorMessage = message;
+        public readonly ErrorCodes ErrorCode = code;
     }
 }

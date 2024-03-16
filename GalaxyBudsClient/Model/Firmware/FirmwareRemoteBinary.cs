@@ -7,28 +7,24 @@ using Serilog;
 
 namespace GalaxyBudsClient.Model.Firmware
 {
-    public class FirmwareRemoteBinary
+    public class FirmwareRemoteBinary(
+        string? buildName,
+        Models? model,
+        string? region,
+        string? bootloaderVersion,
+        string? reservedField,
+        int? year,
+        int? month,
+        int? revision)
     {
-        public FirmwareRemoteBinary(string? buildName, Models? model, string? region, string? bootloaderVersion, string? reservedField, int? year, int? month, int? revision)
-        {
-            BuildName = buildName;
-            Model = model;
-            Region = region;
-            BootloaderVersion = bootloaderVersion;
-            ReservedField = reservedField;
-            Year = year;
-            Month = month;
-            Revision = revision;
-        }
-
-        public string? BuildName { set; get; }
-        public Models? Model { set; get; }
-        public string? Region { set; get; }
-        public string? BootloaderVersion { set; get; }
-        public string? ReservedField { set; get; }
-        public int? Year { set; get; }
-        public int? Month { set; get; }
-        public int? Revision { set; get; }
+        public string? BuildName { set; get; } = buildName;
+        public Models? Model { set; get; } = model;
+        public string? Region { set; get; } = region;
+        public string? BootloaderVersion { set; get; } = bootloaderVersion;
+        public string? ReservedField { set; get; } = reservedField;
+        public int? Year { set; get; } = year;
+        public int? Month { set; get; } = month;
+        public int? Revision { set; get; } = revision;
     }
     
     public static class FirmwareRemoteBinaryFilters
