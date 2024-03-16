@@ -84,8 +84,6 @@ namespace GalaxyBudsClient.Scripting.Experiment
                 return;
             }
             
-            Log.Debug("ExperimentClient: Scanning for experiments...");
-
             if (Settings.Instance.Experiments.Disabled)
             {
                 Log.Information("ExperimentClient: Feature is disabled");
@@ -123,7 +121,6 @@ namespace GalaxyBudsClient.Scripting.Experiment
                     .ToList()
                     .AsReadOnly();
 
-                Log.Debug("ExperimentClient: {Count} experiment(s) found", results.Count);
                 NewResultsFound?.Invoke(this, results);
             }
             catch (HttpRequestException ex)

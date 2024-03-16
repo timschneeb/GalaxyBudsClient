@@ -8,7 +8,7 @@ using Serilog;
 
 namespace GalaxyBudsClient.Model
 {
-    public class CustomAction
+    public class CustomAction(CustomAction.Actions action, string parameter = "")
     {
         public enum Actions
         {
@@ -19,9 +19,9 @@ namespace GalaxyBudsClient.Model
             RunExternalProgram
         }
 
-        public readonly Actions Action;
+        public readonly Actions Action = action;
 
-        public readonly string Parameter;
+        public readonly string Parameter = parameter;
 
         public EventDispatcher.Event Event
         {
@@ -38,16 +38,8 @@ namespace GalaxyBudsClient.Model
             }
         }
 
-        public CustomAction(Actions action, string parameter = "")
+        public CustomAction(EventDispatcher.Event @event) : this(Actions.Event, @event.ToString())
         {
-            Action = action;
-            Parameter = parameter;
-        }
-        
-        public CustomAction(EventDispatcher.Event @event)
-        {
-            Action = Actions.Event;
-            Parameter = @event.ToString();
         }
         
         public override string ToString()

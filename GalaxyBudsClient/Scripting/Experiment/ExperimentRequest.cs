@@ -59,9 +59,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
                 item.Script = Encoding.UTF8.GetString(Convert.FromBase64String(item.Script ?? string.Empty));
                 item.Signature = Crypto.RsaDecryptWithPublic(item.Signature ?? string.Empty, PublicSigningKey);
 
-#pragma warning disable SYSLIB0021
-                var hash = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(item.Script));
-#pragma warning restore SYSLIB0021
+                var hash = SHA1.HashData(Encoding.UTF8.GetBytes(item.Script));
                 if (item.Signature != Convert.ToBase64String(hash))
                 {
                     Log.Error("ExperimentRequest.VerifyDecode: Unknown signature, discarding entry!");

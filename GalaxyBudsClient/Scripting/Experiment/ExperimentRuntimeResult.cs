@@ -1,16 +1,9 @@
 namespace GalaxyBudsClient.Scripting.Experiment
 {
-    public class ExperimentRuntimeResult
+    public class ExperimentRuntimeResult(int resultCode, string result, string? resultCodeString = null)
     {
-        public readonly int ResultCode;
-        public readonly string? ResultCodeString;
-        public readonly string Result;
-
-        public ExperimentRuntimeResult(int resultCode, string result, string? resultCodeString = null)
-        {
-            ResultCode = resultCode;
-            ResultCodeString = resultCodeString;
-            Result = result;
-        }
+        public readonly int ResultCode = resultCode;
+        public readonly string? ResultCodeString = resultCodeString;
+        public readonly string Result = result;
     }
 }

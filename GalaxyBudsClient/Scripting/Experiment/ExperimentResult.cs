@@ -1,11 +1,14 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Reflection;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
+// ReSharper disable UnusedMember.Global
 
 namespace GalaxyBudsClient.Scripting.Experiment
 {
+    [SuppressMessage("Performance", "CA1822:Mark members as static")]
     public class ExperimentResult
     {
         public int ResultCode { set; get; }

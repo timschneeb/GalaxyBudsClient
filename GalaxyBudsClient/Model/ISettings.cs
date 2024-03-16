@@ -1,6 +1,5 @@
 using System;
 using System.ComponentModel;
-using Avalonia.Media;
 using Config.Net;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Hotkeys;

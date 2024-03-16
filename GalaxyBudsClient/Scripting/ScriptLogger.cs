@@ -5,15 +5,10 @@ using Serilog;
 
 namespace GalaxyBudsClient.Scripting
 {
-    public class ScriptLogger
+    public class ScriptLogger(IHook instance)
     {
-        private readonly string _tag;
-        
-        public ScriptLogger(IHook instance)
-        {
-            _tag = $"[Script] {instance.GetType().Name}: ";
-        }
-        
+        private readonly string _tag = $"[Script] {instance.GetType().Name}: ";
+
         public void Error(string message)
         {
             Log.Error($"{_tag}{message}");

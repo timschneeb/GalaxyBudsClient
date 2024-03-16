@@ -2,14 +2,9 @@ using GalaxyBudsClient.Model.Attributes;
 
 namespace GalaxyBudsClient.Model.Hotkeys
 {
-    public class ActionViewHolder
+    public class ActionViewHolder(EventDispatcher.Event value)
     {
-        public readonly EventDispatcher.Event Value;
-
-        public ActionViewHolder(EventDispatcher.Event value)
-        {
-            Value = value;
-        }
+        public readonly EventDispatcher.Event Value = value;
 
         public override string ToString()
         {

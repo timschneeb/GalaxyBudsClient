@@ -10,7 +10,7 @@ using Serilog;
 
 namespace GalaxyBudsClient.Message
 {
-    public partial class SppMessage
+    public partial class SppMessage(SppMessage.MessageIds id, SppMessage.MsgType type, byte[] payload)
     {
         private const int CrcSize = 2;
         private const int MsgIdSize = 1;
@@ -19,26 +19,18 @@ namespace GalaxyBudsClient.Message
         private const int TypeSize = 1;
         private const int BytesSize = 1;
 
-        public MsgType Type { set; get; }
-        public MessageIds Id { set; get; }
+        public MsgType Type { set; get; } = type;
+        public MessageIds Id { set; get; } = id;
         public int Size => MsgIdSize + Payload.Length + CrcSize;
         public int TotalPacketSize => SomSize + TypeSize + BytesSize + MsgIdSize + Payload.Length + CrcSize + EomSize;
-        public byte[] Payload { set; get; }
+        public byte[] Payload { set; get; } = payload;
         public int Crc16 { private set; get; }
         
         /* No Buds support at the moment */
         public bool IsFragment { set; get; }
 
-        public SppMessage()
+        public SppMessage() : this(MessageIds.UNKNOWN_0, MsgType.Request, Array.Empty<byte>())
         {
-            Payload = Array.Empty<byte>();
-        }
-
-        public SppMessage(MessageIds id, MsgType type, byte[] payload)
-        {
-            Id = id;
-            Type = type;
-            Payload = payload;
         }
 
         public BaseMessageParser? BuildParser()

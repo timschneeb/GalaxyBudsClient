@@ -4,7 +4,6 @@ using System.Linq;
 using CSScriptLib;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Scripting.Hooks;
-using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
 using Sentry;
 using Log = Serilog.Log;

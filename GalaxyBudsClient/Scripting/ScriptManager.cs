@@ -31,9 +31,9 @@ namespace GalaxyBudsClient.Scripting
             }
         }
 
-        public IList<IHook> Hooks { get; }
+        public IList<IHook> Hooks { get; } = new List<IHook>();
 
-        public IReadOnlyList<IMessageHook> MessageHooks
+        public IEnumerable<IMessageHook> MessageHooks
         {
             get
             {
@@ -45,7 +45,7 @@ namespace GalaxyBudsClient.Scripting
             }
         }
         
-        public IReadOnlyList<IRawStreamHook> RawStreamHooks
+        public IEnumerable<IRawStreamHook> RawStreamHooks
         {
             get
             {
@@ -57,7 +57,7 @@ namespace GalaxyBudsClient.Scripting
             }
         }
         
-        public IReadOnlyList<IDecoderHook> DecoderHooks
+        public IEnumerable<IDecoderHook> DecoderHooks
         {
             get
             {
@@ -68,11 +68,6 @@ namespace GalaxyBudsClient.Scripting
                     .AsReadOnly();
             }
         }
-
-        public ScriptManager()
-        {
-            Hooks = new List<IHook>();
-        }  
 
         public void RegisterHook(IHook hook)
         {
@@ -105,7 +100,7 @@ namespace GalaxyBudsClient.Scripting
             var files = Directory.GetFiles(directory, "*.cs", SearchOption.TopDirectoryOnly);
             Log.Information("ScriptManager: {Count} user script(s) found", files.Length);
 
-            foreach (var file in files.Where(x => x != null))
+            foreach (var file in files)
             {
                 try
                 {
