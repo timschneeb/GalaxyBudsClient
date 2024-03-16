@@ -21,7 +21,7 @@ namespace GalaxyBudsClient.Platform.Linux
         
         public HotkeyReceiver()
         {
-            _hook = new TaskPoolGlobalHook(new TaskPoolGlobalHookOptions(2, true));
+            _hook = new TaskPoolGlobalHook(2, GlobalHookType.All, null, true);
             _hook.KeyPressed += OnKeyPressed;
             _hook.KeyReleased += OnKeyReleased;
             
