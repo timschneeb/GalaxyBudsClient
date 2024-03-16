@@ -97,8 +97,8 @@ namespace GalaxyBudsClient.Message.Decoder
             if (ActiveModel == Models.Buds)
             {
 
-                int hw1 = (msg.Payload[0] & 240) >> 4;
-                int hw2 = (msg.Payload[0] & 15);
+                var hw1 = (msg.Payload[0] & 240) >> 4;
+                var hw2 = (msg.Payload[0] & 15);
 
                 HardwareVersion = "rev" + hw1.ToString("X") + "." + hw2.ToString("X");
                 SoftwareVersion = VersionDataToString(msg.Payload, 1);
@@ -131,8 +131,8 @@ namespace GalaxyBudsClient.Message.Decoder
             }
             else
             {
-                int hw1 = (msg.Payload[1] & 240) >> 4;
-                int hw2 = (msg.Payload[1] & 15);
+                var hw1 = (msg.Payload[1] & 240) >> 4;
+                var hw2 = (msg.Payload[1] & 15);
 
                 MsgVersion = msg.Payload[0];
 

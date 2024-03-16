@@ -37,10 +37,10 @@ namespace GalaxyBudsClient.Model.Firmware
             try
             {
                 FirmwareRemoteBinary[] firmwares;
-                HttpResponseMessage response = await _client.GetAsync(API_GET_FIRMWARE + $"/{BluetoothImpl.ActiveModel.ToString()}");
+                var response = await _client.GetAsync(API_GET_FIRMWARE + $"/{BluetoothImpl.ActiveModel.ToString()}");
                 if (response.IsSuccessStatusCode)
                 {
-                    MediaTypeFormatterCollection formatters = new MediaTypeFormatterCollection();
+                    var formatters = new MediaTypeFormatterCollection();
                     formatters.JsonFormatter.SerializerSettings.Converters.Add(new StringEnumConverter());
 
                     firmwares = await response.Content.ReadAsAsync<FirmwareRemoteBinary[]>(formatters);
@@ -81,10 +81,10 @@ namespace GalaxyBudsClient.Model.Firmware
             try
             {
                 byte[] binary;
-                HttpResponseMessage response = await _client.GetAsync($"{API_DOWNLOAD_FIRMWARE}/{target.BuildName}");
+                var response = await _client.GetAsync($"{API_DOWNLOAD_FIRMWARE}/{target.BuildName}");
                 if (response.IsSuccessStatusCode)
                 {
-                    MediaTypeFormatterCollection formatters = new MediaTypeFormatterCollection();
+                    var formatters = new MediaTypeFormatterCollection();
                     formatters.JsonFormatter.SerializerSettings.Converters.Add(new StringEnumConverter());
 
                     binary = await response.Content.ReadAsByteArrayAsync();

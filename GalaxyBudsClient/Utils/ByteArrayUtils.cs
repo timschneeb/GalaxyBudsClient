@@ -9,9 +9,9 @@ namespace GalaxyBudsClient.Utils
     {
         public static byte[] Combine(params byte[][] arrays)
         {
-            byte[] rv = new byte[arrays.Sum(a => a.Length)];
-            int offset = 0;
-            foreach (byte[] array in arrays) {
+            var rv = new byte[arrays.Sum(a => a.Length)];
+            var offset = 0;
+            foreach (var array in arrays) {
                 Buffer.BlockCopy(array, 0, rv, offset, array.Length);
                 offset += array.Length;
             }
@@ -32,7 +32,7 @@ namespace GalaxyBudsClient.Utils
         
         public static byte[] AddByteToArray(byte[] bArray, byte newByte)
         {
-            byte[] newArray = new byte[bArray.Length + 1];
+            var newArray = new byte[bArray.Length + 1];
             bArray.CopyTo(newArray, 0);
             newArray[^1] = newByte;
             return newArray;
@@ -46,7 +46,7 @@ namespace GalaxyBudsClient.Utils
             {
                 i--;
             }
-            byte[] copy = new byte[i + 1];
+            var copy = new byte[i + 1];
             Array.Copy(bytes, copy, i + 1);
             return copy;
         }

@@ -95,11 +95,11 @@ namespace GalaxyBudsClient.Scripting.Experiment
             ExperimentRequest[]? requests = null;
             try
             {
-                HttpResponseMessage response =
+                var response =
                     await _client.GetAsync($"{API_GET_EXPERIMENTS}/{BluetoothImpl.ActiveModel.ToString()}");
                 if (response.IsSuccessStatusCode)
                 {
-                    MediaTypeFormatterCollection formatters = new MediaTypeFormatterCollection();
+                    var formatters = new MediaTypeFormatterCollection();
                     formatters.JsonFormatter.SerializerSettings.Converters.Add(new StringEnumConverter());
                     
                     requests = await response.Content.ReadAsAsync<ExperimentRequest[]>(formatters);

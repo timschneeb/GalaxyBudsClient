@@ -26,10 +26,10 @@ namespace GalaxyBudsClient.Message.Decoder
             if (msg.Id != HandledType)
                 return;
 
-            int l1 = (msg.Payload[0] & 240) >> 4;
-            int l2 = (msg.Payload[0] & 15);
-            int r1 = (msg.Payload[1] & 240) >> 4;
-            int r2 = (msg.Payload[1] & 15);
+            var l1 = (msg.Payload[0] & 240) >> 4;
+            var l2 = (msg.Payload[0] & 15);
+            var r1 = (msg.Payload[1] & 240) >> 4;
+            var r2 = (msg.Payload[1] & 15);
 
             LeftHardwareVersion = "rev" + l1.ToString("X") + "." + l2.ToString("X");
             RightHardwareVersion = "rev" + r1.ToString("X") + "." + r2.ToString("X");

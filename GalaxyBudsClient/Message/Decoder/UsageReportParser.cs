@@ -115,7 +115,7 @@ namespace GalaxyBudsClient.Message.Decoder
             const int lengthValue = 4;
             const int lengthItem = lengthKey + lengthValue;
 
-            byte itemCount = msg.Payload[0];
+            var itemCount = msg.Payload[0];
 
             if (msg.Size != (itemCount * lengthItem) + 4)
             {
@@ -123,14 +123,14 @@ namespace GalaxyBudsClient.Message.Decoder
                 return;
             }
 
-            for (int i = 1; i < (itemCount * lengthItem); i += lengthItem)
+            for (var i = 1; i < (itemCount * lengthItem); i += lengthItem)
             {
-                byte[] rawKey = new byte[lengthKey];
-                byte[] rawValue = new byte[lengthValue];
+                var rawKey = new byte[lengthKey];
+                var rawValue = new byte[lengthValue];
                 Array.Copy(msg.Payload, i, rawKey, 0, lengthKey);
                 Array.Copy(msg.Payload, i + lengthKey, rawValue, 0, lengthValue);
 
-                string key = System.Text.Encoding.ASCII.GetString(rawKey.RTrimBytes());
+                var key = System.Text.Encoding.ASCII.GetString(rawKey.RTrimBytes());
                 long value = BitConverter.ToInt32(rawValue, 0);
                 Statistics.Add(key, value);
             }

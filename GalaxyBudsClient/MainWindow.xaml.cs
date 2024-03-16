@@ -447,7 +447,7 @@ namespace GalaxyBudsClient
 
         private void HandleOtherTouchOption(object? sender, TouchOptions e)
         {
-            ICustomAction action = e == TouchOptions.OtherL ?
+            var action = e == TouchOptions.OtherL ?
                 Settings.Instance.CustomActionLeft : Settings.Instance.CustomActionRight;
 
             switch (action.Action)
@@ -521,9 +521,9 @@ namespace GalaxyBudsClient
         #region Options menu
         private void BuildOptionsMenu()
         {
-            bool restricted = Pager.CurrentPage == AbstractPage.Pages.Welcome ||
-                              Pager.CurrentPage == AbstractPage.Pages.DeviceSelect ||
-                              !BluetoothImpl.Instance.RegisteredDeviceValid;
+            var restricted = Pager.CurrentPage == AbstractPage.Pages.Welcome ||
+                             Pager.CurrentPage == AbstractPage.Pages.DeviceSelect ||
+                             !BluetoothImpl.Instance.RegisteredDeviceValid;
 
             var options = new Dictionary<string, EventHandler<RoutedEventArgs>?>()
             {

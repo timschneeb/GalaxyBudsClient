@@ -11,7 +11,7 @@ namespace GalaxyBudsClient.Platform.Windows
     {
         public void SendKeys(IEnumerable<Key> keys)
         {
-            InputSimulator sim = new InputSimulator();
+            var sim = new InputSimulator();
             var enumerable = keys.ToList();
             foreach (var key in enumerable)
             {

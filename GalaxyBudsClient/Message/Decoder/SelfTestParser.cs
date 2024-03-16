@@ -69,8 +69,8 @@ namespace GalaxyBudsClient.Message.Decoder
             RightHall = (data & 16777216) == 0;
 
 
-            bool result = true;
-            foreach (PropertyInfo pi in GetType().GetProperties())
+            var result = true;
+            foreach (var pi in GetType().GetProperties())
             {
                 if (pi.PropertyType == typeof(bool) && pi.Name != "AllChecks" 
                     && pi.Name != "AllLeftAccelerator" && pi.Name != "AllRightAccelerator")

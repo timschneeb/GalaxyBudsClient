@@ -143,7 +143,7 @@ namespace GalaxyBudsClient.Message.Decoder
         {
             Dictionary<string, string> map = new Dictionary<string, string>();
             PropertyInfo[] properties = this.GetType().GetProperties();
-            foreach (PropertyInfo property in properties)
+            foreach (var property in properties)
             {
                 if (IsHiddenProperty(property))
                     continue;
@@ -180,7 +180,7 @@ namespace GalaxyBudsClient.Message.Decoder
                         continue;
                     }
                     
-                    string str = "";
+                    var str = "";
                     foreach (var o in array)
                     {
                         str += o?.ToString();

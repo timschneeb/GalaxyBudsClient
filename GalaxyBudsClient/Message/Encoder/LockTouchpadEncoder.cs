@@ -6,8 +6,8 @@ namespace GalaxyBudsClient.Message.Encoder
     {
         public static SppMessage Build(bool lockAll, bool tapOn, bool doubleTapOn, bool tripleTapOn, bool holdTapOn)
         {
-            MemoryStream stream = new MemoryStream();
-            BinaryWriter writer = new BinaryWriter(stream);
+            var stream = new MemoryStream();
+            var writer = new BinaryWriter(stream);
 
             writer.Write(!lockAll);
             writer.Write(tapOn);

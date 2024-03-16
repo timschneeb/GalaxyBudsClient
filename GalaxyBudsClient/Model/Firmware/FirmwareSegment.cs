@@ -11,7 +11,7 @@ namespace GalaxyBudsClient.Model.Firmware
 
         public FirmwareSegment(int i, long count, Stream stream)
         {
-            byte[] bArr = new byte[256];
+            var bArr = new byte[256];
             var i2 = (i * 16) + 12;
             
             stream.Seek(0, SeekOrigin.Begin);

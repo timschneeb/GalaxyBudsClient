@@ -89,7 +89,7 @@ namespace GalaxyBudsClient.Interface.Developer
                     _cache.AddRange(raw);
                     _hexDump.Text = HexUtils.Dump(_cache.ToArray());
 
-                    RecvMsgViewHolder holder = new RecvMsgViewHolder(SppMessage.DecodeMessage(raw));
+                    var holder = new RecvMsgViewHolder(SppMessage.DecodeMessage(raw));
                     _vm.MsgTableDataSource?.Add(holder);
                     _vm.MsgTableDataView.Refresh();
                     
@@ -216,7 +216,7 @@ namespace GalaxyBudsClient.Interface.Developer
                 {
                     // Attempt to remove broken message, otherwise skip data block
                     var somIndex = 0;
-                    for (int i = 1; i < data.Count; i++)
+                    for (var i = 1; i < data.Count; i++)
                     {
                         if ((BluetoothImpl.ActiveModel == Models.Buds &&
                             (byte)(data[i] ?? 0) == (byte)SppMessage.Constants.SOM) ||

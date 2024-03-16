@@ -208,8 +208,8 @@ namespace GalaxyBudsClient.Message.Decoder
 
                     OutsideDoubleTap = msg.Payload[14] == 1;
 
-                    short leftColor = BitConverter.ToInt16(msg.Payload, 15);
-                    short rightColor = BitConverter.ToInt16(msg.Payload, 17);
+                    var leftColor = BitConverter.ToInt16(msg.Payload, 15);
+                    var rightColor = BitConverter.ToInt16(msg.Payload, 17);
                     DeviceColor = (Color)(leftColor != rightColor ? 0 : leftColor);
 
                     if (Revision >= 8)
@@ -239,8 +239,8 @@ namespace GalaxyBudsClient.Message.Decoder
                     NoiseCancelling = msg.Payload[12] == 1;
                     VoiceWakeUp = msg.Payload[13] == 1;
 
-                    short leftColor = BitConverter.ToInt16(msg.Payload, 14);
-                    short rightColor = BitConverter.ToInt16(msg.Payload, 16);
+                    var leftColor = BitConverter.ToInt16(msg.Payload, 14);
+                    var rightColor = BitConverter.ToInt16(msg.Payload, 16);
                     DeviceColor = (Color)(leftColor != rightColor ? 0 : leftColor);
 
                     VoiceWakeUpLang = msg.Payload[18];
@@ -277,8 +277,8 @@ namespace GalaxyBudsClient.Message.Decoder
                     NoiseControlMode = (NoiseControlMode)msg.Payload[12];
                     VoiceWakeUp = msg.Payload[13] == 1;
 
-                    short leftColor = BitConverter.ToInt16(msg.Payload, 14);
-                    short rightColor = BitConverter.ToInt16(msg.Payload, 16);
+                    var leftColor = BitConverter.ToInt16(msg.Payload, 14);
+                    var rightColor = BitConverter.ToInt16(msg.Payload, 16);
                     DeviceColor = (Color)(leftColor != rightColor ? 0 : leftColor);
 
                     VoiceWakeUpLang = msg.Payload[18];
@@ -373,8 +373,8 @@ namespace GalaxyBudsClient.Message.Decoder
                     NoiseControlMode = (NoiseControlMode)msg.Payload[12];
                     VoiceWakeUp = msg.Payload[13] == 1;
 
-                    short leftColor = BitConverter.ToInt16(msg.Payload, 14);
-                    short rightColor = BitConverter.ToInt16(msg.Payload, 16);
+                    var leftColor = BitConverter.ToInt16(msg.Payload, 14);
+                    var rightColor = BitConverter.ToInt16(msg.Payload, 16);
                     DeviceColor = (Color)(leftColor != rightColor ? 0 : leftColor);
 
                     VoiceWakeUpLang = msg.Payload[18];
@@ -440,8 +440,8 @@ namespace GalaxyBudsClient.Message.Decoder
                     NoiseControlMode = (NoiseControlMode)msg.Payload[12];
                     VoiceWakeUp = msg.Payload[13] == 1;
 
-                    short leftColor = BitConverter.ToInt16(msg.Payload, 14);
-                    short rightColor = BitConverter.ToInt16(msg.Payload, 16);
+                    var leftColor = BitConverter.ToInt16(msg.Payload, 14);
+                    var rightColor = BitConverter.ToInt16(msg.Payload, 16);
                     DeviceColor = (Color)(leftColor != rightColor ? 0 : leftColor);
 
                     VoiceWakeUpLang = msg.Payload[18];

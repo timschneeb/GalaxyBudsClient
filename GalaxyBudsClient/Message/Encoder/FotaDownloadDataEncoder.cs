@@ -43,8 +43,8 @@ namespace GalaxyBudsClient.Message.Encoder
                 goto RET_NULL;
             }
             
-            byte[] bArr = new byte[(int) (4 + rawDataSize)];
-            byte[] header = BitConverter.GetBytes(MakeFragmentHeader(z, Offset));
+            var bArr = new byte[(int) (4 + rawDataSize)];
+            var header = BitConverter.GetBytes(MakeFragmentHeader(z, Offset));
             var length = header.Length;
             var i2 = 0;
             while (i < length) {

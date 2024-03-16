@@ -105,7 +105,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
 		private void UpdateMenuDescriptions()
 		{
-			bool known = false;
+			var known = false;
 			foreach (var mode in NoiseControlModeMap)
 			{
 				if (mode.Item1 == _lastNoiseControlMode.Item1 &&

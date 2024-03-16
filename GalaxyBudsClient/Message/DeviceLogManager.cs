@@ -142,12 +142,12 @@ namespace GalaxyBudsClient.Message
                     }
                     break;
                 case SppMessage.MessageIds.LOG_TRACE_DATA_DONE:
-                    int remainOffset = GetRemainOffset();
+                    var remainOffset = GetRemainOffset();
                     if (remainOffset >= 0)
                     {
                         int i = _traceContext!.PartialDataMaxSize;
-                        int i2 = remainOffset + i;
-                        int i3 = _traceContext!.DataSize;
+                        var i2 = remainOffset + i;
+                        var i3 = _traceContext!.DataSize;
                         if (i2 > i3)
                         {
                             i = i3 - remainOffset;
@@ -199,12 +199,12 @@ namespace GalaxyBudsClient.Message
                     ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(coredumpData.PartialDataOffset, _traceContext!.DataSize, LogDownloadProgressEventArgs.Type.Coredump));
                     break;
                 case SppMessage.MessageIds.LOG_COREDUMP_DATA_DONE:
-                    int remainOffsetCore = GetRemainOffset();
+                    var remainOffsetCore = GetRemainOffset();
                     if (remainOffsetCore >= 0)
                     {
                         int i = _traceContext!.PartialDataMaxSize;
-                        int i2 = remainOffsetCore + i;
-                        int i3 = _traceContext!.DataSize;
+                        var i2 = remainOffsetCore + i;
+                        var i3 = _traceContext!.DataSize;
                         if (i2 > i3)
                         {
                             i = i3 - remainOffsetCore;
