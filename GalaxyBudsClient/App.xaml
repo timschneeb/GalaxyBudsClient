@@ -27,9 +27,6 @@
         <FluentTheme/>
         <styling:FluentAvaloniaTheme PreferSystemTheme="True" CustomAccentColor="Orange" />
         <StyleInclude Source="avares://FluentAvalonia.BreadcrumbBar/Styling/Styles.axaml" />
-        <!-- TODO <StyleInclude Source="/InterfaceOld/Styles/Slider.xaml"/>
-        <StyleInclude Source="/InterfaceOld/Styles/ListBox.xaml"/>-->
-        <StyleInclude Source="/InterfaceOld/Styles/Styles.xaml"/>
         <StyleInclude Source="/Interface/Styling/AppStyles.axaml" />
     </Application.Styles>
     <TrayIcon.Icons>
