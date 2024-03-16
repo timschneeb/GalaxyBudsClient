@@ -121,22 +121,15 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                    <Grid RowDefinitions="Auto,*" ColumnDefinitions="Auto,*">
                         <Border ZIndex="1" Padding="5,0,5,0" 
-                                Background="{DynamicResource WindowBackgroundBrush}" Margin="8,0,0,0"
+                                Background="{DynamicResource SystemBaseLowColor}" Margin="8,0,0,0"
                                 CornerRadius="4">
-                            <TextBlock FontWeight="Bold" Text="{TemplateBinding Header}" Foreground="{DynamicResource ForegroundTextDimBrush}" />
+                            <TextBlock FontWeight="Bold" Text="{TemplateBinding Header}" />
                         </Border>
                         <Border Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="0" Margin="0,10,0,0"
                                 BorderBrush="{DynamicResource SystemBaseLowColor}"
+                                Opacity="1"
                                 BorderThickness="2"
                                 CornerRadius="10">
                             <ContentPresenter Margin="15" Content="{TemplateBinding Content}" />
