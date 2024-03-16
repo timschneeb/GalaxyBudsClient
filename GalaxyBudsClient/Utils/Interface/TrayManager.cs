@@ -158,57 +158,29 @@ namespace GalaxyBudsClient.Utils.Interface
 
         private IEnumerable<NativeMenuItemBase> RebuildDynamicActions()
         {
-            var items = new List<NativeMenuItemBase>();
-
-            foreach (var type in BluetoothImpl.Instance.DeviceSpec.TrayShortcuts)
-            {
-                switch (type)
+            return from type in BluetoothImpl.Instance.DeviceSpec.TrayShortcuts
+                let resourceKey = type switch
                 {
-                    case ItemType.ToggleNoiseControl:
-                        items.Add(new NativeMenuItem(Loc.Resolve("tray_switch_noise"))
-                        {  
-                            Command = new MiniCommand(OnTrayMenuCommand),
-                            CommandParameter = type
-                        });
-                        break;
-                    case ItemType.ToggleEqualizer:
-                        var eqEnabled = MainWindow2.Instance.MainView.ResolveViewModelByType<EqualizerPageViewModel>()?.IsEqEnabled ?? false;
-                        items.Add(new NativeMenuItem(eqEnabled ? Loc.Resolve("tray_disable_eq") : Loc.Resolve("tray_enable_eq"))
-                        {  
-                            Command = new MiniCommand(OnTrayMenuCommand),
-                            CommandParameter = type
-                        });
-                        break;
-                    case ItemType.ToggleAmbient:
-                        var ambEnabled = MainWindow2.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAmbientSoundEnabled ?? false;
-                        items.Add(new NativeMenuItem(ambEnabled ? Loc.Resolve("tray_disable_ambient_sound") : Loc.Resolve("tray_enable_ambient_sound"))
-                        {  
-                            Command = new MiniCommand(OnTrayMenuCommand),
-                            CommandParameter = type
-                        });
-                        break;
-                    case ItemType.ToggleAnc:
-                        var ancEnabled = MainWindow2.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAncEnabled ?? false;
-                        items.Add(new NativeMenuItem(ancEnabled ? Loc.Resolve("tray_disable_anc") : Loc.Resolve("tray_enable_anc"))
-                        {  
-                            Command = new MiniCommand(OnTrayMenuCommand),
-                            CommandParameter = type
-                        });
-                        break;
-                    case ItemType.LockTouchpad:
-                        var lockEnabled =
-                            (MainWindow.Instance.Pager.FindPage(AbstractPage.Pages.Touch) as TouchpadPage)
-                            ?.TouchpadLocked ?? DeviceMessageCache.Instance.ExtendedStatusUpdate?.TouchpadLock ?? false;
-                        items.Add(new NativeMenuItem(lockEnabled ? Loc.Resolve("tray_unlock_touchpad") : Loc.Resolve("tray_lock_touchpad"))
-                        {  
-                            Command = new MiniCommand(OnTrayMenuCommand),
-                            CommandParameter = type
-                        });
-                        break;
+                    ItemType.ToggleNoiseControl => "tray_switch_noise",
+                    ItemType.ToggleEqualizer => MainWindow2.Instance.MainView.ResolveViewModelByType<EqualizerPageViewModel>()?.IsEqEnabled ?? false
+                        ? "tray_disable_eq"
+                        : "tray_enable_eq",
+                    ItemType.ToggleAmbient => MainWindow2.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAmbientSoundEnabled ?? false
+                        ? "tray_disable_ambient_sound"
+                        : "tray_enable_ambient_sound",
+                    ItemType.ToggleAnc => MainWindow2.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAncEnabled ?? false
+                        ? "tray_disable_anc"
+                        : "tray_enable_anc",
+                    ItemType.LockTouchpad => /* TODO MainWindow2.Instance.MainView.ResolveViewModelByType<TouchpadPageViewModel>()?.IsTouchLocked ?? */ false
+                        ? "tray_unlock_touchpad"
+                        : "tray_lock_touchpad",
+                    _ => "unknown"
                 }
-            }
-            
-            return items;
+                select new NativeMenuItem(resourceKey)
+                {
+                    Command = new MiniCommand(OnTrayMenuCommand),
+                    CommandParameter = type
+                };
         }
 
         public async Task RebuildAsync()
