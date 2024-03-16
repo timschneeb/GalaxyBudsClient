@@ -12,7 +12,7 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Platform.Storage;
 using Avalonia.Threading;
 using GalaxyBudsClient.Interface.ViewModels;
-using GalaxyBudsClient.InterfaceOld.Dialogs;
+using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
@@ -123,11 +123,11 @@ namespace GalaxyBudsClient.Interface.Developer
         {
             if (_msgIdSend.SelectedItem == null || _msgTypeSend.SelectedItem == null)
             {
-                new MessageBox
+                _ = new MessageBox
                 {
                     Title = "Error", 
                     Description = "Please fill all fields out."
-                }.ShowDialog(this);
+                }.ShowAsync(this);
                 return;
             }
 
@@ -138,20 +138,20 @@ namespace GalaxyBudsClient.Interface.Developer
             }
             catch (ArgumentOutOfRangeException)
             {
-                new MessageBox
+                _ = new MessageBox
                 {
                     Title = "Invalid payload format",
                     Description = "Correct format: 00 01 FF E5 [...]"
-                }.ShowDialog(this);
+                }.ShowAsync(this);
                 return;
             }
             catch (FormatException)
             {
-                new MessageBox
+                _ = new MessageBox
                 {
                     Title = "Payload not hexadecimal",
                     Description = "Correct format: 00 01 FF E5 [...]"
-                }.ShowDialog(this);
+                }.ShowAsync(this);
                 return;
             }
 
@@ -188,11 +188,11 @@ namespace GalaxyBudsClient.Interface.Developer
             }
             catch (Exception ex)
             {
-                await new MessageBox
+                _ = new MessageBox
                 {
                     Title = "Error while reading file", 
                     Description = ex.Message
-                }.ShowDialog(this);
+                }.ShowAsync(this);
                 return;
             }
 
@@ -278,7 +278,7 @@ namespace GalaxyBudsClient.Interface.Developer
                 {
                     Title = "Error while saving file", 
                     Description = ex.Message
-                }.ShowDialog(this);             
+                }.ShowAsync(this);             
             }
         }
 
