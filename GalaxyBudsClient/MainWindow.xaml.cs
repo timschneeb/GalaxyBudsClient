@@ -102,7 +102,7 @@ namespace GalaxyBudsClient
             Pager.RegisterPages(HomePage, ConnectionLostPage, new WelcomePage());
             
             // Defer the rest of the page registration
-            Dispatcher.UIThread.Post(() => Pager.RegisterPages(new FindMyGearPage(), new FactoryResetPage(),
+            Dispatcher.UIThread.Post(() => Pager.RegisterPages(new FindMyGearPage(),
                 new TouchpadPage(), new AdvancedPage(),
                 new SystemPage(), new SelfTestPage(), 
                 CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(),

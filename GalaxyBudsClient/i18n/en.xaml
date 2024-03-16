@@ -377,7 +377,6 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 
     <!--Factory reset-->
     <sys:String x:Key="factory_header">Factory reset</sys:String>
-    <sys:String x:Key="factory_in_progress">Reset in progress...</sys:String>
     <sys:String x:Key="factory_confirmation">Are you sure you want to reset your earbuds to factory settings?
 This will remove all data and settings from your earbuds.
 

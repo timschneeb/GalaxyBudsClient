@@ -42,16 +42,16 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
             DefaultButton = ContentDialogButton.Primary,
         };
 
-        cd.PrimaryButtonClick += OnResetConfirmClick;
+        cd.PrimaryButtonClick += OnFactoryResetConfirmed;
         cd.SecondaryButtonClick += (_, _) => cd.Hide();
         await cd.ShowAsync(MainWindow2.Instance);
-        cd.PrimaryButtonClick -= OnResetConfirmClick;
+        cd.PrimaryButtonClick -= OnFactoryResetConfirmed;
     }
 
-    private async void OnResetConfirmClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+    private async void OnFactoryResetConfirmed(ContentDialog sender, ContentDialogButtonClickEventArgs args)
     {
         var cancelToken = new CancellationTokenSource();
-        sender.Title = Loc.Resolve("factory_in_progress");
+        sender.Title = Loc.Resolve("system_waiting_for_device");
         sender.IsPrimaryButtonEnabled = false;
         sender.IsSecondaryButtonEnabled = false;
         
@@ -84,6 +84,7 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
                 return;
             }
 
+            // TODO re-enter setup wizard?
             BluetoothImpl.Instance.UnregisterDevice();
         }
     }
