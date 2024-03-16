@@ -51,7 +51,7 @@ namespace GalaxyBudsClient.Utils.Extensions
 
         public static float[] ToRollPitchYaw(this Quaternion q)
         {
-            float[] result = new float[3];
+            var result = new float[3];
             
             result[0] /* roll */  = (float) Math.Atan2(2.0 * (q.Z * q.Y + q.W * q.X) , 1.0 - 2.0 * (q.X * q.X + q.Y * q.Y));
             result[1] /* pitch */ = (float) Math.Asin(2.0 * (q.Y * q.W - q.Z * q.X));

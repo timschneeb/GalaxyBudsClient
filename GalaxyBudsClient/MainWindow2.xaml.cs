@@ -402,7 +402,7 @@ namespace GalaxyBudsClient
 
         private async void HandleOtherTouchOption(object? sender, TouchOptions e)
         {
-            ICustomAction action = e == TouchOptions.OtherL ?
+            var action = e == TouchOptions.OtherL ?
                 Settings.Instance.CustomActionLeft : Settings.Instance.CustomActionRight;
 
             switch (action.Action)

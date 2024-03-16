@@ -54,7 +54,7 @@ namespace GalaxyBudsClient.Utils.Extensions
         public static string AsAvaloniaHotkeyString(this IEnumerable<Key>? keys)
         {
             var first = true;
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             if (keys == null)
                 return "null";

@@ -66,7 +66,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 			{
 				try
 				{
-					ProcessStartInfo si = new ProcessStartInfo {
+					var si = new ProcessStartInfo {
 						FileName = "powershell",
 						Arguments = "Get-AppxPackage SAMSUNGELECTRONICSCO.LTD.GalaxyBuds",
 						RedirectStandardOutput = true,

@@ -13,14 +13,14 @@ namespace GalaxyBudsClient.Message
         {
             if (timestamp < 0 | offset < 0)
             {
-                TimeSpan span = DateTime.Now.Subtract(new DateTime(1970, 1, 1, 0, 0, 0));
+                var span = DateTime.Now.Subtract(new DateTime(1970, 1, 1, 0, 0, 0));
                 timestamp = (long)span.TotalMilliseconds;
                 offset = (int)TimeZoneInfo.Local.BaseUtcOffset.TotalMilliseconds;
             }
 
-            byte[] payload = new byte[12];
-            byte[] timestampRaw = BitConverter.GetBytes(timestamp);
-            byte[] offsetRaw = BitConverter.GetBytes(offset);
+            var payload = new byte[12];
+            var timestampRaw = BitConverter.GetBytes(timestamp);
+            var offsetRaw = BitConverter.GetBytes(offset);
             Array.Copy(timestampRaw, 0, payload, 0, 8);
             Array.Copy(payload, 8, offsetRaw, 0, 4);
 
@@ -29,7 +29,7 @@ namespace GalaxyBudsClient.Message
         
         public static async Task SetManagerInfo(ClientDeviceType type = ClientDeviceType.Samsung, int androidSdkVersion = 29)
         {
-            byte[] payload = new byte[3];
+            var payload = new byte[3];
             payload[0] = 1;
             payload[1] = (byte)type;
             payload[2] = (byte)androidSdkVersion;
@@ -38,7 +38,7 @@ namespace GalaxyBudsClient.Message
         
         public static async Task SetMainConnection(DeviceInv side)
         {
-            byte[] payload = new byte[1];
+            var payload = new byte[1];
             payload[0] = (byte)side;
             await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.MAIN_CHANGE, payload);
         }
@@ -48,18 +48,18 @@ namespace GalaxyBudsClient.Message
             // Dolby mode has no effect on the Buds+/Live/Pro
             if (BluetoothImpl.ActiveModel == Models.Buds)
             {
-                int rawPreset = (int)preset;
+                var rawPreset = (int)preset;
                 if (!dolbyMode)
                     rawPreset += 5;
 
-                byte[] payload = new byte[2];
+                var payload = new byte[2];
                 payload[0] = Convert.ToByte(enable);
                 payload[1] = (byte)rawPreset;
                 await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.EQUALIZER, payload);
             }
             else
             {
-                byte[] payload = new byte[1];
+                var payload = new byte[1];
                 payload[0] = !enable ? (byte) 0 : Convert.ToByte(preset + 1);
                 await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.EQUALIZER, payload);
             }
@@ -71,7 +71,7 @@ namespace GalaxyBudsClient.Message
         {
             public static async Task SetOptions(TouchOptions left, TouchOptions right)
             {
-                byte[] payload = new byte[2];
+                var payload = new byte[2];
                 if (left == TouchOptions.NoiseControl)
                 {
                     await NoiseControl.SetTouchNoiseControls(true, true, false);
@@ -91,7 +91,7 @@ namespace GalaxyBudsClient.Message
         {
             public static async Task MuteEarbud(bool leftMuted, bool rightMuted)
             {
-                byte[] payload = new byte[2];
+                var payload = new byte[2];
                 payload[0] = Convert.ToByte(leftMuted);
                 payload[1] = Convert.ToByte(rightMuted);
                 await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.MUTE_EARBUD, payload);

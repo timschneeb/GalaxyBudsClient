@@ -61,15 +61,15 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
         {
             _progressText.Text = Loc.Resolve("updater_dl_progress_finished");
 
-            string filename = $"GalaxyBudsClient_Updater_{_rng.Next(0,1000000)}.exe";
+            var filename = $"GalaxyBudsClient_Updater_{_rng.Next(0,1000000)}.exe";
             
             try
             {
-                FileInfo fileInfo = new FileInfo(path);
+                var fileInfo = new FileInfo(path);
                 fileInfo.DeleteAlternateDataStream("Zone.Identifier");
                 fileInfo.MoveTo(Path.Combine(fileInfo.DirectoryName ?? "", filename));
                 
-                Process proc = new Process
+                var proc = new Process
                 {
                     StartInfo =
                     {

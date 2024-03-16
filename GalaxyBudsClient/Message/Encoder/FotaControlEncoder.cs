@@ -7,8 +7,8 @@ namespace GalaxyBudsClient.Message.Encoder
     {
         public static SppMessage Build(FirmwareConstants.ControlIds controlId, short parameter)
         {
-            MemoryStream stream = new MemoryStream();
-            BinaryWriter writer = new BinaryWriter(stream);
+            var stream = new MemoryStream();
+            var writer = new BinaryWriter(stream);
 
             if (controlId == FirmwareConstants.ControlIds.SendMtu)
             {

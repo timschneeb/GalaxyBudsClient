@@ -15,8 +15,8 @@ namespace GalaxyBudsClient.Message.Decoder
             if (msg.Id != HandledType)
                 return;
 
-            byte[] left = new byte[11];
-            byte[] right = new byte[11];
+            var left = new byte[11];
+            var right = new byte[11];
             Array.Copy(msg.Payload, 0, left, 0, 11);
             Array.Copy(msg.Payload, 11, right, 0, 11);
             LeftSerialNumber = Encoding.ASCII.GetString(left, 0, 11);

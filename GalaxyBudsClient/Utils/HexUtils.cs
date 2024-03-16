@@ -60,7 +60,7 @@ namespace GalaxyBudsClient.Utils
             {
                 _sb.Append("Offset(h)  ");
             }
-            for (int i = 0; i < _bytesPerLine; i++)
+            for (var i = 0; i < _bytesPerLine; i++)
             {
                 _sb.Append($"{i & 0xFF:X2}");
                 if (i + 1 < _bytesPerLine)
@@ -118,14 +118,14 @@ namespace GalaxyBudsClient.Utils
 
         private void WriteAscii()
         {
-            int backtrack = ((_index - 1) / _bytesPerLine) * _bytesPerLine;
-            int length = _index - backtrack;
+            var backtrack = ((_index - 1) / _bytesPerLine) * _bytesPerLine;
+            var length = _index - backtrack;
 
             // This is to fill up last string of the dump if it's shorter than _bytesPerLine
             _sb.Append(new string(' ', (_bytesPerLine - length) * 3));
 
             _sb.Append("   ");
-            for (int i = 0; i < length; i++)
+            for (var i = 0; i < length; i++)
             {
                 _sb.Append(Translate(_bytes[backtrack + i]));
             }

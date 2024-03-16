@@ -119,7 +119,7 @@ namespace GalaxyBudsClient.Utils.Interface
                             }
                             catch (XmlException ex)
                             {
-                                string msg = $"An external resource dictionary contains syntax errors.\n\nPlease check line {ex.LineNumber}, column {ex.LinePosition} in the affected XAML file.\n\n{path}";
+                                var msg = $"An external resource dictionary contains syntax errors.\n\nPlease check line {ex.LineNumber}, column {ex.LinePosition} in the affected XAML file.\n\n{path}";
                                 ErrorDetected?.Invoke("XAML syntax error", msg);
                                 Log.Error("Localization: XAML syntax error. Line {Line}, column {Position}", ex.LineNumber, ex.LinePosition);
                             }

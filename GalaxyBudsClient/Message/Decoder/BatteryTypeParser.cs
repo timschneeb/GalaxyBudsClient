@@ -15,8 +15,8 @@ namespace GalaxyBudsClient.Message.Decoder
             if (msg.Id != HandledType)
                 return;
 
-            byte[] left = new byte[2];
-            byte[] right = new byte[2];
+            var left = new byte[2];
+            var right = new byte[2];
             Array.Copy(msg.Payload, 0, left, 0, 2);
             Array.Copy(msg.Payload, 2, right, 0, 2);
             LeftBatteryType = Encoding.ASCII.GetString(left);

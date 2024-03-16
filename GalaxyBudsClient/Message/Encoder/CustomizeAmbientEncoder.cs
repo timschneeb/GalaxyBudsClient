@@ -6,8 +6,8 @@ namespace GalaxyBudsClient.Message.Encoder
     {
         public static SppMessage Build(bool enable, byte ambientVolumeLeft, byte ambientVolumeRight, byte ambientTone)
         {
-            MemoryStream stream = new MemoryStream();
-            BinaryWriter writer = new BinaryWriter(stream);
+            var stream = new MemoryStream();
+            var writer = new BinaryWriter(stream);
 
             writer.Write(enable);
             writer.Write(ambientVolumeLeft);
