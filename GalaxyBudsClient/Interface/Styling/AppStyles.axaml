@@ -7,7 +7,6 @@
     <Styles.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="/Interface/Styling/ControlThemes.axaml" />
                 <ResourceInclude Source="/Interface/Styling/SettingsGroupStyles.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
