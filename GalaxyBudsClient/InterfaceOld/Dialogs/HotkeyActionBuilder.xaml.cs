@@ -36,7 +36,7 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
             }
         }
         
-        private readonly ViewModel _vm = new ViewModel();
+        private readonly ViewModel _vm = new();
 
         private readonly TextBlock _keyLabel;
         private readonly ComboBox _key1;

@@ -11,7 +11,7 @@ namespace GalaxyBudsClient.Platform
 {
     public class HotkeyReceiverImpl : IDisposable
     {
-        private static readonly object Padlock = new object();
+        private static readonly object Padlock = new();
         private static HotkeyReceiverImpl? _instance;
         public static HotkeyReceiverImpl Instance
         {

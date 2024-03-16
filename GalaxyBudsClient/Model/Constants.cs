@@ -10,13 +10,13 @@ namespace GalaxyBudsClient.Model
     {
         public static class Uuids
         {
-            public static readonly Guid Buds = new Guid("{00001102-0000-1000-8000-00805f9b34fd}");
-            public static readonly Guid BudsPlus = new Guid("{00001101-0000-1000-8000-00805F9B34FB}");
-            public static readonly Guid BudsLive = new Guid("{00001101-0000-1000-8000-00805F9B34FB}");
-            public static readonly Guid BudsPro = new Guid("{00001101-0000-1000-8000-00805F9B34FB}");
-            public static readonly Guid Buds2 = new Guid("{2e73a4ad-332d-41fc-90e2-16bef06523f2}");
-            public static readonly Guid Buds2Pro = new Guid("{2e73a4ad-332d-41fc-90e2-16bef06523f2}");
-            public static readonly Guid BudsFe = new Guid("{2e73a4ad-332d-41fc-90e2-16bef06523f2}");
+            public static readonly Guid Buds = new("{00001102-0000-1000-8000-00805f9b34fd}");
+            public static readonly Guid BudsPlus = new("{00001101-0000-1000-8000-00805F9B34FB}");
+            public static readonly Guid BudsLive = new("{00001101-0000-1000-8000-00805F9B34FB}");
+            public static readonly Guid BudsPro = new("{00001101-0000-1000-8000-00805F9B34FB}");
+            public static readonly Guid Buds2 = new("{2e73a4ad-332d-41fc-90e2-16bef06523f2}");
+            public static readonly Guid Buds2Pro = new("{2e73a4ad-332d-41fc-90e2-16bef06523f2}");
+            public static readonly Guid BudsFe = new("{2e73a4ad-332d-41fc-90e2-16bef06523f2}");
         }
         public static class Bixby
         {

@@ -26,7 +26,7 @@ namespace GalaxyBudsClient.Interface.Developer
         private readonly ComboBox _locales;
         private readonly TextBox _xamlPath;
 
-        private readonly ViewModel _vm = new ViewModel();
+        private readonly ViewModel _vm = new();
 
         public TranslatorTools()
         {

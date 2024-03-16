@@ -38,12 +38,12 @@ namespace GalaxyBudsClient
 {
     public sealed class MainWindow : Window
     {
-        public readonly HomePage HomePage = new HomePage();
-        public readonly CustomTouchActionPage CustomTouchActionPage = new CustomTouchActionPage();
-        public readonly ConnectionLostPage ConnectionLostPage = new ConnectionLostPage();
-        public readonly UpdatePage UpdatePage = new UpdatePage();
-        public readonly UpdateProgressPage UpdateProgressPage = new UpdateProgressPage();
-        public readonly DeviceSelectionPage DeviceSelectionPage = new DeviceSelectionPage();
+        public readonly HomePage HomePage = new();
+        public readonly CustomTouchActionPage CustomTouchActionPage = new();
+        public readonly ConnectionLostPage ConnectionLostPage = new();
+        public readonly UpdatePage UpdatePage = new();
+        public readonly UpdateProgressPage UpdateProgressPage = new();
+        public readonly DeviceSelectionPage DeviceSelectionPage = new();
         
         private readonly CustomTitleBar _titleBar;
         private BudsPopup? _popup;

@@ -38,7 +38,7 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
         private readonly Image _iconLeft;
         private readonly Image _iconRight;
 
-        private readonly Timer _timer = new Timer(3000){AutoReset = false};
+        private readonly Timer _timer = new(3000){AutoReset = false};
         
         public BudsPopup() 
         {

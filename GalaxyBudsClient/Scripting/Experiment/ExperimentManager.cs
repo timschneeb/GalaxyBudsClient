@@ -17,7 +17,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
     public class ExperimentManager
     {
         private const int InitialScanTimeout = 5000; 
-        private readonly ExperimentClient _client = new ExperimentClient();
+        private readonly ExperimentClient _client = new();
         private ExperimentRequest? _activeExperiment = null;
         private IExperimentBase? _activeExperimentHook = null;
         private Timer? _experimentTimeLimit = null;
@@ -169,7 +169,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
         }
 
         #region Singleton
-        private static readonly object Padlock = new object();
+        private static readonly object Padlock = new();
         private static ExperimentManager? _instance;
         public static ExperimentManager Instance
         {

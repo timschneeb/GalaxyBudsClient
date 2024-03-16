@@ -57,7 +57,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
         private readonly IconListItem _findMyGear;
         private readonly IconListItem _touch;
         
-		private readonly DispatcherTimer _refreshTimer = new DispatcherTimer();
+		private readonly DispatcherTimer _refreshTimer = new();
         private DebugGetAllDataParser? _lastGetAllDataParser;
         private bool _lastLeftOnline;
         private bool _lastRightOnline;

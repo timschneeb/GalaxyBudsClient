@@ -11,7 +11,7 @@ namespace GalaxyBudsClient.Scripting
 {
     public class ScriptManager
     {
-        private static readonly object Padlock = new object();
+        private static readonly object Padlock = new();
         private static ScriptManager? _instance;
         public static ScriptManager Instance
         {

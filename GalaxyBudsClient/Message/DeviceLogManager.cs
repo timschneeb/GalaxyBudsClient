@@ -45,12 +45,12 @@ namespace GalaxyBudsClient.Message
         private byte[]? _coredumpBuffer;
         private string _startTimestamp = string.Empty;
         
-        private readonly Dictionary<int, int> _offsetList = new Dictionary<int, int>();
+        private readonly Dictionary<int, int> _offsetList = new();
         private LogTraceStartParser? _traceContext;
         private LogCoredumpDataSizeParser? _coredumpContext;
         
-        private readonly List<string> _coreDumpPaths = new List<string>();
-        private readonly List<string> _traceDumpPaths = new List<string>();
+        private readonly List<string> _coreDumpPaths = new();
+        private readonly List<string> _traceDumpPaths = new();
 
         public async Task BeginDownloadAsync()
         {
@@ -270,7 +270,7 @@ namespace GalaxyBudsClient.Message
         }
 
         #region Singleton
-        private static readonly object Padlock = new object();
+        private static readonly object Padlock = new();
         private static DeviceLogManager? _instance;
         public static DeviceLogManager Instance
         {

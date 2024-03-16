@@ -23,7 +23,7 @@ namespace GalaxyBudsClient.Platform
 {
     public class BluetoothImpl : IDisposable, INotifyPropertyChanged
     { 
-        private static readonly object Padlock = new object();
+        private static readonly object Padlock = new();
         private static BluetoothImpl? _instance;
         public static BluetoothImpl Instance
         {

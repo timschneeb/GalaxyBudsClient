@@ -8,7 +8,7 @@ namespace GalaxyBudsClient.Message
     public class SppMessageHandler
     {
         private static SppMessageHandler? _instance = null;
-        private static readonly object SingletonPadlock = new object();
+        private static readonly object SingletonPadlock = new();
 
         public static SppMessageHandler Instance
         {

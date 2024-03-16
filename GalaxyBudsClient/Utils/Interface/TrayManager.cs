@@ -262,7 +262,7 @@ namespace GalaxyBudsClient.Utils.Interface
         }
 
         #region Singleton
-        private static readonly object Padlock = new object();
+        private static readonly object Padlock = new();
         private static TrayManager? _instance;
         public static TrayManager Instance
         {

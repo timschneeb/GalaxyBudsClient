@@ -124,7 +124,7 @@ namespace GalaxyBudsClient.Model
         }
             
         #region Singleton
-        private static readonly object Padlock = new object();
+        private static readonly object Padlock = new();
         private static EventDispatcher? _instance;
         public static EventDispatcher Instance
         {

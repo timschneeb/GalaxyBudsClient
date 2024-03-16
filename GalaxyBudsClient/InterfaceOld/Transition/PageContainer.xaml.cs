@@ -17,8 +17,8 @@ namespace GalaxyBudsClient.InterfaceOld.Transition
 	    private AbstractPage? _currentPage;
 	    private CancellationTokenSource? _source;
 	    private readonly IPageTransition _pageTransition;
-		private readonly ViewModel _pageViewModel = new ViewModel();
-		private readonly SemaphoreSlim _pageSemaphore = new SemaphoreSlim(1, 1);
+		private readonly ViewModel _pageViewModel = new();
+		private readonly SemaphoreSlim _pageSemaphore = new(1, 1);
 		private bool _suspended;
 		private bool _lastWasSuspended;
 

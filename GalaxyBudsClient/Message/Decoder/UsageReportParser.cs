@@ -7,7 +7,7 @@ namespace GalaxyBudsClient.Message.Decoder
 {
     public class UsageReportParser : BaseMessageParser
     {
-        static readonly Dictionary<string, string> KeyLookup = new Dictionary<string, string>
+        static readonly Dictionary<string, string> KeyLookup = new()
         {
             { "PLAY", "SingleTap/Play" },
             { "PAUS", "SingleTap/Pause" },
@@ -138,7 +138,7 @@ namespace GalaxyBudsClient.Message.Decoder
 
         public override Dictionary<string, string> ToStringMap()
         {
-            Dictionary<string, string> map = new Dictionary<string, string>();
+            Dictionary<string, string> map = new();
             if (Statistics != null)
             {
                 foreach (var statistic in Statistics)
