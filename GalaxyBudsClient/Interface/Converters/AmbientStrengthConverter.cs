@@ -5,6 +5,7 @@ namespace GalaxyBudsClient.Interface.Converters;
 
 public class AmbientStrengthConverter(bool legacy) : IntToStringConverter
 {
+    // TODO: handle localization changes
     private static Dictionary<int, string> LegacyScale => new()
     {
         { 0, Loc.Resolve("as_scale_very_low") },
