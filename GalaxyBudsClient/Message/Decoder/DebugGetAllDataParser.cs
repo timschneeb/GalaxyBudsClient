@@ -10,10 +10,11 @@ namespace GalaxyBudsClient.Message.Decoder
     {
         public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.DEBUG_GET_ALL_DATA;
 
-        readonly string[] _swMonth = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" };
-        readonly string[] _swRelVer = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-        readonly string[] _swVer = { "E", "U" };
-        readonly string[] _swYear = { "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+        readonly string[] _swMonth = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
+        readonly string[] _swRelVer = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+        ];
+        readonly string[] _swVer = ["E", "U"];
+        readonly string[] _swYear = ["O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
         public string? HardwareVersion { set; get; }
         public string? SoftwareVersion { set; get; }
         public string? LeftBluetoothAddress { set; get; }
@@ -49,43 +50,43 @@ namespace GalaxyBudsClient.Message.Decoder
         public string? LeftHall { set; get; }
         public string? RightHall { set; get; }
 
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public short LeftProximityOffset { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public short RightProximityOffset { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public byte MsgVersion { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public short LeftTspAbs { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public short RightTspAbs { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public short LeftTspDiff0 { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public short LeftTspDiff1 { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public short LeftTspDiff2 { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public short RightTspDiff0 { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public short RightTspDiff1 { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public short RightTspDiff2 { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public short LeftPR { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public short RightPR { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public short LeftWD { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public short RightWD { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public byte LeftCradleFlag { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public byte RightCradleFlag { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public byte LeftCradleBatt { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
         public byte RightCradleBatt { set; get; }
 
         public override void ParseMessage(SppMessage msg)

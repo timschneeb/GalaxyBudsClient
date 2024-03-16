@@ -24,9 +24,9 @@ namespace GalaxyBudsClient.Message.Decoder
         public bool SeamlessConnectionEnabled { set; get; }
 
 
-        [Device(new[] { Models.Buds, Models.BudsPlus })]
+        [Device([Models.Buds, Models.BudsPlus])]
         public bool AmbientSoundEnabled { set; get; }
-        [Device(new[] { Models.Buds, Models.BudsPlus, Models.BudsPro, Models.Buds2 })]
+        [Device([Models.Buds, Models.BudsPlus, Models.BudsPro, Models.Buds2])]
         public int AmbientSoundVolume { set; get; }
 
 
@@ -36,60 +36,60 @@ namespace GalaxyBudsClient.Message.Decoder
         public bool EqualizerEnabled { set; get; }
 
 
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2])]
         public PlacementStates PlacementL { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2])]
         public PlacementStates PlacementR { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2])]
         public int BatteryCase { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPlus, Models.BudsPro, Models.Buds2])]
         public bool OutsideDoubleTap { set; get; }
-        [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2])]
         public Color DeviceColor { set; get; }
 
 
-        [Device(new []{ Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2])]
         public bool AdjustSoundSync { set; get; }
-        [Device(new []{ Models.BudsPlus, Models.BudsPro, Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPlus, Models.BudsPro, Models.BudsPro, Models.Buds2])]
         public bool SideToneEnabled { set; get; }
-        [Device(new []{ Models.BudsPlus, Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPlus, Models.BudsPro, Models.Buds2])]
         public bool ExtraHighAmbientEnabled { set; get; }
 
 
         [Device(Models.BudsLive)]
         public bool RelieveAmbient { set; get; }
-        [Device(new []{ Models.BudsLive, Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsLive, Models.BudsPro, Models.Buds2])]
         public bool VoiceWakeUp { set; get; }
-        [Device(new []{ Models.BudsLive, Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsLive, Models.BudsPro, Models.Buds2])]
         public int VoiceWakeUpLang { set; get; }
-        [Device(new []{ Models.BudsLive, Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsLive, Models.BudsPro, Models.Buds2])]
         public int FmmRevision { set; get; }
         [Device(Models.BudsLive)]
         public bool NoiseCancelling { set; get; }
 
 
-        [Device(new []{ Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPro, Models.Buds2])]
         public NoiseControlMode NoiseControlMode { set; get; }
-        [Device(new []{ Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPro, Models.Buds2])]
         public bool NoiseControlTouchOff { set; get; }
-        [Device(new []{ Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPro, Models.Buds2])]
         public bool NoiseControlTouchAnc { set; get; }
-        [Device(new []{ Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPro, Models.Buds2])]
         public bool NoiseControlTouchAmbient { set; get; }
         
         
-        [Device(new []{ Models.Buds2 })]
+        [Device([Models.Buds2])]
         public bool NoiseControlTouchLeftOff { set; get; }
-        [Device(new []{ Models.Buds2 })]
+        [Device([Models.Buds2])]
         public bool NoiseControlTouchLeftAnc { set; get; }
-        [Device(new []{ Models.Buds2 })]
+        [Device([Models.Buds2])]
         public bool NoiseControlTouchLeftAmbient { set; get; }
         
         
-        [Device(new []{ Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPro, Models.Buds2])]
         public bool SpeakSeamlessly { set; get; }
 
-        [Device(new []{ Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPro, Models.Buds2])]
         public byte NoiseReductionLevel { set; get; }
         [Device(Models.BudsPro)]
         public bool AutoSwitchAudioOutput { set; get; }
@@ -101,7 +101,7 @@ namespace GalaxyBudsClient.Message.Decoder
         [Device(Models.BudsPro)]
         public bool SpatialAudio { set; get; }
         
-        [Device(new []{ Models.BudsLive, Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsLive, Models.BudsPro, Models.Buds2])]
         public byte HearingEnhancements { set; get; }
         
         [Device(Models.Buds2)]
@@ -116,18 +116,18 @@ namespace GalaxyBudsClient.Message.Decoder
         [Device(Models.Buds2)]
         public byte TouchType { set; get; }
 
-        [Device(new []{ Models.Buds2 })]
+        [Device([Models.Buds2])]
         public bool AncWithOneEarbud { set; get; }
-        [Device(new []{ Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPro, Models.Buds2])]
         public bool NoiseControlsWithOneEarbud { set; get; }
         
-        [Device(new []{ Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPro, Models.Buds2])]
         public bool AmbientCustomVolumeOn { set; get; }
-        [Device(new []{ Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPro, Models.Buds2])]
         public byte AmbientCustomVolumeLeft { set; get; }
-        [Device(new []{ Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPro, Models.Buds2])]
         public byte AmbientCustomVolumeRight { set; get; }
-        [Device(new []{ Models.BudsPro, Models.Buds2 })]
+        [Device([Models.BudsPro, Models.Buds2])]
         public byte AmbientCustomSoundTone { set; get; }
 
 

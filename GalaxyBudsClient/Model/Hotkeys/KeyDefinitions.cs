@@ -15,7 +15,7 @@ namespace GalaxyBudsClient.Model.Hotkeys
     public static class UserKeys
     {
         public static readonly Keys[] KeyList =
-        {
+        [
             Keys.Backspace,
             Keys.Tab,
             Keys.LineFeed,
@@ -153,7 +153,7 @@ namespace GalaxyBudsClient.Model.Hotkeys
             Keys.Play,
             Keys.Zoom,
             Keys.CancelKey
-        };
+        ];
     }
     
     [Flags]

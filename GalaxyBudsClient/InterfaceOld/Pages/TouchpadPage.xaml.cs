@@ -38,18 +38,18 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 		
 		/* ANC, Ambient, Off */
 		private static readonly (bool, bool, bool, string)[] NoiseControlModeMapLegacy =
-		{
+		[
 			(true, true, false, "touchpad_noise_control_mode_anc_amb"),
 			(true, false, true, "touchpad_noise_control_mode_anc_off"),
 			(false, true, true, "touchpad_noise_control_mode_amb_off"),
 			(true, true, true, "touchpad_noise_control_mode_threeway")
-		};
+		];
 		private static readonly (bool, bool, bool, string)[] NoiseControlModeMapNew =
-		{
+		[
 			(true, true, false, "touchpad_noise_control_mode_anc_amb"),
 			(true, false, true, "touchpad_noise_control_mode_anc_off"),
 			(false, true, true, "touchpad_noise_control_mode_amb_off")
-		};
+		];
 		private static (bool, bool, bool, string)[] NoiseControlModeMap =>
 			BluetoothImpl.Instance.DeviceSpec.Supports(Features.LegacyNoiseControlMode)
 				? NoiseControlModeMapLegacy : NoiseControlModeMapNew;
