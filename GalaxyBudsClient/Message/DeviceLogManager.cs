@@ -49,8 +49,8 @@ namespace GalaxyBudsClient.Message
         private LogTraceStartParser? _traceContext;
         private LogCoredumpDataSizeParser? _coredumpContext;
         
-        private readonly List<string> _coreDumpPaths = new();
-        private readonly List<string> _traceDumpPaths = new();
+        private readonly List<string> _coreDumpPaths = [];
+        private readonly List<string> _traceDumpPaths = [];
 
         public async Task BeginDownloadAsync()
         {
