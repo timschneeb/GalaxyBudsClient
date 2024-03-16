@@ -2,16 +2,16 @@
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Utils;
 
-namespace GalaxyBudsClient.Model.ViewModels
+namespace GalaxyBudsClient.Interface.ViewModels
 {
     public class RecvMsgViewHolder
     {
-        public String Id { get; }
-        public String Payload { get; }
-        public String PayloadAscii { get; }
-        public String Type { get; }
-        public String Size { get; }
-        public String CRC16 { get; }
+        public string Id { get; }
+        public string Payload { get; }
+        public string PayloadAscii { get; }
+        public string Type { get; }
+        public string Size { get; }
+        public string CRC16 { get; }
         public SppMessage Message { get; }
 
         public RecvMsgViewHolder(SppMessage msg)
@@ -25,16 +25,15 @@ namespace GalaxyBudsClient.Model.ViewModels
             Message = msg;
         }
 
-        private String GetEnumName(Type t, object i)
+        private static string GetEnumName(Type t, object i)
         {
             try
             {
                 var name = Enum.GetName(t, i);
                 if (name == null)
-                    throw new ArgumentNullException();
-                else if(name.StartsWith("UNKNOWN_"))
+                    throw new ArgumentException("Enum member name is null");
+                if (name.StartsWith("UNKNOWN_"))
                     return $"Unknown ({Convert.ToInt32(i)})";
-
                 return $"{name} ({Convert.ToInt32(i)})";
             }
             catch (ArgumentNullException)
