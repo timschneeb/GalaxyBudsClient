@@ -12,12 +12,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>
-    
-    <!-- TODO: disabled text in ComboBoxes should have a different color. this solution doesn't work yet -->
-    <!--<Style Selector="ComboBox[IsEnabled=False]">
-        <Setter Property="Foreground" Value="{DynamicResource TextFill}" />
-    </Style>-->
-    
+
     <!-- For SettingsGroups we have to set the CornerRadius for the top edges of the first child to match the top of the group -->
     <Style Selector="controls|SettingsGroup > ui|SettingsExpanderItem:nth-child(1) /template/ ui|FABorder#Root,
                      controls|SettingsGroup > ui|SettingsExpanderItem.First /template/ ui|FABorder#Root">
