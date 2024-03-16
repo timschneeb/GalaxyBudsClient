@@ -10,7 +10,11 @@ using Task = System.Threading.Tasks.Task;
 
 namespace GalaxyBudsClient.Message
 {
-    public class LogDownloadProgressEventArgs : EventArgs
+    public class LogDownloadProgressEventArgs(
+        int currentByteCount,
+        int totalByteCount,
+        LogDownloadProgressEventArgs.Type type)
+        : EventArgs
     {
         public enum Type
         {
@@ -18,29 +22,16 @@ namespace GalaxyBudsClient.Message
             Coredump,
             _Switching
         }
-        
-        public LogDownloadProgressEventArgs(int currentByteCount, int totalByteCount, Type type)
-        {
-            CurrentByteCount = currentByteCount;
-            TotalByteCount = totalByteCount;
-            DownloadType = type;
-        }
 
-        public int CurrentByteCount { get; }
-        public int TotalByteCount { get; }
-        public Type DownloadType { get;  }
+        public int CurrentByteCount { get; } = currentByteCount;
+        public int TotalByteCount { get; } = totalByteCount;
+        public Type DownloadType { get;  } = type;
     }
     
-    public class LogDownloadFinishedEventArgs : EventArgs
+    public class LogDownloadFinishedEventArgs(List<string> traceDumpPaths, List<string> coreDumpPaths) : EventArgs
     {
-        public LogDownloadFinishedEventArgs(List<string> traceDumpPaths, List<string> coreDumpPaths)
-        {
-            TraceDumpPaths = traceDumpPaths;
-            CoreDumpPaths = coreDumpPaths;
-        }
-
-        public List<string> TraceDumpPaths { get; }
-        public List<string> CoreDumpPaths { get; }
+        public List<string> TraceDumpPaths { get; } = traceDumpPaths;
+        public List<string> CoreDumpPaths { get; } = coreDumpPaths;
     }
     
     public class DeviceLogManager
