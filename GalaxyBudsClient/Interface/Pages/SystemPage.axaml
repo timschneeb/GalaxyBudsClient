@@ -1,0 +1,70 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             mc:Ignorable="d" d:DesignWidth="800"
+             x:Class="GalaxyBudsClient.Interface.Pages.SystemPage"
+             x:DataType="pages:SystemPageViewModel"
+             x:CompileBindings="True">
+
+    <Design.DataContext>
+        <pages:SystemPageViewModel />
+    </Design.DataContext>
+
+    <ScrollViewer>
+        <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
+            
+            <controls:SettingsGroup>
+                <controls:SettingsSymbolItem Content="{DynamicResource system_selftest}"
+                                             Description="{DynamicResource system_selftest_desc}"
+                                             Symbol="Beaker"
+                                             IsClickEnabled="True"
+                                             Click="OnSelfTestClicked"/>
+                    
+                <controls:SettingsSymbolItem Content="{DynamicResource system_factory_reset}"
+                                             Description="{DynamicResource system_factory_reset_desc}"
+                                             Symbol="ArrowReset"
+                                             IsClickEnabled="True"
+                                             Click="OnFactoryResetClicked"/>
+
+                <controls:SettingsSymbolItem Content="{DynamicResource system_pairing_mode}"
+                                             Description="{DynamicResource system_pairing_mode_desc}"
+                                             Symbol="LinkMultiple"
+                                             IsClickEnabled="True"
+                                             Click="OnPairingModeClicked"/>
+
+                <controls:SettingsSymbolItem Content="{DynamicResource system_trace_core_dump}"
+                                             Description="{DynamicResource system_trace_core_dump_desc}"
+                                             Symbol="Bug"
+                                             IsClickEnabled="True"
+                                             Click="OnTraceDumpDownloadClicked">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="FragmentedMessages" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSymbolItem>
+
+                <controls:SettingsSymbolItem Name="Firmware" 
+                                             Content="{DynamicResource system_flasher}"
+                                             Description="{DynamicResource system_flasher_desc}"
+                                             Symbol="ArrowDownload"
+                                             ActionSymbol="ChevronRight"
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="FirmwareUpdates" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSymbolItem>
+
+                <controls:SettingsSymbolItem Name="SystemInfo" 
+                                             Content="{DynamicResource system_info}"
+                                             Description="{DynamicResource system_info_desc}"
+                                             Symbol="Info"
+                                             ActionSymbol="ChevronRight"
+                                             IsClickEnabled="True" />
+
+            </controls:SettingsGroup>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -3,7 +3,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ui="using:FluentAvalonia.UI.Controls"
-             xmlns:viewModels="clr-namespace:GalaxyBudsClient.Interface.ViewModels"
              xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              xmlns:constants="clr-namespace:GalaxyBudsClient.Model.Constants"

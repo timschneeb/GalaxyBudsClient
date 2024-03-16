@@ -377,14 +377,16 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 
     <!--Factory reset-->
     <sys:String x:Key="factory_header">Factory reset</sys:String>
-    <sys:String x:Key="factory_confirm">Confirm factory reset</sys:String>
+    <sys:String x:Key="factory_in_progress">Reset in progress...</sys:String>
+    <sys:String x:Key="factory_confirmation">Are you sure you want to reset your earbuds to factory settings?
+This will remove all data and settings from your earbuds.
+
+Make sure both earbuds are turned on before continuing.</sys:String>
     <sys:String x:Key="factory_error_title">Factory reset failed</sys:String>
     <sys:String x:Key="factory_error">Device returned error code: {0}
-Make sure both Earbuds are turned on and reachable.
-You might need to manually reconnect your Earbuds.</sys:String>
-    <sys:String x:Key="factory_text_p1">Are you sure you want to reset your Earbuds?</sys:String>
-    <sys:String x:Key="factory_text_p2">After performing a Factory Reset, you'll have to manually reconnect your Earbuds to the computer.</sys:String>
-    <sys:String x:Key="factory_text_p3">Make sure both Earbuds are turned on before continuing!</sys:String>
+
+Make sure both earbuds are turned on and reachable.
+You might need to manually reconnect your earbuds.</sys:String>
 
     <!--Find my Gear-->
     <sys:String x:Key="fmg_warning_both">Please remove both earbuds from your ears.</sys:String>
@@ -503,9 +505,12 @@ The remap configuration is only active on this device. If you connect your earbu
 You can also register a new pair if needed. In that case, please select "Options &gt; Unregister device".</sys:String>
     <sys:String x:Key="connlost_description_p3">Additional information:</sys:String>
     <sys:String x:Key="connlost_noinfo">Failed to gather error information</sys:String>
-    <sys:String x:Key="connlost_disconnected">Device disconnected</sys:String>
     <sys:String x:Key="connlost_connect">Connect</sys:String>
     <sys:String x:Key="connlost_connecting">Connecting...</sys:String>
+    
+    <!-- Pairing mode -->
+    <sys:String x:Key="connlost_disconnected">Device disconnected</sys:String>
+    <sys:String x:Key="pairingmode_done">The earbuds have been put into pairing mode and are now disconnected from this device.</sys:String>
     
     <!--Firmware update disclaimer-->
     <sys:String x:Key="fw_disclaimer">Disclaimer</sys:String>
