@@ -1,11 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
 using Avalonia.Markup.Xaml;
-using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Interface.MarkupExtensions;
 
@@ -37,23 +33,12 @@ public class EnumBindingSource : MarkupExtension
         EnumType = enumType;
     }
     
-    public override object ProvideValue(IServiceProvider serviceProvider) // or IXamlServiceProvider for UWP and WinUI
+    public override object ProvideValue(IServiceProvider serviceProvider)
     {
-        var values = new List<object>();
-        foreach (var obj in Enum.GetValues(EnumType!))
-        {
-            if (obj == null) 
-                continue;
-                
-            if (EnumType!.GetMember(EnumType.GetEnumName((int) obj) ?? string.Empty)[0]
-                    .GetCustomAttributes(typeof(IgnoreDataMemberAttribute), false)
-                    .Length > 0)
-            {
-                continue;
-            }
-            
-            values.Add(obj);
-        }
-        return values.ToArray();
+        return Enum.GetValues(EnumType!)
+            .OfType<object>()
+            .Where(obj => EnumType!.GetMember(EnumType.GetEnumName((int)obj) ?? string.Empty)[0]
+                .GetCustomAttributes(typeof(IgnoreDataMemberAttribute), false)
+                .Length <= 0).ToArray();
     }
 }
