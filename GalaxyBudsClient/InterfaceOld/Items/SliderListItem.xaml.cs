@@ -11,11 +11,11 @@ namespace GalaxyBudsClient.InterfaceOld.Items
 {
     public class SliderListItem : UserControl
     {
-        public static readonly StyledProperty<String> TextProperty =
-            AvaloniaProperty.Register<SliderListItem, String>(nameof(Text));
+        public static readonly StyledProperty<string> TextProperty =
+            AvaloniaProperty.Register<SliderListItem, string>(nameof(Text));
 
-        public static readonly StyledProperty<String> SubtitleProperty =
-            AvaloniaProperty.Register<SliderListItem, String>(nameof(Subtitle));
+        public static readonly StyledProperty<string> SubtitleProperty =
+            AvaloniaProperty.Register<SliderListItem, string>(nameof(Subtitle));
         
         public static readonly StyledProperty<int> MinimumProperty =
             AvaloniaProperty.Register<SliderListItem, int>(nameof(Minimum), 0);
@@ -72,13 +72,13 @@ namespace GalaxyBudsClient.InterfaceOld.Items
             set => SetValue(SubtitleDictionaryProperty, value);
         }
 
-        public String Text
+        public string Text
         {
             get => GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
         
-        public String Subtitle
+        public string Subtitle
         {
             get => GetValue(SubtitleProperty);
             set => SetValue(SubtitleProperty, value);

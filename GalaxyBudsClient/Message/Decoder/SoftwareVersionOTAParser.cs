@@ -7,7 +7,7 @@ namespace GalaxyBudsClient.Message.Decoder
     {
         public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.FOTA_DEVICE_INFO_SW_VERSION;
 
-        public String? SoftwareVersion { set; get; }
+        public string? SoftwareVersion { set; get; }
 
         public override void ParseMessage(SppMessage msg)
         {

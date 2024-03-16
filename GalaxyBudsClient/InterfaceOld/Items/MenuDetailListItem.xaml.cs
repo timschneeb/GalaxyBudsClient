@@ -10,11 +10,11 @@ namespace GalaxyBudsClient.InterfaceOld.Items
 {
     public class MenuDetailListItem : UserControl
     {
-        public static readonly StyledProperty<String> TextProperty =
-            AvaloniaProperty.Register<MenuDetailListItem, String>(nameof(Text));
+        public static readonly StyledProperty<string> TextProperty =
+            AvaloniaProperty.Register<MenuDetailListItem, string>(nameof(Text));
         
-        public static readonly StyledProperty<String> DescriptionProperty =
-            AvaloniaProperty.Register<MenuDetailListItem, String>(nameof(Description));
+        public static readonly StyledProperty<string> DescriptionProperty =
+            AvaloniaProperty.Register<MenuDetailListItem, string>(nameof(Description));
 
         public static readonly StyledProperty<MenuEntries?> ItemsProperty =
             AvaloniaProperty.Register<MenuDetailListItem, MenuEntries?>(nameof(Items));
@@ -27,13 +27,13 @@ namespace GalaxyBudsClient.InterfaceOld.Items
             DataContext = this;
         }
         
-        public String Text
+        public string Text
         {
             get => GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
         
-        public String Description
+        public string Description
         {
             get => GetValue(DescriptionProperty);
             set => SetValue(DescriptionProperty, value);

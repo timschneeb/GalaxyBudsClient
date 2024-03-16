@@ -43,7 +43,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 			OpenWebsite("https://github.com/ThePBone/GalaxyBudsClient/releases");
 		}
 		
-		private void OpenWebsite(String url)
+		private void OpenWebsite(string url)
 		{
 			var psi = new ProcessStartInfo
 			{

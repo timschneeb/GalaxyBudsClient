@@ -7,11 +7,11 @@ namespace GalaxyBudsClient.InterfaceOld.Items
 {
     public class DetailListItem : UserControl
     {
-        public static readonly StyledProperty<String> TextProperty =
-            AvaloniaProperty.Register<DetailListItem, String>(nameof(Text));
+        public static readonly StyledProperty<string> TextProperty =
+            AvaloniaProperty.Register<DetailListItem, string>(nameof(Text));
         
-        public static readonly StyledProperty<String> DescriptionProperty =
-            AvaloniaProperty.Register<DetailListItem, String>(nameof(Description));
+        public static readonly StyledProperty<string> DescriptionProperty =
+            AvaloniaProperty.Register<DetailListItem, string>(nameof(Description));
         
         public DetailListItem()
         {
@@ -19,13 +19,13 @@ namespace GalaxyBudsClient.InterfaceOld.Items
             DataContext = this;
         }
         
-        public String Text
+        public string Text
         {
             get => GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
 
-        public String Description
+        public string Description
         {
             get => GetValue(DescriptionProperty);
             set => SetValue(DescriptionProperty, value);

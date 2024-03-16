@@ -17,7 +17,7 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
     [Obsolete("Class will be removed during the redesign")]
     public sealed class ManualPairDialog : Window
     {
-        private readonly IReadOnlyList<String> _modelCache
+        private readonly IReadOnlyList<string> _modelCache
             = Enum.GetValues(typeof(Models)).Cast<Models>().Where(x => x != Models.NULL)
                 .Select(x => x.GetModelMetadata()?.Name ?? string.Empty).ToList();
 

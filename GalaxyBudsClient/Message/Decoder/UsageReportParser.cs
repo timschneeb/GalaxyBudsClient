@@ -93,7 +93,7 @@ namespace GalaxyBudsClient.Message.Decoder
 
         public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.USAGE_REPORT;
 
-        public Dictionary<String, long>? Statistics { set; get; }
+        public Dictionary<string, long>? Statistics { set; get; }
 
         public override void ParseMessage(SppMessage msg)
         {
@@ -130,15 +130,15 @@ namespace GalaxyBudsClient.Message.Decoder
                 Array.Copy(msg.Payload, i, rawKey, 0, lengthKey);
                 Array.Copy(msg.Payload, i + lengthKey, rawValue, 0, lengthValue);
 
-                String key = System.Text.Encoding.ASCII.GetString(rawKey.RTrimBytes());
+                string key = System.Text.Encoding.ASCII.GetString(rawKey.RTrimBytes());
                 long value = BitConverter.ToInt32(rawValue, 0);
                 Statistics.Add(key, value);
             }
         }
 
-        public override Dictionary<String, String> ToStringMap()
+        public override Dictionary<string, string> ToStringMap()
         {
-            Dictionary<String, String> map = new Dictionary<string, string>();
+            Dictionary<string, string> map = new Dictionary<string, string>();
             if (Statistics != null)
             {
                 foreach (var statistic in Statistics)

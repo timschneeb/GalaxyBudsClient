@@ -38,7 +38,7 @@ namespace GalaxyBudsClient.Utils
             return newArray;
         }
 
-        public static Byte[] RTrimBytes(this Byte[] bytes)
+        public static byte[] RTrimBytes(this byte[] bytes)
         {
             if (bytes.Length == 0) return bytes;
             var i = bytes.Length - 1;
@@ -46,7 +46,7 @@ namespace GalaxyBudsClient.Utils
             {
                 i--;
             }
-            Byte[] copy = new Byte[i + 1];
+            byte[] copy = new byte[i + 1];
             Array.Copy(bytes, copy, i + 1);
             return copy;
         }

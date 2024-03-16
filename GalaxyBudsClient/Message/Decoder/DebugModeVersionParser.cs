@@ -8,17 +8,17 @@ namespace GalaxyBudsClient.Message.Decoder
     {
         public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.VERSION_INFO;
 
-        readonly String[] _swMonth = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" };
-        readonly String[] _swRelVer = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-        readonly String[] _swVer = { "E", "U" };
-        readonly String[] _swYear = { "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+        readonly string[] _swMonth = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" };
+        readonly string[] _swRelVer = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+        readonly string[] _swVer = { "E", "U" };
+        readonly string[] _swYear = { "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
 
-        public String? LeftHardwareVersion { set; get; }
-        public String? RightHardwareVersion { set; get; }
-        public String? LeftSoftwareVersion { set; get; }
-        public String? RightSoftwareVersion { set; get; }
-        public String? LeftTouchSoftwareVersion { set; get; }
-        public String? RightTouchSoftwareVersion { set; get; }
+        public string? LeftHardwareVersion { set; get; }
+        public string? RightHardwareVersion { set; get; }
+        public string? LeftSoftwareVersion { set; get; }
+        public string? RightSoftwareVersion { set; get; }
+        public string? LeftTouchSoftwareVersion { set; get; }
+        public string? RightTouchSoftwareVersion { set; get; }
 
         public override void ParseMessage(SppMessage msg)
         {

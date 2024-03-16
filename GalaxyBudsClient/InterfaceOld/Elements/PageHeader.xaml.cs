@@ -14,8 +14,8 @@ namespace GalaxyBudsClient.InterfaceOld.Elements
         public static readonly StyledProperty<bool> BackButtonVisibleProperty =
             AvaloniaProperty.Register<PageHeader, bool>(nameof(BackButtonVisible), true);
 
-        public static readonly StyledProperty<String> TitleProperty =
-            AvaloniaProperty.Register<PageHeader, String>(nameof(Title));
+        public static readonly StyledProperty<string> TitleProperty =
+            AvaloniaProperty.Register<PageHeader, string>(nameof(Title));
 
         public event EventHandler<PointerPressedEventArgs>? BackPressed;
         
@@ -37,7 +37,7 @@ namespace GalaxyBudsClient.InterfaceOld.Elements
             set => SetValue(BackButtonVisibleProperty, value);
         }
 
-        public String Title
+        public string Title
         {
             get => GetValue(TitleProperty);
             set => SetValue(TitleProperty, value);

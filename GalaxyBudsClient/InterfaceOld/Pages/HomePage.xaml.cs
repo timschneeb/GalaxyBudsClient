@@ -295,7 +295,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
         
         private void UpdateTemperature(double left, double right)
         {
-            String tempLeft, tempRight;
+            string tempLeft, tempRight;
             if (Settings.Instance.TemperatureUnit == TemperatureUnits.Fahrenheit)
             {
                  tempLeft = $"{((9.0 / 5.0) * left) + 32:N1} °F";

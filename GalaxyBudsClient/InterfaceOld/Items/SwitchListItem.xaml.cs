@@ -29,7 +29,7 @@ namespace GalaxyBudsClient.InterfaceOld.Items
             set => _toggle.IsChecked = value;
         }
 
-        public String Text
+        public string Text
         {
             get => GetValue(TextProperty);
             set => SetValue(TextProperty, value);

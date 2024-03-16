@@ -10,15 +10,15 @@ namespace GalaxyBudsClient.Message.Decoder
     {
         public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.DEBUG_GET_ALL_DATA;
 
-        readonly String[] _swMonth = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" };
-        readonly String[] _swRelVer = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-        readonly String[] _swVer = { "E", "U" };
-        readonly String[] _swYear = { "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-        public String? HardwareVersion { set; get; }
-        public String? SoftwareVersion { set; get; }
-        public String? LeftBluetoothAddress { set; get; }
-        public String? RightBluetoothAddress { set; get; }
-        public String? TouchSoftwareVersion { set; get; }
+        readonly string[] _swMonth = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" };
+        readonly string[] _swRelVer = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+        readonly string[] _swVer = { "E", "U" };
+        readonly string[] _swYear = { "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+        public string? HardwareVersion { set; get; }
+        public string? SoftwareVersion { set; get; }
+        public string? LeftBluetoothAddress { set; get; }
+        public string? RightBluetoothAddress { set; get; }
+        public string? TouchSoftwareVersion { set; get; }
         public short LeftAcceleratorX { set; get; }
         public short LeftAcceleratorY { set; get; }
         public short LeftAcceleratorZ { set; get; }
@@ -46,8 +46,8 @@ namespace GalaxyBudsClient.Message.Decoder
         [Postfix(Text = "mA")]
         public double RightAdcCurrent { set; get; }
 
-        public String? LeftHall { set; get; }
-        public String? RightHall { set; get; }
+        public string? LeftHall { set; get; }
+        public string? RightHall { set; get; }
 
         [Device(new[] { Models.BudsPlus, Models.BudsLive, Models.BudsPro })]
         public short LeftProximityOffset { set; get; }
