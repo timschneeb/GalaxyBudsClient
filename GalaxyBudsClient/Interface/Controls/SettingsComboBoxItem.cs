@@ -5,6 +5,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Data;
 using Avalonia.Interactivity;
+using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Interface.Converters;
 using GalaxyBudsClient.Interface.MarkupExtensions;
 
@@ -15,7 +16,7 @@ public class SettingsComboBoxItem : SettingsSymbolItem
 {
     public SettingsComboBoxItem()
     {
-        _comboBox = new ComboBox
+        _comboBox = new FAComboBox
         {
             MinWidth = 150,
             DisplayMemberBinding = new Binding(".")
@@ -28,7 +29,7 @@ public class SettingsComboBoxItem : SettingsSymbolItem
         Footer = _comboBox;
     }
     
-    private readonly ComboBox _comboBox;
+    private readonly FAComboBox _comboBox;
     
     public static readonly RoutedEvent<SelectionChangedEventArgs> SelectionChangedEvent =
         RoutedEvent.Register<SettingsComboBoxItem, SelectionChangedEventArgs>(nameof(SelectionChanged), RoutingStrategies.Bubble);
