@@ -43,7 +43,7 @@ namespace GalaxyBudsClient.Interface.Developer
                 PropTableDataView.SourceCollection as List<PropertyViewModel>;
         }
 
-        private readonly List<byte> _cache = new();
+        private readonly List<byte> _cache = [];
 
         private readonly DataGrid _msgTable;
         private readonly DataGrid _propTable;
@@ -52,11 +52,11 @@ namespace GalaxyBudsClient.Interface.Developer
         private readonly ComboBox _msgIdSend;
         private readonly ComboBox _msgTypeSend;
 
-        private readonly List<FilePickerFileType> _filters = new()
-        {
-            new ("Hex dump") { Patterns = new List<string>() {"*.bin", "*.hex"}},
-            new ("All files"){ Patterns = new List<string>() {"*"}},
-        };
+        private readonly List<FilePickerFileType> _filters =
+        [
+            new("Hex dump") { Patterns = new List<string>() { "*.bin", "*.hex" } },
+            new("All files") { Patterns = new List<string>() { "*" } }
+        ];
 
         private readonly ViewModel _vm = new();
         

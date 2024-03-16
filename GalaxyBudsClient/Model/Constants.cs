@@ -21,7 +21,7 @@ namespace GalaxyBudsClient.Model
         public static class Bixby
         {
             public static readonly (byte, string)[] Languages =
-            {
+            [
                 (0, "de-DE"),
                 (1, "en-GB"),
                 (2, "en-US"),
@@ -31,8 +31,8 @@ namespace GalaxyBudsClient.Model
                 (6, "ko-KR"),
                 (7, "pt-BR"),
                 (8, "zh-CN"),
-                (9, "hu-HU"),
-            };
+                (9, "hu-HU")
+            ];
         }
         
         [SuppressMessage("ReSharper", "InconsistentNaming")]

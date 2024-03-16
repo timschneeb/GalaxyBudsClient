@@ -10,7 +10,7 @@ namespace GalaxyBudsClient.Utils.Extensions
         {
             if (a == null)
             {
-                return new []{n};
+                return [n];
             }
             
             T[] newArray = new T[a.Length + 1];

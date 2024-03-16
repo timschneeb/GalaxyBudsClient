@@ -109,7 +109,7 @@ namespace GalaxyBudsClient.Message
             public static async Task SetTouchNoiseControls(bool anc, bool ambient, bool off)
             {
                 await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS,
-                    new byte[]{Convert.ToByte(anc), Convert.ToByte(ambient), Convert.ToByte(off)});
+                    [Convert.ToByte(anc), Convert.ToByte(ambient), Convert.ToByte(off)]);
             }
         }
     }

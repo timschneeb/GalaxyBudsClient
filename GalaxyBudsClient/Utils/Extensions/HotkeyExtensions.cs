@@ -12,7 +12,7 @@ namespace GalaxyBudsClient.Utils.Extensions
         public static IEnumerable<ModifierKeys> FlagsToList(this ModifierKeys flags)
         {
             return flags.ToString()
-                .Split(new[] { "," } , StringSplitOptions.RemoveEmptyEntries)
+                .Split([","], StringSplitOptions.RemoveEmptyEntries)
                 .Select(
                     str =>
                     {
@@ -24,7 +24,7 @@ namespace GalaxyBudsClient.Utils.Extensions
         public static IEnumerable<Keys> FlagsToList(this Keys flags)
         {
             return flags.ToString()
-                .Split(new[] { "," } , StringSplitOptions.RemoveEmptyEntries)
+                .Split([","], StringSplitOptions.RemoveEmptyEntries)
                 .Select(
                     str =>
                     {

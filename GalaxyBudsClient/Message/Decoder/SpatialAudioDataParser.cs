@@ -59,7 +59,8 @@ namespace GalaxyBudsClient.Message.Decoder
                         return;
                     }
                     
-                    int[] iArr = {(short) ByteBufferToInt(data, 0, 2, false), (short) ByteBufferToInt(data, 2, 2, false), (short) ByteBufferToInt(data, 4, 2, false)};
+                    int[] iArr = [(short) ByteBufferToInt(data, 0, 2, false), (short) ByteBufferToInt(data, 2, 2, false), (short) ByteBufferToInt(data, 4, 2, false)
+                    ];
                     var list = new List<int>();
                     list.AddRange(iArr);
                     if (data.Length >= 9) 
