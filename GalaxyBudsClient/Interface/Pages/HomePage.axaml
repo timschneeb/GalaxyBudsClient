@@ -2,18 +2,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewModels="clr-namespace:GalaxyBudsClient.Interface.ViewModels"
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
              xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
-             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.HomePage"
              x:DataType="pages:HomePageViewModel"
              x:CompileBindings="True">
 
     <Design.DataContext>
-        <pages:EqualizerPageViewModel />
+        <pages:HomePageViewModel />
     </Design.DataContext>
 
     <ScrollViewer>

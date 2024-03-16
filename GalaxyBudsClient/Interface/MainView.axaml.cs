@@ -114,11 +114,6 @@ public partial class MainView : UserControl
             //NavHeader = "Find My Buds",
             //IconKey = Symbol.LocationLive
         },
-        new CoreControlsPageViewModel()
-        {
-            //NavHeader = "Ambient Sound",
-            //IconKey = Symbol.HeadphonesSoundWave
-        },
         new FAControlsOverviewPageViewModel()
         {
             //NavHeader = "Touchpad",
@@ -129,12 +124,8 @@ public partial class MainView : UserControl
         {
             //NavHeader = "Advanced settings",
             //IconKey = Symbol.WrenchScrewdriver
-        },
-        new FAControlsOverviewPageViewModel()
-        {
-            //NavHeader = "System",
-            //IconKey = Symbol.Apps
-        }*/
+        },*/
+        new SystemPageViewModel(),
         new SettingsPageViewModel()
     ];
 

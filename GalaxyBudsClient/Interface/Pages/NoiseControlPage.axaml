@@ -2,8 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewModels="clr-namespace:GalaxyBudsClient.Interface.ViewModels"
-             xmlns:converters="clr-namespace:GalaxyBudsClient.Interface.Converters"
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
