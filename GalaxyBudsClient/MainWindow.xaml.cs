@@ -39,7 +39,6 @@ namespace GalaxyBudsClient
     public sealed class MainWindow : Window
     {
         public readonly HomePage HomePage = new HomePage();
-        public readonly UnsupportedFeaturePage UnsupportedFeaturePage = new UnsupportedFeaturePage();
         public readonly CustomTouchActionPage CustomTouchActionPage = new CustomTouchActionPage();
         public readonly ConnectionLostPage ConnectionLostPage = new ConnectionLostPage();
         public readonly UpdatePage UpdatePage = new UpdatePage();
@@ -103,14 +102,14 @@ namespace GalaxyBudsClient
             Pager.RegisterPages(HomePage, ConnectionLostPage, new WelcomePage());
             
             // Defer the rest of the page registration
-            Dispatcher.UIThread.Post(() => Pager.RegisterPages(new AmbientSoundPage(), new FindMyGearPage(), new FactoryResetPage(),
-                new CreditsPage(), new TouchpadPage(), new AdvancedPage(), new NoiseProPage(),
+            Dispatcher.UIThread.Post(() => Pager.RegisterPages(new FindMyGearPage(), new FactoryResetPage(),
+                new CreditsPage(), new TouchpadPage(), new AdvancedPage(),
                 new SystemPage(), new SelfTestPage(), 
-                CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(), UnsupportedFeaturePage,
+                CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(),
                 UpdatePage, UpdateProgressPage, new SystemCoredumpPage(), new HotkeyPage(), new FirmwareSelectionPage(),
                 new FirmwareTransferPage(), /*new SpatialTestPage(),*/ new BixbyRemapPage(),
                 new BudsAppDetectedPage(), new TouchpadGesturePage(), 
-                new NoiseProAmbientPage(), new GearFitPage()), DispatcherPriority.ApplicationIdle);
+                new GearFitPage()), DispatcherPriority.ApplicationIdle);
             
             _titleBar = this.GetControl<CustomTitleBar>("TitleBar");
             _titleBar.PointerPressed += (i, e) => BeginMoveDrag(e);
@@ -564,13 +563,6 @@ namespace GalaxyBudsClient
         #endregion
 
         #region Pages utils
-
-        public void ShowUnsupportedFeaturePage(string assertion)
-        {
-            UnsupportedFeaturePage.RequiredVersion = assertion;
-            Pager.SwitchPage(AbstractPage.Pages.UnsupportedFeature);
-        }
-
         public void ShowCustomActionSelection(Devices device)
         {
             CustomTouchActionPage.CurrentSide = device;

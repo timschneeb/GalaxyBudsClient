@@ -64,14 +64,6 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
 		private async void SeamlessConnection_OnToggled(object? sender, bool e)
 		{
-			if (!BluetoothImpl.Instance.DeviceSpec.Supports(Features.SeamlessConnection))
-			{
-				MainWindow.Instance.ShowUnsupportedFeaturePage(
-					string.Format(
-						Loc.Resolve("adv_required_firmware_later"), 
-						BluetoothImpl.Instance.DeviceSpec.RecommendedFwVersion(Features.SeamlessConnection)));
-				return;
-			}
 			await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SEAMLESS_CONNECTION, !e);
 		}
 
@@ -82,14 +74,6 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
 		private async void Sidetone_OnToggled(object? sender, bool e)
 		{
-			if (!BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientSidetone))
-			{
-				MainWindow.Instance.ShowUnsupportedFeaturePage(
-					string.Format(
-						Loc.Resolve("adv_required_firmware_later"),
-						BluetoothImpl.Instance.DeviceSpec.RecommendedFwVersion(Features.AmbientSidetone)));
-				return;
-			}
 			await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SIDETONE, e);
 		}
 

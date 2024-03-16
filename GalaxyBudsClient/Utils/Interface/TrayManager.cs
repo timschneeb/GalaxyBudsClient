@@ -80,15 +80,15 @@ namespace GalaxyBudsClient.Utils.Interface
             switch (e)
             {
                 case ItemType.ToggleNoiseControl:
-                    var noisePage = MainWindow.Instance.Pager.FindPage(AbstractPage.Pages.NoiseControlPro);
-                    if (noisePage is NoiseProPage page)
+                    var ncVm = MainWindow2.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>();
+                    if (ncVm != null)
                     {
-                        if (page.AmbientEnabled)
+                        if (ncVm.IsAmbientSoundEnabled)
                         {
                             /* Ambient is on, use ANC toggle */
                             EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AncToggle);
                         }
-                        else if (page.AncEnabled)
+                        else if (ncVm.IsAncEnabled)
                         {
                             /* ANC is on, use ANC toggle to disable itself */
                             EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AncToggle);
@@ -131,7 +131,7 @@ namespace GalaxyBudsClient.Utils.Interface
             await RebuildAsync();
         }
 
-        private List<NativeMenuItemBase?> RebuildBatteryInfo()
+        private static List<NativeMenuItemBase?> RebuildBatteryInfo()
         {
             var bsu = DeviceMessageCache.Instance.BasicStatusUpdate!;
             if (bsu.BatteryCase > 100)
@@ -139,17 +139,24 @@ namespace GalaxyBudsClient.Utils.Interface
                 bsu.BatteryCase = DeviceMessageCache.Instance.BasicStatusUpdateWithValidCase?.BatteryCase ?? bsu.BatteryCase;
             }
             
-            return new List<NativeMenuItemBase?>
-            {
-                bsu.BatteryL > 0 ? new NativeMenuItem($"{Loc.Resolve("left")}: {bsu.BatteryL}%"){IsEnabled = false} : null,
-                bsu.BatteryR > 0 ? new NativeMenuItem($"{Loc.Resolve("right")}: {bsu.BatteryR}%"){IsEnabled = false} : null,
-                (bsu.BatteryCase is > 0 and <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(Features.CaseBattery)) ?
-                    new NativeMenuItem($"{Loc.Resolve("case")}: {bsu.BatteryCase}%"){IsEnabled = false} : null,
-                new NativeMenuItemSeparator(),
-            };
+            return
+            [
+                bsu.BatteryL > 0
+                    ? new NativeMenuItem($"{Loc.Resolve("left")}: {bsu.BatteryL}%") { IsEnabled = false }
+                    : null,
+                bsu.BatteryR > 0
+                    ? new NativeMenuItem($"{Loc.Resolve("right")}: {bsu.BatteryR}%") { IsEnabled = false }
+                    : null,
+                (bsu.BatteryCase is > 0 and <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(Features.CaseBattery))
+                    ? new NativeMenuItem($"{Loc.Resolve("case")}: {bsu.BatteryCase}%") { IsEnabled = false }
+                    : null,
+
+                new NativeMenuItemSeparator()
+
+            ];
         }
 
-        private List<NativeMenuItemBase> RebuildDynamicActions()
+        private IEnumerable<NativeMenuItemBase> RebuildDynamicActions()
         {
             var items = new List<NativeMenuItemBase>();
 
@@ -173,18 +180,7 @@ namespace GalaxyBudsClient.Utils.Interface
                         });
                         break;
                     case ItemType.ToggleAmbient:
-                        bool ambEnabled;
-                        if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
-                        {
-                            ambEnabled = (MainWindow.Instance.Pager.FindPage(AbstractPage.Pages.NoiseControlPro) as NoiseProPage)
-                                ?.AmbientEnabled ?? DeviceMessageCache.Instance.ExtendedStatusUpdate?.AmbientSoundEnabled ?? false;
-                        }
-                        else
-                        {
-                            ambEnabled = 
-                                (MainWindow.Instance.Pager.FindPage(AbstractPage.Pages.AmbientSound) as AmbientSoundPage)
-                                ?.AmbientEnabled ?? DeviceMessageCache.Instance.ExtendedStatusUpdate?.AmbientSoundEnabled ?? false;
-                        }
+                        var ambEnabled = MainWindow2.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAmbientSoundEnabled ?? false;
                         items.Add(new NativeMenuItem(ambEnabled ? Loc.Resolve("tray_disable_ambient_sound") : Loc.Resolve("tray_enable_ambient_sound"))
                         {  
                             Command = new MiniCommand(OnTrayMenuCommand),
@@ -192,18 +188,7 @@ namespace GalaxyBudsClient.Utils.Interface
                         });
                         break;
                     case ItemType.ToggleAnc:
-                        bool ancEnabled;
-                        if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
-                        {
-                            ancEnabled = (MainWindow.Instance.Pager.FindPage(AbstractPage.Pages.NoiseControlPro) as NoiseProPage)
-                                ?.AncEnabled ?? DeviceMessageCache.Instance.ExtendedStatusUpdate?.NoiseCancelling ?? false;
-                        }
-                        else
-                        {
-                            ancEnabled =
-                                (MainWindow.Instance.Pager.FindPage(AbstractPage.Pages.Home) as HomePage)
-                                ?.AncEnabled ?? DeviceMessageCache.Instance.ExtendedStatusUpdate?.NoiseCancelling ?? false;
-                        }
+                        var ancEnabled = MainWindow2.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAncEnabled ?? false;
                         items.Add(new NativeMenuItem(ancEnabled ? Loc.Resolve("tray_disable_anc") : Loc.Resolve("tray_enable_anc"))
                         {  
                             Command = new MiniCommand(OnTrayMenuCommand),
