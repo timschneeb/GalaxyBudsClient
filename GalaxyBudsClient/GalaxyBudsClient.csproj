@@ -165,7 +165,6 @@
 
     <ItemGroup>
       <Folder Include="Cli\" />
-      <Folder Include="Model\ViewModels\" />
     </ItemGroup>
 
     <ItemGroup>

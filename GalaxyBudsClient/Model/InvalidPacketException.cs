@@ -3,7 +3,10 @@ using GalaxyBudsClient.Message;
 
 namespace GalaxyBudsClient.Model
 {
-    public class InvalidPacketException : Exception
+    public class InvalidPacketException(
+        InvalidPacketException.ErrorCodes errorCode,
+        string message,
+        SppMessage? draft = null) : Exception(message)
     {
         public enum ErrorCodes
         {
@@ -17,13 +20,7 @@ namespace GalaxyBudsClient.Model
             Overflow
         }
 
-        public readonly ErrorCodes ErrorCode;
-        public readonly SppMessage? Draft;
-
-        public InvalidPacketException(ErrorCodes errorCode, string message, SppMessage? draft = null) : base(message)
-        {
-            ErrorCode = errorCode;
-            Draft = draft;
-        }
+        public readonly ErrorCodes ErrorCode = errorCode;
+        public readonly SppMessage? Draft = draft;
     }
 }
