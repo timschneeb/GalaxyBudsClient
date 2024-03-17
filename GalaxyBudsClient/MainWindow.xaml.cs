@@ -106,7 +106,7 @@ namespace GalaxyBudsClient
                 new TouchpadPage(), new AdvancedPage(),
                 CustomTouchActionPage, DeviceSelectionPage, new SystemInfoPage(),
                 UpdatePage, UpdateProgressPage, new SystemCoredumpPage(), new HotkeyPage(), new FirmwareSelectionPage(),
-                new FirmwareTransferPage(), new SpatialTestPage(), new BixbyRemapPage(),
+                new FirmwareTransferPage(),  new BixbyRemapPage(),
                 new BudsAppDetectedPage(), new TouchpadGesturePage(), 
                 new GearFitPage()), DispatcherPriority.ApplicationIdle);
             
