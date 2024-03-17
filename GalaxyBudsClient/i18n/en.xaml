@@ -280,6 +280,7 @@ You can disable this behaviour in the settings section.</sys:String>
 
     <sys:String x:Key="system_battery_type_unknown">Not specified</sys:String>
     <sys:String x:Key="system_waiting_for_device">Waiting for response...</sys:String>
+    <sys:String x:Key="system_no_response">No response from earbuds</sys:String>
 
     <sys:String x:Key="system_hwver">Hardware Version</sys:String>
     <sys:String x:Key="system_swver">Software Version</sys:String>
@@ -299,7 +300,7 @@ You can disable this behaviour in the settings section.</sys:String>
     <sys:String x:Key="system_adc_voltage">ADC Voltage</sys:String>
     <sys:String x:Key="system_adc_current">ADC Current</sys:String>
 
-    <sys:String x:Key="selftest_header">Self Test</sys:String>
+    <sys:String x:Key="selftest_header">Self test</sys:String>
     <sys:String x:Key="selftest_pass">Pass</sys:String>
     <sys:String x:Key="selftest_fail">Fail</sys:String>
     <sys:String x:Key="selftest_pass_long">All checks have passed</sys:String>
