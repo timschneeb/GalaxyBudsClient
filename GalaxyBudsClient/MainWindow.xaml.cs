@@ -68,7 +68,7 @@ namespace GalaxyBudsClient
         {
             get
             {
-                Log.Warning("LegacyMainWindow: Instance requested from {Ctx}", new StackTrace().GetFrame(1)?.ToString());
+                Log.Warning("LegacyMainWindow: Instance requested from {Ctx}", new StackTrace().ToString());
                 return _instance ??= new MainWindow();
             }
         }
