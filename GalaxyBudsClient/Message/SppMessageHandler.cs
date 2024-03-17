@@ -1,7 +1,10 @@
 ﻿using System;
 using Avalonia.Threading;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Utils;
+using Serilog;
 
 namespace GalaxyBudsClient.Message
 {
@@ -118,6 +121,13 @@ namespace GalaxyBudsClient.Message
                     break;
                 case SppMessage.MessageIds.DEBUG_SKU:
                     DebugSkuUpdate?.Invoke(this, (parser as DebugSkuParser)!);
+                    break;
+                case SppMessage.MessageIds.VOICE_WAKE_UP_EVENT:
+                    if (parser is VoiceWakeupEventParser { ResultCode: 1 })
+                    {
+                        Log.Debug("SppMessageHandler: Voice wakeup event received");
+                        EventDispatcher.Instance.Dispatch(Settings.Instance.BixbyRemapEvent);
+                    }
                     break;
             }
         }
