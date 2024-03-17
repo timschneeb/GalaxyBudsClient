@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             mc:Ignorable="d" d:DesignWidth="800"
+             x:Class="GalaxyBudsClient.Interface.Pages.FirmwarePage"
+             x:DataType="pages:FirmwarePageViewModel"
+             x:CompileBindings="True">
+
+    <Design.DataContext>
+        <pages:FirmwarePageViewModel />
+    </Design.DataContext>
+
+    <ScrollViewer>
+        <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
+            
+            
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

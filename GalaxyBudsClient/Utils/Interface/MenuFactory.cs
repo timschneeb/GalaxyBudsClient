@@ -7,6 +7,7 @@ using Avalonia.Interactivity;
 
 namespace GalaxyBudsClient.Utils.Interface
 {
+    [Obsolete("Will be removed during the rewrite")]
      public static class MenuFactory
     {
         private const string MenuStyle = "RoundMenuStyle";

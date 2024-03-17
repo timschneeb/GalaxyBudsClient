@@ -2,9 +2,9 @@ using GalaxyBudsClient.Interface.ViewModels.Pages;
 
 namespace GalaxyBudsClient.Interface.Pages;
 
-public partial class SystemInfoPage : BasePage<SystemInfoPageViewModel>
+public partial class FirmwarePage : BasePage<FirmwarePageViewModel>
 {
-    public SystemInfoPage()
+    public FirmwarePage()
     {
         InitializeComponent();
     }
