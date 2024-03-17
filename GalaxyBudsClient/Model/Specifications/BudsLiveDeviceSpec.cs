@@ -20,7 +20,7 @@ namespace GalaxyBudsClient.Model.Specifications
                 { Features.BixbyWakeup, null },
                 { Features.FirmwareUpdates, null },
                 { Features.LegacyNoiseControlMode, null },
-                { Features.DebugInfoLegacy, null },
+                { Features.BuildInfo, null },
                 { Features.Voltage, null },
                 { Features.DebugSku, null }
             };

@@ -262,7 +262,7 @@ You can disable this behaviour in the settings section.</sys:String>
 
     <!--System/Self-Test-->
     <sys:String x:Key="system_overview_header">System</sys:String>
-    <sys:String x:Key="system_header">System Information</sys:String>
+    <sys:String x:Key="system_header">System information</sys:String>
     <sys:String x:Key="system_selftest">Run self test</sys:String>
     <sys:String x:Key="system_selftest_desc">Verify if all modules of your earbuds are functioning properly</sys:String>
     <sys:String x:Key="system_factory_reset">Factory reset</sys:String>
@@ -282,23 +282,24 @@ You can disable this behaviour in the settings section.</sys:String>
     <sys:String x:Key="system_waiting_for_device">Waiting for response...</sys:String>
     <sys:String x:Key="system_no_response">No response from earbuds</sys:String>
 
-    <sys:String x:Key="system_hwver">Hardware Version</sys:String>
-    <sys:String x:Key="system_swver">Software Version</sys:String>
-    <sys:String x:Key="system_touchver">Touch Firmware Version</sys:String>
-    <sys:String x:Key="system_protover">Protocol Revision</sys:String>
-    <sys:String x:Key="system_btaddr">Bluetooth Address</sys:String>
-    <sys:String x:Key="system_serial">Serial Number</sys:String>
-    <sys:String x:Key="system_build_info">Build Info</sys:String>
-    <sys:String x:Key="system_battery_type">Battery Type</sys:String>
-    <sys:String x:Key="system_proximity">Proximity Measurement</sys:String>
-    <sys:String x:Key="system_thermo">Thermistor Measurement</sys:String>
-    <sys:String x:Key="system_hall">Hall Measurement</sys:String>
-    <sys:String x:Key="system_accel">Accelerometer Status</sys:String>
+    <sys:String x:Key="system_hwver">Hardware version</sys:String>
+    <sys:String x:Key="system_swver">Software version</sys:String>
+    <sys:String x:Key="system_touchver">Touch firmware version</sys:String>
+    <sys:String x:Key="system_protover">Protocol revision</sys:String>
+    <sys:String x:Key="system_btaddr">Bluetooth addresses</sys:String>
+    <sys:String x:Key="system_serial">Serial numbers</sys:String>
+    <sys:String x:Key="system_build_info">Build strings</sys:String>
+    <sys:String x:Key="system_battery_type">Battery type</sys:String>
+    <sys:String x:Key="system_sku">Device SKUs</sys:String>
+    <sys:String x:Key="system_proximity">Proximity measurement</sys:String>
+    <sys:String x:Key="system_thermo">Thermistor measurement</sys:String>
+    <sys:String x:Key="system_hall">Hall measurement</sys:String>
+    <sys:String x:Key="system_accel">Accelerometer status</sys:String>
     <!--Note: system_accel only used on the self-test page-->
-    <sys:String x:Key="system_adc_soc">ADC SoC</sys:String>
+    <sys:String x:Key="system_adc_soc">ADC state of charge</sys:String>
     <!--Context: SoC = State of charge (battery percentage)-->
-    <sys:String x:Key="system_adc_voltage">ADC Voltage</sys:String>
-    <sys:String x:Key="system_adc_current">ADC Current</sys:String>
+    <sys:String x:Key="system_adc_voltage">ADC voltage</sys:String>
+    <sys:String x:Key="system_adc_current">ADC current</sys:String>
 
     <sys:String x:Key="selftest_header">Self test</sys:String>
     <sys:String x:Key="selftest_pass">Pass</sys:String>

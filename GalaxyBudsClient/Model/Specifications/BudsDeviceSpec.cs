@@ -14,7 +14,8 @@ namespace GalaxyBudsClient.Model.Specifications
                 { Features.AmbientSound, null },
                 { Features.LegacyNoiseControlMode, null },
                 { Features.LegacyAmbientSoundVolumeLevels, null },
-                { Features.DebugInfoLegacy, null },
+                { Features.BuildInfo, null },
+                { Features.BatteryType, null },
                 { Features.Voltage, null },
                 { Features.Current, null }
             };

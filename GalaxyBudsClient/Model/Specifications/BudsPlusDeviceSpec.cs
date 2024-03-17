@@ -20,7 +20,7 @@ namespace GalaxyBudsClient.Model.Specifications
                 { Features.CaseBattery, null },
                 { Features.FragmentedMessages, null },
                 { Features.LegacyNoiseControlMode, null },
-                { Features.DebugInfoLegacy, null },
+                { Features.BuildInfo, null },
                 { Features.Voltage, null }
             };
         
