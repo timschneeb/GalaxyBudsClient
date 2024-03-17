@@ -64,7 +64,6 @@ namespace GalaxyBudsClient
             SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
             SppMessageHandler.Instance.StatusUpdate += OnStatusUpdate;
             SppMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
-            SppMessageHandler.Instance.AnyMessageReceived += OnAnyMessageReceived;
 
             EventDispatcher.Instance.EventReceived += OnEventReceived;
             (Application.Current as App)!.TrayIconClicked += TrayIcon_OnLeftClicked;
@@ -99,16 +98,6 @@ namespace GalaxyBudsClient
         private void OnLanguageUpdated()
         {
             FlowDirection = Loc.ResolveFlowDirection();
-        }
-
-        private void OnAnyMessageReceived(object? sender, BaseMessageParser? e)
-        {
-            if (e is VoiceWakeupEventParser { ResultCode: 1 })
-            {
-                Log.Debug("MainWindow.OnAnyMessageReceived: Voice wakeup event received");
-                    
-                EventDispatcher.Instance.Dispatch(Settings.Instance.BixbyRemapEvent);
-            }
         }
 
         private async void OnEventReceived(EventDispatcher.Event e, object? arg)
