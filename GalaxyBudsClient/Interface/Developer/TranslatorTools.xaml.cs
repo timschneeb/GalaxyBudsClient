@@ -5,6 +5,8 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media;
+using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.InterfaceOld.Dialogs;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
@@ -46,11 +48,21 @@ namespace GalaxyBudsClient.Interface.Developer
             
             Loc.ErrorDetected += (title, content) =>
             {
-                new MessageBox
+                var td = new TaskDialog
                 {
-                    Title = title, 
-                    Description = content
-                }.ShowDialog(this);
+                    Header = title, 
+                    Buttons = { TaskDialogButton.CloseButton }, 
+                    IconSource = new FluentIcons.Avalonia.Fluent.SymbolIconSource { Symbol = FluentIcons.Common.Symbol.Warning },
+                    Content = new TextBlock
+                    {
+                        TextWrapping = TextWrapping.Wrap,
+                        Text = content,
+                        MaxWidth = 450
+                    },
+                    XamlRoot = this
+                };
+
+                _ = td.ShowAsync();
             };
         }
         

@@ -9,11 +9,7 @@
         Icon="/Resources/icon_white.ico"
         Title="Galaxy Buds Manager - Developer Tools">
     
-    <Window.Resources>
-        <SolidColorBrush x:Key="GridLine" Color="#FFD1D1D1" />
-    </Window.Resources>
     <Window.Styles>
-        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
         <Style Selector="DataGridCell">
             <Setter Property="FontSize" Value="14" />
             <Setter Property="MinHeight" Value="24" />
@@ -32,19 +28,9 @@
             </MenuItem>
         </Menu>
 
-        <Grid Margin="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="5" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <Grid Margin="3" ColumnDefinitions="Auto,5,*">
 
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="5" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+            <Grid Grid.Column="0" RowDefinitions="*,5,*">
 
                 <TextBox x:Name="HexDump"
                          Grid.Column="0" Text="Waiting for incoming data..." IsReadOnly="True"
@@ -57,11 +43,7 @@
                 <Border Grid.Row="2" BorderThickness="1"
                         BorderBrush="{StaticResource SystemBaseLowColor}"
                         Grid.Column="0">
-                    <Grid x:Name="SendFormGrid">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
+                    <Grid x:Name="SendFormGrid" RowDefinitions="Auto,*">
                         <Grid Grid.Row="0" Margin="5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -94,15 +76,8 @@
 
             <GridSplitter Grid.Column="1" Width="5" ShowsPreview="True" HorizontalAlignment="Stretch" />
 
-            <Grid Grid.Column="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="5" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+            <Grid Grid.Column="2" RowDefinitions="*,5,*">
                 <DataGrid x:Name="MsgTable" Grid.Row="0" SelectionMode="Single"
-                          VerticalGridLinesBrush="{StaticResource GridLine}"
-                          HorizontalGridLinesBrush="{StaticResource GridLine}"
                           CanUserSortColumns="False" CanUserReorderColumns="False"
                           CanUserResizeColumns="True"
                           IsReadOnly="True"
@@ -117,14 +92,16 @@
                     </DataGrid.Columns>
                 </DataGrid>
 
-                <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                <GridSplitter Grid.Row="1" Height="5" 
+                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                               ResizeDirection="Rows" ShowsPreview="True" />
-                <DataGrid Grid.Row="2" x:Name="PropTable" SelectionMode="Single"
-                          VerticalGridLinesBrush="{StaticResource GridLine}"
-                          HorizontalGridLinesBrush="{StaticResource GridLine}"
+                <DataGrid Grid.Row="2" 
+                          x:Name="PropTable"
+                          SelectionMode="Single"
                           IsReadOnly="True"
                           CanUserResizeColumns="True"
-                          CanUserSortColumns="False" CanUserReorderColumns="False"
+                          CanUserSortColumns="False" 
+                          CanUserReorderColumns="False"
                           HeadersVisibility="All">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Property" Binding="{Binding Key}" IsReadOnly="True" Width="*" />
