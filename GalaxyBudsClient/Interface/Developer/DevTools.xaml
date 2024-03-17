@@ -104,8 +104,14 @@
                           CanUserReorderColumns="False"
                           HeadersVisibility="All">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Property" Binding="{Binding Key}" IsReadOnly="True" Width="*" />
-                        <DataGridTextColumn Header="Value" Binding="{Binding Value}" IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Property" 
+                                            Binding="{Binding Key}" 
+                                            IsReadOnly="True" 
+                                            Width="*" />
+                        <DataGridTextColumn Header="Value" 
+                                            Binding="{Binding Value}"
+                                            IsReadOnly="True"
+                                            Width="*" />
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

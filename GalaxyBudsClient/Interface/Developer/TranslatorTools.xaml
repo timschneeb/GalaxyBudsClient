@@ -2,51 +2,35 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:developer="clr-namespace:GalaxyBudsClient.Interface.Developer"
         mc:Ignorable="d" d:DesignWidth="463" d:DesignHeight="380"
         x:Class="GalaxyBudsClient.Interface.Developer.TranslatorTools"
+        x:DataType="developer:TranslatorTools"
         Height="380" Width="460" MaxWidth="460"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/icon_white.ico"
         Title="Galaxy Buds Manager - Translator Tools">
-    
+
+    <Design.DataContext>
+        <developer:TranslatorTools />
+    </Design.DataContext>
+
     <StackPanel Margin="10" Spacing="8">
-        <!--<HeaderedContentControl Grid.Row="0" Classes="GroupBox" Header="Jump to page">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="5" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" MinWidth="80" />
-                    </Grid.ColumnDefinitions>
-                    <ComboBox Grid.Column="0" x:Name="Pages" HorizontalAlignment="Stretch" ItemsSource="{Binding PagesSource}" Margin="0,0,5,0"/>
-                    <Button Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="Go to..." Click="GoToPage_OnClick"/>
-                </Grid>
-                <TextBlock Grid.Row="2" TextWrapping="Wrap">
-                    Useful if you need to jump to pages that are rather rarely shown. Some pages require certain contextual parameters (which are not provided here) may misbehave when forcefully loaded and may cause crashes.
-                </TextBlock>
-            </Grid>
-        </HeaderedContentControl>-->
         <HeaderedContentControl Classes="GroupBox"
-                           Header="Reload XAML dictionary">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="5" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+                                Header="Reload XAML dictionary">
+            <Grid RowDefinitions="Auto,5,Auto">
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" MinWidth="100" />
                         <ColumnDefinition Width="Auto" MinWidth="80" />
                     </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="0" x:Name="XamlPath" IsReadOnly="True" Margin="0,0,5,0"/>
-                    <ComboBox Grid.Column="1" x:Name="Locales" HorizontalAlignment="Stretch" ItemsSource="{Binding LocaleSource}" Margin="0,0,5,0"/>
-                    <Button Grid.Column="2" x:Name="ReloadXaml" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="Reload" Click="ReloadXaml_OnClick" />
+                    <TextBox Grid.Column="0" x:Name="XamlPath" IsReadOnly="True" Margin="0,0,5,0" />
+                    <ComboBox Grid.Column="1" x:Name="Locales" HorizontalAlignment="Stretch"
+                              ItemsSource="{Binding LocaleSource}" Margin="0,0,5,0" />
+                    <Button Grid.Column="2" x:Name="ReloadXaml" HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch" VerticalContentAlignment="Center"
+                            HorizontalContentAlignment="Center" Content="Reload" Click="ReloadXaml_OnClick" />
                 </Grid>
                 <TextBlock Grid.Row="2" TextWrapping="Wrap">
                     Hot-reloads all strings. Don't forget to save before reloading.
@@ -56,16 +40,18 @@
         <HeaderedContentControl Classes="GroupBox"
                                 Header="Flags">
             <StackPanel Spacing="5">
-                <CheckBox x:Name="DummyDevices" Content="Show dummy devices (Device selection page)" Checked="DummyDevices_OnChecked"/>
-                <CheckBox x:Name="IgnoreConnLoss" Content="Ignore connection loss" Checked="IgnoreConnLoss_OnChecked"/>
+                <CheckBox x:Name="DummyDevices" Content="Show dummy devices (Device selection page)"
+                          Checked="DummyDevices_OnChecked" />
+                <CheckBox x:Name="IgnoreConnLoss" Content="Ignore connection loss" Checked="IgnoreConnLoss_OnChecked" />
                 <TextBlock TextWrapping="Wrap">
                     Some flags may cause crashes and inconsistent behavior.
                 </TextBlock>
             </StackPanel>
         </HeaderedContentControl>
         <HeaderedContentControl Classes="GroupBox"
-                           Header="Exit translator/dev mode">
-            <TextBlock TextWrapping="Wrap" Text="You can exit this debug mode by deleting the XAML file specified above."/>
+                                Header="Exit translator/dev mode">
+            <TextBlock TextWrapping="Wrap"
+                       Text="You can exit this debug mode by deleting the XAML file specified above." />
         </HeaderedContentControl>
     </StackPanel>
 </Window>
