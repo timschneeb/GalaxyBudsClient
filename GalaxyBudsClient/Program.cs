@@ -35,7 +35,7 @@ namespace GalaxyBudsClient
                 .WriteTo.File(PlatformUtils.CombineDataPath("application.log"))
                 .WriteTo.Console();
 
-            config = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("VERBOSE")) ?
+            config = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("VERBOSE")) ||  true ? // TODO   ?
                 config.MinimumLevel.Verbose() : config.MinimumLevel.Debug();
             
             // Divert program startup flow if the app was started with arguments (except /StartMinimized)

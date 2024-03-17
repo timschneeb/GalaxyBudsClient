@@ -153,16 +153,16 @@ namespace GalaxyBudsClient
             if (Settings.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
             {
                 // check if the cause of the termination is due to shutdown or application close request
-                if (e.CloseReason is WindowCloseReason.OSShutdown or WindowCloseReason.ApplicationShutdown)
-                {
-                    Log.Debug("MainWindow.OnClosing: closing event, continuing termination");
-                }
-                else
+                if (e.CloseReason is not (WindowCloseReason.OSShutdown or WindowCloseReason.ApplicationShutdown))
                 {
                     BringToTray();
                     e.Cancel = true;
                     Log.Debug("MainWindow.OnClosing: Termination cancelled");
+                    base.OnClosing(e);
+                    return;
                 }
+
+                Log.Debug("MainWindow.OnClosing: closing event, continuing termination");
             }
             else
             {
@@ -170,6 +170,7 @@ namespace GalaxyBudsClient
             }
             
             await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.FIND_MY_EARBUDS_STOP);
+            await BluetoothImpl.Instance.DisconnectAsync();
             base.OnClosing(e);
         }
         

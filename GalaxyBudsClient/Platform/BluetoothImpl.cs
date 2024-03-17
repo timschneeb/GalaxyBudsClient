@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using Avalonia.Controls;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
@@ -94,32 +95,37 @@ namespace GalaxyBudsClient.Platform
         {
             try
             {
+                // We don't want to initialize the backend in design mode. It would conflict with the actual application.
+                if (!Design.IsDesignMode)
+                {
 #if Windows
-                if (PlatformUtils.IsWindows && Settings.Instance.UseBluetoothWinRT
-                                            && PlatformUtils.IsWindowsContractsSdkSupported)
-                {
-                    Log.Debug("BluetoothImpl: Using WinRT.BluetoothService");
-                    _backend = new Bluetooth.WindowsRT.BluetoothService();
-                }
-                else if (PlatformUtils.IsWindows)
-                {
-                    Log.Debug("BluetoothImpl: Using Windows.BluetoothService");
-                    _backend = new Bluetooth.Windows.BluetoothService();
-                }
+                    if (PlatformUtils.IsWindows && Settings.Instance.UseBluetoothWinRT
+                                                && PlatformUtils.IsWindowsContractsSdkSupported)
+                    {
+                        Log.Debug("BluetoothImpl: Using WinRT.BluetoothService");
+                        _backend = new Bluetooth.WindowsRT.BluetoothService();
+                    }
+                    else if (PlatformUtils.IsWindows)
+                    {
+                        Log.Debug("BluetoothImpl: Using Windows.BluetoothService");
+                        _backend = new Bluetooth.Windows.BluetoothService();
+                    }
 #elif Linux
-                if(PlatformUtils.IsLinux)
+                    if (PlatformUtils.IsLinux)
 
-                {   
-                    Log.Debug("BluetoothImpl: Using Linux.BluetoothService");
-                    _backend = new Bluetooth.Linux.BluetoothService();
-                }
+                    {
+                        Log.Debug("BluetoothImpl: Using Linux.BluetoothService");
+                        _backend = new Bluetooth.Linux.BluetoothService();
+                    }
 #elif OSX
-                if (PlatformUtils.IsOSX)
-                {
-                    Log.Debug("BluetoothImpl: Using OSX.BluetoothService");
-                    _backend = new ThePBone.OSX.Native.BluetoothService();
-                }
+                    if (PlatformUtils.IsOSX)
+                    {
+                        Log.Debug("BluetoothImpl: Using OSX.BluetoothService");
+                        _backend = new ThePBone.OSX.Native.BluetoothService();
+                    }
 #endif
+                }
+
                 if (_backend == null)
                 {
                     Log.Warning("BluetoothImpl: Using Dummy.BluetoothService");

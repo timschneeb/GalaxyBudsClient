@@ -288,7 +288,7 @@ You can disable this behaviour in the settings section.</sys:String>
     <sys:String x:Key="system_protover">Protocol revision</sys:String>
     <sys:String x:Key="system_btaddr">Bluetooth addresses</sys:String>
     <sys:String x:Key="system_serial">Serial numbers</sys:String>
-    <sys:String x:Key="system_build_info">Build strings</sys:String>
+    <sys:String x:Key="system_build_info">Build string</sys:String>
     <sys:String x:Key="system_battery_type">Battery type</sys:String>
     <sys:String x:Key="system_sku">Device SKUs</sys:String>
     <sys:String x:Key="system_proximity">Proximity measurement</sys:String>

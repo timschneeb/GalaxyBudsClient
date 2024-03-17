@@ -17,10 +17,10 @@ namespace GalaxyBudsClient.Bluetooth.Linux
     public class BluetoothService : IBluetoothService
     {
         private static readonly TimeSpan Timeout = TimeSpan.FromSeconds(15);
-        private static readonly ConcurrentQueue<byte[]> TransmitterQueue = new ConcurrentQueue<byte[]>();
+        private static readonly ConcurrentQueue<byte[]> TransmitterQueue = new();
         
-        private CancellationTokenSource _cancelSource = new CancellationTokenSource();
-        private readonly BluetoothSocket _profile = new BluetoothSocket();
+        private CancellationTokenSource _cancelSource = new();
+        private readonly BluetoothSocket _profile = new();
         private Task? _loop;
         
         private IAdapter1? _adapter;
@@ -144,7 +144,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             _profile.RequestDisconnection = async (path, handle) => await DisconnectAsync();
             await conn.RegisterObjectAsync(_profile);
 
-            for (int attempt = 1; attempt <= 5; attempt++)
+            for (var attempt = 1; attempt <= 5; attempt++)
             {
                 Log.Debug("Linux.BluetoothService: Connecting... (attempt {Attempt}/5)", attempt);
                 try
@@ -157,7 +157,9 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 catch(BluetoothException ex)
                 {
                     BluetoothErrorAsync?.Invoke(this, ex);
-                }   
+                }
+
+                await Task.Delay(50);
 
                 if (attempt >= 5)
                 {
@@ -180,6 +182,15 @@ namespace GalaxyBudsClient.Bluetooth.Linux
 
             var profileManager = conn.CreateProxy<IProfileManager1>(BluezConstants.DbusService, "/org/bluez");
 
+            try
+            {
+                await profileManager.UnregisterProfileAsync(_profile.ObjectPath);
+            }
+            catch (Exception e)
+            {
+                Log.Information("Linux.BluetoothService: Unregistering profile failed: {ErrorMessage}", e.Message);
+            }
+            
             try
             {
                 await profileManager.RegisterProfileAsync(_profile.ObjectPath, uuid, properties);
@@ -212,7 +223,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 }
             }
             
-            for (int attempt = 1; attempt <= 10; attempt++)
+            for (var attempt = 1; attempt <= 10; attempt++)
             {
                 Log.Debug("Linux.BluetoothService: Connecting to profile... (attempt {Attempt}/10)", attempt);
 
@@ -364,7 +375,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             else
             {  
                 Log.Debug("Linux.BluetoothService: Cancelling BluetoothServiceLoop...");
-                _cancelSource.Cancel();
+                await _cancelSource.CancelAsync();
             }
 
             /* Disconnect device if not already done... */
@@ -421,10 +432,10 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 return new BluetoothDevice[0];
             }
             
-            BluetoothDevice[] devices = new BluetoothDevice[devicesBluez.Count];
-            for (int i = 0; i < devicesBluez.Count; i++)
+            var devices = new BluetoothDevice[devicesBluez.Count];
+            for (var i = 0; i < devicesBluez.Count; i++)
             {
-                Device1Properties props = await devicesBluez[i].GetAllAsync();
+                var props = await devicesBluez[i].GetAllAsync();
                 devices[i] = new BluetoothDevice(props.Name, props.Address, props.Connected, props.Paired, new BluetoothCoD(props.Class));
             }
 
@@ -463,7 +474,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                         IsStreamConnected = true;
 
                         /* Handle incoming stream */
-                        byte[] buffer = new byte[incomingCount ?? 0];
+                        var buffer = new byte[incomingCount ?? 0];
                         var dataAvailable = false;
                         try
                         {
