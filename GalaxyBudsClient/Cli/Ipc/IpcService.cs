@@ -39,10 +39,15 @@ namespace GalaxyBudsClient.Cli.Ipc
             
             try
             {
+                string? boundAddress = null;
                 // Linux: connect to existing bus
                 if (useSessionBus)
                 {
                     await connection.ConnectAsync();
+                }
+                else
+                {
+                    boundAddress = await server.StartAsync(TcpAddress);
                 }
                 
                 await connection.RegisterServiceAsync(ServiceName, ServiceRegistrationOptions.None);
@@ -55,7 +60,6 @@ namespace GalaxyBudsClient.Cli.Ipc
                 
                 if (!useSessionBus)
                 {
-                    var boundAddress = await server.StartAsync(TcpAddress);
                     Log.Information("IpcService: Server listening at {BoundAddress}", boundAddress);
                 }
                 else
