@@ -2,10 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                    xmlns:converters="clr-namespace:GalaxyBudsClient.Utils.Converters"
                     xmlns:pages="clr-namespace:GalaxyBudsClient.InterfaceOld.Pages"
                     xmlns:elements="clr-namespace:GalaxyBudsClient.InterfaceOld.Elements"
                     xmlns:items="clr-namespace:GalaxyBudsClient.InterfaceOld.Items"
+                    xmlns:converters="clr-namespace:GalaxyBudsClient.Interface.Converters"
                     mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
                     x:Class="GalaxyBudsClient.InterfaceOld.Pages.FirmwareSelectionPage"
                     DockPanel.Dock="Top" Margin="10,0">
