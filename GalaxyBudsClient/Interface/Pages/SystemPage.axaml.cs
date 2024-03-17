@@ -32,6 +32,29 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
         
         NavigationService.Instance.Navigate(item.Name);
     }
+    
+    /* TODO re-add disclaimer for FW flasher 
+       if (!Settings.Instance.FirmwareWarningAccepted)
+       {
+           var result = await new QuestionBox()
+           {
+               Title = Loc.Resolve("fw_disclaimer"),
+               Description = Loc.Resolve("fw_disclaimer_desc"),
+               MinWidth = 600,
+               MaxWidth = 600
+           }.ShowDialog<bool>(MainWindow.Instance);
+
+           Settings.Instance.FirmwareWarningAccepted = result;
+           if (result)
+           {
+               MainWindow.Instance.Pager.SwitchPage(Pages.FirmwareSelect);
+           }
+       }
+       else
+       {
+           MainWindow.Instance.Pager.SwitchPage(Pages.FirmwareSelect);
+       }
+     */
 
     private async void OnFactoryResetClicked(object? sender, RoutedEventArgs e)
     {
