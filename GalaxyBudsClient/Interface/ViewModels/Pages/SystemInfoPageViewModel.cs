@@ -21,7 +21,13 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
         SppMessageHandler.Instance.BuildStringResponse += OnDebugBuildInfoReceived;
         SppMessageHandler.Instance.DebugSkuUpdate += OnDebugSkuReceived;
         SppMessageHandler.Instance.SerialNumberResponse += OnDebugSerialNumberReceived;
+        SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdateReceived;
         BluetoothImpl.Instance.Connected += (_, _) => RequestData();
+    }
+
+    private void OnExtendedStatusUpdateReceived(object? sender, ExtendedStatusUpdateParser e)
+    {
+        ProtocolVersion = e.Revision.ToString();
     }
 
     private void OnDebugSerialNumberReceived(object? sender, DebugSerialNumberParser e)
