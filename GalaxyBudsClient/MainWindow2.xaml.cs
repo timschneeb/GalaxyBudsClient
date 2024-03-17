@@ -74,11 +74,10 @@ namespace GalaxyBudsClient
             if (BluetoothImpl.Instance.RegisteredDeviceValid)
             {
                 Task.Run(() => BluetoothImpl.Instance.ConnectAsync());
-                //Pager.SwitchPage(AbstractPage.Pages.Home);
             }
             else
             {
-                //Pager.SwitchPage(AbstractPage.Pages.Welcome);
+                // TODO open setup wizard
             }
             
             if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
@@ -114,7 +113,7 @@ namespace GalaxyBudsClient
                         BringToFront();
                     break;
                 case EventDispatcher.Event.Connect:
-                    if (!BluetoothImpl.Instance.IsConnectedLegacy)
+                    if (!BluetoothImpl.Instance.IsConnected)
                     {
                         await BluetoothImpl.Instance.ConnectAsync();
                     }
