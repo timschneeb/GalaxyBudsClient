@@ -19,7 +19,9 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
     public NoiseControlPageViewModel()
     {
         SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
-        SppMessageHandler.Instance.AmbientEnabledUpdateResponse += (_, b) => IsAmbientSoundEnabled = b;
+        SppMessageHandler.Instance.AmbientEnabledUpdateResponse += (_, enabled) => IsAmbientSoundEnabled = enabled;
+        SppMessageHandler.Instance.NoiseControlUpdateResponse += (_, mode)
+            => EventDispatcher.Instance.Dispatch(EventDispatcher.Event.SetNoiseControlState, mode);
         
         PropertyChanged += OnPropertyChanged;
     }
@@ -76,7 +78,6 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
         switch (args.PropertyName)
         {
             case nameof(IsAmbientSoundEnabled) or nameof(IsAncEnabled):
-                // TODO test this
                 if (IsAmbientSoundEnabled && IsAncEnabled && args.PropertyName == nameof(IsAmbientSoundEnabled))
                     IsAncEnabled = false;
                 else if (IsAmbientSoundEnabled && IsAncEnabled && args.PropertyName == nameof(IsAncEnabled))
