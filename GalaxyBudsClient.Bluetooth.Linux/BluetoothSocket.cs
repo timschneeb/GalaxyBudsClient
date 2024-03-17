@@ -8,7 +8,7 @@ using Tmds.DBus;
 
 namespace GalaxyBudsClient.Bluetooth.Linux
 {
-    internal class BluetoothSocket : IProfile1
+    internal class BluetoothSocket : IProfile1, IDisposable
     {
         public enum SocketStates
         {
@@ -19,7 +19,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
         
         private CloseSafeHandle? _fileDescriptor;
         private UnixStream? _stream;
-        private readonly object _streamPadlock = new object();
+        private readonly object _streamPadlock = new();
         
         public UnixStream? Stream
         {
@@ -38,16 +38,11 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 }
             }
         }
-        public SocketStates SocketState { get; set; }
+        public SocketStates SocketState { get; set; } = SocketStates.Disconnected;
 
         public Action<ObjectPath,CloseSafeHandle?,IDictionary<string,object>>? NewConnection {get;set;}
         public Action<ObjectPath,CloseSafeHandle?>? RequestDisconnection { get; set; }
         public Action<CloseSafeHandle?>? Release { get; set; }
-        
-        public BluetoothSocket()
-        {
-            SocketState = SocketStates.Disconnected;
-        }
 
         public Task ReleaseAsync ()
         {
@@ -87,6 +82,13 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             return Task.CompletedTask;
         }
 
-        public ObjectPath ObjectPath => "/bluez/profiles/blueznet";
+        public ObjectPath ObjectPath => "/bluez/profiles/galaxybudsclient";
+
+        public async void Dispose()
+        {
+            await ReleaseAsync();
+            _fileDescriptor?.Dispose();
+            _stream?.Dispose();
+        }
     }
 }
