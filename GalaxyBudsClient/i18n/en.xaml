@@ -309,7 +309,6 @@ You can disable this behaviour in the settings section.</sys:String>
     
     <sys:String x:Key="coredump_header">Dumping data...</sys:String>
     <sys:String x:Key="coredump_dl_progress_prepare">Preparing download...</sys:String>
-    <sys:String x:Key="coredump_dl_progress_cancelled">Download cancelled</sys:String>
     <sys:String x:Key="coredump_dl_progress_finished">Download finished</sys:String>
     <sys:String x:Key="coredump_dl_trace_progress">Downloading trace dump... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">Downloading core dump... {0}%</sys:String>
@@ -323,7 +322,7 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="coredump_dl_save_success_title">Successfully saved dumps</sys:String>
     <sys:String x:Key="coredump_dl_save_success">{0} dump(s) were written to '{1}'</sys:String>
     <sys:String x:Key="coredump_dl_save_dialog_title">Select a download directory...</sys:String>
-    
+
     <!--Settings-->
     <sys:String x:Key="settings_header">Settings</sys:String>
     
