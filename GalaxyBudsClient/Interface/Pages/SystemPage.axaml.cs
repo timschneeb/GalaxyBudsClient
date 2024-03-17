@@ -183,24 +183,20 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
         void OnSelfTestResponse(object? s, SelfTestParser? parser)
         {
             cancelToken.Cancel();
-            
-            var failed = parser is not { AllChecks: true };
-            td.SetProgressBarState(100, failed ? TaskDialogProgressState.Error : TaskDialogProgressState.Normal);
             td.Buttons[0].Text = Loc.Resolve("window_close");
 
-            var header = Loc.Resolve(failed ? "selftest_fail_long" : "selftest_pass_long");
             if (parser == null)
             {
-                td.Header = header;
+                td.SetProgressBarState(100, TaskDialogProgressState.Error);
                 ((TextBlock)td.Content).Text = Loc.Resolve("system_no_response");
             }
             else
             {
                 _ = new TaskDialog
                 {
-                    Header = header,
+                    Header = Loc.Resolve(parser is not { AllChecks: true } ? "selftest_fail_long" : "selftest_pass_long"),
                     Buttons = td.Buttons,
-                    IconSource = new FluentIcons.Avalonia.Fluent.SymbolIconSource { Symbol = Symbol.Beaker },
+                    IconSource = td.IconSource,
                     XamlRoot = MainWindow2.Instance,
                     Commands = new[]
                     {
