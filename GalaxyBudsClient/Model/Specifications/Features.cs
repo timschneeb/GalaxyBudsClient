@@ -15,6 +15,7 @@ public enum Features
     GamingMode,
     DoubleTapVolume,
     CaseBattery,
+    BatteryType,
     Voltage,
     Current,
     FragmentedMessages,
@@ -28,7 +29,7 @@ public enum Features
     AdvancedTouchLock,
     LegacyNoiseControlMode,
     LegacyAmbientSoundVolumeLevels,
-    DebugInfoLegacy,
+    BuildInfo,
     GearFitTest,
     DebugSku
 }

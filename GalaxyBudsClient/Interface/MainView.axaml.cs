@@ -131,7 +131,8 @@ public partial class MainView : UserControl
 
     private readonly SubPageViewModelBase[] subPages =
     [
-        new AmbientCustomizePageViewModel()
+        new AmbientCustomizePageViewModel(),
+        new SystemInfoPageViewModel()
     ];
 
     
@@ -246,6 +247,8 @@ public partial class MainView : UserControl
             }
         }
 
+        page?.OnNavigated();
+        
         if (FrameView.BackStackDepth > 0 && !NavView.IsBackButtonVisible)
         {
             AnimateContentForBackButton(true);

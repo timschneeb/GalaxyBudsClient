@@ -106,6 +106,10 @@
           <DependentUpon>SystemPage.axaml</DependentUpon>
           <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Interface\Pages\SystemInfoPage.axaml.cs">
+          <DependentUpon>SystemInfoPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
     <PropertyGroup>
