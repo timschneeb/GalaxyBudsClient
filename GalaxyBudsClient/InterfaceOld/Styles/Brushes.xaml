@@ -18,23 +18,4 @@
     <CroppedBitmap x:Key="LeftProDisconnected" Source="/Resources/device/left_pro_dim.png"/>
     <CroppedBitmap x:Key="RightProDisconnected" Source="/Resources/device/right_pro_dim.png"/>
 
-    <!-- Battery -->
-    <CroppedBitmap x:Key="BatteryDisconnected" Source="/Resources/battery/disconnected.png"/>
-    <CroppedBitmap x:Key="BatteryLow" Source="/Resources/battery/low.png"/>
-    <CroppedBitmap x:Key="BatteryMedium" Source="/Resources/battery/medium.png"/>
-    <CroppedBitmap x:Key="BatteryHigh" Source="/Resources/battery/high.png"/>
-    <CroppedBitmap x:Key="BatteryFull" Source="/Resources/battery/full.png"/>
-    
-    <!-- Buttons -->
-    <CroppedBitmap x:Key="BackButton" Source="/Resources/navigation/back_dark.png"/>
-    <CroppedBitmap x:Key="NextButtonSrc" Source="/Resources/navigation/next_small_dark.png"/>
-    <CroppedBitmap x:Key="NextButton" Source="/Resources/navigation/next_small_dark.png"/>
-    <CroppedBitmap x:Key="SearchButton" Source="/Resources/findmygear/start_gray.png"/>
-
-    <!--Find My Gear-->
-    <CroppedBitmap x:Key="FindMyGearScanButton" Source="/Resources/findmygear/start_finding.png"/>
-    <CroppedBitmap x:Key="FindMyGearScanButtonActive" Source="/Resources/findmygear/finding.png"/>
-    <CroppedBitmap x:Key="FindMyGearMuted" Source="/Resources/findmygear/muted.png"/>
-    <CroppedBitmap x:Key="FindMyGearUnmuted" Source="/Resources/findmygear/unmuted.png"/>
-    
 </ResourceDictionary>

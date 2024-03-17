@@ -6,17 +6,5 @@
     <system:Double x:Key="ContentWidth">510</system:Double>
     <system:Double x:Key="PageHeaderHeight">60</system:Double>
     <CornerRadius x:Key="DefaultCornerRadius">20</CornerRadius>
-
-    <!-- Global bitmaps -->
-    <CroppedBitmap x:Key="NeutralBud" Source="/Resources/device/neutral_gray.png"/>
-    <CroppedBitmap x:Key="NeutralBean" Source="/Resources/device/neutral_bean_gray.png"/>
-    <CroppedBitmap x:Key="NeutralPro" Source="/Resources/device/neutral_pro_gray.png"/>
-    <CroppedBitmap x:Key="FindMyGearBud" Source="/Resources/features/findmygear_color.png"/>
-    <CroppedBitmap x:Key="FindMyGearBean" Source="/Resources/features/findmygear_bean.png"/>
-    <CroppedBitmap x:Key="FindMyGearPro" Source="/Resources/features/findmygear_pro.png"/>
-    <CroppedBitmap x:Key="TouchBud" Source="/Resources/features/touch_color.png"/>
-    <CroppedBitmap x:Key="TouchBean" Source="/Resources/features/touch_bean.png"/>
-    <CroppedBitmap x:Key="TouchPro" Source="/Resources/features/touch_pro.png"/>
-    <CroppedBitmap x:Key="FitTest" Source="/Resources/features/earbud_fit_test.png"/>
     
 </ResourceDictionary>
