@@ -65,12 +65,12 @@ namespace GalaxyBudsClient.Cli.Ipc
                 else
                 {
                     Log.Information("IpcService: Service listening on the session bus");
-                    while (true)
-                    {
-                        await Task.Delay(int.MaxValue);
-                    }
                 }
-
+                
+                while (true)
+                {
+                    await Task.Delay(int.MaxValue);
+                }
                 return;
             }
             catch (Exception e)
