@@ -2,7 +2,7 @@ using System;
 using System.Globalization;
 using Avalonia.Data.Converters;
 
-namespace GalaxyBudsClient.Utils.Converters
+namespace GalaxyBudsClient.Interface.Converters
 {
     public class MonthValueConverter : IValueConverter
     {
