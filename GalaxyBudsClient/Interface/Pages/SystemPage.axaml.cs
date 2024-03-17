@@ -1,15 +1,17 @@
 using System.Threading;
 using System.Threading.Tasks;
+using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Media;
 using FluentAvalonia.UI.Controls;
-using FluentAvalonia.UI.Input;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.Interface;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using Symbol = FluentIcons.Common.Symbol;
 
 namespace GalaxyBudsClient.Interface.Pages;
 
@@ -74,7 +76,7 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
             
             if (code != 0)
             {
-                var info = code == -1 ? "No response from earbuds" : code.ToString();
+                var info = code == -1 ? Loc.Resolve("system_no_response") : code.ToString();
                 
                 _ = new MessageBox
                 {
@@ -102,11 +104,121 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
 
     private void OnTraceDumpDownloadClicked(object? sender, RoutedEventArgs e)
     {
-        
+        // TODO
     }
 
-    private void OnSelfTestClicked(object? sender, RoutedEventArgs e)
+    private async void OnSelfTestClicked(object? sender, RoutedEventArgs e)
     {
+        var closeButton = new TaskDialogButton(Loc.Resolve("cancel"), TaskDialogStandardResult.Close);
+        var cancelToken = new CancellationTokenSource();
+
+        var td = new TaskDialog
+        {
+            Header = Loc.Resolve("selftest_header"),
+            Buttons = [closeButton],
+            IconSource = new FluentIcons.Avalonia.Fluent.SymbolIconSource() { Symbol = Symbol.Beaker },
+            Content = new TextBlock()
+            {
+                TextWrapping = TextWrapping.Wrap,
+                Text = Loc.Resolve("system_waiting_for_device"),
+                MaxWidth = 600
+            },
+            XamlRoot = MainWindow2.Instance,
+            ShowProgressBar = true,
+        };
+            
+        try
+        {
+            td.SetProgressBarState(100, TaskDialogProgressState.Indeterminate);
+            _ = td.ShowAsync(true).ContinueWith(a =>
+            {
+                if (a.Result as TaskDialogStandardResult? == TaskDialogStandardResult.Close)
+                    cancelToken.Cancel();
+            }, cancelToken.Token);
+
+            SppMessageHandler.Instance.SelfTestResponse += OnSelfTestResponse;
+            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SELF_TEST);
+
+            // Wait for 10 seconds for the self test response
+            await Task.Delay(10000, cancelToken.Token);
+        }
+        catch (TaskCanceledException) {}
+      
+        SppMessageHandler.Instance.SelfTestResponse -= OnSelfTestResponse;
+
+        // If the self test response was not received, show an error message
+        if (td.IsVisible)
+            OnSelfTestResponse(null, null);
+        return;
+
+        TaskDialogCommand ResultWithSideAsTaskItem(string testKey, bool lPass, bool rPass)
+        {
+            return new TaskDialogCommand
+            {
+                Text = Loc.Resolve(testKey),
+                IconSource = new FluentIcons.Avalonia.Fluent.SymbolIconSource
+                {
+                    Symbol = !lPass || !rPass ? Symbol.Warning : Symbol.Checkmark
+                },
+                Description = $"{Loc.Resolve("left")}: {Loc.Resolve(lPass ? "selftest_pass" : "selftest_fail")}, " +
+                              $"{Loc.Resolve("right")}: {Loc.Resolve(rPass ? "selftest_pass" : "selftest_fail")}",
+                ClosesOnInvoked = false
+            };
+        }
         
+        TaskDialogCommand ResultAsTaskItem(string testKey, bool pass)
+        {
+            return new TaskDialogCommand
+            {
+                Text = Loc.Resolve(testKey),
+                IconSource = new FluentIcons.Avalonia.Fluent.SymbolIconSource
+                {
+                    Symbol = !pass ? Symbol.Warning : Symbol.Checkmark
+                },
+                Description = Loc.Resolve(pass ? "selftest_pass" : "selftest_fail"),
+                ClosesOnInvoked = false
+            };
+        }
+        
+        void OnSelfTestResponse(object? s, SelfTestParser? parser)
+        {
+            cancelToken.Cancel();
+            
+            var failed = parser is not { AllChecks: true };
+            td.SetProgressBarState(100, failed ? TaskDialogProgressState.Error : TaskDialogProgressState.Normal);
+            td.Buttons[0].Text = Loc.Resolve("window_close");
+
+            var header = Loc.Resolve(failed ? "selftest_fail_long" : "selftest_pass_long");
+            if (parser == null)
+            {
+                td.Header = header;
+                ((TextBlock)td.Content).Text = Loc.Resolve("system_no_response");
+            }
+            else
+            {
+                _ = new TaskDialog
+                {
+                    Header = header,
+                    Buttons = td.Buttons,
+                    IconSource = new FluentIcons.Avalonia.Fluent.SymbolIconSource { Symbol = Symbol.Beaker },
+                    XamlRoot = MainWindow2.Instance,
+                    Commands = new[]
+                    {
+                        ResultAsTaskItem("system_hwver", parser.HardwareVersion),
+                        ResultAsTaskItem("system_swver", parser.SoftwareVersion),
+                        ResultAsTaskItem("system_touchver", parser.TouchFirmwareVersion),
+                        ResultWithSideAsTaskItem("system_btaddr", parser.LeftBluetoothAddress, parser.RightBluetoothAddress),
+                        ResultWithSideAsTaskItem("system_proximity", parser.LeftProximity, parser.RightProximity),
+                        ResultWithSideAsTaskItem("system_thermo", parser.LeftThermistor, parser.RightThermistor),
+                        ResultWithSideAsTaskItem("system_adc_soc", parser.LeftAdcSOC, parser.RightAdcSOC),
+                        ResultWithSideAsTaskItem("system_adc_voltage", parser.LeftAdcVCell, parser.RightAdcVCell),
+                        ResultWithSideAsTaskItem("system_adc_current", parser.LeftAdcCurrent, parser.RightAdcCurrent),
+                        ResultWithSideAsTaskItem("system_hall", parser.LeftHall, parser.RightHall),
+                        ResultWithSideAsTaskItem("system_accel", parser.AllLeftAccelerator, parser.AllRightAccelerator)
+                    }
+                }.ShowAsync(true);
+                td.Hide();
+            }
+        }
     }
 }
