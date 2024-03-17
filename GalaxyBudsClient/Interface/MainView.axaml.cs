@@ -132,6 +132,7 @@ public partial class MainView : UserControl
     private readonly SubPageViewModelBase[] subPages =
     [
         new AmbientCustomizePageViewModel(),
+        new FirmwarePageViewModel(),
         new SystemInfoPageViewModel()
     ];
 

@@ -23,6 +23,7 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
         SppMessageHandler.Instance.SerialNumberResponse += OnDebugSerialNumberReceived;
         SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdateReceived;
         BluetoothImpl.Instance.Connected += (_, _) => RequestData();
+        Loc.LanguageUpdated += RequestData;
     }
 
     private void OnExtendedStatusUpdateReceived(object? sender, ExtendedStatusUpdateParser e)
@@ -68,6 +69,9 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
     
     public static async void RequestData()
     {
+        if(!BluetoothImpl.Instance.IsConnected)
+            return;
+        
         if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.BatteryType))
             await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.BATTERY_TYPE);
         if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.BuildInfo))

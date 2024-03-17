@@ -110,6 +110,10 @@
           <DependentUpon>SystemInfoPage.axaml</DependentUpon>
           <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Interface\Pages\FirmwarePage.axaml.cs">
+          <DependentUpon>FirmwarePage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
     <PropertyGroup>
