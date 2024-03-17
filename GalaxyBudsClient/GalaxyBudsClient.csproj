@@ -174,11 +174,4 @@
     <ItemGroup>
       <Folder Include="Cli\" />
     </ItemGroup>
-
-    <ItemGroup>
-      <UpToDateCheckInput Remove="Resources\fonts\NotoSans-Bold.ttf" />
-      <UpToDateCheckInput Remove="Resources\fonts\NotoSans-Italic.ttf" />
-      <UpToDateCheckInput Remove="Resources\fonts\NotoSans-Regular.ttf" />
-      <UpToDateCheckInput Remove="Resources\fonts\OFL.txt" />
-    </ItemGroup>
 </Project>
