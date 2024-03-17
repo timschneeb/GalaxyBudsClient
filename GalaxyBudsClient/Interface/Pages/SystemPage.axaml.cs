@@ -1,3 +1,4 @@
+using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Controls;
@@ -10,6 +11,7 @@ using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Utils.Extensions;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Symbol = FluentIcons.Common.Symbol;
 
@@ -124,12 +126,7 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
             Description = Loc.Resolve("pairingmode_done")
         }.ShowAsync();
     }
-
-    private void OnTraceDumpDownloadClicked(object? sender, RoutedEventArgs e)
-    {
-        // TODO
-    }
-
+    
     private async void OnSelfTestClicked(object? sender, RoutedEventArgs e)
     {
         var closeButton = new TaskDialogButton(Loc.Resolve("cancel"), TaskDialogStandardResult.Close);
@@ -239,5 +236,46 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
                 td.Hide();
             }
         }
+    }
+
+    private async void OnSpatialSensorTestClicked(object? sender, RoutedEventArgs e)
+    {
+        var textBlock = new TextBlock
+        {
+            Text = Loc.Resolve("system_waiting_for_device"),
+            TextWrapping = TextWrapping.Wrap,
+            MaxWidth = 600
+        };
+        
+        var cd = new ContentDialog
+        {
+            Title = Loc.Resolve("spatial_header"),
+            Content = textBlock,
+            CloseButtonText = Loc.Resolve("window_close")
+        };
+
+        using var sensorManager = new SpatialSensorManager();
+        sensorManager.NewQuaternionReceived += OnNewQuaternionReceived;
+        sensorManager.Attach();
+        
+        await cd.ShowAsync(MainWindow2.Instance);
+        
+        sensorManager.NewQuaternionReceived -= OnNewQuaternionReceived;
+        sensorManager.Detach();
+        return;
+        
+        void OnNewQuaternionReceived(object? s, Quaternion quat)
+        {
+            var rpy = quat.ToRollPitchYaw();
+            textBlock.Text = $"{Loc.Resolve("spatial_dump_quaternion")}\n" +
+                             $"X={quat.X}\nY={quat.Y}\nZ={quat.Z}\nW={quat.W}\n\n" + 
+                             $"{Loc.Resolve("spatial_dump_rpy")}\n" +
+                             $"Roll={rpy[0]}\nPitch={rpy[1]}\nYaw={rpy[2]}\n";
+        }
+    }
+    
+    private void OnTraceDumpDownloadClicked(object? sender, RoutedEventArgs e)
+    {
+        // TODO
     }
 }

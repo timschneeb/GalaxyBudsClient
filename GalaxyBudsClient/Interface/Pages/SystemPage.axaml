@@ -35,6 +35,16 @@
                                              Symbol="LinkMultiple"
                                              IsClickEnabled="True"
                                              Click="OnPairingModeClicked"/>
+                
+                <controls:SettingsSymbolItem Content="{DynamicResource system_spatial}"
+                                             Description="{DynamicResource system_spatial_desc}"
+                                             Symbol="CubeRotate"
+                                             IsClickEnabled="True"
+                                             Click="OnSpatialSensorTestClicked">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="SpatialSensor" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSymbolItem>
 
                 <controls:SettingsSymbolItem Content="{DynamicResource system_trace_core_dump}"
                                              Description="{DynamicResource system_trace_core_dump_desc}"
