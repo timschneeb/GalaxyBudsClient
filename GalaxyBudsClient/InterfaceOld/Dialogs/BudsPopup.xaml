@@ -23,10 +23,10 @@
         PointerPressed="Window_OnPointerPressed">
     
     <Border x:Name="OuterBorder"
-            BorderBrush="{DynamicResource WindowBorderBrush}"
+            BorderBrush="{DynamicResource SystemChromeLowColor}"
             BorderThickness="1"
-            Background="{DynamicResource WindowBackgroundBrush}"
-            CornerRadius="20">
+            Background="{DynamicResource SystemChromeLowColor}"
+            CornerRadius="{StaticResource OverlayCornerRadius}">
         <Border.Styles>
             <Style Selector="Border[Tag=showing]">
                 <Style.Animations>
