@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Avalonia.Controls;
 using GalaxyBudsClient.Cli.Ipc.Objects;
 using GalaxyBudsClient.Platform;
 using Serilog;
@@ -32,6 +33,9 @@ namespace GalaxyBudsClient.Cli.Ipc
         
         public static async Task Setup()
         {
+            if(Design.IsDesignMode)
+                return;
+            
             var server = new ServerConnectionOptions();
             // On Linux, we use the regular session bus. On other platforms, we host our own d-bus server.
             var useSessionBus = PlatformUtils.IsLinux;
