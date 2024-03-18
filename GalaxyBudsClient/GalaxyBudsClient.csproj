@@ -147,6 +147,7 @@
         <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.10" />
         <PackageReference Include="Avalonia.Svg.Skia" Version="11.1.0-beta1" />
         <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.1.0-beta1" />
+        <PackageReference Include="BouncyCastle.Cryptography" Version="2.3.0" />
         <PackageReference Include="CommandLineParser" Version="2.9.2-ci-210" />
         <PackageReference Include="Config.Net" Version="5.1.5" />
         <PackageReference Include="CS-Script.Core" Version="2.0.0" />
@@ -156,7 +157,6 @@
         <PackageReference Include="InputSimulatorCore" Version="1.0.5" />
         <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
         <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
-        <PackageReference Include="NetSparkle.New" Version="2.0.0-preview20210114001" />
         <PackageReference Include="ReactiveUI.Fody" Version="19.5.41" />
         <PackageReference Include="Sentry" Version="3.17.0" />
         <PackageReference Include="Sentry.Serilog" Version="3.17.0" />
@@ -168,7 +168,6 @@
         <PackageReference Include="SharpHook" Version="5.3.1" />
         <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
         <PackageReference Include="Tmds.DBus" Version="0.16.0" />
-        <PackageReference Include="Trinet.Core.IO.Ntfs" Version="4.1.1" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsWindows)'=='true'">
