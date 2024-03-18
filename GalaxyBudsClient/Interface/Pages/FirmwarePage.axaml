@@ -40,77 +40,81 @@
     </UserControl.Resources>
 
     <Panel Margin="{StaticResource AppPageMargin}">
-        <Grid RowDefinitions="Auto,*,Auto">
-            <ui:CommandBar DefaultLabelPosition="Right">
-                <ui:CommandBar.PrimaryCommands>
-                    <ui:CommandBarButton
-                        IsEnabled="{Binding #FwList.SelectedValue, Converter={x:Static ObjectConverters.IsNotNull}}"
-                        Command="{StaticResource InstallCommand}"
-                        CommandParameter="{Binding #FwList.SelectedItem}" />
-                    <ui:CommandBarButton Command="{StaticResource RefreshCommand}" />
-                    <ui:CommandBarSeparator />
-                    <ui:CommandBarButton Command="{StaticResource SideloadCommand}" />
-                </ui:CommandBar.PrimaryCommands>
-            </ui:CommandBar>
+        <Grid RowDefinitions="*,8,Auto">
+            <Border Classes="Card">
+                <Grid RowDefinitions="Auto,*">
+                    <ui:CommandBar DefaultLabelPosition="Right" Padding="5,0">
+                        <ui:CommandBar.PrimaryCommands>
+                            <ui:CommandBarButton
+                                IsEnabled="{Binding #FwList.SelectedValue, Converter={x:Static ObjectConverters.IsNotNull}}"
+                                Command="{StaticResource InstallCommand}"
+                                CommandParameter="{Binding #FwList.SelectedItem}" />
+                            <ui:CommandBarButton Command="{StaticResource RefreshCommand}" />
+                            <ui:CommandBarSeparator />
+                            <ui:CommandBarButton Command="{StaticResource SideloadCommand}" />
+                        </ui:CommandBar.PrimaryCommands>
+                    </ui:CommandBar>
 
-            <ListBox Grid.Row="1"
-                     ItemsSource="{Binding AvailableFirmware}"
-                     IsVisible="{Binding !NoResults}"
-                     Name="FwList">
-                <ListBox.ItemTemplate>
-                    <DataTemplate x:DataType="firmware:FirmwareRemoteBinary">
-                        <Border Background="Transparent">
-                            <Panel>
-                                <StackPanel Spacing="4" Margin="4 10">
-                                    <TextBlock Text="{Binding BuildName}"
-                                               Classes="BaseTextBlockStyle"
-                                               VerticalAlignment="Bottom"
-                                               HorizontalAlignment="Left"
-                                               TextTrimming="CharacterEllipsis" />
+                    <ListBox Grid.Row="1"
+                             ItemsSource="{Binding AvailableFirmware}"
+                             IsVisible="{Binding !NoResults}"
+                             Name="FwList">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate x:DataType="firmware:FirmwareRemoteBinary">
+                                <Border Background="Transparent">
+                                    <Panel>
+                                        <StackPanel Spacing="4" Margin="4 10">
+                                            <TextBlock Text="{Binding BuildName}"
+                                                       Classes="BaseTextBlockStyle"
+                                                       VerticalAlignment="Bottom"
+                                                       HorizontalAlignment="Left"
+                                                       TextTrimming="CharacterEllipsis" />
 
-                                    <TextBlock Classes="CaptionTextBlockStyle"
-                                               Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                               VerticalAlignment="Top"
-                                               TextWrapping="Wrap">
-                                        <TextBlock.Text>
-                                            <MultiBinding StringFormat="{}{1} {0}, rev{2} ({3})">
-                                                <Binding Path="Year"></Binding>
-                                                <Binding Path="Month"
-                                                         Converter="{x:Static converters:MonthValueConverter.Instance}" />
-                                                <Binding Path="Revision"></Binding>
-                                                <Binding Path="Model"></Binding>
-                                            </MultiBinding>
-                                        </TextBlock.Text>
-                                    </TextBlock>
-                                </StackPanel>
+                                            <TextBlock Classes="CaptionTextBlockStyle"
+                                                       Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                                       VerticalAlignment="Top"
+                                                       TextWrapping="Wrap">
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="{}{1} {0}, rev{2} ({3})">
+                                                        <Binding Path="Year"></Binding>
+                                                        <Binding Path="Month"
+                                                                 Converter="{x:Static converters:MonthValueConverter.Instance}" />
+                                                        <Binding Path="Revision"></Binding>
+                                                        <Binding Path="Model"></Binding>
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
+                                        </StackPanel>
 
-                                <StackPanel Orientation="Horizontal"
-                                            HorizontalAlignment="Right">
-                                    <ui:CommandBarButton HorizontalAlignment="Right"
-                                                         Command="{StaticResource InstallCommand}"
-                                                         CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"
-                                                         HotKey="{x:Null}" />
-                                </StackPanel>
-                            </Panel>
-                        </Border>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                                        <StackPanel Orientation="Horizontal"
+                                                    HorizontalAlignment="Right">
+                                            <ui:CommandBarButton HorizontalAlignment="Right"
+                                                                 Command="{StaticResource InstallCommand}"
+                                                                 CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"
+                                                                 HotKey="{x:Null}" />
+                                        </StackPanel>
+                                    </Panel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
 
-            <StackPanel Grid.Row="1"
-                        IsVisible="{Binding NoResults}"
-                        Spacing="4"
-                        Orientation="Vertical"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
-    
-                <ic:SymbolIcon Symbol="DocumentSplitHintOff" 
-                               FontSize="48"
-                               HorizontalAlignment="Center"
-                               Foreground="{DynamicResource TextFillColorDisabledBrush}" />
-                <TextBlock Text="{DynamicResource fw_select_no_results_short}"
-                           Foreground="{DynamicResource TextFillColorDisabledBrush}"/>
-            </StackPanel>
+                    <StackPanel Grid.Row="1"
+                                IsVisible="{Binding NoResults}"
+                                Spacing="4"
+                                Orientation="Vertical"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+
+                        <ic:SymbolIcon Symbol="DocumentSplitHintOff"
+                                       FontSize="48"
+                                       HorizontalAlignment="Center"
+                                       Foreground="{DynamicResource TextFillColorDisabledBrush}" />
+                        <TextBlock Text="{DynamicResource fw_select_no_results_short}"
+                                   Foreground="{DynamicResource TextFillColorDisabledBrush}" />
+                    </StackPanel>
+                </Grid>
+            </Border>
 
             <controls:SettingsGroup Grid.Row="2">
                 <controls:SettingsSwitchItem Content="{DynamicResource fw_select_downgrade}"
