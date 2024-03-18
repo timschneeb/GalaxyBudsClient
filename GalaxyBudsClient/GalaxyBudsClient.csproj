@@ -126,6 +126,9 @@
           <DependentUpon>HotkeyPage.axaml</DependentUpon>
           <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Interface\Dialogs\HotkeyEditorDialog.axaml.cs">
+          <DependentUpon>EditSegmentContentDialog.axaml</DependentUpon>
+        </Compile>
     </ItemGroup>
 
     <PropertyGroup>

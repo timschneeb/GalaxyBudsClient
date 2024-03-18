@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
-using GalaxyBudsClient.InterfaceOld.Dialogs;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform.Interfaces;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Interface.Dialogs;
 
 namespace GalaxyBudsClient.Platform
 {
@@ -108,8 +108,7 @@ namespace GalaxyBudsClient.Platform
                 {
                     Title = Loc.Resolve("hotkey_add_error"),
                     Description = $"{ex.Message} {Loc.Resolve("hotkey_add_error_context")} {ex.Hotkey.Keys.AsHotkeyString(ex.Hotkey.Modifier)}",
-                    Topmost = true
-                }.ShowDialog(MainWindow2.Instance);
+                }.ShowAsync();
 
                 return ex;
             }

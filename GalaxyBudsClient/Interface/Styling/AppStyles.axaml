@@ -116,6 +116,14 @@
         <Setter Property="Foreground" Value="{DynamicResource AccentFillColorDefaultBrush}" />
     </Style>
     
+    <!-- Cards -->
+    <Style Selector="Border.Card">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
+        <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorDefaultBrush}" />
+    </Style>
+    
     <!-- Used for GroupBoxes in TranslatorTools -->
     <Style Selector="HeaderedContentControl.GroupBox">
         <Setter Property="Template">
@@ -123,15 +131,15 @@
                 <ControlTemplate>
                     <Grid RowDefinitions="Auto,*" ColumnDefinitions="Auto,*">
                         <Border ZIndex="1" Padding="5,0,5,0" 
-                                Background="{DynamicResource SystemBaseLowColor}" Margin="8,0,0,0"
-                                CornerRadius="4">
+                                Background="{DynamicResource ControlFillColorSecondaryBrush}" Margin="8,0,0,0"
+                                CornerRadius="{StaticResource ControlCornerRadius}" Opacity="1">
                             <TextBlock FontWeight="Bold" Text="{TemplateBinding Header}" />
                         </Border>
                         <Border Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="0" Margin="0,10,0,0"
-                                BorderBrush="{DynamicResource SystemBaseLowColor}"
+                                BorderBrush="{DynamicResource CardBackgroundFillColorDefaultBrush}"
                                 Opacity="1"
                                 BorderThickness="2"
-                                CornerRadius="10">
+                                CornerRadius="{StaticResource ControlCornerRadius}">
                             <ContentPresenter Margin="15" Content="{TemplateBinding Content}" />
                         </Border>
                     </Grid>

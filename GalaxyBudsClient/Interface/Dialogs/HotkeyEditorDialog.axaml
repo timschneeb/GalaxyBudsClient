@@ -1,0 +1,66 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dialogs="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Dialogs"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             xmlns:hotkeys="clr-namespace:GalaxyBudsClient.Model.Hotkeys"
+             xmlns:model="clr-namespace:GalaxyBudsClient.Model"
+             mc:Ignorable="d"
+             Padding="0, 10"
+             x:CompileBindings="True"
+             x:DataType="dialogs:HotkeyEditorDialogViewModel"
+             x:Class="GalaxyBudsClient.Interface.Dialogs.HotkeyEditorDialog">
+
+    <Design.DataContext>
+        <dialogs:HotkeyEditorDialogViewModel />
+    </Design.DataContext>
+
+    <StackPanel MinWidth="400" Spacing="8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" MinWidth="125" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <HeaderedContentControl Grid.Column="0"
+                                    Classes="GroupBox"
+                                    Header="{DynamicResource hotkey_edit_modifier}">
+                <StackPanel>
+                    <CheckBox Content="Ctrl" IsChecked="{Binding ModifierCtrl}" />
+                    <CheckBox Content="Alt" IsChecked="{Binding ModifierAlt}" />
+                    <CheckBox Content="Shift" IsChecked="{Binding ModifierShift}" />
+                    <CheckBox Content="Win" IsChecked="{Binding ModifierWin}" />
+                </StackPanel>
+            </HeaderedContentControl>
+
+            <HeaderedContentControl Grid.Column="2"
+                                    Classes="GroupBox"
+                                    Header="{DynamicResource hotkey_edit_keys}">
+                <ComboBox ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type hotkeys:Keys}}}"
+                          SelectedValue="{Binding Key1}"
+                          HorizontalAlignment="Stretch" />
+            </HeaderedContentControl>
+        </Grid>
+
+        <HeaderedContentControl Classes="GroupBox"
+                                Header="{DynamicResource hotkey_edit_action}">
+            <ComboBox Name="Action"
+                      HorizontalAlignment="Stretch"
+                      DisplayMemberBinding="{Binding ., Converter={StaticResource EnumDescriptionConverter}}"
+                      ItemsSource="{Binding ActionSource}"
+                      SelectedValue="{Binding Action}" />
+        </HeaderedContentControl>
+
+        <Grid ColumnDefinitions="Auto,*">
+            <TextBlock Grid.Column="0"
+                       Padding="5"
+                       Text="{DynamicResource hotkey_edit_preview}" />
+            <TextBox Grid.Column="1"
+                     Padding="5"
+                     TextWrapping="Wrap"
+                     Text="{Binding HotkeyPreview}"
+                     IsReadOnly="True" />
+        </Grid>
+    </StackPanel>
+</UserControl>

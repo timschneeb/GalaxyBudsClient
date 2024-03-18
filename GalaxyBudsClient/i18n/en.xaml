@@ -121,6 +121,7 @@
     <sys:String x:Key="hotkey_empty">No hotkeys assigned</sys:String>
     <sys:String x:Key="hotkey_empty_desc">Create a new keyboard hotkey by clicking the button above</sys:String>
     <sys:String x:Key="hotkey_edit">Edit</sys:String>
+    <sys:String x:Key="hotkey_edit_long">Edit existing hotkey</sys:String>
     <sys:String x:Key="hotkey_delete">Delete</sys:String>
     <sys:String x:Key="hotkey_add_error">Failed to register/update hotkeys</sys:String>
     <sys:String x:Key="hotkey_add_error_context">Affected hotkey:</sys:String>
