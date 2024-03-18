@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Interface.Controls;
+using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
@@ -31,7 +32,7 @@ public partial class SettingsPage : BasePage<SettingsPageViewModel>
 
     private static async void OnDevSettingsClicked(object? sender, RoutedEventArgs e)
     {
-        await DialogService.ShowDeveloperOptions();
+        await new DeveloperOptionsDialog().ShowAsync(true);
     }
 
     protected override void OnLanguageUpdated()

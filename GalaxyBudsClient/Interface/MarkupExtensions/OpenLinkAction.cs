@@ -4,11 +4,12 @@ using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Xaml.Interactivity;
 using GalaxyBudsClient.Interface.Services;
+using Serilog;
 
 namespace GalaxyBudsClient.Interface.MarkupExtensions;
 
 
-public class OpenLinkAction : AvaloniaObject, IAction
+public sealed class OpenLinkAction : AvaloniaObject, IAction
 {
     public static readonly StyledProperty<string?> TargetUriProperty =
         AvaloniaProperty.Register<OpenLinkAction, string?>(nameof(TargetUri));
@@ -19,26 +20,26 @@ public class OpenLinkAction : AvaloniaObject, IAction
         set => SetValue(TargetUriProperty, value);
     }
 
-    public virtual object Execute(object? sender, object? parameter)
+    public object Execute(object? sender, object? parameter)
     {
         if (TargetUri is null)
         {
             return false;
         }
         
-        _ = OpenLinkAsync(TargetUri);
+        OpenLink(TargetUri);
         return true;
     }
     
-    private static async Task OpenLinkAsync(string uri)
+    private static void OpenLink(string uri)
     {
         try
         {
             Process.Start(new ProcessStartInfo(uri) { UseShellExecute = true, Verb = "open" });
         }
-        catch
+        catch(Exception ex)
         {
-            await DialogService.ShowUnableToOpenLinkDialog(new Uri(uri));
+            Log.Error(ex, "Cannot open link {Uri}", uri);
         }
     }
 }
