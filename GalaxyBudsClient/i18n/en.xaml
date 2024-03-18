@@ -116,6 +116,7 @@
     
     <!--Hotkey page-->
     <sys:String x:Key="hotkey_header">Keyboard hotkeys</sys:String>
+    <sys:String x:Key="hotkey_add_short">New</sys:String>
     <sys:String x:Key="hotkey_add">Assign new hotkey</sys:String>
     <sys:String x:Key="hotkey_empty">No hotkeys assigned</sys:String>
     <sys:String x:Key="hotkey_empty_desc">Create a new keyboard hotkey by clicking the button above</sys:String>
@@ -459,8 +460,6 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Hear your own voice more clearly while on the phone</sys:String>
     <sys:String x:Key="adv_passthrough">Relieve pressure with ambient sound</sys:String>
     <sys:String x:Key="adv_passthrough_desc">This can prevent a feeling of stuffiness or compression when you're not using active noise canceling</sys:String>
-    <sys:String x:Key="adv_gaming_mode">Gaming mode</sys:String>
-    <sys:String x:Key="adv_gaming_mode_desc">Minimize latency and adjust audio synchronization (Samsung only)</sys:String>
     <sys:String x:Key="adv_hotkey">Keyboard hotkeys</sys:String>
     <sys:String x:Key="adv_hotkey_desc">Define custom keyboard hotkeys to remote-control your earbuds</sys:String>
     <sys:String x:Key="adv_bixby_remap">Remap Bixby wakeup</sys:String>
