@@ -20,7 +20,7 @@ using Image = Avalonia.Controls.Image;
 using Label = Avalonia.Controls.Label;
 using Window = Avalonia.Controls.Window;
 
-namespace GalaxyBudsClient.InterfaceOld.Dialogs
+namespace GalaxyBudsClient.Interface.Dialogs
 {
     // TODO: redesign
     public sealed class BudsPopup : Window
@@ -90,7 +90,7 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
             
             var isLeftOnline = bl > 0;
             var isRightOnline = br > 0;
-            var isCaseOnline = bc > 0 && bc <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(Features.CaseBattery);
+            var isCaseOnline = bc is > 0 and <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(Features.CaseBattery);
             
             _batteryL.IsVisible = isLeftOnline;
             _batteryR.IsVisible = isRightOnline;
@@ -110,7 +110,7 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
             /* Close window instead */
             _timer.Stop();
             _outerBorder.Tag = "hiding";
-            Task.Delay(400).ContinueWith((_) => { Dispatcher.UIThread.InvokeAsync(Close); });
+            Task.Delay(400).ContinueWith(_ => { Dispatcher.UIThread.InvokeAsync(Close); });
         }
 
         public override void Show()
@@ -157,17 +157,17 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
             {
                 PopupPlacement.TopLeft => new PixelPoint(workArea.X + padding, workArea.Y + padding),
                 PopupPlacement.TopCenter => new PixelPoint(
-                    (int)((workArea.Width / 2f) - (this.Width * scaling / 2) + workArea.X), workArea.Y + padding),
+                    (int)((workArea.Width / 2f) - (Width * scaling / 2) + workArea.X), workArea.Y + padding),
                 PopupPlacement.TopRight => new PixelPoint(
-                    (int)(workArea.Width - this.Width * scaling + workArea.X - padding), workArea.Y + padding),
+                    (int)(workArea.Width - Width * scaling + workArea.X - padding), workArea.Y + padding),
                 PopupPlacement.BottomLeft => new PixelPoint(workArea.X + padding,
-                    (int)(workArea.Height - this.Height * scaling + workArea.Y - padding)),
+                    (int)(workArea.Height - Height * scaling + workArea.Y - padding)),
                 PopupPlacement.BottomCenter => new PixelPoint(
-                    (int)((workArea.Width / 2f) - (this.Width * scaling / 2) + workArea.X),
-                    (int)(workArea.Height - this.Height * scaling + workArea.Y - padding)),
+                    (int)((workArea.Width / 2f) - (Width * scaling / 2) + workArea.X),
+                    (int)(workArea.Height - Height * scaling + workArea.Y - padding)),
                 PopupPlacement.BottomRight => new PixelPoint(
-                    (int)((workArea.Width - this.Width * scaling) + workArea.X - padding),
-                    (int)(workArea.Height - this.Height * scaling + workArea.Y - padding)),
+                    (int)((workArea.Width - Width * scaling) + workArea.X - padding),
+                    (int)(workArea.Height - Height * scaling + workArea.Y - padding)),
                 _ => Position
             };
         }
