@@ -16,26 +16,26 @@
 
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
-            
+
             <controls:SettingsGroup>
                 <controls:SettingsSymbolItem Content="{DynamicResource system_selftest}"
                                              Description="{DynamicResource system_selftest_desc}"
                                              Symbol="Beaker"
                                              IsClickEnabled="True"
-                                             Click="OnSelfTestClicked"/>
-                    
+                                             Click="OnSelfTestClicked" />
+
                 <controls:SettingsSymbolItem Content="{DynamicResource system_factory_reset}"
                                              Description="{DynamicResource system_factory_reset_desc}"
                                              Symbol="ArrowReset"
                                              IsClickEnabled="True"
-                                             Click="OnFactoryResetClicked"/>
+                                             Click="OnFactoryResetClicked" />
 
                 <controls:SettingsSymbolItem Content="{DynamicResource system_pairing_mode}"
                                              Description="{DynamicResource system_pairing_mode_desc}"
                                              Symbol="LinkMultiple"
                                              IsClickEnabled="True"
-                                             Click="OnPairingModeClicked"/>
-                
+                                             Click="OnPairingModeClicked" />
+
                 <controls:SettingsSymbolItem Content="{DynamicResource system_spatial}"
                                              Description="{DynamicResource system_spatial_desc}"
                                              Symbol="CubeRotate"
@@ -56,7 +56,10 @@
                     </Interaction.Behaviors>
                 </controls:SettingsSymbolItem>
 
-                <controls:SettingsSymbolItem Name="Firmware" 
+            </controls:SettingsGroup>
+            <controls:SettingsGroup>
+
+                <controls:SettingsSymbolItem Name="Firmware"
                                              Content="{DynamicResource system_flasher}"
                                              Description="{DynamicResource system_flasher_desc}"
                                              Symbol="ArrowDownload"
@@ -67,7 +70,7 @@
                     </Interaction.Behaviors>
                 </controls:SettingsSymbolItem>
 
-                <controls:SettingsSymbolItem Name="SystemInfo" 
+                <controls:SettingsSymbolItem Name="SystemInfo"
                                              Content="{DynamicResource system_info}"
                                              Description="{DynamicResource system_info_desc}"
                                              Symbol="Info"
