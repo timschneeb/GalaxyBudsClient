@@ -1,0 +1,58 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
+             xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
+             xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+             xmlns:constants="clr-namespace:GalaxyBudsClient.Model.Constants"
+             xmlns:items="clr-namespace:GalaxyBudsClient.InterfaceOld.Items"
+             xmlns:model="clr-namespace:GalaxyBudsClient.Model"
+             mc:Ignorable="d" d:DesignWidth="800"
+             x:Class="GalaxyBudsClient.Interface.Pages.BixbyRemapPage"
+             x:DataType="pages:BixbyRemapPageViewModel"
+             x:CompileBindings="True">
+
+    <Design.DataContext>
+        <pages:BixbyRemapPageViewModel />
+    </Design.DataContext>
+
+    <ScrollViewer>
+        <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
+            
+            <controls:SettingsGroup>
+                <controls:SettingsSwitchItem Content="{DynamicResource bixby_remap_enable}"
+                                             Description="{DynamicResource bixby_remap_enable_desc}"
+                                             IsChecked="{Binding IsBixbyWakeUpEnabled}"
+                                             Symbol="MicPulse"
+                                             IsClickEnabled="True" />
+
+                <controls:SettingsComboBoxItem
+                    Content="{DynamicResource bixby_remap_lang}"
+                    Description="{DynamicResource bixby_remap_lang_desc}"
+                    Symbol="LocalLanguage"
+                    IsEnabled="{Binding IsBixbyWakeUpEnabled}"
+                    ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:BixbyLanguages}}}"
+                    SelectedValue="{Binding BixbyLanguage}"/>
+
+                <controls:SettingsComboBoxItem
+                    Content="{DynamicResource bixby_remap_action}"
+                    Description="{DynamicResource bixby_remap_action_desc}"
+                    Symbol="Flash"
+                    IsEnabled="{Binding IsBixbyWakeUpEnabled}"
+                    ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type model:Event}}}"
+                    SelectedValue="{Binding BixbyRemapEvent, Source={x:Static utils:Settings.Instance}}" />
+                
+            </controls:SettingsGroup>
+            
+            <ui:InfoBar Title="{DynamicResource hint}"
+                        IsOpen="True"
+                        IsClosable="False"
+                        Severity="Informational"
+                        Message="{DynamicResource bixby_remap_note}" />
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

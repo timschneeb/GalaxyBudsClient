@@ -80,7 +80,7 @@ namespace GalaxyBudsClient.Model
         
         bool FirmwareWarningAccepted { set; get; }
         
-        EventDispatcher.Event BixbyRemapEvent { set; get; }
+        Event BixbyRemapEvent { set; get; }
         
         bool DisableCrashReporting { set; get; }
     }

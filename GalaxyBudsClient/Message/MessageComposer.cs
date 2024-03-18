@@ -63,7 +63,7 @@ namespace GalaxyBudsClient.Message
                 payload[0] = !enable ? (byte) 0 : Convert.ToByte(preset + 1);
                 await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.EQUALIZER, payload);
             }
-            EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
+            EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
         }
         
 
@@ -103,7 +103,7 @@ namespace GalaxyBudsClient.Message
             public static async Task SetMode(NoiseControlMode mode)
             {
                 await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.NOISE_CONTROLS, (byte)mode);
-                EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
+                EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
             }
 
             public static async Task SetTouchNoiseControls(bool anc, bool ambient, bool off)

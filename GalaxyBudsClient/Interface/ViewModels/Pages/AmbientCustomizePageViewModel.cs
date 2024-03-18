@@ -94,12 +94,12 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
         PropertyChanged += OnPropertyChanged;
     }
 
-    protected override void OnEventReceived(EventDispatcher.Event type, object? parameter)
+    protected override void OnEventReceived(Event type, object? parameter)
     {
         switch (type)
         {
-            case EventDispatcher.Event.AmbientVolumeUp:
-                EventDispatcher.Instance.Dispatch(EventDispatcher.Event.SetNoiseControlState, NoiseControlMode.AmbientSound);
+            case Event.AmbientVolumeUp:
+                EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, NoiseControlMode.AmbientSound);
      
                 if (IsAmbientCustomizationEnabled)
                 {
@@ -113,18 +113,18 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
                     if (AmbientSoundVolume < MaximumAmbientSoundVolume)
                         AmbientSoundVolume += 1;
                 }
-                EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
+                EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
                 break;
-            case EventDispatcher.Event.AmbientVolumeDown:
+            case Event.AmbientVolumeDown:
                 if (IsAmbientCustomizationEnabled)
                 {
                     if (AmbientSoundVolumeLeft <= 0 && AmbientSoundVolumeRight <= 0)
                     {
-                        EventDispatcher.Instance.Dispatch(EventDispatcher.Event.SetNoiseControlState, NoiseControlMode.Off);
+                        EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, NoiseControlMode.Off);
                     }
                     else
                     {
-                        EventDispatcher.Instance.Dispatch(EventDispatcher.Event.SetNoiseControlState, NoiseControlMode.AmbientSound);
+                        EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, NoiseControlMode.AmbientSound);
                         if (AmbientSoundVolumeLeft > 0)
                             AmbientSoundVolumeLeft -= 1;
                         if (AmbientSoundVolumeRight > 0)
@@ -135,15 +135,15 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
                 {
                     if (AmbientSoundVolume <= 0)
                     {
-                        EventDispatcher.Instance.Dispatch(EventDispatcher.Event.SetNoiseControlState, NoiseControlMode.Off);
+                        EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, NoiseControlMode.Off);
                     }
                     else
                     {
-                        EventDispatcher.Instance.Dispatch(EventDispatcher.Event.SetNoiseControlState, NoiseControlMode.AmbientSound);
+                        EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, NoiseControlMode.AmbientSound);
                         AmbientSoundVolume -= 1;
                     }
                 }
-                EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
+                EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
                 break;
         }
     }

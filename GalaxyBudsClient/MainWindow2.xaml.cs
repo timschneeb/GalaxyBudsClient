@@ -100,26 +100,26 @@ namespace GalaxyBudsClient
             FlowDirection = Loc.ResolveFlowDirection();
         }
 
-        private async void OnEventReceived(EventDispatcher.Event e, object? arg)
+        private async void OnEventReceived(Event e, object? arg)
         {
             switch (e)
             {
-                case EventDispatcher.Event.PairingMode:
+                case Event.PairingMode:
                     await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.UNK_PAIRING_MODE);
                     break;
-                case EventDispatcher.Event.ToggleManagerVisibility:
+                case Event.ToggleManagerVisibility:
                     if (IsVisible)
                         BringToTray();
                     else
                         BringToFront();
                     break;
-                case EventDispatcher.Event.Connect:
+                case Event.Connect:
                     if (!BluetoothImpl.Instance.IsConnected)
                     {
                         await BluetoothImpl.Instance.ConnectAsync();
                     }
                     break;
-                case EventDispatcher.Event.ShowBatteryPopup:
+                case Event.ShowBatteryPopup:
                     ShowPopup(noDebounce: true);
                     break;
             }
@@ -399,7 +399,7 @@ namespace GalaxyBudsClient
             switch (action.Action)
             {
                 case CustomAction.Actions.Event:
-                    EventDispatcher.Instance.Dispatch(Enum.Parse<EventDispatcher.Event>(action.Parameter), true);
+                    EventDispatcher.Instance.Dispatch(Enum.Parse<Event>(action.Parameter), true);
                     break;
                 case CustomAction.Actions.RunExternalProgram:
                     try

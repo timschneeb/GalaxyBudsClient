@@ -53,7 +53,7 @@ namespace GalaxyBudsClient.Utils.Interface
             BluetoothImpl.Instance.Disconnected += (sender, args) => _ = RebuildAsync();
             EventDispatcher.Instance.EventReceived += (ev, _) =>
             {
-                if (ev == EventDispatcher.Event.UpdateTrayIcon)
+                if (ev == Event.UpdateTrayIcon)
                 {
                     Dispatcher.UIThread.Post(async () =>
                     {
@@ -86,31 +86,31 @@ namespace GalaxyBudsClient.Utils.Interface
                         if (ncVm.IsAmbientSoundEnabled)
                         {
                             /* Ambient is on, use ANC toggle */
-                            EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AncToggle);
+                            EventDispatcher.Instance.Dispatch(Event.AncToggle);
                         }
                         else if (ncVm.IsAncEnabled)
                         {
                             /* ANC is on, use ANC toggle to disable itself */
-                            EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AncToggle);
+                            EventDispatcher.Instance.Dispatch(Event.AncToggle);
                         }
                         else
                         {
                             /* Nothing is on, use ambient toggle */
-                            EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientToggle);
+                            EventDispatcher.Instance.Dispatch(Event.AmbientToggle);
                         }
                     }
                     break;
                 case ItemType.LockTouchpad:
-                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.LockTouchpadToggle);
+                    EventDispatcher.Instance.Dispatch(Event.LockTouchpadToggle);
                     break;
                 case ItemType.ToggleAnc:
-                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AncToggle);
+                    EventDispatcher.Instance.Dispatch(Event.AncToggle);
                     break;
                 case ItemType.ToggleEqualizer:
-                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.EqualizerToggle);
+                    EventDispatcher.Instance.Dispatch(Event.EqualizerToggle);
                     break;
                 case ItemType.ToggleAmbient:
-                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.AmbientToggle);
+                    EventDispatcher.Instance.Dispatch(Event.AmbientToggle);
                     break;
                 case ItemType.Connect:
                     if (!BluetoothImpl.Instance.IsConnectedLegacy && BluetoothImpl.Instance.RegisteredDeviceValid)

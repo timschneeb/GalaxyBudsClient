@@ -26,8 +26,8 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
                 get
                 {
                     var actions = new List<ActionViewHolder>();
-                    Enum.GetValues(typeof(EventDispatcher.Event))
-                        .Cast<EventDispatcher.Event>()
+                    Enum.GetValues(typeof(Event))
+                        .Cast<Event>()
                         .Where(EventDispatcher.CheckDeviceSupport)
                         .ToList()
                         .ForEach(x => actions.Add(new ActionViewHolder(x)));
@@ -73,7 +73,7 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
             _key1.SelectedItem = Keys.None;
             _action.SelectedItem = _action.Items
                 .Cast<ActionViewHolder>()
-                .FirstOrDefault(x => x.Value == EventDispatcher.Event.None);
+                .FirstOrDefault(x => x.Value == Event.None);
 
             if (Hotkey != null)
             {
@@ -115,7 +115,7 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
             }
 
             if ((_action.SelectedItem as ActionViewHolder) == null ||
-                (_action.SelectedItem as ActionViewHolder)?.Value == EventDispatcher.Event.None)
+                (_action.SelectedItem as ActionViewHolder)?.Value == Event.None)
             {
                 await new MessageBox()
                 {
@@ -161,7 +161,7 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
                 return;
             }
             if ((_action.SelectedItem as ActionViewHolder) == null ||
-                (_action.SelectedItem as ActionViewHolder)?.Value == EventDispatcher.Event.None)
+                (_action.SelectedItem as ActionViewHolder)?.Value == Event.None)
             {
                 _keyLabel.Text = Loc.Resolve("hotkey_edit_invalid_action");
                 return;

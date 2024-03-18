@@ -21,7 +21,7 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
         SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
         SppMessageHandler.Instance.AmbientEnabledUpdateResponse += (_, enabled) => IsAmbientSoundEnabled = enabled;
         SppMessageHandler.Instance.NoiseControlUpdateResponse += (_, mode)
-            => EventDispatcher.Instance.Dispatch(EventDispatcher.Event.SetNoiseControlState, mode);
+            => EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, mode);
         
         PropertyChanged += OnPropertyChanged;
     }
@@ -70,7 +70,7 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
             if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc))
                 await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_NOISE_REDUCTION, IsAncEnabled);
         }
-        EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
+        EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
     }
 
     private async void OnPropertyChanged(object? sender, PropertyChangedEventArgs args)
@@ -106,28 +106,28 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
         }
     }
     
-    protected override void OnEventReceived(EventDispatcher.Event e, object? arg)
+    protected override void OnEventReceived(Event e, object? arg)
     {
         Avalonia.Threading.Dispatcher.UIThread.Post(() =>
         {
             switch (e)
             {
-                case EventDispatcher.Event.ToggleConversationDetect:
+                case Event.ToggleConversationDetect:
                     IsVoiceDetectEnabled = !IsVoiceDetectEnabled;
                     break;
-                case EventDispatcher.Event.AncToggle:
+                case Event.AncToggle:
                     IsAncEnabled = !IsAncEnabled;
                     break;
-                case EventDispatcher.Event.SwitchAncSensitivity:
+                case Event.SwitchAncSensitivity:
                     IsAncLevelHigh = !IsAncLevelHigh;
                     break;
-                case EventDispatcher.Event.SwitchAncOne:
+                case Event.SwitchAncOne:
                     IsAncWithOneEarbudAllowed = !IsAncWithOneEarbudAllowed;
                     break;
-                case EventDispatcher.Event.AmbientToggle:
+                case Event.AmbientToggle:
                     IsAmbientSoundEnabled = !IsAmbientSoundEnabled;
                     break;
-                case EventDispatcher.Event.SetNoiseControlState:
+                case Event.SetNoiseControlState:
                     switch (arg)
                     {
                         case NoiseControlMode.Off:

@@ -121,7 +121,10 @@ public partial class MainView : UserControl
     private readonly SubPageViewModelBase[] subPages =
     [
         new AmbientCustomizePageViewModel(),
+        new BixbyRemapPageViewModel(),
         new FirmwarePageViewModel(),
+        // TODO new GearFitPageViewModel(),
+        // TODO new HotkeyPageViewModel(),
         new SystemInfoPageViewModel()
     ];
 

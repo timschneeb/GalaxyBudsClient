@@ -20,7 +20,7 @@ public abstract class PageViewModelBase : ViewModelBase
         EventDispatcher.Instance.EventReceived += OnEventReceived;
     }
 
-    protected virtual void OnEventReceived(EventDispatcher.Event type, object? parameter){}
+    protected virtual void OnEventReceived(Event type, object? parameter){}
 
     public abstract Control CreateView(); 
     public abstract string TitleKey { get; }
