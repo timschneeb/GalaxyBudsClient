@@ -28,7 +28,7 @@
             </MenuItem>
         </Menu>
 
-        <Grid Margin="3" ColumnDefinitions="Auto,5,*">
+        <Grid Margin="3, 0, 3, 3" ColumnDefinitions="Auto,5,*">
 
             <Grid Grid.Column="0" RowDefinitions="*,5,*">
 
