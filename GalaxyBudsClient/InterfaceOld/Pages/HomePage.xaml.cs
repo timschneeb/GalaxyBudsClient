@@ -419,41 +419,6 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 			await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_NOISE_REDUCTION, _ancSwitch.IsChecked);
 		}
 
-		private void FindMyBuds_OnPointerPressed(object? sender, PointerPressedEventArgs e)
-		{
-			MainWindow.Instance.Pager.SwitchPage(Pages.FindMyGear);
-		}
-
-		private void Ambient_OnPointerPressed(object? sender, PointerPressedEventArgs e)
-		{
-			MainWindow.Instance.Pager.SwitchPage(Pages.AmbientSound);
-		}
-
-		private void Touch_OnPointerPressed(object? sender, PointerPressedEventArgs e)
-		{
-			MainWindow.Instance.Pager.SwitchPage(Pages.Touch);
-		}
-
-		private void Equalizer_OnPointerPressed(object? sender, PointerPressedEventArgs e)
-		{
-			MainWindow.Instance.Pager.SwitchPage(Pages.Equalizer);
-		}
-
-		private void Advanced_OnPointerPressed(object? sender, PointerPressedEventArgs e)
-		{
-			MainWindow.Instance.Pager.SwitchPage(Pages.Advanced);
-		}
-
-		private void System_OnPointerPressed(object? sender, PointerPressedEventArgs e)
-		{
-			MainWindow.Instance.Pager.SwitchPage(Pages.System);
-		}
-        
-        private void NoiseBorder_OnPointerPressed(object? sender, PointerPressedEventArgs e)
-        {
-            MainWindow.Instance.Pager.SwitchPage(Pages.NoiseControlPro);
-        }
-
         private void RequestTempUnitChange_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
             if (_lastGetAllDataParser == null)

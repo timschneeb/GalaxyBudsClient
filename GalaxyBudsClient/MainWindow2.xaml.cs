@@ -18,6 +18,7 @@ using FluentAvalonia.UI.Media;
 using FluentAvalonia.UI.Windowing;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Interface;
+using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.InterfaceOld.Dialogs;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;

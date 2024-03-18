@@ -17,7 +17,6 @@
                 <ResourceInclude Source="/i18n/en.xaml" />
                 <!-- Palettes -->
                 <!-- TODO cleanup old palettes -->
-                <ResourceInclude Source="/InterfaceOld/Styles/Base.xaml" />
                 <ResourceInclude Source="/InterfaceOld/Styles/Brushes.xaml" />
                 <ResourceInclude Source="/Interface/Styling/Resources.axaml" />
             </ResourceDictionary.MergedDictionaries>
