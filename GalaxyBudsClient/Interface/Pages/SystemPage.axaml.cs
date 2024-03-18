@@ -20,8 +20,6 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
     public SystemPage()
     {
         InitializeComponent();
-        
-        
         AddHandler(SettingsExpanderItem.ClickEvent, OnSettingsItemClicked);
     }
 

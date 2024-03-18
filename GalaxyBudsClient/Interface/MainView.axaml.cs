@@ -110,21 +110,10 @@ public partial class MainView : UserControl
     private readonly MainPageViewModelBase[] mainPages = [
         new HomePageViewModel(),
         new NoiseControlPageViewModel(),
-        /*{
-            //NavHeader = "Find My Buds",
-            //IconKey = Symbol.LocationLive
-        },
-        new FAControlsOverviewPageViewModel()
-        {
-            //NavHeader = "Touchpad",
-            //IconKey = Symbol.HandDraw
-        },*/
-        new EqualizerPageViewModel(),/*
-        new FAControlsOverviewPageViewModel()
-        {
-            //NavHeader = "Advanced settings",
-            //IconKey = Symbol.WrenchScrewdriver
-        },*/
+        new EqualizerPageViewModel(),
+        // TODO new FindMyBudsPageViewModel(),
+        // TODO new TouchpadPageViewModel(),
+        new AdvancedPageViewModel(),
         new SystemPageViewModel(),
         new SettingsPageViewModel()
     ];

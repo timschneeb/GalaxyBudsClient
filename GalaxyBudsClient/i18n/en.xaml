@@ -384,6 +384,7 @@ You might need to manually reconnect your earbuds.</sys:String>
     
     <!-- Fit test-->
     <sys:String x:Key="gft_warning">Please wear both earbuds.</sys:String>
+    <sys:String x:Key="gft_desc">Check whether your earbuds are seated correctly</sys:String>
     <sys:String x:Key="gft_bad">Bad fit</sys:String>
     <sys:String x:Key="gft_good">Good fit</sys:String>
     <sys:String x:Key="gft_fail">Test failed</sys:String>
@@ -451,7 +452,7 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} or later</sys:String>
     <sys:String x:Key="adv_seamless">Seamless earbud connection</sys:String>
     <sys:String x:Key="adv_seamless_desc">Switch quickly to nearby devices without disconnecting your earbuds or turning on pairing mode</sys:String>
-    <sys:String x:Key="adv_resume_playback">Resume/start playback if Buds are worn</sys:String>
+    <sys:String x:Key="adv_resume_playback">Resume playback if the earbuds are worn</sys:String>
     <sys:String x:Key="adv_resume_playback_desc">Sends a global play/pause state change event when at least one of the proximity sensors is covered (Desktop only)</sys:String>
     <sys:String x:Key="adv_sidetone">Use ambient sound during calls</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Hear your own voice more clearly while on the phone</sys:String>
