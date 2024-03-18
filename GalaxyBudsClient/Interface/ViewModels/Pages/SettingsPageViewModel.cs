@@ -20,6 +20,8 @@ public class SettingsPageViewModel : MainPageViewModelBase
         }
     }
     
+    // TODO add device unregister
+    
     public string CurrentVersion => Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? "Unknown";
     
     public override string TitleKey => "settings_header";
