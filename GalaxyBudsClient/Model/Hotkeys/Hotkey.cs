@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Utils.Extensions;
 
@@ -16,8 +17,7 @@ namespace GalaxyBudsClient.Model.Hotkeys
         {
             return Keys.AsHotkeyString(Modifier) + ": " + Action.GetDescription();
         }
-        
-        /* Used for list separator workaround */
-        internal bool IsLastInList { set; get; }
+
+        public static Hotkey Empty => new(ArraySegment<ModifierKeys>.Empty, ArraySegment<Keys>.Empty, Event.None);
     }
 }

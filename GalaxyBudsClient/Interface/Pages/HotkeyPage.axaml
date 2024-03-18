@@ -28,7 +28,7 @@
         <input:XamlUICommand x:Key="EditCommand"
                              Label="{ext:Translate hotkey_edit}"
                              IconSource="{StaticResource EditIcon}"
-                             Description="{ext:Translate hotkey_edit}"
+                             Description="{ext:Translate hotkey_edit_long}"
                              Command="{Binding DoEditCommand}" />
 
         <input:StandardUICommand x:Key="DeleteCommand" Kind="Delete"
@@ -37,9 +37,10 @@
                              Command="{Binding DoDeleteCommand}" />
     </UserControl.Resources>
 
-    <Panel Margin="{StaticResource AppPageMargin}">
+    <Border Margin="{StaticResource AppPageMargin}"
+            Classes="Card">
         <Grid RowDefinitions="Auto,*">
-            <ui:CommandBar DefaultLabelPosition="Right">
+            <ui:CommandBar DefaultLabelPosition="Right" Padding="5,0">
                 <ui:CommandBar.PrimaryCommands>
                     <ui:CommandBarButton
                         Command="{StaticResource NewCommand}" />
@@ -108,5 +109,5 @@
                            Foreground="{DynamicResource TextFillColorDisabledBrush}"/>
             </StackPanel>
         </Grid>
-    </Panel>
+    </Border>
 </UserControl>

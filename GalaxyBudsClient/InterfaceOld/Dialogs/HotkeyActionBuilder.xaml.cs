@@ -20,7 +20,6 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
     {
         private class ViewModel
         {
-            public IEnumerable KeySource => UserKeys.KeyList;
             public IEnumerable ActionSource
             {
                 get
@@ -38,7 +37,7 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
         
         private readonly ViewModel _vm = new();
 
-        private readonly TextBlock _keyLabel;
+        private readonly TextBox _keyLabel;
         private readonly ComboBox _key1;
         private readonly ComboBox _action;
         private readonly CheckBox _modCtrl;
@@ -62,7 +61,7 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
 
             Hotkey = hotkey;
             
-            _keyLabel = this.GetControl<TextBlock>("KeyString");
+            _keyLabel = this.GetControl<TextBox>("KeyString");
             _key1 = this.GetControl<ComboBox>("Key1");
             _action = this.GetControl<ComboBox>("Action");
             _modCtrl = this.GetControl<CheckBox>("ModCtrl");

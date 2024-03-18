@@ -1,7 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 using Avalonia.Controls;
+using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Pages;
+using GalaxyBudsClient.Interface.ViewModels.Dialogs;
 using GalaxyBudsClient.InterfaceOld.Dialogs;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform;
@@ -25,19 +27,17 @@ public class HotkeyPageViewModel : SubPageViewModelBase
     
     public async void DoNewCommand()
     {
-        var builder = new HotkeyActionBuilder();
-        await builder.ShowDialog(MainWindow2.Instance);
-
-        if (builder is { Result: true, Hotkey: not null })
-        {
-            Hotkeys.Add(builder.Hotkey);
-            SaveChanges();
+        var result = await HotkeyEditorDialog.OpenEditDialogAsync(null);
+        if (result is null) 
+            return;
+        
+        Hotkeys.Add(result);
+        SaveChanges();
             
-            // Implicitly enable tray icon if a global hotkey is added
-            if (PlatformUtils.SupportsTrayIcon)
-            {
-                Settings.Instance.MinimizeToTray = true;
-            }
+        // Implicitly enable tray icon if a global hotkey is added
+        if (PlatformUtils.SupportsTrayIcon)
+        {
+            Settings.Instance.MinimizeToTray = true;
         }
     }
     
@@ -52,15 +52,13 @@ public class HotkeyPageViewModel : SubPageViewModelBase
             Log.Debug("HotkeyPage.Edit: Cannot find hotkey in configuration");
             return;
         }
-                          
-        var builder = new HotkeyActionBuilder(hotkey);
-        await builder.ShowDialog(MainWindow2.Instance);
 
-        if (builder is { Result: true, Hotkey: not null })
-        {
-            Hotkeys[index] = builder.Hotkey;
-            SaveChanges();
-        }
+        var result = await HotkeyEditorDialog.OpenEditDialogAsync(hotkey);
+        if (result is null)
+            return;
+        
+        Hotkeys[index] = result;
+        SaveChanges();
     }
     
     public void DoDeleteCommand(object? param)
@@ -77,5 +75,4 @@ public class HotkeyPageViewModel : SubPageViewModelBase
         Settings.Instance.Hotkeys = Hotkeys.ToArray();
         HotkeyReceiverImpl.Instance.Update();
     }
-
 }
