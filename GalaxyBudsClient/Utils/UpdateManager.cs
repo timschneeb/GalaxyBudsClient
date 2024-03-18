@@ -49,7 +49,7 @@ namespace GalaxyBudsClient.Utils
 
             if (result.Status == UpdateStatus.UpdateAvailable)
             { 
-                MainWindow.Instance.UpdatePage.SetUpdate(result.Updates, false);
+                // TODO MainWindow.Instance.UpdatePage.SetUpdate(result.Updates, false);
             }
             
             return result.Status;
@@ -61,7 +61,7 @@ namespace GalaxyBudsClient.Utils
 
             if (result?.Status == UpdateStatus.UpdateAvailable)
             { 
-                MainWindow.Instance.UpdatePage.SetUpdate(result.Updates, true);
+                // TODO MainWindow.Instance.UpdatePage.SetUpdate(result.Updates, true);
             }
         }
     }

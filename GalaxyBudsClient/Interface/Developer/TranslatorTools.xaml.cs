@@ -44,7 +44,7 @@ namespace GalaxyBudsClient.Interface.Developer
             _locales.SelectedItem = Settings.Instance.Locale;
             _xamlPath.Text = Loc.GetTranslatorModeFile();
             _ignoreConnLoss.IsChecked = BluetoothImpl.Instance.SuppressDisconnectionEvents;
-            _dummyDevices.IsChecked = MainWindow.Instance.DeviceSelectionPage.EnableDummyDevices;
+            // TODO _dummyDevices.IsChecked = MainWindow.Instance.DeviceSelectionPage.EnableDummyDevices;
             
             Loc.ErrorDetected += (title, content) =>
             {
@@ -83,7 +83,7 @@ namespace GalaxyBudsClient.Interface.Developer
 
         private void DummyDevices_OnChecked(object? sender, RoutedEventArgs e)
         {
-            MainWindow.Instance.DeviceSelectionPage.EnableDummyDevices = _dummyDevices.IsChecked ?? false;
+            // TODO MainWindow.Instance.DeviceSelectionPage.EnableDummyDevices = _dummyDevices.IsChecked ?? false;
         }
     }
 }

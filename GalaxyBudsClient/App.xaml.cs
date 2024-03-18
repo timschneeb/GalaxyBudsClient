@@ -34,7 +34,7 @@ namespace GalaxyBudsClient
             {
                 Dispatcher.UIThread.InvokeAsync(delegate
                 {
-                    MainWindow.Instance.BringToFront();
+                    MainWindow2.Instance.BringToFront();
                 });
             });
 #endif
