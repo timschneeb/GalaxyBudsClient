@@ -1,0 +1,93 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
+             xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
+             mc:Ignorable="d" d:DesignWidth="800"
+             x:Class="GalaxyBudsClient.Interface.Pages.AdvancedPage"
+             x:DataType="pages:AdvancedPageViewModel"
+             x:CompileBindings="True">
+
+    <Design.DataContext>
+        <pages:AdvancedPageViewModel />
+    </Design.DataContext>
+
+    <ScrollViewer>
+        <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
+            
+            <controls:SettingsGroup>
+                <controls:SettingsSwitchItem Content="{DynamicResource adv_resume_playback}"
+                                             Description="{DynamicResource adv_resume_playback_desc}"
+                                             IsChecked="{Binding ResumePlaybackOnSensor, Source={x:Static utils:Settings.Instance}}"
+                                             Symbol="FlashPlay"
+                                             IsClickEnabled="True" />
+
+                <controls:SettingsSwitchItem Content="{DynamicResource adv_seamless}"
+                                             Description="{DynamicResource adv_seamless_desc}"
+                                             IsChecked="{Binding IsSeamlessConnectionEnabled}"
+                                             Symbol="PlugDisconnected"
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="SeamlessConnection" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
+                
+                <controls:SettingsSwitchItem Content="{DynamicResource adv_passthrough}"
+                                             Description="{DynamicResource adv_passthrough_desc}"
+                                             IsChecked="{Binding IsPassthroughEnabled}"
+                                             Symbol="AddSubtractCircle"
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="AmbientPassthrough" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
+                
+                <controls:SettingsSwitchItem Content="{DynamicResource adv_sidetone}"
+                                             Description="{DynamicResource adv_sidetone_desc}"
+                                             IsChecked="{Binding IsSidetoneEnabled}"
+                                             Symbol="CallConnecting"
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="AmbientSidetone" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
+            </controls:SettingsGroup>
+            
+            <controls:SettingsGroup>
+                <controls:SettingsSymbolItem Name="Hotkey"
+                                             Content="{DynamicResource adv_hotkey}"
+                                             Description="{DynamicResource adv_hotkey_desc}"
+                                             IsVisible="{x:Static platform:PlatformUtils.SupportsHotkeys}"
+                                             Symbol="Keyboard"
+                                             ActionSymbol="ChevronRight"
+                                             IsClickEnabled="True" />
+                
+                <controls:SettingsSymbolItem Name="BixbyRemap"
+                                             Content="{DynamicResource adv_bixby_remap}"
+                                             Description="{DynamicResource adv_bixby_remap_desc}"
+                                             Symbol="MicPulse"
+                                             ActionSymbol="ChevronRight"
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="BixbyWakeup" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSymbolItem>
+
+                <controls:SettingsSymbolItem Name="GearFit"
+                                             Content="{DynamicResource mainpage_fit_test}"
+                                             Description="{DynamicResource gft_desc}"
+                                             Symbol="TextBulletListCheckmark"
+                                             ActionSymbol="ChevronRight"
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="GearFitTest" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSymbolItem>
+            </controls:SettingsGroup>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
