@@ -126,17 +126,6 @@ namespace GalaxyBudsClient
         }
 
         #region Window management
-
-        protected override async void OnInitialized()
-        {
-            if (BluetoothImpl.Instance.RegisteredDeviceValid)
-            {
-                await Task.Delay(6000).ContinueWith((_) => UpdateManager.Instance.SilentCheck());
-            }
-
-            base.OnInitialized();
-        }
-
         protected override async void OnClosing(WindowClosingEventArgs e)
         {
             if (Settings.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)

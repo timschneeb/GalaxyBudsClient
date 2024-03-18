@@ -55,7 +55,6 @@ namespace GalaxyBudsClient
             TrayManager.Init();
             MediaKeyRemoteImpl.Init();
             DeviceMessageCache.Init();
-            UpdateManager.Init();
             ExperimentManager.Init();
            
             Log.Information("Translator mode file location: {File}", Loc.GetTranslatorModeFile());

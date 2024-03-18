@@ -15,8 +15,6 @@ namespace GalaxyBudsClient
         public readonly HomePage HomePage = new();
         public readonly CustomTouchActionPage CustomTouchActionPage = new();
         public readonly ConnectionLostPage ConnectionLostPage = new();
-        public readonly UpdatePage UpdatePage = new();
-        public readonly UpdateProgressPage UpdateProgressPage = new();
         public readonly DeviceSelectionPage DeviceSelectionPage = new();
 
         public PageContainer Pager { set; get; } = new();
@@ -34,7 +32,6 @@ namespace GalaxyBudsClient
         public void _()
         {
             AvaloniaXamlLoader.Load(this);
-            this.AttachDevTools();
 
             // Allocate essential pages immediately
             Pager.RegisterPages(HomePage, ConnectionLostPage, new WelcomePage());
@@ -42,10 +39,8 @@ namespace GalaxyBudsClient
             // Defer the rest of the page registration
             Dispatcher.UIThread.Post(() => Pager.RegisterPages(new FindMyGearPage(),
                 new TouchpadPage(), CustomTouchActionPage, DeviceSelectionPage,
-                UpdatePage, UpdateProgressPage,
                 new BudsAppDetectedPage(), new TouchpadGesturePage(), 
                 new GearFitPage()), DispatcherPriority.ApplicationIdle);
-            
         }
     }
     
