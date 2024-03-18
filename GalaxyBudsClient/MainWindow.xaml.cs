@@ -73,16 +73,6 @@ namespace GalaxyBudsClient
             }
         }
 
-        public static bool IsReady()
-        {
-            return _instance != null;
-        }
-
-        public static void Kill()
-        {
-            _instance = null;
-        }
-
         // ReSharper disable once MemberCanBePrivate.Global
         public MainWindow()
         {
@@ -136,7 +126,6 @@ namespace GalaxyBudsClient
             SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
             SppMessageHandler.Instance.StatusUpdate += OnStatusUpdate;
             SppMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
-            SppMessageHandler.Instance.AnyMessageReceived += OnAnyMessageReceived;
 
             EventDispatcher.Instance.EventReceived += OnEventReceived;
             (Application.Current as App)!.TrayIconClicked += TrayIcon_OnLeftClicked;
@@ -170,17 +159,7 @@ namespace GalaxyBudsClient
             BuildOptionsMenu();
             FlowDirection = Loc.ResolveFlowDirection();
         }
-
-        private void OnAnyMessageReceived(object? sender, BaseMessageParser? e)
-        {
-            if (e is VoiceWakeupEventParser { ResultCode: 1 })
-            {
-                Log.Debug("MainWindow.OnAnyMessageReceived: Voice wakeup event received");
-                    
-                EventDispatcher.Instance.Dispatch(Settings.Instance.BixbyRemapEvent);
-            }
-        }
-
+        
         private async void OnEventReceived(EventDispatcher.Event e, object? arg)
         {
             switch (e)
@@ -218,11 +197,6 @@ namespace GalaxyBudsClient
                 await Task.Delay(6000).ContinueWith((_) => UpdateManager.Instance.SilentCheck());
             }
             base.OnInitialized();
-        }
-
-        protected override void OnUnloaded(RoutedEventArgs e)
-        {
-            base.OnUnloaded(e);
         }
         
         protected override async void OnClosing(WindowClosingEventArgs e)

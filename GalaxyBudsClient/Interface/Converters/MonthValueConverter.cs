@@ -13,8 +13,7 @@ namespace GalaxyBudsClient.Interface.Converters
             return value switch
             {
                 null => null,
-                int num /*when targetType == typeof(string)*/ =>
-                    CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(num),
+                int num => CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(num),
                 _ => throw new NotSupportedException()
             };
         }
