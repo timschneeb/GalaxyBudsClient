@@ -205,7 +205,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 				
 				/* Open custom action selector first and await user input,
 				 do not send the updated options ids just yet  */
-                MainWindow.Instance.ShowCustomActionSelection(device);
+                // TODO MainWindow.Instance.ShowCustomActionSelection(device);
 			}
 			else
 			{

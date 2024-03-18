@@ -8,7 +8,6 @@ using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 
 namespace GalaxyBudsClient.InterfaceOld.Pages
 {
