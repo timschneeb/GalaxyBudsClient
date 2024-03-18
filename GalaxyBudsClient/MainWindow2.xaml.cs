@@ -180,6 +180,7 @@ namespace GalaxyBudsClient
 
     private void TryEnableMicaEffect()
     {
+        // TODO
         return;
        // TransparencyBackgroundFallback = Brushes.Transparent;
        // TransparencyLevelHint = WindowTransparencyLevel.Mica;
@@ -235,12 +236,12 @@ namespace GalaxyBudsClient
             _firstShow = false;
             
             
-        var thm = ActualThemeVariant;
-        if (IsWindows11 && thm != FluentAvaloniaTheme.HighContrastTheme)
-        {
-            TryEnableMicaEffect();
-        }
-            
+            var thm = ActualThemeVariant;
+            if (IsWindows11 && thm != FluentAvaloniaTheme.HighContrastTheme)
+            {
+                TryEnableMicaEffect();
+            }
+                
             base.OnOpened(e);
         }
 
