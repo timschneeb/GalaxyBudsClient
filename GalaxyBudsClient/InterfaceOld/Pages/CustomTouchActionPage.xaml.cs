@@ -77,8 +77,8 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                     }
                 }
                 
-                Enum.GetValues(typeof(EventDispatcher.Event))
-                    .Cast<EventDispatcher.Event>()
+                Enum.GetValues(typeof(Event))
+                    .Cast<Event>()
                     .Where(EventDispatcher.CheckDeviceSupport)
                     .Where(EventDispatcher.CheckTouchOptionEligibility)
                     .ToList()

@@ -18,21 +18,29 @@ namespace GalaxyBudsClient.Model
             public static readonly Guid Buds2Pro = new("{2e73a4ad-332d-41fc-90e2-16bef06523f2}");
             public static readonly Guid BudsFe = new("{2e73a4ad-332d-41fc-90e2-16bef06523f2}");
         }
-        public static class Bixby
+      
+        public enum BixbyLanguages
         {
-            public static readonly (byte, string)[] Languages =
-            [
-                (0, "de-DE"),
-                (1, "en-GB"),
-                (2, "en-US"),
-                (3, "es-ES"),
-                (4, "fr-FR"),
-                (5, "it-IT"),
-                (6, "ko-KR"),
-                (7, "pt-BR"),
-                (8, "zh-CN"),
-                (9, "hu-HU")
-            ];
+            [Description("de-DE")]
+            de = 0,
+            [Description("en-GB")] 
+            enGb = 1,
+            [Description("en-US")]
+            enUs = 2,
+            [Description("es-ES")]
+            es = 3,
+            [Description("fr-FR")]
+            fr = 4,
+            [Description("it-IT")]
+            it = 5,
+            [Description("ko-KR")]
+            kr = 6,
+            [Description("pt-BR")]
+            br = 7,
+            [Description("zh-CN")]
+            cn = 8,
+            [Description("hu-HU")]
+            hu = 9
         }
         
         [SuppressMessage("ReSharper", "InconsistentNaming")]

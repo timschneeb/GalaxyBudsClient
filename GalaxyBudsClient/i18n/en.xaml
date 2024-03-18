@@ -16,6 +16,7 @@
     <sys:String x:Key="notset">Not set</sys:String>
     <sys:String x:Key="unknown">Unknown</sys:String>
     <sys:String x:Key="back">Back</sys:String>
+    <sys:String x:Key="hint">Hint</sys:String>
 
     <sys:String x:Key="nobluetoothdev">No Bluetooth adapter found. Please enable Bluetooth and try again.</sys:String>
 
@@ -470,7 +471,9 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="bixby_remap_enable">Enable Bixby wakeup</sys:String>
     <sys:String x:Key="bixby_remap_enable_desc">Launch Bixby on your Samsung phone or execute a custom action on this PC when woken up</sys:String>
     <sys:String x:Key="bixby_remap_lang">Bixby wakeup language</sys:String>
+    <sys:String x:Key="bixby_remap_lang_desc">Change the language used for the activation phrase</sys:String>
     <sys:String x:Key="bixby_remap_action">Custom wakeup action</sys:String>
+    <sys:String x:Key="bixby_remap_action_desc">Define what should happen when you activate Bixby on this device</sys:String>
     <sys:String x:Key="bixby_remap_note">Say 'Hey Bixby!' to activate. The activation phrase may be different with some language settings.
 
 The remap configuration is only active on this device. If you connect your earbuds to a Samsung device, voice wakeup will activate Bixby normally. On other devices than this device and non-Samsung phones, this feature won't trigger any action.</sys:String>

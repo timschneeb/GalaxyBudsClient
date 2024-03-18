@@ -7,10 +7,10 @@ namespace GalaxyBudsClient.Interface.MarkupExtensions;
 
 public class EventDispatcherAction : AvaloniaObject, IAction
 {
-    public static readonly StyledProperty<EventDispatcher.Event> EventProperty =
-        AvaloniaProperty.Register<EventDispatcherAction, EventDispatcher.Event>(nameof(Event));
+    public static readonly StyledProperty<Event> EventProperty =
+        AvaloniaProperty.Register<EventDispatcherAction, Event>(nameof(Event));
     
-    public EventDispatcher.Event Event
+    public Event Event
     {
         get => GetValue(EventProperty);
         set => SetValue(EventProperty, value);

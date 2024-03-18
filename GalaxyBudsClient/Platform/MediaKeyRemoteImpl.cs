@@ -33,17 +33,17 @@ namespace GalaxyBudsClient.Platform
         
         public static void Init(){}
 
-        private static void OnEventReceived(EventDispatcher.Event e, object? arg)
+        private static void OnEventReceived(Event e, object? arg)
         {
             switch (e)
             {
-                case EventDispatcher.Event.Play:
+                case Event.Play:
                     Instance.Play();
                     break;
-                case EventDispatcher.Event.Pause:
+                case Event.Pause:
                     Instance.Pause();
                     break;
-                case EventDispatcher.Event.TogglePlayPause:
+                case Event.TogglePlayPause:
                     Instance.PlayPause();
                     break;
             }

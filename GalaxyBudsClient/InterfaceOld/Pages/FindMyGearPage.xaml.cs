@@ -60,19 +60,19 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             _rightMuteButton.Toggled += RightMuteButton_OnToggled;
         }
 
-        private void OnEventReceived(EventDispatcher.Event @event, object? arg)
+        private void OnEventReceived(Event @event, object? arg)
         {
             switch (@event)
             {
-                case EventDispatcher.Event.StartFind:
+                case Event.StartFind:
                     _scanButton.IsSearching = true;
                     ScanButton_OnScanningStatusChanged(this, true);
                     break;
-                case EventDispatcher.Event.StopFind:
+                case Event.StopFind:
                     _scanButton.IsSearching = false;
                     ScanButton_OnScanningStatusChanged(this, false);
                     break;
-                case EventDispatcher.Event.StartStopFind:
+                case Event.StartStopFind:
                     _scanButton.IsSearching = !_scanButton.IsSearching;
                     ScanButton_OnScanningStatusChanged(this, _scanButton.IsSearching);
                     break;

@@ -32,15 +32,15 @@ public class EqualizerPageViewModel : MainPageViewModelBase
         }
     }
 
-    protected override void OnEventReceived(EventDispatcher.Event type, object? parameter)
+    protected override void OnEventReceived(Event type, object? parameter)
     {
         switch (type)
         {
-            case EventDispatcher.Event.EqualizerToggle:
+            case Event.EqualizerToggle:
                 IsEqEnabled = !IsEqEnabled;
-                EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
+                EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
                 break;
-            case EventDispatcher.Event.EqualizerNextPreset:
+            case Event.EqualizerNextPreset:
             {
                 IsEqEnabled = true;
                 EqPreset++;

@@ -21,9 +21,11 @@ public class AdvancedPageViewModel : MainPageViewModelBase
 
     private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
     {
+        PropertyChanged -= OnPropertyChanged;
         IsSidetoneEnabled = e.SideToneEnabled;
         IsPassthroughEnabled = e.RelieveAmbient;
         IsSeamlessConnectionEnabled = e.SeamlessConnectionEnabled;
+        PropertyChanged += OnPropertyChanged;
     }
 
     private async void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)

@@ -71,18 +71,18 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 			UpdateMenus();
 		}
 
-		private async void OnEventReceived(EventDispatcher.Event e, object? arg)
+		private async void OnEventReceived(Event e, object? arg)
 		{
 			switch (e)
 			{
-				case EventDispatcher.Event.LockTouchpadToggle:
+				case Event.LockTouchpadToggle:
 					_lock.Toggle();
 					SendLockState();
 					break;
-				case EventDispatcher.Event.ToggleDoubleEdgeTouch:
+				case Event.ToggleDoubleEdgeTouch:
 					_edgeTouch.Toggle();
 					await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.OUTSIDE_DOUBLE_TAP, _edgeTouch.IsChecked);
-					EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
+					EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
 					break;
 			}
 		}
@@ -289,7 +289,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 			{
 				await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOCK_TOUCHPAD, _lock.IsChecked);
 			}
-			EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
+			EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
 		}
 		
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
@@ -305,7 +305,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 		private async void DoubleTapVolume_OnToggled(object? sender, bool e)
 		{
 			await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.OUTSIDE_DOUBLE_TAP, e);
-			EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
+			EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
 		}
 
 		private void Gestures_OnPointerPressed(object? sender, PointerPressedEventArgs e)

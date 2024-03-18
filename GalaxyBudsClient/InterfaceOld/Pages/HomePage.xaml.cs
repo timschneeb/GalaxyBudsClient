@@ -153,7 +153,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             _lastPlacementR = PlacementStates.Disconnected;
         }
 
-        private async void OnEventReceived(EventDispatcher.Event e, object? arg)
+        private async void OnEventReceived(Event e, object? arg)
         {
             // NoiseControl case is handled in NoiseProPage.xaml.cs
             if (!BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc)
@@ -164,10 +164,10 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             
             switch (e)
             {
-                case EventDispatcher.Event.AncToggle:
+                case Event.AncToggle:
                     await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_NOISE_REDUCTION, !_ancSwitch.IsChecked);
                     Dispatcher.UIThread.Post(_ancSwitch.Toggle);
-                    EventDispatcher.Instance.Dispatch(EventDispatcher.Event.UpdateTrayIcon);
+                    EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
                     break;
             }
         }

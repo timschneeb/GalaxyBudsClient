@@ -48,13 +48,13 @@ namespace GalaxyBudsClient.Cli.Ipc.Objects
 
         public Task ShowBatteryPopupAsync()
         {
-            EventDispatcher.Instance.Dispatch(EventDispatcher.Event.ShowBatteryPopup);
+            EventDispatcher.Instance.Dispatch(Event.ShowBatteryPopup);
             return Task.CompletedTask;
         }
 
         public Task<IDictionary<string, string>> ListActionsAsync()
         {
-            var values = (EventDispatcher.Event[]) Enum.GetValues(typeof(EventDispatcher.Event));
+            var values = (Event[]) Enum.GetValues(typeof(Event));
             var actions = new Dictionary<string, string>();
             foreach (var value in values)
             {
@@ -70,7 +70,7 @@ namespace GalaxyBudsClient.Cli.Ipc.Objects
         {
             try
             {
-                EventDispatcher.Instance.Dispatch(Enum.Parse<EventDispatcher.Event>(action));
+                EventDispatcher.Instance.Dispatch(Enum.Parse<Event>(action));
                 return Task.CompletedTask;
             }
             catch (ArgumentException)
