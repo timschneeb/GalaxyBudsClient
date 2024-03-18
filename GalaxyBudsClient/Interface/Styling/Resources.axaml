@@ -43,4 +43,6 @@
     <ic:SymbolIconSource x:Key="InstallIcon" Symbol="ArrowDownload" />
     <ic:SymbolIconSource x:Key="OpenIcon" Symbol="FolderOpen" />
     <ic:SymbolIconSource x:Key="ReloadIcon" Symbol="ArrowClockwise" />
+    <ic:SymbolIconSource x:Key="NewIcon" Symbol="New" />
+    <ic:SymbolIconSource x:Key="EditIcon" Symbol="Edit" />
 </ResourceDictionary>

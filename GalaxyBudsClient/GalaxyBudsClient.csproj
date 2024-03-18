@@ -122,6 +122,10 @@
           <DependentUpon>BixbyRemapPage.axaml</DependentUpon>
           <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Interface\Pages\HotkeyPage.axaml.cs">
+          <DependentUpon>HotkeyPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
     <PropertyGroup>

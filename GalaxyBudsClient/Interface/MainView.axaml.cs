@@ -124,7 +124,7 @@ public partial class MainView : UserControl
         new BixbyRemapPageViewModel(),
         new FirmwarePageViewModel(),
         // TODO new GearFitPageViewModel(),
-        // TODO new HotkeyPageViewModel(),
+        new HotkeyPageViewModel(),
         new SystemInfoPageViewModel()
     ];
 

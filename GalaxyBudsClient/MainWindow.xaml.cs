@@ -42,7 +42,7 @@ namespace GalaxyBudsClient
             // Defer the rest of the page registration
             Dispatcher.UIThread.Post(() => Pager.RegisterPages(new FindMyGearPage(),
                 new TouchpadPage(), CustomTouchActionPage, DeviceSelectionPage,
-                UpdatePage, UpdateProgressPage, new HotkeyPage(),
+                UpdatePage, UpdateProgressPage,
                 new BudsAppDetectedPage(), new TouchpadGesturePage(), 
                 new GearFitPage()), DispatcherPriority.ApplicationIdle);
             
