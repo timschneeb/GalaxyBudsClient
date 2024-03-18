@@ -67,11 +67,8 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
             : Unknown;
     }
     
-    public static async void RequestData()
+    private static async void RequestData()
     {
-        if(!BluetoothImpl.Instance.IsConnected)
-            return;
-        
         if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.BatteryType))
             await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.BATTERY_TYPE);
         if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.BuildInfo))

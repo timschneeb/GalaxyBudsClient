@@ -522,7 +522,7 @@ Drücken Sie 'Fortfahren' um das Update zu starten</sys:String>
     <sys:String x:Key="fw_upload_progress_session">Neue Session wird erstellt...</sys:String>
     <sys:String x:Key="fw_upload_progress_prepare">Upload wird vorbereitet...</sys:String>
     <sys:String x:Key="fw_upload_progress_finished">Upload fertiggestellt</sys:String>
-    <sys:String x:Key="fw_upload_progress_finished_desc">Das Update wurd erfolgreicht übertrang und wird zurzeit auf deinem Gerät installiert. Während diesem Prozess reagieren die EarBuds für ca. 30 Sekunen nicht. In den meisten Fällen probieren die EarBuds die Verbindungen nach dem Update automatisch wieder herzustellen.</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished_desc">Das Update wurde erfolgreich übertrangen und wird zurzeit auf deinem Gerät installiert. Während diesem Prozess reagieren die Earbuds für ca. 30 Sekunden nicht. In den meisten Fällen probieren die Earbuds die Verbindungen nach dem Update automatisch wieder herzustellen.</sys:String>
     <sys:String x:Key="fw_upload_progress_error">Upload der Firmware fehlgeschlagen</sys:String>
     <sys:String x:Key="fw_upload_progress">Firmware Update wird hochlgeladen... {0}%</sys:String>
     <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>

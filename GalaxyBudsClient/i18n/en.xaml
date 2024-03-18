@@ -210,19 +210,7 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="devsel_dialog_footer">If you don't see your earbuds, make sure you've paired and connected them in your computer's Bluetooth settings, and then click Refresh.</sys:String>
     <sys:String x:Key="devsel_winrt_title">Use alternative Bluetooth backend</sys:String>
     <sys:String x:Key="devsel_winrt">Much better stability, but may not work on all PCs with some Bluetooth adapters</sys:String>
-
-    <!--Unsupported feature page-->
-    <sys:String x:Key="unsupported_feature_current_fwver">Current Firmware version:</sys:String>
-    <sys:String x:Key="unsupported_feature_required_fwver">Required Firmware version:</sys:String>
-
-    <sys:String x:Key="unsupported_feature_header">Please update your firmware</sys:String>
-    <sys:String x:Key="unsupported_feature_current_fwver_null">Current firmware version: Unknown</sys:String>
-    <sys:String x:Key="unsupported_feature_required_fwver_null">Required firmware version: Not specified</sys:String>
-
-    <sys:String x:Key="unsupported_feature_description_p1">The firmware of your earbuds is too old and does not support this feature.</sys:String>
-    <sys:String x:Key="unsupported_feature_description_p2">Please update to the latest firmware using the official Windows or Android updater.</sys:String>
-    <sys:String x:Key="unsupported_feature_description_p3">Make sure you close this app if you use the Windows updater. Only one application can talk to the Buds at a time.</sys:String>
-
+    
     <!--Touchpad gestures-->
     <sys:String x:Key="touchpad_gesture_header">Enable touchpad gestures</sys:String>
     <sys:String x:Key="touchpad_gesture_single">Single tap</sys:String>
@@ -524,12 +512,14 @@ This application is licensed under GPLv3. By using it, you are accepting the lic
     <!--Firmware selection-->
     <sys:String x:Key="fw_select_header">Firmware updates</sys:String>
     <sys:String x:Key="fw_select_instructions">Please choose a firmware binary to download and install. Alternatively, you can also select a firmware binary from your hard-drive by navigating to 'Advanced... &gt; Select image from disk'</sys:String>
-    <sys:String x:Key="fw_select_no_results">No firmware updates are currently available. Please try again at a later time.</sys:String>
     <sys:String x:Key="fw_select_downgrade">Allow firmware downgrading</sys:String>
     <sys:String x:Key="fw_select_downgrade_desc">Disable version checks and show older firmwares in list (may cause unexpected issues; advanced users only)</sys:String>
     <sys:String x:Key="fw_select_advanced">Advanced...</sys:String>
     <sys:String x:Key="fw_select_install">Install firmware</sys:String>
-    <sys:String x:Key="fw_select_from_disk">Select image from disk...</sys:String>
+    <sys:String x:Key="fw_select_install_short">Install</sys:String>
+    <sys:String x:Key="fw_select_from_disk">Select firmware from disk...</sys:String>
+    <sys:String x:Key="fw_select_from_disk_short">Open</sys:String>
+    <sys:String x:Key="fw_select_refresh">Refresh</sys:String>
     <sys:String x:Key="fw_select_external_note">Do NOT flash firmware binaries meant for OTHER models onto your device. Flashing a Buds Pro firmware onto a pair of Buds Plus won't unlock any new features, instead it will permanently destroy your device.
 
 Press 'Continue' to select a firmware binary.</sys:String>
@@ -539,6 +529,7 @@ Press 'Continue' to select a firmware binary.</sys:String>
     <sys:String x:Key="fw_select_net_index_error">Failed to communicate with server. Cannot download firmware index at the moment.</sys:String>
     <sys:String x:Key="fw_select_http_error">HTTP error code:</sys:String>
     <sys:String x:Key="fw_select_unknown_build">Unknown build name</sys:String>
+    <sys:String x:Key="fw_select_no_results_short">No updates found</sys:String>
     <sys:String x:Key="fw_select_verify_fail">Failed to verify firmware</sys:String>
     <sys:String x:Key="fw_select_verify_model_mismatch_fail">Device model mismatch detected! The firmware transfer has been cancelled.
 
