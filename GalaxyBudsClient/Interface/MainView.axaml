@@ -75,7 +75,7 @@
                                   MinHeight="39"
                                   Grid.Row="1"
                                   ItemsSource="{Binding BreadcrumbItems}"
-                                  Margin="20,16">
+                                  Margin="20,10">
                     <ui:BreadcrumbBar.ItemTemplate>
                         <DataTemplate x:DataType="vm:BreadcrumbViewModel">
                             <ui:BreadcrumbBarItem Content="{Binding Title}" />

@@ -105,8 +105,7 @@ namespace GalaxyBudsClient
             Dispatcher.UIThread.Post(() => Pager.RegisterPages(new FindMyGearPage(),
                 new TouchpadPage(), new AdvancedPage(),
                 CustomTouchActionPage, DeviceSelectionPage,
-                UpdatePage, UpdateProgressPage, new HotkeyPage(), new FirmwareSelectionPage(),
-                new FirmwareTransferPage(),  new BixbyRemapPage(),
+                UpdatePage, UpdateProgressPage, new HotkeyPage(), new BixbyRemapPage(),
                 new BudsAppDetectedPage(), new TouchpadGesturePage(), 
                 new GearFitPage()), DispatcherPriority.ApplicationIdle);
             

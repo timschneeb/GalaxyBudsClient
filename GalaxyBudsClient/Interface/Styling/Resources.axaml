@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=System.Runtime"
                     xmlns:converters="clr-namespace:GalaxyBudsClient.Interface.Converters"
-                    xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia">
+                    xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+                    xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent">
 
     <converters:SymbolToIconSourceConverter x:Key="SymbolToIconSourceConverter" />
     <converters:EnumToDescriptionConverter x:Key="EnumDescriptionConverter"/>
@@ -37,6 +38,9 @@
         <Setter Property="FontSize" Value="{StaticResource TitleTextBlockFontSize}" />
     </ControlTheme>
     
-    <!-- Empty placeholder icon -->
+    <!-- Icons -->
     <controls:PathIconSource x:Key="IconPlaceholder" Data="" />
+    <ic:SymbolIconSource x:Key="InstallIcon" Symbol="ArrowDownload" />
+    <ic:SymbolIconSource x:Key="OpenIcon" Symbol="FolderOpen" />
+    <ic:SymbolIconSource x:Key="ReloadIcon" Symbol="ArrowClockwise" />
 </ResourceDictionary>
