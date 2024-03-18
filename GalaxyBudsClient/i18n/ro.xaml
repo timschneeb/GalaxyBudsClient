@@ -59,7 +59,7 @@
     <sys:String x:Key="touchoption_volume_up">Crește volumul</sys:String>
     <sys:String x:Key="touchoption_volume_down">Scade volumul</sys:String>
     <sys:String x:Key="touchoption_ambientsound">Sunet ambiental</sys:String>
-    <sys:String x:Key="touchoption_switch_noisecontrols">Schimbă controalele zgomotului</sys:String> <!--TODO-->
+    <sys:String x:Key="touchoption_switch_noisecontrols">Schimbă controalele zgomotului</sys:String>
     <sys:String x:Key="touchoption_spotify">Spotify (doar pe Android)</sys:String>
     <sys:String x:Key="touchoption_custom">Acțiune personalizată...</sys:String>
     <sys:String x:Key="touchoption_custom_null">Nesetat</sys:String>
