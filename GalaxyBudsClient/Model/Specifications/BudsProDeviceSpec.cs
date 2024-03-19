@@ -25,7 +25,6 @@ namespace GalaxyBudsClient.Model.Specifications
                 { Features.AmbientSound, null },
                 { Features.Anc, null },
                 { Features.AncNoiseReductionLevels, null },
-                { Features.LegacyNoiseControlMode, null },
                 { Features.BuildInfo, null },
                 { Features.AmbientSidetone, new FeatureRule(8, "R190XXU0AUI2")  },
                 { Features.AmbientCustomize, new FeatureRule(8, "R190XXU0AUI2") },

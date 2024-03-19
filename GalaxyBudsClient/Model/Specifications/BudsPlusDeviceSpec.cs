@@ -19,7 +19,6 @@ namespace GalaxyBudsClient.Model.Specifications
                 { Features.DoubleTapVolume, null },
                 { Features.CaseBattery, null },
                 { Features.FragmentedMessages, null },
-                { Features.LegacyNoiseControlMode, null },
                 { Features.BuildInfo, null },
                 { Features.Voltage, null }
             };

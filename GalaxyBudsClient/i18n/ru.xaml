@@ -240,9 +240,9 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="touchpad_double_tap_volume">Двойное касание к поверхности наушника</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Дважды коснитесь поверхности левого или правого наушника, чтобы уменьшить или увеличить громкость</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Настраиваемое шумоподавление</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">АШП &lt;-&gt; Звуковой фон</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_off">АШП &lt;-&gt; Выкл</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Звуковой фон &lt;-&gt; Выкл</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">АШП ↔ Звуковой фон</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">АШП ↔ Выкл</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Звуковой фон ↔ Выкл</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Пролистывать режимы (АШП, Фон, Выкл)</sys:String>
 
     <!--Custom touchpad action page-->

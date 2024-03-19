@@ -231,6 +231,19 @@ namespace GalaxyBudsClient.Model
             AmbientSound = 2,
             NoiseReduction = 1
         }
+   
+        public enum NoiseControlCycleMode
+        {
+            [LocalizedDescription("touchpad_noise_control_mode_anc_amb")]
+            AncAmb = 0,
+            [LocalizedDescription("touchpad_noise_control_mode_anc_off")]
+            AncOff = 1,
+            [LocalizedDescription("touchpad_noise_control_mode_amb_off")]
+            AmbOff = 2,
+            [IgnoreDataMember]
+            [LocalizedDescription("unknown")]
+            Unknown = 99
+        }
         
         public enum TouchOptions
         {
@@ -249,8 +262,12 @@ namespace GalaxyBudsClient.Model
             [LocalizedDescription("touchoption_spotify")]
             SpotifySpotOn,
             [Hidden]
+            [IgnoreDataMember]
+            [LocalizedDescription("touchoption_custom")]
             OtherL,
             [Hidden]
+            [IgnoreDataMember]
+            [LocalizedDescription("touchoption_custom")]
             OtherR
         }
         

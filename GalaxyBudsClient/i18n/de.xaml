@@ -435,9 +435,9 @@ Du kannst auch bei "Optionen &gt; Gerät entfernen" ein neues Paar registrieren.
     <sys:String x:Key="touchpad_gestures">Erweiterte Touch Sperre</sys:String>
     <sys:String x:Key="touchpad_gestures_description">Aktivieren oder deaktivieren der standard Tdouch Gesten</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Umgebungsgeräusch Kontroll wechsel Modus</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC &lt;-&gt; Umgebungssound</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; Aus</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Umgebungssound &lt;-&gt; Aus</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ Umgebungssound</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Aus</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Umgebungssound ↔ Aus</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Wechseln zwischen den verschiedenen Modi (ANC, Umgebung, Aus)</sys:String>
 
     <sys:String x:Key="system_flasher">Firmware Update installieren</sys:String>

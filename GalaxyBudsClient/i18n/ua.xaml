@@ -229,9 +229,9 @@ Samsung Wearable на Android, функціонал цієї програми, �
     <sys:String x:Key="touchpad_double_tap_volume">Подвійний дотик до поверхні навушника</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Двічі торкніться поверхні лівого або правого навушника щоб зменшити або збільшити гучність</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Налаштоване шумозаглушення</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">АШЗ &lt;-&gt; Звукове оточення</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_off">АШЗ &lt;-&gt; Вимк</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Звукове оточення &lt;-&gt; Вимк</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">АШЗ ↔ Звукове оточення</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">АШЗ ↔ Вимк</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Звукове оточення ↔ Вимк</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Чергувати режими (АШЗ, Оточення, Вимк)</sys:String>
 
     <!--Custom touchpad action page-->

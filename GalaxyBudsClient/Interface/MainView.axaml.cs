@@ -115,7 +115,7 @@ public partial class MainView : UserControl
         new NoiseControlPageViewModel(),
         new EqualizerPageViewModel(),
         new FindMyBudsPageViewModel(),
-        // TODO new TouchpadPageViewModel(),
+        new TouchpadPageViewModel(),
         new AdvancedPageViewModel(),
         new SystemPageViewModel(),
         new SettingsPageViewModel()
@@ -130,12 +130,11 @@ public partial class MainView : UserControl
         new HotkeyPageViewModel(),
         new SystemInfoPageViewModel()
     ];
-
     
     private void InitializeNavigationPages()
     {
         
-        var menuItems = new List<NavigationViewItemBase>(6);
+        var menuItems = new List<NavigationViewItemBase>(14);
         var footerItems = new List<NavigationViewItemBase>(1);
 
         

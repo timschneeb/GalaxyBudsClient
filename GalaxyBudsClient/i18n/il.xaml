@@ -254,9 +254,9 @@
     <sys:String x:Key="touchpad_double_tap_volume_description">או להנמיך כדי הימנית או השמאלית האוזניה בקצה כפולה הקשה
                                                            השמע עוצמת את להגביר</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">ברעשים שליטה מצב החלפת</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC &lt;-&gt; סביבה צלילי</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; כבוי</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_amb_off">סביבה צלילי &lt;-&gt; כבוי</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ סביבה צלילי</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ כבוי</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">סביבה צלילי ↔ כבוי</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">סביבה צלילי מצבי בין החלף</sys:String>
 
     <!--Custom touchpad action page-->

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -15,10 +16,10 @@ namespace GalaxyBudsClient.Interface.MarkupExtensions;
 /// </summary>
 public class RequiresAnyFeatureBehavior : Behavior<Control>
 {
-    public static readonly StyledProperty<IEnumerable<Features>> FeaturesProperty =
-        AvaloniaProperty.Register<RequiresAnyFeatureBehavior, IEnumerable<Features>>(nameof(Features));
+    public static readonly StyledProperty<IEnumerable> FeaturesProperty =
+        AvaloniaProperty.Register<RequiresAnyFeatureBehavior, IEnumerable>(nameof(Features));
     
-    public IEnumerable<Features> Features
+    public IEnumerable Features
     {
         get => GetValue(FeaturesProperty);
         set => SetValue(FeaturesProperty, value);
@@ -47,6 +48,6 @@ public class RequiresAnyFeatureBehavior : Behavior<Control>
         if (AssociatedObject is null)
             return;
 
-        AssociatedObject.IsVisible = Features.Any(BluetoothImpl.Instance.DeviceSpec.Supports);
+        AssociatedObject.IsVisible = Features.Cast<Features>().Any(BluetoothImpl.Instance.DeviceSpec.Supports);
     }
 }

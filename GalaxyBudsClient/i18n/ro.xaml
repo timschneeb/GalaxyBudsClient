@@ -228,9 +228,9 @@ Acest program este conceput pentru a oferi mult mai multe funcționalități dec
     <sys:String x:Key="touchpad_double_tap_volume">Double-tap earbud edge</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Atingeți de două ori marginea Bud-ului din stânga sau dreapta pentru crește sau scădea volumul</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Modul de comutare a controlului zgomotului</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC &lt;-&gt; Sunet ambiental</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; Oprit</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Sunet ambiental &lt;-&gt; Oprit</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ Sunet ambiental</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Oprit</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Sunet ambiental ↔ Oprit</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Schimbă între moduri (ANC, Sunet ambiental, Oprit)</sys:String>
 
     <!--Custom touchpad action page-->

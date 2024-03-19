@@ -12,6 +12,7 @@
         </ResourceDictionary>
     </Styles.Resources>
 
+    <!-- TODO Hidden first/last items in Groups break the corners -->
     <!-- For SettingsGroups we have to set the CornerRadius for the top edges of the first child to match the top of the group -->
     <Style Selector="controls|SettingsGroup > ui|SettingsExpanderItem:nth-child(1) /template/ ui|FABorder#Root,
                      controls|SettingsGroup > ui|SettingsExpanderItem.First /template/ ui|FABorder#Root">

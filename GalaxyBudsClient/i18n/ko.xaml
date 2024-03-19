@@ -257,9 +257,9 @@
     <sys:String x:Key="touchpad_double_tap_volume">버즈 가장자리 두 번 두드리기</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">음량을 낮추려면 왼쪽 버즈의 가장자리를 두 번 두드리고, 음량을 높이려면 오른쪽 버즈의 가장자리를 두 번 두드리세요.</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">소음 제어 전환 모드</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">액티브 노이즈 캔슬링 &lt;-&gt; 주변 소리 듣기</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_off">액티브 노이즈 캔슬링 &lt;-&gt; 끄기</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_amb_off">주변 소리 듣기 &lt;-&gt; 끄기</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">액티브 노이즈 캔슬링 ↔ 주변 소리 듣기</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">액티브 노이즈 캔슬링 ↔ 끄기</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">주변 소리 듣기 ↔ 끄기</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">모드 간 순환 (액티브 노이즈 캔슬링, 주변 소리 듣기, 끄기)</sys:String>
 
     <!--Custom touchpad action page-->

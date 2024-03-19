@@ -5,6 +5,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Data;
 using Avalonia.Interactivity;
+using Avalonia.Metadata;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Interface.Converters;
 using GalaxyBudsClient.Interface.MarkupExtensions;
@@ -37,6 +38,9 @@ public class SettingsComboBoxItem : SettingsSymbolItem
     public static readonly StyledProperty<object?> SelectedValueProperty = 
         SelectingItemsControl.SelectedValueProperty.AddOwner<SettingsComboBoxItem>();
     
+    public static readonly StyledProperty<IBinding?> DisplayMemberBindingProperty = 
+        ItemsControl.DisplayMemberBindingProperty.AddOwner<SettingsComboBoxItem>();
+
     public static readonly StyledProperty<IEnumerable?> ItemsSourceProperty = 
         ItemsControl.ItemsSourceProperty.AddOwner<SettingsComboBoxItem>();
 
@@ -52,6 +56,14 @@ public class SettingsComboBoxItem : SettingsSymbolItem
         set => SetValue(SelectedValueProperty, value);
     }
     
+    [AssignBinding]
+    [InheritDataTypeFromItems(nameof(ItemsSource))]
+    public IBinding? DisplayMemberBinding
+    {
+        get => GetValue(DisplayMemberBindingProperty);
+        set => SetValue(DisplayMemberBindingProperty, value);
+    }
+
     public IEnumerable? ItemsSource
     {
         get => GetValue(ItemsSourceProperty);
@@ -73,6 +85,10 @@ public class SettingsComboBoxItem : SettingsSymbolItem
         else if (change.Property == SelectedValueProperty)
         {
             _comboBox.SelectedValue = SelectedValue;
+        }
+        else if (change.Property == DisplayMemberBindingProperty)
+        {
+            _comboBox.DisplayMemberBinding = DisplayMemberBinding;
         }
         else
         {

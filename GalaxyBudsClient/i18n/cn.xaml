@@ -242,9 +242,9 @@
     <sys:String x:Key="touchpad_double_tap_volume">双击耳机边缘</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">双击左侧耳机边缘以降低音量，双击右侧耳机边缘以提高音量</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">切换降噪模式</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">主动降噪 &lt;-&gt; 环境音</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_off">主动降噪 &lt;-&gt; 关闭</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_amb_off">环境音 &lt;-&gt; 关闭</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">主动降噪 ↔ 环境音</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">主动降噪 ↔ 关闭</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">环境音 ↔ 关闭</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">循环模式（主动降噪，环境音，关闭）</sys:String>
 
     <!--Custom touchpad action page-->
