@@ -24,11 +24,11 @@ namespace GalaxyBudsClient.Model.Specifications
         public ITouchOption TouchMap => new BudsTouchOption();
         public Guid ServiceUuid => Uuids.Buds;
 
-        public IReadOnlyCollection<ItemType> TrayShortcuts => Array.AsReadOnly(
+        public IReadOnlyCollection<TrayItemTypes> TrayShortcuts => Array.AsReadOnly(
             [
-                ItemType.ToggleAmbient,
-                ItemType.ToggleEqualizer,
-                ItemType.LockTouchpad
+                TrayItemTypes.ToggleAmbient,
+                TrayItemTypes.ToggleEqualizer,
+                TrayItemTypes.LockTouchpad
             ]
         );
         

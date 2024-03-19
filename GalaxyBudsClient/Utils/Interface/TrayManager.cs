@@ -4,9 +4,7 @@ using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Threading;
-using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
-using GalaxyBudsClient.InterfaceOld.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Specifications;
@@ -71,7 +69,7 @@ namespace GalaxyBudsClient.Utils.Interface
 
         private async void OnTrayMenuCommand(object? type)
         {
-            if (type is not ItemType e)
+            if (type is not TrayItemTypes e)
             {
                 Log.Error("TrayManager.OnTrayMenuCommand: Unknown item type: {Type}", type);
                 return;
@@ -79,7 +77,7 @@ namespace GalaxyBudsClient.Utils.Interface
             
             switch (e)
             {
-                case ItemType.ToggleNoiseControl:
+                case TrayItemTypes.ToggleNoiseControl:
                     var ncVm = MainWindow2.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>();
                     if (ncVm != null)
                     {
@@ -100,28 +98,28 @@ namespace GalaxyBudsClient.Utils.Interface
                         }
                     }
                     break;
-                case ItemType.LockTouchpad:
+                case TrayItemTypes.LockTouchpad:
                     EventDispatcher.Instance.Dispatch(Event.LockTouchpadToggle);
                     break;
-                case ItemType.ToggleAnc:
+                case TrayItemTypes.ToggleAnc:
                     EventDispatcher.Instance.Dispatch(Event.AncToggle);
                     break;
-                case ItemType.ToggleEqualizer:
+                case TrayItemTypes.ToggleEqualizer:
                     EventDispatcher.Instance.Dispatch(Event.EqualizerToggle);
                     break;
-                case ItemType.ToggleAmbient:
+                case TrayItemTypes.ToggleAmbient:
                     EventDispatcher.Instance.Dispatch(Event.AmbientToggle);
                     break;
-                case ItemType.Connect:
+                case TrayItemTypes.Connect:
                     if (!BluetoothImpl.Instance.IsConnectedLegacy && BluetoothImpl.Instance.RegisteredDeviceValid)
                     {
                         await BluetoothImpl.Instance.ConnectAsync();
                     }
                     break;
-                case ItemType.Open:
+                case TrayItemTypes.Open:
                     Dispatcher.UIThread.Post(MainWindow2.Instance.BringToFront);
                     break;
-                case ItemType.Quit:
+                case TrayItemTypes.Quit:
                     Log.Information("TrayManager: Exit requested by user");
                     MainWindow2.Instance.OverrideMinimizeTray = true;
                     Dispatcher.UIThread.Post(MainWindow2.Instance.Close);
@@ -161,17 +159,17 @@ namespace GalaxyBudsClient.Utils.Interface
             return from type in BluetoothImpl.Instance.DeviceSpec.TrayShortcuts
                 let resourceKey = type switch
                 {
-                    ItemType.ToggleNoiseControl => "tray_switch_noise",
-                    ItemType.ToggleEqualizer => MainWindow2.Instance.MainView.ResolveViewModelByType<EqualizerPageViewModel>()?.IsEqEnabled ?? false
+                    TrayItemTypes.ToggleNoiseControl => "tray_switch_noise",
+                    TrayItemTypes.ToggleEqualizer => MainWindow2.Instance.MainView.ResolveViewModelByType<EqualizerPageViewModel>()?.IsEqEnabled ?? false
                         ? "tray_disable_eq"
                         : "tray_enable_eq",
-                    ItemType.ToggleAmbient => MainWindow2.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAmbientSoundEnabled ?? false
+                    TrayItemTypes.ToggleAmbient => MainWindow2.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAmbientSoundEnabled ?? false
                         ? "tray_disable_ambient_sound"
                         : "tray_enable_ambient_sound",
-                    ItemType.ToggleAnc => MainWindow2.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAncEnabled ?? false
+                    TrayItemTypes.ToggleAnc => MainWindow2.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAncEnabled ?? false
                         ? "tray_disable_anc"
                         : "tray_enable_anc",
-                    ItemType.LockTouchpad => /* TODO MainWindow2.Instance.MainView.ResolveViewModelByType<TouchpadPageViewModel>()?.IsTouchLocked ?? */ false
+                    TrayItemTypes.LockTouchpad => /* TODO MainWindow2.Instance.MainView.ResolveViewModelByType<TouchpadPageViewModel>()?.IsTouchLocked ?? */ false
                         ? "tray_unlock_touchpad"
                         : "tray_lock_touchpad",
                     _ => "unknown"
@@ -199,7 +197,7 @@ namespace GalaxyBudsClient.Utils.Interface
                     items.Add(new NativeMenuItem(Loc.Resolve("window_open"))
                     {
                         Command = new MiniCommand(OnTrayMenuCommand),
-                        CommandParameter = ItemType.Open
+                        CommandParameter = TrayItemTypes.Open
                     });
                     items.Add(new NativeMenuItemSeparator());
                 }
@@ -214,7 +212,7 @@ namespace GalaxyBudsClient.Utils.Interface
                     items.Add(new NativeMenuItem(Loc.Resolve("connlost_connect"))
                     {
                         Command = new MiniCommand(OnTrayMenuCommand),
-                        CommandParameter = ItemType.Connect
+                        CommandParameter = TrayItemTypes.Connect
                     });
                     items.Add(new NativeMenuItemSeparator());
                 }
@@ -222,7 +220,7 @@ namespace GalaxyBudsClient.Utils.Interface
                 items.Add(new NativeMenuItem(Loc.Resolve("tray_quit"))
                 {
                     Command = new MiniCommand(OnTrayMenuCommand),
-                    CommandParameter = ItemType.Quit
+                    CommandParameter = TrayItemTypes.Quit
                 });
                 
                 (Application.Current as App)?.TrayMenu.Items.Clear();

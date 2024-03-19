@@ -63,6 +63,7 @@
                                 HorizontalAlignment="Right">
                             <Interaction.Behaviors>
                                 <!-- TODO this needs additional logic for progress indication -->
+                                <!-- TODO on connect: check if stored device is valid and return to setup wizard if not -->
                                 <EventTriggerBehavior EventName="Click">
                                     <ext:EventDispatcherAction Event="Connect" />
                                 </EventTriggerBehavior>

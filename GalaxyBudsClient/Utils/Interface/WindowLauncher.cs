@@ -35,6 +35,5 @@ namespace GalaxyBudsClient.Utils.Interface
                     target.Show(parent);
             }
         }
-
     }
 }

@@ -13,7 +13,9 @@
     <Grid Margin="0,15, 0, 30"
           ClipToBounds="False"
           RowDefinitions="Auto,15,Auto,30,Auto">
-
+        
+        <!-- TODO: WarningContainer visibility moves other controls up/down. add spacing -->
+        
         <Grid Grid.Row="0" 
               Name="WarningContainer"
               Margin="10,0"

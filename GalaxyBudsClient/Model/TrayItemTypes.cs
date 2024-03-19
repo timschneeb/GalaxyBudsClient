@@ -1,6 +1,6 @@
 ﻿namespace GalaxyBudsClient.Model
 {
-    public enum ItemType
+    public enum TrayItemTypes
     {
         ToggleEqualizer,
         ToggleAmbient,

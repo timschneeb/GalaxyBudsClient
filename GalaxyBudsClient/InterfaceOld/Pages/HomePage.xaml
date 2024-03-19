@@ -3,8 +3,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:pages="clr-namespace:GalaxyBudsClient.InterfaceOld.Pages"
-             xmlns:elements="clr-namespace:GalaxyBudsClient.InterfaceOld.Elements"
-             xmlns:items="clr-namespace:GalaxyBudsClient.InterfaceOld.Items"
              mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
              x:Class="GalaxyBudsClient.InterfaceOld.Pages.HomePage"
              DockPanel.Dock="Top" Margin="10,0">
@@ -52,7 +50,6 @@
                            VerticalAlignment="Center" HorizontalAlignment="Center"
                            Margin="0,1,0,0"/>
                 </Grid>
-                <elements:LoadingSpinner x:Name="LoadingSpinner" Margin="469,12,22,142" />
             </Grid>
         </Border>
     </Grid>

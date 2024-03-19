@@ -221,4 +221,10 @@
     <ItemGroup>
       <Folder Include="Cli\" />
     </ItemGroup>
+
+    <ItemGroup>
+      <UpToDateCheckInput Remove="InterfaceOld\Elements\LoadingSpinner.xaml" />
+      <UpToDateCheckInput Remove="Resources\findmygear\finding_glow.png" />
+      <UpToDateCheckInput Remove="Resources\findmygear\radar_circle.png" />
+    </ItemGroup>
 </Project>
