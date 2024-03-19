@@ -48,6 +48,7 @@
                 
             </controls:SettingsGroup>
             
+            <!-- TODO message foreground color should be secondary text color -->
             <ui:InfoBar Title="{DynamicResource hint}"
                         IsOpen="True"
                         IsClosable="False"

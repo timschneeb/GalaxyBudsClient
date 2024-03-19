@@ -66,7 +66,6 @@
     <ItemGroup>
         <AvaloniaResource Include="Resources\**" />
         <AvaloniaResource Include="i18n\*" /> 
-        <AvaloniaResource Include="ui\style\*" />
     </ItemGroup>
     
     <ItemGroup>
@@ -82,6 +81,7 @@
         <AvaloniaXaml Remove="bin\**" />
         <EmbeddedResource Remove="bin\**" />
         <None Remove="bin\**" />
+        
         <Compile Update="Interface\Pages\SettingsPage.axaml.cs">
           <DependentUpon>SettingsPage.axaml</DependentUpon>
           <SubType>Code</SubType>
@@ -127,7 +127,28 @@
           <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Dialogs\HotkeyEditorDialog.axaml.cs">
-          <DependentUpon>EditSegmentContentDialog.axaml</DependentUpon>
+          <DependentUpon>HotkeyEditorDialog.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="Interface\Pages\FindMyBudsPage.axaml.cs">
+            <DependentUpon>FindMyBudsPage.axaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="Interface\Controls\GlowingToggleButton.axaml.cs">
+            <DependentUpon>GlowingToggleButton.axaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="Interface\Controls\MuteToggleButton.axaml.cs">
+            <DependentUpon>MuteToggleButton.axaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="Interface\Controls\EarbudControlUnit.axaml.cs">
+          <DependentUpon>EarbudControlUnit.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="Interface\Pages\FitTestPage.axaml.cs">
+          <DependentUpon>FitTestPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
         </Compile>
     </ItemGroup>
 

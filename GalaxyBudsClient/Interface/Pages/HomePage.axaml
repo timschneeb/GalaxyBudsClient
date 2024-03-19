@@ -35,7 +35,7 @@
                                              ActionSymbol="ChevronRight"
                                              IsClickEnabled="True" />
 
-                <controls:SettingsSymbolItem Name="Find"
+                <controls:SettingsSymbolItem Name="FindMyBuds"
                                              Content="{DynamicResource mainpage_find_my_earbuds}"
                                              Symbol="LocationLive"
                                              ActionSymbol="ChevronRight"

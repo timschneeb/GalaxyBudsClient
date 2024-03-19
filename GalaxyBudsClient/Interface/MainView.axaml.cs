@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using Avalonia;
 using Avalonia.Animation;
 using Avalonia.Controls;
@@ -15,6 +16,7 @@ using FluentAvalonia.UI.Windowing;
 using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
+using Serilog;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
 namespace GalaxyBudsClient.Interface;
@@ -32,7 +34,6 @@ public partial class MainView : UserControl
     {
         base.OnAttachedToVisualTree(e);
 
-        ClipboardService.Owner = TopLevel.GetTopLevel(this);
         // Simple check - all desktop versions of this app will have a window as the TopLevel
         // Mobile and WASM will have something else
         _isDesktop = TopLevel.GetTopLevel(this) is Window;
@@ -107,11 +108,13 @@ public partial class MainView : UserControl
         }
     }
 
+    private PageViewModelBase? CurrentPageViewModel { set; get; } = null;
+    
     private readonly MainPageViewModelBase[] mainPages = [
         new HomePageViewModel(),
         new NoiseControlPageViewModel(),
         new EqualizerPageViewModel(),
-        // TODO new FindMyBudsPageViewModel(),
+        new FindMyBudsPageViewModel(),
         // TODO new TouchpadPageViewModel(),
         new AdvancedPageViewModel(),
         new SystemPageViewModel(),
@@ -123,7 +126,7 @@ public partial class MainView : UserControl
         new AmbientCustomizePageViewModel(),
         new BixbyRemapPageViewModel(),
         new FirmwarePageViewModel(),
-        // TODO new GearFitPageViewModel(),
+        new FitTestPageViewModel(),
         new HotkeyPageViewModel(),
         new SystemInfoPageViewModel()
     ];
@@ -190,12 +193,14 @@ public partial class MainView : UserControl
         // TODO: maybe customize transitions? (up/down for NVIs and left/right for subpages)
         NavigationService.Instance.NavigateFromContext(nvi.Tag, e.RecommendedNavigationTransitionInfo);
     }
-
+    
     private void OnFrameViewNavigated(object? sender, NavigationEventArgs e)
     {
+        CurrentPageViewModel?.OnNavigatedFrom();
+
         var control = e.Content as Control;
         var page = control?.DataContext as PageViewModelBase;
-
+        
         if (page is MainPageViewModelBase)
         {
             if (page is HomePageViewModel)
@@ -240,7 +245,8 @@ public partial class MainView : UserControl
             }
         }
 
-        page?.OnNavigated();
+        CurrentPageViewModel = page;
+        page?.OnNavigatedTo();
         
         if (FrameView.BackStackDepth > 0 && !NavView.IsBackButtonVisible)
         {

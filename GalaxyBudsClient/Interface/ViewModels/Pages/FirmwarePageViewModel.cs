@@ -58,7 +58,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
             await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
     }
 
-    public override async void OnNavigated()
+    public override async void OnNavigatedTo()
     {
         RefreshList(silent: true);
         

@@ -51,8 +51,8 @@ namespace GalaxyBudsClient.InterfaceOld.Items
                 }
                 else
                 {
-                    _ctxMenu = MenuFactory.BuildContextMenu(value, this);
-                    _ctxMenu.MaxWidth = double.MaxValue;
+                    //_ctxMenu = MenuFactory.BuildContextMenu(value, this);
+                    //_ctxMenu.MaxWidth = double.MaxValue;
                 }
             }
         }

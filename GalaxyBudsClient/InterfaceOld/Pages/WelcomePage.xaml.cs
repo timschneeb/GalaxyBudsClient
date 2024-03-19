@@ -10,6 +10,7 @@ using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.InterfaceOld.Items;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
@@ -58,11 +59,11 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 					Loc.Load();
 				};
 			}
-			
-			_localeMenu = MenuFactory.BuildContextMenu(localeMenuActions, _locale);
+
+			_localeMenu = null;//MenuFactory.BuildContextMenu(localeMenuActions, _locale);
 			
 			// Only search for the Buds app on Windows 10 and above
-			if (Environment.OSVersion.Platform == PlatformID.Win32NT && Environment.OSVersion.Version.Major >= 10) 
+			if (PlatformUtils.IsWindows && Environment.OSVersion.Version.Major >= 10) 
 			{
 				try
 				{

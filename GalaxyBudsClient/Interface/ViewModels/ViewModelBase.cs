@@ -24,7 +24,8 @@ public abstract class PageViewModelBase : ViewModelBase
 
     public abstract Control CreateView(); 
     public abstract string TitleKey { get; }
-    public virtual void OnNavigated() {}
+    public virtual void OnNavigatedTo() {}
+    public virtual void OnNavigatedFrom() {}
 }
 
 public abstract class MainPageViewModelBase : PageViewModelBase

@@ -80,7 +80,7 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
         await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
     }
     
-    public override void OnNavigated() => RequestData();
+    public override void OnNavigatedTo() => RequestData();
 
     [Reactive] public string HwVersion { set; get; } = Placeholder;
     [Reactive] public string SwVersion { set; get; } = Placeholder;
