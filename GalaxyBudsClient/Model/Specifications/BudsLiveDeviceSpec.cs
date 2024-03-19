@@ -17,6 +17,7 @@ namespace GalaxyBudsClient.Model.Specifications
                 { Features.CaseBattery, null },
                 { Features.FragmentedMessages, null },
                 { Features.StereoPan, new FeatureRule(7, "R180XXU0AUB5") },
+                { Features.SpatialSensor, null },
                 { Features.BixbyWakeup, null },
                 { Features.FirmwareUpdates, null },
                 { Features.LegacyNoiseControlMode, null },

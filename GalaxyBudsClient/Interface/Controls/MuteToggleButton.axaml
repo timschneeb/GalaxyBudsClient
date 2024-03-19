@@ -1,0 +1,19 @@
+﻿<UserControl xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:elements="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+             ClipToBounds="False"
+             x:Class="GalaxyBudsClient.Interface.Controls.MuteToggleButton"
+             x:DataType="elements:MuteToggleButton"
+             x:CompileBindings="True">
+    
+    <Design.DataContext>
+        <elements:MuteToggleButton />
+    </Design.DataContext>
+    
+    <ToggleButton Name="Button">
+        <ic:SymbolIcon Name="Icon"
+                       Symbol="Speaker2"
+                       HorizontalAlignment="Center" />
+    </ToggleButton>
+</UserControl>

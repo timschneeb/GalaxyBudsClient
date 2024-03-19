@@ -77,7 +77,7 @@
                     </Interaction.Behaviors>
                 </controls:SettingsSymbolItem>
 
-                <controls:SettingsSymbolItem Name="GearFit"
+                <controls:SettingsSymbolItem Name="FitTest"
                                              Content="{DynamicResource mainpage_fit_test}"
                                              Description="{DynamicResource gft_desc}"
                                              Symbol="TextBulletListCheckmark"

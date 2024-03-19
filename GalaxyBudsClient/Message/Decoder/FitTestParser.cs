@@ -1,3 +1,5 @@
+using GalaxyBudsClient.Model.Attributes;
+
 namespace GalaxyBudsClient.Message.Decoder
 {
     public class FitTestParser : BaseMessageParser
@@ -18,8 +20,11 @@ namespace GalaxyBudsClient.Message.Decoder
 
         public enum Result : byte
         {
+            [LocalizedDescription("gft_bad")]
             Bad = 0,
+            [LocalizedDescription("gft_good")]
             Good = 1,
+            [LocalizedDescription("gft_fail")]
             TestFailed = 2
         }
     }

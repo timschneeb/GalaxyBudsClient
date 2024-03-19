@@ -37,10 +37,9 @@ namespace GalaxyBudsClient
             Pager.RegisterPages(HomePage, ConnectionLostPage, new WelcomePage());
             
             // Defer the rest of the page registration
-            Dispatcher.UIThread.Post(() => Pager.RegisterPages(new FindMyGearPage(),
+            Dispatcher.UIThread.Post(() => Pager.RegisterPages(
                 new TouchpadPage(), CustomTouchActionPage, DeviceSelectionPage,
-                new BudsAppDetectedPage(), new TouchpadGesturePage(), 
-                new GearFitPage()), DispatcherPriority.ApplicationIdle);
+                new BudsAppDetectedPage(), new TouchpadGesturePage()), DispatcherPriority.ApplicationIdle);
         }
     }
     

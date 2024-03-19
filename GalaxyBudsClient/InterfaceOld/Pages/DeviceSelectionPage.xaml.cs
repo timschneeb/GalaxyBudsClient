@@ -7,6 +7,7 @@ using Avalonia.Controls.Selection;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Bluetooth;
+using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.InterfaceOld.Dialogs;
 using GalaxyBudsClient.InterfaceOld.Elements;
 using GalaxyBudsClient.InterfaceOld.Items;
@@ -129,11 +130,11 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
         private static void ShowErrorDialog()
         {
-            new MessageBox()
+            _ = new MessageBox()
             {
                 Title = Loc.Resolve("error"),
                 Description = Loc.Resolve("devsel_invalid_selection")
-            }.ShowDialog(MainWindow2.Instance);
+            }.ShowAsync(MainWindow2.Instance);
         }
 
         private async void RegisterDevice(Models model, string mac)
@@ -185,7 +186,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                 {
                     Title = Loc.Resolve("error"),
                     Description = ex.Message
-                }.ShowDialog(MainWindow2.Instance);
+                }.ShowAsync(MainWindow2.Instance);
                 return;
             }
 

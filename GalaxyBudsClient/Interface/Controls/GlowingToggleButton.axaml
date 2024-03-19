@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="GalaxyBudsClient.Interface.Controls.GlowingToggleButton"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             ClipToBounds="False"
+             x:DataType="controls:GlowingToggleButton">
+    
+    <Design.DataContext>
+        <controls:GlowingToggleButton />
+    </Design.DataContext>
+    
+    <Grid HorizontalAlignment="Center" 
+          VerticalAlignment="Center" 
+          ClipToBounds="False">
+        <Button Name="GlowButton"
+                Background="{DynamicResource AccentFillColorDefaultBrush}"
+                Foreground="{DynamicResource AccentFillColorDefaultBrush}" 
+                Content="{Binding #Button.Content}"
+                ClipToBounds="False">
+            <Button.Styles>
+                <Style Selector="Button">
+                    <Style.Setters>
+                        <Setter Property="Opacity" Value="0" />
+                    </Style.Setters>
+                    <Style.Animations>
+                        <Animation IterationCount="Infinite"
+                                   Duration="0:0:5">
+                            <KeyFrame Cue="0%">
+                                <Setter Property="Opacity" Value="0" />
+                            </KeyFrame>
+                            <KeyFrame Cue="100%">
+                                <Setter Property="Opacity" Value="0" />
+                            </KeyFrame>
+                        </Animation>
+                    </Style.Animations>
+                </Style>
+                <Style Selector="Button[Tag=Glowing]">
+                    <Style.Animations>
+                        <Animation IterationCount="Infinite"
+                                   PlaybackDirection="Alternate" 
+                                   Duration="0:0:2">
+                            <Animation.Easing>
+                                <QuadraticEaseInOut/>
+                            </Animation.Easing>
+                            <KeyFrame Cue="0%">
+                                <Setter Property="Opacity" Value="0.4" />
+                            </KeyFrame>
+                            <KeyFrame Cue="100%">
+                                <Setter Property="Opacity" Value="1.0" />
+                            </KeyFrame>
+                        </Animation>
+                    </Style.Animations>
+                </Style>
+            </Button.Styles>
+            <Button.Effect>
+                <BlurEffect Radius="100" />
+            </Button.Effect>
+        </Button>
+        <ToggleButton Name="Button" Content="{Binding Text}" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,37 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             mc:Ignorable="d" d:DesignWidth="800"
+             x:Class="GalaxyBudsClient.Interface.Pages.FindMyBudsPage"
+             x:DataType="pages:FindMyBudsPageViewModel"
+             x:CompileBindings="True">
+
+    <Design.DataContext>
+        <pages:FindMyBudsPageViewModel />
+    </Design.DataContext>
+
+    <ScrollViewer>
+        <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
+            <Border Classes="Card" ClipToBounds="True">
+                
+                <controls:EarbudControlUnit ButtonText="{DynamicResource fmg_header}" 
+                                            WarningText="{Binding WarningText}"
+                                            IsChecked="{Binding IsSearching}">
+                    <controls:EarbudControlUnit.LeftContent>
+                        <controls:MuteToggleButton IsChecked="{Binding IsLeftMuted}"
+                                                   IsVisible="{Binding IsSearching}"/>
+                    </controls:EarbudControlUnit.LeftContent>
+                    
+                    <controls:EarbudControlUnit.RightContent>
+                        <controls:MuteToggleButton IsChecked="{Binding IsRightMuted}"
+                                                   IsVisible="{Binding IsSearching}" />
+                    </controls:EarbudControlUnit.RightContent>
+                </controls:EarbudControlUnit>
+                
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
