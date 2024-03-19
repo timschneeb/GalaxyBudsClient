@@ -13,6 +13,7 @@ using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using ReactiveUI.Fody.Helpers;
 
@@ -26,10 +27,15 @@ public class TouchpadPageViewModel : MainPageViewModelBase
     {
         SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
         
+        Settings.Instance.CustomActionLeft.PropertyChanged += (sender, args) => UpdateEditStates();
+        Settings.Instance.CustomActionRight.PropertyChanged += (sender, args) => UpdateEditStates();
+        
         BluetoothImpl.Instance.Connected += OnConnected;
         Loc.LanguageUpdated += OnLanguageUpdated;
         PropertyChanged += OnPropertyChanged;
     }
+
+    public override void OnNavigatedTo() => UpdateEditStates();
 
     private void OnConnected(object? sender, EventArgs e)
     {
@@ -39,6 +45,7 @@ public class TouchpadPageViewModel : MainPageViewModelBase
     private void OnLanguageUpdated()
     {
         UpdateTouchActions();
+        UpdateEditStates();
     }
 
     private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
@@ -73,7 +80,7 @@ public class TouchpadPageViewModel : MainPageViewModelBase
             _ => NoiseControlCycleMode.Unknown
         };
 
-        UpdateNoiseControlEditState();
+        UpdateEditStates();
         
         PropertyChanged += OnPropertyChanged;
     }
@@ -117,7 +124,7 @@ public class TouchpadPageViewModel : MainPageViewModelBase
             case nameof(LeftAction):
             case nameof(RightAction):
                 await MessageComposer.Touch.SetOptions(LeftAction, RightAction);
-                UpdateNoiseControlEditState();
+                UpdateEditStates();
                 if(LeftAction == TouchOptions.NoiseControl || RightAction == TouchOptions.NoiseControl)
                     OnPropertyChanged(null, new PropertyChangedEventArgs(nameof(NoiseControlCycleMode)));
                 break;
@@ -140,10 +147,37 @@ public class TouchpadPageViewModel : MainPageViewModelBase
             }
         });
     }
+
+    public void SetCustomAction(Devices side, CustomAction action)
+    {
+        if (side == Devices.L)
+        {
+            Settings.Instance.CustomActionLeft.Action = action.Action;
+            Settings.Instance.CustomActionLeft.Parameter = action.Parameter;
+        }
+        else if (side == Devices.R)
+        {
+            Settings.Instance.CustomActionRight.Action = action.Action;
+            Settings.Instance.CustomActionRight.Parameter = action.Parameter;
+        }
+
+        UpdateEditStates();
+    }
     
-    private void UpdateNoiseControlEditState()
+    private void UpdateEditStates()
     {
         IsNoiseControlCycleModeEditable = LeftAction == TouchOptions.NoiseControl || RightAction == TouchOptions.NoiseControl;
+        IsLeftCustomActionEditable = LeftAction == TouchOptions.OtherL;
+        IsRightCustomActionEditable = RightAction == TouchOptions.OtherR;
+
+        LeftActionDescription = IsLeftCustomActionEditable ? 
+            ActionAsString(Settings.Instance.CustomActionLeft) : Loc.Resolve("touchpad_default_action");
+        RightActionDescription = IsRightCustomActionEditable ? 
+            ActionAsString(Settings.Instance.CustomActionRight) : Loc.Resolve("touchpad_default_action");
+        return;
+
+        string ActionAsString(ICustomAction action) => 
+            $"{Loc.Resolve("touchoption_custom_prefix")} {new CustomAction(action.Action, action.Parameter)}";
     }
     
     private void UpdateTouchActions()
@@ -152,7 +186,7 @@ public class TouchpadPageViewModel : MainPageViewModelBase
         {
             var table = BluetoothImpl.Instance.DeviceSpec.TouchMap.LookupTable;
             var actions = table
-                .Where(pair => !pair.Key.IsHidden())
+                .Where(pair => !pair.Key.IsMemberIgnored())
                 .Select(TouchActionViewModel.FromKeyValuePair);
 
             /* Inject custom actions if appropriate */
@@ -173,8 +207,8 @@ public class TouchpadPageViewModel : MainPageViewModelBase
         }
     }
     
-    [Reactive] public IEnumerable<TouchOptions> LeftActions { set; get; }
-    [Reactive] public IEnumerable<TouchOptions> RightActions { set; get; }
+    [Reactive] public IEnumerable<TouchOptions>? LeftActions { set; get; }
+    [Reactive] public IEnumerable<TouchOptions>? RightActions { set; get; }
     [Reactive] public TouchOptions LeftAction { set; get; }
     [Reactive] public TouchOptions RightAction { set; get; }
     [Reactive] public NoiseControlCycleMode NoiseControlCycleMode { set; get; }
@@ -186,6 +220,10 @@ public class TouchpadPageViewModel : MainPageViewModelBase
     [Reactive] public bool IsHoldGestureEnabled { set; get; }
 
     [Reactive] public bool IsNoiseControlCycleModeEditable { set; get; }
+    [Reactive] public bool IsLeftCustomActionEditable { set; get; }
+    [Reactive] public bool IsRightCustomActionEditable { set; get; }
+    [Reactive] public string? LeftActionDescription { set; get; }
+    [Reactive] public string? RightActionDescription { set; get; }
 
     public override string TitleKey => "mainpage_touchpad";
     public override Symbol IconKey => Symbol.HandDraw;

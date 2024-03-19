@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Serialization;
 
 namespace GalaxyBudsClient.Model.Attributes
 {
@@ -35,8 +36,8 @@ namespace GalaxyBudsClient.Model.Attributes
         public static string GetLocalizableKey<T>(this T e) where T : IConvertible
             => e.GetEnumAttribute<LocalizedDescriptionAttribute, T>()?.Key ?? string.Empty;
         
-        public static bool IsHidden<T>(this T e) where T : IConvertible
-            => e.GetEnumAttribute<HiddenAttribute, T>() != null;
+        public static bool IsMemberIgnored<T>(this T e) where T : IConvertible
+            => e.GetEnumAttribute<IgnoreDataMemberAttribute, T>() != null;
         
         public static ModelMetadataAttribute? GetModelMetadata<T>(this T e) where T : IConvertible
             => e.GetEnumAttribute<ModelMetadataAttribute, T>();

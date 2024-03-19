@@ -143,9 +143,6 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 					var menuActions = new Dictionary<string,EventHandler<RoutedEventArgs>?>();
                     foreach (var value in BluetoothImpl.Instance.DeviceSpec.TouchMap.LookupTable)
                     {
-                        if (value.Key.IsHidden())
-                            continue;
-                        
                         menuActions.Add(value.Key.GetDescription(), (_, _) => ItemClicked(device, value.Key));
                     }
                     
@@ -262,7 +259,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
 		private async void SendLockState()
 		{
-			if(BluetoothImpl.Instance.DeviceSpec.Supports(Features.AdvancedTouchLock))
+			/*if(BluetoothImpl.Instance.DeviceSpec.Supports(Features.AdvancedTouchLock))
 			{
 				if (MainWindow.Instance.Pager.FindPage(Pages.TouchGesture) is TouchpadGesturePage page)
 				{
@@ -279,7 +276,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 			{
 				await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOCK_TOUCHPAD, _lock.IsChecked);
 			}
-			EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
+			EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);*/
 		}
 		
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)

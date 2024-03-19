@@ -26,7 +26,8 @@ namespace GalaxyBudsClient.Interface.Dialogs
             {
                 Title = Loc.Resolve(hotkey == null ? "hotkey_add" : "hotkey_edit_long"),
                 PrimaryButtonText = Loc.Resolve("okay"),
-                CloseButtonText = Loc.Resolve("cancel")
+                CloseButtonText = Loc.Resolve("cancel"),
+                DefaultButton = ContentDialogButton.Primary
             };
 
             var viewModel = new HotkeyEditorDialogViewModel(hotkey);

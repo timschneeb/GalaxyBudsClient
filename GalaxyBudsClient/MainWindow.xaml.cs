@@ -1,6 +1,5 @@
 using System;
 using System.Diagnostics;
-using Avalonia;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
 using GalaxyBudsClient.InterfaceOld.Pages;
@@ -37,9 +36,9 @@ namespace GalaxyBudsClient
             Pager.RegisterPages(HomePage, ConnectionLostPage, new WelcomePage());
             
             // Defer the rest of the page registration
-            Dispatcher.UIThread.Post(() => Pager.RegisterPages(
-                new TouchpadPage(), CustomTouchActionPage, DeviceSelectionPage,
-                new BudsAppDetectedPage(), new TouchpadGesturePage()), DispatcherPriority.ApplicationIdle);
+            Dispatcher.UIThread.Post(() => 
+                    Pager.RegisterPages(new TouchpadPage(), CustomTouchActionPage, DeviceSelectionPage, new BudsAppDetectedPage()
+                ), DispatcherPriority.ApplicationIdle);
         }
     }
     
@@ -48,7 +47,5 @@ namespace GalaxyBudsClient
     {
         public void RegisterPages(params AbstractPage[] pages) {}
         public bool SwitchPage(AbstractPage.Pages page) => throw new NotSupportedException();
-        public AbstractPage? FindPage(AbstractPage.Pages page, bool nullAware = false) => throw new NotSupportedException();
-        public AbstractPage.Pages CurrentPage => AbstractPage.Pages.Dummy;
     }
 }

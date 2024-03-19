@@ -1,0 +1,66 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dialogs="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Dialogs"
+             xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+             xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+             mc:Ignorable="d"
+             Padding="0, 5, 0, 0"
+             x:CompileBindings="True"
+             x:DataType="dialogs:TouchActionEditorDialogViewModel"
+             x:Class="GalaxyBudsClient.Interface.Dialogs.TouchActionEditorDialog">
+
+    <Design.DataContext>
+        <dialogs:TouchActionEditorDialogViewModel />
+    </Design.DataContext>
+
+    <StackPanel MinWidth="400" Spacing="16">
+        <StackPanel Spacing="12">
+            <TextBlock Text="{DynamicResource cact_action}" />
+            <ComboBox HorizontalAlignment="Stretch"
+                      DisplayMemberBinding="{Binding ., Converter={StaticResource EnumDescriptionConverter}}"
+                      ItemsSource="{Binding ActionModeSource}"
+                      SelectedValue="{Binding ActionMode}" />
+        </StackPanel>
+        
+        <StackPanel Spacing="10" IsVisible="{Binding IsEventParameterEditable}">
+            <TextBlock Text="{DynamicResource cact_function_param}" />
+            <ComboBox HorizontalAlignment="Stretch"
+                      DisplayMemberBinding="{Binding ., Converter={StaticResource EnumDescriptionConverter}}"
+                      ItemsSource="{Binding EventSource}"
+                      SelectedValue="{Binding EventParameter}" />
+        </StackPanel>
+
+        <StackPanel Spacing="10" IsVisible="{Binding IsPathParameterEditable}">
+            <TextBlock Text="{DynamicResource cact_path_param}" />
+            <Grid ColumnDefinitions="*,4,Auto">
+                <TextBox HorizontalAlignment="Stretch"
+                         Text="{Binding PathParameter}" />
+                <Button Grid.Column="2" 
+                        Command="{Binding DoFilePickCommand}">
+                    <ic:SymbolIcon Symbol="Folder" />
+                </Button>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Spacing="10" IsVisible="{Binding IsHotkeyParameterEditable}">
+            <TextBlock Text="{DynamicResource cact_hotkey_param}" />
+            <Grid ColumnDefinitions="*,4,Auto">
+                <TextBox HorizontalAlignment="Stretch"
+                         IsReadOnly="True"
+                         Text="{Binding HotkeyParameter}" />
+                <Button Grid.Column="2"
+                        Command="{Binding DoHotkeyRecordCommand}">
+                    <ic:SymbolIcon Symbol="Keyboard" />
+                </Button>
+            </Grid>
+        </StackPanel>
+        
+        <ui:InfoBar Title="{DynamicResource hint}"
+                    IsOpen="True"
+                    IsClosable="False"
+                    Severity="Informational" 
+                    Message="{Binding InfoBoxMessage}" />
+    </StackPanel>
+</UserControl>

@@ -5,7 +5,6 @@
              xmlns:dialogs="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Dialogs"
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              xmlns:hotkeys="clr-namespace:GalaxyBudsClient.Model.Hotkeys"
-             xmlns:model="clr-namespace:GalaxyBudsClient.Model"
              mc:Ignorable="d"
              Padding="0, 10"
              x:CompileBindings="True"

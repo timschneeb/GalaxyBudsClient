@@ -261,11 +261,9 @@ namespace GalaxyBudsClient.Model
             NoiseControl,
             [LocalizedDescription("touchoption_spotify")]
             SpotifySpotOn,
-            [Hidden]
             [IgnoreDataMember]
             [LocalizedDescription("touchoption_custom")]
             OtherL,
-            [Hidden]
             [IgnoreDataMember]
             [LocalizedDescription("touchoption_custom")]
             OtherR
