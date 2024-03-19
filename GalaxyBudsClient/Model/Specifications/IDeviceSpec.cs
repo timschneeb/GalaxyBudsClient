@@ -16,7 +16,7 @@ namespace GalaxyBudsClient.Model.Specifications
         public string FriendlyName => Device.GetModelMetadata()?.Name ?? "null";
         public ITouchOption TouchMap { get; }
         public Guid ServiceUuid { get; }
-        public IReadOnlyCollection<ItemType> TrayShortcuts { get; }
+        public IReadOnlyCollection<TrayItemTypes> TrayShortcuts { get; }
         public string IconResourceKey { get; }
         public int MaximumAmbientVolume { get; }
         

@@ -19,6 +19,7 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
     public NoiseControlPageViewModel()
     {
         SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+        SppMessageHandler.Instance.AncEnabledUpdateResponse += (_, enabled) => IsAncEnabled = enabled;
         SppMessageHandler.Instance.AmbientEnabledUpdateResponse += (_, enabled) => IsAmbientSoundEnabled = enabled;
         SppMessageHandler.Instance.NoiseControlUpdateResponse += (_, mode)
             => EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, mode);

@@ -6,7 +6,6 @@ using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Avalonia.Threading;
-using GalaxyBudsClient.InterfaceOld.Elements;
 using GalaxyBudsClient.InterfaceOld.Items;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
@@ -23,10 +22,6 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
  	public class HomePage : AbstractPage
 	{
 		public override Pages PageType => Pages.Home;
-
-        
-        private readonly ToggleSwitch _ancSwitch;
-        private readonly LoadingSpinner _loadingSpinner;
         
         private readonly Label _caseLabel;
         private readonly Label _batteryCase;
@@ -66,8 +61,8 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 		public HomePage()
 		{   
             AvaloniaXamlLoader.Load(this);
-            _ancSwitch = this.GetControl<ToggleSwitch>("AncToggle");
-            _loadingSpinner = this.GetControl<LoadingSpinner>("LoadingSpinner");
+            //_ancSwitch = this.GetControl<ToggleSwitch>("AncToggle");
+            //_loadingSpinner = this.GetControl<LoadingSpinner>("LoadingSpinner");
             
             _caseLabel = this.GetControl<Label>("CaseLabel");
             _batteryCase = this.GetControl<Label>("BatteryCase");
@@ -103,7 +98,6 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             
             SppMessageHandler.Instance.BaseUpdate += (sender, update) => ProcessBasicUpdate(update);
             SppMessageHandler.Instance.GetAllDataResponse += (sender, parser) => UpdateDetails(parser);
-            SppMessageHandler.Instance.AncEnabledUpdateResponse += (sender, b) => _ancSwitch.IsChecked = b;
             SppMessageHandler.Instance.AnyMessageReceived += (sender, parser) =>
             {
                 /* A warning label is shown when a corrupted/invalid message has been received.
@@ -126,7 +120,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             {
                 Dispatcher.UIThread.Post((async() =>
                 {
-                    _loadingSpinner.IsVisible = false;
+                    //_loadingSpinner.IsVisible = false;
                     await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
                     _refreshTimer.Start();
                 }), DispatcherPriority.Render);
@@ -135,7 +129,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             {  
                 Dispatcher.UIThread.Post((() =>
                 {
-                    _loadingSpinner.IsVisible = true;
+                    //_loadingSpinner.IsVisible = true;
                     _refreshTimer.Stop();
                 }), DispatcherPriority.Render);
             };
@@ -225,7 +219,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             _findMyGear.Source = (IImage?)Application.Current?.FindResource($"FindMyGear{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
             _touch.Source = (IImage?)Application.Current?.FindResource($"Touch{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
 
-            _loadingSpinner.IsVisible = !BluetoothImpl.Instance.IsConnectedLegacy;
+            //_loadingSpinner.IsVisible = !BluetoothImpl.Instance.IsConnectedLegacy;
 
             /* Restore data if restarted */
             var cache = DeviceMessageCache.Instance.BasicStatusUpdate;

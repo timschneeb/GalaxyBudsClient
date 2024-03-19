@@ -3,7 +3,6 @@
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:pages="clr-namespace:GalaxyBudsClient.InterfaceOld.Pages"
-                    xmlns:elements="clr-namespace:GalaxyBudsClient.InterfaceOld.Elements"
                     xmlns:items="clr-namespace:GalaxyBudsClient.InterfaceOld.Items"
                     mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
                     x:Class="GalaxyBudsClient.InterfaceOld.Pages.DeviceSelectionPage"
@@ -23,9 +22,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
-        <elements:PageHeader Grid.Row="1" Title="{DynamicResource devsel_header}"
-                             BackPressed="BackButton_OnPointerPressed" x:Name="PageHeader" />
-
+   
         <Border Grid.Row="3" Classes="RoundedBorderListItem">
             <Border Classes="BorderHoverStyle" PointerPressed="SelectDevice_OnPointerPressed">
                 <Grid>

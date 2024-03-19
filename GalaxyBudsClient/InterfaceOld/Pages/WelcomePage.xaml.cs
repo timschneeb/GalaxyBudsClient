@@ -65,6 +65,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 			// Only search for the Buds app on Windows 10 and above
 			if (PlatformUtils.IsWindows && Environment.OSVersion.Version.Major >= 10) 
 			{
+				/* TODO: implement new setup wizard (refactor strings budsapp_text_p1, budsapp_text_p2, budsapp_text_p3) */
 				try
 				{
 					var si = new ProcessStartInfo {

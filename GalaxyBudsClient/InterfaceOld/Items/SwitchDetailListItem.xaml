@@ -4,7 +4,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns="https://github.com/avaloniaui"
              xmlns:items="clr-namespace:GalaxyBudsClient.InterfaceOld.Items"
-             xmlns:elements="clr-namespace:GalaxyBudsClient.InterfaceOld.Elements"
              mc:Ignorable="d">
     <Border CornerRadius="{StaticResource DefaultCornerRadius}"
             Classes="BorderHoverStyle">

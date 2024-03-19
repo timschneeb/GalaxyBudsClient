@@ -9,7 +9,6 @@ using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.InterfaceOld.Dialogs;
-using GalaxyBudsClient.InterfaceOld.Elements;
 using GalaxyBudsClient.InterfaceOld.Items;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
@@ -36,14 +35,10 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             set => _deviceBox.Selection = value!;
         }
 
-        private bool IsSearching
-        {
-            set => _pageHeader.LoadingSpinnerVisible = value;
-            get => _pageHeader.LoadingSpinnerVisible;
-        }
+        private bool IsSearching { set; get; }
 
         private readonly ListBox _deviceBox;
-        private readonly PageHeader _pageHeader;
+        //private readonly PageHeader _pageHeader;
         private readonly Border _navBarNext;
 
         private bool _enableDummyDevices = false;
@@ -61,7 +56,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
         {
             AvaloniaXamlLoader.Load(this);
             _navBarNext = this.GetControl<Border>("NavBarNext");
-            _pageHeader = this.GetControl<PageHeader>("PageHeader");
+            //_pageHeader = this.GetControl<PageHeader>("PageHeader");
             _deviceBox = this.GetControl<ListBox>("Devices");
 
             AvailableDevices = new ObservableCollection<BluetoothDevice>();
