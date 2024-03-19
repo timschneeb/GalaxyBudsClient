@@ -28,8 +28,8 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
             _keyLabel = this.GetControl<TextBlock>("KeyString");
             this.GetControl<TextBlock>("WindowsUipiWarning").IsVisible = PlatformUtils.IsWindows;
         }
-        
-        public List<Key>? Hotkeys { get; private set; }
+
+        public List<Key> Hotkeys { get; private set; } = [];
         
         private void OnKeyUp(object? sender, KeyEventArgs e)
         {
@@ -39,17 +39,15 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
 
         private void OnKeyDown(object? sender, KeyEventArgs e)
         {
-            if (!_recording || Hotkeys == null)
+            if (!_recording)
             {
-                Hotkeys = null;
-                Hotkeys = new List<Key>();
+                Hotkeys.Clear();
             }
 
             if (Hotkeys.Contains(e.Key))
                 return;
 
             Hotkeys.Add(e.Key);
-
             _recording = true;
 
             _keyLabel.Text = Hotkeys.AsAvaloniaHotkeyString();

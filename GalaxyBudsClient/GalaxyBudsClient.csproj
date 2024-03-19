@@ -158,6 +158,10 @@
           <DependentUpon>TouchActionEditorDialog.axaml</DependentUpon>
           <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Interface\Dialogs\HotkeyRecorderDialog.axaml.cs">
+          <DependentUpon>HotkeyRecorderDialog.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
     <PropertyGroup>

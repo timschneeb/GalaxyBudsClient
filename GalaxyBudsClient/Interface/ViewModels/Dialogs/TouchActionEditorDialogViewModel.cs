@@ -79,12 +79,11 @@ namespace GalaxyBudsClient.Interface.ViewModels.Dialogs
 
         public async void DoHotkeyRecordCommand()
         {
-            var recorder = new HotkeyRecorder();
-            await recorder.ShowDialog(MainWindow2.Instance);
-            if (!recorder.Result) 
+            var result = await HotkeyRecorderDialog.OpenDialogAsync();
+            if(result == null)
                 return;
             
-            HotkeyParameter = string.Join(",", recorder.Hotkeys ?? []);
+            HotkeyParameter = string.Join(",", result);
         }
         
         private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
