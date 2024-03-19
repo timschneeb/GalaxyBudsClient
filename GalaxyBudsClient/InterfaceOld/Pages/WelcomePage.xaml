@@ -43,8 +43,7 @@
         <Border Grid.Row="5" Classes="RoundedBorderListItem">
             <items:SwitchDetailListItem x:Name="DarkMode"
                                         Text="{DynamicResource welcome_darkmode}" 
-                                        Description="{DynamicResource welcome_darkmode_content}"
-                                        Toggled="DarkMode_OnToggled"/>
+                                        Description="{DynamicResource welcome_darkmode_content}"/>
 
         </Border>
         <Border Grid.Row="7" Classes="RoundedBorderListItem">

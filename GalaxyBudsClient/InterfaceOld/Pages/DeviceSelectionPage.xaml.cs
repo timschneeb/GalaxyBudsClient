@@ -80,7 +80,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
         private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
-            MainWindow.Instance.Pager.SwitchPage(Pages.Welcome);
+            //MainWindow.Instance.Pager.SwitchPage(Pages.Welcome);
         }
 
         private void SelectDevice_OnPointerPressed(object? sender, PointerPressedEventArgs e)
@@ -142,15 +142,16 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             Settings.Instance.RegisteredDevice.Model = model;
             Settings.Instance.RegisteredDevice.MacAddress = mac;
 
-            MainWindow.Instance.Pager.SwitchPage(Pages.Home);
+            //MainWindow.Instance.Pager.SwitchPage(Pages.Home);
 
             await Task.Factory.StartNew(async () =>
             {
-                MainWindow.Instance.HomePage.ResetCache();
+                // TODO don't handle this here, use an event in ISettings
+                // MainWindow.Instance.HomePage.ResetCache();
                 
                 if (await BluetoothImpl.Instance.ConnectAsync())
                 {
-                    MainWindow.Instance.Pager.SwitchPage(Pages.Home);
+                    //MainWindow.Instance.Pager.SwitchPage(Pages.Home);
                 }
             });
         }

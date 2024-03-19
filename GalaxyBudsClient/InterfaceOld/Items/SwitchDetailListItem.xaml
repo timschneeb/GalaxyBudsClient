@@ -7,8 +7,7 @@
              xmlns:elements="clr-namespace:GalaxyBudsClient.InterfaceOld.Elements"
              mc:Ignorable="d">
     <Border CornerRadius="{StaticResource DefaultCornerRadius}"
-            Classes="BorderHoverStyle" 
-            PointerPressed="InputElement_OnPointerPressed">
+            Classes="BorderHoverStyle">
 
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,10">
             <Grid.ColumnDefinitions>
@@ -29,14 +28,6 @@
                    HorizontalAlignment="Left"
                    Margin="3,5,3,2"
                    TextWrapping="Wrap"/>
-            
-            <elements:ToggleSwitch Grid.Row="0" Grid.Column="2" 
-                                   x:Name="Toggle" 
-                                   Width="40" Height="30" 
-                                   ColorOff="{DynamicResource ToggleOffBrush}"
-                                   ColorOn="{DynamicResource ToggleOnBrush}" 
-                                   DisableButton="True" 
-                                   Margin="0,2,0,0" />
 
             <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" 
                        Margin="3,0,3,5"

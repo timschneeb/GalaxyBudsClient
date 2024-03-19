@@ -99,7 +99,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 		
 		private void Next_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 		{
-			MainWindow.Instance.Pager.SwitchPage(_officialAppInstalled ? Pages.BudsAppDetected : Pages.DeviceSelect);
+			//MainWindow.Instance.Pager.SwitchPage(_officialAppInstalled ? Pages.BudsAppDetected : Pages.DeviceSelect);
 		}
 
 		private void DarkMode_OnToggled(object? sender, bool e)

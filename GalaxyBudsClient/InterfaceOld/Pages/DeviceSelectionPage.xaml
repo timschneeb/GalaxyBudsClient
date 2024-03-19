@@ -73,8 +73,7 @@
                 <Border Grid.Row="0">
                     <items:SwitchDetailListItem x:Name="UseWinRT"
                                                 Text="{DynamicResource devsel_winrt_title}"
-                                                Description="{DynamicResource devsel_winrt}"
-                                                Toggled="UseWinRT_OnToggled" />
+                                                Description="{DynamicResource devsel_winrt}" />
 
                 </Border>
                 <Separator Grid.Row="1" x:Name="UseWinRTSep" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />

@@ -12,11 +12,11 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 		}
 
 		private void Next_OnPointerPressed(object? sender, PointerPressedEventArgs e) {
-			MainWindow.Instance.Pager.SwitchPage(Pages.DeviceSelect);
+			//MainWindow.Instance.Pager.SwitchPage(Pages.DeviceSelect);
 		}
 
 		private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e) {
-			MainWindow.Instance.Pager.SwitchPage(Pages.Welcome);
+			//MainWindow.Instance.Pager.SwitchPage(Pages.Welcome);
 		}
 	}
 }
