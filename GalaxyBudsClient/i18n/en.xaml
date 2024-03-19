@@ -17,6 +17,7 @@
     <sys:String x:Key="unknown">Unknown</sys:String>
     <sys:String x:Key="back">Back</sys:String>
     <sys:String x:Key="hint">Hint</sys:String>
+    <sys:String x:Key="file_not_found">File not found</sys:String>
 
     <sys:String x:Key="nobluetoothdev">No Bluetooth adapter found. Please enable Bluetooth and try again.</sys:String>
 
@@ -66,6 +67,7 @@
     <sys:String x:Key="touchoption_custom_null">Not set</sys:String>
     <sys:String x:Key="touchoption_custom_unknown">Unknown</sys:String>
     <sys:String x:Key="touchoption_custom_prefix">Custom action:</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_event">Trigger earbud action...</sys:String>
     <sys:String x:Key="touchoption_custom_trigger_hotkey">Press hotkey...</sys:String>
     <sys:String x:Key="touchoption_custom_external_app">Run external program...</sys:String>
 
@@ -230,26 +232,27 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="touchpad_lock">Lock touchpad</sys:String>
     <sys:String x:Key="touchpad_left_action">Left long-press action</sys:String>
     <sys:String x:Key="touchpad_right_action">Right long-press action</sys:String>
-    
+    <sys:String x:Key="touchpad_default_action">Built-in touch action</sys:String>
+
     <sys:String x:Key="touchpad_gestures">Advanced touch lock</sys:String>
     <sys:String x:Key="touchpad_gestures_description">Enable or disable default touch gestures</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume">Double-tap earbud edge</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Double-tap the edge of the left or right earbud to turn the volume down or up</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Noise control switching mode</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_desc">Choose modes to cycle through</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ Ambient sound</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Off</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambient sound ↔ Off</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_threeway">Cycle between modes (ANC, Ambient, Off)</sys:String>
     
     <!--Custom touchpad action page-->
-    <sys:String x:Key="cact_header">Define custom long-press action</sys:String>
+    <sys:String x:Key="cact_header">Define a custom long-press action</sys:String>
     <sys:String x:Key="cact_external_app_dialog_title">Select executable...</sys:String>
     <sys:String x:Key="cact_action">Custom action</sys:String>
-    <sys:String x:Key="cact_notice">Notice</sys:String>
-    <sys:String x:Key="cact_notice_content_p1">Custom long-press actions are only available when this app is active in the background.</sys:String>
-    <sys:String x:Key="cact_notice_content_p2">It has no effect on Android or other devices.</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">In order to provide consistent support for this feature, this app will automatically start on boot and run in the background.
-You can disable this behaviour in the settings section.</sys:String>
+    <sys:String x:Key="cact_function_param">Function</sys:String>
+    <sys:String x:Key="cact_hotkey_param">Hotkey</sys:String>
+    <sys:String x:Key="cact_path_param">File path</sys:String>
+    <sys:String x:Key="cact_notice_content_p1">Custom actions are only available while this app is active in the background.</sys:String>
+    <sys:String x:Key="cact_notice_content_p2">They have no effect on Android or other devices.</sys:String>
 
     <!--System/Self-Test-->
     <sys:String x:Key="system_overview_header">System</sys:String>

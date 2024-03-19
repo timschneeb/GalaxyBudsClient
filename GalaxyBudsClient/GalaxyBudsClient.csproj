@@ -154,6 +154,10 @@
           <DependentUpon>TouchpadPage.axaml</DependentUpon>
           <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Interface\Dialogs\TouchActionEditorDialog.axaml.cs">
+          <DependentUpon>TouchActionEditorDialog.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
     <PropertyGroup>

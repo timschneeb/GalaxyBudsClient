@@ -10,6 +10,7 @@
              xmlns:generic="clr-namespace:System.Collections.Generic;assembly=System.Runtime"
              xmlns:viewModels="clr-namespace:GalaxyBudsClient.Interface.ViewModels"
              xmlns:specifications="clr-namespace:GalaxyBudsClient.Model.Specifications"
+             xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.TouchpadPage"
              x:DataType="pages:TouchpadPageViewModel"
@@ -25,7 +26,7 @@
             <controls:SettingsGroup>
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource touchpad_lock}"
-                    Description="{DynamicResource unknown}"
+                    Description="{DynamicResource touchpad_gestures_description}"
                     Symbol="LockClosed"
                     IsChecked="{Binding IsTouchpadLocked}" />
             </controls:SettingsGroup>
@@ -40,23 +41,41 @@
                 
                 <controls:SettingsComboBoxItem
                     Content="{DynamicResource touchpad_left_action}"
-                    Description="{DynamicResource unknown}"
+                    Description="{Binding LeftActionDescription}"
                     Symbol="ArrowStepInLeft"
                     DisplayMemberBinding="{Binding ., Converter={StaticResource EnumDescriptionConverter}, DataType=constants:TouchOptions}"
                     ItemsSource="{Binding LeftActions}"
-                    SelectedValue="{Binding LeftAction}" />
-
+                    SelectedValue="{Binding LeftAction}"
+                    IsToolButtonVisible="True"
+                    IsToolButtonEnabled="{Binding IsLeftCustomActionEditable}"
+                    ToolButtonClick="OnEditLeftCustomActionClicked">
+                    
+                    <controls:SettingsComboBoxItem.ToolButtonContent>
+                        <ic:SymbolIcon Symbol="Edit" />
+                    </controls:SettingsComboBoxItem.ToolButtonContent>
+                    
+                </controls:SettingsComboBoxItem>
+                
                 <controls:SettingsComboBoxItem
                     Content="{DynamicResource touchpad_right_action}"
-                    Description="{DynamicResource unknown}"
+                    Description="{Binding RightActionDescription}"
                     Symbol="ArrowStepInRight"
                     DisplayMemberBinding="{Binding ., Converter={StaticResource EnumDescriptionConverter}, DataType=constants:TouchOptions}"
                     ItemsSource="{Binding RightActions}"
-                    SelectedValue="{Binding RightAction}" />
+                    SelectedValue="{Binding RightAction}"
+                    IsToolButtonVisible="True"
+                    IsToolButtonEnabled="{Binding IsRightCustomActionEditable}"
+                    ToolButtonClick="OnEditRightCustomActionClicked">
+                    
+                    <controls:SettingsComboBoxItem.ToolButtonContent>
+                        <ic:SymbolIcon Symbol="Edit" />
+                    </controls:SettingsComboBoxItem.ToolButtonContent>
+                    
+                </controls:SettingsComboBoxItem>
 
                 <controls:SettingsComboBoxItem
                     Content="{DynamicResource touchpad_noise_control_mode}"
-                    Description="{DynamicResource unknown}"
+                    Description="{DynamicResource touchpad_noise_control_mode_desc}"
                     Symbol="ArrowRepeatAll"
                     IsEnabled="{Binding IsNoiseControlCycleModeEditable}"
                     ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type constants:NoiseControlCycleMode}}}"

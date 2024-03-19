@@ -68,7 +68,6 @@ namespace GalaxyBudsClient.Model
         {
             switch (arg)
             {
-                case Event.None:
                 case Event.AmbientToggle:
                 case Event.AncToggle:
                 case Event.LockTouchpadToggle:

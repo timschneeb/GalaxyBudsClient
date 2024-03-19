@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using Avalonia.Input;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
@@ -12,6 +13,7 @@ namespace GalaxyBudsClient.Model
     {
         public enum Actions
         {
+            [LocalizedDescription("touchoption_custom_trigger_event")]
             Event,
             [LocalizedDescription("touchoption_custom_trigger_hotkey")]
             TriggerHotkey,
