@@ -1,122 +1,9 @@
 <Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:ui="using:FluentAvalonia.UI.Controls"
-        xmlns:uip="using:FluentAvalonia.UI.Controls.Primitives"
-        xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls">
-
-    <Styles.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="/Interface/Styling/SettingsGroupStyles.axaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Styles.Resources>
-
-    <!-- TODO Hidden first/last items in Groups break the corners -->
-    <!-- For SettingsGroups we have to set the CornerRadius for the top edges of the first child to match the top of the group -->
-    <Style Selector="controls|SettingsGroup > ui|SettingsExpanderItem:nth-child(1) /template/ ui|FABorder#Root,
-                     controls|SettingsGroup > ui|SettingsExpanderItem.First /template/ ui|FABorder#Root">
-        <Setter Property="CornerRadius" Value="{Binding Source={StaticResource ControlCornerRadius}, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
-    </Style>  
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
-    <!-- For SettingsGroups with only one item -->
-    <Style Selector="controls|SettingsGroup.SingleItem > ui|SettingsExpanderItem:nth-child(1) /template/ ui|FABorder#Root">
-        <Setter Property="CornerRadius" Value="{Binding Source={StaticResource ControlCornerRadius}}" />
-    </Style>
-    
-    <!-- NavView style in MainView for main app navigation -->
-    <Style Selector="ui|NavigationView.AppNav">
-        <Setter Property="IsPaneToggleButtonVisible" Value="False" />
-        <Setter Property="OpenPaneLength" Value="72" />
-        <Setter Property="IsPaneOpen" Value="True" />
-    </Style>
-    <Style Selector="ui|NavigationView.AppNav /template/ Button#NavigationViewBackButton">
-        <Setter Property="Width" Value="{DynamicResource NavigationBackButtonWidth}" />
-    </Style>
-    <Style Selector="ui|NavigationView.AppNav[IsBackButtonVisible=False] SplitView /template/ ContentPresenter#PART_PanePresenter">
-        <Setter Property="Margin" Value="0 40 0 0" />
-    </Style>
+    <StyleInclude Source="NavigationViewStyles.axaml" />
+    <StyleInclude Source="SettingsGroupStyles.axaml" />
 
-    <Style Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter">
-        <Setter Property="Width" Value="72" />
-        <Setter Property="MinHeight" Value="60" />
-        <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}" />
-        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
-        <Setter Property="Template">
-            <ControlTemplate>
-                <Border Name="LayoutRoot"
-                        Background="{TemplateBinding Background}"
-                        CornerRadius="{TemplateBinding CornerRadius}"
-                        Margin="4 2"
-                        TemplatedControl.IsTemplateFocusTarget="True">
-                    <Panel>
-                        <Panel HorizontalAlignment="Left"
-                               VerticalAlignment="Center">
-
-                            <Border Name="SelectionIndicator"
-                                    Background="{DynamicResource NavigationViewSelectionIndicatorForeground}"
-                                    Width="3"
-                                    Opacity="0"
-                                    VerticalAlignment="Center"
-                                    Height="20"
-                                    CornerRadius="{StaticResource ControlCornerRadius}"/>
-                        </Panel>
-
-
-                        <DockPanel>
-                            <ContentPresenter Name="ContentPresenter"
-                                              Grid.Row="1"
-                                              ContentTemplate="{TemplateBinding ContentTemplate}"
-                                              Content="{TemplateBinding Content}"
-                                              HorizontalAlignment="Center"
-                                              VerticalAlignment="Bottom"
-                                              FontSize="10"
-                                              Padding="0 4"
-                                              Margin="0 -15 0 3"
-                                              DockPanel.Dock="Bottom"
-                                              IsVisible="False">
-                                <ContentPresenter.Styles>
-                                    <Style Selector="TextBlock">
-                                        <Setter Property="TextWrapping" Value="Wrap" />
-                                    </Style>
-                                </ContentPresenter.Styles>
-                            </ContentPresenter>
-
-                            <Viewbox Name="IconBox"
-                                     Height="28"
-                                     HorizontalAlignment="Center"
-                                     VerticalAlignment="Center">
-                                <ContentPresenter Name="Icon"
-                                                  Content="{Binding TemplateSettings.Icon, RelativeSource={RelativeSource TemplatedParent}}" />
-                            </Viewbox>
-
-                        </DockPanel>
-                    </Panel>
-                </Border>
-            </ControlTemplate>
-        </Setter>
-    </Style>
-    <Style Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter:pointerover /template/ ContentPresenter#ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
-    </Style>
-    <Style Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter:pointerover /template/ ContentPresenter#Icon">
-        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
-    </Style>
-
-    <Style Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter:pressed /template/ ContentPresenter#ContentPresenter">
-        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
-    </Style>
-    <Style Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter:pressed /template/ ContentPresenter#Icon">
-        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
-    </Style>
-
-    <Style Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter:selected /template/ ContentPresenter#ContentPresenter">
-        <Setter Property="IsVisible" Value="False" />
-    </Style>
-    <Style Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter:selected /template/ ContentPresenter#Icon">
-        <Setter Property="Foreground" Value="{DynamicResource AccentFillColorDefaultBrush}" />
-    </Style>
-    
     <!-- Cards -->
     <Style Selector="Border.Card">
         <Setter Property="BorderThickness" Value="1" />
@@ -125,7 +12,7 @@
         <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorDefaultBrush}" />
     </Style>
     
-    <!-- Used for GroupBoxes in TranslatorTools -->
+    <!-- GroupBoxes -->
     <Style Selector="HeaderedContentControl.GroupBox">
         <Setter Property="Template">
             <Setter.Value>
