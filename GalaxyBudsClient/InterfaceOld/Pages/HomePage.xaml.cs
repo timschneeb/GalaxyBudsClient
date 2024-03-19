@@ -17,7 +17,6 @@ using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
-using ToggleSwitch = GalaxyBudsClient.InterfaceOld.Elements.ToggleSwitch;
 
 namespace GalaxyBudsClient.InterfaceOld.Pages
 {
@@ -25,7 +24,6 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 	{
 		public override Pages PageType => Pages.Home;
 
-        public bool AncEnabled => _ancSwitch.IsChecked;
         
         private readonly ToggleSwitch _ancSwitch;
         private readonly LoadingSpinner _loadingSpinner;
@@ -165,9 +163,9 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             switch (e)
             {
                 case Event.AncToggle:
-                    await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_NOISE_REDUCTION, !_ancSwitch.IsChecked);
-                    Dispatcher.UIThread.Post(_ancSwitch.Toggle);
-                    EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
+                    //await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_NOISE_REDUCTION, !_ancSwitch.IsChecked);
+                    //Dispatcher.UIThread.Post(_ancSwitch.Toggle);
+                    //EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
                     break;
             }
         }
@@ -265,7 +263,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             if (parser is ExtendedStatusUpdateParser p &&
                 BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc))
             {
-                _ancSwitch.SetChecked(p.NoiseCancelling);
+                //_ancSwitch.SetChecked(p.NoiseCancelling);
             }
             
             /* Update if disconnected */
@@ -412,12 +410,6 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             _warningContainer.IsVisible = message != string.Empty;
             _warningText.Content = message;
         }
-
-		private async void AncBorder_OnPointerPressed(object? sender, PointerPressedEventArgs e)
-		{
-			_ancSwitch.Toggle();
-			await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_NOISE_REDUCTION, _ancSwitch.IsChecked);
-		}
 
         private void RequestTempUnitChange_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {

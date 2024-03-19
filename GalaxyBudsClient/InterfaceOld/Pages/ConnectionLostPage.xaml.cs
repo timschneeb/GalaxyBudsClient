@@ -95,7 +95,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 		{	
 			if (BluetoothImpl.Instance.IsConnectedLegacy)
          	{
-         		MainWindow.Instance.Pager.SwitchPage(Pages.Home);
+         		//MainWindow.Instance.Pager.SwitchPage(Pages.Home);
          		return;
          	}
 			
@@ -107,12 +107,12 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
 				if (!BluetoothImpl.Instance.RegisteredDeviceValid)
 				{
-					MainWindow.Instance.Pager.SwitchPage(Pages.Welcome);
+					//MainWindow.Instance.Pager.SwitchPage(Pages.Welcome);
 					return;
 				}
 				
 			    Task.Factory.StartNew(async () => await BluetoothImpl.Instance.ConnectAsync());
-			    MainWindow.Instance.Pager.SwitchPage(Pages.Home);
+			    //MainWindow.Instance.Pager.SwitchPage(Pages.Home);
 			}
 		}
 	}
