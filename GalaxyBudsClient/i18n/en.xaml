@@ -228,17 +228,17 @@ This program is designed to provide much more functionality over the official Sa
     <!--Touchpad page-->
     <sys:String x:Key="touchpad_header">Touchpad</sys:String>
     <sys:String x:Key="touchpad_lock">Lock touchpad</sys:String>
-    <sys:String x:Key="touchpad_left_action">Left action</sys:String>
-    <sys:String x:Key="touchpad_right_action">Right action</sys:String>
+    <sys:String x:Key="touchpad_left_action">Left long-press action</sys:String>
+    <sys:String x:Key="touchpad_right_action">Right long-press action</sys:String>
     
     <sys:String x:Key="touchpad_gestures">Advanced touch lock</sys:String>
     <sys:String x:Key="touchpad_gestures_description">Enable or disable default touch gestures</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume">Double-tap earbud edge</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Double-tap the edge of the left or right earbud to turn the volume down or up</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Noise control switching mode</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC &lt;-&gt; Ambient sound</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; Off</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambient sound &lt;-&gt; Off</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ Ambient sound</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Off</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambient sound ↔ Off</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Cycle between modes (ANC, Ambient, Off)</sys:String>
     
     <!--Custom touchpad action page-->

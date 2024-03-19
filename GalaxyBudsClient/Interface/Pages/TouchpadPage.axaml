@@ -1,0 +1,137 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
+             xmlns:constants="clr-namespace:GalaxyBudsClient.Model.Constants"
+             xmlns:collections="clr-namespace:System.Collections;assembly=System.Runtime"
+             xmlns:generic="clr-namespace:System.Collections.Generic;assembly=System.Runtime"
+             xmlns:viewModels="clr-namespace:GalaxyBudsClient.Interface.ViewModels"
+             xmlns:specifications="clr-namespace:GalaxyBudsClient.Model.Specifications"
+             mc:Ignorable="d" d:DesignWidth="800"
+             x:Class="GalaxyBudsClient.Interface.Pages.TouchpadPage"
+             x:DataType="pages:TouchpadPageViewModel"
+             x:CompileBindings="True">
+
+    <Design.DataContext>
+        <pages:TouchpadPageViewModel />
+    </Design.DataContext>
+
+    <ScrollViewer>
+        <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
+
+            <controls:SettingsGroup>
+                <controls:SettingsSwitchItem
+                    Content="{DynamicResource touchpad_lock}"
+                    Description="{DynamicResource unknown}"
+                    Symbol="LockClosed"
+                    IsChecked="{Binding IsTouchpadLocked}" />
+            </controls:SettingsGroup>
+            
+            <controls:SettingsGroup>
+                <controls:SettingsGroup.IsEnabled>
+                    <MultiBinding Converter="{x:Static BoolConverters.And}">
+                        <Binding Path="!IsTouchpadLocked" />
+                        <Binding Path="IsHoldGestureEnabled" />
+                    </MultiBinding>
+                </controls:SettingsGroup.IsEnabled>
+                
+                <controls:SettingsComboBoxItem
+                    Content="{DynamicResource touchpad_left_action}"
+                    Description="{DynamicResource unknown}"
+                    Symbol="ArrowStepInLeft"
+                    DisplayMemberBinding="{Binding ., Converter={StaticResource EnumDescriptionConverter}, DataType=constants:TouchOptions}"
+                    ItemsSource="{Binding LeftActions}"
+                    SelectedValue="{Binding LeftAction}" />
+
+                <controls:SettingsComboBoxItem
+                    Content="{DynamicResource touchpad_right_action}"
+                    Description="{DynamicResource unknown}"
+                    Symbol="ArrowStepInRight"
+                    DisplayMemberBinding="{Binding ., Converter={StaticResource EnumDescriptionConverter}, DataType=constants:TouchOptions}"
+                    ItemsSource="{Binding RightActions}"
+                    SelectedValue="{Binding RightAction}" />
+
+                <controls:SettingsComboBoxItem
+                    Content="{DynamicResource touchpad_noise_control_mode}"
+                    Description="{DynamicResource unknown}"
+                    Symbol="ArrowRepeatAll"
+                    IsEnabled="{Binding IsNoiseControlCycleModeEditable}"
+                    ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type constants:NoiseControlCycleMode}}}"
+                    SelectedValue="{Binding NoiseControlCycleMode}">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="NoiseControl" />
+                    </Interaction.Behaviors>
+                </controls:SettingsComboBoxItem>
+                
+            </controls:SettingsGroup>
+
+            <controls:SettingsGroup IsEnabled="{Binding !IsTouchpadLocked}">
+                <Interaction.Behaviors>
+                    <ext:RequiresAnyFeatureBehavior>
+                        <ext:RequiresAnyFeatureBehavior.Features>
+                            <collections:ArrayList>
+                                <specifications:Features>DoubleTapVolume</specifications:Features>
+                                <specifications:Features>AdvancedTouchLock</specifications:Features>
+                            </collections:ArrayList>
+                        </ext:RequiresAnyFeatureBehavior.Features>
+                    </ext:RequiresAnyFeatureBehavior>
+                </Interaction.Behaviors>
+                
+                <controls:SettingsSwitchItem
+                    Content="{DynamicResource touchpad_gesture_single}"
+                    Description="{DynamicResource touchpad_gesture_single_desc}"
+                    Symbol="VideoPlayPause"
+                    IsChecked="{Binding IsSingleTapGestureEnabled}">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="AdvancedTouchLock" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
+                
+                <controls:SettingsSwitchItem
+                    Content="{DynamicResource touchpad_gesture_double}"
+                    Description="{DynamicResource touchpad_gesture_double_desc}"
+                    Symbol="Next"
+                    IsChecked="{Binding IsDoubleTapGestureEnabled}">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="AdvancedTouchLock" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
+                
+                <controls:SettingsSwitchItem
+                    Content="{DynamicResource touchpad_gesture_triple}"
+                    Description="{DynamicResource touchpad_gesture_triple_desc}"
+                    Symbol="Previous"
+                    IsChecked="{Binding IsTripleTapGestureEnabled}">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="AdvancedTouchLock" />
+                    </Interaction.Behaviors>
+                    
+                </controls:SettingsSwitchItem>
+                <controls:SettingsSwitchItem
+                    Content="{DynamicResource touchpad_gesture_hold}"
+                    Description="{DynamicResource touchpad_gesture_hold_desc}"
+                    Symbol="TapSingle"
+                    IsChecked="{Binding IsHoldGestureEnabled}">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="AdvancedTouchLock" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
+                
+                <controls:SettingsSwitchItem
+                    Content="{DynamicResource touchpad_double_tap_volume}"
+                    Description="{DynamicResource touchpad_double_tap_volume_description}"
+                    Symbol="TapDouble"
+                    IsChecked="{Binding IsDoubleTapVolumeEnabled}">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="DoubleTapVolume" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
+            </controls:SettingsGroup>
+            
+        </StackPanel>
+    </ScrollViewer>
+
+</UserControl>

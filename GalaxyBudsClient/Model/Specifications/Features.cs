@@ -27,7 +27,6 @@ public enum Features
     AncWithOneEarbud,
     AncNoiseReductionLevels,
     AdvancedTouchLock,
-    LegacyNoiseControlMode,
     LegacyAmbientSoundVolumeLevels,
     BuildInfo,
     GearFitTest,

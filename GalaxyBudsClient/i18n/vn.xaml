@@ -242,9 +242,9 @@ Tuy chương trình này có rất nhiều chức năng mà ứng dụng nguyên
     <sys:String x:Key="touchpad_double_tap_volume">Gõ đúp cạnh tai nghe</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Gõ đúp cạnh tai nghe bên trái hay phải để giảm hoặc tăng âm lượng</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Chuyển đổi chế độ điều chỉnh tiếng ồn</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">Khử tiếng ồn &lt;-&gt; Xuyên âm</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_off">Khử tiếng ồn &lt;-&gt; Tắt</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Xuyên âm &lt;-&gt; Tắt</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">Khử tiếng ồn ↔ Xuyên âm</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">Khử tiếng ồn ↔ Tắt</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Xuyên âm ↔ Tắt</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Xoay vòng giữa các chế độ (Khử tiếng ồn, Xuyên âm, Tắt)</sys:String>
 
     <!--Custom touchpad action page-->

@@ -242,9 +242,9 @@ Dit programma is ontworpen om veel meer functionaliteit te bieden dan de offici�
     <sys:String x:Key="touchpad_double_tap_volume">Rand oordopjes met dubbele tik</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Dubbeltik op de rand van de linker- of rechteroordop om het volume lager of hoger te zetten</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Schakelmodus ruisonderdrukking</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC &lt;-&gt; Omgevingsgeluid</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; Uit</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Omgevingsgeluid &lt;-&gt; Uit</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ Omgevingsgeluid</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Uit</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Omgevingsgeluid ↔ Uit</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Wissel tussen modi (ANC, Omgeving, Uit)</sys:String>
     
     <!--Custom touchpad action page-->

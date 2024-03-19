@@ -12,7 +12,6 @@ namespace GalaxyBudsClient.Model.Specifications
                 { Features.SeamlessConnection, new FeatureRule(3, "R170XXU0ATF2") },
                 { Features.AmbientVoiceFocus, null },
                 { Features.AmbientSound, null },
-                { Features.LegacyNoiseControlMode, null },
                 { Features.LegacyAmbientSoundVolumeLevels, null },
                 { Features.BuildInfo, null },
                 { Features.BatteryType, null },

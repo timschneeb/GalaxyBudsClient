@@ -228,9 +228,9 @@ Ce programme a été conçu pour fournir beaucoup plus de fonctionnalités que l
     <sys:String x:Key="touchpad_double_tap_volume">Appui double sur la tranche</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Appuyez deux fois sur la tranche de l'écouteur gauche ou droit pour réduire ou augmenter le volume</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Mode de permutation des contrôles du bruit</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">Réduction de bruit active &lt;-&gt; Son environnant</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_off">Réduction de bruit active &lt;-&gt; Désactivé</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Son environnant &lt;-&gt; Désactivé</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">Réduction de bruit active ↔ Son environnant</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">Réduction de bruit active ↔ Désactivé</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Son environnant ↔ Désactivé</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Passer d'un mode à l'autre (Réduction de bruit active, Son environnant, Désactivé)</sys:String>
 
     <!--Custom touchpad action page-->

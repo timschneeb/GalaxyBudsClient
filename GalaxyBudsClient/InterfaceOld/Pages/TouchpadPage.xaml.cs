@@ -37,23 +37,13 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 		private (bool, bool, bool) _lastNoiseControlMode;
 		
 		/* ANC, Ambient, Off */
-		private static readonly (bool, bool, bool, string)[] NoiseControlModeMapLegacy =
-		[
-			(true, true, false, "touchpad_noise_control_mode_anc_amb"),
-			(true, false, true, "touchpad_noise_control_mode_anc_off"),
-			(false, true, true, "touchpad_noise_control_mode_amb_off"),
-			(true, true, true, "touchpad_noise_control_mode_threeway")
-		];
-		private static readonly (bool, bool, bool, string)[] NoiseControlModeMapNew =
+		private static (bool, bool, bool, string)[] NoiseControlModeMap { get; } =
 		[
 			(true, true, false, "touchpad_noise_control_mode_anc_amb"),
 			(true, false, true, "touchpad_noise_control_mode_anc_off"),
 			(false, true, true, "touchpad_noise_control_mode_amb_off")
 		];
-		private static (bool, bool, bool, string)[] NoiseControlModeMap =>
-			BluetoothImpl.Instance.DeviceSpec.Supports(Features.LegacyNoiseControlMode)
-				? NoiseControlModeMapLegacy : NoiseControlModeMapNew;
-		
+
 		public TouchpadPage()
 		{   
 			AvaloniaXamlLoader.Load(this);

@@ -150,6 +150,10 @@
           <DependentUpon>FitTestPage.axaml</DependentUpon>
           <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Interface\Pages\TouchpadPage.axaml.cs">
+          <DependentUpon>TouchpadPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
     <PropertyGroup>

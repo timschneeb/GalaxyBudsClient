@@ -244,9 +244,9 @@
     <sys:String x:Key="touchpad_double_tap_volume">輕觸兩下耳機側緣</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">輕觸兩下左側耳機側緣即可調低音量，右側耳機側緣則可以調高音量。</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">噪音控制</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">主動式降噪 &lt;-&gt; 環境音效</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_off">主動式降噪 &lt;-&gt; 關閉</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_amb_off">環境音效 &lt;-&gt; 關閉</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">主動式降噪 ↔ 環境音效</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">主動式降噪 ↔ 關閉</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">環境音效 ↔ 關閉</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">循環模式（主動式降噪、環境音效、關閉）</sys:String>
     
     <!--Custom touchpad action page-->

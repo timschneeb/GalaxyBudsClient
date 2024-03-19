@@ -241,9 +241,9 @@ Ez a program sokkal több funkciót biztosít a hivatalos Samsung hordható alka
     <sys:String x:Key="touchpad_double_tap_volume">Koppintson duplán a fülhallgató szélére</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Koppintson duplán a bal vagy jobb fülhallgató szélére a hangerő csökkentéséhez vagy növeléséhez</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Zajszabályozó kapcsolási mód</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC &lt;-&gt; Környezeti hang</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; Ki</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambient sound &lt;-&gt; Ki</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ Környezeti hang</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Ki</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambient sound ↔ Ki</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Váltás a módok között (ANC, Ambient, Ki)</sys:String>
     
     <!--Custom touchpad action page-->

@@ -243,9 +243,9 @@
     <sys:String x:Key="touchpad_double_tap_volume">Kulaklığın kenarına çift dokun</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Sağ ya da sol kulaklığın kenarına çift dokunarak ses düzeyini kontrol edin</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Gürültü engelleme geçişi</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC &lt;-&gt; Ortam Sesi</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; Kapalı</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ortam Sesi &lt;-&gt; Kapalı</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ Ortam Sesi</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Kapalı</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ortam Sesi ↔ Kapalı</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Modlar arasında geçiş yap (ANC, Ortam Sesi, Kapalı)</sys:String>
 
     <!--Custom touchpad action page-->

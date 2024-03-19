@@ -242,9 +242,9 @@ I když tento program umí spoustu věcí co originální aplikace Samsung Weara
     <sys:String x:Key="touchpad_double_tap_volume">Dvojité klepnutí na hranu sluchátka</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Dvakrát klepnout na hranu levého nebo pravého sluchátka pro zeslabení nebo zesílení hlasitosti.</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Režim přepínání regulace šumu</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC &lt;-&gt; Ambientní režim</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC &lt;-&gt; Vypnuto</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambientní režim &lt;-&gt; Vypnuto</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ Ambientní režim</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Vypnuto</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambientní režim ↔ Vypnuto</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Cyklování mezi režimy (Potlačení okolního hluku, Ambientní režim, Vypnuto)</sys:String>
 
     <!--Custom touchpad action page-->
