@@ -41,6 +41,25 @@ namespace GalaxyBudsClient.Message.Decoder
                 IsCoupled = Convert.ToBoolean(msg.Payload[3]);
                 MainConnection = (DeviceInv) msg.Payload[4];
                 WearState = (WearStates) msg.Payload[5];
+                switch (WearState)
+                {
+                    case WearStates.Both:
+                        PlacementL = PlacementStates.Wearing;
+                        PlacementR = PlacementStates.Wearing;
+                        break;
+                    case WearStates.L:
+                        PlacementL = PlacementStates.Wearing;
+                        PlacementR = PlacementStates.Idle;
+                        break;
+                    case WearStates.R:
+                        PlacementL = PlacementStates.Idle;
+                        PlacementR = PlacementStates.Wearing;
+                        break;
+                    default:
+                        PlacementL = PlacementStates.Idle;
+                        PlacementR = PlacementStates.Idle;
+                        break;
+                }
             }
             else
             {

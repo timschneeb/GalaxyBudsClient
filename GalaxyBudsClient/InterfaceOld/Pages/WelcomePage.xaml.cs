@@ -7,7 +7,6 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
-using GalaxyBudsClient.InterfaceOld.Items;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
@@ -22,7 +21,6 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 	{
 		public override Pages PageType => Pages.Welcome;
 
-		private readonly SwitchDetailListItem _darkMode;
 		private readonly Border _locale;
 
 		private ContextMenu? _localeMenu;
@@ -33,14 +31,14 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 		{   
 			AvaloniaXamlLoader.Load(this);
 
-			_darkMode = this.GetControl<SwitchDetailListItem>("DarkMode");
+			//_darkMode = this.GetControl<SwitchDetailListItem>("DarkMode");
 			_locale = this.GetControl<Border>("Locales");
 			
 		}
 
 		public override void OnPageShown()
 		{
-			_darkMode.IsChecked = Settings.Instance.DarkMode == DarkModes.Dark;
+			//_darkMode.IsChecked = Settings.Instance.DarkMode == DarkModes.Dark;
 			
 			var localeMenuActions =
 				new Dictionary<string,EventHandler<RoutedEventArgs>?>();

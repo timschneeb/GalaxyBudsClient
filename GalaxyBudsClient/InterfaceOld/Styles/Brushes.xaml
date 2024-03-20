@@ -4,18 +4,13 @@
 
     <sys:String x:Key="ResourceDictionaryName">Brushes-light</sys:String>
   
+    <!-- TODO search for newer images in APKs. maybe look for SVGs too (or even make them)? -->
     <!-- Images -->
-    <CroppedBitmap x:Key="LeftBeanConnected" Source="/Resources/device/left_beans_white.png"/>
-    <CroppedBitmap x:Key="RightBeanConnected" Source="/Resources/device/right_beans_white.png"/>
-    <CroppedBitmap x:Key="LeftBeanDisconnected" Source="/Resources/device/left_beans_dim.png"/>
-    <CroppedBitmap x:Key="RightBeanDisconnected" Source="/Resources/device/right_beans_dim.png"/>
-    <CroppedBitmap x:Key="LeftBudConnected" Source="/Resources/device/left_gray.png"/>
-    <CroppedBitmap x:Key="RightBudConnected" Source="/Resources/device/right_gray.png"/>
-    <CroppedBitmap x:Key="LeftBudDisconnected" Source="/Resources/device/left_gray_dim.png"/>
-    <CroppedBitmap x:Key="RightBudDisconnected" Source="/Resources/device/right_gray_dim.png"/>
-    <CroppedBitmap x:Key="LeftProConnected" Source="/Resources/device/left_pro.png"/>
-    <CroppedBitmap x:Key="RightProConnected" Source="/Resources/device/right_pro.png"/>
-    <CroppedBitmap x:Key="LeftProDisconnected" Source="/Resources/device/left_pro_dim.png"/>
-    <CroppedBitmap x:Key="RightProDisconnected" Source="/Resources/device/right_pro_dim.png"/>
+    <CroppedBitmap x:Key="LeftBeanConnected" Source="/Resources/Device/left_beans_white.png"/>
+    <CroppedBitmap x:Key="RightBeanConnected" Source="/Resources/Device/right_beans_white.png"/>
+    <CroppedBitmap x:Key="LeftBudConnected" Source="/Resources/Device/left_gray.png"/>
+    <CroppedBitmap x:Key="RightBudConnected" Source="/Resources/Device/right_gray.png"/>
+    <CroppedBitmap x:Key="LeftProConnected" Source="/Resources/Device/left_pro.png"/>
+    <CroppedBitmap x:Key="RightProConnected" Source="/Resources/Device/right_pro.png"/>
 
 </ResourceDictionary>

@@ -3,7 +3,6 @@
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:pages="clr-namespace:GalaxyBudsClient.InterfaceOld.Pages"
-                    xmlns:items="clr-namespace:GalaxyBudsClient.InterfaceOld.Items"
                     mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
                     x:Class="GalaxyBudsClient.InterfaceOld.Pages.DeviceSelectionPage"
                     DockPanel.Dock="Top" Margin="10,0">
@@ -26,11 +25,11 @@
         <Border Grid.Row="3" Classes="RoundedBorderListItem">
             <Border Classes="BorderHoverStyle" PointerPressed="SelectDevice_OnPointerPressed">
                 <Grid>
-                    <items:IconListItem x:Name="Scan"
+                    <!--<items:IconListItem x:Name="Scan"
                                         FontSize="18"
                                         Text="{DynamicResource devsel_refresh}"
                                         Source="{DynamicResource SearchButton}"
-                                        Margin="10,0" />
+                                        Margin="10,0" />-->
                 </Grid>
             </Border>
         </Border>
@@ -68,9 +67,9 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Border Grid.Row="0">
-                    <items:SwitchDetailListItem x:Name="UseWinRT"
+                    <!--<items:SwitchDetailListItem x:Name="UseWinRT"
                                                 Text="{DynamicResource devsel_winrt_title}"
-                                                Description="{DynamicResource devsel_winrt}" />
+                                                Description="{DynamicResource devsel_winrt}" />-->
 
                 </Border>
                 <Separator Grid.Row="1" x:Name="UseWinRTSep" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
@@ -100,10 +99,10 @@
                 <Border Grid.Column="1" Classes="VerticalSeparator" />
                 <Border Grid.Column="2" Classes="BorderHoverStyle" PointerPressed="Next_OnPointerPressed"
                         x:Name="NavBarNext">
-                    <items:IconListItem FontSize="18"
+                    <!--<items:IconListItem FontSize="18"
                                         Text="{DynamicResource devsel_footer_continue}"
                                         Source="{DynamicResource NextButton}"
-                                        Margin="20,0,20,0" />
+                                        Margin="20,0,20,0" />-->
                 </Border>
             </Grid>
         </Border>

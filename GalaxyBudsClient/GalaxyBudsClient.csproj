@@ -56,6 +56,10 @@
         <DefineConstants>UseLocalServer</DefineConstants>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+        <DefineConstants>$(DefineConstants);ENABLE_XAML_HOT_RELOAD</DefineConstants>
+    </PropertyGroup>
+    
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
       <WarningLevel>4</WarningLevel>
     </PropertyGroup>
@@ -162,6 +166,10 @@
           <DependentUpon>HotkeyRecorderDialog.axaml</DependentUpon>
           <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Interface\Controls\EarbudStatusUnit.axaml.cs">
+          <DependentUpon>EarbudStatusUnit.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
     <PropertyGroup>
@@ -187,6 +195,8 @@
         <PackageReference Include="FluentAvalonia.BreadcrumbBar" Version="2.0.2" />
         <PackageReference Include="FluentAvaloniaUI" Version="2.0.5" />
         <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="1.1.232" />
+        <PackageReference Condition="$(DefineConstants.Contains(ENABLE_XAML_HOT_RELOAD))" Include="HotAvalonia" Version="1.0.1" />
+        <PackageReference Include="HotAvalonia.Extensions" Version="1.0.1" PrivateAssets="All" />
         <PackageReference Include="InputSimulatorCore" Version="1.0.5" />
         <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
         <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
@@ -202,7 +212,7 @@
         <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
         <PackageReference Include="Tmds.DBus" Version="0.16.0" />
     </ItemGroup>
-
+    
     <ItemGroup Condition="'$(IsWindows)'=='true'">
         <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.WindowsRT\GalaxyBudsClient.Bluetooth.WindowsRT.csproj" />
         <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Windows\GalaxyBudsClient.Bluetooth.Windows.csproj" />
@@ -224,11 +234,5 @@
 
     <ItemGroup>
       <Folder Include="Cli\" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <UpToDateCheckInput Remove="InterfaceOld\Elements\LoadingSpinner.xaml" />
-      <UpToDateCheckInput Remove="Resources\findmygear\finding_glow.png" />
-      <UpToDateCheckInput Remove="Resources\findmygear\radar_circle.png" />
     </ItemGroup>
 </Project>

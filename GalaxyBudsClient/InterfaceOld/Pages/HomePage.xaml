@@ -1,54 +1,73 @@
 ﻿<pages:AbstractPage xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:pages="clr-namespace:GalaxyBudsClient.InterfaceOld.Pages"
-             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
-             x:Class="GalaxyBudsClient.InterfaceOld.Pages.HomePage"
-             DockPanel.Dock="Top" Margin="10,0">
-            <Grid Margin="0,0,0,20" >
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:pages="clr-namespace:GalaxyBudsClient.InterfaceOld.Pages"
+                    mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="36"
+                    x:Class="GalaxyBudsClient.InterfaceOld.Pages.HomePage"
+                    DockPanel.Dock="Top" Margin="10,0">
+    <Grid Margin="0,0,0,20">
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="180"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="180" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Border Grid.Row="1" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinHeight="180" MaxHeight="180" MinWidth="518"
-                Height="155" VerticalAlignment="Top" Width="489" Background="{DynamicResource RoundBorderBackgroundBrush}" CornerRadius="{StaticResource DefaultCornerRadius}">
+        <Border Grid.Row="1" BorderBrush="{DynamicResource RoundBorderBrush}" BorderThickness="1" MinHeight="180"
+                MaxHeight="180" MinWidth="518"
+                Height="155" VerticalAlignment="Top" Width="489"
+                Background="{DynamicResource RoundBorderBackgroundBrush}"
+                CornerRadius="{StaticResource DefaultCornerRadius}">
             <Grid HorizontalAlignment="Left" Width="516">
-                <Image Name="BatteryIconLeft" Source="/Resources/battery/high.png" Height="18" Width="27" Margin="132,51,357,109"/>
-                <Label Name="BatteryVoltLeft" Content="--.--" Margin="0,71,360,73" HorizontalAlignment="Right" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" />
-                <Label Name="BatteryPercentageLeft" Content="--%" Margin="0,46,381,102" FontSize="20" HorizontalAlignment="Right" Foreground="{DynamicResource ForegroundTextAltBrush}" />
-                <Label Name="BatteryCurrentLeft" Content="--.--mA" Margin="0,90,360,54" HorizontalAlignment="Right" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" PointerPressed="RequestTempUnitChange_OnPointerPressed" />
-                <Label Name="BatteryTemperatureLeft" Content="{DynamicResource unknown}" Margin="0,109,361,35" HorizontalAlignment="Right" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" PointerPressed="RequestTempUnitChange_OnPointerPressed" />
-                <Image Name="LeftIcon" Width="75" Height="75" Margin="160,52,281,0" VerticalAlignment="Top"/>
-                <Image Name="RightIcon" Margin="281,52,160,0" Height="75" VerticalAlignment="Top"  Width="75"/>
-                <Image Name="BatteryIconRight" Source="/Resources/battery/high.png" Height="18" Width="27" Margin="357,51,132,109"/>
-                <Label Name="BatteryVoltRight" Content="--.--V" Margin="360,71,0,73" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" />
-                <Label Name="BatteryPercentageRight" Content="--%" Margin="381,46,0,102" FontSize="20" HorizontalAlignment="Left" Foreground="{DynamicResource ForegroundTextAltBrush}"/>
-                <Label Name="BatteryCurrentRight" Content="--.--mA" Margin="360,90,0,54" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" PointerPressed="RequestTempUnitChange_OnPointerPressed" />
-                <Label Name="BatteryTemperatureRight" Content="{DynamicResource unknown}" Margin="360,109,0,35" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" PointerPressed="RequestTempUnitChange_OnPointerPressed" />
-                <Label Name="BatteryCase" IsVisible="False" Margin="204,130,204,14" FontSize="16" Foreground="{DynamicResource ForegroundTextBrush}" HorizontalContentAlignment="Center" />
+                <Image Name="BatteryIconLeft" Source="/Resources/battery/high.png" Height="18" Width="27"
+                       Margin="132,51,357,109" />
+                <Label Name="BatteryVoltLeft" Content="--.--" Margin="0,71,360,73" HorizontalAlignment="Right"
+                       FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" />
+                <Label Name="BatteryPercentageLeft" Content="--%" Margin="0,46,381,102" FontSize="20"
+                       HorizontalAlignment="Right" Foreground="{DynamicResource ForegroundTextAltBrush}" />
+                <Label Name="BatteryCurrentLeft" Content="--.--mA" Margin="0,90,360,54" HorizontalAlignment="Right"
+                       FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}"
+                       PointerPressed="RequestTempUnitChange_OnPointerPressed" />
+                <Label Name="BatteryTemperatureLeft" Content="{DynamicResource unknown}" Margin="0,109,361,35"
+                       HorizontalAlignment="Right" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}"
+                       PointerPressed="RequestTempUnitChange_OnPointerPressed" />
+                <Image Name="LeftIcon" Width="75" Height="75" Margin="160,52,281,0" VerticalAlignment="Top" />
+                <Image Name="RightIcon" Margin="281,52,160,0" Height="75" VerticalAlignment="Top" Width="75" />
+                <Image Name="BatteryIconRight" Source="/Resources/battery/high.png" Height="18" Width="27"
+                       Margin="357,51,132,109" />
+                <Label Name="BatteryVoltRight" Content="--.--V" Margin="360,71,0,73" HorizontalAlignment="Left"
+                       FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}" />
+                <Label Name="BatteryPercentageRight" Content="--%" Margin="381,46,0,102" FontSize="20"
+                       HorizontalAlignment="Left" Foreground="{DynamicResource ForegroundTextAltBrush}" />
+                <Label Name="BatteryCurrentRight" Content="--.--mA" Margin="360,90,0,54" HorizontalAlignment="Left"
+                       FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}"
+                       PointerPressed="RequestTempUnitChange_OnPointerPressed" />
+                <Label Name="BatteryTemperatureRight" Content="{DynamicResource unknown}" Margin="360,109,0,35"
+                       HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource ForegroundTextBrush}"
+                       PointerPressed="RequestTempUnitChange_OnPointerPressed" />
+                <Label Name="BatteryCase" IsVisible="False" Margin="204,130,204,14" FontSize="16"
+                       Foreground="{DynamicResource ForegroundTextBrush}" HorizontalContentAlignment="Center" />
                 <Label Name="CaseLabel" Foreground="{DynamicResource SubtitleTextBrush}" IsVisible="False"
-                       FontSize="13" VerticalAlignment="Top" Content="{DynamicResource case}" Margin="216,113,216,0" HorizontalContentAlignment="Center"/>
+                       FontSize="13" VerticalAlignment="Top" Content="{DynamicResource case}" Margin="216,113,216,0"
+                       HorizontalContentAlignment="Center" />
 
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" x:Name="WarningContainer">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" 
+                    <Image Grid.Column="0"
                            Source="/Resources/warning.png"
-                           Height="20" 
+                           Height="20"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           Margin="0,0,5,0"/>
+                           Margin="0,0,5,0" />
                     <Label Grid.Column="1"
                            x:Name="WarningText"
                            Content="{DynamicResource mainpage_corrupt_data}"
-                           Foreground="{DynamicResource ForegroundTextBrush}" 
+                           Foreground="{DynamicResource ForegroundTextBrush}"
                            VerticalAlignment="Center" HorizontalAlignment="Center"
-                           Margin="0,1,0,0"/>
+                           Margin="0,1,0,0" />
                 </Grid>
             </Grid>
         </Border>

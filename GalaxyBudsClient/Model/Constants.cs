@@ -116,7 +116,9 @@ namespace GalaxyBudsClient.Model
         
         public enum TemperatureUnits
         {
+            [Description("F")]
             Fahrenheit,
+            [Description("C")]
             Celsius
         }
         

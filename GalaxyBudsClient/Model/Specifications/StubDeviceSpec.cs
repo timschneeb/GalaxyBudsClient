@@ -13,7 +13,7 @@ namespace GalaxyBudsClient.Model.Specifications
         public string DeviceBaseName => "STUB_DEVICE";
         public ITouchOption TouchMap => new StubTouchOption();
         public Guid ServiceUuid => new("{00000000-0000-0000-0000-000000000000}");
-        public IReadOnlyCollection<TrayItemTypes> TrayShortcuts => new List<TrayItemTypes>();
+        public IEnumerable<TrayItemTypes> TrayShortcuts => new List<TrayItemTypes>();
         public string IconResourceKey => "Bud";
         public int MaximumAmbientVolume => 3;
     }

@@ -171,6 +171,26 @@ namespace GalaxyBudsClient.Message.Decoder
                         SeamlessConnectionEnabled = msg.Payload[13] == 0;
                     }
                 }
+                
+                switch (WearState)
+                {
+                    case WearStates.Both:
+                        PlacementL = PlacementStates.Wearing;
+                        PlacementR = PlacementStates.Wearing;
+                        break;
+                    case WearStates.L:
+                        PlacementL = PlacementStates.Wearing;
+                        PlacementR = PlacementStates.Idle;
+                        break;
+                    case WearStates.R:
+                        PlacementL = PlacementStates.Idle;
+                        PlacementR = PlacementStates.Wearing;
+                        break;
+                    default:
+                        PlacementL = PlacementStates.Idle;
+                        PlacementR = PlacementStates.Idle;
+                        break;
+                }
             }
             else
             {
