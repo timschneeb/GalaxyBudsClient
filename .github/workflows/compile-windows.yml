@@ -175,8 +175,15 @@ jobs:
       with:
         name: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
 
+    - name: Download portable artifact (x64)
+      uses: actions/download-artifact@v4
+      with:
+        name: GalaxyBudsClient_win64_portable
+
     - name: Rename (x64)
-      run: ren GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe GalaxyBudsClient_Windows_64bit_Setup.exe
+      run: |
+        ren GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe GalaxyBudsClient_Windows_64bit_Setup.exe
+        ren GalaxyBudsClient.exe GalaxyBudsClient_Windows_64bit_Portable.exe
 
     - uses: AButler/upload-release-assets@v2.0
       with:
