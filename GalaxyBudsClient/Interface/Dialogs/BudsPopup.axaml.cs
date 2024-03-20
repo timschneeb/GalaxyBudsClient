@@ -23,7 +23,7 @@ using Window = Avalonia.Controls.Window;
 namespace GalaxyBudsClient.Interface.Dialogs
 {
     // TODO: redesign
-    public sealed class BudsPopup : Window
+    public partial class BudsPopup : Window
     {
         public EventHandler? ClickedEventHandler { get; set; }
 
@@ -42,8 +42,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
         
         public BudsPopup() 
         {
-            AvaloniaXamlLoader.Load(this);
-            this.AttachDevTools();
+            InitializeComponent();
 
             _outerBorder = this.GetControl<Border>("OuterBorder");
             
@@ -99,9 +98,9 @@ namespace GalaxyBudsClient.Interface.Dialogs
      
             var type = BluetoothImpl.Instance.DeviceSpec.IconResourceKey;
 
-            var leftSourceName = $"Left{type}{(isLeftOnline ? "Connected" : "Disconnected")}";
+            var leftSourceName = $"Left{type}Connected";
             _iconLeft.Source = (IImage?)Application.Current?.FindResource(leftSourceName);
-            var rightSourceName = $"Right{type}{(isRightOnline ? "Connected" : "Disconnected")}";
+            var rightSourceName = $"Right{type}Connected";
             _iconRight.Source = (IImage?)Application.Current?.FindResource(rightSourceName);
         }
 
@@ -150,7 +149,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
             
             /* Window positioning */
             var workArea = (Screens.Primary ?? Screens.All[0]).WorkingArea;
-            const int padding = 20;
+            const int padding = 20; // TODO padding needs DPI awareness? 
             
             var scaling = PlatformImpl?.GetPropertyValue<double>("DesktopScaling") ?? 1.0;
             Position = Settings.Instance.Popup.Placement switch

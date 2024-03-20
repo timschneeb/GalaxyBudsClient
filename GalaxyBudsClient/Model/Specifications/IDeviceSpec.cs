@@ -16,37 +16,37 @@ namespace GalaxyBudsClient.Model.Specifications
         public string FriendlyName => Device.GetModelMetadata()?.Name ?? "null";
         public ITouchOption TouchMap { get; }
         public Guid ServiceUuid { get; }
-        public IReadOnlyCollection<TrayItemTypes> TrayShortcuts { get; }
+        public IEnumerable<TrayItemTypes> TrayShortcuts { get; }
         public string IconResourceKey { get; }
         public int MaximumAmbientVolume { get; }
         
-        public bool Supports(Features features)
+        public bool Supports(Features feature)
         {
             // TODO remove this
-            return true;
+            // return true;
             
-            if (!Rules.ContainsKey(features))
+            if (!Rules.TryGetValue(feature, out var value))
             {
                 return false;
             }
 
-            if (Rules[features] == null)
+            if (value == null)
             {
                 return true;
             }
 
             if (DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision == null)
             {
-                Log.Warning("IDeviceSpec: Cannot compare revision. No ExtendedStatusUpdate cached");
+                Log.Warning("IDeviceSpec: Cannot compare revision for {Feature}. No ExtendedStatusUpdate cached", feature);
                 return true;
             }
 
-            return DeviceMessageCache.Instance.ExtendedStatusUpdate.Revision >= Rules[features]?.MinimumRevision;
+            return DeviceMessageCache.Instance.ExtendedStatusUpdate.Revision >= value.MinimumRevision;
         }
 
         public string RecommendedFwVersion(Features features)
         {
-            return Rules.ContainsKey(features) ? Rules[features]?.RecommendedFirmwareVersion ?? "---" : "???";
+            return Rules.TryGetValue(features, out var value) ? value?.RecommendedFirmwareVersion ?? "Unset" : "N/A";
         }
     }
     

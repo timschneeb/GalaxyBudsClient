@@ -174,7 +174,7 @@ namespace GalaxyBudsClient.Utils.Interface
                         : "tray_lock_touchpad",
                     _ => "unknown"
                 }
-                select new NativeMenuItem(resourceKey)
+                select new NativeMenuItem(Loc.Resolve(resourceKey))
                 {
                     Command = new MiniCommand(OnTrayMenuCommand),
                     CommandParameter = type

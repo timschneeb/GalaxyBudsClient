@@ -34,7 +34,7 @@ namespace GalaxyBudsClient.Model.Specifications
         public ITouchOption TouchMap => new StandardTouchOption();
         public Guid ServiceUuid => Uuids.Buds2;
 
-        public IReadOnlyCollection<TrayItemTypes> TrayShortcuts => Array.AsReadOnly(
+        public IEnumerable<TrayItemTypes> TrayShortcuts => Array.AsReadOnly(
             [
                 TrayItemTypes.ToggleNoiseControl,
                 TrayItemTypes.ToggleEqualizer,

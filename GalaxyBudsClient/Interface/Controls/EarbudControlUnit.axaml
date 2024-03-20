@@ -14,7 +14,7 @@
           ClipToBounds="False"
           RowDefinitions="Auto,15,Auto,30,Auto">
         
-        <!-- TODO: WarningContainer visibility moves other controls up/down. add spacing -->
+        <!-- TODO: WarningContainer visibility moves other controls up/down. Should it be fixed, animated, or replaced with a InfoBox on the bottom? -->
         
         <Grid Grid.Row="0" 
               Name="WarningContainer"
@@ -24,8 +24,7 @@
                         
             <ic:SymbolIcon Grid.Column="0" Symbol="Warning"/>
             <Label Grid.Column="2"
-                   Name="WarningLabel"
-                   Foreground="{DynamicResource ForegroundTextBrush}" />
+                   Name="WarningLabel" />
         </Grid>
 
         <Grid Grid.Row="2" 

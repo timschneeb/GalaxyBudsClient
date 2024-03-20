@@ -6,7 +6,6 @@ using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Avalonia.Threading;
-using GalaxyBudsClient.InterfaceOld.Items;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model;
@@ -47,9 +46,6 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
         private readonly Border _ambientBorder;
         private readonly Border _noiseBorder;
         
-        private readonly IconListItem _findMyGear;
-        private readonly IconListItem _touch;
-        
 		private readonly DispatcherTimer _refreshTimer = new();
         private DebugGetAllDataParser? _lastGetAllDataParser;
         private bool _lastLeftOnline;
@@ -86,9 +82,6 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             _ancBorder = this.GetControl<Border>("AncBorder");
             _ambientBorder = this.GetControl<Border>("AmbientBorder");
             _noiseBorder = this.GetControl<Border>("NoiseBorder");
-            
-            _findMyGear = this.GetControl<IconListItem>("FindMyGear");
-            _touch = this.GetControl<IconListItem>("Touch");
             
             Loc.LanguageUpdated += OnLanguageUpdated;
             
@@ -134,8 +127,6 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                 }), DispatcherPriority.Render);
             };
             BluetoothImpl.Instance.InvalidDataReceived += InstanceOnInvalidDataReceived;
-
-            EventDispatcher.Instance.EventReceived += OnEventReceived;
         }
 
         public void ResetCache()
@@ -143,25 +134,6 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             _lastGetAllDataParser = null;
             _lastPlacementL = PlacementStates.Disconnected;
             _lastPlacementR = PlacementStates.Disconnected;
-        }
-
-        private async void OnEventReceived(Event e, object? arg)
-        {
-            // NoiseControl case is handled in NoiseProPage.xaml.cs
-            if (!BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc)
-                || BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
-            {
-                return;
-            }
-            
-            switch (e)
-            {
-                case Event.AncToggle:
-                    //await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_NOISE_REDUCTION, !_ancSwitch.IsChecked);
-                    //Dispatcher.UIThread.Post(_ancSwitch.Toggle);
-                    //EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
-                    break;
-            }
         }
 
         private void InstanceOnInvalidDataReceived(object? sender, InvalidPacketException e)
@@ -216,9 +188,6 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
 
             UpdateList();
             
-            _findMyGear.Source = (IImage?)Application.Current?.FindResource($"FindMyGear{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
-            _touch.Source = (IImage?)Application.Current?.FindResource($"Touch{BluetoothImpl.Instance.DeviceSpec.IconResourceKey}");
-
             //_loadingSpinner.IsVisible = !BluetoothImpl.Instance.IsConnectedLegacy;
 
             /* Restore data if restarted */
@@ -252,12 +221,6 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                 UpdatePlusPlacement(parser.PlacementL, parser.PlacementR);
                 _lastPlacementL = parser.PlacementL;
                 _lastPlacementR = parser.PlacementR;
-            }
-
-            if (parser is ExtendedStatusUpdateParser p &&
-                BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc))
-            {
-                //_ancSwitch.SetChecked(p.NoiseCancelling);
             }
             
             /* Update if disconnected */

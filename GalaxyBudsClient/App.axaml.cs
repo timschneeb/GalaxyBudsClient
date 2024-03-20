@@ -8,7 +8,6 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
-using GalaxyBudsClient.InterfaceOld.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
@@ -17,6 +16,7 @@ using GalaxyBudsClient.Scripting.Experiment;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using HotAvalonia;
 using Serilog;
 using Application = Avalonia.Application;
 
@@ -39,6 +39,7 @@ namespace GalaxyBudsClient
             });
 #endif
 
+            this.EnableHotReload(); // no-op in release builds
             AvaloniaXamlLoader.Load(this);
             
             if (Loc.IsTranslatorModeEnabled())

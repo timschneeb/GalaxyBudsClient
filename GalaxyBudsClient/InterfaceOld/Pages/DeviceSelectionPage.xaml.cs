@@ -9,7 +9,6 @@ using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.InterfaceOld.Dialogs;
-using GalaxyBudsClient.InterfaceOld.Items;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
@@ -69,8 +68,8 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
         {
             RefreshList();
             this.GetControl<Separator>("UseWinRTSep").IsVisible = PlatformUtils.IsWindowsContractsSdkSupported;
-            this.GetControl<SwitchDetailListItem>("UseWinRT").IsVisible = PlatformUtils.IsWindowsContractsSdkSupported;
-            this.GetControl<SwitchDetailListItem>("UseWinRT").IsChecked = Settings.Instance.UseBluetoothWinRT;
+            //this.GetControl<SwitchDetailListItem>("UseWinRT").IsVisible = PlatformUtils.IsWindowsContractsSdkSupported;
+            //this.GetControl<SwitchDetailListItem>("UseWinRT").IsChecked = Settings.Instance.UseBluetoothWinRT;
         }
 
         private void BackButton_OnPointerPressed(object? sender, PointerPressedEventArgs e)

@@ -21,10 +21,4 @@ public partial class HomePage : BasePage<HomePageViewModel>
         
         NavigationService.Instance.Navigate(item.Name);
     }
-
-    protected override void OnLanguageUpdated()
-    {
-        // TODO: refresh bindings
-        base.OnLanguageUpdated();
-    }
 }
