@@ -169,7 +169,7 @@ namespace GalaxyBudsClient.Utils.Interface
                     TrayItemTypes.ToggleAnc => MainWindow2.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAncEnabled ?? false
                         ? "tray_disable_anc"
                         : "tray_enable_anc",
-                    TrayItemTypes.LockTouchpad => /* TODO MainWindow2.Instance.MainView.ResolveViewModelByType<TouchpadPageViewModel>()?.IsTouchLocked ?? */ false
+                    TrayItemTypes.LockTouchpad => MainWindow2.Instance.MainView.ResolveViewModelByType<TouchpadPageViewModel>()?.IsTouchpadLocked ?? false
                         ? "tray_unlock_touchpad"
                         : "tray_lock_touchpad",
                     _ => "unknown"
