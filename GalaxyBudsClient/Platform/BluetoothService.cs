@@ -57,6 +57,7 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
     public event EventHandler<BluetoothException>? BluetoothError;
 
     public bool SuppressDisconnectionEvents { set; get; } = false;
+    public bool ShowDummyDevices { set; get; } = false;
     public static Models ActiveModel => Settings.Instance.RegisteredDevice.Model;
     public IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(ActiveModel) ?? new StubDeviceSpec();
 
@@ -210,10 +211,15 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
         }
     }
         
-    public async Task<BluetoothDevice[]> GetDevicesAsync()
+    public async Task<IEnumerable<BluetoothDevice>> GetDevicesAsync()
     {
         try
         {
+            if (ShowDummyDevices)
+            {
+                return (await _backend.GetDevicesAsync()).Concat(BluetoothDevice.DummyDevices());
+            }
+
             return await _backend.GetDevicesAsync();
         }
         catch (BluetoothException ex)

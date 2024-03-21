@@ -72,15 +72,6 @@ public static class MessageComposer
         public static async Task SetOptions(TouchOptions left, TouchOptions right)
         {
             var payload = new byte[2];
-            if (left == TouchOptions.NoiseControl)
-            {
-                await NoiseControl.SetTouchNoiseControls(true, true, false);
-            }
-            if (right == TouchOptions.NoiseControl)
-            {
-                await NoiseControl.SetTouchNoiseControls(true, true, false);
-            }
-
             payload[0] = BluetoothService.Instance.DeviceSpec.TouchMap.ToByte(left);
             payload[1] = BluetoothService.Instance.DeviceSpec.TouchMap.ToByte(right);
             await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_TOUCHPAD_OPTION, payload);

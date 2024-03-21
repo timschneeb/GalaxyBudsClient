@@ -9,5 +9,5 @@ public class ManualPairDialogViewModel : ViewModelBase
 { 
     public required IEnumerable<BluetoothDevice> Devices { init; get; }
     [Reactive] public BluetoothDevice? SelectedDevice { set; get; }
-    [Reactive] public Models SelectedModel { set; get; }
+    [Reactive] public Models? SelectedModel { set; get; }
 }

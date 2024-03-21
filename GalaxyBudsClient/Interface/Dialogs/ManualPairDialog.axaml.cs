@@ -40,12 +40,15 @@ public partial class ManualPairDialog : UserControl
         var result = await dialog.ShowAsync(MainWindow.Instance);
         dialog.PrimaryButtonClick -= OnPrimaryButtonClick;
             
-        return (result == ContentDialogResult.None || viewModel.SelectedDevice == null) ? 
-            null : (viewModel.SelectedModel, viewModel.SelectedDevice);
+        return result == ContentDialogResult.None ||
+               viewModel.SelectedDevice == null || 
+               viewModel.SelectedModel == null ? null : (viewModel.SelectedModel.Value, viewModel.SelectedDevice);
 
         void OnPrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            args.Cancel = viewModel.SelectedModel == Models.NULL || viewModel.SelectedDevice == null;
+            args.Cancel = viewModel.SelectedModel == null ||
+                          viewModel.SelectedModel == Models.NULL || 
+                          viewModel.SelectedDevice == null;
             if (args.Cancel)
             {
                 _ = new MessageBox

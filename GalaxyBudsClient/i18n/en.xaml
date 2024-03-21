@@ -199,13 +199,14 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="updater_dl_note">When the download finishes, this app will automatically close itself and launch a separate update installer. It may take a few seconds until it shows up.</sys:String>
 
     <!--Device selection page (setup)-->
-    <sys:String x:Key="devsel_header">Select your Galaxy Buds</sys:String>
+    <sys:String x:Key="devsel_header">Select your earbuds</sys:String>
     <sys:String x:Key="devsel_refresh">Refresh paired devices</sys:String>
-    <sys:String x:Key="devsel_device_name">Device Name</sys:String>
-    <sys:String x:Key="devsel_btaddr">MAC-Address</sys:String>
+    <sys:String x:Key="devsel_connect">Connect</sys:String>
+    <sys:String x:Key="devsel_device_name">Device name</sys:String>
+    <sys:String x:Key="devsel_btaddr">MAC address</sys:String>
     <sys:String x:Key="devsel_model">Model</sys:String>
     <sys:String x:Key="devsel_manual_pair">Manual connection</sys:String>
-    <sys:String x:Key="devsel_nodevices">Please connect and pair your Buds first</sys:String>
+    <sys:String x:Key="devsel_nodevices">Please connect and pair your earbuds first</sys:String>
     <sys:String x:Key="devsel_nodevices_title">No paired devices found</sys:String>
     <sys:String x:Key="devsel_noselection">No device selected</sys:String>
     <sys:String x:Key="devsel_invalid_selection">Please select a valid device</sys:String>
@@ -603,5 +604,5 @@ Details:</sys:String>
     <sys:String x:Key="manualpair_title">Manual device selection</sys:String>
     <sys:String x:Key="manualpair_title_dialog">Choose your Galaxy Buds device</sys:String>
     <sys:String x:Key="manualpair_model">Choose the correct model type</sys:String>
-    <sys:String x:Key="manualpair_note">Note: You should only manually connect your earbuds if the setup wizard does not recognize them correctly.</sys:String>
+    <sys:String x:Key="manualpair_note">You should only manually connect your earbuds if the setup wizard does not recognize them correctly.</sys:String>
 </ResourceDictionary>
