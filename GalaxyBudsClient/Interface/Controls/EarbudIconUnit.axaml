@@ -16,7 +16,8 @@
     </UserControl.Resources>
 
     <StackPanel Spacing="15"
-          HorizontalAlignment="Center">
+                Orientation="Horizontal"
+                HorizontalAlignment="Center">
         
         <Image Source="{Binding LeftIcon}"
                Opacity="{Binding IsLeftOnline, Converter={StaticResource BoolFadeOpacityConverter}}"
