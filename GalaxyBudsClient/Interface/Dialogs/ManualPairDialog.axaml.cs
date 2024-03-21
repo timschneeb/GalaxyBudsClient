@@ -16,12 +16,7 @@ public partial class ManualPairDialog : UserControl
     {
         InitializeComponent();
     }
-
-    private void InitializeComponent()
-    {
-        AvaloniaXamlLoader.Load(this);
-    }
-        
+    
     public static async Task<(Models model, BluetoothDevice device)?> OpenDialogAsync()
     {
         var dialog = new ContentDialog
