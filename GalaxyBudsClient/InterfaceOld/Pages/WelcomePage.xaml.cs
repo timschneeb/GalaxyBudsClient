@@ -13,100 +13,99 @@ using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Serilog;
 
-namespace GalaxyBudsClient.InterfaceOld.Pages
+namespace GalaxyBudsClient.InterfaceOld.Pages;
+
+public class WelcomePage : AbstractPage
 {
- 	public class WelcomePage : AbstractPage
+	public override Pages PageType => Pages.Welcome;
+
+	private readonly Border _locale;
+
+	private ContextMenu? _localeMenu;
+
+	private bool _officialAppInstalled = false;
+
+	public WelcomePage()
+	{   
+		AvaloniaXamlLoader.Load(this);
+
+		//_darkMode = this.GetControl<SwitchDetailListItem>("DarkMode");
+		_locale = this.GetControl<Border>("Locales");
+			
+	}
+
+	public override void OnPageShown()
 	{
-		public override Pages PageType => Pages.Welcome;
-
-		private readonly Border _locale;
-
-		private ContextMenu? _localeMenu;
-
-		private bool _officialAppInstalled = false;
-
-		public WelcomePage()
-		{   
-			AvaloniaXamlLoader.Load(this);
-
-			//_darkMode = this.GetControl<SwitchDetailListItem>("DarkMode");
-			_locale = this.GetControl<Border>("Locales");
+		//_darkMode.IsChecked = Settings.Instance.DarkMode == DarkModes.Dark;
 			
-		}
-
-		public override void OnPageShown()
-		{
-			//_darkMode.IsChecked = Settings.Instance.DarkMode == DarkModes.Dark;
-			
-			var localeMenuActions =
-				new Dictionary<string,EventHandler<RoutedEventArgs>?>();
+		var localeMenuActions =
+			new Dictionary<string,EventHandler<RoutedEventArgs>?>();
 			
 #pragma warning disable 8605
-			foreach (int value in Enum.GetValues(typeof(Locales)))
+		foreach (int value in Enum.GetValues(typeof(Locales)))
 #pragma warning restore 8605
+		{
+			if (value == (int)Locales.custom && !Loc.IsTranslatorModeEnabled())
+				continue;
+
+			var locale = (Locales)value;
+			localeMenuActions[locale.GetDescription()] = (sender, args) =>
 			{
-				if (value == (int)Locales.custom && !Loc.IsTranslatorModeEnabled())
-					continue;
+				Settings.Instance.Locale = locale;
+				Loc.Load();
+			};
+		}
 
-				var locale = (Locales)value;
-				localeMenuActions[locale.GetDescription()] = (sender, args) =>
-				{
-					Settings.Instance.Locale = locale;
-					Loc.Load();
-				};
-			}
-
-			_localeMenu = null;//MenuFactory.BuildContextMenu(localeMenuActions, _locale);
+		_localeMenu = null;//MenuFactory.BuildContextMenu(localeMenuActions, _locale);
 			
-			// Only search for the Buds app on Windows 10 and above
-			if (PlatformUtils.IsWindows && Environment.OSVersion.Version.Major >= 10) 
+		// Only search for the Buds app on Windows 10 and above
+		if (PlatformUtils.IsWindows && Environment.OSVersion.Version.Major >= 10) 
+		{
+			/* TODO: implement new setup wizard (refactor strings budsapp_text_p1, budsapp_text_p2, budsapp_text_p3) */
+			try
 			{
-				/* TODO: implement new setup wizard (refactor strings budsapp_text_p1, budsapp_text_p2, budsapp_text_p3) */
-				try
-				{
-					var si = new ProcessStartInfo {
-						FileName = "powershell",
-						Arguments = "Get-AppxPackage SAMSUNGELECTRONICSCO.LTD.GalaxyBuds",
-						RedirectStandardOutput = true,
-						UseShellExecute = false,
-						CreateNoWindow = true,
-					};
+				var si = new ProcessStartInfo {
+					FileName = "powershell",
+					Arguments = "Get-AppxPackage SAMSUNGELECTRONICSCO.LTD.GalaxyBuds",
+					RedirectStandardOutput = true,
+					UseShellExecute = false,
+					CreateNoWindow = true
+				};
 	
-					ThreadPool.QueueUserWorkItem(delegate {
-						try
+				ThreadPool.QueueUserWorkItem(delegate {
+					try
+					{
+						var process = Process.Start(si);
+						if(process?.WaitForExit(4000) ?? false) 
 						{
-							var process = Process.Start(si);
-							if(process?.WaitForExit(4000) ?? false) 
-							{
-								_officialAppInstalled = process?.StandardOutput.ReadToEnd().Contains("SAMSUNGELECTRONICSCO.LTD.GalaxyBuds") ?? false;
-							} 
-						}
-						catch(Exception exception)
-						{
-							Log.Warning(exception, "WelcomePage.BudsAppDetected.ThreadPool");
-						}
-					});
-				}
-				catch (Exception exception)
-				{
-					Log.Warning(exception, "WelcomePage.BudsAppDetected");
-				}
+							_officialAppInstalled = process?.StandardOutput.ReadToEnd().Contains("SAMSUNGELECTRONICSCO.LTD.GalaxyBuds") ?? false;
+						} 
+					}
+					catch(Exception exception)
+					{
+						Log.Warning(exception, "WelcomePage.BudsAppDetected.ThreadPool");
+					}
+				});
+			}
+			catch (Exception exception)
+			{
+				Log.Warning(exception, "WelcomePage.BudsAppDetected");
 			}
 		}
+	}
 		
-		private void Next_OnPointerPressed(object? sender, PointerPressedEventArgs e)
-		{
-			//MainWindow.Instance.Pager.SwitchPage(_officialAppInstalled ? Pages.BudsAppDetected : Pages.DeviceSelect);
-		}
+	private void Next_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+	{
+		//MainWindow.Instance.Pager.SwitchPage(_officialAppInstalled ? Pages.BudsAppDetected : Pages.DeviceSelect);
+	}
 
-		private void DarkMode_OnToggled(object? sender, bool e)
-		{
-			Settings.Instance.DarkMode = e ? DarkModes.Dark : DarkModes.Light;
-		}
+	private void DarkMode_OnToggled(object? sender, bool e)
+	{
+		Settings.Instance.DarkMode = e ? DarkModes.Dark : DarkModes.Light;
+	}
 
-		private void Locales_OnPointerPressed(object? sender, PointerPressedEventArgs e)
-		{
-			_localeMenu?.Open(_locale);
-		}
+	private void Locales_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+	{
+		_localeMenu?.Open(_locale);
 	}
 }

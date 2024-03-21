@@ -45,7 +45,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
     private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         if(e.PropertyName == nameof(IsDowngradingAllowed))
-            RefreshList(silent: false);
+            RefreshList(false);
     }
 
     private static async void RequestData()
@@ -59,7 +59,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
 
     public override async void OnNavigatedTo()
     {
-        RefreshList(silent: true);
+        RefreshList(true);
         
         if (Settings.Instance.FirmwareWarningAccepted) 
             return;
@@ -126,7 +126,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
     
     public void DoRefreshCommand()
     { 
-        RefreshList(silent: false);
+        RefreshList(false);
     }
     
     public async void DoSideloadCommand()
@@ -134,7 +134,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
         var filters = new List<FilePickerFileType>
         {
             new("Firmware binary") { Patterns = new List<string> { "*.bin" } },
-            new("All files") { Patterns = new List<string> { "*" } },
+            new("All files") { Patterns = new List<string> { "*" } }
         };
                 
         var file = await MainWindow2.Instance.OpenFilePickerAsync(filters);

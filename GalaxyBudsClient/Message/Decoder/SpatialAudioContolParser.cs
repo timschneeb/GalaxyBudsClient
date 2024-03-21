@@ -1,18 +1,17 @@
 ﻿using GalaxyBudsClient.Model.Constants;
 
-namespace GalaxyBudsClient.Message.Decoder
+namespace GalaxyBudsClient.Message.Decoder;
+
+internal class SpatialAudioControlParser : BaseMessageParser
 {
-    class SpatialAudioControlParser : BaseMessageParser
+    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.SPATIAL_AUDIO_CONTROL;
+    public SpatialAudioControl ResultCode { set; get; }
+
+    public override void ParseMessage(SppMessage msg)
     {
-        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.SPATIAL_AUDIO_CONTROL;
-        public SpatialAudioControl ResultCode { set; get; }
+        if (msg.Id != HandledType)
+            return;
 
-        public override void ParseMessage(SppMessage msg)
-        {
-            if (msg.Id != HandledType)
-                return;
-
-            ResultCode = (SpatialAudioControl) msg.Payload[0];
-        }
+        ResultCode = (SpatialAudioControl) msg.Payload[0];
     }
 }

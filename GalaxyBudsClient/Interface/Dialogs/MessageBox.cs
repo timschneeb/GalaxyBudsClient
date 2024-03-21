@@ -18,7 +18,7 @@ public class MessageBox
             Title = Title,
             Content = Description,
             CloseButtonText = ButtonText,
-            DefaultButton = ContentDialogButton.Close,
+            DefaultButton = ContentDialogButton.Close
         };
 
         await cd.ShowAsync(host ?? MainWindow2.Instance);

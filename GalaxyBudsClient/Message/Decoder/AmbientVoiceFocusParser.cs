@@ -1,18 +1,17 @@
 ﻿using System;
 
-namespace GalaxyBudsClient.Message.Decoder
+namespace GalaxyBudsClient.Message.Decoder;
+
+internal class AmbientVoiceFocusParser : BaseMessageParser
 {
-    class AmbientVoiceFocusParser : BaseMessageParser
+    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.AMBIENT_VOICE_FOCUS;
+    public bool VoiceFocusEnabled { set; get; }
+
+    public override void ParseMessage(SppMessage msg)
     {
-        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.AMBIENT_VOICE_FOCUS;
-        public bool VoiceFocusEnabled { set; get; }
+        if (msg.Id != HandledType)
+            return;
 
-        public override void ParseMessage(SppMessage msg)
-        {
-            if (msg.Id != HandledType)
-                return;
-
-            VoiceFocusEnabled = Convert.ToBoolean(msg.Payload[0]);
-        }
+        VoiceFocusEnabled = Convert.ToBoolean(msg.Payload[0]);
     }
 }

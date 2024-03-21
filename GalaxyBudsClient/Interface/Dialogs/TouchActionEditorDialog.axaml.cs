@@ -6,46 +6,45 @@ using GalaxyBudsClient.Interface.ViewModels.Dialogs;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 
-namespace GalaxyBudsClient.Interface.Dialogs
+namespace GalaxyBudsClient.Interface.Dialogs;
+
+public partial class TouchActionEditorDialog : UserControl
 {
-    public partial class TouchActionEditorDialog : UserControl
+    public TouchActionEditorDialog()
     {
-        public TouchActionEditorDialog()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        private void InitializeComponent()
-        {
-            AvaloniaXamlLoader.Load(this);
-        }
+    private void InitializeComponent()
+    {
+        AvaloniaXamlLoader.Load(this);
+    }
         
-        public static async Task<CustomAction?> OpenEditDialogAsync(CustomAction? action)
+    public static async Task<CustomAction?> OpenEditDialogAsync(CustomAction? action)
+    {
+        var dialog = new ContentDialog
         {
-            var dialog = new ContentDialog
-            {
-                Title = Loc.Resolve("cact_header"),
-                PrimaryButtonText = Loc.Resolve("okay"),
-                CloseButtonText = Loc.Resolve("cancel"),
-                DefaultButton = ContentDialogButton.Primary
-            };
+            Title = Loc.Resolve("cact_header"),
+            PrimaryButtonText = Loc.Resolve("okay"),
+            CloseButtonText = Loc.Resolve("cancel"),
+            DefaultButton = ContentDialogButton.Primary
+        };
 
-            var viewModel = new TouchActionEditorDialogViewModel(action);
-            dialog.Content = new TouchActionEditorDialog()
-            {
-                DataContext = viewModel
-            };
+        var viewModel = new TouchActionEditorDialogViewModel(action);
+        dialog.Content = new TouchActionEditorDialog()
+        {
+            DataContext = viewModel
+        };
 
-            dialog.PrimaryButtonClick += OnPrimaryButtonClick;
-            var result = await dialog.ShowAsync(MainWindow2.Instance);
-            dialog.PrimaryButtonClick -= OnPrimaryButtonClick;
+        dialog.PrimaryButtonClick += OnPrimaryButtonClick;
+        var result = await dialog.ShowAsync(MainWindow2.Instance);
+        dialog.PrimaryButtonClick -= OnPrimaryButtonClick;
             
-            return result == ContentDialogResult.None ? null : viewModel.Action;
+        return result == ContentDialogResult.None ? null : viewModel.Action;
 
-            void OnPrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-            {
-                args.Cancel = viewModel.Action == null;
-            }
+        void OnPrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            args.Cancel = viewModel.Action == null;
         }
     }
 }

@@ -1,21 +1,20 @@
-﻿namespace GalaxyBudsClient.Message.Decoder
+﻿namespace GalaxyBudsClient.Message.Decoder;
+
+internal class VoiceWakeupEventParser : BaseMessageParser
 {
-    class VoiceWakeupEventParser : BaseMessageParser
+    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.VOICE_WAKE_UP_EVENT;
+    public byte ResultCode { set; get; }
+    public byte Confidence { set; get; }
+
+    public override void ParseMessage(SppMessage msg)
     {
-        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.VOICE_WAKE_UP_EVENT;
-        public byte ResultCode { set; get; }
-        public byte Confidence { set; get; }
+        if (msg.Id != HandledType)
+            return;
 
-        public override void ParseMessage(SppMessage msg)
+        ResultCode = msg.Payload[0];
+        if (msg.Payload.Length > 1)
         {
-            if (msg.Id != HandledType)
-                return;
-
-            ResultCode = msg.Payload[0];
-            if (msg.Payload.Length > 1)
-            {
-                Confidence = msg.Payload[1];
-            }
+            Confidence = msg.Payload[1];
         }
     }
 }

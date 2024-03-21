@@ -1,19 +1,18 @@
-namespace GalaxyBudsClient.Message.Decoder
+namespace GalaxyBudsClient.Message.Decoder;
+
+internal class FotaResultParser : BaseMessageParser
 {
-    class FotaResultParser : BaseMessageParser
+    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.FOTA_RESULT;
+
+    public byte Result { set; get; }
+    public byte ErrorCode { set; get; }
+
+    public override void ParseMessage(SppMessage msg)
     {
-        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.FOTA_RESULT;
+        if (msg.Id != HandledType)
+            return;
 
-        public byte Result { set; get; }
-        public byte ErrorCode { set; get; }
-
-        public override void ParseMessage(SppMessage msg)
-        {
-            if (msg.Id != HandledType)
-                return;
-
-            Result = msg.Payload[0];
-            ErrorCode = msg.Payload[1];
-        }
+        Result = msg.Payload[0];
+        ErrorCode = msg.Payload[1];
     }
 }

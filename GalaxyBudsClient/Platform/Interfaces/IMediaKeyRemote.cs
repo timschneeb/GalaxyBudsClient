@@ -1,9 +1,8 @@
-﻿namespace GalaxyBudsClient.Platform.Interfaces
+﻿namespace GalaxyBudsClient.Platform.Interfaces;
+
+public interface IMediaKeyRemote
 {
-    public interface IMediaKeyRemote
-    {
-        void Play();
-        void Pause();
-        void PlayPause();
-    }
+    void Play();
+    void Pause();
+    void PlayPause();
 }

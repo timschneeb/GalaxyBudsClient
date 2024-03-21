@@ -1,26 +1,25 @@
 // ReSharper disable RedundantUsingDirective
 using GalaxyBudsClient.Platform.Interfaces;
 
-namespace GalaxyBudsClient.Platform.OSX
+namespace GalaxyBudsClient.Platform.OSX;
+
+public class AutoStartHelper : IAutoStartHelper
 {
-    public class AutoStartHelper : IAutoStartHelper
+    public bool Enabled
     {
-        public bool Enabled
+        set
         {
-            set
-            {
 #if OSX
-                ThePBone.OSX.Native.Unmanaged.AppUtils.setAutoStartEnabled(value);
+            ThePBone.OSX.Native.Unmanaged.AppUtils.setAutoStartEnabled(value);
 #endif
-            }
-            get
-            {
+        }
+        get
+        {
 #if OSX
-                return ThePBone.OSX.Native.Unmanaged.AppUtils.isAutoStartEnabled();
+            return ThePBone.OSX.Native.Unmanaged.AppUtils.isAutoStartEnabled();
 #else
-                return false;
+            return false;
 #endif
-            }
         }
     }
 }

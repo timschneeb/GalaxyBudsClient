@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using Avalonia.Input;
 
-namespace GalaxyBudsClient.Platform.Interfaces
+namespace GalaxyBudsClient.Platform.Interfaces;
+
+public interface IHotkeyBroadcast
 {
-    public interface IHotkeyBroadcast
-    {
-        void SendKeys(IEnumerable<Key> keys);
-    }
+    void SendKeys(IEnumerable<Key> keys);
 }

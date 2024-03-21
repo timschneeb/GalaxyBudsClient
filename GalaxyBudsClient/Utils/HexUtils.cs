@@ -1,139 +1,138 @@
 ﻿using System.Text;
 
-namespace GalaxyBudsClient.Utils
+namespace GalaxyBudsClient.Utils;
+
+public class HexUtils
 {
-    public class HexUtils
+    private readonly byte[] _bytes;
+    private readonly int _bytesPerLine;
+    private readonly bool _showHeader;
+    private readonly bool _showOffset;
+    private readonly bool _showAscii;
+
+    private readonly int _length;
+
+    private int _index;
+    private readonly StringBuilder _sb = new();
+
+    private HexUtils(byte[] bytes, int bytesPerLine, bool showHeader, bool showOffset, bool showAscii)
     {
-        private readonly byte[] _bytes;
-        private readonly int _bytesPerLine;
-        private readonly bool _showHeader;
-        private readonly bool _showOffset;
-        private readonly bool _showAscii;
+        _bytes = bytes;
+        _bytesPerLine = bytesPerLine;
+        _showHeader = showHeader;
+        _showOffset = showOffset;
+        _showAscii = showAscii;
+        _length = bytes.Length;
+    }
 
-        private readonly int _length;
-
-        private int _index;
-        private readonly StringBuilder _sb = new();
-
-        private HexUtils(byte[] bytes, int bytesPerLine, bool showHeader, bool showOffset, bool showAscii)
+    public static string Dump(byte[]? bytes, int bytesPerLine = 16, bool showHeader = true, bool showOffset = true, bool showAscii = true)
+    {
+        return bytes == null ? "<null>" : new HexUtils(bytes, bytesPerLine, showHeader, showOffset, showAscii).Dump();
+    }
+    public static string DumpAscii(byte[]? bytes)
+    {
+        if (bytes == null)
         {
-            _bytes = bytes;
-            _bytesPerLine = bytesPerLine;
-            _showHeader = showHeader;
-            _showOffset = showOffset;
-            _showAscii = showAscii;
-            _length = bytes.Length;
+            return "<null>";
         }
 
-        public static string Dump(byte[]? bytes, int bytesPerLine = 16, bool showHeader = true, bool showOffset = true, bool showAscii = true)
+        var sb = new StringBuilder();
+        foreach (var t in bytes)
         {
-            return bytes == null ? "<null>" : new HexUtils(bytes, bytesPerLine, showHeader, showOffset, showAscii).Dump();
+            sb.Append(Translate(t));
         }
-        public static string DumpAscii(byte[]? bytes)
-        {
-            if (bytes == null)
-            {
-                return "<null>";
-            }
+        return sb.ToString();
+    }
 
-            var sb = new StringBuilder();
-            foreach (var t in bytes)
-            {
-                sb.Append(Translate(t));
-            }
-            return sb.ToString();
+    private string Dump()
+    {
+        if (_showHeader)
+        {
+            WriteHeader();
         }
+        WriteBody();
+        return _sb.ToString();
+    }
 
-        private string Dump()
+    private void WriteHeader()
+    {
+        if (_showOffset)
         {
-            if (_showHeader)
-            {
-                WriteHeader();
-            }
-            WriteBody();
-            return _sb.ToString();
+            _sb.Append("Offset(h)  ");
         }
-
-        private void WriteHeader()
+        for (var i = 0; i < _bytesPerLine; i++)
         {
-            if (_showOffset)
+            _sb.Append($"{i & 0xFF:X2}");
+            if (i + 1 < _bytesPerLine)
             {
-                _sb.Append("Offset(h)  ");
+                _sb.Append(" ");
             }
-            for (var i = 0; i < _bytesPerLine; i++)
+        }
+        _sb.AppendLine();
+    }
+
+    private void WriteBody()
+    {
+        while (_index < _length)
+        {
+            if (_index % _bytesPerLine == 0)
             {
-                _sb.Append($"{i & 0xFF:X2}");
-                if (i + 1 < _bytesPerLine)
+                if (_index > 0)
                 {
-                    _sb.Append(" ");
-                }
-            }
-            _sb.AppendLine();
-        }
-
-        private void WriteBody()
-        {
-            while (_index < _length)
-            {
-                if (_index % _bytesPerLine == 0)
-                {
-                    if (_index > 0)
+                    if (_showAscii)
                     {
-                        if (_showAscii)
-                        {
-                            WriteAscii();
-                        }
-                        _sb.AppendLine();
+                        WriteAscii();
                     }
-
-                    if (_showOffset)
-                    {
-                        WriteOffset();
-                    }
+                    _sb.AppendLine();
                 }
 
-                WriteByte();
-                if (_index % _bytesPerLine != 0 && _index < _length)
+                if (_showOffset)
                 {
-                    _sb.Append(" ");
+                    WriteOffset();
                 }
             }
 
-            if (_showAscii)
+            WriteByte();
+            if (_index % _bytesPerLine != 0 && _index < _length)
             {
-                WriteAscii();
+                _sb.Append(" ");
             }
         }
 
-        private void WriteOffset()
+        if (_showAscii)
         {
-            _sb.Append($"{_index:X8}   ");
+            WriteAscii();
         }
+    }
 
-        private void WriteByte()
+    private void WriteOffset()
+    {
+        _sb.Append($"{_index:X8}   ");
+    }
+
+    private void WriteByte()
+    {
+        _sb.Append($"{_bytes[_index]:X2}");
+        _index++;
+    }
+
+    private void WriteAscii()
+    {
+        var backtrack = (_index - 1) / _bytesPerLine * _bytesPerLine;
+        var length = _index - backtrack;
+
+        // This is to fill up last string of the dump if it's shorter than _bytesPerLine
+        _sb.Append(new string(' ', (_bytesPerLine - length) * 3));
+
+        _sb.Append("   ");
+        for (var i = 0; i < length; i++)
         {
-            _sb.Append($"{_bytes[_index]:X2}");
-            _index++;
+            _sb.Append(Translate(_bytes[backtrack + i]));
         }
+    }
 
-        private void WriteAscii()
-        {
-            var backtrack = ((_index - 1) / _bytesPerLine) * _bytesPerLine;
-            var length = _index - backtrack;
-
-            // This is to fill up last string of the dump if it's shorter than _bytesPerLine
-            _sb.Append(new string(' ', (_bytesPerLine - length) * 3));
-
-            _sb.Append("   ");
-            for (var i = 0; i < length; i++)
-            {
-                _sb.Append(Translate(_bytes[backtrack + i]));
-            }
-        }
-
-        private static string Translate(byte b)
-        {
-            return b < 32 ? "." : Encoding.GetEncoding(1252).GetString(new[] { b });
-        }
+    private static string Translate(byte b)
+    {
+        return b < 32 ? "." : Encoding.GetEncoding(1252).GetString(new[] { b });
     }
 }

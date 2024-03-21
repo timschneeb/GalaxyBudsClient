@@ -117,7 +117,7 @@ public class TraceDownloaderDialog : TaskDialog
                         ev.TotalByteCount.ToString())
                     .Replace("(", "")
                     .Replace(")", "");
-                SetProgressBarState(Math.Ceiling(((double)ev.CurrentByteCount / ev.TotalByteCount) * 100), TaskDialogProgressState.Normal);
+                SetProgressBarState(Math.Ceiling((double)ev.CurrentByteCount / ev.TotalByteCount * 100), TaskDialogProgressState.Normal);
             }
         }, DispatcherPriority.Normal);
     }

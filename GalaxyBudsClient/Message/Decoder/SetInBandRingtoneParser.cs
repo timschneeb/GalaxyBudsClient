@@ -1,20 +1,19 @@
-﻿namespace GalaxyBudsClient.Message.Decoder
+﻿namespace GalaxyBudsClient.Message.Decoder;
+
+/*
+ * Buds+ only
+ */
+internal class SetInBandRingtoneParser : BaseMessageParser
 {
-    /*
-     * Buds+ only
-     */
-    class SetInBandRingtoneParser : BaseMessageParser
+    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.SET_IN_BAND_RINGTONE;
+
+    public byte Status { set; get; }
+
+    public override void ParseMessage(SppMessage msg)
     {
-        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.SET_IN_BAND_RINGTONE;
+        if (msg.Id != HandledType)
+            return;
 
-        public byte Status { set; get; }
-
-        public override void ParseMessage(SppMessage msg)
-        {
-            if (msg.Id != HandledType)
-                return;
-
-            Status = msg.Payload[0];
-        }
+        Status = msg.Payload[0];
     }
 }

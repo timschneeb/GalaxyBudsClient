@@ -1,16 +1,15 @@
-﻿namespace GalaxyBudsClient.Message.Decoder
+﻿namespace GalaxyBudsClient.Message.Decoder;
+
+internal class AmbientVolumeParser : BaseMessageParser
 {
-    class AmbientVolumeParser : BaseMessageParser
+    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.AMBIENT_VOLUME;
+    public int AmbientVolume { set; get; }
+
+    public override void ParseMessage(SppMessage msg)
     {
-        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.AMBIENT_VOLUME;
-        public int AmbientVolume { set; get; }
+        if (msg.Id != HandledType)
+            return;
 
-        public override void ParseMessage(SppMessage msg)
-        {
-            if (msg.Id != HandledType)
-                return;
-
-            AmbientVolume = msg.Payload[0];
-        }
+        AmbientVolume = msg.Payload[0];
     }
 }

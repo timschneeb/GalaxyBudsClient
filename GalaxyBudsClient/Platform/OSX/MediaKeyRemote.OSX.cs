@@ -5,27 +5,26 @@ using GalaxyBudsClient.Platform.Interfaces;
 using ThePBone.OSX.Native.Unmanaged;
 #endif
 
-namespace GalaxyBudsClient.Platform.OSX
+namespace GalaxyBudsClient.Platform.OSX;
+
+public class MediaKeyRemote : IMediaKeyRemote
 {
-    public class MediaKeyRemote : IMediaKeyRemote
+    public void Play()
     {
-        public void Play()
-        {
 #if OSX
-            AppUtils.sendMagicMediaCmd(true);
+        AppUtils.sendMagicMediaCmd(true);
 #endif
-        }
+    }
 
-        public void Pause()
-        {
+    public void Pause()
+    {
 #if OSX
-            AppUtils.sendMagicMediaCmd(false);
+        AppUtils.sendMagicMediaCmd(false);
 #endif
-        }
+    }
 
-        public void PlayPause()
-        {
-            Platform.HotkeyBroadcast.Instance.SendKeys(new []{Key.MediaPlayPause});
-        }
+    public void PlayPause()
+    {
+        Platform.HotkeyBroadcast.Instance.SendKeys(new []{Key.MediaPlayPause});
     }
 }

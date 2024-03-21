@@ -49,8 +49,8 @@ public class RequiresFeatureBehavior : Behavior<Control>
         UpdateState();
     }
     
-    protected bool State => BluetoothService.Instance.DeviceSpec.Supports(Feature) && !Not ||
-                            !BluetoothService.Instance.DeviceSpec.Supports(Feature) && Not;
+    protected bool State => (BluetoothService.Instance.DeviceSpec.Supports(Feature) && !Not) ||
+                            (!BluetoothService.Instance.DeviceSpec.Supports(Feature) && Not);
     protected virtual void UpdateState()
     {
         if (AssociatedObject is null)

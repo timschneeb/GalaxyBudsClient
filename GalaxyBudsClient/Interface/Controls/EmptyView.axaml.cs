@@ -3,48 +3,47 @@ using Avalonia.Controls;
 using FluentIcons.Avalonia.Fluent;
 using FluentIcons.Common;
 
-namespace GalaxyBudsClient.Interface.Controls
+namespace GalaxyBudsClient.Interface.Controls;
+
+public partial class EmptyView : UserControl
 {
-    public partial class EmptyView : UserControl
+    public EmptyView()
     {
-        public EmptyView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
         
-        public static readonly StyledProperty<Symbol> SymbolProperty = 
-            SymbolIcon.SymbolProperty.AddOwner<EmptyView>();
+    public static readonly StyledProperty<Symbol> SymbolProperty = 
+        SymbolIcon.SymbolProperty.AddOwner<EmptyView>();
         
-        public static readonly StyledProperty<string?> TextProperty = 
-            TextBlock.TextProperty.AddOwner<EmptyView>();
+    public static readonly StyledProperty<string?> TextProperty = 
+        TextBlock.TextProperty.AddOwner<EmptyView>();
 
-        public Symbol Symbol
-        {
-            get => GetValue(SymbolProperty);
-            set => SetValue(SymbolProperty, value);
-        }
+    public Symbol Symbol
+    {
+        get => GetValue(SymbolProperty);
+        set => SetValue(SymbolProperty, value);
+    }
         
-        public string? Text
-        {
-            get => GetValue(TextProperty);
-            set => SetValue(TextProperty, value);
-        }
+    public string? Text
+    {
+        get => GetValue(TextProperty);
+        set => SetValue(TextProperty, value);
+    }
 
-        protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
+    protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
+    {
+        if (change.Property == SymbolProperty)
         {
-            if (change.Property == SymbolProperty)
-            {
-                SymbolIcon.Symbol = Symbol;
-            }
-            else if (change.Property == TextProperty)
-            {
-                TextBlock.Text = Text;
-            }
-            else
-            {
-                base.OnPropertyChanged(change);
-            }
+            SymbolIcon.Symbol = Symbol;
+        }
+        else if (change.Property == TextProperty)
+        {
+            TextBlock.Text = Text;
+        }
+        else
+        {
             base.OnPropertyChanged(change);
         }
+        base.OnPropertyChanged(change);
     }
 }

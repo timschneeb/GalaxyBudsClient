@@ -1,21 +1,20 @@
 ﻿using GalaxyBudsClient.Model.Constants;
 
-namespace GalaxyBudsClient.Message.Decoder
+namespace GalaxyBudsClient.Message.Decoder;
+
+internal class SppRoleStateParser : BaseMessageParser
 {
-    class SppRoleStateParser : BaseMessageParser
+    public override SppMessage.MessageIds HandledType => (SppMessage.MessageIds)115; //SPPMessage.MessageIds.SPP_ROLE_STATE;
+
+    public Devices Device { set; get; }
+    public SppRoleStates SppRoleState { set; get; }
+
+    public override void ParseMessage(SppMessage msg)
     {
-        public override SppMessage.MessageIds HandledType => (SppMessage.MessageIds)115; //SPPMessage.MessageIds.SPP_ROLE_STATE;
+        if (msg.Id != HandledType)
+            return;
 
-        public Devices Device { set; get; }
-        public SppRoleStates SppRoleState { set; get; }
-
-        public override void ParseMessage(SppMessage msg)
-        {
-            if (msg.Id != HandledType)
-                return;
-
-            SppRoleState = (SppRoleStates) msg.Payload[0];
-            Device = (Devices) msg.Payload[1];
-        }
+        SppRoleState = (SppRoleStates) msg.Payload[0];
+        Device = (Devices) msg.Payload[1];
     }
 }

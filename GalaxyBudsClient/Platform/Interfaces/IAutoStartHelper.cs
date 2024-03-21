@@ -1,7 +1,6 @@
-namespace GalaxyBudsClient.Platform.Interfaces
+namespace GalaxyBudsClient.Platform.Interfaces;
+
+public interface IAutoStartHelper
 {
-    public interface IAutoStartHelper
-    {
-        public bool Enabled { set; get; }
-    }
+    public bool Enabled { set; get; }
 }
