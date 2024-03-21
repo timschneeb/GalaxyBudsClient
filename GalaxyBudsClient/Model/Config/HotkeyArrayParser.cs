@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Config.Net;
+using GalaxyBudsClient.Model.Hotkeys;
 using Newtonsoft.Json;
 using Serilog;
 
-namespace GalaxyBudsClient.Model.Hotkeys
+namespace GalaxyBudsClient.Model.Config
 {
     public class HotkeyArrayParser : ITypeParser
     {

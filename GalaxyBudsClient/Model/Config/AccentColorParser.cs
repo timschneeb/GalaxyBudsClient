@@ -4,7 +4,7 @@ using Avalonia.Media;
 using Config.Net;
 using Serilog;
 
-namespace GalaxyBudsClient.Model
+namespace GalaxyBudsClient.Model.Config
 {
     public class AccentColorParser : ITypeParser
     {
