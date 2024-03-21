@@ -16,23 +16,22 @@
 
     <UserControl.Resources>
         <system:Double x:Key="VerticalLabelSpacing">2</system:Double>
-        <system:Double x:Key="EarbudsIconSize">75</system:Double>
         <system:Double x:Key="FontSizeBatteryIcons">20</system:Double>
         <system:Double x:Key="FontSizePercentage">19</system:Double>
         <system:Double x:Key="FontSizeOtherLabels">14</system:Double>
+        <system:Double x:Key="FontSizeCaseLabel">13</system:Double>
         <converters:BatterySymbolConverter x:Key="BatterySymbolConverter" />
-        <converters:BoolFadeOpacityConverter x:Key="BoolFadeOpacityConverter" />
     </UserControl.Resources>
 
     <StackPanel Spacing="15"
                 Orientation="Horizontal"
                 HorizontalAlignment="Center">
 
-        <!-- TODO layout jumps around when one of the earbuds goes offline / too much text changes -->
-
-        <!-- TODO add case battery status -->
-        <StackPanel Grid.Column="0"
-                    IsVisible="{Binding IsLeftOnline}"
+        <!-- 
+            TODO layout jumps around when one of the earbuds goes offline / too much text changes. 
+            TODO either animate the layout change or make it static
+         -->
+        <StackPanel IsVisible="{Binding IsLeftOnline}"
                     VerticalAlignment="Center"
                     Spacing="{StaticResource VerticalLabelSpacing}">
 
@@ -91,16 +90,35 @@
                 </Interaction.Behaviors>
             </TextBlock>
         </StackPanel>
+        
+        <StackPanel Orientation="Vertical"
+                    Spacing="10"
+                    HorizontalAlignment="Center">
 
-        <controls:EarbudIconUnit />
+            <controls:EarbudIconUnit />
 
-        <StackPanel Grid.Column="6"
-                    IsVisible="{Binding IsRightOnline}"
+            <StackPanel>
+                <Interaction.Behaviors>
+                    <ext:RequiresFeatureBehavior Feature="CaseBattery" />
+                </Interaction.Behaviors>
+
+                <TextBlock Text="{DynamicResource case}"
+                           TextAlignment="Center"
+                           Opacity="0.5"
+                           IsVisible="{Binding CaseBattery, Converter={x:Static ObjectConverters.IsNotNull}}"
+                           FontSize="{StaticResource FontSizeCaseLabel}" />
+                <TextBlock Text="{Binding CaseBattery, StringFormat={}{0}%}"
+                           TextAlignment="Center"
+                           IsVisible="{Binding CaseBattery, Converter={x:Static ObjectConverters.IsNotNull}}"
+                           FontSize="{StaticResource FontSizeOtherLabels}" />
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel IsVisible="{Binding IsRightOnline}"
                     VerticalAlignment="Center"
                     Spacing="{StaticResource VerticalLabelSpacing}">
 
-            <StackPanel Spacing="0"
-                        Orientation="Horizontal"
+            <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Left">
                 <ic:SymbolIcon Symbol="{Binding RightBattery, Converter={StaticResource BatterySymbolConverter}}"
                                Margin="-6,0,0,0"

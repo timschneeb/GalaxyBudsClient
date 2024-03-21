@@ -14,7 +14,7 @@ public partial class HomePage : BasePage<HomePageViewModel>
         AddHandler(SettingsExpanderItem.ClickEvent, OnSettingsItemClicked);
     }
 
-    private void OnSettingsItemClicked(object? sender, RoutedEventArgs e)
+    private static void OnSettingsItemClicked(object? sender, RoutedEventArgs e)
     {
         if (e.Source is not SettingsExpanderItem item)
             return;
