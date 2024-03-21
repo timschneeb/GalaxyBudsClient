@@ -1,11 +1,9 @@
 using System;
 using System.ComponentModel;
-using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Media;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
@@ -19,6 +17,7 @@ public class EarbudStatusUnitViewModel : ViewModelBase
     [Reactive] public bool IsRightOnline { set; get; }
     [Reactive] public int LeftBattery { set; get; }
     [Reactive] public int RightBattery { set; get; }
+    [Reactive] public int? CaseBattery { set; get; }
     [Reactive] public double LeftVoltage { set; get; }
     [Reactive] public double RightVoltage { set; get; }
     [Reactive] public double LeftCurrent { set; get; }
@@ -56,6 +55,7 @@ public class EarbudStatusUnitViewModel : ViewModelBase
     
     private void OnStatusUpdated(object? sender, IBasicStatusUpdate e)
     {
+        CaseBattery = e.BatteryCase is <= 0 or > 100 ? null : e.BatteryCase;
         LeftWearState = e.PlacementL;
         RightWearState = e.PlacementR;
     }
