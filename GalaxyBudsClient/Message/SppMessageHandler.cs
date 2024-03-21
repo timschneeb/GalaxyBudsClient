@@ -30,7 +30,7 @@ namespace GalaxyBudsClient.Message
         public event EventHandler<BatteryTypeParser>? BatteryTypeResponse;
         public event EventHandler<bool>? AmbientEnabledUpdateResponse;
         public event EventHandler<bool>? AncEnabledUpdateResponse;
-        public event EventHandler<NoiseControlMode>? NoiseControlUpdateResponse;
+        public event EventHandler<NoiseControlModes>? NoiseControlUpdateResponse;
         public event EventHandler<string>? BuildStringResponse;
         public event EventHandler<DebugGetAllDataParser>? GetAllDataResponse;
         public event EventHandler<DebugSerialNumberParser>? SerialNumberResponse;
@@ -117,7 +117,7 @@ namespace GalaxyBudsClient.Message
                     break;
                 case SppMessage.MessageIds.NOISE_CONTROLS_UPDATE:
                     NoiseControlUpdateResponse?.Invoke(this,
-                        (parser as NoiseControlUpdateParser)?.Mode ?? NoiseControlMode.Off);
+                        (parser as NoiseControlUpdateParser)?.Mode ?? NoiseControlModes.Off);
                     break;
                 case SppMessage.MessageIds.DEBUG_SKU:
                     DebugSkuUpdate?.Invoke(this, (parser as DebugSkuParser)!);

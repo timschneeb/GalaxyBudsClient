@@ -177,7 +177,7 @@ namespace GalaxyBudsClient.Model
             BudsFe = 7
         }
 
-        public enum Color
+        public enum Colors
         {
             Blue = 258,
             Pink = 259,
@@ -210,7 +210,7 @@ namespace GalaxyBudsClient.Model
             L = 16,
             Both = 17
         }
-        public enum DeviceInv
+        public enum DevicesInverted
         {
             L = 1,
             R = 0
@@ -227,14 +227,14 @@ namespace GalaxyBudsClient.Model
             Unknown = 2
         }
         
-        public enum NoiseControlMode
+        public enum NoiseControlModes
         {
             Off = 0,
             AmbientSound = 2,
             NoiseReduction = 1
         }
    
-        public enum NoiseControlCycleMode
+        public enum NoiseControlCycleModes
         {
             [LocalizedDescription("touchpad_noise_control_mode_anc_amb")]
             AncAmb = 0,
@@ -271,12 +271,12 @@ namespace GalaxyBudsClient.Model
             OtherR
         }
         
-        public enum ClientDeviceType
+        public enum ClientDeviceTypes
         {
             Samsung = 1,
             Other = 2
         }
-        public enum EqPreset
+        public enum EqPresets
         {
             BassBoost = 0,
             Soft = 1,
@@ -284,7 +284,7 @@ namespace GalaxyBudsClient.Model
             Clear = 3,
             TrebleBoost = 4
         }
-        public enum AmbientType
+        public enum AmbientTypes
         {
             Default = 0,
             VoiceFocus = 1
