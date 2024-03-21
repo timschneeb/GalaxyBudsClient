@@ -5,7 +5,7 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Hotkeys;
 using Color = Avalonia.Media.Color;
 
-namespace GalaxyBudsClient.Model
+namespace GalaxyBudsClient.Model.Config
 {
     public interface ICustomAction : INotifyPropertyChanged
     {

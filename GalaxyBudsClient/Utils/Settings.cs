@@ -1,6 +1,7 @@
 using Config.Net;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform;

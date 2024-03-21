@@ -3,6 +3,7 @@ using Avalonia.Interactivity;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Utils;
 using Sentry;
 
