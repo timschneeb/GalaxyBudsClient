@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using GalaxyBudsClient.Model.Constants;
 
-namespace GalaxyBudsClient.Model.Touchpad
+namespace GalaxyBudsClient.Model.Specifications.Touch
 {
     public class StubTouchOption : ITouchOption
     {

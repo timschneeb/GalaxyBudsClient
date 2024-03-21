@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GalaxyBudsClient.Model.Constants;
 
-namespace GalaxyBudsClient.Model.Touchpad
+namespace GalaxyBudsClient.Model.Specifications.Touch
 {
     public interface ITouchOption
     {
