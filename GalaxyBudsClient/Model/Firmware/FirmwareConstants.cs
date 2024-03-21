@@ -1,6 +1,6 @@
 namespace GalaxyBudsClient.Model.Firmware
 {
-    public class FirmwareConstants
+    public static class FirmwareConstants
     {
         public enum SessionResultCodes
         {   

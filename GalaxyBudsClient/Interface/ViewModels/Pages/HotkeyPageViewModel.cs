@@ -73,6 +73,6 @@ public class HotkeyPageViewModel : SubPageViewModelBase
     private void SaveChanges()
     {
         Settings.Instance.Hotkeys = Hotkeys.ToArray();
-        HotkeyReceiverImpl.Instance.Update();
+        HotkeyReceiver.Instance.Update();
     }
 }

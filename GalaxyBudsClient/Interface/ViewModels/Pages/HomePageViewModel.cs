@@ -43,10 +43,10 @@ public class HomePageViewModel : MainPageViewModelBase
     private void OnInvalidDataReceived(object? sender, InvalidPacketException e)
     {
         // TODO display error message
-        Dispatcher.UIThread.Post((async () =>
+        Dispatcher.UIThread.Post(() =>
         {
            // ...
-        }), DispatcherPriority.Render);
+        }, DispatcherPriority.Render);
         
         _ = BluetoothImpl.Instance.DisconnectAsync()
             .ContinueWith(_ => Task.Delay(500))

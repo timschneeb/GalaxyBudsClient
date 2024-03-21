@@ -9,17 +9,17 @@ using GalaxyBudsClient.Interface.Dialogs;
 
 namespace GalaxyBudsClient.Platform
 {
-    public class HotkeyReceiverImpl : IDisposable
+    public class HotkeyReceiver : IDisposable
     {
         private static readonly object Padlock = new();
-        private static HotkeyReceiverImpl? _instance;
-        public static HotkeyReceiverImpl Instance
+        private static HotkeyReceiver? _instance;
+        public static HotkeyReceiver Instance
         {
             get
             {
                 lock (Padlock)
                 {
-                    return _instance ??= new HotkeyReceiverImpl();
+                    return _instance ??= new HotkeyReceiver();
                 }
             }
         }
@@ -32,7 +32,7 @@ namespace GalaxyBudsClient.Platform
 
         private readonly IHotkeyReceiver _backend;
 
-        private HotkeyReceiverImpl()
+        private HotkeyReceiver()
         {
             if (PlatformUtils.IsWindows)
             {

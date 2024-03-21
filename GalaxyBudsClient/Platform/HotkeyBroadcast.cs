@@ -2,11 +2,11 @@
 
 namespace GalaxyBudsClient.Platform
 {
-    public static class HotkeyBroadcastImpl
+    public static class HotkeyBroadcast
     {
         public static readonly IHotkeyBroadcast Instance;
 
-        static HotkeyBroadcastImpl()
+        static HotkeyBroadcast()
         {
             if (PlatformUtils.IsWindows)
             {

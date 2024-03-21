@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
 using Avalonia.Input;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
