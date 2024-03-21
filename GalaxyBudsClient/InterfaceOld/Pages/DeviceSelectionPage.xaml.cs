@@ -9,7 +9,6 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Interface.Dialogs;
-using GalaxyBudsClient.InterfaceOld.Dialogs;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
@@ -87,17 +86,10 @@ public class DeviceSelectionPage : AbstractPage
     {
         Dispatcher.UIThread.Post(async () =>
         {
-            var dialog = new ManualPairDialog();
-            var accepted = await dialog.ShowDialog<bool>(MainWindow2.Instance);
-            if (accepted)
+            var dialog = await ManualPairDialog.OpenDialogAsync();
+            if (dialog != null)
             {
-                if (dialog.SelectedModel == Models.NULL || dialog.SelectedDeviceMac == null)
-                {
-                    ShowErrorDialog();
-                    return;
-                }
-                
-                RegisterDevice(dialog.SelectedModel, dialog.SelectedDeviceMac);
+                RegisterDevice(dialog.Value.model, dialog.Value.device.Address);
             }
         });
     }
