@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Model.Touchpad;
+using GalaxyBudsClient.Model.Specifications.Touch;
 
 namespace GalaxyBudsClient.Model.Specifications
 {
