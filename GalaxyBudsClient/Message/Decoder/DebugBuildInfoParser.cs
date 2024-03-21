@@ -1,19 +1,18 @@
 ﻿using System.Text;
 
-namespace GalaxyBudsClient.Message.Decoder
+namespace GalaxyBudsClient.Message.Decoder;
+
+internal class DebugBuildInfoParser : BaseMessageParser
 {
-    class DebugBuildInfoParser : BaseMessageParser
-    {
-        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.DEBUG_BUILD_INFO;
+    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.DEBUG_BUILD_INFO;
         
-        public string? BuildString { set; get; }
+    public string? BuildString { set; get; }
 
-        public override void ParseMessage(SppMessage msg)
-        {
-            if (msg.Id != HandledType)
-                return;
+    public override void ParseMessage(SppMessage msg)
+    {
+        if (msg.Id != HandledType)
+            return;
 
-            BuildString = Encoding.ASCII.GetString(msg.Payload);
-        }
+        BuildString = Encoding.ASCII.GetString(msg.Payload);
     }
 }

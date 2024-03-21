@@ -1,14 +1,13 @@
 ﻿using Avalonia.Controls;
 using GalaxyBudsClient.Interface.ViewModels.Controls;
 
-namespace GalaxyBudsClient.Interface.Controls
+namespace GalaxyBudsClient.Interface.Controls;
+
+public partial class EarbudIconUnit : UserControl
 {
-    public partial class EarbudIconUnit : UserControl
+    public EarbudIconUnit()
     {
-        public EarbudIconUnit()
-        {
-            InitializeComponent();
-            DataContext = new EarbudIconUnitViewModel();
-        }
+        InitializeComponent();
+        DataContext = new EarbudIconUnitViewModel();
     }
 }

@@ -39,7 +39,7 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
             Content = Loc.Resolve("factory_confirmation"),
             PrimaryButtonText = Loc.Resolve("continue_button"),
             SecondaryButtonText = Loc.Resolve("cancel"),
-            DefaultButton = ContentDialogButton.Primary,
+            DefaultButton = ContentDialogButton.Primary
         };
 
         cd.PrimaryButtonClick += OnFactoryResetConfirmed;

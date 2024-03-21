@@ -1,15 +1,14 @@
-﻿namespace GalaxyBudsClient.Model
+﻿namespace GalaxyBudsClient.Model;
+
+public enum TrayItemTypes
 {
-    public enum TrayItemTypes
-    {
-        ToggleEqualizer,
-        ToggleAmbient,
-        ToggleAnc,
-        ToggleNoiseControl,
-        LockTouchpad,
-        Open,
-        Connect,
-        Quit,
-        User
-    }
+    ToggleEqualizer,
+    ToggleAmbient,
+    ToggleAnc,
+    ToggleNoiseControl,
+    LockTouchpad,
+    Open,
+    Connect,
+    Quit,
+    User
 }

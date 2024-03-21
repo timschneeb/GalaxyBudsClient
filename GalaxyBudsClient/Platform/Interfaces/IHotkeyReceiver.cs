@@ -4,22 +4,21 @@ using GalaxyBudsClient.Model.Hotkeys;
 
 // ReSharper disable MemberCanBeProtected.Global
 
-namespace GalaxyBudsClient.Platform.Interfaces
-{
-    public class HotkeyRegisterException : Exception
-    {
-        public Hotkey Hotkey { set; get; }
-        public int ResultCode { set; get; } = -1;
-        public HotkeyRegisterException(string message, Hotkey hotkey) : base(message)
-        {
-            Hotkey = hotkey;
-        }
-    }
+namespace GalaxyBudsClient.Platform.Interfaces;
 
-    public interface IHotkeyReceiver : IDisposable
+public class HotkeyRegisterException : Exception
+{
+    public Hotkey Hotkey { set; get; }
+    public int ResultCode { set; get; } = -1;
+    public HotkeyRegisterException(string message, Hotkey hotkey) : base(message)
     {
-        Task RegisterHotkeyAsync(Hotkey hotkey);
-        Task UnregisterAllAsync();
-        Task ValidateHotkeyAsync(Hotkey hotkey);
+        Hotkey = hotkey;
     }
+}
+
+public interface IHotkeyReceiver : IDisposable
+{
+    Task RegisterHotkeyAsync(Hotkey hotkey);
+    Task UnregisterAllAsync();
+    Task ValidateHotkeyAsync(Hotkey hotkey);
 }

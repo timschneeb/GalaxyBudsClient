@@ -20,80 +20,79 @@ using HotAvalonia;
 using Serilog;
 using Application = Avalonia.Application;
 
-namespace GalaxyBudsClient
+namespace GalaxyBudsClient;
+
+public class App : Application
 {
-    public class App : Application
+    public override void Initialize()
     {
-        public override void Initialize()
-        {
-            DataContext = this;
+        DataContext = this;
             
 #if OSX
-            NSApplication.Init();
-            NSApplication.Notifications.ObserveDidBecomeActive((_, _) =>
+        NSApplication.Init();
+        NSApplication.Notifications.ObserveDidBecomeActive((_, _) =>
+        {
+            Dispatcher.UIThread.InvokeAsync(delegate
             {
-                Dispatcher.UIThread.InvokeAsync(delegate
-                {
-                    MainWindow2.Instance.BringToFront();
-                });
+                MainWindow2.Instance.BringToFront();
             });
+        });
 #endif
 
-            this.EnableHotReload(); // no-op in release builds
-            AvaloniaXamlLoader.Load(this);
+        this.EnableHotReload(); // no-op in release builds
+        AvaloniaXamlLoader.Load(this);
             
-            if (Loc.IsTranslatorModeEnabled())
-            {
-                Settings.Instance.Locale = Locales.custom;
-            }
+        if (Loc.IsTranslatorModeEnabled())
+        {
+            Settings.Instance.Locale = Locales.custom;
+        }
             
-            Dispatcher.UIThread.Post(() =>
-            {
-                ThemeUtils.Reload();
-                Loc.Load();
-            }, DispatcherPriority.Render);
+        Dispatcher.UIThread.Post(() =>
+        {
+            ThemeUtils.Reload();
+            Loc.Load();
+        }, DispatcherPriority.Render);
             
-            TrayManager.Init();
-            MediaKeyRemote.Init();
-            DeviceMessageCache.Init();
-            ExperimentManager.Init();
+        TrayManager.Init();
+        MediaKeyRemote.Init();
+        DeviceMessageCache.Init();
+        ExperimentManager.Init();
            
-            Log.Information("Translator mode file location: {File}", Loc.GetTranslatorModeFile());
+        Log.Information("Translator mode file location: {File}", Loc.GetTranslatorModeFile());
 
-            ScriptManager.Instance.RegisterUserHooks();
-        }
+        ScriptManager.Instance.RegisterUserHooks();
+    }
         
-        public override void OnFrameworkInitializationCompleted()
+    public override void OnFrameworkInitializationCompleted()
+    {
+        TrayManager.Init();
+            
+        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            TrayManager.Init();
-            
-            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            desktop.MainWindow = MainWindow2.Instance;
+            desktop.Exit += (_, _) =>
             {
-                desktop.MainWindow = MainWindow2.Instance;
-                desktop.Exit += (_, _) =>
-                {
-                    Settings.Instance.FirstLaunch = false;
-                };
-            }
-            
-            if (Loc.IsTranslatorModeEnabled())
-            {
-                WindowLauncher.ShowTranslatorTools();
-            }
-            
-            base.OnFrameworkInitializationCompleted();
+                Settings.Instance.FirstLaunch = false;
+            };
         }
+            
+        if (Loc.IsTranslatorModeEnabled())
+        {
+            WindowLauncher.ShowTranslatorTools();
+        }
+            
+        base.OnFrameworkInitializationCompleted();
+    }
 
-        public event Action? TrayIconClicked;
+    public event Action? TrayIconClicked;
 
-        public static readonly StyledProperty<NativeMenu> TrayMenuProperty =
-            AvaloniaProperty.Register<App, NativeMenu>(nameof(TrayMenu),
-                defaultBindingMode: BindingMode.OneWay, defaultValue: []);
-        public NativeMenu TrayMenu => GetValue(TrayMenuProperty);
+    public static readonly StyledProperty<NativeMenu> TrayMenuProperty =
+        AvaloniaProperty.Register<App, NativeMenu>(nameof(TrayMenu),
+            defaultBindingMode: BindingMode.OneWay, defaultValue: []);
+    public NativeMenu TrayMenu => GetValue(TrayMenuProperty);
         
-        private void TrayIcon_OnClicked(object? sender, EventArgs e)
-        {
-            TrayIconClicked?.Invoke();
-        }
+    private void TrayIcon_OnClicked(object? sender, EventArgs e)
+    {
+        TrayIconClicked?.Invoke();
     }
 }

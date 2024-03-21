@@ -1,9 +1,8 @@
 ﻿using System;
 
-namespace GalaxyBudsClient.Model.Attributes
+namespace GalaxyBudsClient.Model.Attributes;
+
+public class PostfixAttribute : Attribute
 {
-    public class PostfixAttribute : Attribute
-    {
-        public string? Text { get; set; }
-    }
+    public string? Text { get; set; }
 }

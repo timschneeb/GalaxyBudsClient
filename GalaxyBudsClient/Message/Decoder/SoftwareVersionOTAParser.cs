@@ -1,19 +1,18 @@
 ﻿using System.Text;
 
-namespace GalaxyBudsClient.Message.Decoder
+namespace GalaxyBudsClient.Message.Decoder;
+
+internal class SoftwareVersionOTAParser : BaseMessageParser
 {
-    class SoftwareVersionOTAParser : BaseMessageParser
+    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.FOTA_DEVICE_INFO_SW_VERSION;
+
+    public string? SoftwareVersion { set; get; }
+
+    public override void ParseMessage(SppMessage msg)
     {
-        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.FOTA_DEVICE_INFO_SW_VERSION;
+        if (msg.Id != HandledType)
+            return;
 
-        public string? SoftwareVersion { set; get; }
-
-        public override void ParseMessage(SppMessage msg)
-        {
-            if (msg.Id != HandledType)
-                return;
-
-            SoftwareVersion = Encoding.ASCII.GetString(msg.Payload);
-        }
+        SoftwareVersion = Encoding.ASCII.GetString(msg.Payload);
     }
 }

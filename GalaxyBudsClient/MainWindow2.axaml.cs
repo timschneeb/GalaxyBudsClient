@@ -30,447 +30,446 @@ using Serilog;
 using Application = Avalonia.Application;
 using Environment = System.Environment;
 
-namespace GalaxyBudsClient
+namespace GalaxyBudsClient;
+
+public partial class MainWindow2 : AppWindow
 {
-    public partial class MainWindow2 : AppWindow
+    private BudsPopup? _popup;
+
+    private bool _popupShown = false;
+    private bool _firstShow = true;
+    private LegacyWearStates _lastWearState = LegacyWearStates.Both;
+        
+    public bool OverrideMinimizeTray { set; get; }
+        
+    private static MainWindow2? _instance;
+    public static MainWindow2 Instance => _instance ??= new MainWindow2();
+
+    // ReSharper disable once MemberCanBePrivate.Global
+    public MainWindow2()
     {
-        private BudsPopup? _popup;
+        InitializeComponent();
+            
+        BluetoothService.Instance.BluetoothError += OnBluetoothError;
+        BluetoothService.Instance.Disconnected += OnDisconnected;
+        BluetoothService.Instance.Connected += OnConnected;
 
-        private bool _popupShown = false;
-        private bool _firstShow = true;
-        private LegacyWearStates _lastWearState = LegacyWearStates.Both;
-        
-        public bool OverrideMinimizeTray { set; get; }
-        
-        private static MainWindow2? _instance;
-        public static MainWindow2 Instance => _instance ??= new MainWindow2();
+        SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+        SppMessageHandler.Instance.StatusUpdate += OnStatusUpdate;
+        SppMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
 
-        // ReSharper disable once MemberCanBePrivate.Global
-        public MainWindow2()
+        EventDispatcher.Instance.EventReceived += OnEventReceived;
+        (Application.Current as App)!.TrayIconClicked += TrayIcon_OnLeftClicked;
+        _ = TrayManager.Instance.RebuildAsync();
+            
+        Loc.LanguageUpdated += OnLanguageUpdated;
+            
+        if (BluetoothService.Instance.RegisteredDeviceValid)
         {
-            InitializeComponent();
-            
-            BluetoothService.Instance.BluetoothError += OnBluetoothError;
-            BluetoothService.Instance.Disconnected += OnDisconnected;
-            BluetoothService.Instance.Connected += OnConnected;
-
-            SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
-            SppMessageHandler.Instance.StatusUpdate += OnStatusUpdate;
-            SppMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
-
-            EventDispatcher.Instance.EventReceived += OnEventReceived;
-            (Application.Current as App)!.TrayIconClicked += TrayIcon_OnLeftClicked;
-            _ = TrayManager.Instance.RebuildAsync();
-            
-            Loc.LanguageUpdated += OnLanguageUpdated;
-            
-            if (BluetoothService.Instance.RegisteredDeviceValid)
-            {
-                Task.Run(() => BluetoothService.Instance.ConnectAsync());
-            }
-            else
-            {
-                // TODO open setup wizard
-            }
-            
-            if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-            {
-                if ((desktop.Args?.Contains("/StartMinimized") ?? false) && PlatformUtils.SupportsTrayIcon)
-                {
-                    WindowState = WindowState.Minimized;
-                }
-            }
-            
-            TitleBar.ExtendsContentIntoTitleBar = true;
-            TitleBar.TitleBarHitTestType = TitleBarHitTestType.Complex;
-        
-            Application.Current.ActualThemeVariantChanged += OnActualThemeVariantChanged;
+            Task.Run(() => BluetoothService.Instance.ConnectAsync());
         }
+        else
+        {
+            // TODO open setup wizard
+        }
+            
+        if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            if ((desktop.Args?.Contains("/StartMinimized") ?? false) && PlatformUtils.SupportsTrayIcon)
+            {
+                WindowState = WindowState.Minimized;
+            }
+        }
+            
+        TitleBar.ExtendsContentIntoTitleBar = true;
+        TitleBar.TitleBarHitTestType = TitleBarHitTestType.Complex;
+        
+        Application.Current.ActualThemeVariantChanged += OnActualThemeVariantChanged;
+    }
   
-        private void OnLanguageUpdated()
-        {
-            FlowDirection = Loc.ResolveFlowDirection();
-        }
+    private void OnLanguageUpdated()
+    {
+        FlowDirection = Loc.ResolveFlowDirection();
+    }
 
-        private async void OnEventReceived(Event e, object? arg)
+    private async void OnEventReceived(Event e, object? arg)
+    {
+        switch (e)
         {
-            switch (e)
-            {
-                case Event.PairingMode:
-                    await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.UNK_PAIRING_MODE);
-                    break;
-                case Event.ToggleManagerVisibility:
-                    if (IsVisible)
-                        BringToTray();
-                    else
-                        BringToFront();
-                    break;
-                case Event.Connect:
-                    if (!BluetoothService.Instance.IsConnected)
-                    {
-                        await BluetoothService.Instance.ConnectAsync();
-                    }
-                    break;
-                case Event.ShowBatteryPopup:
-                    ShowPopup(noDebounce: true);
-                    break;
-            }
-        }
-
-        #region Window management
-        protected override async void OnClosing(WindowClosingEventArgs e)
-        {
-            if (Settings.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
-            {
-                // check if the cause of the termination is due to shutdown or application close request
-                if (e.CloseReason is not (WindowCloseReason.OSShutdown or WindowCloseReason.ApplicationShutdown))
-                {
+            case Event.PairingMode:
+                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.UNK_PAIRING_MODE);
+                break;
+            case Event.ToggleManagerVisibility:
+                if (IsVisible)
                     BringToTray();
-                    e.Cancel = true;
-                    Log.Debug("MainWindow.OnClosing: Termination cancelled");
-                    base.OnClosing(e);
-                    return;
-                }
-
-                Log.Debug("MainWindow.OnClosing: closing event, continuing termination");
-            }
-            else
-            {
-                Log.Debug("MainWindow.OnClosing: Now closing session");
-            }
-            
-            await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.FIND_MY_EARBUDS_STOP);
-            await BluetoothService.Instance.DisconnectAsync();
-            base.OnClosing(e);
-        }
-        
-        private void OnActualThemeVariantChanged(object? sender, EventArgs e)
-        {
-            if (IsWindows11)
-            {
-                if (ActualThemeVariant != FluentAvaloniaTheme.HighContrastTheme)
-                {
-                    TryEnableMicaEffect();
-                }
                 else
+                    BringToFront();
+                break;
+            case Event.Connect:
+                if (!BluetoothService.Instance.IsConnected)
                 {
-                    ClearValue(BackgroundProperty);
-                    ClearValue(TransparencyBackgroundFallbackProperty);
+                    await BluetoothService.Instance.ConnectAsync();
                 }
-            }
+                break;
+            case Event.ShowBatteryPopup:
+                ShowPopup(true);
+                break;
         }
+    }
 
-        private void TryEnableMicaEffect()
+    #region Window management
+    protected override async void OnClosing(WindowClosingEventArgs e)
+    {
+        if (Settings.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
         {
-            // TODO test on Windows
-            return;
-            // TransparencyBackgroundFallback = Brushes.Transparent;
-            // TransparencyLevelHint = WindowTransparencyLevel.Mica;
-
-            // The background colors for the Mica brush are still based around SolidBackgroundFillColorBase resource
-            // BUT since we can't control the actual Mica brush color, we have to use the window background to create
-            // the same effect. However, we can't use SolidBackgroundFillColorBase directly since its opaque, and if
-            // we set the opacity the color become lighter than we want. So we take the normal color, darken it and 
-            // apply the opacity until we get the roughly the correct color
-            // NOTE that the effect still doesn't look right, but it suffices. Ideally we need access to the Mica
-            // CompositionBrush to properly change the color but I don't know if we can do that or not
-            if (ActualThemeVariant == ThemeVariant.Dark)
+            // check if the cause of the termination is due to shutdown or application close request
+            if (e.CloseReason is not (WindowCloseReason.OSShutdown or WindowCloseReason.ApplicationShutdown))
             {
-                var color = this.TryFindResource("SolidBackgroundFillColorBase",
-                    ThemeVariant.Dark, out var value) ? (Color2)(Color)value : new Color2(32, 32, 32);
-
-                color = color.LightenPercent(-0.8f);
-
-                Background = new ImmutableSolidColorBrush(color, 0.9);
+                BringToTray();
+                e.Cancel = true;
+                Log.Debug("MainWindow.OnClosing: Termination cancelled");
+                base.OnClosing(e);
+                return;
             }
-            else if (ActualThemeVariant == ThemeVariant.Light)
-            {
-                // Similar effect here
-                var color = this.TryFindResource("SolidBackgroundFillColorBase",
-                    ThemeVariant.Light, out var value) ? (Color2)(Color)value : new Color2(243, 243, 243);
 
-                color = color.LightenPercent(0.5f);
-
-                Background = new ImmutableSolidColorBrush(color, 0.9);
-            }
-        } 
+            Log.Debug("MainWindow.OnClosing: closing event, continuing termination");
+        }
+        else
+        {
+            Log.Debug("MainWindow.OnClosing: Now closing session");
+        }
+            
+        await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.FIND_MY_EARBUDS_STOP);
+        await BluetoothService.Instance.DisconnectAsync();
+        base.OnClosing(e);
+    }
         
-        protected override void OnOpened(EventArgs e)
+    private void OnActualThemeVariantChanged(object? sender, EventArgs e)
+    {
+        if (IsWindows11)
         {
-            if (_firstShow)
-            {
-                HotkeyReceiver.Reset();
-                HotkeyReceiver.Instance.Update(silent: true);
-            }
-
-            if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-            {
-                if ((desktop.Args?.Contains("/StartMinimized") ?? false) && PlatformUtils.SupportsTrayIcon && _firstShow)
-                {
-                    Log.Debug("MainWindow: Launched minimized");
-                    BringToTray();
-                }
-            }
-
-            if(_firstShow)
-                Log.Information("Startup time: {Time}",  Stopwatch.GetElapsedTime(Program.StartedAt));
-            
-            _firstShow = false;
-            
-            var thm = ActualThemeVariant;
-            if (IsWindows11 && thm != FluentAvaloniaTheme.HighContrastTheme)
+            if (ActualThemeVariant != FluentAvaloniaTheme.HighContrastTheme)
             {
                 TryEnableMicaEffect();
             }
-                
-            base.OnOpened(e);
+            else
+            {
+                ClearValue(BackgroundProperty);
+                ClearValue(TransparencyBackgroundFallbackProperty);
+            }
+        }
+    }
+
+    private void TryEnableMicaEffect()
+    {
+        // TODO test on Windows
+        return;
+        // TransparencyBackgroundFallback = Brushes.Transparent;
+        // TransparencyLevelHint = WindowTransparencyLevel.Mica;
+
+        // The background colors for the Mica brush are still based around SolidBackgroundFillColorBase resource
+        // BUT since we can't control the actual Mica brush color, we have to use the window background to create
+        // the same effect. However, we can't use SolidBackgroundFillColorBase directly since its opaque, and if
+        // we set the opacity the color become lighter than we want. So we take the normal color, darken it and 
+        // apply the opacity until we get the roughly the correct color
+        // NOTE that the effect still doesn't look right, but it suffices. Ideally we need access to the Mica
+        // CompositionBrush to properly change the color but I don't know if we can do that or not
+        if (ActualThemeVariant == ThemeVariant.Dark)
+        {
+            var color = this.TryFindResource("SolidBackgroundFillColorBase",
+                ThemeVariant.Dark, out var value) ? (Color2)(Color)value : new Color2(32, 32, 32);
+
+            color = color.LightenPercent(-0.8f);
+
+            Background = new ImmutableSolidColorBrush(color, 0.9);
+        }
+        else if (ActualThemeVariant == ThemeVariant.Light)
+        {
+            // Similar effect here
+            var color = this.TryFindResource("SolidBackgroundFillColorBase",
+                ThemeVariant.Light, out var value) ? (Color2)(Color)value : new Color2(243, 243, 243);
+
+            color = color.LightenPercent(0.5f);
+
+            Background = new ImmutableSolidColorBrush(color, 0.9);
+        }
+    } 
+        
+    protected override void OnOpened(EventArgs e)
+    {
+        if (_firstShow)
+        {
+            HotkeyReceiver.Reset();
+            HotkeyReceiver.Instance.Update(true);
         }
 
-        protected override void OnClosed(EventArgs e)
+        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            BluetoothService.Instance.BluetoothError -= OnBluetoothError;
-            BluetoothService.Instance.Disconnected -= OnDisconnected;
-            BluetoothService.Instance.Connected -= OnConnected;
-            
-            SppMessageHandler.Instance.ExtendedStatusUpdate -= OnExtendedStatusUpdate;
-            SppMessageHandler.Instance.StatusUpdate -= OnStatusUpdate;
-            SppMessageHandler.Instance.OtherOption -= HandleOtherTouchOption;
-
-            (Application.Current as App)!.TrayIconClicked -= TrayIcon_OnLeftClicked;
-            EventDispatcher.Instance.EventReceived -= OnEventReceived;
-
-            Loc.LanguageUpdated -= OnLanguageUpdated;
-
-            if(Application.Current.ApplicationLifetime is IControlledApplicationLifetime lifetime)
+            if ((desktop.Args?.Contains("/StartMinimized") ?? false) && PlatformUtils.SupportsTrayIcon && _firstShow)
             {
-                Log.Information("MainWindow: Shutting down normally");
-                lifetime.Shutdown();
+                Log.Debug("MainWindow: Launched minimized");
+                BringToTray();
+            }
+        }
+
+        if(_firstShow)
+            Log.Information("Startup time: {Time}",  Stopwatch.GetElapsedTime(Program.StartedAt));
+            
+        _firstShow = false;
+            
+        var thm = ActualThemeVariant;
+        if (IsWindows11 && thm != FluentAvaloniaTheme.HighContrastTheme)
+        {
+            TryEnableMicaEffect();
+        }
+                
+        base.OnOpened(e);
+    }
+
+    protected override void OnClosed(EventArgs e)
+    {
+        BluetoothService.Instance.BluetoothError -= OnBluetoothError;
+        BluetoothService.Instance.Disconnected -= OnDisconnected;
+        BluetoothService.Instance.Connected -= OnConnected;
+            
+        SppMessageHandler.Instance.ExtendedStatusUpdate -= OnExtendedStatusUpdate;
+        SppMessageHandler.Instance.StatusUpdate -= OnStatusUpdate;
+        SppMessageHandler.Instance.OtherOption -= HandleOtherTouchOption;
+
+        (Application.Current as App)!.TrayIconClicked -= TrayIcon_OnLeftClicked;
+        EventDispatcher.Instance.EventReceived -= OnEventReceived;
+
+        Loc.LanguageUpdated -= OnLanguageUpdated;
+
+        if(Application.Current.ApplicationLifetime is IControlledApplicationLifetime lifetime)
+        {
+            Log.Information("MainWindow: Shutting down normally");
+            lifetime.Shutdown();
+        }
+        else
+        {
+            Log.Information("MainWindow: Shutting down using Environment.Exit");
+            Environment.Exit(0);
+        }
+    }
+
+    public void BringToFront()
+    {
+        Dispatcher.UIThread.InvokeAsync(() =>
+        {  
+            if (WindowState == WindowState.Minimized)
+            {
+                WindowState = WindowState.Normal;
+            }
+                
+            if (PlatformUtils.IsLinux)
+            {
+                Hide(); // Workaround for some Linux DMs
+            }
+
+#if OSX
+            ThePBone.OSX.Native.Unmanaged.AppUtils.setHideInDock(false);
+#endif
+            Show();
+                
+            Activate();
+            Topmost = true;
+            Topmost = false;
+            Focus();
+        });
+    }
+
+    private void BringToTray()
+    {
+#if OSX
+        ThePBone.OSX.Native.Unmanaged.AppUtils.setHideInDock(true);
+#endif
+        Hide();
+    }
+
+    private void TrayIcon_OnLeftClicked()
+    {
+        Dispatcher.UIThread.InvokeAsync(() =>
+        {
+            if (!IsVisible)
+            {
+                BringToFront();
             }
             else
             {
-                Log.Information("MainWindow: Shutting down using Environment.Exit");
-                Environment.Exit(0);
+                BringToTray();
             }
-        }
+        });
+    }
+    #endregion
 
-        public void BringToFront()
+    #region Global Bluetooth callbacks
+    private void OnStatusUpdate(object? sender, StatusUpdateParser e)
+    {
+        if (_lastWearState == LegacyWearStates.None &&
+            e.WearState != LegacyWearStates.None && Settings.Instance.ResumePlaybackOnSensor)
         {
-            Dispatcher.UIThread.InvokeAsync(() =>
-            {  
-                if (WindowState == WindowState.Minimized)
+            MediaKeyRemote.Instance.Play();
+        }
+            
+        // Update dynamic tray icon
+        if (e is IBasicStatusUpdate status)
+        {
+            WindowIconRenderer.UpdateDynamicIcon(status);
+        }
+            
+        _lastWearState = e.WearState;
+    }
+
+    private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
+    {
+        if (Settings.Instance.Popup.Enabled)
+        {
+            ShowPopup();
+        }
+            
+        // Update dynamic tray icon
+        if (e is IBasicStatusUpdate status)
+        {
+            WindowIconRenderer.UpdateDynamicIcon(status);
+        }
+            
+        // Reply manager info and request & cache SKU info
+        _ = MessageComposer.SetManagerInfo();
+        if(BluetoothService.Instance.DeviceSpec.Supports(Features.DebugSku))
+            _ = BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
+    }
+
+    private void OnConnected(object? sender, EventArgs e)
+    {
+        _popupShown = false;
+        // Pager.SwitchPage(AbstractPage.Pages.Home);
+    }
+
+    private async void OnBluetoothError(object? sender, BluetoothException e)
+    {
+        WindowIconRenderer.ResetIconToDefault();
+            
+        switch (e.ErrorCode)
+        {
+            case BluetoothException.ErrorCodes.NoAdaptersAvailable:
+                await new MessageBox()
                 {
-                    WindowState = WindowState.Normal;
-                }
-                
-                if (PlatformUtils.IsLinux)
+                    Title = Loc.Resolve("error"),
+                    Description = Loc.Resolve("nobluetoothdev")
+                }.ShowAsync();
+                break;
+            default:
+                _popupShown = false;
+                break;
+        }
+    }
+
+    private void OnDisconnected(object? sender, string e)
+    {
+        WindowIconRenderer.ResetIconToDefault();
+        _popupShown = false;
+    }
+
+    private async void HandleOtherTouchOption(object? sender, TouchOptions e)
+    {
+        var action = e == TouchOptions.OtherL ?
+            Settings.Instance.CustomActionLeft : Settings.Instance.CustomActionRight;
+
+        switch (action.Action)
+        {
+            case CustomAction.Actions.Event:
+                EventDispatcher.Instance.Dispatch(Enum.Parse<Event>(action.Parameter), true);
+                break;
+            case CustomAction.Actions.RunExternalProgram:
+                try
                 {
-                    Hide(); // Workaround for some Linux DMs
+                    var psi = new ProcessStartInfo
+                    {
+                        FileName = action.Parameter,
+                        UseShellExecute = true
+                    };
+                    Process.Start(psi);
                 }
-
-#if OSX
-                ThePBone.OSX.Native.Unmanaged.AppUtils.setHideInDock(false);
-#endif
-                Show();
-                
-                Activate();
-                Topmost = true;
-                Topmost = false;
-                Focus();
-            });
-        }
-
-        private void BringToTray()
-        {
-#if OSX
-            ThePBone.OSX.Native.Unmanaged.AppUtils.setHideInDock(true);
-#endif
-            Hide();
-        }
-
-        private void TrayIcon_OnLeftClicked()
-        {
-            Dispatcher.UIThread.InvokeAsync(() =>
-            {
-                if (!IsVisible)
+                catch (FileNotFoundException ex)
                 {
-                    BringToFront();
-                }
-                else
-                {
-                    BringToTray();
-                }
-            });
-        }
-        #endregion
-
-        #region Global Bluetooth callbacks
-        private void OnStatusUpdate(object? sender, StatusUpdateParser e)
-        {
-            if (_lastWearState == LegacyWearStates.None &&
-                e.WearState != LegacyWearStates.None && Settings.Instance.ResumePlaybackOnSensor)
-            {
-                MediaKeyRemote.Instance.Play();
-            }
-            
-            // Update dynamic tray icon
-            if (e is IBasicStatusUpdate status)
-            {
-                WindowIconRenderer.UpdateDynamicIcon(status);
-            }
-            
-            _lastWearState = e.WearState;
-        }
-
-        private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
-        {
-            if (Settings.Instance.Popup.Enabled)
-            {
-                ShowPopup();
-            }
-            
-            // Update dynamic tray icon
-            if (e is IBasicStatusUpdate status)
-            {
-                WindowIconRenderer.UpdateDynamicIcon(status);
-            }
-            
-            // Reply manager info and request & cache SKU info
-            _ = MessageComposer.SetManagerInfo();
-            if(BluetoothService.Instance.DeviceSpec.Supports(Features.DebugSku))
-                _ = BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
-        }
-
-        private void OnConnected(object? sender, EventArgs e)
-        {
-            _popupShown = false;
-            // Pager.SwitchPage(AbstractPage.Pages.Home);
-        }
-
-        private async void OnBluetoothError(object? sender, BluetoothException e)
-        {
-            WindowIconRenderer.ResetIconToDefault();
-            
-            switch (e.ErrorCode)
-            {
-                case BluetoothException.ErrorCodes.NoAdaptersAvailable:
                     await new MessageBox()
                     {
-                        Title = Loc.Resolve("error"),
-                        Description = Loc.Resolve("nobluetoothdev")
+                        Title = "Custom long-press action failed",
+                        Description = $"Unable to launch external application.\n" +
+                                      $"File not found: '{ex.FileName}'"
                     }.ShowAsync();
-                    break;
-                default:
-                    _popupShown = false;
-                    break;
-            }
-        }
-
-        private void OnDisconnected(object? sender, string e)
-        {
-            WindowIconRenderer.ResetIconToDefault();
-            _popupShown = false;
-        }
-
-        private async void HandleOtherTouchOption(object? sender, TouchOptions e)
-        {
-            var action = e == TouchOptions.OtherL ?
-                Settings.Instance.CustomActionLeft : Settings.Instance.CustomActionRight;
-
-            switch (action.Action)
-            {
-                case CustomAction.Actions.Event:
-                    EventDispatcher.Instance.Dispatch(Enum.Parse<Event>(action.Parameter), true);
-                    break;
-                case CustomAction.Actions.RunExternalProgram:
-                    try
-                    {
-                        var psi = new ProcessStartInfo
-                        {
-                            FileName = action.Parameter,
-                            UseShellExecute = true
-                        };
-                        Process.Start(psi);
-                    }
-                    catch (FileNotFoundException ex)
+                }
+                catch (Win32Exception ex)
+                {
+                    if (ex.NativeErrorCode == 13 && PlatformUtils.IsLinux)
                     {
                         await new MessageBox()
                         {
                             Title = "Custom long-press action failed",
-                            Description = $"Unable to launch external application.\n" +
-                                          $"File not found: '{ex.FileName}'"
+                            Description = $"Unable to launch external application.\n\n" +
+                                          $"Insufficient permissions. Please add execute permissions for your user/group to this file.\n\n" +
+                                          $"Run this command in a terminal: chmod +x \"{action.Parameter}\""
                         }.ShowAsync();
                     }
-                    catch (Win32Exception ex)
+                    else
                     {
-                        if (ex.NativeErrorCode == 13 && PlatformUtils.IsLinux)
+                        await new MessageBox()
                         {
-                            await new MessageBox()
-                            {
-                                Title = "Custom long-press action failed",
-                                Description = $"Unable to launch external application.\n\n" +
-                                              $"Insufficient permissions. Please add execute permissions for your user/group to this file.\n\n" +
-                                              $"Run this command in a terminal: chmod +x \"{action.Parameter}\""
-                            }.ShowAsync();
-                        }
-                        else
-                        {
-                            await new MessageBox()
-                            {
-                                Title = "Custom long-press action failed",
-                                Description = $"Unable to launch external application.\n\n" +
-                                              $"Detailed information:\n\n" +
-                                              $"{ex.Message}"
-                            }.ShowAsync();
-                        }
+                            Title = "Custom long-press action failed",
+                            Description = $"Unable to launch external application.\n\n" +
+                                          $"Detailed information:\n\n" +
+                                          $"{ex.Message}"
+                        }.ShowAsync();
                     }
+                }
 
-                    break;
-                case CustomAction.Actions.TriggerHotkey:
-                    var keys = new List<Key>();
-                    try
-                    {
-                        keys.AddRange(action.Parameter.Split(',').Select(Enum.Parse<Key>));
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Error("CustomAction.HotkeyBroadcast: Cannot parse saved key-combo: {Message}", ex.Message);
-                        Log.Error("CustomAction.HotkeyBroadcast: Caused by combo: {Param}", action.Parameter);
-                        return;
-                    }
+                break;
+            case CustomAction.Actions.TriggerHotkey:
+                var keys = new List<Key>();
+                try
+                {
+                    keys.AddRange(action.Parameter.Split(',').Select(Enum.Parse<Key>));
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("CustomAction.HotkeyBroadcast: Cannot parse saved key-combo: {Message}", ex.Message);
+                    Log.Error("CustomAction.HotkeyBroadcast: Caused by combo: {Param}", action.Parameter);
+                    return;
+                }
 
-                    HotkeyBroadcast.Instance.SendKeys(keys);
-                    break;
-            }
+                HotkeyBroadcast.Instance.SendKeys(keys);
+                break;
         }
-        #endregion
+    }
+    #endregion
         
-        public void ShowPopup(bool noDebounce = false)
-        {
-            if (_popupShown && !noDebounce)
-                return;
+    public void ShowPopup(bool noDebounce = false)
+    {
+        if (_popupShown && !noDebounce)
+            return;
             
-            _popup ??= new BudsPopup();
+        _popup ??= new BudsPopup();
                 
-            if (_popup.IsVisible)
-            {
-                _popup.UpdateSettings();
-                _popup.RearmTimer();
-            }
+        if (_popup.IsVisible)
+        {
+            _popup.UpdateSettings();
+            _popup.RearmTimer();
+        }
 
-            try
-            {
-                _popup.Show();
-            }
-            catch (InvalidOperationException)
-            {
-                /* Window already closed down */
-                _popup = new BudsPopup();
-                _popup.Show();
-            }
-            finally
-            {
-                _popupShown = true;
-            }
+        try
+        {
+            _popup.Show();
+        }
+        catch (InvalidOperationException)
+        {
+            /* Window already closed down */
+            _popup = new BudsPopup();
+            _popup.Show();
+        }
+        finally
+        {
+            _popupShown = true;
         }
     }
 }

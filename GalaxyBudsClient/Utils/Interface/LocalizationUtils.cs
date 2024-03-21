@@ -44,7 +44,7 @@ namespace GalaxyBudsClient.Utils.Interface
             
             public static FlowDirection ResolveFlowDirection()
             {
-                return (Application.Current?.FindResource("IsRightToLeft") as bool?) == true ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+                return Application.Current?.FindResource("IsRightToLeft") as bool? == true ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             }
 
             public static void Load()
@@ -56,7 +56,7 @@ namespace GalaxyBudsClient.Utils.Interface
                 switch (Settings.Instance.Locale)
                 {
                     case Locales.custom when IsTranslatorModeEnabled():
-                        SetLanguageResourceDictionary(GetTranslatorModeFile(), external: true);
+                        SetLanguageResourceDictionary(GetTranslatorModeFile(), true);
                         NotifyObservers();
                         return;
                     case Locales.custom when !IsTranslatorModeEnabled():
@@ -65,7 +65,7 @@ namespace GalaxyBudsClient.Utils.Interface
                         break;
                 }
 
-                SetLanguageResourceDictionary($"{Program.AvaresUrl}/i18n/{lang}.xaml", external: false);
+                SetLanguageResourceDictionary($"{Program.AvaresUrl}/i18n/{lang}.xaml", false);
                 NotifyObservers();
             }
 
@@ -147,11 +147,11 @@ namespace GalaxyBudsClient.Utils.Interface
             {
                 if (s_langList.TryGetValue(key, out var list))
                 {
-                    list.Add(new(observer));
+                    list.Add(new WeakReference<IObserver<string>>(observer));
                 }
                 else
                 {
-                    list = [new(observer)];
+                    list = [new WeakReference<IObserver<string>>(observer)];
                     s_langList.Add(key, list);
                 }
                 var value = Resolve(key);

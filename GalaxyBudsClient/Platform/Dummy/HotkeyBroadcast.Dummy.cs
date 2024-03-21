@@ -5,13 +5,12 @@ using Serilog;
 
 #pragma warning disable CS0067
 
-namespace GalaxyBudsClient.Platform.Dummy
+namespace GalaxyBudsClient.Platform.Dummy;
+
+public class HotkeyBroadcast : IHotkeyBroadcast
 {
-    public class HotkeyBroadcast : IHotkeyBroadcast
+    public void SendKeys(IEnumerable<Key> keys)
     {
-        public void SendKeys(IEnumerable<Key> keys)
-        {
-            Log.Warning("Dummy.HotkeyBroadcast: Platform not supported");
-        }
+        Log.Warning("Dummy.HotkeyBroadcast: Platform not supported");
     }
 }

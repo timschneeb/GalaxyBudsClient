@@ -6,33 +6,32 @@ using GalaxyBudsClient.Platform.Interfaces;
 using SharpHook;
 using SharpHook.Native;
 
-namespace GalaxyBudsClient.Platform.Linux
+namespace GalaxyBudsClient.Platform.Linux;
+
+public class HotkeyBroadcast : IHotkeyBroadcast
 {
-    public class HotkeyBroadcast : IHotkeyBroadcast
+    public void SendKeys(IEnumerable<Key> keys)
     {
-        public void SendKeys(IEnumerable<Key> keys)
+        SendKeysInternal(keys
+            .Select(key => key.ToKeysEnum().ToLinuxKeyCode())
+            .Where(key => key != null)
+            .Cast<KeyCode>()
+            .ToList());
+    }
+
+    private static void SendKeysInternal(List<KeyCode> keys)
+    {
+        var simulator = new EventSimulator();
+        foreach (var key in keys)
         {
-            SendKeysInternal(keys
-                .Select(key => key.ToKeysEnum().ToLinuxKeyCode())
-                .Where(key => key != null)
-                .Cast<KeyCode>()
-                .ToList());
+            simulator.SimulateKeyPress(key);
         }
 
-        private static void SendKeysInternal(List<KeyCode> keys)
-        {
-            var simulator = new EventSimulator();
-            foreach (var key in keys)
-            {
-                simulator.SimulateKeyPress(key);
-            }
-
-            keys.Reverse();
+        keys.Reverse();
             
-            foreach (var key in keys)
-            {
-                simulator.SimulateKeyRelease(key);
-            }
+        foreach (var key in keys)
+        {
+            simulator.SimulateKeyRelease(key);
         }
     }
 }

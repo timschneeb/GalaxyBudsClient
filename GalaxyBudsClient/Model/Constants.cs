@@ -129,7 +129,7 @@ namespace GalaxyBudsClient.Model
             [LocalizedDescription("darkmode_enabled")]
             Dark,
             [LocalizedDescription("darkmode_system")]
-            System,
+            System
         }
 
         public enum PopupPlacement
@@ -145,7 +145,7 @@ namespace GalaxyBudsClient.Model
             [LocalizedDescription("connpopup_placement_bc")]
             BottomCenter,
             [LocalizedDescription("connpopup_placement_br")]
-            BottomRight,
+            BottomRight
         }
         
         public enum VoiceDetectTimeouts

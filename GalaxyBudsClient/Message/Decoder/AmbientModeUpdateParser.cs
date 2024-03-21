@@ -1,18 +1,17 @@
 ﻿using System;
 
-namespace GalaxyBudsClient.Message.Decoder
+namespace GalaxyBudsClient.Message.Decoder;
+
+internal class AmbientModeUpdateParser : BaseMessageParser
 {
-    class AmbientModeUpdateParser : BaseMessageParser
+    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.AMBIENT_MODE_UPDATED;
+    public bool Enabled { set; get; }
+
+    public override void ParseMessage(SppMessage msg)
     {
-        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.AMBIENT_MODE_UPDATED;
-        public bool Enabled { set; get; }
+        if (msg.Id != HandledType)
+            return;
 
-        public override void ParseMessage(SppMessage msg)
-        {
-            if (msg.Id != HandledType)
-                return;
-
-            Enabled = Convert.ToBoolean(msg.Payload[0]);
-        }
+        Enabled = Convert.ToBoolean(msg.Payload[0]);
     }
 }

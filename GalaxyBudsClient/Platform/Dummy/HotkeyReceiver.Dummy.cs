@@ -5,28 +5,27 @@ using Serilog;
 
 #pragma warning disable 1998
 
-namespace GalaxyBudsClient.Platform.Dummy
+namespace GalaxyBudsClient.Platform.Dummy;
+
+public class HotkeyReceiver : IHotkeyReceiver
 {
-    public class HotkeyReceiver : IHotkeyReceiver
+    public async Task RegisterHotkeyAsync(Hotkey hotkey)
     {
-        public async Task RegisterHotkeyAsync(Hotkey hotkey)
-        {
-            Log.Warning("Dummy.HotkeyReceiver: Platform not supported");
-        }
+        Log.Warning("Dummy.HotkeyReceiver: Platform not supported");
+    }
         
-        public async Task UnregisterAllAsync()
-        {
-            Log.Warning("Dummy.HotkeyReceiver: Platform not supported");
-        }
+    public async Task UnregisterAllAsync()
+    {
+        Log.Warning("Dummy.HotkeyReceiver: Platform not supported");
+    }
 
-        public async Task ValidateHotkeyAsync(Hotkey hotkey)
-        {
-            Log.Warning("Dummy.HotkeyReceiver: Platform not supported");
-        }
+    public async Task ValidateHotkeyAsync(Hotkey hotkey)
+    {
+        Log.Warning("Dummy.HotkeyReceiver: Platform not supported");
+    }
 
-        public void Dispose()
-        {
+    public void Dispose()
+    {
             
-        }
     }
 }

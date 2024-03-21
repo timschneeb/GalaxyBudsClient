@@ -9,12 +9,12 @@ using Serilog;
 using ThePBone.Interop.Win32;
 #endif
 
-namespace GalaxyBudsClient.Platform.Windows
+namespace GalaxyBudsClient.Platform.Windows;
+
+public class MediaKeyRemote : IMediaKeyRemote
 {
-    public class MediaKeyRemote : IMediaKeyRemote
+    public void Play()
     {
-        public void Play()
-        {
 #if Windows
             if (!AudioPlaybackDetection.IsWindowsPlayingSound())
             {
@@ -26,10 +26,10 @@ namespace GalaxyBudsClient.Platform.Windows
                 Log.Debug("Windows.MediaKeyRemote: Windows appears to playback sound; do not emit a play/pause keypress");
             }
 #endif
-        }
+    }
 
-        public void Pause()
-        {
+    public void Pause()
+    {
 #if Windows
             if (AudioPlaybackDetection.IsWindowsPlayingSound())
             {
@@ -41,10 +41,10 @@ namespace GalaxyBudsClient.Platform.Windows
                 Log.Debug("Windows.MediaKeyRemote: Windows appears to playback no sound; do not emit a play/pause keypress");
             }
 #endif
-        }
+    }
 
-        public void PlayPause()
-        {
+    public void PlayPause()
+    {
 #if Windows
             try
             {
@@ -55,6 +55,5 @@ namespace GalaxyBudsClient.Platform.Windows
                 Log.Error($"Windows.MediaKeyRemote: Exception while sending keystroke: {ex.Message}");
             }
 #endif
-        }
     }
 }

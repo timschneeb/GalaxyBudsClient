@@ -20,7 +20,7 @@ public class QuestionBox
             Content = Description,
             PrimaryButtonText = ButtonText,
             CloseButtonText = CloseButtonText,
-            DefaultButton = ContentDialogButton.Primary,
+            DefaultButton = ContentDialogButton.Primary
         };
 
         var result = await cd.ShowAsync(host ?? MainWindow2.Instance);

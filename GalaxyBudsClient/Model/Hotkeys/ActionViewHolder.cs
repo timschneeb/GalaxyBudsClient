@@ -1,14 +1,13 @@
 using GalaxyBudsClient.Model.Attributes;
 
-namespace GalaxyBudsClient.Model.Hotkeys
-{
-    public class ActionViewHolder(Event value)
-    {
-        public readonly Event Value = value;
+namespace GalaxyBudsClient.Model.Hotkeys;
 
-        public override string ToString()
-        {
-            return Value.GetDescription();
-        }
+public class ActionViewHolder(Event value)
+{
+    public readonly Event Value = value;
+
+    public override string ToString()
+    {
+        return Value.GetDescription();
     }
 }

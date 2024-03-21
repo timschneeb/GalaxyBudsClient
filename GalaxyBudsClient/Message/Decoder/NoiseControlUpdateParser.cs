@@ -1,18 +1,17 @@
 ﻿using GalaxyBudsClient.Model.Constants;
 
-namespace GalaxyBudsClient.Message.Decoder
+namespace GalaxyBudsClient.Message.Decoder;
+
+internal class NoiseControlUpdateParser : BaseMessageParser
 {
-    class NoiseControlUpdateParser : BaseMessageParser
+    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.NOISE_CONTROLS_UPDATE;
+    public NoiseControlModes Mode { set; get; }
+
+    public override void ParseMessage(SppMessage msg)
     {
-        public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.NOISE_CONTROLS_UPDATE;
-        public NoiseControlModes Mode { set; get; }
+        if (msg.Id != HandledType)
+            return;
 
-        public override void ParseMessage(SppMessage msg)
-        {
-            if (msg.Id != HandledType)
-                return;
-
-            Mode = (NoiseControlModes) msg.Payload[0];
-        }
+        Mode = (NoiseControlModes) msg.Payload[0];
     }
 }
