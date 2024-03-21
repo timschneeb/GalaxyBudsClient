@@ -19,7 +19,8 @@ public partial class HotkeyEditorDialog : UserControl
     {
         AvaloniaXamlLoader.Load(this);
     }
-        
+       
+    // TODO Bug: OK/Cancel buttons stop working in assign dialog after triggering error dialog
     public static async Task<Hotkey?> OpenEditDialogAsync(Hotkey? hotkey)
     {
         var dialog = new ContentDialog

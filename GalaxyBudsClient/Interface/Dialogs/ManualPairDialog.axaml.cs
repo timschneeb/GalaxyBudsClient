@@ -40,7 +40,8 @@ public partial class ManualPairDialog : UserControl
         var result = await dialog.ShowAsync(MainWindow.Instance);
         dialog.PrimaryButtonClick -= OnPrimaryButtonClick;
             
-        return result == ContentDialogResult.None ? null : (viewModel.SelectedModel, viewModel.SelectedDevice!);
+        return (result == ContentDialogResult.None || viewModel.SelectedDevice == null) ? 
+            null : (viewModel.SelectedModel, viewModel.SelectedDevice);
 
         void OnPrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {

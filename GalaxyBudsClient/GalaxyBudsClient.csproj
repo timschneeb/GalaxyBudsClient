@@ -182,6 +182,10 @@
           <DependentUpon>ManualPairDialog.axaml</DependentUpon>
           <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Interface\Pages\WelcomePage.axaml.cs">
+          <DependentUpon>WelcomePage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
     <PropertyGroup>

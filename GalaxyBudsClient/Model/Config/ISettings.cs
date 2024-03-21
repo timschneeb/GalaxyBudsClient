@@ -43,7 +43,7 @@ public interface IExperiments : INotifyPropertyChanged
     
 public interface ISettings : INotifyPropertyChanged
 {
-    [Option(DefaultValue = DarkModes.Light)]
+    [Option(DefaultValue = DarkModes.Dark)]
     DarkModes DarkMode { set; get; }
     Color AccentColor { set; get; }
     [Option(DefaultValue = Locales.en)]

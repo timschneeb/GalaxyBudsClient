@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using Avalonia.Controls;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
+using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Utils;
+using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels;
 
@@ -11,14 +15,24 @@ public class MainViewViewModel : ViewModelBase
     public MainViewViewModel()
     {
         NavigationFactory = new NavigationFactory(this);
+        Settings.Instance.RegisteredDevice.PropertyChanged += OnDevicePropertyChanged;
     }
 
+    [Reactive] public bool IsInSetupWizard { set; get; } = !BluetoothService.RegisteredDeviceValid;
     public NavigationFactory NavigationFactory { get; }
-    public required Func<Type, PageViewModelBase?> VmResolver { get; set; }
+    public required Func<Type, PageViewModelBase?> VmResolver { get; init; }
     public ObservableCollection<BreadcrumbViewModel> BreadcrumbItems { get; } = [
         // Workaround: The Breadcrumb library crashes if there are no items when it tries to measure its width 
         new BreadcrumbViewModel("", typeof(HomePageViewModel)) 
     ];
+    
+    private void OnDevicePropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName is
+            nameof(Settings.Instance.RegisteredDevice.MacAddress) or
+            nameof(Settings.Instance.RegisteredDevice.Model))
+            IsInSetupWizard = !BluetoothService.RegisteredDeviceValid;
+    }
 }
 
 public class NavigationFactory(MainViewViewModel owner) : INavigationPageFactory

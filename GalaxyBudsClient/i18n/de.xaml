@@ -155,7 +155,7 @@
     
     <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Willkommen!</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">Hallo! Dieser Galaxy Buds Manager ist inoffiziell und ist in keiner Weise mit Samsung verbunden. Diese Programm wurde dazu entworfen, viele neue Funktionen für die Galaxy Buds-Reihe freizuschalten, allerdings sind einige dieser Funktionen auf Geräten ohne diese App aus technischen Gründen nicht verfügbar.</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">Diese App ist inoffiziell und in keiner Weise mit Samsung verbunden. Diese Programm wurde dazu entworfen, viele neue Funktionen für die Galaxy Buds-Reihe freizuschalten, allerdings sind einige dieser Funktionen auf Geräten ohne diese App aus technischen Gründen nicht verfügbar.</sys:String>
     <sys:String x:Key="welcome_textblock_p2">Falls es Dich interessiert was hinter den Kulissen vorgeht, kannst du im GitHub Repository eine kurze Dokumentation des reverse-engineerten Protokolls ansehen. Du kannst mich auch auf Telegram oder GitHub unter @thepbone erreichen, sollten irgendwelche Probleme auftreten.</sys:String>
     <sys:String x:Key="welcome_textblock_p3">Diese App unterstützt alle Galaxy Buds Modelle.</sys:String>
     <sys:String x:Key="welcome_darkmode">Dark-Mode</sys:String>
