@@ -1,13 +1,20 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:styling="clr-namespace:FluentAvalonia.Styling;assembly=FluentAvalonia"
-             x:Class="GalaxyBudsClient.App">
-    <Application.Name>Galaxy Buds Manager</Application.Name>
+             xmlns:galaxyBudsClient="clr-namespace:GalaxyBudsClient"
+             x:Class="GalaxyBudsClient.App" 
+             Name="Galaxy Buds Manager">
+
+    <Design.DataContext>
+        <galaxyBudsClient:App />
+    </Design.DataContext>
+    
     <NativeMenu.Menu>
         <NativeMenu>
             <!-- eternal emptiness -->
         </NativeMenu>
     </NativeMenu.Menu>
+    
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -22,6 +29,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
+    
     <Application.Styles>
         <FluentTheme/>
         <styling:FluentAvaloniaTheme PreferSystemTheme="True" CustomAccentColor="Orange" />

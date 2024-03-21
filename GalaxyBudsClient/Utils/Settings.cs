@@ -43,9 +43,8 @@ namespace GalaxyBudsClient.Utils
                     break;
                 case nameof(ISettings.DynamicTrayIconMode):
                 {
-                    /* TODO maybe combine this with the other icon update in MainWindow2 */
                     var cache = DeviceMessageCache.Instance.BasicStatusUpdate;
-                    if (Instance.DynamicTrayIconMode != DynamicTrayIconModes.Disabled && BluetoothImpl.Instance.IsConnectedLegacy && cache != null)
+                    if (Instance.DynamicTrayIconMode != DynamicTrayIconModes.Disabled && BluetoothImpl.Instance.IsConnected && cache != null)
                         WindowIconRenderer.UpdateDynamicIcon(cache);
                     else
                         WindowIconRenderer.ResetIconToDefault();

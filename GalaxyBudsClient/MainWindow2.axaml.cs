@@ -5,11 +5,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input;
-using Avalonia.Markup.Xaml;
 using Avalonia.Media.Immutable;
 using Avalonia.Styling;
 using Avalonia.Threading;
@@ -17,7 +15,6 @@ using FluentAvalonia.Styling;
 using FluentAvalonia.UI.Media;
 using FluentAvalonia.UI.Windowing;
 using GalaxyBudsClient.Bluetooth;
-using GalaxyBudsClient.Interface;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
@@ -146,56 +143,56 @@ namespace GalaxyBudsClient
             base.OnClosing(e);
         }
         
-    private void OnActualThemeVariantChanged(object? sender, EventArgs e)
-    {
-        if (IsWindows11)
+        private void OnActualThemeVariantChanged(object? sender, EventArgs e)
         {
-            if (ActualThemeVariant != FluentAvaloniaTheme.HighContrastTheme)
+            if (IsWindows11)
             {
-                TryEnableMicaEffect();
+                if (ActualThemeVariant != FluentAvaloniaTheme.HighContrastTheme)
+                {
+                    TryEnableMicaEffect();
+                }
+                else
+                {
+                    ClearValue(BackgroundProperty);
+                    ClearValue(TransparencyBackgroundFallbackProperty);
+                }
             }
-            else
+        }
+
+        private void TryEnableMicaEffect()
+        {
+            // TODO test on Windows
+            return;
+            // TransparencyBackgroundFallback = Brushes.Transparent;
+            // TransparencyLevelHint = WindowTransparencyLevel.Mica;
+
+            // The background colors for the Mica brush are still based around SolidBackgroundFillColorBase resource
+            // BUT since we can't control the actual Mica brush color, we have to use the window background to create
+            // the same effect. However, we can't use SolidBackgroundFillColorBase directly since its opaque, and if
+            // we set the opacity the color become lighter than we want. So we take the normal color, darken it and 
+            // apply the opacity until we get the roughly the correct color
+            // NOTE that the effect still doesn't look right, but it suffices. Ideally we need access to the Mica
+            // CompositionBrush to properly change the color but I don't know if we can do that or not
+            if (ActualThemeVariant == ThemeVariant.Dark)
             {
-                ClearValue(BackgroundProperty);
-                ClearValue(TransparencyBackgroundFallbackProperty);
+                var color = this.TryFindResource("SolidBackgroundFillColorBase",
+                    ThemeVariant.Dark, out var value) ? (Color2)(Avalonia.Media.Color)value : new Color2(32, 32, 32);
+
+                color = color.LightenPercent(-0.8f);
+
+                Background = new ImmutableSolidColorBrush(color, 0.9);
             }
-        }
-    }
+            else if (ActualThemeVariant == ThemeVariant.Light)
+            {
+                // Similar effect here
+                var color = this.TryFindResource("SolidBackgroundFillColorBase",
+                    ThemeVariant.Light, out var value) ? (Color2)(Avalonia.Media.Color)value : new Color2(243, 243, 243);
 
-    private void TryEnableMicaEffect()
-    {
-        // TODO test on Windows
-        return;
-       // TransparencyBackgroundFallback = Brushes.Transparent;
-       // TransparencyLevelHint = WindowTransparencyLevel.Mica;
+                color = color.LightenPercent(0.5f);
 
-        // The background colors for the Mica brush are still based around SolidBackgroundFillColorBase resource
-        // BUT since we can't control the actual Mica brush color, we have to use the window background to create
-        // the same effect. However, we can't use SolidBackgroundFillColorBase directly since its opaque, and if
-        // we set the opacity the color become lighter than we want. So we take the normal color, darken it and 
-        // apply the opacity until we get the roughly the correct color
-        // NOTE that the effect still doesn't look right, but it suffices. Ideally we need access to the Mica
-        // CompositionBrush to properly change the color but I don't know if we can do that or not
-        if (ActualThemeVariant == ThemeVariant.Dark)
-        {
-            var color = this.TryFindResource("SolidBackgroundFillColorBase",
-                ThemeVariant.Dark, out var value) ? (Color2)(Avalonia.Media.Color)value : new Color2(32, 32, 32);
-
-            color = color.LightenPercent(-0.8f);
-
-            Background = new ImmutableSolidColorBrush(color, 0.9);
-        }
-        else if (ActualThemeVariant == ThemeVariant.Light)
-        {
-            // Similar effect here
-            var color = this.TryFindResource("SolidBackgroundFillColorBase",
-                ThemeVariant.Light, out var value) ? (Color2)(Avalonia.Media.Color)value : new Color2(243, 243, 243);
-
-            color = color.LightenPercent(0.5f);
-
-            Background = new ImmutableSolidColorBrush(color, 0.9);
-        }
-    } 
+                Background = new ImmutableSolidColorBrush(color, 0.9);
+            }
+        } 
         
         protected override void OnOpened(EventArgs e)
         {
@@ -218,7 +215,6 @@ namespace GalaxyBudsClient
                 Log.Information("Startup time: {Time}",  Stopwatch.GetElapsedTime(Program.StartedAt));
             
             _firstShow = false;
-            
             
             var thm = ActualThemeVariant;
             if (IsWindows11 && thm != FluentAvaloniaTheme.HighContrastTheme)
@@ -270,9 +266,9 @@ namespace GalaxyBudsClient
                     Hide(); // Workaround for some Linux DMs
                 }
 
-                #if OSX
+#if OSX
                 ThePBone.OSX.Native.Unmanaged.AppUtils.setHideInDock(false);
-                #endif
+#endif
                 Show();
                 
                 Activate();
