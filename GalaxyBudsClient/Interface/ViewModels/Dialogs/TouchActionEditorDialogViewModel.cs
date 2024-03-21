@@ -69,7 +69,7 @@ public class TouchActionEditorDialogViewModel : ViewModelBase
             new("All files") { Patterns = new List<string> { "*" } }
         };
                 
-        var file = await MainWindow2.Instance.OpenFilePickerAsync(filters);
+        var file = await MainWindow.Instance.OpenFilePickerAsync(filters);
         if (file == null)
             return;
             

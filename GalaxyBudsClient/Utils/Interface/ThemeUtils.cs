@@ -25,18 +25,18 @@ public static class ThemeUtils
         // TODO do not load light/dark resources this way. it does not regard the system theme settings 
         if (Settings.Instance.DarkMode == DarkModes.Light)
         {
-            MainWindow2.Instance.RequestedThemeVariant = ThemeVariant.Light;
+            MainWindow.Instance.RequestedThemeVariant = ThemeVariant.Light;
                 
             SetBrushSource("Brushes");
         }
         else if (Settings.Instance.DarkMode == DarkModes.Dark)
         {
-            MainWindow2.Instance.RequestedThemeVariant = ThemeVariant.Dark;
+            MainWindow.Instance.RequestedThemeVariant = ThemeVariant.Dark;
             SetBrushSource("BrushesDark");
         }
         else
         {
-            MainWindow2.Instance.RequestedThemeVariant = null;
+            MainWindow.Instance.RequestedThemeVariant = null;
         }
 
         FaTheme.PreferSystemTheme = Settings.Instance.DarkMode == DarkModes.System;

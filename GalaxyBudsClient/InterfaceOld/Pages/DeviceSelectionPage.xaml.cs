@@ -121,7 +121,7 @@ public class DeviceSelectionPage : AbstractPage
         {
             Title = Loc.Resolve("error"),
             Description = Loc.Resolve("devsel_invalid_selection")
-        }.ShowAsync(MainWindow2.Instance);
+        }.ShowAsync(MainWindow.Instance);
     }
 
     private async void RegisterDevice(Models model, string mac)
@@ -174,7 +174,7 @@ public class DeviceSelectionPage : AbstractPage
             {
                 Title = Loc.Resolve("error"),
                 Description = ex.Message
-            }.ShowAsync(MainWindow2.Instance);
+            }.ShowAsync(MainWindow.Instance);
             return;
         }
 

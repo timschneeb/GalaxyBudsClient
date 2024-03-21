@@ -69,7 +69,7 @@ public class App : Application
             
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = MainWindow2.Instance;
+            desktop.MainWindow = MainWindow.Instance;
             desktop.Exit += (_, _) =>
             {
                 Settings.Instance.FirstLaunch = false;

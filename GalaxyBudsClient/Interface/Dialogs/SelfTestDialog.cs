@@ -31,7 +31,7 @@ public class SelfTestDialog : TaskDialog
             Text = Loc.Resolve("system_waiting_for_device"),
             MaxWidth = 600
         };
-        XamlRoot = MainWindow2.Instance;
+        XamlRoot = MainWindow.Instance;
         ShowProgressBar = true;
         
         SetProgressBarState(100, TaskDialogProgressState.Indeterminate);
@@ -114,7 +114,7 @@ public class SelfTestDialog : TaskDialog
                 Header = Loc.Resolve(parser is not { AllChecks: true } ? "selftest_fail_long" : "selftest_pass_long"),
                 Buttons = Buttons,
                 IconSource = IconSource,
-                XamlRoot = MainWindow2.Instance,
+                XamlRoot = MainWindow.Instance,
                 Commands = new[]
                 {
                     ResultAsTaskItem("system_hwver", parser.HardwareVersion),

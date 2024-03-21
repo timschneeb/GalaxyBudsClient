@@ -75,7 +75,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
         Settings.Instance.FirmwareWarningAccepted = result;
         if (!result)
         {
-            MainWindow2.Instance.MainView.FrameView.GoBack();
+            MainWindow.Instance.MainView.FrameView.GoBack();
         }
     }
     
@@ -137,7 +137,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
             new("All files") { Patterns = new List<string> { "*" } }
         };
                 
-        var file = await MainWindow2.Instance.OpenFilePickerAsync(filters);
+        var file = await MainWindow.Instance.OpenFilePickerAsync(filters);
         if (file == null)
             return;
        

@@ -87,7 +87,7 @@ public partial class HotkeyRecorderDialog : UserControl
         };
 
         dialog.PrimaryButtonClick += OnPrimaryButtonClick;
-        var result = await dialog.ShowAsync(MainWindow2.Instance);
+        var result = await dialog.ShowAsync(MainWindow.Instance);
         dialog.PrimaryButtonClick -= OnPrimaryButtonClick;
             
         return result == ContentDialogResult.None ? null : viewModel.Hotkeys.ToList();
@@ -105,7 +105,7 @@ public partial class HotkeyRecorderDialog : UserControl
                     Title = Loc.Resolve("hotkey_edit_invalid"),
                     PrimaryButtonText = Loc.Resolve("window_close")
                 };
-                _ = resultHint.ShowAsync(MainWindow2.Instance)
+                _ = resultHint.ShowAsync(MainWindow.Instance)
                     .ContinueWith(_ => defer.Complete());
             }
             else
