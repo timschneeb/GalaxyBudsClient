@@ -3,6 +3,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:developer="clr-namespace:GalaxyBudsClient.Interface.Developer"
+        xmlns:model="clr-namespace:GalaxyBudsClient.Model.Constants"
+        xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
         mc:Ignorable="d" d:DesignWidth="463" d:DesignHeight="380"
         x:Class="GalaxyBudsClient.Interface.Developer.TranslatorTools"
         x:DataType="developer:TranslatorTools"
@@ -25,29 +27,44 @@
                         <ColumnDefinition Width="Auto" MinWidth="100" />
                         <ColumnDefinition Width="Auto" MinWidth="80" />
                     </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="0" x:Name="XamlPath" IsReadOnly="True" Margin="0,0,5,0" />
-                    <ComboBox Grid.Column="1" x:Name="Locales" HorizontalAlignment="Stretch"
-                              ItemsSource="{Binding LocaleSource}" Margin="0,0,5,0" />
-                    <Button Grid.Column="2" x:Name="ReloadXaml" HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch" VerticalContentAlignment="Center"
-                            HorizontalContentAlignment="Center" Content="Reload" Click="ReloadXaml_OnClick" />
+                    <TextBox Grid.Column="0" 
+                             Name="XamlPath"
+                             IsReadOnly="True" 
+                             Margin="0,0,5,0" />
+                    <ComboBox Grid.Column="1" Name="Locales"
+                              HorizontalAlignment="Stretch"
+                              ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type model:Locales}}}"
+                              Margin="0,0,5,0" />
+                    <Button Grid.Column="2" 
+                            Name="ReloadXaml" 
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            Content="Reload" 
+                            Click="ReloadXaml_OnClick" />
                 </Grid>
                 <TextBlock Grid.Row="2" TextWrapping="Wrap">
                     Hot-reloads all strings. Don't forget to save before reloading.
                 </TextBlock>
             </Grid>
         </HeaderedContentControl>
+        
         <HeaderedContentControl Classes="GroupBox"
                                 Header="Flags">
             <StackPanel Spacing="5">
-                <CheckBox x:Name="DummyDevices" Content="Show dummy devices (Device selection page)"
-                          Checked="DummyDevices_OnChecked" />
-                <CheckBox x:Name="IgnoreConnLoss" Content="Ignore connection loss" Checked="IgnoreConnLoss_OnChecked" />
+                <CheckBox Name="DummyDevices"
+                          Content="Show dummy devices (Device selection page)"
+                          IsCheckedChanged="DummyDevices_OnChecked" />
+                <CheckBox Name="IgnoreConnLoss" 
+                          Content="Ignore connection loss" 
+                          IsCheckedChanged="IgnoreConnLoss_OnChecked" />
                 <TextBlock TextWrapping="Wrap">
                     Some flags may cause crashes and inconsistent behavior.
                 </TextBlock>
             </StackPanel>
         </HeaderedContentControl>
+        
         <HeaderedContentControl Classes="GroupBox"
                                 Header="Exit translator/dev mode">
             <TextBlock TextWrapping="Wrap"

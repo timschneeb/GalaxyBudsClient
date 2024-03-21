@@ -159,7 +159,7 @@ namespace GalaxyBudsClient.Platform
                         Log.Error("BluetoothImpl: Suppressing Connected event, device not properly registered");
                 }));
             
-            _backend.Disconnected += (sender, reason) =>
+            _backend.Disconnected += (_, reason) =>
             {
                 if (!SuppressDisconnectionEvents)
                 {

@@ -164,7 +164,7 @@ namespace GalaxyBudsClient
 
     private void TryEnableMicaEffect()
     {
-        // TODO
+        // TODO test on Windows
         return;
        // TransparencyBackgroundFallback = Brushes.Transparent;
        // TransparencyLevelHint = WindowTransparencyLevel.Mica;

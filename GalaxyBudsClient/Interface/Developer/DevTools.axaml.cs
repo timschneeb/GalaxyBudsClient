@@ -4,11 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
 using Avalonia.Platform.Storage;
 using Avalonia.Threading;
 using GalaxyBudsClient.Interface.ViewModels;
@@ -22,7 +20,7 @@ using GalaxyBudsClient.Utils.Extensions;
 
 namespace GalaxyBudsClient.Interface.Developer
 {
-    public sealed class DevTools : Window
+    public partial class DevTools : Window
     {
         private class ViewModel
         {
@@ -45,36 +43,21 @@ namespace GalaxyBudsClient.Interface.Developer
 
         private readonly List<byte> _cache = [];
 
-        private readonly DataGrid _msgTable;
-        private readonly DataGrid _propTable;
-        private readonly TextBox _hexDump;
-        private readonly TextBox _hexPayloadSend;
-        private readonly ComboBox _msgIdSend;
-        private readonly ComboBox _msgTypeSend;
-
         private readonly List<FilePickerFileType> _filters =
         [
-            new("Hex dump") { Patterns = new List<string>() { "*.bin", "*.hex" } },
-            new("All files") { Patterns = new List<string>() { "*" } }
+            new FilePickerFileType("Hex dump") { Patterns = new List<string>() { "*.bin", "*.hex" } },
+            new FilePickerFileType("All files") { Patterns = new List<string>() { "*" } }
         ];
 
         private readonly ViewModel _vm = new();
         
         public DevTools()
         {
+            InitializeComponent();
             DataContext = _vm;
-            AvaloniaXamlLoader.Load(this);
-            this.AttachDevTools();
 
-            _msgTable = this.GetControl<DataGrid>("MsgTable");
-            _propTable = this.GetControl<DataGrid>("PropTable");
-            _hexDump = this.GetControl<TextBox>("HexDump");
-            _msgIdSend = this.GetControl<ComboBox>("SendMsgId"); 
-            _msgTypeSend = this.GetControl<ComboBox>("SendMsgType");
-            _hexPayloadSend = this.GetControl<TextBox>("SendMsgPayload");
-
-            _msgTable.ItemsSource = _vm.MsgTableDataView;
-            _propTable.ItemsSource = _vm.PropTableDataView;
+            MsgTable.ItemsSource = _vm.MsgTableDataView;
+            PropTable.ItemsSource = _vm.PropTableDataView;
             
             Closing += OnClosing;
             BluetoothImpl.Instance.NewDataReceived += OnNewDataReceived;
@@ -87,14 +70,14 @@ namespace GalaxyBudsClient.Interface.Developer
                 try
                 {
                     _cache.AddRange(raw);
-                    _hexDump.Text = HexUtils.Dump(_cache.ToArray());
+                    HexDump.Text = HexUtils.Dump(_cache.ToArray());
 
                     var holder = new RecvMsgViewHolder(SppMessage.DecodeMessage(raw));
                     _vm.MsgTableDataSource?.Add(holder);
                     _vm.MsgTableDataView.Refresh();
                     
-                    _hexDump.CaretIndex = int.MaxValue;
-                    _msgTable.ScrollIntoView(holder, null);
+                    HexDump.CaretIndex = int.MaxValue;
+                    MsgTable.ScrollIntoView(holder, null);
                 }
                 catch(InvalidPacketException){}
             });
@@ -105,14 +88,14 @@ namespace GalaxyBudsClient.Interface.Developer
             BluetoothImpl.Instance.NewDataReceived -= OnNewDataReceived;
 
             _cache.Clear();
-            _hexDump.Clear();
+            HexDump.Clear();
             _vm.MsgTableDataSource?.Clear();
             _vm.MsgTableDataView.Refresh();
         }
         
         private void CopyPayload_OnClick(object? sender, RoutedEventArgs e)
         {
-            var item = (RecvMsgViewHolder?)_msgTable.SelectedItem;
+            var item = (RecvMsgViewHolder?)MsgTable.SelectedItem;
             if (item != null)
             {
                 GetTopLevel(this)?.Clipboard?.SetTextAsync(item.Payload);
@@ -121,7 +104,7 @@ namespace GalaxyBudsClient.Interface.Developer
        
         private void SendMsg_Click(object? sender, RoutedEventArgs e)
         {
-            if (_msgIdSend.SelectedItem == null || _msgTypeSend.SelectedItem == null)
+            if (MsgTable.SelectedItem == null || MsgTable.SelectedItem == null)
             {
                 _ = new MessageBox
                 {
@@ -134,7 +117,7 @@ namespace GalaxyBudsClient.Interface.Developer
             byte[] payload;
             try
             {
-                payload = _hexPayloadSend.Text.HexStringToByteArray();
+                payload = SendMsgPayload.Text.HexStringToByteArray();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -157,9 +140,9 @@ namespace GalaxyBudsClient.Interface.Developer
 
             var msg = new SppMessage
             {
-                Id = (SppMessage.MessageIds) _msgIdSend.SelectedItem,
+                Id = (SppMessage.MessageIds?) SendMsgId.SelectedItem ?? SppMessage.MessageIds.UNKNOWN_0,
                 Payload = payload,
-                Type = (SppMessage.MsgType) _msgTypeSend.SelectedItem
+                Type = (SppMessage.MsgType?) SendMsgType.SelectedItem ?? SppMessage.MsgType.INVALID
             };
             _ = BluetoothImpl.Instance.SendAsync(msg);
         }
@@ -167,7 +150,7 @@ namespace GalaxyBudsClient.Interface.Developer
         private void Clear_OnClick(object? sender, RoutedEventArgs e)
         {
             _cache.Clear();
-            _hexDump.Clear();
+            HexDump.Clear();
             _vm.MsgTableDataSource?.Clear();
             _vm.MsgTableDataView.Refresh();
         }
@@ -184,7 +167,7 @@ namespace GalaxyBudsClient.Interface.Developer
                 data = new ArrayList(await File.ReadAllBytesAsync(file));
                 _cache.Clear();
                 _cache.AddRange((byte[]) data.ToArray(typeof(byte)));
-                _hexDump.Text = HexUtils.Dump(_cache.ToArray());
+                HexDump.Text = HexUtils.Dump(_cache.ToArray());
             }
             catch (Exception ex)
             {
@@ -284,7 +267,7 @@ namespace GalaxyBudsClient.Interface.Developer
 
         private void MsgTable_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
         {
-            var item = (RecvMsgViewHolder?)_msgTable.SelectedItem;
+            var item = (RecvMsgViewHolder?)MsgTable.SelectedItem;
             if (item?.Message == null)
             {
                 _vm.PropTableDataSource?.Clear();
