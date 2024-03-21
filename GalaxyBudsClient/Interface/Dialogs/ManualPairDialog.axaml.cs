@@ -42,7 +42,7 @@ public partial class ManualPairDialog : UserControl
         };
 
         dialog.PrimaryButtonClick += OnPrimaryButtonClick;
-        var result = await dialog.ShowAsync(MainWindow2.Instance);
+        var result = await dialog.ShowAsync(MainWindow.Instance);
         dialog.PrimaryButtonClick -= OnPrimaryButtonClick;
             
         return result == ContentDialogResult.None ? null : (viewModel.SelectedModel, viewModel.SelectedDevice!);

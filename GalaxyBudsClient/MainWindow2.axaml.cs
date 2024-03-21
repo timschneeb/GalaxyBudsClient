@@ -32,21 +32,22 @@ using Environment = System.Environment;
 
 namespace GalaxyBudsClient;
 
-public partial class MainWindow2 : AppWindow
+public partial class MainWindow : AppWindow
 {
     private BudsPopup? _popup;
 
     private bool _popupShown = false;
     private bool _firstShow = true;
     private LegacyWearStates _lastWearState = LegacyWearStates.Both;
-        
+
+    private static App App => Application.Current as App ?? throw new InvalidOperationException();
     public bool OverrideMinimizeTray { set; get; }
         
-    private static MainWindow2? _instance;
-    public static MainWindow2 Instance => _instance ??= new MainWindow2();
+    private static MainWindow? _instance;
+    public static MainWindow Instance => _instance ??= new MainWindow();
 
     // ReSharper disable once MemberCanBePrivate.Global
-    public MainWindow2()
+    public MainWindow()
     {
         InitializeComponent();
             
@@ -59,7 +60,7 @@ public partial class MainWindow2 : AppWindow
         SppMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
 
         EventDispatcher.Instance.EventReceived += OnEventReceived;
-        (Application.Current as App)!.TrayIconClicked += TrayIcon_OnLeftClicked;
+        App.TrayIconClicked += TrayIcon_OnLeftClicked;
         _ = TrayManager.Instance.RebuildAsync();
             
         Loc.LanguageUpdated += OnLanguageUpdated;
@@ -73,7 +74,7 @@ public partial class MainWindow2 : AppWindow
             // TODO open setup wizard
         }
             
-        if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        if (App.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             if ((desktop.Args?.Contains("/StartMinimized") ?? false) && PlatformUtils.SupportsTrayIcon)
             {
@@ -84,7 +85,7 @@ public partial class MainWindow2 : AppWindow
         TitleBar.ExtendsContentIntoTitleBar = true;
         TitleBar.TitleBarHitTestType = TitleBarHitTestType.Complex;
         
-        Application.Current.ActualThemeVariantChanged += OnActualThemeVariantChanged;
+        App.ActualThemeVariantChanged += OnActualThemeVariantChanged;
     }
   
     private void OnLanguageUpdated()
@@ -236,12 +237,12 @@ public partial class MainWindow2 : AppWindow
         SppMessageHandler.Instance.StatusUpdate -= OnStatusUpdate;
         SppMessageHandler.Instance.OtherOption -= HandleOtherTouchOption;
 
-        (Application.Current as App)!.TrayIconClicked -= TrayIcon_OnLeftClicked;
+        App.TrayIconClicked -= TrayIcon_OnLeftClicked;
         EventDispatcher.Instance.EventReceived -= OnEventReceived;
 
         Loc.LanguageUpdated -= OnLanguageUpdated;
 
-        if(Application.Current.ApplicationLifetime is IControlledApplicationLifetime lifetime)
+        if(App.ApplicationLifetime is IControlledApplicationLifetime lifetime)
         {
             Log.Information("MainWindow: Shutting down normally");
             lifetime.Shutdown();
@@ -443,8 +444,8 @@ public partial class MainWindow2 : AppWindow
         }
     }
     #endregion
-        
-    public void ShowPopup(bool noDebounce = false)
+
+    private void ShowPopup(bool noDebounce = false)
     {
         if (_popupShown && !noDebounce)
             return;

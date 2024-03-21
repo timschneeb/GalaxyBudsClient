@@ -78,7 +78,7 @@ internal class TrayManager
         switch (e)
         {
             case TrayItemTypes.ToggleNoiseControl:
-                var ncVm = MainWindow2.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>();
+                var ncVm = MainWindow.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>();
                 if (ncVm != null)
                 {
                     if (ncVm.IsAmbientSoundEnabled)
@@ -117,12 +117,12 @@ internal class TrayManager
                 }
                 break;
             case TrayItemTypes.Open:
-                Dispatcher.UIThread.Post(MainWindow2.Instance.BringToFront);
+                Dispatcher.UIThread.Post(MainWindow.Instance.BringToFront);
                 break;
             case TrayItemTypes.Quit:
                 Log.Information("TrayManager: Exit requested by user");
-                MainWindow2.Instance.OverrideMinimizeTray = true;
-                Dispatcher.UIThread.Post(MainWindow2.Instance.Close);
+                MainWindow.Instance.OverrideMinimizeTray = true;
+                Dispatcher.UIThread.Post(MainWindow.Instance.Close);
                 break;
         }
             
@@ -160,16 +160,16 @@ internal class TrayManager
             let resourceKey = type switch
             {
                 TrayItemTypes.ToggleNoiseControl => "tray_switch_noise",
-                TrayItemTypes.ToggleEqualizer => MainWindow2.Instance.MainView.ResolveViewModelByType<EqualizerPageViewModel>()?.IsEqEnabled ?? false
+                TrayItemTypes.ToggleEqualizer => MainWindow.Instance.MainView.ResolveViewModelByType<EqualizerPageViewModel>()?.IsEqEnabled ?? false
                     ? "tray_disable_eq"
                     : "tray_enable_eq",
-                TrayItemTypes.ToggleAmbient => MainWindow2.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAmbientSoundEnabled ?? false
+                TrayItemTypes.ToggleAmbient => MainWindow.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAmbientSoundEnabled ?? false
                     ? "tray_disable_ambient_sound"
                     : "tray_enable_ambient_sound",
-                TrayItemTypes.ToggleAnc => MainWindow2.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAncEnabled ?? false
+                TrayItemTypes.ToggleAnc => MainWindow.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAncEnabled ?? false
                     ? "tray_disable_anc"
                     : "tray_enable_anc",
-                TrayItemTypes.LockTouchpad => MainWindow2.Instance.MainView.ResolveViewModelByType<TouchpadPageViewModel>()?.IsTouchpadLocked ?? false
+                TrayItemTypes.LockTouchpad => MainWindow.Instance.MainView.ResolveViewModelByType<TouchpadPageViewModel>()?.IsTouchpadLocked ?? false
                     ? "tray_unlock_touchpad"
                     : "tray_lock_touchpad",
                 _ => "unknown"

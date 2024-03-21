@@ -4,7 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:interface="clr-namespace:GalaxyBudsClient.Interface"
         mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="640"
-        x:Class="GalaxyBudsClient.MainWindow2"
+        x:Class="GalaxyBudsClient.MainWindow"
         MinWidth="470"
         Height="640" Width="700"
         WindowStartupLocation="CenterScreen"

@@ -81,7 +81,7 @@ public sealed class ApplicationObject : BaseObjectWithProperties<ApplicationProp
 
     public Task ActivateAsync()
     {
-        MainWindow2.Instance.BringToFront();
+        MainWindow.Instance.BringToFront();
         return Task.CompletedTask;
     }
 }

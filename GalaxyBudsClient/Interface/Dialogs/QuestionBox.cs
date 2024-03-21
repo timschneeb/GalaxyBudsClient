@@ -23,7 +23,7 @@ public class QuestionBox
             DefaultButton = ContentDialogButton.Primary
         };
 
-        var result = await cd.ShowAsync(host ?? MainWindow2.Instance);
+        var result = await cd.ShowAsync(host ?? MainWindow.Instance);
         return result == ContentDialogResult.Primary;
     }
 }
