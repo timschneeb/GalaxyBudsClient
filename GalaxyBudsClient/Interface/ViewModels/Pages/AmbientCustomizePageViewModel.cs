@@ -84,7 +84,7 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
         PropertyChanged -= OnPropertyChanged;
         
         AmbientSoundVolume = e.AmbientSoundVolume;
-        IsAmbientVoiceFocusEnabled = e.AmbientSoundMode == AmbientType.VoiceFocus;
+        IsAmbientVoiceFocusEnabled = e.AmbientSoundMode == AmbientTypes.VoiceFocus;
         IsAmbientExtraLoudEnabled = e.ExtraHighAmbientEnabled;
         AmbientSoundTone = e.AmbientCustomSoundTone;
         AmbientSoundVolumeLeft = e.AmbientCustomVolumeLeft;
@@ -99,7 +99,7 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
         switch (type)
         {
             case Event.AmbientVolumeUp:
-                EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, NoiseControlMode.AmbientSound);
+                EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, NoiseControlModes.AmbientSound);
      
                 if (IsAmbientCustomizationEnabled)
                 {
@@ -120,11 +120,11 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
                 {
                     if (AmbientSoundVolumeLeft <= 0 && AmbientSoundVolumeRight <= 0)
                     {
-                        EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, NoiseControlMode.Off);
+                        EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, NoiseControlModes.Off);
                     }
                     else
                     {
-                        EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, NoiseControlMode.AmbientSound);
+                        EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, NoiseControlModes.AmbientSound);
                         if (AmbientSoundVolumeLeft > 0)
                             AmbientSoundVolumeLeft -= 1;
                         if (AmbientSoundVolumeRight > 0)
@@ -135,11 +135,11 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
                 {
                     if (AmbientSoundVolume <= 0)
                     {
-                        EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, NoiseControlMode.Off);
+                        EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, NoiseControlModes.Off);
                     }
                     else
                     {
-                        EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, NoiseControlMode.AmbientSound);
+                        EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, NoiseControlModes.AmbientSound);
                         AmbientSoundVolume -= 1;
                     }
                 }

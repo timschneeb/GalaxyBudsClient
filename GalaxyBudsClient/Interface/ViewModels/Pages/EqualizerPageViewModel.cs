@@ -23,7 +23,7 @@ public class EqualizerPageViewModel : MainPageViewModelBase
         switch (args.PropertyName)
         {
             case nameof(IsEqEnabled) or nameof(EqPreset):
-                await MessageComposer.SetEqualizer(IsEqEnabled, (EqPreset)EqPreset, false);
+                await MessageComposer.SetEqualizer(IsEqEnabled, (EqPresets)EqPreset, false);
                 break;
             case nameof(StereoBalance):
                 // TODO dragging the slider has a high delay. maybe add a cooldown or only send the request when the slider is released

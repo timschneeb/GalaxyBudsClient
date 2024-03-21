@@ -15,13 +15,13 @@ public class EqPresetConverter : IValueConverter
         if (value is not int)
             throw new ArgumentException("Unsupported value type");
         
-        var key = (EqPreset)value switch
+        var key = (EqPresets)value switch
         {
-            EqPreset.BassBoost => "eq_bass",
-            EqPreset.Soft => "eq_soft",
-            EqPreset.Dynamic => "eq_dynamic",
-            EqPreset.Clear => "eq_clear",
-            EqPreset.TrebleBoost => "eq_treble",
+            EqPresets.BassBoost => "eq_bass",
+            EqPresets.Soft => "eq_soft",
+            EqPresets.Dynamic => "eq_dynamic",
+            EqPresets.Clear => "eq_clear",
+            EqPresets.TrebleBoost => "eq_treble",
             _ => "unknown"
         };
         return Loc.Resolve(key);

@@ -32,8 +32,8 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
         PropertyChanged -= OnPropertyChanged;
         if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
         {
-            IsAmbientSoundEnabled = e.NoiseControlMode == NoiseControlMode.AmbientSound;
-            IsAncEnabled = e.NoiseControlMode == NoiseControlMode.NoiseReduction;
+            IsAmbientSoundEnabled = e.NoiseControlMode == NoiseControlModes.AmbientSound;
+            IsAncEnabled = e.NoiseControlMode == NoiseControlModes.NoiseReduction;
         }
         else
         {
@@ -58,11 +58,11 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
         if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
         {
             if (IsAmbientSoundEnabled) 
-                await MessageComposer.NoiseControl.SetMode(NoiseControlMode.AmbientSound);
+                await MessageComposer.NoiseControl.SetMode(NoiseControlModes.AmbientSound);
             else if (IsAncEnabled)
-                await MessageComposer.NoiseControl.SetMode(NoiseControlMode.NoiseReduction);
+                await MessageComposer.NoiseControl.SetMode(NoiseControlModes.NoiseReduction);
             else
-                await MessageComposer.NoiseControl.SetMode(NoiseControlMode.Off);
+                await MessageComposer.NoiseControl.SetMode(NoiseControlModes.Off);
         }
         else
         {
@@ -131,14 +131,14 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
                 case Event.SetNoiseControlState:
                     switch (arg)
                     {
-                        case NoiseControlMode.Off:
+                        case NoiseControlModes.Off:
                             IsAmbientSoundEnabled = false;
                             IsAncEnabled = false;
                             break;
-                        case NoiseControlMode.AmbientSound:
+                        case NoiseControlModes.AmbientSound:
                             IsAmbientSoundEnabled = true;
                             break;
-                        case NoiseControlMode.NoiseReduction:
+                        case NoiseControlModes.NoiseReduction:
                             IsAncEnabled = true;
                             break;
                     }

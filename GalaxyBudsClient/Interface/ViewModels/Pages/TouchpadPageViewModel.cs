@@ -74,10 +74,10 @@ public class TouchpadPageViewModel : MainPageViewModelBase
 
         NoiseControlCycleMode = e switch
         {
-            { NoiseControlTouchAnc: true, NoiseControlTouchOff: true } => NoiseControlCycleMode.AncOff,
-            { NoiseControlTouchAmbient: true, NoiseControlTouchOff: true } => NoiseControlCycleMode.AmbOff,
-            { NoiseControlTouchAmbient: true, NoiseControlTouchAnc: true } => NoiseControlCycleMode.AncAmb,
-            _ => NoiseControlCycleMode.Unknown
+            { NoiseControlTouchAnc: true, NoiseControlTouchOff: true } => NoiseControlCycleModes.AncOff,
+            { NoiseControlTouchAmbient: true, NoiseControlTouchOff: true } => NoiseControlCycleModes.AmbOff,
+            { NoiseControlTouchAmbient: true, NoiseControlTouchAnc: true } => NoiseControlCycleModes.AncAmb,
+            _ => NoiseControlCycleModes.Unknown
         };
 
         UpdateEditStates();
@@ -111,9 +111,9 @@ public class TouchpadPageViewModel : MainPageViewModelBase
             case nameof(NoiseControlCycleMode):
                 (byte, byte, byte) value = NoiseControlCycleMode switch
                 {
-                    NoiseControlCycleMode.AncOff => (1, 0, 1),
-                    NoiseControlCycleMode.AmbOff => (0, 1, 1),
-                    NoiseControlCycleMode.AncAmb => (1, 1, 0),
+                    NoiseControlCycleModes.AncOff => (1, 0, 1),
+                    NoiseControlCycleModes.AmbOff => (0, 1, 1),
+                    NoiseControlCycleModes.AncAmb => (1, 1, 0),
                     _ => throw new ArgumentOutOfRangeException(nameof(NoiseControlCycleMode))
                 };
                 
@@ -211,7 +211,7 @@ public class TouchpadPageViewModel : MainPageViewModelBase
     [Reactive] public IEnumerable<TouchOptions>? RightActions { set; get; }
     [Reactive] public TouchOptions LeftAction { set; get; }
     [Reactive] public TouchOptions RightAction { set; get; }
-    [Reactive] public NoiseControlCycleMode NoiseControlCycleMode { set; get; }
+    [Reactive] public NoiseControlCycleModes NoiseControlCycleMode { set; get; }
     [Reactive] public bool IsTouchpadLocked { set; get; }
     [Reactive] public bool IsDoubleTapVolumeEnabled { set; get; }
     [Reactive] public bool IsSingleTapGestureEnabled { set; get; }

@@ -15,7 +15,7 @@ namespace GalaxyBudsClient.Message.Decoder
         public int BatteryL { set; get; }
         public int BatteryR { set; get; }
         public bool IsCoupled { set; get; }
-        public DeviceInv MainConnection { set; get; }
+        public DevicesInverted MainConnection { set; get; }
         public WearStates WearState { set; get; }
         public int EqualizerMode { set; get; }
         public bool TouchpadLock { set; get; }
@@ -31,7 +31,7 @@ namespace GalaxyBudsClient.Message.Decoder
 
 
         [Device(Models.Buds)]
-        public AmbientType AmbientSoundMode { set; get; }
+        public AmbientTypes AmbientSoundMode { set; get; }
         [Device(Models.Buds)]
         public bool EqualizerEnabled { set; get; }
 
@@ -45,7 +45,7 @@ namespace GalaxyBudsClient.Message.Decoder
         [Device([Models.BudsPlus, Models.BudsPro, Models.Buds2])]
         public bool OutsideDoubleTap { set; get; }
         [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2])]
-        public Color DeviceColor { set; get; }
+        public Colors DeviceColor { set; get; }
 
 
         [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2])]
@@ -69,7 +69,7 @@ namespace GalaxyBudsClient.Message.Decoder
 
 
         [Device([Models.BudsPro, Models.Buds2])]
-        public NoiseControlMode NoiseControlMode { set; get; }
+        public NoiseControlModes NoiseControlMode { set; get; }
         [Device([Models.BudsPro, Models.Buds2])]
         public bool NoiseControlTouchOff { set; get; }
         [Device([Models.BudsPro, Models.Buds2])]
@@ -143,10 +143,10 @@ namespace GalaxyBudsClient.Message.Decoder
                 BatteryL = msg.Payload[2];
                 BatteryR = msg.Payload[3];
                 IsCoupled = Convert.ToBoolean(msg.Payload[4]);
-                MainConnection = (DeviceInv)msg.Payload[5];
+                MainConnection = (DevicesInverted)msg.Payload[5];
                 WearState = (WearStates)msg.Payload[6];
                 AmbientSoundEnabled = Convert.ToBoolean(msg.Payload[7]);
-                AmbientSoundMode = (AmbientType)msg.Payload[8];
+                AmbientSoundMode = (AmbientTypes)msg.Payload[8];
                 AmbientSoundVolume = msg.Payload[9];
                 EqualizerEnabled = Convert.ToBoolean(msg.Payload[10]);
                 EqualizerMode = msg.Payload[11];
@@ -199,7 +199,7 @@ namespace GalaxyBudsClient.Message.Decoder
                 BatteryL = msg.Payload[2];
                 BatteryR = msg.Payload[3];
                 IsCoupled = Convert.ToBoolean(msg.Payload[4]);
-                MainConnection = (DeviceInv)msg.Payload[5];
+                MainConnection = (DevicesInverted)msg.Payload[5];
 
                 PlacementL = (PlacementStates)((msg.Payload[6] & 240) >> 4);
                 PlacementR = (PlacementStates)(msg.Payload[6] & 15);
@@ -230,7 +230,7 @@ namespace GalaxyBudsClient.Message.Decoder
 
                     var leftColor = BitConverter.ToInt16(msg.Payload, 15);
                     var rightColor = BitConverter.ToInt16(msg.Payload, 17);
-                    DeviceColor = (Color)(leftColor != rightColor ? 0 : leftColor);
+                    DeviceColor = (Colors)(leftColor != rightColor ? 0 : leftColor);
 
                     if (Revision >= 8)
                     {
@@ -261,7 +261,7 @@ namespace GalaxyBudsClient.Message.Decoder
 
                     var leftColor = BitConverter.ToInt16(msg.Payload, 14);
                     var rightColor = BitConverter.ToInt16(msg.Payload, 16);
-                    DeviceColor = (Color)(leftColor != rightColor ? 0 : leftColor);
+                    DeviceColor = (Colors)(leftColor != rightColor ? 0 : leftColor);
 
                     VoiceWakeUpLang = msg.Payload[18];
 
@@ -294,12 +294,12 @@ namespace GalaxyBudsClient.Message.Decoder
                     TouchpadOptionL = DeviceSpec.TouchMap.FromByte((byte)((msg.Payload[11] & 240) >> 4));
                     TouchpadOptionR = DeviceSpec.TouchMap.FromByte((byte)(msg.Payload[11] & 15));
 
-                    NoiseControlMode = (NoiseControlMode)msg.Payload[12];
+                    NoiseControlMode = (NoiseControlModes)msg.Payload[12];
                     VoiceWakeUp = msg.Payload[13] == 1;
 
                     var leftColor = BitConverter.ToInt16(msg.Payload, 14);
                     var rightColor = BitConverter.ToInt16(msg.Payload, 16);
-                    DeviceColor = (Color)(leftColor != rightColor ? 0 : leftColor);
+                    DeviceColor = (Colors)(leftColor != rightColor ? 0 : leftColor);
 
                     VoiceWakeUpLang = msg.Payload[18];
                     SeamlessConnectionEnabled = msg.Payload[19] == 0;
@@ -390,12 +390,12 @@ namespace GalaxyBudsClient.Message.Decoder
                     TouchpadOptionL = DeviceSpec.TouchMap.FromByte((byte)((msg.Payload[11] & 240) >> 4));
                     TouchpadOptionR = DeviceSpec.TouchMap.FromByte((byte)(msg.Payload[11] & 15));
 
-                    NoiseControlMode = (NoiseControlMode)msg.Payload[12];
+                    NoiseControlMode = (NoiseControlModes)msg.Payload[12];
                     VoiceWakeUp = msg.Payload[13] == 1;
 
                     var leftColor = BitConverter.ToInt16(msg.Payload, 14);
                     var rightColor = BitConverter.ToInt16(msg.Payload, 16);
-                    DeviceColor = (Color)(leftColor != rightColor ? 0 : leftColor);
+                    DeviceColor = (Colors)(leftColor != rightColor ? 0 : leftColor);
 
                     VoiceWakeUpLang = msg.Payload[18];
                     SeamlessConnectionEnabled = msg.Payload[19] == 0;
@@ -457,12 +457,12 @@ namespace GalaxyBudsClient.Message.Decoder
                     TouchpadOptionL = DeviceSpec.TouchMap.FromByte((byte)((msg.Payload[11] & 240) >> 4));
                     TouchpadOptionR = DeviceSpec.TouchMap.FromByte((byte)(msg.Payload[11] & 15));
 
-                    NoiseControlMode = (NoiseControlMode)msg.Payload[12];
+                    NoiseControlMode = (NoiseControlModes)msg.Payload[12];
                     VoiceWakeUp = msg.Payload[13] == 1;
 
                     var leftColor = BitConverter.ToInt16(msg.Payload, 14);
                     var rightColor = BitConverter.ToInt16(msg.Payload, 16);
-                    DeviceColor = (Color)(leftColor != rightColor ? 0 : leftColor);
+                    DeviceColor = (Colors)(leftColor != rightColor ? 0 : leftColor);
 
                     VoiceWakeUpLang = msg.Payload[18];
                     SeamlessConnectionEnabled = msg.Payload[19] == 0;

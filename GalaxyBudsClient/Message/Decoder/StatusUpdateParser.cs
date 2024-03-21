@@ -11,7 +11,7 @@ namespace GalaxyBudsClient.Message.Decoder
         public int BatteryL { set; get; }
         public int BatteryR { set; get; }
         public bool IsCoupled { set; get; }
-        public DeviceInv MainConnection { set; get; }
+        public DevicesInverted MainConnection { set; get; }
         public WearStates WearState { set; get; }
 
 
@@ -39,7 +39,7 @@ namespace GalaxyBudsClient.Message.Decoder
                 BatteryL = msg.Payload[1];
                 BatteryR = msg.Payload[2];
                 IsCoupled = Convert.ToBoolean(msg.Payload[3]);
-                MainConnection = (DeviceInv) msg.Payload[4];
+                MainConnection = (DevicesInverted) msg.Payload[4];
                 WearState = (WearStates) msg.Payload[5];
                 switch (WearState)
                 {
@@ -67,7 +67,7 @@ namespace GalaxyBudsClient.Message.Decoder
                 BatteryL = msg.Payload[1];
                 BatteryR = msg.Payload[2];
                 IsCoupled = Convert.ToBoolean(msg.Payload[3]);
-                MainConnection = (DeviceInv)msg.Payload[4];
+                MainConnection = (DevicesInverted)msg.Payload[4];
 
                 PlacementL = (PlacementStates)((msg.Payload[5] & 240) >> 4);
                 PlacementR = (PlacementStates)(msg.Payload[5] & 15);

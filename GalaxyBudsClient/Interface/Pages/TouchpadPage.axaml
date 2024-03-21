@@ -78,7 +78,7 @@
                     Description="{DynamicResource touchpad_noise_control_mode_desc}"
                     Symbol="ArrowRepeatAll"
                     IsEnabled="{Binding IsNoiseControlCycleModeEditable}"
-                    ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type constants:NoiseControlCycleMode}}}"
+                    ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type constants:NoiseControlCycleModes}}}"
                     SelectedValue="{Binding NoiseControlCycleMode}">
                     <Interaction.Behaviors>
                         <ext:RequiresFeatureBehavior Feature="NoiseControl" />

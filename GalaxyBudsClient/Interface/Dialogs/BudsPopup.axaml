@@ -59,20 +59,9 @@
                 </Style.Animations>
             </Style>
         </Border.Styles>
-        <Grid Margin="0,0,0,0" x:Name="Grid">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="24"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="24"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="24"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="24"/>
-            </Grid.ColumnDefinitions>
+        <Grid Margin="0,0,0,0" x:Name="Grid" ColumnDefinitions="24,*,24" RowDefinitions="24,35,*,24">
 
-            <Label Content="Blank's Galaxy Buds" Grid.Column="1" Grid.Row="1" FontSize="18" Padding="0,0,0,0" x:Name="Header" Foreground="{DynamicResource ForegroundTextAltBrush}" />
+            <Label Content="Blank's Galaxy Buds" Grid.Column="1" Grid.Row="1" FontSize="18" x:Name="Header" Foreground="{DynamicResource ForegroundTextAltBrush}" />
 
             <Image Grid.Column="1" Grid.Row="2" x:Name="ImageLeft" Height="75" Width="75" Source="{DynamicResource LeftBudConnected}" Margin="44,8,203,0" VerticalAlignment="Top" />
             <Image Grid.Column="1" Grid.Row="2" x:Name="ImageRight" Height="75" Width="75" Source="{DynamicResource RightBudConnected}" Margin="203,8,44,0" VerticalAlignment="Top" />

@@ -9,7 +9,7 @@ namespace GalaxyBudsClient.Message.Decoder
         
         public int DataSize { set; get; }
         public short PartialDataMaxSize { set; get; }
-        public DeviceInv DeviceType { set; get; }
+        public DevicesInverted DeviceType { set; get; }
         public bool Coupled { set; get; }
         public int FragmentCount { set; get; }
 
@@ -20,7 +20,7 @@ namespace GalaxyBudsClient.Message.Decoder
 
             DataSize = BitConverter.ToInt32(msg.Payload, 0);
             PartialDataMaxSize = BitConverter.ToInt16(msg.Payload, 4);
-            DeviceType = (DeviceInv) msg.Payload[6];
+            DeviceType = (DevicesInverted) msg.Payload[6];
             Coupled = msg.Payload[7] == 0;
             FragmentCount = (int)Math.Ceiling((double)DataSize/(double)PartialDataMaxSize);
         }
