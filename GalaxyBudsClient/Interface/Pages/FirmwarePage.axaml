@@ -98,21 +98,11 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-
-                    <StackPanel Grid.Row="1"
-                                IsVisible="{Binding NoResults}"
-                                Spacing="4"
-                                Orientation="Vertical"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center">
-
-                        <ic:SymbolIcon Symbol="DocumentSplitHintOff"
-                                       FontSize="48"
-                                       HorizontalAlignment="Center"
-                                       Foreground="{DynamicResource TextFillColorDisabledBrush}" />
-                        <TextBlock Text="{DynamicResource fw_select_no_results_short}"
-                                   Foreground="{DynamicResource TextFillColorDisabledBrush}" />
-                    </StackPanel>
+                    
+                    <controls:EmptyView Grid.Row="1"
+                                        IsVisible="{Binding NoResults}"
+                                        Text="{DynamicResource fw_select_no_results_short}"
+                                        Symbol="DocumentSplitHintOff" />
                 </Grid>
             </Border>
 

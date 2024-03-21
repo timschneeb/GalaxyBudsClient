@@ -9,6 +9,7 @@
              xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
              xmlns:hotkeys="clr-namespace:GalaxyBudsClient.Model.Hotkeys"
              xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="400"
              x:Class="GalaxyBudsClient.Interface.Pages.HotkeyPage"
              x:DataType="pages:HotkeyPageViewModel"
@@ -93,21 +94,11 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-
-            <StackPanel Grid.Row="1"
-                        IsVisible="{Binding NoHotkeys}"
-                        Spacing="4"
-                        Orientation="Vertical"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
-    
-                <ic:SymbolIcon Symbol="FlashOff" 
-                               FontSize="48"
-                               HorizontalAlignment="Center"
-                               Foreground="{DynamicResource TextFillColorDisabledBrush}" />
-                <TextBlock Text="{DynamicResource hotkey_empty}"
-                           Foreground="{DynamicResource TextFillColorDisabledBrush}"/>
-            </StackPanel>
+            
+            <controls:EmptyView Grid.Row="1"
+                                IsVisible="{Binding NoHotkeys}"
+                                Text="{DynamicResource hotkey_empty}"
+                                Symbol="FlashOff" />
         </Grid>
     </Border>
 </UserControl>

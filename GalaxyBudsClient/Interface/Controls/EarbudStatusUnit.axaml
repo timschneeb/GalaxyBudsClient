@@ -94,7 +94,7 @@
         </StackPanel>
 
         <StackPanel Orientation="Vertical"
-                    Spacing="10"
+                    Spacing="5"
                     HorizontalAlignment="Center">
 
             <controls:EarbudIconUnit />
@@ -175,16 +175,7 @@
         </StackPanel>
     </StackPanel>
 
-    <StackPanel IsVisible="{Binding !IsConnected, Source={x:Static platform:BluetoothImpl.Instance}}"
-                Spacing="4"
-                Orientation="Vertical"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center">
-        <ic:SymbolIcon Symbol="WifiOff"
-                       FontSize="48"
-                       HorizontalAlignment="Center"
-                       Foreground="{DynamicResource TextFillColorDisabledBrush}" />
-        <TextBlock Text="{DynamicResource connlost_disconnected}"
-                   Foreground="{DynamicResource TextFillColorDisabledBrush}" />
-    </StackPanel>
+    <controls:EmptyView IsVisible="{Binding !IsConnected, Source={x:Static platform:BluetoothImpl.Instance}}"
+                        Text="{DynamicResource connlost_disconnected}"
+                        Symbol="WifiOff" />
 </Panel>
