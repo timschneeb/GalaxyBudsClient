@@ -47,8 +47,8 @@ namespace GalaxyBudsClient.Utils.Interface
                     await RebuildAsync();
                 });
             };
-            BluetoothImpl.Instance.Connected += (sender, args) => _ = RebuildAsync();
-            BluetoothImpl.Instance.Disconnected += (sender, args) => _ = RebuildAsync();
+            BluetoothService.Instance.Connected += (sender, args) => _ = RebuildAsync();
+            BluetoothService.Instance.Disconnected += (sender, args) => _ = RebuildAsync();
             EventDispatcher.Instance.EventReceived += (ev, _) =>
             {
                 if (ev == Event.UpdateTrayIcon)
@@ -111,9 +111,9 @@ namespace GalaxyBudsClient.Utils.Interface
                     EventDispatcher.Instance.Dispatch(Event.AmbientToggle);
                     break;
                 case TrayItemTypes.Connect:
-                    if (!BluetoothImpl.Instance.IsConnectedLegacy && BluetoothImpl.Instance.RegisteredDeviceValid)
+                    if (!BluetoothService.Instance.IsConnectedLegacy && BluetoothService.Instance.RegisteredDeviceValid)
                     {
-                        await BluetoothImpl.Instance.ConnectAsync();
+                        await BluetoothService.Instance.ConnectAsync();
                     }
                     break;
                 case TrayItemTypes.Open:
@@ -145,7 +145,7 @@ namespace GalaxyBudsClient.Utils.Interface
                 bsu.BatteryR > 0
                     ? new NativeMenuItem($"{Loc.Resolve("right")}: {bsu.BatteryR}%") { IsEnabled = false }
                     : null,
-                (bsu.BatteryCase is > 0 and <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(Features.CaseBattery))
+                (bsu.BatteryCase is > 0 and <= 100 && BluetoothService.Instance.DeviceSpec.Supports(Features.CaseBattery))
                     ? new NativeMenuItem($"{Loc.Resolve("case")}: {bsu.BatteryCase}%") { IsEnabled = false }
                     : null,
 
@@ -156,7 +156,7 @@ namespace GalaxyBudsClient.Utils.Interface
 
         private IEnumerable<NativeMenuItemBase> RebuildDynamicActions()
         {
-            return from type in BluetoothImpl.Instance.DeviceSpec.TrayShortcuts
+            return from type in BluetoothService.Instance.DeviceSpec.TrayShortcuts
                 let resourceKey = type switch
                 {
                     TrayItemTypes.ToggleNoiseControl => "tray_switch_noise",
@@ -201,13 +201,13 @@ namespace GalaxyBudsClient.Utils.Interface
                     });
                     items.Add(new NativeMenuItemSeparator());
                 }
-                if (BluetoothImpl.Instance.IsConnectedLegacy && DeviceMessageCache.Instance.BasicStatusUpdate != null)
+                if (BluetoothService.Instance.IsConnectedLegacy && DeviceMessageCache.Instance.BasicStatusUpdate != null)
                 {
                     items.AddRange(RebuildBatteryInfo().OfType<NativeMenuItemBase>());
                     items.AddRange(RebuildDynamicActions());
                     items.Add(new NativeMenuItemSeparator());
                 }
-                else if (BluetoothImpl.Instance.RegisteredDeviceValid)
+                else if (BluetoothService.Instance.RegisteredDeviceValid)
                 {
                     items.Add(new NativeMenuItem(Loc.Resolve("connlost_connect"))
                     {

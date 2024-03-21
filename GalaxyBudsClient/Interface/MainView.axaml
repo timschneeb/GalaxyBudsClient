@@ -53,10 +53,10 @@
             <Grid RowDefinitions="Auto,Auto,*">
                 
                 <ui:InfoBar Title="Disconnected"
-                            IsOpen="{Binding !IsConnected, Source={x:Static platform:BluetoothImpl.Instance}}" 
+                            IsOpen="{Binding !IsConnected, Source={x:Static platform:BluetoothService.Instance}}" 
                             IsClosable="False"
                             Severity="Warning" 
-                            Message="{Binding LastErrorMessage, Source={x:Static platform:BluetoothImpl.Instance}}"
+                            Message="{Binding LastErrorMessage, Source={x:Static platform:BluetoothService.Instance}}"
                             Margin="20,16,20,0">
                     <ui:InfoBar.ActionButton>
                         <Button Content="Reconnect"

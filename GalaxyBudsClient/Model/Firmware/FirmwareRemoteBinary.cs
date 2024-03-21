@@ -33,7 +33,7 @@ namespace GalaxyBudsClient.Model.Firmware
 
         public static bool FilterByModel(FirmwareRemoteBinary item)
         {
-            return BluetoothImpl.ActiveModel == item.Model;
+            return BluetoothService.ActiveModel == item.Model;
         }
         
         public static bool FilterByVersion(FirmwareRemoteBinary item)

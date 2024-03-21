@@ -80,7 +80,7 @@ namespace GalaxyBudsClient.Message
             };
             StateChanged += (sender, state) => Log.Debug("FirmwareTransferManager: Status changed to {State}", state);
             
-            BluetoothImpl.Instance.Disconnected += (sender, s) =>
+            BluetoothService.Instance.Disconnected += (sender, s) =>
             {
                 if (_binary != null)
                 {
@@ -89,7 +89,7 @@ namespace GalaxyBudsClient.Message
                         Loc.Resolve("fw_fail_connection")));
                 }
             };
-            BluetoothImpl.Instance.BluetoothError += (sender, exception) =>
+            BluetoothService.Instance.BluetoothError += (sender, exception) =>
             {
                 if (_binary != null)
                 {
@@ -136,14 +136,14 @@ namespace GalaxyBudsClient.Message
                             _mtuSize = control.MtuSize;
                             MtuChanged?.Invoke(this, control.MtuSize);
 
-                            await BluetoothImpl.Instance.SendAsync(FotaControlEncoder.Build(control.ControlId, control.MtuSize));
+                            await BluetoothService.Instance.SendAsync(FotaControlEncoder.Build(control.ControlId, control.MtuSize));
                             Log.Debug("FirmwareTransferManager.OnMessageReceived: MTU size set to {MtuSize}", control.MtuSize);
                             break;
                         case FirmwareConstants.ControlIds.ReadyToDownload:
                             _currentSegment = control.Id;
                             CurrentSegmentIdChanged?.Invoke(this, control.Id);
                             
-                            await BluetoothImpl.Instance.SendAsync(FotaControlEncoder.Build(control.ControlId, control.Id));
+                            await BluetoothService.Instance.SendAsync(FotaControlEncoder.Build(control.ControlId, control.Id));
                             Log.Debug("FirmwareTransferManager.OnMessageReceived: Ready to download segment {Id}", control.Id);
                             break;
                     }
@@ -161,7 +161,7 @@ namespace GalaxyBudsClient.Message
                         _lastFragment = downloadEncoder.IsLastFragment();
                         _lastSegmentOffset = downloadEncoder.Offset;
                         
-                        await BluetoothImpl.Instance.SendAsync(downloadEncoder.Build());
+                        await BluetoothService.Instance.SendAsync(downloadEncoder.Build());
                     }
                     break;
                 case FotaUpdateParser update:
@@ -179,7 +179,7 @@ namespace GalaxyBudsClient.Message
                                 _binary.TotalSize / 1000f);
                             break;
                         case FirmwareConstants.UpdateIds.StateChange:
-                            await BluetoothImpl.Instance.SendResponseAsync(SppMessage.MessageIds.FOTA_UPDATE, 1);
+                            await BluetoothService.Instance.SendResponseAsync(SppMessage.MessageIds.FOTA_UPDATE, 1);
                             Log.Debug("FirmwareTransferManager.OnMessageReceived: State changed: {State}, result code: {ResultCode}", 
                                 update.State, update.ResultCode);
 
@@ -199,7 +199,7 @@ namespace GalaxyBudsClient.Message
                     }
                     break;
                 case FotaResultParser result:
-                    await BluetoothImpl.Instance.SendResponseAsync(SppMessage.MessageIds.FOTA_RESULT, 1);
+                    await BluetoothService.Instance.SendResponseAsync(SppMessage.MessageIds.FOTA_RESULT, 1);
                     Log.Debug("FirmwareTransferManager.OnMessageReceived: Finished. Result: {Result}, error code: {Code}", 
                         result.Result, result.ErrorCode);
 
@@ -220,7 +220,7 @@ namespace GalaxyBudsClient.Message
 
         public async Task Install(FirmwareBinary binary)
         {
-            if (!BluetoothImpl.Instance.IsConnectedLegacy)
+            if (!BluetoothService.Instance.IsConnectedLegacy)
             {
                 Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.Disconnected,
                     Loc.Resolve("fw_fail_connection_precheck")));
@@ -250,7 +250,7 @@ namespace GalaxyBudsClient.Message
             
             State = States.InitializingSession;
             
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.FOTA_OPEN, _binary.SerializeTable());
+            await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.FOTA_OPEN, _binary.SerializeTable());
             _sessionTimeout.Start();
         }
 
@@ -272,9 +272,9 @@ namespace GalaxyBudsClient.Message
             _sessionTimeout.Stop();
             _controlTimeout.Stop();
 
-            await BluetoothImpl.Instance.DisconnectAsync();
+            await BluetoothService.Instance.DisconnectAsync();
             await Task.Delay(100);
-            await BluetoothImpl.Instance.ConnectAsync();
+            await BluetoothService.Instance.ConnectAsync();
         }
 
         private void OnSessionTimeoutElapsed(object? sender, ElapsedEventArgs e)

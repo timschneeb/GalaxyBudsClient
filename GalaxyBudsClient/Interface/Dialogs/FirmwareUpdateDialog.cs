@@ -111,7 +111,7 @@ public class FirmwareUpdateDialog : TaskDialog
                 Description = e.ErrorMessage
             }.ShowAsync();
 
-            _ = BluetoothImpl.Instance.DisconnectAsync();
+            _ = BluetoothService.Instance.DisconnectAsync();
         });
     }
 
@@ -125,7 +125,7 @@ public class FirmwareUpdateDialog : TaskDialog
             Description = Loc.Resolve("fw_upload_progress_finished_desc")
         }.ShowAsync();
 
-        _ = BluetoothImpl.Instance.DisconnectAsync();
+        _ = BluetoothService.Instance.DisconnectAsync();
     }
 
     public async Task BeginTransfer(FirmwareBinary binary)

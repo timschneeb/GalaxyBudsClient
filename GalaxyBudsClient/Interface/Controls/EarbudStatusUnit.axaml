@@ -26,7 +26,7 @@
 
     <StackPanel Spacing="15"
                 Orientation="Horizontal"
-                IsVisible="{Binding IsConnected, Source={x:Static platform:BluetoothImpl.Instance}}"
+                IsVisible="{Binding IsConnected, Source={x:Static platform:BluetoothService.Instance}}"
                 HorizontalAlignment="Center">
 
         <!-- 
@@ -175,7 +175,7 @@
         </StackPanel>
     </StackPanel>
 
-    <controls:EmptyView IsVisible="{Binding !IsConnected, Source={x:Static platform:BluetoothImpl.Instance}}"
+    <controls:EmptyView IsVisible="{Binding !IsConnected, Source={x:Static platform:BluetoothService.Instance}}"
                         Text="{DynamicResource connlost_disconnected}"
                         Symbol="WifiOff" />
 </Panel>

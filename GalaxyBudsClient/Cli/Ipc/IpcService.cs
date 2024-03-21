@@ -25,7 +25,7 @@ namespace GalaxyBudsClient.Cli.Ipc
         
         private static async Task UpdateDeviceObjectAsync(this IConnection connection)
         {
-            if (!BluetoothImpl.Instance.IsConnectedLegacy)
+            if (!BluetoothService.Instance.IsConnectedLegacy)
                 connection.UnregisterObject(DeviceObject.Path);
             else if (_deviceObject != null)
                 await connection.RegisterObjectAsync(_deviceObject);
@@ -59,8 +59,8 @@ namespace GalaxyBudsClient.Cli.Ipc
                 _deviceObject = new DeviceObject();
                 await connection.UpdateDeviceObjectAsync();
 
-                BluetoothImpl.Instance.Connected += (sender, args) => _ = connection.UpdateDeviceObjectAsync();
-                BluetoothImpl.Instance.Disconnected += (sender, args) => _ = connection.UpdateDeviceObjectAsync();
+                BluetoothService.Instance.Connected += (sender, args) => _ = connection.UpdateDeviceObjectAsync();
+                BluetoothService.Instance.Disconnected += (sender, args) => _ = connection.UpdateDeviceObjectAsync();
                 
                 if (!useSessionBus)
                 {

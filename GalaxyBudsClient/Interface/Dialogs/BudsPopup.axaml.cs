@@ -89,14 +89,14 @@ namespace GalaxyBudsClient.Interface.Dialogs
             
             var isLeftOnline = bl > 0;
             var isRightOnline = br > 0;
-            var isCaseOnline = bc is > 0 and <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(Features.CaseBattery);
+            var isCaseOnline = bc is > 0 and <= 100 && BluetoothService.Instance.DeviceSpec.Supports(Features.CaseBattery);
             
             _batteryL.IsVisible = isLeftOnline;
             _batteryR.IsVisible = isRightOnline;
             _batteryC.IsVisible = isCaseOnline;
             _caseLabel.IsVisible = isCaseOnline;
      
-            var type = BluetoothImpl.Instance.DeviceSpec.IconResourceKey;
+            var type = BluetoothService.Instance.DeviceSpec.IconResourceKey;
 
             var leftSourceName = $"Left{type}Connected";
             _iconLeft.Source = (IImage?)Application.Current?.FindResource(leftSourceName);
@@ -130,7 +130,7 @@ namespace GalaxyBudsClient.Interface.Dialogs
 
         public void UpdateSettings()
         {
-            _header.Content = BluetoothImpl.Instance.DeviceName;
+            _header.Content = BluetoothService.Instance.DeviceName;
 
             /* Header */
             var grid = this.GetControl<Grid>("Grid");

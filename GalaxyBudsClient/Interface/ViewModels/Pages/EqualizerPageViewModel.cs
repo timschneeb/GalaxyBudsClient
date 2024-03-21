@@ -27,7 +27,7 @@ public class EqualizerPageViewModel : MainPageViewModelBase
                 break;
             case nameof(StereoBalance):
                 // TODO dragging the slider has a high delay. maybe add a cooldown or only send the request when the slider is released
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_HEARING_ENHANCEMENTS, (byte)StereoBalance);
+                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_HEARING_ENHANCEMENTS, (byte)StereoBalance);
                 break;
         }
     }
@@ -57,7 +57,7 @@ public class EqualizerPageViewModel : MainPageViewModelBase
     {
         PropertyChanged -= OnPropertyChanged;
         
-        if (BluetoothImpl.ActiveModel == Models.Buds)
+        if (BluetoothService.ActiveModel == Models.Buds)
         {
             IsEqEnabled = e.EqualizerEnabled;
 				

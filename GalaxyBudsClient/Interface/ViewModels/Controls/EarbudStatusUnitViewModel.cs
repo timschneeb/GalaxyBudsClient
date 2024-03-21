@@ -30,7 +30,7 @@ public class EarbudStatusUnitViewModel : ViewModelBase
     {
         SppMessageHandler.Instance.BaseUpdate += OnStatusUpdated;
         SppMessageHandler.Instance.GetAllDataResponse += OnGetAllDataResponse;
-        BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
+        BluetoothService.Instance.PropertyChanged += OnBluetoothPropertyChanged;
         Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
         Loc.LanguageUpdated += LoadFromCache;
         LoadFromCache();
@@ -38,7 +38,7 @@ public class EarbudStatusUnitViewModel : ViewModelBase
 
     private void OnBluetoothPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if (e.PropertyName == nameof(BluetoothImpl.Instance.IsConnected) && 
+        if (e.PropertyName == nameof(BluetoothService.Instance.IsConnected) && 
             DeviceMessageCache.Instance.BasicStatusUpdate != null)
             OnStatusUpdated(null, DeviceMessageCache.Instance.BasicStatusUpdate);
     }
@@ -57,7 +57,7 @@ public class EarbudStatusUnitViewModel : ViewModelBase
         if (DeviceMessageCache.Instance.DebugGetAllData != null)
             OnGetAllDataResponse(null, DeviceMessageCache.Instance.DebugGetAllData);
         else
-            _ = BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
+            _ = BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
     }
     
     private void OnStatusUpdated(object? sender, IBasicStatusUpdate e)
@@ -71,8 +71,8 @@ public class EarbudStatusUnitViewModel : ViewModelBase
     {
         var useF = Settings.Instance.TemperatureUnit == TemperatureUnits.Fahrenheit;
         
-        IsLeftOnline = BluetoothImpl.Instance.IsConnected && e.LeftAdcSOC > 0;
-        IsRightOnline = BluetoothImpl.Instance.IsConnected &&  e.RightAdcSOC > 0;
+        IsLeftOnline = BluetoothService.Instance.IsConnected && e.LeftAdcSOC > 0;
+        IsRightOnline = BluetoothService.Instance.IsConnected &&  e.RightAdcSOC > 0;
         LeftBattery = (int)Math.Round(e.LeftAdcSOC);
         RightBattery = (int)Math.Round(e.RightAdcSOC);
         

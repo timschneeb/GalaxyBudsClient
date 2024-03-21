@@ -30,7 +30,7 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
     private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
     {
         PropertyChanged -= OnPropertyChanged;
-        if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
+        if (BluetoothService.Instance.DeviceSpec.Supports(Features.NoiseControl))
         {
             IsAmbientSoundEnabled = e.NoiseControlMode == NoiseControlModes.AmbientSound;
             IsAncEnabled = e.NoiseControlMode == NoiseControlModes.NoiseReduction;
@@ -55,7 +55,7 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
 
     private async void SendNoiseControlState()
     {
-        if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
+        if (BluetoothService.Instance.DeviceSpec.Supports(Features.NoiseControl))
         {
             if (IsAmbientSoundEnabled) 
                 await MessageComposer.NoiseControl.SetMode(NoiseControlModes.AmbientSound);
@@ -66,10 +66,10 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
         }
         else
         {
-            if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientSound))
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_AMBIENT_MODE, IsAmbientSoundEnabled);
-            if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc))
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_NOISE_REDUCTION, IsAncEnabled);
+            if (BluetoothService.Instance.DeviceSpec.Supports(Features.AmbientSound))
+                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_AMBIENT_MODE, IsAmbientSoundEnabled);
+            if (BluetoothService.Instance.DeviceSpec.Supports(Features.Anc))
+                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_NOISE_REDUCTION, IsAncEnabled);
         }
         EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
     }
@@ -87,13 +87,13 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
                     SendNoiseControlState();
                 break;
             case nameof(IsAncLevelHigh):
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.NOISE_REDUCTION_LEVEL, IsAncLevelHigh);
+                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.NOISE_REDUCTION_LEVEL, IsAncLevelHigh);
                 break;
             case nameof(IsAncWithOneEarbudAllowed):
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_ANC_WITH_ONE_EARBUD, IsAncWithOneEarbudAllowed);
+                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_ANC_WITH_ONE_EARBUD, IsAncWithOneEarbudAllowed);
                 break;
             case nameof(IsVoiceDetectEnabled):
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_DETECT_CONVERSATIONS, IsVoiceDetectEnabled);
+                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_DETECT_CONVERSATIONS, IsVoiceDetectEnabled);
                 break;
             case nameof(VoiceDetectTimeout):
                 var timeout = VoiceDetectTimeout switch
@@ -102,7 +102,7 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
                     VoiceDetectTimeouts.Sec10 => 1,
                     _ => 2
                 };  
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_DETECT_CONVERSATIONS_DURATION, (byte)timeout);
+                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_DETECT_CONVERSATIONS_DURATION, (byte)timeout);
                 break;
         }
     }

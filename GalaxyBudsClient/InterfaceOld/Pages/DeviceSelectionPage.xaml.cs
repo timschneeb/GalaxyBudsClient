@@ -143,7 +143,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
                 // TODO don't handle this here, use an event in ISettings
                 // MainWindow.Instance.HomePage.ResetCache();
                 
-                if (await BluetoothImpl.Instance.ConnectAsync())
+                if (await BluetoothService.Instance.ConnectAsync())
                 {
                     //MainWindow.Instance.Pager.SwitchPage(Pages.Home);
                 }
@@ -166,7 +166,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
             BluetoothDevice[] devices;
             try
             {
-                devices = await BluetoothImpl.Instance.GetDevicesAsync();
+                devices = await BluetoothService.Instance.GetDevicesAsync();
             }
             catch (PlatformNotSupportedException ex)
             {
@@ -233,7 +233,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
         private void UseWinRT_OnToggled(object? sender, bool e)
         {
             Settings.Instance.UseBluetoothWinRT = e;
-            BluetoothImpl.Reallocate();
+            BluetoothService.Reallocate();
             RefreshList(user: true);
         }
     }

@@ -22,7 +22,7 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
         SppMessageHandler.Instance.DebugSkuUpdate += OnDebugSkuReceived;
         SppMessageHandler.Instance.SerialNumberResponse += OnDebugSerialNumberReceived;
         SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdateReceived;
-        BluetoothImpl.Instance.Connected += (_, _) => RequestData();
+        BluetoothService.Instance.Connected += (_, _) => RequestData();
         Loc.LanguageUpdated += RequestData;
     }
 
@@ -69,15 +69,15 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
     
     private static async void RequestData()
     {
-        if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.BatteryType))
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.BATTERY_TYPE);
-        if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.BuildInfo))
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_BUILD_INFO);
-        if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.DebugSku))
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
+        if (BluetoothService.Instance.DeviceSpec.Supports(Features.BatteryType))
+            await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.BATTERY_TYPE);
+        if (BluetoothService.Instance.DeviceSpec.Supports(Features.BuildInfo))
+            await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_BUILD_INFO);
+        if (BluetoothService.Instance.DeviceSpec.Supports(Features.DebugSku))
+            await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
         
-        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SERIAL_NUMBER);
-        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
+        await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SERIAL_NUMBER);
+        await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
     }
     
     public override void OnNavigatedTo() => RequestData();

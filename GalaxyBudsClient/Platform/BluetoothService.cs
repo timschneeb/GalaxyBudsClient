@@ -22,17 +22,17 @@ using Task = System.Threading.Tasks.Task;
 
 namespace GalaxyBudsClient.Platform
 {
-    public class BluetoothImpl : IDisposable, INotifyPropertyChanged
+    public class BluetoothService : IDisposable, INotifyPropertyChanged
     { 
         private static readonly object Padlock = new();
-        private static BluetoothImpl? _instance;
-        public static BluetoothImpl Instance
+        private static BluetoothService? _instance;
+        public static BluetoothService Instance
         {
             get
             {
                 lock (Padlock)
                 {
-                    return _instance ??= new BluetoothImpl();
+                    return _instance ??= new BluetoothService();
                 }
             }
         }
@@ -42,7 +42,7 @@ namespace GalaxyBudsClient.Platform
             Log.Debug("BluetoothImpl: Reallocating");
             _instance?.Dispose();
             _instance = null;
-            _instance = new BluetoothImpl();
+            _instance = new BluetoothService();
         }
 
         private readonly IBluetoothService _backend;
@@ -91,7 +91,7 @@ namespace GalaxyBudsClient.Platform
 
         private Guid ServiceUuid => DeviceSpec.ServiceUuid;
 
-        private BluetoothImpl()
+        private BluetoothService()
         {
             try
             {
