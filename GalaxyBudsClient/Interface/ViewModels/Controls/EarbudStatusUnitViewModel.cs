@@ -15,8 +15,6 @@ namespace GalaxyBudsClient.Interface.ViewModels.Controls;
 
 public class EarbudStatusUnitViewModel : ViewModelBase
 {
-    [Reactive] public IImage? LeftIcon { set; get; }
-    [Reactive] public IImage? RightIcon { set; get; }
     [Reactive] public bool IsLeftOnline { set; get; }
     [Reactive] public bool IsRightOnline { set; get; }
     [Reactive] public int LeftBattery { set; get; }
@@ -34,16 +32,9 @@ public class EarbudStatusUnitViewModel : ViewModelBase
     {
         SppMessageHandler.Instance.BaseUpdate += OnStatusUpdated;
         SppMessageHandler.Instance.GetAllDataResponse += OnGetAllDataResponse;
-        BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
         Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
         Loc.LanguageUpdated += LoadFromCache;
-        UpdateEarbudIcons();
         LoadFromCache();
-    }
-
-    private void OnBluetoothPropertyChanged(object? sender, PropertyChangedEventArgs e)
-    {
-        UpdateEarbudIcons();
     }
 
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -51,13 +42,6 @@ public class EarbudStatusUnitViewModel : ViewModelBase
         // Recalculate temperature values when temperature unit changes
         if (e.PropertyName == nameof(Settings.Instance.TemperatureUnit))
             LoadFromCache();
-    }
-
-    private void UpdateEarbudIcons()
-    {
-        var type = BluetoothImpl.Instance.DeviceSpec.IconResourceKey;
-        LeftIcon = Application.Current?.FindResource($"Left{type}Connected") as IImage;
-        RightIcon = Application.Current?.FindResource($"Right{type}Connected") as IImage;
     }
     
     private void LoadFromCache()
