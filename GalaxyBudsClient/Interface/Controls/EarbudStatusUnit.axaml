@@ -25,6 +25,7 @@
     </UserControl.Resources>
 
     <StackPanel Spacing="15"
+                Orientation="Horizontal"
                 HorizontalAlignment="Center">
 
         <!-- TODO layout jumps around when one of the earbuds goes offline / too much text changes -->

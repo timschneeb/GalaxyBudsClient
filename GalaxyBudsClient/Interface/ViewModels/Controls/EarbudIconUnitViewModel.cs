@@ -19,6 +19,8 @@ public class EarbudIconUnitViewModel : ViewModelBase
     
     public EarbudIconUnitViewModel()
     {
+        if (DeviceMessageCache.Instance.BasicStatusUpdate != null)
+            OnStatusUpdated(null, DeviceMessageCache.Instance.BasicStatusUpdate);
         SppMessageHandler.Instance.BaseUpdate += OnStatusUpdated;
         BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
         UpdateEarbudIcons();

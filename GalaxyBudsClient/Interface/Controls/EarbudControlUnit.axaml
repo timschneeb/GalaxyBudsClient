@@ -29,6 +29,7 @@
 
         <StackPanel Grid.Row="2"
                     Spacing="15"
+                    Orientation="Horizontal"
                     HorizontalAlignment="Center">
 
             <ContentControl Name="LeftContentControl"
