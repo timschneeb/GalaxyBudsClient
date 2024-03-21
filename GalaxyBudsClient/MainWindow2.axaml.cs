@@ -198,8 +198,8 @@ namespace GalaxyBudsClient
         {
             if (_firstShow)
             {
-                HotkeyReceiverImpl.Reset();
-                HotkeyReceiverImpl.Instance.Update(silent: true);
+                HotkeyReceiver.Reset();
+                HotkeyReceiver.Instance.Update(silent: true);
             }
 
             if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
@@ -308,7 +308,7 @@ namespace GalaxyBudsClient
             if (_lastWearState == LegacyWearStates.None &&
                 e.WearState != LegacyWearStates.None && Settings.Instance.ResumePlaybackOnSensor)
             {
-                MediaKeyRemoteImpl.Instance.Play();
+                MediaKeyRemote.Instance.Play();
             }
             
             // Update dynamic tray icon
@@ -437,7 +437,7 @@ namespace GalaxyBudsClient
                         return;
                     }
 
-                    HotkeyBroadcastImpl.Instance.SendKeys(keys);
+                    HotkeyBroadcast.Instance.SendKeys(keys);
                     break;
             }
         }

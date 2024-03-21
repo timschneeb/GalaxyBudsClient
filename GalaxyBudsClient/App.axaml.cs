@@ -54,7 +54,7 @@ namespace GalaxyBudsClient
             }, DispatcherPriority.Render);
             
             TrayManager.Init();
-            MediaKeyRemoteImpl.Init();
+            MediaKeyRemote.Init();
             DeviceMessageCache.Init();
             ExperimentManager.Init();
            

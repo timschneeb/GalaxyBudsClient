@@ -25,7 +25,7 @@ namespace GalaxyBudsClient.Platform.OSX
 
         public void PlayPause()
         {
-            HotkeyBroadcastImpl.Instance.SendKeys(new []{Key.MediaPlayPause});
+            Platform.HotkeyBroadcast.Instance.SendKeys(new []{Key.MediaPlayPause});
         }
     }
 }

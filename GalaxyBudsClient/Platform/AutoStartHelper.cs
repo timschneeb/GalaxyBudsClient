@@ -3,11 +3,11 @@ using Serilog;
 
 namespace GalaxyBudsClient.Platform
 {
-    public static class AutoStartImpl
+    public static class AutoStartHelper
     {
         public static readonly IAutoStartHelper Instance;
         
-        static AutoStartImpl()
+        static AutoStartHelper()
         {
             if (PlatformUtils.IsWindows)
             {
