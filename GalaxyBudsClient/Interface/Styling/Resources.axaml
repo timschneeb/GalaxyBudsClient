@@ -5,8 +5,8 @@
                     xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
                     xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent">
 
-    <converters:SymbolToIconSourceConverter x:Key="SymbolToIconSourceConverter" />
     <converters:EnumToDescriptionConverter x:Key="EnumDescriptionConverter" />
+    <converters:ModelNameConverter x:Key="ModelNameConverter" />
     <converters:EqPresetConverter x:Key="EqPresetConverter" />
     <converters:StereoBalanceConverter x:Key="StereoBalanceConverter" />
     <converters:AmbientCustomStrengthConverter x:Key="AmbientCustomStrengthConverter" />

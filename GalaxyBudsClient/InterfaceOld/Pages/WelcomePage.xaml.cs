@@ -28,10 +28,7 @@ public class WelcomePage : AbstractPage
 	public WelcomePage()
 	{   
 		AvaloniaXamlLoader.Load(this);
-
-		//_darkMode = this.GetControl<SwitchDetailListItem>("DarkMode");
 		_locale = this.GetControl<Border>("Locales");
-			
 	}
 
 	public override void OnPageShown()
@@ -97,11 +94,6 @@ public class WelcomePage : AbstractPage
 	private void Next_OnPointerPressed(object? sender, PointerPressedEventArgs e)
 	{
 		//MainWindow.Instance.Pager.SwitchPage(_officialAppInstalled ? Pages.BudsAppDetected : Pages.DeviceSelect);
-	}
-
-	private void DarkMode_OnToggled(object? sender, bool e)
-	{
-		Settings.Instance.DarkMode = e ? DarkModes.Dark : DarkModes.Light;
 	}
 
 	private void Locales_OnPointerPressed(object? sender, PointerPressedEventArgs e)
