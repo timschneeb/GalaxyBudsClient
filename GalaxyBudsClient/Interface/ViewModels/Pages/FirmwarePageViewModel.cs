@@ -38,7 +38,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
     
     public FirmwarePageViewModel()
     {
-        BluetoothImpl.Instance.Connected += (_, _) => RequestData();
+        BluetoothService.Instance.Connected += (_, _) => RequestData();
         AvailableFirmware.CollectionChanged += (_, _) => NoResults = !AvailableFirmware.Any(); 
         PropertyChanged += OnPropertyChanged;
     }
@@ -51,11 +51,11 @@ public class FirmwarePageViewModel : SubPageViewModelBase
 
     private static async void RequestData()
     { 
-        if(!BluetoothImpl.Instance.IsConnected)
+        if(!BluetoothService.Instance.IsConnected)
             return;
         
-        if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.DebugSku))
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
+        if (BluetoothService.Instance.DeviceSpec.Supports(Features.DebugSku))
+            await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
     }
 
     public override async void OnNavigatedTo()
@@ -84,7 +84,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
     {
         if (param is not FirmwareRemoteBinary firmware) return;
         
-        if (firmware.Model != BluetoothImpl.ActiveModel)
+        if (firmware.Model != BluetoothService.ActiveModel)
         {
             await new MessageBox
             {
@@ -168,7 +168,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
          * We cannot rely on BluetoothImpl.Instance.ActiveModel here, because users can spoof the device model
          * during setup using the "Advanced" menu for troubleshooting. If available, we use the SKU instead.
          */
-        var connectedModel = DeviceMessageCache.Instance.DebugSku?.ModelFromSku() ?? BluetoothImpl.ActiveModel;
+        var connectedModel = DeviceMessageCache.Instance.DebugSku?.ModelFromSku() ?? BluetoothService.ActiveModel;
         var firmwareModel = binary.DetectModel();
         if (firmwareModel == null)
         {
@@ -193,7 +193,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
             Title = string.Format(
                 Loc.Resolve("fw_select_confirm"),
                 binary.BuildName, 
-                BluetoothImpl.ActiveModel.GetModelMetadata()?.Name ?? Loc.Resolve("unknown")
+                BluetoothService.ActiveModel.GetModelMetadata()?.Name ?? Loc.Resolve("unknown")
             ),
             Description = Loc.Resolve("fw_select_confirm_desc"),
             ButtonText = Loc.Resolve("continue_button")

@@ -19,7 +19,7 @@ namespace GalaxyBudsClient.Interface.Developer
             
             Locales.SelectedItem = Settings.Instance.Locale;
             XamlPath.Text = Loc.GetTranslatorModeFile();
-            IgnoreConnLoss.IsChecked = BluetoothImpl.Instance.SuppressDisconnectionEvents;
+            IgnoreConnLoss.IsChecked = BluetoothService.Instance.SuppressDisconnectionEvents;
             // TODO DummyDevices.IsChecked = MainWindow2.Instance.DeviceSelectionPage.EnableDummyDevices;
             
             Loc.ErrorDetected += (title, content) =>
@@ -54,7 +54,7 @@ namespace GalaxyBudsClient.Interface.Developer
 
         private void IgnoreConnLoss_OnChecked(object? sender, RoutedEventArgs e)
         {
-            BluetoothImpl.Instance.SuppressDisconnectionEvents = IgnoreConnLoss.IsChecked ?? false;
+            BluetoothService.Instance.SuppressDisconnectionEvents = IgnoreConnLoss.IsChecked ?? false;
         }
 
         private void DummyDevices_OnChecked(object? sender, RoutedEventArgs e)

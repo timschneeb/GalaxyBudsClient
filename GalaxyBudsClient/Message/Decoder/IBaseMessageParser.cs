@@ -49,7 +49,7 @@ namespace GalaxyBudsClient.Message.Decoder
             return property.Name is "HandledType" or "ActiveModel" or "DeviceSpec";
         }
 
-        protected static Models ActiveModel => BluetoothImpl.ActiveModel;
-        protected static IDeviceSpec DeviceSpec => BluetoothImpl.Instance.DeviceSpec;
+        protected static Models ActiveModel => BluetoothService.ActiveModel;
+        protected static IDeviceSpec DeviceSpec => BluetoothService.Instance.DeviceSpec;
     }
 }

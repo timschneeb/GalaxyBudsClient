@@ -49,9 +49,9 @@ namespace GalaxyBudsClient
         {
             InitializeComponent();
             
-            BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
-            BluetoothImpl.Instance.Disconnected += OnDisconnected;
-            BluetoothImpl.Instance.Connected += OnConnected;
+            BluetoothService.Instance.BluetoothError += OnBluetoothError;
+            BluetoothService.Instance.Disconnected += OnDisconnected;
+            BluetoothService.Instance.Connected += OnConnected;
 
             SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
             SppMessageHandler.Instance.StatusUpdate += OnStatusUpdate;
@@ -63,9 +63,9 @@ namespace GalaxyBudsClient
             
             Loc.LanguageUpdated += OnLanguageUpdated;
             
-            if (BluetoothImpl.Instance.RegisteredDeviceValid)
+            if (BluetoothService.Instance.RegisteredDeviceValid)
             {
-                Task.Run(() => BluetoothImpl.Instance.ConnectAsync());
+                Task.Run(() => BluetoothService.Instance.ConnectAsync());
             }
             else
             {
@@ -96,7 +96,7 @@ namespace GalaxyBudsClient
             switch (e)
             {
                 case Event.PairingMode:
-                    await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.UNK_PAIRING_MODE);
+                    await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.UNK_PAIRING_MODE);
                     break;
                 case Event.ToggleManagerVisibility:
                     if (IsVisible)
@@ -105,9 +105,9 @@ namespace GalaxyBudsClient
                         BringToFront();
                     break;
                 case Event.Connect:
-                    if (!BluetoothImpl.Instance.IsConnected)
+                    if (!BluetoothService.Instance.IsConnected)
                     {
-                        await BluetoothImpl.Instance.ConnectAsync();
+                        await BluetoothService.Instance.ConnectAsync();
                     }
                     break;
                 case Event.ShowBatteryPopup:
@@ -138,8 +138,8 @@ namespace GalaxyBudsClient
                 Log.Debug("MainWindow.OnClosing: Now closing session");
             }
             
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.FIND_MY_EARBUDS_STOP);
-            await BluetoothImpl.Instance.DisconnectAsync();
+            await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.FIND_MY_EARBUDS_STOP);
+            await BluetoothService.Instance.DisconnectAsync();
             base.OnClosing(e);
         }
         
@@ -227,9 +227,9 @@ namespace GalaxyBudsClient
 
         protected override void OnClosed(EventArgs e)
         {
-            BluetoothImpl.Instance.BluetoothError -= OnBluetoothError;
-            BluetoothImpl.Instance.Disconnected -= OnDisconnected;
-            BluetoothImpl.Instance.Connected -= OnConnected;
+            BluetoothService.Instance.BluetoothError -= OnBluetoothError;
+            BluetoothService.Instance.Disconnected -= OnDisconnected;
+            BluetoothService.Instance.Connected -= OnConnected;
             
             SppMessageHandler.Instance.ExtendedStatusUpdate -= OnExtendedStatusUpdate;
             SppMessageHandler.Instance.StatusUpdate -= OnStatusUpdate;
@@ -335,8 +335,8 @@ namespace GalaxyBudsClient
             
             // Reply manager info and request & cache SKU info
             _ = MessageComposer.SetManagerInfo();
-            if(BluetoothImpl.Instance.DeviceSpec.Supports(Features.DebugSku))
-                _ = BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
+            if(BluetoothService.Instance.DeviceSpec.Supports(Features.DebugSku))
+                _ = BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
         }
 
         private void OnConnected(object? sender, EventArgs e)

@@ -60,7 +60,7 @@ namespace GalaxyBudsClient.Interface.Developer
             PropTable.ItemsSource = _vm.PropTableDataView;
             
             Closing += OnClosing;
-            BluetoothImpl.Instance.NewDataReceived += OnNewDataReceived;
+            BluetoothService.Instance.NewDataReceived += OnNewDataReceived;
         }
 
         private void OnNewDataReceived(object? sender, byte[] raw)
@@ -85,7 +85,7 @@ namespace GalaxyBudsClient.Interface.Developer
 
         private void OnClosing(object? sender, CancelEventArgs e)
         {
-            BluetoothImpl.Instance.NewDataReceived -= OnNewDataReceived;
+            BluetoothService.Instance.NewDataReceived -= OnNewDataReceived;
 
             _cache.Clear();
             HexDump.Clear();
@@ -144,7 +144,7 @@ namespace GalaxyBudsClient.Interface.Developer
                 Payload = payload,
                 Type = (SppMessage.MsgType?) SendMsgType.SelectedItem ?? SppMessage.MsgType.INVALID
             };
-            _ = BluetoothImpl.Instance.SendAsync(msg);
+            _ = BluetoothService.Instance.SendAsync(msg);
         }
         
         private void Clear_OnClick(object? sender, RoutedEventArgs e)
@@ -201,9 +201,9 @@ namespace GalaxyBudsClient.Interface.Developer
                     var somIndex = 0;
                     for (var i = 1; i < data.Count; i++)
                     {
-                        if ((BluetoothImpl.ActiveModel == Models.Buds &&
+                        if ((BluetoothService.ActiveModel == Models.Buds &&
                             (byte)(data[i] ?? 0) == (byte)SppMessage.Constants.SOM) ||
-                            (BluetoothImpl.ActiveModel != Models.Buds &&
+                            (BluetoothService.ActiveModel != Models.Buds &&
                              (byte)(data[i] ?? 0) == (byte)SppMessage.Constants.SOMPlus))
                         {
                             somIndex = i;

@@ -33,13 +33,13 @@ public class AdvancedPageViewModel : MainPageViewModelBase
         switch (e.PropertyName)
         {
             case nameof(IsSeamlessConnectionEnabled):
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SEAMLESS_CONNECTION, !IsSeamlessConnectionEnabled);
+                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SEAMLESS_CONNECTION, !IsSeamlessConnectionEnabled);
                 break;
             case nameof(IsPassthroughEnabled):
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.PASS_THROUGH, IsPassthroughEnabled);
+                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.PASS_THROUGH, IsPassthroughEnabled);
                 break;
             case nameof(IsSidetoneEnabled):
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SIDETONE, IsSidetoneEnabled);
+                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SIDETONE, IsSidetoneEnabled);
                 break;
         }
     }

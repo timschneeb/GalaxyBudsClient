@@ -71,21 +71,21 @@ namespace GalaxyBudsClient.Message
 
         public async void Attach()
         {
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SPATIAL_AUDIO, 1);
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SPATIAL_AUDIO_CONTROL, (byte)SpatialAudioControl.Attach);
+            await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SPATIAL_AUDIO, 1);
+            await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SPATIAL_AUDIO_CONTROL, (byte)SpatialAudioControl.Attach);
             _keepAliveTimer.Start();
         }
 
         public async void Detach()
         {
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SPATIAL_AUDIO_CONTROL, (byte)SpatialAudioControl.Detach);
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SPATIAL_AUDIO, 0);
+            await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SPATIAL_AUDIO_CONTROL, (byte)SpatialAudioControl.Detach);
+            await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SPATIAL_AUDIO, 0);
             _keepAliveTimer.Stop();
         }
         
         private static async void KeepAliveOnElapsed(object? sender, ElapsedEventArgs e)
         {
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SPATIAL_AUDIO_CONTROL, (byte)SpatialAudioControl.KeepAlive);
+            await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SPATIAL_AUDIO_CONTROL, (byte)SpatialAudioControl.KeepAlive);
         }
     }
 }

@@ -42,7 +42,7 @@ public class FindMyBudsPageViewModel : MainPageViewModelBase
             {
                 var cmd = IsSearching ?
                     SppMessage.MessageIds.FIND_MY_EARBUDS_START : SppMessage.MessageIds.FIND_MY_EARBUDS_STOP;
-                await BluetoothImpl.Instance.SendRequestAsync(cmd);
+                await BluetoothService.Instance.SendRequestAsync(cmd);
                 break;
             }
             case nameof(IsLeftMuted) or nameof(IsRightMuted):
@@ -93,7 +93,7 @@ public class FindMyBudsPageViewModel : MainPageViewModelBase
     public override void OnNavigatedFrom()
     {
         // Stop the search when leaving the page
-        _ = BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.FIND_MY_EARBUDS_STOP);
+        _ = BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.FIND_MY_EARBUDS_STOP);
         IsSearching = false;
     }
 }

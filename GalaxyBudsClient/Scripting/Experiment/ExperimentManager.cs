@@ -23,7 +23,7 @@ namespace GalaxyBudsClient.Scripting.Experiment
 
         public ExperimentManager()
         {
-            BluetoothImpl.Instance.Connected += OnConnected;
+            BluetoothService.Instance.Connected += OnConnected;
             _client.NewResultsFound += OnNewResultsFound;
         }
 

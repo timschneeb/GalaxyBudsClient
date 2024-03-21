@@ -56,14 +56,14 @@ namespace GalaxyBudsClient.Cli.Ipc.Objects
             SppMessageHandler.Instance.GetAllDataResponse += OnGetAllDataResponse;
             SppMessageHandler.Instance.DebugSkuUpdate += OnDebugSkuUpdate;
             
-            BluetoothImpl.Instance.Connected += OnConnected;
+            BluetoothService.Instance.Connected += OnConnected;
         }
 
         private void OnConnected(object? sender, EventArgs e)
         {
-            Set(nameof(DeviceProperties._Name), BluetoothImpl.Instance.DeviceName);
+            Set(nameof(DeviceProperties._Name), BluetoothService.Instance.DeviceName);
             Set(nameof(DeviceProperties._Address), Settings.Instance.RegisteredDevice.MacAddress);
-            Set(nameof(DeviceProperties._Model), BluetoothImpl.ActiveModel.ToString());
+            Set(nameof(DeviceProperties._Model), BluetoothService.ActiveModel.ToString());
 
             if (DeviceMessageCache.Instance.BasicStatusUpdate != null)
                 OnBaseUpdate(this, DeviceMessageCache.Instance.BasicStatusUpdate);
@@ -104,7 +104,7 @@ namespace GalaxyBudsClient.Cli.Ipc.Objects
             SppMessageHandler.Instance.GetAllDataResponse -= OnGetAllDataResponse;
             SppMessageHandler.Instance.DebugSkuUpdate -= OnDebugSkuUpdate;
             
-            BluetoothImpl.Instance.Connected -= OnConnected;
+            BluetoothService.Instance.Connected -= OnConnected;
         }
     }
 }

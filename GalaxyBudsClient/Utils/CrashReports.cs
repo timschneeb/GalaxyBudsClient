@@ -42,10 +42,10 @@ public static class CrashReports
                     sentryEvent.SetExtra("sw-version",
                         DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");
                     
-                    sentryEvent.SetTag("bluetooth-model", BluetoothImpl.ActiveModel.ToString());
-                    sentryEvent.SetExtra("bluetooth-model", BluetoothImpl.ActiveModel);
+                    sentryEvent.SetTag("bluetooth-model", BluetoothService.ActiveModel.ToString());
+                    sentryEvent.SetExtra("bluetooth-model", BluetoothService.ActiveModel);
                     sentryEvent.SetExtra("bluetooth-sku", DeviceMessageCache.Instance.DebugSku?.LeftSku ?? "null");
-                    sentryEvent.SetExtra("bluetooth-connected", BluetoothImpl.Instance.IsConnectedLegacy);
+                    sentryEvent.SetExtra("bluetooth-connected", BluetoothService.Instance.IsConnectedLegacy);
                 }
                 catch (Exception ex)
                 {

@@ -48,6 +48,6 @@ public class RequiresAnyFeatureBehavior : Behavior<Control>
         if (AssociatedObject is null)
             return;
 
-        AssociatedObject.IsVisible = Features.Cast<Features>().Any(BluetoothImpl.Instance.DeviceSpec.Supports);
+        AssociatedObject.IsVisible = Features.Cast<Features>().Any(BluetoothService.Instance.DeviceSpec.Supports);
     }
 }
