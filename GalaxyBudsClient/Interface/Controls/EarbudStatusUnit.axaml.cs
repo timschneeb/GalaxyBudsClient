@@ -6,7 +6,7 @@ using GalaxyBudsClient.Utils;
 
 namespace GalaxyBudsClient.Interface.Controls
 {
-    public partial class EarbudStatusUnit : UserControl
+    public partial class EarbudStatusUnit : Panel
     {
         public EarbudStatusUnit()
         {

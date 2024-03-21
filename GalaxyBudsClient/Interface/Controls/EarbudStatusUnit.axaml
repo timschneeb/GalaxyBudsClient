@@ -1,30 +1,32 @@
-﻿<UserControl x:Class="GalaxyBudsClient.Interface.Controls.EarbudStatusUnit"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns="https://github.com/avaloniaui"
-             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
-             xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
-             xmlns:system="clr-namespace:System;assembly=System.Runtime"
-             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
-             xmlns:converters="clr-namespace:GalaxyBudsClient.Interface.Converters"
-             xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
-             xmlns:vm="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Controls"
-             x:DataType="vm:EarbudStatusUnitViewModel">
+﻿<Panel x:Class="GalaxyBudsClient.Interface.Controls.EarbudStatusUnit"
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       xmlns="https://github.com/avaloniaui"
+       xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+       xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+       xmlns:system="clr-namespace:System;assembly=System.Runtime"
+       xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+       xmlns:converters="clr-namespace:GalaxyBudsClient.Interface.Converters"
+       xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
+       xmlns:vm="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Controls"
+       xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
+       x:DataType="vm:EarbudStatusUnitViewModel">
 
     <Design.DataContext>
         <vm:EarbudStatusUnitViewModel />
     </Design.DataContext>
 
-    <UserControl.Resources>
+    <Panel.Resources>
         <system:Double x:Key="VerticalLabelSpacing">2</system:Double>
         <system:Double x:Key="FontSizeBatteryIcons">20</system:Double>
         <system:Double x:Key="FontSizePercentage">19</system:Double>
         <system:Double x:Key="FontSizeOtherLabels">14</system:Double>
         <system:Double x:Key="FontSizeCaseLabel">13</system:Double>
         <converters:BatterySymbolConverter x:Key="BatterySymbolConverter" />
-    </UserControl.Resources>
+    </Panel.Resources>
 
     <StackPanel Spacing="15"
                 Orientation="Horizontal"
+                IsVisible="{Binding IsConnected, Source={x:Static platform:BluetoothImpl.Instance}}"
                 HorizontalAlignment="Center">
 
         <!-- 
@@ -90,7 +92,7 @@
                 </Interaction.Behaviors>
             </TextBlock>
         </StackPanel>
-        
+
         <StackPanel Orientation="Vertical"
                     Spacing="10"
                     HorizontalAlignment="Center">
@@ -172,4 +174,17 @@
             </TextBlock>
         </StackPanel>
     </StackPanel>
-</UserControl>
+
+    <StackPanel IsVisible="{Binding !IsConnected, Source={x:Static platform:BluetoothImpl.Instance}}"
+                Spacing="4"
+                Orientation="Vertical"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+        <ic:SymbolIcon Symbol="WifiOff"
+                       FontSize="48"
+                       HorizontalAlignment="Center"
+                       Foreground="{DynamicResource TextFillColorDisabledBrush}" />
+        <TextBlock Text="{DynamicResource connlost_disconnected}"
+                   Foreground="{DynamicResource TextFillColorDisabledBrush}" />
+    </StackPanel>
+</Panel>

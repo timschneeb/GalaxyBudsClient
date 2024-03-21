@@ -28,6 +28,10 @@ public class EarbudIconUnitViewModel : ViewModelBase
 
     private void OnBluetoothPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
+        if(e.PropertyName == nameof(BluetoothImpl.Instance.IsConnected) && 
+           DeviceMessageCache.Instance.BasicStatusUpdate != null)
+            OnStatusUpdated(null, DeviceMessageCache.Instance.BasicStatusUpdate);
+        
         UpdateEarbudIcons();
     }
 
@@ -40,7 +44,8 @@ public class EarbudIconUnitViewModel : ViewModelBase
     
     private void OnStatusUpdated(object? sender, IBasicStatusUpdate e)
     {
-        IsLeftOnline = e.BatteryL > 0 && e.PlacementL != PlacementStates.Disconnected;
-        IsRightOnline = e.BatteryR > 0 && e.PlacementR != PlacementStates.Disconnected;
+        var connected = BluetoothImpl.Instance.IsConnected;
+        IsLeftOnline = connected && e.BatteryL > 0 && e.PlacementL != PlacementStates.Disconnected;
+        IsRightOnline = connected && e.BatteryR > 0 && e.PlacementR != PlacementStates.Disconnected;
     }
 }

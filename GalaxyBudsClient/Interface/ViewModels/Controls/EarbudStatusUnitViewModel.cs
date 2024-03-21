@@ -31,9 +31,17 @@ public class EarbudStatusUnitViewModel : ViewModelBase
     {
         SppMessageHandler.Instance.BaseUpdate += OnStatusUpdated;
         SppMessageHandler.Instance.GetAllDataResponse += OnGetAllDataResponse;
+        BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
         Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
         Loc.LanguageUpdated += LoadFromCache;
         LoadFromCache();
+    }
+
+    private void OnBluetoothPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(BluetoothImpl.Instance.IsConnected) && 
+            DeviceMessageCache.Instance.BasicStatusUpdate != null)
+            OnStatusUpdated(null, DeviceMessageCache.Instance.BasicStatusUpdate);
     }
 
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -64,8 +72,8 @@ public class EarbudStatusUnitViewModel : ViewModelBase
     {
         var useF = Settings.Instance.TemperatureUnit == TemperatureUnits.Fahrenheit;
         
-        IsLeftOnline = e.LeftAdcSOC > 0;
-        IsRightOnline = e.RightAdcSOC > 0;
+        IsLeftOnline = BluetoothImpl.Instance.IsConnected && e.LeftAdcSOC > 0;
+        IsRightOnline = BluetoothImpl.Instance.IsConnected &&  e.RightAdcSOC > 0;
         LeftBattery = (int)Math.Round(e.LeftAdcSOC);
         RightBattery = (int)Math.Round(e.RightAdcSOC);
         
