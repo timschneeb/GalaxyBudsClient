@@ -186,6 +186,10 @@
           <DependentUpon>WelcomePage.axaml</DependentUpon>
           <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Interface\Dialogs\DeviceSelectionDialog.axaml.cs">
+          <DependentUpon>DeviceSelectionDialog.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
     <PropertyGroup>

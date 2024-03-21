@@ -27,11 +27,11 @@ public class DeviceMessageCache
 
     private DeviceMessageCache()
     {
-        SppMessageHandler.Instance.DebugSkuUpdate += (sender, parser) => DebugSku = parser;
-        SppMessageHandler.Instance.ExtendedStatusUpdate += (sender, parser) => ExtendedStatusUpdate = parser;
-        SppMessageHandler.Instance.StatusUpdate += (sender, parser) => StatusUpdate = parser;
-        SppMessageHandler.Instance.GetAllDataResponse += (sender, parser) => DebugGetAllData = parser;
-        SppMessageHandler.Instance.BaseUpdate += (sender, update) =>
+        SppMessageHandler.Instance.DebugSkuUpdate += (_, parser) => DebugSku = parser;
+        SppMessageHandler.Instance.ExtendedStatusUpdate += (_, parser) => ExtendedStatusUpdate = parser;
+        SppMessageHandler.Instance.StatusUpdate += (_, parser) => StatusUpdate = parser;
+        SppMessageHandler.Instance.GetAllDataResponse += (_, parser) => DebugGetAllData = parser;
+        SppMessageHandler.Instance.BaseUpdate += (_, update) =>
         {
             if (update.BatteryCase <= 100 || BasicStatusUpdateWithValidCase == null) // 101 = Disconnected
             {
@@ -48,11 +48,11 @@ public class DeviceMessageCache
         DebugSku = null;
     }
         
-    public DebugGetAllDataParser? DebugGetAllData { set; get; }
-    public DebugSkuParser? DebugSku { set; get; }
-    public ExtendedStatusUpdateParser? ExtendedStatusUpdate { set; get; }
-    public StatusUpdateParser? StatusUpdate { set; get; }
+    public DebugGetAllDataParser? DebugGetAllData { private set; get; }
+    public DebugSkuParser? DebugSku { private set; get; }
+    public ExtendedStatusUpdateParser? ExtendedStatusUpdate { private set; get; }
+    public StatusUpdateParser? StatusUpdate { private set; get; }
 
     public IBasicStatusUpdate? BasicStatusUpdate => (IBasicStatusUpdate?) StatusUpdate ?? ExtendedStatusUpdate;
-    public IBasicStatusUpdate? BasicStatusUpdateWithValidCase { set; get; }
+    public IBasicStatusUpdate? BasicStatusUpdateWithValidCase { private set; get; }
 }

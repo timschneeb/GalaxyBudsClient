@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -156,7 +157,7 @@ public class DeviceSelectionPage : AbstractPage
         AvailableDevices?.Clear();
 
 
-        BluetoothDevice[] devices;
+        IEnumerable<BluetoothDevice> devices;
         try
         {
             devices = await BluetoothService.Instance.GetDevicesAsync();
@@ -226,7 +227,6 @@ public class DeviceSelectionPage : AbstractPage
     private void UseWinRT_OnToggled(object? sender, bool e)
     {
         Settings.Instance.UseBluetoothWinRT = e;
-        BluetoothService.Reallocate();
         RefreshList(true);
     }
 }

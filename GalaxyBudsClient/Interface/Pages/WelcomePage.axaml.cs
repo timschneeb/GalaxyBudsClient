@@ -36,7 +36,7 @@ public partial class WelcomePage : BasePage<WelcomePageViewModel>
             }.ShowAsync();
         }
         
-        
+        await DeviceSelectionDialog.OpenDialogAsync();
     }
 
     private void CheckIfOfficialAppIsInstalled()

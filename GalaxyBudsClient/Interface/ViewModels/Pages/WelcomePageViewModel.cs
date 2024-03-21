@@ -1,7 +1,6 @@
 ﻿using Avalonia.Controls;
 using FluentIcons.Common;
 using GalaxyBudsClient.Interface.Pages;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 

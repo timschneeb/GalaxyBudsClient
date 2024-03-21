@@ -83,12 +83,9 @@
             </Grid>
         </Border>
         <Border Grid.Row="9" Classes="RoundedBorderListItem">
-            <Grid ClipToBounds="True" MinHeight="50">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+            <Grid ClipToBounds="True" 
+                  MinHeight="50"
+                  ColumnDefinitions="*,Auto,*">
                 <Border Grid.Column="0" Classes="BorderHoverStyle" x:Name="ManualPair"
                         PointerPressed="ManualPair_OnPointerPressed">
                     <Label Content="{DynamicResource devsel_manual_pair}"

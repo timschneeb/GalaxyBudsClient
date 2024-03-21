@@ -160,6 +160,7 @@ namespace GalaxyBudsClient.Model
         
         public enum Models
         {
+            [ModelMetadata(Name = "", FwPattern = "", BuildPrefix = "")]
             NULL = 0,
             [ModelMetadata(Name = "Galaxy Buds", FwPattern = "R170", BuildPrefix = "R170")]
             Buds = 1,
