@@ -10,7 +10,7 @@ namespace GalaxyBudsClient.Message.Decoder
     {
         public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.AMBIENT_WEARING_STATUS_UPDATED;
 
-        public WearStates WearState { set; get; }
+        public LegacyWearStates WearState { set; get; }
         public int LeftDetectionCount { set; get; }
         public int RightDetectionCount { set; get; }
 
@@ -19,7 +19,7 @@ namespace GalaxyBudsClient.Message.Decoder
             if (msg.Id != HandledType)
                 return;
 
-            WearState = (WearStates) msg.Payload[0];
+            WearState = (LegacyWearStates) msg.Payload[0];
             LeftDetectionCount = BitConverter.ToInt16(msg.Payload, 1);
             RightDetectionCount = BitConverter.ToInt16(msg.Payload, 3);
         }

@@ -40,7 +40,7 @@ namespace GalaxyBudsClient
 
         private bool _popupShown = false;
         private bool _firstShow = true;
-        private WearStates _lastWearState = WearStates.Both;
+        private LegacyWearStates _lastWearState = LegacyWearStates.Both;
         
         public bool OverrideMinimizeTray { set; get; }
         
@@ -309,8 +309,8 @@ namespace GalaxyBudsClient
         #region Global Bluetooth callbacks
         private void OnStatusUpdate(object? sender, StatusUpdateParser e)
         {
-            if (_lastWearState == WearStates.None &&
-                e.WearState != WearStates.None && Settings.Instance.ResumePlaybackOnSensor)
+            if (_lastWearState == LegacyWearStates.None &&
+                e.WearState != LegacyWearStates.None && Settings.Instance.ResumePlaybackOnSensor)
             {
                 MediaKeyRemoteImpl.Instance.Play();
             }

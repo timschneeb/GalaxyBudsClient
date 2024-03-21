@@ -16,7 +16,7 @@ namespace GalaxyBudsClient.Message.Decoder
         public int BatteryR { set; get; }
         public bool IsCoupled { set; get; }
         public DevicesInverted MainConnection { set; get; }
-        public WearStates WearState { set; get; }
+        public LegacyWearStates WearState { set; get; }
         public int EqualizerMode { set; get; }
         public bool TouchpadLock { set; get; }
         public TouchOptions TouchpadOptionL { set; get; }
@@ -144,7 +144,7 @@ namespace GalaxyBudsClient.Message.Decoder
                 BatteryR = msg.Payload[3];
                 IsCoupled = Convert.ToBoolean(msg.Payload[4]);
                 MainConnection = (DevicesInverted)msg.Payload[5];
-                WearState = (WearStates)msg.Payload[6];
+                WearState = (LegacyWearStates)msg.Payload[6];
                 AmbientSoundEnabled = Convert.ToBoolean(msg.Payload[7]);
                 AmbientSoundMode = (AmbientTypes)msg.Payload[8];
                 AmbientSoundVolume = msg.Payload[9];
@@ -174,15 +174,15 @@ namespace GalaxyBudsClient.Message.Decoder
                 
                 switch (WearState)
                 {
-                    case WearStates.Both:
+                    case LegacyWearStates.Both:
                         PlacementL = PlacementStates.Wearing;
                         PlacementR = PlacementStates.Wearing;
                         break;
-                    case WearStates.L:
+                    case LegacyWearStates.L:
                         PlacementL = PlacementStates.Wearing;
                         PlacementR = PlacementStates.Idle;
                         break;
-                    case WearStates.R:
+                    case LegacyWearStates.R:
                         PlacementL = PlacementStates.Idle;
                         PlacementR = PlacementStates.Wearing;
                         break;
@@ -204,13 +204,13 @@ namespace GalaxyBudsClient.Message.Decoder
                 PlacementL = (PlacementStates)((msg.Payload[6] & 240) >> 4);
                 PlacementR = (PlacementStates)(msg.Payload[6] & 15);
                 if (PlacementL == PlacementStates.Wearing && PlacementR == PlacementStates.Wearing)
-                    WearState = WearStates.Both;
+                    WearState = LegacyWearStates.Both;
                 else if (PlacementL == PlacementStates.Wearing)
-                    WearState = WearStates.L;
+                    WearState = LegacyWearStates.L;
                 else if (PlacementR == PlacementStates.Wearing)
-                    WearState = WearStates.R;
+                    WearState = LegacyWearStates.R;
                 else
-                    WearState = WearStates.None;
+                    WearState = LegacyWearStates.None;
 
                 BatteryCase = msg.Payload[7];
 

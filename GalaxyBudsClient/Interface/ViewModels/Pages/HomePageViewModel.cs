@@ -30,23 +30,31 @@ public class HomePageViewModel : MainPageViewModelBase
                 await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
         };
         
-        SppMessageHandler.Instance.StatusUpdate += OnStatusUpdateReceived;
         BluetoothImpl.Instance.InvalidDataReceived += OnInvalidDataReceived;
+        SppMessageHandler.Instance.StatusUpdate += OnStatusUpdateReceived;
+        SppMessageHandler.Instance.AnyMessageReceived += (_, _) =>
+        {
+            /* A warning label is shown when a corrupted/invalid message has been received.
+               As soon as we receive the next valid message, we can hide the warning. */
+            // TODO SetWarning(false);
+        };
     }
 
     private void OnInvalidDataReceived(object? sender, InvalidPacketException e)
     {
         // TODO display error message
-        Dispatcher.UIThread.Post((async() =>
+        Dispatcher.UIThread.Post((async () =>
         {
-            await BluetoothImpl.Instance.DisconnectAsync();
-            //SetWarning(true, $"{Loc.Resolve("mainpage_corrupt_data")} ({e.ErrorCode})");
-            await Task.Delay(500).ContinueWith(async(_)=>
-            {
-                await Task.Factory.StartNew(() => BluetoothImpl.Instance.ConnectAsync());
-                // SetWarning(false);
-            });
+           // ...
         }), DispatcherPriority.Render);
+        
+        _ = BluetoothImpl.Instance.DisconnectAsync()
+            .ContinueWith(_ => Task.Delay(500))
+            .ContinueWith(_ =>
+            {
+                // TODO hide corrupted data warning
+                return BluetoothImpl.Instance.ConnectAsync();
+            });
     }
 
     private void OnStatusUpdateReceived(object? sender, StatusUpdateParser e)

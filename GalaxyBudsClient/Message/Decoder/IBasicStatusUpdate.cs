@@ -8,7 +8,8 @@ namespace GalaxyBudsClient.Message.Decoder
         public int BatteryL { set; get; }
         public int BatteryR { set; get; }
 
-        public WearStates WearState { set; get; }
+        [Device(Models.Buds)]
+        public LegacyWearStates WearState { set; get; }
         
         [Device(Models.Buds)]
         public int EarType { set; get; }
