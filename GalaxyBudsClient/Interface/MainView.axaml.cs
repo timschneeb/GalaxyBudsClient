@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using Avalonia;
 using Avalonia.Animation;
@@ -7,8 +8,6 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Styling;
 using Avalonia.Threading;
-using CommandLine;
-using FluentAvalonia.Core;
 using FluentAvalonia.UI.Controls;
 using FluentAvalonia.UI.Navigation;
 using FluentAvalonia.UI.Windowing;
@@ -27,6 +26,31 @@ public partial class MainView : UserControl
     }
 
     private MainViewViewModel? ViewModel => DataContext as MainViewViewModel;
+    private PageViewModelBase? CurrentPageViewModel { set; get; }
+
+    private bool _isDesktop;
+
+    private readonly MainPageViewModelBase[] _mainPages = [
+        new WelcomePageViewModel(),
+        new HomePageViewModel(),
+        new NoiseControlPageViewModel(),
+        new EqualizerPageViewModel(),
+        new FindMyBudsPageViewModel(),
+        new TouchpadPageViewModel(),
+        new AdvancedPageViewModel(),
+        new SystemPageViewModel(),
+        new SettingsPageViewModel()
+    ];
+
+    private readonly SubPageViewModelBase[] _subPages =
+    [
+        new AmbientCustomizePageViewModel(),
+        new BixbyRemapPageViewModel(),
+        new FirmwarePageViewModel(),
+        new FitTestPageViewModel(),
+        new HotkeyPageViewModel(),
+        new SystemInfoPageViewModel()
+    ];
 
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
@@ -38,6 +62,11 @@ public partial class MainView : UserControl
         var vm = new MainViewViewModel
         {
             VmResolver = ResolveViewModelByType
+        };
+        vm.PropertyChanged += (_, args) =>
+        {
+            if (args.PropertyName == nameof(MainViewViewModel.IsInSetupWizard))
+                CheckSetupWizardState();
         };
         DataContext = vm;
         FrameView.NavigationPageFactory = vm.NavigationFactory;
@@ -53,12 +82,12 @@ public partial class MainView : UserControl
 
     public T? ResolveViewModelByType<T>() where T : PageViewModelBase
     {
-        return mainPages.Concat<PageViewModelBase>(subPages).FirstOrDefault(p => p.GetType() == typeof(T)).Cast<T?>();
+        return ResolveViewModelByType(typeof(T)) as T;
     }
-    
-    public PageViewModelBase? ResolveViewModelByType(Type arg)
+
+    private PageViewModelBase? ResolveViewModelByType(Type arg)
     {
-        return mainPages.Concat<PageViewModelBase>(subPages).FirstOrDefault(p => p.GetType() == arg);
+        return _mainPages.Concat<PageViewModelBase>(_subPages).FirstOrDefault(p => p.GetType() == arg);
     }
 
     private void OnBreadcrumbBarItemClicked(BreadcrumbBar sender, BreadcrumbBarItemClickedEventArgs args)
@@ -105,40 +134,34 @@ public partial class MainView : UserControl
             TitleBarHost.ColumnDefinitions[3].Width = new GridLength(aw.TitleBar.RightInset, GridUnitType.Pixel);
         }
     }
-
-    private PageViewModelBase? CurrentPageViewModel { set; get; } = null;
     
-    private readonly MainPageViewModelBase[] mainPages = [
-        new HomePageViewModel(),
-        new NoiseControlPageViewModel(),
-        new EqualizerPageViewModel(),
-        new FindMyBudsPageViewModel(),
-        new TouchpadPageViewModel(),
-        new AdvancedPageViewModel(),
-        new SystemPageViewModel(),
-        new SettingsPageViewModel()
-    ];
+    private void CheckSetupWizardState()
+    {
+        foreach (var item in NavView.MenuItemsSource)
+        {
+            if(item is not NavigationViewItem nvi)
+                continue;
 
-    private readonly SubPageViewModelBase[] subPages =
-    [
-        new AmbientCustomizePageViewModel(),
-        new BixbyRemapPageViewModel(),
-        new FirmwarePageViewModel(),
-        new FitTestPageViewModel(),
-        new HotkeyPageViewModel(),
-        new SystemInfoPageViewModel()
-    ];
+            if(nvi.Tag is WelcomePageViewModel)
+                nvi.IsVisible = ViewModel?.IsInSetupWizard == true;
+            else
+                nvi.IsVisible = ViewModel?.IsInSetupWizard == false;
+        }
+
+        if (ViewModel?.IsInSetupWizard == true && CurrentPageViewModel is not WelcomePageViewModel)
+        {
+            NavigationService.Instance.Navigate(typeof(WelcomePageViewModel));
+        }
+    }
     
     private void InitializeNavigationPages()
     {
-        
-        var menuItems = new List<NavigationViewItemBase>(14);
-        var footerItems = new List<NavigationViewItemBase>(1);
-
+        var menuItems = new List<NavigationViewItem>(14);
+        var footerItems = new List<NavigationViewItem>(1);
         
         Dispatcher.UIThread.Post(() =>
         {
-            foreach (var page in mainPages)
+            foreach (var page in _mainPages)
             {
                 var nvi = new NavigationViewItem
                 {
@@ -160,6 +183,7 @@ public partial class MainView : UserControl
 
             NavView.MenuItemsSource = menuItems;
             NavView.FooterMenuItemsSource = footerItems;
+            CheckSetupWizardState();
 
             if (_isDesktop || OperatingSystem.IsBrowser())
             {
@@ -169,8 +193,10 @@ public partial class MainView : UserControl
             {
                 NavView.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftMinimal;
             }
-
-            FrameView.NavigateFromObject((NavView.MenuItemsSource.ElementAt(0) as Control)!.Tag);
+            
+            // Go to Home if not in setup mode
+            if(ViewModel?.IsInSetupWizard == false)
+                NavigationService.Instance.Navigate(typeof(HomePageViewModel));
         });
     }
 
@@ -200,7 +226,7 @@ public partial class MainView : UserControl
         
         if (page is MainPageViewModelBase)
         {
-            if (page is HomePageViewModel)
+            if (page is HomePageViewModel or WelcomePageViewModel)
             {
                 FrameView.BackStack.Clear();
             }
@@ -335,6 +361,4 @@ public partial class MainView : UserControl
             await ani.RunAsync(WindowIcon);
         }
     }
-
-    private bool _isDesktop;
 }

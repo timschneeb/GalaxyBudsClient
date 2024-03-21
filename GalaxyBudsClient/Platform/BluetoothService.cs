@@ -352,7 +352,7 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
         _ = DisconnectAsync();
     }
         
-    public bool RegisteredDeviceValid =>
+    public static bool RegisteredDeviceValid =>
         IsDeviceValid(Settings.Instance.RegisteredDevice.Model,
             Settings.Instance.RegisteredDevice.MacAddress);
         

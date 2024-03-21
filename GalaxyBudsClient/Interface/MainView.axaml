@@ -52,12 +52,18 @@
                            IsBackEnabled="{Binding #FrameView.CanGoBack}">
             <Grid RowDefinitions="Auto,Auto,*">
 
+                <!-- TODO localize -->
                 <ui:InfoBar Title="Disconnected"
-                            IsOpen="{Binding !IsConnected, Source={x:Static platform:BluetoothService.Instance}}"
                             IsClosable="False"
                             Severity="Warning"
                             Message="{Binding LastErrorMessage, Source={x:Static platform:BluetoothService.Instance}}"
                             Margin="20,16,20,0">
+                    <ui:InfoBar.IsOpen>
+                        <MultiBinding Converter="{x:Static BoolConverters.And}">
+                            <Binding Path="!IsConnected" Source="{x:Static platform:BluetoothService.Instance}" />
+                            <Binding Path="!IsInSetupWizard" />
+                        </MultiBinding>
+                    </ui:InfoBar.IsOpen>
                     <ui:InfoBar.ActionButton>
                         <Button Content="Reconnect"
                                 HorizontalAlignment="Right">
