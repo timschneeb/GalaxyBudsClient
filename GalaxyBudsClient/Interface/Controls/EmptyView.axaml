@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="GalaxyBudsClient.Interface.Controls.EmptyView"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             x:DataType="controls:EmptyView">
+
+    <Design.DataContext>
+        <controls:EmptyView />
+    </Design.DataContext>
+
+    <StackPanel Spacing="4"
+                Orientation="Vertical"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+        <ic:SymbolIcon Name="SymbolIcon"
+                       FontSize="48"
+                       HorizontalAlignment="Center"
+                       Foreground="{DynamicResource TextFillColorDisabledBrush}" />
+        <TextBlock Name="TextBlock"
+                   Foreground="{DynamicResource TextFillColorDisabledBrush}" />
+    </StackPanel>
+</UserControl>

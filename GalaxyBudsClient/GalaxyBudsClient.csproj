@@ -174,6 +174,10 @@
           <DependentUpon>EarbudIconUnit.axaml</DependentUpon>
           <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Interface\Controls\EmptyView.axaml.cs">
+          <DependentUpon>EmptyView.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
     <PropertyGroup>
