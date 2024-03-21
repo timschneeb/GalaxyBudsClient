@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="GalaxyBudsClient.Interface.Controls.EarbudIconUnit"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:converters="clr-namespace:GalaxyBudsClient.Interface.Converters"
+             xmlns:vm="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Controls"
+             x:DataType="vm:EarbudIconUnitViewModel">
+
+    <Design.DataContext>
+        <vm:EarbudIconUnitViewModel />
+    </Design.DataContext>
+
+    <UserControl.Resources>
+        <system:Double x:Key="EarbudsIconSize">75</system:Double>
+        <converters:BoolFadeOpacityConverter x:Key="BoolFadeOpacityConverter" />
+    </UserControl.Resources>
+
+    <StackPanel Spacing="15"
+          HorizontalAlignment="Center">
+        
+        <Image Source="{Binding LeftIcon}"
+               Opacity="{Binding IsLeftOnline, Converter={StaticResource BoolFadeOpacityConverter}}"
+               Width="{StaticResource EarbudsIconSize}"
+               Height="{StaticResource EarbudsIconSize}" />
+
+        <Image Source="{Binding RightIcon}"
+               Opacity="{Binding IsRightOnline, Converter={StaticResource BoolFadeOpacityConverter}}"
+               Width="{StaticResource EarbudsIconSize}"
+               Height="{StaticResource EarbudsIconSize}" />
+
+    </StackPanel>
+</UserControl>

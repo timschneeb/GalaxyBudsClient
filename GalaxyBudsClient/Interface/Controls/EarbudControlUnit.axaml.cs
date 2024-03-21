@@ -2,10 +2,6 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Media;
-using GalaxyBudsClient.Message;
-using GalaxyBudsClient.Message.Decoder;
-using GalaxyBudsClient.Platform;
 
 namespace GalaxyBudsClient.Interface.Controls
 {
@@ -70,32 +66,6 @@ namespace GalaxyBudsClient.Interface.Controls
         {
             get => GetValue(RightContentProperty);
             set => SetValue(RightContentProperty, value);
-        }
-
-        protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
-        {
-            if (DeviceMessageCache.Instance.BasicStatusUpdate != null)
-                OnStatusUpdated(null, DeviceMessageCache.Instance.BasicStatusUpdate);
-            SppMessageHandler.Instance.BaseUpdate += OnStatusUpdated;
-            base.OnAttachedToVisualTree(e);
-        }
-
-        protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
-        {
-            SppMessageHandler.Instance.BaseUpdate -= OnStatusUpdated;
-            base.OnDetachedFromVisualTree(e);
-        }
-        
-        private void OnStatusUpdated(object? sender, IBasicStatusUpdate e)
-        {
-            var isLeftOnline = e.BatteryL > 0;
-            var isRightOnline = e.BatteryR > 0;
-
-            var type = BluetoothImpl.Instance.DeviceSpec.IconResourceKey;
-            var leftSourceName = $"Left{type}{(isLeftOnline ? "Connected" : "Disconnected")}";
-            LeftIcon.Source = (IImage?)Application.Current?.FindResource(leftSourceName);
-            var rightSourceName = $"Right{type}{(isRightOnline ? "Connected" : "Disconnected")}";
-            RightIcon.Source = (IImage?)Application.Current?.FindResource(rightSourceName);
         }
 
         protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)

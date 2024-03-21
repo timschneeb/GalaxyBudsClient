@@ -24,12 +24,11 @@
         <converters:BoolFadeOpacityConverter x:Key="BoolFadeOpacityConverter" />
     </UserControl.Resources>
 
-    <Grid Name="RootGrid"
-          HorizontalAlignment="Center"
-          ColumnDefinitions="*,15,Auto,35,Auto,15,*">
+    <StackPanel Spacing="15"
+                HorizontalAlignment="Center">
 
         <!-- TODO layout jumps around when one of the earbuds goes offline / too much text changes -->
-        
+
         <!-- TODO add case battery status -->
         <StackPanel Grid.Column="0"
                     IsVisible="{Binding IsLeftOnline}"
@@ -60,7 +59,7 @@
                     <ext:RequiresFeatureBehavior Feature="Voltage" />
                 </Interaction.Behaviors>
             </TextBlock>
-            
+
             <TextBlock Text="{Binding LeftCurrent, StringFormat={}{0:f2}mA}"
                        HorizontalAlignment="Right"
                        FontSize="{StaticResource FontSizeOtherLabels}">
@@ -68,20 +67,20 @@
                     <ext:RequiresFeatureBehavior Feature="Current" />
                 </Interaction.Behaviors>
             </TextBlock>
-            
+
             <TextBlock HorizontalAlignment="Right"
-                   FontSize="{StaticResource FontSizeOtherLabels}"
-                   PointerPressed="OnTemperaturePointerPressed">
+                       FontSize="{StaticResource FontSizeOtherLabels}"
+                       PointerPressed="OnTemperaturePointerPressed">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="{}{0:f2}°{1}">
                         <Binding Path="LeftTemperature" />
-                        <Binding Path="TemperatureUnit" 
+                        <Binding Path="TemperatureUnit"
                                  Source="{x:Static utils:Settings.Instance}"
                                  Converter="{StaticResource EnumDescriptionConverter}" />
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
-            
+
             <TextBlock Text="{Binding LeftWearState, Converter={StaticResource EnumDescriptionConverter}}"
                        HorizontalAlignment="Right"
                        FontSize="{StaticResource FontSizeOtherLabels}">
@@ -92,19 +91,7 @@
             </TextBlock>
         </StackPanel>
 
-        <Image Grid.Column="2"
-               Name="LeftIcon"
-               Source="{Binding LeftIcon}"
-               Opacity="{Binding IsLeftOnline, Converter={StaticResource BoolFadeOpacityConverter}}"
-               Width="{StaticResource EarbudsIconSize}"
-               Height="{StaticResource EarbudsIconSize}" />
-
-        <Image Grid.Column="4"
-               Name="RightIcon"
-               Source="{Binding RightIcon}"
-               Opacity="{Binding IsRightOnline, Converter={StaticResource BoolFadeOpacityConverter}}"
-               Width="{StaticResource EarbudsIconSize}"
-               Height="{StaticResource EarbudsIconSize}" />
+        <controls:EarbudIconUnit />
 
         <StackPanel Grid.Column="6"
                     IsVisible="{Binding IsRightOnline}"
@@ -121,7 +108,7 @@
                         <RotateTransform Angle="270" />
                     </ic:SymbolIcon.RenderTransform>
                 </ic:SymbolIcon>
-                
+
                 <TextBlock Text="{Binding RightBattery, StringFormat={}{0}%}"
                            FontSize="{StaticResource FontSizePercentage}"
                            HorizontalAlignment="Left" />
@@ -134,7 +121,7 @@
                     <ext:RequiresFeatureBehavior Feature="Voltage" />
                 </Interaction.Behaviors>
             </TextBlock>
-            
+
             <TextBlock Text="{Binding RightCurrent, StringFormat={}{0:f2}mA}"
                        HorizontalAlignment="Left"
                        FontSize="{StaticResource FontSizeOtherLabels}">
@@ -142,28 +129,28 @@
                     <ext:RequiresFeatureBehavior Feature="Current" />
                 </Interaction.Behaviors>
             </TextBlock>
-            
+
             <TextBlock HorizontalAlignment="Left"
-                   FontSize="{StaticResource FontSizeOtherLabels}"
-                   PointerPressed="OnTemperaturePointerPressed">
+                       FontSize="{StaticResource FontSizeOtherLabels}"
+                       PointerPressed="OnTemperaturePointerPressed">
                 <TextBlock.Text>
                     <MultiBinding StringFormat="{}{0:f2}°{1}">
                         <Binding Path="RightTemperature" />
-                        <Binding Path="TemperatureUnit" 
+                        <Binding Path="TemperatureUnit"
                                  Source="{x:Static utils:Settings.Instance}"
                                  Converter="{StaticResource EnumDescriptionConverter}" />
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
-            
+
             <TextBlock Text="{Binding RightWearState, Converter={StaticResource EnumDescriptionConverter}}"
-                   HorizontalAlignment="Left"
-                   FontSize="{StaticResource FontSizeOtherLabels}">
+                       HorizontalAlignment="Left"
+                       FontSize="{StaticResource FontSizeOtherLabels}">
                 <Interaction.Behaviors>
                     <!-- If current data is unsupported (all models except 1st-gen) then we have enough space for placement states  -->
                     <ext:RequiresFeatureBehavior Not="True" Feature="Current" />
                 </Interaction.Behaviors>
             </TextBlock>
         </StackPanel>
-    </Grid>
+    </StackPanel>
 </UserControl>

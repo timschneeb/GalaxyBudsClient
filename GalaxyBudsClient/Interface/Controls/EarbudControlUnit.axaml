@@ -5,55 +5,45 @@
              xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
              ClipToBounds="False"
              x:DataType="controls:EarbudControlUnit">
-    
+
     <Design.DataContext>
         <controls:EarbudControlUnit />
     </Design.DataContext>
-    
+
     <Grid Margin="0,15, 0, 30"
           ClipToBounds="False"
           RowDefinitions="Auto,15,Auto,30,Auto">
-        
+
         <!-- TODO: WarningContainer visibility moves other controls up/down. Should it be fixed, animated, or replaced with a InfoBox on the bottom? -->
-        
-        <Grid Grid.Row="0" 
+
+        <Grid Grid.Row="0"
               Name="WarningContainer"
               Margin="10,0"
               HorizontalAlignment="Center"
               ColumnDefinitions="Auto,5,Auto">
-                        
-            <ic:SymbolIcon Grid.Column="0" Symbol="Warning"/>
+
+            <ic:SymbolIcon Grid.Column="0" Symbol="Warning" />
             <Label Grid.Column="2"
                    Name="WarningLabel" />
         </Grid>
 
-        <Grid Grid.Row="2" 
-              HorizontalAlignment="Center"
-              ColumnDefinitions="Auto,15,Auto,35,Auto,15,Auto">
-            
-            <ContentControl Grid.Column="0" 
-                            Name="LeftContentControl"
+        <StackPanel Grid.Row="2"
+                    Spacing="15"
+                    HorizontalAlignment="Center">
+
+            <ContentControl Name="LeftContentControl"
                             HorizontalContentAlignment="Stretch" />
 
-            <Image Grid.Column="2"
-                   Name="LeftIcon"
-                   Source="{DynamicResource LeftProConnected}"
-                   Width="75" Height="75" />
-            
-            <Image Grid.Column="4"
-                   Name="RightIcon"
-                   Source="{DynamicResource RightProConnected}"
-                   Width="75" Height="75" />
-            
-            <ContentControl Grid.Column="6" 
-                            Name="RightContentControl"
-                            HorizontalContentAlignment="Stretch" />
-        </Grid>
+            <controls:EarbudIconUnit />
 
-        <Grid Grid.Row="4" 
+            <ContentControl Name="RightContentControl"
+                            HorizontalContentAlignment="Stretch" />
+        </StackPanel>
+
+        <Grid Grid.Row="4"
               ClipToBounds="False">
             <controls:GlowingToggleButton Name="ToggleButton" />
         </Grid>
     </Grid>
-    
+
 </UserControl>
