@@ -1,6 +1,5 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
     <sys:String x:Key="ResourceDictionaryName">Loc-nl</sys:String>
 
     <!--:::::::: Source code ::::::::-->
@@ -113,7 +112,7 @@
     <sys:String x:Key="hotkey_edit_action">Actie</sys:String>
     <sys:String x:Key="hotkey_edit_preview">Snelkoppeling preview:</sys:String>
     <sys:String x:Key="hotkey_edit_header">Selecteer een sneltoets op het toetsenbord</sys:String>
-
+    
     <!--Hotkey page-->
     <sys:String x:Key="hotkey_header">Toetsenbord sneltoetsen</sys:String>
     <sys:String x:Key="hotkey_add">Nieuwe sneltoets toewijzen</sys:String>
@@ -148,13 +147,11 @@
     <sys:String x:Key="event_manager_visible">Tonen/verbergen managervenster</sys:String>
     <sys:String x:Key="event_display_battery_popup">Batterij popup weergeven</sys:String>
     <sys:String x:Key="event_connect">Verbinden met apparaat</sys:String>
-
+    
     <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Welkom!</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">
-        Hallo! Deze Galaxy Buds Manager is onofficieel en op geen enkele manier gelieerd aan Samsung, houd daar rekening mee..
-        Dit programma is ontworpen om veel meer functionaliteit te bieden dan de officiële Samsung Wearable-app. Echter, niet al deze functies zijn echter beschikbaar op apparaten waarop deze app niet is geïnstalleerd.
-    </sys:String>
+    <sys:String x:Key="welcome_textblock_p1">Hallo! Deze Galaxy Buds Manager is onofficieel en op geen enkele manier gelieerd aan Samsung, houd daar rekening mee..
+Dit programma is ontworpen om veel meer functionaliteit te bieden dan de officiële Samsung Wearable-app. Echter, niet al deze functies zijn echter beschikbaar op apparaten waarop deze app niet is geïnstalleerd.</sys:String>
     <sys:String x:Key="welcome_textblock_p2">Als je geïnteresseerd bent in wat er achter de schermen gebeurt, kun je mijn GitHub repository bekijken die een klein reverse-engineering dagboek bevat. Je kunt mij ook een bericht sturen op GitHub of op Telegram @thepbone als je tegen een probleem aanloopt.</sys:String>
     <sys:String x:Key="welcome_textblock_p3">Deze app ondersteunt alle Galaxy Buds modellen.</sys:String>
     <sys:String x:Key="welcome_darkmode">Donkere modus</sys:String>
@@ -233,13 +230,13 @@
     <sys:String x:Key="touchpad_gesture_triple_desc">Vorig nummer afspelen</sys:String>
     <sys:String x:Key="touchpad_gesture_hold">Aanraken en ingedrukt houden</sys:String>
     <sys:String x:Key="touchpad_gesture_hold_desc">Aangepaste actie uitvoeren</sys:String>
-
+    
     <!--Touchpad page-->
     <sys:String x:Key="touchpad_header">Touchpad</sys:String>
     <sys:String x:Key="touchpad_lock">Vergendel touchpad</sys:String>
     <sys:String x:Key="touchpad_left_action">Linker actie</sys:String>
     <sys:String x:Key="touchpad_right_action">Rechter actie</sys:String>
-
+    
     <sys:String x:Key="touchpad_gestures">Geavanceerde aanraakvergrendeling</sys:String>
     <sys:String x:Key="touchpad_gestures_description">Standaard aanraakbewegingen in- of uitschakelen</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume">Rand oordopjes met dubbele tik</sys:String>
@@ -249,7 +246,7 @@
     <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Uit</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_amb_off">Omgevingsgeluid ↔ Uit</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_threeway">Wissel tussen modi (ANC, Omgeving, Uit)</sys:String>
-
+    
     <!--Custom touchpad action page-->
     <sys:String x:Key="cact_header">Aangepaste lang indrukken-actie definiëren</sys:String>
     <sys:String x:Key="cact_external_app_dialog_title">Selecteer uitvoerbaar...</sys:String>
@@ -257,10 +254,8 @@
     <sys:String x:Key="cact_notice">Kennisgeving</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Aangepaste acties met lange druk zijn alleen beschikbaar als deze app actief is op de achtergrond.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">Het heeft geen effect op Android- of andere apparaten.</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">
-        Om deze functie consequent te ondersteunen, start deze app automatisch bij het opstarten en draait hij op de achtergrond.
-        Je kunt dit gedrag uitschakelen in de instellingensectie.
-    </sys:String>
+    <sys:String x:Key="cact_notice_content_p3">Om deze functie consequent te ondersteunen, start deze app automatisch bij het opstarten en draait hij op de achtergrond.
+Je kunt dit gedrag uitschakelen in de instellingensectie.</sys:String>
 
     <!--System/Self-Test-->
     <sys:String x:Key="system_overview_header">Systeem</sys:String>
@@ -306,7 +301,7 @@
     <sys:String x:Key="selftest_fail">Mislukt</sys:String>
     <sys:String x:Key="selftest_pass_long">Alle controles zijn geslaagd</sys:String>
     <sys:String x:Key="selftest_fail_long">Een of meer controles zijn mislukt</sys:String>
-
+    
     <sys:String x:Key="coredump_header">Gegevens dumpen...</sys:String>
     <sys:String x:Key="coredump_dl_progress_prepare">Download voorbereiden...</sys:String>
     <sys:String x:Key="coredump_dl_progress_cancelled">Download geannuleerd</sys:String>
@@ -314,18 +309,16 @@
     <sys:String x:Key="coredump_dl_trace_progress">Trace dump downloaden... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">Core dump downloaden... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytes)</sys:String>
-    <sys:String x:Key="coredump_dl_note">
-        De audiostream wordt tijdelijk onderbroken tijdens het downloaden. Uw oordopjes worden losgekoppeld zodra de transmissie is voltooid, sluit ze handmatig opnieuw aan.
-        Als u klaar bent, wordt u gevraagd een map te selecteren voor alle verzamelde gegevens.
+    <sys:String x:Key="coredump_dl_note">De audiostream wordt tijdelijk onderbroken tijdens het downloaden. Uw oordopjes worden losgekoppeld zodra de transmissie is voltooid, sluit ze handmatig opnieuw aan.
+Als u klaar bent, wordt u gevraagd een map te selecteren voor alle verzamelde gegevens.
 
-        Als de transmissie vastloopt of de verbinding met het apparaat voortijdig verbroken wordt, moet je de download opnieuw starten. Deze functie is momenteel erg onstabiel.
-    </sys:String>
+Als de transmissie vastloopt of de verbinding met het apparaat voortijdig verbroken wordt, moet je de download opnieuw starten. Deze functie is momenteel erg onstabiel.</sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">Het opslaan van de dump is mislukt.</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">Kan dump niet kopiëren vanaf tijdelijke locatie. Reden: {0}</sys:String>
     <sys:String x:Key="coredump_dl_save_success_title">Succesvol opgeslagen dumps</sys:String>
     <sys:String x:Key="coredump_dl_save_success">{0} dump(s) werden geschreven naar '{1}'</sys:String>
     <sys:String x:Key="coredump_dl_save_dialog_title">Selecteer een downloadmap...</sys:String>
-
+    
     <!--Settings-->
     <sys:String x:Key="settings_header">Instellingen</sys:String>
 
@@ -340,7 +333,7 @@
     <sys:String x:Key="settings_autostart">Start bij het opstarten</sys:String>
     <sys:String x:Key="settings_autostart_description">Geminimaliseerd starten bij opstarten</sys:String>
     <sys:String x:Key="settings_autostart_permission">Kan de auto-startvermelding in het register niet bijwerken. Register toegang (HKCU) is expliciet uitgeschakeld door uw systeembeheerder.</sys:String>
-
+    
     <sys:String x:Key="settings_connpopup">Verbinding configureren popup</sys:String>
     <sys:String x:Key="settings_devmode">Ontwikkelaarsopties</sys:String>
     <sys:String x:Key="settings_crowdsourcing">Crowdsourcing</sys:String>
@@ -360,7 +353,7 @@
     <sys:String x:Key="settings_cpopup_primary_screen_description">Toon pop-up alleen op de primaire monitor</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state">Gebruik andere kleuren (indien nodig)</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state_description">Grijs oordopjespictogram uit wanneer je oordopjes in de oplaadcase zitten</sys:String>
-
+    
     <!--Settings >>> Crowdsourcing settings-->
     <sys:String x:Key="settings_crowd_header">Crowdsourcing</sys:String>
     <sys:String x:Key="settings_crowd_allow">Bijdragen via crowdsourcing toestaan</sys:String>
@@ -372,11 +365,9 @@
     <sys:String x:Key="factory_header">Fabrieksinstellingen terugzetten</sys:String>
     <sys:String x:Key="factory_confirm">Bevestig terugzetten naar fabrieksinstellingen reset</sys:String>
     <sys:String x:Key="factory_error_title">Terugzetten naar fabrieksinstellingen mislukt</sys:String>
-    <sys:String x:Key="factory_error">
-        Apparaat retourneert foutcode: {0}
-        Zorg ervoor dat beide oordopjes aan staan en bereikbaar zijn.
-        Mogelijk moet je je oordopjes handmatig opnieuw aansluiten.
-    </sys:String>
+    <sys:String x:Key="factory_error">Apparaat retourneert foutcode: {0}
+Zorg ervoor dat beide oordopjes aan staan en bereikbaar zijn.
+Mogelijk moet je je oordopjes handmatig opnieuw aansluiten.</sys:String>
     <sys:String x:Key="factory_text_p1">Weet je zeker dat je je oordopjes wilt resetten?</sys:String>
     <sys:String x:Key="factory_text_p2">Na het uitvoeren van een fabrieksreset moet je je oordopjes handmatig opnieuw aansluiten op de computer.</sys:String>
     <sys:String x:Key="factory_text_p3">Zorg ervoor dat beide oordopjes aan staan voordat je verdergaat!</sys:String>
@@ -395,7 +386,7 @@
     <sys:String x:Key="eq_stereo_balance">Linker/rechter geluidsbalans</sys:String>
     <sys:String x:Key="eq_stereo_balance_value">{0}% links; {1}% rechts</sys:String>
     <sys:String x:Key="eq_stereo_balance_neutral">Neutraal</sys:String>
-
+    
     <sys:String x:Key="eq_bass">Basversterking</sys:String>
     <sys:String x:Key="eq_soft">Zacht</sys:String>
     <sys:String x:Key="eq_dynamic">Dynamisch</sys:String>
@@ -412,7 +403,7 @@
     <sys:String x:Key="nc_voicedetect_description">Wanneer je stem wordt gedetecteerd, wordt automatisch omgevingsgeluid ingeschakeld en wordt het mediavolume verlaagd om gesprekken gemakkelijker te maken</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">Time-out gesprek</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} seconde(s)</sys:String>
-
+    
     <!--Noise control >>> Ambient sound-->
     <sys:String x:Key="nc_as_header">Instellingen voor omgevingsgeluid</sys:String>
     <sys:String x:Key="nc_as_custom">Geavanceerde aanpassing</sys:String>
@@ -423,7 +414,7 @@
     <sys:String x:Key="nc_as_custom_tone_soft">Zacht</sys:String>
     <sys:String x:Key="nc_as_custom_tone_neutral">Neutraal</sys:String>
     <sys:String x:Key="nc_as_custom_vol_normal">Normaal</sys:String>
-
+    
     <!--Ambient sound-->
     <sys:String x:Key="as_header">Omgevingsgeluid</sys:String>
     <sys:String x:Key="as_enable">Omgevingsgeluid inschakelen</sys:String>
@@ -436,7 +427,7 @@
     <sys:String x:Key="as_scale_moderate">Gemiddeld</sys:String>
     <sys:String x:Key="as_scale_high">Hoog</sys:String>
     <sys:String x:Key="as_scale_extraloud">Extra hoog</sys:String>
-
+    
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Geavanceerde instellingen</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} of nieuwer</sys:String>
@@ -461,13 +452,11 @@
     <sys:String x:Key="bixby_remap_enable_desc">Start Bixby op je Samsung-telefoon of voer een aangepaste actie uit op deze pc wanneer je wakker wordt</sys:String>
     <sys:String x:Key="bixby_remap_lang">Bixby wektaal</sys:String>
     <sys:String x:Key="bixby_remap_action">Aangepaste wekactie</sys:String>
-    <sys:String x:Key="bixby_remap_note">
-        Zeg 'Hey Bixby!' om te activeren. De activeringszin kan afwijken bij sommige taalinstellingen.
+    <sys:String x:Key="bixby_remap_note">Zeg 'Hey Bixby!' om te activeren. De activeringszin kan afwijken bij sommige taalinstellingen.
 
-        De remap-configuratie is alleen actief op dit apparaat. Als je je oordopjes aansluit op een Samsung-apparaat, wordt Bixby normaal geactiveerd door spraakwakeup. Op andere apparaten dan dit apparaat en telefoons die niet van Samsung zijn, zal deze functie geen actie activeren.
-    </sys:String>
+De remap-configuratie is alleen actief op dit apparaat. Als je je oordopjes aansluit op een Samsung-apparaat, wordt Bixby normaal geactiveerd door spraakwakeup. Op andere apparaten dan dit apparaat en telefoons die niet van Samsung zijn, zal deze functie geen actie activeren.</sys:String>
 
-
+    
     <!--Credits-->
     <sys:String x:Key="credits_header">Credits</sys:String>
     <sys:String x:Key="credits_developer">Ontwikkelaar</sys:String>
@@ -480,27 +469,23 @@
     <!--Connection lost page-->
     <sys:String x:Key="connlost_header">Kan geen verbinding maken</sys:String>
     <sys:String x:Key="connlost_description_p1">Kan geen verbinding maken met je oordopjes.</sys:String>
-    <sys:String x:Key="connlost_description_p2">
-        Controleer je Bluetooth-instellingen en zorg ervoor dat je oordopjes zijn ingeschakeld en gekoppeld met deze computer.
-        Je kunt indien nodig ook een nieuw paar oordopjes registreren. Selecteer in dat geval "Opties &gt; Apparaat afmelden".
-    </sys:String>
+    <sys:String x:Key="connlost_description_p2">Controleer je Bluetooth-instellingen en zorg ervoor dat je oordopjes zijn ingeschakeld en gekoppeld met deze computer.
+Je kunt indien nodig ook een nieuw paar oordopjes registreren. Selecteer in dat geval "Opties &gt; Apparaat afmelden".</sys:String>
     <sys:String x:Key="connlost_description_p3">Aanvullende informatie:</sys:String>
     <sys:String x:Key="connlost_noinfo">Foutinformatie kon niet worden verzameld</sys:String>
     <sys:String x:Key="connlost_disconnected">Apparaat ontkoppeld</sys:String>
     <sys:String x:Key="connlost_connect">Verbind</sys:String>
     <sys:String x:Key="connlost_connecting">Verbinden...</sys:String>
-
+    
     <!--Firmware update disclaimer-->
     <sys:String x:Key="fw_disclaimer">Disclaimer</sys:String>
-    <sys:String x:Key="fw_disclaimer_desc">
-        Dit hulpprogramma voor het bijwerken van firmware is een nauwkeurige replica van het officiële updateprogramma in de officiële Android app van Samsung. Ik heb deze implementatie grondig getest onder verschillende omstandigheden (normale werking, verbindingsverlies, opzettelijk beschadigde Bluetooth-pakketten, ...) zonder enige problemen te ondervinden. Toch neem ik geen aansprakelijkheid als er iets mis zou gaan, aangezien firmware-updates vitale systeemonderdelen wijzigen en altijd met voorzichtigheid moeten worden behandeld.
+    <sys:String x:Key="fw_disclaimer_desc">Dit hulpprogramma voor het bijwerken van firmware is een nauwkeurige replica van het officiële updateprogramma in de officiële Android app van Samsung. Ik heb deze implementatie grondig getest onder verschillende omstandigheden (normale werking, verbindingsverlies, opzettelijk beschadigde Bluetooth-pakketten, ...) zonder enige problemen te ondervinden. Toch neem ik geen aansprakelijkheid als er iets mis zou gaan, aangezien firmware-updates vitale systeemonderdelen wijzigen en altijd met voorzichtigheid moeten worden behandeld.
 
-        DOWNGRADEN: Hoewel downgraden naar oudere firmwareversies mogelijk is en ik er nooit problemen mee heb gehad, kan het onverwachte problemen veroorzaken en moet het alleen worden gedaan als het nodig is. Een fabrieksreset na de downgrade wordt aanbevolen, maar is meestal niet nodig.
-        CUSTOM FLASHING: U kunt ook firmwarebestanden van uw harde schijf laden. Flash GEEN firmwarebestanden die zijn ontworpen voor ANDERE modellen op uw apparaat.
+DOWNGRADEN: Hoewel downgraden naar oudere firmwareversies mogelijk is en ik er nooit problemen mee heb gehad, kan het onverwachte problemen veroorzaken en moet het alleen worden gedaan als het nodig is. Een fabrieksreset na de downgrade wordt aanbevolen, maar is meestal niet nodig. 
+CUSTOM FLASHING: U kunt ook firmwarebestanden van uw harde schijf laden. Flash GEEN firmwarebestanden die zijn ontworpen voor ANDERE modellen op uw apparaat.
 
-        Deze toepassing is gelicentieerd onder GPLv3. Door het te gebruiken, accepteert u de licentie en de beperking van aansprakelijkheid. Druk op 'Doorgaan' om te accepteren.
-    </sys:String>
-
+Deze toepassing is gelicentieerd onder GPLv3. Door het te gebruiken, accepteert u de licentie en de beperking van aansprakelijkheid. Druk op 'Doorgaan' om te accepteren.</sys:String>
+    
     <!--Firmware selection-->
     <sys:String x:Key="fw_select_header">Firmware updates</sys:String>
     <sys:String x:Key="fw_select_instructions">Kies een binary firmware om te downloaden en te installeren. Je kunt ook een firmware binary van je harde schijf selecteren door te navigeren naar 'Geavanceerd... &gt; Selecteer image van schijf'.</sys:String>
@@ -510,11 +495,9 @@
     <sys:String x:Key="fw_select_advanced">Geavanceerd...</sys:String>
     <sys:String x:Key="fw_select_install">Installeer firmware</sys:String>
     <sys:String x:Key="fw_select_from_disk">Selecteer image van schijf...</sys:String>
-    <sys:String x:Key="fw_select_external_note">
-        Flash GEEN firmwarebestanden die bedoeld zijn voor ANDERE modellen op uw apparaat. Het flashen van een Buds Pro firmware op een paar Buds Plus zal geen nieuwe functies ontgrendelen, maar uw apparaat permanent vernielen.
+    <sys:String x:Key="fw_select_external_note">Flash GEEN firmwarebestanden die bedoeld zijn voor ANDERE modellen op uw apparaat. Het flashen van een Buds Pro firmware op een paar Buds Plus zal geen nieuwe functies ontgrendelen, maar uw apparaat permanent vernielen.
 
-        Druk op 'Doorgaan' om een firmware binary te selecteren.
-    </sys:String>
+Druk op 'Doorgaan' om een firmware binary te selecteren.</sys:String>
     <sys:String x:Key="fw_select_unsupported_selection">Ongeldige selectie. Selecteer een compatibel item uit de lijst.</sys:String>
     <sys:String x:Key="fw_select_downloading">Downloaden...</sys:String>
     <sys:String x:Key="fw_select_net_error">Communiceren met server mislukt. Kan momenteel geen firmware downloaden.</sys:String>
@@ -523,14 +506,12 @@
     <sys:String x:Key="fw_select_unknown_build">Onbekende buildnaam</sys:String>
     <sys:String x:Key="fw_select_verify_fail">Verificatie van firmware mislukt</sys:String>
     <sys:String x:Key="fw_select_confirm">Je staat op het punt om te flashen '{0}' op je '{1}' apparaat</sys:String>
-    <sys:String x:Key="fw_select_confirm_desc">
-        Controleer of deze informatie correct is, druk anders op 'Annuleren' en controleer je instellingen nog een keer.
+    <sys:String x:Key="fw_select_confirm_desc">Controleer of deze informatie correct is, druk anders op 'Annuleren' en controleer je instellingen nog een keer.
 
-        Zorg er indien mogelijk voor dat beide oordopjes zijn aangesloten voordat je begint. Het zal geen problemen opleveren als de verbinding wegvalt tijdens het overbrengen van de update. In dat geval annuleren de oordopjes automatisch het overdrachtsproces en sluiten ze de modus voor het bijwerken van de firmware af.
+Zorg er indien mogelijk voor dat beide oordopjes zijn aangesloten voordat je begint. Het zal geen problemen opleveren als de verbinding wegvalt tijdens het overbrengen van de update. In dat geval annuleren de oordopjes automatisch het overdrachtsproces en sluiten ze de modus voor het bijwerken van de firmware af.
 
-        Druk op 'Doorgaan' om de update te starten.
-    </sys:String>
-
+Druk op 'Doorgaan' om de update te starten.</sys:String>
+  
     <!--Firmware transfer-->
     <sys:String x:Key="fw_upload_header">Firmware installeren...</sys:String>
     <sys:String x:Key="fw_upload_progress_session">Nieuwe sessie aanmaken...</sys:String>
@@ -550,12 +531,10 @@
     <sys:String x:Key="fw_fail_no_magic">Dit is geen geldige firmware binary. Ongeldige magische waarde gevonden in de koptekst van het bestand.</sys:String>
     <sys:String x:Key="fw_fail_size_null">De grootte van deze binaire firmware is ingesteld op nul en kan niet worden gebruikt om te flashen. Kies een andere.</sys:String>
     <sys:String x:Key="fw_fail_no_segments">Deze binaire firmware bevat geen binaire segmenten en is leeg. Kies een andere.</sys:String>
-    <sys:String x:Key="fw_fail_unknown">
-        Onverwachte fout bij het decoderen van de binaire firmware. Dit firmware-archief is mogelijk beschadigd.
+    <sys:String x:Key="fw_fail_unknown">Onverwachte fout bij het decoderen van de binaire firmware. Dit firmware-archief is mogelijk beschadigd.
 
-        Details:
-    </sys:String>
-
+Details:</sys:String>
+    
     <!--Firmware transfer errors-->
     <sys:String x:Key="fw_fail_connection">Verbinding met het apparaat verloren. De firmwareoverdracht is geannuleerd.</sys:String>
     <sys:String x:Key="fw_fail_session">Het is niet gelukt een nieuwe sessie te openen. Het apparaat gaf een foutcode terug ({0})</sys:String>
@@ -567,14 +546,14 @@
     <sys:String x:Key="fw_fail_session_timeout">Timed out tijdens het wachten op het apparaat om een nieuwe sessie te openen</sys:String>
     <sys:String x:Key="fw_fail_control_timeout">Timed out tijdens het wachten op het terugsturen van een besturingsblok door het apparaat</sys:String>
     <sys:String x:Key="fw_fail_copy_timeout">Timed out tijdens het wachten op de voltooiing van het overdrachtsproces</sys:String>
-
+    
     <!--Spatial test-->
     <sys:String x:Key="spatial_header">Ruimtelijke sensor</sys:String>
     <!--Note: Quaternion = 4-dimensional vector-->
     <sys:String x:Key="spatial_dump_quaternion">Ruwe quaternion vector:</sys:String>
     <!--Note: RPY = Roll, pitch, yaw-->
     <sys:String x:Key="spatial_dump_rpy">RPY waardes:</sys:String>
-
+    
     <!--Header-->
     <sys:String x:Key="window_minimize">Minimaliseren</sys:String>
     <sys:String x:Key="window_close">Sluiten</sys:String>
@@ -584,7 +563,7 @@
     <sys:String x:Key="budsapp_text_p1">De officiële Galaxy Buds-app voor Windows 10 wordt naast deze applicatie geïnstalleerd.</sys:String>
     <sys:String x:Key="budsapp_text_p2">Als het geopend en verbonden is, kan GalaxyBudsClient problemen hebben met de verbinding met je oordopjes. Zorg ervoor dat je het sluit voordat je verder gaat. Op dezelfde manier kan de officiële Galaxy Buds-app geen verbinding maken met je oordopjes terwijl Galaxy Buds Manager actief is en verbindingen heeft geopend met de oordopjes.</sys:String>
     <sys:String x:Key="budsapp_text_p3">Houdt er rekening mee dat slechts één applicatie tegelijkertijd met je Galaxy Buds kan praten.</sys:String>
-
+    
     <!--Manual pairing-->
     <sys:String x:Key="manualpair_title">Handmatige apparaatkeuze</sys:String>
     <sys:String x:Key="manualpair_title_dialog">Kies uw Galaxy Buds apparaat</sys:String>

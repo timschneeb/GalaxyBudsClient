@@ -1,7 +1,6 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <sys:String x:Key="ResourceDictionaryName">Loc-es</sys:String>
+<sys:String x:Key="ResourceDictionaryName">Loc-es</sys:String>
 
     <!--:::::::: Source code ::::::::-->
 
@@ -95,10 +94,8 @@
 
     <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Vamos!</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">
-        Hola! Esta versión de Galaxy Buds Manager no es oficial y no esta afiliado en ninguna forma con Samsung, ten eso en cuenta.
-        Este programa puede hacer muchas cosas que la app Samsung Wearable de Android no posee, estoy decidido en excluir el Actualizador de Firmware OTA por razones de seguridad. Utilize el oficial si lo necesitas.
-    </sys:String>
+    <sys:String x:Key="welcome_textblock_p1">Hola! Esta versión de Galaxy Buds Manager no es oficial y no esta afiliado en ninguna forma con Samsung, ten eso en cuenta.
+        Este programa puede hacer muchas cosas que la app Samsung Wearable de Android no posee, estoy decidido en excluir el Actualizador de Firmware OTA por razones de seguridad. Utilize el oficial si lo necesitas.</sys:String>
     <sys:String x:Key="welcome_textblock_p2">Si esta interesado en que ocurre por detras, podrias revisar mi repositorio de GitHub que incluye documentación con ingenieria inversa. Tambien podrias escribir un mensaje en GitHub o en Telegram @thepbone si estas teniendo algún problema.</sys:String>
     <sys:String x:Key="welcome_textblock_p3">Esta app soporta los Galaxy Buds (2019) y Galaxy Buds+ (2020).</sys:String>
     <sys:String x:Key="welcome_darkmode">Modo Oscuro</sys:String>
@@ -165,10 +162,8 @@
     <sys:String x:Key="cact_notice">Nota</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Las acciones al hacer toques prolongados solo esta disponible si la aplicación esta abierta en segundo plano.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">No funciona en Android u otros dispositivos.</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">
-        Con el fin de proporcionar un soporte constante para esta función, esta aplicación se iniciará automáticamente al arrancar y se ejecutará en segundo plano.
-        Puede deshabilitar este comportamiento en la sección de configuración.
-    </sys:String>
+    <sys:String x:Key="cact_notice_content_p3">Con el fin de proporcionar un soporte constante para esta función, esta aplicación se iniciará automáticamente al arrancar y se ejecutará en segundo plano.
+        Puede deshabilitar este comportamiento en la sección de configuración.</sys:String>
 
     <!--System/Self-Test-->
     <sys:String x:Key="system_header">Acerca de los auriculares</sys:String>
@@ -236,11 +231,9 @@
     <sys:String x:Key="factory_header">Restablecer Auriculares</sys:String>
     <sys:String x:Key="factory_confirm">Confirmar el restablecimiento de los auriculares</sys:String>
     <sys:String x:Key="factory_error_title">El restablecimiento ha fallado</sys:String>
-    <sys:String x:Key="factory_error">
-        El dispositivo devolvió el código de error: {0}
-        Asegúrate que los auriculares estan encendidos y sean detectables.
-        Tal vez necesites reconectar los auriculares.
-    </sys:String>
+    <sys:String x:Key="factory_error">El dispositivo devolvió el código de error: {0} 
+        Asegúrate que los auriculares estan encendidos y sean detectables. 
+        Tal vez necesites reconectar los auriculares.</sys:String>
     <sys:String x:Key="factory_text_p1">Estás seguro que quieres restablecer los Auriculares?</sys:String>
     <sys:String x:Key="factory_text_p2">Después del restablecimiento, debes volver a reconectar manualmente los auriculares al ordenador.</sys:String>
     <sys:String x:Key="factory_text_p3">Asegúrate que los auriculares esten encendidos antes de continuar!</sys:String>
@@ -294,10 +287,8 @@
     <!--Connection lost page-->
     <sys:String x:Key="connlost_header">Imposible Conectar</sys:String>
     <sys:String x:Key="connlost_description_p1">No es posible conectar con los auriculares.</sys:String>
-    <sys:String x:Key="connlost_description_p2">
-        Verifique la configuración de Bluetooth y asegúrese de que sus auriculares estén encendidos y conectados a esta ordenador.
-        También puede registrar el dispositivo si fuese necesario. En ese caso, seleccione "Opciones &gt; Volver a registrar dispositivo".
-    </sys:String>
+    <sys:String x:Key="connlost_description_p2">Verifique la configuración de Bluetooth y asegúrese de que sus auriculares estén encendidos y conectados a esta ordenador.
+        También puede registrar el dispositivo si fuese necesario. En ese caso, seleccione "Opciones &gt; Volver a registrar dispositivo".</sys:String>
     <sys:String x:Key="connlost_description_p3">Información Adicional:</sys:String>
     <sys:String x:Key="connlost_noinfo">No se pudo recopilar la información del error</sys:String>
     <sys:String x:Key="connlost_connect">Conectar</sys:String>

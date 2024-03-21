@@ -1,6 +1,5 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
     <sys:String x:Key="ResourceDictionaryName">Loc-ua</sys:String>
 
     <!--:::::::: Source code ::::::::-->
@@ -113,7 +112,7 @@
     <sys:String x:Key="hotkey_edit_action">Дія</sys:String>
     <sys:String x:Key="hotkey_edit_preview">Перегляд комбінації:</sys:String>
     <sys:String x:Key="hotkey_edit_header">Оберіть комбінацію клавіш</sys:String>
-
+    
     <!--Hotkey page-->
     <sys:String x:Key="hotkey_header">Комбінації клавіш</sys:String>
     <sys:String x:Key="hotkey_add">Призначити нову комбінацію</sys:String>
@@ -148,14 +147,12 @@
     <sys:String x:Key="event_manager_visible">Покликати вікно програми</sys:String>
     <sys:String x:Key="event_display_battery_popup">Показати заряд батареї</sys:String>
     <sys:String x:Key="event_connect">Підключитися до пристрою</sys:String>
-
+    
     <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Ласкаво просимо!</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">
-        Вітаю! Цей менеджер для Galaxy Buds не офіційний, тож майте на увазі, що він ніяк не пов'язаний із Samsung.
-        Незважаючи на розширений по відношенню до оригінального
-        Samsung Wearable на Android, функціонал цієї програми, я все ж вирішив виключити утиліту оновлення прошивки заради безпеки. Будь ласка, скористайтесь офіційним засобом якщо він вам знадобится.
-    </sys:String>
+    <sys:String x:Key="welcome_textblock_p1">Вітаю! Цей менеджер для Galaxy Buds не офіційний, тож майте на увазі, що він ніяк не пов'язаний із Samsung.
+Незважаючи на розширений по відношенню до оригінального 
+Samsung Wearable на Android, функціонал цієї програми, я все ж вирішив виключити утиліту оновлення прошивки заради безпеки. Будь ласка, скористайтесь офіційним засобом якщо він вам знадобится.</sys:String>
     <sys:String x:Key="welcome_textblock_p2">Якщо вам цікаво про те що відбувається за лаштунками, можете відвідати мій репозиторій на GitHub. Також там можна знайти невеликий журнал по реверс-інжинірингу. Можете написати мені повідомлення на GitHub або в Telegram @thepbone якщо у вас з'являться проблеми.</sys:String>
     <sys:String x:Key="welcome_textblock_p3">Ця программа підтримує усі моделі Galaxy Buds.</sys:String>
     <sys:String x:Key="welcome_darkmode">Темна тема</sys:String>
@@ -244,10 +241,8 @@
     <sys:String x:Key="cact_notice">Попередження</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Налаштовані дії доступні лише за умови роботи цієї програми в фоні.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">Ці налаштування неможливо застосувати до Android або інших пристроїв.</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">
-        Для того щоб забезпечити роботу цієї функції, програма буде запускатися разом з операційною системоб і працювати в фоні.
-        Ви можете вимкнути автоматичний запуск в налаштуваннях.
-    </sys:String>
+    <sys:String x:Key="cact_notice_content_p3">Для того щоб забезпечити роботу цієї функції, програма буде запускатися разом з операційною системоб і працювати в фоні.
+Ви можете вимкнути автоматичний запуск в налаштуваннях.</sys:String>
 
     <!--System/Self-Test-->
     <sys:String x:Key="system_overview_header">Про навушники</sys:String>
@@ -301,12 +296,10 @@
     <sys:String x:Key="coredump_dl_trace_progress">Завантажую трассування... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">Завантажую дампи... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} байтів)</sys:String>
-    <sys:String x:Key="coredump_dl_note">
-        Аудіопотік тимчасово зупинений під час завантаження. Ваші навушники будуть відключені по завершенню завантаження, будь ласка, відновіть зв'язок самостійно.
-        По завершенню, вам буде запропоновано обрати місце збереження даних.
+    <sys:String x:Key="coredump_dl_note">Аудіопотік тимчасово зупинений під час завантаження. Ваші навушники будуть відключені по завершенню завантаження, будь ласка, відновіть зв'язок самостійно.
+По завершенню, вам буде запропоновано обрати місце збереження даних.
 
-        Якщо передача застрягла або пристрій відключився передчасно, вам потрібно перезапустити завантаження. Поки що, ця функція дуже нестабільна.
-    </sys:String>
+Якщо передача застрягла або пристрій відключився передчасно, вам потрібно перезапустити завантаження. Поки що, ця функція дуже нестабільна.</sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">Не вдалось зберігти дампи</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">Не вдалось скопіювати дампи із тимчасового сховища. Причина: {0}</sys:String>
     <sys:String x:Key="coredump_dl_save_success_title">Дампи успішно збережені</sys:String>
@@ -317,10 +310,8 @@
     <sys:String x:Key="settings_header">Налаштування</sys:String>
 
     <sys:String x:Key="settings_darkmode">Темна тема</sys:String>
-    <sys:String x:Key="settings_darkmode_description">
-        Скористайтесь кольорами потемніше
-        (Знадобиться перезапуск)
-    </sys:String>
+    <sys:String x:Key="settings_darkmode_description">Скористайтесь кольорами потемніше 
+(Знадобиться перезапуск)</sys:String>
     <sys:String x:Key="settings_transitions">Анімації</sys:String>
     <sys:String x:Key="settings_transitions_description">Увімкнути слайдову анімацію</sys:String>
     <sys:String x:Key="settings_localization_disable">Мова</sys:String>
@@ -354,11 +345,9 @@
     <sys:String x:Key="factory_header">Скидання налаштувань</sys:String>
     <sys:String x:Key="factory_confirm">Підтвердіть скидання налаштувань</sys:String>
     <sys:String x:Key="factory_error_title">Скидання налаштувань не вдалося</sys:String>
-    <sys:String x:Key="factory_error">
-        Пристрій повернув код помилки: {0}
-        Переконайтеся що обидва навушника включені і досяжні.
-        Вам може знадобиться повторно підключити навушники вручну.
-    </sys:String>
+    <sys:String x:Key="factory_error">Пристрій повернув код помилки: {0}
+Переконайтеся що обидва навушника включені і досяжні.
+Вам може знадобиться повторно підключити навушники вручну.</sys:String>
     <sys:String x:Key="factory_text_p1">Ви впевнені що хочете скинути налаштування навушників?</sys:String>
     <sys:String x:Key="factory_text_p2">Після скидання налаштувань, вам знадобиться повторно підключити навушники до комп'ютера.</sys:String>
     <sys:String x:Key="factory_text_p3">Переконайтеся що обидва навушника включені перед продовженням!</sys:String>
@@ -416,7 +405,7 @@
     <sys:String x:Key="adv_sidetone">Фонові звуки під час виклику</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Поліпшення чутності свого голосу під час розмови по телефону</sys:String>
     <sys:String x:Key="adv_passthrough">Зніміть напругу за допомогою звукового оточення</sys:String>
-    <sys:String x:Key="adv_passthrough_desc">Це може допомогти з відчуттям духоти або тиску коли ви не використовуєте активне шумозаглушення</sys:String>
+    <sys:String x:Key="adv_passthrough_desc">Це може допомогти з відчуттям духоти або тиску коли ви не використовуєте активне шумозаглушення</sys:String>    
     <sys:String x:Key="adv_gaming_mode">Ігровий режим</sys:String>
     <sys:String x:Key="adv_gaming_mode_desc">Зменшити затримку звуку і відкоригувати синхронізацію аудіо (Тільки Samsung)</sys:String>
     <sys:String x:Key="adv_hotkey">Комбінації клавіш</sys:String>
@@ -430,11 +419,9 @@
     <sys:String x:Key="bixby_remap_enable_desc">Запустіть Bixby на вашому телефоні Samsung або виконайте свою дію на цьому ПК під час прокидання</sys:String>
     <sys:String x:Key="bixby_remap_lang">Мова прокидання Bixby</sys:String>
     <sys:String x:Key="bixby_remap_action">Своя дія при прокиданні</sys:String>
-    <sys:String x:Key="bixby_remap_note">
-        Скажіть 'Hey Bixby!' для активації. Фраза активації може відрізнятися в залежності від налаштувань мови.
+    <sys:String x:Key="bixby_remap_note">Скажіть 'Hey Bixby!' для активації. Фраза активації може відрізнятися в залежності від налаштувань мови.
 
-        Переназначення діє лише на цьому пристрої. Якщо ви підключите ваші навушники до устройства Samsung, голосове прокидання буде викликати Bixby. На інших пристроях і телефонах інших марок, ця опція не буде нічого робити.
-    </sys:String>
+Переназначення діє лише на цьому пристрої. Якщо ви підключите ваші навушники до устройства Samsung, голосове прокидання буде викликати Bixby. На інших пристроях і телефонах інших марок, ця опція не буде нічого робити.</sys:String>
 
 
     <!--Credits-->
@@ -449,10 +436,8 @@
     <!--Connection lost page-->
     <sys:String x:Key="connlost_header">Не вдалося встановити з'єднання</sys:String>
     <sys:String x:Key="connlost_description_p1">Помилка з'єднання із вашими навушниками.</sys:String>
-    <sys:String x:Key="connlost_description_p2">
-        Будь ласка перевірте настройки Bluetooth і переконайтеся що ваші навушники включені і прив'язані до цього комп'ютера.
-        Ви також можете зареєструвати нову пару навушників. У такому випадку виберіть "Опції &gt; Відмінити сполучення"
-    </sys:String>
+    <sys:String x:Key="connlost_description_p2">Будь ласка перевірте настройки Bluetooth і переконайтеся що ваші навушники включені і прив'язані до цього комп'ютера.
+Ви також можете зареєструвати нову пару навушників. У такому випадку виберіть "Опції &gt; Відмінити сполучення"</sys:String>
     <sys:String x:Key="connlost_description_p3">Додаткова інформація:</sys:String>
     <sys:String x:Key="connlost_noinfo">Не вдалося зібрати додаткову інформацію</sys:String>
     <sys:String x:Key="connlost_connect">Підключитися</sys:String>
@@ -461,15 +446,13 @@
 
     <!--Firmware update disclaimer-->
     <sys:String x:Key="fw_disclaimer">Відмова від відповідальності</sys:String>
-    <sys:String x:Key="fw_disclaimer_desc">
-        Цей інструмент оновлення прошивки є точною копією офіційного засобу оновлення, яке можна знайти в офіційному додатку Samsung для Android. Я ретельно протестував цю реалізацію в різних обставинах (нормальна робота, втрата з'єднання, навмисно пошкоджені пакети Bluetooth і т. д.), не відчуваючи ніяких проблем. Проте, я не буду нести ніякої відповідальності, якщо щось піде не так, оскільки оновлення прошивки змінюють життєво важливі компоненти системи, і з ними завжди слід звертатися з обережністю.
+    <sys:String x:Key="fw_disclaimer_desc">Цей інструмент оновлення прошивки є точною копією офіційного засобу оновлення, яке можна знайти в офіційному додатку Samsung для Android. Я ретельно протестував цю реалізацію в різних обставинах (нормальна робота, втрата з'єднання, навмисно пошкоджені пакети Bluetooth і т. д.), не відчуваючи ніяких проблем. Проте, я не буду нести ніякої відповідальності, якщо щось піде не так, оскільки оновлення прошивки змінюють життєво важливі компоненти системи, і з ними завжди слід звертатися з обережністю. 
 
-        ДАУНГРЕЙДІНГ: Не дивлячись на те що даунгрейдінг до старших версій можливий і я не зіткнувся з проблемами, це може викликати непередбачені проблеми і має виконуватися тільки в разі потреби. Відновлення заводських налаштувань після переходу на більш ранню версію рекомендується, але зазвичай не потрібне.
-        КОРСИТУВАЦЬКА ПРОШИВКА: Ви також можете завантажувати файли прошивки з жорсткого диска. НЕ прошивайте на ваш пристрій бінарні файли прошивки, призначені для ІНШИХ моделей.
-
-        Ця програма поширюється під ліцензією GPLv3. Використовуючи його, ви приймаєте ліцензію і обмеження відповідальності. Натисніть «Продовжити», щоб прийняти.
-    </sys:String>
-
+ДАУНГРЕЙДІНГ: Не дивлячись на те що даунгрейдінг до старших версій можливий і я не зіткнувся з проблемами, це може викликати непередбачені проблеми і має виконуватися тільки в разі потреби. Відновлення заводських налаштувань після переходу на більш ранню версію рекомендується, але зазвичай не потрібне. 
+КОРСИТУВАЦЬКА ПРОШИВКА: Ви також можете завантажувати файли прошивки з жорсткого диска. НЕ прошивайте на ваш пристрій бінарні файли прошивки, призначені для ІНШИХ моделей. 
+ 
+Ця програма поширюється під ліцензією GPLv3. Використовуючи його, ви приймаєте ліцензію і обмеження відповідальності. Натисніть «Продовжити», щоб прийняти.</sys:String>
+    
     <!--Firmware selection-->
     <sys:String x:Key="fw_select_header">Оновлення прошивки</sys:String>
     <sys:String x:Key="fw_select_instructions">Будь ласка, оберіть образ прошивки для завантаження і встановлення. Або як варіант, ви можеие обрати образ прошивки з вашого жорсткого диску скориставшись 'Розширені... &gt; Обрати образ з диску'</sys:String>
@@ -479,11 +462,9 @@
     <sys:String x:Key="fw_select_advanced">Розширені...</sys:String>
     <sys:String x:Key="fw_select_install">Встановити прошивку</sys:String>
     <sys:String x:Key="fw_select_from_disk">Обрати образ з диску...</sys:String>
-    <sys:String x:Key="fw_select_external_note">
-        НЕ ПРОШИВАЙТЕ бінарні файли призначені для ІНШИХ моделей на ваш пристрій. Прошивка Buds Pro на Buds Plus не розблокує додаткових функцій, замість цього вона назавжди зламає ваш пристрій.
+    <sys:String x:Key="fw_select_external_note">НЕ ПРОШИВАЙТЕ бінарні файли призначені для ІНШИХ моделей на ваш пристрій. Прошивка Buds Pro на Buds Plus не розблокує додаткових функцій, замість цього вона назавжди зламає ваш пристрій.
 
-        Натисніть 'Продовжити' щоб обрати бінарний файл.
-    </sys:String>
+Натисніть 'Продовжити' щоб обрати бінарний файл.</sys:String>
     <sys:String x:Key="fw_select_unsupported_selection">Невірний вибір. Будь ласка, оберіть сумісну прошивку зі списку.</sys:String>
     <sys:String x:Key="fw_select_downloading">Завантаження...</sys:String>
     <sys:String x:Key="fw_select_net_error">Помилка зв'язку з сервером. Завантаження прошивок зараз неможливе.</sys:String>
@@ -492,14 +473,12 @@
     <sys:String x:Key="fw_select_unknown_build">Невідоме ім'я збірки</sys:String>
     <sys:String x:Key="fw_select_verify_fail">Не вдалося перевірити прошивку</sys:String>
     <sys:String x:Key="fw_select_confirm">Ви збираєтеся прошити '{0}' на ваш '{1}' пристрій</sys:String>
-    <sys:String x:Key="fw_select_confirm_desc">
-        Убедитесь что эта информация правильная, в ином случае нажмите 'Отмена' и проверьте настройки.
+    <sys:String x:Key="fw_select_confirm_desc">Убедитесь что эта информация правильная, в ином случае нажмите 'Отмена' и проверьте настройки.
 
-        По возможности, проверьте что оба наушника подключены перед началом. Это не приведет к проблемам во время передачи. В таком случае наушники автоматически отменят передачу и выйдут из режима обновления.
+По возможности, проверьте что оба наушника подключены перед началом. Это не приведет к проблемам во время передачи. В таком случае наушники автоматически отменят передачу и выйдут из режима обновления.
 
-        Нажмите 'Продолжить' чтобы начать обновление.
-    </sys:String>
-
+Нажмите 'Продолжить' чтобы начать обновление.</sys:String>
+  
     <!--Firmware transfer-->
     <sys:String x:Key="fw_upload_header">Встановлюю прошивку...</sys:String>
     <sys:String x:Key="fw_upload_progress_session">Створюю нову сесію...</sys:String>
@@ -519,12 +498,10 @@
     <sys:String x:Key="fw_fail_no_magic">Це некоректний бінарний файл. Невірне чарівне число виявлено у заголовці файлу.</sys:String>
     <sys:String x:Key="fw_fail_size_null">Розмір цього бінарного файлу рівний нулю, а значить файл не може бути використаний для прошивки. Будь ласка, оберіть інший файл.</sys:String>
     <sys:String x:Key="fw_fail_no_segments">Этот бинарный файл не содержит никаких блоков или пуст. Будь ласка, оберіть інший файл.</sys:String>
-    <sys:String x:Key="fw_fail_unknown">
-        Непередбачувана помилка сталася під час розшифрування бінарного файлу. Цей файл прошивки може бути пошкоджений.
+    <sys:String x:Key="fw_fail_unknown">Непередбачувана помилка сталася під час розшифрування бінарного файлу. Цей файл прошивки може бути пошкоджений.
 
-        Деталі:
-    </sys:String>
-
+Деталі:</sys:String>
+    
     <!--Firmware transfer errors-->
     <sys:String x:Key="fw_fail_connection">Втрачений зв'язок з пристроєм. Передача оновлення відмінена.</sys:String>
     <sys:String x:Key="fw_fail_session">Не вдалося відкрити сесію. Пристрій повернув код помилки ({0})</sys:String>
@@ -536,7 +513,7 @@
     <sys:String x:Key="fw_fail_session_timeout">Скінчився час очікування на відкриття пристроєм нової сесії</sys:String>
     <sys:String x:Key="fw_fail_control_timeout">Скінчився час очікування на відповідь контрольним блоком від пристрою</sys:String>
     <sys:String x:Key="fw_fail_copy_timeout">Скінчився час очікування під час процесу передачі</sys:String>
-
+    
     <!--Spatial test-->
     <sys:String x:Key="spatial_header">Просторовий сенсор</sys:String>
     <!--Note: Quaternion = 4-dimensional vector-->
