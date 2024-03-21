@@ -1,4 +1,5 @@
-﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <sys:String x:Key="ResourceDictionaryName">Loc-vn</sys:String>
 
@@ -112,7 +113,7 @@
     <sys:String x:Key="hotkey_edit_action">Thao tác</sys:String>
     <sys:String x:Key="hotkey_edit_preview">Xem trước phím tắt:</sys:String>
     <sys:String x:Key="hotkey_edit_header">Chọn một phím tắt bàn phím</sys:String>
-    
+
     <!--Hotkey page-->
     <sys:String x:Key="hotkey_header">Phím tắt bàn phím</sys:String>
     <sys:String x:Key="hotkey_add">Gán phím tắt mới</sys:String>
@@ -147,11 +148,13 @@
     <sys:String x:Key="event_manager_visible">Hiện/ẩn cửa sổ quản lí</sys:String>
     <sys:String x:Key="event_display_battery_popup">Hiển thị cửa sổ thông báo kết nối</sys:String>
     <sys:String x:Key="event_connect">Kết nối thiết bị</sys:String>
-    
+
     <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Chào mừng!</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">Xin chào! Trình quản lí Galaxy Buds này là phần mềm không chính thức (của bên thứ 3) và không hề có liên kết/hợp tác gì với Samsung dưới mọi hình/cách thức, xin hãy ghi nhớ.
-Tuy chương trình này có rất nhiều chức năng mà ứng dụng nguyên bản/chính thức Samsung Wearable trên Android không có, Tôi vẫn quyết định loại bỏ Trình cập nhật Firmware qua OTA(Firmware Over-the-air Updater) vì nhiều lí do an toàn. Vui lòng sử dụng ứng dụng chính thức khi cần.</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">
+        Xin chào! Trình quản lí Galaxy Buds này là phần mềm không chính thức (của bên thứ 3) và không hề có liên kết/hợp tác gì với Samsung dưới mọi hình/cách thức, xin hãy ghi nhớ.
+        Tuy chương trình này có rất nhiều chức năng mà ứng dụng nguyên bản/chính thức Samsung Wearable trên Android không có, Tôi vẫn quyết định loại bỏ Trình cập nhật Firmware qua OTA(Firmware Over-the-air Updater) vì nhiều lí do an toàn. Vui lòng sử dụng ứng dụng chính thức khi cần.
+    </sys:String>
     <sys:String x:Key="welcome_textblock_p2">Nếu quan tâm, bạn có thể ghé thăm GitHub repository của tôi, bao gồm một nhật kí kỹ thuật đảo ngược nho nhỏ. Bạn cũng có thể nhắn tin cho tôi trên GitHub hoặc trên Telegram @thepbone nếu bạn gặp phải bất kì vấn đề gì.</sys:String>
     <sys:String x:Key="welcome_textblock_p3">Ứng dụng này tương thích với mọi mẫu và đời thiết bị Galaxy Buds.</sys:String>
     <sys:String x:Key="welcome_darkmode">Chế độ tối</sys:String>
@@ -230,13 +233,13 @@ Tuy chương trình này có rất nhiều chức năng mà ứng dụng nguyên
     <sys:String x:Key="touchpad_gesture_triple_desc">Chơi bài trước</sys:String>
     <sys:String x:Key="touchpad_gesture_hold">Chạm và giữ</sys:String>
     <sys:String x:Key="touchpad_gesture_hold_desc">Thi hành tác vụ tùy chọn</sys:String>
-   
+
     <!--Touchpad page-->
     <sys:String x:Key="touchpad_header">Mặt cảm ứng</sys:String>
     <sys:String x:Key="touchpad_lock">Khóa mặt cảm ứng</sys:String>
     <sys:String x:Key="touchpad_left_action">Thao tác trái</sys:String>
     <sys:String x:Key="touchpad_right_action">Thao tác phải</sys:String>
-   
+
     <sys:String x:Key="touchpad_gestures">Khóa chạm nâng cao</sys:String>
     <sys:String x:Key="touchpad_gestures_description">Kích hoạt hoặc vô hiệu hóa các thao tác chạm mặc định</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume">Gõ đúp cạnh tai nghe</sys:String>
@@ -254,8 +257,10 @@ Tuy chương trình này có rất nhiều chức năng mà ứng dụng nguyên
     <sys:String x:Key="cact_notice">Lưu ý</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Thao tác chạm-giữ tùy chọn chỉ khả dụng khi ứng dụng này được chạy nền.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">Nó không có tác dụng trên Android hay các thiết bị khác.</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">Để phục vụ cho việc hỗ trợ tính năng này, ứng dụng này sẽ tự khởi chạy và chạy nền khi máy tính khởi động.
-Bạn có thể vô hiệu hóa hành vi này trong mục cài đặt.</sys:String>
+    <sys:String x:Key="cact_notice_content_p3">
+        Để phục vụ cho việc hỗ trợ tính năng này, ứng dụng này sẽ tự khởi chạy và chạy nền khi máy tính khởi động.
+        Bạn có thể vô hiệu hóa hành vi này trong mục cài đặt.
+    </sys:String>
 
     <!--System/Self-Test-->
     <sys:String x:Key="system_overview_header">Hệ thống</sys:String>
@@ -301,7 +306,7 @@ Bạn có thể vô hiệu hóa hành vi này trong mục cài đặt.</sys:Stri
     <sys:String x:Key="selftest_fail">Thất bại</sys:String>
     <sys:String x:Key="selftest_pass_long">Đạt mọi bước kiểm tra</sys:String>
     <sys:String x:Key="selftest_fail_long">Thất bại một bước hoặc hơn</sys:String>
-    
+
     <sys:String x:Key="coredump_header">Dumping data...</sys:String>
     <sys:String x:Key="coredump_dl_progress_prepare">Preparing download...</sys:String>
     <sys:String x:Key="coredump_dl_progress_cancelled">Download cancelled</sys:String>
@@ -309,16 +314,18 @@ Bạn có thể vô hiệu hóa hành vi này trong mục cài đặt.</sys:Stri
     <sys:String x:Key="coredump_dl_trace_progress">Downloading trace dump... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">Downloading core dump... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytes)</sys:String>
-    <sys:String x:Key="coredump_dl_note">The audio stream is temporarily paused while downloading. Your earbuds will be disconnected as soon as the transmission finishes, please reconnect them manually.
-Once finished, you will be prompted to select a directory for all collected data.
+    <sys:String x:Key="coredump_dl_note">
+        The audio stream is temporarily paused while downloading. Your earbuds will be disconnected as soon as the transmission finishes, please reconnect them manually.
+        Once finished, you will be prompted to select a directory for all collected data.
 
-If the transmission is stuck or the device disconnected prematurely, you need to restart the download. This feature is currently very unstable.</sys:String>
+        If the transmission is stuck or the device disconnected prematurely, you need to restart the download. This feature is currently very unstable.
+    </sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">Failed to save dump</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">Unable to copy dump from temporary location. Reason: {0}</sys:String>
     <sys:String x:Key="coredump_dl_save_success_title">Successfully saved dumps</sys:String>
     <sys:String x:Key="coredump_dl_save_success">{0} dump(s) were written to '{1}'</sys:String>
     <sys:String x:Key="coredump_dl_save_dialog_title">Select an download directory...</sys:String>
-    
+
     <!--Settings-->
     <sys:String x:Key="settings_header">Cài đặt</sys:String>
 
@@ -352,7 +359,7 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="settings_cpopup_wear_state">Sử dụng màu khác khi nằm trong hộp</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state_description">Làm xám biểu tượng tai nghe khi đang trong hộp</sys:String>
 
-     <!--Settings >>> Crowdsourcing settings-->
+    <!--Settings >>> Crowdsourcing settings-->
     <sys:String x:Key="settings_crowd_header">Nguồn cung ứng cộng đồng</sys:String>
     <sys:String x:Key="settings_crowd_allow">Cho phép đóng góp bằng nguồn cung ứng cộng đồng</sys:String>
     <sys:String x:Key="settings_crowd_allow_description">Thu thập thông tin về cấu trúc và dữ liệu giao thức Bluetooth độc quyền của Samsung theo yêu cầu. Điều này cho phép tôi dễ dàng hỗ trợ hơn các dòng Galaxy Buds hiện có mà không cần sở hữu chúng.</sys:String>
@@ -363,9 +370,11 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="factory_header">Khôi phục thiết lập gốc</sys:String>
     <sys:String x:Key="factory_confirm">Xác nhận khôi phục thiết lập gốc</sys:String>
     <sys:String x:Key="factory_error_title">Khôi phục thiết lập gốc thất bại</sys:String>
-    <sys:String x:Key="factory_error">Thiết bị báo lỗi mã: {0}
-Đảm bảo cả hai bên tai nghe đều bật và liên lạc được.
-Bạn có thể cần kết nối thủ công lại tai nghe.</sys:String>
+    <sys:String x:Key="factory_error">
+        Thiết bị báo lỗi mã: {0}
+        Đảm bảo cả hai bên tai nghe đều bật và liên lạc được.
+        Bạn có thể cần kết nối thủ công lại tai nghe.
+    </sys:String>
     <sys:String x:Key="factory_text_p1">Bạn có chắc chắn đặt lại tai nghe?</sys:String>
     <sys:String x:Key="factory_text_p2">Sau khi thực hiện Khôi phục thiết lập gốc, Bạn sẽ cần phải kết nối thủ công lại tai nghe với máy tính.</sys:String>
     <sys:String x:Key="factory_text_p3">Đảm bảo cả hai bên tai nghe đều bật trước khi tiếp tục!</sys:String>
@@ -401,7 +410,7 @@ Bạn có thể cần kết nối thủ công lại tai nghe.</sys:String>
     <sys:String x:Key="nc_voicedetect_description">Khi giọng của bạn được phát hiện, tự động bật xuyên âm và giảm âm lượng đa phương tiện nhằm giúp bạn trò chuyện dễ dàng hơn</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">Thời gian chờ hội thoại</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} giây</sys:String>
-   
+
     <!--Noise control >>> Ambient sound-->
     <sys:String x:Key="nc_as_header">Cài đặt xuyên âm</sys:String>
     <sys:String x:Key="nc_as_custom">Tùy chỉnh nâng cao</sys:String>
@@ -412,7 +421,7 @@ Bạn có thể cần kết nối thủ công lại tai nghe.</sys:String>
     <sys:String x:Key="nc_as_custom_tone_soft">Mềm</sys:String>
     <sys:String x:Key="nc_as_custom_tone_neutral">Trung hòa</sys:String>
     <sys:String x:Key="nc_as_custom_vol_normal">Bình thường</sys:String>
-    
+
     <!--Ambient sound-->
     <sys:String x:Key="as_header">Xuyên âm</sys:String>
     <sys:String x:Key="as_enable">Kích hoạt xuyên âm</sys:String>
@@ -425,7 +434,7 @@ Bạn có thể cần kết nối thủ công lại tai nghe.</sys:String>
     <sys:String x:Key="as_scale_moderate">Vừa phải</sys:String>
     <sys:String x:Key="as_scale_high">Cao</sys:String>
     <sys:String x:Key="as_scale_extraloud">Rất cao</sys:String>
-    
+
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Cài đặt nâng cao</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} hoặc thấp hơn</sys:String>
@@ -454,13 +463,15 @@ Bạn có thể cần kết nối thủ công lại tai nghe.</sys:String>
     <!--Connection lost page-->
     <sys:String x:Key="connlost_header">Không thể thiết lập kết nối</sys:String>
     <sys:String x:Key="connlost_description_p1">Không thể thiết lập kết nối tới tai nghe của bạn.</sys:String>
-    <sys:String x:Key="connlost_description_p2">Vui lòng kiểm tra cài đặt Bluetooth và đảm bảo tai nghe của bạn được bật và đã ghép đôi với máy tính này.
-Bạn cũng có thể kết nối thiết bị mới nếu cần. Trong trường hợp đó, vui lòng chọn "Tùy chọn &gt; Gỡ ghép đôi thiết bị".</sys:String>
+    <sys:String x:Key="connlost_description_p2">
+        Vui lòng kiểm tra cài đặt Bluetooth và đảm bảo tai nghe của bạn được bật và đã ghép đôi với máy tính này.
+        Bạn cũng có thể kết nối thiết bị mới nếu cần. Trong trường hợp đó, vui lòng chọn "Tùy chọn &gt; Gỡ ghép đôi thiết bị".
+    </sys:String>
     <sys:String x:Key="connlost_description_p3">Thông tin thêm:</sys:String>
     <sys:String x:Key="connlost_noinfo">Thu thập thông tin lỗi thất bại</sys:String>
     <sys:String x:Key="connlost_connect">Kết nối</sys:String>
     <sys:String x:Key="connlost_connecting">Đang kết nối...</sys:String>
-    
+
     <!--Header-->
     <sys:String x:Key="window_minimize">Thu nhỏ</sys:String>
     <sys:String x:Key="window_close">Đóng</sys:String>

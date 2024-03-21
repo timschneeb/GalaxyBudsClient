@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
@@ -11,6 +11,7 @@ using GalaxyBudsClient.Cli.Ipc;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using Serilog;
+using Serilog.Events;
 
 namespace GalaxyBudsClient
 {
@@ -29,8 +30,8 @@ namespace GalaxyBudsClient
             var config = new LoggerConfiguration()
                 .WriteTo.Sentry(o =>
                 {
-                    o.MinimumBreadcrumbLevel = Serilog.Events.LogEventLevel.Debug;
-                    o.MinimumEventLevel = Serilog.Events.LogEventLevel.Fatal;
+                    o.MinimumBreadcrumbLevel = LogEventLevel.Debug;
+                    o.MinimumEventLevel = LogEventLevel.Fatal;
                 })
                 .WriteTo.File(PlatformUtils.CombineDataPath("application.log"))
                 .WriteTo.Console();
@@ -47,7 +48,7 @@ namespace GalaxyBudsClient
             }
             
             Log.Logger = config.CreateLogger();
-            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             Trace.Listeners.Add(new ConsoleTraceListener());
             
             if (!Settings.Instance.DisableCrashReporting)

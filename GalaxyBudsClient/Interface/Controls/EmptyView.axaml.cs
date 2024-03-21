@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
-using FluentIcons.Common;
 using FluentIcons.Avalonia.Fluent;
+using FluentIcons.Common;
 
 namespace GalaxyBudsClient.Interface.Controls
 {

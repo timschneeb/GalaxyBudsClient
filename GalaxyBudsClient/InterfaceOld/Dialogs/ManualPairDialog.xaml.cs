@@ -7,6 +7,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
@@ -44,7 +45,7 @@ namespace GalaxyBudsClient.InterfaceOld.Dialogs
 
         public new async Task<TResult> ShowDialog<TResult>(Window owner)
         {
-            return await Avalonia.Threading.Dispatcher.UIThread.InvokeAsync(async () =>
+            return await Dispatcher.UIThread.InvokeAsync(async () =>
             {
                 await Task.Delay(300);
                 return await base.ShowDialog<TResult>(owner);

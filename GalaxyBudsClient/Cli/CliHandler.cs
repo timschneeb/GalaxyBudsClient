@@ -9,6 +9,7 @@ using GalaxyBudsClient.Utils.Extensions;
 using Newtonsoft.Json;
 using Serilog;
 using Tmds.DBus;
+
 // ReSharper disable ClassNeverInstantiated.Global
 // ReSharper disable MemberCanBePrivate.Global
 

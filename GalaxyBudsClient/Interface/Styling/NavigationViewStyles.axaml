@@ -1,8 +1,8 @@
 <Styles xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:ui="using:FluentAvalonia.UI.Controls"
-                    xmlns:uip="clr-namespace:FluentAvalonia.UI.Controls.Primitives;assembly=FluentAvalonia">
-    
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="using:FluentAvalonia.UI.Controls"
+        xmlns:uip="clr-namespace:FluentAvalonia.UI.Controls.Primitives;assembly=FluentAvalonia">
+
     <!-- NavView style in MainView for main app navigation -->
     <Style Selector="ui|NavigationView.AppNav">
         <Setter Property="IsPaneToggleButtonVisible" Value="False" />
@@ -12,7 +12,8 @@
     <Style Selector="ui|NavigationView.AppNav /template/ Button#NavigationViewBackButton">
         <Setter Property="Width" Value="{DynamicResource NavigationBackButtonWidth}" />
     </Style>
-    <Style Selector="ui|NavigationView.AppNav[IsBackButtonVisible=False] SplitView /template/ ContentPresenter#PART_PanePresenter">
+    <Style
+        Selector="ui|NavigationView.AppNav[IsBackButtonVisible=False] SplitView /template/ ContentPresenter#PART_PanePresenter">
         <Setter Property="Margin" Value="0 40 0 0" />
     </Style>
 
@@ -38,13 +39,12 @@
                                     Opacity="0"
                                     VerticalAlignment="Center"
                                     Height="20"
-                                    CornerRadius="{StaticResource ControlCornerRadius}"/>
+                                    CornerRadius="{StaticResource ControlCornerRadius}" />
                         </Panel>
 
 
                         <DockPanel>
                             <ContentPresenter Name="ContentPresenter"
-                                              Grid.Row="1"
                                               ContentTemplate="{TemplateBinding ContentTemplate}"
                                               Content="{TemplateBinding Content}"
                                               HorizontalAlignment="Center"
@@ -75,25 +75,31 @@
             </ControlTemplate>
         </Setter>
     </Style>
-    <Style Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter:pointerover /template/ ContentPresenter#ContentPresenter">
+    <Style
+        Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter:pointerover /template/ ContentPresenter#ContentPresenter">
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
     </Style>
-    <Style Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter:pointerover /template/ ContentPresenter#Icon">
+    <Style
+        Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter:pointerover /template/ ContentPresenter#Icon">
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
     </Style>
 
-    <Style Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter:pressed /template/ ContentPresenter#ContentPresenter">
+    <Style
+        Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter:pressed /template/ ContentPresenter#ContentPresenter">
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
     </Style>
-    <Style Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter:pressed /template/ ContentPresenter#Icon">
+    <Style
+        Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter:pressed /template/ ContentPresenter#Icon">
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
     </Style>
 
-    <Style Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter:selected /template/ ContentPresenter#ContentPresenter">
+    <Style
+        Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter:selected /template/ ContentPresenter#ContentPresenter">
         <Setter Property="IsVisible" Value="False" />
     </Style>
-    <Style Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter:selected /template/ ContentPresenter#Icon">
+    <Style
+        Selector="ui|NavigationViewItem.AppNav uip|NavigationViewItemPresenter:selected /template/ ContentPresenter#Icon">
         <Setter Property="Foreground" Value="{DynamicResource AccentFillColorDefaultBrush}" />
     </Style>
-    
+
 </Styles>

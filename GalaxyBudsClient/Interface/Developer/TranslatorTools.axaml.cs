@@ -1,13 +1,13 @@
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using Symbol = FluentIcons.Common.Symbol;
+using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
 namespace GalaxyBudsClient.Interface.Developer
 {
@@ -28,7 +28,7 @@ namespace GalaxyBudsClient.Interface.Developer
                 {
                     Header = title, 
                     Buttons = { TaskDialogButton.CloseButton }, 
-                    IconSource = new FluentIcons.Avalonia.Fluent.SymbolIconSource { Symbol = FluentIcons.Common.Symbol.Warning },
+                    IconSource = new SymbolIconSource { Symbol = Symbol.Warning },
                     Content = new TextBlock
                     {
                         TextWrapping = TextWrapping.Wrap,

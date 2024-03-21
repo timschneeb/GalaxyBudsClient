@@ -6,11 +6,11 @@
              x:Class="GalaxyBudsClient.Interface.Controls.MuteToggleButton"
              x:DataType="elements:MuteToggleButton"
              x:CompileBindings="True">
-    
+
     <Design.DataContext>
         <elements:MuteToggleButton />
     </Design.DataContext>
-    
+
     <ToggleButton Name="Button">
         <ic:SymbolIcon Name="Icon"
                        Symbol="Speaker2"

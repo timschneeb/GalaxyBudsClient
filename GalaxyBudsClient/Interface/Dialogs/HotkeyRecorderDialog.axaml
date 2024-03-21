@@ -14,15 +14,15 @@
     </Design.DataContext>
 
     <StackPanel MinWidth="400" Spacing="8">
-            <Border Classes="Card"
-                    Padding="5">
-                <TextBlock TextWrapping="Wrap" 
-                           Text="{Binding HotkeyPreview}" />
-            </Border>
-        
+        <Border Classes="Card"
+                Padding="5">
             <TextBlock TextWrapping="Wrap"
-                       IsVisible="{OnPlatform Default=False, Windows=True}"
-                       Text="{DynamicResource hotrec_note}" />
-            
+                       Text="{Binding HotkeyPreview}" />
+        </Border>
+
+        <TextBlock TextWrapping="Wrap"
+                   IsVisible="{OnPlatform Default=False, Windows=True}"
+                   Text="{DynamicResource hotrec_note}" />
+
     </StackPanel>
 </UserControl>

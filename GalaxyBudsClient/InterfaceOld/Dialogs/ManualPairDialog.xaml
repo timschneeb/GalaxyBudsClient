@@ -20,33 +20,33 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" 
-                   Text="{DynamicResource manualpair_title_dialog}" 
-                   TextWrapping="Wrap" Margin="0,0,0,7"/>
+        <TextBlock Grid.Row="0"
+                   Text="{DynamicResource manualpair_title_dialog}"
+                   TextWrapping="Wrap" Margin="0,0,0,7" />
         <ComboBox Grid.Row="1"
                   Name="Device"
                   Margin="0,0,0,5"
                   HorizontalAlignment="Stretch" />
         <TextBlock Grid.Row="2"
-                   Text="{DynamicResource manualpair_model}" 
-                   TextWrapping="Wrap" Margin="0,0,0,5"/>
+                   Text="{DynamicResource manualpair_model}"
+                   TextWrapping="Wrap" Margin="0,0,0,5" />
         <ComboBox Grid.Row="3"
                   Name="Model"
                   ItemsSource="{Binding ModelSource}"
                   Margin="0,0,0,5"
-                  HorizontalAlignment="Stretch"/>
+                  HorizontalAlignment="Stretch" />
         <TextBlock Grid.Row="4"
-                   Text="{DynamicResource manualpair_note}" 
-                   TextWrapping="Wrap" Margin="0,0,0,5"/>
-        <Grid Grid.Row="6" >
+                   Text="{DynamicResource manualpair_note}"
+                   TextWrapping="Wrap" Margin="0,0,0,5" />
+        <Grid Grid.Row="6">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="1" Content="{DynamicResource cancel}" Click="Cancel_OnClick"/>
-            <Button Grid.Column="3" Content="{DynamicResource select}" Click="Apply_OnClick"/>
+            <Button Grid.Column="1" Content="{DynamicResource cancel}" Click="Cancel_OnClick" />
+            <Button Grid.Column="3" Content="{DynamicResource select}" Click="Apply_OnClick" />
         </Grid>
     </Grid>
 </Window>

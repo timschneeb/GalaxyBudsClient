@@ -18,7 +18,7 @@
     <StackPanel Spacing="15"
                 Orientation="Horizontal"
                 HorizontalAlignment="Center">
-        
+
         <Image Source="{Binding LeftIcon}"
                Opacity="{Binding IsLeftOnline, Converter={StaticResource BoolFadeOpacityConverter}}"
                Width="{StaticResource EarbudsIconSize}"

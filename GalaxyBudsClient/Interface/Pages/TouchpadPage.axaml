@@ -7,8 +7,6 @@
              xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
              xmlns:constants="clr-namespace:GalaxyBudsClient.Model.Constants"
              xmlns:collections="clr-namespace:System.Collections;assembly=System.Runtime"
-             xmlns:generic="clr-namespace:System.Collections.Generic;assembly=System.Runtime"
-             xmlns:viewModels="clr-namespace:GalaxyBudsClient.Interface.ViewModels"
              xmlns:specifications="clr-namespace:GalaxyBudsClient.Model.Specifications"
              xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
              mc:Ignorable="d" d:DesignWidth="800"
@@ -30,7 +28,7 @@
                     Symbol="LockClosed"
                     IsChecked="{Binding IsTouchpadLocked}" />
             </controls:SettingsGroup>
-            
+
             <controls:SettingsGroup>
                 <controls:SettingsGroup.IsEnabled>
                     <MultiBinding Converter="{x:Static BoolConverters.And}">
@@ -38,7 +36,7 @@
                         <Binding Path="IsHoldGestureEnabled" />
                     </MultiBinding>
                 </controls:SettingsGroup.IsEnabled>
-                
+
                 <controls:SettingsComboBoxItem
                     Content="{DynamicResource touchpad_left_action}"
                     Description="{Binding LeftActionDescription}"
@@ -49,13 +47,13 @@
                     IsToolButtonVisible="True"
                     IsToolButtonEnabled="{Binding IsLeftCustomActionEditable}"
                     ToolButtonClick="OnEditLeftCustomActionClicked">
-                    
+
                     <controls:SettingsComboBoxItem.ToolButtonContent>
                         <ic:SymbolIcon Symbol="Edit" />
                     </controls:SettingsComboBoxItem.ToolButtonContent>
-                    
+
                 </controls:SettingsComboBoxItem>
-                
+
                 <controls:SettingsComboBoxItem
                     Content="{DynamicResource touchpad_right_action}"
                     Description="{Binding RightActionDescription}"
@@ -66,11 +64,11 @@
                     IsToolButtonVisible="True"
                     IsToolButtonEnabled="{Binding IsRightCustomActionEditable}"
                     ToolButtonClick="OnEditRightCustomActionClicked">
-                    
+
                     <controls:SettingsComboBoxItem.ToolButtonContent>
                         <ic:SymbolIcon Symbol="Edit" />
                     </controls:SettingsComboBoxItem.ToolButtonContent>
-                    
+
                 </controls:SettingsComboBoxItem>
 
                 <controls:SettingsComboBoxItem
@@ -84,7 +82,7 @@
                         <ext:RequiresFeatureBehavior Feature="NoiseControl" />
                     </Interaction.Behaviors>
                 </controls:SettingsComboBoxItem>
-                
+
             </controls:SettingsGroup>
 
             <controls:SettingsGroup IsEnabled="{Binding !IsTouchpadLocked}">
@@ -98,7 +96,7 @@
                         </ext:RequiresAnyFeatureBehavior.Features>
                     </ext:RequiresAnyFeatureBehavior>
                 </Interaction.Behaviors>
-                
+
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource touchpad_gesture_single}"
                     Description="{DynamicResource touchpad_gesture_single_desc}"
@@ -108,7 +106,7 @@
                         <ext:RequiresFeatureBehavior Feature="AdvancedTouchLock" />
                     </Interaction.Behaviors>
                 </controls:SettingsSwitchItem>
-                
+
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource touchpad_gesture_double}"
                     Description="{DynamicResource touchpad_gesture_double_desc}"
@@ -118,7 +116,7 @@
                         <ext:RequiresFeatureBehavior Feature="AdvancedTouchLock" />
                     </Interaction.Behaviors>
                 </controls:SettingsSwitchItem>
-                
+
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource touchpad_gesture_triple}"
                     Description="{DynamicResource touchpad_gesture_triple_desc}"
@@ -127,7 +125,7 @@
                     <Interaction.Behaviors>
                         <ext:RequiresFeatureBehavior Feature="AdvancedTouchLock" />
                     </Interaction.Behaviors>
-                    
+
                 </controls:SettingsSwitchItem>
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource touchpad_gesture_hold}"
@@ -138,7 +136,7 @@
                         <ext:RequiresFeatureBehavior Feature="AdvancedTouchLock" />
                     </Interaction.Behaviors>
                 </controls:SettingsSwitchItem>
-                
+
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource touchpad_double_tap_volume}"
                     Description="{DynamicResource touchpad_double_tap_volume_description}"
@@ -149,7 +147,7 @@
                     </Interaction.Behaviors>
                 </controls:SettingsSwitchItem>
             </controls:SettingsGroup>
-            
+
         </StackPanel>
     </ScrollViewer>
 

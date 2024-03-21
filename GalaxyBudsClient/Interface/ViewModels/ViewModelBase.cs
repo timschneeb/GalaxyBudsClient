@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using FluentIcons.Common;
 using GalaxyBudsClient.Model;
 using ReactiveUI;

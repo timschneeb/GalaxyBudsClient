@@ -9,36 +9,36 @@
              x:Class="GalaxyBudsClient.Interface.Pages.EqualizerPage"
              x:DataType="pages:EqualizerPageViewModel"
              x:CompileBindings="True">
-    
+
     <Design.DataContext>
         <pages:EqualizerPageViewModel />
     </Design.DataContext>
 
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
-  
+
             <controls:SettingsGroup>
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource eq_enable}"
                     Description="{DynamicResource eq_enable_description}"
                     Symbol="DeviceEq"
                     IsChecked="{Binding IsEqEnabled}" />
-                
+
                 <controls:SettingsSliderItem
                     Name="EqPreset"
                     Content="{DynamicResource eq_preset}"
-                    Description="{Binding EqPreset, Converter={StaticResource EqPresetConverter}}" 
+                    Description="{Binding EqPreset, Converter={StaticResource EqPresetConverter}}"
                     IconSource="{StaticResource IconPlaceholder}"
                     IsEnabled="{Binding IsEqEnabled}"
                     Maximum="{Binding MaximumEqPreset}"
                     Value="{Binding EqPreset}" />
             </controls:SettingsGroup>
-            
+
             <controls:SettingsGroup>
                 <Interaction.Behaviors>
                     <ext:RequiresFeatureBehavior Feature="StereoPan" />
                 </Interaction.Behaviors>
-                
+
                 <controls:SettingsSliderItem
                     Name="StereoBalance"
                     Content="{DynamicResource eq_stereo_balance}"
@@ -49,5 +49,5 @@
             </controls:SettingsGroup>
         </StackPanel>
     </ScrollViewer>
-    
+
 </UserControl>

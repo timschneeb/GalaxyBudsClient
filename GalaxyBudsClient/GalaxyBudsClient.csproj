@@ -16,7 +16,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <OutputType>Exe</OutputType>
     </PropertyGroup>
-    
+
     <PropertyGroup>
         <ApplicationIcon>Resources\icon_white.ico</ApplicationIcon>
         <AssemblyVersion>4.6.0.0</AssemblyVersion>
@@ -30,7 +30,7 @@
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <LangVersion>12</LangVersion>
         <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>
-        
+
         <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
     </PropertyGroup>
 
@@ -43,7 +43,7 @@
         <_XSAppIconAssets>Assets.xcassets/AppIcon.appiconset</_XSAppIconAssets>
         <ApplicationVersion>$(Version)</ApplicationVersion>
         <AssemblyName>Galaxy Buds Manager</AssemblyName>
-	    <SupportedOSPlatformVersion>12.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion>12.0</SupportedOSPlatformVersion>
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <DefineConstants>Linux</DefineConstants>
@@ -59,19 +59,19 @@
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
         <DefineConstants>$(DefineConstants);ENABLE_XAML_HOT_RELOAD</DefineConstants>
     </PropertyGroup>
-    
+
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-      <WarningLevel>4</WarningLevel>
+        <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-      <DebugSymbols>true</DebugSymbols>
-      <WarningLevel>4</WarningLevel>
+        <DebugSymbols>true</DebugSymbols>
+        <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
-        <AvaloniaResource Include="Resources\**" />
-        <AvaloniaResource Include="i18n\*" /> 
+        <AvaloniaResource Include="Resources\**"/>
+        <AvaloniaResource Include="i18n\*"/>
     </ItemGroup>
-    
+
     <ItemGroup>
         <Compile Update="**\*.xaml.cs">
             <DependentUpon>%(Filename)</DependentUpon>
@@ -80,59 +80,59 @@
             <SubType>Designer</SubType>
         </AvaloniaResource>
 
-        <Compile Remove="bin\**" />
-        <AvaloniaResource Remove="bin\**" />
-        <AvaloniaXaml Remove="bin\**" />
-        <EmbeddedResource Remove="bin\**" />
-        <None Remove="bin\**" />
-        
+        <Compile Remove="bin\**"/>
+        <AvaloniaResource Remove="bin\**"/>
+        <AvaloniaXaml Remove="bin\**"/>
+        <EmbeddedResource Remove="bin\**"/>
+        <None Remove="bin\**"/>
+
         <Compile Update="Interface\Pages\SettingsPage.axaml.cs">
-          <DependentUpon>SettingsPage.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>SettingsPage.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Pages\EqualizerPage.axaml.cs">
-          <DependentUpon>CoreControlsPage.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>CoreControlsPage.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Pages\HomePage.axaml.cs">
-          <DependentUpon>HomePage.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>HomePage.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Pages\NoiseControlPage.axaml.cs">
-          <DependentUpon>NoiseControlPage.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>NoiseControlPage.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Pages\AmbientCustomizePage.axaml.cs">
-          <DependentUpon>AmbientCustomizePage.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>AmbientCustomizePage.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Pages\SystemPage.axaml.cs">
-          <DependentUpon>SystemPage.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>SystemPage.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Pages\SystemInfoPage.axaml.cs">
-          <DependentUpon>SystemInfoPage.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>SystemInfoPage.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Pages\FirmwarePage.axaml.cs">
-          <DependentUpon>FirmwarePage.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>FirmwarePage.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Pages\AdvancedPage.axaml.cs">
-          <DependentUpon>AdvancedPage.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>AdvancedPage.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Pages\BixbyRemapPage.axaml.cs">
-          <DependentUpon>BixbyRemapPage.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>BixbyRemapPage.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Pages\HotkeyPage.axaml.cs">
-          <DependentUpon>HotkeyPage.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>HotkeyPage.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Dialogs\HotkeyEditorDialog.axaml.cs">
-          <DependentUpon>HotkeyEditorDialog.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>HotkeyEditorDialog.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Pages\FindMyBudsPage.axaml.cs">
             <DependentUpon>FindMyBudsPage.axaml</DependentUpon>
@@ -147,36 +147,36 @@
             <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Controls\EarbudControlUnit.axaml.cs">
-          <DependentUpon>EarbudControlUnit.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>EarbudControlUnit.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Pages\FitTestPage.axaml.cs">
-          <DependentUpon>FitTestPage.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>FitTestPage.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Pages\TouchpadPage.axaml.cs">
-          <DependentUpon>TouchpadPage.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>TouchpadPage.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Dialogs\TouchActionEditorDialog.axaml.cs">
-          <DependentUpon>TouchActionEditorDialog.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>TouchActionEditorDialog.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Dialogs\HotkeyRecorderDialog.axaml.cs">
-          <DependentUpon>HotkeyRecorderDialog.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>HotkeyRecorderDialog.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Controls\EarbudStatusUnit.axaml.cs">
-          <DependentUpon>EarbudStatusUnit.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>EarbudStatusUnit.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Controls\EarbudIconUnit.axaml.cs">
-          <DependentUpon>EarbudIconUnit.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>EarbudIconUnit.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
         <Compile Update="Interface\Controls\EmptyView.axaml.cs">
-          <DependentUpon>EmptyView.axaml</DependentUpon>
-          <SubType>Code</SubType>
+            <DependentUpon>EmptyView.axaml</DependentUpon>
+            <SubType>Code</SubType>
         </Compile>
     </ItemGroup>
 
@@ -186,61 +186,61 @@
         <AvaloniaVersion>11.1.0-beta1</AvaloniaVersion>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
-        <PackageReference Include="Avalonia.Controls.DataGrid" Version="$(AvaloniaVersion)" />
-        <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
-        <PackageReference Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
-        <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
-        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="$(AvaloniaVersion)" />
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
-        <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.10" />
-        <PackageReference Include="Avalonia.Svg.Skia" Version="11.1.0-beta1" />
-        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.1.0-beta1" />
-        <PackageReference Include="BouncyCastle.Cryptography" Version="2.3.0" />
-        <PackageReference Include="CommandLineParser" Version="2.9.2-ci-210" />
-        <PackageReference Include="Config.Net" Version="5.1.5" />
-        <PackageReference Include="CS-Script.Core" Version="2.0.0" />
-        <PackageReference Include="FluentAvalonia.BreadcrumbBar" Version="2.0.2" />
-        <PackageReference Include="FluentAvaloniaUI" Version="2.0.5" />
-        <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="1.1.232" />
-        <PackageReference Condition="$(DefineConstants.Contains(ENABLE_XAML_HOT_RELOAD))" Include="HotAvalonia" Version="1.0.1" />
-        <PackageReference Include="HotAvalonia.Extensions" Version="1.0.1" PrivateAssets="All" />
-        <PackageReference Include="InputSimulatorCore" Version="1.0.5" />
-        <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
-        <PackageReference Include="ReactiveUI.Fody" Version="19.5.41" />
-        <PackageReference Include="Sentry" Version="3.17.0" />
-        <PackageReference Include="Sentry.Serilog" Version="3.17.0" />
-        <PackageReference Include="Serilog" Version="3.1.1" />
-        <PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
-        <PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
-        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-        <PackageReference Include="Serilog.Sinks.Trace" Version="3.0.0" />
-        <PackageReference Include="SharpHook" Version="5.3.1" />
-        <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
-        <PackageReference Include="Tmds.DBus" Version="0.16.0" />
+        <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.10"/>
+        <PackageReference Include="Avalonia.Svg.Skia" Version="11.1.0-beta1"/>
+        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.1.0-beta1"/>
+        <PackageReference Include="BouncyCastle.Cryptography" Version="2.3.0"/>
+        <PackageReference Include="CommandLineParser" Version="2.9.2-ci-210"/>
+        <PackageReference Include="Config.Net" Version="5.1.5"/>
+        <PackageReference Include="CS-Script.Core" Version="2.0.0"/>
+        <PackageReference Include="FluentAvalonia.BreadcrumbBar" Version="2.0.2"/>
+        <PackageReference Include="FluentAvaloniaUI" Version="2.0.5"/>
+        <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="1.1.232"/>
+        <PackageReference Condition="$(DefineConstants.Contains(ENABLE_XAML_HOT_RELOAD))" Include="HotAvalonia" Version="1.0.1"/>
+        <PackageReference Include="HotAvalonia.Extensions" Version="1.0.1" PrivateAssets="All"/>
+        <PackageReference Include="InputSimulatorCore" Version="1.0.5"/>
+        <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0"/>
+        <PackageReference Include="ReactiveUI.Fody" Version="19.5.41"/>
+        <PackageReference Include="Sentry" Version="3.17.0"/>
+        <PackageReference Include="Sentry.Serilog" Version="3.17.0"/>
+        <PackageReference Include="Serilog" Version="3.1.1"/>
+        <PackageReference Include="Serilog.Sinks.Console" Version="5.0.1"/>
+        <PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0"/>
+        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0"/>
+        <PackageReference Include="Serilog.Sinks.Trace" Version="3.0.0"/>
+        <PackageReference Include="SharpHook" Version="5.3.1"/>
+        <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0"/>
+        <PackageReference Include="Tmds.DBus" Version="0.16.0"/>
     </ItemGroup>
-    
+
     <ItemGroup Condition="'$(IsWindows)'=='true'">
-        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.WindowsRT\GalaxyBudsClient.Bluetooth.WindowsRT.csproj" />
-        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Windows\GalaxyBudsClient.Bluetooth.Windows.csproj" />
-        <ProjectReference Include="..\ThePBone.Interop.Win32\ThePBone.Interop.Win32.csproj" />
+        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.WindowsRT\GalaxyBudsClient.Bluetooth.WindowsRT.csproj"/>
+        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Windows\GalaxyBudsClient.Bluetooth.Windows.csproj"/>
+        <ProjectReference Include="..\ThePBone.Interop.Win32\ThePBone.Interop.Win32.csproj"/>
     </ItemGroup>
-    
+
     <ItemGroup Condition="'$(IsLinux)'=='true'">
-        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Linux\GalaxyBudsClient.Bluetooth.Linux.csproj" />
-        <ProjectReference Include="..\ThePBone.MprisClient\ThePBone.MprisClient.csproj" />
+        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Linux\GalaxyBudsClient.Bluetooth.Linux.csproj"/>
+        <ProjectReference Include="..\ThePBone.MprisClient\ThePBone.MprisClient.csproj"/>
     </ItemGroup>
-    
+
     <ItemGroup Condition="'$(IsOSX)'=='true'">
-        <ProjectReference Include="..\ThePBone.OSX.Native\ThePBone.OSX.Native.csproj" />
+        <ProjectReference Include="..\ThePBone.OSX.Native\ThePBone.OSX.Native.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj" />
+        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Cli\" />
+        <Folder Include="Cli\"/>
     </ItemGroup>
 </Project>

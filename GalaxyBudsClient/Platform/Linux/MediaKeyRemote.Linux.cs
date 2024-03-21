@@ -4,8 +4,8 @@ using System;
 using System.Threading.Tasks;
 using GalaxyBudsClient.Platform.Interfaces;
 using Serilog;
-using Tmds.DBus;
 using ThePBone.MprisClient;
+using Tmds.DBus;
 
 namespace GalaxyBudsClient.Platform.Linux
 {

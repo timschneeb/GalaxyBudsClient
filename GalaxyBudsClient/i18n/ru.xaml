@@ -1,5 +1,6 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
     <sys:String x:Key="ResourceDictionaryName">Loc-ru</sys:String>
 
     <!--:::::::: Source code ::::::::-->
@@ -112,7 +113,7 @@
     <sys:String x:Key="hotkey_edit_action">Действие</sys:String>
     <sys:String x:Key="hotkey_edit_preview">Просмотр комбинации:</sys:String>
     <sys:String x:Key="hotkey_edit_header">Выберите клавиатурную комбинацию</sys:String>
-    
+
     <!--Hotkey page-->
     <sys:String x:Key="hotkey_header">Клавиатурные комбинации</sys:String>
     <sys:String x:Key="hotkey_add">Назначить новую комбинацию</sys:String>
@@ -147,12 +148,14 @@
     <sys:String x:Key="event_manager_visible">Отобразить окно программы</sys:String>
     <sys:String x:Key="event_display_battery_popup">Показать заряд батареи</sys:String>
     <sys:String x:Key="event_connect">Подключиться к устройству</sys:String>
-    
+
     <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Добро пожаловать!</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">Привет! Этот менеджер для Galaxy Buds не официальный, а потому учитывайте, что он никак не связан с Samsung.
-Несмотря на расширенный по отношению к оригинальному 
-Samsung Wearable на Android функционал этой программы, я все же решил исключить утилиту обновления прошивки ради безопасности. Пожалуйста, используйте официальную утилиту, если она вам понадобится.</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">
+        Привет! Этот менеджер для Galaxy Buds не официальный, а потому учитывайте, что он никак не связан с Samsung.
+        Несмотря на расширенный по отношению к оригинальному
+        Samsung Wearable на Android функционал этой программы, я все же решил исключить утилиту обновления прошивки ради безопасности. Пожалуйста, используйте официальную утилиту, если она вам понадобится.
+    </sys:String>
     <sys:String x:Key="welcome_textblock_p2">Если вам интересно, что происходит за кулисами, можете посетить мой репозиторий на GitHub. Также там можно найти небольшой журнал по реверс-инжинирингу. Можете написать мне сообщение на GitHub или в Telegram @thepbone, если у вас возникнут проблемы.</sys:String>
     <sys:String x:Key="welcome_textblock_p3">Эта программа поддерживает все модели Galaxy Buds.</sys:String>
     <sys:String x:Key="welcome_darkmode">Темная тема</sys:String>
@@ -220,7 +223,7 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="unsupported_feature_description_p2">Пожалуйста, обновитесь до последней версии используя официальную утилиту обновлений для Windows или официальное приложение Wearable на Android</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">Убедитесь, что вы закрыли эту программу, для использования утилиты обновлений для Windows. Только одно приложение за раз может общаться с устройством Buds.</sys:String>
 
-	<!--Touchpad gestures-->
+    <!--Touchpad gestures-->
     <sys:String x:Key="touchpad_gesture_header">Enable touchpad gestures</sys:String>
     <sys:String x:Key="touchpad_gesture_single">Единичное нажатие</sys:String>
     <sys:String x:Key="touchpad_gesture_single_desc">Воспроизведение/Пауза</sys:String>
@@ -252,8 +255,10 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="cact_notice">Предупреждение</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Настраиваемые действия доступны только при условии работы этой программы в фоне.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">Эти настройки невозможно применить к Android или другим устройствам.</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">Для того чтобы обеспечить работу этой функции, программа будет запускатся вместе с операционной системой и работать в фоне.
-Вы можете отключить автоматический запуск в настройках.</sys:String>
+    <sys:String x:Key="cact_notice_content_p3">
+        Для того чтобы обеспечить работу этой функции, программа будет запускатся вместе с операционной системой и работать в фоне.
+        Вы можете отключить автоматический запуск в настройках.
+    </sys:String>
 
     <!--System/Self-Test-->
     <sys:String x:Key="system_overview_header">О наушниках</sys:String>
@@ -298,7 +303,7 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="selftest_pass">Успешно</sys:String>
     <sys:String x:Key="selftest_fail">Ошибка</sys:String>
     <sys:String x:Key="selftest_pass_long">Все проверки пройдены успешно</sys:String>
-    <sys:String x:Key="selftest_fail_long">Одна или более проверок провалились</sys:String>     
+    <sys:String x:Key="selftest_fail_long">Одна или более проверок провалились</sys:String>
 
     <sys:String x:Key="coredump_header">Сбор данных...</sys:String>
     <sys:String x:Key="coredump_dl_progress_prepare">Подготовка загрузки...</sys:String>
@@ -307,10 +312,12 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="coredump_dl_trace_progress">Загружаю трассировку... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">Загружаю дампы... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} байт)</sys:String>
-    <sys:String x:Key="coredump_dl_note">Аудиопоток временно остановлен на время загрузки. Ваши наушники будут отключены по завершении загрузки. Пожалуйста, восстановите подключение самостоятельно.
-По завершении вам будет предложено выбрать место сохранения данных.
+    <sys:String x:Key="coredump_dl_note">
+        Аудиопоток временно остановлен на время загрузки. Ваши наушники будут отключены по завершении загрузки. Пожалуйста, восстановите подключение самостоятельно.
+        По завершении вам будет предложено выбрать место сохранения данных.
 
-Если передача зависла или устройство отключилось преждевременно, вам нужно перезапустить загрузку. Пока что эта функция очень нестабильна.</sys:String>
+        Если передача зависла или устройство отключилось преждевременно, вам нужно перезапустить загрузку. Пока что эта функция очень нестабильна.
+    </sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">Не удалось сохранить дампы</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">Не удалось скопировать дампы из временного хранилища. Причина: {0}</sys:String>
     <sys:String x:Key="coredump_dl_save_success_title">Дампы успешно сохранены</sys:String>
@@ -321,8 +328,10 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="settings_header">Настройки</sys:String>
 
     <sys:String x:Key="settings_darkmode">Темная тема</sys:String>
-    <sys:String x:Key="settings_darkmode_description">Воспользуйтесь цветами потемнее 
-(Потребуется перезапуск)</sys:String>
+    <sys:String x:Key="settings_darkmode_description">
+        Воспользуйтесь цветами потемнее
+        (Потребуется перезапуск)
+    </sys:String>
     <sys:String x:Key="settings_transitions">Анимации</sys:String>
     <sys:String x:Key="settings_transitions_description">Включить слайдовую анимацию</sys:String>
     <sys:String x:Key="settings_localization_disable">Язык</sys:String>
@@ -356,9 +365,11 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="factory_header">Сброс настроек</sys:String>
     <sys:String x:Key="factory_confirm">Подтвердите сброс настроек</sys:String>
     <sys:String x:Key="factory_error_title">Сброс настроек не удался</sys:String>
-    <sys:String x:Key="factory_error">Устройство вернуло код ошибки: {0}
-Убедитесь что оба наушника включены и досягаемы.
-Вам может понадобится повторно подключить наушники вручную.</sys:String>
+    <sys:String x:Key="factory_error">
+        Устройство вернуло код ошибки: {0}
+        Убедитесь что оба наушника включены и досягаемы.
+        Вам может понадобится повторно подключить наушники вручную.
+    </sys:String>
     <sys:String x:Key="factory_text_p1">Вы уверены что хотите сбросить настройки наушников?</sys:String>
     <sys:String x:Key="factory_text_p2">После выполнения сброса настроек вам понадобится повторно подключить наушники к компьютеру.</sys:String>
     <sys:String x:Key="factory_text_p3">Убедитесь что оба наушника включены перед продолжением!</sys:String>
@@ -382,7 +393,7 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="eq_soft">Мягкий</sys:String>
     <sys:String x:Key="eq_dynamic">Динамичный</sys:String>
     <sys:String x:Key="eq_clear">Чистый</sys:String>
-    <sys:String x:Key="eq_treble">Больше высоких</sys:String>    
+    <sys:String x:Key="eq_treble">Больше высоких</sys:String>
 
     <!--Noise control-->
     <sys:String x:Key="nc_header">Управление шумоподавлением</sys:String>
@@ -392,7 +403,7 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="nc_voicedetect_description">Автоматически включить звуковой фон и приглушить звук медиа, чтобы упростить разговор</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">Завершение разговора</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} секунд</sys:String>
-	
+
     <!--Noise control >>> Ambient sound-->
     <sys:String x:Key="nc_as_header">Настройки звукового фона</sys:String>
     <sys:String x:Key="nc_as_custom">Расширенная кастомизация</sys:String>
@@ -441,9 +452,11 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="bixby_remap_enable_desc">Запустите Bixby на вашем телефоне Samsung или выполните свое действие на этом ПК когда разбужен</sys:String>
     <sys:String x:Key="bixby_remap_lang">Язык пробуждения Bixby</sys:String>
     <sys:String x:Key="bixby_remap_action">Свое действие при пробуждении</sys:String>
-    <sys:String x:Key="bixby_remap_note">Скажите 'Hey Bixby!' для активации. Фраза активации может отличаться в зависимости от настроек языка.
+    <sys:String x:Key="bixby_remap_note">
+        Скажите 'Hey Bixby!' для активации. Фраза активации может отличаться в зависимости от настроек языка.
 
-Переназначение действует только на этом устройстве. Если вы подключите свои наушники к устройству Samsung, голосовое пробуждение будет вызывать Bixby. На других устройствах и телефонах других марок, эта опция не будет ничего выполнять.</sys:String>
+        Переназначение действует только на этом устройстве. Если вы подключите свои наушники к устройству Samsung, голосовое пробуждение будет вызывать Bixby. На других устройствах и телефонах других марок, эта опция не будет ничего выполнять.
+    </sys:String>
 
 
     <!--Credits-->
@@ -458,8 +471,10 @@ Samsung Wearable на Android функционал этой программы, 
     <!--Connection lost page-->
     <sys:String x:Key="connlost_header">Не удалось установить соединение</sys:String>
     <sys:String x:Key="connlost_description_p1">Не удалось подключиться к вашим наушникам.</sys:String>
-    <sys:String x:Key="connlost_description_p2">Пожалуйста, проверьте настройки Bluetooth и убедитесь, что ваши наушники включены и сопряжены с этим компьютером.
-Вы также можете подключить новую пару наушников. Для этого выберите "Опции &gt; Отменить сопряжение"</sys:String>
+    <sys:String x:Key="connlost_description_p2">
+        Пожалуйста, проверьте настройки Bluetooth и убедитесь, что ваши наушники включены и сопряжены с этим компьютером.
+        Вы также можете подключить новую пару наушников. Для этого выберите "Опции &gt; Отменить сопряжение"
+    </sys:String>
     <sys:String x:Key="connlost_description_p3">Дополнительная информация:</sys:String>
     <sys:String x:Key="connlost_noinfo">Не удалось собрать дополнительную информацию</sys:String>
     <sys:String x:Key="connlost_disconnected">Устройство отключено</sys:String>
@@ -468,13 +483,15 @@ Samsung Wearable на Android функционал этой программы, 
 
     <!--Firmware update disclaimer-->
     <sys:String x:Key="fw_disclaimer">Отказ от ответственности</sys:String>
-    <sys:String x:Key="fw_disclaimer_desc">Этот инструмент обновления прошивки является точной копией официального средства обновления, которое можно найти в официальном приложении Samsung для Android. Я тщательно протестировал эту реализацию в различных обстоятельствах (нормальная работа, потеря соединения, намеренно поврежденные пакеты Bluetooth и т. д.), не испытывая никаких проблем. Тем не менее, я не буду нести никакой ответственности, если что-то пойдет не так, поскольку обновления прошивки изменяют жизненно важные компоненты системы, и с ними всегда следует обращаться с осторожностью. 
+    <sys:String x:Key="fw_disclaimer_desc">
+        Этот инструмент обновления прошивки является точной копией официального средства обновления, которое можно найти в официальном приложении Samsung для Android. Я тщательно протестировал эту реализацию в различных обстоятельствах (нормальная работа, потеря соединения, намеренно поврежденные пакеты Bluetooth и т. д.), не испытывая никаких проблем. Тем не менее, я не буду нести никакой ответственности, если что-то пойдет не так, поскольку обновления прошивки изменяют жизненно важные компоненты системы, и с ними всегда следует обращаться с осторожностью.
 
-ДАУНГРЕЙДИНГ: Несмотря на то что даунгрейдинг до старших версий возможен и я не столкнулся с проблемами, это может вызвать непредвиденные проблемы и должно выполняться только в случае необходимости. Восстановление заводских настроек после перехода на более раннюю версию рекомендуется, но обычно не требуется. 
-ПОЛЬЗОВАТЕЛЬСКАЯ ПРОШИВКА: Вы также можете загружать файлы прошивки с жесткого диска. НЕ прошивайте на ваше устройство бинарные файлы прошивки, предназначенные для ДРУГИХ моделей. 
- 
-Это приложение распространяется под лицензией GPLv3. Используя его, вы принимаете лицензию и ограничение ответственности. Нажмите «Продолжить», чтобы принять.</sys:String>
-    
+        ДАУНГРЕЙДИНГ: Несмотря на то что даунгрейдинг до старших версий возможен и я не столкнулся с проблемами, это может вызвать непредвиденные проблемы и должно выполняться только в случае необходимости. Восстановление заводских настроек после перехода на более раннюю версию рекомендуется, но обычно не требуется.
+        ПОЛЬЗОВАТЕЛЬСКАЯ ПРОШИВКА: Вы также можете загружать файлы прошивки с жесткого диска. НЕ прошивайте на ваше устройство бинарные файлы прошивки, предназначенные для ДРУГИХ моделей.
+
+        Это приложение распространяется под лицензией GPLv3. Используя его, вы принимаете лицензию и ограничение ответственности. Нажмите «Продолжить», чтобы принять.
+    </sys:String>
+
     <!--Firmware selection-->
     <sys:String x:Key="fw_select_header">Обновление прошивки</sys:String>
     <sys:String x:Key="fw_select_instructions">Пожалуйста, выберите образ прошивки для загрузки и установки. Или как вариант, вы можете выбрать образ прошивки с вашего жесткого диска воспользовавшись 'Расширенные... &gt; Выбрать образ с диска'</sys:String>
@@ -484,9 +501,11 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="fw_select_advanced">Расширенные...</sys:String>
     <sys:String x:Key="fw_select_install">Установить прошивку</sys:String>
     <sys:String x:Key="fw_select_from_disk">Выбрать образ с диска...</sys:String>
-    <sys:String x:Key="fw_select_external_note">НЕ ПРОШИВАЙТЕ бинарные файлы предназначенные для ДРУГИХ моделей на ваше устройство. Прошивка Buds Pro на Buds Plus не разблокирует дополнительных функций, вместо этого она навсегда сломает ваше устройство.
+    <sys:String x:Key="fw_select_external_note">
+        НЕ ПРОШИВАЙТЕ бинарные файлы предназначенные для ДРУГИХ моделей на ваше устройство. Прошивка Buds Pro на Buds Plus не разблокирует дополнительных функций, вместо этого она навсегда сломает ваше устройство.
 
-Нажмите 'Продолжить' чтобы выбрать бинарный файл.</sys:String>
+        Нажмите 'Продолжить' чтобы выбрать бинарный файл.
+    </sys:String>
     <sys:String x:Key="fw_select_unsupported_selection">Неверный выбор. Пожалуйста, выберите совместимую прошивку из списка.</sys:String>
     <sys:String x:Key="fw_select_downloading">Загрузка...</sys:String>
     <sys:String x:Key="fw_select_net_error">Ошибка связи с сервером. Загрузка прошивок сейчас невозможна.</sys:String>
@@ -495,12 +514,14 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="fw_select_unknown_build">Неизвестное имя сборки</sys:String>
     <sys:String x:Key="fw_select_verify_fail">Не удалось проверить прошивку</sys:String>
     <sys:String x:Key="fw_select_confirm">Вы собираетесь прошить '{0}' на ваше '{1}' устройство</sys:String>
-    <sys:String x:Key="fw_select_confirm_desc">Убедитесь, что эта информация правильная, в ином случае нажмите 'Отмена' и проверьте настройки.
+    <sys:String x:Key="fw_select_confirm_desc">
+        Убедитесь, что эта информация правильная, в ином случае нажмите 'Отмена' и проверьте настройки.
 
-По возможности проверьте, что оба наушника подключены перед началом. Это не приведет к проблемам во время передачи. В таком случае наушники автоматически отменят передачу и выйдут из режима обновления.
+        По возможности проверьте, что оба наушника подключены перед началом. Это не приведет к проблемам во время передачи. В таком случае наушники автоматически отменят передачу и выйдут из режима обновления.
 
-Нажмите 'Продолжить', чтобы начать обновление.</sys:String>
-  
+        Нажмите 'Продолжить', чтобы начать обновление.
+    </sys:String>
+
     <!--Firmware transfer-->
     <sys:String x:Key="fw_upload_header">Устанавливаю прошивку...</sys:String>
     <sys:String x:Key="fw_upload_progress_session">Создаю новую сессию...</sys:String>
@@ -520,10 +541,12 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="fw_fail_no_magic">Это некорректный бинарный файл. Неверное волшебное число обнаружено в заголовке файла.</sys:String>
     <sys:String x:Key="fw_fail_size_null">Размера этого бинарного файла равен нулю, а значит он не может быть использован для прошивки. Пожалуйста, выберите другой файл.</sys:String>
     <sys:String x:Key="fw_fail_no_segments">Этот бинарный файл не содержит никаких блоков или пуст. Пожалуйста, выберите другой файл.</sys:String>
-    <sys:String x:Key="fw_fail_unknown">Неожиданная ошибка произошла во время расшифровки бинарного файла. Этот файл прошивки может быть поврежден.
+    <sys:String x:Key="fw_fail_unknown">
+        Неожиданная ошибка произошла во время расшифровки бинарного файла. Этот файл прошивки может быть поврежден.
 
-Детали:</sys:String>
-    
+        Детали:
+    </sys:String>
+
     <!--Firmware transfer errors-->
     <sys:String x:Key="fw_fail_connection">Потеряна связь с устройством. Передача обновления отменена.</sys:String>
     <sys:String x:Key="fw_fail_session">Не удалось открыть сессию. Устройство вернуло код ошибки ({0})</sys:String>
@@ -535,7 +558,7 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="fw_fail_session_timeout">Истекло время ожидания на открытие устройством новой сессии</sys:String>
     <sys:String x:Key="fw_fail_control_timeout">Истекло время ожидания на ответ контрольным блоком от устройства</sys:String>
     <sys:String x:Key="fw_fail_copy_timeout">Истекло время ожидания во время процесса передачи</sys:String>
-    
+
     <!--Spatial test-->
     <sys:String x:Key="spatial_header">Пространственный сенсор</sys:String>
     <!--Note: Quaternion = 4-dimensional vector-->
@@ -546,7 +569,7 @@ Samsung Wearable на Android функционал этой программы, 
     <!--Header-->
     <sys:String x:Key="window_minimize">Свернуть</sys:String>
     <sys:String x:Key="window_close">Закрыть</sys:String>
-	
+
     <!--Buds app detected page-->
     <sys:String x:Key="budsapp_header">Информация о Bluetooth совместимости</sys:String>
     <sys:String x:Key="budsapp_text_p1">Официальный клиент Galaxy Buds для Windows 10 установлен вместе с данным приложением.</sys:String>

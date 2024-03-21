@@ -21,7 +21,7 @@
         Focusable="False"
         Title="Galaxy Buds Manager (Popup)"
         PointerPressed="Window_OnPointerPressed">
-    
+
     <Border Name="OuterBorder"
             BorderBrush="{DynamicResource SystemChromeLowColor}"
             BorderThickness="1"
@@ -33,12 +33,12 @@
                     <Animation IterationCount="1"
                                PlaybackDirection="Normal"
                                FillMode="Both"
-                               Duration="0:0:.4"> 
+                               Duration="0:0:.4">
                         <KeyFrame Cue="0%">
-                            <Setter Property="Opacity" Value="0.0"/>
+                            <Setter Property="Opacity" Value="0.0" />
                         </KeyFrame>
                         <KeyFrame Cue="100%">
-                            <Setter Property="Opacity" Value="1.0"/>
+                            <Setter Property="Opacity" Value="1.0" />
                         </KeyFrame>
                     </Animation>
                 </Style.Animations>
@@ -48,12 +48,12 @@
                     <Animation IterationCount="1"
                                PlaybackDirection="Normal"
                                FillMode="Both"
-                               Duration="0:0:.4"> 
+                               Duration="0:0:.4">
                         <KeyFrame Cue="0%">
-                            <Setter Property="Opacity" Value="1.0"/>
+                            <Setter Property="Opacity" Value="1.0" />
                         </KeyFrame>
                         <KeyFrame Cue="100%">
-                            <Setter Property="Opacity" Value="0.0"/>
+                            <Setter Property="Opacity" Value="0.0" />
                         </KeyFrame>
                     </Animation>
                 </Style.Animations>
@@ -61,19 +61,26 @@
         </Border.Styles>
         <Grid Margin="0,0,0,0" Name="Grid" ColumnDefinitions="24,*,24" RowDefinitions="24,35,*,24">
 
-            <Label Content="Blank's Galaxy Buds" Grid.Column="1" Grid.Row="1" FontSize="18" Name="Header" Foreground="{DynamicResource ForegroundTextAltBrush}" />
+            <Label Content="Blank's Galaxy Buds" Grid.Column="1" Grid.Row="1" FontSize="18" Name="Header"
+                   Foreground="{DynamicResource ForegroundTextAltBrush}" />
 
-            <Image Grid.Column="1" Grid.Row="2" Name="ImageLeft" Height="75" Width="75" Source="{DynamicResource LeftBudConnected}" Margin="44,8,203,0" VerticalAlignment="Top" />
-            <Image Grid.Column="1" Grid.Row="2" Name="ImageRight" Height="75" Width="75" Source="{DynamicResource RightBudConnected}" Margin="203,8,44,0" VerticalAlignment="Top" />
+            <Image Grid.Column="1" Grid.Row="2" Name="ImageLeft" Height="75" Width="75"
+                   Source="{DynamicResource LeftBudConnected}" Margin="44,8,203,0" VerticalAlignment="Top" />
+            <Image Grid.Column="1" Grid.Row="2" Name="ImageRight" Height="75" Width="75"
+                   Source="{DynamicResource RightBudConnected}" Margin="203,8,44,0" VerticalAlignment="Top" />
 
             <Label Grid.Column="1" Grid.Row="2" Name="BatteryL" Foreground="{DynamicResource ForegroundTextBrush}"
-				   FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Left%" Margin="44,85,0,0" HorizontalContentAlignment="Center" Width="75"/>
+                   FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Left%" Margin="44,85,0,0"
+                   HorizontalContentAlignment="Center" Width="75" />
             <Label Grid.Column="1" Grid.Row="2" Name="BatteryR" Foreground="{DynamicResource ForegroundTextBrush}"
-				   FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Right%" Margin="0,85,44,0" Width="75" HorizontalContentAlignment="Center"/>
+                   FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Right%"
+                   Margin="0,85,44,0" Width="75" HorizontalContentAlignment="Center" />
             <Label Grid.Column="1" Grid.Row="2" Name="BatteryC" Foreground="{DynamicResource ForegroundTextBrush}"
-				   FontSize="16" VerticalAlignment="Top" Content="Case%" Margin="133,85,133,0" HorizontalContentAlignment="Center"/>
+                   FontSize="16" VerticalAlignment="Top" Content="Case%" Margin="133,85,133,0"
+                   HorizontalContentAlignment="Center" />
             <Label Grid.Column="1" Grid.Row="2" Name="CaseLabel" Foreground="{DynamicResource SubtitleTextBrush}"
-                FontSize="13" VerticalAlignment="Top" Content="{DynamicResource case}" Margin="130,68,130,0" HorizontalContentAlignment="Center"/>
+                   FontSize="13" VerticalAlignment="Top" Content="{DynamicResource case}" Margin="130,68,130,0"
+                   HorizontalContentAlignment="Center" />
         </Grid>
     </Border>
 </Window>

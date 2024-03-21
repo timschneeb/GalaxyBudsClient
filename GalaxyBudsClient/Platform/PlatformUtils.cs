@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using Microsoft.Win32;
 using Serilog;
 
 namespace GalaxyBudsClient.Platform
@@ -58,7 +59,7 @@ namespace GalaxyBudsClient.Platform
                 try
                 {
 #pragma warning disable CA1416
-                    var release = Microsoft.Win32.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion",
+                    var release = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion",
                         "ReleaseId", "")?.ToString();
                     var major = Convert.ToInt32(release?.Substring(0, 2));
                     var minor = Convert.ToInt32(release?.Substring(2, 2));

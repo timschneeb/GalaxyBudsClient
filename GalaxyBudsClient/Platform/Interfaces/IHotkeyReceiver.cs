@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using GalaxyBudsClient.Model.Hotkeys;
+
 // ReSharper disable MemberCanBeProtected.Global
 
 namespace GalaxyBudsClient.Platform.Interfaces

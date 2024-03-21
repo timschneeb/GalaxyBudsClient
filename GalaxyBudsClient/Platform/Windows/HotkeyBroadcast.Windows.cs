@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using GalaxyBudsClient.Platform.Interfaces;
 using WindowsInput;
 using WindowsInput.Native;
-using GalaxyBudsClient.Platform.Interfaces;
 using Key = Avalonia.Input.Key;
 
 namespace GalaxyBudsClient.Platform.Windows

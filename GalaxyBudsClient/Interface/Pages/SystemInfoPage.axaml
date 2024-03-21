@@ -16,7 +16,7 @@
 
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
-            
+
             <controls:SettingsGroup>
                 <controls:SettingsSymbolItem Content="{DynamicResource system_hwver}"
                                              Description="{Binding HwVersion}"
@@ -34,7 +34,7 @@
                                              Description="{Binding ProtocolVersion}"
                                              IsClickEnabled="False" />
             </controls:SettingsGroup>
-            
+
             <controls:SettingsGroup>
                 <controls:SettingsSymbolItem Content="{DynamicResource system_btaddr}"
                                              Description="{Binding BluetoothAddress}"
@@ -43,7 +43,7 @@
                 <controls:SettingsSymbolItem Content="{DynamicResource system_serial}"
                                              Description="{Binding SerialNumber}"
                                              IsClickEnabled="False" />
-                
+
                 <controls:SettingsSymbolItem Content="{DynamicResource system_build_info}"
                                              Description="{Binding BuildString}"
                                              IsClickEnabled="False">
@@ -51,7 +51,7 @@
                         <ext:RequiresFeatureBehavior Feature="BuildInfo" />
                     </Interaction.Behaviors>
                 </controls:SettingsSymbolItem>
-                
+
                 <controls:SettingsSymbolItem Content="{DynamicResource system_sku}"
                                              Description="{Binding DeviceSku}"
                                              IsClickEnabled="False">
@@ -59,7 +59,7 @@
                         <ext:RequiresFeatureBehavior Feature="DebugSku" />
                     </Interaction.Behaviors>
                 </controls:SettingsSymbolItem>
-                
+
                 <controls:SettingsSymbolItem Content="{DynamicResource system_battery_type}"
                                              Description="{Binding BatteryType}"
                                              IsClickEnabled="False">

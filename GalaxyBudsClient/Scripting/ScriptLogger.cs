@@ -1,5 +1,6 @@
 using GalaxyBudsClient.Scripting.Hooks;
 using Serilog;
+
 // ReSharper disable UnusedType.Global
 // ReSharper disable TemplateIsNotCompileTimeConstantProblem
 

@@ -1,11 +1,8 @@
 using System;
-using Avalonia.Controls;
 using Avalonia.Interactivity;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Interface.Controls;
 using GalaxyBudsClient.Interface.Dialogs;
-using GalaxyBudsClient.Interface.Services;
-using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;

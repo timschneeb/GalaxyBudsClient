@@ -1,4 +1,5 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <sys:String x:Key="ResourceDictionaryName">Loc-tr</sys:String>
 
@@ -309,10 +310,12 @@
     <sys:String x:Key="coredump_dl_trace_progress">İndiriliyor: izleme dökümü... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">İndiriliyor: çekirdek dökümü... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bayt)</sys:String>
-    <sys:String x:Key="coredump_dl_note">İndirme sırasında ses akışı geçici olarak duraklatılır. İletim biter bitmez kulaklıklarınızın bağlantısı kesilecek, lütfen bunları manuel olarak yeniden bağlayın.
-Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
+    <sys:String x:Key="coredump_dl_note">
+        İndirme sırasında ses akışı geçici olarak duraklatılır. İletim biter bitmez kulaklıklarınızın bağlantısı kesilecek, lütfen bunları manuel olarak yeniden bağlayın.
+        Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
 
-İletim sıkışırsa veya cihazın bağlantısı zamanından önce kesilir ise, indirmeyi yeniden başlatmanız gerekir. Bu özellik şu anda çok kararsızdır.</sys:String>
+        İletim sıkışırsa veya cihazın bağlantısı zamanından önce kesilir ise, indirmeyi yeniden başlatmanız gerekir. Bu özellik şu anda çok kararsızdır.
+    </sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">Dökümler kaydedilemedi</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">Geçici konumdan döküm kopyalanamıyor. Sebep: {0}</sys:String>
     <sys:String x:Key="coredump_dl_save_success_title">Dökümler başarıyla kaydedildi</sys:String>
@@ -465,9 +468,11 @@ Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
     <sys:String x:Key="bixby_remap_enable_desc">Samsung cihazında Bizby uygulamasını aç veya bu bilgisayar uyandığında özel bir hareket çalıştır</sys:String>
     <sys:String x:Key="bixby_remap_lang">Bixby uyanma dili</sys:String>
     <sys:String x:Key="bixby_remap_action">Özel uyanma hareketi</sys:String>
-    <sys:String x:Key="bixby_remap_note">'Hey Bixby!' diyerek aktif et. Aktivasyon ifadesi bazı dil ayarlarında farklı olabilir.
+    <sys:String x:Key="bixby_remap_note">
+        'Hey Bixby!' diyerek aktif et. Aktivasyon ifadesi bazı dil ayarlarında farklı olabilir.
 
-Yeniden eşleme yapılandırması yalnızca bu cihazda etkindir. Kulaklıklarınızı bir Samsung cihazına bağlarsanız, sesli uyandırma Bixby'yi normal şekilde etkinleştirir. Bu cihaz ve Samsung olmayan telefonlar dışındaki cihazlarda bu özellik herhangi bir işlemi tetiklemez.</sys:String>
+        Yeniden eşleme yapılandırması yalnızca bu cihazda etkindir. Kulaklıklarınızı bir Samsung cihazına bağlarsanız, sesli uyandırma Bixby'yi normal şekilde etkinleştirir. Bu cihaz ve Samsung olmayan telefonlar dışındaki cihazlarda bu özellik herhangi bir işlemi tetiklemez.
+    </sys:String>
 
 
     <!--Credits-->
@@ -491,12 +496,14 @@ Yeniden eşleme yapılandırması yalnızca bu cihazda etkindir. Kulaklıkların
 
     <!--Firmware update disclaimer-->
     <sys:String x:Key="fw_disclaimer">Sorumluluk Reddi</sys:String>
-    <sys:String x:Key="fw_disclaimer_desc">Bu ürün yazılımı güncelleme aracı, Samsung'un resmi Android uygulamasında bulunan resmi güncelleyicinin doğru bir kopyasıdır. Bu uygulamayı çeşitli koşullar altında (normal çalışma, bağlantı kaybı, kasıtlı olarak bozulmuş Bluetooth paketleri, ...) herhangi bir sorun yaşamadan kapsamlı bir şekilde test ettim. Yine de, ürün yazılımı güncellemeleri hayati sistem bileşenlerini değiştirdiğinden ve her zaman dikkatli bir şekilde ele alınması gerektiğinden, bir şeyler ters giderse herhangi bir sorumluluk kabul etmem.
+    <sys:String x:Key="fw_disclaimer_desc">
+        Bu ürün yazılımı güncelleme aracı, Samsung'un resmi Android uygulamasında bulunan resmi güncelleyicinin doğru bir kopyasıdır. Bu uygulamayı çeşitli koşullar altında (normal çalışma, bağlantı kaybı, kasıtlı olarak bozulmuş Bluetooth paketleri, ...) herhangi bir sorun yaşamadan kapsamlı bir şekilde test ettim. Yine de, ürün yazılımı güncellemeleri hayati sistem bileşenlerini değiştirdiğinden ve her zaman dikkatli bir şekilde ele alınması gerektiğinden, bir şeyler ters giderse herhangi bir sorumluluk kabul etmem.
 
-İNDİRME: Daha eski ürün yazılımı sürümlerine geçmek mümkün olsa da ve bununla ilgili hiçbir sorunla karşılaşmadım, beklenmeyen sorunlara neden olabilir ve yalnızca gerektiğinde yapılmalıdır. Sürüm düşürmeden sonra fabrika ayarlarına sıfırlama önerilir, ancak genellikle gerekli değildir.
-ÖZEL FLAŞ: Sabit sürücünüzden ürün yazılımı dosyalarını da yükleyebilirsiniz. DİĞER modeller için tasarlanmış ürün yazılımı binary dosyalarını cihazınıza FLAŞ ETMEYİN.
+        İNDİRME: Daha eski ürün yazılımı sürümlerine geçmek mümkün olsa da ve bununla ilgili hiçbir sorunla karşılaşmadım, beklenmeyen sorunlara neden olabilir ve yalnızca gerektiğinde yapılmalıdır. Sürüm düşürmeden sonra fabrika ayarlarına sıfırlama önerilir, ancak genellikle gerekli değildir.
+        ÖZEL FLAŞ: Sabit sürücünüzden ürün yazılımı dosyalarını da yükleyebilirsiniz. DİĞER modeller için tasarlanmış ürün yazılımı binary dosyalarını cihazınıza FLAŞ ETMEYİN.
 
-Bu uygulama GPLv3 kapsamında lisanslanmıştır. Bunu kullanarak, lisansı ve sorumluluk sınırlamasını kabul etmiş olursunuz. Kabul etmek için 'Devam'a basın.</sys:String>
+        Bu uygulama GPLv3 kapsamında lisanslanmıştır. Bunu kullanarak, lisansı ve sorumluluk sınırlamasını kabul etmiş olursunuz. Kabul etmek için 'Devam'a basın.
+    </sys:String>
 
     <!--Firmware selection-->
     <sys:String x:Key="fw_select_header">Ürün yazılımı güncellemeleri</sys:String>
@@ -507,9 +514,11 @@ Bu uygulama GPLv3 kapsamında lisanslanmıştır. Bunu kullanarak, lisansı ve s
     <sys:String x:Key="fw_select_advanced">Gelişmiş...</sys:String>
     <sys:String x:Key="fw_select_install">Ürün yazılımı yükle</sys:String>
     <sys:String x:Key="fw_select_from_disk">İmajı diskten seç...</sys:String>
-    <sys:String x:Key="fw_select_external_note">DİĞER modellere yönelik ürün yazılımı binary dosyalarını cihazınıza YÜKLEMEYİN. Bir Buds Pro ürün yazılımının bir Buds Plus çiftine yüklenmesi yeni özelliklerin kilidini açmaz, bunun yerine cihazınızı kalıcı olarak yok eder.
+    <sys:String x:Key="fw_select_external_note">
+        DİĞER modellere yönelik ürün yazılımı binary dosyalarını cihazınıza YÜKLEMEYİN. Bir Buds Pro ürün yazılımının bir Buds Plus çiftine yüklenmesi yeni özelliklerin kilidini açmaz, bunun yerine cihazınızı kalıcı olarak yok eder.
 
-Ürün yazılımı binary dosyasını seçmek için 'Devam'a basın.</sys:String>
+        Ürün yazılımı binary dosyasını seçmek için 'Devam'a basın.
+    </sys:String>
     <sys:String x:Key="fw_select_unsupported_selection">Geçersiz seçim. Lütfen listeden uyumlu bir öğe seçin.</sys:String>
     <sys:String x:Key="fw_select_downloading">İndiriliyor...</sys:String>
     <sys:String x:Key="fw_select_net_error">Sunucuyla iletişim kurulamadı. Şu anda ürün yazılımı indirilemiyor.</sys:String>
@@ -517,15 +526,19 @@ Bu uygulama GPLv3 kapsamında lisanslanmıştır. Bunu kullanarak, lisansı ve s
     <sys:String x:Key="fw_select_http_error">HTTP hata kodu:</sys:String>
     <sys:String x:Key="fw_select_unknown_build">Bilinmeyen yapı adı</sys:String>
     <sys:String x:Key="fw_select_verify_fail">Ürün yazılımı doğrulanırken hata</sys:String>
-    <sys:String x:Key="fw_select_verify_model_mismatch_fail">Cihaz yazılımı uyumsuzluğu tespit edildi! Cihaz yazılımı aktarımı iptal edildi.
+    <sys:String x:Key="fw_select_verify_model_mismatch_fail">
+        Cihaz yazılımı uyumsuzluğu tespit edildi! Cihaz yazılımı aktarımı iptal edildi.
 
-{1} cihazınıza {0} cihazı için bir cihaz yazılımı yüklemeye çalışıyorsunuz. Bu, kulaklıklarınızı kalıcı olarak bozabilir.</sys:String>
+        {1} cihazınıza {0} cihazı için bir cihaz yazılımı yüklemeye çalışıyorsunuz. Bu, kulaklıklarınızı kalıcı olarak bozabilir.
+    </sys:String>
     <sys:String x:Key="fw_select_confirm">'{1}' cihazınınzda şunu flaşlamak üzeresiniz: '{0}'</sys:String>
-    <sys:String x:Key="fw_select_confirm_desc">Bu bilgilerin doğru olduğundan emin olun, aksi takdirde 'İptal'e basın ve kurulumunuzu iki kez kontrol edin.
+    <sys:String x:Key="fw_select_confirm_desc">
+        Bu bilgilerin doğru olduğundan emin olun, aksi takdirde 'İptal'e basın ve kurulumunuzu iki kez kontrol edin.
 
-Mümkünse, başlamadan önce her iki kulaklığın da bağlı olduğundan emin olun. Güncelleme aktarılırken bağlantı başarısız olursa herhangi bir soruna neden olmaz. Böyle bir durumda, kulaklıklar aktarım işlemini otomatik olarak iptal edecek ve ürün yazılımı güncelleme modundan çıkacaktır.
+        Mümkünse, başlamadan önce her iki kulaklığın da bağlı olduğundan emin olun. Güncelleme aktarılırken bağlantı başarısız olursa herhangi bir soruna neden olmaz. Böyle bir durumda, kulaklıklar aktarım işlemini otomatik olarak iptal edecek ve ürün yazılımı güncelleme modundan çıkacaktır.
 
-Güncellemeyi başlatmak için 'Devam'a basın.</sys:String>
+        Güncellemeyi başlatmak için 'Devam'a basın.
+    </sys:String>
 
     <!--Firmware transfer-->
     <sys:String x:Key="fw_upload_header">Ürün yazılımı yükleniyor...</sys:String>
@@ -546,9 +559,11 @@ Güncellemeyi başlatmak için 'Devam'a basın.</sys:String>
     <sys:String x:Key="fw_fail_no_magic">Bu ürün yazılımı binary dosyası geçerli değil. Dosya başlığında geçersiz sihirli değer bulundu.</sys:String>
     <sys:String x:Key="fw_fail_size_null">Bu ürün yazılımı binary dosyasının boyutu sıfıra ayarlanmıştır ve flaş için kullanılamaz. Lütfen başka birini seçiniz.</sys:String>
     <sys:String x:Key="fw_fail_no_segments">Bu ürün yazılımı binary dosyası herhangi bir binary bölüm içermiyor ve boş. Lütfen başka birini seçiniz.</sys:String>
-    <sys:String x:Key="fw_fail_unknown">Ürün yazılımı binary dosyasının kodu çözülürken beklenmeyen hata. Bu üretici yazılımı arşivi bozulmuş olabilir.
+    <sys:String x:Key="fw_fail_unknown">
+        Ürün yazılımı binary dosyasının kodu çözülürken beklenmeyen hata. Bu üretici yazılımı arşivi bozulmuş olabilir.
 
-Details:</sys:String>
+        Details:
+    </sys:String>
 
     <!--Firmware transfer errors-->
     <sys:String x:Key="fw_fail_connection">Cihazla bağlantı kesildi. Ürün yazılımı aktarımı iptal edildi.</sys:String>

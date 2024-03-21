@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using Avalonia.Controls;
 using FluentIcons.Common;
+using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model;
@@ -83,7 +84,7 @@ public class EqualizerPageViewModel : MainPageViewModelBase
         PropertyChanged += OnPropertyChanged;
     }
 
-    public override Control CreateView() => new Interface.Pages.EqualizerPage();
+    public override Control CreateView() => new EqualizerPage();
     
     [Reactive] public bool IsEqEnabled { set; get; }
     [Reactive] public int EqPreset { set; get; }

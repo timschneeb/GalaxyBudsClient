@@ -1,4 +1,5 @@
-﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <sys:String x:Key="ResourceDictionaryName">Loc-pt</sys:String>
 
@@ -96,8 +97,10 @@
 
     <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Bem vindo!</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">Olá! Esse gerenciador do Galaxy Buds não é oficial e não é afiliado com a Samsung de nenhuma forma, lembre-se disso.
-        Enquanto esse programa pode fazer muitas coisas que o aplicativo oficial da Samsung não pode, decidi excluir as atualizações de firmware via OTA por segurança. Por favor, use o aplicativo oficial se você precisar.</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">
+        Olá! Esse gerenciador do Galaxy Buds não é oficial e não é afiliado com a Samsung de nenhuma forma, lembre-se disso.
+        Enquanto esse programa pode fazer muitas coisas que o aplicativo oficial da Samsung não pode, decidi excluir as atualizações de firmware via OTA por segurança. Por favor, use o aplicativo oficial se você precisar.
+    </sys:String>
     <sys:String x:Key="welcome_textblock_p2">Se você estiver interessado no que acontece por trás das cortinas, você pode dar uma olhada no meu repositório no GitHub, que inclui um pequeno diário de engenharia reversa. Você também pode enviar uma mensagem para mim no GitHub ou no Telegram @thepbone se tiver algum problema durante o uso desse programa.</sys:String>
     <sys:String x:Key="welcome_textblock_p3">Esse programa suporta o Galaxy Buds (2019), Galaxy Buds+ (2020) e o Galaxy Buds Live.</sys:String>
     <sys:String x:Key="welcome_darkmode">Modo escuro</sys:String>
@@ -164,8 +167,10 @@
     <sys:String x:Key="cact_notice">Aviso</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Ações personalizadas de toque longo só estarão disponíveis enquanto esse programa estiver sendo executado.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">Isso não tem nenhum efeito em dispositivos Android ou quaisquer outros.</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">Para manter as ações personalizadas de toque longo funcionando, esse programa irá iniciar automaticamente junto com o computador.
-        Você pode desabilitar esse comportamento nas configurações.</sys:String>
+    <sys:String x:Key="cact_notice_content_p3">
+        Para manter as ações personalizadas de toque longo funcionando, esse programa irá iniciar automaticamente junto com o computador.
+        Você pode desabilitar esse comportamento nas configurações.
+    </sys:String>
 
     <!--System/Self-Test-->
     <sys:String x:Key="system_header">Informações do sistema</sys:String>
@@ -233,9 +238,11 @@
     <sys:String x:Key="factory_header">Redefinição de fábrica</sys:String>
     <sys:String x:Key="factory_confirm">Confirme a redefinição de fábrica</sys:String>
     <sys:String x:Key="factory_error_title">A redefinição de fábrica falhou</sys:String>
-    <sys:String x:Key="factory_error">O dispositivo retornou o código de erro: {0} 
+    <sys:String x:Key="factory_error">
+        O dispositivo retornou o código de erro: {0}
         Verifique se os dois fones estão ligados e podem ser encontrados.
-        Talvez seja necessário reconectar os fones manualmente.</sys:String>
+        Talvez seja necessário reconectar os fones manualmente.
+    </sys:String>
     <sys:String x:Key="factory_text_p1">Você tem certeza que deseja redefinir os seus fones?</sys:String>
     <sys:String x:Key="factory_text_p2">Após redefinir os seus fones, você precisará reconectá-los manualmente ao computador.</sys:String>
     <sys:String x:Key="factory_text_p3">Tenha certeza que os dois fones estão ligados antes de continuar!</sys:String>
@@ -291,8 +298,10 @@
     <!--Connection lost page-->
     <sys:String x:Key="connlost_header">Não foi possível estabelecer uma conexão</sys:String>
     <sys:String x:Key="connlost_description_p1">Não foi possível conectar com os seus fones de ouvido.</sys:String>
-    <sys:String x:Key="connlost_description_p2">Por favor, verifique suas configurações de Bluetooth e certifique-se de que os seus fones estão ligados e conectados a esse computador.
-        Você pode registrar um novo dispositov, se for preciso. Nesse caso, selecione "Opções &gt; Remover dispositivo".</sys:String>
+    <sys:String x:Key="connlost_description_p2">
+        Por favor, verifique suas configurações de Bluetooth e certifique-se de que os seus fones estão ligados e conectados a esse computador.
+        Você pode registrar um novo dispositov, se for preciso. Nesse caso, selecione "Opções &gt; Remover dispositivo".
+    </sys:String>
     <sys:String x:Key="connlost_description_p3">Informações adicionais:</sys:String>
     <sys:String x:Key="connlost_noinfo">Falha ao coletar informações de erro</sys:String>
     <sys:String x:Key="connlost_connect">Conectar</sys:String>

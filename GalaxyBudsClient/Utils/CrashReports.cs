@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Platform;
 using Sentry;
@@ -27,13 +28,13 @@ public static class CrashReports
                 try
                 {
                     sentryEvent.SetTag("arch",
-                        System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString());
+                        RuntimeInformation.ProcessArchitecture.ToString());
                     sentryEvent.SetTag("bluetooth-mac", Settings.Instance.RegisteredDevice.MacAddress);
                     sentryEvent.SetTag("sw-version",
                         DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");
 
                     sentryEvent.SetExtra("arch",
-                        System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString());
+                        RuntimeInformation.ProcessArchitecture.ToString());
                     sentryEvent.SetExtra("bluetooth-mac",
                         Settings.Instance.RegisteredDevice.MacAddress);
                     sentryEvent.SetExtra("bluetooth-model-saved",

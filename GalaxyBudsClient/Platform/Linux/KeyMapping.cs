@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GalaxyBudsClient.Model.Hotkeys;
 using SharpHook.Native;
+
 #pragma warning disable CS0618 // Type or member is obsolete
 
 namespace GalaxyBudsClient.Platform.Linux;

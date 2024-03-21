@@ -1,4 +1,5 @@
-﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <sys:String x:Key="ResourceDictionaryName">Loc-gr</sys:String>
 
@@ -112,7 +113,7 @@
     <sys:String x:Key="hotkey_edit_action">Λειτουργία</sys:String>
     <sys:String x:Key="hotkey_edit_preview">Προεπισκόπηση συντόμευσης:</sys:String>
     <sys:String x:Key="hotkey_edit_header">Επιλέξτε μία συντόμευση πληκτρολογίου</sys:String>
-    
+
     <!--Hotkey page-->
     <sys:String x:Key="hotkey_header">Συντομεύσεις πληκτρολογίου</sys:String>
     <sys:String x:Key="hotkey_add">Ορισμός νέας συντόμευσης</sys:String>
@@ -147,11 +148,13 @@
     <sys:String x:Key="event_manager_visible">Εμφάνιση/απόκρυψη παραθύρου διαχείρισης</sys:String>
     <sys:String x:Key="event_display_battery_popup">Εμφάνιση αναδυόμενου παραθύρου μπαταρίας</sys:String>
     <sys:String x:Key="event_connect">Σύνδεση συσκευής</sys:String>
-    
+
     <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Καλώς ήρθατε!</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">Γειά! Αυτός η εφαρμογή είναι ανεπίσημη και δεν συνδέεται με κανέναν τρόπο με τη Samsung .
-Παρόλο που αυτή η εφαρμογή μπορεί να κάνει πολλά πράγματα που η επίσημη εφαρμογή Samsung Wearable για Android δεν μπορεί, αποφάσισα να μην συμπεριλάβω το πρόγραμμα ενημερώσεων Firmware για λόγους ασφαλείας. Παρακαλώ χρησιμοποιείστε την επίσημη εφαρμογή αν χρειαστεί να ενημερώσετε τη συσκευή σας.</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">
+        Γειά! Αυτός η εφαρμογή είναι ανεπίσημη και δεν συνδέεται με κανέναν τρόπο με τη Samsung .
+        Παρόλο που αυτή η εφαρμογή μπορεί να κάνει πολλά πράγματα που η επίσημη εφαρμογή Samsung Wearable για Android δεν μπορεί, αποφάσισα να μην συμπεριλάβω το πρόγραμμα ενημερώσεων Firmware για λόγους ασφαλείας. Παρακαλώ χρησιμοποιείστε την επίσημη εφαρμογή αν χρειαστεί να ενημερώσετε τη συσκευή σας.
+    </sys:String>
     <sys:String x:Key="welcome_textblock_p2">Αν σας ενδιαφέρει να ανακαλύψετε τι συμβαίνει στο παρασκήνιο, μπορείτε να επισκεφτείτε το GitHub repository μου που περιέχει ένα μικρό ημερολόγιο με την ανάστροφη μηχανική που χρειάστηκε. Μπορείτε επίσης να επικοινωνήσετε μαζί μου σε GitHub και Telegram @thepbone αν αντιμετωπίσετε κάποιο πρόβλημα.</sys:String>
     <sys:String x:Key="welcome_textblock_p3">Η εφαρμογή υποστηρίζει όλα τα μοντέλα Galaxy Buds.</sys:String>
     <sys:String x:Key="welcome_darkmode">Σκούρο θέμα</sys:String>
@@ -235,8 +238,10 @@
     <sys:String x:Key="cact_notice">Προειδοποίηση</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Οι προσαρμοσμένες επιλογές παρατεταμένου αγγίγματος είναι διαθέσιμες μόνο όταν αυτή η εφαρμογή εκτελείται στο παρασκήνιο.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">Δεν λειτουργεί σε Android ή άλλες συσκευές.</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">Για την συνεχή υποστήριξη αυτής της δυνατότητας, η εφαρμογή θα εκτελείται αυτόματα κατά την εκκίνηση του συστήματος και θα τρέχει στο παρασκήνιο.
-Μπορείτε να απενεργοποιήσετε αυτή τη συμπεριφορά στις ρυθμίσεις.</sys:String>
+    <sys:String x:Key="cact_notice_content_p3">
+        Για την συνεχή υποστήριξη αυτής της δυνατότητας, η εφαρμογή θα εκτελείται αυτόματα κατά την εκκίνηση του συστήματος και θα τρέχει στο παρασκήνιο.
+        Μπορείτε να απενεργοποιήσετε αυτή τη συμπεριφορά στις ρυθμίσεις.
+    </sys:String>
 
     <!--System/Self-Test-->
     <sys:String x:Key="system_overview_header">Σύστημα</sys:String>
@@ -278,7 +283,7 @@
     <sys:String x:Key="selftest_fail">Αποτυχία</sys:String>
     <sys:String x:Key="selftest_pass_long">Όλα τα τεστ πέρασαν επιτυχώς</sys:String>
     <sys:String x:Key="selftest_fail_long">Ένα ή περισσότερα τεστ απέτυχαν</sys:String>
-    
+
     <sys:String x:Key="coredump_header">Μεταφορά δεδομένων...</sys:String>
     <sys:String x:Key="coredump_dl_progress_prepare">Προετοιμασία λήψης...</sys:String>
     <sys:String x:Key="coredump_dl_progress_cancelled">Η λήψη ακυρώθηκε</sys:String>
@@ -286,16 +291,18 @@
     <sys:String x:Key="coredump_dl_trace_progress">Λήψη δεδομένων trace dump... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">Λήψη δεδομένων core dump... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytes)</sys:String>
-    <sys:String x:Key="coredump_dl_note">Η αναπαραγωγή ήχου έχει προσωρινά διακοπεί λόγω της μεταφοράς δεδομένων. Τα ακουστικά σας θα αποσυνδεθούν όταν η λήψη ολοκληρωθεί. Παρακαλώ ξανασυνδέστε τα χειροκίνητα.
-Μετά το πέρας της διαδικασίας, θα ερωτηθείτε για την τοποθεσία αποθήκευσης των συλλεχθέντων δεδομένων.
+    <sys:String x:Key="coredump_dl_note">
+        Η αναπαραγωγή ήχου έχει προσωρινά διακοπεί λόγω της μεταφοράς δεδομένων. Τα ακουστικά σας θα αποσυνδεθούν όταν η λήψη ολοκληρωθεί. Παρακαλώ ξανασυνδέστε τα χειροκίνητα.
+        Μετά το πέρας της διαδικασίας, θα ερωτηθείτε για την τοποθεσία αποθήκευσης των συλλεχθέντων δεδομένων.
 
-Αν η μεταφορά κολλήσει ή η συσκευή αποσυνδεθεί πρόωρα, θα χρειαστεί να επανεκκινήσετε τη λήψη. Αυτή η λειτουργία είναι πολύ ασταθής προς το παρόν.</sys:String>
+        Αν η μεταφορά κολλήσει ή η συσκευή αποσυνδεθεί πρόωρα, θα χρειαστεί να επανεκκινήσετε τη λήψη. Αυτή η λειτουργία είναι πολύ ασταθής προς το παρόν.
+    </sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">Αποτυχία αποθήκευσης δεδομένων</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">Αδυναμία αντιγραφής δεδομένων από την προσωρινή τοποθεσία. Αιτία: {0}</sys:String>
     <sys:String x:Key="coredump_dl_save_success_title">Επιτυχία αποθήκευσης δεδομένων</sys:String>
     <sys:String x:Key="coredump_dl_save_success">{0} dump(s) μεταφέρθηκαν στο '{1}'</sys:String>
     <sys:String x:Key="coredump_dl_save_dialog_title">Επιλέξτε τοποθεσία αποθήκευσης...</sys:String>
-    
+
     <!--Settings-->
     <sys:String x:Key="settings_header">Ρυθμίσεις</sys:String>
 
@@ -310,7 +317,7 @@
     <sys:String x:Key="settings_autostart">Έναρξη εφαρμογής κατά την εκκίνηση του συστήματος</sys:String>
     <sys:String x:Key="settings_autostart_description">Έναρξη της εφαρμογής κατά την εκκίνηση του συστήματος ελαχιστοποιημένη στη γραμμή εργασιών</sys:String>
     <sys:String x:Key="settings_autostart_permission">Αδυναμία ενημέρωσης εγγραφής αυτόματης εκκίνησης στο μητρώο. Η πρόσβαση στο Μητρώο (HKCU) έχει απενεργοποιηθεί από το διαχειριστή του συστήματός σας.</sys:String>
-    
+
     <sys:String x:Key="settings_connpopup">Διαχείριση αναδυόμενου παραθύρου σύνδεσης</sys:String>
     <sys:String x:Key="settings_devmode">Ρυθμίσεις για προγραμματιστές</sys:String>
 
@@ -332,9 +339,11 @@
     <sys:String x:Key="factory_header">Επαναφορά εργοστασιακών ρυθμίσεων</sys:String>
     <sys:String x:Key="factory_confirm">Επιβεβαίωση επαναφοράς</sys:String>
     <sys:String x:Key="factory_error_title">Αποτυχία επαναφοράς εργοστασιακών ρυθμίσεων</sys:String>
-    <sys:String x:Key="factory_error">Η συσκευή επέστρεψε κωδικό σφάλματος: {0}
-Βεβαιωθείτε ότι και τα δύο Earbuds είναι ενεργά και προσβάσιμα.
-Πιθανόν να χρειαστεί να επανασυνδέσετε χειροκίνητα τα ακουστικά σας.</sys:String>
+    <sys:String x:Key="factory_error">
+        Η συσκευή επέστρεψε κωδικό σφάλματος: {0}
+        Βεβαιωθείτε ότι και τα δύο Earbuds είναι ενεργά και προσβάσιμα.
+        Πιθανόν να χρειαστεί να επανασυνδέσετε χειροκίνητα τα ακουστικά σας.
+    </sys:String>
     <sys:String x:Key="factory_text_p1">Είστε σίγουροι ότι θέλετε να επαναφέρετε τα Earbuds σας;</sys:String>
     <sys:String x:Key="factory_text_p2">Μετά την επαναφορά στις εργοστασιακές ρυθμίσεις, θα χρειαστεί να επανασυνδέσετε χειροκίνητα τα ακουστικά σας στον υπολογιστή.</sys:String>
     <sys:String x:Key="factory_text_p3">Βεβαιωθείτε ότι και τα δύο ακουστικά είναι ενεργά πριν προχωρήσετε!</sys:String>
@@ -353,7 +362,7 @@
     <sys:String x:Key="eq_stereo_balance">Αριστερά/δεξιά ισορροπία ήχου</sys:String>
     <sys:String x:Key="eq_stereo_balance_value">{0}% αριστερά; {1}% δεξιά</sys:String>
     <sys:String x:Key="eq_stereo_balance_neutral">Ουδέτερο</sys:String>
-    
+
     <sys:String x:Key="eq_bass">Ενίσχυση Μπάσου</sys:String>
     <sys:String x:Key="eq_soft">Απαλό</sys:String>
     <sys:String x:Key="eq_dynamic">Δυναμικό</sys:String>
@@ -368,7 +377,7 @@
     <sys:String x:Key="nc_voicedetect_description">Κατά την ανίχνευση της φωνής σας, αυτόματη ενεργοποίηση της λειτουργίας Ήχων περιβάλλοντος και μείωση της έντασης των πολυμέσων για την διευκόλυνση της συζήτησης</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">Λήξη περιόδου ομιλίας</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} δευτερόλεπτα</sys:String>
-    
+
     <!--Ambient sound-->
     <sys:String x:Key="as_header">Ήχοι περιβάλλοντος</sys:String>
     <sys:String x:Key="as_enable">Ενεργοποίηση ήχων περιβάλλοντος</sys:String>
@@ -381,7 +390,7 @@
     <sys:String x:Key="as_scale_moderate">Μέτρια</sys:String>
     <sys:String x:Key="as_scale_high">Υψηλή</sys:String>
     <sys:String x:Key="as_scale_extraloud">Πολύ υψηλή</sys:String>
-    
+
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Ρυθμίσεις για προχωρημένους</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} or later</sys:String>
@@ -410,14 +419,16 @@
     <!--Connection lost page-->
     <sys:String x:Key="connlost_header">Αδυναμία σύνδεσης</sys:String>
     <sys:String x:Key="connlost_description_p1">Αδυναμία σύνδεσης με τα earbuds σας.</sys:String>
-    <sys:String x:Key="connlost_description_p2">Παρακαλώ ελέγξτε τις ρυθμίσεις του Bluetooth και βεβαιωθείτε ότι τα Earbuds είναι ενεργά και συζευγμένα με τον υπολογιστή.
-Μπορείτε να καταχωρήσετε ένα νέο ζευγάρι αν χρειάζεται. Σε αυτή την περίπτωση,  παρακαλώ επιλέξτε "Επιλογές &gt; Κατάργηση συσκευής".</sys:String>
+    <sys:String x:Key="connlost_description_p2">
+        Παρακαλώ ελέγξτε τις ρυθμίσεις του Bluetooth και βεβαιωθείτε ότι τα Earbuds είναι ενεργά και συζευγμένα με τον υπολογιστή.
+        Μπορείτε να καταχωρήσετε ένα νέο ζευγάρι αν χρειάζεται. Σε αυτή την περίπτωση,  παρακαλώ επιλέξτε "Επιλογές &gt; Κατάργηση συσκευής".
+    </sys:String>
     <sys:String x:Key="connlost_description_p3">Επιπλέον πληροφορίες:</sys:String>
     <sys:String x:Key="connlost_noinfo">Αδυναμία λήψης πληροφοριών σφάλματος</sys:String>
     <sys:String x:Key="connlost_disconnected">Η συσκευή αποσυνδέθηκε</sys:String>
     <sys:String x:Key="connlost_connect">Σύνδεση</sys:String>
     <sys:String x:Key="connlost_connecting">Σύνδεση...</sys:String>
-    
+
     <!--Header-->
     <sys:String x:Key="window_minimize">Ελαχιστοποίηση</sys:String>
     <sys:String x:Key="window_close">Κλείσιμο</sys:String>

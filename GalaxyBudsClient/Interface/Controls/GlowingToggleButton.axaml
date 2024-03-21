@@ -4,17 +4,17 @@
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              ClipToBounds="False"
              x:DataType="controls:GlowingToggleButton">
-    
+
     <Design.DataContext>
         <controls:GlowingToggleButton />
     </Design.DataContext>
-    
-    <Grid HorizontalAlignment="Center" 
-          VerticalAlignment="Center" 
+
+    <Grid HorizontalAlignment="Center"
+          VerticalAlignment="Center"
           ClipToBounds="False">
         <Button Name="GlowButton"
                 Background="{DynamicResource AccentFillColorDefaultBrush}"
-                Foreground="{DynamicResource AccentFillColorDefaultBrush}" 
+                Foreground="{DynamicResource AccentFillColorDefaultBrush}"
                 Content="{Binding #Button.Content}"
                 ClipToBounds="False">
             <Button.Styles>
@@ -37,10 +37,10 @@
                 <Style Selector="Button[Tag=Glowing]">
                     <Style.Animations>
                         <Animation IterationCount="Infinite"
-                                   PlaybackDirection="Alternate" 
+                                   PlaybackDirection="Alternate"
                                    Duration="0:0:2">
                             <Animation.Easing>
-                                <QuadraticEaseInOut/>
+                                <QuadraticEaseInOut />
                             </Animation.Easing>
                             <KeyFrame Cue="0%">
                                 <Setter Property="Opacity" Value="0.4" />
