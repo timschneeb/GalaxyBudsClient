@@ -72,9 +72,9 @@ public class FindMyBudsPageViewModel : MainPageViewModelBase
     {
         WarningText = e.WearState switch
         {
-            WearStates.Both => Loc.Resolve("fmg_warning_both"),
-            WearStates.L => Loc.Resolve("fmg_warning_left"),
-            WearStates.R => Loc.Resolve("fmg_warning_right"),
+            LegacyWearStates.Both => Loc.Resolve("fmg_warning_both"),
+            LegacyWearStates.L => Loc.Resolve("fmg_warning_left"),
+            LegacyWearStates.R => Loc.Resolve("fmg_warning_right"),
             _ => null
         };
     }

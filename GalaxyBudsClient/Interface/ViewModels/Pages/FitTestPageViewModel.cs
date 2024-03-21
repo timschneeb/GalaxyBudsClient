@@ -55,7 +55,7 @@ public class FitTestPageViewModel : SubPageViewModelBase
 
     private void OnStatusUpdated(object? sender, IBasicStatusUpdate e)
     {
-        WarningText = e.WearState != WearStates.Both ? Loc.Resolve("gft_warning") : null;
+        WarningText = e.WearState != LegacyWearStates.Both ? Loc.Resolve("gft_warning") : null;
     }
    
     private void OnFitTestResultReceived(object? sender, FitTestParser result)

@@ -203,7 +203,7 @@ namespace GalaxyBudsClient.Model
             ClosedCase = 4
         }
 
-        public enum WearStates
+        public enum LegacyWearStates
         {
             None = 0,
             R = 1,
