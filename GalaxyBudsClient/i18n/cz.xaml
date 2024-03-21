@@ -1,4 +1,5 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <sys:String x:Key="ResourceDictionaryName">Loc-cz</sys:String>
 
@@ -100,7 +101,7 @@
     <sys:String x:Key="hotrec_empty">Žádná</sys:String>
     <sys:String x:Key="hotrec_note">Poznámka: Kvůli User Interface Privacy Isolation (UIPI) mohou pouze aplikace stejné nebo nižší úrovně správně snímat klávesové zkratky.</sys:String>
 
-<!--Hotkey Action Builder Dialog-->
+    <!--Hotkey Action Builder Dialog-->
     <sys:String x:Key="hotkey_edit_title">Úprava zkratek</sys:String>
     <sys:String x:Key="hotkey_edit_invalid">Nesprávná volba zkratky</sys:String>
     <sys:String x:Key="hotkey_edit_invalid_desc">Vyberte prosím alespoň jedno tlačítko a jeden modifikátor</sys:String>
@@ -150,8 +151,10 @@
 
     <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Vítejte!</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">Ahoj! Tohle je neoficiální Galaxy Buds Manager a není nijak spojen se společností Samsung, pamatujte si to prosím.
-I když tento program umí spoustu věcí co originální aplikace Samsung Wearable na Android neumí, rozhodl jsem se do ni nezahrnovat nástroj pro aktualizaci firmwaru (OTA) a to z důvodu bezpečnosti. Pokud tedy potřebujete nainstalovat aktualizaci, použijte aplikaci výrobce.</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">
+        Ahoj! Tohle je neoficiální Galaxy Buds Manager a není nijak spojen se společností Samsung, pamatujte si to prosím.
+        I když tento program umí spoustu věcí co originální aplikace Samsung Wearable na Android neumí, rozhodl jsem se do ni nezahrnovat nástroj pro aktualizaci firmwaru (OTA) a to z důvodu bezpečnosti. Pokud tedy potřebujete nainstalovat aktualizaci, použijte aplikaci výrobce.
+    </sys:String>
     <sys:String x:Key="welcome_textblock_p2">Pokud vás zajímá co se děje v pozadí této aplikace, můžete sledovat můj repositář na GitHubu. Naleznete tam i menší návod jak jsem tuto aplikaci vytvořil pomocí reverzního inženýrství. V případě zjištění jakéhokoliv problému mi můžete napsat přes GitHub či na Telegram @thepbone.</sys:String>
     <sys:String x:Key="welcome_textblock_p3">Tato aplikace podporuje všechna zařízení Galaxy Buds.</sys:String>
     <sys:String x:Key="welcome_darkmode">Tmavý režim</sys:String>
@@ -308,10 +311,12 @@ I když tento program umí spoustu věcí co originální aplikace Samsung Weara
     <sys:String x:Key="coredump_dl_trace_progress">Stahování výpisu trasování... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">Stahování výpisu jádra... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytů)</sys:String>
-    <sys:String x:Key="coredump_dl_note">Během stahování je zvukový stream dočasně pozastaven. Vaše sluchátka se odpojí, jakmile přenos skončí, prosím, znovu ručně.
-Po dokončení budete vyzváni k výběru adresáře pro všechny shromážděných údajů.
+    <sys:String x:Key="coredump_dl_note">
+        Během stahování je zvukový stream dočasně pozastaven. Vaše sluchátka se odpojí, jakmile přenos skončí, prosím, znovu ručně.
+        Po dokončení budete vyzváni k výběru adresáře pro všechny shromážděných údajů.
 
-Je-li přenos zaseklý nebo se zařízení předčasně odpojilo, musíte restartovat stahování. Tato funkce je v současné době velmi nestabilní.</sys:String>
+        Je-li přenos zaseklý nebo se zařízení předčasně odpojilo, musíte restartovat stahování. Tato funkce je v současné době velmi nestabilní.
+    </sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">Uložení výpisu se nezdařilo</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">Nelze kopírovat výpis z dočasného umístění. Důvod: {0}</sys:String>
     <sys:String x:Key="coredump_dl_save_success_title">Výpisy byly úspěšně uloženy</sys:String>
@@ -364,9 +369,11 @@ Je-li přenos zaseklý nebo se zařízení předčasně odpojilo, musíte restar
     <sys:String x:Key="factory_header">Obnova továrního nastavení</sys:String>
     <sys:String x:Key="factory_confirm">Potvrdit obnovu továrního nastavení</sys:String>
     <sys:String x:Key="factory_error_title">Obnova továrního nastavení selhala</sys:String>
-    <sys:String x:Key="factory_error">Kód chyby: {0}
-Ujistěte se, že jsou sluchátka zapnuta a v dosahu.
-Možná budete muset sluchátka ručně znovu připojit.</sys:String>
+    <sys:String x:Key="factory_error">
+        Kód chyby: {0}
+        Ujistěte se, že jsou sluchátka zapnuta a v dosahu.
+        Možná budete muset sluchátka ručně znovu připojit.
+    </sys:String>
     <sys:String x:Key="factory_text_p1">Jste si jistí, že chcete obnovit svá sluchátka?</sys:String>
     <sys:String x:Key="factory_text_p2">Po obnově továrního nastavení budete muset ručně sluchátka znovu připojit k počítači.</sys:String>
     <sys:String x:Key="factory_text_p3">Ujistěte se, že jsou vaše sluchátka zapnuta než budete pokračovat!</sys:String>
@@ -451,9 +458,11 @@ Možná budete muset sluchátka ručně znovu připojit.</sys:String>
     <sys:String x:Key="bixby_remap_enable_desc">Spustí Bixby na vašem telefonu Samsung nebo spustí vlastní akci na tomto počítači při probuzení.</sys:String>
     <sys:String x:Key="bixby_remap_lang">Jazky vzbuzení Bixby</sys:String>
     <sys:String x:Key="bixby_remap_action">Vlastní akce probuzení</sys:String>
-    <sys:String x:Key="bixby_remap_note">Řekněte 'Hey Bixby!' pro aktivaci. Aktivovací fráze v se může lišit v jiných jazykových nastavení.
+    <sys:String x:Key="bixby_remap_note">
+        Řekněte 'Hey Bixby!' pro aktivaci. Aktivovací fráze v se může lišit v jiných jazykových nastavení.
 
-Konfigurace přemapování je aktivní pouze na tomto zařízení. Pokud připojíte sluchátka k zařízení Samsung, hlasové probuzení normálně aktivuje Bixby. Na jiných zařízeních, než je toto, a na telefonech jiných výrobců, tato funkce nespustí žádnou akci.</sys:String>
+        Konfigurace přemapování je aktivní pouze na tomto zařízení. Pokud připojíte sluchátka k zařízení Samsung, hlasové probuzení normálně aktivuje Bixby. Na jiných zařízeních, než je toto, a na telefonech jiných výrobců, tato funkce nespustí žádnou akci.
+    </sys:String>
 
     <!--Credits-->
     <sys:String x:Key="credits_header">Autoři</sys:String>
@@ -467,8 +476,10 @@ Konfigurace přemapování je aktivní pouze na tomto zařízení. Pokud připoj
     <!--Connection lost page-->
     <sys:String x:Key="connlost_header">Není možné navázat připojení</sys:String>
     <sys:String x:Key="connlost_description_p1">Není možné navázat připojení s vašimi sluchátky.</sys:String>
-    <sys:String x:Key="connlost_description_p2">Prosím zkontrolujte vaše nastavení Bluetooth a ujistěte se, že jsou sluchátka zapnuta a připojena k tomuto počítači.
-Pokud potřebujete, můžete také spárovat nová sluchátka. V tom případě zvolte 'Možnosti &gt; Odstranit zařízení'</sys:String>
+    <sys:String x:Key="connlost_description_p2">
+        Prosím zkontrolujte vaše nastavení Bluetooth a ujistěte se, že jsou sluchátka zapnuta a připojena k tomuto počítači.
+        Pokud potřebujete, můžete také spárovat nová sluchátka. V tom případě zvolte 'Možnosti &gt; Odstranit zařízení'
+    </sys:String>
     <sys:String x:Key="connlost_description_p3">Dodatečné informace:</sys:String>
     <sys:String x:Key="connlost_noinfo">Nepodařilo se nashromáždit chybové hlášení.</sys:String>
     <sys:String x:Key="connlost_disconnected">Zařízení je odpojené</sys:String>
@@ -477,12 +488,14 @@ Pokud potřebujete, můžete také spárovat nová sluchátka. V tom případě 
 
     <!--Firmware update disclaimer-->
     <sys:String x:Key="fw_disclaimer">Zřeknutí se odpovědnosti</sys:String>
-    <sys:String x:Key="fw_disclaimer_desc">Tento nástroj pro aktualizaci firmwaru je přesnou replikou oficiálního aktualizátoru nalezeného v oficiální aplikaci pro Android od společnosti Samsung. Tuto implementaci jsem důkladně otestoval za různých okolností (normální provoz, ztráta připojení, záměrně poškozené pakety Bluetooth, ...), aniž by došlo k jakýmkoliv problémům. Přesto nebudu nést žádnou odpovědnost, pokud se něco pokazí, protože aktualizace firmwaru mění důležité součásti systému a mělo by se s nimi zacházet vždy opatrně.
+    <sys:String x:Key="fw_disclaimer_desc">
+        Tento nástroj pro aktualizaci firmwaru je přesnou replikou oficiálního aktualizátoru nalezeného v oficiální aplikaci pro Android od společnosti Samsung. Tuto implementaci jsem důkladně otestoval za různých okolností (normální provoz, ztráta připojení, záměrně poškozené pakety Bluetooth, ...), aniž by došlo k jakýmkoliv problémům. Přesto nebudu nést žádnou odpovědnost, pokud se něco pokazí, protože aktualizace firmwaru mění důležité součásti systému a mělo by se s nimi zacházet vždy opatrně.
 
-DOWNGRADE: Při přechodu na starší verze firmwaru jsem nenarazil na problémy, přesto mohou nastat a mohou způsobit neočekávané problémy. Mělo by to být provedeno pouze v případě potřeby. Obnovení továrního nastavení po downgradu je doporučené, ale obvykle není nutné.
-VLASTNÍ NAHRÁVÁNÍ: Je vám také umožněno načíst soubory firmwaru z vašeho pevného disku. NENAHRÁVEJTE do svého zařízení firmware určenéný pro JINÉ modely.
+        DOWNGRADE: Při přechodu na starší verze firmwaru jsem nenarazil na problémy, přesto mohou nastat a mohou způsobit neočekávané problémy. Mělo by to být provedeno pouze v případě potřeby. Obnovení továrního nastavení po downgradu je doporučené, ale obvykle není nutné.
+        VLASTNÍ NAHRÁVÁNÍ: Je vám také umožněno načíst soubory firmwaru z vašeho pevného disku. NENAHRÁVEJTE do svého zařízení firmware určenéný pro JINÉ modely.
 
-Tato aplikace podléhá licenci GPLv3. Jeho používáním přijímáte licenci a její omezení odpovědnosti. Potvrďte stisknutím tlačítka 'Pokračovat'.</sys:String>
+        Tato aplikace podléhá licenci GPLv3. Jeho používáním přijímáte licenci a její omezení odpovědnosti. Potvrďte stisknutím tlačítka 'Pokračovat'.
+    </sys:String>
 
     <!--Firmware selection-->
     <sys:String x:Key="fw_select_header">Aktualizace firmwaru</sys:String>
@@ -493,9 +506,11 @@ Tato aplikace podléhá licenci GPLv3. Jeho používáním přijímáte licenci 
     <sys:String x:Key="fw_select_advanced">Pokročilé...</sys:String>
     <sys:String x:Key="fw_select_install">Stáhnout firmware</sys:String>
     <sys:String x:Key="fw_select_from_disk">Zvolit obraz z disku...</sys:String>
-    <sys:String x:Key="fw_select_external_note">NENAHRÁVEJTE do svého zařízení firmware určené pro JINÉ modely. Nahrávání firmwaru pro Buds Pro na vaše Buds Plus neodemkne žádné nové funkce, naopak to permanentně zničí vaše zařízení.
+    <sys:String x:Key="fw_select_external_note">
+        NENAHRÁVEJTE do svého zařízení firmware určené pro JINÉ modely. Nahrávání firmwaru pro Buds Pro na vaše Buds Plus neodemkne žádné nové funkce, naopak to permanentně zničí vaše zařízení.
 
-Stishněte 'Pokračovat' ke zvolení firmwaru.</sys:String>
+        Stishněte 'Pokračovat' ke zvolení firmwaru.
+    </sys:String>
     <sys:String x:Key="fw_select_unsupported_selection">Neplatný výběr. Prosím, vyberte kompatibilní položku ze seznamu.</sys:String>
     <sys:String x:Key="fw_select_downloading">Stahování...</sys:String>
     <sys:String x:Key="fw_select_net_error">Komunikace se serverem se nezdařila. V tuto chvíli nelze stáhnout firmware.</sys:String>
@@ -504,11 +519,13 @@ Stishněte 'Pokračovat' ke zvolení firmwaru.</sys:String>
     <sys:String x:Key="fw_select_unknown_build">Neznámý název sestavení</sys:String>
     <sys:String x:Key="fw_select_verify_fail">Selhalo ověření firmwaru</sys:String>
     <sys:String x:Key="fw_select_confirm">Chystáte se nahrát '{0}' na vaše zařízení '{1}'</sys:String>
-    <sys:String x:Key="fw_select_confirm_desc">Ujistěte se, že tyto informace jsou správné, jinak stiskněte 'Zrušit' a dvakrát zkontrolujte své nastavení.
+    <sys:String x:Key="fw_select_confirm_desc">
+        Ujistěte se, že tyto informace jsou správné, jinak stiskněte 'Zrušit' a dvakrát zkontrolujte své nastavení.
 
-Pokud možno, ujistěte se, že jsou obě sluchátka připojena před spuštěním. Nezpůsobí to žádné problémy, pokud selže spojení při přenosu aktualizace. V takovém případě sluchátka automaticky zruší proces přenosu a opustí mód aktualizace firmwaru.
+        Pokud možno, ujistěte se, že jsou obě sluchátka připojena před spuštěním. Nezpůsobí to žádné problémy, pokud selže spojení při přenosu aktualizace. V takovém případě sluchátka automaticky zruší proces přenosu a opustí mód aktualizace firmwaru.
 
-Stiskněte 'Pokračovat' pro spuštění aktualizace.</sys:String>
+        Stiskněte 'Pokračovat' pro spuštění aktualizace.
+    </sys:String>
 
     <!--Firmware transfer-->
     <sys:String x:Key="fw_upload_header">Instalace firmwaru...</sys:String>
@@ -529,9 +546,11 @@ Stiskněte 'Pokračovat' pro spuštění aktualizace.</sys:String>
     <sys:String x:Key="fw_fail_no_magic">Toto není platná verze firmwaru. V záhlaví souboru byla nalezena neplatná magická hodnota.</sys:String>
     <sys:String x:Key="fw_fail_size_null">Velikost tohoto firmwaru je nastavena na nulu a nelze jej použít k nahrání. Vyberte prosím jinou.</sys:String>
     <sys:String x:Key="fw_fail_no_segments">Tato verze firmwaru neobsahuje žádné binární segmenty a je prázdná. Vyberte prosím jinou.</sys:String>
-    <sys:String x:Key="fw_fail_unknown">Neočekávaná chyba při dekódování firmwaru. Tento archiv firmwaru může být poškozen.
+    <sys:String x:Key="fw_fail_unknown">
+        Neočekávaná chyba při dekódování firmwaru. Tento archiv firmwaru může být poškozen.
 
-Detaily:</sys:String>
+        Detaily:
+    </sys:String>
 
     <!--Firmware transfer errors-->
     <sys:String x:Key="fw_fail_connection">Ztráta připojení k zařízení. Přenos firmwaru byl zrušen.</sys:String>
@@ -562,7 +581,7 @@ Detaily:</sys:String>
     <sys:String x:Key="budsapp_text_p2">Pokud je otevřený a připojený, GalaxyBudsClient může mít problémy s připojením k vašim sluchátkům. Než budete pokračovat, nezapomeňte jej zavřít. Stejně tak se oficiální aplikace Galaxy Buds nemůže připojit k vašim sluchátkům, když je Galaxy Buds Manager aktivní a otevřel připojení ke sluchátkům.</sys:String>
     <sys:String x:Key="budsapp_text_p3">Mějte na paměti, že s vašimi sluchátky Galaxy Buds může hovořit vždy pouze jedna aplikace.</sys:String>
 
-<!--Manual pairing-->
+    <!--Manual pairing-->
     <sys:String x:Key="manualpair_title">Ruční výběr zařízení</sys:String>
     <sys:String x:Key="manualpair_title_dialog">Zvolte své zařízení Galaxy Buds</sys:String>
     <sys:String x:Key="manualpair_model">Zvolte správný model</sys:String>

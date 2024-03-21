@@ -1,11 +1,12 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
     <sys:String x:Key="ResourceDictionaryName">Loc-cn</sys:String>
 
     <!--:::::::: Source code ::::::::-->
 
     <!--General-->
-   <sys:String x:Key="okay">OK</sys:String>
+    <sys:String x:Key="okay">OK</sys:String>
     <sys:String x:Key="left">左</sys:String>
     <sys:String x:Key="right">右</sys:String>
     <sys:String x:Key="case">充电盒</sys:String>
@@ -150,8 +151,10 @@
 
     <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">欢迎！</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">你好！ 这是一个非官方的 Galaxy Buds 管理软件，与三星没有任何关系！
-这个程序可以做到许多在 Galaxy Wearable 上不能做到的事情，此程序提供比 Galaxy Wearable 提供更多的功能；尽管并非所有这些功能都可在未安装此应用的设备上使用。</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">
+        你好！ 这是一个非官方的 Galaxy Buds 管理软件，与三星没有任何关系！
+        这个程序可以做到许多在 Galaxy Wearable 上不能做到的事情，此程序提供比 Galaxy Wearable 提供更多的功能；尽管并非所有这些功能都可在未安装此应用的设备上使用。
+    </sys:String>
     <sys:String x:Key="welcome_textblock_p2">如果你对此项目感兴趣，可以查看 GitHub，如果你遇上任何问题，可以在 GitHub 联系我或者在 Telegram @thepbone 上给我留言</sys:String>
     <sys:String x:Key="welcome_textblock_p3">本软件支持所有的 Galaxy Buds 型号。</sys:String>
     <sys:String x:Key="welcome_darkmode">深色模式</sys:String>
@@ -254,8 +257,10 @@
     <sys:String x:Key="cact_notice">注意</sys:String>
     <sys:String x:Key="cact_notice_content_p1">自定义长按动作仅在软件后台开启时启用</sys:String>
     <sys:String x:Key="cact_notice_content_p2">此操作不会影响在其他设备上使用</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">为了使此功能正常运行，软件将开机自动启动。
-你可以在设置中关闭。</sys:String>
+    <sys:String x:Key="cact_notice_content_p3">
+        为了使此功能正常运行，软件将开机自动启动。
+        你可以在设置中关闭。
+    </sys:String>
 
     <!--System/Self-Test-->
     <sys:String x:Key="system_overview_header">系统</sys:String>
@@ -309,10 +314,12 @@
     <sys:String x:Key="coredump_dl_trace_progress">正在下载追踪数据 {0}% ...</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">正在下载核心数据 {0}% ...</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytes)</sys:String>
-    <sys:String x:Key="coredump_dl_note">声音播放将会在下载过程中被暂停。你的耳机将会在完成前暂停连接，请在完成后重新连接
-传输完成后，你需要选择一个文件夹以便保存数据
+    <sys:String x:Key="coredump_dl_note">
+        声音播放将会在下载过程中被暂停。你的耳机将会在完成前暂停连接，请在完成后重新连接
+        传输完成后，你需要选择一个文件夹以便保存数据
 
-如果转存过程被断开，则需要重新转存。这项功能十分不稳定！</sys:String>
+        如果转存过程被断开，则需要重新转存。这项功能十分不稳定！
+    </sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">转存数据失败</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">将数据保存至临时目录失败！ 原因：{0}</sys:String>
     <sys:String x:Key="coredump_dl_save_success_title">成功转存数据！</sys:String>
@@ -333,7 +340,7 @@
     <sys:String x:Key="settings_autostart">开机时启动</sys:String>
     <sys:String x:Key="settings_autostart_description">开机时启动并最小化</sys:String>
     <sys:String x:Key="settings_autostart_permission">不能更新自启动。注册表访问（HKCU） 被你的系统管理员明确禁止。</sys:String>
-    
+
     <sys:String x:Key="settings_connpopup">配置连接弹窗</sys:String>
     <sys:String x:Key="settings_devmode">开发者选项</sys:String>
     <sys:String x:Key="settings_crowdsourcing">数据收集</sys:String>
@@ -365,9 +372,11 @@
     <sys:String x:Key="factory_header">恢复出厂设置</sys:String>
     <sys:String x:Key="factory_confirm">确认恢复出厂设置</sys:String>
     <sys:String x:Key="factory_error_title">恢复出厂设置失败</sys:String>
-    <sys:String x:Key="factory_error">设备返回错误代码: {0}
-请确保耳机开启且可用。
-你可能需要手动重新连接你的耳机。</sys:String>
+    <sys:String x:Key="factory_error">
+        设备返回错误代码: {0}
+        请确保耳机开启且可用。
+        你可能需要手动重新连接你的耳机。
+    </sys:String>
     <sys:String x:Key="factory_text_p1">是否确定恢复出厂设置？</sys:String>
     <sys:String x:Key="factory_text_p2">恢复出厂设置后，你需要重新连接你的耳机</sys:String>
     <sys:String x:Key="factory_text_p3">请确保你的耳机保持连接</sys:String>
@@ -452,9 +461,11 @@
     <sys:String x:Key="bixby_remap_enable_desc">在你的三星手机上启动 Bixby 或者在你的 PC 上执行一个自定义动作</sys:String>
     <sys:String x:Key="bixby_remap_lang">Bixby 启动语言</sys:String>
     <sys:String x:Key="bixby_remap_action">自定义动作</sys:String>
-    <sys:String x:Key="bixby_remap_note">说 '嗨 Bixby!' 以执行动作。在不同的语言设置上启动短语可能不同。
+    <sys:String x:Key="bixby_remap_note">
+        说 '嗨 Bixby!' 以执行动作。在不同的语言设置上启动短语可能不同。
 
-重新设定的配置只在本设备上生效。如果你连接到三星手机，语音唤醒会正常启动 Bixby。在非三星手机及本设备外，这个功能不会触发任何行为。</sys:String>
+        重新设定的配置只在本设备上生效。如果你连接到三星手机，语音唤醒会正常启动 Bixby。在非三星手机及本设备外，这个功能不会触发任何行为。
+    </sys:String>
 
 
     <!--Credits-->
@@ -475,16 +486,18 @@
     <sys:String x:Key="connlost_disconnected">设备失去连接</sys:String>
     <sys:String x:Key="connlost_connect">连接</sys:String>
     <sys:String x:Key="connlost_connecting">连接中...</sys:String>
-    
+
     <!--Firmware update disclaimer-->
     <sys:String x:Key="fw_disclaimer">免责声明</sys:String>
-    <sys:String x:Key="fw_disclaimer_desc">此固件更新工具是三星官方 Android 应用中更新程序的准确复制品。我已经彻底测试了在各种情况下的实现（正常操作、连接丢失、故意损坏蓝牙包，...）没有发生任何问题。尽管如此，如果出现任何问题，我不会承担任何责任，因为固件更新修改了重要的系统组件，应始终谨慎处理。
+    <sys:String x:Key="fw_disclaimer_desc">
+        此固件更新工具是三星官方 Android 应用中更新程序的准确复制品。我已经彻底测试了在各种情况下的实现（正常操作、连接丢失、故意损坏蓝牙包，...）没有发生任何问题。尽管如此，如果出现任何问题，我不会承担任何责任，因为固件更新修改了重要的系统组件，应始终谨慎处理。
 
-降级：虽然降级到旧的固件版本是可能的，而且我从来没有遇到过这样的问题，但它可能会引起意想不到的问题，只有在必要时才可以进行。建议在降级后进行工厂重置，但通常没有必要。
-自定义固件：你也可以从你的硬盘上加载固件文件。不要把为其他型号设计的固件二进制文件写入到你的设备上。
+        降级：虽然降级到旧的固件版本是可能的，而且我从来没有遇到过这样的问题，但它可能会引起意想不到的问题，只有在必要时才可以进行。建议在降级后进行工厂重置，但通常没有必要。
+        自定义固件：你也可以从你的硬盘上加载固件文件。不要把为其他型号设计的固件二进制文件写入到你的设备上。
 
-这个应用以 GPLv3 许可发表。使用它代表你接受了该许可证和它的责任限制。按 '继续' 接受。</sys:String>
-    
+        这个应用以 GPLv3 许可发表。使用它代表你接受了该许可证和它的责任限制。按 '继续' 接受。
+    </sys:String>
+
     <!--Firmware selection-->
     <sys:String x:Key="fw_select_header">固件更新</sys:String>
     <sys:String x:Key="fw_select_instructions">请选择一个二进制固件文件进行下载和安装。另外，你也可以从你的硬盘上选择一个二进制固件，方法是：'高级... &gt; 从硬盘选择固件'</sys:String>
@@ -494,9 +507,11 @@
     <sys:String x:Key="fw_select_advanced">高级...</sys:String>
     <sys:String x:Key="fw_select_install">安装固件</sys:String>
     <sys:String x:Key="fw_select_from_disk">从硬盘选择固件...</sys:String>
-    <sys:String x:Key="fw_select_external_note">不要把为其他型号设计的固件二进制文件写入到你的设备上。在 Buds+ 上使用 Buds Pro 的固件不会开启任何新的功能。取而代之的是永久损坏你的设备。
+    <sys:String x:Key="fw_select_external_note">
+        不要把为其他型号设计的固件二进制文件写入到你的设备上。在 Buds+ 上使用 Buds Pro 的固件不会开启任何新的功能。取而代之的是永久损坏你的设备。
 
-点击 '继续' 以选择另一个二进制文件。</sys:String>
+        点击 '继续' 以选择另一个二进制文件。
+    </sys:String>
     <sys:String x:Key="fw_select_unsupported_selection">选择无效。请从列表中选择一个兼容的项目。</sys:String>
     <sys:String x:Key="fw_select_downloading">下载中...</sys:String>
     <sys:String x:Key="fw_select_net_error">与服务器通信失败。当前无法下载固件。</sys:String>
@@ -505,12 +520,14 @@
     <sys:String x:Key="fw_select_unknown_build">位置的构建名</sys:String>
     <sys:String x:Key="fw_select_verify_fail">固件验证失败</sys:String>
     <sys:String x:Key="fw_select_confirm">你终止了在你的 '{1}' 上写入 '{0}'</sys:String>
-    <sys:String x:Key="fw_select_confirm_desc">确保这些信息是正确的，否则请按 '取消' 并仔细检查你的设置。
+    <sys:String x:Key="fw_select_confirm_desc">
+        确保这些信息是正确的，否则请按 '取消' 并仔细检查你的设置。
 
-如果可能的话，在开始之前确保两个耳机都连接好。如果在传输更新时连接失败，也不会造成任何问题。在这种情况下，耳机会自动取消传输过程并退出固件更新模式。
+        如果可能的话，在开始之前确保两个耳机都连接好。如果在传输更新时连接失败，也不会造成任何问题。在这种情况下，耳机会自动取消传输过程并退出固件更新模式。
 
-点击 '继续' 以开始更新。</sys:String>
-  
+        点击 '继续' 以开始更新。
+    </sys:String>
+
     <!--Firmware transfer-->
     <sys:String x:Key="fw_upload_header">正在安装固件...</sys:String>
     <sys:String x:Key="fw_upload_progress_session">创建新的会话...</sys:String>
@@ -530,10 +547,12 @@
     <sys:String x:Key="fw_fail_no_magic">不是一个有效的固件二进制文件。在文件头中发现无效的 magic value。</sys:String>
     <sys:String x:Key="fw_fail_size_null">该固件二进制文件的大小被设置为零，不能用于写入。请选择另一个。</sys:String>
     <sys:String x:Key="fw_fail_no_segments">该固件的二进制文件不包含任何二进制段，是空的。请选择另一个。</sys:String>
-    <sys:String x:Key="fw_fail_unknown">在解码固件二进制文件时出现意外错误。该固件文件可能已损坏。
+    <sys:String x:Key="fw_fail_unknown">
+        在解码固件二进制文件时出现意外错误。该固件文件可能已损坏。
 
-详细信息：</sys:String>
-    
+        详细信息：
+    </sys:String>
+
     <!--Firmware transfer errors-->
     <sys:String x:Key="fw_fail_connection">与设备失去连接。固件传输已被取消。</sys:String>
     <sys:String x:Key="fw_fail_session">打开新会话失败。设备返回错误代码：{0}</sys:String>
@@ -545,14 +564,14 @@
     <sys:String x:Key="fw_fail_session_timeout">在等待设备打开新的会话时超时</sys:String>
     <sys:String x:Key="fw_fail_control_timeout">在等待设备返回一个控制块时超时</sys:String>
     <sys:String x:Key="fw_fail_copy_timeout">在等待传输过程结束时超时</sys:String>
-    
+
     <!--Spatial test-->
     <sys:String x:Key="spatial_header">空间传感器</sys:String>
     <!--Note: Quaternion = 4-dimensional vector-->
     <sys:String x:Key="spatial_dump_quaternion">原始四维向量：</sys:String>
     <!--Note: RPY = Roll, pitch, yaw-->
     <sys:String x:Key="spatial_dump_rpy">欧拉偏转角 RPY 值：</sys:String>
-    
+
     <!--Header-->
     <sys:String x:Key="window_minimize">最小化</sys:String>
     <sys:String x:Key="window_close">关闭</sys:String>

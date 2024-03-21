@@ -62,11 +62,11 @@
                                                SelectedValue="{Binding DarkMode, Source={x:Static utils:Settings.Instance}}" />
 
                 <controls:SettingsColorItem Name="AppAccent"
-                                               Content="{DynamicResource settings_accent}"
-                                               Description="{DynamicResource settings_accent_description}"
-                                               Symbol="Color"
-                                               Color="{Binding AccentColor, Source={x:Static utils:Settings.Instance}}" />
-                
+                                            Content="{DynamicResource settings_accent}"
+                                            Description="{DynamicResource settings_accent_description}"
+                                            Symbol="Color"
+                                            Color="{Binding AccentColor, Source={x:Static utils:Settings.Instance}}" />
+
                 <controls:SettingsComboBoxItem Name="AppLanguage"
                                                Content="{DynamicResource settings_localization_disable}"
                                                Description="{DynamicResource settings_localization_description}"

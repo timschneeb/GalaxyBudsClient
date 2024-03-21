@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform.Interfaces;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
-using GalaxyBudsClient.Interface.Dialogs;
 
 namespace GalaxyBudsClient.Platform
 {

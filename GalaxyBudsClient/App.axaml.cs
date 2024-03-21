@@ -1,7 +1,7 @@
-using System;
 #if OSX
 using AppKit;
 #endif
+using System;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;

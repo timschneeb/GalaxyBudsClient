@@ -1,4 +1,3 @@
-using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 
 namespace GalaxyBudsClient.Interface.Pages;

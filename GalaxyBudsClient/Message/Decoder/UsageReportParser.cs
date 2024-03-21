@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
+using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
 using Serilog;
 
@@ -100,7 +102,7 @@ namespace GalaxyBudsClient.Message.Decoder
             if (msg.Id != HandledType)
                 return;
 
-            if(ActiveModel == Model.Constants.Models.BudsLive)
+            if(ActiveModel == Models.BudsLive)
             {
                 /* Buds Live not supported right now */
                 return;
@@ -130,7 +132,7 @@ namespace GalaxyBudsClient.Message.Decoder
                 Array.Copy(msg.Payload, i, rawKey, 0, lengthKey);
                 Array.Copy(msg.Payload, i + lengthKey, rawValue, 0, lengthValue);
 
-                var key = System.Text.Encoding.ASCII.GetString(rawKey.RTrimBytes());
+                var key = Encoding.ASCII.GetString(rawKey.RTrimBytes());
                 long value = BitConverter.ToInt32(rawValue, 0);
                 Statistics.Add(key, value);
             }

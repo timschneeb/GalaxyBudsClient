@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using Avalonia.Controls;
-using FluentIcons.Common;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;

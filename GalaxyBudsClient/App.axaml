@@ -2,19 +2,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:styling="clr-namespace:FluentAvalonia.Styling;assembly=FluentAvalonia"
              xmlns:galaxyBudsClient="clr-namespace:GalaxyBudsClient"
-             x:Class="GalaxyBudsClient.App" 
+             x:Class="GalaxyBudsClient.App"
              Name="Galaxy Buds Manager">
 
     <Design.DataContext>
         <galaxyBudsClient:App />
     </Design.DataContext>
-    
+
     <NativeMenu.Menu>
         <NativeMenu>
             <!-- eternal emptiness -->
         </NativeMenu>
     </NativeMenu.Menu>
-    
+
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -29,9 +29,9 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
-    
+
     <Application.Styles>
-        <FluentTheme/>
+        <FluentTheme />
         <styling:FluentAvaloniaTheme PreferSystemTheme="True" CustomAccentColor="Orange" />
         <StyleInclude Source="avares://FluentAvalonia.BreadcrumbBar/Styling/Styles.axaml" />
         <StyleInclude Source="/Interface/Styling/AppStyles.axaml" />
@@ -42,8 +42,7 @@
                       Icon="{OnPlatform '/Resources/icon_white_tray.ico', macOS='/Resources/icon_black_tray.ico'}"
                       MacOSProperties.IsTemplateIcon="true"
                       ToolTipText="Galaxy Buds"
-                      Clicked="TrayIcon_OnClicked">
-            </TrayIcon>
+                      Clicked="TrayIcon_OnClicked" />
         </TrayIcons>
     </TrayIcon.Icons>
 </Application>

@@ -6,9 +6,7 @@
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
              xmlns:input="clr-namespace:FluentAvalonia.UI.Input;assembly=FluentAvalonia"
-             xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
              xmlns:hotkeys="clr-namespace:GalaxyBudsClient.Model.Hotkeys"
-             xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="400"
              x:Class="GalaxyBudsClient.Interface.Pages.HotkeyPage"
@@ -33,9 +31,9 @@
                              Command="{Binding DoEditCommand}" />
 
         <input:StandardUICommand x:Key="DeleteCommand" Kind="Delete"
-                             Label="{ext:Translate hotkey_delete}"
-                             Description="{ext:Translate hotkey_delete}"
-                             Command="{Binding DoDeleteCommand}" />
+                                 Label="{ext:Translate hotkey_delete}"
+                                 Description="{ext:Translate hotkey_delete}"
+                                 Command="{Binding DoDeleteCommand}" />
     </UserControl.Resources>
 
     <Border Margin="{StaticResource AppPageMargin}"
@@ -94,7 +92,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            
+
             <controls:EmptyView Grid.Row="1"
                                 IsVisible="{Binding NoHotkeys}"
                                 Text="{DynamicResource hotkey_empty}"

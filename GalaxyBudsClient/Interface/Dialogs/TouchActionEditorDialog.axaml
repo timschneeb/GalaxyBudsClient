@@ -23,7 +23,7 @@
                       ItemsSource="{Binding ActionModeSource}"
                       SelectedValue="{Binding ActionMode}" />
         </StackPanel>
-        
+
         <StackPanel Spacing="10" IsVisible="{Binding IsEventParameterEditable}">
             <TextBlock Text="{DynamicResource cact_function_param}" />
             <ComboBox HorizontalAlignment="Stretch"
@@ -37,7 +37,7 @@
             <Grid ColumnDefinitions="*,4,Auto">
                 <TextBox HorizontalAlignment="Stretch"
                          Text="{Binding PathParameter}" />
-                <Button Grid.Column="2" 
+                <Button Grid.Column="2"
                         Command="{Binding DoFilePickCommand}">
                     <ic:SymbolIcon Symbol="Folder" />
                 </Button>
@@ -56,11 +56,11 @@
                 </Button>
             </Grid>
         </StackPanel>
-        
+
         <ui:InfoBar Title="{DynamicResource hint}"
                     IsOpen="True"
                     IsClosable="False"
-                    Severity="Informational" 
+                    Severity="Informational"
                     Message="{Binding InfoBoxMessage}" />
     </StackPanel>
 </UserControl>

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications.Touch;
 

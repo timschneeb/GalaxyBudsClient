@@ -1,6 +1,5 @@
 using System;
 using System.Globalization;
-using Avalonia.Controls;
 using Avalonia.Data.Converters;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;

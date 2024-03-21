@@ -6,6 +6,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Selection;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.InterfaceOld.Dialogs;
@@ -84,7 +85,7 @@ namespace GalaxyBudsClient.InterfaceOld.Pages
         
         private void ManualPair_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
-            Avalonia.Threading.Dispatcher.UIThread.Post(async () =>
+            Dispatcher.UIThread.Post(async () =>
             {
                 var dialog = new ManualPairDialog();
                 var accepted = await dialog.ShowDialog<bool>(MainWindow2.Instance);

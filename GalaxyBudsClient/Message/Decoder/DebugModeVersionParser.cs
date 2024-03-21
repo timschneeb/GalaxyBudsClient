@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Message.Decoder

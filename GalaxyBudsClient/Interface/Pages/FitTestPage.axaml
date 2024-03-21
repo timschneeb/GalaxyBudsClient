@@ -16,8 +16,8 @@
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
             <Border Classes="Card" ClipToBounds="True">
-                
-                <controls:EarbudControlUnit ButtonText="{DynamicResource mainpage_fit_test}" 
+
+                <controls:EarbudControlUnit ButtonText="{DynamicResource mainpage_fit_test}"
                                             WarningText="{Binding WarningText}"
                                             IsChecked="{Binding IsActive}">
                     <controls:EarbudControlUnit.LeftContent>
@@ -25,14 +25,14 @@
                                    MinWidth="70"
                                    TextAlignment="Right" />
                     </controls:EarbudControlUnit.LeftContent>
-                    
+
                     <controls:EarbudControlUnit.RightContent>
                         <TextBlock Text="{Binding RightStatus}"
-                                   MinWidth="70" 
+                                   MinWidth="70"
                                    TextAlignment="Left" />
                     </controls:EarbudControlUnit.RightContent>
                 </controls:EarbudControlUnit>
-                
+
             </Border>
         </StackPanel>
     </ScrollViewer>

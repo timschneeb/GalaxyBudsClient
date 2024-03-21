@@ -3,8 +3,6 @@ using System.Linq;
 using Avalonia.Controls;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Pages;
-using GalaxyBudsClient.Interface.ViewModels.Dialogs;
-using GalaxyBudsClient.InterfaceOld.Dialogs;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;

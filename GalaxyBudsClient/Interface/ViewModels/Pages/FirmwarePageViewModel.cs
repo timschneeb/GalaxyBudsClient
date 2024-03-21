@@ -19,7 +19,6 @@ using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using ReactiveUI.Fody.Helpers;
-using Sentry;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;

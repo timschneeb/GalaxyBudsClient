@@ -154,7 +154,7 @@ namespace GalaxyBudsClient.Utils.Interface
                     list = [new(observer)];
                     s_langList.Add(key, list);
                 }
-                var value = Loc.Resolve(key);
+                var value = Resolve(key);
                 observer.OnNext(value);
                 return new Unsubscribable(list, observer);
             }

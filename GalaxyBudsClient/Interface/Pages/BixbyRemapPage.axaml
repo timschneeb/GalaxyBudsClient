@@ -20,7 +20,7 @@
 
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
-            
+
             <controls:SettingsGroup>
                 <controls:SettingsSwitchItem Content="{DynamicResource bixby_remap_enable}"
                                              Description="{DynamicResource bixby_remap_enable_desc}"
@@ -34,7 +34,7 @@
                     Symbol="LocalLanguage"
                     IsEnabled="{Binding IsBixbyWakeUpEnabled}"
                     ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:BixbyLanguages}}}"
-                    SelectedValue="{Binding BixbyLanguage}"/>
+                    SelectedValue="{Binding BixbyLanguage}" />
 
                 <controls:SettingsComboBoxItem
                     Content="{DynamicResource bixby_remap_action}"
@@ -43,9 +43,9 @@
                     IsEnabled="{Binding IsBixbyWakeUpEnabled}"
                     ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type model:Event}}}"
                     SelectedValue="{Binding BixbyRemapEvent, Source={x:Static utils:Settings.Instance}}" />
-                
+
             </controls:SettingsGroup>
-            
+
             <!-- TODO message foreground color should be secondary text color -->
             <ui:InfoBar Title="{DynamicResource hint}"
                         IsOpen="True"

@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Avalonia.Controls;
 using FluentIcons.Common;
+using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Platform;
 using ReactiveUI;
 
@@ -8,7 +9,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class SettingsPageViewModel : MainPageViewModelBase
 {
-    public override Control CreateView() => new Interface.Pages.SettingsPage();
+    public override Control CreateView() => new SettingsPage();
     
     public bool IsAutoStartEnabled
     {

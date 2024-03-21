@@ -10,19 +10,19 @@
              x:Class="GalaxyBudsClient.Interface.Pages.NoiseControlPage"
              x:DataType="pages:NoiseControlPageViewModel"
              x:CompileBindings="True">
-    
+
     <Design.DataContext>
         <pages:NoiseControlPageViewModel />
     </Design.DataContext>
 
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
-            
+
             <controls:SettingsGroup>
                 <Interaction.Behaviors>
                     <ext:RequiresFeatureBehavior Feature="AmbientSound" />
                 </Interaction.Behaviors>
-                
+
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource as_header}"
                     Description="{DynamicResource as_header_description}"
@@ -41,20 +41,20 @@
                         </EventTriggerBehavior>
                     </Interaction.Behaviors>
                 </controls:SettingsSymbolItem>
-                
+
             </controls:SettingsGroup>
-            
+
             <controls:SettingsGroup>
                 <Interaction.Behaviors>
                     <ext:RequiresFeatureBehavior Feature="Anc" />
                 </Interaction.Behaviors>
-                
+
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource anc}"
                     Description="{DynamicResource nc_as_anc_description}"
                     Symbol="HeadphonesSoundWave"
                     IsChecked="{Binding IsAncEnabled}" />
-                
+
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource nc_anc_level}"
                     Description="{DynamicResource nc_anc_level_description}"
@@ -82,13 +82,13 @@
                 <Interaction.Behaviors>
                     <ext:RequiresFeatureBehavior Feature="DetectConversations" />
                 </Interaction.Behaviors>
-                
+
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource nc_voicedetect}"
                     Description="{DynamicResource nc_voicedetect_description}"
                     Symbol="PersonVoice"
                     IsChecked="{Binding IsVoiceDetectEnabled}" />
-                
+
                 <controls:SettingsComboBoxItem
                     Content="{DynamicResource nc_voicedetect_timeout}"
                     Description="{DynamicResource nc_voicedetect_timeout_description}"
@@ -96,10 +96,10 @@
                     IsEnabled="{Binding IsVoiceDetectEnabled}"
                     ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:VoiceDetectTimeouts}}}"
                     SelectedValue="{Binding VoiceDetectTimeout}" />
-                
+
             </controls:SettingsGroup>
-            
+
         </StackPanel>
     </ScrollViewer>
-    
+
 </UserControl>

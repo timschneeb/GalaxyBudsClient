@@ -1,16 +1,17 @@
 ﻿using System;
+using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Model.Attributes
 {
     public class DeviceAttribute : Attribute
     {
-        public DeviceAttribute(Constants.Models[] models)
+        public DeviceAttribute(Models[] models)
         {
             Models = models;
         }
-        public DeviceAttribute(Constants.Models model)
+        public DeviceAttribute(Models model)
         {
-            Models = new Constants.Models[1];
+            Models = new Models[1];
             Models[0] = model;
         }
 
@@ -29,6 +30,6 @@ namespace GalaxyBudsClient.Model.Attributes
             return str;
         }
 
-        public readonly Constants.Models[] Models;
+        public readonly Models[] Models;
     }
 }

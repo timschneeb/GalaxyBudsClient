@@ -21,7 +21,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
-   
+
         <Border Grid.Row="3" Classes="RoundedBorderListItem">
             <Border Classes="BorderHoverStyle" PointerPressed="SelectDevice_OnPointerPressed">
                 <Grid>
@@ -72,7 +72,8 @@
                                                 Description="{DynamicResource devsel_winrt}" />-->
 
                 </Border>
-                <Separator Grid.Row="1" x:Name="UseWinRTSep" Margin="20,0,20,0" Background="{DynamicResource BorderSeparatorBrush}" />
+                <Separator Grid.Row="1" x:Name="UseWinRTSep" Margin="20,0,20,0"
+                           Background="{DynamicResource BorderSeparatorBrush}" />
                 <TextBlock Grid.Row="2" FontSize="14"
                            Margin="20,10"
                            Foreground="{DynamicResource ForegroundTextBrush}"
@@ -88,7 +89,8 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Classes="BorderHoverStyle" x:Name="ManualPair" PointerPressed="ManualPair_OnPointerPressed">
+                <Border Grid.Column="0" Classes="BorderHoverStyle" x:Name="ManualPair"
+                        PointerPressed="ManualPair_OnPointerPressed">
                     <Label Content="{DynamicResource devsel_manual_pair}"
                            Height="50" FontSize="18"
                            Foreground="{DynamicResource ForegroundTextBrush}"

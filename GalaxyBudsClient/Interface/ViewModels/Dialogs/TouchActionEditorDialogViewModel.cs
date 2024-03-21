@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using Avalonia.Platform.Storage;
 using GalaxyBudsClient.Interface.Dialogs;
-using GalaxyBudsClient.InterfaceOld.Dialogs;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Extensions;

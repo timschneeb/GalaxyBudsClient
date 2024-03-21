@@ -9,24 +9,24 @@
              x:Class="GalaxyBudsClient.Interface.Pages.AmbientCustomizePage"
              x:DataType="pages:AmbientCustomizePageViewModel"
              x:CompileBindings="True">
-    
+
     <Design.DataContext>
         <pages:AmbientCustomizePageViewModel />
     </Design.DataContext>
 
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
-            
+
             <controls:SettingsGroup>
                 <!-- TODO: add converter -->
                 <controls:SettingsSliderItem
                     Content="{DynamicResource as_volume}"
-                    Description="{Binding AmbientSoundVolume}" 
+                    Description="{Binding AmbientSoundVolume}"
                     Symbol="Gauge"
                     IsEnabled="{Binding !IsAmbientCustomizationEnabled}"
                     Maximum="{Binding MaximumAmbientSoundVolume}"
                     Value="{Binding AmbientSoundVolume}" />
-                
+
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource as_extrahigh}"
                     Description="{DynamicResource as_extrahigh_description}"
@@ -47,29 +47,29 @@
                     </Interaction.Behaviors>
                 </controls:SettingsSwitchItem>
             </controls:SettingsGroup>
-            
+
             <controls:SettingsGroup>
                 <Interaction.Behaviors>
                     <ext:RequiresFeatureBehavior Feature="AmbientCustomize" />
                 </Interaction.Behaviors>
-                
+
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource nc_as_custom}"
                     Description="{DynamicResource nc_as_custom_description}"
                     Symbol="MicSparkle"
                     IsChecked="{Binding IsAmbientCustomizationEnabled}" />
-                
+
                 <controls:SettingsSliderItem
                     Content="{DynamicResource nc_as_custom_volume_l}"
-                    Description="{Binding AmbientSoundVolumeLeft, Converter={StaticResource AmbientCustomStrengthConverter}}" 
+                    Description="{Binding AmbientSoundVolumeLeft, Converter={StaticResource AmbientCustomStrengthConverter}}"
                     Symbol="ArrowStepInLeft"
                     IsEnabled="{Binding IsAmbientCustomizationEnabled}"
                     Maximum="{Binding MaximumLeftRightAmbientSoundVolume}"
                     Value="{Binding AmbientSoundVolumeLeft}" />
-                
+
                 <controls:SettingsSliderItem
                     Content="{DynamicResource nc_as_custom_volume_r}"
-                    Description="{Binding AmbientSoundVolumeRight, Converter={StaticResource AmbientCustomStrengthConverter}}" 
+                    Description="{Binding AmbientSoundVolumeRight, Converter={StaticResource AmbientCustomStrengthConverter}}"
                     Symbol="ArrowStepInRight"
                     IsEnabled="{Binding IsAmbientCustomizationEnabled}"
                     Maximum="{Binding MaximumLeftRightAmbientSoundVolume}"
@@ -77,14 +77,14 @@
 
                 <controls:SettingsSliderItem
                     Content="{DynamicResource nc_as_custom_tone}"
-                    Description="{Binding AmbientSoundTone, Converter={StaticResource AmbientToneConverter}}" 
+                    Description="{Binding AmbientSoundTone, Converter={StaticResource AmbientToneConverter}}"
                     Symbol="SoundSource"
                     IsEnabled="{Binding IsAmbientCustomizationEnabled}"
                     Maximum="4"
                     Value="{Binding AmbientSoundTone}" />
 
-                </controls:SettingsGroup>
-            
+            </controls:SettingsGroup>
+
         </StackPanel>
     </ScrollViewer>
 </UserControl>

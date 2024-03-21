@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input;
+using Avalonia.Media;
 using Avalonia.Media.Immutable;
 using Avalonia.Styling;
 using Avalonia.Threading;
@@ -176,7 +177,7 @@ namespace GalaxyBudsClient
             if (ActualThemeVariant == ThemeVariant.Dark)
             {
                 var color = this.TryFindResource("SolidBackgroundFillColorBase",
-                    ThemeVariant.Dark, out var value) ? (Color2)(Avalonia.Media.Color)value : new Color2(32, 32, 32);
+                    ThemeVariant.Dark, out var value) ? (Color2)(Color)value : new Color2(32, 32, 32);
 
                 color = color.LightenPercent(-0.8f);
 
@@ -186,7 +187,7 @@ namespace GalaxyBudsClient
             {
                 // Similar effect here
                 var color = this.TryFindResource("SolidBackgroundFillColorBase",
-                    ThemeVariant.Light, out var value) ? (Color2)(Avalonia.Media.Color)value : new Color2(243, 243, 243);
+                    ThemeVariant.Light, out var value) ? (Color2)(Color)value : new Color2(243, 243, 243);
 
                 color = color.LightenPercent(0.5f);
 
@@ -352,7 +353,7 @@ namespace GalaxyBudsClient
             switch (e.ErrorCode)
             {
                 case BluetoothException.ErrorCodes.NoAdaptersAvailable:
-                    await new GalaxyBudsClient.Interface.Dialogs.MessageBox()
+                    await new MessageBox()
                     {
                         Title = Loc.Resolve("error"),
                         Description = Loc.Resolve("nobluetoothdev")
@@ -392,7 +393,7 @@ namespace GalaxyBudsClient
                     }
                     catch (FileNotFoundException ex)
                     {
-                        await new GalaxyBudsClient.Interface.Dialogs.MessageBox()
+                        await new MessageBox()
                         {
                             Title = "Custom long-press action failed",
                             Description = $"Unable to launch external application.\n" +
@@ -403,7 +404,7 @@ namespace GalaxyBudsClient
                     {
                         if (ex.NativeErrorCode == 13 && PlatformUtils.IsLinux)
                         {
-                            await new GalaxyBudsClient.Interface.Dialogs.MessageBox()
+                            await new MessageBox()
                             {
                                 Title = "Custom long-press action failed",
                                 Description = $"Unable to launch external application.\n\n" +
@@ -413,7 +414,7 @@ namespace GalaxyBudsClient
                         }
                         else
                         {
-                            await new GalaxyBudsClient.Interface.Dialogs.MessageBox()
+                            await new MessageBox()
                             {
                                 Title = "Custom long-press action failed",
                                 Description = $"Unable to launch external application.\n\n" +

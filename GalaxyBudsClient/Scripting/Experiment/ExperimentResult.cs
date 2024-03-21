@@ -4,6 +4,7 @@ using System.Reflection;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
+
 // ReSharper disable UnusedMember.Global
 
 namespace GalaxyBudsClient.Scripting.Experiment

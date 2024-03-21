@@ -9,7 +9,6 @@ using Avalonia.Layout;
 using Avalonia.Metadata;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Interface.Converters;
-using GalaxyBudsClient.Interface.MarkupExtensions;
 
 namespace GalaxyBudsClient.Interface.Controls;
 

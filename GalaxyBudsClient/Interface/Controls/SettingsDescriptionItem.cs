@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml.MarkupExtensions;
+using Avalonia.Media;
 
 namespace GalaxyBudsClient.Interface.Controls;
 
@@ -13,7 +14,7 @@ public class SettingsDescriptionItem : SettingsSymbolItem
         _subtitle = new TextBlock
         {
             [!TextBlock.ForegroundProperty] = new DynamicResourceExtension("TextFillColorSecondaryBrush"),
-            TextWrapping = Avalonia.Media.TextWrapping.Wrap
+            TextWrapping = TextWrapping.Wrap
         };
         
         Content = new StackPanel

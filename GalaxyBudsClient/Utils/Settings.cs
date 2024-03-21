@@ -1,9 +1,8 @@
+using System.ComponentModel;
 using Config.Net;
 using GalaxyBudsClient.Message;
-using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
@@ -29,7 +28,7 @@ namespace GalaxyBudsClient.Utils
             Instance.PropertyChanged += OnMainSettingsChanged;
         }
 
-        private static void OnMainSettingsChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private static void OnMainSettingsChanged(object? sender, PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)
             {

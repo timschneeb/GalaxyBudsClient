@@ -1,6 +1,6 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+
     <StyleInclude Source="NavigationViewStyles.axaml" />
     <StyleInclude Source="SettingsGroupStyles.axaml" />
 
@@ -11,14 +11,14 @@
         <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
         <Setter Property="Background" Value="{DynamicResource CardBackgroundFillColorDefaultBrush}" />
     </Style>
-    
+
     <!-- GroupBoxes -->
     <Style Selector="HeaderedContentControl.GroupBox">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
                     <Grid RowDefinitions="Auto,*" ColumnDefinitions="Auto,*">
-                        <Border ZIndex="1" Padding="5,0,5,0" 
+                        <Border ZIndex="1" Padding="5,0,5,0"
                                 Background="{DynamicResource ControlFillColorSecondaryBrush}" Margin="8,0,0,0"
                                 CornerRadius="{StaticResource ControlCornerRadius}" Opacity="1">
                             <TextBlock FontWeight="Bold" Text="{TemplateBinding Header}" />

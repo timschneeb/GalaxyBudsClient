@@ -27,21 +27,21 @@
                         <ColumnDefinition Width="Auto" MinWidth="100" />
                         <ColumnDefinition Width="Auto" MinWidth="80" />
                     </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="0" 
+                    <TextBox Grid.Column="0"
                              Name="XamlPath"
-                             IsReadOnly="True" 
+                             IsReadOnly="True"
                              Margin="0,0,5,0" />
                     <ComboBox Grid.Column="1" Name="Locales"
                               HorizontalAlignment="Stretch"
                               ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type model:Locales}}}"
                               Margin="0,0,5,0" />
-                    <Button Grid.Column="2" 
-                            Name="ReloadXaml" 
+                    <Button Grid.Column="2"
+                            Name="ReloadXaml"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
                             VerticalContentAlignment="Center"
                             HorizontalContentAlignment="Center"
-                            Content="Reload" 
+                            Content="Reload"
                             Click="ReloadXaml_OnClick" />
                 </Grid>
                 <TextBlock Grid.Row="2" TextWrapping="Wrap">
@@ -49,22 +49,22 @@
                 </TextBlock>
             </Grid>
         </HeaderedContentControl>
-        
+
         <HeaderedContentControl Classes="GroupBox"
                                 Header="Flags">
             <StackPanel Spacing="5">
                 <CheckBox Name="DummyDevices"
                           Content="Show dummy devices (Device selection page)"
                           IsCheckedChanged="DummyDevices_OnChecked" />
-                <CheckBox Name="IgnoreConnLoss" 
-                          Content="Ignore connection loss" 
+                <CheckBox Name="IgnoreConnLoss"
+                          Content="Ignore connection loss"
                           IsCheckedChanged="IgnoreConnLoss_OnChecked" />
                 <TextBlock TextWrapping="Wrap">
                     Some flags may cause crashes and inconsistent behavior.
                 </TextBlock>
             </StackPanel>
         </HeaderedContentControl>
-        
+
         <HeaderedContentControl Classes="GroupBox"
                                 Header="Exit translator/dev mode">
             <TextBlock TextWrapping="Wrap"

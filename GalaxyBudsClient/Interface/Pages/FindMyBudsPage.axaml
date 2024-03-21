@@ -16,21 +16,21 @@
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
             <Border Classes="Card" ClipToBounds="True">
-                
-                <controls:EarbudControlUnit ButtonText="{DynamicResource fmg_header}" 
+
+                <controls:EarbudControlUnit ButtonText="{DynamicResource fmg_header}"
                                             WarningText="{Binding WarningText}"
                                             IsChecked="{Binding IsSearching}">
                     <controls:EarbudControlUnit.LeftContent>
                         <controls:MuteToggleButton IsChecked="{Binding IsLeftMuted}"
-                                                   IsVisible="{Binding IsSearching}"/>
+                                                   IsVisible="{Binding IsSearching}" />
                     </controls:EarbudControlUnit.LeftContent>
-                    
+
                     <controls:EarbudControlUnit.RightContent>
                         <controls:MuteToggleButton IsChecked="{Binding IsRightMuted}"
                                                    IsVisible="{Binding IsSearching}" />
                     </controls:EarbudControlUnit.RightContent>
                 </controls:EarbudControlUnit>
-                
+
             </Border>
         </StackPanel>
     </ScrollViewer>

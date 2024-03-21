@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:ui="using:FluentAvalonia.UI.Controls"             
+             xmlns:ui="using:FluentAvalonia.UI.Controls"
              xmlns:vm="using:GalaxyBudsClient.Interface.ViewModels"
              xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
@@ -10,11 +10,11 @@
              x:Class="GalaxyBudsClient.Interface.MainView"
              x:DataType="vm:MainViewViewModel"
              x:CompileBindings="True">
-   
+
 
     <Grid RowDefinitions="Auto,*">
         <Grid Name="TitleBarHost"
-              ColumnDefinitions="Auto,Auto,*,Auto" 
+              ColumnDefinitions="Auto,Auto,*,Auto"
               Background="Transparent">
             <Image Margin="12 4"
                    IsHitTestVisible="False"
@@ -51,11 +51,11 @@
                            IsSettingsVisible="False"
                            IsBackEnabled="{Binding #FrameView.CanGoBack}">
             <Grid RowDefinitions="Auto,Auto,*">
-                
+
                 <ui:InfoBar Title="Disconnected"
-                            IsOpen="{Binding !IsConnected, Source={x:Static platform:BluetoothService.Instance}}" 
+                            IsOpen="{Binding !IsConnected, Source={x:Static platform:BluetoothService.Instance}}"
                             IsClosable="False"
-                            Severity="Warning" 
+                            Severity="Warning"
                             Message="{Binding LastErrorMessage, Source={x:Static platform:BluetoothService.Instance}}"
                             Margin="20,16,20,0">
                     <ui:InfoBar.ActionButton>
@@ -71,8 +71,8 @@
                         </Button>
                     </ui:InfoBar.ActionButton>
                 </ui:InfoBar>
-                
-                <ui:BreadcrumbBar Name="BreadcrumbBar" 
+
+                <ui:BreadcrumbBar Name="BreadcrumbBar"
                                   MinHeight="39"
                                   Grid.Row="1"
                                   ItemsSource="{Binding BreadcrumbItems}"
@@ -83,11 +83,11 @@
                         </DataTemplate>
                     </ui:BreadcrumbBar.ItemTemplate>
                 </ui:BreadcrumbBar>
-                
+
                 <ui:Frame Grid.Row="2" Name="FrameView" />
             </Grid>
         </ui:NavigationView>
 
     </Grid>
-    
+
 </UserControl>

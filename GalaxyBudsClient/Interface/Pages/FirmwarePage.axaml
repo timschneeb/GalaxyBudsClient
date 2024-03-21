@@ -9,7 +9,6 @@
              xmlns:firmware="clr-namespace:GalaxyBudsClient.Model.Firmware"
              xmlns:converters="clr-namespace:GalaxyBudsClient.Interface.Converters"
              xmlns:input="clr-namespace:FluentAvalonia.UI.Input;assembly=FluentAvalonia"
-             xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="400"
              x:Class="GalaxyBudsClient.Interface.Pages.FirmwarePage"
              x:DataType="pages:FirmwarePageViewModel"
@@ -76,11 +75,11 @@
                                                        TextWrapping="Wrap">
                                                 <TextBlock.Text>
                                                     <MultiBinding StringFormat="{}{1} {0}, rev{2} ({3})">
-                                                        <Binding Path="Year"></Binding>
+                                                        <Binding Path="Year" />
                                                         <Binding Path="Month"
                                                                  Converter="{x:Static converters:MonthValueConverter.Instance}" />
-                                                        <Binding Path="Revision"></Binding>
-                                                        <Binding Path="Model"></Binding>
+                                                        <Binding Path="Revision" />
+                                                        <Binding Path="Model" />
                                                     </MultiBinding>
                                                 </TextBlock.Text>
                                             </TextBlock>
@@ -98,7 +97,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    
+
                     <controls:EmptyView Grid.Row="1"
                                         IsVisible="{Binding NoResults}"
                                         Text="{DynamicResource fw_select_no_results_short}"

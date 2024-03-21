@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Avalonia.Controls;
+using Avalonia.Threading;
 using FluentIcons.Common;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
@@ -134,7 +135,7 @@ public class TouchpadPageViewModel : MainPageViewModelBase
     
     protected override void OnEventReceived(Event e, object? arg)
     {
-        Avalonia.Threading.Dispatcher.UIThread.Post(() =>
+        Dispatcher.UIThread.Post(() =>
         {
             switch (e)
             {
