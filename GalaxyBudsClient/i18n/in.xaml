@@ -1,5 +1,4 @@
-﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <sys:String x:Key="ResourceDictionaryName">Loc-in</sys:String>
 
@@ -97,10 +96,8 @@
 
     <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Selamat Datang!</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">
-        Hallo! Aplikasi Galaxy Buds Manager ini bukan merupakan aplikasi resmi dari Samsung.
-        Program ini tidak dapat melakukan banyak hal seperti aplikasi Samsung Wearable di Android. Saya memutuskan untuk tidak mengikut sertakan Firmware OTA untuk alasan keamanan. Jika anda membutuhkannya, anda bisa menggunakan aplikasi resmi.
-    </sys:String>
+    <sys:String x:Key="welcome_textblock_p1">Hallo! Aplikasi Galaxy Buds Manager ini bukan merupakan aplikasi resmi dari Samsung.
+        Program ini tidak dapat melakukan banyak hal seperti aplikasi Samsung Wearable di Android. Saya memutuskan untuk tidak mengikut sertakan Firmware OTA untuk alasan keamanan. Jika anda membutuhkannya, anda bisa menggunakan aplikasi resmi.</sys:String>
     <sys:String x:Key="welcome_textblock_p2">Jika anda tertarik dengan project ini, anda dapat membuka proyek Github saya yang sudah saya sertakan jurnal reverse-engineering. Anda juga bisa menghubungi saya melalui Github atau Telegram @thepbone jika anda menemukan masalah.</sys:String>
     <sys:String x:Key="welcome_textblock_p3">Aplikasi ini dapat digunakan untuk seri Buds (2019), Buds+ (2020) dan Buds Live.</sys:String>
     <sys:String x:Key="welcome_darkmode">Dark Mode</sys:String>
@@ -167,10 +164,8 @@
     <sys:String x:Key="cact_notice">Perhatian</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Aksi tekan dan tahan akan dijalankan saat aplikasi ini ditutup.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">Aksi ini tidak akan berdampak pada Android atau device yang lain.</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">
-        Untuk memastikan konsistensi dalam penjalanann fitur ini, aplikasi ini akan otomatis aktif saat komputer anda hidup.
-        Anda dapat mematikan perilaku ini melalui menu pengaturan.
-    </sys:String>
+    <sys:String x:Key="cact_notice_content_p3">Untuk memastikan konsistensi dalam penjalanann fitur ini, aplikasi ini akan otomatis aktif saat komputer anda hidup.
+        Anda dapat mematikan perilaku ini melalui menu pengaturan.</sys:String>
 
     <!--System/Self-Test-->
     <sys:String x:Key="system_header">Informasi Sistem</sys:String>
@@ -238,11 +233,9 @@
     <sys:String x:Key="factory_header">Setelan Pabrik</sys:String>
     <sys:String x:Key="factory_confirm">Konfirmasi Reset</sys:String>
     <sys:String x:Key="factory_error_title">Reset gagal</sys:String>
-    <sys:String x:Key="factory_error">
-        Perangkat memberikan kode error: {0}
+    <sys:String x:Key="factory_error">Perangkat memberikan kode error: {0}
         Pastikan kedua Earbuds menyala dan tidak terlalu jauh.
-        Anda mungkin perlu menghubungkan Earbuds kembali ke komputer anda.
-    </sys:String>
+        Anda mungkin perlu menghubungkan Earbuds kembali ke komputer anda.</sys:String>
     <sys:String x:Key="factory_text_p1">Apakah anda yakin untuk melakukan reset pada Earbuds anda?</sys:String>
     <sys:String x:Key="factory_text_p2">Setelah melakukan reset ke setelan pabrik, anda perlu untuk menghubungkan kembali Earbuds dengan komputer anda.</sys:String>
     <sys:String x:Key="factory_text_p3">Pastikan kedua Earbuds anda aktif sebelum melanjutkan langkah selanjutnya!</sys:String>
@@ -298,10 +291,8 @@
     <!--Connection lost page-->
     <sys:String x:Key="connlost_header">Koneksi terputus</sys:String>
     <sys:String x:Key="connlost_description_p1">Tidak dapat melakukan koneksi dengan Earbuds anda.</sys:String>
-    <sys:String x:Key="connlost_description_p2">
-        Pastikan Bluetooth anda sudah hidup dan Earbuds telah terhubung dengan komputer ini.
-        Anda juga dapat mendaftarkan Earbuds baru. Jika anda ingin melakukannya, pilih "Opsi -&gt; Hapus Perangkat" disebelah kiri atas.
-    </sys:String>
+    <sys:String x:Key="connlost_description_p2">Pastikan Bluetooth anda sudah hidup dan Earbuds telah terhubung dengan komputer ini.
+        Anda juga dapat mendaftarkan Earbuds baru. Jika anda ingin melakukannya, pilih "Opsi -&gt; Hapus Perangkat" disebelah kiri atas.</sys:String>
     <sys:String x:Key="connlost_description_p3">Informasi tambahan:</sys:String>
     <sys:String x:Key="connlost_noinfo">Gagal mendapatkan informasi kesalahan</sys:String>
     <sys:String x:Key="connlost_connect">Hubungkan</sys:String>

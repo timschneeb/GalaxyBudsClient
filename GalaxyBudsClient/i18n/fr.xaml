@@ -1,6 +1,5 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
     <sys:String x:Key="ResourceDictionaryName">Loc-fr</sys:String>
 
     <!--:::::::: Source code ::::::::-->
@@ -61,7 +60,7 @@
     <sys:String x:Key="touchoption_volume_down">Volume bas</sys:String>
     <sys:String x:Key="touchoption_ambientsound">Son environnant</sys:String>
     <sys:String x:Key="touchoption_switch_noisecontrols">Changer le mode de contrôle du bruit</sys:String>
-    <sys:String x:Key="touchoption_spotify">Spotify (seulement sur Android)</sys:String>
+    <sys:String x:Key="touchoption_spotify">Spotify (seulement sur Android)</sys:String>    
     <sys:String x:Key="touchoption_custom">Action personnalisée...</sys:String>
     <sys:String x:Key="touchoption_custom_null">Non spécifiée</sys:String>
     <sys:String x:Key="touchoption_custom_unknown">Inconnue</sys:String>
@@ -113,7 +112,7 @@
     <sys:String x:Key="hotkey_edit_action">Action</sys:String>
     <sys:String x:Key="hotkey_edit_preview">Apercu du raccourci :</sys:String>
     <sys:String x:Key="hotkey_edit_header">Sélectionnez un raccourci clavier</sys:String>
-
+    
     <!--Hotkey page-->
     <sys:String x:Key="hotkey_header">Raccourcis clavier</sys:String>
     <sys:String x:Key="hotkey_add">Créer un nouveau raccourci</sys:String>
@@ -148,13 +147,11 @@
     <sys:String x:Key="event_manager_visible">Montrer/Cacher l'application</sys:String>
     <sys:String x:Key="event_display_battery_popup">Afficher la notification de batterie</sys:String>
     <sys:String x:Key="event_connect">Se connecter aux écouteurs</sys:String>
-
+    
     <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Bienvenue !</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">
-        Salut ! Cette application n'est ni officielle, ni affiliée à Samsung, gardez cela en tête lorsque vous l'utilisez.
-        Ce programme a été conçu pour fournir beaucoup plus de fonctionnalités que l'application officielle Samsung wearable, cependant certaines de ces fonctionnalités ne sont pas disponibles sur les appareils n'ayant pas ce programme d'installé.
-    </sys:String>
+    <sys:String x:Key="welcome_textblock_p1">Salut ! Cette application n'est ni officielle, ni affiliée à Samsung, gardez cela en tête lorsque vous l'utilisez.
+Ce programme a été conçu pour fournir beaucoup plus de fonctionnalités que l'application officielle Samsung wearable, cependant certaines de ces fonctionnalités ne sont pas disponibles sur les appareils n'ayant pas ce programme d'installé.</sys:String>
     <sys:String x:Key="welcome_textblock_p2">Si vous êtes intéressés par ce qui se passe en coulisses, vous pouvez jeter un coup d'œil à mon dépôt GitHub qui inclut quelques notes sur le processus de rétro-ingénierie utilisé. Vous pouvez aussi me contacter sur GitHub ou Telegram @thepbone si vous rencontrez un problème.</sys:String>
     <sys:String x:Key="welcome_textblock_p3">Cette application est compatible avec tous les modèles de Galaxy Buds.</sys:String>
     <sys:String x:Key="welcome_darkmode">Mode sombre</sys:String>
@@ -243,10 +240,8 @@
     <sys:String x:Key="cact_notice">Remarque</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Les actions personnalisées pour les appuis longs ne sont disponibles que lorsque l'application est active (ou en arrière plan).</sys:String>
     <sys:String x:Key="cact_notice_content_p2">Cette fonctionnalité n'a pas d'effets sur Android ou sur d'autres appareils</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">
-        Afin de fournir un support optimal de cette fonctionnalité, l'application se lancera automatiquement en arrière plan au démarrage.
-        Vous pouvez désactiver ce comportement dans les paramètres.
-    </sys:String>
+    <sys:String x:Key="cact_notice_content_p3">Afin de fournir un support optimal de cette fonctionnalité, l'application se lancera automatiquement en arrière plan au démarrage.
+Vous pouvez désactiver ce comportement dans les paramètres.</sys:String>
 
     <!--System/Self-Test-->
     <sys:String x:Key="system_overview_header">Système</sys:String>
@@ -292,7 +287,7 @@
     <sys:String x:Key="selftest_fail">Échec</sys:String>
     <sys:String x:Key="selftest_pass_long">Tous les tests ont réussi</sys:String>
     <sys:String x:Key="selftest_fail_long">Un ou plusieurs tests ont échoué</sys:String>
-
+    
     <sys:String x:Key="coredump_header">Extraction des données...</sys:String>
     <sys:String x:Key="coredump_dl_progress_prepare">Préparation du téléchargement...</sys:String>
     <sys:String x:Key="coredump_dl_progress_cancelled">Téléchargement annulé</sys:String>
@@ -300,18 +295,16 @@
     <sys:String x:Key="coredump_dl_trace_progress">Téléchargement des traces... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">Téléchargement du core dump... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} octets)</sys:String>
-    <sys:String x:Key="coredump_dl_note">
-        Le flux audio est mis en pause pendant le téléchargement. Vos écouteurs seront déconnectés dès que la transmission sera terminée, veuillez les reconnecter manuellement.
-        Une fois terminé, vous devrez choisir un dossier pour les données reçues.
+    <sys:String x:Key="coredump_dl_note">Le flux audio est mis en pause pendant le téléchargement. Vos écouteurs seront déconnectés dès que la transmission sera terminée, veuillez les reconnecter manuellement.
+Une fois terminé, vous devrez choisir un dossier pour les données reçues.
 
-        Si la transmission est bloquée ou les écouteurs déconnectés prématurément, vous devrez recommencer le téléchargement. Cette fonctionnalité est pour le moment très instable.
-    </sys:String>
+Si la transmission est bloquée ou les écouteurs déconnectés prématurément, vous devrez recommencer le téléchargement. Cette fonctionnalité est pour le moment très instable.</sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">Échec de la sauvegarde du dump</sys:String>
     <sys:String x:Key="coredump_dl_save_fail">Impossible de copier le dump depuis l'emplacement temporaire. Cause : {0}</sys:String>
     <sys:String x:Key="coredump_dl_save_success_title">Dumps sauvegardés avec succès</sys:String>
     <sys:String x:Key="coredump_dl_save_success">{0} dump(s) ont été écrits à l'emplacement '{1}'</sys:String>
     <sys:String x:Key="coredump_dl_save_dialog_title">Sélectionnez un dossier de téléchargement...</sys:String>
-
+    
     <!--Settings-->
     <sys:String x:Key="settings_header">Paramètres</sys:String>
 
@@ -326,7 +319,7 @@
     <sys:String x:Key="settings_autostart">Exécuter au démarrage</sys:String>
     <sys:String x:Key="settings_autostart_description">Lancer l'application en arrière plan au démarrage</sys:String>
     <sys:String x:Key="settings_autostart_permission">Impossible de mettre à jour l'entrée de registre de démarrage automatique. L'accès au registre (HKCU) a été désactivé par votre administrateur réseau</sys:String>
-
+    
     <sys:String x:Key="settings_connpopup">Configurer la notification de connexion</sys:String>
     <sys:String x:Key="settings_devmode">Options pour les développeurs</sys:String>
 
@@ -350,11 +343,9 @@
     <sys:String x:Key="factory_header">Réinitialisation</sys:String>
     <sys:String x:Key="factory_confirm">Confirmer la réinitialisation</sys:String>
     <sys:String x:Key="factory_error_title">La réinitialisation a échoué</sys:String>
-    <sys:String x:Key="factory_error">
-        L'appareil a renvoyé le code d'erreur suivant : {0}
-        Assurez vous que chaque écouteur est allumé et joignable.
-        Vous devrez peut-être reconnecter vos écouteurs manuellement.
-    </sys:String>
+    <sys:String x:Key="factory_error">L'appareil a renvoyé le code d'erreur suivant : {0}
+Assurez vous que chaque écouteur est allumé et joignable.
+Vous devrez peut-être reconnecter vos écouteurs manuellement.</sys:String>
     <sys:String x:Key="factory_text_p1">Êtes-vous sûr de vouloir réinitialiser vos écouteurs ?</sys:String>
     <sys:String x:Key="factory_text_p2">Après avoir effectué la réinitialisation, vous devrez reconnecter manuellement vos écouteurs à votre ordinateur.</sys:String>
     <sys:String x:Key="factory_text_p3">Assurez vous que les deux écouteurs sont allumés avant de continuer !</sys:String>
@@ -373,7 +364,7 @@
     <sys:String x:Key="eq_stereo_balance">Balance gauche/droite</sys:String>
     <sys:String x:Key="eq_stereo_balance_value">{0}% gauche; {1}% droite</sys:String>
     <sys:String x:Key="eq_stereo_balance_neutral">Neutre</sys:String>
-
+    
     <sys:String x:Key="eq_bass">Ampli. basses</sys:String>
     <sys:String x:Key="eq_soft">Léger</sys:String>
     <sys:String x:Key="eq_dynamic">Dynamique</sys:String>
@@ -388,7 +379,7 @@
     <sys:String x:Key="nc_voicedetect_description">Lorsque votre voix est détectée, active le son environnant et baisse le volume pour rendre les conversations plus agréables</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">Délai avant désactivation</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} secondes</sys:String>
-
+    
     <!--Ambient sound-->
     <sys:String x:Key="as_header">Son environnant</sys:String>
     <sys:String x:Key="as_enable">Activer le son environnant</sys:String>
@@ -401,7 +392,7 @@
     <sys:String x:Key="as_scale_moderate">Moyen</sys:String>
     <sys:String x:Key="as_scale_high">Élevé</sys:String>
     <sys:String x:Key="as_scale_extraloud">Très élevé</sys:String>
-
+    
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Paramètres avancés</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} ou plus récent</sys:String>
@@ -426,11 +417,9 @@
     <sys:String x:Key="bixby_remap_enable_desc">Lancez Bixby sur votre téléphone Samsung ou exécutez une action personnalisée sur ce PC lorsque vous dites 'Hi Bixby!'</sys:String>
     <sys:String x:Key="bixby_remap_lang">Langue utilisée par Bixby wakeup</sys:String>
     <sys:String x:Key="bixby_remap_action">Action personnalisée</sys:String>
-    <sys:String x:Key="bixby_remap_note">
-        Dites 'Hi Bixby!' pour activer. La phrase d'activation peut différer selon les paramètres de langue.
+    <sys:String x:Key="bixby_remap_note">Dites 'Hi Bixby!' pour activer. La phrase d'activation peut différer selon les paramètres de langue.
 
-        La réassignation et les paramètres associés ne sont actifs que sur cet appareil. Si vous connectez vos écouteurs à un appareil Samsung, Bixby fonctionnera de manière normale. Sur d'autres appareils que celui-ci et sur des téléphones ne supportant pas Bixby, cette fonctionnalité n'aura aucun effet.
-    </sys:String>
+La réassignation et les paramètres associés ne sont actifs que sur cet appareil. Si vous connectez vos écouteurs à un appareil Samsung, Bixby fonctionnera de manière normale. Sur d'autres appareils que celui-ci et sur des téléphones ne supportant pas Bixby, cette fonctionnalité n'aura aucun effet.</sys:String>
 
 
     <!--Credits-->
@@ -445,27 +434,23 @@
     <!--Connection lost page-->
     <sys:String x:Key="connlost_header">Impossible d'établir une connexion</sys:String>
     <sys:String x:Key="connlost_description_p1">Impossible d'établir une connexion avec vos écouteurs.</sys:String>
-    <sys:String x:Key="connlost_description_p2">
-        Veuillez vérifier vos paramètres Bluetooth et vous assurer que vos écouteurs sont allumés et appairés avec cet ordinateur.
-        Vous pouvez également associer une nouvelle paire d'écouteurs si besoin. Dans ce cas, veuillez sélectionner 'Options &gt; Oublier l'appareil'.
-    </sys:String>
+    <sys:String x:Key="connlost_description_p2">Veuillez vérifier vos paramètres Bluetooth et vous assurer que vos écouteurs sont allumés et appairés avec cet ordinateur.
+Vous pouvez également associer une nouvelle paire d'écouteurs si besoin. Dans ce cas, veuillez sélectionner 'Options &gt; Oublier l'appareil'.</sys:String>
     <sys:String x:Key="connlost_description_p3">Informations supplémentaires :</sys:String>
     <sys:String x:Key="connlost_noinfo">Impossible de recueillir les informations d'erreur</sys:String>
     <sys:String x:Key="connlost_disconnected">Écouteurs déconnectés</sys:String>
     <sys:String x:Key="connlost_connect">Connecter</sys:String>
     <sys:String x:Key="connlost_connecting">Connexion...</sys:String>
-
+    
     <!--Firmware update disclaimer-->
     <sys:String x:Key="fw_disclaimer">Décharge</sys:String>
-    <sys:String x:Key="fw_disclaimer_desc">
-        Cet outil de mise à jour du logiciel est une réplique fidèle du programme de mise à jour officiel contenu dans l'application Android officielle de Samsung. J'ai soigneusement testé cette implémentation dans divers scénarios (opération normale, perte de connexion, paquets Bluetooth intentionnellement corrompus, ...) sans rencontrer aucun problème. Toutefois, je n'engage aucune responsabilité si quelque chose devait mal se passer, les mises à jour du firmware modifient des composants essentiels du système et doivent toujours être effectuées avec prudence.
+    <sys:String x:Key="fw_disclaimer_desc">Cet outil de mise à jour du logiciel est une réplique fidèle du programme de mise à jour officiel contenu dans l'application Android officielle de Samsung. J'ai soigneusement testé cette implémentation dans divers scénarios (opération normale, perte de connexion, paquets Bluetooth intentionnellement corrompus, ...) sans rencontrer aucun problème. Toutefois, je n'engage aucune responsabilité si quelque chose devait mal se passer, les mises à jour du firmware modifient des composants essentiels du système et doivent toujours être effectuées avec prudence.
 
-        DOWNGRADING : Même si le retour à une version antérieure est possible et que je n'ai jamais rencontré de problèmes avec, il peut engendrer des problèmes inattendus et doit donc être effectué seulement en cas de nécesssité. Un retour aux paramètre d'usine après le downgrade est recommandé mais généralement pas nécessaire.
-        CUSTOM FLASHING : Vous pouvez aussi charger les fichiers du firmware depuis votre disque dur. NE FLASHEZ PAS de firwares déstinés à un autre modèle sur votre appareil.
+DOWNGRADING : Même si le retour à une version antérieure est possible et que je n'ai jamais rencontré de problèmes avec, il peut engendrer des problèmes inattendus et doit donc être effectué seulement en cas de nécesssité. Un retour aux paramètre d'usine après le downgrade est recommandé mais généralement pas nécessaire.
+CUSTOM FLASHING : Vous pouvez aussi charger les fichiers du firmware depuis votre disque dur. NE FLASHEZ PAS de firwares déstinés à un autre modèle sur votre appareil.
 
-        Cette application est sous licence GPLv3. En l'utilisant, vous acceptez la licence et ses limitations de responsabilité. Appuyez sur 'Continuer' pour accepter.
-    </sys:String>
-
+Cette application est sous licence GPLv3. En l'utilisant, vous acceptez la licence et ses limitations de responsabilité. Appuyez sur 'Continuer' pour accepter.</sys:String>
+    
     <!--Firmware selection-->
     <sys:String x:Key="fw_select_header">Mises à jour du firmware</sys:String>
     <sys:String x:Key="fw_select_instructions">Veuillez choisir un firmware à télécharger et installer. Vous pouvez également en choisir un depuis votre disque dur en allant dans 'Avancé... &gt; Choisir une image depuis le disque...'</sys:String>
@@ -475,11 +460,9 @@
     <sys:String x:Key="fw_select_advanced">Avancé...</sys:String>
     <sys:String x:Key="fw_select_install">Installer le firmware</sys:String>
     <sys:String x:Key="fw_select_from_disk">Choisir une image depuis le disque...</sys:String>
-    <sys:String x:Key="fw_select_external_note">
-        NE FLASHEZ PAS de firmwares destinés à un autre modèle sur votre appareil. Flasher un firmware de Buds Pro sur une paire de Buds Plus ne rajoutera aucune fonctionnalité, cela détruira vos écouteurs.
+    <sys:String x:Key="fw_select_external_note">NE FLASHEZ PAS de firmwares destinés à un autre modèle sur votre appareil. Flasher un firmware de Buds Pro sur une paire de Buds Plus ne rajoutera aucune fonctionnalité, cela détruira vos écouteurs.
 
-        Appuyez sur 'Continuer' pour sélectionner un firmware.
-    </sys:String>
+Appuyez sur 'Continuer' pour sélectionner un firmware.</sys:String>
     <sys:String x:Key="fw_select_unsupported_selection">Sélection invalide. Veuillez sélectionner une version compatible dans la liste</sys:String>
     <sys:String x:Key="fw_select_downloading">Téléchargement...</sys:String>
     <sys:String x:Key="fw_select_net_error">Échec de la communication avec le serveur. Impossible de télécharger le firmware pour le moment.</sys:String>
@@ -488,14 +471,12 @@
     <sys:String x:Key="fw_select_unknown_build">Nom de build inconnu</sys:String>
     <sys:String x:Key="fw_select_verify_fail">Échec de la vérification du firmware</sys:String>
     <sys:String x:Key="fw_select_confirm">Vous êtes sur le point de flasher '{0}' sur votre appareil '{1}'</sys:String>
-    <sys:String x:Key="fw_select_confirm_desc">
-        Veuillez vous assurer que ces informations sont correctes, si ce n'est pas le cas appuyez sur 'Annuler' et revérifiez votre configuration
+    <sys:String x:Key="fw_select_confirm_desc">Veuillez vous assurer que ces informations sont correctes, si ce n'est pas le cas appuyez sur 'Annuler' et revérifiez votre configuration
 
-        Si possible, assurez vous que chacun de vos écouteurs soient connectés avant de démarrer. Une déconnexion des écouteurs durant le transfert de la mise à jour ne posera aucun problème. Dans ce cas, les écouteurs vont automatiquement annuler le transfert et quitter le mode mise à jour.
+Si possible, assurez vous que chacun de vos écouteurs soient connectés avant de démarrer. Une déconnexion des écouteurs durant le transfert de la mise à jour ne posera aucun problème. Dans ce cas, les écouteurs vont automatiquement annuler le transfert et quitter le mode mise à jour.
 
-        Appuyez sur 'Continuer' pour lancer la mise à jour.
-    </sys:String>
-
+Appuyez sur 'Continuer' pour lancer la mise à jour.</sys:String>
+  
     <!--Firmware transfer-->
     <sys:String x:Key="fw_upload_header">Installation du firmware...</sys:String>
     <sys:String x:Key="fw_upload_progress_session">Création d'une nouvelle session...</sys:String>
@@ -515,12 +496,10 @@
     <sys:String x:Key="fw_fail_no_magic">Ce n'est pas un firmware valide. Un nombre magique invalide a été trouvé dans l'en-tête du fichier</sys:String>
     <sys:String x:Key="fw_fail_size_null">Ce firmware ne peut pas être flashé car sa taille est nulle. Veuillez en choisir un autre.</sys:String>
     <sys:String x:Key="fw_fail_no_segments">Ce firmware est vide et ne contient aucun segment binaire. Veuillez en choisir un autre.</sys:String>
-    <sys:String x:Key="fw_fail_unknown">
-        Erreur inattendue lors du décodage du firmware. Cette archive est peut-être corrompue.
+    <sys:String x:Key="fw_fail_unknown">Erreur inattendue lors du décodage du firmware. Cette archive est peut-être corrompue.
 
-        Détails :
-    </sys:String>
-
+Détails :</sys:String>
+    
     <!--Firmware transfer errors-->
     <sys:String x:Key="fw_fail_connection">Connexion avec les écouteurs interrompue. Le transfert du firmware a été annulé.</sys:String>
     <sys:String x:Key="fw_fail_session">Échec de l'ouverture d'une nouvelle session. L'appareil a renvoyé un code d'erreur ({0})</sys:String>
@@ -532,14 +511,14 @@
     <sys:String x:Key="fw_fail_session_timeout">Temps d'attente dépassé pour l'ouverture d'une nouvelle session</sys:String>
     <sys:String x:Key="fw_fail_control_timeout">Temps d'attente dépassé pour le renvoi d'un bloc de contrôle</sys:String>
     <sys:String x:Key="fw_fail_copy_timeout">Temps d'attente dépassé pour la fin du transfert</sys:String>
-
+    
     <!--Spatial test-->
     <sys:String x:Key="spatial_header">Capteur spatial</sys:String>
     <!--Note: Quaternion = 4-dimensional vector-->
     <sys:String x:Key="spatial_dump_quaternion">Vecteur quaternaire brut :</sys:String>
     <!--Note: RPY = Roll, pitch, yaw-->
     <sys:String x:Key="spatial_dump_rpy">Valeurs RPY (roulis, tangage, lacet) :</sys:String>
-
+    
     <!--Header-->
     <sys:String x:Key="window_minimize">Réduire</sys:String>
     <sys:String x:Key="window_close">Fermer</sys:String>
