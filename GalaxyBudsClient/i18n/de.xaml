@@ -32,8 +32,9 @@
     <sys:String x:Key="sppmsg_tl">Nachricht zu klein</sys:String>
 
     <!--Dark Mode States-->
-    <sys:String x:Key="darkmode_disabled">Ausgeschalten</sys:String>
-    <sys:String x:Key="darkmode_enabled">Eingeschalten</sys:String>
+    <sys:String x:Key="darkmode_disabled">Aus</sys:String>
+    <sys:String x:Key="darkmode_enabled">An</sys:String>
+    <sys:String x:Key="darkmode_blur_enabled">An, mit Blur</sys:String>
     <sys:String x:Key="darkmode_system">Systemeinstellung verwenden</sys:String>
 
     <!--Connection popup-->

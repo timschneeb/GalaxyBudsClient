@@ -127,8 +127,11 @@ namespace GalaxyBudsClient.Model
             [LocalizedDescription("darkmode_disabled")]
             Light,
             [LocalizedDescription("darkmode_enabled")]
+            DarkNoBlur,
+            [LocalizedDescription("darkmode_blur_enabled")]
             Dark,
-            [LocalizedDescription("darkmode_system")]
+            // Disabled [LocalizedDescription("darkmode_system")]
+            [IgnoreDataMember]
             System
         }
 

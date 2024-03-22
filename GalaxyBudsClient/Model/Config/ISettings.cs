@@ -45,6 +45,8 @@ public interface ISettings : INotifyPropertyChanged
 {
     [Option(DefaultValue = DarkModes.Dark)]
     DarkModes DarkMode { set; get; }
+    [Option(DefaultValue = 144)]
+    int BlurStrength { set; get; }
     Color AccentColor { set; get; }
     [Option(DefaultValue = Locales.en)]
         

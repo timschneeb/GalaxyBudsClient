@@ -22,6 +22,7 @@ public static class ThemeUtils
         {
             DarkModes.Light => ThemeVariant.Light,
             DarkModes.Dark => ThemeVariant.Dark,
+            DarkModes.DarkNoBlur => ThemeVariant.Dark,
             _ => null
         };
 
