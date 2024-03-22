@@ -13,18 +13,17 @@ public class SettingsSliderItem : SettingsSymbolItem
 {
     public SettingsSliderItem()
     {
-        TickPlacement = TickPlacement.BottomRight;
-        
         _slider = new Slider
         {
             Orientation = Orientation.Horizontal,
             MinWidth = 250,
             TickFrequency = 1,
             IsSnapToTickEnabled = true,
-            TickPlacement = TickPlacement
+            TickPlacement = TickPlacement.BottomRight
         };
         _slider.ValueChanged += OnValueChanged;
         IsClickEnabled = false;
+        TickPlacement = TickPlacement.BottomRight;
         Footer = _slider;
     }
 
