@@ -21,7 +21,7 @@
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
             <DockPanel>
-                <Image Source="/Resources/icon_white.ico"
+                <Image Source="/Resources/icon.ico"
                        DockPanel.Dock="Left"
                        Height="78"
                        RenderOptions.BitmapInterpolationMode="HighQuality" />

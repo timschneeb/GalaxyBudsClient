@@ -10,7 +10,7 @@
         x:DataType="developer:TranslatorTools"
         Height="380" Width="460" MaxWidth="460"
         WindowStartupLocation="CenterScreen"
-        Icon="/Resources/icon_white.ico"
+        Icon="/Resources/icon.ico"
         Title="Galaxy Buds Manager - Translator Tools">
 
     <Design.DataContext>

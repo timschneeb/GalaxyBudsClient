@@ -6,7 +6,7 @@
         x:Class="GalaxyBudsClient.Interface.Developer.DevTools"
         Height="625" Width="700"
         WindowStartupLocation="CenterScreen"
-        Icon="/Resources/icon_white.ico"
+        Icon="/Resources/icon.ico"
         Title="Galaxy Buds Manager - Developer Tools">
 
     <Window.Styles>
