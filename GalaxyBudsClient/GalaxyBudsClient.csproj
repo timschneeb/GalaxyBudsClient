@@ -24,6 +24,7 @@
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <Configurations>Debug;Release;Debug (Local server)</Configurations>
         <Platforms>AnyCPU</Platforms>
         <DisableWinExeOutputInference>false</DisableWinExeOutputInference>
