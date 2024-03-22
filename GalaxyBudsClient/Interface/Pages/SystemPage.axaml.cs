@@ -84,7 +84,6 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
                 return;
             }
 
-            // TODO re-enter setup wizard?
             BluetoothService.Instance.UnregisterDevice();
         }
     }

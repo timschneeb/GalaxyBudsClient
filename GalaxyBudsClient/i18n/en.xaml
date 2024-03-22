@@ -201,7 +201,6 @@ This program is designed to provide much more functionality over the official Sa
     <!--Device selection page (setup)-->
     <sys:String x:Key="devsel_header">Select your earbuds</sys:String>
     <sys:String x:Key="devsel_refresh">Refresh paired devices</sys:String>
-    <sys:String x:Key="devsel_connect">Connect</sys:String>
     <sys:String x:Key="devsel_device_name">Device name</sys:String>
     <sys:String x:Key="devsel_btaddr">MAC address</sys:String>
     <sys:String x:Key="devsel_model">Model</sys:String>
@@ -496,6 +495,7 @@ The remap configuration is only active on this device. If you connect your earbu
     <sys:String x:Key="credits_github">Visit this project on GitHub</sys:String>
 
     <!--Connection lost page-->
+    <sys:String x:Key="connlost">Connection lost</sys:String>
     <sys:String x:Key="connlost_header">Unable to establish connection</sys:String>
     <sys:String x:Key="connlost_description_p1">Unable to establish a connection to your earbuds.</sys:String>
     <sys:String x:Key="connlost_description_p2">Please check your Bluetooth settings and make sure your Earbuds are turned on and paired to this computer.

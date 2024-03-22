@@ -69,10 +69,6 @@ public partial class MainWindow : AppWindow
         {
             Task.Run(() => BluetoothService.Instance.ConnectAsync());
         }
-        else
-        {
-            // TODO open setup wizard
-        }
             
         if (App.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
