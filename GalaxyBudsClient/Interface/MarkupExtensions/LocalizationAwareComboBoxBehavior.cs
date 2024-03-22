@@ -13,11 +13,11 @@ namespace GalaxyBudsClient.Interface.MarkupExtensions;
  * Workaround: Until UpdateSourceTrigger.Explicit is usable in Avalonia,
  * this behavior is used to update the source of a ComboBox in case of localization changes. 
  */
-public class LocalizationAwareBehavior : Behavior<Control>
+public class LocalizationAwareComboBoxBehavior : Behavior<Control>
 {
     
     public static readonly StyledProperty<Type> EnumTypeProperty =
-        AvaloniaProperty.Register<LocalizationAwareBehavior, Type>(nameof(EnumType));
+        AvaloniaProperty.Register<LocalizationAwareComboBoxBehavior, Type>(nameof(EnumType));
     
     public Type EnumType
     {
