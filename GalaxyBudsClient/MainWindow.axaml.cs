@@ -160,7 +160,7 @@ public partial class MainWindow : AppWindow
     private void TryEnableMicaEffect()
     {
         // TODO test on Windows
-        return;
+        
         // TransparencyBackgroundFallback = Brushes.Transparent;
         // TransparencyLevelHint = WindowTransparencyLevel.Mica;
 
@@ -174,7 +174,7 @@ public partial class MainWindow : AppWindow
         if (ActualThemeVariant == ThemeVariant.Dark)
         {
             var color = this.TryFindResource("SolidBackgroundFillColorBase",
-                ThemeVariant.Dark, out var value) ? (Color2)(Color)value : new Color2(32, 32, 32);
+                ThemeVariant.Dark, out var value) ? (Color2)(Color)value! : new Color2(32, 32, 32);
 
             color = color.LightenPercent(-0.8f);
 
@@ -184,7 +184,7 @@ public partial class MainWindow : AppWindow
         {
             // Similar effect here
             var color = this.TryFindResource("SolidBackgroundFillColorBase",
-                ThemeVariant.Light, out var value) ? (Color2)(Color)value : new Color2(243, 243, 243);
+                ThemeVariant.Light, out var value) ? (Color2)(Color)value! : new Color2(243, 243, 243);
 
             color = color.LightenPercent(0.5f);
 
