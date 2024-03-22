@@ -12,7 +12,6 @@ using Avalonia.Media;
 using Avalonia.Media.Immutable;
 using Avalonia.Styling;
 using Avalonia.Threading;
-using FluentAvalonia.Styling;
 using FluentAvalonia.UI.Media;
 using FluentAvalonia.UI.Windowing;
 using GalaxyBudsClient.Bluetooth;
@@ -81,9 +80,26 @@ public partial class MainWindow : AppWindow
         TitleBar.ExtendsContentIntoTitleBar = true;
         TitleBar.TitleBarHitTestType = TitleBarHitTestType.Complex;
         
-        App.ActualThemeVariantChanged += OnActualThemeVariantChanged;
+        Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
     }
-  
+
+    private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if(e.PropertyName is nameof(Settings.Instance.DarkMode) or nameof(Settings.Instance.BlurStrength))
+        {
+            if (Settings.Instance.DarkMode == DarkModes.Dark)
+            {
+                TryEnableMicaEffect();
+            }
+            else
+            {
+                TransparencyLevelHint = Array.Empty<WindowTransparencyLevel>();
+                ClearValue(BackgroundProperty);
+                ClearValue(TransparencyBackgroundFallbackProperty);
+            }
+        }
+    }
+
     private void OnLanguageUpdated()
     {
         FlowDirection = Loc.ResolveFlowDirection();
@@ -140,30 +156,15 @@ public partial class MainWindow : AppWindow
         await BluetoothService.Instance.DisconnectAsync();
         base.OnClosing(e);
     }
-        
-    private void OnActualThemeVariantChanged(object? sender, EventArgs e)
-    {
-        if (IsWindows11)
-        {
-            if (ActualThemeVariant != FluentAvaloniaTheme.HighContrastTheme)
-            {
-                TryEnableMicaEffect();
-            }
-            else
-            {
-                ClearValue(BackgroundProperty);
-                ClearValue(TransparencyBackgroundFallbackProperty);
-            }
-        }
-    }
-
+    
     private void TryEnableMicaEffect()
     {
         // TODO test on Windows
         
-        // TransparencyBackgroundFallback = Brushes.Transparent;
-        // TransparencyLevelHint = WindowTransparencyLevel.Mica;
-
+        TransparencyBackgroundFallback = Brushes.Transparent;
+        TransparencyLevelHint = new[]
+            { WindowTransparencyLevel.Mica, WindowTransparencyLevel.AcrylicBlur, WindowTransparencyLevel.Blur };
+        
         // The background colors for the Mica brush are still based around SolidBackgroundFillColorBase resource
         // BUT since we can't control the actual Mica brush color, we have to use the window background to create
         // the same effect. However, we can't use SolidBackgroundFillColorBase directly since its opaque, and if
@@ -171,25 +172,13 @@ public partial class MainWindow : AppWindow
         // apply the opacity until we get the roughly the correct color
         // NOTE that the effect still doesn't look right, but it suffices. Ideally we need access to the Mica
         // CompositionBrush to properly change the color but I don't know if we can do that or not
-        if (ActualThemeVariant == ThemeVariant.Dark)
-        {
-            var color = this.TryFindResource("SolidBackgroundFillColorBase",
-                ThemeVariant.Dark, out var value) ? (Color2)(Color)value! : new Color2(32, 32, 32);
+        var color = this.TryFindResource("SolidBackgroundFillColorBase",
+            ThemeVariant.Dark, out var value) ? (Color2)(Color)value! : new Color2(32, 32, 32);
 
-            color = color.LightenPercent(-0.8f);
+        color = color.LightenPercent(-0.8f);
+        color = color.WithAlpha(Settings.Instance.BlurStrength);
 
-            Background = new ImmutableSolidColorBrush(color, 0.9);
-        }
-        else if (ActualThemeVariant == ThemeVariant.Light)
-        {
-            // Similar effect here
-            var color = this.TryFindResource("SolidBackgroundFillColorBase",
-                ThemeVariant.Light, out var value) ? (Color2)(Color)value! : new Color2(243, 243, 243);
-
-            color = color.LightenPercent(0.5f);
-
-            Background = new ImmutableSolidColorBrush(color, 0.9);
-        }
+        Background = new ImmutableSolidColorBrush(color);
     } 
         
     protected override void OnOpened(EventArgs e)
@@ -215,7 +204,7 @@ public partial class MainWindow : AppWindow
         _firstShow = false;
             
         var thm = ActualThemeVariant;
-        if (IsWindows11 && thm != FluentAvaloniaTheme.HighContrastTheme)
+        if (/* TODO IsWindows11 &&*/ Settings.Instance.DarkMode == DarkModes.Dark)
         {
             TryEnableMicaEffect();
         }

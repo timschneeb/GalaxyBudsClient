@@ -13,13 +13,15 @@ public class SettingsSliderItem : SettingsSymbolItem
 {
     public SettingsSliderItem()
     {
+        TickPlacement = TickPlacement.BottomRight;
+        
         _slider = new Slider
         {
             Orientation = Orientation.Horizontal,
             MinWidth = 250,
             TickFrequency = 1,
             IsSnapToTickEnabled = true,
-            TickPlacement = TickPlacement.BottomRight
+            TickPlacement = TickPlacement
         };
         _slider.ValueChanged += OnValueChanged;
         IsClickEnabled = false;
@@ -39,6 +41,9 @@ public class SettingsSliderItem : SettingsSymbolItem
     
     public static readonly StyledProperty<int> MaximumProperty = 
         AvaloniaProperty.Register<SettingsSwitchItem, int>(nameof(Maximum), defaultBindingMode: BindingMode.TwoWay);
+   
+    public static readonly StyledProperty<TickPlacement> TickPlacementProperty = 
+        Slider.TickPlacementProperty.AddOwner<SettingsSliderItem>();
     
     public event EventHandler<RoutedEventArgs>? ValueChanged
     {
@@ -63,6 +68,12 @@ public class SettingsSliderItem : SettingsSymbolItem
         get => GetValue(MaximumProperty);
         set => SetValue(MaximumProperty, value);
     }
+    
+    public TickPlacement TickPlacement
+    {
+        get => GetValue(TickPlacementProperty);
+        set => SetValue(TickPlacementProperty, value);
+    }
 
     private void OnValueChanged(object? sender, RangeBaseValueChangedEventArgs e)
     {
@@ -83,6 +94,10 @@ public class SettingsSliderItem : SettingsSymbolItem
         else if (change.Property == MaximumProperty)
         {
             _slider.Maximum = Maximum;
+        }
+        else if (change.Property == TickPlacementProperty)
+        {
+            _slider.TickPlacement = TickPlacement;
         }
         else
         {

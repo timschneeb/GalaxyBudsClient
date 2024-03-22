@@ -35,6 +35,7 @@
     <!--Dark Mode States-->
     <sys:String x:Key="darkmode_disabled">Off</sys:String>
     <sys:String x:Key="darkmode_enabled">On</sys:String>
+    <sys:String x:Key="darkmode_blur_enabled">On, with blur</sys:String>
     <sys:String x:Key="darkmode_system">Use system setting</sys:String>
 
     <!--Connection popup-->
@@ -277,6 +278,8 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="settings_appearance">Appearance</sys:String>
     <sys:String x:Key="settings_darkmode">Dark mode</sys:String>
     <sys:String x:Key="settings_darkmode_description">Use a darker color scheme</sys:String>
+    <sys:String x:Key="settings_blurstrength">Window blur strength</sys:String>
+    <sys:String x:Key="settings_blurstrength_description">Only compatible with dark mode. Not supported on all systems</sys:String>
     <sys:String x:Key="settings_accent">Accent color</sys:String>
     <sys:String x:Key="settings_accent_description">Choose a custom accent color</sys:String>
     <sys:String x:Key="settings_transitions">Transition</sys:String>

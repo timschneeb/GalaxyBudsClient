@@ -10,6 +10,7 @@
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
              xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
+             xmlns:converters="clr-namespace:GalaxyBudsClient.Interface.Converters"
              mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="1200"
              x:Class="GalaxyBudsClient.Interface.Pages.SettingsPage"
              x:CompileBindings="True"
@@ -75,6 +76,15 @@
                     </Interaction.Behaviors>
                 </controls:SettingsComboBoxItem>
 
+                <controls:SettingsSliderItem
+                    Content="{DynamicResource settings_blurstrength}"
+                    Description="{DynamicResource settings_blurstrength_description}"
+                    TickPlacement="None"
+                    Symbol="Blur"
+                    Maximum="255"
+                    IsEnabled="{Binding DarkMode, Source={x:Static utils:Settings.Instance}, Converter={x:Static converters:FuncConverters.IsBlurDarkModeSet}}"
+                    Value="{Binding BlurStrength, Source={x:Static utils:Settings.Instance}}" />
+                
                 <controls:SettingsColorItem Name="AppAccent"
                                             Content="{DynamicResource settings_accent}"
                                             Description="{DynamicResource settings_accent_description}"
