@@ -19,12 +19,8 @@ namespace GalaxyBudsClient.Scripting.Experiment;
 public class ExperimentClient
 {
     public event EventHandler<IReadOnlyList<ExperimentRequest>>? NewResultsFound;
-        
-#if UseLocalServer
-        const string API_BASE = "http://localhost:5100/v2";
-#else
+
     private const string API_BASE = "https://crowdsourcing.timschneeberger.me/v2";
-#endif
     private const string API_GET_EXPERIMENTS = API_BASE + "/experiments";
     private const string API_POST_RESULT = API_BASE + "/result";
 
