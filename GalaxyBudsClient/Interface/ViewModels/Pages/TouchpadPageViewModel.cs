@@ -147,22 +147,6 @@ public class TouchpadPageViewModel : MainPageViewModelBase
             }
         });
     }
-
-    public void SetCustomAction(Devices side, CustomAction action)
-    {
-        if (side == Devices.L)
-        {
-            Settings.Instance.CustomActionLeft.Action = action.Action;
-            Settings.Instance.CustomActionLeft.Parameter = action.Parameter;
-        }
-        else if (side == Devices.R)
-        {
-            Settings.Instance.CustomActionRight.Action = action.Action;
-            Settings.Instance.CustomActionRight.Parameter = action.Parameter;
-        }
-
-        UpdateEditStates();
-    }
     
     private void UpdateEditStates()
     {
