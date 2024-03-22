@@ -95,7 +95,11 @@
                     Symbol="Timer"
                     IsEnabled="{Binding IsVoiceDetectEnabled}"
                     ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:VoiceDetectTimeouts}}}"
-                    SelectedValue="{Binding VoiceDetectTimeout}" />
+                    SelectedValue="{Binding VoiceDetectTimeout}">
+                    <Interaction.Behaviors>
+                        <ext:LocalizationAwareBehavior EnumType="{x:Type constants:VoiceDetectTimeouts}" /> 
+                    </Interaction.Behaviors>
+                </controls:SettingsComboBoxItem>
 
             </controls:SettingsGroup>
 

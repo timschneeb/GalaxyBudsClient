@@ -48,6 +48,10 @@
                     IsToolButtonEnabled="{Binding IsLeftCustomActionEditable}"
                     ToolButtonClick="OnEditLeftCustomActionClicked">
 
+                    <Interaction.Behaviors>
+                        <ext:LocalizationAwareBehavior EnumType="{x:Type constants:TouchOptions}" /> 
+                    </Interaction.Behaviors>
+                    
                     <controls:SettingsComboBoxItem.ToolButtonContent>
                         <ic:SymbolIcon Symbol="Edit" />
                     </controls:SettingsComboBoxItem.ToolButtonContent>
@@ -65,6 +69,10 @@
                     IsToolButtonEnabled="{Binding IsRightCustomActionEditable}"
                     ToolButtonClick="OnEditRightCustomActionClicked">
 
+                    <Interaction.Behaviors>
+                        <ext:LocalizationAwareBehavior EnumType="{x:Type constants:TouchOptions}" /> 
+                    </Interaction.Behaviors>
+                    
                     <controls:SettingsComboBoxItem.ToolButtonContent>
                         <ic:SymbolIcon Symbol="Edit" />
                     </controls:SettingsComboBoxItem.ToolButtonContent>
@@ -79,6 +87,7 @@
                     ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type constants:NoiseControlCycleModes}}}"
                     SelectedValue="{Binding NoiseControlCycleMode}">
                     <Interaction.Behaviors>
+                        <ext:LocalizationAwareBehavior EnumType="{x:Type constants:NoiseControlCycleModes}" /> 
                         <ext:RequiresFeatureBehavior Feature="NoiseControl" />
                     </Interaction.Behaviors>
                 </controls:SettingsComboBoxItem>
