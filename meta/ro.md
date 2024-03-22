@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>76%</td><td>95 missing string(s)</td></tr>
+<tr><td>75%</td><td>98 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -13,6 +13,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><th>Key</th><th>Original string</th></tr>
 <tr><td><code>hint</code></td><td>Hint</td></tr>
 <tr><td><code>file_not_found</code></td><td>File not found</td></tr>
+<tr><td><code>darkmode_blur_enabled</code></td><td>On, with blur</td></tr>
 <tr><td><code>touchoption_custom_trigger_event</code></td><td>Trigger earbud action...</td></tr>
 <tr><td><code>hotkey_add_short</code></td><td>New</td></tr>
 <tr><td><code>hotkey_edit_long</code></td><td>Edit existing hotkey</td></tr>
@@ -44,6 +45,8 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>system_sku</code></td><td>Device SKUs</td></tr>
 <tr><td><code>settings_unregister_description</code></td><td>Remove your current earbuds and connect another pair</td></tr>
 <tr><td><code>settings_appearance</code></td><td>Appearance</td></tr>
+<tr><td><code>settings_blurstrength</code></td><td>Window blur strength</td></tr>
+<tr><td><code>settings_blurstrength_description</code></td><td>Only compatible with dark mode. Not supported on all systems</td></tr>
 <tr><td><code>settings_accent</code></td><td>Accent color</td></tr>
 <tr><td><code>settings_accent_description</code></td><td>Choose a custom accent color</td></tr>
 <tr><td><code>settings_localization_description</code></td><td>Change the app language</td></tr>
