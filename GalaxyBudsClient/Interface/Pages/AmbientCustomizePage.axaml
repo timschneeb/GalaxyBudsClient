@@ -18,16 +18,15 @@
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
 
             <controls:SettingsGroup>
-                <!-- TODO: add converter -->
                 <controls:SettingsSliderItem
                     Content="{DynamicResource as_volume}"
-                    Description="{Binding AmbientSoundVolume}"
+                    Description="{Binding AmbientSoundVolume, Converter={StaticResource AmbientStrengthConverter}}"
                     Symbol="Gauge"
                     IsEnabled="{Binding !IsAmbientCustomizationEnabled}"
                     Maximum="{Binding MaximumAmbientSoundVolume}"
                     Value="{Binding AmbientSoundVolume}">
                     <Interaction.Behaviors>
-                        <ext:LocalizationAwareSliderBehavior Converter="{Binding AsStrengthConverter}" />
+                        <ext:LocalizationAwareSliderBehavior Converter="{StaticResource AmbientStrengthConverter}" />
                     </Interaction.Behaviors>
                 </controls:SettingsSliderItem>
                 
