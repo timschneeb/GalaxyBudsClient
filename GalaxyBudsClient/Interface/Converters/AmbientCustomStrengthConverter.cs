@@ -3,9 +3,8 @@ using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 
 namespace GalaxyBudsClient.Interface.Converters;
 
-public class AmbientCustomStrengthConverter() : IntToStringConverter
+public class AmbientCustomStrengthConverter : IntToStringConverter
 {
-    // TODO: handle localization changes
     protected override Dictionary<int, string> Mapping => new()
     {
         { 0, "-2" },

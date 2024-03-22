@@ -8,7 +8,6 @@ namespace GalaxyBudsClient.Interface.Converters;
 
 public class EqPresetConverter : IValueConverter
 {
-    // TODO: handle localization changes
     public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
         if (value is not int)

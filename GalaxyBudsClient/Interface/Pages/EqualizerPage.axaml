@@ -31,7 +31,11 @@
                     IconSource="{StaticResource IconPlaceholder}"
                     IsEnabled="{Binding IsEqEnabled}"
                     Maximum="{Binding MaximumEqPreset}"
-                    Value="{Binding EqPreset}" />
+                    Value="{Binding EqPreset}">
+                    <Interaction.Behaviors>
+                        <ext:LocalizationAwareSliderBehavior Converter="{StaticResource EqPresetConverter}" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSliderItem>
             </controls:SettingsGroup>
 
             <controls:SettingsGroup>
@@ -45,7 +49,11 @@
                     Description="{Binding StereoBalance, Converter={StaticResource StereoBalanceConverter}}"
                     Symbol="DualScreenSpan"
                     Maximum="32"
-                    Value="{Binding StereoBalance}" />
+                    Value="{Binding StereoBalance}">
+                    <Interaction.Behaviors>
+                        <ext:LocalizationAwareSliderBehavior Converter="{StaticResource StereoBalanceConverter}" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSliderItem>
             </controls:SettingsGroup>
         </StackPanel>
     </ScrollViewer>
