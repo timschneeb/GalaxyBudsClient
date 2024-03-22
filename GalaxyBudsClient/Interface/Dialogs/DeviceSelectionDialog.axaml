@@ -9,7 +9,6 @@
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              xmlns:input="clr-namespace:FluentAvalonia.UI.Input;assembly=FluentAvalonia"
              xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
-             xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
              mc:Ignorable="d"
              Padding="0, 5, 0, 0"
              x:CompileBindings="True"
@@ -26,7 +25,7 @@
                              IconSource="{StaticResource LinkMultipleIcon}"
                              Description="{ext:Translate connlost_connect}"
                              Command="{Binding DoConnectCommand}" />
-        
+
         <input:XamlUICommand x:Key="RefreshCommand"
                              Label="{ext:Translate fw_select_refresh}"
                              IconSource="{StaticResource ReloadIcon}"
@@ -42,7 +41,7 @@
                         <ui:CommandBarButton Command="{StaticResource RefreshCommand}" />
                     </ui:CommandBar.PrimaryCommands>
                 </ui:CommandBar>
-                
+
                 <ListBox Grid.Row="1"
                          ItemsSource="{Binding Devices}"
                          IsVisible="{Binding !NoDevices}"
@@ -93,16 +92,16 @@
                                          IsCheckedChanged="OnUseWinRtCheckedChanged" />
         </controls:SettingsGroup>
 
-        <ui:InfoBar Title="{DynamicResource devsel_manual_pair_title}"
-                    Message="{DynamicResource devsel_manual_pair_description}"
-                    IsOpen="True"
-                    IsClosable="False"
-                    Severity="Informational">
-            <ui:InfoBar.ActionButton>
+        <controls:CustomInfoBar Title="{DynamicResource devsel_manual_pair_title}"
+                                Message="{DynamicResource devsel_manual_pair_description}"
+                                IsOpen="True"
+                                IsClosable="False"
+                                Severity="Informational">
+            <controls:CustomInfoBar.ActionButton>
                 <Button Content="{DynamicResource devsel_manual_pair}"
                         HorizontalAlignment="Right"
                         Click="OnManualConnectClicked" />
-            </ui:InfoBar.ActionButton>
-        </ui:InfoBar>
+            </controls:CustomInfoBar.ActionButton>
+        </controls:CustomInfoBar>
     </StackPanel>
 </UserControl>
