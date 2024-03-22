@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>61%</td><td>156 missing string(s)</td></tr>
+<tr><td>61%</td><td>158 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -52,6 +52,8 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>system_sku</code></td><td>Device SKUs</td></tr>
 <tr><td><code>settings_unregister_description</code></td><td>Remove your current earbuds and connect another pair</td></tr>
 <tr><td><code>settings_appearance</code></td><td>Appearance</td></tr>
+<tr><td><code>settings_blurstrength</code></td><td>Window blur strength</td></tr>
+<tr><td><code>settings_blurstrength_description</code></td><td>Only compatible with dark mode. Not supported on all systems</td></tr>
 <tr><td><code>settings_accent</code></td><td>Accent color</td></tr>
 <tr><td><code>settings_accent_description</code></td><td>Choose a custom accent color</td></tr>
 <tr><td><code>settings_localization_description</code></td><td>Change the app language</td></tr>
