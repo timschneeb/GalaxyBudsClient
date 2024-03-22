@@ -4,40 +4,80 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>80%</td><td>85 missing string(s)</td></tr>
+<tr><td>70%</td><td>119 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
 
 <table>
 <tr><th>Key</th><th>Original string</th></tr>
+<tr><td><code>hint</code></td><td>Hint</td></tr>
+<tr><td><code>file_not_found</code></td><td>File not found</td></tr>
+<tr><td><code>touchoption_custom_trigger_event</code></td><td>Trigger earbud action...</td></tr>
+<tr><td><code>hotkey_add_short</code></td><td>New</td></tr>
+<tr><td><code>hotkey_edit_long</code></td><td>Edit existing hotkey</td></tr>
 <tr><td><code>event_anc_switch_one</code></td><td>Switch ANC with one earbud</td></tr>
+<tr><td><code>welcome_register</code></td><td>Set-up your earbuds</td></tr>
+<tr><td><code>welcome_register_desc</code></td><td>Choose and register your pair of Galaxy Buds</td></tr>
+<tr><td><code>mainpage_header</code></td><td>Home</td></tr>
 <tr><td><code>mainpage_fit_test</code></td><td>Earbud fit test</td></tr>
-<tr><td><code>settings_tray_settings</code></td><td>Auto-start and tray icon</td></tr>
-<tr><td><code>settings_tray_settings_description</code></td><td>Configure auto-start and tray icon behavior</td></tr>
+<tr><td><code>devsel_manual_pair_title</code></td><td>Is your device not listed?</td></tr>
+<tr><td><code>devsel_manual_pair_description</code></td><td>Make sure your earbuds have already been paired. If they are still not recognized, try using the manual connection option.</td></tr>
+<tr><td><code>touchpad_default_action</code></td><td>Built-in touch action</td></tr>
+<tr><td><code>touchpad_noise_control_mode_desc</code></td><td>Choose modes to cycle through</td></tr>
+<tr><td><code>cact_function_param</code></td><td>Function</td></tr>
+<tr><td><code>cact_hotkey_param</code></td><td>Hotkey</td></tr>
+<tr><td><code>cact_path_param</code></td><td>File path</td></tr>
+<tr><td><code>system_no_response</code></td><td>No response from earbuds</td></tr>
+<tr><td><code>system_sku</code></td><td>Device SKUs</td></tr>
+<tr><td><code>settings_unregister_description</code></td><td>Remove your current earbuds and connect another pair</td></tr>
+<tr><td><code>settings_appearance</code></td><td>Appearance</td></tr>
+<tr><td><code>settings_accent</code></td><td>Accent color</td></tr>
+<tr><td><code>settings_accent_description</code></td><td>Choose a custom accent color</td></tr>
+<tr><td><code>settings_localization_description</code></td><td>Change the app language</td></tr>
+<tr><td><code>settings_tray_settings</code></td><td>Tray icon & startup</td></tr>
 <tr><td><code>settings_dyn_tray_mode</code></td><td>Dynamic tray icon</td></tr>
+<tr><td><code>settings_dyn_tray_mode_description</code></td><td>Display the battery status in the tray icon</td></tr>
 <tr><td><code>settings_dyn_tray_mode_off</code></td><td>Off</td></tr>
 <tr><td><code>settings_dyn_tray_mode_battery_min</code></td><td>Show lowest battery level</td></tr>
 <tr><td><code>settings_dyn_tray_mode_battery_avg</code></td><td>Show average battery level</td></tr>
 <tr><td><code>settings_autostart_permission</code></td><td>Cannot update auto-start entry in registry. Registry access (HKCU) was explicitly disabled by your system administrator.</td></tr>
+<tr><td><code>settings_devmode_description</code></td><td>Bluetooth traffic inspector and other developer tools</td></tr>
 <tr><td><code>settings_crowdsourcing</code></td><td>Crowdsourcing</td></tr>
+<tr><td><code>settings_cpopup_position_description</code></td><td>Select the position of the connection popup</td></tr>
+<tr><td><code>factory_confirmation</code></td><td>Are you sure you want to reset your earbuds to factory settings?
+This will remove all data and settings from your earbuds.
+
+Make sure both earbuds are turned on before continuing.</td></tr>
 <tr><td><code>gft_warning</code></td><td>Please wear both earbuds.</td></tr>
+<tr><td><code>gft_desc</code></td><td>Check whether your earbuds are seated correctly</td></tr>
 <tr><td><code>gft_bad</code></td><td>Bad fit</td></tr>
 <tr><td><code>gft_good</code></td><td>Good fit</td></tr>
 <tr><td><code>gft_fail</code></td><td>Test failed</td></tr>
+<tr><td><code>eq_enable_description</code></td><td>Apply EQ audio filters</td></tr>
+<tr><td><code>nc_as_anc_description</code></td><td>Reduce background noises</td></tr>
 <tr><td><code>nc_anc_one</code></td><td>Noise cancelling with one earbud</td></tr>
 <tr><td><code>nc_anc_one_description</code></td><td>Noise cancelling normally requires two earbuds to prevent discomfort, enable this to allow noise cancelling with only one earbud</td></tr>
+<tr><td><code>nc_voicedetect_timeout_description</code></td><td>Revert settings when your voice is not detected for a certain amount of time</td></tr>
+<tr><td><code>nc_as_custom_description</code></td><td>Customize ambient sound settings</td></tr>
+<tr><td><code>as_header_description</code></td><td>Hear your surroundings</td></tr>
+<tr><td><code>as_voicefocus_description</code></td><td>Make voices stand out more</td></tr>
 <tr><td><code>adv_bixby_remap</code></td><td>Remap Bixby wakeup</td></tr>
 <tr><td><code>adv_bixby_remap_desc</code></td><td>Define what should happen when you say 'Hey Bixby!'</td></tr>
-<tr><td><code>bixby_remap_header</code></td><td>Remap Bixby wakeup</td></tr>
 <tr><td><code>bixby_remap_enable</code></td><td>Enable Bixby wakeup</td></tr>
 <tr><td><code>bixby_remap_enable_desc</code></td><td>Launch Bixby on your Samsung phone or execute a custom action on this PC when woken up</td></tr>
 <tr><td><code>bixby_remap_lang</code></td><td>Bixby wakeup language</td></tr>
+<tr><td><code>bixby_remap_lang_desc</code></td><td>Change the language used for the activation phrase</td></tr>
 <tr><td><code>bixby_remap_action</code></td><td>Custom wakeup action</td></tr>
+<tr><td><code>bixby_remap_action_desc</code></td><td>Define what should happen when you activate Bixby on this device</td></tr>
 <tr><td><code>bixby_remap_note</code></td><td>Say 'Hey Bixby!' to activate. The activation phrase may be different with some language settings.
 
 The remap configuration is only active on this device. If you connect your earbuds to a Samsung device, voice wakeup will activate Bixby normally. On other devices than this device and non-Samsung phones, this feature won't trigger any action.</td></tr>
+<tr><td><code>credits_kofi</code></td><td>Visit my ko-fi page to support me!</td></tr>
+<tr><td><code>credits_github</code></td><td>Visit this project on GitHub</td></tr>
+<tr><td><code>connlost</code></td><td>Connection lost</td></tr>
 <tr><td><code>connlost_disconnected</code></td><td>Device disconnected</td></tr>
+<tr><td><code>pairingmode_done</code></td><td>The earbuds have been put into pairing mode and are now disconnected from this device.</td></tr>
 <tr><td><code>fw_disclaimer</code></td><td>Disclaimer</td></tr>
 <tr><td><code>fw_disclaimer_desc</code></td><td>This firmware updating tool is an accurate replica of the official updater found in Samsung's official Android app. I've thoroughly tested this implementation under various circumstances (normal operation, connection loss, intentionally corrupted Bluetooth packets, ...) without experiencing any issues at all. Still, I won't take any liability if anything should go wrong since firmware updates modify vital system components and should always be handled with caution.
 
@@ -46,22 +86,20 @@ CUSTOM FLASHING: You are also able to load firmware files from your hard-drive. 
 
 This application is licensed under GPLv3. By using it, you are accepting the license and its limitation of liability. Press 'Continue' to accept.</td></tr>
 <tr><td><code>fw_select_header</code></td><td>Firmware updates</td></tr>
-<tr><td><code>fw_select_instructions</code></td><td>Please choose a firmware binary to download and install. Alternatively, you can also select a firmware binary from your hard-drive by navigating to 'Advanced... > Select image from disk'</td></tr>
-<tr><td><code>fw_select_no_results</code></td><td>No firmware updates are currently available. Please try again at a later time.</td></tr>
 <tr><td><code>fw_select_downgrade</code></td><td>Allow firmware downgrading</td></tr>
 <tr><td><code>fw_select_downgrade_desc</code></td><td>Disable version checks and show older firmwares in list (may cause unexpected issues; advanced users only)</td></tr>
-<tr><td><code>fw_select_advanced</code></td><td>Advanced...</td></tr>
 <tr><td><code>fw_select_install</code></td><td>Install firmware</td></tr>
-<tr><td><code>fw_select_from_disk</code></td><td>Select image from disk...</td></tr>
-<tr><td><code>fw_select_external_note</code></td><td>Do NOT flash firmware binaries meant for OTHER models onto your device. Flashing a Buds Pro firmware onto a pair of Buds Plus won't unlock any new features, instead it will permanently destroy your device.
-
-Press 'Continue' to select a firmware binary.</td></tr>
+<tr><td><code>fw_select_install_short</code></td><td>Install</td></tr>
+<tr><td><code>fw_select_from_disk</code></td><td>Select firmware from disk...</td></tr>
+<tr><td><code>fw_select_from_disk_short</code></td><td>Open</td></tr>
+<tr><td><code>fw_select_refresh</code></td><td>Refresh</td></tr>
 <tr><td><code>fw_select_unsupported_selection</code></td><td>Invalid selection. Please select a compatible item from the list.</td></tr>
 <tr><td><code>fw_select_downloading</code></td><td>Downloading...</td></tr>
 <tr><td><code>fw_select_net_error</code></td><td>Failed to communicate with server. Cannot download firmware at the moment.</td></tr>
 <tr><td><code>fw_select_net_index_error</code></td><td>Failed to communicate with server. Cannot download firmware index at the moment.</td></tr>
 <tr><td><code>fw_select_http_error</code></td><td>HTTP error code:</td></tr>
 <tr><td><code>fw_select_unknown_build</code></td><td>Unknown build name</td></tr>
+<tr><td><code>fw_select_no_results_short</code></td><td>No updates found</td></tr>
 <tr><td><code>fw_select_verify_fail</code></td><td>Failed to verify firmware</td></tr>
 <tr><td><code>fw_select_verify_model_mismatch_fail</code></td><td>Device model mismatch detected! The firmware transfer has been cancelled.
 
@@ -80,8 +118,6 @@ Press 'Continue' to start the update.</td></tr>
 <tr><td><code>fw_upload_progress_error</code></td><td>Failed to upload firmware</td></tr>
 <tr><td><code>fw_upload_progress</code></td><td>Uploading firmware update... {0}%</td></tr>
 <tr><td><code>fw_upload_progress_size</code></td><td>({0}/{1} KB)</td></tr>
-<tr><td><code>fw_upload_progress_stats</code></td><td>Statistics</td></tr>
-<tr><td><code>fw_upload_note</code></td><td>Your earbuds will be disconnected, and start installing the uploaded firmware update as soon as the transmission finishes. During this process, your earbuds will be unresponsive and decline any Bluetooth connection requests. In most cases, the earbuds attempt to reconnect automatically after the on-board update process has finished. Please do not close your case while updating.</td></tr>
 <tr><td><code>fw_upload_progress_stats_mtu</code></td><td>Maximum transfer unit: {0} bytes</td></tr>
 <tr><td><code>fw_upload_progress_stats_offset</code></td><td>Processing data from offset 0x{0:X6} to 0x{1:X6}</td></tr>
 <tr><td><code>fw_upload_progress_stats_segment</code></td><td>Uploading segment #{0} ({1} bytes, checksum 0x{2:X6})</td></tr>
@@ -100,19 +136,18 @@ Details:</td></tr>
 <tr><td><code>fw_fail_lowbattery</code></td><td>Battery too low. Please charge your earbuds over 15% first.</td></tr>
 <tr><td><code>fw_fail_session_timeout</code></td><td>Timed out while waiting for the device to open a new session</td></tr>
 <tr><td><code>fw_fail_control_timeout</code></td><td>Timed out while waiting for the device to return a control block</td></tr>
-<tr><td><code>fw_fail_copy_timeout</code></td><td>Timed out while waiting for the transfer process to finish</td></tr>
 <tr><td><code>spatial_header</code></td><td>Spatial sensor</td></tr>
 <tr><td><code>spatial_dump_quaternion</code></td><td>Raw quaternion vector:</td></tr>
 <tr><td><code>spatial_dump_rpy</code></td><td>RPY values:</td></tr>
 <tr><td><code>window_open</code></td><td>Open</td></tr>
 <tr><td><code>budsapp_header</code></td><td>Bluetooth compatibility info</td></tr>
-<tr><td><code>budsapp_text_p1</code></td><td>The official Galaxy Buds app for Windows 10 is installed alongside this application.</td></tr>
+<tr><td><code>budsapp_text_p1</code></td><td>The official Galaxy Buds app for Windows 10/11 is installed alongside this application.</td></tr>
 <tr><td><code>budsapp_text_p2</code></td><td>If it is open and connected, GalaxyBudsClient might have issues connecting to your earbuds. Make sure to close it before continuing. Likewise, the official Galaxy Buds app can't connect to your earbuds while Galaxy Buds Manager is active and has opened connections to the earbuds.</td></tr>
 <tr><td><code>budsapp_text_p3</code></td><td>Keep in mind that only one application can talk to your Galaxy Buds at a time.</td></tr>
 <tr><td><code>manualpair_title</code></td><td>Manual device selection</td></tr>
 <tr><td><code>manualpair_title_dialog</code></td><td>Choose your Galaxy Buds device</td></tr>
 <tr><td><code>manualpair_model</code></td><td>Choose the correct model type</td></tr>
-<tr><td><code>manualpair_note</code></td><td>Note: You should only manually connect your earbuds if the setup wizard does not recognize them correctly.</td></tr>
+<tr><td><code>manualpair_note</code></td><td>You should only manually connect your earbuds if the setup wizard does not recognize them correctly.</td></tr>
 
 </table>
 
