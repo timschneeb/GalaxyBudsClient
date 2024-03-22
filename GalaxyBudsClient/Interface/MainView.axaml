@@ -18,7 +18,7 @@
               Background="Transparent">
             <Image Margin="12 4"
                    IsHitTestVisible="False"
-                   Source="/Resources/icon_white.ico"
+                   Source="/Resources/icon.ico"
                    Width="18" Height="18"
                    DockPanel.Dock="Left"
                    Name="WindowIcon"

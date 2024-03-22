@@ -13,6 +13,6 @@ public class StubDeviceSpec : IDeviceSpec
     public ITouchOption TouchMap => new StubTouchOption();
     public Guid ServiceUuid => new("{00000000-0000-0000-0000-000000000000}");
     public IEnumerable<TrayItemTypes> TrayShortcuts => new List<TrayItemTypes>();
-    public string IconResourceKey => "Bud";
+    public string IconResourceKey => "Pro";
     public int MaximumAmbientVolume => 3;
 }

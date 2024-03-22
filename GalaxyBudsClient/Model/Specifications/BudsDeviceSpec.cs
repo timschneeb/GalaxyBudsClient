@@ -32,6 +32,6 @@ public class BudsDeviceSpec : IDeviceSpec
         ]
     );
         
-    public string IconResourceKey => "Bud";
+    public string IconResourceKey => "Pro";
     public int MaximumAmbientVolume => 4;
 }

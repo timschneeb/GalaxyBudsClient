@@ -8,7 +8,7 @@
         MinWidth="470"
         Height="640" Width="700"
         WindowStartupLocation="CenterScreen"
-        Icon="/Resources/icon_white.ico"
+        Icon="/Resources/icon.ico"
         Title="Galaxy Buds Manager">
 
     <interface:MainView Name="MainView" />

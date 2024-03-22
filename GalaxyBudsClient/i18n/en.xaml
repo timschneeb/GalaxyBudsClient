@@ -17,8 +17,8 @@
     <sys:String x:Key="unknown">Unknown</sys:String>
     <sys:String x:Key="back">Back</sys:String>
     <sys:String x:Key="hint">Hint</sys:String>
+    
     <sys:String x:Key="file_not_found">File not found</sys:String>
-
     <sys:String x:Key="nobluetoothdev">No Bluetooth adapter found. Please enable Bluetooth and try again.</sys:String>
 
     <sys:String x:Key="anc">Active noise cancelling</sys:String>
@@ -31,7 +31,6 @@
     <!--Context: EOM = End of message-->
     <sys:String x:Key="sppmsg_size_mismatch">Payload size mismatch</sys:String>
     <sys:String x:Key="sppmsg_crc_fail">Checksum incorrect</sys:String>
-    <sys:String x:Key="sppmsg_tl">Packet size is too small</sys:String>
 
     <!--Dark Mode States-->
     <sys:String x:Key="darkmode_disabled">Off</sys:String>
@@ -64,21 +63,11 @@
     <sys:String x:Key="touchoption_switch_noisecontrols">Switch noise controls</sys:String>
     <sys:String x:Key="touchoption_spotify">Spotify (Android only)</sys:String>
     <sys:String x:Key="touchoption_custom">Custom action...</sys:String>
-    <sys:String x:Key="touchoption_custom_null">Not set</sys:String>
-    <sys:String x:Key="touchoption_custom_unknown">Unknown</sys:String>
     <sys:String x:Key="touchoption_custom_prefix">Custom action:</sys:String>
     <sys:String x:Key="touchoption_custom_trigger_event">Trigger earbud action...</sys:String>
     <sys:String x:Key="touchoption_custom_trigger_hotkey">Press hotkey...</sys:String>
     <sys:String x:Key="touchoption_custom_external_app">Run external program...</sys:String>
-
-    <!--Options menu-->
-    <sys:String x:Key="optionsmenu_title">Options</sys:String>
-    <sys:String x:Key="optionsmenu_settings">Settings</sys:String>
-    <sys:String x:Key="optionsmenu_refresh">Refresh dashboard</sys:String>
-    <sys:String x:Key="optionsmenu_deregister">Unregister device</sys:String>
-    <sys:String x:Key="optionsmenu_update">Check for updates</sys:String>
-    <sys:String x:Key="optionsmenu_credits">Credits</sys:String>
-
+    
     <!--Tray context menu-->
     <sys:String x:Key="tray_unlock_touchpad">Unlock touchpad</sys:String>
     <sys:String x:Key="tray_lock_touchpad">Lock touchpad</sys:String>
@@ -91,20 +80,17 @@
     <sys:String x:Key="tray_switch_noise">Switch noise controls</sys:String>
     <sys:String x:Key="tray_quit">Quit</sys:String>
 
-
     <!--:::::::: XAML files (static) ::::::::-->
 
     <!--General-->
     <sys:String x:Key="continue_button">Continue</sys:String>
 
     <!--Hotkey Recorder Dialog (Custom action)-->
-    <sys:String x:Key="hotrec_title">Hotkey recorder</sys:String>
     <sys:String x:Key="hotrec_content">Please enter a key-combination (hold down):</sys:String>
     <sys:String x:Key="hotrec_empty">None</sys:String>
     <sys:String x:Key="hotrec_note">Note: Due to User Interface Privacy Isolation (UIPI) only applications of the same or lower elevation can properly receive hotkey commands.</sys:String>
 
     <!--Hotkey Action Builder Dialog-->
-    <sys:String x:Key="hotkey_edit_title">Hotkey editor</sys:String>
     <sys:String x:Key="hotkey_edit_invalid">Invalid hotkey selection</sys:String>
     <sys:String x:Key="hotkey_edit_invalid_desc">Please choose at least one key and one modifiers</sys:String>
     <sys:String x:Key="hotkey_edit_invalid_mod">Modifier missing</sys:String>
@@ -114,7 +100,6 @@
     <sys:String x:Key="hotkey_edit_keys">Keys</sys:String>
     <sys:String x:Key="hotkey_edit_action">Action</sys:String>
     <sys:String x:Key="hotkey_edit_preview">Shortcut preview:</sys:String>
-    <sys:String x:Key="hotkey_edit_header">Select a keyboard hotkey</sys:String>
     
     <!--Hotkey page-->
     <sys:String x:Key="hotkey_header">Keyboard hotkeys</sys:String>
@@ -172,47 +157,15 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="mainpage_equalizer">Equalizer</sys:String>
     <sys:String x:Key="mainpage_advanced">Advanced settings</sys:String>
     <sys:String x:Key="mainpage_system">System</sys:String>
-
-    <!--Update page-->
-    <sys:String x:Key="updater_header">Manager update available</sys:String>
-    <sys:String x:Key="updater_message_p1">The download is fully automated and the update wizard will be launched after it has finished downloading. I highly recommend you to update in order to receive the latest bugfixes and features.</sys:String>
-    <sys:String x:Key="updater_message_p2">You can view the changelog by clicking on the button below.</sys:String>
-
-    <sys:String x:Key="updater_view_changelog">View full changelog on GitHub</sys:String>
-    <sys:String x:Key="updater_footer_remindmelater">Remind me later</sys:String>
-    <sys:String x:Key="updater_footer_skipversion">Skip this version</sys:String>
-    <sys:String x:Key="updater_footer_install">Install now</sys:String>
-    <sys:String x:Key="updater_appcast_null">New update available but no valid appcast data found. Please try again later.</sys:String>
-    <sys:String x:Key="updater_noupdate">No updates are available at the moment. Please try again later or check and subscribe the GitHub page for updates.</sys:String>
-    <sys:String x:Key="updater_noupdate_title">No updates</sys:String>
-    <sys:String x:Key="updater_newrelease">Update {0} for Galaxy Buds Manager has been released</sys:String>
-
-    <sys:String x:Key="updater_dl_header">Downloading...</sys:String>
-    <sys:String x:Key="updater_dl_manual">View on GitHub</sys:String>
-    <sys:String x:Key="updater_dl_fail_title">Download failed</sys:String>
-    <sys:String x:Key="updater_dl_fail">Reason:</sys:String>
-    <sys:String x:Key="updater_dl_progress_prepare">Preparing download...</sys:String>
-    <sys:String x:Key="updater_dl_progress_cancelled">Download cancelled</sys:String>
-    <sys:String x:Key="updater_dl_progress_finished">Download finished. Launching installer...</sys:String>
-    <sys:String x:Key="updater_dl_progress">Downloading... {0}%</sys:String>
-    <sys:String x:Key="updater_dl_progress_size">({0}/{1} megabytes)</sys:String>
-    <sys:String x:Key="updater_dl_note">When the download finishes, this app will automatically close itself and launch a separate update installer. It may take a few seconds until it shows up.</sys:String>
-
+    
     <!--Device selection page (setup)-->
     <sys:String x:Key="devsel_header">Select your earbuds</sys:String>
-    <sys:String x:Key="devsel_refresh">Refresh paired devices</sys:String>
-    <sys:String x:Key="devsel_device_name">Device name</sys:String>
-    <sys:String x:Key="devsel_btaddr">MAC address</sys:String>
-    <sys:String x:Key="devsel_model">Model</sys:String>
     <sys:String x:Key="devsel_manual_pair_title">Is your device not listed?</sys:String>
     <sys:String x:Key="devsel_manual_pair_description">Make sure your earbuds have already been paired. If they are still not recognized, try using the manual connection option.</sys:String>
     <sys:String x:Key="devsel_manual_pair">Manual connection</sys:String>
     <sys:String x:Key="devsel_nodevices">Please connect and pair your earbuds first</sys:String>
     <sys:String x:Key="devsel_nodevices_title">No paired devices found</sys:String>
-    <sys:String x:Key="devsel_noselection">No device selected</sys:String>
     <sys:String x:Key="devsel_invalid_selection">Please select a valid device</sys:String>
-    <sys:String x:Key="devsel_footer_continue">Finish Setup</sys:String>
-    <sys:String x:Key="devsel_dialog_footer">If you don't see your earbuds, make sure you've paired and connected them in your computer's Bluetooth settings, and then click Refresh.</sys:String>
     <sys:String x:Key="devsel_winrt_title">Use alternative Bluetooth backend</sys:String>
     <sys:String x:Key="devsel_winrt">Much better stability, but may not work on all PCs with some Bluetooth adapters</sys:String>
     
@@ -319,7 +272,7 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 
     <!--Settings-->
     <sys:String x:Key="settings_header">Settings</sys:String>
-    
+    <sys:String x:Key="optionsmenu_deregister">Unregister device</sys:String>
     <sys:String x:Key="settings_unregister_description">Remove your current earbuds and connect another pair</sys:String>
     <sys:String x:Key="settings_appearance">Appearance</sys:String>
     <sys:String x:Key="settings_darkmode">Dark mode</sys:String>
@@ -330,7 +283,6 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="settings_transitions_description">Enable slide transitions</sys:String>
     <sys:String x:Key="settings_localization_disable">Language</sys:String>
     <sys:String x:Key="settings_localization_description">Change the app language</sys:String>
-    <sys:String x:Key="settings_localization_disable_description">Force English language</sys:String>
     <sys:String x:Key="settings_minimize_tray">Minimize to tray</sys:String>
     <sys:String x:Key="settings_minimize_tray_description">Keep in background instead of terminating the app</sys:String>
     <sys:String x:Key="settings_tray_settings">Tray icon &amp; startup</sys:String>
@@ -342,7 +294,6 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="settings_autostart">Launch on boot</sys:String>
     <sys:String x:Key="settings_autostart_description">Start minimized on system boot</sys:String>
     <sys:String x:Key="settings_autostart_permission">Cannot update auto-start entry in registry. Registry access (HKCU) was explicitly disabled by your system administrator.</sys:String>
-    
     <sys:String x:Key="settings_connpopup">Connection popup</sys:String>
     <sys:String x:Key="settings_devmode">Developer options</sys:String>
     <sys:String x:Key="settings_devmode_description">Bluetooth traffic inspector and other developer tools</sys:String>
@@ -357,13 +308,7 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="settings_cpopup_position">Position</sys:String>
     <sys:String x:Key="settings_cpopup_position_description">Select the position of the connection popup</sys:String>
     <sys:String x:Key="settings_cpopup_demo">Show demo popup</sys:String>
-    <sys:String x:Key="settings_cpopup_override_title">Override popup title</sys:String>
-    <sys:String x:Key="settings_cpopup_override_title_dialog">Please enter a custom popup title. You can restore the default one by leaving this field empty.</sys:String>
-    <sys:String x:Key="settings_cpopup_primary_screen">Primary screen only</sys:String>
-    <sys:String x:Key="settings_cpopup_primary_screen_description">Show popup only on the primary monitor</sys:String>
-    <sys:String x:Key="settings_cpopup_wear_state">Use different color when in case</sys:String>
-    <sys:String x:Key="settings_cpopup_wear_state_description">Gray earbud icon out when your earbuds are in the case</sys:String>
-    
+
     <!--Settings >>> Crowdsourcing settings-->
     <sys:String x:Key="settings_crowd_header">Crowdsourcing</sys:String>
     <sys:String x:Key="settings_crowd_allow">Allow crowdsourcing contribution</sys:String>
@@ -401,7 +346,6 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="eq_enable">Equalizer</sys:String>
     <sys:String x:Key="eq_enable_description">Apply EQ audio filters</sys:String>
     <sys:String x:Key="eq_preset">Preset</sys:String>
-    <sys:String x:Key="eq_dolby">Optimize for use with Dolby</sys:String>
     <sys:String x:Key="eq_stereo_balance">Left/right sound balance</sys:String>
     <sys:String x:Key="eq_stereo_balance_value">{0}% left; {1}% right</sys:String>
     <sys:String x:Key="eq_stereo_balance_neutral">Neutral</sys:String>
@@ -456,7 +400,6 @@ You might need to manually reconnect your earbuds.</sys:String>
     
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Advanced settings</sys:String>
-    <sys:String x:Key="adv_required_firmware_later">{0} or later</sys:String>
     <sys:String x:Key="adv_seamless">Seamless earbud connection</sys:String>
     <sys:String x:Key="adv_seamless_desc">Switch quickly to nearby devices without disconnecting your earbuds or turning on pairing mode</sys:String>
     <sys:String x:Key="adv_resume_playback">Resume playback if the earbuds are worn</sys:String>
@@ -471,7 +414,6 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="adv_bixby_remap_desc">Define what should happen when you say 'Hey Bixby!'</sys:String>
 
     <!--Remap bixby wakeup-->
-    <sys:String x:Key="bixby_remap_header">Remap Bixby wakeup</sys:String>
     <sys:String x:Key="bixby_remap_enable">Enable Bixby wakeup</sys:String>
     <sys:String x:Key="bixby_remap_enable_desc">Launch Bixby on your Samsung phone or execute a custom action on this PC when woken up</sys:String>
     <sys:String x:Key="bixby_remap_lang">Bixby wakeup language</sys:String>
@@ -497,11 +439,6 @@ The remap configuration is only active on this device. If you connect your earbu
     <!--Connection lost page-->
     <sys:String x:Key="connlost">Connection lost</sys:String>
     <sys:String x:Key="connlost_header">Unable to establish connection</sys:String>
-    <sys:String x:Key="connlost_description_p1">Unable to establish a connection to your earbuds.</sys:String>
-    <sys:String x:Key="connlost_description_p2">Please check your Bluetooth settings and make sure your Earbuds are turned on and paired to this computer.
-You can also register a new pair if needed. In that case, please select "Options &gt; Unregister device".</sys:String>
-    <sys:String x:Key="connlost_description_p3">Additional information:</sys:String>
-    <sys:String x:Key="connlost_noinfo">Failed to gather error information</sys:String>
     <sys:String x:Key="connlost_connect">Connect</sys:String>
     <sys:String x:Key="connlost_connecting">Connecting...</sys:String>
     
@@ -520,18 +457,13 @@ This application is licensed under GPLv3. By using it, you are accepting the lic
     
     <!--Firmware selection-->
     <sys:String x:Key="fw_select_header">Firmware updates</sys:String>
-    <sys:String x:Key="fw_select_instructions">Please choose a firmware binary to download and install. Alternatively, you can also select a firmware binary from your hard-drive by navigating to 'Advanced... &gt; Select image from disk'</sys:String>
     <sys:String x:Key="fw_select_downgrade">Allow firmware downgrading</sys:String>
     <sys:String x:Key="fw_select_downgrade_desc">Disable version checks and show older firmwares in list (may cause unexpected issues; advanced users only)</sys:String>
-    <sys:String x:Key="fw_select_advanced">Advanced...</sys:String>
     <sys:String x:Key="fw_select_install">Install firmware</sys:String>
     <sys:String x:Key="fw_select_install_short">Install</sys:String>
     <sys:String x:Key="fw_select_from_disk">Select firmware from disk...</sys:String>
     <sys:String x:Key="fw_select_from_disk_short">Open</sys:String>
     <sys:String x:Key="fw_select_refresh">Refresh</sys:String>
-    <sys:String x:Key="fw_select_external_note">Do NOT flash firmware binaries meant for OTHER models onto your device. Flashing a Buds Pro firmware onto a pair of Buds Plus won't unlock any new features, instead it will permanently destroy your device.
-
-Press 'Continue' to select a firmware binary.</sys:String>
     <sys:String x:Key="fw_select_unsupported_selection">Invalid selection. Please select a compatible item from the list.</sys:String>
     <sys:String x:Key="fw_select_downloading">Downloading...</sys:String>
     <sys:String x:Key="fw_select_net_error">Failed to communicate with server. Cannot download firmware at the moment.</sys:String>
@@ -559,8 +491,6 @@ Press 'Continue' to start the update.</sys:String>
     <sys:String x:Key="fw_upload_progress_error">Failed to upload firmware</sys:String>
     <sys:String x:Key="fw_upload_progress">Uploading firmware update... {0}%</sys:String>
     <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>
-    <sys:String x:Key="fw_upload_progress_stats">Statistics</sys:String>
-    <sys:String x:Key="fw_upload_note">Your earbuds will be disconnected, and start installing the uploaded firmware update as soon as the transmission finishes. During this process, your earbuds will be unresponsive and decline any Bluetooth connection requests. In most cases, the earbuds attempt to reconnect automatically after the on-board update process has finished. Please do not close your case while updating.</sys:String>
     <sys:String x:Key="fw_upload_progress_stats_mtu">Maximum transfer unit: {0} bytes</sys:String>
     <sys:String x:Key="fw_upload_progress_stats_offset">Processing data from offset 0x{0:X6} to 0x{1:X6}</sys:String>
     <sys:String x:Key="fw_upload_progress_stats_segment">Uploading segment #{0} ({1} bytes, checksum 0x{2:X6})</sys:String>
@@ -583,7 +513,6 @@ Details:</sys:String>
     <sys:String x:Key="fw_fail_lowbattery">Battery too low. Please charge your earbuds over 15% first.</sys:String>
     <sys:String x:Key="fw_fail_session_timeout">Timed out while waiting for the device to open a new session</sys:String>
     <sys:String x:Key="fw_fail_control_timeout">Timed out while waiting for the device to return a control block</sys:String>
-    <sys:String x:Key="fw_fail_copy_timeout">Timed out while waiting for the transfer process to finish</sys:String>
     
     <!--Spatial test-->
     <sys:String x:Key="spatial_header">Spatial sensor</sys:String>

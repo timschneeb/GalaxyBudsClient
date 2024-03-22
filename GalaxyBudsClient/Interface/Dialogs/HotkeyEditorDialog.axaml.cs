@@ -19,8 +19,7 @@ public partial class HotkeyEditorDialog : UserControl
     {
         AvaloniaXamlLoader.Load(this);
     }
-       
-    // TODO Bug: OK/Cancel buttons stop working in assign dialog after triggering error dialog
+    
     public static async Task<Hotkey?> OpenEditDialogAsync(Hotkey? hotkey)
     {
         var dialog = new ContentDialog
@@ -45,24 +44,18 @@ public partial class HotkeyEditorDialog : UserControl
 
         void OnPrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            var defer = args.GetDeferral();
             args.Cancel = viewModel.Hotkey == null;
 
-            if (args.Cancel)
+            if (!args.Cancel)
+                return;
+            
+            var resultHint = new ContentDialog()
             {
-                var resultHint = new ContentDialog()
-                {
-                    Content = Loc.Resolve("hotkey_edit_invalid"),
-                    Title = Loc.Resolve("hotkey_edit_invalid_desc"),
-                    PrimaryButtonText = Loc.Resolve("window_close")
-                };
-                _ = resultHint.ShowAsync(MainWindow.Instance)
-                    .ContinueWith(_ => defer.Complete());
-            }
-            else
-            {
-                defer.Complete();
-            }
+                Content = Loc.Resolve("hotkey_edit_invalid_desc"),
+                Title = Loc.Resolve("hotkey_edit_invalid"),
+                PrimaryButtonText = Loc.Resolve("window_close")
+            };
+            _ = resultHint.ShowAsync(MainWindow.Instance);
         }
     }
 

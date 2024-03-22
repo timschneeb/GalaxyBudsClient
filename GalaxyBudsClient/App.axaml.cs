@@ -57,10 +57,9 @@ public class App : Application
         MediaKeyRemote.Init();
         DeviceMessageCache.Init();
         ExperimentManager.Init();
-           
-        Log.Information("Translator mode file location: {File}", Loc.GetTranslatorModeFile());
-
         ScriptManager.Instance.RegisterUserHooks();
+        
+        Log.Information("Translator mode file location: {File}", Loc.GetTranslatorModeFile());
     }
         
     public override void OnFrameworkInitializationCompleted()

@@ -35,6 +35,6 @@ public class BudsPlusDeviceSpec : IDeviceSpec
         ]
     );
         
-    public string IconResourceKey => "Bud";
+    public string IconResourceKey => "Pro";
     public int MaximumAmbientVolume => 2; /* 3 if ExtraLoud is set */
 }

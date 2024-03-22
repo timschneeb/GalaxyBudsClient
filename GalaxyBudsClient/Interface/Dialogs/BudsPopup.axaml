@@ -14,7 +14,7 @@
         SystemDecorations="None"
         Background="Transparent"
         UseLayoutRounding="True"
-        Icon="/Resources/icon_white.ico"
+        Icon="/Resources/icon.ico"
         ShowInTaskbar="False"
         Topmost="True"
         ShowActivated="False"
