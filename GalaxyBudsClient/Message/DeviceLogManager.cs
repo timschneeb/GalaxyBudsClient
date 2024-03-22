@@ -67,7 +67,6 @@ public class DeviceLogManager
         await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_SESSION_CLOSE);
         BluetoothService.Instance.MessageReceived -= OnMessageReceived;
             
-        /* TODO: Check whether disconnecting is only necessary on Linux */
         await BluetoothService.Instance.DisconnectAsync();
     }
         

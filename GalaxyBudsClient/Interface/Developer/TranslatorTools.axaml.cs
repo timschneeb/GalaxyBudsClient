@@ -13,6 +13,8 @@ namespace GalaxyBudsClient.Interface.Developer;
 
 public partial class TranslatorTools : Window
 {
+    public static bool GrantAllFeaturesForTesting { get; private set; }
+    
     public TranslatorTools()
     {
         InitializeComponent();
@@ -41,7 +43,7 @@ public partial class TranslatorTools : Window
             _ = td.ShowAsync();
         };
     }
-        
+
     private void ReloadXaml_OnClick(object? sender, RoutedEventArgs e)
     {
         if (Locales.SelectedItem is Locales locale)
@@ -60,5 +62,13 @@ public partial class TranslatorTools : Window
     private void DummyDevices_OnChecked(object? sender, RoutedEventArgs e)
     {
         BluetoothService.Instance.ShowDummyDevices = DummyDevices.IsChecked ?? false;
+    }
+
+    private void EnableAllFeatures_OnChanged(object? sender, RoutedEventArgs e)
+    {
+        GrantAllFeaturesForTesting = GrantAllFeatures.IsChecked ?? false;
+        
+        // Trigger RequiresFeatureBehavior update
+        Settings.Instance.RegisteredDevice.Model = Settings.Instance.RegisteredDevice.Model;
     }
 }

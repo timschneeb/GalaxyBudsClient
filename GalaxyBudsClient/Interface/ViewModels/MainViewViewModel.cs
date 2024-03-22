@@ -6,6 +6,7 @@ using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels;
@@ -16,8 +17,23 @@ public class MainViewViewModel : ViewModelBase
     {
         NavigationFactory = new NavigationFactory(this);
         Settings.Instance.RegisteredDevice.PropertyChanged += OnDevicePropertyChanged;
+        
+        BluetoothService.Instance.Connecting += (_, _) =>
+        {
+            IsConnectButtonEnabled = false;
+            ConnectButtonText = Loc.Resolve("connlost_connecting");
+        };
+        BluetoothService.Instance.PropertyChanged += (_, e) =>
+        {
+            if (e.PropertyName != nameof(BluetoothService.Instance.IsConnected))
+                return;
+            IsConnectButtonEnabled = true;
+            ConnectButtonText = Loc.Resolve("connlost_connect");
+        };
     }
 
+    [Reactive] public bool IsConnectButtonEnabled { set; get; } = true;
+    [Reactive] public string ConnectButtonText { set; get; } = Loc.Resolve("connlost_connect");
     [Reactive] public bool IsInSetupWizard { set; get; } = !BluetoothService.RegisteredDeviceValid;
     public NavigationFactory NavigationFactory { get; }
     public required Func<Type, PageViewModelBase?> VmResolver { get; init; }

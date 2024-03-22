@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using GalaxyBudsClient.Interface.Developer;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
@@ -22,8 +23,8 @@ public interface IDeviceSpec
         
     public bool Supports(Features feature)
     {
-        // TODO remove this
-        // return true;
+        if (TranslatorTools.GrantAllFeaturesForTesting)
+            return true;
             
         if (!Rules.TryGetValue(feature, out var value))
         {
@@ -50,13 +51,8 @@ public interface IDeviceSpec
     }
 }
     
-public class FeatureRule
+public class FeatureRule(int minimumRevision, string recommendedFirmwareVersion)
 {
-    public FeatureRule(int minimumRevision, string recommendedFirmwareVersion)
-    {
-        MinimumRevision = minimumRevision;
-        RecommendedFirmwareVersion = recommendedFirmwareVersion;
-    }
-    public int MinimumRevision { get; }
-    public string RecommendedFirmwareVersion { get; }
+    public int MinimumRevision { get; } = minimumRevision;
+    public string RecommendedFirmwareVersion { get; } = recommendedFirmwareVersion;
 }

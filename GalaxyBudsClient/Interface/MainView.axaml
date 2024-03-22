@@ -64,10 +64,10 @@
                         </MultiBinding>
                     </ui:InfoBar.IsOpen>
                     <ui:InfoBar.ActionButton>
-                        <Button Content="{DynamicResource connlost_connect}"
+                        <Button Content="{Binding ConnectButtonText}"
+                                IsEnabled="{Binding IsConnectButtonEnabled}"
                                 HorizontalAlignment="Right">
                             <Interaction.Behaviors>
-                                <!-- TODO this needs additional logic for progress indication -->
                                 <EventTriggerBehavior EventName="Click">
                                     <ext:EventDispatcherAction Event="Connect" />
                                 </EventTriggerBehavior>
