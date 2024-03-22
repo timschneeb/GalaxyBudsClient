@@ -42,8 +42,11 @@
                     Symbol="Flash"
                     IsEnabled="{Binding IsBixbyWakeUpEnabled}"
                     ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type model:Event}}}"
-                    SelectedValue="{Binding BixbyRemapEvent, Source={x:Static utils:Settings.Instance}}" />
-
+                    SelectedValue="{Binding BixbyRemapEvent, Source={x:Static utils:Settings.Instance}}">
+                    <Interaction.Behaviors>
+                        <ext:LocalizationAwareBehavior EnumType="{x:Type model:Event}" /> 
+                    </Interaction.Behaviors>
+                </controls:SettingsComboBoxItem>
             </controls:SettingsGroup>
 
             <!-- TODO message foreground color should be secondary text color -->

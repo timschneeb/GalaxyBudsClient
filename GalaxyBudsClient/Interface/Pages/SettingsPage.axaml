@@ -69,7 +69,11 @@
                                                Description="{DynamicResource settings_darkmode_description}"
                                                IconSource="DarkTheme"
                                                ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:DarkModes}}}"
-                                               SelectedValue="{Binding DarkMode, Source={x:Static utils:Settings.Instance}}" />
+                                               SelectedValue="{Binding DarkMode, Source={x:Static utils:Settings.Instance}}">
+                    <Interaction.Behaviors>
+                        <ext:LocalizationAwareBehavior EnumType="{x:Type constants:DarkModes}" />
+                    </Interaction.Behaviors>
+                </controls:SettingsComboBoxItem>
 
                 <controls:SettingsColorItem Name="AppAccent"
                                             Content="{DynamicResource settings_accent}"
@@ -105,7 +109,11 @@
                     Description="{DynamicResource settings_dyn_tray_mode_description}"
                     IsEnabled="{Binding MinimizeToTray, Source={x:Static utils:Settings.Instance}}"
                     ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:DynamicTrayIconModes}}}"
-                    SelectedValue="{Binding DynamicTrayIconMode, Source={x:Static utils:Settings.Instance}}" />
+                    SelectedValue="{Binding DynamicTrayIconMode, Source={x:Static utils:Settings.Instance}}">
+                    <Interaction.Behaviors>
+                        <ext:LocalizationAwareBehavior EnumType="{x:Type constants:DynamicTrayIconModes}" />
+                    </Interaction.Behaviors>
+                </controls:SettingsComboBoxItem>
 
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource settings_autostart}"
@@ -139,7 +147,11 @@
                                                Description="{DynamicResource settings_cpopup_position_description}"
                                                Symbol="LayoutCellFourFocusBottomLeft"
                                                ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:PopupPlacement}}}"
-                                               SelectedValue="{Binding Popup.Placement, Source={x:Static utils:Settings.Instance}}" />
+                                               SelectedValue="{Binding Popup.Placement, Source={x:Static utils:Settings.Instance}}">
+                    <Interaction.Behaviors>
+                        <ext:LocalizationAwareBehavior EnumType="{x:Type constants:PopupPlacement}" />
+                    </Interaction.Behaviors>
+                </controls:SettingsComboBoxItem>
 
                 <controls:SettingsSymbolItem Content="{DynamicResource settings_cpopup_demo}"
                                              IsClickEnabled="True"
