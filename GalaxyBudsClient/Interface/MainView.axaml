@@ -52,8 +52,7 @@
                            IsBackEnabled="{Binding #FrameView.CanGoBack}">
             <Grid RowDefinitions="Auto,Auto,*">
 
-                <!-- TODO localize -->
-                <ui:InfoBar Title="Disconnected"
+                <ui:InfoBar Title="{DynamicResource placement_disconnected}"
                             IsClosable="False"
                             Severity="Warning"
                             Message="{Binding LastErrorMessage, Source={x:Static platform:BluetoothService.Instance}}"
@@ -65,11 +64,10 @@
                         </MultiBinding>
                     </ui:InfoBar.IsOpen>
                     <ui:InfoBar.ActionButton>
-                        <Button Content="Reconnect"
+                        <Button Content="{DynamicResource connlost_connect}"
                                 HorizontalAlignment="Right">
                             <Interaction.Behaviors>
                                 <!-- TODO this needs additional logic for progress indication -->
-                                <!-- TODO on connect: check if stored device is valid and return to setup wizard if not -->
                                 <EventTriggerBehavior EventName="Click">
                                     <ext:EventDispatcherAction Event="Connect" />
                                 </EventTriggerBehavior>

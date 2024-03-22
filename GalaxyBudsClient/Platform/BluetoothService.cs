@@ -164,7 +164,7 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
         {
             if (!SuppressDisconnectionEvents)
             {
-                LastErrorMessage = "Connection lost"; // TODO: Localize
+                LastErrorMessage = Loc.Resolve("connlost");
                 IsConnected = false;
                 Disconnected?.Invoke(this, reason);
             }
@@ -305,8 +305,8 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
     {
         if (!IsConnectedLegacy)
         {
-            // TODO fail silently here?
-            OnBluetoothError(new BluetoothException(BluetoothException.ErrorCodes.SendFailed, $"Attempted to send command to disconnected device"));
+            // Fail silently here
+            // OnBluetoothError(new BluetoothException(BluetoothException.ErrorCodes.SendFailed, $"Attempted to send command to disconnected device"));
             return;
         }
             

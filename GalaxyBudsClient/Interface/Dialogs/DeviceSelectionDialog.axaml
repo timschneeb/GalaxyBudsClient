@@ -22,9 +22,9 @@
 
     <UserControl.Resources>
         <input:XamlUICommand x:Key="ConnectCommand"
-                             Label="{ext:Translate devsel_connect}"
+                             Label="{ext:Translate connlost_connect}"
                              IconSource="{StaticResource LinkMultipleIcon}"
-                             Description="{ext:Translate devsel_connect}"
+                             Description="{ext:Translate connlost_connect}"
                              Command="{Binding DoConnectCommand}" />
         
         <input:XamlUICommand x:Key="RefreshCommand"
