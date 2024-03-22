@@ -52,7 +52,7 @@ public class TouchpadPageViewModel : MainPageViewModelBase
 
     private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
     {
-        PropertyChanged -= OnPropertyChanged;
+        using var suppressor = SuppressChangeNotifications();
         
         LeftAction = e.TouchpadOptionL;
         RightAction = e.TouchpadOptionR;
@@ -83,8 +83,6 @@ public class TouchpadPageViewModel : MainPageViewModelBase
         };
 
         UpdateEditStates();
-        
-        PropertyChanged += OnPropertyChanged;
     }
 
     private async void OnPropertyChanged(object? sender, PropertyChangedEventArgs args)

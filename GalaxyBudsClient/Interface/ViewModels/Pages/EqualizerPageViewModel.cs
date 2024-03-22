@@ -56,7 +56,7 @@ public class EqualizerPageViewModel : MainPageViewModelBase
 
     private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
     {
-        PropertyChanged -= OnPropertyChanged;
+        using var suppressor = SuppressChangeNotifications();
         
         if (BluetoothService.ActiveModel == Models.Buds)
         {
@@ -80,8 +80,6 @@ public class EqualizerPageViewModel : MainPageViewModelBase
         }
         
         StereoBalance = e.HearingEnhancements;
-        
-        PropertyChanged += OnPropertyChanged;
     }
 
     public override Control CreateView() => new EqualizerPage();

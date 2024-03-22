@@ -20,17 +20,40 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
     public NoiseControlPageViewModel()
     {
         SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
-        SppMessageHandler.Instance.AncEnabledUpdateResponse += (_, enabled) => IsAncEnabled = enabled;
-        SppMessageHandler.Instance.AmbientEnabledUpdateResponse += (_, enabled) => IsAmbientSoundEnabled = enabled;
-        SppMessageHandler.Instance.NoiseControlUpdateResponse += (_, mode)
-            => EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, mode);
+        SppMessageHandler.Instance.AncEnabledUpdateResponse += (_, enabled) =>
+        {
+            using var suppressor = SuppressChangeNotifications();
+            IsAncEnabled = enabled;
+        };
+        SppMessageHandler.Instance.AmbientEnabledUpdateResponse += (_, enabled) =>
+        {
+            using var suppressor = SuppressChangeNotifications();
+            IsAmbientSoundEnabled = enabled;
+        };
+        SppMessageHandler.Instance.NoiseControlUpdateResponse += (_, mode) =>
+        {
+            using var suppressor = SuppressChangeNotifications();
+            switch (mode)
+            {
+                case NoiseControlModes.Off:
+                    IsAmbientSoundEnabled = false;
+                    IsAncEnabled = false;
+                    break;
+                case NoiseControlModes.AmbientSound:
+                    IsAmbientSoundEnabled = true;
+                    break;
+                case NoiseControlModes.NoiseReduction:
+                    IsAncEnabled = true;
+                    break;
+            }
+        };
         
         PropertyChanged += OnPropertyChanged;
     }
     
     private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
     {
-        PropertyChanged -= OnPropertyChanged;
+        using var suppressor = SuppressChangeNotifications();
         if (BluetoothService.Instance.DeviceSpec.Supports(Features.NoiseControl))
         {
             IsAmbientSoundEnabled = e.NoiseControlMode == NoiseControlModes.AmbientSound;
@@ -51,7 +74,6 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
             2 => VoiceDetectTimeouts.Sec15,
             _ => VoiceDetectTimeouts.Sec5
         };
-        PropertyChanged += OnPropertyChanged;
     }
 
     private async void SendNoiseControlState()
