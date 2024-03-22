@@ -20,6 +20,7 @@
     <!-- Dimensions -->
     <Thickness x:Key="AppPageMargin">20 0 20 20</Thickness>
 
+
     <!-- Large BreadcrumbBar -->
     <Thickness x:Key="BreadcrumbBarChevronPadding">4,4,4,0</Thickness>
     <!-- 
