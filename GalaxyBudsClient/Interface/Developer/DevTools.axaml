@@ -60,12 +60,12 @@
                             </Grid.ColumnDefinitions>
                             <ComboBox Grid.Column="0"
                                       Name="SendMsgId"
-                                      ItemsSource="{Binding MsgIdSource}"
+                                      ItemsSource="{ReflectionBinding MsgIdSource}"
                                       HorizontalAlignment="Stretch"
                                       VerticalAlignment="Stretch"
                                       Margin="0,0,5,0" />
                             <ComboBox Grid.Column="1" Name="SendMsgType"
-                                      ItemsSource="{Binding MsgTypeSource}"
+                                      ItemsSource="{ReflectionBinding MsgTypeSource}"
                                       HorizontalAlignment="Stretch"
                                       VerticalAlignment="Stretch"
                                       Margin="0,0,5,0" />
@@ -95,11 +95,11 @@
                           HeadersVisibility="All"
                           SelectionChanged="MsgTable_OnSelectionChanged">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="Auto" />
-                        <DataGridTextColumn Header="Payload" Binding="{Binding Payload}" Width="*" />
-                        <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="Auto" />
-                        <DataGridTextColumn Header="CRC16" Binding="{Binding CRC16}" Width="Auto" />
-                        <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="Auto" />
+                        <DataGridTextColumn Header="ID" Binding="{ReflectionBinding Id}" Width="Auto" />
+                        <DataGridTextColumn Header="Payload" Binding="{ReflectionBinding Payload}" Width="*" />
+                        <DataGridTextColumn Header="Size" Binding="{ReflectionBinding Size}" Width="Auto" />
+                        <DataGridTextColumn Header="CRC16" Binding="{ReflectionBinding CRC16}" Width="Auto" />
+                        <DataGridTextColumn Header="Type" Binding="{ReflectionBinding Type}" Width="Auto" />
                     </DataGrid.Columns>
                 </DataGrid>
 
@@ -116,11 +116,11 @@
                           HeadersVisibility="All">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Property"
-                                            Binding="{Binding Key}"
+                                            Binding="{ReflectionBinding Key}"
                                             IsReadOnly="True"
                                             Width="*" />
                         <DataGridTextColumn Header="Value"
-                                            Binding="{Binding Value}"
+                                            Binding="{ReflectionBinding Value}"
                                             IsReadOnly="True"
                                             Width="*" />
                     </DataGrid.Columns>
