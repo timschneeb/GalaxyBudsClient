@@ -10,6 +10,7 @@
     <converters:EqPresetConverter x:Key="EqPresetConverter" />
     <converters:StereoBalanceConverter x:Key="StereoBalanceConverter" />
     <converters:AmbientCustomStrengthConverter x:Key="AmbientCustomStrengthConverter" />
+    <converters:AmbientStrengthConverter x:Key="AmbientStrengthConverter" />
     <converters:AmbientToneConverter x:Key="AmbientToneConverter" />
 
     <!-- Global strings -->

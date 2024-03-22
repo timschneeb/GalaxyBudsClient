@@ -34,7 +34,6 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
 
     private void UpdateVolumeSliders()
     {
-        var legacy = BluetoothService.Instance.DeviceSpec.Supports(Features.LegacyAmbientSoundVolumeLevels);
         var maxLevel = BluetoothService.Instance.DeviceSpec.MaximumAmbientVolume;
         
         if(BluetoothService.Instance.DeviceSpec.Supports(Features.AmbientExtraLoud) && IsAmbientExtraLoudEnabled)
@@ -44,7 +43,9 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
             BluetoothService.Instance.DeviceSpec.Supports(Features.AmbientCustomizeLegacy) ? 4 : 2;
         
         MaximumAmbientSoundVolume = maxLevel;
-        AsStrengthConverter = new AmbientStrengthConverter(legacy);
+        
+        // Workaround: Use the setter to retrigger the converter 
+        AmbientSoundVolume = AmbientSoundVolume;
     }
     
     private async void OnPropertyChanged(object? sender, PropertyChangedEventArgs args)
@@ -155,7 +156,6 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
     [Reactive] public int AmbientSoundTone { set; get; }
     [Reactive] public int MaximumAmbientSoundVolume { set; get; }
     [Reactive] public int MaximumLeftRightAmbientSoundVolume { set; get; }
-    [Reactive] public AmbientStrengthConverter AsStrengthConverter { set; get; } = new(false);
     
     public override string TitleKey => "nc_as_header";
 }

@@ -1,11 +1,25 @@
 using System.Collections.Generic;
+using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 
 namespace GalaxyBudsClient.Interface.Converters;
 
-public class AmbientStrengthConverter(bool legacy) : IntToStringConverter
+public class AmbientStrengthConverter : IntToStringConverter
 {
-    // TODO: handle localization changes
+    private bool _legacy;
+        
+    public AmbientStrengthConverter()
+    {
+        SelectScale();
+        BluetoothService.Instance.PropertyChanged += (_, _) => SelectScale();
+    }
+
+    private void SelectScale()
+    {
+        _legacy = BluetoothService.ActiveModel == Models.Buds;
+    }
+    
     private static Dictionary<int, string> LegacyScale => new()
     {
         { 0, Loc.Resolve("as_scale_very_low") },
@@ -23,5 +37,5 @@ public class AmbientStrengthConverter(bool legacy) : IntToStringConverter
         { 3, Loc.Resolve("as_scale_extraloud") }
     };
 
-    protected override Dictionary<int, string> Mapping => legacy ? LegacyScale : Scale;
+    protected override Dictionary<int, string> Mapping => _legacy ? LegacyScale : Scale;
 }
