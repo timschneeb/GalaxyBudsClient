@@ -48,13 +48,6 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <DefineConstants>Linux</DefineConstants>
-        <!--<InvariantGlobalization>true</InvariantGlobalization>-->
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug (Local server)' ">
-        <DebugSymbols Condition=" '$(DebugSymbols)' == '' ">true</DebugSymbols>
-        <Optimize Condition=" '$(Optimize)' == '' ">false</Optimize>
-        <DefineConstants>UseLocalServer</DefineConstants>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -64,129 +57,23 @@
         <DebugSymbols>true</DebugSymbols>
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
-    <ItemGroup>
-        <AvaloniaResource Include="Resources\**"/>
-        <AvaloniaResource Include="i18n\*"/>
-    </ItemGroup>
 
     <ItemGroup>
-        <Compile Update="**\*.xaml.cs">
+        <Compile Update="**\*.axaml.cs">
             <DependentUpon>%(Filename)</DependentUpon>
         </Compile>
-        <AvaloniaResource Include="**\*.xaml">
+        <AvaloniaResource Include="**\*.axaml">
             <SubType>Designer</SubType>
         </AvaloniaResource>
 
+        <AvaloniaResource Include="Resources\**"/>
+        <AvaloniaResource Include="i18n\*"/>
+        
         <Compile Remove="bin\**"/>
         <AvaloniaResource Remove="bin\**"/>
         <AvaloniaXaml Remove="bin\**"/>
         <EmbeddedResource Remove="bin\**"/>
         <None Remove="bin\**"/>
-
-        <Compile Update="Interface\Pages\SettingsPage.axaml.cs">
-            <DependentUpon>SettingsPage.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Pages\EqualizerPage.axaml.cs">
-            <DependentUpon>CoreControlsPage.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Pages\HomePage.axaml.cs">
-            <DependentUpon>HomePage.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Pages\NoiseControlPage.axaml.cs">
-            <DependentUpon>NoiseControlPage.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Pages\AmbientCustomizePage.axaml.cs">
-            <DependentUpon>AmbientCustomizePage.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Pages\SystemPage.axaml.cs">
-            <DependentUpon>SystemPage.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Pages\SystemInfoPage.axaml.cs">
-            <DependentUpon>SystemInfoPage.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Pages\FirmwarePage.axaml.cs">
-            <DependentUpon>FirmwarePage.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Pages\AdvancedPage.axaml.cs">
-            <DependentUpon>AdvancedPage.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Pages\BixbyRemapPage.axaml.cs">
-            <DependentUpon>BixbyRemapPage.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Pages\HotkeyPage.axaml.cs">
-            <DependentUpon>HotkeyPage.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Dialogs\HotkeyEditorDialog.axaml.cs">
-            <DependentUpon>HotkeyEditorDialog.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Pages\FindMyBudsPage.axaml.cs">
-            <DependentUpon>FindMyBudsPage.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Controls\GlowingToggleButton.axaml.cs">
-            <DependentUpon>GlowingToggleButton.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Controls\MuteToggleButton.axaml.cs">
-            <DependentUpon>MuteToggleButton.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Controls\EarbudControlUnit.axaml.cs">
-            <DependentUpon>EarbudControlUnit.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Pages\FitTestPage.axaml.cs">
-            <DependentUpon>FitTestPage.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Pages\TouchpadPage.axaml.cs">
-            <DependentUpon>TouchpadPage.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Dialogs\TouchActionEditorDialog.axaml.cs">
-            <DependentUpon>TouchActionEditorDialog.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Dialogs\HotkeyRecorderDialog.axaml.cs">
-            <DependentUpon>HotkeyRecorderDialog.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Controls\EarbudStatusUnit.axaml.cs">
-            <DependentUpon>EarbudStatusUnit.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Controls\EarbudIconUnit.axaml.cs">
-            <DependentUpon>EarbudIconUnit.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Controls\EmptyView.axaml.cs">
-            <DependentUpon>EmptyView.axaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Dialogs\ManualPairDialog.axaml.cs">
-          <DependentUpon>ManualPairDialog.axaml</DependentUpon>
-          <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Pages\WelcomePage.axaml.cs">
-          <DependentUpon>WelcomePage.axaml</DependentUpon>
-          <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Dialogs\DeviceSelectionDialog.axaml.cs">
-          <DependentUpon>DeviceSelectionDialog.axaml</DependentUpon>
-          <SubType>Code</SubType>
-        </Compile>
     </ItemGroup>
 
     <PropertyGroup>
