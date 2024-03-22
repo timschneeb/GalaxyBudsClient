@@ -49,7 +49,7 @@
                          Name="DevList">
                     <ListBox.ItemTemplate>
                         <DataTemplate x:DataType="bluetooth:BluetoothDevice">
-                            <Border Background="Transparent">
+                            <Border Background="Transparent" PointerPressed="OnListItemPressed">
                                 <Panel>
                                     <StackPanel Spacing="4" Margin="4 10">
                                         <TextBlock Text="{Binding Name}"
@@ -86,16 +86,15 @@
             </Grid>
         </Border>
 
-        <controls:SettingsGroup IsVisible="{Binding ., Source={x:Static platform:PlatformUtils.IsWindowsContractsSdkSupported}}">
+        <controls:SettingsGroup IsVisible="{Binding CanUseAlternativeBackend}">
             <controls:SettingsSwitchItem Content="{DynamicResource devsel_winrt_title}"
                                          Description="{DynamicResource devsel_winrt}"
                                          IsChecked="{Binding UseBluetoothWinRT, Source={x:Static utils:Settings.Instance}}"
                                          IsCheckedChanged="OnUseWinRtCheckedChanged" />
         </controls:SettingsGroup>
 
-        <!-- TODO localization -->
-        <ui:InfoBar Title="Is your device not listed?"
-                    Message="Make sure your earbuds have already been paired. If they are still not recognized, try using the manual connection option."
+        <ui:InfoBar Title="{DynamicResource devsel_manual_pair_title}"
+                    Message="{DynamicResource devsel_manual_pair_description}"
                     IsOpen="True"
                     IsClosable="False"
                     Severity="Informational">

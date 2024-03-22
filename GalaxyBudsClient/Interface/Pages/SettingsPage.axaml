@@ -49,6 +49,16 @@
                 </StackPanel>
             </DockPanel>
 
+            <controls:SettingsGroup>
+                <controls:SettingsSymbolItem Content="{DynamicResource optionsmenu_deregister}"
+                                             Description="{DynamicResource settings_unregister_description}"
+                                             Symbol="Delete"
+                                             ActionSymbol="ChevronRight"
+                                             IsClickEnabled="True"
+                                             IsEnabled="{Binding CanUnregister}"
+                                             Click="OnUnregisterClicked" />
+            </controls:SettingsGroup>
+            
             <ui:SettingsExpander Header="{DynamicResource settings_appearance}" IsExpanded="True">
                 <ui:SettingsExpander.IconSource>
                     <ic:SymbolIconSource Symbol="PaintBrush" />

@@ -152,6 +152,10 @@ public partial class MainView : UserControl
         {
             NavigationService.Instance.Navigate(typeof(WelcomePageViewModel));
         }
+        else if (ViewModel?.IsInSetupWizard == false && CurrentPageViewModel is WelcomePageViewModel)
+        {
+            NavigationService.Instance.Navigate(typeof(HomePageViewModel));
+        }
     }
     
     private void InitializeNavigationPages()

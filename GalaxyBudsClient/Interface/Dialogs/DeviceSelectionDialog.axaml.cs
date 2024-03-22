@@ -1,13 +1,13 @@
 using System.Threading.Tasks;
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Interface.ViewModels.Dialogs;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
@@ -29,7 +29,7 @@ public partial class DeviceSelectionDialog : UserControl
             CloseButtonText = Loc.Resolve("cancel")
         };
 
-        var viewModel = new DeviceSelectionDialogViewModel();
+        var viewModel = new DeviceSelectionDialogViewModel(dialog);
         dialog.Content = new DeviceSelectionDialog
         {
             DataContext = viewModel
@@ -38,8 +38,8 @@ public partial class DeviceSelectionDialog : UserControl
         dialog.PrimaryButtonClick += OnPrimaryButtonClick;
         var result = await dialog.ShowAsync(MainWindow.Instance);
         dialog.PrimaryButtonClick -= OnPrimaryButtonClick;
-            
-        return viewModel.SelectedDevice != null; // TODO
+
+        return result != ContentDialogResult.None;
 
         void OnPrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
@@ -60,7 +60,7 @@ public partial class DeviceSelectionDialog : UserControl
         var result = await ManualPairDialog.OpenDialogAsync();
         if (result != null)
         {
-            DeviceSelectionDialogViewModel.RegisterDevice(result.Value.model, result.Value.device.Address);
+            ViewModel.RegisterDevice(result.Value.model, result.Value.device.Address);
         }
     }
 
@@ -68,5 +68,13 @@ public partial class DeviceSelectionDialog : UserControl
     {
         BluetoothService.Reallocate();
         ViewModel.DoRefreshCommand();
+    }
+
+    private void OnListItemPressed(object? sender, PointerPressedEventArgs e)
+    {
+        if (sender is StyledElement { DataContext: BluetoothDevice device })
+        {
+            ViewModel.DoConnectCommand(device); 
+        }
     }
 }
