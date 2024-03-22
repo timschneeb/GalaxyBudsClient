@@ -5,8 +5,6 @@ namespace GalaxyBudsClient.Interface.Converters;
 
 public class AmbientToneConverter : IntToStringConverter
 {
-    // TODO: handle localization changes
-
     protected override Dictionary<int, string> Mapping => new()
     {
         { 0, Loc.Resolve("nc_as_custom_tone_soft") + " +2" },

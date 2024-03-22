@@ -13,7 +13,7 @@ namespace GalaxyBudsClient.Interface.MarkupExtensions;
  * Workaround: Until UpdateSourceTrigger.Explicit is usable in Avalonia,
  * this behavior is used to update the source of a ComboBox in case of localization changes. 
  */
-public class LocalizationAwareComboBoxBehavior : Behavior<Control>
+public class LocalizationAwareComboBoxBehavior : Behavior<SettingsComboBoxItem>
 {
     
     public static readonly StyledProperty<Type> EnumTypeProperty =
@@ -28,6 +28,7 @@ public class LocalizationAwareComboBoxBehavior : Behavior<Control>
     /// <inheritdoc />
     protected override void OnAttachedToVisualTree()
     {
+        UpdateState();
         Loc.LanguageUpdated += OnLanguageUpdated;
     }
 
@@ -42,15 +43,15 @@ public class LocalizationAwareComboBoxBehavior : Behavior<Control>
     private void UpdateState()
     {
         // Handle combo box updates
-        if (AssociatedObject is SettingsComboBoxItem cb)
-        {
-            var selected = cb.SelectedValue;
-            cb.ItemsSource = Enum.GetValues(EnumType)
-                .OfType<object>()
-                .Where(obj => EnumType.GetMember(EnumType.GetEnumName((int)obj) ?? string.Empty)[0]
-                    .GetCustomAttributes(typeof(IgnoreDataMemberAttribute), false)
-                    .Length <= 0).ToArray();
-            cb.SelectedValue = selected;
-        }
+        if (AssociatedObject is not { } cb)
+            return;
+        
+        var selected = cb.SelectedValue;
+        cb.ItemsSource = Enum.GetValues(EnumType)
+            .OfType<object>()
+            .Where(obj => EnumType.GetMember(EnumType.GetEnumName((int)obj) ?? string.Empty)[0]
+                .GetCustomAttributes(typeof(IgnoreDataMemberAttribute), false)
+                .Length <= 0).ToArray();
+        cb.SelectedValue = selected;
     }
 }

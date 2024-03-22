@@ -25,8 +25,12 @@
                     Symbol="Gauge"
                     IsEnabled="{Binding !IsAmbientCustomizationEnabled}"
                     Maximum="{Binding MaximumAmbientSoundVolume}"
-                    Value="{Binding AmbientSoundVolume}" />
-
+                    Value="{Binding AmbientSoundVolume}">
+                    <Interaction.Behaviors>
+                        <ext:LocalizationAwareSliderBehavior Converter="{Binding AsStrengthConverter}" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSliderItem>
+                
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource as_extrahigh}"
                     Description="{DynamicResource as_extrahigh_description}"
@@ -65,7 +69,11 @@
                     Symbol="ArrowStepInLeft"
                     IsEnabled="{Binding IsAmbientCustomizationEnabled}"
                     Maximum="{Binding MaximumLeftRightAmbientSoundVolume}"
-                    Value="{Binding AmbientSoundVolumeLeft}" />
+                    Value="{Binding AmbientSoundVolumeLeft}">
+                    <Interaction.Behaviors>
+                        <ext:LocalizationAwareSliderBehavior Converter="{StaticResource AmbientCustomStrengthConverter}" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSliderItem>
 
                 <controls:SettingsSliderItem
                     Content="{DynamicResource nc_as_custom_volume_r}"
@@ -73,15 +81,23 @@
                     Symbol="ArrowStepInRight"
                     IsEnabled="{Binding IsAmbientCustomizationEnabled}"
                     Maximum="{Binding MaximumLeftRightAmbientSoundVolume}"
-                    Value="{Binding AmbientSoundVolumeRight}" />
-
+                    Value="{Binding AmbientSoundVolumeRight}">
+                    <Interaction.Behaviors>
+                        <ext:LocalizationAwareSliderBehavior Converter="{StaticResource AmbientCustomStrengthConverter}" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSliderItem>
+                
                 <controls:SettingsSliderItem
                     Content="{DynamicResource nc_as_custom_tone}"
                     Description="{Binding AmbientSoundTone, Converter={StaticResource AmbientToneConverter}}"
                     Symbol="SoundSource"
                     IsEnabled="{Binding IsAmbientCustomizationEnabled}"
                     Maximum="4"
-                    Value="{Binding AmbientSoundTone}" />
+                    Value="{Binding AmbientSoundTone}">
+                    <Interaction.Behaviors>
+                        <ext:LocalizationAwareSliderBehavior Converter="{StaticResource AmbientToneConverter}" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSliderItem>
 
             </controls:SettingsGroup>
 
