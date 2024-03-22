@@ -119,14 +119,14 @@
     <sys:String x:Key="hotkey_edit_header">Wähle eine Tastaturkombination aus</sys:String>
     
     <!--Hotkey page-->
-    <sys:String x:Key="hotkey_header">Tastatur Hotkeys</sys:String>
+    <sys:String x:Key="hotkey_header">Tastaturhotkeys</sys:String>
     <sys:String x:Key="hotkey_add">Neuen Hotkey festlegen</sys:String>
     <sys:String x:Key="hotkey_empty">Keine Hotkeys festgelegt</sys:String>
-    <sys:String x:Key="hotkey_empty_desc">Erstellen Sie einen neuen Hotkey durch klicken der Schaltfläche darüber</sys:String>
+    <sys:String x:Key="hotkey_empty_desc">Erstellen Sie einen neuen Hotkey durch Klicken der Schaltfläche darüber</sys:String>
     <sys:String x:Key="hotkey_edit">Bearbeiten</sys:String>
     <sys:String x:Key="hotkey_delete">Löschen</sys:String>
     <sys:String x:Key="hotkey_add_error">Registrierung/Updaten eines Hotkeys fehlgeschlagen</sys:String>
-    <sys:String x:Key="hotkey_add_error_context">Betroffener Hostkey:</sys:String>
+    <sys:String x:Key="hotkey_add_error_context">Betroffener Hotkey:</sys:String>
     <sys:String x:Key="hotkey_add_error_duplicate">Your selected key-combination was already registered as a hotkey by this or another application. Please choose another one.</sys:String>
     <sys:String x:Key="hotkey_add_error_unknown">Betriebssystem hat mit folgendem Fehler Code geantwortet: '{0}'</sys:String>
 
@@ -422,27 +422,26 @@ Du kannst auch bei "Optionen &gt; Gerät entfernen" ein neues Paar registrieren.
     <sys:String x:Key="window_minimize">Minimieren</sys:String>
     <sys:String x:Key="window_close">Schließen</sys:String>
 
-    <sys:String x:Key="touchpad_gesture_header">Touchpad Gesten aktivieren</sys:String>
+    <sys:String x:Key="touchpad_gesture_header">Touchgesten aktivieren</sys:String>
     <sys:String x:Key="touchpad_gesture_single">Tippen</sys:String>
     <sys:String x:Key="touchpad_gesture_single_desc">Titel wiedergeben oder anhalten</sys:String>
-    <sys:String x:Key="touchpad_gesture_double">Zeimal tippen</sys:String>
-    <sys:String x:Key="touchpad_gesture_double_desc">nächsten Titel wiedergeben</sys:String>
+    <sys:String x:Key="touchpad_gesture_double">Zweimal tippen</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_desc">Nächsten Titel wiedergeben</sys:String>
     <sys:String x:Key="touchpad_gesture_triple">Dreimal tippen</sys:String>
     <sys:String x:Key="touchpad_gesture_triple_desc">Vorherigen Titel wiedergeben</sys:String>
     <sys:String x:Key="touchpad_gesture_hold">Berühren und halten</sys:String>
     <sys:String x:Key="touchpad_gesture_hold_desc">Benutzerdefinierte Aktion ausführen</sys:String>
 
-    <sys:String x:Key="touchpad_gestures">Erweiterte Touch Sperre</sys:String>
-    <sys:String x:Key="touchpad_gestures_description">Aktivieren oder deaktivieren der standard Tdouch Gesten</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode">Umgebungsgeräusch Kontroll wechsel Modus</sys:String>
+    <sys:String x:Key="touchpad_gestures">Erweiterte Touchsperre</sys:String>
+    <sys:String x:Key="touchpad_gestures_description">Aktivieren oder Deaktivieren der Touchgesten</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode">Umgebungsgeräusch Kontrollwechsel Modus</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ Umgebungssound</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Aus</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_amb_off">Umgebungssound ↔ Aus</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_threeway">Wechseln zwischen den verschiedenen Modi (ANC, Umgebung, Aus)</sys:String>
 
     <sys:String x:Key="system_flasher">Firmware Update installieren</sys:String>
-    <sys:String x:Key="system_flasher_desc">Update, downgrade, oder flashen einer eigenen firmware</sys:String>
-    <sys:String x:Key="system_spatial">Spatial Sensor Daten speichern</sys:String>
+    <sys:String x:Key="system_flasher_desc">Updaten, Downgraden oder Flashen einer Firmware</sys:String>
+    <sys:String x:Key="system_spatial">Spatial Sensor Daten </sys:String>
     <sys:String x:Key="system_spatial_desc">Spatial head-tracking Daten die für 3D Audio verwendet werden auslesen</sys:String>
     
     <sys:String x:Key="settings_crowdsourcing">Crowdsourcing</sys:String>
@@ -465,10 +464,10 @@ Du kannst auch bei "Optionen &gt; Gerät entfernen" ein neues Paar registrieren.
 
     <sys:String x:Key="nc_as_header">Umgebungssound Einstellungen</sys:String>
     <sys:String x:Key="nc_as_custom">Erweiterte Personalisierung</sys:String>
-    <sys:String x:Key="nc_as_custom_volume_l">Umgebungssound Lautstärke (Links)</sys:String>
-    <sys:String x:Key="nc_as_custom_volume_r">Umgebungssound Lautstärke (Rechts)</sys:String>
-    <sys:String x:Key="nc_as_custom_tone">Umgebungssound Lautstärke Ton</sys:String>
-    <sys:String x:Key="nc_as_custom_tone_clear">Durchlass</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_l">Lautstärke des Umgebungssounds (Links)</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_r">Lautstärke des Umgebungssounds (Rechts)</sys:String>
+    <sys:String x:Key="nc_as_custom_tone">Klang des Umgebungssounds</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_clear">Klar</sys:String>
     <sys:String x:Key="nc_as_custom_tone_soft">Weich</sys:String>
     <sys:String x:Key="nc_as_custom_tone_neutral">Neutral</sys:String>
     <sys:String x:Key="nc_as_custom_vol_normal">Normal</sys:String>
