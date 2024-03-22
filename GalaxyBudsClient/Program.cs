@@ -12,6 +12,9 @@ using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using Serilog;
 using Serilog.Events;
+#if !DEBUG
+using Sentry;
+#endif
 
 namespace GalaxyBudsClient;
 
