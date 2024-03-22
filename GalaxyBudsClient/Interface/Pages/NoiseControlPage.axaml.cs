@@ -8,10 +8,4 @@ public partial class NoiseControlPage : BasePage<NoiseControlPageViewModel>
     {
         InitializeComponent();
     }
-
-    protected override void OnLanguageUpdated()
-    {
-        // TODO Sliders descriptions don't update
-        base.OnLanguageUpdated();
-    }
 }
