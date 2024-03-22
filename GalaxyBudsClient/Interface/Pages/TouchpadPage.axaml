@@ -47,10 +47,6 @@
                     IsToolButtonVisible="True"
                     IsToolButtonEnabled="{Binding IsLeftCustomActionEditable}"
                     ToolButtonClick="OnEditLeftCustomActionClicked">
-
-                    <Interaction.Behaviors>
-                        <ext:LocalizationAwareComboBoxBehavior EnumType="{x:Type constants:TouchOptions}" /> 
-                    </Interaction.Behaviors>
                     
                     <controls:SettingsComboBoxItem.ToolButtonContent>
                         <ic:SymbolIcon Symbol="Edit" />
@@ -68,10 +64,6 @@
                     IsToolButtonVisible="True"
                     IsToolButtonEnabled="{Binding IsRightCustomActionEditable}"
                     ToolButtonClick="OnEditRightCustomActionClicked">
-
-                    <Interaction.Behaviors>
-                        <ext:LocalizationAwareComboBoxBehavior EnumType="{x:Type constants:TouchOptions}" /> 
-                    </Interaction.Behaviors>
                     
                     <controls:SettingsComboBoxItem.ToolButtonContent>
                         <ic:SymbolIcon Symbol="Edit" />
