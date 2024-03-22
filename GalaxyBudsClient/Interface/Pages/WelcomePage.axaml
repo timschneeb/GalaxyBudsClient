@@ -33,7 +33,7 @@
                                                ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:DarkModes}}}"
                                                SelectedValue="{Binding DarkMode, Source={x:Static utils:Settings.Instance}}">
                     <Interaction.Behaviors>
-                        <ext:LocalizationAwareBehavior EnumType="{x:Type constants:DarkModes}" />
+                        <ext:LocalizationAwareComboBoxBehavior EnumType="{x:Type constants:DarkModes}" />
                     </Interaction.Behaviors>
                 </controls:SettingsComboBoxItem>
                     

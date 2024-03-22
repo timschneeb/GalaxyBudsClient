@@ -71,7 +71,7 @@
                                                ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:DarkModes}}}"
                                                SelectedValue="{Binding DarkMode, Source={x:Static utils:Settings.Instance}}">
                     <Interaction.Behaviors>
-                        <ext:LocalizationAwareBehavior EnumType="{x:Type constants:DarkModes}" />
+                        <ext:LocalizationAwareComboBoxBehavior EnumType="{x:Type constants:DarkModes}" />
                     </Interaction.Behaviors>
                 </controls:SettingsComboBoxItem>
 
@@ -111,7 +111,7 @@
                     ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:DynamicTrayIconModes}}}"
                     SelectedValue="{Binding DynamicTrayIconMode, Source={x:Static utils:Settings.Instance}}">
                     <Interaction.Behaviors>
-                        <ext:LocalizationAwareBehavior EnumType="{x:Type constants:DynamicTrayIconModes}" />
+                        <ext:LocalizationAwareComboBoxBehavior EnumType="{x:Type constants:DynamicTrayIconModes}" />
                     </Interaction.Behaviors>
                 </controls:SettingsComboBoxItem>
 
@@ -149,7 +149,7 @@
                                                ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:PopupPlacement}}}"
                                                SelectedValue="{Binding Popup.Placement, Source={x:Static utils:Settings.Instance}}">
                     <Interaction.Behaviors>
-                        <ext:LocalizationAwareBehavior EnumType="{x:Type constants:PopupPlacement}" />
+                        <ext:LocalizationAwareComboBoxBehavior EnumType="{x:Type constants:PopupPlacement}" />
                     </Interaction.Behaviors>
                 </controls:SettingsComboBoxItem>
 
