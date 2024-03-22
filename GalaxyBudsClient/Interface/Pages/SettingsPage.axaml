@@ -49,7 +49,7 @@
                 </StackPanel>
             </DockPanel>
 
-            <controls:SettingsGroup>
+            <controls:SettingsGroup Margin="0,4,0,0">
                 <controls:SettingsSymbolItem Content="{DynamicResource optionsmenu_deregister}"
                                              Description="{DynamicResource settings_unregister_description}"
                                              Symbol="Delete"
