@@ -75,7 +75,6 @@ public static class IpcService
             {
                 await Task.Delay(int.MaxValue);
             }
-            return;
         }
         catch (Exception e)
         {
