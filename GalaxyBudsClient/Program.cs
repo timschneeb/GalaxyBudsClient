@@ -61,7 +61,7 @@ internal static class Program
             CliHandler.ProcessArguments(args);
             return;
         }
-        var task = Task.CompletedTask;
+        
         try
         {
             /* OSX: Graphics must be drawn on the main thread.
@@ -70,12 +70,14 @@ internal static class Program
              * In general: Don't await this call to shave off about 1000ms of startup time.
              * The IpcService will terminate the app in time if another instance is already running.
              */
-            task = Task.Run(IpcService.Setup);
+            _ = Task.Run(IpcService.Setup);
                 
             BuildAvaloniaApp().StartWithClassicDesktopLifetime(args, ShutdownMode.OnExplicitShutdown);
         }
         // ReSharper disable once RedundantCatchClause
+#pragma warning disable CS0168 // Variable is declared but never used
         catch (Exception ex)
+#pragma warning restore CS0168 // Variable is declared but never used
         {
 #if DEBUG
             throw;
