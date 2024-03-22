@@ -93,8 +93,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
             return;
         }
         
-        // TODO add downloading dialog
-        
+        // TODO add downloading dialog?
        // _navBarNextLabel.Content = Loc.Resolve("fw_select_downloading");
 
         byte[] binary;

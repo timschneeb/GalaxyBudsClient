@@ -16,7 +16,6 @@ using GalaxyBudsClient.Scripting.Experiment;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
-using HotAvalonia;
 using Serilog;
 using Application = Avalonia.Application;
 
@@ -39,7 +38,6 @@ public class App : Application
         });
 #endif
 
-        this.EnableHotReload(); // no-op in release builds
         AvaloniaXamlLoader.Load(this);
             
         if (Loc.IsTranslatorModeEnabled())
