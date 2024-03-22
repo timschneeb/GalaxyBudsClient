@@ -33,7 +33,7 @@ public class App : Application
         {
             Dispatcher.UIThread.InvokeAsync(delegate
             {
-                MainWindow2.Instance.BringToFront();
+                MainWindow.Instance.BringToFront();
             });
         });
 #endif
