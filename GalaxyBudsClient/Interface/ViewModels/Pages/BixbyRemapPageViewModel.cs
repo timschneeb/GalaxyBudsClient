@@ -16,8 +16,7 @@ public class BixbyRemapPageViewModel : SubPageViewModelBase
         SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
         PropertyChanged += OnPropertyChanged;
     }
-
-    // TODO refresh localization
+    
     private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
     {
         using var suppressor = SuppressChangeNotifications();
