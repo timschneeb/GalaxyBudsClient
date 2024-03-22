@@ -205,6 +205,8 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="devsel_device_name">Device name</sys:String>
     <sys:String x:Key="devsel_btaddr">MAC address</sys:String>
     <sys:String x:Key="devsel_model">Model</sys:String>
+    <sys:String x:Key="devsel_manual_pair_title">Is your device not listed?</sys:String>
+    <sys:String x:Key="devsel_manual_pair_description">Make sure your earbuds have already been paired. If they are still not recognized, try using the manual connection option.</sys:String>
     <sys:String x:Key="devsel_manual_pair">Manual connection</sys:String>
     <sys:String x:Key="devsel_nodevices">Please connect and pair your earbuds first</sys:String>
     <sys:String x:Key="devsel_nodevices_title">No paired devices found</sys:String>
@@ -319,6 +321,7 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <!--Settings-->
     <sys:String x:Key="settings_header">Settings</sys:String>
     
+    <sys:String x:Key="settings_unregister_description">Remove your current earbuds and connect another pair</sys:String>
     <sys:String x:Key="settings_appearance">Appearance</sys:String>
     <sys:String x:Key="settings_darkmode">Dark mode</sys:String>
     <sys:String x:Key="settings_darkmode_description">Use a darker color scheme</sys:String>

@@ -5,6 +5,7 @@ using GalaxyBudsClient.Interface.Controls;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 
 namespace GalaxyBudsClient.Interface.Pages;
@@ -31,7 +32,12 @@ public partial class SettingsPage : BasePage<SettingsPageViewModel>
     {
         await new DeveloperOptionsDialog().ShowAsync(true);
     }
-
+    
+    public void OnUnregisterClicked(object? sender, RoutedEventArgs e)
+    {
+        BluetoothService.Instance.UnregisterDevice();
+    }
+    
     protected override void OnLanguageUpdated()
     {
         /* TODO:  Workaround because Avalonia does not expose enough of its Binding/MarkupExtension API
