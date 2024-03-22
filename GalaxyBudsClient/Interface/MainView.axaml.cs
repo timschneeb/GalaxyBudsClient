@@ -14,6 +14,7 @@ using FluentAvalonia.UI.Windowing;
 using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
+using Serilog;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
 namespace GalaxyBudsClient.Interface;
@@ -206,6 +207,21 @@ public partial class MainView : UserControl
 
     private void OnNavigationViewBackRequested(object? sender, NavigationViewBackRequestedEventArgs e)
     {
+        /* Pressing back on a main page: remove all items until a MainPageViewModel is found
+           We don't want to return to a sub page. The back button mostly behaves like an up button. */
+
+        if (CurrentPageViewModel is MainPageViewModelBase)
+        {
+            for (var i = FrameView.BackStack.Count - 1; i >= 0; i--)
+            {
+                if (FrameView.BackStack[i].SourcePageType.IsSubclassOf(typeof(MainPageViewModelBase)))
+                    break;
+
+                Log.Error("Removed {Page}", FrameView.BackStack[i].SourcePageType);
+                FrameView.BackStack.RemoveAt(i);
+            }
+        }
+
         FrameView.GoBack();
     }
 
@@ -237,7 +253,7 @@ public partial class MainView : UserControl
 
             ViewModel?.BreadcrumbItems.Clear();
         }
-
+        
         if (page != null)
         {
             if (e.NavigationMode == NavigationMode.New || page is MainPageViewModelBase) 
