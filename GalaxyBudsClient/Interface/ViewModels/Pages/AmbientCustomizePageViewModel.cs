@@ -81,7 +81,7 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
     
     private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
     {    
-        PropertyChanged -= OnPropertyChanged;
+        using var suppressor = SuppressChangeNotifications();
         
         AmbientSoundVolume = e.AmbientSoundVolume;
         IsAmbientVoiceFocusEnabled = e.AmbientSoundMode == AmbientTypes.VoiceFocus;
@@ -90,8 +90,6 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
         AmbientSoundVolumeLeft = e.AmbientCustomVolumeLeft;
         AmbientSoundVolumeRight = e.AmbientCustomVolumeRight;
         IsAmbientCustomizationEnabled = e.AmbientCustomVolumeOn;
-        
-        PropertyChanged += OnPropertyChanged;
     }
 
     protected override void OnEventReceived(Event type, object? parameter)

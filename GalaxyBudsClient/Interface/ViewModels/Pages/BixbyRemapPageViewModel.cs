@@ -20,10 +20,10 @@ public class BixbyRemapPageViewModel : SubPageViewModelBase
     // TODO refresh localization
     private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
     {
-        PropertyChanged -= OnPropertyChanged;
+        using var suppressor = SuppressChangeNotifications();
+        
         IsBixbyWakeUpEnabled = e.VoiceWakeUp;
         BixbyLanguage = (BixbyLanguages)e.VoiceWakeUpLang;
-        PropertyChanged += OnPropertyChanged;
     }
 
     private async void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
