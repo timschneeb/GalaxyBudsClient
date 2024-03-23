@@ -14,59 +14,31 @@ using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
 using Application = Avalonia.Application;
-using Grid = Avalonia.Controls.Grid;
-using Image = Avalonia.Controls.Image;
-using Label = Avalonia.Controls.Label;
 using Window = Avalonia.Controls.Window;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 
-// TODO: redesign
 public partial class BudsPopup : Window
 {
     public EventHandler? ClickedEventHandler { get; set; }
-
-    private readonly Border _outerBorder;
-        
-    private readonly Label _header;
-    private readonly Label _batteryL;
-    private readonly Label _batteryR;
-    private readonly Label _batteryC;
-    private readonly Label _caseLabel;
-
-    private readonly Image _iconLeft;
-    private readonly Image _iconRight;
-
+    
     private readonly Timer _timer = new(3000){AutoReset = false};
         
     public BudsPopup() 
     {
         InitializeComponent();
-
-        _outerBorder = this.GetControl<Border>("OuterBorder");
-            
-        _header = this.GetControl<Label>("Header");
-        _batteryL = this.GetControl<Label>("BatteryL");
-        _batteryR = this.GetControl<Label>("BatteryR");
-        _batteryC = this.GetControl<Label>("BatteryC");
-        _caseLabel = this.GetControl<Label>("CaseLabel");
-            
-        _iconLeft = this.GetControl<Image>("ImageLeft");
-        _iconRight = this.GetControl<Image>("ImageRight");
-            
+        
         var cachedStatus = DeviceMessageCache.Instance.BasicStatusUpdate;
-        UpdateContent(cachedStatus?.BatteryL ?? 0, cachedStatus?.BatteryR ?? 0, cachedStatus?.BatteryCase ?? 0);
+        if(cachedStatus != null)
+            UpdateContent(cachedStatus);
             
         SppMessageHandler.Instance.BaseUpdate += InstanceOnBaseUpdate;
-        _timer.Elapsed += (sender, args) =>
-        {
-            Dispatcher.UIThread.Post(Hide, DispatcherPriority.Render);
-        };
+        _timer.Elapsed += (_, _) => Dispatcher.UIThread.Post(Hide, DispatcherPriority.Render);
     }
 
     private void InstanceOnBaseUpdate(object? sender, IBasicStatusUpdate e)
     {
-        UpdateContent(e.BatteryL, e.BatteryR, e.BatteryCase);
+        UpdateContent(e);
     }
 
     public void RearmTimer()
@@ -75,39 +47,36 @@ public partial class BudsPopup : Window
         _timer.Start();
     }
         
-    private void UpdateContent(int bl, int br, int bc)
+    private void UpdateContent(IBasicStatusUpdate e)
     {
-        if (bc > 100)
-        {
-            bc = DeviceMessageCache.Instance.BasicStatusUpdateWithValidCase?.BatteryCase ?? bc;
-        }
+        var bl = e.BatteryL;
+        var br = e.BatteryR;
+        var bc = e.BatteryCase;
+
+        BatteryL.Content = $"{bl}%"; 
+        BatteryR.Content = $"{br}%";
+        BatteryC.Content = $"{bc}%";
             
-        _batteryL.Content = $"{bl}%"; 
-        _batteryR.Content = $"{br}%";
-        _batteryC.Content = $"{bc}%";
+        var connected = BluetoothService.Instance.IsConnected;
+        var isLeftOnline = connected && bl > 0 && e.PlacementL != PlacementStates.Disconnected;
+        var isRightOnline = connected && br > 0 && e.PlacementR != PlacementStates.Disconnected;
+        var isCaseOnline = connected && bc is > 0 and <= 100 && BluetoothService.Instance.DeviceSpec.Supports(Features.CaseBattery);
             
-        var isLeftOnline = bl > 0;
-        var isRightOnline = br > 0;
-        var isCaseOnline = bc is > 0 and <= 100 && BluetoothService.Instance.DeviceSpec.Supports(Features.CaseBattery);
-            
-        _batteryL.IsVisible = isLeftOnline;
-        _batteryR.IsVisible = isRightOnline;
-        _batteryC.IsVisible = isCaseOnline;
-        _caseLabel.IsVisible = isCaseOnline;
+        BatteryL.IsVisible = isLeftOnline;
+        BatteryR.IsVisible = isRightOnline;
+        BatteryC.IsVisible = isCaseOnline;
+        CaseLabel.IsVisible = isCaseOnline;
      
         var type = BluetoothService.Instance.DeviceSpec.IconResourceKey;
-
-        var leftSourceName = $"Left{type}Connected";
-        _iconLeft.Source = (IImage?)Application.Current?.FindResource(leftSourceName);
-        var rightSourceName = $"Right{type}Connected";
-        _iconRight.Source = (IImage?)Application.Current?.FindResource(rightSourceName);
+        ImageLeft.Source = (IImage?)Application.Current?.FindResource($"Left{type}Connected");
+        ImageRight.Source = (IImage?)Application.Current?.FindResource($"Right{type}Connected");
     }
 
     public override void Hide()
     {  
         /* Close window instead */
         _timer.Stop();
-        _outerBorder.Tag = "hiding";
+        OuterBorder.Tag = "hiding";
         Task.Delay(400).ContinueWith(_ => { Dispatcher.UIThread.InvokeAsync(Close); });
     }
 
@@ -116,9 +85,15 @@ public partial class BudsPopup : Window
         base.Show();
             
         UpdateSettings();
-        _outerBorder.Tag = "showing";
+        OuterBorder.Tag = "showing";
             
         _timer.Start();
+    }
+
+    protected override void OnOpened(EventArgs e)
+    {
+        UpdateSettings();
+        base.OnOpened(e);
     }
 
     private void Window_OnPointerPressed(object? sender, PointerPressedEventArgs e)
@@ -129,28 +104,28 @@ public partial class BudsPopup : Window
 
     public void UpdateSettings()
     {
-        _header.Content = BluetoothService.Instance.DeviceName;
+        Header.Content = BluetoothService.Instance.DeviceName;
 
         /* Header */
-        var grid = this.GetControl<Grid>("Grid");
         if (Settings.Instance.Popup.Compact)
         {
             MaxHeight = 205 - 35;
             Height = 205 - 35;
-            grid.RowDefinitions[1].Height = new GridLength(0);
+            Grid.RowDefinitions[1].Height = new GridLength(0);
         }
         else
         {
             MaxHeight = 205;
             Height = 205;
-            grid.RowDefinitions[1].Height = new GridLength(35);
+            Grid.RowDefinitions[1].Height = new GridLength(35);
         }
             
         /* Window positioning */
         var workArea = (Screens.Primary ?? Screens.All[0]).WorkingArea;
-        const int padding = 20; // TODO padding needs DPI awareness? 
-            
         var scaling = PlatformImpl?.GetPropertyValue<double>("DesktopScaling") ?? 1.0;
+        
+        var padding = (int)(20 * scaling);
+
         Position = Settings.Instance.Popup.Placement switch
         {
             PopupPlacement.TopLeft => new PixelPoint(workArea.X + padding, workArea.Y + padding),

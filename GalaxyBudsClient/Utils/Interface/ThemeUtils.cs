@@ -18,18 +18,23 @@ public static class ThemeUtils
             return;
         }
 
-        MainWindow.Instance.RequestedThemeVariant = Settings.Instance.DarkMode switch
+        MainWindow.Instance.RequestedThemeVariant = GetThemeVariant();
+
+        FaTheme.PreferSystemTheme = Settings.Instance.DarkMode == DarkModes.System;
+        ReloadAccentColor();
+    }
+
+    public static ThemeVariant? GetThemeVariant()
+    {
+        return Settings.Instance.DarkMode switch
         {
             DarkModes.Light => ThemeVariant.Light,
             DarkModes.Dark => ThemeVariant.Dark,
             DarkModes.DarkNoBlur => ThemeVariant.Dark,
             _ => null
         };
-
-        FaTheme.PreferSystemTheme = Settings.Instance.DarkMode == DarkModes.System;
-        ReloadAccentColor();
     }
-
+    
     public static void ReloadAccentColor()
     {
         var color = Settings.Instance.AccentColor;
