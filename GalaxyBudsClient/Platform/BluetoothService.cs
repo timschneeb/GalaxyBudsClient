@@ -100,17 +100,17 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
             if (!Design.IsDesignMode)
             {
 #if Windows
-                    if (PlatformUtils.IsWindows && Settings.Instance.UseBluetoothWinRT
-                                                && PlatformUtils.IsWindowsContractsSdkSupported)
-                    {
-                        Log.Debug("BluetoothImpl: Using WinRT.BluetoothService");
-                        _backend = new Bluetooth.WindowsRT.BluetoothService();
-                    }
-                    else if (PlatformUtils.IsWindows)
-                    {
-                        Log.Debug("BluetoothImpl: Using Windows.BluetoothService");
-                        _backend = new Bluetooth.Windows.BluetoothService();
-                    }
+                if (PlatformUtils.IsWindows && Settings.Instance.UseBluetoothWinRT
+                                            && PlatformUtils.IsWindowsContractsSdkSupported)
+                {
+                    Log.Debug("BluetoothImpl: Using WinRT.BluetoothService");
+                    _backend = new Bluetooth.WindowsRT.BluetoothService();
+                }
+                else if (PlatformUtils.IsWindows)
+                {
+                    Log.Debug("BluetoothImpl: Using Windows.BluetoothService");
+                    _backend = new Bluetooth.Windows.BluetoothService();
+                }
 #elif Linux
                 if (PlatformUtils.IsLinux)
 
@@ -119,11 +119,11 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
                     _backend = new Bluetooth.Linux.BluetoothService();
                 }
 #elif OSX
-                    if (PlatformUtils.IsOSX)
-                    {
-                        Log.Debug("BluetoothImpl: Using OSX.BluetoothService");
-                        _backend = new ThePBone.OSX.Native.BluetoothService();
-                    }
+                if (PlatformUtils.IsOSX)
+                {
+                    Log.Debug("BluetoothImpl: Using OSX.BluetoothService");
+                    _backend = new ThePBone.OSX.Native.BluetoothService();
+                }
 #endif
             }
 
@@ -171,6 +171,7 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
         };
             
         MessageReceived += SppMessageHandler.Instance.MessageReceiver;
+        InvalidDataReceived += OnInvalidDataReceived;
     }
 
     public async void Dispose()
@@ -199,6 +200,14 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
         {
             Log.Error(ex, "BluetoothImpl.Dispose: Error while disposing children");
         }
+    }
+    
+    private void OnInvalidDataReceived(object? sender, InvalidPacketException e)
+    {
+        LastErrorMessage = e.ErrorCode.GetDescription();
+        _ = DisconnectAsync()
+            .ContinueWith(_ => Task.Delay(500))
+            .ContinueWith(_ => ConnectAsync());
     }
         
     private void OnBluetoothError(BluetoothException exception)
