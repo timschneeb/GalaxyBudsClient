@@ -132,7 +132,7 @@ public partial class MainView : UserControl
 
         if (VisualRoot is AppWindow aw)
         {
-            TitleBarHost.ColumnDefinitions[3].Width = new GridLength(aw.TitleBar.RightInset, GridUnitType.Pixel);
+            //TitleBarHost.ColumnDefinitions[3].Width = new GridLength(aw.TitleBar.RightInset, GridUnitType.Pixel);
         }
     }
     
@@ -315,7 +315,7 @@ public partial class MainView : UserControl
         if (!IsVisible)
             return;
 
-        if (show)
+        /*if (show)
         {
             var ani = new Animation
             {
@@ -378,6 +378,6 @@ public partial class MainView : UserControl
             };
 
             await ani.RunAsync(WindowIcon);
-        }
+        }*/
     }
 }
