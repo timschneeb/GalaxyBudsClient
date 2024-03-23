@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Avalonia.Controls;
 using GalaxyBudsClient.Interface.Dialogs;
@@ -15,7 +16,8 @@ public class HotkeyPageViewModel : SubPageViewModelBase
 {
     public override Control CreateView() => new HotkeyPage();
     public override string TitleKey => "hotkey_header";
-    public ObservableCollection<Hotkey> Hotkeys { get; } = new(Settings.Instance.Hotkeys);
+    // ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
+    public ObservableCollection<Hotkey> Hotkeys { get; } = new(Settings.Instance.Hotkeys ?? Array.Empty<Hotkey>());
     [Reactive] public bool NoHotkeys { private set; get; }
 
     public HotkeyPageViewModel()
