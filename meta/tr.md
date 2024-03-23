@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>88%</td><td>46 missing string(s)</td></tr>
+<tr><td>87%</td><td>50 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -22,6 +22,10 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>mainpage_header</code></td><td>Home</td></tr>
 <tr><td><code>devsel_manual_pair_title</code></td><td>Is your device not listed?</td></tr>
 <tr><td><code>devsel_manual_pair_description</code></td><td>Make sure your earbuds have already been paired. If they are still not recognized, try using the manual connection option.</td></tr>
+<tr><td><code>touchpad_gesture_double_for_call</code></td><td>Double tap during call</td></tr>
+<tr><td><code>touchpad_gesture_double_for_call_desc</code></td><td>Answer call or end call</td></tr>
+<tr><td><code>touchpad_gesture_hold_for_call</code></td><td>Touch and hold during call</td></tr>
+<tr><td><code>touchpad_gesture_hold_for_call_desc</code></td><td>Decline call</td></tr>
 <tr><td><code>touchpad_default_action</code></td><td>Built-in touch action</td></tr>
 <tr><td><code>touchpad_noise_control_mode_desc</code></td><td>Choose modes to cycle through</td></tr>
 <tr><td><code>cact_function_param</code></td><td>Function</td></tr>

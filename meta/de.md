@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>61%</td><td>158 missing string(s)</td></tr>
+<tr><td>60%</td><td>162 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -33,6 +33,10 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>touchpad_gesture_triple_desc</code></td><td>Play previous track</td></tr>
 <tr><td><code>touchpad_gesture_hold</code></td><td>Touch and hold</td></tr>
 <tr><td><code>touchpad_gesture_hold_desc</code></td><td>Execute custom action</td></tr>
+<tr><td><code>touchpad_gesture_double_for_call</code></td><td>Double tap during call</td></tr>
+<tr><td><code>touchpad_gesture_double_for_call_desc</code></td><td>Answer call or end call</td></tr>
+<tr><td><code>touchpad_gesture_hold_for_call</code></td><td>Touch and hold during call</td></tr>
+<tr><td><code>touchpad_gesture_hold_for_call_desc</code></td><td>Decline call</td></tr>
 <tr><td><code>touchpad_default_action</code></td><td>Built-in touch action</td></tr>
 <tr><td><code>touchpad_gestures</code></td><td>Advanced touch lock</td></tr>
 <tr><td><code>touchpad_gestures_description</code></td><td>Enable or disable default touch gestures</td></tr>
