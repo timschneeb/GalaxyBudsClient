@@ -5,6 +5,7 @@ using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
+using GalaxyBudsClient.Utils.Interface;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Symbol = FluentIcons.Common.Symbol;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
@@ -42,6 +43,10 @@ public partial class TranslatorTools : Window
 
             _ = td.ShowAsync();
         };
+        
+        // TODO create shared window subclass with this
+        RequestedThemeVariant = ThemeUtils.GetThemeVariant();
+        // ThemeUtils.ThemeChanged += ...
     }
 
     private void ReloadXaml_OnClick(object? sender, RoutedEventArgs e)

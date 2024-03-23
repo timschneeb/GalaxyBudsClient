@@ -17,6 +17,7 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
+using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.Developer;
 
@@ -61,6 +62,10 @@ public partial class DevTools : Window
             
         Closing += OnClosing;
         BluetoothService.Instance.NewDataReceived += OnNewDataReceived;
+        
+        // TODO create shared window subclass with this
+        RequestedThemeVariant = ThemeUtils.GetThemeVariant();
+        // ThemeUtils.ThemeChanged += ...
     }
 
     private void OnNewDataReceived(object? sender, byte[] raw)

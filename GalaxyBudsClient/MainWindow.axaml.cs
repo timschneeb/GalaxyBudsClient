@@ -432,10 +432,12 @@ public partial class MainWindow : AppWindow
 
     private void ShowPopup(bool noDebounce = false)
     {
+        // TODO apply blur to popup too
         if (_popupShown && !noDebounce)
             return;
             
         _popup ??= new BudsPopup();
+        _popup.RequestedThemeVariant = ThemeUtils.GetThemeVariant();
                 
         if (_popup.IsVisible)
         {
@@ -450,7 +452,10 @@ public partial class MainWindow : AppWindow
         catch (InvalidOperationException)
         {
             /* Window already closed down */
-            _popup = new BudsPopup();
+            _popup = new BudsPopup
+            {
+                RequestedThemeVariant = ThemeUtils.GetThemeVariant()
+            };
             _popup.Show();
         }
         finally
