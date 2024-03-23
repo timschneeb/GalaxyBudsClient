@@ -95,7 +95,7 @@
         <PackageReference Include="Config.Net" Version="5.1.5"/>
         <PackageReference Include="CS-Script.Core" Version="2.0.0"/>
         <PackageReference Include="FluentAvalonia.BreadcrumbBar" Version="2.0.2"/>
-        <PackageReference Include="FluentAvaloniaUI" Version="2.0.5"/>
+        <PackageReference Include="FluentAvaloniaUI" Version="2.1.0-preview1" />
         <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="1.1.232"/>
         <PackageReference Include="InputSimulatorCore" Version="1.0.5"/>
         <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0"/>
