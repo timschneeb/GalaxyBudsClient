@@ -28,7 +28,8 @@ public class Buds2DeviceSpec : IDeviceSpec
         { Features.AmbientSidetone, new FeatureRule(6, "R177XXU0AUI2")  },
         { Features.FmgRingWhileWearing, new FeatureRule(9) }, // TODO implement
         { Features.DebugSku, null },
-        { Features.CallPathControl, new FeatureRule(7) }
+        { Features.CallPathControl, new FeatureRule(7) },
+        { Features.ChargingState, new FeatureRule(10) }
     };
         
     public Models Device => Models.Buds2;
