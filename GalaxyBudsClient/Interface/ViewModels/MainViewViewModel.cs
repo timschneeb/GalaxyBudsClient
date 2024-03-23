@@ -23,6 +23,11 @@ public class MainViewViewModel : ViewModelBase
             IsConnectButtonEnabled = false;
             ConnectButtonText = Loc.Resolve("connlost_connecting");
         };
+        BluetoothService.Instance.BluetoothError += (_, _) =>
+        {
+            IsConnectButtonEnabled = true;
+            ConnectButtonText = Loc.Resolve("connlost_connect");
+        };
         BluetoothService.Instance.PropertyChanged += (_, e) =>
         {
             if (e.PropertyName != nameof(BluetoothService.Instance.IsConnected))
