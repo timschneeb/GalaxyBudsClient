@@ -390,6 +390,11 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                 {
                     SideToneEnabled = msg.Payload[36] == 1;
                 }
+                
+                if (Revision >= 10)
+                {
+                    CallPathControl = msg.Payload[37] == 0;
+                }
             }
             else if (ActiveModel == Models.Buds2)
             {
