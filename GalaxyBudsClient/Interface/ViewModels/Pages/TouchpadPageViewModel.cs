@@ -24,14 +24,14 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 public class TouchpadPageViewModel : MainPageViewModelBase
 {
     public override Control CreateView() => new TouchpadPage();
-    
+
     public TouchpadPageViewModel()
     {
         SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
-        
+
         Settings.Instance.CustomActionLeft.PropertyChanged += (sender, args) => UpdateEditStates();
         Settings.Instance.CustomActionRight.PropertyChanged += (sender, args) => UpdateEditStates();
-        
+
         BluetoothService.Instance.Connected += OnConnected;
         Loc.LanguageUpdated += OnLanguageUpdated;
         PropertyChanged += OnPropertyChanged;
@@ -53,18 +53,24 @@ public class TouchpadPageViewModel : MainPageViewModelBase
     private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
     {
         using var suppressor = SuppressChangeNotifications();
-        
+
         LeftAction = e.TouchpadOptionL;
         RightAction = e.TouchpadOptionR;
         IsTouchpadLocked = e.TouchpadLock;
         IsDoubleTapVolumeEnabled = e.OutsideDoubleTap;
-        
-        if(BluetoothService.Instance.DeviceSpec.Supports(Features.AdvancedTouchLock))
+
+        if (BluetoothService.Instance.DeviceSpec.Supports(Features.AdvancedTouchLock))
         {
             IsSingleTapGestureEnabled = e.SingleTapOn;
             IsDoubleTapGestureEnabled = e.DoubleTapOn;
             IsTripleTapGestureEnabled = e.TripleTapOn;
             IsHoldGestureEnabled = e.TouchHoldOn;
+
+            if (BluetoothService.Instance.DeviceSpec.Supports(Features.AdvancedTouchLockForCalls))
+            {
+                IsDoubleTapGestureForCallsEnabled = e.DoubleTapForCallOn;
+                IsHoldGestureForCallsEnabled = e.TouchHoldOnForCallOn;
+            }
         }
         else
         {
@@ -91,22 +97,27 @@ public class TouchpadPageViewModel : MainPageViewModelBase
         {
             case nameof(IsSingleTapGestureEnabled):
             case nameof(IsDoubleTapGestureEnabled):
+            case nameof(IsDoubleTapGestureForCallsEnabled):
             case nameof(IsTripleTapGestureEnabled):
             case nameof(IsHoldGestureEnabled):
+            case nameof(IsHoldGestureForCallsEnabled):
             case nameof(IsTouchpadLocked):
                 if (BluetoothService.Instance.DeviceSpec.Supports(Features.AdvancedTouchLock))
                 {
                     await BluetoothService.Instance.SendAsync(LockTouchpadEncoder.Build(IsTouchpadLocked,
                         IsSingleTapGestureEnabled, IsDoubleTapGestureEnabled, IsTripleTapGestureEnabled,
-                        IsHoldGestureEnabled));
+                        IsHoldGestureEnabled, IsDoubleTapGestureForCallsEnabled, IsHoldGestureForCallsEnabled));
                 }
                 else
                 {
-                    await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.LOCK_TOUCHPAD, IsTouchpadLocked);
+                    await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.LOCK_TOUCHPAD,
+                        IsTouchpadLocked);
                 }
+
                 break;
             case nameof(IsDoubleTapVolumeEnabled):
-                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.OUTSIDE_DOUBLE_TAP, IsDoubleTapVolumeEnabled);
+                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.OUTSIDE_DOUBLE_TAP,
+                    IsDoubleTapVolumeEnabled);
                 break;
             case nameof(NoiseControlCycleMode):
                 (byte, byte, byte) value = NoiseControlCycleMode switch
@@ -116,21 +127,21 @@ public class TouchpadPageViewModel : MainPageViewModelBase
                     NoiseControlCycleModes.AncAmb => (1, 1, 0),
                     _ => throw new ArgumentOutOfRangeException(nameof(NoiseControlCycleMode))
                 };
-                
+
                 await BluetoothService.Instance.SendRequestAsync(
-                    SppMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS, 
+                    SppMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS,
                     value.Item1, value.Item2, value.Item3);
                 break;
             case nameof(LeftAction):
             case nameof(RightAction):
                 await MessageComposer.Touch.SetOptions(LeftAction, RightAction);
                 UpdateEditStates();
-                if(LeftAction == TouchOptions.NoiseControl || RightAction == TouchOptions.NoiseControl)
+                if (LeftAction == TouchOptions.NoiseControl || RightAction == TouchOptions.NoiseControl)
                     OnPropertyChanged(null, new PropertyChangedEventArgs(nameof(NoiseControlCycleMode)));
                 break;
         }
     }
-    
+
     protected override void OnEventReceived(Event e, object? arg)
     {
         Dispatcher.UIThread.Post(() =>
@@ -147,23 +158,26 @@ public class TouchpadPageViewModel : MainPageViewModelBase
             }
         });
     }
-    
+
     private void UpdateEditStates()
     {
-        IsNoiseControlCycleModeEditable = LeftAction == TouchOptions.NoiseControl || RightAction == TouchOptions.NoiseControl;
+        IsNoiseControlCycleModeEditable =
+            LeftAction == TouchOptions.NoiseControl || RightAction == TouchOptions.NoiseControl;
         IsLeftCustomActionEditable = LeftAction == TouchOptions.OtherL;
         IsRightCustomActionEditable = RightAction == TouchOptions.OtherR;
 
-        LeftActionDescription = IsLeftCustomActionEditable ? 
-            ActionAsString(Settings.Instance.CustomActionLeft) : Loc.Resolve("touchpad_default_action");
-        RightActionDescription = IsRightCustomActionEditable ? 
-            ActionAsString(Settings.Instance.CustomActionRight) : Loc.Resolve("touchpad_default_action");
+        LeftActionDescription = IsLeftCustomActionEditable
+            ? ActionAsString(Settings.Instance.CustomActionLeft)
+            : Loc.Resolve("touchpad_default_action");
+        RightActionDescription = IsRightCustomActionEditable
+            ? ActionAsString(Settings.Instance.CustomActionRight)
+            : Loc.Resolve("touchpad_default_action");
         return;
 
-        string ActionAsString(ICustomAction action) => 
+        string ActionAsString(ICustomAction action) =>
             $"{Loc.Resolve("touchoption_custom_prefix")} {new CustomAction(action.Action, action.Parameter)}";
     }
-    
+
     private void UpdateTouchActions()
     {
         foreach (var device in (Devices[])Enum.GetValues(typeof(Devices)))
@@ -186,11 +200,11 @@ public class TouchpadPageViewModel : MainPageViewModelBase
 
             if (device == Devices.L)
                 LeftActions = actions.Select(x => x.Key);
-            else if (device == Devices.R) 
+            else if (device == Devices.R)
                 RightActions = actions.Select(x => x.Key);
         }
     }
-    
+
     [Reactive] public IEnumerable<TouchOptions>? LeftActions { set; get; }
     [Reactive] public IEnumerable<TouchOptions>? RightActions { set; get; }
     [Reactive] public TouchOptions LeftAction { set; get; }
@@ -202,7 +216,9 @@ public class TouchpadPageViewModel : MainPageViewModelBase
     [Reactive] public bool IsDoubleTapGestureEnabled { set; get; }
     [Reactive] public bool IsTripleTapGestureEnabled { set; get; }
     [Reactive] public bool IsHoldGestureEnabled { set; get; }
-
+    [Reactive] public bool IsDoubleTapGestureForCallsEnabled { set; get; }
+    [Reactive] public bool IsHoldGestureForCallsEnabled { set; get; }
+    
     [Reactive] public bool IsNoiseControlCycleModeEditable { set; get; }
     [Reactive] public bool IsLeftCustomActionEditable { set; get; }
     [Reactive] public bool IsRightCustomActionEditable { set; get; }

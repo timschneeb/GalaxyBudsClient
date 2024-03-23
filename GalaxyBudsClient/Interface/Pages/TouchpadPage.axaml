@@ -128,6 +128,7 @@
                     </Interaction.Behaviors>
 
                 </controls:SettingsSwitchItem>
+                
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource touchpad_gesture_hold}"
                     Description="{DynamicResource touchpad_gesture_hold_desc}"
@@ -135,6 +136,26 @@
                     IsChecked="{Binding IsHoldGestureEnabled}">
                     <Interaction.Behaviors>
                         <ext:RequiresFeatureBehavior Feature="AdvancedTouchLock" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
+
+                <controls:SettingsSwitchItem
+                    Content="{DynamicResource touchpad_gesture_double_for_call}"
+                    Description="{DynamicResource touchpad_gesture_double_for_call_desc}"
+                    Symbol="Next"
+                    IsChecked="{Binding IsDoubleTapGestureForCallsEnabled}">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="AdvancedTouchLockForCalls" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
+                
+                <controls:SettingsSwitchItem
+                    Content="{DynamicResource touchpad_gesture_hold_for_call}"
+                    Description="{DynamicResource touchpad_gesture_hold_for_call_desc}"
+                    Symbol="TapSingle"
+                    IsChecked="{Binding IsHoldGestureForCallsEnabled}">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="AdvancedTouchLockForCalls" />
                     </Interaction.Behaviors>
                 </controls:SettingsSwitchItem>
 

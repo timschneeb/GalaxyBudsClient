@@ -180,7 +180,11 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="touchpad_gesture_triple_desc">Play previous track</sys:String>
     <sys:String x:Key="touchpad_gesture_hold">Touch and hold</sys:String>
     <sys:String x:Key="touchpad_gesture_hold_desc">Execute custom action</sys:String>
-    
+    <sys:String x:Key="touchpad_gesture_double_for_call">Double tap during call</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_for_call_desc">Answer call or end call</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call">Touch and hold during call</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call_desc">Decline call</sys:String>
+
     <!--Touchpad page-->
     <sys:String x:Key="touchpad_header">Touchpad</sys:String>
     <sys:String x:Key="touchpad_lock">Lock touchpad</sys:String>
