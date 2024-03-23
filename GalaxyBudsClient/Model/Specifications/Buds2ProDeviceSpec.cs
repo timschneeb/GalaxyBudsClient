@@ -27,7 +27,10 @@ public class Buds2ProDeviceSpec : IDeviceSpec
         { Features.AmbientSidetone, null },
         { Features.AmbientCustomize, null },
         { Features.AncWithOneEarbud, null },
-        { Features.DebugSku, null }
+        { Features.DebugSku, null },
+        { Features.AdvancedTouchLock, null },
+        { Features.AdvancedTouchLockForCalls, null },
+
     };
         
     public Models Device => Models.Buds2Pro;
