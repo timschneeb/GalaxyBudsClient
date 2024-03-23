@@ -24,16 +24,12 @@
         <converters:BatterySymbolConverter x:Key="BatterySymbolConverter" />
     </Panel.Resources>
 
-    <StackPanel Spacing="15"
-                Orientation="Horizontal"
-                IsVisible="{Binding IsConnected, Source={x:Static platform:BluetoothService.Instance}}"
-                HorizontalAlignment="Center">
-
-        <!-- 
-            TODO layout jumps around when one of the earbuds goes offline / too much text changes. 
-            TODO either animate the layout change or make it static
-         -->
-        <StackPanel IsVisible="{Binding IsLeftOnline}"
+    <Grid ColumnDefinitions="*,15,Auto,15,*"
+          IsVisible="{Binding IsConnected, Source={x:Static platform:BluetoothService.Instance}}"
+          HorizontalAlignment="Stretch">
+        
+        <StackPanel Grid.Column="0"
+                    IsVisible="{Binding IsLeftOnline}"
                     VerticalAlignment="Center"
                     Spacing="{StaticResource VerticalLabelSpacing}">
 
@@ -93,7 +89,8 @@
             </TextBlock>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical"
+        <StackPanel Grid.Column="2"
+                    Orientation="Vertical"
                     Spacing="5"
                     HorizontalAlignment="Center">
 
@@ -116,7 +113,8 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel IsVisible="{Binding IsRightOnline}"
+        <StackPanel Grid.Column="4"
+                    IsVisible="{Binding IsRightOnline}"
                     VerticalAlignment="Center"
                     Spacing="{StaticResource VerticalLabelSpacing}">
 
@@ -173,7 +171,7 @@
                 </Interaction.Behaviors>
             </TextBlock>
         </StackPanel>
-    </StackPanel>
+    </Grid>
 
     <controls:EmptyView IsVisible="{Binding !IsConnected, Source={x:Static platform:BluetoothService.Instance}}"
                         Text="{DynamicResource connlost_disconnected}"

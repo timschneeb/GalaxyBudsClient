@@ -13,9 +13,7 @@
     <Grid Margin="0,15, 0, 30"
           ClipToBounds="False"
           RowDefinitions="Auto,15,Auto,30,Auto">
-
-        <!-- TODO: WarningContainer visibility moves other controls up/down. Should it be fixed, animated, or replaced with a InfoBox on the bottom? -->
-
+        
         <Grid Grid.Row="0"
               Name="WarningContainer"
               Margin="10,0"
