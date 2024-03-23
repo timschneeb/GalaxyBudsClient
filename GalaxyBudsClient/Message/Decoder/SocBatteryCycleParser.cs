@@ -8,14 +8,19 @@ internal class SocBatteryCycleParser : BaseMessageParser
         
     public long LeftCycles { set; get; }
     public long RightCycles { set; get; }
-
+    
+    public bool IsLeftBatteryBad { set; get; }
+    public bool IsRightBatteryBad { set; get; }
+    
     public override void ParseMessage(SppMessage msg)
     {
         if (msg.Id != HandledType)
             return;
         
-        var payload = msg.Payload.AsSpan();
-        LeftCycles = BitConverter.ToInt64(payload[0..7]);
-        RightCycles = BitConverter.ToInt64(payload[8..15]);
+        LeftCycles = BitConverter.ToInt64(msg.Payload, 0);
+        RightCycles = BitConverter.ToInt64(msg.Payload, 8);
+        
+        IsLeftBatteryBad = LeftCycles / 10000 >= 150;
+        IsRightBatteryBad = RightCycles / 10000 >= 150;
     }
 }
