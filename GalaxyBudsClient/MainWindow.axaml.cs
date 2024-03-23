@@ -31,7 +31,7 @@ using Environment = System.Environment;
 
 namespace GalaxyBudsClient;
 
-public partial class MainWindow : AppWindow
+public partial class MainWindow : Window /* : AppWindow */
 {
     private BudsPopup? _popup;
 
@@ -77,8 +77,8 @@ public partial class MainWindow : AppWindow
             }
         }
             
-        TitleBar.ExtendsContentIntoTitleBar = true;
-        TitleBar.TitleBarHitTestType = TitleBarHitTestType.Complex;
+        // TitleBar.ExtendsContentIntoTitleBar = true;
+        // TitleBar.TitleBarHitTestType = TitleBarHitTestType.Complex;
         
         Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
     }
