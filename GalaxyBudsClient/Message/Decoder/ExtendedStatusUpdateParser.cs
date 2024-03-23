@@ -50,7 +50,7 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
 
 
     [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2])]
-    public bool AdjustSoundSync { set; get; } // TODO what's this again?
+    public bool AdjustSoundSync { set; get; }
     [Device([Models.BudsPlus, Models.BudsPro, Models.BudsPro, Models.Buds2])]
     public bool SideToneEnabled { set; get; }
     [Device([Models.BudsPlus, Models.BudsPro, Models.Buds2])]
