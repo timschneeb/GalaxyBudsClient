@@ -10,10 +10,9 @@
              x:Class="GalaxyBudsClient.Interface.MainView"
              x:DataType="vm:MainViewViewModel"
              x:CompileBindings="True">
-
-
+    
     <Grid RowDefinitions="Auto,*">
-        <!--<Grid Name="TitleBarHost"
+        <Grid Name="TitleBarHost"
               ColumnDefinitions="Auto,Auto,*,Auto"
               Background="Transparent">
             <Image Margin="12 4"
@@ -23,11 +22,12 @@
                    DockPanel.Dock="Left"
                    Name="WindowIcon"
                    RenderOptions.BitmapInterpolationMode="HighQuality">
-                <Image.IsVisible>
+                <!--<Image.IsVisible>
                     <OnPlatform Default="False">
                         <On Options="Windows" Content="True" />
                     </OnPlatform>
-                </Image.IsVisible>
+                </Image.IsVisible>-->
+                <Image.IsVisible>False</Image.IsVisible>
             </Image>
 
             <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
@@ -35,13 +35,14 @@
                        IsHitTestVisible="False"
                        VerticalAlignment="Center"
                        Grid.Column="1">
-                <TextBlock.IsVisible>
+                <!--<TextBlock.IsVisible>
                     <OnPlatform Default="False">
                         <On Options="Windows" Content="True" />
                     </OnPlatform>
-                </TextBlock.IsVisible>
+                </TextBlock.IsVisible>-->
+                <TextBlock.IsVisible>False</TextBlock.IsVisible>
             </TextBlock>
-        </Grid>-->
+        </Grid>
 
         <ui:NavigationView Grid.Row="0" AlwaysShowHeader="False"
                            PaneDisplayMode="Left"
