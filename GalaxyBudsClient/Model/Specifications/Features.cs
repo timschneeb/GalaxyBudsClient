@@ -27,6 +27,8 @@ public enum Features
     AncWithOneEarbud,
     AncNoiseReductionLevels,
     AdvancedTouchLock,
+    AdvancedTouchLockForCalls,
+    FmgRingWhileWearing,
     LegacyAmbientSoundVolumeLevels,
     BuildInfo,
     GearFitTest,

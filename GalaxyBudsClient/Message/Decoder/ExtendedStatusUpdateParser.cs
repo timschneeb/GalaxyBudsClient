@@ -50,7 +50,7 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
 
 
     [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2])]
-    public bool AdjustSoundSync { set; get; }
+    public bool AdjustSoundSync { set; get; } // TODO what's this again?
     [Device([Models.BudsPlus, Models.BudsPro, Models.BudsPro, Models.Buds2])]
     public bool SideToneEnabled { set; get; }
     [Device([Models.BudsPlus, Models.BudsPro, Models.Buds2])]
@@ -113,6 +113,10 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
     public bool TripleTapOn { set; get; }
     [Device(Models.Buds2)]
     public bool TouchHoldOn { set; get; }
+    [Device(Models.Buds2)]
+    public bool DoubleTapForCallOn { set; get; }
+    [Device(Models.Buds2)]
+    public bool TouchHoldOnForCallOn { set; get; }
 
     [Device(Models.Buds2)]
     public byte TouchType { set; get; }
@@ -412,6 +416,12 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                     DoubleTapOn = (msg.Payload[10] & (1 << 2)) == 4;
                     SingleTapOn = (msg.Payload[10] & (1 << 3)) == 8;
                     TouchpadLock = (msg.Payload[10] & (1 << 7)) != 128;
+
+                    if (Revision >= 7)
+                    {
+                        TouchHoldOnForCallOn = (msg.Payload[10] & (1 << 0)) == 32;
+                        DoubleTapForCallOn = (msg.Payload[10] & (1 << 2)) == 16;
+                    }
                 }
 
                 TouchpadOptionL = DeviceSpec.TouchMap.FromByte((byte)((msg.Payload[11] & 240) >> 4));
@@ -468,6 +478,32 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                 if (Revision >= 6)
                 {
                     SideToneEnabled = msg.Payload[33] == 1;
+                }
+                
+                if (Revision >= 7)
+                {
+                    CallPathControl = msg.Payload[34] == 0;
+                }
+                
+                if (Revision >= 8)
+                {
+                    SpatialAudio = msg.Payload[35] == 1;
+                }
+
+                if (Revision >= 10)
+                {
+                    // TODO: get charging status
+                    /*
+                         byte b = byteBuffer.get();
+                         boolean z = true;
+                         this.chargingL = ByteUtil.valueOfBinaryDigit(b, 4) == 16;
+                         this.chargingR = ByteUtil.valueOfBinaryDigit(b, 2) == 4;
+                         if (ByteUtil.valueOfBinaryDigit(b, 0) != 1) {
+                             z = false;
+                         }
+                         this.chargingCase = z;
+                
+                     */
                 }
             }
             else if (ActiveModel == Models.Buds2Pro)
