@@ -248,6 +248,16 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                 {
                     SeamlessConnectionEnabled = msg.Payload[21] == 0;
                 }
+                
+                if (Revision >= 12)
+                {
+                    FmmRevision = msg.Payload[22];
+                }
+                
+                if (Revision >= 13)
+                {
+                    CallPathControl = msg.Payload[23] == 0;
+                }
             }
             else if (ActiveModel == Models.BudsLive)
             {
