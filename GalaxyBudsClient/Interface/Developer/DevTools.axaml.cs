@@ -104,7 +104,7 @@ public partial class DevTools : Window
        
     private void SendMsg_Click(object? sender, RoutedEventArgs e)
     {
-        if (MsgTable.SelectedItem == null || MsgTable.SelectedItem == null)
+        if (SendMsgId.SelectedItem == null || SendMsgType.SelectedItem == null)
         {
             _ = new MessageBox
             {
