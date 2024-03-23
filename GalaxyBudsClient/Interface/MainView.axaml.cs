@@ -233,7 +233,6 @@ public partial class MainView : UserControl
         if (nvi.Tag == null)
             throw new InvalidOperationException("Tag is null");
             
-        // TODO: maybe customize transitions? (up/down for NVIs and left/right for subpages)
         NavigationService.Instance.NavigateFromContext(nvi.Tag, e.RecommendedNavigationTransitionInfo);
     }
     
