@@ -135,6 +135,9 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
     [Device([Models.BudsPro, Models.Buds2])]
     public byte AmbientCustomSoundTone { set; get; }
     public bool CallPathControl { set; get; } // buds live and higher
+    public bool IsLeftCharging { set; get; } // buds 2 and higher
+    public bool IsRightCharging { set; get; } // buds 2 and higher
+    public bool IsCaseCharging { set; get; } // buds 2 and higher
 
 
     public override void ParseMessage(SppMessage msg)
@@ -492,18 +495,10 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
 
                 if (Revision >= 10)
                 {
-                    // TODO: get charging status
-                    /*
-                         byte b = byteBuffer.get();
-                         boolean z = true;
-                         this.chargingL = ByteUtil.valueOfBinaryDigit(b, 4) == 16;
-                         this.chargingR = ByteUtil.valueOfBinaryDigit(b, 2) == 4;
-                         if (ByteUtil.valueOfBinaryDigit(b, 0) != 1) {
-                             z = false;
-                         }
-                         this.chargingCase = z;
-                
-                     */
+                    var chargingStatus = msg.Payload[36];
+                    IsLeftCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 4) == 16;
+                    IsRightCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 2) == 4;
+                    IsCaseCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 0) == 1;
                 }
             }
             else if (ActiveModel == Models.Buds2Pro)

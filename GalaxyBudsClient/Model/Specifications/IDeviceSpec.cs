@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CSScripting;
 using GalaxyBudsClient.Interface.Developer;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Attributes;
@@ -41,7 +42,7 @@ public interface IDeviceSpec
             Log.Warning("IDeviceSpec: Cannot compare revision for {Feature}. No ExtendedStatusUpdate cached", feature);
             return true;
         }
-
+        
         return DeviceMessageCache.Instance.ExtendedStatusUpdate.Revision >= value.MinimumRevision;
     }
 

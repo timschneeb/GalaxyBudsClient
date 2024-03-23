@@ -1,6 +1,9 @@
 ﻿using System;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Specifications;
+using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Utils;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
@@ -27,6 +30,10 @@ public class StatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
     public PlacementStates PlacementR { set; get; }
     [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
     public int BatteryCase { set; get; }
+    
+    public bool IsLeftCharging { set; get; } // buds 2 and higher
+    public bool IsRightCharging { set; get; } // buds 2 and higher
+    public bool IsCaseCharging { set; get; } // buds 2 and higher
 
     public override void ParseMessage(SppMessage msg)
     {
@@ -81,19 +88,14 @@ public class StatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                 WearState = LegacyWearStates.None;
 
             BatteryCase = msg.Payload[6];
-            
-            /* TODO Buds2 rev10
-                if (FeatureManager.has(Feature.CHARGING_STATUS)) {
-                     byte b = byteBuffer.get();
-                     boolean z = true;
-                     this.chargingL = ByteUtil.valueOfBinaryDigit(b, 4) == 16;
-                     this.chargingR = ByteUtil.valueOfBinaryDigit(b, 2) == 4;
-                     if (ByteUtil.valueOfBinaryDigit(b, 0) != 1) {
-                         z = false;
-                     }
-                     this.chargingCase = z;
-                 }
-             */
+
+            if (BluetoothService.Instance.DeviceSpec.Supports(Features.ChargingState))
+            {
+                var chargingStatus = msg.Payload[7];
+                IsLeftCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 4) == 16;
+                IsRightCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 2) == 4;
+                IsCaseCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 0) == 1;
+            }
         }
     }
 }
