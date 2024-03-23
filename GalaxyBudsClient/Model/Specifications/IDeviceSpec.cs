@@ -51,8 +51,8 @@ public interface IDeviceSpec
     }
 }
     
-public class FeatureRule(int minimumRevision, string recommendedFirmwareVersion)
+public class FeatureRule(int minimumRevision, string? recommendedFirmwareVersion = null)
 {
     public int MinimumRevision { get; } = minimumRevision;
-    public string RecommendedFirmwareVersion { get; } = recommendedFirmwareVersion;
+    public string? RecommendedFirmwareVersion { get; } = recommendedFirmwareVersion;
 }
