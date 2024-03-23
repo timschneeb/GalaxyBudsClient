@@ -47,6 +47,7 @@
                     Name="StereoBalance"
                     Content="{DynamicResource eq_stereo_balance}"
                     Description="{Binding StereoBalance, Converter={StaticResource StereoBalanceConverter}}"
+                    Debounce="True"
                     Symbol="DualScreenSpan"
                     Maximum="32"
                     Value="{Binding StereoBalance}">
