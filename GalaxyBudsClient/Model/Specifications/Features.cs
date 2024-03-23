@@ -28,6 +28,7 @@ public enum Features
     AncNoiseReductionLevels,
     AdvancedTouchLock,
     AdvancedTouchLockForCalls,
+    CallPathControl,
     FmgRingWhileWearing,
     LegacyAmbientSoundVolumeLevels,
     BuildInfo,

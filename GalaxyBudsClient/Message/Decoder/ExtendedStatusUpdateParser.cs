@@ -515,6 +515,8 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                 TripleTapOn = (msg.Payload[10] & (1 << 1)) == 2;
                 DoubleTapOn = (msg.Payload[10] & (1 << 2)) == 4;
                 SingleTapOn = (msg.Payload[10] & (1 << 3)) == 8;
+                TouchHoldOnForCallOn = (msg.Payload[10] & (1 << 0)) == 32;
+                DoubleTapForCallOn = (msg.Payload[10] & (1 << 2)) == 16;
                 TouchpadLock = (msg.Payload[10] & (1 << 7)) != 128;
 
                 TouchpadOptionL = DeviceSpec.TouchMap.FromByte((byte)((msg.Payload[11] & 240) >> 4));
@@ -563,17 +565,21 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                 SideToneEnabled = msg.Payload[33] == 1;
                     
                 SpatialAudio = msg.Payload[34] == 1;
+                
+                // TODO add call path control & add to spec
             }
             // TODO: verify this
             else if (ActiveModel == Models.BudsFe)
             {
                 AdjustSoundSync = msg.Payload[8] == 1;
                 EqualizerMode = msg.Payload[9];
-
+                
                 TouchHoldOn = (msg.Payload[10] & (1 << 0)) == 1;
                 TripleTapOn = (msg.Payload[10] & (1 << 1)) == 2;
                 DoubleTapOn = (msg.Payload[10] & (1 << 2)) == 4;
                 SingleTapOn = (msg.Payload[10] & (1 << 3)) == 8;
+                TouchHoldOnForCallOn = (msg.Payload[10] & (1 << 0)) == 32;
+                DoubleTapForCallOn = (msg.Payload[10] & (1 << 2)) == 16;
                 TouchpadLock = (msg.Payload[10] & (1 << 7)) != 128;
 
                 TouchpadOptionL = DeviceSpec.TouchMap.FromByte((byte)((msg.Payload[11] & 240) >> 4));
@@ -622,6 +628,7 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                 SideToneEnabled = msg.Payload[33] == 1;
                     
                 SpatialAudio = msg.Payload[34] == 1;
+                // TODO add call path control & add to spec
             }
         }
     }
