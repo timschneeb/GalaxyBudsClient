@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Timers;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Data;
 using Avalonia.Interactivity;
 using Avalonia.Layout;
+using Avalonia.Threading;
+using Serilog;
 
 namespace GalaxyBudsClient.Interface.Controls;
 
@@ -13,6 +16,9 @@ public class SettingsSliderItem : SettingsSymbolItem
 {
     public SettingsSliderItem()
     {
+        _timer = new Timer(130);
+        _timer.Elapsed += OnDebounceTimerElapsed;
+        
         _slider = new Slider
         {
             Orientation = Orientation.Horizontal,
@@ -22,11 +28,13 @@ public class SettingsSliderItem : SettingsSymbolItem
             TickPlacement = TickPlacement.BottomRight
         };
         _slider.ValueChanged += OnValueChanged;
+        
         IsClickEnabled = false;
         TickPlacement = TickPlacement.BottomRight;
         Footer = _slider;
     }
-
+    
+    private readonly Timer _timer;
     private readonly Slider _slider;
     
     public static readonly RoutedEvent<RoutedEventArgs> ValueChangedEvent = 
@@ -40,6 +48,9 @@ public class SettingsSliderItem : SettingsSymbolItem
     
     public static readonly StyledProperty<int> MaximumProperty = 
         AvaloniaProperty.Register<SettingsSwitchItem, int>(nameof(Maximum), defaultBindingMode: BindingMode.TwoWay);
+   
+    public static readonly StyledProperty<bool> DebounceProperty = 
+        AvaloniaProperty.Register<SettingsSwitchItem, bool>(nameof(Debounce), defaultBindingMode: BindingMode.OneWay);
    
     public static readonly StyledProperty<TickPlacement> TickPlacementProperty = 
         Slider.TickPlacementProperty.AddOwner<SettingsSliderItem>();
@@ -67,16 +78,44 @@ public class SettingsSliderItem : SettingsSymbolItem
         get => GetValue(MaximumProperty);
         set => SetValue(MaximumProperty, value);
     }
-    
+
+    public bool Debounce
+    {
+        get => GetValue(DebounceProperty);
+        set => SetValue(DebounceProperty, value);
+    }
+
     public TickPlacement TickPlacement
     {
         get => GetValue(TickPlacementProperty);
         set => SetValue(TickPlacementProperty, value);
     }
 
+    private void OnDebounceTimerElapsed(object? sender, ElapsedEventArgs e)
+    {
+        _timer.Stop();
+        Dispatcher.UIThread.Post(() => UpdateValue(_slider.Value), DispatcherPriority.Input);
+    }
+
     private void OnValueChanged(object? sender, RangeBaseValueChangedEventArgs e)
     {
-        Value = (int)Math.Round(e.NewValue);
+        if (Debounce)
+        {
+            // Log.Error("Debounce: timer already enabled? {B}", _timer.Enabled);
+            if (_timer.Enabled == false)
+            {
+                _timer.Start();
+            }
+        }
+        else
+        {
+            UpdateValue(e.NewValue);
+        }
+    }
+
+    private void UpdateValue(double newValue)
+    {
+        Value = (int)Math.Round(newValue);
         RaiseEvent(new RoutedEventArgs(ValueChangedEvent));
     }
     
