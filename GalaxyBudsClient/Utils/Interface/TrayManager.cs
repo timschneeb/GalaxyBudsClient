@@ -23,41 +23,26 @@ internal class TrayManager
     {
         // Make sure nobody is updating the menu while it's open
         // because it crashes mac https://github.com/AvaloniaUI/Avalonia/issues/14578
-        (Application.Current as App)!.TrayMenu.Opening += (_, _) =>
-        {
-            _allowUpdate = false;
-        };
+        (Application.Current as App)!.TrayMenu.Opening += (_, _) => _allowUpdate = false;
+        
         (Application.Current as App)!.TrayMenu.Closed += (_, _) =>
         {
             _allowUpdate = true;
             if (_missedUpdate)
             {
-                Dispatcher.UIThread.Post(async () =>
-                {
-                    await RebuildAsync();
-                });
+                _ = RebuildAsync();
             }
         };
         // It's important to trigger a rebuild every time some event happens
         // otherwise tray will show outdated infos
-        (Application.Current as App)!.TrayMenu.NeedsUpdate += (_, _) =>
-        {
-            Dispatcher.UIThread.Post(async () =>
-            {
-                await RebuildAsync();
-            });
-        };
+        (Application.Current as App)!.TrayMenu.NeedsUpdate += (sender, args) => _ = RebuildAsync();
+        
         BluetoothService.Instance.Connected += (sender, args) => _ = RebuildAsync();
         BluetoothService.Instance.Disconnected += (sender, args) => _ = RebuildAsync();
-        EventDispatcher.Instance.EventReceived += (ev, _) =>
+        EventDispatcher.Instance.EventReceived += (ev, args) =>
         {
-            if (ev == Event.UpdateTrayIcon)
-            {
-                Dispatcher.UIThread.Post(async () =>
-                {
-                    await RebuildAsync();
-                });
-            }
+            if (ev == Event.UpdateTrayIcon) 
+                _ = RebuildAsync();
         };
         // triggering rebuild when battery % changes
         SppMessageHandler.Instance.StatusUpdate += (_, _) => _ = RebuildAsync();
@@ -228,7 +213,7 @@ internal class TrayManager
             {
                 (Application.Current as App)?.TrayMenu.Items.Add(item);
             }
-        }, DispatcherPriority.MaxValue);
+        }, DispatcherPriority.Normal);
     }
 
     #region Singleton

@@ -23,12 +23,12 @@
                    DockPanel.Dock="Left"
                    Name="WindowIcon"
                    RenderOptions.BitmapInterpolationMode="HighQuality">
-                <Image.IsVisible>
-                    <!-- TODO: check if this should be shown on Windows -->
+                 <!--  <Image.IsVisible>
+                  TODO 
                     <OnPlatform Default="False">
                         <On Options="Windows" Content="True" />
                     </OnPlatform>
-                </Image.IsVisible>
+                </Image.IsVisible>-->
             </Image>
 
             <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
