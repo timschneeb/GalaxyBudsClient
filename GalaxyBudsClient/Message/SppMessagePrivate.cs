@@ -138,6 +138,8 @@ public partial class SppMessage
             
         CUSTOMIZE_AMBIENT_SOUND = 130, /* prior: SET_A2DP_VOL */
 
+        SOC_BATTERY_CYCLE = 206,
+        
         /* Undocumented IDs (refer to: https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsPlus_HiddenDebugFeatures.md) */
         UNK_DISCONNECT = 39,
         UNK_CRASH = 82,
@@ -146,7 +148,6 @@ public partial class SppMessage
         UNK_PAIRING_MODE = 114,
         UNK_CONN_INFO = 169,
         UNK_DEBUG_INFO_1 = 182,
-        UNK_DEBUG_INFO_2 = 206,
         UNK_DUMP_BONDED_DEVICES = 212,
         UNK_BONDED_DEVICES = 214,
         UNK_GENERIC_EVENT = 242,
