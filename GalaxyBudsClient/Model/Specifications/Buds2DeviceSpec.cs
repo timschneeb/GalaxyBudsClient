@@ -22,9 +22,11 @@ public class Buds2DeviceSpec : IDeviceSpec
         { Features.GearFitTest, null },
         { Features.DoubleTapVolume, new FeatureRule(5, "R177XXU0AUI2") },
         { Features.AdvancedTouchLock, new FeatureRule(4, "R177XXU0AUH1") },
+        { Features.AdvancedTouchLockForCalls, new FeatureRule(7) }, // TODO
         { Features.AncWithOneEarbud, new FeatureRule(3, "R177XXU0AUH1") },
         { Features.AmbientCustomize, new FeatureRule(5, "R177XXU0AUH1") },
         { Features.AmbientSidetone, new FeatureRule(6, "R177XXU0AUI2")  },
+        { Features.FmgRingWhileWearing, new FeatureRule(9) }, // TODO implement
         { Features.DebugSku, null }
     };
         

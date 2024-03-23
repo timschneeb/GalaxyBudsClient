@@ -81,6 +81,19 @@ public class StatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                 WearState = LegacyWearStates.None;
 
             BatteryCase = msg.Payload[6];
+            
+            /* TODO Buds2 rev10
+                if (FeatureManager.has(Feature.CHARGING_STATUS)) {
+                     byte b = byteBuffer.get();
+                     boolean z = true;
+                     this.chargingL = ByteUtil.valueOfBinaryDigit(b, 4) == 16;
+                     this.chargingR = ByteUtil.valueOfBinaryDigit(b, 2) == 4;
+                     if (ByteUtil.valueOfBinaryDigit(b, 0) != 1) {
+                         z = false;
+                     }
+                     this.chargingCase = z;
+                 }
+             */
         }
     }
 }
