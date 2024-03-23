@@ -7,7 +7,6 @@ using Avalonia.Data;
 using Avalonia.Interactivity;
 using Avalonia.Layout;
 using Avalonia.Threading;
-using Serilog;
 
 namespace GalaxyBudsClient.Interface.Controls;
 
