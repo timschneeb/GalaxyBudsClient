@@ -81,7 +81,7 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
 
     public bool IsConnectedLegacy => _backend.IsStreamConnected;
 
-    private readonly ArrayList IncomingData = [];
+    private readonly ArrayList _incomingData = [];
     private static readonly ConcurrentQueue<byte[]> IncomingQueue = new();
     private readonly CancellationTokenSource _cancelSource;
     private readonly Task? _loop;
@@ -402,7 +402,7 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
             }
             catch (OperationCanceledException)
             {
-                IncomingData.Clear();
+                _incomingData.Clear();
                 throw;
             }
                 
@@ -411,7 +411,7 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
                 if (IncomingQueue.IsEmpty) continue;
                 while (IncomingQueue.TryDequeue(out var frame))
                 {
-                    IncomingData.AddRange(frame);
+                    _incomingData.AddRange(frame);
                 }
             }
                 
@@ -421,7 +421,7 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
                 var msgSize = 0;
                 try
                 {
-                    var raw = IncomingData.OfType<byte>().ToArray();
+                    var raw = _incomingData.OfType<byte>().ToArray();
 
                     foreach (var hook in ScriptManager.Instance.RawStreamHooks)
                     {
@@ -444,12 +444,12 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
                 {
                     // Attempt to remove broken message, otherwise skip data block
                     var somIndex = 0;
-                    for (var i = 1; i < IncomingData.Count; i++)
+                    for (var i = 1; i < _incomingData.Count; i++)
                     {
                         if ((ActiveModel == Models.Buds &&
-                             (byte)(IncomingData[i] ?? 0) == (byte)SppMessage.Constants.SOM) ||
+                             (byte)(_incomingData[i] ?? 0) == (byte)SppMessage.Constants.SOM) ||
                             (ActiveModel != Models.Buds &&
-                             (byte)(IncomingData[i] ?? 0) == (byte)SppMessage.Constants.SOMPlus))
+                             (byte)(_incomingData[i] ?? 0) == (byte)SppMessage.Constants.SOMPlus))
                         {
                             somIndex = i;
                             break;
@@ -468,21 +468,21 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
                     failCount++;
                 }
 
-                if (msgSize >= IncomingData.Count)
+                if (msgSize >= _incomingData.Count)
                 {
-                    IncomingData.Clear();
+                    _incomingData.Clear();
                     break;
                 }
 
-                IncomingData.RemoveRange(0, msgSize);
+                _incomingData.RemoveRange(0, msgSize);
 
-                if (ByteArrayUtils.IsBufferZeroedOut(IncomingData))
+                if (ByteArrayUtils.IsBufferZeroedOut(_incomingData))
                 {
                     /* No more data remaining */
                     break;
                 }
 
-            } while (IncomingData.Count > 0);
+            } while (_incomingData.Count > 0);
         }
     }
         
