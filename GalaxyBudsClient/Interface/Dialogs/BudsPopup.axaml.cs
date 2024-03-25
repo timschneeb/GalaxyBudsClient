@@ -43,8 +43,7 @@ public partial class BudsPopup : StyledWindow
     protected override void ApplyBackgroundBrush(IBrush? brush)
     {
         if (brush == null)
-            // TODO fix this; popup is transparent here
-            OuterBorder[Border.BackgroundProperty] = new DynamicResourceExtension()
+            OuterBorder[!Border.BackgroundProperty] = new DynamicResourceExtension()
             {
                 ResourceKey = "SolidBackgroundFillColorSecondaryBrush"
             };
@@ -103,7 +102,7 @@ public partial class BudsPopup : StyledWindow
         UpdateSettings();
         OuterBorder.Tag = "showing";
             
-        // TODO _timer.Start();
+        _timer.Start();
     }
 
     protected override void OnOpened(EventArgs e)
@@ -115,7 +114,7 @@ public partial class BudsPopup : StyledWindow
     private void Window_OnPointerPressed(object? sender, PointerPressedEventArgs e)
     {
         ClickedEventHandler?.Invoke(this, EventArgs.Empty);
-        // TODO Hide();
+        Hide();
     }
 
     public void UpdateSettings()
