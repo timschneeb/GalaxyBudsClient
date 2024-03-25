@@ -19,95 +19,93 @@
         Topmost="True"
         ShowActivated="False"
         Focusable="False"
+        CornerRadius="{StaticResource OverlayCornerRadius}"
         Title="Galaxy Buds Manager (Popup)"
         PointerPressed="Window_OnPointerPressed">
 
-    <Border Name="BlurContainer"
+    <Border Name="OuterBorder"
+            BorderBrush="{DynamicResource SurfaceStrokeColorFlyoutBrush}"
+            BorderThickness="1"
+            Background="{DynamicResource MicaBackgroundFillColorBaseBrush}"
             CornerRadius="{StaticResource OverlayCornerRadius}">
-        <Border Name="OuterBorder"
-                BorderBrush="{DynamicResource SurfaceStrokeColorFlyoutBrush}"
-                BorderThickness="1"
-                Background="{DynamicResource MicaBackgroundFillColorBaseBrush}"
-                CornerRadius="{StaticResource OverlayCornerRadius}">
-            <Border.Styles>
-                <Style Selector="Border[Tag=showing]">
-                    <Style.Animations>
-                        <Animation IterationCount="1"
-                                   PlaybackDirection="Normal"
-                                   FillMode="Both"
-                                   Duration="0:0:.4">
-                            <KeyFrame Cue="0%">
-                                <Setter Property="Opacity" Value="0.0" />
-                            </KeyFrame>
-                            <KeyFrame Cue="100%">
-                                <Setter Property="Opacity" Value="1.0" />
-                            </KeyFrame>
-                        </Animation>
-                    </Style.Animations>
-                </Style>
-                <Style Selector="Border[Tag=hiding]">
-                    <Style.Animations>
-                        <Animation IterationCount="1"
-                                   PlaybackDirection="Normal"
-                                   FillMode="Both"
-                                   Duration="0:0:.4">
-                            <KeyFrame Cue="0%">
-                                <Setter Property="Opacity" Value="1.0" />
-                            </KeyFrame>
-                            <KeyFrame Cue="100%">
-                                <Setter Property="Opacity" Value="0.0" />
-                            </KeyFrame>
-                        </Animation>
-                    </Style.Animations>
-                </Style>
-            </Border.Styles>
+        <Border.Styles>
+            <Style Selector="Border[Tag=showing]">
+                <Style.Animations>
+                    <Animation IterationCount="1"
+                               PlaybackDirection="Normal"
+                               FillMode="Both"
+                               Duration="0:0:.4">
+                        <KeyFrame Cue="0%">
+                            <Setter Property="Opacity" Value="0.0" />
+                        </KeyFrame>
+                        <KeyFrame Cue="100%">
+                            <Setter Property="Opacity" Value="1.0" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+            <Style Selector="Border[Tag=hiding]">
+                <Style.Animations>
+                    <Animation IterationCount="1"
+                               PlaybackDirection="Normal"
+                               FillMode="Both"
+                               Duration="0:0:.4">
+                        <KeyFrame Cue="0%">
+                            <Setter Property="Opacity" Value="1.0" />
+                        </KeyFrame>
+                        <KeyFrame Cue="100%">
+                            <Setter Property="Opacity" Value="0.0" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+        </Border.Styles>
 
-            <Grid Name="Grid"
-                  ColumnDefinitions="24,*,24" RowDefinitions="24,35,*,24">
+        <Grid Name="Grid"
+              ColumnDefinitions="24,*,24" RowDefinitions="24,35,*,24">
 
-                <Label Grid.Column="1" Grid.Row="1"
-                       Name="Header"
-                       Content="Blank's Galaxy Buds"
-                       FontSize="18" />
+            <Label Grid.Column="1" Grid.Row="1"
+                   Name="Header"
+                   Content="Blank's Galaxy Buds"
+                   FontSize="18" />
 
-                <Image Grid.Column="1" Grid.Row="2"
-                       Name="ImageLeft"
-                       Height="75" Width="75"
-                       Source="{DynamicResource LeftProConnected}"
-                       Margin="44,8,203,0" VerticalAlignment="Top" />
-                <Image Grid.Column="1" Grid.Row="2"
-                       Name="ImageRight"
-                       Height="75" Width="75"
-                       Source="{DynamicResource RightProConnected}"
-                       Margin="203,8,44,0" VerticalAlignment="Top" />
+            <Image Grid.Column="1" Grid.Row="2"
+                   Name="ImageLeft"
+                   Height="75" Width="75"
+                   Source="{DynamicResource LeftProConnected}"
+                   Margin="44,8,203,0" VerticalAlignment="Top" />
+            <Image Grid.Column="1" Grid.Row="2"
+                   Name="ImageRight"
+                   Height="75" Width="75"
+                   Source="{DynamicResource RightProConnected}"
+                   Margin="203,8,44,0" VerticalAlignment="Top" />
 
-                <Label Grid.Column="1" Grid.Row="2"
-                       Name="BatteryL"
-                       FontSize="16"
-                       VerticalAlignment="Top" HorizontalAlignment="Left"
-                       Content="Left%" Margin="44,85,0,0"
-                       HorizontalContentAlignment="Center" Width="75" />
-                <Label Grid.Column="1" Grid.Row="2"
-                       Name="BatteryR"
-                       FontSize="16"
-                       VerticalAlignment="Top" HorizontalAlignment="Right"
-                       Content="Right%" Margin="0,85,44,0"
-                       HorizontalContentAlignment="Center" Width="75" />
+            <Label Grid.Column="1" Grid.Row="2"
+                   Name="BatteryL"
+                   FontSize="16"
+                   VerticalAlignment="Top" HorizontalAlignment="Left"
+                   Content="Left%" Margin="44,85,0,0"
+                   HorizontalContentAlignment="Center" Width="75" />
+            <Label Grid.Column="1" Grid.Row="2"
+                   Name="BatteryR"
+                   FontSize="16"
+                   VerticalAlignment="Top" HorizontalAlignment="Right"
+                   Content="Right%" Margin="0,85,44,0"
+                   HorizontalContentAlignment="Center" Width="75" />
 
-                <Label Grid.Column="1" Grid.Row="2"
-                       Name="BatteryC"
-                       FontSize="16"
-                       VerticalAlignment="Top"
-                       Content="Case%" Margin="133,85,133,0"
-                       HorizontalContentAlignment="Center" />
-                <Label Grid.Column="1" Grid.Row="2"
-                       Name="CaseLabel"
-                       Opacity="0.5"
-                       FontSize="13"
-                       VerticalAlignment="Top"
-                       Content="{DynamicResource case}" Margin="130,68,130,0"
-                       HorizontalContentAlignment="Center" />
-            </Grid>
-        </Border>
+            <Label Grid.Column="1" Grid.Row="2"
+                   Name="BatteryC"
+                   FontSize="16"
+                   VerticalAlignment="Top"
+                   Content="Case%" Margin="133,85,133,0"
+                   HorizontalContentAlignment="Center" />
+            <Label Grid.Column="1" Grid.Row="2"
+                   Name="CaseLabel"
+                   Opacity="0.5"
+                   FontSize="13"
+                   VerticalAlignment="Top"
+                   Content="{DynamicResource case}" Margin="130,68,130,0"
+                   HorizontalContentAlignment="Center" />
+        </Grid>
     </Border>
 </Window>
