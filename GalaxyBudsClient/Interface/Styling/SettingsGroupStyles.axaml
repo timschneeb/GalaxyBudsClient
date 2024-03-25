@@ -51,18 +51,19 @@
         </ResourceDictionary>
     </Styles.Resources>
 
-    <!-- TODO Hidden first/last items in Groups break the corners -->
     <!-- For SettingsGroups we have to set the CornerRadius for the top edges of the first child to match the top of the group -->
     <Style
-        Selector="controls|SettingsGroup > ui|SettingsExpanderItem:nth-child(1) /template/ ui|FABorder#Root,
-                     controls|SettingsGroup > ui|SettingsExpanderItem.First /template/ ui|FABorder#Root">
+        Selector="controls|SettingsGroup > ui|SettingsExpanderItem.First /template/ Border#Root">
         <Setter Property="CornerRadius"
                 Value="{Binding Source={StaticResource ControlCornerRadius}, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
     </Style>
-
-    <!-- For SettingsGroups with only one item -->
     <Style
-        Selector="controls|SettingsGroup.SingleItem > ui|SettingsExpanderItem:nth-child(1) /template/ ui|FABorder#Root">
+        Selector="controls|SettingsGroup > ui|SettingsExpanderItem.Last /template/ Border#Root">
+        <Setter Property="CornerRadius"
+                Value="{Binding Source={StaticResource ControlCornerRadius}, Converter={StaticResource BottomCornerRadiusFilterConverter}}" />
+    </Style>
+    <Style
+        Selector="controls|SettingsGroup > ui|SettingsExpanderItem.SingleItem /template/ Border#Root">
         <Setter Property="CornerRadius" Value="{Binding Source={StaticResource ControlCornerRadius}}" />
     </Style>
 
