@@ -1,34 +1,41 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using GalaxyBudsClient.Model.Constants;
+using InvalidOperationException = System.InvalidOperationException;
 
 namespace GalaxyBudsClient.Model.Attributes;
 
+public enum Selector
+{
+    Equal,
+    NotEqual,
+    GreaterEqual,
+    LessEqual,
+}
+
 public class DeviceAttribute : Attribute
 {
-    public DeviceAttribute(Models[] models)
+    public DeviceAttribute(params Models[] models)
     {
         Models = models;
     }
-    public DeviceAttribute(Models model)
+    
+    public DeviceAttribute(Models model, Selector selector = Selector.Equal)
     {
-        Models = new Models[1];
-        Models[0] = model;
-    }
+        var devices = (Models[])Enum.GetValues(typeof(Models));
 
-    public override string ToString()
-    {
-        var str = string.Empty;
-        var i = 0;
-        foreach (var model in Models)
+        Models = selector switch
         {
-            str += model.ToString();
-            if (i < Models.Length - 1)
-                str += ", ";
-
-            i++;
-        }
-        return str;
+            Selector.Equal => [model],
+            Selector.NotEqual => devices.Where(x => x != model),
+            Selector.GreaterEqual => devices.Where(x => x >= model),
+            Selector.LessEqual => devices.Where(x => x <= model),
+            _ => throw new InvalidOperationException("Invalid selector")
+        };
     }
 
-    public readonly Models[] Models;
+    public override string ToString() => string.Join(",", Models);
+
+    public readonly IEnumerable<Models> Models;
 }

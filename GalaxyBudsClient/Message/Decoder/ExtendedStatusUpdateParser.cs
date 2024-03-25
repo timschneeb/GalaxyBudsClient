@@ -22,12 +22,11 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
     public TouchOptions TouchpadOptionL { set; get; }
     public TouchOptions TouchpadOptionR { set; get; }
     public bool SeamlessConnectionEnabled { set; get; }
-
     
     // TODO redesign device attributes
-    [Device([Models.Buds, Models.BudsPlus])]
+    [Device(Models.Buds, Models.BudsPlus)]
     public bool AmbientSoundEnabled { set; get; }
-    [Device([Models.Buds, Models.BudsPlus, Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsLive, Selector.NotEqual)]
     public int AmbientSoundVolume { set; get; }
 
 
@@ -37,107 +36,113 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
     public bool EqualizerEnabled { set; get; }
 
 
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public PlacementStates PlacementL { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public PlacementStates PlacementR { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public int BatteryCase { set; get; }
-    [Device([Models.BudsPlus, Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public bool OutsideDoubleTap { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public Colors DeviceColor { set; get; }
 
 
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public bool AdjustSoundSync { set; get; }
-    [Device([Models.BudsPlus, Models.BudsPro, Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public bool SideToneEnabled { set; get; }
-    [Device([Models.BudsPlus, Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public bool ExtraHighAmbientEnabled { set; get; }
 
 
     [Device(Models.BudsLive)]
     public bool RelieveAmbient { set; get; }
-    [Device([Models.BudsLive, Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsLive, Selector.GreaterEqual)]
     public bool VoiceWakeUp { set; get; }
-    [Device([Models.BudsLive, Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsLive, Selector.GreaterEqual)]
     public int VoiceWakeUpLang { set; get; }
-    [Device([Models.BudsLive, Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsLive, Selector.GreaterEqual)]
     public int FmmRevision { set; get; }
     [Device(Models.BudsLive)]
     public bool NoiseCancelling { set; get; }
 
 
-    [Device([Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPro, Selector.GreaterEqual)]
     public NoiseControlModes NoiseControlMode { set; get; }
-    [Device([Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPro, Selector.GreaterEqual)]
     public bool NoiseControlTouchOff { set; get; }
-    [Device([Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPro, Selector.GreaterEqual)]
     public bool NoiseControlTouchAnc { set; get; }
-    [Device([Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPro, Selector.GreaterEqual)]
     public bool NoiseControlTouchAmbient { set; get; }
         
         
-    [Device([Models.Buds2])]
+    [Device(Models.Buds2, Selector.GreaterEqual)]
     public bool NoiseControlTouchLeftOff { set; get; }
-    [Device([Models.Buds2])]
+    [Device(Models.Buds2, Selector.GreaterEqual)]
     public bool NoiseControlTouchLeftAnc { set; get; }
-    [Device([Models.Buds2])]
+    [Device(Models.Buds2, Selector.GreaterEqual)]
     public bool NoiseControlTouchLeftAmbient { set; get; }
         
         
-    [Device([Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPro, Selector.GreaterEqual)]
     public bool SpeakSeamlessly { set; get; }
 
-    [Device([Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPro, Selector.GreaterEqual)]
     public byte NoiseReductionLevel { set; get; }
-    [Device(Models.BudsPro)]
+    [Device(Models.BudsPro, Selector.GreaterEqual)]
     public bool AutoSwitchAudioOutput { set; get; }
 
-    [Device(Models.BudsPro)]
+    [Device(Models.BudsPro, Models.Buds2Pro)]
     public bool DetectConversations { set; get; } = true;
-    [Device(Models.BudsPro)]
+    [Device(Models.BudsPro, Models.Buds2Pro)]
     public byte DetectConversationsDuration { set; get; }
-    [Device(Models.BudsPro)]
+    [Device(Models.BudsLive, Selector.GreaterEqual)]
     public bool SpatialAudio { set; get; }
         
-    [Device([Models.BudsLive, Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsLive, Selector.GreaterEqual)]
     public byte HearingEnhancements { set; get; }
         
-    [Device(Models.Buds2)]
+    [Device(Models.Buds2, Selector.GreaterEqual)]
     public bool SingleTapOn { set; get; }
-    [Device(Models.Buds2)]
+    [Device(Models.Buds2, Selector.GreaterEqual)]
     public bool DoubleTapOn { set; get; }
-    [Device(Models.Buds2)]
+    [Device(Models.Buds2, Selector.GreaterEqual)]
     public bool TripleTapOn { set; get; }
-    [Device(Models.Buds2)]
+    [Device(Models.Buds2, Selector.GreaterEqual)]
     public bool TouchHoldOn { set; get; }
-    [Device(Models.Buds2)]
+    [Device(Models.Buds2, Selector.GreaterEqual)]
     public bool DoubleTapForCallOn { set; get; }
-    [Device(Models.Buds2)]
+    [Device(Models.Buds2, Selector.GreaterEqual)]
     public bool TouchHoldOnForCallOn { set; get; }
 
-    [Device(Models.Buds2)]
+    [Device(Models.Buds2, Selector.GreaterEqual)]
     public byte TouchType { set; get; }
 
-    [Device([Models.Buds2])]
+    [Device(Models.Buds2, Selector.GreaterEqual)]
     public bool AncWithOneEarbud { set; get; }
-    [Device([Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPro, Selector.GreaterEqual)]
     public bool NoiseControlsWithOneEarbud { set; get; }
         
-    [Device([Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPro, Selector.GreaterEqual)]
     public bool AmbientCustomVolumeOn { set; get; }
-    [Device([Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPro, Selector.GreaterEqual)]
     public byte AmbientCustomVolumeLeft { set; get; }
-    [Device([Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPro, Selector.GreaterEqual)]
     public byte AmbientCustomVolumeRight { set; get; }
-    [Device([Models.BudsPro, Models.Buds2])]
+    [Device(Models.BudsPro, Selector.GreaterEqual)]
     public byte AmbientCustomSoundTone { set; get; }
-    public bool CallPathControl { set; get; } // buds live and higher
-    public bool IsLeftCharging { set; get; } // buds 2 and higher
-    public bool IsRightCharging { set; get; } // buds 2 and higher
-    public bool IsCaseCharging { set; get; } // buds 2 and higher
+    [Device(Models.BudsLive, Selector.GreaterEqual)]
+    public bool CallPathControl { set; get; } 
+    
+    [Device(Models.Buds2, Selector.GreaterEqual)]
+    public bool IsLeftCharging { set; get; }
+
+    [Device(Models.Buds2, Selector.GreaterEqual)]
+    public bool IsRightCharging { set; get; } 
+    [Device(Models.Buds2, Selector.GreaterEqual)]
+    public bool IsCaseCharging { set; get; }
 
 
     public override void ParseMessage(SppMessage msg)
