@@ -98,7 +98,7 @@
                         <DataGridTextColumn Header="ID" Binding="{ReflectionBinding Id}" Width="Auto" />
                         <DataGridTextColumn Header="Payload" Binding="{ReflectionBinding Payload}" Width="*" />
                         <DataGridTextColumn Header="Size" Binding="{ReflectionBinding Size}" Width="Auto" />
-                        <DataGridTextColumn Header="CRC16" Binding="{ReflectionBinding CRC16}" Width="Auto" />
+                        <DataGridTextColumn Header="CRC16" Binding="{ReflectionBinding Crc16}" Width="Auto" />
                         <DataGridTextColumn Header="Type" Binding="{ReflectionBinding Type}" Width="Auto" />
                     </DataGrid.Columns>
                 </DataGrid>

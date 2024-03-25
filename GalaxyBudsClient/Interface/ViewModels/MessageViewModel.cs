@@ -11,7 +11,7 @@ public class RecvMsgViewHolder
     public string PayloadAscii { get; }
     public string Type { get; }
     public string Size { get; }
-    public string CRC16 { get; }
+    public string Crc16 { get; }
     public SppMessage Message { get; }
 
     public RecvMsgViewHolder(SppMessage msg)
@@ -21,7 +21,7 @@ public class RecvMsgViewHolder
         PayloadAscii = HexUtils.DumpAscii(msg.Payload);
         Type = msg.IsFragment ? "Fragment/" : string.Empty + GetEnumName(typeof(SppMessage.MsgType), msg.Type);
         Size = $"{msg.Size} bytes";
-        CRC16 = msg.Crc16 == 0 ? "Pass" : "Fail";
+        Crc16 = msg.Crc16 == 0 ? "Pass" : "Fail";
         Message = msg;
     }
 
