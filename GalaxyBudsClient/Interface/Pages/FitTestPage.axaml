@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.FitTestPage"
              x:DataType="pages:FitTestPageViewModel"
@@ -14,6 +15,10 @@
     </Design.DataContext>
 
     <ScrollViewer>
+        <Interaction.Behaviors>
+            <ext:RequiresConnectedDeviceBehavior />
+        </Interaction.Behaviors>
+        
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
             <Border Classes="Card" ClipToBounds="True">
 

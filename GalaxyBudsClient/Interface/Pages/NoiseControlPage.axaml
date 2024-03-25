@@ -17,7 +17,10 @@
 
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
-
+            <Interaction.Behaviors>
+                <ext:RequiresConnectedDeviceBehavior />
+            </Interaction.Behaviors>
+            
             <controls:SettingsGroup>
                 <Interaction.Behaviors>
                     <ext:RequiresFeatureBehavior Feature="AmbientSound" />

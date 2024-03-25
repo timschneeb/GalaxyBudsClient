@@ -20,6 +20,10 @@
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
 
             <controls:SettingsGroup>
+                <Interaction.Behaviors>
+                    <ext:RequiresConnectedDeviceBehavior />
+                </Interaction.Behaviors>
+                
                 <controls:SettingsSwitchItem Content="{DynamicResource adv_resume_playback}"
                                              Description="{DynamicResource adv_resume_playback_desc}"
                                              IsChecked="{Binding ResumePlaybackOnSensor, Source={x:Static utils:Settings.Instance}}"
@@ -74,6 +78,7 @@
                                              IsClickEnabled="True">
                     <Interaction.Behaviors>
                         <ext:RequiresFeatureBehavior Feature="BixbyWakeup" />
+                        <ext:RequiresConnectedDeviceBehavior />
                     </Interaction.Behaviors>
                 </controls:SettingsSymbolItem>
 
@@ -85,6 +90,7 @@
                                              IsClickEnabled="True">
                     <Interaction.Behaviors>
                         <ext:RequiresFeatureBehavior Feature="GearFitTest" />
+                        <ext:RequiresConnectedDeviceBehavior />
                     </Interaction.Behaviors>
                 </controls:SettingsSymbolItem>
             </controls:SettingsGroup>

@@ -19,7 +19,10 @@
 
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
-
+            <Interaction.Behaviors>
+                <ext:RequiresConnectedDeviceBehavior />
+            </Interaction.Behaviors>
+            
             <controls:SettingsGroup>
                 <controls:SettingsSwitchItem Content="{DynamicResource bixby_remap_enable}"
                                              Description="{DynamicResource bixby_remap_enable_desc}"
