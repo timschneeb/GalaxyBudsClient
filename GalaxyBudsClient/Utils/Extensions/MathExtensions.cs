@@ -9,7 +9,7 @@ public static class MathExtensions
         return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
     }
         
-    public static Vector3 ToEulerXyz(this Quaternion q)
+    public static Vector3 ToEulerXYZ(this Quaternion q)
     {
         Vector3 euler;
 

@@ -16,8 +16,8 @@ public class FirmwareBinary
     private readonly long _magic;
     private readonly byte[] _data;
         
-    private static readonly long FotaBinMagic = 0xCAFECAFE;
-    private static readonly long FotaBinMagicCombination = 0x42434F4D;
+    private static readonly long FOTA_BIN_MAGIC = 0xCAFECAFE;
+    private static readonly long FOTA_BIN_MAGIC_COMBINATION = 0x42434F4D;
 
     public string BuildName { get; }
     public long SegmentsCount { get; }
@@ -39,12 +39,12 @@ public class FirmwareBinary
             {
                 _magic = (((long) bArr[2] & 255) << 16) | (((long) bArr[3] & 255) << 24) |
                          (((long) bArr[1] & 255) << 8) | ((long) bArr[0] & 255);
-                if (_magic == FotaBinMagic)
+                if (_magic == FOTA_BIN_MAGIC)
                 {
                     // Okay! Skip ahead
                     goto MAGIC_VALID;
                 }
-                if (_magic == FotaBinMagicCombination || Encoding.ASCII.GetString(data).StartsWith(":02000004FE00FC"))
+                if (_magic == FOTA_BIN_MAGIC_COMBINATION || Encoding.ASCII.GetString(data).StartsWith(":02000004FE00FC"))
                 {
                     // Notify tracker about this event and submit firmware build info
                     SentrySdk.CaptureMessage($"BCOM-Firmware discovered. Build: {buildName}, Content: {Convert.ToBase64String(data)}", SentryLevel.Fatal);
