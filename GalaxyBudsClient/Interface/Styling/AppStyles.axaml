@@ -5,7 +5,6 @@
     <StyleInclude Source="SettingsGroupStyles.axaml" />
 
     <!-- Cards -->
-    <!-- TODO border doesn't match SettingsGroups with SettingsItems. Replace this class using custom ContentControl? -->
     <Style Selector="Border.Card">
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
