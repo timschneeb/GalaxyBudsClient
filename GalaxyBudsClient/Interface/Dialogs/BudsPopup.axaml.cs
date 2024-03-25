@@ -43,7 +43,7 @@ public partial class BudsPopup : StyledWindow
     protected override void ApplyBackgroundBrush(IBrush? brush)
     {
         if (brush == null)
-            // TODO fix this
+            // TODO fix this; popup is transparent here
             OuterBorder[Border.BackgroundProperty] = new DynamicResourceExtension()
             {
                 ResourceKey = "SolidBackgroundFillColorSecondaryBrush"
