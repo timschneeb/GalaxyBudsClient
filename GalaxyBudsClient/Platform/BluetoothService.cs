@@ -214,7 +214,10 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
     {
         if (!SuppressDisconnectionEvents)
         {
-            LastErrorMessage = exception.ErrorMessage ?? exception.Message; // TODO: needs better logic for error message handling
+            /* TODO: needs better logic for error message handling
+               New UI has limited space for error messages. 
+               Make sure that messages are not too long. */
+            LastErrorMessage = exception.ErrorMessage ?? exception.Message;
             IsConnected = false;
             BluetoothError?.Invoke(this, exception);
         }
