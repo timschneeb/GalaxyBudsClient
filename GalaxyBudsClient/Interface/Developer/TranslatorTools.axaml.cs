@@ -12,7 +12,7 @@ using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
 namespace GalaxyBudsClient.Interface.Developer;
 
-public partial class TranslatorTools : Window
+public partial class TranslatorTools : StyledWindow
 {
     public static bool GrantAllFeaturesForTesting { get; private set; }
     
@@ -24,13 +24,13 @@ public partial class TranslatorTools : Window
         XamlPath.Text = Loc.GetTranslatorModeFile();
         IgnoreConnLoss.IsChecked = BluetoothService.Instance.SuppressDisconnectionEvents;
         DummyDevices.IsChecked = BluetoothService.Instance.ShowDummyDevices;
-            
+
         Loc.ErrorDetected += (title, content) =>
         {
             var td = new TaskDialog
             {
-                Header = title, 
-                Buttons = { TaskDialogButton.CloseButton }, 
+                Header = title,
+                Buttons = { TaskDialogButton.CloseButton },
                 IconSource = new SymbolIconSource { Symbol = Symbol.Warning },
                 Content = new TextBlock
                 {
@@ -43,10 +43,6 @@ public partial class TranslatorTools : Window
 
             _ = td.ShowAsync();
         };
-        
-        // TODO create shared window subclass with this
-        RequestedThemeVariant = ThemeUtils.GetThemeVariant();
-        // ThemeUtils.ThemeChanged += ...
     }
 
     private void ReloadXaml_OnClick(object? sender, RoutedEventArgs e)

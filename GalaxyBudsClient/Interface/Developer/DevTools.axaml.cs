@@ -21,7 +21,7 @@ using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.Developer;
 
-public partial class DevTools : Window
+public partial class DevTools : StyledWindow
 {
     private class ViewModel
     {
@@ -62,10 +62,6 @@ public partial class DevTools : Window
             
         Closing += OnClosing;
         BluetoothService.Instance.NewDataReceived += OnNewDataReceived;
-        
-        // TODO create shared window subclass with this
-        RequestedThemeVariant = ThemeUtils.GetThemeVariant();
-        // ThemeUtils.ThemeChanged += ...
     }
 
     private void OnNewDataReceived(object? sender, byte[] raw)
