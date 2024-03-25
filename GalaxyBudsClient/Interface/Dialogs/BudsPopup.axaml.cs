@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Timers;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
+using Avalonia.Markup.Xaml.MarkupExtensions;
 using Avalonia.Media;
 using Avalonia.Threading;
 using GalaxyBudsClient.Message;
@@ -14,15 +16,14 @@ using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
 using Application = Avalonia.Application;
-using Window = Avalonia.Controls.Window;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 
-public partial class BudsPopup : Window
+public partial class BudsPopup : StyledWindow
 {
     public EventHandler? ClickedEventHandler { get; set; }
     
-    private readonly Timer _timer = new(3000){AutoReset = false};
+    private readonly Timer _timer = new(3000){ AutoReset = false };
         
     public BudsPopup() 
     {
@@ -34,6 +35,21 @@ public partial class BudsPopup : Window
             
         SppMessageHandler.Instance.BaseUpdate += InstanceOnBaseUpdate;
         _timer.Elapsed += (_, _) => Dispatcher.UIThread.Post(Hide, DispatcherPriority.Render);
+    }
+
+    protected override IReadOnlyList<WindowTransparencyLevel> DefaultTransparencyLevelHint =>
+        new[] { WindowTransparencyLevel.Transparent };
+
+    protected override void ApplyBackgroundBrush(IBrush? brush)
+    {
+        if (brush == null)
+            // TODO fix this
+            OuterBorder[Border.BackgroundProperty] = new DynamicResourceExtension()
+            {
+                ResourceKey = "SolidBackgroundFillColorSecondaryBrush"
+            };
+        else
+            OuterBorder.Background = brush;
     }
 
     private void InstanceOnBaseUpdate(object? sender, IBasicStatusUpdate e)
@@ -77,7 +93,7 @@ public partial class BudsPopup : Window
         /* Close window instead */
         _timer.Stop();
         OuterBorder.Tag = "hiding";
-        Task.Delay(400).ContinueWith(_ => { Dispatcher.UIThread.InvokeAsync(Close); });
+        Task.Delay(1000).ContinueWith(_ => { Dispatcher.UIThread.InvokeAsync(Close); });
     }
 
     public override void Show()
@@ -87,7 +103,7 @@ public partial class BudsPopup : Window
         UpdateSettings();
         OuterBorder.Tag = "showing";
             
-        _timer.Start();
+        // TODO _timer.Start();
     }
 
     protected override void OnOpened(EventArgs e)
@@ -99,7 +115,7 @@ public partial class BudsPopup : Window
     private void Window_OnPointerPressed(object? sender, PointerPressedEventArgs e)
     {
         ClickedEventHandler?.Invoke(this, EventArgs.Empty);
-        Hide();
+        // TODO Hide();
     }
 
     public void UpdateSettings()

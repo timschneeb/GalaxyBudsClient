@@ -2,13 +2,17 @@
 using AppKit;
 #endif
 using System;
+using System.ComponentModel;
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
+using FluentAvalonia.Styling;
 using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Scripting;
@@ -23,6 +27,14 @@ namespace GalaxyBudsClient;
 
 public class App : Application
 {
+    public FluentAvaloniaTheme FluentTheme => (FluentAvaloniaTheme)Styles.Single(x => x is FluentAvaloniaTheme);
+    
+    public event Action? TrayIconClicked;
+    public static readonly StyledProperty<NativeMenu> TrayMenuProperty =
+        AvaloniaProperty.Register<App, NativeMenu>(nameof(TrayMenu),
+            defaultBindingMode: BindingMode.OneWay, defaultValue: []);
+    public NativeMenu TrayMenu => GetValue(TrayMenuProperty);
+    
     public override void Initialize()
     {
         DataContext = this;
@@ -46,8 +58,8 @@ public class App : Application
         }
             
         Dispatcher.UIThread.Post(() =>
-        {
-            ThemeUtils.Reload();
+        { 
+            LoadThemeProperties();
             Loc.Load();
         }, DispatcherPriority.Render);
             
@@ -57,9 +69,11 @@ public class App : Application
         ExperimentManager.Init();
         ScriptManager.Instance.RegisterUserHooks();
         
+        Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
+        
         Log.Information("Translator mode file location: {File}", Loc.GetTranslatorModeFile());
     }
-        
+
     public override void OnFrameworkInitializationCompleted()
     {
         TrayManager.Init();
@@ -80,13 +94,25 @@ public class App : Application
             
         base.OnFrameworkInitializationCompleted();
     }
+    
+    private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if(e.PropertyName is nameof(Settings.Instance.DarkMode) or nameof(Settings.Instance.AccentColor))
+        {
+            LoadThemeProperties();
+        }
+    }
 
-    public event Action? TrayIconClicked;
-
-    public static readonly StyledProperty<NativeMenu> TrayMenuProperty =
-        AvaloniaProperty.Register<App, NativeMenu>(nameof(TrayMenu),
-            defaultBindingMode: BindingMode.OneWay, defaultValue: []);
-    public NativeMenu TrayMenu => GetValue(TrayMenuProperty);
+    private void LoadThemeProperties()
+    {
+        FluentTheme.PreferSystemTheme = Settings.Instance.DarkMode == DarkModes.System;
+        var color = Settings.Instance.AccentColor;
+        if (color.A == 0)
+        {
+            color = Settings.Instance.AccentColor = AccentColorParser.DefaultColor;
+        }
+        FluentTheme.CustomAccentColor = color;
+    }
         
     private void TrayIcon_OnClicked(object? sender, EventArgs e)
     {

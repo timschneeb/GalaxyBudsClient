@@ -32,12 +32,6 @@ public static class Settings
     {
         switch (e.PropertyName)
         {
-            case nameof(ISettings.DarkMode):
-                ThemeUtils.Reload();
-                break;
-            case nameof(ISettings.AccentColor):
-                ThemeUtils.ReloadAccentColor();
-                break;
             case nameof(ISettings.Locale):
                 Loc.Load();
                 break;
