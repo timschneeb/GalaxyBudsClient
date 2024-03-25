@@ -22,10 +22,6 @@
     
     <!-- Large BreadcrumbBar -->
     <Thickness x:Key="BreadcrumbBarChevronPadding">4,4,4,0</Thickness>
-    <!-- 
-        TODO: For some reason, SemiBold is even more bold than Bold on Linux even with Avalonia's builtin Inter font.
-        https://github.com/AvaloniaUI/Avalonia/issues/14711
-    -->
     <FontWeight x:Key="BreadcrumbBarItemFontWeight">Bold</FontWeight>
     <system:Double x:Key="BreadcrumbBarItemThemeFontSize">24</system:Double>
     <system:Double x:Key="BreadcrumbBarChevronFontSize">16</system:Double>
