@@ -69,10 +69,10 @@
                                                Content="{DynamicResource settings_darkmode}"
                                                Description="{DynamicResource settings_darkmode_description}"
                                                IconSource="DarkTheme"
-                                               ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:DarkModes}}}"
-                                               SelectedValue="{Binding DarkMode, Source={x:Static utils:Settings.Instance}}">
+                                               ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:Themes}}}"
+                                               SelectedValue="{Binding Theme, Source={x:Static utils:Settings.Instance}}">
                     <Interaction.Behaviors>
-                        <ext:LocalizationAwareComboBoxBehavior EnumType="{x:Type constants:DarkModes}" />
+                        <ext:LocalizationAwareComboBoxBehavior EnumType="{x:Type constants:Themes}" />
                     </Interaction.Behaviors>
                 </controls:SettingsComboBoxItem>
 
@@ -82,7 +82,7 @@
                     TickPlacement="None"
                     Symbol="Blur"
                     Maximum="255"
-                    IsEnabled="{Binding DarkMode, Source={x:Static utils:Settings.Instance}, Converter={x:Static converters:FuncConverters.IsBlurDarkModeSet}}"
+                    IsEnabled="{Binding Theme, Source={x:Static utils:Settings.Instance}, Converter={x:Static converters:FuncConverters.IsBlurDarkModeSet}}"
                     Value="{Binding BlurStrength, Source={x:Static utils:Settings.Instance}}" />
                 
                 <controls:SettingsColorItem Name="AppAccent"

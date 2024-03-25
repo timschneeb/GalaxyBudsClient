@@ -122,14 +122,14 @@ namespace GalaxyBudsClient.Model
             Celsius
         }
         
-        public enum DarkModes
+        public enum Themes
         {    
             [LocalizedDescription("darkmode_disabled")]
             Light,
             [LocalizedDescription("darkmode_enabled")]
-            DarkNoBlur,
-            [LocalizedDescription("darkmode_blur_enabled")]
             Dark,
+            [LocalizedDescription("darkmode_blur_enabled")]
+            DarkBlur,
             // Disabled [LocalizedDescription("darkmode_system")]
             [IgnoreDataMember]
             System

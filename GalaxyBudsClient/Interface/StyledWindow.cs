@@ -35,18 +35,18 @@ public class StyledWindow : Window
 
     private static ThemeVariant? GetThemeVariant()
     {
-        return Settings.Instance.DarkMode switch
+        return Settings.Instance.Theme switch
         {
-            DarkModes.Light => ThemeVariant.Light,
-            DarkModes.Dark => ThemeVariant.Dark,
-            DarkModes.DarkNoBlur => ThemeVariant.Dark,
+            Themes.Light => ThemeVariant.Light,
+            Themes.Dark => ThemeVariant.Dark,
+            Themes.DarkNoBlur => ThemeVariant.Dark,
             _ => null
         };
     }
     
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if(e.PropertyName is nameof(Settings.Instance.DarkMode) or nameof(Settings.Instance.BlurStrength))
+        if(e.PropertyName is nameof(Settings.Instance.Theme) or nameof(Settings.Instance.BlurStrength))
         {
             ApplyTheme();
         }
@@ -56,7 +56,7 @@ public class StyledWindow : Window
     {
         RequestedThemeVariant = GetThemeVariant();
             
-        if (Settings.Instance.DarkMode == DarkModes.Dark)
+        if (Settings.Instance.Theme == Themes.DarkBlur)
         {
             TryEnableMicaEffect();
         }
