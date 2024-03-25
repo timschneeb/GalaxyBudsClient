@@ -39,7 +39,7 @@ public class StyledWindow : Window
         {
             Themes.Light => ThemeVariant.Light,
             Themes.Dark => ThemeVariant.Dark,
-            Themes.DarkNoBlur => ThemeVariant.Dark,
+            Themes.DarkBlur => ThemeVariant.Dark,
             _ => null
         };
     }
