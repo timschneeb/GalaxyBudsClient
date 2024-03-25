@@ -71,7 +71,7 @@ namespace GalaxyBudsClient.Utils.Interface
 
             private static void NotifyObservers()
             {
-                foreach (var item in SLangList)
+                foreach (var item in s_langList)
                 {
                     var value = Resolve(item.Key);
                     foreach (var item1 in item.Value)
@@ -141,18 +141,18 @@ namespace GalaxyBudsClient.Utils.Interface
                 LanguageUpdated?.Invoke();
             }
             
-            private static readonly Dictionary<string, List<WeakReference<IObserver<string>>>> SLangList = [];
+            private static readonly Dictionary<string, List<WeakReference<IObserver<string>>>> s_langList = [];
 
             public static IDisposable AddObserverForKey(string key, IObserver<string> observer)
             {
-                if (SLangList.TryGetValue(key, out var list))
+                if (s_langList.TryGetValue(key, out var list))
                 {
                     list.Add(new WeakReference<IObserver<string>>(observer));
                 }
                 else
                 {
                     list = [new WeakReference<IObserver<string>>(observer)];
-                    SLangList.Add(key, list);
+                    s_langList.Add(key, list);
                 }
                 var value = Resolve(key);
                 observer.OnNext(value);

@@ -12,9 +12,9 @@ namespace GalaxyBudsClient.Model.Firmware;
 
 public class FirmwareRemoteClient
 {
-    private const string ApiBase = "https://fw.timschneeberger.me/v3";
-    private const string ApiGetFirmware = ApiBase + "/firmware";
-    private const string ApiDownloadFirmware = ApiBase + "/firmware/download";
+    private const string API_BASE = "https://fw.timschneeberger.me/v3";
+    private const string API_GET_FIRMWARE = API_BASE + "/firmware";
+    private const string API_DOWNLOAD_FIRMWARE = API_BASE + "/firmware/download";
 
     private readonly HttpClient _client;
     public FirmwareRemoteClient()
@@ -33,7 +33,7 @@ public class FirmwareRemoteClient
         try
         {
             FirmwareRemoteBinary[] firmwares;
-            var response = await _client.GetAsync(ApiGetFirmware + $"/{BluetoothService.ActiveModel.ToString()}");
+            var response = await _client.GetAsync(API_GET_FIRMWARE + $"/{BluetoothService.ActiveModel.ToString()}");
             if (response.IsSuccessStatusCode)
             {
                 var formatters = new MediaTypeFormatterCollection();
@@ -77,7 +77,7 @@ public class FirmwareRemoteClient
         try
         {
             byte[] binary;
-            var response = await _client.GetAsync($"{ApiDownloadFirmware}/{target.BuildName}");
+            var response = await _client.GetAsync($"{API_DOWNLOAD_FIRMWARE}/{target.BuildName}");
             if (response.IsSuccessStatusCode)
             {
                 var formatters = new MediaTypeFormatterCollection();
