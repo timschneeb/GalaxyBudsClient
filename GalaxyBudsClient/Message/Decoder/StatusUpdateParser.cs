@@ -22,18 +22,21 @@ public class StatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
     public int EarType { set; get; }
 
 
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public int Revision { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public PlacementStates PlacementL { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public PlacementStates PlacementR { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public int BatteryCase { set; get; }
     
-    public bool IsLeftCharging { set; get; } // buds 2 and higher
-    public bool IsRightCharging { set; get; } // buds 2 and higher
-    public bool IsCaseCharging { set; get; } // buds 2 and higher
+    [Device(Models.Buds2, Selector.GreaterEqual)]
+    public bool IsLeftCharging { set; get; }
+    [Device(Models.Buds2, Selector.GreaterEqual)]
+    public bool IsRightCharging { set; get; } 
+    [Device(Models.Buds2, Selector.GreaterEqual)]
+    public bool IsCaseCharging { set; get; }
 
     public override void ParseMessage(SppMessage msg)
     {

@@ -7,19 +7,18 @@ public interface IBasicStatusUpdate
 {
     public int BatteryL { set; get; }
     public int BatteryR { set; get; }
-
-    [Device(Models.Buds)]
+    
     public LegacyWearStates WearState { set; get; }
         
     [Device(Models.Buds)]
     public int EarType { set; get; }
         
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public int Revision { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public PlacementStates PlacementL { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public PlacementStates PlacementR { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public int BatteryCase { set; get; }
 }

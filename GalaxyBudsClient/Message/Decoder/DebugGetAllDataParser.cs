@@ -52,43 +52,43 @@ public class DebugGetAllDataParser : BaseMessageParser
     public string? LeftHall { set; get; }
     public string? RightHall { set; get; }
 
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public short LeftProximityOffset { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public short RightProximityOffset { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public byte MsgVersion { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public short LeftTspAbs { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public short RightTspAbs { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public short LeftTspDiff0 { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public short LeftTspDiff1 { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public short LeftTspDiff2 { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public short RightTspDiff0 { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public short RightTspDiff1 { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public short RightTspDiff2 { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public short LeftPR { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public short RightPR { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public short LeftWD { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public short RightWD { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public byte LeftCradleFlag { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public byte RightCradleFlag { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public byte LeftCradleBatt { set; get; }
-    [Device([Models.BudsPlus, Models.BudsLive, Models.BudsPro])]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public byte RightCradleBatt { set; get; }
 
     public override void ParseMessage(SppMessage msg)
