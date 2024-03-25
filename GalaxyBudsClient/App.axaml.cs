@@ -97,7 +97,7 @@ public class App : Application
     
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if(e.PropertyName is nameof(Settings.Instance.DarkMode) or nameof(Settings.Instance.AccentColor))
+        if(e.PropertyName is nameof(Settings.Instance.Theme) or nameof(Settings.Instance.AccentColor))
         {
             LoadThemeProperties();
         }
@@ -105,7 +105,7 @@ public class App : Application
 
     private void LoadThemeProperties()
     {
-        FluentTheme.PreferSystemTheme = Settings.Instance.DarkMode == DarkModes.System;
+        FluentTheme.PreferSystemTheme = Settings.Instance.Theme == Themes.System;
         var color = Settings.Instance.AccentColor;
         if (color.A == 0)
         {

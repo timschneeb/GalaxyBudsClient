@@ -43,9 +43,8 @@ public interface IExperiments : INotifyPropertyChanged
     
 public interface ISettings : INotifyPropertyChanged
 {
-    // TODO replace DarkMode with new setting. don't carry over old setting
-    [Option(DefaultValue = DarkModes.Dark)]
-    DarkModes DarkMode { set; get; }
+    [Option(DefaultValue = Themes.DarkBlur)]
+    Themes Theme { set; get; }
     [Option(DefaultValue = 144)]
     int BlurStrength { set; get; }
     Color AccentColor { set; get; }

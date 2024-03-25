@@ -23,7 +23,6 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
     public TouchOptions TouchpadOptionR { set; get; }
     public bool SeamlessConnectionEnabled { set; get; }
     
-    // TODO redesign device attributes
     [Device(Models.Buds, Models.BudsPlus)]
     public bool AmbientSoundEnabled { set; get; }
     [Device(Models.BudsLive, Selector.NotEqual)]
