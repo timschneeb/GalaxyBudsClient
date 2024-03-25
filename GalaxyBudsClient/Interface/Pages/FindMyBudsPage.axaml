@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.FindMyBudsPage"
              x:DataType="pages:FindMyBudsPageViewModel"
@@ -15,6 +16,10 @@
 
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
+            <Interaction.Behaviors>
+                <ext:RequiresConnectedDeviceBehavior />
+            </Interaction.Behaviors>
+            
             <Border Classes="Card" ClipToBounds="True">
 
                 <controls:EarbudControlUnit ButtonText="{DynamicResource fmg_header}"

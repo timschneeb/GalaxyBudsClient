@@ -39,6 +39,10 @@
     </UserControl.Resources>
 
     <Panel Margin="{StaticResource AppPageMargin}">
+        <Interaction.Behaviors>
+            <ext:RequiresConnectedDeviceBehavior />
+        </Interaction.Behaviors>
+        
         <Grid RowDefinitions="*,8,Auto">
             <Border Classes="Card">
                 <Grid RowDefinitions="Auto,*">

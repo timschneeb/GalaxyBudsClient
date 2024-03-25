@@ -134,5 +134,6 @@
 
     <ItemGroup>
         <Folder Include="Cli\"/>
+        <Folder Include="Interface\Behaviors\" />
     </ItemGroup>
 </Project>

@@ -16,7 +16,10 @@
 
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
-
+            <Interaction.Behaviors>
+                <ext:RequiresConnectedDeviceBehavior />
+            </Interaction.Behaviors>
+            
             <controls:SettingsGroup>
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource eq_enable}"
