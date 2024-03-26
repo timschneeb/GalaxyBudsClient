@@ -72,6 +72,10 @@
         <AvaloniaXaml Remove="bin\**"/>
         <EmbeddedResource Remove="bin\**"/>
         <None Remove="bin\**"/>
+        <Compile Update="Interface\Windows\MainWindow.axaml.cs">
+          <DependentUpon>MainWindow.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
     <PropertyGroup>

@@ -5,14 +5,13 @@ using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.Interface;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Symbol = FluentIcons.Common.Symbol;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
 namespace GalaxyBudsClient.Interface.Developer;
 
-public partial class TranslatorTools : StyledWindow
+public partial class TranslatorTools : StyledWindow.StyledWindow
 {
     public static bool GrantAllFeaturesForTesting { get; private set; }
     

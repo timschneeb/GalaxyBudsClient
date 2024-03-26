@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Attributes;
 using Tmds.DBus;
+using MainWindow = GalaxyBudsClient.Interface.MainWindow;
 
 #pragma warning disable CS0414 // Field is assigned but its value is never used
 

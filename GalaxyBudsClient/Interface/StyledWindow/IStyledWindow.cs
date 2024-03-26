@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Media.Immutable;
@@ -9,31 +8,14 @@ using FluentAvalonia.UI.Media;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
 
-namespace GalaxyBudsClient.Interface;
+namespace GalaxyBudsClient.Interface.StyledWindow;
 
-public class StyledWindow : Window
+public interface IStyledWindow : IThemeVariantHost
 {
-    protected StyledWindow()
-    {
-        Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
-    }
-
     protected virtual IReadOnlyList<WindowTransparencyLevel> DefaultTransparencyLevelHint => Array.Empty<WindowTransparencyLevel>();
-    protected virtual void ApplyBackgroundBrush(IBrush? brush)
-    {
-        if(brush == null)
-            ClearValue(BackgroundProperty);
-        else
-            Background = brush;
-    }
-    
-    protected override void OnOpened(EventArgs e)
-    {
-        ApplyTheme();
-        base.OnOpened(e);
-    }
+    protected void ApplyBackgroundBrush(IBrush? brush);
 
-    private static ThemeVariant? GetThemeVariant()
+    protected static ThemeVariant? GetThemeVariant()
     {
         return Settings.Instance.Theme switch
         {
@@ -43,37 +25,31 @@ public class StyledWindow : Window
             _ => null
         };
     }
-    
-    private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
-    {
-        if(e.PropertyName is nameof(Settings.Instance.Theme) or nameof(Settings.Instance.BlurStrength))
-        {
-            ApplyTheme();
-        }
-    }
 
-    private void ApplyTheme()
+    protected static bool IsSolid() => Settings.Instance.Theme is Themes.Light or Themes.Dark;
+    
+    public void ApplyTheme(TopLevel host)
     {
-        RequestedThemeVariant = GetThemeVariant();
+        host.RequestedThemeVariant = GetThemeVariant();
             
         if (Settings.Instance.Theme == Themes.DarkBlur)
         {
-            TryEnableMicaEffect();
+            TryEnableMicaEffect(host);
         }
         else
         {
-            TransparencyLevelHint = DefaultTransparencyLevelHint;
+            host.TransparencyLevelHint = DefaultTransparencyLevelHint;
             ApplyBackgroundBrush(null);
-            ClearValue(TransparencyBackgroundFallbackProperty);
+            host.ClearValue(TopLevel.TransparencyBackgroundFallbackProperty);
         }
     }
     
-    private void TryEnableMicaEffect()
+    private void TryEnableMicaEffect(TopLevel host)
     {
         // TODO test on Windows
         
-        TransparencyBackgroundFallback = Brushes.Transparent;
-        TransparencyLevelHint = new[]
+        host.TransparencyBackgroundFallback = Brushes.Transparent;
+        host.TransparencyLevelHint = new[]
             { WindowTransparencyLevel.Mica, WindowTransparencyLevel.AcrylicBlur, WindowTransparencyLevel.Blur };
         
         // The background colors for the Mica brush are still based around SolidBackgroundFillColorBase resource
