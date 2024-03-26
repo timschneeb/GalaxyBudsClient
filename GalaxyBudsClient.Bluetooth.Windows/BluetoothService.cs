@@ -204,7 +204,7 @@ namespace GalaxyBudsClient.Bluetooth.Windows
                 {
                     BluetoothErrorAsync?.Invoke(this, new BluetoothException(
                         BluetoothException.ErrorCodes.ConnectFailed,
-                        $"Invalid MAC address. Please deregister your device and try again."));
+                        $"Invalid MAC address. Please unregister your device and try again."));
                     _connSemaphore.Release();
                     return;
                 }
