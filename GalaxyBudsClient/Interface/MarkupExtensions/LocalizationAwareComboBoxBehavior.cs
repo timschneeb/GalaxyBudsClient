@@ -5,6 +5,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Xaml.Interactivity;
 using GalaxyBudsClient.Interface.Controls;
+using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 
 namespace GalaxyBudsClient.Interface.MarkupExtensions;
@@ -47,11 +48,11 @@ public class LocalizationAwareComboBoxBehavior : Behavior<SettingsComboBoxItem>
             return;
         
         var selected = cb.SelectedValue;
-        cb.ItemsSource = Enum.GetValues(EnumType)
-            .OfType<object>()
-            .Where(obj => EnumType.GetMember(EnumType.GetEnumName((int)obj) ?? string.Empty)[0]
-                .GetCustomAttributes(typeof(IgnoreDataMemberAttribute), false)
-                .Length <= 0).ToArray();
+        cb.ItemsSource = Enum.GetValues(EnumType!)
+            .OfType<Enum>()
+            .Where(obj => obj.IsPlatformConditionMet())
+            .Where(obj => !obj.IsMemberIgnored())
+            .ToArray();
         cb.SelectedValue = selected;
     }
 }

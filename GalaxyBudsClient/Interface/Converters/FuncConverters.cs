@@ -6,5 +6,5 @@ namespace GalaxyBudsClient.Interface.Converters;
 public static class FuncConverters
 {
     public static readonly IValueConverter IsBlurDarkModeSet =
-        new FuncValueConverter<Themes, bool>(x => x == Themes.DarkBlur);
+        new FuncValueConverter<Themes, bool>(x => x is Themes.DarkBlur or Themes.DarkMica);
 }

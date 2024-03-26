@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Runtime.Serialization;
 using Avalonia.Markup.Xaml;
+using GalaxyBudsClient.Model.Attributes;
 
 namespace GalaxyBudsClient.Interface.MarkupExtensions;
 
@@ -36,9 +37,9 @@ public class EnumBindingSource : MarkupExtension
     public override object ProvideValue(IServiceProvider serviceProvider)
     {
         return Enum.GetValues(EnumType!)
-            .OfType<object>()
-            .Where(obj => EnumType!.GetMember(EnumType.GetEnumName((int)obj) ?? string.Empty)[0]
-                .GetCustomAttributes(typeof(IgnoreDataMemberAttribute), false)
-                .Length <= 0).ToArray();
+            .OfType<Enum>()
+            .Where(obj => obj.IsPlatformConditionMet())
+            .Where(obj => !obj.IsMemberIgnored())
+            .ToArray();
     }
 }
