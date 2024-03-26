@@ -17,11 +17,10 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
-using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.Developer;
 
-public partial class DevTools : StyledWindow
+public partial class DevTools : StyledWindow.StyledWindow
 {
     private class ViewModel
     {

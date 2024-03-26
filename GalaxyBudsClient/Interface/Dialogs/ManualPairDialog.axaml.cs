@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Interface.ViewModels.Dialogs;

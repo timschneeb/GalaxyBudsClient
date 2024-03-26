@@ -10,8 +10,8 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input;
 using Avalonia.Threading;
 using GalaxyBudsClient.Bluetooth;
-using GalaxyBudsClient.Interface;
 using GalaxyBudsClient.Interface.Dialogs;
+using GalaxyBudsClient.Interface.StyledWindow;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model;
@@ -25,9 +25,9 @@ using Serilog;
 using Application = Avalonia.Application;
 using Environment = System.Environment;
 
-namespace GalaxyBudsClient;
+namespace GalaxyBudsClient.Interface;
 
-public partial class MainWindow : StyledWindow /* : AppWindow */
+public partial class MainWindow : StyledAppWindow
 {
     private BudsPopup? _popup;
 

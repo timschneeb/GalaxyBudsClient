@@ -11,6 +11,7 @@ using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Serilog;
+using MainWindow = GalaxyBudsClient.Interface.MainWindow;
 
 namespace GalaxyBudsClient.Utils.Interface;
 

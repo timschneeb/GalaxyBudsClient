@@ -22,12 +22,12 @@
                    DockPanel.Dock="Left"
                    Name="WindowIcon"
                    RenderOptions.BitmapInterpolationMode="HighQuality">
+                <!-- TODO -->
                 <!--<Image.IsVisible>
                     <OnPlatform Default="False">
                         <On Options="Windows" Content="True" />
                     </OnPlatform>
                 </Image.IsVisible>-->
-                <Image.IsVisible>False</Image.IsVisible>
             </Image>
 
             <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
@@ -40,7 +40,6 @@
                         <On Options="Windows" Content="True" />
                     </OnPlatform>
                 </TextBlock.IsVisible>-->
-                <TextBlock.IsVisible>False</TextBlock.IsVisible>
             </TextBlock>
         </Grid>
 

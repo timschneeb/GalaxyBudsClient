@@ -8,6 +8,7 @@ using Avalonia.Input;
 using Avalonia.Markup.Xaml.MarkupExtensions;
 using Avalonia.Media;
 using Avalonia.Threading;
+using GalaxyBudsClient.Interface.StyledWindow;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Constants;
@@ -19,7 +20,7 @@ using Application = Avalonia.Application;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 
-public partial class BudsPopup : StyledWindow
+public partial class BudsPopup : StyledWindow.StyledWindow
 {
     public EventHandler? ClickedEventHandler { get; set; }
     
@@ -37,10 +38,10 @@ public partial class BudsPopup : StyledWindow
         _timer.Elapsed += (_, _) => Dispatcher.UIThread.Post(Hide, DispatcherPriority.Render);
     }
 
-    protected override IReadOnlyList<WindowTransparencyLevel> DefaultTransparencyLevelHint =>
+    protected IReadOnlyList<WindowTransparencyLevel> DefaultTransparencyLevelHint =>
         new[] { WindowTransparencyLevel.Transparent };
 
-    protected override void ApplyBackgroundBrush(IBrush? brush)
+    public override void ApplyBackgroundBrush(IBrush? brush)
     {
         if (brush == null)
             OuterBorder[!Border.BackgroundProperty] = new DynamicResourceExtension()
@@ -91,7 +92,10 @@ public partial class BudsPopup : StyledWindow
     {  
         /* Close window instead */
         _timer.Stop();
-        OuterBorder.Tag = "hiding";
+        
+        /* Opacity animations with blurred windows don't look good (on Linux/KDE at least) */
+        if(IStyledWindow.IsSolid())
+            OuterBorder.Tag = "hiding";
         Task.Delay(1000).ContinueWith(_ => { Dispatcher.UIThread.InvokeAsync(Close); });
     }
 

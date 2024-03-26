@@ -12,7 +12,6 @@
              x:Class="GalaxyBudsClient.Interface.Pages.HotkeyPage"
              x:DataType="pages:HotkeyPageViewModel"
              x:CompileBindings="True">
-
     <Design.DataContext>
         <pages:HotkeyPageViewModel />
     </Design.DataContext>
@@ -53,7 +52,7 @@
                         CommandParameter="{Binding #HotkeyList.SelectedItem}" />
                 </ui:CommandBar.PrimaryCommands>
             </ui:CommandBar>
-
+            
             <ListBox Grid.Row="1"
                      ItemsSource="{Binding Hotkeys}"
                      IsVisible="{Binding !NoHotkeys}"
