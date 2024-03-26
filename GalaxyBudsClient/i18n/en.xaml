@@ -35,7 +35,8 @@
     <!--Dark Mode States-->
     <sys:String x:Key="darkmode_disabled">Off</sys:String>
     <sys:String x:Key="darkmode_enabled">On</sys:String>
-    <sys:String x:Key="darkmode_blur_enabled">On, with blur</sys:String>
+    <sys:String x:Key="darkmode_blur_enabled">On, with blur effect</sys:String>
+    <sys:String x:Key="darkmode_mica_enabled">On, with mica effect</sys:String>
     <sys:String x:Key="darkmode_system">Use system setting</sys:String>
 
     <!--Connection popup-->

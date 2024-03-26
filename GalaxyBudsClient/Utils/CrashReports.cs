@@ -16,7 +16,7 @@ public static class CrashReports
         {
             o.Dsn = "https://4591394c5fd747b0ab7f5e81297c094d@o456940.ingest.sentry.io/5462682";
             o.MaxBreadcrumbs = 120;
-            o.SendDefaultPii = true;
+            o.SendDefaultPii = false;
             o.Release = Assembly.GetExecutingAssembly().GetName().Version?.ToString();
 #if DEBUG
             o.Environment = "staging";
@@ -29,7 +29,6 @@ public static class CrashReports
                 {
                     sentryEvent.SetTag("arch",
                         RuntimeInformation.ProcessArchitecture.ToString());
-                    sentryEvent.SetTag("bluetooth-mac", Settings.Instance.RegisteredDevice.MacAddress);
                     sentryEvent.SetTag("sw-version",
                         DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");
 
