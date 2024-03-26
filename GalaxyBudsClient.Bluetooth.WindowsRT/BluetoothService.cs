@@ -112,7 +112,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                         {
                             Log.Debug($"WindowsRT.BluetoothService: Target device removed");
                             Disconnected?.Invoke(this,
-                                "Device was removed/un-paired from Windows. Please check your computer's bluetooth settings.");
+                                "Device was removed/un-paired from Windows. Please check your computer's Bluetooth settings.");
                         }
                     });
                     _deviceCache?.RemoveWhere(x => x?.Id == deviceInfoUpdate?.Id);
@@ -162,7 +162,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                     Log.Error("WindowsRT.BluetoothService: Registered device not available. Expected MAC: {MacAddress}", macAddress);
                     BluetoothErrorAsync?.Invoke(this, new BluetoothException(
                         BluetoothException.ErrorCodes.ConnectFailed,
-                        "Device unavailable. Not device with registered MAC address not found nearby. If you are certain that your earbuds are connected to this computer, please unregister them and try again."));
+                        "Device unavailable. No device with the registered MAC address found nearby. If you are certain that your earbuds are connected to this computer, please unregister them and try again."));
                 }
                 else
                 {
@@ -229,7 +229,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                     Log.Error($"WindowsRT.BluetoothService: SPP service not discovered");
                     BluetoothErrorAsync?.Invoke(this,
                         new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
-                            "Unable to discover SDP record for the RFCOMM protocol. Either your earbuds are out of range or ran out of battery."));
+                            "Unable to find Bluetooth service. Your earbuds are out of range or ran out of battery."));
                     return;
                 }
 
@@ -268,7 +268,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                     BluetoothErrorAsync?.Invoke(this,
                         new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
                             "Target address already in use. Only one app can talk to the Galaxy Buds at a time. " +
-                            "Please make sure to close duplicate instances of this app and close all applications that are interacting with the proprietary RFCOMM protocol, such as Samsung's official firmware updater"));
+                            "Please make sure to close duplicate instances of this app and close all applications that are interacting with the configuration protocol of the earbuds, such as Samsung's official app."));
                 }
             }
             catch (Exception ex)
