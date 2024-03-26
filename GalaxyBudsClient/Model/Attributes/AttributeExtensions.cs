@@ -40,7 +40,7 @@ public static class AttributeExtensions
         => e.GetEnumAttribute<IgnoreDataMemberAttribute, T>() != null;
 
     public static bool IsPlatformConditionMet<T>(this T e) where T : IConvertible
-        => e.GetEnumAttribute<RequiresPlatform, T>()?.IsConditionMet != false;
+        => e.GetEnumAttribute<RequiresPlatform, T>()?.IsConditionMet() != false;
         
     public static ModelMetadataAttribute? GetModelMetadata<T>(this T e) where T : IConvertible
         => e.GetEnumAttribute<ModelMetadataAttribute, T>();

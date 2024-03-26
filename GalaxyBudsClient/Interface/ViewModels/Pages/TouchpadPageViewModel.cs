@@ -185,7 +185,6 @@ public class TouchpadPageViewModel : MainPageViewModelBase
             var table = BluetoothService.Instance.DeviceSpec.TouchMap.LookupTable;
             var actions = table
                 .Where(pair => !pair.Key.IsMemberIgnored())
-                .Where(pair => pair.Key.IsPlatformConditionMet())
                 .Select(TouchActionViewModel.FromKeyValuePair);
 
             /* Inject custom actions if appropriate */
