@@ -94,7 +94,7 @@ public partial class BudsPopup : StyledWindow.StyledWindow
         _timer.Stop();
         
         /* Opacity animations with blurred windows don't look good (on Linux/KDE at least) */
-        if(IStyledWindow.IsSolid())
+        if(IStyledWindow.IsSolid() || !PlatformUtils.IsLinux)
             OuterBorder.Tag = "hiding";
         Task.Delay(1000).ContinueWith(_ => { Dispatcher.UIThread.InvokeAsync(Close); });
     }

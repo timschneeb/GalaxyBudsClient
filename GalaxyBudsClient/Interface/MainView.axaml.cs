@@ -317,67 +317,11 @@ public partial class MainView : UserControl
 
         if (show)
         {
-            var ani = new Animation
-            {
-                Duration = TimeSpan.FromMilliseconds(250),
-                FillMode = FillMode.Forward,
-                Children =
-                {
-                    new KeyFrame
-                    {
-                        Cue = new Cue(0d),
-                        Setters =
-                        {
-                            new Setter(MarginProperty, new Thickness(12, 4, 12, 4))
-                        }
-                    },
-                    new KeyFrame
-                    {
-                        Cue = new Cue(1d),
-                        KeySpline = new KeySpline(0,0,0,1),
-                        Setters =
-                        {
-                            new Setter(MarginProperty, new Thickness(48,4,12,4))
-                        }
-                    }
-                }
-            };
-
-            await ani.RunAsync(WindowIcon);
-
             NavView.IsBackButtonVisible = true;
         }
         else
         {
             NavView.IsBackButtonVisible = false;
-
-            var ani = new Animation
-            {
-                Duration = TimeSpan.FromMilliseconds(250),
-                FillMode = FillMode.Forward,
-                Children =
-                {
-                    new KeyFrame
-                    {
-                        Cue = new Cue(0d),
-                        Setters =
-                        {
-                            new Setter(MarginProperty, new Thickness(48, 4, 12, 4))
-                        }
-                    },
-                    new KeyFrame
-                    {
-                        Cue = new Cue(1d),
-                        KeySpline = new KeySpline(0,0,0,1),
-                        Setters =
-                        {
-                            new Setter(MarginProperty, new Thickness(12,4,12,4))
-                        }
-                    }
-                }
-            };
-
-            await ani.RunAsync(WindowIcon);
         }
     }
 }
