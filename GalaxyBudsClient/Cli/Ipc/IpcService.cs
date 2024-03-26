@@ -35,33 +35,35 @@ public static class IpcService
     {
         if(Design.IsDesignMode)
             return;
-            
-        var server = new ServerConnectionOptions();
-        // On Linux, we use the regular session bus. On other platforms, we host our own d-bus server.
-        var useSessionBus = PlatformUtils.IsLinux;
-        var connection = useSessionBus ? new Connection(Address.Session) : new Connection(server);
-            
+        
         try
         {
+            var server = new ServerConnectionOptions();
+            // On Linux, we use the regular session bus. On other platforms, we host our own d-bus server.
+            var useSessionBus = PlatformUtils.IsLinux;
+            using var connection = useSessionBus ? new Connection(Address.Session) : new Connection(server);
+
+            
             string? boundAddress = null;
             // Linux: connect to existing bus
             if (useSessionBus)
             {
                 await connection.ConnectAsync();
-            }
-            else
-            {
-                boundAddress = await server.StartAsync(TcpAddress);
+                await connection.RegisterServiceAsync(ServiceName, ServiceRegistrationOptions.None);
             }
                 
-            await connection.RegisterServiceAsync(ServiceName, ServiceRegistrationOptions.None);
             await connection.RegisterObjectAsync(new ApplicationObject());
             _deviceObject = new DeviceObject();
             await connection.UpdateDeviceObjectAsync();
-
+            
             BluetoothService.Instance.Connected += (sender, args) => _ = connection.UpdateDeviceObjectAsync();
             BluetoothService.Instance.Disconnected += (sender, args) => _ = connection.UpdateDeviceObjectAsync();
-                
+            
+            if(!useSessionBus)
+            {
+                boundAddress = await server.StartAsync(TcpAddress);
+            }
+            
             if (!useSessionBus)
             {
                 Log.Information("IpcService: Server listening at {BoundAddress}", boundAddress);
