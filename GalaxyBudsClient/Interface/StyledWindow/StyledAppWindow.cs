@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using Avalonia.Controls;
 using Avalonia.Media;
 using FluentAvalonia.UI.Windowing;
 using GalaxyBudsClient.Utils;
@@ -12,6 +14,9 @@ public class StyledAppWindow : AppWindow, IStyledWindow
     {
         Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
     }
+
+    public IReadOnlyList<WindowTransparencyLevel> DefaultTransparencyLevelHint =>
+        Array.Empty<WindowTransparencyLevel>();
 
     public virtual void ApplyBackgroundBrush(IBrush? brush)
     {

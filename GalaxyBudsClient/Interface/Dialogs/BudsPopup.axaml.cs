@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Timers;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
-using Avalonia.Markup.Xaml.MarkupExtensions;
 using Avalonia.Media;
 using Avalonia.Threading;
 using GalaxyBudsClient.Interface.StyledWindow;
@@ -20,7 +20,7 @@ using Application = Avalonia.Application;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 
-public partial class BudsPopup : StyledWindow.StyledWindow
+public partial class BudsPopup : Window
 {
     public EventHandler? ClickedEventHandler { get; set; }
     
@@ -34,22 +34,17 @@ public partial class BudsPopup : StyledWindow.StyledWindow
         if(cachedStatus != null)
             UpdateContent(cachedStatus);
             
+        Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
         SppMessageHandler.Instance.BaseUpdate += InstanceOnBaseUpdate;
         _timer.Elapsed += (_, _) => Dispatcher.UIThread.Post(Hide, DispatcherPriority.Render);
     }
-
-    protected IReadOnlyList<WindowTransparencyLevel> DefaultTransparencyLevelHint =>
-        new[] { WindowTransparencyLevel.Transparent };
-
-    public override void ApplyBackgroundBrush(IBrush? brush)
+    
+    private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if (brush == null)
-            OuterBorder[!Border.BackgroundProperty] = new DynamicResourceExtension()
-            {
-                ResourceKey = "SolidBackgroundFillColorSecondaryBrush"
-            };
-        else
-            OuterBorder.Background = brush;
+        if(e.PropertyName is nameof(Settings.Instance.Theme) or nameof(Settings.Instance.BlurStrength))
+        {
+            RequestedThemeVariant = IStyledWindow.GetThemeVariant();
+        }
     }
 
     private void InstanceOnBaseUpdate(object? sender, IBasicStatusUpdate e)
@@ -93,9 +88,7 @@ public partial class BudsPopup : StyledWindow.StyledWindow
         /* Close window instead */
         _timer.Stop();
         
-        /* Opacity animations with blurred windows don't look good (on Linux/KDE at least) */
-        if(IStyledWindow.IsSolid() || !PlatformUtils.IsLinux)
-            OuterBorder.Tag = "hiding";
+        OuterBorder.Tag = "hiding";
         Task.Delay(1000).ContinueWith(_ => { Dispatcher.UIThread.InvokeAsync(Close); });
     }
 
@@ -123,6 +116,7 @@ public partial class BudsPopup : StyledWindow.StyledWindow
 
     public void UpdateSettings()
     {
+        RequestedThemeVariant = IStyledWindow.GetThemeVariant();
         Header.Content = BluetoothService.Instance.DeviceName;
 
         /* Header */
