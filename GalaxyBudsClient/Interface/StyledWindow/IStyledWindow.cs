@@ -12,10 +12,10 @@ namespace GalaxyBudsClient.Interface.StyledWindow;
 
 public interface IStyledWindow : IThemeVariantHost
 {
-    protected virtual IReadOnlyList<WindowTransparencyLevel> DefaultTransparencyLevelHint => Array.Empty<WindowTransparencyLevel>();
+    protected IReadOnlyList<WindowTransparencyLevel> DefaultTransparencyLevelHint { get; }
     protected void ApplyBackgroundBrush(IBrush? brush);
 
-    protected static ThemeVariant? GetThemeVariant()
+    public static ThemeVariant? GetThemeVariant()
     {
         return Settings.Instance.Theme switch
         {

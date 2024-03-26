@@ -19,14 +19,13 @@
         Topmost="True"
         ShowActivated="False"
         Focusable="False"
-        CornerRadius="{StaticResource OverlayCornerRadius}"
         Title="Galaxy Buds Manager (Popup)"
         PointerPressed="Window_OnPointerPressed">
 
     <Border Name="OuterBorder"
             BorderBrush="{DynamicResource SurfaceStrokeColorFlyoutBrush}"
             BorderThickness="1"
-            Background="{DynamicResource MicaBackgroundFillColorBaseBrush}"
+            Background="{DynamicResource SolidBackgroundFillColorBaseBrush}"
             CornerRadius="{StaticResource OverlayCornerRadius}">
         <Border.Styles>
             <Style Selector="Border[Tag=showing]">
