@@ -132,7 +132,7 @@ namespace GalaxyBudsClient.Model
             [LocalizedDescription("darkmode_blur_enabled")]
             DarkBlur,
             [RequiresPlatform(PlatformUtils.Platforms.Windows, 22000 /* Windows 11 */)]
-            [LocalizedDescription("darkmode_blur_enabled")]
+            [LocalizedDescription("darkmode_mica_enabled")]
             DarkMica,
             // Disabled [LocalizedDescription("darkmode_system")]
             [IgnoreDataMember]
