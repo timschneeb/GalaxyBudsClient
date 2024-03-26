@@ -29,7 +29,11 @@ internal static class Program
     public static void Main(string[] args)
     {
         StartedAt = Stopwatch.GetTimestamp();
-            
+     
+#if Windows
+        ThePBone.Interop.Win32.WindowsUtils.AttachConsole();
+#endif
+        
         var config = new LoggerConfiguration()
             .WriteTo.Sentry(o =>
             {
