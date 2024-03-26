@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>36%</td><td>262 missing string(s)</td></tr>
+<tr><td>36%</td><td>263 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -19,7 +19,8 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>file_not_found</code></td><td>File not found</td></tr>
 <tr><td><code>anc</code></td><td>Active noise cancelling</td></tr>
 <tr><td><code>sppmsg_crc_fail</code></td><td>Checksum incorrect</td></tr>
-<tr><td><code>darkmode_blur_enabled</code></td><td>On, with blur</td></tr>
+<tr><td><code>darkmode_blur_enabled</code></td><td>On, with blur effect</td></tr>
+<tr><td><code>darkmode_mica_enabled</code></td><td>On, with mica effect</td></tr>
 <tr><td><code>touchoption_switch_noisecontrols</code></td><td>Switch noise controls</td></tr>
 <tr><td><code>touchoption_custom_trigger_event</code></td><td>Trigger earbud action...</td></tr>
 <tr><td><code>tray_enable_anc</code></td><td>Enable active noise cancelling</td></tr>

@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>84%</td><td>65 missing string(s)</td></tr>
+<tr><td>84%</td><td>66 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -13,7 +13,8 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><th>Key</th><th>Original string</th></tr>
 <tr><td><code>hint</code></td><td>Hint</td></tr>
 <tr><td><code>file_not_found</code></td><td>File not found</td></tr>
-<tr><td><code>darkmode_blur_enabled</code></td><td>On, with blur</td></tr>
+<tr><td><code>darkmode_blur_enabled</code></td><td>On, with blur effect</td></tr>
+<tr><td><code>darkmode_mica_enabled</code></td><td>On, with mica effect</td></tr>
 <tr><td><code>touchoption_custom_trigger_event</code></td><td>Trigger earbud action...</td></tr>
 <tr><td><code>hotkey_add_short</code></td><td>New</td></tr>
 <tr><td><code>hotkey_edit_long</code></td><td>Edit existing hotkey</td></tr>
