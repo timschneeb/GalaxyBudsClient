@@ -132,7 +132,7 @@ public partial class MainView : UserControl
 
         if (VisualRoot is AppWindow aw)
         {
-            TitleBarHost.ColumnDefinitions[3].Width = new GridLength(aw.TitleBar.RightInset, GridUnitType.Pixel);
+            TitleBarHost.ColumnDefinitions[1].Width = new GridLength(aw.TitleBar.RightInset, GridUnitType.Pixel);
         }
     }
     

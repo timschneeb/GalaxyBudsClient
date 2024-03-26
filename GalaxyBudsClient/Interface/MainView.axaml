@@ -13,34 +13,8 @@
     
     <Grid RowDefinitions="Auto,*">
         <Grid Name="TitleBarHost"
-              ColumnDefinitions="Auto,Auto,*,Auto"
+              ColumnDefinitions="*,Auto"
               Background="Transparent">
-            <Image Margin="12 4"
-                   IsHitTestVisible="False"
-                   Source="/Resources/icon.ico"
-                   Width="18" Height="18"
-                   DockPanel.Dock="Left"
-                   Name="WindowIcon"
-                   RenderOptions.BitmapInterpolationMode="HighQuality">
-                <!-- TODO -->
-                <!--<Image.IsVisible>
-                    <OnPlatform Default="False">
-                        <On Options="Windows" Content="True" />
-                    </OnPlatform>
-                </Image.IsVisible>-->
-            </Image>
-
-            <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                       FontSize="12"
-                       IsHitTestVisible="False"
-                       VerticalAlignment="Center"
-                       Grid.Column="1">
-                <!--<TextBlock.IsVisible>
-                    <OnPlatform Default="False">
-                        <On Options="Windows" Content="True" />
-                    </OnPlatform>
-                </TextBlock.IsVisible>-->
-            </TextBlock>
         </Grid>
 
         <ui:NavigationView Grid.Row="0" AlwaysShowHeader="False"
