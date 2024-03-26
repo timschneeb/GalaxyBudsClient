@@ -292,11 +292,11 @@ public partial class MainView : UserControl
         
         if (FrameView.BackStackDepth > 0 && !NavView.IsBackButtonVisible)
         {
-            AnimateContentForBackButton(true);
+            NavView.IsBackButtonVisible = true;
         }
         else if (FrameView.BackStackDepth == 0 && NavView.IsBackButtonVisible)
         {
-            AnimateContentForBackButton(false);
+            NavView.IsBackButtonVisible = false;
         }
     }
 
@@ -307,21 +307,6 @@ public partial class MainView : UserControl
         if (t is ViewModelBase && item?.IconSource is SymbolIconSource source)
         {
             source.IsFilled = selected;
-        }
-    }
-
-    private async void AnimateContentForBackButton(bool show)
-    {
-        if (!IsVisible)
-            return;
-
-        if (show)
-        {
-            NavView.IsBackButtonVisible = true;
-        }
-        else
-        {
-            NavView.IsBackButtonVisible = false;
         }
     }
 }

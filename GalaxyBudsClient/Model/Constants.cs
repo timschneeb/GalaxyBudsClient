@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using GalaxyBudsClient.Model.Attributes;
+using GalaxyBudsClient.Platform;
 
 namespace GalaxyBudsClient.Model
 {
@@ -130,6 +131,9 @@ namespace GalaxyBudsClient.Model
             Dark,
             [LocalizedDescription("darkmode_blur_enabled")]
             DarkBlur,
+            [RequiresPlatform(PlatformUtils.Platforms.Windows, 22000 /* Windows 11 */)]
+            [LocalizedDescription("darkmode_blur_enabled")]
+            DarkMica,
             // Disabled [LocalizedDescription("darkmode_system")]
             [IgnoreDataMember]
             System

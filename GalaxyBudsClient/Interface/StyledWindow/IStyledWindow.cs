@@ -22,6 +22,7 @@ public interface IStyledWindow : IThemeVariantHost
             Themes.Light => ThemeVariant.Light,
             Themes.Dark => ThemeVariant.Dark,
             Themes.DarkBlur => ThemeVariant.Dark,
+            Themes.DarkMica => ThemeVariant.Dark,
             _ => null
         };
     }
@@ -32,7 +33,7 @@ public interface IStyledWindow : IThemeVariantHost
     {
         host.RequestedThemeVariant = GetThemeVariant();
             
-        if (Settings.Instance.Theme == Themes.DarkBlur)
+        if (!IsSolid())
         {
             TryEnableMicaEffect(host);
         }
@@ -46,12 +47,22 @@ public interface IStyledWindow : IThemeVariantHost
     
     private void TryEnableMicaEffect(TopLevel host)
     {
-        // TODO test on Windows
-        
         host.TransparencyBackgroundFallback = Brushes.Transparent;
-        host.TransparencyLevelHint = new[]
-            { WindowTransparencyLevel.Mica, WindowTransparencyLevel.AcrylicBlur, WindowTransparencyLevel.Blur };
-        
+        if (Settings.Instance.Theme is Themes.DarkMica)
+        {
+            host.TransparencyLevelHint = new[]
+            {
+                WindowTransparencyLevel.Mica, WindowTransparencyLevel.AcrylicBlur, WindowTransparencyLevel.Blur
+            };
+        }
+        else
+        {
+            host.TransparencyLevelHint = new[]
+            {
+                WindowTransparencyLevel.AcrylicBlur, WindowTransparencyLevel.Blur
+            };
+        }
+
         // The background colors for the Mica brush are still based around SolidBackgroundFillColorBase resource
         // BUT since we can't control the actual Mica brush color, we have to use the window background to create
         // the same effect. However, we can't use SolidBackgroundFillColorBase directly since its opaque, and if
