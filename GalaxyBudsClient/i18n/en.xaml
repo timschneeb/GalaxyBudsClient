@@ -199,6 +199,8 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="touchpad_double_tap_volume">Double-tap earbud edge</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Double-tap the edge of the left or right earbud to turn the volume down or up</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Noise control switching mode</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_l">Noise control switching mode (Left)</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_r">Noise control switching mode (Right)</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_desc">Choose modes to cycle through</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ Ambient sound</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Off</sys:String>

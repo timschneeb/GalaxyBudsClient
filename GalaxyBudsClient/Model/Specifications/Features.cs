@@ -10,6 +10,7 @@ public enum Features
     AmbientSound,
     Anc,
     NoiseControl,
+    NoiseControlModeDualSide,
     BixbyWakeup,
     DetectConversations,
     GamingMode,

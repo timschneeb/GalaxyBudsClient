@@ -80,13 +80,33 @@ public class TouchpadPageViewModel : MainPageViewModelBase
             IsHoldGestureEnabled = true;
         }
 
-        NoiseControlCycleMode = e switch
+        if (BluetoothService.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide))
         {
-            { NoiseControlTouchAnc: true, NoiseControlTouchOff: true } => NoiseControlCycleModes.AncOff,
-            { NoiseControlTouchAmbient: true, NoiseControlTouchOff: true } => NoiseControlCycleModes.AmbOff,
-            { NoiseControlTouchAmbient: true, NoiseControlTouchAnc: true } => NoiseControlCycleModes.AncAmb,
-            _ => NoiseControlCycleModes.Unknown
-        };
+            NoiseControlCycleMode = e switch
+            {
+                { NoiseControlTouchLeftAnc: true, NoiseControlTouchLeftOff: true } => NoiseControlCycleModes.AncOff,
+                { NoiseControlTouchLeftAmbient: true, NoiseControlTouchLeftOff: true } => NoiseControlCycleModes.AmbOff,
+                { NoiseControlTouchLeftAmbient: true, NoiseControlTouchLeftAnc: true } => NoiseControlCycleModes.AncAmb,
+                _ => NoiseControlCycleModes.Unknown
+            };
+            NoiseControlCycleModeRight = e switch
+            {
+                { NoiseControlTouchAnc: true, NoiseControlTouchOff: true } => NoiseControlCycleModes.AncOff,
+                { NoiseControlTouchAmbient: true, NoiseControlTouchOff: true } => NoiseControlCycleModes.AmbOff,
+                { NoiseControlTouchAmbient: true, NoiseControlTouchAnc: true } => NoiseControlCycleModes.AncAmb,
+                _ => NoiseControlCycleModes.Unknown
+            };
+        }
+        else
+        {
+            NoiseControlCycleMode = e switch
+            {
+                { NoiseControlTouchAnc: true, NoiseControlTouchOff: true } => NoiseControlCycleModes.AncOff,
+                { NoiseControlTouchAmbient: true, NoiseControlTouchOff: true } => NoiseControlCycleModes.AmbOff,
+                { NoiseControlTouchAmbient: true, NoiseControlTouchAnc: true } => NoiseControlCycleModes.AncAmb,
+                _ => NoiseControlCycleModes.Unknown
+            };
+        }
 
         UpdateEditStates();
     }
@@ -119,18 +139,44 @@ public class TouchpadPageViewModel : MainPageViewModelBase
                 await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.OUTSIDE_DOUBLE_TAP,
                     IsDoubleTapVolumeEnabled);
                 break;
-            case nameof(NoiseControlCycleMode):
-                (byte, byte, byte) value = NoiseControlCycleMode switch
+            case nameof(NoiseControlCycleMode) or nameof(NoiseControlCycleModeRight):
+                // TODO implement dual side
+                if(BluetoothService.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide))
                 {
-                    NoiseControlCycleModes.AncOff => (1, 0, 1),
-                    NoiseControlCycleModes.AmbOff => (0, 1, 1),
-                    NoiseControlCycleModes.AncAmb => (1, 1, 0),
-                    _ => throw new ArgumentOutOfRangeException(nameof(NoiseControlCycleMode))
-                };
+                    (byte, byte, byte) left = NoiseControlCycleMode switch
+                    {
+                        NoiseControlCycleModes.AncOff => (1, 0, 1),
+                        NoiseControlCycleModes.AmbOff => (0, 1, 1),
+                        NoiseControlCycleModes.AncAmb => (1, 1, 0),
+                        _ => (0, 0, 0)
+                    };
+                    (byte, byte, byte) right = NoiseControlCycleModeRight switch
+                    {
+                        NoiseControlCycleModes.AncOff => (1, 0, 1),
+                        NoiseControlCycleModes.AmbOff => (0, 1, 1),
+                        NoiseControlCycleModes.AncAmb => (1, 1, 0),
+                        _ => (0, 0, 0)
+                    };
 
-                await BluetoothService.Instance.SendRequestAsync(
-                    SppMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS,
-                    value.Item1, value.Item2, value.Item3);
+                    await BluetoothService.Instance.SendRequestAsync(
+                        SppMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS,
+                        left.Item1, left.Item2, left.Item3, right.Item1, right.Item2, right.Item3);
+                }
+                else
+                {
+                    (byte, byte, byte) value = NoiseControlCycleMode switch
+                    {
+                        NoiseControlCycleModes.AncOff => (1, 0, 1),
+                        NoiseControlCycleModes.AmbOff => (0, 1, 1),
+                        NoiseControlCycleModes.AncAmb => (1, 1, 0),
+                        _ => throw new ArgumentOutOfRangeException(nameof(NoiseControlCycleMode))
+                    };
+
+                    await BluetoothService.Instance.SendRequestAsync(
+                        SppMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS,
+                        value.Item1, value.Item2, value.Item3);
+                }
+
                 break;
             case nameof(LeftAction):
             case nameof(RightAction):
@@ -161,8 +207,13 @@ public class TouchpadPageViewModel : MainPageViewModelBase
 
     private void UpdateEditStates()
     {
-        IsNoiseControlCycleModeEditable =
-            LeftAction == TouchOptions.NoiseControl || RightAction == TouchOptions.NoiseControl;
+        IsNoiseControlCycleModeEditable = LeftAction == TouchOptions.NoiseControl || 
+                                          (!BluetoothService.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide) && RightAction == TouchOptions.NoiseControl);
+        IsNoiseControlCycleModeRightEditable = RightAction == TouchOptions.NoiseControl;
+
+        LeftControlCycleModeLabel = Loc.Resolve(BluetoothService.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide) ? 
+            "touchpad_noise_control_mode_l" : "touchpad_noise_control_mode");
+
         IsLeftCustomActionEditable = LeftAction == TouchOptions.OtherL;
         IsRightCustomActionEditable = RightAction == TouchOptions.OtherR;
 
@@ -210,6 +261,8 @@ public class TouchpadPageViewModel : MainPageViewModelBase
     [Reactive] public TouchOptions LeftAction { set; get; }
     [Reactive] public TouchOptions RightAction { set; get; }
     [Reactive] public NoiseControlCycleModes NoiseControlCycleMode { set; get; }
+    [Reactive] public NoiseControlCycleModes NoiseControlCycleModeRight { set; get; }
+
     [Reactive] public bool IsTouchpadLocked { set; get; }
     [Reactive] public bool IsDoubleTapVolumeEnabled { set; get; }
     [Reactive] public bool IsSingleTapGestureEnabled { set; get; }
@@ -220,6 +273,9 @@ public class TouchpadPageViewModel : MainPageViewModelBase
     [Reactive] public bool IsHoldGestureForCallsEnabled { set; get; }
     
     [Reactive] public bool IsNoiseControlCycleModeEditable { set; get; }
+    [Reactive] public bool IsNoiseControlCycleModeRightEditable { set; get; }
+    [Reactive] public string LeftControlCycleModeLabel { set; get; } = Loc.Resolve("touchpad_noise_control_mode");
+
     [Reactive] public bool IsLeftCustomActionEditable { set; get; }
     [Reactive] public bool IsRightCustomActionEditable { set; get; }
     [Reactive] public string? LeftActionDescription { set; get; }

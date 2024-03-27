@@ -29,7 +29,8 @@ public class Buds2DeviceSpec : IDeviceSpec
         { Features.FmgRingWhileWearing, new FeatureRule(9) },
         { Features.DebugSku, null },
         { Features.CallPathControl, new FeatureRule(7) },
-        { Features.ChargingState, new FeatureRule(10) }
+        { Features.ChargingState, new FeatureRule(10) },
+        { Features.NoiseControlModeDualSide, new FeatureRule(5) }
     };
         
     public Models Device => Models.Buds2;

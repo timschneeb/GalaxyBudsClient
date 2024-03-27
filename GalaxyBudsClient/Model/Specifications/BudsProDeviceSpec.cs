@@ -29,7 +29,8 @@ public class BudsProDeviceSpec : IDeviceSpec
         { Features.AmbientCustomize, new FeatureRule(8, "R190XXU0AUI2") },
         { Features.AmbientCustomizeLegacy, new FeatureRule(8, "R190XXU0AUI2") },
         { Features.DebugSku, null },
-        { Features.CallPathControl, new FeatureRule(10) }
+        { Features.CallPathControl, new FeatureRule(10) },
+        { Features.NoiseControlModeDualSide, new FeatureRule(8) }
     };
         
     public Models Device => Models.BudsPro;
