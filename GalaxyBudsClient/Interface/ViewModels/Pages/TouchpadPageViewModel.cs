@@ -140,7 +140,6 @@ public class TouchpadPageViewModel : MainPageViewModelBase
                     IsDoubleTapVolumeEnabled);
                 break;
             case nameof(NoiseControlCycleMode) or nameof(NoiseControlCycleModeRight):
-                // TODO implement dual side
                 if(BluetoothService.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide))
                 {
                     (byte, byte, byte) left = NoiseControlCycleMode switch

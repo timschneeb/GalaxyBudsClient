@@ -74,7 +74,6 @@
 
                 </controls:SettingsComboBoxItem>
 
-                <!-- TODO update string for left/right -->
                 <controls:SettingsComboBoxItem
                     Content="{Binding LeftControlCycleModeLabel}"
                     Description="{DynamicResource touchpad_noise_control_mode_desc}"
