@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>64%</td><td>148 missing string(s)</td></tr>
+<tr><td>63%</td><td>153 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -16,6 +16,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>sppmsg_crc_fail</code></td><td>Checksum incorrect</td></tr>
 <tr><td><code>darkmode_blur_enabled</code></td><td>On, with blur effect</td></tr>
 <tr><td><code>darkmode_mica_enabled</code></td><td>On, with mica effect</td></tr>
+<tr><td><code>placement_charging</code></td><td>Charging</td></tr>
 <tr><td><code>touchoption_switch_noisecontrols</code></td><td>Switch noise controls</td></tr>
 <tr><td><code>touchoption_custom_trigger_event</code></td><td>Trigger earbud action...</td></tr>
 <tr><td><code>tray_switch_noise</code></td><td>Switch noise controls</td></tr>
@@ -50,6 +51,8 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>touchpad_gestures</code></td><td>Advanced touch lock</td></tr>
 <tr><td><code>touchpad_gestures_description</code></td><td>Enable or disable default touch gestures</td></tr>
 <tr><td><code>touchpad_noise_control_mode</code></td><td>Noise control switching mode</td></tr>
+<tr><td><code>touchpad_noise_control_mode_l</code></td><td>Noise control switching mode (Left)</td></tr>
+<tr><td><code>touchpad_noise_control_mode_r</code></td><td>Noise control switching mode (Right)</td></tr>
 <tr><td><code>touchpad_noise_control_mode_desc</code></td><td>Choose modes to cycle through</td></tr>
 <tr><td><code>touchpad_noise_control_mode_anc_amb</code></td><td>ANC ↔ Ambient sound</td></tr>
 <tr><td><code>touchpad_noise_control_mode_anc_off</code></td><td>ANC ↔ Off</td></tr>
@@ -144,6 +147,8 @@ Make sure both earbuds are turned on before continuing.</td></tr>
 <tr><td><code>as_scale_moderate</code></td><td>Moderate</td></tr>
 <tr><td><code>as_scale_high</code></td><td>High</td></tr>
 <tr><td><code>as_scale_extraloud</code></td><td>Extra loud</td></tr>
+<tr><td><code>adv_callpath</code></td><td>In-ear detection for calls</td></tr>
+<tr><td><code>adv_callpath_desc</code></td><td>Play calls through your earbuds when they're in your ears and through your computer speaker when they're not</td></tr>
 <tr><td><code>adv_bixby_remap</code></td><td>Remap Bixby wakeup</td></tr>
 <tr><td><code>adv_bixby_remap_desc</code></td><td>Define what should happen when you say 'Hey Bixby!'</td></tr>
 <tr><td><code>bixby_remap_enable</code></td><td>Enable Bixby wakeup</td></tr>
