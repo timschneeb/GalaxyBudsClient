@@ -34,10 +34,11 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
         DoRefreshCommand();
     }
     
-    public async void RegisterDevice(Models model, string mac)
+    public async void RegisterDevice(Models model, string mac, string name)
     {
         Settings.Instance.RegisteredDevice.Model = model;
         Settings.Instance.RegisteredDevice.MacAddress = mac;
+        Settings.Instance.RegisteredDevice.Name = name;
 
         await Task.Factory.StartNew(async () =>
         {
@@ -59,7 +60,7 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
             return;
         }
 
-        RegisterDevice(spec.Device, device.Address);
+        RegisterDevice(spec.Device, device.Address, device.Name);
     }
     
     public async void DoRefreshCommand()

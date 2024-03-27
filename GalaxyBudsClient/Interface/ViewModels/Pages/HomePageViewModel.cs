@@ -6,7 +6,6 @@ using FluentIcons.Common;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
-using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Platform;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
@@ -14,7 +13,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 public class HomePageViewModel : MainPageViewModelBase
 {
     public override Control CreateView() => new HomePage();
-    public override string TitleKey => "mainpage_header"; // TODO: set title to device name dynamically
+    public override string TitleKey => BreadcrumbViewModel.DeviceNameKey;
     public override Symbol IconKey => Symbol.Home;
     public override bool ShowsInFooter => false;
     

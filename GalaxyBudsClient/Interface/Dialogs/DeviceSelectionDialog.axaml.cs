@@ -60,7 +60,7 @@ public partial class DeviceSelectionDialog : UserControl
         var result = await ManualPairDialog.OpenDialogAsync();
         if (result != null)
         {
-            ViewModel.RegisterDevice(result.Value.model, result.Value.device.Address);
+            ViewModel.RegisterDevice(result.Value.model, result.Value.device.Address, result.Value.device.Name);
         }
     }
 

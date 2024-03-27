@@ -20,6 +20,8 @@ public interface IDevice : INotifyPropertyChanged
     Models Model { set; get; }
     [Option(DefaultValue = "")]
     string MacAddress { set; get; }
+    [Option(DefaultValue = "")]
+    string Name { set; get; }
 }
     
 public interface IPopup : INotifyPropertyChanged

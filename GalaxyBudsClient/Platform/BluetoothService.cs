@@ -265,6 +265,7 @@ public sealed class BluetoothService : IDisposable, INotifyPropertyChanged
             try
             {
                 DeviceName = await GetDeviceNameAsync();
+                Settings.Instance.RegisteredDevice.Name = DeviceName;
                         
                 await _backend.ConnectAsync(Settings.Instance.RegisteredDevice.MacAddress,
                     ServiceUuid.ToString()!, noRetry);
@@ -341,6 +342,7 @@ public sealed class BluetoothService : IDisposable, INotifyPropertyChanged
     {
         Settings.Instance.RegisteredDevice.Model = Models.NULL;
         Settings.Instance.RegisteredDevice.MacAddress = string.Empty;
+        Settings.Instance.RegisteredDevice.Name = string.Empty;
         DeviceMessageCache.Instance.Clear();
         // don't wait for this to complete as it may confuse users if the menu option waits until connect timed out
         _ = DisconnectAsync();
