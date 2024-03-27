@@ -33,13 +33,18 @@ namespace GalaxyBudsClient.Utils.Interface
 
             public static string Resolve(string resName)
             {
+                return ResolveOrDefault(resName) ?? $"<Missing resource: {resName}>";
+            }
+            
+            public static string? ResolveOrDefault(string resName)
+            {
                 var resource = Application.Current?.FindResource(resName);
                 if (resource is string str)
                 {
                     return str;
                 }
 
-                return $"<Missing resource: {resName}>";
+                return null;
             }
             
             public static FlowDirection ResolveFlowDirection()

@@ -14,6 +14,7 @@ using FluentAvalonia.UI.Windowing;
 using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
+using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Serilog;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
@@ -170,7 +171,7 @@ public partial class MainView : UserControl
             {
                 var nvi = new NavigationViewItem
                 {
-                    Content = page.TitleKey,
+                    Content = Loc.ResolveOrDefault(page.TitleKey),
                     Tag = page,
                     IconSource = new SymbolIconSource { Symbol = page.IconKey }
                 };
