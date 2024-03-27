@@ -36,7 +36,7 @@ public class BudsFeDeviceSpec : IDeviceSpec
         
     public Models Device => Models.BudsFe;
     public string DeviceBaseName => "Buds FE";
-    public ITouchOption TouchMap => new StandardTouchOption();
+    public ITouchMap TouchMap => new StandardTouchMap();
     public Guid ServiceUuid => Uuids.BudsFe;
 
     public IEnumerable<TrayItemTypes> TrayShortcuts => Array.AsReadOnly(

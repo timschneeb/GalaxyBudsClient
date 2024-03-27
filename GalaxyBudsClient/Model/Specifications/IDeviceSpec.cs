@@ -16,7 +16,7 @@ public interface IDeviceSpec
     public Models Device { get; }
     public string DeviceBaseName { get; }
     public string FriendlyName => Device.GetModelMetadata()?.Name ?? "null";
-    public ITouchOption TouchMap { get; }
+    public ITouchMap TouchMap { get; }
     public Guid ServiceUuid { get; }
     public IEnumerable<TrayItemTypes> TrayShortcuts { get; }
     public string IconResourceKey { get; }

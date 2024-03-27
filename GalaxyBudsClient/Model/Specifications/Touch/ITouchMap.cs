@@ -4,7 +4,7 @@ using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Model.Specifications.Touch;
 
-public interface ITouchOption
+public interface ITouchMap
 {
     Dictionary<TouchOptions, byte> LookupTable { get; }
 
