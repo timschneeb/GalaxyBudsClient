@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Threading;
 using FluentIcons.Common;
@@ -29,6 +30,11 @@ public class HomePageViewModel : MainPageViewModelBase
         };
         
         SppMessageHandler.Instance.StatusUpdate += OnStatusUpdateReceived;
+        BluetoothService.Instance.Connected += async (_, _) =>
+        {
+            await Task.Delay(1000);
+            await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
+        };
     }
     
     private void OnStatusUpdateReceived(object? sender, StatusUpdateParser e)

@@ -34,6 +34,7 @@ public class SppMessageHandler
     public event EventHandler<string>? BuildStringResponse;
     public event EventHandler<DebugGetAllDataParser>? GetAllDataResponse;
     public event EventHandler<DebugSerialNumberParser>? SerialNumberResponse;
+    public event EventHandler<CradleSerialNumberParser>? CradleSerialNumberResponse;
     public event EventHandler<GenericResponseParser>? GenericResponse;
     public event EventHandler<SelfTestParser>? SelfTestResponse;
     public event EventHandler<TouchOptions>? OtherOption;
@@ -81,6 +82,9 @@ public class SppMessageHandler
                 break;
             case SppMessage.MessageIds.DEBUG_SERIAL_NUMBER:
                 SerialNumberResponse?.Invoke(this, (parser as DebugSerialNumberParser)!);
+                break;
+            case SppMessage.MessageIds.CRADLE_SERIAL_NUMBER:
+                CradleSerialNumberResponse?.Invoke(this, (parser as CradleSerialNumberParser)!);
                 break;
             case SppMessage.MessageIds.EXTENDED_STATUS_UPDATED:
                 BaseUpdate?.Invoke(this, (parser as IBasicStatusUpdate)!);

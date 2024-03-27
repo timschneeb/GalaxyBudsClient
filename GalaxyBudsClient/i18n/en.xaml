@@ -240,6 +240,8 @@ This program is designed to provide much more functionality over the official Sa
 
     <sys:String x:Key="system_hwver">Hardware version</sys:String>
     <sys:String x:Key="system_swver">Software version</sys:String>
+    <sys:String x:Key="system_cradle_swver">Case software version</sys:String>
+    <sys:String x:Key="system_cradle_serial">Case serial number</sys:String>
     <sys:String x:Key="system_touchver">Touch firmware version</sys:String>
     <sys:String x:Key="system_protover">Protocol revision</sys:String>
     <sys:String x:Key="system_btaddr">Bluetooth addresses</sys:String>

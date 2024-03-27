@@ -36,7 +36,8 @@ public class Buds2ProDeviceSpec : IDeviceSpec
         { Features.CallPathControl, new FeatureRule(1) },
         { Features.ChargingState, new FeatureRule(11) },
         { Features.AutoAdjustSound, new FeatureRule(3) },
-        { Features.HeadTracking, new FeatureRule(8) }
+        { Features.HeadTracking, new FeatureRule(8) },
+        { Features.CradleSerialNumber, null },
         // TODO verify missing revisions & add missing features
     };
         

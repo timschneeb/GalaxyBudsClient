@@ -21,9 +21,16 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
         SppMessageHandler.Instance.BuildStringResponse += OnDebugBuildInfoReceived;
         SppMessageHandler.Instance.DebugSkuUpdate += OnDebugSkuReceived;
         SppMessageHandler.Instance.SerialNumberResponse += OnDebugSerialNumberReceived;
+        SppMessageHandler.Instance.CradleSerialNumberResponse += OnDebugSerialNumberReceived;
         SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdateReceived;
         BluetoothService.Instance.Connected += (_, _) => RequestData();
         Loc.LanguageUpdated += RequestData;
+    }
+
+    private void OnDebugSerialNumberReceived(object? sender, CradleSerialNumberParser e)
+    {
+        CradleSerialNumber = e.SoftwareVersion ?? Loc.Resolve("placement_disconnected");
+        CradleSwVersion = e.SerialNumber ?? Loc.Resolve("placement_disconnected");
     }
 
     private void OnExtendedStatusUpdateReceived(object? sender, ExtendedStatusUpdateParser e)
@@ -75,6 +82,8 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
             await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_BUILD_INFO);
         if (BluetoothService.Instance.DeviceSpec.Supports(Features.DebugSku))
             await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
+        if (BluetoothService.Instance.DeviceSpec.Supports(Features.CradleSerialNumber))
+            await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.CRADLE_SERIAL_NUMBER);
         
         await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SERIAL_NUMBER);
         await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
@@ -88,6 +97,8 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
     [Reactive] public string ProtocolVersion { set; get; } = Placeholder;
     [Reactive] public string BluetoothAddress { set; get; } = Placeholder;
     [Reactive] public string SerialNumber { set; get; } = Placeholder;
+    [Reactive] public string CradleSerialNumber { set; get; } = Placeholder;
+    [Reactive] public string CradleSwVersion { set; get; } = Placeholder;
     [Reactive] public string BuildString { set; get; } = Placeholder;
     [Reactive] public string DeviceSku { set; get; } = Placeholder;
     [Reactive] public string BatteryType { set; get; } = Placeholder;

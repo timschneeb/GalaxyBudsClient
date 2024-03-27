@@ -37,6 +37,20 @@
                                              Description="{Binding ProtocolVersion}"
                                              IsClickEnabled="False" />
             </controls:SettingsGroup>
+            
+            <controls:SettingsGroup>
+                <Interaction.Behaviors>
+                    <ext:RequiresFeatureBehavior Feature="CradleSerialNumber" />
+                </Interaction.Behaviors>
+                
+                <controls:SettingsSymbolItem Content="{DynamicResource system_cradle_swver}"
+                                             Description="{Binding CradleSwVersion}"
+                                             IsClickEnabled="False" />
+
+                <controls:SettingsSymbolItem Content="{DynamicResource system_cradle_serial}"
+                                             Description="{Binding CradleSerialNumber}"
+                                             IsClickEnabled="False" />
+            </controls:SettingsGroup>
 
             <controls:SettingsGroup>
                 <controls:SettingsSymbolItem Content="{DynamicResource system_btaddr}"
