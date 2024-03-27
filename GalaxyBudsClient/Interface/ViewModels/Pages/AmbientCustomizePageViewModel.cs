@@ -40,7 +40,8 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
             maxLevel += 1;
         
         MaximumLeftRightAmbientSoundVolume =
-            BluetoothService.Instance.DeviceSpec.Supports(Features.AmbientCustomizeLegacy) ? 4 : 2;
+            BluetoothService.Instance.DeviceSpec.Supports(Features.AmbientCustomizeLegacy) ||
+                (BluetoothService.Instance.DeviceSpec.Supports(Features.AmbientExtraLoud) && IsAmbientExtraLoudEnabled) ? 4 : 2;
         
         MaximumAmbientSoundVolume = maxLevel;
         

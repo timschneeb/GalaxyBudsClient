@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
@@ -144,7 +145,23 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
     [Device(Models.Buds2, Selector.GreaterEqual)]
     public bool IsCaseCharging { set; get; }
 
-
+    [Device(Models.Buds2Pro, Selector.GreaterEqual)]
+    public byte HearingTestValue { get; set; }
+    [Device(Models.Buds2Pro, Selector.GreaterEqual)]
+    public byte BixbyKeyword { get; set; }
+    [Device(Models.Buds2Pro, Selector.GreaterEqual)]
+    public bool NeckStretchCalibration { get; set; }
+    [Device(Models.Buds2Pro, Selector.GreaterEqual)]
+    public byte CustomizeNoiseReductionLevel { get; set; }
+    [Device(Models.Buds2Pro, Selector.GreaterEqual)]
+    public bool CustomizeConversationBoost { get; set; }
+    [Device(Models.Buds2Pro, Selector.GreaterEqual)]
+    public bool ExtraClearCallSound { get; set; }
+    [Device(Models.Buds2Pro, Selector.GreaterEqual)]
+    public bool SpatialAudioHeadTracking { get; set; }
+    [Device(Models.Buds2Pro, Selector.GreaterEqual)]
+    public bool AutoAdjustSound { get; set; }
+    
     public override void ParseMessage(SppMessage msg)
     {
         if (msg.Id != HandledType)
@@ -561,12 +578,47 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                 AmbientCustomVolumeRight = ByteArrayUtils.ValueOfRight(msg.Payload[30]);
                 AmbientCustomSoundTone = msg.Payload[31];
                 OutsideDoubleTap = msg.Payload[32] == 1;
-  
                 SideToneEnabled = msg.Payload[33] == 1;
-                    
-                SpatialAudio = msg.Payload[34] == 1;
+
+                using var reader = new BinaryReader(new MemoryStream(msg.Payload, 34, msg.Payload.Length - 34));
                 
-                // TODO add call path control & add to spec
+                if (Revision >= 1)
+                {
+                    CallPathControl = reader.ReadByte() == 0;
+                    SpatialAudio = reader.ReadBoolean();
+                    CustomizeConversationBoost = reader.ReadBoolean();
+                    CustomizeNoiseReductionLevel = reader.ReadByte();
+                    NeckStretchCalibration = reader.ReadBoolean();
+                    BixbyKeyword = reader.ReadByte();
+                    HearingTestValue = reader.ReadByte();
+                }
+
+                if (Revision >= 3)
+                {
+                    AutoAdjustSound = reader.ReadBoolean();
+                }
+                else
+                {
+                    AutoAdjustSound = HearingTestValue is not (0 or 1);
+                }
+                
+                if(Revision >= 8)
+                    SpatialAudioHeadTracking = reader.ReadBoolean();
+
+                if (Revision >= 11)
+                {
+                    var chargingStatus = reader.ReadByte();
+                    IsLeftCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 4) == 16;
+                    IsRightCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 2) == 4;
+                    IsCaseCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 0) == 1;
+                }
+
+                if (Revision >= 13)
+                {
+                    ExtraClearCallSound = reader.ReadBoolean();
+                    if(reader.PeekChar() != -1) // Check for EOF
+                        ExtraHighAmbientEnabled = reader.ReadBoolean();
+                }
             }
             // TODO: verify this
             else if (ActiveModel == Models.BudsFe)

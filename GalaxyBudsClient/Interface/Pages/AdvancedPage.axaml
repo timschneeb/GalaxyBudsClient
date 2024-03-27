@@ -70,6 +70,17 @@
                         <ext:RequiresFeatureBehavior Feature="CallPathControl" />
                     </Interaction.Behaviors>
                 </controls:SettingsSwitchItem>
+                
+                    
+                <controls:SettingsSwitchItem Content="{DynamicResource adv_extra_clear_call}"
+                                             Description="{DynamicResource adv_extra_clear_call_desc}"
+                                             IsChecked="{Binding IsExtraClearCallEnabled}"
+                                             Symbol="SoundWaveCircle"
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="ExtraClearCallSound" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
             </controls:SettingsGroup>
 
             <controls:SettingsGroup>

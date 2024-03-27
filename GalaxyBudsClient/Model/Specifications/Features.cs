@@ -11,6 +11,7 @@ public enum Features
     Anc,
     NoiseControl,
     NoiseControlModeDualSide,
+    ExtraClearCallSound,
     BixbyWakeup,
     DetectConversations,
     GamingMode,
@@ -36,5 +37,8 @@ public enum Features
     BuildInfo,
     GearFitTest,
     DebugSku,
-    PairingMode
+    PairingMode,
+    AmbientSoundVolume,
+    AutoAdjustSound,
+    HeadTracking
 }

@@ -30,6 +30,7 @@
                     Value="{Binding AmbientSoundVolume}">
                     <Interaction.Behaviors>
                         <ext:LocalizationAwareSliderBehavior Converter="{StaticResource AmbientStrengthConverter}" />
+                        <ext:RequiresFeatureBehavior Feature="AmbientSoundVolume" />
                     </Interaction.Behaviors>
                 </controls:SettingsSliderItem>
                 

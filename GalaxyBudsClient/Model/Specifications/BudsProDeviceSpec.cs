@@ -31,7 +31,8 @@ public class BudsProDeviceSpec : IDeviceSpec
         { Features.DebugSku, null },
         { Features.CallPathControl, new FeatureRule(10) },
         { Features.NoiseControlModeDualSide, new FeatureRule(8) },
-        { Features.PairingMode, null }
+        { Features.PairingMode, null },
+        { Features.AmbientSoundVolume, null }
     };
         
     public Models Device => Models.BudsPro;
