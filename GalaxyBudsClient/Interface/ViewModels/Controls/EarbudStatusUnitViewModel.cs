@@ -69,7 +69,8 @@ public class EarbudStatusUnitViewModel : ViewModelBase
         IsLeftOnline = connected && e.BatteryL > 0 && e.PlacementL != PlacementStates.Disconnected;
         IsRightOnline = connected && e.BatteryL > 0 && e.PlacementL != PlacementStates.Disconnected;
 
-        if (DeviceMessageCache.Instance.DebugGetAllData == null)
+        var debug = DeviceMessageCache.Instance.DebugGetAllData;
+        if (debug is null or { LeftAdcSOC: <= 0, RightAdcSOC: <= 0 })
         {
             LeftBattery = e.BatteryL;
             RightBattery = e.BatteryR;
@@ -79,9 +80,12 @@ public class EarbudStatusUnitViewModel : ViewModelBase
     private void OnGetAllDataResponse(object? sender, DebugGetAllDataParser e)
     {
         var useF = Settings.Instance.TemperatureUnit == TemperatureUnits.Fahrenheit;
-        LeftBattery = (int)Math.Round(e.LeftAdcSOC);
-        RightBattery = (int)Math.Round(e.RightAdcSOC);
-        
+        if (e.LeftAdcSOC > 0 || e.RightAdcSOC > 0)
+        {
+            LeftBattery = (int)Math.Round(e.LeftAdcSOC);
+            RightBattery = (int)Math.Round(e.RightAdcSOC);
+        }
+
         LeftVoltage = e.LeftAdcVCell;
         RightVoltage = e.RightAdcVCell;
         LeftCurrent = e.LeftAdcCurrent;
