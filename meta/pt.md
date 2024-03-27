@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>36%</td><td>265 missing string(s)</td></tr>
+<tr><td>36%</td><td>269 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -122,6 +122,8 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>system_spatial</code></td><td>Spatial sensor test</td></tr>
 <tr><td><code>system_spatial_desc</code></td><td>Read spatial head-tracking data used for 3D audio</td></tr>
 <tr><td><code>system_no_response</code></td><td>No response from earbuds</td></tr>
+<tr><td><code>system_cradle_swver</code></td><td>Case software version</td></tr>
+<tr><td><code>system_cradle_serial</code></td><td>Case serial number</td></tr>
 <tr><td><code>system_sku</code></td><td>Device SKUs</td></tr>
 <tr><td><code>coredump_header</code></td><td>Dumping data...</td></tr>
 <tr><td><code>coredump_dl_progress_prepare</code></td><td>Preparing download...</td></tr>
@@ -206,6 +208,8 @@ Make sure both earbuds are turned on before continuing.</td></tr>
 <tr><td><code>as_scale_extraloud</code></td><td>Extra loud</td></tr>
 <tr><td><code>adv_callpath</code></td><td>In-ear detection for calls</td></tr>
 <tr><td><code>adv_callpath_desc</code></td><td>Play calls through your earbuds when they're in your ears and through your computer speaker when they're not</td></tr>
+<tr><td><code>adv_extra_clear_call</code></td><td>Sharpen call sound</td></tr>
+<tr><td><code>adv_extra_clear_call_desc</code></td><td>Boost call clarity. Most useful when you're somewhere noisy and using earbuds. Uses more battery.</td></tr>
 <tr><td><code>adv_hotkey</code></td><td>Keyboard hotkeys</td></tr>
 <tr><td><code>adv_hotkey_desc</code></td><td>Define custom keyboard hotkeys to remote-control your earbuds</td></tr>
 <tr><td><code>adv_bixby_remap</code></td><td>Remap Bixby wakeup</td></tr>

@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>68%</td><td>132 missing string(s)</td></tr>
+<tr><td>67%</td><td>136 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -38,6 +38,8 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>cact_hotkey_param</code></td><td>Hotkey</td></tr>
 <tr><td><code>cact_path_param</code></td><td>File path</td></tr>
 <tr><td><code>system_no_response</code></td><td>No response from earbuds</td></tr>
+<tr><td><code>system_cradle_swver</code></td><td>Case software version</td></tr>
+<tr><td><code>system_cradle_serial</code></td><td>Case serial number</td></tr>
 <tr><td><code>system_sku</code></td><td>Device SKUs</td></tr>
 <tr><td><code>settings_unregister_description</code></td><td>Remove your current earbuds and connect another pair</td></tr>
 <tr><td><code>settings_appearance</code></td><td>Appearance</td></tr>
@@ -75,6 +77,8 @@ Make sure both earbuds are turned on before continuing.</td></tr>
 <tr><td><code>as_voicefocus_description</code></td><td>Make voices stand out more</td></tr>
 <tr><td><code>adv_callpath</code></td><td>In-ear detection for calls</td></tr>
 <tr><td><code>adv_callpath_desc</code></td><td>Play calls through your earbuds when they're in your ears and through your computer speaker when they're not</td></tr>
+<tr><td><code>adv_extra_clear_call</code></td><td>Sharpen call sound</td></tr>
+<tr><td><code>adv_extra_clear_call_desc</code></td><td>Boost call clarity. Most useful when you're somewhere noisy and using earbuds. Uses more battery.</td></tr>
 <tr><td><code>adv_bixby_remap</code></td><td>Remap Bixby wakeup</td></tr>
 <tr><td><code>adv_bixby_remap_desc</code></td><td>Define what should happen when you say 'Hey Bixby!'</td></tr>
 <tr><td><code>bixby_remap_enable</code></td><td>Enable Bixby wakeup</td></tr>
