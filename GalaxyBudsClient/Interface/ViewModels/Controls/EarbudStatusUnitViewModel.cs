@@ -62,17 +62,23 @@ public class EarbudStatusUnitViewModel : ViewModelBase
     
     private void OnStatusUpdated(object? sender, IBasicStatusUpdate e)
     {
+        var connected = BluetoothService.Instance.IsConnected;
         CaseBattery = e.BatteryCase is <= 0 or > 100 ? null : e.BatteryCase;
         LeftWearState = e.PlacementL;
         RightWearState = e.PlacementR;
+        IsLeftOnline = connected && e.BatteryL > 0 && e.PlacementL != PlacementStates.Disconnected;
+        IsRightOnline = connected && e.BatteryL > 0 && e.PlacementL != PlacementStates.Disconnected;
+
+        if (DeviceMessageCache.Instance.DebugGetAllData == null)
+        {
+            LeftBattery = e.BatteryL;
+            RightBattery = e.BatteryR;
+        }
     }
         
     private void OnGetAllDataResponse(object? sender, DebugGetAllDataParser e)
     {
         var useF = Settings.Instance.TemperatureUnit == TemperatureUnits.Fahrenheit;
-        
-        IsLeftOnline = BluetoothService.Instance.IsConnected && e.LeftAdcSOC > 0;
-        IsRightOnline = BluetoothService.Instance.IsConnected &&  e.RightAdcSOC > 0;
         LeftBattery = (int)Math.Round(e.LeftAdcSOC);
         RightBattery = (int)Math.Round(e.RightAdcSOC);
         
