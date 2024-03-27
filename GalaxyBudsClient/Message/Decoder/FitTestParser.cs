@@ -6,8 +6,8 @@ public class FitTestParser : BaseMessageParser
 {
     public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS_RESULT;
 
-    public Result Left;
-    public Result Right;
+    public Result Left { private set; get; }
+    public Result Right { private set; get; }
 
     public override void ParseMessage(SppMessage msg)
     {
@@ -18,7 +18,7 @@ public class FitTestParser : BaseMessageParser
         Right = (Result)msg.Payload[1];
     }
 
-    public enum Result : byte
+    public enum Result
     {
         [LocalizedDescription("gft_bad")]
         Bad = 0,

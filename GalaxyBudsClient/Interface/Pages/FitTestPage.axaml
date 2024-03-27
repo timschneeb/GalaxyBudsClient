@@ -28,12 +28,14 @@
                     <controls:EarbudControlUnit.LeftContent>
                         <TextBlock Text="{Binding LeftStatus}"
                                    MinWidth="70"
+                                   VerticalAlignment="Center"
                                    TextAlignment="Right" />
                     </controls:EarbudControlUnit.LeftContent>
 
                     <controls:EarbudControlUnit.RightContent>
                         <TextBlock Text="{Binding RightStatus}"
                                    MinWidth="70"
+                                   VerticalAlignment="Center"
                                    TextAlignment="Left" />
                     </controls:EarbudControlUnit.RightContent>
                 </controls:EarbudControlUnit>
