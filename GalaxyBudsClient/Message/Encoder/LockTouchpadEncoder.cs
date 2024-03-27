@@ -1,5 +1,4 @@
 using System.IO;
-using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 

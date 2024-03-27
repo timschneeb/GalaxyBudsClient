@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using Avalonia.Controls;
-using GalaxyBudsClient.Interface.Converters;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;

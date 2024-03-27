@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using CSScripting;
 using GalaxyBudsClient.Interface.Developer;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Attributes;

@@ -1,8 +1,6 @@
 using System;
 using System.Linq;
-using System.Runtime.Serialization;
 using Avalonia;
-using Avalonia.Controls;
 using Avalonia.Xaml.Interactivity;
 using GalaxyBudsClient.Interface.Controls;
 using GalaxyBudsClient.Model.Attributes;

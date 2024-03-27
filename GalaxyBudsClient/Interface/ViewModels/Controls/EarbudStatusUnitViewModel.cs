@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;

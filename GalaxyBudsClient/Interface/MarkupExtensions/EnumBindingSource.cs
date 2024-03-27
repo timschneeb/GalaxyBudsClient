@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using System.Runtime.Serialization;
 using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Model.Attributes;
 
