@@ -208,7 +208,11 @@ namespace GalaxyBudsClient.Model
             Idle = 2,
             [LocalizedDescription("placement_in_case")]
             Case = 3,
-            ClosedCase = 4
+            ClosedCase = 4,
+            
+            // Custom states
+            [LocalizedDescription("placement_charging")]
+            Charging = 100
         }
 
         public enum LegacyWearStates

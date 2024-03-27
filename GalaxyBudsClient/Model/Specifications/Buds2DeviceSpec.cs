@@ -26,7 +26,7 @@ public class Buds2DeviceSpec : IDeviceSpec
         { Features.AncWithOneEarbud, new FeatureRule(3, "R177XXU0AUH1") },
         { Features.AmbientCustomize, new FeatureRule(5, "R177XXU0AUH1") },
         { Features.AmbientSidetone, new FeatureRule(6, "R177XXU0AUI2")  },
-        { Features.FmgRingWhileWearing, new FeatureRule(9) }, // TODO implement
+        { Features.FmgRingWhileWearing, new FeatureRule(9) },
         { Features.DebugSku, null },
         { Features.CallPathControl, new FeatureRule(7) },
         { Features.ChargingState, new FeatureRule(10) }

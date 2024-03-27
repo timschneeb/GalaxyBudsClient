@@ -145,6 +145,7 @@
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource touchpad_gesture_double_for_call}"
                     Description="{DynamicResource touchpad_gesture_double_for_call_desc}"
+                    Symbol="CallInbound"
                     IsChecked="{Binding IsDoubleTapGestureForCallsEnabled}">
                     <Interaction.Behaviors>
                         <ext:RequiresFeatureBehavior Feature="AdvancedTouchLockForCalls" />
@@ -154,6 +155,7 @@
                 <controls:SettingsSwitchItem
                     Content="{DynamicResource touchpad_gesture_hold_for_call}"
                     Description="{DynamicResource touchpad_gesture_hold_for_call_desc}"
+                    Symbol="CallProhibited"
                     IsChecked="{Binding IsHoldGestureForCallsEnabled}">
                     <Interaction.Behaviors>
                         <ext:RequiresFeatureBehavior Feature="AdvancedTouchLockForCalls" />

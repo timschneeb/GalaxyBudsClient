@@ -1,6 +1,7 @@
 ﻿using System;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Utils;
 
 namespace GalaxyBudsClient.Message.Decoder;
@@ -629,6 +630,14 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                 SpatialAudio = msg.Payload[34] == 1;
                 // TODO add call path control & add to spec
             }
+        }
+        
+        if (DeviceSpec.Supports(Features.ChargingState))
+        {
+            if(IsLeftCharging)
+                PlacementL = PlacementStates.Charging;
+            if(IsRightCharging)
+                PlacementR = PlacementStates.Charging;
         }
     }
 }

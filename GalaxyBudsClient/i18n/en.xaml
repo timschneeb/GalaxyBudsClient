@@ -54,6 +54,7 @@
     <sys:String x:Key="placement_wearing">Wearing</sys:String>
     <sys:String x:Key="placement_not_wearing">Idle</sys:String>
     <sys:String x:Key="placement_in_case">Case</sys:String>
+    <sys:String x:Key="placement_charging">Charging</sys:String>
 
     <!--Touch options-->
     <sys:String x:Key="touchoption_voice">Voice assistant</sys:String>
@@ -414,6 +415,8 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="adv_resume_playback_desc">Sends a global play/pause state change event when at least one of the proximity sensors is covered (Desktop only)</sys:String>
     <sys:String x:Key="adv_sidetone">Use ambient sound during calls</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Hear your own voice more clearly while on the phone</sys:String>
+    <sys:String x:Key="adv_callpath">In-ear detection for calls</sys:String>
+    <sys:String x:Key="adv_callpath_desc">Play calls through your earbuds when they're in your ears and through your computer speaker when they're not</sys:String>
     <sys:String x:Key="adv_passthrough">Relieve pressure with ambient sound</sys:String>
     <sys:String x:Key="adv_passthrough_desc">This can prevent a feeling of stuffiness or compression when you're not using active noise canceling</sys:String>
     <sys:String x:Key="adv_hotkey">Keyboard hotkeys</sys:String>

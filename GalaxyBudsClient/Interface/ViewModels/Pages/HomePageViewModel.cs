@@ -14,7 +14,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 public class HomePageViewModel : MainPageViewModelBase
 {
     public override Control CreateView() => new HomePage();
-    public override string TitleKey => "mainpage_header";
+    public override string TitleKey => "mainpage_header"; // TODO: set title to device name dynamically
     public override Symbol IconKey => Symbol.Home;
     public override bool ShowsInFooter => false;
     

@@ -7,6 +7,7 @@ using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using ReactiveUI.Fody.Helpers;
@@ -40,8 +41,13 @@ public class FindMyBudsPageViewModel : MainPageViewModelBase
         {
             case nameof(IsSearching):
             {
-                var cmd = IsSearching ?
-                    SppMessage.MessageIds.FIND_MY_EARBUDS_START : SppMessage.MessageIds.FIND_MY_EARBUDS_STOP;
+                SppMessage.MessageIds cmd;
+                if (IsSearching && BluetoothService.Instance.DeviceSpec.Supports(Features.FmgRingWhileWearing))
+                    cmd = SppMessage.MessageIds.FIND_MY_EARBUDS_ON_WEARING_START;
+                else if (IsSearching)
+                    cmd = SppMessage.MessageIds.FIND_MY_EARBUDS_START;
+                else
+                    cmd = SppMessage.MessageIds.FIND_MY_EARBUDS_STOP;
                 await BluetoothService.Instance.SendRequestAsync(cmd);
                 break;
             }

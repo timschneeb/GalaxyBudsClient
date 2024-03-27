@@ -36,7 +36,8 @@ public partial class SppMessage
         EXTENDED_STATUS_UPDATED = 97,
         FIND_MY_EARBUDS_START = 160,
         FIND_MY_EARBUDS_STOP = 161,
-            
+        FIND_MY_EARBUDS_ON_WEARING_START = 166, // previously: NOTIFICATION_INFO
+        
         FOTA_DEVICE_INFO_SW_VERSION = 180,
             
         /* FOTA v1 API */
@@ -75,7 +76,6 @@ public partial class SppMessage
         MANAGER_INFO = 136,
         MUTE_EARBUD = 162,
         MUTE_EARBUD_STATUS_UPDATED = 163,
-        NOTIFICATION_INFO = 166,
         PROFILE_CONTROL = 113,
         RESET = 80,
         RESP = 81,
@@ -102,6 +102,7 @@ public partial class SppMessage
         OUTSIDE_DOUBLE_TAP = 149,
         SET_IN_BAND_RINGTONE = 138,
         SET_SIDETONE = 139,
+        SET_CALL_PATH_CONTROL = 110,
         VERSION_INFO = 99,
 
         SET_ANC_WITH_ONE_EARBUD = 111,
@@ -225,7 +226,6 @@ public partial class SppMessage
         UNKNOWN_107 = 107,
         UNKNOWN_108 = 108,
         UNKNOWN_109 = 109,
-        UNKNOWN_110 = 110,
         UNKNOWN_116 = 116,
         UNKNOWN_117 = 117,
         UNKNOWN_118 = 118,

@@ -92,13 +92,21 @@ public class StatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
 
             BatteryCase = msg.Payload[6];
 
-            if (BluetoothService.Instance.DeviceSpec.Supports(Features.ChargingState))
+            if (DeviceSpec.Supports(Features.ChargingState))
             {
                 var chargingStatus = msg.Payload[7];
                 IsLeftCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 4) == 16;
                 IsRightCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 2) == 4;
                 IsCaseCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 0) == 1;
             }
+        }
+        
+        if (DeviceSpec.Supports(Features.ChargingState))
+        {
+            if(IsLeftCharging)
+                PlacementL = PlacementStates.Charging;
+            if(IsRightCharging)
+                PlacementR = PlacementStates.Charging;
         }
     }
 }

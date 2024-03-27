@@ -59,6 +59,17 @@
                         <ext:RequiresFeatureBehavior Feature="AmbientSidetone" />
                     </Interaction.Behaviors>
                 </controls:SettingsSwitchItem>
+                
+                
+                <controls:SettingsSwitchItem Content="{DynamicResource adv_callpath}"
+                                             Description="{DynamicResource adv_callpath_desc}"
+                                             IsChecked="{Binding IsCallpathControlEnabled}"
+                                             Symbol="CallTransfer"
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="CallPathControl" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
             </controls:SettingsGroup>
 
             <controls:SettingsGroup>

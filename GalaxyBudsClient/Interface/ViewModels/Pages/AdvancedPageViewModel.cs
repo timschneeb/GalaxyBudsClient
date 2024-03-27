@@ -25,6 +25,7 @@ public class AdvancedPageViewModel : MainPageViewModelBase
         IsSidetoneEnabled = e.SideToneEnabled;
         IsPassthroughEnabled = e.RelieveAmbient;
         IsSeamlessConnectionEnabled = e.SeamlessConnectionEnabled;
+        IsCallpathControlEnabled = e.CallPathControl;
     }
 
     private async void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -39,6 +40,9 @@ public class AdvancedPageViewModel : MainPageViewModelBase
                 break;
             case nameof(IsSidetoneEnabled):
                 await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SIDETONE, IsSidetoneEnabled);
+                break; 
+            case nameof(IsCallpathControlEnabled):
+                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_CALL_PATH_CONTROL, IsCallpathControlEnabled);
                 break;
         }
     }
@@ -46,7 +50,8 @@ public class AdvancedPageViewModel : MainPageViewModelBase
     [Reactive] public bool IsSeamlessConnectionEnabled { set; get; }
     [Reactive] public bool IsPassthroughEnabled { set; get; }
     [Reactive] public bool IsSidetoneEnabled { set; get; }
-    
+    [Reactive] public bool IsCallpathControlEnabled { set; get; }
+
     public override string TitleKey => "mainpage_advanced";
     public override Symbol IconKey => Symbol.WrenchScrewdriver;
     public override bool ShowsInFooter => false;
