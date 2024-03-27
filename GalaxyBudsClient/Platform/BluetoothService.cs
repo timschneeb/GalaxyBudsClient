@@ -22,7 +22,7 @@ using Task = System.Threading.Tasks.Task;
 
 namespace GalaxyBudsClient.Platform;
 
-public class BluetoothService : IDisposable, INotifyPropertyChanged
+public sealed class BluetoothService : IDisposable, INotifyPropertyChanged
 { 
     private static readonly object Padlock = new();
     private static BluetoothService? _instance;
@@ -81,7 +81,7 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
 
     public bool IsConnectedLegacy => _backend.IsStreamConnected;
 
-    private readonly ArrayList IncomingData = [];
+    private readonly ArrayList _incomingData = [];
     private static readonly ConcurrentQueue<byte[]> IncomingQueue = new();
     private readonly CancellationTokenSource _cancelSource;
     private readonly Task? _loop;
@@ -143,12 +143,12 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
         _cancelSource = new CancellationTokenSource();
         _loop = Task.Run(DataConsumerLoop, _cancelSource.Token);
             
-        _backend.Connecting += (sender, args) => Connecting?.Invoke(this, EventArgs.Empty); 
+        _backend.Connecting += (_, _) => Connecting?.Invoke(this, EventArgs.Empty); 
         _backend.NewDataAvailable += OnNewDataAvailable;
-        _backend.NewDataAvailable += (sender, bytes) =>  NewDataReceived?.Invoke(this, bytes);
-        _backend.BluetoothErrorAsync += (sender, exception) => OnBluetoothError(exception); 
+        _backend.NewDataAvailable += (_, bytes) =>  NewDataReceived?.Invoke(this, bytes);
+        _backend.BluetoothErrorAsync += (_, exception) => OnBluetoothError(exception); 
             
-        _backend.RfcommConnected += (sender, args) => Task.Run(async () =>
+        _backend.RfcommConnected += (_, _) => Task.Run(async () =>
             await Task.Delay(150).ContinueWith((_) =>
             {
                 if (RegisteredDeviceValid)
@@ -188,7 +188,6 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
         MessageReceived -= SppMessageHandler.Instance.MessageReceiver;
             
         await _cancelSource.CancelAsync();
-
         await Task.Delay(50);
 
         try
@@ -205,9 +204,12 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
     private void OnInvalidDataReceived(object? sender, InvalidPacketException e)
     {
         LastErrorMessage = e.ErrorCode.GetDescription();
-        _ = DisconnectAsync()
-            .ContinueWith(_ => Task.Delay(500))
-            .ContinueWith(_ => ConnectAsync());
+        if (IsConnected)
+        {
+            _ = DisconnectAsync()
+                .ContinueWith(_ => Task.Delay(500))
+                .ContinueWith(_ => ConnectAsync());
+        }
     }
         
     private void OnBluetoothError(BluetoothException exception)
@@ -255,45 +257,26 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
         }
     }
         
-    public async Task<bool> ConnectAsync(string? macAddress = null, Models? model = null, bool noRetry = false)
+    public async Task<bool> ConnectAsync(bool noRetry = false)
     {
         /* Load from configuration */
-        if (macAddress == null && model == null)
+        if (RegisteredDeviceValid && ServiceUuid != new StubDeviceSpec().ServiceUuid)
         {
-            if (RegisteredDeviceValid && ServiceUuid != new StubDeviceSpec().ServiceUuid)
+            try
             {
-                try
-                {
-                    DeviceName = await GetDeviceNameAsync();
+                DeviceName = await GetDeviceNameAsync();
                         
-                    await _backend.ConnectAsync(Settings.Instance.RegisteredDevice.MacAddress,
-                        ServiceUuid.ToString()!, noRetry);
-                    return true;
-                }
-                catch (BluetoothException ex)
-                {
-                    OnBluetoothError(ex);
-                    return false;
-                }
+                await _backend.ConnectAsync(Settings.Instance.RegisteredDevice.MacAddress,
+                    ServiceUuid.ToString()!, noRetry);
+                return true;
             }
-        }
-        /* Update device registration */
-        else if(macAddress != null && model != null)
-        {
-            if (IsDeviceValid((Models) model, macAddress))
+            catch (BluetoothException ex)
             {
-                Settings.Instance.RegisteredDevice.Model = (Models) model;
-                Settings.Instance.RegisteredDevice.MacAddress = macAddress;
-
-                /* Load from configuration this time */
-                return await ConnectAsync();
+                OnBluetoothError(ex);
+                return false;
             }
         }
-        else
-        {
-            throw new ArgumentException("Either all or none arguments must be null");
-        }
-            
+        
         Log.Error("BluetoothImpl: Connection attempt without valid device");
         return false;
     }
@@ -313,11 +296,7 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
     public async Task SendAsync(SppMessage msg)
     {
         if (!IsConnectedLegacy)
-        {
-            // Fail silently here
-            // OnBluetoothError(new BluetoothException(BluetoothException.ErrorCodes.SendFailed, $"Attempted to send command to disconnected device"));
             return;
-        }
             
         try
         {
@@ -399,7 +378,7 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
             }
             catch (OperationCanceledException)
             {
-                IncomingData.Clear();
+                _incomingData.Clear();
                 throw;
             }
                 
@@ -408,7 +387,7 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
                 if (IncomingQueue.IsEmpty) continue;
                 while (IncomingQueue.TryDequeue(out var frame))
                 {
-                    IncomingData.AddRange(frame);
+                    _incomingData.AddRange(frame);
                 }
             }
                 
@@ -418,7 +397,7 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
                 var msgSize = 0;
                 try
                 {
-                    var raw = IncomingData.OfType<byte>().ToArray();
+                    var raw = _incomingData.OfType<byte>().ToArray();
 
                     foreach (var hook in ScriptManager.Instance.RawStreamHooks)
                     {
@@ -441,12 +420,12 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
                 {
                     // Attempt to remove broken message, otherwise skip data block
                     var somIndex = 0;
-                    for (var i = 1; i < IncomingData.Count; i++)
+                    for (var i = 1; i < _incomingData.Count; i++)
                     {
                         if ((ActiveModel == Models.Buds &&
-                             (byte)(IncomingData[i] ?? 0) == (byte)SppMessage.Constants.SOM) ||
+                             (byte)(_incomingData[i] ?? 0) == (byte)SppMessage.Constants.SOM) ||
                             (ActiveModel != Models.Buds &&
-                             (byte)(IncomingData[i] ?? 0) == (byte)SppMessage.Constants.SOMPlus))
+                             (byte)(_incomingData[i] ?? 0) == (byte)SppMessage.Constants.SOMPlus))
                         {
                             somIndex = i;
                             break;
@@ -465,25 +444,25 @@ public class BluetoothService : IDisposable, INotifyPropertyChanged
                     failCount++;
                 }
 
-                if (msgSize >= IncomingData.Count)
+                if (msgSize >= _incomingData.Count)
                 {
-                    IncomingData.Clear();
+                    _incomingData.Clear();
                     break;
                 }
 
-                IncomingData.RemoveRange(0, msgSize);
+                _incomingData.RemoveRange(0, msgSize);
 
-                if (ByteArrayUtils.IsBufferZeroedOut(IncomingData))
+                if (ByteArrayUtils.IsBufferZeroedOut(_incomingData))
                 {
                     /* No more data remaining */
                     break;
                 }
 
-            } while (IncomingData.Count > 0);
+            } while (_incomingData.Count > 0);
         }
     }
-        
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
