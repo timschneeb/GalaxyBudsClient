@@ -20,7 +20,8 @@ public class BudsPlusDeviceSpec : IDeviceSpec
         { Features.FragmentedMessages, null },
         { Features.BuildInfo, null },
         { Features.Voltage, null },
-        { Features.CallPathControl, new FeatureRule(13) }
+        { Features.CallPathControl, new FeatureRule(13) },
+        { Features.PairingMode, null }
     };
         
     public Models Device => Models.BudsPlus;

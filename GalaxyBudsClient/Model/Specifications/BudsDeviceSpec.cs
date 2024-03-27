@@ -16,7 +16,8 @@ public class BudsDeviceSpec : IDeviceSpec
         { Features.BuildInfo, null },
         { Features.BatteryType, null },
         { Features.Voltage, null },
-        { Features.Current, null }
+        { Features.Current, null },
+        { Features.PairingMode, null }
     };
 
     public Models Device => Models.Buds;

@@ -37,7 +37,11 @@
                                              Description="{DynamicResource system_pairing_mode_desc}"
                                              Symbol="LinkMultiple"
                                              IsClickEnabled="True"
-                                             Click="OnPairingModeClicked" />
+                                             Click="OnPairingModeClicked">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="PairingMode" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSymbolItem>
 
                 <controls:SettingsSymbolItem Content="{DynamicResource system_spatial}"
                                              Description="{DynamicResource system_spatial_desc}"

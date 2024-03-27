@@ -22,7 +22,8 @@ public class BudsLiveDeviceSpec : IDeviceSpec
         { Features.BuildInfo, null },
         { Features.Voltage, null },
         { Features.DebugSku, null },
-        { Features.CallPathControl, new FeatureRule(8) }
+        { Features.CallPathControl, new FeatureRule(8) },
+        { Features.PairingMode, null }
     };
         
     public Models Device => Models.BudsLive;

@@ -35,5 +35,6 @@ public enum Features
     LegacyAmbientSoundVolumeLevels,
     BuildInfo,
     GearFitTest,
-    DebugSku
+    DebugSku,
+    PairingMode
 }
