@@ -167,6 +167,8 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
         if (msg.Id != HandledType)
             return;
 
+        // TODO: clean this up
+        
         if (ActiveModel == Models.Buds)
         {
             Revision = msg.Payload[0];
@@ -620,12 +622,11 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                         ExtraHighAmbientEnabled = reader.ReadBoolean();
                 }
             }
-            // TODO: verify this
             else if (ActiveModel == Models.BudsFe)
             {
                 AdjustSoundSync = msg.Payload[8] == 1;
                 EqualizerMode = msg.Payload[9];
-                
+
                 TouchHoldOn = (msg.Payload[10] & (1 << 0)) == 1;
                 TripleTapOn = (msg.Payload[10] & (1 << 1)) == 2;
                 DoubleTapOn = (msg.Payload[10] & (1 << 2)) == 4;
@@ -676,11 +677,26 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                 AmbientCustomVolumeRight = ByteArrayUtils.ValueOfRight(msg.Payload[30]);
                 AmbientCustomSoundTone = msg.Payload[31];
                 OutsideDoubleTap = msg.Payload[32] == 1;
-  
                 SideToneEnabled = msg.Payload[33] == 1;
-                    
-                SpatialAudio = msg.Payload[34] == 1;
-                // TODO add call path control & add to spec
+
+                using var reader = new BinaryReader(new MemoryStream(msg.Payload, 34, msg.Payload.Length - 34));
+            
+                CallPathControl = reader.ReadByte() == 0;
+                SpatialAudio = reader.ReadBoolean();
+                CustomizeConversationBoost = reader.ReadBoolean();
+                CustomizeNoiseReductionLevel = reader.ReadByte();
+                NeckStretchCalibration = reader.ReadBoolean();
+                BixbyKeyword = reader.ReadByte();
+                HearingTestValue = reader.ReadByte();
+                AutoAdjustSound = HearingTestValue is not (0 or 1);
+
+                _ = reader.ReadByte(); // Unused amplifyAmbientSound value
+                SpatialAudioHeadTracking = reader.ReadBoolean();
+                
+                var chargingStatus = reader.ReadByte();
+                IsLeftCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 4) == 16;
+                IsRightCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 2) == 4;
+                IsCaseCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 0) == 1;
             }
         }
         
