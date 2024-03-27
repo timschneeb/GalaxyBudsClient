@@ -63,29 +63,22 @@ public class EarbudStatusUnitViewModel : ViewModelBase
     private void OnStatusUpdated(object? sender, IBasicStatusUpdate e)
     {
         var connected = BluetoothService.Instance.IsConnected;
+        LeftBattery = e.BatteryL;
+        RightBattery = e.BatteryR;
         CaseBattery = e.BatteryCase is <= 0 or > 100 ? null : e.BatteryCase;
         LeftWearState = e.PlacementL;
         RightWearState = e.PlacementR;
         IsLeftOnline = connected && e.BatteryL > 0 && e.PlacementL != PlacementStates.Disconnected;
-        IsRightOnline = connected && e.BatteryL > 0 && e.PlacementL != PlacementStates.Disconnected;
-
-        var debug = DeviceMessageCache.Instance.DebugGetAllData;
-        if (debug is null or { LeftAdcSOC: <= 0, RightAdcSOC: <= 0 })
-        {
-            LeftBattery = e.BatteryL;
-            RightBattery = e.BatteryR;
-        }
+        IsRightOnline = connected && e.BatteryR > 0 && e.PlacementR != PlacementStates.Disconnected;
     }
         
     private void OnGetAllDataResponse(object? sender, DebugGetAllDataParser e)
     {
+        // Buds2 Pro seem to send 0 for all values sometimes. Ignore those updates.
+        if(e is { LeftThermistor: <= 0, RightThermistor: <= 0 })
+            return;
+        
         var useF = Settings.Instance.TemperatureUnit == TemperatureUnits.Fahrenheit;
-        if (e.LeftAdcSOC > 0 || e.RightAdcSOC > 0)
-        {
-            LeftBattery = (int)Math.Round(e.LeftAdcSOC);
-            RightBattery = (int)Math.Round(e.RightAdcSOC);
-        }
-
         LeftVoltage = e.LeftAdcVCell;
         RightVoltage = e.RightAdcVCell;
         LeftCurrent = e.LeftAdcCurrent;
