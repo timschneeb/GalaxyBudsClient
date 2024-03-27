@@ -4,6 +4,8 @@ using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Xaml.Interactivity;
+using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
@@ -24,19 +26,27 @@ public class RequiresAnyFeatureBehavior : Behavior<Control>
         set => SetValue(FeaturesProperty, value);
     }
     
+    
     /// <inheritdoc />
     protected override void OnAttachedToVisualTree()
     {
         UpdateState();
         Settings.Instance.RegisteredDevice.PropertyChanged += OnDevicePropertyChanged;
+        SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
     }
-    
+
     /// <inheritdoc />
     protected override void OnDetachedFromVisualTree()
     {
+        SppMessageHandler.Instance.ExtendedStatusUpdate -= OnExtendedStatusUpdate;
         Settings.Instance.RegisteredDevice.PropertyChanged -= OnDevicePropertyChanged;
     }
-
+    
+    private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
+    {
+        UpdateState();
+    }
+    
     private void OnDevicePropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         UpdateState();
