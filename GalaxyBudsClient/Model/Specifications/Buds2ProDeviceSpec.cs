@@ -30,7 +30,7 @@ public class Buds2ProDeviceSpec : IDeviceSpec
         { Features.DebugSku, null },
         { Features.AdvancedTouchLock, null },
         { Features.AdvancedTouchLockForCalls, null },
-
+        // TODO verify missing revisions & add missing features
     };
         
     public Models Device => Models.Buds2Pro;

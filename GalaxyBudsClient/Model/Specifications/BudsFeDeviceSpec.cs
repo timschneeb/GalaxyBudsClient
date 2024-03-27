@@ -25,7 +25,13 @@ public class BudsFeDeviceSpec : IDeviceSpec
         { Features.AmbientSidetone, null },
         { Features.AmbientCustomize, null },
         { Features.AncWithOneEarbud, null },
-        { Features.DebugSku, null }
+        { Features.DebugSku, null },
+        { Features.AdvancedTouchLock, null },
+        { Features.AdvancedTouchLockForCalls, null },
+        { Features.CallPathControl, null },
+        { Features.FmgRingWhileWearing, null },
+        { Features.ChargingState, null },
+        { Features.NoiseControlModeDualSide, null }
     };
         
     public Models Device => Models.BudsFe;
