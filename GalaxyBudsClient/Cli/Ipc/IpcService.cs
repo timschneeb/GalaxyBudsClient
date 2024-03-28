@@ -28,7 +28,10 @@ public static class IpcService
         if (!BluetoothService.Instance.IsConnectedLegacy)
             connection.UnregisterObject(DeviceObject.Path);
         else if (_deviceObject != null)
+        {
+            connection.UnregisterObject(_deviceObject);
             await connection.RegisterObjectAsync(_deviceObject);
+        }
     }
         
     public static async Task Setup()
