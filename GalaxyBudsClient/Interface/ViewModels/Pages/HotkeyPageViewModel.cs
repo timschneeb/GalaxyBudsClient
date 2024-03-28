@@ -22,6 +22,7 @@ public class HotkeyPageViewModel : SubPageViewModelBase
 
     public HotkeyPageViewModel()
     {
+        NoHotkeys = !Hotkeys.Any();
         Hotkeys.CollectionChanged += (_, _) => NoHotkeys = !Hotkeys.Any();
     }
     

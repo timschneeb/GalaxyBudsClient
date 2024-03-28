@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
 using Avalonia.Threading;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Bluetooth;
@@ -11,6 +10,7 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
+using GalaxyBudsClient.Utils.Interface;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using ReactiveUI.Fody.Helpers;
 
@@ -39,12 +39,22 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
         Settings.Instance.RegisteredDevice.Model = model;
         Settings.Instance.RegisteredDevice.MacAddress = mac;
         Settings.Instance.RegisteredDevice.Name = name;
+        
+        Dispatcher.UIThread.Post(() => _dialog.Hide(ContentDialogResult.Primary));
 
-        await Task.Factory.StartNew(async () =>
+        var cd = new ContentDialog
         {
-            await BluetoothService.Instance.ConnectAsync();
-            Dispatcher.UIThread.Post(() => _dialog.Hide(ContentDialogResult.Primary));
-        });
+            Title = Loc.Resolve("please_wait"),
+            Content = Loc.Resolve("connlost_connecting"),
+            CloseButtonText = Loc.Resolve("cancel"),
+            CloseButtonCommand = new MiniCommand(
+                (p) => _ = BluetoothService.Instance.DisconnectAsync()
+            )
+        };
+        _ = cd.ShowAsync(MainWindow.Instance);
+        
+        await BluetoothService.Instance.ConnectAsync();
+        cd.Hide();
     }
     
     public void DoConnectCommand(BluetoothDevice device)

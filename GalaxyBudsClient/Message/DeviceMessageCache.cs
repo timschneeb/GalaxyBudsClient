@@ -46,6 +46,7 @@ public class DeviceMessageCache
         ExtendedStatusUpdate = null;
         StatusUpdate = null;
         DebugSku = null;
+        BasicStatusUpdateWithValidCase = null;
     }
         
     public DebugGetAllDataParser? DebugGetAllData { private set; get; }

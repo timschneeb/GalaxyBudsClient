@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Threading;
 using Avalonia.Xaml.Interactivity;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
@@ -62,9 +63,12 @@ public class RequiresFeatureBehavior : Behavior<Control>
                             (!BluetoothService.Instance.DeviceSpec.Supports(Feature) && Not);
     protected virtual void UpdateState()
     {
-        if (AssociatedObject is null)
-            return;
-
-        AssociatedObject.IsVisible = State;
+        Dispatcher.UIThread.Post(() =>
+        {
+            if (AssociatedObject is null)
+                return;
+        
+            AssociatedObject.IsVisible = State;
+        }, DispatcherPriority.Normal);
     }
 }

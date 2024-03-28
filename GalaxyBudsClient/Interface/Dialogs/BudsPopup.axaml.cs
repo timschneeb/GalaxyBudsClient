@@ -24,7 +24,8 @@ public partial class BudsPopup : Window
     public EventHandler? ClickedEventHandler { get; set; }
     
     private readonly Timer _timer = new(3000){ AutoReset = false };
-        
+     
+    // TODO: handle disconnected state properly
     public BudsPopup() 
     {
         InitializeComponent();
