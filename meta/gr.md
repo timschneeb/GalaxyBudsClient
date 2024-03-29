@@ -43,7 +43,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>touchpad_gesture_hold_for_call_desc</code></td><td>Decline call</td></tr>
 <tr><td><code>touchpad_default_action</code></td><td>Built-in touch action</td></tr>
 <tr><td><code>touchpad_gestures</code></td><td>Advanced touch lock</td></tr>
-<tr><td><code>touchpad_gestures_description</code></td><td>Enable or disable default touch gestures</td></tr>
+<tr><td><code>touchpad_gestures_description</code></td><td>Disable default touch gestures</td></tr>
 <tr><td><code>touchpad_noise_control_mode</code></td><td>Noise control switching mode</td></tr>
 <tr><td><code>touchpad_noise_control_mode_l</code></td><td>Noise control switching mode (Left)</td></tr>
 <tr><td><code>touchpad_noise_control_mode_r</code></td><td>Noise control switching mode (Right)</td></tr>
