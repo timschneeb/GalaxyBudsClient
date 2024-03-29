@@ -196,7 +196,7 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="touchpad_default_action">Built-in touch action</sys:String>
 
     <sys:String x:Key="touchpad_gestures">Advanced touch lock</sys:String>
-    <sys:String x:Key="touchpad_gestures_description">Enable or disable default touch gestures</sys:String>
+    <sys:String x:Key="touchpad_gestures_description">Disable default touch gestures</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume">Double-tap earbud edge</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Double-tap the edge of the left or right earbud to turn the volume down or up</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Noise control switching mode</sys:String>
