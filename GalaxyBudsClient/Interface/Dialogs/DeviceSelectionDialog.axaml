@@ -70,7 +70,7 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
 
-                <controls:EmptyView Margin="0,0,0,24"
+                <controls:EmptyView Margin="12,24"
                                     IsVisible="{Binding NoDevices}"
                                     Text="{DynamicResource devsel_nodevices_title}"
                                     Symbol="Bluetooth" />
