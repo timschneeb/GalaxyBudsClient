@@ -287,6 +287,7 @@ public sealed class BluetoothService : IDisposable, INotifyPropertyChanged
         try
         {
             await _backend.DisconnectAsync();
+            Disconnected?.Invoke(this, "User requested disconnect");
             LastErrorMessage = "";
         }
         catch (BluetoothException ex)
