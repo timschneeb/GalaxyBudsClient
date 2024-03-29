@@ -51,7 +51,7 @@ public class SppMessageHandler
     {
         Dispatcher.UIThread.InvokeAsync(() =>
         {
-            var parser = SppMessageParserFactory.BuildParser(e);
+            var parser = e.BuildParser();
             DispatchEvent(parser, e.Id);
                 
         }, DispatcherPriority.Normal);

@@ -451,8 +451,8 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
 
                     if (Revision >= 7)
                     {
-                        TouchHoldOnForCallOn = (msg.Payload[10] & (1 << 0)) == 32;
-                        DoubleTapForCallOn = (msg.Payload[10] & (1 << 2)) == 16;
+                        TouchHoldOnForCallOn = (msg.Payload[10] & (1 << 5)) == 32;
+                        DoubleTapForCallOn = (msg.Payload[10] & (1 << 4)) == 16;
                     }
                 }
 
@@ -539,8 +539,8 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                 TripleTapOn = (msg.Payload[10] & (1 << 1)) == 2;
                 DoubleTapOn = (msg.Payload[10] & (1 << 2)) == 4;
                 SingleTapOn = (msg.Payload[10] & (1 << 3)) == 8;
-                TouchHoldOnForCallOn = (msg.Payload[10] & (1 << 0)) == 32;
-                DoubleTapForCallOn = (msg.Payload[10] & (1 << 2)) == 16;
+                TouchHoldOnForCallOn = (msg.Payload[10] & (1 << 5)) == 32;
+                DoubleTapForCallOn = (msg.Payload[10] & (1 << 4)) == 16;
                 TouchpadLock = (msg.Payload[10] & (1 << 7)) != 128;
 
                 TouchpadOptionL = DeviceSpec.TouchMap.FromByte((byte)((msg.Payload[11] & 240) >> 4));
@@ -636,8 +636,8 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                 TripleTapOn = (msg.Payload[10] & (1 << 1)) == 2;
                 DoubleTapOn = (msg.Payload[10] & (1 << 2)) == 4;
                 SingleTapOn = (msg.Payload[10] & (1 << 3)) == 8;
-                TouchHoldOnForCallOn = (msg.Payload[10] & (1 << 0)) == 32;
-                DoubleTapForCallOn = (msg.Payload[10] & (1 << 2)) == 16;
+                TouchHoldOnForCallOn = (msg.Payload[10] & (1 << 5)) == 32;
+                DoubleTapForCallOn = (msg.Payload[10] & (1 << 4)) == 16;
                 TouchpadLock = (msg.Payload[10] & (1 << 7)) != 128;
 
                 TouchpadOptionL = DeviceSpec.TouchMap.FromByte((byte)((msg.Payload[11] & 240) >> 4));

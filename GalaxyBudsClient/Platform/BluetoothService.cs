@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -371,6 +372,7 @@ public sealed class BluetoothService : IDisposable, INotifyPropertyChanged
         IncomingQueue.Enqueue(frame);
     }
 
+    private static int count = 0;
     private void DataConsumerLoop()
     {
         while (true)
@@ -408,11 +410,22 @@ public sealed class BluetoothService : IDisposable, INotifyPropertyChanged
                         hook.OnRawDataAvailable(ref raw);
                     }
 
-                    var msg = SppMessage.DecodeMessage(raw);
+                    var msg = SppMessage.DecodeMessage(raw, ActiveModel);
                     msgSize = msg.TotalPacketSize;
 
                     Log.Verbose(">> Incoming: {Msg}", msg);
 
+                    // TODO remove this
+                    var rev = DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision.ToString() ?? "X";
+                    var type = msg.BuildParser()?.GetType();
+                    Directory.CreateDirectory("msgs/");
+                    if (type != null)
+                        File.WriteAllBytes($"msgs/{count}_{type.Name}_{ActiveModel}_rev{rev}.bin", raw);
+                    else
+                        File.WriteAllBytes($"msgs/{count}_{msg.Id}_{ActiveModel}_rev{rev}.bin", raw);
+                    
+                    count++;
+                    
                     foreach (var hook in ScriptManager.Instance.MessageHooks)
                     {
                         hook.OnMessageAvailable(ref msg);

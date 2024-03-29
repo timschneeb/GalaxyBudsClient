@@ -43,7 +43,8 @@ public class AdvancedPageViewModel : MainPageViewModelBase
                 await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SIDETONE, IsSidetoneEnabled);
                 break; 
             case nameof(IsCallpathControlEnabled):
-                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_CALL_PATH_CONTROL, IsCallpathControlEnabled);
+                // Boolean value has to be inverted
+                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_CALL_PATH_CONTROL, !IsCallpathControlEnabled);
                 break;
             case nameof(IsExtraClearCallEnabled):
                 await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.EXTRA_CLEAR_SOUND_CALL, IsExtraClearCallEnabled);

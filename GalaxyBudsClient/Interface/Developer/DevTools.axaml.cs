@@ -72,7 +72,7 @@ public partial class DevTools : StyledWindow.StyledWindow
                 _cache.AddRange(raw);
                 HexDump.Text = HexUtils.Dump(_cache.ToArray());
 
-                var holder = new RecvMsgViewHolder(SppMessage.DecodeMessage(raw));
+                var holder = new RecvMsgViewHolder(SppMessage.DecodeMessage(raw, BluetoothService.ActiveModel));
                 _vm.MsgTableDataSource?.Add(holder);
                 _vm.MsgTableDataView.Refresh();
                     
@@ -188,7 +188,7 @@ public partial class DevTools : StyledWindow.StyledWindow
             {
                 var raw = data.OfType<byte>().ToArray();
 
-                var msg = SppMessage.DecodeMessage(raw);
+                var msg = SppMessage.DecodeMessage(raw, BluetoothService.ActiveModel); // TODO: Implement model select dialog
                 msgSize = msg.TotalPacketSize;
                     
                 msgs.Add(msg);

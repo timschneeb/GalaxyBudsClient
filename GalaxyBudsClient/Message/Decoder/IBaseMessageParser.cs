@@ -46,9 +46,11 @@ public abstract class BaseMessageParser
         
     protected static bool IsHiddenProperty(PropertyInfo property)
     {
-        return property.Name is "HandledType" or "ActiveModel" or "DeviceSpec";
+        return property.Name is "HandledType" or "ActiveModel" or "DeviceSpec" or "TargetModel";
     }
 
-    protected static Models ActiveModel => BluetoothService.ActiveModel;
-    protected static IDeviceSpec DeviceSpec => BluetoothService.Instance.DeviceSpec;
+    public Models? TargetModel { get; set; }
+    
+    protected Models ActiveModel => TargetModel ?? BluetoothService.ActiveModel;
+    protected IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(ActiveModel) ?? new StubDeviceSpec();
 }

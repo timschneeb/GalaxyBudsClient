@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;
 using Sentry;
@@ -20,7 +22,7 @@ public static class SppMessageParserFactory
 
     private static readonly Type[] RegisteredParsers;
 
-    public static BaseMessageParser? BuildParser(SppMessage msg)
+    public static BaseMessageParser? BuildParser(SppMessage msg, Models model)
     {
         BaseMessageParser? b = null;
         foreach (var t in RegisteredParsers)
@@ -32,6 +34,8 @@ public static class SppMessageParserFactory
             var parser = (BaseMessageParser)act;
             if (parser.HandledType != msg.Id) 
                 continue;
+
+            parser.TargetModel = model;
                 
             SentrySdk.ConfigureScope(scope =>
             {
