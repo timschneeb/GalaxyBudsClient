@@ -102,17 +102,34 @@ namespace GalaxyBudsClient.Model
             AttachSuccess = 2,
             DetachSuccess = 3,
             KeepAlive = 4,
-            WearOnOff = 5
+            WearOnOff = 5,
+            QuerySensorSupported = 6,
+            SpatialBufOn = 7,
+            SpatialBufOff = 8,
+            QueryGyroBiasExistence = 9,
+            ManualGyrocalStart = 10,
+            ManualGyrocalCancel = 11,
+            ManualGyrocalQueryReady = 12,
+            ResetGyroInUseBias = 13,
+            
+            DebugResetBiasAll = 64,
+            DebugResetBiasInUse = 65,
+            DebugResetPrintTimestamp = 66,
         }
         
         public enum SpatialAudioData
         {
             Unknown,
             BudGrv = 32,
+            WearOn = 33,
+            WearOff = 34,
             BudGyrocal = 35,
             BudSensorStuck = 36,
-            WearOff = 34,
-            WearOn = 33
+            SensorSupported = 37,
+            GyroBiasExistence = 38,
+            ManualGyrocalReady = 39,
+            ManualGyrocalNotReady = 40,
+            BudGyrocalFail = 41
         }
         
         public enum TemperatureUnits
