@@ -23,7 +23,7 @@ public class DeviceAttribute : Attribute
     
     public DeviceAttribute(Models model, Selector selector = Selector.Equal)
     {
-        var devices = (Models[])Enum.GetValues(typeof(Models));
+        var devices = ((Models[])Enum.GetValues(typeof(Models))).Where(x => x != Constants.Models.NULL);
 
         Models = selector switch
         {
