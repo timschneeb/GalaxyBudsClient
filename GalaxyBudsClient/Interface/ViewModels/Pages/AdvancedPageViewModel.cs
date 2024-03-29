@@ -34,20 +34,20 @@ public class AdvancedPageViewModel : MainPageViewModelBase
         switch (e.PropertyName)
         {
             case nameof(IsSeamlessConnectionEnabled):
-                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SEAMLESS_CONNECTION, !IsSeamlessConnectionEnabled);
+                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SEAMLESS_CONNECTION, !IsSeamlessConnectionEnabled);
                 break;
             case nameof(IsPassthroughEnabled):
-                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.PASS_THROUGH, IsPassthroughEnabled);
+                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.PASS_THROUGH, IsPassthroughEnabled);
                 break;
             case nameof(IsSidetoneEnabled):
-                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SIDETONE, IsSidetoneEnabled);
+                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SIDETONE, IsSidetoneEnabled);
                 break; 
             case nameof(IsCallpathControlEnabled):
                 // Boolean value has to be inverted
-                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_CALL_PATH_CONTROL, !IsCallpathControlEnabled);
+                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_CALL_PATH_CONTROL, !IsCallpathControlEnabled);
                 break;
             case nameof(IsExtraClearCallEnabled):
-                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.EXTRA_CLEAR_SOUND_CALL, IsExtraClearCallEnabled);
+                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.EXTRA_CLEAR_SOUND_CALL, IsExtraClearCallEnabled);
                 break;
         }
     }

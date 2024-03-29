@@ -42,13 +42,13 @@ public class FindMyBudsPageViewModel : MainPageViewModelBase
             case nameof(IsSearching):
             {
                 SppMessage.MessageIds cmd;
-                if (IsSearching && BluetoothService.Instance.DeviceSpec.Supports(Features.FmgRingWhileWearing))
+                if (IsSearching && BluetoothImpl.Instance.DeviceSpec.Supports(Features.FmgRingWhileWearing))
                     cmd = SppMessage.MessageIds.FIND_MY_EARBUDS_ON_WEARING_START;
                 else if (IsSearching)
                     cmd = SppMessage.MessageIds.FIND_MY_EARBUDS_START;
                 else
                     cmd = SppMessage.MessageIds.FIND_MY_EARBUDS_STOP;
-                await BluetoothService.Instance.SendRequestAsync(cmd);
+                await BluetoothImpl.Instance.SendRequestAsync(cmd);
                 break;
             }
             case nameof(IsLeftMuted) or nameof(IsRightMuted):
@@ -99,7 +99,7 @@ public class FindMyBudsPageViewModel : MainPageViewModelBase
     public override void OnNavigatedFrom()
     {
         // Stop the search when leaving the page
-        _ = BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.FIND_MY_EARBUDS_STOP);
+        _ = BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.FIND_MY_EARBUDS_STOP);
         IsSearching = false;
     }
 }

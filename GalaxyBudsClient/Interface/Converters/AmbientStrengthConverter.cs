@@ -12,12 +12,12 @@ public class AmbientStrengthConverter : IntToStringConverter
     public AmbientStrengthConverter()
     {
         SelectScale();
-        BluetoothService.Instance.PropertyChanged += (_, _) => SelectScale();
+        BluetoothImpl.Instance.PropertyChanged += (_, _) => SelectScale();
     }
 
     private void SelectScale()
     {
-        _legacy = BluetoothService.ActiveModel == Models.Buds;
+        _legacy = BluetoothImpl.ActiveModel == Models.Buds;
     }
     
     private static Dictionary<int, string> LegacyScale => new()

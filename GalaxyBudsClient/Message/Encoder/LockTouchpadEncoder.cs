@@ -18,7 +18,7 @@ public static class LockTouchpadEncoder
         writer.Write(tripleTapOn);
         writer.Write(holdTapOn);
 
-        if (BluetoothService.Instance.DeviceSpec.Supports(Features.AdvancedTouchLockForCalls))
+        if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AdvancedTouchLockForCalls))
         {
             writer.Write(doubleTapCallOn);
             writer.Write(holdTapCallOn);

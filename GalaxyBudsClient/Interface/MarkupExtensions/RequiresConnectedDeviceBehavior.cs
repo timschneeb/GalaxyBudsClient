@@ -18,18 +18,18 @@ public class RequiresConnectedDeviceBehavior : Behavior<Control>
     protected override void OnAttachedToVisualTree()
     {
         UpdateState();
-        BluetoothService.Instance.PropertyChanged += OnBluetoothPropertyChanged;
+        BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
     }
 
     /// <inheritdoc />
     protected override void OnDetachedFromVisualTree()
     {
-        BluetoothService.Instance.PropertyChanged -= OnBluetoothPropertyChanged;
+        BluetoothImpl.Instance.PropertyChanged -= OnBluetoothPropertyChanged;
     }
 
     private void OnBluetoothPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if (e.PropertyName == nameof(BluetoothService.Instance.IsConnected))
+        if (e.PropertyName == nameof(BluetoothImpl.Instance.IsConnected))
         {
             Dispatcher.UIThread.Post(UpdateState, DispatcherPriority.Normal);
         }
@@ -40,6 +40,6 @@ public class RequiresConnectedDeviceBehavior : Behavior<Control>
         if (AssociatedObject is null)
             return;
 
-        AssociatedObject.IsEnabled = BluetoothService.Instance.IsConnected;
+        AssociatedObject.IsEnabled = BluetoothImpl.Instance.IsConnected;
     }
 }

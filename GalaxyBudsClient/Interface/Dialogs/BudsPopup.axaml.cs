@@ -67,17 +67,17 @@ public partial class BudsPopup : Window
         BatteryR.Content = $"{br}%";
         BatteryC.Content = $"{bc}%";
             
-        var connected = BluetoothService.Instance.IsConnected;
+        var connected = BluetoothImpl.Instance.IsConnected;
         var isLeftOnline = connected && bl > 0 && e.PlacementL != PlacementStates.Disconnected;
         var isRightOnline = connected && br > 0 && e.PlacementR != PlacementStates.Disconnected;
-        var isCaseOnline = connected && bc is > 0 and <= 100 && BluetoothService.Instance.DeviceSpec.Supports(Features.CaseBattery);
+        var isCaseOnline = connected && bc is > 0 and <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(Features.CaseBattery);
             
         BatteryL.IsVisible = isLeftOnline;
         BatteryR.IsVisible = isRightOnline;
         BatteryC.IsVisible = isCaseOnline;
         CaseLabel.IsVisible = isCaseOnline;
      
-        var type = BluetoothService.Instance.DeviceSpec.IconResourceKey;
+        var type = BluetoothImpl.Instance.DeviceSpec.IconResourceKey;
         ImageLeft.Source = (IImage?)Application.Current?.FindResource($"Left{type}Connected");
         ImageRight.Source = (IImage?)Application.Current?.FindResource($"Right{type}Connected");
     }
@@ -116,7 +116,7 @@ public partial class BudsPopup : Window
     public void UpdateSettings()
     {
         RequestedThemeVariant = IStyledWindow.GetThemeVariant();
-        Header.Content = BluetoothService.Instance.DeviceName;
+        Header.Content = BluetoothImpl.Instance.DeviceName;
 
         /* Header */
         if (Settings.Instance.Popup.Compact)

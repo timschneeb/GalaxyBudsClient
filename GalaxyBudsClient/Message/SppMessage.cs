@@ -33,7 +33,7 @@ public partial class SppMessage(
     /* No Buds support at the moment */
     public bool IsFragment { set; get; }
     
-    private Models TargetModel => model ?? BluetoothService.ActiveModel;
+    private Models TargetModel => model ?? BluetoothImpl.ActiveModel;
 
     public BaseMessageParser? BuildParser()
     {
@@ -119,7 +119,7 @@ public partial class SppMessage(
             draft.Id = (MessageIds) Convert.ToInt32(raw[3]);
             int size;
 
-            if (BluetoothService.ActiveModel != Models.Buds)
+            if (BluetoothImpl.ActiveModel != Models.Buds)
             {
                 var p1 = raw[2] << 8;
                 var p2 = raw[1] & 255;

@@ -50,7 +50,7 @@ public class SelfTestDialog : TaskDialog
             }, _cancelToken.Token);
 
             SppMessageHandler.Instance.SelfTestResponse += OnSelfTestResponse;
-            await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SELF_TEST);
+            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SELF_TEST);
 
             // Wait for 10 seconds for the self test response
             await Task.Delay(10000, _cancelToken.Token);

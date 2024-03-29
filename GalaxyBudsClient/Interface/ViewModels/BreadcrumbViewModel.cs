@@ -15,7 +15,7 @@ public class BreadcrumbViewModel : ViewModelBase
         PageType = pageType;
         
         if(titleKey == DeviceNameKey)
-            BluetoothService.Instance.PropertyChanged += OnDevicePropertyChanged;
+            BluetoothImpl.Instance.PropertyChanged += OnDevicePropertyChanged;
         Loc.LanguageUpdated += OnLanguageUpdated;
     }
 

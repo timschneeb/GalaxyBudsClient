@@ -21,8 +21,8 @@ public partial class TranslatorTools : StyledWindow.StyledWindow
             
         Locales.SelectedItem = Settings.Instance.Locale;
         XamlPath.Text = Loc.GetTranslatorModeFile();
-        IgnoreConnLoss.IsChecked = BluetoothService.Instance.SuppressDisconnectionEvents;
-        DummyDevices.IsChecked = BluetoothService.Instance.ShowDummyDevices;
+        IgnoreConnLoss.IsChecked = BluetoothImpl.Instance.SuppressDisconnectionEvents;
+        DummyDevices.IsChecked = BluetoothImpl.Instance.ShowDummyDevices;
 
         Loc.ErrorDetected += (title, content) =>
         {
@@ -56,12 +56,12 @@ public partial class TranslatorTools : StyledWindow.StyledWindow
 
     private void IgnoreConnLoss_OnChecked(object? sender, RoutedEventArgs e)
     {
-        BluetoothService.Instance.SuppressDisconnectionEvents = IgnoreConnLoss.IsChecked ?? false;
+        BluetoothImpl.Instance.SuppressDisconnectionEvents = IgnoreConnLoss.IsChecked ?? false;
     }
 
     private void DummyDevices_OnChecked(object? sender, RoutedEventArgs e)
     {
-        BluetoothService.Instance.ShowDummyDevices = DummyDevices.IsChecked ?? false;
+        BluetoothImpl.Instance.ShowDummyDevices = DummyDevices.IsChecked ?? false;
     }
 
     private void EnableAllFeatures_OnChanged(object? sender, RoutedEventArgs e)

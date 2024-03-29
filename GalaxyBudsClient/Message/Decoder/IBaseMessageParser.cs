@@ -51,6 +51,6 @@ public abstract class BaseMessageParser
 
     public Models? TargetModel { get; set; }
     
-    protected Models ActiveModel => TargetModel ?? BluetoothService.ActiveModel;
+    protected Models ActiveModel => TargetModel ?? BluetoothImpl.ActiveModel;
     protected IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(ActiveModel) ?? new StubDeviceSpec();
 }

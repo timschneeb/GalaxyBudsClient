@@ -28,11 +28,11 @@
                 <ui:InfoBar Title="{DynamicResource placement_disconnected}"
                             IsClosable="False"
                             Severity="Warning"
-                            Message="{Binding LastErrorMessage, Source={x:Static platform:BluetoothService.Instance}}"
+                            Message="{Binding LastErrorMessage, Source={x:Static platform:BluetoothImpl.Instance}}"
                             Margin="20,16,20,0">
                     <ui:InfoBar.IsOpen>
                         <MultiBinding Converter="{x:Static BoolConverters.And}">
-                            <Binding Path="!IsConnected" Source="{x:Static platform:BluetoothService.Instance}" />
+                            <Binding Path="!IsConnected" Source="{x:Static platform:BluetoothImpl.Instance}" />
                             <Binding Path="!IsInSetupWizard" />
                         </MultiBinding>
                     </ui:InfoBar.IsOpen>

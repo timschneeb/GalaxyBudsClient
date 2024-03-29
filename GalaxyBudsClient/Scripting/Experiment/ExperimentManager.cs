@@ -23,7 +23,7 @@ public class ExperimentManager
 
     public ExperimentManager()
     {
-        BluetoothService.Instance.Connected += OnConnected;
+        BluetoothImpl.Instance.Connected += OnConnected;
         _client.NewResultsFound += OnNewResultsFound;
     }
 

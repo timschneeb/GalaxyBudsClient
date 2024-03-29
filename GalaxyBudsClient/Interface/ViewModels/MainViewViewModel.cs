@@ -18,19 +18,19 @@ public class MainViewViewModel : ViewModelBase
         NavigationFactory = new NavigationFactory(this);
         Settings.Instance.RegisteredDevice.PropertyChanged += OnDevicePropertyChanged;
         
-        BluetoothService.Instance.Connecting += (_, _) =>
+        BluetoothImpl.Instance.Connecting += (_, _) =>
         {
             IsConnectButtonEnabled = false;
             ConnectButtonText = Loc.Resolve("connlost_connecting");
         };
-        BluetoothService.Instance.BluetoothError += (_, _) =>
+        BluetoothImpl.Instance.BluetoothError += (_, _) =>
         {
             IsConnectButtonEnabled = true;
             ConnectButtonText = Loc.Resolve("connlost_connect");
         };
-        BluetoothService.Instance.PropertyChanged += (_, e) =>
+        BluetoothImpl.Instance.PropertyChanged += (_, e) =>
         {
-            if (e.PropertyName != nameof(BluetoothService.Instance.IsConnected))
+            if (e.PropertyName != nameof(BluetoothImpl.Instance.IsConnected))
                 return;
             IsConnectButtonEnabled = true;
             ConnectButtonText = Loc.Resolve("connlost_connect");
@@ -39,7 +39,7 @@ public class MainViewViewModel : ViewModelBase
 
     [Reactive] public bool IsConnectButtonEnabled { set; get; } = true;
     [Reactive] public string ConnectButtonText { set; get; } = Loc.Resolve("connlost_connect");
-    [Reactive] public bool IsInSetupWizard { set; get; } = !BluetoothService.RegisteredDeviceValid;
+    [Reactive] public bool IsInSetupWizard { set; get; } = !BluetoothImpl.RegisteredDeviceValid;
     public NavigationFactory NavigationFactory { get; }
     public required Func<Type, PageViewModelBase?> VmResolver { get; init; }
     public ObservableCollection<BreadcrumbViewModel> BreadcrumbItems { get; } = [
@@ -52,7 +52,7 @@ public class MainViewViewModel : ViewModelBase
         if (e.PropertyName is
             nameof(Settings.Instance.RegisteredDevice.MacAddress) or
             nameof(Settings.Instance.RegisteredDevice.Model))
-            IsInSetupWizard = !BluetoothService.RegisteredDeviceValid;
+            IsInSetupWizard = !BluetoothImpl.RegisteredDeviceValid;
     }
 }
 

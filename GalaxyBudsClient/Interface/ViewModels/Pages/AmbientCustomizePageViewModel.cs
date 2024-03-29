@@ -33,14 +33,14 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
 
     private void UpdateVolumeSliders()
     {
-        var maxLevel = BluetoothService.Instance.DeviceSpec.MaximumAmbientVolume;
+        var maxLevel = BluetoothImpl.Instance.DeviceSpec.MaximumAmbientVolume;
         
-        if(BluetoothService.Instance.DeviceSpec.Supports(Features.AmbientExtraLoud) && IsAmbientExtraLoudEnabled)
+        if(BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientExtraLoud) && IsAmbientExtraLoudEnabled)
             maxLevel += 1;
         
         MaximumLeftRightAmbientSoundVolume =
-            BluetoothService.Instance.DeviceSpec.Supports(Features.AmbientCustomizeLegacy) ||
-                (BluetoothService.Instance.DeviceSpec.Supports(Features.AmbientExtraLoud) && IsAmbientExtraLoudEnabled) ? 4 : 2;
+            BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientCustomizeLegacy) ||
+                (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientExtraLoud) && IsAmbientExtraLoudEnabled) ? 4 : 2;
         
         MaximumAmbientSoundVolume = maxLevel;
         
@@ -53,18 +53,18 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
         switch (args.PropertyName)
         {
             case nameof(AmbientSoundVolume):
-                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.AMBIENT_VOLUME, (byte)AmbientSoundVolume);
+                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.AMBIENT_VOLUME, (byte)AmbientSoundVolume);
                 break;
             case nameof(IsAmbientVoiceFocusEnabled):
-                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.AMBIENT_VOICE_FOCUS, IsAmbientVoiceFocusEnabled);
+                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.AMBIENT_VOICE_FOCUS, IsAmbientVoiceFocusEnabled);
                 break;
             case nameof(IsAmbientExtraLoudEnabled):
                 UpdateVolumeSliders();
                 
                 if (IsAmbientExtraLoudEnabled || AmbientSoundVolume >= 3)
                     AmbientSoundVolume = MaximumAmbientSoundVolume;
-                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.EXTRA_HIGH_AMBIENT, IsAmbientExtraLoudEnabled);
-                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.AMBIENT_VOLUME, (byte)AmbientSoundVolume);
+                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.EXTRA_HIGH_AMBIENT, IsAmbientExtraLoudEnabled);
+                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.AMBIENT_VOLUME, (byte)AmbientSoundVolume);
                 break;
             case nameof(IsAmbientCustomizationEnabled) or nameof(AmbientSoundTone) or 
                 nameof(AmbientSoundVolumeLeft) or nameof(AmbientSoundVolumeRight):
@@ -75,7 +75,7 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
                     (byte)AmbientSoundVolumeRight,
                     (byte)AmbientSoundTone
                 );
-                await BluetoothService.Instance.SendAsync(msg);
+                await BluetoothImpl.Instance.SendAsync(msg);
                 break;
         }
     }

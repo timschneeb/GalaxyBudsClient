@@ -30,10 +30,10 @@ public class BixbyRemapPageViewModel : SubPageViewModelBase
         switch (e.PropertyName)
         {
             case nameof(IsBixbyWakeUpEnabled):
-                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_VOICE_WAKE_UP, IsBixbyWakeUpEnabled);
+                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_VOICE_WAKE_UP, IsBixbyWakeUpEnabled);
                 break;
             case nameof(BixbyLanguage):
-                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.VOICE_WAKE_UP_LANGUAGE, (byte)BixbyLanguage);
+                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.VOICE_WAKE_UP_LANGUAGE, (byte)BixbyLanguage);
                 break;
         }
     }

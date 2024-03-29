@@ -32,7 +32,7 @@ public class TouchpadPageViewModel : MainPageViewModelBase
         Settings.Instance.CustomActionLeft.PropertyChanged += (sender, args) => UpdateEditStates();
         Settings.Instance.CustomActionRight.PropertyChanged += (sender, args) => UpdateEditStates();
 
-        BluetoothService.Instance.Connected += OnConnected;
+        BluetoothImpl.Instance.Connected += OnConnected;
         Loc.LanguageUpdated += OnLanguageUpdated;
         PropertyChanged += OnPropertyChanged;
     }
@@ -59,14 +59,14 @@ public class TouchpadPageViewModel : MainPageViewModelBase
         IsTouchpadLocked = e.TouchpadLock;
         IsDoubleTapVolumeEnabled = e.OutsideDoubleTap;
 
-        if (BluetoothService.Instance.DeviceSpec.Supports(Features.AdvancedTouchLock))
+        if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AdvancedTouchLock))
         {
             IsSingleTapGestureEnabled = e.SingleTapOn;
             IsDoubleTapGestureEnabled = e.DoubleTapOn;
             IsTripleTapGestureEnabled = e.TripleTapOn;
             IsHoldGestureEnabled = e.TouchHoldOn;
 
-            if (BluetoothService.Instance.DeviceSpec.Supports(Features.AdvancedTouchLockForCalls))
+            if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AdvancedTouchLockForCalls))
             {
                 IsDoubleTapGestureForCallsEnabled = e.DoubleTapForCallOn;
                 IsHoldGestureForCallsEnabled = e.TouchHoldOnForCallOn;
@@ -80,7 +80,7 @@ public class TouchpadPageViewModel : MainPageViewModelBase
             IsHoldGestureEnabled = true;
         }
 
-        if (BluetoothService.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide))
+        if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide))
         {
             NoiseControlCycleMode = e switch
             {
@@ -122,25 +122,25 @@ public class TouchpadPageViewModel : MainPageViewModelBase
             case nameof(IsHoldGestureEnabled):
             case nameof(IsHoldGestureForCallsEnabled):
             case nameof(IsTouchpadLocked):
-                if (BluetoothService.Instance.DeviceSpec.Supports(Features.AdvancedTouchLock))
+                if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AdvancedTouchLock))
                 {
-                    await BluetoothService.Instance.SendAsync(LockTouchpadEncoder.Build(IsTouchpadLocked,
+                    await BluetoothImpl.Instance.SendAsync(LockTouchpadEncoder.Build(IsTouchpadLocked,
                         IsSingleTapGestureEnabled, IsDoubleTapGestureEnabled, IsTripleTapGestureEnabled,
                         IsHoldGestureEnabled, IsDoubleTapGestureForCallsEnabled, IsHoldGestureForCallsEnabled));
                 }
                 else
                 {
-                    await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.LOCK_TOUCHPAD,
+                    await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOCK_TOUCHPAD,
                         IsTouchpadLocked);
                 }
 
                 break;
             case nameof(IsDoubleTapVolumeEnabled):
-                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.OUTSIDE_DOUBLE_TAP,
+                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.OUTSIDE_DOUBLE_TAP,
                     IsDoubleTapVolumeEnabled);
                 break;
             case nameof(NoiseControlCycleMode) or nameof(NoiseControlCycleModeRight):
-                if(BluetoothService.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide))
+                if(BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide))
                 {
                     (byte, byte, byte) left = NoiseControlCycleMode switch
                     {
@@ -157,7 +157,7 @@ public class TouchpadPageViewModel : MainPageViewModelBase
                         _ => (0, 0, 0)
                     };
 
-                    await BluetoothService.Instance.SendRequestAsync(
+                    await BluetoothImpl.Instance.SendRequestAsync(
                         SppMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS,
                         left.Item1, left.Item2, left.Item3, right.Item1, right.Item2, right.Item3);
                 }
@@ -171,7 +171,7 @@ public class TouchpadPageViewModel : MainPageViewModelBase
                         _ => throw new ArgumentOutOfRangeException(nameof(NoiseControlCycleMode))
                     };
 
-                    await BluetoothService.Instance.SendRequestAsync(
+                    await BluetoothImpl.Instance.SendRequestAsync(
                         SppMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS,
                         value.Item1, value.Item2, value.Item3);
                 }
@@ -207,10 +207,10 @@ public class TouchpadPageViewModel : MainPageViewModelBase
     private void UpdateEditStates()
     {
         IsNoiseControlCycleModeEditable = LeftAction == TouchOptions.NoiseControl || 
-                                          (!BluetoothService.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide) && RightAction == TouchOptions.NoiseControl);
+                                          (!BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide) && RightAction == TouchOptions.NoiseControl);
         IsNoiseControlCycleModeRightEditable = RightAction == TouchOptions.NoiseControl;
 
-        LeftControlCycleModeLabel = Loc.Resolve(BluetoothService.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide) ? 
+        LeftControlCycleModeLabel = Loc.Resolve(BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide) ? 
             "touchpad_noise_control_mode_l" : "touchpad_noise_control_mode");
 
         IsLeftCustomActionEditable = LeftAction == TouchOptions.OtherL;
@@ -232,7 +232,7 @@ public class TouchpadPageViewModel : MainPageViewModelBase
     {
         foreach (var device in (Devices[])Enum.GetValues(typeof(Devices)))
         {
-            var table = BluetoothService.Instance.DeviceSpec.TouchMap.LookupTable;
+            var table = BluetoothImpl.Instance.DeviceSpec.TouchMap.LookupTable;
             var actions = table
                 .Where(pair => !pair.Key.IsMemberIgnored())
                 .Select(TouchActionViewModel.FromKeyValuePair);

@@ -27,7 +27,7 @@ public class EqualizerPageViewModel : MainPageViewModelBase
                 await MessageComposer.SetEqualizer(IsEqEnabled, (EqPresets)EqPreset, false);
                 break;
             case nameof(StereoBalance):
-                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_HEARING_ENHANCEMENTS, (byte)StereoBalance);
+                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_HEARING_ENHANCEMENTS, (byte)StereoBalance);
                 break;
         }
     }
@@ -57,7 +57,7 @@ public class EqualizerPageViewModel : MainPageViewModelBase
     {
         using var suppressor = SuppressChangeNotifications();
         
-        if (BluetoothService.ActiveModel == Models.Buds)
+        if (BluetoothImpl.ActiveModel == Models.Buds)
         {
             IsEqEnabled = e.EqualizerEnabled;
 				

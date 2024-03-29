@@ -32,6 +32,6 @@ public partial class SettingsPage : BasePage<SettingsPageViewModel>
     
     public void OnUnregisterClicked(object? sender, RoutedEventArgs e)
     {
-        BluetoothService.Instance.UnregisterDevice();
+        BluetoothImpl.Instance.UnregisterDevice();
     }
 }

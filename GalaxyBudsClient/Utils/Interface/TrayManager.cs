@@ -38,8 +38,8 @@ internal class TrayManager
         // otherwise tray will show outdated infos
         (Application.Current as App)!.TrayMenu.NeedsUpdate += (sender, args) => _ = RebuildAsync();
         
-        BluetoothService.Instance.Connected += (sender, args) => _ = RebuildAsync();
-        BluetoothService.Instance.Disconnected += (sender, args) => _ = RebuildAsync();
+        BluetoothImpl.Instance.Connected += (sender, args) => _ = RebuildAsync();
+        BluetoothImpl.Instance.Disconnected += (sender, args) => _ = RebuildAsync();
         EventDispatcher.Instance.EventReceived += (ev, args) =>
         {
             if (ev == Event.UpdateTrayIcon) 
@@ -97,9 +97,9 @@ internal class TrayManager
                 EventDispatcher.Instance.Dispatch(Event.AmbientToggle);
                 break;
             case TrayItemTypes.Connect:
-                if (!BluetoothService.Instance.IsConnectedLegacy && BluetoothService.RegisteredDeviceValid)
+                if (!BluetoothImpl.Instance.IsConnectedLegacy && BluetoothImpl.RegisteredDeviceValid)
                 {
-                    await BluetoothService.Instance.ConnectAsync();
+                    await BluetoothImpl.Instance.ConnectAsync();
                 }
                 break;
             case TrayItemTypes.Open:
@@ -131,7 +131,7 @@ internal class TrayManager
             bsu.BatteryR > 0
                 ? new NativeMenuItem($"{Loc.Resolve("right")}: {bsu.BatteryR}%") { IsEnabled = false }
                 : null,
-            bsu.BatteryCase is > 0 and <= 100 && BluetoothService.Instance.DeviceSpec.Supports(Features.CaseBattery)
+            bsu.BatteryCase is > 0 and <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(Features.CaseBattery)
                 ? new NativeMenuItem($"{Loc.Resolve("case")}: {bsu.BatteryCase}%") { IsEnabled = false }
                 : null,
 
@@ -142,7 +142,7 @@ internal class TrayManager
 
     private IEnumerable<NativeMenuItemBase> RebuildDynamicActions()
     {
-        return from type in BluetoothService.Instance.DeviceSpec.TrayShortcuts
+        return from type in BluetoothImpl.Instance.DeviceSpec.TrayShortcuts
             let resourceKey = type switch
             {
                 TrayItemTypes.ToggleNoiseControl => "tray_switch_noise",
@@ -187,13 +187,13 @@ internal class TrayManager
                 });
                 items.Add(new NativeMenuItemSeparator());
             }
-            if (BluetoothService.Instance.IsConnectedLegacy && DeviceMessageCache.Instance.BasicStatusUpdate != null)
+            if (BluetoothImpl.Instance.IsConnectedLegacy && DeviceMessageCache.Instance.BasicStatusUpdate != null)
             {
                 items.AddRange(RebuildBatteryInfo().OfType<NativeMenuItemBase>());
                 items.AddRange(RebuildDynamicActions());
                 items.Add(new NativeMenuItemSeparator());
             }
-            else if (BluetoothService.RegisteredDeviceValid)
+            else if (BluetoothImpl.RegisteredDeviceValid)
             {
                 items.Add(new NativeMenuItem(Loc.Resolve("connlost_connect"))
                 {

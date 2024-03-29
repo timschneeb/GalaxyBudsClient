@@ -41,7 +41,7 @@ public class FitTestPageViewModel : SubPageViewModelBase
                     RightStatus = null;
                 }
 
-                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS, IsActive);
+                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS, IsActive);
                 break;
             }
         }
@@ -60,7 +60,7 @@ public class FitTestPageViewModel : SubPageViewModelBase
    
     private void OnFitTestResultReceived(object? sender, FitTestParser result)
     {
-        _ = BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS, 0);
+        _ = BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS, 0);
 
         IsActive = false;
         LeftStatus = result.Left.GetDescription();
@@ -71,7 +71,7 @@ public class FitTestPageViewModel : SubPageViewModelBase
     {
         // Stop when leaving the page
         IsActive = false;
-        _ = BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS, 0);
+        _ = BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS, 0);
     }
 }
 

@@ -60,7 +60,7 @@ public partial class DevTools : StyledWindow.StyledWindow
         PropTable.ItemsSource = _vm.PropTableDataView;
             
         Closing += OnClosing;
-        BluetoothService.Instance.NewDataReceived += OnNewDataReceived;
+        BluetoothImpl.Instance.NewDataReceived += OnNewDataReceived;
     }
 
     private void OnNewDataReceived(object? sender, byte[] raw)
@@ -72,7 +72,7 @@ public partial class DevTools : StyledWindow.StyledWindow
                 _cache.AddRange(raw);
                 HexDump.Text = HexUtils.Dump(_cache.ToArray());
 
-                var holder = new RecvMsgViewHolder(SppMessage.DecodeMessage(raw, BluetoothService.ActiveModel));
+                var holder = new RecvMsgViewHolder(SppMessage.DecodeMessage(raw, BluetoothImpl.ActiveModel));
                 _vm.MsgTableDataSource?.Add(holder);
                 _vm.MsgTableDataView.Refresh();
                     
@@ -85,7 +85,7 @@ public partial class DevTools : StyledWindow.StyledWindow
 
     private void OnClosing(object? sender, CancelEventArgs e)
     {
-        BluetoothService.Instance.NewDataReceived -= OnNewDataReceived;
+        BluetoothImpl.Instance.NewDataReceived -= OnNewDataReceived;
 
         _cache.Clear();
         HexDump.Clear();
@@ -144,7 +144,7 @@ public partial class DevTools : StyledWindow.StyledWindow
             Payload = payload,
             Type = (SppMessage.MsgType?) SendMsgType.SelectedItem ?? SppMessage.MsgType.INVALID
         };
-        _ = BluetoothService.Instance.SendAsync(msg);
+        _ = BluetoothImpl.Instance.SendAsync(msg);
     }
         
     private void Clear_OnClick(object? sender, RoutedEventArgs e)
@@ -188,7 +188,7 @@ public partial class DevTools : StyledWindow.StyledWindow
             {
                 var raw = data.OfType<byte>().ToArray();
 
-                var msg = SppMessage.DecodeMessage(raw, BluetoothService.ActiveModel); // TODO: Implement model select dialog
+                var msg = SppMessage.DecodeMessage(raw, BluetoothImpl.ActiveModel); // TODO: Implement model select dialog
                 msgSize = msg.TotalPacketSize;
                     
                 msgs.Add(msg);
@@ -201,9 +201,9 @@ public partial class DevTools : StyledWindow.StyledWindow
                 var somIndex = 0;
                 for (var i = 1; i < data.Count; i++)
                 {
-                    if ((BluetoothService.ActiveModel == Models.Buds &&
+                    if ((BluetoothImpl.ActiveModel == Models.Buds &&
                          (byte)(data[i] ?? 0) == (byte)SppMessage.Constants.SOM) ||
-                        (BluetoothService.ActiveModel != Models.Buds &&
+                        (BluetoothImpl.ActiveModel != Models.Buds &&
                          (byte)(data[i] ?? 0) == (byte)SppMessage.Constants.SOMPlus))
                     {
                         somIndex = i;

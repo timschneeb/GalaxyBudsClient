@@ -80,7 +80,7 @@ public class FirmwareTransferManager
         };
         StateChanged += (sender, state) => Log.Debug("FirmwareTransferManager: Status changed to {State}", state);
             
-        BluetoothService.Instance.Disconnected += (sender, s) =>
+        BluetoothImpl.Instance.Disconnected += (sender, s) =>
         {
             if (_binary != null)
             {
@@ -89,7 +89,7 @@ public class FirmwareTransferManager
                     Loc.Resolve("fw_fail_connection")));
             }
         };
-        BluetoothService.Instance.BluetoothError += (sender, exception) =>
+        BluetoothImpl.Instance.BluetoothError += (sender, exception) =>
         {
             if (_binary != null)
             {
@@ -136,14 +136,14 @@ public class FirmwareTransferManager
                         _mtuSize = control.MtuSize;
                         MtuChanged?.Invoke(this, control.MtuSize);
 
-                        await BluetoothService.Instance.SendAsync(FotaControlEncoder.Build(control.ControlId, control.MtuSize));
+                        await BluetoothImpl.Instance.SendAsync(FotaControlEncoder.Build(control.ControlId, control.MtuSize));
                         Log.Debug("FirmwareTransferManager.OnMessageReceived: MTU size set to {MtuSize}", control.MtuSize);
                         break;
                     case FirmwareConstants.ControlIds.ReadyToDownload:
                         _currentSegment = control.Id;
                         CurrentSegmentIdChanged?.Invoke(this, control.Id);
                             
-                        await BluetoothService.Instance.SendAsync(FotaControlEncoder.Build(control.ControlId, control.Id));
+                        await BluetoothImpl.Instance.SendAsync(FotaControlEncoder.Build(control.ControlId, control.Id));
                         Log.Debug("FirmwareTransferManager.OnMessageReceived: Ready to download segment {Id}", control.Id);
                         break;
                 }
@@ -161,7 +161,7 @@ public class FirmwareTransferManager
                     _lastFragment = downloadEncoder.IsLastFragment();
                     _lastSegmentOffset = downloadEncoder.Offset;
                         
-                    await BluetoothService.Instance.SendAsync(downloadEncoder.Build());
+                    await BluetoothImpl.Instance.SendAsync(downloadEncoder.Build());
                 }
                 break;
             case FotaUpdateParser update:
@@ -179,7 +179,7 @@ public class FirmwareTransferManager
                             _binary.TotalSize / 1000f);
                         break;
                     case FirmwareConstants.UpdateIds.StateChange:
-                        await BluetoothService.Instance.SendResponseAsync(SppMessage.MessageIds.FOTA_UPDATE, 1);
+                        await BluetoothImpl.Instance.SendResponseAsync(SppMessage.MessageIds.FOTA_UPDATE, 1);
                         Log.Debug("FirmwareTransferManager.OnMessageReceived: State changed: {State}, result code: {ResultCode}", 
                             update.State, update.ResultCode);
 
@@ -199,7 +199,7 @@ public class FirmwareTransferManager
                 }
                 break;
             case FotaResultParser result:
-                await BluetoothService.Instance.SendResponseAsync(SppMessage.MessageIds.FOTA_RESULT, 1);
+                await BluetoothImpl.Instance.SendResponseAsync(SppMessage.MessageIds.FOTA_RESULT, 1);
                 Log.Debug("FirmwareTransferManager.OnMessageReceived: Finished. Result: {Result}, error code: {Code}", 
                     result.Result, result.ErrorCode);
 
@@ -220,7 +220,7 @@ public class FirmwareTransferManager
 
     public async Task Install(FirmwareBinary binary)
     {
-        if (!BluetoothService.Instance.IsConnectedLegacy)
+        if (!BluetoothImpl.Instance.IsConnectedLegacy)
         {
             Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.Disconnected,
                 Loc.Resolve("fw_fail_connection_precheck")));
@@ -250,7 +250,7 @@ public class FirmwareTransferManager
             
         State = States.InitializingSession;
             
-        await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.FOTA_OPEN, _binary.SerializeTable());
+        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.FOTA_OPEN, _binary.SerializeTable());
         _sessionTimeout.Start();
     }
 
@@ -272,9 +272,9 @@ public class FirmwareTransferManager
         _sessionTimeout.Stop();
         _controlTimeout.Stop();
 
-        await BluetoothService.Instance.DisconnectAsync();
+        await BluetoothImpl.Instance.DisconnectAsync();
         await Task.Delay(100);
-        await BluetoothService.Instance.ConnectAsync();
+        await BluetoothImpl.Instance.ConnectAsync();
     }
 
     private void OnSessionTimeoutElapsed(object? sender, ElapsedEventArgs e)

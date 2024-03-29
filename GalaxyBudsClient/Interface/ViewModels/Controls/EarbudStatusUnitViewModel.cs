@@ -29,7 +29,7 @@ public class EarbudStatusUnitViewModel : ViewModelBase
     {
         SppMessageHandler.Instance.BaseUpdate += OnStatusUpdated;
         SppMessageHandler.Instance.GetAllDataResponse += OnGetAllDataResponse;
-        BluetoothService.Instance.PropertyChanged += OnBluetoothPropertyChanged;
+        BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
         Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
         Loc.LanguageUpdated += LoadFromCache;
         LoadFromCache();
@@ -37,7 +37,7 @@ public class EarbudStatusUnitViewModel : ViewModelBase
 
     private void OnBluetoothPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if (e.PropertyName == nameof(BluetoothService.Instance.IsConnected) && 
+        if (e.PropertyName == nameof(BluetoothImpl.Instance.IsConnected) && 
             DeviceMessageCache.Instance.BasicStatusUpdate != null)
             OnStatusUpdated(null, DeviceMessageCache.Instance.BasicStatusUpdate);
     }
@@ -56,12 +56,12 @@ public class EarbudStatusUnitViewModel : ViewModelBase
         if (DeviceMessageCache.Instance.DebugGetAllData != null)
             OnGetAllDataResponse(null, DeviceMessageCache.Instance.DebugGetAllData);
         else
-            _ = BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
+            _ = BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
     }
     
     private void OnStatusUpdated(object? sender, IBasicStatusUpdate e)
     {
-        var connected = BluetoothService.Instance.IsConnected;
+        var connected = BluetoothImpl.Instance.IsConnected;
         LeftBattery = e.BatteryL;
         RightBattery = e.BatteryR;
         CaseBattery = e.BatteryCase is <= 0 or > 100 ? null : e.BatteryCase;

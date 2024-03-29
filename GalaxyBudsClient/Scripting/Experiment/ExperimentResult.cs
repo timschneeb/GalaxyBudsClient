@@ -18,7 +18,7 @@ public class ExperimentResult
     public long ExperimentId { set; get; }
     public Environment? Environment { set; get; }
         
-    public Models Device => BluetoothService.ActiveModel;
+    public Models Device => BluetoothImpl.ActiveModel;
     public int Revision => DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision ?? 0;
     public string FirmwareVersion => DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "Unknown";
     public string? MacAddress => DeviceMessageCache.Instance.DebugGetAllData?.LeftBluetoothAddress;

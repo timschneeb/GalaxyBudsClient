@@ -22,13 +22,13 @@ public class EarbudIconUnitViewModel : ViewModelBase
         if (DeviceMessageCache.Instance.BasicStatusUpdate != null)
             OnStatusUpdated(null, DeviceMessageCache.Instance.BasicStatusUpdate);
         SppMessageHandler.Instance.BaseUpdate += OnStatusUpdated;
-        BluetoothService.Instance.PropertyChanged += OnBluetoothPropertyChanged;
+        BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
         UpdateEarbudIcons();
     }
 
     private void OnBluetoothPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if(e.PropertyName == nameof(BluetoothService.Instance.IsConnected) && 
+        if(e.PropertyName == nameof(BluetoothImpl.Instance.IsConnected) && 
            DeviceMessageCache.Instance.BasicStatusUpdate != null)
             OnStatusUpdated(null, DeviceMessageCache.Instance.BasicStatusUpdate);
         
@@ -37,14 +37,14 @@ public class EarbudIconUnitViewModel : ViewModelBase
 
     private void UpdateEarbudIcons()
     {
-        var type = BluetoothService.Instance.DeviceSpec.IconResourceKey;
+        var type = BluetoothImpl.Instance.DeviceSpec.IconResourceKey;
         LeftIcon = Application.Current?.FindResource($"Left{type}Connected") as IImage;
         RightIcon = Application.Current?.FindResource($"Right{type}Connected") as IImage;
     }
     
     private void OnStatusUpdated(object? sender, IBasicStatusUpdate e)
     {
-        var connected = BluetoothService.Instance.IsConnected;
+        var connected = BluetoothImpl.Instance.IsConnected;
         IsLeftOnline = connected && e.BatteryL > 0 && e.PlacementL != PlacementStates.Disconnected;
         IsRightOnline = connected && e.BatteryR > 0 && e.PlacementR != PlacementStates.Disconnected;
     }

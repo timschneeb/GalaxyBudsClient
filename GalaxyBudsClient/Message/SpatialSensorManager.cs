@@ -71,20 +71,20 @@ public class SpatialSensorManager : IDisposable
 
     public async void Attach()
     {
-        await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SPATIAL_AUDIO, 1);
-        await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SPATIAL_AUDIO_CONTROL, (byte)SpatialAudioControl.Attach);
+        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SPATIAL_AUDIO, 1);
+        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SPATIAL_AUDIO_CONTROL, (byte)SpatialAudioControl.Attach);
         _keepAliveTimer.Start();
     }
 
     public async void Detach()
     {
-        await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SPATIAL_AUDIO_CONTROL, (byte)SpatialAudioControl.Detach);
-        await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SPATIAL_AUDIO, 0);
+        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SPATIAL_AUDIO_CONTROL, (byte)SpatialAudioControl.Detach);
+        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_SPATIAL_AUDIO, 0);
         _keepAliveTimer.Stop();
     }
         
     private static async void KeepAliveOnElapsed(object? sender, ElapsedEventArgs e)
     {
-        await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.SPATIAL_AUDIO_CONTROL, (byte)SpatialAudioControl.KeepAlive);
+        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SPATIAL_AUDIO_CONTROL, (byte)SpatialAudioControl.KeepAlive);
     }
 }

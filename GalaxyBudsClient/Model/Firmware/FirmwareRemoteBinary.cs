@@ -34,7 +34,7 @@ public static class FirmwareRemoteBinaryFilters
 
     public static bool FilterByModel(FirmwareRemoteBinary item)
     {
-        return BluetoothService.ActiveModel == item.Model;
+        return BluetoothImpl.ActiveModel == item.Model;
     }
         
     public static bool FilterByVersion(FirmwareRemoteBinary item)

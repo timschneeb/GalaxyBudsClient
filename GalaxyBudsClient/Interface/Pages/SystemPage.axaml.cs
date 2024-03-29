@@ -57,7 +57,7 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
         
         var defer = args.GetDeferral();
         SppMessageHandler.Instance.ResetResponse += OnResetResponse;
-        await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.RESET);
+        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.RESET);
         
         // Wait for 10 seconds for the reset response
         await Task.Delay(10000, cancelToken.Token);
@@ -84,13 +84,13 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
                 return;
             }
 
-            BluetoothService.Instance.UnregisterDevice();
+            BluetoothImpl.Instance.UnregisterDevice();
         }
     }
 
     private async void OnPairingModeClicked(object? sender, RoutedEventArgs e)
     {
-        await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.UNK_PAIRING_MODE);
+        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.UNK_PAIRING_MODE);
         await new MessageBox
         {
             Title = Loc.Resolve("connlost_disconnected"),

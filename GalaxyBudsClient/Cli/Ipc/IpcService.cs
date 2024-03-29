@@ -25,7 +25,7 @@ public static class IpcService
         
     private static async Task UpdateDeviceObjectAsync(this IConnection connection)
     {
-        if (!BluetoothService.Instance.IsConnectedLegacy)
+        if (!BluetoothImpl.Instance.IsConnectedLegacy)
             connection.UnregisterObject(DeviceObject.Path);
         else if (_deviceObject != null)
         {
@@ -59,8 +59,8 @@ public static class IpcService
             _deviceObject = new DeviceObject();
             await connection.UpdateDeviceObjectAsync();
             
-            BluetoothService.Instance.Connected += (sender, args) => _ = connection.UpdateDeviceObjectAsync();
-            BluetoothService.Instance.Disconnected += (sender, args) => _ = connection.UpdateDeviceObjectAsync();
+            BluetoothImpl.Instance.Connected += (sender, args) => _ = connection.UpdateDeviceObjectAsync();
+            BluetoothImpl.Instance.Disconnected += (sender, args) => _ = connection.UpdateDeviceObjectAsync();
             
             if(!useSessionBus)
             {

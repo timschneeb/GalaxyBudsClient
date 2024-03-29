@@ -41,14 +41,14 @@ public class TraceDownloaderDialog : TaskDialog
 
         DeviceLogManager.Instance.ProgressUpdated += OnProgressUpdated;
         DeviceLogManager.Instance.Finished += OnFinished;
-        BluetoothService.Instance.Disconnected += OnDisconnected;
+        BluetoothImpl.Instance.Disconnected += OnDisconnected;
     }
 
     protected override Type StyleKeyOverride => typeof(TaskDialog);
 
     protected override async void OnClosing(TaskDialogClosingEventArgs args)
     {
-        BluetoothService.Instance.Disconnected -= OnDisconnected;
+        BluetoothImpl.Instance.Disconnected -= OnDisconnected;
         DeviceLogManager.Instance.Finished -= OnFinished;
         DeviceLogManager.Instance.ProgressUpdated -= OnProgressUpdated;
         

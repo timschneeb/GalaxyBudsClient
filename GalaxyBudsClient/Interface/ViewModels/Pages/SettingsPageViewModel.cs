@@ -15,7 +15,7 @@ public class SettingsPageViewModel : MainPageViewModelBase
 
     public SettingsPageViewModel()
     {
-        CanUnregister = BluetoothService.RegisteredDeviceValid;
+        CanUnregister = BluetoothImpl.RegisteredDeviceValid;
         Settings.Instance.RegisteredDevice.PropertyChanged += OnDevicePropertyChanged;
     }
 
@@ -24,7 +24,7 @@ public class SettingsPageViewModel : MainPageViewModelBase
         if (e.PropertyName is
             nameof(Settings.Instance.RegisteredDevice.MacAddress) or
             nameof(Settings.Instance.RegisteredDevice.Model))
-            CanUnregister = BluetoothService.RegisteredDeviceValid;
+            CanUnregister = BluetoothImpl.RegisteredDeviceValid;
     }
 
     public bool IsAutoStartEnabled

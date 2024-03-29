@@ -64,7 +64,7 @@
 
         <Panel>
             <Grid Name="Grid"
-                  IsVisible="{Binding IsConnected, Source={x:Static platform:BluetoothService.Instance}}"
+                  IsVisible="{Binding IsConnected, Source={x:Static platform:BluetoothImpl.Instance}}"
                   ColumnDefinitions="24,*,24" RowDefinitions="24,35,*,24">
 
                 <Label Grid.Column="1" Grid.Row="1"
@@ -112,7 +112,7 @@
             </Grid>
 
             <controls:EmptyView
-                IsVisible="{Binding !IsConnected, Source={x:Static platform:BluetoothService.Instance}}"
+                IsVisible="{Binding !IsConnected, Source={x:Static platform:BluetoothImpl.Instance}}"
                 Text="{DynamicResource connlost_disconnected}"
                 Symbol="WifiOff" />
         </Panel>

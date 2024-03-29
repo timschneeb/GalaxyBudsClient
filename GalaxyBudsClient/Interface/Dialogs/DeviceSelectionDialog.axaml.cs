@@ -66,7 +66,7 @@ public partial class DeviceSelectionDialog : UserControl
 
     public void OnUseWinRtCheckedChanged(object? sender, RoutedEventArgs e)
     {
-        BluetoothService.Reallocate();
+        BluetoothImpl.Reallocate();
         ViewModel.DoRefreshCommand();
     }
 

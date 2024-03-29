@@ -48,12 +48,12 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
             Content = Loc.Resolve("connlost_connecting"),
             CloseButtonText = Loc.Resolve("cancel"),
             CloseButtonCommand = new MiniCommand(
-                (p) => _ = BluetoothService.Instance.DisconnectAsync()
+                (p) => _ = BluetoothImpl.Instance.DisconnectAsync()
             )
         };
         _ = cd.ShowAsync(MainWindow.Instance);
         
-        await BluetoothService.Instance.ConnectAsync();
+        await BluetoothImpl.Instance.ConnectAsync();
         cd.Hide();
     }
     
@@ -78,7 +78,7 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
         IEnumerable<BluetoothDevice> devices;
         try
         {
-            devices = await BluetoothService.Instance.GetDevicesAsync();
+            devices = await BluetoothImpl.Instance.GetDevicesAsync();
         }
         catch (PlatformNotSupportedException ex)
         {

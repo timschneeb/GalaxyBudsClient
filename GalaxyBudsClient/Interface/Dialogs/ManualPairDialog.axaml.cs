@@ -28,7 +28,7 @@ public partial class ManualPairDialog : UserControl
 
         var viewModel = new ManualPairDialogViewModel
         {
-            Devices = await BluetoothService.Instance.GetDevicesAsync()
+            Devices = await BluetoothImpl.Instance.GetDevicesAsync()
         };
         dialog.Content = new ManualPairDialog
         {

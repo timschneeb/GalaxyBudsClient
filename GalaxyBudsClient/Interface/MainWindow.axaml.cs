@@ -45,9 +45,9 @@ public partial class MainWindow : StyledAppWindow
     {
         InitializeComponent();
             
-        BluetoothService.Instance.BluetoothError += OnBluetoothError;
-        BluetoothService.Instance.Disconnected += OnDisconnected;
-        BluetoothService.Instance.Connected += OnConnected;
+        BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
+        BluetoothImpl.Instance.Disconnected += OnDisconnected;
+        BluetoothImpl.Instance.Connected += OnConnected;
 
         SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
         SppMessageHandler.Instance.StatusUpdate += OnStatusUpdate;
@@ -59,9 +59,9 @@ public partial class MainWindow : StyledAppWindow
             
         Loc.LanguageUpdated += OnLanguageUpdated;
             
-        if (BluetoothService.RegisteredDeviceValid)
+        if (BluetoothImpl.RegisteredDeviceValid)
         {
-            Task.Run(() => BluetoothService.Instance.ConnectAsync());
+            Task.Run(() => BluetoothImpl.Instance.ConnectAsync());
         }
             
         if (App.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
@@ -87,7 +87,7 @@ public partial class MainWindow : StyledAppWindow
         switch (e)
         {
             case Event.PairingMode:
-                await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.UNK_PAIRING_MODE);
+                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.UNK_PAIRING_MODE);
                 break;
             case Event.ToggleManagerVisibility:
                 if (IsVisible)
@@ -96,9 +96,9 @@ public partial class MainWindow : StyledAppWindow
                     BringToFront();
                 break;
             case Event.Connect:
-                if (!BluetoothService.Instance.IsConnected)
+                if (!BluetoothImpl.Instance.IsConnected)
                 {
-                    await BluetoothService.Instance.ConnectAsync();
+                    await BluetoothImpl.Instance.ConnectAsync();
                 }
                 break;
             case Event.ShowBatteryPopup:
@@ -129,8 +129,8 @@ public partial class MainWindow : StyledAppWindow
             Log.Debug("MainWindow.OnClosing: Now closing session");
         }
             
-        await BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.FIND_MY_EARBUDS_STOP);
-        await BluetoothService.Instance.DisconnectAsync();
+        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.FIND_MY_EARBUDS_STOP);
+        await BluetoothImpl.Instance.DisconnectAsync();
         base.OnClosing(e);
     }
         
@@ -161,9 +161,9 @@ public partial class MainWindow : StyledAppWindow
 
     protected override void OnClosed(EventArgs e)
     {
-        BluetoothService.Instance.BluetoothError -= OnBluetoothError;
-        BluetoothService.Instance.Disconnected -= OnDisconnected;
-        BluetoothService.Instance.Connected -= OnConnected;
+        BluetoothImpl.Instance.BluetoothError -= OnBluetoothError;
+        BluetoothImpl.Instance.Disconnected -= OnDisconnected;
+        BluetoothImpl.Instance.Connected -= OnConnected;
             
         SppMessageHandler.Instance.ExtendedStatusUpdate -= OnExtendedStatusUpdate;
         SppMessageHandler.Instance.StatusUpdate -= OnStatusUpdate;
@@ -269,8 +269,8 @@ public partial class MainWindow : StyledAppWindow
             
         // Reply manager info and request & cache SKU info
         _ = MessageComposer.SetManagerInfo();
-        if(BluetoothService.Instance.DeviceSpec.Supports(Features.DebugSku))
-            _ = BluetoothService.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
+        if(BluetoothImpl.Instance.DeviceSpec.Supports(Features.DebugSku))
+            _ = BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
     }
 
     private void OnConnected(object? sender, EventArgs e)

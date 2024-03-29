@@ -38,7 +38,7 @@ public static class Settings
             case nameof(ISettings.DynamicTrayIconMode):
             {
                 var cache = DeviceMessageCache.Instance.BasicStatusUpdate;
-                if (Instance.DynamicTrayIconMode != DynamicTrayIconModes.Disabled && BluetoothService.Instance.IsConnected && cache != null)
+                if (Instance.DynamicTrayIconMode != DynamicTrayIconModes.Disabled && BluetoothImpl.Instance.IsConnected && cache != null)
                     WindowIconRenderer.UpdateDynamicIcon(cache);
                 else
                     WindowIconRenderer.ResetIconToDefault();
