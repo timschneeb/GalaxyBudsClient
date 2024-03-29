@@ -101,6 +101,12 @@ internal class SpatialAudioDataParser : BaseMessageParser
 
                 Log.Warning("SpatialAudioDataParser: Wear on updated, but wrong message format");
                 break;
+            case SpatialAudioData.SensorSupported:
+            case SpatialAudioData.GyroBiasExistence:
+            case SpatialAudioData.ManualGyrocalReady:
+            case SpatialAudioData.ManualGyrocalNotReady:
+            case SpatialAudioData.BudGyrocalFail:
+                break;
             default:
                 Log.Debug("SpatialAudioDataParser: Unknown id ({Id})", msg.Payload[0]);
                 break;
