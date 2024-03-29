@@ -90,7 +90,7 @@
                                 IsClosable="False"
                                 Severity="Informational">
             <controls:CustomInfoBar.ActionButton>
-                <StackPanel Spacing="4" 
+                <StackPanel Spacing="8" 
                             Orientation="Horizontal">
                     <Button Content="{DynamicResource devsel_manual_pair}"
                             HorizontalAlignment="Right"
