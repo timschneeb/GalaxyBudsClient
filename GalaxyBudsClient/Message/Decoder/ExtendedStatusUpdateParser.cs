@@ -45,10 +45,15 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
     public int BatteryCase { set; get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public bool OutsideDoubleTap { set; get; }
+
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public Colors DeviceColor { set; get; }
-
-
+    public Colors ColorL { set; get; }
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
+    public Colors ColorR { set; get; }
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
+    public Colors DeviceColor => IsCoupled ? (ColorR != 0 ? ColorR : ColorL) : 
+        (MainConnection == DevicesInverted.R ? ColorR : ColorL);
+    
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public bool AdjustSoundSync { set; get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
@@ -258,10 +263,11 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
 
                 OutsideDoubleTap = msg.Payload[14] == 1;
 
-                var leftColor = BitConverter.ToInt16(msg.Payload, 15);
-                var rightColor = BitConverter.ToInt16(msg.Payload, 17);
-                DeviceColor = (Colors)(leftColor != rightColor ? 0 : leftColor);
-
+                var colorL = BitConverter.ToInt16(msg.Payload, 15);
+                ColorL = Enum.IsDefined(typeof(Colors), (int)colorL) ? (Colors)colorL : Colors.Unknown;
+                var colorR = BitConverter.ToInt16(msg.Payload, 17);
+                ColorR = Enum.IsDefined(typeof(Colors), (int)colorR) ? (Colors)colorR : Colors.Unknown;
+                
                 if (Revision >= 8)
                 {
                     SideToneEnabled = msg.Payload[19] == 1;
@@ -299,10 +305,11 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                 NoiseCancelling = msg.Payload[12] == 1;
                 VoiceWakeUp = msg.Payload[13] == 1;
 
-                var leftColor = BitConverter.ToInt16(msg.Payload, 14);
-                var rightColor = BitConverter.ToInt16(msg.Payload, 16);
-                DeviceColor = (Colors)(leftColor != rightColor ? 0 : leftColor);
-
+                var colorL = BitConverter.ToInt16(msg.Payload, 14);
+                ColorL = Enum.IsDefined(typeof(Colors), (int)colorL) ? (Colors)colorL : Colors.Unknown;
+                var colorR = BitConverter.ToInt16(msg.Payload, 16);
+                ColorR = Enum.IsDefined(typeof(Colors), (int)colorR) ? (Colors)colorR : Colors.Unknown;
+                
                 VoiceWakeUpLang = msg.Payload[18];
 
                 if (Revision >= 3)
@@ -347,9 +354,10 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                 NoiseControlMode = (NoiseControlModes)msg.Payload[12];
                 VoiceWakeUp = msg.Payload[13] == 1;
 
-                var leftColor = BitConverter.ToInt16(msg.Payload, 14);
-                var rightColor = BitConverter.ToInt16(msg.Payload, 16);
-                DeviceColor = (Colors)(leftColor != rightColor ? 0 : leftColor);
+                var colorL = BitConverter.ToInt16(msg.Payload, 14);
+                ColorL = Enum.IsDefined(typeof(Colors), (int)colorL) ? (Colors)colorL : Colors.Unknown;
+                var colorR = BitConverter.ToInt16(msg.Payload, 16);
+                ColorR = Enum.IsDefined(typeof(Colors), (int)colorR) ? (Colors)colorR : Colors.Unknown;
 
                 VoiceWakeUpLang = msg.Payload[18];
                 SeamlessConnectionEnabled = msg.Payload[19] == 0;
@@ -453,11 +461,12 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
 
                 NoiseControlMode = (NoiseControlModes)msg.Payload[12];
                 VoiceWakeUp = msg.Payload[13] == 1;
-
-                var leftColor = BitConverter.ToInt16(msg.Payload, 14);
-                var rightColor = BitConverter.ToInt16(msg.Payload, 16);
-                DeviceColor = (Colors)(leftColor != rightColor ? 0 : leftColor);
-
+                
+                var colorL = BitConverter.ToInt16(msg.Payload, 14);
+                ColorL = Enum.IsDefined(typeof(Colors), (int)colorL) ? (Colors)colorL : Colors.Unknown;
+                var colorR = BitConverter.ToInt16(msg.Payload, 16);
+                ColorR = Enum.IsDefined(typeof(Colors), (int)colorR) ? (Colors)colorR : Colors.Unknown;
+                
                 VoiceWakeUpLang = msg.Payload[18];
                 SeamlessConnectionEnabled = msg.Payload[19] == 0;
                 FmmRevision = msg.Payload[20];
@@ -540,10 +549,11 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                 NoiseControlMode = (NoiseControlModes)msg.Payload[12];
                 VoiceWakeUp = msg.Payload[13] == 1;
 
-                var leftColor = BitConverter.ToInt16(msg.Payload, 14);
-                var rightColor = BitConverter.ToInt16(msg.Payload, 16);
-                DeviceColor = (Colors)(leftColor != rightColor ? 0 : leftColor);
-
+                var colorL = BitConverter.ToInt16(msg.Payload, 14);
+                ColorL = Enum.IsDefined(typeof(Colors), (int)colorL) ? (Colors)colorL : Colors.Unknown;
+                var colorR = BitConverter.ToInt16(msg.Payload, 16);
+                ColorR = Enum.IsDefined(typeof(Colors), (int)colorR) ? (Colors)colorR : Colors.Unknown;
+                
                 VoiceWakeUpLang = msg.Payload[18];
                 SeamlessConnectionEnabled = msg.Payload[19] == 0;
                 FmmRevision = msg.Payload[20];
@@ -636,9 +646,10 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                 NoiseControlMode = (NoiseControlModes)msg.Payload[12];
                 VoiceWakeUp = msg.Payload[13] == 1;
 
-                var leftColor = BitConverter.ToInt16(msg.Payload, 14);
-                var rightColor = BitConverter.ToInt16(msg.Payload, 16);
-                DeviceColor = (Colors)(leftColor != rightColor ? 0 : leftColor);
+                var colorL = BitConverter.ToInt16(msg.Payload, 14);
+                ColorL = Enum.IsDefined(typeof(Colors), (int)colorL) ? (Colors)colorL : Colors.Unknown;
+                var colorR = BitConverter.ToInt16(msg.Payload, 16);
+                ColorR = Enum.IsDefined(typeof(Colors), (int)colorR) ? (Colors)colorR : Colors.Unknown;
 
                 VoiceWakeUpLang = msg.Payload[18];
                 SeamlessConnectionEnabled = msg.Payload[19] == 0;

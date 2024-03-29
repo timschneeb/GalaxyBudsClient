@@ -187,15 +187,47 @@ namespace GalaxyBudsClient.Model
 
         public enum Colors
         {
-            Blue = 258,
-            Pink = 259,
-            Black = 260,
-            White = 261,
-            ThomBrown = 262,
-            Red = 263,
-            DeepBlue = 264,
-            Olympic = 265,
-            Purple = 266
+            Unknown = 0,
+            
+            BudsPlusBlue = 258,
+            BudsPlusPink = 259,
+            BudsPlusBlack = 260,
+            BudsPlusWhite = 261,
+            BudsPlusThomBrown = 262,
+            BudsPlusRed = 263,
+            BudsPlusDeepBlue = 264,
+            BudsPlusOlympic = 265,
+            BudsPlusPurple = 266,
+        
+            BudsLiveBlack = 278,
+            BudsLiveWhite = 279,
+            BudsLiveBronze = 280,
+            BudsLiveRed = 281,
+            BudsLiveBlue = 282,
+            BudsLiveThomBrown = 283,
+            BudsLiveGrey = 284,
+        
+            BudsProBlack = 298,
+            BudsProSilver = 299,
+            BudsProViolet = 300,
+            BudsProWhite = 301,
+        
+            Buds2White = 313,
+            Buds2Black = 314,
+            Buds2Yellow = 315,
+            Buds2Green = 316,
+            Buds2Violet = 317,
+            Buds2ThomBrown = 318,
+            Buds2MaisonKitsune = 319,
+            Buds2AbsoluteBlack = 320,
+            Buds2Grey = 321,
+        
+            Buds2ProGrey = 326,
+            Buds2ProWhite = 327,
+            Buds2ProViolet = 328,
+        
+            BudsFeGraphite = 330,
+            BudsFeWhite = 331,
         }
 
         public enum PlacementStates
