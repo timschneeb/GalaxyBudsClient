@@ -32,7 +32,8 @@ public class BudsProDeviceSpec : IDeviceSpec
         { Features.CallPathControl, new FeatureRule(10) },
         { Features.NoiseControlModeDualSide, new FeatureRule(8) },
         { Features.PairingMode, null },
-        { Features.AmbientSoundVolume, null }
+        { Features.AmbientSoundVolume, null },
+        { Features.AncWithOneEarbud, new FeatureRule(8) },
     };
         
     public Models Device => Models.BudsPro;

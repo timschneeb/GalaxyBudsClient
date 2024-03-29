@@ -66,7 +66,7 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
         }
 
         IsAncLevelHigh = e.NoiseReductionLevel == 1;
-        IsAncWithOneEarbudAllowed = e.AncWithOneEarbud;
+        IsAncWithOneEarbudAllowed = e.NoiseControlsWithOneEarbud;
         IsVoiceDetectEnabled = e.DetectConversations;
         VoiceDetectTimeout = e.DetectConversationsDuration switch
         {

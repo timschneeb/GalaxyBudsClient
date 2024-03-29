@@ -120,9 +120,6 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
 
     [Device(Models.Buds2, Selector.GreaterEqual)]
     public byte TouchType { set; get; }
-
-    [Device(Models.Buds2, Selector.GreaterEqual)]
-    public bool AncWithOneEarbud { set; get; }
     [Device(Models.BudsPro, Selector.GreaterEqual)]
     public bool NoiseControlsWithOneEarbud { set; get; }
         
@@ -489,8 +486,7 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
 
                 if (Revision >= 3)
                 {
-                    AncWithOneEarbud = msg.Payload[28] == 1;
-                    NoiseControlsWithOneEarbud = Revision >= 5 && AncWithOneEarbud;
+                    NoiseControlsWithOneEarbud = msg.Payload[28] == 1;
                 }
 
                 if (Revision >= 5)
@@ -572,7 +568,6 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                     DetectConversationsDuration = 1;
                 }
                     
-                AncWithOneEarbud = msg.Payload[28] == 1;
                 NoiseControlsWithOneEarbud = msg.Payload[28] == 1;
                     
                 AmbientCustomVolumeOn = msg.Payload[29] == 1;
@@ -669,7 +664,6 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                     DetectConversationsDuration = 1;
                 }
                     
-                AncWithOneEarbud = msg.Payload[28] == 1;
                 NoiseControlsWithOneEarbud = msg.Payload[28] == 1;
                     
                 AmbientCustomVolumeOn = msg.Payload[29] == 1;
