@@ -35,7 +35,7 @@ public abstract class BaseMessageParser
             {
                 map.Add(property.Name, (property.GetValue(this)?.ToString() ?? "null") + postfix);
             }
-            else if (devAttr[0].Models.Contains(ActiveModel))
+            else if (devAttr[0].Models.Contains(TargetModel))
             {
                 map.Add($"{property.Name} ({devAttr[0]})", (property.GetValue(this)?.ToString() ?? "null") + postfix);
             }
@@ -49,8 +49,7 @@ public abstract class BaseMessageParser
         return property.Name is "HandledType" or "ActiveModel" or "DeviceSpec" or "TargetModel";
     }
 
-    public Models? TargetModel { get; set; }
     
-    protected Models ActiveModel => TargetModel ?? BluetoothImpl.ActiveModel;
-    protected IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(ActiveModel) ?? new StubDeviceSpec();
+    public Models TargetModel { set; get; }
+    protected IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(TargetModel) ?? new StubDeviceSpec();
 }

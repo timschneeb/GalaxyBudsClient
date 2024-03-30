@@ -42,7 +42,7 @@ public class StatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
         if (msg.Id != HandledType)
             return;
 
-        if (ActiveModel == Models.Buds)
+        if (TargetModel == Models.Buds)
         {
             EarType = msg.Payload[0];
             BatteryL = msg.Payload[1];

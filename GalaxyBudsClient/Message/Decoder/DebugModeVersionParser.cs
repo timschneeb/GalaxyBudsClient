@@ -48,13 +48,13 @@ internal class DebugModeVersionParser : BaseMessageParser
         var swRelVerIndex = payload[startIndex + 2];
         var swRelVarString = swRelVerIndex < _swRelVer.Length ? _swRelVer[swRelVerIndex] : string.Empty;
         
-        if (ActiveModel == Models.Buds)
+        if (TargetModel == Models.Buds)
         {
             swRelVarString = swRelVerIndex <= 15 ? 
                 (swRelVerIndex & 255).ToString("X") : _swRelVer[swRelVerIndex - 16];
         }
         
-        var pre = ActiveModel.GetModelMetadata()?.BuildPrefix.TrimStart('R') ?? "???";
+        var pre = TargetModel.GetModelMetadata()?.BuildPrefix.TrimStart('R') ?? "???";
         return side + pre + "XX" + swVar + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] + swRelVarString;
     }
 }

@@ -96,7 +96,7 @@ public class DebugGetAllDataParser : BaseMessageParser
         if (msg.Id != HandledType)
             return;
 
-        if (ActiveModel == Models.Buds)
+        if (TargetModel == Models.Buds)
         {
 
             var hw1 = (msg.Payload[0] & 240) >> 4;
@@ -209,9 +209,9 @@ public class DebugGetAllDataParser : BaseMessageParser
 
     private string VersionDataToString(IReadOnlyList<byte> payload, int startIndex)
     {
-        var buildPrefix = ActiveModel.GetModelMetadata()?.BuildPrefix ?? "R???";
+        var buildPrefix = TargetModel.GetModelMetadata()?.BuildPrefix ?? "R???";
             
-        if (ActiveModel == Models.Buds)
+        if (TargetModel == Models.Buds)
         {
             int swVarIndex = payload[startIndex];
             var swYearIndex = (payload[startIndex + 1] & 240) >> 4;

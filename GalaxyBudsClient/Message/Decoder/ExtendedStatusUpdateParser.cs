@@ -171,7 +171,7 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
 
         // TODO: clean this up
         
-        if (ActiveModel == Models.Buds)
+        if (TargetModel == Models.Buds)
         {
             Revision = msg.Payload[0];
             EarType = msg.Payload[1];
@@ -249,7 +249,7 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
 
             BatteryCase = msg.Payload[7];
 
-            if (ActiveModel == Models.BudsPlus)
+            if (TargetModel == Models.BudsPlus)
             {
                 AmbientSoundEnabled = Convert.ToBoolean(msg.Payload[8]);
                 AmbientSoundVolume = msg.Payload[9];
@@ -293,7 +293,7 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                     CallPathControl = msg.Payload[23] == 0;
                 }
             }
-            else if (ActiveModel == Models.BudsLive)
+            else if (TargetModel == Models.BudsLive)
             {
                 AdjustSoundSync = msg.Payload[8] == 1;
                 EqualizerMode = msg.Payload[9];
@@ -342,7 +342,7 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                     SpatialAudio = msg.Payload[24] == 1;
                 }
             }
-            else if (ActiveModel == Models.BudsPro)
+            else if (TargetModel == Models.BudsPro)
             {
                 AdjustSoundSync = msg.Payload[8] == 1;
                 EqualizerMode = msg.Payload[9];
@@ -432,7 +432,7 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                     CallPathControl = msg.Payload[37] == 0;
                 }
             }
-            else if (ActiveModel == Models.Buds2)
+            else if (TargetModel == Models.Buds2)
             {
                 AdjustSoundSync = msg.Payload[8] == 1;
                 EqualizerMode = msg.Payload[9];
@@ -530,7 +530,7 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                     IsCaseCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 0) == 1;
                 }
             }
-            else if (ActiveModel == Models.Buds2Pro)
+            else if (TargetModel == Models.Buds2Pro)
             {
                 AdjustSoundSync = msg.Payload[8] == 1;
                 EqualizerMode = msg.Payload[9];
@@ -627,7 +627,7 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
                         ExtraHighAmbientEnabled = reader.ReadBoolean();
                 }
             }
-            else if (ActiveModel == Models.BudsFe)
+            else if (TargetModel == Models.BudsFe)
             {
                 AdjustSoundSync = msg.Payload[8] == 1;
                 EqualizerMode = msg.Payload[9];
