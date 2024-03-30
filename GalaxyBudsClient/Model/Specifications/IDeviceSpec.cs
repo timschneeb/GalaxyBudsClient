@@ -21,7 +21,7 @@ public interface IDeviceSpec
     public string IconResourceKey { get; }
     public int MaximumAmbientVolume { get; }
         
-    public bool Supports(Features feature)
+    public bool Supports(Features feature, int? revision = null)
     {
         if (TranslatorTools.GrantAllFeaturesForTesting)
             return true;
@@ -36,13 +36,14 @@ public interface IDeviceSpec
             return true;
         }
 
-        if (DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision == null)
+        if (revision == null && DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision == null)
         {
             Log.Warning("IDeviceSpec: Cannot compare revision for {Feature}. No ExtendedStatusUpdate cached", feature);
             return true;
         }
         
-        return DeviceMessageCache.Instance.ExtendedStatusUpdate.Revision >= value.MinimumRevision;
+        return (revision != null && revision >= value.MinimumRevision) ||
+               DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision >= value.MinimumRevision;
     }
 
     public string RecommendedFwVersion(Features features)

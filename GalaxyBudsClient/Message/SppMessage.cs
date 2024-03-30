@@ -101,8 +101,7 @@ public partial class SppMessage(
 
             if (raw.Length < 6)
             {
-                SentrySdk.AddBreadcrumb($"Message too small (Length: {raw.Length})", "spp",
-                    level: BreadcrumbLevel.Warning);
+                SentrySdk.AddBreadcrumb($"Message too small (Length: {raw.Length})", "spp", level: BreadcrumbLevel.Warning);
                 Log.Error("Message too small (Length: {Length})", raw.Length);
                 throw new InvalidPacketException(InvalidPacketException.ErrorCodes.TooSmall,Loc.Resolve("sppmsg_too_small"));
             }
@@ -110,8 +109,7 @@ public partial class SppMessage(
             if ((raw[0] != (byte) Constants.SOM && model == Models.Buds) ||
                 (raw[0] != (byte) Constants.SOMPlus && model != Models.Buds))
             {
-                SentrySdk.AddBreadcrumb($"Invalid SOM (Received: {raw[0]})", "spp",
-                    level: BreadcrumbLevel.Warning);
+                SentrySdk.AddBreadcrumb($"Invalid SOM (Received: {raw[0]})", "spp", level: BreadcrumbLevel.Warning);
                 Log.Error("Invalid SOM (Received: {SomByte})", raw[0]);
                 throw new InvalidPacketException(InvalidPacketException.ErrorCodes.SOM,Loc.Resolve("sppmsg_invalid_som"));
             }
@@ -163,16 +161,14 @@ public partial class SppMessage(
 
             if (size != draft.Size)
             {
-                SentrySdk.AddBreadcrumb($"Invalid size (Reported: {size}, Calculated: {draft.Size})", "spp",
-                    level: BreadcrumbLevel.Warning);
+                SentrySdk.AddBreadcrumb($"Invalid size (Reported: {size}, Calculated: {draft.Size})", "spp", level: BreadcrumbLevel.Warning);
                 Log.Error("Invalid size (Reported: {Size}, Calculated: {DraftSize})", size, draft.Size);
                 throw new InvalidPacketException(InvalidPacketException.ErrorCodes.SizeMismatch,Loc.Resolve("sppmsg_size_mismatch"));
             }
 
             if (draft.Crc16 != 0)
             {
-                SentrySdk.AddBreadcrumb($"CRC checksum failed (ID: {draft.Id}, Size: {draft.Size})", "spp",
-                    level: BreadcrumbLevel.Warning);
+                SentrySdk.AddBreadcrumb($"CRC checksum failed (ID: {draft.Id}, Size: {draft.Size})", "spp", level: BreadcrumbLevel.Warning);
                 Log.Error("CRC checksum failed (ID: {Id}, Size: {Size})", draft.Id, draft.Size);
                 //throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Checksum,Loc.Resolve("sppmsg_crc_fail"), draft);
             }
@@ -180,8 +176,7 @@ public partial class SppMessage(
             if ((raw[draft.TotalPacketSize - 1] != (byte) Constants.EOM && model == Models.Buds) ||
                 (raw[draft.TotalPacketSize - 1] != (byte) Constants.EOMPlus && model != Models.Buds))
             {
-                SentrySdk.AddBreadcrumb($"Invalid EOM (Received: {raw[4 + rawPayloadSize + 2]})", "spp",
-                    level: BreadcrumbLevel.Warning);
+                SentrySdk.AddBreadcrumb($"Invalid EOM (Received: {raw[4 + rawPayloadSize + 2]})", "spp", level: BreadcrumbLevel.Warning);
                 Log.Error("Invalid EOM (Received: {EomByte}", raw[4 + rawPayloadSize + 2]);
                 throw new InvalidPacketException(InvalidPacketException.ErrorCodes.EOM,Loc.Resolve("sppmsg_invalid_eom"), draft);
             }

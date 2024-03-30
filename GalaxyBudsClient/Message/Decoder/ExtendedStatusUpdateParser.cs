@@ -705,7 +705,7 @@ public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
             }
         }
         
-        if (DeviceSpec.Supports(Features.ChargingState))
+        if (DeviceSpec.Supports(Features.ChargingState, Revision))
         {
             if(IsLeftCharging)
                 PlacementL = PlacementStates.Charging;
