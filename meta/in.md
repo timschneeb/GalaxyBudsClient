@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>36%</td><td>270 missing string(s)</td></tr>
+<tr><td>35%</td><td>269 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -18,7 +18,6 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>hint</code></td><td>Hint</td></tr>
 <tr><td><code>please_wait</code></td><td>Please wait...</td></tr>
 <tr><td><code>file_not_found</code></td><td>File not found</td></tr>
-<tr><td><code>sppmsg_crc_fail</code></td><td>Checksum incorrect</td></tr>
 <tr><td><code>darkmode_blur_enabled</code></td><td>On, with blur effect</td></tr>
 <tr><td><code>darkmode_mica_enabled</code></td><td>On, with mica effect</td></tr>
 <tr><td><code>placement_charging</code></td><td>Charging</td></tr>
