@@ -48,7 +48,8 @@ public class DeviceMessageCache
         DebugSku = null;
         BasicStatusUpdateWithValidCase = null;
     }
-        
+
+    public int ExtendedStatusRevision => ExtendedStatusUpdate?.Revision ?? -1;
     public DebugGetAllDataParser? DebugGetAllData { private set; get; }
     public DebugSkuParser? DebugSku { private set; get; }
     public ExtendedStatusUpdateParser? ExtendedStatusUpdate { private set; get; }

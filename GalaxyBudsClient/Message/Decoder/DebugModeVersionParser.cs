@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Message.Decoder;
@@ -71,14 +72,7 @@ internal class DebugModeVersionParser : BaseMessageParser
             var swMonthIndex = payload[startIndex + 1] & 15;
             var swRelVerIndex = payload[startIndex + 2];
 
-            var pre = ActiveModel switch
-            {
-                Models.BudsPlus => "175XX",
-                Models.BudsLive => "180XX",
-                Models.BudsPro => "190XX",
-                _ => "???XX"
-            };
-
+            var pre = ActiveModel.GetModelMetadata()?.BuildPrefix ?? "???";
             return side + pre + swVar + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] +
                    _swRelVer[swRelVerIndex];
         }

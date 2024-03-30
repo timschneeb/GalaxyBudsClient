@@ -21,7 +21,9 @@ public interface IDeviceSpec
     public string IconResourceKey { get; }
     public int MaximumAmbientVolume { get; }
         
-    public bool Supports(Features feature, int? revision = null)
+    bool Supports(Features arg) => Supports(arg, null);
+    
+    public bool Supports(Features feature, int? revision)
     {
         if (TranslatorTools.GrantAllFeaturesForTesting)
             return true;
