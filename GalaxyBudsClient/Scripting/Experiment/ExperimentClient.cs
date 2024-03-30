@@ -73,7 +73,7 @@ public class ExperimentClient
 
     public async void ScanForExperiments()
     {
-        if (!BluetoothImpl.Instance.IsConnectedLegacy || 
+        if (!BluetoothImpl.Instance.IsConnected || 
             BluetoothImpl.ActiveModel == Models.NULL ||
             DeviceMessageCache.Instance.ExtendedStatusUpdate == null)
         {

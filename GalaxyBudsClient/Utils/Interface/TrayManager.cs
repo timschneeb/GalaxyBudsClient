@@ -97,7 +97,7 @@ internal class TrayManager
                 EventDispatcher.Instance.Dispatch(Event.AmbientToggle);
                 break;
             case TrayItemTypes.Connect:
-                if (!BluetoothImpl.Instance.IsConnectedLegacy && BluetoothImpl.RegisteredDeviceValid)
+                if (!BluetoothImpl.Instance.IsConnected && BluetoothImpl.RegisteredDeviceValid)
                 {
                     await BluetoothImpl.Instance.ConnectAsync();
                 }
@@ -187,7 +187,7 @@ internal class TrayManager
                 });
                 items.Add(new NativeMenuItemSeparator());
             }
-            if (BluetoothImpl.Instance.IsConnectedLegacy && DeviceMessageCache.Instance.BasicStatusUpdate != null)
+            if (BluetoothImpl.Instance.IsConnected && DeviceMessageCache.Instance.BasicStatusUpdate != null)
             {
                 items.AddRange(RebuildBatteryInfo().OfType<NativeMenuItemBase>());
                 items.AddRange(RebuildDynamicActions());

@@ -299,7 +299,7 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
         
     public async Task SendAsync(SppMessage msg)
     {
-        if (!IsConnectedLegacy)
+        if (!IsConnected)
             return;
             
         try

@@ -25,7 +25,7 @@ public static class IpcService
         
     private static async Task UpdateDeviceObjectAsync(this IConnection connection)
     {
-        if (!BluetoothImpl.Instance.IsConnectedLegacy)
+        if (!BluetoothImpl.Instance.IsConnected)
             connection.UnregisterObject(DeviceObject.Path);
         else if (_deviceObject != null)
         {

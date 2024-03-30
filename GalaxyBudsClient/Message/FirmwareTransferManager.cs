@@ -220,7 +220,7 @@ public class FirmwareTransferManager
 
     public async Task Install(FirmwareBinary binary)
     {
-        if (!BluetoothImpl.Instance.IsConnectedLegacy)
+        if (!BluetoothImpl.Instance.IsConnected)
         {
             Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.Disconnected,
                 Loc.Resolve("fw_fail_connection_precheck")));
