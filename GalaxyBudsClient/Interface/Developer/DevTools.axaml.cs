@@ -204,10 +204,7 @@ public partial class DevTools : StyledWindow.StyledWindow
                 var somIndex = 0;
                 for (var i = 1; i < data.Count; i++)
                 {
-                    if ((BluetoothImpl.ActiveModel == Models.Buds &&
-                         (byte)(data[i] ?? 0) == (byte)SppMessage.Constants.SOM) ||
-                        (BluetoothImpl.ActiveModel != Models.Buds &&
-                         (byte)(data[i] ?? 0) == (byte)SppMessage.Constants.SOMPlus))
+                    if((byte)(data[i] ?? 0) == BluetoothImpl.Instance.DeviceSpec.StartOfMessage)
                     {
                         somIndex = i;
                         break;

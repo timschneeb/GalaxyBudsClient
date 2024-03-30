@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications.Touch;
 
@@ -42,4 +43,6 @@ public class BudsLiveDeviceSpec : IDeviceSpec
         
     public string IconResourceKey => "Bean";
     public int MaximumAmbientVolume => 0; /* ambient sound unsupported */
+    public byte StartOfMessage => (byte)SppMessage.MsgConstants.Som;
+    public byte EndOfMessage => (byte)SppMessage.MsgConstants.Eom;
 }

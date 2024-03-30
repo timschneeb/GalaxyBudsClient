@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications.Touch;
 
@@ -18,7 +19,8 @@ public class BudsDeviceSpec : IDeviceSpec
         { Features.Voltage, null },
         { Features.Current, null },
         { Features.PairingMode, null },
-        { Features.AmbientSoundVolume, null }
+        { Features.AmbientSoundVolume, null },
+        { Features.SppLegacyMessageHeader, null }
     };
 
     public Models Device => Models.Buds;
@@ -36,4 +38,6 @@ public class BudsDeviceSpec : IDeviceSpec
         
     public string IconResourceKey => "Pro";
     public int MaximumAmbientVolume => 4;
+    public byte StartOfMessage => (byte)SppMessage.MsgConstants.LegacySom;
+    public byte EndOfMessage => (byte)SppMessage.MsgConstants.LegacyEom;
 }

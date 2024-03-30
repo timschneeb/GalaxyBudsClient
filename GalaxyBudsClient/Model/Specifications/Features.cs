@@ -41,5 +41,6 @@ public enum Features
     AmbientSoundVolume,
     AutoAdjustSound,
     HeadTracking,
-    CradleSerialNumber
+    CradleSerialNumber,
+    SppLegacyMessageHeader
 }

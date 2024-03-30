@@ -5,7 +5,7 @@ namespace GalaxyBudsClient.Model;
 
 public class InvalidPacketException(
     InvalidPacketException.ErrorCodes errorCode,
-    string message,
+    string? message = null,
     SppMessage? draft = null) : Exception(message)
 {
     public enum ErrorCodes

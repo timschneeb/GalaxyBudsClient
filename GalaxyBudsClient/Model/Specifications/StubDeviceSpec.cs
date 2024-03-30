@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications.Touch;
 
@@ -15,4 +16,6 @@ public class StubDeviceSpec : IDeviceSpec
     public IEnumerable<TrayItemTypes> TrayShortcuts => new List<TrayItemTypes>();
     public string IconResourceKey => "Pro";
     public int MaximumAmbientVolume => 3;
+    public byte StartOfMessage => (byte)SppMessage.MsgConstants.Som;
+    public byte EndOfMessage => (byte)SppMessage.MsgConstants.Eom;
 }

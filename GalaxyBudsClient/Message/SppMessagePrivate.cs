@@ -10,12 +10,12 @@ public partial class SppMessage
         Response = 1
     }
 
-    public enum Constants : byte
+    public enum MsgConstants : byte
     {
-        SOM = 0xFE,
-        EOM = 0xEE,
-        SOMPlus = 0xFD,
-        EOMPlus = 0xDD
+        LegacySom = 0xFE,
+        LegacyEom = 0xEE,
+        Som = 0xFD,
+        Eom = 0xDD
     }
 
     public enum MessageIds : byte

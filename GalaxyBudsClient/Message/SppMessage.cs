@@ -2,6 +2,7 @@
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
@@ -42,12 +43,18 @@ public partial class SppMessage(
 
     public byte[] EncodeMessage()
     {
+        var spec = DeviceSpecHelper.FindByModel(TargetModel) ?? throw new InvalidOperationException();
+        
         var msg = new byte[TotalPacketSize];
+        msg[0] = spec.StartOfMessage;
             
-        if (TargetModel != Models.Buds)
+        if (spec.Supports(Features.SppLegacyMessageHeader))
         {
-            msg[0] = (byte)Constants.SOMPlus;
-                
+            msg[1] = (byte)Type;
+            msg[2] = (byte)Size;
+        }
+        else
+        {
             /* Generate header */
             var header = BitConverter.GetBytes((short)Size);
             if (IsFragment) {
@@ -59,12 +66,6 @@ public partial class SppMessage(
 
             msg[1] = header[0];
             msg[2] = header[1];
-        }
-        else
-        {
-            msg[0] = (byte)Constants.SOM;
-            msg[1] = (byte)Type;
-            msg[2] = (byte)Size;
         }
 
         msg[3] = (byte)Id;
@@ -78,15 +79,7 @@ public partial class SppMessage(
         msg[4 + Payload.Length] = (byte)(crc16 & 255);
         msg[4 + Payload.Length + 1] = (byte)((crc16 >> 8) & 255);
 
-        if (TargetModel != Models.Buds)
-        {
-            msg[TotalPacketSize - 1] = (byte)Constants.EOMPlus;
-        }
-        else
-        {
-            msg[TotalPacketSize - 1] = (byte)Constants.EOM;
-        }
-
+        msg[TotalPacketSize - 1] = spec.EndOfMessage;
         return msg;
     }
 
@@ -97,27 +90,32 @@ public partial class SppMessage(
     {
         try
         {
+            var spec = DeviceSpecHelper.FindByModel(model) ?? throw new InvalidOperationException();
             var draft = new SppMessage(model: model);
 
             if (raw.Length < 6)
             {
                 SentrySdk.AddBreadcrumb($"Message too small (Length: {raw.Length})", "spp", level: BreadcrumbLevel.Warning);
                 Log.Error("Message too small (Length: {Length})", raw.Length);
-                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.TooSmall,Loc.Resolve("sppmsg_too_small"));
+                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.TooSmall);
             }
                 
-            if ((raw[0] != (byte) Constants.SOM && model == Models.Buds) ||
-                (raw[0] != (byte) Constants.SOMPlus && model != Models.Buds))
+            if (raw[0] != spec.StartOfMessage)
             {
                 SentrySdk.AddBreadcrumb($"Invalid SOM (Received: {raw[0]})", "spp", level: BreadcrumbLevel.Warning);
                 Log.Error("Invalid SOM (Received: {SomByte})", raw[0]);
-                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.SOM,Loc.Resolve("sppmsg_invalid_som"));
+                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.SOM);
             }
 
             draft.Id = (MessageIds) Convert.ToInt32(raw[3]);
             int size;
 
-            if (BluetoothImpl.ActiveModel != Models.Buds)
+            if (spec.Supports(Features.SppLegacyMessageHeader))
+            {
+                draft.Type = (MsgType) Convert.ToInt32(raw[1]);
+                size = Convert.ToInt32(raw[2]);
+            }
+            else
             {
                 var p1 = raw[2] << 8;
                 var p2 = raw[1] & 255;
@@ -125,11 +123,6 @@ public partial class SppMessage(
                 draft.IsFragment = (header & 8192) != 0;
                 draft.Type = (header & 4096) != 0 ? MsgType.Request : MsgType.Response;
                 size = header & 1023;
-            }
-            else
-            {
-                draft.Type = (MsgType) Convert.ToInt32(raw[1]);
-                size = Convert.ToInt32(raw[2]);
             }
 
             //Subtract Id and CRC from size
@@ -163,22 +156,21 @@ public partial class SppMessage(
             {
                 SentrySdk.AddBreadcrumb($"Invalid size (Reported: {size}, Calculated: {draft.Size})", "spp", level: BreadcrumbLevel.Warning);
                 Log.Error("Invalid size (Reported: {Size}, Calculated: {DraftSize})", size, draft.Size);
-                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.SizeMismatch,Loc.Resolve("sppmsg_size_mismatch"));
+                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.SizeMismatch);
             }
 
             if (draft.Crc16 != 0)
             {
                 SentrySdk.AddBreadcrumb($"CRC checksum failed (ID: {draft.Id}, Size: {draft.Size})", "spp", level: BreadcrumbLevel.Warning);
                 Log.Error("CRC checksum failed (ID: {Id}, Size: {Size})", draft.Id, draft.Size);
-                //throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Checksum,Loc.Resolve("sppmsg_crc_fail"), draft);
+                //throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Checksum, null, draft);
             }
 
-            if ((raw[draft.TotalPacketSize - 1] != (byte) Constants.EOM && model == Models.Buds) ||
-                (raw[draft.TotalPacketSize - 1] != (byte) Constants.EOMPlus && model != Models.Buds))
+            if (raw[draft.TotalPacketSize - 1] != spec.EndOfMessage)
             {
                 SentrySdk.AddBreadcrumb($"Invalid EOM (Received: {raw[4 + rawPayloadSize + 2]})", "spp", level: BreadcrumbLevel.Warning);
                 Log.Error("Invalid EOM (Received: {EomByte}", raw[4 + rawPayloadSize + 2]);
-                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.EOM,Loc.Resolve("sppmsg_invalid_eom"), draft);
+                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.EOM, null, draft);
             }
 
             return draft;
@@ -191,7 +183,7 @@ public partial class SppMessage(
                 scope.SetTag("raw-data-available", "true");
                 scope.SetExtra("raw-data", HexUtils.Dump(raw, 512, false, false, false));
             });
-            throw new InvalidPacketException(InvalidPacketException.ErrorCodes.OutOfRange,"OutOfRange. Update your firmware!");
+            throw new InvalidPacketException(InvalidPacketException.ErrorCodes.OutOfRange,"IndexOutOfRange. Update your firmware!");
         }
         catch (OverflowException ex)
         {

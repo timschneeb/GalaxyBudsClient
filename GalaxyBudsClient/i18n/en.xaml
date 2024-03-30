@@ -24,15 +24,6 @@
 
     <sys:String x:Key="anc">Active noise cancelling</sys:String>
 
-    <!--SPP Message Parser-->
-    <sys:String x:Key="sppmsg_too_small">Packet size is too small</sys:String>
-    <sys:String x:Key="sppmsg_invalid_som">Invalid SOM</sys:String>
-    <!--Context: SOM = Start of message-->
-    <sys:String x:Key="sppmsg_invalid_eom">Invalid EOM</sys:String>
-    <!--Context: EOM = End of message-->
-    <sys:String x:Key="sppmsg_size_mismatch">Payload size mismatch</sys:String>
-    <sys:String x:Key="sppmsg_crc_fail">Checksum incorrect</sys:String>
-
     <!--Dark Mode States-->
     <sys:String x:Key="darkmode_disabled">Off</sys:String>
     <sys:String x:Key="darkmode_enabled">On</sys:String>

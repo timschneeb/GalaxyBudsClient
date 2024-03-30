@@ -19,6 +19,8 @@ public interface IDeviceSpec
     public IEnumerable<TrayItemTypes> TrayShortcuts { get; }
     public string IconResourceKey { get; }
     public int MaximumAmbientVolume { get; }
+    public byte StartOfMessage { get; }
+    public byte EndOfMessage { get; }
         
     bool Supports(Features arg) => Supports(arg, null);
     

@@ -428,10 +428,7 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
                     var somIndex = 0;
                     for (var i = 1; i < _incomingData.Count; i++)
                     {
-                        if ((ActiveModel == Models.Buds &&
-                             (byte)(_incomingData[i] ?? 0) == (byte)SppMessage.Constants.SOM) ||
-                            (ActiveModel != Models.Buds &&
-                             (byte)(_incomingData[i] ?? 0) == (byte)SppMessage.Constants.SOMPlus))
+                        if ((byte)(_incomingData[i] ?? 0) == DeviceSpec.StartOfMessage)
                         {
                             somIndex = i;
                             break;

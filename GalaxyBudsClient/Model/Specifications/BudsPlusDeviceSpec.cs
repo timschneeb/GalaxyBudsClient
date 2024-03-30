@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications.Touch;
 
@@ -40,4 +41,6 @@ public class BudsPlusDeviceSpec : IDeviceSpec
         
     public string IconResourceKey => "Pro";
     public int MaximumAmbientVolume => 2; /* 3 if ExtraLoud is set */
+    public byte StartOfMessage => (byte)SppMessage.MsgConstants.Som;
+    public byte EndOfMessage => (byte)SppMessage.MsgConstants.Eom;
 }
