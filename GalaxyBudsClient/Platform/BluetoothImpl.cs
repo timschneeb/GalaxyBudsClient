@@ -80,6 +80,7 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
         get => _lastErrorMessage;
     }
 
+    [Obsolete("Use new IsConnected instead")]
     public bool IsConnectedLegacy => _backend.IsStreamConnected;
 
     private readonly ArrayList _incomingData = [];
