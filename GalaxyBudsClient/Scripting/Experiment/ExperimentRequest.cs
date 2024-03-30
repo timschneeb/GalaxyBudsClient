@@ -85,7 +85,7 @@ public static class ExperimentRequestFilters
 #if DEBUG
         return item.Environment != Environment.ProductionOnly;
 #else
-            return item.Environment != Environment.Internal;
+        return item.Environment != Environment.Internal;
 #endif
     }
         
