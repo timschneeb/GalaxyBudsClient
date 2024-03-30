@@ -1,4 +1,4 @@
-﻿namespace GalaxyBudsClient.Model;
+﻿namespace GalaxyBudsClient.Model.Specifications;
 
 public enum TrayItemTypes
 {
