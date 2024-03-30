@@ -86,29 +86,23 @@ public class EventDispatcher
         switch (arg)
         {
             case Event.AmbientToggle:
-                return BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientSound) ||
-                       BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl);
             case Event.AmbientVolumeUp:
-                return BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientSound) ||
-                       BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl);
             case Event.AmbientVolumeDown:
-                return BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientSound) ||
-                       BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl);
+                return BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientSound);
             case Event.AncToggle:
-                return BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc) ||
-                       BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl);
+                return BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc);
             case Event.SwitchAncSensitivity:
-                return (BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc) ||
-                        BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
+                return BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc)
                        && BluetoothImpl.Instance.DeviceSpec.Supports(Features.AncNoiseReductionLevels);
             case Event.SwitchAncOne:
-                return (BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc) ||
-                        BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
+                return BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc)
                        && BluetoothImpl.Instance.DeviceSpec.Supports(Features.AncWithOneEarbud);
             case Event.ToggleDoubleEdgeTouch:
                 return BluetoothImpl.Instance.DeviceSpec.Supports(Features.DoubleTapVolume);
             case Event.ToggleConversationDetect:
                 return BluetoothImpl.Instance.DeviceSpec.Supports(Features.DetectConversations);
+            case Event.PairingMode:
+                return BluetoothImpl.Instance.DeviceSpec.Supports(Features.PairingMode);
                 
             /* INTERNAL */
             case Event.UpdateTrayIcon:
