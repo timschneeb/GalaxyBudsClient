@@ -9,7 +9,7 @@ public class BudsDeviceSpec : IDeviceSpec
 {
     public Dictionary<Features, FeatureRule?> Rules => new()
     {
-        { Features.SeamlessConnection, new FeatureRule(3, "R170XXU0ATF2") },
+        { Features.SeamlessConnection, new FeatureRule(3) },
         { Features.AmbientVoiceFocus, null },
         { Features.AmbientSound, null },
         { Features.LegacyAmbientSoundVolumeLevels, null },

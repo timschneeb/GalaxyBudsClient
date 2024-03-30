@@ -10,8 +10,8 @@ public class BudsProDeviceSpec : IDeviceSpec
     public Dictionary<Features, FeatureRule?> Rules => new()
     {
         { Features.SeamlessConnection, null },
-        { Features.StereoPan, new FeatureRule(5, "R190XXU0AUA5") },
-        { Features.DoubleTapVolume, new FeatureRule(7, "R190XXU0AUD1") },
+        { Features.StereoPan, new FeatureRule(5) },
+        { Features.DoubleTapVolume, new FeatureRule(7) },
         { Features.FirmwareUpdates, null },
         { Features.DetectConversations, null },
         { Features.NoiseControl, null },
@@ -25,9 +25,9 @@ public class BudsProDeviceSpec : IDeviceSpec
         { Features.Anc, null },
         { Features.AncNoiseReductionLevels, null },
         { Features.BuildInfo, null },
-        { Features.AmbientSidetone, new FeatureRule(8, "R190XXU0AUI2")  },
-        { Features.AmbientCustomize, new FeatureRule(8, "R190XXU0AUI2") },
-        { Features.AmbientCustomizeLegacy, new FeatureRule(8, "R190XXU0AUI2") },
+        { Features.AmbientSidetone, new FeatureRule(8)  },
+        { Features.AmbientCustomize, new FeatureRule(8) },
+        { Features.AmbientCustomizeLegacy, new FeatureRule(8) },
         { Features.DebugSku, null },
         { Features.CallPathControl, new FeatureRule(10) },
         { Features.NoiseControlModeDualSide, new FeatureRule(8) },

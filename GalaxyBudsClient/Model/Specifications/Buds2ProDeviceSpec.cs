@@ -34,7 +34,7 @@ public class Buds2ProDeviceSpec : IDeviceSpec
         { Features.AdvancedTouchLockForCalls, new FeatureRule(1) },
         { Features.FmgRingWhileWearing, new FeatureRule(4) },
         { Features.CallPathControl, new FeatureRule(1) },
-        { Features.ChargingState, new FeatureRule(11) },
+        { Features.ChargingState, new FeatureRule(11, 1) },
         { Features.AutoAdjustSound, new FeatureRule(3) },
         { Features.HeadTracking, new FeatureRule(8) },
         { Features.CradleSerialNumber, null }

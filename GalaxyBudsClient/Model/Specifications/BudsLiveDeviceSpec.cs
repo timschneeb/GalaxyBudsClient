@@ -9,13 +9,13 @@ public class BudsLiveDeviceSpec : IDeviceSpec
 {
     public Dictionary<Features, FeatureRule?> Rules => new()
     {
-        { Features.SeamlessConnection, new FeatureRule(3, "R180XXU0ATF2")  },
+        { Features.SeamlessConnection, new FeatureRule(3)  },
         { Features.AmbientPassthrough, null },
         { Features.Anc, null },
         { Features.GamingMode, null },
         { Features.CaseBattery, null },
         { Features.FragmentedMessages, null },
-        { Features.StereoPan, new FeatureRule(7, "R180XXU0AUB5") },
+        { Features.StereoPan, new FeatureRule(7) },
         { Features.SpatialSensor, new FeatureRule(9) },
         { Features.BixbyWakeup, new FeatureRule(1) },
         { Features.FirmwareUpdates, null },

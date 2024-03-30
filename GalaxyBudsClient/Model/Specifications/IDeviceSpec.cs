@@ -14,7 +14,6 @@ public interface IDeviceSpec
     public Dictionary<Features, FeatureRule?> Rules { get; }
     public Models Device { get; }
     public string DeviceBaseName { get; }
-    public string FriendlyName => Device.GetModelMetadata()?.Name ?? "null";
     public ITouchMap TouchMap { get; }
     public Guid ServiceUuid { get; }
     public IEnumerable<TrayItemTypes> TrayShortcuts { get; }
@@ -23,7 +22,7 @@ public interface IDeviceSpec
         
     bool Supports(Features arg) => Supports(arg, null);
     
-    public bool Supports(Features feature, int? revision)
+    public bool Supports(Features feature, int? extendedStatusRevision)
     {
         if (TranslatorTools.GrantAllFeaturesForTesting)
             return true;
@@ -38,24 +37,21 @@ public interface IDeviceSpec
             return true;
         }
 
-        if (revision == null && DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision == null)
+        if (extendedStatusRevision == null && DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision == null)
         {
             Log.Warning("IDeviceSpec: Cannot compare revision for {Feature}. No ExtendedStatusUpdate cached", feature);
             return true;
         }
         
-        return (revision != null && revision >= value.MinimumRevision) ||
-               DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision >= value.MinimumRevision;
-    }
-
-    public string RecommendedFwVersion(Features features)
-    {
-        return Rules.TryGetValue(features, out var value) ? value?.RecommendedFirmwareVersion ?? "Unset" : "N/A";
+        return (extendedStatusRevision != null && extendedStatusRevision >= value.MinimumExtendedStatusRevision) ||
+               DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision >= value.MinimumExtendedStatusRevision;
     }
 }
     
-public class FeatureRule(int minimumRevision, string? recommendedFirmwareVersion = null)
+public class FeatureRule(
+    int minimumExtendedStatusRevision, 
+    int? minimumStatusRevision = null)
 {
-    public int MinimumRevision { get; } = minimumRevision;
-    public string? RecommendedFirmwareVersion { get; } = recommendedFirmwareVersion;
+    public int MinimumExtendedStatusRevision { get; } = minimumExtendedStatusRevision;
+    public int? MinimumStatusRevision { get; } = minimumStatusRevision;
 }

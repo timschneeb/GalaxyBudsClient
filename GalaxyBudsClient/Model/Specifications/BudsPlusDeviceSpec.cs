@@ -10,10 +10,10 @@ public class BudsPlusDeviceSpec : IDeviceSpec
     public Dictionary<Features, FeatureRule?> Rules => new()
     {
         { Features.AmbientSound, null },
-        { Features.AmbientSidetone, new FeatureRule(8, "R175XXU0ASLE")  },
-        { Features.AmbientExtraLoud, new FeatureRule(9, "R175XXU0ATB3")  },
-        { Features.SeamlessConnection, new FeatureRule(11, "R175XXU0ATF2")  },
-        { Features.FirmwareUpdates, new FeatureRule(8, "R175XXU0ASLE") },
+        { Features.AmbientSidetone, new FeatureRule(8)  },
+        { Features.AmbientExtraLoud, new FeatureRule(9)  },
+        { Features.SeamlessConnection, new FeatureRule(11)  },
+        { Features.FirmwareUpdates, new FeatureRule(8) },
         { Features.GamingMode, null },
         { Features.DoubleTapVolume, null },
         { Features.CaseBattery, null },
