@@ -101,13 +101,7 @@ public class UsageReportParser : BaseMessageParser
     {
         if (msg.Id != HandledType)
             return;
-
-        if(ActiveModel == Models.BudsLive)
-        {
-            /* Buds Live not supported right now */
-            return;
-        }
-
+        
         if (Statistics == null)
             Statistics = new Dictionary<string, long>();
         else
