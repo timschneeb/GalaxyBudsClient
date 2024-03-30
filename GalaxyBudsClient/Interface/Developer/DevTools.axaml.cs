@@ -17,12 +17,13 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
+using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.Developer;
 
 public partial class DevTools : StyledWindow.StyledWindow
 {
-    private class ViewModel
+    private class ViewModel : ViewModelBase
     {
         private readonly IReadOnlyList<SppMessage.MessageIds> _msgIdCache
             = Enum.GetValues(typeof(SppMessage.MessageIds)).Cast<SppMessage.MessageIds>().ToList();
@@ -31,6 +32,8 @@ public partial class DevTools : StyledWindow.StyledWindow
 
         public IEnumerable MsgIdSource => _msgIdCache;
         public IEnumerable MsgTypeSource => _msgTypeCache;
+
+        [Reactive] public bool HasProperties { set; get; } = true;
         
         public readonly DataGridCollectionView MsgTableDataView = new(new List<RecvMsgViewHolder>());
         public readonly DataGridCollectionView PropTableDataView = new(new List<PropertyViewModel>());
@@ -270,6 +273,7 @@ public partial class DevTools : StyledWindow.StyledWindow
         var item = (RecvMsgViewHolder?)MsgTable.SelectedItem;
         if (item?.Message == null)
         {
+            _vm.HasProperties = true;
             _vm.PropTableDataSource?.Clear();
         }
         else
@@ -282,13 +286,15 @@ public partial class DevTools : StyledWindow.StyledWindow
                 {
                     _vm.PropTableDataSource?.Add(new PropertyViewModel(key, value));
                 }
+                _vm.HasProperties = true;
             }
             else
             {
                 _vm.PropTableDataSource?.Clear();
+                _vm.HasProperties = false;
             }
         }
-            
+        
         _vm.PropTableDataView.Refresh();
     }
 }
