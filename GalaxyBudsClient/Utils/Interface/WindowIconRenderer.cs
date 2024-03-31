@@ -62,16 +62,12 @@ public static class WindowIconRenderer
             CultureInfo.CurrentCulture,
             FlowDirection.LeftToRight,
             Typeface.Default, 
-            200, 
+            210, 
             Brushes.Black // This brush does not matter since we use the geometry of the text.
         );
 
         // Build the geometry object that represents the text.
-        var textGeometry = formattedText.BuildGeometry(new Point(0, 0));
-
-        // Build the geometry object that represents the text highlight.
-        var textHighLightGeometry = formattedText.BuildHighlightGeometry(new Point(0, 0));
-
+        var textGeometry = formattedText.BuildGeometry(new Point(0, -30));
         var render = new RenderTargetBitmap(new PixelSize(256, 256), new Vector(96, 96));
         
         using (var ctx = render.CreateDrawingContext())
@@ -84,10 +80,7 @@ public static class WindowIconRenderer
                 RequiresFullOpacityHandling = true
             });
             
-            var outlineColor = PlatformUtils.IsOSX ? Brushes.White : Brushes.Black;
             var fillColor = PlatformUtils.IsOSX ? Brushes.Black : Brushes.White;
-            
-            ctx.DrawGeometry(Brushes.Transparent, new Pen(outlineColor, 3), textHighLightGeometry!);
             ctx.DrawGeometry(fillColor, new Pen(Brushes.Transparent, 0), textGeometry!);
         }
         
