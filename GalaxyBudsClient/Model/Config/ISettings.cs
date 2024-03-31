@@ -63,14 +63,13 @@ public interface ISettings : INotifyPropertyChanged
 
     IPopup Popup { set; get; }
         
-    [Option(DefaultValue = "")]
+    [Obsolete("Setting removed"), Option(DefaultValue = "")]
     string UpdateSkippedVersion { set; get; }
     [Option(DefaultValue = true)]
     bool MinimizeToTray { set; get; }
     [Option(DefaultValue = DynamicTrayIconModes.Disabled)]
-        
     DynamicTrayIconModes DynamicTrayIconMode { set; get; }
-    // TODO: set this to true by default?
+    [Option(DefaultValue = true)]
     bool RealisticEarbudImages { set; get; }
     bool ResumePlaybackOnSensor { set; get; }
         
