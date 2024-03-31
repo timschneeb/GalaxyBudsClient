@@ -42,5 +42,6 @@ public enum Features
     AutoAdjustSound,
     HeadTracking,
     CradleSerialNumber,
-    SppLegacyMessageHeader
+    SppLegacyMessageHeader,
+    DeviceColor
 }

@@ -77,6 +77,7 @@ public partial class BudsPopup : Window
         BatteryC.IsVisible = isCaseOnline;
         CaseLabel.IsVisible = isCaseOnline;
      
+        // TODO: replace with EarbudIconUnit
         var type = BluetoothImpl.Instance.DeviceSpec.IconResourceKey;
         ImageLeft.Source = (IImage?)Application.Current?.FindResource($"Left{type}Connected");
         ImageRight.Source = (IImage?)Application.Current?.FindResource($"Right{type}Connected");

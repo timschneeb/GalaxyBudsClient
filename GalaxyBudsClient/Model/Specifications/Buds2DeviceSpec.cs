@@ -33,7 +33,8 @@ public class Buds2DeviceSpec : IDeviceSpec
         { Features.ChargingState, new FeatureRule(10) },
         { Features.NoiseControlModeDualSide, new FeatureRule(5) },
         { Features.PairingMode, null },
-        { Features.AmbientSoundVolume, null }
+        { Features.AmbientSoundVolume, null },
+        { Features.DeviceColor, null }
     };
         
     public Models Device => Models.Buds2;

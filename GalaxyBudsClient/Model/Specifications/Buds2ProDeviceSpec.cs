@@ -38,7 +38,8 @@ public class Buds2ProDeviceSpec : IDeviceSpec
         { Features.ChargingState, new FeatureRule(11, 1) },
         { Features.AutoAdjustSound, new FeatureRule(3) },
         { Features.HeadTracking, new FeatureRule(8) },
-        { Features.CradleSerialNumber, null }
+        { Features.CradleSerialNumber, null },
+        { Features.DeviceColor, null }
     };
         
     public Models Device => Models.Buds2Pro;

@@ -70,6 +70,8 @@ public interface ISettings : INotifyPropertyChanged
     [Option(DefaultValue = DynamicTrayIconModes.Disabled)]
         
     DynamicTrayIconModes DynamicTrayIconMode { set; get; }
+    // TODO: set this to true by default?
+    bool RealisticEarbudImages { set; get; }
     bool ResumePlaybackOnSensor { set; get; }
         
     IExperiments Experiments { set; get; }

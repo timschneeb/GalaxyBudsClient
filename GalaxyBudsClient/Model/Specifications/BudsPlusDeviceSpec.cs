@@ -23,7 +23,8 @@ public class BudsPlusDeviceSpec : IDeviceSpec
         { Features.Voltage, null },
         { Features.CallPathControl, new FeatureRule(13) },
         { Features.PairingMode, null },
-        { Features.AmbientSoundVolume, null }
+        { Features.AmbientSoundVolume, null },
+        { Features.DeviceColor, null }
     };
         
     public Models Device => Models.BudsPlus;

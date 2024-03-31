@@ -213,7 +213,7 @@ namespace GalaxyBudsClient.Model
             BudsPlusThomBrown = 262,
             BudsPlusRed = 263,
             BudsPlusDeepBlue = 264,
-            BudsPlusOlympic = 265,
+            BudsPlusOlympic = 265, // NOTE: Unreleased color
             BudsPlusPurple = 266,
         
             BudsLiveBlack = 278,
@@ -231,7 +231,7 @@ namespace GalaxyBudsClient.Model
         
             Buds2White = 313,
             Buds2Black = 314,
-            Buds2Yellow = 315,
+            Buds2Yellow = 315, // NOTE: Unreleased color
             Buds2Green = 316,
             Buds2Violet = 317,
             Buds2ThomBrown = 318,

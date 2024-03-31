@@ -1,12 +1,21 @@
+using System;
 using System.ComponentModel;
+using System.IO;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
+using Avalonia.Media.Imaging;
+using Avalonia.Platform;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Utils;
 using ReactiveUI.Fody.Helpers;
+using Serilog;
+using Colors = GalaxyBudsClient.Model.Constants.Colors;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Controls;
 
@@ -23,7 +32,14 @@ public class EarbudIconUnitViewModel : ViewModelBase
             OnStatusUpdated(null, DeviceMessageCache.Instance.BasicStatusUpdate);
         SppMessageHandler.Instance.BaseUpdate += OnStatusUpdated;
         BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
+        Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
         UpdateEarbudIcons();
+    }
+
+    private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if(e.PropertyName == nameof(ISettings.RealisticEarbudImages))
+            UpdateEarbudIcons();
     }
 
     private void OnBluetoothPropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -37,6 +53,23 @@ public class EarbudIconUnitViewModel : ViewModelBase
 
     private void UpdateEarbudIcons()
     {
+        var extCache = DeviceMessageCache.Instance.ExtendedStatusUpdate;
+        if (Settings.Instance.RealisticEarbudImages && extCache != null && BluetoothImpl.Instance.DeviceSpec.Supports(Features.DeviceColor))
+        {
+            Uri GetUri(int variant) => new($"{Program.AvaresUrl}/Resources/Device/Realistic/{extCache.DeviceColor}-{variant}.png");
+            try
+            {
+                LeftIcon = new Bitmap(AssetLoader.Open(GetUri(0)));
+                RightIcon = new Bitmap(AssetLoader.Open(GetUri(1)));
+                return;
+            }
+            catch(FileNotFoundException ex)
+            {
+                Log.Warning(ex, "Failed to load earbud icon asset from {File}", ex.FileName);
+                // This should not happen, but if it does, we'll fall back to the default icons
+            }
+        }
+        
         var type = BluetoothImpl.Instance.DeviceSpec.IconResourceKey;
         LeftIcon = Application.Current?.FindResource($"Left{type}Connected") as IImage;
         RightIcon = Application.Current?.FindResource($"Right{type}Connected") as IImage;

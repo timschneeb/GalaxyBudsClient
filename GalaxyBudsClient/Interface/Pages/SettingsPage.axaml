@@ -59,7 +59,7 @@
                                              IsEnabled="{Binding CanUnregister}"
                                              Click="OnUnregisterClicked" />
             </controls:SettingsGroup>
-            
+
             <ui:SettingsExpander Header="{DynamicResource settings_appearance}" IsExpanded="True">
                 <ui:SettingsExpander.IconSource>
                     <ic:SymbolIconSource Symbol="PaintBrush" />
@@ -84,7 +84,7 @@
                     Maximum="255"
                     IsEnabled="{Binding Theme, Source={x:Static utils:Settings.Instance}, Converter={x:Static converters:FuncConverters.IsBlurDarkModeSet}}"
                     Value="{Binding BlurStrength, Source={x:Static utils:Settings.Instance}}" />
-                
+
                 <controls:SettingsColorItem Name="AppAccent"
                                             Content="{DynamicResource settings_accent}"
                                             Description="{DynamicResource settings_accent_description}"
@@ -97,6 +97,12 @@
                                                Symbol="LocalLanguage"
                                                ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:Locales}}}"
                                                SelectedValue="{Binding Locale, Source={x:Static utils:Settings.Instance}}" />
+
+                <controls:SettingsSwitchItem Content="{DynamicResource settings_realistic_earbud_icons}"
+                                             Description="{DynamicResource settings_realistic_earbud_icons_description}"
+                                             Symbol="ImageSparkle"
+                                             IsChecked="{Binding RealisticEarbudImages, Source={x:Static utils:Settings.Instance}}" />
+
             </ui:SettingsExpander>
 
             <ui:SettingsExpander Header="{DynamicResource settings_tray_settings}"

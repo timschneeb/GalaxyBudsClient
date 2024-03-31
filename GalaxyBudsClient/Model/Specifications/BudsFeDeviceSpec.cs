@@ -32,7 +32,8 @@ public class BudsFeDeviceSpec : IDeviceSpec
         { Features.CallPathControl, null },
         { Features.FmgRingWhileWearing, null },
         { Features.ChargingState, null },
-        { Features.NoiseControlModeDualSide, null }
+        { Features.NoiseControlModeDualSide, null },
+        { Features.DeviceColor, null }
     };
         
     public Models Device => Models.BudsFe;

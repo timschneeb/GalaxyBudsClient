@@ -290,6 +290,8 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="settings_localization_description">Change the app language</sys:String>
     <sys:String x:Key="settings_minimize_tray">Minimize to tray</sys:String>
     <sys:String x:Key="settings_minimize_tray_description">Keep in background instead of terminating the app</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons">Use realistic earbud images</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons_description">Display realistic &amp; color-aware images of your earbuds, if they support it</sys:String>
     <sys:String x:Key="settings_tray_settings">Tray icon &amp; startup</sys:String>
     <sys:String x:Key="settings_dyn_tray_mode">Dynamic tray icon</sys:String>
     <sys:String x:Key="settings_dyn_tray_mode_description">Display the battery status in the tray icon</sys:String>
