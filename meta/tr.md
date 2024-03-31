@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>85%</td><td>61 missing string(s)</td></tr>
+<tr><td>85%</td><td>63 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -47,6 +47,8 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>settings_accent</code></td><td>Accent color</td></tr>
 <tr><td><code>settings_accent_description</code></td><td>Choose a custom accent color</td></tr>
 <tr><td><code>settings_localization_description</code></td><td>Change the app language</td></tr>
+<tr><td><code>settings_realistic_earbud_icons</code></td><td>Use realistic earbud images</td></tr>
+<tr><td><code>settings_realistic_earbud_icons_description</code></td><td>Display realistic & color-aware images of your earbuds, if they support it</td></tr>
 <tr><td><code>settings_dyn_tray_mode_description</code></td><td>Display the battery status in the tray icon</td></tr>
 <tr><td><code>settings_devmode_description</code></td><td>Bluetooth traffic inspector and other developer tools</td></tr>
 <tr><td><code>settings_cpopup_position_description</code></td><td>Select the position of the connection popup</td></tr>
