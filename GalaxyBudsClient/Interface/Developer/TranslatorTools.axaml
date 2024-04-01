@@ -39,8 +39,6 @@
                             Name="ReloadXaml"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
-                            VerticalContentAlignment="Center"
-                            HorizontalContentAlignment="Center"
                             Content="Reload"
                             Click="ReloadXaml_OnClick" />
                 </Grid>

@@ -4,21 +4,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using Avalonia.Collections;
-using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using Avalonia.Threading;
 using GalaxyBudsClient.Interface.Dialogs;
-using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.Interface.ViewModels.Developer;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
-using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.Developer;
 
@@ -53,7 +48,7 @@ public partial class DevTools : StyledWindow.StyledWindow
                 HexDump.Text = HexUtils.Dump(_cache.ToArray());
 
                 var holder = new MessageViewHolder(SppMessage.DecodeMessage(raw, BluetoothImpl.ActiveModel));
-                _vm.MsgTableDataSource?.Add(holder);
+                _vm.MsgTableDataSource.Add(holder);
                 _vm.MsgTableDataView.Refresh();
                     
                 HexDump.CaretIndex = int.MaxValue;
@@ -69,7 +64,7 @@ public partial class DevTools : StyledWindow.StyledWindow
 
         _cache.Clear();
         HexDump.Clear();
-        _vm.MsgTableDataSource?.Clear();
+        _vm.MsgTableDataSource.Clear();
         _vm.MsgTableDataView.Refresh();
     }
         
@@ -131,7 +126,7 @@ public partial class DevTools : StyledWindow.StyledWindow
     {
         _cache.Clear();
         HexDump.Clear();
-        _vm.MsgTableDataSource?.Clear();
+        _vm.MsgTableDataSource.Clear();
         _vm.MsgTableDataView.Refresh();
     }
 
@@ -160,52 +155,32 @@ public partial class DevTools : StyledWindow.StyledWindow
         }
 
         var msgs = new List<SppMessage>();
-        var failCount = 0;
         do
         {
-            var msgSize = 0;
+            SppMessage msg;
             try
             {
                 var raw = data.OfType<byte>().ToArray();
-
-                var msg = SppMessage.DecodeMessage(raw, BluetoothImpl.ActiveModel); // TODO: Implement model select dialog
-                msgSize = msg.TotalPacketSize;
-                    
+                msg = SppMessage.DecodeMessage(raw, BluetoothImpl.ActiveModel); // TODO: Implement model select dialog
                 msgs.Add(msg);
-
-                failCount = 0;
             }
-            catch (InvalidPacketException)
+            catch (InvalidPacketException ex)
             {
-                // Attempt to remove broken message, otherwise skip data block
-                var somIndex = 0;
-                for (var i = 1; i < data.Count; i++)
+                _ = new MessageBox
                 {
-                    if((byte)(data[i] ?? 0) == BluetoothImpl.Instance.DeviceSpec.StartOfMessage)
-                    {
-                        somIndex = i;
-                        break;
-                    }
-                }
-
-                msgSize = somIndex;
-                    
-                if (failCount > 5)
-                {
-                    // Abandon data block
-                    break;
-                }
-                    
-                failCount++;
+                    Title = "Error while decoding message", 
+                    Description = $"{ex.ErrorCode} {ex.Message}"
+                }.ShowAsync(this);
+                break;
             }
 
-            if (msgSize >= data.Count)
+            if (msg.TotalPacketSize >= data.Count)
             {
                 data.Clear();
                 break;
             }
 
-            data.RemoveRange(0, msgSize);
+            data.RemoveRange(0, msg.TotalPacketSize);
 
             if (ByteArrayUtils.IsBufferZeroedOut(data))
             {
@@ -216,7 +191,7 @@ public partial class DevTools : StyledWindow.StyledWindow
 
         foreach (var holder in msgs.Select(m => new MessageViewHolder(m)))
         {
-            _vm.MsgTableDataSource?.Add(holder);
+            _vm.MsgTableDataSource.Add(holder);
         }
         _vm.MsgTableDataView.Refresh();
     }
