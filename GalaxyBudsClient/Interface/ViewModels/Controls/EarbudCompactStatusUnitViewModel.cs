@@ -17,8 +17,6 @@ public class EarbudCompactStatusUnitViewModel : ViewModelBase
     [Reactive] public int LeftBattery { set; get; }
     [Reactive] public int RightBattery { set; get; }
     [Reactive] public int? CaseBattery { set; get; }
-    [Reactive] public PlacementStates LeftWearState { set; get; }
-    [Reactive] public PlacementStates RightWearState { set; get; }
     
     [Reactive] public GridLength CenterColumnWidth { set; get; } = new(75);
     
@@ -57,8 +55,6 @@ public class EarbudCompactStatusUnitViewModel : ViewModelBase
         LeftBattery = e.BatteryL;
         RightBattery = e.BatteryR;
         CaseBattery = e.BatteryCase is <= 0 or > 100 ? null : e.BatteryCase;
-        LeftWearState = e.PlacementL;
-        RightWearState = e.PlacementR;
         IsLeftOnline = connected && e.BatteryL > 0 && e.PlacementL != PlacementStates.Disconnected;
         IsRightOnline = connected && e.BatteryR > 0 && e.PlacementR != PlacementStates.Disconnected;
 
