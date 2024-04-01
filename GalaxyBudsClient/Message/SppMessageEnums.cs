@@ -1,7 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
 namespace GalaxyBudsClient.Message;
 
-public enum MsgIds : byte
+public enum MsgIds
 {
     BATTERY_TYPE = 148,
     AMBIENT_MODE_UPDATED = 129,
@@ -281,7 +281,7 @@ public enum MsgIds : byte
     UNKNOWN_253 = 253
 }
 
-public enum MsgConstants : byte
+public enum MsgConstants
 {
     LegacySom = 0xFE,
     LegacyEom = 0xEE,
@@ -289,7 +289,7 @@ public enum MsgConstants : byte
     Eom = 0xDD
 }
 
-public enum MsgTypes : byte
+public enum MsgTypes
 {
     INVALID = 255,
     Request = 0,
