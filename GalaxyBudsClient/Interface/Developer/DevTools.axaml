@@ -10,6 +10,7 @@
         x:Class="GalaxyBudsClient.Interface.Developer.DevTools"
         x:DataType="vm:DevToolsViewModel"
         Height="625" Width="700"
+        ShowInTaskbar="True"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/icon.ico"
         Title="Galaxy Buds Manager - Developer Tools">
@@ -55,17 +56,27 @@
                         BorderBrush="{StaticResource SystemBaseLowColor}">
                     <Grid Name="SendFormGrid"
                           RowDefinitions="Auto,*">
-                        <StackPanel Grid.Row="0" Margin="5" 
-                                    Spacing="5" Orientation="Horizontal">
-                            <ComboBox Name="SendMsgId"
+                        <Grid Grid.Row="0" Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" MaxWidth="100" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <ComboBox Grid.Column="0" Name="SendMsgId"
+                                      HorizontalAlignment="Stretch"
+                                      Margin="0,0,5,0"
                                       ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type message:MsgIds}}}" />
-                            <ComboBox Name="SendMsgType"
+                            <ComboBox Grid.Column="1" Name="SendMsgType"
+                                      Margin="0,0,5,0"
+                                      HorizontalAlignment="Stretch"
                                       ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type message:MsgTypes}}}" />
-                            <Button Name="SendSubmit"
+                            <Button Grid.Column="2" Name="SendSubmit"
+                                    HorizontalAlignment="Stretch"
                                     MaxWidth="100"
                                     Content="Send"
                                     Click="SendMsg_Click" />
-                        </StackPanel>
+                        </Grid>
 
                         <Grid Grid.Row="1" Margin="5,0,5,5">
                             <TextBox Name="SendMsgPayload" TextWrapping="Wrap"
@@ -83,7 +94,8 @@
                           CanUserResizeColumns="True"
                           IsReadOnly="True"
                           HeadersVisibility="All"
-                          ItemsSource="{Binding MsgTableDataSource}">
+                          ItemsSource="{Binding MsgTableDataSource}"
+                          SelectedItem="{Binding SelectedMessage}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
                         <DataGridTextColumn Header="Payload" Binding="{Binding Payload}" Width="*" />

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Avalonia.Collections;
 using ReactiveUI.Fody.Helpers;
@@ -8,16 +9,15 @@ namespace GalaxyBudsClient.Interface.ViewModels.Developer;
 public class DevToolsViewModel : ViewModelBase
 {
     [Reactive] public bool HasProperties { set; get; } = true;
+    [Reactive] public MessageViewHolder? SelectedMessage { set; get; }
         
-    public readonly DataGridCollectionView MsgTableDataView = new(new List<MessageViewHolder>());
-    public readonly DataGridCollectionView PropTableDataView = new(new List<PropertyViewModel>());
+    public readonly DataGridCollectionView MsgTableDataView = new(new ObservableCollection<MessageViewHolder>());
+    public readonly DataGridCollectionView PropTableDataView = new(new ObservableCollection<PropertyViewModel>());
 
-    public List<MessageViewHolder>? MsgTableDataSource =>
-        MsgTableDataView.SourceCollection as List<MessageViewHolder>;
-    public List<PropertyViewModel>? PropTableDataSource =>
-        PropTableDataView.SourceCollection as List<PropertyViewModel>;
-
-    public MessageViewHolder? SelectedMessage { set; get; }
+    public ObservableCollection<MessageViewHolder> MsgTableDataSource =>
+        (ObservableCollection<MessageViewHolder>)MsgTableDataView.SourceCollection;
+    public ObservableCollection<PropertyViewModel> PropTableDataSource =>
+        (ObservableCollection<PropertyViewModel>)PropTableDataView.SourceCollection;
     
     public DevToolsViewModel()
     {
@@ -32,14 +32,14 @@ public class DevToolsViewModel : ViewModelBase
             if (item?.Message == null)
             {
                 HasProperties = true;
-                PropTableDataSource?.Clear();
+                PropTableDataSource.Clear();
             }
             else
             {
                 var parser = item.Message.BuildParser();
                 if (parser != null)
                 {
-                    PropTableDataSource?.Clear();
+                    PropTableDataSource.Clear();
                     foreach (var (key, value) in parser.ToStringMap())
                     {
                         PropTableDataSource?.Add(new PropertyViewModel(key, value));
@@ -48,7 +48,7 @@ public class DevToolsViewModel : ViewModelBase
                 }
                 else
                 {
-                    PropTableDataSource?.Clear();
+                    PropTableDataSource.Clear();
                     HasProperties = false;
                 }
             }
