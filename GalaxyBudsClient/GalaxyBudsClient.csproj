@@ -76,6 +76,13 @@
           <DependentUpon>MainWindow.axaml</DependentUpon>
           <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Interface\Controls\EarbudCompactStatusUnit.axaml.cs">
+          <DependentUpon>EarbudCompactStatusUnit.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="Interface\Controls\EarbudIcon.cs">
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
     <PropertyGroup>

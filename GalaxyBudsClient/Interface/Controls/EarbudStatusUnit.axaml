@@ -92,11 +92,12 @@
         <StackPanel Grid.Column="2"
                     Orientation="Vertical"
                     Spacing="5"
+                    VerticalAlignment="Center"
                     HorizontalAlignment="Center">
 
             <controls:EarbudIconUnit />
 
-            <StackPanel>
+            <StackPanel Margin="0,-10,0,0">
                 <Interaction.Behaviors>
                     <ext:RequiresFeatureBehavior Feature="CaseBattery" />
                 </Interaction.Behaviors>

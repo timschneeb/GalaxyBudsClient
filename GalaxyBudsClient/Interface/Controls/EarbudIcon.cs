@@ -1,11 +1,14 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
+using Avalonia.Threading;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Config;
@@ -13,27 +16,37 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
-using ReactiveUI.Fody.Helpers;
 using Serilog;
-using Colors = GalaxyBudsClient.Model.Constants.Colors;
 
-namespace GalaxyBudsClient.Interface.ViewModels.Controls;
+namespace GalaxyBudsClient.Interface.Controls;
 
-public class EarbudIconUnitViewModel : ViewModelBase
+public class EarbudIcon : Image
 {
-    [Reactive] public IImage? LeftIcon { set; get; }
-    [Reactive] public IImage? RightIcon { set; get; }
-    [Reactive] public bool IsLeftOnline { set; get; }
-    [Reactive] public bool IsRightOnline { set; get; }
-    
-    public EarbudIconUnitViewModel()
+    public EarbudIcon()
     {
+        Height = Width = 75;
+
         if (DeviceMessageCache.Instance.BasicStatusUpdate != null)
             OnStatusUpdated(null, DeviceMessageCache.Instance.BasicStatusUpdate);
         SppMessageHandler.Instance.BaseUpdate += OnStatusUpdated;
         BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
         Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
         UpdateEarbudIcons();
+    }
+    
+    public static readonly StyledProperty<Devices> SideProperty = AvaloniaProperty.Register<EarbudIcon, Devices>(nameof(Side));
+    public Devices Side
+    {
+        get => GetValue(SideProperty);
+        set => SetValue(SideProperty, value);
+    }
+
+    protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
+    {
+        if(change.Property == SideProperty)
+            UpdateEarbudIcons();
+        else
+            base.OnPropertyChanged(change);
     }
 
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -44,41 +57,45 @@ public class EarbudIconUnitViewModel : ViewModelBase
 
     private void OnBluetoothPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if(e.PropertyName == nameof(BluetoothImpl.Instance.IsConnected) && 
-           DeviceMessageCache.Instance.BasicStatusUpdate != null)
-            OnStatusUpdated(null, DeviceMessageCache.Instance.BasicStatusUpdate);
-        
-        UpdateEarbudIcons();
+        Dispatcher.UIThread.Post(() =>
+        {
+            if (e.PropertyName == nameof(BluetoothImpl.Instance.IsConnected) &&
+                DeviceMessageCache.Instance.BasicStatusUpdate != null)
+                OnStatusUpdated(null, DeviceMessageCache.Instance.BasicStatusUpdate);
+
+            UpdateEarbudIcons();
+        });
     }
 
     private void UpdateEarbudIcons()
     {
         var extCache = DeviceMessageCache.Instance.ExtendedStatusUpdate;
-        if (Settings.Instance.RealisticEarbudImages && extCache != null && BluetoothImpl.Instance.DeviceSpec.Supports(Features.DeviceColor))
+        if (Settings.Instance.RealisticEarbudImages && extCache != null &&
+            BluetoothImpl.Instance.DeviceSpec.Supports(Features.DeviceColor))
         {
             Uri GetUri(int variant) => new($"{Program.AvaresUrl}/Resources/Device/Realistic/{extCache.DeviceColor}-{variant}.png");
+
             try
             {
-                LeftIcon = new Bitmap(AssetLoader.Open(GetUri(0)));
-                RightIcon = new Bitmap(AssetLoader.Open(GetUri(1)));
+                Source = new Bitmap(AssetLoader.Open(GetUri((int)Side)));
                 return;
             }
-            catch(FileNotFoundException ex)
+            catch (FileNotFoundException ex)
             {
-                Log.Warning(ex, "Failed to load earbud icon asset from {File}", ex.FileName);
+                Log.Warning("Failed to load earbud icon asset: {Msg}", ex.Message);
                 // This should not happen, but if it does, we'll fall back to the default icons
             }
         }
-        
+
         var type = BluetoothImpl.Instance.DeviceSpec.IconResourceKey;
-        LeftIcon = Application.Current?.FindResource($"Left{type}Connected") as IImage;
-        RightIcon = Application.Current?.FindResource($"Right{type}Connected") as IImage;
+        Source = Application.Current?.FindResource($"{(Side == Devices.L ? "Left" : "Right")}{type}Connected") as IImage;
     }
     
     private void OnStatusUpdated(object? sender, IBasicStatusUpdate e)
     {
         var connected = BluetoothImpl.Instance.IsConnected;
-        IsLeftOnline = connected && e.BatteryL > 0 && e.PlacementL != PlacementStates.Disconnected;
-        IsRightOnline = connected && e.BatteryR > 0 && e.PlacementR != PlacementStates.Disconnected;
+        var isOnline = (Side == Devices.L && e.BatteryL > 0 && e.PlacementL != PlacementStates.Disconnected) ||
+                       (Side == Devices.R && e.BatteryR > 0 && e.PlacementR != PlacementStates.Disconnected);
+        Opacity = connected && isOnline ? 1 : 0.4;
     }
 }
