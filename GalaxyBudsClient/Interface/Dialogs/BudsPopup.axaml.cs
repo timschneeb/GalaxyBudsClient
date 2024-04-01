@@ -25,6 +25,7 @@ public partial class BudsPopup : Window
         InitializeComponent();
 
         Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
+        _timer.Elapsed += (_, _) => Dispatcher.UIThread.Post(Hide, DispatcherPriority.Render);
     }
     
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
