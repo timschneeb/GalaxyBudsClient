@@ -1,4 +1,4 @@
-﻿namespace GalaxyBudsClient.Interface.ViewModels;
+﻿namespace GalaxyBudsClient.Interface.ViewModels.Developer;
 
 public class PropertyViewModel(string key, string value)
 {

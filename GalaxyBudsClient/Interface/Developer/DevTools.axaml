@@ -3,18 +3,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
-        xmlns:developer="clr-namespace:GalaxyBudsClient.Interface.Developer"
-        xmlns:viewModels="clr-namespace:GalaxyBudsClient.Interface.ViewModels"
+        xmlns:vm="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Developer"
+        xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+        xmlns:message="clr-namespace:GalaxyBudsClient.Message"
         mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="625"
         x:Class="GalaxyBudsClient.Interface.Developer.DevTools"
-        x:DataType="developer:DevToolsViewModel"
+        x:DataType="vm:DevToolsViewModel"
         Height="625" Width="700"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/icon.ico"
         Title="Galaxy Buds Manager - Developer Tools">
     
     <Design.DataContext>
-        <developer:DevToolsViewModel />
+        <vm:DevToolsViewModel />
     </Design.DataContext>
 
     <Window.Styles>
@@ -43,47 +44,28 @@
                 <TextBox Name="HexDump"
                          Grid.Column="0"
                          Text="Waiting for incoming data..." IsReadOnly="True"
-                         FontFamily="Monospace, Lucida Console"
+                         FontFamily="Monospace, Lucida Console, Hack"
                          FontSize="12"
                          BorderBrush="{StaticResource SystemBaseLowColor}" />
 
-                <GridSplitter Grid.Row="1"
-                              Height="5"
-                              HorizontalAlignment="Stretch"
-                              VerticalAlignment="Stretch"
-                              ResizeDirection="Rows"
-                              ShowsPreview="True" />
+                <GridSplitter Grid.Row="1" Height="5" ResizeDirection="Rows" ShowsPreview="True" />
 
-                <Border Grid.Row="2"
+                <Border Grid.Row="2" Grid.Column="0"
                         BorderThickness="1"
-                        BorderBrush="{StaticResource SystemBaseLowColor}"
-                        Grid.Column="0">
+                        BorderBrush="{StaticResource SystemBaseLowColor}">
                     <Grid Name="SendFormGrid"
                           RowDefinitions="Auto,*">
-                        <Grid Grid.Row="0" Margin="5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" MaxWidth="100" />
-                            </Grid.ColumnDefinitions>
-                            <ComboBox Grid.Column="0"
-                                      Name="SendMsgId"
-                                      ItemsSource="{Binding MsgIdSource}"
-                                      HorizontalAlignment="Stretch"
-                                      VerticalAlignment="Stretch"
-                                      Margin="0,0,5,0" />
-                            <ComboBox Grid.Column="1" Name="SendMsgType"
-                                      ItemsSource="{Binding MsgTypeSource}"
-                                      HorizontalAlignment="Stretch"
-                                      VerticalAlignment="Stretch"
-                                      Margin="0,0,5,0" />
-                            <Button Grid.Column="2" Name="SendSubmit"
+                        <StackPanel Grid.Row="0" Margin="5" 
+                                    Spacing="5" Orientation="Horizontal">
+                            <ComboBox Name="SendMsgId"
+                                      ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type message:SppMessage+MessageIds}}}" />
+                            <ComboBox Name="SendMsgType"
+                                      ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type message:MsgTypes}}}" />
+                            <Button Name="SendSubmit"
+                                    MaxWidth="100"
                                     Content="Send"
-                                    HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Stretch"
-                                    HorizontalContentAlignment="Center"
                                     Click="SendMsg_Click" />
-                        </Grid>
+                        </StackPanel>
 
                         <Grid Grid.Row="1" Margin="5,0,5,5">
                             <TextBox Name="SendMsgPayload" TextWrapping="Wrap"
@@ -93,7 +75,7 @@
                 </Border>
             </Grid>
 
-            <GridSplitter Grid.Column="1" Width="5" ShowsPreview="True" HorizontalAlignment="Stretch" />
+            <GridSplitter Grid.Column="1" Width="5" ShowsPreview="True" />
 
             <Grid Grid.Column="2" RowDefinitions="*,5,*">
                 <DataGrid Name="MsgTable" Grid.Row="0" SelectionMode="Single"
@@ -101,8 +83,7 @@
                           CanUserResizeColumns="True"
                           IsReadOnly="True"
                           HeadersVisibility="All"
-                          SelectionChanged="MsgTable_OnSelectionChanged"
-                          x:DataType="viewModels:MessageViewHolder">
+                          ItemsSource="{Binding MsgTableDataSource}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
                         <DataGridTextColumn Header="Payload" Binding="{Binding Payload}" Width="*" />
@@ -112,9 +93,8 @@
                     </DataGrid.Columns>
                 </DataGrid>
 
-                <GridSplitter Grid.Row="1" Height="5"
-                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                              ResizeDirection="Rows" ShowsPreview="True" />
+                <GridSplitter Grid.Row="1" Height="5" ResizeDirection="Rows" ShowsPreview="True" />
+                
                 <Panel Grid.Row="2">
                         <DataGrid Name="PropTable"
                                   SelectionMode="Single"
@@ -123,16 +103,14 @@
                                   CanUserSortColumns="False"
                                   CanUserReorderColumns="False"
                                   HeadersVisibility="All"
-                                  IsVisible="{Binding HasProperties, DataType=developer:DevToolsViewModel}"
-                                  x:DataType="viewModels:PropertyViewModel">
+                                  IsVisible="{Binding HasProperties}"
+                                  ItemsSource="{Binding PropTableDataSource}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Property"
                                                     Binding="{Binding Key}"
-                                                    IsReadOnly="True"
                                                     Width="*" />
                                 <DataGridTextColumn Header="Value"
                                                     Binding="{Binding Value}"
-                                                    IsReadOnly="True"
                                                     Width="*" />
                             </DataGrid.Columns>
                         </DataGrid>
@@ -142,10 +120,7 @@
                         Text="Decoder not implemented"
                         Symbol="TagOff" />
                 </Panel>
-                
             </Grid>
-
         </Grid>
     </DockPanel>
-
 </Window>

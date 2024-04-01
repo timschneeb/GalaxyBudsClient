@@ -11,6 +11,7 @@ using Avalonia.Platform.Storage;
 using Avalonia.Threading;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.ViewModels;
+using GalaxyBudsClient.Interface.ViewModels.Developer;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
@@ -20,28 +21,6 @@ using GalaxyBudsClient.Utils.Extensions;
 using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.Developer;
-
-public class DevToolsViewModel : ViewModelBase
-{
-    private readonly IReadOnlyList<SppMessage.MessageIds> _msgIdCache
-        = Enum.GetValues(typeof(SppMessage.MessageIds)).Cast<SppMessage.MessageIds>().ToList();
-    private readonly IReadOnlyList<SppMessage.MsgType> _msgTypeCache
-        = Enum.GetValues(typeof(SppMessage.MsgType)).Cast<SppMessage.MsgType>().ToList();
-
-    public IEnumerable MsgIdSource => _msgIdCache;
-    public IEnumerable MsgTypeSource => _msgTypeCache;
-
-    [Reactive] public bool HasProperties { set; get; } = true;
-        
-    public readonly DataGridCollectionView MsgTableDataView = new(new List<MessageViewHolder>());
-    public readonly DataGridCollectionView PropTableDataView = new(new List<PropertyViewModel>());
-
-    public List<MessageViewHolder>? MsgTableDataSource =>
-        MsgTableDataView.SourceCollection as List<MessageViewHolder>;
-    public List<PropertyViewModel>? PropTableDataSource =>
-        PropTableDataView.SourceCollection as List<PropertyViewModel>;
-}
-
 
 public partial class DevTools : StyledWindow.StyledWindow
 {
@@ -59,10 +38,7 @@ public partial class DevTools : StyledWindow.StyledWindow
     {
         InitializeComponent();
         DataContext = _vm;
-
-        MsgTable.ItemsSource = _vm.MsgTableDataView;
-        PropTable.ItemsSource = _vm.PropTableDataView;
-            
+        
         Closing += OnClosing;
         BluetoothImpl.Instance.NewDataReceived += OnNewDataReceived;
     }
@@ -146,7 +122,7 @@ public partial class DevTools : StyledWindow.StyledWindow
         {
             Id = (SppMessage.MessageIds?) SendMsgId.SelectedItem ?? SppMessage.MessageIds.UNKNOWN_0,
             Payload = payload,
-            Type = (SppMessage.MsgType?) SendMsgType.SelectedItem ?? SppMessage.MsgType.INVALID
+            Type = (MsgTypes?) SendMsgType.SelectedItem ?? MsgTypes.INVALID
         };
         _ = BluetoothImpl.Instance.SendAsync(msg);
     }
@@ -264,35 +240,5 @@ public partial class DevTools : StyledWindow.StyledWindow
                 Description = ex.Message
             }.ShowAsync(this);             
         }
-    }
-
-    private void MsgTable_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
-    {
-        var item = (MessageViewHolder?)MsgTable.SelectedItem;
-        if (item?.Message == null)
-        {
-            _vm.HasProperties = true;
-            _vm.PropTableDataSource?.Clear();
-        }
-        else
-        {
-            var parser = item.Message.BuildParser();
-            if (parser != null)
-            {
-                _vm.PropTableDataSource?.Clear();
-                foreach (var (key, value) in parser.ToStringMap())
-                {
-                    _vm.PropTableDataSource?.Add(new PropertyViewModel(key, value));
-                }
-                _vm.HasProperties = true;
-            }
-            else
-            {
-                _vm.PropTableDataSource?.Clear();
-                _vm.HasProperties = false;
-            }
-        }
-        
-        _vm.PropTableDataView.Refresh();
     }
 }

@@ -2,14 +2,14 @@
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Utils;
 
-namespace GalaxyBudsClient.Interface.ViewModels;
+namespace GalaxyBudsClient.Interface.ViewModels.Developer;
 
 public class MessageViewHolder(SppMessage msg)
 {
     public string Id { get; } = GetEnumName(typeof(SppMessage.MessageIds),msg.Id);
     public string Payload { get; } = BitConverter.ToString(msg.Payload).Replace("-", " ");
     public string PayloadAscii { get; } = HexUtils.DumpAscii(msg.Payload);
-    public string Type { get; } = msg.IsFragment ? "Fragment/" : string.Empty + GetEnumName(typeof(SppMessage.MsgType), msg.Type);
+    public string Type { get; } = msg.IsFragment ? "Fragment/" : string.Empty + GetEnumName(typeof(MsgTypes), msg.Type);
     public string Size { get; } = $"{msg.Size} bytes";
     public string Crc16 { get; } = msg.Crc16 == 0 ? "Pass" : "Fail";
     public SppMessage Message { get; } = msg;
