@@ -3,12 +3,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+        xmlns:developer="clr-namespace:GalaxyBudsClient.Interface.Developer"
+        xmlns:viewModels="clr-namespace:GalaxyBudsClient.Interface.ViewModels"
         mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="625"
         x:Class="GalaxyBudsClient.Interface.Developer.DevTools"
+        x:DataType="developer:DevToolsViewModel"
         Height="625" Width="700"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/icon.ico"
         Title="Galaxy Buds Manager - Developer Tools">
+    
+    <Design.DataContext>
+        <developer:DevToolsViewModel />
+    </Design.DataContext>
 
     <Window.Styles>
         <Style Selector="DataGridCell">
@@ -61,12 +68,12 @@
                             </Grid.ColumnDefinitions>
                             <ComboBox Grid.Column="0"
                                       Name="SendMsgId"
-                                      ItemsSource="{ReflectionBinding MsgIdSource}"
+                                      ItemsSource="{Binding MsgIdSource}"
                                       HorizontalAlignment="Stretch"
                                       VerticalAlignment="Stretch"
                                       Margin="0,0,5,0" />
                             <ComboBox Grid.Column="1" Name="SendMsgType"
-                                      ItemsSource="{ReflectionBinding MsgTypeSource}"
+                                      ItemsSource="{Binding MsgTypeSource}"
                                       HorizontalAlignment="Stretch"
                                       VerticalAlignment="Stretch"
                                       Margin="0,0,5,0" />
@@ -94,13 +101,14 @@
                           CanUserResizeColumns="True"
                           IsReadOnly="True"
                           HeadersVisibility="All"
-                          SelectionChanged="MsgTable_OnSelectionChanged">
+                          SelectionChanged="MsgTable_OnSelectionChanged"
+                          x:DataType="viewModels:MessageViewHolder">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{ReflectionBinding Id}" Width="Auto" />
-                        <DataGridTextColumn Header="Payload" Binding="{ReflectionBinding Payload}" Width="*" />
-                        <DataGridTextColumn Header="Size" Binding="{ReflectionBinding Size}" Width="Auto" />
-                        <DataGridTextColumn Header="CRC16" Binding="{ReflectionBinding CRC16}" Width="Auto" />
-                        <DataGridTextColumn Header="Type" Binding="{ReflectionBinding Type}" Width="Auto" />
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
+                        <DataGridTextColumn Header="Payload" Binding="{Binding Payload}" Width="*" />
+                        <DataGridTextColumn Header="Size" Binding="{Binding Size}" />
+                        <DataGridTextColumn Header="CRC16" Binding="{Binding Crc16}" />
+                        <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
                     </DataGrid.Columns>
                 </DataGrid>
 
@@ -115,21 +123,22 @@
                                   CanUserSortColumns="False"
                                   CanUserReorderColumns="False"
                                   HeadersVisibility="All"
-                                  IsVisible="{ReflectionBinding HasProperties}">
+                                  IsVisible="{Binding HasProperties, DataType=developer:DevToolsViewModel}"
+                                  x:DataType="viewModels:PropertyViewModel">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Property"
-                                                    Binding="{ReflectionBinding Key}"
+                                                    Binding="{Binding Key}"
                                                     IsReadOnly="True"
                                                     Width="*" />
                                 <DataGridTextColumn Header="Value"
-                                                    Binding="{ReflectionBinding Value}"
+                                                    Binding="{Binding Value}"
                                                     IsReadOnly="True"
                                                     Width="*" />
                             </DataGrid.Columns>
                         </DataGrid>
                     
                     <controls:EmptyView
-                        IsVisible="{ReflectionBinding !HasProperties}"
+                        IsVisible="{Binding !HasProperties}"
                         Text="Decoder not implemented"
                         Symbol="TagOff" />
                 </Panel>

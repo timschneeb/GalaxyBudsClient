@@ -21,29 +21,30 @@ using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.Developer;
 
+public class DevToolsViewModel : ViewModelBase
+{
+    private readonly IReadOnlyList<SppMessage.MessageIds> _msgIdCache
+        = Enum.GetValues(typeof(SppMessage.MessageIds)).Cast<SppMessage.MessageIds>().ToList();
+    private readonly IReadOnlyList<SppMessage.MsgType> _msgTypeCache
+        = Enum.GetValues(typeof(SppMessage.MsgType)).Cast<SppMessage.MsgType>().ToList();
+
+    public IEnumerable MsgIdSource => _msgIdCache;
+    public IEnumerable MsgTypeSource => _msgTypeCache;
+
+    [Reactive] public bool HasProperties { set; get; } = true;
+        
+    public readonly DataGridCollectionView MsgTableDataView = new(new List<MessageViewHolder>());
+    public readonly DataGridCollectionView PropTableDataView = new(new List<PropertyViewModel>());
+
+    public List<MessageViewHolder>? MsgTableDataSource =>
+        MsgTableDataView.SourceCollection as List<MessageViewHolder>;
+    public List<PropertyViewModel>? PropTableDataSource =>
+        PropTableDataView.SourceCollection as List<PropertyViewModel>;
+}
+
+
 public partial class DevTools : StyledWindow.StyledWindow
 {
-    private class ViewModel : ViewModelBase
-    {
-        private readonly IReadOnlyList<SppMessage.MessageIds> _msgIdCache
-            = Enum.GetValues(typeof(SppMessage.MessageIds)).Cast<SppMessage.MessageIds>().ToList();
-        private readonly IReadOnlyList<SppMessage.MsgType> _msgTypeCache
-            = Enum.GetValues(typeof(SppMessage.MsgType)).Cast<SppMessage.MsgType>().ToList();
-
-        public IEnumerable MsgIdSource => _msgIdCache;
-        public IEnumerable MsgTypeSource => _msgTypeCache;
-
-        [Reactive] public bool HasProperties { set; get; } = true;
-        
-        public readonly DataGridCollectionView MsgTableDataView = new(new List<RecvMsgViewHolder>());
-        public readonly DataGridCollectionView PropTableDataView = new(new List<PropertyViewModel>());
-
-        public List<RecvMsgViewHolder>? MsgTableDataSource =>
-            MsgTableDataView.SourceCollection as List<RecvMsgViewHolder>;
-        public List<PropertyViewModel>? PropTableDataSource =>
-            PropTableDataView.SourceCollection as List<PropertyViewModel>;
-    }
-
     private readonly List<byte> _cache = [];
 
     private readonly List<FilePickerFileType> _filters =
@@ -52,7 +53,7 @@ public partial class DevTools : StyledWindow.StyledWindow
         new FilePickerFileType("All files") { Patterns = new List<string>() { "*" } }
     ];
 
-    private readonly ViewModel _vm = new();
+    private readonly DevToolsViewModel _vm = new();
         
     public DevTools()
     {
@@ -75,7 +76,7 @@ public partial class DevTools : StyledWindow.StyledWindow
                 _cache.AddRange(raw);
                 HexDump.Text = HexUtils.Dump(_cache.ToArray());
 
-                var holder = new RecvMsgViewHolder(SppMessage.DecodeMessage(raw, BluetoothImpl.ActiveModel));
+                var holder = new MessageViewHolder(SppMessage.DecodeMessage(raw, BluetoothImpl.ActiveModel));
                 _vm.MsgTableDataSource?.Add(holder);
                 _vm.MsgTableDataView.Refresh();
                     
@@ -98,7 +99,7 @@ public partial class DevTools : StyledWindow.StyledWindow
         
     private void CopyPayload_OnClick(object? sender, RoutedEventArgs e)
     {
-        var item = (RecvMsgViewHolder?)MsgTable.SelectedItem;
+        var item = (MessageViewHolder?)MsgTable.SelectedItem;
         if (item != null)
         {
             GetTopLevel(this)?.Clipboard?.SetTextAsync(item.Payload);
@@ -237,7 +238,7 @@ public partial class DevTools : StyledWindow.StyledWindow
             }
         } while (data.Count > 0);
 
-        foreach (var holder in msgs.Select(m => new RecvMsgViewHolder(m)))
+        foreach (var holder in msgs.Select(m => new MessageViewHolder(m)))
         {
             _vm.MsgTableDataSource?.Add(holder);
         }
@@ -267,7 +268,7 @@ public partial class DevTools : StyledWindow.StyledWindow
 
     private void MsgTable_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
-        var item = (RecvMsgViewHolder?)MsgTable.SelectedItem;
+        var item = (MessageViewHolder?)MsgTable.SelectedItem;
         if (item?.Message == null)
         {
             _vm.HasProperties = true;

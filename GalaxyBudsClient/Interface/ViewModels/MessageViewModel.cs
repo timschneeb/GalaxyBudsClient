@@ -4,26 +4,15 @@ using GalaxyBudsClient.Utils;
 
 namespace GalaxyBudsClient.Interface.ViewModels;
 
-public class RecvMsgViewHolder
+public class MessageViewHolder(SppMessage msg)
 {
-    public string Id { get; }
-    public string Payload { get; }
-    public string PayloadAscii { get; }
-    public string Type { get; }
-    public string Size { get; }
-    public string CRC16 { get; }
-    public SppMessage Message { get; }
-
-    public RecvMsgViewHolder(SppMessage msg)
-    {
-        Id = GetEnumName(typeof(SppMessage.MessageIds),msg.Id);
-        Payload = BitConverter.ToString(msg.Payload).Replace("-", " ");
-        PayloadAscii = HexUtils.DumpAscii(msg.Payload);
-        Type = msg.IsFragment ? "Fragment/" : string.Empty + GetEnumName(typeof(SppMessage.MsgType), msg.Type);
-        Size = $"{msg.Size} bytes";
-        CRC16 = msg.Crc16 == 0 ? "Pass" : "Fail";
-        Message = msg;
-    }
+    public string Id { get; } = GetEnumName(typeof(SppMessage.MessageIds),msg.Id);
+    public string Payload { get; } = BitConverter.ToString(msg.Payload).Replace("-", " ");
+    public string PayloadAscii { get; } = HexUtils.DumpAscii(msg.Payload);
+    public string Type { get; } = msg.IsFragment ? "Fragment/" : string.Empty + GetEnumName(typeof(SppMessage.MsgType), msg.Type);
+    public string Size { get; } = $"{msg.Size} bytes";
+    public string Crc16 { get; } = msg.Crc16 == 0 ? "Pass" : "Fail";
+    public SppMessage Message { get; } = msg;
 
     private static string GetEnumName(Type t, object i)
     {
@@ -32,9 +21,7 @@ public class RecvMsgViewHolder
             var name = Enum.GetName(t, i);
             if (name == null)
                 throw new ArgumentException("Enum member name is null");
-            if (name.StartsWith("UNKNOWN_"))
-                return $"Unknown ({Convert.ToInt32(i)})";
-            return $"{name} ({Convert.ToInt32(i)})";
+            return $"{(name.StartsWith("UNKNOWN_") ? "Unknown" : name)} ({Convert.ToInt32(i)})";
         }
         catch (ArgumentNullException)
         {
