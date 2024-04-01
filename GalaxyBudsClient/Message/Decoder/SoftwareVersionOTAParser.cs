@@ -4,7 +4,7 @@ namespace GalaxyBudsClient.Message.Decoder;
 
 internal class SoftwareVersionOTAParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.FOTA_DEVICE_INFO_SW_VERSION;
+    public override MsgIds HandledType => MsgIds.FOTA_DEVICE_INFO_SW_VERSION;
 
     public string? SoftwareVersion { set; get; }
 

@@ -4,7 +4,7 @@ namespace GalaxyBudsClient.Message.Decoder;
 
 internal class NoiseControlUpdateParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.NOISE_CONTROLS_UPDATE;
+    public override MsgIds HandledType => MsgIds.NOISE_CONTROLS_UPDATE;
     public NoiseControlModes Mode { set; get; }
 
     public override void ParseMessage(SppMessage msg)

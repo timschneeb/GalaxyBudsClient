@@ -4,7 +4,7 @@ namespace GalaxyBudsClient.Message.Decoder;
 
 internal class TouchUpdateParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.TOUCH_UPDATED;
+    public override MsgIds HandledType => MsgIds.TOUCH_UPDATED;
     public bool TouchpadLocked { set; get; }
 
     public override void ParseMessage(SppMessage msg)

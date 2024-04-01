@@ -10,7 +10,7 @@ namespace GalaxyBudsClient.Message.Decoder;
 
 public abstract class BaseMessageParser
 {
-    public abstract SppMessage.MessageIds HandledType { get; }
+    public abstract MsgIds HandledType { get; }
 
     public abstract void ParseMessage(SppMessage msg);
     public virtual Dictionary<string, string> ToStringMap()

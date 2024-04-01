@@ -59,12 +59,12 @@ public class DeviceLogManager
         _hasCompletedRoleSwitch = false;
         _startTimestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
         BluetoothImpl.Instance.MessageReceived += OnMessageReceived;
-        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_SESSION_OPEN);
+        await BluetoothImpl.Instance.SendRequestAsync(MsgIds.LOG_SESSION_OPEN);
     }
 
     public async Task CancelDownload()
     {
-        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_SESSION_CLOSE);
+        await BluetoothImpl.Instance.SendRequestAsync(MsgIds.LOG_SESSION_CLOSE);
         BluetoothImpl.Instance.MessageReceived -= OnMessageReceived;
             
         await BluetoothImpl.Instance.DisconnectAsync();
@@ -99,19 +99,19 @@ public class DeviceLogManager
         switch (e.Id)
         {
             #region SESSION
-            case SppMessage.MessageIds.LOG_SESSION_OPEN:
+            case MsgIds.LOG_SESSION_OPEN:
                 _hasCompletedRoleSwitch = false;
                 if (e.Payload[0] == 0)
                 {
-                    await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_TRACE_START, 0);
+                    await BluetoothImpl.Instance.SendRequestAsync(MsgIds.LOG_TRACE_START, 0);
                 }
                 break;
-            case SppMessage.MessageIds.LOG_SESSION_CLOSE:
+            case MsgIds.LOG_SESSION_CLOSE:
                 break;
             #endregion
                 
             #region TRACE
-            case SppMessage.MessageIds.LOG_TRACE_START:
+            case MsgIds.LOG_TRACE_START:
                 _traceContext = e.BuildParser() as LogTraceStartParser;
 
                 _traceBuffer = new byte[_traceContext!.DataSize];
@@ -119,7 +119,7 @@ public class DeviceLogManager
                     
                 await BluetoothImpl.Instance.SendAsync(LogTraceDataEncoder.Build(0, _traceContext.DataSize));
                 break;
-            case SppMessage.MessageIds.LOG_TRACE_DATA:
+            case MsgIds.LOG_TRACE_DATA:
                 var data = e.BuildParser() as LogTraceDataParser;
                 UpdateOffsetList(data!.PartialDataOffset);
                     
@@ -127,20 +127,20 @@ public class DeviceLogManager
                     
                 ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(data.PartialDataOffset, _traceContext!.DataSize, LogDownloadProgressEventArgs.Type.Trace));
                 break;
-            case SppMessage.MessageIds.LOG_TRACE_ROLE_SWITCH:
+            case MsgIds.LOG_TRACE_ROLE_SWITCH:
                 var result = e.Payload[0] == 0;
                 _hasCompletedRoleSwitch = true;
 
                 if (result)
                 {
-                    await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_TRACE_START, 0);
+                    await BluetoothImpl.Instance.SendRequestAsync(MsgIds.LOG_TRACE_START, 0);
                 }
                 else
                 {
-                    await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_SESSION_CLOSE);
+                    await BluetoothImpl.Instance.SendRequestAsync(MsgIds.LOG_SESSION_CLOSE);
                 }
                 break;
-            case SppMessage.MessageIds.LOG_TRACE_DATA_DONE:
+            case MsgIds.LOG_TRACE_DATA_DONE:
                 var remainOffset = GetRemainOffset();
                 if (remainOffset >= 0)
                 {
@@ -157,7 +157,7 @@ public class DeviceLogManager
                 }
 
                 ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(0,0, LogDownloadProgressEventArgs.Type._Switching));
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_TRACE_COMPLETE);
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.LOG_TRACE_COMPLETE);
 
                 var path = WriteTempFile($"{BluetoothImpl.ActiveModel.ToString()}_traceDump_{_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _traceBuffer ?? Array.Empty<byte>());
                 if (path != null)
@@ -165,13 +165,13 @@ public class DeviceLogManager
                     _traceDumpPaths.Add(path);
                 }
                 break;
-            case SppMessage.MessageIds.LOG_TRACE_COMPLETE:
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_COREDUMP_DATA_SIZE);
+            case MsgIds.LOG_TRACE_COMPLETE:
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.LOG_COREDUMP_DATA_SIZE);
                 break;
             #endregion
 
             #region COREDUMP
-            case SppMessage.MessageIds.LOG_COREDUMP_DATA_SIZE:
+            case MsgIds.LOG_COREDUMP_DATA_SIZE:
                 _coredumpContext = e.BuildParser() as LogCoredumpDataSizeParser;
                 MakeOffsetList(_coredumpContext!.FragmentCount, _coredumpContext.PartialDataMaxSize);
 
@@ -186,10 +186,10 @@ public class DeviceLogManager
                 } 
                 else
                 {
-                    await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_TRACE_ROLE_SWITCH);
+                    await BluetoothImpl.Instance.SendRequestAsync(MsgIds.LOG_TRACE_ROLE_SWITCH);
                 }
                 break;
-            case SppMessage.MessageIds.LOG_COREDUMP_DATA:
+            case MsgIds.LOG_COREDUMP_DATA:
                 var coredumpData = e.BuildParser() as LogCoredumpDataParser;
                 UpdateOffsetList(coredumpData!.PartialDataOffset);
                     
@@ -197,7 +197,7 @@ public class DeviceLogManager
                     
                 ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(coredumpData.PartialDataOffset, _traceContext!.DataSize, LogDownloadProgressEventArgs.Type.Coredump));
                 break;
-            case SppMessage.MessageIds.LOG_COREDUMP_DATA_DONE:
+            case MsgIds.LOG_COREDUMP_DATA_DONE:
                 var remainOffsetCore = GetRemainOffset();
                 if (remainOffsetCore >= 0)
                 {
@@ -214,7 +214,7 @@ public class DeviceLogManager
                 }
                     
                 ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(0,0, LogDownloadProgressEventArgs.Type._Switching));
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_COREDUMP_COMPLETE);
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.LOG_COREDUMP_COMPLETE);
                     
                 var pathCore = WriteTempFile($"{BluetoothImpl.ActiveModel.ToString()}_coreDump_{/* this is intentional -> */_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _coredumpBuffer ?? Array.Empty<byte>());
                 if (pathCore != null)
@@ -222,7 +222,7 @@ public class DeviceLogManager
                     _coreDumpPaths.Add(pathCore);
                 }
                 break;
-            case SppMessage.MessageIds.LOG_COREDUMP_COMPLETE:
+            case MsgIds.LOG_COREDUMP_COMPLETE:
                 if (_hasCompletedRoleSwitch)
                 {
                     /* Everything is done */
@@ -230,7 +230,7 @@ public class DeviceLogManager
                 }
                 else
                 {
-                    await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOG_TRACE_ROLE_SWITCH);
+                    await BluetoothImpl.Instance.SendRequestAsync(MsgIds.LOG_TRACE_ROLE_SWITCH);
                 }
                 break;
             #endregion

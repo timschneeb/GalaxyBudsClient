@@ -130,13 +130,13 @@ public class TouchpadPageViewModel : MainPageViewModelBase
                 }
                 else
                 {
-                    await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.LOCK_TOUCHPAD,
+                    await BluetoothImpl.Instance.SendRequestAsync(MsgIds.LOCK_TOUCHPAD,
                         IsTouchpadLocked);
                 }
 
                 break;
             case nameof(IsDoubleTapVolumeEnabled):
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.OUTSIDE_DOUBLE_TAP,
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.OUTSIDE_DOUBLE_TAP,
                     IsDoubleTapVolumeEnabled);
                 break;
             case nameof(NoiseControlCycleMode) or nameof(NoiseControlCycleModeRight):
@@ -158,7 +158,7 @@ public class TouchpadPageViewModel : MainPageViewModelBase
                     };
 
                     await BluetoothImpl.Instance.SendRequestAsync(
-                        SppMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS,
+                        MsgIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS,
                         left.Item1, left.Item2, left.Item3, right.Item1, right.Item2, right.Item3);
                 }
                 else
@@ -172,7 +172,7 @@ public class TouchpadPageViewModel : MainPageViewModelBase
                     };
 
                     await BluetoothImpl.Instance.SendRequestAsync(
-                        SppMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS,
+                        MsgIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS,
                         value.Item1, value.Item2, value.Item3);
                 }
 

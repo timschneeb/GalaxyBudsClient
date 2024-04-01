@@ -10,9 +10,9 @@ using Serilog;
 
 namespace GalaxyBudsClient.Message;
 
-public partial class SppMessage(
-    SppMessage.MessageIds id = SppMessage.MessageIds.UNKNOWN_0, 
-    SppMessage.MsgType type = SppMessage.MsgType.INVALID,
+public class SppMessage(
+    MsgIds id = MsgIds.UNKNOWN_0, 
+    MsgTypes type = MsgTypes.INVALID,
     byte[]? payload = null, 
     Models? model = null)
 {
@@ -23,8 +23,8 @@ public partial class SppMessage(
     private const int TypeSize = 1;
     private const int BytesSize = 1;
 
-    public MsgType Type { set; get; } = type;
-    public MessageIds Id { set; get; } = id;
+    public MsgTypes Type { set; get; } = type;
+    public MsgIds Id { set; get; } = id;
     public int Size => MsgIdSize + Payload.Length + CrcSize;
     public int TotalPacketSize => SomSize + TypeSize + BytesSize + MsgIdSize + Payload.Length + CrcSize + EomSize;
     public byte[] Payload { set; get; } = payload ?? Array.Empty<byte>();
@@ -59,7 +59,7 @@ public partial class SppMessage(
             if (IsFragment) {
                 header[1] = (byte) (header[1] | 32);
             }
-            if (Type == MsgType.Response) {
+            if (Type == MsgTypes.Response) {
                 header[1] = (byte) (header[1] | 16);
             }
 
@@ -106,12 +106,12 @@ public partial class SppMessage(
                 throw new InvalidPacketException(InvalidPacketException.ErrorCodes.SOM);
             }
 
-            draft.Id = (MessageIds) Convert.ToInt32(raw[3]);
+            draft.Id = (MsgIds) Convert.ToInt32(raw[3]);
             int size;
 
             if (spec.Supports(Features.SppLegacyMessageHeader))
             {
-                draft.Type = (MsgType) Convert.ToInt32(raw[1]);
+                draft.Type = (MsgTypes) Convert.ToInt32(raw[1]);
                 size = Convert.ToInt32(raw[2]);
             }
             else
@@ -120,7 +120,7 @@ public partial class SppMessage(
                 var p2 = raw[1] & 255;
                 var header = p1 + p2;
                 draft.IsFragment = (header & 8192) != 0;
-                draft.Type = (header & 4096) != 0 ? MsgType.Request : MsgType.Response;
+                draft.Type = (header & 4096) != 0 ? MsgTypes.Request : MsgTypes.Response;
                 size = header & 1023;
             }
 

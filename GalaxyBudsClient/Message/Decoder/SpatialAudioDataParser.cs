@@ -8,7 +8,7 @@ namespace GalaxyBudsClient.Message.Decoder;
 
 internal class SpatialAudioDataParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.SPATIAL_AUDIO_DATA;
+    public override MsgIds HandledType => MsgIds.SPATIAL_AUDIO_DATA;
     public SpatialAudioData EventId { set; get; }
         
     /* Wear on/off */

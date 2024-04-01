@@ -4,7 +4,7 @@ namespace GalaxyBudsClient.Message.Decoder;
 
 public class FitTestParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.CHECK_THE_FIT_OF_EARBUDS_RESULT;
+    public override MsgIds HandledType => MsgIds.CHECK_THE_FIT_OF_EARBUDS_RESULT;
 
     public Result Left { private set; get; }
     public Result Right { private set; get; }

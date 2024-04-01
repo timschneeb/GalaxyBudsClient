@@ -58,7 +58,7 @@
                         <StackPanel Grid.Row="0" Margin="5" 
                                     Spacing="5" Orientation="Horizontal">
                             <ComboBox Name="SendMsgId"
-                                      ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type message:SppMessage+MessageIds}}}" />
+                                      ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type message:MsgIds}}}" />
                             <ComboBox Name="SendMsgType"
                                       ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type message:MsgTypes}}}" />
                             <Button Name="SendSubmit"

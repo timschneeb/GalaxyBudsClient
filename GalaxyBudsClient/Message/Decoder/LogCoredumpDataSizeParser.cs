@@ -4,7 +4,7 @@ namespace GalaxyBudsClient.Message.Decoder;
 
 internal class LogCoredumpDataSizeParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.LOG_COREDUMP_DATA_SIZE;
+    public override MsgIds HandledType => MsgIds.LOG_COREDUMP_DATA_SIZE;
         
     public int DataSize { set; get; }
     public short PartialDataMaxSize { set; get; }

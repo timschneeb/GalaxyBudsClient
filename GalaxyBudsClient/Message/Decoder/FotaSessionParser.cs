@@ -2,7 +2,7 @@ namespace GalaxyBudsClient.Message.Decoder;
 
 internal class FotaSessionParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.FOTA_OPEN;
+    public override MsgIds HandledType => MsgIds.FOTA_OPEN;
 
     public byte ResultCode { set; get; }
 

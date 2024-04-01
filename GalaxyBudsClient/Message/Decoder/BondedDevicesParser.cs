@@ -4,7 +4,7 @@ namespace GalaxyBudsClient.Message.Decoder;
 
 internal class BondedDevicesParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.UNK_BONDED_DEVICES;
+    public override MsgIds HandledType => MsgIds.UNK_BONDED_DEVICES;
 
     public string? Content { set; get; }
 

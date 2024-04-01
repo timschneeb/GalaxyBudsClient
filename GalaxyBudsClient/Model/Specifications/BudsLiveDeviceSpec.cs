@@ -44,6 +44,6 @@ public class BudsLiveDeviceSpec : IDeviceSpec
         
     public string IconResourceKey => "Bean";
     public int MaximumAmbientVolume => 0; /* ambient sound unsupported */
-    public byte StartOfMessage => (byte)SppMessage.MsgConstants.Som;
-    public byte EndOfMessage => (byte)SppMessage.MsgConstants.Eom;
+    public byte StartOfMessage => (byte)MsgConstants.Som;
+    public byte EndOfMessage => (byte)MsgConstants.Eom;
 }

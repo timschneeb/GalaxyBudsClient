@@ -54,7 +54,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
             return;
         
         if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.DebugSku))
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_SKU);
     }
 
     public override async void OnNavigatedTo()

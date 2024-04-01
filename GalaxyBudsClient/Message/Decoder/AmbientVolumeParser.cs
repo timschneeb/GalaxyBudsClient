@@ -2,7 +2,7 @@
 
 internal class AmbientVolumeParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.AMBIENT_VOLUME;
+    public override MsgIds HandledType => MsgIds.AMBIENT_VOLUME;
     public int AmbientVolume { set; get; }
 
     public override void ParseMessage(SppMessage msg)

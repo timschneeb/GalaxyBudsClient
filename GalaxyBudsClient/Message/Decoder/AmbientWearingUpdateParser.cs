@@ -8,7 +8,7 @@ namespace GalaxyBudsClient.Message.Decoder;
  */
 internal class AmbientWearingUpdateParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.AMBIENT_WEARING_STATUS_UPDATED;
+    public override MsgIds HandledType => MsgIds.AMBIENT_WEARING_STATUS_UPDATED;
 
     public LegacyWearStates WearState { set; get; }
     public int LeftDetectionCount { set; get; }

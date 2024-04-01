@@ -24,7 +24,7 @@ public static class MessageComposer
         Array.Copy(timestampRaw, 0, payload, 0, 8);
         Array.Copy(payload, 8, offsetRaw, 0, 4);
 
-        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.UPDATE_TIME, payload);
+        await BluetoothImpl.Instance.SendRequestAsync(MsgIds.UPDATE_TIME, payload);
     }
         
     public static async Task SetManagerInfo(ClientDeviceTypes types = ClientDeviceTypes.Samsung, int androidSdkVersion = 29)
@@ -33,14 +33,14 @@ public static class MessageComposer
         payload[0] = 1;
         payload[1] = (byte)types;
         payload[2] = (byte)androidSdkVersion;
-        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.MANAGER_INFO, payload);
+        await BluetoothImpl.Instance.SendRequestAsync(MsgIds.MANAGER_INFO, payload);
     }
         
     public static async Task SetMainConnection(DevicesInverted side)
     {
         var payload = new byte[1];
         payload[0] = (byte)side;
-        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.MAIN_CHANGE, payload);
+        await BluetoothImpl.Instance.SendRequestAsync(MsgIds.MAIN_CHANGE, payload);
     }
         
     public static async Task SetEqualizer(bool enable, EqPresets preset, bool dolbyMode)
@@ -55,13 +55,13 @@ public static class MessageComposer
             var payload = new byte[2];
             payload[0] = Convert.ToByte(enable);
             payload[1] = (byte)rawPreset;
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.EQUALIZER, payload);
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.EQUALIZER, payload);
         }
         else
         {
             var payload = new byte[1];
             payload[0] = !enable ? (byte) 0 : Convert.ToByte(preset + 1);
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.EQUALIZER, payload);
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.EQUALIZER, payload);
         }
         EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
     }
@@ -74,7 +74,7 @@ public static class MessageComposer
             var payload = new byte[2];
             payload[0] = BluetoothImpl.Instance.DeviceSpec.TouchMap.ToByte(left);
             payload[1] = BluetoothImpl.Instance.DeviceSpec.TouchMap.ToByte(right);
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_TOUCHPAD_OPTION, payload);
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_TOUCHPAD_OPTION, payload);
         }
     }
         
@@ -85,7 +85,7 @@ public static class MessageComposer
             var payload = new byte[2];
             payload[0] = Convert.ToByte(leftMuted);
             payload[1] = Convert.ToByte(rightMuted);
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.MUTE_EARBUD, payload);
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.MUTE_EARBUD, payload);
         }
     }
         
@@ -93,13 +93,13 @@ public static class MessageComposer
     {
         public static async Task SetMode(NoiseControlModes mode)
         {
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.NOISE_CONTROLS, (byte)mode);
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.NOISE_CONTROLS, (byte)mode);
             EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
         }
 
         public static async Task SetTouchNoiseControls(bool anc, bool ambient, bool off)
         {
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS,
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS,
                 [Convert.ToByte(anc), Convert.ToByte(ambient), Convert.ToByte(off)]);
         }
     }

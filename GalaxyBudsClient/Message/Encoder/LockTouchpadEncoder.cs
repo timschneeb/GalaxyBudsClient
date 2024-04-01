@@ -27,6 +27,6 @@ public static class LockTouchpadEncoder
         var data = stream.ToArray();
         stream.Close();
             
-        return new SppMessage(SppMessage.MessageIds.LOCK_TOUCHPAD, SppMessage.MsgType.Request, data);
+        return new SppMessage(MsgIds.LOCK_TOUCHPAD, MsgTypes.Request, data);
     }
 }

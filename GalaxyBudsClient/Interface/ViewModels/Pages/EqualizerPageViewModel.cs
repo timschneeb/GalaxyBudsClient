@@ -27,7 +27,7 @@ public class EqualizerPageViewModel : MainPageViewModelBase
                 await MessageComposer.SetEqualizer(IsEqEnabled, (EqPresets)EqPreset, false);
                 break;
             case nameof(StereoBalance):
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_HEARING_ENHANCEMENTS, (byte)StereoBalance);
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_HEARING_ENHANCEMENTS, (byte)StereoBalance);
                 break;
         }
     }

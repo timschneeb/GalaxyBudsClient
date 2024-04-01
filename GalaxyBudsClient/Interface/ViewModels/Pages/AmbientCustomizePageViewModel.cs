@@ -53,18 +53,18 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
         switch (args.PropertyName)
         {
             case nameof(AmbientSoundVolume):
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.AMBIENT_VOLUME, (byte)AmbientSoundVolume);
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.AMBIENT_VOLUME, (byte)AmbientSoundVolume);
                 break;
             case nameof(IsAmbientVoiceFocusEnabled):
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.AMBIENT_VOICE_FOCUS, IsAmbientVoiceFocusEnabled);
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.AMBIENT_VOICE_FOCUS, IsAmbientVoiceFocusEnabled);
                 break;
             case nameof(IsAmbientExtraLoudEnabled):
                 UpdateVolumeSliders();
                 
                 if (IsAmbientExtraLoudEnabled || AmbientSoundVolume >= 3)
                     AmbientSoundVolume = MaximumAmbientSoundVolume;
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.EXTRA_HIGH_AMBIENT, IsAmbientExtraLoudEnabled);
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.AMBIENT_VOLUME, (byte)AmbientSoundVolume);
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.EXTRA_HIGH_AMBIENT, IsAmbientExtraLoudEnabled);
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.AMBIENT_VOLUME, (byte)AmbientSoundVolume);
                 break;
             case nameof(IsAmbientCustomizationEnabled) or nameof(AmbientSoundTone) or 
                 nameof(AmbientSoundVolumeLeft) or nameof(AmbientSoundVolumeRight):

@@ -90,9 +90,9 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
         else
         {
             if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientSound))
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_AMBIENT_MODE, IsAmbientSoundEnabled);
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_AMBIENT_MODE, IsAmbientSoundEnabled);
             if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc))
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_NOISE_REDUCTION, IsAncEnabled);
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_NOISE_REDUCTION, IsAncEnabled);
         }
         EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
     }
@@ -110,13 +110,13 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
                     SendNoiseControlState();
                 break;
             case nameof(IsAncLevelHigh):
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.NOISE_REDUCTION_LEVEL, IsAncLevelHigh);
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.NOISE_REDUCTION_LEVEL, IsAncLevelHigh);
                 break;
             case nameof(IsAncWithOneEarbudAllowed):
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_ANC_WITH_ONE_EARBUD, IsAncWithOneEarbudAllowed);
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_ANC_WITH_ONE_EARBUD, IsAncWithOneEarbudAllowed);
                 break;
             case nameof(IsVoiceDetectEnabled):
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_DETECT_CONVERSATIONS, IsVoiceDetectEnabled);
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_DETECT_CONVERSATIONS, IsVoiceDetectEnabled);
                 break;
             case nameof(VoiceDetectTimeout):
                 var timeout = VoiceDetectTimeout switch
@@ -125,7 +125,7 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
                     VoiceDetectTimeouts.Sec10 => 1,
                     _ => 2
                 };  
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.SET_DETECT_CONVERSATIONS_DURATION, (byte)timeout);
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_DETECT_CONVERSATIONS_DURATION, (byte)timeout);
                 break;
         }
     }

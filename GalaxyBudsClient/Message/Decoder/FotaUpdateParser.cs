@@ -4,7 +4,7 @@ namespace GalaxyBudsClient.Message.Decoder;
 
 internal class FotaUpdateParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.FOTA_UPDATE;
+    public override MsgIds HandledType => MsgIds.FOTA_UPDATE;
 
     public byte ResultCode { set; get; }
     public FirmwareConstants.UpdateIds UpdateId { set; get; }

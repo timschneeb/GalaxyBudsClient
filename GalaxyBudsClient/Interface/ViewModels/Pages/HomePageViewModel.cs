@@ -26,14 +26,14 @@ public class HomePageViewModel : MainPageViewModelBase
         _refreshTimer.Tick += async (_, _) =>
         {
             if (BluetoothImpl.Instance.IsConnected)
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_GET_ALL_DATA);
         };
         
         SppMessageHandler.Instance.StatusUpdate += OnStatusUpdateReceived;
         BluetoothImpl.Instance.Connected += async (_, _) =>
         {
             await Task.Delay(1000);
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_GET_ALL_DATA);
         };
     }
     
@@ -41,7 +41,7 @@ public class HomePageViewModel : MainPageViewModelBase
     {
         /* Status updates are only sent if something has changed.
            We use this knowledge to request updated debug data. */
-        _ = BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
+        _ = BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_GET_ALL_DATA);
     }
 
     public override void OnNavigatedTo() => _refreshTimer.Start();

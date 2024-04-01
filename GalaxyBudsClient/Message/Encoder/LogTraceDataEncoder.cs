@@ -11,6 +11,6 @@ public static class LogTraceDataEncoder
             BitConverter.GetBytes(offset),
             BitConverter.GetBytes(size)
         );
-        return new SppMessage(SppMessage.MessageIds.LOG_TRACE_DATA, SppMessage.MsgType.Request, bytes);
+        return new SppMessage(MsgIds.LOG_TRACE_DATA, MsgTypes.Request, bytes);
     }
 }

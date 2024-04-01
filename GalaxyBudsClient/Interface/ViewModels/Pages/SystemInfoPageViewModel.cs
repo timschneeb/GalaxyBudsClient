@@ -77,16 +77,16 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
     private static async void RequestData()
     {
         if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.BatteryType))
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.BATTERY_TYPE);
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.BATTERY_TYPE);
         if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.BuildInfo))
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_BUILD_INFO);
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_BUILD_INFO);
         if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.DebugSku))
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_SKU);
         if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.CradleSerialNumber))
-            await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.CRADLE_SERIAL_NUMBER);
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.CRADLE_SERIAL_NUMBER);
         
-        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SERIAL_NUMBER);
-        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
+        await BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_SERIAL_NUMBER);
+        await BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_GET_ALL_DATA);
     }
     
     public override void OnNavigatedTo() => RequestData();

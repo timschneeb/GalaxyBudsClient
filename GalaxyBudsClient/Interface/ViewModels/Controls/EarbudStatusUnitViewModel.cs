@@ -56,7 +56,7 @@ public class EarbudStatusUnitViewModel : ViewModelBase
         if (DeviceMessageCache.Instance.DebugGetAllData != null)
             OnGetAllDataResponse(null, DeviceMessageCache.Instance.DebugGetAllData);
         else
-            _ = BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_GET_ALL_DATA);
+            _ = BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_GET_ALL_DATA);
     }
     
     private void OnStatusUpdated(object? sender, IBasicStatusUpdate e)

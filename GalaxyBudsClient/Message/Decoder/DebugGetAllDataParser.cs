@@ -8,7 +8,7 @@ namespace GalaxyBudsClient.Message.Decoder;
 
 public class DebugGetAllDataParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.DEBUG_GET_ALL_DATA;
+    public override MsgIds HandledType => MsgIds.DEBUG_GET_ALL_DATA;
 
     private readonly string[] _swMonth = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
 

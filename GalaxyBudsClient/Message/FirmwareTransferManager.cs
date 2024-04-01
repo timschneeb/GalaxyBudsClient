@@ -179,7 +179,7 @@ public class FirmwareTransferManager
                             _binary.TotalSize / 1000f);
                         break;
                     case FirmwareConstants.UpdateIds.StateChange:
-                        await BluetoothImpl.Instance.SendResponseAsync(SppMessage.MessageIds.FOTA_UPDATE, 1);
+                        await BluetoothImpl.Instance.SendResponseAsync(MsgIds.FOTA_UPDATE, 1);
                         Log.Debug("FirmwareTransferManager.OnMessageReceived: State changed: {State}, result code: {ResultCode}", 
                             update.State, update.ResultCode);
 
@@ -199,7 +199,7 @@ public class FirmwareTransferManager
                 }
                 break;
             case FotaResultParser result:
-                await BluetoothImpl.Instance.SendResponseAsync(SppMessage.MessageIds.FOTA_RESULT, 1);
+                await BluetoothImpl.Instance.SendResponseAsync(MsgIds.FOTA_RESULT, 1);
                 Log.Debug("FirmwareTransferManager.OnMessageReceived: Finished. Result: {Result}, error code: {Code}", 
                     result.Result, result.ErrorCode);
 
@@ -250,7 +250,7 @@ public class FirmwareTransferManager
             
         State = States.InitializingSession;
             
-        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.FOTA_OPEN, _binary.SerializeTable());
+        await BluetoothImpl.Instance.SendRequestAsync(MsgIds.FOTA_OPEN, _binary.SerializeTable());
         _sessionTimeout.Start();
     }
 

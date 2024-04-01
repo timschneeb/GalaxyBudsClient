@@ -21,6 +21,6 @@ public static class FotaControlEncoder
         var data = stream.ToArray();
         stream.Close();
             
-        return new SppMessage(SppMessage.MessageIds.FOTA_CONTROL, SppMessage.MsgType.Response, data);
+        return new SppMessage(MsgIds.FOTA_CONTROL, MsgTypes.Response, data);
     }
 }

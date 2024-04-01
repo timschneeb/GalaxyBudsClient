@@ -57,6 +57,6 @@ public class Buds2ProDeviceSpec : IDeviceSpec
         
     public string IconResourceKey => "Pro";
     public int MaximumAmbientVolume => 2;
-    public byte StartOfMessage => (byte)SppMessage.MsgConstants.Som;
-    public byte EndOfMessage => (byte)SppMessage.MsgConstants.Eom;
+    public byte StartOfMessage => (byte)MsgConstants.Som;
+    public byte EndOfMessage => (byte)MsgConstants.Eom;
 }

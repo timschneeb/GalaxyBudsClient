@@ -2,7 +2,7 @@
 
 internal class ResetResponseParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.RESET;
+    public override MsgIds HandledType => MsgIds.RESET;
 
     public int ResultCode { set; get; }
 

@@ -4,7 +4,7 @@ namespace GalaxyBudsClient.Message.Decoder;
 
 internal class SocBatteryCycleParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.SOC_BATTERY_CYCLE;
+    public override MsgIds HandledType => MsgIds.SOC_BATTERY_CYCLE;
         
     public long LeftCycles { set; get; }
     public long RightCycles { set; get; }

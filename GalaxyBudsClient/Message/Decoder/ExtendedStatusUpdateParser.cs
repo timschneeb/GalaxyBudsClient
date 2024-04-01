@@ -10,7 +10,7 @@ namespace GalaxyBudsClient.Message.Decoder;
 public class ExtendedStatusUpdateParser : BaseMessageParser, IBasicStatusUpdate
 {
 
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.EXTENDED_STATUS_UPDATED;
+    public override MsgIds HandledType => MsgIds.EXTENDED_STATUS_UPDATED;
 
     public int Revision { set; get; }
     public int EarType { set; get; }

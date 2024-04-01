@@ -67,13 +67,13 @@ public class FotaDownloadDataEncoder
             i3 = i4;
         }
 
-        return new SppMessage(SppMessage.MessageIds.FOTA_DOWNLOAD_DATA, SppMessage.MsgType.Response, bArr)
+        return new SppMessage(MsgIds.FOTA_DOWNLOAD_DATA, MsgTypes.Response, bArr)
         {
             IsFragment = true
         };
             
         RET_NULL:
-        return new SppMessage(SppMessage.MessageIds.FOTA_DOWNLOAD_DATA, SppMessage.MsgType.Response, Array.Empty<byte>())
+        return new SppMessage(MsgIds.FOTA_DOWNLOAD_DATA, MsgTypes.Response, Array.Empty<byte>())
         {
             IsFragment = true
         };

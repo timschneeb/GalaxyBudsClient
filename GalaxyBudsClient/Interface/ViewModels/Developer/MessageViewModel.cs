@@ -6,7 +6,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Developer;
 
 public class MessageViewHolder(SppMessage msg)
 {
-    public string Id { get; } = GetEnumName(typeof(SppMessage.MessageIds),msg.Id);
+    public string Id { get; } = GetEnumName(typeof(MsgIds),msg.Id);
     public string Payload { get; } = BitConverter.ToString(msg.Payload).Replace("-", " ");
     public string PayloadAscii { get; } = HexUtils.DumpAscii(msg.Payload);
     public string Type { get; } = msg.IsFragment ? "Fragment/" : string.Empty + GetEnumName(typeof(MsgTypes), msg.Type);

@@ -2,7 +2,7 @@ namespace GalaxyBudsClient.Message.Decoder;
 
 internal class FotaDownloadDataParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.FOTA_DOWNLOAD_DATA;
+    public override MsgIds HandledType => MsgIds.FOTA_DOWNLOAD_DATA;
 
     public bool NAK { set; get; }
     public long ReceivedOffset { set; get; }

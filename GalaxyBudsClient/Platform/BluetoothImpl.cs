@@ -327,17 +327,17 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
         }
     }
         
-    public async Task SendResponseAsync(SppMessage.MessageIds id, params byte[]? payload)
+    public async Task SendResponseAsync(MsgIds id, params byte[]? payload)
     {
-        await SendAsync(new SppMessage{Id = id, Payload = payload ?? Array.Empty<byte>(), Type = SppMessage.MsgType.Response});
+        await SendAsync(new SppMessage{Id = id, Payload = payload ?? Array.Empty<byte>(), Type = MsgTypes.Response});
     }
 
-    public async Task SendRequestAsync(SppMessage.MessageIds id, params byte[]? payload)
+    public async Task SendRequestAsync(MsgIds id, params byte[]? payload)
     {
-        await SendAsync(new SppMessage{Id = id, Payload = payload ?? Array.Empty<byte>(), Type = SppMessage.MsgType.Request});
+        await SendAsync(new SppMessage{Id = id, Payload = payload ?? Array.Empty<byte>(), Type = MsgTypes.Request});
     }
         
-    public async Task SendRequestAsync(SppMessage.MessageIds id, bool payload)
+    public async Task SendRequestAsync(MsgIds id, bool payload)
     {
         await SendRequestAsync(id, payload ? [0x01] : [0x00]);
     }

@@ -11,6 +11,6 @@ public static class LogCoredumpDataEncoder
             BitConverter.GetBytes(offset),
             BitConverter.GetBytes(size)
         );
-        return new SppMessage(SppMessage.MessageIds.LOG_COREDUMP_DATA, SppMessage.MsgType.Request, bytes);
+        return new SppMessage(MsgIds.LOG_COREDUMP_DATA, MsgTypes.Request, bytes);
     }
 }

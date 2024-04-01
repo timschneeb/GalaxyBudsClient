@@ -2,8 +2,8 @@
 
 public class GenericResponseParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.RESP;
-    public SppMessage.MessageIds MessageId { set; get; }
+    public override MsgIds HandledType => MsgIds.RESP;
+    public MsgIds MessageId { set; get; }
     public int ResultCode { set; get; }
     public int? ExtraData { set; get; }
 
@@ -12,7 +12,7 @@ public class GenericResponseParser : BaseMessageParser
         if (msg.Id != HandledType)
             return;
 
-        MessageId = (SppMessage.MessageIds) msg.Payload[0];
+        MessageId = (MsgIds) msg.Payload[0];
         ResultCode = msg.Payload[1];
         if (msg.Payload.Length > 2)
         {

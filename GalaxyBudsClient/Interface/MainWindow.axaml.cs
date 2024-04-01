@@ -87,7 +87,7 @@ public partial class MainWindow : StyledAppWindow
         switch (e)
         {
             case Event.PairingMode:
-                await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.UNK_PAIRING_MODE);
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.UNK_PAIRING_MODE);
                 break;
             case Event.ToggleManagerVisibility:
                 if (IsVisible)
@@ -129,7 +129,7 @@ public partial class MainWindow : StyledAppWindow
             Log.Debug("MainWindow.OnClosing: Now closing session");
         }
             
-        await BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.FIND_MY_EARBUDS_STOP);
+        await BluetoothImpl.Instance.SendRequestAsync(MsgIds.FIND_MY_EARBUDS_STOP);
         await BluetoothImpl.Instance.DisconnectAsync();
         base.OnClosing(e);
     }
@@ -270,7 +270,7 @@ public partial class MainWindow : StyledAppWindow
         // Reply manager info and request & cache SKU info
         _ = MessageComposer.SetManagerInfo();
         if(BluetoothImpl.Instance.DeviceSpec.Supports(Features.DebugSku))
-            _ = BluetoothImpl.Instance.SendRequestAsync(SppMessage.MessageIds.DEBUG_SKU);
+            _ = BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_SKU);
     }
 
     private void OnConnected(object? sender, EventArgs e)

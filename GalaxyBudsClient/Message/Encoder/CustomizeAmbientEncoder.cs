@@ -17,6 +17,6 @@ public static class CustomizeAmbientEncoder
         var data = stream.ToArray();
         stream.Close();
             
-        return new SppMessage(SppMessage.MessageIds.CUSTOMIZE_AMBIENT_SOUND, SppMessage.MsgType.Request, data);
+        return new SppMessage(MsgIds.CUSTOMIZE_AMBIENT_SOUND, MsgTypes.Request, data);
     }
 }

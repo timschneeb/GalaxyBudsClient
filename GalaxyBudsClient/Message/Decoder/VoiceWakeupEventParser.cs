@@ -2,7 +2,7 @@
 
 internal class VoiceWakeupEventParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.VOICE_WAKE_UP_EVENT;
+    public override MsgIds HandledType => MsgIds.VOICE_WAKE_UP_EVENT;
     public byte ResultCode { set; get; }
     public byte Confidence { set; get; }
 

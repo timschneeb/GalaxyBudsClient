@@ -16,6 +16,6 @@ public class StubDeviceSpec : IDeviceSpec
     public IEnumerable<TrayItemTypes> TrayShortcuts => new List<TrayItemTypes>();
     public string IconResourceKey => "Pro";
     public int MaximumAmbientVolume => 3;
-    public byte StartOfMessage => (byte)SppMessage.MsgConstants.Som;
-    public byte EndOfMessage => (byte)SppMessage.MsgConstants.Eom;
+    public byte StartOfMessage => (byte)MsgConstants.Som;
+    public byte EndOfMessage => (byte)MsgConstants.Eom;
 }

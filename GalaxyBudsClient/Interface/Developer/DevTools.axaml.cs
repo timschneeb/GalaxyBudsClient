@@ -120,7 +120,7 @@ public partial class DevTools : StyledWindow.StyledWindow
 
         var msg = new SppMessage
         {
-            Id = (SppMessage.MessageIds?) SendMsgId.SelectedItem ?? SppMessage.MessageIds.UNKNOWN_0,
+            Id = (MsgIds?) SendMsgId.SelectedItem ?? MsgIds.UNKNOWN_0,
             Payload = payload,
             Type = (MsgTypes?) SendMsgType.SelectedItem ?? MsgTypes.INVALID
         };

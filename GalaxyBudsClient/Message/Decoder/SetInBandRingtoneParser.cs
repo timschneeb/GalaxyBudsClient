@@ -5,7 +5,7 @@
  */
 internal class SetInBandRingtoneParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.SET_IN_BAND_RINGTONE;
+    public override MsgIds HandledType => MsgIds.SET_IN_BAND_RINGTONE;
 
     public byte Status { set; get; }
 

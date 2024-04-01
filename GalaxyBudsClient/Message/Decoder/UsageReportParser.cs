@@ -93,7 +93,7 @@ public class UsageReportParser : BaseMessageParser
         { "ABDC", "WearBoth/AmbientSound" }
     };
 
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.USAGE_REPORT;
+    public override MsgIds HandledType => MsgIds.USAGE_REPORT;
 
     public Dictionary<string, long>? Statistics { set; get; }
 

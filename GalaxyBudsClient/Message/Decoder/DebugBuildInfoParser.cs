@@ -4,7 +4,7 @@ namespace GalaxyBudsClient.Message.Decoder;
 
 internal class DebugBuildInfoParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.DEBUG_BUILD_INFO;
+    public override MsgIds HandledType => MsgIds.DEBUG_BUILD_INFO;
         
     public string? BuildString { set; get; }
 

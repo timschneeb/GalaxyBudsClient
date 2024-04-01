@@ -6,7 +6,7 @@ namespace GalaxyBudsClient.Message.Decoder;
 
 public class CradleSerialNumberParser : BaseMessageParser
 {
-    public override SppMessage.MessageIds HandledType => SppMessage.MessageIds.CRADLE_SERIAL_NUMBER;
+    public override MsgIds HandledType => MsgIds.CRADLE_SERIAL_NUMBER;
 
     public string? SoftwareVersion { set; get; }
     public string? SerialNumber { set; get; }
