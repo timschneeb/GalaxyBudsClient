@@ -8,7 +8,6 @@ namespace GalaxyBudsClient.Message;
 
 public static class MessageComposer
 {
-
     public static async Task UpdateTime(long timestamp = -1, int offset = -1)
     {
         if ((timestamp < 0) | (offset < 0))
@@ -65,42 +64,10 @@ public static class MessageComposer
         }
         EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
     }
-        
-
-    public static class Touch
+    
+    public static async Task SetNoiseControlMode(NoiseControlModes mode)
     {
-        public static async Task SetOptions(TouchOptions left, TouchOptions right)
-        {
-            var payload = new byte[2];
-            payload[0] = BluetoothImpl.Instance.DeviceSpec.TouchMap.ToByte(left);
-            payload[1] = BluetoothImpl.Instance.DeviceSpec.TouchMap.ToByte(right);
-            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_TOUCHPAD_OPTION, payload);
-        }
-    }
-        
-    public static class FindMyGear
-    {
-        public static async Task MuteEarbud(bool leftMuted, bool rightMuted)
-        {
-            var payload = new byte[2];
-            payload[0] = Convert.ToByte(leftMuted);
-            payload[1] = Convert.ToByte(rightMuted);
-            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.MUTE_EARBUD, payload);
-        }
-    }
-        
-    public static class NoiseControl
-    {
-        public static async Task SetMode(NoiseControlModes mode)
-        {
-            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.NOISE_CONTROLS, (byte)mode);
-            EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
-        }
-
-        public static async Task SetTouchNoiseControls(bool anc, bool ambient, bool off)
-        {
-            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS,
-                [Convert.ToByte(anc), Convert.ToByte(ambient), Convert.ToByte(off)]);
-        }
+        await BluetoothImpl.Instance.SendRequestAsync(MsgIds.NOISE_CONTROLS, (byte)mode);
+        EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
     }
 }

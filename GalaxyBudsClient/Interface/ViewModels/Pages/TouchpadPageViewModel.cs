@@ -179,7 +179,11 @@ public class TouchpadPageViewModel : MainPageViewModelBase
                 break;
             case nameof(LeftAction):
             case nameof(RightAction):
-                await MessageComposer.Touch.SetOptions(LeftAction, RightAction);
+                var payload = new byte[2];
+                payload[0] = BluetoothImpl.Instance.DeviceSpec.TouchMap.ToByte(LeftAction);
+                payload[1] = BluetoothImpl.Instance.DeviceSpec.TouchMap.ToByte(RightAction);
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_TOUCHPAD_OPTION, payload);
+                
                 UpdateEditStates();
                 if (LeftAction == TouchOptions.NoiseControl || RightAction == TouchOptions.NoiseControl)
                     OnPropertyChanged(null, new PropertyChangedEventArgs(nameof(NoiseControlCycleMode)));

@@ -52,7 +52,10 @@ public class FindMyBudsPageViewModel : MainPageViewModelBase
                 break;
             }
             case nameof(IsLeftMuted) or nameof(IsRightMuted):
-                await MessageComposer.FindMyGear.MuteEarbud(IsLeftMuted, IsRightMuted);
+                var payload = new byte[2];
+                payload[0] = Convert.ToByte(IsLeftMuted);
+                payload[1] = Convert.ToByte(IsRightMuted);
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.MUTE_EARBUD, payload);
                 break;
         }
     }

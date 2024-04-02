@@ -82,11 +82,11 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
         if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
         {
             if (IsAmbientSoundEnabled) 
-                await MessageComposer.NoiseControl.SetMode(NoiseControlModes.AmbientSound);
+                await MessageComposer.SetNoiseControlMode(NoiseControlModes.AmbientSound);
             else if (IsAncEnabled)
-                await MessageComposer.NoiseControl.SetMode(NoiseControlModes.NoiseReduction);
+                await MessageComposer.SetNoiseControlMode(NoiseControlModes.NoiseReduction);
             else
-                await MessageComposer.NoiseControl.SetMode(NoiseControlModes.Off);
+                await MessageComposer.SetNoiseControlMode(NoiseControlModes.Off);
         }
         else
         {
