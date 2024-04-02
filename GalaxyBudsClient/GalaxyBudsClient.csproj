@@ -32,6 +32,8 @@
         <LangVersion>12</LangVersion>
         <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>
 
+        <IsAotCompatible>true</IsAotCompatible>
+        
         <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
     </PropertyGroup>
 

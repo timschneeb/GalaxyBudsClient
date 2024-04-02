@@ -55,7 +55,7 @@ public sealed class ApplicationObject : BaseObjectWithProperties<ApplicationProp
 
     public Task<IDictionary<string, string>> ListActionsAsync()
     {
-        var values = (Event[]) Enum.GetValues(typeof(Event));
+        var values = Enum.GetValues<Event>();
         var actions = new Dictionary<string, string>();
         foreach (var value in values)
         {

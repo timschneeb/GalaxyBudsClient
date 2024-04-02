@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Scripting;
@@ -19,7 +20,7 @@ public static class SppMessageParserFactory
             .Where(t => t is { Namespace: "GalaxyBudsClient.Message.Decoder", IsClass: true, IsAbstract: false } && t.IsSubclassOf(typeof(BaseMessageParser)))
             .ToArray();
         RegisteredEncoders = types
-            .Where(t => t is { Namespace: "GalaxyBudsClient.Message.Encoder", IsClass: true, IsAbstract: false } && t.IsSubclassOf(typeof(BaseMessageParser)))
+            .Where(t => t is { Namespace: "GalaxyBudsClient.Message.Encoder", IsClass: true, IsAbstract: false } && t.IsSubclassOf(typeof(BaseMessageEncoder)))
             .ToArray();
     }
 

@@ -32,9 +32,6 @@ public static class AttributeExtensions
 
     public static string GetDescription<T>(this T e) where T : IConvertible
         => e.GetEnumAttribute<DescriptionAttribute, T>()?.Description ?? string.Empty;
-
-    public static string GetLocalizableKey<T>(this T e) where T : IConvertible
-        => e.GetEnumAttribute<LocalizedDescriptionAttribute, T>()?.Key ?? string.Empty;
         
     public static bool IsMemberIgnored<T>(this T e) where T : IConvertible
         => e.GetEnumAttribute<IgnoreDataMemberAttribute, T>() != null;

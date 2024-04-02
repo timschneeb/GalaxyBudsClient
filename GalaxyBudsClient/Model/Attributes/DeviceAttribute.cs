@@ -25,7 +25,7 @@ public class DeviceAttribute : Attribute
     
     public DeviceAttribute(Models model, Selector selector = Selector.Equal)
     {
-        var devices = ((Models[])Enum.GetValues(typeof(Models))).Where(x => x != Constants.Models.NULL);
+        var devices = Enum.GetValues<Models>().Where(x => x != Constants.Models.NULL);
         _selector = selector;
         
         Models = selector switch
