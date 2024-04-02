@@ -68,14 +68,14 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
                 break;
             case nameof(IsAmbientCustomizationEnabled) or nameof(AmbientSoundTone) or 
                 nameof(AmbientSoundVolumeLeft) or nameof(AmbientSoundVolumeRight):
-                
-                var msg = CustomizeAmbientEncoder.Build(
-                    IsAmbientCustomizationEnabled,
-                    (byte)AmbientSoundVolumeLeft,
-                    (byte)AmbientSoundVolumeRight,
-                    (byte)AmbientSoundTone
-                );
-                await BluetoothImpl.Instance.SendAsync(msg);
+
+                await BluetoothImpl.Instance.SendAsync(new CustomizeAmbientEncoder
+                {
+                    IsEnabled = IsAmbientCustomizationEnabled,
+                    AmbientVolumeLeft = (byte)AmbientSoundVolumeLeft,
+                    AmbientVolumeRight = (byte)AmbientSoundVolumeRight,
+                    AmbientTone = (byte)AmbientSoundTone
+                });
                 break;
         }
     }

@@ -4,40 +4,31 @@ using GalaxyBudsClient.Model.Firmware;
 
 namespace GalaxyBudsClient.Message.Encoder;
 
-public class FotaDownloadDataEncoder
+public class FotaDownloadDataEncoder : BaseMessageEncoder
 {
-    private readonly FirmwareBinary _binary;
-    private readonly int _entryId;
-    private readonly int _offset;
-    private readonly int _mtuSize;
-
-    public FotaDownloadDataEncoder(FirmwareBinary binary, int entryId, int offset, int mtuSize)
-    {
-        _binary = binary;
-        _entryId = entryId;
-        _offset = offset;
-        _mtuSize = mtuSize;
-    }
-
-    public int Offset => _offset;
+    public override MsgIds HandledType => MsgIds.FOTA_DOWNLOAD_DATA;
+    public required FirmwareBinary Binary { init; get; }
+    public required int EntryId { init; get; }
+    public required int MtuSize { init; get; }
+    public required int Offset { init; get; }
 
     public bool IsLastFragment()
     {
-        var next = _binary.GetSegmentById(_entryId);
-        return next == null || Offset + (long) _mtuSize >= next.Size;
+        var next = Binary.GetSegmentById(EntryId);
+        return next == null || Offset + (long) MtuSize >= next.Size;
     }
         
-    public SppMessage Build()
+    public override SppMessage Encode()
     {
-        var segment = _binary.GetSegmentById(_entryId);
+        var segment = Binary.GetSegmentById(EntryId);
         if (segment == null)
         {
             goto RET_NULL;
         }
             
         var i = 0;
-        var z = Offset + (long) _mtuSize >= segment.Size;
-        var rawDataSize = z ? (int)segment.Size - Offset : _mtuSize;
+        var z = Offset + (long) MtuSize >= segment.Size;
+        var rawDataSize = z ? (int)segment.Size - Offset : MtuSize;
         if (rawDataSize < 0) 
         {
             goto RET_NULL;
@@ -60,27 +51,27 @@ public class FotaDownloadDataEncoder
                 break;
             }
 
-            var binStream = _binary.OpenStream();
+            var binStream = Binary.OpenStream();
             binStream.Seek(segment.Position + Offset, SeekOrigin.Begin);
             binStream.Read(bArr, i2, rawDataSize);
 
             i3 = i4;
         }
 
-        return new SppMessage(MsgIds.FOTA_DOWNLOAD_DATA, MsgTypes.Response, bArr)
+        return new SppMessage(HandledType, MsgTypes.Response, bArr)
         {
             IsFragment = true
         };
             
         RET_NULL:
-        return new SppMessage(MsgIds.FOTA_DOWNLOAD_DATA, MsgTypes.Response, Array.Empty<byte>())
+        return new SppMessage(HandledType, MsgTypes.Response, Array.Empty<byte>())
         {
             IsFragment = true
         };
     }
         
     private static int MakeFragmentHeader(bool z, long j) {
-        var i = (int) (j & 2147483647L);
+        var i = (int) (j & 0x7FFFFFFFL);
         return z ? i : i | int.MinValue;
     }
 }

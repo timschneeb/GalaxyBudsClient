@@ -3,24 +3,25 @@ using GalaxyBudsClient.Model.Firmware;
 
 namespace GalaxyBudsClient.Message.Encoder;
 
-public static class FotaControlEncoder
+public class FotaControlEncoder : BaseMessageEncoder
 {
-    public static SppMessage Build(FirmwareConstants.ControlIds controlId, short parameter)
+    public override MsgIds HandledType => MsgIds.FOTA_CONTROL;
+    public FirmwareConstants.ControlIds ControlId { get; set; }
+    public short Parameter { get; set; }
+    
+    public override SppMessage Encode()
     {
-        var stream = new MemoryStream();
+        using var stream = new MemoryStream();
         var writer = new BinaryWriter(stream);
 
-        if (controlId == FirmwareConstants.ControlIds.SendMtu)
+        if (ControlId == FirmwareConstants.ControlIds.SendMtu)
         {
-            parameter = parameter > 650 ? (short)650 : parameter;
+            Parameter = Parameter > 650 ? (short)650 : Parameter;
         }
             
-        writer.Write((byte) controlId);
-        writer.Write((short) parameter);
+        writer.Write((byte) ControlId);
+        writer.Write(Parameter); // 16-bit parameter
             
-        var data = stream.ToArray();
-        stream.Close();
-            
-        return new SppMessage(MsgIds.FOTA_CONTROL, MsgTypes.Response, data);
+        return new SppMessage(HandledType, MsgTypes.Response, stream.ToArray());
     }
 }

@@ -3,14 +3,18 @@ using GalaxyBudsClient.Utils;
 
 namespace GalaxyBudsClient.Message.Encoder;
 
-public static class LogCoredumpDataEncoder
+public class LogCoredumpDataEncoder : BaseMessageEncoder
 {
-    public static SppMessage Build(int offset, int size)
+    public override MsgIds HandledType => MsgIds.LOG_COREDUMP_DATA;
+    public int Offset { get; set; }
+    public int Size { get; set; }
+    
+    public override SppMessage Encode()
     {
         var bytes = ByteArrayUtils.Combine(
-            BitConverter.GetBytes(offset),
-            BitConverter.GetBytes(size)
+            BitConverter.GetBytes(Offset),
+            BitConverter.GetBytes(Size)
         );
-        return new SppMessage(MsgIds.LOG_COREDUMP_DATA, MsgTypes.Request, bytes);
+        return new SppMessage(HandledType, MsgTypes.Request, bytes);
     }
 }

@@ -148,7 +148,7 @@ internal class SpatialAudioDataParser : BaseMessageParser
     public override Dictionary<string, string> ToStringMap()
     {
         Dictionary<string, string> map = new();
-        PropertyInfo[] properties = GetType().GetProperties();
+        var properties = GetType().GetProperties();
         foreach (var property in properties)
         {
             if (IsHiddenProperty(property))

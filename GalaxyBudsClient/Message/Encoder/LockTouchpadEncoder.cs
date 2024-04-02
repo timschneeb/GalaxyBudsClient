@@ -1,32 +1,36 @@
 using System.IO;
 using GalaxyBudsClient.Model.Specifications;
-using GalaxyBudsClient.Platform;
 
 namespace GalaxyBudsClient.Message.Encoder;
 
-public static class LockTouchpadEncoder
+public class LockTouchpadEncoder : BaseMessageEncoder
 {
-    public static SppMessage Build(bool lockAll, bool tapOn, bool doubleTapOn, bool tripleTapOn, bool holdTapOn, 
-        bool doubleTapCallOn, bool holdTapCallOn)
+    public override MsgIds HandledType => MsgIds.LOCK_TOUCHPAD;
+    public bool LockAll { get; set; }
+    public bool TapOn { get; set; }
+    public bool DoubleTapOn { get; set; }
+    public bool TripleTapOn { get; set; }
+    public bool HoldTapOn { get; set; }
+    public bool DoubleTapCallOn { get; set; }
+    public bool HoldTapCallOn { get; set; }
+    
+    public override SppMessage Encode()
     {
-        var stream = new MemoryStream();
+        using var stream = new MemoryStream();
         var writer = new BinaryWriter(stream);
 
-        writer.Write(!lockAll);
-        writer.Write(tapOn);
-        writer.Write(doubleTapOn);
-        writer.Write(tripleTapOn);
-        writer.Write(holdTapOn);
+        writer.Write(!LockAll);
+        writer.Write(TapOn);
+        writer.Write(DoubleTapOn);
+        writer.Write(TripleTapOn);
+        writer.Write(HoldTapOn);
 
-        if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AdvancedTouchLockForCalls))
+        if (DeviceSpec.Supports(Features.AdvancedTouchLockForCalls))
         {
-            writer.Write(doubleTapCallOn);
-            writer.Write(holdTapCallOn);
+            writer.Write(DoubleTapCallOn);
+            writer.Write(HoldTapCallOn);
         }
-
-        var data = stream.ToArray();
-        stream.Close();
             
-        return new SppMessage(MsgIds.LOCK_TOUCHPAD, MsgTypes.Request, data);
+        return new SppMessage(HandledType, MsgTypes.Request, stream.ToArray());
     }
 }

@@ -136,14 +136,22 @@ public class FirmwareTransferManager
                         _mtuSize = control.MtuSize;
                         MtuChanged?.Invoke(this, control.MtuSize);
 
-                        await BluetoothImpl.Instance.SendAsync(FotaControlEncoder.Build(control.ControlId, control.MtuSize));
+                        await BluetoothImpl.Instance.SendAsync(new FotaControlEncoder()
+                        {
+                            ControlId = control.ControlId,
+                            Parameter = control.MtuSize
+                        });
                         Log.Debug("FirmwareTransferManager.OnMessageReceived: MTU size set to {MtuSize}", control.MtuSize);
                         break;
                     case FirmwareConstants.ControlIds.ReadyToDownload:
                         _currentSegment = control.Id;
                         CurrentSegmentIdChanged?.Invoke(this, control.Id);
-                            
-                        await BluetoothImpl.Instance.SendAsync(FotaControlEncoder.Build(control.ControlId, control.Id));
+                        
+                        await BluetoothImpl.Instance.SendAsync(new FotaControlEncoder()
+                        {
+                            ControlId = control.ControlId,
+                            Parameter = control.Id
+                        });
                         Log.Debug("FirmwareTransferManager.OnMessageReceived: Ready to download segment {Id}", control.Id);
                         break;
                 }
@@ -157,11 +165,17 @@ public class FirmwareTransferManager
 
                 for (byte i2 = 0; i2 < download.RequestPacketNumber; i2++)
                 {   
-                    var downloadEncoder = new FotaDownloadDataEncoder(_binary, _currentSegment, (int)download.ReceivedOffset + _mtuSize * i2, _mtuSize);
+                    var downloadEncoder = new FotaDownloadDataEncoder
+                    {
+                        Binary = _binary,
+                        EntryId = _currentSegment,
+                        Offset = (int)download.ReceivedOffset + _mtuSize * i2,
+                        MtuSize = _mtuSize
+                    };
                     _lastFragment = downloadEncoder.IsLastFragment();
                     _lastSegmentOffset = downloadEncoder.Offset;
                         
-                    await BluetoothImpl.Instance.SendAsync(downloadEncoder.Build());
+                    await BluetoothImpl.Instance.SendAsync(downloadEncoder);
                 }
                 break;
             case FotaUpdateParser update:
@@ -233,14 +247,6 @@ public class FirmwareTransferManager
                 Loc.Resolve("fw_fail_pending")));
             return;
         }
-
-        /*if ((DeviceMessageCache.Instance.BasicStatusUpdate?.BatteryL ?? 100) < 15 ||
-            (DeviceMessageCache.Instance.BasicStatusUpdate?.BatteryR ?? 100) < 15)
-        {
-            Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.BatteryLow,
-                Loc.Resolve("fw_fail_lowbattery")));
-            return;
-        }*/
 
         _mtuSize = 0;
         _currentSegment = 0;

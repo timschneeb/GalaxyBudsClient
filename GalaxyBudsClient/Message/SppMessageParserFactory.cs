@@ -14,18 +14,22 @@ public static class SppMessageParserFactory
 
     static SppMessageParserFactory()
     {
-        RegisteredParsers = typeof(SppMessageParserFactory).Assembly
-            .GetTypes()
+        var types = typeof(SppMessageParserFactory).Assembly.GetTypes();
+        RegisteredDecoders = types
             .Where(t => t is { Namespace: "GalaxyBudsClient.Message.Decoder", IsClass: true, IsAbstract: false } && t.IsSubclassOf(typeof(BaseMessageParser)))
+            .ToArray();
+        RegisteredEncoders = types
+            .Where(t => t is { Namespace: "GalaxyBudsClient.Message.Encoder", IsClass: true, IsAbstract: false } && t.IsSubclassOf(typeof(BaseMessageParser)))
             .ToArray();
     }
 
-    private static readonly Type[] RegisteredParsers;
+    private static readonly Type[] RegisteredDecoders;
+    private static readonly Type[] RegisteredEncoders;
 
     public static BaseMessageParser? BuildParser(SppMessage msg, Models model)
     {
         BaseMessageParser? b = null;
-        foreach (var t in RegisteredParsers)
+        foreach (var t in RegisteredDecoders)
         {
             var act = Activator.CreateInstance(t);
             if (act?.GetType() != t) 

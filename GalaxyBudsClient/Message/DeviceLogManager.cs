@@ -116,8 +116,12 @@ public class DeviceLogManager
 
                 _traceBuffer = new byte[_traceContext!.DataSize];
                 MakeOffsetList(_traceContext.FragmentCount, _traceContext.PartialDataMaxSize);
-                    
-                await BluetoothImpl.Instance.SendAsync(LogTraceDataEncoder.Build(0, _traceContext.DataSize));
+                
+                await BluetoothImpl.Instance.SendAsync(new LogTraceDataEncoder()
+                {
+                    Offset = 0,
+                    Size = _traceContext.PartialDataMaxSize
+                });
                 break;
             case MsgIds.LOG_TRACE_DATA:
                 var data = e.BuildParser() as LogTraceDataParser;
@@ -152,7 +156,11 @@ public class DeviceLogManager
                         i = i3 - remainOffset;
                     }
 
-                    await BluetoothImpl.Instance.SendAsync(LogTraceDataEncoder.Build(remainOffset, i));
+                    await BluetoothImpl.Instance.SendAsync(new LogTraceDataEncoder()
+                    {
+                        Offset = remainOffset,
+                        Size = i
+                    });
                     return;
                 }
 
@@ -178,7 +186,12 @@ public class DeviceLogManager
                 if (_coredumpContext.DataSize > 0)
                 {
                     _coredumpBuffer = new byte[_coredumpContext.DataSize];
-                    await BluetoothImpl.Instance.SendAsync(LogCoredumpDataEncoder.Build(0, _coredumpContext.DataSize));
+                    
+                    await BluetoothImpl.Instance.SendAsync(new LogCoredumpDataEncoder()
+                    {
+                        Offset = 0,
+                        Size = _coredumpContext.DataSize
+                    });
                 }
                 else if (_hasCompletedRoleSwitch) 
                 {
@@ -209,7 +222,11 @@ public class DeviceLogManager
                         i = i3 - remainOffsetCore;
                     }
 
-                    await BluetoothImpl.Instance.SendAsync(LogCoredumpDataEncoder.Build(remainOffsetCore, i));
+                    await BluetoothImpl.Instance.SendAsync(new LogCoredumpDataEncoder()
+                    {
+                        Offset = remainOffsetCore,
+                        Size = i
+                    });
                     return;
                 }
                     

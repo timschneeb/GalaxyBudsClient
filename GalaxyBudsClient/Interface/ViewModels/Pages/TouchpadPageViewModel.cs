@@ -124,9 +124,16 @@ public class TouchpadPageViewModel : MainPageViewModelBase
             case nameof(IsTouchpadLocked):
                 if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AdvancedTouchLock))
                 {
-                    await BluetoothImpl.Instance.SendAsync(LockTouchpadEncoder.Build(IsTouchpadLocked,
-                        IsSingleTapGestureEnabled, IsDoubleTapGestureEnabled, IsTripleTapGestureEnabled,
-                        IsHoldGestureEnabled, IsDoubleTapGestureForCallsEnabled, IsHoldGestureForCallsEnabled));
+                    await BluetoothImpl.Instance.SendAsync(new LockTouchpadEncoder()
+                    {
+                        LockAll = IsTouchpadLocked,
+                        TapOn = IsSingleTapGestureEnabled,
+                        DoubleTapOn = IsDoubleTapGestureEnabled,
+                        TripleTapOn = IsTripleTapGestureEnabled,
+                        HoldTapOn = IsHoldGestureEnabled,
+                        DoubleTapCallOn = IsDoubleTapGestureForCallsEnabled,
+                        HoldTapCallOn = IsHoldGestureForCallsEnabled
+                    });
                 }
                 else
                 {
@@ -140,49 +147,20 @@ public class TouchpadPageViewModel : MainPageViewModelBase
                     IsDoubleTapVolumeEnabled);
                 break;
             case nameof(NoiseControlCycleMode) or nameof(NoiseControlCycleModeRight):
-                if(BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide))
+                await BluetoothImpl.Instance.SendAsync(new TouchAndHoldNoiseControls
                 {
-                    (byte, byte, byte) left = NoiseControlCycleMode switch
-                    {
-                        NoiseControlCycleModes.AncOff => (1, 0, 1),
-                        NoiseControlCycleModes.AmbOff => (0, 1, 1),
-                        NoiseControlCycleModes.AncAmb => (1, 1, 0),
-                        _ => (0, 0, 0)
-                    };
-                    (byte, byte, byte) right = NoiseControlCycleModeRight switch
-                    {
-                        NoiseControlCycleModes.AncOff => (1, 0, 1),
-                        NoiseControlCycleModes.AmbOff => (0, 1, 1),
-                        NoiseControlCycleModes.AncAmb => (1, 1, 0),
-                        _ => (0, 0, 0)
-                    };
-
-                    await BluetoothImpl.Instance.SendRequestAsync(
-                        MsgIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS,
-                        left.Item1, left.Item2, left.Item3, right.Item1, right.Item2, right.Item3);
-                }
-                else
-                {
-                    (byte, byte, byte) value = NoiseControlCycleMode switch
-                    {
-                        NoiseControlCycleModes.AncOff => (1, 0, 1),
-                        NoiseControlCycleModes.AmbOff => (0, 1, 1),
-                        NoiseControlCycleModes.AncAmb => (1, 1, 0),
-                        _ => throw new ArgumentOutOfRangeException(nameof(NoiseControlCycleMode))
-                    };
-
-                    await BluetoothImpl.Instance.SendRequestAsync(
-                        MsgIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS,
-                        value.Item1, value.Item2, value.Item3);
-                }
+                    CycleMode = NoiseControlCycleMode,
+                    CycleModeRight = NoiseControlCycleModeRight
+                });
 
                 break;
             case nameof(LeftAction):
             case nameof(RightAction):
-                var payload = new byte[2];
-                payload[0] = BluetoothImpl.Instance.DeviceSpec.TouchMap.ToByte(LeftAction);
-                payload[1] = BluetoothImpl.Instance.DeviceSpec.TouchMap.ToByte(RightAction);
-                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_TOUCHPAD_OPTION, payload);
+                await BluetoothImpl.Instance.SendAsync(new SetTouchOptionsEncoder
+                {
+                    LeftAction = LeftAction,
+                    RightAction = RightAction
+                });
                 
                 UpdateEditStates();
                 if (LeftAction == TouchOptions.NoiseControl || RightAction == TouchOptions.NoiseControl)

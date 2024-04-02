@@ -5,6 +5,7 @@ using FluentIcons.Common;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
@@ -52,10 +53,11 @@ public class FindMyBudsPageViewModel : MainPageViewModelBase
                 break;
             }
             case nameof(IsLeftMuted) or nameof(IsRightMuted):
-                var payload = new byte[2];
-                payload[0] = Convert.ToByte(IsLeftMuted);
-                payload[1] = Convert.ToByte(IsRightMuted);
-                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.MUTE_EARBUD, payload);
+                await BluetoothImpl.Instance.SendAsync(new FmgMuteEarbudEncoder
+                {
+                    IsLeftMuted = IsLeftMuted,
+                    IsRightMuted = IsRightMuted
+                });
                 break;
         }
     }

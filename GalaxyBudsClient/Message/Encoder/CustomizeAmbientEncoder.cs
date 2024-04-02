@@ -2,21 +2,24 @@ using System.IO;
 
 namespace GalaxyBudsClient.Message.Encoder;
 
-public static class CustomizeAmbientEncoder
+public class CustomizeAmbientEncoder : BaseMessageEncoder
 {
-    public static SppMessage Build(bool enable, byte ambientVolumeLeft, byte ambientVolumeRight, byte ambientTone)
+    public override MsgIds HandledType => MsgIds.CUSTOMIZE_AMBIENT_SOUND;
+    public bool IsEnabled { get; set; }
+    public byte AmbientVolumeLeft { get; set; }
+    public byte AmbientVolumeRight { get; set; }
+    public byte AmbientTone { get; set; }
+    
+    public override SppMessage Encode()
     {
-        var stream = new MemoryStream();
+        using var stream = new MemoryStream();
         var writer = new BinaryWriter(stream);
 
-        writer.Write(enable);
-        writer.Write(ambientVolumeLeft);
-        writer.Write(ambientVolumeRight);
-        writer.Write(ambientTone);
+        writer.Write(IsEnabled);
+        writer.Write(AmbientVolumeLeft);
+        writer.Write(AmbientVolumeRight);
+        writer.Write(AmbientTone);
             
-        var data = stream.ToArray();
-        stream.Close();
-            
-        return new SppMessage(MsgIds.CUSTOMIZE_AMBIENT_SOUND, MsgTypes.Request, data);
+        return new SppMessage(HandledType, MsgTypes.Request, stream.ToArray());
     }
 }

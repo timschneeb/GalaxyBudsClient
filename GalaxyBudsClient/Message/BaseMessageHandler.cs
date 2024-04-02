@@ -6,13 +6,14 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 
-namespace GalaxyBudsClient.Message.Decoder;
+namespace GalaxyBudsClient.Message;
 
-public abstract class BaseMessageParser
+public abstract class BaseMessageHandler
 {
+    public Models TargetModel { set; get; } = BluetoothImpl.ActiveModel;
     public abstract MsgIds HandledType { get; }
+    protected IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(TargetModel) ?? new StubDeviceSpec();
 
-    public abstract void ParseMessage(SppMessage msg);
     public virtual Dictionary<string, string> ToStringMap()
     {
         var map = new Dictionary<string, string>();
@@ -43,13 +44,8 @@ public abstract class BaseMessageParser
 
         return map;
     }
-        
-    protected static bool IsHiddenProperty(PropertyInfo property)
+    protected static bool IsHiddenProperty(MemberInfo property)
     {
-        return property.Name is "HandledType" or "ActiveModel" or "DeviceSpec" or "TargetModel";
+        return property.Name is nameof(HandledType) or nameof(DeviceSpec) or nameof(TargetModel);
     }
-
-    
-    public Models TargetModel { set; get; }
-    protected IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(TargetModel) ?? new StubDeviceSpec();
 }

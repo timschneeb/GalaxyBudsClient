@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
@@ -340,6 +341,11 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
     public async Task SendRequestAsync(MsgIds id, bool payload)
     {
         await SendRequestAsync(id, payload ? [0x01] : [0x00]);
+    }
+    
+    public async Task SendAsync(BaseMessageEncoder encoder)
+    {
+        await SendAsync(encoder.Encode());
     }
         
     public void UnregisterDevice()
