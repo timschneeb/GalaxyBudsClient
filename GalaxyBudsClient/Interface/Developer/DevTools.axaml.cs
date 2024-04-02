@@ -11,6 +11,7 @@ using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.ViewModels.Developer;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
@@ -135,7 +136,11 @@ public partial class DevTools : StyledWindow.StyledWindow
         var file = await this.OpenFilePickerAsync(_filters);
         if (file == null)
             return;
-            
+
+        var model = await new EnumChoiceBox<Models> { Title = "Choose model for dump..." }.OpenDialogAsync(this);
+        if(model == null)
+            return;
+        
         ArrayList data;
         try
         {
@@ -161,7 +166,7 @@ public partial class DevTools : StyledWindow.StyledWindow
             try
             {
                 var raw = data.OfType<byte>().ToArray();
-                msg = SppMessage.DecodeMessage(raw, BluetoothImpl.ActiveModel); // TODO: Implement model select dialog
+                msg = SppMessage.DecodeMessage(raw, model.Value);
                 msgs.Add(msg);
             }
             catch (InvalidPacketException ex)
@@ -169,7 +174,7 @@ public partial class DevTools : StyledWindow.StyledWindow
                 _ = new MessageBox
                 {
                     Title = "Error while decoding message", 
-                    Description = $"{ex.ErrorCode} {ex.Message}"
+                    Description = $"Error code: {ex.ErrorCode}\n\n{ex.Message}"
                 }.ShowAsync(this);
                 break;
             }

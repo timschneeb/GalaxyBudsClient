@@ -33,7 +33,7 @@ public class EnumBindingSource : MarkupExtension
         EnumType = enumType;
     }
     
-    public override object ProvideValue(IServiceProvider serviceProvider)
+    public override object ProvideValue(IServiceProvider? serviceProvider)
     {
         return Enum.GetValues(EnumType!)
             .OfType<Enum>()

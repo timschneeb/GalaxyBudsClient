@@ -83,6 +83,9 @@
         <Compile Update="Interface\Controls\EarbudIcon.cs">
           <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Interface\Dialogs\EnumChoiceBox.cs">
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
     <PropertyGroup>
