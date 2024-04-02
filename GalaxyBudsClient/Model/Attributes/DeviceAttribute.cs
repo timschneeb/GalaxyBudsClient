@@ -16,6 +16,8 @@ public enum Selector
 
 public class DeviceAttribute : Attribute
 {
+    private Selector _selector = Selector.Equal;
+    
     public DeviceAttribute(params Models[] models)
     {
         Models = models;
@@ -24,7 +26,8 @@ public class DeviceAttribute : Attribute
     public DeviceAttribute(Models model, Selector selector = Selector.Equal)
     {
         var devices = ((Models[])Enum.GetValues(typeof(Models))).Where(x => x != Constants.Models.NULL);
-
+        _selector = selector;
+        
         Models = selector switch
         {
             Selector.Equal => [model],
@@ -35,7 +38,15 @@ public class DeviceAttribute : Attribute
         };
     }
 
-    public override string ToString() => string.Join(",", Models);
+    public override string ToString()
+    {
+        return _selector switch
+        {
+            Selector.GreaterEqual => $"{Models.FirstOrDefault()} and above",
+            Selector.LessEqual => $"{Models.LastOrDefault()} and below",
+            _ => string.Join(',', Models)
+        };;
+    }
 
     public readonly IEnumerable<Models> Models;
 }
