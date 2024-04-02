@@ -102,16 +102,16 @@
         <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)"/>
         <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="$(AvaloniaVersion)"/>
         <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)"/>
-        <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.10"/>
+        <PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
         <PackageReference Include="Avalonia.Svg.Skia" Version="11.1.0-beta1"/>
         <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.1.0-beta1"/>
         <PackageReference Include="BouncyCastle.Cryptography" Version="2.3.0"/>
         <PackageReference Include="CommandLineParser" Version="2.9.2-ci-210"/>
-        <PackageReference Include="Config.Net" Version="5.1.5"/>
+        <PackageReference Include="Config.Net" Version="5.2.0" />
         <PackageReference Include="CS-Script.Core" Version="2.0.0"/>
         <PackageReference Include="FluentAvalonia.BreadcrumbBar" Version="2.0.2"/>
         <PackageReference Include="FluentAvaloniaUI" Version="2.1.0-preview1" />
-        <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="1.1.232"/>
+        <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="1.1.233" />
         <PackageReference Include="InputSimulatorCore" Version="1.0.5"/>
         <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0"/>
         <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0"/>
@@ -123,9 +123,10 @@
         <PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0"/>
         <PackageReference Include="Serilog.Sinks.File" Version="5.0.0"/>
         <PackageReference Include="Serilog.Sinks.Trace" Version="3.0.0"/>
-        <PackageReference Include="SharpHook" Version="5.3.1"/>
+        <PackageReference Include="SharpHook" Version="5.3.2" />
         <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0"/>
         <PackageReference Include="Tmds.DBus" Version="0.16.0"/>
+        <PackageReference Include="Visualize.Fody" Version="1.2.0" PrivateAssets="All" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsWindows)'=='true'">
