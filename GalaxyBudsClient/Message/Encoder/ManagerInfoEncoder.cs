@@ -9,8 +9,8 @@ namespace GalaxyBudsClient.Message.Encoder;
 public class ManagerInfoEncoder : BaseMessageEncoder
 {
     public override MsgIds HandledType => MsgIds.MANAGER_INFO;
-    public ClientDeviceTypes Type { get; set; } = ClientDeviceTypes.Samsung;
-    public int AndroidSdkVersion { get; set; } = 34;
+    public ClientDeviceTypes Type { get; init; } = ClientDeviceTypes.Samsung;
+    public int AndroidSdkVersion { get; init; } = 34;
     
     public override SppMessage Encode()
     {

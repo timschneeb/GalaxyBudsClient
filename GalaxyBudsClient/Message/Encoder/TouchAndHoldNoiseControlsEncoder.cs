@@ -7,8 +7,8 @@ namespace GalaxyBudsClient.Message.Encoder;
 public class TouchAndHoldNoiseControls : BaseMessageEncoder
 {
     public override MsgIds HandledType => MsgIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS;
-    public NoiseControlCycleModes CycleMode { get; set; }
-    public NoiseControlCycleModes CycleModeRight { get; set; }
+    public NoiseControlCycleModes CycleMode { get; init; }
+    public NoiseControlCycleModes CycleModeRight { get; init; }
     
     public override SppMessage Encode()
     {

@@ -6,8 +6,8 @@ namespace GalaxyBudsClient.Message.Encoder;
 public class LogTraceDataEncoder : BaseMessageEncoder
 {
     public override MsgIds HandledType => MsgIds.LOG_TRACE_DATA;
-    public int Offset { get; set; }
-    public int Size { get; set; }
+    public int Offset { get; init; }
+    public int Size { get; init; }
     
     public override SppMessage Encode()
     {

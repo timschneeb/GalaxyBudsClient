@@ -5,10 +5,10 @@ namespace GalaxyBudsClient.Message.Encoder;
 public class CustomizeAmbientEncoder : BaseMessageEncoder
 {
     public override MsgIds HandledType => MsgIds.CUSTOMIZE_AMBIENT_SOUND;
-    public bool IsEnabled { get; set; }
-    public byte AmbientVolumeLeft { get; set; }
-    public byte AmbientVolumeRight { get; set; }
-    public byte AmbientTone { get; set; }
+    public bool IsEnabled { get; init; }
+    public byte AmbientVolumeLeft { get; init; }
+    public byte AmbientVolumeRight { get; init; }
+    public byte AmbientTone { get; init; }
     
     public override SppMessage Encode()
     {

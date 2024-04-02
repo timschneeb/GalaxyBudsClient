@@ -1,17 +1,14 @@
 using System;
-using System.Threading.Tasks;
-using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Platform;
 
 namespace GalaxyBudsClient.Message.Encoder;
 
 public class SetEqualizerEncoder : BaseMessageEncoder
 {
     public override MsgIds HandledType => MsgIds.EQUALIZER;
-    public bool IsEnabled { get; set; }
-    public int Preset { get; set; }
-    private bool DolbyMode { get; set; } = false;
+    public bool IsEnabled { get; init; }
+    public int Preset { get; init; }
+    private bool DolbyMode { get; } = false; // Unused
     
     public override SppMessage Encode()
     {

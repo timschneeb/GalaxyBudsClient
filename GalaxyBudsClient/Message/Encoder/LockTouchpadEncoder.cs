@@ -6,13 +6,13 @@ namespace GalaxyBudsClient.Message.Encoder;
 public class LockTouchpadEncoder : BaseMessageEncoder
 {
     public override MsgIds HandledType => MsgIds.LOCK_TOUCHPAD;
-    public bool LockAll { get; set; }
-    public bool TapOn { get; set; }
-    public bool DoubleTapOn { get; set; }
-    public bool TripleTapOn { get; set; }
-    public bool HoldTapOn { get; set; }
-    public bool DoubleTapCallOn { get; set; }
-    public bool HoldTapCallOn { get; set; }
+    public bool LockAll { get; init; }
+    public bool TapOn { get; init; }
+    public bool DoubleTapOn { get; init; }
+    public bool TripleTapOn { get; init; }
+    public bool HoldTapOn { get; init; }
+    public bool DoubleTapCallOn { get; init; }
+    public bool HoldTapCallOn { get; init; }
     
     public override SppMessage Encode()
     {

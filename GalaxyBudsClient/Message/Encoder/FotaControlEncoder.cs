@@ -6,7 +6,7 @@ namespace GalaxyBudsClient.Message.Encoder;
 public class FotaControlEncoder : BaseMessageEncoder
 {
     public override MsgIds HandledType => MsgIds.FOTA_CONTROL;
-    public FirmwareConstants.ControlIds ControlId { get; set; }
+    public FirmwareConstants.ControlIds ControlId { get; init; }
     public short Parameter { get; set; }
     
     public override SppMessage Encode()

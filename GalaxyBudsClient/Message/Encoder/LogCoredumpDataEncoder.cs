@@ -6,8 +6,8 @@ namespace GalaxyBudsClient.Message.Encoder;
 public class LogCoredumpDataEncoder : BaseMessageEncoder
 {
     public override MsgIds HandledType => MsgIds.LOG_COREDUMP_DATA;
-    public int Offset { get; set; }
-    public int Size { get; set; }
+    public int Offset { get; init; }
+    public int Size { get; init; }
     
     public override SppMessage Encode()
     {
