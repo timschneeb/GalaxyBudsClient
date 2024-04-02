@@ -18,6 +18,14 @@ using Sentry;
 
 namespace GalaxyBudsClient;
 
+public static class AsyncErrorHandler
+{
+    public static void HandleException(Exception exception)
+    {
+        Log.Error(exception, "Unhandled exception in async task");
+    }
+}
+
 internal static class Program
 {
     public static long StartedAt = 0;

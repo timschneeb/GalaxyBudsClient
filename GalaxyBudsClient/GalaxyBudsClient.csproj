@@ -32,8 +32,6 @@
         <LangVersion>12</LangVersion>
         <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>
 
-        <IsAotCompatible>true</IsAotCompatible>
-        
         <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
     </PropertyGroup>
 
@@ -96,6 +94,7 @@
         <AvaloniaVersion>11.1.0-beta1</AvaloniaVersion>
     </PropertyGroup>
     <ItemGroup>
+        <PackageReference Include="AsyncErrorHandler.Fody" Version="1.3.0" />
         <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)"/>
         <PackageReference Include="Avalonia.Controls.DataGrid" Version="$(AvaloniaVersion)"/>
         <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)"/>
