@@ -21,14 +21,11 @@ public class SetEqualizerEncoder : BaseMessageEncoder
             if (!DolbyMode)
                 rawPreset += 5;
 
-            payload = new byte[2];
-            payload[0] = Convert.ToByte(IsEnabled);
-            payload[1] = (byte)rawPreset;
+            payload = [Convert.ToByte(IsEnabled), (byte)rawPreset];
         }
         else
         {
-            payload = new byte[1];
-            payload[0] = !IsEnabled ? (byte) 0 : Convert.ToByte(Preset + 1);
+            payload = [!IsEnabled ? (byte) 0 : Convert.ToByte(Preset + 1)];
         }
         
         return new SppMessage(HandledType, MsgTypes.Request, payload);
