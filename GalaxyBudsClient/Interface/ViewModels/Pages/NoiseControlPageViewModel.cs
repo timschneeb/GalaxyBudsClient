@@ -17,6 +17,7 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
 {
     public override Control CreateView() => new NoiseControlPage();
     
+    // TODO: test with Buds2Pro, switches seem buggy
     public NoiseControlPageViewModel()
     {
         SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;

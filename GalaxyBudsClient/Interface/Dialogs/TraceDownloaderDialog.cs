@@ -20,6 +20,8 @@ public class TraceDownloaderDialog : TaskDialog
     private readonly TextBlock _content;
     private readonly TaskDialogButton _closeButton;
 
+    private readonly DeviceLogManager _deviceLogManager = new DeviceLogManager();
+    
     public TraceDownloaderDialog()
     {
         _closeButton = new TaskDialogButton(Loc.Resolve("cancel"), TaskDialogStandardResult.Close);
@@ -39,26 +41,26 @@ public class TraceDownloaderDialog : TaskDialog
             
         SetProgressBarState(0, TaskDialogProgressState.Indeterminate);
 
-        DeviceLogManager.Instance.ProgressUpdated += OnProgressUpdated;
-        DeviceLogManager.Instance.Finished += OnFinished;
+        _deviceLogManager.ProgressUpdated += OnProgressUpdated;
+        _deviceLogManager.Finished += OnFinished;
         BluetoothImpl.Instance.Disconnected += OnDisconnected;
     }
 
     protected override Type StyleKeyOverride => typeof(TaskDialog);
-
+    
     protected override async void OnClosing(TaskDialogClosingEventArgs args)
     {
         BluetoothImpl.Instance.Disconnected -= OnDisconnected;
-        DeviceLogManager.Instance.Finished -= OnFinished;
-        DeviceLogManager.Instance.ProgressUpdated -= OnProgressUpdated;
+        _deviceLogManager.Finished -= OnFinished;
+        _deviceLogManager.ProgressUpdated -= OnProgressUpdated;
         
-        await DeviceLogManager.Instance.CancelDownload();
+        await _deviceLogManager.CancelDownload();
         base.OnClosing(args);
     }
     
     public async Task BeginDownload()
     {
-        await DeviceLogManager.Instance.BeginDownloadAsync();
+        await _deviceLogManager.BeginDownloadAsync();
         await ShowAsync(true);
     }
 

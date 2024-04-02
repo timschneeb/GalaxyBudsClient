@@ -267,27 +267,4 @@ public class DeviceLogManager
         }
         return -1;
     }
-
-    #region Singleton
-    private static readonly object Padlock = new();
-    private static DeviceLogManager? _instance;
-    public static DeviceLogManager Instance
-    {
-        get
-        {
-            lock (Padlock)
-            {
-                return _instance ??= new DeviceLogManager();
-            }
-        }
-    }
-
-    public static void Init()
-    {
-        lock (Padlock)
-        { 
-            _instance ??= new DeviceLogManager();
-        }
-    }
-    #endregion
 }
