@@ -4,6 +4,7 @@ using FluentIcons.Common;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
@@ -24,7 +25,12 @@ public class EqualizerPageViewModel : MainPageViewModelBase
         switch (args.PropertyName)
         {
             case nameof(IsEqEnabled) or nameof(EqPreset):
-                await MessageComposer.SetEqualizer(IsEqEnabled, (EqPresets)EqPreset, false);
+                await BluetoothImpl.Instance.SendAsync(new SetEqualizerEncoder
+                {
+                    IsEnabled = IsEqEnabled,
+                    Preset = EqPreset
+                });
+                EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
                 break;
             case nameof(StereoBalance):
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_HEARING_ENHANCEMENTS, (byte)StereoBalance);

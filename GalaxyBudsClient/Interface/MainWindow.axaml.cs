@@ -14,6 +14,7 @@ using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.StyledWindow;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
@@ -268,7 +269,7 @@ public partial class MainWindow : StyledAppWindow
         }
             
         // Reply manager info and request & cache SKU info
-        _ = MessageComposer.SetManagerInfo();
+        _ = BluetoothImpl.Instance.SendAsync(new ManagerInfoEncoder());
         if(BluetoothImpl.Instance.DeviceSpec.Supports(Features.DebugSku))
             _ = BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_SKU);
     }
