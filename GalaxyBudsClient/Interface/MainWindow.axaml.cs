@@ -31,8 +31,8 @@ namespace GalaxyBudsClient.Interface;
 public partial class MainWindow : StyledAppWindow
 {
     private BudsPopup? _popup;
-
-    private bool _popupShown = false;
+    private bool _popupShown;
+    
     private bool _firstShow = true;
     private LegacyWearStates _lastWearState = LegacyWearStates.Both;
 
@@ -382,28 +382,14 @@ public partial class MainWindow : StyledAppWindow
     {
         if (_popupShown && !noDebounce)
             return;
-            
-        _popup ??= new BudsPopup();
-                
-        if (_popup.IsVisible)
+        
+        if (_popup is { IsVisible: true })
         {
             _popup.UpdateSettings();
             _popup.RearmTimer();
         }
-
-        try
-        {
-            _popup.Show();
-        }
-        catch (InvalidOperationException)
-        {
-            /* Window already closed down */
-            _popup = new BudsPopup();
-            _popup.Show();
-        }
-        finally
-        {
-            _popupShown = true;
-        }
+        
+        WindowLauncher.ShowAsSingleInstance(ref _popup); 
+        _popupShown = true;
     }
 }

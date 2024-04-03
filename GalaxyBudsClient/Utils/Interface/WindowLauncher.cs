@@ -12,7 +12,7 @@ public static class WindowLauncher
     public static void ShowDevTools(Window? parent = null) => ShowAsSingleInstance(ref _devTools, parent);
     public static void ShowTranslatorTools(Window? parent = null) => ShowAsSingleInstance(ref _translatorTools, parent);
         
-    private static void ShowAsSingleInstance<T>(ref T? target, Window? parent = null) where T : Window, new()
+    public static void ShowAsSingleInstance<T>(ref T? target, Window? parent = null) where T : Window, new()
     {
         target ??= new T();
         try
