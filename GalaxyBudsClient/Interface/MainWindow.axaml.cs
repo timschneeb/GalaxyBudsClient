@@ -37,7 +37,6 @@ public partial class MainWindow : StyledAppWindow
     private LegacyWearStates _lastWearState = LegacyWearStates.Both;
 
     private static App App => Application.Current as App ?? throw new InvalidOperationException();
-    public bool OverrideMinimizeTray { set; get; }
         
     private static MainWindow? _instance;
     public static MainWindow Instance => _instance ??= new MainWindow();
@@ -72,11 +71,7 @@ public partial class MainWindow : StyledAppWindow
                 WindowState = WindowState.Minimized;
             }
         }
-            
-        // TitleBar.ExtendsContentIntoTitleBar = true;
-        // TitleBar.TitleBarHitTestType = TitleBarHitTestType.Complex;
     }
-    
 
     private void OnLanguageUpdated()
     {
@@ -111,7 +106,7 @@ public partial class MainWindow : StyledAppWindow
     #region Window management
     protected override async void OnClosing(WindowClosingEventArgs e)
     {
-        if (Settings.Instance.MinimizeToTray && !OverrideMinimizeTray && PlatformUtils.SupportsTrayIcon)
+        if (Settings.Instance.MinimizeToTray && PlatformUtils.SupportsTrayIcon)
         {
             // check if the cause of the termination is due to shutdown or application close request
             if (e.CloseReason is not (WindowCloseReason.OSShutdown or WindowCloseReason.ApplicationShutdown))

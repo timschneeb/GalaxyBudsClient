@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Threading;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Message;
@@ -107,8 +109,10 @@ internal class TrayManager
                 break;
             case TrayItemTypes.Quit:
                 Log.Information("TrayManager: Exit requested by user");
-                MainWindow.Instance.OverrideMinimizeTray = true;
-                Dispatcher.UIThread.Post(MainWindow.Instance.Close);
+                if(Application.Current?.ApplicationLifetime is IControlledApplicationLifetime lifetime)
+                    lifetime.Shutdown();
+                else
+                    Environment.Exit(0);
                 break;
         }
             
