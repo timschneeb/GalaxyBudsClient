@@ -353,6 +353,7 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
         Settings.Instance.RegisteredDevice.Model = Models.NULL;
         Settings.Instance.RegisteredDevice.MacAddress = string.Empty;
         Settings.Instance.RegisteredDevice.Name = string.Empty;
+        Settings.Instance.RegisteredDevice.DeviceColor = null;
         DeviceMessageCache.Instance.Clear();
         // don't wait for this to complete as it may confuse users if the menu option waits until connect timed out
         _ = DisconnectAsync();

@@ -87,6 +87,7 @@ public class SppMessageHandler
                 CradleSerialNumberResponse?.Invoke(this, (parser as CradleSerialNumberParser)!);
                 break;
             case MsgIds.EXTENDED_STATUS_UPDATED:
+                Settings.Instance.RegisteredDevice.DeviceColor = (parser as ExtendedStatusUpdateParser)?.DeviceColor;
                 BaseUpdate?.Invoke(this, (parser as IBasicStatusUpdate)!);
                 ExtendedStatusUpdate?.Invoke(this, (parser as ExtendedStatusUpdateParser)!);
                 break;

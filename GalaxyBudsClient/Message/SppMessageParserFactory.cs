@@ -3,7 +3,6 @@ using System.Linq;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;
 using Sentry;

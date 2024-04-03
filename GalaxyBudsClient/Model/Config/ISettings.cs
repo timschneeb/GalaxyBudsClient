@@ -22,8 +22,7 @@ public interface IDevice : INotifyPropertyChanged
     string MacAddress { set; get; }
     [Option(DefaultValue = "")]
     string Name { set; get; }
-    
-    // TODO store device color
+    Colors? DeviceColor { set; get; }
 }
     
 public interface IPopup : INotifyPropertyChanged

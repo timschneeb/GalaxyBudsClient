@@ -69,11 +69,12 @@ public class EarbudIcon : Image
 
     private void UpdateEarbudIcons()
     {
-        var extCache = DeviceMessageCache.Instance.ExtendedStatusUpdate;
-        if (Settings.Instance.RealisticEarbudImages && extCache != null &&
+        var color = DeviceMessageCache.Instance.ExtendedStatusUpdate?.DeviceColor 
+                    ?? Settings.Instance.RegisteredDevice.DeviceColor;
+        if (Settings.Instance.RealisticEarbudImages && color != null &&
             BluetoothImpl.Instance.DeviceSpec.Supports(Features.DeviceColor))
         {
-            Uri GetUri(int variant) => new($"{Program.AvaresUrl}/Resources/Device/Realistic/{extCache.DeviceColor}-{variant}.png");
+            Uri GetUri(int variant) => new($"{Program.AvaresUrl}/Resources/Device/Realistic/{color}-{variant}.png");
 
             try
             {
