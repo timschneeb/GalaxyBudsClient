@@ -22,6 +22,8 @@ public interface IDevice : INotifyPropertyChanged
     string MacAddress { set; get; }
     [Option(DefaultValue = "")]
     string Name { set; get; }
+    
+    // TODO store device color
 }
     
 public interface IPopup : INotifyPropertyChanged
@@ -45,16 +47,13 @@ public interface IExperiments : INotifyPropertyChanged
     
 public interface ISettings : INotifyPropertyChanged
 {
-    [Option(DefaultValue = Themes.DarkBlur)]
-    Themes Theme { set; get; }
+    Themes? Theme { set; get; }
     [Option(DefaultValue = 144)]
     int BlurStrength { set; get; }
     Color AccentColor { set; get; }
     [Option(DefaultValue = Locales.en)]
-        
     Locales Locale { set; get; }
     [Option(DefaultValue = TemperatureUnits.Celsius)]
-        
     TemperatureUnits TemperatureUnit { set; get; }
     IDevice RegisteredDevice { set; get; }
         

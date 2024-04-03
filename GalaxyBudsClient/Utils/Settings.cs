@@ -26,6 +26,9 @@ public static class Settings
             .Build();
             
         Instance.PropertyChanged += OnMainSettingsChanged;
+
+        // Load default theme based on platform
+        Instance.Theme ??= PlatformUtils.IsWindows ? Themes.DarkMica : Themes.DarkBlur;
     }
 
     private static void OnMainSettingsChanged(object? sender, PropertyChangedEventArgs e)
