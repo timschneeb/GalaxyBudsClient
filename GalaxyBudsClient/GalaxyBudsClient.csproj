@@ -1,9 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
-        <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
-        <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
-    </PropertyGroup>
+    <Import Project="Platform.props" />
+    
+    <!-- Framework & platform-dependent properties -->
     <PropertyGroup Condition="'$(IsWindows)'=='true'">
         <TargetFramework>net8.0-windows10.0.19041</TargetFramework>
         <OutputType>WinExe</OutputType>
@@ -11,6 +9,11 @@
     <PropertyGroup Condition="'$(IsOSX)'=='true'">
         <TargetFramework>net8.0-macos</TargetFramework>
         <OutputType>Exe</OutputType>
+
+        <RuntimeIdentifiers>osx-x64;osx-arm64</RuntimeIdentifiers>
+        <_XSAppIconAssets>Assets.xcassets/AppIcon.appiconset</_XSAppIconAssets>
+        <AssemblyName>Galaxy Buds Manager</AssemblyName>
+        <SupportedOSPlatformVersion>12.0</SupportedOSPlatformVersion>
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <TargetFramework>net8.0</TargetFramework>
@@ -18,46 +21,33 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+        <!-- App properties -->
         <AssemblyVersion>4.6.0.0</AssemblyVersion>
         <Version>4.6.0.0</Version>
+        <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>
+        <ApplicationVersion>$(Version)</ApplicationVersion>
+        
+        <!-- Build properties -->
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <DisableWinExeOutputInference>false</DisableWinExeOutputInference>
+        <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+        <LangVersion>latest</LangVersion>
+        
+        <!-- Build configurations -->
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU</Platforms>
-        <DisableWinExeOutputInference>false</DisableWinExeOutputInference>
-        <ApplicationManifest>app.manifest</ApplicationManifest>
-        <LangVersion>12</LangVersion>
-        <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>
-
-        <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(IsWindows)'=='true'">
-        <DefineConstants>Windows</DefineConstants>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(IsOSX)'=='true'">
-        <DefineConstants>OSX</DefineConstants>
-        <RuntimeIdentifiers>osx-x64;osx-arm64</RuntimeIdentifiers>
-        <_XSAppIconAssets>Assets.xcassets/AppIcon.appiconset</_XSAppIconAssets>
-        <ApplicationVersion>$(Version)</ApplicationVersion>
-        <AssemblyName>Galaxy Buds Manager</AssemblyName>
-        <SupportedOSPlatformVersion>12.0</SupportedOSPlatformVersion>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(IsLinux)'=='true'">
-        <DefineConstants>Linux</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-        <WarningLevel>4</WarningLevel>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-        <DebugSymbols>true</DebugSymbols>
-        <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+    
+    <!-- Resources -->
     <ItemGroup>
         <AvaloniaResource Include="Resources\**"/>
         <AvaloniaResource Include="i18n\*"/>
@@ -72,22 +62,9 @@
         <AvaloniaXaml Remove="bin\**"/>
         <EmbeddedResource Remove="bin\**"/>
         <None Remove="bin\**"/>
-        <Compile Update="Interface\Windows\MainWindow.axaml.cs">
-          <DependentUpon>MainWindow.axaml</DependentUpon>
-          <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Controls\EarbudCompactStatusUnit.axaml.cs">
-          <DependentUpon>EarbudCompactStatusUnit.axaml</DependentUpon>
-          <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Controls\EarbudIcon.cs">
-          <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Dialogs\EnumChoiceBox.cs">
-          <SubType>Code</SubType>
-        </Compile>
     </ItemGroup>
-
+    
+    <!-- Dependencies -->
     <PropertyGroup>
         <!-- https://github.com/AvaloniaUI/Avalonia/commit/76caeedfd2baf1911f889011189d1c21657d2987,
             last release at time of writing is 11.0.9, so anything newer should include a fix -->
@@ -129,6 +106,7 @@
         <PackageReference Include="Visualize.Fody" Version="1.2.0" PrivateAssets="All" />
     </ItemGroup>
 
+    <!-- Project references -->
     <ItemGroup Condition="'$(IsWindows)'=='true'">
         <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.WindowsRT\GalaxyBudsClient.Bluetooth.WindowsRT.csproj"/>
         <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Windows\GalaxyBudsClient.Bluetooth.Windows.csproj"/>
@@ -146,9 +124,5 @@
 
     <ItemGroup>
         <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="Cli\"/>
     </ItemGroup>
 </Project>
