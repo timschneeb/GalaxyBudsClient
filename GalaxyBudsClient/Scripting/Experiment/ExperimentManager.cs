@@ -62,9 +62,6 @@ public class ExperimentManager
             {
                 _activeExperimentHook = (IExperimentBase)CSScript.Evaluator.LoadCode(e.Script);
                 _activeExperimentHook.Finished += ReportResult;
-                    
-                Log.Debug("ExperimentRuntime: Experiment #{Id} hooked", e.Id);
-                    
                 ScriptManager.Instance.RegisterHook(_activeExperimentHook);
             }
             catch(CompilerException ex)
@@ -127,7 +124,6 @@ public class ExperimentManager
             {
                 _activeExperimentHook.Finished -= ReportResult;
                 ScriptManager.Instance.UnregisterHook(_activeExperimentHook);
-                Log.Debug("ExperimentRuntime: Experiment unhooked");
             }
             else
             {
