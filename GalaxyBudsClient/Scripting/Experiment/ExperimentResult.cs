@@ -24,7 +24,7 @@ public class ExperimentResult
     public Models Device => BluetoothImpl.ActiveModel;
     public int Revision => DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision ?? 0;
     public string FirmwareVersion => DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "Unknown";
-    public string? MacAddress => BitConverter.ToString(SHA256.HashData(Encoding.ASCII.GetBytes(DeviceMessageCache.Instance.DebugGetAllData?.LeftBluetoothAddress ?? ""))).Replace("-", "");
+    public string? MacAddress => BitConverter.ToString(SHA1.HashData(Encoding.ASCII.GetBytes(DeviceMessageCache.Instance.DebugGetAllData?.LeftBluetoothAddress ?? ""))).Replace("-", "");
     public string? AppVersion => Assembly.GetEntryAssembly()?.GetName().Version?.ToString();
     public string? CountryCode => RegionInfo.CurrentRegion.TwoLetterISORegionName;
     public PlatformUtils.Platforms Platform => PlatformUtils.Platform;
