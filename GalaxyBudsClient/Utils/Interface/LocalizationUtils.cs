@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Windows.Input;
 using System.Xml;
 using Avalonia;
 using Avalonia.Controls;
@@ -21,14 +22,12 @@ namespace GalaxyBudsClient.Utils.Interface
             public static Action</* Title */string,/* Content */string>? ErrorDetected { set; get; }
             
             public static event Action? LanguageUpdated;
-            public static string GetTranslatorModeFile()
-            {
-                return PlatformUtils.CombineDataPath("custom_language.xaml");
-            }
+            public static string TranslatorModeFile => PlatformUtils.CombineDataPath("custom_language.xaml");
+            public static ICommand ReloadCommand { get; } = new MiniCommand((_) => Load());
 
             public static bool IsTranslatorModeEnabled()
             {
-                return File.Exists(GetTranslatorModeFile());
+                return File.Exists(TranslatorModeFile);
             }
 
             public static string Resolve(string resName)
@@ -61,7 +60,7 @@ namespace GalaxyBudsClient.Utils.Interface
                 switch (Settings.Instance.Locale)
                 {
                     case Locales.custom when IsTranslatorModeEnabled():
-                        SetLanguageResourceDictionary(GetTranslatorModeFile(), true);
+                        SetLanguageResourceDictionary(TranslatorModeFile, true);
                         NotifyObservers();
                         return;
                     case Locales.custom when !IsTranslatorModeEnabled():

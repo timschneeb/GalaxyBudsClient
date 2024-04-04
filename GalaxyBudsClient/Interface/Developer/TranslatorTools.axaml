@@ -2,24 +2,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:developer="clr-namespace:GalaxyBudsClient.Interface.Developer"
         xmlns:model="clr-namespace:GalaxyBudsClient.Model.Constants"
         xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+        xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
+        xmlns:dynamicLocalization="clr-namespace:GalaxyBudsClient.Utils.Interface.DynamicLocalization"
+        xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
         mc:Ignorable="d" d:DesignWidth="463" d:DesignHeight="380"
         x:Class="GalaxyBudsClient.Interface.Developer.TranslatorTools"
-        x:DataType="developer:TranslatorTools"
         Height="390" Width="460" MaxWidth="460"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/icon.ico"
         Title="Galaxy Buds Manager - Translator Tools">
 
-    <Design.DataContext>
-        <developer:TranslatorTools />
-    </Design.DataContext>
-
     <StackPanel Margin="10" Spacing="8">
         <HeaderedContentControl Classes="GroupBox"
                                 Header="Reload XAML dictionary">
+            
             <Grid RowDefinitions="Auto,5,Auto">
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
@@ -27,21 +25,25 @@
                         <ColumnDefinition Width="Auto" MinWidth="100" />
                         <ColumnDefinition Width="Auto" MinWidth="80" />
                     </Grid.ColumnDefinitions>
+                    
                     <TextBox Grid.Column="0"
-                             Name="XamlPath"
                              IsReadOnly="True"
+                             Text="{Binding ., Source={x:Static dynamicLocalization:Loc.TranslatorModeFile}}"
                              Margin="0,0,5,0" />
+                    
                     <ComboBox Grid.Column="1" Name="Locales"
                               HorizontalAlignment="Stretch"
+                              SelectedItem="{Binding Locale, Source={x:Static utils:Settings.Instance}}"
                               ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type model:Locales}}}"
                               Margin="0,0,5,0" />
+                    
                     <Button Grid.Column="2"
-                            Name="ReloadXaml"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
                             Content="Reload"
-                            Click="ReloadXaml_OnClick" />
+                            Command="{Binding ., Source={x:Static dynamicLocalization:Loc.ReloadCommand}}" />
                 </Grid>
+                
                 <TextBlock Grid.Row="2" TextWrapping="Wrap">
                     Hot-reloads all strings. Don't forget to save before reloading.
                 </TextBlock>
@@ -51,15 +53,14 @@
         <HeaderedContentControl Classes="GroupBox"
                                 Header="Flags">
             <StackPanel Spacing="5">
-                <CheckBox Name="DummyDevices"
-                          Content="Show dummy devices (Device selection page)"
-                          IsCheckedChanged="DummyDevices_OnChecked" />
-                <CheckBox Name="IgnoreConnLoss"
-                          Content="Ignore connection loss"
-                          IsCheckedChanged="IgnoreConnLoss_OnChecked" />
-                <CheckBox Name="GrantAllFeatures"
-                          Content="Enable all device feature flags by force"
-                          IsCheckedChanged="EnableAllFeatures_OnChanged" />
+                
+                <CheckBox Content="Show dummy devices (Device selection page)"
+                          IsChecked="{Binding ShowDummyDevices, Source={x:Static platform:BluetoothImpl.Instance}}" />
+                <CheckBox Content="Ignore connection loss"
+                          IsChecked="{Binding SuppressDisconnectionEvents, Source={x:Static platform:BluetoothImpl.Instance}}" />
+                <CheckBox Content="Enable all device feature flags by force" 
+                          IsCheckedChanged="OnGrantAllFeaturesChecked" />
+                
                 <TextBlock TextWrapping="Wrap">
                     Some flags may cause crashes and inconsistent behavior.
                 </TextBlock>

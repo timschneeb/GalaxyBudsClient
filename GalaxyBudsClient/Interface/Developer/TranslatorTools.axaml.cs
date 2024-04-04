@@ -1,3 +1,4 @@
+using System;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
@@ -18,55 +19,40 @@ public partial class TranslatorTools : StyledWindow.StyledWindow
     public TranslatorTools()
     {
         InitializeComponent();
-            
-        Locales.SelectedItem = Settings.Instance.Locale;
-        XamlPath.Text = Loc.GetTranslatorModeFile();
-        IgnoreConnLoss.IsChecked = BluetoothImpl.Instance.SuppressDisconnectionEvents;
-        DummyDevices.IsChecked = BluetoothImpl.Instance.ShowDummyDevices;
+        Loc.ErrorDetected += OnErrorDetected;
+    }
 
-        Loc.ErrorDetected += (title, content) =>
+    protected override void OnClosed(EventArgs e)
+    {
+        Loc.ErrorDetected -= OnErrorDetected;
+        base.OnClosed(e);
+    }
+
+    private void OnErrorDetected(string title, string content)
+    {
+        var td = new TaskDialog
         {
-            var td = new TaskDialog
+            Header = title,
+            Buttons = { TaskDialogButton.CloseButton },
+            IconSource = new SymbolIconSource { Symbol = Symbol.Warning },
+            Content = new TextBlock
             {
-                Header = title,
-                Buttons = { TaskDialogButton.CloseButton },
-                IconSource = new SymbolIconSource { Symbol = Symbol.Warning },
-                Content = new TextBlock
-                {
-                    TextWrapping = TextWrapping.Wrap,
-                    Text = content,
-                    MaxWidth = 450
-                },
-                XamlRoot = this
-            };
-
-            _ = td.ShowAsync();
+                TextWrapping = TextWrapping.Wrap,
+                Text = content,
+                MaxWidth = 450
+            },
+            XamlRoot = this
         };
+
+        _ = td.ShowAsync();
     }
 
-    private void ReloadXaml_OnClick(object? sender, RoutedEventArgs e)
+    private void OnGrantAllFeaturesChecked(object? sender, RoutedEventArgs e)
     {
-        if (Locales.SelectedItem is Locales locale)
-        {
-            Settings.Instance.Locale = locale;
-        }
-
-        Loc.Load();
-    }
-
-    private void IgnoreConnLoss_OnChecked(object? sender, RoutedEventArgs e)
-    {
-        BluetoothImpl.Instance.SuppressDisconnectionEvents = IgnoreConnLoss.IsChecked ?? false;
-    }
-
-    private void DummyDevices_OnChecked(object? sender, RoutedEventArgs e)
-    {
-        BluetoothImpl.Instance.ShowDummyDevices = DummyDevices.IsChecked ?? false;
-    }
-
-    private void EnableAllFeatures_OnChanged(object? sender, RoutedEventArgs e)
-    {
-        GrantAllFeaturesForTesting = GrantAllFeatures.IsChecked ?? false;
+        if(sender is not CheckBox control)
+            return;
+        
+        GrantAllFeaturesForTesting = control.IsChecked ?? false;
         
         // Trigger RequiresFeatureBehavior update
         Settings.Instance.RegisteredDevice.Model = Settings.Instance.RegisteredDevice.Model;

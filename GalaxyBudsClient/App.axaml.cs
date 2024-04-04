@@ -72,7 +72,7 @@ public class App : Application
         
         Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
         
-        Log.Information("Translator mode file location: {File}", Loc.GetTranslatorModeFile());
+        Log.Information("Translator mode file location: {File}", Loc.TranslatorModeFile);
     }
 
     public override void OnFrameworkInitializationCompleted()
