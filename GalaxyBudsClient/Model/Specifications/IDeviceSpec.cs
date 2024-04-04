@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using GalaxyBudsClient.Interface.Developer;
 using GalaxyBudsClient.Message;
-using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications.Touch;
 using Serilog;

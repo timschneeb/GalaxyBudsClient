@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
 using Serilog;
 

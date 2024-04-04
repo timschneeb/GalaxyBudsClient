@@ -1,8 +1,4 @@
-using System;
-using System.Threading.Tasks;
-using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Platform;
 
 namespace GalaxyBudsClient.Message.Encoder;
 
