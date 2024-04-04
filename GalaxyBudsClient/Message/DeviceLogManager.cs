@@ -46,8 +46,8 @@ public class DeviceLogManager
     private string _startTimestamp = string.Empty;
         
     private readonly Dictionary<int, int> _offsetList = new();
-    private LogTraceStartParser? _traceContext;
-    private LogCoredumpDataSizeParser? _coredumpContext;
+    private LogTraceStartDecoder? _traceContext;
+    private LogCoredumpDataSizeDecoder? _coredumpContext;
         
     private readonly List<string> _coreDumpPaths = [];
     private readonly List<string> _traceDumpPaths = [];
@@ -112,7 +112,7 @@ public class DeviceLogManager
                 
             #region TRACE
             case MsgIds.LOG_TRACE_START:
-                _traceContext = e.BuildParser() as LogTraceStartParser;
+                _traceContext = e.CreateDecoder() as LogTraceStartDecoder;
 
                 _traceBuffer = new byte[_traceContext!.DataSize];
                 MakeOffsetList(_traceContext.FragmentCount, _traceContext.PartialDataMaxSize);
@@ -124,7 +124,7 @@ public class DeviceLogManager
                 });
                 break;
             case MsgIds.LOG_TRACE_DATA:
-                var data = e.BuildParser() as LogTraceDataParser;
+                var data = e.CreateDecoder() as LogTraceDataDecoder;
                 UpdateOffsetList(data!.PartialDataOffset);
                     
                 Array.Copy(data.RawData, 0, _traceBuffer!, data.PartialDataOffset, data.PartialDataSize);
@@ -180,7 +180,7 @@ public class DeviceLogManager
 
             #region COREDUMP
             case MsgIds.LOG_COREDUMP_DATA_SIZE:
-                _coredumpContext = e.BuildParser() as LogCoredumpDataSizeParser;
+                _coredumpContext = e.CreateDecoder() as LogCoredumpDataSizeDecoder;
                 MakeOffsetList(_coredumpContext!.FragmentCount, _coredumpContext.PartialDataMaxSize);
 
                 if (_coredumpContext.DataSize > 0)
@@ -203,7 +203,7 @@ public class DeviceLogManager
                 }
                 break;
             case MsgIds.LOG_COREDUMP_DATA:
-                var coredumpData = e.BuildParser() as LogCoredumpDataParser;
+                var coredumpData = e.CreateDecoder() as LogCoredumpDataDecoder;
                 UpdateOffsetList(coredumpData!.PartialDataOffset);
                     
                 Array.Copy(coredumpData.RawData, 0, _coredumpBuffer!, coredumpData.PartialDataOffset, coredumpData.PartialDataSize);

@@ -101,7 +101,7 @@ public class FirmwareTransferManager
         SppMessageReceiver.Instance.AnyMessageDecoded += OnMessageDecoded;
     }
 
-    private async void OnMessageDecoded(object? sender, BaseMessageParser? e)
+    private async void OnMessageDecoded(object? sender, BaseMessageDecoder? e)
     {
         if (_binary == null)
         {
@@ -110,7 +110,7 @@ public class FirmwareTransferManager
             
         switch (e)
         {
-            case FotaSessionParser session:
+            case FotaSessionDecoder session:
             {
                 Log.Debug("FirmwareTransferManager.OnMessageReceived: Session result is {Code}", session.ResultCode);
                 
@@ -127,7 +127,7 @@ public class FirmwareTransferManager
 
                 break;
             }
-            case FotaControlParser control:
+            case FotaControlDecoder control:
                 Log.Debug("FirmwareTransferManager.OnMessageReceived: Control block has CID: {Id}", control.ControlId);
                 switch (control.ControlId)
                 {
@@ -156,7 +156,7 @@ public class FirmwareTransferManager
                         break;
                 }
                 break;
-            case FotaDownloadDataParser download:
+            case FotaDownloadDataDecoder download:
                 State = States.Uploading;
 
                 var segment = _binary.GetSegmentById(_currentSegment);
@@ -178,7 +178,7 @@ public class FirmwareTransferManager
                     await BluetoothImpl.Instance.SendAsync(downloadEncoder);
                 }
                 break;
-            case FotaUpdateParser update:
+            case FotaUpdateDecoder update:
                 switch (update.UpdateId)
                 {
                     case FirmwareConstants.UpdateIds.Percent:
@@ -212,7 +212,7 @@ public class FirmwareTransferManager
                         break;
                 }
                 break;
-            case FotaResultParser result:
+            case FotaResultDecoder result:
                 await BluetoothImpl.Instance.SendResponseAsync(MsgIds.FOTA_RESULT, 1);
                 Log.Debug("FirmwareTransferManager.OnMessageReceived: Finished. Result: {Result}, error code: {Code}", 
                     result.Result, result.ErrorCode);

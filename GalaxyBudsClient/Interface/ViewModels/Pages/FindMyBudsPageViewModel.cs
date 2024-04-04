@@ -90,7 +90,7 @@ public class FindMyBudsPageViewModel : MainPageViewModelBase
         };
     }
 
-    private void OnFindMyGearMuteUpdated(object? sender, MuteUpdateParser e)
+    private void OnFindMyGearMuteUpdated(object? sender, MuteUpdateDecoder e)
     {
         IsLeftMuted = e.LeftMuted;
         IsRightMuted = e.RightMuted;

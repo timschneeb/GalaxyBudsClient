@@ -3,8 +3,8 @@ using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Tests;
 
-[TestFixture, Description("Test ExtendedStatusUpdate parsers"), TestOf(typeof(ExtendedStatusUpdateParser))]
-public class ExtendedStatusUpdateTests : MessageTests<ExtendedStatusUpdateParser>
+[TestFixture, Description("Test ExtendedStatusUpdate parsers"), TestOf(typeof(ExtendedStatusUpdateDecoder))]
+public class ExtendedStatusUpdateTests : MessageTests<ExtendedStatusUpdateDecoder>
 {
     protected override string TestDataGroup => "ExtendedStatusUpdate";
     
@@ -13,7 +13,7 @@ public class ExtendedStatusUpdateTests : MessageTests<ExtendedStatusUpdateParser
 
     private static object[] _testCases =
     [
-        new TestCase { Revision = 10, Model = Models.BudsPro, ExpectedResult = new ExtendedStatusUpdateParser
+        new TestCase { Revision = 10, Model = Models.BudsPro, ExpectedResult = new ExtendedStatusUpdateDecoder
         {
             TargetModel = Models.BudsPro,
 
@@ -63,7 +63,7 @@ public class ExtendedStatusUpdateTests : MessageTests<ExtendedStatusUpdateParser
             AmbientCustomSoundTone = 2,
             CallPathControl = true
         }},
-        new TestCase { Revision = 13, Model = Models.Buds2Pro, ExpectedResult = new ExtendedStatusUpdateParser
+        new TestCase { Revision = 13, Model = Models.Buds2Pro, ExpectedResult = new ExtendedStatusUpdateDecoder
         {
             TargetModel = Models.Buds2Pro,
 

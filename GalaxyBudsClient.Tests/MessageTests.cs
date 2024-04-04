@@ -7,7 +7,7 @@ using GalaxyBudsClient.Model.Constants;
 namespace GalaxyBudsClient.Tests;
 
 [TestFixture]
-public abstract class MessageTests<T> where T : BaseMessageParser
+public abstract class MessageTests<T> where T : BaseMessageDecoder
 {
     protected abstract string TestDataGroup { get; }
     
@@ -21,10 +21,10 @@ public abstract class MessageTests<T> where T : BaseMessageParser
     protected void DecodeAndVerify(TestCase input)
     {
         var data = GetTestData(input.Model, input.Revision);
-        var message = SppMessage.DecodeMessage(data, input.Model);
+        var message = SppMessage.Decode(data, input.Model);
         
-        var parser = (message.BuildParser() as T)!;
-        parser.ParseMessage(message);
+        var parser = (message.CreateDecoder() as T)!;
+        parser.Decode(message);
         
         parser.Should().BeEquivalentTo(input.ExpectedResult);
     }

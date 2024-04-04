@@ -71,7 +71,7 @@ public class EarbudStatusUnitViewModel : ViewModelBase
         IsRightOnline = connected && e.BatteryR > 0 && e.PlacementR != PlacementStates.Disconnected;
     }
         
-    private void OnGetAllDataResponse(object? sender, DebugGetAllDataParser e)
+    private void OnGetAllDataResponse(object? sender, DebugGetAllDataDecoder e)
     {
         // Buds2 Pro seem to send 0 for all values sometimes. Ignore those updates.
         if(e is { LeftThermistor: <= 0, RightThermistor: <= 0 })

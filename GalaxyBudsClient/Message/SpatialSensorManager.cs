@@ -21,11 +21,11 @@ public class SpatialSensorManager : IDisposable
         SppMessageReceiver.Instance.AnyMessageDecoded += OnMessageDecoded;
     }
 
-    private void OnMessageDecoded(object? sender, BaseMessageParser? e)
+    private void OnMessageDecoded(object? sender, BaseMessageDecoder? e)
     {
         switch (e)
         {
-            case SpatialAudioControlParser control:
+            case SpatialAudioControlDecoder control:
                 switch (control.ResultCode)
                 {
                     case SpatialAudioControl.AttachSuccess:
@@ -37,7 +37,7 @@ public class SpatialSensorManager : IDisposable
                 }
 
                 break;
-            case SpatialAudioDataParser data:
+            case SpatialAudioDataDecoder data:
                 switch (data.EventId)
                 {
                     case SpatialAudioData.BudGrv:

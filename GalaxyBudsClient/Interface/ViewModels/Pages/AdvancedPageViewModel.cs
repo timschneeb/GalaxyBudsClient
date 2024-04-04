@@ -19,7 +19,7 @@ public class AdvancedPageViewModel : MainPageViewModelBase
         PropertyChanged += OnPropertyChanged;
     }
 
-    private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
+    private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateDecoder e)
     {
         using var suppressor = SuppressChangeNotifications();
         IsSidetoneEnabled = e.SideToneEnabled;

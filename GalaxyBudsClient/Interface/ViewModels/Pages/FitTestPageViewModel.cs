@@ -58,7 +58,7 @@ public class FitTestPageViewModel : SubPageViewModelBase
         WarningText = e.WearState != LegacyWearStates.Both ? Loc.Resolve("gft_warning") : null;
     }
    
-    private void OnFitTestResultReceived(object? sender, FitTestParser result)
+    private void OnFitTestResultReceived(object? sender, FitTestDecoder result)
     {
         _ = BluetoothImpl.Instance.SendRequestAsync(MsgIds.CHECK_THE_FIT_OF_EARBUDS, 0);
 

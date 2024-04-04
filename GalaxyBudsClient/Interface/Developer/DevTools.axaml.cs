@@ -48,7 +48,7 @@ public partial class DevTools : StyledWindow.StyledWindow
                 _cache.AddRange(raw);
                 HexDump.Text = HexUtils.Dump(_cache.ToArray());
 
-                var holder = new MessageViewHolder(SppMessage.DecodeMessage(raw, BluetoothImpl.ActiveModel));
+                var holder = new MessageViewHolder(SppMessage.Decode(raw, BluetoothImpl.ActiveModel));
                 _vm.MsgTableDataSource.Add(holder);
                 _vm.MsgTableDataView.Refresh();
                     
@@ -166,7 +166,7 @@ public partial class DevTools : StyledWindow.StyledWindow
             try
             {
                 var raw = data.OfType<byte>().ToArray();
-                msg = SppMessage.DecodeMessage(raw, model.Value);
+                msg = SppMessage.Decode(raw, model.Value);
                 msgs.Add(msg);
             }
             catch (InvalidPacketException ex)

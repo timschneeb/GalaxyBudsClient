@@ -49,7 +49,7 @@ public class RequiresFeatureBehavior : Behavior<Control>
         Settings.Instance.RegisteredDevice.PropertyChanged -= OnDevicePropertyChanged;
     }
     
-    private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
+    private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateDecoder e)
     {
         UpdateState();
     }

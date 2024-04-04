@@ -80,7 +80,7 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
         }
     }
     
-    private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
+    private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateDecoder e)
     {    
         using var suppressor = SuppressChangeNotifications();
         

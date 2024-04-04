@@ -35,7 +35,7 @@ public class DevToolsViewModel : ViewModelBase
             }
             else
             {
-                var parser = item.Message.BuildParser();
+                var parser = item.Message.CreateDecoder();
                 if (parser != null)
                 {
                     PropTableDataSource.Clear();

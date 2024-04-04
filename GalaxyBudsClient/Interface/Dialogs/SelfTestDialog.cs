@@ -96,7 +96,7 @@ public class SelfTestDialog : TaskDialog
         };
     }
     
-    private void OnSelfTestResponse(object? s, SelfTestParser? parser)
+    private void OnSelfTestResponse(object? s, SelfTestDecoder? parser)
     {
         _cancelToken.Cancel();
         Buttons[0].Text = Loc.Resolve("window_close");

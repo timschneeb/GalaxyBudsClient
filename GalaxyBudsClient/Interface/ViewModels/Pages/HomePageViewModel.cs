@@ -37,7 +37,7 @@ public class HomePageViewModel : MainPageViewModelBase
         };
     }
     
-    private void OnStatusUpdateReceived(object? sender, StatusUpdateParser e)
+    private void OnStatusUpdateReceived(object? sender, StatusUpdateDecoder e)
     {
         /* Status updates are only sent if something has changed.
            We use this knowledge to request updated debug data. */

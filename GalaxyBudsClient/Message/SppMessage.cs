@@ -35,12 +35,12 @@ public class SppMessage(
     
     private Models TargetModel => model ?? BluetoothImpl.ActiveModel;
 
-    public BaseMessageParser? BuildParser()
+    public BaseMessageDecoder? CreateDecoder()
     {
-        return SppMessageParserFactory.BuildParser(this, TargetModel);
+        return SppMessageHandlerFactory.CreateDecoder(this, TargetModel);
     }
 
-    public byte[] EncodeMessage()
+    public byte[] Encode()
     {
         var spec = DeviceSpecHelper.FindByModel(TargetModel) ?? throw new InvalidOperationException();
         
@@ -85,7 +85,7 @@ public class SppMessage(
     /**
       * Static "constructors"
       */
-    public static SppMessage DecodeMessage(byte[] raw, Models model)
+    public static SppMessage Decode(byte[] raw, Models model)
     {
         try
         {

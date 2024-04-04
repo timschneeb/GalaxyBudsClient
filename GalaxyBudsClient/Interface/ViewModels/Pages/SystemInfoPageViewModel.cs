@@ -27,25 +27,25 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
         Loc.LanguageUpdated += RequestData;
     }
 
-    private void OnDebugSerialNumberReceived(object? sender, CradleSerialNumberParser e)
+    private void OnDebugSerialNumberReceived(object? sender, CradleSerialNumberDecoder e)
     {
         CradleSerialNumber = e.SoftwareVersion ?? Loc.Resolve("placement_disconnected");
         CradleSwVersion = e.SerialNumber ?? Loc.Resolve("placement_disconnected");
     }
 
-    private void OnExtendedStatusUpdateReceived(object? sender, ExtendedStatusUpdateParser e)
+    private void OnExtendedStatusUpdateReceived(object? sender, ExtendedStatusUpdateDecoder e)
     {
         ProtocolVersion = e.Revision.ToString();
     }
 
-    private void OnDebugSerialNumberReceived(object? sender, DebugSerialNumberParser e)
+    private void OnDebugSerialNumberReceived(object? sender, DebugSerialNumberDecoder e)
     {
         SerialNumber = e is { LeftSerialNumber: not null, RightSerialNumber: not null }
             ? $"{Loc.Resolve("left")}: {e.LeftSerialNumber}, {Loc.Resolve("right")}: {e.RightSerialNumber}"
             : Unknown;
     }
 
-    private void OnDebugSkuReceived(object? sender, DebugSkuParser e)
+    private void OnDebugSkuReceived(object? sender, DebugSkuDecoder e)
     {
         DeviceSku = e is { LeftSku: not null, RightSku: not null }
             ? $"{Loc.Resolve("left")}: {e.LeftSku}, {Loc.Resolve("right")}: {e.RightSku}"
@@ -57,14 +57,14 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
         BuildString = e;
     }
 
-    private void OnBatteryTypeReceived(object? sender, BatteryTypeParser e)
+    private void OnBatteryTypeReceived(object? sender, BatteryTypeDecoder e)
     {
         BatteryType = e is { LeftBatteryType: not null, RightBatteryType: not null }
             ? $"{Loc.Resolve("left")}: {e.LeftBatteryType}, {Loc.Resolve("right")}: {e.RightBatteryType}"
             : Unknown;
     }
     
-    private void OnGetAllDataResponse(object? sender, DebugGetAllDataParser e)
+    private void OnGetAllDataResponse(object? sender, DebugGetAllDataDecoder e)
     {
         HwVersion = e.HardwareVersion ?? Unknown;
         SwVersion = e.SoftwareVersion ?? Unknown;

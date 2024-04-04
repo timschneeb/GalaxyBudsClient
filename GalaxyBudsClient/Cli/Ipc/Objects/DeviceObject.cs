@@ -82,20 +82,20 @@ public sealed class DeviceObject : BaseObjectWithProperties<DeviceProperties>, I
         Set(nameof(DeviceProperties._WearStateRight), update.PlacementR.ToString());
     }
         
-    private void OnGetAllDataResponse(object? sender, DebugGetAllDataParser parser)
+    private void OnGetAllDataResponse(object? sender, DebugGetAllDataDecoder decoder)
     {
-        Set(nameof(DeviceProperties._VoltageLeft), parser.LeftAdcVCell);
-        Set(nameof(DeviceProperties._VoltageRight), parser.RightAdcVCell);
-        Set(nameof(DeviceProperties._ThermistorLeftCelsius), parser.LeftThermistor);
-        Set(nameof(DeviceProperties._ThermistorRightCelsius), parser.RightThermistor);
-        Set(nameof(DeviceProperties._FirmwareVersion), parser.SoftwareVersion ?? "null");
-        Set(nameof(DeviceProperties._HardwareVersion), parser.HardwareVersion ?? "null");
+        Set(nameof(DeviceProperties._VoltageLeft), decoder.LeftAdcVCell);
+        Set(nameof(DeviceProperties._VoltageRight), decoder.RightAdcVCell);
+        Set(nameof(DeviceProperties._ThermistorLeftCelsius), decoder.LeftThermistor);
+        Set(nameof(DeviceProperties._ThermistorRightCelsius), decoder.RightThermistor);
+        Set(nameof(DeviceProperties._FirmwareVersion), decoder.SoftwareVersion ?? "null");
+        Set(nameof(DeviceProperties._HardwareVersion), decoder.HardwareVersion ?? "null");
     }
         
-    private void OnDebugSkuUpdate(object? sender, DebugSkuParser parser)
+    private void OnDebugSkuUpdate(object? sender, DebugSkuDecoder decoder)
     {
-        Set(nameof(DeviceProperties._SkuLeft), parser.LeftSku ?? "null");
-        Set(nameof(DeviceProperties._SkuRight), parser.RightSku ?? "null");
+        Set(nameof(DeviceProperties._SkuLeft), decoder.LeftSku ?? "null");
+        Set(nameof(DeviceProperties._SkuRight), decoder.RightSku ?? "null");
     }
 
     public void Dispose()

@@ -233,7 +233,7 @@ public partial class MainWindow : StyledAppWindow
     #endregion
 
     #region Global Bluetooth callbacks
-    private void OnStatusUpdate(object? sender, StatusUpdateParser e)
+    private void OnStatusUpdate(object? sender, StatusUpdateDecoder e)
     {
         if (_lastWearState == LegacyWearStates.None &&
             e.WearState != LegacyWearStates.None && Settings.Instance.ResumePlaybackOnSensor)
@@ -250,7 +250,7 @@ public partial class MainWindow : StyledAppWindow
         _lastWearState = e.WearState;
     }
 
-    private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateParser e)
+    private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateDecoder e)
     {
         if (Settings.Instance.Popup.Enabled)
         {

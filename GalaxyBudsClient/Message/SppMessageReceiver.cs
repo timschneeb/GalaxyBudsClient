@@ -24,34 +24,34 @@ public class SppMessageReceiver
         }
     }
 
-    public event EventHandler<BaseMessageParser>? AnyMessageDecoded;
+    public event EventHandler<BaseMessageDecoder>? AnyMessageDecoded;
     public event EventHandler<int>? ResetResponse;
-    public event EventHandler<BatteryTypeParser>? BatteryTypeResponse;
+    public event EventHandler<BatteryTypeDecoder>? BatteryTypeResponse;
     public event EventHandler<bool>? AmbientEnabledUpdateResponse;
     public event EventHandler<bool>? AncEnabledUpdateResponse;
     public event EventHandler<NoiseControlModes>? NoiseControlUpdateResponse;
     public event EventHandler<string>? BuildStringResponse;
-    public event EventHandler<DebugGetAllDataParser>? GetAllDataResponse;
-    public event EventHandler<DebugSerialNumberParser>? SerialNumberResponse;
-    public event EventHandler<CradleSerialNumberParser>? CradleSerialNumberResponse;
-    public event EventHandler<SelfTestParser>? SelfTestResponse;
+    public event EventHandler<DebugGetAllDataDecoder>? GetAllDataResponse;
+    public event EventHandler<DebugSerialNumberDecoder>? SerialNumberResponse;
+    public event EventHandler<CradleSerialNumberDecoder>? CradleSerialNumberResponse;
+    public event EventHandler<SelfTestDecoder>? SelfTestResponse;
     public event EventHandler<TouchOptions>? OtherOption;
-    public event EventHandler<ExtendedStatusUpdateParser>? ExtendedStatusUpdate;
+    public event EventHandler<ExtendedStatusUpdateDecoder>? ExtendedStatusUpdate;
     public event EventHandler<IBasicStatusUpdate>? BaseUpdate;
-    public event EventHandler<StatusUpdateParser>? StatusUpdate;
-    public event EventHandler<MuteUpdateParser>? FindMyGearMuteUpdate;
+    public event EventHandler<StatusUpdateDecoder>? StatusUpdate;
+    public event EventHandler<MuteUpdateDecoder>? FindMyGearMuteUpdate;
     public event EventHandler? FindMyGearStopped;
-    public event EventHandler<FitTestParser>? FitTestResult;
-    public event EventHandler<DebugSkuParser>? DebugSkuUpdate;
+    public event EventHandler<FitTestDecoder>? FitTestResult;
+    public event EventHandler<DebugSkuDecoder>? DebugSkuUpdate;
 
     public void MessageReceiver(object? sender, SppMessage e)
     {
-        var parser = e.BuildParser(); 
+        var decoder = e.CreateDecoder(); 
         Dispatcher.UIThread.InvokeAsync(() =>
         {
             DispatchEventByMessage(e);
-            if(parser != null)
-                DispatchEventByDecoder(parser);
+            if(decoder != null)
+                DispatchEventByDecoder(decoder);
         });
     }
 
@@ -65,64 +65,64 @@ public class SppMessageReceiver
         }
     }
     
-    private void DispatchEventByDecoder(BaseMessageParser parser)
+    private void DispatchEventByDecoder(BaseMessageDecoder decoder)
     {
-        AnyMessageDecoded?.Invoke(this, parser);
+        AnyMessageDecoded?.Invoke(this, decoder);
         
-        switch (parser)
+        switch (decoder)
         {
-            case ResetResponseParser p:
+            case ResetResponseDecoder p:
                 ResetResponse?.Invoke(this, p.ResultCode);
                 break;
-            case BatteryTypeParser p:
+            case BatteryTypeDecoder p:
                 BatteryTypeResponse?.Invoke(this, p);
                 break;
-            case AmbientModeUpdateParser p:
+            case AmbientModeUpdateDecoder p:
                 AmbientEnabledUpdateResponse?.Invoke(this, p.Enabled);
                 break;
-            case DebugBuildInfoParser p:
+            case DebugBuildInfoDecoder p:
                 BuildStringResponse?.Invoke(this, p.BuildString ?? "null");
                 break;
-            case DebugGetAllDataParser p:
+            case DebugGetAllDataDecoder p:
                 GetAllDataResponse?.Invoke(this, p);
                 break;
-            case DebugSerialNumberParser p:
+            case DebugSerialNumberDecoder p:
                 SerialNumberResponse?.Invoke(this, p);
                 break;
-            case CradleSerialNumberParser p:
+            case CradleSerialNumberDecoder p:
                 CradleSerialNumberResponse?.Invoke(this, p);
                 break;
-            case ExtendedStatusUpdateParser p:
+            case ExtendedStatusUpdateDecoder p:
                 Settings.Instance.RegisteredDevice.DeviceColor = p.DeviceColor;
                 BaseUpdate?.Invoke(this, p);
                 ExtendedStatusUpdate?.Invoke(this, p);
                 break;
-            case FitTestParser p:
+            case FitTestDecoder p:
                 FitTestResult?.Invoke(this, p);
                 break;
-            case SelfTestParser p:
+            case SelfTestDecoder p:
                 SelfTestResponse?.Invoke(this, p);
                 break;
-            case SetOtherOptionParser p:
+            case SetOtherOptionDecoder p:
                 OtherOption?.Invoke(this, p.OptionType);
                 break;
-            case StatusUpdateParser p:
+            case StatusUpdateDecoder p:
                 StatusUpdate?.Invoke(this, p);
                 BaseUpdate?.Invoke(this, p);
                 break;
-            case MuteUpdateParser p:
+            case MuteUpdateDecoder p:
                 FindMyGearMuteUpdate?.Invoke(this, p);
                 break;
-            case NoiseReductionModeUpdateParser p:
+            case NoiseReductionModeUpdateDecoder p:
                 AncEnabledUpdateResponse?.Invoke(this, p.Enabled);
                 break;
-            case NoiseControlUpdateParser p:
+            case NoiseControlUpdateDecoder p:
                 NoiseControlUpdateResponse?.Invoke(this, p.Mode);
                 break;
-            case DebugSkuParser p:
+            case DebugSkuDecoder p:
                 DebugSkuUpdate?.Invoke(this, p);
                 break;
-            case VoiceWakeupEventParser p:
+            case VoiceWakeupEventDecoder p:
                 if (p.ResultCode == 1)
                 {
                     Log.Debug("SppMessageHandler: Voice wakeup event received");

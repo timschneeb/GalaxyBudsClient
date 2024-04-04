@@ -312,7 +312,7 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
                 hook.OnMessageSend(ref msg);
             }
 
-            var raw = msg.EncodeMessage();
+            var raw = msg.Encode();
                 
             foreach(var hook in ScriptManager.Instance.RawStreamHooks)
             {
@@ -416,7 +416,7 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
                         hook.OnRawDataAvailable(ref raw);
                     }
 
-                    var msg = SppMessage.DecodeMessage(raw, ActiveModel);
+                    var msg = SppMessage.Decode(raw, ActiveModel);
                     msgSize = msg.TotalPacketSize;
 
                     Log.Verbose(">> Incoming: {Msg}", msg);
