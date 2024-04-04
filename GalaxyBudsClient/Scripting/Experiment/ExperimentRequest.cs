@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
@@ -10,6 +11,9 @@ using GalaxyBudsClient.Utils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Crypto.Encodings;
+using Org.BouncyCastle.Crypto.Engines;
+using Org.BouncyCastle.OpenSsl;
 using Serilog;
 
 namespace GalaxyBudsClient.Scripting.Experiment;
@@ -56,9 +60,17 @@ public static class ExperimentRequestFilters
     {
         try
         {
+            var bytesToDecrypt = Convert.FromBase64String(item.Signature ?? string.Empty);
+            var decryptEngine = new Pkcs1Encoding(new RsaEngine());
+            using (var reader = new StringReader(PublicSigningKey))
+            {
+                var keyParameter = (AsymmetricKeyParameter)new PemReader(reader).ReadObject();
+                decryptEngine.Init(false, keyParameter);
+            }
+            
+            item.Signature = Encoding.UTF8.GetString(decryptEngine.ProcessBlock(bytesToDecrypt, 0, bytesToDecrypt.Length));
             item.Script = Encoding.UTF8.GetString(Convert.FromBase64String(item.Script ?? string.Empty));
-            item.Signature = Crypto.RsaDecryptWithPublic(item.Signature ?? string.Empty, PublicSigningKey);
-
+            
             var hash = SHA1.HashData(Encoding.UTF8.GetBytes(item.Script));
             if (item.Signature != Convert.ToBase64String(hash))
             {
@@ -77,7 +89,7 @@ public static class ExperimentRequestFilters
         
     public static IEnumerable<ExperimentRequest> VerifyDecode(this IEnumerable<ExperimentRequest> items)
     {
-        return items.Select(VerifyDecode).Where(x => x != null).Select(x => x!);
+        return items.Select(VerifyDecode).Where(x => x != null).Cast<ExperimentRequest>();
     }
         
     public static bool FilterByEnvironment(ExperimentRequest item)
