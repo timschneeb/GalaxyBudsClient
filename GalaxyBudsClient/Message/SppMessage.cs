@@ -6,9 +6,6 @@ using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils;
-using Sentry;
-using Serilog;
 
 namespace GalaxyBudsClient.Message;
 
@@ -163,5 +160,4 @@ public class SppMessage(
         return $"SPPMessage[MessageID={Id}, PayloadSize={Size}, Type={(IsFragment ? "Fragment/" : string.Empty) + Type}, " +
                $"CRC16={Crc16}, Payload={{{BitConverter.ToString(Payload).Replace("-", " ")}}}]";
     }
-
 }
