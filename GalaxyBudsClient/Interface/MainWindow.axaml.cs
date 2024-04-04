@@ -49,9 +49,9 @@ public partial class MainWindow : StyledAppWindow
         BluetoothImpl.Instance.Disconnected += OnDisconnected;
         BluetoothImpl.Instance.Connected += OnConnected;
 
-        SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
-        SppMessageHandler.Instance.StatusUpdate += OnStatusUpdate;
-        SppMessageHandler.Instance.OtherOption += HandleOtherTouchOption;
+        SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+        SppMessageReceiver.Instance.StatusUpdate += OnStatusUpdate;
+        SppMessageReceiver.Instance.OtherOption += HandleOtherTouchOption;
 
         EventDispatcher.Instance.EventReceived += OnEventReceived;
         App.TrayIconClicked += TrayIcon_OnLeftClicked;
@@ -161,9 +161,9 @@ public partial class MainWindow : StyledAppWindow
         BluetoothImpl.Instance.Disconnected -= OnDisconnected;
         BluetoothImpl.Instance.Connected -= OnConnected;
             
-        SppMessageHandler.Instance.ExtendedStatusUpdate -= OnExtendedStatusUpdate;
-        SppMessageHandler.Instance.StatusUpdate -= OnStatusUpdate;
-        SppMessageHandler.Instance.OtherOption -= HandleOtherTouchOption;
+        SppMessageReceiver.Instance.ExtendedStatusUpdate -= OnExtendedStatusUpdate;
+        SppMessageReceiver.Instance.StatusUpdate -= OnStatusUpdate;
+        SppMessageReceiver.Instance.OtherOption -= HandleOtherTouchOption;
 
         App.TrayIconClicked -= TrayIcon_OnLeftClicked;
         EventDispatcher.Instance.EventReceived -= OnEventReceived;

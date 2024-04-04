@@ -172,7 +172,7 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
             }
         };
             
-        MessageReceived += SppMessageHandler.Instance.MessageReceiver;
+        MessageReceived += SppMessageReceiver.Instance.MessageReceiver;
         InvalidDataReceived += OnInvalidDataReceived;
     }
 
@@ -187,7 +187,7 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
             Log.Warning(ex, "BluetoothImpl.Dispose: Error while disconnecting");
         }
 
-        MessageReceived -= SppMessageHandler.Instance.MessageReceiver;
+        MessageReceived -= SppMessageReceiver.Instance.MessageReceiver;
             
         await _cancelSource.CancelAsync();
         await Task.Delay(50);

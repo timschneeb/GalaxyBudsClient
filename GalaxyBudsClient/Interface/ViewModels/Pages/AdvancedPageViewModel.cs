@@ -15,7 +15,7 @@ public class AdvancedPageViewModel : MainPageViewModelBase
 
     public AdvancedPageViewModel()
     {
-        SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+        SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
         PropertyChanged += OnPropertyChanged;
     }
 

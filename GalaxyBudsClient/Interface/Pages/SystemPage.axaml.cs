@@ -56,13 +56,13 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
         sender.IsSecondaryButtonEnabled = false;
         
         var defer = args.GetDeferral();
-        SppMessageHandler.Instance.ResetResponse += OnResetResponse;
+        SppMessageReceiver.Instance.ResetResponse += OnResetResponse;
         await BluetoothImpl.Instance.SendRequestAsync(MsgIds.RESET);
         
         // Wait for 10 seconds for the reset response
         await Task.Delay(10000, cancelToken.Token);
         
-        SppMessageHandler.Instance.ResetResponse -= OnResetResponse;
+        SppMessageReceiver.Instance.ResetResponse -= OnResetResponse;
         // If the reset response was not received, show an error message
         OnResetResponse(null, -1);
         return;

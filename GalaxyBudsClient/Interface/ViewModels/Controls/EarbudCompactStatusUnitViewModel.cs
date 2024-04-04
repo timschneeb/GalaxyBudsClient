@@ -22,7 +22,7 @@ public class EarbudCompactStatusUnitViewModel : ViewModelBase
     
     public EarbudCompactStatusUnitViewModel()
     {
-        SppMessageHandler.Instance.BaseUpdate += OnStatusUpdated;
+        SppMessageReceiver.Instance.BaseUpdate += OnStatusUpdated;
         BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
         Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
         Loc.LanguageUpdated += LoadFromCache;

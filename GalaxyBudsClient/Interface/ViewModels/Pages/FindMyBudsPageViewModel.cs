@@ -29,9 +29,9 @@ public class FindMyBudsPageViewModel : MainPageViewModelBase
     
     public FindMyBudsPageViewModel()
     {
-        SppMessageHandler.Instance.FindMyGearStopped += OnFindMyGearStopped;
-        SppMessageHandler.Instance.FindMyGearMuteUpdate += OnFindMyGearMuteUpdated;
-        SppMessageHandler.Instance.BaseUpdate += OnStatusUpdated;
+        SppMessageReceiver.Instance.FindMyGearStopped += OnFindMyGearStopped;
+        SppMessageReceiver.Instance.FindMyGearMuteUpdate += OnFindMyGearMuteUpdated;
+        SppMessageReceiver.Instance.BaseUpdate += OnStatusUpdated;
         Loc.LanguageUpdated += OnLanguageUpdated;
         PropertyChanged += OnPropertyChanged;
     }

@@ -27,11 +27,11 @@ public class DeviceMessageCache
 
     private DeviceMessageCache()
     {
-        SppMessageHandler.Instance.DebugSkuUpdate += (_, parser) => DebugSku = parser;
-        SppMessageHandler.Instance.ExtendedStatusUpdate += (_, parser) => ExtendedStatusUpdate = parser;
-        SppMessageHandler.Instance.StatusUpdate += (_, parser) => StatusUpdate = parser;
-        SppMessageHandler.Instance.GetAllDataResponse += (_, parser) => DebugGetAllData = parser;
-        SppMessageHandler.Instance.BaseUpdate += (_, update) =>
+        SppMessageReceiver.Instance.DebugSkuUpdate += (_, parser) => DebugSku = parser;
+        SppMessageReceiver.Instance.ExtendedStatusUpdate += (_, parser) => ExtendedStatusUpdate = parser;
+        SppMessageReceiver.Instance.StatusUpdate += (_, parser) => StatusUpdate = parser;
+        SppMessageReceiver.Instance.GetAllDataResponse += (_, parser) => DebugGetAllData = parser;
+        SppMessageReceiver.Instance.BaseUpdate += (_, update) =>
         {
             if (update.BatteryCase <= 100 || BasicStatusUpdateWithValidCase == null) // 101 = Disconnected
             {

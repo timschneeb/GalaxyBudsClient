@@ -39,13 +39,13 @@ public class RequiresFeatureBehavior : Behavior<Control>
     {
         UpdateState();
         Settings.Instance.RegisteredDevice.PropertyChanged += OnDevicePropertyChanged;
-        SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+        SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
     }
 
     /// <inheritdoc />
     protected override void OnDetachedFromVisualTree()
     {
-        SppMessageHandler.Instance.ExtendedStatusUpdate -= OnExtendedStatusUpdate;
+        SppMessageReceiver.Instance.ExtendedStatusUpdate -= OnExtendedStatusUpdate;
         Settings.Instance.RegisteredDevice.PropertyChanged -= OnDevicePropertyChanged;
     }
     

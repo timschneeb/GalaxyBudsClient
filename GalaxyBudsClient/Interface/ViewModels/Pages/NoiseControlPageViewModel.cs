@@ -20,18 +20,18 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
     // TODO: test with Buds2Pro, switches seem buggy
     public NoiseControlPageViewModel()
     {
-        SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
-        SppMessageHandler.Instance.AncEnabledUpdateResponse += (_, enabled) =>
+        SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+        SppMessageReceiver.Instance.AncEnabledUpdateResponse += (_, enabled) =>
         {
             using var suppressor = SuppressChangeNotifications();
             IsAncEnabled = enabled;
         };
-        SppMessageHandler.Instance.AmbientEnabledUpdateResponse += (_, enabled) =>
+        SppMessageReceiver.Instance.AmbientEnabledUpdateResponse += (_, enabled) =>
         {
             using var suppressor = SuppressChangeNotifications();
             IsAmbientSoundEnabled = enabled;
         };
-        SppMessageHandler.Instance.NoiseControlUpdateResponse += (_, mode) =>
+        SppMessageReceiver.Instance.NoiseControlUpdateResponse += (_, mode) =>
         {
             using var suppressor = SuppressChangeNotifications();
             switch (mode)

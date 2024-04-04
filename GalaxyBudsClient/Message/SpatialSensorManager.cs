@@ -18,10 +18,10 @@ public class SpatialSensorManager : IDisposable
         _keepAliveTimer.Elapsed += KeepAliveOnElapsed;
         _keepAliveTimer.AutoReset = true;
             
-        SppMessageHandler.Instance.AnyMessageReceived += OnMessageReceived;
+        SppMessageReceiver.Instance.AnyMessageDecoded += OnMessageDecoded;
     }
 
-    private void OnMessageReceived(object? sender, BaseMessageParser? e)
+    private void OnMessageDecoded(object? sender, BaseMessageParser? e)
     {
         switch (e)
         {
@@ -65,7 +65,7 @@ public class SpatialSensorManager : IDisposable
         
     public void Dispose()
     {
-        SppMessageHandler.Instance.AnyMessageReceived -= OnMessageReceived;
+        SppMessageReceiver.Instance.AnyMessageDecoded -= OnMessageDecoded;
         Detach();
     }
 

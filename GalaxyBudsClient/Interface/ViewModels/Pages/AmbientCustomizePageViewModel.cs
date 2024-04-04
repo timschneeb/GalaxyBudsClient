@@ -19,7 +19,7 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
     
     public AmbientCustomizePageViewModel()
     {
-        SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+        SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
        
         Settings.Instance.RegisteredDevice.PropertyChanged += OnDevicePropertyChanged;
         PropertyChanged += OnPropertyChanged;

@@ -16,13 +16,13 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
     
     public SystemInfoPageViewModel()
     {
-        SppMessageHandler.Instance.GetAllDataResponse += OnGetAllDataResponse;
-        SppMessageHandler.Instance.BatteryTypeResponse += OnBatteryTypeReceived;
-        SppMessageHandler.Instance.BuildStringResponse += OnDebugBuildInfoReceived;
-        SppMessageHandler.Instance.DebugSkuUpdate += OnDebugSkuReceived;
-        SppMessageHandler.Instance.SerialNumberResponse += OnDebugSerialNumberReceived;
-        SppMessageHandler.Instance.CradleSerialNumberResponse += OnDebugSerialNumberReceived;
-        SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdateReceived;
+        SppMessageReceiver.Instance.GetAllDataResponse += OnGetAllDataResponse;
+        SppMessageReceiver.Instance.BatteryTypeResponse += OnBatteryTypeReceived;
+        SppMessageReceiver.Instance.BuildStringResponse += OnDebugBuildInfoReceived;
+        SppMessageReceiver.Instance.DebugSkuUpdate += OnDebugSkuReceived;
+        SppMessageReceiver.Instance.SerialNumberResponse += OnDebugSerialNumberReceived;
+        SppMessageReceiver.Instance.CradleSerialNumberResponse += OnDebugSerialNumberReceived;
+        SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdateReceived;
         BluetoothImpl.Instance.Connected += (_, _) => RequestData();
         Loc.LanguageUpdated += RequestData;
     }

@@ -52,9 +52,9 @@ public sealed class DeviceObject : BaseObjectWithProperties<DeviceProperties>, I
             
     public DeviceObject()
     {
-        SppMessageHandler.Instance.BaseUpdate += OnBaseUpdate;
-        SppMessageHandler.Instance.GetAllDataResponse += OnGetAllDataResponse;
-        SppMessageHandler.Instance.DebugSkuUpdate += OnDebugSkuUpdate;
+        SppMessageReceiver.Instance.BaseUpdate += OnBaseUpdate;
+        SppMessageReceiver.Instance.GetAllDataResponse += OnGetAllDataResponse;
+        SppMessageReceiver.Instance.DebugSkuUpdate += OnDebugSkuUpdate;
             
         BluetoothImpl.Instance.Connected += OnConnected;
     }
@@ -100,9 +100,9 @@ public sealed class DeviceObject : BaseObjectWithProperties<DeviceProperties>, I
 
     public void Dispose()
     {
-        SppMessageHandler.Instance.BaseUpdate -= OnBaseUpdate;
-        SppMessageHandler.Instance.GetAllDataResponse -= OnGetAllDataResponse;
-        SppMessageHandler.Instance.DebugSkuUpdate -= OnDebugSkuUpdate;
+        SppMessageReceiver.Instance.BaseUpdate -= OnBaseUpdate;
+        SppMessageReceiver.Instance.GetAllDataResponse -= OnGetAllDataResponse;
+        SppMessageReceiver.Instance.DebugSkuUpdate -= OnDebugSkuUpdate;
             
         BluetoothImpl.Instance.Connected -= OnConnected;
     }

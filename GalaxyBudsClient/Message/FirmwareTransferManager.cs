@@ -98,10 +98,10 @@ public class FirmwareTransferManager
             }
         };
             
-        SppMessageHandler.Instance.AnyMessageReceived += OnMessageReceived;
+        SppMessageReceiver.Instance.AnyMessageDecoded += OnMessageDecoded;
     }
 
-    private async void OnMessageReceived(object? sender, BaseMessageParser? e)
+    private async void OnMessageDecoded(object? sender, BaseMessageParser? e)
     {
         if (_binary == null)
         {

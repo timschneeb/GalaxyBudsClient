@@ -48,8 +48,8 @@ internal class TrayManager
                 _ = RebuildAsync();
         };
         // triggering rebuild when battery % changes
-        SppMessageHandler.Instance.StatusUpdate += (_, _) => _ = RebuildAsync();
-        SppMessageHandler.Instance.ExtendedStatusUpdate += (_, _) => _ = RebuildAsync();
+        SppMessageReceiver.Instance.StatusUpdate += (_, _) => _ = RebuildAsync();
+        SppMessageReceiver.Instance.ExtendedStatusUpdate += (_, _) => _ = RebuildAsync();
         // triggering rebuild when noise control / ambient / anc state changes is handled in MessageComposer.cs
         // triggering rebuild when lock touchpad changes is handled in TouchpadPage.xaml.cs
         // triggering rebuild when eq state changes is handled in MessageComposer.cs

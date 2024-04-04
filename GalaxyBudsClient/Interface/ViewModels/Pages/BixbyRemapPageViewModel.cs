@@ -13,7 +13,7 @@ public class BixbyRemapPageViewModel : SubPageViewModelBase
 {
     public BixbyRemapPageViewModel()
     {
-        SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+        SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
         PropertyChanged += OnPropertyChanged;
     }
     

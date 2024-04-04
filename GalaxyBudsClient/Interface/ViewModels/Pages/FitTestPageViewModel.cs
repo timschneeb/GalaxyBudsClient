@@ -23,8 +23,8 @@ public class FitTestPageViewModel : SubPageViewModelBase
 
     public FitTestPageViewModel()
     {
-        SppMessageHandler.Instance.BaseUpdate += OnStatusUpdated;
-        SppMessageHandler.Instance.FitTestResult += OnFitTestResultReceived;
+        SppMessageReceiver.Instance.BaseUpdate += OnStatusUpdated;
+        SppMessageReceiver.Instance.FitTestResult += OnFitTestResultReceived;
         Loc.LanguageUpdated += OnLanguageUpdated;
         PropertyChanged += OnPropertyChanged;
     }

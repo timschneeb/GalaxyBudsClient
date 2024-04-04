@@ -29,7 +29,7 @@ public class HomePageViewModel : MainPageViewModelBase
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_GET_ALL_DATA);
         };
         
-        SppMessageHandler.Instance.StatusUpdate += OnStatusUpdateReceived;
+        SppMessageReceiver.Instance.StatusUpdate += OnStatusUpdateReceived;
         BluetoothImpl.Instance.Connected += async (_, _) =>
         {
             await Task.Delay(1000);

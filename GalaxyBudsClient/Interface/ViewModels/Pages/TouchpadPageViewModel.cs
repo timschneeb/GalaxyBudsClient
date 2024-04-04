@@ -27,7 +27,7 @@ public class TouchpadPageViewModel : MainPageViewModelBase
 
     public TouchpadPageViewModel()
     {
-        SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+        SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
 
         Settings.Instance.CustomActionLeft.PropertyChanged += (sender, args) => UpdateEditStates();
         Settings.Instance.CustomActionRight.PropertyChanged += (sender, args) => UpdateEditStates();

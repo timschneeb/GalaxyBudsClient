@@ -26,7 +26,7 @@ public class EarbudIcon : Image
 
         if (DeviceMessageCache.Instance.BasicStatusUpdate != null)
             OnStatusUpdated(null, DeviceMessageCache.Instance.BasicStatusUpdate);
-        SppMessageHandler.Instance.BaseUpdate += OnStatusUpdated;
+        SppMessageReceiver.Instance.BaseUpdate += OnStatusUpdated;
         BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
         Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
         UpdateEarbudIcons();

@@ -16,7 +16,7 @@ public class EqualizerPageViewModel : MainPageViewModelBase
 {
     public EqualizerPageViewModel()
     {
-        SppMessageHandler.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+        SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
         PropertyChanged += OnPropertyChanged;
     }
 

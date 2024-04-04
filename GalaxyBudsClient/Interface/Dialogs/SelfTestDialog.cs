@@ -49,7 +49,7 @@ public class SelfTestDialog : TaskDialog
                     _cancelToken.Cancel();
             }, _cancelToken.Token);
 
-            SppMessageHandler.Instance.SelfTestResponse += OnSelfTestResponse;
+            SppMessageReceiver.Instance.SelfTestResponse += OnSelfTestResponse;
             await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SELF_TEST);
 
             // Wait for 10 seconds for the self test response
@@ -63,7 +63,7 @@ public class SelfTestDialog : TaskDialog
     
     protected override void OnClosing(TaskDialogClosingEventArgs args)
     {
-        SppMessageHandler.Instance.SelfTestResponse -= OnSelfTestResponse;
+        SppMessageReceiver.Instance.SelfTestResponse -= OnSelfTestResponse;
         base.OnClosing(args);
     }
     
