@@ -39,7 +39,7 @@ public class MainViewViewModel : ViewModelBase
 
     [Reactive] public bool IsConnectButtonEnabled { set; get; } = true;
     [Reactive] public string ConnectButtonText { set; get; } = Loc.Resolve("connlost_connect");
-    [Reactive] public bool IsInSetupWizard { set; get; } = !BluetoothImpl.RegisteredDeviceValid;
+    [Reactive] public bool IsInSetupWizard { set; get; } = !BluetoothImpl.IsRegisteredDeviceValid;
     public NavigationFactory NavigationFactory { get; }
     public required Func<Type, PageViewModelBase?> VmResolver { get; init; }
     public ObservableCollection<BreadcrumbViewModel> BreadcrumbItems { get; } = [
@@ -52,7 +52,7 @@ public class MainViewViewModel : ViewModelBase
         if (e.PropertyName is
             nameof(Settings.Instance.RegisteredDevice.MacAddress) or
             nameof(Settings.Instance.RegisteredDevice.Model))
-            IsInSetupWizard = !BluetoothImpl.RegisteredDeviceValid;
+            IsInSetupWizard = !BluetoothImpl.IsRegisteredDeviceValid;
     }
 }
 

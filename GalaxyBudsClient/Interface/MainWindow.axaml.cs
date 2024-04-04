@@ -59,7 +59,7 @@ public partial class MainWindow : StyledAppWindow
             
         Loc.LanguageUpdated += OnLanguageUpdated;
             
-        if (BluetoothImpl.RegisteredDeviceValid)
+        if (BluetoothImpl.IsRegisteredDeviceValid)
         {
             Task.Run(() => BluetoothImpl.Instance.ConnectAsync());
         }

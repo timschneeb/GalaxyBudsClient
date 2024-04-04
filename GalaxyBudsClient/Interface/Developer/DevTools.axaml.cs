@@ -1,13 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using Avalonia;
 using Avalonia.Interactivity;
 using Avalonia.Media;
-using Avalonia.Platform;
 using Avalonia.Platform.Storage;
 using Avalonia.Threading;
 using AvaloniaHex.Document;

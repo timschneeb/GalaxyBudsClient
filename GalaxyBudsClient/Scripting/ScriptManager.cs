@@ -23,51 +23,29 @@ public class ScriptManager
             }
         }
     }
-    public static void Init()
-    {
-        lock (Padlock)
-        { 
-            _instance ??= new ScriptManager();
-        }
-    }
 
     public IList<IHook> Hooks { get; } = new List<IHook>();
 
-    public IEnumerable<IMessageHook> MessageHooks
-    {
-        get
-        {
-            return Hooks
-                .Where(x => x is IMessageHook)
-                .Cast<IMessageHook>()
-                .ToList()
-                .AsReadOnly();
-        }
-    }
-        
-    public IEnumerable<IRawStreamHook> RawStreamHooks
-    {
-        get
-        {
-            return Hooks
-                .Where(x => x is IRawStreamHook)
-                .Cast<IRawStreamHook>()
-                .ToList()
-                .AsReadOnly();
-        }
-    }
-        
-    public IEnumerable<IDecoderHook> DecoderHooks
-    {
-        get
-        {
-            return Hooks
-                .Where(x => x is IDecoderHook)
-                .Cast<IDecoderHook>()
-                .ToList()
-                .AsReadOnly();
-        }
-    }
+    public IEnumerable<IMessageHook> MessageHooks =>
+        Hooks
+            .Where(x => x is IMessageHook)
+            .Cast<IMessageHook>()
+            .ToList()
+            .AsReadOnly();
+
+    public IEnumerable<IRawStreamHook> RawStreamHooks =>
+        Hooks
+            .Where(x => x is IRawStreamHook)
+            .Cast<IRawStreamHook>()
+            .ToList()
+            .AsReadOnly();
+
+    public IEnumerable<IDecoderHook> DecoderHooks =>
+        Hooks
+            .Where(x => x is IDecoderHook)
+            .Cast<IDecoderHook>()
+            .ToList()
+            .AsReadOnly();
 
     public void RegisterHook(IHook hook)
     {

@@ -1,11 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Controls;
@@ -19,13 +15,14 @@ using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
-using Sentry;
+using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 using Serilog;
 using Task = System.Threading.Tasks.Task;
 
 namespace GalaxyBudsClient.Platform;
 
-public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
+public sealed class BluetoothImpl : ReactiveObject, IDisposable
 { 
     private static readonly object Padlock = new();
     private static BluetoothImpl? _instance;
@@ -49,8 +46,7 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
     }
 
     private readonly IBluetoothService _backend;
-        
-    public event PropertyChangedEventHandler? PropertyChanged;
+    
     public event EventHandler? Connected;
     public event EventHandler? Connecting;
     public event EventHandler<string>? Disconnected;
@@ -59,42 +55,24 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
     public event EventHandler<byte[]>? NewDataReceived;
     public event EventHandler<BluetoothException>? BluetoothError;
 
-    public bool SuppressDisconnectionEvents { set; get; } = false;
-    public bool ShowDummyDevices { set; get; } = false;
     public static Models ActiveModel => Settings.Instance.RegisteredDevice.Model;
     public IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(ActiveModel) ?? new StubDeviceSpec();
-
-    public string DeviceName
-    {
-        private set => RaiseAndSet(ref _deviceName, value);
-        get => _deviceName;
-    }
-
-    public bool IsConnected
-    {
-        private set => RaiseAndSet(ref _isConnected, value);
-        get => _isConnected;
-    }
-
-    public string LastErrorMessage
-    {
-        set => RaiseAndSet(ref _lastErrorMessage, value);
-        get => _lastErrorMessage;
-    }
-
+    public static bool IsRegisteredDeviceValid => Settings.Instance.RegisteredDevice.Model != Models.NULL && 
+                                                  Settings.Instance.RegisteredDevice.MacAddress.Length >= 12;
+    
+    [Reactive] public string DeviceName { private set; get; } = "Galaxy Buds";
+    [Reactive] public bool IsConnected { private set; get; }
+    [Reactive] public string LastErrorMessage { private set; get; } = string.Empty;
+    [Reactive] public bool SuppressDisconnectionEvents { set; get; }
+    [Reactive] public bool ShowDummyDevices { set; get; }
+    
     [Obsolete("Use new IsConnected instead")]
     public bool IsConnectedLegacy => _backend.IsStreamConnected;
-
+    
     private readonly List<byte> _incomingData = [];
     private static readonly ConcurrentQueue<byte[]> IncomingQueue = new();
     private readonly CancellationTokenSource _cancelSource;
     private readonly Task? _loop;
-        
-    private string _deviceName = "Galaxy Buds";
-    private bool _isConnected;
-    private string _lastErrorMessage = string.Empty;
-
-    private Guid ServiceUuid => DeviceSpec.ServiceUuid;
 
     private BluetoothImpl()
     {
@@ -130,49 +108,26 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
                 }
 #endif
             }
-
-            if (_backend == null)
-            {
-                Log.Warning("BluetoothImpl: Using Dummy.BluetoothService");
-                _backend = new Dummy.BluetoothService();
-            }
         }
         catch (PlatformNotSupportedException)
         {
             Log.Error("BluetoothImpl: Critical error while preparing bluetooth backend");
-            Log.Error("BluetoothImpl: Backend swapped out with non-functional dummy object in order to prevent crash");
-            _backend = new Dummy.BluetoothService();
         }
 
+        if (_backend == null)
+        {
+            Log.Warning("BluetoothImpl: Using Dummy.BluetoothService");
+            _backend = new Dummy.BluetoothService();
+        }
+        
         _cancelSource = new CancellationTokenSource();
         _loop = Task.Run(DataConsumerLoop, _cancelSource.Token);
             
-        _backend.Connecting += (_, _) => Connecting?.Invoke(this, EventArgs.Empty); 
-        _backend.NewDataAvailable += OnNewDataAvailable;
-        _backend.NewDataAvailable += (_, bytes) =>  NewDataReceived?.Invoke(this, bytes);
+        _backend.Connecting += (_, _) => Connecting?.Invoke(this, EventArgs.Empty);
         _backend.BluetoothErrorAsync += (_, exception) => OnBluetoothError(exception); 
-            
-        _backend.RfcommConnected += (_, _) => Task.Run(async () =>
-            await Task.Delay(150).ContinueWith((_) =>
-            {
-                if (RegisteredDeviceValid)
-                {
-                    Connected?.Invoke(this, EventArgs.Empty);
-                    IsConnected = true;
-                }
-                else
-                    Log.Error("BluetoothImpl: Suppressing Connected event, device not properly registered");
-            }));
-            
-        _backend.Disconnected += (_, reason) =>
-        {
-            if (!SuppressDisconnectionEvents)
-            {
-                LastErrorMessage = Loc.Resolve("connlost");
-                IsConnected = false;
-                Disconnected?.Invoke(this, reason);
-            }
-        };
+        _backend.NewDataAvailable += OnNewDataAvailable;
+        _backend.RfcommConnected += OnRfcommConnected;
+        _backend.Disconnected += OnDisconnected;
             
         MessageReceived += SppMessageReceiver.Instance.MessageReceiver;
         InvalidDataReceived += OnInvalidDataReceived;
@@ -218,12 +173,12 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
         
     private void OnBluetoothError(BluetoothException exception)
     {
-        if (!SuppressDisconnectionEvents)
-        {
-            LastErrorMessage = exception.ErrorMessage ?? exception.Message;
-            IsConnected = false;
-            BluetoothError?.Invoke(this, exception);
-        }
+        if (SuppressDisconnectionEvents) 
+            return;
+        
+        LastErrorMessage = exception.ErrorMessage ?? exception.Message;
+        IsConnected = false;
+        BluetoothError?.Invoke(this, exception);
     }
         
     public async Task<IEnumerable<BluetoothDevice>> GetDevicesAsync()
@@ -234,7 +189,6 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
             {
                 return (await _backend.GetDevicesAsync()).Concat(BluetoothDevice.DummyDevices());
             }
-
             return await _backend.GetDevicesAsync();
         }
         catch (BluetoothException ex)
@@ -263,27 +217,27 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
         
     public async Task<bool> ConnectAsync(bool noRetry = false)
     {
-        /* Load from configuration */
-        if (RegisteredDeviceValid && ServiceUuid != new StubDeviceSpec().ServiceUuid)
+        if (!IsRegisteredDeviceValid)
         {
-            try
-            {
-                DeviceName = await GetDeviceNameAsync();
-                Settings.Instance.RegisteredDevice.Name = DeviceName;
-                        
-                await _backend.ConnectAsync(Settings.Instance.RegisteredDevice.MacAddress,
-                    ServiceUuid.ToString()!, noRetry);
-                return true;
-            }
-            catch (BluetoothException ex)
-            {
-                OnBluetoothError(ex);
-                return false;
-            }
+            Log.Error("BluetoothImpl: Connection attempt without valid device");
+            return false;
         }
         
-        Log.Error("BluetoothImpl: Connection attempt without valid device");
-        return false;
+        /* Load from configuration */
+        try
+        {
+            DeviceName = await GetDeviceNameAsync();
+            Settings.Instance.RegisteredDevice.Name = DeviceName;
+                        
+            await _backend.ConnectAsync(Settings.Instance.RegisteredDevice.MacAddress,
+                DeviceSpec.ServiceUuid.ToString(), noRetry);
+            return true;
+        }
+        catch (BluetoothException ex)
+        {
+            OnBluetoothError(ex);
+            return false;
+        }
     }
 
     public async Task DisconnectAsync()
@@ -292,7 +246,7 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
         {
             await _backend.DisconnectAsync();
             Disconnected?.Invoke(this, "User requested disconnect");
-            LastErrorMessage = "";
+            LastErrorMessage = string.Empty;
         }
         catch (BluetoothException ex)
         {
@@ -356,23 +310,42 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
         Settings.Instance.RegisteredDevice.Name = string.Empty;
         Settings.Instance.RegisteredDevice.DeviceColor = null;
         DeviceMessageCache.Instance.Clear();
-        // don't wait for this to complete as it may confuse users if the menu option waits until connect timed out
+        // Don't wait for this to complete as it may confuse users if the menu option waits until connect timed out
         _ = DisconnectAsync();
     }
-        
-    public static bool RegisteredDeviceValid =>
-        IsDeviceValid(Settings.Instance.RegisteredDevice.Model,
-            Settings.Instance.RegisteredDevice.MacAddress);
-        
-    private static bool IsDeviceValid(Models model, string macAddress)
+    
+    private void OnDisconnected(object? sender, string reason)
     {
-        return model != Models.NULL && macAddress.Length >= 12;
+        if (!SuppressDisconnectionEvents)
+        {
+            LastErrorMessage = Loc.Resolve("connlost");
+            IsConnected = false;
+            Disconnected?.Invoke(this, reason);
+        }
     }
-        
+
+    private void OnRfcommConnected(object? sender, EventArgs e)
+    {
+        _ = Task.Delay(150).ContinueWith(_ =>
+        {
+            if (IsRegisteredDeviceValid)
+            {
+                Connected?.Invoke(this, EventArgs.Empty);
+                IsConnected = true;
+            }
+            else
+            {
+                Log.Error("BluetoothImpl: Suppressing Connected event, device not properly registered");
+            }
+        });
+    }
+    
     private void OnNewDataAvailable(object? sender, byte[] frame)
     {
+        NewDataReceived?.Invoke(this, frame);
+        
         /* Discard data if not properly registered */
-        if (!RegisteredDeviceValid)
+        if (!IsRegisteredDeviceValid)
         {
             return;
         }
@@ -417,18 +390,5 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
                 InvalidDataReceived?.Invoke(this, ex);
             }
         }
-    }
-
-    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    private bool RaiseAndSet<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
-    {
-        if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-        field = value;
-        OnPropertyChanged(propertyName);
-        return true;
     }
 }
