@@ -18,6 +18,7 @@ using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using Sentry;
 using Serilog;
 using Task = System.Threading.Tasks.Task;
 
@@ -407,10 +408,10 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
             do
             {
                 var msgSize = 0;
+                var raw = _incomingData.OfType<byte>().ToArray();
+
                 try
                 {
-                    var raw = _incomingData.OfType<byte>().ToArray();
-
                     foreach (var hook in ScriptManager.Instance.RawStreamHooks)
                     {
                         hook.OnRawDataAvailable(ref raw);
@@ -430,6 +431,20 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
                 }
                 catch (InvalidPacketException e)
                 {
+                    SentrySdk.AddBreadcrumb($"{e.ErrorCode}: {e.Message}", "spp", level: BreadcrumbLevel.Warning);
+                    Log.Error("{Code}: {Msg}", e.ErrorCode, e.Message);
+                    if (e.ErrorCode is InvalidPacketException.ErrorCodes.Overflow
+                        or InvalidPacketException.ErrorCodes.OutOfRange)
+                    {
+                        SentrySdk.ConfigureScope(scope =>
+                        {
+                            scope.SetTag("raw-data-available", "true");
+                            scope.SetExtra("raw-data", HexUtils.Dump(raw, 512, false, false, false));
+                        });
+                        SentrySdk.CaptureException(e);
+                    }
+                    
+                    
                     // Attempt to remove broken message, otherwise skip data block
                     var somIndex = 0;
                     for (var i = 1; i < _incomingData.Count; i++)

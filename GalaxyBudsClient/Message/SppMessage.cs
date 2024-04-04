@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
@@ -43,43 +45,38 @@ public class SppMessage(
     public byte[] Encode()
     {
         var spec = DeviceSpecHelper.FindByModel(TargetModel) ?? throw new InvalidOperationException();
-        
-        var msg = new byte[TotalPacketSize];
-        msg[0] = spec.StartOfMessage;
+
+        using var stream = new MemoryStream(TotalPacketSize);
+        using var writer = new BinaryWriter(stream);
+        writer.Write(spec.StartOfMessage);
             
         if (spec.Supports(Features.SppLegacyMessageHeader))
         {
-            msg[1] = (byte)Type;
-            msg[2] = (byte)Size;
+            writer.Write((byte)Type);
+            writer.Write((byte)Size);
         }
         else
         {
             /* Generate header */
             var header = BitConverter.GetBytes((short)Size);
+            Debug.Assert(header.Length == 2);
+            
             if (IsFragment) {
                 header[1] = (byte) (header[1] | 32);
             }
             if (Type == MsgTypes.Response) {
                 header[1] = (byte) (header[1] | 16);
             }
-
-            msg[1] = header[0];
-            msg[2] = header[1];
+            
+            writer.Write(header);
         }
 
-        msg[3] = (byte)Id;
-
-        Array.Copy(Payload, 0, msg, 4, Payload.Length);
-
-        var crcData = new byte[Size - 2];
-        crcData[0] = msg[3];
-        Array.Copy(Payload, 0, crcData, 1, Payload.Length);
-        var crc16 = Utils.Crc16.crc16_ccitt(crcData);
-        msg[4 + Payload.Length] = (byte)(crc16 & 255);
-        msg[4 + Payload.Length + 1] = (byte)((crc16 >> 8) & 255);
-
-        msg[TotalPacketSize - 1] = spec.EndOfMessage;
-        return msg;
+        writer.Write((byte)Id);
+        writer.Write(Payload);
+        writer.Write(Utils.Crc16.crc16_ccitt(Id, Payload));
+        writer.Write(spec.EndOfMessage);
+        
+        return stream.ToArray();
     }
 
     /**
@@ -92,59 +89,50 @@ public class SppMessage(
             var spec = DeviceSpecHelper.FindByModel(model) ?? throw new InvalidOperationException();
             var draft = new SppMessage(model: model);
 
+            using var stream = new MemoryStream(raw);
+            using var reader = new BinaryReader(stream);
+            
             if (raw.Length < 6)
-            {
-                SentrySdk.AddBreadcrumb($"Message too small (Length: {raw.Length})", "spp", level: BreadcrumbLevel.Warning);
-                Log.Error("Message too small (Length: {Length})", raw.Length);
-                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.TooSmall);
-            }
-                
-            if (raw[0] != spec.StartOfMessage)
-            {
-                SentrySdk.AddBreadcrumb($"Invalid SOM (Received: {raw[0]})", "spp", level: BreadcrumbLevel.Warning);
-                Log.Error("Invalid SOM (Received: {SomByte})", raw[0]);
-                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.SOM);
-            }
+                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.TooSmall, "At least 6 bytes are required");
+            
+            if (reader.ReadByte() != spec.StartOfMessage)
+                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.SOM, "Invalid SOM byte");
 
-            draft.Id = (MsgIds) Convert.ToInt32(raw[3]);
             int size;
-
             if (spec.Supports(Features.SppLegacyMessageHeader))
             {
-                draft.Type = (MsgTypes) Convert.ToInt32(raw[1]);
-                size = Convert.ToInt32(raw[2]);
+                draft.Type = (MsgTypes) Convert.ToInt32(reader.ReadByte());
+                size = Convert.ToInt32(reader.ReadByte());
             }
             else
             {
-                var p1 = raw[2] << 8;
-                var p2 = raw[1] & 255;
-                var header = p1 + p2;
-                draft.IsFragment = (header & 8192) != 0;
-                draft.Type = (header & 4096) != 0 ? MsgTypes.Request : MsgTypes.Response;
-                size = header & 1023;
+                var header = reader.ReadInt16();
+                draft.IsFragment = (header & 0x2000) != 0;
+                draft.Type = (header & 0x1000) != 0 ? MsgTypes.Request : MsgTypes.Response;
+                size = header & 0x3FF;
             }
 
-            //Subtract Id and CRC from size
-            var rawPayloadSize = size - 3;
-            if (rawPayloadSize < 0)
+            draft.Id = (MsgIds)reader.ReadByte();
+            
+            // Subtract Id and CRC from size
+            var payloadSize = size - 3;
+            if (payloadSize < 0)
             {
-                rawPayloadSize = 0;
+                payloadSize = 0;
                 size = 3;
             }
-            var payload = new byte[rawPayloadSize];
-
+            
+            var payload = new byte[payloadSize];
             var crcData = new byte[size];
-            crcData[0] = raw[3]; //Msg ID
-
-            for (var i = 0; i < rawPayloadSize; i++)
+            crcData[0] = (byte)draft.Id;
+            
+            for (var i = 0; i < payloadSize; i++)
             {
-                //Start to read at byte 4
-                payload[i] = raw[i + 4];
-                crcData[i + 1] = raw[i + 4];
+                payload[i] = crcData[i + 1] = reader.ReadByte();
             }
 
-            var crc1 = raw[4 + rawPayloadSize];
-            var crc2 = raw[4 + rawPayloadSize + 1];
+            var crc1 = reader.ReadByte();
+            var crc2 = reader.ReadByte();
             crcData[^2] = crc2;
             crcData[^1] = crc1;
 
@@ -152,56 +140,28 @@ public class SppMessage(
             draft.Crc16 = Utils.Crc16.crc16_ccitt(crcData);
 
             if (size != draft.Size)
-            {
-                SentrySdk.AddBreadcrumb($"Invalid size (Reported: {size}, Calculated: {draft.Size})", "spp", level: BreadcrumbLevel.Warning);
-                Log.Error("Invalid size (Reported: {Size}, Calculated: {DraftSize})", size, draft.Size);
-                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.SizeMismatch);
-            }
-
+                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.SizeMismatch, "Invalid size");
             if (draft.Crc16 != 0)
-            {
-                SentrySdk.AddBreadcrumb($"CRC checksum failed (ID: {draft.Id}, Size: {draft.Size})", "spp", level: BreadcrumbLevel.Warning);
-                Log.Error("CRC checksum failed (ID: {Id}, Size: {Size})", draft.Id, draft.Size);
-                //throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Checksum, null, draft);
-            }
-
-            if (raw[draft.TotalPacketSize - 1] != spec.EndOfMessage)
-            {
-                SentrySdk.AddBreadcrumb($"Invalid EOM (Received: {raw[4 + rawPayloadSize + 2]})", "spp", level: BreadcrumbLevel.Warning);
-                Log.Error("Invalid EOM (Received: {EomByte}", raw[4 + rawPayloadSize + 2]);
-                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.EOM, null, draft);
-            }
+                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Checksum, "Invalid checksum");
+            if (reader.ReadByte() != spec.EndOfMessage)
+                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.EOM, "Invalid EOM byte");
 
             return draft;
         }
         catch (IndexOutOfRangeException)
         {
-            SentrySdk.AddBreadcrumb("IndexOutOfRangeException");
-            SentrySdk.ConfigureScope(scope =>
-            {
-                scope.SetTag("raw-data-available", "true");
-                scope.SetExtra("raw-data", HexUtils.Dump(raw, 512, false, false, false));
-            });
-            throw new InvalidPacketException(InvalidPacketException.ErrorCodes.OutOfRange,"IndexOutOfRange. Update your firmware!");
+            throw new InvalidPacketException(InvalidPacketException.ErrorCodes.OutOfRange,"Index was out of range");
         }
-        catch (OverflowException ex)
+        catch (OverflowException)
         {
-            SentrySdk.AddBreadcrumb("OverflowException");
-            SentrySdk.ConfigureScope(scope =>
-            {
-                scope.SetTag("raw-data-available", "true");
-                scope.SetExtra("raw-data", HexUtils.Dump(raw, 512, false, false, false));
-            });
-            SentrySdk.CaptureException(ex);
-
             throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Overflow,"Overflow. Update your firmware!");
         }
     }
 
     public override string ToString()
     {
-        return $"SPPMessage[MessageID={Id},PayloadSize={Size},Type={(IsFragment ? "Fragment/" : string.Empty) + Type},CRC16={Crc16}," +
-               $"Payload={{{BitConverter.ToString(Payload).Replace("-", " ")}}}]";
+        return $"SPPMessage[MessageID={Id}, PayloadSize={Size}, Type={(IsFragment ? "Fragment/" : string.Empty) + Type}, " +
+               $"CRC16={Crc16}, Payload={{{BitConverter.ToString(Payload).Replace("-", " ")}}}]";
     }
 
 }

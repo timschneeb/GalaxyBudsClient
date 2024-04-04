@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using GalaxyBudsClient.Message;
 
 namespace GalaxyBudsClient.Utils;
 
@@ -30,7 +32,7 @@ public static class Crc16
         49082, 36825, 40952, 28183, 32310, 20053, 24180, 11923, 16050, 3793, 7920
     ];
 
-    public static int crc16_ccitt(IEnumerable<byte> data)
+    public static short crc16_ccitt(IEnumerable<byte> data)
     {
 
         /*
@@ -42,6 +44,14 @@ public static class Crc16
          */
 
         var crc = data.Aggregate(0, (current, t) => Crc16Tab[((current >> 8) ^ t) & 0xFF] ^ (current << 8));
-        return crc & 0xFFFF;
+        return (short)(crc & 0xFFFF);
+    }
+
+    public static byte[] crc16_ccitt(MsgIds msgId, byte[] payload)
+    {
+        var crcData = new byte[1 + payload.Length];
+        crcData[0] = (byte)msgId;
+        Array.Copy(payload, 0, crcData, 1, payload.Length);
+        return BitConverter.GetBytes(crc16_ccitt(crcData));
     }
 }
