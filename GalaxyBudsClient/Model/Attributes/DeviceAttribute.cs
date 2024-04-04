@@ -14,9 +14,10 @@ public enum Selector
     LessEqual,
 }
 
+[AttributeUsage(AttributeTargets.Property)]
 public class DeviceAttribute : Attribute
 {
-    private Selector _selector = Selector.Equal;
+    private readonly Selector _selector = Selector.Equal;
     
     public DeviceAttribute(params Models[] models)
     {
