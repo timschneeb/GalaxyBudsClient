@@ -12,7 +12,7 @@
     <converters:AmbientCustomStrengthConverter x:Key="AmbientCustomStrengthConverter" />
     <converters:AmbientStrengthConverter x:Key="AmbientStrengthConverter" />
     <converters:AmbientToneConverter x:Key="AmbientToneConverter" />
-
+    
     <!-- Global strings -->
     <system:String x:Key="TranslatorCreditsString">@fhalfkg; @ArthurWolfhound; @erenbektas; Andrew Gonza; @kakkk; @giovankabisano; @lucasskluser; @alb-p; @joskaja; @buashei; @ssenkrad; @KevinZonda; @mario-donnarumma; @pseudor; @cozyplanes; @KatJillianne; @Joedmin; @papercore-dev; @grigorem; @tretre91; @Sigarya; @YexuanXiao; @Benni0109; @Eta06</system:String>
     <system:String x:Key="ContributorCreditsString">@githubcatw; @AndriesK; @ArthurWolfhound; @TheLastFrame; @nift4</system:String>

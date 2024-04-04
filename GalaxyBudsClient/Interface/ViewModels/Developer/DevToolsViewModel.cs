@@ -8,6 +8,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Developer;
 public class DevToolsViewModel : ViewModelBase
 {
     [Reactive] public bool HasProperties { set; get; } = true;
+    [Reactive] public bool IsAutoscrollEnabled { set; get; } = true;
     [Reactive] public MessageViewHolder? SelectedMessage { set; get; }
         
     public readonly DataGridCollectionView MsgTableDataView = new(new ObservableCollection<MessageViewHolder>());

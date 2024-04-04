@@ -6,6 +6,8 @@
         xmlns:vm="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Developer"
         xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
         xmlns:message="clr-namespace:GalaxyBudsClient.Message"
+        xmlns:avaloniaHex="clr-namespace:AvaloniaHex;assembly=AvaloniaHex"
+        xmlns:rendering="clr-namespace:AvaloniaHex.Rendering;assembly=AvaloniaHex"
         mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="625"
         x:Class="GalaxyBudsClient.Interface.Developer.DevTools"
         x:DataType="vm:DevToolsViewModel"
@@ -24,17 +26,21 @@
             <Setter Property="FontSize" Value="14" />
             <Setter Property="MinHeight" Value="24" />
         </Style>
+        <StyleInclude Source="avares://AvaloniaHex/Themes/Simple/AvaloniaHex.axaml"/>
     </Window.Styles>
 
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_Dump to file..." Click="SaveDump_OnClick" />
-                <MenuItem Header="_Parse dump..." Click="LoadDump_OnClick" />
-                <MenuItem Header="_Clear" Click="Clear_OnClick" />
+                <MenuItem Header="_Dump to file..." InputGesture="Ctrl+S" Click="SaveDump_OnClick" />
+                <MenuItem Header="_Parse dump..." InputGesture="Ctrl+O" Click="LoadDump_OnClick" />
+                <MenuItem Header="_Clear" InputGesture="Ctrl+L" Click="Clear_OnClick" />
             </MenuItem>
             <MenuItem Header="_Edit">
-                <MenuItem Header="_Copy selected payload" Click="CopyPayload_OnClick" />
+                <MenuItem Header="_Copy selected payload" InputGesture="Ctrl+Shift+C" Click="CopyPayload_OnClick" />
+            </MenuItem>
+            <MenuItem Header="_View">
+                <MenuItem Header="_Auto-scroll" ToggleType="CheckBox" IsChecked="{Binding IsAutoscrollEnabled}" />
             </MenuItem>
         </Menu>
 
@@ -42,12 +48,15 @@
 
             <Grid Grid.Column="0" RowDefinitions="*,5,*">
 
-                <TextBox Name="HexDump"
-                         Grid.Column="0"
-                         Text="Waiting for incoming data..." IsReadOnly="True"
-                         FontFamily="Monospace, Lucida Console, Hack"
-                         FontSize="12"
-                         BorderBrush="{StaticResource SystemBaseLowColor}" />
+                <avaloniaHex:HexEditor Name="HexEditor"
+                                       Grid.Column="0" 
+                                       FontFamily="Monospace,monospace,Consolas,Hack">
+                    <avaloniaHex:HexEditor.Columns>
+                        <rendering:OffsetColumn />
+                        <rendering:HexColumn />
+                        <rendering:AsciiColumn />
+                    </avaloniaHex:HexEditor.Columns>
+                </avaloniaHex:HexEditor>
 
                 <GridSplitter Grid.Row="1" Height="5" ResizeDirection="Rows" ShowsPreview="True" />
 

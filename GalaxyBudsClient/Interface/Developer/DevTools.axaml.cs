@@ -4,9 +4,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using Avalonia;
 using Avalonia.Interactivity;
+using Avalonia.Media;
+using Avalonia.Platform;
 using Avalonia.Platform.Storage;
 using Avalonia.Threading;
+using AvaloniaHex.Document;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.ViewModels.Developer;
 using GalaxyBudsClient.Message;
@@ -20,8 +24,6 @@ namespace GalaxyBudsClient.Interface.Developer;
 
 public partial class DevTools : StyledWindow.StyledWindow
 {
-    private readonly List<byte> _cache = [];
-
     private readonly List<FilePickerFileType> _filters =
     [
         new FilePickerFileType("Hex dump") { Patterns = new List<string>() { "*.bin", "*.hex" } },
@@ -33,6 +35,10 @@ public partial class DevTools : StyledWindow.StyledWindow
     public DevTools()
     {
         InitializeComponent();
+
+        var monoFonts = new FontFamily(null, $"{Program.AvaresUrl}/Resources/Fonts/RobotoMono-Regular.ttf#Roboto Mono,Consolas,Hack,Monospace,monospace");
+        HexEditor.FontFamily = monoFonts;
+        
         DataContext = _vm;
         
         Closing += OnClosing;
@@ -45,15 +51,19 @@ public partial class DevTools : StyledWindow.StyledWindow
         { 
             try
             {
-                _cache.AddRange(raw);
-                HexDump.Text = HexUtils.Dump(_cache.ToArray());
+                HexEditor.Document ??= new InMemoryBinaryDocument();
+                HexEditor.Document.InsertBytes(HexEditor.Document.Length, new ReadOnlySpan<byte>(raw));
+                
+                if(_vm.IsAutoscrollEnabled)
+                    HexEditor.Caret.Location = new BitLocation(HexEditor.Document.Length - 1);
+                HexEditor.HexView.InvalidateVisualLines();
 
                 var holder = new MessageViewHolder(SppMessage.Decode(raw, BluetoothImpl.ActiveModel));
                 _vm.MsgTableDataSource.Add(holder);
                 _vm.MsgTableDataView.Refresh();
-                    
-                HexDump.CaretIndex = int.MaxValue;
-                MsgTable.ScrollIntoView(holder, null);
+                
+                if(_vm.IsAutoscrollEnabled)
+                    MsgTable.ScrollIntoView(holder, null);
             }
             catch(InvalidPacketException){}
         });
@@ -63,8 +73,7 @@ public partial class DevTools : StyledWindow.StyledWindow
     {
         BluetoothImpl.Instance.NewDataReceived -= OnNewDataReceived;
 
-        _cache.Clear();
-        HexDump.Clear();
+        HexEditor.Document = null;
         _vm.MsgTableDataSource.Clear();
         _vm.MsgTableDataView.Refresh();
     }
@@ -125,8 +134,7 @@ public partial class DevTools : StyledWindow.StyledWindow
         
     private void Clear_OnClick(object? sender, RoutedEventArgs e)
     {
-        _cache.Clear();
-        HexDump.Clear();
+        HexEditor.Document?.RemoveBytes(0, HexEditor.Document.Length);
         _vm.MsgTableDataSource.Clear();
         _vm.MsgTableDataView.Refresh();
     }
@@ -145,9 +153,9 @@ public partial class DevTools : StyledWindow.StyledWindow
         try
         {
             data = new ArrayList(await File.ReadAllBytesAsync(file));
-            _cache.Clear();
-            _cache.AddRange((byte[]) data.ToArray(typeof(byte)));
-            HexDump.Text = HexUtils.Dump(_cache.ToArray());
+            HexEditor.Document ??= new InMemoryBinaryDocument();
+            HexEditor.Document.RemoveBytes(0, HexEditor.Document.Length);
+            HexEditor.Document.InsertBytes(HexEditor.Document.Length, new ReadOnlySpan<byte>((byte[])data.ToArray(typeof(byte))));
         }
         catch (Exception ex)
         {
@@ -210,7 +218,7 @@ public partial class DevTools : StyledWindow.StyledWindow
         try
         {
             await using var fs = new FileStream(path, FileMode.Create, FileAccess.Write);
-            fs.Write(_cache.ToArray(), 0, _cache.ToArray().Length);
+            HexEditor.Document?.WriteAllToStream(fs);
         }
         catch (Exception ex)
         {
