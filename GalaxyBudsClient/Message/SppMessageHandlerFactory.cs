@@ -16,16 +16,18 @@ public static class SppMessageHandlerFactory
     static SppMessageHandlerFactory()
     {
         var types = typeof(SppMessageHandlerFactory).Assembly.GetTypes();
-        RegisteredDecoders = types
-            .Where(t => t is { Namespace: "GalaxyBudsClient.Message.Decoder", IsClass: true, IsAbstract: false } && t.IsSubclassOf(typeof(BaseMessageDecoder)))
-            .ToArray();
-        RegisteredEncoders = types
-            .Where(t => t is { Namespace: "GalaxyBudsClient.Message.Encoder", IsClass: true, IsAbstract: false } && t.IsSubclassOf(typeof(BaseMessageEncoder)))
-            .ToArray();
+        RegisteredDecoders = new Lazy<Type[]>(() => types
+            .Where(t => t is { Namespace: "GalaxyBudsClient.Message.Decoder", IsClass: true, IsAbstract: false } &&
+                        t.IsSubclassOf(typeof(BaseMessageDecoder)))
+            .ToArray());
+        RegisteredEncoders = new Lazy<Type[]>(() => types
+            .Where(t => t is { Namespace: "GalaxyBudsClient.Message.Encoder", IsClass: true, IsAbstract: false } &&
+                        t.IsSubclassOf(typeof(BaseMessageEncoder)))
+            .ToArray());
     }
 
-    private static readonly Type[] RegisteredDecoders;
-    private static readonly Type[] RegisteredEncoders;
+    private static readonly Lazy<Type[]> RegisteredDecoders;
+    private static readonly Lazy<Type[]> RegisteredEncoders;
 
     private static readonly Dictionary<MsgIds, Type?> DecoderTypeCache = new();
     
@@ -44,7 +46,7 @@ public static class SppMessageHandlerFactory
 
         if (b == null)
         {
-            foreach (var t in RegisteredDecoders)
+            foreach (var t in RegisteredDecoders.Value)
             {
                 var act = Activator.CreateInstance(t);
                 if (act?.GetType() != t)
