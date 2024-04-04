@@ -11,6 +11,7 @@ using Avalonia.Platform;
 using Avalonia.Platform.Storage;
 using Avalonia.Threading;
 using AvaloniaHex.Document;
+using DynamicData;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.ViewModels.Developer;
 using GalaxyBudsClient.Message;
@@ -104,20 +105,11 @@ public partial class DevTools : StyledWindow.StyledWindow
         {
             payload = SendMsgPayload.Text.HexStringToByteArray();
         }
-        catch (ArgumentOutOfRangeException)
+        catch (Exception)
         {
             _ = new MessageBox
             {
                 Title = "Invalid payload format",
-                Description = "Correct format: 00 01 FF E5 [...]"
-            }.ShowAsync(this);
-            return;
-        }
-        catch (FormatException)
-        {
-            _ = new MessageBox
-            {
-                Title = "Payload not hexadecimal",
                 Description = "Correct format: 00 01 FF E5 [...]"
             }.ShowAsync(this);
             return;
@@ -149,13 +141,12 @@ public partial class DevTools : StyledWindow.StyledWindow
         if(model == null)
             return;
         
-        ArrayList data;
+        var content = await File.ReadAllBytesAsync(file);
         try
         {
-            data = new ArrayList(await File.ReadAllBytesAsync(file));
             HexEditor.Document ??= new InMemoryBinaryDocument();
             HexEditor.Document.RemoveBytes(0, HexEditor.Document.Length);
-            HexEditor.Document.InsertBytes(HexEditor.Document.Length, new ReadOnlySpan<byte>((byte[])data.ToArray(typeof(byte))));
+            HexEditor.Document.InsertBytes(HexEditor.Document.Length, new ReadOnlySpan<byte>(content));
         }
         catch (Exception ex)
         {
@@ -167,46 +158,21 @@ public partial class DevTools : StyledWindow.StyledWindow
             return;
         }
 
-        var msgs = new List<SppMessage>();
-        do
+        try
         {
-            SppMessage msg;
-            try
-            {
-                var raw = data.OfType<byte>().ToArray();
-                msg = SppMessage.Decode(raw, model.Value);
-                msgs.Add(msg);
-            }
-            catch (InvalidPacketException ex)
-            {
-                _ = new MessageBox
-                {
-                    Title = "Error while decoding message", 
-                    Description = $"Error code: {ex.ErrorCode}\n\n{ex.Message}"
-                }.ShowAsync(this);
-                break;
-            }
-
-            if (msg.TotalPacketSize >= data.Count)
-            {
-                data.Clear();
-                break;
-            }
-
-            data.RemoveRange(0, msg.TotalPacketSize);
-
-            if (ByteArrayUtils.IsBufferZeroedOut(data))
-            {
-                /* No more data remaining */
-                break;
-            }
-        } while (data.Count > 0);
-
-        foreach (var holder in msgs.Select(m => new MessageViewHolder(m)))
-        {
-            _vm.MsgTableDataSource.Add(holder);
+            _vm.MsgTableDataSource.AddRange(
+                SppMessage.DecodeRawChunk([..content], model.Value)
+                    .Select(m => new MessageViewHolder(m)));
+            _vm.MsgTableDataView.Refresh();
         }
-        _vm.MsgTableDataView.Refresh();
+        catch (InvalidPacketException ex)
+        {
+            _ = new MessageBox
+            {
+                Title = "Error while decoding message", 
+                Description = $"Error code: {ex.ErrorCode}\n\n{ex.Message}"
+            }.ShowAsync(this);
+        }
     }
 
     private async void SaveDump_OnClick(object? sender, RoutedEventArgs e)

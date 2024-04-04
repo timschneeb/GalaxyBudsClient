@@ -32,12 +32,12 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_Dump to file..." InputGesture="Ctrl+S" Click="SaveDump_OnClick" />
-                <MenuItem Header="_Parse dump..." InputGesture="Ctrl+O" Click="LoadDump_OnClick" />
-                <MenuItem Header="_Clear" InputGesture="Ctrl+L" Click="Clear_OnClick" />
+                <MenuItem Header="_Dump to file..." Click="SaveDump_OnClick" />
+                <MenuItem Header="_Parse dump..." Click="LoadDump_OnClick" />
+                <MenuItem Header="_Clear" Click="Clear_OnClick" />
             </MenuItem>
             <MenuItem Header="_Edit">
-                <MenuItem Header="_Copy selected payload" InputGesture="Ctrl+Shift+C" Click="CopyPayload_OnClick" />
+                <MenuItem Header="_Copy selected payload" Click="CopyPayload_OnClick" />
             </MenuItem>
             <MenuItem Header="_View">
                 <MenuItem Header="_Auto-scroll" ToggleType="CheckBox" IsChecked="{Binding IsAutoscrollEnabled}" />

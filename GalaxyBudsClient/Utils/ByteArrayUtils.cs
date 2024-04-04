@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -43,7 +43,7 @@ public static class ByteArrayUtils
         return copy;
     }
 
-    public static bool IsBufferZeroedOut(ArrayList? buffer)
+    public static bool IsBufferZeroedOut(IEnumerable<byte>? buffer)
     {
         if (buffer == null)
         {
@@ -52,7 +52,7 @@ public static class ByteArrayUtils
             
         foreach(var value in buffer)
         {
-            if (value is byte b && b != 0x00)
+            if (value != 0x00)
             {
                 return false;
             }

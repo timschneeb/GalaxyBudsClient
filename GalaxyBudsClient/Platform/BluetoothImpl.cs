@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -84,7 +85,7 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
     [Obsolete("Use new IsConnected instead")]
     public bool IsConnectedLegacy => _backend.IsStreamConnected;
 
-    private readonly ArrayList _incomingData = [];
+    private readonly List<byte> _incomingData = [];
     private static readonly ConcurrentQueue<byte[]> IncomingQueue = new();
     private readonly CancellationTokenSource _cancelSource;
     private readonly Task? _loop;
@@ -403,86 +404,18 @@ public sealed class BluetoothImpl : IDisposable, INotifyPropertyChanged
                     _incomingData.AddRange(frame);
                 }
             }
-                
-            var failCount = 0;
-            do
+
+            try
             {
-                var msgSize = 0;
-                var raw = _incomingData.OfType<byte>().ToArray();
-
-                try
+                foreach (var message in SppMessage.DecodeRawChunk(_incomingData, ActiveModel))
                 {
-                    foreach (var hook in ScriptManager.Instance.RawStreamHooks)
-                    {
-                        hook.OnRawDataAvailable(ref raw);
-                    }
-
-                    var msg = SppMessage.Decode(raw, ActiveModel);
-                    msgSize = msg.TotalPacketSize;
-
-                    Log.Verbose(">> Incoming: {Msg}", msg);
-                    
-                    foreach (var hook in ScriptManager.Instance.MessageHooks)
-                    {
-                        hook.OnMessageAvailable(ref msg);
-                    }
-
-                    MessageReceived?.Invoke(this, msg);
+                    MessageReceived?.Invoke(this, message);
                 }
-                catch (InvalidPacketException e)
-                {
-                    SentrySdk.AddBreadcrumb($"{e.ErrorCode}: {e.Message}", "spp", level: BreadcrumbLevel.Warning);
-                    Log.Error("{Code}: {Msg}", e.ErrorCode, e.Message);
-                    if (e.ErrorCode is InvalidPacketException.ErrorCodes.Overflow
-                        or InvalidPacketException.ErrorCodes.OutOfRange)
-                    {
-                        SentrySdk.ConfigureScope(scope =>
-                        {
-                            scope.SetTag("raw-data-available", "true");
-                            scope.SetExtra("raw-data", HexUtils.Dump(raw, 512, false, false, false));
-                        });
-                        SentrySdk.CaptureException(e);
-                    }
-                    
-                    
-                    // Attempt to remove broken message, otherwise skip data block
-                    var somIndex = 0;
-                    for (var i = 1; i < _incomingData.Count; i++)
-                    {
-                        if ((byte)(_incomingData[i] ?? 0) == DeviceSpec.StartOfMessage)
-                        {
-                            somIndex = i;
-                            break;
-                        }
-                    }
-
-                    msgSize = somIndex;
-                    
-                    if (failCount > 5)
-                    {
-                        // Abandon data block
-                        InvalidDataReceived?.Invoke(this, e);
-                        break;
-                    }
-                    
-                    failCount++;
-                }
-
-                if (msgSize >= _incomingData.Count)
-                {
-                    _incomingData.Clear();
-                    break;
-                }
-
-                _incomingData.RemoveRange(0, msgSize);
-
-                if (ByteArrayUtils.IsBufferZeroedOut(_incomingData))
-                {
-                    /* No more data remaining */
-                    break;
-                }
-
-            } while (_incomingData.Count > 0);
+            }
+            catch (InvalidPacketException ex)
+            {
+                InvalidDataReceived?.Invoke(this, ex);
+            }
         }
     }
 

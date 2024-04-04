@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using GalaxyBudsClient.Message.Decoder;
@@ -6,6 +7,10 @@ using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Scripting;
+using GalaxyBudsClient.Utils;
+using Sentry;
+using Serilog;
 
 namespace GalaxyBudsClient.Message;
 
@@ -153,6 +158,91 @@ public class SppMessage(
         {
             throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Overflow,"Overflow. Update your firmware!");
         }
+    }
+    public static IEnumerable<SppMessage> DecodeRawChunk(List<byte> incomingData, Models model)
+    {
+        var spec = DeviceSpecHelper.FindByModel(model) ?? throw new InvalidOperationException();
+        var messages = new List<SppMessage>();
+        var failCount = 0;
+        
+        do
+        {
+            int msgSize;
+            var raw = incomingData.ToArray();
+
+            try
+            {
+                foreach (var hook in ScriptManager.Instance.RawStreamHooks)
+                {
+                    hook.OnRawDataAvailable(ref raw);
+                }
+
+                var msg = Decode(raw, model);
+                msgSize = msg.TotalPacketSize;
+
+                Log.Verbose(">> Incoming: {Msg}", msg);
+                    
+                foreach (var hook in ScriptManager.Instance.MessageHooks)
+                {
+                    hook.OnMessageAvailable(ref msg);
+                }
+
+                messages.Add(msg);
+            }
+            catch (InvalidPacketException e)
+            {
+                SentrySdk.AddBreadcrumb($"{e.ErrorCode}: {e.Message}", "spp", level: BreadcrumbLevel.Warning);
+                Log.Error("{Code}: {Msg}", e.ErrorCode, e.Message);
+                if (e.ErrorCode is InvalidPacketException.ErrorCodes.Overflow
+                    or InvalidPacketException.ErrorCodes.OutOfRange)
+                {
+                    SentrySdk.ConfigureScope(scope =>
+                    {
+                        scope.SetTag("raw-data-available", "true");
+                        scope.SetExtra("raw-data", HexUtils.Dump(raw, 512, false, false, false));
+                    });
+                    SentrySdk.CaptureException(e);
+                }
+                    
+                // Attempt to remove broken message, otherwise skip data block
+                var somIndex = 0;
+                for (var i = 1; i < incomingData.Count; i++)
+                {
+                    if (incomingData[i] == spec.StartOfMessage)
+                    {
+                        somIndex = i;
+                        break;
+                    }
+                }
+
+                msgSize = somIndex;
+                    
+                if (failCount > 5)
+                {
+                    // Abandon data block
+                    throw;
+                }
+                    
+                failCount++;
+            }
+
+            if (msgSize >= incomingData.Count)
+            {
+                incomingData.Clear();
+                break;
+            }
+
+            incomingData.RemoveRange(0, msgSize);
+
+            if (ByteArrayUtils.IsBufferZeroedOut(incomingData))
+            {
+                /* No more data remaining */
+                break;
+            }
+
+        } while (incomingData.Count > 0);
+
+        return messages;
     }
 
     public override string ToString()

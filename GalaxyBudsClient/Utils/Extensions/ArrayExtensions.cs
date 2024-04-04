@@ -9,7 +9,7 @@ public static class ArrayExtensions
             return [n];
         }
             
-        T[] newArray = new T[a.Length + 1];
+        var newArray = new T[a.Length + 1];
         a.CopyTo(newArray, 0);
         newArray[^1] = n;
         return newArray;
