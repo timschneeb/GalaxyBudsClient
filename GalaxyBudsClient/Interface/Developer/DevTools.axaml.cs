@@ -118,7 +118,7 @@ public partial class DevTools : StyledWindow.StyledWindow
         {
             Id = (MsgIds?) SendMsgId.SelectedItem ?? MsgIds.UNKNOWN_0,
             Payload = payload,
-            Type = (MsgTypes?) SendMsgType.SelectedItem ?? MsgTypes.INVALID
+            Type = (MsgTypes?) SendMsgType.SelectedItem ?? MsgTypes.Request
         };
         _ = BluetoothImpl.Instance.SendAsync(msg);
     }

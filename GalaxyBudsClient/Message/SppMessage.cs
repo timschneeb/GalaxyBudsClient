@@ -12,7 +12,7 @@ namespace GalaxyBudsClient.Message;
 
 public class SppMessage(
     MsgIds id = MsgIds.UNKNOWN_0, 
-    MsgTypes type = MsgTypes.INVALID,
+    MsgTypes type = MsgTypes.Request,
     byte[]? payload = null, 
     Models? model = null)
 {
