@@ -29,14 +29,6 @@ public static class ByteArrayUtils
     public static byte ValueOfRight(byte b) {
         return (byte) (b & 15);
     }
-        
-    public static byte[] AddByteToArray(byte[] bArray, byte newByte)
-    {
-        var newArray = new byte[bArray.Length + 1];
-        bArray.CopyTo(newArray, 0);
-        newArray[^1] = newByte;
-        return newArray;
-    }
 
     public static byte[] RTrimBytes(this byte[] bytes)
     {
