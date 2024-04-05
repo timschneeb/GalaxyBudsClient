@@ -20,7 +20,7 @@ public class LogDownloadProgressEventArgs(
     {
         Trace,
         Coredump,
-        _Switching
+        Switching
     }
 
     public int CurrentByteCount { get; } = currentByteCount;
@@ -39,7 +39,7 @@ public class DeviceLogManager
     public event EventHandler<LogDownloadProgressEventArgs>? ProgressUpdated;
     public event EventHandler<LogDownloadFinishedEventArgs>? Finished;
 
-    private bool _hasCompletedRoleSwitch = false;
+    private bool _hasCompletedRoleSwitch;
         
     private byte[]? _traceBuffer;
     private byte[]? _coredumpBuffer;
@@ -117,7 +117,7 @@ public class DeviceLogManager
                 _traceBuffer = new byte[_traceContext!.DataSize];
                 MakeOffsetList(_traceContext.FragmentCount, _traceContext.PartialDataMaxSize);
                 
-                await BluetoothImpl.Instance.SendAsync(new LogTraceDataEncoder()
+                await BluetoothImpl.Instance.SendAsync(new LogTraceDataEncoder
                 {
                     Offset = 0,
                     Size = _traceContext.PartialDataMaxSize
@@ -156,7 +156,7 @@ public class DeviceLogManager
                         i = i3 - remainOffset;
                     }
 
-                    await BluetoothImpl.Instance.SendAsync(new LogTraceDataEncoder()
+                    await BluetoothImpl.Instance.SendAsync(new LogTraceDataEncoder
                     {
                         Offset = remainOffset,
                         Size = i
@@ -164,7 +164,7 @@ public class DeviceLogManager
                     return;
                 }
 
-                ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(0,0, LogDownloadProgressEventArgs.Type._Switching));
+                ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(0,0, LogDownloadProgressEventArgs.Type.Switching));
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.LOG_TRACE_COMPLETE);
 
                 var path = WriteTempFile($"{BluetoothImpl.ActiveModel.ToString()}_traceDump_{_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _traceBuffer ?? Array.Empty<byte>());
@@ -187,7 +187,7 @@ public class DeviceLogManager
                 {
                     _coredumpBuffer = new byte[_coredumpContext.DataSize];
                     
-                    await BluetoothImpl.Instance.SendAsync(new LogCoredumpDataEncoder()
+                    await BluetoothImpl.Instance.SendAsync(new LogCoredumpDataEncoder
                     {
                         Offset = 0,
                         Size = _coredumpContext.DataSize
@@ -222,7 +222,7 @@ public class DeviceLogManager
                         i = i3 - remainOffsetCore;
                     }
 
-                    await BluetoothImpl.Instance.SendAsync(new LogCoredumpDataEncoder()
+                    await BluetoothImpl.Instance.SendAsync(new LogCoredumpDataEncoder
                     {
                         Offset = remainOffsetCore,
                         Size = i
@@ -230,7 +230,7 @@ public class DeviceLogManager
                     return;
                 }
                     
-                ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(0,0, LogDownloadProgressEventArgs.Type._Switching));
+                ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(0,0, LogDownloadProgressEventArgs.Type.Switching));
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.LOG_COREDUMP_COMPLETE);
                     
                 var pathCore = WriteTempFile($"{BluetoothImpl.ActiveModel.ToString()}_coreDump_{/* this is intentional -> */_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _coredumpBuffer ?? Array.Empty<byte>());

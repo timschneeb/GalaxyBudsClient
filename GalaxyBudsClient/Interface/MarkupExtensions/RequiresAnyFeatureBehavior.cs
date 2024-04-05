@@ -52,7 +52,7 @@ public class RequiresAnyFeatureBehavior : Behavior<Control>
         UpdateState();
     }
     
-    protected virtual void UpdateState()
+    protected void UpdateState()
     {
         if (AssociatedObject is null)
             return;

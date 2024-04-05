@@ -114,7 +114,7 @@ namespace GalaxyBudsClient.Model
             
             DebugResetBiasAll = 64,
             DebugResetBiasInUse = 65,
-            DebugResetPrintTimestamp = 66,
+            DebugResetPrintTimestamp = 66
         }
         
         public enum SpatialAudioData
@@ -244,7 +244,7 @@ namespace GalaxyBudsClient.Model
             Buds2ProViolet = 328,
         
             BudsFeGraphite = 330,
-            BudsFeWhite = 331,
+            BudsFeWhite = 331
         }
 
         public enum PlacementStates

@@ -62,7 +62,7 @@ public class TouchActionEditorDialogViewModel : ViewModelBase
 
     public async void DoFilePickCommand()
     {
-        var filters = new List<FilePickerFileType>()
+        var filters = new List<FilePickerFileType>
         {
             new("All files") { Patterns = new List<string> { "*" } }
         };

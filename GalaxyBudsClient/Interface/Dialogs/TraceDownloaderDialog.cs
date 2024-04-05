@@ -20,7 +20,7 @@ public class TraceDownloaderDialog : TaskDialog
     private readonly TextBlock _content;
     private readonly TaskDialogButton _closeButton;
 
-    private readonly DeviceLogManager _deviceLogManager = new DeviceLogManager();
+    private readonly DeviceLogManager _deviceLogManager = new();
     
     public TraceDownloaderDialog()
     {
@@ -66,7 +66,7 @@ public class TraceDownloaderDialog : TaskDialog
 
     private void OnFinished(object? s, LogDownloadFinishedEventArgs ev)
     {
-        Dispatcher.UIThread.Post(async () =>
+        _ = Dispatcher.UIThread.InvokeAsync(async () =>
         {
             SubHeader = Loc.Resolve("coredump_dl_progress_finished");
             SetProgressBarState(100, TaskDialogProgressState.Normal);
@@ -103,7 +103,7 @@ public class TraceDownloaderDialog : TaskDialog
     {
         Dispatcher.UIThread.Post(() =>
         {
-            if (ev.DownloadType == LogDownloadProgressEventArgs.Type._Switching)
+            if (ev.DownloadType == LogDownloadProgressEventArgs.Type.Switching)
             {
                 SubHeader = Loc.Resolve("coredump_dl_progress_prepare");
                 SetProgressBarState(0, TaskDialogProgressState.Indeterminate);

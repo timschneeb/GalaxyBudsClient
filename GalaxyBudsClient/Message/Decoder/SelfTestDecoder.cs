@@ -26,10 +26,10 @@ public class SelfTestDecoder : BaseMessageDecoder
     public bool RightProximity { set; get; }
     public bool LeftThermistor { set; get; }
     public bool RightThermistor { set; get; }
-    public bool LeftAdcSOC { set; get; }
+    public bool LeftAdcSoc { set; get; }
     public bool LeftAdcVCell { set; get; }
     public bool LeftAdcCurrent { set; get; }
-    public bool RightAdcSOC { set; get; }
+    public bool RightAdcSoc { set; get; }
     public bool RightAdcVCell { set; get; }
     public bool RightAdcCurrent { set; get; }
     public bool LeftHall { set; get; }
@@ -58,10 +58,10 @@ public class SelfTestDecoder : BaseMessageDecoder
         RightProximity = (data & 16384) == 0;
         LeftThermistor = (data & 32768) == 0;
         RightThermistor = (data & 65536) == 0;
-        LeftAdcSOC = (data & 131072) == 0;
+        LeftAdcSoc = (data & 131072) == 0;
         LeftAdcVCell = (data & 262144) == 0;
         LeftAdcCurrent = (data & 524288) == 0;
-        RightAdcSOC = (data & 1048576) == 0;
+        RightAdcSoc = (data & 1048576) == 0;
         RightAdcVCell = (data & 2097152) == 0;
         RightAdcCurrent = (data & 4194304) == 0;
         LeftHall = (data & 8388608) == 0;

@@ -118,7 +118,7 @@ public class FirmwareTransferManager
                 if (session.ResultCode != 0)
                 {
                     Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.SessionFail, 
-                        string.Format("fw_fail_session", session.ResultCode)));
+                        string.Format(Loc.Resolve("fw_fail_session"), session.ResultCode)));
                 }
                 else
                 {
@@ -136,7 +136,7 @@ public class FirmwareTransferManager
                         _mtuSize = control.MtuSize;
                         MtuChanged?.Invoke(this, control.MtuSize);
 
-                        await BluetoothImpl.Instance.SendAsync(new FotaControlEncoder()
+                        await BluetoothImpl.Instance.SendAsync(new FotaControlEncoder
                         {
                             ControlId = control.ControlId,
                             Parameter = control.MtuSize
@@ -147,7 +147,7 @@ public class FirmwareTransferManager
                         _currentSegment = control.Id;
                         CurrentSegmentIdChanged?.Invoke(this, control.Id);
                         
-                        await BluetoothImpl.Instance.SendAsync(new FotaControlEncoder()
+                        await BluetoothImpl.Instance.SendAsync(new FotaControlEncoder
                         {
                             ControlId = control.ControlId,
                             Parameter = control.Id
@@ -199,7 +199,7 @@ public class FirmwareTransferManager
 
                         if (update.State == 0)
                         {
-                            Log.Debug($"FirmwareTransferManager.OnMessageReceived: Transfer complete (FOTA_STATE_CHANGE). The device will now proceed with the flashing process on its own.");
+                            Log.Debug("FirmwareTransferManager.OnMessageReceived: Transfer complete (FOTA_STATE_CHANGE). The device will now proceed with the flashing process on its own.");
                             Finished?.Invoke(this, EventArgs.Empty);
                             Cancel();
                         }
@@ -219,7 +219,7 @@ public class FirmwareTransferManager
 
                 if (result.Result == 0)
                 {
-                    Log.Debug($"FirmwareTransferManager.OnMessageReceived: Transfer complete (FOTA_RESULT). The device will now proceed with the flashing process on its own.");
+                    Log.Debug("FirmwareTransferManager.OnMessageReceived: Transfer complete (FOTA_RESULT). The device will now proceed with the flashing process on its own.");
                     Finished?.Invoke(this, EventArgs.Empty);
                     Cancel();
                 }

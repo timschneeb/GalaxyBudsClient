@@ -17,6 +17,6 @@ internal class LogCoredumpDataSizeDecoder : BaseMessageDecoder
 
         DataSize = BitConverter.ToInt32(msg.Payload, 0);
         PartialDataMaxSize = BitConverter.ToInt16(msg.Payload, 4);
-        FragmentCount = (int)Math.Ceiling((double)DataSize/(double)PartialDataMaxSize);
+        FragmentCount = (int)Math.Ceiling(DataSize/(double)PartialDataMaxSize);
     }
 }

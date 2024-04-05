@@ -62,11 +62,9 @@ public static class FirmwareRemoteBinaryFilters
             // Equal version
             return false;
         }
-        else
-        {   
-            Log.Warning("FirmwareRemoteBinary: Device version info length is wrong: {Current} vs {New}", 
-                current.Length, item.BuildName.Length);
-            return false;
-        }
+
+        Log.Warning("FirmwareRemoteBinary: Device version info length is wrong: {Current} vs {New}", 
+            current.Length, item.BuildName.Length);
+        return false;
     }
 }

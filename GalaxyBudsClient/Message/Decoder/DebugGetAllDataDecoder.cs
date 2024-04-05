@@ -36,14 +36,14 @@ public class DebugGetAllDataDecoder : BaseMessageDecoder
     public double RightThermistor { set; get; }
 
     [Postfix(Text = "%")]
-    public double LeftAdcSOC { set; get; }
+    public double LeftAdcSoc { set; get; }
     [Postfix(Text = "V")]
     public double LeftAdcVCell { set; get; }
     [Postfix(Text = "mA")]
     public double LeftAdcCurrent { set; get; }
 
     [Postfix(Text = "%")]
-    public double RightAdcSOC { set; get; }
+    public double RightAdcSoc { set; get; }
     [Postfix(Text = "V")]
     public double RightAdcVCell { set; get; }
     [Postfix(Text = "mA")]
@@ -75,13 +75,13 @@ public class DebugGetAllDataDecoder : BaseMessageDecoder
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public short RightTspDiff2 { set; get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public short LeftPR { set; get; }
+    public short LeftPr { set; get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public short RightPR { set; get; }
+    public short RightPr { set; get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public short LeftWD { set; get; }
+    public short LeftWd { set; get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public short RightWD { set; get; }
+    public short RightWd { set; get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public byte LeftCradleFlag { set; get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
@@ -121,10 +121,10 @@ public class DebugGetAllDataDecoder : BaseMessageDecoder
             LeftThermistor = BitConverter.ToDouble(msg.Payload, 33);
             RightThermistor = BitConverter.ToDouble(msg.Payload, 41);
 
-            LeftAdcSOC = BitConverter.ToDouble(msg.Payload, 49);
+            LeftAdcSoc = BitConverter.ToDouble(msg.Payload, 49);
             LeftAdcVCell = BitConverter.ToDouble(msg.Payload, 57);
             LeftAdcCurrent = BitConverter.ToDouble(msg.Payload, 65);
-            RightAdcSOC = BitConverter.ToDouble(msg.Payload, 73);
+            RightAdcSoc = BitConverter.ToDouble(msg.Payload, 73);
             RightAdcVCell = BitConverter.ToDouble(msg.Payload, 81);
             RightAdcCurrent = BitConverter.ToDouble(msg.Payload, 89);
 
@@ -159,10 +159,10 @@ public class DebugGetAllDataDecoder : BaseMessageDecoder
             LeftThermistor = BitConverter.ToInt16(msg.Payload, 38) * 0.1d;
             RightThermistor = BitConverter.ToInt16(msg.Payload, 40) * 0.1d;
 
-            LeftAdcSOC = BitConverter.ToInt16(msg.Payload, 42);
+            LeftAdcSoc = BitConverter.ToInt16(msg.Payload, 42);
             LeftAdcVCell = BitConverter.ToInt16(msg.Payload, 44) * 0.01d;
             LeftAdcCurrent = BitConverter.ToInt16(msg.Payload, 46) * -0.1d; //1.0E-4d;
-            RightAdcSOC = BitConverter.ToInt16(msg.Payload, 48);
+            RightAdcSoc = BitConverter.ToInt16(msg.Payload, 48);
             RightAdcVCell = BitConverter.ToInt16(msg.Payload, 50) * 0.01d;
             RightAdcCurrent = BitConverter.ToInt16(msg.Payload, 52) * -0.1d; //1.0E-4d;
 
@@ -179,10 +179,10 @@ public class DebugGetAllDataDecoder : BaseMessageDecoder
             LeftHall = msg.Payload[70].ToString("x");
             RightHall = msg.Payload[71].ToString("x");
 
-            LeftPR = BitConverter.ToInt16(msg.Payload, 72);
-            RightPR = BitConverter.ToInt16(msg.Payload, 74);
-            LeftWD = BitConverter.ToInt16(msg.Payload, 76);
-            RightWD = BitConverter.ToInt16(msg.Payload, 78);
+            LeftPr = BitConverter.ToInt16(msg.Payload, 72);
+            RightPr = BitConverter.ToInt16(msg.Payload, 74);
+            LeftWd = BitConverter.ToInt16(msg.Payload, 76);
+            RightWd = BitConverter.ToInt16(msg.Payload, 78);
 
             LeftCradleFlag = msg.Payload[79];
             RightCradleFlag = msg.Payload[80];
@@ -199,7 +199,7 @@ public class DebugGetAllDataDecoder : BaseMessageDecoder
         {
             if (i13 != 0)
             {
-                sb.Append(":");
+                sb.Append(':');
             }
             sb.Append(((payload[i13 + startIndex] & 240) >> 4).ToString("X"));
             sb.Append((payload[i13 + startIndex] & 15).ToString("X"));
@@ -218,23 +218,14 @@ public class DebugGetAllDataDecoder : BaseMessageDecoder
             var swMonthIndex = payload[startIndex + 1] & 15;
             var swRelVerIndex = payload[startIndex + 2];
 
-            string swRelVarString;
-            if (swRelVerIndex <= 15)
-            {
-                swRelVarString = (swRelVerIndex & 255).ToString("X");
-            }
-            else
-            {
-                swRelVarString = _swRelVer[swRelVerIndex - 16];
-            }
-
+            var swRelVarString = swRelVerIndex <= 15 ? (swRelVerIndex & 255).ToString("X") : _swRelVer[swRelVerIndex - 16];
             return buildPrefix + "XX" + _swVer[swVarIndex] + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] +
                    swRelVarString;
         }
         else
         {
             var swVar = (payload[startIndex] & 1) == 0 ? "E" : "U";
-            var isFotaDm = (payload[startIndex] & 240) >> 4;
+            // var isFotaDm = (payload[startIndex] & 240) >> 4;
                 
             var swYearIndex = (payload[startIndex + 1] & 240) >> 4;
             var swMonthIndex = payload[startIndex + 1] & 15;

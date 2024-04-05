@@ -282,7 +282,7 @@ public partial class MainWindow : StyledAppWindow
         switch (e.ErrorCode)
         {
             case BluetoothException.ErrorCodes.NoAdaptersAvailable:
-                await new MessageBox()
+                await new MessageBox
                 {
                     Title = Loc.Resolve("error"),
                     Description = Loc.Resolve("nobluetoothdev")
@@ -322,7 +322,7 @@ public partial class MainWindow : StyledAppWindow
                 }
                 catch (FileNotFoundException ex)
                 {
-                    await new MessageBox()
+                    await new MessageBox
                     {
                         Title = "Custom long-press action failed",
                         Description = $"Unable to launch external application.\n" +
@@ -333,7 +333,7 @@ public partial class MainWindow : StyledAppWindow
                 {
                     if (ex.NativeErrorCode == 13 && PlatformUtils.IsLinux)
                     {
-                        await new MessageBox()
+                        await new MessageBox
                         {
                             Title = "Custom long-press action failed",
                             Description = $"Unable to launch external application.\n\n" +
@@ -343,7 +343,7 @@ public partial class MainWindow : StyledAppWindow
                     }
                     else
                     {
-                        await new MessageBox()
+                        await new MessageBox
                         {
                             Title = "Custom long-press action failed",
                             Description = $"Unable to launch external application.\n\n" +

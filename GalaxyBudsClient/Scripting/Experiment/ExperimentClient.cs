@@ -28,7 +28,7 @@ public class ExperimentClient
     private readonly Timer _timer;
     public ExperimentClient()
     {
-        var handler = new HttpClientHandler()
+        var handler = new HttpClientHandler
         {
             ServerCertificateCustomValidationCallback = delegate { return true; }
         };

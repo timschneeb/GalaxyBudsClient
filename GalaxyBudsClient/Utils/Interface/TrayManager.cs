@@ -20,7 +20,7 @@ namespace GalaxyBudsClient.Utils.Interface;
 internal class TrayManager
 {
     private bool _allowUpdate = true;
-    private bool _missedUpdate = false;
+    private bool _missedUpdate;
 
     private TrayManager()
     {
@@ -119,7 +119,7 @@ internal class TrayManager
         await RebuildAsync();
     }
 
-    private static List<NativeMenuItemBase?> RebuildBatteryInfo()
+    private static IEnumerable<NativeMenuItemBase?> RebuildBatteryInfo()
     {
         var bsu = DeviceMessageCache.Instance.BasicStatusUpdate!;
         if (bsu.BatteryCase > 100)

@@ -46,7 +46,7 @@ public class ExperimentRequest
 public static class ExperimentRequestFilters
 {
     private const string PublicSigningKey =
-        @"-----BEGIN PUBLIC KEY-----
+          @"-----BEGIN PUBLIC KEY-----
             MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmPvttLEiqvE9alr32EEe
             8FBNfvYSi+sGWpSDwCpcc1g2rcKgTV9tPHXtF76AAu/htkUGxb/0KVUGKquLbpq1
             10XGnQILO5z0ivvBCiekeEO2GV+CFzIS5OmFdMt5A7cVzHrGFQ3QVutmJP+8N6wU

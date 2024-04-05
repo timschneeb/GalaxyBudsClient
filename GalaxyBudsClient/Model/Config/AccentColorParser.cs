@@ -11,7 +11,7 @@ public class AccentColorParser : ITypeParser
     public IEnumerable<Type> SupportedTypes => new[] { typeof(Color) };
     public static Color DefaultColor { get; } = Colors.Orange;
 
-    public string? ToRawString(object? value)
+    public string ToRawString(object? value)
     {
         if (value is Color color)
         {

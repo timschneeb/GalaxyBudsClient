@@ -35,7 +35,7 @@ public class RequiresConnectedDeviceBehavior : Behavior<Control>
         }
     }
     
-    protected virtual void UpdateState()
+    protected void UpdateState()
     {
         if (AssociatedObject is null)
             return;

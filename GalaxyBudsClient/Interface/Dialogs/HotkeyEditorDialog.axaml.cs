@@ -31,7 +31,7 @@ public partial class HotkeyEditorDialog : UserControl
         };
 
         var viewModel = new HotkeyEditorDialogViewModel(hotkey);
-        dialog.Content = new HotkeyEditorDialog()
+        dialog.Content = new HotkeyEditorDialog
         {
             DataContext = viewModel
         };
@@ -49,7 +49,7 @@ public partial class HotkeyEditorDialog : UserControl
             if (!args.Cancel)
                 return;
             
-            var resultHint = new ContentDialog()
+            var resultHint = new ContentDialog
             {
                 Content = Loc.Resolve("hotkey_edit_invalid_desc"),
                 Title = Loc.Resolve("hotkey_edit_invalid"),

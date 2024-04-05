@@ -141,7 +141,7 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
 
     private async void OnTraceDumpDownloadClicked(object? sender, RoutedEventArgs e)
     {
-        var result = await new QuestionBox()
+        var result = await new QuestionBox
         {
             Title = Loc.Resolve("system_trace_core_dump"),
             Description = Loc.Resolve("coredump_dl_note"),

@@ -24,8 +24,8 @@ public partial class DevTools : StyledWindow.StyledWindow
 {
     private readonly List<FilePickerFileType> _filters =
     [
-        new FilePickerFileType("Hex dump") { Patterns = new List<string>() { "*.bin", "*.hex" } },
-        new FilePickerFileType("All files") { Patterns = new List<string>() { "*" } }
+        new FilePickerFileType("Hex dump") { Patterns = new List<string> { "*.bin", "*.hex" } },
+        new FilePickerFileType("All files") { Patterns = new List<string> { "*" } }
     ];
 
     private readonly DevToolsViewModel _vm = new();

@@ -134,20 +134,14 @@ public class UsageReportDecoder : BaseMessageDecoder
     public override Dictionary<string, string> ToStringMap()
     {
         Dictionary<string, string> map = new();
-        if (Statistics != null)
+        if (Statistics == null)
+            return map;
+        
+        foreach (var statistic in Statistics)
         {
-            foreach (var statistic in Statistics)
-            {
-                string readableKey;
-                if (KeyLookup.TryGetValue(statistic.Key, out var value))
-                    readableKey = $"{value} ({statistic.Key})";
-                else
-                    readableKey = $"Unknown ({statistic.Key})";
-
-                map.Add(readableKey, statistic.Value.ToString());
-            }
+            var readableKey = $"{(KeyLookup.TryGetValue(statistic.Key, out var value) ? value : "Unknown")} ({statistic.Key})";
+            map.Add(readableKey, statistic.Value.ToString());
         }
-
         return map;
     }
 }

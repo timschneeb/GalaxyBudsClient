@@ -17,9 +17,9 @@ public class ExperimentManager
 {
     private const int InitialScanTimeout = 5000; 
     private readonly ExperimentClient _client = new();
-    private ExperimentRequest? _activeExperiment = null;
-    private IExperimentBase? _activeExperimentHook = null;
-    private Timer? _experimentTimeLimit = null;
+    private ExperimentRequest? _activeExperiment;
+    private IExperimentBase? _activeExperimentHook;
+    private Timer? _experimentTimeLimit;
 
     public ExperimentManager()
     {
@@ -67,19 +67,19 @@ public class ExperimentManager
             catch(CompilerException ex)
             {
                 Log.Error("ScriptManager.RegisterHook: Compiler error: {Message}", ex.Message);
-                ReportResult(new ExperimentRuntimeResult(-3, ex.Message, $"COMPILER_ERROR"));
+                ReportResult(new ExperimentRuntimeResult(-3, ex.Message, "COMPILER_ERROR"));
             }
         }
         catch (Exception ex)
         {
             Log.Error(ex, "ExperimentRuntime: Failed to execute #{Id}. Reason: {Message}; Source: {Source}", e.Id, ex.Message, ex.Source);
-            ReportResult(new ExperimentRuntimeResult(-1, $"{ex.Message} (Source: {ex.Source}; Type: {ex.GetType()})", $"GENERIC_LAUNCH_ERROR"));
+            ReportResult(new ExperimentRuntimeResult(-1, $"{ex.Message} (Source: {ex.Source}; Type: {ex.GetType()})", "GENERIC_LAUNCH_ERROR"));
         }
     }
 
     private void ExcludeExperiment(long id)
     {
-        Settings.Instance.Experiments.FinishedIds =
+        Settings.Instance.Experiments.FinishedIds = 
             Settings.Instance.Experiments.FinishedIds.Add(id);
     }
         
@@ -88,7 +88,7 @@ public class ExperimentManager
 #if DEBUG
         return Environment.Internal;
 #else
-            return Environment.Production;
+        return Environment.Production;
 #endif
     }
 
@@ -101,7 +101,7 @@ public class ExperimentManager
             ExperimentResult result;
             if (_activeExperiment != null)
             {
-                result = new ExperimentResult()
+                result = new ExperimentResult
                 {
                     Environment = CurrentEnvironment(),
                     ExperimentId = _activeExperiment.Id,
@@ -159,7 +159,7 @@ public class ExperimentManager
     {
         if (e.Count > 0)
         {
-            LaunchExperiment(e.First());
+            LaunchExperiment(e[0]);
         }
     }
 

@@ -19,7 +19,7 @@ public class FirmwareRemoteClient
     private readonly HttpClient _client;
     public FirmwareRemoteClient()
     {
-        var handler = new HttpClientHandler()
+        var handler = new HttpClientHandler
         {
             ServerCertificateCustomValidationCallback = delegate { return true; }
         };

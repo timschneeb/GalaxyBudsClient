@@ -32,7 +32,7 @@ public partial class WelcomePage : BasePage<WelcomePageViewModel>
                 Description = Loc.Resolve("budsapp_text_p1").Trim() + "\n" + 
                               Loc.Resolve("budsapp_text_p2").Trim() + "\n" + 
                               Loc.Resolve("budsapp_text_p3").Trim(),
-                ButtonText = Loc.Resolve("continue_button"),
+                ButtonText = Loc.Resolve("continue_button")
             }.ShowAsync();
         }
         

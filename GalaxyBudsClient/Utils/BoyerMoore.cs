@@ -6,7 +6,7 @@ public class BoyerMoore
 {
     private int[] _jumpTable = Array.Empty<int>();
     private byte[] _pattern = Array.Empty<byte>();
-    private int _patternLength = 0;
+    private int _patternLength;
 
     public void SetPattern(byte[] pattern)
     {

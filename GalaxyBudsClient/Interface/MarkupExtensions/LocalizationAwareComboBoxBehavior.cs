@@ -46,7 +46,7 @@ public class LocalizationAwareComboBoxBehavior : Behavior<SettingsComboBoxItem>
             return;
         
         var selected = cb.SelectedValue;
-        cb.ItemsSource = Enum.GetValues(EnumType!)
+        cb.ItemsSource = Enum.GetValues(EnumType)
             .OfType<Enum>()
             .Where(obj => obj.IsPlatformConditionMet())
             .Where(obj => !obj.IsMemberIgnored())

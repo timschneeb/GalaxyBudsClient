@@ -13,7 +13,7 @@ namespace GalaxyBudsClient.Platform.Linux;
 
 public class HotkeyReceiver : IHotkeyReceiver
 {
-    private readonly List<Hotkey> _hotkeys = new();
+    private readonly List<Hotkey> _hotkeys = [];
     private readonly Dictionary<ushort, KeyCode> _pressedKeys = new();
         
     private readonly Task? _hookTask;
@@ -55,8 +55,8 @@ public class HotkeyReceiver : IHotkeyReceiver
         
     private void OnKeyComboPressed(IEnumerable<KeyCode> keyCodes)
     {
-        List<ModifierKeys> modifierKeys = new();
-        List<Keys> keys = new();
+        List<ModifierKeys> modifierKeys = [];
+        List<Keys> keys = [];
         foreach (var keyCode in keyCodes)
         {
             var key = keyCode.ToKeys();

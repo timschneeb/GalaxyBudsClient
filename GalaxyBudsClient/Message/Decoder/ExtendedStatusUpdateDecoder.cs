@@ -51,7 +51,7 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public Colors ColorR { set; get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public Colors DeviceColor => IsCoupled ? (ColorR != 0 ? ColorR : ColorL) : 
+    public Colors DeviceColor => IsCoupled ? ColorR != 0 ? ColorR : ColorL : 
         (MainConnection == DevicesInverted.R ? ColorR : ColorL);
     
     [Device(Models.BudsPlus, Selector.GreaterEqual)]

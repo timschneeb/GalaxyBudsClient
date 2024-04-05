@@ -72,7 +72,7 @@ public static class WindowIconRenderer
         
         using (var ctx = render.CreateDrawingContext())
         {
-            ctx.PushRenderOptions(new RenderOptions()
+            ctx.PushRenderOptions(new RenderOptions
             {
                 BitmapInterpolationMode = BitmapInterpolationMode.HighQuality,
                 TextRenderingMode = TextRenderingMode.Antialias,

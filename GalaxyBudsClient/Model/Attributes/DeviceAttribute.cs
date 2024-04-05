@@ -11,7 +11,7 @@ public enum Selector
     Equal,
     NotEqual,
     GreaterEqual,
-    LessEqual,
+    LessEqual
 }
 
 [AttributeUsage(AttributeTargets.Property)]
@@ -46,7 +46,7 @@ public class DeviceAttribute : Attribute
             Selector.GreaterEqual => $"{Models.FirstOrDefault()} and above",
             Selector.LessEqual => $"{Models.LastOrDefault()} and below",
             _ => string.Join(',', Models)
-        };;
+        };
     }
 
     public readonly IEnumerable<Models> Models;

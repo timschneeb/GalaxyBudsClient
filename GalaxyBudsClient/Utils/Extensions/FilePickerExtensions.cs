@@ -21,7 +21,7 @@ public static class FilePickerExtensions
             return null;
         }
         
-        var file = await host.StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions()
+        var file = await host.StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions
         {
             DefaultExtension = defaultExtension,
             FileTypeChoices = filters, 
@@ -41,10 +41,11 @@ public static class FilePickerExtensions
             return null;
         }
         
-        var files = await host.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions()
+        var files = await host.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
         {
             AllowMultiple = false, 
-            FileTypeFilter = filters
+            FileTypeFilter = filters,
+            Title = title
         });
         
         var file = files.Count > 0 ? files[0] : null;
@@ -59,7 +60,7 @@ public static class FilePickerExtensions
             return null;
         }
         
-        var folders = await host.StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions()
+        var folders = await host.StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions
         {
             AllowMultiple = false,
             Title = title
@@ -71,7 +72,7 @@ public static class FilePickerExtensions
     
     private static async Task ShowUnsupportedPlatformDialogAsync(this Window host)
     {
-        await new MessageBox()
+        await new MessageBox
         {
             Title = Loc.Resolve("error"),
             Description = "This platform does not support this operation"

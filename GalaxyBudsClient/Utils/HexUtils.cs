@@ -65,7 +65,7 @@ public class HexUtils
             _sb.Append($"{i & 0xFF:X2}");
             if (i + 1 < _bytesPerLine)
             {
-                _sb.Append(" ");
+                _sb.Append(' ');
             }
         }
         _sb.AppendLine();
@@ -95,7 +95,7 @@ public class HexUtils
             WriteByte();
             if (_index % _bytesPerLine != 0 && _index < _length)
             {
-                _sb.Append(" ");
+                _sb.Append(' ');
             }
         }
 

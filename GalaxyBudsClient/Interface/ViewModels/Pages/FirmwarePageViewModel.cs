@@ -106,7 +106,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
                 message = $"{Loc.Resolve("fw_select_http_error")} {infEx.ErrorCode}";
             }
             
-            await new MessageBox()
+            await new MessageBox
             {
                 Title = Loc.Resolve("error"),
                 Description =
@@ -149,7 +149,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
         }
         catch (FirmwareParseException ex)
         {
-            await new MessageBox()
+            await new MessageBox
             {
                 Title = Loc.Resolve("fw_select_verify_fail"),
                 Description = ex.ErrorMessage
@@ -171,7 +171,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
         }
         else if(connectedModel != firmwareModel)
         {
-            await new MessageBox()
+            await new MessageBox
             {
                 Title = Loc.Resolve("fw_select_verify_fail"),
                 Description = string.Format(
@@ -183,7 +183,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
             return;
         }
             
-        var result = await new QuestionBox()
+        var result = await new QuestionBox
         {
             Title = string.Format(
                 Loc.Resolve("fw_select_confirm"),
@@ -229,7 +229,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
                     message = $"{Loc.Resolve("fw_select_http_error")} {infEx.ErrorCode}";
                 }
                 
-                await new MessageBox()
+                await new MessageBox
                 {
                     Title = Loc.Resolve("error"),
                     Description =

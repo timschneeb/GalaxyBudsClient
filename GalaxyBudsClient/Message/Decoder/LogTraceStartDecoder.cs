@@ -22,6 +22,6 @@ internal class LogTraceStartDecoder : BaseMessageDecoder
         PartialDataMaxSize = BitConverter.ToInt16(msg.Payload, 4);
         DeviceType = (DevicesInverted) msg.Payload[6];
         Coupled = msg.Payload[7] == 0;
-        FragmentCount = (int)Math.Ceiling((double)DataSize/(double)PartialDataMaxSize);
+        FragmentCount = (int)Math.Ceiling(DataSize/(double)PartialDataMaxSize);
     }
 }

@@ -18,8 +18,10 @@ using Sentry;
 
 namespace GalaxyBudsClient;
 
+// ReSharper disable once UnusedType.Global
 public static class AsyncErrorHandler
 {
+    // Called by AsyncErrorHandler.Fody using IL weaving
     public static void HandleException(Exception exception)
     {
         Log.Error(exception, "Unhandled exception in async task");
@@ -28,7 +30,7 @@ public static class AsyncErrorHandler
 
 internal static class Program
 {
-    public static long StartedAt = 0;
+    public static long StartedAt;
     public static readonly string AvaresUrl = "avares://" + typeof(Program).Assembly.GetName().Name;
         
     // Initialization code. Don't use any Avalonia, third-party APIs or any

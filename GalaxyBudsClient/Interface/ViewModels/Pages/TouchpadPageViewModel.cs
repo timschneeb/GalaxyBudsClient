@@ -124,7 +124,7 @@ public class TouchpadPageViewModel : MainPageViewModelBase
             case nameof(IsTouchpadLocked):
                 if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AdvancedTouchLock))
                 {
-                    await BluetoothImpl.Instance.SendAsync(new LockTouchpadEncoder()
+                    await BluetoothImpl.Instance.SendAsync(new LockTouchpadEncoder
                     {
                         LockAll = IsTouchpadLocked,
                         TapOn = IsSingleTapGestureEnabled,

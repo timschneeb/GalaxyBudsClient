@@ -23,7 +23,7 @@ namespace GalaxyBudsClient.Utils.Interface
             
             public static event Action? LanguageUpdated;
             public static string TranslatorModeFile => PlatformUtils.CombineDataPath("custom_language.xaml");
-            public static ICommand ReloadCommand { get; } = new MiniCommand((_) => Load());
+            public static ICommand ReloadCommand { get; } = new MiniCommand(_ => Load());
 
             public static bool IsTranslatorModeEnabled()
             {
@@ -75,7 +75,7 @@ namespace GalaxyBudsClient.Utils.Interface
 
             private static void NotifyObservers()
             {
-                foreach (var item in s_langList)
+                foreach (var item in _observerList)
                 {
                     var value = Resolve(item.Key);
                     foreach (var item1 in item.Value)
@@ -145,18 +145,18 @@ namespace GalaxyBudsClient.Utils.Interface
                 LanguageUpdated?.Invoke();
             }
             
-            private static readonly Dictionary<string, List<WeakReference<IObserver<string>>>> s_langList = [];
+            private static readonly Dictionary<string, List<WeakReference<IObserver<string>>>> _observerList = [];
 
             public static IDisposable AddObserverForKey(string key, IObserver<string> observer)
             {
-                if (s_langList.TryGetValue(key, out var list))
+                if (_observerList.TryGetValue(key, out var list))
                 {
                     list.Add(new WeakReference<IObserver<string>>(observer));
                 }
                 else
                 {
                     list = [new WeakReference<IObserver<string>>(observer)];
-                    s_langList.Add(key, list);
+                    _observerList.Add(key, list);
                 }
                 var value = Resolve(key);
                 observer.OnNext(value);

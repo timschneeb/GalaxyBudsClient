@@ -10,8 +10,8 @@ public class InvalidPacketException(
 {
     public enum ErrorCodes
     {
-        SOM,
-        EOM,
+        Som,
+        Eom,
         Checksum,
         SizeMismatch,
         TooSmall,

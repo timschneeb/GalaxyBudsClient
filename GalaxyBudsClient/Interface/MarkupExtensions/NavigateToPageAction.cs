@@ -17,7 +17,7 @@ public class NavigationToPageAction : AvaloniaObject, IAction
         set => SetValue(PageTypeProperty, value);
     }
 
-    public virtual object Execute(object? sender, object? parameter)
+    public object Execute(object? sender, object? parameter)
     {
         NavigationService.Instance.Navigate(PageType);
         return true;

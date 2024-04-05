@@ -27,6 +27,9 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
 
     private readonly ContentDialog _dialog;
 
+    // Only used for design-time data
+    public DeviceSelectionDialogViewModel() : this(new ContentDialog()) {}
+    
     public DeviceSelectionDialogViewModel(ContentDialog dialog)
     {
         _dialog = dialog;
@@ -47,9 +50,7 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
             Title = Loc.Resolve("please_wait"),
             Content = Loc.Resolve("connlost_connecting"),
             CloseButtonText = Loc.Resolve("cancel"),
-            CloseButtonCommand = new MiniCommand(
-                (p) => _ = BluetoothImpl.Instance.DisconnectAsync()
-            )
+            CloseButtonCommand = new MiniCommand(p => _ = BluetoothImpl.Instance.DisconnectAsync())
         };
         _ = cd.ShowAsync(MainWindow.Instance);
         
@@ -82,7 +83,7 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
         }
         catch (PlatformNotSupportedException ex)
         {
-            await new MessageBox()
+            await new MessageBox
             {
                 Title = Loc.Resolve("error"),
                 Description = ex.Message

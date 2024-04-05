@@ -15,5 +15,5 @@ public class HotkeyRecorderDialogViewModel : ViewModelBase
         
     [Reactive] public string HotkeyPreview { set; get; } = string.Empty;
 
-    public ObservableCollection<Key> Hotkeys { get; private set; }
+    public ObservableCollection<Key> Hotkeys { get; }
 }

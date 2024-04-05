@@ -5,8 +5,8 @@ namespace GalaxyBudsClient.Interface.ViewModels;
 
 public class TouchActionViewModel(TouchOptions key, byte id)
 {
-    public TouchOptions Key { get; set; } = key;
-    public byte Id { get; set; } = id;
+    public TouchOptions Key { get; } = key;
+    public byte Id { get; } = id;
         
     public static TouchActionViewModel FromKeyValuePair(KeyValuePair<TouchOptions, byte> pair)
     {

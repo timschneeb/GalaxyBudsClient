@@ -51,7 +51,7 @@ public class AutoStartHelper : IAutoStartHelper
                 Log.Error(ex, "Failed to set autostart");
             }
                 
-            _ = new MessageBox()
+            _ = new MessageBox
             {
                 Title = Loc.Resolve("error"),
                 Description = Loc.Resolve("settings_autostart_permission")

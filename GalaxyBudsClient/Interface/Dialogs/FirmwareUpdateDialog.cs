@@ -119,7 +119,7 @@ public class FirmwareUpdateDialog : TaskDialog
     {
         Hide();
         
-        _ = new MessageBox()
+        _ = new MessageBox
         {
             Title = Loc.Resolve("fw_upload_progress_finished"),
             Description = Loc.Resolve("fw_upload_progress_finished_desc")

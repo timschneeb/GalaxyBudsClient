@@ -31,7 +31,7 @@ public partial class TouchActionEditorDialog : UserControl
         };
 
         var viewModel = new TouchActionEditorDialogViewModel(action);
-        dialog.Content = new TouchActionEditorDialog()
+        dialog.Content = new TouchActionEditorDialog
         {
             DataContext = viewModel
         };

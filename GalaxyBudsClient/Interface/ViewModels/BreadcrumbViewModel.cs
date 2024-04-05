@@ -29,7 +29,7 @@ public class BreadcrumbViewModel : ViewModelBase
         this.RaisePropertyChanged(nameof(Title));
     }
     
-    public Type PageType { get; set; }
+    public Type PageType { get; }
     public string Title
     {
         get

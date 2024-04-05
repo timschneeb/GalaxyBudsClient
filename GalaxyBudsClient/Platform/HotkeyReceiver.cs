@@ -104,7 +104,7 @@ public class HotkeyReceiver : IDisposable
                 return ex;
             }
 
-            await new MessageBox()
+            await new MessageBox
             {
                 Title = Loc.Resolve("hotkey_add_error"),
                 Description = $"{ex.Message} {Loc.Resolve("hotkey_add_error_context")} {ex.Hotkey.Keys.AsHotkeyString(ex.Hotkey.Modifier)}"

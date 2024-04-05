@@ -25,12 +25,6 @@
                              IconSource="{StaticResource LinkMultipleIcon}"
                              Description="{ext:Translate connlost_connect}"
                              Command="{Binding DoConnectCommand}" />
-
-        <input:XamlUICommand x:Key="RefreshCommand"
-                             Label="{ext:Translate fw_select_refresh}"
-                             IconSource="{StaticResource ReloadIcon}"
-                             Description="{ext:Translate fw_select_refresh}"
-                             Command="{Binding DoRefreshCommand}" />
     </UserControl.Resources>
 
     <StackPanel MinWidth="400" Spacing="16">

@@ -123,7 +123,7 @@ public class SelfTestDialog : TaskDialog
                     ResultWithSideAsTaskItem("system_btaddr", parser.LeftBluetoothAddress, parser.RightBluetoothAddress),
                     ResultWithSideAsTaskItem("system_proximity", parser.LeftProximity, parser.RightProximity),
                     ResultWithSideAsTaskItem("system_thermo", parser.LeftThermistor, parser.RightThermistor),
-                    ResultWithSideAsTaskItem("system_adc_soc", parser.LeftAdcSOC, parser.RightAdcSOC),
+                    ResultWithSideAsTaskItem("system_adc_soc", parser.LeftAdcSoc, parser.RightAdcSoc),
                     ResultWithSideAsTaskItem("system_adc_voltage", parser.LeftAdcVCell, parser.RightAdcVCell),
                     ResultWithSideAsTaskItem("system_adc_current", parser.LeftAdcCurrent, parser.RightAdcCurrent),
                     ResultWithSideAsTaskItem("system_hall", parser.LeftHall, parser.RightHall),

@@ -58,10 +58,10 @@ public class RequiresFeatureBehavior : Behavior<Control>
     {
         UpdateState();
     }
-    
-    protected bool State => (BluetoothImpl.Instance.DeviceSpec.Supports(Feature) && !Not) ||
-                            (!BluetoothImpl.Instance.DeviceSpec.Supports(Feature) && Not);
-    protected virtual void UpdateState()
+
+    private bool State => (BluetoothImpl.Instance.DeviceSpec.Supports(Feature) && !Not) ||
+                          (!BluetoothImpl.Instance.DeviceSpec.Supports(Feature) && Not);
+    protected void UpdateState()
     {
         Dispatcher.UIThread.Post(() =>
         {

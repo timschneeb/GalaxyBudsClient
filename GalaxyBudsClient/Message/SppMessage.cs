@@ -98,7 +98,7 @@ public class SppMessage(
                 throw new InvalidPacketException(InvalidPacketException.ErrorCodes.TooSmall, "At least 6 bytes are required");
             
             if (reader.ReadByte() != spec.StartOfMessage)
-                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.SOM, "Invalid SOM byte");
+                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Som, "Invalid SOM byte");
 
             int size;
             if (spec.Supports(Features.SppLegacyMessageHeader))
@@ -146,7 +146,7 @@ public class SppMessage(
             if (draft.Crc16 != 0)
                 throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Checksum, "Invalid checksum");
             if (reader.ReadByte() != spec.EndOfMessage)
-                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.EOM, "Invalid EOM byte");
+                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Eom, "Invalid EOM byte");
 
             return draft;
         }

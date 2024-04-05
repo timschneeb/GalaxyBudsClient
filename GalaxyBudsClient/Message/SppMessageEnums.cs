@@ -268,7 +268,7 @@ public enum MsgIds
     SD_WIRELESS_CHARGING = 252,
     UNKNOWN_253 = 253,
     SD_TOUCH_RES = 254,
-    SET_TOUCH_TYPE = 255,
+    SET_TOUCH_TYPE = 255
 }
 
 public enum MsgConstants

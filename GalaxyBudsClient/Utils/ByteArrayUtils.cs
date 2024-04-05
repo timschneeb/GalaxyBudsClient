@@ -50,6 +50,7 @@ public static class ByteArrayUtils
             return true;
         }
             
+        // ReSharper disable once LoopCanBeConvertedToQuery
         foreach(var value in buffer)
         {
             if (value != 0x00)

@@ -13,7 +13,7 @@ public class SettingsColorItem : SettingsSymbolItem
 {
     public SettingsColorItem()
     {
-        _button = new ColorPickerButton()
+        _button = new ColorPickerButton
         {
             IsMoreButtonVisible = true,
             UseSpectrum = true,

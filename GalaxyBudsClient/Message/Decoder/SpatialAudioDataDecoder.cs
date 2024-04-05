@@ -45,7 +45,7 @@ internal class SpatialAudioDataDecoder : BaseMessageDecoder
                     
                 var fArr = new float[4];
                 for (var i = 0; i < 4; i++) {
-                    fArr[i] = (float) (short) ByteBufferToInt(data, i * 2, 2, false) / 10000.0f;
+                    fArr[i] = (short) ByteBufferToInt(data, i * 2, 2, false) / 10000.0f;
                 }
 
                 GrvFloatArray = fArr;
@@ -136,11 +136,9 @@ internal class SpatialAudioDataDecoder : BaseMessageDecoder
                 }
             }
             return i3;
-        } 
-        else 
-        {
-            return -2;
         }
+
+        return -2;
     }
 
         

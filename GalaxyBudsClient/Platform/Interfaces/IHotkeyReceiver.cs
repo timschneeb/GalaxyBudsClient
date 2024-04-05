@@ -6,14 +6,10 @@ using GalaxyBudsClient.Model.Hotkeys;
 
 namespace GalaxyBudsClient.Platform.Interfaces;
 
-public class HotkeyRegisterException : Exception
+public class HotkeyRegisterException(string message, Hotkey hotkey) : Exception(message)
 {
-    public Hotkey Hotkey { set; get; }
+    public Hotkey Hotkey { set; get; } = hotkey;
     public int ResultCode { set; get; } = -1;
-    public HotkeyRegisterException(string message, Hotkey hotkey) : base(message)
-    {
-        Hotkey = hotkey;
-    }
 }
 
 public interface IHotkeyReceiver : IDisposable
