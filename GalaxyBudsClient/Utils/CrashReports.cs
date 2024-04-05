@@ -1,6 +1,8 @@
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.Text;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Platform;
 using Sentry;
@@ -35,7 +37,7 @@ public static class CrashReports
                     sentryEvent.SetExtra("arch",
                         RuntimeInformation.ProcessArchitecture.ToString());
                     sentryEvent.SetExtra("bluetooth-mac",
-                        Settings.Instance.RegisteredDevice.MacAddress);
+                        BitConverter.ToString(SHA1.HashData(Encoding.ASCII.GetBytes(Settings.Instance.RegisteredDevice.MacAddress))).Replace("-", ""));
                     sentryEvent.SetExtra("bluetooth-model-saved",
                         Settings.Instance.RegisteredDevice.Model);
                     sentryEvent.SetExtra("custom-locale", Settings.Instance.Locale);
