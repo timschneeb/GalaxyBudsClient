@@ -124,7 +124,11 @@
     </ItemGroup>
     
     <ItemGroup>
-        <ProjectReference Include="..\GalaxyBudsClient.Generators\GalaxyBudsClient.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
+        <ProjectReference Include="..\GalaxyBudsClient.Generators\GalaxyBudsClient.Generators.csproj">
+            <OutputItemType>Analyzer</OutputItemType>
+            <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+            <SetTargetFramework>TargetFramework=netstandard2.0</SetTargetFramework>
+        </ProjectReference>
         <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj"/>
     </ItemGroup>
 </Project>
