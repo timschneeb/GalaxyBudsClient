@@ -25,7 +25,7 @@ public static class CrashReports
 #else
             o.Environment = "production";
 #endif
-            o.BeforeSend = sentryEvent =>
+            o.SetBeforeSend(sentryEvent =>
             {
                 try
                 {
@@ -56,7 +56,7 @@ public static class CrashReports
                 }
 
                 return sentryEvent;
-            };
+            });
         });
     }
 }

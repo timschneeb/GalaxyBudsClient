@@ -94,8 +94,8 @@
         <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0"/>
         <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0"/>
         <PackageReference Include="ReactiveUI.Fody" Version="19.5.41"/>
-        <PackageReference Include="Sentry" Version="3.17.0"/>
-        <PackageReference Include="Sentry.Serilog" Version="3.17.0"/>
+        <PackageReference Include="Sentry" Version="4.2.1" />
+        <PackageReference Include="Sentry.Serilog" Version="4.2.1" />
         <PackageReference Include="Serilog" Version="3.1.1"/>
         <PackageReference Include="Serilog.Sinks.Console" Version="5.0.1"/>
         <PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0"/>

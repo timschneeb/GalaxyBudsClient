@@ -35,7 +35,9 @@ public class InMemoryBinaryDocument : IBinaryDocument
     public bool IsReadOnly => false;
     public bool CanInsert => true;
     public bool CanRemove => true;
+#pragma warning disable CS0067
     public event EventHandler<BinaryDocumentChange>? Changed;
+#pragma warning restore CS0067
 }
 
 public static class BinaryDocumentExtensions

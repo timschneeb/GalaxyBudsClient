@@ -45,11 +45,6 @@ internal static class Program
 #endif
         
         var config = new LoggerConfiguration()
-            .WriteTo.Sentry(o =>
-            {
-                o.MinimumBreadcrumbLevel = LogEventLevel.Debug;
-                o.MinimumEventLevel = LogEventLevel.Fatal;
-            })
             .WriteTo.File(PlatformUtils.CombineDataPath("application.log"))
             .WriteTo.Console();
 
@@ -63,15 +58,21 @@ internal static class Program
             // Disable excessive logging in CLI mode
             config = config.MinimumLevel.Warning();
         }
-            
-        Log.Logger = config.CreateLogger();
-        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-        Trace.Listeners.Add(new ConsoleTraceListener());
-            
+        
         if (!Settings.Instance.DisableCrashReporting)
         {
             CrashReports.SetupCrashHandler();
+            config = config.WriteTo.Sentry(o =>
+            {
+                o.InitializeSdk = false;
+                o.MinimumBreadcrumbLevel = LogEventLevel.Debug;
+                o.MinimumEventLevel = LogEventLevel.Fatal;
+            });
         }
+        
+        Log.Logger = config.CreateLogger();
+        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        Trace.Listeners.Add(new ConsoleTraceListener());
             
         if (cliMode)
         {
