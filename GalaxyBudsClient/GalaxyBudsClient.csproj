@@ -18,6 +18,7 @@
     <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <TargetFramework>net8.0</TargetFramework>
         <OutputType>Exe</OutputType>
+        <PublishTrimmed>true</PublishTrimmed>
     </PropertyGroup>
 
     <PropertyGroup>
