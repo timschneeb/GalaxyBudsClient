@@ -5,10 +5,11 @@ using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Threading;
 using FluentAvalonia.UI.Controls;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Extensions;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using Serilog;
 using Symbol = FluentIcons.Common.Symbol;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
@@ -24,12 +25,12 @@ public class TraceDownloaderDialog : TaskDialog
     
     public TraceDownloaderDialog()
     {
-        _closeButton = new TaskDialogButton(Loc.Resolve("cancel"), TaskDialogStandardResult.Close);
+        _closeButton = new TaskDialogButton(Strings.Cancel, TaskDialogStandardResult.Close);
 
-        Header = Loc.Resolve("coredump_header");
+        Header = Strings.CoredumpHeader;
         Buttons = [_closeButton];
         IconSource = new SymbolIconSource { Symbol = Symbol.Bug };
-        SubHeader = Loc.Resolve("coredump_dl_progress_prepare");
+        SubHeader = Strings.CoredumpDlProgressPrepare;
         XamlRoot = MainWindow.Instance;
         ShowProgressBar = true;
         Content = _content = new TextBlock
@@ -68,11 +69,10 @@ public class TraceDownloaderDialog : TaskDialog
     {
         _ = Dispatcher.UIThread.InvokeAsync(async () =>
         {
-            SubHeader = Loc.Resolve("coredump_dl_progress_finished");
+            SubHeader = Strings.CoredumpDlProgressFinished;
             SetProgressBarState(100, TaskDialogProgressState.Normal);
 
-            var path = await MainWindow.Instance.OpenFolderPickerAsync(
-                Loc.Resolve("coredump_dl_save_dialog_title"));
+            var path = await MainWindow.Instance.OpenFolderPickerAsync(Strings.CoredumpDlSaveDialogTitle);
             if (string.IsNullOrEmpty(path))
                 return;
 
@@ -81,8 +81,8 @@ public class TraceDownloaderDialog : TaskDialog
 
             await new MessageBox
             {
-                Title = Loc.Resolve("coredump_dl_save_success_title"),
-                Description = string.Format(Loc.Resolve("coredump_dl_save_success"),
+                Title = Strings.CoredumpDlSaveSuccessTitle,
+                Description = string.Format(Strings.CoredumpDlSaveSuccess,
                     ev.CoreDumpPaths.Count + ev.TraceDumpPaths.Count, path)
             }.ShowAsync();
         }, DispatcherPriority.Normal);
@@ -92,10 +92,10 @@ public class TraceDownloaderDialog : TaskDialog
     {
         Dispatcher.UIThread.Post(() =>
         {
-            SubHeader = Loc.Resolve("connlost_disconnected");
+            SubHeader = Strings.ConnlostDisconnected;
             SetProgressBarState(100, TaskDialogProgressState.Error);
             _content.Text = string.Empty;
-            _closeButton.Text = Loc.Resolve("window_close");
+            _closeButton.Text = Strings.WindowClose;
         }, DispatcherPriority.Normal);
     }
         
@@ -105,16 +105,16 @@ public class TraceDownloaderDialog : TaskDialog
         {
             if (ev.DownloadType == LogDownloadProgressEventArgs.Type.Switching)
             {
-                SubHeader = Loc.Resolve("coredump_dl_progress_prepare");
+                SubHeader = Strings.CoredumpDlProgressPrepare;
                 SetProgressBarState(0, TaskDialogProgressState.Indeterminate);
                 _content.Text = string.Empty;
             }
             else
             {
-                SubHeader = string.Format(Loc.Resolve($"coredump_dl_{(ev.DownloadType == LogDownloadProgressEventArgs.Type.Coredump ? "coredump" : "trace")}_progress"), 
+                SubHeader = string.Format(ev.DownloadType == LogDownloadProgressEventArgs.Type.Coredump ? Strings.CoredumpDlCoreProgress : Strings.CoredumpDlTraceProgress, 
                     Math.Ceiling((double)ev.CurrentByteCount / ev.TotalByteCount * 100));
                 _content.Text = string.Format(
-                        Loc.Resolve("coredump_dl_progress_size"),
+                        Strings.CoredumpDlProgressSize,
                         ev.CurrentByteCount.ToString(),
                         ev.TotalByteCount.ToString())
                     .Replace("(", "")
@@ -135,8 +135,8 @@ public class TraceDownloaderDialog : TaskDialog
             Log.Error(ex, "CoreDump: Failed to copy dumps");
             await new MessageBox
             {
-                Title = Loc.Resolve("coredump_dl_save_fail_title"),
-                Description = string.Format(Loc.Resolve("coredump_dl_save_fail"), ex.Message)
+                Title = Strings.CoredumpDlSaveFailTitle,
+                Description = string.Format(Strings.CoredumpDlSaveFail, ex.Message)
             }.ShowAsync();
         }
     }

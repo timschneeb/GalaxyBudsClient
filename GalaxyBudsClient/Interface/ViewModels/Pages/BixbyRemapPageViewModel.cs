@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using Avalonia.Controls;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
@@ -41,7 +42,7 @@ public class BixbyRemapPageViewModel : SubPageViewModelBase
     [Reactive] public bool IsBixbyWakeUpEnabled { set; get; }
     [Reactive] public BixbyLanguages BixbyLanguage { set; get; }
 
-    public override string TitleKey => "adv_bixby_remap";
+    public override string TitleKey => Keys.AdvBixbyRemap;
     public override Control CreateView() => new BixbyRemapPage();
 }
 

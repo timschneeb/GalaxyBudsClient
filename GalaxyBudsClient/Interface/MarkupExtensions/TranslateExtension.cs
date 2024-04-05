@@ -1,7 +1,7 @@
 using System;
 using Avalonia;
 using Avalonia.Markup.Xaml;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.MarkupExtensions;
 

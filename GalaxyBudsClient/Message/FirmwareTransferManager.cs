@@ -1,11 +1,12 @@
 using System;
 using System.Threading.Tasks;
 using System.Timers;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model.Firmware;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using Serilog;
 
 namespace GalaxyBudsClient.Message;
@@ -86,7 +87,7 @@ public class FirmwareTransferManager
             {
                 Log.Debug("FirmwareTransferManager: Disconnected. Transfer cancelled");
                 Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.Disconnected,
-                    Loc.Resolve("fw_fail_connection")));
+                    Strings.FwFailConnection));
             }
         };
         BluetoothImpl.Instance.BluetoothError += (sender, exception) =>
@@ -118,7 +119,7 @@ public class FirmwareTransferManager
                 if (session.ResultCode != 0)
                 {
                     Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.SessionFail, 
-                        string.Format(Loc.Resolve("fw_fail_session"), session.ResultCode)));
+                        string.Format(Strings.FwFailSession, session.ResultCode)));
                 }
                 else
                 {
@@ -207,7 +208,7 @@ public class FirmwareTransferManager
                         {
                             Log.Debug("FirmwareTransferManager.OnMessageReceived: Copy failed, result code: {Code}", update.ResultCode);
                             Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.CopyFail, 
-                                string.Format(Loc.Resolve("fw_fail_copy"), update.ResultCode)));
+                                string.Format(Strings.FwFailCopy, update.ResultCode)));
                         }
                         break;
                 }
@@ -226,7 +227,7 @@ public class FirmwareTransferManager
                 else
                 {
                     Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.VerifyFail, 
-                        string.Format(Loc.Resolve("fw_fail_verify"), result.ErrorCode)));
+                        string.Format(Strings.FwFailVerify, result.ErrorCode)));
                 }
                 break;
         }
@@ -237,14 +238,14 @@ public class FirmwareTransferManager
         if (!BluetoothImpl.Instance.IsConnected)
         {
             Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.Disconnected,
-                Loc.Resolve("fw_fail_connection_precheck")));
+                Strings.FwFailConnectionPrecheck));
             return;
         }
 
         if (State != States.Ready)
         {
             Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.InProgress,
-                Loc.Resolve("fw_fail_pending")));
+                Strings.FwFailPending));
             return;
         }
 
@@ -286,12 +287,12 @@ public class FirmwareTransferManager
     private void OnSessionTimeoutElapsed(object? sender, ElapsedEventArgs e)
     {
         Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.SessionTimeout, 
-            Loc.Resolve("fw_fail_session_timeout")));
+            Strings.FwFailSessionTimeout));
     } 
         
     private void OnControlTimeoutElapsed(object? sender, ElapsedEventArgs e)
     {
         Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.ControlTimeout, 
-            Loc.Resolve("fw_fail_control_timeout")));
+            Strings.FwFailControlTimeout));
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Threading;
 using FluentIcons.Common;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
@@ -16,7 +17,7 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
@@ -192,22 +193,22 @@ public class TouchpadPageViewModel : MainPageViewModelBase
                                           (!BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide) && RightAction == TouchOptions.NoiseControl);
         IsNoiseControlCycleModeRightEditable = RightAction == TouchOptions.NoiseControl;
 
-        LeftControlCycleModeLabel = Loc.Resolve(BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide) ? 
-            "touchpad_noise_control_mode_l" : "touchpad_noise_control_mode");
+        LeftControlCycleModeLabel = BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide) ? 
+            Strings.TouchpadNoiseControlModeL : Strings.TouchpadNoiseControlMode;
 
         IsLeftCustomActionEditable = LeftAction == TouchOptions.OtherL;
         IsRightCustomActionEditable = RightAction == TouchOptions.OtherR;
 
         LeftActionDescription = IsLeftCustomActionEditable
             ? ActionAsString(Settings.Instance.CustomActionLeft)
-            : Loc.Resolve("touchpad_default_action");
+            : Strings.TouchpadDefaultAction;
         RightActionDescription = IsRightCustomActionEditable
             ? ActionAsString(Settings.Instance.CustomActionRight)
-            : Loc.Resolve("touchpad_default_action");
+            : Strings.TouchpadDefaultAction;
         return;
 
         string ActionAsString(ICustomAction action) =>
-            $"{Loc.Resolve("touchoption_custom_prefix")} {new CustomAction(action.Action, action.Parameter)}";
+            $"{Strings.TouchoptionCustomPrefix} {new CustomAction(action.Action, action.Parameter)}";
     }
 
     private void UpdateTouchActions()
@@ -255,14 +256,14 @@ public class TouchpadPageViewModel : MainPageViewModelBase
     
     [Reactive] public bool IsNoiseControlCycleModeEditable { set; get; }
     [Reactive] public bool IsNoiseControlCycleModeRightEditable { set; get; }
-    [Reactive] public string LeftControlCycleModeLabel { set; get; } = Loc.Resolve("touchpad_noise_control_mode");
+    [Reactive] public string LeftControlCycleModeLabel { set; get; } = Strings.TouchpadNoiseControlMode;
 
     [Reactive] public bool IsLeftCustomActionEditable { set; get; }
     [Reactive] public bool IsRightCustomActionEditable { set; get; }
     [Reactive] public string? LeftActionDescription { set; get; }
     [Reactive] public string? RightActionDescription { set; get; }
 
-    public override string TitleKey => "mainpage_touchpad";
+    public override string TitleKey => Keys.MainpageTouchpad;
     public override Symbol IconKey => Symbol.HandDraw;
     public override bool ShowsInFooter => false;
 }

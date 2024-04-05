@@ -4,7 +4,7 @@ using Avalonia.Interactivity;
 using Avalonia.Media;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using Symbol = FluentIcons.Common.Symbol;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 

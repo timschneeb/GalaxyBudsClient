@@ -6,12 +6,13 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Threading;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using Serilog;
 using MainWindow = GalaxyBudsClient.Interface.MainWindow;
 
@@ -130,13 +131,13 @@ internal class TrayManager
         return
         [
             bsu.BatteryL > 0
-                ? new NativeMenuItem($"{Loc.Resolve("left")}: {bsu.BatteryL}%") { IsEnabled = false }
+                ? new NativeMenuItem($"{Strings.Left}: {bsu.BatteryL}%") { IsEnabled = false }
                 : null,
             bsu.BatteryR > 0
-                ? new NativeMenuItem($"{Loc.Resolve("right")}: {bsu.BatteryR}%") { IsEnabled = false }
+                ? new NativeMenuItem($"{Strings.Right}: {bsu.BatteryR}%") { IsEnabled = false }
                 : null,
             bsu.BatteryCase is > 0 and <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(Features.CaseBattery)
-                ? new NativeMenuItem($"{Loc.Resolve("case")}: {bsu.BatteryCase}%") { IsEnabled = false }
+                ? new NativeMenuItem($"{Strings.Case}: {bsu.BatteryCase}%") { IsEnabled = false }
                 : null,
 
             new NativeMenuItemSeparator()
@@ -147,24 +148,24 @@ internal class TrayManager
     private IEnumerable<NativeMenuItemBase> RebuildDynamicActions()
     {
         return from type in BluetoothImpl.Instance.DeviceSpec.TrayShortcuts
-            let resourceKey = type switch
+            let str = type switch
             {
-                TrayItemTypes.ToggleNoiseControl => "tray_switch_noise",
+                TrayItemTypes.ToggleNoiseControl => Strings.TraySwitchNoise,
                 TrayItemTypes.ToggleEqualizer => MainWindow.Instance.MainView.ResolveViewModelByType<EqualizerPageViewModel>()?.IsEqEnabled ?? false
-                    ? "tray_disable_eq"
-                    : "tray_enable_eq",
+                    ? Strings.TrayDisableEq
+                    : Strings.TrayEnableEq, 
                 TrayItemTypes.ToggleAmbient => MainWindow.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAmbientSoundEnabled ?? false
-                    ? "tray_disable_ambient_sound"
-                    : "tray_enable_ambient_sound",
+                    ? Strings.TrayDisableAmbientSound
+                    : Strings.TrayEnableAmbientSound,
                 TrayItemTypes.ToggleAnc => MainWindow.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAncEnabled ?? false
-                    ? "tray_disable_anc"
-                    : "tray_enable_anc",
+                    ? Strings.TrayDisableAnc
+                    : Strings.TrayEnableAnc,
                 TrayItemTypes.LockTouchpad => MainWindow.Instance.MainView.ResolveViewModelByType<TouchpadPageViewModel>()?.IsTouchpadLocked ?? false
-                    ? "tray_unlock_touchpad"
-                    : "tray_lock_touchpad",
-                _ => "unknown"
+                    ? Strings.TrayUnlockTouchpad
+                    : Strings.TrayLockTouchpad,
+                _ => Strings.Unknown
             }
-            select new NativeMenuItem(Loc.Resolve(resourceKey))
+            select new NativeMenuItem(str)
             {
                 Command = new MiniCommand(OnTrayMenuCommand),
                 CommandParameter = type
@@ -184,7 +185,7 @@ internal class TrayManager
             var items = new List<NativeMenuItemBase>();
             if (PlatformUtils.IsOSX || PlatformUtils.IsLinux)
             {
-                items.Add(new NativeMenuItem(Loc.Resolve("window_open"))
+                items.Add(new NativeMenuItem(Strings.WindowOpen)
                 {
                     Command = new MiniCommand(OnTrayMenuCommand),
                     CommandParameter = TrayItemTypes.Open
@@ -199,7 +200,7 @@ internal class TrayManager
             }
             else if (BluetoothImpl.IsRegisteredDeviceValid)
             {
-                items.Add(new NativeMenuItem(Loc.Resolve("connlost_connect"))
+                items.Add(new NativeMenuItem(Strings.ConnlostConnect)
                 {
                     Command = new MiniCommand(OnTrayMenuCommand),
                     CommandParameter = TrayItemTypes.Connect
@@ -207,7 +208,7 @@ internal class TrayManager
                 items.Add(new NativeMenuItemSeparator());
             }
                 
-            items.Add(new NativeMenuItem(Loc.Resolve("tray_quit"))
+            items.Add(new NativeMenuItem(Strings.TrayQuit)
             {
                 Command = new MiniCommand(OnTrayMenuCommand),
                 CommandParameter = TrayItemTypes.Quit

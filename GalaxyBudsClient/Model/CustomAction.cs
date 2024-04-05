@@ -2,8 +2,9 @@
 using System.IO;
 using System.Linq;
 using Avalonia.Input;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Model.Attributes;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using Serilog;
 
 namespace GalaxyBudsClient.Model;
@@ -12,11 +13,11 @@ public class CustomAction(CustomAction.Actions action, string parameter = "")
 {
     public enum Actions
     {
-        [LocalizedDescription("touchoption_custom_trigger_event")]
+        [LocalizedDescription(Keys.TouchoptionCustomTriggerEvent)]
         Event,
-        [LocalizedDescription("touchoption_custom_trigger_hotkey")]
+        [LocalizedDescription(Keys.TouchoptionCustomTriggerHotkey)]
         TriggerHotkey,
-        [LocalizedDescription("touchoption_custom_external_app")]
+        [LocalizedDescription(Keys.TouchoptionCustomExternalApp)]
         RunExternalProgram
     }
 
@@ -60,7 +61,7 @@ public class CustomAction(CustomAction.Actions action, string parameter = "")
                 {
                     Log.Error("CustomAction.HotkeyBroadcast: Cannot parse saved key-combo: {Message}", ex.Message);
                     Log.Error("CustomAction.HotkeyBroadcast: Caused by combo: {Parameter}", Parameter);
-                    return Loc.Resolve("unknown");
+                    return Strings.Unknown;
                 }
         }
 

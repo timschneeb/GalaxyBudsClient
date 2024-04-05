@@ -2,6 +2,7 @@
 using System.Reflection;
 using Avalonia.Controls;
 using FluentIcons.Common;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
@@ -42,7 +43,7 @@ public class SettingsPageViewModel : MainPageViewModelBase
     public string CurrentVersion => Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? "Unknown";
     public override Control CreateView() => new SettingsPage();
 
-    public override string TitleKey => "settings_header";
+    public override string TitleKey => Keys.SettingsHeader;
     public override Symbol IconKey => Symbol.Settings;
     public override bool ShowsInFooter => true;
 }

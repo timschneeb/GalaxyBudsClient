@@ -2,10 +2,11 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using Sentry;
 using Serilog;
 
@@ -51,12 +52,9 @@ public class FirmwareBinary
                       
                     Log.Fatal("FirmwareBinary: Parsing internal debug firmware \'{Name}\'. " +
                               "This is unsupported by this application as these binaries are not meant for retail devices", buildName);
-                    throw new FirmwareParseException(FirmwareParseException.ErrorCodes.InvalidMagic,
-                        Loc.Resolve("fw_fail_no_magic"));
                 }
 
-                throw new FirmwareParseException(FirmwareParseException.ErrorCodes.InvalidMagic,
-                    Loc.Resolve("fw_fail_no_magic"));
+                throw new FirmwareParseException(FirmwareParseException.ErrorCodes.InvalidMagic, Strings.FwFailNoMagic);
             }
 
             MAGIC_VALID:
@@ -67,7 +65,7 @@ public class FirmwareBinary
                 if (TotalSize == 0)
                 {
                     throw new FirmwareParseException(FirmwareParseException.ErrorCodes.SizeZero,
-                        Loc.Resolve("fw_fail_size_null"));
+                        Strings.FwFailSizeNull);
                 }
             }
 
@@ -78,7 +76,7 @@ public class FirmwareBinary
                 if (SegmentsCount == 0)
                 {
                     throw new FirmwareParseException(FirmwareParseException.ErrorCodes.NoSegmentsFound,
-                        Loc.Resolve("fw_fail_no_segments"));
+                        Strings.FwFailNoSegments);
                 }
             }
 
@@ -96,7 +94,7 @@ public class FirmwareBinary
         {
             Log.Error(ex, "FirmwareBinary: Failed to decode binary");
             throw new FirmwareParseException(FirmwareParseException.ErrorCodes.Unknown,
-                $"{Loc.Resolve("fw_fail_unknown")}\n{ex}");
+                $"{Strings.FwFailUnknown}\n{ex}");
         }
     }
 

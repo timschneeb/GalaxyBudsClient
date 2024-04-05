@@ -5,13 +5,13 @@ using System.Linq;
 using Avalonia.Threading;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Bluetooth;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Dialogs;
@@ -47,9 +47,9 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
 
         var cd = new ContentDialog
         {
-            Title = Loc.Resolve("please_wait"),
-            Content = Loc.Resolve("connlost_connecting"),
-            CloseButtonText = Loc.Resolve("cancel"),
+            Title = Strings.PleaseWait,
+            Content = Strings.ConnlostConnecting,
+            CloseButtonText = Strings.Cancel,
             CloseButtonCommand = new MiniCommand(p => _ = BluetoothImpl.Instance.DisconnectAsync())
         };
         _ = cd.ShowAsync(MainWindow.Instance);
@@ -65,8 +65,8 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
         {
             _ = new MessageBox
             {
-                Title = Loc.Resolve("error"),
-                Description = Loc.Resolve("devsel_invalid_selection")
+                Title = Strings.Error,
+                Description = Strings.DevselInvalidSelection
             }.ShowAsync();
             return;
         }
@@ -85,7 +85,7 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
         {
             await new MessageBox
             {
-                Title = Loc.Resolve("error"),
+                Title = Strings.Error,
                 Description = ex.Message
             }.ShowAsync(MainWindow.Instance);
             return;

@@ -13,168 +13,164 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using Serilog;
 
-namespace GalaxyBudsClient.Utils.Interface
+namespace GalaxyBudsClient.Utils.Interface;
+
+public static class Loc
 {
-    namespace DynamicLocalization
+    public static Action</* Title */string,/* Content */string>? ErrorDetected { set; get; }
+            
+    public static event Action? LanguageUpdated;
+    public static string TranslatorModeFile => PlatformUtils.CombineDataPath("custom_language.xaml");
+    public static ICommand ReloadCommand { get; } = new MiniCommand(_ => Load());
+
+    public static bool IsTranslatorModeEnabled()
     {
-        public static class Loc
+        return File.Exists(TranslatorModeFile);
+    }
+
+    public static string Resolve(string resName)
+    {
+        return ResolveOrDefault(resName) ?? $"<Missing resource: {resName}>";
+    }
+            
+    public static string? ResolveOrDefault(string resName)
+    {
+        var resource = Application.Current?.FindResource(resName);
+        if (resource is string str)
         {
-            public static Action</* Title */string,/* Content */string>? ErrorDetected { set; get; }
+            return str;
+        }
+
+        return null;
+    }
             
-            public static event Action? LanguageUpdated;
-            public static string TranslatorModeFile => PlatformUtils.CombineDataPath("custom_language.xaml");
-            public static ICommand ReloadCommand { get; } = new MiniCommand(_ => Load());
+    public static FlowDirection ResolveFlowDirection()
+    {
+        return Application.Current?.FindResource("IsRightToLeft") as bool? == true ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+    }
 
-            public static bool IsTranslatorModeEnabled()
-            {
-                return File.Exists(TranslatorModeFile);
-            }
+    public static void Load()
+    {
+        var lang = Settings.Instance.Locale.ToString();
+        if (lang.EndsWith('_'))
+            lang = lang.TrimEnd('_');
 
-            public static string Resolve(string resName)
-            {
-                return ResolveOrDefault(resName) ?? $"<Missing resource: {resName}>";
-            }
-            
-            public static string? ResolveOrDefault(string resName)
-            {
-                var resource = Application.Current?.FindResource(resName);
-                if (resource is string str)
-                {
-                    return str;
-                }
-
-                return null;
-            }
-            
-            public static FlowDirection ResolveFlowDirection()
-            {
-                return Application.Current?.FindResource("IsRightToLeft") as bool? == true ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
-            }
-
-            public static void Load()
-            {
-                var lang = Settings.Instance.Locale.ToString();
-                if (lang.EndsWith('_'))
-                    lang = lang.TrimEnd('_');
-
-                switch (Settings.Instance.Locale)
-                {
-                    case Locales.custom when IsTranslatorModeEnabled():
-                        SetLanguageResourceDictionary(TranslatorModeFile, true);
-                        NotifyObservers();
-                        return;
-                    case Locales.custom when !IsTranslatorModeEnabled():
-                        lang = Locales.en.ToString();
-                        Settings.Instance.Locale = Locales.en;
-                        break;
-                }
-
-                SetLanguageResourceDictionary($"{Program.AvaresUrl}/i18n/{lang}.xaml", false);
+        switch (Settings.Instance.Locale)
+        {
+            case Locales.custom when IsTranslatorModeEnabled():
+                SetLanguageResourceDictionary(TranslatorModeFile, true);
                 NotifyObservers();
-            }
+                return;
+            case Locales.custom when !IsTranslatorModeEnabled():
+                lang = Locales.en.ToString();
+                Settings.Instance.Locale = Locales.en;
+                break;
+        }
 
-            private static void NotifyObservers()
+        SetLanguageResourceDictionary($"{Program.AvaresUrl}/i18n/{lang}.axaml", false);
+        NotifyObservers();
+    }
+
+    private static void NotifyObservers()
+    {
+        foreach (var item in _observerList)
+        {
+            var value = Resolve(item.Key);
+            foreach (var item1 in item.Value)
             {
-                foreach (var item in _observerList)
-                {
-                    var value = Resolve(item.Key);
-                    foreach (var item1 in item.Value)
-                    {
-                        if (item1.TryGetTarget(out var target))
-                        { 
-                            target.OnNext(value);
-                        }
-                    }
+                if (item1.TryGetTarget(out var target))
+                { 
+                    target.OnNext(value);
                 }
             }
+        }
+    }
             
-            private static void SetLanguageResourceDictionary(string path, bool external)
-            {
-                try
-                {
-                    var langDictId = ResourceIndexer.Find("Loc-");
+    private static void SetLanguageResourceDictionary(string path, bool external)
+    {
+        try
+        {
+            var langDictId = ResourceIndexer.Find("Loc-");
 
-                    if (langDictId == -1)
+            if (langDictId == -1)
+            {
+                const string msg = "Neither custom language nor fallback resource found. " +
+                                   "Unwanted side-effects may occur.";
+                Log.Error("Localization: {Msg}", msg);
+                ErrorDetected?.Invoke("Unable to resolve resource", msg);
+            }
+            else
+            {
+                // Replace the current language dictionary with the new one  
+                if (external)
+                {
+                    using var stream = new MemoryStream(Encoding.UTF8.GetBytes(File.ReadAllText(path)));
+                    try
                     {
-                        const string msg = "Neither custom language nor fallback resource found. " +
-                                           "Unwanted side-effects may occur.";
-                        Log.Error("Localization: {Msg}", msg);
-                        ErrorDetected?.Invoke("Unable to resolve resource", msg);
-                    }
-                    else
-                    {
-                        // Replace the current language dictionary with the new one  
-                        if (external)
+                        if (AvaloniaRuntimeXamlLoader.Load(stream) is ResourceDictionary dict)
                         {
-                            using var stream = new MemoryStream(Encoding.UTF8.GetBytes(File.ReadAllText(path)));
-                            try
-                            {
-                                if (AvaloniaRuntimeXamlLoader.Load(stream) is ResourceDictionary dict)
-                                {
-                                    if (Application.Current != null)
-                                        Application.Current.Resources.MergedDictionaries[langDictId] = dict;
-                                }
-                                else
-                                {
-                                    const string msg = "Custom language file is not a resource dictionary";
-                                    ErrorDetected?.Invoke("XAML error", msg);
-                                    Log.Error($"Localization: {msg}");
-                                }
-                            }
-                            catch (XmlException ex)
-                            {
-                                var msg = $"An external resource dictionary contains syntax errors.\n\nPlease check line {ex.LineNumber}, column {ex.LinePosition} in the affected XAML file.\n\n{path}";
-                                ErrorDetected?.Invoke("XAML syntax error", msg);
-                                Log.Error("Localization: XAML syntax error. Line {Line}, column {Position}", ex.LineNumber, ex.LinePosition);
-                            }
+                            if (Application.Current != null)
+                                Application.Current.Resources.MergedDictionaries[langDictId] = dict;
                         }
                         else
                         {
-                            if (Application.Current != null)
-                                Application.Current.Resources.MergedDictionaries[langDictId] =
-                                    new ResourceInclude((Uri?)null) { Source = new Uri(path) };
+                            const string msg = "Custom language file is not a resource dictionary";
+                            ErrorDetected?.Invoke("XAML error", msg);
+                            Log.Error($"Localization: {msg}");
                         }
                     }
-                }
-                catch (IOException e)
-                {
-                    ErrorDetected?.Invoke("IO-Exception", e.Message);
-                    Log.Error("Localization: IOError while loading locales. Details: {Message}", e.Message);
-                }
-                
-                LanguageUpdated?.Invoke();
-            }
-            
-            private static readonly Dictionary<string, List<WeakReference<IObserver<string>>>> _observerList = [];
-
-            public static IDisposable AddObserverForKey(string key, IObserver<string> observer)
-            {
-                if (_observerList.TryGetValue(key, out var list))
-                {
-                    list.Add(new WeakReference<IObserver<string>>(observer));
+                    catch (XmlException ex)
+                    {
+                        var msg = $"An external resource dictionary contains syntax errors.\n\nPlease check line {ex.LineNumber}, column {ex.LinePosition} in the affected XAML file.\n\n{path}";
+                        ErrorDetected?.Invoke("XAML syntax error", msg);
+                        Log.Error("Localization: XAML syntax error. Line {Line}, column {Position}", ex.LineNumber, ex.LinePosition);
+                    }
                 }
                 else
                 {
-                    list = [new WeakReference<IObserver<string>>(observer)];
-                    _observerList.Add(key, list);
+                    if (Application.Current != null)
+                        Application.Current.Resources.MergedDictionaries[langDictId] =
+                            new ResourceInclude((Uri?)null) { Source = new Uri(path) };
                 }
-                var value = Resolve(key);
-                observer.OnNext(value);
-                return new Unsubscribable(list, observer);
             }
+        }
+        catch (IOException e)
+        {
+            ErrorDetected?.Invoke("IO-Exception", e.Message);
+            Log.Error("Localization: IOError while loading locales. Details: {Message}", e.Message);
+        }
+                
+        LanguageUpdated?.Invoke();
+    }
+            
+    private static readonly Dictionary<string, List<WeakReference<IObserver<string>>>> _observerList = [];
 
-            private class Unsubscribable(List<WeakReference<IObserver<string>>> observers, IObserver<string> observer) : IDisposable
+    public static IDisposable AddObserverForKey(string key, IObserver<string> observer)
+    {
+        if (_observerList.TryGetValue(key, out var list))
+        {
+            list.Add(new WeakReference<IObserver<string>>(observer));
+        }
+        else
+        {
+            list = [new WeakReference<IObserver<string>>(observer)];
+            _observerList.Add(key, list);
+        }
+        var value = Resolve(key);
+        observer.OnNext(value);
+        return new Unsubscribable(list, observer);
+    }
+
+    private class Unsubscribable(List<WeakReference<IObserver<string>>> observers, IObserver<string> observer) : IDisposable
+    {
+        public void Dispose()
+        {
+            foreach (var item in observers.ToArray())
             {
-                public void Dispose()
+                if (!item.TryGetTarget(out var target)
+                    || target == observer)
                 {
-                    foreach (var item in observers.ToArray())
-                    {
-                        if (!item.TryGetTarget(out var target)
-                            || target == observer)
-                        {
-                            observers.Remove(item);
-                        }
-                    }
+                    observers.Remove(item);
                 }
             }
         }

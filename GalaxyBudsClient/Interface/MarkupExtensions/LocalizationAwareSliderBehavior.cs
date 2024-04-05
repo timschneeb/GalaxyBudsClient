@@ -3,7 +3,7 @@ using Avalonia;
 using Avalonia.Data.Converters;
 using Avalonia.Xaml.Interactivity;
 using GalaxyBudsClient.Interface.Controls;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.MarkupExtensions;
 

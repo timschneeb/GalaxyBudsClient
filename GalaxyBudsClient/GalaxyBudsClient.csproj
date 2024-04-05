@@ -122,8 +122,9 @@
     <ItemGroup Condition="'$(IsOSX)'=='true'">
         <ProjectReference Include="..\ThePBone.OSX.Native\ThePBone.OSX.Native.csproj"/>
     </ItemGroup>
-
+    
     <ItemGroup>
+        <ProjectReference Include="..\GalaxyBudsClient.Generators\GalaxyBudsClient.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
         <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj"/>
     </ItemGroup>
 </Project>

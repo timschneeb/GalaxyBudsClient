@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using GalaxyBudsClient.Bluetooth;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model;
@@ -14,7 +15,7 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using Serilog;
@@ -201,7 +202,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
 
     private async Task<string> GetDeviceNameAsync()
     {
-        var fallbackName = ActiveModel.GetModelMetadata()?.Name ?? Loc.Resolve("unknown");
+        var fallbackName = ActiveModel.GetModelMetadata()?.Name ?? Strings.Unknown;
         try
         {
             var devices = await _backend.GetDevicesAsync();
@@ -318,7 +319,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
     {
         if (!SuppressDisconnectionEvents)
         {
-            LastErrorMessage = Loc.Resolve("connlost");
+            LastErrorMessage = Strings.Connlost;
             IsConnected = false;
             Disconnected?.Invoke(this, reason);
         }

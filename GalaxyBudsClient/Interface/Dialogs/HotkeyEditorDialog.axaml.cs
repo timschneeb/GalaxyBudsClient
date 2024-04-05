@@ -2,9 +2,10 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using FluentAvalonia.UI.Controls;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.ViewModels.Dialogs;
 using GalaxyBudsClient.Model.Hotkeys;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 
@@ -24,9 +25,9 @@ public partial class HotkeyEditorDialog : UserControl
     {
         var dialog = new ContentDialog
         {
-            Title = Loc.Resolve(hotkey == null ? "hotkey_add" : "hotkey_edit_long"),
-            PrimaryButtonText = Loc.Resolve("okay"),
-            CloseButtonText = Loc.Resolve("cancel"),
+            Title = hotkey == null ? Strings.HotkeyAdd : Strings.HotkeyEditLong,
+            PrimaryButtonText = Strings.Okay,
+            CloseButtonText = Strings.Cancel,
             DefaultButton = ContentDialogButton.Primary
         };
 
@@ -51,9 +52,9 @@ public partial class HotkeyEditorDialog : UserControl
             
             var resultHint = new ContentDialog
             {
-                Content = Loc.Resolve("hotkey_edit_invalid_desc"),
-                Title = Loc.Resolve("hotkey_edit_invalid"),
-                PrimaryButtonText = Loc.Resolve("window_close")
+                Title = Strings.HotkeyEditInvalid,
+                Content = Strings.HotkeyEditInvalidDesc,
+                PrimaryButtonText = Strings.WindowClose
             };
             _ = resultHint.ShowAsync(MainWindow.Instance);
         }

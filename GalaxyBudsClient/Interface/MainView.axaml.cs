@@ -11,7 +11,7 @@ using FluentAvalonia.UI.Windowing;
 using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using Serilog;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 

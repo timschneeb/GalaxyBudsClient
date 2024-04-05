@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using Avalonia.Controls;
 using FluentIcons.Common;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
@@ -94,7 +95,7 @@ public class EqualizerPageViewModel : MainPageViewModelBase
     [Reactive] public int StereoBalance { set; get; }
 
     public int MaximumEqPreset => 4;
-    public override string TitleKey => "eq_header";
+    public override string TitleKey => Keys.EqHeader;
     public override Symbol IconKey => Symbol.DeviceEq;
     public override bool ShowsInFooter => false;
 }

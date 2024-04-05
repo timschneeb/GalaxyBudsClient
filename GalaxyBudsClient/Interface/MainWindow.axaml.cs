@@ -10,6 +10,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input;
 using Avalonia.Threading;
 using GalaxyBudsClient.Bluetooth;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.StyledWindow;
 using GalaxyBudsClient.Message;
@@ -21,7 +22,6 @@ using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Serilog;
 using Application = Avalonia.Application;
 using Environment = System.Environment;
@@ -284,8 +284,8 @@ public partial class MainWindow : StyledAppWindow
             case BluetoothException.ErrorCodes.NoAdaptersAvailable:
                 await new MessageBox
                 {
-                    Title = Loc.Resolve("error"),
-                    Description = Loc.Resolve("nobluetoothdev")
+                    Title = Strings.Error,
+                    Description = Strings.Nobluetoothdev
                 }.ShowAsync();
                 break;
             default:

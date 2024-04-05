@@ -3,10 +3,11 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Avalonia.Controls;
 using FluentAvalonia.UI.Controls;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels;
@@ -21,24 +22,24 @@ public class MainViewViewModel : ViewModelBase
         BluetoothImpl.Instance.Connecting += (_, _) =>
         {
             IsConnectButtonEnabled = false;
-            ConnectButtonText = Loc.Resolve("connlost_connecting");
+            ConnectButtonText = Strings.ConnlostConnecting;
         };
         BluetoothImpl.Instance.BluetoothError += (_, _) =>
         {
             IsConnectButtonEnabled = true;
-            ConnectButtonText = Loc.Resolve("connlost_connect");
+            ConnectButtonText = Strings.ConnlostConnect;
         };
         BluetoothImpl.Instance.PropertyChanged += (_, e) =>
         {
             if (e.PropertyName != nameof(BluetoothImpl.Instance.IsConnected))
                 return;
             IsConnectButtonEnabled = true;
-            ConnectButtonText = Loc.Resolve("connlost_connect");
+            ConnectButtonText = Strings.ConnlostConnect;
         };
     }
 
     [Reactive] public bool IsConnectButtonEnabled { set; get; } = true;
-    [Reactive] public string ConnectButtonText { set; get; } = Loc.Resolve("connlost_connect");
+    [Reactive] public string ConnectButtonText { set; get; } = Strings.ConnlostConnect;
     [Reactive] public bool IsInSetupWizard { set; get; } = !BluetoothImpl.IsRegisteredDeviceValid;
     public NavigationFactory NavigationFactory { get; }
     public required Func<Type, PageViewModelBase?> VmResolver { get; init; }

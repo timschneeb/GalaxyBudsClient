@@ -1,9 +1,10 @@
 using System;
 using System.Diagnostics;
 using System.Security;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Platform.Interfaces;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using Microsoft.Win32;
 using Serilog;
 
@@ -53,8 +54,8 @@ public class AutoStartHelper : IAutoStartHelper
                 
             _ = new MessageBox
             {
-                Title = Loc.Resolve("error"),
-                Description = Loc.Resolve("settings_autostart_permission")
+                Title = Strings.Error,
+                Description = Strings.SettingsAutostartPermission
             }.ShowAsync();
         }
     }

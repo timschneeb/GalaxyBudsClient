@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using Avalonia.Controls;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
@@ -157,5 +158,5 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
     [Reactive] public int MaximumAmbientSoundVolume { set; get; }
     [Reactive] public int MaximumLeftRightAmbientSoundVolume { set; get; }
     
-    public override string TitleKey => "nc_as_header";
+    public override string TitleKey => Keys.NcAsHeader;
 }

@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI;
 
 namespace GalaxyBudsClient.Interface.ViewModels;

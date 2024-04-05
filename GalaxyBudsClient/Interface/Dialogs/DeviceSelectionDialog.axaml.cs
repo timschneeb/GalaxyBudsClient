@@ -5,10 +5,11 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Bluetooth;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.ViewModels.Dialogs;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 
@@ -25,8 +26,8 @@ public partial class DeviceSelectionDialog : UserControl
     {
         var dialog = new ContentDialog
         {
-            Title = Loc.Resolve("devsel_header"),
-            CloseButtonText = Loc.Resolve("cancel")
+            Title = Strings.DevselHeader,
+            CloseButtonText = Strings.Cancel
         };
 
         var viewModel = new DeviceSelectionDialogViewModel(dialog);
@@ -48,8 +49,8 @@ public partial class DeviceSelectionDialog : UserControl
             {
                 _ = new MessageBox
                 {
-                    Title = Loc.Resolve("error"),
-                    Description = Loc.Resolve("devsel_invalid_selection")
+                    Title = Strings.Error,
+                    Description = Strings.DevselInvalidSelection
                 }.ShowAsync();
             }
         }

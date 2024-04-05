@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Model.Attributes;
 

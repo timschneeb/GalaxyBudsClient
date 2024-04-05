@@ -4,7 +4,7 @@ using Avalonia;
 using Avalonia.Xaml.Interactivity;
 using GalaxyBudsClient.Interface.Controls;
 using GalaxyBudsClient.Model.Attributes;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.MarkupExtensions;
 

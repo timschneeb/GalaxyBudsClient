@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Threading;
 using FluentIcons.Common;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
@@ -175,7 +176,7 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
     [Reactive] public bool IsVoiceDetectEnabled { set; get; }
     [Reactive] public VoiceDetectTimeouts VoiceDetectTimeout { set; get; }
 
-    public override string TitleKey => "mainpage_noise";
+    public override string TitleKey => Keys.MainpageNoise;
     public override Symbol IconKey => Symbol.HeadphonesSoundWave;
     public override bool ShowsInFooter => false;
 }

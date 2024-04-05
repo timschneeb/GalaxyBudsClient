@@ -2,9 +2,10 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using FluentAvalonia.UI.Controls;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.ViewModels.Dialogs;
 using GalaxyBudsClient.Model;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 
@@ -24,9 +25,9 @@ public partial class TouchActionEditorDialog : UserControl
     {
         var dialog = new ContentDialog
         {
-            Title = Loc.Resolve("cact_header"),
-            PrimaryButtonText = Loc.Resolve("okay"),
-            CloseButtonText = Loc.Resolve("cancel"),
+            Title = Strings.CactHeader,
+            PrimaryButtonText = Strings.Okay,
+            CloseButtonText = Strings.Cancel,
             DefaultButton = ContentDialogButton.Primary
         };
 

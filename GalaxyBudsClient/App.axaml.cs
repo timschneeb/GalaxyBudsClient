@@ -19,7 +19,6 @@ using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Scripting.Experiment;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Serilog;
 using Application = Avalonia.Application;
 using MainWindow = GalaxyBudsClient.Interface.MainWindow;

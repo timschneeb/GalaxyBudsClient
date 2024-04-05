@@ -5,10 +5,11 @@ using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Threading;
 using FluentAvalonia.UI.Controls;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Firmware;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using Symbol = FluentIcons.Common.Symbol;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
@@ -23,13 +24,13 @@ public class FirmwareUpdateDialog : TaskDialog
 
     public FirmwareUpdateDialog()
     {
-        var closeButton = new TaskDialogButton(Loc.Resolve("cancel"), TaskDialogStandardResult.Close);
-        _progressSize = new TextBlock { Text = Loc.Resolve("fw_upload_progress_prepare"), TextWrapping = TextWrapping.Wrap };
+        var closeButton = new TaskDialogButton(Strings.Cancel, TaskDialogStandardResult.Close);
+        _progressSize = new TextBlock { Text = Strings.FwUploadProgressPrepare, TextWrapping = TextWrapping.Wrap };
         _offset = new TextBlock { Text = string.Empty, TextWrapping = TextWrapping.Wrap };
         _packet = new TextBlock { Text = string.Empty, TextWrapping = TextWrapping.Wrap };
         _mtu = new TextBlock { Text = string.Empty, TextWrapping = TextWrapping.Wrap };
         
-        Header = Loc.Resolve("fw_upload_header");
+        Header = Strings.FwUploadHeader;
         Buttons = [closeButton];
         IconSource = new SymbolIconSource { Symbol = Symbol.ArrowDownload };
         Footer = new StackPanel
@@ -67,13 +68,13 @@ public class FirmwareUpdateDialog : TaskDialog
 
     private void OnCurrentBlockChanged(object? sender, FirmwareBlockChangedEventArgs e)
     {
-        _offset.Text = string.Format(Loc.Resolve("fw_upload_progress_stats_offset"), e.Offset, e.OffsetEnd);
-        _packet.Text = string.Format(Loc.Resolve("fw_upload_progress_stats_segment"), e.SegmentId, e.SegmentSize, e.SegmentCrc32);
+        _offset.Text = string.Format(Strings.FwUploadProgressStatsOffset, e.Offset, e.OffsetEnd);
+        _packet.Text = string.Format(Strings.FwUploadProgressStatsSegment, e.SegmentId, e.SegmentSize, e.SegmentCrc32);
     }
 
     private void OnMtuChanged(object? sender, short e)
     {
-        _mtu.Text = string.Format(Loc.Resolve("fw_upload_progress_stats_mtu"), e);
+        _mtu.Text = string.Format(Strings.FwUploadProgressStatsMtu, e);
     }
 
     private void OnStateChanged(object? sender, FirmwareTransferManager.States e)
@@ -81,7 +82,7 @@ public class FirmwareUpdateDialog : TaskDialog
         switch (e)
         {
             case FirmwareTransferManager.States.InitializingSession:
-                SubHeader = Loc.Resolve("fw_upload_progress_session");
+                SubHeader = Strings.FwUploadProgressSession;
                 SetProgressBarState(0, TaskDialogProgressState.Indeterminate);
                 break;
         }
@@ -91,8 +92,8 @@ public class FirmwareUpdateDialog : TaskDialog
     {
         SetProgressBarState(e.Percent, TaskDialogProgressState.Normal);
         
-        SubHeader = string.Format(Loc.Resolve("fw_upload_progress"), e.Percent);
-        _progressSize.Text = string.Format(Loc.Resolve("fw_upload_progress_size"),
+        SubHeader = string.Format(Strings.FwUploadProgress, e.Percent);
+        _progressSize.Text = string.Format(Strings.FwUploadProgressSize,
                 (e.CurrentEstimatedByteCount / 1000f).ToString("F1"),
                 (e.TotalByteCount / 1000f).ToString("F1"))
             .Replace("(", "")
@@ -107,7 +108,7 @@ public class FirmwareUpdateDialog : TaskDialog
             
             _ = new MessageBox
             {
-                Title = Loc.Resolve("fw_upload_progress_error"),
+                Title = Strings.FwUploadProgressError,
                 Description = e.ErrorMessage
             }.ShowAsync();
 
@@ -121,8 +122,8 @@ public class FirmwareUpdateDialog : TaskDialog
         
         _ = new MessageBox
         {
-            Title = Loc.Resolve("fw_upload_progress_finished"),
-            Description = Loc.Resolve("fw_upload_progress_finished_desc")
+            Title = Strings.FwUploadProgressFinished,
+            Description = Strings.FwUploadProgressFinishedDesc
         }.ShowAsync();
 
         _ = BluetoothImpl.Instance.DisconnectAsync();

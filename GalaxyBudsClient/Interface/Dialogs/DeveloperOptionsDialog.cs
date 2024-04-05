@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using FluentAvalonia.UI.Controls;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Utils.Interface;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
 using Symbol = FluentIcons.Common.Symbol;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
@@ -12,7 +12,7 @@ public class DeveloperOptionsDialog : TaskDialog
 {
     public DeveloperOptionsDialog()
     {
-        SubHeader = Loc.Resolve("settings_devmode");
+        SubHeader = Strings.SettingsDevmode;
         Commands = new List<TaskDialogCommand> {
             new()
             {

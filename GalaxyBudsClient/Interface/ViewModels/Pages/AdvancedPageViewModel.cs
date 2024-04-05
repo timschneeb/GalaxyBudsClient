@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using Avalonia.Controls;
 using FluentIcons.Common;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
@@ -58,7 +59,7 @@ public class AdvancedPageViewModel : MainPageViewModelBase
     [Reactive] public bool IsCallpathControlEnabled { set; get; }
     [Reactive] public bool IsExtraClearCallEnabled { set; get; }
 
-    public override string TitleKey => "mainpage_advanced";
+    public override string TitleKey => Keys.MainpageAdvanced;
     public override Symbol IconKey => Symbol.WrenchScrewdriver;
     public override bool ShowsInFooter => false;
 }

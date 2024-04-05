@@ -2,10 +2,11 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Bluetooth;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.ViewModels.Dialogs;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 
@@ -20,9 +21,9 @@ public partial class ManualPairDialog : UserControl
     {
         var dialog = new ContentDialog
         {
-            Title = Loc.Resolve("devsel_manual_pair"),
-            PrimaryButtonText = Loc.Resolve("okay"),
-            CloseButtonText = Loc.Resolve("cancel"),
+            Title = Strings.DevselManualPair,
+            PrimaryButtonText = Strings.Okay,
+            CloseButtonText = Strings.Cancel,
             DefaultButton = ContentDialogButton.Primary
         };
 
@@ -52,8 +53,8 @@ public partial class ManualPairDialog : UserControl
             {
                 _ = new MessageBox
                 {
-                    Title = Loc.Resolve("error"),
-                    Description = Loc.Resolve("devsel_invalid_selection")
+                    Title = Strings.Error,
+                    Description = Strings.DevselInvalidSelection
                 }.ShowAsync();
             }
         }

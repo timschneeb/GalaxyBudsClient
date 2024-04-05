@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using Avalonia.Controls;
 using FluentIcons.Common;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
@@ -10,7 +11,7 @@ using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
@@ -18,7 +19,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 public class FindMyBudsPageViewModel : MainPageViewModelBase
 {
     public override Control CreateView() => new FindMyBudsPage();
-    public override string TitleKey => "fmg_header";
+    public override string TitleKey => Keys.FmgHeader;
     public override Symbol IconKey => Symbol.LocationLive;
     public override bool ShowsInFooter => false;
     
@@ -83,9 +84,9 @@ public class FindMyBudsPageViewModel : MainPageViewModelBase
     {
         WarningText = e.WearState switch
         {
-            LegacyWearStates.Both => Loc.Resolve("fmg_warning_both"),
-            LegacyWearStates.L => Loc.Resolve("fmg_warning_left"),
-            LegacyWearStates.R => Loc.Resolve("fmg_warning_right"),
+            LegacyWearStates.Both => Strings.FmgWarningBoth,
+            LegacyWearStates.L => Strings.FmgWarningLeft,
+            LegacyWearStates.R => Strings.FmgWarningRight,
             _ => null
         };
     }

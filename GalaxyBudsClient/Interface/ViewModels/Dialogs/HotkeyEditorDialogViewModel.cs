@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Utils.Extensions;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI.Fody.Helpers;
+using Keys = GalaxyBudsClient.Model.Hotkeys.Keys;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Dialogs;
 
@@ -35,7 +37,7 @@ public class HotkeyEditorDialogViewModel : ViewModelBase
     [Reactive] public bool ModifierWin { set; get; }
     [Reactive] public Keys? Key1 { set; get; }
     [Reactive] public Event? Action { set; get; }
-    [Reactive] public string HotkeyPreview { set; get; } = Loc.Resolve("hotkey_edit_invalid");
+    [Reactive] public string HotkeyPreview { set; get; } = Strings.HotkeyEditInvalid;
         
     public static IEnumerable<Event> ActionSource =>
         Enum.GetValues<Event>().Where(EventDispatcher.CheckDeviceSupport);
@@ -61,12 +63,12 @@ public class HotkeyEditorDialogViewModel : ViewModelBase
     {
         if (Key1 is null or Keys.None)
         {
-            HotkeyPreview = Loc.Resolve("hotkey_edit_invalid");
+            HotkeyPreview = Strings.HotkeyEditInvalid;
             return null;
         }
         if (Action is null or Event.None)
         {
-            HotkeyPreview = Loc.Resolve("hotkey_edit_invalid_action");
+            HotkeyPreview = Strings.HotkeyEditInvalidAction;
             return null;
         }
 
@@ -84,7 +86,7 @@ public class HotkeyEditorDialogViewModel : ViewModelBase
                     
         if (modifier.Count < 1)
         {
-            HotkeyPreview = Loc.Resolve("hotkey_edit_invalid_mod");
+            HotkeyPreview = Strings.HotkeyEditInvalidMod;
             return null;
         }
             

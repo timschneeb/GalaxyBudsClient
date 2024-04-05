@@ -6,8 +6,9 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using FluentAvalonia.UI.Controls;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.ViewModels.Dialogs;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 
@@ -75,9 +76,9 @@ public partial class HotkeyRecorderDialog : UserControl
     {
         var dialog = new ContentDialog
         {
-            Title = Loc.Resolve("hotrec_content"),
-            PrimaryButtonText = Loc.Resolve("okay"),
-            CloseButtonText = Loc.Resolve("cancel")
+            Title = Strings.HotrecContent,
+            PrimaryButtonText = Strings.Okay,
+            CloseButtonText = Strings.Cancel
         };
 
         var viewModel = new HotkeyRecorderDialogViewModel();
@@ -101,9 +102,9 @@ public partial class HotkeyRecorderDialog : UserControl
             {
                 var resultHint = new ContentDialog
                 {
-                    Content = Loc.Resolve("error"),
-                    Title = Loc.Resolve("hotkey_edit_invalid"),
-                    PrimaryButtonText = Loc.Resolve("window_close")
+                    Content = Strings.Error,
+                    Title = Strings.HotkeyEditInvalid,
+                    PrimaryButtonText = Strings.WindowClose
                 };
                 _ = resultHint.ShowAsync(MainWindow.Instance)
                     .ContinueWith(_ => defer.Complete());

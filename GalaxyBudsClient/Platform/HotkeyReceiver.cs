@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform.Interfaces;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Platform;
 
@@ -106,8 +107,8 @@ public class HotkeyReceiver : IDisposable
 
             await new MessageBox
             {
-                Title = Loc.Resolve("hotkey_add_error"),
-                Description = $"{ex.Message} {Loc.Resolve("hotkey_add_error_context")} {ex.Hotkey.Keys.AsHotkeyString(ex.Hotkey.Modifier)}"
+                Title = Strings.HotkeyAddError,
+                Description = $"{ex.Message} {Strings.HotkeyAddErrorContext} {ex.Hotkey.Keys.AsHotkeyString(ex.Hotkey.Modifier)}"
             }.ShowAsync();
 
             return ex;

@@ -1,10 +1,11 @@
 ﻿using Avalonia.Controls;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
@@ -12,7 +13,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 public class SystemInfoPageViewModel : SubPageViewModelBase
 {
     public override Control CreateView() => new SystemInfoPage();
-    public override string TitleKey => "system_header";
+    public override string TitleKey => Keys.SystemHeader;
     
     public SystemInfoPageViewModel()
     {
@@ -29,8 +30,8 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
 
     private void OnDebugSerialNumberReceived(object? sender, CradleSerialNumberDecoder e)
     {
-        CradleSerialNumber = e.SoftwareVersion ?? Loc.Resolve("placement_disconnected");
-        CradleSwVersion = e.SerialNumber ?? Loc.Resolve("placement_disconnected");
+        CradleSerialNumber = e.SoftwareVersion ?? Strings.PlacementDisconnected;
+        CradleSwVersion = e.SerialNumber ?? Strings.PlacementDisconnected;
     }
 
     private void OnExtendedStatusUpdateReceived(object? sender, ExtendedStatusUpdateDecoder e)
@@ -41,14 +42,14 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
     private void OnDebugSerialNumberReceived(object? sender, DebugSerialNumberDecoder e)
     {
         SerialNumber = e is { LeftSerialNumber: not null, RightSerialNumber: not null }
-            ? $"{Loc.Resolve("left")}: {e.LeftSerialNumber}, {Loc.Resolve("right")}: {e.RightSerialNumber}"
+            ? $"{Strings.Left}: {e.LeftSerialNumber}, {Strings.Right}: {e.RightSerialNumber}"
             : Unknown;
     }
 
     private void OnDebugSkuReceived(object? sender, DebugSkuDecoder e)
     {
         DeviceSku = e is { LeftSku: not null, RightSku: not null }
-            ? $"{Loc.Resolve("left")}: {e.LeftSku}, {Loc.Resolve("right")}: {e.RightSku}"
+            ? $"{Strings.Left}: {e.LeftSku}, {Strings.Right}: {e.RightSku}"
             : Unknown;
     }
 
@@ -60,7 +61,7 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
     private void OnBatteryTypeReceived(object? sender, BatteryTypeDecoder e)
     {
         BatteryType = e is { LeftBatteryType: not null, RightBatteryType: not null }
-            ? $"{Loc.Resolve("left")}: {e.LeftBatteryType}, {Loc.Resolve("right")}: {e.RightBatteryType}"
+            ? $"{Strings.Left}: {e.LeftBatteryType}, {Strings.Right}: {e.RightBatteryType}"
             : Unknown;
     }
     
@@ -70,7 +71,7 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
         SwVersion = e.SoftwareVersion ?? Unknown;
         TouchSwVersion = e.TouchSoftwareVersion ?? Unknown;
         BluetoothAddress = e is { LeftBluetoothAddress: not null, RightBluetoothAddress: not null }
-            ? $"{Loc.Resolve("left")}: {e.LeftBluetoothAddress}, {Loc.Resolve("right")}: {e.RightBluetoothAddress}"
+            ? $"{Strings.Left}: {e.LeftBluetoothAddress}, {Strings.Right}: {e.RightBluetoothAddress}"
             : Unknown;
     }
     
@@ -103,8 +104,8 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
     [Reactive] public string DeviceSku { set; get; } = Placeholder;
     [Reactive] public string BatteryType { set; get; } = Placeholder;
     
-    private static string Placeholder => Loc.Resolve("system_waiting_for_device");
-    private static string Unknown => Loc.Resolve("unknown");
+    private static string Placeholder => Strings.SystemWaitingForDevice;
+    private static string Unknown => Strings.Unknown;
 }
 
 

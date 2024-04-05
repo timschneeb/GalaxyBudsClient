@@ -19,9 +19,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <!-- Fallback language -->
-                <ResourceInclude Source="/i18n/en.xaml" />
+                <ResourceInclude Source="/i18n/en.axaml" />
                 <!-- User language -->
-                <ResourceInclude Source="/i18n/en.xaml" />
+                <ResourceInclude Source="/i18n/en.axaml" />
                 <!-- Resources -->
                 <ResourceInclude Source="/Interface/Styling/Resources.axaml" />
             </ResourceDictionary.MergedDictionaries>

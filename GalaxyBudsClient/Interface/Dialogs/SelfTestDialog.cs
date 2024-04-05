@@ -4,10 +4,11 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Media;
 using FluentAvalonia.UI.Controls;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using Symbol = FluentIcons.Common.Symbol;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
@@ -20,15 +21,15 @@ public class SelfTestDialog : TaskDialog
 
     public SelfTestDialog()
     {
-        var closeButton = new TaskDialogButton(Loc.Resolve("cancel"), TaskDialogStandardResult.Close);
+        var closeButton = new TaskDialogButton(Strings.Cancel, TaskDialogStandardResult.Close);
         
-        Header = Loc.Resolve("selftest_header");
+        Header = Strings.SelftestHeader;
         Buttons = [closeButton];
         IconSource = new SymbolIconSource { Symbol = Symbol.Beaker };
         Content = _content = new TextBlock
         {
             TextWrapping = TextWrapping.Wrap,
-            Text = Loc.Resolve("system_waiting_for_device"),
+            Text = Strings.SystemWaitingForDevice,
             MaxWidth = 600
         };
         XamlRoot = MainWindow.Instance;
@@ -67,31 +68,31 @@ public class SelfTestDialog : TaskDialog
         base.OnClosing(args);
     }
     
-    private static TaskDialogCommand ResultWithSideAsTaskItem(string testKey, bool lPass, bool rPass)
+    private static TaskDialogCommand ResultWithSideAsTaskItem(string test, bool lPass, bool rPass)
     {
         return new TaskDialogCommand
         {
-            Text = Loc.Resolve(testKey),
+            Text = test,
             IconSource = new SymbolIconSource
             {
                 Symbol = !lPass || !rPass ? Symbol.Warning : Symbol.Checkmark
             },
-            Description = $"{Loc.Resolve("left")}: {Loc.Resolve(lPass ? "selftest_pass" : "selftest_fail")}, " +
-                          $"{Loc.Resolve("right")}: {Loc.Resolve(rPass ? "selftest_pass" : "selftest_fail")}",
+            Description = $"{Strings.Left}: {(lPass ? Strings.SelftestPass : Strings.SelftestFail)}, " +
+                          $"{Strings.Right}: {(rPass ? Strings.SelftestPass : Strings.SelftestFail)}",
             ClosesOnInvoked = false
         };
     }
         
-    private static TaskDialogCommand ResultAsTaskItem(string testKey, bool pass)
+    private static TaskDialogCommand ResultAsTaskItem(string test, bool pass)
     {
         return new TaskDialogCommand
         {
-            Text = Loc.Resolve(testKey),
+            Text = test,
             IconSource = new SymbolIconSource
             {
                 Symbol = !pass ? Symbol.Warning : Symbol.Checkmark
             },
-            Description = Loc.Resolve(pass ? "selftest_pass" : "selftest_fail"),
+            Description = pass ? Strings.SelftestPass : Strings.SelftestFail,
             ClosesOnInvoked = false
         };
     }
@@ -99,35 +100,35 @@ public class SelfTestDialog : TaskDialog
     private void OnSelfTestResponse(object? s, SelfTestDecoder? parser)
     {
         _cancelToken.Cancel();
-        Buttons[0].Text = Loc.Resolve("window_close");
+        Buttons[0].Text = Strings.WindowClose;
 
         if (parser == null)
         {
             SetProgressBarState(100, TaskDialogProgressState.Error);
-            _content.Text = Loc.Resolve("system_no_response");
+            _content.Text = Strings.SystemNoResponse;
         }
         else
         {
             // Open a new dialog to display the results because Commands can't be updated after the dialog is shown
             _ = new TaskDialog
             {
-                Header = Loc.Resolve(parser is not { AllChecks: true } ? "selftest_fail_long" : "selftest_pass_long"),
+                Header = parser is not { AllChecks: true } ? Strings.SelftestFailLong : Strings.SelftestPassLong,
                 Buttons = Buttons,
                 IconSource = IconSource,
                 XamlRoot = MainWindow.Instance,
                 Commands = new[]
                 {
-                    ResultAsTaskItem("system_hwver", parser.HardwareVersion),
-                    ResultAsTaskItem("system_swver", parser.SoftwareVersion),
-                    ResultAsTaskItem("system_touchver", parser.TouchFirmwareVersion),
-                    ResultWithSideAsTaskItem("system_btaddr", parser.LeftBluetoothAddress, parser.RightBluetoothAddress),
-                    ResultWithSideAsTaskItem("system_proximity", parser.LeftProximity, parser.RightProximity),
-                    ResultWithSideAsTaskItem("system_thermo", parser.LeftThermistor, parser.RightThermistor),
-                    ResultWithSideAsTaskItem("system_adc_soc", parser.LeftAdcSoc, parser.RightAdcSoc),
-                    ResultWithSideAsTaskItem("system_adc_voltage", parser.LeftAdcVCell, parser.RightAdcVCell),
-                    ResultWithSideAsTaskItem("system_adc_current", parser.LeftAdcCurrent, parser.RightAdcCurrent),
-                    ResultWithSideAsTaskItem("system_hall", parser.LeftHall, parser.RightHall),
-                    ResultWithSideAsTaskItem("system_accel", parser.AllLeftAccelerator, parser.AllRightAccelerator)
+                    ResultAsTaskItem(Strings.SystemHwver, parser.HardwareVersion),
+                    ResultAsTaskItem(Strings.SystemSwver, parser.SoftwareVersion),
+                    ResultAsTaskItem(Strings.SystemTouchver, parser.TouchFirmwareVersion),
+                    ResultWithSideAsTaskItem(Strings.SystemBtaddr, parser.LeftBluetoothAddress, parser.RightBluetoothAddress),
+                    ResultWithSideAsTaskItem(Strings.SystemProximity, parser.LeftProximity, parser.RightProximity),
+                    ResultWithSideAsTaskItem(Strings.SystemThermo, parser.LeftThermistor, parser.RightThermistor),
+                    ResultWithSideAsTaskItem(Strings.SystemAdcSoc, parser.LeftAdcSoc, parser.RightAdcSoc),
+                    ResultWithSideAsTaskItem(Strings.SystemAdcVoltage, parser.LeftAdcVCell, parser.RightAdcVCell),
+                    ResultWithSideAsTaskItem(Strings.SystemAdcCurrent, parser.LeftAdcCurrent, parser.RightAdcCurrent),
+                    ResultWithSideAsTaskItem(Strings.SystemHall, parser.LeftHall, parser.RightHall),
+                    ResultWithSideAsTaskItem(Strings.SystemAccel, parser.AllLeftAccelerator, parser.AllRightAccelerator)
                 }
             }.ShowAsync(true);
             Hide();

@@ -5,9 +5,10 @@ using Avalonia.Controls;
 using Avalonia.Data;
 using Avalonia.Layout;
 using FluentAvalonia.UI.Controls;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Converters;
 using GalaxyBudsClient.Interface.MarkupExtensions;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 
@@ -17,8 +18,8 @@ public class EnumChoiceBox<T> : ContentDialog where T : struct
     
     public EnumChoiceBox()
     {
-        PrimaryButtonText = Loc.Resolve("okay");
-        CloseButtonText = Loc.Resolve("cancel");
+        PrimaryButtonText = Strings.Okay;
+        CloseButtonText = Strings.Cancel;
         DefaultButton = ContentDialogButton.Primary;
         Content = _comboBox = new ComboBox
         {

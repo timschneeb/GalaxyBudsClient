@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel;
 using Avalonia.Controls;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
@@ -14,7 +15,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 public class FitTestPageViewModel : SubPageViewModelBase
 {
     public override Control CreateView() => new FitTestPage();
-    public override string TitleKey => "mainpage_fit_test";
+    public override string TitleKey => Keys.MainpageFitTest;
     
     [Reactive] public string? WarningText { set; get; }
     [Reactive] public bool IsActive { set; get; }
@@ -55,7 +56,7 @@ public class FitTestPageViewModel : SubPageViewModelBase
 
     private void OnStatusUpdated(object? sender, IBasicStatusUpdate e)
     {
-        WarningText = e.WearState != LegacyWearStates.Both ? Loc.Resolve("gft_warning") : null;
+        WarningText = e.WearState != LegacyWearStates.Both ? Strings.GftWarning : null;
     }
    
     private void OnFitTestResultReceived(object? sender, FitTestDecoder result)

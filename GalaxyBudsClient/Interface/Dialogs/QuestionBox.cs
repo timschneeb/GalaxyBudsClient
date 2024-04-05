@@ -1,7 +1,8 @@
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using FluentAvalonia.UI.Controls;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Generated.I18N;
+using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 
@@ -9,8 +10,8 @@ public class QuestionBox
 {
     public required string Title { get; set; }
     public required string Description { get; set; }
-    public string ButtonText { get; set; } = Loc.Resolve("okay");
-    public string CloseButtonText { get; set; } = Loc.Resolve("cancel");
+    public string ButtonText { get; set; } = Strings.Okay;
+    public string CloseButtonText { get; set; } = Strings.Cancel;
 
     public async Task<bool> ShowAsync(Window? host = null)
     {

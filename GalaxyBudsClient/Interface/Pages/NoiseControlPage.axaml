@@ -6,6 +6,7 @@
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
              xmlns:constants="clr-namespace:GalaxyBudsClient.Model.Constants"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.NoiseControlPage"
              x:DataType="pages:NoiseControlPageViewModel"

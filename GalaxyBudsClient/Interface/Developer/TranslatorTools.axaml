@@ -5,7 +5,7 @@
         xmlns:model="clr-namespace:GalaxyBudsClient.Model.Constants"
         xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
         xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
-        xmlns:dynamicLocalization="clr-namespace:GalaxyBudsClient.Utils.Interface.DynamicLocalization"
+        xmlns:dynamicLocalization="clr-namespace:GalaxyBudsClient.Utils.Interface"
         xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
         mc:Ignorable="d" d:DesignWidth="463" d:DesignHeight="380"
         x:Class="GalaxyBudsClient.Interface.Developer.TranslatorTools"

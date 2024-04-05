@@ -5,13 +5,14 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using FluentAvalonia.UI.Controls;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Extensions;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.Pages;
 
@@ -35,10 +36,10 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
     {
         var cd = new ContentDialog
         {
-            Title = Loc.Resolve("factory_header"),
-            Content = Loc.Resolve("factory_confirmation"),
-            PrimaryButtonText = Loc.Resolve("continue_button"),
-            SecondaryButtonText = Loc.Resolve("cancel"),
+            Title = Strings.FactoryHeader,
+            Content = Strings.FactoryConfirmation,
+            PrimaryButtonText = Strings.ContinueButton,
+            SecondaryButtonText = Strings.Cancel,
             DefaultButton = ContentDialogButton.Primary
         };
 
@@ -51,7 +52,7 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
     private async void OnFactoryResetConfirmed(ContentDialog sender, ContentDialogButtonClickEventArgs args)
     {
         var cancelToken = new CancellationTokenSource();
-        sender.Title = Loc.Resolve("system_waiting_for_device");
+        sender.Title = Strings.SystemWaitingForDevice;
         sender.IsPrimaryButtonEnabled = false;
         sender.IsSecondaryButtonEnabled = false;
         
@@ -74,12 +75,12 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
             
             if (code != 0)
             {
-                var info = code == -1 ? Loc.Resolve("system_no_response") : code.ToString();
+                var info = code == -1 ? Strings.SystemNoResponse : code.ToString();
                 
                 _ = new MessageBox
                 {
-                    Title = Loc.Resolve("factory_error_title"),
-                    Description = Loc.Resolve("factory_error").Replace("{0}", info)
+                    Title = Strings.FactoryErrorTitle,
+                    Description = Strings.FactoryError.Replace("{0}", info)
                 }.ShowAsync(MainWindow.Instance);
                 return;
             }
@@ -93,8 +94,8 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
         await BluetoothImpl.Instance.SendRequestAsync(MsgIds.UNK_PAIRING_MODE);
         await new MessageBox
         {
-            Title = Loc.Resolve("connlost_disconnected"),
-            Description = Loc.Resolve("pairingmode_done")
+            Title = Strings.ConnlostDisconnected,
+            Description = Strings.PairingmodeDone
         }.ShowAsync();
     }
     
@@ -107,16 +108,16 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
     {
         var textBlock = new TextBlock
         {
-            Text = Loc.Resolve("system_waiting_for_device"),
+            Text = Strings.SystemWaitingForDevice,
             TextWrapping = TextWrapping.Wrap,
             MaxWidth = 600
         };
         
         var cd = new ContentDialog
         {
-            Title = Loc.Resolve("spatial_header"),
+            Title = Strings.SpatialHeader,
             Content = textBlock,
-            CloseButtonText = Loc.Resolve("window_close")
+            CloseButtonText = Strings.WindowClose
         };
 
         using var sensorManager = new SpatialSensorManager();
@@ -132,9 +133,9 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
         void OnNewQuaternionReceived(object? s, Quaternion quat)
         {
             var rpy = quat.ToRollPitchYaw();
-            textBlock.Text = $"{Loc.Resolve("spatial_dump_quaternion")}\n" +
+            textBlock.Text = $"{Strings.SpatialDumpQuaternion}\n" +
                              $"X={quat.X}\nY={quat.Y}\nZ={quat.Z}\nW={quat.W}\n\n" + 
-                             $"{Loc.Resolve("spatial_dump_rpy")}\n" +
+                             $"{Strings.SpatialDumpRpy}\n" +
                              $"Roll={rpy[0]}\nPitch={rpy[1]}\nYaw={rpy[2]}\n";
         }
     }
@@ -143,9 +144,9 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
     {
         var result = await new QuestionBox
         {
-            Title = Loc.Resolve("system_trace_core_dump"),
-            Description = Loc.Resolve("coredump_dl_note"),
-            ButtonText = Loc.Resolve("continue_button")
+            Title = Strings.SystemTraceCoreDump,
+            Description = Strings.CoredumpDlNote,
+            ButtonText = Strings.ContinueButton
         }.ShowAsync();
         
         if (!result)

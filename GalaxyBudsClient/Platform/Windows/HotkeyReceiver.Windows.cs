@@ -5,11 +5,13 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Avalonia.Threading;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform.Interfaces;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using Serilog;
+using Keys = GalaxyBudsClient.Model.Hotkeys.Keys;
 
 
 namespace GalaxyBudsClient.Platform.Windows;
@@ -25,8 +27,8 @@ public class HotkeyRegisterExceptionWin32 : HotkeyRegisterException
     {
         return code switch
         {
-            1409 => Loc.Resolve("hotkey_add_error_duplicate"),
-            _ => string.Format(Loc.Resolve("hotkey_add_error_unknown"), code)
+            1409 => Strings.HotkeyAddErrorDuplicate,
+            _ => string.Format(Strings.HotkeyAddErrorUnknown, code)
         };
     }
 } 

@@ -8,6 +8,7 @@ using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Platform.Storage;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
@@ -17,7 +18,7 @@ using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI.Fody.Helpers;
 using Serilog;
 
@@ -26,7 +27,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 public class FirmwarePageViewModel : SubPageViewModelBase
 {
     public override Control CreateView() => new FirmwarePage();
-    public override string TitleKey => "fw_select_header";
+    public override string TitleKey => Keys.FwSelectHeader;
     
     [Reactive] public bool IsDowngradingAllowed { set; get; }
     [Reactive] public bool NoResults { set; get; } = true;
@@ -67,9 +68,9 @@ public class FirmwarePageViewModel : SubPageViewModelBase
         // Show disclaimer
         var result = await new QuestionBox
         {
-            Title = Loc.Resolve("fw_disclaimer"),
-            Description = Loc.Resolve("fw_disclaimer_desc"),
-            ButtonText = Loc.Resolve("continue_button")
+            Title = Strings.FwDisclaimer,
+            Description = Strings.FwDisclaimerDesc,
+            ButtonText = Strings.ContinueButton
         }.ShowAsync();
 
         Settings.Instance.FirmwareWarningAccepted = result;
@@ -87,8 +88,8 @@ public class FirmwarePageViewModel : SubPageViewModelBase
         {
             await new MessageBox
             {
-                Title = Loc.Resolve("error"),
-                Description = Loc.Resolve("fw_select_unsupported_selection")
+                Title = Strings.Error,
+                Description = Strings.FwSelectUnsupportedSelection
             }.ShowAsync();
             return;
         }
@@ -103,21 +104,21 @@ public class FirmwarePageViewModel : SubPageViewModelBase
             var message = ex.Message;
             if (ex is NetworkInformationException infEx)
             {
-                message = $"{Loc.Resolve("fw_select_http_error")} {infEx.ErrorCode}";
+                message = $"{Strings.FwSelectHttpError} {infEx.ErrorCode}";
             }
             
             await new MessageBox
             {
-                Title = Loc.Resolve("error"),
+                Title = Strings.Error,
                 Description =
-                    $"{Loc.Resolve("fw_select_net_error")}\n\n{message}"
+                    $"{Strings.FwSelectNetError}\n\n{message}"
             }.ShowAsync();
 
             Log.Error(ex, "FirmwareSelectionPage.Next: Network error");
             return;
         }
             
-        await PrepareInstallation(binary, firmware.BuildName ?? Loc.Resolve("fw_select_unknown_build"));
+        await PrepareInstallation(binary, firmware.BuildName ?? Strings.FwSelectUnknownBuild);
     }
     
     public void DoRefreshCommand()
@@ -151,7 +152,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
         {
             await new MessageBox
             {
-                Title = Loc.Resolve("fw_select_verify_fail"),
+                Title = Strings.FwSelectVerifyFail,
                 Description = ex.ErrorMessage
             }.ShowAsync();
             return;
@@ -173,10 +174,10 @@ public class FirmwarePageViewModel : SubPageViewModelBase
         {
             await new MessageBox
             {
-                Title = Loc.Resolve("fw_select_verify_fail"),
+                Title =Strings.FwSelectVerifyFail,
                 Description = string.Format(
-                    Loc.Resolve("fw_select_verify_model_mismatch_fail"), 
-                    firmwareModel.Value.GetModelMetadata()?.Name ?? Loc.Resolve("unknown"), 
+                    Strings.FwSelectVerifyModelMismatchFail, 
+                    firmwareModel.Value.GetModelMetadata()?.Name ?? Strings.Unknown, 
                     connectedModel.GetModelMetadata()?.Name
                 )
             }.ShowAsync();
@@ -186,12 +187,12 @@ public class FirmwarePageViewModel : SubPageViewModelBase
         var result = await new QuestionBox
         {
             Title = string.Format(
-                Loc.Resolve("fw_select_confirm"),
+                Strings.FwSelectConfirm,
                 binary.BuildName, 
-                BluetoothImpl.ActiveModel.GetModelMetadata()?.Name ?? Loc.Resolve("unknown")
+                BluetoothImpl.ActiveModel.GetModelMetadata()?.Name ?? Strings.Unknown
             ),
-            Description = Loc.Resolve("fw_select_confirm_desc"),
-            ButtonText = Loc.Resolve("continue_button")
+            Description = Strings.FwSelectConfirmDesc,
+            ButtonText = Strings.ContinueButton
         }.ShowAsync();
 
         if (result)
@@ -226,14 +227,14 @@ public class FirmwarePageViewModel : SubPageViewModelBase
                 var message = ex.Message;
                 if (ex is NetworkInformationException infEx)
                 {
-                    message = $"{Loc.Resolve("fw_select_http_error")} {infEx.ErrorCode}";
+                    message = $"{Strings.FwSelectHttpError} {infEx.ErrorCode}";
                 }
                 
                 await new MessageBox
                 {
-                    Title = Loc.Resolve("error"),
+                    Title = Strings.Error,
                     Description =
-                        $"{Loc.Resolve("fw_select_net_index_error")}\n\n{message}"
+                        $"{Strings.FwSelectNetIndexError}\n\n{message}"
                 }.ShowAsync();
             }
                 

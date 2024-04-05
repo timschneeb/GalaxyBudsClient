@@ -2,10 +2,11 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 using Avalonia.Interactivity;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages;
@@ -28,11 +29,11 @@ public partial class WelcomePage : BasePage<WelcomePageViewModel>
         {
             await new MessageBox
             {
-                Title = Loc.Resolve("budsapp_header"), 
-                Description = Loc.Resolve("budsapp_text_p1").Trim() + "\n" + 
-                              Loc.Resolve("budsapp_text_p2").Trim() + "\n" + 
-                              Loc.Resolve("budsapp_text_p3").Trim(),
-                ButtonText = Loc.Resolve("continue_button")
+                Title = Strings.BudsappHeader, 
+                Description = Strings.BudsappTextP1.Trim() + "\n" + 
+                              Strings.BudsappTextP2.Trim() + "\n" + 
+                              Strings.BudsappTextP3.Trim(),
+                ButtonText = Strings.ContinueButton
             }.ShowAsync();
         }
         

@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.Converters;
 
@@ -22,19 +23,19 @@ public class AmbientStrengthConverter : IntToStringConverter
     
     private static Dictionary<int, string> LegacyScale => new()
     {
-        { 0, Loc.Resolve("as_scale_very_low") },
-        { 1, Loc.Resolve("as_scale_low") },
-        { 2, Loc.Resolve("as_scale_moderate") },
-        { 3, Loc.Resolve("as_scale_high") },
-        { 4, Loc.Resolve("as_scale_extraloud") }
+        { 0, Strings.AsScaleVeryLow },
+        { 1, Strings.AsScaleLow },
+        { 2, Strings.AsScaleModerate },
+        { 3, Strings.AsScaleHigh },
+        { 4, Strings.AsScaleExtraloud }
     };
 
     private static Dictionary<int, string> Scale => new()
     {
-        { 0, Loc.Resolve("as_scale_low") },
-        { 1, Loc.Resolve("as_scale_moderate") },
-        { 2, Loc.Resolve("as_scale_high") },
-        { 3, Loc.Resolve("as_scale_extraloud") }
+        { 0, Strings.AsScaleLow },
+        { 1, Strings.AsScaleModerate },
+        { 2, Strings.AsScaleHigh },
+        { 3, Strings.AsScaleExtraloud }
     };
 
     protected override Dictionary<int, string> Mapping => _legacy ? LegacyScale : Scale;

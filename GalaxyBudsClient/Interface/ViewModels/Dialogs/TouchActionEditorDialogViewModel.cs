@@ -4,11 +4,12 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using Avalonia.Platform.Storage;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Extensions;
-using GalaxyBudsClient.Utils.Interface.DynamicLocalization;
+using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Dialogs;
@@ -55,8 +56,8 @@ public class TouchActionEditorDialogViewModel : ViewModelBase
         Enum.GetValues<Event>()
             .Where(EventDispatcher.CheckDeviceSupport)
             .Where(EventDispatcher.CheckTouchOptionEligibility);
-    public string InfoBoxMessage => Loc.Resolve("cact_notice_content_p1") + "\n" + 
-                                    Loc.Resolve("cact_notice_content_p2");
+    public string InfoBoxMessage => Strings.CactNoticeContentP1 + "\n" + 
+                                    Strings.CactNoticeContentP2;
 
     public CustomAction? Action => VerifyAndMakeAction();
 
@@ -67,7 +68,7 @@ public class TouchActionEditorDialogViewModel : ViewModelBase
             new("All files") { Patterns = new List<string> { "*" } }
         };
                 
-        var file = await MainWindow.Instance.OpenFilePickerAsync(filters, Loc.Resolve("cact_external_app_dialog_title"));
+        var file = await MainWindow.Instance.OpenFilePickerAsync(filters, Strings.CactExternalAppDialogTitle);
         if (file == null)
             return;
             
@@ -103,10 +104,10 @@ public class TouchActionEditorDialogViewModel : ViewModelBase
     {
         var error = ActionMode switch
         {
-            CustomAction.Actions.Event when EventParameter == Event.None => "hotkey_edit_invalid_action",
+            CustomAction.Actions.Event when EventParameter == Event.None => Strings.HotkeyEditInvalidAction,
             CustomAction.Actions.RunExternalProgram when string.IsNullOrWhiteSpace(PathParameter) ||
-                                                         !Path.Exists(PathParameter) => "file_not_found",
-            CustomAction.Actions.TriggerHotkey when string.IsNullOrWhiteSpace(HotkeyParameter) => "hotkey_edit_invalid",
+                                                         !Path.Exists(PathParameter) => Strings.FileNotFound,
+            CustomAction.Actions.TriggerHotkey when string.IsNullOrWhiteSpace(HotkeyParameter) => Strings.HotkeyEditInvalid,
             _ => null
         };
 
@@ -116,8 +117,8 @@ public class TouchActionEditorDialogViewModel : ViewModelBase
             {
                 _ = new MessageBox
                 {
-                    Title = Loc.Resolve("error"),
-                    Description = Loc.Resolve(error)
+                    Title = Strings.Error,
+                    Description = error
                 }.ShowAsync();
             }
             return null;
