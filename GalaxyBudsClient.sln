@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30804.86
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalaxyBudsClient", "GalaxyBudsClient\GalaxyBudsClient.csproj", "{1DFCF45B-9817-45EF-9BBB-9DACA8F3E4E6}"
 EndProject
@@ -23,9 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThePBone.MprisClient", "The
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalaxyBudsClient.Bluetooth.WindowsRT", "GalaxyBudsClient.Bluetooth.WindowsRT\GalaxyBudsClient.Bluetooth.WindowsRT.csproj", "{3E688033-4702-4D70-BFD3-2B60DC2A6B43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThePBone.OSX.Native", "ThePBone.OSX.Native\ThePBone.OSX.Native.csproj", "{27DAE0A7-B115-49B4-9994-383441BDF666}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThePBone.OSX.Native", "ThePBone.OSX.Native\ThePBone.OSX.Native.csproj", "{27DAE0A7-B115-49B4-9994-383441BDF666}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyBudsClient.Tests", "GalaxyBudsClient.Tests\GalaxyBudsClient.Tests.csproj", "{4C4B099C-EA2A-4EF9-AF07-20370B88BB7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalaxyBudsClient.Tests", "GalaxyBudsClient.Tests\GalaxyBudsClient.Tests.csproj", "{4C4B099C-EA2A-4EF9-AF07-20370B88BB7B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyBudsClient.Generators", "GalaxyBudsClient.Generators\GalaxyBudsClient.Generators.csproj", "{7DF4099C-CBC4-4293-A52B-C77E81CE9AF7}"
 EndProject
@@ -88,6 +88,8 @@ Global
 		{73B48D11-E52D-46B2-AA81-FE8A50CA8234}.Release - Windows ARM|Any CPU.Build.0 = Release - Windows ARM|Any CPU
 		{73B48D11-E52D-46B2-AA81-FE8A50CA8234}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73B48D11-E52D-46B2-AA81-FE8A50CA8234}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1411DDEF-EFBC-4BF1-9292-0E74261A587D}.CodeAnalysis|Any CPU.ActiveCfg = Release|Any CPU
+		{1411DDEF-EFBC-4BF1-9292-0E74261A587D}.CodeAnalysis|Any CPU.Build.0 = Release|Any CPU
 		{1411DDEF-EFBC-4BF1-9292-0E74261A587D}.Debug (Local server)|Any CPU.ActiveCfg = Debug (Local server)|Any CPU
 		{1411DDEF-EFBC-4BF1-9292-0E74261A587D}.Debug (Local server)|Any CPU.Build.0 = Debug (Local server)|Any CPU
 		{1411DDEF-EFBC-4BF1-9292-0E74261A587D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

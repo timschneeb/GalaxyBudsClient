@@ -21,7 +21,7 @@ public class LocalizationKeySourceGenerator : ISourceGenerator
                 continue;
 
             // Check if the file name is the specific file that we expect.
-            if (!additionalFile.Path.EndsWith("/i18n/en.axaml"))
+            if (!additionalFile.Path.EndsWith("en.axaml"))
                 continue;
 
             var xaml = additionalFile.GetText();
