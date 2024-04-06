@@ -25,7 +25,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore -r win-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build x64
-      run: dotnet publish -r win-x64 -v d -o bin_win64 -c Release -p:PublishSingleFile=true --self-contained true --no-restore -bl:output.binlog;ProjectImports=Embed GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -r win-x64 -o bin_win64 -c Release -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
 
     - name: Archive Test Results
