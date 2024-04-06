@@ -27,15 +27,6 @@ jobs:
     - name: Build x64
       run: dotnet publish -r win-x64 -o bin_win64 -c Release -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
-
-    - name: Archive Test Results
-      if: always()
-      uses: actions/upload-artifact@v1
-      with:
-        name: test-results
-        path: .
-
-
     #- name: Sign executable
     #  uses: GabrielAcostaEngler/signtool-code-sign@v1.0.2
     #  with:
