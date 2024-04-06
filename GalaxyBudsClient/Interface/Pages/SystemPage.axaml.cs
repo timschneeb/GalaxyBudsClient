@@ -12,7 +12,6 @@ using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Extensions;
-using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.Pages;
 

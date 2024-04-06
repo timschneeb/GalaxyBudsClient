@@ -12,7 +12,6 @@ using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.Interface;
 using Serilog;
 using MainWindow = GalaxyBudsClient.Interface.MainWindow;
 

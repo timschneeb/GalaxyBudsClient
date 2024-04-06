@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
-using Avalonia.Input;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Platform;

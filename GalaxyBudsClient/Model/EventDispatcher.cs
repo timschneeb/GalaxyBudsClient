@@ -1,6 +1,5 @@
 using System;
 using System.Runtime.Serialization;
-using Avalonia.Input;
 using Avalonia.Threading;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Model.Attributes;

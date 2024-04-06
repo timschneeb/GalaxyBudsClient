@@ -9,7 +9,6 @@ using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Extensions;
-using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Dialogs;

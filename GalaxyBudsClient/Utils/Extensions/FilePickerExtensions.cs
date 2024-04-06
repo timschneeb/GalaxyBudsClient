@@ -4,7 +4,6 @@ using Avalonia.Controls;
 using Avalonia.Platform.Storage;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
-using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Utils.Extensions;
 

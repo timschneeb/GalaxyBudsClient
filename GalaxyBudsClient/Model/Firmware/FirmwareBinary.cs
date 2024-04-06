@@ -6,7 +6,6 @@ using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.Interface;
 using Sentry;
 using Serilog;
 

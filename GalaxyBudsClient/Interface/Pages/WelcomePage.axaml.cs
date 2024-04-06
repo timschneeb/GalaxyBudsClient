@@ -6,7 +6,6 @@ using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.Interface;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.Pages;

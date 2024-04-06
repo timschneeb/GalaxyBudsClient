@@ -4,7 +4,6 @@ using System.Linq;
 using Avalonia.Input;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Model.Attributes;
-using GalaxyBudsClient.Utils.Interface;
 using Serilog;
 
 namespace GalaxyBudsClient.Model;

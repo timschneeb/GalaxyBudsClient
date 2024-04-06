@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using GalaxyBudsClient.Generated.I18N;
-using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.Converters;
 

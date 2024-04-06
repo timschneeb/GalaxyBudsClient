@@ -6,7 +6,6 @@ using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Utils.Extensions;
-using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI.Fody.Helpers;
 using Keys = GalaxyBudsClient.Model.Hotkeys.Keys;
 

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.Converters;
 

@@ -3,7 +3,6 @@ using System.Globalization;
 using Avalonia.Data.Converters;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.Converters;
 

@@ -4,7 +4,6 @@ using System.Security;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Platform.Interfaces;
-using GalaxyBudsClient.Utils.Interface;
 using Microsoft.Win32;
 using Serilog;
 
