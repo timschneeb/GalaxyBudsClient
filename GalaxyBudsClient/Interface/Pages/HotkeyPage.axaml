@@ -8,6 +8,7 @@
              xmlns:input="clr-namespace:FluentAvalonia.UI.Input;assembly=FluentAvalonia"
              xmlns:hotkeys="clr-namespace:GalaxyBudsClient.Model.Hotkeys"
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="400"
              x:Class="GalaxyBudsClient.Interface.Pages.HotkeyPage"
              x:DataType="pages:HotkeyPageViewModel"
@@ -20,7 +21,7 @@
         <input:XamlUICommand x:Key="NewCommand"
                              Label="{ext:Translate hotkey_add_short}"
                              IconSource="{StaticResource NewIcon}"
-                             Description="{ext:Translate hotkey_add}"
+                             Description="{ext:Translate {x:Static i18N:Keys.HotkeyAdd}}"
                              Command="{Binding DoNewCommand}" />
 
         <input:XamlUICommand x:Key="EditCommand"

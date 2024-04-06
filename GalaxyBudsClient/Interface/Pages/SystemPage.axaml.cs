@@ -132,11 +132,11 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
         
         void OnNewQuaternionReceived(object? s, Quaternion quat)
         {
-            var rpy = quat.ToRollPitchYaw();
+            var (roll, pitch, yaw) = quat.ToRollPitchYaw();
             textBlock.Text = $"{Strings.SpatialDumpQuaternion}\n" +
                              $"X={quat.X}\nY={quat.Y}\nZ={quat.Z}\nW={quat.W}\n\n" + 
                              $"{Strings.SpatialDumpRpy}\n" +
-                             $"Roll={rpy[0]}\nPitch={rpy[1]}\nYaw={rpy[2]}\n";
+                             $"Roll={roll}\nPitch={pitch}\nYaw={yaw}\n";
         }
     }
 
