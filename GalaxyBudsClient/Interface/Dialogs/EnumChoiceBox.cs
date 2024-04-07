@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Data;
 using Avalonia.Layout;
+using Avalonia.Markup.Xaml.MarkupExtensions;
+using Avalonia.Markup.Xaml.MarkupExtensions.CompiledBindings;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Converters;
@@ -23,7 +25,7 @@ public class EnumChoiceBox<T> : ContentDialog where T : struct
         Content = _comboBox = new ComboBox
         {
             ItemsSource = (IEnumerable?)new EnumBindingSource(typeof(T)).ProvideValue(null),
-            DisplayMemberBinding = new Binding(".")
+            DisplayMemberBinding = new CompiledBindingExtension(new CompiledBindingPathBuilder().Self().Build())
             {
                 Converter = new ModelNameConverter()
             },

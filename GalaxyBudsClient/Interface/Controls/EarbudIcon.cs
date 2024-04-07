@@ -68,7 +68,7 @@ public class EarbudIcon : Image
     private void UpdateEarbudIcons()
     {
         var color = DeviceMessageCache.Instance.ExtendedStatusUpdate?.DeviceColor 
-                    ?? Settings.Instance.RegisteredDevice.DeviceColor;
+                    ?? Settings.Instance.DeviceLegacy.DeviceColor;
         if (Settings.Instance.RealisticEarbudImages && color != null &&
             BluetoothImpl.Instance.DeviceSpec.Supports(Features.DeviceColor))
         {

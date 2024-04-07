@@ -17,14 +17,14 @@ public class SettingsPageViewModel : MainPageViewModelBase
     public SettingsPageViewModel()
     {
         CanUnregister = BluetoothImpl.IsRegisteredDeviceValid;
-        Settings.Instance.RegisteredDevice.PropertyChanged += OnDevicePropertyChanged;
+        Settings.Instance.DeviceLegacy.PropertyChanged += OnDevicePropertyChanged;
     }
 
     private void OnDevicePropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName is
-            nameof(Settings.Instance.RegisteredDevice.MacAddress) or
-            nameof(Settings.Instance.RegisteredDevice.Model))
+            nameof(Settings.Instance.DeviceLegacy.MacAddress) or
+            nameof(Settings.Instance.DeviceLegacy.Model))
             CanUnregister = BluetoothImpl.IsRegisteredDeviceValid;
     }
 

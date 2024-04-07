@@ -93,7 +93,7 @@ public class SppMessageReceiver
                 CradleSerialNumberResponse?.Invoke(this, p);
                 break;
             case ExtendedStatusUpdateDecoder p:
-                Settings.Instance.RegisteredDevice.DeviceColor = p.DeviceColor;
+                Settings.Instance.DeviceLegacy.DeviceColor = p.DeviceColor;
                 BaseUpdate?.Invoke(this, p);
                 ExtendedStatusUpdate?.Invoke(this, p);
                 break;

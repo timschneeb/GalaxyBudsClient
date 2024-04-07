@@ -1,0 +1,94 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+             xmlns:input="clr-namespace:FluentAvalonia.UI.Input;assembly=FluentAvalonia"
+             xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="400"
+             x:Class="GalaxyBudsClient.Interface.Pages.DevicesPage"
+             x:DataType="pages:DevicesPageViewModel"
+             x:CompileBindings="True">
+    <Design.DataContext>
+        <pages:DevicesPageViewModel />
+    </Design.DataContext>
+
+    <UserControl.Resources>
+        <input:XamlUICommand x:Key="NewCommand"
+                             Label="{ext:Translate devices_new}"
+                             IconSource="{StaticResource NewIcon}"
+                             Description="{ext:Translate devices_new_long}"
+                             Command="{Binding DoNewCommand}" />
+
+        <input:XamlUICommand x:Key="ConnectCommand"
+                             Label="{ext:Translate devices_select}"
+                             IconSource="{StaticResource LinkMultipleIcon}"
+                             Description="{ext:Translate devices_select}"
+                             Command="{Binding DoConnectCommand}" />
+
+        <input:StandardUICommand x:Key="DeleteCommand" Kind="Delete"
+                                 Label="{ext:Translate devices_delete}"
+                                 Description="{ext:Translate devices_delete}"
+                                 Command="{Binding DoDeleteCommand}" />
+    </UserControl.Resources>
+
+    <Border Margin="{StaticResource AppPageMargin}"
+            Classes="Card">
+        <Grid RowDefinitions="Auto,*">
+            <ui:CommandBar DefaultLabelPosition="Right" Padding="5,0">
+                <ui:CommandBar.PrimaryCommands>
+                    <ui:CommandBarButton
+                        Command="{StaticResource NewCommand}" />
+                    <ui:CommandBarButton
+                        IsEnabled="{Binding #DeviceList.SelectedValue, Converter={x:Static ObjectConverters.IsNotNull}}"
+                        Command="{StaticResource ConnectCommand}"
+                        CommandParameter="{Binding #DeviceList.SelectedItem}" />
+                    <ui:CommandBarButton
+                        IsEnabled="{Binding #DeviceList.SelectedValue, Converter={x:Static ObjectConverters.IsNotNull}}"
+                        Command="{StaticResource DeleteCommand}"
+                        CommandParameter="{Binding #DeviceList.SelectedItem}" />
+                </ui:CommandBar.PrimaryCommands>
+            </ui:CommandBar>
+            
+            <ListBox Grid.Row="1"
+                     ItemsSource="{Binding Devices}"
+                     Name="DeviceList">
+                <ListBox.ItemTemplate>
+                    <DataTemplate x:DataType="config:IDevice">
+                        <Border Background="Transparent">
+                            <Panel>
+                                <StackPanel Spacing="4" Margin="4 10">
+                                    <TextBlock Text="{Binding Name}"
+                                               Classes="BaseTextBlockStyle"
+                                               VerticalAlignment="Bottom"
+                                               HorizontalAlignment="Left"
+                                               TextTrimming="CharacterEllipsis" />
+
+                                    <TextBlock Classes="CaptionTextBlockStyle"
+                                               Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                               VerticalAlignment="Top"
+                                               TextWrapping="Wrap"
+                                               Text="{Binding MacAddress}" />
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Right">
+                                    <ui:CommandBarButton HorizontalAlignment="Right"
+                                                         Command="{StaticResource DeleteCommand}"
+                                                         CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"
+                                                         HotKey="{x:Null}" />
+                                    <ui:CommandBarButton HorizontalAlignment="Right"
+                                                         Command="{StaticResource ConnectCommand}"
+                                                         CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"
+                                                         HotKey="{x:Null}" />
+                                </StackPanel>
+                            </Panel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </Border>
+</UserControl>

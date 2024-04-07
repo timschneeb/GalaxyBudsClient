@@ -38,6 +38,7 @@ public partial class MainView : UserControl
         new TouchpadPageViewModel(),
         new AdvancedPageViewModel(),
         new SystemPageViewModel(),
+        new DevicesPageViewModel(),
         new SettingsPageViewModel()
     ];
 
@@ -146,7 +147,16 @@ public partial class MainView : UserControl
             else
                 nvi.IsVisible = ViewModel?.IsInSetupWizard == false;
         }
+        
+        foreach (var item in NavView.FooterMenuItemsSource)
+        {
+            if(item is not NavigationViewItem nvi)
+                continue;
 
+            if (nvi.Tag is not SettingsPageViewModel)
+                nvi.IsEnabled = ViewModel?.IsInSetupWizard == false;
+        }
+        
         if (ViewModel?.IsInSetupWizard == true && CurrentPageViewModel is not WelcomePageViewModel)
         {
             NavigationService.Instance.Navigate(typeof(WelcomePageViewModel));

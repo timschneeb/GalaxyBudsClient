@@ -21,6 +21,7 @@ public static class Settings
             .UseJsonFile(SettingsPath)
             .UseTypeParser(new ConfigArrayParser<long>())
             .UseTypeParser(new HotkeyArrayParser())
+            .UseTypeParser(new DeviceArrayParser())
             .UseTypeParser(new AccentColorParser())
             .Build();
             

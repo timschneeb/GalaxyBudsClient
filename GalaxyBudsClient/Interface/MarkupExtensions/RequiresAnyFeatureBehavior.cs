@@ -31,7 +31,7 @@ public class RequiresAnyFeatureBehavior : Behavior<Control>
     protected override void OnAttachedToVisualTree()
     {
         UpdateState();
-        Settings.Instance.RegisteredDevice.PropertyChanged += OnDevicePropertyChanged;
+        Settings.Instance.DeviceLegacy.PropertyChanged += OnDevicePropertyChanged;
         SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
     }
 
@@ -39,7 +39,7 @@ public class RequiresAnyFeatureBehavior : Behavior<Control>
     protected override void OnDetachedFromVisualTree()
     {
         SppMessageReceiver.Instance.ExtendedStatusUpdate -= OnExtendedStatusUpdate;
-        Settings.Instance.RegisteredDevice.PropertyChanged -= OnDevicePropertyChanged;
+        Settings.Instance.DeviceLegacy.PropertyChanged -= OnDevicePropertyChanged;
     }
     
     private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateDecoder e)

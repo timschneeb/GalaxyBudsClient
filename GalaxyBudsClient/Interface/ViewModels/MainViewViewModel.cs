@@ -16,7 +16,7 @@ public class MainViewViewModel : ViewModelBase
     public MainViewViewModel()
     {
         NavigationFactory = new NavigationFactory(this);
-        Settings.Instance.RegisteredDevice.PropertyChanged += OnDevicePropertyChanged;
+        Settings.Instance.DeviceLegacy.PropertyChanged += OnDevicePropertyChanged;
         
         BluetoothImpl.Instance.Connecting += (_, _) =>
         {
@@ -50,8 +50,8 @@ public class MainViewViewModel : ViewModelBase
     private void OnDevicePropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName is
-            nameof(Settings.Instance.RegisteredDevice.MacAddress) or
-            nameof(Settings.Instance.RegisteredDevice.Model))
+            nameof(Settings.Instance.DeviceLegacy.MacAddress) or
+            nameof(Settings.Instance.DeviceLegacy.Model))
             IsInSetupWizard = !BluetoothImpl.IsRegisteredDeviceValid;
     }
 }

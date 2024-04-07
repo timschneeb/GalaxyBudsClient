@@ -37,9 +37,9 @@ public static class CrashReports
                     sentryEvent.SetExtra("arch",
                         RuntimeInformation.ProcessArchitecture.ToString());
                     sentryEvent.SetExtra("bluetooth-mac",
-                        BitConverter.ToString(SHA1.HashData(Encoding.ASCII.GetBytes(Settings.Instance.RegisteredDevice.MacAddress))).Replace("-", ""));
+                        BitConverter.ToString(SHA1.HashData(Encoding.ASCII.GetBytes(Settings.Instance.DeviceLegacy.MacAddress))).Replace("-", ""));
                     sentryEvent.SetExtra("bluetooth-model-saved",
-                        Settings.Instance.RegisteredDevice.Model);
+                        Settings.Instance.DeviceLegacy.Model);
                     sentryEvent.SetExtra("custom-locale", Settings.Instance.Locale);
                     sentryEvent.SetExtra("sw-version",
                         DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");
