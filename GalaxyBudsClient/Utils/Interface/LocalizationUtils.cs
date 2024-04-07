@@ -54,7 +54,7 @@ public static class Loc
         var lang = Settings.Instance.Locale.ToString();
         if (lang.EndsWith('_'))
             lang = lang.TrimEnd('_');
-
+        
         switch (Settings.Instance.Locale)
         {
             case Locales.custom when IsTranslatorModeEnabled():
@@ -62,7 +62,7 @@ public static class Loc
                 NotifyObservers();
                 return;
             case Locales.custom when !IsTranslatorModeEnabled():
-                lang = Locales.en.ToString();
+                lang = Locales.en.ToStringFast();
                 Settings.Instance.Locale = Locales.en;
                 break;
         }

@@ -63,6 +63,8 @@
         <AvaloniaXaml Remove="bin\**"/>
         <EmbeddedResource Remove="bin\**"/>
         <None Remove="bin\**"/>
+        <Compile Remove="Model\SettingsManager.cs" />
+        <Compile Remove="Model\Attributes\ObservableSettingAttribute.cs" />
     </ItemGroup>
     
     <!-- Dependencies -->

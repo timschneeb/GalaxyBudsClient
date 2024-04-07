@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using GalaxyBudsClient.Generated.I18N;
+using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Platform;
 
@@ -21,6 +22,7 @@ namespace GalaxyBudsClient.Model
             public static readonly Guid BudsFe = new("{2e73a4ad-332d-41fc-90e2-16bef06523f2}");
         }
       
+        [CompiledEnum]
         public enum BixbyLanguages
         {
             [Description("de-DE")]
@@ -47,6 +49,7 @@ namespace GalaxyBudsClient.Model
         
         [SuppressMessage("ReSharper", "InconsistentNaming")]
         [SuppressMessage("ReSharper", "UnusedMember.Global")]
+        [CompiledEnum]
         public enum Locales
         {
             [Description("English")]
@@ -141,6 +144,7 @@ namespace GalaxyBudsClient.Model
             Celsius
         }
         
+        [CompiledEnum]
         public enum Themes
         {    
             [LocalizedDescription(Keys.DarkmodeDisabled)]
@@ -158,6 +162,7 @@ namespace GalaxyBudsClient.Model
             System
         }
 
+        [CompiledEnum]
         public enum PopupPlacement
         {
             [LocalizedDescription(Keys.ConnpopupPlacementTl)]
@@ -174,6 +179,7 @@ namespace GalaxyBudsClient.Model
             BottomRight
         }
         
+        [CompiledEnum]
         public enum VoiceDetectTimeouts
         {    
             [LocalizedDescription(Keys.NcVoicedetectTimeoutItem)]
@@ -184,6 +190,7 @@ namespace GalaxyBudsClient.Model
             Sec15 = 15
         }
         
+        [CompiledEnum]
         public enum Models
         {
             [ModelMetadata(Name = "", FwPattern = "", BuildPrefix = "")]
@@ -249,6 +256,7 @@ namespace GalaxyBudsClient.Model
             BudsFeWhite = 331
         }
 
+        [CompiledEnum]
         public enum PlacementStates
         {
             [LocalizedDescription(Keys.PlacementDisconnected)]
@@ -297,6 +305,7 @@ namespace GalaxyBudsClient.Model
             NoiseReduction = 1
         }
    
+        [CompiledEnum]
         public enum NoiseControlCycleModes
         {
             [LocalizedDescription(Keys.TouchpadNoiseControlModeAncAmb)]
@@ -310,6 +319,7 @@ namespace GalaxyBudsClient.Model
             Unknown = 99
         }
         
+        [CompiledEnum]
         public enum TouchOptions
         {
             [LocalizedDescription(Keys.TouchoptionVoice)]
@@ -339,6 +349,7 @@ namespace GalaxyBudsClient.Model
             Samsung = 1,
             Other = 2
         }
+        
         public enum EqPresets
         {
             BassBoost = 0,
@@ -347,12 +358,14 @@ namespace GalaxyBudsClient.Model
             Clear = 3,
             TrebleBoost = 4
         }
+        
         public enum AmbientTypes
         {
             Default = 0,
             VoiceFocus = 1
         }
         
+        [CompiledEnum]
         public enum DynamicTrayIconModes
         {
             [LocalizedDescription(Keys.SettingsDynTrayModeOff)]
