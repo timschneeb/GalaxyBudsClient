@@ -26,20 +26,7 @@ public class CustomAction(CustomAction.Actions action, string parameter = "")
 
     public readonly string Parameter = parameter;
 
-    public Event Event
-    {
-        get
-        {
-            try
-            {
-                return Enum.Parse<Event>(Parameter);
-            }
-            catch (Exception)
-            {
-                return Event.None;
-            }
-        }
-    }
+    public Event Event => EventExtensions.TryParse(Parameter, out var value) ? value : Event.None;
 
     public CustomAction(Event @event) : this(Actions.Event, @event.ToString())
     {
