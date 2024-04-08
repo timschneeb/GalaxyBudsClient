@@ -4,7 +4,6 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using GalaxyBudsClient.Model;
-using GalaxyBudsClient.Model.Attributes;
 using Tmds.DBus;
 using MainWindow = GalaxyBudsClient.Interface.MainWindow;
 

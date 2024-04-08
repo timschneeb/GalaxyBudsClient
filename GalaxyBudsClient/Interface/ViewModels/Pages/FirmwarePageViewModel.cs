@@ -12,7 +12,6 @@ using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
-using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Firmware;
 using GalaxyBudsClient.Model.Specifications;

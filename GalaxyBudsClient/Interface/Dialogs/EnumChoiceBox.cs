@@ -5,12 +5,9 @@ using Avalonia.Controls;
 using Avalonia.Data;
 using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
-using Avalonia.Markup.Xaml.MarkupExtensions;
-using Avalonia.Markup.Xaml.MarkupExtensions.CompiledBindings;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Converters;
-using GalaxyBudsClient.Interface.MarkupExtensions;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 

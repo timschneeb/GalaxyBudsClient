@@ -1,5 +1,3 @@
-using System;
-using Avalonia;
 using Avalonia.Xaml.Interactivity;
 using GalaxyBudsClient.Interface.Controls;
 using GalaxyBudsClient.Utils.Interface;

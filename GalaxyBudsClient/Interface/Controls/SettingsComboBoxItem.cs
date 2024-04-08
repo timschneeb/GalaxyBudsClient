@@ -6,8 +6,6 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Data;
 using Avalonia.Interactivity;
 using Avalonia.Layout;
-using Avalonia.Markup.Xaml.MarkupExtensions;
-using Avalonia.Markup.Xaml.MarkupExtensions.CompiledBindings;
 using Avalonia.Metadata;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Interface.Converters;

@@ -3,7 +3,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using GalaxyBudsClient.Generated.I18N;
-using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
 using Sentry;

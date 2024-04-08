@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Utils.Extensions;
 
 namespace GalaxyBudsClient.Model.Hotkeys;

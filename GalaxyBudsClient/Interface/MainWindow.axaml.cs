@@ -18,7 +18,6 @@ using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
