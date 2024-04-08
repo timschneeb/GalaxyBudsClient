@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>66%</td><td>139 missing string(s)</td></tr>
+<tr><td>66%</td><td>144 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -27,6 +27,11 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>mainpage_fit_test</code></td><td>Earbud fit test</td></tr>
 <tr><td><code>devsel_manual_pair_title</code></td><td>Is your device not listed?</td></tr>
 <tr><td><code>devsel_manual_pair_description</code></td><td>Make sure your earbuds have already been paired. If they are still not recognized, try using the manual connection option.</td></tr>
+<tr><td><code>devices_header</code></td><td>Paired devices</td></tr>
+<tr><td><code>devices_new</code></td><td>New</td></tr>
+<tr><td><code>devices_new_long</code></td><td>Pair new device</td></tr>
+<tr><td><code>devices_select</code></td><td>Connect</td></tr>
+<tr><td><code>devices_delete</code></td><td>Delete</td></tr>
 <tr><td><code>touchpad_gesture_double_for_call</code></td><td>Double tap during call</td></tr>
 <tr><td><code>touchpad_gesture_double_for_call_desc</code></td><td>Answer call or end call</td></tr>
 <tr><td><code>touchpad_gesture_hold_for_call</code></td><td>Touch and hold during call</td></tr>

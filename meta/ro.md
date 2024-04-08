@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>72%</td><td>115 missing string(s)</td></tr>
+<tr><td>71%</td><td>120 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -28,6 +28,11 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>devsel_manual_pair_title</code></td><td>Is your device not listed?</td></tr>
 <tr><td><code>devsel_manual_pair_description</code></td><td>Make sure your earbuds have already been paired. If they are still not recognized, try using the manual connection option.</td></tr>
 <tr><td><code>devsel_manual_pair</code></td><td>Manual connection</td></tr>
+<tr><td><code>devices_header</code></td><td>Paired devices</td></tr>
+<tr><td><code>devices_new</code></td><td>New</td></tr>
+<tr><td><code>devices_new_long</code></td><td>Pair new device</td></tr>
+<tr><td><code>devices_select</code></td><td>Connect</td></tr>
+<tr><td><code>devices_delete</code></td><td>Delete</td></tr>
 <tr><td><code>touchpad_gesture_header</code></td><td>Enable touchpad gestures</td></tr>
 <tr><td><code>touchpad_gesture_single</code></td><td>Single tap</td></tr>
 <tr><td><code>touchpad_gesture_single_desc</code></td><td>Play or pause track</td></tr>

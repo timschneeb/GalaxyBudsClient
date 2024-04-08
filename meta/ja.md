@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>34%</td><td>274 missing string(s)</td></tr>
+<tr><td>34%</td><td>279 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -83,6 +83,11 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>devsel_nodevices_title</code></td><td>No paired devices found</td></tr>
 <tr><td><code>devsel_winrt_title</code></td><td>Use alternative Bluetooth backend</td></tr>
 <tr><td><code>devsel_winrt</code></td><td>Much better stability, but may not work on all PCs with some Bluetooth adapters</td></tr>
+<tr><td><code>devices_header</code></td><td>Paired devices</td></tr>
+<tr><td><code>devices_new</code></td><td>New</td></tr>
+<tr><td><code>devices_new_long</code></td><td>Pair new device</td></tr>
+<tr><td><code>devices_select</code></td><td>Connect</td></tr>
+<tr><td><code>devices_delete</code></td><td>Delete</td></tr>
 <tr><td><code>touchpad_gesture_header</code></td><td>Enable touchpad gestures</td></tr>
 <tr><td><code>touchpad_gesture_single</code></td><td>Single tap</td></tr>
 <tr><td><code>touchpad_gesture_single_desc</code></td><td>Play or pause track</td></tr>
