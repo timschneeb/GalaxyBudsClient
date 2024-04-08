@@ -79,10 +79,10 @@
                     Description="{DynamicResource touchpad_noise_control_mode_desc}"
                     Symbol="ArrowRepeatAll"
                     IsEnabled="{Binding IsNoiseControlCycleModeEditable}"
-                    ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type constants:NoiseControlCycleModes}}}"
+                    ItemsSource="{Binding ., Source={ext:NoiseControlCycleModesBindingSource}}"
                     SelectedValue="{Binding NoiseControlCycleMode}">
                     <Interaction.Behaviors>
-                        <ext:LocalizationAwareComboBoxBehavior EnumType="{x:Type constants:NoiseControlCycleModes}" /> 
+                        <ext:LocalizationAwareComboBoxBehavior /> 
                         <ext:RequiresFeatureBehavior Feature="NoiseControl" />
                     </Interaction.Behaviors>
                 </controls:SettingsComboBoxItem>
@@ -92,10 +92,10 @@
                     Description="{DynamicResource touchpad_noise_control_mode_desc}"
                     Symbol="ArrowRepeatAll"
                     IsEnabled="{Binding IsNoiseControlCycleModeRightEditable}"
-                    ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type constants:NoiseControlCycleModes}}}"
+                    ItemsSource="{Binding ., Source={ext:NoiseControlCycleModesBindingSource}}"
                     SelectedValue="{Binding NoiseControlCycleModeRight}">
                     <Interaction.Behaviors>
-                        <ext:LocalizationAwareComboBoxBehavior EnumType="{x:Type constants:NoiseControlCycleModes}" /> 
+                        <ext:LocalizationAwareComboBoxBehavior /> 
                         <ext:RequiresFeatureBehavior Feature="NoiseControlModeDualSide" />
                     </Interaction.Behaviors>
                 </controls:SettingsComboBoxItem>

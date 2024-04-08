@@ -22,8 +22,8 @@ public class SettingsComboBoxItem : SettingsSymbolItem
         _comboBox = new FAComboBox
         {
             MinWidth = 150,
-            DisplayMemberBinding = new CompiledBindingExtension(new CompiledBindingPathBuilder().Self().Build())
-            {
+            DisplayMemberBinding = new Binding(".")
+            { 
                 Converter = new EnumToDescriptionConverter()
             }
         };

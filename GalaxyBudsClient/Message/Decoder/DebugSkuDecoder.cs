@@ -35,9 +35,9 @@ public class DebugSkuDecoder : BaseMessageDecoder
         if (build == null)
             return null;
             
-        foreach (var model in Enum.GetValues<Models>())
+        foreach (var model in ModelsExtensions.GetValues())
         {
-            var pattern = model.GetModelMetadata()?.FwPattern;
+            var pattern = model.GetModelMetadataAttribute()?.FwPattern;
             if(pattern == null)
                 continue;
 

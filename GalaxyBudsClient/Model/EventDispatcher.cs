@@ -2,57 +2,59 @@ using System;
 using System.Runtime.Serialization;
 using Avalonia.Threading;
 using GalaxyBudsClient.Generated.I18N;
+using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 
 namespace GalaxyBudsClient.Model;
 
+[CompiledEnum]
 public enum Event
 {
-    [LocalizedDescription(Keys.EventNone)]
+    [LocalizableDescription(Keys.EventNone)]
     None,
-    [LocalizedDescription(Keys.EventAmbientToggle)]
+    [LocalizableDescription(Keys.EventAmbientToggle)]
     AmbientToggle,
-    [LocalizedDescription(Keys.EventAmbientVolumeUp)]
+    [LocalizableDescription(Keys.EventAmbientVolumeUp)]
     AmbientVolumeUp,
-    [LocalizedDescription(Keys.EventAmbientVolumeDown)]
+    [LocalizableDescription(Keys.EventAmbientVolumeDown)]
     AmbientVolumeDown,
-    [LocalizedDescription(Keys.EventAncToggle)]
+    [LocalizableDescription(Keys.EventAncToggle)]
     AncToggle,
-    [LocalizedDescription(Keys.EventAncSwitchSensitivity)]
+    [LocalizableDescription(Keys.EventAncSwitchSensitivity)]
     SwitchAncSensitivity,
-    [LocalizedDescription(Keys.EventAncSwitchOne)]
+    [LocalizableDescription(Keys.EventAncSwitchOne)]
     SwitchAncOne,
-    [LocalizedDescription(Keys.EventEqToggle)]
+    [LocalizableDescription(Keys.EventEqToggle)]
     EqualizerToggle,
-    [LocalizedDescription(Keys.EventEqSwitch)]
+    [LocalizableDescription(Keys.EventEqSwitch)]
     EqualizerNextPreset,
-    [LocalizedDescription(Keys.EventTouchLockToggle)]
+    [LocalizableDescription(Keys.EventTouchLockToggle)]
     LockTouchpadToggle,
-    [LocalizedDescription(Keys.EventStartStopFind)]
+    [LocalizableDescription(Keys.EventStartStopFind)]
     StartStopFind,
-    [LocalizedDescription(Keys.EventStartFind)]
+    [LocalizableDescription(Keys.EventStartFind)]
     StartFind,
-    [LocalizedDescription(Keys.EventStopFind)]
+    [LocalizableDescription(Keys.EventStopFind)]
     StopFind,
-    [LocalizedDescription(Keys.EventDoubleEdgeTouchToggle)]
+    [LocalizableDescription(Keys.EventDoubleEdgeTouchToggle)]
     ToggleDoubleEdgeTouch,
-    [LocalizedDescription(Keys.EventConversationToggle)]
+    [LocalizableDescription(Keys.EventConversationToggle)]
     ToggleConversationDetect,
-    [LocalizedDescription(Keys.EventParingMode)]
+    [LocalizableDescription(Keys.EventParingMode)]
     PairingMode,
-    [LocalizedDescription(Keys.EventManagerVisible)]
+    [LocalizableDescription(Keys.EventManagerVisible)]
     ToggleManagerVisibility,
-    [LocalizedDescription(Keys.EventDisplayBatteryPopup)]
+    [LocalizableDescription(Keys.EventDisplayBatteryPopup)]
     ShowBatteryPopup,
-    [LocalizedDescription(Keys.EventMediaPlayPause)]
+    [LocalizableDescription(Keys.EventMediaPlayPause)]
     TogglePlayPause,
-    [LocalizedDescription(Keys.EventMediaPlay)]
+    [LocalizableDescription(Keys.EventMediaPlay)]
     Play,
-    [LocalizedDescription(Keys.EventMediaPause)]
+    [LocalizableDescription(Keys.EventMediaPause)]
     Pause,
-    [LocalizedDescription(Keys.EventConnect)]
+    [LocalizableDescription(Keys.EventConnect)]
     Connect,
             
     /* INTERNAL */

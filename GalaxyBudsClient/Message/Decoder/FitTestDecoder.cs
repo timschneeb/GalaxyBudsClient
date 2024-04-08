@@ -1,4 +1,5 @@
 using GalaxyBudsClient.Generated.I18N;
+using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Attributes;
 
 namespace GalaxyBudsClient.Message.Decoder;
@@ -19,13 +20,14 @@ public class FitTestDecoder : BaseMessageDecoder
         Right = (Result)msg.Payload[1];
     }
 
+    [CompiledEnum]
     public enum Result
     {
-        [LocalizedDescription(Keys.GftBad)]
+        [LocalizableDescription(key: Keys.GftBad)]
         Bad = 0,
-        [LocalizedDescription(Keys.GftGood)]
+        [LocalizableDescription(Keys.GftGood)]
         Good = 1,
-        [LocalizedDescription(Keys.GftFail)]
+        [LocalizableDescription(Keys.GftFail)]
         TestFailed = 2
     }
 }

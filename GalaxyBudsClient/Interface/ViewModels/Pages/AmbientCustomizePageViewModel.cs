@@ -57,7 +57,7 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.AMBIENT_VOLUME, (byte)AmbientSoundVolume);
                 break;
             case nameof(IsAmbientVoiceFocusEnabled):
-                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.AMBIENT_VOICE_FOCUS, IsAmbientVoiceFocusEnabled);
+                await BluetoothImpl.Instance.SendRequestAsync((MsgIds)LegacyMsgIds.AMBIENT_VOICE_FOCUS, IsAmbientVoiceFocusEnabled);
                 break;
             case nameof(IsAmbientExtraLoudEnabled):
                 UpdateVolumeSliders();

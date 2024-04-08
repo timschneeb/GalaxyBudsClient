@@ -1,11 +1,17 @@
-﻿using System.ComponentModel;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
 using Avalonia.Controls;
 using FluentIcons.Common;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
+using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
+using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
@@ -16,10 +22,11 @@ public class SettingsPageViewModel : MainPageViewModelBase
 
     public SettingsPageViewModel()
     {
+        
         CanUnregister = BluetoothImpl.IsRegisteredDeviceValid;
         Settings.Instance.DeviceLegacy.PropertyChanged += OnDevicePropertyChanged;
     }
-
+    
     private void OnDevicePropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName is

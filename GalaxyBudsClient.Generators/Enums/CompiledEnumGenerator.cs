@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using Microsoft.CodeAnalysis;
@@ -24,7 +26,7 @@ public class CompiledEnumGenerator : IIncrementalGenerator
     {
         
         context.RegisterPostInitializationOutput(ctx => ctx.AddSource(
-            "CompiledEnumAttribute.g.cs", SourceText.From(SourceGenerationHelper.Attribute, Encoding.UTF8)));
+            "CompiledEnumAttribute.g.cs", SourceText.From(RootSourceGenerationHelper.GenerateAttribute(), Encoding.UTF8)));
 
         var enumsToGenerate = context.SyntaxProvider
             .ForAttributeWithMetadataName(
@@ -40,11 +42,11 @@ public class CompiledEnumGenerator : IIncrementalGenerator
             static (spc, enumToGenerate) => Execute(in enumToGenerate, spc));
         
         context.RegisterSourceOutput(enumsToGenerate.Collect(),
-            static (spc, enumToGenerate) => Execute(in enumToGenerate, spc));
+            static (spc, enumToGenerate) => ExecuteRoot(in enumToGenerate, spc));
         
     }
 
-    static void Execute(in ImmutableArray<EnumToGenerate?> enumToGenerate, SourceProductionContext context)
+    static void ExecuteRoot(in ImmutableArray<EnumToGenerate?> enumToGenerate, SourceProductionContext context)
     {
         if (enumToGenerate is { } eg)
         {
@@ -55,18 +57,29 @@ public class CompiledEnumGenerator : IIncrementalGenerator
     
     static void Execute(in EnumToGenerate? enumToGenerate, SourceProductionContext context)
     {
-        if (enumToGenerate is { } eg)
+        try
         {
-            var sb = new StringBuilder();
-            var result = SourceGenerationHelper.GenerateExtensionClass(sb, in eg);
-            context.AddSource(eg.Name + "_CompiledEnumExtensions.g.cs", SourceText.From(result, Encoding.UTF8));    
+            if (enumToGenerate is { } eg)
+            {
+                var result = SourceGenerationHelper.GenerateExtensionClass(in eg);
+                context.AddSource(eg.Name + "_CompiledEnumExtensions.g.cs", SourceText.From(result, Encoding.UTF8));
+                var bindingSource = SourceGenerationHelper.GenerateBindingSource(in eg);
+                context.AddSource(eg.Name + "_BindingSource.g.cs", SourceText.From(bindingSource, Encoding.UTF8));
+            }
+        }
+        catch (Exception e)
+        {
+                            
+#pragma warning disable RS1035
+            File.AppendAllText("/home/tim/log", $"{e}\n");
+#pragma warning restore RS1035
+            throw;
         }
     }
 
     static EnumToGenerate? GetTypeToGenerate(GeneratorAttributeSyntaxContext context, CancellationToken ct)
     {
-        var enumSymbol = context.TargetSymbol as INamedTypeSymbol;
-        if (enumSymbol is null)
+        if (context.TargetSymbol is not INamedTypeSymbol enumSymbol)
         {
             // nothing to do if this type isn't available
             return null;
@@ -74,7 +87,6 @@ public class CompiledEnumGenerator : IIncrementalGenerator
 
         ct.ThrowIfCancellationRequested();
 
-        var name = enumSymbol.Name + "Extensions";
         var nameSpace = enumSymbol.ContainingNamespace.IsGlobalNamespace ? string.Empty : enumSymbol.ContainingNamespace.ToString();
         var hasFlags = false;
 
@@ -92,68 +104,31 @@ public class CompiledEnumGenerator : IIncrementalGenerator
 
         var enumMembers = enumSymbol.GetMembers();
         var members = new List<(string, EnumValueOption)>(enumMembers.Length);
-        HashSet<string>? displayNames = null;
-        var isDisplayNameTheFirstPresence = false;
-
+        
         foreach (var member in enumMembers)
         {
-            if (member is not IFieldSymbol field
-                || field.ConstantValue is null)
-            {
+            if (member is not IFieldSymbol field || field.ConstantValue is null)
                 continue;
-            }
-
-            string? displayName = null;
-            foreach (var attribute in member.GetAttributes())
+            
+            var attributeTemplates = member.ParseAttributesForEnumMember();
+            foreach (var template in attributeTemplates)
             {
-                if (attribute.AttributeClass?.Name == "DisplayAttribute" &&
-                    attribute.AttributeClass.ToDisplayString() == DisplayAttribute)
-                {
-                    foreach (var namedArgument in attribute.NamedArguments)
-                    {
-                        if (namedArgument.Key == "Name" && namedArgument.Value.Value?.ToString() is { } dn)
-                        {
-                            // found display attribute, all done
-                            displayName = dn;
-                            goto addDisplayName;
-                        }
-                    }
-                }
-                
-                if (attribute.AttributeClass?.Name == "DescriptionAttribute" 
-                    && attribute.AttributeClass.ToDisplayString() == DescriptionAttribute
-                    && attribute.ConstructorArguments.Length == 1)
-                {
-                    if (attribute.ConstructorArguments[0].Value?.ToString() is { } dn)
-                    {
-                        // found display attribute, all done
-                        // Handle cases where contains a quote or a backslash
-                        displayName = dn
-                            .Replace(@"\", @"\\")
-                            .Replace("\"", "\\\"");
-                        goto addDisplayName;
-                    }
-                }
-            }
-
-            addDisplayName:
-            if (displayName is not null)
-            {
-                displayNames ??= [];
-                isDisplayNameTheFirstPresence = displayNames.Add(displayName);    
+#pragma warning disable RS1035
+                File.AppendAllText("/home/tim/log", $"{template.Name} - {string.Join(",", template.Parameters)}\n");
+#pragma warning restore RS1035
             }
             
-            members.Add((member.Name, new EnumValueOption(displayName, isDisplayNameTheFirstPresence)));
+            members.Add((member.Name, new EnumValueOption(attributeTemplates)));
         }
 
         return new EnumToGenerate(
-            name: name,
+            name: enumSymbol.Name,
             fullyQualifiedName: fullyQualifiedName,
             ns: nameSpace,
             underlyingType: underlyingType,
             isPublic: enumSymbol.DeclaredAccessibility == Accessibility.Public,
             hasFlags: hasFlags,
             names: members,
-            isDisplayAttributeUsed: displayNames?.Count > 0);
+            usingDirectives: enumSymbol.GetUsingDirectivesInFileOfSymbols());
     }
 }

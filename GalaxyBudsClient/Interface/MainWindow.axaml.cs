@@ -18,6 +18,7 @@ using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
@@ -308,7 +309,10 @@ public partial class MainWindow : StyledAppWindow
         switch (action.Action)
         {
             case CustomAction.Actions.Event:
-                EventDispatcher.Instance.Dispatch(Enum.Parse<Event>(action.Parameter), true);
+                if (EventExtensions.TryParse(action.Parameter, out var result, true))
+                {
+                    EventDispatcher.Instance.Dispatch(result);
+                }
                 break;
             case CustomAction.Actions.RunExternalProgram:
                 try
@@ -358,7 +362,16 @@ public partial class MainWindow : StyledAppWindow
                 var keys = new List<Key>();
                 try
                 {
-                    keys.AddRange(action.Parameter.Split(',').Select(Enum.Parse<Key>));
+                    Key? Parse(string s)
+                    {
+                        if (!Enum.TryParse<Key>(s, out var key)) return null;
+                        return key;
+                    }
+
+                    keys.AddRange(action.Parameter.Split(',')
+                        .Select(Parse)
+                        .Where(x => x is not null)
+                        .Cast<Key>());
                 }
                 catch (Exception ex)
                 {

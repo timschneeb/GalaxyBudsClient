@@ -1,9 +1,7 @@
 using System;
-using System.Linq;
 using Avalonia;
 using Avalonia.Xaml.Interactivity;
 using GalaxyBudsClient.Interface.Controls;
-using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.MarkupExtensions;
@@ -14,16 +12,6 @@ namespace GalaxyBudsClient.Interface.MarkupExtensions;
  */
 public class LocalizationAwareComboBoxBehavior : Behavior<SettingsComboBoxItem>
 {
-    
-    public static readonly StyledProperty<Type> EnumTypeProperty =
-        AvaloniaProperty.Register<LocalizationAwareComboBoxBehavior, Type>(nameof(EnumType));
-    
-    public Type EnumType
-    {
-        get => GetValue(EnumTypeProperty);
-        set => SetValue(EnumTypeProperty, value);
-    }
-    
     /// <inheritdoc />
     protected override void OnAttachedToVisualTree()
     {
@@ -46,11 +34,11 @@ public class LocalizationAwareComboBoxBehavior : Behavior<SettingsComboBoxItem>
             return;
         
         var selected = cb.SelectedValue;
-        cb.ItemsSource = Enum.GetValues(EnumType)
-            .OfType<Enum>()
-            .Where(obj => obj.IsPlatformConditionMet())
-            .Where(obj => !obj.IsMemberIgnored())
-            .ToArray();
+        
+        // Workaround: trigger update by setting ItemsSource to null and back
+        var bak = cb.ItemsSource;
+        cb.ItemsSource = null;
+        cb.ItemsSource = bak;
         cb.SelectedValue = selected;
     }
 }

@@ -48,11 +48,11 @@ public class TouchActionEditorDialogViewModel : ViewModelBase
     [Reactive] public bool IsHotkeyParameterEditable { set; get; }
         
     public IEnumerable<CustomAction.Actions> ActionModeSource =>
-        Enum.GetValues<CustomAction.Actions>()
+        ActionsExtensions.GetValues()
             .Where(x => x != CustomAction.Actions.TriggerHotkey || PlatformUtils.SupportsHotkeysBroadcast);
 
     public IEnumerable<Event> EventSource =>
-        Enum.GetValues<Event>()
+        EventExtensions.GetValues()
             .Where(EventDispatcher.CheckDeviceSupport)
             .Where(EventDispatcher.CheckTouchOptionEligibility);
     public string InfoBoxMessage => Strings.CactNoticeContentP1 + "\n" + 

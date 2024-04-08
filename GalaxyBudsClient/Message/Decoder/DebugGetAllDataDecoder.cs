@@ -209,7 +209,7 @@ public class DebugGetAllDataDecoder : BaseMessageDecoder
 
     private string VersionDataToString(IReadOnlyList<byte> payload, int startIndex)
     {
-        var buildPrefix = TargetModel.GetModelMetadata()?.BuildPrefix ?? "R???";
+        var buildPrefix = TargetModel.GetModelMetadataAttribute()?.BuildPrefix ?? "R???";
             
         if (TargetModel == Models.Buds)
         {

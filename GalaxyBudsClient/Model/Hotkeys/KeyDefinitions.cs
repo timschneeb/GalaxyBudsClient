@@ -1,5 +1,6 @@
 using System;
 using Avalonia.Input;
+using GalaxyBudsClient.Generated.Model.Attributes;
 
 namespace GalaxyBudsClient.Model.Hotkeys;
 
@@ -12,7 +13,7 @@ public enum ModifierKeys : uint
     Win = 8
 }
     
-[Flags]
+[Flags, CompiledEnum]
 public enum Keys
 {
     None = 0x0,

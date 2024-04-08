@@ -39,7 +39,7 @@ public class HotkeyEditorDialogViewModel : ViewModelBase
     [Reactive] public string HotkeyPreview { set; get; } = Strings.HotkeyEditInvalid;
         
     public static IEnumerable<Event> ActionSource =>
-        Enum.GetValues<Event>().Where(EventDispatcher.CheckDeviceSupport);
+        EventExtensions.GetValues().Where(EventDispatcher.CheckDeviceSupport);
 
     public Hotkey? Hotkey => VerifyAndMakeHotkey();
         

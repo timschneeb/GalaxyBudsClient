@@ -4,7 +4,7 @@ namespace GalaxyBudsClient.Message.Decoder;
 
 internal class AmbientVoiceFocusDecoder : BaseMessageDecoder
 {
-    public override MsgIds HandledType => MsgIds.AMBIENT_VOICE_FOCUS;
+    public override MsgIds HandledType => (MsgIds)LegacyMsgIds.AMBIENT_VOICE_FOCUS;
     public bool VoiceFocusEnabled { set; get; }
 
     public override void Decode(SppMessage msg)

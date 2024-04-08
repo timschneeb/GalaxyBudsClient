@@ -34,7 +34,7 @@
                     <ComboBox Grid.Column="1" Name="Locales"
                               HorizontalAlignment="Stretch"
                               SelectedItem="{Binding Locale, Source={x:Static utils:Settings.Instance}}"
-                              ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type model:Locales}}}"
+                              ItemsSource="{Binding ., Source={ext:LocalesBindingSource}}"
                               Margin="0,0,5,0" />
                     
                     <Button Grid.Column="2"

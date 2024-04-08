@@ -10,6 +10,7 @@ using Avalonia.Threading;
 using AvaloniaHex.Document;
 using DynamicData;
 using GalaxyBudsClient.Interface.Dialogs;
+using GalaxyBudsClient.Interface.MarkupExtensions;
 using GalaxyBudsClient.Interface.ViewModels.Developer;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
@@ -134,7 +135,8 @@ public partial class DevTools : StyledWindow.StyledWindow
         if (file == null)
             return;
 
-        var model = await new EnumChoiceBox<Models> { Title = "Choose model for dump..." }.OpenDialogAsync(this);
+        var model = await new EnumChoiceBox(new ModelsBindingSource())
+            { Title = "Choose model for dump..." }.OpenDialogAsync(this);
         if(model == null)
             return;
         
@@ -158,7 +160,7 @@ public partial class DevTools : StyledWindow.StyledWindow
         try
         {
             _vm.MsgTableDataSource.AddRange(
-                SppMessage.DecodeRawChunk([..content], model.Value)
+                SppMessage.DecodeRawChunk([..content], (Models)model)
                     .Select(m => new MessageViewHolder(m)));
             _vm.MsgTableDataView.Refresh();
         }

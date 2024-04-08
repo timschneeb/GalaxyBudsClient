@@ -162,7 +162,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
     
     private void OnInvalidDataReceived(object? sender, InvalidPacketException e)
     {
-        LastErrorMessage = e.ErrorCode.GetDescription();
+        LastErrorMessage = e.ErrorCode.ToString();
         if (IsConnected)
         {
             _ = DisconnectAsync()
@@ -201,7 +201,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
 
     private async Task<string> GetDeviceNameAsync()
     {
-        var fallbackName = ActiveModel.GetModelMetadata()?.Name ?? Strings.Unknown;
+        var fallbackName = ActiveModel.GetModelMetadataAttribute()?.Name ?? Strings.Unknown;
         try
         {
             var devices = await _backend.GetDevicesAsync();

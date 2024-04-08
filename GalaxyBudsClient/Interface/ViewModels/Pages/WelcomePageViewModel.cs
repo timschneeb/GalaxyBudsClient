@@ -1,7 +1,12 @@
-﻿using Avalonia.Controls;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Avalonia.Controls;
 using FluentIcons.Common;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
+using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Utils.Interface;
+using ReactiveUI;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 

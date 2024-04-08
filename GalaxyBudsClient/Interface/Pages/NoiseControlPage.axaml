@@ -98,10 +98,10 @@
                     Description="{DynamicResource nc_voicedetect_timeout_description}"
                     Symbol="Timer"
                     IsEnabled="{Binding IsVoiceDetectEnabled}"
-                    ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:VoiceDetectTimeouts}}}"
+                    ItemsSource="{Binding Source={ext:VoiceDetectTimeoutsBindingSource}}"
                     SelectedValue="{Binding VoiceDetectTimeout}">
                     <Interaction.Behaviors>
-                        <ext:LocalizationAwareComboBoxBehavior EnumType="{x:Type constants:VoiceDetectTimeouts}" /> 
+                        <ext:LocalizationAwareComboBoxBehavior /> 
                     </Interaction.Behaviors>
                 </controls:SettingsComboBoxItem>
 

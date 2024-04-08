@@ -94,8 +94,7 @@ namespace GalaxyBudsClient.Model
             hu,
 			[Description("Nederlands")]
 			nl,
-            [Description("custom_language.xaml")]
-            [IgnoreDataMember]
+            [IgnoreDataMember, Description("custom_language.xaml")]
             custom
         }
         
@@ -136,6 +135,7 @@ namespace GalaxyBudsClient.Model
             BudGyrocalFail = 41
         }
         
+        [CompiledEnum]
         public enum TemperatureUnits
         {
             [Description("F")]
@@ -147,46 +147,45 @@ namespace GalaxyBudsClient.Model
         [CompiledEnum]
         public enum Themes
         {    
-            [LocalizedDescription(Keys.DarkmodeDisabled)]
+            [LocalizableDescription(Keys.DarkmodeDisabled)]
             Light,
-            [LocalizedDescription(Keys.DarkmodeEnabled)]
+            [LocalizableDescription(Keys.DarkmodeEnabled)]
             Dark,
-            [LocalizedDescription(Keys.DarkmodeBlurEnabled)]
+            [LocalizableDescription(Keys.DarkmodeBlurEnabled)]
             DarkBlur,
             [RequiresPlatform(PlatformUtils.Platforms.Windows, 22000 /* Windows 11 */)]
-            [LocalizedDescription(Keys.DarkmodeMicaEnabled)]
+            [LocalizableDescription(Keys.DarkmodeMicaEnabled)]
             DarkMica,
             
-            [LocalizedDescription(Keys.DarkmodeSystem)]
-            [IgnoreDataMember] // <- Disabled
-            System
+            [IgnoreDataMember, LocalizableDescription(Keys.DarkmodeSystem)]
+            System // <- Disabled
         }
 
         [CompiledEnum]
         public enum PopupPlacement
         {
-            [LocalizedDescription(Keys.ConnpopupPlacementTl)]
+            [LocalizableDescription(Keys.ConnpopupPlacementTl)]
             TopLeft,
-            [LocalizedDescription(Keys.ConnpopupPlacementTc)]
+            [LocalizableDescription(Keys.ConnpopupPlacementTc)]
             TopCenter,
-            [LocalizedDescription(Keys.ConnpopupPlacementTr)]
+            [LocalizableDescription(Keys.ConnpopupPlacementTr)]
             TopRight,
-            [LocalizedDescription(Keys.ConnpopupPlacementBl)]
+            [LocalizableDescription(Keys.ConnpopupPlacementBl)]
             BottomLeft,
-            [LocalizedDescription(Keys.ConnpopupPlacementBc)]
+            [LocalizableDescription(Keys.ConnpopupPlacementBc)]
             BottomCenter,
-            [LocalizedDescription(Keys.ConnpopupPlacementBr)]
+            [LocalizableDescription(Keys.ConnpopupPlacementBr)]
             BottomRight
         }
         
         [CompiledEnum]
         public enum VoiceDetectTimeouts
         {    
-            [LocalizedDescription(Keys.NcVoicedetectTimeoutItem)]
+            [LocalizableDescription(Keys.NcVoicedetectTimeoutItem)]
             Sec5 = 5,
-            [LocalizedDescription(Keys.NcVoicedetectTimeoutItem)]
+            [LocalizableDescription(Keys.NcVoicedetectTimeoutItem)]
             Sec10 = 10,
-            [LocalizedDescription(Keys.NcVoicedetectTimeoutItem)]
+            [LocalizableDescription(Keys.NcVoicedetectTimeoutItem)]
             Sec15 = 15
         }
         
@@ -211,6 +210,7 @@ namespace GalaxyBudsClient.Model
             BudsFe = 7
         }
 
+        [CompiledEnum]
         public enum Colors
         {
             Unknown = 0,
@@ -259,18 +259,18 @@ namespace GalaxyBudsClient.Model
         [CompiledEnum]
         public enum PlacementStates
         {
-            [LocalizedDescription(Keys.PlacementDisconnected)]
+            [LocalizableDescription(Keys.PlacementDisconnected)]
             Disconnected = 0,
-            [LocalizedDescription(Keys.PlacementWearing)]
+            [LocalizableDescription(Keys.PlacementWearing)]
             Wearing = 1,
-            [LocalizedDescription(Keys.PlacementNotWearing)]
+            [LocalizableDescription(Keys.PlacementNotWearing)]
             Idle = 2,
-            [LocalizedDescription(Keys.PlacementInCase)]
+            [LocalizableDescription(Keys.PlacementInCase)]
             Case = 3,
             ClosedCase = 4,
             
             // Custom states
-            [LocalizedDescription(Keys.PlacementCharging)]
+            [LocalizableDescription(Keys.PlacementCharging)]
             Charging = 100
         }
 
@@ -286,11 +286,14 @@ namespace GalaxyBudsClient.Model
             L = 1,
             R = 0
         }
+        
+        [CompiledEnum]
         public enum Devices
         {
             L = 0,
             R = 1
         }
+        
         public enum SppRoleStates
         {
             Done = 0,
@@ -308,39 +311,36 @@ namespace GalaxyBudsClient.Model
         [CompiledEnum]
         public enum NoiseControlCycleModes
         {
-            [LocalizedDescription(Keys.TouchpadNoiseControlModeAncAmb)]
+            [LocalizableDescription(Keys.TouchpadNoiseControlModeAncAmb)]
             AncAmb = 0,
-            [LocalizedDescription(Keys.TouchpadNoiseControlModeAncOff)]
+            [LocalizableDescription(Keys.TouchpadNoiseControlModeAncOff)]
             AncOff = 1,
-            [LocalizedDescription(Keys.TouchpadNoiseControlModeAmbOff)]
+            [LocalizableDescription(Keys.TouchpadNoiseControlModeAmbOff)]
             AmbOff = 2,
-            [IgnoreDataMember]
-            [LocalizedDescription(Keys.Unknown)]
+            [IgnoreDataMember, LocalizableDescription(Keys.Unknown)]
             Unknown = 99
         }
         
         [CompiledEnum]
         public enum TouchOptions
         {
-            [LocalizedDescription(Keys.TouchoptionVoice)]
+            [LocalizableDescription(Keys.TouchoptionVoice)]
             VoiceAssistant,
-            [LocalizedDescription(Keys.TouchoptionQuickambientsound)]
+            [LocalizableDescription(Keys.TouchoptionQuickambientsound)]
             QuickAmbientSound,
-            [LocalizedDescription(Keys.TouchoptionVolume)]
+            [LocalizableDescription(Keys.TouchoptionVolume)]
             Volume,
-            [LocalizedDescription(Keys.TouchoptionAmbientsound)]
+            [LocalizableDescription(Keys.TouchoptionAmbientsound)]
             AmbientSound,
-            [LocalizedDescription(Keys.Anc)]
+            [LocalizableDescription(Keys.Anc)]
             Anc,
-            [LocalizedDescription(Keys.TouchoptionSwitchNoisecontrols)]
+            [LocalizableDescription(Keys.TouchoptionSwitchNoisecontrols)]
             NoiseControl,
-            [LocalizedDescription(Keys.TouchoptionSpotify)]
+            [LocalizableDescription(Keys.TouchoptionSpotify)]
             SpotifySpotOn,
-            [IgnoreDataMember]
-            [LocalizedDescription(Keys.TouchoptionCustom)]
+            [IgnoreDataMember, LocalizableDescription(Keys.TouchoptionCustom)]
             OtherL,
-            [IgnoreDataMember]
-            [LocalizedDescription(Keys.TouchoptionCustom)]
+            [IgnoreDataMember, LocalizableDescription(Keys.TouchoptionCustom)]
             OtherR
         }
         
@@ -368,11 +368,11 @@ namespace GalaxyBudsClient.Model
         [CompiledEnum]
         public enum DynamicTrayIconModes
         {
-            [LocalizedDescription(Keys.SettingsDynTrayModeOff)]
+            [LocalizableDescription(Keys.SettingsDynTrayModeOff)]
             Disabled = 0,
-            [LocalizedDescription(Keys.SettingsDynTrayModeBatteryMin)]
+            [LocalizableDescription(Keys.SettingsDynTrayModeBatteryMin)]
             BatteryMin = 1,
-            [LocalizedDescription(Keys.SettingsDynTrayModeBatteryAvg)]
+            [LocalizableDescription(Keys.SettingsDynTrayModeBatteryAvg)]
             BatteryAvg = 2
         }
     }

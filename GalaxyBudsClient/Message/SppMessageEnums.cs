@@ -1,5 +1,17 @@
 ﻿// ReSharper disable InconsistentNaming
+
+using GalaxyBudsClient.Generated.Model.Attributes;
+
 namespace GalaxyBudsClient.Message;
+
+/// <summary>
+/// SPP message ids that have been reused or replaced by other message ids, but are still important for compatibility reasons.
+/// </summary>
+public enum LegacyMsgIds
+{
+    SPP_ROLE_STATE = 115,
+    AMBIENT_VOICE_FOCUS = 133
+}
 
 /// <summary>
 /// SPP message ids
@@ -10,6 +22,7 @@ namespace GalaxyBudsClient.Message;
 ///     UNK_ - Undocumented ID with guessed name/meaning (see also https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsPlus_HiddenDebugFeatures.md) <br/>
 /// All other member names are based on decompilations of the official Samsung app. 
 /// </remarks>
+[CompiledEnum]
 public enum MsgIds
 {
     UNKNOWN_0 = 0,
@@ -145,7 +158,6 @@ public enum MsgIds
     CUSTOMIZE_AMBIENT_SOUND = 130, /* prior: SET_A2DP_VOL */
     NOISE_REDUCTION_LEVEL = 131,  /* prior: A2DP_VOLUME_UPDATED */
     AMBIENT_VOLUME = 132,
-    AMBIENT_VOICE_FOCUS = 133,
     ADJUST_SOUND_SYNC = 133, /* prior: AMBIENT_VOICE_FOCUS */
     EQUALIZER = 134,
     GAME_MODE = 135,
@@ -279,6 +291,7 @@ public enum MsgConstants
     Eom = 0xDD
 }
 
+[CompiledEnum]
 public enum MsgTypes
 {
     Request = 0,

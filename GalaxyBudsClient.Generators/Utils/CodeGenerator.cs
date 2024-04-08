@@ -12,7 +12,7 @@ public class CodeGenerator
     {
         if (header != null)
         {
-            AppendLine(header);
+            AppendLines(header);
         }
 
         AppendLine("{");

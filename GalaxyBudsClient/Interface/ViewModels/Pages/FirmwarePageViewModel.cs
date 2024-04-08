@@ -13,6 +13,7 @@ using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Attributes;
+using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Firmware;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
@@ -173,11 +174,11 @@ public class FirmwarePageViewModel : SubPageViewModelBase
         {
             await new MessageBox
             {
-                Title =Strings.FwSelectVerifyFail,
+                Title = Strings.FwSelectVerifyFail,
                 Description = string.Format(
                     Strings.FwSelectVerifyModelMismatchFail, 
-                    firmwareModel.Value.GetModelMetadata()?.Name ?? Strings.Unknown, 
-                    connectedModel.GetModelMetadata()?.Name
+                    firmwareModel.Value.GetModelMetadataAttribute()?.Name ?? Strings.Unknown, 
+                    connectedModel.GetModelMetadataAttribute()?.Name
                 )
             }.ShowAsync();
             return;
@@ -188,7 +189,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
             Title = string.Format(
                 Strings.FwSelectConfirm,
                 binary.BuildName, 
-                BluetoothImpl.ActiveModel.GetModelMetadata()?.Name ?? Strings.Unknown
+                BluetoothImpl.ActiveModel.GetModelMetadataAttribute()?.Name ?? Strings.Unknown
             ),
             Description = Strings.FwSelectConfirmDesc,
             ButtonText = Strings.ContinueButton

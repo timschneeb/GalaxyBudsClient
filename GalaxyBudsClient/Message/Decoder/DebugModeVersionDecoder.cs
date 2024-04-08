@@ -53,7 +53,7 @@ internal class DebugModeVersionDecoder : BaseMessageDecoder
                 (swRelVerIndex & 255).ToString("X") : _swRelVer[swRelVerIndex - 16];
         }
         
-        var pre = TargetModel.GetModelMetadata()?.BuildPrefix.TrimStart('R') ?? "???";
+        var pre = TargetModel.GetModelMetadataAttribute()?.BuildPrefix.TrimStart('R') ?? "???";
         return side + pre + "XX" + swVar + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] + swRelVarString;
     }
 }

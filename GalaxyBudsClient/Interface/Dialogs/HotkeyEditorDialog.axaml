@@ -36,7 +36,7 @@
             <HeaderedContentControl Grid.Column="2"
                                     Classes="GroupBox"
                                     Header="{DynamicResource hotkey_edit_keys}">
-                <ComboBox ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type hotkeys:Keys}}}"
+                <ComboBox ItemsSource="{Binding Source={ext:KeysBindingSource}}"
                           SelectedValue="{Binding Key1}"
                           HorizontalAlignment="Stretch" />
             </HeaderedContentControl>

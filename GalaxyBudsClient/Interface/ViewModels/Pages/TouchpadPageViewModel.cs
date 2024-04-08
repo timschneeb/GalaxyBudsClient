@@ -213,11 +213,11 @@ public class TouchpadPageViewModel : MainPageViewModelBase
 
     private void UpdateTouchActions()
     {
-        foreach (var device in (Devices[])Enum.GetValues(typeof(Devices)))
+        foreach (var device in DevicesExtensions.GetValues())
         {
             var table = BluetoothImpl.Instance.DeviceSpec.TouchMap.LookupTable;
             var actions = table
-                .Where(pair => !pair.Key.IsMemberIgnored())
+                .Where(pair => !pair.Key.HasIgnoreDataMember())
                 .Select(TouchActionViewModel.FromKeyValuePair);
 
             /* Inject custom actions if appropriate */

@@ -64,8 +64,8 @@ public class FitTestPageViewModel : SubPageViewModelBase
         _ = BluetoothImpl.Instance.SendRequestAsync(MsgIds.CHECK_THE_FIT_OF_EARBUDS, 0);
 
         IsActive = false;
-        LeftStatus = result.Left.GetDescription();
-        RightStatus = result.Right.GetDescription();
+        LeftStatus = result.Left.GetLocalizedDescription();
+        RightStatus = result.Right.GetLocalizedDescription();
     }
     
     public override void OnNavigatedFrom()

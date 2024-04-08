@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GalaxyBudsClient.Generators.Enums;
 
@@ -10,13 +11,15 @@ public readonly record struct EnumToGenerate
     public readonly bool IsPublic;
     public readonly bool HasFlags;
     public readonly string UnderlyingType;
+    public readonly IEnumerable<string> UsingDirectives;
+    public readonly IEnumerable<string> UsedAttributes;
 
     /// <summary>
     /// Key is the enum name.
     /// </summary>
     public readonly (string Key, EnumValueOption Value)[] Names;
 
-    public readonly bool IsDisplayAttributeUsed;
+    public string ExtName => Name + "Extensions";
 
     public EnumToGenerate(
         string name,
@@ -26,7 +29,7 @@ public readonly record struct EnumToGenerate
         bool isPublic,
         List<(string, EnumValueOption)> names,
         bool hasFlags,
-        bool isDisplayAttributeUsed)
+        IEnumerable<string> usingDirectives)
     {
         Name = name;
         Namespace = ns;
@@ -35,6 +38,14 @@ public readonly record struct EnumToGenerate
         HasFlags = hasFlags;
         IsPublic = isPublic;
         FullyQualifiedName = fullyQualifiedName;
-        IsDisplayAttributeUsed = isDisplayAttributeUsed;
+        UsingDirectives = usingDirectives;
+
+        var usedAttrs = new List<string>();
+        foreach (var (_, opts) in names)
+        {
+            usedAttrs.AddRange(opts.AttributeTemplates.Select(x => x.Name));
+        }
+
+        UsedAttributes = usedAttrs.Distinct();
     }
 }

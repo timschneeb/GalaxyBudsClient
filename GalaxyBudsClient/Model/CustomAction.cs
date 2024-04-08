@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using Avalonia.Input;
 using GalaxyBudsClient.Generated.I18N;
+using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Attributes;
 using Serilog;
 
@@ -10,13 +11,14 @@ namespace GalaxyBudsClient.Model;
 
 public class CustomAction(CustomAction.Actions action, string parameter = "")
 {
+    [CompiledEnum]
     public enum Actions
     {
-        [LocalizedDescription(Keys.TouchoptionCustomTriggerEvent)]
+        [LocalizableDescription(Keys.TouchoptionCustomTriggerEvent)]
         Event,
-        [LocalizedDescription(Keys.TouchoptionCustomTriggerHotkey)]
+        [LocalizableDescription(Keys.TouchoptionCustomTriggerHotkey)]
         TriggerHotkey,
-        [LocalizedDescription(Keys.TouchoptionCustomExternalApp)]
+        [LocalizableDescription(Keys.TouchoptionCustomExternalApp)]
         RunExternalProgram
     }
 
@@ -48,7 +50,7 @@ public class CustomAction(CustomAction.Actions action, string parameter = "")
         switch (Action)
         {
             case Actions.Event:
-                return Event.GetDescription();
+                return Event.GetLocalizedDescription();
             case Actions.RunExternalProgram:
                 return $"{Path.GetFileName(Parameter)}";
             case Actions.TriggerHotkey:
@@ -63,21 +65,6 @@ public class CustomAction(CustomAction.Actions action, string parameter = "")
                     return Strings.Unknown;
                 }
         }
-
-        return Action.GetDescription();
-    }
-
-    public string ToLongString()
-    {
-        switch (Action)
-        {
-            case Actions.RunExternalProgram:
-            case Actions.TriggerHotkey:
-                return $"{Action.GetDescription()} ({ToString()})";
-            case Actions.Event:
-                return Event.GetDescription();
-            default:
-                return Action.GetDescription();
-        }
+        return Action.GetLocalizedDescription();
     }
 }

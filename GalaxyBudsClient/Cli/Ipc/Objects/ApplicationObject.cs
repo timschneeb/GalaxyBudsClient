@@ -55,11 +55,11 @@ public sealed class ApplicationObject : BaseObjectWithProperties<ApplicationProp
 
     public Task<IDictionary<string, string>> ListActionsAsync()
     {
-        var values = Enum.GetValues<Event>();
+        var values = EventExtensions.GetValues();
         var actions = new Dictionary<string, string>();
         foreach (var value in values)
         {
-            var description = value.GetDescription();
+            var description = value.GetLocalizedDescription();
             if(description.Length > 0)
                 actions.Add(value.ToString(), description);
         }
@@ -69,15 +69,13 @@ public sealed class ApplicationObject : BaseObjectWithProperties<ApplicationProp
 
     public Task ExecuteActionAsync(string action)
     {
-        try
+        if (EventExtensions.TryParse(action, out var result, true))
         {
-            EventDispatcher.Instance.Dispatch(Enum.Parse<Event>(action));
+            EventDispatcher.Instance.Dispatch(result);
             return Task.CompletedTask;
         }
-        catch (ArgumentException)
-        {
-            return Task.FromException(new ArgumentException("Invalid action"));
-        }
+
+        return Task.FromException(new ArgumentException("Invalid action"));
     }
 
     public Task ActivateAsync()

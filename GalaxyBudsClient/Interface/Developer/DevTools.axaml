@@ -75,11 +75,11 @@
                             <ComboBox Grid.Column="0" Name="SendMsgId"
                                       HorizontalAlignment="Stretch"
                                       Margin="0,0,5,0"
-                                      ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type message:MsgIds}}}" />
+                                      ItemsSource="{Binding ., Source={ext:MsgIdsBindingSource}}" />
                             <ComboBox Grid.Column="1" Name="SendMsgType"
                                       Margin="0,0,5,0"
                                       HorizontalAlignment="Stretch"
-                                      ItemsSource="{Binding ., Source={ext:EnumBindingSource {x:Type message:MsgTypes}}}" />
+                                      ItemsSource="{Binding ., Source={ext:MsgTypesBindingSource}}" />
                             <Button Grid.Column="2" Name="SendSubmit"
                                     HorizontalAlignment="Stretch"
                                     MaxWidth="100"

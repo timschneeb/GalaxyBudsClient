@@ -35,7 +35,7 @@
                     Description="{DynamicResource bixby_remap_lang_desc}"
                     Symbol="LocalLanguage"
                     IsEnabled="{Binding IsBixbyWakeUpEnabled}"
-                    ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type constants:BixbyLanguages}}}"
+                    ItemsSource="{Binding Source={ext:BixbyLanguagesBindingSource}}"
                     SelectedValue="{Binding BixbyLanguage}" />
 
                 <controls:SettingsComboBoxItem
@@ -43,10 +43,10 @@
                     Description="{DynamicResource bixby_remap_action_desc}"
                     Symbol="Flash"
                     IsEnabled="{Binding IsBixbyWakeUpEnabled}"
-                    ItemsSource="{Binding Source={ext:EnumBindingSource {x:Type model:Event}}}"
+                    ItemsSource="{Binding Source={ext:EventBindingSource}}"
                     SelectedValue="{Binding BixbyRemapEvent, Source={x:Static utils:Settings.Instance}}">
                     <Interaction.Behaviors>
-                        <ext:LocalizationAwareComboBoxBehavior EnumType="{x:Type model:Event}" />
+                        <ext:LocalizationAwareComboBoxBehavior />
                     </Interaction.Behaviors>
                 </controls:SettingsComboBoxItem>
             </controls:SettingsGroup>

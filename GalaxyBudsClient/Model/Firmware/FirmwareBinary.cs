@@ -128,9 +128,9 @@ public class FirmwareBinary
     public Models? DetectModel()
     {
         var fastSearch = new BoyerMoore();
-        foreach (var model in Enum.GetValues<Models>())
+        foreach (var model in ModelsExtensions.GetValues())
         {
-            var fwPattern = model.GetModelMetadata()?.FwPattern;
+            var fwPattern = model.GetModelMetadataAttribute()?.FwPattern;
             if(fwPattern == null)
                 continue;
                 
