@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using Avalonia.Data.Converters;
 using GalaxyBudsClient.Generated.Enums;
-using GalaxyBudsClient.Model.Attributes;
 
 namespace GalaxyBudsClient.Interface.Converters;
 

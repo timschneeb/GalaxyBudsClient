@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading;
 using Microsoft.CodeAnalysis;
@@ -57,23 +54,12 @@ public class CompiledEnumGenerator : IIncrementalGenerator
     
     static void Execute(in EnumToGenerate? enumToGenerate, SourceProductionContext context)
     {
-        try
+        if (enumToGenerate is { } eg)
         {
-            if (enumToGenerate is { } eg)
-            {
-                var result = SourceGenerationHelper.GenerateExtensionClass(in eg);
-                context.AddSource(eg.Name + "_CompiledEnumExtensions.g.cs", SourceText.From(result, Encoding.UTF8));
-                var bindingSource = SourceGenerationHelper.GenerateBindingSource(in eg);
-                context.AddSource(eg.Name + "_BindingSource.g.cs", SourceText.From(bindingSource, Encoding.UTF8));
-            }
-        }
-        catch (Exception e)
-        {
-                            
-#pragma warning disable RS1035
-            File.AppendAllText("/home/tim/log", $"{e}\n");
-#pragma warning restore RS1035
-            throw;
+            var result = SourceGenerationHelper.GenerateExtensionClass(in eg);
+            context.AddSource(eg.Name + "_CompiledEnumExtensions.g.cs", SourceText.From(result, Encoding.UTF8));
+            var bindingSource = SourceGenerationHelper.GenerateBindingSource(in eg);
+            context.AddSource(eg.Name + "_BindingSource.g.cs", SourceText.From(bindingSource, Encoding.UTF8));
         }
     }
 
@@ -111,13 +97,6 @@ public class CompiledEnumGenerator : IIncrementalGenerator
                 continue;
             
             var attributeTemplates = member.ParseAttributesForEnumMember();
-            foreach (var template in attributeTemplates)
-            {
-#pragma warning disable RS1035
-                File.AppendAllText("/home/tim/log", $"{template.Name} - {string.Join(",", template.Parameters)}\n");
-#pragma warning restore RS1035
-            }
-            
             members.Add((member.Name, new EnumValueOption(attributeTemplates)));
         }
 
