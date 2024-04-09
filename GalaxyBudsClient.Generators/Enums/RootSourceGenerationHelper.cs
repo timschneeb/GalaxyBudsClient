@@ -66,7 +66,7 @@ public static class RootSourceGenerationHelper
                          _ => "<unknown>"
                          """);
         
-        gen.LeaveScope(";");
+        gen.LeaveScope(" ?? \"<unknown>\";");
         gen.LeaveScope();
 
         // GetValuesByType
