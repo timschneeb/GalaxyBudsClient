@@ -25,12 +25,12 @@ public class CodeGenerator
         AppendLine($"}}{suffix}");
     }
 
-    public void IncreaseIndentation()
+    private void IncreaseIndentation()
     {
         _currentIndentCount++;
     }
 
-    public void DecreaseIndentation()
+    private void DecreaseIndentation()
     {
         if (_currentIndentCount - 1 >= 0)
         {

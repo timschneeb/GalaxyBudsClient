@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
-    "Generators": {
+    "Debug Generators": {
       "commandName": "DebugRoslynComponent",
       "targetProject": "../GalaxyBudsClient/GalaxyBudsClient.csproj"
     }

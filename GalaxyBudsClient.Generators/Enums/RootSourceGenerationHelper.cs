@@ -44,7 +44,7 @@ public static class RootSourceGenerationHelper
                         /// <exception cref="ArgumentOutOfRangeException">Thrown when the enum type is unknown</exception>
                         """);
         gen.EnterScope("public static string GetDescriptionByType(global::System.Type type, object value)");
-        gen.EnterScope($"switch(type.FullName)");
+        gen.EnterScope($"return type.FullName switch");
 
         foreach (var enumToGenerate in enumsToGenerate.Cast<EnumToGenerate>())
         {
@@ -54,28 +54,19 @@ public static class RootSourceGenerationHelper
             var hasDesc = allAttr.Any(x => x.Name == "Description");
             var hasLocDesc = allAttr.Any(x => x.Name == "LocalizableDescription");
 
-            var returnValue = hasLocDesc ? "enumValue.GetLocalizedDescription() ?? " : string.Empty;
+            var returnValue = hasLocDesc ? $"(value as {enumToGenerate.FullyQualifiedName}?)?.GetLocalizedDescription() ?? " : string.Empty;
             if(hasDesc)
-                returnValue += "enumValue.GetDescription() ?? ";
-            returnValue += "enumValue.ToString()";
+                returnValue += $"(value as {enumToGenerate.FullyQualifiedName}?)?.GetDescription() ?? ";
+            returnValue += "value.ToString()";
             
-            gen.EnterScope($"case \"{enumToGenerate.FullyQualifiedName}\":"); 
-            gen.AppendLines($$"""
-                            var enumValue = global::{{enumToGenerate.Namespace}}.{{enumToGenerate.ExtName}}
-                                .GetValues()
-                                .FirstOrDefault(v => v == ({{enumToGenerate.FullyQualifiedName}})value);
-                            return {{returnValue}};
-                            """);
-            gen.LeaveScope();
+            gen.AppendLine($"\"{enumToGenerate.FullyQualifiedName}\" => {returnValue},"); 
         }
         
-        gen.EnterScope("default:"); 
         gen.AppendLine("""
-                         return "<unknown>";
+                         _ => "<unknown>"
                          """);
-        gen.LeaveScope();
         
-        gen.LeaveScope();
+        gen.LeaveScope(";");
         gen.LeaveScope();
 
         // GetValuesByType
