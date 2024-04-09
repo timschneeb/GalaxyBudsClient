@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
@@ -39,6 +40,8 @@ public partial class SppMessage(
     
     private Models TargetModel => model ?? BluetoothImpl.ActiveModel;
 
+    public static BaseMessageEncoder? CreateEncoder(MsgIds msgId) => CreateUninitializedEncoder(msgId);
+    
     public BaseMessageDecoder? CreateDecoder()
     {
         var decoder = CreateUninitializedDecoder(Id);
