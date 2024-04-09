@@ -14,7 +14,7 @@ using Serilog;
 
 namespace GalaxyBudsClient.Message;
 
-public class SppMessage(
+public partial class SppMessage(
     MsgIds id = MsgIds.UNKNOWN_0, 
     MsgTypes type = MsgTypes.Request,
     byte[]? payload = null, 
@@ -31,7 +31,7 @@ public class SppMessage(
     public MsgIds Id { set; get; } = id;
     public int Size => MsgIdSize + Payload.Length + CrcSize;
     public int TotalPacketSize => SomSize + TypeSize + BytesSize + MsgIdSize + Payload.Length + CrcSize + EomSize;
-    public byte[] Payload { set; get; } = payload ?? Array.Empty<byte>();
+    public byte[] Payload { set; get; } = payload ?? [];
     public int Crc16 { private set; get; }
         
     /* No Buds support at the moment */
@@ -41,7 +41,30 @@ public class SppMessage(
 
     public BaseMessageDecoder? CreateDecoder()
     {
-        return SppMessageHandlerFactory.CreateDecoder(this, TargetModel);
+        var decoder = CreateUninitializedDecoder(Id);
+        if (decoder == null) 
+            return null;
+        
+        decoder.TargetModel = TargetModel;
+                
+        SentrySdk.ConfigureScope(scope =>
+        {
+            scope.SetTag("msg-data-available", "true");
+            scope.SetExtra("msg-type", Type.ToString());
+            scope.SetExtra("msg-id", Id);
+            scope.SetExtra("msg-size", Size);
+            scope.SetExtra("msg-total-size", TotalPacketSize);
+            scope.SetExtra("msg-crc16", Crc16);
+            scope.SetExtra("msg-payload", HexUtils.Dump(Payload, 512, false, false, false));
+        });
+
+        decoder.Decode(this);
+            
+        foreach (var hook in ScriptManager.Instance.DecoderHooks)
+        {
+            hook.OnDecoderCreated(this, ref decoder);
+        }
+        return decoder;
     }
 
     public byte[] Encode()

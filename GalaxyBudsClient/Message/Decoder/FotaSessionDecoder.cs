@@ -1,16 +1,14 @@
+using GalaxyBudsClient.Generated.Model.Attributes;
+
 namespace GalaxyBudsClient.Message.Decoder;
 
+[MessageDecoder(MsgIds.FOTA_OPEN)]
 internal class FotaSessionDecoder : BaseMessageDecoder
 {
-    public override MsgIds HandledType => MsgIds.FOTA_OPEN;
-
     public byte ResultCode { set; get; }
 
     public override void Decode(SppMessage msg)
     {
-        if (msg.Id != HandledType)
-            return;
-
         ResultCode = msg.Payload[0];
     }
 }

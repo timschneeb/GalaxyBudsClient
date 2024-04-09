@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Utils;
 using Serilog;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
+[MessageDecoder(MsgIds.USAGE_REPORT)]
 public class UsageReportDecoder : BaseMessageDecoder
 {
     private static readonly Dictionary<string, string> KeyLookup = new()
@@ -91,16 +93,11 @@ public class UsageReportDecoder : BaseMessageDecoder
         { "ABDB", "WearBoth/AmbientSound" },
         { "ABDC", "WearBoth/AmbientSound" }
     };
-
-    public override MsgIds HandledType => MsgIds.USAGE_REPORT;
-
+    
     public Dictionary<string, long>? Statistics { set; get; }
 
     public override void Decode(SppMessage msg)
     {
-        if (msg.Id != HandledType)
-            return;
-        
         if (Statistics == null)
             Statistics = new Dictionary<string, long>();
         else

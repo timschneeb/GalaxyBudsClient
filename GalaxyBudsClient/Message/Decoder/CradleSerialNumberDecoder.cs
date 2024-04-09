@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Text;
+using GalaxyBudsClient.Generated.Model.Attributes;
 using Serilog;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
+[MessageDecoder(MsgIds.CRADLE_SERIAL_NUMBER)]
 public class CradleSerialNumberDecoder : BaseMessageDecoder
 {
-    public override MsgIds HandledType => MsgIds.CRADLE_SERIAL_NUMBER;
-
     public string? SoftwareVersion { set; get; }
     public string? SerialNumber { set; get; }
 
     public override void Decode(SppMessage msg)
     {
-        if (msg.Id != HandledType)
-            return;
-
         try
         {
             var left = new byte[9];

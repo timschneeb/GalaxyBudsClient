@@ -1,12 +1,13 @@
 using System.Linq;
+using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 
 namespace GalaxyBudsClient.Message.Encoder;
 
+[MessageEncoder(MsgIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS)]
 public class TouchAndHoldNoiseControls : BaseMessageEncoder
 {
-    public override MsgIds HandledType => MsgIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS;
     public NoiseControlCycleModes CycleMode { get; init; }
     public NoiseControlCycleModes CycleModeRight { get; init; }
     
@@ -16,7 +17,7 @@ public class TouchAndHoldNoiseControls : BaseMessageEncoder
             GetValues(CycleMode).Concat(GetValues(CycleModeRight)).ToArray() : 
             GetValues(CycleMode);
             
-        return new SppMessage(HandledType, MsgTypes.Request, states);
+        return new SppMessage(MsgIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS, MsgTypes.Request, states);
     }
     
     private static byte[] GetValues(NoiseControlCycleModes mode)

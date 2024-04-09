@@ -1,16 +1,14 @@
-﻿namespace GalaxyBudsClient.Message.Decoder;
+﻿using GalaxyBudsClient.Generated.Model.Attributes;
 
+namespace GalaxyBudsClient.Message.Decoder;
+
+[MessageDecoder(MsgIds.RESET)]
 internal class ResetResponseDecoder : BaseMessageDecoder
 {
-    public override MsgIds HandledType => MsgIds.RESET;
-
     public int ResultCode { set; get; }
 
     public override void Decode(SppMessage msg)
     {
-        if (msg.Id != HandledType)
-            return;
-
         ResultCode = msg.Payload[0];
     }
 }

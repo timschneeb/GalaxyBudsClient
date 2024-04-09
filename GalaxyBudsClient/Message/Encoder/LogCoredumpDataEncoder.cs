@@ -1,11 +1,12 @@
 using System;
+using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Utils;
 
 namespace GalaxyBudsClient.Message.Encoder;
 
+[MessageEncoder(MsgIds.LOG_COREDUMP_DATA)]
 public class LogCoredumpDataEncoder : BaseMessageEncoder
 {
-    public override MsgIds HandledType => MsgIds.LOG_COREDUMP_DATA;
     public int Offset { get; init; }
     public int Size { get; init; }
     
@@ -15,6 +16,6 @@ public class LogCoredumpDataEncoder : BaseMessageEncoder
             BitConverter.GetBytes(Offset),
             BitConverter.GetBytes(Size)
         );
-        return new SppMessage(HandledType, MsgTypes.Request, bytes);
+        return new SppMessage(MsgIds.LOG_COREDUMP_DATA, MsgTypes.Request, bytes);
     }
 }

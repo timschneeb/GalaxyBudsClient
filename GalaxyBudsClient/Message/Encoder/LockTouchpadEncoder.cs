@@ -1,11 +1,12 @@
 using System.IO;
+using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Specifications;
 
 namespace GalaxyBudsClient.Message.Encoder;
 
+[MessageEncoder(MsgIds.LOCK_TOUCHPAD)]
 public class LockTouchpadEncoder : BaseMessageEncoder
 {
-    public override MsgIds HandledType => MsgIds.LOCK_TOUCHPAD;
     public bool LockAll { get; init; }
     public bool TapOn { get; init; }
     public bool DoubleTapOn { get; init; }
@@ -31,6 +32,6 @@ public class LockTouchpadEncoder : BaseMessageEncoder
             writer.Write(HoldTapCallOn);
         }
             
-        return new SppMessage(HandledType, MsgTypes.Request, stream.ToArray());
+        return new SppMessage(MsgIds.LOCK_TOUCHPAD, MsgTypes.Request, stream.ToArray());
     }
 }

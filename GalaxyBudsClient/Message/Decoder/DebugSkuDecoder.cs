@@ -1,20 +1,17 @@
 ﻿using System.Text;
+using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
+[MessageDecoder(MsgIds.DEBUG_SKU)]
 public class DebugSkuDecoder : BaseMessageDecoder
 {
-    public override MsgIds HandledType => MsgIds.DEBUG_SKU;
-
     public string? LeftSku { set; get; }
     public string? RightSku { set; get; }
         
     public override void Decode(SppMessage msg)
     {
-        if (msg.Id != HandledType)
-            return;
-
         var payload = msg.Payload;
         if (payload.Length >= 14)
         {
@@ -25,7 +22,6 @@ public class DebugSkuDecoder : BaseMessageDecoder
             RightSku = Encoding.UTF8.GetString(payload, 14, 14);
         }
     }
-        
                 
     public Models? ModelFromSku()
     {

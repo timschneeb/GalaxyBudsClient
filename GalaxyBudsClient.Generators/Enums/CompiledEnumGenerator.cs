@@ -11,10 +11,7 @@ namespace GalaxyBudsClient.Generators.Enums;
 [Generator]
 public class CompiledEnumGenerator : IIncrementalGenerator
 {
-    private const string DisplayAttribute = "System.ComponentModel.DataAnnotations.DisplayAttribute";
-    private const string DescriptionAttribute = "System.ComponentModel.DescriptionAttribute";
     private const string EnumExtensionsAttribute = "GalaxyBudsClient.Generated.Model.Attributes.CompiledEnumAttribute";
-    private const string FlagsAttribute = "System.FlagsAttribute";
     
     public const string InitialExtraction = nameof(InitialExtraction);
     public const string RemovingNulls = nameof(RemovingNulls);
@@ -79,7 +76,7 @@ public class CompiledEnumGenerator : IIncrementalGenerator
         foreach (var attributeData in enumSymbol.GetAttributes())
         {
             if (attributeData.AttributeClass?.Name is "FlagsAttribute" or "Flags" &&
-                attributeData.AttributeClass.ToDisplayString() == FlagsAttribute)
+                attributeData.AttributeClass.ToDisplayString() == "System.FlagsAttribute")
             {
                 hasFlags = true;
             }

@@ -1,16 +1,17 @@
 using System;
 using System.IO;
+using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Firmware;
 
 namespace GalaxyBudsClient.Message.Encoder;
 
+[MessageEncoder(MsgIds.FOTA_DOWNLOAD_DATA)]
 public class FotaDownloadDataEncoder : BaseMessageEncoder
 {
-    public override MsgIds HandledType => MsgIds.FOTA_DOWNLOAD_DATA;
-    public required FirmwareBinary Binary { init; get; }
-    public required int EntryId { init; get; }
-    public required int MtuSize { init; get; }
-    public required int Offset { init; get; }
+    public FirmwareBinary Binary { set; get; }
+    public int EntryId { set; get; }
+    public int MtuSize { set; get; }
+    public int Offset { set; get; }
 
     public bool IsLastFragment()
     {
@@ -58,13 +59,13 @@ public class FotaDownloadDataEncoder : BaseMessageEncoder
             i3 = i4;
         }
 
-        return new SppMessage(HandledType, MsgTypes.Response, bArr)
+        return new SppMessage(MsgIds.FOTA_DOWNLOAD_DATA, MsgTypes.Response, bArr)
         {
             IsFragment = true
         };
             
         RET_NULL:
-        return new SppMessage(HandledType, MsgTypes.Response, Array.Empty<byte>())
+        return new SppMessage(MsgIds.FOTA_DOWNLOAD_DATA, MsgTypes.Response, [])
         {
             IsFragment = true
         };

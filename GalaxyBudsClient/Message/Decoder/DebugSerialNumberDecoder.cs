@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Text;
+using GalaxyBudsClient.Generated.Model.Attributes;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
+[MessageDecoder(MsgIds.DEBUG_SERIAL_NUMBER)]
 public class DebugSerialNumberDecoder : BaseMessageDecoder
 {
-    public override MsgIds HandledType => MsgIds.DEBUG_SERIAL_NUMBER;
-
     public string? LeftSerialNumber { set; get; }
     public string? RightSerialNumber { set; get; }
 
     public override void Decode(SppMessage msg)
     {
-        if (msg.Id != HandledType)
-            return;
-
         var left = new byte[11];
         var right = new byte[11];
         Array.Copy(msg.Payload, 0, left, 0, 11);

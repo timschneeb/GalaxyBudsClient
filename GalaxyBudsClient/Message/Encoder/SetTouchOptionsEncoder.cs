@@ -1,16 +1,17 @@
+using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Message.Encoder;
 
+[MessageEncoder(MsgIds.SET_TOUCHPAD_OPTION)]
 public class SetTouchOptionsEncoder : BaseMessageEncoder
 {
-    public override MsgIds HandledType => MsgIds.SET_TOUCHPAD_OPTION;
     public TouchOptions LeftAction { get; set; }
     public TouchOptions RightAction { get; set; }
     
     public override SppMessage Encode()
     {
-        return new SppMessage(HandledType, MsgTypes.Request, [
+        return new SppMessage(MsgIds.SET_TOUCHPAD_OPTION, MsgTypes.Request, [
             DeviceSpec.TouchMap.ToByte(LeftAction),
             DeviceSpec.TouchMap.ToByte(RightAction)
         ]);

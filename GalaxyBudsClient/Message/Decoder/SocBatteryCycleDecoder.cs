@@ -1,11 +1,11 @@
 ﻿using System;
+using GalaxyBudsClient.Generated.Model.Attributes;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
+[MessageDecoder(MsgIds.SOC_BATTERY_CYCLE)]
 internal class SocBatteryCycleDecoder : BaseMessageDecoder
 {
-    public override MsgIds HandledType => MsgIds.SOC_BATTERY_CYCLE;
-        
     public long LeftCycles { set; get; }
     public long RightCycles { set; get; }
     
@@ -14,9 +14,6 @@ internal class SocBatteryCycleDecoder : BaseMessageDecoder
     
     public override void Decode(SppMessage msg)
     {
-        if (msg.Id != HandledType)
-            return;
-        
         LeftCycles = BitConverter.ToInt64(msg.Payload, 0);
         RightCycles = BitConverter.ToInt64(msg.Payload, 8);
         

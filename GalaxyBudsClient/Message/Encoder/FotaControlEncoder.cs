@@ -1,11 +1,12 @@
 using System.IO;
+using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Firmware;
 
 namespace GalaxyBudsClient.Message.Encoder;
 
+[MessageEncoder(MsgIds.FOTA_CONTROL)]
 public class FotaControlEncoder : BaseMessageEncoder
 {
-    public override MsgIds HandledType => MsgIds.FOTA_CONTROL;
     public FirmwareConstants.ControlIds ControlId { get; init; }
     public short Parameter { get; set; }
     
@@ -22,6 +23,6 @@ public class FotaControlEncoder : BaseMessageEncoder
         writer.Write((byte) ControlId);
         writer.Write(Parameter); // 16-bit parameter
             
-        return new SppMessage(HandledType, MsgTypes.Response, stream.ToArray());
+        return new SppMessage(MsgIds.FOTA_CONTROL, MsgTypes.Response, stream.ToArray());
     }
 }

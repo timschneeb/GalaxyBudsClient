@@ -1,10 +1,11 @@
 using System;
+using GalaxyBudsClient.Generated.Model.Attributes;
 
 namespace GalaxyBudsClient.Message.Encoder;
 
+[MessageEncoder(MsgIds.UPDATE_TIME)]
 public class UpdateTimeEncoder : BaseMessageEncoder
 {
-    public override MsgIds HandledType => MsgIds.UPDATE_TIME;
     public long Timestamp { get; set; } = -1;
     public int Offset { get; set; } = -1;
     
@@ -23,6 +24,6 @@ public class UpdateTimeEncoder : BaseMessageEncoder
         Array.Copy(timestampRaw, 0, payload, 0, 8);
         Array.Copy(payload, 8, offsetRaw, 0, 4);
         
-        return new SppMessage(HandledType, MsgTypes.Request, payload);
+        return new SppMessage(MsgIds.UPDATE_TIME, MsgTypes.Request, payload);
     }
 }

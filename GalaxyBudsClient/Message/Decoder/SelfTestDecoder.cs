@@ -1,11 +1,11 @@
 ﻿using System;
+using GalaxyBudsClient.Generated.Model.Attributes;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
+[MessageDecoder(MsgIds.SELF_TEST)]
 public class SelfTestDecoder : BaseMessageDecoder
 {
-    public override MsgIds HandledType => MsgIds.SELF_TEST;
-
     public bool AllChecks { set; get; }
     public bool AllLeftAccelerator { set; get; }
     public bool AllRightAccelerator { set; get; }
@@ -37,8 +37,6 @@ public class SelfTestDecoder : BaseMessageDecoder
 
     public override void Decode(SppMessage msg)
     {
-        if (msg.Id != HandledType)
-            return;
         var data = BitConverter.ToInt32(msg.Payload, 0);
 
         HardwareVersion = (data & 1) == 0;
@@ -66,8 +64,7 @@ public class SelfTestDecoder : BaseMessageDecoder
         RightAdcCurrent = (data & 4194304) == 0;
         LeftHall = (data & 8388608) == 0;
         RightHall = (data & 16777216) == 0;
-
-
+        
         var result = true;
         foreach (var pi in GetType().GetProperties())
         {

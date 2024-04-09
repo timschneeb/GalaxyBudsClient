@@ -1,4 +1,5 @@
 ﻿using System;
+using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
@@ -6,10 +7,9 @@ using GalaxyBudsClient.Utils;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
+[MessageDecoder(MsgIds.STATUS_UPDATED)]
 public class StatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdate
 {
-
-    public override MsgIds HandledType => MsgIds.STATUS_UPDATED;
     public int BatteryL { set; get; }
     public int BatteryR { set; get; }
     public bool IsCoupled { set; get; }
@@ -39,9 +39,6 @@ public class StatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdate
 
     public override void Decode(SppMessage msg)
     {
-        if (msg.Id != HandledType)
-            return;
-
         if (TargetModel == Models.Buds)
         {
             EarType = msg.Payload[0];

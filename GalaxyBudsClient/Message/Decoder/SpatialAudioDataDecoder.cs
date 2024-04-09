@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using Serilog;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
+[MessageDecoder(MsgIds.SPATIAL_AUDIO_DATA)]
 internal class SpatialAudioDataDecoder : BaseMessageDecoder
 {
-    public override MsgIds HandledType => MsgIds.SPATIAL_AUDIO_DATA;
     public SpatialAudioData EventId { set; get; }
         
     /* Wear on/off */
@@ -26,9 +27,6 @@ internal class SpatialAudioDataDecoder : BaseMessageDecoder
 
     public override void Decode(SppMessage msg)
     {
-        if (msg.Id != HandledType)
-            return;
-
         EventId = (SpatialAudioData) msg.Payload[0];
 
         var length = msg.Payload.Length - 1;

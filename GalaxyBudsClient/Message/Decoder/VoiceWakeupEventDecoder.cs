@@ -1,16 +1,15 @@
-﻿namespace GalaxyBudsClient.Message.Decoder;
+﻿using GalaxyBudsClient.Generated.Model.Attributes;
 
+namespace GalaxyBudsClient.Message.Decoder;
+
+[MessageDecoder(MsgIds.VOICE_WAKE_UP_EVENT)]
 internal class VoiceWakeupEventDecoder : BaseMessageDecoder
-{
-    public override MsgIds HandledType => MsgIds.VOICE_WAKE_UP_EVENT;
+{ 
     public byte ResultCode { set; get; }
     public byte Confidence { set; get; }
 
     public override void Decode(SppMessage msg)
     {
-        if (msg.Id != HandledType)
-            return;
-
         ResultCode = msg.Payload[0];
         if (msg.Payload.Length > 1)
         {

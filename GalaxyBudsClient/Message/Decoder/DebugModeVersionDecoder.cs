@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
+using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
+[MessageDecoder(MsgIds.VERSION_INFO)]
 internal class DebugModeVersionDecoder : BaseMessageDecoder
 {
-    public override MsgIds HandledType => MsgIds.VERSION_INFO;
-
     private readonly string[] _swMonth = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
     private readonly string[] _swRelVer = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     private readonly string[] _swYear = ["O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -20,9 +20,6 @@ internal class DebugModeVersionDecoder : BaseMessageDecoder
 
     public override void Decode(SppMessage msg)
     {
-        if (msg.Id != HandledType)
-            return;
-
         var l1 = (msg.Payload[0] & 240) >> 4;
         var l2 = msg.Payload[0] & 15;
         var r1 = (msg.Payload[1] & 240) >> 4;

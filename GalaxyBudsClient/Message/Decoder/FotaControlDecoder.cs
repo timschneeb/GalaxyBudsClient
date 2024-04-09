@@ -1,22 +1,19 @@
 using System;
+using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Firmware;
 using Serilog;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
+[MessageDecoder(MsgIds.FOTA_CONTROL)]
 internal class FotaControlDecoder : BaseMessageDecoder
 {
-    public override MsgIds HandledType => MsgIds.FOTA_CONTROL;
-
     public FirmwareConstants.ControlIds ControlId { set; get; }
     public short Id { set; get; }
     public short MtuSize { set; get; }
 
     public override void Decode(SppMessage msg)
     {
-        if (msg.Id != HandledType)
-            return;
-
         ControlId = (FirmwareConstants.ControlIds) msg.Payload[0];
             
         switch (ControlId)

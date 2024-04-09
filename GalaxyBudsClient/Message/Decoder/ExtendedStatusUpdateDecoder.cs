@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
@@ -7,11 +8,9 @@ using GalaxyBudsClient.Utils;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
+[MessageDecoder(MsgIds.EXTENDED_STATUS_UPDATED)]
 public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdate
 {
-
-    public override MsgIds HandledType => MsgIds.EXTENDED_STATUS_UPDATED;
-
     public int Revision { set; get; }
     public int EarType { set; get; }
     public int BatteryL { set; get; }
@@ -166,9 +165,6 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
     
     public override void Decode(SppMessage msg)
     {
-        if (msg.Id != HandledType)
-            return;
-
         // TODO: clean this up
         
         if (TargetModel == Models.Buds)

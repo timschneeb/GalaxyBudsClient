@@ -1,18 +1,15 @@
 ﻿using System.Text;
+using GalaxyBudsClient.Generated.Model.Attributes;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
+[MessageDecoder(MsgIds.DEBUG_BUILD_INFO)]
 internal class DebugBuildInfoDecoder : BaseMessageDecoder
 {
-    public override MsgIds HandledType => MsgIds.DEBUG_BUILD_INFO;
-        
     public string? BuildString { set; get; }
 
     public override void Decode(SppMessage msg)
     {
-        if (msg.Id != HandledType)
-            return;
-
         BuildString = Encoding.ASCII.GetString(msg.Payload);
     }
 }

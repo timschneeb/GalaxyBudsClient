@@ -1,19 +1,17 @@
-﻿namespace GalaxyBudsClient.Message.Decoder;
+﻿using GalaxyBudsClient.Generated.Model.Attributes;
+
+namespace GalaxyBudsClient.Message.Decoder;
 
 /*
  * Buds+ only
  */
+[MessageDecoder(MsgIds.SET_IN_BAND_RINGTONE)]
 internal class SetInBandRingtoneDecoder : BaseMessageDecoder
 {
-    public override MsgIds HandledType => MsgIds.SET_IN_BAND_RINGTONE;
-
     public byte Status { set; get; }
 
     public override void Decode(SppMessage msg)
     {
-        if (msg.Id != HandledType)
-            return;
-
         Status = msg.Payload[0];
     }
 }
