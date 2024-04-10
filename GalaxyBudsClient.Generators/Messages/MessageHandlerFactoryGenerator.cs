@@ -15,31 +15,11 @@ namespace GalaxyBudsClient.Generators.Messages;
 [Generator]
 public class MessageHandlerFactoryGenerator : IIncrementalGenerator
 {
-    private const string DecoderBaseClassName = "BaseMessageDecoder";
-    private const string EncoderBaseClassName = "BaseMessageEncoder";
-    private const string DecoderNamespace = "GalaxyBudsClient.Message.Decoder";
-    private const string EncoderNamespace = "GalaxyBudsClient.Message.Encoder";
-    
     private const string MessageEncoderAttribute = "GalaxyBudsClient.Generated.Model.Attributes.MessageEncoderAttribute";
     private const string MessageDecoderAttribute = "GalaxyBudsClient.Generated.Model.Attributes.MessageDecoderAttribute";
     
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-        /*var handlers = context.CompilationProvider
-            .SelectMany((compilation, _) =>
-                compilation.SyntaxTrees.Select(syntaxTree => compilation.GetSemanticModel(syntaxTree)))
-            .SelectMany(
-                (semanticModel, _) => semanticModel
-                    .SyntaxTree
-                    .GetRoot()
-                    .DescendantNodes()
-                    .OfType<ClassDeclarationSyntax>()
-                    .Select(classDeclarationSyntax => semanticModel.GetDeclaredSymbol(classDeclarationSyntax))
-                    .OfType<INamedTypeSymbol>()
-                    .Where(x => x.BaseType?.Name is DecoderBaseClassName or EncoderBaseClassName &&
-                                x.ContainingNamespace.ToString() is DecoderNamespace or EncoderNamespace));*/
-        
-        
         var decodersToGenerate = context.SyntaxProvider
             .ForAttributeWithMetadataName(
                 MessageDecoderAttribute,
