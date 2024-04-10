@@ -8,21 +8,21 @@ public class CodeGenerator
     private readonly StringBuilder _sb = new();
     private int _currentIndentCount;
 
-    public void EnterScope(string? header = null)
+    public void EnterScope(string? header = null, string scopeToken = "{")
     {
         if (header != null)
         {
             AppendLines(header);
         }
 
-        AppendLine("{");
+        AppendLine(scopeToken);
         IncreaseIndentation();
     }
 
-    public void LeaveScope(string suffix = "")
+    public void LeaveScope(string suffix = "", string scopeToken = "}")
     {
         DecreaseIndentation();
-        AppendLine($"}}{suffix}");
+        AppendLine($"{scopeToken}{suffix}");
     }
 
     private void IncreaseIndentation()
