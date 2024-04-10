@@ -8,20 +8,20 @@ namespace GalaxyBudsClient.Message.Encoder;
 [MessageEncoder(MsgIds.FOTA_DOWNLOAD_DATA)]
 public class FotaDownloadDataEncoder : BaseMessageEncoder
 {
-    public FirmwareBinary Binary { set; get; }
+    public FirmwareBinary? Binary { set; get; }
     public int EntryId { set; get; }
     public int MtuSize { set; get; }
     public int Offset { set; get; }
 
     public bool IsLastFragment()
     {
-        var next = Binary.GetSegmentById(EntryId);
+        var next = Binary?.GetSegmentById(EntryId);
         return next == null || Offset + (long) MtuSize >= next.Size;
     }
         
     public override SppMessage Encode()
     {
-        var segment = Binary.GetSegmentById(EntryId);
+        var segment = Binary?.GetSegmentById(EntryId);
         if (segment == null)
         {
             goto RET_NULL;
