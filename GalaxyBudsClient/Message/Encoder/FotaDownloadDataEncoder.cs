@@ -52,7 +52,7 @@ public class FotaDownloadDataEncoder : BaseMessageEncoder
                 break;
             }
 
-            var binStream = Binary.OpenStream();
+            var binStream = Binary!.OpenStream();
             binStream.Seek(segment.Position + Offset, SeekOrigin.Begin);
             binStream.Read(bArr, i2, rawDataSize);
 
