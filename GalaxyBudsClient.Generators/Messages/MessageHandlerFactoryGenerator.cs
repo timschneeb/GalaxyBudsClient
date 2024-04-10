@@ -118,8 +118,8 @@ public class MessageHandlerFactoryGenerator : IIncrementalGenerator
         // CreateUninitialized[En|De]coder
         gen.AppendLines($"""
                         /// <summary>Constructs a new {type.ToLower()} class instance for a specific message.</summary>
-                        /// <param name="msgId">Message id of the message to be processed</param>>
-                        /// <returns>New instance of a {type.ToLower()} class deriving from <see cref="BaseMessage{type}" />.</returns>
+                        /// <param name="msgId">Message id of the message to be processed</param>
+                        /// <returns>New instance of a {type.ToLower()} class deriving from <see cref="GalaxyBudsClient.Message.{type}.BaseMessage{type}" />.</returns>
                         """);
         gen.EnterScope($"private static GalaxyBudsClient.Message.{type}.BaseMessage{type}? CreateUninitialized{type}(MsgIds msgId)");
         gen.EnterScope("return msgId switch");
@@ -135,8 +135,8 @@ public class MessageHandlerFactoryGenerator : IIncrementalGenerator
 
         // Available[En|De]coders
         gen.AppendLines($"""
-                         /// <summary>Enumerates all available {type.ToLower()}</summary>
-                         /// <returns>A list of all {type.ToLower()}s.</returns>
+                         /// <summary>Enumerates all available {type.ToLower()}s</summary>
+                         /// <returns>A list of all {type.ToLower()}s</returns>
                          """);
         gen.EnterScope($"public static MsgIds[] Available{type}s => ", "[");
         foreach (var handler in handlersToGenerate.Cast<HandlerToGenerate>())
@@ -160,7 +160,7 @@ public class MessageHandlerFactoryGenerator : IIncrementalGenerator
 
         /// <summary>
         /// Annotates classes that can handle {{type.ToLower()}} operations for a specific message.
-        /// The class should derive from <see cref="BaseMessage{{type}}" />.
+        /// The class should derive from <see cref="GalaxyBudsClient.Message.{{type}}.BaseMessage{{type}}" />.
         /// </summary>
         /// <param name="msgId">The message id of the message that the class can handle.</param>
         [global::System.AttributeUsage(global::System.AttributeTargets.Class)]
