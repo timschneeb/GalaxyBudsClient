@@ -6,6 +6,8 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Data;
 using Avalonia.Interactivity;
 using Avalonia.Layout;
+using Avalonia.Markup.Xaml.MarkupExtensions;
+using Avalonia.Markup.Xaml.MarkupExtensions.CompiledBindings;
 using Avalonia.Metadata;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Interface.Converters;
@@ -20,11 +22,12 @@ public class SettingsComboBoxItem : SettingsSymbolItem
         _comboBox = new FAComboBox
         {
             MinWidth = 150,
-            DisplayMemberBinding = new Binding(".")
+            DisplayMemberBinding = new CompiledBindingExtension(new CompiledBindingPathBuilder().TypeCast<object>().Build())
             { 
                 Converter = new EnumToDescriptionConverter()
             }
         };
+        
         _comboBox.SelectionChanged += OnSelectionChanged;
 
         _toolButton = new Button
