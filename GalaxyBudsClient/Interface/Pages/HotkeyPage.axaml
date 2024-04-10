@@ -95,7 +95,7 @@
 
             <controls:EmptyView Grid.Row="1"
                                 IsVisible="{Binding NoHotkeys}"
-                                Text="{DynamicResource hotkey_empty}"
+                                Text="{ext:Translate {x:Static i18N:Keys.HotkeyEmpty}}"
                                 Symbol="FlashOff" />
         </Grid>
     </Border>

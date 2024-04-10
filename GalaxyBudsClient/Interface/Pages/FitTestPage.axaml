@@ -5,6 +5,7 @@
              xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.FitTestPage"
              x:DataType="pages:FitTestPageViewModel"
@@ -22,7 +23,7 @@
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
             <Border Classes="Card" ClipToBounds="True">
 
-                <controls:EarbudControlUnit ButtonText="{DynamicResource mainpage_fit_test}"
+                <controls:EarbudControlUnit ButtonText="{ext:Translate {x:Static i18N:Keys.MainpageFitTest}}"
                                             WarningText="{Binding WarningText}"
                                             IsChecked="{Binding IsActive}">
                     <controls:EarbudControlUnit.LeftContent>

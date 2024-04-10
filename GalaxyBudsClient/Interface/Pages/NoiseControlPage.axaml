@@ -28,13 +28,13 @@
                 </Interaction.Behaviors>
 
                 <controls:SettingsSwitchItem
-                    Content="{DynamicResource as_header}"
-                    Description="{DynamicResource as_header_description}"
+                    Content="{ext:Translate {x:Static i18N:Keys.AsEnable}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.AsHeaderDescription}}"
                     Symbol="MicSparkle"
                     IsChecked="{Binding IsAmbientSoundEnabled}" />
 
-                <controls:SettingsSymbolItem Content="{DynamicResource nc_as_header}"
-                                             Description="{DynamicResource nc_as_custom}"
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.NcAsHeader}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.NcAsCustom}}"
                                              Symbol="Wrench"
                                              ActionSymbol="ChevronRight"
                                              IsEnabled="{Binding IsAmbientSoundEnabled}"
@@ -54,14 +54,14 @@
                 </Interaction.Behaviors>
 
                 <controls:SettingsSwitchItem
-                    Content="{DynamicResource anc}"
-                    Description="{DynamicResource nc_as_anc_description}"
+                    Content="{ext:Translate {x:Static i18N:Keys.Anc}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.NcAsAncDescription}}"
                     Symbol="HeadphonesSoundWave"
                     IsChecked="{Binding IsAncEnabled}" />
 
                 <controls:SettingsSwitchItem
-                    Content="{DynamicResource nc_anc_level}"
-                    Description="{DynamicResource nc_anc_level_description}"
+                    Content="{ext:Translate {x:Static i18N:Keys.NcAncLevel}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.NcAncLevelDescription}}"
                     Symbol="AddCircle"
                     IsEnabled="{Binding IsAncEnabled}"
                     IsChecked="{Binding IsAncLevelHigh}">
@@ -71,8 +71,8 @@
                 </controls:SettingsSwitchItem>
 
                 <controls:SettingsSwitchItem
-                    Content="{DynamicResource nc_anc_one}"
-                    Description="{DynamicResource nc_anc_one_description}"
+                    Content="{ext:Translate {x:Static i18N:Keys.NcAncOne}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.NcAncOneDescription}}"
                     Symbol="Accessibility"
                     IsEnabled="{Binding IsAncEnabled}"
                     IsChecked="{Binding IsAncWithOneEarbudAllowed}">
@@ -88,14 +88,14 @@
                 </Interaction.Behaviors>
 
                 <controls:SettingsSwitchItem
-                    Content="{DynamicResource nc_voicedetect}"
-                    Description="{DynamicResource nc_voicedetect_description}"
+                    Content="{ext:Translate {x:Static i18N:Keys.NcVoicedetect}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.NcVoicedetectDescription}}"
                     Symbol="PersonVoice"
                     IsChecked="{Binding IsVoiceDetectEnabled}" />
 
                 <controls:SettingsComboBoxItem
-                    Content="{DynamicResource nc_voicedetect_timeout}"
-                    Description="{DynamicResource nc_voicedetect_timeout_description}"
+                    Content="{ext:Translate {x:Static i18N:Keys.NcVoicedetectTimeout}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.NcVoicedetectTimeoutDescription}}"
                     Symbol="Timer"
                     IsEnabled="{Binding IsVoiceDetectEnabled}"
                     ItemsSource="{Binding Source={ext:VoiceDetectTimeoutsBindingSource}}"

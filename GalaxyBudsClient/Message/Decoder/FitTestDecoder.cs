@@ -19,7 +19,7 @@ public class FitTestDecoder : BaseMessageDecoder
     [CompiledEnum]
     public enum Result
     {
-        [LocalizableDescription(key: Keys.GftBad)]
+        [LocalizableDescription(Keys.GftBad)]
         Bad = 0,
         [LocalizableDescription(Keys.GftGood)]
         Good = 1,

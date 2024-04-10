@@ -7,6 +7,7 @@
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              xmlns:constants="clr-namespace:GalaxyBudsClient.Model.Constants"
              xmlns:bluetooth="clr-namespace:GalaxyBudsClient.Bluetooth;assembly=GalaxyBudsClient.Bluetooth"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              mc:Ignorable="d"
              Padding="0, 5, 0, 0"
              x:CompileBindings="True"
@@ -19,7 +20,7 @@
 
   <StackPanel MinWidth="400" Spacing="16">
         <StackPanel Spacing="12">
-            <TextBlock Text="{DynamicResource manualpair_title_dialog}"
+            <TextBlock Text="{ext:Translate {x:Static i18N:Keys.ManualpairTitleDialog}}"
                        TextWrapping="Wrap" />
             <ComboBox DisplayMemberBinding="{Binding Name, DataType=bluetooth:BluetoothDevice}"
                       ItemsSource="{Binding Devices}"
@@ -28,7 +29,7 @@
         </StackPanel>
 
         <StackPanel Spacing="10">
-            <TextBlock Text="{DynamicResource manualpair_model}"
+            <TextBlock Text="{ext:Translate {x:Static i18N:Keys.ManualpairModel}}"
                        TextWrapping="Wrap" Margin="0,0,0,5" />
             <ComboBox Name="Model"
                       DisplayMemberBinding="{Binding ., Converter={StaticResource ModelNameConverter}}"
@@ -37,8 +38,8 @@
                       HorizontalAlignment="Stretch" />
         </StackPanel>
         
-        <ui:InfoBar Title="{DynamicResource hint}"
-                    Message="{DynamicResource manualpair_note}"
+        <ui:InfoBar Title="{ext:Translate {x:Static i18N:Keys.Hint}}"
+                    Message="{ext:Translate {x:Static i18N:Keys.ManualpairNote}}"
                     IsOpen="True"
                     IsClosable="False"
                     Severity="Informational" />

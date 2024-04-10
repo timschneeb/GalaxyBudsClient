@@ -7,6 +7,7 @@
              xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
              xmlns:input="clr-namespace:FluentAvalonia.UI.Input;assembly=FluentAvalonia"
              xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="400"
              x:Class="GalaxyBudsClient.Interface.Pages.DevicesPage"
              x:DataType="pages:DevicesPageViewModel"
@@ -17,20 +18,20 @@
 
     <UserControl.Resources>
         <input:XamlUICommand x:Key="NewCommand"
-                             Label="{ext:Translate devices_new}"
+                             Label="{ext:Translate {x:Static i18N:Keys.DevicesNew}}"
                              IconSource="{StaticResource NewIcon}"
-                             Description="{ext:Translate devices_new_long}"
+                             Description="{ext:Translate {x:Static i18N:Keys.DevicesNewLong}}"
                              Command="{Binding DoNewCommand}" />
 
         <input:XamlUICommand x:Key="ConnectCommand"
-                             Label="{ext:Translate devices_select}"
+                             Label="{ext:Translate {x:Static i18N:Keys.DevicesSelect}}"
                              IconSource="{StaticResource LinkMultipleIcon}"
-                             Description="{ext:Translate devices_select}"
+                             Description="{ext:Translate {x:Static i18N:Keys.DevicesSelect}}"
                              Command="{Binding DoConnectCommand}" />
 
         <input:StandardUICommand x:Key="DeleteCommand" Kind="Delete"
-                                 Label="{ext:Translate devices_delete}"
-                                 Description="{ext:Translate devices_delete}"
+                                 Label="{ext:Translate {x:Static i18N:Keys.DevicesDelete}}"
+                                 Description="{ext:Translate {x:Static i18N:Keys.DevicesDelete}}"
                                  Command="{Binding DoDeleteCommand}" />
     </UserControl.Resources>
 

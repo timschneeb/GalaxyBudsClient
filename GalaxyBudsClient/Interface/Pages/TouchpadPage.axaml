@@ -9,6 +9,7 @@
              xmlns:collections="clr-namespace:System.Collections;assembly=System.Runtime"
              xmlns:specifications="clr-namespace:GalaxyBudsClient.Model.Specifications"
              xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.TouchpadPage"
              x:DataType="pages:TouchpadPageViewModel"
@@ -26,8 +27,8 @@
             
             <controls:SettingsGroup>
                 <controls:SettingsSwitchItem
-                    Content="{DynamicResource touchpad_lock}"
-                    Description="{DynamicResource touchpad_gestures_description}"
+                    Content="{ext:Translate {x:Static i18N:Keys.TouchpadLock}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.TouchpadGesturesDescription}}"
                     Symbol="LockClosed"
                     IsChecked="{Binding IsTouchpadLocked}" />
             </controls:SettingsGroup>
@@ -41,7 +42,7 @@
                 </controls:SettingsGroup.IsEnabled>
 
                 <controls:SettingsComboBoxItem
-                    Content="{DynamicResource touchpad_left_action}"
+                    Content="{ext:Translate {x:Static i18N:Keys.TouchpadLeftAction}}"
                     Description="{Binding LeftActionDescription}"
                     Symbol="ArrowStepInLeft"
                     DisplayMemberBinding="{Binding ., Converter={StaticResource EnumDescriptionConverter}, DataType=constants:TouchOptions}"
@@ -58,7 +59,7 @@
                 </controls:SettingsComboBoxItem>
 
                 <controls:SettingsComboBoxItem
-                    Content="{DynamicResource touchpad_right_action}"
+                    Content="{ext:Translate {x:Static i18N:Keys.TouchpadRightAction}}"
                     Description="{Binding RightActionDescription}"
                     Symbol="ArrowStepInRight"
                     DisplayMemberBinding="{Binding ., Converter={StaticResource EnumDescriptionConverter}, DataType=constants:TouchOptions}"
@@ -76,7 +77,7 @@
 
                 <controls:SettingsComboBoxItem
                     Content="{Binding LeftControlCycleModeLabel}"
-                    Description="{DynamicResource touchpad_noise_control_mode_desc}"
+                    Description="{ext:Translate {x:Static i18N:Keys.TouchpadNoiseControlModeDesc}}"
                     Symbol="ArrowRepeatAll"
                     IsEnabled="{Binding IsNoiseControlCycleModeEditable}"
                     ItemsSource="{Binding ., Source={ext:NoiseControlCycleModesBindingSource}}"
@@ -88,8 +89,8 @@
                 </controls:SettingsComboBoxItem>
                 
                 <controls:SettingsComboBoxItem
-                    Content="{DynamicResource touchpad_noise_control_mode_r}"
-                    Description="{DynamicResource touchpad_noise_control_mode_desc}"
+                    Content="{ext:Translate {x:Static i18N:Keys.TouchpadNoiseControlModeR}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.TouchpadNoiseControlModeDesc}}"
                     Symbol="ArrowRepeatAll"
                     IsEnabled="{Binding IsNoiseControlCycleModeRightEditable}"
                     ItemsSource="{Binding ., Source={ext:NoiseControlCycleModesBindingSource}}"
@@ -115,8 +116,8 @@
                 </Interaction.Behaviors>
 
                 <controls:SettingsSwitchItem
-                    Content="{DynamicResource touchpad_gesture_single}"
-                    Description="{DynamicResource touchpad_gesture_single_desc}"
+                    Content="{ext:Translate {x:Static i18N:Keys.TouchpadGestureSingle}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.TouchpadGestureSingleDesc}}"
                     Symbol="VideoPlayPause"
                     IsChecked="{Binding IsSingleTapGestureEnabled}">
                     <Interaction.Behaviors>
@@ -125,8 +126,8 @@
                 </controls:SettingsSwitchItem>
 
                 <controls:SettingsSwitchItem
-                    Content="{DynamicResource touchpad_gesture_double}"
-                    Description="{DynamicResource touchpad_gesture_double_desc}"
+                    Content="{ext:Translate {x:Static i18N:Keys.TouchpadGestureDouble}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.TouchpadGestureDoubleDesc}}"
                     Symbol="Next"
                     IsChecked="{Binding IsDoubleTapGestureEnabled}">
                     <Interaction.Behaviors>
@@ -135,8 +136,8 @@
                 </controls:SettingsSwitchItem>
 
                 <controls:SettingsSwitchItem
-                    Content="{DynamicResource touchpad_gesture_triple}"
-                    Description="{DynamicResource touchpad_gesture_triple_desc}"
+                    Content="{ext:Translate {x:Static i18N:Keys.TouchpadGestureTriple}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.TouchpadGestureTripleDesc}}"
                     Symbol="Previous"
                     IsChecked="{Binding IsTripleTapGestureEnabled}">
                     <Interaction.Behaviors>
@@ -146,8 +147,8 @@
                 </controls:SettingsSwitchItem>
                 
                 <controls:SettingsSwitchItem
-                    Content="{DynamicResource touchpad_gesture_hold}"
-                    Description="{DynamicResource touchpad_gesture_hold_desc}"
+                    Content="{ext:Translate {x:Static i18N:Keys.TouchpadGestureHold}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.TouchpadGestureHoldDesc}}"
                     Symbol="TapSingle"
                     IsChecked="{Binding IsHoldGestureEnabled}">
                     <Interaction.Behaviors>
@@ -156,8 +157,8 @@
                 </controls:SettingsSwitchItem>
 
                 <controls:SettingsSwitchItem
-                    Content="{DynamicResource touchpad_gesture_double_for_call}"
-                    Description="{DynamicResource touchpad_gesture_double_for_call_desc}"
+                    Content="{ext:Translate {x:Static i18N:Keys.TouchpadGestureDoubleForCall}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.TouchpadGestureDoubleForCallDesc}}"
                     Symbol="CallInbound"
                     IsChecked="{Binding IsDoubleTapGestureForCallsEnabled}">
                     <Interaction.Behaviors>
@@ -166,8 +167,8 @@
                 </controls:SettingsSwitchItem>
                 
                 <controls:SettingsSwitchItem
-                    Content="{DynamicResource touchpad_gesture_hold_for_call}"
-                    Description="{DynamicResource touchpad_gesture_hold_for_call_desc}"
+                    Content="{ext:Translate {x:Static i18N:Keys.TouchpadGestureHoldForCall}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.TouchpadGestureHoldForCallDesc}}"
                     Symbol="CallProhibited"
                     IsChecked="{Binding IsHoldGestureForCallsEnabled}">
                     <Interaction.Behaviors>
@@ -176,8 +177,8 @@
                 </controls:SettingsSwitchItem>
 
                 <controls:SettingsSwitchItem
-                    Content="{DynamicResource touchpad_double_tap_volume}"
-                    Description="{DynamicResource touchpad_double_tap_volume_description}"
+                    Content="{ext:Translate {x:Static i18N:Keys.TouchpadDoubleTapVolume}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.TouchpadDoubleTapVolumeDescription}}"
                     Symbol="TapDouble"
                     IsChecked="{Binding IsDoubleTapVolumeEnabled}">
                     <Interaction.Behaviors>

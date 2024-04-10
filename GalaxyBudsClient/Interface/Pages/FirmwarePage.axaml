@@ -9,6 +9,7 @@
              xmlns:firmware="clr-namespace:GalaxyBudsClient.Model.Firmware"
              xmlns:converters="clr-namespace:GalaxyBudsClient.Interface.Converters"
              xmlns:input="clr-namespace:FluentAvalonia.UI.Input;assembly=FluentAvalonia"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="400"
              x:Class="GalaxyBudsClient.Interface.Pages.FirmwarePage"
              x:DataType="pages:FirmwarePageViewModel"
@@ -104,14 +105,14 @@
 
                     <controls:EmptyView Grid.Row="1"
                                         IsVisible="{Binding NoResults}"
-                                        Text="{DynamicResource fw_select_no_results_short}"
+                                        Text="{ext:Translate {x:Static i18N:Keys.FwSelectNoResultsShort}}"
                                         Symbol="DocumentSplitHintOff" />
                 </Grid>
             </Border>
 
             <controls:SettingsGroup Grid.Row="2">
-                <controls:SettingsSwitchItem Content="{DynamicResource fw_select_downgrade}"
-                                             Description="{DynamicResource fw_select_downgrade_desc}"
+                <controls:SettingsSwitchItem Content="{ext:Translate {x:Static i18N:Keys.FwSelectDowngrade}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.FwSelectDowngradeDesc}}"
                                              Symbol="CubeArrowCurveDown"
                                              IsChecked="{Binding IsDowngradingAllowed}" />
             </controls:SettingsGroup>

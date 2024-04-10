@@ -5,6 +5,7 @@
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.AmbientCustomizePage"
              x:DataType="pages:AmbientCustomizePageViewModel"
@@ -22,7 +23,7 @@
             
             <controls:SettingsGroup>
                 <controls:SettingsSliderItem
-                    Content="{DynamicResource as_volume}"
+                    Content="{ext:Translate {x:Static i18N:Keys.AsVolume}}"
                     Description="{Binding AmbientSoundVolume, Converter={StaticResource AmbientStrengthConverter}}"
                     Symbol="Gauge"
                     IsEnabled="{Binding !IsAmbientCustomizationEnabled}"
@@ -35,8 +36,8 @@
                 </controls:SettingsSliderItem>
                 
                 <controls:SettingsSwitchItem
-                    Content="{DynamicResource as_extrahigh}"
-                    Description="{DynamicResource as_extrahigh_description}"
+                    Content="{ext:Translate {x:Static i18N:Keys.AsExtrahigh}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.AsExtrahighDescription}}"
                     Symbol="GaugeAdd"
                     IsChecked="{Binding IsAmbientExtraLoudEnabled}">
                     <Interaction.Behaviors>
@@ -45,8 +46,8 @@
                 </controls:SettingsSwitchItem>
 
                 <controls:SettingsSwitchItem
-                    Content="{DynamicResource as_voicefocus}"
-                    Description="{DynamicResource as_voicefocus_description}"
+                    Content="{ext:Translate {x:Static i18N:Keys.AsVoicefocus}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.AsVoicefocusDescription}}"
                     Symbol="PersonVoice"
                     IsChecked="{Binding IsAmbientVoiceFocusEnabled}">
                     <Interaction.Behaviors>
@@ -61,13 +62,13 @@
                 </Interaction.Behaviors>
 
                 <controls:SettingsSwitchItem
-                    Content="{DynamicResource nc_as_custom}"
-                    Description="{DynamicResource nc_as_custom_description}"
+                    Content="{ext:Translate {x:Static i18N:Keys.NcAsCustom}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.NcAsCustomDescription}}"
                     Symbol="MicSparkle"
                     IsChecked="{Binding IsAmbientCustomizationEnabled}" />
 
                 <controls:SettingsSliderItem
-                    Content="{DynamicResource nc_as_custom_volume_l}"
+                    Content="{ext:Translate {x:Static i18N:Keys.NcAsCustomVolumeL}}"
                     Description="{Binding AmbientSoundVolumeLeft, Converter={StaticResource AmbientCustomStrengthConverter}}"
                     Symbol="ArrowStepInLeft"
                     IsEnabled="{Binding IsAmbientCustomizationEnabled}"
@@ -79,7 +80,7 @@
                 </controls:SettingsSliderItem>
 
                 <controls:SettingsSliderItem
-                    Content="{DynamicResource nc_as_custom_volume_r}"
+                    Content="{ext:Translate {x:Static i18N:Keys.NcAsCustomVolumeR}}"
                     Description="{Binding AmbientSoundVolumeRight, Converter={StaticResource AmbientCustomStrengthConverter}}"
                     Symbol="ArrowStepInRight"
                     IsEnabled="{Binding IsAmbientCustomizationEnabled}"
@@ -91,7 +92,7 @@
                 </controls:SettingsSliderItem>
                 
                 <controls:SettingsSliderItem
-                    Content="{DynamicResource nc_as_custom_tone}"
+                    Content="{ext:Translate {x:Static i18N:Keys.NcAsCustomTone}}"
                     Description="{Binding AmbientSoundTone, Converter={StaticResource AmbientToneConverter}}"
                     Symbol="SoundSource"
                     IsEnabled="{Binding IsAmbientCustomizationEnabled}"

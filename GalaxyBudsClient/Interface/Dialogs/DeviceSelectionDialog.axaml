@@ -9,6 +9,7 @@
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              xmlns:input="clr-namespace:FluentAvalonia.UI.Input;assembly=FluentAvalonia"
              xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              mc:Ignorable="d"
              Padding="0, 5, 0, 0"
              x:CompileBindings="True"
@@ -66,30 +67,30 @@
 
                 <controls:EmptyView Margin="12,24"
                                     IsVisible="{Binding NoDevices}"
-                                    Text="{DynamicResource devsel_nodevices_title}"
+                                    Text="{ext:Translate {x:Static i18N:Keys.DevselNodevicesTitle}}"
                                     Symbol="Bluetooth" />
             </Grid>
         </Border>
 
         <controls:SettingsGroup IsVisible="{Binding CanUseAlternativeBackend}">
-            <controls:SettingsSwitchItem Content="{DynamicResource devsel_winrt_title}"
-                                         Description="{DynamicResource devsel_winrt}"
+            <controls:SettingsSwitchItem Content="{ext:Translate {x:Static i18N:Keys.DevselWinrtTitle}}"
+                                         Description="{ext:Translate {x:Static i18N:Keys.DevselWinrt}}"
                                          IsChecked="{Binding UseBluetoothWinRT, Source={x:Static utils:Settings.Instance}}"
                                          IsCheckedChanged="OnUseWinRtCheckedChanged" />
         </controls:SettingsGroup>
 
-        <controls:CustomInfoBar Title="{DynamicResource devsel_manual_pair_title}"
-                                Message="{DynamicResource devsel_manual_pair_description}"
+        <controls:CustomInfoBar Title="{ext:Translate {x:Static i18N:Keys.DevselManualPairTitle}}"
+                                Message="{ext:Translate {x:Static i18N:Keys.DevselManualPairDescription}}"
                                 IsOpen="True"
                                 IsClosable="False"
                                 Severity="Informational">
             <controls:CustomInfoBar.ActionButton>
                 <StackPanel Spacing="8" 
                             Orientation="Horizontal">
-                    <Button Content="{DynamicResource devsel_manual_pair}"
+                    <Button Content="{ext:Translate {x:Static i18N:Keys.DevselManualPair}}"
                             HorizontalAlignment="Right"
                             Click="OnManualConnectClicked" />
-                    <Button Content="{DynamicResource fw_select_refresh}"
+                    <Button Content="{ext:Translate {x:Static i18N:Keys.FwSelectRefresh}}"
                             HorizontalAlignment="Right"
                             Command="{Binding DoRefreshCommand}" />
                 </StackPanel>

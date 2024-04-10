@@ -5,6 +5,8 @@
              xmlns:dialogs="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Dialogs"
              xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
              xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              mc:Ignorable="d"
              Padding="0, 5, 0, 0"
              x:CompileBindings="True"
@@ -17,7 +19,7 @@
 
     <StackPanel MinWidth="400" Spacing="16">
         <StackPanel Spacing="12">
-            <TextBlock Text="{DynamicResource cact_action}" />
+            <TextBlock Text="{ext:Translate {x:Static i18N:Keys.CactAction}}" />
             <ComboBox HorizontalAlignment="Stretch"
                       DisplayMemberBinding="{Binding ., Converter={StaticResource EnumDescriptionConverter}}"
                       ItemsSource="{Binding ActionModeSource}"
@@ -25,7 +27,7 @@
         </StackPanel>
 
         <StackPanel Spacing="10" IsVisible="{Binding IsEventParameterEditable}">
-            <TextBlock Text="{DynamicResource cact_function_param}" />
+            <TextBlock Text="{ext:Translate {x:Static i18N:Keys.CactFunctionParam}}" />
             <ComboBox HorizontalAlignment="Stretch"
                       DisplayMemberBinding="{Binding ., Converter={StaticResource EnumDescriptionConverter}}"
                       ItemsSource="{Binding EventSource}"
@@ -33,7 +35,7 @@
         </StackPanel>
 
         <StackPanel Spacing="10" IsVisible="{Binding IsPathParameterEditable}">
-            <TextBlock Text="{DynamicResource cact_path_param}" />
+            <TextBlock Text="{ext:Translate {x:Static i18N:Keys.CactPathParam}}" />
             <Grid ColumnDefinitions="*,4,Auto">
                 <TextBox HorizontalAlignment="Stretch"
                          Text="{Binding PathParameter}" />
@@ -45,7 +47,7 @@
         </StackPanel>
 
         <StackPanel Spacing="10" IsVisible="{Binding IsHotkeyParameterEditable}">
-            <TextBlock Text="{DynamicResource cact_hotkey_param}" />
+            <TextBlock Text="{ext:Translate {x:Static i18N:Keys.CactHotkeyParam}}" />
             <Grid ColumnDefinitions="*,4,Auto">
                 <TextBox HorizontalAlignment="Stretch"
                          IsReadOnly="True"
@@ -57,7 +59,7 @@
             </Grid>
         </StackPanel>
 
-        <ui:InfoBar Title="{DynamicResource hint}"
+        <ui:InfoBar Title="{ext:Translate {x:Static i18N:Keys.Hint}}"
                     IsOpen="True"
                     IsClosable="False"
                     Severity="Informational"

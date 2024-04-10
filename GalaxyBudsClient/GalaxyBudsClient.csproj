@@ -50,7 +50,7 @@
     
     <!-- Resources -->
     <ItemGroup>
-        <AvaloniaResource Include="Resources\**"/>
+        <AvaloniaResource Include="Resources\**" />
         <AvaloniaResource Include="i18n\*"/>
 
         <Compile Update="**\*.axaml.cs">
@@ -63,8 +63,6 @@
         <AvaloniaXaml Remove="bin\**"/>
         <EmbeddedResource Remove="bin\**"/>
         <None Remove="bin\**"/>
-        <Compile Remove="Model\SettingsManager.cs" />
-        <Compile Remove="Model\Attributes\ObservableSettingAttribute.cs" />
     </ItemGroup>
     
     <!-- Dependencies -->

@@ -5,6 +5,7 @@
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.SystemPage"
              x:DataType="pages:SystemPageViewModel"
@@ -21,20 +22,20 @@
             </Interaction.Behaviors>
             
             <controls:SettingsGroup>
-                <controls:SettingsSymbolItem Content="{DynamicResource system_selftest}"
-                                             Description="{DynamicResource system_selftest_desc}"
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SystemSelftest}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.SystemSelftestDesc}}"
                                              Symbol="Beaker"
                                              IsClickEnabled="True"
                                              Click="OnSelfTestClicked" />
 
-                <controls:SettingsSymbolItem Content="{DynamicResource system_factory_reset}"
-                                             Description="{DynamicResource system_factory_reset_desc}"
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SystemFactoryReset}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.SystemFactoryResetDesc}}"
                                              Symbol="ArrowReset"
                                              IsClickEnabled="True"
                                              Click="OnFactoryResetClicked" />
 
-                <controls:SettingsSymbolItem Content="{DynamicResource system_pairing_mode}"
-                                             Description="{DynamicResource system_pairing_mode_desc}"
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SystemPairingMode}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.SystemPairingModeDesc}}"
                                              Symbol="LinkMultiple"
                                              IsClickEnabled="True"
                                              Click="OnPairingModeClicked">
@@ -43,8 +44,8 @@
                     </Interaction.Behaviors>
                 </controls:SettingsSymbolItem>
 
-                <controls:SettingsSymbolItem Content="{DynamicResource system_spatial}"
-                                             Description="{DynamicResource system_spatial_desc}"
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SystemSpatial}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.SystemSpatialDesc}}"
                                              Symbol="CubeRotate"
                                              IsClickEnabled="True"
                                              Click="OnSpatialSensorTestClicked">
@@ -53,8 +54,8 @@
                     </Interaction.Behaviors>
                 </controls:SettingsSymbolItem>
 
-                <controls:SettingsSymbolItem Content="{DynamicResource system_trace_core_dump}"
-                                             Description="{DynamicResource system_trace_core_dump_desc}"
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SystemTraceCoreDump}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.SystemTraceCoreDumpDesc}}"
                                              Symbol="Bug"
                                              IsClickEnabled="True"
                                              Click="OnTraceDumpDownloadClicked">
@@ -67,8 +68,8 @@
             <controls:SettingsGroup>
 
                 <controls:SettingsSymbolItem Name="Firmware"
-                                             Content="{DynamicResource system_flasher}"
-                                             Description="{DynamicResource system_flasher_desc}"
+                                             Content="{ext:Translate {x:Static i18N:Keys.SystemFlasher}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.SystemFlasherDesc}}"
                                              Symbol="ArrowDownload"
                                              ActionSymbol="ChevronRight"
                                              IsClickEnabled="True">
@@ -78,8 +79,8 @@
                 </controls:SettingsSymbolItem>
 
                 <controls:SettingsSymbolItem Name="SystemInfo"
-                                             Content="{DynamicResource system_info}"
-                                             Description="{DynamicResource system_info_desc}"
+                                             Content="{ext:Translate {x:Static i18N:Keys.SystemInfo}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.SystemInfoDesc}}"
                                              Symbol="Info"
                                              ActionSymbol="ChevronRight"
                                              IsClickEnabled="True" />

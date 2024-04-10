@@ -6,6 +6,7 @@
              xmlns:vm="using:GalaxyBudsClient.Interface.ViewModels"
              xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
              x:Class="GalaxyBudsClient.Interface.MainView"
              x:DataType="vm:MainViewViewModel"
@@ -25,7 +26,7 @@
                            IsBackEnabled="{Binding #FrameView.CanGoBack}">
             <Grid RowDefinitions="Auto,Auto,*">
 
-                <ui:InfoBar Title="{DynamicResource placement_disconnected}"
+                <ui:InfoBar Title="{ext:Translate {x:Static i18N:Keys.PlacementDisconnected}}"
                             IsClosable="False"
                             Severity="Warning"
                             Message="{Binding LastErrorMessage, Source={x:Static platform:BluetoothImpl.Instance}}"

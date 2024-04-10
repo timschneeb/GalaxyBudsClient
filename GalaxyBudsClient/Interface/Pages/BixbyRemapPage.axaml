@@ -8,6 +8,7 @@
              xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
              xmlns:constants="clr-namespace:GalaxyBudsClient.Model.Constants"
              xmlns:model="clr-namespace:GalaxyBudsClient.Model"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.BixbyRemapPage"
              x:DataType="pages:BixbyRemapPageViewModel"
@@ -24,23 +25,23 @@
             </Interaction.Behaviors>
             
             <controls:SettingsGroup>
-                <controls:SettingsSwitchItem Content="{DynamicResource bixby_remap_enable}"
-                                             Description="{DynamicResource bixby_remap_enable_desc}"
+                <controls:SettingsSwitchItem Content="{ext:Translate {x:Static i18N:Keys.BixbyRemapEnable}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.BixbyRemapEnableDesc}}"
                                              IsChecked="{Binding IsBixbyWakeUpEnabled}"
                                              Symbol="MicPulse"
                                              IsClickEnabled="True" />
 
                 <controls:SettingsComboBoxItem
-                    Content="{DynamicResource bixby_remap_lang}"
-                    Description="{DynamicResource bixby_remap_lang_desc}"
+                    Content="{ext:Translate {x:Static i18N:Keys.BixbyRemapLang}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.BixbyRemapLangDesc}}"
                     Symbol="LocalLanguage"
                     IsEnabled="{Binding IsBixbyWakeUpEnabled}"
                     ItemsSource="{Binding Source={ext:BixbyLanguagesBindingSource}}"
                     SelectedValue="{Binding BixbyLanguage}" />
 
                 <controls:SettingsComboBoxItem
-                    Content="{DynamicResource bixby_remap_action}"
-                    Description="{DynamicResource bixby_remap_action_desc}"
+                    Content="{ext:Translate {x:Static i18N:Keys.BixbyRemapAction}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.BixbyRemapActionDesc}}"
                     Symbol="Flash"
                     IsEnabled="{Binding IsBixbyWakeUpEnabled}"
                     ItemsSource="{Binding Source={ext:EventBindingSource}}"
@@ -51,11 +52,11 @@
                 </controls:SettingsComboBoxItem>
             </controls:SettingsGroup>
 
-            <controls:CustomInfoBar Title="{DynamicResource hint}"
+            <controls:CustomInfoBar Title="{ext:Translate {x:Static i18N:Keys.Hint}}"
                                     IsOpen="True"
                                     IsClosable="False"
                                     Severity="Informational"
-                                    Message="{DynamicResource bixby_remap_note}" />
+                                    Message="{ext:Translate {x:Static i18N:Keys.BixbyRemapNote}}" />
         </StackPanel>
     </ScrollViewer>
 </UserControl>

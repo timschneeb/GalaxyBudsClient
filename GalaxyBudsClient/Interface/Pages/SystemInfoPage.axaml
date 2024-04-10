@@ -5,6 +5,7 @@
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.SystemInfoPage"
              x:DataType="pages:SystemInfoPageViewModel"
@@ -21,19 +22,19 @@
             </Interaction.Behaviors>
             
             <controls:SettingsGroup>
-                <controls:SettingsSymbolItem Content="{DynamicResource system_hwver}"
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SystemHwver}}"
                                              Description="{Binding HwVersion}"
                                              IsClickEnabled="False" />
 
-                <controls:SettingsSymbolItem Content="{DynamicResource system_swver}"
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SystemSwver}}"
                                              Description="{Binding SwVersion}"
                                              IsClickEnabled="False" />
 
-                <controls:SettingsSymbolItem Content="{DynamicResource system_touchver}"
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SystemTouchver}}"
                                              Description="{Binding TouchSwVersion}"
                                              IsClickEnabled="False" />
 
-                <controls:SettingsSymbolItem Content="{DynamicResource system_protover}"
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SystemProtover}}"
                                              Description="{Binding ProtocolVersion}"
                                              IsClickEnabled="False" />
             </controls:SettingsGroup>
@@ -43,25 +44,25 @@
                     <ext:RequiresFeatureBehavior Feature="CradleSerialNumber" />
                 </Interaction.Behaviors>
                 
-                <controls:SettingsSymbolItem Content="{DynamicResource system_cradle_swver}"
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SystemCradleSwver}}"
                                              Description="{Binding CradleSwVersion}"
                                              IsClickEnabled="False" />
 
-                <controls:SettingsSymbolItem Content="{DynamicResource system_cradle_serial}"
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SystemCradleSerial}}"
                                              Description="{Binding CradleSerialNumber}"
                                              IsClickEnabled="False" />
             </controls:SettingsGroup>
 
             <controls:SettingsGroup>
-                <controls:SettingsSymbolItem Content="{DynamicResource system_btaddr}"
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SystemBtaddr}}"
                                              Description="{Binding BluetoothAddress}"
                                              IsClickEnabled="False" />
 
-                <controls:SettingsSymbolItem Content="{DynamicResource system_serial}"
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SystemSerial}}"
                                              Description="{Binding SerialNumber}"
                                              IsClickEnabled="False" />
 
-                <controls:SettingsSymbolItem Content="{DynamicResource system_build_info}"
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SystemBuildInfo}}"
                                              Description="{Binding BuildString}"
                                              IsClickEnabled="False">
                     <Interaction.Behaviors>
@@ -69,7 +70,7 @@
                     </Interaction.Behaviors>
                 </controls:SettingsSymbolItem>
 
-                <controls:SettingsSymbolItem Content="{DynamicResource system_sku}"
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SystemSku}}"
                                              Description="{Binding DeviceSku}"
                                              IsClickEnabled="False">
                     <Interaction.Behaviors>
@@ -77,7 +78,7 @@
                     </Interaction.Behaviors>
                 </controls:SettingsSymbolItem>
 
-                <controls:SettingsSymbolItem Content="{DynamicResource system_battery_type}"
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SystemBatteryType}}"
                                              Description="{Binding BatteryType}"
                                              IsClickEnabled="False">
                     <Interaction.Behaviors>

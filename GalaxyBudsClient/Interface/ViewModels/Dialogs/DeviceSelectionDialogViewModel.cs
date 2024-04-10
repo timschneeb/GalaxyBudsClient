@@ -7,11 +7,11 @@ using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
+using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
-using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Dialogs;

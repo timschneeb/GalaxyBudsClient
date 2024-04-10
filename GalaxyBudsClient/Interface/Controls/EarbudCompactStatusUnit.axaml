@@ -8,6 +8,7 @@
        xmlns:converters="clr-namespace:GalaxyBudsClient.Interface.Converters"
        xmlns:vm="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Controls"
        xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
+       xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
        x:DataType="vm:EarbudCompactStatusUnitViewModel">
 
     <Design.DataContext>
@@ -76,7 +77,7 @@
                 <ext:RequiresFeatureBehavior Feature="CaseBattery" />
             </Interaction.Behaviors>
 
-            <TextBlock Text="{DynamicResource case}"
+            <TextBlock Text="{ext:Translate {x:Static i18N:Keys.Case}}"
                        TextAlignment="Center"
                        Opacity="0.5"
                        IsVisible="{Binding CaseBattery, Converter={x:Static ObjectConverters.IsNotNull}}"
@@ -89,6 +90,6 @@
     </Grid>
 
     <controls:EmptyView IsVisible="{Binding !IsConnected, Source={x:Static platform:BluetoothImpl.Instance}}"
-                        Text="{DynamicResource connlost_disconnected}"
+                        Text="{ext:Translate {x:Static i18N:Keys.ConnlostDisconnected}}"
                         Symbol="WifiOff" />
 </Panel>

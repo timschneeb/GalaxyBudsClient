@@ -7,6 +7,7 @@
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              xmlns:constants="clr-namespace:GalaxyBudsClient.Model.Constants"
              xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.WelcomePage"
              x:DataType="pages:WelcomePageViewModel"
@@ -18,16 +19,16 @@
 
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
-            <controls:CustomInfoBar Title="{DynamicResource hint}"
-                                    Message="{DynamicResource welcome_textblock_p1}"
+            <controls:CustomInfoBar Title="{ext:Translate {x:Static i18N:Keys.Hint}}"
+                                    Message="{ext:Translate {x:Static i18N:Keys.WelcomeTextblockP1}}"
                                     IsOpen="True"
                                     IsClosable="False"
                                     Severity="Informational" />
 
             <controls:SettingsGroup>
                 <controls:SettingsComboBoxItem Name="AppTheme"
-                                               Content="{DynamicResource settings_darkmode}"
-                                               Description="{DynamicResource settings_darkmode_description}"
+                                               Content="{ext:Translate {x:Static i18N:Keys.SettingsDarkmode}}"
+                                               Description="{ext:Translate {x:Static i18N:Keys.SettingsDarkmodeDescription}}"
                                                IconSource="DarkTheme"
                                                ItemsSource="{Binding ., Source={ext:ThemesBindingSource}}"
                                                SelectedValue="{Binding Theme, Source={x:Static utils:Settings.Instance}}">
@@ -37,8 +38,8 @@
                 </controls:SettingsComboBoxItem>
 
                 <controls:SettingsComboBoxItem Name="AppLanguage"
-                                               Content="{DynamicResource settings_localization_disable}"
-                                               Description="{DynamicResource settings_localization_description}"
+                                               Content="{ext:Translate {x:Static i18N:Keys.SettingsLocalizationDisable}}"
+                                               Description="{ext:Translate {x:Static i18N:Keys.SettingsLocalizationDescription}}"
                                                Symbol="LocalLanguage"
                                                ItemsSource="{Binding Source={ext:LocalesBindingSource}}"
                                                SelectedValue="{Binding Locale, Source={x:Static utils:Settings.Instance}}" />
@@ -49,8 +50,8 @@
                     CornerRadius="4">
                 <controls:SettingsGroup>
                     <controls:SettingsSymbolItem Name="Register"
-                                                 Content="{DynamicResource welcome_register}"
-                                                 Description="{DynamicResource welcome_register_desc}"
+                                                 Content="{ext:Translate {x:Static i18N:Keys.WelcomeRegister}}"
+                                                 Description="{ext:Translate {x:Static i18N:Keys.WelcomeRegisterDesc}}"
                                                  Symbol="LinkMultiple"
                                                  ActionSymbol="ChevronRight"
                                                  IsClickEnabled="True"

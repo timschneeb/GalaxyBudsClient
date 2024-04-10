@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
+using System.Linq;
 using System.Windows.Input;
 using System.Xml;
-using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
-using Avalonia.Markup.Xaml.Styling;
+using System.Xml.Linq;
 using Avalonia.Media;
+using GalaxyBudsClient.Generated.I18N;
+using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using Serilog;
@@ -22,33 +21,34 @@ public static class Loc
     public static event Action? LanguageUpdated;
     public static string TranslatorModeFile => PlatformUtils.CombineDataPath("custom_language.xaml");
     public static ICommand ReloadCommand { get; } = new MiniCommand(_ => Load());
+    
+    private static readonly Dictionary<string, List<WeakReference<IObserver<string>>>> Observers = [];
+    private static readonly Dictionary<string, string> FallbackStrings = [];
+    private static Dictionary<string, string> _strings = [];
 
-    public static bool IsTranslatorModeEnabled()
+    static Loc()
     {
-        return File.Exists(TranslatorModeFile);
+        // Load English fallback strings
+        LoadInternalLanguage("en", ref FallbackStrings);
     }
-
-    public static string Resolve(string resName)
-    {
-        return ResolveOrDefault(resName) ?? $"<Missing resource: {resName}>";
-    }
-            
-    public static string? ResolveOrDefault(string resName)
-    {
-        var resource = Application.Current?.FindResource(resName);
-        if (resource is string str)
-        {
-            return str;
-        }
-
-        return null;
-    }
+    
+    public static string Resolve(string resName) => 
+        ResolveOrDefault(resName) ?? $"<Missing resource: {resName}>";
+    
+    public static string? ResolveOrDefault(string resName) =>
+        _strings.TryGetValue(resName, out var result) ? result : 
+        FallbackStrings.TryGetValue(resName, out var fallbackResult) ? fallbackResult : null;
             
     public static FlowDirection ResolveFlowDirection()
     {
-        return Application.Current?.FindResource("IsRightToLeft") as bool? == true ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+        var rtlSetting = ResolveOrDefault("IsRightToLeft");
+        return rtlSetting != null ? 
+            (string.Equals(rtlSetting, "True", StringComparison.OrdinalIgnoreCase) ? FlowDirection.RightToLeft : FlowDirection.LeftToRight) : 
+            FlowDirection.LeftToRight;
     }
-
+    
+    public static bool IsTranslatorModeEnabled => File.Exists(TranslatorModeFile);
+    
     public static void Load()
     {
         var lang = Settings.Instance.Locale.ToString();
@@ -57,104 +57,105 @@ public static class Loc
         
         switch (Settings.Instance.Locale)
         {
-            case Locales.custom when IsTranslatorModeEnabled():
-                SetLanguageResourceDictionary(TranslatorModeFile, true);
-                NotifyObservers();
+            case Locales.custom when IsTranslatorModeEnabled:
+                LoadExternalLanguage(TranslatorModeFile, ref _strings);
                 return;
-            case Locales.custom when !IsTranslatorModeEnabled():
+            case Locales.custom when !IsTranslatorModeEnabled:
                 lang = Locales.en.ToStringFast();
                 Settings.Instance.Locale = Locales.en;
                 break;
         }
 
-        SetLanguageResourceDictionary($"{Program.AvaresUrl}/i18n/{lang}.axaml", false);
+        LoadInternalLanguage(lang, ref _strings);
+    }
+
+    private static void LoadInternalLanguage(string langCode, ref Dictionary<string, string> targetDictionary)
+    {
+        var dict = LocalizationDictionaries.GetByLangCode(langCode);
+        if(dict == null)
+            Log.Error($"Localization: Internal language dictionary for '{langCode}' not found.");
+        else
+            targetDictionary = dict;
+        
+        LanguageUpdated?.Invoke();
+        NotifyObservers();
+    }
+    
+    private static void LoadExternalLanguage(string path, ref Dictionary<string, string> targetDictionary)
+    {
+        try
+        {
+            using var stream = File.OpenRead(path);
+            try
+            {
+                targetDictionary.Clear();
+                
+                using var reader = new StreamReader(stream);
+                var doc = XDocument.Parse(reader.ReadToEnd());
+                var nodes = doc.Root?.Nodes();
+                if(nodes == null)
+                    return;
+                
+                foreach (var node in nodes)
+                {
+                    if (node is not XElement element) 
+                        continue;
+
+                    var key = element.Attributes().FirstOrDefault(x => x.Name.LocalName == "Key");
+                    if (key == null)
+                        Log.Warning("Localization: x:Key attribute not found for XAML element of type {TypeName}", element.Name.LocalName);
+                    else
+                        targetDictionary.Add(key.Value, element.Value);
+                }
+            }
+            catch (XmlException ex)
+            {
+                ErrorDetected?.Invoke("XAML syntax error", 
+                    $"""
+                     An external resource dictionary contains syntax errors.
+                     Please check line {ex.LineNumber}, column {ex.LinePosition} in the affected XAML file.
+
+                     {path}
+                     """);
+                
+                Log.Error("Localization: XAML syntax error. Line {Line}, column {Position}", ex.LineNumber, ex.LinePosition);
+            }
+        }
+        catch (Exception e)
+        {
+            ErrorDetected?.Invoke(e.GetType().Name, e.Message);
+            Log.Error("Localization: {Ex} while loading language. Details: {Message}", e.GetType().FullName, e.Message);
+        }
+                
+        LanguageUpdated?.Invoke();
         NotifyObservers();
     }
 
     private static void NotifyObservers()
     {
-        foreach (var item in _observerList)
+        foreach (var observerForKey in Observers)
         {
-            var value = Resolve(item.Key);
-            foreach (var item1 in item.Value)
+            var resolvedString = Resolve(observerForKey.Key);
+            foreach (var weakReference in observerForKey.Value)
             {
-                if (item1.TryGetTarget(out var target))
+                if (weakReference.TryGetTarget(out var observer))
                 { 
-                    target.OnNext(value);
+                    observer.OnNext(resolvedString);
                 }
             }
         }
     }
-            
-    private static void SetLanguageResourceDictionary(string path, bool external)
-    {
-        try
-        {
-            var langDictId = ResourceIndexer.Find("Loc-");
-
-            if (langDictId == -1)
-            {
-                const string msg = "Neither custom language nor fallback resource found. " +
-                                   "Unwanted side-effects may occur.";
-                Log.Error("Localization: {Msg}", msg);
-                ErrorDetected?.Invoke("Unable to resolve resource", msg);
-            }
-            else
-            {
-                // Replace the current language dictionary with the new one  
-                if (external)
-                {
-                    using var stream = new MemoryStream(Encoding.UTF8.GetBytes(File.ReadAllText(path)));
-                    try
-                    {
-                        if (AvaloniaRuntimeXamlLoader.Load(stream) is ResourceDictionary dict)
-                        {
-                            if (Application.Current != null)
-                                Application.Current.Resources.MergedDictionaries[langDictId] = dict;
-                        }
-                        else
-                        {
-                            const string msg = "Custom language file is not a resource dictionary";
-                            ErrorDetected?.Invoke("XAML error", msg);
-                            Log.Error($"Localization: {msg}");
-                        }
-                    }
-                    catch (XmlException ex)
-                    {
-                        var msg = $"An external resource dictionary contains syntax errors.\n\nPlease check line {ex.LineNumber}, column {ex.LinePosition} in the affected XAML file.\n\n{path}";
-                        ErrorDetected?.Invoke("XAML syntax error", msg);
-                        Log.Error("Localization: XAML syntax error. Line {Line}, column {Position}", ex.LineNumber, ex.LinePosition);
-                    }
-                }
-                else
-                {
-                    if (Application.Current != null)
-                        Application.Current.Resources.MergedDictionaries[langDictId] =
-                            new ResourceInclude((Uri?)null) { Source = new Uri(path) };
-                }
-            }
-        }
-        catch (IOException e)
-        {
-            ErrorDetected?.Invoke("IO-Exception", e.Message);
-            Log.Error("Localization: IOError while loading locales. Details: {Message}", e.Message);
-        }
-                
-        LanguageUpdated?.Invoke();
-    }
-            
-    private static readonly Dictionary<string, List<WeakReference<IObserver<string>>>> _observerList = [];
-
+    
     public static IDisposable AddObserverForKey(string key, IObserver<string> observer)
     {
-        if (_observerList.TryGetValue(key, out var list))
+        if (Observers.TryGetValue(key, out var list))
         {
             list.Add(new WeakReference<IObserver<string>>(observer));
         }
         else
         {
             list = [new WeakReference<IObserver<string>>(observer)];
-            _observerList.Add(key, list);
+            Observers.Add(key, list);
         }
         var value = Resolve(key);
         observer.OnNext(value);

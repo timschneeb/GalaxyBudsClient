@@ -5,6 +5,7 @@
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.EqualizerPage"
              x:DataType="pages:EqualizerPageViewModel"
@@ -22,14 +23,14 @@
             
             <controls:SettingsGroup>
                 <controls:SettingsSwitchItem
-                    Content="{DynamicResource eq_enable}"
-                    Description="{DynamicResource eq_enable_description}"
+                    Content="{ext:Translate {x:Static i18N:Keys.EqEnable}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.EqEnableDescription}}"
                     Symbol="DeviceEq"
                     IsChecked="{Binding IsEqEnabled}" />
 
                 <controls:SettingsSliderItem
                     Name="EqPreset"
-                    Content="{DynamicResource eq_preset}"
+                    Content="{ext:Translate {x:Static i18N:Keys.EqPreset}}"
                     Description="{Binding EqPreset, Converter={StaticResource EqPresetConverter}}"
                     IconSource="{StaticResource IconPlaceholder}"
                     IsEnabled="{Binding IsEqEnabled}"
@@ -48,7 +49,7 @@
 
                 <controls:SettingsSliderItem
                     Name="StereoBalance"
-                    Content="{DynamicResource eq_stereo_balance}"
+                    Content="{ext:Translate {x:Static i18N:Keys.EqStereoBalance}}"
                     Description="{Binding StereoBalance, Converter={StaticResource StereoBalanceConverter}}"
                     Debounce="True"
                     Symbol="DualScreenSpan"

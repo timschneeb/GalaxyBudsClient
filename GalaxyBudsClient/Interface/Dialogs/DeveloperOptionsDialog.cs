@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Generated.I18N;
+using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Utils.Interface;
 using Symbol = FluentIcons.Common.Symbol;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;

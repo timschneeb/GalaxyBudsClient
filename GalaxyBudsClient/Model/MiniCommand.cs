@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Input;
 
-namespace GalaxyBudsClient.Utils.Interface;
+namespace GalaxyBudsClient.Model;
 
 public class MiniCommand(Action<object?> executeMethod) : ICommand
 {

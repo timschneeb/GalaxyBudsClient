@@ -3,6 +3,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:dialogs="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Dialogs"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              mc:Ignorable="d"
              Padding="0, 10"
              x:CompileBindings="True"
@@ -22,7 +24,7 @@
 
         <TextBlock TextWrapping="Wrap"
                    IsVisible="{OnPlatform Default=False, Windows=True}"
-                   Text="{DynamicResource hotrec_note}" />
+                   Text="{ext:Translate {x:Static i18N:Keys.HotrecNote}}" />
 
     </StackPanel>
 </UserControl>

@@ -52,7 +52,7 @@ public class App : Application
 
         AvaloniaXamlLoader.Load(this);
             
-        if (Loc.IsTranslatorModeEnabled())
+        if (Loc.IsTranslatorModeEnabled)
         {
             Settings.Instance.Locale = Locales.custom;
         }
@@ -87,7 +87,7 @@ public class App : Application
             };
         }
             
-        if (Loc.IsTranslatorModeEnabled())
+        if (Loc.IsTranslatorModeEnabled)
         {
             WindowLauncher.ShowTranslatorTools();
         }

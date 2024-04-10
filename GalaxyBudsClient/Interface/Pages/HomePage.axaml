@@ -5,6 +5,8 @@
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
              xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.HomePage"
              x:DataType="pages:HomePageViewModel"
@@ -24,37 +26,37 @@
 
             <controls:SettingsGroup>
                 <controls:SettingsSymbolItem Name="NoiseControl"
-                                             Content="{DynamicResource mainpage_noise}"
+                                             Content="{ext:Translate {x:Static i18N:Keys.MainpageNoise}}"
                                              Symbol="HeadphonesSoundWave"
                                              ActionSymbol="ChevronRight"
                                              IsClickEnabled="True" />
 
                 <controls:SettingsSymbolItem Name="Equalizer"
-                                             Content="{DynamicResource mainpage_equalizer}"
+                                             Content="{ext:Translate {x:Static i18N:Keys.MainpageEqualizer}}"
                                              Symbol="DeviceEq"
                                              ActionSymbol="ChevronRight"
                                              IsClickEnabled="True" />
 
                 <controls:SettingsSymbolItem Name="FindMyBuds"
-                                             Content="{DynamicResource mainpage_find_my_earbuds}"
+                                             Content="{ext:Translate {x:Static i18N:Keys.MainpageFindMyEarbuds}}"
                                              Symbol="LocationLive"
                                              ActionSymbol="ChevronRight"
                                              IsClickEnabled="True" />
 
                 <controls:SettingsSymbolItem Name="Touchpad"
-                                             Content="{DynamicResource mainpage_touchpad}"
+                                             Content="{ext:Translate {x:Static i18N:Keys.MainpageTouchpad}}"
                                              Symbol="HandDraw"
                                              ActionSymbol="ChevronRight"
                                              IsClickEnabled="True" />
 
                 <controls:SettingsSymbolItem Name="Advanced"
-                                             Content="{DynamicResource mainpage_advanced}"
+                                             Content="{ext:Translate {x:Static i18N:Keys.MainpageAdvanced}}"
                                              Symbol="WrenchScrewdriver"
                                              ActionSymbol="ChevronRight"
                                              IsClickEnabled="True" />
 
                 <controls:SettingsSymbolItem Name="System"
-                                             Content="{DynamicResource mainpage_system}"
+                                             Content="{ext:Translate {x:Static i18N:Keys.MainpageSystem}}"
                                              Symbol="Apps"
                                              ActionSymbol="ChevronRight"
                                              IsClickEnabled="True" />
