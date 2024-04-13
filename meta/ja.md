@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>34%</td><td>279 missing string(s)</td></tr>
+<tr><td>34%</td><td>280 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -16,6 +16,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>unknown</code></td><td>Unknown</td></tr>
 <tr><td><code>back</code></td><td>Back</td></tr>
 <tr><td><code>hint</code></td><td>Hint</td></tr>
+<tr><td><code>home</code></td><td>Home</td></tr>
 <tr><td><code>please_wait</code></td><td>Please wait...</td></tr>
 <tr><td><code>file_not_found</code></td><td>File not found</td></tr>
 <tr><td><code>anc</code></td><td>Active noise cancelling</td></tr>
