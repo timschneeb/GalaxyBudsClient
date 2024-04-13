@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
@@ -30,7 +31,7 @@ public class EarbudStatusUnitViewModel : ViewModelBase
         SppMessageReceiver.Instance.BaseUpdate += OnStatusUpdated;
         SppMessageReceiver.Instance.GetAllDataResponse += OnGetAllDataResponse;
         BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
-        LegacySettings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
+        Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
         Loc.LanguageUpdated += LoadFromCache;
         LoadFromCache();
     }
@@ -45,7 +46,7 @@ public class EarbudStatusUnitViewModel : ViewModelBase
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         // Recalculate temperature values when temperature unit changes
-        if (e.PropertyName == nameof(LegacySettings.Instance.TemperatureUnit))
+        if (e.PropertyName == nameof(Settings.Data.TemperatureUnit))
             LoadFromCache();
     }
     
@@ -77,7 +78,7 @@ public class EarbudStatusUnitViewModel : ViewModelBase
         if(e is { LeftThermistor: <= 0, RightThermistor: <= 0 })
             return;
         
-        var useF = LegacySettings.Instance.TemperatureUnit == TemperatureUnits.Fahrenheit;
+        var useF = Settings.Data.TemperatureUnit == TemperatureUnits.Fahrenheit;
         LeftVoltage = e.LeftAdcVCell;
         RightVoltage = e.RightAdcVCell;
         LeftCurrent = e.LeftAdcCurrent;

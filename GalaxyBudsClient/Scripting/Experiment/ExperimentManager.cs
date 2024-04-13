@@ -7,6 +7,7 @@ using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
 using Sentry;
 using Log = Serilog.Log;
+using Settings = GalaxyBudsClient.Model.Config.Settings;
 using Task = System.Threading.Tasks.Task;
 using Timer = System.Timers.Timer;
 
@@ -78,8 +79,7 @@ public class ExperimentManager
 
     private void ExcludeExperiment(long id)
     {
-        LegacySettings.Instance.Experiments.FinishedIds = 
-            LegacySettings.Instance.Experiments.FinishedIds.Add(id);
+        Settings.Data.ExperimentsFinishedIds.Add(id);
     }
         
     public static Environment CurrentEnvironment()

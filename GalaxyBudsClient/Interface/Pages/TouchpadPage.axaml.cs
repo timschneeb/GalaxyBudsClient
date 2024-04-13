@@ -18,12 +18,12 @@ public partial class TouchpadPage : BasePage<TouchpadPageViewModel>
     
     private void OnEditLeftCustomActionClicked(object? sender, RoutedEventArgs e)
     {
-        _ = RunEditDialogAsync(LegacySettings.Instance.CustomActionLeft).ContinueWith(task =>
+        _ = RunEditDialogAsync(Settings.Data.CustomActionLeft).ContinueWith(task =>
         {
             if (task is { Result: not null, IsCompletedSuccessfully: true })
             {
-                LegacySettings.Instance.CustomActionLeft.Action = task.Result.Action;
-                LegacySettings.Instance.CustomActionLeft.Parameter = task.Result.Parameter;
+                Settings.Data.CustomActionLeft.Action = task.Result.Action;
+                Settings.Data.CustomActionLeft.Parameter = task.Result.Parameter;
             }
             else if (task.Exception != null) 
                 SentrySdk.CaptureException(task.Exception);
@@ -32,19 +32,19 @@ public partial class TouchpadPage : BasePage<TouchpadPageViewModel>
     
     private void OnEditRightCustomActionClicked(object? sender, RoutedEventArgs e)
     {
-        _ = RunEditDialogAsync(LegacySettings.Instance.CustomActionRight).ContinueWith(task =>
+        _ = RunEditDialogAsync(Settings.Data.CustomActionRight).ContinueWith(task =>
         {
             if (task is { Result: not null, IsCompletedSuccessfully: true })
             {
-                LegacySettings.Instance.CustomActionRight.Action = task.Result.Action;
-                LegacySettings.Instance.CustomActionRight.Parameter = task.Result.Parameter;
+                Settings.Data.CustomActionRight.Action = task.Result.Action;
+                Settings.Data.CustomActionRight.Parameter = task.Result.Parameter;
             }
             else if (task.Exception != null) 
                 SentrySdk.CaptureException(task.Exception);
         });
     }
     
-    private static async Task<CustomAction?> RunEditDialogAsync(ICustomAction? storedAction)
+    private static async Task<CustomAction?> RunEditDialogAsync(TouchAction? storedAction)
     {
         var action = storedAction != null ? new CustomAction(storedAction.Action, storedAction.Parameter) : null;
         return await TouchActionEditorDialog.OpenEditDialogAsync(action);

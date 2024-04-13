@@ -4,6 +4,7 @@ using System.Linq;
 using Avalonia.Controls;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Pages;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
@@ -16,14 +17,12 @@ public class HotkeyPageViewModel : SubPageViewModelBase
 {
     public override Control CreateView() => new HotkeyPage();
     public override string TitleKey => Generated.I18N.Keys.HotkeyHeader;
-    // ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
-    public ObservableCollection<Hotkey> Hotkeys { get; } = new(LegacySettings.Instance.Hotkeys ?? Array.Empty<Hotkey>());
     [Reactive] public bool NoHotkeys { private set; get; }
 
     public HotkeyPageViewModel()
     {
-        NoHotkeys = !Hotkeys.Any();
-        Hotkeys.CollectionChanged += (_, _) => NoHotkeys = !Hotkeys.Any();
+        NoHotkeys = !Settings.Data.Hotkeys.Any();
+        Settings.HotkeyCollectionChanged += (_, _) => NoHotkeys = !Settings.Data.Hotkeys.Any();
     }
     
     public async void DoNewCommand()
@@ -32,13 +31,13 @@ public class HotkeyPageViewModel : SubPageViewModelBase
         if (result is null) 
             return;
         
-        Hotkeys.Add(result);
+        Settings.Data.Hotkeys.Add(result);
         SaveChanges();
             
         // Implicitly enable tray icon if a global hotkey is added
         if (PlatformUtils.SupportsTrayIcon)
         {
-            LegacySettings.Instance.MinimizeToTray = true;
+            Settings.Data.MinimizeToTray = true;
         }
     }
     
@@ -47,7 +46,7 @@ public class HotkeyPageViewModel : SubPageViewModelBase
         if (param is not Hotkey hotkey)
             return;
         
-        var index = Hotkeys.IndexOf(hotkey);
+        var index = Settings.Data.Hotkeys.IndexOf(hotkey);
         if (index < 0)
         {
             Log.Debug("HotkeyPage.Edit: Cannot find hotkey in configuration");
@@ -58,7 +57,7 @@ public class HotkeyPageViewModel : SubPageViewModelBase
         if (result is null)
             return;
         
-        Hotkeys[index] = result;
+        Settings.Data.Hotkeys[index] = result;
         SaveChanges();
     }
     
@@ -67,13 +66,12 @@ public class HotkeyPageViewModel : SubPageViewModelBase
         if (param is not Hotkey hotkey)
             return;
 
-        Hotkeys.Remove(hotkey);
+        Settings.Data.Hotkeys.Remove(hotkey);
         SaveChanges();
     }
 
-    private void SaveChanges()
+    private static void SaveChanges()
     {
-        LegacySettings.Instance.Hotkeys = Hotkeys.ToArray();
         HotkeyReceiver.Instance.Update();
     }
 }

@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
 using Newtonsoft.Json;
@@ -130,6 +131,6 @@ public static class ExperimentRequestFilters
         
     public static bool IsNotDone(ExperimentRequest item)
     {
-        return !(LegacySettings.Instance.Experiments.FinishedIds?.ToList()?.Contains(item.Id) ?? false);
+        return !Settings.Data.ExperimentsFinishedIds.ToList().Contains(item.Id);
     }
 }

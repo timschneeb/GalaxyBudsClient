@@ -7,6 +7,7 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Threading;
 using GalaxyBudsClient.Interface.StyledWindow;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
@@ -24,13 +25,13 @@ public partial class BudsPopup : Window
     {
         InitializeComponent();
 
-        LegacySettings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
+        Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
         _timer.Elapsed += (_, _) => Dispatcher.UIThread.Post(Hide, DispatcherPriority.Render);
     }
     
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if(e.PropertyName is nameof(LegacySettings.Instance.Theme) or nameof(LegacySettings.Instance.BlurStrength))
+        if(e.PropertyName is nameof(Settings.Data.Theme) or nameof(Settings.Data.BlurStrength))
         {
             RequestedThemeVariant = IStyledWindow.GetThemeVariant();
         }
@@ -79,7 +80,7 @@ public partial class BudsPopup : Window
         Header.Content = BluetoothImpl.Instance.DeviceName;
 
         /* Header */
-        if (LegacySettings.Instance.Popup.Compact)
+        if (Settings.Data.PopupCompact)
         {
             MaxHeight = Height = 205 - 35;
             Grid.RowDefinitions[0].Height = new GridLength(0);
@@ -96,7 +97,7 @@ public partial class BudsPopup : Window
         
         var padding = (int)(20 * scaling);
 
-        Position = LegacySettings.Instance.Popup.Placement switch
+        Position = Settings.Data.PopupPlacement switch
         {
             PopupPlacement.TopLeft => new PixelPoint(workArea.X + padding, workArea.Y + padding),
             PopupPlacement.TopCenter => new PixelPoint(

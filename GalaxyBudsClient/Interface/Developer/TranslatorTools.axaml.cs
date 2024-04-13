@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using FluentAvalonia.UI.Controls;
+using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface;
 using Symbol = FluentIcons.Common.Symbol;

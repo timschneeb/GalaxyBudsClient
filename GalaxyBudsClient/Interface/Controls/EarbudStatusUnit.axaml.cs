@@ -1,6 +1,7 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Input;
 using GalaxyBudsClient.Interface.ViewModels.Controls;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
 
@@ -16,7 +17,7 @@ public partial class EarbudStatusUnit : Panel
         
     private void OnTemperaturePointerPressed(object? sender, PointerPressedEventArgs e)
     {
-        LegacySettings.Instance.TemperatureUnit = LegacySettings.Instance.TemperatureUnit == TemperatureUnits.Celsius
+        Settings.Data.TemperatureUnit = Settings.Data.TemperatureUnit == TemperatureUnits.Celsius
             ? TemperatureUnits.Fahrenheit : TemperatureUnits.Celsius;
     }
 }

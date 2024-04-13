@@ -4,7 +4,7 @@ using System.Linq;
 using Config.Net;
 using Serilog;
 
-namespace GalaxyBudsClient.Model.Config;
+namespace GalaxyBudsClient.Model.Config.Legacy;
 
 public class ConfigArrayParser<T> : ITypeParser
 {

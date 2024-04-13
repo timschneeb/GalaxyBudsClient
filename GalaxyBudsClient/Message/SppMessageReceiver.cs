@@ -2,6 +2,7 @@
 using Avalonia.Threading;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
 using Serilog;
@@ -93,7 +94,7 @@ public class SppMessageReceiver
                 CradleSerialNumberResponse?.Invoke(this, p);
                 break;
             case ExtendedStatusUpdateDecoder p:
-                LegacySettings.Instance.DeviceLegacy.DeviceColor = p.DeviceColor;
+                // TODO LegacySettings.Instance.DeviceLegacy.DeviceColor = p.DeviceColor;
                 BaseUpdate?.Invoke(this, p);
                 ExtendedStatusUpdate?.Invoke(this, p);
                 break;
@@ -126,7 +127,7 @@ public class SppMessageReceiver
                 if (p.ResultCode == 1)
                 {
                     Log.Debug("SppMessageHandler: Voice wakeup event received");
-                    EventDispatcher.Instance.Dispatch(LegacySettings.Instance.BixbyRemapEvent);
+                    EventDispatcher.Instance.Dispatch(Settings.Data.BixbyRemapEvent);
                 }
                 break;
         }

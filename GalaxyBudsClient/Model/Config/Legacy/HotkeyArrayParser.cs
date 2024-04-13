@@ -5,7 +5,7 @@ using GalaxyBudsClient.Model.Hotkeys;
 using Newtonsoft.Json;
 using Serilog;
 
-namespace GalaxyBudsClient.Model.Config;
+namespace GalaxyBudsClient.Model.Config.Legacy;
 
 public class HotkeyArrayParser : ITypeParser
 {

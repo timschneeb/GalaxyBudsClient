@@ -4,6 +4,7 @@ using System.ComponentModel;
 using Avalonia.Controls;
 using Avalonia.Media;
 using FluentAvalonia.UI.Windowing;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Utils;
 
 namespace GalaxyBudsClient.Interface.StyledWindow;
@@ -12,7 +13,7 @@ public class StyledAppWindow : AppWindow, IStyledWindow
 {
     protected StyledAppWindow()
     {
-        LegacySettings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
+        Settings.Data.PropertyChanged += OnMainSettingsPropertyChanged;
     }
 
     public IReadOnlyList<WindowTransparencyLevel> DefaultTransparencyLevelHint =>
@@ -34,7 +35,7 @@ public class StyledAppWindow : AppWindow, IStyledWindow
     
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if(e.PropertyName is nameof(LegacySettings.Instance.Theme) or nameof(LegacySettings.Instance.BlurStrength))
+        if(e.PropertyName is nameof(Settings.Data.Theme) or nameof(Settings.Data.BlurStrength))
         {
             (this as IStyledWindow).ApplyTheme(this);
         }

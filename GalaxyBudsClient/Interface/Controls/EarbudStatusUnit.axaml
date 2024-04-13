@@ -10,6 +10,7 @@
        xmlns:vm="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Controls"
        xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
        xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
+       xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
        x:DataType="vm:EarbudStatusUnitViewModel">
 
     <Design.DataContext>
@@ -74,7 +75,7 @@
                     <MultiBinding StringFormat="{}{0:f2}°{1}">
                         <Binding Path="LeftTemperature" />
                         <Binding Path="TemperatureUnit"
-                                 Source="{x:Static utils:LegacySettings.Instance}"
+                                 Source="{x:Static config:Settings.Data}"
                                  Converter="{StaticResource EnumDescriptionConverter}" />
                     </MultiBinding>
                 </TextBlock.Text>
@@ -158,7 +159,7 @@
                     <MultiBinding StringFormat="{}{0:f2}°{1}">
                         <Binding Path="RightTemperature" />
                         <Binding Path="TemperatureUnit"
-                                 Source="{x:Static utils:LegacySettings.Instance}"
+                                 Source="{x:Static config:Settings.Data}"
                                  Converter="{StaticResource EnumDescriptionConverter}" />
                     </MultiBinding>
                 </TextBlock.Text>

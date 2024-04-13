@@ -10,6 +10,7 @@ using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Scripting;
@@ -307,7 +308,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         LegacySettings.Instance.DeviceLegacy.Model = Models.NULL;
         LegacySettings.Instance.DeviceLegacy.MacAddress = string.Empty;
         LegacySettings.Instance.DeviceLegacy.Name = string.Empty;
-        LegacySettings.Instance.DeviceLegacy.DeviceColor = null;
+        // TODO LegacySettings.Instance.DeviceLegacy.DeviceColor = null;
         DeviceMessageCache.Instance.Clear();
         // Don't wait for this to complete as it may confuse users if the menu option waits until connect timed out
         _ = DisconnectAsync();

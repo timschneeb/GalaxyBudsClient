@@ -2,9 +2,9 @@ using System.ComponentModel;
 using Avalonia.Controls;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI.Fody.Helpers;
 
@@ -24,7 +24,7 @@ public class EarbudCompactStatusUnitViewModel : ViewModelBase
     {
         SppMessageReceiver.Instance.BaseUpdate += OnStatusUpdated;
         BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
-        LegacySettings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
+        Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
         Loc.LanguageUpdated += LoadFromCache;
         LoadFromCache();
     }
@@ -39,7 +39,7 @@ public class EarbudCompactStatusUnitViewModel : ViewModelBase
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         // Recalculate temperature values when temperature unit changes
-        if (e.PropertyName == nameof(LegacySettings.Instance.TemperatureUnit))
+        if (e.PropertyName == nameof(Settings.Data.TemperatureUnit))
             LoadFromCache();
     }
     

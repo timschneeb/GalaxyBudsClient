@@ -9,10 +9,12 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media;
 using Avalonia.Threading;
 using FluentAvalonia.Styling;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Config;
+using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Scripting;
@@ -21,6 +23,7 @@ using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface;
 using Serilog;
 using Application = Avalonia.Application;
+using Colors = GalaxyBudsClient.Model.Constants.Colors;
 using MainWindow = GalaxyBudsClient.Interface.MainWindow;
 
 namespace GalaxyBudsClient;
@@ -54,7 +57,7 @@ public class App : Application
             
         if (Loc.IsTranslatorModeEnabled)
         {
-            LegacySettings.Instance.Locale = Locales.custom;
+            Settings.Data.Locale = Locales.custom;
         }
             
         Dispatcher.UIThread.Post(() =>
@@ -69,7 +72,7 @@ public class App : Application
         ExperimentManager.Init();
         ScriptManager.Instance.RegisterUserHooks();
         
-        LegacySettings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
+        Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
         
         Log.Information("Translator mode file location: {File}", Loc.TranslatorModeFile);
     }
@@ -81,10 +84,6 @@ public class App : Application
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.MainWindow = MainWindow.Instance;
-            desktop.Exit += (_, _) =>
-            {
-                LegacySettings.Instance.FirstLaunch = false;
-            };
         }
             
         if (Loc.IsTranslatorModeEnabled)
@@ -97,21 +96,35 @@ public class App : Application
     
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if(e.PropertyName is nameof(LegacySettings.Instance.Theme) or nameof(LegacySettings.Instance.AccentColor))
+        switch (e.PropertyName)
         {
-            LoadThemeProperties();
+            case nameof(Settings.Data.Theme) or nameof(Settings.Data.AccentColor):
+                LoadThemeProperties();
+                break;
+            case nameof(Settings.Data.Locale):
+                Loc.Load();
+                break;
+            case nameof(Settings.Data.DynamicTrayIconMode):
+            {
+                var cache = DeviceMessageCache.Instance.BasicStatusUpdate;
+                if (Settings.Data.DynamicTrayIconMode != DynamicTrayIconModes.Disabled && BluetoothImpl.Instance.IsConnected && cache != null)
+                    WindowIconRenderer.UpdateDynamicIcon(cache);
+                else
+                    WindowIconRenderer.ResetIconToDefault();
+                break;
+            }
         }
     }
 
     private void LoadThemeProperties()
     {
-        FluentTheme.PreferSystemTheme = LegacySettings.Instance.Theme == Themes.System;
-        var color = LegacySettings.Instance.AccentColor;
-        if (color.A == 0)
+        FluentTheme.PreferSystemTheme = Settings.Data.Theme == Themes.System;
+        var color = Settings.Data.AccentColor;
+        if(Color.FromUInt32(color).A == 0)
         {
-            color = LegacySettings.Instance.AccentColor = AccentColorParser.DefaultColor;
+            color = Settings.Data.AccentColor = Avalonia.Media.Colors.Orange.ToUInt32();
         }
-        FluentTheme.CustomAccentColor = color;
+        FluentTheme.CustomAccentColor = Color.FromUInt32(color);
     }
         
     private void TrayIcon_OnClicked(object? sender, EventArgs e)

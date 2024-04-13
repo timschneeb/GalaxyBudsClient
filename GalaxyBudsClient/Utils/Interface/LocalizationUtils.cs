@@ -8,6 +8,7 @@ using System.Xml.Linq;
 using Avalonia.Media;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using Serilog;
@@ -51,18 +52,18 @@ public static class Loc
     
     public static void Load()
     {
-        var lang = LegacySettings.Instance.Locale.ToString();
+        var lang = Settings.Data.Locale.ToString();
         if (lang.EndsWith('_'))
             lang = lang.TrimEnd('_');
         
-        switch (LegacySettings.Instance.Locale)
+        switch (Settings.Data.Locale)
         {
             case Locales.custom when IsTranslatorModeEnabled:
                 LoadExternalLanguage(TranslatorModeFile, ref _strings);
                 return;
             case Locales.custom when !IsTranslatorModeEnabled:
                 lang = Locales.en.ToStringFast();
-                LegacySettings.Instance.Locale = Locales.en;
+                Settings.Data.Locale = Locales.en;
                 break;
         }
 

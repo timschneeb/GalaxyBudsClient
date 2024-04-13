@@ -8,6 +8,7 @@
              xmlns:constants="clr-namespace:GalaxyBudsClient.Model.Constants"
              xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
              xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
+             xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.WelcomePage"
              x:DataType="pages:WelcomePageViewModel"
@@ -31,7 +32,7 @@
                                                Description="{ext:Translate {x:Static i18N:Keys.SettingsDarkmodeDescription}}"
                                                IconSource="DarkTheme"
                                                ItemsSource="{Binding ., Source={ext:ThemesBindingSource}}"
-                                               SelectedValue="{Binding Theme, Source={x:Static utils:LegacySettings.Instance}}">
+                                               SelectedValue="{Binding Theme, Source={x:Static config:Settings.Data}}">
                     <Interaction.Behaviors>
                         <ext:LocalizationAwareComboBoxBehavior></ext:LocalizationAwareComboBoxBehavior>
                     </Interaction.Behaviors>
@@ -42,7 +43,7 @@
                                                Description="{ext:Translate {x:Static i18N:Keys.SettingsLocalizationDescription}}"
                                                Symbol="LocalLanguage"
                                                ItemsSource="{Binding Source={ext:LocalesBindingSource}}"
-                                               SelectedValue="{Binding Locale, Source={x:Static utils:LegacySettings.Instance}}" />
+                                               SelectedValue="{Binding Locale, Source={x:Static config:Settings.Data}}" />
             </controls:SettingsGroup>
 
             <Border BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"

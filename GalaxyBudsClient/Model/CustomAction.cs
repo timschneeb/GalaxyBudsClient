@@ -9,26 +9,26 @@ using Serilog;
 
 namespace GalaxyBudsClient.Model;
 
-public class CustomAction(CustomAction.Actions action, string parameter = "")
+[CompiledEnum]
+public enum CustomActions
 {
-    [CompiledEnum]
-    public enum Actions
-    {
-        [LocalizableDescription(Keys.TouchoptionCustomTriggerEvent)]
-        Event,
-        [LocalizableDescription(Keys.TouchoptionCustomTriggerHotkey)]
-        TriggerHotkey,
-        [LocalizableDescription(Keys.TouchoptionCustomExternalApp)]
-        RunExternalProgram
-    }
+    [LocalizableDescription(Keys.TouchoptionCustomTriggerEvent)]
+    Event,
+    [LocalizableDescription(Keys.TouchoptionCustomTriggerHotkey)]
+    TriggerHotkey,
+    [LocalizableDescription(Keys.TouchoptionCustomExternalApp)]
+    RunExternalProgram
+}
 
-    public readonly Actions Action = action;
+public class CustomAction(CustomActions action, string parameter = "")
+{
+    public readonly CustomActions Action = action;
 
     public readonly string Parameter = parameter;
 
     public Event Event => EventExtensions.TryParse(Parameter, out var value) ? value : Event.None;
 
-    public CustomAction(Event @event) : this(Actions.Event, @event.ToString())
+    public CustomAction(Event @event) : this(CustomActions.Event, @event.ToString())
     {
     }
         
@@ -36,11 +36,11 @@ public class CustomAction(CustomAction.Actions action, string parameter = "")
     {
         switch (Action)
         {
-            case Actions.Event:
+            case CustomActions.Event:
                 return Event.GetLocalizedDescription();
-            case Actions.RunExternalProgram:
+            case CustomActions.RunExternalProgram:
                 return $"{Path.GetFileName(Parameter)}";
-            case Actions.TriggerHotkey:
+            case CustomActions.TriggerHotkey:
                 try
                 {
                     return string.Join('+', Parameter.Split(',').Select(Enum.Parse<Key>));

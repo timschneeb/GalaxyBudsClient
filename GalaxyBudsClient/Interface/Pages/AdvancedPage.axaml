@@ -8,6 +8,7 @@
              xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
              xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
              xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
+             xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.AdvancedPage"
              x:DataType="pages:AdvancedPageViewModel"
@@ -27,7 +28,7 @@
                 
                 <controls:SettingsSwitchItem Content="{ext:Translate {x:Static i18N:Keys.AdvResumePlayback}}"
                                              Description="{ext:Translate {x:Static i18N:Keys.AdvResumePlaybackDesc}}"
-                                             IsChecked="{Binding ResumePlaybackOnSensor, Source={x:Static utils:LegacySettings.Instance}}"
+                                             IsChecked="{Binding ResumePlaybackOnSensor, Source={x:Static config:Settings.Data}}"
                                              Symbol="FlashPlay"
                                              IsClickEnabled="True" />
 

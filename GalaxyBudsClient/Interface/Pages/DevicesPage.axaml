@@ -54,10 +54,10 @@
             </ui:CommandBar>
             
             <ListBox Grid.Row="1"
-                     ItemsSource="{Binding Devices}"
+                     ItemsSource="{Binding Devices, Source={x:Static config:Settings.Data}}"
                      Name="DeviceList">
                 <ListBox.ItemTemplate>
-                    <DataTemplate x:DataType="config:IDevice">
+                    <DataTemplate x:DataType="config:Device">
                         <Border Background="Transparent">
                             <Panel>
                                 <StackPanel Spacing="4" Margin="4 10">

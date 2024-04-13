@@ -7,6 +7,7 @@
 
     <converters:EnumToDescriptionConverter x:Key="EnumDescriptionConverter" />
     <converters:ModelNameConverter x:Key="ModelNameConverter" />
+    <converters:ColorUintConverter x:Key="ColorUintConverter" />
     <converters:EqPresetConverter x:Key="EqPresetConverter" />
     <converters:StereoBalanceConverter x:Key="StereoBalanceConverter" />
     <converters:AmbientCustomStrengthConverter x:Key="AmbientCustomStrengthConverter" />

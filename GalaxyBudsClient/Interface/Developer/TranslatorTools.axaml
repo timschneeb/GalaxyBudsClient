@@ -7,6 +7,7 @@
         xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
         xmlns:dynamicLocalization="clr-namespace:GalaxyBudsClient.Utils.Interface"
         xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
+        xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
         mc:Ignorable="d" d:DesignWidth="463" d:DesignHeight="380"
         x:Class="GalaxyBudsClient.Interface.Developer.TranslatorTools"
         Height="390" Width="460" MaxWidth="460"
@@ -33,7 +34,7 @@
                     
                     <ComboBox Grid.Column="1" Name="Locales"
                               HorizontalAlignment="Stretch"
-                              SelectedItem="{Binding Locale, Source={x:Static utils:LegacySettings.Instance}}"
+                              SelectedItem="{Binding Locale, Source={x:Static config:Settings.Data}}"
                               ItemsSource="{Binding ., Source={ext:LocalesBindingSource}}"
                               Margin="0,0,5,0" />
                     

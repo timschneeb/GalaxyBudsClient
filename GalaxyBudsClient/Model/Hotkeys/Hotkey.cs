@@ -6,9 +6,9 @@ using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Model.Hotkeys;
 
-public record Hotkey : ReactiveRecord
+public class Hotkey : ReactiveObject
 {
-    [Reactive] public IEnumerable<ModifierKeys> Modifier { set; get; } = ArraySegment<ModifierKeys>.Empty;
+    [Reactive] public IEnumerable<ModifierKeys> Modifier { set; get; } = ArraySegment<ModifierKeys>.Empty; 
     [Reactive] public IEnumerable<Keys> Keys { set; get; } = ArraySegment<Keys>.Empty;
     [Reactive] public Event Action { set; get; }
     

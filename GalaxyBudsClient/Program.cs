@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using Avalonia.ReactiveUI;
 using GalaxyBudsClient.Cli;
 using GalaxyBudsClient.Cli.Ipc;
 using GalaxyBudsClient.Model.Config;
+using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using Serilog;
@@ -61,7 +63,7 @@ internal static class Program
             config = config.MinimumLevel.Warning();
         }
         
-        if (!Utils.LegacySettings.Instance.DisableCrashReporting)
+        if (!Settings.Data.DisableCrashReporting)
         {
             CrashReports.SetupCrashHandler();
             config = config.WriteTo.Sentry(o =>
@@ -72,10 +74,15 @@ internal static class Program
             });
         }
         
+        if (!Directory.Exists(PlatformUtils.AppDataPath))
+            Directory.CreateDirectory(PlatformUtils.AppDataPath);
+        
         Log.Logger = config.CreateLogger();
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         Trace.Listeners.Add(new ConsoleTraceListener());
-            
+        
+        LegacySettings.BeginMigration();
+        
         if (cliMode)
         {
             CliHandler.ProcessArguments(args);

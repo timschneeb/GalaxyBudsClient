@@ -10,6 +10,7 @@
              xmlns:input="clr-namespace:FluentAvalonia.UI.Input;assembly=FluentAvalonia"
              xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
              xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
+             xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
              mc:Ignorable="d"
              Padding="0, 5, 0, 0"
              x:CompileBindings="True"
@@ -75,7 +76,7 @@
         <controls:SettingsGroup IsVisible="{Binding CanUseAlternativeBackend}">
             <controls:SettingsSwitchItem Content="{ext:Translate {x:Static i18N:Keys.DevselWinrtTitle}}"
                                          Description="{ext:Translate {x:Static i18N:Keys.DevselWinrt}}"
-                                         IsChecked="{Binding UseBluetoothWinRT, Source={x:Static utils:LegacySettings.Instance}}"
+                                         IsChecked="{Binding UseBluetoothWinRt, Source={x:Static config:Settings.Data}}"
                                          IsCheckedChanged="OnUseWinRtCheckedChanged" />
         </controls:SettingsGroup>
 

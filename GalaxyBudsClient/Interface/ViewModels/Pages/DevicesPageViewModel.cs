@@ -18,13 +18,13 @@ public class DevicesPageViewModel : MainPageViewModelBase
     public override string TitleKey => Keys.DevicesHeader;
     public override Symbol IconKey => Symbol.BluetoothConnected;
     public override bool ShowsInFooter => true;
-    // ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
-    public ObservableCollection<IDevice> Devices { get; } = new(LegacySettings.Instance.Devices ?? Array.Empty<IDevice>());
-
+    
     public async void DoNewCommand()
     {
         var result = await DeviceSelectionDialog.OpenDialogAsync();
-        /*if (result is null) 
+        /* TODO
+         
+         if (result is null) 
             return;
         
         Hotkeys.Add(result);
@@ -33,31 +33,24 @@ public class DevicesPageViewModel : MainPageViewModelBase
     
     public async void DoConnectCommand(object? param)
     {
-        if (param is not IDevice device)
+        if (param is not Device device)
             return;
         
-        var index = Devices.IndexOf(device);
+        var index = Settings.Data.Devices.IndexOf(device);
         if (index < 0)
         {
             Log.Debug("DevicesPage.Connect: Cannot find device in configuration");
             return;
         }
 
-        
+        // TODO
     }
     
     public void DoDeleteCommand(object? param)
     {
-        if (param is not IDevice device)
+        if (param is not Device device)
             return;
 
-        Devices.Remove(device);
-        SaveChanges();
+        Settings.Data.Devices.Remove(device);
     }
-
-    private void SaveChanges()
-    {
-        LegacySettings.Instance.Devices = Devices.ToArray();
-    }
-    
 }

@@ -9,6 +9,7 @@
              xmlns:hotkeys="clr-namespace:GalaxyBudsClient.Model.Hotkeys"
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
+             xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="400"
              x:Class="GalaxyBudsClient.Interface.Pages.HotkeyPage"
              x:DataType="pages:HotkeyPageViewModel"
@@ -55,7 +56,7 @@
             </ui:CommandBar>
             
             <ListBox Grid.Row="1"
-                     ItemsSource="{Binding Hotkeys}"
+                     ItemsSource="{Binding Hotkeys, Source={x:Static config:Settings.Data}}"
                      IsVisible="{Binding !NoHotkeys}"
                      Name="HotkeyList">
                 <ListBox.ItemTemplate>

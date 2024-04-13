@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
@@ -80,7 +81,7 @@ public class ExperimentClient
             return;
         }
             
-        if (LegacySettings.Instance.Experiments.Disabled)
+        if (Settings.Data.ExperimentsDisabled)
         {
             Log.Information("ExperimentClient: Feature is disabled");
             return;

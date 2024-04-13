@@ -17,6 +17,7 @@ using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
@@ -106,7 +107,7 @@ public partial class MainWindow : StyledAppWindow
     #region Window management
     protected override async void OnClosing(WindowClosingEventArgs e)
     {
-        if (LegacySettings.Instance.MinimizeToTray && PlatformUtils.SupportsTrayIcon)
+        if (Settings.Data.MinimizeToTray && PlatformUtils.SupportsTrayIcon)
         {
             // check if the cause of the termination is due to shutdown or application close request
             if (e.CloseReason is not (WindowCloseReason.OSShutdown or WindowCloseReason.ApplicationShutdown))
@@ -236,7 +237,7 @@ public partial class MainWindow : StyledAppWindow
     private void OnStatusUpdate(object? sender, StatusUpdateDecoder e)
     {
         if (_lastWearState == LegacyWearStates.None &&
-            e.WearState != LegacyWearStates.None && LegacySettings.Instance.ResumePlaybackOnSensor)
+            e.WearState != LegacyWearStates.None && Settings.Data.ResumePlaybackOnSensor)
         {
             MediaKeyRemote.Instance.Play();
         }
@@ -252,7 +253,7 @@ public partial class MainWindow : StyledAppWindow
 
     private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateDecoder e)
     {
-        if (LegacySettings.Instance.Popup.Enabled)
+        if (Settings.Data.PopupEnabled)
         {
             ShowPopup();
         }
@@ -303,17 +304,17 @@ public partial class MainWindow : StyledAppWindow
     private async void HandleOtherTouchOption(object? sender, TouchOptions e)
     {
         var action = e == TouchOptions.OtherL ?
-            LegacySettings.Instance.CustomActionLeft : LegacySettings.Instance.CustomActionRight;
+            Settings.Data.CustomActionLeft : Settings.Data.CustomActionRight;
 
         switch (action.Action)
         {
-            case CustomAction.Actions.Event:
+            case CustomActions.Event:
                 if (EventExtensions.TryParse(action.Parameter, out var result, true))
                 {
                     EventDispatcher.Instance.Dispatch(result);
                 }
                 break;
-            case CustomAction.Actions.RunExternalProgram:
+            case CustomActions.RunExternalProgram:
                 try
                 {
                     var psi = new ProcessStartInfo
@@ -357,7 +358,7 @@ public partial class MainWindow : StyledAppWindow
                 }
 
                 break;
-            case CustomAction.Actions.TriggerHotkey:
+            case CustomActions.TriggerHotkey:
                 var keys = new List<Key>();
                 try
                 {

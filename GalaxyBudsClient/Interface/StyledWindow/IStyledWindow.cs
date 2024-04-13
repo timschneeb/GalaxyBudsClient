@@ -4,6 +4,7 @@ using Avalonia.Media;
 using Avalonia.Media.Immutable;
 using Avalonia.Styling;
 using FluentAvalonia.UI.Media;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
 
@@ -16,7 +17,7 @@ public interface IStyledWindow : IThemeVariantHost
 
     public static ThemeVariant? GetThemeVariant()
     {
-        return LegacySettings.Instance.Theme switch
+        return Settings.Data.Theme switch
         {
             Themes.Light => ThemeVariant.Light,
             Themes.Dark => ThemeVariant.Dark,
@@ -26,7 +27,7 @@ public interface IStyledWindow : IThemeVariantHost
         };
     }
 
-    protected static bool IsSolid() => LegacySettings.Instance.Theme is Themes.Light or Themes.Dark;
+    protected static bool IsSolid() => Settings.Data.Theme is Themes.Light or Themes.Dark;
     
     public void ApplyTheme(TopLevel host)
     {
@@ -47,7 +48,7 @@ public interface IStyledWindow : IThemeVariantHost
     private void TryEnableMicaEffect(TopLevel host)
     {
         host.TransparencyBackgroundFallback = Brushes.Transparent;
-        if (LegacySettings.Instance.Theme is Themes.DarkMica)
+        if (Settings.Data.Theme is Themes.DarkMica)
         {
             host.TransparencyLevelHint = new[]
             {
@@ -73,7 +74,7 @@ public interface IStyledWindow : IThemeVariantHost
             ThemeVariant.Dark, out var value) ? (Color2)(Color)value! : new Color2(32, 32, 32);
 
         color = color.LightenPercent(-0.8f);
-        color = color.WithAlpha(LegacySettings.Instance.BlurStrength);
+        color = color.WithAlpha(Settings.Data.BlurStrength);
 
         ApplyBackgroundBrush(new ImmutableSolidColorBrush(color));
     } 

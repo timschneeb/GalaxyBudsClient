@@ -26,19 +26,19 @@ public class TouchActionEditorDialogViewModel : ViewModelBase
         ActionMode = action.Action;
         switch (ActionMode)
         {
-            case CustomAction.Actions.Event:
+            case CustomActions.Event:
                 EventParameter = action.Event;
                 break;
-            case CustomAction.Actions.RunExternalProgram:
+            case CustomActions.RunExternalProgram:
                 PathParameter = action.Parameter;
                 break;
-            case CustomAction.Actions.TriggerHotkey:
+            case CustomActions.TriggerHotkey:
                 HotkeyParameter = action.Parameter;
                 break;
         }
     }
 
-    [Reactive] public CustomAction.Actions ActionMode { set; get; }
+    [Reactive] public CustomActions ActionMode { set; get; }
     [Reactive] public Event EventParameter { set; get; } = Event.None;
     [Reactive] public string PathParameter { set; get; } = string.Empty;
     [Reactive] public string HotkeyParameter { set; get; } = string.Empty;
@@ -47,9 +47,9 @@ public class TouchActionEditorDialogViewModel : ViewModelBase
     [Reactive] public bool IsPathParameterEditable { set; get; }
     [Reactive] public bool IsHotkeyParameterEditable { set; get; }
         
-    public IEnumerable<CustomAction.Actions> ActionModeSource =>
-        ActionsExtensions.GetValues()
-            .Where(x => x != CustomAction.Actions.TriggerHotkey || PlatformUtils.SupportsHotkeysBroadcast);
+    public IEnumerable<CustomActions> ActionModeSource =>
+        CustomActionsExtensions.GetValues()
+            .Where(x => x != CustomActions.TriggerHotkey || PlatformUtils.SupportsHotkeysBroadcast);
 
     public IEnumerable<Event> EventSource =>
         EventExtensions.GetValues()
@@ -88,9 +88,9 @@ public class TouchActionEditorDialogViewModel : ViewModelBase
         switch (e.PropertyName)
         {
             case nameof(ActionMode):
-                IsEventParameterEditable = ActionMode == CustomAction.Actions.Event;
-                IsPathParameterEditable = ActionMode == CustomAction.Actions.RunExternalProgram;
-                IsHotkeyParameterEditable = ActionMode == CustomAction.Actions.TriggerHotkey;
+                IsEventParameterEditable = ActionMode == CustomActions.Event;
+                IsPathParameterEditable = ActionMode == CustomActions.RunExternalProgram;
+                IsHotkeyParameterEditable = ActionMode == CustomActions.TriggerHotkey;
                 break;
             case nameof(EventParameter):
             case nameof(PathParameter):
@@ -103,10 +103,10 @@ public class TouchActionEditorDialogViewModel : ViewModelBase
     {
         var error = ActionMode switch
         {
-            CustomAction.Actions.Event when EventParameter == Event.None => Strings.HotkeyEditInvalidAction,
-            CustomAction.Actions.RunExternalProgram when string.IsNullOrWhiteSpace(PathParameter) ||
+            CustomActions.Event when EventParameter == Event.None => Strings.HotkeyEditInvalidAction,
+            CustomActions.RunExternalProgram when string.IsNullOrWhiteSpace(PathParameter) ||
                                                          !Path.Exists(PathParameter) => Strings.FileNotFound,
-            CustomAction.Actions.TriggerHotkey when string.IsNullOrWhiteSpace(HotkeyParameter) => Strings.HotkeyEditInvalid,
+            CustomActions.TriggerHotkey when string.IsNullOrWhiteSpace(HotkeyParameter) => Strings.HotkeyEditInvalid,
             _ => null
         };
 
@@ -125,9 +125,9 @@ public class TouchActionEditorDialogViewModel : ViewModelBase
             
         return new CustomAction(ActionMode, ActionMode switch
         {
-            CustomAction.Actions.Event => EventParameter.ToString(),
-            CustomAction.Actions.RunExternalProgram => PathParameter,
-            CustomAction.Actions.TriggerHotkey => HotkeyParameter,
+            CustomActions.Event => EventParameter.ToString(),
+            CustomActions.RunExternalProgram => PathParameter,
+            CustomActions.TriggerHotkey => HotkeyParameter,
             _ => throw new IndexOutOfRangeException(nameof(ActionMode))
         });
     }

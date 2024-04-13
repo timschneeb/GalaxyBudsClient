@@ -10,6 +10,7 @@ using Avalonia.Threading;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Config;
+using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
@@ -49,7 +50,7 @@ public class EarbudIcon : Image
 
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if(e.PropertyName == nameof(ISettings.RealisticEarbudImages))
+        if(e.PropertyName == nameof(Settings.Data.RealisticEarbudImages))
             UpdateEarbudIcons();
     }
 
@@ -68,8 +69,8 @@ public class EarbudIcon : Image
     private void UpdateEarbudIcons()
     {
         var color = DeviceMessageCache.Instance.ExtendedStatusUpdate?.DeviceColor 
-                    ?? LegacySettings.Instance.DeviceLegacy.DeviceColor;
-        if (LegacySettings.Instance.RealisticEarbudImages && color != null &&
+                   ; // TODO ?? LegacySettings.Instance.DeviceLegacy.DeviceColor;
+        if (Settings.Data.RealisticEarbudImages && color != null &&
             BluetoothImpl.Instance.DeviceSpec.Supports(Features.DeviceColor))
         {
             Uri GetUri(int variant) => new($"{Program.AvaresUrl}/Resources/Device/Realistic/{color}-{variant}.png");

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform.Interfaces;
 using GalaxyBudsClient.Utils;
@@ -56,7 +57,7 @@ public class HotkeyReceiver : IDisposable
     {
         HotkeyRegisterException? targetResult = null;
         await UnregisterAll();
-        foreach (var hotkey in LegacySettings.Instance.Hotkeys)
+        foreach (var hotkey in Settings.Data.Hotkeys)
         {
             var error = await RegisterAsync(hotkey, true);
             if (target == hotkey)
@@ -84,7 +85,7 @@ public class HotkeyReceiver : IDisposable
     public async void Update(bool silent = false)
     {
         await UnregisterAll();
-        foreach (var hotkey in LegacySettings.Instance?.Hotkeys ?? Array.Empty<Hotkey>())
+        foreach (var hotkey in Settings.Data.Hotkeys)
         {
             await RegisterAsync(hotkey, silent);
         }

@@ -7,6 +7,7 @@ using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using Avalonia.Threading;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using Bitmap = Avalonia.Media.Imaging.Bitmap;
@@ -29,7 +30,7 @@ public static class WindowIconRenderer
         if (status.BatteryR <= 0)
             status.BatteryR = status.BatteryL;
         
-        int? level = LegacySettings.Instance.DynamicTrayIconMode switch
+        int? level = Settings.Data.DynamicTrayIconMode switch
         {
             DynamicTrayIconModes.BatteryMin => Math.Min(status.BatteryL, status.BatteryR),
             DynamicTrayIconModes.BatteryAvg => (status.BatteryL + status.BatteryR) / 2,
