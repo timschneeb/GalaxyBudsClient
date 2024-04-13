@@ -12,7 +12,7 @@ public class StyledAppWindow : AppWindow, IStyledWindow
 {
     protected StyledAppWindow()
     {
-        Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
+        LegacySettings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
     }
 
     public IReadOnlyList<WindowTransparencyLevel> DefaultTransparencyLevelHint =>
@@ -34,7 +34,7 @@ public class StyledAppWindow : AppWindow, IStyledWindow
     
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if(e.PropertyName is nameof(Settings.Instance.Theme) or nameof(Settings.Instance.BlurStrength))
+        if(e.PropertyName is nameof(LegacySettings.Instance.Theme) or nameof(LegacySettings.Instance.BlurStrength))
         {
             (this as IStyledWindow).ApplyTheme(this);
         }

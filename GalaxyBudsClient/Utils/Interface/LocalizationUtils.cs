@@ -51,18 +51,18 @@ public static class Loc
     
     public static void Load()
     {
-        var lang = Settings.Instance.Locale.ToString();
+        var lang = LegacySettings.Instance.Locale.ToString();
         if (lang.EndsWith('_'))
             lang = lang.TrimEnd('_');
         
-        switch (Settings.Instance.Locale)
+        switch (LegacySettings.Instance.Locale)
         {
             case Locales.custom when IsTranslatorModeEnabled:
                 LoadExternalLanguage(TranslatorModeFile, ref _strings);
                 return;
             case Locales.custom when !IsTranslatorModeEnabled:
                 lang = Locales.en.ToStringFast();
-                Settings.Instance.Locale = Locales.en;
+                LegacySettings.Instance.Locale = Locales.en;
                 break;
         }
 

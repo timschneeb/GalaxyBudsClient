@@ -93,7 +93,7 @@ public class SppMessageReceiver
                 CradleSerialNumberResponse?.Invoke(this, p);
                 break;
             case ExtendedStatusUpdateDecoder p:
-                Settings.Instance.DeviceLegacy.DeviceColor = p.DeviceColor;
+                LegacySettings.Instance.DeviceLegacy.DeviceColor = p.DeviceColor;
                 BaseUpdate?.Invoke(this, p);
                 ExtendedStatusUpdate?.Invoke(this, p);
                 break;
@@ -126,7 +126,7 @@ public class SppMessageReceiver
                 if (p.ResultCode == 1)
                 {
                     Log.Debug("SppMessageHandler: Voice wakeup event received");
-                    EventDispatcher.Instance.Dispatch(Settings.Instance.BixbyRemapEvent);
+                    EventDispatcher.Instance.Dispatch(LegacySettings.Instance.BixbyRemapEvent);
                 }
                 break;
         }

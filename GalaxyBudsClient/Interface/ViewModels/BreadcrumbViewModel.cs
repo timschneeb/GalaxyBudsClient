@@ -34,7 +34,7 @@ public class BreadcrumbViewModel : ViewModelBase
     {
         get
         {
-            var name = Settings.Instance.DeviceLegacy.Name;
+            var name = LegacySettings.Instance.DeviceLegacy.Name;
             if(TitleKey == DeviceNameKey && name.Length > 0)
                 return name;
             return Loc.Resolve(TitleKey);

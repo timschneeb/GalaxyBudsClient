@@ -106,7 +106,7 @@ public partial class MainWindow : StyledAppWindow
     #region Window management
     protected override async void OnClosing(WindowClosingEventArgs e)
     {
-        if (Settings.Instance.MinimizeToTray && PlatformUtils.SupportsTrayIcon)
+        if (LegacySettings.Instance.MinimizeToTray && PlatformUtils.SupportsTrayIcon)
         {
             // check if the cause of the termination is due to shutdown or application close request
             if (e.CloseReason is not (WindowCloseReason.OSShutdown or WindowCloseReason.ApplicationShutdown))
@@ -236,7 +236,7 @@ public partial class MainWindow : StyledAppWindow
     private void OnStatusUpdate(object? sender, StatusUpdateDecoder e)
     {
         if (_lastWearState == LegacyWearStates.None &&
-            e.WearState != LegacyWearStates.None && Settings.Instance.ResumePlaybackOnSensor)
+            e.WearState != LegacyWearStates.None && LegacySettings.Instance.ResumePlaybackOnSensor)
         {
             MediaKeyRemote.Instance.Play();
         }
@@ -252,7 +252,7 @@ public partial class MainWindow : StyledAppWindow
 
     private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateDecoder e)
     {
-        if (Settings.Instance.Popup.Enabled)
+        if (LegacySettings.Instance.Popup.Enabled)
         {
             ShowPopup();
         }
@@ -303,7 +303,7 @@ public partial class MainWindow : StyledAppWindow
     private async void HandleOtherTouchOption(object? sender, TouchOptions e)
     {
         var action = e == TouchOptions.OtherL ?
-            Settings.Instance.CustomActionLeft : Settings.Instance.CustomActionRight;
+            LegacySettings.Instance.CustomActionLeft : LegacySettings.Instance.CustomActionRight;
 
         switch (action.Action)
         {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using CSScriptLib;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Scripting.Hooks;
+using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
 using Sentry;
 using Log = Serilog.Log;
-using Settings = GalaxyBudsClient.Utils.Settings;
 using Task = System.Threading.Tasks.Task;
 using Timer = System.Timers.Timer;
 
@@ -78,8 +78,8 @@ public class ExperimentManager
 
     private void ExcludeExperiment(long id)
     {
-        Settings.Instance.Experiments.FinishedIds = 
-            Settings.Instance.Experiments.FinishedIds.Add(id);
+        LegacySettings.Instance.Experiments.FinishedIds = 
+            LegacySettings.Instance.Experiments.FinishedIds.Add(id);
     }
         
     public static Environment CurrentEnvironment()

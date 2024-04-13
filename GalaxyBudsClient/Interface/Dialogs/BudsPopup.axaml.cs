@@ -24,13 +24,13 @@ public partial class BudsPopup : Window
     {
         InitializeComponent();
 
-        Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
+        LegacySettings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
         _timer.Elapsed += (_, _) => Dispatcher.UIThread.Post(Hide, DispatcherPriority.Render);
     }
     
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if(e.PropertyName is nameof(Settings.Instance.Theme) or nameof(Settings.Instance.BlurStrength))
+        if(e.PropertyName is nameof(LegacySettings.Instance.Theme) or nameof(LegacySettings.Instance.BlurStrength))
         {
             RequestedThemeVariant = IStyledWindow.GetThemeVariant();
         }
@@ -79,7 +79,7 @@ public partial class BudsPopup : Window
         Header.Content = BluetoothImpl.Instance.DeviceName;
 
         /* Header */
-        if (Settings.Instance.Popup.Compact)
+        if (LegacySettings.Instance.Popup.Compact)
         {
             MaxHeight = Height = 205 - 35;
             Grid.RowDefinitions[0].Height = new GridLength(0);
@@ -96,7 +96,7 @@ public partial class BudsPopup : Window
         
         var padding = (int)(20 * scaling);
 
-        Position = Settings.Instance.Popup.Placement switch
+        Position = LegacySettings.Instance.Popup.Placement switch
         {
             PopupPlacement.TopLeft => new PixelPoint(workArea.X + padding, workArea.Y + padding),
             PopupPlacement.TopCenter => new PixelPoint(

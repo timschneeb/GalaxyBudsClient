@@ -27,7 +27,7 @@
                 
                 <controls:SettingsSwitchItem Content="{ext:Translate {x:Static i18N:Keys.AdvResumePlayback}}"
                                              Description="{ext:Translate {x:Static i18N:Keys.AdvResumePlaybackDesc}}"
-                                             IsChecked="{Binding ResumePlaybackOnSensor, Source={x:Static utils:Settings.Instance}}"
+                                             IsChecked="{Binding ResumePlaybackOnSensor, Source={x:Static utils:LegacySettings.Instance}}"
                                              Symbol="FlashPlay"
                                              IsClickEnabled="True" />
 

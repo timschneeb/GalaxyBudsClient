@@ -16,7 +16,7 @@ public partial class EarbudStatusUnit : Panel
         
     private void OnTemperaturePointerPressed(object? sender, PointerPressedEventArgs e)
     {
-        Settings.Instance.TemperatureUnit = Settings.Instance.TemperatureUnit == TemperatureUnits.Celsius
+        LegacySettings.Instance.TemperatureUnit = LegacySettings.Instance.TemperatureUnit == TemperatureUnits.Celsius
             ? TemperatureUnits.Fahrenheit : TemperatureUnits.Celsius;
     }
 }

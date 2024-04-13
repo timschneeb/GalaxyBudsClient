@@ -130,6 +130,6 @@ public static class ExperimentRequestFilters
         
     public static bool IsNotDone(ExperimentRequest item)
     {
-        return !(Settings.Instance.Experiments.FinishedIds?.ToList()?.Contains(item.Id) ?? false);
+        return !(LegacySettings.Instance.Experiments.FinishedIds?.ToList()?.Contains(item.Id) ?? false);
     }
 }

@@ -18,12 +18,12 @@ public partial class TouchpadPage : BasePage<TouchpadPageViewModel>
     
     private void OnEditLeftCustomActionClicked(object? sender, RoutedEventArgs e)
     {
-        _ = RunEditDialogAsync(Settings.Instance.CustomActionLeft).ContinueWith(task =>
+        _ = RunEditDialogAsync(LegacySettings.Instance.CustomActionLeft).ContinueWith(task =>
         {
             if (task is { Result: not null, IsCompletedSuccessfully: true })
             {
-                Settings.Instance.CustomActionLeft.Action = task.Result.Action;
-                Settings.Instance.CustomActionLeft.Parameter = task.Result.Parameter;
+                LegacySettings.Instance.CustomActionLeft.Action = task.Result.Action;
+                LegacySettings.Instance.CustomActionLeft.Parameter = task.Result.Parameter;
             }
             else if (task.Exception != null) 
                 SentrySdk.CaptureException(task.Exception);
@@ -32,12 +32,12 @@ public partial class TouchpadPage : BasePage<TouchpadPageViewModel>
     
     private void OnEditRightCustomActionClicked(object? sender, RoutedEventArgs e)
     {
-        _ = RunEditDialogAsync(Settings.Instance.CustomActionRight).ContinueWith(task =>
+        _ = RunEditDialogAsync(LegacySettings.Instance.CustomActionRight).ContinueWith(task =>
         {
             if (task is { Result: not null, IsCompletedSuccessfully: true })
             {
-                Settings.Instance.CustomActionRight.Action = task.Result.Action;
-                Settings.Instance.CustomActionRight.Parameter = task.Result.Parameter;
+                LegacySettings.Instance.CustomActionRight.Action = task.Result.Action;
+                LegacySettings.Instance.CustomActionRight.Parameter = task.Result.Parameter;
             }
             else if (task.Exception != null) 
                 SentrySdk.CaptureException(task.Exception);

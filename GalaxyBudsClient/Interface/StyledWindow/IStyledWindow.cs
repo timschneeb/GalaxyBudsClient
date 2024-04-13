@@ -16,7 +16,7 @@ public interface IStyledWindow : IThemeVariantHost
 
     public static ThemeVariant? GetThemeVariant()
     {
-        return Settings.Instance.Theme switch
+        return LegacySettings.Instance.Theme switch
         {
             Themes.Light => ThemeVariant.Light,
             Themes.Dark => ThemeVariant.Dark,
@@ -26,7 +26,7 @@ public interface IStyledWindow : IThemeVariantHost
         };
     }
 
-    protected static bool IsSolid() => Settings.Instance.Theme is Themes.Light or Themes.Dark;
+    protected static bool IsSolid() => LegacySettings.Instance.Theme is Themes.Light or Themes.Dark;
     
     public void ApplyTheme(TopLevel host)
     {
@@ -47,7 +47,7 @@ public interface IStyledWindow : IThemeVariantHost
     private void TryEnableMicaEffect(TopLevel host)
     {
         host.TransparencyBackgroundFallback = Brushes.Transparent;
-        if (Settings.Instance.Theme is Themes.DarkMica)
+        if (LegacySettings.Instance.Theme is Themes.DarkMica)
         {
             host.TransparencyLevelHint = new[]
             {
@@ -73,7 +73,7 @@ public interface IStyledWindow : IThemeVariantHost
             ThemeVariant.Dark, out var value) ? (Color2)(Color)value! : new Color2(32, 32, 32);
 
         color = color.LightenPercent(-0.8f);
-        color = color.WithAlpha(Settings.Instance.BlurStrength);
+        color = color.WithAlpha(LegacySettings.Instance.BlurStrength);
 
         ApplyBackgroundBrush(new ImmutableSolidColorBrush(color));
     } 

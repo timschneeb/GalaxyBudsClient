@@ -8,10 +8,12 @@ using Avalonia.Controls;
 using Avalonia.ReactiveUI;
 using GalaxyBudsClient.Cli;
 using GalaxyBudsClient.Cli.Ipc;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using Serilog;
 using Serilog.Events;
+using Settings = GalaxyBudsClient.Model.Config.Settings;
 #if !DEBUG
 using Sentry;
 #endif
@@ -59,7 +61,7 @@ internal static class Program
             config = config.MinimumLevel.Warning();
         }
         
-        if (!Settings.Instance.DisableCrashReporting)
+        if (!Utils.LegacySettings.Instance.DisableCrashReporting)
         {
             CrashReports.SetupCrashHandler();
             config = config.WriteTo.Sentry(o =>

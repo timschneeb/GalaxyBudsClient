@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using GalaxyBudsClient.Utils.Extensions;
+using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Model.Hotkeys;
 
-public class Hotkey(IEnumerable<ModifierKeys> modifier, IEnumerable<Keys> keys, Event action)
+public record Hotkey : ReactiveRecord
 {
-    public IEnumerable<ModifierKeys> Modifier { get; } = modifier;
-    public IEnumerable<Keys> Keys { get; } = keys;
-    public Event Action { get; } = action;
-    internal string ActionName => Action.GetLocalizedDescription() ?? string.Empty;
+    [Reactive] public IEnumerable<ModifierKeys> Modifier { set; get; } = ArraySegment<ModifierKeys>.Empty;
+    [Reactive] public IEnumerable<Keys> Keys { set; get; } = ArraySegment<Keys>.Empty;
+    [Reactive] public Event Action { set; get; }
+    
+    internal string ActionName => Action.GetLocalizedDescription();
     internal string HotkeyName => Keys.AsHotkeyString(Modifier);
 
     public override string ToString()
@@ -17,5 +20,5 @@ public class Hotkey(IEnumerable<ModifierKeys> modifier, IEnumerable<Keys> keys, 
         return Keys.AsHotkeyString(Modifier) + ": " + Action.GetLocalizedDescription();
     }
 
-    public static Hotkey Empty => new(ArraySegment<ModifierKeys>.Empty, ArraySegment<Keys>.Empty, Event.None);
+    public static Hotkey Empty => new();
 }

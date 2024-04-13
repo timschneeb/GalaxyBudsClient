@@ -61,7 +61,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
     {
         RefreshList(true);
         
-        if (Settings.Instance.FirmwareWarningAccepted) 
+        if (LegacySettings.Instance.FirmwareWarningAccepted) 
             return;
         
         // Show disclaimer
@@ -72,7 +72,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
             ButtonText = Strings.ContinueButton
         }.ShowAsync();
 
-        Settings.Instance.FirmwareWarningAccepted = result;
+        LegacySettings.Instance.FirmwareWarningAccepted = result;
         if (!result)
         {
             MainWindow.Instance.MainView.FrameView.GoBack();

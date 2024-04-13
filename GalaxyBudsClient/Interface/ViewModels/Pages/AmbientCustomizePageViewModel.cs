@@ -22,7 +22,7 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
     {
         SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
        
-        Settings.Instance.DeviceLegacy.PropertyChanged += OnDevicePropertyChanged;
+        LegacySettings.Instance.DeviceLegacy.PropertyChanged += OnDevicePropertyChanged;
         PropertyChanged += OnPropertyChanged;
         UpdateVolumeSliders();
     }

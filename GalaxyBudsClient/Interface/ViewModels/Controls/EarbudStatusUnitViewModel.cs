@@ -30,7 +30,7 @@ public class EarbudStatusUnitViewModel : ViewModelBase
         SppMessageReceiver.Instance.BaseUpdate += OnStatusUpdated;
         SppMessageReceiver.Instance.GetAllDataResponse += OnGetAllDataResponse;
         BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
-        Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
+        LegacySettings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
         Loc.LanguageUpdated += LoadFromCache;
         LoadFromCache();
     }
@@ -45,7 +45,7 @@ public class EarbudStatusUnitViewModel : ViewModelBase
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         // Recalculate temperature values when temperature unit changes
-        if (e.PropertyName == nameof(Settings.Instance.TemperatureUnit))
+        if (e.PropertyName == nameof(LegacySettings.Instance.TemperatureUnit))
             LoadFromCache();
     }
     
@@ -77,7 +77,7 @@ public class EarbudStatusUnitViewModel : ViewModelBase
         if(e is { LeftThermistor: <= 0, RightThermistor: <= 0 })
             return;
         
-        var useF = Settings.Instance.TemperatureUnit == TemperatureUnits.Fahrenheit;
+        var useF = LegacySettings.Instance.TemperatureUnit == TemperatureUnits.Fahrenheit;
         LeftVoltage = e.LeftAdcVCell;
         RightVoltage = e.RightAdcVCell;
         LeftCurrent = e.LeftAdcCurrent;

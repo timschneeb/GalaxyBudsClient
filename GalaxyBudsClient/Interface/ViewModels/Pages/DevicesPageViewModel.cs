@@ -19,7 +19,7 @@ public class DevicesPageViewModel : MainPageViewModelBase
     public override Symbol IconKey => Symbol.BluetoothConnected;
     public override bool ShowsInFooter => true;
     // ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
-    public ObservableCollection<IDevice> Devices { get; } = new(Settings.Instance.Devices ?? Array.Empty<IDevice>());
+    public ObservableCollection<IDevice> Devices { get; } = new(LegacySettings.Instance.Devices ?? Array.Empty<IDevice>());
 
     public async void DoNewCommand()
     {
@@ -57,7 +57,7 @@ public class DevicesPageViewModel : MainPageViewModelBase
 
     private void SaveChanges()
     {
-        Settings.Instance.Devices = Devices.ToArray();
+        LegacySettings.Instance.Devices = Devices.ToArray();
     }
     
 }

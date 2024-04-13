@@ -21,6 +21,11 @@
         <!--<PublishTrimmed>true</PublishTrimmed>-->
     </PropertyGroup>
 
+    <!-- TODO: remove this -->
+    <PropertyGroup>
+        <JsonSerializerIsReflectionEnabledByDefault>false</JsonSerializerIsReflectionEnabledByDefault>
+    </PropertyGroup>
+    
     <PropertyGroup>
         <!-- App properties -->
         <AssemblyVersion>5.0.0.0</AssemblyVersion>
@@ -29,7 +34,7 @@
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>
         <ApplicationVersion>$(Version)</ApplicationVersion>
-        
+
         <!-- Build properties -->
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

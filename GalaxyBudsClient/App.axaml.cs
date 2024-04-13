@@ -54,7 +54,7 @@ public class App : Application
             
         if (Loc.IsTranslatorModeEnabled)
         {
-            Settings.Instance.Locale = Locales.custom;
+            LegacySettings.Instance.Locale = Locales.custom;
         }
             
         Dispatcher.UIThread.Post(() =>
@@ -69,7 +69,7 @@ public class App : Application
         ExperimentManager.Init();
         ScriptManager.Instance.RegisterUserHooks();
         
-        Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
+        LegacySettings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
         
         Log.Information("Translator mode file location: {File}", Loc.TranslatorModeFile);
     }
@@ -83,7 +83,7 @@ public class App : Application
             desktop.MainWindow = MainWindow.Instance;
             desktop.Exit += (_, _) =>
             {
-                Settings.Instance.FirstLaunch = false;
+                LegacySettings.Instance.FirstLaunch = false;
             };
         }
             
@@ -97,7 +97,7 @@ public class App : Application
     
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if(e.PropertyName is nameof(Settings.Instance.Theme) or nameof(Settings.Instance.AccentColor))
+        if(e.PropertyName is nameof(LegacySettings.Instance.Theme) or nameof(LegacySettings.Instance.AccentColor))
         {
             LoadThemeProperties();
         }
@@ -105,11 +105,11 @@ public class App : Application
 
     private void LoadThemeProperties()
     {
-        FluentTheme.PreferSystemTheme = Settings.Instance.Theme == Themes.System;
-        var color = Settings.Instance.AccentColor;
+        FluentTheme.PreferSystemTheme = LegacySettings.Instance.Theme == Themes.System;
+        var color = LegacySettings.Instance.AccentColor;
         if (color.A == 0)
         {
-            color = Settings.Instance.AccentColor = AccentColorParser.DefaultColor;
+            color = LegacySettings.Instance.AccentColor = AccentColorParser.DefaultColor;
         }
         FluentTheme.CustomAccentColor = color;
     }

@@ -54,10 +54,10 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
     public event EventHandler<byte[]>? NewDataReceived;
     public event EventHandler<BluetoothException>? BluetoothError;
     
-    public static Models ActiveModel => Settings.Instance.DeviceLegacy.Model;
+    public static Models ActiveModel => LegacySettings.Instance.DeviceLegacy.Model;
     public IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(ActiveModel) ?? new StubDeviceSpec();
-    public static bool IsRegisteredDeviceValid => Settings.Instance.DeviceLegacy.Model != Models.NULL && 
-                                                  Settings.Instance.DeviceLegacy.MacAddress.Length >= 12;
+    public static bool IsRegisteredDeviceValid => LegacySettings.Instance.DeviceLegacy.Model != Models.NULL && 
+                                                  LegacySettings.Instance.DeviceLegacy.MacAddress.Length >= 12;
     
     [Reactive] public string DeviceName { private set; get; } = "Galaxy Buds";
     [Reactive] public bool IsConnected { private set; get; }
@@ -204,7 +204,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         try
         {
             var devices = await _backend.GetDevicesAsync();
-            var device = devices.FirstOrDefault(d => d.Address == Settings.Instance.DeviceLegacy.MacAddress);
+            var device = devices.FirstOrDefault(d => d.Address == LegacySettings.Instance.DeviceLegacy.MacAddress);
             return device?.Name ?? fallbackName;
         }
         catch (BluetoothException ex)
@@ -226,9 +226,9 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         try
         {
             DeviceName = await GetDeviceNameAsync();
-            Settings.Instance.DeviceLegacy.Name = DeviceName;
+            LegacySettings.Instance.DeviceLegacy.Name = DeviceName;
                         
-            await _backend.ConnectAsync(Settings.Instance.DeviceLegacy.MacAddress,
+            await _backend.ConnectAsync(LegacySettings.Instance.DeviceLegacy.MacAddress,
                 DeviceSpec.ServiceUuid.ToString(), noRetry);
             return true;
         }
@@ -304,10 +304,10 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         
     public void UnregisterDevice()
     {
-        Settings.Instance.DeviceLegacy.Model = Models.NULL;
-        Settings.Instance.DeviceLegacy.MacAddress = string.Empty;
-        Settings.Instance.DeviceLegacy.Name = string.Empty;
-        Settings.Instance.DeviceLegacy.DeviceColor = null;
+        LegacySettings.Instance.DeviceLegacy.Model = Models.NULL;
+        LegacySettings.Instance.DeviceLegacy.MacAddress = string.Empty;
+        LegacySettings.Instance.DeviceLegacy.Name = string.Empty;
+        LegacySettings.Instance.DeviceLegacy.DeviceColor = null;
         DeviceMessageCache.Instance.Clear();
         // Don't wait for this to complete as it may confuse users if the menu option waits until connect timed out
         _ = DisconnectAsync();

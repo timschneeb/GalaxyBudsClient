@@ -62,7 +62,7 @@ public sealed class DeviceObject : BaseObjectWithProperties<DeviceProperties>, I
     private void OnConnected(object? sender, EventArgs e)
     {
         Set(nameof(DeviceProperties._Name), BluetoothImpl.Instance.DeviceName);
-        Set(nameof(DeviceProperties._Address), Settings.Instance.DeviceLegacy.MacAddress);
+        Set(nameof(DeviceProperties._Address), LegacySettings.Instance.DeviceLegacy.MacAddress);
         Set(nameof(DeviceProperties._Model), BluetoothImpl.ActiveModel.ToString());
 
         if (DeviceMessageCache.Instance.BasicStatusUpdate != null)

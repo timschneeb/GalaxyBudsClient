@@ -24,7 +24,7 @@ public class EarbudCompactStatusUnitViewModel : ViewModelBase
     {
         SppMessageReceiver.Instance.BaseUpdate += OnStatusUpdated;
         BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
-        Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
+        LegacySettings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
         Loc.LanguageUpdated += LoadFromCache;
         LoadFromCache();
     }
@@ -39,7 +39,7 @@ public class EarbudCompactStatusUnitViewModel : ViewModelBase
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         // Recalculate temperature values when temperature unit changes
-        if (e.PropertyName == nameof(Settings.Instance.TemperatureUnit))
+        if (e.PropertyName == nameof(LegacySettings.Instance.TemperatureUnit))
             LoadFromCache();
     }
     

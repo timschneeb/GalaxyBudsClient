@@ -71,7 +71,7 @@
                                                Description="{ext:Translate {x:Static i18N:Keys.SettingsDarkmodeDescription}}"
                                                IconSource="DarkTheme"
                                                ItemsSource="{Binding ., Source={ext:ThemesBindingSource}}"
-                                               SelectedValue="{Binding Theme, Source={x:Static utils:Settings.Instance}}">
+                                               SelectedValue="{Binding Theme, Source={x:Static utils:LegacySettings.Instance}}">
                     <Interaction.Behaviors>
                         <ext:LocalizationAwareComboBoxBehavior></ext:LocalizationAwareComboBoxBehavior>
                     </Interaction.Behaviors>
@@ -83,26 +83,26 @@
                     TickPlacement="None"
                     Symbol="Blur"
                     Maximum="255"
-                    IsEnabled="{Binding Theme, Source={x:Static utils:Settings.Instance}, Converter={x:Static converters:FuncConverters.IsBlurDarkModeSet}}"
-                    Value="{Binding BlurStrength, Source={x:Static utils:Settings.Instance}}" />
+                    IsEnabled="{Binding Theme, Source={x:Static utils:LegacySettings.Instance}, Converter={x:Static converters:FuncConverters.IsBlurDarkModeSet}}"
+                    Value="{Binding BlurStrength, Source={x:Static utils:LegacySettings.Instance}}" />
 
                 <controls:SettingsColorItem Name="AppAccent"
                                             Content="{ext:Translate {x:Static i18N:Keys.SettingsAccent}}"
                                             Description="{ext:Translate {x:Static i18N:Keys.SettingsAccentDescription}}"
                                             Symbol="Color"
-                                            Color="{Binding AccentColor, Source={x:Static utils:Settings.Instance}}" />
+                                            Color="{Binding AccentColor, Source={x:Static utils:LegacySettings.Instance}}" />
 
                 <controls:SettingsComboBoxItem Name="AppLanguage"
                                                Content="{ext:Translate {x:Static i18N:Keys.SettingsLocalizationDisable}}"
                                                Description="{ext:Translate {x:Static i18N:Keys.SettingsLocalizationDescription}}"
                                                Symbol="LocalLanguage"
                                                ItemsSource="{Binding Source={ext:LocalesBindingSource}}"
-                                               SelectedValue="{Binding Locale, Source={x:Static utils:Settings.Instance}}" />
+                                               SelectedValue="{Binding Locale, Source={x:Static utils:LegacySettings.Instance}}" />
 
                 <controls:SettingsSwitchItem Content="{ext:Translate {x:Static i18N:Keys.SettingsRealisticEarbudIcons}}"
                                              Description="{ext:Translate {x:Static i18N:Keys.SettingsRealisticEarbudIconsDescription}}"
                                              Symbol="ImageSparkle"
-                                             IsChecked="{Binding RealisticEarbudImages, Source={x:Static utils:Settings.Instance}}" />
+                                             IsChecked="{Binding RealisticEarbudImages, Source={x:Static utils:LegacySettings.Instance}}" />
 
             </ui:SettingsExpander>
 
@@ -118,15 +118,15 @@
                     Content="{ext:Translate {x:Static i18N:Keys.SettingsMinimizeTray}}"
                     Description="{ext:Translate {x:Static i18N:Keys.SettingsMinimizeTrayDescription}}"
                     Symbol="ArrowMinimize"
-                    IsChecked="{Binding MinimizeToTray, Source={x:Static utils:Settings.Instance}}" />
+                    IsChecked="{Binding MinimizeToTray, Source={x:Static utils:LegacySettings.Instance}}" />
 
                 <controls:SettingsComboBoxItem
                     Name="DynamicTrayIcon"
                     Content="{ext:Translate {x:Static i18N:Keys.SettingsDynTrayMode}}"
                     Description="{ext:Translate {x:Static i18N:Keys.SettingsDynTrayModeDescription}}"
-                    IsEnabled="{Binding MinimizeToTray, Source={x:Static utils:Settings.Instance}}"
+                    IsEnabled="{Binding MinimizeToTray, Source={x:Static utils:LegacySettings.Instance}}"
                     ItemsSource="{Binding Source={ext:DynamicTrayIconModesBindingSource}}"
-                    SelectedValue="{Binding DynamicTrayIconMode, Source={x:Static utils:Settings.Instance}}">
+                    SelectedValue="{Binding DynamicTrayIconMode, Source={x:Static utils:LegacySettings.Instance}}">
                     <Interaction.Behaviors>
                         <ext:LocalizationAwareComboBoxBehavior />
                     </Interaction.Behaviors>
@@ -136,7 +136,7 @@
                     Content="{ext:Translate {x:Static i18N:Keys.SettingsAutostart}}"
                     Description="{ext:Translate {x:Static i18N:Keys.SettingsAutostartDescription}}"
                     Symbol="KeyboardShiftUppercase"
-                    IsEnabled="{Binding MinimizeToTray, Source={x:Static utils:Settings.Instance}}"
+                    IsEnabled="{Binding MinimizeToTray, Source={x:Static utils:LegacySettings.Instance}}"
                     IsChecked="{Binding IsAutoStartEnabled}"
                     IsVisible="{x:Static platform:PlatformUtils.SupportsAutoboot}" />
 
@@ -151,20 +151,20 @@
                 <controls:SettingsSwitchItem
                     Content="{ext:Translate {x:Static i18N:Keys.SettingsCpopupEnable}}"
                     Description="{ext:Translate {x:Static i18N:Keys.SettingsCpopupEnableDescription}}"
-                    IsChecked="{Binding Popup.Enabled, Source={x:Static utils:Settings.Instance}}" />
+                    IsChecked="{Binding Popup.Enabled, Source={x:Static utils:LegacySettings.Instance}}" />
 
                 <controls:SettingsSwitchItem
                     Content="{ext:Translate {x:Static i18N:Keys.SettingsCpopupCompact}}"
                     Description="{ext:Translate {x:Static i18N:Keys.SettingsCpopupCompactDescription}}"
                     Symbol="ArrowMinimizeVertical"
-                    IsChecked="{Binding Popup.Compact, Source={x:Static utils:Settings.Instance}}" />
+                    IsChecked="{Binding Popup.Compact, Source={x:Static utils:LegacySettings.Instance}}" />
 
                 <controls:SettingsComboBoxItem Name="PopupPosition"
                                                Content="{ext:Translate {x:Static i18N:Keys.SettingsCpopupPosition}}"
                                                Description="{ext:Translate {x:Static i18N:Keys.SettingsCpopupPositionDescription}}"
                                                Symbol="LayoutCellFourFocusBottomLeft"
                                                ItemsSource="{Binding Source={ext:PopupPlacementBindingSource}}"
-                                               SelectedValue="{Binding Popup.Placement, Source={x:Static utils:Settings.Instance}}">
+                                               SelectedValue="{Binding Popup.Placement, Source={x:Static utils:LegacySettings.Instance}}">
                     <Interaction.Behaviors>
                         <ext:LocalizationAwareComboBoxBehavior />
                     </Interaction.Behaviors>
@@ -191,12 +191,12 @@
                 <controls:SettingsSwitchItem
                     Content="{ext:Translate {x:Static i18N:Keys.SettingsCrowdAllow}}"
                     Description="{ext:Translate {x:Static i18N:Keys.SettingsCrowdAllow}}"
-                    IsChecked="{Binding !Experiments.Disabled, Source={x:Static utils:Settings.Instance}}" />
+                    IsChecked="{Binding !Experiments.Disabled, Source={x:Static utils:LegacySettings.Instance}}" />
 
                 <controls:SettingsSwitchItem
                     Content="{ext:Translate {x:Static i18N:Keys.SettingsCrowdCrashreport}}"
                     Description="{ext:Translate {x:Static i18N:Keys.SettingsCrowdCrashreportDescription}}"
-                    IsChecked="{Binding !DisableCrashReporting, Source={x:Static utils:Settings.Instance}}" />
+                    IsChecked="{Binding !DisableCrashReporting, Source={x:Static utils:LegacySettings.Instance}}" />
 
             </ui:SettingsExpander>
 

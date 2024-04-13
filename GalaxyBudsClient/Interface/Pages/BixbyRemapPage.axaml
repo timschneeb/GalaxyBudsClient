@@ -45,7 +45,7 @@
                     Symbol="Flash"
                     IsEnabled="{Binding IsBixbyWakeUpEnabled}"
                     ItemsSource="{Binding Source={ext:EventBindingSource}}"
-                    SelectedValue="{Binding BixbyRemapEvent, Source={x:Static utils:Settings.Instance}}">
+                    SelectedValue="{Binding BixbyRemapEvent, Source={x:Static utils:LegacySettings.Instance}}">
                     <Interaction.Behaviors>
                         <ext:LocalizationAwareComboBoxBehavior />
                     </Interaction.Behaviors>

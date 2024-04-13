@@ -53,6 +53,6 @@ public partial class TranslatorTools : StyledWindow.StyledWindow
         GrantAllFeaturesForTesting = control.IsChecked ?? false;
         
         // Trigger RequiresFeatureBehavior update
-        Settings.Instance.DeviceLegacy.Model = Settings.Instance.DeviceLegacy.Model;
+        LegacySettings.Instance.DeviceLegacy.Model = LegacySettings.Instance.DeviceLegacy.Model;
     }
 }

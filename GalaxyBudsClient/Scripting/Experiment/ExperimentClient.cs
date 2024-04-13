@@ -80,7 +80,7 @@ public class ExperimentClient
             return;
         }
             
-        if (Settings.Instance.Experiments.Disabled)
+        if (LegacySettings.Instance.Experiments.Disabled)
         {
             Log.Information("ExperimentClient: Feature is disabled");
             return;

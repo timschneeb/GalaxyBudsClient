@@ -28,7 +28,7 @@ public class EarbudIcon : Image
             OnStatusUpdated(null, DeviceMessageCache.Instance.BasicStatusUpdate);
         SppMessageReceiver.Instance.BaseUpdate += OnStatusUpdated;
         BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
-        Settings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
+        LegacySettings.Instance.PropertyChanged += OnMainSettingsPropertyChanged;
         UpdateEarbudIcons();
     }
     
@@ -68,8 +68,8 @@ public class EarbudIcon : Image
     private void UpdateEarbudIcons()
     {
         var color = DeviceMessageCache.Instance.ExtendedStatusUpdate?.DeviceColor 
-                    ?? Settings.Instance.DeviceLegacy.DeviceColor;
-        if (Settings.Instance.RealisticEarbudImages && color != null &&
+                    ?? LegacySettings.Instance.DeviceLegacy.DeviceColor;
+        if (LegacySettings.Instance.RealisticEarbudImages && color != null &&
             BluetoothImpl.Instance.DeviceSpec.Supports(Features.DeviceColor))
         {
             Uri GetUri(int variant) => new($"{Program.AvaresUrl}/Resources/Device/Realistic/{color}-{variant}.png");

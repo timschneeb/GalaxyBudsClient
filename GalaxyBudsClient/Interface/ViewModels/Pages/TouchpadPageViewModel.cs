@@ -29,8 +29,8 @@ public class TouchpadPageViewModel : MainPageViewModelBase
     {
         SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
 
-        Settings.Instance.CustomActionLeft.PropertyChanged += (sender, args) => UpdateEditStates();
-        Settings.Instance.CustomActionRight.PropertyChanged += (sender, args) => UpdateEditStates();
+        LegacySettings.Instance.CustomActionLeft.PropertyChanged += (sender, args) => UpdateEditStates();
+        LegacySettings.Instance.CustomActionRight.PropertyChanged += (sender, args) => UpdateEditStates();
 
         BluetoothImpl.Instance.Connected += OnConnected;
         Loc.LanguageUpdated += OnLanguageUpdated;
@@ -199,10 +199,10 @@ public class TouchpadPageViewModel : MainPageViewModelBase
         IsRightCustomActionEditable = RightAction == TouchOptions.OtherR;
 
         LeftActionDescription = IsLeftCustomActionEditable
-            ? ActionAsString(Settings.Instance.CustomActionLeft)
+            ? ActionAsString(LegacySettings.Instance.CustomActionLeft)
             : Strings.TouchpadDefaultAction;
         RightActionDescription = IsRightCustomActionEditable
-            ? ActionAsString(Settings.Instance.CustomActionRight)
+            ? ActionAsString(LegacySettings.Instance.CustomActionRight)
             : Strings.TouchpadDefaultAction;
         return;
 

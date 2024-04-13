@@ -17,7 +17,7 @@ public class HotkeyPageViewModel : SubPageViewModelBase
     public override Control CreateView() => new HotkeyPage();
     public override string TitleKey => Generated.I18N.Keys.HotkeyHeader;
     // ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
-    public ObservableCollection<Hotkey> Hotkeys { get; } = new(Settings.Instance.Hotkeys ?? Array.Empty<Hotkey>());
+    public ObservableCollection<Hotkey> Hotkeys { get; } = new(LegacySettings.Instance.Hotkeys ?? Array.Empty<Hotkey>());
     [Reactive] public bool NoHotkeys { private set; get; }
 
     public HotkeyPageViewModel()
@@ -38,7 +38,7 @@ public class HotkeyPageViewModel : SubPageViewModelBase
         // Implicitly enable tray icon if a global hotkey is added
         if (PlatformUtils.SupportsTrayIcon)
         {
-            Settings.Instance.MinimizeToTray = true;
+            LegacySettings.Instance.MinimizeToTray = true;
         }
     }
     
@@ -73,7 +73,7 @@ public class HotkeyPageViewModel : SubPageViewModelBase
 
     private void SaveChanges()
     {
-        Settings.Instance.Hotkeys = Hotkeys.ToArray();
+        LegacySettings.Instance.Hotkeys = Hotkeys.ToArray();
         HotkeyReceiver.Instance.Update();
     }
 }

@@ -89,6 +89,11 @@ public class HotkeyEditorDialogViewModel : ViewModelBase
         }
             
         HotkeyPreview = keys.AsHotkeyString(modifier);
-        return new Hotkey(modifier, keys, Action!.Value);
+        return new Hotkey
+        {
+            Modifier = modifier,
+            Keys = keys,
+            Action = Action.Value
+        };
     }
 }

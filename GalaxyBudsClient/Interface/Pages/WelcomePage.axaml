@@ -31,7 +31,7 @@
                                                Description="{ext:Translate {x:Static i18N:Keys.SettingsDarkmodeDescription}}"
                                                IconSource="DarkTheme"
                                                ItemsSource="{Binding ., Source={ext:ThemesBindingSource}}"
-                                               SelectedValue="{Binding Theme, Source={x:Static utils:Settings.Instance}}">
+                                               SelectedValue="{Binding Theme, Source={x:Static utils:LegacySettings.Instance}}">
                     <Interaction.Behaviors>
                         <ext:LocalizationAwareComboBoxBehavior></ext:LocalizationAwareComboBoxBehavior>
                     </Interaction.Behaviors>
@@ -42,7 +42,7 @@
                                                Description="{ext:Translate {x:Static i18N:Keys.SettingsLocalizationDescription}}"
                                                Symbol="LocalLanguage"
                                                ItemsSource="{Binding Source={ext:LocalesBindingSource}}"
-                                               SelectedValue="{Binding Locale, Source={x:Static utils:Settings.Instance}}" />
+                                               SelectedValue="{Binding Locale, Source={x:Static utils:LegacySettings.Instance}}" />
             </controls:SettingsGroup>
 
             <Border BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"

@@ -75,7 +75,7 @@
         <controls:SettingsGroup IsVisible="{Binding CanUseAlternativeBackend}">
             <controls:SettingsSwitchItem Content="{ext:Translate {x:Static i18N:Keys.DevselWinrtTitle}}"
                                          Description="{ext:Translate {x:Static i18N:Keys.DevselWinrt}}"
-                                         IsChecked="{Binding UseBluetoothWinRT, Source={x:Static utils:Settings.Instance}}"
+                                         IsChecked="{Binding UseBluetoothWinRT, Source={x:Static utils:LegacySettings.Instance}}"
                                          IsCheckedChanged="OnUseWinRtCheckedChanged" />
         </controls:SettingsGroup>
 

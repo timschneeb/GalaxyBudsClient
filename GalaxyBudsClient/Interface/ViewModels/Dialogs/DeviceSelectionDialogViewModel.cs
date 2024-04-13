@@ -39,9 +39,9 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
     
     public async void RegisterDevice(Models model, string mac, string name)
     {
-        Settings.Instance.DeviceLegacy.Model = model;
-        Settings.Instance.DeviceLegacy.MacAddress = mac;
-        Settings.Instance.DeviceLegacy.Name = name;
+        LegacySettings.Instance.DeviceLegacy.Model = model;
+        LegacySettings.Instance.DeviceLegacy.MacAddress = mac;
+        LegacySettings.Instance.DeviceLegacy.Name = name;
         
         Dispatcher.UIThread.Post(() => _dialog.Hide(ContentDialogResult.Primary));
 

@@ -74,7 +74,7 @@
                     <MultiBinding StringFormat="{}{0:f2}°{1}">
                         <Binding Path="LeftTemperature" />
                         <Binding Path="TemperatureUnit"
-                                 Source="{x:Static utils:Settings.Instance}"
+                                 Source="{x:Static utils:LegacySettings.Instance}"
                                  Converter="{StaticResource EnumDescriptionConverter}" />
                     </MultiBinding>
                 </TextBlock.Text>
@@ -158,7 +158,7 @@
                     <MultiBinding StringFormat="{}{0:f2}°{1}">
                         <Binding Path="RightTemperature" />
                         <Binding Path="TemperatureUnit"
-                                 Source="{x:Static utils:Settings.Instance}"
+                                 Source="{x:Static utils:LegacySettings.Instance}"
                                  Converter="{StaticResource EnumDescriptionConverter}" />
                     </MultiBinding>
                 </TextBlock.Text>
