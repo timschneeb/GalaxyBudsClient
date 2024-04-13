@@ -167,7 +167,7 @@ public class DeviceLogManager
                 ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(0,0, LogDownloadProgressEventArgs.Type.Switching));
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.LOG_TRACE_COMPLETE);
 
-                var path = WriteTempFile($"{BluetoothImpl.ActiveModel.ToString()}_traceDump_{_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _traceBuffer ?? Array.Empty<byte>());
+                var path = WriteTempFile($"{BluetoothImpl.Instance.CurrentModel.ToString()}_traceDump_{_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _traceBuffer ?? Array.Empty<byte>());
                 if (path != null)
                 {
                     _traceDumpPaths.Add(path);
@@ -233,7 +233,7 @@ public class DeviceLogManager
                 ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(0,0, LogDownloadProgressEventArgs.Type.Switching));
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.LOG_COREDUMP_COMPLETE);
                     
-                var pathCore = WriteTempFile($"{BluetoothImpl.ActiveModel.ToString()}_coreDump_{/* this is intentional -> */_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _coredumpBuffer ?? Array.Empty<byte>());
+                var pathCore = WriteTempFile($"{BluetoothImpl.Instance.CurrentModel.ToString()}_coreDump_{/* this is intentional -> */_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _coredumpBuffer ?? Array.Empty<byte>());
                 if (pathCore != null)
                 {
                     _coreDumpPaths.Add(pathCore);

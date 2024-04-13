@@ -38,7 +38,7 @@ public partial class SppMessage(
     /* No Buds support at the moment */
     public bool IsFragment { set; get; }
     
-    private Models TargetModel => model ?? BluetoothImpl.ActiveModel;
+    private Models TargetModel => model ?? BluetoothImpl.Instance.CurrentModel;
 
     public static BaseMessageEncoder? CreateEncoder(MsgIds msgId) => CreateUninitializedEncoder(msgId);
     

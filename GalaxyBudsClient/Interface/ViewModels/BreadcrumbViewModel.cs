@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
@@ -35,7 +36,7 @@ public class BreadcrumbViewModel : ViewModelBase
     {
         get
         {
-            var name = LegacySettings.Instance.DeviceLegacy.Name;
+            var name = BluetoothImpl.Instance.Device.Current?.Name ?? Strings.Home;
             if(TitleKey == DeviceNameKey && name.Length > 0)
                 return name;
             return Loc.Resolve(TitleKey);

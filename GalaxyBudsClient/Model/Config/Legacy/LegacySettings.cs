@@ -64,14 +64,13 @@ public static class LegacySettings
         Settings.Data.BixbyRemapEvent = Instance.BixbyRemapEvent;
         Settings.Data.ResumePlaybackOnSensor = Instance.ResumePlaybackOnSensor;
         
-        /* TODO migrate device
-        Settings.Data.Device.Add(new Device
+
+        Settings.Data.Devices.Add(new Device
         {
-            Model = Instance.DeviceLegacy.Model,
-            MacAddress = Instance.DeviceLegacy.MacAddress,
-            Name = Instance.DeviceLegacy.Name
-        });*/
-        
+            Model = Instance.RegisteredDevice.Model,
+            MacAddress = Instance.RegisteredDevice.MacAddress,
+            Name = Instance.RegisteredDevice.Name
+        });
         
         // TODO delete old config file
         // File.Delete(Path);

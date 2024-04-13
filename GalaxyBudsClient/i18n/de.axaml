@@ -348,7 +348,7 @@ Möglicherweise musst du sie manuell neuverbinden.</sys:String>
     <sys:String x:Key="fmg_warning_both">Bitte entferne beide Ohrhörer aus Deinen Ohren.</sys:String>
     <sys:String x:Key="fmg_warning_left">Bitte entferne den linken Ohrhörer aus deinem Ohr.</sys:String>
     <sys:String x:Key="fmg_warning_right">Bitte entferne den rechten Ohrhörer aus deinem Ohr.</sys:String>
-    <sys:String x:Key="fmg_header">Ohrhörersuche</sys:String>
+    <sys:String x:Key="fmg_header">Suchen</sys:String>
 
     <!--Equalizer-->
     <sys:String x:Key="eq_header">Equalizer</sys:String>

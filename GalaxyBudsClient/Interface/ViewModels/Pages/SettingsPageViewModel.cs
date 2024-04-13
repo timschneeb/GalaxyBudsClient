@@ -4,6 +4,7 @@ using Avalonia.Controls;
 using FluentIcons.Common;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
@@ -17,17 +18,13 @@ public class SettingsPageViewModel : MainPageViewModelBase
 
     public SettingsPageViewModel()
     {
-        
-        CanUnregister = BluetoothImpl.IsRegisteredDeviceValid;
-        LegacySettings.Instance.DeviceLegacy.PropertyChanged += OnDevicePropertyChanged;
+        CanUnregister = BluetoothImpl.HasValidDevice;
+        BluetoothImpl.Instance.Device.DeviceChanged += OnDeviceChanged;
     }
-    
-    private void OnDevicePropertyChanged(object? sender, PropertyChangedEventArgs e)
+
+    private void OnDeviceChanged(object? sender, Device? e)
     {
-        if (e.PropertyName is
-            nameof(LegacySettings.Instance.DeviceLegacy.MacAddress) or
-            nameof(LegacySettings.Instance.DeviceLegacy.Model))
-            CanUnregister = BluetoothImpl.IsRegisteredDeviceValid;
+        CanUnregister = BluetoothImpl.HasValidDevice;
     }
 
     public bool IsAutoStartEnabled

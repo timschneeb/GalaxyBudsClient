@@ -17,7 +17,7 @@ public class AmbientStrengthConverter : IntToStringConverter
 
     private void SelectScale()
     {
-        _legacy = BluetoothImpl.ActiveModel == Models.Buds;
+        _legacy = BluetoothImpl.Instance.CurrentModel == Models.Buds;
     }
     
     private static Dictionary<int, string> LegacyScale => new()

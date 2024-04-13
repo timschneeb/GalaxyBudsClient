@@ -64,7 +64,7 @@ public class EqualizerPageViewModel : MainPageViewModelBase
     {
         using var suppressor = SuppressChangeNotifications();
         
-        if (BluetoothImpl.ActiveModel == Models.Buds)
+        if (BluetoothImpl.Instance.CurrentModel == Models.Buds)
         {
             IsEqEnabled = e.EqualizerEnabled;
 				

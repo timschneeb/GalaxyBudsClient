@@ -5,6 +5,7 @@ using Avalonia.Threading;
 using Avalonia.Xaml.Interactivity;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
@@ -39,7 +40,7 @@ public class RequiresFeatureBehavior : Behavior<Control>
     protected override void OnAttachedToVisualTree()
     {
         UpdateState();
-        LegacySettings.Instance.DeviceLegacy.PropertyChanged += OnDevicePropertyChanged;
+        BluetoothImpl.Instance.Device.DeviceChanged += OnDeviceChanged;
         SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
     }
 
@@ -47,10 +48,15 @@ public class RequiresFeatureBehavior : Behavior<Control>
     protected override void OnDetachedFromVisualTree()
     {
         SppMessageReceiver.Instance.ExtendedStatusUpdate -= OnExtendedStatusUpdate;
-        LegacySettings.Instance.DeviceLegacy.PropertyChanged -= OnDevicePropertyChanged;
+        BluetoothImpl.Instance.Device.DeviceChanged -= OnDeviceChanged;
     }
     
     private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateDecoder e)
+    {
+        UpdateState();
+    }
+    
+    private void OnDeviceChanged(object? sender, Device? e)
     {
         UpdateState();
     }

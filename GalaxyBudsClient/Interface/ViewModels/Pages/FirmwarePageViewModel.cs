@@ -84,7 +84,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
     {
         if (param is not FirmwareRemoteBinary firmware) return;
         
-        if (firmware.Model != BluetoothImpl.ActiveModel)
+        if (firmware.Model != BluetoothImpl.Instance.CurrentModel)
         {
             await new MessageBox
             {
@@ -164,7 +164,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
          * We cannot rely on BluetoothImpl.Instance.ActiveModel here, because users can spoof the device model
          * during setup using the "Advanced" menu for troubleshooting. If available, we use the SKU instead.
          */
-        var connectedModel = DeviceMessageCache.Instance.DebugSku?.ModelFromSku() ?? BluetoothImpl.ActiveModel;
+        var connectedModel = DeviceMessageCache.Instance.DebugSku?.ModelFromSku() ?? BluetoothImpl.Instance.CurrentModel;
         var firmwareModel = binary.DetectModel();
         if (firmwareModel == null)
         {
@@ -189,7 +189,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
             Title = string.Format(
                 Strings.FwSelectConfirm,
                 binary.BuildName, 
-                BluetoothImpl.ActiveModel.GetModelMetadataAttribute()?.Name ?? Strings.Unknown
+                BluetoothImpl.Instance.CurrentModel.GetModelMetadataAttribute()?.Name ?? Strings.Unknown
             ),
             Description = Strings.FwSelectConfirmDesc,
             ButtonText = Strings.ContinueButton

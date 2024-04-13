@@ -40,7 +40,7 @@ public interface ILegacySettings : INotifyPropertyChanged
     
     /* Connections */
     [Option(DefaultValue = true)] bool UseBluetoothWinRT { set; get; }
-    [Obsolete("Setting removed"), Option(Alias = "RegisteredDevice")] IDevice DeviceLegacy { set; get; }
+    IDevice RegisteredDevice { set; get; }
     
     /* Touch actions */
     ICustomAction CustomActionLeft { set; get; }

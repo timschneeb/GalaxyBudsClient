@@ -57,7 +57,7 @@ public partial class DevTools : StyledWindow.StyledWindow
                     HexEditor.Caret.Location = new BitLocation(HexEditor.Document.Length - 1);
                 HexEditor.HexView.InvalidateVisualLines();
 
-                var holder = new MessageViewHolder(SppMessage.Decode(raw, BluetoothImpl.ActiveModel));
+                var holder = new MessageViewHolder(SppMessage.Decode(raw, BluetoothImpl.Instance.CurrentModel));
                 _vm.MsgTableDataSource.Add(holder);
                 _vm.MsgTableDataView.Refresh();
                 

@@ -38,17 +38,14 @@ public static class CrashReports
 
                     sentryEvent.SetExtra("arch",
                         RuntimeInformation.ProcessArchitecture.ToString());
-                    sentryEvent.SetExtra("bluetooth-mac",
-                        BitConverter.ToString(SHA1.HashData(Encoding.ASCII.GetBytes(LegacySettings.Instance.DeviceLegacy.MacAddress))).Replace("-", ""));
-                    sentryEvent.SetExtra("bluetooth-model-saved",
-                        LegacySettings.Instance.DeviceLegacy.Model);
                     sentryEvent.SetExtra("custom-locale", Settings.Data.Locale);
                     sentryEvent.SetExtra("sw-version",
                         DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? "null");
                     
-                    sentryEvent.SetTag("bluetooth-model", BluetoothImpl.ActiveModel.ToString());
-                    sentryEvent.SetExtra("bluetooth-model", BluetoothImpl.ActiveModel);
+                    sentryEvent.SetTag("bluetooth-model", BluetoothImpl.Instance.CurrentModel.ToString());
+                    sentryEvent.SetExtra("bluetooth-model", BluetoothImpl.Instance.CurrentModel);
                     sentryEvent.SetExtra("bluetooth-sku", DeviceMessageCache.Instance.DebugSku?.LeftSku ?? "null");
+                    sentryEvent.SetExtra("bluetooth-ext-revision", DeviceMessageCache.Instance.ExtendedStatusUpdate?.Revision ?? -1);
                     sentryEvent.SetExtra("bluetooth-connected", BluetoothImpl.Instance.IsConnected);
                 }
                 catch (Exception ex)

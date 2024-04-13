@@ -20,11 +20,6 @@
         <OutputType>Exe</OutputType>
         <!--<PublishTrimmed>true</PublishTrimmed>-->
     </PropertyGroup>
-
-    <!-- TODO: remove this -->
-    <PropertyGroup>
-        <JsonSerializerIsReflectionEnabledByDefault>false</JsonSerializerIsReflectionEnabledByDefault>
-    </PropertyGroup>
     
     <PropertyGroup>
         <!-- App properties -->

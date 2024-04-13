@@ -4,6 +4,7 @@ using Avalonia.Interactivity;
 using Avalonia.Media;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Model.Config.Legacy;
+using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface;
 using Symbol = FluentIcons.Common.Symbol;
@@ -54,6 +55,6 @@ public partial class TranslatorTools : StyledWindow.StyledWindow
         GrantAllFeaturesForTesting = control.IsChecked ?? false;
         
         // Trigger RequiresFeatureBehavior update
-        LegacySettings.Instance.DeviceLegacy.Model = LegacySettings.Instance.DeviceLegacy.Model;
+        BluetoothImpl.Instance.Device.RaiseDeviceChanged();
     }
 }

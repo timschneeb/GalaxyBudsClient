@@ -8,6 +8,7 @@ using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
@@ -40,9 +41,13 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
     
     public async void RegisterDevice(Models model, string mac, string name)
     {
-        LegacySettings.Instance.DeviceLegacy.Model = model;
-        LegacySettings.Instance.DeviceLegacy.MacAddress = mac;
-        LegacySettings.Instance.DeviceLegacy.Name = name;
+        var device = new Device
+        {
+            Model = model,
+            MacAddress = mac,
+            Name = name
+        };
+        Settings.Data.Devices.Add(device);
         
         Dispatcher.UIThread.Post(() => _dialog.Hide(ContentDialogResult.Primary));
 
@@ -55,7 +60,12 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
         };
         _ = cd.ShowAsync(MainWindow.Instance);
         
-        await BluetoothImpl.Instance.ConnectAsync();
+        if(BluetoothImpl.Instance.IsConnected)
+            await BluetoothImpl.Instance.DisconnectAsync();
+        
+        BluetoothImpl.Instance.Device.Current = device;
+        await BluetoothImpl.Instance.ConnectAsync(device);
+        
         cd.Hide();
     }
     

@@ -6,6 +6,7 @@ using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
@@ -22,13 +23,13 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
     public AmbientCustomizePageViewModel()
     {
         SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
-       
-        LegacySettings.Instance.DeviceLegacy.PropertyChanged += OnDevicePropertyChanged;
+        BluetoothImpl.Instance.Device.DeviceChanged += OnDeviceChanged;
+        
         PropertyChanged += OnPropertyChanged;
         UpdateVolumeSliders();
     }
 
-    private void OnDevicePropertyChanged(object? sender, PropertyChangedEventArgs e)
+    private void OnDeviceChanged(object? sender, Device? e)
     {
         UpdateVolumeSliders();
     }

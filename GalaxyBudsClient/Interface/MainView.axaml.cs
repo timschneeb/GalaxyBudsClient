@@ -38,7 +38,7 @@ public partial class MainView : UserControl
         new TouchpadPageViewModel(),
         new AdvancedPageViewModel(),
         new SystemPageViewModel(),
-        new DevicesPageViewModel(),
+        // TODO new DevicesPageViewModel(),
         new SettingsPageViewModel()
     ];
 

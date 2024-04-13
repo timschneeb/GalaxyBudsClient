@@ -75,7 +75,7 @@ public class ExperimentClient
     public async void ScanForExperiments()
     {
         if (!BluetoothImpl.Instance.IsConnected || 
-            BluetoothImpl.ActiveModel == Models.NULL ||
+            BluetoothImpl.Instance.CurrentModel == Models.NULL ||
             DeviceMessageCache.Instance.ExtendedStatusUpdate == null)
         {
             return;
@@ -91,7 +91,7 @@ public class ExperimentClient
         try
         {
             var response =
-                await _client.GetAsync($"{API_GET_EXPERIMENTS}/{BluetoothImpl.ActiveModel.ToString()}");
+                await _client.GetAsync($"{API_GET_EXPERIMENTS}/{BluetoothImpl.Instance.CurrentModel.ToString()}");
             if (response.IsSuccessStatusCode)
             {
                 var formatters = new MediaTypeFormatterCollection();

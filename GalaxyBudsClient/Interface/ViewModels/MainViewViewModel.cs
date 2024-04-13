@@ -5,6 +5,7 @@ using Avalonia.Controls;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
@@ -17,7 +18,7 @@ public class MainViewViewModel : ViewModelBase
     public MainViewViewModel()
     {
         NavigationFactory = new NavigationFactory(this);
-        LegacySettings.Instance.DeviceLegacy.PropertyChanged += OnDevicePropertyChanged;
+        BluetoothImpl.Instance.Device.DeviceChanged += OnDeviceChanged;
         
         BluetoothImpl.Instance.Connecting += (_, _) =>
         {
@@ -38,23 +39,20 @@ public class MainViewViewModel : ViewModelBase
         };
     }
 
+    private void OnDeviceChanged(object? sender, Device? e)
+    {
+        IsInSetupWizard = !BluetoothImpl.HasValidDevice;
+    }
+
     [Reactive] public bool IsConnectButtonEnabled { set; get; } = true;
     [Reactive] public string ConnectButtonText { set; get; } = Strings.ConnlostConnect;
-    [Reactive] public bool IsInSetupWizard { set; get; } = !BluetoothImpl.IsRegisteredDeviceValid;
+    [Reactive] public bool IsInSetupWizard { set; get; } = !BluetoothImpl.HasValidDevice;
     public NavigationFactory NavigationFactory { get; }
     public required Func<Type, PageViewModelBase?> VmResolver { get; init; }
     public ObservableCollection<BreadcrumbViewModel> BreadcrumbItems { get; } = [
         // Workaround: The Breadcrumb library crashes if there are no items when it tries to measure its width 
         new BreadcrumbViewModel("", typeof(HomePageViewModel)) 
     ];
-    
-    private void OnDevicePropertyChanged(object? sender, PropertyChangedEventArgs e)
-    {
-        if (e.PropertyName is
-            nameof(LegacySettings.Instance.DeviceLegacy.MacAddress) or
-            nameof(LegacySettings.Instance.DeviceLegacy.Model))
-            IsInSetupWizard = !BluetoothImpl.IsRegisteredDeviceValid;
-    }
 }
 
 public class NavigationFactory(MainViewViewModel owner) : INavigationPageFactory

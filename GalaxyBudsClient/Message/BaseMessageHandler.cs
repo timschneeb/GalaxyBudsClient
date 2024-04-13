@@ -10,7 +10,7 @@ namespace GalaxyBudsClient.Message;
 
 public abstract class BaseMessageHandler
 {
-    public Models TargetModel { set; get; } = BluetoothImpl.ActiveModel;
+    public Models TargetModel { set; get; } = BluetoothImpl.Instance.CurrentModel;
     protected IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(TargetModel) ?? new StubDeviceSpec();
 
     public virtual Dictionary<string, string> ToStringMap()

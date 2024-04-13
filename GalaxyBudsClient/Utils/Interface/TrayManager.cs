@@ -99,7 +99,7 @@ internal class TrayManager
                 EventDispatcher.Instance.Dispatch(Event.AmbientToggle);
                 break;
             case TrayItemTypes.Connect:
-                if (!BluetoothImpl.Instance.IsConnected && BluetoothImpl.IsRegisteredDeviceValid)
+                if (!BluetoothImpl.Instance.IsConnected && BluetoothImpl.HasValidDevice)
                 {
                     await BluetoothImpl.Instance.ConnectAsync();
                 }
@@ -197,7 +197,7 @@ internal class TrayManager
                 items.AddRange(RebuildDynamicActions());
                 items.Add(new NativeMenuItemSeparator());
             }
-            else if (BluetoothImpl.IsRegisteredDeviceValid)
+            else if (BluetoothImpl.HasValidDevice)
             {
                 items.Add(new NativeMenuItem(Strings.ConnlostConnect)
                 {

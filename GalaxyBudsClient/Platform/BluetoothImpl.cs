@@ -10,6 +10,7 @@ using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
@@ -55,19 +56,18 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
     public event EventHandler<byte[]>? NewDataReceived;
     public event EventHandler<BluetoothException>? BluetoothError;
     
-    public static Models ActiveModel => LegacySettings.Instance.DeviceLegacy.Model;
-    public IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(ActiveModel) ?? new StubDeviceSpec();
-    public static bool IsRegisteredDeviceValid => LegacySettings.Instance.DeviceLegacy.Model != Models.NULL && 
-                                                  LegacySettings.Instance.DeviceLegacy.MacAddress.Length >= 12;
+    public Models CurrentModel => Device.Current?.Model ?? Models.NULL;
+    public IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(CurrentModel) ?? new StubDeviceSpec();
+    public static bool HasValidDevice => Settings.Data.Devices.Count > 0 && 
+                                         Settings.Data.Devices.Any(x => x.Model != Models.NULL);
     
     [Reactive] public string DeviceName { private set; get; } = "Galaxy Buds";
     [Reactive] public bool IsConnected { private set; get; }
     [Reactive] public string LastErrorMessage { private set; get; } = string.Empty;
     [Reactive] public bool SuppressDisconnectionEvents { set; get; }
     [Reactive] public bool ShowDummyDevices { set; get; }
-    
-    [Obsolete("Use new IsConnected instead")]
-    public bool IsConnectedLegacy => _backend.IsStreamConnected;
+
+    public DeviceManager Device { get; } = new();
     
     private readonly List<byte> _incomingData = [];
     private static readonly ConcurrentQueue<byte[]> IncomingQueue = new();
@@ -201,11 +201,11 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
 
     private async Task<string> GetDeviceNameAsync()
     {
-        var fallbackName = ActiveModel.GetModelMetadataAttribute()?.Name ?? Strings.Unknown;
+        var fallbackName = CurrentModel.GetModelMetadataAttribute()?.Name ?? Strings.Unknown;
         try
         {
             var devices = await _backend.GetDevicesAsync();
-            var device = devices.FirstOrDefault(d => d.Address == LegacySettings.Instance.DeviceLegacy.MacAddress);
+            var device = devices.FirstOrDefault(d => d.Address == Device.Current?.MacAddress);
             return device?.Name ?? fallbackName;
         }
         catch (BluetoothException ex)
@@ -215,9 +215,11 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         }
     }
         
-    public async Task<bool> ConnectAsync(bool noRetry = false)
+    public async Task<bool> ConnectAsync(Device? device = null, bool noRetry = false)
     {
-        if (!IsRegisteredDeviceValid)
+        device ??= Device.Current;
+
+        if (!HasValidDevice || device == null)
         {
             Log.Error("BluetoothImpl: Connection attempt without valid device");
             return false;
@@ -227,10 +229,9 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         try
         {
             DeviceName = await GetDeviceNameAsync();
-            LegacySettings.Instance.DeviceLegacy.Name = DeviceName;
+            device.Name = DeviceName;
                         
-            await _backend.ConnectAsync(LegacySettings.Instance.DeviceLegacy.MacAddress,
-                DeviceSpec.ServiceUuid.ToString(), noRetry);
+            await _backend.ConnectAsync(device.MacAddress, DeviceSpec.ServiceUuid.ToString(), noRetry);
             return true;
         }
         catch (BluetoothException ex)
@@ -303,15 +304,19 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         await SendAsync(encoder.Encode());
     }
         
-    public void UnregisterDevice()
+    public void UnregisterDevice(Device? device = null)
     {
-        LegacySettings.Instance.DeviceLegacy.Model = Models.NULL;
-        LegacySettings.Instance.DeviceLegacy.MacAddress = string.Empty;
-        LegacySettings.Instance.DeviceLegacy.Name = string.Empty;
-        // TODO LegacySettings.Instance.DeviceLegacy.DeviceColor = null;
+        var mac = device?.MacAddress ?? Device.Current?.MacAddress;
+        var toRemove = Settings.Data.Devices.FirstOrDefault(x => x.MacAddress == mac);
+        if(toRemove == null)
+            return;
+        
+        Settings.Data.Devices.Remove(toRemove);
         DeviceMessageCache.Instance.Clear();
         // Don't wait for this to complete as it may confuse users if the menu option waits until connect timed out
         _ = DisconnectAsync();
+
+        Device.Current = Settings.Data.Devices.FirstOrDefault();
     }
     
     private void OnDisconnected(object? sender, string reason)
@@ -328,7 +333,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
     {
         _ = Task.Delay(150).ContinueWith(_ =>
         {
-            if (IsRegisteredDeviceValid)
+            if (HasValidDevice)
             {
                 Connected?.Invoke(this, EventArgs.Empty);
                 IsConnected = true;
@@ -345,7 +350,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         NewDataReceived?.Invoke(this, frame);
         
         /* Discard data if not properly registered */
-        if (!IsRegisteredDeviceValid)
+        if (!HasValidDevice)
         {
             return;
         }
@@ -380,7 +385,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
 
             try
             {
-                foreach (var message in SppMessage.DecodeRawChunk(_incomingData, ActiveModel))
+                foreach (var message in SppMessage.DecodeRawChunk(_incomingData, CurrentModel))
                 {
                     MessageReceived?.Invoke(this, message);
                 }

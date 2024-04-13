@@ -17,6 +17,7 @@
     <sys:String x:Key="unknown">Unknown</sys:String>
     <sys:String x:Key="back">Back</sys:String>
     <sys:String x:Key="hint">Hint</sys:String>
+    <sys:String x:Key="home">Home</sys:String>
     <sys:String x:Key="please_wait">Please wait...</sys:String>
     
     <sys:String x:Key="file_not_found">File not found</sys:String>

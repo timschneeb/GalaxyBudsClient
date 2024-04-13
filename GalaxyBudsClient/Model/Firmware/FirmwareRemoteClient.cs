@@ -33,7 +33,7 @@ public class FirmwareRemoteClient
         try
         {
             FirmwareRemoteBinary[] firmwares;
-            var response = await _client.GetAsync(API_GET_FIRMWARE + $"/{BluetoothImpl.ActiveModel.ToString()}");
+            var response = await _client.GetAsync(API_GET_FIRMWARE + $"/{BluetoothImpl.Instance.CurrentModel.ToString()}");
             if (response.IsSuccessStatusCode)
             {
                 var formatters = new MediaTypeFormatterCollection();
