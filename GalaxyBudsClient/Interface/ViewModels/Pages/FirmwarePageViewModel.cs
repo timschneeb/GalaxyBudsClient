@@ -17,7 +17,6 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Firmware;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
 using ReactiveUI.Fody.Helpers;
 using Serilog;

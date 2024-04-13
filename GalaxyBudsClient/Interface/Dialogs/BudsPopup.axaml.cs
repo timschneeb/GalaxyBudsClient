@@ -10,7 +10,6 @@ using GalaxyBudsClient.Interface.StyledWindow;
 using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
 
 namespace GalaxyBudsClient.Interface.Dialogs;

@@ -3,7 +3,6 @@ using Avalonia.Input;
 using GalaxyBudsClient.Interface.ViewModels.Controls;
 using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Utils;
 
 namespace GalaxyBudsClient.Interface.Controls;
 

@@ -10,11 +10,9 @@ using Avalonia.Threading;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Config;
-using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.Controls;

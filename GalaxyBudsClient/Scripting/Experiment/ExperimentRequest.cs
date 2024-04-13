@@ -8,7 +8,6 @@ using System.Text;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Utils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Org.BouncyCastle.Crypto;

@@ -1,9 +1,7 @@
 using System;
 using System.ComponentModel;
 using GalaxyBudsClient.Generated.I18N;
-using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI;
 

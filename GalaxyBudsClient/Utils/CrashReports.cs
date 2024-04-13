@@ -1,11 +1,8 @@
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography;
-using System.Text;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Config;
-using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Platform;
 using Sentry;
 using Serilog;

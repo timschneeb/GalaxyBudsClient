@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using Avalonia.Controls;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Model.Config;
-using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils;
 using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels;

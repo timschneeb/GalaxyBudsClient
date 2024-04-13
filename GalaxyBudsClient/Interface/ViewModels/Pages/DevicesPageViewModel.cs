@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using FluentIcons.Common;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Model.Config;
-using GalaxyBudsClient.Utils;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;

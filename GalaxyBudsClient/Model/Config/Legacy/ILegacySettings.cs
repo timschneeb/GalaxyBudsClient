@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel;
 using Config.Net;
 using GalaxyBudsClient.Model.Constants;

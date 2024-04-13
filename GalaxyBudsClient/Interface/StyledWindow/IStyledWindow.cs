@@ -6,7 +6,6 @@ using Avalonia.Styling;
 using FluentAvalonia.UI.Media;
 using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Utils;
 
 namespace GalaxyBudsClient.Interface.StyledWindow;
 

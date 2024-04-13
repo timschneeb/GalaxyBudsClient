@@ -5,7 +5,6 @@ using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils;
 using Serilog;
 
 namespace GalaxyBudsClient.Message;

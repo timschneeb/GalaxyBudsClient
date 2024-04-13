@@ -5,7 +5,6 @@ using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform.Interfaces;
-using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
 
 namespace GalaxyBudsClient.Platform;

@@ -14,16 +14,13 @@ using Avalonia.Threading;
 using FluentAvalonia.Styling;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Config;
-using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Scripting.Experiment;
-using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface;
 using Serilog;
 using Application = Avalonia.Application;
-using Colors = GalaxyBudsClient.Model.Constants.Colors;
 using MainWindow = GalaxyBudsClient.Interface.MainWindow;
 
 namespace GalaxyBudsClient;

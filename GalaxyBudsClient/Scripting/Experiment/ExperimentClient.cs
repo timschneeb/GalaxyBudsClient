@@ -10,7 +10,6 @@ using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Serilog;

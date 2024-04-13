@@ -1,5 +1,4 @@
 using System.Collections;
-using System.ComponentModel;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
@@ -7,10 +6,8 @@ using Avalonia.Xaml.Interactivity;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Config;
-using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils;
 
 namespace GalaxyBudsClient.Interface.MarkupExtensions;
 

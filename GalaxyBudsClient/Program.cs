@@ -9,7 +9,6 @@ using Avalonia.Controls;
 using Avalonia.ReactiveUI;
 using GalaxyBudsClient.Cli;
 using GalaxyBudsClient.Cli.Ipc;
-using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;

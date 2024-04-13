@@ -4,7 +4,6 @@ using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
-using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI.Fody.Helpers;
 
