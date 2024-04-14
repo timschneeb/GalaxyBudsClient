@@ -309,11 +309,13 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         if(toRemove == null)
             return;
         
+        // Disconnect if the device is currently connected
+        if(mac == Device.Current?.MacAddress)
+            _ = DisconnectAsync();
+
         Settings.Data.Devices.Remove(toRemove);
         DeviceMessageCache.Instance.Clear();
-        // Don't wait for this to complete as it may confuse users if the menu option waits until connect timed out
-        _ = DisconnectAsync();
-
+        
         Device.Current = Settings.Data.Devices.FirstOrDefault();
     }
     

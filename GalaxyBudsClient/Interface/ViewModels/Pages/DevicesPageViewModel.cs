@@ -4,6 +4,7 @@ using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Model.Config;
+using GalaxyBudsClient.Platform;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
@@ -47,6 +48,6 @@ public class DevicesPageViewModel : MainPageViewModelBase
         if (param is not Device device)
             return;
 
-        Settings.Data.Devices.Remove(device);
+        BluetoothImpl.Instance.UnregisterDevice(device);
     }
 }
