@@ -80,7 +80,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
             if (!Design.IsDesignMode)
             {
 #if Windows
-                if (PlatformUtils.IsWindows && Settings.Instance.UseBluetoothWinRT
+                if (PlatformUtils.IsWindows && Settings.Data.UseBluetoothWinRt
                                             && PlatformUtils.IsWindowsContractsSdkSupported)
                 {
                     Log.Debug("BluetoothImpl: Using WinRT.BluetoothService");
