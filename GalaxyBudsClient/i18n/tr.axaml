@@ -16,7 +16,11 @@
     <sys:String x:Key="notset">Ayarlanmadı</sys:String>
     <sys:String x:Key="unknown">Bilinmiyor</sys:String>
     <sys:String x:Key="back">Geri</sys:String>
+    <sys:String x:Key="hint">Ana Sayfa</sys:String>
+    <sys:String x:Key="home">İpucu</sys:String>
+    <sys:String x:Key="please_wait">Lütfen bekleyin...</sys:String>
 
+    <sys:String x:Key="file_not_found">Dosya bulunamadı</sys:String>
     <sys:String x:Key="nobluetoothdev">Bluetooth adaptörü bulunamadı. Lütfen bluetooth'u etkinleştirip yeniden deneyin.</sys:String>
 
     <sys:String x:Key="anc">Aktif gürültü engelleme</sys:String>
@@ -34,6 +38,8 @@
     <!--Dark Mode States-->
     <sys:String x:Key="darkmode_disabled">Kapalı</sys:String>
     <sys:String x:Key="darkmode_enabled">Açık</sys:String>
+    <sys:String x:Key="darkmode_blur_enabled">Açık, bulanıklık efektiyle</sys:String>
+    <sys:String x:Key="darkmode_mica_enabled">Açık, mika efektiyle</sys:String>
     <sys:String x:Key="darkmode_system">Sistem ayarlarını kullan</sys:String>
 
     <!--Connection popup-->
@@ -51,6 +57,7 @@
     <sys:String x:Key="placement_wearing">Kulakta</sys:String>
     <sys:String x:Key="placement_not_wearing">Kullanılmıyor</sys:String>
     <sys:String x:Key="placement_in_case">Kutuda</sys:String>
+    <sys:String x:Key="placement_charging">Şarj Oluyor</sys:String>
 
     <!--Touch options-->
     <sys:String x:Key="touchoption_voice">Sesli Asistan</sys:String>
@@ -65,6 +72,7 @@
     <sys:String x:Key="touchoption_custom_null">Ayarlanmamış</sys:String>
     <sys:String x:Key="touchoption_custom_unknown">Bilinmiyor</sys:String>
     <sys:String x:Key="touchoption_custom_prefix">Özel Eylem:</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_event">Kulaklık eylemini tetikle...</sys:String>
     <sys:String x:Key="touchoption_custom_trigger_hotkey">Bir tuşa basınız...</sys:String>
     <sys:String x:Key="touchoption_custom_external_app">Harici uygulamayı çalıştır...</sys:String>
 
@@ -116,9 +124,11 @@
     <!--Hotkey page-->
     <sys:String x:Key="hotkey_header">Klavye kısayolları</sys:String>
     <sys:String x:Key="hotkey_add">Yeni bir kısayol ata</sys:String>
+    <sys:String x:Key="hotkey_add_short">Yeni</sys:String>
     <sys:String x:Key="hotkey_empty">Kısayol atanmadı</sys:String>
     <sys:String x:Key="hotkey_empty_desc">Yukarıdaki butona tıklayarak yeni bir klavye kısayolu oluştur</sys:String>
     <sys:String x:Key="hotkey_edit">Düzenle</sys:String>
+    <sys:String x:Key="hotkey_edit_long">Mevcut kısayolu düzenle</sys:String>
     <sys:String x:Key="hotkey_delete">Sil</sys:String>
     <sys:String x:Key="hotkey_add_error">Kısayollar kaydedilirken/güncellenirken hata alındı</sys:String>
     <sys:String x:Key="hotkey_add_error_context">Etkilenen kısayol:</sys:String>
@@ -151,6 +161,8 @@
 
     <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Hoş Geldiniz!</sys:String>
+    <sys:String x:Key="welcome_register">Kulaklıklarınızı ayarlayın</sys:String>
+    <sys:String x:Key="welcome_register_desc">Galaxy Buds kulaklıklarınızı seçin ve kaydedin</sys:String>
     <sys:String x:Key="welcome_textblock_p1">Merhaba! Lütfen Galaxy Buds Manager uygulamamızın Samsung ile herhangi bir bağlantısı olmadığını unutmayın. Bu uygulama mobil Samsung Wearable uygulamasının yapamadığı bir çok şeyi yapabilir lakin yine de güvenlik sebebiyle OTA güncelleme seçeneğini uygulamaya eklemedik. Eğer buna ihtiyacınız olursa, lütfen orijinal uygulamalardan faydalanın.</sys:String>
     <sys:String x:Key="welcome_textblock_p2">Sahne arkasında neler döndüğü hakkında bilgi edinmek isterseniz, ufak bir tersine mühendislik macerası içeren GitHub sayfamıza göz atabilirsiniz. Aynı zamanda herhangi bir problemle karşı karşıya kalmanız durumun GitHub veya Telegram @thepbone üzerinden mesaj gönderebilirsiniz.</sys:String>
     <sys:String x:Key="welcome_textblock_p3">Bu uygulama hem Buds (2019) hem de Buds+ (2020) cihazlarını destekler.</sys:String>
@@ -158,6 +170,7 @@
     <sys:String x:Key="welcome_darkmode_content">Gözleriniz yanmaya mı başladı? Daha karanlık renklerden oluşan temamızı deneyin!</sys:String>
 
     <!--Main page-->
+    <sys:String x:Key="mainpage_header">Ana Sayfa</sys:String>
     <sys:String x:Key="mainpage_corrupt_data">Bozulmuş veri bulundu. Tekrar bağlanılıyor...</sys:String>
     <sys:String x:Key="mainpage_fit_test">Kulaklık Uyum Testi</sys:String>
     <sys:String x:Key="mainpage_find_my_earbuds">Kulaklıklarımı Bul</sys:String>
@@ -198,6 +211,8 @@
     <sys:String x:Key="devsel_refresh">Eşlenmiş cihazları yenile</sys:String>
     <sys:String x:Key="devsel_device_name">Cihaz Adı</sys:String>
     <sys:String x:Key="devsel_btaddr">MAC Adresi</sys:String>
+    <sys:String x:Key="devsel_manual_pair_title">Cihazınız listede gözükmüyor mu?</sys:String>
+    <sys:String x:Key="devsel_manual_pair_description">Kulaklıklarınızın daha önce eşleştirilmiş olduğundan emin olun. Hala tanınmıyorlarsa manuel bağlantı seçeneğini kullanmayı deneyin.</sys:String>
     <sys:String x:Key="devsel_model">Model</sys:String>
     <sys:String x:Key="devsel_manual_pair">Manuel bağlantı</sys:String>
     <sys:String x:Key="devsel_nodevices">Lütfen öncelikle kulaklıklarınızı eşleştirin</sys:String>
@@ -478,8 +493,11 @@ Yeniden eşleme yapılandırması yalnızca bu cihazda etkindir. Kulaklıkların
     <sys:String x:Key="credits_contributor">Katkıda Bulunanlar</sys:String>
     <sys:String x:Key="credits_translator">Çevirenler</sys:String>
     <sys:String x:Key="credits_sponsor">Bu projeye sponsor ol</sys:String>
+    <sys:String x:Key="credits_kofi">ko-fi sayfamı ziyaret ederek bana destek olun!</sys:String>
+    <sys:String x:Key="credits_github">Bu projeyi GitHub'da ziyaret edin</sys:String>
 
     <!--Connection lost page-->
+    <sys:String x:Key="connlost">Bağlantı kesildi</sys:String>
     <sys:String x:Key="connlost_header">Bağlantı sağlanılamadı</sys:String>
     <sys:String x:Key="connlost_description_p1">Kulaklıklarınzla bilgisayar arasında bağlantı sağlanamadı.</sys:String>
     <sys:String x:Key="connlost_description_p2">Lütfen Bluetooth ayarlarınızı kontrol edin ve kulaklıklarınızın bilgisayarınıza bağlı olduğundan emin olun. Gerekirse yeni kulaklıklara da bağlanabilirsiniz. Bunun için lütfen "Seçenekler &gt; Cihazı sil" seçeneğini kullanın.</sys:String>
@@ -487,6 +505,7 @@ Yeniden eşleme yapılandırması yalnızca bu cihazda etkindir. Kulaklıkların
     <sys:String x:Key="connlost_noinfo">Hata bilgisi toplanılamadı</sys:String>
     <sys:String x:Key="connlost_disconnected">Cihaz bağlantısı kesildi</sys:String>
     <sys:String x:Key="connlost_connect">Bağla</sys:String>
+    <sys:String x:Key="pairingmode_done">Kulaklıklar eşleştirme moduna alındı ​​ve şimdi bu cihazdan bağlantısı kesildi.</sys:String>
     <sys:String x:Key="connlost_connecting">Bağlanılıyor...</sys:String>
 
     <!--Firmware update disclaimer-->
@@ -499,6 +518,10 @@ Yeniden eşleme yapılandırması yalnızca bu cihazda etkindir. Kulaklıkların
 Bu uygulama GPLv3 kapsamında lisanslanmıştır. Bunu kullanarak, lisansı ve sorumluluk sınırlamasını kabul etmiş olursunuz. Kabul etmek için 'Devam'a basın.</sys:String>
 
     <!--Firmware selection-->
+    <sys:String x:Key="fw_select_install_short">İndir</sys:String>
+    <sys:String x:Key="fw_select_from_disk_short">Aç</sys:String>
+    <sys:String x:Key="fw_select_refresh">Yenile</sys:String>
+    <sys:String x:Key="fw_select_no_results_short">Güncelleme bulunamadı</sys:String>
     <sys:String x:Key="fw_select_header">Ürün yazılımı güncellemeleri</sys:String>
     <sys:String x:Key="fw_select_instructions">Lütfen indirmek ve kurmak için bir bellenim ikili dosyası seçin. Alternatif olarak, 'Gelişmiş... &gt; Diskten görüntü seç' seçeneğine giderek sabit sürücünüzden bir Ürün yazılımı binary dosyası da seçebilirsiniz.</sys:String>
     <sys:String x:Key="fw_select_no_results">Şu anda herhangi bir ürün yazılımı güncellemesi mevcut değil. Lütfen daha sonra tekrar deneyin.</sys:String>
