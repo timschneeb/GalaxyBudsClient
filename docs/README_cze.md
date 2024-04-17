@@ -142,6 +142,7 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 * [@nift4](https://github.com/nift4) - Podpora pro macOS a opravy chyb
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Šablony pro problémy, wiki a překlady
 * [@AndriesK](https://github.com/AndriesK) - Oprava chyby u Buds Live
+* [@TheLastFrame](https://github.com/TheLastFrame) - Ikony pro Buds Pro
 * [@githubcatw](https://github.com/githubcatw) - Základní dialogové okno připojení
 * [@GaryGadget9](https://github.com/GaryGadget9) - Balíček WinGet
 * [@joscdk](https://github.com/joscdk) - AUR balíček
