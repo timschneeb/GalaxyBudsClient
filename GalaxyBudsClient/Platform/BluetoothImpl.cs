@@ -264,6 +264,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
 
             await _backend.DisconnectAsync();
             Disconnected?.Invoke(this, "User requested disconnect");
+            IsConnected = false;
             LastErrorMessage = string.Empty;
         }
         catch (BluetoothException ex)
