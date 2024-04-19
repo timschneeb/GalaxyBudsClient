@@ -116,7 +116,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
         #endregion
 
         #region Connection
-        public async Task ConnectAsync(string macAddress, string uuid, bool noRetry = false)
+        public async Task ConnectAsync(string macAddress, string uuid, CancellationToken cancelToken)
         {
             Connecting?.Invoke(this, EventArgs.Empty);
             
@@ -146,10 +146,13 @@ namespace GalaxyBudsClient.Bluetooth.Linux
 
             for (var attempt = 1; attempt <= 5; attempt++)
             {
+                if(cancelToken.IsCancellationRequested)
+                    return;
+                
                 Log.Debug("Linux.BluetoothService: Connecting... (attempt {Attempt}/5)", attempt);
                 try
                 {
-                    if (await AttemptBasicConnectionAsync(noRetry))
+                    if (await AttemptBasicConnectionAsync(cancelToken))
                     {
                         break;
                     }
@@ -159,7 +162,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                     BluetoothErrorAsync?.Invoke(this, ex);
                 }
 
-                await Task.Delay(50);
+                await Task.Delay(50, cancelToken);
 
                 if (attempt >= 5)
                 {
@@ -168,7 +171,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 }
             }
 
-            await _device.WaitForPropertyValueAsync("Connected", value: true, Timeout);
+            await _device.WaitForPropertyValueAsync("Connected", value: true, Timeout, cancelToken);
             Connected?.Invoke(this, EventArgs.Empty);
             ConnectionWatchdog = _device.WatchForPropertyChangeAsync("Connected", true, ConnectionWatcherCallback);
             Log.Debug("Linux.BluetoothService: Device ready. Registering profile client for UUID {Uuid}...", uuid);
@@ -225,6 +228,9 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             
             for (var attempt = 1; attempt <= 10; attempt++)
             {
+                if(cancelToken.IsCancellationRequested)
+                    return;
+                
                 Log.Debug("Linux.BluetoothService: Connecting to profile... (attempt {Attempt}/10)", attempt);
 
                 try
@@ -240,23 +246,11 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                     {
                         case BlueZException.ErrorCodes.Failed:
                             Log.Debug("Linux.BluetoothService: Failed: \'{ExErrorMessage}\'", ex.ErrorMessage);
-                            
-                            if (noRetry)
-                            {
-                                throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, $"Failed to connect to profile: '{ex.ErrorMessage}'");
-                            }
-                            
-                            await Task.Delay(500);
+                            await Task.Delay(500, cancelToken);
                             break;
                         case BlueZException.ErrorCodes.InProgress:
                             Log.Debug("Linux.BluetoothService: Already connecting");
-                            
-                            if (noRetry)
-                            {
-                                throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, $"Already connecting to profile. Please wait and try again later: '{ex.ErrorMessage}'");
-                            }
-                            
-                            await Task.Delay(500);
+                            await Task.Delay(500, cancelToken);
                             break;
                         case BlueZException.ErrorCodes.AlreadyConnected:
                             Log.Debug("Linux.BluetoothService: Success. Already connected");
@@ -289,7 +283,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 Log.Debug("Linux.BluetoothService: Reconnected. Attempting to auto-connect to profile...");
                 try
                 {
-                    await ConnectAsync(_currentMac, _currentUuid);
+                    await ConnectAsync(_currentMac, _currentUuid, CancellationToken.None);
                 }
                 catch (BluetoothException ex)
                 {
@@ -303,7 +297,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             }
         }
 
-        private async Task<bool> AttemptBasicConnectionAsync(bool noRetry)
+        private async Task<bool> AttemptBasicConnectionAsync(CancellationToken cancelToken)
         {
             if (await _device.GetConnectedAsync())
                 return true;
@@ -320,23 +314,18 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                     case BlueZException.ErrorCodes.Failed:
                         Log.Debug("Linux.BluetoothService: Failed: \'{ExErrorMessage}\'", ex.ErrorMessage);
                         
-                        if (noRetry || ex.ErrorMessage.Contains("Host is down", StringComparison.OrdinalIgnoreCase))
+                        if (ex.ErrorMessage.Contains("Host is down", StringComparison.OrdinalIgnoreCase))
                         {
                             throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, $"Failed to connect: '{ex.ErrorMessage}'");
                         }
                         
-                        await Task.Delay(250);
+                        await Task.Delay(250, cancelToken);
                         return false;
                     
                     case BlueZException.ErrorCodes.InProgress:
                         Log.Debug("Linux.BluetoothService: Already connecting");
                         
-                        if (noRetry)
-                        {
-                            throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, $"Already connecting, please wait and try again: '{ex.ErrorMessage}'");
-                        }
-                        
-                        await Task.Delay(500);
+                        await Task.Delay(500, cancelToken);
                         return false;
                         
                     case BlueZException.ErrorCodes.AlreadyConnected:

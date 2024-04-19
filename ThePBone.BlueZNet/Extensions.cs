@@ -99,7 +99,7 @@ namespace ThePBone.BlueZNet
             return watcher;
         }
 
-        public static async Task WaitForPropertyValueAsync<T,T2>(this T2 obj, string propertyName, T value, TimeSpan timeout)
+        public static async Task WaitForPropertyValueAsync<T,T2>(this T2 obj, string propertyName, T value, TimeSpan timeout, CancellationToken cancelToken)
         {
             var (watchTask, watcher) = WatchPropertyValueAsync<T,T2>(obj, propertyName, value);
 
@@ -120,7 +120,7 @@ namespace ThePBone.BlueZNet
                 return;
             }
 
-            await Task.WhenAny(new Task[] { watchTask, Task.Delay(timeout) });
+            await Task.WhenAny([watchTask, Task.Delay(timeout, cancelToken)]);
             if (!watchTask.IsCompleted)
             {
                 throw new TimeoutException($"Timed out waiting for '{propertyName}' to change to '{value}'.");

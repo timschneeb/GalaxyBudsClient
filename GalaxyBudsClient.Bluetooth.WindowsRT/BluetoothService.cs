@@ -87,7 +87,8 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                             {
                                 Log.Debug($"WindowsRT.BluetoothService: Target device connected");
                                 await ConnectAsync(x.Address,
-                                    _service?.ServiceId?.AsString() ?? "{00001101-0000-1000-8000-00805F9B34FB}");
+                                    _service?.ServiceId?.AsString() ?? "{00001101-0000-1000-8000-00805F9B34FB}",
+                                    CancellationToken.None);
                             }
                             else
                             {
@@ -138,7 +139,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
             }
         }
         
-        public async Task ConnectAsync(string macAddress, string serviceUuid, bool noRetry = false)
+        public async Task ConnectAsync(string macAddress, string serviceUuid, CancellationToken cancelToken)
         {
             if (IsConnecting)
             {

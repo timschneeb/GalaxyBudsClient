@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GalaxyBudsClient.Bluetooth
@@ -49,7 +50,7 @@ namespace GalaxyBudsClient.Bluetooth
         
         bool IsStreamConnected { get; }
 
-        Task ConnectAsync(string macAddress, string serviceUuid, bool noRetry = false);
+        Task ConnectAsync(string macAddress, string serviceUuid, CancellationToken cancelToken);
         Task DisconnectAsync();
         Task SendAsync(byte[] data);
 

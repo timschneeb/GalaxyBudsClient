@@ -69,7 +69,8 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
     
     private readonly List<byte> _incomingData = [];
     private static readonly ConcurrentQueue<byte[]> IncomingQueue = new();
-    private readonly CancellationTokenSource _loopCancelSource;
+    private readonly CancellationTokenSource _loopCancelSource = new();
+    private CancellationTokenSource _connectCancelSource = new();
     private readonly Task? _loop;
 
     private BluetoothImpl()
@@ -118,7 +119,6 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
             _backend = new Dummy.BluetoothService();
         }
         
-        _loopCancelSource = new CancellationTokenSource();
         _loop = Task.Run(DataConsumerLoop, _loopCancelSource.Token);
             
         _backend.Connecting += (_, _) => Connecting?.Invoke(this, EventArgs.Empty);
@@ -215,6 +215,10 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         
     public async Task<bool> ConnectAsync(Device? device = null, bool noRetry = false)
     {
+        // Create new cancellation token source if the previous one has already been used
+        if(_connectCancelSource.IsCancellationRequested)
+            _connectCancelSource = new CancellationTokenSource();
+        
         device ??= Device.Current;
 
         if (!HasValidDevice || device == null)
@@ -229,7 +233,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
             DeviceName = await GetDeviceNameAsync();
             device.Name = DeviceName;
                         
-            await _backend.ConnectAsync(device.MacAddress, DeviceSpec.ServiceUuid.ToString(), noRetry);
+            await _backend.ConnectAsync(device.MacAddress, DeviceSpec.ServiceUuid.ToString(), _connectCancelSource.Token);
             return true;
         }
         catch (BluetoothException ex)
@@ -243,6 +247,16 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
     {
         try
         {
+            // Cancel the connection attempt if it's still in progress
+            try
+            {
+                await _connectCancelSource.CancelAsync();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "BluetoothImpl: Error while cancelling connection attempt");
+            } 
+
             await _backend.DisconnectAsync();
             Disconnected?.Invoke(this, "User requested disconnect");
             LastErrorMessage = string.Empty;

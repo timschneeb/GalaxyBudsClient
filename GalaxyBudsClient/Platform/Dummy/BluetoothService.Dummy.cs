@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using GalaxyBudsClient.Bluetooth;
 
@@ -16,7 +17,7 @@ public class BluetoothService : IBluetoothService
     public event EventHandler<byte[]>? NewDataAvailable;
     public bool IsStreamConnected => false;
         
-    public async Task ConnectAsync(string macAddress, string serviceUuid, bool noRetry = false)
+    public async Task ConnectAsync(string macAddress, string serviceUuid, CancellationToken cancelToken)
     {
         BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.Unknown, 
             "Platform configuration not supported." +

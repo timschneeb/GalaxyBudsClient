@@ -175,7 +175,7 @@ namespace ThePBone.OSX.Native
                 {
                     try
                     {
-                        await ConnectAsync(_currentMac, _currentUuid);
+                        await ConnectAsync(_currentMac, _currentUuid, CancellationToken.None);
                     }
                     catch (BluetoothException ex)
                     {
@@ -202,9 +202,9 @@ namespace ThePBone.OSX.Native
         #endregion
 
         #region Connection
-        public async Task ConnectAsync(string macAddress, string uuid, bool noRetry = false)
+        public async Task ConnectAsync(string macAddress, string uuid, CancellationToken cancelToken)
         {
-            var semResult = await ConnSemaphore.WaitAsync(5000);
+            var semResult = await ConnSemaphore.WaitAsync(5000, cancelToken);
             if (semResult == false)
             {
                 Log.Error("OSX.BluetoothService: Connection attempt timed out due to blocked semaphore");
