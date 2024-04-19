@@ -172,8 +172,10 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="devices_select_inactive">Select</sys:String>
     <sys:String x:Key="devices_select_active">Selected</sys:String>
     <sys:String x:Key="devices_delete">Delete</sys:String>
-<sys:String x:Key="devices_delete_long">Delete device</sys:String>
+    <sys:String x:Key="devices_delete_long">Delete device</sys:String>
     <sys:String x:Key="devices_delete_confirmation">Are you sure you want to remove this device?</sys:String>
+    <sys:String x:Key="devices_settings_link">Manage paired devices</sys:String>
+    <sys:String x:Key="devices_settings_link_desc">Add, remove, or select a primary device</sys:String>
     
     <!--Touchpad gestures-->
     <sys:String x:Key="touchpad_gesture_header">Enable touchpad gestures</sys:String>
@@ -286,8 +288,6 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 
     <!--Settings-->
     <sys:String x:Key="settings_header">Settings</sys:String>
-    <sys:String x:Key="optionsmenu_deregister">Unregister device</sys:String>
-    <sys:String x:Key="settings_unregister_description">Remove your current earbuds and connect another pair</sys:String>
     <sys:String x:Key="settings_appearance">Appearance</sys:String>
     <sys:String x:Key="settings_darkmode">Dark mode</sys:String>
     <sys:String x:Key="settings_darkmode_description">Use a darker color scheme</sys:String>

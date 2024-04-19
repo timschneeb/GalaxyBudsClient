@@ -15,13 +15,13 @@ public class SettingsPageViewModel : MainPageViewModelBase
 
     public SettingsPageViewModel()
     {
-        CanUnregister = BluetoothImpl.HasValidDevice;
+        CanManageDevices = BluetoothImpl.HasValidDevice;
         BluetoothImpl.Instance.Device.DeviceChanged += OnDeviceChanged;
     }
 
     private void OnDeviceChanged(object? sender, Device? e)
     {
-        CanUnregister = BluetoothImpl.HasValidDevice;
+        CanManageDevices = BluetoothImpl.HasValidDevice;
     }
 
     public bool IsAutoStartEnabled
@@ -34,7 +34,7 @@ public class SettingsPageViewModel : MainPageViewModelBase
         }
     }
     
-    [Reactive] public object CanUnregister { set; get; }
+    [Reactive] public object CanManageDevices { set; get; }
     
     public string CurrentVersion => Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? "Unknown";
     public override Control CreateView() => new SettingsPage();

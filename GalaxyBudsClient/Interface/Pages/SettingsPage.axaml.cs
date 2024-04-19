@@ -2,6 +2,7 @@ using Avalonia.Interactivity;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Interface.Controls;
 using GalaxyBudsClient.Interface.Dialogs;
+using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Platform;
 
@@ -30,8 +31,8 @@ public partial class SettingsPage : BasePage<SettingsPageViewModel>
         await new DeveloperOptionsDialog().ShowAsync(true);
     }
     
-    public void OnUnregisterClicked(object? sender, RoutedEventArgs e)
+    public void OnManageDevicesClicked(object? sender, RoutedEventArgs e)
     {
-        BluetoothImpl.Instance.UnregisterDevice();
+        NavigationService.Instance.Navigate(typeof(DevicesPageViewModel));
     }
 }

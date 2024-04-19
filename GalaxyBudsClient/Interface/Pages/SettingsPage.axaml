@@ -53,13 +53,13 @@
             </DockPanel>
 
             <controls:SettingsGroup Margin="0,4,0,0">
-                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.OptionsmenuDeregister}}"
-                                             Description="{ext:Translate {x:Static i18N:Keys.SettingsUnregisterDescription}}"
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.DevicesSettingsLink}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.DevicesSettingsLinkDesc}}"
                                              Symbol="Delete"
                                              ActionSymbol="ChevronRight"
                                              IsClickEnabled="True"
-                                             IsEnabled="{Binding CanUnregister}"
-                                             Click="OnUnregisterClicked" />
+                                             IsEnabled="{Binding CanManageDevices}"
+                                             Click="OnManageDevicesClicked" />
             </controls:SettingsGroup>
 
             <ui:SettingsExpander Header="{ext:Translate {x:Static i18N:Keys.SettingsAppearance}}" IsExpanded="True">
