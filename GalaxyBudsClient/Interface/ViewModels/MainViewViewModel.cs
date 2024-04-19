@@ -27,6 +27,11 @@ public class MainViewViewModel : ViewModelBase
             IsConnectButtonEnabled = true;
             ConnectButtonText = Strings.ConnlostConnect;
         };
+        BluetoothImpl.Instance.Disconnected += (_, _) =>
+        {
+            IsConnectButtonEnabled = true;
+            ConnectButtonText = Strings.ConnlostConnect;
+        };
         BluetoothImpl.Instance.PropertyChanged += (_, e) =>
         {
             if (e.PropertyName != nameof(BluetoothImpl.Instance.IsConnected))
