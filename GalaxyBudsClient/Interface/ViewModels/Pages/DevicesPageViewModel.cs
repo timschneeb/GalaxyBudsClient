@@ -1,11 +1,14 @@
 ﻿using System.Linq;
 using Avalonia.Controls;
-using FluentIcons.Common;
+using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Generated.I18N;
+using GalaxyBudsClient.Interface.Converters;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Pages;
+using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Platform;
+using Symbol = FluentIcons.Common.Symbol;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
@@ -16,18 +19,33 @@ public class DevicesPageViewModel : MainPageViewModelBase
     public override Symbol IconKey => Symbol.BluetoothConnected;
     public override bool ShowsInFooter => true;
     
-    public async void DoNewCommand()
-    {
-        await DeviceSelectionDialog.OpenDialogAsync();
-    }
+    public async void DoNewCommand() => await DeviceSelectionDialog.OpenDialogAsync();
     
     public async void DoConnectCommand(object? param)
     {
         if (param is not Device device)
             return;
-   
-        // TODO
-        // device.MacAddress
+        
+        if (device.MacAddress == Settings.Data.LastDeviceMac)
+            return;
+        
+        // TODO: move to BluetoothImpl
+        var cd = new ContentDialog
+        {
+            Title = Strings.PleaseWait,
+            Content = Strings.ConnlostConnecting,
+            CloseButtonText = Strings.Cancel,
+            CloseButtonCommand = new MiniCommand(p => _ = BluetoothImpl.Instance.DisconnectAsync())
+        };
+        _ = cd.ShowAsync(MainWindow.Instance);
+        
+        if(BluetoothImpl.Instance.IsConnected)
+            await BluetoothImpl.Instance.DisconnectAsync();
+        
+        BluetoothImpl.Instance.Device.Current = device;
+        await BluetoothImpl.Instance.ConnectAsync(device);
+
+        cd.Hide();
     }
     
     public async void DoDeleteCommand(object? param)

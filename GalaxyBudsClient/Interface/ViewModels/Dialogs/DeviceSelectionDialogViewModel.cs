@@ -39,6 +39,14 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
     
     public async void RegisterDevice(Models model, string mac, string name)
     {
+        // Remove existing device with the same MAC address
+        var existingDevice = Settings.Data.Devices.FirstOrDefault(x => x.MacAddress == mac);
+        if(existingDevice != null)
+        {
+            Settings.Data.Devices.Remove(existingDevice);
+        }
+        
+        // Add new device
         var device = new Device
         {
             Model = model,
@@ -47,8 +55,10 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
         };
         Settings.Data.Devices.Add(device);
         
+        // Hide this dialog
         Dispatcher.UIThread.Post(() => _dialog.Hide(ContentDialogResult.Primary));
 
+        // Show connection dialog and begin connection
         var cd = new ContentDialog
         {
             Title = Strings.PleaseWait,

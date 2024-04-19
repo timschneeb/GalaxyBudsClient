@@ -43,6 +43,7 @@
     <ic:SymbolIconSource x:Key="NewIcon" Symbol="New" />
     <ic:SymbolIconSource x:Key="EditIcon" Symbol="Edit" />
     <ic:SymbolIconSource x:Key="LinkMultipleIcon" Symbol="LinkMultiple" />
+    <ic:SymbolIconSource x:Key="CheckmarkSquareIcon" Symbol="CheckmarkSquare" />
     
     <!-- Bitmaps -->
     <CroppedBitmap x:Key="LeftBeanConnected" Source="/Resources/Device/left_beans.png" />

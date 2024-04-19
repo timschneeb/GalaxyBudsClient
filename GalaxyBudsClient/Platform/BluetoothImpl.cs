@@ -69,7 +69,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
     
     private readonly List<byte> _incomingData = [];
     private static readonly ConcurrentQueue<byte[]> IncomingQueue = new();
-    private readonly CancellationTokenSource _cancelSource;
+    private readonly CancellationTokenSource _loopCancelSource;
     private readonly Task? _loop;
 
     private BluetoothImpl()
@@ -118,8 +118,8 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
             _backend = new Dummy.BluetoothService();
         }
         
-        _cancelSource = new CancellationTokenSource();
-        _loop = Task.Run(DataConsumerLoop, _cancelSource.Token);
+        _loopCancelSource = new CancellationTokenSource();
+        _loop = Task.Run(DataConsumerLoop, _loopCancelSource.Token);
             
         _backend.Connecting += (_, _) => Connecting?.Invoke(this, EventArgs.Empty);
         _backend.BluetoothErrorAsync += (_, exception) => OnBluetoothError(exception); 
@@ -144,13 +144,13 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
 
         MessageReceived -= SppMessageReceiver.Instance.MessageReceiver;
             
-        await _cancelSource.CancelAsync();
+        await _loopCancelSource.CancelAsync();
         await Task.Delay(50);
 
         try
         {
             _loop?.Dispose();
-            _cancelSource.Dispose();
+            _loopCancelSource.Dispose();
         }
         catch (Exception ex)
         {
@@ -365,8 +365,8 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         {
             try
             {
-                _cancelSource.Token.ThrowIfCancellationRequested();
-                Task.Delay(50).Wait(_cancelSource.Token);
+                _loopCancelSource.Token.ThrowIfCancellationRequested();
+                Task.Delay(50).Wait(_loopCancelSource.Token);
             }
             catch (OperationCanceledException)
             {

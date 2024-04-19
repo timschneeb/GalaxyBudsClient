@@ -23,10 +23,10 @@
                              Description="{ext:Translate {x:Static i18N:Keys.DevicesNewLong}}"
                              Command="{Binding DoNewCommand}" />
 
-        <input:XamlUICommand x:Key="ConnectCommand"
-                             Label="{ext:Translate {x:Static i18N:Keys.DevicesSelect}}"
-                             IconSource="{StaticResource LinkMultipleIcon}"
-                             Description="{ext:Translate {x:Static i18N:Keys.DevicesSelect}}"
+        <input:XamlUICommand x:Key="SelectCommand"
+                             Label="{ext:Translate {x:Static i18N:Keys.DevicesSelectInactive}}"
+                             IconSource="{StaticResource CheckmarkSquareIcon}"
+                             Description="{ext:Translate {x:Static i18N:Keys.DevicesSelectInactive}}"
                              Command="{Binding DoConnectCommand}" />
 
         <input:StandardUICommand x:Key="DeleteCommand" Kind="Delete"
@@ -44,7 +44,7 @@
                         Command="{StaticResource NewCommand}" />
                     <ui:CommandBarButton
                         IsEnabled="{Binding #DeviceList.SelectedValue, Converter={x:Static ObjectConverters.IsNotNull}}"
-                        Command="{StaticResource ConnectCommand}"
+                        Command="{StaticResource SelectCommand}"
                         CommandParameter="{Binding #DeviceList.SelectedItem}" />
                     <ui:CommandBarButton
                         IsEnabled="{Binding #DeviceList.SelectedValue, Converter={x:Static ObjectConverters.IsNotNull}}"
@@ -81,9 +81,12 @@
                                                          CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"
                                                          HotKey="{x:Null}" />
                                     <ui:CommandBarButton HorizontalAlignment="Right"
-                                                         Command="{StaticResource ConnectCommand}"
+                                                         Command="{StaticResource SelectCommand}"
                                                          CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"
-                                                         HotKey="{x:Null}" />
+                                                         HotKey="{x:Null}"
+                                                         IsEnabled="{ext:DeviceStateBinding DeviceBinding={Binding}, Target=BoolInverted}"
+                                                         Label="{ext:DeviceStateBinding DeviceBinding={Binding}, Target=Label}"
+                                                         IconSource="{ext:DeviceStateBinding DeviceBinding={Binding}, Target=Icon}" />
                                 </StackPanel>
                             </Panel>
                         </Border>
