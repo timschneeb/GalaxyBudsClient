@@ -241,6 +241,11 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
             OnBluetoothError(ex);
             return false;
         }
+        catch (TaskCanceledException)
+        {
+            Log.Warning("BluetoothImpl: Connection task cancelled");
+            return false;
+        }
     }
 
     public async Task DisconnectAsync()
