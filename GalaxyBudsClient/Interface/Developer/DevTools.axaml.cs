@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using Avalonia.Platform.Storage;
@@ -18,6 +19,7 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
+using Serilog;
 
 namespace GalaxyBudsClient.Interface.Developer;
 
@@ -28,8 +30,8 @@ public partial class DevTools : StyledWindow.StyledWindow
         new FilePickerFileType("Hex dump") { Patterns = new List<string> { "*.bin", "*.hex" } },
         new FilePickerFileType("All files") { Patterns = new List<string> { "*" } }
     ];
-
-    private readonly DevToolsViewModel _vm = new();
+    
+    private DevToolsViewModel ViewModel => (DevToolsViewModel)DataContext!;
         
     public DevTools()
     {
@@ -38,7 +40,7 @@ public partial class DevTools : StyledWindow.StyledWindow
         var monoFonts = new FontFamily(null, $"{Program.AvaresUrl}/Resources/Fonts/RobotoMono-Regular.ttf#Roboto Mono,Consolas,Hack,Monospace,monospace");
         HexEditor.FontFamily = monoFonts;
         
-        DataContext = _vm;
+        DataContext = new DevToolsViewModel();
         
         Closing += OnClosing;
         BluetoothImpl.Instance.NewDataReceived += OnNewDataReceived;
@@ -53,15 +55,15 @@ public partial class DevTools : StyledWindow.StyledWindow
                 HexEditor.Document ??= new InMemoryBinaryDocument();
                 HexEditor.Document.InsertBytes(HexEditor.Document.Length, new ReadOnlySpan<byte>(raw));
                 
-                if(_vm.IsAutoscrollEnabled)
+                if(ViewModel.IsAutoscrollEnabled)
                     HexEditor.Caret.Location = new BitLocation(HexEditor.Document.Length - 1);
                 HexEditor.HexView.InvalidateVisualLines();
 
                 var holder = new MessageViewHolder(SppMessage.Decode(raw, BluetoothImpl.Instance.CurrentModel));
-                _vm.MsgTableDataSource.Add(holder);
-                _vm.MsgTableDataView.Refresh();
+                ViewModel.MsgTableDataSource.Add(holder);
+                ViewModel.MsgTableDataView.Refresh();
                 
-                if(_vm.IsAutoscrollEnabled)
+                if(ViewModel.IsAutoscrollEnabled)
                     MsgTable.ScrollIntoView(holder, null);
             }
             catch(InvalidPacketException){}
@@ -73,8 +75,8 @@ public partial class DevTools : StyledWindow.StyledWindow
         BluetoothImpl.Instance.NewDataReceived -= OnNewDataReceived;
 
         HexEditor.Document = null;
-        _vm.MsgTableDataSource.Clear();
-        _vm.MsgTableDataView.Refresh();
+        ViewModel.MsgTableDataSource.Clear();
+        ViewModel.MsgTableDataView.Refresh();
     }
         
     private void CopyPayload_OnClick(object? sender, RoutedEventArgs e)
@@ -125,8 +127,8 @@ public partial class DevTools : StyledWindow.StyledWindow
     private void Clear_OnClick(object? sender, RoutedEventArgs e)
     {
         HexEditor.Document?.RemoveBytes(0, HexEditor.Document.Length);
-        _vm.MsgTableDataSource.Clear();
-        _vm.MsgTableDataView.Refresh();
+        ViewModel.MsgTableDataSource.Clear();
+        ViewModel.MsgTableDataView.Refresh();
     }
 
     private async void LoadDump_OnClick(object? sender, RoutedEventArgs e)
@@ -159,10 +161,10 @@ public partial class DevTools : StyledWindow.StyledWindow
 
         try
         {
-            _vm.MsgTableDataSource.AddRange(
+            ViewModel.MsgTableDataSource.AddRange(
                 SppMessage.DecodeRawChunk([..content], (Models)model)
                     .Select(m => new MessageViewHolder(m)));
-            _vm.MsgTableDataView.Refresh();
+            ViewModel.MsgTableDataView.Refresh();
         }
         catch (InvalidPacketException ex)
         {
@@ -192,6 +194,16 @@ public partial class DevTools : StyledWindow.StyledWindow
                 Title = "Error while saving file", 
                 Description = ex.Message
             }.ShowAsync(this);             
+        }
+    }
+
+    // Workaround for (Fluent)Avalonia issue: MenuItem.IsChecked does not work as two way binding
+    private void OnAutoScrollClicked(object? sender, RoutedEventArgs e)
+    {
+        if (sender is MenuItem item)
+        {
+            ViewModel.IsAutoscrollEnabled = item.IsChecked; 
+            Log.Error(item.IsChecked.ToString());
         }
     }
 }

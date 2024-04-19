@@ -40,7 +40,8 @@
                 <MenuItem Header="_Copy selected payload" Click="CopyPayload_OnClick" />
             </MenuItem>
             <MenuItem Header="_View">
-                <MenuItem Header="_Auto-scroll" ToggleType="CheckBox" IsChecked="{Binding IsAutoscrollEnabled}" />
+                <MenuItem Header="_Auto-scroll" ToggleType="CheckBox" IsChecked="{Binding IsAutoscrollEnabled}" 
+                          Click="OnAutoScrollClicked"/>
             </MenuItem>
         </Menu>
 
