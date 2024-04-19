@@ -7,7 +7,7 @@ namespace GalaxyBudsClient.Platform;
 public class DeviceManager
 {
     private Device? _current;
-
+    
     public Device? Current
     {
         get => _current;
@@ -31,6 +31,4 @@ public class DeviceManager
     {
         DeviceChanged?.Invoke(this, Current);
     }
-    
-    
 }
