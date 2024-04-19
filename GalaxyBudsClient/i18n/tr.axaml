@@ -403,7 +403,6 @@ Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
     <sys:String x:Key="settings_cpopup_override_title_dialog">Lütfen özel bir açılır pencere başlığı girin. Bu alanı boş bırakarak varsayılanı geri yükleyebilirsiniz.</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen">Sadece birincil ekran</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen_description">Açılır pencereyi yalnızca birincil monitörde göster</sys:String>
-    <sys:String x:Key="settings_cpopup_position_description">Select the position of the connection popup</sys:String>
     <sys:String x:Key="settings_cpopup_position_description">Bağlantı açılır penceresinin konumunu seçin</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state">Kutuydayken farklı bir renk kullan</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state_description">Kulaklıklarınız kutudayken gri kulaklık simgesi sönüyor</sys:String>
