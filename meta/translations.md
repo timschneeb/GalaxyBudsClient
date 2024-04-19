@@ -22,7 +22,7 @@ Translation instructions are available [in the wiki](https://github.com/ThePBone
 <tr><td>pt (Portugal)</td><td>34%</td><td>277 missing string(s)</td><td><a href="pt.md">View details</a></td></tr>
 <tr><td>ro (Romania)</td><td>71%</td><td>121 missing string(s)</td><td><a href="ro.md">View details</a></td></tr>
 <tr><td>ru (Russian Federation)</td><td>76%</td><td>100 missing string(s)</td><td><a href="ru.md">View details</a></td></tr>
-<tr><td>tr (Turkey)</td><td>83%</td><td>69 missing string(s)</td><td><a href="tr.md">View details</a></td></tr>
+<tr><td>tr (Turkey)</td><td>100%</td><td>No missing strings</td><td><a href="tr.md">View details</a></td></tr>
 <tr><td>tw (Taiwan, Province of China)</td><td>80%</td><td>84 missing string(s)</td><td><a href="tw.md">View details</a></td></tr>
 <tr><td>ua (Ukraine)</td><td>71%</td><td>121 missing string(s)</td><td><a href="ua.md">View details</a></td></tr>
 <tr><td>vn (Viet Nam)</td><td>65%</td><td>145 missing string(s)</td><td><a href="vn.md">View details</a></td></tr>
