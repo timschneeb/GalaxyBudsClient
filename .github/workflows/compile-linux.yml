@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
@@ -31,7 +31,7 @@ jobs:
       run: cd bin_linux64 && chmod +x GalaxyBudsClient
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: GalaxyBudsClient_linux-amd64_portable
         path: bin_linux64/GalaxyBudsClient
@@ -40,9 +40,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.101
        
@@ -55,7 +55,7 @@ jobs:
       run: cd bin_linux64_musl && chmod +x GalaxyBudsClient
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: GalaxyBudsClient_linux-amd64-musl_portable
         path: bin_linux64_musl/GalaxyBudsClient
@@ -64,9 +64,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.101
        
@@ -79,7 +79,7 @@ jobs:
       run: cd bin_linux_arm && chmod +x GalaxyBudsClient
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: GalaxyBudsClient_linux-arm_portable
         path: bin_linux_arm/GalaxyBudsClient
@@ -88,9 +88,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.101
        
@@ -103,7 +103,7 @@ jobs:
       run: cd bin_linux_arm64 && chmod +x GalaxyBudsClient
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: GalaxyBudsClient_linux-arm64_portable
         path: bin_linux_arm64/GalaxyBudsClient
@@ -116,7 +116,7 @@ jobs:
      
     steps:
     - name: Download setup artifact (x64)
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: GalaxyBudsClient_linux-amd64_portable
     
@@ -124,7 +124,7 @@ jobs:
       run: ren GalaxyBudsClient GalaxyBudsClient_Linux_64bit_Portable.bin
     
     - name: Download setup artifact (x64-musl)
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: GalaxyBudsClient_linux-amd64-musl_portable
     
@@ -132,7 +132,7 @@ jobs:
       run: ren GalaxyBudsClient GalaxyBudsClient_Linux_64bit-musl_Portable.bin
     
     - name: Download artifact (arm)
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: GalaxyBudsClient_linux-arm_portable
 
@@ -140,7 +140,7 @@ jobs:
       run: ren GalaxyBudsClient GalaxyBudsClient_Linux_arm_Portable.bin
 
     - name: Download artifact (arm64)
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: GalaxyBudsClient_linux-arm64_portable
 

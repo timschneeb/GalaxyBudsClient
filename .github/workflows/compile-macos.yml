@@ -131,7 +131,7 @@ jobs:
      
     steps:
     - name: Download setup artifact (Universal)
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: GalaxyBudsClient_osx-universal
 
@@ -139,7 +139,7 @@ jobs:
       run: mv "Galaxy Buds Manager"-*.pkg GalaxyBudsClient_macOS_universal.pkg
 
     - name: Download setup artifact (x64)
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: GalaxyBudsClient_osx-x64
     
@@ -147,7 +147,7 @@ jobs:
       run: mv "Galaxy Buds Manager"-*.pkg GalaxyBudsClient_macOS_x64.pkg
 
     - name: Download artifact (arm64)
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: GalaxyBudsClient_osx-arm64
 
