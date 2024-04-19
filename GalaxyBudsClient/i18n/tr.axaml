@@ -236,6 +236,13 @@
     <sys:String x:Key="unsupported_feature_description_p2">Lütfen yazılımınızı resmî Windows Galaxy Buds güncelleştiricisiyle ya da Wearable Android uygulamasıyla güncelleştirin.</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">Windows Galaxy Buds güncelleştiricisini kullanacaksınız bu uygulamayı kapatmayı unutmayın. Aynı anda yalnızca bir uygulama kulaklıklarla iletişime geçebilir.</sys:String>
 
+    <!--Device page-->
+    <sys:String x:Key="devices_header">Eşleşen cihazlar</sys:String>
+    <sys:String x:Key="devices_new">Yeni</sys:String>
+    <sys:String x:Key="devices_new_long">Yeni cihaz eşleyin</sys:String>
+    <sys:String x:Key="devices_select">Bağlan</sys:String>
+    <sys:String x:Key="devices_delete">Sil</sys:String>
+
     <!--Touchpad gestures-->
     <sys:String x:Key="touchpad_gesture_header">Dokunma kontrollerini aktifleştir</sys:String>
     <sys:String x:Key="touchpad_gesture_single">Tek dokunuş</sys:String>
@@ -246,18 +253,26 @@
     <sys:String x:Key="touchpad_gesture_triple_desc">Önceki şarkıyı oynat</sys:String>
     <sys:String x:Key="touchpad_gesture_hold">Dokun ve basılı tut</sys:String>
     <sys:String x:Key="touchpad_gesture_hold_desc">Özel hareket çalıştır</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_for_call">Çağrı sırasında çift dokunma</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_for_call_desc">Aramayı yanıtlar veya sonlandırır</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call">Çağrı sırasında dokunmatik yüzeye basılı tutma</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call_desc">Aramayı reddeder</sys:String>
 
     <!--Touchpad page-->
     <sys:String x:Key="touchpad_header">Dokunmatik Yüzey</sys:String>
     <sys:String x:Key="touchpad_lock">Dokunmatik Yüzeyi Kilitle</sys:String>
     <sys:String x:Key="touchpad_left_action">Sol Eylem</sys:String>
     <sys:String x:Key="touchpad_right_action">Sağ Eylem</sys:String>
+    <sys:String x:Key="touchpad_default_action">Varsayılan dokunmatik fonksiyon</sys:String>
 
     <sys:String x:Key="touchpad_gestures">Gelişmiş dokunma kilidi</sys:String>
     <sys:String x:Key="touchpad_gestures_description">Varsayılan dokunma kontrolünü aç veya kapat</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume">Kulaklığın kenarına çift dokun</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Sağ ya da sol kulaklığın kenarına çift dokunarak ses düzeyini kontrol edin</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Gürültü engelleme geçişi</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_l">Gürültü kontrolü değiştirme modu (Sol)</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_r">Gürültü kontrolü değiştirme modu (Sağ)</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_desc">Geçiş yapmak istediğiniz modları seçin</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ Ortam Sesi</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Kapalı</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ortam Sesi ↔ Kapalı</sys:String>
@@ -267,6 +282,9 @@
     <sys:String x:Key="cact_header">Özel uzun dokunma eylemi belirleyin</sys:String>
     <sys:String x:Key="cact_external_app_dialog_title">Neyin çalıştırılacağını seçin...</sys:String>
     <sys:String x:Key="cact_action">Özel Eylem</sys:String>
+    <sys:String x:Key="cact_function_param">Fonksiyon</sys:String>
+    <sys:String x:Key="cact_hotkey_param">Kısayol tuşu</sys:String>
+    <sys:String x:Key="cact_path_param">Dosya yolu</sys:String>
     <sys:String x:Key="cact_notice">Hatırlatma</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Özel uzun dokunma eylemleri ylnızca bu uygulama en azından arkaplanda çalışıyorsa işe yarar.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">Android ya da başka cihazlarda etkili değildir.</sys:String>
@@ -292,15 +310,19 @@
 
     <sys:String x:Key="system_battery_type_unknown">Belirtilmedi</sys:String>
     <sys:String x:Key="system_waiting_for_device">Tepki bekleniyor...</sys:String>
+    <sys:String x:Key="system_no_response">Kulaklıktan yanıt alınamadı</sys:String>
 
     <sys:String x:Key="system_hwver">Donanım Versiyonu</sys:String>
     <sys:String x:Key="system_swver">Ürün Yazılımı Versiyonu</sys:String>
+    <sys:String x:Key="system_cradle_swver">Kutu Yazılımı Versiyonu</sys:String>
+    <sys:String x:Key="system_cradle_serial">Kutu Seri Numarası</sys:String>
     <sys:String x:Key="system_touchver">Touch Ürün Yazılımı Versiyonu</sys:String>
     <sys:String x:Key="system_protover">Protokol Revizyonu</sys:String>
     <sys:String x:Key="system_btaddr">Bluetooth Adresi</sys:String>
     <sys:String x:Key="system_serial">Seri Numarası</sys:String>
     <sys:String x:Key="system_build_info">Yapı Numarası</sys:String>
     <sys:String x:Key="system_battery_type">Pil Tipi</sys:String>
+    <sys:String x:Key="system_sku">Cihaz Stok Kodları</sys:String>
     <sys:String x:Key="system_proximity">Yakınlık Ölçüsü</sys:String>
     <sys:String x:Key="system_thermo">Termistör Ölçüsü</sys:String>
     <sys:String x:Key="system_hall">Salon Ölçüsü</sys:String>
@@ -336,12 +358,21 @@ Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
 
     <!--Settings-->
     <sys:String x:Key="settings_header">Ayarlar</sys:String>
-
+    <sys:String x:Key="settings_unregister_description">Mevcut kulaklıklarınızı kaldırın ve başka bir çifti bağlayın</sys:String>
+    <sys:String x:Key="settings_appearance">Görünüm</sys:String>
     <sys:String x:Key="settings_darkmode">Karanlık Mod</sys:String>
     <sys:String x:Key="settings_darkmode_description">Daha koyu bir renk şeması kullan</sys:String>
+    <sys:String x:Key="settings_blurstrength">Pencere bulanıklaştırma yoğunluğu</sys:String>
+    <sys:String x:Key="settings_blurstrength_description">Yalnızca koyu mod ile uyumludur. Tüm sistemlerde desteklenmez</sys:String>
     <sys:String x:Key="settings_transitions">Geçişler</sys:String>
+    <sys:String x:Key="settings_accent">Vurgu rengi</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons">Kulaklıkların gerçekçi resimlerini kullan</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons_description">Destekliyorsa, kulaklıklarınızın gerçekçi ve renk uyumlu resimlerini görüntüler</sys:String>
+    <sys:String x:Key="settings_accent_description">Özel bir vurgu rengi seçin</sys:String>
     <sys:String x:Key="settings_transitions_description">Kaydırma geçişlerini etkinleştir</sys:String>
     <sys:String x:Key="settings_localization_disable">Dil</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_description">Pil durumunu sistem tepsisi simgesinde görüntüle</sys:String>
+    <sys:String x:Key="settings_localization_description">Uygulama dilini değiştir</sys:String>
     <sys:String x:Key="settings_localization_disable_description">İngilizce diline zorla</sys:String>
     <sys:String x:Key="settings_minimize_tray">Sistem tepsisine taşı</sys:String>
     <sys:String x:Key="settings_minimize_tray_description">Uygulamayı kapatmak yerine arkaplana al</sys:String>
@@ -354,7 +385,7 @@ Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
     <sys:String x:Key="settings_autostart">Bilgisayar açılınca başlat</sys:String>
     <sys:String x:Key="settings_autostart_description">Küçültülmüş modda başlat</sys:String>
     <sys:String x:Key="settings_autostart_permission">Kayıt defterinde otomatik başlatma girişi güncellenemiyor. Kayıt defteri erişimi (HKCU), sistem yöneticiniz tarafından açıkça devre dışı bırakıldı.</sys:String>
-
+    <sys:String x:Key="settings_devmode_description">Bluetooth trafiği görüntüleyici ve diğer geliştirici araçları</sys:String>
     <sys:String x:Key="settings_connpopup">Bağlantı açılır penceresini ayarla</sys:String>
     <sys:String x:Key="settings_devmode">Geliştirici moduna gir</sys:String>
     <sys:String x:Key="settings_crowdsourcing">Topluluk Gönüllü Katkıları</sys:String>
@@ -372,6 +403,8 @@ Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
     <sys:String x:Key="settings_cpopup_override_title_dialog">Lütfen özel bir açılır pencere başlığı girin. Bu alanı boş bırakarak varsayılanı geri yükleyebilirsiniz.</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen">Sadece birincil ekran</sys:String>
     <sys:String x:Key="settings_cpopup_primary_screen_description">Açılır pencereyi yalnızca birincil monitörde göster</sys:String>
+    <sys:String x:Key="settings_cpopup_position_description">Select the position of the connection popup</sys:String>
+    <sys:String x:Key="settings_cpopup_position_description">Bağlantı açılır penceresinin konumunu seçin</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state">Kutuydayken farklı bir renk kullan</sys:String>
     <sys:String x:Key="settings_cpopup_wear_state_description">Kulaklıklarınız kutudayken gri kulaklık simgesi sönüyor</sys:String>
 
@@ -390,6 +423,10 @@ Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
     <sys:String x:Key="factory_text_p1">Kulaklıklarınızı sıfırlamak istediğinizden emin misiniz?</sys:String>
     <sys:String x:Key="factory_text_p2">Fabrika ayarlarına dönüş yapıldıktan sonra kulaklıklarınızı bilgisayara manuel olarak bağlamak zorunda olacaksınız.</sys:String>
     <sys:String x:Key="factory_text_p3">Devam etmeden önce kulaklıklarınızın açık olduğundan emin olun!</sys:String>
+    <sys:String x:Key="factory_confirmation">Kulaklıklarınızı fabrika ayarlarına sıfırlamak istediğinizden emin misiniz? 
+Bu işlem, tüm verileri ve ayarları kulaklıklarınızdan kaldıracaktır.
+
+Devam etmeden önce her iki kulaklığın da açık olduğundan emin olun.</sys:String>
 
     <!--Find my Gear-->
     <sys:String x:Key="fmg_warning_both">Lütfen kulaklıklarınızı kulağınızdan çıkarın.</sys:String>
@@ -399,6 +436,7 @@ Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
 
     <!-- Fit test-->
     <sys:String x:Key="gft_warning">Lütfen her iki kulaklığı da takın.</sys:String>
+    <sys:String x:Key="gft_desc">Kulaklıklarınızın doğru takılıp takılmadığını kontrol edin</sys:String>
     <sys:String x:Key="gft_bad">Kötü Uyum</sys:String>
     <sys:String x:Key="gft_good">İyi Uyum</sys:String>
     <sys:String x:Key="gft_fail">Test başarısız</sys:String>
@@ -406,6 +444,7 @@ Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
     <!--Equalizer-->
     <sys:String x:Key="eq_header">Ekolayzır</sys:String>
     <sys:String x:Key="eq_enable">Ekolayzır'ı Etkinleştir</sys:String>
+    <sys:String x:Key="eq_enable_description">EQ ses filtrelerini uygula</sys:String>
     <sys:String x:Key="eq_preset">Hazır ayar</sys:String>
     <sys:String x:Key="eq_mode">Mod:</sys:String>
     <sys:String x:Key="eq_dolby">Dolby ile kullanım için optimize et</sys:String>
@@ -422,6 +461,7 @@ Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
     <!--Noise control-->
     <sys:String x:Key="nc_header">Gürültü engelleyici</sys:String>
     <sys:String x:Key="nc_anc_one">Tek kulaklık ile gürültü engelleme</sys:String>
+    <sys:String x:Key="nc_as_anc_description">Arka plan gürültülerini azalt</sys:String>
     <sys:String x:Key="nc_anc_one_description">Rahatsızlığı önlemek için gürültü engelleme normalde iki kulaklık gerektirir, bunu etkinleştirerek yalnızca bir kulaklık ile gürültü engellemeyi etkinleştirin</sys:String>
     <sys:String x:Key="nc_anc_level">Yüksek hassaslık</sys:String>
     <sys:String x:Key="nc_anc_level_description">Daha güçlü gürültü engelleme efekti</sys:String>
@@ -442,12 +482,17 @@ Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
     <sys:String x:Key="nc_as_custom_tone_soft">Yumuşak</sys:String>
     <sys:String x:Key="nc_as_custom_tone_neutral">Nötr</sys:String>
     <sys:String x:Key="nc_as_custom_vol_normal">Normal</sys:String>
+    <sys:String x:Key="nc_as_custom_description">Ortam sesi ayarlarını özelleştir</sys:String> 
+    <sys:String x:Key="nc_voicedetect_timeout_description">Sesiniz belirli bir süre algılanmadığında ayarları geri al</sys:String>
+
 
     <!--Ambient sound-->
     <sys:String x:Key="as_header">Ortam Sesi</sys:String>
+    <sys:String x:Key="as_header_description">Çevrenizi duyun</sys:String>
     <sys:String x:Key="as_enable">Ortam Sesini Etkinleştir</sys:String>
     <sys:String x:Key="as_volume">Ortam Sesi Düzeyi</sys:String>
     <sys:String x:Key="as_voicefocus">Ses Odağı</sys:String>
+    <sys:String x:Key="as_voicefocus_description">Sesleri daha çok öne çıkarın</sys:String>
     <sys:String x:Key="as_extrahigh">Ekstra Yüksek Ortam Sesi</sys:String>
     <sys:String x:Key="as_extrahigh_description">Ortam sesi kaydırma çubuğuna ekstra ses düzeyi imkanı tanır</sys:String>
     <sys:String x:Key="as_scale_very_low">Çok düşük</sys:String>
@@ -464,6 +509,10 @@ Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
     <sys:String x:Key="adv_resume_playback">Kulaklıklar takıldığında başlat ya da devam et</sys:String>
     <sys:String x:Key="adv_resume_playback_desc">En az bir kulaklığın yakınlık sensörü yakınlık algılarsa, genel bir başlat/durdur işlemi gerçekleştirilir (Sadece Masaüstü)</sys:String>
     <sys:String x:Key="adv_sidetone">Görüşmeler esnasında Ortam Sesini kullan</sys:String>
+    <sys:String x:Key="adv_callpath">Aramalarda kulak içi algılama</sys:String>
+    <sys:String x:Key="adv_callpath_desc">Kulaklıklarınız kulağınızdayken aramaları kulaklıklarınızdan, olmadığında bilgisayar hoparlörünüzden çalın</sys:String>
+    <sys:String x:Key="adv_extra_clear_call">Arama sesini netleştirin</sys:String>
+    <sys:String x:Key="adv_extra_clear_call_desc">Arama netliğini artırın. Gürültülü bir ortamda ve kulaklık kullanırken en faydalıdır. Daha fazla pil kullanır.</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Görüşme esnasında kendinizi daha temiz duymanızı sağlar</sys:String>
     <sys:String x:Key="adv_passthrough">Ortam sesiyle basınçtan kurtulun</sys:String>
     <sys:String x:Key="adv_passthrough_desc">Bu, aktif gürültü engellemeyi kullanmadığınızda tıkanıklık veya sıkıştırma hissini önleyebilir.</sys:String>
@@ -479,7 +528,9 @@ Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
     <sys:String x:Key="bixby_remap_enable">Bixby uyanmasını aktifleştir</sys:String>
     <sys:String x:Key="bixby_remap_enable_desc">Samsung cihazında Bizby uygulamasını aç veya bu bilgisayar uyandığında özel bir hareket çalıştır</sys:String>
     <sys:String x:Key="bixby_remap_lang">Bixby uyanma dili</sys:String>
+    <sys:String x:Key="bixby_remap_lang_desc">Uyandırma cümlesi için kullanılan dili değiştirin</sys:String>
     <sys:String x:Key="bixby_remap_action">Özel uyanma hareketi</sys:String>
+    <sys:String x:Key="bixby_remap_action_desc">Bu cihazda Bixby'yi uyandırdığınızda ne olması gerektiğini tanımlayın</sys:String>
     <sys:String x:Key="bixby_remap_note">'Hey Bixby!' diyerek aktif et. Aktivasyon ifadesi bazı dil ayarlarında farklı olabilir.
 
 Yeniden eşleme yapılandırması yalnızca bu cihazda etkindir. Kulaklıklarınızı bir Samsung cihazına bağlarsanız, sesli uyandırma Bixby'yi normal şekilde etkinleştirir. Bu cihaz ve Samsung olmayan telefonlar dışındaki cihazlarda bu özellik herhangi bir işlemi tetiklemez.</sys:String>
