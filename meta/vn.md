@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>65%</td><td>145 missing string(s)</td></tr>
+<tr><td>65%</td><td>149 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -31,8 +31,13 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>devices_header</code></td><td>Paired devices</td></tr>
 <tr><td><code>devices_new</code></td><td>New</td></tr>
 <tr><td><code>devices_new_long</code></td><td>Pair new device</td></tr>
-<tr><td><code>devices_select</code></td><td>Connect</td></tr>
+<tr><td><code>devices_select_inactive</code></td><td>Select</td></tr>
+<tr><td><code>devices_select_active</code></td><td>Selected</td></tr>
 <tr><td><code>devices_delete</code></td><td>Delete</td></tr>
+<tr><td><code>devices_delete_long</code></td><td>Delete device</td></tr>
+<tr><td><code>devices_delete_confirmation</code></td><td>Are you sure you want to remove this device?</td></tr>
+<tr><td><code>devices_settings_link</code></td><td>Manage paired devices</td></tr>
+<tr><td><code>devices_settings_link_desc</code></td><td>Add, remove, or select a primary device</td></tr>
 <tr><td><code>touchpad_gesture_double_for_call</code></td><td>Double tap during call</td></tr>
 <tr><td><code>touchpad_gesture_double_for_call_desc</code></td><td>Answer call or end call</td></tr>
 <tr><td><code>touchpad_gesture_hold_for_call</code></td><td>Touch and hold during call</td></tr>
@@ -48,7 +53,6 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>system_cradle_swver</code></td><td>Case software version</td></tr>
 <tr><td><code>system_cradle_serial</code></td><td>Case serial number</td></tr>
 <tr><td><code>system_sku</code></td><td>Device SKUs</td></tr>
-<tr><td><code>settings_unregister_description</code></td><td>Remove your current earbuds and connect another pair</td></tr>
 <tr><td><code>settings_appearance</code></td><td>Appearance</td></tr>
 <tr><td><code>settings_blurstrength</code></td><td>Window blur strength</td></tr>
 <tr><td><code>settings_blurstrength_description</code></td><td>Only compatible with dark mode. Not supported on all systems</td></tr>
