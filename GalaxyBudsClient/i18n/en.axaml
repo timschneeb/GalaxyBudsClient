@@ -1,5 +1,5 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+
     <sys:String x:Key="ResourceDictionaryName">Loc-en</sys:String>
 
     <!--:::::::: Source code ::::::::-->
@@ -19,7 +19,7 @@
     <sys:String x:Key="hint">Hint</sys:String>
     <sys:String x:Key="home">Home</sys:String>
     <sys:String x:Key="please_wait">Please wait...</sys:String>
-    
+
     <sys:String x:Key="file_not_found">File not found</sys:String>
     <sys:String x:Key="nobluetoothdev">No Bluetooth adapter found. Please enable Bluetooth and try again.</sys:String>
 
@@ -63,7 +63,7 @@
     <sys:String x:Key="touchoption_custom_trigger_event">Trigger earbud action...</sys:String>
     <sys:String x:Key="touchoption_custom_trigger_hotkey">Press hotkey...</sys:String>
     <sys:String x:Key="touchoption_custom_external_app">Run external program...</sys:String>
-    
+
     <!--Tray context menu-->
     <sys:String x:Key="tray_unlock_touchpad">Unlock touchpad</sys:String>
     <sys:String x:Key="tray_lock_touchpad">Lock touchpad</sys:String>
@@ -96,7 +96,7 @@
     <sys:String x:Key="hotkey_edit_keys">Keys</sys:String>
     <sys:String x:Key="hotkey_edit_action">Action</sys:String>
     <sys:String x:Key="hotkey_edit_preview">Shortcut preview:</sys:String>
-    
+
     <!--Hotkey page-->
     <sys:String x:Key="hotkey_header">Keyboard hotkeys</sys:String>
     <sys:String x:Key="hotkey_add_short">New</sys:String>
@@ -134,14 +134,14 @@
     <sys:String x:Key="event_manager_visible">Show/hide manager window</sys:String>
     <sys:String x:Key="event_display_battery_popup">Display battery popup</sys:String>
     <sys:String x:Key="event_connect">Connect to device</sys:String>
-    
+
     <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Welcome!</sys:String>
     <sys:String x:Key="welcome_register">Set-up your earbuds</sys:String>
     <sys:String x:Key="welcome_register_desc">Choose and register your pair of Galaxy Buds</sys:String>
     <sys:String x:Key="welcome_textblock_p1">This Galaxy Buds Manager is unofficial and not affiliated with Samsung in any way.
 This program is designed to provide much more functionality over the official Samsung wearable app. Some features such as 'Game Mode' only work on Samsung phones and cannot be enabled on PCs.</sys:String>
-    
+
     <!--Main page-->
     <sys:String x:Key="mainpage_header">Home</sys:String>
     <sys:String x:Key="mainpage_corrupt_data">Received corrupted data. Reconnecting...</sys:String>
@@ -153,7 +153,7 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="mainpage_equalizer">Equalizer</sys:String>
     <sys:String x:Key="mainpage_advanced">Advanced settings</sys:String>
     <sys:String x:Key="mainpage_system">System</sys:String>
-    
+
     <!--Device selection page (setup)-->
     <sys:String x:Key="devsel_header">Select your earbuds</sys:String>
     <sys:String x:Key="devsel_manual_pair_title">Is your device not listed?</sys:String>
@@ -164,7 +164,7 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="devsel_invalid_selection">Please select a valid device</sys:String>
     <sys:String x:Key="devsel_winrt_title">Use alternative Bluetooth backend</sys:String>
     <sys:String x:Key="devsel_winrt">Much better stability, but may not work on all PCs with some Bluetooth adapters</sys:String>
-    
+
     <!--Device page-->
     <sys:String x:Key="devices_header">Paired devices</sys:String>
     <sys:String x:Key="devices_new">New</sys:String>
@@ -172,7 +172,7 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="devices_select_inactive">Select</sys:String>
     <sys:String x:Key="devices_select_active">Selected</sys:String>
     <sys:String x:Key="devices_delete">Delete</sys:String>
-    <sys:String x:Key="devices_delete_long">Delete device</sys:String>
+<sys:String x:Key="devices_delete_long">Delete device</sys:String>
     <sys:String x:Key="devices_delete_confirmation">Are you sure you want to remove this device?</sys:String>
     
     <!--Touchpad gestures-->
@@ -208,7 +208,7 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ Ambient sound</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Off</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambient sound ↔ Off</sys:String>
-    
+
     <!--Custom touchpad action page-->
     <sys:String x:Key="cact_header">Define a custom long-press action</sys:String>
     <sys:String x:Key="cact_external_app_dialog_title">Select executable...</sys:String>
@@ -267,7 +267,7 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="selftest_fail">Fail</sys:String>
     <sys:String x:Key="selftest_pass_long">All checks have passed</sys:String>
     <sys:String x:Key="selftest_fail_long">One or more checks have failed</sys:String>
-    
+
     <sys:String x:Key="coredump_header">Dumping data...</sys:String>
     <sys:String x:Key="coredump_dl_progress_prepare">Preparing download...</sys:String>
     <sys:String x:Key="coredump_dl_progress_finished">Download finished</sys:String>
@@ -351,7 +351,7 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="fmg_warning_left">Please remove the left earbud from your ear.</sys:String>
     <sys:String x:Key="fmg_warning_right">Please remove the right earbud from your ear.</sys:String>
     <sys:String x:Key="fmg_header">Find my earbuds</sys:String>
-    
+
     <!-- Fit test-->
     <sys:String x:Key="gft_warning">Please wear both earbuds.</sys:String>
     <sys:String x:Key="gft_desc">Check whether your earbuds are seated correctly</sys:String>
@@ -367,7 +367,7 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="eq_stereo_balance">Left/right sound balance</sys:String>
     <sys:String x:Key="eq_stereo_balance_value">{0}% left; {1}% right</sys:String>
     <sys:String x:Key="eq_stereo_balance_neutral">Neutral</sys:String>
-    
+
     <sys:String x:Key="eq_bass">Bass Boost</sys:String>
     <sys:String x:Key="eq_soft">Soft</sys:String>
     <sys:String x:Key="eq_dynamic">Dynamic</sys:String>
@@ -388,7 +388,7 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">Conversation timeout</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_description">Revert settings when your voice is not detected for a certain amount of time</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} seconds</sys:String>
-    
+
     <!--Noise control >>> Ambient sound-->
     <sys:String x:Key="nc_as_header">Ambient sound settings</sys:String>
     <sys:String x:Key="nc_as_custom">Advanced customization</sys:String>
@@ -400,7 +400,7 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="nc_as_custom_tone_soft">Soft</sys:String>
     <sys:String x:Key="nc_as_custom_tone_neutral">Neutral</sys:String>
     <sys:String x:Key="nc_as_custom_vol_normal">Normal</sys:String>
-    
+
     <!--Ambient sound-->
     <sys:String x:Key="as_header">Ambient sound</sys:String>
     <sys:String x:Key="as_header_description">Hear your surroundings</sys:String>
@@ -415,7 +415,7 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="as_scale_moderate">Moderate</sys:String>
     <sys:String x:Key="as_scale_high">High</sys:String>
     <sys:String x:Key="as_scale_extraloud">Extra loud</sys:String>
-    
+
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Advanced settings</sys:String>
     <sys:String x:Key="adv_seamless">Seamless earbud connection</sys:String>
@@ -446,7 +446,7 @@ You might need to manually reconnect your earbuds.</sys:String>
 
 The remap configuration is only active on this device. If you connect your earbuds to a Samsung device, voice wakeup will activate Bixby normally. On other devices than this device and non-Samsung phones, this feature won't trigger any action.</sys:String>
 
-    
+
     <!--Credits-->
     <sys:String x:Key="credits_header">Credits</sys:String>
     <sys:String x:Key="credits_developer">Developer</sys:String>
@@ -463,20 +463,20 @@ The remap configuration is only active on this device. If you connect your earbu
     <sys:String x:Key="connlost_header">Unable to establish connection</sys:String>
     <sys:String x:Key="connlost_connect">Connect</sys:String>
     <sys:String x:Key="connlost_connecting">Connecting...</sys:String>
-    
+
     <!-- Pairing mode -->
     <sys:String x:Key="connlost_disconnected">Device disconnected</sys:String>
     <sys:String x:Key="pairingmode_done">The earbuds have been put into pairing mode and are now disconnected from this device.</sys:String>
-    
+
     <!--Firmware update disclaimer-->
     <sys:String x:Key="fw_disclaimer">Disclaimer</sys:String>
     <sys:String x:Key="fw_disclaimer_desc">This firmware updating tool is an accurate replica of the official updater found in Samsung's official Android app. I've thoroughly tested this implementation under various circumstances (normal operation, connection loss, intentionally corrupted Bluetooth packets, ...) without experiencing any issues at all. Still, I won't take any liability if anything should go wrong since firmware updates modify vital system components and should always be handled with caution.
 
-DOWNGRADING: While downgrading to older firmware versions is possible and I never ran into problems with it, it may cause unexpected issues and should only be done if necessary. A factory reset after the downgrade is recommended but not usually necessary. 
+DOWNGRADING: While downgrading to older firmware versions is possible and I never ran into problems with it, it may cause unexpected issues and should only be done if necessary. A factory reset after the downgrade is recommended but not usually necessary.
 CUSTOM FLASHING: You are also able to load firmware files from your hard-drive. Do NOT flash firmware binaries designed for OTHER models onto your device.
 
 This application is licensed under GPLv3. By using it, you are accepting the license and its limitation of liability. Press 'Continue' to accept.</sys:String>
-    
+
     <!--Firmware selection-->
     <sys:String x:Key="fw_select_header">Firmware updates</sys:String>
     <sys:String x:Key="fw_select_downgrade">Allow firmware downgrading</sys:String>
@@ -503,7 +503,7 @@ You are attempting to flash a firmware for the {0} onto your {1}. This can perma
 If possible, make sure both of the earbuds are connected before starting. It won't cause any issues if the connection fails while transferring the update. In such a case, the earbuds will automatically cancel the transfer process and exit the firmware update mode.
 
 Press 'Continue' to start the update.</sys:String>
-  
+
     <!--Firmware transfer-->
     <sys:String x:Key="fw_upload_header">Installing firmware...</sys:String>
     <sys:String x:Key="fw_upload_progress_session">Creating new session...</sys:String>
@@ -524,7 +524,7 @@ Press 'Continue' to start the update.</sys:String>
     <sys:String x:Key="fw_fail_unknown">Unexpected error while decoding the firmware binary. This firmware archive might be corrupted.
 
 Details:</sys:String>
-    
+
     <!--Firmware transfer errors-->
     <sys:String x:Key="fw_fail_connection">Lost connection to the device. The firmware transfer has been cancelled.</sys:String>
     <sys:String x:Key="fw_fail_session">Failed to open a new session. The device returned an error code ({0})</sys:String>
@@ -535,14 +535,14 @@ Details:</sys:String>
     <sys:String x:Key="fw_fail_lowbattery">Battery too low. Please charge your earbuds over 15% first.</sys:String>
     <sys:String x:Key="fw_fail_session_timeout">Timed out while waiting for the device to open a new session</sys:String>
     <sys:String x:Key="fw_fail_control_timeout">Timed out while waiting for the device to return a control block</sys:String>
-    
+
     <!--Spatial test-->
     <sys:String x:Key="spatial_header">Spatial sensor</sys:String>
     <!--Note: Quaternion = 4-dimensional vector-->
     <sys:String x:Key="spatial_dump_quaternion">Raw quaternion vector:</sys:String>
     <!--Note: RPY = Roll, pitch, yaw-->
     <sys:String x:Key="spatial_dump_rpy">RPY values:</sys:String>
-    
+
     <!--Header-->
     <sys:String x:Key="window_open">Open</sys:String>
     <sys:String x:Key="window_minimize">Minimize</sys:String>
@@ -553,7 +553,7 @@ Details:</sys:String>
     <sys:String x:Key="budsapp_text_p1">The official Galaxy Buds app for Windows 10/11 is installed alongside this application.</sys:String>
     <sys:String x:Key="budsapp_text_p2">If it is open and connected, GalaxyBudsClient might have issues connecting to your earbuds. Make sure to close it before continuing. Likewise, the official Galaxy Buds app can't connect to your earbuds while Galaxy Buds Manager is active and has opened connections to the earbuds.</sys:String>
     <sys:String x:Key="budsapp_text_p3">Keep in mind that only one application can talk to your Galaxy Buds at a time.</sys:String>
-    
+
     <!--Manual pairing-->
     <sys:String x:Key="manualpair_title">Manual device selection</sys:String>
     <sys:String x:Key="manualpair_title_dialog">Choose your Galaxy Buds device</sys:String>
