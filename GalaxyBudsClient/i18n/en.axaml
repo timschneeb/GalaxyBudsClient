@@ -171,6 +171,8 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="devices_new_long">Pair new device</sys:String>
     <sys:String x:Key="devices_select">Connect</sys:String>
     <sys:String x:Key="devices_delete">Delete</sys:String>
+    <sys:String x:Key="devices_delete_long">Delete device</sys:String>
+    <sys:String x:Key="devices_delete_confirmation">Are you sure you want to remove this device?</sys:String>
     
     <!--Touchpad gestures-->
     <sys:String x:Key="touchpad_gesture_header">Enable touchpad gestures</sys:String>

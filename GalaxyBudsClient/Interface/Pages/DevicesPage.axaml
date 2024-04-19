@@ -31,7 +31,7 @@
 
         <input:StandardUICommand x:Key="DeleteCommand" Kind="Delete"
                                  Label="{ext:Translate {x:Static i18N:Keys.DevicesDelete}}"
-                                 Description="{ext:Translate {x:Static i18N:Keys.DevicesDelete}}"
+                                 Description="{ext:Translate {x:Static i18N:Keys.DevicesDeleteLong}}"
                                  Command="{Binding DoDeleteCommand}" />
     </UserControl.Resources>
 

@@ -1,11 +1,11 @@
-﻿using Avalonia.Controls;
+﻿using System.Linq;
+using Avalonia.Controls;
 using FluentIcons.Common;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Platform;
-using Serilog;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
@@ -18,36 +18,32 @@ public class DevicesPageViewModel : MainPageViewModelBase
     
     public async void DoNewCommand()
     {
-        var result = await DeviceSelectionDialog.OpenDialogAsync();
-        /* TODO
-         
-         if (result is null) 
-            return;
-        
-        Hotkeys.Add(result);
-        SaveChanges();*/
+        await DeviceSelectionDialog.OpenDialogAsync();
     }
     
     public async void DoConnectCommand(object? param)
     {
         if (param is not Device device)
             return;
-        
-        var index = Settings.Data.Devices.IndexOf(device);
-        if (index < 0)
-        {
-            Log.Debug("DevicesPage.Connect: Cannot find device in configuration");
-            return;
-        }
-
+   
         // TODO
+        // device.MacAddress
     }
     
-    public void DoDeleteCommand(object? param)
+    public async void DoDeleteCommand(object? param)
     {
         if (param is not Device device)
             return;
+        
+        var result = await new QuestionBox
+        {
+            Title = Strings.DevicesDeleteLong,
+            Description = Strings.DevicesDeleteConfirmation,
+            ButtonText = Strings.ContinueButton,
+            CloseButtonText = Strings.Cancel
+        }.ShowAsync();
 
-        BluetoothImpl.Instance.UnregisterDevice(device);
+        if(result)
+            BluetoothImpl.Instance.UnregisterDevice(device);
     }
 }
