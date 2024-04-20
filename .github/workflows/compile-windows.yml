@@ -71,7 +71,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Prepare version information (1/3)
-      uses: oprypin/find-latest-tag@v1.1.1
+      uses: oprypin/find-latest-tag@v1.1.2
       with:
         repository: ThePBone/GalaxyBudsClient
         releases-only: true
@@ -155,7 +155,7 @@ jobs:
     
     steps:
     - name: Prepare version information (1/3)
-      uses: oprypin/find-latest-tag@v1.1.1
+      uses: oprypin/find-latest-tag@v1.1.2
       with:
         repository: ThePBone/GalaxyBudsClient
         releases-only: true
