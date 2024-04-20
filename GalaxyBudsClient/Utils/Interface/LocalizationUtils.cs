@@ -34,7 +34,7 @@ public static class Loc
     }
     
     public static string Resolve(string resName) => 
-        ResolveOrDefault(resName) ?? $"<Missing resource: {resName}>";
+        ResolveOrDefault(resName) ?? $"{resName}";
     
     public static string? ResolveOrDefault(string resName) =>
         _strings.TryGetValue(resName, out var result) ? result : 
