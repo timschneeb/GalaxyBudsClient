@@ -22,12 +22,17 @@
         </Border>
     </Design.PreviewWith>
     
-    <!-- Add spacing between Title & description of SettingsExpanderItems -->
+    <!-- Add spacing between title & description of SettingsExpanderItems -->
     <Style Selector="ui|SettingsExpanderItem /template/ StackPanel#HeaderRegion">
         <Setter Property="Spacing"
-                Value="4" />
+                Value="6" />
     </Style>
-    
+    <!-- Offset description text by 1 to the left -->
+    <Style Selector="ui|SettingsExpanderItem /template/ TextBlock#DescriptionText">
+        <Setter Property="Margin"
+                Value="-1 0 0 0" />
+    </Style>
+
     <!-- Center ComboBox content -->
     <Style Selector="ui|FAComboBox /template/ ContentPresenter#ContentPresenter">
         <Setter Property="VerticalAlignment"
