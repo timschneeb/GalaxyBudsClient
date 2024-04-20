@@ -9,7 +9,7 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsOSX)'=='true'">
         <ApplicationId>me.timschneeberger.galaxybudsclient.tests</ApplicationId>
-        <RuntimeIdentifiers>osx-arm64</RuntimeIdentifiers>
+        <RuntimeIdentifiers>osx-x64;osx-arm64</RuntimeIdentifiers>
         <OutputType>Exe</OutputType>
         <TargetFramework>net8.0-macos</TargetFramework>
         <LinkMode>None</LinkMode>
