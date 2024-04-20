@@ -27,11 +27,6 @@
         <Setter Property="Spacing"
                 Value="6" />
     </Style>
-    <!-- Offset description text by 1 to the left -->
-    <Style Selector="ui|SettingsExpanderItem /template/ TextBlock#DescriptionText">
-        <Setter Property="Margin"
-                Value="-1 0 0 0" />
-    </Style>
 
     <!-- Center ComboBox content -->
     <Style Selector="ui|FAComboBox /template/ ContentPresenter#ContentPresenter">
