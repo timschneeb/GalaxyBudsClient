@@ -25,8 +25,8 @@
     
     <Styles.Resources>
         <ResourceDictionary>
-            <system:Int32 x:Key="SettingsSubtitleTextSpacing">4</system:Int32>
-            <system:Int32 x:Key="StatusUnitTextSpacing">6</system:Int32>
+            <system:Double x:Key="SettingsSubtitleTextSpacing">4</system:Double>
+            <system:Double x:Key="StatusUnitTextSpacing">6</system:Double>
         </ResourceDictionary>
     </Styles.Resources>
     
