@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input;
@@ -44,6 +45,7 @@ public partial class MainWindow : StyledAppWindow
     public MainWindow()
     {
         InitializeComponent();
+        this.AttachDevTools(); // TODO remove this later 
             
         BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
         BluetoothImpl.Instance.Disconnected += OnDisconnected;
