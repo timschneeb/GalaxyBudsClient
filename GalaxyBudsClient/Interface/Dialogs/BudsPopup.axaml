@@ -3,6 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+        xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
         mc:Ignorable="d"
         x:Class="GalaxyBudsClient.Interface.Dialogs.BudsPopup"
         Height="205" 
