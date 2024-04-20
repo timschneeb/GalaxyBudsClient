@@ -3,8 +3,8 @@
         xmlns:system="clr-namespace:System;assembly=System.Runtime">
     <Styles.Resources>
         <ResourceDictionary>
-            <system:Int32 x:Key="SettingsSubtitleTextSpacing">0</system:Int32>
-            <system:Int32 x:Key="StatusUnitTextSpacing">2</system:Int32>
+            <system:Double x:Key="SettingsSubtitleTextSpacing">0</system:Double>
+            <system:Double x:Key="StatusUnitTextSpacing">2</system:Double>
         </ResourceDictionary>
     </Styles.Resources>
 </Styles>
