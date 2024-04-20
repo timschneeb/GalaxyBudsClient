@@ -205,22 +205,22 @@
                     <ic:SymbolIconSource Symbol="PeopleTeam" />
                 </ui:SettingsExpander.IconSource>
 
-                <ui:SettingsExpanderItem Content="{ext:Translate {x:Static i18N:Keys.CreditsGithub}}"
-                                         ActionIconSource="Open"
-                                         IsClickEnabled="True">
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.CreditsGithub}}"
+                                             ActionIconSource="Open"
+                                             IsClickEnabled="True">
                     <Interaction.Behaviors>
                         <EventTriggerBehavior EventName="Click">
                             <ext:OpenLinkAction TargetUri="https://github.com/thepbone/GalaxyBudsClient" />
                         </EventTriggerBehavior>
                     </Interaction.Behaviors>
-                </ui:SettingsExpanderItem>
+                </controls:SettingsSymbolItem>
 
-                <ui:SettingsExpanderItem Content="{ext:Translate {x:Static i18N:Keys.CreditsDeveloper}}"
-                                         Description="@thepbone" />
-                <ui:SettingsExpanderItem Content="{ext:Translate {x:Static i18N:Keys.CreditsContributor}}"
-                                         Description="{StaticResource ContributorCreditsString}" />
-                <ui:SettingsExpanderItem Content="{ext:Translate {x:Static i18N:Keys.CreditsTranslator}}"
-                                         Description="{StaticResource TranslatorCreditsString}" />
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.CreditsDeveloper}}"
+                                             Description="@thepbone" />
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.CreditsContributor}}"
+                                             Description="{StaticResource ContributorCreditsString}" />
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.CreditsTranslator}}"
+                                             Description="{StaticResource TranslatorCreditsString}" />
             </ui:SettingsExpander>
 
             <ui:SettingsExpander Name="DevSettings"

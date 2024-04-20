@@ -33,6 +33,16 @@
         <styling:FluentAvaloniaTheme PreferSystemTheme="True" CustomAccentColor="Orange" />
         <StyleInclude Source="avares://FluentAvalonia.BreadcrumbBar/Styling/Styles.axaml" />
         <StyleInclude Source="/Interface/Styling/AppStyles.axaml" />
+        
+        <OnPlatform>
+            <OnPlatform.Default>
+                <!-- TODO rename to default -->
+                <StyleInclude Source="/Interface/Styling/Overrides/OsxOverrides.axaml" />
+            </OnPlatform.Default>
+            <OnPlatform.macOS>
+                <StyleInclude Source="/Interface/Styling/Overrides/OsxOverrides.axaml" />
+            </OnPlatform.macOS>
+        </OnPlatform>
     </Application.Styles>
     <TrayIcon.Icons>
         <TrayIcons>
