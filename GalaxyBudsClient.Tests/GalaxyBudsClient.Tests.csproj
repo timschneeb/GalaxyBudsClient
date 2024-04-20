@@ -8,7 +8,12 @@
         <TargetFramework>net8.0-windows10.0.19041</TargetFramework>
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsOSX)'=='true'">
+        <ApplicationId>me.timschneeberger.galaxybudsclient.tests</ApplicationId>
+        <RuntimeIdentifiers>osx-arm64</RuntimeIdentifiers>
+        <OutputType>Exe</OutputType>
         <TargetFramework>net8.0-macos</TargetFramework>
+        <LinkMode>None</LinkMode>
+        <!-- TODO it cannot find any of the main assembly's dependencies when running -->
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <TargetFramework>net8.0</TargetFramework>
@@ -18,8 +23,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
 
-        <IsPackable>false</IsPackable>
         <IsTestProject>true</IsTestProject>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
@@ -36,7 +41,7 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
-    
+
     <ItemGroup>
         <ProjectReference Include="..\GalaxyBudsClient\GalaxyBudsClient.csproj" />
     </ItemGroup>
@@ -44,5 +49,40 @@
     <ItemGroup>
         <EmbeddedResource Include="TestData/**/*.bin"  />
     </ItemGroup>
+
+    <!-- https://github.com/xamarin/xamarin-macios/issues/15173#issuecomment-1237224832 -->
+    <UsingTask TaskName="RemoveFileNativeReferenceDuplicates" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+        <ParameterGroup>
+            <Files ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+            <Result ParameterType="Microsoft.Build.Framework.ITaskItem[]" Output="true" />
+        </ParameterGroup>
+        <Task>
+            <Using Namespace="System.Collections.Generic" />
+            <Code Type="Fragment" Language="cs">
+                <![CDATA[
+			if (Files.Length > 0)
+			{
+				var itemsDict = new Dictionary<string, ITaskItem> ();
+				for (int i = 0; i < Files.Length; i++)
+				{
+					ITaskItem item = Files[i];
+					string targetPath = item.GetMetadata("RelativePath");
+					itemsDict[targetPath] = item;
+				}
+				Result = itemsDict.Values.ToArray();
+			}
+]]>
+            </Code>
+        </Task>
+    </UsingTask>
+    <Target Name="CleanFileNativeReference" AfterTargets="_ComputeFrameworkFilesToPublish" BeforeTargets="_ComputeDynamicLibrariesToReidentify">
+        <RemoveFileNativeReferenceDuplicates Files="@(_FileNativeReference)">
+            <Output TaskParameter="Result" ItemName="_DistincFileNativeReference" />
+        </RemoveFileNativeReferenceDuplicates>
+        <ItemGroup>
+            <_FileNativeReference Remove="@(_FileNativeReference)" />
+            <_FileNativeReference Include="@(_DistincFileNativeReference)" />
+        </ItemGroup>
+    </Target>
 
 </Project>
