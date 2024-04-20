@@ -36,8 +36,7 @@
         
         <OnPlatform>
             <OnPlatform.Default>
-                <!-- TODO rename to default -->
-                <StyleInclude Source="/Interface/Styling/Overrides/OsxOverrides.axaml" />
+                <StyleInclude Source="/Interface/Styling/Overrides/DefaultOverrides.axaml" />
             </OnPlatform.Default>
             <OnPlatform.macOS>
                 <StyleInclude Source="/Interface/Styling/Overrides/OsxOverrides.axaml" />
