@@ -39,7 +39,7 @@
                         <DataTemplate x:DataType="bluetooth:BluetoothDevice">
                             <Border Background="Transparent" PointerPressed="OnListItemPressed">
                                 <Panel>
-                                    <StackPanel Spacing="4" Margin="4 10">
+                                    <StackPanel Spacing="4" Margin="4 10" VerticalAlignment="Center">
                                         <TextBlock Text="{Binding Name}"
                                                    Classes="BaseTextBlockStyle"
                                                    VerticalAlignment="Bottom"

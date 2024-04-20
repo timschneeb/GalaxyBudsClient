@@ -67,7 +67,7 @@
                             <DataTemplate x:DataType="firmware:FirmwareRemoteBinary">
                                 <Border Background="Transparent">
                                     <Panel>
-                                        <StackPanel Spacing="4" Margin="4 10">
+                                        <StackPanel Spacing="4" Margin="4 10" VerticalAlignment="Center">
                                             <TextBlock Text="{Binding BuildName}"
                                                        Classes="BaseTextBlockStyle"
                                                        VerticalAlignment="Bottom"

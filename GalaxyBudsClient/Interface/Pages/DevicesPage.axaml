@@ -60,7 +60,7 @@
                     <DataTemplate x:DataType="config:Device">
                         <Border Background="Transparent">
                             <Panel>
-                                <StackPanel Spacing="4" Margin="4 10">
+                                <StackPanel Spacing="4" Margin="4 10" VerticalAlignment="Center">
                                     <TextBlock Text="{Binding Name}"
                                                Classes="BaseTextBlockStyle"
                                                VerticalAlignment="Bottom"

@@ -63,7 +63,7 @@
                     <DataTemplate x:DataType="hotkeys:Hotkey">
                         <Border Background="Transparent">
                             <Panel>
-                                <StackPanel Spacing="4" Margin="4 10">
+                                <StackPanel Spacing="4" Margin="4 10" VerticalAlignment="Center">
                                     <TextBlock Text="{Binding HotkeyName}"
                                                Classes="BaseTextBlockStyle"
                                                VerticalAlignment="Bottom"
