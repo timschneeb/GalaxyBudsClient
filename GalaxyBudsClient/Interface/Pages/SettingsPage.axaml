@@ -27,7 +27,7 @@
                        Height="78"
                        RenderOptions.BitmapInterpolationMode="HighQuality" />
 
-                <StackPanel Spacing="0" Margin="12 0">
+                <StackPanel Spacing="{StaticResource SettingsSubtitleTextSpacing}" Margin="12 0">
                     <TextBlock Text="Galaxy Buds Manager"
                                Theme="{StaticResource BoldTitleTextBlockStyle}" />
 

@@ -1,2 +1,10 @@
 <Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" />
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:system="clr-namespace:System;assembly=System.Runtime">
+    <Styles.Resources>
+        <ResourceDictionary>
+            <system:Int32 x:Key="SettingsSubtitleTextSpacing">0</system:Int32>
+            <system:Int32 x:Key="StatusUnitTextSpacing">2</system:Int32>
+        </ResourceDictionary>
+    </Styles.Resources>
+</Styles>

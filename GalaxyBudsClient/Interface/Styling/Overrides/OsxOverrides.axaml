@@ -3,7 +3,8 @@
         xmlns:ui="using:FluentAvalonia.UI.Controls"
         xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
         xmlns:markupExtensions="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
-        xmlns:constants="clr-namespace:GalaxyBudsClient.Model.Constants">
+        xmlns:constants="clr-namespace:GalaxyBudsClient.Model.Constants"
+        xmlns:system="clr-namespace:System;assembly=System.Runtime">
 
     <!-- Fixes some display bugs on macOS -->
     <Design.PreviewWith>
@@ -22,6 +23,13 @@
         </Border>
     </Design.PreviewWith>
     
+    <Styles.Resources>
+        <ResourceDictionary>
+            <system:Int32 x:Key="SettingsSubtitleTextSpacing">4</system:Int32>
+            <system:Int32 x:Key="StatusUnitTextSpacing">6</system:Int32>
+        </ResourceDictionary>
+    </Styles.Resources>
+    
     <!-- Add spacing between title & description of SettingsExpanderItems -->
     <Style Selector="ui|SettingsExpanderItem /template/ StackPanel#HeaderRegion">
         <Setter Property="Spacing"
@@ -33,5 +41,4 @@
         <Setter Property="VerticalAlignment"
                 Value="Center" />
     </Style>
-
 </Styles>
