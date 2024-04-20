@@ -115,9 +115,8 @@ internal static class Program
     } 
 
     // Avalonia configuration, don't remove; also used by visual designer.
-    private static AppBuilder BuildAvaloniaApp()
-    {
-        var app = AppBuilder.Configure<App>()
+    private static AppBuilder BuildAvaloniaApp() =>
+        AppBuilder.Configure<App>()
             .With(new MacOSPlatformOptions
             {
                 // https://github.com/AvaloniaUI/Avalonia/issues/14577
@@ -125,11 +124,6 @@ internal static class Program
             })
             .UsePlatformDetect()
             .UseReactiveUI()
-            .LogToTrace();
-
-        if (!PlatformUtils.IsOSX)
-            app = app.WithInterFont();
-        
-        return app;
-    }
+            .LogToTrace()
+            .WithInterFont();
 }
