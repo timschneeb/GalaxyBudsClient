@@ -15,11 +15,14 @@ public interface IDeviceSpec
     public string DeviceBaseName { get; }
     public ITouchMap TouchMap { get; }
     public Guid ServiceUuid { get; }
+    public Guid? AltUuid => null;
     public IEnumerable<TrayItemTypes> TrayShortcuts { get; }
     public string IconResourceKey { get; }
     public int MaximumAmbientVolume { get; }
     public byte StartOfMessage { get; }
     public byte EndOfMessage { get; }
+    public byte? StartOfMessageAlt => null;
+    public byte? EndOfMessageAlt => null;
         
     bool Supports(Features arg) => Supports(arg, null);
     

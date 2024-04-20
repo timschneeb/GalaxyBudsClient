@@ -34,6 +34,7 @@
                     <ui:InfoBar.IsOpen>
                         <MultiBinding Converter="{x:Static BoolConverters.And}">
                             <Binding Path="!IsConnected" Source="{x:Static platform:BluetoothImpl.Instance}" />
+                            <Binding Path="!AlternativeModeEnabled" Source="{x:Static platform:BluetoothImpl.Instance}" />
                             <Binding Path="!IsInSetupWizard" />
                         </MultiBinding>
                     </ui:InfoBar.IsOpen>

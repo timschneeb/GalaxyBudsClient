@@ -59,7 +59,7 @@ public partial class DevTools : StyledWindow.StyledWindow
                     HexEditor.Caret.Location = new BitLocation(HexEditor.Document.Length - 1);
                 HexEditor.HexView.InvalidateVisualLines();
 
-                var holder = new MessageViewHolder(SppMessage.Decode(raw, BluetoothImpl.Instance.CurrentModel));
+                var holder = new MessageViewHolder(SppMessage.Decode(raw, BluetoothImpl.Instance.CurrentModel, BluetoothImpl.Instance.AlternativeModeEnabled));
                 ViewModel.MsgTableDataSource.Add(holder);
                 ViewModel.MsgTableDataView.Refresh();
                 
@@ -162,7 +162,7 @@ public partial class DevTools : StyledWindow.StyledWindow
         try
         {
             ViewModel.MsgTableDataSource.AddRange(
-                SppMessage.DecodeRawChunk([..content], (Models)model)
+                SppMessage.DecodeRawChunk([..content], (Models)model, false)
                     .Select(m => new MessageViewHolder(m)));
             ViewModel.MsgTableDataView.Refresh();
         }

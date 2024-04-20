@@ -26,7 +26,7 @@ public enum LegacyMsgIds
 public enum MsgIds
 {
     UNKNOWN_0 = 0,
-    UNKNOWN_1 = 1,
+    UNK_SPP_ALT = 1,
     UNKNOWN_2 = 2,
     UNKNOWN_3 = 3,
     UNKNOWN_4 = 4,
@@ -92,9 +92,9 @@ public enum MsgIds
     USAGE_REPORT = 64,
     METERING_REPORT = 65,
     UNIVERSAL_MSG_ID_ACKNOWLEDGEMENT = 66,
-    UNKNOWN_67 = 67,
-    UNKNOWN_68 = 68,
-    UNKNOWN_69 = 69,
+    WRITE_PROPERTY = 67, //alt mode
+    READ_PROPERTY = 68, //alt mode
+    NOTIFY_PROPERTY = 69, //alt mode
     UNKNOWN_70 = 70,
     USAGE_REPORT_V2 = 71,
     EXTRA_CLEAR_SOUND_CALL = 72,

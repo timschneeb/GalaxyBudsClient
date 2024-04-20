@@ -43,5 +43,6 @@ public enum Features
     HeadTracking,
     CradleSerialNumber,
     SppLegacyMessageHeader,
-    DeviceColor
+    DeviceColor,
+    Rename
 }

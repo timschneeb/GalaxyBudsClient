@@ -63,6 +63,9 @@
         <AvaloniaXaml Remove="bin\**"/>
         <EmbeddedResource Remove="bin\**"/>
         <None Remove="bin\**"/>
+        <Compile Update="Interface\Pages\RenamePage.axaml.cs">
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
     
     <!-- Dependencies -->
@@ -128,5 +131,9 @@
             <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
         </ProjectReference>
         <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj"/>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <AdditionalFiles Include="Interface\Pages\RenamePage.axaml" />
     </ItemGroup>
 </Project>

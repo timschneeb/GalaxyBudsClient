@@ -34,13 +34,17 @@ public class Buds2DeviceSpec : IDeviceSpec
         { Features.NoiseControlModeDualSide, new FeatureRule(5) },
         { Features.PairingMode, null },
         { Features.AmbientSoundVolume, null },
-        { Features.DeviceColor, null }
+        { Features.DeviceColor, null },
+        { Features.Rename, null }
     };
-        
+
     public Models Device => Models.Buds2;
     public string DeviceBaseName => "Buds2";
     public ITouchMap TouchMap => new StandardTouchMap();
     public Guid ServiceUuid => Uuids.Buds2;
+    public Guid? AltUuid => Uuids.Buds2Alternative;
+    public byte? StartOfMessageAlt => 252;
+    public byte? EndOfMessageAlt => 204;
 
     public IEnumerable<TrayItemTypes> TrayShortcuts => Array.AsReadOnly(
         [
