@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>79%</td><td>88 missing string(s)</td></tr>
+<tr><td>78%</td><td>93 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -104,6 +104,11 @@ Make sure both earbuds are turned on before continuing.</td></tr>
 
 You are attempting to flash a firmware for the {0} onto your {1}. This can permanently brick your earbuds.</td></tr>
 <tr><td><code>window_open</code></td><td>Open</td></tr>
+<tr><td><code>rename</code></td><td>Rename earbuds</td></tr>
+<tr><td><code>rename_desc</code></td><td>This will rename earbuds for all devices.</td></tr>
+<tr><td><code>rename_warn</code></td><td>Renaming your earbuds may not be possible using official apps as they restrict it to Samsung smartphones, which means you may need this app to reset the personalized name. The name change may not be detected by devices until you un-pair and re-pair your earbuds.</td></tr>
+<tr><td><code>rename_too_short</code></td><td>The name you entered is too short (no characters) or too long (maximum limit imposed by earbuds). Please try again with a different name.</td></tr>
+<tr><td><code>rename_ok</code></td><td>Successfully renamed your earbuds! The name change may not be detected by devices (including this one) until you un-pair and re-pair your earbuds.</td></tr>
 
 </table>
 
