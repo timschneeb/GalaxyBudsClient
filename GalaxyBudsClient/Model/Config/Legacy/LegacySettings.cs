@@ -72,7 +72,6 @@ public static class LegacySettings
             Name = Instance.RegisteredDevice.Name
         });
         
-        // TODO delete old config file
-        // File.Delete(Path);
+        File.Delete(Path);
     }
 }
