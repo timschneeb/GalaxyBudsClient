@@ -15,6 +15,7 @@ using GalaxyBudsClient.Interface.MarkupExtensions;
 using GalaxyBudsClient.Interface.ViewModels.Developer;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
@@ -255,6 +256,14 @@ public partial class DevTools : StyledWindow.StyledWindow
         if (sender is MenuItem item)
         {
             ViewModel.UseAlternativeProtocol = item.IsChecked;
+        }
+    }
+
+    private void OnOpenOnStartupClicked(object? sender, RoutedEventArgs e)
+    {
+        if (sender is MenuItem item)
+        {
+            Settings.Data.OpenDevToolsOnStartup = item.IsChecked;
         }
     }
 }

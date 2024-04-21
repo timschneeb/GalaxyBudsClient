@@ -60,7 +60,7 @@ public partial class MainWindow : StyledAppWindow
         _ = TrayManager.Instance.RebuildAsync();
             
         Loc.LanguageUpdated += OnLanguageUpdated;
-            
+        
         if (BluetoothImpl.HasValidDevice)
         {
             Task.Run(() => BluetoothImpl.Instance.ConnectAsync());
@@ -136,6 +136,11 @@ public partial class MainWindow : StyledAppWindow
     {
         if (_firstShow)
         {
+            if (Settings.Data.OpenDevToolsOnStartup)
+            {
+                WindowLauncher.ShowDevTools(this);
+            }
+            
             HotkeyReceiver.Reset();
             HotkeyReceiver.Instance.Update(true);
         }

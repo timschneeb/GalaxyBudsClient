@@ -285,10 +285,12 @@ public enum MsgIds
 
 public enum MsgConstants
 {
-    LegacySom = 0xFE,
-    LegacyEom = 0xEE,
+    SmepSom = 0xFC,
+    SmepEom = 0xCC,
     Som = 0xFD,
-    Eom = 0xDD
+    Eom = 0xDD,
+    LegacySom = 0xFE,
+    LegacyEom = 0xEE
 }
 
 [CompiledEnum]

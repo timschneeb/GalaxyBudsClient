@@ -282,7 +282,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         /* Load from configuration */
         try
         {
-            var uuid = AlternativeModeEnabled ? DeviceSpec.AltUuid.ToString() : DeviceSpec.ServiceUuid.ToString();
+            var uuid = AlternativeModeEnabled ? Uuids.SmepSpp.ToString() : DeviceSpec.ServiceUuid.ToString();
             if (uuid == null)
             {
                 throw new BluetoothException(BluetoothException.ErrorCodes.UnsupportedDevice,
@@ -466,13 +466,13 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
             {
                 if (AlternativeModeEnabled)
                 {
-                    ConnectedAlternative?.Invoke(this, EventArgs.Empty);
                     IsConnectedAlternative = true;
+                    ConnectedAlternative?.Invoke(this, EventArgs.Empty);
                 }
                 else
                 {
-                    Connected?.Invoke(this, EventArgs.Empty);
                     IsConnected = true;
+                    Connected?.Invoke(this, EventArgs.Empty);
                 }
             }
             else

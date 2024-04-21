@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Utils;
 
@@ -15,20 +16,32 @@ internal class SppAlternativeMessageDecoder : BaseMessageDecoder
         
         var alt = new SppAlternativeMessage(msg);
         var properties = new List<SppAlternativeMessage.Property>();
-        if (alt.Id == MsgIds.READ_PROPERTY)
+        switch (alt.Id)
         {
-            var decoded = SppAlternativeMessage.ReadProperty.Decode(alt);
-            PropertyTable["Type"] = decoded.Type.ToString();
-            properties = decoded.Response;
+            case MsgIds.READ_PROPERTY:
+            {
+                var decoded = SppAlternativeMessage.ReadProperty.Decode(alt);
+                PropertyTable["Type"] = decoded.Type.ToString();
+                properties = decoded.Response;
+                break;
+            }
+            case MsgIds.NOTIFY_PROPERTY:
+                properties = SppAlternativeMessage.Property.Decode(alt.Payload);
+                break;
         }
-        else if (alt.Id == MsgIds.NOTIFY_PROPERTY)
-        {
-            properties = SppAlternativeMessage.Property.Decode(alt.Payload);
-        }
-        
+
         foreach (var prop in properties)
         {
-            PropertyTable[prop.Type.ToString()] = HexUtils.Dump(prop.Response, 9999, false, false, false);
+            PropertyTable[prop.Type.ToString()] = prop.Response.Length switch
+            {
+                // Display single byte as decimal number 
+                1 => Convert.ToString(prop.Response[0]),
+                // Display short as decimal number
+                2 => BitConverter.ToUInt16(prop.Response).ToString(),
+                // Display hex + ascii representation other values
+                _ => HexUtils.Dump(prop.Response, 9999, false, false, false).TrimEnd() + " (ascii: " +
+                     HexUtils.DumpAscii(prop.Response) + ")"
+            };
         }
     }
 

@@ -47,10 +47,7 @@ public class Buds2ProDeviceSpec : IDeviceSpec
     public string DeviceBaseName => "Buds2 Pro";
     public ITouchMap TouchMap => new StandardTouchMap();
     public Guid ServiceUuid => Uuids.Buds2Pro;
-    public Guid? AltUuid => Uuids.Buds2ProAlternative;
-    public byte? StartOfMessageAlt => 252;
-    public byte? EndOfMessageAlt => 204;
-
+    
     public IEnumerable<TrayItemTypes> TrayShortcuts => Array.AsReadOnly(
         [
             TrayItemTypes.ToggleNoiseControl,

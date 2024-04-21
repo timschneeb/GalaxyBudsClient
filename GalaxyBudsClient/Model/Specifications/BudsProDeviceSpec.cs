@@ -35,17 +35,13 @@ public class BudsProDeviceSpec : IDeviceSpec
         { Features.PairingMode, null },
         { Features.AmbientSoundVolume, null },
         { Features.AncWithOneEarbud, new FeatureRule(8) },
-        { Features.DeviceColor, null },
-        { Features.Rename, null } // TODO
+        { Features.DeviceColor, null }
     };
         
     public Models Device => Models.BudsPro;
     public string DeviceBaseName => "Buds Pro";
     public ITouchMap TouchMap => new StandardTouchMap();
     public Guid ServiceUuid => Uuids.BudsPro;
-    public Guid? AltUuid => Uuids.BudsProAlternative;
-    public byte? StartOfMessageAlt => 252;
-    public byte? EndOfMessageAlt => 204;
 
     public IEnumerable<TrayItemTypes> TrayShortcuts => Array.AsReadOnly(
         [

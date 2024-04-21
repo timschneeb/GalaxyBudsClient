@@ -73,8 +73,8 @@ public partial class SppMessage(
     public byte[] Encode(bool alternative)
     {
         var spec = DeviceSpecHelper.FindByModel(TargetModel) ?? throw new InvalidOperationException();
-        var specSom = alternative ? spec.StartOfMessageAlt.GetValueOrDefault(spec.StartOfMessage) : spec.StartOfMessage;
-        var specEom = alternative ? spec.EndOfMessageAlt.GetValueOrDefault(spec.EndOfMessage) : spec.EndOfMessage;
+        var specSom = alternative ? (byte)MsgConstants.SmepSom : spec.StartOfMessage;
+        var specEom = alternative ? (byte)MsgConstants.SmepEom : spec.EndOfMessage;
 
         using var stream = new MemoryStream(TotalPacketSize);
         using var writer = new BinaryWriter(stream);
@@ -118,8 +118,8 @@ public partial class SppMessage(
         {
             var spec = DeviceSpecHelper.FindByModel(model) ?? throw new InvalidOperationException();
             var draft = new SppMessage(model: model);
-            var specSom = alternative ? spec.StartOfMessageAlt.GetValueOrDefault(spec.StartOfMessage) : spec.StartOfMessage;
-            var specEom = alternative ? spec.EndOfMessageAlt.GetValueOrDefault(spec.EndOfMessage) : spec.EndOfMessage;
+            var specSom = alternative ? (byte)MsgConstants.SmepSom : spec.StartOfMessage;
+            var specEom = alternative ? (byte)MsgConstants.SmepEom : spec.EndOfMessage;
 
             using var stream = new MemoryStream(raw);
             using var reader = new BinaryReader(stream);
@@ -192,7 +192,7 @@ public partial class SppMessage(
     public static IEnumerable<SppMessage> DecodeRawChunk(List<byte> incomingData, Models model, bool alternative)
     {
         var spec = DeviceSpecHelper.FindByModel(model) ?? throw new InvalidOperationException();
-        var specSom = alternative ? spec.StartOfMessageAlt.GetValueOrDefault(spec.StartOfMessage) : spec.StartOfMessage;
+        var specSom = alternative ? (byte)MsgConstants.SmepSom : spec.StartOfMessage;
         var messages = new List<SppMessage>();
         var failCount = 0;
         

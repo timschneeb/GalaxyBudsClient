@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Platform;
 using Serilog;
+// ReSharper disable InconsistentNaming
 
 namespace GalaxyBudsClient.Message;
 
@@ -178,9 +179,14 @@ public class SppAlternativeMessage
                     Log.Error("NotifyDecode: packet part too small");
                     return list;
                 }
+
+                // DESCRIPTION_EIR_MANU_DATA falsely claims that it contains a 256 byte payload, even though it is much smaller
+                // Limit the responseSize to the remaining payload size to prevent out of bounds access
+                var responseSize = Math.Min(payload[i + 2], payload.Length - i - 3);
+                
                 var item = new Property(
                     (AltProperty)(payload[i] | (payload[i + 1] << 8)),
-                    new byte[payload[i + 2]]
+                    new byte[responseSize]
                     );
                 if (item.Response.Length > 0)
                 {
