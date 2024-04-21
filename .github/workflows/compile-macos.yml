@@ -2,7 +2,7 @@ name: Compile macOS binaries
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, device-rename ]
   pull_request:
     branches: [ master ]
   release:
