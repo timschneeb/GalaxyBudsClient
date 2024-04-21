@@ -6,6 +6,7 @@
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              xmlns:fluent="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+             xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.RenamePage"
              x:DataType="pages:RenamePageViewModel"
@@ -18,41 +19,48 @@
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
             <Border Classes="Card" ClipToBounds="True">
-                <Grid ColumnDefinitions="*" RowDefinitions="30,Auto,Auto,Auto">
+                <Grid ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto"
+                      Margin="16">
                     <Grid Grid.Row="0"
-                          Margin="10,0"
+                          Margin="0,0,0,8"
                           HorizontalAlignment="Center"
-                          IsVisible="{Binding !IsActive}"
+                          IsVisible="{Binding !IsWarningHidden}"
                           ColumnDefinitions="Auto,5,Auto">
 
-                        <fluent:SymbolIcon VerticalAlignment="Center" Grid.Column="0" Symbol="Warning" />
+                        <fluent:SymbolIcon VerticalAlignment="Center" Grid.Column="0" 
+                                           Symbol="Hourglass" />
                         <Label Grid.Column="2" VerticalAlignment="Center"
                                Content="{Binding WarningText}" />
                     </Grid>
-
-                    <TextBox Grid.Row="1" Name="BudsName" TextWrapping="Wrap"
-                             Margin="50,10"
-                             BorderBrush="{StaticResource SystemBaseLowColor}" />
                     
-                    <Button Grid.Row="2"
-                            Margin="0,10"
-                            Content="{ext:Translate {x:Static i18N:Keys.Rename}}"
-                            IsEnabled="{Binding IsActive}"
-                            Command="{Binding DoRenameCommand}"
-                            HorizontalAlignment="Center"/>
-                    
-                    <Grid Grid.Row="3"
-                          Margin="10,10"
-                          HorizontalAlignment="Center"
-                          ColumnDefinitions="Auto,5,*"
-                          RowDefinitions="Auto">
+                    <TextBlock Grid.Row="1" 
+                               Margin="0,0,0,8"
+                               Text="{ext:Translate {x:Static i18N:Keys.RenameLabel}}"
+                               TextWrapping="Wrap" />
 
-                        <fluent:SymbolIcon VerticalAlignment="Center" Grid.Column="0" Symbol="Warning" />
-                        <TextBlock Grid.Column="2" VerticalAlignment="Center" TextWrapping="Wrap"
-                                   Text="{ext:Translate {x:Static i18N:Keys.RenameWarn}}" />
+                    <Grid Grid.Row="2"
+                          ColumnDefinitions="*,8,Auto">
+
+                        <TextBox TextWrapping="Wrap"
+                                 Text="{Binding Name}"
+                                 Watermark="{ext:Translate {x:Static i18N:Keys.RenameHint}}"
+                                 BorderBrush="{StaticResource SystemBaseLowColor}" />
+
+                        <Button Grid.Column="2"
+                                Content="{ext:Translate {x:Static i18N:Keys.Rename}}"
+                                IsEnabled="{Binding IsActive}"
+                                Command="{Binding DoRenameCommand}"
+                                HorizontalAlignment="Center" />
                     </Grid>
+
                 </Grid>
             </Border>
+
+            <ui:InfoBar Title="{ext:Translate {x:Static i18N:Keys.Important}}"
+                        IsClosable="False"
+                        IsOpen="True"
+                        Severity="Informational"
+                        Message="{ext:Translate {x:Static i18N:Keys.RenameWarn}}" />
         </StackPanel>
     </ScrollViewer>
 </UserControl>
