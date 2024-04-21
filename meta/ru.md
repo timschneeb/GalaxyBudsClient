@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>74%</td><td>109 missing string(s)</td></tr>
+<tr><td>74%</td><td>114 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -12,6 +12,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <table>
 <tr><th>Key</th><th>Original string</th></tr>
 <tr><td><code>hint</code></td><td>Hint</td></tr>
+<tr><td><code>important</code></td><td>Important</td></tr>
 <tr><td><code>home</code></td><td>Home</td></tr>
 <tr><td><code>please_wait</code></td><td>Please wait...</td></tr>
 <tr><td><code>file_not_found</code></td><td>File not found</td></tr>
@@ -123,8 +124,13 @@ You are attempting to flash a firmware for the {0} onto your {1}. This can perma
 <tr><td><code>rename</code></td><td>Rename earbuds</td></tr>
 <tr><td><code>rename_desc</code></td><td>This will rename earbuds for all devices.</td></tr>
 <tr><td><code>rename_warn</code></td><td>Renaming your earbuds may not be possible using official apps as they restrict it to Samsung smartphones, which means you may need this app to reset the personalized name. The name change may not be detected by devices until you un-pair and re-pair your earbuds.</td></tr>
-<tr><td><code>rename_too_short</code></td><td>The name you entered is too short (no characters) or too long (maximum limit imposed by earbuds). Please try again with a different name.</td></tr>
-<tr><td><code>rename_ok</code></td><td>Successfully renamed your earbuds! The name change may not be detected by devices (including this one) until you un-pair and re-pair your earbuds.</td></tr>
+<tr><td><code>rename_too_short</code></td><td>The name you entered is too short (no characters) or too long (maximum limit imposed by earbuds).</td></tr>
+<tr><td><code>rename_hint</code></td><td>Enter new name...</td></tr>
+<tr><td><code>rename_label</code></td><td>New device name</td></tr>
+<tr><td><code>rename_reading_name</code></td><td>Reading current name...</td></tr>
+<tr><td><code>rename_ok_title</code></td><td>Earbuds renamed</td></tr>
+<tr><td><code>rename_ok</code></td><td>Successfully renamed your earbuds!
+The name change may not be detected by devices (including this one) until you un-pair and re-pair your earbuds.</td></tr>
 
 </table>
 
