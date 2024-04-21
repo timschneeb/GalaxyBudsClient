@@ -39,13 +39,17 @@ public class Buds2ProDeviceSpec : IDeviceSpec
         { Features.AutoAdjustSound, new FeatureRule(3) },
         { Features.HeadTracking, new FeatureRule(8) },
         { Features.CradleSerialNumber, null },
-        { Features.DeviceColor, null }
+        { Features.DeviceColor, null },
+        { Features.Rename, null } // TODO
     };
         
     public Models Device => Models.Buds2Pro;
     public string DeviceBaseName => "Buds2 Pro";
     public ITouchMap TouchMap => new StandardTouchMap();
     public Guid ServiceUuid => Uuids.Buds2Pro;
+    public Guid? AltUuid => Uuids.Buds2ProAlternative;
+    public byte? StartOfMessageAlt => 252;
+    public byte? EndOfMessageAlt => 204;
 
     public IEnumerable<TrayItemTypes> TrayShortcuts => Array.AsReadOnly(
         [

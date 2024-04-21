@@ -145,13 +145,23 @@ public partial class DevTools : StyledWindow.StyledWindow
             return;
         }
 
-        var msg = new SppMessage
+        if (ViewModel.UseAlternativeProtocol)
         {
-            Id = (MsgIds?) SendMsgId.SelectedItem ?? MsgIds.UNKNOWN_0,
-            Payload = payload,
-            Type = (MsgTypes?) SendMsgType.SelectedItem ?? MsgTypes.Request
-        };
-        _ = BluetoothImpl.Instance.SendAsync(msg);
+            var msg = new SppAlternativeMessage((MsgIds?)SendMsgId.SelectedItem ?? MsgIds.UNKNOWN_0,
+                payload,
+                (MsgTypes?)SendMsgType.SelectedItem ?? MsgTypes.Request);
+            _ = BluetoothImpl.Instance.SendAltAsync(msg);
+        }
+        else
+        {
+            var msg = new SppMessage
+            {
+                Id = (MsgIds?)SendMsgId.SelectedItem ?? MsgIds.UNKNOWN_0,
+                Payload = payload,
+                Type = (MsgTypes?)SendMsgType.SelectedItem ?? MsgTypes.Request
+            };
+            _ = BluetoothImpl.Instance.SendAsync(msg);
+        }
     }
         
     private void Clear_OnClick(object? sender, RoutedEventArgs e)
@@ -192,7 +202,7 @@ public partial class DevTools : StyledWindow.StyledWindow
         try
         {
             ViewModel.MsgTableDataSource.AddRange(
-                SppMessage.DecodeRawChunk([..content], (Models)model, false)
+                SppMessage.DecodeRawChunk([..content], (Models)model, ViewModel.UseAlternativeProtocol)
                     .Select(m => new MessageViewHolder(m)));
             ViewModel.MsgTableDataView.Refresh();
         }
