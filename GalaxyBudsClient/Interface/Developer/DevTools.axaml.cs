@@ -89,7 +89,11 @@ public partial class DevTools : StyledWindow.StyledWindow
                     HexEditor.Caret.Location = new BitLocation(HexEditor.Document.Length - 1);
                 HexEditor.HexView.InvalidateVisualLines();
 
-                var holder = new MessageViewHolder(SppMessage.Decode(raw, BluetoothImpl.Instance.CurrentModel, BluetoothImpl.Instance.AlternativeModeEnabled));
+                var msg = SppMessage.Decode(raw, BluetoothImpl.Instance.CurrentModel,
+                    ViewModel.UseAlternativeProtocol);
+                var holder = ViewModel.UseAlternativeProtocol ? 
+                    new MessageViewHolder(new SppAlternativeMessage(msg)) : new MessageViewHolder(msg);
+                
                 ViewModel.MsgTableDataSource.Add(holder);
                 ViewModel.MsgTableDataView.Refresh();
                 
