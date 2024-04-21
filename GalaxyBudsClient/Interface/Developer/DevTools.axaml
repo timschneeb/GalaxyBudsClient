@@ -39,9 +39,11 @@
             <MenuItem Header="_Edit">
                 <MenuItem Header="_Copy selected payload" Click="CopyPayload_OnClick" />
             </MenuItem>
-            <MenuItem Header="_View">
+            <MenuItem Header="_Options">
                 <MenuItem Header="_Auto-scroll" ToggleType="CheckBox" IsChecked="{Binding IsAutoscrollEnabled}" 
                           Click="OnAutoScrollClicked"/>
+                <MenuItem Header="_Monitor secondary protocol" ToggleType="CheckBox" IsChecked="{Binding UseAlternativeProtocol}" 
+                          Click="OnUseAlternativeProtocolClicked"/>
             </MenuItem>
         </Menu>
 

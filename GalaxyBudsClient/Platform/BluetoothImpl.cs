@@ -59,6 +59,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
     public event EventHandler<string>? DisconnectedAlternative;
     public event EventHandler<SppAlternativeMessage>? MessageReceivedAlternative;
     public event EventHandler<InvalidPacketException>? InvalidDataReceivedAlternative;
+    public event EventHandler<byte[]>? NewDataReceivedAlternative;
     public event EventHandler<BluetoothException>? BluetoothErrorAlternative;
     [Reactive] public bool IsConnectedAlternative { private set; get; }
 
@@ -483,8 +484,6 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
     
     private void OnNewDataAvailable(object? sender, byte[] frame)
     {
-        NewDataReceived?.Invoke(this, frame);
-        
         /* Discard data if not properly registered */
         if (!HasValidDevice)
         {
@@ -494,10 +493,12 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         if (AlternativeModeEnabled)
         {
             IsConnectedAlternative = true;
+            NewDataReceivedAlternative?.Invoke(this, frame);
         }
         else
         {
             IsConnected = true;
+            NewDataReceived?.Invoke(this, frame);
         }
 
         IncomingQueue.Enqueue(frame);
