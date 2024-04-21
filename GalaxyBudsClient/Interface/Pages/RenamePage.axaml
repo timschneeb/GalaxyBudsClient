@@ -5,8 +5,8 @@
              xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
-             xmlns:fluent="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
-             xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+             xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.RenamePage"
              x:DataType="pages:RenamePageViewModel"
@@ -27,7 +27,7 @@
                           IsVisible="{Binding !IsWarningHidden}"
                           ColumnDefinitions="Auto,5,Auto">
 
-                        <fluent:SymbolIcon VerticalAlignment="Center" Grid.Column="0" 
+                        <ic:SymbolIcon VerticalAlignment="Center" Grid.Column="0" 
                                            Symbol="Hourglass" />
                         <Label Grid.Column="2" VerticalAlignment="Center"
                                Content="{Binding WarningText}" />
@@ -56,11 +56,11 @@
                 </Grid>
             </Border>
 
-            <ui:InfoBar Title="{ext:Translate {x:Static i18N:Keys.Important}}"
-                        IsClosable="False"
-                        IsOpen="True"
-                        Severity="Informational"
-                        Message="{ext:Translate {x:Static i18N:Keys.RenameWarn}}" />
+            <controls:CustomInfoBar Title="{ext:Translate {x:Static i18N:Keys.Important}}"
+                                    IsClosable="False"
+                                    IsOpen="True"
+                                    Severity="Informational"
+                                    Message="{ext:Translate {x:Static i18N:Keys.RenameWarn}}" />
         </StackPanel>
     </ScrollViewer>
 </UserControl>
