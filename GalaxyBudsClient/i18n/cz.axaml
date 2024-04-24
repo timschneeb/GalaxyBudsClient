@@ -172,6 +172,12 @@ Tento program je navržen tak, aby poskytoval mnohem více funkcí než oficiál
     <sys:String x:Key="devices_new_long">Spárovat nové zařízení...</sys:String>
     <sys:String x:Key="devices_select">Připojit</sys:String>
     <sys:String x:Key="devices_delete">Smazat</sys:String>
+    <sys:String x:Key="devices_select_inactive">Vybrat</sys:String>
+    <sys:String x:Key="devices_select_active">Vybrané</sys:String>
+    <sys:String x:Key="devices_delete_long">Smazat zařízení</sys:String>
+    <sys:String x:Key="devices_delete_confirmation">Opravdu chcete toto zařízení odebrat?</sys:String>
+    <sys:String x:Key="devices_settings_link">Spravovat spárovaná zařízení</sys:String>
+    <sys:String x:Key="devices_settings_link_desc">Přidat, odebrat nebo vybrat primární zařízení</sys:String>
 
     <!--Touchpad gestures-->
     <sys:String x:Key="touchpad_gesture_header">Povolit ovládání dotykem</sys:String>
