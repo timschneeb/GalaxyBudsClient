@@ -239,10 +239,15 @@
 
     <!--Device page-->
     <sys:String x:Key="devices_header">Eşleşen cihazlar</sys:String>
-    <sys:String x:Key="devices_new">Yeni</sys:String>
-    <sys:String x:Key="devices_new_long">Yeni cihaz eşleyin</sys:String>
-    <sys:String x:Key="devices_select">Bağlan</sys:String>
-    <sys:String x:Key="devices_delete">Sil</sys:String>
+    <sys:String x:Key="devices_new">Yeni</sys:String>
+    <sys:String x:Key="devices_new_long">Yeni cihaz eşleştir</sys:String>
+    <sys:String x:Key="devices_select_inactive">Seç</sys:String>
+    <sys:String x:Key="devices_select_active">Seçildi</sys:String>
+    <sys:String x:Key="devices_delete">Sil</sys:String>
+    <sys:String x:Key="devices_delete_long">Cihazı sil</sys:String>
+    <sys:String x:Key="devices_delete_confirmation">Bu cihazı kaldırmak istediğinizden emin misiniz?</sys:String>
+    <sys:String x:Key="devices_settings_link">Eşleşen cihazları yönet</sys:String>
+    <sys:String x:Key="devices_settings_link_desc">Birincil cihazı ekleyin, kaldırın veya seçin</sys:String>
 
     <!--Touchpad gestures-->
     <sys:String x:Key="touchpad_gesture_header">Dokunma kontrollerini aktifleştir</sys:String>
