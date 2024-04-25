@@ -30,63 +30,49 @@ public class FirmwareBinary
         BuildName = buildName;
             
         using var stream = new MemoryStream(data);
-            
-        var bArr = new byte[4];
+        using var reader = new BinaryReader(stream); 
+        
         try
         {
-            if (stream.Read(bArr) != -1)
-            {
-                _magic = (((long) bArr[2] & 255) << 16) | (((long) bArr[3] & 255) << 24) |
-                         (((long) bArr[1] & 255) << 8) | ((long) bArr[0] & 255);
-                if (_magic == FOTA_BIN_MAGIC)
-                {
-                    // Okay! Skip ahead
-                    goto MAGIC_VALID;
-                }
-                if (_magic == FOTA_BIN_MAGIC_COMBINATION || Encoding.ASCII.GetString(data).StartsWith(":02000004FE00FC"))
-                {
-                    // Notify tracker about this event and submit firmware build info
-                    SentrySdk.CaptureMessage($"BCOM-Firmware discovered. Build: {buildName}, Content: {Convert.ToBase64String(data)}", SentryLevel.Fatal);
-                      
-                    Log.Fatal("FirmwareBinary: Parsing internal debug firmware \'{Name}\'. " +
-                              "This is unsupported by this application as these binaries are not meant for retail devices", buildName);
-                }
+            _magic = reader.ReadInt32();
 
+            if (_magic == FOTA_BIN_MAGIC_COMBINATION || Encoding.ASCII.GetString(data).StartsWith(":02000004FE00FC"))
+            {
+                // Notify tracker about this event and submit firmware build info
+                SentrySdk.ConfigureScope((x => x.AddAttachment(data, "firmware.bin")));
+                SentrySdk.CaptureMessage($"BCOM-Firmware discovered. Build: {buildName}", SentryLevel.Fatal);
+                  
+                Log.Fatal("FirmwareBinary: Parsing internal debug firmware \'{Name}\'. " +
+                          "This is unsupported by this application as these binaries are not meant for retail devices", buildName);
+            }
+            
+            if (_magic != FOTA_BIN_MAGIC)
+            {
                 throw new FirmwareParseException(FirmwareParseException.ErrorCodes.InvalidMagic, Strings.FwFailNoMagic);
             }
 
-            MAGIC_VALID:
-            if (stream.Read(bArr) != -1)
+            TotalSize = reader.ReadInt32();
+            if (TotalSize == 0)
             {
-                TotalSize = (((long) bArr[2] & 255) << 16) | (((long) bArr[3] & 255) << 24) |
-                            (((long) bArr[1] & 255) << 8) | ((long) bArr[0] & 255);
-                if (TotalSize == 0)
-                {
-                    throw new FirmwareParseException(FirmwareParseException.ErrorCodes.SizeZero,
-                        Strings.FwFailSizeNull);
-                }
+                throw new FirmwareParseException(FirmwareParseException.ErrorCodes.SizeZero,
+                    Strings.FwFailSizeNull);
             }
-
-            if (stream.Read(bArr) != -1)
+            
+            SegmentsCount = reader.ReadInt32();
+            if (SegmentsCount == 0)
             {
-                SegmentsCount = (((long) bArr[1] & 255) << 8) | (((long) bArr[3] & 255) << 24) |
-                                (((long) bArr[2] & 255) << 16) | ((long) bArr[0] & 255);
-                if (SegmentsCount == 0)
-                {
-                    throw new FirmwareParseException(FirmwareParseException.ErrorCodes.NoSegmentsFound,
-                        Strings.FwFailNoSegments);
-                }
+                throw new FirmwareParseException(FirmwareParseException.ErrorCodes.NoSegmentsFound,
+                    Strings.FwFailNoSegments);
             }
-
+            
             Segments = new FirmwareSegment[SegmentsCount];
             for (var i = 0; i < SegmentsCount; i++)
             {
-                Segments[i] = new FirmwareSegment(i, SegmentsCount, stream);
+                Segments[i] = new FirmwareSegment(reader);
             }
 
-            stream.Seek(-4, SeekOrigin.End);
-            stream.Read(bArr, 0, 4);
-            Crc32 = BitConverter.ToInt32(bArr);
+            reader.BaseStream.Seek(-4, SeekOrigin.End);
+            Crc32 = reader.ReadInt32();
         }
         catch (Exception ex) when (ex is not FirmwareParseException)
         {
