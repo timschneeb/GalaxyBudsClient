@@ -34,7 +34,7 @@ public class FirmwareBinary
         
         try
         {
-            _magic = reader.ReadInt32();
+            _magic = reader.ReadUInt32();
 
             if (_magic == FOTA_BIN_MAGIC_COMBINATION || Encoding.ASCII.GetString(data).StartsWith(":02000004FE00FC"))
             {
