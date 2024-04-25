@@ -446,12 +446,10 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                     return;
                 }
 
+                var hasIoActivity = false;
                 try
                 {
                     var incomingCount = _profile.Stream?.AvailableBytes;
-
-                    await Task.Delay(200);
-
                     if (incomingCount == null)
                     {
                         /* Stream not yet ready */
@@ -461,6 +459,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                     if (incomingCount > 0)
                     {
                         IsStreamConnected = true;
+                        hasIoActivity = true;
 
                         /* Handle incoming stream */
                         var buffer = new byte[incomingCount ?? 0];
@@ -487,6 +486,7 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                     {
                         if (TransmitterQueue.IsEmpty) continue;
                         if (!TransmitterQueue.TryDequeue(out var raw)) continue;
+                        hasIoActivity = true;
                         try
                         {
                             _profile.Stream?.Write(raw, 0, raw.Length);
@@ -518,6 +518,11 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                     
                     BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.Unknown, ex.Message));
                     return;
+                }
+
+                if (!hasIoActivity)
+                {
+                    await Task.Delay(50);
                 }
             }
         }
