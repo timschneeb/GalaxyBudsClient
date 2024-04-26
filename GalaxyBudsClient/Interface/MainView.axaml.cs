@@ -49,7 +49,8 @@ public partial class MainView : UserControl
         new FirmwarePageViewModel(),
         new FitTestPageViewModel(),
         new HotkeyPageViewModel(),
-        new SystemInfoPageViewModel()
+        new SystemInfoPageViewModel(),
+        new RenamePageViewModel()
     ];
 
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)

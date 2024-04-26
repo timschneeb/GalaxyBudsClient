@@ -35,9 +35,10 @@ public class Buds2DeviceSpec : IDeviceSpec
         { Features.PairingMode, null },
         { Features.AmbientSoundVolume, null },
         { Features.DeviceColor, null },
+        { Features.Rename, null },
         { Features.SpatialSensor, new FeatureRule(10) } // 10 may be inaccurate
     };
-        
+
     public Models Device => Models.Buds2;
     public string DeviceBaseName => "Buds2";
     public ITouchMap TouchMap => new StandardTouchMap();

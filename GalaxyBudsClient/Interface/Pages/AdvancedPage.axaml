@@ -6,7 +6,6 @@
              xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
-             xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
              xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
              mc:Ignorable="d" d:DesignWidth="800"
@@ -114,6 +113,18 @@
                                              IsClickEnabled="True">
                     <Interaction.Behaviors>
                         <ext:RequiresFeatureBehavior Feature="GearFitTest" />
+                        <ext:RequiresConnectedDeviceBehavior />
+                    </Interaction.Behaviors>
+                </controls:SettingsSymbolItem>
+
+                <controls:SettingsSymbolItem Name="Rename"
+                                             Content="{ext:Translate {x:Static i18N:Keys.Rename}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.RenameDesc}}"
+                                             Symbol="Rename"
+                                             ActionSymbol="ChevronRight"
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="Rename" />
                         <ext:RequiresConnectedDeviceBehavior />
                     </Interaction.Behaviors>
                 </controls:SettingsSymbolItem>

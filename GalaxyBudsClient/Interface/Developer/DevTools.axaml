@@ -8,6 +8,7 @@
         xmlns:message="clr-namespace:GalaxyBudsClient.Message"
         xmlns:avaloniaHex="clr-namespace:AvaloniaHex;assembly=AvaloniaHex"
         xmlns:rendering="clr-namespace:AvaloniaHex.Rendering;assembly=AvaloniaHex"
+        xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
         mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="625"
         x:Class="GalaxyBudsClient.Interface.Developer.DevTools"
         x:DataType="vm:DevToolsViewModel"
@@ -39,9 +40,13 @@
             <MenuItem Header="_Edit">
                 <MenuItem Header="_Copy selected payload" Click="CopyPayload_OnClick" />
             </MenuItem>
-            <MenuItem Header="_View">
+            <MenuItem Header="_Options">
                 <MenuItem Header="_Auto-scroll" ToggleType="CheckBox" IsChecked="{Binding IsAutoscrollEnabled}" 
                           Click="OnAutoScrollClicked"/>
+                <MenuItem Header="_Monitor SMEP protocol" ToggleType="CheckBox" IsChecked="{Binding UseAlternativeProtocol}" 
+                          Click="OnUseAlternativeProtocolClicked"/>
+                <MenuItem Header="_Open on startup" ToggleType="CheckBox" IsChecked="{Binding OpenDevToolsOnStartup, Source={x:Static config:Settings.Data}}" 
+                          Click="OnOpenOnStartupClicked"/>
             </MenuItem>
         </Menu>
 

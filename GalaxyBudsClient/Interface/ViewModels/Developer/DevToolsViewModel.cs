@@ -9,6 +9,7 @@ public class DevToolsViewModel : ViewModelBase
 {
     [Reactive] public bool HasProperties { set; get; } = true;
     [Reactive] public bool IsAutoscrollEnabled { set; get; } = true;
+    [Reactive] public bool UseAlternativeProtocol { set; get; }
     [Reactive] public MessageViewHolder? SelectedMessage { set; get; }
         
     public readonly DataGridCollectionView MsgTableDataView = new(new ObservableCollection<MessageViewHolder>());
@@ -26,34 +27,38 @@ public class DevToolsViewModel : ViewModelBase
 
     private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if (e.PropertyName == nameof(SelectedMessage))
+        switch (e.PropertyName)
         {
-            var item = SelectedMessage;
-            if (item?.Message == null)
+            case nameof(SelectedMessage):
             {
-                HasProperties = true;
-                PropTableDataSource.Clear();
-            }
-            else
-            {
-                var parser = item.Message.CreateDecoder();
-                if (parser != null)
+                var item = SelectedMessage;
+                if (item?.Message == null)
                 {
-                    PropTableDataSource.Clear();
-                    foreach (var (key, value) in parser.ToStringMap())
-                    {
-                        PropTableDataSource?.Add(new PropertyViewModel(key, value));
-                    }
                     HasProperties = true;
+                    PropTableDataSource.Clear();
                 }
                 else
                 {
-                    PropTableDataSource.Clear();
-                    HasProperties = false;
+                    var parser = item.Message.CreateDecoder();
+                    if (parser != null)
+                    {
+                        PropTableDataSource.Clear();
+                        foreach (var (key, value) in parser.ToStringMap())
+                        {
+                            PropTableDataSource?.Add(new PropertyViewModel(key, value));
+                        }
+                        HasProperties = true;
+                    }
+                    else
+                    {
+                        PropTableDataSource.Clear();
+                        HasProperties = false;
+                    }
                 }
-            }
         
-            PropTableDataView.Refresh();
+                PropTableDataView.Refresh();
+                break;
+            }
         }
     }
 }

@@ -65,6 +65,9 @@ public class SettingsData : ReactiveObject
     [ReadOnly(true)] public ObservableCollection<long> ExperimentsFinishedIds { set; get; } = [];
     [Reactive] public bool DisableCrashReporting { set; get; }
     
+    /* Developer */
+    [Reactive] public bool OpenDevToolsOnStartup { set; get; }
+    
     /* Other */
     [Reactive] public bool FirmwareWarningAccepted { set; get; }
     [Reactive] public Event BixbyRemapEvent { set; get; }

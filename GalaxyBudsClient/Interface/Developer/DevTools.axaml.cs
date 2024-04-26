@@ -15,11 +15,11 @@ using GalaxyBudsClient.Interface.MarkupExtensions;
 using GalaxyBudsClient.Interface.ViewModels.Developer;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Extensions;
-using Serilog;
 
 namespace GalaxyBudsClient.Interface.Developer;
 
@@ -43,7 +43,38 @@ public partial class DevTools : StyledWindow.StyledWindow
         DataContext = new DevToolsViewModel();
         
         Closing += OnClosing;
+        ViewModel.PropertyChanged += OnPropertyChanged;
         BluetoothImpl.Instance.NewDataReceived += OnNewDataReceived;
+    }
+
+    private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        switch (e.PropertyName)
+        {
+            case nameof(DevToolsViewModel.UseAlternativeProtocol):
+                SelectProtocol();
+                break;
+        }
+    }
+
+    private void SelectProtocol()
+    {
+        if(ViewModel.UseAlternativeProtocol)
+        {
+            BluetoothImpl.Instance.NewDataReceivedAlternative += OnNewDataReceived;
+            BluetoothImpl.Instance.NewDataReceived -= OnNewDataReceived;
+        }
+        else
+        {
+            BluetoothImpl.Instance.NewDataReceivedAlternative -= OnNewDataReceived;
+            BluetoothImpl.Instance.NewDataReceived += OnNewDataReceived;
+        }
+        
+        HexEditor.Document?.RemoveBytes(0, HexEditor.Document.Length);
+        ViewModel.SelectedMessage = null;
+        ViewModel.HasProperties = false;
+        ViewModel.MsgTableDataSource.Clear();
+        ViewModel.MsgTableDataView.Refresh();
     }
 
     private void OnNewDataReceived(object? sender, byte[] raw)
@@ -59,7 +90,11 @@ public partial class DevTools : StyledWindow.StyledWindow
                     HexEditor.Caret.Location = new BitLocation(HexEditor.Document.Length - 1);
                 HexEditor.HexView.InvalidateVisualLines();
 
-                var holder = new MessageViewHolder(SppMessage.Decode(raw, BluetoothImpl.Instance.CurrentModel));
+                var msg = SppMessage.Decode(raw, BluetoothImpl.Instance.CurrentModel,
+                    ViewModel.UseAlternativeProtocol);
+                var holder = ViewModel.UseAlternativeProtocol ? 
+                    new MessageViewHolder(new SppAlternativeMessage(msg)) : new MessageViewHolder(msg);
+                
                 ViewModel.MsgTableDataSource.Add(holder);
                 ViewModel.MsgTableDataView.Refresh();
                 
@@ -115,13 +150,23 @@ public partial class DevTools : StyledWindow.StyledWindow
             return;
         }
 
-        var msg = new SppMessage
+        if (ViewModel.UseAlternativeProtocol)
         {
-            Id = (MsgIds?) SendMsgId.SelectedItem ?? MsgIds.UNKNOWN_0,
-            Payload = payload,
-            Type = (MsgTypes?) SendMsgType.SelectedItem ?? MsgTypes.Request
-        };
-        _ = BluetoothImpl.Instance.SendAsync(msg);
+            var msg = new SppAlternativeMessage((MsgIds?)SendMsgId.SelectedItem ?? MsgIds.UNKNOWN_0,
+                payload,
+                (MsgTypes?)SendMsgType.SelectedItem ?? MsgTypes.Request);
+            _ = BluetoothImpl.Instance.SendAltAsync(msg);
+        }
+        else
+        {
+            var msg = new SppMessage
+            {
+                Id = (MsgIds?)SendMsgId.SelectedItem ?? MsgIds.UNKNOWN_0,
+                Payload = payload,
+                Type = (MsgTypes?)SendMsgType.SelectedItem ?? MsgTypes.Request
+            };
+            _ = BluetoothImpl.Instance.SendAsync(msg);
+        }
     }
         
     private void Clear_OnClick(object? sender, RoutedEventArgs e)
@@ -162,7 +207,7 @@ public partial class DevTools : StyledWindow.StyledWindow
         try
         {
             ViewModel.MsgTableDataSource.AddRange(
-                SppMessage.DecodeRawChunk([..content], (Models)model)
+                SppMessage.DecodeRawChunk([..content], (Models)model, ViewModel.UseAlternativeProtocol)
                     .Select(m => new MessageViewHolder(m)));
             ViewModel.MsgTableDataView.Refresh();
         }
@@ -202,8 +247,23 @@ public partial class DevTools : StyledWindow.StyledWindow
     {
         if (sender is MenuItem item)
         {
-            ViewModel.IsAutoscrollEnabled = item.IsChecked; 
-            Log.Error(item.IsChecked.ToString());
+            ViewModel.IsAutoscrollEnabled = item.IsChecked;
+        }
+    }
+
+    private void OnUseAlternativeProtocolClicked(object? sender, RoutedEventArgs e)
+    {
+        if (sender is MenuItem item)
+        {
+            ViewModel.UseAlternativeProtocol = item.IsChecked;
+        }
+    }
+
+    private void OnOpenOnStartupClicked(object? sender, RoutedEventArgs e)
+    {
+        if (sender is MenuItem item)
+        {
+            Settings.Data.OpenDevToolsOnStartup = item.IsChecked;
         }
     }
 }

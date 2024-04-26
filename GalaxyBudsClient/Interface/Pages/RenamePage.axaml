@@ -1,0 +1,66 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
+             xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             mc:Ignorable="d" d:DesignWidth="800"
+             x:Class="GalaxyBudsClient.Interface.Pages.RenamePage"
+             x:DataType="pages:RenamePageViewModel"
+             x:CompileBindings="True">
+
+    <Design.DataContext>
+        <pages:RenamePageViewModel />
+    </Design.DataContext>
+
+    <ScrollViewer>
+        <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
+            <Border Classes="Card" ClipToBounds="True">
+                <Grid ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto"
+                      Margin="16">
+                    <Grid Grid.Row="0"
+                          Margin="0,0,0,8"
+                          HorizontalAlignment="Center"
+                          IsVisible="{Binding !IsWarningHidden}"
+                          ColumnDefinitions="Auto,5,Auto">
+
+                        <ic:SymbolIcon VerticalAlignment="Center" Grid.Column="0" 
+                                           Symbol="Hourglass" />
+                        <Label Grid.Column="2" VerticalAlignment="Center"
+                               Content="{Binding WarningText}" />
+                    </Grid>
+                    
+                    <TextBlock Grid.Row="1" 
+                               Margin="0,0,0,8"
+                               Text="{ext:Translate {x:Static i18N:Keys.RenameLabel}}"
+                               TextWrapping="Wrap" />
+
+                    <Grid Grid.Row="2"
+                          ColumnDefinitions="*,8,Auto">
+
+                        <TextBox TextWrapping="Wrap"
+                                 Text="{Binding Name}"
+                                 Watermark="{ext:Translate {x:Static i18N:Keys.RenameHint}}"
+                                 BorderBrush="{StaticResource SystemBaseLowColor}" />
+
+                        <Button Grid.Column="2"
+                                Content="{ext:Translate {x:Static i18N:Keys.Rename}}"
+                                IsEnabled="{Binding IsActive}"
+                                Command="{Binding DoRenameCommand}"
+                                HorizontalAlignment="Center" />
+                    </Grid>
+
+                </Grid>
+            </Border>
+
+            <controls:CustomInfoBar Title="{ext:Translate {x:Static i18N:Keys.Important}}"
+                                    IsClosable="False"
+                                    IsOpen="True"
+                                    Severity="Informational"
+                                    Message="{ext:Translate {x:Static i18N:Keys.RenameWarn}}" />
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

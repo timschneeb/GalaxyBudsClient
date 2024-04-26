@@ -54,6 +54,16 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
     public event EventHandler<byte[]>? NewDataReceived;
     public event EventHandler<BluetoothException>? BluetoothError;
     
+    public event EventHandler? ConnectedAlternative;
+    public event EventHandler? ConnectingAlternative;
+    public event EventHandler<string>? DisconnectedAlternative;
+    public event EventHandler<SppAlternativeMessage>? MessageReceivedAlternative;
+    public event EventHandler<InvalidPacketException>? InvalidDataReceivedAlternative;
+    public event EventHandler<byte[]>? NewDataReceivedAlternative;
+    public event EventHandler<BluetoothException>? BluetoothErrorAlternative;
+    [Reactive] public bool IsConnectedAlternative { private set; get; }
+
+    
     public Models CurrentModel => Device.Current?.Model ?? Models.NULL;
     public IDeviceSpec DeviceSpec => DeviceSpecHelper.FindByModel(CurrentModel) ?? new StubDeviceSpec();
     public static bool HasValidDevice => Settings.Data.Devices.Count > 0 && 
@@ -67,11 +77,13 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
 
     public DeviceManager Device { get; } = new();
     
+    [Reactive] public bool AlternativeModeEnabled { private set; get; }
     private readonly List<byte> _incomingData = [];
     private static readonly ConcurrentQueue<byte[]> IncomingQueue = new();
     private readonly CancellationTokenSource _loopCancelSource = new();
     private CancellationTokenSource _connectCancelSource = new();
     private readonly Task? _loop;
+    // There is exactly one feature which requires connecting on a different UUID.
 
     private BluetoothImpl()
     {
@@ -121,7 +133,13 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         
         _loop = Task.Run(DataConsumerLoop, _loopCancelSource.Token);
             
-        _backend.Connecting += (_, _) => Connecting?.Invoke(this, EventArgs.Empty);
+        _backend.Connecting += (_, _) =>
+        {
+            if (AlternativeModeEnabled)
+                ConnectingAlternative?.Invoke(this, EventArgs.Empty);
+            else
+                Connecting?.Invoke(this, EventArgs.Empty);
+        };
         _backend.BluetoothErrorAsync += (_, exception) => OnBluetoothError(exception); 
         _backend.NewDataAvailable += OnNewDataAvailable;
         _backend.RfcommConnected += OnRfcommConnected;
@@ -129,6 +147,28 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
             
         MessageReceived += SppMessageReceiver.Instance.MessageReceiver;
         InvalidDataReceived += OnInvalidDataReceived;
+    }
+
+    public bool SetAltMode(bool altMode)
+    {
+        if (AlternativeModeEnabled == altMode)
+        {
+            return true;
+        }
+
+        if (!AlternativeModeEnabled && IsConnected)
+        {
+            Log.Error("BluetoothImpl: cannot enable alt mode while buds connected");
+            return false;
+        }
+        if (AlternativeModeEnabled && IsConnectedAlternative)
+        {
+            Log.Error("BluetoothImpl: cannot disable alt mode while buds alt connected");
+            return false;
+        }
+
+        AlternativeModeEnabled = altMode;
+        return true;
     }
 
     public async void Dispose()
@@ -168,9 +208,16 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
                 .ContinueWith(_ => ConnectAsync());
         }
     }
-        
+
     private void OnBluetoothError(BluetoothException exception)
     {
+        if (AlternativeModeEnabled)
+        {
+            LastErrorMessage = exception.ErrorMessage ?? exception.Message;
+            IsConnectedAlternative = false;
+            BluetoothErrorAlternative?.Invoke(this, exception);
+            return;
+        }
         if (SuppressDisconnectionEvents) 
             return;
         
@@ -212,9 +259,14 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
             return fallbackName;
         }
     }
-        
-    public async Task<bool> ConnectAsync(Device? device = null, bool noRetry = false)
+
+    public async Task<bool> ConnectAsync(Device? device = null, bool alternative = false)
     {
+        if (alternative != AlternativeModeEnabled)
+        {
+            Log.Error($"BluetoothImpl: Connection attempt in wrong mode {alternative}");
+            return false;
+        }
         // Create new cancellation token source if the previous one has already been used
         if(_connectCancelSource.IsCancellationRequested)
             _connectCancelSource = new CancellationTokenSource();
@@ -230,10 +282,16 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         /* Load from configuration */
         try
         {
+            var uuid = AlternativeModeEnabled ? Uuids.SmepSpp.ToString() : DeviceSpec.ServiceUuid.ToString();
+            if (uuid == null)
+            {
+                throw new BluetoothException(BluetoothException.ErrorCodes.UnsupportedDevice,
+                    "BluetoothImpl: Connection attempt without valid UUID (alt mode enabled but UUID unset?)");
+            }
             DeviceName = await GetDeviceNameAsync();
             device.Name = DeviceName;
                         
-            await _backend.ConnectAsync(device.MacAddress, DeviceSpec.ServiceUuid.ToString(), _connectCancelSource.Token);
+            await _backend.ConnectAsync(device.MacAddress,  uuid, _connectCancelSource.Token);
             return true;
         }
         catch (BluetoothException ex)
@@ -248,8 +306,20 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         }
     }
 
-    public async Task DisconnectAsync()
+    public async Task DisconnectAsync(bool alternative = false)
     {
+        if (!alternative && AlternativeModeEnabled)
+        {
+            Disconnected?.Invoke(this, "User requested disconnect while alt mode enabled");
+            IsConnected = false;
+            return;
+        }
+        if (alternative && !AlternativeModeEnabled)
+        {
+            Disconnected?.Invoke(this, "User requested alt disconnect while alt mode disable");
+            IsConnectedAlternative = false;
+            return;
+        }
         try
         {
             // Cancel the connection attempt if it's still in progress
@@ -263,8 +333,16 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
             } 
 
             await _backend.DisconnectAsync();
-            Disconnected?.Invoke(this, "User requested disconnect");
-            IsConnected = false;
+            if (alternative)
+            {
+                IsConnectedAlternative = false;
+                DisconnectedAlternative?.Invoke(this, "User requested disconnect");
+            }
+            else
+            {
+                IsConnected = false;
+                Disconnected?.Invoke(this, "User requested disconnect");
+            }
             LastErrorMessage = string.Empty;
         }
         catch (BluetoothException ex)
@@ -272,12 +350,14 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
             OnBluetoothError(ex);
         }
     }
-        
+
     public async Task SendAsync(SppMessage msg)
     {
+        if (AlternativeModeEnabled)
+            return;
         if (!IsConnected)
             return;
-            
+
         try
         {
             Log.Verbose("<< Outgoing: {Msg}", msg);
@@ -287,7 +367,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
                 hook.OnMessageSend(ref msg);
             }
 
-            var raw = msg.Encode();
+            var raw = msg.Encode(false);
                 
             foreach(var hook in ScriptManager.Instance.RawStreamHooks)
             {
@@ -301,36 +381,59 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
             OnBluetoothError(ex);
         }
     }
+
+    public async Task SendAltAsync(SppAlternativeMessage msg)
+    {
+        if (!AlternativeModeEnabled)
+            return;
+        if (!IsConnectedAlternative)
+            return;
+        try
+        {
+            var data = msg.Msg.Encode(true);
+            Log.Verbose($"<< Outgoing (alt): {msg}");
+            await _backend.SendAsync(data);
+        }
+        catch (BluetoothException ex)
+        {
+            OnBluetoothError(ex);
+        }
+    }
         
     public async Task SendResponseAsync(MsgIds id, params byte[]? payload)
     {
-        await SendAsync(new SppMessage{Id = id, Payload = payload ?? Array.Empty<byte>(), Type = MsgTypes.Response});
+        await SendAsync(new SppMessage{Id = id, Payload = payload ?? [], Type = MsgTypes.Response});
     }
 
     public async Task SendRequestAsync(MsgIds id, params byte[]? payload)
     {
-        await SendAsync(new SppMessage{Id = id, Payload = payload ?? Array.Empty<byte>(), Type = MsgTypes.Request});
+        await SendAsync(new SppMessage{Id = id, Payload = payload ?? [], Type = MsgTypes.Request});
     }
         
     public async Task SendRequestAsync(MsgIds id, bool payload)
     {
         await SendRequestAsync(id, payload ? [0x01] : [0x00]);
     }
-    
+
     public async Task SendAsync(BaseMessageEncoder encoder)
     {
         await SendAsync(encoder.Encode());
     }
-        
+
     public void UnregisterDevice(Device? device = null)
     {
+        if (AlternativeModeEnabled)
+        {
+            Log.Error("Unregister in alt mode");
+            return;
+        }
         var mac = device?.MacAddress ?? Device.Current?.MacAddress;
         var toRemove = Settings.Data.Devices.FirstOrDefault(x => x.MacAddress == mac);
-        if(toRemove == null)
+        if (toRemove == null)
             return;
         
         // Disconnect if the device is currently connected
-        if(mac == Device.Current?.MacAddress)
+        if (mac == Device.Current?.MacAddress)
             _ = DisconnectAsync();
 
         Settings.Data.Devices.Remove(toRemove);
@@ -341,7 +444,13 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
     
     private void OnDisconnected(object? sender, string reason)
     {
-        if (!SuppressDisconnectionEvents)
+        if (AlternativeModeEnabled)
+        {
+            LastErrorMessage = Strings.Connlost;
+            IsConnectedAlternative = false;
+            DisconnectedAlternative?.Invoke(this, reason);
+        }
+        else if (!SuppressDisconnectionEvents)
         {
             LastErrorMessage = Strings.Connlost;
             IsConnected = false;
@@ -355,8 +464,16 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         {
             if (HasValidDevice)
             {
-                Connected?.Invoke(this, EventArgs.Empty);
-                IsConnected = true;
+                if (AlternativeModeEnabled)
+                {
+                    IsConnectedAlternative = true;
+                    ConnectedAlternative?.Invoke(this, EventArgs.Empty);
+                }
+                else
+                {
+                    IsConnected = true;
+                    Connected?.Invoke(this, EventArgs.Empty);
+                }
             }
             else
             {
@@ -367,15 +484,23 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
     
     private void OnNewDataAvailable(object? sender, byte[] frame)
     {
-        NewDataReceived?.Invoke(this, frame);
-        
         /* Discard data if not properly registered */
         if (!HasValidDevice)
         {
             return;
         }
 
-        IsConnected = true;
+        if (AlternativeModeEnabled)
+        {
+            IsConnectedAlternative = true;
+            NewDataReceivedAlternative?.Invoke(this, frame);
+        }
+        else
+        {
+            IsConnected = true;
+            NewDataReceived?.Invoke(this, frame);
+        }
+
         IncomingQueue.Enqueue(frame);
     }
 
@@ -405,14 +530,32 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
 
             try
             {
-                foreach (var message in SppMessage.DecodeRawChunk(_incomingData, CurrentModel))
+                foreach (var message in SppMessage.DecodeRawChunk(_incomingData, CurrentModel, AlternativeModeEnabled))
                 {
-                    MessageReceived?.Invoke(this, message);
+                    if (AlternativeModeEnabled)
+                    {
+                        MessageReceivedAlternative?.Invoke(this, new SppAlternativeMessage(message));
+                    }
+                    else
+                    {
+                        MessageReceived?.Invoke(this, message);
+                    }
                 }
             }
             catch (InvalidPacketException ex)
             {
-                InvalidDataReceived?.Invoke(this, ex);
+                if (AlternativeModeEnabled)
+                {
+                    InvalidDataReceivedAlternative?.Invoke(this, ex);
+                }
+                else
+                {
+                    InvalidDataReceived?.Invoke(this, ex);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"failed processing packet {ex}");
             }
         }
     }

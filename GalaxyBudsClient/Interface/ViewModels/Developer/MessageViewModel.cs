@@ -4,13 +4,33 @@ using GalaxyBudsClient.Utils;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Developer;
 
-public class MessageViewHolder(SppMessage msg)
+public class MessageViewHolder
 {
-    public string Id { get; } = msg.Id.ToStringFast();
-    public string Payload { get; } = BitConverter.ToString(msg.Payload).Replace("-", " ");
+    public MessageViewHolder(SppMessage msg)
+    {
+        Id = msg.Id.ToStringFast();
+        Payload = BitConverter.ToString(msg.Payload).Replace("-", " ");
+        Type = msg.IsFragment ? "Fragment/" : string.Empty + msg.Type.ToStringFast();
+        Size = $"{msg.Size} bytes";
+        Crc16 = msg.Crc16 == 0 ? "Pass" : "Fail";
+        Message = msg;
+    }
+    
+    public MessageViewHolder(SppAlternativeMessage msg)
+    {
+        Id = msg.Id.ToStringFast();
+        Payload = BitConverter.ToString(msg.Payload).Replace("-", " ");
+        Type = msg.Type.ToStringFast();
+        Size = $"{msg.Msg.Size} bytes";
+        Crc16 = msg.Msg.Crc16 == 0 ? "Pass" : "Fail";
+        Message = msg.Msg;
+    }
+    
+    public string Id { get; }
+    public string Payload { get; }
     public string PayloadAscii => HexUtils.DumpAscii(Message.Payload);
-    public string Type { get; } = msg.IsFragment ? "Fragment/" : string.Empty + msg.Type.ToStringFast();
-    public string Size { get; } = $"{msg.Size} bytes";
-    public string Crc16 { get; } = msg.Crc16 == 0 ? "Pass" : "Fail";
-    public SppMessage Message { get; } = msg;
+    public string Type { get; }
+    public string Size { get; }
+    public string Crc16 { get; }
+    public SppMessage Message { get; }
 }

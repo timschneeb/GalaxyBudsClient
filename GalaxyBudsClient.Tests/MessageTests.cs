@@ -21,7 +21,7 @@ public abstract class MessageTests<T> where T : BaseMessageDecoder
     protected void DecodeAndVerify(TestCase input)
     {
         var data = GetTestData(input.Model, input.Revision);
-        var message = SppMessage.Decode(data, input.Model);
+        var message = SppMessage.Decode(data, input.Model, false);
         
         var parser = (message.CreateDecoder() as T)!;
         parser.Decode(message);

@@ -18,6 +18,7 @@
     <sys:String x:Key="unknown">Unknown</sys:String>
     <sys:String x:Key="back">Back</sys:String>
     <sys:String x:Key="hint">Hint</sys:String>
+    <sys:String x:Key="important">Important</sys:String>
     <sys:String x:Key="home">Home</sys:String>
     <sys:String x:Key="please_wait">Please wait...</sys:String>
 
@@ -560,4 +561,16 @@ Details:</sys:String>
     <sys:String x:Key="manualpair_title_dialog">Choose your Galaxy Buds device</sys:String>
     <sys:String x:Key="manualpair_model">Choose the correct model type</sys:String>
     <sys:String x:Key="manualpair_note">You should only manually connect your earbuds if the setup wizard does not recognize them correctly.</sys:String>
+    
+    <!--Rename-->
+    <sys:String x:Key="rename">Rename earbuds</sys:String>
+    <sys:String x:Key="rename_desc">This will rename earbuds for all devices.</sys:String>
+    <sys:String x:Key="rename_warn">Renaming your earbuds may not be possible using official apps as they restrict it to Samsung smartphones, which means you may need this app to reset the personalized name. The name change may not be detected by devices until you un-pair and re-pair your earbuds.</sys:String>
+    <sys:String x:Key="rename_too_short">The name you entered is too short (no characters) or too long (maximum limit imposed by earbuds).</sys:String>
+    <sys:String x:Key="rename_hint">Enter new name...</sys:String>
+    <sys:String x:Key="rename_label">New device name</sys:String>
+    <sys:String x:Key="rename_reading_name">Reading current name...</sys:String>
+    <sys:String x:Key="rename_ok_title">Earbuds renamed</sys:String>
+    <sys:String x:Key="rename_ok">Successfully renamed your earbuds!
+The name change may not be detected by devices (including this one) until you un-pair and re-pair your earbuds.</sys:String>
 </ResourceDictionary>

@@ -70,13 +70,15 @@ public partial class SppMessage(
         return decoder;
     }
 
-    public byte[] Encode()
+    public byte[] Encode(bool alternative)
     {
         var spec = DeviceSpecHelper.FindByModel(TargetModel) ?? throw new InvalidOperationException();
+        var specSom = alternative ? (byte)MsgConstants.SmepSom : spec.StartOfMessage;
+        var specEom = alternative ? (byte)MsgConstants.SmepEom : spec.EndOfMessage;
 
         using var stream = new MemoryStream(TotalPacketSize);
         using var writer = new BinaryWriter(stream);
-        writer.Write(spec.StartOfMessage);
+        writer.Write(specSom);
             
         if (spec.Supports(Features.SppLegacyMessageHeader))
         {
@@ -102,7 +104,7 @@ public partial class SppMessage(
         writer.Write((byte)Id);
         writer.Write(Payload);
         writer.Write(Utils.Crc16.crc16_ccitt(Id, Payload));
-        writer.Write(spec.EndOfMessage);
+        writer.Write(specEom);
         
         return stream.ToArray();
     }
@@ -110,12 +112,14 @@ public partial class SppMessage(
     /**
       * Static "constructors"
       */
-    public static SppMessage Decode(byte[] raw, Models model)
+    public static SppMessage Decode(byte[] raw, Models model, bool alternative)
     {
         try
         {
             var spec = DeviceSpecHelper.FindByModel(model) ?? throw new InvalidOperationException();
             var draft = new SppMessage(model: model);
+            var specSom = alternative ? (byte)MsgConstants.SmepSom : spec.StartOfMessage;
+            var specEom = alternative ? (byte)MsgConstants.SmepEom : spec.EndOfMessage;
 
             using var stream = new MemoryStream(raw);
             using var reader = new BinaryReader(stream);
@@ -123,11 +127,11 @@ public partial class SppMessage(
             if (raw.Length < 6)
                 throw new InvalidPacketException(InvalidPacketException.ErrorCodes.TooSmall, "At least 6 bytes are required");
             
-            if (reader.ReadByte() != spec.StartOfMessage)
+            if (reader.ReadByte() != specSom)
                 throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Som, "Invalid SOM byte");
 
             int size;
-            if (spec.Supports(Features.SppLegacyMessageHeader))
+            if (!alternative && spec.Supports(Features.SppLegacyMessageHeader))
             {
                 draft.Type = (MsgTypes) Convert.ToInt32(reader.ReadByte());
                 size = Convert.ToInt32(reader.ReadByte());
@@ -171,7 +175,7 @@ public partial class SppMessage(
                 throw new InvalidPacketException(InvalidPacketException.ErrorCodes.SizeMismatch, "Invalid size");
             if (draft.Crc16 != 0)
                 throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Checksum, "Invalid checksum");
-            if (reader.ReadByte() != spec.EndOfMessage)
+            if (reader.ReadByte() != specEom)
                 throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Eom, "Invalid EOM byte");
 
             return draft;
@@ -185,9 +189,10 @@ public partial class SppMessage(
             throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Overflow,"Overflow. Update your firmware!");
         }
     }
-    public static IEnumerable<SppMessage> DecodeRawChunk(List<byte> incomingData, Models model)
+    public static IEnumerable<SppMessage> DecodeRawChunk(List<byte> incomingData, Models model, bool alternative)
     {
         var spec = DeviceSpecHelper.FindByModel(model) ?? throw new InvalidOperationException();
+        var specSom = alternative ? (byte)MsgConstants.SmepSom : spec.StartOfMessage;
         var messages = new List<SppMessage>();
         var failCount = 0;
         
@@ -203,7 +208,7 @@ public partial class SppMessage(
                     hook.OnRawDataAvailable(ref raw);
                 }
 
-                var msg = Decode(raw, model);
+                var msg = Decode(raw, model, alternative);
                 msgSize = msg.TotalPacketSize;
 
                 Log.Verbose(">> Incoming: {Msg}", msg);
@@ -234,7 +239,7 @@ public partial class SppMessage(
                 var somIndex = 0;
                 for (var i = 1; i < incomingData.Count; i++)
                 {
-                    if (incomingData[i] == spec.StartOfMessage)
+                    if (incomingData[i] == specSom)
                     {
                         somIndex = i;
                         break;
@@ -273,7 +278,7 @@ public partial class SppMessage(
 
     public override string ToString()
     {
-        return $"SPPMessage[MessageID={Id}, PayloadSize={Size}, Type={(IsFragment ? "Fragment/" : string.Empty) + Type}, " +
+        return $"SppMessage[MessageID={Id}, PayloadSize={Size}, Type={(IsFragment ? "Fragment/" : string.Empty) + Type}, " +
                $"CRC16={Crc16}, Payload={{{BitConverter.ToString(Payload).Replace("-", " ")}}}]";
     }
 }
