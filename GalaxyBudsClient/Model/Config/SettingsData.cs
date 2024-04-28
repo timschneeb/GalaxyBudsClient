@@ -31,7 +31,7 @@ public class Device : ReactiveObject
 public class SettingsData : ReactiveObject
 {
     /* Appearance */
-    [Reactive] public Themes Theme { set; get; } = PlatformUtils.SupportsMicaTheme ? Themes.DarkMica : Themes.DarkBlur;
+    [Reactive] public Themes Theme { set; get; } = PlatformUtils.DefaultTheme;
     [Reactive] public uint AccentColor { set; get; } = Avalonia.Media.Colors.Orange.ToUInt32();
     [Reactive] public int BlurStrength { set; get; } = 144;
     [Reactive] public Locales Locale { set; get; } = Locales.en;

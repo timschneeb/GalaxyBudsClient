@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using GalaxyBudsClient.Model.Constants;
 using Microsoft.Win32;
 using Serilog;
 
@@ -26,6 +27,7 @@ public static class PlatformUtils
     public static bool SupportsHotkeys => IsWindows || IsLinux || IsOSX;
     public static bool SupportsHotkeysBroadcast => IsWindows || IsLinux || IsOSX;
     public static bool SupportsMicaTheme => IsWindows && Environment.OSVersion.Version.Build >= 22000;
+    public static bool SupportsBlurTheme => IsWindows || IsOSX || (IsLinux && Environment.GetEnvironmentVariable("XDG_CURRENT_DESKTOP")?.Contains("KDE") == true);
         
     public static Platforms Platform
     {
@@ -82,4 +84,7 @@ public static class PlatformUtils
 
     public static string AppDataPath =>
         $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}/GalaxyBudsClient/";
+
+    public static Themes DefaultTheme => SupportsMicaTheme ? Themes.DarkMica : 
+        SupportsBlurTheme ? Themes.DarkBlur : Themes.Dark;
 }
