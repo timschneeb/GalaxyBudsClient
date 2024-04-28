@@ -20,7 +20,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>touchoption_custom_trigger_event</code></td><td>Trigger earbud action...</td></tr>
 <tr><td><code>hotkey_add_short</code></td><td>New</td></tr>
 <tr><td><code>hotkey_edit_long</code></td><td>Edit existing hotkey</td></tr>
-<tr><td><code>event_anc_switch_one</code></td><td>Switch ANC with one earbud</td></tr>
+<tr><td><code>event_nc_switch_one</code></td><td>Switch noise controls with one earbud</td></tr>
 <tr><td><code>welcome_register</code></td><td>Set-up your earbuds</td></tr>
 <tr><td><code>welcome_register_desc</code></td><td>Choose and register your pair of Galaxy Buds</td></tr>
 <tr><td><code>mainpage_header</code></td><td>Home</td></tr>
@@ -108,8 +108,8 @@ Make sure both earbuds are turned on before continuing.</td></tr>
 <tr><td><code>eq_stereo_balance_value</code></td><td>{0}% left; {1}% right</td></tr>
 <tr><td><code>eq_stereo_balance_neutral</code></td><td>Neutral</td></tr>
 <tr><td><code>nc_as_anc_description</code></td><td>Reduce background noises</td></tr>
-<tr><td><code>nc_anc_one</code></td><td>Noise cancelling with one earbud</td></tr>
-<tr><td><code>nc_anc_one_description</code></td><td>Noise cancelling normally requires two earbuds to prevent discomfort, enable this to allow noise cancelling with only one earbud</td></tr>
+<tr><td><code>nc_one_earbud</code></td><td>Noise controls with one earbud</td></tr>
+<tr><td><code>nc_one_earbud_description</code></td><td>Noise controls normally require two earbuds to prevent discomfort, enable this to allow it with only one earbud</td></tr>
 <tr><td><code>nc_ambient</code></td><td>Customize ambient sound</td></tr>
 <tr><td><code>nc_ambient_description</code></td><td>Configure ambient sound tone and volume (if available)</td></tr>
 <tr><td><code>nc_voicedetect_timeout_description</code></td><td>Revert settings when your voice is not detected for a certain amount of time</td></tr>

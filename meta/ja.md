@@ -59,7 +59,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>event_eq_switch</code></td><td>Iterate equalizer presets</td></tr>
 <tr><td><code>event_anc_toggle</code></td><td>Toggle noise cancelling</td></tr>
 <tr><td><code>event_anc_switch_sensitivity</code></td><td>Switch ANC sensitivity</td></tr>
-<tr><td><code>event_anc_switch_one</code></td><td>Switch ANC with one earbud</td></tr>
+<tr><td><code>event_nc_switch_one</code></td><td>Switch noise controls with one earbud</td></tr>
 <tr><td><code>event_touch_lock_toggle</code></td><td>Toggle touchpad lock</td></tr>
 <tr><td><code>event_double_edge_touch_toggle</code></td><td>Toggle double-edge touch feature</td></tr>
 <tr><td><code>event_conversation_toggle</code></td><td>Toggle conversation detection</td></tr>
@@ -192,8 +192,8 @@ Make sure both earbuds are turned on before continuing.</td></tr>
 <tr><td><code>eq_stereo_balance_neutral</code></td><td>Neutral</td></tr>
 <tr><td><code>nc_header</code></td><td>Noise control</td></tr>
 <tr><td><code>nc_as_anc_description</code></td><td>Reduce background noises</td></tr>
-<tr><td><code>nc_anc_one</code></td><td>Noise cancelling with one earbud</td></tr>
-<tr><td><code>nc_anc_one_description</code></td><td>Noise cancelling normally requires two earbuds to prevent discomfort, enable this to allow noise cancelling with only one earbud</td></tr>
+<tr><td><code>nc_one_earbud</code></td><td>Noise controls with one earbud</td></tr>
+<tr><td><code>nc_one_earbud_description</code></td><td>Noise controls normally require two earbuds to prevent discomfort, enable this to allow it with only one earbud</td></tr>
 <tr><td><code>nc_anc_level</code></td><td>High sensitivity</td></tr>
 <tr><td><code>nc_anc_level_description</code></td><td>Stronger noise cancelling effect</td></tr>
 <tr><td><code>nc_ambient</code></td><td>Customize ambient sound</td></tr>

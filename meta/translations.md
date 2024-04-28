@@ -7,7 +7,7 @@ Translation instructions are available [in the wiki](https://github.com/ThePBone
 <table>
 <tr><th>Language</th><th>Progress</th><th>Missing strings</th><th>Details</th></tr>
 <tr><td>cn (China)</td><td>77%</td><td>98 missing string(s)</td><td><a href="cn.md">View details</a></td></tr>
-<tr><td>cz (Czechia)</td><td>96%</td><td>16 missing string(s)</td><td><a href="cz.md">View details</a></td></tr>
+<tr><td>cz (Czechia)</td><td>95%</td><td>19 missing string(s)</td><td><a href="cz.md">View details</a></td></tr>
 <tr><td>de (Germany)</td><td>55%</td><td>194 missing string(s)</td><td><a href="de.md">View details</a></td></tr>
 <tr><td>es (Spain)</td><td>33%</td><td>294 missing string(s)</td><td><a href="es.md">View details</a></td></tr>
 <tr><td>fr (France)</td><td>69%</td><td>135 missing string(s)</td><td><a href="fr.md">View details</a></td></tr>
@@ -22,7 +22,7 @@ Translation instructions are available [in the wiki](https://github.com/ThePBone
 <tr><td>pt (Portugal)</td><td>33%</td><td>291 missing string(s)</td><td><a href="pt.md">View details</a></td></tr>
 <tr><td>ro (Romania)</td><td>69%</td><td>135 missing string(s)</td><td><a href="ro.md">View details</a></td></tr>
 <tr><td>ru (Russian Federation)</td><td>74%</td><td>114 missing string(s)</td><td><a href="ru.md">View details</a></td></tr>
-<tr><td>tr (Turkey)</td><td>96%</td><td>16 missing string(s)</td><td><a href="tr.md">View details</a></td></tr>
+<tr><td>tr (Turkey)</td><td>95%</td><td>19 missing string(s)</td><td><a href="tr.md">View details</a></td></tr>
 <tr><td>tw (Taiwan, Province of China)</td><td>77%</td><td>98 missing string(s)</td><td><a href="tw.md">View details</a></td></tr>
 <tr><td>ua (Ukraine)</td><td>69%</td><td>135 missing string(s)</td><td><a href="ua.md">View details</a></td></tr>
 <tr><td>vn (Viet Nam)</td><td>63%</td><td>159 missing string(s)</td><td><a href="vn.md">View details</a></td></tr>
