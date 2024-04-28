@@ -22,57 +22,30 @@ public class FotaDownloadDataEncoder : BaseMessageEncoder
     public override SppMessage Encode()
     {
         var segment = Binary?.GetSegmentById(EntryId);
-        if (segment == null)
+        var lastFragment = IsLastFragment();
+        var chunkSize = lastFragment ? (int)(segment?.Size ?? 0) - Offset : MtuSize;
+        
+        if (segment == null || chunkSize < 0)
         {
-            goto RET_NULL;
+            return new SppMessage(MsgIds.FOTA_DOWNLOAD_DATA, MsgTypes.Response, [])
+            {
+                IsFragment = true
+            };
         }
-            
-        var i = 0;
-        var z = Offset + (long) MtuSize >= segment.Size;
-        var rawDataSize = z ? (int)segment.Size - Offset : MtuSize;
-        if (rawDataSize < 0) 
-        {
-            goto RET_NULL;
-        }
-            
-        var bArr = new byte[(int) (4 + rawDataSize)];
-        var header = BitConverter.GetBytes(MakeFragmentHeader(z, Offset));
-        var length = header.Length;
-        var i2 = 0;
-        while (i < length) {
-            bArr[i2] = header[i];
-            i++;
-            i2++;
-        }
-            
-        var i3 = 5;
-        while (true) {
-            var i4 = i3 - 1;
-            if (i3 <= 0) {
-                break;
-            }
-
-            var binStream = Binary!.OpenStream();
-            binStream.Seek(segment.Position + Offset, SeekOrigin.Begin);
-            binStream.Read(bArr, i2, rawDataSize);
-
-            i3 = i4;
-        }
-
-        return new SppMessage(MsgIds.FOTA_DOWNLOAD_DATA, MsgTypes.Response, bArr)
-        {
-            IsFragment = true
-        };
-            
-        RET_NULL:
-        return new SppMessage(MsgIds.FOTA_DOWNLOAD_DATA, MsgTypes.Response, [])
+        
+        var header = BitConverter.GetBytes(MakeFragmentHeader(lastFragment, Offset));
+        var payload = new byte[header.Length + chunkSize];
+        Array.Copy(header, payload, header.Length);
+        Array.Copy(segment.RawData, Offset, payload, header.Length, chunkSize);
+        
+        return new SppMessage(MsgIds.FOTA_DOWNLOAD_DATA, MsgTypes.Response, payload)
         {
             IsFragment = true
         };
     }
         
-    private static int MakeFragmentHeader(bool z, long j) {
+    private static int MakeFragmentHeader(bool isLastFragment, long j) {
         var i = (int) (j & 0x7FFFFFFFL);
-        return z ? i : i | int.MinValue;
+        return isLastFragment ? i : i | int.MinValue;
     }
 }

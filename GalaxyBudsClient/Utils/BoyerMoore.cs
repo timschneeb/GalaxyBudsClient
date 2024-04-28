@@ -19,7 +19,7 @@ public class BoyerMoore
             _jumpTable[_pattern[index]] = _patternLength - index - 1;
     }
         
-    public unsafe int Search(byte[] searchArray, int startIndex = 0)
+    public unsafe int Search(ref readonly byte[] searchArray, int startIndex = 0)
     {
         if(_patternLength > searchArray.Length)
             throw new Exception("Search Pattern length exceeds search array length.");

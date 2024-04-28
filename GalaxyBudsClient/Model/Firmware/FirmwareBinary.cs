@@ -12,21 +12,19 @@ namespace GalaxyBudsClient.Model.Firmware;
 
 public class FirmwareBinary
 {
-    private readonly long _magic;
-    private readonly byte[] _data;
-        
-    private static readonly long FOTA_BIN_MAGIC = 0xCAFECAFE;
-    private static readonly long FOTA_BIN_MAGIC_COMBINATION = 0x42434F4D;
+    public const long FotaBinMagic = 0xCAFECAFE;
+    public const long FotaBinMagicCombination = 0x42434F4D;
 
+    public long Magic { get; }
     public string BuildName { get; }
     public long SegmentsCount { get; }
     public long TotalSize { get; }
     public int Crc32 { get; }
     public FirmwareSegment[] Segments { get; }
+    public Models? DetectedModel { get; }
 
-    public FirmwareBinary(byte[] data, string buildName)
+    public FirmwareBinary(byte[] data, string buildName, bool fullAnalysis)
     {
-        _data = data;
         BuildName = buildName;
             
         using var stream = new MemoryStream(data);
@@ -34,9 +32,9 @@ public class FirmwareBinary
         
         try
         {
-            _magic = reader.ReadUInt32();
+            Magic = reader.ReadUInt32();
 
-            if (_magic == FOTA_BIN_MAGIC_COMBINATION || Encoding.ASCII.GetString(data).StartsWith(":02000004FE00FC"))
+            if (Magic == FotaBinMagicCombination || Encoding.ASCII.GetString(data).StartsWith(":02000004FE00FC"))
             {
                 // Notify tracker about this event and submit firmware build info
                 SentrySdk.ConfigureScope((x => x.AddAttachment(data, "firmware.bin")));
@@ -46,7 +44,7 @@ public class FirmwareBinary
                           "This is unsupported by this application as these binaries are not meant for retail devices", buildName);
             }
             
-            if (_magic != FOTA_BIN_MAGIC)
+            if (Magic != FotaBinMagic)
             {
                 throw new FirmwareParseException(FirmwareParseException.ErrorCodes.InvalidMagic, Strings.FwFailNoMagic);
             }
@@ -68,11 +66,13 @@ public class FirmwareBinary
             Segments = new FirmwareSegment[SegmentsCount];
             for (var i = 0; i < SegmentsCount; i++)
             {
-                Segments[i] = new FirmwareSegment(reader);
+                Segments[i] = new FirmwareSegment(reader, fullAnalysis);
             }
 
             reader.BaseStream.Seek(-4, SeekOrigin.End);
             Crc32 = reader.ReadInt32();
+
+            DetectedModel = DetectModel(in data);
         }
         catch (Exception ex) when (ex is not FirmwareParseException)
         {
@@ -105,22 +105,20 @@ public class FirmwareBinary
         return Segments.FirstOrDefault(segment => segment.Id == id);
     }
 
-    public MemoryStream OpenStream()
-    {
-        return new MemoryStream(_data);
-    }
-
-    public Models? DetectModel()
+    public static Models? DetectModel(ref readonly byte[] data)
     {
         var fastSearch = new BoyerMoore();
         foreach (var model in ModelsExtensions.GetValues())
         {
+            if(model == Models.NULL)
+                continue;
+            
             var fwPattern = model.GetModelMetadataAttribute()?.FwPattern;
             if(fwPattern == null)
                 continue;
                 
             fastSearch.SetPattern(Encoding.ASCII.GetBytes(fwPattern));
-            if (fastSearch.Search(_data) >= 0)
+            if (fastSearch.Search(in data) >= 0)
             {
                 return model;
             }
@@ -131,6 +129,6 @@ public class FirmwareBinary
         
     public override string ToString()
     {
-        return "Magic=" + $"{_magic:X2}" + ", TotalSize=" + TotalSize + ", SegmentCount=" + SegmentsCount + $", CRC32=0x{Crc32:X2}";
+        return "Magic=" + $"{Magic:X2}" + ", TotalSize=" + TotalSize + ", SegmentCount=" + SegmentsCount + $", CRC32=0x{Crc32:X2}";
     }
 }
