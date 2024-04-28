@@ -60,8 +60,12 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
         await BluetoothImpl.Instance.SendRequestAsync(MsgIds.RESET);
         
         // Wait for 10 seconds for the reset response
-        await Task.Delay(10000, cancelToken.Token);
-        
+        try
+        {
+            await Task.Delay(10000, cancelToken.Token);
+        }
+        catch(TaskCanceledException ex){}
+
         SppMessageReceiver.Instance.ResetResponse -= OnResetResponse;
         // If the reset response was not received, show an error message
         OnResetResponse(null, -1);

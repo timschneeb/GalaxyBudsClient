@@ -5,7 +5,6 @@
         xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
         xmlns:vm="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Developer"
         xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
-        xmlns:message="clr-namespace:GalaxyBudsClient.Message"
         xmlns:avaloniaHex="clr-namespace:AvaloniaHex;assembly=AvaloniaHex"
         xmlns:rendering="clr-namespace:AvaloniaHex.Rendering;assembly=AvaloniaHex"
         xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
