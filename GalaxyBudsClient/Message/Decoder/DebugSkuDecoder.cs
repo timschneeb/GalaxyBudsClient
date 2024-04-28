@@ -7,10 +7,10 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.DEBUG_SKU)]
 public class DebugSkuDecoder : BaseMessageDecoder
 {
-    public string? LeftSku { set; get; }
-    public string? RightSku { set; get; }
+    public string? LeftSku { get; }
+    public string? RightSku { get; }
         
-    public override void Decode(SppMessage msg)
+    public DebugSkuDecoder(SppMessage msg) : base(msg)
     {
         var payload = msg.Payload;
         if (payload.Length >= 14)

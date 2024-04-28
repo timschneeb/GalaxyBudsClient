@@ -7,13 +7,13 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.LOG_TRACE_START)]
 internal class LogTraceStartDecoder : BaseMessageDecoder
 {
-    public int DataSize { set; get; }
-    public short PartialDataMaxSize { set; get; }
-    public DevicesInverted DeviceType { set; get; }
-    public bool Coupled { set; get; }
-    public int FragmentCount { set; get; }
+    public int DataSize { get; }
+    public short PartialDataMaxSize { get; }
+    public DevicesInverted DeviceType { get; }
+    public bool Coupled { get; }
+    public int FragmentCount { get; }
 
-    public override void Decode(SppMessage msg)
+    public LogTraceStartDecoder(SppMessage msg) : base(msg)
     {
         DataSize = BitConverter.ToInt32(msg.Payload, 0);
         PartialDataMaxSize = BitConverter.ToInt16(msg.Payload, 4);

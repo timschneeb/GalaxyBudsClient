@@ -122,9 +122,10 @@ internal class TrayManager
     private static IEnumerable<NativeMenuItemBase?> RebuildBatteryInfo()
     {
         var bsu = DeviceMessageCache.Instance.BasicStatusUpdate!;
-        if (bsu.BatteryCase > 100)
+        var batteryCase = bsu.BatteryCase;
+        if (batteryCase > 100)
         {
-            bsu.BatteryCase = DeviceMessageCache.Instance.BasicStatusUpdateWithValidCase?.BatteryCase ?? bsu.BatteryCase;
+            batteryCase = DeviceMessageCache.Instance.BasicStatusUpdateWithValidCase?.BatteryCase ?? bsu.BatteryCase;
         }
             
         return
@@ -135,8 +136,8 @@ internal class TrayManager
             bsu.BatteryR > 0
                 ? new NativeMenuItem($"{Strings.Right}: {bsu.BatteryR}%") { IsEnabled = false }
                 : null,
-            bsu.BatteryCase is > 0 and <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(Features.CaseBattery)
-                ? new NativeMenuItem($"{Strings.Case}: {bsu.BatteryCase}%") { IsEnabled = false }
+            batteryCase is > 0 and <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(Features.CaseBattery)
+                ? new NativeMenuItem($"{Strings.Case}: {batteryCase}%") { IsEnabled = false }
                 : null,
 
             new NativeMenuItemSeparator()

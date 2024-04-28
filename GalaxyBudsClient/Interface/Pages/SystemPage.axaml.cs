@@ -64,7 +64,7 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
         {
             await Task.Delay(10000, cancelToken.Token);
         }
-        catch(TaskCanceledException ex){}
+        catch(TaskCanceledException){}
 
         SppMessageReceiver.Instance.ResetResponse -= OnResetResponse;
         // If the reset response was not received, show an error message

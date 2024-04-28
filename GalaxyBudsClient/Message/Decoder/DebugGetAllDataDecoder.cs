@@ -12,90 +12,88 @@ public class DebugGetAllDataDecoder : BaseMessageDecoder
 {
     private readonly string[] _swMonth = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
 
-    private readonly string[] _swRelVer = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
-    ];
+    private readonly string[] _swRelVer = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
     private readonly string[] _swVer = ["E", "U"];
     private readonly string[] _swYear = ["O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-    public string? HardwareVersion { set; get; }
-    public string? SoftwareVersion { set; get; }
-    public string? LeftBluetoothAddress { set; get; }
-    public string? RightBluetoothAddress { set; get; }
-    public string? TouchSoftwareVersion { set; get; }
-    public short LeftAcceleratorX { set; get; }
-    public short LeftAcceleratorY { set; get; }
-    public short LeftAcceleratorZ { set; get; }
-    public short RightAcceleratorX { set; get; }
-    public short RightAcceleratorY { set; get; }
-    public short RightAcceleratorZ { set; get; }
-    public short LeftProximity { set; get; }
-    public short RightProximity { set; get; }
+    public string? HardwareVersion { get; }
+    public string? SoftwareVersion { get; }
+    public string? LeftBluetoothAddress { get; }
+    public string? RightBluetoothAddress { get; }
+    public string? TouchSoftwareVersion { get; }
+    public short LeftAcceleratorX { get; }
+    public short LeftAcceleratorY { get; }
+    public short LeftAcceleratorZ { get; }
+    public short RightAcceleratorX { get; }
+    public short RightAcceleratorY { get; }
+    public short RightAcceleratorZ { get; }
+    public short LeftProximity { get; }
+    public short RightProximity { get; }
     [Postfix(Text = "°C")]
-    public double LeftThermistor { set; get; }
+    public double LeftThermistor { get; }
     [Postfix(Text = "°C")]
-    public double RightThermistor { set; get; }
+    public double RightThermistor { get; }
 
     [Postfix(Text = "%")]
-    public double LeftAdcSoc { set; get; }
+    public double LeftAdcSoc { get; }
     [Postfix(Text = "V")]
-    public double LeftAdcVCell { set; get; }
+    public double LeftAdcVCell { get; }
     [Postfix(Text = "mA")]
-    public double LeftAdcCurrent { set; get; }
+    public double LeftAdcCurrent { get; }
 
     [Postfix(Text = "%")]
-    public double RightAdcSoc { set; get; }
+    public double RightAdcSoc { get; }
     [Postfix(Text = "V")]
-    public double RightAdcVCell { set; get; }
+    public double RightAdcVCell { get; }
     [Postfix(Text = "mA")]
-    public double RightAdcCurrent { set; get; }
+    public double RightAdcCurrent { get; }
 
-    public string? LeftHall { set; get; }
-    public string? RightHall { set; get; }
+    public string? LeftHall { get; }
+    public string? RightHall { get; }
 
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public short LeftProximityOffset { set; get; }
+    public short LeftProximityOffset { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public short RightProximityOffset { set; get; }
+    public short RightProximityOffset { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public byte MsgVersion { set; get; }
+    public byte MsgVersion { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public short LeftTspAbs { set; get; }
+    public short LeftTspAbs { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public short RightTspAbs { set; get; }
+    public short RightTspAbs { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public short LeftTspDiff0 { set; get; }
+    public short LeftTspDiff0 { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public short LeftTspDiff1 { set; get; }
+    public short LeftTspDiff1 { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public short LeftTspDiff2 { set; get; }
+    public short LeftTspDiff2 { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public short RightTspDiff0 { set; get; }
+    public short RightTspDiff0 { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public short RightTspDiff1 { set; get; }
+    public short RightTspDiff1 { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public short RightTspDiff2 { set; get; }
+    public short RightTspDiff2 { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public short LeftPr { set; get; }
+    public short LeftPr { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public short RightPr { set; get; }
+    public short RightPr { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public short LeftWd { set; get; }
+    public short LeftWd { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public short RightWd { set; get; }
+    public short RightWd { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public byte LeftCradleFlag { set; get; }
+    public byte LeftCradleFlag { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public byte RightCradleFlag { set; get; }
+    public byte RightCradleFlag { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public byte LeftCradleBatt { set; get; }
+    public byte LeftCradleBatt { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public byte RightCradleBatt { set; get; }
+    public byte RightCradleBatt { get; }
 
-    public override void Decode(SppMessage msg)
+    public DebugGetAllDataDecoder(SppMessage msg) : base(msg)
     {
         if (TargetModel == Models.Buds)
         {
-
             var hw1 = (msg.Payload[0] & 240) >> 4;
             var hw2 = msg.Payload[0] & 15;
 

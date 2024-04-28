@@ -12,159 +12,159 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.EXTENDED_STATUS_UPDATED)]
 public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdate
 {
-    public int Revision { set; get; }
-    public int EarType { set; get; }
-    public int BatteryL { set; get; }
-    public int BatteryR { set; get; }
-    public bool IsCoupled { set; get; }
-    public DevicesInverted MainConnection { set; get; }
-    public LegacyWearStates WearState { set; get; }
-    public int EqualizerMode { set; get; }
-    public bool TouchpadLock { set; get; }
-    public TouchOptions TouchpadOptionL { set; get; }
-    public TouchOptions TouchpadOptionR { set; get; }
-    public bool SeamlessConnectionEnabled { set; get; }
+    public int Revision { init; get; }
+    public int EarType { init; get; }
+    public int BatteryL { init; get; }
+    public int BatteryR { init; get; }
+    public bool IsCoupled { init; get; }
+    public DevicesInverted MainConnection { init; get; }
+    public LegacyWearStates WearState { init; get; }
+    public int EqualizerMode { init; get; }
+    public bool TouchpadLock { init; get; }
+    public TouchOptions TouchpadOptionL { init; get; }
+    public TouchOptions TouchpadOptionR { init; get; }
+    public bool SeamlessConnectionEnabled { init; get; }
     
     [Device(Models.Buds, Models.BudsPlus)]
-    public bool AmbientSoundEnabled { set; get; }
+    public bool AmbientSoundEnabled { init; get; }
     [Device(Models.BudsLive, Selector.NotEqual)]
-    public int AmbientSoundVolume { set; get; }
+    public int AmbientSoundVolume { init; get; }
 
 
     [Device(Models.Buds)]
-    public AmbientTypes AmbientSoundMode { set; get; }
+    public AmbientTypes AmbientSoundMode { init; get; }
     [Device(Models.Buds)]
-    public bool EqualizerEnabled { set; get; }
+    public bool EqualizerEnabled { init; get; }
 
 
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public PlacementStates PlacementL { set; get; }
+    public PlacementStates PlacementL { init; get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public PlacementStates PlacementR { set; get; }
+    public PlacementStates PlacementR { init; get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public int BatteryCase { set; get; }
+    public int BatteryCase { init; get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public bool OutsideDoubleTap { set; get; }
+    public bool OutsideDoubleTap { init; get; }
 
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public Colors ColorL { set; get; }
+    public Colors ColorL { init; get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public Colors ColorR { set; get; }
+    public Colors ColorR { init; get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public Colors DeviceColor => IsCoupled ? ColorR != 0 ? ColorR : ColorL : 
         (MainConnection == DevicesInverted.R ? ColorR : ColorL);
     
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public bool AdjustSoundSync { set; get; }
+    public bool AdjustSoundSync { init; get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public bool SideToneEnabled { set; get; }
+    public bool SideToneEnabled { init; get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public bool ExtraHighAmbientEnabled { set; get; }
+    public bool ExtraHighAmbientEnabled { init; get; }
 
 
     [Device(Models.BudsLive)]
-    public bool RelieveAmbient { set; get; }
+    public bool RelieveAmbient { init; get; }
     [Device(Models.BudsLive, Selector.GreaterEqual)]
-    public bool VoiceWakeUp { set; get; }
+    public bool VoiceWakeUp { init; get; }
     [Device(Models.BudsLive, Selector.GreaterEqual)]
-    public int VoiceWakeUpLang { set; get; }
+    public int VoiceWakeUpLang { init; get; }
     [Device(Models.BudsLive, Selector.GreaterEqual)]
-    public int FmmRevision { set; get; }
+    public int FmmRevision { init; get; }
     [Device(Models.BudsLive)]
-    public bool NoiseCancelling { set; get; }
+    public bool NoiseCancelling { init; get; }
 
 
     [Device(Models.BudsPro, Selector.GreaterEqual)]
-    public NoiseControlModes NoiseControlMode { set; get; }
+    public NoiseControlModes NoiseControlMode { init; get; }
     [Device(Models.BudsPro, Selector.GreaterEqual)]
-    public bool NoiseControlTouchOff { set; get; }
+    public bool NoiseControlTouchOff { init; get; }
     [Device(Models.BudsPro, Selector.GreaterEqual)]
-    public bool NoiseControlTouchAnc { set; get; }
+    public bool NoiseControlTouchAnc { init; get; }
     [Device(Models.BudsPro, Selector.GreaterEqual)]
-    public bool NoiseControlTouchAmbient { set; get; }
+    public bool NoiseControlTouchAmbient { init; get; }
         
         
     [Device(Models.Buds2, Selector.GreaterEqual)]
-    public bool NoiseControlTouchLeftOff { set; get; }
+    public bool NoiseControlTouchLeftOff { init; get; }
     [Device(Models.Buds2, Selector.GreaterEqual)]
-    public bool NoiseControlTouchLeftAnc { set; get; }
+    public bool NoiseControlTouchLeftAnc { init; get; }
     [Device(Models.Buds2, Selector.GreaterEqual)]
-    public bool NoiseControlTouchLeftAmbient { set; get; }
+    public bool NoiseControlTouchLeftAmbient { init; get; }
         
         
     [Device(Models.BudsPro, Selector.GreaterEqual)]
-    public bool SpeakSeamlessly { set; get; }
+    public bool SpeakSeamlessly { init; get; }
 
     [Device(Models.BudsPro, Selector.GreaterEqual)]
-    public byte NoiseReductionLevel { set; get; }
+    public byte NoiseReductionLevel { init; get; }
     [Device(Models.BudsPro, Selector.GreaterEqual)]
-    public bool AutoSwitchAudioOutput { set; get; }
+    public bool AutoSwitchAudioOutput { init; get; }
 
     [Device(Models.BudsPro, Models.Buds2Pro)]
-    public bool DetectConversations { set; get; } = true;
+    public bool DetectConversations { init; get; } = true;
     [Device(Models.BudsPro, Models.Buds2Pro)]
-    public byte DetectConversationsDuration { set; get; }
+    public byte DetectConversationsDuration { init; get; }
     [Device(Models.BudsLive, Selector.GreaterEqual)]
-    public bool SpatialAudio { set; get; }
+    public bool SpatialAudio { init; get; }
         
     [Device(Models.BudsLive, Selector.GreaterEqual)]
-    public byte HearingEnhancements { set; get; }
+    public byte HearingEnhancements { init; get; }
         
     [Device(Models.Buds2, Selector.GreaterEqual)]
-    public bool SingleTapOn { set; get; }
+    public bool SingleTapOn { init; get; }
     [Device(Models.Buds2, Selector.GreaterEqual)]
-    public bool DoubleTapOn { set; get; }
+    public bool DoubleTapOn { init; get; }
     [Device(Models.Buds2, Selector.GreaterEqual)]
-    public bool TripleTapOn { set; get; }
+    public bool TripleTapOn { init; get; }
     [Device(Models.Buds2, Selector.GreaterEqual)]
-    public bool TouchHoldOn { set; get; }
+    public bool TouchHoldOn { init; get; }
     [Device(Models.Buds2, Selector.GreaterEqual)]
-    public bool DoubleTapForCallOn { set; get; }
+    public bool DoubleTapForCallOn { init; get; }
     [Device(Models.Buds2, Selector.GreaterEqual)]
-    public bool TouchHoldOnForCallOn { set; get; }
+    public bool TouchHoldOnForCallOn { init; get; }
 
     [Device(Models.Buds2, Selector.GreaterEqual)]
-    public byte TouchType { set; get; }
+    public byte TouchType { init; get; }
     [Device(Models.BudsPro, Selector.GreaterEqual)]
-    public bool NoiseControlsWithOneEarbud { set; get; }
+    public bool NoiseControlsWithOneEarbud { init; get; }
         
     [Device(Models.BudsPro, Selector.GreaterEqual)]
-    public bool AmbientCustomVolumeOn { set; get; }
+    public bool AmbientCustomVolumeOn { init; get; }
     [Device(Models.BudsPro, Selector.GreaterEqual)]
-    public byte AmbientCustomVolumeLeft { set; get; }
+    public byte AmbientCustomVolumeLeft { init; get; }
     [Device(Models.BudsPro, Selector.GreaterEqual)]
-    public byte AmbientCustomVolumeRight { set; get; }
+    public byte AmbientCustomVolumeRight { init; get; }
     [Device(Models.BudsPro, Selector.GreaterEqual)]
-    public byte AmbientCustomSoundTone { set; get; }
+    public byte AmbientCustomSoundTone { init; get; }
     [Device(Models.BudsLive, Selector.GreaterEqual)]
-    public bool CallPathControl { set; get; } 
+    public bool CallPathControl { init; get; } 
     
     [Device(Models.Buds2, Selector.GreaterEqual)]
-    public bool IsLeftCharging { set; get; }
+    public bool IsLeftCharging { init; get; }
 
     [Device(Models.Buds2, Selector.GreaterEqual)]
-    public bool IsRightCharging { set; get; } 
+    public bool IsRightCharging { init; get; } 
     [Device(Models.Buds2, Selector.GreaterEqual)]
-    public bool IsCaseCharging { set; get; }
+    public bool IsCaseCharging { init; get; }
 
     [Device(Models.Buds2Pro, Selector.GreaterEqual)]
-    public byte HearingTestValue { get; set; }
+    public byte HearingTestValue { init; get; }
     [Device(Models.Buds2Pro, Selector.GreaterEqual)]
-    public byte BixbyKeyword { get; set; }
+    public byte BixbyKeyword { init; get; }
     [Device(Models.Buds2Pro, Selector.GreaterEqual)]
-    public bool NeckStretchCalibration { get; set; }
+    public bool NeckStretchCalibration { init; get; }
     [Device(Models.Buds2Pro, Selector.GreaterEqual)]
-    public byte CustomizeNoiseReductionLevel { get; set; }
+    public byte CustomizeNoiseReductionLevel { init; get; }
     [Device(Models.Buds2Pro, Selector.GreaterEqual)]
-    public bool CustomizeConversationBoost { get; set; }
+    public bool CustomizeConversationBoost { init; get; }
     [Device(Models.Buds2Pro, Selector.GreaterEqual)]
-    public bool ExtraClearCallSound { get; set; }
+    public bool ExtraClearCallSound { init; get; }
     [Device(Models.Buds2Pro, Selector.GreaterEqual)]
-    public bool SpatialAudioHeadTracking { get; set; }
+    public bool SpatialAudioHeadTracking { init; get; }
     [Device(Models.Buds2Pro, Selector.GreaterEqual)]
-    public bool AutoAdjustSound { get; set; }
+    public bool AutoAdjustSound { init; get; }
     
-    public override void Decode(SppMessage msg)
+    public ExtendedStatusUpdateDecoder(SppMessage msg) : base(msg)
     {
         // TODO: clean this up
         

@@ -10,7 +10,7 @@ internal class SppAlternativeMessageDecoder : BaseMessageDecoder
 {
     private Dictionary<string, string> PropertyTable { get; } = new();
 
-    public override void Decode(SppMessage msg)
+    public SppAlternativeMessageDecoder(SppMessage msg) : base(msg)
     {
         PropertyTable.Clear();
         

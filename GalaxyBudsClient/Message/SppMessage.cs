@@ -37,18 +37,16 @@ public partial class SppMessage(
         
     /* No Buds support at the moment */
     public bool IsFragment { set; get; }
-    
-    private Models TargetModel => model ?? BluetoothImpl.Instance.CurrentModel;
 
-    public static BaseMessageEncoder? CreateEncoder(MsgIds msgId) => CreateUninitializedEncoder(msgId);
+    public Models TargetModel => model ?? BluetoothImpl.Instance.CurrentModel;
+
+    public static BaseMessageEncoder? CreateEncoder(MsgIds msgId) => CreateNewEncoder(msgId);
     
     public BaseMessageDecoder? CreateDecoder()
     {
-        var decoder = CreateUninitializedDecoder(Id);
+        var decoder = CreateNewDecoder(this);
         if (decoder == null) 
             return null;
-        
-        decoder.TargetModel = TargetModel;
                 
         SentrySdk.ConfigureScope(scope =>
         {
@@ -59,9 +57,7 @@ public partial class SppMessage(
             scope.SetExtra("msg-total-size", TotalPacketSize);
             scope.SetExtra("msg-crc16", Crc16);
             scope.SetExtra("msg-payload", HexUtils.Dump(Payload, 512, false, false, false));
-        });
-
-        decoder.Decode(this);
+        });;
             
         foreach (var hook in ScriptManager.Instance.DecoderHooks)
         {

@@ -94,9 +94,9 @@ public class UsageReportDecoder : BaseMessageDecoder
         { "ABDC", "WearBoth/AmbientSound" }
     };
     
-    public Dictionary<string, long>? Statistics { set; get; }
+    public Dictionary<string, long>? Statistics { get; }
 
-    public override void Decode(SppMessage msg)
+    public UsageReportDecoder(SppMessage msg) : base(msg)
     {
         if (Statistics == null)
             Statistics = new Dictionary<string, long>();

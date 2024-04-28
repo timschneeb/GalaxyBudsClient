@@ -1,3 +1,4 @@
+using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Constants;
 
@@ -13,7 +14,7 @@ public class ExtendedStatusUpdateTests : MessageTests<ExtendedStatusUpdateDecode
 
     private static object[] _testCases =
     [
-        new TestCase { Revision = 10, Model = Models.BudsPro, ExpectedResult = new ExtendedStatusUpdateDecoder
+        new TestCase { Revision = 10, Model = Models.BudsPro, ExpectedResult = new ExtendedStatusUpdateDecoder(new SppMessage())
         {
             TargetModel = Models.BudsPro,
 
@@ -63,7 +64,7 @@ public class ExtendedStatusUpdateTests : MessageTests<ExtendedStatusUpdateDecode
             AmbientCustomSoundTone = 2,
             CallPathControl = true
         }},
-        new TestCase { Revision = 13, Model = Models.Buds2Pro, ExpectedResult = new ExtendedStatusUpdateDecoder
+        new TestCase { Revision = 13, Model = Models.Buds2Pro, ExpectedResult = new ExtendedStatusUpdateDecoder(new SppMessage())
         {
             TargetModel = Models.Buds2Pro,
 

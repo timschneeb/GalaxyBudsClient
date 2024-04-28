@@ -24,16 +24,19 @@ public static class WindowIconRenderer
         if (trayIcons == null) 
             return;
 
+        var batteryLeft = status.BatteryL;
+        var batteryRight = status.BatteryR;
+        
         // Ignore battery level of disconnected earbuds
-        if (status.BatteryL <= 0)
-            status.BatteryL = status.BatteryR;
-        if (status.BatteryR <= 0)
-            status.BatteryR = status.BatteryL;
+        if (batteryLeft <= 0)
+            batteryLeft = batteryRight;
+        if (batteryRight <= 0)
+            batteryRight = batteryLeft;
         
         int? level = Settings.Data.DynamicTrayIconMode switch
         {
-            DynamicTrayIconModes.BatteryMin => Math.Min(status.BatteryL, status.BatteryR),
-            DynamicTrayIconModes.BatteryAvg => (status.BatteryL + status.BatteryR) / 2,
+            DynamicTrayIconModes.BatteryMin => Math.Min(batteryLeft, batteryLeft),
+            DynamicTrayIconModes.BatteryAvg => (batteryLeft + batteryRight) / 2,
             _ => null
         };
 

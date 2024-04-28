@@ -4,12 +4,7 @@ using GalaxyBudsClient.Generated.Model.Attributes;
 namespace GalaxyBudsClient.Message.Decoder;
 
 [MessageDecoder(MsgIds.HIDDEN_CMD_DATA)]
-internal class HiddenCmdDataDecoder : BaseMessageDecoder
+internal class HiddenCmdDataDecoder(SppMessage msg) : BaseMessageDecoder(msg)
 {
-    public string? Content { set; get; }
-
-    public override void Decode(SppMessage msg)
-    {
-        Content = Encoding.ASCII.GetString(msg.Payload);
-    }
+    public string? Content { get; } = Encoding.ASCII.GetString(msg.Payload);
 }

@@ -11,34 +11,34 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.GET_FMM_CONFIG)]
 public class GetFmmConfigDecoder : BaseMessageDecoder
 {
-    public byte Revision { private set; get; }
+    public byte Revision { get; }
     
-    public bool? LeftFindingSupport { private set; get; }
-    public bool? LeftE2E { private set; get; }
-    public string? LeftSecretKey { private set; get; }
-    public int LeftMaxN { private set; get; }
-    public byte LeftRegion { private set; get; }
-    public string? LeftFmmToken { private set; get; }
-    public string? LeftIv { private set; get; }
-    public string? LeftSn { private set; get; }
-    public bool? LeftLostmodeState { private set; get; }
-    public string? LeftLostmodePrefix { private set; get; }
-    public string? LeftLostmodeLink { private set; get; }
+    public bool? LeftFindingSupport { get; }
+    public bool? LeftE2E { get; }
+    public string? LeftSecretKey { get; }
+    public int LeftMaxN { get; }
+    public byte LeftRegion { get; }
+    public string? LeftFmmToken { get; }
+    public string? LeftIv { get; }
+    public string? LeftSn { get; }
+    public bool? LeftLostmodeState { get; }
+    public string? LeftLostmodePrefix { get; }
+    public string? LeftLostmodeLink { get; }
 
-    public bool? RightFindingSupport { private set; get; }
-    public bool? RightE2E { private set; get; }
-    public string? RightSecretKey { private set; get; }
-    public int RightMaxN { private set; get; }
-    public byte RightRegion { private set; get; }
-    public string? RightFmmToken { private set; get; }
-    public string? RightIv { private set; get; }
-    public string? RightSn { private set; get; }
-    public bool? RightLostmodeState { private set; get; }
-    public string? RightLostmodePrefix { private set; get; }
-    public string? RightLostmodeLink { private set; get; }
+    public bool? RightFindingSupport { get; }
+    public bool? RightE2E { get; }
+    public string? RightSecretKey { get; }
+    public int RightMaxN { get; }
+    public byte RightRegion { get; }
+    public string? RightFmmToken { get; }
+    public string? RightIv { get; }
+    public string? RightSn { get; }
+    public bool? RightLostmodeState { get; }
+    public string? RightLostmodePrefix { get; }
+    public string? RightLostmodeLink { get; }
     
     // TODO Add UI to display & erase FMM data?
-    public override void Decode(SppMessage msg)
+    public GetFmmConfigDecoder(SppMessage msg) : base(msg)
     {
         using var stream = new MemoryStream(msg.Payload);
         using var binaryReader = new BinaryReader(stream);
@@ -152,24 +152,6 @@ public class GetFmmConfigDecoder : BaseMessageDecoder
                 
         }
     }
-
-    private static byte[] Decode(string str)
-    {
-        byte[] decode;
-        decode = Convert.FromBase64String(str);
-        Console.WriteLine($"decode size : {decode.Length}");
-        Console.WriteLine($"decode data : {Encoding.UTF8.GetString(decode)}");
-        return decode;
-    }
-
-    private static string Encode(byte[] bArr)
-    {
-        var encodeToString = Convert.ToBase64String(bArr);
-        Console.WriteLine($"encode data : {encodeToString}");
-        return encodeToString;
-    }
-
-    private static bool IsSupportedValue(IEnumerable<byte> bArr) => bArr.Any(b => b != 0xFF);
 
     private static byte[] MakeXor(IReadOnlyList<byte> input)
     {

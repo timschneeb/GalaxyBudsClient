@@ -23,10 +23,7 @@ public abstract class MessageTests<T> where T : BaseMessageDecoder
         var data = GetTestData(input.Model, input.Revision);
         var message = SppMessage.Decode(data, input.Model, false);
         
-        var parser = (message.CreateDecoder() as T)!;
-        parser.Decode(message);
-        
-        parser.Should().BeEquivalentTo(input.ExpectedResult);
+        message.CreateDecoder().Should().BeEquivalentTo(input.ExpectedResult);
     }
     
     private byte[] GetTestData(Models model, int revision)

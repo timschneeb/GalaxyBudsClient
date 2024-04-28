@@ -4,12 +4,7 @@ using GalaxyBudsClient.Generated.Model.Attributes;
 namespace GalaxyBudsClient.Message.Decoder;
 
 [MessageDecoder(MsgIds.DEBUG_BUILD_INFO)]
-internal class DebugBuildInfoDecoder : BaseMessageDecoder
+internal class DebugBuildInfoDecoder(SppMessage msg) : BaseMessageDecoder(msg)
 {
-    public string? BuildString { set; get; }
-
-    public override void Decode(SppMessage msg)
-    {
-        BuildString = Encoding.ASCII.GetString(msg.Payload);
-    }
+    public string? BuildString { get; } = Encoding.ASCII.GetString(msg.Payload);
 }

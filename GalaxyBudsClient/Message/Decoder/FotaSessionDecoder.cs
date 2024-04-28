@@ -3,12 +3,7 @@ using GalaxyBudsClient.Generated.Model.Attributes;
 namespace GalaxyBudsClient.Message.Decoder;
 
 [MessageDecoder(MsgIds.FOTA_OPEN)]
-internal class FotaSessionDecoder : BaseMessageDecoder
+internal class FotaSessionDecoder(SppMessage msg) : BaseMessageDecoder(msg)
 {
-    public byte ResultCode { set; get; }
-
-    public override void Decode(SppMessage msg)
-    {
-        ResultCode = msg.Payload[0];
-    }
+    public byte ResultCode { get; } = msg.Payload[0];
 }

@@ -5,10 +5,10 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.FOTA_RESULT)]
 internal class FotaResultDecoder : BaseMessageDecoder
 {
-    public byte Result { set; get; }
-    public byte ErrorCode { set; get; }
+    public byte Result { get; }
+    public byte ErrorCode { get; }
 
-    public override void Decode(SppMessage msg)
+    public FotaResultDecoder(SppMessage msg) : base(msg)
     {
         Result = msg.Payload[0];
         ErrorCode = msg.Payload[1];

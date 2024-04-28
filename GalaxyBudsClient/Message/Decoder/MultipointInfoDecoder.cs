@@ -29,13 +29,13 @@ public class MultipointInfoDecoder : BaseMessageDecoder
         CisCall = 16
     }
 
-    public byte Revision { set; get; }
-    public bool SupportMultipoint { set; get; }
-    public MultipointStates MultipointState { set; get; }
-    public AudioFocusStates AudioFocusState { set; get; }
-    public StreamingMaskFlags StreamingMask { set; get; }
+    public byte Revision { get; }
+    public bool SupportMultipoint { get; }
+    public MultipointStates MultipointState { get; }
+    public AudioFocusStates AudioFocusState { get; }
+    public StreamingMaskFlags StreamingMask { get; }
 
-    public override void Decode(SppMessage msg)
+    public MultipointInfoDecoder(SppMessage msg) : base(msg)
     {
         using var stream = new MemoryStream(msg.Payload);
         using var reader = new BinaryReader(stream); 

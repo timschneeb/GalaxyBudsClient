@@ -7,11 +7,11 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.UNK_GENERIC_EVENT)]
 public class GenericEventDecoder : BaseMessageDecoder
 {
-    public Devices Device { set; get; }
-    public ushort Timestamp { set; get; }
+    public Devices Device { get; }
+    public ushort Timestamp { get; }
     // Other fields are unknown
 
-    public override void Decode(SppMessage msg)
+    public GenericEventDecoder(SppMessage msg) : base(msg)
     {
         using var stream = new MemoryStream(msg.Payload);
         using var reader = new BinaryReader(stream);

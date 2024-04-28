@@ -6,12 +6,7 @@ namespace GalaxyBudsClient.Message.Decoder;
  * Buds+ only
  */
 [MessageDecoder(MsgIds.SET_IN_BAND_RINGTONE)]
-internal class SetInBandRingtoneDecoder : BaseMessageDecoder
+internal class SetInBandRingtoneDecoder(SppMessage msg) : BaseMessageDecoder(msg)
 {
-    public byte Status { set; get; }
-
-    public override void Decode(SppMessage msg)
-    {
-        Status = msg.Payload[0];
-    }
+    public byte Status { get; } = msg.Payload[0];
 }

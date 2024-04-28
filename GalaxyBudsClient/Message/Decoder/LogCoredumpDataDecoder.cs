@@ -6,11 +6,11 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.LOG_COREDUMP_DATA)]
 internal class LogCoredumpDataDecoder : BaseMessageDecoder
 {
-    public int PartialDataOffset { set; get; }
-    public short PartialDataSize { set; get; }
-    public byte[] RawData { set; get; } = Array.Empty<byte>();
+    public int PartialDataOffset { get; }
+    public short PartialDataSize { get; }
+    public byte[] RawData { get; }
 
-    public override void Decode(SppMessage msg)
+    public LogCoredumpDataDecoder(SppMessage msg) : base(msg)
     {
         PartialDataOffset = BitConverter.ToInt32(msg.Payload, 0);
         PartialDataSize = BitConverter.ToInt16(msg.Payload, 4);

@@ -6,12 +6,12 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.FOTA_UPDATE)]
 internal class FotaUpdateDecoder : BaseMessageDecoder
 {
-    public byte ResultCode { set; get; }
-    public FirmwareConstants.UpdateIds UpdateId { set; get; }
-    public byte Percent { set; get; }
-    public byte State { set; get; }
+    public byte ResultCode { get; }
+    public FirmwareConstants.UpdateIds UpdateId { get; }
+    public byte Percent { get; }
+    public byte State { get; }
         
-    public override void Decode(SppMessage msg)
+    public FotaUpdateDecoder(SppMessage msg) : base(msg)
     {
         UpdateId = (FirmwareConstants.UpdateIds) msg.Payload[0];
         switch (UpdateId)

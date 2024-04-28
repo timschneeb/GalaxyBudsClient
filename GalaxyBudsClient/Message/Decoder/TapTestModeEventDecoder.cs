@@ -15,11 +15,11 @@ public enum TapTestResult
 [MessageDecoder(MsgIds.TAP_TEST_MODE_EVENT)]
 public class TapTestModeEventDecoder : BaseMessageDecoder
 {
-    public TapTestResult Result { set; get; }
-    public bool IsLeft { set; get; }
-    public bool IsRight { set; get; }
+    public TapTestResult Result { get; }
+    public bool IsLeft { get; }
+    public bool IsRight { get; }
 
-    public override void Decode(SppMessage msg)
+    public TapTestModeEventDecoder(SppMessage msg) : base(msg)
     {
         using var stream = new MemoryStream(msg.Payload);
         using var reader = new BinaryReader(stream);

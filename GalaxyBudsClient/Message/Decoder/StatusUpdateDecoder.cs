@@ -10,34 +10,34 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.STATUS_UPDATED)]
 public class StatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdate
 {
-    public int BatteryL { set; get; }
-    public int BatteryR { set; get; }
-    public bool IsCoupled { set; get; }
-    public DevicesInverted MainConnection { set; get; }
-    public LegacyWearStates WearState { set; get; }
+    public int BatteryL { get; }
+    public int BatteryR { get; }
+    public bool IsCoupled { get; }
+    public DevicesInverted MainConnection { get; }
+    public LegacyWearStates WearState { get; }
 
 
     [Device(Models.Buds)]
-    public int EarType { set; get; }
+    public int EarType { get; }
 
 
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public int Revision { set; get; }
+    public int Revision { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public PlacementStates PlacementL { set; get; }
+    public PlacementStates PlacementL { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public PlacementStates PlacementR { set; get; }
+    public PlacementStates PlacementR { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public int BatteryCase { set; get; }
+    public int BatteryCase { get; }
     
     [Device(Models.Buds2, Selector.GreaterEqual)]
-    public bool IsLeftCharging { set; get; }
+    public bool IsLeftCharging { get; }
     [Device(Models.Buds2, Selector.GreaterEqual)]
-    public bool IsRightCharging { set; get; } 
+    public bool IsRightCharging { get; } 
     [Device(Models.Buds2, Selector.GreaterEqual)]
-    public bool IsCaseCharging { set; get; }
+    public bool IsCaseCharging { get; }
 
-    public override void Decode(SppMessage msg)
+    public StatusUpdateDecoder(SppMessage msg) : base(msg)
     {
         if (TargetModel == Models.Buds)
         {

@@ -8,11 +8,11 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.UNIVERSAL_MSG_ID_ACKNOWLEDGEMENT)]
 public class AcknowledgementDecoder : BaseMessageDecoder
 { 
-    public MsgIds Id { set; get; }
-    public byte[]? RawParameters { set; get; }
-    public IAckParameter? Parameters { set; get; }
+    public MsgIds Id { get; }
+    public byte[]? RawParameters { get; }
+    public IAckParameter? Parameters { get; }
 
-    public override void Decode(SppMessage msg)
+    public AcknowledgementDecoder(SppMessage msg) : base(msg)
     {
         using var stream = new MemoryStream(msg.Payload);
         using var reader = new BinaryReader(stream); 

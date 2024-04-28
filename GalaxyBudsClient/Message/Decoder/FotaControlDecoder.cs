@@ -8,11 +8,11 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.FOTA_CONTROL)]
 internal class FotaControlDecoder : BaseMessageDecoder
 {
-    public FirmwareConstants.ControlIds ControlId { set; get; }
-    public short Id { set; get; }
-    public short MtuSize { set; get; }
+    public FirmwareConstants.ControlIds ControlId { get; }
+    public short Id { get; }
+    public short MtuSize { get; }
 
-    public override void Decode(SppMessage msg)
+    public FotaControlDecoder(SppMessage msg) : base(msg)
     {
         ControlId = (FirmwareConstants.ControlIds) msg.Payload[0];
             

@@ -5,11 +5,11 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.RESP)]
 public class GenericResponseDecoder : BaseMessageDecoder
 {
-    public MsgIds MessageId { set; get; }
-    public int ResultCode { set; get; }
-    public int? ExtraData { set; get; }
+    public MsgIds MessageId { get; }
+    public int ResultCode { get; }
+    public int? ExtraData { get; }
 
-    public override void Decode(SppMessage msg)
+    public GenericResponseDecoder(SppMessage msg) : base(msg)
     {
         MessageId = (MsgIds) msg.Payload[0];
         ResultCode = msg.Payload[1];

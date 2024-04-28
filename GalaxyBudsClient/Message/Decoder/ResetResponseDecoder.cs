@@ -3,12 +3,7 @@
 namespace GalaxyBudsClient.Message.Decoder;
 
 [MessageDecoder(MsgIds.RESET)]
-internal class ResetResponseDecoder : BaseMessageDecoder
+internal class ResetResponseDecoder(SppMessage msg) : BaseMessageDecoder(msg)
 {
-    public int ResultCode { set; get; }
-
-    public override void Decode(SppMessage msg)
-    {
-        ResultCode = msg.Payload[0];
-    }
+    public int ResultCode { get; } = msg.Payload[0];
 }

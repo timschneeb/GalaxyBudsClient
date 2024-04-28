@@ -5,16 +5,10 @@ using GalaxyBudsClient.Model.Attributes;
 namespace GalaxyBudsClient.Message.Decoder;
 
 [MessageDecoder(MsgIds.CHECK_THE_FIT_OF_EARBUDS_RESULT)]
-public class FitTestDecoder : BaseMessageDecoder
+public class FitTestDecoder(SppMessage msg) : BaseMessageDecoder(msg)
 {
-    public Result Left { private set; get; }
-    public Result Right { private set; get; }
-
-    public override void Decode(SppMessage msg)
-    {
-        Left = (Result)msg.Payload[0];
-        Right = (Result)msg.Payload[1];
-    }
+    public Result Left { get; } = (Result)msg.Payload[0];
+    public Result Right { get; } = (Result)msg.Payload[1];
 
     [CompiledEnum]
     public enum Result

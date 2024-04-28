@@ -6,22 +6,22 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.METERING_REPORT)]
 public class MeteringReportDecoder : BaseMessageDecoder
 {
-    public byte Revision { set; get; }
-    public bool IsLeftConnected { set; get; }
-    public bool IsRightConnected { set; get; }
-    public short TotalBatteryCapacity { set; get; }
-    public byte BatteryL { set; get; }
-    public byte BatteryR { set; get; }
-    public int A2dpUsingTimeL { set; get; }
-    public int A2dpUsingTimeR { set; get; }
-    public int EscoUsingTimeL { set; get; }
-    public int EscoUsingTimeR { set; get; }
-    public int AncOnTimeL { set; get; }
-    public int AncOnTimeR { set; get; }
-    public int AmbientOnTimeL { set; get; }
-    public int AmbientOnTimeR { set; get; }
+    public byte Revision { get; }
+    public bool IsLeftConnected { get; }
+    public bool IsRightConnected { get; }
+    public short TotalBatteryCapacity { get; }
+    public byte BatteryL { get; }
+    public byte BatteryR { get; }
+    public int A2dpUsingTimeL { get; }
+    public int A2dpUsingTimeR { get; }
+    public int EscoUsingTimeL { get; }
+    public int EscoUsingTimeR { get; }
+    public int AncOnTimeL { get; }
+    public int AncOnTimeR { get; }
+    public int AmbientOnTimeL { get; }
+    public int AmbientOnTimeR { get; }
     
-    public override void Decode(SppMessage msg)
+    public MeteringReportDecoder(SppMessage msg) : base(msg)
     {
         using var stream = new MemoryStream(msg.Payload);
         using var reader = new BinaryReader(stream);

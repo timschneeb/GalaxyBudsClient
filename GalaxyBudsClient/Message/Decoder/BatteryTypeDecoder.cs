@@ -7,10 +7,10 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.BATTERY_TYPE)]
 public class BatteryTypeDecoder : BaseMessageDecoder
 {
-    public string? LeftBatteryType { set; get; }
-    public string? RightBatteryType { set; get; }
+    public string? LeftBatteryType { get; }
+    public string? RightBatteryType { get; }
 
-    public override void Decode(SppMessage msg)
+    public BatteryTypeDecoder(SppMessage msg) : base(msg)
     {
         var left = new byte[2];
         var right = new byte[2];

@@ -4,12 +4,7 @@ using GalaxyBudsClient.Model.Constants;
 namespace GalaxyBudsClient.Message.Decoder;
 
 [MessageDecoder(MsgIds.SPATIAL_AUDIO_CONTROL)]
-internal class SpatialAudioControlDecoder : BaseMessageDecoder
+internal class SpatialAudioControlDecoder(SppMessage msg) : BaseMessageDecoder(msg)
 {
-    public SpatialAudioControl ResultCode { set; get; }
-
-    public override void Decode(SppMessage msg)
-    {
-        ResultCode = (SpatialAudioControl) msg.Payload[0];
-    }
+    public SpatialAudioControl ResultCode { get; } = (SpatialAudioControl) msg.Payload[0];
 }

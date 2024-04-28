@@ -5,20 +5,20 @@ namespace GalaxyBudsClient.Message.Decoder;
 
 public interface IBasicStatusUpdate
 {
-    public int BatteryL { set; get; }
-    public int BatteryR { set; get; }
+    public int BatteryL { get; }
+    public int BatteryR { get; }
     
-    public LegacyWearStates WearState { set; get; }
+    public LegacyWearStates WearState { get; }
         
     [Device(Models.Buds)]
-    public int EarType { set; get; }
+    public int EarType { get; }
         
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public int Revision { set; get; }
+    public int Revision { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public PlacementStates PlacementL { set; get; }
+    public PlacementStates PlacementL { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public PlacementStates PlacementR { set; get; }
+    public PlacementStates PlacementR { get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public int BatteryCase { set; get; }
+    public int BatteryCase { get; }
 }

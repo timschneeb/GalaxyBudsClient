@@ -6,9 +6,9 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.SET_TOUCHPAD_OTHER_OPTION)]
 internal class SetOtherOptionDecoder : BaseMessageDecoder
 {
-    public TouchOptions OptionType { set; get; }
+    public TouchOptions OptionType { get; }
 
-    public override void Decode(SppMessage msg)
+    public SetOtherOptionDecoder(SppMessage msg) : base(msg)
     {
         OptionType = DeviceSpec.TouchMap.FromByte(msg.Payload[0]);
     }

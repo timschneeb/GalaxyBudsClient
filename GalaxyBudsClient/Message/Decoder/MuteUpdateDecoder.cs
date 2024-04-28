@@ -6,10 +6,10 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.MUTE_EARBUD_STATUS_UPDATED)]
 public class MuteUpdateDecoder : BaseMessageDecoder
 {
-    public bool LeftMuted { set; get; }
-    public bool RightMuted { set; get; }
+    public bool LeftMuted { get; }
+    public bool RightMuted { get; }
 
-    public override void Decode(SppMessage msg)
+    public MuteUpdateDecoder(SppMessage msg) : base(msg)
     {
         LeftMuted = Convert.ToBoolean(msg.Payload[0]);
         RightMuted = Convert.ToBoolean(msg.Payload[1]);

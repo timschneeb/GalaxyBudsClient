@@ -9,23 +9,23 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.SPATIAL_AUDIO_DATA)]
 internal class SpatialAudioDataDecoder : BaseMessageDecoder
 {
-    public SpatialAudioData EventId { set; get; }
+    public SpatialAudioData EventId { get; }
         
     /* Wear on/off */
-    public bool WearOnOff { set; get; }
-    public bool WearOnOffParam2 { set; get; }
+    public bool WearOnOff { get; }
+    public bool WearOnOffParam2 { get; }
         
     /* Grv */
-    public float[]? GrvFloatArray { set; get; }
-    public bool GrvBoolean { set; get; }
+    public float[]? GrvFloatArray { get; }
+    public bool GrvBoolean { get; }
 
     /* Gyrocal */
-    public int[]? GyrocalBias { set; get; }
+    public int[]? GyrocalBias { get; }
         
     /* SensorStuck */
-    public int StuckParameter { set; get; }
+    public int StuckParameter { get; }
 
-    public override void Decode(SppMessage msg)
+    public SpatialAudioDataDecoder(SppMessage msg) : base(msg)
     {
         EventId = (SpatialAudioData) msg.Payload[0];
 

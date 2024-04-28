@@ -10,7 +10,7 @@ public class DebugSerialNumberDecoder : BaseMessageDecoder
     public string? LeftSerialNumber { set; get; }
     public string? RightSerialNumber { set; get; }
 
-    public override void Decode(SppMessage msg)
+    public DebugSerialNumberDecoder(SppMessage msg) : base(msg)
     {
         var left = new byte[11];
         var right = new byte[11];

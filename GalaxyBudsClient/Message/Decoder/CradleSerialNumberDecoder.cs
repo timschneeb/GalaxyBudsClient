@@ -8,10 +8,10 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.CRADLE_SERIAL_NUMBER)]
 public class CradleSerialNumberDecoder : BaseMessageDecoder
 {
-    public string? SoftwareVersion { set; get; }
-    public string? SerialNumber { set; get; }
+    public string? SoftwareVersion { get; }
+    public string? SerialNumber { get; }
 
-    public override void Decode(SppMessage msg)
+    public CradleSerialNumberDecoder(SppMessage msg) : base(msg)
     {
         try
         {

@@ -3,12 +3,7 @@
 namespace GalaxyBudsClient.Message.Decoder;
 
 [MessageDecoder(MsgIds.AMBIENT_VOLUME)]
-internal class AmbientVolumeDecoder : BaseMessageDecoder
+internal class AmbientVolumeDecoder(SppMessage msg) : BaseMessageDecoder(msg)
 { 
-    public int AmbientVolume { set; get; }
-
-    public override void Decode(SppMessage msg)
-    {
-        AmbientVolume = msg.Payload[0];
-    }
+    public int AmbientVolume { get; } = msg.Payload[0];
 }

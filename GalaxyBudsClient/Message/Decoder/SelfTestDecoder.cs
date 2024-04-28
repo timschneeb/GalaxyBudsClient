@@ -6,36 +6,36 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.SELF_TEST)]
 public class SelfTestDecoder : BaseMessageDecoder
 {
-    public bool AllChecks { set; get; }
-    public bool AllLeftAccelerator { set; get; }
-    public bool AllRightAccelerator { set; get; }
-    public bool HardwareVersion { set; get; }
-    public bool SoftwareVersion { set; get; }
-    public bool TouchFirmwareVersion { set; get; }
-    public bool LeftSerialNo { set; get; }
-    public bool RightSerialNo { set; get; }
-    public bool LeftBluetoothAddress { set; get; }
-    public bool RightBluetoothAddress { set; get; }
-    public bool LeftAcceleratorX { set; get; }
-    public bool LeftAcceleratorY { set; get; }
-    public bool LeftAcceleratorZ { set; get; }
-    public bool RightAcceleratorX { set; get; }
-    public bool RightAcceleratorY { set; get; }
-    public bool RightAcceleratorZ { set; get; }
-    public bool LeftProximity { set; get; }
-    public bool RightProximity { set; get; }
-    public bool LeftThermistor { set; get; }
-    public bool RightThermistor { set; get; }
-    public bool LeftAdcSoc { set; get; }
-    public bool LeftAdcVCell { set; get; }
-    public bool LeftAdcCurrent { set; get; }
-    public bool RightAdcSoc { set; get; }
-    public bool RightAdcVCell { set; get; }
-    public bool RightAdcCurrent { set; get; }
-    public bool LeftHall { set; get; }
-    public bool RightHall { set; get; }
+    public bool AllChecks { get; }
+    public bool AllLeftAccelerator { get; }
+    public bool AllRightAccelerator { get; }
+    public bool HardwareVersion { get; }
+    public bool SoftwareVersion { get; }
+    public bool TouchFirmwareVersion { get; }
+    public bool LeftSerialNo { get; }
+    public bool RightSerialNo { get; }
+    public bool LeftBluetoothAddress { get; }
+    public bool RightBluetoothAddress { get; }
+    public bool LeftAcceleratorX { get; }
+    public bool LeftAcceleratorY { get; }
+    public bool LeftAcceleratorZ { get; }
+    public bool RightAcceleratorX { get; }
+    public bool RightAcceleratorY { get; }
+    public bool RightAcceleratorZ { get; }
+    public bool LeftProximity { get; }
+    public bool RightProximity { get; }
+    public bool LeftThermistor { get; }
+    public bool RightThermistor { get; }
+    public bool LeftAdcSoc { get; }
+    public bool LeftAdcVCell { get; }
+    public bool LeftAdcCurrent { get; }
+    public bool RightAdcSoc { get; }
+    public bool RightAdcVCell { get; }
+    public bool RightAdcCurrent { get; }
+    public bool LeftHall { get; }
+    public bool RightHall { get; }
 
-    public override void Decode(SppMessage msg)
+    public SelfTestDecoder(SppMessage msg) : base(msg)
     {
         var data = BitConverter.ToInt32(msg.Payload, 0);
 

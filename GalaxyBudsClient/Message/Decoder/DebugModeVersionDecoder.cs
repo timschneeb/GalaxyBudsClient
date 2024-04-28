@@ -11,14 +11,14 @@ internal class DebugModeVersionDecoder : BaseMessageDecoder
     private readonly string[] _swRelVer = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     private readonly string[] _swYear = ["O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-    public string? LeftHardwareVersion { set; get; }
-    public string? RightHardwareVersion { set; get; }
-    public string? LeftSoftwareVersion { set; get; }
-    public string? RightSoftwareVersion { set; get; }
-    public string? LeftTouchSoftwareVersion { set; get; }
-    public string? RightTouchSoftwareVersion { set; get; }
+    public string? LeftHardwareVersion { get; }
+    public string? RightHardwareVersion { get; }
+    public string? LeftSoftwareVersion { get; }
+    public string? RightSoftwareVersion { get; }
+    public string? LeftTouchSoftwareVersion { get; }
+    public string? RightTouchSoftwareVersion { get; }
 
-    public override void Decode(SppMessage msg)
+    public DebugModeVersionDecoder(SppMessage msg) : base(msg)
     {
         var l1 = (msg.Payload[0] & 240) >> 4;
         var l2 = msg.Payload[0] & 15;

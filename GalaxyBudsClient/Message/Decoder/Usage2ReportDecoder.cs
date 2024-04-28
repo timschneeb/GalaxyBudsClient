@@ -33,10 +33,10 @@ public class Usage2ReportDecoder : BaseMessageDecoder
         public required long Value { get; init; }
     }
     
-    public string? ErrorReason { set; get; }
-    public LoggingItem[] Items { set; get; } = Array.Empty<LoggingItem>();
+    public string? ErrorReason { get; }
+    public LoggingItem[] Items { get; } = Array.Empty<LoggingItem>();
 
-    public override void Decode(SppMessage msg)
+    public Usage2ReportDecoder(SppMessage msg) : base(msg)
     {
         ErrorReason = null;
         

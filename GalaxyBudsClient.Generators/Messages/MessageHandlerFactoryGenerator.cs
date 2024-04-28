@@ -121,12 +121,21 @@ public class MessageHandlerFactoryGenerator : IIncrementalGenerator
                         /// <param name="msgId">Message id of the message to be processed</param>
                         /// <returns>New instance of a {type.ToLower()} class deriving from <see cref="GalaxyBudsClient.Message.{type}.BaseMessage{type}" />.</returns>
                         """);
-        gen.EnterScope($"private static GalaxyBudsClient.Message.{type}.BaseMessage{type}? CreateUninitialized{type}(MsgIds msgId)");
+        gen.EnterScope(type == "Decoder"
+            ? "private static GalaxyBudsClient.Message.Decoder.BaseMessageDecoder? CreateNewDecoder(SppMessage msg)"
+            : "private static GalaxyBudsClient.Message.Encoder.BaseMessageEncoder? CreateNewEncoder(MsgIds msgId)");
+
+        if (type == "Decoder")
+        {
+            gen.AppendLine("var msgId = msg.Id;");
+        }
+        
         gen.EnterScope("return msgId switch");
         
         foreach (var handler in handlersToGenerate.Cast<HandlerToGenerate>())
         {
-            gen.AppendLine($"{handler.MessageId} => new {handler.FullyQualifiedName}(),");
+            var parameter = type == "Decoder" ? "msg" : string.Empty;
+            gen.AppendLine($"{handler.MessageId} => new {handler.FullyQualifiedName}({parameter}),");
         }
 
         gen.AppendLine("_ => null");

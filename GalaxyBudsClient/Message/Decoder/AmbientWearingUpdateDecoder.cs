@@ -10,11 +10,11 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.AMBIENT_WEARING_STATUS_UPDATED)]
 internal class AmbientWearingUpdateDecoder : BaseMessageDecoder
 {
-    public LegacyWearStates WearState { set; get; }
-    public int LeftDetectionCount { set; get; }
-    public int RightDetectionCount { set; get; }
+    public LegacyWearStates WearState { get; }
+    public int LeftDetectionCount { get; }
+    public int RightDetectionCount { get; }
 
-    public override void Decode(SppMessage msg)
+    public AmbientWearingUpdateDecoder(SppMessage msg) : base(msg)
     {
         WearState = (LegacyWearStates) msg.Payload[0];
         LeftDetectionCount = BitConverter.ToInt16(msg.Payload, 1);

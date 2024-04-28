@@ -5,11 +5,11 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.FOTA_DOWNLOAD_DATA)]
 internal class FotaDownloadDataDecoder : BaseMessageDecoder
 {
-    public bool Nak { set; get; }
-    public long ReceivedOffset { set; get; }
-    public byte RequestPacketNumber { set; get; }
+    public bool Nak { get; }
+    public long ReceivedOffset { get; }
+    public byte RequestPacketNumber { get; }
 
-    public override void Decode(SppMessage msg)
+    public FotaDownloadDataDecoder(SppMessage msg) : base(msg)
     {
         Nak = (msg.Payload[3] & -128) != 0;
         ReceivedOffset = (((long) msg.Payload[1] & 255) << 8) | ((long) msg.Payload[0] & 255) |
