@@ -74,7 +74,7 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
         }
 
         IsAncLevelHigh = e.NoiseReductionLevel == 1;
-        IsAncWithOneEarbudAllowed = e.NoiseControlsWithOneEarbud;
+        IsNcWithOneEarbudAllowed = e.NoiseControlsWithOneEarbud;
         IsVoiceDetectEnabled = e.DetectConversations;
         VoiceDetectTimeout = e.DetectConversationsDuration switch
         {
@@ -121,8 +121,8 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
             case nameof(IsAncLevelHigh):
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.NOISE_REDUCTION_LEVEL, IsAncLevelHigh);
                 break;
-            case nameof(IsAncWithOneEarbudAllowed):
-                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_ANC_WITH_ONE_EARBUD, IsAncWithOneEarbudAllowed);
+            case nameof(IsNcWithOneEarbudAllowed):
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_ANC_WITH_ONE_EARBUD, IsNcWithOneEarbudAllowed);
                 break;
             case nameof(IsVoiceDetectEnabled):
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_DETECT_CONVERSATIONS, IsVoiceDetectEnabled);
@@ -174,7 +174,7 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
                     IsAncLevelHigh = !IsAncLevelHigh;
                     break;
                 case Event.SwitchAncOne:
-                    IsAncWithOneEarbudAllowed = !IsAncWithOneEarbudAllowed;
+                    IsNcWithOneEarbudAllowed = !IsNcWithOneEarbudAllowed;
                     break;
                 case Event.AmbientToggle:
                     IsAmbientSoundEnabled = !IsAmbientSoundEnabled;
@@ -190,7 +190,7 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
     [Reactive] public bool IsAmbientSoundEnabled { set; get; }
     [Reactive] public bool IsAncEnabled { set; get; }
     [Reactive] public bool IsAncLevelHigh { set; get; }
-    [Reactive] public bool IsAncWithOneEarbudAllowed { set; get; }
+    [Reactive] public bool IsNcWithOneEarbudAllowed { set; get; }
     [Reactive] public bool IsVoiceDetectEnabled { set; get; }
     [Reactive] public VoiceDetectTimeouts VoiceDetectTimeout { set; get; }
 

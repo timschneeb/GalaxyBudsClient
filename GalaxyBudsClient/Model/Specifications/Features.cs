@@ -26,7 +26,7 @@ public enum Features
     SpatialSensor,
     AmbientCustomize,
     AmbientCustomizeLegacy,
-    AncWithOneEarbud,
+    NoiseControlsWithOneEarbud,
     AncNoiseReductionLevels,
     AdvancedTouchLock,
     AdvancedTouchLockForCalls,

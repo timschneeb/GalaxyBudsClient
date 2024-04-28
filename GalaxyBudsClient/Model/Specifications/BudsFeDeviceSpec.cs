@@ -25,7 +25,7 @@ public class BudsFeDeviceSpec : IDeviceSpec
         { Features.AncNoiseReductionLevels, null },
         { Features.AmbientSidetone, null },
         { Features.AmbientCustomize, null },
-        { Features.AncWithOneEarbud, null },
+        { Features.NoiseControlsWithOneEarbud, null },
         { Features.DebugSku, null },
         { Features.AdvancedTouchLock, null },
         { Features.AdvancedTouchLockForCalls, null },

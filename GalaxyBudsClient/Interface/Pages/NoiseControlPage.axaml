@@ -69,19 +69,21 @@
                         <ext:RequiresFeatureBehavior Feature="AncNoiseReductionLevels" />
                     </Interaction.Behaviors>
                 </controls:SettingsSwitchItem>
-
-                <controls:SettingsSwitchItem
-                    Content="{ext:Translate {x:Static i18N:Keys.NcAncOne}}"
-                    Description="{ext:Translate {x:Static i18N:Keys.NcAncOneDescription}}"
-                    Symbol="Accessibility"
-                    IsEnabled="{Binding IsAncEnabled}"
-                    IsChecked="{Binding IsAncWithOneEarbudAllowed}">
-                    <Interaction.Behaviors>
-                        <ext:RequiresFeatureBehavior Feature="AncWithOneEarbud" />
-                    </Interaction.Behaviors>
-                </controls:SettingsSwitchItem>
             </controls:SettingsGroup>
 
+            <controls:SettingsGroup>
+            <controls:SettingsSwitchItem
+                Content="{ext:Translate {x:Static i18N:Keys.NcOneEarbud}}"
+                Description="{ext:Translate {x:Static i18N:Keys.NcOneEarbudDescription}}"
+                Symbol="Accessibility"
+                IsChecked="{Binding IsNcWithOneEarbudAllowed}">
+                <Interaction.Behaviors>
+                    <ext:RequiresFeatureBehavior Feature="NoiseControlsWithOneEarbud" />
+                </Interaction.Behaviors>
+            </controls:SettingsSwitchItem>
+            </controls:SettingsGroup>
+            
+            
             <controls:SettingsGroup>
                 <Interaction.Behaviors>
                     <ext:RequiresFeatureBehavior Feature="DetectConversations" />

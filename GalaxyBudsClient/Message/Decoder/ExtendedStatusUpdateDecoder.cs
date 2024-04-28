@@ -8,7 +8,6 @@ using GalaxyBudsClient.Utils;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
-// TODO: for all decoder classes: move Decode method to constructor
 [MessageDecoder(MsgIds.EXTENDED_STATUS_UPDATED)]
 public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdate
 {

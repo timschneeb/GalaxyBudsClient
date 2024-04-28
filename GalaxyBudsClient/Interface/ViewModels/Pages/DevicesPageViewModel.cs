@@ -29,7 +29,6 @@ public class DevicesPageViewModel : MainPageViewModelBase
         if (device.MacAddress == Settings.Data.LastDeviceMac)
             return;
         
-        // TODO: move to BluetoothImpl
         var cd = new ContentDialog
         {
             Title = Strings.PleaseWait,

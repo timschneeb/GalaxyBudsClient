@@ -22,7 +22,6 @@ public class AcknowledgementDecoder : BaseMessageDecoder
         {
             RawParameters = msg.Payload[1..];
             
-            // TODO: check which ACKs to handle in the ViewModels
             switch (Id)
             {
                 case MsgIds.ADJUST_SOUND_SYNC:

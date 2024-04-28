@@ -122,7 +122,7 @@
     <sys:String x:Key="event_eq_switch">Iterate equalizer presets</sys:String>
     <sys:String x:Key="event_anc_toggle">Toggle noise cancelling</sys:String>
     <sys:String x:Key="event_anc_switch_sensitivity">Switch ANC sensitivity</sys:String>
-    <sys:String x:Key="event_anc_switch_one">Switch ANC with one earbud</sys:String>
+    <sys:String x:Key="event_nc_switch_one">Switch noise controls with one earbud</sys:String>
     <sys:String x:Key="event_touch_lock_toggle">Toggle touchpad lock</sys:String>
     <sys:String x:Key="event_double_edge_touch_toggle">Toggle double-edge touch feature</sys:String>
     <sys:String x:Key="event_conversation_toggle">Toggle conversation detection</sys:String>
@@ -379,8 +379,8 @@ You might need to manually reconnect your earbuds.</sys:String>
     <!--Noise control-->
     <sys:String x:Key="nc_header">Noise control</sys:String>
     <sys:String x:Key="nc_as_anc_description">Reduce background noises</sys:String>
-    <sys:String x:Key="nc_anc_one">Noise cancelling with one earbud</sys:String>
-    <sys:String x:Key="nc_anc_one_description">Noise cancelling normally requires two earbuds to prevent discomfort, enable this to allow noise cancelling with only one earbud</sys:String>
+    <sys:String x:Key="nc_one_earbud">Noise controls with one earbud</sys:String>
+    <sys:String x:Key="nc_one_earbud_description">Noise controls normally require two earbuds to prevent discomfort, enable this to allow it with only one earbud</sys:String>
     <sys:String x:Key="nc_anc_level">High sensitivity</sys:String>
     <sys:String x:Key="nc_anc_level_description">Stronger noise cancelling effect</sys:String>
     <sys:String x:Key="nc_ambient">Customize ambient sound</sys:String>

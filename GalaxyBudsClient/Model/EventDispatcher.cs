@@ -24,7 +24,7 @@ public enum Event
     AncToggle,
     [LocalizableDescription(Keys.EventAncSwitchSensitivity)]
     SwitchAncSensitivity,
-    [LocalizableDescription(Keys.EventAncSwitchOne)]
+    [LocalizableDescription(Keys.EventNcSwitchOne)]
     SwitchAncOne,
     [LocalizableDescription(Keys.EventEqToggle)]
     EqualizerToggle,
@@ -98,8 +98,7 @@ public class EventDispatcher
                 return BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc)
                        && BluetoothImpl.Instance.DeviceSpec.Supports(Features.AncNoiseReductionLevels);
             case Event.SwitchAncOne:
-                return BluetoothImpl.Instance.DeviceSpec.Supports(Features.Anc)
-                       && BluetoothImpl.Instance.DeviceSpec.Supports(Features.AncWithOneEarbud);
+                return BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControlsWithOneEarbud);
             case Event.ToggleDoubleEdgeTouch:
                 return BluetoothImpl.Instance.DeviceSpec.Supports(Features.DoubleTapVolume);
             case Event.ToggleConversationDetect:

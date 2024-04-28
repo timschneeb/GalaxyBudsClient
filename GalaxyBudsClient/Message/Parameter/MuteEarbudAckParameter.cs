@@ -2,7 +2,6 @@ using System.IO;
 
 namespace GalaxyBudsClient.Message.Parameter;
 
-// TODO handle in FindMyBuds view model
 public class MuteEarbudAckParameter : MessageAsDictionary, IAckParameter
 {
     public bool LeftMute { get; }

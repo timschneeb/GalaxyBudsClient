@@ -24,7 +24,7 @@ public class Buds2DeviceSpec : IDeviceSpec
         { Features.DoubleTapVolume, new FeatureRule(5) },
         { Features.AdvancedTouchLock, new FeatureRule(4) },
         { Features.AdvancedTouchLockForCalls, new FeatureRule(7) },
-        { Features.AncWithOneEarbud, new FeatureRule(3) },
+        { Features.NoiseControlsWithOneEarbud, new FeatureRule(3) },
         { Features.AmbientCustomize, new FeatureRule(5) },
         { Features.AmbientSidetone, new FeatureRule(6)  },
         { Features.FmgRingWhileWearing, new FeatureRule(9) },

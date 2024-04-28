@@ -29,7 +29,7 @@ public class Buds2ProDeviceSpec : IDeviceSpec
         { Features.Anc, null },
         { Features.AmbientSidetone, new FeatureRule(1) },
         { Features.AmbientCustomize, null },
-        { Features.AncWithOneEarbud, null },
+        { Features.NoiseControlsWithOneEarbud, null },
         { Features.DebugSku, null },
         { Features.AdvancedTouchLock, null },
         { Features.AdvancedTouchLockForCalls, new FeatureRule(1) },
@@ -40,7 +40,7 @@ public class Buds2ProDeviceSpec : IDeviceSpec
         { Features.HeadTracking, new FeatureRule(8) },
         { Features.CradleSerialNumber, null },
         { Features.DeviceColor, null },
-        { Features.Rename, null } // TODO
+        { Features.Rename, null }
     };
         
     public Models Device => Models.Buds2Pro;
