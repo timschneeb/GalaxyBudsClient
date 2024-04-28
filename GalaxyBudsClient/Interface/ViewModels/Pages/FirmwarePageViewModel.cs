@@ -8,6 +8,7 @@ using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Platform.Storage;
+using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Pages;
@@ -93,9 +94,22 @@ public class FirmwarePageViewModel : SubPageViewModelBase
             return;
         }
         
+        var downloadDialog = new TaskDialog
+        {
+            Header = Strings.FwSelectDownloading,
+            Buttons = [],
+            IconSource = new SymbolIconSource { Symbol = Symbol.Download },
+            SubHeader = Strings.PleaseWait,
+            XamlRoot = MainWindow.Instance,
+            ShowProgressBar = true
+        };
+        downloadDialog.SetProgressBarState(0, TaskDialogProgressState.Indeterminate);
+        _ = downloadDialog.ShowAsync(true);
+        
         byte[] binary;
         try
         {
+            await Task.Delay(250);
             binary = await _client.DownloadFirmware(firmware);
         }
         catch (Exception ex)
@@ -105,7 +119,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
             {
                 message = $"{Strings.FwSelectHttpError} {infEx.ErrorCode}";
             }
-            
+
             await new MessageBox
             {
                 Title = Strings.Error,
@@ -115,6 +129,10 @@ public class FirmwarePageViewModel : SubPageViewModelBase
 
             Log.Error(ex, "FirmwareSelectionPage.Next: Network error");
             return;
+        }
+        finally
+        {
+            downloadDialog.Hide();
         }
             
         await PrepareInstallation(binary, firmware.BuildName ?? Strings.FwSelectUnknownBuild);
@@ -145,7 +163,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
         FirmwareBinary? binary;
         try
         {
-            binary = new FirmwareBinary(data, buildName);
+            binary = new FirmwareBinary(data, buildName, false);
         }
         catch (FirmwareParseException ex)
         {
@@ -164,7 +182,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
          * during setup using the "Advanced" menu for troubleshooting. If available, we use the SKU instead.
          */
         var connectedModel = DeviceMessageCache.Instance.DebugSku?.ModelFromSku() ?? BluetoothImpl.Instance.CurrentModel;
-        var firmwareModel = binary.DetectModel();
+        var firmwareModel = binary.DetectedModel;
         if (firmwareModel == null)
         {
             Log.Warning("FirmwareSelectionPage.PrepareInstallation: Firmware model is null; skipping verification");

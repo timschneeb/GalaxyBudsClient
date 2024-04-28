@@ -123,17 +123,18 @@ public partial class SppMessage(
 
             using var stream = new MemoryStream(raw);
             using var reader = new BinaryReader(stream);
-            
+
             if (raw.Length < 6)
-                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.TooSmall, "At least 6 bytes are required");
-            
+                throw new InvalidPacketException(InvalidPacketException.ErrorCodes.TooSmall,
+                    "At least 6 bytes are required");
+
             if (reader.ReadByte() != specSom)
                 throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Som, "Invalid SOM byte");
 
             int size;
             if (!alternative && spec.Supports(Features.SppLegacyMessageHeader))
             {
-                draft.Type = (MsgTypes) Convert.ToInt32(reader.ReadByte());
+                draft.Type = (MsgTypes)Convert.ToInt32(reader.ReadByte());
                 size = Convert.ToInt32(reader.ReadByte());
             }
             else
@@ -145,7 +146,7 @@ public partial class SppMessage(
             }
 
             draft.Id = (MsgIds)reader.ReadByte();
-            
+
             // Subtract Id and CRC from size
             var payloadSize = size - 3;
             if (payloadSize < 0)
@@ -153,11 +154,11 @@ public partial class SppMessage(
                 payloadSize = 0;
                 size = 3;
             }
-            
+
             var payload = new byte[payloadSize];
             var crcData = new byte[size];
             crcData[0] = (byte)draft.Id;
-            
+
             for (var i = 0; i < payloadSize; i++)
             {
                 payload[i] = crcData[i + 1] = reader.ReadByte();
@@ -182,11 +183,17 @@ public partial class SppMessage(
         }
         catch (IndexOutOfRangeException)
         {
-            throw new InvalidPacketException(InvalidPacketException.ErrorCodes.OutOfRange,"Index was out of range");
+            throw new InvalidPacketException(InvalidPacketException.ErrorCodes.OutOfRange, "Index was out of range");
         }
         catch (OverflowException)
         {
-            throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Overflow,"Overflow. Update your firmware!");
+            throw new InvalidPacketException(InvalidPacketException.ErrorCodes.Overflow,
+                "Overflow. Update your firmware!");
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error while decoding message");
+            throw new InvalidPacketException(InvalidPacketException.ErrorCodes.OutOfRange, ex.Message);
         }
     }
     public static IEnumerable<SppMessage> DecodeRawChunk(List<byte> incomingData, Models model, bool alternative)

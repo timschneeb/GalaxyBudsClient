@@ -64,7 +64,7 @@ public enum MsgIds
     DEBUG_GET_VERSION = 36,
     UNKNOWN_37 = 37,
     DEBUG_GET_ALL_DATA = 38,
-    UNK_DISCONNECT = 39,
+    UNKNOWN_39 = 39, // Buds+: disconnects device 
     DEBUG_BUILD_INFO = 40,
     DEBUG_SERIAL_NUMBER = 41,
     UNKNOWN_42 = 42,

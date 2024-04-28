@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Threading;
 using Avalonia.Controls;
 using Avalonia.Threading;
 using FluentIcons.Common;
@@ -6,6 +7,7 @@ using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Message.Parameter;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
@@ -17,37 +19,41 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 public class NoiseControlPageViewModel : MainPageViewModelBase
 {
     public override Control CreateView() => new NoiseControlPage();
+    private int _suppressorCounter;
     
-    // TODO: test with Buds2Pro, switches seem buggy
     public NoiseControlPageViewModel()
     {
         SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
         SppMessageReceiver.Instance.AncEnabledUpdateResponse += (_, enabled) =>
         {
-            using var suppressor = SuppressChangeNotifications();
+            _suppressorCounter++;
             IsAncEnabled = enabled;
+            _suppressorCounter--;
         };
         SppMessageReceiver.Instance.AmbientEnabledUpdateResponse += (_, enabled) =>
         {
-            using var suppressor = SuppressChangeNotifications();
+            _suppressorCounter++;
             IsAmbientSoundEnabled = enabled;
+            _suppressorCounter--;
         };
         SppMessageReceiver.Instance.NoiseControlUpdateResponse += (_, mode) =>
         {
-            using var suppressor = SuppressChangeNotifications();
-            switch (mode)
+            _suppressorCounter++;
+            SetNoiseControlMode(mode);
+            _suppressorCounter--;
+        };
+        SppMessageReceiver.Instance.AcknowledgementResponse += (_, ack) =>
+        {
+            _suppressorCounter++;
+            switch (ack.Id)
             {
-                case NoiseControlModes.Off:
-                    IsAmbientSoundEnabled = false;
-                    IsAncEnabled = false;
-                    break;
-                case NoiseControlModes.AmbientSound:
-                    IsAmbientSoundEnabled = true;
-                    break;
-                case NoiseControlModes.NoiseReduction:
-                    IsAncEnabled = true;
+                case MsgIds.NOISE_CONTROLS:
+                    if(ack.Parameters is SimpleAckParameter param) 
+                        SetNoiseControlMode((NoiseControlModes)param.Value);
                     break;
             }
+
+            _suppressorCounter--;
         };
         
         PropertyChanged += OnPropertyChanged;
@@ -55,7 +61,7 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
     
     private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateDecoder e)
     {
-        using var suppressor = SuppressChangeNotifications();
+        _suppressorCounter++;
         if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
         {
             IsAmbientSoundEnabled = e.NoiseControlMode == NoiseControlModes.AmbientSound;
@@ -76,6 +82,7 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
             2 => VoiceDetectTimeouts.Sec15,
             _ => VoiceDetectTimeouts.Sec5
         };
+        _suppressorCounter--;
     }
 
     private async void SendNoiseControlState()
@@ -98,6 +105,9 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
 
     private async void OnPropertyChanged(object? sender, PropertyChangedEventArgs args)
     {
+        if (_suppressorCounter > 0)
+            return;
+        
         switch (args.PropertyName)
         {
             case nameof(IsAmbientSoundEnabled) or nameof(IsAncEnabled):
@@ -128,6 +138,25 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
                 break;
         }
     }
+
+    private void SetNoiseControlMode(NoiseControlModes mode)
+    {
+        switch (mode)
+        {
+            case NoiseControlModes.Off:
+                IsAmbientSoundEnabled = false;
+                IsAncEnabled = false;
+                break;
+            case NoiseControlModes.AmbientSound:
+                IsAmbientSoundEnabled = true;
+                IsAncEnabled = false;
+                break;
+            case NoiseControlModes.NoiseReduction:
+                IsAncEnabled = true;
+                IsAmbientSoundEnabled = false;
+                break;
+        }
+    }
     
     protected override void OnEventReceived(Event e, object? arg)
     {
@@ -151,19 +180,8 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
                     IsAmbientSoundEnabled = !IsAmbientSoundEnabled;
                     break;
                 case Event.SetNoiseControlState:
-                    switch (arg)
-                    {
-                        case NoiseControlModes.Off:
-                            IsAmbientSoundEnabled = false;
-                            IsAncEnabled = false;
-                            break;
-                        case NoiseControlModes.AmbientSound:
-                            IsAmbientSoundEnabled = true;
-                            break;
-                        case NoiseControlModes.NoiseReduction:
-                            IsAncEnabled = true;
-                            break;
-                    }
+                    if(arg is NoiseControlModes mode)
+                        SetNoiseControlMode(mode);
                     break;
             }
         });

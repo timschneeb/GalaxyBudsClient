@@ -7,9 +7,14 @@ namespace GalaxyBudsClient.Message.Decoder;
 internal class NoiseControlUpdateDecoder : BaseMessageDecoder
 {
     public NoiseControlModes Mode { set; get; }
+    public LegacyWearStates? WearingState { set; get; }
 
     public override void Decode(SppMessage msg)
     {
         Mode = (NoiseControlModes) msg.Payload[0];
+        if (msg.Payload.Length > 1)
+        {
+            WearingState = (LegacyWearStates)msg.Payload[1];
+        }
     }
 }

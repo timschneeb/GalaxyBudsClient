@@ -29,6 +29,11 @@ using Environment = System.Environment;
 
 namespace GalaxyBudsClient.Interface;
 
+/**
+ * TODO
+ * - Add UI for usage & metering reports?
+ * - Record & analyze battery data over time and display as plot?
+ */
 public partial class MainWindow : StyledAppWindow
 {
     private BudsPopup? _popup;
@@ -45,7 +50,7 @@ public partial class MainWindow : StyledAppWindow
     public MainWindow()
     {
         InitializeComponent();
-        this.AttachDevTools(); // TODO remove this later 
+        this.AttachDevTools();
             
         BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
         BluetoothImpl.Instance.Disconnected += OnDisconnected;
@@ -279,7 +284,6 @@ public partial class MainWindow : StyledAppWindow
     private void OnConnected(object? sender, EventArgs e)
     {
         _popupShown = false;
-        // Pager.SwitchPage(AbstractPage.Pages.Home);
     }
 
     private async void OnBluetoothError(object? sender, BluetoothException e)
