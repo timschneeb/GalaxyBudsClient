@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>69%</td><td>135 missing string(s)</td></tr>
+<tr><td>66%</td><td>152 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -15,6 +15,9 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>important</code></td><td>Important</td></tr>
 <tr><td><code>home</code></td><td>Home</td></tr>
 <tr><td><code>please_wait</code></td><td>Please wait...</td></tr>
+<tr><td><code>value_left_right</code></td><td>Left: {0}
+Right: {1}</td></tr>
+<tr><td><code>no_data_stored</code></td><td>No data stored</td></tr>
 <tr><td><code>file_not_found</code></td><td>File not found</td></tr>
 <tr><td><code>darkmode_blur_enabled</code></td><td>On, with blur effect</td></tr>
 <tr><td><code>darkmode_mica_enabled</code></td><td>On, with mica effect</td></tr>
@@ -92,6 +95,21 @@ This file is auto-generated and automatically updated. Do not modify this file m
 This will remove all data and settings from your earbuds.
 
 Make sure both earbuds are turned on before continuing.</td></tr>
+<tr><td><code>fmg_smart_things_find_manage</code></td><td>Manage SmartThings Find data</td></tr>
+<tr><td><code>fmg_smart_things_find_manage_desc</code></td><td>View and manage your SmartThings Find data stored on your earbuds</td></tr>
+<tr><td><code>fmg_smart_things_find_open</code></td><td>Open SmartThings Find website</td></tr>
+<tr><td><code>fmg_smart_things_find_open_desc</code></td><td>Track your earbuds online. Requires a Samsung account and the official SmartThings Find app to be set-up.</td></tr>
+<tr><td><code>smart_things_find</code></td><td>SmartThings</td></tr>
+<tr><td><code>smart_things_find_clear</code></td><td>Delete SmartThings Find configuration</td></tr>
+<tr><td><code>smart_things_find_clear_desc</code></td><td>Remove Samsung Account related data from your earbuds</td></tr>
+<tr><td><code>smart_things_find_iv</code></td><td>Initialization vector (IV)</td></tr>
+<tr><td><code>smart_things_find_secret_key</code></td><td>Secret key</td></tr>
+<tr><td><code>smart_things_find_region</code></td><td>Region</td></tr>
+<tr><td><code>smart_things_find_fmm_token</code></td><td>SmartThings Find token</td></tr>
+<tr><td><code>smart_things_find_no_link</code></td><td>Your earbuds are not linked to the Samsung SmartThings Find network.</td></tr>
+<tr><td><code>smart_things_find_write_fail</code></td><td>The earbuds rejected the new SmartThings Find configuration data.</td></tr>
+<tr><td><code>smart_things_find_write_ok</code></td><td>Configuration overwritten</td></tr>
+<tr><td><code>smart_things_find_write_ok_desc</code></td><td>The SmartThings Find configuration data has been removed.</td></tr>
 <tr><td><code>gft_warning</code></td><td>Please wear both earbuds.</td></tr>
 <tr><td><code>gft_desc</code></td><td>Check whether your earbuds are seated correctly</td></tr>
 <tr><td><code>gft_bad</code></td><td>Bad fit</td></tr>

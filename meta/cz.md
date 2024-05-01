@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>97%</td><td>13 missing string(s)</td></tr>
+<tr><td>93%</td><td>30 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -12,7 +12,25 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <table>
 <tr><th>Key</th><th>Original string</th></tr>
 <tr><td><code>important</code></td><td>Important</td></tr>
+<tr><td><code>value_left_right</code></td><td>Left: {0}
+Right: {1}</td></tr>
+<tr><td><code>no_data_stored</code></td><td>No data stored</td></tr>
 <tr><td><code>event_nc_switch_one</code></td><td>Switch noise controls with one earbud</td></tr>
+<tr><td><code>fmg_smart_things_find_manage</code></td><td>Manage SmartThings Find data</td></tr>
+<tr><td><code>fmg_smart_things_find_manage_desc</code></td><td>View and manage your SmartThings Find data stored on your earbuds</td></tr>
+<tr><td><code>fmg_smart_things_find_open</code></td><td>Open SmartThings Find website</td></tr>
+<tr><td><code>fmg_smart_things_find_open_desc</code></td><td>Track your earbuds online. Requires a Samsung account and the official SmartThings Find app to be set-up.</td></tr>
+<tr><td><code>smart_things_find</code></td><td>SmartThings</td></tr>
+<tr><td><code>smart_things_find_clear</code></td><td>Delete SmartThings Find configuration</td></tr>
+<tr><td><code>smart_things_find_clear_desc</code></td><td>Remove Samsung Account related data from your earbuds</td></tr>
+<tr><td><code>smart_things_find_iv</code></td><td>Initialization vector (IV)</td></tr>
+<tr><td><code>smart_things_find_secret_key</code></td><td>Secret key</td></tr>
+<tr><td><code>smart_things_find_region</code></td><td>Region</td></tr>
+<tr><td><code>smart_things_find_fmm_token</code></td><td>SmartThings Find token</td></tr>
+<tr><td><code>smart_things_find_no_link</code></td><td>Your earbuds are not linked to the Samsung SmartThings Find network.</td></tr>
+<tr><td><code>smart_things_find_write_fail</code></td><td>The earbuds rejected the new SmartThings Find configuration data.</td></tr>
+<tr><td><code>smart_things_find_write_ok</code></td><td>Configuration overwritten</td></tr>
+<tr><td><code>smart_things_find_write_ok_desc</code></td><td>The SmartThings Find configuration data has been removed.</td></tr>
 <tr><td><code>nc_one_earbud</code></td><td>Noise controls with one earbud</td></tr>
 <tr><td><code>nc_one_earbud_description</code></td><td>Noise controls normally require two earbuds to prevent discomfort, enable this to allow it with only one earbud</td></tr>
 <tr><td><code>rename</code></td><td>Rename earbuds</td></tr>
