@@ -16,8 +16,8 @@ public class GetFmmConfigDecoder : BaseMessageDecoder
     public bool? LeftFindingSupport { get; }
     public bool? LeftE2E { get; }
     public string? LeftSecretKey { get; }
-    public int LeftMaxN { get; }
-    public byte LeftRegion { get; }
+    public int? LeftMaxN { get; }
+    public byte? LeftRegion { get; }
     public string? LeftFmmToken { get; }
     public string? LeftIv { get; }
     public string? LeftSn { get; }
@@ -28,8 +28,8 @@ public class GetFmmConfigDecoder : BaseMessageDecoder
     public bool? RightFindingSupport { get; }
     public bool? RightE2E { get; }
     public string? RightSecretKey { get; }
-    public int RightMaxN { get; }
-    public byte RightRegion { get; }
+    public int? RightMaxN { get; }
+    public byte? RightRegion { get; }
     public string? RightFmmToken { get; }
     public string? RightIv { get; }
     public string? RightSn { get; }
@@ -37,7 +37,6 @@ public class GetFmmConfigDecoder : BaseMessageDecoder
     public string? RightLostmodePrefix { get; }
     public string? RightLostmodeLink { get; }
     
-    // TODO Add UI to display & erase FMM data?
     public GetFmmConfigDecoder(SppMessage msg) : base(msg)
     {
         using var stream = new MemoryStream(msg.Payload);
@@ -62,19 +61,19 @@ public class GetFmmConfigDecoder : BaseMessageDecoder
                     MakeXor(secretKeyBytes).ToBase64OrDefault();
 
                 var maxN = binaryReader.ReadInt32();
-                LeftMaxN = maxN == 0 ? -1 : maxN;
-                LeftRegion = binaryReader.ReadByte();
+                LeftMaxN = maxN == 0 ? null : maxN;
+                LeftRegion = binaryReader.ReadByte().ToByteOrDefault();
 
                 var tokenLength = binaryReader.ReadByte();
                 if (Revision < 2)
                 {
                     var tokenBytes = binaryReader.ReadBytes(26);
-                    LeftFmmToken = tokenBytes.ToStringOrDefault();
+                    LeftFmmToken = tokenBytes.ToStringOrDefault(tokenLength);
                 }
                 else
                 {
                     var tokenBytes = binaryReader.ReadBytes(31);
-                    LeftFmmToken = tokenBytes.ToStringOrDefault();
+                    LeftFmmToken = tokenBytes.ToStringOrDefault(tokenLength);
                     
                     var iv = binaryReader.ReadBytes(16);
                     LeftIv = Revision < 3 ? 
@@ -89,12 +88,12 @@ public class GetFmmConfigDecoder : BaseMessageDecoder
                     LeftLostmodeState = binaryReader.ReadByte().ToBooleanOrDefault();
 
                     var prefixLength = binaryReader.ReadByte();
-                    var prefixBytes = binaryReader.ReadBytes(prefixLength);
-                    LeftLostmodePrefix = prefixBytes.ToStringOrDefault();
+                    var prefixBytes = binaryReader.ReadBytes(42);
+                    LeftLostmodePrefix = prefixBytes.ToStringOrDefault(prefixLength);
 
                     var linkLength = binaryReader.ReadByte();
-                    var linkBytes = binaryReader.ReadBytes(linkLength);
-                    LeftLostmodeLink = linkBytes.ToStringOrDefault();
+                    var linkBytes = binaryReader.ReadBytes(120);
+                    LeftLostmodeLink = linkBytes.ToStringOrDefault(linkLength);
                 }
             }
             catch (Exception e)
@@ -114,20 +113,19 @@ public class GetFmmConfigDecoder : BaseMessageDecoder
                 MakeXor(secretKeyBytes).ToBase64OrDefault();
 
             var maxN = binaryReader.ReadInt32();
-            RightMaxN = maxN == 0 ? -1 : maxN;
-            RightRegion = binaryReader.ReadByte();
-
-            // Not sure about this
-            var tokenLengthOrOffset = binaryReader.ReadByte();
+            RightMaxN = maxN == 0 ? null : maxN;
+            RightRegion = binaryReader.ReadByte().ToByteOrDefault();
+            
+            var tokenLength = binaryReader.ReadByte();
             if (Revision < 2)
             {
                 var tokenBytes = binaryReader.ReadBytes(26);
-                RightFmmToken = tokenBytes.ToStringOrDefault();
+                RightFmmToken = tokenBytes.ToStringOrDefault(tokenLength);
             }
             else
             {
                 var tokenBytes = binaryReader.ReadBytes(31);
-                RightFmmToken = tokenBytes.ToStringOrDefault();
+                RightFmmToken = tokenBytes.ToStringOrDefault(tokenLength);
     
                 var iv = binaryReader.ReadBytes(16);
                 RightIv = Revision < 3 ? 
@@ -142,12 +140,12 @@ public class GetFmmConfigDecoder : BaseMessageDecoder
                 RightLostmodeState = binaryReader.ReadByte().ToBooleanOrDefault();
 
                 var prefixLength = binaryReader.ReadByte();
-                var prefixBytes = binaryReader.ReadBytes(prefixLength);
-                RightLostmodePrefix = prefixBytes.ToStringOrDefault();
+                var prefixBytes = binaryReader.ReadBytes(42);
+                RightLostmodePrefix = prefixBytes.ToStringOrDefault(prefixLength);
 
                 var linkLength = binaryReader.ReadByte();
-                var linkBytes = binaryReader.ReadBytes(linkLength);
-                RightLostmodeLink = linkBytes.ToStringOrDefault();
+                var linkBytes = binaryReader.ReadBytes(120);
+                RightLostmodeLink = linkBytes.ToStringOrDefault(linkLength);
             }
         }
     }
@@ -170,15 +168,21 @@ file static class GetFmmConfigDecoderExtensions
         return (b != 0xFF) ? b == 1 : null;
     }
     
+    internal static byte? ToByteOrDefault(this byte b)
+    {
+        return (b != 0xFF) ? b : null;
+    }
+
     internal static string? ToBase64OrDefault(this IEnumerable<byte> bytes)
     {
         var enumerated = bytes.ToArray();
         return enumerated.Any(b => b != 0xFF) ? Convert.ToBase64String(enumerated) : null;
     }   
     
-    internal static string? ToStringOrDefault(this IEnumerable<byte> bytes)
+    internal static string? ToStringOrDefault(this IEnumerable<byte> bytes, int? length = null)
     {
         var enumerated = bytes.ToArray();
-        return enumerated.Any(b => b != 0xFF) ? Encoding.UTF8.GetString(enumerated) : null;
+        return enumerated.Any(b => b != 0xFF) ? 
+            Encoding.UTF8.GetString(enumerated, 0, Math.Min(length ?? enumerated.Length, enumerated.Length)) : null;
     }
 }

@@ -17,8 +17,8 @@ public class SetFmmConfigEncoder : BaseMessageEncoder
     public bool? LeftFindingSupport { init; get; }
     public bool? LeftE2E { init; get; }
     public string? LeftSecretKey { init; get; }
-    public int LeftMaxN { init; get; }
-    public byte LeftRegion { init; get; }
+    public int LeftMaxN { init; get; } = -1;
+    public byte LeftRegion { init; get; } = 0xFF;
     public string? LeftFmmToken { init; get; }
     public string? LeftIv { init; get; }
     public bool? LeftLostmodeState { init; get; }
@@ -28,8 +28,8 @@ public class SetFmmConfigEncoder : BaseMessageEncoder
     public bool? RightFindingSupport { init; get; }
     public bool? RightE2E { init; get; }
     public string? RightSecretKey { init; get; }
-    public int RightMaxN { init; get; }
-    public byte RightRegion { init; get; }
+    public int RightMaxN { init; get; } = -1;
+    public byte RightRegion { init; get; } = 0xFF;
     public string? RightFmmToken { init; get; }
     public string? RightIv { init; get; }
     public bool? RightLostmodeState { init; get; }

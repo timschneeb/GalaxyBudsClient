@@ -66,7 +66,7 @@ public class FmmConfigPageViewModel : SubPageViewModelBase
         {
             Revision = _fmmConfig?.Revision ?? 0,
             UpdateLeft = true,
-            UpdateRight = true
+            UpdateRight = true,
         });
         
         RequestData();
@@ -81,6 +81,7 @@ public class FmmConfigPageViewModel : SubPageViewModelBase
     {
         SppMessageReceiver.Instance.BaseUpdate += OnBaseUpdateReceived;
         SppMessageReceiver.Instance.SetFmmConfigResponse += OnSetFmmConfigResponse;
+        RequestData();
     }
     
     public override void OnNavigatedFrom()
