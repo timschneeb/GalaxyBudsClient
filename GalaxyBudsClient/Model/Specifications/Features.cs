@@ -44,5 +44,6 @@ public enum Features
     CradleSerialNumber,
     SppLegacyMessageHeader,
     DeviceColor,
-    Rename
+    Rename,
+    SmartThingsFind
 }

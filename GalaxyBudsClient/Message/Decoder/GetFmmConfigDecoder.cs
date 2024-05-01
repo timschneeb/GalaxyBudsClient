@@ -69,12 +69,12 @@ public class GetFmmConfigDecoder : BaseMessageDecoder
                 if (Revision < 2)
                 {
                     var tokenBytes = binaryReader.ReadBytes(26);
-                    LeftFmmToken = Encoding.UTF8.GetString(tokenBytes, 0, Math.Min((int)tokenLength, 26));
+                    LeftFmmToken = tokenBytes.ToStringOrDefault();
                 }
                 else
                 {
                     var tokenBytes = binaryReader.ReadBytes(31);
-                    LeftFmmToken = Encoding.UTF8.GetString(tokenBytes, 0, Math.Min((int)tokenLength, 31));
+                    LeftFmmToken = tokenBytes.ToStringOrDefault();
                     
                     var iv = binaryReader.ReadBytes(16);
                     LeftIv = Revision < 3 ? 
@@ -90,11 +90,11 @@ public class GetFmmConfigDecoder : BaseMessageDecoder
 
                     var prefixLength = binaryReader.ReadByte();
                     var prefixBytes = binaryReader.ReadBytes(prefixLength);
-                    LeftLostmodePrefix = Encoding.UTF8.GetString(prefixBytes, 0, Math.Min(prefixBytes.Length, 42));
+                    LeftLostmodePrefix = prefixBytes.ToStringOrDefault();
 
                     var linkLength = binaryReader.ReadByte();
                     var linkBytes = binaryReader.ReadBytes(linkLength);
-                    LeftLostmodeLink = Encoding.UTF8.GetString(linkBytes, 0, Math.Min(linkBytes.Length, 120));
+                    LeftLostmodeLink = linkBytes.ToStringOrDefault();
                 }
             }
             catch (Exception e)
@@ -122,12 +122,12 @@ public class GetFmmConfigDecoder : BaseMessageDecoder
             if (Revision < 2)
             {
                 var tokenBytes = binaryReader.ReadBytes(26);
-                RightFmmToken = Encoding.UTF8.GetString(tokenBytes);
+                RightFmmToken = tokenBytes.ToStringOrDefault();
             }
             else
             {
                 var tokenBytes = binaryReader.ReadBytes(31);
-                RightFmmToken = Encoding.UTF8.GetString(tokenBytes);
+                RightFmmToken = tokenBytes.ToStringOrDefault();
     
                 var iv = binaryReader.ReadBytes(16);
                 RightIv = Revision < 3 ? 
@@ -143,13 +143,12 @@ public class GetFmmConfigDecoder : BaseMessageDecoder
 
                 var prefixLength = binaryReader.ReadByte();
                 var prefixBytes = binaryReader.ReadBytes(prefixLength);
-                RightLostmodePrefix = Encoding.UTF8.GetString(prefixBytes, 0, Math.Min(prefixBytes.Length, 42));
+                RightLostmodePrefix = prefixBytes.ToStringOrDefault();
 
                 var linkLength = binaryReader.ReadByte();
                 var linkBytes = binaryReader.ReadBytes(linkLength);
-                RightLostmodeLink = Encoding.UTF8.GetString(linkBytes, 0, Math.Min(linkBytes.Length, 120));
+                RightLostmodeLink = linkBytes.ToStringOrDefault();
             }
-                
         }
     }
 

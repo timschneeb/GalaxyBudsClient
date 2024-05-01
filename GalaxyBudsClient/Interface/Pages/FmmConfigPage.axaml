@@ -1,0 +1,57 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
+             mc:Ignorable="d" d:DesignWidth="800"
+             x:Class="GalaxyBudsClient.Interface.Pages.FmmConfigPage"
+             x:DataType="pages:FmmConfigPageViewModel"
+             x:CompileBindings="True">
+
+    <Design.DataContext>
+        <pages:FmmConfigPageViewModel />
+    </Design.DataContext>
+
+    <ScrollViewer>
+        <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
+            <Interaction.Behaviors>
+                <ext:RequiresConnectedDeviceBehavior />
+            </Interaction.Behaviors>
+            
+            <controls:CustomInfoBar Title="{ext:Translate {x:Static i18N:Keys.Hint}}"
+                                    Message="{ext:Translate {x:Static i18N:Keys.SmartThingsFindNoLink}}"
+                                    IsClosable="False"
+                                    IsOpen="{Binding !IsLinked}"
+                                    Severity="Informational" />
+            
+            <controls:SettingsGroup>
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SmartThingsFindIv}}"
+                                             Description="{Binding Iv}"
+                                             IsClickEnabled="False" />
+
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SmartThingsFindSecretKey}}"
+                                             Description="{Binding SecretKey}"
+                                             IsClickEnabled="False" />
+                
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SmartThingsFindFmmToken}}"
+                                             Description="{Binding Token}"
+                                             IsClickEnabled="False" />
+                
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SmartThingsFindRegion}}"
+                                             Description="{Binding Region}"
+                                             IsClickEnabled="False" />
+            </controls:SettingsGroup>
+                        
+            <controls:SettingsGroup>
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SmartThingsFindClear}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.SmartThingsFindClearDesc}}"
+                                             Symbol="Delete"
+                                             IsClickEnabled="True"
+                                             Command="{Binding DoDataClear}" />
+            </controls:SettingsGroup>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

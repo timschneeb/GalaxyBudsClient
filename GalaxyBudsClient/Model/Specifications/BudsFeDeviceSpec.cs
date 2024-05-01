@@ -34,7 +34,8 @@ public class BudsFeDeviceSpec : IDeviceSpec
         { Features.ChargingState, null },
         { Features.NoiseControlModeDualSide, null },
         { Features.DeviceColor, null },
-        { Features.Rename, null }
+        { Features.Rename, null },
+        { Features.SmartThingsFind, null }
     };
         
     public Models Device => Models.BudsFe;

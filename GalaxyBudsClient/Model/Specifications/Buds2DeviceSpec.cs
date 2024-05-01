@@ -36,7 +36,8 @@ public class Buds2DeviceSpec : IDeviceSpec
         { Features.AmbientSoundVolume, null },
         { Features.DeviceColor, null },
         { Features.Rename, null },
-        { Features.SpatialSensor, new FeatureRule(10) } // 10 may be inaccurate
+        { Features.SpatialSensor, new FeatureRule(10) }, // 10 may be inaccurate
+        { Features.SmartThingsFind, null }
     };
 
     public Models Device => Models.Buds2;

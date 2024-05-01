@@ -27,6 +27,8 @@ public class SppMessageReceiver
 
     public event EventHandler<BaseMessageDecoder>? AnyMessageDecoded;
     public event EventHandler<AcknowledgementDecoder>? AcknowledgementResponse;
+    public event EventHandler<GetFmmConfigDecoder>? GetFmmConfigResponse;
+    public event EventHandler<byte>? SetFmmConfigResponse;
     public event EventHandler<int>? ResetResponse;
     public event EventHandler<BatteryTypeDecoder>? BatteryTypeResponse;
     public event EventHandler<bool>? AmbientEnabledUpdateResponse;
@@ -75,6 +77,12 @@ public class SppMessageReceiver
         {
             case AcknowledgementDecoder p:
                 AcknowledgementResponse?.Invoke(this, p);
+                break;
+            case GetFmmConfigDecoder p:
+                GetFmmConfigResponse?.Invoke(this, p);
+                break;
+            case SetFmmConfigDecoder p:
+                SetFmmConfigResponse?.Invoke(this, p.Response);
                 break;
             case ResetResponseDecoder p:
                 ResetResponse?.Invoke(this, p.ResultCode);

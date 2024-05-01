@@ -26,7 +26,8 @@ public class BudsLiveDeviceSpec : IDeviceSpec
         { Features.CallPathControl, new FeatureRule(8) },
         { Features.PairingMode, null },
         { Features.AmbientSoundVolume, null },
-        { Features.DeviceColor, null }
+        { Features.DeviceColor, null },
+        { Features.SmartThingsFind, null }
     };
         
     public Models Device => Models.BudsLive;

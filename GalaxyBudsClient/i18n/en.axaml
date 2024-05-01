@@ -21,6 +21,9 @@
     <sys:String x:Key="important">Important</sys:String>
     <sys:String x:Key="home">Home</sys:String>
     <sys:String x:Key="please_wait">Please wait...</sys:String>
+    <sys:String x:Key="value_left_right">Left: {0}
+Right: {1}</sys:String>
+    <sys:String x:Key="no_data_stored">No data stored</sys:String>
 
     <sys:String x:Key="file_not_found">File not found</sys:String>
     <sys:String x:Key="nobluetoothdev">No Bluetooth adapter found. Please enable Bluetooth and try again.</sys:String>
@@ -353,6 +356,24 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="fmg_warning_left">Please remove the left earbud from your ear.</sys:String>
     <sys:String x:Key="fmg_warning_right">Please remove the right earbud from your ear.</sys:String>
     <sys:String x:Key="fmg_header">Find my earbuds</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage">Manage SmartThings Find data</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage_desc">View and manage your SmartThings Find data stored on your earbuds</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open">Open SmartThings Find website</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open_desc">Track your earbuds online. Requires a Samsung account and the official SmartThings Find app to be set-up.</sys:String>
+    
+    <!--SmartThings data-->
+    <sys:String x:Key="smart_things_find">SmartThings</sys:String>
+    <sys:String x:Key="smart_things_find_clear">Delete SmartThings Find configuration</sys:String>
+    <sys:String x:Key="smart_things_find_clear_desc">Remove Samsung Account related data from your earbuds</sys:String>
+    <sys:String x:Key="smart_things_find_iv">Initialization vector (IV)</sys:String>
+    <sys:String x:Key="smart_things_find_secret_key">Secret key</sys:String>
+    <sys:String x:Key="smart_things_find_region">Region</sys:String>
+    <sys:String x:Key="smart_things_find_fmm_token">SmartThings Find token</sys:String>
+    <sys:String x:Key="smart_things_find_no_link">Your earbuds are not linked to the Samsung SmartThings Find network.</sys:String>
+    <sys:String x:Key="smart_things_find_write_fail">The earbuds rejected the new SmartThings Find configuration data.</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok">Configuration overwritten</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok_desc">The SmartThings Find configuration data has been removed.</sys:String>
+    
 
     <!-- Fit test-->
     <sys:String x:Key="gft_warning">Please wear both earbuds.</sys:String>

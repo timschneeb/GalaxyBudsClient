@@ -36,8 +36,33 @@
                                                    IsVisible="{Binding IsSearching}" />
                     </controls:EarbudControlUnit.RightContent>
                 </controls:EarbudControlUnit>
-
             </Border>
+            
+            <controls:SettingsGroup>
+                <Interaction.Behaviors>
+                    <ext:RequiresFeatureBehavior Feature="SmartThingsFind" />
+                </Interaction.Behaviors>
+                
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.FmgSmartThingsFindManage}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.FmgSmartThingsFindManageDesc}}"
+                                             Symbol="Tag"
+                                             ActionSymbol="ChevronRight"
+                                             IsClickEnabled="True"
+                                             Click="OnSmartThingsFindDataClicked" />
+                
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.FmgSmartThingsFindOpen}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.FmgSmartThingsFindOpenDesc}}"
+                                             Symbol="GlobeSearch"
+                                             ActionIconSource="Open"
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <EventTriggerBehavior EventName="Click">
+                            <ext:OpenLinkAction TargetUri="https://smartthingsfind.samsung.com" />
+                        </EventTriggerBehavior>
+                    </Interaction.Behaviors>
+                </controls:SettingsSymbolItem>
+                
+            </controls:SettingsGroup>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

@@ -35,7 +35,8 @@ public class BudsProDeviceSpec : IDeviceSpec
         { Features.PairingMode, null },
         { Features.AmbientSoundVolume, null },
         { Features.NoiseControlsWithOneEarbud, new FeatureRule(8) },
-        { Features.DeviceColor, null }
+        { Features.DeviceColor, null },
+        { Features.SmartThingsFind, null }
     };
         
     public Models Device => Models.BudsPro;

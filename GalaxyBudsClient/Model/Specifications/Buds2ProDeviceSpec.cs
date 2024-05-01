@@ -40,7 +40,8 @@ public class Buds2ProDeviceSpec : IDeviceSpec
         { Features.HeadTracking, new FeatureRule(8) },
         { Features.CradleSerialNumber, null },
         { Features.DeviceColor, null },
-        { Features.Rename, null }
+        { Features.Rename, null },
+        { Features.SmartThingsFind, null }
     };
         
     public Models Device => Models.Buds2Pro;
