@@ -60,6 +60,8 @@ public class FirmwarePageViewModel : SubPageViewModelBase
 
     public override async void OnNavigatedTo()
     {
+        RequestData();
+        
         RefreshList(true);
         
         if (Settings.Data.FirmwareWarningAccepted) 

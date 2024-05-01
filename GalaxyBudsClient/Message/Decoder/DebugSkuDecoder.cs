@@ -35,7 +35,7 @@ public class DebugSkuDecoder : BaseMessageDecoder
             if(pattern == null)
                 continue;
 
-            if (build.Contains(pattern))
+            if (model != Models.NULL && build.Contains(pattern))
                 return model;
         }
         return null;
