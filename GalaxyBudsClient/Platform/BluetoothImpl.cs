@@ -506,7 +506,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
 
         IncomingQueue.Enqueue(frame);
     }
-
+    
     private void DataConsumerLoop()
     {
         while (true)
@@ -531,35 +531,40 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
                 }
             }
 
-            try
-            {
-                foreach (var message in SppMessage.DecodeRawChunk(_incomingData, CurrentModel, AlternativeModeEnabled))
-                {
-                    if (AlternativeModeEnabled)
-                    {
-                        MessageReceivedAlternative?.Invoke(this, new SppAlternativeMessage(message));
-                    }
-                    else
-                    {
-                        MessageReceived?.Invoke(this, message);
-                    }
-                }
-            }
-            catch (InvalidPacketException ex)
+            ProcessDataBlock(_incomingData, CurrentModel);
+        }
+    }
+
+    public void ProcessDataBlock(List<byte> data, Models targetModel)
+    {
+        try
+        {
+            foreach (var message in SppMessage.DecodeRawChunk(data, targetModel, AlternativeModeEnabled))
             {
                 if (AlternativeModeEnabled)
                 {
-                    InvalidDataReceivedAlternative?.Invoke(this, ex);
+                    MessageReceivedAlternative?.Invoke(this, new SppAlternativeMessage(message));
                 }
                 else
                 {
-                    InvalidDataReceived?.Invoke(this, ex);
+                    MessageReceived?.Invoke(this, message);
                 }
             }
-            catch (Exception ex)
+        }
+        catch (InvalidPacketException ex)
+        {
+            if (AlternativeModeEnabled)
             {
-                Log.Error($"failed processing packet {ex}");
+                InvalidDataReceivedAlternative?.Invoke(this, ex);
             }
+            else
+            {
+                InvalidDataReceived?.Invoke(this, ex);
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.Error("Failed processing packet {ex}", ex);
         }
     }
 }

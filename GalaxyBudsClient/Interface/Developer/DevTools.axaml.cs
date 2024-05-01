@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
@@ -182,9 +183,8 @@ public partial class DevTools : StyledWindow.StyledWindow
         if (file == null)
             return;
 
-        var model = await new EnumChoiceBox(new ModelsBindingSource())
-            { Title = "Choose model for dump..." }.OpenDialogAsync(this);
-        if(model == null)
+        var result = await new DumpImportDialog().OpenDialogAsync(this);
+        if(result == null)
             return;
         
         var content = await File.ReadAllBytesAsync(file);
@@ -204,10 +204,18 @@ public partial class DevTools : StyledWindow.StyledWindow
             return;
         }
 
+        if (result.Replay)
+        {
+            _ = Task.Run(() =>
+            {
+                BluetoothImpl.Instance.ProcessDataBlock(content.ToList(), result.Model);
+            });
+        }
+        
         try
         {
             ViewModel.MsgTableDataSource.AddRange(
-                SppMessage.DecodeRawChunk([..content], (Models)model, ViewModel.UseAlternativeProtocol)
+                SppMessage.DecodeRawChunk([..content], result.Model, ViewModel.UseAlternativeProtocol)
                     .Select(m => new MessageViewHolder(m)));
             ViewModel.MsgTableDataView.Refresh();
         }
