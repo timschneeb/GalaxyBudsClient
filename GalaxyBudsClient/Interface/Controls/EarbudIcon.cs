@@ -27,10 +27,16 @@ public class EarbudIcon : Image
             OnStatusUpdated(null, DeviceMessageCache.Instance.BasicStatusUpdate);
         SppMessageReceiver.Instance.BaseUpdate += OnStatusUpdated;
         BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
+        BluetoothImpl.Instance.Connected += OnConnected;
         Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
         UpdateEarbudIcons();
     }
-    
+
+    private void OnConnected(object? sender, EventArgs e)
+    {
+        UpdateEarbudIcons();
+    }
+
     public static readonly StyledProperty<Devices> SideProperty = AvaloniaProperty.Register<EarbudIcon, Devices>(nameof(Side));
     public Devices Side
     {
@@ -66,8 +72,7 @@ public class EarbudIcon : Image
 
     private void UpdateEarbudIcons()
     {
-        var color = DeviceMessageCache.Instance.ExtendedStatusUpdate?.DeviceColor 
-                   ?? BluetoothImpl.Instance.Device.Current?.DeviceColor;
+        var color = BluetoothImpl.Instance.Device.Current?.DeviceColor ?? DeviceMessageCache.Instance.ExtendedStatusUpdate?.DeviceColor;
         if (Settings.Data.RealisticEarbudImages && color != null &&
             BluetoothImpl.Instance.DeviceSpec.Supports(Features.DeviceColor))
         {

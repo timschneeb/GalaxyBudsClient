@@ -40,6 +40,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
     {
         Log.Debug("BluetoothImpl: Reallocating");
         _instance?.Dispose();
+        DeviceMessageCache.Instance.Clear();
         _instance = null;
         _instance = new BluetoothImpl();
     }
@@ -224,6 +225,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         LastErrorMessage = exception.ErrorMessage ?? exception.Message;
         IsConnected = false;
         BluetoothError?.Invoke(this, exception);
+        DeviceMessageCache.Instance.Clear();
     }
         
     public async Task<IEnumerable<BluetoothDevice>> GetDevicesAsync()
@@ -455,6 +457,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
             LastErrorMessage = Strings.Connlost;
             IsConnected = false;
             Disconnected?.Invoke(this, reason);
+            DeviceMessageCache.Instance.Clear();
         }
     }
 
