@@ -17,6 +17,8 @@ namespace GalaxyBudsClient.Model
             public static readonly Guid SppStandard = new("{00001101-0000-1000-8000-00805F9B34FB}");
             public static readonly Guid SppNew = new("{2e73a4ad-332d-41fc-90e2-16bef06523f2}");
             public static readonly Guid SmepSpp = new("{f8620674-a1ed-41ab-a8b9-de9ad655729d}"); // alt mode
+            public static readonly Guid LeAudio = new("{0000184e-0000-1000-8000-00805f9b34fb}");
+            public static readonly Guid Handsfree = new("{0000111e-0000-1000-8000-00805f9b34fb}");
         }
       
         [CompiledEnum]

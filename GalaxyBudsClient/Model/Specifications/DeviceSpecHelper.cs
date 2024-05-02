@@ -21,13 +21,14 @@ public static class DeviceSpecHelper
         Specs.Add(new Buds2ProDeviceSpec()); // important: B2Pro is added before B2 to avoid false positives
         Specs.Add(new Buds2DeviceSpec());
         Specs.Add(new BudsFeDeviceSpec());
+        // TODO add Buds3/Pro
     }
     
     public static IDeviceSpec? FindByDevice(BluetoothDevice device)
     {
         if (device.ServiceUuids != null)
         {
-            // If the device has this SPP service, it can be renamed, so we can't rely on the name
+            // If the device has this SPP service (>= Buds2), it can be renamed, so we can't rely on the name
             if(device.ServiceUuids.Any(x => x == Uuids.SppNew))
             {
                 const string deviceIdPrefix = "d908aab5-7a90-4cbe-8641-86a553db";
@@ -43,10 +44,20 @@ public static class DeviceSpecHelper
                         .Select(x => Convert.ToByte(deviceIdPrefix.Substring(x, 2), 16))
                         .ToArray();
 
+                    // Check based on DeviceManager.getWearableDeviceFromBudsUUID() from the Wearable container app
                     if (((DeviceIds)BitConverter.ToInt32(deviceIdBytes)).GetAssociatedModel() is Models model)
                     {
                         return FindByModel(model);
                     }
+                }
+                else if(device.ServiceUuids.Where(x => x == Uuids.LeAudio).Any(x => x == Uuids.Handsfree))
+                {
+                    return FindByModel(Models.Buds2Pro);
+                }
+                else
+                {
+                    // Likely Buds2
+                    return FindByModel(Models.Buds2);
                 }
             }
         }
