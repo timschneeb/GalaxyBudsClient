@@ -79,7 +79,7 @@
                 </controls:SettingsSymbolItem>
 
                 <!-- TODO Add battery statistics -->  
-                <controls:SettingsSymbolItem Name="BatteryStatistic"
+                <!--<controls:SettingsSymbolItem Name="BatteryStatistic"
                                              Content="{ext:Translate {x:Static i18N:Keys.SystemBatteryStatistics}}"
                                              Description="{ext:Translate {x:Static i18N:Keys.SystemBatteryStatisticsDesc}}"
                                              Symbol="DataTrending"
