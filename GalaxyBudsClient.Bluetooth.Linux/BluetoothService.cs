@@ -418,14 +418,16 @@ namespace GalaxyBudsClient.Bluetooth.Linux
 
             if (devicesBluez == null)
             {
-                return new BluetoothDevice[0];
+                return Array.Empty<BluetoothDevice>();
             }
             
             var devices = new BluetoothDevice[devicesBluez.Count];
             for (var i = 0; i < devicesBluez.Count; i++)
             {
                 var props = await devicesBluez[i].GetAllAsync();
-                devices[i] = new BluetoothDevice(props.Name, props.Address, props.Connected, props.Paired, new BluetoothCoD(props.Class));
+                var uuids = props.UUIDs.Select(u => new Guid(u));
+                devices[i] = new BluetoothDevice(props.Name, props.Address, props.Connected,
+                    props.Paired, new BluetoothCoD(props.Class), uuids.ToArray());
             }
 
             return devices;

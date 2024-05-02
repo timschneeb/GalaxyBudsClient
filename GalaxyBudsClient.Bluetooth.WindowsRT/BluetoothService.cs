@@ -105,7 +105,7 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
                 _deviceWatcher.Removed += (watcher, deviceInfoUpdate) =>
                 {
                     Log.Debug("WindowsRT.BluetoothService: Device removed: {Id}", deviceInfoUpdate.Id);
-
+                    
                     _deviceCache?.Where(x => x?.Id == deviceInfoUpdate?.Id).ToList().ForEach(x =>
                     {
                         if (string.Equals(x?.Address, _bluetoothDevice?.BluetoothAddressAsString(),
@@ -367,7 +367,8 @@ namespace GalaxyBudsClient.Bluetooth.WindowsRT
 
         public async Task<BluetoothDevice[]> GetDevicesAsync()
         {
-            await Task.Delay(100);
+            await Task.Delay(10);
+            // TODO Add UUIDs to the device cache
             return _deviceCache.Cast<BluetoothDevice>().ToArray();
         }
 

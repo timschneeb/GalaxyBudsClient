@@ -42,7 +42,7 @@ public class BudsFeDeviceSpec : IDeviceSpec
     public Models Device => Models.BudsFe;
     public string DeviceBaseName => "Buds FE";
     public ITouchMap TouchMap => new StandardTouchMap();
-    public Guid ServiceUuid => Uuids.BudsFe;
+    public Guid ServiceUuid => Uuids.SppNew;
 
     public IEnumerable<TrayItemTypes> TrayShortcuts => Array.AsReadOnly(
         [

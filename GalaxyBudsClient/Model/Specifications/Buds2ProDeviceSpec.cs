@@ -48,7 +48,7 @@ public class Buds2ProDeviceSpec : IDeviceSpec
     public Models Device => Models.Buds2Pro;
     public string DeviceBaseName => "Buds2 Pro";
     public ITouchMap TouchMap => new StandardTouchMap();
-    public Guid ServiceUuid => Uuids.Buds2Pro;
+    public Guid ServiceUuid => Uuids.SppNew;
     
     public IEnumerable<TrayItemTypes> TrayShortcuts => Array.AsReadOnly(
         [

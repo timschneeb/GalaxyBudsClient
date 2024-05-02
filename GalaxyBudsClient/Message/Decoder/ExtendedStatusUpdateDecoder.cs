@@ -46,11 +46,11 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
     public bool OutsideDoubleTap { init; get; }
 
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public Colors ColorL { init; get; }
+    public DeviceIds ColorL { init; get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public Colors ColorR { init; get; }
+    public DeviceIds ColorR { init; get; }
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
-    public Colors DeviceColor => IsCoupled ? ColorR != 0 ? ColorR : ColorL : 
+    public DeviceIds DeviceColor => IsCoupled ? ColorR != 0 ? ColorR : ColorL : 
         (MainConnection == DevicesInverted.R ? ColorR : ColorL);
     
     [Device(Models.BudsPlus, Selector.GreaterEqual)]
@@ -260,9 +260,9 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                 OutsideDoubleTap = msg.Payload[14] == 1;
 
                 var colorL = BitConverter.ToInt16(msg.Payload, 15);
-                ColorL = ColorsExtensions.IsDefined((Colors)colorL) ? (Colors)colorL : Colors.Unknown;
+                ColorL = DeviceIdsExtensions.IsDefined((DeviceIds)colorL) ? (DeviceIds)colorL : DeviceIds.Unknown;
                 var colorR = BitConverter.ToInt16(msg.Payload, 17);
-                ColorR = ColorsExtensions.IsDefined((Colors)colorR) ? (Colors)colorR : Colors.Unknown;
+                ColorR = DeviceIdsExtensions.IsDefined((DeviceIds)colorR) ? (DeviceIds)colorR : DeviceIds.Unknown;
                 
                 if (Revision >= 8)
                 {
@@ -302,9 +302,9 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                 VoiceWakeUp = msg.Payload[13] == 1;
 
                 var colorL = BitConverter.ToInt16(msg.Payload, 14);
-                ColorL = ColorsExtensions.IsDefined((Colors)colorL) ? (Colors)colorL : Colors.Unknown;
+                ColorL = DeviceIdsExtensions.IsDefined((DeviceIds)colorL) ? (DeviceIds)colorL : DeviceIds.Unknown;
                 var colorR = BitConverter.ToInt16(msg.Payload, 16);
-                ColorR = ColorsExtensions.IsDefined((Colors)colorR) ? (Colors)colorR : Colors.Unknown;
+                ColorR = DeviceIdsExtensions.IsDefined((DeviceIds)colorR) ? (DeviceIds)colorR : DeviceIds.Unknown;
                 
                 VoiceWakeUpLang = msg.Payload[18];
 
@@ -351,9 +351,9 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                 VoiceWakeUp = msg.Payload[13] == 1;
 
                 var colorL = BitConverter.ToInt16(msg.Payload, 14);
-                ColorL = ColorsExtensions.IsDefined((Colors)colorL) ? (Colors)colorL : Colors.Unknown;
+                ColorL = DeviceIdsExtensions.IsDefined((DeviceIds)colorL) ? (DeviceIds)colorL : DeviceIds.Unknown;
                 var colorR = BitConverter.ToInt16(msg.Payload, 16);
-                ColorR = ColorsExtensions.IsDefined((Colors)colorR) ? (Colors)colorR : Colors.Unknown;
+                ColorR = DeviceIdsExtensions.IsDefined((DeviceIds)colorR) ? (DeviceIds)colorR : DeviceIds.Unknown;
 
                 VoiceWakeUpLang = msg.Payload[18];
                 SeamlessConnectionEnabled = msg.Payload[19] == 0;
@@ -459,9 +459,9 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                 VoiceWakeUp = msg.Payload[13] == 1;
                 
                 var colorL = BitConverter.ToInt16(msg.Payload, 14);
-                ColorL = ColorsExtensions.IsDefined((Colors)colorL) ? (Colors)colorL : Colors.Unknown;
+                ColorL = DeviceIdsExtensions.IsDefined((DeviceIds)colorL) ? (DeviceIds)colorL : DeviceIds.Unknown;
                 var colorR = BitConverter.ToInt16(msg.Payload, 16);
-                ColorR = ColorsExtensions.IsDefined((Colors)colorR) ? (Colors)colorR : Colors.Unknown;
+                ColorR = DeviceIdsExtensions.IsDefined((DeviceIds)colorR) ? (DeviceIds)colorR : DeviceIds.Unknown;
  
                 VoiceWakeUpLang = msg.Payload[18];
                 SeamlessConnectionEnabled = msg.Payload[19] == 0;
@@ -546,9 +546,9 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                 VoiceWakeUp = msg.Payload[13] == 1;
 
                 var colorL = BitConverter.ToInt16(msg.Payload, 14);
-                ColorL = ColorsExtensions.IsDefined((Colors)colorL) ? (Colors)colorL : Colors.Unknown;
+                ColorL = DeviceIdsExtensions.IsDefined((DeviceIds)colorL) ? (DeviceIds)colorL : DeviceIds.Unknown;
                 var colorR = BitConverter.ToInt16(msg.Payload, 16);
-                ColorR = ColorsExtensions.IsDefined((Colors)colorR) ? (Colors)colorR : Colors.Unknown;
+                ColorR = DeviceIdsExtensions.IsDefined((DeviceIds)colorR) ? (DeviceIds)colorR : DeviceIds.Unknown;
 
                 VoiceWakeUpLang = msg.Payload[18];
                 SeamlessConnectionEnabled = msg.Payload[19] == 0;
@@ -643,9 +643,9 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                 VoiceWakeUp = msg.Payload[13] == 1;
 
                 var colorL = BitConverter.ToInt16(msg.Payload, 14);
-                ColorL = ColorsExtensions.IsDefined((Colors)colorL) ? (Colors)colorL : Colors.Unknown;
+                ColorL = DeviceIdsExtensions.IsDefined((DeviceIds)colorL) ? (DeviceIds)colorL : DeviceIds.Unknown;
                 var colorR = BitConverter.ToInt16(msg.Payload, 16);
-                ColorR = ColorsExtensions.IsDefined((Colors)colorR) ? (Colors)colorR : Colors.Unknown;
+                ColorR = DeviceIdsExtensions.IsDefined((DeviceIds)colorR) ? (DeviceIds)colorR : DeviceIds.Unknown;
 
                 VoiceWakeUpLang = msg.Payload[18];
                 SeamlessConnectionEnabled = msg.Payload[19] == 0;
@@ -700,6 +700,8 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                 IsCaseCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 0) == 1;
             }
         }
+        
+        // TODO Buds3/Buds3 Pro support not yet implemented
         
         if (DeviceSpec.Supports(Features.ChargingState, Revision))
         {

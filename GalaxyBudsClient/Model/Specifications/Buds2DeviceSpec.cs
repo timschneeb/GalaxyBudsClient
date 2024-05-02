@@ -44,7 +44,7 @@ public class Buds2DeviceSpec : IDeviceSpec
     public Models Device => Models.Buds2;
     public string DeviceBaseName => "Buds2";
     public ITouchMap TouchMap => new StandardTouchMap();
-    public Guid ServiceUuid => Uuids.Buds2;
+    public Guid ServiceUuid => Uuids.SppNew;
 
     public IEnumerable<TrayItemTypes> TrayShortcuts => Array.AsReadOnly(
         [

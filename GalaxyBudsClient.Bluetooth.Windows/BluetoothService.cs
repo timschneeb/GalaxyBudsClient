@@ -279,13 +279,13 @@ namespace GalaxyBudsClient.Bluetooth.Windows
             {
                 return Array.Empty<BluetoothDevice>();
             }
-
+            
             var devices = new BluetoothDevice[devs.Length];
             for (var i = 0; i < devs.Length; i++)
             {
                 var formattedMac = Regex.Replace(devs[i].DeviceAddress.ToString(), ".{2}", "$0:").TrimEnd(':');
                 devices[i] = new BluetoothDevice(devs[i].DeviceName, formattedMac,
-                    devs[i].Connected, true, new BluetoothCoD(devs[i].ClassOfDevice.Value));
+                    devs[i].Connected, true, new BluetoothCoD(devs[i].ClassOfDevice.Value), devs[i].InstalledServices);
             }
 
             return devices;

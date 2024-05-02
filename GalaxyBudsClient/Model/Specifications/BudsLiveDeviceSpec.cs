@@ -34,7 +34,7 @@ public class BudsLiveDeviceSpec : IDeviceSpec
     public Models Device => Models.BudsLive;
     public string DeviceBaseName => "Buds Live";
     public ITouchMap TouchMap => new BudsLiveTouchMap();
-    public Guid ServiceUuid => Uuids.BudsLive;
+    public Guid ServiceUuid => Uuids.SppStandard;
 
     public IEnumerable<TrayItemTypes> TrayShortcuts => Array.AsReadOnly(
         [

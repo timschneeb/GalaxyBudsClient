@@ -32,7 +32,7 @@ public class BudsPlusDeviceSpec : IDeviceSpec
     public Models Device => Models.BudsPlus;
     public string DeviceBaseName => "Galaxy Buds+ (";
     public ITouchMap TouchMap => new BudsPlusTouchMap();
-    public Guid ServiceUuid => Uuids.BudsPlus;
+    public Guid ServiceUuid => Uuids.SppStandard;
 
     public IEnumerable<TrayItemTypes> TrayShortcuts => Array.AsReadOnly(
         [

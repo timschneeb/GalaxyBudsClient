@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace GalaxyBudsClient.Bluetooth
 {
-    public class BluetoothDevice(string name, string address, bool isConnected, bool isPaired, BluetoothCoD cod)
+    public class BluetoothDevice(string name, string address, bool isConnected, bool isPaired, BluetoothCoD cod, Guid[]? serviceUuids = null)
     {
         public BluetoothDevice(uint cod) : this(string.Empty, string.Empty, false, false, new BluetoothCoD(cod))
         {
@@ -21,6 +21,7 @@ namespace GalaxyBudsClient.Bluetooth
         public virtual bool IsConnected { get; } = isConnected;
         public virtual bool IsPaired { get; } = isPaired;
         public BluetoothCoD Class { get; } = cod;
+        public Guid[]? ServiceUuids { get; } = serviceUuids;
 
         public static IEnumerable<BluetoothDevice> DummyDevices()
         {

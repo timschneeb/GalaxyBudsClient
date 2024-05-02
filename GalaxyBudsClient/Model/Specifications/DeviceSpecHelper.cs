@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Model.Constants;
+using Serilog;
 
 namespace GalaxyBudsClient.Model.Specifications;
 
@@ -18,6 +21,38 @@ public static class DeviceSpecHelper
         Specs.Add(new Buds2ProDeviceSpec()); // important: B2Pro is added before B2 to avoid false positives
         Specs.Add(new Buds2DeviceSpec());
         Specs.Add(new BudsFeDeviceSpec());
+    }
+    
+    public static IDeviceSpec? FindByDevice(BluetoothDevice device)
+    {
+        if (device.ServiceUuids != null)
+        {
+            // If the device has this SPP service, it can be renamed, so we can't rely on the name
+            if(device.ServiceUuids.Any(x => x == Uuids.SppNew))
+            {
+                const string deviceIdPrefix = "d908aab5-7a90-4cbe-8641-86a553db";
+                var deviceIdHex = device.ServiceUuids
+                    .Select(s => s.ToString("D"))
+                    .FirstOrDefault(s => s.StartsWith(deviceIdPrefix))?
+                    .Replace(deviceIdPrefix, string.Empty);
+
+                if (deviceIdHex != null)
+                {
+                    var deviceIdBytes = Enumerable.Range(0, deviceIdHex.Length)
+                        .Where(x => x % 2 == 0)
+                        .Select(x => Convert.ToByte(deviceIdPrefix.Substring(x, 2), 16))
+                        .ToArray();
+
+                    if (((DeviceIds)BitConverter.ToInt32(deviceIdBytes)).GetAssociatedModel() is Models model)
+                    {
+                        return FindByModel(model);
+                    }
+                }
+            }
+        }
+        
+        // Fallback: use the device name
+        return Specs.FirstOrDefault(spec => device.Name.Contains(spec.DeviceBaseName));
     }
         
     public static IDeviceSpec? FindByDeviceName(string deviceName)

@@ -43,7 +43,7 @@ public class BudsProDeviceSpec : IDeviceSpec
     public Models Device => Models.BudsPro;
     public string DeviceBaseName => "Buds Pro";
     public ITouchMap TouchMap => new StandardTouchMap();
-    public Guid ServiceUuid => Uuids.BudsPro;
+    public Guid ServiceUuid => Uuids.SppStandard;
 
     public IEnumerable<TrayItemTypes> TrayShortcuts => Array.AsReadOnly(
         [

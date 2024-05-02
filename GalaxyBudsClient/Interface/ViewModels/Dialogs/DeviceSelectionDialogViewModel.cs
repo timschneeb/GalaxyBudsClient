@@ -79,7 +79,7 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
     
     public void DoConnectCommand(BluetoothDevice device)
     {
-        var spec = DeviceSpecHelper.FindByDeviceName(device.Name);
+        var spec = DeviceSpecHelper.FindByDevice(device);
         if (spec == null || device.IsConnected == false || device.Address == string.Empty)
         {
             _ = new MessageBox
@@ -113,7 +113,7 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
         Devices.Clear();
         devices
             .Where(dev => dev.IsConnected)
-            .Where(dev => DeviceSpecHelper.FindByDeviceName(dev.Name) != null)
+            .Where(dev => DeviceSpecHelper.FindByDevice(dev) != null)
             .ToList()
             .ForEach(x => Devices.Add(x));
     }

@@ -126,7 +126,9 @@ namespace ThePBone.OSX.Native
                                 (Marshal.PtrToStringUTF8(d->mac_address) ?? String.Empty).Replace("-", ":"),
                                 d->is_connected,
                                 d->is_paired,
-                                new BluetoothCoD(d->cod));
+                                new BluetoothCoD(d->cod),
+                                // TODO Pass all service UUIDs for proper device detection
+                                serviceUuids: null);
                             Memory.btdev_free(ref *d);
                         }
                         Memory.mem_free(rawDevices);

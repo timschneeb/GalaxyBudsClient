@@ -13,13 +13,9 @@ namespace GalaxyBudsClient.Model
     {
         public static class Uuids
         {
-            public static readonly Guid Buds = new("{00001102-0000-1000-8000-00805f9b34fd}");
-            public static readonly Guid BudsPlus = new("{00001101-0000-1000-8000-00805F9B34FB}");
-            public static readonly Guid BudsLive = new("{00001101-0000-1000-8000-00805F9B34FB}");
-            public static readonly Guid BudsPro = new("{00001101-0000-1000-8000-00805F9B34FB}");
-            public static readonly Guid Buds2 = new("{2e73a4ad-332d-41fc-90e2-16bef06523f2}");
-            public static readonly Guid Buds2Pro = new("{2e73a4ad-332d-41fc-90e2-16bef06523f2}");
-            public static readonly Guid BudsFe = new("{2e73a4ad-332d-41fc-90e2-16bef06523f2}");
+            public static readonly Guid SppLegacy = new("{00001102-0000-1000-8000-00805f9b34fd}");
+            public static readonly Guid SppStandard = new("{00001101-0000-1000-8000-00805F9B34FB}");
+            public static readonly Guid SppNew = new("{2e73a4ad-332d-41fc-90e2-16bef06523f2}");
             public static readonly Guid SmepSpp = new("{f8620674-a1ed-41ab-a8b9-de9ad655729d}"); // alt mode
         }
       
@@ -208,53 +204,67 @@ namespace GalaxyBudsClient.Model
             [ModelMetadata(Name = "Galaxy Buds2 Pro", FwPattern = "SM-R510", BuildPrefix = "R510")]
             Buds2Pro = 6,
             [ModelMetadata(Name = "Galaxy Buds FE", FwPattern = "SM-R400N", BuildPrefix = "R400N")]
-            BudsFe = 7
+            BudsFe = 7,
+            [ModelMetadata(Name = "Galaxy Buds3", FwPattern = "SM-R530", BuildPrefix = "R530")]
+            Buds3 = 8,
+            [ModelMetadata(Name = "Galaxy Buds3 Pro", FwPattern = "SM-R630", BuildPrefix = "R630")]
+            Buds3Pro = 9
         }
 
         [CompiledEnum]
-        public enum Colors
+        public enum DeviceIds
         {
             Unknown = 0,
             
-            BudsPlusBlue = 258,
-            BudsPlusPink = 259,
-            BudsPlusBlack = 260,
-            BudsPlusWhite = 261,
-            BudsPlusThomBrown = 262,
-            BudsPlusRed = 263,
-            BudsPlusDeepBlue = 264,
-            BudsPlusOlympic = 265, // NOTE: Unreleased color
-            BudsPlusPurple = 266,
+            [AssociatedModel(Models.Buds)] Buds = 257,
+            [AssociatedModel(Models.Buds)] BudsUnknown = 14336, // NOTE: Unknown device id mentioned by Samsung's device API
+            
+            [AssociatedModel(Models.BudsPlus)] BudsPlusBlue = 258,
+            [AssociatedModel(Models.BudsPlus)] BudsPlusPink = 259,
+            [AssociatedModel(Models.BudsPlus)] BudsPlusBlack = 260,
+            [AssociatedModel(Models.BudsPlus)] BudsPlusWhite = 261,
+            [AssociatedModel(Models.BudsPlus)] BudsPlusThomBrown = 262,
+            [AssociatedModel(Models.BudsPlus)] BudsPlusRed = 263,
+            [AssociatedModel(Models.BudsPlus)] BudsPlusDeepBlue = 264,
+            [AssociatedModel(Models.BudsPlus)] BudsPlusOlympic = 265, // NOTE: Unreleased color
+            [AssociatedModel(Models.BudsPlus)] BudsPlusPurple = 266,
         
-            BudsLiveBlack = 278,
-            BudsLiveWhite = 279,
-            BudsLiveBronze = 280,
-            BudsLiveRed = 281,
-            BudsLiveBlue = 282,
-            BudsLiveThomBrown = 283,
-            BudsLiveGrey = 284,
+            [AssociatedModel(Models.BudsLive)] BudsLiveBlack = 278,
+            [AssociatedModel(Models.BudsLive)] BudsLiveWhite = 279,
+            [AssociatedModel(Models.BudsLive)] BudsLiveBronze = 280,
+            [AssociatedModel(Models.BudsLive)] BudsLiveRed = 281,
+            [AssociatedModel(Models.BudsLive)] BudsLiveBlue = 282,
+            [AssociatedModel(Models.BudsLive)] BudsLiveThomBrown = 283,
+            [AssociatedModel(Models.BudsLive)] BudsLiveGrey = 284,
         
-            BudsProBlack = 298,
-            BudsProSilver = 299,
-            BudsProViolet = 300,
-            BudsProWhite = 301,
+            [AssociatedModel(Models.BudsPro)] BudsProBlack = 298,
+            [AssociatedModel(Models.BudsPro)] BudsProSilver = 299,
+            [AssociatedModel(Models.BudsPro)] BudsProViolet = 300,
+            [AssociatedModel(Models.BudsPro)] BudsProWhite = 301,
         
-            Buds2White = 313,
-            Buds2Black = 314,
-            Buds2Yellow = 315, // NOTE: Unreleased color
-            Buds2Green = 316,
-            Buds2Violet = 317,
-            Buds2ThomBrown = 318,
-            Buds2MaisonKitsune = 319,
-            Buds2AbsoluteBlack = 320,
-            Buds2Grey = 321,
+            [AssociatedModel(Models.Buds2)] Buds2White = 313,
+            [AssociatedModel(Models.Buds2)] Buds2Black = 314,
+            [AssociatedModel(Models.Buds2)] Buds2Yellow = 315, // NOTE: Unreleased color
+            [AssociatedModel(Models.Buds2)] Buds2Green = 316,
+            [AssociatedModel(Models.Buds2)] Buds2Violet = 317,
+            [AssociatedModel(Models.Buds2)] Buds2ThomBrown = 318,
+            [AssociatedModel(Models.Buds2)] Buds2MaisonKitsune = 319,
+            [AssociatedModel(Models.Buds2)] Buds2AbsoluteBlack = 320,
+            [AssociatedModel(Models.Buds2)] Buds2Grey = 321,
+            [AssociatedModel(Models.Buds2)] Buds2Unknown = 14337, // NOTE: Unknown device id mentioned by Samsung's device API
         
-            Buds2ProGrey = 326,
-            Buds2ProWhite = 327,
-            Buds2ProViolet = 328,
+            [AssociatedModel(Models.Buds2Pro)] Buds2ProGrey = 326,
+            [AssociatedModel(Models.Buds2Pro)] Buds2ProWhite = 327,
+            [AssociatedModel(Models.Buds2Pro)] Buds2ProViolet = 328,
         
-            BudsFeGraphite = 330,
-            BudsFeWhite = 331
+            [AssociatedModel(Models.BudsFe)] BudsFeGraphite = 330,
+            [AssociatedModel(Models.BudsFe)] BudsFeWhite = 331,
+            
+            // TODO Add images and find out actual color names
+            [AssociatedModel(Models.Buds3)] Buds3UnknownA = 333,
+            [AssociatedModel(Models.Buds3)] Buds3UnknownB = 334,
+            [AssociatedModel(Models.Buds3Pro)] Buds3ProUnknownA = 340,
+            [AssociatedModel(Models.Buds3Pro)] Buds3ProUnknownB = 341
         }
 
         [CompiledEnum]

@@ -21,7 +21,7 @@ public class Device : ReactiveObject
     [Reactive] public Models Model { set; get; } = Models.NULL;
     [Reactive] public string MacAddress { set; get; } = string.Empty;
     [Reactive] public string Name { set; get; } = string.Empty;
-    [Reactive] public Colors? DeviceColor { set; get; }
+    [Reactive] public DeviceIds? DeviceColor { set; get; }
 }
     
 /*

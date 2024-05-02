@@ -20,7 +20,7 @@ public interface IDeviceSpec
     public int MaximumAmbientVolume { get; }
     public byte StartOfMessage { get; }
     public byte EndOfMessage { get; }
-        
+    
     bool Supports(Features arg) => Supports(arg, null);
     
     public bool Supports(Features feature, int? extendedStatusRevision)
