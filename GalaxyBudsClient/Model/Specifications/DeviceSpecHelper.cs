@@ -50,7 +50,7 @@ public static class DeviceSpecHelper
                         return FindByModel(model);
                     }
                 }
-                else if(device.ServiceUuids.Where(x => x == Uuids.LeAudio).Any(x => x == Uuids.Handsfree))
+                else if(device.ServiceUuids.Any(x => x == Uuids.Handsfree) && device.ServiceUuids.Any(x => x == Uuids.LeAudio))
                 {
                     return FindByModel(Models.Buds2Pro);
                 }
