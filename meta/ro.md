@@ -4,20 +4,27 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>66%</td><td>152 missing string(s)</td></tr>
+<tr><td>64%</td><td>171 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
 
 <table>
 <tr><th>Key</th><th>Original string</th></tr>
+<tr><td><code>both</code></td><td>Both</td></tr>
+<tr><td><code>next</code></td><td>Next</td></tr>
+<tr><td><code>prev</code></td><td>Previous</td></tr>
 <tr><td><code>hint</code></td><td>Hint</td></tr>
 <tr><td><code>important</code></td><td>Important</td></tr>
 <tr><td><code>home</code></td><td>Home</td></tr>
 <tr><td><code>please_wait</code></td><td>Please wait...</td></tr>
-<tr><td><code>value_left_right</code></td><td>Left: {0}
+<tr><td><code>value_left_right_inline</code></td><td>Left: {0}, Right: {1}</td></tr>
+<tr><td><code>value_left_right_multiline</code></td><td>Left: {0}
 Right: {1}</td></tr>
+<tr><td><code>other_x</code></td><td>Other ({0})</td></tr>
 <tr><td><code>no_data_stored</code></td><td>No data stored</td></tr>
+<tr><td><code>not_available</code></td><td>Not available</td></tr>
+<tr><td><code>last_updated_at_n</code></td><td>Last updated at {0}</td></tr>
 <tr><td><code>file_not_found</code></td><td>File not found</td></tr>
 <tr><td><code>darkmode_blur_enabled</code></td><td>On, with blur effect</td></tr>
 <tr><td><code>darkmode_mica_enabled</code></td><td>On, with mica effect</td></tr>
@@ -65,10 +72,22 @@ Right: {1}</td></tr>
 <tr><td><code>cact_function_param</code></td><td>Function</td></tr>
 <tr><td><code>cact_hotkey_param</code></td><td>Hotkey</td></tr>
 <tr><td><code>cact_path_param</code></td><td>File path</td></tr>
+<tr><td><code>system_usage_reports</code></td><td>Usage & metering reports</td></tr>
+<tr><td><code>system_usage_reports_desc</code></td><td>View usage reports provided by the earbuds</td></tr>
+<tr><td><code>system_battery_statistics</code></td><td>Battery statistics</td></tr>
+<tr><td><code>system_battery_statistics_desc</code></td><td>Collect & view battery usage statistics</td></tr>
 <tr><td><code>system_no_response</code></td><td>No response from earbuds</td></tr>
 <tr><td><code>system_cradle_swver</code></td><td>Case software version</td></tr>
 <tr><td><code>system_cradle_serial</code></td><td>Case serial number</td></tr>
 <tr><td><code>system_sku</code></td><td>Device SKUs</td></tr>
+<tr><td><code>usage_reports_header</code></td><td>Usage reports</td></tr>
+<tr><td><code>usage_reports_hint</code></td><td>These reports are collected by the earbuds themselves. The data is displayed as-is and may be inaccurate. The official Wearable app usually resets most counters periodically and then sends the collected data to Samsung unless you haven't consented to data collection in their app. Some counters, such as charging cycles, are not reset.</td></tr>
+<tr><td><code>usage_reports_usage</code></td><td>Usage report</td></tr>
+<tr><td><code>usage_reports_metering</code></td><td>Metering report</td></tr>
+<tr><td><code>milliamp_hours_unit</code></td><td>{0}mAh</td></tr>
+<tr><td><code>metering_total_batt_capacity</code></td><td>Total battery capacity</td></tr>
+<tr><td><code>metering_a2dp_time</code></td><td>Music playback usage time (A2DP)</td></tr>
+<tr><td><code>metering_esco_time</code></td><td>Call usage time (eSCO)</td></tr>
 <tr><td><code>settings_appearance</code></td><td>Appearance</td></tr>
 <tr><td><code>settings_blurstrength</code></td><td>Window blur strength</td></tr>
 <tr><td><code>settings_blurstrength_description</code></td><td>Only compatible with dark mode. Not supported on all systems</td></tr>
