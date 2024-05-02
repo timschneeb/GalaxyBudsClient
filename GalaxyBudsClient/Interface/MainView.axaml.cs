@@ -51,7 +51,8 @@ public partial class MainView : UserControl
         new HotkeyPageViewModel(),
         new SystemInfoPageViewModel(),
         new RenamePageViewModel(),
-        new FmmConfigPageViewModel()
+        new FmmConfigPageViewModel(),
+        new UsageReportPageViewModel()
     ];
 
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)

@@ -211,21 +211,23 @@ public partial class DevTools : StyledWindow.StyledWindow
                 BluetoothImpl.Instance.ProcessDataBlock(content.ToList(), result.Model);
             });
         }
-        
-        try
+        else
         {
-            ViewModel.MsgTableDataSource.AddRange(
-                SppMessage.DecodeRawChunk([..content], result.Model, ViewModel.UseAlternativeProtocol)
-                    .Select(m => new MessageViewHolder(m)));
-            ViewModel.MsgTableDataView.Refresh();
-        }
-        catch (InvalidPacketException ex)
-        {
-            _ = new MessageBox
+            try
             {
-                Title = "Error while decoding message", 
-                Description = $"Error code: {ex.ErrorCode}\n\n{ex.Message}"
-            }.ShowAsync(this);
+                ViewModel.MsgTableDataSource.AddRange(
+                    SppMessage.DecodeRawChunk([..content], result.Model, ViewModel.UseAlternativeProtocol)
+                        .Select(m => new MessageViewHolder(m)));
+                ViewModel.MsgTableDataView.Refresh();
+            }
+            catch (InvalidPacketException ex)
+            {
+                _ = new MessageBox
+                {
+                    Title = "Error while decoding message",
+                    Description = $"Error code: {ex.ErrorCode}\n\n{ex.Message}"
+                }.ShowAsync(this);
+            }
         }
     }
 

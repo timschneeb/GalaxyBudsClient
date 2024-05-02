@@ -70,6 +70,10 @@
           <DependentUpon>FmmPage.axaml</DependentUpon>
           <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Interface\Pages\UsageReportPage.axaml.cs">
+          <DependentUpon>UsageReportPage.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
     
     <!-- Dependencies -->

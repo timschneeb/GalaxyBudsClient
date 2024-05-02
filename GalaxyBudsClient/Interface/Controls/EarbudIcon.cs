@@ -29,6 +29,12 @@ public class EarbudIcon : Image
         BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
         BluetoothImpl.Instance.Connected += OnConnected;
         Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
+        Settings.DevicePropertyChanged += OnDevicePropertyChanged;
+        UpdateEarbudIcons();
+    }
+
+    private void OnDevicePropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
         UpdateEarbudIcons();
     }
 
@@ -100,5 +106,6 @@ public class EarbudIcon : Image
         var isOnline = (Side == Devices.L && e.BatteryL > 0 && e.PlacementL != PlacementStates.Disconnected) ||
                        (Side == Devices.R && e.BatteryR > 0 && e.PlacementR != PlacementStates.Disconnected);
         Opacity = connected && isOnline ? 1 : 0.4;
+        UpdateEarbudIcons();
     }
 }

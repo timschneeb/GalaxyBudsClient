@@ -1,0 +1,61 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
+             xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
+             xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+             xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+             xmlns:viewModels="clr-namespace:GalaxyBudsClient.Interface.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800"
+             x:Class="GalaxyBudsClient.Interface.Pages.UsageReportPage"
+             x:DataType="pages:UsageReportPageViewModel"
+             x:CompileBindings="True">
+
+    <Design.DataContext>
+        <pages:UsageReportPageViewModel />
+    </Design.DataContext>
+
+    <UserControl.DataTemplates>
+        <DataTemplate x:DataType="viewModels:ItemViewHolder">
+            <controls:SettingsSymbolItem Content="{Binding Name}"
+                                         Description="{Binding Description}" />
+        </DataTemplate>
+    </UserControl.DataTemplates>
+    
+    <ScrollViewer>
+        <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
+            <Interaction.Behaviors>
+                <ext:RequiresConnectedDeviceBehavior />
+            </Interaction.Behaviors>
+            
+            <controls:CustomInfoBar Title="{ext:Translate {x:Static i18N:Keys.Hint}}"
+                                    Message="{ext:Translate {x:Static i18N:Keys.UsageReportsHint}}"
+                                    IsClosable="True"
+                                    IsOpen="{Binding !IsUsageReportHintHidden, Source={x:Static config:Settings.Data}}"
+                                    Severity="Informational"
+                                    Closed="OnHintClosed" />
+            
+            <ui:SettingsExpander Header="{ext:Translate {x:Static i18N:Keys.UsageReportsMetering}}" 
+                                 Description="{Binding MeteringDescription}"
+                                 ItemsSource="{Binding MeteringItems}"
+                                 IsExpanded="True">
+                <ui:SettingsExpander.IconSource>
+                    <ic:SymbolIconSource Symbol="Gauge" />
+                </ui:SettingsExpander.IconSource>
+            </ui:SettingsExpander>
+            
+            <ui:SettingsExpander Header="{ext:Translate {x:Static i18N:Keys.UsageReportsUsage}}" 
+                                 Description="{Binding UsageDescription}"
+                                 ItemsSource="{Binding UsageItems}"
+                                 IsExpanded="True">
+                <ui:SettingsExpander.IconSource>
+                    <ic:SymbolIconSource Symbol="Timer" />
+                </ui:SettingsExpander.IconSource>
+            </ui:SettingsExpander>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

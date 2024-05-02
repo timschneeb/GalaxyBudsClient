@@ -9,6 +9,7 @@
     <sys:String x:Key="okay">Okay</sys:String>
     <sys:String x:Key="left">Left</sys:String>
     <sys:String x:Key="right">Right</sys:String>
+    <sys:String x:Key="both">Both</sys:String>
     <sys:String x:Key="case">Case</sys:String>
     <sys:String x:Key="error">Error</sys:String>
     <sys:String x:Key="cancel">Cancel</sys:String>
@@ -17,14 +18,19 @@
     <sys:String x:Key="notset">Not set</sys:String>
     <sys:String x:Key="unknown">Unknown</sys:String>
     <sys:String x:Key="back">Back</sys:String>
+    <sys:String x:Key="next">Next</sys:String>
+    <sys:String x:Key="prev">Previous</sys:String>
     <sys:String x:Key="hint">Hint</sys:String>
     <sys:String x:Key="important">Important</sys:String>
     <sys:String x:Key="home">Home</sys:String>
     <sys:String x:Key="please_wait">Please wait...</sys:String>
-    <sys:String x:Key="value_left_right">Left: {0}
+    <sys:String x:Key="value_left_right_inline">Left: {0}, Right: {1}</sys:String>
+    <sys:String x:Key="value_left_right_multiline">Left: {0}
 Right: {1}</sys:String>
+    <sys:String x:Key="other_x">Other ({0})</sys:String>    
     <sys:String x:Key="no_data_stored">No data stored</sys:String>
-
+    <sys:String x:Key="not_available">Not available</sys:String>
+    <sys:String x:Key="last_updated_at_n">Last updated at {0}</sys:String>
     <sys:String x:Key="file_not_found">File not found</sys:String>
     <sys:String x:Key="nobluetoothdev">No Bluetooth adapter found. Please enable Bluetooth and try again.</sys:String>
 
@@ -243,6 +249,10 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="system_flasher_desc">Upgrade, downgrade, or flash custom firmware binaries</sys:String>
     <sys:String x:Key="system_spatial">Spatial sensor test</sys:String>
     <sys:String x:Key="system_spatial_desc">Read spatial head-tracking data used for 3D audio</sys:String>
+    <sys:String x:Key="system_usage_reports">Usage &amp; metering reports</sys:String>
+    <sys:String x:Key="system_usage_reports_desc">View usage reports provided by the earbuds</sys:String>
+    <sys:String x:Key="system_battery_statistics">Battery statistics</sys:String>
+    <sys:String x:Key="system_battery_statistics_desc">Collect &amp; view battery usage statistics</sys:String>
 
     <sys:String x:Key="system_battery_type_unknown">Not specified</sys:String>
     <sys:String x:Key="system_waiting_for_device">Waiting for response...</sys:String>
@@ -290,6 +300,16 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="coredump_dl_save_success_title">Successfully saved dumps</sys:String>
     <sys:String x:Key="coredump_dl_save_success">{0} dump(s) were written to '{1}'</sys:String>
     <sys:String x:Key="coredump_dl_save_dialog_title">Select a download directory...</sys:String>
+
+    <!-- Usage-/metering reports -->
+    <sys:String x:Key="usage_reports_header">Usage reports</sys:String>
+    <sys:String x:Key="usage_reports_hint">These reports are collected by the earbuds themselves. The data is displayed as-is and may be inaccurate. The official Wearable app usually resets most counters periodically and then sends the collected data to Samsung unless you haven't consented to data collection in their app. Some counters, such as charging cycles, are not reset.</sys:String>
+    <sys:String x:Key="usage_reports_usage">Usage report</sys:String>
+    <sys:String x:Key="usage_reports_metering">Metering report</sys:String>
+    <sys:String x:Key="milliamp_hours_unit">{0}mAh</sys:String>
+    <sys:String x:Key="metering_total_batt_capacity">Total battery capacity</sys:String>
+    <sys:String x:Key="metering_a2dp_time">Music playback usage time (A2DP)</sys:String>
+    <sys:String x:Key="metering_esco_time">Call usage time (eSCO)</sys:String>
 
     <!--Settings-->
     <sys:String x:Key="settings_header">Settings</sys:String>
@@ -373,7 +393,6 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="smart_things_find_write_fail">The earbuds rejected the new SmartThings Find configuration data.</sys:String>
     <sys:String x:Key="smart_things_find_write_ok">Configuration overwritten</sys:String>
     <sys:String x:Key="smart_things_find_write_ok_desc">The SmartThings Find configuration data has been removed.</sys:String>
-    
 
     <!-- Fit test-->
     <sys:String x:Key="gft_warning">Please wear both earbuds.</sys:String>

@@ -36,7 +36,8 @@ public class BudsProDeviceSpec : IDeviceSpec
         { Features.AmbientSoundVolume, null },
         { Features.NoiseControlsWithOneEarbud, new FeatureRule(8) },
         { Features.DeviceColor, null },
-        { Features.SmartThingsFind, null }
+        { Features.SmartThingsFind, null },
+        { Features.UsageReport, null }
     };
         
     public Models Device => Models.BudsPro;

@@ -27,6 +27,9 @@ public class SppMessageReceiver
 
     public event EventHandler<BaseMessageDecoder>? AnyMessageDecoded;
     public event EventHandler<AcknowledgementDecoder>? AcknowledgementResponse;
+    public event EventHandler<MeteringReportDecoder>? MeteringReportResponse;
+    public event EventHandler<UsageReportDecoder>? UsageReportResponse;
+    public event EventHandler<Usage2ReportDecoder>? Usage2ReportResponse;
     public event EventHandler<GetFmmConfigDecoder>? GetFmmConfigResponse;
     public event EventHandler<byte>? SetFmmConfigResponse;
     public event EventHandler<int>? ResetResponse;
@@ -84,6 +87,15 @@ public class SppMessageReceiver
             case SetFmmConfigDecoder p:
                 SetFmmConfigResponse?.Invoke(this, p.Response);
                 break;
+            case UsageReportDecoder p:
+                UsageReportResponse?.Invoke(this, p);
+                break;
+            case Usage2ReportDecoder p:
+                Usage2ReportResponse?.Invoke(this, p);
+                break;
+            case MeteringReportDecoder p:
+                MeteringReportResponse?.Invoke(this, p);
+                break;
             case ResetResponseDecoder p:
                 ResetResponse?.Invoke(this, p.ResultCode);
                 break;
@@ -109,7 +121,7 @@ public class SppMessageReceiver
                 var device = BluetoothImpl.Instance.Device.Current;
                 if (device != null) 
                     device.DeviceColor = p.DeviceColor;
-                
+
                 BaseUpdate?.Invoke(this, p);
                 ExtendedStatusUpdate?.Invoke(this, p);
                 break;

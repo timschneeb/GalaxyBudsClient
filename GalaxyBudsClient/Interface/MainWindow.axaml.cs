@@ -29,11 +29,6 @@ using Environment = System.Environment;
 
 namespace GalaxyBudsClient.Interface;
 
-/**
- * TODO
- * - Add UI for usage & metering reports?
- * - Record & analyze battery data over time and display as plot?
- */
 public partial class MainWindow : StyledAppWindow
 {
     private BudsPopup? _popup;

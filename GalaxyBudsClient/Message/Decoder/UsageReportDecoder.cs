@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Utils;
@@ -95,7 +96,7 @@ public class UsageReportDecoder : BaseMessageDecoder
     };
     
     public Dictionary<string, long>? Statistics { get; }
-
+    
     public UsageReportDecoder(SppMessage msg) : base(msg)
     {
         if (Statistics == null)
@@ -123,11 +124,113 @@ public class UsageReportDecoder : BaseMessageDecoder
             Array.Copy(msg.Payload, i + lengthKey, rawValue, 0, lengthValue);
 
             var key = Encoding.ASCII.GetString(rawKey.RTrimBytes());
-            long value = BitConverter.ToInt32(rawValue, 0);
+            long value = BitConverter.ToUInt32(rawValue, 0);
             Statistics.Add(key, value);
         }
     }
+    
+    public List<Usage2ReportDecoder.LoggingItem> ToLoggingItems()
+    {
+        var loggingItems = new List<Usage2ReportDecoder.LoggingItem>();
+        if (Statistics == null)
+            return loggingItems;
+        
+        var eventDict = new Dictionary<string, (string id, char? detailChar)>()
+        {
+            { "A2DD", ("9009", null) },
+            { "A2DC", ("9010", null) },
+            { "LOWB", ("9013", null) },
+            { "LOWB0", ("9013", null) },
+            { "LOWB1", ("9013", null) },
+            { "LOWB2", ("9013", null) },
+            { "LOWB3", ("9013", null) },
+            { "DISC", ("9014", null) },
+            { "CHAR", ("9015", null) },
+            { "EAST", ("9016", null) },
+            { "LRLP", ("9006", null) },
+            { "MDSW", ("9022", null) },
+            { "DCIC", ("9023", null) },
+            { "DCDC", ("9024", null) },
+            { "CWFD", ("9025", null) },
+            { "ANCD", ("9019", null) },
+            { "ABDA", ("EB0007", 'a') },
+            { "ABDB", ("EB0007", 'b') },
+            { "ABDC", ("EB0007", 'c') },
+            { "ANSC", ("9002", 'b') },
+            { "ENDC", ("9002", 'c') },
+            { "FBDA", ("EB0001", 'a') },
+            { "FBDB", ("EB0001", 'b') },
+            { "FBDC", ("EB0001", 'c') },
+            { "FLDA", ("EB0002", 'a') },
+            { "FLDB", ("EB0002", 'b') },
+            { "FLDC", ("EB0002", 'c') },
+            { "FRDA", ("EB0003", 'a') },
+            { "FRDB", ("EB0003", 'b') },
+            { "FRDC", ("EB0003", 'c') },
+            { "NBDA", ("EB0004", 'a') },
+            { "NBDB", ("EB0004", 'b') },
+            { "NBDC", ("EB0004", 'c') },
+            { "NEXT", ("9002", 'a') },
+            { "PAUS", ("9001", 'b') },
+            { "PLAY", ("9001", 'a') },
+            { "PREV", ("9003", null) },
+            { "WALD", ("9011", 'c') },
+            { "WLOD", ("9011", 'a') },
+            { "WROD", ("9011", 'b') },
+            { "TAHL0", ("9004", 'a') },
+            { "TAHL1", ("9004", 'b') },
+            { "TAHL2", ("9004", 'c') },
+            { "TAHL3", ("9004", 'd') },
+            { "TAHL4", ("9004", 'e') },
+            { "TAHL5", ("9004", 'f') },
+            { "TAHL6", ("9004", 'g') },
+            { "TAHL7", ("9004", 'h') },
+            { "TAHL8", ("9004", 'i') },
+            { "TAHR0", ("9005", 'a') },
+            { "TAHR1", ("9005", 'b') },
+            { "TAHR2", ("9005", 'c') },
+            { "TAHR3", ("9005", 'd') },
+            { "TAHR4", ("9005", 'e') },
+            { "TAHR5", ("9005", 'f') },
+            { "TAHR6", ("9005", 'g') },
+            { "TAHR7", ("9005", 'h') },
+            { "TAHR8", ("9005", 'i') }
+        };
 
+        var statusDict = new Dictionary<string, string>()
+        {
+            { "BSCL", "9033" },
+            { "BSCR", "9032" },
+            { "PSCL", "EB0010" },
+            { "PSCR", "EB0011" },
+            { "PSTL", "EB0016" },
+            { "PSTR", "EB0017" },
+            { "WDCL", "EB0012" },
+            { "WDCR", "EB0013" },
+            { "WDTL", "EB0018" },
+            { "WDTR", "EB0019" },
+            { "WLCL", "EB0008" },
+            { "WLCR", "EB0009" },
+            { "WLTL", "EB0014" },
+            { "WLTR", "EB0015" }
+        };
+
+        
+        foreach (var (key, value) in Statistics)
+        {
+            if (eventDict.TryGetValue(key, out var eventValue))
+            {
+                loggingItems.AddLogOrUpdateDetail(eventValue.id, Usage2ReportDecoder.LoggingType.Event, eventValue.detailChar, value);
+            }
+            else if (statusDict.TryGetValue(key, out var statusValue))
+            {
+                loggingItems.AddLogOrUpdateDetail(statusValue, Usage2ReportDecoder.LoggingType.Status, null, value);
+            }
+        }
+
+        return loggingItems;
+    }
+    
     public override Dictionary<string, string> ToStringMap()
     {
         Dictionary<string, string> map = new();
@@ -140,5 +243,29 @@ public class UsageReportDecoder : BaseMessageDecoder
             map.Add(readableKey, statistic.Value.ToString());
         }
         return map;
+    }
+}
+
+file static class Extensions
+{
+    public static void AddLogOrUpdateDetail(this ICollection<Usage2ReportDecoder.LoggingItem> loggingItems, string id, Usage2ReportDecoder.LoggingType type, char? detail, long value)
+    {
+        var item = loggingItems.FirstOrDefault(x => x.Id == id);
+        if (item == null)
+        {
+            item = new Usage2ReportDecoder.LoggingItem
+            {
+                Id = id,
+                Type = type,
+                ValueItems = []
+            };
+            loggingItems.Add(item);
+        }
+
+        item.ValueItems.Add(new Usage2ReportDecoder.ValueItem
+        {
+            Detail = detail ?? '\0',
+            Value = value
+        });
     }
 }

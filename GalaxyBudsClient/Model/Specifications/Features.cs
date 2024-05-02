@@ -45,5 +45,6 @@ public enum Features
     SppLegacyMessageHeader,
     DeviceColor,
     Rename,
-    SmartThingsFind
+    SmartThingsFind,
+    UsageReport
 }

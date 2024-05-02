@@ -20,7 +20,7 @@
             <Interaction.Behaviors>
                 <ext:RequiresConnectedDeviceBehavior />
             </Interaction.Behaviors>
-            
+
             <controls:SettingsGroup>
                 <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SystemSelftest}}"
                                              Description="{ext:Translate {x:Static i18N:Keys.SystemSelftestDesc}}"
@@ -65,6 +65,29 @@
                 </controls:SettingsSymbolItem>
 
             </controls:SettingsGroup>
+
+            <controls:SettingsGroup>
+                <controls:SettingsSymbolItem Name="UsageReport"
+                                             Content="{ext:Translate {x:Static i18N:Keys.SystemUsageReports}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.SystemUsageReportsDesc}}"
+                                             Symbol="DataUsage"
+                                             ActionSymbol="ChevronRight"
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="UsageReport" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSymbolItem>
+
+                <!-- TODO Add battery statistics -->  
+                <controls:SettingsSymbolItem Name="BatteryStatistic"
+                                             Content="{ext:Translate {x:Static i18N:Keys.SystemBatteryStatistics}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.SystemBatteryStatisticsDesc}}"
+                                             Symbol="DataTrending"
+                                             ActionSymbol="ChevronRight"
+                                             IsClickEnabled="True" />-->
+
+            </controls:SettingsGroup>
+
             <controls:SettingsGroup>
 
                 <controls:SettingsSymbolItem Name="Firmware"

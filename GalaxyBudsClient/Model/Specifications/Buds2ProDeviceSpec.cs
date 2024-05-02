@@ -41,7 +41,8 @@ public class Buds2ProDeviceSpec : IDeviceSpec
         { Features.CradleSerialNumber, null },
         { Features.DeviceColor, null },
         { Features.Rename, null },
-        { Features.SmartThingsFind, null }
+        { Features.SmartThingsFind, null },
+        { Features.UsageReport, null }
     };
         
     public Models Device => Models.Buds2Pro;

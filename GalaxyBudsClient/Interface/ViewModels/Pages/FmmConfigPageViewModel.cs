@@ -57,7 +57,7 @@ public class FmmConfigPageViewModel : SubPageViewModelBase
         var rightFormatted = string.IsNullOrEmpty(right) ?
             DeviceMessageCache.Instance.BasicStatusUpdate?.PlacementR == PlacementStates.Disconnected ? 
                 Strings.PlacementDisconnected : Strings.NoDataStored : right;
-        return string.Format(Strings.ValueLeftRight, leftFormatted, rightFormatted);
+        return string.Format(Strings.ValueLeftRightMultiline, leftFormatted, rightFormatted);
     }
 
     public async void DoDataClear()

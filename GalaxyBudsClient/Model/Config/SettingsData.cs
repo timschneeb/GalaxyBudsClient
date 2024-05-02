@@ -72,4 +72,5 @@ public class SettingsData : ReactiveObject
     [Reactive] public bool FirmwareWarningAccepted { set; get; }
     [Reactive] public Event BixbyRemapEvent { set; get; }
     [Reactive] public bool ResumePlaybackOnSensor { set; get; }
+    [Reactive] public bool IsUsageReportHintHidden { set; get; }
 }
