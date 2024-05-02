@@ -11,7 +11,7 @@ public class BudsLiveDeviceSpec : IDeviceSpec
     public Dictionary<Features, FeatureRule?> Rules => new()
     {
         { Features.SeamlessConnection, new FeatureRule(3)  },
-        { Features.AmbientPassthrough, null },
+        { Features.AmbientPassthrough, new FeatureRule(5) },
         { Features.Anc, null },
         { Features.GamingMode, null },
         { Features.CaseBattery, null },
@@ -27,7 +27,7 @@ public class BudsLiveDeviceSpec : IDeviceSpec
         { Features.PairingMode, null },
         { Features.AmbientSoundVolume, null },
         { Features.DeviceColor, null },
-        { Features.SmartThingsFind, null },
+        { Features.SmartThingsFind, new FeatureRule(4) },
         { Features.UsageReport, null }
     };
         
