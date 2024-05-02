@@ -21,7 +21,8 @@ public static class DeviceSpecHelper
         Specs.Add(new Buds2ProDeviceSpec()); // important: B2Pro is added before B2 to avoid false positives
         Specs.Add(new Buds2DeviceSpec());
         Specs.Add(new BudsFeDeviceSpec());
-        // TODO add Buds3/Pro
+        Specs.Add(new Buds3ProDeviceSpec()); // important: B3Pro is added before B3 to avoid false positives
+        Specs.Add(new Buds3DeviceSpec());
     }
     
     public static IDeviceSpec? FindByDevice(BluetoothDevice device)
@@ -64,11 +65,6 @@ public static class DeviceSpecHelper
         
         // Fallback: use the device name
         return Specs.FirstOrDefault(spec => device.Name.Contains(spec.DeviceBaseName));
-    }
-        
-    public static IDeviceSpec? FindByDeviceName(string deviceName)
-    {
-        return Specs.FirstOrDefault(spec => deviceName.Contains(spec.DeviceBaseName));
     }
         
     public static IDeviceSpec? FindByModel(Models model)
