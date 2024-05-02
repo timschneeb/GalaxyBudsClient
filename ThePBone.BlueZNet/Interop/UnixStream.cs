@@ -31,17 +31,17 @@ namespace ThePBone.BlueZNet.Interop
 
         public override bool CanWrite => true;
 
-        public override long Length => throw new NotImplementedException ("Seeking is not implemented");
+        public override long Length => throw new NotSupportedException ("Seeking is not implemented");
 
         public override long Position
         {
-            get => throw new NotImplementedException ("Seeking is not implemented");
-            set => throw new NotImplementedException ("Seeking is not implemented");
+            get => throw new NotSupportedException ("Seeking is not implemented");
+            set => throw new NotSupportedException ("Seeking is not implemented");
         }
 
-        public override long Seek (long offset, SeekOrigin origin) => throw new NotImplementedException ("Seeking is not implemented");
+        public override long Seek (long offset, SeekOrigin origin) => throw new NotSupportedException ("Seeking is not implemented");
 
-        public override void SetLength (long value) => throw new NotImplementedException ("Not implemented");
+        public override void SetLength (long value) => throw new NotSupportedException ("Not implemented");
 
         public override void Flush (){ }
 
