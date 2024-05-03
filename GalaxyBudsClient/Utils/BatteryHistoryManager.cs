@@ -31,6 +31,8 @@ public class BatteryHistoryManager
         BluetoothImpl.Instance.Device.DeviceChanged += OnDeviceChanged;
         BluetoothImpl.Instance.PropertyChanged += OnBluetoothPropertyChanged;
         
+        Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
+        
         SppMessageReceiver.Instance.StatusUpdate += async (_, _) => await CollectNow();
         MainWindow.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()!
             .PropertyChanged += async (_, _) => await CollectNow();
@@ -42,6 +44,16 @@ public class BatteryHistoryManager
         
         _currentMac = BluetoothImpl.Instance.Device.Current?.MacAddress;
         _ = CollectNow(insertNullFrame: true);
+    }
+
+    private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(Settings.Data.CollectBatteryHistory) &&
+            Settings.Data.CollectBatteryHistory == false)
+        {
+            Log.Debug("Battery history disabled. Deleting all databases.");
+            DeleteAllDatabases();
+        }
     }
 
     private async void OnDeviceChanged(object? sender, Device? e)

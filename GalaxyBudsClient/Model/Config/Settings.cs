@@ -35,7 +35,6 @@ public static class Settings
         Data.CustomActionRight.PropertyChanged += OnTouchActionPropertyChanged;
     }
     
-
     private static void OnTouchActionPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         Save();

@@ -12,7 +12,7 @@ public class StyledAppWindow : AppWindow, IStyledWindow
 {
     protected StyledAppWindow()
     {
-        Settings.Data.PropertyChanged += OnMainSettingsPropertyChanged;
+        Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
     }
 
     public IReadOnlyList<WindowTransparencyLevel> DefaultTransparencyLevelHint =>
