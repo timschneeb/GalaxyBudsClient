@@ -280,6 +280,7 @@ namespace GalaxyBudsClient.Model
             Idle = 2,
             [LocalizableDescription(Keys.PlacementInCase)]
             Case = 3,
+            [LocalizableDescription(Keys.PlacementDisconnected)]
             ClosedCase = 4,
             
             // Custom states
