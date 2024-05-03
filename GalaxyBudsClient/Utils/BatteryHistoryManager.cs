@@ -2,10 +2,10 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
+using Avalonia;
+using Avalonia.Controls.ApplicationLifetimes;
 using GalaxyBudsClient.Interface;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Message;
@@ -24,7 +24,7 @@ public class BatteryHistoryManager
     private string? _currentMac;
     private HistoryRecord? _lastRecord;
     
-    private const int RetainDays = 7;
+    private const int RetainDays = 30;
     
     private BatteryHistoryManager()
     {
@@ -35,13 +35,20 @@ public class BatteryHistoryManager
         MainWindow.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()!
             .PropertyChanged += async (_, _) => await CollectNow();
 
+        if(Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime lifetime)
+        {
+            lifetime.Exit += (_, _) => _ = CollectNow(insertNullFrame: true);
+        }
+        
         _currentMac = BluetoothImpl.Instance.Device.Current?.MacAddress;
+        _ = CollectNow(insertNullFrame: true);
     }
 
-    private void OnDeviceChanged(object? sender, Device? e)
+    private async void OnDeviceChanged(object? sender, Device? e)
     {
         _currentMac = BluetoothImpl.Instance.Device.Current?.MacAddress;
         _lastRecord = null;
+        await CollectNow(insertNullFrame: true);
     }
     
     private async void OnBluetoothPropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -74,7 +81,7 @@ public class BatteryHistoryManager
     
     private async Task CleanupNow()
     {
-        if (_currentMac == null)
+        if (_currentMac == null || !Settings.Data.CollectBatteryHistory)
             return;
         
         if (_lock.WaitOne(500))
@@ -96,7 +103,7 @@ public class BatteryHistoryManager
         }
     }
     
-    private async Task CollectNow()
+    private async Task CollectNow(bool insertNullFrame = false)
     {
         if (_currentMac == null || !Settings.Data.CollectBatteryHistory)
         {
@@ -104,8 +111,8 @@ public class BatteryHistoryManager
             return;
         };
         
-        var status = BluetoothImpl.Instance.IsConnected ? DeviceMessageCache.Instance.StatusUpdate : null;
-        var noiseControlVm = BluetoothImpl.Instance.IsConnected ?  MainWindow.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>() : null;
+        var status = !insertNullFrame && BluetoothImpl.Instance.IsConnected ? DeviceMessageCache.Instance.StatusUpdate : null;
+        var noiseControlVm = !insertNullFrame && BluetoothImpl.Instance.IsConnected ? MainWindow.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>() : null;
         var record = new HistoryRecord
         {
             PlacementL = status?.PlacementL ?? PlacementStates.Disconnected,
