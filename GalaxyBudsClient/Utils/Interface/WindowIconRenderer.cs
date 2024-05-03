@@ -18,6 +18,8 @@ namespace GalaxyBudsClient.Utils.Interface;
 
 public static class WindowIconRenderer
 {
+    private static readonly WindowIcon DefaultIcon = MakeDefaultIcon();
+    
     public static void UpdateDynamicIcon(IBasicStatusUpdate status)
     {
         var trayIcons = TrayIcon.GetIcons(Application.Current!);
@@ -54,7 +56,7 @@ public static class WindowIconRenderer
             if (trayIcons == null)
                 return;
 
-            trayIcons[0].Icon = MakeDefaultIcon();
+            trayIcons[0].Icon = DefaultIcon;
         });
     }
 
@@ -91,7 +93,7 @@ public static class WindowIconRenderer
         return new WindowIcon(render);
     }
 
-    public static WindowIcon MakeDefaultIcon()
+    private static WindowIcon MakeDefaultIcon()
     {
         return new WindowIcon(MakeDefaultBitmap());
     }
