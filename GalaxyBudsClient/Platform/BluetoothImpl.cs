@@ -14,6 +14,7 @@ using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Scripting;
+using GalaxyBudsClient.Utils;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using Serilog;
@@ -442,6 +443,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         DeviceMessageCache.Instance.Clear();
         
         Device.Current = Settings.Data.Devices.FirstOrDefault();
+        BatteryHistoryManager.Instance.DeleteDatabaseForDevice(toRemove);
     }
     
     private void OnDisconnected(object? sender, string reason)

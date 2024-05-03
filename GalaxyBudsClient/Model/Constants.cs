@@ -207,9 +207,9 @@ namespace GalaxyBudsClient.Model
             Buds2Pro = 6,
             [ModelMetadata(Name = "Galaxy Buds FE", FwPattern = "SM-R400N", BuildPrefix = "R400N")]
             BudsFe = 7,
-            [ModelMetadata(Name = "Galaxy Buds3", FwPattern = "SM-R530", BuildPrefix = "R530")]
+            // TODO uncomment when ready [ModelMetadata(Name = "Galaxy Buds3", FwPattern = "SM-R530", BuildPrefix = "R530")]
             Buds3 = 8,
-            [ModelMetadata(Name = "Galaxy Buds3 Pro", FwPattern = "SM-R630", BuildPrefix = "R630")]
+            // TODO uncomment when ready [ModelMetadata(Name = "Galaxy Buds3 Pro", FwPattern = "SM-R630", BuildPrefix = "R630")]
             Buds3Pro = 9
         }
 

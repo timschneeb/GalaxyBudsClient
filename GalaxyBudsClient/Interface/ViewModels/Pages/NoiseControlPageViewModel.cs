@@ -139,6 +139,12 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
         }
     }
 
+    public NoiseControlModes NoiseControlMode => IsAmbientSoundEnabled
+        ? NoiseControlModes.AmbientSound
+        : IsAncEnabled
+            ? NoiseControlModes.NoiseReduction
+            : NoiseControlModes.Off;
+    
     private void SetNoiseControlMode(NoiseControlModes mode)
     {
         switch (mode)

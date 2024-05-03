@@ -18,6 +18,7 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Scripting.Experiment;
+using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface;
 using Serilog;
 using Application = Avalonia.Application;
@@ -66,6 +67,7 @@ public class App : Application
         TrayManager.Init();
         MediaKeyRemote.Init();
         DeviceMessageCache.Init();
+        BatteryHistoryManager.Init();
         ExperimentManager.Init();
         ScriptManager.Instance.RegisterUserHooks();
         

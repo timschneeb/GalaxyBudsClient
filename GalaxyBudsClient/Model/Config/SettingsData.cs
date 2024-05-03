@@ -68,6 +68,9 @@ public class SettingsData : ReactiveObject
     /* Developer */
     [Reactive] public bool OpenDevToolsOnStartup { set; get; }
     
+    /* Battery stats */
+    [Reactive] public bool CollectBatteryHistory { set; get; } = true;
+
     /* Other */
     [Reactive] public bool FirmwareWarningAccepted { set; get; }
     [Reactive] public Event BixbyRemapEvent { set; get; }
