@@ -83,6 +83,7 @@ public class BatteryHistoryManager
             
             await using var db = new HistoryDbContext(GetPathForMac(_currentMac));
             await db.Database.MigrateAsync();
+            db.ExecutePragmas();
             
             var cutOffDate = DateTime.Now - TimeSpan.FromDays(RetainDays);
             foreach (var record in db.Records.Where(record => record.Timestamp <= cutOffDate))
@@ -127,6 +128,7 @@ public class BatteryHistoryManager
         {
             await using var db = new HistoryDbContext(GetPathForMac(_currentMac));
             await db.Database.MigrateAsync();
+            db.ExecutePragmas();
             
             _lastRecord = record;
             db.Records.Add(record);
