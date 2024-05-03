@@ -27,6 +27,9 @@ public static class AsyncErrorHandler
     // Called by AsyncErrorHandler.Fody using IL weaving
     public static void HandleException(Exception exception)
     {
+#if !DEBUG
+        SentrySdk.CaptureException(exception);
+#endif
         Log.Error(exception, "Unhandled exception in async task");
     }
 }
@@ -46,9 +49,12 @@ internal static class Program
 #if Windows
         ThePBone.Interop.Win32.WindowsUtils.AttachConsole();
 #endif
+
+        var logPath = PlatformUtils.CombineDataPath("application.log");
+        var prevLogPath = PlatformUtils.CombineDataPath("application.log");
         
         var config = new LoggerConfiguration()
-            .WriteTo.File(PlatformUtils.CombineDataPath("application.log"))
+            .WriteTo.File(logPath)
             .WriteTo.Console();
 
         config = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("VERBOSE")) ?
@@ -75,6 +81,10 @@ internal static class Program
         
         if (!Directory.Exists(PlatformUtils.AppDataPath))
             Directory.CreateDirectory(PlatformUtils.AppDataPath);
+        
+        // Rotate logs on startup
+        if (File.Exists(logPath))
+            File.Move(logPath, prevLogPath, true);
         
         Log.Logger = config.CreateLogger();
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
