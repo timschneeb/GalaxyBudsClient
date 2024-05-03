@@ -15,7 +15,6 @@ using GalaxyBudsClient.Model.Database;
 using GalaxyBudsClient.Platform;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using Timer = System.Timers.Timer;
 
 namespace GalaxyBudsClient.Utils;
 
@@ -85,8 +84,8 @@ public class BatteryHistoryManager
             await using var db = new HistoryDbContext(GetPathForMac(_currentMac));
             await db.Database.MigrateAsync();
             
-            var now = DateTime.Now;
-            foreach (var record in db.Records.Where(record => now - record.Timestamp > TimeSpan.FromDays(RetainDays)))
+            var cutOffDate = DateTime.Now - TimeSpan.FromDays(RetainDays);
+            foreach (var record in db.Records.Where(record => record.Timestamp <= cutOffDate))
             {
                 db.Records.Remove(record);
             }
