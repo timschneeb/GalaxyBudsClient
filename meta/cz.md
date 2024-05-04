@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>89%</td><td>49 missing string(s)</td></tr>
+<tr><td>89%</td><td>50 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -35,6 +35,7 @@ Right: {1}</td></tr>
 <tr><td><code>metering_total_batt_capacity</code></td><td>Total battery capacity</td></tr>
 <tr><td><code>metering_a2dp_time</code></td><td>Music playback usage time (A2DP)</td></tr>
 <tr><td><code>metering_esco_time</code></td><td>Call usage time (eSCO)</td></tr>
+<tr><td><code>batt_hist_hint</code></td><td>This app can collect battery levels and basic usage data over time, allowing you to analyze battery drain. Data can only be collected while this app is active in the background and your earbuds are connected to this device.</td></tr>
 <tr><td><code>fmg_smart_things_find_manage</code></td><td>Manage SmartThings Find data</td></tr>
 <tr><td><code>fmg_smart_things_find_manage_desc</code></td><td>View and manage your SmartThings Find data stored on your earbuds</td></tr>
 <tr><td><code>fmg_smart_things_find_open</code></td><td>Open SmartThings Find website</td></tr>
