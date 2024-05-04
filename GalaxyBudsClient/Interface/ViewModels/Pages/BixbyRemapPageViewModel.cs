@@ -43,7 +43,7 @@ public class BixbyRemapPageViewModel : SubPageViewModelBase
     [Reactive] public BixbyLanguages BixbyLanguage { set; get; }
 
     public override string TitleKey => Keys.AdvBixbyRemap;
-    public override Control CreateView() => new BixbyRemapPage();
+    public override Control CreateView() => new BixbyRemapPage { DataContext = this };
 }
 
 

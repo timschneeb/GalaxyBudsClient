@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Reactive.Disposables;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia;
@@ -156,10 +157,23 @@ public class BatteryHistoryManager
             _lock.ReleaseMutex();
         }
     }
-    
+   
     private static string GetPathForMac(string mac)
     {
         return PlatformUtils.CombineDataPath($"battery_stats_{mac.Replace(":","")}.db");
+    }
+    
+    public static async Task<DisposableQuery<HistoryRecord>> BeginDisposableQueryAsync(Device? device = null)
+    {
+        device ??= BluetoothImpl.Instance.Device.Current;
+        if (device == null)
+            return new DisposableQuery<HistoryRecord>(null);
+        
+        var db = new HistoryDbContext(GetPathForMac(device.MacAddress));
+        await db.Database.MigrateAsync();
+        db.ExecutePragmas();
+        
+        return new DisposableQuery<HistoryRecord>(db);
     }
     
     #region Singleton

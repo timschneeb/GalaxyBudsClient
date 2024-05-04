@@ -26,7 +26,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class FirmwarePageViewModel : SubPageViewModelBase
 {
-    public override Control CreateView() => new FirmwarePage();
+    public override Control CreateView() => new FirmwarePage { DataContext = this };
     public override string TitleKey => Keys.FwSelectHeader;
     
     [Reactive] public bool IsDowngradingAllowed { set; get; }

@@ -22,7 +22,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class RenamePageViewModel : SubPageViewModelBase
 {
-    public override Control CreateView() => new RenamePage();
+    public override Control CreateView() => new RenamePage { DataContext = this };
     public override string TitleKey => Keys.Rename;
     
     [Reactive] public string? WarningText { set; get; }

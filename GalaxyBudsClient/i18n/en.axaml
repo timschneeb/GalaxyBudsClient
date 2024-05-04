@@ -311,6 +311,9 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="metering_a2dp_time">Music playback usage time (A2DP)</sys:String>
     <sys:String x:Key="metering_esco_time">Call usage time (eSCO)</sys:String>
 
+    <!-- Battery history -->
+    <sys:String x:Key="batt_hist_hint">This app can collect battery levels and basic usage data over time, allowing you to analyze battery drain. Data can only be collected while this app is active in the background and your earbuds are connected to this device.</sys:String>
+    
     <!--Settings-->
     <sys:String x:Key="settings_header">Settings</sys:String>
     <sys:String x:Key="settings_appearance">Appearance</sys:String>

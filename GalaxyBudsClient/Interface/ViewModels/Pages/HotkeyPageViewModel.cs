@@ -12,7 +12,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class HotkeyPageViewModel : SubPageViewModelBase
 {
-    public override Control CreateView() => new HotkeyPage();
+    public override Control CreateView() => new HotkeyPage { DataContext = this };
     public override string TitleKey => Generated.I18N.Keys.HotkeyHeader;
     [Reactive] public bool NoHotkeys { private set; get; }
 

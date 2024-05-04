@@ -7,7 +7,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class SystemPageViewModel : MainPageViewModelBase
 {
-    public override Control CreateView() => new SystemPage();
+    public override Control CreateView() => new SystemPage { DataContext = this };
     public override string TitleKey => Keys.MainpageSystem;
     public override Symbol IconKey => Symbol.Apps;
     public override bool ShowsInFooter => false;

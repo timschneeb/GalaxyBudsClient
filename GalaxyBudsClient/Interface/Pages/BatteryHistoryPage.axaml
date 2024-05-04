@@ -1,0 +1,37 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
+             xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
+             xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+             xmlns:plot="clr-namespace:ScottPlot.Avalonia;assembly=ScottPlot.Avalonia"
+             xmlns:control="clr-namespace:ScottPlot.Control;assembly=ScottPlot"
+             mc:Ignorable="d" d:DesignWidth="800"
+             x:Class="GalaxyBudsClient.Interface.Pages.BatteryHistoryPage"
+             x:DataType="pages:BatteryHistoryPageViewModel"
+             x:CompileBindings="True">
+
+    <Design.DataContext>
+        <pages:BatteryHistoryPageViewModel />
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="Auto,*" 
+        Margin="{StaticResource AppPageMargin}">
+        
+        <controls:CustomInfoBar Title="{ext:Translate {x:Static i18N:Keys.Hint}}"
+                                Message="{ext:Translate {x:Static i18N:Keys.BattHistHint}}"
+                                IsClosable="True"
+                                IsOpen="{Binding !IsBatteryHistoryHintHidden, Source={x:Static config:Settings.Data}}"
+                                Severity="Informational"
+                                Closed="OnHintClosed"
+                                Margin="0,0,0,8"/>
+
+        <!-- AvaPlot does not support bindings :( -->
+        <plot:AvaPlot Name="PlotControl"
+                      Grid.Row="1" />
+    </Grid>
+</UserControl>

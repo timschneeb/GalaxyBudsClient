@@ -18,7 +18,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class NoiseControlPageViewModel : MainPageViewModelBase
 {
-    public override Control CreateView() => new NoiseControlPage();
+    public override Control CreateView() => new NoiseControlPage { DataContext = this };
     private int _suppressorCounter;
     
     public NoiseControlPageViewModel()

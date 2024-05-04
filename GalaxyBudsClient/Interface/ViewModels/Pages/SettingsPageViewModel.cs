@@ -12,7 +12,6 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class SettingsPageViewModel : MainPageViewModelBase
 {
-
     public SettingsPageViewModel()
     {
         CanManageDevices = BluetoothImpl.HasValidDevice;
@@ -37,7 +36,7 @@ public class SettingsPageViewModel : MainPageViewModelBase
     [Reactive] public object CanManageDevices { set; get; }
     
     public string CurrentVersion => Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? "Unknown";
-    public override Control CreateView() => new SettingsPage();
+    public override Control CreateView() => new SettingsPage { DataContext = this };
 
     public override string TitleKey => Keys.SettingsHeader;
     public override Symbol IconKey => Symbol.Settings;

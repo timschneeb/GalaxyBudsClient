@@ -12,7 +12,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class SystemInfoPageViewModel : SubPageViewModelBase
 {
-    public override Control CreateView() => new SystemInfoPage();
+    public override Control CreateView() => new SystemInfoPage { DataContext = this };
     public override string TitleKey => Keys.SystemHeader;
     
     public SystemInfoPageViewModel()

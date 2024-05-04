@@ -12,7 +12,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class HomePageViewModel : MainPageViewModelBase
 {
-    public override Control CreateView() => new HomePage();
+    public override Control CreateView() => new HomePage { DataContext = this };
     public override string TitleKey => BreadcrumbViewModel.DeviceNameKey;
     public override Symbol IconKey => Symbol.Home;
     public override bool ShowsInFooter => false;

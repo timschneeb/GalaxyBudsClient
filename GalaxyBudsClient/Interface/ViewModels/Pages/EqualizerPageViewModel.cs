@@ -88,7 +88,7 @@ public class EqualizerPageViewModel : MainPageViewModelBase
         StereoBalance = e.HearingEnhancements;
     }
 
-    public override Control CreateView() => new EqualizerPage();
+    public override Control CreateView() => new EqualizerPage { DataContext = this };
     
     [Reactive] public bool IsEqEnabled { set; get; }
     [Reactive] public int EqPreset { set; get; }

@@ -75,8 +75,6 @@ public class NavigationFactory(MainViewViewModel owner) : INavigationPageFactory
         if (target is not PageViewModelBase model) 
             throw new ArgumentException("Target must derive from ViewModelBase");
         
-        var view = model.CreateView();
-        view.DataContext = model;
-        return view;
+        return model.CreateView();
     }
 }

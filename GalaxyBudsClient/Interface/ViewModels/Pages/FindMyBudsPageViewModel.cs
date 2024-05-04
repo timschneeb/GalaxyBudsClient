@@ -18,7 +18,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class FindMyBudsPageViewModel : MainPageViewModelBase
 {
-    public override Control CreateView() => new FindMyBudsPage();
+    public override Control CreateView() => new FindMyBudsPage { DataContext = this };
     public override string TitleKey => Keys.FmgHeader;
     public override Symbol IconKey => Symbol.LocationLive;
     public override bool ShowsInFooter => false;

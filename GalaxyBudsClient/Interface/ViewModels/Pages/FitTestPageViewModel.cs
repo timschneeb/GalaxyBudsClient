@@ -13,7 +13,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class FitTestPageViewModel : SubPageViewModelBase
 {
-    public override Control CreateView() => new FitTestPage();
+    public override Control CreateView() => new FitTestPage { DataContext = this };
     public override string TitleKey => Keys.MainpageFitTest;
     
     [Reactive] public string? WarningText { set; get; }

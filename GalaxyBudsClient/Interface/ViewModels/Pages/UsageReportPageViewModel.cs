@@ -13,7 +13,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class UsageReportPageViewModel : SubPageViewModelBase
 {
-    public override Control CreateView() => new UsageReportPage();
+    public override Control CreateView() => new UsageReportPage { DataContext = this };
     public override string TitleKey => Keys.UsageReportsHeader;
     
     [Reactive] public string? MeteringDescription { private set; get; } = Strings.NotAvailable;

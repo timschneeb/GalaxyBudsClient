@@ -12,7 +12,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class AdvancedPageViewModel : MainPageViewModelBase
 {
-    public override Control CreateView() => new AdvancedPage();
+    public override Control CreateView() => new AdvancedPage { DataContext = this };
 
     public AdvancedPageViewModel()
     {

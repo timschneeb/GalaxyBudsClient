@@ -13,7 +13,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class FmmConfigPageViewModel : SubPageViewModelBase
 {
-    public override Control CreateView() => new FmmConfigPage();
+    public override Control CreateView() => new FmmConfigPage { DataContext = this };
     public override string TitleKey => Keys.SmartThingsFind;
     
     [Reactive] public bool IsLinked { get; set; } = true;

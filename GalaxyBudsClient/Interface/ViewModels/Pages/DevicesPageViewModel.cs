@@ -14,7 +14,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class DevicesPageViewModel : MainPageViewModelBase
 {
-    public override Control CreateView() => new DevicesPage();
+    public override Control CreateView() => new DevicesPage { DataContext = this };
     public override string TitleKey => Keys.DevicesHeader;
     public override Symbol IconKey => Symbol.BluetoothConnected;
     public override bool ShowsInFooter => true;

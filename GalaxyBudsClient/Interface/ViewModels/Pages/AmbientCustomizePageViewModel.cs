@@ -16,7 +16,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class AmbientCustomizePageViewModel : SubPageViewModelBase
 {
-    public override Control CreateView() => new AmbientCustomizePage();
+    public override Control CreateView() => new AmbientCustomizePage { DataContext = this };
     
     public AmbientCustomizePageViewModel()
     {

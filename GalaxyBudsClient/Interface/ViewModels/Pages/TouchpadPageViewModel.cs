@@ -22,7 +22,7 @@ namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public class TouchpadPageViewModel : MainPageViewModelBase
 {
-    public override Control CreateView() => new TouchpadPage();
+    public override Control CreateView() => new TouchpadPage { DataContext = this };
 
     public TouchpadPageViewModel()
     {

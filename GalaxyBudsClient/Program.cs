@@ -51,7 +51,10 @@ internal static class Program
 #endif
 
         var logPath = PlatformUtils.CombineDataPath("application.log");
-        var prevLogPath = PlatformUtils.CombineDataPath("application.log");
+        var prevLogPath = PlatformUtils.CombineDataPath("application-prev.log");
+        // Rotate logs on startup
+        if (File.Exists(logPath))
+            File.Move(logPath, prevLogPath, true);
         
         var config = new LoggerConfiguration()
             .WriteTo.File(logPath)
@@ -81,10 +84,6 @@ internal static class Program
         
         if (!Directory.Exists(PlatformUtils.AppDataPath))
             Directory.CreateDirectory(PlatformUtils.AppDataPath);
-        
-        // Rotate logs on startup
-        if (File.Exists(logPath))
-            File.Move(logPath, prevLogPath, true);
         
         Log.Logger = config.CreateLogger();
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
