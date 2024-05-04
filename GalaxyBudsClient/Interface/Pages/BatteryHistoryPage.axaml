@@ -9,7 +9,6 @@
              xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
              xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
              xmlns:plot="clr-namespace:ScottPlot.Avalonia;assembly=ScottPlot.Avalonia"
-             xmlns:control="clr-namespace:ScottPlot.Control;assembly=ScottPlot"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.BatteryHistoryPage"
              x:DataType="pages:BatteryHistoryPageViewModel"
@@ -32,6 +31,11 @@
 
         <!-- AvaPlot does not support bindings :( -->
         <plot:AvaPlot Name="PlotControl"
+                      IsVisible="{Binding !IsPlotLoading}"
                       Grid.Row="1" />
+        
+        <ui:ProgressRing IsVisible="{Binding IsPlotLoading}"
+                         Grid.Row="1" />
+        
     </Grid>
 </UserControl>

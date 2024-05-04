@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Avalonia.Controls;
+using Avalonia.Threading;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Utils;
@@ -13,6 +15,7 @@ using ScottPlot;
 using ScottPlot.AxisRules;
 using ScottPlot.Control;
 using ScottPlot.TickGenerators;
+using Serilog;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
@@ -21,15 +24,24 @@ public class BatteryHistoryPageViewModel : SubPageViewModelBase
     public override Control CreateView() => new BatteryHistoryPage { DataContext = this };
     public override string TitleKey => Keys.SystemBatteryStatistics;
     public Plot? Plot { set; get; }
+    
+    [Reactive] public bool IsPlotLoading { set;get; }
 
     public BatteryHistoryPageViewModel()
     {
     }
 
-    public override async void OnNavigatedTo()
+    public override void OnNavigatedTo()
+    {
+        Task.Run(UpdatePlotAsync);
+    }
+
+    private async Task UpdatePlotAsync()
     {
         if(Plot == null)
             return;
+        
+        IsPlotLoading = true;
         
         Plot.Clear();
         Plot.Add.Palette = new ScottPlot.Palettes.Nord();
@@ -69,7 +81,7 @@ public class BatteryHistoryPageViewModel : SubPageViewModelBase
             Top = 105,
             Bottom = 0
         })));*/
-        Plot.Axes.Left.TickGenerator = new NumericAutomatic()
+        Plot.Axes.Left.TickGenerator = new NumericAutomatic
         {
             LabelFormatter = value => value is < 0 or > 100 ? string.Empty : NumericAutomatic.DefaultLabelFormatter(value), 
         };
@@ -78,6 +90,8 @@ public class BatteryHistoryPageViewModel : SubPageViewModelBase
         Plot.ShowLegend();
         
         Plot?.Axes.DateTimeTicksBottom();
+
+        IsPlotLoading = false;
     }
 }
 
