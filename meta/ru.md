@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>68%</td><td>151 missing string(s)</td></tr>
+<tr><td>67%</td><td>155 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -80,6 +80,10 @@ Right: {1}</td></tr>
 <tr><td><code>metering_a2dp_time</code></td><td>Music playback usage time (A2DP)</td></tr>
 <tr><td><code>metering_esco_time</code></td><td>Call usage time (eSCO)</td></tr>
 <tr><td><code>batt_hist_hint</code></td><td>This app can collect battery levels and basic usage data over time, allowing you to analyze battery drain. Data can only be collected while this app is active in the background and your earbuds are connected to this device.</td></tr>
+<tr><td><code>batt_hist_last_12_hours</code></td><td>Last 12 hours</td></tr>
+<tr><td><code>batt_hist_last_24_hours</code></td><td>Last 24 hours</td></tr>
+<tr><td><code>batt_hist_last_3_days</code></td><td>Last 3 days</td></tr>
+<tr><td><code>batt_hist_last_7_days</code></td><td>Last 7 days</td></tr>
 <tr><td><code>settings_appearance</code></td><td>Appearance</td></tr>
 <tr><td><code>settings_blurstrength</code></td><td>Window blur strength</td></tr>
 <tr><td><code>settings_blurstrength_description</code></td><td>Only compatible with dark mode. Not supported on all systems</td></tr>
