@@ -18,7 +18,7 @@
         <pages:BatteryHistoryPageViewModel />
     </Design.DataContext>
     
-    <Grid RowDefinitions="Auto,*" 
+    <Grid RowDefinitions="Auto,Auto,*" 
         Margin="{StaticResource AppPageMargin}">
         
         <controls:CustomInfoBar Title="{ext:Translate {x:Static i18N:Keys.Hint}}"
@@ -28,14 +28,23 @@
                                 Severity="Informational"
                                 Closed="OnHintClosed"
                                 Margin="0,0,0,8"/>
+        
+        <StackPanel Grid.Row="1"
+                    Spacing="8"
+                    Orientation="Horizontal"
+                    Margin="0,0,0,8">
+            <ComboBox ItemsSource="{Binding Source={ext:BatteryHistoryTimeSpansBindingSource}}"
+                      DisplayMemberBinding="{Binding ., Converter={StaticResource EnumDescriptionConverter}}"
+                      SelectedValue="{Binding SelectedTimeSpan}" />
+        </StackPanel>
 
         <!-- AvaPlot does not support bindings :( -->
         <plot:AvaPlot Name="PlotControl"
                       IsVisible="{Binding !IsPlotLoading}"
-                      Grid.Row="1" />
+                      Grid.Row="2" />
         
         <ui:ProgressRing IsVisible="{Binding IsPlotLoading}"
-                         Grid.Row="1" />
+                         Grid.Row="2" />
         
     </Grid>
 </UserControl>

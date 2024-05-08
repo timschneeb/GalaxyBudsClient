@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using Avalonia.Controls;
 using Avalonia.Threading;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
+using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -26,9 +28,21 @@ public class BatteryHistoryPageViewModel : SubPageViewModelBase
     public Plot? Plot { set; get; }
     
     [Reactive] public bool IsPlotLoading { set;get; }
+    [Reactive] public BatteryHistoryTimeSpans SelectedTimeSpan { set; get; } = BatteryHistoryTimeSpans.Last3Days;
 
     public BatteryHistoryPageViewModel()
     {
+        PropertyChanged += OnPropertyChanged;
+    }
+
+    private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        switch (e.PropertyName)
+        {
+            case nameof(SelectedTimeSpan):
+                Task.Run(UpdatePlotAsync);
+                break;
+        }
     }
 
     public override void OnNavigatedTo()
@@ -45,9 +59,11 @@ public class BatteryHistoryPageViewModel : SubPageViewModelBase
         
         Plot.Clear();
         Plot.Add.Palette = new ScottPlot.Palettes.Nord();
+
+        var timeLimit = TimeSpan.FromHours((int)SelectedTimeSpan);
         
         await using var disposableQuery = await BatteryHistoryManager.BeginDisposableQueryAsync();
-        var cutOffDate = DateTime.Now - TimeSpan.FromDays(1);
+        var cutOffDate = DateTime.Now - timeLimit;
         
         var query = disposableQuery.Queryable
             .Where(record => record.Timestamp > cutOffDate);
@@ -73,14 +89,14 @@ public class BatteryHistoryPageViewModel : SubPageViewModelBase
         plotBatteryR.MarkerShape = MarkerShape.None;
         plotBatteryR.LegendText = Strings.Right;
         
-        
         /*Plot.Axes.Rules.Add(new MaximumBoundary(Plot.Axes.Bottom, Plot.Axes.Left, new AxisLimits(new CoordinateRect
         {
             Right = DateTimeOffset.Now.ToUnixTimeMilliseconds(),
-            Left = (DateTimeOffset.Now - TimeSpan.FromDays(7)).ToUnixTimeMilliseconds(),
+            Left = (DateTimeOffset.Now - timeLimit).ToUnixTimeMilliseconds(),
             Top = 105,
             Bottom = 0
         })));*/
+        
         Plot.Axes.Left.TickGenerator = new NumericAutomatic
         {
             LabelFormatter = value => value is < 0 or > 100 ? string.Empty : NumericAutomatic.DefaultLabelFormatter(value), 

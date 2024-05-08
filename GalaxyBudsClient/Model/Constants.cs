@@ -389,5 +389,18 @@ namespace GalaxyBudsClient.Model
             [LocalizableDescription(Keys.SettingsDynTrayModeBatteryAvg)]
             BatteryAvg = 2
         }
+
+        [CompiledEnum]
+        public enum BatteryHistoryTimeSpans
+        {
+            [LocalizableDescription(Keys.BattHistLast12Hours)]
+            Last12Hours = 12,
+            [LocalizableDescription(Keys.BattHistLast24Hours)]
+            Last24Hours = 24,
+            [LocalizableDescription(Keys.BattHistLast3Days)]
+            Last3Days = 72,
+            [LocalizableDescription(Keys.BattHistLast7Days)]
+            Last7Days = 168,
+        }
     }
 }

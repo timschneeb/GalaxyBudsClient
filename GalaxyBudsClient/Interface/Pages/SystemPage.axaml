@@ -17,11 +17,12 @@
 
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
-            <Interaction.Behaviors>
-                <ext:RequiresConnectedDeviceBehavior />
-            </Interaction.Behaviors>
 
             <controls:SettingsGroup>
+                <Interaction.Behaviors>
+                    <ext:RequiresConnectedDeviceBehavior />
+                </Interaction.Behaviors>
+                
                 <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SystemSelftest}}"
                                              Description="{ext:Translate {x:Static i18N:Keys.SystemSelftestDesc}}"
                                              Symbol="Beaker"
@@ -75,6 +76,7 @@
                                              IsClickEnabled="True">
                     <Interaction.Behaviors>
                         <ext:RequiresFeatureBehavior Feature="UsageReport" />
+                        <ext:RequiresConnectedDeviceBehavior />
                     </Interaction.Behaviors>
                 </controls:SettingsSymbolItem>
 
@@ -87,7 +89,10 @@
             </controls:SettingsGroup>
 
             <controls:SettingsGroup>
-
+                <Interaction.Behaviors>
+                    <ext:RequiresConnectedDeviceBehavior />
+                </Interaction.Behaviors>
+                
                 <controls:SettingsSymbolItem Name="Firmware"
                                              Content="{ext:Translate {x:Static i18N:Keys.SystemFlasher}}"
                                              Description="{ext:Translate {x:Static i18N:Keys.SystemFlasherDesc}}"

@@ -313,6 +313,10 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 
     <!-- Battery history -->
     <sys:String x:Key="batt_hist_hint">This app can collect battery levels and basic usage data over time, allowing you to analyze battery drain. Data can only be collected while this app is active in the background and your earbuds are connected to this device.</sys:String>
+    <sys:String x:Key="batt_hist_last_12_hours">Last 12 hours</sys:String>
+    <sys:String x:Key="batt_hist_last_24_hours">Last 24 hours</sys:String>
+    <sys:String x:Key="batt_hist_last_3_days">Last 3 days</sys:String>
+    <sys:String x:Key="batt_hist_last_7_days">Last 7 days</sys:String>
     
     <!--Settings-->
     <sys:String x:Key="settings_header">Settings</sys:String>
