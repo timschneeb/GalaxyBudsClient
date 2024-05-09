@@ -61,6 +61,7 @@ public class LocalizationKeySourceGenerator : ISourceGenerator
                 var namespaceName = xmlNamespace.First().Split(':').Last();
                 var assemblyName = xmlNamespace.Last().Split('=').Last();
                 var typeName = element.Name.LocalName;
+                var englishString = element.Value;
 
                 var key = element.Attributes().First(x => x.Name.LocalName == "Key");
                 if (key == null)
@@ -80,7 +81,9 @@ public class LocalizationKeySourceGenerator : ISourceGenerator
                                 $"#warning {additionalFile.Path}: Failed to convert key to Pascal case for XAML element of type {namespaceName}.{typeName}");
                         else
                         {
+                            keyClassMembers.Add($"/** <summary> Resolves to: '{englishString}' </summary> */");
                             keyClassMembers.Add($"public const global::System.String {memberName} = \"{key.Value}\";");
+                            stringClassMembers.Add($"/** <summary> Resolves to: '{englishString}' </summary> */");
                             stringClassMembers.Add(
                                 $"public static global::System.String {memberName} => Loc.Resolve(Keys.{memberName});");
                         }
