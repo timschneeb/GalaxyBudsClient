@@ -8,7 +8,8 @@ namespace GalaxyBudsClient.Message.Decoder;
 public class GenericEventDecoder : BaseMessageDecoder
 {
     public Devices Device { get; }
-    public ushort Timestamp { get; }
+    public uint Timestamp { get; }
+    public byte EventId { get; }
     // Other fields are unknown
 
     public GenericEventDecoder(SppMessage msg) : base(msg)
@@ -17,6 +18,7 @@ public class GenericEventDecoder : BaseMessageDecoder
         using var reader = new BinaryReader(stream);
         
         Device = reader.ReadChar() == 'L' ? Devices.L : Devices.R;
-        Timestamp = reader.ReadUInt16();
+        Timestamp = reader.ReadUInt32();
+        EventId = reader.ReadByte();
     }
 }
