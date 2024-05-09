@@ -9,6 +9,7 @@
              xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
              xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
              xmlns:plot="clr-namespace:ScottPlot.Avalonia;assembly=ScottPlot.Avalonia"
+             xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.BatteryHistoryPage"
              x:DataType="pages:BatteryHistoryPageViewModel"
@@ -17,34 +18,120 @@
     <Design.DataContext>
         <pages:BatteryHistoryPageViewModel />
     </Design.DataContext>
-    
-    <Grid RowDefinitions="Auto,Auto,*" 
-        Margin="{StaticResource AppPageMargin}">
-        
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto"
+          Margin="{StaticResource AppPageMargin}">
+
         <controls:CustomInfoBar Title="{ext:Translate {x:Static i18N:Keys.Hint}}"
                                 Message="{ext:Translate {x:Static i18N:Keys.BattHistHint}}"
                                 IsClosable="True"
                                 IsOpen="{Binding !IsBatteryHistoryHintHidden, Source={x:Static config:Settings.Data}}"
                                 Severity="Informational"
                                 Closed="OnHintClosed"
-                                Margin="0,0,0,8"/>
+                                Margin="0,0,0,8" />
         
         <StackPanel Grid.Row="1"
-                    Spacing="8"
                     Orientation="Horizontal"
                     Margin="0,0,0,8">
+
+            <ComboBox ItemsSource="{Binding Source={ext:BatteryHistoryToolsBindingSource}}"
+                      DisplayMemberBinding="{Binding ., Converter={StaticResource EnumDescriptionConverter}}"
+                      SelectedValue="{Binding SelectedTool}"
+                      Margin="0,0,8,0"
+                      ToolTip.Tip="{ext:Translate {x:Static i18N:Keys.BattHistToolsTipTitle}}" />
+
+            <ComboBox ItemsSource="{Binding Source={ext:BatteryHistoryOverlaysBindingSource}}"
+                      DisplayMemberBinding="{Binding ., Converter={StaticResource EnumDescriptionConverter}}"
+                      SelectedValue="{Binding SelectedOverlay}"
+                      Margin="0,0,8,0"
+                      ToolTip.Tip="{ext:Translate {x:Static i18N:Keys.BattHistOverlayTipTitle}}"/>
+
             <ComboBox ItemsSource="{Binding Source={ext:BatteryHistoryTimeSpansBindingSource}}"
                       DisplayMemberBinding="{Binding ., Converter={StaticResource EnumDescriptionConverter}}"
-                      SelectedValue="{Binding SelectedTimeSpan}" />
+                      SelectedValue="{Binding SelectedTimeSpan}"
+                      Margin="0,0,8,0"
+                      ToolTip.Tip="{ext:Translate {x:Static i18N:Keys.BattHistTimeSpanTipTitle}}"/>
+
+            <Button Command="{Binding DoReloadCommand}"
+                    Margin="0,0,8,0"
+                    ToolTip.Tip="{ext:Translate {x:Static i18N:Keys.FwSelectRefresh}}">
+                <Button.Content>
+                    <ic:SymbolIcon Symbol="ArrowCounterclockwise" />
+                </Button.Content>
+            </Button>
+
+            <DropDownButton Name="HelpButton"
+                            ToolTip.Tip="{ext:Translate {x:Static i18N:Keys.Help}}">
+                <Button.Content>
+                    <ic:SymbolIcon Symbol="ChatHelp" />
+                </Button.Content>
+                <Button.Flyout>
+                    <MenuFlyout Placement="Bottom">
+                        <MenuItem Header="{ext:Translate {x:Static i18N:Keys.BattHistControlTipTitle}}"
+                                  Click="OnControlsHelpItemClicked">
+                            <MenuItem.Icon>
+                                <ic:SymbolIcon Symbol="CursorClick" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        
+                        <MenuItem Header="{ext:Translate {x:Static i18N:Keys.BattHistToolsTipTitle}}"
+                                  Click="OnToolsHelpItemClicked">
+                            <MenuItem.Icon>
+                                <ic:SymbolIcon Symbol="Toolbox" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+
+                        <MenuItem Header="{ext:Translate {x:Static i18N:Keys.BattHistOverlayTipTitle}}"
+                                  Click="OnOverlayHelpItemClicked">
+                            <MenuItem.Icon>
+                                <ic:SymbolIcon Symbol="RectangleLandscapeHintCopy" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuFlyout>
+                </Button.Flyout>
+            </DropDownButton>
+
+            <ui:TeachingTip Name="OverlayTip"
+                            IsLightDismissEnabled="True"
+                            TailVisibility="Collapsed"
+                            Target="{Binding #HelpButton}"
+                            Title="{ext:Translate {x:Static i18N:Keys.BattHistOverlayTipTitle}}"
+                            Subtitle="{ext:Translate {x:Static i18N:Keys.BattHistOverlayTip}}" />
+            
+            <ui:TeachingTip Name="ControlsTip"
+                            IsLightDismissEnabled="True"
+                            TailVisibility="Collapsed"
+                            Target="{Binding #HelpButton}"
+                            Title="{ext:Translate {x:Static i18N:Keys.BattHistControlTipTitle}}"
+                            Subtitle="{ext:Translate {x:Static i18N:Keys.BattHistControlTip}}" />
+            
+            <ui:TeachingTip Name="ToolsTip"
+                            IsLightDismissEnabled="True"
+                            TailVisibility="Collapsed"
+                            Target="{Binding #HelpButton}"
+                            Title="{ext:Translate {x:Static i18N:Keys.BattHistToolsTipTitle}}"
+                            Subtitle="{ext:Translate {x:Static i18N:Keys.BattHistToolsTip}}" />
         </StackPanel>
 
         <!-- AvaPlot does not support bindings :( -->
         <plot:AvaPlot Name="PlotControl"
                       IsVisible="{Binding !IsPlotLoading}"
+                      PointerMoved="OnPlotPointerMoved"
+                      PointerPressed="OnPlotPointerPressed"
+                      PointerReleased="OnPlotPointerReleased"
+                      Cursor="{Binding PlotCursor}"
                       Grid.Row="2" />
-        
+
         <ui:ProgressRing IsVisible="{Binding IsPlotLoading}"
                          Grid.Row="2" />
-        
+
+        <StackPanel Grid.Row="3"
+                    Margin="0,8,0,0"
+                    Spacing="8"
+                    Orientation="Horizontal">
+            <CheckBox
+                Content="{ext:Translate {x:Static i18N:Keys.BattHistShowLegend}}"
+                IsChecked="{Binding IsLegendVisible}" />
+        </StackPanel>
     </Grid>
 </UserControl>

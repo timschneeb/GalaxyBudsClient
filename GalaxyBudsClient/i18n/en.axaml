@@ -20,7 +20,10 @@
     <sys:String x:Key="back">Back</sys:String>
     <sys:String x:Key="next">Next</sys:String>
     <sys:String x:Key="prev">Previous</sys:String>
+    <sys:String x:Key="off">Off</sys:String>
+    <sys:String x:Key="on">On</sys:String>
     <sys:String x:Key="hint">Hint</sys:String>
+    <sys:String x:Key="help">Help</sys:String>
     <sys:String x:Key="important">Important</sys:String>
     <sys:String x:Key="home">Home</sys:String>
     <sys:String x:Key="please_wait">Please wait...</sys:String>
@@ -313,11 +316,49 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 
     <!-- Battery history -->
     <sys:String x:Key="batt_hist_hint">This app can collect battery levels and basic usage data over time, allowing you to analyze battery drain. Data can only be collected while this app is active in the background and your earbuds are connected to this device.</sys:String>
+    <sys:String x:Key="batt_hist_y_axis">Charge (%)</sys:String>
+    <sys:String x:Key="batt_hist_last_hour">Last hour</sys:String>
+    <sys:String x:Key="batt_hist_last_6_hours">Last 6 hours</sys:String>
     <sys:String x:Key="batt_hist_last_12_hours">Last 12 hours</sys:String>
     <sys:String x:Key="batt_hist_last_24_hours">Last 24 hours</sys:String>
     <sys:String x:Key="batt_hist_last_3_days">Last 3 days</sys:String>
     <sys:String x:Key="batt_hist_last_7_days">Last 7 days</sys:String>
-    
+    <sys:String x:Key="batt_hist_overlay_none">No overlay</sys:String>
+    <sys:String x:Key="batt_hist_overlay_noise_controls">Noise controls</sys:String>
+    <sys:String x:Key="batt_hist_overlay_wearing">Wear state</sys:String>
+    <sys:String x:Key="batt_hist_overlay_host_device">Host device</sys:String>
+    <sys:String x:Key="batt_hist_overlay_legend">{0} (Overlay)</sys:String>
+    <sys:String x:Key="batt_hist_tools_pan_and_zoom">Pan &amp; zoom</sys:String>
+    <sys:String x:Key="batt_hist_tools_measure_time">Measure time</sys:String>
+    <sys:String x:Key="batt_hist_tools_measure_battery">Measure level</sys:String>
+    <sys:String x:Key="batt_hist_show_legend">Show legend</sys:String>
+    <sys:String x:Key="batt_hist_measure_difference_display">Difference: {0}</sys:String>
+    <sys:String x:Key="batt_hist_measure_timespan_display">Time span: {0}</sys:String>
+    <sys:String x:Key="batt_hist_measure_timespan_unit_long">d' day(s), 'hh'h:'mm':'ss</sys:String> <!-- This is a time span format string. It produces a string like: 2 day(s), 03h:10:01 -->
+    <sys:String x:Key="batt_hist_time_span_tip_title">Time span</sys:String>
+    <sys:String x:Key="batt_hist_control_tip_title">Mouse controls</sys:String>
+    <sys:String x:Key="batt_hist_control_tip">Drag the canvas to move around the plot.
+  
+Scroll to zoom horizontally and vertically. 
+
+Hover over the X or Y axis and scroll to zoom only horizontally or vertically. Scrolling over the X-axis (time) would stretch or squash it, for example.</sys:String>
+    <sys:String x:Key="batt_hist_overlay_tip_title">Overlays</sys:String>
+    <sys:String x:Key="batt_hist_overlay_tip">You can use overlays to add additional context to the plot.
+
+Noise controls: Shows which noise controls were enabled or disabled. 
+
+Wear state: Shows if the earbuds were worn or not.
+
+Host device: Shows which earbud is hosting the Bluetooth connection to the computer
+        
+The overlay data may be hard to understand when viewing large time ranges. Hover over the X-axis and scroll up to zoom into a specific time range you want to inspect for a better overview.</sys:String>
+    <sys:String x:Key="batt_hist_tools_tip_title">Tools</sys:String>
+    <sys:String x:Key="batt_hist_tools_tip">Pan &amp; zoom: Default mode. Navigate around the plot by panning and zooming.
+        
+Measure time: Select a horizontal span to measure the elapsed time between the start and end of the selection.
+        
+Measure level: Select a vertical span to measure the battery level difference between the start and end of the selection.</sys:String>
+
     <!--Settings-->
     <sys:String x:Key="settings_header">Settings</sys:String>
     <sys:String x:Key="settings_appearance">Appearance</sys:String>

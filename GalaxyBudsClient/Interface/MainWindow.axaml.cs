@@ -42,6 +42,7 @@ public partial class MainWindow : StyledAppWindow
     private static MainWindow? _instance;
     public static MainWindow Instance => _instance ??= new MainWindow();
 
+    // TODO add loading spinners for pages?
     public MainWindow()
     {
         InitializeComponent();

@@ -2,5 +2,4 @@
          xsi:noNamespaceSchemaLocation="FodyWeavers.xsd">
     <ReactiveUI/>
     <AsyncErrorHandler/>
-    <Visualize/>
 </Weavers>

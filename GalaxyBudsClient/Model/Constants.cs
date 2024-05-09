@@ -288,23 +288,34 @@ namespace GalaxyBudsClient.Model
             Charging = 100
         }
 
+        [CompiledEnum]
         public enum LegacyWearStates
         {
+            [LocalizableDescription(Keys.EventNone)]
             None = 0,
+            [LocalizableDescription(Keys.Right)]
             R = 1,
+            [LocalizableDescription(Keys.Left)]
             L = 16,
+            [LocalizableDescription(Keys.Both)]
             Both = 17
         }
+        
+        [CompiledEnum]
         public enum DevicesInverted
         {
+            [LocalizableDescription(Keys.Left)]
             L = 1,
+            [LocalizableDescription(Keys.Right)]
             R = 0
         }
         
         [CompiledEnum]
         public enum Devices
         {
+            [LocalizableDescription(Keys.Left)]
             L = 0,
+            [LocalizableDescription(Keys.Right)]
             R = 1
         }
         
@@ -315,10 +326,14 @@ namespace GalaxyBudsClient.Model
             Unknown = 2
         }
         
+        [CompiledEnum]
         public enum NoiseControlModes
         {
+            [LocalizableDescription(Keys.Off)]
             Off = 0,
+            [LocalizableDescription(Keys.MainpageAmbientSound)]
             AmbientSound = 2,
+            [LocalizableDescription(Keys.Anc)]
             NoiseReduction = 1
         }
    
@@ -393,6 +408,10 @@ namespace GalaxyBudsClient.Model
         [CompiledEnum]
         public enum BatteryHistoryTimeSpans
         {
+            [LocalizableDescription(Keys.BattHistLastHour)]
+            LastHour = 1,
+            [LocalizableDescription(Keys.BattHistLast6Hours)]
+            Last6Hours = 6,
             [LocalizableDescription(Keys.BattHistLast12Hours)]
             Last12Hours = 12,
             [LocalizableDescription(Keys.BattHistLast24Hours)]
@@ -400,7 +419,31 @@ namespace GalaxyBudsClient.Model
             [LocalizableDescription(Keys.BattHistLast3Days)]
             Last3Days = 72,
             [LocalizableDescription(Keys.BattHistLast7Days)]
-            Last7Days = 168,
+            Last7Days = 168
+        }
+        
+        [CompiledEnum]
+        public enum BatteryHistoryOverlays
+        {
+            [LocalizableDescription(Keys.BattHistOverlayNone)]
+            None,
+            [LocalizableDescription(Keys.BattHistOverlayNoiseControls)]
+            NoiseControls,
+            [LocalizableDescription(Keys.BattHistOverlayWearing)]
+            Wearing,
+            [LocalizableDescription(Keys.BattHistOverlayHostDevice)]
+            HostDevice
+        } 
+        
+        [CompiledEnum]
+        public enum BatteryHistoryTools
+        {
+            [LocalizableDescription(Keys.BattHistToolsPanAndZoom)]
+            PanAndZoom,
+            [LocalizableDescription(Keys.BattHistToolsMeasureTime)]
+            MeasureTime,
+            [LocalizableDescription(Keys.BattHistToolsMeasureBattery)]
+            MeasureBattery
         }
     }
 }
