@@ -268,6 +268,7 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="system_touchver">Touch firmware version</sys:String>
     <sys:String x:Key="system_protover">Protocol revision</sys:String>
     <sys:String x:Key="system_btaddr">Bluetooth addresses</sys:String>
+    <sys:String x:Key="system_btaddr_template">Local address: {0}, Peer address: {1}</sys:String>
     <sys:String x:Key="system_serial">Serial numbers</sys:String>
     <sys:String x:Key="system_build_info">Build string</sys:String>
     <sys:String x:Key="system_battery_type">Battery type</sys:String>

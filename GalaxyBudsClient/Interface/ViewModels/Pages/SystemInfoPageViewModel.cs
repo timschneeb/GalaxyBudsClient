@@ -70,8 +70,8 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
         HwVersion = e.HardwareVersion ?? Unknown;
         SwVersion = e.SoftwareVersion ?? Unknown;
         TouchSwVersion = e.TouchSoftwareVersion ?? Unknown;
-        BluetoothAddress = e is { LeftBluetoothAddress: not null, RightBluetoothAddress: not null }
-            ? $"{Strings.Left}: {e.LeftBluetoothAddress}, {Strings.Right}: {e.RightBluetoothAddress}"
+        BluetoothAddress = e.LocalBluetoothAddress != null || e.PeerBluetoothAddress != null
+            ? string.Format(Strings.SystemBtaddrTemplate, e.LocalBluetoothAddress ?? Unknown, e.PeerBluetoothAddress ?? Unknown)
             : Unknown;
     }
     

@@ -4,6 +4,7 @@ using System.Text;
 using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Utils.Extensions;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
@@ -18,8 +19,8 @@ public class DebugGetAllDataDecoder : BaseMessageDecoder
     private readonly string[] _swYear = ["O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     public string? HardwareVersion { get; }
     public string? SoftwareVersion { get; }
-    public string? LeftBluetoothAddress { get; }
-    public string? RightBluetoothAddress { get; }
+    public string? LocalBluetoothAddress { get; }
+    public string? PeerBluetoothAddress { get; }
     public string? TouchSoftwareVersion { get; }
     public short LeftAcceleratorX { get; }
     public short LeftAcceleratorY { get; }
@@ -100,8 +101,8 @@ public class DebugGetAllDataDecoder : BaseMessageDecoder
             HardwareVersion = "rev" + hw1.ToString("X") + "." + hw2.ToString("X");
             SoftwareVersion = VersionDataToString(msg.Payload, 1);
             TouchSoftwareVersion = $"0x{msg.Payload[4]:X}";
-            LeftBluetoothAddress = BytesToMacString(msg.Payload, 5);
-            RightBluetoothAddress = BytesToMacString(msg.Payload, 11);
+            LocalBluetoothAddress = msg.Payload.BytesToMacString(5);
+            PeerBluetoothAddress = msg.Payload.BytesToMacString(11);
 
             LeftAcceleratorX = BitConverter.ToInt16(msg.Payload, 17);
             LeftAcceleratorY = BitConverter.ToInt16(msg.Payload, 19);
@@ -136,8 +137,8 @@ public class DebugGetAllDataDecoder : BaseMessageDecoder
             HardwareVersion = "rev" + hw1.ToString("X") + "." + hw2.ToString("X");
             SoftwareVersion = VersionDataToString(msg.Payload, 2);
             TouchSoftwareVersion = $"0x{msg.Payload[5]:X}";
-            LeftBluetoothAddress = BytesToMacString(msg.Payload, 6);
-            RightBluetoothAddress = BytesToMacString(msg.Payload, 12);
+            LocalBluetoothAddress = msg.Payload.BytesToMacString(6);
+            PeerBluetoothAddress = msg.Payload.BytesToMacString(12);
 
             LeftAcceleratorX = BitConverter.ToInt16(msg.Payload, 18);
             LeftAcceleratorY = BitConverter.ToInt16(msg.Payload, 20);
@@ -185,21 +186,6 @@ public class DebugGetAllDataDecoder : BaseMessageDecoder
             LeftCradleBatt = msg.Payload[81];
             RightCradleBatt = msg.Payload[82];
         }
-    }
-        
-    private string BytesToMacString(IReadOnlyList<byte> payload, int startIndex)
-    {
-        var sb = new StringBuilder();
-        for (var i13 = 0; i13 < 6; i13++)
-        {
-            if (i13 != 0)
-            {
-                sb.Append(':');
-            }
-            sb.Append(((payload[i13 + startIndex] & 240) >> 4).ToString("X"));
-            sb.Append((payload[i13 + startIndex] & 15).ToString("X"));
-        }
-        return sb.ToString();
     }
 
     private string VersionDataToString(IReadOnlyList<byte> payload, int startIndex)
