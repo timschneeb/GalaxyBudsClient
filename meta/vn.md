@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>55%</td><td>225 missing string(s)</td></tr>
+<tr><td>55%</td><td>226 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -70,6 +70,7 @@ Right: {1}</td></tr>
 <tr><td><code>system_no_response</code></td><td>No response from earbuds</td></tr>
 <tr><td><code>system_cradle_swver</code></td><td>Case software version</td></tr>
 <tr><td><code>system_cradle_serial</code></td><td>Case serial number</td></tr>
+<tr><td><code>system_btaddr_template</code></td><td>Local address: {0}, Peer address: {1}</td></tr>
 <tr><td><code>system_sku</code></td><td>Device SKUs</td></tr>
 <tr><td><code>usage_reports_header</code></td><td>Usage reports</td></tr>
 <tr><td><code>usage_reports_hint</code></td><td>These reports are collected by the earbuds themselves. The data is displayed as-is and may be inaccurate. The official Wearable app usually resets most counters periodically and then sends the collected data to Samsung unless you haven't consented to data collection in their app. Some counters, such as charging cycles, are not reset.</td></tr>

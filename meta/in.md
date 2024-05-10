@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>29%</td><td>357 missing string(s)</td></tr>
+<tr><td>29%</td><td>358 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -153,6 +153,7 @@ Right: {1}</td></tr>
 <tr><td><code>system_no_response</code></td><td>No response from earbuds</td></tr>
 <tr><td><code>system_cradle_swver</code></td><td>Case software version</td></tr>
 <tr><td><code>system_cradle_serial</code></td><td>Case serial number</td></tr>
+<tr><td><code>system_btaddr_template</code></td><td>Local address: {0}, Peer address: {1}</td></tr>
 <tr><td><code>system_sku</code></td><td>Device SKUs</td></tr>
 <tr><td><code>coredump_header</code></td><td>Dumping data...</td></tr>
 <tr><td><code>coredump_dl_progress_prepare</code></td><td>Preparing download...</td></tr>

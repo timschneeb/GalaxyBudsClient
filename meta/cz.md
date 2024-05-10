@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>84%</td><td>79 missing string(s)</td></tr>
+<tr><td>84%</td><td>80 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -30,6 +30,7 @@ Right: {1}</td></tr>
 <tr><td><code>system_usage_reports_desc</code></td><td>View usage reports provided by the earbuds</td></tr>
 <tr><td><code>system_battery_statistics</code></td><td>Battery statistics</td></tr>
 <tr><td><code>system_battery_statistics_desc</code></td><td>Collect & view battery usage statistics</td></tr>
+<tr><td><code>system_btaddr_template</code></td><td>Local address: {0}, Peer address: {1}</td></tr>
 <tr><td><code>usage_reports_header</code></td><td>Usage reports</td></tr>
 <tr><td><code>usage_reports_hint</code></td><td>These reports are collected by the earbuds themselves. The data is displayed as-is and may be inaccurate. The official Wearable app usually resets most counters periodically and then sends the collected data to Samsung unless you haven't consented to data collection in their app. Some counters, such as charging cycles, are not reset.</td></tr>
 <tr><td><code>usage_reports_usage</code></td><td>Usage report</td></tr>
