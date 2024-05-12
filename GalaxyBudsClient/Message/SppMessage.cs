@@ -113,6 +113,9 @@ public partial class SppMessage(
         try
         {
             var spec = DeviceSpecHelper.FindByModel(model) ?? throw new InvalidOperationException();
+            
+            Log.Error(spec.DeviceBaseName + " " + spec.StartOfMessage + " " + spec.EndOfMessage + " ");
+            
             var draft = new SppMessage(model: model);
             var specSom = alternative ? (byte)MsgConstants.SmepSom : spec.StartOfMessage;
             var specEom = alternative ? (byte)MsgConstants.SmepEom : spec.EndOfMessage;

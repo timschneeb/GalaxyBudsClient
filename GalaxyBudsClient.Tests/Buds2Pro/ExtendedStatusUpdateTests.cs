@@ -1,70 +1,19 @@
-using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Constants;
 
-namespace GalaxyBudsClient.Tests;
+namespace GalaxyBudsClient.Tests.Buds2Pro;
 
-[TestFixture, Description("Test ExtendedStatusUpdate parsers"), TestOf(typeof(ExtendedStatusUpdateDecoder))]
+[TestFixture, Description("Test ExtendedStatusUpdate parser for the Buds2 Pro"), TestOf(typeof(ExtendedStatusUpdateDecoder))]
 public class ExtendedStatusUpdateTests : MessageTests<ExtendedStatusUpdateDecoder>
 {
     protected override string TestDataGroup => "ExtendedStatusUpdate";
     
-    [Test, TestCaseSource(nameof(_testCases)), Description("Decode ExtendedStatusUpdate message")]
+    [Test, TestCaseSource(nameof(_testCases)), Description("Decode ExtendedStatusUpdate messages")]
     public void Decode(TestCase testCase) => DecodeAndVerify(testCase);
 
     private static object[] _testCases =
     [
-        new TestCase { Revision = 10, Model = Models.BudsPro, ExpectedResult = new ExtendedStatusUpdateDecoder(new SppMessage())
-        {
-            TargetModel = Models.BudsPro,
-
-            Revision = 10,
-            EarType = 2,
-            BatteryL = 89,
-            BatteryR = 94,
-            IsCoupled = true,
-            MainConnection = DevicesInverted.L,
-            WearState = LegacyWearStates.L,
-            EqualizerMode = 1,
-            TouchpadLock = false,
-            TouchpadOptionL = TouchOptions.NoiseControl,
-            TouchpadOptionR = TouchOptions.NoiseControl,
-            SeamlessConnectionEnabled = true,
-            AmbientSoundVolume = 2,
-            PlacementL = PlacementStates.Wearing,
-            PlacementR = PlacementStates.Case,
-            BatteryCase = 100,
-            OutsideDoubleTap = true,
-            ColorL = DeviceIds.BudsProBlack,
-            ColorR = DeviceIds.BudsProBlack,
-            AdjustSoundSync = false,
-            SideToneEnabled = false,
-            ExtraHighAmbientEnabled = false,
-            VoiceWakeUp = false,
-            VoiceWakeUpLang = 1,
-            FmmRevision = 3,
-            NoiseControlMode = NoiseControlModes.Off,
-            NoiseControlTouchOff = true,
-            NoiseControlTouchAnc = true,
-            NoiseControlTouchAmbient = false,
-            NoiseControlTouchLeftOff = true,
-            NoiseControlTouchLeftAnc = true,
-            NoiseControlTouchLeftAmbient = false,
-            SpeakSeamlessly = false,
-            NoiseReductionLevel = 1,
-            AutoSwitchAudioOutput = false,
-            DetectConversations = false,
-            DetectConversationsDuration = 2,
-            SpatialAudio = false,
-            HearingEnhancements = 16,
-            NoiseControlsWithOneEarbud = false,
-            AmbientCustomVolumeOn = false,
-            AmbientCustomVolumeLeft = 2,
-            AmbientCustomVolumeRight = 2,
-            AmbientCustomSoundTone = 2,
-            CallPathControl = true
-        }},
-        new TestCase { Revision = 13, Model = Models.Buds2Pro, ExpectedResult = new ExtendedStatusUpdateDecoder(new SppMessage())
+        new TestCase { Revision = 13, Model = Models.Buds2Pro, ExpectedResult = new ExtendedStatusUpdateDecoder
         {
             TargetModel = Models.Buds2Pro,
 

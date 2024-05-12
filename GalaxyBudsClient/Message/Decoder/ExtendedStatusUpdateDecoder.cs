@@ -67,7 +67,7 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
     public bool VoiceWakeUp { init; get; }
     [Device(Models.BudsLive, Selector.GreaterEqual)]
     public int VoiceWakeUpLang { init; get; }
-    [Device(Models.BudsLive, Selector.GreaterEqual)]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public int FmmRevision { init; get; }
     [Device(Models.BudsLive)]
     public bool NoiseCancelling { init; get; }
@@ -135,7 +135,7 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
     public byte AmbientCustomVolumeRight { init; get; }
     [Device(Models.BudsPro, Selector.GreaterEqual)]
     public byte AmbientCustomSoundTone { init; get; }
-    [Device(Models.BudsLive, Selector.GreaterEqual)]
+    [Device(Models.BudsPlus, Selector.GreaterEqual)]
     public bool CallPathControl { init; get; } 
     
     [Device(Models.Buds2, Selector.GreaterEqual)]
@@ -162,6 +162,11 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
     public bool SpatialAudioHeadTracking { init; get; }
     [Device(Models.Buds2Pro, Selector.GreaterEqual)]
     public bool AutoAdjustSound { init; get; }
+    
+    /// <remarks>
+    /// Important: The parameterless constructor must only be used for unit tests
+    /// </remarks>
+    public ExtendedStatusUpdateDecoder() : base(new SppMessage()) {}
     
     public ExtendedStatusUpdateDecoder(SppMessage msg) : base(msg)
     {
