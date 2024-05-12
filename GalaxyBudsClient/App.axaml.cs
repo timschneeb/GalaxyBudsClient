@@ -36,6 +36,8 @@ public class App : Application
             defaultBindingMode: BindingMode.OneWay, defaultValue: []);
     public NativeMenu TrayMenu => GetValue(TrayMenuProperty);
     
+    private readonly ExperimentManager _experimentManager = new();
+    
     public override void Initialize()
     {
         DataContext = this;
@@ -68,12 +70,12 @@ public class App : Application
         MediaKeyRemote.Init();
         DeviceMessageCache.Init();
         BatteryHistoryManager.Init();
-        ExperimentManager.Init();
         ScriptManager.Instance.RegisterUserHooks();
         
         Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
         
         Log.Information("Translator mode file location: {File}", Loc.TranslatorModeFile);
+        Log.Debug("Environment: {Env}", _experimentManager.CurrentEnvironment());
     }
 
     public override void OnFrameworkInitializationCompleted()

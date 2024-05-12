@@ -13,7 +13,7 @@ namespace GalaxyBudsClient.Scripting.Experiment;
 
 public class ExperimentManager
 {
-    private const int InitialScanTimeout = 5000; 
+    private const int InitialScanTimeout = 10000; 
     private readonly ExperimentClient _client = new();
     private ExperimentRequest? _activeExperiment;
     private IExperimentBase? _activeExperimentHook;
@@ -80,7 +80,7 @@ public class ExperimentManager
         Settings.Data.ExperimentsFinishedIds.Add(id);
     }
         
-    public static Environment CurrentEnvironment()
+    public Environment CurrentEnvironment()
     {
 #if DEBUG
         return Environment.Internal;
@@ -159,26 +159,4 @@ public class ExperimentManager
             LaunchExperiment(e[0]);
         }
     }
-
-    #region Singleton
-    private static readonly object Padlock = new();
-    private static ExperimentManager? _instance;
-    public static ExperimentManager Instance
-    {
-        get
-        {
-            lock (Padlock)
-            {
-                return _instance ??= new ExperimentManager();
-            }
-        }
-    }
-    public static void Init()
-    {
-        lock (Padlock)
-        { 
-            _instance ??= new ExperimentManager();
-        }
-    }
-    #endregion
 }

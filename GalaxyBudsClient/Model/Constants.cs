@@ -79,7 +79,7 @@ namespace GalaxyBudsClient.Model
             [Description("Chinese (Traditional)")]
             tw,
             [Description("Indonesian")]
-            @in,
+            in_,
             [Description("Vietnamese")]
             vn,
             [Description("Greek")]
