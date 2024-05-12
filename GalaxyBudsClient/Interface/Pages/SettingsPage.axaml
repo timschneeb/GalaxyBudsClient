@@ -68,7 +68,7 @@
                 <controls:SettingsComboBoxItem Name="AppTheme"
                                                Content="{ext:Translate {x:Static i18N:Keys.SettingsDarkmode}}"
                                                Description="{ext:Translate {x:Static i18N:Keys.SettingsDarkmodeDescription}}"
-                                               IconSource="DarkTheme"
+                                               Symbol="DarkTheme"
                                                ItemsSource="{Binding ., Source={ext:ThemesBindingSource}}"
                                                SelectedValue="{Binding Theme, Source={x:Static config:Settings.Data}}">
                     <Interaction.Behaviors>
@@ -189,7 +189,7 @@
 
                 <controls:SettingsSwitchItem
                     Content="{ext:Translate {x:Static i18N:Keys.SettingsCrowdAllow}}"
-                    Description="{ext:Translate {x:Static i18N:Keys.SettingsCrowdAllow}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.SettingsCrowdAllowDescription}}"
                     IsChecked="{Binding !ExperimentsDisabled, Source={x:Static config:Settings.Data}}" />
 
                 <controls:SettingsSwitchItem
