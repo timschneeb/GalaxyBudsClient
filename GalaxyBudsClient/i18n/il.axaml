@@ -1,8 +1,10 @@
 <!-- ReSharper disable InconsistentNaming -->
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
-    <sys:String x:Key="ResourceDictionaryName">Loc-il</sys:String>
-
+    <!-- English name of this language -->
+    <sys:String x:Key="language_name_en">Hebrew</sys:String>
+    
+    <!-- Enable RTL mode -->
     <sys:Boolean x:Key="IsRightToLeft">True</sys:Boolean>
     
     <!--:::::::: Source code ::::::::-->

@@ -21,6 +21,7 @@ namespace GalaxyBudsClient.Model
             public static readonly Guid Handsfree = new("{0000111e-0000-1000-8000-00805f9b34fb}");
         }
       
+        [SuppressMessage("ReSharper", "InconsistentNaming")]
         [CompiledEnum]
         public enum BixbyLanguages
         {
@@ -73,14 +74,14 @@ namespace GalaxyBudsClient.Model
             cz,
             [Description("Turkish")]
             tr,
-            [Description("Simplified-Chinese")]
+            [Description("Chinese (Simplified)")]
             cn,
-            [Description("Traditional-Chinese")]
+            [Description("Chinese (Traditional)")]
             tw,
             [Description("Indonesian")]
-            in_,
+            @in,
             [Description("Vietnamese")]
-            vn_,
+            vn,
             [Description("Greek")]
             gr,
             [Description("Romanian")]
@@ -89,9 +90,9 @@ namespace GalaxyBudsClient.Model
             il,
             [Description("French")]
             fr,
-            [Description("Magyar")]
+            [Description("Hungarian")]
             hu,
-			[Description("Nederlands")]
+			[Description("Dutch")]
 			nl,
             [IgnoreDataMember, Description("custom_language.xaml")]
             custom
