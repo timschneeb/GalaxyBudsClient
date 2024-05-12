@@ -16,6 +16,7 @@ using ScottPlot;
 using ScottPlot.AxisRules;
 using ScottPlot.Plottables;
 using ScottPlot.TickGenerators;
+using Serilog;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
@@ -31,6 +32,7 @@ public class BatteryHistoryPageViewModel : SubPageViewModelBase
     [Reactive] public bool IsPlotLoading { set; get; }
     [Reactive] public Cursor PlotCursor { set; get; } = new(StandardCursorType.Arrow);
     [Reactive] public bool IsLegendVisible { set; get; } = true;
+    [Reactive] public bool IsNoDataHintVisible { set; get; }
 
     [Reactive] public BatteryHistoryOverlays SelectedOverlay { set; get; } = BatteryHistoryOverlays.None;
     [Reactive] public BatteryHistoryTimeSpans SelectedTimeSpan { set; get; } = BatteryHistoryTimeSpans.Last12Hours;
@@ -90,6 +92,7 @@ public class BatteryHistoryPageViewModel : SubPageViewModelBase
             return;
         
         IsPlotLoading = true;
+        IsNoDataHintVisible = false;
         
         Plot.Clear();
 
@@ -116,6 +119,7 @@ public class BatteryHistoryPageViewModel : SubPageViewModelBase
             _ => throw new ArgumentOutOfRangeException()
         };
 
+        var nonNullRecordCount = 0;
         await foreach (var record in query.AsAsyncEnumerable())
         {
             var date = record.Timestamp.ToOADate();
@@ -127,6 +131,10 @@ public class BatteryHistoryPageViewModel : SubPageViewModelBase
             if (record.BatteryL == null && record.BatteryR == null)
             {
                 overlay?.AddNullFrame(date);
+            }
+            else
+            {
+                nonNullRecordCount++;
             }
             
             switch (overlay)
@@ -188,6 +196,7 @@ public class BatteryHistoryPageViewModel : SubPageViewModelBase
             (DateTimeOffset.Now - timeLimit).DateTime.ToOADate(), 
             DateTimeOffset.Now.DateTime.ToOADate(), 0, 105)));
         
+        IsNoDataHintVisible = nonNullRecordCount <= 10;
         IsPlotLoading = false;
     }
     

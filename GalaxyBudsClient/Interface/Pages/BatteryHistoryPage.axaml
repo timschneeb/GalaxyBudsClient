@@ -19,7 +19,7 @@
         <pages:BatteryHistoryPageViewModel />
     </Design.DataContext>
 
-    <Grid RowDefinitions="Auto,Auto,*,Auto"
+    <Grid RowDefinitions="Auto,Auto,Auto,*,Auto"
           Margin="{StaticResource AppPageMargin}">
 
         <controls:CustomInfoBar Title="{ext:Translate {x:Static i18N:Keys.Hint}}"
@@ -30,7 +30,14 @@
                                 Closed="OnHintClosed"
                                 Margin="0,0,0,8" />
         
-        <StackPanel Grid.Row="1"
+        <controls:CustomInfoBar Grid.Row="1"
+                                Title="{ext:Translate {x:Static i18N:Keys.BattHistNoDataTitle}}"
+                                Message="{ext:Translate {x:Static i18N:Keys.BattHistNoData}}"
+                                IsOpen="{Binding IsNoDataHintVisible}"
+                                Severity="Warning"
+                                Margin="0,0,0,8" />
+        
+        <StackPanel Grid.Row="2"
                     Orientation="Horizontal"
                     Margin="0,0,0,8">
 
@@ -120,12 +127,12 @@
                       PointerPressed="OnPlotPointerPressed"
                       PointerReleased="OnPlotPointerReleased"
                       Cursor="{Binding PlotCursor}"
-                      Grid.Row="2" />
+                      Grid.Row="3" />
 
         <ui:ProgressRing IsVisible="{Binding IsPlotLoading}"
-                         Grid.Row="2" />
+                         Grid.Row="3" />
 
-        <StackPanel Grid.Row="3"
+        <StackPanel Grid.Row="4"
                     Margin="0,8,0,0"
                     Spacing="8"
                     Orientation="Horizontal">
