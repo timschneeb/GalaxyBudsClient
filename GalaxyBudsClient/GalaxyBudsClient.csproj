@@ -82,7 +82,7 @@
         <PackageReference Include="Avalonia.Svg.Skia" Version="11.1.0-beta1" />
         <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.1.0-beta2.1" />
         <PackageReference Include="AvaloniaHex" Version="0.1.0" />
-        <PackageReference Include="BouncyCastle.Cryptography" Version="2.3.0" />
+        <PackageReference Include="BouncyCastle.Cryptography" Version="2.3.1" />
         <PackageReference Include="CommandLineParser" Version="2.9.2-ci-210" />
         <PackageReference Include="Config.Net" Version="5.2.0" />
         <PackageReference Include="CS-Script" Version="4.8.14" />
