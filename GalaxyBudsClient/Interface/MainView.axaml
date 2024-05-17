@@ -15,8 +15,7 @@
     <Grid RowDefinitions="Auto,*">
         <Grid Name="TitleBarHost"
               ColumnDefinitions="*,Auto"
-              Background="Transparent">
-        </Grid>
+              Background="Transparent" />
 
         <ui:NavigationView Grid.Row="0" AlwaysShowHeader="False"
                            PaneDisplayMode="Left"

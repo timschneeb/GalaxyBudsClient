@@ -8,7 +8,6 @@
              xmlns:bluetooth="clr-namespace:GalaxyBudsClient.Bluetooth;assembly=GalaxyBudsClient.Bluetooth"
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              xmlns:input="clr-namespace:FluentAvalonia.UI.Input;assembly=FluentAvalonia"
-             xmlns:utils="clr-namespace:GalaxyBudsClient.Utils"
              xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
              mc:Ignorable="d"

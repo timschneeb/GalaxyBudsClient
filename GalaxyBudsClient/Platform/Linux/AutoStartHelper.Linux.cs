@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.IO;
 using GalaxyBudsClient.Platform.Interfaces;
 
@@ -12,29 +11,36 @@ public class AutoStartHelper : IAutoStartHelper
     /* Self -> Disadvantage: includes arguments */
     private static string Self => File.ReadAllText("/proc/self/cmdline").Replace('\0', ' '); 
     /* SelfAlt -> Disadvantage: only includes executable path -> problematic when called via /usr/bin/dotnet */
-    private static string SelfAlt => Process.GetCurrentProcess().MainModule?.FileName ?? string.Empty; 
+    // private static string SelfAlt => Process.GetCurrentProcess().MainModule?.FileName ?? string.Empty; 
         
     public bool Enabled
     {
         get => File.Exists(AutostartFile);
         set
         {
+            var directory = Path.GetDirectoryName(AutostartFile);
+            if (directory != null && Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+            
             if (value)
             {
                 File.WriteAllText(
                     AutostartFile,
-                    $@"[Desktop Entry]
-Exec={Self} /StartMinimized
-Name=GalaxyBudsClient
-StartupNotify=false
-Terminal=false
-Type=Application
-X-GNOME-Autostart-Delay=10
-X-GNOME-Autostart-enabled=true
-X-KDE-autostart-after=panel
-X-KDE-autostart-phase=2
-X-MATE-Autostart-Delay=10
-"
+                    $"""
+                     [Desktop Entry]
+                     Exec={Self} /StartMinimized
+                     Name=GalaxyBudsClient
+                     StartupNotify=false
+                     Terminal=false
+                     Type=Application
+                     X-GNOME-Autostart-Delay=10
+                     X-GNOME-Autostart-enabled=true
+                     X-KDE-autostart-after=panel
+                     X-KDE-autostart-phase=2
+                     X-MATE-Autostart-Delay=10
+                     """
                 );
             }
             else

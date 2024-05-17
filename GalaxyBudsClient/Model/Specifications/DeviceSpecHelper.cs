@@ -40,15 +40,22 @@ public static class DeviceSpecHelper
 
                 if (deviceIdHex != null)
                 {
-                    var deviceIdBytes = Enumerable.Range(0, deviceIdHex.Length)
-                        .Where(x => x % 2 == 0)
-                        .Select(x => Convert.ToByte(deviceIdPrefix.Substring(x, 2), 16))
-                        .ToArray();
-
-                    // Check based on DeviceManager.getWearableDeviceFromBudsUUID() from the Wearable container app
-                    if (((DeviceIds)BitConverter.ToInt32(deviceIdBytes)).GetAssociatedModel() is Models model)
+                    try
                     {
-                        return FindByModel(model);
+                        var deviceIdBytes = Enumerable.Range(0, deviceIdHex.Length)
+                            .Where(x => x % 2 == 0)
+                            .Select(x => Convert.ToByte(deviceIdPrefix.Substring(x, 2), 16))
+                            .ToArray();
+
+                        // Check based on DeviceManager.getWearableDeviceFromBudsUUID() from the Wearable container app
+                        if (((DeviceIds)BitConverter.ToInt32(deviceIdBytes)).GetAssociatedModel() is Models model)
+                        {
+                            return FindByModel(model);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Log.Error(e, "Failed to parse device ID from SPP service UUID {Uuid}", deviceIdHex);
                     }
                 }
                 else if(device.ServiceUuids.Any(x => x == Uuids.Handsfree) && device.ServiceUuids.Any(x => x == Uuids.LeAudio))

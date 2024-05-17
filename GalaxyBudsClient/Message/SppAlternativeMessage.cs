@@ -44,7 +44,7 @@ public class SppAlternativeMessage
 
     public static async Task ReadPropertyAsync(AltProperty id)
     {
-        await SendAltRequestAsync(MsgIds.READ_PROPERTY, [ (byte)id, (byte)((int)id >> 8) ]);
+        await SendAltRequestAsync(MsgIds.READ_PROPERTY, (byte)id, (byte)((int)id >> 8));
     }
 
     public static async Task WritePropertyAsync(byte[] payload)

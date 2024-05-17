@@ -165,12 +165,12 @@ file static class GetFmmConfigDecoderExtensions
 {
     internal static bool? ToBooleanOrDefault(this byte b)
     {
-        return (b != 0xFF) ? b == 1 : null;
+        return b != 0xFF ? b == 1 : null;
     }
     
     internal static byte? ToByteOrDefault(this byte b)
     {
-        return (b != 0xFF) ? b : null;
+        return b != 0xFF ? b : null;
     }
 
     internal static string? ToBase64OrDefault(this IEnumerable<byte> bytes)

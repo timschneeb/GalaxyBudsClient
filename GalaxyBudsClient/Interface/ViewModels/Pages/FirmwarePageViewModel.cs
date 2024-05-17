@@ -46,7 +46,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
     private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         if(e.PropertyName == nameof(IsDowngradingAllowed))
-            RefreshList(false);
+            RefreshList();
     }
 
     private static async void RequestData()
@@ -142,7 +142,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
     
     public void DoRefreshCommand()
     { 
-        RefreshList(false);
+        RefreshList();
     }
     
     public async void DoSideloadCommand()

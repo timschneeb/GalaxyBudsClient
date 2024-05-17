@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Linq;
-using System.Reactive;
 using System.Text;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Data;
 using Avalonia.Threading;
-using FluentIcons.Common;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
-using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI;
@@ -50,8 +47,8 @@ public class RenamePageViewModel : SubPageViewModelBase
         BluetoothImpl.Instance.ConnectedAlternative += OnConnected;
         BluetoothImpl.Instance.DisconnectedAlternative += (s, _) => OnConnected(s, EventArgs.Empty);
         BluetoothImpl.Instance.MessageReceivedAlternative += MsgReceivedAlt;
-        BluetoothImpl.Instance.InvalidDataReceivedAlternative += (_, ex) => Log.Error(ex.ToString());
-        BluetoothImpl.Instance.BluetoothErrorAlternative += (_, ex) => Log.Error(ex.ToString());
+        BluetoothImpl.Instance.InvalidDataReceivedAlternative += (_, ex) => Log.Error(ex, "Invalid data received (alt mode)");
+        BluetoothImpl.Instance.BluetoothErrorAlternative += (_, ex) => Log.Error("Bluetooth error (alt mode): {Msg}", ex.Message);
     }
 
     public override void OnNavigatedTo()

@@ -5,9 +5,7 @@ using ReactiveUI;
 
 namespace GalaxyBudsClient.Interface.ViewModels;
 
-public abstract class ViewModelBase : ReactiveObject
-{
-}
+public abstract class ViewModelBase : ReactiveObject;
 
 public abstract class PageViewModelBase : ViewModelBase
 {
@@ -31,6 +29,4 @@ public abstract class MainPageViewModelBase : PageViewModelBase
     public abstract bool ShowsInFooter { get; }
 }
 
-public abstract class SubPageViewModelBase : PageViewModelBase
-{
-}
+public abstract class SubPageViewModelBase : PageViewModelBase;

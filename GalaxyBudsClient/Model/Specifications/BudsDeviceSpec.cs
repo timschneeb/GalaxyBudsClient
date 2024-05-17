@@ -21,7 +21,7 @@ public class BudsDeviceSpec : IDeviceSpec
         { Features.PairingMode, null },
         { Features.AmbientSoundVolume, null },
         { Features.SppLegacyMessageHeader, null },
-        { Features.UsageReport, null },
+        { Features.UsageReport, null }
     };
 
     public Models Device => Models.Buds;

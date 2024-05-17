@@ -39,7 +39,7 @@ public class BluetoothService : IBluetoothService
     public async Task<BluetoothDevice[]> GetDevicesAsync()
     {
         await Task.CompletedTask;
-        throw new PlatformNotSupportedException(
+        throw new BluetoothException(BluetoothException.ErrorCodes.NoAdaptersAvailable, 
             "Platform not supported. On Windows systems, we only support the default Microsoft Bluetooth stack drivers. Third-party driver stacks such as BlueSoleil and Widcomm are NOT supported! This error can also occur if no Bluetooth adapter is enabled or connected to your PC.");
     }
 }

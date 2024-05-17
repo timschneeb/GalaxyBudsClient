@@ -135,7 +135,7 @@ public class UsageReportDecoder : BaseMessageDecoder
         if (Statistics == null)
             return loggingItems;
         
-        var eventDict = new Dictionary<string, (string id, char? detailChar)>()
+        var eventDict = new Dictionary<string, (string id, char? detailChar)>
         {
             { "A2DD", ("9009", null) },
             { "A2DC", ("9010", null) },
@@ -197,7 +197,7 @@ public class UsageReportDecoder : BaseMessageDecoder
             { "TAHR8", ("9005", 'i') }
         };
 
-        var statusDict = new Dictionary<string, string>()
+        var statusDict = new Dictionary<string, string>
         {
             { "BSCL", "9033" },
             { "BSCR", "9032" },

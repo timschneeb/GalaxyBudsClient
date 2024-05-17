@@ -41,7 +41,7 @@ public readonly struct Finally : IDisposable
     {
         _ = onDispose ?? throw new ArgumentNullException(nameof(onDispose));
 
-        this._onDispose = onDispose;
+        _onDispose = onDispose;
     }
 
     public static Finally Create(Action onDispose)
@@ -53,6 +53,6 @@ public readonly struct Finally : IDisposable
     {
         // Keep in mind that a struct can always be created using new() or default and
         // in that cases _onDispose is null!
-        this._onDispose?.Invoke();
+        _onDispose?.Invoke();
     }
 }

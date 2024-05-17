@@ -189,7 +189,7 @@ namespace GalaxyBudsClient.Model
             Sec15 = 15
         }
         
-        [CompiledEnum]
+        [CompiledEnum, SuppressMessage("ReSharper", "InconsistentNaming")]
         public enum Models
         {
             [ModelMetadata(Name = "", FwPattern = "", BuildPrefix = "")]

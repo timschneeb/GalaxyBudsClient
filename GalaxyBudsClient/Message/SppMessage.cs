@@ -57,7 +57,7 @@ public partial class SppMessage(
             scope.SetExtra("msg-total-size", TotalPacketSize);
             scope.SetExtra("msg-crc16", Crc16);
             scope.SetExtra("msg-payload", HexUtils.Dump(Payload, 512, false, false, false));
-        });;
+        });
             
         foreach (var hook in ScriptManager.Instance.DecoderHooks)
         {
@@ -113,8 +113,6 @@ public partial class SppMessage(
         try
         {
             var spec = DeviceSpecHelper.FindByModel(model) ?? throw new InvalidOperationException();
-            
-            Log.Error(spec.DeviceBaseName + " " + spec.StartOfMessage + " " + spec.EndOfMessage + " ");
             
             var draft = new SppMessage(model: model);
             var specSom = alternative ? (byte)MsgConstants.SmepSom : spec.StartOfMessage;

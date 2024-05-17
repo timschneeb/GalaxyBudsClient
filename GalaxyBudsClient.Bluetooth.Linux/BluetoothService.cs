@@ -106,9 +106,9 @@ namespace GalaxyBudsClient.Bluetooth.Linux
             catch (DBusException ex)
             {
                 Log.Error(ex, "Failed to select adapter");
-                if (ex.ErrorName == "org.freedesktop.DBus.Error.TimedOut")
+                if (ex.ErrorName is "org.freedesktop.DBus.Error.TimedOut" or "org.freedesktop.DBus.Error.NameHasNoOwner")
                 {
-                    throw new PlatformNotSupportedException(
+                    throw new BluetoothException(BluetoothException.ErrorCodes.NoAdaptersAvailable,
                         "BlueZ not available. Make sure you've installed BlueZ and enabled that driver properly.");
                 }
             }
@@ -171,7 +171,16 @@ namespace GalaxyBudsClient.Bluetooth.Linux
                 }
             }
 
-            await _device.WaitForPropertyValueAsync("Connected", value: true, Timeout, cancelToken);
+            try
+            {
+                await _device.WaitForPropertyValueAsync("Connected", value: true, Timeout, cancelToken);
+            }
+            catch (TimeoutException)
+            {
+                Log.Error("Linux.BluetoothService: Timed out while waiting for device to connect");
+                throw new BluetoothException(BluetoothException.ErrorCodes.TimedOut, "BlueZ timed out while connecting to device.");
+            }
+
             Connected?.Invoke(this, EventArgs.Empty);
             ConnectionWatchdog = _device.WatchForPropertyChangeAsync("Connected", true, ConnectionWatcherCallback);
             Log.Debug("Linux.BluetoothService: Device ready. Registering profile client for UUID {Uuid}...", uuid);
@@ -345,7 +354,12 @@ namespace GalaxyBudsClient.Bluetooth.Linux
         {
             Log.Debug("Linux.BluetoothService: Connection established. Launching BluetoothServiceLoop");
 
-            _loop?.Dispose();
+            try
+            {
+                _loop?.Dispose();
+            }
+            catch (InvalidOperationException) {}
+
             _cancelSource = new CancellationTokenSource();
             _loop = Task.Run(BluetoothServiceLoop, _cancelSource.Token);
                 

@@ -138,7 +138,7 @@ public class HotkeyReceiver : IHotkeyReceiver, IDisposable
         }
                 
         await UnregisterAllAsync();
-        foreach (var b in backup.Where(b => b != null))
+        foreach (var b in backup)
         {
             try
             {

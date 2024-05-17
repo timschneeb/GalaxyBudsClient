@@ -20,9 +20,9 @@ public class ExperimentClient
 {
     public event EventHandler<IReadOnlyList<ExperimentRequest>>? NewResultsFound;
 
-    private const string API_BASE = "https://crowdsourcing.timschneeberger.me/v2";
-    private const string API_GET_EXPERIMENTS = API_BASE + "/experiments";
-    private const string API_POST_RESULT = API_BASE + "/result";
+    private const string ApiBase = "https://crowdsourcing.timschneeberger.me/v2";
+    private const string ApiGetExperiments = ApiBase + "/experiments";
+    private const string ApiPostResult = ApiBase + "/result";
 
     private readonly HttpClient _client;
     private readonly Timer _timer;
@@ -48,7 +48,7 @@ public class ExperimentClient
         {
             var jsonBody = JsonConvert.SerializeObject(result, new StringEnumConverter());
             var httpContent = new StringContent(jsonBody, Encoding.UTF8, "application/json");
-            var httpResponse = await _client.PostAsync(API_POST_RESULT, httpContent);
+            var httpResponse = await _client.PostAsync(ApiPostResult, httpContent);
             if (!httpResponse.IsSuccessStatusCode)
             {
                 Log.Warning("ExperimentClient: Server returned error code after posting: {Code} ({ReasonPhrase}); Content: {Content}", 
@@ -90,7 +90,7 @@ public class ExperimentClient
         try
         {
             var response =
-                await _client.GetAsync($"{API_GET_EXPERIMENTS}/{BluetoothImpl.Instance.CurrentModel.ToString()}");
+                await _client.GetAsync($"{ApiGetExperiments}/{BluetoothImpl.Instance.CurrentModel.ToString()}");
             if (response.IsSuccessStatusCode)
             {
                 var formatters = new MediaTypeFormatterCollection();

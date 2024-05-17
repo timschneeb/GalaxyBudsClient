@@ -282,23 +282,26 @@ public partial class MainWindow : StyledAppWindow
         _popupShown = false;
     }
 
-    private async void OnBluetoothError(object? sender, BluetoothException e)
+    private void OnBluetoothError(object? sender, BluetoothException e)
     {
-        WindowIconRenderer.ResetIconToDefault();
-            
-        switch (e.ErrorCode)
+        _ = Dispatcher.UIThread.InvokeAsync(async () =>
         {
-            case BluetoothException.ErrorCodes.NoAdaptersAvailable:
-                await new MessageBox
-                {
-                    Title = Strings.Error,
-                    Description = Strings.Nobluetoothdev
-                }.ShowAsync();
-                break;
-            default:
-                _popupShown = false;
-                break;
-        }
+            WindowIconRenderer.ResetIconToDefault();
+            
+            switch (e.ErrorCode)
+            {
+                case BluetoothException.ErrorCodes.NoAdaptersAvailable:
+                    await new MessageBox
+                    {
+                        Title = Strings.Error,
+                        Description = Strings.Nobluetoothdev
+                    }.ShowAsync();
+                    break;
+                default:
+                    _popupShown = false;
+                    break;
+            }
+        });
     }
 
     private void OnDisconnected(object? sender, string e)

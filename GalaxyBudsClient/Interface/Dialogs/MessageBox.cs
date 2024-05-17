@@ -7,9 +7,9 @@ namespace GalaxyBudsClient.Interface.Dialogs;
 
 public class MessageBox
 {
-    public required string Title { get; set; }
-    public required string Description { get; set; }
-    public string ButtonText { get; set; } = Strings.Okay;
+    public required string Title { get; init; }
+    public required string Description { get; init; }
+    public string ButtonText { get; init; } = Strings.Okay;
 
     public async Task ShowAsync(Window? host = null)
     {

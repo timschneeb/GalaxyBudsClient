@@ -66,7 +66,7 @@ public class FmmConfigPageViewModel : SubPageViewModelBase
         {
             Revision = _fmmConfig?.Revision ?? 0,
             UpdateLeft = true,
-            UpdateRight = true,
+            UpdateRight = true
         });
         
         RequestData();

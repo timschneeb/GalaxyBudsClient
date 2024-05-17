@@ -44,7 +44,7 @@ public static class Loc
     {
         var rtlSetting = ResolveOrDefault("IsRightToLeft");
         return rtlSetting != null ? 
-            (string.Equals(rtlSetting, "True", StringComparison.OrdinalIgnoreCase) ? FlowDirection.RightToLeft : FlowDirection.LeftToRight) : 
+            string.Equals(rtlSetting, "True", StringComparison.OrdinalIgnoreCase) ? FlowDirection.RightToLeft : FlowDirection.LeftToRight : 
             FlowDirection.LeftToRight;
     }
     

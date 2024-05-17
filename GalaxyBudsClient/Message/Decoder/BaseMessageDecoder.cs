@@ -2,8 +2,8 @@
 
 public abstract class BaseMessageDecoder : BaseMessageHandler
 {
-    public BaseMessageDecoder(SppMessage msg)
+    protected BaseMessageDecoder(SppMessage msg)
     {
         TargetModel = msg.TargetModel;
     }
-};
+}

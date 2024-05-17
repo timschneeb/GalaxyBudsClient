@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Threading;
 using Avalonia.Controls;
 using Avalonia.Threading;
 using FluentIcons.Common;
@@ -90,7 +89,7 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
         if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
         {
             var mode = IsAmbientSoundEnabled ? NoiseControlModes.AmbientSound : 
-                (IsAncEnabled ? NoiseControlModes.NoiseReduction : NoiseControlModes.Off);
+                IsAncEnabled ? NoiseControlModes.NoiseReduction : NoiseControlModes.Off;
             await BluetoothImpl.Instance.SendRequestAsync(MsgIds.NOISE_CONTROLS, (byte)mode);
         }
         else

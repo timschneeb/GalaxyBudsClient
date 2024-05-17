@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Serilog;
 using ThePBone.BlueZNet.Utils;
 using Tmds.DBus;
 
@@ -32,7 +33,7 @@ namespace ThePBone.BlueZNet
 
             if (matches.Count > 1)
             {
-                throw new Exception($"{matches.Count} devices found with the address {deviceAddress}!");
+                Log.Error("{MatchesCount} devices found with the address {DeviceAddress}!", matches.Count, deviceAddress);
             }
 
             var dev = matches.FirstOrDefault();

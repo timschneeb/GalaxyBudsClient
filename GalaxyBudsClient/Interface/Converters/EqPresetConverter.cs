@@ -21,7 +21,7 @@ public class EqPresetConverter : IValueConverter
             EqPresets.Clear => Strings.EqClear,
             EqPresets.TrebleBoost => Strings.EqTreble,
             _ => Strings.Unknown
-        };;
+        };
     }
 
     public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

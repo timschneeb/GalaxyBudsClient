@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Firmware;
 

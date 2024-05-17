@@ -37,7 +37,7 @@ public class FirmwareBinary
             if (Magic == FotaBinMagicCombination || Encoding.ASCII.GetString(data).StartsWith(":02000004FE00FC"))
             {
                 // Notify tracker about this event and submit firmware build info
-                SentrySdk.ConfigureScope((x => x.AddAttachment(data, "firmware.bin")));
+                SentrySdk.ConfigureScope(x => x.AddAttachment(data, "firmware.bin"));
                 SentrySdk.CaptureMessage($"BCOM-Firmware discovered. Build: {buildName}", SentryLevel.Fatal);
                   
                 Log.Fatal("FirmwareBinary: Parsing internal debug firmware \'{Name}\'. " +
@@ -87,7 +87,7 @@ public class FirmwareBinary
         using var stream = new MemoryStream();
         var writer = new BinaryWriter(stream);
             
-        writer.Write((int) Crc32);
+        writer.Write(Crc32);
         writer.Write((byte) SegmentsCount);
 
         foreach (var segment in Segments)

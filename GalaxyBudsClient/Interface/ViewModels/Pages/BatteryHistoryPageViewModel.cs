@@ -16,7 +16,6 @@ using ScottPlot;
 using ScottPlot.AxisRules;
 using ScottPlot.Plottables;
 using ScottPlot.TickGenerators;
-using Serilog;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
@@ -181,7 +180,7 @@ public class BatteryHistoryPageViewModel : SubPageViewModelBase
         
         Plot.Axes.Left.TickGenerator = new NumericAutomatic
         {
-            LabelFormatter = value => value is < 0 or > 100 ? string.Empty : NumericAutomatic.DefaultLabelFormatter(value), 
+            LabelFormatter = value => value is < 0 or > 100 ? string.Empty : NumericAutomatic.DefaultLabelFormatter(value)
         };
         
         Plot.YLabel(Strings.BattHistYAxis);

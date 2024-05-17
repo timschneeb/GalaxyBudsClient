@@ -2,7 +2,6 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Reactive.Disposables;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia;
@@ -52,7 +51,7 @@ public class BatteryHistoryManager
         if (e.PropertyName == nameof(Settings.Data.CollectBatteryHistory) &&
             Settings.Data.CollectBatteryHistory == false)
         {
-            Log.Debug("Battery history disabled. Deleting all databases.");
+            Log.Debug("Battery history disabled. Deleting all databases");
             DeleteAllDatabases();
         }
     }
@@ -80,8 +79,15 @@ public class BatteryHistoryManager
     {
         Log.Debug("Deleting battery stats for {Dev}", _currentMac);
         var path = GetPathForMac(device.MacAddress);
-        if(File.Exists(path))
-            File.Delete(path);
+        try 
+        {
+            if(File.Exists(path))
+                File.Delete(path);
+        }
+        catch (Exception e)
+        {
+            Log.Error(e, "Failed to delete battery stats for {Dev}", _currentMac);
+        }
     }
 
     public void DeleteAllDatabases()
@@ -122,8 +128,8 @@ public class BatteryHistoryManager
         {
             _lastRecord = null;
             return;
-        };
-        
+        }
+
         var status = !insertNullFrame && BluetoothImpl.Instance.IsConnected ? DeviceMessageCache.Instance.StatusUpdate : null;
         var noiseControlVm = !insertNullFrame && BluetoothImpl.Instance.IsConnected ? MainWindow.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>() : null;
         var record = new HistoryRecord

@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using Config.Net;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Hotkeys;
@@ -31,6 +32,7 @@ public interface IExperiments : INotifyPropertyChanged
     long[] FinishedIds { set; get; }
 }
     
+[SuppressMessage("ReSharper", "InconsistentNaming")]
 public interface ILegacySettings : INotifyPropertyChanged
 {
     /* Appearance */

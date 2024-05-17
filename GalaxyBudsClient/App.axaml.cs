@@ -123,7 +123,7 @@ public class App : Application
         var color = Settings.Data.AccentColor;
         if(Color.FromUInt32(color).A == 0)
         {
-            color = Settings.Data.AccentColor = Avalonia.Media.Colors.Orange.ToUInt32();
+            color = Settings.Data.AccentColor = Colors.Orange.ToUInt32();
         }
         FluentTheme.CustomAccentColor = Color.FromUInt32(color);
     }

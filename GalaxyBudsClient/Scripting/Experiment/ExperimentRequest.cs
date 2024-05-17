@@ -46,15 +46,17 @@ public class ExperimentRequest
 public static class ExperimentRequestFilters
 {
     private const string PublicSigningKey =
-          @"-----BEGIN PUBLIC KEY-----
-            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmPvttLEiqvE9alr32EEe
-            8FBNfvYSi+sGWpSDwCpcc1g2rcKgTV9tPHXtF76AAu/htkUGxb/0KVUGKquLbpq1
-            10XGnQILO5z0ivvBCiekeEO2GV+CFzIS5OmFdMt5A7cVzHrGFQ3QVutmJP+8N6wU
-            kXFluL/iaBEGKbFOoRfAsk99dyVRDHolIXA7Ueb5ksEyehZNFTmr9CrEmo3rcLSe
-            PkqQBFkYu3w14qspP9mw0UwreNf2diPpVTMIOXmX+6FDu2R+vaK3sq90UILEXQXc
-            wGf54D0Q5oRjJu0HOYPEayAxNK7h7buOXK7Ymct1yamuqS2sxlhggIA0advkplzS
-            cwIDAQAB
-            -----END PUBLIC KEY-----";
+        """
+        -----BEGIN PUBLIC KEY-----
+        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmPvttLEiqvE9alr32EEe
+        8FBNfvYSi+sGWpSDwCpcc1g2rcKgTV9tPHXtF76AAu/htkUGxb/0KVUGKquLbpq1
+        10XGnQILO5z0ivvBCiekeEO2GV+CFzIS5OmFdMt5A7cVzHrGFQ3QVutmJP+8N6wU
+        kXFluL/iaBEGKbFOoRfAsk99dyVRDHolIXA7Ueb5ksEyehZNFTmr9CrEmo3rcLSe
+        PkqQBFkYu3w14qspP9mw0UwreNf2diPpVTMIOXmX+6FDu2R+vaK3sq90UILEXQXc
+        wGf54D0Q5oRjJu0HOYPEayAxNK7h7buOXK7Ymct1yamuqS2sxlhggIA0advkplzS
+        cwIDAQAB
+        -----END PUBLIC KEY-----
+        """;
         
     public static ExperimentRequest? VerifyDecode(this ExperimentRequest item)
     {

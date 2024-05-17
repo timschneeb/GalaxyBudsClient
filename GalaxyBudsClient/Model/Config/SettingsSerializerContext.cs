@@ -17,4 +17,4 @@ namespace GalaxyBudsClient.Model.Config;
 [JsonSerializable(typeof(Device))]
 [JsonSerializable(typeof(ObservableCollection<Hotkey>))]
 [JsonSerializable(typeof(ObservableCollection<Device>))]
-public partial class SettingsSerializerContext : JsonSerializerContext {}
+public partial class SettingsSerializerContext : JsonSerializerContext;

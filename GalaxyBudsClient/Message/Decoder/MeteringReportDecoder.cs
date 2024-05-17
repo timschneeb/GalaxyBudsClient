@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using GalaxyBudsClient.Generated.Model.Attributes;
-using Serilog;
 
 namespace GalaxyBudsClient.Message.Decoder;
 

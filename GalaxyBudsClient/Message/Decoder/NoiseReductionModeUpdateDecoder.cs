@@ -1,5 +1,4 @@
-﻿using System;
-using GalaxyBudsClient.Generated.Model.Attributes;
+﻿using GalaxyBudsClient.Generated.Model.Attributes;
 
 namespace GalaxyBudsClient.Message.Decoder;
 

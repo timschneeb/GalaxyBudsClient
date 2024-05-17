@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Controls;
+using Avalonia.Threading;
 using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Message;
@@ -267,7 +268,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
     {
         if (alternative != AlternativeModeEnabled)
         {
-            Log.Error($"BluetoothImpl: Connection attempt in wrong mode {alternative}");
+            Log.Error("BluetoothImpl: Connection attempt in wrong mode {Alternative}", alternative);
             return false;
         }
         // Create new cancellation token source if the previous one has already been used
@@ -394,7 +395,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         try
         {
             var data = msg.Msg.Encode(true);
-            Log.Verbose($"<< Outgoing (alt): {msg}");
+            Log.Verbose("<< Outgoing (alt): {Msg}", msg);
             await _backend.SendAsync(data);
         }
         catch (BluetoothException ex)
@@ -465,9 +466,15 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
 
     private void OnRfcommConnected(object? sender, EventArgs e)
     {
+        if(!HasValidDevice)
+        {
+            Log.Error("BluetoothImpl: Suppressing Connected event, device not properly registered");
+            return;
+        }
+        
         _ = Task.Delay(150).ContinueWith(_ =>
         {
-            if (HasValidDevice)
+            Dispatcher.UIThread.Post(() =>
             {
                 if (AlternativeModeEnabled)
                 {
@@ -479,11 +486,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
                     IsConnected = true;
                     Connected?.Invoke(this, EventArgs.Empty);
                 }
-            }
-            else
-            {
-                Log.Error("BluetoothImpl: Suppressing Connected event, device not properly registered");
-            }
+            });
         });
     }
     
@@ -566,7 +569,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         }
         catch (Exception ex)
         {
-            Log.Error("Failed processing packet {ex}", ex);
+            Log.Error(ex, "Failed processing packet");
         }
     }
 }

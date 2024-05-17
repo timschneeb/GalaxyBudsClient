@@ -3,7 +3,6 @@
         xmlns:ui="using:FluentAvalonia.UI.Controls"
         xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
         xmlns:markupExtensions="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
-        xmlns:constants="clr-namespace:GalaxyBudsClient.Model.Constants"
         xmlns:system="clr-namespace:System;assembly=System.Runtime">
 
     <!-- Fixes some display bugs on macOS -->

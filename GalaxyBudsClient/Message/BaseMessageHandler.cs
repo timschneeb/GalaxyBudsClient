@@ -1,3 +1,3 @@
 ﻿namespace GalaxyBudsClient.Message;
 
-public abstract class BaseMessageHandler : MessageAsDictionary {}
+public abstract class BaseMessageHandler : MessageAsDictionary;

@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Runtime.InteropServices;
 using GalaxyBudsClient.Model.Constants;
@@ -7,6 +8,7 @@ using Serilog;
 
 namespace GalaxyBudsClient.Platform;
 
+[SuppressMessage("ReSharper", "InconsistentNaming")]
 public static class PlatformUtils
 {
     public enum Platforms
@@ -34,19 +36,10 @@ public static class PlatformUtils
         get
         {
             if (IsWindows)
-            {
                 return Platforms.Windows;
-            }
             if (IsLinux)
-            {
                 return Platforms.Linux;
-            }
-            if (IsOSX)
-            {
-                return Platforms.OSX;
-            }
-
-            return Platforms.Other;
+            return IsOSX ? Platforms.OSX : Platforms.Other;
         }
     }
         
@@ -64,8 +57,8 @@ public static class PlatformUtils
 #pragma warning disable CA1416
                 var release = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion",
                     "ReleaseId", "")?.ToString();
-                var major = Convert.ToInt32(release?.Substring(0, 2));
-                var minor = Convert.ToInt32(release?.Substring(2, 2));
+                var major = Convert.ToInt32(release?[..2]);
+                var minor = Convert.ToInt32(release?[2..4]);
                 return major >= 18 && minor >= 03;
 #pragma warning restore CA1416
             }

@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Avalonia.Input;
 using GalaxyBudsClient.Generated.Model.Attributes;
 
@@ -14,6 +15,7 @@ public enum ModifierKeys : uint
 }
     
 [Flags, CompiledEnum]
+[SuppressMessage("ReSharper", "InconsistentNaming")]
 public enum Keys
 {
     None = 0x0,

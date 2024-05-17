@@ -1,10 +1,8 @@
 using System;
-using Avalonia;
 using Avalonia.Data;
 using Avalonia.Markup.Xaml;
 using GalaxyBudsClient.Interface.Converters;
 using GalaxyBudsClient.Model.Config;
-using GalaxyBudsClient.Utils.Interface;
 
 namespace GalaxyBudsClient.Interface.MarkupExtensions;
 

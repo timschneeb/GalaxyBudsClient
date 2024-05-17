@@ -4,7 +4,6 @@ using GalaxyBudsClient.Interface.Controls;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
-using GalaxyBudsClient.Platform;
 
 namespace GalaxyBudsClient.Interface.Pages;
 
