@@ -48,7 +48,7 @@ Right: {1}</td></tr>
 <tr><td><code>devsel_manual_pair_description</code></td><td>Make sure your earbuds have already been paired. If they are still not recognized, try using the manual connection option.</td></tr>
 <tr><td><code>devsel_manual_pair</code></td><td>Manual connection</td></tr>
 <tr><td><code>devsel_winrt_title</code></td><td>Use alternative Bluetooth backend</td></tr>
-<tr><td><code>devsel_winrt</code></td><td>Much better stability, but may not work on all PCs with some Bluetooth adapters</td></tr>
+<tr><td><code>devsel_winrt</code></td><td>Much better stability, but may not work on all PCs with some Bluetooth adapters (A restart may be required!)</td></tr>
 <tr><td><code>devices_header</code></td><td>Paired devices</td></tr>
 <tr><td><code>devices_new</code></td><td>New</td></tr>
 <tr><td><code>devices_new_long</code></td><td>Pair new device</td></tr>

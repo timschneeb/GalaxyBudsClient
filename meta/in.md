@@ -96,7 +96,7 @@ Right: {1}</td></tr>
 <tr><td><code>devsel_nodevices</code></td><td>Please connect and pair your earbuds first</td></tr>
 <tr><td><code>devsel_nodevices_title</code></td><td>No paired devices found</td></tr>
 <tr><td><code>devsel_winrt_title</code></td><td>Use alternative Bluetooth backend</td></tr>
-<tr><td><code>devsel_winrt</code></td><td>Much better stability, but may not work on all PCs with some Bluetooth adapters</td></tr>
+<tr><td><code>devsel_winrt</code></td><td>Much better stability, but may not work on all PCs with some Bluetooth adapters (A restart may be required!)</td></tr>
 <tr><td><code>devices_header</code></td><td>Paired devices</td></tr>
 <tr><td><code>devices_new</code></td><td>New</td></tr>
 <tr><td><code>devices_new_long</code></td><td>Pair new device</td></tr>
