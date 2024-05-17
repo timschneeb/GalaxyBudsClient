@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using GalaxyBudsClient.Platform.Interfaces;
+using GalaxyBudsClient.Platform.Model;
 
 #pragma warning disable CS0067
 

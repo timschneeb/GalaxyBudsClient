@@ -9,6 +9,7 @@ using GalaxyBudsClient.Interface.ViewModels.Dialogs;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Platform.Interfaces;
+using GalaxyBudsClient.Platform.Model;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 

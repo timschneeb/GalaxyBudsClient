@@ -11,7 +11,7 @@ using Windows.Networking.Sockets;
 using Windows.Storage.Streams;
 using GalaxyBudsClient.Platform.Interfaces;
 using Serilog;
-using BluetoothDevice = GalaxyBudsClient.Platform.Interfaces.BluetoothDevice;
+using BluetoothDevice = GalaxyBudsClient.Platform.Model.BluetoothDevice;
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
 #pragma warning disable CS0169 // Field is never used
 

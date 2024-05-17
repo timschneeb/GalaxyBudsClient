@@ -11,5 +11,5 @@ public class LinuxPlatformImplCreator : IPlatformImplCreator
     public IHotkeyBroadcast CreateHotkeyBroadcast() => new HotkeyBroadcast();
     public IHotkeyReceiver CreateHotkeyReceiver() => new HotkeyReceiver();
     public IMediaKeyRemote CreateMediaKeyRemote() => new MediaKeyRemote();
-    public INotificationListener? CreateNotificationListener() => null;
+    public INotificationListener CreateNotificationListener() => new NotificationListener();
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Windows.Devices.Enumeration;
 using GalaxyBudsClient.Platform.Interfaces;
+using GalaxyBudsClient.Platform.Model;
 
 namespace GalaxyBudsClient.Platform.WindowsRT
 {
@@ -18,7 +19,7 @@ namespace GalaxyBudsClient.Platform.WindowsRT
         public override bool IsConnected => (bool) (DeviceInfo.Properties["System.Devices.Aep.IsConnected"] ?? false);
         public override Guid[]? ServiceUuids => _services?.ToArray();
 
-        public void Update(DeviceInformationUpdate? update, IEnumerable<Guid> services)
+        public void Update(DeviceInformationUpdate? update, IEnumerable<Guid>? services)
         {
             if (update == null)
             {

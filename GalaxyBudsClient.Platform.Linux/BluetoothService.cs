@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 using GalaxyBudsClient.Platform.Interfaces;
+using GalaxyBudsClient.Platform.Model;
 using Serilog;
 using ThePBone.BlueZNet;
 using ThePBone.BlueZNet.Interop;

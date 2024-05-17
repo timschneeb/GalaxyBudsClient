@@ -53,7 +53,8 @@ public partial class MainView : UserControl
         new RenamePageViewModel(),
         new FmmConfigPageViewModel(),
         new UsageReportPageViewModel(),
-        new BatteryHistoryPageViewModel()
+        new BatteryHistoryPageViewModel(),
+        new NotificationReaderPageViewModel()
     ];
 
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)

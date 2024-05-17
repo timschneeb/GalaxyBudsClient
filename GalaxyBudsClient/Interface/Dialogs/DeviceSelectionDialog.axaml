@@ -10,6 +10,7 @@
              xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
              xmlns:interfaces="clr-namespace:GalaxyBudsClient.Platform.Interfaces;assembly=GalaxyBudsClient.Platform"
+             xmlns:model="clr-namespace:GalaxyBudsClient.Platform.Model;assembly=GalaxyBudsClient.Platform"
              mc:Ignorable="d"
              Padding="0, 5, 0, 0"
              x:CompileBindings="True"
@@ -35,7 +36,7 @@
                          IsVisible="{Binding !NoDevices}"
                          Name="DevList">
                     <ListBox.ItemTemplate>
-                        <DataTemplate x:DataType="interfaces:BluetoothDevice">
+                        <DataTemplate x:DataType="model:BluetoothDevice">
                             <Border Background="Transparent" PointerPressed="OnListItemPressed">
                                 <Panel>
                                     <StackPanel Spacing="4" Margin="4 10" VerticalAlignment="Center">
