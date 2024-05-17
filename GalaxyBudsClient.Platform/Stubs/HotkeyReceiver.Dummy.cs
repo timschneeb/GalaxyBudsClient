@@ -23,7 +23,7 @@ public class DummyHotkeyReceiver : IHotkeyReceiver
     {
         Log.Warning("Dummy.HotkeyReceiver: Platform not supported");
     }
-
+    
     public event EventHandler<IHotkey>? HotkeyPressed;
 
     public void Dispose()

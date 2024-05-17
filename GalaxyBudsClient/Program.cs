@@ -48,7 +48,7 @@ internal static class Program
         StartedAt = Stopwatch.GetTimestamp();
      
 #if Windows
-        ThePBone.Interop.Win32.WindowsUtils.AttachConsole();
+        GalaxyBudsClient.Platform.Windows.WindowsUtils.AttachConsole();
 #endif
 
         var logPath = PlatformUtils.CombineDataPath("application.log");

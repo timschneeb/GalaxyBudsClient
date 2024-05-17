@@ -8,6 +8,7 @@ using GalaxyBudsClient.Platform.Linux;
 using GalaxyBudsClient.Platform.OSX;
 #endif
 #if Windows
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Platform.Windows;
 using GalaxyBudsClient.Platform.WindowsRT;
 #endif
