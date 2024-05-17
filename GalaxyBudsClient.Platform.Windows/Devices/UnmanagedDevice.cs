@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using InTheHand.Net.Bluetooth;
 using InTheHand.Net.Bluetooth.Msft;
 
-namespace GalaxyBudsClient.Bluetooth.Windows.Devices
+namespace GalaxyBudsClient.Platform.Windows.Devices
 {
     // ReSharper disable InconsistentNaming
 #pragma warning disable 169, 649

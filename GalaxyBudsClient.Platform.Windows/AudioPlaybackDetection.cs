@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using Serilog;
 
-namespace GalaxyBudsClient.Bluetooth.Windows
+namespace GalaxyBudsClient.Platform.Windows
 {
     public static class AudioPlaybackDetection
     {

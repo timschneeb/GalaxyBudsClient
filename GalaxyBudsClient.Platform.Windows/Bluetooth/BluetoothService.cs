@@ -6,8 +6,8 @@ using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using GalaxyBudsClient.Bluetooth.Windows.Devices;
-using GalaxyBudsClient.Bluetooth.Windows.Utils;
+using GalaxyBudsClient.Platform.Windows.Devices;
+using GalaxyBudsClient.Platform.Windows.Utils;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Platform.Interfaces;
 using InTheHand.Net.Bluetooth;
@@ -15,7 +15,7 @@ using InTheHand.Net.Bluetooth.Msft;
 using InTheHand.Net.Sockets;
 using Serilog;
 
-namespace GalaxyBudsClient.Bluetooth.Windows.Bluetooth
+namespace GalaxyBudsClient.Platform.Windows.Bluetooth
 {
     public class BluetoothService : IBluetoothService
     {

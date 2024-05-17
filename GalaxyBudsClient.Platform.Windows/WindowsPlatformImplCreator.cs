@@ -1,5 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
-using GalaxyBudsClient.Bluetooth.Windows.Bluetooth;
+using GalaxyBudsClient.Platform.Windows.Bluetooth;
 using GalaxyBudsClient.Platform.Interfaces;
 using GalaxyBudsClient.Platform.Windows.Impl;
 

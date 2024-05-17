@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GalaxyBudsClient.Bluetooth.Windows
+namespace GalaxyBudsClient.Platform.Windows
 {
      partial class WndProcClient
     {

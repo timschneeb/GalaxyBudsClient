@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace GalaxyBudsClient.Bluetooth.Windows
+namespace GalaxyBudsClient.Platform.Windows
 {
     public static class WindowsUtils
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Avalonia.Threading;
-using GalaxyBudsClient.Bluetooth.Windows;
+using GalaxyBudsClient.Platform.Windows;
 using GalaxyBudsClient.Platform.Interfaces;
 using GalaxyBudsClient.Platform.Model;
 using Serilog;

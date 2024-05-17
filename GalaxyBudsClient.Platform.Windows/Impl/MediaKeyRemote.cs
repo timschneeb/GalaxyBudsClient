@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using GalaxyBudsClient.Bluetooth.Windows;
+using GalaxyBudsClient.Platform.Windows;
 using GalaxyBudsClient.Platform.Interfaces;
 using Serilog;
 using WindowsInput;

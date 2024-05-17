@@ -1,6 +1,6 @@
 ﻿using InTheHand.Net;
 
-namespace GalaxyBudsClient.Bluetooth.Windows.Utils
+namespace GalaxyBudsClient.Platform.Windows.Utils
 {
     internal static class MacUtils
     {

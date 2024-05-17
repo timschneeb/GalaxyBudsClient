@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GalaxyBudsClient.Bluetooth.Windows.Utils
+namespace GalaxyBudsClient.Platform.Windows.Utils
 {
     internal class PointerUtils
     {

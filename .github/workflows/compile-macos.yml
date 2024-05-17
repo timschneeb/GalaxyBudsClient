@@ -30,10 +30,10 @@ jobs:
     - name: Build NativeInterop.xcodeproj
       uses: sersoft-gmbh/xcodebuild-action@v3
       with:
-        project: ThePBone.OSX.Native/Native/NativeInterop.xcodeproj
+        project: GalaxyBudsClient.Platform.OSX/Native/NativeInterop.xcodeproj
         scheme: NativeInterop
         destination: platform=macOS
-        build-settings: CONFIGURATION_BUILD_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/ThePBone.OSX.Native/Native/Build/Release CONFIGURATION_TEMP_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/ThePBone.OSX.Native/Native/Build/Intermediates.noindex
+        build-settings: CONFIGURATION_BUILD_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/GalaxyBudsClient.Platform.OSX/Native/Build/Release CONFIGURATION_TEMP_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/GalaxyBudsClient.Platform.OSX/Native/Build/Intermediates.noindex
         action: build
 
     - name: Restore workloads
@@ -67,10 +67,10 @@ jobs:
     - name: Build NativeInterop.xcodeproj
       uses: sersoft-gmbh/xcodebuild-action@v3
       with:
-        project: ThePBone.OSX.Native/Native/NativeInterop.xcodeproj
+        project: GalaxyBudsClient.Platform.OSX/Native/NativeInterop.xcodeproj
         scheme: NativeInterop
         destination: platform=macOS,arch=x86_64
-        build-settings: ARCHS=x86_64 ONLY_ACTIVE_ARCH=NO CONFIGURATION_BUILD_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/ThePBone.OSX.Native/Native/Build/Release CONFIGURATION_TEMP_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/ThePBone.OSX.Native/Native/Build/Intermediates.noindex
+        build-settings: ARCHS=x86_64 ONLY_ACTIVE_ARCH=NO CONFIGURATION_BUILD_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/GalaxyBudsClient.Platform.OSX/Native/Build/Release CONFIGURATION_TEMP_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/GalaxyBudsClient.Platform.OSX/Native/Build/Intermediates.noindex
         action: build
        
     - name: Restore workloads
@@ -104,10 +104,10 @@ jobs:
     - name: Build NativeInterop.xcodeproj
       uses: sersoft-gmbh/xcodebuild-action@v3
       with:
-        project: ThePBone.OSX.Native/Native/NativeInterop.xcodeproj
+        project: GalaxyBudsClient.Platform.OSX/Native/NativeInterop.xcodeproj
         scheme: NativeInterop
         destination: platform=macOS,arch=arm64
-        build-settings: ARCHS=arm64 ONLY_ACTIVE_ARCH=NO CONFIGURATION_BUILD_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/ThePBone.OSX.Native/Native/Build/Release CONFIGURATION_TEMP_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/ThePBone.OSX.Native/Native/Build/Intermediates.noindex
+        build-settings: ARCHS=arm64 ONLY_ACTIVE_ARCH=NO CONFIGURATION_BUILD_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/GalaxyBudsClient.Platform.OSX/Native/Build/Release CONFIGURATION_TEMP_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/GalaxyBudsClient.Platform.OSX/Native/Build/Intermediates.noindex
         action: build
 
     - name: Restore workloads

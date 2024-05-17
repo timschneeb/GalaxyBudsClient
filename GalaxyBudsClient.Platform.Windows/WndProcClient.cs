@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Serilog;
 
-namespace GalaxyBudsClient.Bluetooth.Windows
+namespace GalaxyBudsClient.Platform.Windows
 {
 
     public partial class WndProcClient

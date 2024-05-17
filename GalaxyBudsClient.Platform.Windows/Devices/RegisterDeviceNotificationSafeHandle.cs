@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Win32.SafeHandles;
 
-namespace GalaxyBudsClient.Bluetooth.Windows.Devices
+namespace GalaxyBudsClient.Platform.Windows.Devices
 {
     sealed class RegisterDeviceNotificationSafeHandle : SafeHandleZeroOrMinusOneIsInvalid
     {

@@ -2,13 +2,13 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using GalaxyBudsClient.Bluetooth.Windows.Utils;
+using GalaxyBudsClient.Platform.Windows.Utils;
 using InTheHand.Net.Bluetooth;
 using InTheHand.Net.Bluetooth.Msft;
 using Serilog;
-using static GalaxyBudsClient.Bluetooth.Windows.Devices.UnmanagedDevice;
+using static GalaxyBudsClient.Platform.Windows.Devices.UnmanagedDevice;
 
-namespace GalaxyBudsClient.Bluetooth.Windows.Devices
+namespace GalaxyBudsClient.Platform.Windows.Devices
 {
     // ReSharper disable InconsistentNaming
 #pragma warning disable 169, 649
