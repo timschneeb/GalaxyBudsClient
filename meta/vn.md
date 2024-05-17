@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>55%</td><td>229 missing string(s)</td></tr>
+<tr><td>54%</td><td>232 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -180,8 +180,11 @@ Make sure both earbuds are turned on before continuing.</td></tr>
 <tr><td><code>adv_callpath_desc</code></td><td>Play calls through your earbuds when they're in your ears and through your computer speaker when they're not</td></tr>
 <tr><td><code>adv_extra_clear_call</code></td><td>Sharpen call sound</td></tr>
 <tr><td><code>adv_extra_clear_call_desc</code></td><td>Boost call clarity. Most useful when you're somewhere noisy and using earbuds. Uses more battery.</td></tr>
+<tr><td><code>adv_notification</code></td><td>Read notifications aloud</td></tr>
+<tr><td><code>adv_notification_desc</code></td><td>Use text-to-speech to read incoming notifications</td></tr>
 <tr><td><code>adv_bixby_remap</code></td><td>Remap Bixby wakeup</td></tr>
 <tr><td><code>adv_bixby_remap_desc</code></td><td>Define what should happen when you say 'Hey Bixby!'</td></tr>
+<tr><td><code>notification_header</code></td><td>Notifications</td></tr>
 <tr><td><code>bixby_remap_enable</code></td><td>Enable Bixby wakeup</td></tr>
 <tr><td><code>bixby_remap_enable_desc</code></td><td>Launch Bixby on your Samsung phone or execute a custom action on this PC when woken up</td></tr>
 <tr><td><code>bixby_remap_lang</code></td><td>Bixby wakeup language</td></tr>

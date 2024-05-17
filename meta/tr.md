@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>83%</td><td>83 missing string(s)</td></tr>
+<tr><td>83%</td><td>86 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -102,6 +102,9 @@ Measure level: Select a vertical span to measure the battery level difference be
 <tr><td><code>smart_things_find_write_ok_desc</code></td><td>The SmartThings Find configuration data has been removed.</td></tr>
 <tr><td><code>nc_one_earbud</code></td><td>Noise controls with one earbud</td></tr>
 <tr><td><code>nc_one_earbud_description</code></td><td>Noise controls normally require two earbuds to prevent discomfort, enable this to allow it with only one earbud</td></tr>
+<tr><td><code>adv_notification</code></td><td>Read notifications aloud</td></tr>
+<tr><td><code>adv_notification_desc</code></td><td>Use text-to-speech to read incoming notifications</td></tr>
+<tr><td><code>notification_header</code></td><td>Notifications</td></tr>
 <tr><td><code>rename</code></td><td>Rename earbuds</td></tr>
 <tr><td><code>rename_desc</code></td><td>This will rename earbuds for all devices.</td></tr>
 <tr><td><code>rename_warn</code></td><td>Renaming your earbuds may not be possible using official apps as they restrict it to Samsung smartphones, which means you may need this app to reset the personalized name. The name change may not be detected by devices until you un-pair and re-pair your earbuds.</td></tr>

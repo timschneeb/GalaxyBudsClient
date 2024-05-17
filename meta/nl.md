@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>67%</td><td>168 missing string(s)</td></tr>
+<tr><td>66%</td><td>171 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -178,6 +178,9 @@ Make sure both earbuds are turned on before continuing.</td></tr>
 <tr><td><code>adv_callpath_desc</code></td><td>Play calls through your earbuds when they're in your ears and through your computer speaker when they're not</td></tr>
 <tr><td><code>adv_extra_clear_call</code></td><td>Sharpen call sound</td></tr>
 <tr><td><code>adv_extra_clear_call_desc</code></td><td>Boost call clarity. Most useful when you're somewhere noisy and using earbuds. Uses more battery.</td></tr>
+<tr><td><code>adv_notification</code></td><td>Read notifications aloud</td></tr>
+<tr><td><code>adv_notification_desc</code></td><td>Use text-to-speech to read incoming notifications</td></tr>
+<tr><td><code>notification_header</code></td><td>Notifications</td></tr>
 <tr><td><code>bixby_remap_lang_desc</code></td><td>Change the language used for the activation phrase</td></tr>
 <tr><td><code>bixby_remap_action_desc</code></td><td>Define what should happen when you activate Bixby on this device</td></tr>
 <tr><td><code>credits_kofi</code></td><td>Visit my ko-fi page to support me!</td></tr>
