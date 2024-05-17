@@ -204,7 +204,7 @@ public partial class MainWindow : StyledAppWindow
             }
 
 #if OSX
-            GalaxyBudsClient.Platform.OSX.Unmanaged.AppUtils.setHideInDock(false);
+            GalaxyBudsClient.Platform.OSX.AppUtils.setHideInDock(false);
 #endif
             Show();
                 
@@ -218,7 +218,7 @@ public partial class MainWindow : StyledAppWindow
     private void BringToTray()
     {
 #if OSX
-        GalaxyBudsClient.Platform.OSX.Unmanaged.AppUtils.setHideInDock(true);
+        GalaxyBudsClient.Platform.OSX.AppUtils.setHideInDock(true);
 #endif
         Hide();
     }
