@@ -54,9 +54,16 @@ internal static class Program
         var logPath = PlatformUtils.CombineDataPath("application.log");
         var prevLogPath = PlatformUtils.CombineDataPath("application-prev.log");
         // Rotate logs on startup
-        if (File.Exists(logPath))
-            File.Move(logPath, prevLogPath, true);
-        
+        try
+        {
+            if (File.Exists(logPath))
+                File.Move(logPath, prevLogPath, true);
+        }
+        catch (Exception)
+        {
+            // Windows: exception is thrown when two instances are launched, because the first one is still using the log file
+        }
+
         var config = new LoggerConfiguration()
             .WriteTo.File(logPath)
             .WriteTo.Console();
