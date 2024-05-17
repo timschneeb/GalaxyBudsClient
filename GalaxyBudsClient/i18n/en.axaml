@@ -178,7 +178,7 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="devsel_nodevices_title">No paired devices found</sys:String>
     <sys:String x:Key="devsel_invalid_selection">Please select a valid device</sys:String>
     <sys:String x:Key="devsel_winrt_title">Use alternative Bluetooth backend</sys:String>
-    <sys:String x:Key="devsel_winrt">Much better stability, but may not work on all PCs with some Bluetooth adapters</sys:String>
+    <sys:String x:Key="devsel_winrt">Much better stability, but may not work on all PCs with some Bluetooth adapters (A restart may be required!)</sys:String>
 
     <!--Device page-->
     <sys:String x:Key="devices_header">Paired devices</sys:String>

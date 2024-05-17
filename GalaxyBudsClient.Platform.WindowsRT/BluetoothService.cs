@@ -72,21 +72,25 @@ namespace GalaxyBudsClient.Platform.WindowsRT
                     requestedProperties,
                     DeviceInformationKind.AssociationEndpoint);
 
-                _deviceWatcher.Added += (watcher, deviceInfo) =>
+                _deviceWatcher.Added += async (watcher, deviceInfo) =>
                 {
                     Log.Debug("WindowsRT.BluetoothService: Device added: {DeviceInfoId}", deviceInfo.Id);
                     if (deviceInfo.Name != string.Empty)
                     {
-                        _deviceCache?.Add(new BluetoothDeviceRt(deviceInfo));
+                        var device = await global::Windows.Devices.Bluetooth.BluetoothDevice.FromIdAsync(deviceInfo.Id).AsTask();
+                        var services = await device.GetRfcommServicesAsync(BluetoothCacheMode.Cached).AsTask();
+                        var knownServices = services?.Services?.Select(x => x.ServiceId.Uuid);
+                    
+                        _deviceCache.Add(new BluetoothDeviceRt(deviceInfo, knownServices));
                     }
                 };
                 
 #if Windows
-                _deviceWatcher.Updated += (watcher, deviceInfoUpdate) =>
+                _deviceWatcher.Updated += async (watcher, deviceInfoUpdate) =>
                 {
                     Log.Debug("WindowsRT.BluetoothService: Device updated: {Id}", deviceInfoUpdate?.Id);
 
-                    _deviceCache?.Where(x => x?.Id == deviceInfoUpdate?.Id).ToList().ForEach(async x =>
+                    _deviceCache.Where(x => x?.Id == deviceInfoUpdate?.Id).ToList().ForEach(async x =>
                     {
                         if (string.Equals(x.Address, _bluetoothDevice?.BluetoothAddressAsString(),
                                 StringComparison.CurrentCultureIgnoreCase) &&
@@ -106,9 +110,18 @@ namespace GalaxyBudsClient.Platform.WindowsRT
                             }
                         }
                     });
+
+                    IEnumerable<Guid>? knownServices = null;
+                    if (deviceInfoUpdate != null)
+                    {
+                        var device = await global::Windows.Devices.Bluetooth.BluetoothDevice.FromIdAsync(deviceInfoUpdate.Id).AsTask();
+                        var services = await device.GetRfcommServicesAsync(BluetoothCacheMode.Cached).AsTask();
+                        knownServices = services?.Services?.Select(x => x.ServiceId.Uuid);
+                    }
+                    
                     _deviceCache?.Where(x => deviceInfoUpdate?.Id == x?.Id)
                         .ToList()
-                        .ForEach(x => x?.Update(deviceInfoUpdate ?? null));
+                        .ForEach(x => x.Update(deviceInfoUpdate ?? null, knownServices));
                 };
 
                 _deviceWatcher.Removed += (watcher, deviceInfoUpdate) =>
@@ -380,7 +393,6 @@ namespace GalaxyBudsClient.Platform.WindowsRT
         public async Task<BluetoothDevice[]> GetDevicesAsync()
         {
             await Task.Delay(100);
-            // TODO Add UUIDs to the device cache
             return _deviceCache.Cast<BluetoothDevice>().ToArray();
         }
 

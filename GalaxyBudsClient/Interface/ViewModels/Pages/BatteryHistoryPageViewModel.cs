@@ -37,7 +37,6 @@ public class BatteryHistoryPageViewModel : SubPageViewModelBase
     [Reactive] public BatteryHistoryTimeSpans SelectedTimeSpan { set; get; } = BatteryHistoryTimeSpans.Last12Hours;
     [Reactive] public BatteryHistoryTools SelectedTool { set; get; } = BatteryHistoryTools.PanAndZoom;
 
-    // TODO show warning if not enough data is available
     public BatteryHistoryPageViewModel()
     {
         PropertyChanged += OnPropertyChanged;

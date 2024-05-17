@@ -21,7 +21,7 @@ namespace GalaxyBudsClient.Platform.Interfaces
         public virtual bool IsConnected { get; } = isConnected;
         public virtual bool IsPaired { get; } = isPaired;
         public BluetoothCoD Class { get; } = cod;
-        public Guid[]? ServiceUuids { get; } = serviceUuids;
+        public virtual Guid[]? ServiceUuids { get; } = serviceUuids;
 
         public static IEnumerable<BluetoothDevice> DummyDevices()
         {
