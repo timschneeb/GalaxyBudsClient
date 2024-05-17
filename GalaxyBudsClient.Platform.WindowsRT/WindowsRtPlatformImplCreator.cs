@@ -7,5 +7,5 @@ namespace GalaxyBudsClient.Platform.WindowsRT;
 [SuppressMessage("ReSharper", "UnusedType.Global")]
 public class WindowsRtPlatformImplCreator : WindowsPlatformImplCreator
 {
-    public override IBluetoothService? CreateBluetoothService() => new BluetoothService();
+    public override IBluetoothService CreateBluetoothService() => new BluetoothService();
 }

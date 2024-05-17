@@ -35,7 +35,7 @@ namespace GalaxyBudsClient.Platform.WindowsRT
         private DataWriter? _writer;
         private RfcommDeviceService? _service;
 #if Windows
-        private Bluetooth.Windows.Devices.Bluetooth.BluetoothDevice? _bluetoothDevice;
+        private global::Windows.Devices.Bluetooth.BluetoothDevice? _bluetoothDevice;
 #endif
 
         private Task? _loop; 
@@ -205,7 +205,7 @@ namespace GalaxyBudsClient.Platform.WindowsRT
                 // If not, try to get the Bluetooth device
                 try
                 {
-                    _bluetoothDevice = await Bluetooth.Windows.Devices.Bluetooth.BluetoothDevice.FromIdAsync(matches[0].Id);
+                    _bluetoothDevice = await global::Windows.Devices.Bluetooth.BluetoothDevice.FromIdAsync(matches[0].Id);
                 }
                 catch (Exception ex)
                 {
@@ -379,7 +379,7 @@ namespace GalaxyBudsClient.Platform.WindowsRT
 
         public async Task<BluetoothDevice[]> GetDevicesAsync()
         {
-            await Task.Delay(10);
+            await Task.Delay(100);
             // TODO Add UUIDs to the device cache
             return _deviceCache.Cast<BluetoothDevice>().ToArray();
         }

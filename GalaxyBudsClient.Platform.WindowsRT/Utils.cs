@@ -1,5 +1,9 @@
 using System;
+
+#if Windows
 using System.Text.RegularExpressions;
+using Windows.Devices.Bluetooth;
+#endif
 
 namespace GalaxyBudsClient.Platform.WindowsRT
 {
@@ -13,7 +17,7 @@ namespace GalaxyBudsClient.Platform.WindowsRT
         }
 
 #if Windows
-        public static string BluetoothAddressAsString(this Bluetooth.Windows.Devices.Bluetooth.BluetoothDevice dev)
+        public static string BluetoothAddressAsString(this BluetoothDevice dev)
         {
             return Regex.Replace(dev.BluetoothAddress.ToString("X12"), 
                 "(.{2})(.{2})(.{2})(.{2})(.{2})(.{2})",
