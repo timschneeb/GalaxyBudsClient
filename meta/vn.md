@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>55%</td><td>228 missing string(s)</td></tr>
+<tr><td>55%</td><td>229 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -125,6 +125,7 @@ The overlay data may be hard to understand when viewing large time ranges. Hover
 Measure time: Select a horizontal span to measure the elapsed time between the start and end of the selection.
         
 Measure level: Select a vertical span to measure the battery level difference between the start and end of the selection.</td></tr>
+<tr><td><code>settings_save_fail_no_access</code></td><td>Failed to save settings. Access to the configuration file has been denied by the operating system. Please check the file permissions for {0}.</td></tr>
 <tr><td><code>settings_appearance</code></td><td>Appearance</td></tr>
 <tr><td><code>settings_blurstrength</code></td><td>Window blur strength</td></tr>
 <tr><td><code>settings_blurstrength_description</code></td><td>Only compatible with dark mode. Not supported on all systems</td></tr>

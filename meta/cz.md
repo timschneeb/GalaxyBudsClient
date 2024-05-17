@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>83%</td><td>82 missing string(s)</td></tr>
+<tr><td>83%</td><td>83 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -84,6 +84,7 @@ The overlay data may be hard to understand when viewing large time ranges. Hover
 Measure time: Select a horizontal span to measure the elapsed time between the start and end of the selection.
         
 Measure level: Select a vertical span to measure the battery level difference between the start and end of the selection.</td></tr>
+<tr><td><code>settings_save_fail_no_access</code></td><td>Failed to save settings. Access to the configuration file has been denied by the operating system. Please check the file permissions for {0}.</td></tr>
 <tr><td><code>fmg_smart_things_find_manage</code></td><td>Manage SmartThings Find data</td></tr>
 <tr><td><code>fmg_smart_things_find_manage_desc</code></td><td>View and manage your SmartThings Find data stored on your earbuds</td></tr>
 <tr><td><code>fmg_smart_things_find_open</code></td><td>Open SmartThings Find website</td></tr>
