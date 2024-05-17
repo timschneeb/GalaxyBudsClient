@@ -24,8 +24,9 @@ public class DummyHotkeyReceiver : IHotkeyReceiver
         Log.Warning("Dummy.HotkeyReceiver: Platform not supported");
     }
     
+#pragma warning disable CS0067
     public event EventHandler<IHotkey>? HotkeyPressed;
-
+#pragma warning restore CS0067
     public void Dispose()
     {
             

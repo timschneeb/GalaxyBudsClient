@@ -4,9 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-#if Windows
 using Windows.Devices.Bluetooth;
-#endif
 using Windows.Devices.Bluetooth.Rfcomm;
 using Windows.Devices.Enumeration;
 using Windows.Networking.Sockets;
@@ -34,9 +32,7 @@ namespace GalaxyBudsClient.Platform.WindowsRT
         private StreamSocket? _socket;
         private DataWriter? _writer;
         private RfcommDeviceService? _service;
-#if Windows
         private global::Windows.Devices.Bluetooth.BluetoothDevice? _bluetoothDevice;
-#endif
 
         private Task? _loop; 
         private CancellationTokenSource _readerCancellation = new();
@@ -84,8 +80,7 @@ namespace GalaxyBudsClient.Platform.WindowsRT
                         _deviceCache.Add(new BluetoothDeviceRt(deviceInfo, knownServices));
                     }
                 };
-                
-#if Windows
+               
                 _deviceWatcher.Updated += async (watcher, deviceInfoUpdate) =>
                 {
                     Log.Debug("WindowsRT.BluetoothService: Device updated: {Id}", deviceInfoUpdate?.Id);
@@ -140,7 +135,6 @@ namespace GalaxyBudsClient.Platform.WindowsRT
                     });
                     _deviceCache?.RemoveWhere(x => x?.Id == deviceInfoUpdate?.Id);
                 };
-#endif
 
                 _deviceWatcher.EnumerationCompleted += (watcher, obj) =>
                 {
@@ -214,7 +208,6 @@ namespace GalaxyBudsClient.Platform.WindowsRT
                     return;
                 }
 
-#if Windows
                 // If not, try to get the Bluetooth device
                 try
                 {
@@ -295,7 +288,6 @@ namespace GalaxyBudsClient.Platform.WindowsRT
                             "Target address already in use. Only one app can talk to the Galaxy Buds at a time. " +
                             "Please make sure to close duplicate instances of this app and close all applications that are interacting with the configuration protocol of the earbuds, such as Samsung's official app."));
                 }
-#endif
             }
             catch (Exception ex)
             {

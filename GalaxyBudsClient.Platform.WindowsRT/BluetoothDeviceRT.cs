@@ -6,7 +6,7 @@ using GalaxyBudsClient.Platform.Interfaces;
 
 namespace GalaxyBudsClient.Platform.WindowsRT
 {
-    internal class BluetoothDeviceRt(DeviceInformation info, IEnumerable<Guid> services) : BluetoothDevice(0)
+    internal class BluetoothDeviceRt(DeviceInformation info, IEnumerable<Guid>? services) : BluetoothDevice(0)
     {
         public DeviceInformation DeviceInfo { get; } = info;
         private IEnumerable<Guid>? _services = services;
