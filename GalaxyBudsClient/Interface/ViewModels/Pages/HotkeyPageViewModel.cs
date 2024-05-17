@@ -2,8 +2,8 @@
 using Avalonia.Controls;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Pages;
+using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Config;
-using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform;
 using ReactiveUI.Fody.Helpers;
 using Serilog;
@@ -69,6 +69,6 @@ public class HotkeyPageViewModel : SubPageViewModelBase
 
     private static void SaveChanges()
     {
-        HotkeyReceiver.Instance.Update();
+        HotkeyReceiverManager.Instance.Update();
     }
 }

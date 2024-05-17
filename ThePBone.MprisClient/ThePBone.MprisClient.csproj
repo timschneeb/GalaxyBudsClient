@@ -4,18 +4,13 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <RootNamespace>ThePBone.MprisClient</RootNamespace>
-        <Configurations>Debug;Release;Debug (Local server)</Configurations>
+        <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU</Platforms>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug (Local server)' ">
-      <DebugSymbols Condition=" '$(DebugSymbols)' == '' ">true</DebugSymbols>
-      <Optimize Condition=" '$(Optimize)' == '' ">false</Optimize>
-    </PropertyGroup>
-
+    
     <ItemGroup>
       <PackageReference Include="Serilog" Version="3.1.1" />
       <PackageReference Include="Tmds.DBus" Version="0.16.0" />
     </ItemGroup>
-
 </Project>

@@ -13,26 +13,27 @@ public static class SourceGenerationHelper
     
     public static string GenerateBindingSource(in EnumToGenerate enumToGenerate)
     {
+        // Add filters to the EnumBindingSources
+        var hasIgnoreDataMemberAttribute = enumToGenerate.Names
+            .Any(x => x.Value.AttributeTemplates.Any(n => n.Name == "IgnoreDataMember"));
+        var hasRequiresPlatformAttribute = enumToGenerate.Names
+            .Any(x => x.Value.AttributeTemplates.Any(n => n.Name == "RequiresPlatform"));
+        
         var gen = new CodeGenerator();
         gen.AppendLines($"""
                          {Header}
                          using System;
                          using System.Linq;
                          using Avalonia.Markup.Xaml;
-                         using GalaxyBudsClient.Model.Attributes;
                          using {enumToGenerate.Namespace};
-
+                         {(hasRequiresPlatformAttribute ? "using GalaxyBudsClient.Model.Attributes;" : "")}
+                         
                          namespace GalaxyBudsClient.Interface.MarkupExtensions;
                          """);
         
         gen.EnterScope($"public class {enumToGenerate.Name}BindingSource : MarkupExtension");
         gen.EnterScope("public override object ProvideValue(IServiceProvider? serviceProvider)");
         
-        // Add filters to the EnumBindingSources
-        var hasIgnoreDataMemberAttribute = enumToGenerate.Names
-            .Any(x => x.Value.AttributeTemplates.Any(n => n.Name == "IgnoreDataMember"));
-        var hasRequiresPlatformAttribute = enumToGenerate.Names
-            .Any(x => x.Value.AttributeTemplates.Any(n => n.Name == "RequiresPlatform"));
         gen.AppendLines($"""
                          return {enumToGenerate.Namespace}.{enumToGenerate.ExtName}
                              .GetValues()
@@ -53,8 +54,13 @@ public static class SourceGenerationHelper
     {
         var gen = new CodeGenerator();
         gen.AppendLine(Header);
+
+        var usingDirectives = new[] { "using System;" };
+        if(enumToGenerate.UsedAttributes.Any(x => x is "LocalizableDescription"))
+            usingDirectives = usingDirectives.Concat(new[] { "using GalaxyBudsClient.Utils.Interface;" }).ToArray();
+        
         enumToGenerate.UsingDirectives
-            .Concat(new []{ "using System;", "using GalaxyBudsClient.Utils.Interface;" })
+            .Concat(usingDirectives)
             .Select(x => x.Trim())
             .Distinct()
             .ToList()

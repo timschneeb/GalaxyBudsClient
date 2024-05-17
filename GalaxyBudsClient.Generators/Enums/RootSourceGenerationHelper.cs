@@ -12,7 +12,7 @@ public static class RootSourceGenerationHelper
         namespace GalaxyBudsClient.Generated.Model.Attributes;
 
         [global::System.AttributeUsage(global::System.AttributeTargets.Enum)]
-        public class CompiledEnumAttribute : global::System.Attribute {}
+        internal class CompiledEnumAttribute : global::System.Attribute {}
         """;
 
     public static string GenerateClass(ImmutableArray<EnumToGenerate?> enumsToGenerate)
@@ -33,7 +33,7 @@ public static class RootSourceGenerationHelper
 
                         """);
         
-        gen.EnterScope("public static class CompiledEnums");
+        gen.EnterScope("internal static class CompiledEnums");
         
         // GetDescription
         gen.AppendLines("""

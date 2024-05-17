@@ -25,10 +25,10 @@ public class SettingsPageViewModel : MainPageViewModelBase
 
     public bool IsAutoStartEnabled
     {
-        get => AutoStartHelper.Instance.Enabled;
+        get => PlatformImpl.AutoStart.Enabled;
         set
         {
-            AutoStartHelper.Instance.Enabled = value;
+            PlatformImpl.AutoStart.Enabled = value;
             this.RaisePropertyChanged();
         }
     }

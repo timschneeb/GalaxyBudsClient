@@ -1,6 +1,5 @@
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
-using GalaxyBudsClient.Model.Hotkeys;
 
 namespace GalaxyBudsClient.Model.Config;
 

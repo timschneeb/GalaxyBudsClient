@@ -67,7 +67,6 @@ public class App : Application
         }, DispatcherPriority.Render);
             
         TrayManager.Init();
-        MediaKeyRemote.Init();
         DeviceMessageCache.Init();
         BatteryHistoryManager.Init();
         ScriptManager.Instance.RegisterUserHooks();

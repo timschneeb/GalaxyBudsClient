@@ -4,6 +4,10 @@
     "Debug Generators": {
       "commandName": "DebugRoslynComponent",
       "targetProject": "../GalaxyBudsClient/GalaxyBudsClient.csproj"
+    },  
+    "Debug Generators (Platform)": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "../GalaxyBudsClient.Platform/GalaxyBudsClient.Platform.csproj"
     }
   }
 }

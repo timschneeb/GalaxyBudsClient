@@ -4,11 +4,11 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using FluentAvalonia.UI.Controls;
-using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.ViewModels.Dialogs;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Platform.Interfaces;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 
@@ -66,6 +66,7 @@ public partial class DeviceSelectionDialog : UserControl
 
     public void OnUseWinRtCheckedChanged(object? sender, RoutedEventArgs e)
     {
+        PlatformImpl.SwitchWindowsBackend();
         BluetoothImpl.Reallocate();
         ViewModel.DoRefreshCommand();
     }

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Config.Net;
-using GalaxyBudsClient.Model.Hotkeys;
 using Newtonsoft.Json;
 using Serilog;
 

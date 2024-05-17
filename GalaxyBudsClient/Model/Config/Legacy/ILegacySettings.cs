@@ -2,7 +2,6 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using Config.Net;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Model.Hotkeys;
 
 namespace GalaxyBudsClient.Model.Config.Legacy;
 

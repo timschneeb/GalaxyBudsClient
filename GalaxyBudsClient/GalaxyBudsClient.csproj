@@ -82,14 +82,13 @@
         <PackageReference Include="Avalonia.Svg.Skia" Version="11.1.0-beta1" />
         <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.1.0-beta2.1" />
         <PackageReference Include="AvaloniaHex" Version="0.1.0" />
-        <PackageReference Include="BouncyCastle.Cryptography" Version="2.3.0" />
+        <PackageReference Include="BouncyCastle.Cryptography" Version="2.3.1" />
         <PackageReference Include="CommandLineParser" Version="2.9.2-ci-210" />
         <PackageReference Include="Config.Net" Version="5.2.0" />
         <PackageReference Include="CS-Script" Version="4.8.14" />
         <PackageReference Include="FluentAvalonia.BreadcrumbBar" Version="2.0.2" />
         <PackageReference Include="FluentAvaloniaUI" Version="2.1.0-preview4" />
-        <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="1.1.234-exp" />
-        <PackageReference Include="InputSimulatorCore" Version="1.0.5" />
+        <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="1.1.239" />
         <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0-preview.3.24172.4">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -106,7 +105,6 @@
         <PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
         <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
         <PackageReference Include="Serilog.Sinks.Trace" Version="3.0.0" />
-        <PackageReference Include="SharpHook" Version="5.3.2" />
         <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
         <PackageReference Include="Tmds.DBus" Version="0.16.0" />
     </ItemGroup>
@@ -115,23 +113,22 @@
     <ItemGroup Condition="'$(IsWindows)'=='true'">
         <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.WindowsRT\GalaxyBudsClient.Bluetooth.WindowsRT.csproj" />
         <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Windows\GalaxyBudsClient.Bluetooth.Windows.csproj" />
-        <ProjectReference Include="..\ThePBone.Interop.Win32\ThePBone.Interop.Win32.csproj" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsLinux)'=='true'">
-        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth.Linux\GalaxyBudsClient.Bluetooth.Linux.csproj" />
-        <ProjectReference Include="..\ThePBone.MprisClient\ThePBone.MprisClient.csproj" />
+        <ProjectReference Include="..\GalaxyBudsClient.Platform.Linux\GalaxyBudsClient.Platform.Linux.csproj" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsOSX)'=='true'">
-        <ProjectReference Include="..\ThePBone.OSX.Native\ThePBone.OSX.Native.csproj" />
+        <ProjectReference Include="..\GalaxyBudsClient.Platform.OSX\GalaxyBudsClient.Platform.OSX.csproj" />
     </ItemGroup>
     
     <ItemGroup>
+        <ProjectReference Include="..\GalaxyBudsClient.Platform\GalaxyBudsClient.Platform.csproj" />
+
         <ProjectReference Include="..\GalaxyBudsClient.Generators\GalaxyBudsClient.Generators.csproj">
             <OutputItemType>Analyzer</OutputItemType>
             <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
         </ProjectReference>
-        <ProjectReference Include="..\GalaxyBudsClient.Bluetooth\GalaxyBudsClient.Bluetooth.csproj" />
     </ItemGroup>
 </Project>

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <Configurations>Debug;Release</Configurations>
+        <Platforms>AnyCPU</Platforms>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <ProjectReference Include="..\GalaxyBudsClient.Platform\GalaxyBudsClient.Platform.csproj" />
+        <ProjectReference Include="..\ThePBone.BlueZNet\ThePBone.BlueZNet.csproj" />
+        <ProjectReference Include="..\ThePBone.MprisClient\ThePBone.MprisClient.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Serilog" Version="3.1.1" />
+        <PackageReference Include="SharpHook" Version="5.3.2" />
+        <PackageReference Include="Tmds.DBus" Version="0.16.0" />
+    </ItemGroup>
+</Project>

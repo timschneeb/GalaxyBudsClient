@@ -9,7 +9,7 @@ using Avalonia.Threading;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface;
 using GalaxyBudsClient.Interface.Dialogs;
-using GalaxyBudsClient.Model.Hotkeys;
+using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using Serilog;
 
@@ -39,6 +39,9 @@ public static class Settings
         Data.CustomActionLeft.PropertyChanged += OnTouchActionPropertyChanged;
         Data.CustomActionRight.PropertyChanged += OnTouchActionPropertyChanged;
     }
+    
+    public static Themes DefaultTheme => PlatformUtils.SupportsMicaTheme ? Themes.DarkMica : 
+        PlatformUtils.SupportsBlurTheme ? Themes.DarkBlur : Themes.Dark;
     
     private static void OnTouchActionPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {

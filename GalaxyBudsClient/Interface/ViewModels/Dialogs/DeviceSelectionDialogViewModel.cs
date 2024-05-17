@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Avalonia.Threading;
 using FluentAvalonia.UI.Controls;
-using GalaxyBudsClient.Bluetooth;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Model;
@@ -12,6 +11,7 @@ using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Platform.Interfaces;
 using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Dialogs;

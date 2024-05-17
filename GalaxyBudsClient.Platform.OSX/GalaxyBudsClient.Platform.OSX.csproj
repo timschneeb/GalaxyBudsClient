@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <nullable>enable</nullable>
+        <Configurations>Debug;Release</Configurations>
+        <Platforms>AnyCPU</Platforms>
+        <LangVersion>latest</LangVersion>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackNative Condition="'$(PackNative)' == ''">$([MSBuild]::IsOSPlatform(OSX))</PackNative>
+        <IsPackable>$(PackNative)</IsPackable>
+        <IsPackable Condition="'$([MSBuild]::IsOSPlatform(OSX))' == 'True'">true</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup Condition="'$(PackNative)' == 'true'">
+        <Content Include="Native/Build/Release/libNativeInterop.dylib">
+            <Link>libNativeInterop.dylib</Link>
+            <PackagePath>runtimes/osx/native/libNativeInterop.dylib</PackagePath>
+            <Pack>true</Pack>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Compile Update="**\*.xaml.cs">
+            <DependentUpon>%(Filename)</DependentUpon>
+        </Compile>
+        <AvaloniaResource Include="**\*.xaml">
+            <SubType>Designer</SubType>
+        </AvaloniaResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\GalaxyBudsClient.Platform\GalaxyBudsClient.Platform.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Serilog" Version="3.1.1" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="Native\Build\NativeInterop.build\Release\NativeInterop.build\Objects-normal\arm64\BluetoothDeviceWatcher.d" />
+    </ItemGroup>
+</Project>

@@ -18,7 +18,7 @@ using InTheHand.Net.Bluetooth.Factory;
 using InTheHand.Win32;
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: InternalsVisibleTo("GalaxyBudsClient.Bluetooth.Windows")]
+[assembly: InternalsVisibleTo("GalaxyBudsClient.Platform.Windows")]
 
 namespace InTheHand.Net.Bluetooth.Msft
 {

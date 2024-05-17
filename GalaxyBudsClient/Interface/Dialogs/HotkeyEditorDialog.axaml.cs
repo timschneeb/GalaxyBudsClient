@@ -4,7 +4,7 @@ using Avalonia.Markup.Xaml;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.ViewModels.Dialogs;
-using GalaxyBudsClient.Model.Hotkeys;
+using GalaxyBudsClient.Model;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 

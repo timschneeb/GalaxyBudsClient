@@ -3,10 +3,10 @@ using System.ComponentModel;
 using System.Linq;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Model;
-using GalaxyBudsClient.Model.Hotkeys;
+using GalaxyBudsClient.Platform.Model;
 using GalaxyBudsClient.Utils.Extensions;
 using ReactiveUI.Fody.Helpers;
-using Keys = GalaxyBudsClient.Model.Hotkeys.Keys;
+using Keys = GalaxyBudsClient.Platform.Model.Keys;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Dialogs;
 

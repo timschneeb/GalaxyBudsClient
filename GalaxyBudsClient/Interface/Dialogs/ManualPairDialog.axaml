@@ -5,8 +5,8 @@
              xmlns:dialogs="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Dialogs"
              xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
-             xmlns:bluetooth="clr-namespace:GalaxyBudsClient.Bluetooth;assembly=GalaxyBudsClient.Bluetooth"
              xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
+             xmlns:interfaces="clr-namespace:GalaxyBudsClient.Platform.Interfaces;assembly=GalaxyBudsClient.Platform"
              mc:Ignorable="d"
              Padding="0, 5, 0, 0"
              x:CompileBindings="True"
@@ -21,7 +21,7 @@
         <StackPanel Spacing="12">
             <TextBlock Text="{ext:Translate {x:Static i18N:Keys.ManualpairTitleDialog}}"
                        TextWrapping="Wrap" />
-            <ComboBox DisplayMemberBinding="{Binding Name, DataType=bluetooth:BluetoothDevice}"
+            <ComboBox DisplayMemberBinding="{Binding Name, DataType=interfaces:BluetoothDevice}"
                       ItemsSource="{Binding Devices}"
                       SelectedValue="{Binding SelectedDevice}"
                       HorizontalAlignment="Stretch" />

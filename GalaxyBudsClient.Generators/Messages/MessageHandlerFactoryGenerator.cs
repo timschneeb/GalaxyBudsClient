@@ -173,6 +173,6 @@ public class MessageHandlerFactoryGenerator : IIncrementalGenerator
         /// </summary>
         /// <param name="msgId">The message id of the message that the class can handle.</param>
         [global::System.AttributeUsage(global::System.AttributeTargets.Class)]
-        public class Message{{type}}Attribute(global::GalaxyBudsClient.Message.MsgIds msgId) : global::System.Attribute {}
+        internal class Message{{type}}Attribute(global::GalaxyBudsClient.Message.MsgIds msgId) : global::System.Attribute {}
         """;
 }

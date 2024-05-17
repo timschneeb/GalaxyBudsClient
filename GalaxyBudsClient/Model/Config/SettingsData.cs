@@ -1,7 +1,6 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Model.Hotkeys;
 using GalaxyBudsClient.Platform;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -31,7 +30,7 @@ public class Device : ReactiveObject
 public class SettingsData : ReactiveObject
 {
     /* Appearance */
-    [Reactive] public Themes Theme { set; get; } = PlatformUtils.DefaultTheme;
+    [Reactive] public Themes Theme { set; get; } = Settings.DefaultTheme;
     [Reactive] public uint AccentColor { set; get; } = Avalonia.Media.Colors.Orange.ToUInt32();
     [Reactive] public int BlurStrength { set; get; } = 144;
     [Reactive] public Locales Locale { set; get; } = Locales.en;

@@ -6,10 +6,10 @@
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
              xmlns:input="clr-namespace:FluentAvalonia.UI.Input;assembly=FluentAvalonia"
-             xmlns:hotkeys="clr-namespace:GalaxyBudsClient.Model.Hotkeys"
              xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
              xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
+             xmlns:model="clr-namespace:GalaxyBudsClient.Model"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="400"
              x:Class="GalaxyBudsClient.Interface.Pages.HotkeyPage"
              x:DataType="pages:HotkeyPageViewModel"
@@ -60,7 +60,7 @@
                      IsVisible="{Binding !NoHotkeys}"
                      Name="HotkeyList">
                 <ListBox.ItemTemplate>
-                    <DataTemplate x:DataType="hotkeys:Hotkey">
+                    <DataTemplate x:DataType="model:Hotkey">
                         <Border Background="Transparent">
                             <Panel>
                                 <StackPanel Spacing="4" Margin="4 10" VerticalAlignment="Center">
