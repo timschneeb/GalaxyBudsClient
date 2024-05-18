@@ -1,4 +1,6 @@
 using System.ComponentModel;
+using System.Net.Http;
+using System.Speech.Synthesis;
 using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Platform.Model;
 
