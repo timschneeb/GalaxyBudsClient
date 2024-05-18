@@ -14,6 +14,7 @@ using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform.Interfaces;
+using GalaxyBudsClient.Platform.Model;
 using GalaxyBudsClient.Platform.Stubs;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;

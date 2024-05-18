@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Platform.Interfaces;
+using GalaxyBudsClient.Platform.Model;
 using Serilog;
 
 namespace GalaxyBudsClient.Model.Specifications;

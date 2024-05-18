@@ -19,4 +19,9 @@
             <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
         </ProjectReference>
     </ItemGroup>
+    
+    <ItemGroup>
+      <Compile Remove="Model\Notification.cs" />
+      <Compile Remove="Stubs\BluetoothService.Dummy.cs" />
+    </ItemGroup>
 </Project>
