@@ -27,7 +27,6 @@ public static class PlatformUtils
     public static bool SupportsAutoboot => IsWindows || (IsLinux && !IsRunningInFlatpak) || IsOSX;
     public static bool SupportsHotkeys => IsWindows || IsLinux || IsOSX;
     public static bool SupportsHotkeysBroadcast => IsWindows || IsLinux || IsOSX;
-    public static bool SupportsNotificationListener => IsLinux;
     public static bool SupportsMicaTheme => IsWindows && Environment.OSVersion.Version.Build >= 22000;
     public static bool SupportsBlurTheme => IsWindows || IsOSX || (IsLinux && Environment.GetEnvironmentVariable("XDG_CURRENT_DESKTOP")?.Contains("KDE") == true);
         

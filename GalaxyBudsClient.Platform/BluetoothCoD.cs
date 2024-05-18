@@ -1,4 +1,4 @@
-namespace GalaxyBudsClient.Platform.Model
+namespace GalaxyBudsClient.Platform
 {
     public class BluetoothCoD
     {

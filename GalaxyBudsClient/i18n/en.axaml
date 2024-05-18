@@ -527,14 +527,9 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="adv_passthrough_desc">This can prevent a feeling of stuffiness or compression when you're not using active noise canceling</sys:String>
     <sys:String x:Key="adv_hotkey">Keyboard hotkeys</sys:String>
     <sys:String x:Key="adv_hotkey_desc">Define custom keyboard hotkeys to remote-control your earbuds</sys:String>
-    <sys:String x:Key="adv_notification">Read notifications aloud</sys:String>
-    <sys:String x:Key="adv_notification_desc">Use text-to-speech to read incoming notifications</sys:String>
     <sys:String x:Key="adv_bixby_remap">Remap Bixby wakeup</sys:String>
     <sys:String x:Key="adv_bixby_remap_desc">Define what should happen when you say 'Hey Bixby!'</sys:String>
 
-    <!--Notification reader-->
-    <sys:String x:Key="notification_header">Notifications</sys:String>
-    
     <!--Remap bixby wakeup-->
     <sys:String x:Key="bixby_remap_enable">Enable Bixby wakeup</sys:String>
     <sys:String x:Key="bixby_remap_enable_desc">Launch Bixby on your Samsung phone or execute a custom action on this PC when woken up</sys:String>

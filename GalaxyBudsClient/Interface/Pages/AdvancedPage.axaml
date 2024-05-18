@@ -93,14 +93,6 @@
                                              ActionSymbol="ChevronRight"
                                              IsClickEnabled="True" />
 
-                <controls:SettingsSymbolItem Name="NotificationReader"
-                                             Content="{ext:Translate {x:Static i18N:Keys.AdvNotification}}"
-                                             Description="{ext:Translate {x:Static i18N:Keys.AdvNotificationDesc}}"
-                                             IsVisible="{x:Static platform:PlatformUtils.SupportsNotificationListener}"
-                                             Symbol="MegaphoneLoud"
-                                             ActionSymbol="ChevronRight"
-                                             IsClickEnabled="True" />
-
                 <controls:SettingsSymbolItem Name="BixbyRemap"
                                              Content="{ext:Translate {x:Static i18N:Keys.AdvBixbyRemap}}"
                                              Description="{ext:Translate {x:Static i18N:Keys.AdvBixbyRemapDesc}}"

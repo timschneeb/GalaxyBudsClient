@@ -1,7 +1,5 @@
-using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using GalaxyBudsClient.Model;
-using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Platform.Interfaces;
 #if Linux
 using GalaxyBudsClient.Platform.Linux;
@@ -28,7 +26,6 @@ public static class PlatformImpl
     public static IHotkeyBroadcast HotkeyBroadcast { get; }
     public static IHotkeyReceiver HotkeyReceiver { get; }
     public static IMediaKeyRemote MediaKeyRemote { get; }
-    public static INotificationListener NotificationListener { get; }
 
     static PlatformImpl()
     {
@@ -50,9 +47,6 @@ public static class PlatformImpl
         HotkeyBroadcast = Creator.CreateHotkeyBroadcast() ?? new DummyHotkeyBroadcast();
         HotkeyReceiver = Creator.CreateHotkeyReceiver() ?? new DummyHotkeyReceiver();
         MediaKeyRemote = Creator.CreateMediaKeyRemote() ?? new DummyMediaKeyRemote();
-        NotificationListener = Creator.CreateNotificationListener() ?? new DummyNotificationListener();
-        
-        NotificationReaderManager.Init();
     }
 
     public static void SwitchWindowsBackend()

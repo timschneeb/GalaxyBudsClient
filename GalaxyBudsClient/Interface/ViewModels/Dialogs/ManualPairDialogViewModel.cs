@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform.Interfaces;
-using GalaxyBudsClient.Platform.Model;
 using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Dialogs;

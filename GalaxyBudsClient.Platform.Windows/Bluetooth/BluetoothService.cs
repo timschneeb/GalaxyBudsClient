@@ -10,7 +10,6 @@ using GalaxyBudsClient.Platform.Windows.Devices;
 using GalaxyBudsClient.Platform.Windows.Utils;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Platform.Interfaces;
-using GalaxyBudsClient.Platform.Model;
 using InTheHand.Net.Bluetooth;
 using InTheHand.Net.Bluetooth.Msft;
 using InTheHand.Net.Sockets;

@@ -59,9 +59,6 @@ public class SettingsData : ReactiveObject
     /* Hotkey actions */
     [ReadOnly(true)] public ObservableCollection<Hotkey> Hotkeys { set; get; } = [];
     
-    /* Read notifications aloud */
-    [Reactive] public bool ReadNotificationsAloud { set; get; }
-    
     /* Crowdsourcing */
     [Reactive] public bool ExperimentsDisabled { set; get; }
     [ReadOnly(true)] public ObservableCollection<long> ExperimentsFinishedIds { set; get; } = [];
