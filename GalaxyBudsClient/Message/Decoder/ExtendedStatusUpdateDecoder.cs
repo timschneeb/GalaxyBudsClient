@@ -168,7 +168,6 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
     /// </remarks>
     public ExtendedStatusUpdateDecoder() : base(new SppMessage()) {}
     
-    // TODO: R190XXU0AUB5 firmware appears to crash here (https://tim-schneeberger.sentry.io/issues/5336445031/events/78b4f4dd6e50472ab92164636df819d7/)
     public ExtendedStatusUpdateDecoder(SppMessage msg) : base(msg)
     {
         // TODO: clean this up

@@ -71,15 +71,16 @@
             </controls:SettingsGroup>
 
             <controls:SettingsGroup>
-            <controls:SettingsSwitchItem
-                Content="{ext:Translate {x:Static i18N:Keys.NcOneEarbud}}"
-                Description="{ext:Translate {x:Static i18N:Keys.NcOneEarbudDescription}}"
-                Symbol="Accessibility"
-                IsChecked="{Binding IsNcWithOneEarbudAllowed}">
                 <Interaction.Behaviors>
                     <ext:RequiresFeatureBehavior Feature="NoiseControlsWithOneEarbud" />
                 </Interaction.Behaviors>
-            </controls:SettingsSwitchItem>
+                
+                <controls:SettingsSwitchItem
+                    Content="{ext:Translate {x:Static i18N:Keys.NcOneEarbud}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.NcOneEarbudDescription}}"
+                    Symbol="Accessibility"
+                    IsChecked="{Binding IsNcWithOneEarbudAllowed}">
+                </controls:SettingsSwitchItem>
             </controls:SettingsGroup>
             
             
