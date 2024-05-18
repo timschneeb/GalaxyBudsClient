@@ -30,7 +30,7 @@ public class NotificationListener : INotificationListener
     public event EventHandler<Notification>? NotificationReceived;
 
     private CancellationTokenSource _cancelSource = new();
-    private Task _loop;
+    private Task? _loop;
     private bool _isEnabled;
 
     private record NotifyMessageBody

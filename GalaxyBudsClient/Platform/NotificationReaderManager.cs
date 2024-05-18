@@ -1,20 +1,33 @@
+using System;
 using System.ComponentModel;
 using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Platform.Model;
+using PortAudioSharp;
+using Serilog;
 
 namespace GalaxyBudsClient.Platform;
 
 public class NotificationReaderManager
 {
+    public static bool PortAudioMissing { private set; get; }
+    
     public NotificationReaderManager()
     {
         Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
         PlatformImpl.NotificationListener.NotificationReceived += OnNotificationReceived;
+        try
+        {
+            PortAudio.Initialize();
+        }
+        catch (DllNotFoundException ex)
+        {
+            Log.Error(ex, "PortAudio library not found");
+            PortAudioMissing = true;
+        }
     }
 
     private void OnNotificationReceived(object? sender, Notification e)
     {
-        // TODO
     }
 
     private static void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)

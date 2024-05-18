@@ -100,6 +100,7 @@
         </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0-preview.3.24172.4" />
         <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
+        <PackageReference Include="PiperSharp" Version="1.0.3" />
         <PackageReference Include="ReactiveUI.Fody" Version="19.5.41" />
         <PackageReference Include="ScottPlot.Avalonia" Version="5.0.32" />
         <PackageReference Include="Sentry" Version="4.2.1" />
@@ -110,8 +111,18 @@
         <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
         <PackageReference Include="Serilog.Sinks.Trace" Version="3.0.0" />
         <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
+        <PackageReference Include="PortAudioSharp" Version="0.3.0" />
         <PackageReference Include="Tmds.DBus" Version="0.16.0" />
-        <PackageReference Include="Voice100" Version="1.3.0" />
+    </ItemGroup>
+    
+    <!-- Native dependencies for PortAudio -->
+    <ItemGroup>
+        <!-- Note: Linux-arm64 is missing. Users should manually install that dependency using a package manager -->
+        <PackageReference Include="org.k2fsa.portaudio.runtime.linux-x64" Version="1.0.0" />
+        <PackageReference Include="org.portaudio.runtime.osx-x64" Version="19.7.5" />
+        <PackageReference Include="org.portaudio.runtime.osx-arm64" Version="19.7.5" />
+        <PackageReference Include="org.portaudio.runtime.win-x64" Version="19.7.5" />
+        <PackageReference Include="org.portaudio.runtime.win-arm64" Version="19.7.5" />
     </ItemGroup>
 
     <!-- Project references -->
