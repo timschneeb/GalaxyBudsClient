@@ -18,8 +18,8 @@
 !endif
 
 !define PRODUCT_NAME "Galaxy Buds Manager (Unofficial)"
-!define PRODUCT_PUBLISHER "ThePBone"
-!define PRODUCT_WEB_SITE "https://github.com/ThePBone/GalaxyBudsClient"
+!define PRODUCT_PUBLISHER "timschneeb"
+!define PRODUCT_WEB_SITE "https://github.com/timschneeb/GalaxyBudsClient"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\Galaxy Buds Client.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
