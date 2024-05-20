@@ -152,7 +152,7 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - ruský a ukrajinský překlad
 * [@PlasticBrain](https://github.com/fhalfkg) - korejský a japonský překlad
 * [@cozyplanes](https://github.com/cozyplanes) - korejský překlad
-* [@erenbektas](https://github.com/erenbektas) - turecký překlad
+* [@erenbektas](https://github.com/erenbektas) a [@Eta06](https://github.com/Eta06) - turecký překlad
 * [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) a [@pseudor](https://github.com/pseudor) - čínský překlad
 * [@YiJhu](https://github.com/YiJhu) - čínština-tradiční překlad
 * [@efrenbg1](https://github.com/efrenbg1) a Andrew Gonza - španělský překlad
