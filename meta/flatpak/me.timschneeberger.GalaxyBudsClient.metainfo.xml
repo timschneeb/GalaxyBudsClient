@@ -2,11 +2,11 @@
 <component type="desktop-application">
   <id>me.timschneeberger.GalaxyBudsClient</id>
 
-  <name>Galaxy Buds Manager</name>
+  <name>Earbud manager for Galaxy Buds</name>
   <developer id="me.timschneeberger">
     <name>Tim Schneeberger</name>
   </developer>
-  <summary>Manage any Galaxy Buds device</summary>
+  <summary>An unofficial app to manage any Galaxy Buds device manufactured by Samsung</summary>
 
   <branding>
     <color type="primary" scheme_preference="light">#dff1f8</color>
