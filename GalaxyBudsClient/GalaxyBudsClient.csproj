@@ -70,7 +70,7 @@
     
     <!-- Dependencies -->
     <PropertyGroup>
-        <AvaloniaVersion>11.1.0-beta2</AvaloniaVersion>
+        <AvaloniaVersion>11.1.0-rc1</AvaloniaVersion>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="AsyncErrorHandler.Fody" Version="1.3.0" />
@@ -90,8 +90,8 @@
         <PackageReference Include="Config.Net" Version="5.2.0" />
         <PackageReference Include="CS-Script" Version="4.8.14" />
         <PackageReference Include="FluentAvalonia.BreadcrumbBar" Version="2.0.2" />
-        <PackageReference Include="FluentAvaloniaUI" Version="2.1.0-preview4" />
-        <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="1.1.239" />
+        <PackageReference Include="FluentAvaloniaUI" Version="2.1.0-preview5" />
+        <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="1.1.242" />
         <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0-preview.3.24172.4">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -100,7 +100,7 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0-preview.3.24172.4" />
         <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
         <PackageReference Include="ReactiveUI.Fody" Version="19.5.41" />
-        <PackageReference Include="ScottPlot.Avalonia" Version="5.0.32" />
+        <PackageReference Include="ScottPlot.Avalonia" Version="5.0.35" />
         <PackageReference Include="Sentry" Version="4.2.1" />
         <PackageReference Include="Sentry.Serilog" Version="4.2.1" />
         <PackageReference Include="Serilog" Version="3.1.1" />
