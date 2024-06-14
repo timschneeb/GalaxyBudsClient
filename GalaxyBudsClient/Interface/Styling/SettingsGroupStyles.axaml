@@ -36,14 +36,14 @@
                 <Setter Property="Template">
                     <ControlTemplate>
                         <StackPanel>
-                            <ui:FABorder Name="Border" BackgroundSizing="InnerBorderEdge"
+                            <Border Name="Border" BackgroundSizing="InnerBorderEdge"
                                          Background="{TemplateBinding Background}"
                                          BorderBrush="{TemplateBinding BorderBrush}"
                                          BorderThickness="{TemplateBinding BorderThickness}"
                                          CornerRadius="{TemplateBinding CornerRadius}"
                                          ClipToBounds="True">
                                 <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" />
-                            </ui:FABorder>
+                            </Border>
                         </StackPanel>
                     </ControlTemplate>
                 </Setter>
