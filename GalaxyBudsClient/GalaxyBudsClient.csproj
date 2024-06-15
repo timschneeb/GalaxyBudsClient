@@ -82,16 +82,16 @@
         <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="$(AvaloniaVersion)" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
         <PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
-        <PackageReference Include="Avalonia.Svg.Skia" Version="11.1.0-beta1" />
-        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.1.0-beta2.1" />
+        <PackageReference Include="Avalonia.Svg.Skia" Version="11.1.0-rc1" />
+        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.1.0-rc1" />
         <PackageReference Include="AvaloniaHex" Version="0.1.0" />
-        <PackageReference Include="BouncyCastle.Cryptography" Version="2.3.1" />
+        <PackageReference Include="BouncyCastle.Cryptography" Version="2.4.0" />
         <PackageReference Include="CommandLineParser" Version="2.9.2-ci-210" />
         <PackageReference Include="Config.Net" Version="5.2.0" />
-        <PackageReference Include="CS-Script" Version="4.8.14" />
+        <PackageReference Include="CS-Script" Version="4.8.16" />
         <PackageReference Include="FluentAvalonia.BreadcrumbBar" Version="2.0.2" />
         <PackageReference Include="FluentAvaloniaUI" Version="2.1.0-preview5" />
-        <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="1.1.242" />
+        <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="1.1.244" />
         <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0-preview.3.24172.4">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
