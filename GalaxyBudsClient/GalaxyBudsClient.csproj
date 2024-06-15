@@ -110,7 +110,6 @@
         <PackageReference Include="Serilog.Sinks.Trace" Version="3.0.0" />
         <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
         <PackageReference Include="Tmds.DBus" Version="0.16.0" />
-        <PackageReference Include="Voice100" Version="1.3.0" />
     </ItemGroup>
 
     <!-- Project references -->
