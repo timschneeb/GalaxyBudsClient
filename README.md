@@ -36,7 +36,7 @@
 </p>
 
 <p align="center">
-    <a href="#"><img alt="Screenshot" src="https://github.com/timschneeb/GalaxyBudsClient/blob/master/screenshots/app-dark.png"></a>
+    <a href="#"><img alt="Screenshot" src="https://github.com/timschneeb/GalaxyBudsClient/blob/master/screenshots/app_dark.png"></a>
 </p>
 
 ## Key Features
