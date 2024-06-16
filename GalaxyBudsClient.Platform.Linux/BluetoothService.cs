@@ -463,21 +463,21 @@ namespace GalaxyBudsClient.Platform.Linux
                     return;
                 }
 
-                var hasIoActivity = false;
+                bool hasIoActivity;
                 try
                 {
                     var incomingCount = _profile.Stream?.AvailableBytes;
                     if (incomingCount == null)
                     {
                         /* Stream not yet ready */
+                        await Task.Delay(100);
                         continue;
                     }
 
                     if (incomingCount > 0)
                     {
                         IsStreamConnected = true;
-                        hasIoActivity = true;
-
+                        
                         /* Handle incoming stream */
                         var buffer = new byte[incomingCount ?? 0];
                         var dataAvailable = false;
@@ -501,24 +501,34 @@ namespace GalaxyBudsClient.Platform.Linux
                     /* Handle outgoing stream */
                     lock (TransmitterQueue)
                     {
-                        if (TransmitterQueue.IsEmpty) continue;
-                        if (!TransmitterQueue.TryDequeue(out var raw)) continue;
-                        hasIoActivity = true;
-                        try
+                        if (TransmitterQueue.IsEmpty || !TransmitterQueue.TryDequeue(out var raw))
                         {
-                            _profile.Stream?.Write(raw, 0, raw.Length);
+                            hasIoActivity = false;
                         }
-                        catch (SocketException ex)
+                        else
                         {
-                            Log.Error("Linux.BluetoothService: BluetoothServiceLoop: SocketException thrown while writing unsafe stream: {ExMessage}. Cancelled", ex.Message);
-                            Disconnected?.Invoke(this, ex.Message);
-                        }
-                        catch (IOException ex)
-                        {
-                            if (ex.InnerException != null && ex.InnerException.GetType() == typeof(SocketException))
+                            hasIoActivity = true;
+                            
+                            try
                             {
-                                Log.Error("Linux.BluetoothService: BluetoothServiceLoop: IO and SocketException thrown while writing unsafe stream: {ExMessage}. Cancelled", ex.Message);
+                                _profile.Stream?.Write(raw, 0, raw.Length);
+                            }
+                            catch (SocketException ex)
+                            {
+                                Log.Error(
+                                    "Linux.BluetoothService: BluetoothServiceLoop: SocketException thrown while writing unsafe stream: {ExMessage}. Cancelled",
+                                    ex.Message);
                                 Disconnected?.Invoke(this, ex.Message);
+                            }
+                            catch (IOException ex)
+                            {
+                                if (ex.InnerException != null && ex.InnerException.GetType() == typeof(SocketException))
+                                {
+                                    Log.Error(
+                                        "Linux.BluetoothService: BluetoothServiceLoop: IO and SocketException thrown while writing unsafe stream: {ExMessage}. Cancelled",
+                                        ex.Message);
+                                    Disconnected?.Invoke(this, ex.Message);
+                                }
                             }
                         }
                     }
