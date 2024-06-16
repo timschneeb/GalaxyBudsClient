@@ -9,16 +9,16 @@
 </h1>
 <h4 align="center">An unofficial manager for the Buds, Buds+, Buds Live and Buds Pro</h4>
 <p align="center">
-  <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
+  <a href="https://github.com/timschneeb/GalaxyBudsClient/releases">
     <img alt="GitHub downloads count" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
   </a>
-  <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
+  <a href="https://github.com/timschneeb/GalaxyBudsClient/releases">
    <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
   </a>
-  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE">
+  <a href="https://github.com/timschneeb/GalaxyBudsClient/blob/master/LICENSE">
       <img alt="License" src="https://img.shields.io/github/license/thepbone/galaxybudsclient">
   </a>
-  <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
+  <a href="https://github.com/timschneeb/GalaxyBudsClient/releases">
     <img alt="Platform" src="https://img.shields.io/badge/platform-Windows/Linux-yellowgreen">
   </a>
 </p>
@@ -36,7 +36,7 @@
 </p>
 
 <p align="center">
-    <a href="#"><img alt="Screenshot" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/screencap.gif"></a>
+    <a href="#"><img alt="Screenshot" src="https://github.com/timschneeb/GalaxyBudsClient/blob/master/screenshots/app-dark.png"></a>
 </p>
 
 ## Key Features
@@ -52,7 +52,7 @@ Aside from standard features known from the official Android app, this project h
 * Firmware flashing, downgrading (Buds+, Buds Pro)
 * and much more...
 
-If you're looking for older firmware binaries, have a look here: [https://github.com/ThePBone/galaxy-buds-firmware-archive](https://github.com/ThePBone/galaxy-buds-firmware-archive#galaxy-buds-firmware-archive)
+If you're looking for older firmware binaries, have a look here: [https://github.com/timschneeb/galaxy-buds-firmware-archive](https://github.com/timschneeb/galaxy-buds-firmware-archive#galaxy-buds-firmware-archive)
 
 ## Download
 
@@ -60,9 +60,9 @@ There are several Linux packages available:
 * [Flatpak (All Linux distros)](#flatpak)
 * [AUR package (Arch Linux)](#aur-package)
 
-Get binaries for Windows in the [release](https://github.com/ThePBone/GalaxyBudsClient/releases) section. Please read the release notes before installation:
+Get binaries for Windows in the [release](https://github.com/timschneeb/GalaxyBudsClient/releases) section. Please read the release notes before installation:
 <p align="center">
-    <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
+    <a href="https://github.com/timschneeb/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/timschneeb/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
 ### Flatpak
@@ -104,33 +104,33 @@ Even though the A2DP profile is standardized and documented, the format of the b
 To reverse-engineer this data format, I started by analyzing the structure of the binary stream sent by the earbuds. Later on, I also disassembled the official Galaxy Buds apps for Android to gain more insight into these devices' inner workings. You can find some (incomplete) notes I took down below. Check the source code to get more detailed information on the structure of the protocol.
 
 <p align="center">
-  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsRFCommProtocol.md">Galaxy Buds (2019) Notes</a> •
-  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md">Galaxy Buds Plus Notes</a>
+  <a href="https://github.com/timschneeb/GalaxyBudsClient/blob/master/GalaxyBudsRFCommProtocol.md">Galaxy Buds (2019) Notes</a> •
+  <a href="https://github.com/timschneeb/GalaxyBudsClient/blob/master/Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md">Galaxy Buds Plus Notes</a>
 </p>
 
 While taking a closer look at the Galaxy Buds Plus, I also noticed some unusual features, such as a firmware debug mode, an unused pairing mode, and a Bluetooth key dumper. I documented these findings here:
 
 <p align="center">
-  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsPlus_HiddenDebugFeatures.md">Galaxy Buds Plus: Unusual features</a>
+  <a href="https://github.com/timschneeb/GalaxyBudsClient/blob/master/GalaxyBudsPlus_HiddenDebugFeatures.md">Galaxy Buds Plus: Unusual features</a>
 </p>
 
 Currently, I'm looking into modifying and reverse-engineering the firmware for the Buds+. At time of writing I have created two tools to fetch and analyze official firmware binaries. Check them out here:
 
 <p align="center">
-  <a href="https://github.com/ThePBone/GalaxyBudsFirmwareDownloader">Firmware Downloader</a> •
-  <a href="https://github.com/ThePBone/GalaxyBudsFirmwareExtractor">Firmware Extractor</a>
+  <a href="https://github.com/timschneeb/GalaxyBudsFirmwareDownloader">Firmware Downloader</a> •
+  <a href="https://github.com/timschneeb/GalaxyBudsFirmwareExtractor">Firmware Extractor</a>
 </p>
 
-Stream head-tracking data in realtime from your Buds Pro using this script: [ThePBone/BudsPro-Headtracking](https://github.com/ThePBone/BudsPro-Headtracking)
+Stream head-tracking data in realtime from your Buds Pro using this script: [timschneeb/BudsPro-Headtracking](https://github.com/timschneeb/BudsPro-Headtracking)
 
 ## Contributing
 
 Feature requests, bug reports, and pull requests of any kind are always welcome.
 
-If you want to report bugs or propose your ideas for this project, you are welcome to [open a new issue](https://github.com/ThePBone/GalaxyBudsClient/issues/new/choose) with a suitable template. [Visit our wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/2.-How-to-submit-issues) for a detailed explanation.
+If you want to report bugs or propose your ideas for this project, you are welcome to [open a new issue](https://github.com/timschneeb/GalaxyBudsClient/issues/new/choose) with a suitable template. [Visit our wiki](https://github.com/timschneeb/GalaxyBudsClient/wiki/2.-How-to-submit-issues) for a detailed explanation.
 
-If you are planning to help us translating this app, [refer to the instructions on our wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations). No programming knowledge is required, you can test your custom translations without installing any development tools before submitting a pull request.
-You can find auto-generated progress reports for existing translations [here](https://github.com/ThePBone/GalaxyBudsClient/blob/master/meta/translations.md).
+If you are planning to help us translating this app, [refer to the instructions on our wiki](https://github.com/timschneeb/GalaxyBudsClient/wiki/3.-How-to-help-with-translations). No programming knowledge is required, you can test your custom translations without installing any development tools before submitting a pull request.
+You can find auto-generated progress reports for existing translations [here](https://github.com/timschneeb/GalaxyBudsClient/blob/master/meta/translations.md).
 
 If you want to contribute your own code, you can simply submit a plain pull request explaining you changes. For larger and complex contributions it would be nice if you could open an issue (or message me via Telegram [@thepbone](https://t.me/thepbone)) before starting to work on it.
 
@@ -161,7 +161,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@Buashei](https://github.com/Buashei) - Polish translation
 * [@KatJillianne](https://github.com/KatJillianne) - Vietnamese translation
 * [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - Czech translation
-* [@Benni0109](https://github.com/Benni0109), [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - German translation
+* [@Benni0109](https://github.com/Benni0109), [@TheLastFrame](https://github.com/TheLastFrame), [@timschneeb](https://github.com/timschneeb) - German translation
 * [@nikossyr](https://github.com/nikossyr) - Greek translation
 * [@grigorem](https://github.com/grigorem) - Romanian translation
 * [@tretre91](https://github.com/tretre91) - French translation
@@ -171,7 +171,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 
 ## License
 
-This project is licensed under [GPLv3](https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE). It is not affiliated with Samsung nor supervised by them in any way.
+This project is licensed under [GPLv3](https://github.com/timschneeb/GalaxyBudsClient/blob/master/LICENSE). It is not affiliated with Samsung nor supervised by them in any way.
 
 ```
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
