@@ -101,7 +101,8 @@ public static class WindowIconRenderer
     private static Bitmap MakeDefaultBitmap()
     {
         // OSX uses templated icons
-        var uri = $"{Program.AvaresUrl}/Resources/icon_{(PlatformUtils.IsOSX ? "black" : "white")}_tray.ico";
+        var type = PlatformUtils.IsOSX ? "black" : PlatformUtils.IsWindows ? "white_outlined_single" : "white_outlined_multi";
+        var uri = $"{Program.AvaresUrl}/Resources/icon_{type}_tray.ico";
         return new Bitmap(AssetLoader.Open(new Uri(uri)));
     }
 }
