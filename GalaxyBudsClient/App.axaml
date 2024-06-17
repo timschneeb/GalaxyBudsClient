@@ -46,7 +46,7 @@
     <TrayIcon.Icons>
         <TrayIcons>
             <TrayIcon Menu="{Binding TrayMenu, DataType=galaxyBudsClient:App}"
-                      Icon="{OnPlatform '/Resources/icon_white_tray.ico', macOS='/Resources/icon_black_tray.ico'}"
+                      Icon="{OnPlatform '/Resources/icon_white_outlined_tray.ico', macOS='/Resources/icon_black_tray.ico'}"
                       MacOSProperties.IsTemplateIcon="true"
                       ToolTipText="Galaxy Buds"
                       Clicked="TrayIcon_OnClicked" />
