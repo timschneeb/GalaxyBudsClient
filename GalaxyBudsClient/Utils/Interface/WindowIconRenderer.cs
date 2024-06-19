@@ -19,22 +19,22 @@ namespace GalaxyBudsClient.Utils.Interface;
 public static class WindowIconRenderer
 {
     private static readonly WindowIcon DefaultIcon = MakeDefaultIcon();
-    
+
     public static void UpdateDynamicIcon(IBasicStatusUpdate status)
     {
         var trayIcons = TrayIcon.GetIcons(Application.Current!);
-        if (trayIcons == null) 
+        if (trayIcons == null)
             return;
 
         var batteryLeft = status.BatteryL;
         var batteryRight = status.BatteryR;
-        
+
         // Ignore battery level of disconnected earbuds
         if (batteryLeft <= 0)
             batteryLeft = batteryRight;
         if (batteryRight <= 0)
             batteryRight = batteryLeft;
-        
+
         int? level = Settings.Data.DynamicTrayIconMode switch
         {
             DynamicTrayIconModes.BatteryMin => Math.Min(batteryLeft, batteryLeft),
@@ -67,15 +67,15 @@ public static class WindowIconRenderer
             $"{level}",
             CultureInfo.CurrentCulture,
             FlowDirection.LeftToRight,
-            Typeface.Default, 
-            210, 
+            Typeface.Default,
+            210,
             Brushes.Black // This brush does not matter since we use the geometry of the text.
         );
 
         // Build the geometry object that represents the text.
         var textGeometry = formattedText.BuildGeometry(new Point(0, -30));
         var render = new RenderTargetBitmap(new PixelSize(256, 256), new Vector(96, 96));
-        
+
         using (var ctx = render.CreateDrawingContext())
         {
             ctx.PushRenderOptions(new RenderOptions
@@ -85,11 +85,10 @@ public static class WindowIconRenderer
                 EdgeMode = EdgeMode.Antialias,
                 RequiresFullOpacityHandling = true
             });
-            
-            var fillColor = PlatformUtils.IsOSX ? Brushes.Black : Brushes.White;
-            ctx.DrawGeometry(fillColor, new Pen(Brushes.Transparent, 0), textGeometry!);
+
+            ctx.DrawGeometry(new SolidColorBrush(Settings.Data.AccentColor), new Pen(Brushes.Transparent, 0), textGeometry!);
         }
-        
+
         return new WindowIcon(render);
     }
 
