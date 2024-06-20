@@ -86,7 +86,11 @@ public static class WindowIconRenderer
                 RequiresFullOpacityHandling = true
             });
 
-            ctx.DrawGeometry(new SolidColorBrush(Settings.Data.AccentColor), new Pen(Brushes.Transparent, 0), textGeometry!);
+
+            if(PlatformUtils.IsOSX)
+                ctx.DrawGeometry(Brushes.Black, new Pen(Brushes.Transparent, 0), textGeometry!);
+            else
+                ctx.DrawGeometry(new SolidColorBrush(Settings.Data.AccentColor), new Pen(Brushes.Transparent, 0), textGeometry!);
         }
 
         return new WindowIcon(render);
