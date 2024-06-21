@@ -90,7 +90,7 @@ yay -S galaxybudsclient-bin
 The Windows package is also available to install with Windows Package Manager (winget)
 
 ```
-winget install ThePBone.GalaxyBudsClient
+winget install timschneeb.GalaxyBudsClient
 ```
 
 ## How it works
