@@ -19,7 +19,7 @@ public enum LegacyMsgIds
 /// <remarks>
 /// Enum member annotations: <br/>
 ///     UNKNOWN_ - Unknown ID <br/>
-///     UNK_ - Undocumented ID with guessed name/meaning (see also https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsPlus_HiddenDebugFeatures.md) <br/>
+///     UNK_ - Undocumented ID with guessed name/meaning (see also https://github.com/timschneeb/GalaxyBudsClient/blob/master/GalaxyBudsPlus_HiddenDebugFeatures.md) <br/>
 /// All other member names are based on decompilations of the official Samsung app. 
 /// </remarks>
 [CompiledEnum]

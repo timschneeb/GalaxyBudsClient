@@ -38,12 +38,12 @@
                                Theme="{StaticResource CaptionTextBlockStyle}" />
 
                     <TextBlock Theme="{StaticResource CaptionTextBlockStyle}"
-                               Text="https://github.com/thepbone/GalaxyBudsClient"
+                               Text="https://github.com/timschneeb/GalaxyBudsClient"
                                Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                                Cursor="Hand">
                         <Interaction.Behaviors>
                             <EventTriggerBehavior EventName="PointerPressed">
-                                <ext:OpenLinkAction TargetUri="https://github.com/thepbone/GalaxyBudsClient" />
+                                <ext:OpenLinkAction TargetUri="https://github.com/timschneeb/GalaxyBudsClient" />
                             </EventTriggerBehavior>
                         </Interaction.Behaviors>
                     </TextBlock>
@@ -210,7 +210,7 @@
                                              IsClickEnabled="True">
                     <Interaction.Behaviors>
                         <EventTriggerBehavior EventName="Click">
-                            <ext:OpenLinkAction TargetUri="https://github.com/thepbone/GalaxyBudsClient" />
+                            <ext:OpenLinkAction TargetUri="https://github.com/timschneeb/GalaxyBudsClient" />
                         </EventTriggerBehavior>
                     </Interaction.Behaviors>
                 </controls:SettingsSymbolItem>
