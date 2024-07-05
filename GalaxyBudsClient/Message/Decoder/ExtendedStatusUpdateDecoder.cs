@@ -162,6 +162,9 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
     public bool SpatialAudioHeadTracking { init; get; }
     [Device(Models.Buds2Pro, Selector.GreaterEqual)]
     public bool AutoAdjustSound { init; get; }
+    [Device(Models.Buds3, Selector.GreaterEqual)]
+    public bool AutoPauseResume { init; get; }
+    
     
     /// <remarks>
     /// Important: The parameterless constructor must only be used for unit tests
@@ -551,7 +554,7 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                                 ExtraHighAmbientEnabled = reader.ReadBoolean();
                         }
                     }
-                    else if (TargetModel == Models.BudsFe)
+                    else // >= BudsFE
                     {
                         HearingEnhancements = msg.Payload[25];
 
@@ -579,23 +582,83 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                         CustomizeNoiseReductionLevel = reader.ReadByte();
                         NeckStretchCalibration = reader.ReadBoolean();
                         BixbyKeyword = reader.ReadByte();
-                        HearingTestValue = reader.ReadByte();
+                        HearingTestValue = reader.ReadByte(); // also called noiseReductionAmplify (Buds3Pro)
                         AutoAdjustSound = HearingTestValue is not (0 or 1);
 
-                        _ = reader.ReadByte(); // Unused amplifyAmbientSound value
-                        SpatialAudioHeadTracking = reader.ReadBoolean();
+                        if (TargetModel == Models.BudsFe)
+                        {
+                            _ = reader.ReadByte(); // Unused amplifyAmbientSound value
+                            SpatialAudioHeadTracking = reader.ReadBoolean();
 
-                        var chargingStatus = reader.ReadByte();
-                        IsLeftCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 4) == 16;
-                        IsRightCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 2) == 4;
-                        IsCaseCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 0) == 1;
+                            var chargingStatus = reader.ReadByte();
+                            IsLeftCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 4) == 16;
+                            IsRightCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 2) == 4;
+                            IsCaseCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 0) == 1;
+                        }
+                        else // >= Buds3
+                        {
+                            SpatialAudioHeadTracking = reader.ReadBoolean();
+                            
+                            var chargingStatus = reader.ReadByte();
+                            IsLeftCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 4) == 16;
+                            IsRightCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 2) == 4;
+                            IsCaseCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 0) == 1;
+
+                            ExtraClearCallSound = reader.ReadBoolean();
+                            if(reader.PeekChar() != -1)
+                                ExtraHighAmbientEnabled = reader.ReadBoolean();
+                            if(reader.PeekChar() != -1)
+                                AutoPauseResume = reader.ReadBoolean();
+                            
+                            /* TODO: new Buds3 features
+                              try {
+                                   this.hotCommand = recvDataByteBuffer.get() == 1;
+                                   this.hotCommandLanguage = recvDataByteBuffer.get();
+                                   this.peqMod = recvDataByteBuffer.get();
+                                   this.adaptiveVolume = recvDataByteBuffer.get() == 1;
+                                   this.adaptSound = recvDataByteBuffer.get() == 1;
+                               } catch (BufferUnderflowException e3) {
+                                   Log.i("Jelly_MsgExtendedStatusUpdated", "BufferUnderflowException  revison 1: " + e3);
+                               }
+                               if (FeatureManager.has(Feature.HOT_COMMAND_LANGUAGE_UPDATE)) {
+                                   try {
+                                       this.versionHotCommand = "" + ((int) recvDataByteBuffer.get()) + "." + ((int) recvDataByteBuffer.get()) + "." + ((int) recvDataByteBuffer.get());
+                                   } catch (Exception e4) {
+                                       Log.i("Jelly_MsgExtendedStatusUpdated", "BufferUnderflowException read version hot command false : " + e4);
+                                   }
+                               }
+                             
+                             */
+                            
+                            /* TODO: new Buds3Pro features
+                               try {
+                                   this.hotCommand = recvDataByteBuffer.get() == 1;
+                                   this.hotCommandLanguage = recvDataByteBuffer.get();
+                                   this.peqMod = recvDataByteBuffer.get();
+                                   this.adaptiveVolume = recvDataByteBuffer.get() == 1;
+                                   this.lightingControl = recvDataByteBuffer.get();
+                                   this.doublePinchAndHoldAdvanced = recvDataByteBuffer.get();
+                                   this.sirenDetect = recvDataByteBuffer.get() == 1;
+                                   this.adaptSound = recvDataByteBuffer.get() == 1;
+                               } catch (BufferUnderflowException e) {
+                                   Log.i("Paran_MsgExtendedStatusUpdated", "BufferUnderflowException  revison 1: " + e);
+                               }
+                               if (FeatureManager.has(Feature.HOT_COMMAND_LANGUAGE_UPDATE)) {
+                                   try {
+                                       this.versionHotCommand = "" + ((int) recvDataByteBuffer.get()) + "." + ((int) recvDataByteBuffer.get()) + "." + ((int) recvDataByteBuffer.get());
+                                   } catch (Exception e2) {
+                                       Log.i("Paran_MsgExtendedStatusUpdated", "BufferUnderflowException read version hot command false : " + e2);
+                                   }
+                               }
+                             
+                             */
+                        }
                     }
                 }
             }
         }
         
-        // TODO Buds3/Buds3 Pro support not yet implemented
-        
+ 
         if (DeviceSpec.Supports(Features.ChargingState, Revision))
         {
             if(IsLeftCharging)

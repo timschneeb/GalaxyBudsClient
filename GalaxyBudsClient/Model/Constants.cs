@@ -208,9 +208,9 @@ namespace GalaxyBudsClient.Model
             Buds2Pro = 6,
             [ModelMetadata(Name = "Galaxy Buds FE", FwPattern = "SM-R400N", BuildPrefix = "R400N")]
             BudsFe = 7,
-            // TODO uncomment when ready [ModelMetadata(Name = "Galaxy Buds3", FwPattern = "SM-R530", BuildPrefix = "R530")]
+            [ModelMetadata(Name = "Galaxy Buds3", FwPattern = "SM-R530", BuildPrefix = "R530")]
             Buds3 = 8,
-            // TODO uncomment when ready [ModelMetadata(Name = "Galaxy Buds3 Pro", FwPattern = "SM-R630", BuildPrefix = "R630")]
+            [ModelMetadata(Name = "Galaxy Buds3 Pro", FwPattern = "SM-R630", BuildPrefix = "R630")]
             Buds3Pro = 9
         }
 
@@ -263,11 +263,10 @@ namespace GalaxyBudsClient.Model
             [AssociatedModel(Models.BudsFe)] BudsFeGraphite = 330,
             [AssociatedModel(Models.BudsFe)] BudsFeWhite = 331,
             
-            // TODO Add images and find out actual color names
-            [AssociatedModel(Models.Buds3)] Buds3UnknownA = 333,
-            [AssociatedModel(Models.Buds3)] Buds3UnknownB = 334,
-            [AssociatedModel(Models.Buds3Pro)] Buds3ProUnknownA = 340,
-            [AssociatedModel(Models.Buds3Pro)] Buds3ProUnknownB = 341
+            [AssociatedModel(Models.Buds3)] Buds3Silver = 333,
+            [AssociatedModel(Models.Buds3)] Buds3White = 334,
+            [AssociatedModel(Models.Buds3Pro)] Buds3ProSilver = 340,
+            [AssociatedModel(Models.Buds3Pro)] Buds3ProWhite = 341
         }
 
         [CompiledEnum]

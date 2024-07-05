@@ -46,5 +46,6 @@ public enum Features
     DeviceColor,
     Rename,
     SmartThingsFind,
-    UsageReport
+    UsageReport,
+    HotCommandLanguageUpdate
 }
