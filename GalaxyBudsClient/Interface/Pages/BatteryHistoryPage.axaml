@@ -129,8 +129,14 @@
                       Cursor="{Binding PlotCursor}"
                       Grid.Row="3" />
 
+        <ProgressBar Grid.Row="3"
+                     Padding="16"
+                     IsIndeterminate="True"
+                     IsVisible="{Binding IsPlotLoading}"/>
+        <!-- TODO reintroduce progress ring after upgrading FluentAvalonia
         <ui:ProgressRing IsVisible="{Binding IsPlotLoading}"
                          Grid.Row="3" />
+                         -->
 
         <StackPanel Grid.Row="4"
                     Margin="0,8,0,0"
