@@ -20,14 +20,29 @@ public class TouchAndHoldNoiseControls : BaseMessageEncoder
         return new SppMessage(MsgIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS, MsgTypes.Request, states);
     }
     
-    private static byte[] GetValues(NoiseControlCycleModes mode)
+    private byte[] GetValues(NoiseControlCycleModes mode)
     {
-        return mode switch
+        if (DeviceSpec.Device >= Models.Buds3)
         {
-            NoiseControlCycleModes.AncOff => [1, 0, 1],
-            NoiseControlCycleModes.AmbOff => [0, 1, 1],
-            NoiseControlCycleModes.AncAmb => [1, 1, 0],
-            _ => [0, 0, 0]
-        };
+            // New format
+            return mode switch
+            {
+                NoiseControlCycleModes.AncOff => [8 + 4],
+                NoiseControlCycleModes.AmbOff => [0 + 4],
+                NoiseControlCycleModes.AncAmb => [8 + 0],
+                _ => [0, 0]
+            };
+            // TODO implement Adaptive mode
+        }
+        else
+        {
+            return mode switch
+            {
+                NoiseControlCycleModes.AncOff => [1, 0, 1],
+                NoiseControlCycleModes.AmbOff => [0, 1, 1],
+                NoiseControlCycleModes.AncAmb => [1, 1, 0],
+                _ => [0, 0, 0]
+            };
+        }
     }
 }
