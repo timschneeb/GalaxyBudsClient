@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>48%</td><td>264 missing string(s)</td></tr>
+<tr><td>48%</td><td>265 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -29,6 +29,7 @@ Right: {1}</td></tr>
 <tr><td><code>not_available</code></td><td>Not available</td></tr>
 <tr><td><code>last_updated_at_n</code></td><td>Last updated at {0}</td></tr>
 <tr><td><code>file_not_found</code></td><td>File not found</td></tr>
+<tr><td><code>adaptive</code></td><td>Adaptive</td></tr>
 <tr><td><code>placement_charging</code></td><td>Charging</td></tr>
 <tr><td><code>touchoption_custom_trigger_event</code></td><td>Trigger earbud action...</td></tr>
 <tr><td><code>hotkey_add_short</code></td><td>New</td></tr>

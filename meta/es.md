@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>28%</td><td>364 missing string(s)</td></tr>
+<tr><td>28%</td><td>365 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -34,6 +34,7 @@ Right: {1}</td></tr>
 <tr><td><code>last_updated_at_n</code></td><td>Last updated at {0}</td></tr>
 <tr><td><code>file_not_found</code></td><td>File not found</td></tr>
 <tr><td><code>anc</code></td><td>Active noise cancelling</td></tr>
+<tr><td><code>adaptive</code></td><td>Adaptive</td></tr>
 <tr><td><code>darkmode_blur_enabled</code></td><td>On, with blur effect</td></tr>
 <tr><td><code>darkmode_mica_enabled</code></td><td>On, with mica effect</td></tr>
 <tr><td><code>placement_charging</code></td><td>Charging</td></tr>

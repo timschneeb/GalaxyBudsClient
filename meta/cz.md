@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>83%</td><td>83 missing string(s)</td></tr>
+<tr><td>83%</td><td>84 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -25,6 +25,7 @@ Right: {1}</td></tr>
 <tr><td><code>no_data_stored</code></td><td>No data stored</td></tr>
 <tr><td><code>not_available</code></td><td>Not available</td></tr>
 <tr><td><code>last_updated_at_n</code></td><td>Last updated at {0}</td></tr>
+<tr><td><code>adaptive</code></td><td>Adaptive</td></tr>
 <tr><td><code>event_nc_switch_one</code></td><td>Switch noise controls with one earbud</td></tr>
 <tr><td><code>system_usage_reports</code></td><td>Usage & metering reports</td></tr>
 <tr><td><code>system_usage_reports_desc</code></td><td>View usage reports provided by the earbuds</td></tr>
