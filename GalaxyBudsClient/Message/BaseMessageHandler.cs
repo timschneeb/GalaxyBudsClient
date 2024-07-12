@@ -12,7 +12,6 @@ MsgSDTestResult
 MsgSelfDiagnostics
 MsgSetHearingTestResult
 MsgSetHotCommand
-MsgOverheat
 MsgVoiceWakeUpListeningStatus
 HearingTestManager
  
