@@ -39,6 +39,7 @@ Right: {1}</sys:String>
     <sys:String x:Key="nobluetoothdev">No Bluetooth adapter found. Please enable Bluetooth and try again.</sys:String>
 
     <sys:String x:Key="anc">Active noise cancelling</sys:String>
+    <sys:String x:Key="adaptive">Adaptive</sys:String>
 
     <!--Dark Mode States-->
     <sys:String x:Key="darkmode_disabled">Off</sys:String>

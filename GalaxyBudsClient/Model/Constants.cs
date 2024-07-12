@@ -334,7 +334,9 @@ namespace GalaxyBudsClient.Model
             [LocalizableDescription(Keys.MainpageAmbientSound)]
             AmbientSound = 2,
             [LocalizableDescription(Keys.Anc)]
-            NoiseReduction = 1
+            NoiseReduction = 1,
+            [LocalizableDescription(Keys.Adaptive)]
+            Adaptive = 3
         }
    
         [CompiledEnum]
