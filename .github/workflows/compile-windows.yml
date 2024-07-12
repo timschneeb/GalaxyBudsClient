@@ -82,6 +82,7 @@ jobs:
       with:
         length: 6
     - name: Prepare version information (3/3)
+      shell: bash
       run: echo 'version={${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}}' >> $GITHUB_OUTPUT
       id: version
       
@@ -167,6 +168,7 @@ jobs:
       with:
         length: 6
     - name: Prepare version information (3/3)
+      shell: bash
       run: echo 'version={${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}}' >> $GITHUB_OUTPUT
       id: version
       
