@@ -127,7 +127,8 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         _backend.NewDataAvailable += OnNewDataAvailable;
         _backend.RfcommConnected += OnRfcommConnected;
         _backend.Disconnected += OnDisconnected;
-            
+
+        EventDispatcher.Instance.EventReceived += OnEventReceived;
         MessageReceived += SppMessageReceiver.Instance.MessageReceiver;
         InvalidDataReceived += OnInvalidDataReceived;
     }
@@ -166,7 +167,8 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         }
 
         MessageReceived -= SppMessageReceiver.Instance.MessageReceiver;
-            
+        EventDispatcher.Instance.EventReceived -= OnEventReceived;
+        
         await _loopCancelSource.CancelAsync();
         await Task.Delay(50);
 
@@ -178,6 +180,14 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         catch (Exception ex)
         {
             Log.Error(ex, "BluetoothImpl.Dispose: Error while disposing children");
+        }
+    }
+    
+    private async void OnEventReceived(Event e, object? arg)
+    {
+        if (e == Event.Connect && !IsConnected)
+        {
+            await ConnectAsync();
         }
     }
     

@@ -30,41 +30,23 @@ namespace GalaxyBudsClient.Interface;
 
 public partial class MainWindow : StyledAppWindow
 {
-    private BudsPopup? _popup;
-    private bool _popupShown;
-    
+   
     private bool _firstShow = true;
-    private LegacyWearStates _lastWearState = LegacyWearStates.Both;
 
     private static App App => Application.Current as App ?? throw new InvalidOperationException();
         
     private static MainWindow? _instance;
     public static MainWindow Instance => _instance ??= new MainWindow();
-
-    // TODO add loading spinners for pages?
+    
     public MainWindow()
     {
+        Log.Error(new StackTrace().ToString());
+        
         InitializeComponent();
         this.AttachDevTools();
             
         BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
-        BluetoothImpl.Instance.Disconnected += OnDisconnected;
-        BluetoothImpl.Instance.Connected += OnConnected;
-
-        SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
-        SppMessageReceiver.Instance.StatusUpdate += OnStatusUpdate;
-        SppMessageReceiver.Instance.OtherOption += HandleOtherTouchOption;
-
-        EventDispatcher.Instance.EventReceived += OnEventReceived;
-        App.TrayIconClicked += TrayIcon_OnLeftClicked;
-        _ = TrayManager.Instance.RebuildAsync();
-            
         Loc.LanguageUpdated += OnLanguageUpdated;
-        
-        if (BluetoothImpl.HasValidDevice)
-        {
-            Task.Run(() => BluetoothImpl.Instance.ConnectAsync());
-        }
             
         if (App.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
@@ -80,32 +62,6 @@ public partial class MainWindow : StyledAppWindow
         FlowDirection = Loc.ResolveFlowDirection();
     }
 
-    private async void OnEventReceived(Event e, object? arg)
-    {
-        switch (e)
-        {
-            case Event.PairingMode:
-                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.UNK_PAIRING_MODE);
-                break;
-            case Event.ToggleManagerVisibility:
-                if (IsVisible)
-                    BringToTray();
-                else
-                    BringToFront();
-                break;
-            case Event.Connect:
-                if (!BluetoothImpl.Instance.IsConnected)
-                {
-                    await BluetoothImpl.Instance.ConnectAsync();
-                }
-                break;
-            case Event.ShowBatteryPopup:
-                ShowPopup(true);
-                break;
-        }
-    }
-
-    #region Window management
     protected override async void OnClosing(WindowClosingEventArgs e)
     {
         if (Settings.Data.MinimizeToTray && PlatformUtils.SupportsTrayIcon)
@@ -158,23 +114,12 @@ public partial class MainWindow : StyledAppWindow
             Log.Information("Startup time: {Time}",  Stopwatch.GetElapsedTime(Program.StartedAt));
             
         _firstShow = false;
-        
         base.OnOpened(e);
     }
 
     protected override void OnClosed(EventArgs e)
     {
         BluetoothImpl.Instance.BluetoothError -= OnBluetoothError;
-        BluetoothImpl.Instance.Disconnected -= OnDisconnected;
-        BluetoothImpl.Instance.Connected -= OnConnected;
-            
-        SppMessageReceiver.Instance.ExtendedStatusUpdate -= OnExtendedStatusUpdate;
-        SppMessageReceiver.Instance.StatusUpdate -= OnStatusUpdate;
-        SppMessageReceiver.Instance.OtherOption -= HandleOtherTouchOption;
-
-        App.TrayIconClicked -= TrayIcon_OnLeftClicked;
-        EventDispatcher.Instance.EventReceived -= OnEventReceived;
-
         Loc.LanguageUpdated -= OnLanguageUpdated;
 
         if(App.ApplicationLifetime is IControlledApplicationLifetime lifetime)
@@ -215,15 +160,7 @@ public partial class MainWindow : StyledAppWindow
         });
     }
 
-    private void BringToTray()
-    {
-#if OSX
-        GalaxyBudsClient.Platform.OSX.AppUtils.setHideInDock(true);
-#endif
-        Hide();
-    }
-
-    private void TrayIcon_OnLeftClicked()
+    public void ToggleVisibility()
     {
         Dispatcher.UIThread.InvokeAsync(() =>
         {
@@ -237,56 +174,19 @@ public partial class MainWindow : StyledAppWindow
             }
         });
     }
-    #endregion
-
-    #region Global Bluetooth callbacks
-    private void OnStatusUpdate(object? sender, StatusUpdateDecoder e)
+    
+    private void BringToTray()
     {
-        if (_lastWearState == LegacyWearStates.None &&
-            e.WearState != LegacyWearStates.None && Settings.Data.ResumePlaybackOnSensor)
-        {
-            Platform.PlatformImpl.MediaKeyRemote.Play();
-        }
-            
-        // Update dynamic tray icon
-        if (e is IBasicStatusUpdate status)
-        {
-            WindowIconRenderer.UpdateDynamicIcon(status);
-        }
-            
-        _lastWearState = e.WearState;
-    }
-
-    private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateDecoder e)
-    {
-        if (Settings.Data.PopupEnabled)
-        {
-            ShowPopup();
-        }
-            
-        // Update dynamic tray icon
-        if (e is IBasicStatusUpdate status)
-        {
-            WindowIconRenderer.UpdateDynamicIcon(status);
-        }
-            
-        // Reply manager info and request & cache SKU info
-        _ = BluetoothImpl.Instance.SendAsync(new ManagerInfoEncoder());
-        if(BluetoothImpl.Instance.DeviceSpec.Supports(Features.DebugSku))
-            _ = BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_SKU);
-    }
-
-    private void OnConnected(object? sender, EventArgs e)
-    {
-        _popupShown = false;
+#if OSX
+        GalaxyBudsClient.Platform.OSX.AppUtils.setHideInDock(true);
+#endif
+        Hide();
     }
 
     private void OnBluetoothError(object? sender, BluetoothException e)
     {
         _ = Dispatcher.UIThread.InvokeAsync(async () =>
         {
-            WindowIconRenderer.ResetIconToDefault();
-            
             switch (e.ErrorCode)
             {
                 case BluetoothException.ErrorCodes.NoAdaptersAvailable:
@@ -296,116 +196,7 @@ public partial class MainWindow : StyledAppWindow
                         Description = Strings.Nobluetoothdev
                     }.ShowAsync();
                     break;
-                default:
-                    _popupShown = false;
-                    break;
             }
         });
-    }
-
-    private void OnDisconnected(object? sender, string e)
-    {
-        WindowIconRenderer.ResetIconToDefault();
-        _popupShown = false;
-    }
-
-    private async void HandleOtherTouchOption(object? sender, TouchOptions e)
-    {
-        var action = e == TouchOptions.OtherL ?
-            Settings.Data.CustomActionLeft : Settings.Data.CustomActionRight;
-
-        switch (action.Action)
-        {
-            case CustomActions.Event:
-                if (EventExtensions.TryParse(action.Parameter, out var result, true))
-                {
-                    EventDispatcher.Instance.Dispatch(result);
-                }
-                break;
-            case CustomActions.RunExternalProgram:
-                try
-                {
-                    var psi = new ProcessStartInfo
-                    {
-                        FileName = action.Parameter,
-                        UseShellExecute = true
-                    };
-                    Process.Start(psi);
-                }
-                catch (FileNotFoundException ex)
-                {
-                    await new MessageBox
-                    {
-                        Title = "Custom long-press action failed",
-                        Description = $"Unable to launch external application.\n" +
-                                      $"File not found: '{ex.FileName}'"
-                    }.ShowAsync();
-                }
-                catch (Win32Exception ex)
-                {
-                    if (ex.NativeErrorCode == 13 && PlatformUtils.IsLinux)
-                    {
-                        await new MessageBox
-                        {
-                            Title = "Custom long-press action failed",
-                            Description = $"Unable to launch external application.\n\n" +
-                                          $"Insufficient permissions. Please add execute permissions for your user/group to this file.\n\n" +
-                                          $"Run this command in a terminal: chmod +x \"{action.Parameter}\""
-                        }.ShowAsync();
-                    }
-                    else
-                    {
-                        await new MessageBox
-                        {
-                            Title = "Custom long-press action failed",
-                            Description = $"Unable to launch external application.\n\n" +
-                                          $"Detailed information:\n\n" +
-                                          $"{ex.Message}"
-                        }.ShowAsync();
-                    }
-                }
-
-                break;
-            case CustomActions.TriggerHotkey:
-                var keys = new List<Key>();
-                try
-                {
-                    Key? Parse(string s)
-                    {
-                        if (!Enum.TryParse<Key>(s, out var key)) return null;
-                        return key;
-                    }
-
-                    keys.AddRange(action.Parameter.Split(',')
-                        .Select(Parse)
-                        .Where(x => x is not null)
-                        .Cast<Key>());
-                }
-                catch (Exception ex)
-                {
-                    Log.Error("CustomAction.HotkeyBroadcast: Cannot parse saved key-combo: {Message}", ex.Message);
-                    Log.Error("CustomAction.HotkeyBroadcast: Caused by combo: {Param}", action.Parameter);
-                    return;
-                }
-                
-                Platform.PlatformImpl.HotkeyBroadcast.SendKeys(keys);
-                break;
-        }
-    }
-    #endregion
-
-    private void ShowPopup(bool noDebounce = false)
-    {
-        if (_popupShown && !noDebounce)
-            return;
-        
-        if (_popup is { IsVisible: true })
-        {
-            _popup.UpdateSettings();
-            _popup.RearmTimer();
-        }
-        
-        WindowLauncher.ShowAsSingleInstance(ref _popup); 
-        _popupShown = true;
     }
 }
