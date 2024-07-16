@@ -40,8 +40,6 @@ public partial class MainWindow : StyledAppWindow
     
     public MainWindow()
     {
-        Log.Error(new StackTrace().ToString());
-        
         InitializeComponent();
         this.AttachDevTools();
             

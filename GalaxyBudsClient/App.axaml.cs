@@ -111,7 +111,7 @@ public class App : Application
         
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = null;//MainWindow.Instance;
+            desktop.MainWindow = MainWindow.Instance;
         }
             
         if (Loc.IsTranslatorModeEnabled)
