@@ -11,7 +11,7 @@ namespace GalaxyBudsClient.Cli.Ipc;
 
 public static class IpcService
 {
-    public static string ServiceName => "me.timschneeberger.galaxybudsclient";
+    public static string ServiceName => "me.timschneeberger.GalaxyBudsClient";
     private static string TcpAddress => "tcp:host=localhost,port=54533";
     private static DeviceObject? _deviceObject;
         

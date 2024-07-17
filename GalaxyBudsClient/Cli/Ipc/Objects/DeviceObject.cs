@@ -14,7 +14,7 @@ using Tmds.DBus;
 [assembly: InternalsVisibleTo(Connection.DynamicAssemblyName)]
 namespace GalaxyBudsClient.Cli.Ipc.Objects;
 
-[DBusInterface("me.timschneeberger.galaxybudsclient.Device")]
+[DBusInterface("me.timschneeberger.GalaxyBudsClient.Device")]
 public interface IDeviceObject : IDBusObject
 {
     Task<object> GetAsync(string prop);
