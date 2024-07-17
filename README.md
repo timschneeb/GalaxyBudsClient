@@ -67,12 +67,17 @@ Get binaries for Windows in the [release](https://github.com/timschneeb/GalaxyBu
 
 ### Flatpak
 
-Universal binary packages for all Linux distributions. This is the recommended way of installing GalaxyBudsClient on Linux.
+Universal binary packages for all Linux distributions. The Flatpak version does not support autostart unless it is set up manually. You can use `galaxybudsclient /StartMinimized` to launch the app minimized during startup.
 
 Available for download on FlatHub: https://flathub.org/apps/me.timschneeberger.GalaxyBudsClient
 ```
 flatpak install me.timschneeberger.GalaxyBudsClient
 ```
+If you want to use features that require registering a D-Bus server, such as the CLI, run this command to grant permission:
+```
+sudo flatpak override me.timschneeberger.GalaxyBudsClient --own-name=me.timschneeberger.galaxybudsclient
+```
+
 
 <a href='https://flathub.org/apps/me.timschneeberger.GalaxyBudsClient'><img width='240' alt='Download on Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.png'/></a>
 
