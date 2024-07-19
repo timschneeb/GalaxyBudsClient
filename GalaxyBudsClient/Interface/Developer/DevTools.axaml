@@ -8,145 +8,14 @@
         xmlns:avaloniaHex="clr-namespace:AvaloniaHex;assembly=AvaloniaHex"
         xmlns:rendering="clr-namespace:AvaloniaHex.Rendering;assembly=AvaloniaHex"
         xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
+        xmlns:developer="clr-namespace:GalaxyBudsClient.Interface.Developer"
         mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="625"
         x:Class="GalaxyBudsClient.Interface.Developer.DevTools"
-        x:DataType="vm:DevToolsViewModel"
         Height="625" Width="700"
         ShowInTaskbar="True"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/icon.ico"
         Title="Galaxy Buds Manager - Developer Tools">
     
-    <Design.DataContext>
-        <vm:DevToolsViewModel />
-    </Design.DataContext>
-
-    <Window.Styles>
-        <Style Selector="DataGridCell">
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="MinHeight" Value="24" />
-        </Style>
-        <StyleInclude Source="avares://AvaloniaHex/Themes/Simple/AvaloniaHex.axaml"/>
-    </Window.Styles>
-
-    <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_File">
-                <MenuItem Header="_Dump to file..." Click="SaveDump_OnClick" />
-                <MenuItem Header="_Parse dump..." Click="LoadDump_OnClick" />
-                <MenuItem Header="_Clear" Click="Clear_OnClick" />
-            </MenuItem>
-            <MenuItem Header="_Edit">
-                <MenuItem Header="_Copy selected payload" Click="CopyPayload_OnClick" />
-            </MenuItem>
-            <MenuItem Header="_Options">
-                <MenuItem Header="_Auto-scroll" ToggleType="CheckBox" IsChecked="{Binding IsAutoscrollEnabled}" 
-                          Click="OnAutoScrollClicked"/>
-                <MenuItem Header="_Monitor SMEP protocol" ToggleType="CheckBox" IsChecked="{Binding UseAlternativeProtocol}" 
-                          Click="OnUseAlternativeProtocolClicked"/>
-                <MenuItem Header="_Open on startup" ToggleType="CheckBox" IsChecked="{Binding OpenDevToolsOnStartup, Source={x:Static config:Settings.Data}}" 
-                          Click="OnOpenOnStartupClicked"/>
-            </MenuItem>
-        </Menu>
-
-        <Grid Margin="3, 0, 3, 3" ColumnDefinitions="Auto,5,*">
-
-            <Grid Grid.Column="0" RowDefinitions="*,5,*">
-
-                <avaloniaHex:HexEditor Name="HexEditor"
-                                       Grid.Column="0" 
-                                       FontFamily="Monospace,monospace,Consolas,Hack">
-                    <avaloniaHex:HexEditor.Columns>
-                        <rendering:OffsetColumn />
-                        <rendering:HexColumn />
-                        <rendering:AsciiColumn />
-                    </avaloniaHex:HexEditor.Columns>
-                </avaloniaHex:HexEditor>
-
-                <GridSplitter Grid.Row="1" Height="5" ResizeDirection="Rows" ShowsPreview="True" />
-
-                <Border Grid.Row="2" Grid.Column="0"
-                        BorderThickness="1"
-                        BorderBrush="{StaticResource SystemBaseLowColor}">
-                    <Grid Name="SendFormGrid"
-                          RowDefinitions="Auto,*">
-                        <Grid Grid.Row="0" Margin="5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" MaxWidth="100" />
-                            </Grid.ColumnDefinitions>
-                            
-                            <ComboBox Grid.Column="0" Name="SendMsgId"
-                                      HorizontalAlignment="Stretch"
-                                      Margin="0,0,5,0"
-                                      ItemsSource="{Binding ., Source={ext:MsgIdsBindingSource}}" />
-                            <ComboBox Grid.Column="1" Name="SendMsgType"
-                                      Margin="0,0,5,0"
-                                      HorizontalAlignment="Stretch"
-                                      ItemsSource="{Binding ., Source={ext:MsgTypesBindingSource}}" />
-                            <Button Grid.Column="2" Name="SendSubmit"
-                                    HorizontalAlignment="Stretch"
-                                    MaxWidth="100"
-                                    Content="Send"
-                                    Click="SendMsg_Click" />
-                        </Grid>
-
-                        <Grid Grid.Row="1" Margin="5,0,5,5">
-                            <TextBox Name="SendMsgPayload" TextWrapping="Wrap"
-                                     BorderBrush="{StaticResource SystemBaseLowColor}" />
-                        </Grid>
-                    </Grid>
-                </Border>
-            </Grid>
-
-            <GridSplitter Grid.Column="1" Width="5" ShowsPreview="True" />
-
-            <Grid Grid.Column="2" RowDefinitions="*,5,*">
-                <DataGrid Name="MsgTable" Grid.Row="0" SelectionMode="Single"
-                          CanUserSortColumns="False" CanUserReorderColumns="False"
-                          CanUserResizeColumns="True"
-                          IsReadOnly="True"
-                          HeadersVisibility="All"
-                          ItemsSource="{Binding MsgTableDataSource}"
-                          SelectedItem="{Binding SelectedMessage}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
-                        <DataGridTextColumn Header="Payload" Binding="{Binding Payload}" Width="*" />
-                        <DataGridTextColumn Header="Size" Binding="{Binding Size}" />
-                        <DataGridTextColumn Header="CRC16" Binding="{Binding Crc16}" />
-                        <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
-                    </DataGrid.Columns>
-                </DataGrid>
-
-                <GridSplitter Grid.Row="1" Height="5" ResizeDirection="Rows" ShowsPreview="True" />
-                
-                <Panel Grid.Row="2">
-                        <DataGrid Name="PropTable"
-                                  SelectionMode="Single"
-                                  IsReadOnly="True"
-                                  CanUserResizeColumns="True"
-                                  CanUserSortColumns="False"
-                                  CanUserReorderColumns="False"
-                                  HeadersVisibility="All"
-                                  IsVisible="{Binding HasProperties}"
-                                  ItemsSource="{Binding PropTableDataSource}">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Property"
-                                                    Binding="{Binding Key}"
-                                                    Width="*" />
-                                <DataGridTextColumn Header="Value"
-                                                    Binding="{Binding Value}"
-                                                    Width="*" />
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    
-                    <controls:EmptyView
-                        IsVisible="{Binding !HasProperties}"
-                        Text="Decoder not implemented"
-                        Symbol="TagOff" />
-                </Panel>
-            </Grid>
-        </Grid>
-    </DockPanel>
+    <developer:DevToolsView />
 </Window>

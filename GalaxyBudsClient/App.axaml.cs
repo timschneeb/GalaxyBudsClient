@@ -18,7 +18,9 @@ using Avalonia.Media;
 using Avalonia.Skia;
 using Avalonia.Threading;
 using FluentAvalonia.Styling;
+using GalaxyBudsClient.Interface;
 using GalaxyBudsClient.Interface.Dialogs;
+using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Message.Encoder;
@@ -80,9 +82,7 @@ public class App : Application
             Loc.Load();
         }, DispatcherPriority.Render);
             
-        TrayManager.Init();
         DeviceMessageCache.Init();
-        BatteryHistoryManager.Init();
         ScriptManager.Instance.RegisterUserHooks();
         
         Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
@@ -101,8 +101,6 @@ public class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        TrayManager.Init();
-            
         if (BluetoothImpl.HasValidDevice)
         {
             Task.Run(() => BluetoothImpl.Instance.ConnectAsync());
@@ -112,8 +110,16 @@ public class App : Application
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.MainWindow = MainWindow.Instance;
-        }
             
+            TrayManager.Init();
+            BatteryHistoryManager.Init();
+        }
+        else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
+        {
+            // TODO make sure that MainWindow logic is made available on mobile platforms
+            singleViewPlatform.MainView = new MainView();
+        }
+        
         if (Loc.IsTranslatorModeEnabled)
         {
             WindowLauncher.ShowTranslatorTools();
@@ -130,6 +136,9 @@ public class App : Application
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.UNK_PAIRING_MODE);
                 break;
             case Event.ToggleManagerVisibility:
+                if (!PlatformUtils.IsDesktop)
+                    break;
+                
                 MainWindow.Instance.ToggleVisibility();
                 break;
             case Event.ShowBatteryPopup:
@@ -149,7 +158,7 @@ public class App : Application
             _popup.RearmTimer();
         }
         
-        WindowLauncher.ShowAsSingleInstance(ref _popup); 
+        WindowLauncher.ShowAsSingleInstanceOnDesktop(ref _popup); 
         _popupShown = true;
     }
     

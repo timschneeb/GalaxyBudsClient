@@ -44,7 +44,7 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
 
         cd.PrimaryButtonClick += OnFactoryResetConfirmed;
         cd.SecondaryButtonClick += (_, _) => cd.Hide();
-        await cd.ShowAsync(MainWindow.Instance);
+        await cd.ShowAsync(TopLevel.GetTopLevel(MainView.Instance));
         cd.PrimaryButtonClick -= OnFactoryResetConfirmed;
     }
 
@@ -84,7 +84,7 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
                 {
                     Title = Strings.FactoryErrorTitle,
                     Description = Strings.FactoryError.Replace("{0}", info)
-                }.ShowAsync(MainWindow.Instance);
+                }.ShowAsync();
                 return;
             }
 
@@ -127,7 +127,7 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
         sensorManager.NewQuaternionReceived += OnNewQuaternionReceived;
         sensorManager.Attach();
         
-        await cd.ShowAsync(MainWindow.Instance);
+        await cd.ShowAsync(TopLevel.GetTopLevel(MainView.Instance));
         
         sensorManager.NewQuaternionReceived -= OnNewQuaternionReceived;
         sensorManager.Detach();

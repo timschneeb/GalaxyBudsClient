@@ -36,8 +36,17 @@ public partial class MainWindow : StyledAppWindow
     private static App App => Application.Current as App ?? throw new InvalidOperationException();
         
     private static MainWindow? _instance;
-    public static MainWindow Instance => _instance ??= new MainWindow();
-    
+    public static MainWindow Instance
+    {
+        get
+        {
+            if (!PlatformUtils.IsDesktop && _instance == null)
+                throw new PlatformNotSupportedException("Mobile platforms cannot use Avalonia's window API");
+                
+            return _instance ??= new MainWindow();
+        }
+    }
+
     public MainWindow()
     {
         InitializeComponent();
@@ -92,7 +101,7 @@ public partial class MainWindow : StyledAppWindow
         {
             if (Settings.Data.OpenDevToolsOnStartup)
             {
-                WindowLauncher.ShowDevTools(this);
+                WindowLauncher.ShowDevTools();
             }
             
             HotkeyReceiverManager.Reset();

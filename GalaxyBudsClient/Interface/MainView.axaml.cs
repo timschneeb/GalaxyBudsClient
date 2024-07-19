@@ -22,7 +22,10 @@ public partial class MainView : UserControl
     public MainView()
     {
         InitializeComponent();
+        Instance = this;
     }
+
+    public static MainView? Instance { get; private set; }
 
     private MainViewViewModel? ViewModel => DataContext as MainViewViewModel;
     private PageViewModelBase? CurrentPageViewModel { set; get; }

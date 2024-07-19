@@ -34,7 +34,7 @@ public class DevicesPageViewModel : MainPageViewModelBase
             CloseButtonText = Strings.Cancel,
             CloseButtonCommand = new MiniCommand(p => _ = BluetoothImpl.Instance.DisconnectAsync())
         };
-        _ = cd.ShowAsync(MainWindow.Instance);
+        _ = cd.ShowAsync(TopLevel.GetTopLevel(MainView.Instance));
         
         if(BluetoothImpl.Instance.IsConnected)
             await BluetoothImpl.Instance.DisconnectAsync();

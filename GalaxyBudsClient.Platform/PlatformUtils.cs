@@ -15,12 +15,15 @@ public static class PlatformUtils
         Windows,
         Linux,
         OSX,
+        Android,
         Other
     }
 
     public static bool IsWindows => RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
     public static bool IsLinux => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
     public static bool IsOSX => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
+    public static bool IsAndroid => RuntimeInformation.RuntimeIdentifier.Contains("android", StringComparison.OrdinalIgnoreCase);
+    public static bool IsDesktop => IsWindows || IsLinux || IsOSX;
     public static bool IsRunningInFlatpak => Environment.GetEnvironmentVariable("container") != null;
 
     public static bool SupportsTrayIcon => IsWindows || IsLinux || IsOSX;
@@ -39,7 +42,9 @@ public static class PlatformUtils
                 return Platforms.Windows;
             if (IsLinux)
                 return Platforms.Linux;
-            return IsOSX ? Platforms.OSX : Platforms.Other;
+            if (IsOSX)
+                return Platforms.OSX;
+            return IsAndroid ? Platforms.Android : Platforms.Other;
         }
     }
         

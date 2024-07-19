@@ -87,7 +87,7 @@ public static class Settings
         }
         catch (Exception e)
         {
-            if (MainWindow.Instance.IsVisible && e is UnauthorizedAccessException or SecurityException)
+            if ((!PlatformUtils.IsDesktop || MainWindow.Instance.IsVisible) && e is UnauthorizedAccessException or SecurityException)
             {
                 Dispatcher.UIThread.Post(() =>
                 {
@@ -95,7 +95,7 @@ public static class Settings
                     {
                         Title = Strings.Error,
                         Description = string.Format(Strings.SettingsSaveFailNoAccess, Path)
-                    }.ShowAsync(MainWindow.Instance);
+                    }.ShowAsync();
                 });
             }
             

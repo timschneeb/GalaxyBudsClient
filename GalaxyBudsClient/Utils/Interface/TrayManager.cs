@@ -7,6 +7,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Threading;
 using GalaxyBudsClient.Generated.I18N;
+using GalaxyBudsClient.Interface;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
@@ -66,7 +67,7 @@ internal class TrayManager
         switch (e)
         {
             case TrayItemTypes.ToggleNoiseControl:
-                var ncVm = MainWindow.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>();
+                var ncVm = MainView.Instance!.ResolveViewModelByType<NoiseControlPageViewModel>();
                 if (ncVm != null)
                 {
                     if (ncVm.IsAmbientSoundEnabled)
@@ -151,16 +152,16 @@ internal class TrayManager
             let str = type switch
             {
                 TrayItemTypes.ToggleNoiseControl => Strings.TraySwitchNoise,
-                TrayItemTypes.ToggleEqualizer => MainWindow.Instance.MainView.ResolveViewModelByType<EqualizerPageViewModel>()?.IsEqEnabled ?? false
+                TrayItemTypes.ToggleEqualizer => MainView.Instance!.ResolveViewModelByType<EqualizerPageViewModel>()?.IsEqEnabled ?? false
                     ? Strings.TrayDisableEq
                     : Strings.TrayEnableEq, 
-                TrayItemTypes.ToggleAmbient => MainWindow.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAmbientSoundEnabled ?? false
+                TrayItemTypes.ToggleAmbient => MainView.Instance!.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAmbientSoundEnabled ?? false
                     ? Strings.TrayDisableAmbientSound
                     : Strings.TrayEnableAmbientSound,
-                TrayItemTypes.ToggleAnc => MainWindow.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAncEnabled ?? false
+                TrayItemTypes.ToggleAnc => MainView.Instance!.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAncEnabled ?? false
                     ? Strings.TrayDisableAnc
                     : Strings.TrayEnableAnc,
-                TrayItemTypes.LockTouchpad => MainWindow.Instance.MainView.ResolveViewModelByType<TouchpadPageViewModel>()?.IsTouchpadLocked ?? false
+                TrayItemTypes.LockTouchpad => MainView.Instance!.ResolveViewModelByType<TouchpadPageViewModel>()?.IsTouchpadLocked ?? false
                     ? Strings.TrayUnlockTouchpad
                     : Strings.TrayLockTouchpad,
                 _ => Strings.Unknown

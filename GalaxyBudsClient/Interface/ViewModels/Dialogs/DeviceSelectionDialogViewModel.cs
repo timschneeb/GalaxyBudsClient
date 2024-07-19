@@ -66,7 +66,7 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
             CloseButtonText = Strings.Cancel,
             CloseButtonCommand = new MiniCommand(p => _ = BluetoothImpl.Instance.DisconnectAsync())
         };
-        _ = cd.ShowAsync(MainWindow.Instance);
+        _ = cd.ShowAsync();
         
         if(BluetoothImpl.Instance.IsConnected)
             await BluetoothImpl.Instance.DisconnectAsync();
@@ -106,7 +106,7 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
             {
                 Title = Strings.Error,
                 Description = ex.Message
-            }.ShowAsync(MainWindow.Instance);
+            }.ShowAsync();
             return;
         }
 

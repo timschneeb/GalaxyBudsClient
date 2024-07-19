@@ -30,7 +30,7 @@ public class TraceDownloaderDialog : TaskDialog
         Buttons = [_closeButton];
         IconSource = new SymbolIconSource { Symbol = Symbol.Bug };
         SubHeader = Strings.CoredumpDlProgressPrepare;
-        XamlRoot = MainWindow.Instance;
+        XamlRoot = TopLevel.GetTopLevel(MainView.Instance);
         ShowProgressBar = true;
         Content = _content = new TextBlock
         {
@@ -71,7 +71,7 @@ public class TraceDownloaderDialog : TaskDialog
             SubHeader = Strings.CoredumpDlProgressFinished;
             SetProgressBarState(100, TaskDialogProgressState.Normal);
 
-            var path = await MainWindow.Instance.OpenFolderPickerAsync(Strings.CoredumpDlSaveDialogTitle);
+            var path = await TopLevel.GetTopLevel(MainView.Instance)!.OpenFolderPickerAsync(Strings.CoredumpDlSaveDialogTitle);
             if (string.IsNullOrEmpty(path))
                 return;
 

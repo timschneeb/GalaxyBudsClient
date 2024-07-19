@@ -57,9 +57,9 @@ public class DumpImportDialog : ContentDialog
     protected override Type StyleKeyOverride => typeof(ContentDialog);
     
 
-    public async Task<DumpImportDialogResult?> OpenDialogAsync(Window? host = null)
+    public async Task<DumpImportDialogResult?> OpenDialogAsync(TopLevel? host = null)
     {
-        var result = await ShowAsync(host ?? MainWindow.Instance);
+        var result = await ShowAsync(host);
         return result == ContentDialogResult.None || 
                _comboBox.SelectedItem is not Models selection || 
                selection == Models.NULL ? null : 

@@ -39,7 +39,7 @@ public class FirmwareUpdateDialog : TaskDialog
             Children = { _progressSize, _offset, _packet, _mtu }
         };
         FooterVisibility = TaskDialogFooterVisibility.Auto;
-        XamlRoot = MainWindow.Instance;
+        XamlRoot = TopLevel.GetTopLevel(MainView.Instance);
         ShowProgressBar = true;
         
         FirmwareTransferManager.Instance.Finished += OnFinished;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using Avalonia.Controls;
 using Avalonia.Platform.Storage;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
@@ -67,7 +68,7 @@ public class TouchActionEditorDialogViewModel : ViewModelBase
             new("All files") { Patterns = new List<string> { "*" } }
         };
                 
-        var file = await MainWindow.Instance.OpenFilePickerAsync(filters, Strings.CactExternalAppDialogTitle);
+        var file = await TopLevel.GetTopLevel(MainView.Instance)!.OpenFilePickerAsync(filters, Strings.CactExternalAppDialogTitle);
         if (file == null)
             return;
             
