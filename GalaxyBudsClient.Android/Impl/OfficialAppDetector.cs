@@ -6,7 +6,7 @@ using GalaxyBudsClient.Platform.Interfaces;
 
 #pragma warning disable CA1416
 
-namespace GalaxyBudsClient.Android;
+namespace GalaxyBudsClient.Android.Impl;
 
 [SuppressMessage("ReSharper", "UnusedType.Global")]
 public class OfficialAppDetector(Context context) : IOfficialAppDetector

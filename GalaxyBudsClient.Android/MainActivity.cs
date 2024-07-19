@@ -8,6 +8,7 @@ using AndroidX.Core.Content;
 using Avalonia;
 using Avalonia.Android;
 using Avalonia.ReactiveUI;
+using GalaxyBudsClient.Android.Impl;
 using GalaxyBudsClient.Platform;
 using AlertDialog = AndroidX.AppCompat.App.AlertDialog;
 

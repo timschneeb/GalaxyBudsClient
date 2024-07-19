@@ -1,10 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
 using Android.Content;
-using GalaxyBudsClient.Android.Bluetooth;
 using GalaxyBudsClient.Platform.Interfaces;
-using GalaxyBudsClient.Platform.Stubs;
 
-namespace GalaxyBudsClient.Android;
+namespace GalaxyBudsClient.Android.Impl;
 
 [SuppressMessage("ReSharper", "UnusedType.Global")]
 public class AndroidPlatformImplCreator(Context appContext) : IPlatformImplCreator

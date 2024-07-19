@@ -433,6 +433,8 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         if (PlatformUtils.IsDesktop)
         {
             BatteryHistoryManager.Instance.DeleteDatabaseForDevice(toRemove);
+            
+            
         }
     }
     

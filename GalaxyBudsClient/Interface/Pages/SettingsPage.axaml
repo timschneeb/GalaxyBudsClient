@@ -195,11 +195,15 @@
                 <ui:SettingsExpander.IconSource>
                     <ic:SymbolIconSource Symbol="Lightbulb" />
                 </ui:SettingsExpander.IconSource>
-
+                
                 <controls:SettingsSwitchItem
                     Content="{ext:Translate {x:Static i18N:Keys.SettingsCrowdAllow}}"
                     Description="{ext:Translate {x:Static i18N:Keys.SettingsCrowdAllowDescription}}"
-                    IsChecked="{Binding !ExperimentsDisabled, Source={x:Static config:Settings.Data}}" />
+                    IsChecked="{Binding !ExperimentsDisabled, Source={x:Static config:Settings.Data}}">
+                    <Interaction.Behaviors>
+                        <ext:RequiresDesktopBehavior />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
 
                 <controls:SettingsSwitchItem
                     Content="{ext:Translate {x:Static i18N:Keys.SettingsCrowdCrashreport}}"

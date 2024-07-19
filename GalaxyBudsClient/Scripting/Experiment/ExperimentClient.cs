@@ -80,7 +80,8 @@ public class ExperimentClient
             return;
         }
             
-        if (Settings.Data.ExperimentsDisabled)
+        // Android builds are AOT compiled and do not support cs-script
+        if (Settings.Data.ExperimentsDisabled || !PlatformUtils.IsDesktop)
         {
             Log.Information("ExperimentClient: Feature is disabled");
             return;

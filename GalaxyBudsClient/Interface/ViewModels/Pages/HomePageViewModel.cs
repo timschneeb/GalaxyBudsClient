@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Threading;
 using FluentIcons.Common;
+using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
@@ -14,6 +15,7 @@ public class HomePageViewModel : MainPageViewModelBase
 {
     public override Control CreateView() => new HomePage { DataContext = this };
     public override string TitleKey => BreadcrumbViewModel.DeviceNameKey;
+    public override string? FallbackTitle => Strings.Home;
     public override Symbol IconKey => Symbol.Home;
     public override bool ShowsInFooter => false;
     
