@@ -5,7 +5,7 @@ namespace GalaxyBudsClient.Platform.Interfaces;
  */
 public interface IPlatformImplCreator
 { 
-    IAutoStartHelper? CreateAutoStartHelper();
+    IDesktopServices? CreateDesktopServices();
     IBluetoothService? CreateBluetoothService();
     IHotkeyBroadcast? CreateHotkeyBroadcast();
     IHotkeyReceiver? CreateHotkeyReceiver();

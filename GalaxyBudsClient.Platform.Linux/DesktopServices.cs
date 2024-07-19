@@ -1,10 +1,9 @@
 using System;
 using System.IO;
-using GalaxyBudsClient.Platform.Interfaces;
 
 namespace GalaxyBudsClient.Platform.Linux;
 
-public class AutoStartHelper : IAutoStartHelper
+public class DesktopServices : BaseDesktopServices
 {
     private static string AutostartFile => $"{Environment.GetEnvironmentVariable("HOME")}/.config/autostart/galaxybudsclient.desktop"; 
         
@@ -13,7 +12,7 @@ public class AutoStartHelper : IAutoStartHelper
     /* SelfAlt -> Disadvantage: only includes executable path -> problematic when called via /usr/bin/dotnet */
     // private static string SelfAlt => Process.GetCurrentProcess().MainModule?.FileName ?? string.Empty; 
         
-    public bool Enabled
+    public override bool IsAutoStartEnabled
     {
         get => File.Exists(AutostartFile);
         set

@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using Avalonia;
 using Avalonia.Xaml.Interactivity;
+using GalaxyBudsClient.Platform;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.MarkupExtensions;
@@ -31,13 +32,6 @@ public sealed class OpenLinkAction : AvaloniaObject, IAction
     
     private static void OpenLink(string uri)
     {
-        try
-        {
-            Process.Start(new ProcessStartInfo(uri) { UseShellExecute = true, Verb = "open" });
-        }
-        catch(Exception ex)
-        {
-            Log.Error(ex, "Cannot open link {Uri}", uri);
-        }
+        PlatformImpl.DesktopServices.OpenUri(uri);
     }
 }

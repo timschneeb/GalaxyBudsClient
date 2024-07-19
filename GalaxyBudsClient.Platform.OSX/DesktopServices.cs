@@ -1,12 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
-using GalaxyBudsClient.Platform.Interfaces;
 
 namespace GalaxyBudsClient.Platform.OSX;
 
 [SuppressMessage("ReSharper", "UnusedType.Global")]
-public class AutoStartHelper : IAutoStartHelper
+public class DesktopServices : BaseDesktopServices
 {
-    public bool Enabled
+    public override bool IsAutoStartEnabled
     {
         set => AppUtils.setAutoStartEnabled(value);
         get => AppUtils.isAutoStartEnabled();

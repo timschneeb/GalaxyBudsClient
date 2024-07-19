@@ -246,7 +246,11 @@
                     <ic:SymbolIconSource Symbol="Beaker" />
                 </ui:SettingsExpander.IconSource>
             </ui:SettingsExpander>
-
+            
+            <Interaction.Behaviors>
+                <ext:RequiresDesktopBehavior />
+            </Interaction.Behaviors>
+            
             <ui:SettingsExpander Header="{ext:Translate {x:Static i18N:Keys.CreditsSponsor}}"
                                  Description="{ext:Translate {x:Static i18N:Keys.CreditsKofi}}"
                                  ActionIconSource="Open"
