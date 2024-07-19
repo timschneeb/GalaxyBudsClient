@@ -10,7 +10,7 @@
         <Setter Property="IsPaneOpen" Value="True" />
     </Style>
     <Style Selector="Grid.MobileContentContainer">
-        <Setter Property="Margin" Value="0" />
+        <Setter Property="Margin" Value="0 32 0 0" />
     </Style>
     <Style Selector="ui|NavigationView.AppNav /template/ Button#NavigationViewBackButton">
         <Setter Property="Width" Value="{DynamicResource NavigationBackButtonWidth}" />

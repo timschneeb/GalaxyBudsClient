@@ -26,8 +26,8 @@ public partial class WelcomePage : BasePage<WelcomePageViewModel>
             await new MessageBox
             {
                 Title = Strings.BudsappHeader, 
-                Description = Strings.BudsappTextP1.Trim() + "\n" + 
-                              Strings.BudsappTextP2.Trim() + "\n" + 
+                Description = Strings.BudsappTextP1.Trim() + "\n\n" + 
+                              Strings.BudsappTextP2.Trim() + "\n\n" + 
                               Strings.BudsappTextP3.Trim(),
                 ButtonText = Strings.ContinueButton
             }.ShowAsync();
