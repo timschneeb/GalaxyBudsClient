@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Platform.Storage;
 using GalaxyBudsClient.Generated.I18N;
@@ -9,7 +10,7 @@ namespace GalaxyBudsClient.Utils.Extensions;
 
 public static class FilePickerExtensions
 {
-    public static async Task<string?> SaveFilePickerAsync(this Window host,
+    public static async Task<string?> SaveFilePickerAsync(this TopLevel host,
         IReadOnlyList<FilePickerFileType>? filters = null, 
         string? defaultExtension = null,
         string? suggestedFileName = null,
@@ -32,7 +33,7 @@ public static class FilePickerExtensions
         return file?.TryGetLocalPath();
     }
     
-    public static async Task<string?> OpenFilePickerAsync(this Window host,
+    public static async Task<string?> OpenFilePickerAsync(this TopLevel host,
         IReadOnlyList<FilePickerFileType>? filters = null, string? title = null)
     {
         if (!host.StorageProvider.CanOpen)
@@ -52,7 +53,7 @@ public static class FilePickerExtensions
         return file?.TryGetLocalPath();
     }
     
-    public static async Task<string?> OpenFolderPickerAsync(this Window host, string? title = null)
+    public static async Task<string?> OpenFolderPickerAsync(this TopLevel host, string? title = null)
     {
         if (!host.StorageProvider.CanPickFolder)
         {
@@ -70,7 +71,7 @@ public static class FilePickerExtensions
         return folder?.TryGetLocalPath();
     }
     
-    private static async Task ShowUnsupportedPlatformDialogAsync(this Window host)
+    private static async Task ShowUnsupportedPlatformDialogAsync(this Visual host)
     {
         await new MessageBox
         {

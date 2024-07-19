@@ -2,10 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
-        xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
-        xmlns:dynamicLocalization="clr-namespace:GalaxyBudsClient.Utils.Interface"
-        xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
+        xmlns:developer="clr-namespace:GalaxyBudsClient.Interface.Developer"
         mc:Ignorable="d" d:DesignWidth="463" d:DesignHeight="380"
         x:Class="GalaxyBudsClient.Interface.Developer.TranslatorTools"
         Height="390" Width="460" MaxWidth="460"
@@ -13,63 +10,5 @@
         Icon="/Resources/icon.ico"
         Title="Galaxy Buds Manager - Translator Tools">
 
-    <StackPanel Margin="10" Spacing="8">
-        <HeaderedContentControl Classes="GroupBox"
-                                Header="Reload XAML dictionary">
-            
-            <Grid RowDefinitions="Auto,5,Auto">
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" MinWidth="100" />
-                        <ColumnDefinition Width="Auto" MinWidth="80" />
-                    </Grid.ColumnDefinitions>
-                    
-                    <TextBox Grid.Column="0"
-                             IsReadOnly="True"
-                             Text="{Binding ., Source={x:Static dynamicLocalization:Loc.TranslatorModeFile}}"
-                             Margin="0,0,5,0" />
-                    
-                    <ComboBox Grid.Column="1" Name="Locales"
-                              HorizontalAlignment="Stretch"
-                              SelectedItem="{Binding Locale, Source={x:Static config:Settings.Data}}"
-                              ItemsSource="{Binding ., Source={ext:LocalesBindingSource}}"
-                              Margin="0,0,5,0" />
-                    
-                    <Button Grid.Column="2"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            Content="Reload"
-                            Command="{Binding ., Source={x:Static dynamicLocalization:Loc.ReloadCommand}}" />
-                </Grid>
-                
-                <TextBlock Grid.Row="2" TextWrapping="Wrap">
-                    Hot-reloads all strings. Don't forget to save before reloading.
-                </TextBlock>
-            </Grid>
-        </HeaderedContentControl>
-
-        <HeaderedContentControl Classes="GroupBox"
-                                Header="Flags">
-            <StackPanel Spacing="5">
-                
-                <CheckBox Content="Show dummy devices (Device selection page)"
-                          IsChecked="{Binding ShowDummyDevices, Source={x:Static platform:BluetoothImpl.Instance}}" />
-                <CheckBox Content="Ignore connection loss"
-                          IsChecked="{Binding SuppressDisconnectionEvents, Source={x:Static platform:BluetoothImpl.Instance}}" />
-                <CheckBox Content="Enable all device feature flags by force" 
-                          IsCheckedChanged="OnGrantAllFeaturesChecked" />
-                
-                <TextBlock TextWrapping="Wrap">
-                    Some flags may cause crashes and inconsistent behavior.
-                </TextBlock>
-            </StackPanel>
-        </HeaderedContentControl>
-
-        <HeaderedContentControl Classes="GroupBox"
-                                Header="Exit translator/dev mode">
-            <TextBlock TextWrapping="Wrap"
-                       Text="You can exit this debug mode by deleting the XAML file specified above." />
-        </HeaderedContentControl>
-    </StackPanel>
+        <developer:TranslatorToolsView />
 </Window>

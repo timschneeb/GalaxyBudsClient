@@ -150,7 +150,7 @@ public class RenamePageViewModel : SubPageViewModelBase
             Dispatcher.UIThread.Post(() => _ = new MessageBox {
                 Title = Strings.RenameOkTitle,
                 Description = Strings.RenameOk
-            }.ShowAsync(MainWindow.Instance));
+            }.ShowAsync());
         }
     }
 

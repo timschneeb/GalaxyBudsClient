@@ -85,7 +85,11 @@
                                              Description="{ext:Translate {x:Static i18N:Keys.SystemBatteryStatisticsDesc}}"
                                              Symbol="DataTrending"
                                              ActionSymbol="ChevronRight"
-                                             IsClickEnabled="True" />
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:RequiresDesktopBehavior />
+                    </Interaction.Behaviors>
+                </controls:SettingsSymbolItem>
             </controls:SettingsGroup>
 
             <controls:SettingsGroup>

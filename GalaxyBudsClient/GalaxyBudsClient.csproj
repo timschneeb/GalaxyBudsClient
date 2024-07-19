@@ -20,16 +20,18 @@
         <OutputType>Exe</OutputType>
         <!--<PublishTrimmed>true</PublishTrimmed>-->
     </PropertyGroup>
+    <PropertyGroup Condition="'$(IsAndroid)'=='true'">
+        <TargetFramework>net8.0</TargetFramework>
+        <OutputType>Library</OutputType>
+    </PropertyGroup>
+    
+    <Import Project="Application.props" />
     
     <PropertyGroup>
         <!-- App properties -->
-        <AssemblyVersion>5.1.0.0</AssemblyVersion>
-        <Version>5.1.0.0</Version>
         <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
         <ApplicationManifest>app.manifest</ApplicationManifest>
-        <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>
-        <ApplicationVersion>$(Version)</ApplicationVersion>
-
+        
         <!-- Build properties -->
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -66,12 +68,17 @@
         <Compile Remove="Platform\NotificationReaderManager.cs" />
         <Compile Remove="Interface\ViewModels\Pages\NotificationReaderPageViewModel.cs" />
         <Compile Remove="Interface\Pages\NotificationReaderPage.axaml.cs" />
+        <Compile Update="Interface\Developer\DevToolsView.axaml.cs">
+          <DependentUpon>DevToolsView.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="Interface\Developer\TranslatorToolsView.axaml.cs">
+          <DependentUpon>TranslatorToolsView.axaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
     
     <!-- Dependencies -->
-    <PropertyGroup>
-        <AvaloniaVersion>11.1.0-rc1</AvaloniaVersion>
-    </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="AsyncErrorHandler.Fody" Version="1.3.0" />
         <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />

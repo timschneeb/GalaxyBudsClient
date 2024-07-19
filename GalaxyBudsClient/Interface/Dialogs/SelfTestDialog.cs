@@ -31,7 +31,7 @@ public class SelfTestDialog : TaskDialog
             Text = Strings.SystemWaitingForDevice,
             MaxWidth = 600
         };
-        XamlRoot = MainWindow.Instance;
+        XamlRoot = TopLevel.GetTopLevel(MainView.Instance);
         ShowProgressBar = true;
         
         SetProgressBarState(100, TaskDialogProgressState.Indeterminate);
@@ -114,7 +114,7 @@ public class SelfTestDialog : TaskDialog
                 Header = parser is not { AllChecks: true } ? Strings.SelftestFailLong : Strings.SelftestPassLong,
                 Buttons = Buttons,
                 IconSource = IconSource,
-                XamlRoot = MainWindow.Instance,
+                XamlRoot = TopLevel.GetTopLevel(MainView.Instance),
                 Commands = new[]
                 {
                     ResultAsTaskItem(Strings.SystemHwver, parser.HardwareVersion),

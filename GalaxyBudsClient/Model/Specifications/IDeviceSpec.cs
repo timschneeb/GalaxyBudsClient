@@ -25,7 +25,7 @@ public interface IDeviceSpec
     
     public bool Supports(Features feature, int? extendedStatusRevision)
     {
-        if (TranslatorTools.GrantAllFeaturesForTesting)
+        if (TranslatorToolsView.GrantAllFeaturesForTesting)
             return true;
             
         if (!Rules.TryGetValue(feature, out var value))

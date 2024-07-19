@@ -72,6 +72,7 @@
                                                ItemsSource="{Binding ., Source={ext:ThemesBindingSource}}"
                                                SelectedValue="{Binding Theme, Source={x:Static config:Settings.Data}}">
                     <Interaction.Behaviors>
+                        <ext:RequiresDesktopBehavior />
                         <ext:LocalizationAwareComboBoxBehavior />
                     </Interaction.Behaviors>
                 </controls:SettingsComboBoxItem>
@@ -83,7 +84,11 @@
                     Symbol="Blur"
                     Maximum="255"
                     IsEnabled="{Binding Theme, Source={x:Static config:Settings.Data}, Converter={x:Static converters:FuncConverters.IsBlurDarkModeSet}}"
-                    Value="{Binding BlurStrength, Source={x:Static config:Settings.Data}}" />
+                    Value="{Binding BlurStrength, Source={x:Static config:Settings.Data}}">
+                    <Interaction.Behaviors>
+                        <ext:RequiresDesktopBehavior />
+                    </Interaction.Behaviors>
+                </controls:SettingsSliderItem>
 
                 <controls:SettingsColorItem Name="AppAccent"
                                             Content="{ext:Translate {x:Static i18N:Keys.SettingsAccent}}"
@@ -147,6 +152,10 @@
                     <ic:SymbolIconSource Symbol="Badge" />
                 </ui:SettingsExpander.IconSource>
 
+                <Interaction.Behaviors>
+                    <ext:RequiresDesktopBehavior />
+                </Interaction.Behaviors>
+                
                 <controls:SettingsSwitchItem
                     Content="{ext:Translate {x:Static i18N:Keys.SettingsCpopupEnable}}"
                     Description="{ext:Translate {x:Static i18N:Keys.SettingsCpopupEnableDescription}}"
@@ -228,6 +237,7 @@
                                  Description="{ext:Translate {x:Static i18N:Keys.SettingsDevmodeDescription}}"
                                  ActionIconSource="Open"
                                  IsClickEnabled="True">
+                
                 <ui:SettingsExpander.IconSource>
                     <ic:SymbolIconSource Symbol="Beaker" />
                 </ui:SettingsExpander.IconSource>

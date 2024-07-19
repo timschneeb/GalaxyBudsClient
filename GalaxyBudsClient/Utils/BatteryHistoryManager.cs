@@ -33,8 +33,8 @@ public class BatteryHistoryManager
         
         Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
         
-        SppMessageReceiver.Instance.StatusUpdate += async (_, _) => await CollectNow();
-        MainWindow.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()!
+        SppMessageReceiver.Instance.StatusUpdate += async (_, _) => await CollectNow(); 
+        MainView.Instance!.ResolveViewModelByType<NoiseControlPageViewModel>()!
             .PropertyChanged += async (_, _) => await CollectNow();
 
         if(Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime lifetime)
@@ -131,7 +131,7 @@ public class BatteryHistoryManager
         }
 
         var status = !insertNullFrame && BluetoothImpl.Instance.IsConnected ? DeviceMessageCache.Instance.StatusUpdate : null;
-        var noiseControlVm = !insertNullFrame && BluetoothImpl.Instance.IsConnected ? MainWindow.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>() : null;
+        var noiseControlVm = !insertNullFrame && BluetoothImpl.Instance.IsConnected ? MainView.Instance!.ResolveViewModelByType<NoiseControlPageViewModel>() : null;
         var record = new HistoryRecord
         {
             PlacementL = status?.PlacementL ?? PlacementStates.Disconnected,
