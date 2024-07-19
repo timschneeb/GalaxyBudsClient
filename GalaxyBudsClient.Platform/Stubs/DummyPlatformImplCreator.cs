@@ -10,4 +10,5 @@ public class DummyPlatformImplCreator : IPlatformImplCreator
     public IHotkeyReceiver CreateHotkeyReceiver() => new DummyHotkeyReceiver();
     public IMediaKeyRemote CreateMediaKeyRemote() => new DummyMediaKeyRemote();
     public INotificationListener CreateNotificationListener() => new DummyNotificationListener();
+    public IOfficialAppDetector CreateOfficialAppDetector() => new DummyOfficialAppDetector();
 }

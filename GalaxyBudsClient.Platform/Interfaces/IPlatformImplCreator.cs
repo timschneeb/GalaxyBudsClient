@@ -11,4 +11,5 @@ public interface IPlatformImplCreator
     IHotkeyReceiver? CreateHotkeyReceiver();
     IMediaKeyRemote? CreateMediaKeyRemote();
     INotificationListener? CreateNotificationListener();
+    IOfficialAppDetector? CreateOfficialAppDetector();
 }
