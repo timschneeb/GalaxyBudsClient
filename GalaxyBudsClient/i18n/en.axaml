@@ -1,4 +1,5 @@
 <!-- ReSharper disable InconsistentNaming -->
+<!-- ReSharper disable InconsistentNaming -->
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- English name of this language -->

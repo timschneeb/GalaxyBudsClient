@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,12 +12,14 @@ using GalaxyBudsClient.Platform.Interfaces;
 using GalaxyBudsClient.Platform.Model;
 using Java.Lang;
 using Java.Util;
+using Sentry;
 using Serilog;
 using BluetoothDevice = GalaxyBudsClient.Platform.Model.BluetoothDevice;
+using Exception = System.Exception;
 
 #pragma warning disable CS0067
 
-namespace GalaxyBudsClient.Android.Bluetooth;
+namespace GalaxyBudsClient.Android.Impl;
 
 public class BluetoothService : IBluetoothService
 {
@@ -88,13 +91,13 @@ public class BluetoothService : IBluetoothService
         {
             await _socket.ConnectAsync();
         }
-        catch (Java.IO.IOException ex)
+        catch (Exception ex) when (ex is Java.IO.IOException or IOException)
         {
             _socket.Close();
             _socket = null;
             
             Log.Error("Android.BluetoothService: ConnectAsync: {ExMessage}", ex.Message);
-            throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, ex.Message);
+            throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, "Connection failed. Your earbuds are either out of range or in use by the official manager app.");
         }
 
         OnConnectionEstablished();
@@ -208,12 +211,12 @@ public class BluetoothService : IBluetoothService
                     {
                         dataAvailable = inputStream?.Read(buffer, 0, incomingCount) >= 0;
                     }
-                    catch (Java.IO.IOException ex)
+                    catch (Exception ex) when (ex is Java.IO.IOException or IOException)
                     {
                         Log.Error(
                             "Android.BluetoothService: BluetoothServiceLoop: Exception thrown while writing unsafe stream: {ExMessage}. Cancelled",
                             ex.Message);
-                        Disconnected?.Invoke(this, ex.Message ?? "Error while receiving data");
+                        Disconnected?.Invoke(this, "Connection closed. The earbuds are either out of range or in use by the official manager app.");
                     }
 
                     if (dataAvailable)
@@ -240,12 +243,12 @@ public class BluetoothService : IBluetoothService
                                 .BaseOutputStream?
                                 .Write(raw, 0, raw.Length);
                         }
-                        catch (Java.IO.IOException ex)
+                        catch (Exception ex) when (ex is Java.IO.IOException or IOException)
                         {
                             Log.Error(
                                 "Android.BluetoothService: BluetoothServiceLoop: Exception thrown while writing unsafe stream: {ExMessage}. Cancelled",
                                 ex.Message);
-                            Disconnected?.Invoke(this, ex.Message ?? "Error while sending data");
+                            Disconnected?.Invoke(this, "Error while sending data. Connection to the earbuds has been closed.");
                         }
                     }
                 }
@@ -255,9 +258,10 @@ public class BluetoothService : IBluetoothService
                     await Task.Delay(50);
                 }
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 Log.Error(ex, "Android.BluetoothService: BluetoothServiceLoop: Unhandled exception");
+                SentrySdk.CaptureException(ex);
             }
         }
     }

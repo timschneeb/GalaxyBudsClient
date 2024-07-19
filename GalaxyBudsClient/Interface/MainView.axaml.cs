@@ -185,7 +185,7 @@ public partial class MainView : UserControl
             {
                 var nvi = new NavigationViewItem
                 {
-                    Content = Loc.ResolveOrDefault(page.TitleKey),
+                    Content = Loc.ResolveOrDefault(page.TitleKey) ?? page.FallbackTitle,
                     Tag = page,
                     IconSource = new SymbolIconSource { Symbol = page.IconKey }
                 };
