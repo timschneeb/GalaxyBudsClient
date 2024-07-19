@@ -6,7 +6,7 @@ namespace GalaxyBudsClient.Platform.Linux;
 [SuppressMessage("ReSharper", "UnusedType.Global")]
 public class LinuxPlatformImplCreator : IPlatformImplCreator
 {
-    public IAutoStartHelper CreateAutoStartHelper() => new AutoStartHelper();
+    public IDesktopServices CreateDesktopServices() => new DesktopServices();
     public IBluetoothService CreateBluetoothService() => new BluetoothService();
     public IHotkeyBroadcast CreateHotkeyBroadcast() => new HotkeyBroadcast();
     public IHotkeyReceiver CreateHotkeyReceiver() => new HotkeyReceiver();

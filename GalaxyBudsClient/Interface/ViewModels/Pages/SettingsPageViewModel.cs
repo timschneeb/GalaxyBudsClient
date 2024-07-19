@@ -25,10 +25,10 @@ public class SettingsPageViewModel : MainPageViewModelBase
 
     public bool IsAutoStartEnabled
     {
-        get => PlatformImpl.AutoStart.Enabled;
+        get => PlatformImpl.DesktopServices.IsAutoStartEnabled;
         set
         {
-            PlatformImpl.AutoStart.Enabled = value;
+            PlatformImpl.DesktopServices.IsAutoStartEnabled = value;
             this.RaisePropertyChanged();
         }
     }

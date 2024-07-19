@@ -2,7 +2,6 @@ using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Security;
-using GalaxyBudsClient.Platform.Interfaces;
 using Microsoft.Win32;
 using Serilog;
 
@@ -11,12 +10,12 @@ using Serilog;
 namespace GalaxyBudsClient.Platform.Windows.Impl;
 
 [SuppressMessage("ReSharper", "UnusedType.Global")]
-public class AutoStartHelper : IAutoStartHelper
+public class DesktopServices : BaseDesktopServices
 {
     private const string PathName = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
     private const string KeyName = "Galaxy Buds Client";
         
-    public bool Enabled
+    public override bool IsAutoStartEnabled
     {
         get
         {
