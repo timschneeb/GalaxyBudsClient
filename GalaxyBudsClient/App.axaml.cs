@@ -29,8 +29,10 @@ using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
+#if !Android
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Scripting.Experiment;
+#endif
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface;
 using Serilog;
@@ -48,7 +50,9 @@ public class App : Application
             defaultBindingMode: BindingMode.OneWay, defaultValue: []);
     public NativeMenu TrayMenu => GetValue(TrayMenuProperty);
     
+#if !Android
     private readonly ExperimentManager _experimentManager = new();
+#endif
     
     private BudsPopup? _popup;
     private bool _popupShown;
@@ -83,7 +87,6 @@ public class App : Application
         }, DispatcherPriority.Render);
             
         DeviceMessageCache.Init();
-        ScriptManager.Instance.RegisterUserHooks();
         
         Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
         EventDispatcher.Instance.EventReceived += OnEventReceived;
@@ -96,7 +99,10 @@ public class App : Application
         SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
         
         Log.Information("Translator mode file location: {File}", Loc.TranslatorModeFile);
+#if !Android
+        ScriptManager.Instance.RegisterUserHooks();
         Log.Debug("Environment: {Env}", _experimentManager.CurrentEnvironment());
+#endif
     }
 
     public override void OnFrameworkInitializationCompleted()
