@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -176,82 +174,90 @@ public class BluetoothService : IBluetoothService
         {
             try
             {
-                _cancelSource.Token.ThrowIfCancellationRequested();
-            }
-            catch (OperationCanceledException)
-            {
-                return;
-            }
-
-            bool hasIoActivity;
-            
-            var inputStream = ((InputStreamInvoker?)_socket?.InputStream)?.BaseInputStream;
-            
-            if (inputStream == null)
-            {
-                /* Stream not yet ready */
-                await Task.Delay(100);
-                continue;
-            }
-
-            // ReSharper disable once ConstantConditionalAccessQualifier
-            var incomingCount = inputStream?.Available() ?? 0;
-            if (incomingCount > 0)
-            {
-                IsStreamConnected = true;
-                
-                
-                /* Handle incoming stream */
-                var buffer = new byte[incomingCount];
-                var dataAvailable = false;
                 try
                 {
-                    dataAvailable = inputStream?.Read(buffer, 0, incomingCount) >= 0;
+                    _cancelSource.Token.ThrowIfCancellationRequested();
                 }
-                catch (Java.IO.IOException ex)
+                catch (OperationCanceledException)
                 {
-                    Log.Error("Android.BluetoothService: BluetoothServiceLoop: Exception thrown while writing unsafe stream: {ExMessage}. Cancelled",
-                        ex.Message);
-                    Disconnected?.Invoke(this, ex.Message ?? "Error while receiving data");
+                    return;
                 }
-                        
-                if (dataAvailable)
-                {
-                    NewDataAvailable?.Invoke(this, buffer);
-                }
-            }
 
-            /* Handle outgoing stream */
-            lock (TransmitterQueue)
-            {
-                if (TransmitterQueue.IsEmpty || !TransmitterQueue.TryDequeue(out var raw))
+                bool hasIoActivity;
+
+                var inputStream = ((InputStreamInvoker?)_socket?.InputStream)?.BaseInputStream;
+
+                if (inputStream == null)
                 {
-                    hasIoActivity = false;
+                    /* Stream not yet ready */
+                    await Task.Delay(100);
+                    continue;
                 }
-                else
+
+                // ReSharper disable once ConstantConditionalAccessQualifier
+                var incomingCount = inputStream?.Available() ?? 0;
+                if (incomingCount > 0)
                 {
-                    hasIoActivity = true;
-                            
+                    IsStreamConnected = true;
+
+
+                    /* Handle incoming stream */
+                    var buffer = new byte[incomingCount];
+                    var dataAvailable = false;
                     try
                     {
-                        ((OutputStreamInvoker?)_socket?.OutputStream)?
-                            // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
-                            .BaseOutputStream?
-                            .Write(raw, 0, raw.Length);
+                        dataAvailable = inputStream?.Read(buffer, 0, incomingCount) >= 0;
                     }
                     catch (Java.IO.IOException ex)
                     {
                         Log.Error(
                             "Android.BluetoothService: BluetoothServiceLoop: Exception thrown while writing unsafe stream: {ExMessage}. Cancelled",
                             ex.Message);
-                        Disconnected?.Invoke(this, ex.Message ?? "Error while sending data");
+                        Disconnected?.Invoke(this, ex.Message ?? "Error while receiving data");
+                    }
+
+                    if (dataAvailable)
+                    {
+                        NewDataAvailable?.Invoke(this, buffer);
                     }
                 }
-            }
 
-            if (!hasIoActivity)
+                /* Handle outgoing stream */
+                lock (TransmitterQueue)
+                {
+                    if (TransmitterQueue.IsEmpty || !TransmitterQueue.TryDequeue(out var raw))
+                    {
+                        hasIoActivity = false;
+                    }
+                    else
+                    {
+                        hasIoActivity = true;
+
+                        try
+                        {
+                            ((OutputStreamInvoker?)_socket?.OutputStream)?
+                                // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
+                                .BaseOutputStream?
+                                .Write(raw, 0, raw.Length);
+                        }
+                        catch (Java.IO.IOException ex)
+                        {
+                            Log.Error(
+                                "Android.BluetoothService: BluetoothServiceLoop: Exception thrown while writing unsafe stream: {ExMessage}. Cancelled",
+                                ex.Message);
+                            Disconnected?.Invoke(this, ex.Message ?? "Error while sending data");
+                        }
+                    }
+                }
+
+                if (!hasIoActivity)
+                {
+                    await Task.Delay(50);
+                }
+            }
+            catch (System.Exception ex)
             {
-                await Task.Delay(50);
+                Log.Error(ex, "Android.BluetoothService: BluetoothServiceLoop: Unhandled exception");
             }
         }
     }

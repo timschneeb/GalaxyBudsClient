@@ -1,14 +1,15 @@
-﻿using System;
-using Android;
+﻿using Android;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Widget;
 using AndroidX.Core.App;
+using AndroidX.Core.Content;
 using Avalonia;
 using Avalonia.Android;
 using Avalonia.ReactiveUI;
 using GalaxyBudsClient.Platform;
+using AlertDialog = AndroidX.AppCompat.App.AlertDialog;
 
 namespace GalaxyBudsClient.Android;
 
@@ -24,7 +25,7 @@ public class MainActivity : AvaloniaMainActivity<App>
     
     protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
     {
-        Program.Startup(false);
+        Program.Startup(false, new LogcatSink("GbClient"));
         PlatformImpl.InjectExternalBackend(new AndroidPlatformImplCreator(this));
         
         return base.CustomizeAppBuilder(builder)
@@ -42,7 +43,7 @@ public class MainActivity : AvaloniaMainActivity<App>
             ActivityCompat.RequestPermissions(this, [Manifest.Permission.BluetoothConnect], RequestBluetoothPermission);
 #pragma warning restore CA1416
         }
-        else
+        else if (Build.VERSION.SdkInt >= BuildVersionCodes.M && ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessFineLocation) != Permission.Granted)
         {
             Toast.MakeText(this, "Location permission required to scan for Bluetooth devices nearby.", ToastLength.Long);
             ActivityCompat.RequestPermissions(this, [Manifest.Permission.AccessFineLocation], RequestBluetoothPermission);
@@ -55,8 +56,11 @@ public class MainActivity : AvaloniaMainActivity<App>
         {
             // Check if the only required permission has been granted
             if (grantResults is not [Permission.Granted]) {    
-                Toast.MakeText(this, "Required permissions not granted. Cannot start.", ToastLength.Long);
-                Finish();
+                new AlertDialog.Builder(this)?
+                    .SetTitle("Required permissions not granted")?
+                    .SetMessage("Cannot start without the required Bluetooth permissions. Please visit the system settings to grant the missing permissions manually.")?
+                    .SetNegativeButton("Close app", (_, _) => Finish())
+                    .Show();
             }
         } 
         else 

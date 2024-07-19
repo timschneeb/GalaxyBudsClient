@@ -13,6 +13,7 @@ using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using Serilog;
+using Serilog.Core;
 using Serilog.Events;
 using Settings = GalaxyBudsClient.Model.Config.Settings;
 #if !DEBUG
@@ -40,7 +41,7 @@ public static class Program
     internal static long StartedAt;
     public static readonly string AvaresUrl = "avares://" + typeof(Program).Assembly.GetName().Name;
 
-    public static void Startup(bool cliMode)
+    public static void Startup(bool cliMode, ILogEventSink? additionalLogSink = null)
     {
         StartedAt = Stopwatch.GetTimestamp();
      
@@ -65,6 +66,9 @@ public static class Program
             .WriteTo.File(logPath)
             .WriteTo.Console();
 
+        if(additionalLogSink != null)
+            config = config.WriteTo.Sink(additionalLogSink, LogEventLevel.Verbose);
+        
         config = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("VERBOSE")) ?
             config.MinimumLevel.Verbose() : config.MinimumLevel.Debug();
             
