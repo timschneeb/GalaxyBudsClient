@@ -212,6 +212,7 @@ public partial class MainView : UserControl
             else
             {
                 NavView.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftMinimal;
+                ContentContainer.Classes.Add("MobileContentContainer");
             }
             
             // Go to Home if not in setup mode

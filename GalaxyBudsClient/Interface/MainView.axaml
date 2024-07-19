@@ -24,7 +24,7 @@
                            IsSettingsVisible="False"
                            IsBackEnabled="{Binding #FrameView.CanGoBack}">
             <Grid RowDefinitions="Auto,Auto,*"
-                  Margin="0, 32,0,0">  <!-- margin for mobile devices; overridden by AppNav class -->
+                  Name="ContentContainer">
                 
                 <ui:InfoBar Grid.Row="0"
                             Title="{ext:Translate {x:Static i18N:Keys.PlacementDisconnected}}"
