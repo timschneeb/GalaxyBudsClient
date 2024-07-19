@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Android.Content;
 using GalaxyBudsClient.Android.Bluetooth;
 using GalaxyBudsClient.Platform.Interfaces;
+using GalaxyBudsClient.Platform.Stubs;
 
 namespace GalaxyBudsClient.Android;
 
@@ -14,4 +15,5 @@ public class AndroidPlatformImplCreator(Context appContext) : IPlatformImplCreat
     public IHotkeyReceiver? CreateHotkeyReceiver() => null;
     public IMediaKeyRemote? CreateMediaKeyRemote() => null;
     public INotificationListener? CreateNotificationListener() => null;
+    public IOfficialAppDetector CreateOfficialAppDetector() => new OfficialAppDetector(appContext);
 }

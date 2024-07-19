@@ -26,6 +26,7 @@ public static class PlatformImpl
     public static IHotkeyBroadcast HotkeyBroadcast { private set; get; }
     public static IHotkeyReceiver HotkeyReceiver { private set; get; }
     public static IMediaKeyRemote MediaKeyRemote { private set; get; }
+    public static IOfficialAppDetector OfficialAppDetector { private set; get; }
 
     static PlatformImpl()
     {
@@ -47,6 +48,7 @@ public static class PlatformImpl
         HotkeyBroadcast = Creator.CreateHotkeyBroadcast() ?? new DummyHotkeyBroadcast();
         HotkeyReceiver = Creator.CreateHotkeyReceiver() ?? new DummyHotkeyReceiver();
         MediaKeyRemote = Creator.CreateMediaKeyRemote() ?? new DummyMediaKeyRemote();
+        OfficialAppDetector = Creator.CreateOfficialAppDetector() ?? new DummyOfficialAppDetector();
     }
 
     public static void InjectExternalBackend(IPlatformImplCreator platformImplCreator)
@@ -56,6 +58,7 @@ public static class PlatformImpl
         HotkeyBroadcast = Creator.CreateHotkeyBroadcast() ?? new DummyHotkeyBroadcast();
         HotkeyReceiver = Creator.CreateHotkeyReceiver() ?? new DummyHotkeyReceiver();
         MediaKeyRemote = Creator.CreateMediaKeyRemote() ?? new DummyMediaKeyRemote();
+        OfficialAppDetector = Creator.CreateOfficialAppDetector() ?? new DummyOfficialAppDetector();
         BluetoothImpl.Reallocate();
     }
     
