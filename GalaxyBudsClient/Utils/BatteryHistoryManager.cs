@@ -100,7 +100,7 @@ public class BatteryHistoryManager
     
     private async Task CleanupNow()
     {
-        if (_currentMac == null || !Settings.Data.CollectBatteryHistory)
+        if (!PlatformUtils.IsDesktop || _currentMac == null || !Settings.Data.CollectBatteryHistory)
             return;
         
         if (_lock.WaitOne(500))
@@ -124,7 +124,7 @@ public class BatteryHistoryManager
     
     private async Task CollectNow(bool insertNullFrame = false)
     {
-        if (_currentMac == null || !Settings.Data.CollectBatteryHistory)
+        if (!PlatformUtils.IsDesktop || _currentMac == null || !Settings.Data.CollectBatteryHistory)
         {
             _lastRecord = null;
             return;

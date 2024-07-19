@@ -430,7 +430,10 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         DeviceMessageCache.Instance.Clear();
         
         Device.Current = Settings.Data.Devices.FirstOrDefault();
-        BatteryHistoryManager.Instance.DeleteDatabaseForDevice(toRemove);
+        if (PlatformUtils.IsDesktop)
+        {
+            BatteryHistoryManager.Instance.DeleteDatabaseForDevice(toRemove);
+        }
     }
     
     private void OnDisconnected(object? sender, string reason)
