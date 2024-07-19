@@ -28,6 +28,7 @@ public class ExperimentClient
     private readonly Timer _timer;
     public ExperimentClient()
     {
+#if !Android
         var handler = new HttpClientHandler
         {
             ServerCertificateCustomValidationCallback = delegate { return true; }
@@ -39,10 +40,12 @@ public class ExperimentClient
         };
         _timer.Elapsed += (sender, args) => ScanForExperiments();
         _timer.Start();
+#endif
     }
 
     public async Task<bool> PostResult(ExperimentResult result)
     {
+#if !Android
         Log.Debug("ExperimentClient: Posting results for experiment #{Id}...", result.ExperimentId);
         try
         {
@@ -69,10 +72,14 @@ public class ExperimentClient
         }
 
         return false;
+#else
+        return false;        
+#endif
     }
 
     public async void ScanForExperiments()
     {
+#if !Android
         if (!BluetoothImpl.Instance.IsConnected || 
             BluetoothImpl.Instance.CurrentModel == Models.NULL ||
             DeviceMessageCache.Instance.ExtendedStatusUpdate == null)
@@ -80,8 +87,7 @@ public class ExperimentClient
             return;
         }
             
-        // Android builds are AOT compiled and do not support cs-script
-        if (Settings.Data.ExperimentsDisabled || !PlatformUtils.IsDesktop)
+        if (Settings.Data.ExperimentsDisabled)
         {
             Log.Information("ExperimentClient: Feature is disabled");
             return;
@@ -128,5 +134,6 @@ public class ExperimentClient
         {
             Log.Error("ExperimentClient: Scan failed: {Message}", ex.Message);
         }
+#endif
     }
 }
