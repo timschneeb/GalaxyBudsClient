@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Android.Bluetooth;
 using Android.Content;
 using Android.Runtime;
+using GalaxyBudsClient.Android.Utils;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Platform.Interfaces;
 using GalaxyBudsClient.Platform.Model;
@@ -69,7 +70,7 @@ public class BluetoothService : IBluetoothService
     {
         RequireBluetoothEnabled();
 
-        _socket?.Close();
+        _socket?.CloseSafely();
 
         Connecting?.Invoke(this, EventArgs.Empty);
             
@@ -93,7 +94,7 @@ public class BluetoothService : IBluetoothService
         }
         catch (Exception ex) when (ex is Java.IO.IOException or IOException)
         {
-            _socket.Close();
+            _socket.CloseSafely();
             _socket = null;
             
             Log.Error("Android.BluetoothService: ConnectAsync: {ExMessage}", ex.Message);
@@ -135,7 +136,8 @@ public class BluetoothService : IBluetoothService
         }
 
         /* Disconnect device if not already done... */
-        _socket?.Close();
+        _socket?.CloseSafely();
+        _socket = null;
     }
     #endregion
 

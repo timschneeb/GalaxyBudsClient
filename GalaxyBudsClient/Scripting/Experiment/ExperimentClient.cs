@@ -23,9 +23,11 @@ public class ExperimentClient
     private const string ApiBase = "https://crowdsourcing.timschneeberger.me/v2";
     private const string ApiGetExperiments = ApiBase + "/experiments";
     private const string ApiPostResult = ApiBase + "/result";
-
+#if !Android
     private readonly HttpClient _client;
     private readonly Timer _timer;
+#endif
+    
     public ExperimentClient()
     {
 #if !Android
