@@ -23,6 +23,7 @@
     <PropertyGroup Condition="'$(IsAndroid)'=='true'">
         <TargetFramework>net8.0</TargetFramework>
         <OutputType>Library</OutputType>
+        <DefineConstants>Android</DefineConstants>
     </PropertyGroup>
     
     <Import Project="Application.props" />
@@ -128,7 +129,7 @@
     <ItemGroup Condition="'$(IsLinux)'=='true'">
         <ProjectReference Include="..\GalaxyBudsClient.Platform.Linux\GalaxyBudsClient.Platform.Linux.csproj" />
     </ItemGroup>
-
+    
     <ItemGroup Condition="'$(IsOSX)'=='true'">
         <ProjectReference Include="..\GalaxyBudsClient.Platform.OSX\GalaxyBudsClient.Platform.OSX.csproj" />
     </ItemGroup>

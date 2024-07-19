@@ -220,22 +220,18 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         DeviceMessageCache.Instance.Clear();
     }
         
+    /// <summary>
+    /// Fetches a list of available Bluetooth devices.
+    /// </summary>
+    /// <exception cref="BluetoothException">Thrown if the Bluetooth is temporarily unavailable</exception>
+    /// <exception cref="PlatformNotSupportedException">Thrown if the Bluetooth is permanently unavailable</exception>
     public async Task<IEnumerable<BluetoothDevice>> GetDevicesAsync()
     {
-        try
+        if (ShowDummyDevices)
         {
-            if (ShowDummyDevices)
-            {
-                return (await _backend.GetDevicesAsync()).Concat(BluetoothDevice.DummyDevices());
-            }
-            return await _backend.GetDevicesAsync();
+            return (await _backend.GetDevicesAsync()).Concat(BluetoothDevice.DummyDevices());
         }
-        catch (BluetoothException ex)
-        {
-            OnBluetoothError(ex);
-        }
-
-        return Array.Empty<BluetoothDevice>();
+        return await _backend.GetDevicesAsync();
     }
 
     private async Task<string> GetDeviceNameAsync()
