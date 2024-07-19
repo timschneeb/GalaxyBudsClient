@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto">
+	<uses-feature android:name="android.hardware.bluetooth" android:required="true"/>
+
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-	<application android:label="Galaxy Buds Manager" android:icon="@drawable/Icon" />
+
+	<!-- Request legacy Bluetooth permissions on older devices. -->
+	<uses-permission android:name="android.permission.BLUETOOTH"
+					 android:maxSdkVersion="30" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"
+					 android:maxSdkVersion="30"/>
+
+	<application android:label="Galaxy Buds Manager" android:icon="@drawable/icon" />
 </manifest>

@@ -116,7 +116,7 @@ public class App : Application
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {
-            // TODO make sure that MainWindow logic is made available on mobile platforms
+            // TODO make sure that logic inside MainWindow/StyledWindow is made available on mobile platforms
             singleViewPlatform.MainView = new MainView();
         }
         

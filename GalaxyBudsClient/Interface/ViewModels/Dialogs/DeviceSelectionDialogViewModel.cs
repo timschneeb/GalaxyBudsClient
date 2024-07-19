@@ -100,7 +100,7 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
         {
             devices = await BluetoothImpl.Instance.GetDevicesAsync();
         }
-        catch (PlatformNotSupportedException ex)
+        catch (Exception ex)
         {
             await new MessageBox
             {

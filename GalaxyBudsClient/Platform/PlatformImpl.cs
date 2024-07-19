@@ -22,10 +22,10 @@ public static class PlatformImpl
     [SuppressMessage("ReSharper", "FieldCanBeMadeReadOnly.Global")] 
     public static IPlatformImplCreator Creator = new DummyPlatformImplCreator();
 
-    public static IAutoStartHelper AutoStart { get; }
-    public static IHotkeyBroadcast HotkeyBroadcast { get; }
-    public static IHotkeyReceiver HotkeyReceiver { get; }
-    public static IMediaKeyRemote MediaKeyRemote { get; }
+    public static IAutoStartHelper AutoStart { private set; get; }
+    public static IHotkeyBroadcast HotkeyBroadcast { private set; get; }
+    public static IHotkeyReceiver HotkeyReceiver { private set; get; }
+    public static IMediaKeyRemote MediaKeyRemote { private set; get; }
 
     static PlatformImpl()
     {
@@ -49,6 +49,16 @@ public static class PlatformImpl
         MediaKeyRemote = Creator.CreateMediaKeyRemote() ?? new DummyMediaKeyRemote();
     }
 
+    public static void InjectExternalBackend(IPlatformImplCreator platformImplCreator)
+    {
+        Creator = platformImplCreator;
+        AutoStart = Creator.CreateAutoStartHelper() ?? new DummyAutoStartHelper();
+        HotkeyBroadcast = Creator.CreateHotkeyBroadcast() ?? new DummyHotkeyBroadcast();
+        HotkeyReceiver = Creator.CreateHotkeyReceiver() ?? new DummyHotkeyReceiver();
+        MediaKeyRemote = Creator.CreateMediaKeyRemote() ?? new DummyMediaKeyRemote();
+        BluetoothImpl.Reallocate();
+    }
+    
     public static void SwitchWindowsBackend()
     {
 #if Windows

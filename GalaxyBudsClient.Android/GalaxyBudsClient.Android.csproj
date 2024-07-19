@@ -14,8 +14,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <AndroidResource Include="Icon.png">
-      <Link>../GalaxyBudsClient/Resources/icon.png</Link>
+    <AndroidResource Include="../GalaxyBudsClient/Resources/icon.png">
+      <Link>Resources\drawable\icon.png</Link>
     </AndroidResource>
   </ItemGroup>
 
