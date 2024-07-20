@@ -85,18 +85,6 @@ public class App : Application
             LoadThemeProperties();
             Loc.Load();
         }, DispatcherPriority.Render);
-            
-        DeviceMessageCache.Init();
-        
-        Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
-        EventDispatcher.Instance.EventReceived += OnEventReceived;
-        
-        BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
-        BluetoothImpl.Instance.Disconnected += OnDisconnected;
-        BluetoothImpl.Instance.Connected += OnConnected;
-        SppMessageReceiver.Instance.StatusUpdate += OnStatusUpdate;
-        SppMessageReceiver.Instance.OtherOption += HandleOtherTouchOption;
-        SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
         
         Log.Information("Translator mode file location: {File}", Loc.TranslatorModeFile);
 #if !Android
@@ -125,6 +113,18 @@ public class App : Application
             // TODO make sure that logic inside MainWindow/StyledWindow is made available on mobile platforms
             singleViewPlatform.MainView = new MainView();
         }
+        
+        Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
+        EventDispatcher.Instance.EventReceived += OnEventReceived;
+        
+        BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
+        BluetoothImpl.Instance.Disconnected += OnDisconnected;
+        BluetoothImpl.Instance.Connected += OnConnected;
+        SppMessageReceiver.Instance.StatusUpdate += OnStatusUpdate;
+        SppMessageReceiver.Instance.OtherOption += HandleOtherTouchOption;
+        SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+        
+        DeviceMessageCache.Init();
         
         if (Loc.IsTranslatorModeEnabled)
         {
