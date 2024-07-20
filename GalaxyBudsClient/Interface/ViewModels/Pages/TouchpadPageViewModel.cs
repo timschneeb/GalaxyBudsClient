@@ -6,6 +6,7 @@ using Avalonia.Controls;
 using Avalonia.Threading;
 using FluentIcons.Common;
 using GalaxyBudsClient.Generated.I18N;
+using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
@@ -159,6 +160,16 @@ public class TouchpadPageViewModel : MainPageViewModelBase
                     RightAction = RightAction
                 });
                 
+                // Custom actions are only available on desktop
+                if (!PlatformUtils.IsDesktop && (LeftAction == TouchOptions.OtherL || RightAction == TouchOptions.OtherR))
+                {
+                    _ = new MessageBox
+                    {
+                        Title = Strings.Error,
+                        Description = Strings.FeatureUnsupportedPlatform
+                    }.ShowAsync();
+                }
+                
                 UpdateEditStates();
                 if (LeftAction == TouchOptions.NoiseControl || RightAction == TouchOptions.NoiseControl)
                     OnPropertyChanged(null, new PropertyChangedEventArgs(nameof(NoiseControlCycleMode)));
@@ -192,8 +203,9 @@ public class TouchpadPageViewModel : MainPageViewModelBase
         LeftControlCycleModeLabel = BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide) ? 
             Strings.TouchpadNoiseControlModeL : Strings.TouchpadNoiseControlMode;
 
-        IsLeftCustomActionEditable = LeftAction == TouchOptions.OtherL;
-        IsRightCustomActionEditable = RightAction == TouchOptions.OtherR;
+        // Custom actions are only available on desktop
+        IsLeftCustomActionEditable = PlatformUtils.IsDesktop && LeftAction == TouchOptions.OtherL;
+        IsRightCustomActionEditable = PlatformUtils.IsDesktop && RightAction == TouchOptions.OtherR;
 
         LeftActionDescription = IsLeftCustomActionEditable
             ? ActionAsString(Settings.Data.CustomActionLeft)
@@ -215,7 +227,7 @@ public class TouchpadPageViewModel : MainPageViewModelBase
             var actions = table
                 .Where(pair => !pair.Key.HasIgnoreDataMember())
                 .Select(TouchActionViewModel.FromKeyValuePair);
-
+            
             /* Inject custom actions if appropriate */
             if (table.ContainsKey(TouchOptions.OtherL) && table.ContainsKey(TouchOptions.OtherR))
             {
