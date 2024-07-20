@@ -38,6 +38,7 @@ Right: {1}</sys:String>
     <sys:String x:Key="last_updated_at_n">Last updated at {0}</sys:String>
     <sys:String x:Key="file_not_found">File not found</sys:String>
     <sys:String x:Key="nobluetoothdev">No Bluetooth adapter found. Please enable Bluetooth and try again.</sys:String>
+    <sys:String x:Key="feature_unsupported_platform">This feature is currently not supported on this platform.</sys:String>
 
     <sys:String x:Key="anc">Active noise cancelling</sys:String>
     <sys:String x:Key="adaptive">Adaptive</sys:String>
