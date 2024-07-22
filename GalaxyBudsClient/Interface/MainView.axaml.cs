@@ -8,6 +8,8 @@ using Avalonia.Threading;
 using FluentAvalonia.UI.Controls;
 using FluentAvalonia.UI.Navigation;
 using FluentAvalonia.UI.Windowing;
+using GalaxyBudsClient.Generated.I18N;
+using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
@@ -324,5 +326,14 @@ public partial class MainView : UserControl
         {
             source.IsFilled = selected;
         }
+    }
+
+    private async void OnTroubleshootConnectionClicked(object? sender, RoutedEventArgs e)
+    {
+        await new MessageBox
+        {
+            Title = Strings.ConnlostTroubleshootTitle,
+            Description = Strings.ConnlostTroubleshootContent
+        }.ShowAsync();
     }
 }
