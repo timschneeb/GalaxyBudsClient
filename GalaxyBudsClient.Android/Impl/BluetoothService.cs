@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using Android.Bluetooth;
 using Android.Content;
 using Android.Runtime;
@@ -17,6 +18,7 @@ using Sentry;
 using Serilog;
 using BluetoothDevice = GalaxyBudsClient.Platform.Model.BluetoothDevice;
 using Exception = System.Exception;
+using Timer = System.Timers.Timer;
 
 #pragma warning disable CS0067
 
@@ -28,6 +30,7 @@ public class BluetoothService : IBluetoothService
         
     private CancellationTokenSource _cancelSource = new();
     private Task? _loop;
+    private readonly Timer _connCheckTimer = new(2000);
         
     public event EventHandler? RfcommConnected;
     public event EventHandler? Connecting;
@@ -37,23 +40,39 @@ public class BluetoothService : IBluetoothService
     public event EventHandler<byte[]>? NewDataAvailable;
 
     public bool IsStreamConnected { get; set; }
-
-    private readonly Context _context;
     private readonly BluetoothAdapter _adapter;
-        
     private BluetoothSocket? _socket;
         
-    public BluetoothService(Context appContext)
+    public BluetoothService(Context context)
     {
-        _context = appContext;
-            
         RfcommConnected += (sender, args) => IsStreamConnected = true;
-        Disconnected += (sender, args) => IsStreamConnected = false;
+        BluetoothErrorAsync += (sender, exception) => _connCheckTimer.Stop(); 
+        Disconnected += (sender, args) =>
+        {
+            _connCheckTimer.Stop();
+            IsStreamConnected = false;
+        };
             
-        var bluetoothManager = (BluetoothManager?)_context.GetSystemService(Class.FromType(typeof(BluetoothManager)));
+        var bluetoothManager = (BluetoothManager?)context.GetSystemService(Class.FromType(typeof(BluetoothManager)));
         var adapter = bluetoothManager?.Adapter;
 
         _adapter = adapter ?? throw new PlatformNotSupportedException("This device does not support Bluetooth");
+        _connCheckTimer.Elapsed += OnConnectionCheckTimerHit;
+    }
+
+    private void OnConnectionCheckTimerHit(object? sender, ElapsedEventArgs e)
+    {
+        if (_socket == null) 
+            return;
+
+        if (_socket.IsConnected == false)
+        {
+            Log.Warning("Android.BluetoothService: Connection check timer hit. Connection not active anymore");
+            throw new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, 
+                "Connection failed. Your earbuds are either out of range or in use by the official manager app.");
+        }
+
+        _connCheckTimer.Start();
     }
 
     private void RequireBluetoothEnabled()
@@ -114,6 +133,8 @@ public class BluetoothService : IBluetoothService
         }
         catch (InvalidOperationException) {}
 
+        _connCheckTimer.Start();
+        
         _cancelSource = new CancellationTokenSource();
         _loop = Task.Run(BluetoothServiceLoop, _cancelSource.Token);
                 
@@ -124,6 +145,8 @@ public class BluetoothService : IBluetoothService
     #region Disconnection
     public async Task DisconnectAsync()
     {
+        _connCheckTimer.Stop();
+        
         Log.Debug("Android.BluetoothService: Disconnecting...");
         if (_loop == null || _loop.Status == TaskStatus.Created)
         {
