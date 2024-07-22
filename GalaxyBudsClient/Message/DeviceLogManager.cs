@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using Avalonia.Platform.Storage;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Platform;
@@ -51,9 +53,11 @@ public class DeviceLogManager
         
     private readonly List<string> _coreDumpPaths = [];
     private readonly List<string> _traceDumpPaths = [];
+    private IStorageFolder? _targetFolder;
 
-    public async Task BeginDownloadAsync()
+    public async Task BeginDownloadAsync(IStorageFolder targetFolder)
     {
+        _targetFolder = targetFolder;
         _coreDumpPaths.Clear();
         _traceDumpPaths.Clear();
         _hasCompletedRoleSwitch = false;
@@ -76,14 +80,22 @@ public class DeviceLogManager
         await CancelDownload();
     }
 
-    private static string? WriteTempFile(string filename, byte[] content)
+    private async Task<string?> WriteFileAsync(string filename, byte[] content)
     {
+        if (_targetFolder == null)
+            return null;
+        
         try
         {
-            var path = Path.Combine(Path.GetTempPath(), filename);
-            using var fs = new FileStream(path, FileMode.Create, FileAccess.Write);
-            fs.Write(content, 0, content.Length);
-            return path;
+            var file = await _targetFolder.CreateFileAsync(filename);
+            if (file == null)
+            {
+                throw new FileNotFoundException("Cannot create file");
+            }
+            
+            await using var fs = await file.OpenWriteAsync();
+            await fs.WriteAsync(content);
+            return file.TryGetLocalPath();
         }
         catch (Exception ex)
         {
@@ -167,7 +179,7 @@ public class DeviceLogManager
                 ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(0,0, LogDownloadProgressEventArgs.Type.Switching));
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.LOG_TRACE_COMPLETE);
 
-                var path = WriteTempFile($"{BluetoothImpl.Instance.CurrentModel.ToString()}_traceDump_{_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _traceBuffer ?? Array.Empty<byte>());
+                var path = await WriteFileAsync($"{BluetoothImpl.Instance.CurrentModel.ToString()}_traceDump_{_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _traceBuffer ?? Array.Empty<byte>());
                 if (path != null)
                 {
                     _traceDumpPaths.Add(path);
@@ -233,7 +245,7 @@ public class DeviceLogManager
                 ProgressUpdated?.Invoke(this, new LogDownloadProgressEventArgs(0,0, LogDownloadProgressEventArgs.Type.Switching));
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.LOG_COREDUMP_COMPLETE);
                     
-                var pathCore = WriteTempFile($"{BluetoothImpl.Instance.CurrentModel.ToString()}_coreDump_{/* this is intentional -> */_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _coredumpBuffer ?? Array.Empty<byte>());
+                var pathCore = await WriteFileAsync($"{BluetoothImpl.Instance.CurrentModel.ToString()}_coreDump_{/* this is intentional -> */_traceContext?.DeviceType.ToString()}_{_startTimestamp}.bin", _coredumpBuffer ?? Array.Empty<byte>());
                 if (pathCore != null)
                 {
                     _coreDumpPaths.Add(pathCore);

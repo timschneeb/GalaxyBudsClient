@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Media;
+using Avalonia.Platform.Storage;
 using Avalonia.Threading;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Generated.I18N;
@@ -21,6 +22,8 @@ public class TraceDownloaderDialog : TaskDialog
     private readonly TaskDialogButton _closeButton;
 
     private readonly DeviceLogManager _deviceLogManager = new();
+    
+    private string? _targetPath;
     
     public TraceDownloaderDialog()
     {
@@ -60,7 +63,13 @@ public class TraceDownloaderDialog : TaskDialog
     
     public async Task BeginDownload()
     {
-        await _deviceLogManager.BeginDownloadAsync();
+        var path = await TopLevel.GetTopLevel(MainView.Instance)!.OpenFolderPickerAsync(Strings.CoredumpDlSaveDialogTitle);
+        if (path == null)
+            return;
+
+        _targetPath = path.TryGetLocalPath();
+        
+        await _deviceLogManager.BeginDownloadAsync(path);
         await ShowAsync(true);
     }
 
@@ -70,19 +79,12 @@ public class TraceDownloaderDialog : TaskDialog
         {
             SubHeader = Strings.CoredumpDlProgressFinished;
             SetProgressBarState(100, TaskDialogProgressState.Normal);
-
-            var path = await TopLevel.GetTopLevel(MainView.Instance)!.OpenFolderPickerAsync(Strings.CoredumpDlSaveDialogTitle);
-            if (string.IsNullOrEmpty(path))
-                return;
-
-            ev.CoreDumpPaths.ForEach(x => CopyDump(x, path));
-            ev.TraceDumpPaths.ForEach(x => CopyDump(x, path));
-
+            
             await new MessageBox
             {
                 Title = Strings.CoredumpDlSaveSuccessTitle,
                 Description = string.Format(Strings.CoredumpDlSaveSuccess,
-                    ev.CoreDumpPaths.Count + ev.TraceDumpPaths.Count, path)
+                    ev.CoreDumpPaths.Count + ev.TraceDumpPaths.Count, _targetPath)
             }.ShowAsync();
         }, DispatcherPriority.Normal);
     }

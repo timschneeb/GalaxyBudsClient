@@ -156,8 +156,19 @@ public class FirmwarePageViewModel : SubPageViewModelBase
         var file = await TopLevel.GetTopLevel(MainView.Instance)!.OpenFilePickerAsync(filters);
         if (file == null)
             return;
-       
-        await PrepareInstallation(await File.ReadAllBytesAsync(file), Path.GetFileName(file));
+
+        var data = await file.TryReadAllBytes();
+        if (data == null)
+        {
+            await new MessageBox
+            {
+                Title = Strings.Error,
+                Description = Strings.ReadFailed
+            }.ShowAsync();
+            return;
+        }
+
+        await PrepareInstallation(data, file.Name);
     }
     
     private async Task PrepareInstallation(byte[] data, string buildName)
