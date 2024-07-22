@@ -565,6 +565,18 @@ The remap configuration is only active on this device. If you connect your earbu
     <sys:String x:Key="connlost_header">Unable to establish connection</sys:String>
     <sys:String x:Key="connlost_connect">Connect</sys:String>
     <sys:String x:Key="connlost_connecting">Connecting...</sys:String>
+    <sys:String x:Key="connlost_troubleshoot">Troubleshoot</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_title">How to troubleshoot connection issues</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_content">Please make sure that Samsung's official Wearable app for the Galaxy Buds does not attempt to connect to your earbuds in the background.
+Otherwise, you will experience very frequent connection loss issues as their app will repeatedly attempt to gain control over the earbuds.
+                  
+You can choose one of these solutions to fix this issue:
+• Unpair the earbuds from the Wearable app. (In the Wearable app, open the hamburger menu, select 'Manage devices', and delete your earbuds from the list.)
+                     
+• Uninstall the Galaxy Buds plugin for the Samsung Wearable app althogether.
+                    
+• Use an app like 'FreezeYou' or 'Hail' to temporarily freeze the official Galaxy Buds plugin for the Samsung Wearable app to prevent it from running.
+    </sys:String>
 
     <!-- Pairing mode -->
     <sys:String x:Key="connlost_disconnected">Device disconnected</sys:String>
