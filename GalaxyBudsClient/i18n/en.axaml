@@ -28,6 +28,7 @@
     <sys:String x:Key="help">Help</sys:String>
     <sys:String x:Key="important">Important</sys:String>
     <sys:String x:Key="home">Home</sys:String>
+    <sys:String x:Key="read_failed">Failed to read file. Access denied.</sys:String>
     <sys:String x:Key="please_wait">Please wait...</sys:String>
     <sys:String x:Key="value_left_right_inline">Left: {0}, Right: {1}</sys:String>
     <sys:String x:Key="value_left_right_multiline">Left: {0}

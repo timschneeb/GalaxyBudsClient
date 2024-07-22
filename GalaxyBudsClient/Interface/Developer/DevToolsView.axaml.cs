@@ -189,8 +189,11 @@ public partial class DevToolsView : UserControl
         var result = await new DumpImportDialog().OpenDialogAsync(topLevel);
         if(result == null)
             return;
+
+        var content = await file.TryReadAllBytes();
+        if (content == null)
+            return;
         
-        var content = await File.ReadAllBytesAsync(file);
         try
         {
             HexEditor.Document ??= new InMemoryBinaryDocument();
@@ -201,7 +204,7 @@ public partial class DevToolsView : UserControl
         {
             _ = new MessageBox
             {
-                Title = "Error while reading file", 
+                Title = "Error while reading file",
                 Description = ex.Message
             }.ShowAsync(this);
             return;
@@ -209,10 +212,7 @@ public partial class DevToolsView : UserControl
 
         if (result.Replay)
         {
-            _ = Task.Run(() =>
-            {
-                BluetoothImpl.Instance.ProcessDataBlock(content.ToList(), result.Model);
-            });
+            _ = Task.Run(() => { BluetoothImpl.Instance.ProcessDataBlock(content.ToList(), result.Model); });
         }
         else
         {
@@ -246,7 +246,7 @@ public partial class DevToolsView : UserControl
             
         try
         {
-            await using var fs = new FileStream(path, FileMode.Create, FileAccess.Write);
+            await using var fs = await path.OpenWriteAsync();
             HexEditor.Document?.WriteAllToStream(fs);
         }
         catch (Exception ex)

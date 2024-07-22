@@ -69,10 +69,11 @@ public class TouchActionEditorDialogViewModel : ViewModelBase
         };
                 
         var file = await TopLevel.GetTopLevel(MainView.Instance)!.OpenFilePickerAsync(filters, Strings.CactExternalAppDialogTitle);
-        if (file == null)
+        var path = file?.TryGetLocalPath();
+        if (path == null)
             return;
             
-        PathParameter = file;
+        PathParameter = path;
     }
 
     public async void DoHotkeyRecordCommand()
