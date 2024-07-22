@@ -25,6 +25,12 @@ public partial class MainView : UserControl
     {
         InitializeComponent();
         Instance = this;
+        
+        var insetsManager = TopLevel.GetTopLevel(this)?.InsetsManager;
+        if (insetsManager != null)
+        {
+            insetsManager.DisplayEdgeToEdge = true;
+        }
     }
 
     public static MainView? Instance { get; private set; }
