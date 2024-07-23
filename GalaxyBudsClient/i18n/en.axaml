@@ -679,6 +679,8 @@ Details:</sys:String>
     <sys:String x:Key="rename">Rename earbuds</sys:String>
     <sys:String x:Key="rename_desc">This will rename earbuds for all devices.</sys:String>
     <sys:String x:Key="rename_warn">Renaming your earbuds may not be possible using official apps as they restrict it to Samsung smartphones, which means you may need this app to reset the personalized name. The name change may not be detected by devices until you un-pair and re-pair your earbuds.</sys:String>
+    <sys:String x:Key="rename_warn_oneui_title">Important information for OneUI users</sys:String>
+    <sys:String x:Key="rename_warn_oneui">If your device is running Samsung OneUI, you should use Samsung's official method to rename your earbuds in the system settings. Otherwise, there will be connection issues while setting a new name.</sys:String>
     <sys:String x:Key="rename_too_short">The name you entered is too short (no characters) or too long (maximum limit imposed by earbuds).</sys:String>
     <sys:String x:Key="rename_hint">Enter new name...</sys:String>
     <sys:String x:Key="rename_label">New device name</sys:String>

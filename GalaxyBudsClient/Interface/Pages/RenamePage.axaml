@@ -18,6 +18,16 @@
 
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
+            <controls:CustomInfoBar Title="{ext:Translate {x:Static i18N:Keys.RenameWarnOneuiTitle}}"
+                                    Message="{ext:Translate {x:Static i18N:Keys.RenameWarnOneui}}"
+                                    IsOpen="True"
+                                    IsClosable="False"
+                                    Severity="Warning">
+                <Interaction.Behaviors>
+                    <ext:RequiresDesktopBehavior Not="True" />
+                </Interaction.Behaviors>
+            </controls:CustomInfoBar>
+            
             <Border Classes="Card" ClipToBounds="True">
                 <Grid ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto"
                       Margin="16">
