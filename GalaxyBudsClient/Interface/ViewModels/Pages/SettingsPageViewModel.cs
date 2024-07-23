@@ -35,7 +35,7 @@ public class SettingsPageViewModel : MainPageViewModelBase
     
     [Reactive] public object CanManageDevices { set; get; }
     
-    public string CurrentVersion => Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? "Unknown";
+    public string CurrentVersion => Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "Unknown";
     public override Control CreateView() => new SettingsPage { DataContext = this };
 
     public override string TitleKey => Keys.SettingsHeader;
