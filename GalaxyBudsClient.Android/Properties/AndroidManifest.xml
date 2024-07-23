@@ -22,5 +22,5 @@
 		<package android:name="com.samsung.accessory.jellymgr" />
 	</queries>
 	
-	<application android:label="Galaxy Buds Manager" android:icon="@drawable/icon" />
+	<application android:label="Galaxy Buds Manager" android:icon="@mipmap/ic_launcher" />
 </manifest>

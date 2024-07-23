@@ -15,12 +15,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <AndroidResource Include="../GalaxyBudsClient/Resources/icon.png">
-      <Link>Resources\drawable\icon.png</Link>
-    </AndroidResource>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Avalonia.Android" Version="$(AvaloniaVersion)" />
     <PackageReference Include="Microsoft.NET.Runtime.MonoAOTCompiler.Task" Version="8.0.7" />
     <PackageReference Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.1" />
