@@ -22,7 +22,7 @@
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
             <DockPanel>
-                <Image Source="/Resources/icon.ico"
+                <Image Source="{OnPlatform '/Resources/icon.ico', Android='/Resources/Android/Orange/android/res/mipmap-xxxhdpi/ic_launcher.png'}"
                        DockPanel.Dock="Left"
                        Height="78"
                        RenderOptions.BitmapInterpolationMode="HighQuality" />

@@ -5,7 +5,7 @@
     <color android:color="@color/splash_background"/>
   </item>
 
-  <item android:drawable="@drawable/icon"
+  <item android:drawable="@mipmap/ic_launcher"
         android:width="120dp"
         android:height="120dp"
         android:gravity="center" />
