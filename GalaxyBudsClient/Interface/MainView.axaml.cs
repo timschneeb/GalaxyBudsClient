@@ -13,6 +13,7 @@ using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
+using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
 using Serilog;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
@@ -21,24 +22,10 @@ namespace GalaxyBudsClient.Interface;
 
 public partial class MainView : UserControl
 {
-    public MainView()
-    {
-        InitializeComponent();
-        Instance = this;
-        
-        var insetsManager = TopLevel.GetTopLevel(this)?.InsetsManager;
-        if (insetsManager != null)
-        {
-            insetsManager.DisplayEdgeToEdge = true;
-        }
-    }
-
     public static MainView? Instance { get; private set; }
 
     private MainViewViewModel? ViewModel => DataContext as MainViewViewModel;
     private PageViewModelBase? CurrentPageViewModel { set; get; }
-
-    private bool _isDesktop;
 
     private readonly MainPageViewModelBase[] _mainPages = [
         new WelcomePageViewModel(),
@@ -66,14 +53,18 @@ public partial class MainView : UserControl
         new UsageReportPageViewModel(),
         new BatteryHistoryPageViewModel()
     ];
-
-    protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
+    
+    public MainView()
     {
-        base.OnAttachedToVisualTree(e);
-
-        // Simple check - all desktop versions of this app will have a window as the TopLevel
-        // Mobile and WASM will have something else
-        _isDesktop = TopLevel.GetTopLevel(this) is Window;
+        InitializeComponent();
+        Instance = this;
+        
+        var insetsManager = TopLevel.GetTopLevel(this)?.InsetsManager;
+        if (insetsManager != null)
+        {
+            insetsManager.DisplayEdgeToEdge = true;
+        }
+        
         var vm = new MainViewViewModel
         {
             VmResolver = ResolveViewModelByType
@@ -184,11 +175,21 @@ public partial class MainView : UserControl
     
     private void InitializeNavigationPages()
     {
-        var menuItems = new List<NavigationViewItem>(14);
-        var footerItems = new List<NavigationViewItem>(1);
+        if (PlatformUtils.IsDesktop || OperatingSystem.IsBrowser())
+        {
+            NavView.Classes.Add("AppNav");
+        }
+        else
+        {
+            NavView.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftMinimal;
+            ContentContainer.Classes.Add("MobileContentContainer");
+        }
         
         Dispatcher.UIThread.Post(() =>
-        {
+        {   
+            var menuItems = new List<NavigationViewItem>(14);
+            var footerItems = new List<NavigationViewItem>(1);
+            
             foreach (var page in _mainPages)
             {
                 var nvi = new NavigationViewItem
@@ -198,7 +199,7 @@ public partial class MainView : UserControl
                     IconSource = new SymbolIconSource { Symbol = page.IconKey }
                 };
 
-                if (_isDesktop || OperatingSystem.IsBrowser())
+                if (PlatformUtils.IsDesktop || OperatingSystem.IsBrowser())
                 {
                     nvi.Classes.Add("AppNav");
                 }
@@ -212,21 +213,11 @@ public partial class MainView : UserControl
             NavView.MenuItemsSource = menuItems;
             NavView.FooterMenuItemsSource = footerItems;
             CheckSetupWizardState();
-
-            if (_isDesktop || OperatingSystem.IsBrowser())
-            {
-                NavView.Classes.Add("AppNav");
-            }
-            else
-            {
-                NavView.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftMinimal;
-                ContentContainer.Classes.Add("MobileContentContainer");
-            }
             
             // Go to Home if not in setup mode
             if(ViewModel?.IsInSetupWizard == false)
                 NavigationService.Instance.Navigate(typeof(HomePageViewModel));
-        });
+        }, DispatcherPriority.Render);
     }
 
     private void OnNavigationViewBackRequested(object? sender, NavigationViewBackRequestedEventArgs e)

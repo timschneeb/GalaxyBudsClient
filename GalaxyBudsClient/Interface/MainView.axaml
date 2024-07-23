@@ -18,7 +18,9 @@
               ColumnDefinitions="*,Auto"
               Background="Transparent" />
 
-        <ui:NavigationView Grid.Row="0" AlwaysShowHeader="False"
+        <ui:NavigationView Grid.Row="0"
+                           AlwaysShowHeader="False" 
+                           IsPaneOpen="False"
                            PaneDisplayMode="Left"
                            Grid.RowSpan="2"
                            Name="NavView"
