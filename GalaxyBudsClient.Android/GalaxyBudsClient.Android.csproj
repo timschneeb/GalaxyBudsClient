@@ -8,12 +8,16 @@
     
     <SupportedOSPlatformVersion>24</SupportedOSPlatformVersion>
     <Nullable>enable</Nullable>
-    <AndroidPackageFormat>apk</AndroidPackageFormat>
+    <AndroidPackageFormats>apk;aab</AndroidPackageFormats>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     
     <DefineConstants>Android</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <DefineConstants Condition="'$(NotDebuggable)'">$(DefineConstants);NotDebuggable</DefineConstants>
+  </PropertyGroup>
+  
   <ItemGroup>
     <PackageReference Include="Avalonia.Android" Version="$(AvaloniaVersion)" />
     <PackageReference Include="Microsoft.NET.Runtime.MonoAOTCompiler.Task" Version="8.0.7" />
