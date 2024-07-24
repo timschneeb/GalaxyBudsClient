@@ -65,6 +65,12 @@ Get binaries for Windows in the [release](https://github.com/timschneeb/GalaxyBu
     <a href="https://github.com/timschneeb/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/timschneeb/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
+<p align="center">
+  <a href='https://play.google.com/store/apps/details?id=me.timschneeberger.galaxybudsclient&utm_source=github&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'> 
+    <img width="300" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/>
+  </a>
+</p>
+
 ### Flatpak
 
 Universal binary packages for all Linux distributions. The Flatpak version does not support autostart unless it is set up manually. You can use `galaxybudsclient /StartMinimized` to launch the app silently during startup.
