@@ -1,13 +1,13 @@
 
 <p align="center">
   English | <a href="/docs/README_chs.md">中文(简体)</a> | <a href="/docs/README_cht.md">中文(繁體)</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_tr.md">Türkçe</a> | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> <br>
-    <sub>Attention: readme files are maintained by translators and may become outdated from time to time. For newest info rely on English version.</sub>
+    <sub>Attention: readme files are maintained by translators and may become outdated from time to time. For the newest info rely on the English version.</sub>
 </p>
 <h1 align="center">
   Galaxy Buds Client
   <br>
 </h1>
-<h4 align="center">An unofficial manager for the Buds, Buds+, Buds Live and Buds Pro</h4>
+<h4 align="center">An unofficial manager for Galaxy Buds devices</h4>
 <p align="center">
   <a href="https://github.com/timschneeb/GalaxyBudsClient/releases">
     <img alt="GitHub downloads count" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
@@ -32,11 +32,8 @@
 </p>
 
 <p align="center">
-    <a href="https://ko-fi.com/H2H83E5J3"><img alt="Screenshot" src="https://ko-fi.com/img/githubbutton_sm.svg"></a>
-</p>
-
-<p align="center">
-    <a href="#"><img alt="Screenshot" src="https://github.com/timschneeb/GalaxyBudsClient/blob/master/screenshots/app_dark.png"></a>
+  <span><a href="https://ko-fi.com/H2H83E5J3"><img alt="Screenshot" src="https://ko-fi.com/img/githubbutton_sm.svg"></a>
+  <a href="#"><img alt="Screenshot" src="https://github.com/timschneeb/GalaxyBudsClient/blob/master/screenshots/app_dark.png"></a></span>
 </p>
 
 ## Key Features
@@ -60,11 +57,14 @@ There are several Linux packages available:
 * [Flatpak (All Linux distros)](#flatpak)
 * [AUR package (Arch Linux)](#aur-package)
 
-Get binaries for Windows in the [release](https://github.com/timschneeb/GalaxyBudsClient/releases) section. Please read the release notes before installation:
+Get binaries for Windows in the [release](https://github.com/timschneeb/GalaxyBudsClient/releases) section. Please read the release notes before installation.
+
+Download the desktop version here:
 <p align="center">
     <a href="https://github.com/timschneeb/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/timschneeb/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
+Download the Android mobile version here:
 <p align="center">
   <a href='https://play.google.com/store/apps/details?id=me.timschneeberger.galaxybudsclient&utm_source=github&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'> 
     <img width="300" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/>
