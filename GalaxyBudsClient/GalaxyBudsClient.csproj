@@ -23,7 +23,7 @@
     <PropertyGroup Condition="'$(IsAndroid)'=='true'">
         <TargetFramework>net8.0</TargetFramework>
         <OutputType>Library</OutputType>
-        <DefineConstants>Android</DefineConstants>
+        <DefineConstants>$(DefineConstants);Android</DefineConstants>
     </PropertyGroup>
     
     <Import Project="Application.props" />

@@ -12,6 +12,12 @@ using GalaxyBudsClient.Android.Impl;
 using GalaxyBudsClient.Platform;
 using AlertDialog = AndroidX.AppCompat.App.AlertDialog;
 
+#if NOT_DEBUGGABLE
+[assembly: Application(Debuggable=true)]
+#else
+[assembly: Application(Debuggable=false)]
+#endif
+
 namespace GalaxyBudsClient.Android;
 
 [Activity(
