@@ -100,7 +100,7 @@ public partial class MainWindow : StyledAppWindow
         {
             if (Settings.Data.OpenDevToolsOnStartup)
             {
-                WindowLauncher.ShowDevTools();
+                Utils.Interface.Dialogs.ShowDevTools();
             }
             
             HotkeyReceiverManager.Reset();

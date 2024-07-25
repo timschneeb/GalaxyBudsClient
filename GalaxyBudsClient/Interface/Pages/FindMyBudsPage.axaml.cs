@@ -11,8 +11,11 @@ public partial class FindMyBudsPage : BasePage<FindMyBudsPageViewModel>
         InitializeComponent();
     }
 
-    private void OnSmartThingsFindDataClicked(object? sender, RoutedEventArgs e)
+    private async void OnSmartThingsFindDataClicked(object? sender, RoutedEventArgs e)
     {
-        NavigationService.Instance.Navigate(typeof(FmmConfigPageViewModel));
+        if (await Utils.Interface.Dialogs.RequireFullVersion())
+        {
+            NavigationService.Instance.Navigate(typeof(FmmConfigPageViewModel));
+        }
     }
 }
