@@ -11,11 +11,11 @@
     <AndroidPackageFormats>apk;aab</AndroidPackageFormats>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     
-    <DefineConstants>Android</DefineConstants>
+    <DefineConstants>$(DefineConstants);Android</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup>
-    <DefineConstants Condition="'$(NotDebuggable)'">$(DefineConstants);NotDebuggable</DefineConstants>
+    <DefineConstants Condition="'$(NotDebuggable)' == true">$(DefineConstants);NotDebuggable</DefineConstants>
   </PropertyGroup>
   
   <ItemGroup>
