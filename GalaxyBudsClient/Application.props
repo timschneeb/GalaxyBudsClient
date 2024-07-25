@@ -12,13 +12,4 @@
         <!-- Global dependency versions -->
         <AvaloniaVersion>11.1.0-rc1</AvaloniaVersion>
     </PropertyGroup>
-
-    <PropertyGroup Condition="'$(NoDemo)' == true">
-        <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(NoDemo)' == false Or '$(NoDemo)' == ''">
-        <DefineConstants>$(DefineConstants);RequestFullVersion</DefineConstants>
-        <ApplicationId>me.timschneeberger.galaxybudsclient.demo</ApplicationId>
-    </PropertyGroup>
 </Project>

@@ -46,6 +46,11 @@
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
+
+    <!-- Android: we set the package name in GalaxyBudsClient.Android -->
+    <PropertyGroup Condition="'$(IsAndroid)'!='true'">
+        <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>
+    </PropertyGroup>
     
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
         <DebugSymbols>true</DebugSymbols>

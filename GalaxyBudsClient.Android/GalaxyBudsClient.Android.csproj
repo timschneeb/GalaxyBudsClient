@@ -17,6 +17,15 @@
   <PropertyGroup>
     <DefineConstants Condition="'$(NotDebuggable)' == true">$(DefineConstants);NotDebuggable</DefineConstants>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(NoDemo)' == true">
+    <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(NoDemo)' == false Or '$(NoDemo)' == ''">
+    <DefineConstants>$(DefineConstants);RequestFullVersion</DefineConstants>
+    <ApplicationId>me.timschneeberger.galaxybudsclient.demo</ApplicationId>
+  </PropertyGroup>
   
   <ItemGroup Condition="'$(NoDemo)' == true">
     <AndroidResource Include="Icons/full/**">
