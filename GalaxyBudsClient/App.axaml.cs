@@ -44,6 +44,11 @@ namespace GalaxyBudsClient;
 public class App : Application
 {
     public FluentAvaloniaTheme FluentTheme => (FluentAvaloniaTheme)Styles.Single(x => x is FluentAvaloniaTheme);
+
+    public bool StartMinimized =>
+        ((ApplicationLifetime as IClassicDesktopStyleApplicationLifetime)?
+            .Args?.Contains("/StartMinimized") ?? false) 
+        && PlatformUtils.SupportsTrayIcon;
     
     public static readonly StyledProperty<NativeMenu> TrayMenuProperty =
         AvaloniaProperty.Register<App, NativeMenu>(nameof(TrayMenu),
@@ -103,14 +108,16 @@ public class App : Application
         
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = MainWindow.Instance;
+            // Initialize MainWindow singleton
+            var mainWindow = MainWindow.Instance;
+            // Stay initially minimized: don't attach a main window
+            desktop.MainWindow = StartMinimized ? null : mainWindow;
             
             TrayManager.Init();
             BatteryHistoryManager.Init();
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {
-            // TODO make sure that logic inside MainWindow/StyledWindow is made available on mobile platforms
             singleViewPlatform.MainView = new MainView();
         }
         
@@ -155,7 +162,7 @@ public class App : Application
     
     private void ShowPopup(bool noDebounce = false)
     {
-        if (_popupShown && !noDebounce)
+        if (!PlatformUtils.IsDesktop || (_popupShown && !noDebounce))
             return;
         
         if (_popup is { IsVisible: true })
