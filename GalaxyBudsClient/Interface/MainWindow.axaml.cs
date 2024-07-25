@@ -55,13 +55,12 @@ public partial class MainWindow : StyledAppWindow
         BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
         Loc.LanguageUpdated += OnLanguageUpdated;
             
-        if (App.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        if (PlatformUtils.IsDesktop && App.StartMinimized)
         {
-            if ((desktop.Args?.Contains("/StartMinimized") ?? false) && PlatformUtils.SupportsTrayIcon)
-            {
-                WindowState = WindowState.Minimized;
-            }
+            BringToTray();
         }
+        
+        Log.Information("Startup time: {Time}",  Stopwatch.GetElapsedTime(Program.StartedAt));
     }
 
     private void OnLanguageUpdated()
@@ -108,17 +107,8 @@ public partial class MainWindow : StyledAppWindow
             HotkeyReceiverManager.Instance.Update(true);
         }
 
-        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-        {
-            if ((desktop.Args?.Contains("/StartMinimized") ?? false) && PlatformUtils.SupportsTrayIcon && _firstShow)
-            {
-                Log.Debug("MainWindow: Launched minimized");
-                BringToTray();
-            }
-        }
-
         if(_firstShow)
-            Log.Information("Startup time: {Time}",  Stopwatch.GetElapsedTime(Program.StartedAt));
+            Log.Information("Window startup time: {Time}",  Stopwatch.GetElapsedTime(Program.StartedAt));
             
         _firstShow = false;
         base.OnOpened(e);
@@ -145,6 +135,12 @@ public partial class MainWindow : StyledAppWindow
     {
         Dispatcher.UIThread.InvokeAsync(() =>
         {  
+            if (App.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop &&
+                desktop.MainWindow == null)
+            {
+                desktop.MainWindow = this;
+            }
+            
             if (WindowState == WindowState.Minimized)
             {
                 WindowState = WindowState.Normal;
@@ -152,18 +148,20 @@ public partial class MainWindow : StyledAppWindow
                 
             if (PlatformUtils.IsLinux)
             {
-                Hide(); // Workaround for some Linux DMs
+                IsVisible = false; // Workaround for some Linux DMs
             }
 
 #if OSX
             GalaxyBudsClient.Platform.OSX.AppUtils.setHideInDock(false);
 #endif
-            Show();
+            IsVisible = true;
                 
             Activate();
             Topmost = true;
             Topmost = false;
             Focus();
+
+            ShowInTaskbar = true;
         });
     }
 
@@ -187,7 +185,9 @@ public partial class MainWindow : StyledAppWindow
 #if OSX
         GalaxyBudsClient.Platform.OSX.AppUtils.setHideInDock(true);
 #endif
-        Hide();
+        ShowInTaskbar = false;
+        WindowState = WindowState.Minimized;
+        IsVisible = false;
     }
 
     private void OnBluetoothError(object? sender, BluetoothException e)

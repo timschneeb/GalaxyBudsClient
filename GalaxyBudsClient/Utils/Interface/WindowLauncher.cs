@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using FluentAvalonia.UI.Controls;
@@ -34,17 +35,20 @@ public static class WindowLauncher
 
     public static void ShowAsSingleInstanceOnDesktop<T>(ref T? target) where T : Window, new()
     {
+        if(!PlatformUtils.IsDesktop)
+            return;
+        
         target ??= new T();
         
         try
         {
-            target.Show(MainWindow.Instance);
+            target.Show();
         }
         catch (InvalidOperationException)
         {
             // Old window object has been closed and cannot be reused 
             target = new T();
-            target.Show(MainWindow.Instance);
+            target.Show();
         }
     }
 
