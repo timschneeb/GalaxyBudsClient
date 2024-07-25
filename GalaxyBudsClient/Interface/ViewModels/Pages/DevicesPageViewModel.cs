@@ -17,8 +17,14 @@ public class DevicesPageViewModel : MainPageViewModelBase
     public override Symbol IconKey => Symbol.BluetoothConnected;
     public override bool ShowsInFooter => true;
     
-    public async void DoNewCommand() => await DeviceSelectionDialog.OpenDialogAsync();
-    
+    public async void DoNewCommand()
+    {
+        if (!await Utils.Interface.Dialogs.RequireFullVersion("Multi-device support not available in demo"))
+            return;
+        
+        await DeviceSelectionDialog.OpenDialogAsync();
+    }
+
     public async void DoConnectCommand(object? param)
     {
         if (param is not Device device)

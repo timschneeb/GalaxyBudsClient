@@ -18,6 +18,22 @@
     <DefineConstants Condition="'$(NotDebuggable)' == true">$(DefineConstants);NotDebuggable</DefineConstants>
   </PropertyGroup>
   
+  <ItemGroup Condition="'$(NoDemo)' == true">
+    <AndroidResource Include="Icons/full/**">
+      <Link>Resources/%(RecursiveDir)%(Filename)%(Extension)</Link>
+    </AndroidResource>
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(NoDemo)' == false Or '$(NoDemo)' == ''">
+    <AndroidResource Include="Icons/demo/**">
+      <Link>Resources/%(RecursiveDir)%(Filename)%(Extension)</Link>
+    </AndroidResource>
+  </ItemGroup>
+  
+  <PropertyGroup Condition="'$(NoDemo)' == true">
+    <DefineConstants>$(DefineConstants);RequestFullVersion</DefineConstants>
+  </PropertyGroup>
+          
   <ItemGroup>
     <PackageReference Include="Avalonia.Android" Version="$(AvaloniaVersion)" />
     <PackageReference Include="Microsoft.NET.Runtime.MonoAOTCompiler.Task" Version="8.0.7" />

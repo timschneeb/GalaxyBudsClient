@@ -3,7 +3,6 @@
         <!-- App properties -->
         <AssemblyVersion>5.1.0.1</AssemblyVersion>
         <Version>5.1.0.1</Version>
-        <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>
         <!-- ApplicationVersion must be an integer version code required for Android -->
         <ApplicationVersion>$(Version.ToString().Replace('.', ''))</ApplicationVersion>
         <ApplicationDisplayVersion>$(Version)</ApplicationDisplayVersion>
@@ -12,5 +11,14 @@
     <PropertyGroup>
         <!-- Global dependency versions -->
         <AvaloniaVersion>11.1.0-rc1</AvaloniaVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(NoDemo)' == true">
+        <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(NoDemo)' == false Or '$(NoDemo)' == ''">
+        <DefineConstants>$(DefineConstants);RequestFullVersion</DefineConstants>
+        <ApplicationId>me.timschneeberger.galaxybudsclient.demo</ApplicationId>
     </PropertyGroup>
 </Project>

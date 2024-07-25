@@ -135,7 +135,7 @@ public class App : Application
         
         if (Loc.IsTranslatorModeEnabled)
         {
-            WindowLauncher.ShowTranslatorTools();
+            Dialogs.ShowTranslatorTools();
         }
             
         base.OnFrameworkInitializationCompleted();
@@ -171,7 +171,7 @@ public class App : Application
             _popup.RearmTimer();
         }
         
-        WindowLauncher.ShowAsSingleInstanceOnDesktop(ref _popup); 
+        Dialogs.ShowAsSingleInstanceOnDesktop(ref _popup); 
         _popupShown = true;
     }
     
