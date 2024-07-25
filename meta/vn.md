@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>54%</td><td>230 missing string(s)</td></tr>
+<tr><td>54%</td><td>239 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -20,6 +20,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>help</code></td><td>Help</td></tr>
 <tr><td><code>important</code></td><td>Important</td></tr>
 <tr><td><code>home</code></td><td>Home</td></tr>
+<tr><td><code>read_failed</code></td><td>Failed to read file. Access denied.</td></tr>
 <tr><td><code>please_wait</code></td><td>Please wait...</td></tr>
 <tr><td><code>value_left_right_inline</code></td><td>Left: {0}, Right: {1}</td></tr>
 <tr><td><code>value_left_right_multiline</code></td><td>Left: {0}
@@ -29,6 +30,7 @@ Right: {1}</td></tr>
 <tr><td><code>not_available</code></td><td>Not available</td></tr>
 <tr><td><code>last_updated_at_n</code></td><td>Last updated at {0}</td></tr>
 <tr><td><code>file_not_found</code></td><td>File not found</td></tr>
+<tr><td><code>feature_unsupported_platform</code></td><td>This feature is currently not supported on this platform.</td></tr>
 <tr><td><code>adaptive</code></td><td>Adaptive</td></tr>
 <tr><td><code>darkmode_blur_enabled</code></td><td>On, with blur effect</td></tr>
 <tr><td><code>darkmode_mica_enabled</code></td><td>On, with mica effect</td></tr>
@@ -39,6 +41,9 @@ Right: {1}</td></tr>
 <tr><td><code>event_nc_switch_one</code></td><td>Switch noise controls with one earbud</td></tr>
 <tr><td><code>welcome_register</code></td><td>Set-up your earbuds</td></tr>
 <tr><td><code>welcome_register_desc</code></td><td>Choose and register your pair of Galaxy Buds</td></tr>
+<tr><td><code>welcome_android_hint_title</code></td><td>Important information for Android users</td></tr>
+<tr><td><code>welcome_android_hint</code></td><td>This app was initially designed for use on desktop computers. Features that need this app to run in the background, such as custom touch actions and battery statistics, are currently unavailable in this version.
+If the official Samsung Wearable app is active alongside this app, connection issues may occur. Please make sure to close the official app properly before using this app.</td></tr>
 <tr><td><code>mainpage_header</code></td><td>Home</td></tr>
 <tr><td><code>mainpage_fit_test</code></td><td>Earbud fit test</td></tr>
 <tr><td><code>devsel_manual_pair_title</code></td><td>Is your device not listed?</td></tr>
@@ -195,6 +200,19 @@ The remap configuration is only active on this device. If you connect your earbu
 <tr><td><code>credits_kofi</code></td><td>Visit my ko-fi page to support me!</td></tr>
 <tr><td><code>credits_github</code></td><td>Visit this project on GitHub</td></tr>
 <tr><td><code>connlost</code></td><td>Connection lost</td></tr>
+<tr><td><code>connlost_troubleshoot</code></td><td>Troubleshoot</td></tr>
+<tr><td><code>connlost_troubleshoot_title</code></td><td>How to troubleshoot connection issues</td></tr>
+<tr><td><code>connlost_troubleshoot_content</code></td><td>Please make sure that Samsung's official Wearable app for the Galaxy Buds does not attempt to connect to your earbuds in the background.
+Otherwise, you will experience very frequent connection loss issues as their app will repeatedly attempt to gain control over the earbuds.
+                  
+You can choose one of these solutions to fix this issue:
+
+• Unpair the earbuds from the Wearable app. (In the Wearable app, open the hamburger menu, select 'Manage devices', and delete your earbuds from the list.)
+                     
+• Uninstall the Galaxy Buds plugin for the Samsung Wearable app althogether.
+                    
+• Use an app like 'Hail' or 'Ice Box' to temporarily freeze the official Galaxy Buds plugin for the Samsung Wearable app to prevent it from running.
+    </td></tr>
 <tr><td><code>connlost_disconnected</code></td><td>Device disconnected</td></tr>
 <tr><td><code>pairingmode_done</code></td><td>The earbuds have been put into pairing mode and are now disconnected from this device.</td></tr>
 <tr><td><code>fw_disclaimer</code></td><td>Disclaimer</td></tr>
@@ -260,8 +278,8 @@ Details:</td></tr>
 <tr><td><code>spatial_dump_rpy</code></td><td>RPY values:</td></tr>
 <tr><td><code>window_open</code></td><td>Open</td></tr>
 <tr><td><code>budsapp_header</code></td><td>Bluetooth compatibility info</td></tr>
-<tr><td><code>budsapp_text_p1</code></td><td>The official Galaxy Buds app for Windows 10/11 is installed alongside this application.</td></tr>
-<tr><td><code>budsapp_text_p2</code></td><td>If it is open and connected, GalaxyBudsClient might have issues connecting to your earbuds. Make sure to close it before continuing. Likewise, the official Galaxy Buds app can't connect to your earbuds while Galaxy Buds Manager is active and has opened connections to the earbuds.</td></tr>
+<tr><td><code>budsapp_text_p1</code></td><td>The official Galaxy Buds app is installed alongside this application.</td></tr>
+<tr><td><code>budsapp_text_p2</code></td><td>If it is active in the background, GalaxyBudsClient might have issues connecting to your earbuds. Make sure to unregister your earbuds from the official app or prevent it from running in the background by other means.</td></tr>
 <tr><td><code>budsapp_text_p3</code></td><td>Keep in mind that only one application can talk to your Galaxy Buds at a time.</td></tr>
 <tr><td><code>manualpair_title</code></td><td>Manual device selection</td></tr>
 <tr><td><code>manualpair_title_dialog</code></td><td>Choose your Galaxy Buds device</td></tr>
@@ -270,6 +288,8 @@ Details:</td></tr>
 <tr><td><code>rename</code></td><td>Rename earbuds</td></tr>
 <tr><td><code>rename_desc</code></td><td>This will rename earbuds for all devices.</td></tr>
 <tr><td><code>rename_warn</code></td><td>Renaming your earbuds may not be possible using official apps as they restrict it to Samsung smartphones, which means you may need this app to reset the personalized name. The name change may not be detected by devices until you un-pair and re-pair your earbuds.</td></tr>
+<tr><td><code>rename_warn_oneui_title</code></td><td>Important information for OneUI users</td></tr>
+<tr><td><code>rename_warn_oneui</code></td><td>If your device is running Samsung OneUI, you should use Samsung's official method to rename your earbuds in the system settings. Otherwise, there will be connection issues while setting a new name.</td></tr>
 <tr><td><code>rename_too_short</code></td><td>The name you entered is too short (no characters) or too long (maximum limit imposed by earbuds).</td></tr>
 <tr><td><code>rename_hint</code></td><td>Enter new name...</td></tr>
 <tr><td><code>rename_label</code></td><td>New device name</td></tr>
