@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>netstandard2.1</TargetFramework> <!-- netstandard2.1 -->
-		    <RootNamespace>InTheHand</RootNamespace>
-		    <AssemblyName>InTheHand.Net.Personal</AssemblyName>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <RootNamespace>InTheHand</RootNamespace>
+        <AssemblyName>InTheHand.Net.Personal</AssemblyName>
         <AssemblyVersion>3.9.0.0</AssemblyVersion>
-        <Copyright>Copyright © In The Hand Ltd 2003-2017, Tim Schneeberger 2020-2021</Copyright>
+        <Copyright>Copyright © In The Hand Ltd 2003-2017, Tim Schneeberger 2020-2024</Copyright>
         <Description>Personal Area Networking for .NET</Description>
         <Product>32feet.NET</Product>
         <Company>In The Hand Ltd</Company>
-        <DefineConstants>NO_WINFORMS;WinXP;V2</DefineConstants>
+        <DefineConstants>$(DefineConstants);NO_WINFORMS;WinXP;V2</DefineConstants>
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU</Platforms>
         <NoWarn>*</NoWarn>
