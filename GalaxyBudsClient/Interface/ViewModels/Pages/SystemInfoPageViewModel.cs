@@ -30,8 +30,8 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
 
     private void OnDebugSerialNumberReceived(object? sender, CradleSerialNumberDecoder e)
     {
-        CradleSerialNumber = e.SoftwareVersion ?? Strings.PlacementDisconnected;
-        CradleSwVersion = e.SerialNumber ?? Strings.PlacementDisconnected;
+        CradleSerialNumber = e.SerialNumber ?? Strings.PlacementDisconnected;
+        CradleSwVersion = e.SoftwareVersion ?? Strings.PlacementDisconnected;
     }
 
     private void OnExtendedStatusUpdateReceived(object? sender, ExtendedStatusUpdateDecoder e)
