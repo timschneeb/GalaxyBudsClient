@@ -34,6 +34,12 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
         HwVersion = $"{Strings.Left}: {e.LeftHardwareVersion ?? Unknown}, {Strings.Right}: {e.RightHardwareVersion ?? Unknown}";
         SwVersion = $"{Strings.Left}: {e.LeftSoftwareVersion ?? Unknown}, {Strings.Right}: {e.RightSoftwareVersion ?? Unknown}";
         TouchSwVersion = $"{Strings.Left}: {e.LeftTouchSoftwareVersion ?? Unknown}, {Strings.Right}: {e.RightTouchSoftwareVersion ?? Unknown}";
+        
+        // Fallback to GET_ALL_DATA if the version info is incomplete
+        if(e is { LeftTouchSoftwareVersion: "0", RightTouchSoftwareVersion: "0" })
+            TouchSwVersion = DeviceMessageCache.Instance.DebugGetAllData?.TouchSoftwareVersion ?? Unknown;
+        if(e is { LeftHardwareVersion: "rev0.0", RightHardwareVersion: "rev0.0" })
+            HwVersion = DeviceMessageCache.Instance.DebugGetAllData?.HardwareVersion ?? Unknown;
     }
 
     private void OnDebugSerialNumberReceived(object? sender, CradleSerialNumberDecoder e)
