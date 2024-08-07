@@ -3,6 +3,7 @@ using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
@@ -29,17 +30,25 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
         Loc.LanguageUpdated += RequestData;
     }
 
-    private void OnVersionInfoResponse(object? sender, DebugModeVersionDecoder e)
+    private void OnVersionInfoResponse(object? sender, DebugModeVersionDecoder? e)
     {
-        HwVersion = $"{Strings.Left}: {e.LeftHardwareVersion ?? Unknown}, {Strings.Right}: {e.RightHardwareVersion ?? Unknown}";
-        SwVersion = $"{Strings.Left}: {e.LeftSoftwareVersion ?? Unknown}, {Strings.Right}: {e.RightSoftwareVersion ?? Unknown}";
-        TouchSwVersion = $"{Strings.Left}: {e.LeftTouchSoftwareVersion ?? Unknown}, {Strings.Right}: {e.RightTouchSoftwareVersion ?? Unknown}";
-        
+        if (e is not null)
+        {
+            HwVersion =
+                $"{Strings.Left}: {e.LeftHardwareVersion ?? Unknown}, {Strings.Right}: {e.RightHardwareVersion ?? Unknown}";
+            SwVersion =
+                $"{Strings.Left}: {e.LeftSoftwareVersion ?? Unknown}, {Strings.Right}: {e.RightSoftwareVersion ?? Unknown}";
+            TouchSwVersion =
+                $"{Strings.Left}: {e.LeftTouchSoftwareVersion ?? Unknown}, {Strings.Right}: {e.RightTouchSoftwareVersion ?? Unknown}";
+        }
+
         // Fallback to GET_ALL_DATA if the version info is incomplete
-        if(e is { LeftTouchSoftwareVersion: "0", RightTouchSoftwareVersion: "0" })
+        if(e is null or { LeftTouchSoftwareVersion: "0", RightTouchSoftwareVersion: "0" })
             TouchSwVersion = DeviceMessageCache.Instance.DebugGetAllData?.TouchSoftwareVersion ?? Unknown;
-        if(e is { LeftHardwareVersion: "rev0.0", RightHardwareVersion: "rev0.0" })
+        if(e is null or { LeftHardwareVersion: "rev0.0", RightHardwareVersion: "rev0.0" })
             HwVersion = DeviceMessageCache.Instance.DebugGetAllData?.HardwareVersion ?? Unknown;
+        if(e is null || (e.LeftSoftwareVersion?.StartsWith('R') != true && e.RightSoftwareVersion?.StartsWith('R') != true))
+            SwVersion = DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? Unknown;
     }
 
     private void OnDebugSerialNumberReceived(object? sender, CradleSerialNumberDecoder e)
@@ -84,6 +93,12 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
         BluetoothAddress = e.LocalBluetoothAddress != null || e.PeerBluetoothAddress != null
             ? string.Format(Strings.SystemBtaddrTemplate, e.LocalBluetoothAddress ?? Unknown, e.PeerBluetoothAddress ?? Unknown)
             : Unknown;
+
+        // Buds3 and up don't respond to VERSION_INFO. Force load the info from GET_ALL_DEBUG by passing a null object
+        if (BluetoothImpl.Instance.CurrentModel >= Models.Buds3)
+        {
+            OnVersionInfoResponse(this, null);
+        }
     }
     
     private static async void RequestData()
@@ -99,7 +114,6 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
         
         await BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_SERIAL_NUMBER);
         await BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_GET_ALL_DATA);
-        // Buds3 & Buds3 Pro don't support GET_ALL_DATA anymore, so we need to request the version info separately as a backup
         await BluetoothImpl.Instance.SendRequestAsync(MsgIds.VERSION_INFO);
     }
     
@@ -109,7 +123,7 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
     [Reactive] public string SwVersion { set; get; } = Placeholder;
     [Reactive] public string TouchSwVersion { set; get; } = Placeholder;
     [Reactive] public string ProtocolVersion { set; get; } = Placeholder;
-    [Reactive] public string BluetoothAddress { set; get; } = Unknown;
+    [Reactive] public string BluetoothAddress { set; get; } = Placeholder;
     [Reactive] public string SerialNumber { set; get; } = Placeholder;
     [Reactive] public string CradleSerialNumber { set; get; } = Placeholder;
     [Reactive] public string CradleSwVersion { set; get; } = Placeholder;
