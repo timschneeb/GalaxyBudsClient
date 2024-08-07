@@ -38,6 +38,7 @@ public class SppMessageReceiver
     public event EventHandler<bool>? AncEnabledUpdateResponse;
     public event EventHandler<NoiseControlModes>? NoiseControlUpdateResponse;
     public event EventHandler<string>? BuildStringResponse;
+    public event EventHandler<DebugModeVersionDecoder>? VersionInfoResponse;
     public event EventHandler<DebugGetAllDataDecoder>? GetAllDataResponse;
     public event EventHandler<DebugSerialNumberDecoder>? SerialNumberResponse;
     public event EventHandler<CradleSerialNumberDecoder>? CradleSerialNumberResponse;
@@ -104,6 +105,9 @@ public class SppMessageReceiver
                 break;
             case AmbientModeUpdateDecoder p:
                 AmbientEnabledUpdateResponse?.Invoke(this, p.Enabled);
+                break;
+            case DebugModeVersionDecoder p:
+                VersionInfoResponse?.Invoke(this, p);
                 break;
             case DebugBuildInfoDecoder p:
                 BuildStringResponse?.Invoke(this, p.BuildString ?? "null");

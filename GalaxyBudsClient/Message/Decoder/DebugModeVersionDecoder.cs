@@ -5,7 +5,7 @@ using GalaxyBudsClient.Model.Constants;
 namespace GalaxyBudsClient.Message.Decoder;
 
 [MessageDecoder(MsgIds.VERSION_INFO)]
-internal class DebugModeVersionDecoder : BaseMessageDecoder
+public class DebugModeVersionDecoder : BaseMessageDecoder
 {
     private readonly string[] _swMonth = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
     private readonly string[] _swRelVer = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -28,14 +28,14 @@ internal class DebugModeVersionDecoder : BaseMessageDecoder
         LeftHardwareVersion = "rev" + l1.ToString("X") + "." + l2.ToString("X");
         RightHardwareVersion = "rev" + r1.ToString("X") + "." + r2.ToString("X");
 
-        LeftSoftwareVersion = VersionDataToString(msg.Payload, 2, "L");
-        RightSoftwareVersion = VersionDataToString(msg.Payload, 5, "R");
+        LeftSoftwareVersion = VersionDataToString(msg.Payload, 2);
+        RightSoftwareVersion = VersionDataToString(msg.Payload, 5);
 
         LeftTouchSoftwareVersion = msg.Payload[8].ToString("x");
         RightTouchSoftwareVersion = msg.Payload[9].ToString("x");
     }
 
-    private string VersionDataToString(IReadOnlyList<byte> payload, int startIndex, string side)
+    private string VersionDataToString(IReadOnlyList<byte> payload, int startIndex)
     {
         var swVar = payload[startIndex] == 0 ? "E" : "U";
         var swYearIndex = (payload[startIndex + 1] & 240) >> 4;
@@ -50,6 +50,6 @@ internal class DebugModeVersionDecoder : BaseMessageDecoder
         }
         
         var pre = TargetModel.GetModelMetadataAttribute()?.BuildPrefix.TrimStart('R') ?? "???";
-        return side + pre + "XX" + swVar + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] + swRelVarString;
+        return "R" + pre + "XX" + swVar + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] + swRelVarString;
     }
 }

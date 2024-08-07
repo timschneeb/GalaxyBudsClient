@@ -20,12 +20,20 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
         SppMessageReceiver.Instance.GetAllDataResponse += OnGetAllDataResponse;
         SppMessageReceiver.Instance.BatteryTypeResponse += OnBatteryTypeReceived;
         SppMessageReceiver.Instance.BuildStringResponse += OnDebugBuildInfoReceived;
+        SppMessageReceiver.Instance.VersionInfoResponse += OnVersionInfoResponse;
         SppMessageReceiver.Instance.DebugSkuUpdate += OnDebugSkuReceived;
         SppMessageReceiver.Instance.SerialNumberResponse += OnDebugSerialNumberReceived;
         SppMessageReceiver.Instance.CradleSerialNumberResponse += OnDebugSerialNumberReceived;
         SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdateReceived;
         BluetoothImpl.Instance.Connected += (_, _) => RequestData();
         Loc.LanguageUpdated += RequestData;
+    }
+
+    private void OnVersionInfoResponse(object? sender, DebugModeVersionDecoder e)
+    {
+        HwVersion = $"{Strings.Left}: {e.LeftHardwareVersion ?? Unknown}, {Strings.Right}: {e.RightHardwareVersion ?? Unknown}";
+        SwVersion = $"{Strings.Left}: {e.LeftSoftwareVersion ?? Unknown}, {Strings.Right}: {e.RightSoftwareVersion ?? Unknown}";
+        TouchSwVersion = $"{Strings.Left}: {e.LeftTouchSoftwareVersion ?? Unknown}, {Strings.Right}: {e.RightTouchSoftwareVersion ?? Unknown}";
     }
 
     private void OnDebugSerialNumberReceived(object? sender, CradleSerialNumberDecoder e)
@@ -67,9 +75,6 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
     
     private void OnGetAllDataResponse(object? sender, DebugGetAllDataDecoder e)
     {
-        HwVersion = e.HardwareVersion ?? Unknown;
-        SwVersion = e.SoftwareVersion ?? Unknown;
-        TouchSwVersion = e.TouchSoftwareVersion ?? Unknown;
         BluetoothAddress = e.LocalBluetoothAddress != null || e.PeerBluetoothAddress != null
             ? string.Format(Strings.SystemBtaddrTemplate, e.LocalBluetoothAddress ?? Unknown, e.PeerBluetoothAddress ?? Unknown)
             : Unknown;
@@ -88,6 +93,8 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
         
         await BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_SERIAL_NUMBER);
         await BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_GET_ALL_DATA);
+        // Buds3 & Buds3 Pro don't support GET_ALL_DATA anymore, so we need to request the version info separately as a backup
+        await BluetoothImpl.Instance.SendRequestAsync(MsgIds.VERSION_INFO);
     }
     
     public override void OnNavigatedTo() => RequestData();
@@ -96,7 +103,7 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
     [Reactive] public string SwVersion { set; get; } = Placeholder;
     [Reactive] public string TouchSwVersion { set; get; } = Placeholder;
     [Reactive] public string ProtocolVersion { set; get; } = Placeholder;
-    [Reactive] public string BluetoothAddress { set; get; } = Placeholder;
+    [Reactive] public string BluetoothAddress { set; get; } = Unknown;
     [Reactive] public string SerialNumber { set; get; } = Placeholder;
     [Reactive] public string CradleSerialNumber { set; get; } = Placeholder;
     [Reactive] public string CradleSwVersion { set; get; } = Placeholder;
