@@ -114,25 +114,25 @@ If the official Samsung Wearable app is active alongside this app, connection is
 <tr><td><code>batt_hist_time_span_tip_title</code></td><td>Time span</td></tr>
 <tr><td><code>batt_hist_control_tip_title</code></td><td>Mouse controls</td></tr>
 <tr><td><code>batt_hist_control_tip</code></td><td>Drag the canvas to move around the plot.
-  
-Scroll to zoom horizontally and vertically. 
+
+Scroll to zoom horizontally and vertically.
 
 Hover over the X or Y axis and scroll to zoom only horizontally or vertically. Scrolling over the X-axis (time) would stretch or squash it, for example.</td></tr>
 <tr><td><code>batt_hist_overlay_tip_title</code></td><td>Overlays</td></tr>
 <tr><td><code>batt_hist_overlay_tip</code></td><td>You can use overlays to add additional context to the plot.
 
-Noise controls: Shows which noise controls were enabled or disabled. 
+Noise controls: Shows which noise controls were enabled or disabled.
 
 Wear state: Shows if the earbuds were worn or not.
 
 Host device: Shows which earbud is hosting the Bluetooth connection to the computer
-        
+
 The overlay data may be hard to understand when viewing large time ranges. Hover over the X-axis and scroll up to zoom into a specific time range you want to inspect for a better overview.</td></tr>
 <tr><td><code>batt_hist_tools_tip_title</code></td><td>Tools</td></tr>
 <tr><td><code>batt_hist_tools_tip</code></td><td>Pan & zoom: Default mode. Navigate around the plot by panning and zooming.
-        
+
 Measure time: Select a horizontal span to measure the elapsed time between the start and end of the selection.
-        
+
 Measure level: Select a vertical span to measure the battery level difference between the start and end of the selection.</td></tr>
 <tr><td><code>settings_save_fail_no_access</code></td><td>Failed to save settings. Access to the configuration file has been denied by the operating system. Please check the file permissions for {0}.</td></tr>
 <tr><td><code>settings_appearance</code></td><td>Appearance</td></tr>
@@ -204,13 +204,13 @@ Make sure both earbuds are turned on before continuing.</td></tr>
 <tr><td><code>connlost_troubleshoot_title</code></td><td>How to troubleshoot connection issues</td></tr>
 <tr><td><code>connlost_troubleshoot_content</code></td><td>Please make sure that Samsung's official Wearable app for the Galaxy Buds does not attempt to connect to your earbuds in the background.
 Otherwise, you will experience very frequent connection loss issues as their app will repeatedly attempt to gain control over the earbuds.
-                  
+
 You can choose one of these solutions to fix this issue:
 
 • Unpair the earbuds from the Wearable app. (In the Wearable app, open the hamburger menu, select 'Manage devices', and delete your earbuds from the list.)
-                     
+
 • Uninstall the Galaxy Buds plugin for the Samsung Wearable app althogether.
-                    
+
 • Use an app like 'Hail' or 'Ice Box' to temporarily freeze the official Galaxy Buds plugin for the Samsung Wearable app to prevent it from running.
     </td></tr>
 <tr><td><code>pairingmode_done</code></td><td>The earbuds have been put into pairing mode and are now disconnected from this device.</td></tr>

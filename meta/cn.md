@@ -21,13 +21,13 @@ If the official Samsung Wearable app is active alongside this app, connection is
 <tr><td><code>connlost_troubleshoot_title</code></td><td>How to troubleshoot connection issues</td></tr>
 <tr><td><code>connlost_troubleshoot_content</code></td><td>Please make sure that Samsung's official Wearable app for the Galaxy Buds does not attempt to connect to your earbuds in the background.
 Otherwise, you will experience very frequent connection loss issues as their app will repeatedly attempt to gain control over the earbuds.
-                  
+
 You can choose one of these solutions to fix this issue:
 
 • Unpair the earbuds from the Wearable app. (In the Wearable app, open the hamburger menu, select 'Manage devices', and delete your earbuds from the list.)
-                     
+
 • Uninstall the Galaxy Buds plugin for the Samsung Wearable app althogether.
-                    
+
 • Use an app like 'Hail' or 'Ice Box' to temporarily freeze the official Galaxy Buds plugin for the Samsung Wearable app to prevent it from running.
     </td></tr>
 <tr><td><code>rename_warn_oneui_title</code></td><td>Important information for OneUI users</td></tr>
