@@ -398,6 +398,30 @@
     <sys:String x:Key="fmg_warning_left">왼쪽 버즈를 귀에서 빼 주세요.</sys:String>
     <sys:String x:Key="fmg_warning_right">오른쪽 버즈를 귀에서 빼 주세요.</sys:String>
     <sys:String x:Key="fmg_header">내 버즈 찾기</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage">SmartThings Find 데이터 관리</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage_desc">버즈에 저장된 SmartThings Find 데이터를 확인하거나 관리할 수 있어요.</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open">SmartThings Find 페이지 열기</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open_desc">버즈를 온라인에서 추적하세요.설정하려면 삼성 계정과 공식 SmartThings Find 앱이 필요해요.</sys:String>
+
+    <!--SmartThings data-->
+    <sys:String x:Key="smart_things_find">SmartThings</sys:String>
+    <sys:String x:Key="smart_things_find_clear">SmartThings Find 설정 지우기</sys:String>
+    <sys:String x:Key="smart_things_find_clear_desc">버즈에서 삼성 계정 관련 데이터 삭제하기</sys:String>
+    <sys:String x:Key="smart_things_find_iv">Initialization vector (IV)</sys:String>
+    <sys:String x:Key="smart_things_find_secret_key">비밀 키</sys:String>
+    <sys:String x:Key="smart_things_find_region">지역</sys:String>
+    <sys:String x:Key="smart_things_find_fmm_token">SmartThings Find 토큰</sys:String>
+    <sys:String x:Key="smart_things_find_no_link">삼성 SmartThings Find 네트워크에 연결되지 않은 버즈에요.</sys:String>
+    <sys:String x:Key="smart_things_find_write_fail">버즈가 새로운 SmartThings Find 구성 데이터를 거부했어요.</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok">설정 덮어쓰기</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok_desc">SmartThings Find 설정값이 삭제되었어요.</sys:String>
+
+    <!-- Fit test-->
+    <sys:String x:Key="gft_warning">버즈를 모두 착용하세요.</sys:String>
+    <sys:String x:Key="gft_desc">버즈를 올바르게 착용했는지 확인하세요.</sys:String>
+    <sys:String x:Key="gft_bad">조정 필요</sys:String>
+    <sys:String x:Key="gft_good">알맞게 착용함</sys:String>
+    <sys:String x:Key="gft_fail">테스트 실패</sys:String>
 
     <!--Equalizer-->
     <sys:String x:Key="eq_header">이퀄라이저</sys:String>
@@ -516,7 +540,10 @@
     <sys:String x:Key="fw_select_downgrade_desc">버전 체크 없이 리스트에 이전 펌웨어를 표시합니다. (예기치 못한 문제를 일으킬 수 있음, 고급자용)</sys:String>
     <sys:String x:Key="fw_select_advanced">고급...</sys:String>
     <sys:String x:Key="fw_select_install">펌웨어 설치</sys:String>
+    <sys:String x:Key="fw_select_install_short">설치</sys:String>
+    <sys:String x:Key="fw_select_refresh">Refresh</sys:String>
     <sys:String x:Key="fw_select_from_disk">디스크에서 이미지 선택하기...</sys:String>
+    <sys:String x:Key="fw_select_from_disk_short">열기</sys:String>
     <sys:String x:Key="fw_select_external_note">다른 모델용 펌웨어 바이너리를 설치하지 마세요. Buds Pro용 펌웨어를 Buds Plus에 설치하면 기기에 새로운 기능이 추가되는 대신, 기기가 영구적으로 망가질 것입니다.
 
 펌웨어 바이너리를 선택하기 위해서는 '계속하기'를 눌러주세요.</sys:String>
@@ -526,7 +553,10 @@
     <sys:String x:Key="fw_select_net_index_error">서버와의 통신에 실패했어요. 지금은 펌웨어 목록을 다운로드할 수 없어요.</sys:String>
     <sys:String x:Key="fw_select_http_error">HTTP 에러 코드:</sys:String>
     <sys:String x:Key="fw_select_unknown_build">빌드 번호 알 수 없음</sys:String>
+    <sys:String x:Key="fw_select_no_results_short">No updates found</sys:String>
     <sys:String x:Key="fw_select_verify_fail">펌웨어 검증 실패</sys:String>
+    <sys:String x:Key="fw_select_verify_model_mismatch_fail">모델 불일치가 감지됐어요! 펌웨어 전송을 취소할께요.
+{0}의 펌웨어를 {1}에 플래시하려고 했어요. 이러면 이어버드를 영구적인 벽돌로 만들 수 있어요.</sys:String>
     <sys:String x:Key="fw_select_confirm">'{0}'을 '{1}'에 설치합니다.</sys:String>
     <sys:String x:Key="fw_select_confirm_desc">이 정보가 맞는지 확인해 주세요.
 아니라면 '취소'를 누르고 설정을 한 번 더 확인해 주세요.
@@ -594,4 +624,16 @@
     <sys:String x:Key="manualpair_model">알맞은 모델을 선택하세요.</sys:String>
     <sys:String x:Key="manualpair_note">참고: 연결 마법사가 나의 갤럭시 버즈를 인식하지 못하는 경우에만 수동으로 이어버드를 연결해야 되요.</sys:String>						   
 
+    <!--Rename-->
+    <sys:String x:Key="rename">이름 번경</sys:String>
+    <sys:String x:Key="rename_desc">모든 기기에 표시되는 버즈 이름을 번경해요.</sys:String>
+    <sys:String x:Key="rename_warn_oneui_title">OneUI 사용자를 위한 중요 정보</sys:String>    
+    <sys:String x:Key="rename_warn_oneui">기기에서 삼성 OneUI를 실행하는 경우 공식 방법을 사용하여 이어버드의 이름을 변경해야 합니다. 그렇지 않으면 새 이름을 설정하는 동안 연결 문제가 발생할 수 있습니다.</sys:String>
+    <sys:String x:Key="rename_too_short">입력한 이름이 너무 짧거나 길어요.</sys:String>
+    <sys:String x:Key="rename_hint">새 이름 입력...</sys:String>
+    <sys:String x:Key="rename_label">이어버드 이름</sys:String>
+    <sys:String x:Key="rename_reading_name">현재 이름 읽는중...</sys:String>
+    <sys:String x:Key="rename_ok_title">번경 완료</sys:String>
+    <sys:String x:Key="rename_ok">이름 번경에 성공했어요.
+이어버드의 페어링을 해제했다가 다시 페어링할 때까지 기기에서 이름 변경을 감지하지 못할 수 있어요.</sys:String>
 </ResourceDictionary>
