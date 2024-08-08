@@ -4,7 +4,7 @@
 
     <!-- English name of this language -->
     <sys:String x:Key="language_name_en">English</sys:String>
-    
+
     <!--:::::::: Source code ::::::::-->
 
     <!--General-->
@@ -33,7 +33,7 @@
     <sys:String x:Key="value_left_right_inline">Left: {0}, Right: {1}</sys:String>
     <sys:String x:Key="value_left_right_multiline">Left: {0}
 Right: {1}</sys:String>
-    <sys:String x:Key="other_x">Other ({0})</sys:String>    
+    <sys:String x:Key="other_x">Other ({0})</sys:String>
     <sys:String x:Key="no_data_stored">No data stored</sys:String>
     <sys:String x:Key="not_available">Not available</sys:String>
     <sys:String x:Key="last_updated_at_n">Last updated at {0}</sys:String>
@@ -162,7 +162,7 @@ Right: {1}</sys:String>
 This program is designed to provide much more functionality over the official Samsung wearable app. Some features such as 'Game Mode' only work on Samsung phones and cannot be enabled on PCs.</sys:String>
     <sys:String x:Key="welcome_android_hint_title">Important information for Android users</sys:String>
     <sys:String x:Key="welcome_android_hint">This app was initially designed for use on desktop computers. Features that need this app to run in the background, such as custom touch actions and battery statistics, are currently unavailable in this version.
-If the official Samsung Wearable app is active alongside this app, connection issues may occur. Please make sure to close the official app properly before using this app.</sys:String>  
+If the official Samsung Wearable app is active alongside this app, connection issues may occur. Please make sure to close the official app properly before using this app.</sys:String>
 
     <!--Main page-->
     <sys:String x:Key="mainpage_header">Home</sys:String>
@@ -198,7 +198,7 @@ If the official Samsung Wearable app is active alongside this app, connection is
     <sys:String x:Key="devices_delete_confirmation">Are you sure you want to remove this device?</sys:String>
     <sys:String x:Key="devices_settings_link">Manage paired devices</sys:String>
     <sys:String x:Key="devices_settings_link_desc">Add, remove, or select a primary device</sys:String>
-    
+
     <!--Touchpad gestures-->
     <sys:String x:Key="touchpad_gesture_header">Enable touchpad gestures</sys:String>
     <sys:String x:Key="touchpad_gesture_single">Single tap</sys:String>
@@ -349,25 +349,25 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="batt_hist_time_span_tip_title">Time span</sys:String>
     <sys:String x:Key="batt_hist_control_tip_title">Mouse controls</sys:String>
     <sys:String x:Key="batt_hist_control_tip">Drag the canvas to move around the plot.
-  
-Scroll to zoom horizontally and vertically. 
+
+Scroll to zoom horizontally and vertically.
 
 Hover over the X or Y axis and scroll to zoom only horizontally or vertically. Scrolling over the X-axis (time) would stretch or squash it, for example.</sys:String>
     <sys:String x:Key="batt_hist_overlay_tip_title">Overlays</sys:String>
     <sys:String x:Key="batt_hist_overlay_tip">You can use overlays to add additional context to the plot.
 
-Noise controls: Shows which noise controls were enabled or disabled. 
+Noise controls: Shows which noise controls were enabled or disabled.
 
 Wear state: Shows if the earbuds were worn or not.
 
 Host device: Shows which earbud is hosting the Bluetooth connection to the computer
-        
+
 The overlay data may be hard to understand when viewing large time ranges. Hover over the X-axis and scroll up to zoom into a specific time range you want to inspect for a better overview.</sys:String>
     <sys:String x:Key="batt_hist_tools_tip_title">Tools</sys:String>
     <sys:String x:Key="batt_hist_tools_tip">Pan &amp; zoom: Default mode. Navigate around the plot by panning and zooming.
-        
+
 Measure time: Select a horizontal span to measure the elapsed time between the start and end of the selection.
-        
+
 Measure level: Select a vertical span to measure the battery level difference between the start and end of the selection.</sys:String>
 
     <!--Settings-->
@@ -440,7 +440,7 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="fmg_smart_things_find_manage_desc">View and manage your SmartThings Find data stored on your earbuds</sys:String>
     <sys:String x:Key="fmg_smart_things_find_open">Open SmartThings Find website</sys:String>
     <sys:String x:Key="fmg_smart_things_find_open_desc">Track your earbuds online. Requires a Samsung account and the official SmartThings Find app to be set-up.</sys:String>
-    
+
     <!--SmartThings data-->
     <sys:String x:Key="smart_things_find">SmartThings</sys:String>
     <sys:String x:Key="smart_things_find_clear">Delete SmartThings Find configuration</sys:String>
@@ -569,13 +569,13 @@ The remap configuration is only active on this device. If you connect your earbu
     <sys:String x:Key="connlost_troubleshoot_title">How to troubleshoot connection issues</sys:String>
     <sys:String x:Key="connlost_troubleshoot_content">Please make sure that Samsung's official Wearable app for the Galaxy Buds does not attempt to connect to your earbuds in the background.
 Otherwise, you will experience very frequent connection loss issues as their app will repeatedly attempt to gain control over the earbuds.
-                  
+
 You can choose one of these solutions to fix this issue:
 
 • Unpair the earbuds from the Wearable app. (In the Wearable app, open the hamburger menu, select 'Manage devices', and delete your earbuds from the list.)
-                     
+
 • Uninstall the Galaxy Buds plugin for the Samsung Wearable app althogether.
-                    
+
 • Use an app like 'Hail' or 'Ice Box' to temporarily freeze the official Galaxy Buds plugin for the Samsung Wearable app to prevent it from running.
     </sys:String>
 
@@ -674,7 +674,7 @@ Details:</sys:String>
     <sys:String x:Key="manualpair_title_dialog">Choose your Galaxy Buds device</sys:String>
     <sys:String x:Key="manualpair_model">Choose the correct model type</sys:String>
     <sys:String x:Key="manualpair_note">You should only manually connect your earbuds if the setup wizard does not recognize them correctly.</sys:String>
-    
+
     <!--Rename-->
     <sys:String x:Key="rename">Rename earbuds</sys:String>
     <sys:String x:Key="rename_desc">This will rename earbuds for all devices.</sys:String>

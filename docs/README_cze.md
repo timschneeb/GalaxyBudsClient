@@ -170,6 +170,9 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 * [@domroaft](https://github.com/domroaft) - maďarský překlad
 * [@lampi8426](https://github.com/lampi8426) - nizozemský překlad
 
+### Assets
+* Použité ikony pro sluchátka v Android ikoně jsou vytvořena [Archival](https://www.flaticon.com/authors/archival) z [Flaticon](https://www.flaticon.com/)
+
 ## Licence
 
 Tento projekt je licencován pod [GPLv3](https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE). Není přidružený se společností Samsung nebo pod jejich dohledem v jakémkoliv ohledu.
