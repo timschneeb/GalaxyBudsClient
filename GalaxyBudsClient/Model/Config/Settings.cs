@@ -43,6 +43,8 @@ public static class Settings
     public static Themes DefaultTheme => PlatformUtils.SupportsMicaTheme ? Themes.DarkMica : 
         PlatformUtils.SupportsBlurTheme ? Themes.DarkBlur : Themes.Dark;
     
+    public static bool DefaultShowSidebar => PlatformUtils.IsDesktop ? true : false;
+
     private static void OnTouchActionPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         Save();

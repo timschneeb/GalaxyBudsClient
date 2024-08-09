@@ -108,6 +108,11 @@
                                              Symbol="ImageSparkle"
                                              IsChecked="{Binding RealisticEarbudImages, Source={x:Static config:Settings.Data}}" />
 
+                <controls:SettingsSwitchItem Content="{ext:Translate {x:Static i18N:Keys.SettingsNavSidebar}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.SettingsNavSidebarDescription}}"
+                                             Symbol="LayoutColumnOneThirdLeft"
+                                             IsChecked="{Binding ShowSidebar, Source={x:Static config:Settings.Data}}" />
+
             </ui:SettingsExpander>
 
             <ui:SettingsExpander Header="{ext:Translate {x:Static i18N:Keys.SettingsTraySettings}}"

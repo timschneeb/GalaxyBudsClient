@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
@@ -13,7 +13,7 @@ using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
-using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Utils.Interface;
 using Serilog;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
@@ -82,12 +82,22 @@ public partial class MainView : UserControl
 
         InitializeNavigationPages();
         
+        Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
         BreadcrumbBar.ItemClicked += OnBreadcrumbBarItemClicked;
         FrameView.Navigated += OnFrameViewNavigated;
         NavView.ItemInvoked += OnNavigationViewItemInvoked;
         NavView.BackRequested += OnNavigationViewBackRequested;
     }
-    
+
+    private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(SettingsData.ShowSidebar))
+        {
+            RefreshSidebarState();
+            RefreshSidebarItemStates();
+        }
+    }
+
     private void OnLanguageUpdated()
     {
         FlowDirection = Loc.ResolveFlowDirection();
@@ -180,22 +190,31 @@ public partial class MainView : UserControl
         }
     }
     
+    private void RefreshSidebarState()
+    {
+        NavView.Classes.Set("AppNav", Settings.Data.ShowSidebar);
+        NavView.Classes.Set("MobileContentContainer", true);
+        NavView.PaneDisplayMode = Settings.Data.ShowSidebar ? 
+            NavigationViewPaneDisplayMode.Left : NavigationViewPaneDisplayMode.LeftMinimal;
+    }
+
+    private void RefreshSidebarItemStates()
+    {
+        foreach(var nvi in NavView.MenuItemsSource.Cast<NavigationViewItem>()
+                    .Concat(NavView.FooterMenuItemsSource.Cast<NavigationViewItem>()))
+        {
+            nvi.Classes.Set("AppNav", Settings.Data.ShowSidebar);
+        }
+    }
+    
     private void InitializeNavigationPages()
     {
-        if (PlatformUtils.IsDesktop || OperatingSystem.IsBrowser())
-        {
-            NavView.Classes.Add("AppNav");
-        }
-        else
-        {
-            NavView.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftMinimal;
-            ContentContainer.Classes.Add("MobileContentContainer");
-        }
-        
+        RefreshSidebarState();
+            
         Dispatcher.UIThread.Post(() =>
         {   
             var menuItems = new List<NavigationViewItem>(14);
-            var footerItems = new List<NavigationViewItem>(1);
+            var footerItems = new List<NavigationViewItem>(2);
             
             foreach (var page in _mainPages)
             {
@@ -206,10 +225,7 @@ public partial class MainView : UserControl
                     IconSource = new SymbolIconSource { Symbol = page.IconKey }
                 };
 
-                if (PlatformUtils.IsDesktop || OperatingSystem.IsBrowser())
-                {
-                    nvi.Classes.Add("AppNav");
-                }
+                nvi.Classes.Set("AppNav", Settings.Data.ShowSidebar);
 
                 if (page.ShowsInFooter)
                     footerItems.Add(nvi);
