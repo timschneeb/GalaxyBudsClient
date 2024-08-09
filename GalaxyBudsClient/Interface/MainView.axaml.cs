@@ -59,6 +59,8 @@ public partial class MainView : UserControl
         InitializeComponent();
         Instance = this;
         
+        Loc.LanguageUpdated += OnLanguageUpdated;
+        
         var insetsManager = TopLevel.GetTopLevel(this)?.InsetsManager;
         if (insetsManager != null)
         {
@@ -79,11 +81,16 @@ public partial class MainView : UserControl
         NavigationService.Instance.Frame = FrameView;
 
         InitializeNavigationPages();
-
+        
         BreadcrumbBar.ItemClicked += OnBreadcrumbBarItemClicked;
         FrameView.Navigated += OnFrameViewNavigated;
         NavView.ItemInvoked += OnNavigationViewItemInvoked;
         NavView.BackRequested += OnNavigationViewBackRequested;
+    }
+    
+    private void OnLanguageUpdated()
+    {
+        FlowDirection = Loc.ResolveFlowDirection();
     }
 
     public T? ResolveViewModelByType<T>() where T : PageViewModelBase
