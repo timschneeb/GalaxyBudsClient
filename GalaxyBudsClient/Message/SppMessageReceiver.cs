@@ -51,6 +51,7 @@ public class SppMessageReceiver
     public event EventHandler? FindMyGearStopped;
     public event EventHandler<FitTestDecoder>? FitTestResult;
     public event EventHandler<DebugSkuDecoder>? DebugSkuUpdate;
+    public event EventHandler<HiddenCmdDataDecoder>? HiddenCmdData;
 
     public void MessageReceiver(object? sender, SppMessage e)
     {
@@ -153,6 +154,9 @@ public class SppMessageReceiver
                 break;
             case DebugSkuDecoder p:
                 DebugSkuUpdate?.Invoke(this, p);
+                break; 
+            case HiddenCmdDataDecoder p:
+                HiddenCmdData?.Invoke(this, p);
                 break;
             case VoiceWakeupEventDecoder p:
                 if (p.ResultCode == 1)

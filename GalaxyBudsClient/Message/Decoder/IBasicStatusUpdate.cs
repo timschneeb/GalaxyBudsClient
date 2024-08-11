@@ -8,6 +8,8 @@ public interface IBasicStatusUpdate
     public int BatteryL { get; }
     public int BatteryR { get; }
     
+    public DevicesInverted MainConnection { get; }
+    
     public LegacyWearStates WearState { get; }
         
     [Device(Models.Buds)]

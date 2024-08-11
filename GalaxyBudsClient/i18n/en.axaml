@@ -317,15 +317,33 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 
     <!-- Hidden AT modes -->
     <sys:String x:Key="hidden_mode_warning">Proceed with caution</sys:String>
-    <sys:String x:Key="hidden_mode_warning_desc">Changes made on this page cannot be restored by a factory reset.</sys:String>
-    <sys:String x:Key="hidden_mode_target">Target device</sys:String>
-    <sys:String x:Key="hidden_mode_target_desc">Select the earbud on which changes should be applied</sys:String>
+    <sys:String x:Key="hidden_mode_warning_desc">Some changes made on this page cannot be restored by a factory reset. Not all models support these settings.</sys:String>
+    <sys:String x:Key="hidden_mode_target">Target device: {0} earbud</sys:String> <!-- {0} = Left or Right -->
+    <sys:String x:Key="hidden_mode_target_l_desc">To modify your left earbud, put the right earbud into the case and close it.</sys:String>
+    <sys:String x:Key="hidden_mode_target_r_desc">To modify your right earbud, put the left earbud into the case and close it.</sys:String>
     <sys:String x:Key="hidden_mode_uart">Enable UART port</sys:String>
-    <sys:String x:Key="hidden_mode_uart_desc">Enables the physical UART port on the PCB of the earbuds for debugging purposes</sys:String>
+    <sys:String x:Key="hidden_mode_uart_desc">Enables the physical UART port on the PCB of the current target device for debugging purposes</sys:String>
+    <sys:String x:Key="hidden_mode_power">Power menu</sys:String>
+    <sys:String x:Key="hidden_mode_power_desc">Shutdown, reboot or put the current target device to sleep</sys:String>
     <sys:String x:Key="hidden_mode_serial_change">Change serial number</sys:String>
     <sys:String x:Key="hidden_mode_serial_change_desc">Changes the serial number of the current target device</sys:String>
+    <sys:String x:Key="hidden_mode_did_change">Change DID number</sys:String>
+    <sys:String x:Key="hidden_mode_did_change_desc">Changes the device id number of the current target device</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change">Change SKU code</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change_desc">Changes the product code of the current target device</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_addr_change">Change peer Bluetooth address</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_change_desc">Changes the public Bluetooth address of the current target device</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_addr_change">Change local Bluetooth address</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_change_desc">Changes the internal Bluetooth address of the current target device</sys:String>
     <sys:String x:Key="hidden_mode_terminal">Hidden command terminal</sys:String>
     <sys:String x:Key="hidden_mode_terminal_desc">Send custom AT commands to the current target device</sys:String>
+
+    <sys:String x:Key="at_terminal_cmd_id">Command id</sys:String>
+    <sys:String x:Key="at_terminal_cmd_param">Command parameter (optional)</sys:String>
+    <sys:String x:Key="at_terminal_cmd_id_invalid">This command id is invalid. Please enter a 16-bit hexadecimal value, such as 0007 or 004C.</sys:String>
+    <sys:String x:Key="at_terminal_output">Output</sys:String>
+    <sys:String x:Key="at_terminal_send">Send</sys:String>
+
     
     <!-- Usage-/metering reports -->
     <sys:String x:Key="usage_reports_header">Usage reports</sys:String>

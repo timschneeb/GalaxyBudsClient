@@ -1,12 +1,7 @@
-using System.ComponentModel;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Threading;
 using Avalonia.Xaml.Interactivity;
-using GalaxyBudsClient.Message;
-using GalaxyBudsClient.Message.Decoder;
-using GalaxyBudsClient.Model.Config;
-using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 
 namespace GalaxyBudsClient.Interface.MarkupExtensions;

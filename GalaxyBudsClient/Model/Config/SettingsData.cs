@@ -1,7 +1,6 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Platform;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 

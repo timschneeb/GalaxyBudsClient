@@ -1,9 +1,6 @@
-using System;
-using System.Diagnostics;
 using Avalonia;
 using Avalonia.Xaml.Interactivity;
 using GalaxyBudsClient.Platform;
-using Serilog;
 
 namespace GalaxyBudsClient.Interface.MarkupExtensions;
 

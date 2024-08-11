@@ -36,15 +36,9 @@
                     <ext:RequiresConnectedDeviceBehavior />
                 </Interaction.Behaviors>
                 
-                <controls:SettingsComboBoxItem Content="{ext:Translate {x:Static i18N:Keys.HiddenModeTarget}}"
-                                               Description="{ext:Translate {x:Static i18N:Keys.HiddenModeTargetDesc}}"
-                                               Symbol="TargetArrow"
-                                               ItemsSource="{Binding ., Source={ext:DevicesBindingSource}}"
-                                               SelectedValue="{Binding TargetDevice}">
-                    <Interaction.Behaviors>
-                        <ext:LocalizationAwareComboBoxBehavior />
-                    </Interaction.Behaviors>
-                </controls:SettingsComboBoxItem>
+                <controls:SettingsSymbolItem Content="{Binding TargetHeader}"
+                                               Description="{Binding TargetDescription}"
+                                               Symbol="TargetArrow" />
             </controls:SettingsGroup>
             
             <controls:SettingsGroup>
@@ -58,12 +52,44 @@
                                              Symbol="SerialPort"
                                              IsClickEnabled="True" />
                                 
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.HiddenModePower}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.HiddenModePowerDesc}}"
+                                             Symbol="Power"
+                                             ActionSymbol="ChevronRight"
+                                             IsClickEnabled="True"  />
+            </controls:SettingsGroup>         
+            
+            <controls:SettingsGroup>
+                <Interaction.Behaviors>
+                    <ext:RequiresConnectedDeviceBehavior />
+                </Interaction.Behaviors>
+ 
                 <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.HiddenModeSerialChange}}"
                                              Description="{ext:Translate {x:Static i18N:Keys.HiddenModeSerialChangeDesc}}"
-                                             Symbol="NumberSymbol"
+                                             Symbol="ContactCardRibbon"
                                              IsClickEnabled="True" 
                                              Click="OnChangeSerialClicked" />
-   
+
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.HiddenModeDidChange}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.HiddenModeDidChangeDesc}}"
+                                             Symbol="NumberSymbol"
+                                             IsClickEnabled="True"  />
+                
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.HiddenModeSkuChange}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.HiddenModeSkuChangeDesc}}"
+                                             Symbol="Cart"
+                                             IsClickEnabled="True"  />
+
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.HiddenModeBtPeerAddrChange}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.HiddenModeBtPeerChangeDesc}}"
+                                             Symbol="BluetoothSearching"
+                                             IsClickEnabled="True"  />
+
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.HiddenModeBtLocalAddrChange}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.HiddenModeBtLocalChangeDesc}}"
+                                             Symbol="Bluetooth"
+                                             IsClickEnabled="True"  />
+
             </controls:SettingsGroup>
             
             <controls:SettingsGroup>
@@ -75,8 +101,8 @@
                                              Description="{ext:Translate {x:Static i18N:Keys.HiddenModeTerminalDesc}}"
                                              Symbol="WindowConsole"
                                              IsClickEnabled="True"
+                                             ActionSymbol="ChevronRight"
                                              Click="OnHiddenTerminalClicked" />
-   
             </controls:SettingsGroup>
         </StackPanel>
     </ScrollViewer>

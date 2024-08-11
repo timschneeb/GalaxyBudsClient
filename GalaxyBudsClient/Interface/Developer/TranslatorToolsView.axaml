@@ -7,8 +7,7 @@
         xmlns:dynamicLocalization="clr-namespace:GalaxyBudsClient.Utils.Interface"
         xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
         mc:Ignorable="d" d:DesignWidth="463" d:DesignHeight="380"
-        x:Class="GalaxyBudsClient.Interface.Developer.TranslatorToolsView"
-        Height="390" Width="460">
+        x:Class="GalaxyBudsClient.Interface.Developer.TranslatorToolsView">
 
     <StackPanel Margin="10" Spacing="8">
         <HeaderedContentControl Classes="GroupBox"

@@ -5,7 +5,6 @@ using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface;
 using GalaxyBudsClient.Interface.Developer;
-using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Platform;
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
 

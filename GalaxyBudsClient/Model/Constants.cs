@@ -316,11 +316,7 @@ namespace GalaxyBudsClient.Model
             [LocalizableDescription(Keys.Left)]
             L = 0,
             [LocalizableDescription(Keys.Right)]
-            R = 1,
-            
-            // Only used internally in the UI, not present in SPP messages
-            [LocalizableDescription(Keys.Both)]
-            Both = 100,
+            R = 1
         }
         
         public enum SppRoleStates

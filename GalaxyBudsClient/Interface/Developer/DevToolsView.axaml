@@ -10,8 +10,7 @@
         xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
         mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="625"
         x:Class="GalaxyBudsClient.Interface.Developer.DevToolsView"
-        x:DataType="vm:DevToolsViewModel"
-        Height="625" Width="700">
+        x:DataType="vm:DevToolsViewModel">
     
     <Design.DataContext>
         <vm:DevToolsViewModel />
