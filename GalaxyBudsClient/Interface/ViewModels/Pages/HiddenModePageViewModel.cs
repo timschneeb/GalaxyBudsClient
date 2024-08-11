@@ -1,11 +1,14 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Threading;
 using GalaxyBudsClient.Generated.I18N;
+using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
@@ -23,10 +26,58 @@ public class HiddenModePageViewModel : SubPageViewModelBase
     [Reactive] public string TargetHeader { set; get; } = Strings.SystemWaitingForDevice;
     [Reactive] public string TargetDescription { set; get; } = Strings.PleaseWait;
 
+    private bool _isInForeground;
+    
     public HiddenModePageViewModel()
     {
+        PropertyChanged += OnPropertyChanged;
         Loc.LanguageUpdated += OnLanguageUpdated;
         SppMessageReceiver.Instance.BaseUpdate += OnBaseStatusUpdate;
+        SppMessageReceiver.Instance.HiddenCmdData += OnHiddenCmdDataReceived;
+    }
+
+    private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(IsUartEnabled))
+        {
+            _ = BluetoothImpl.Instance.SendAsync(new HiddenCmdDataEncoder
+            {
+                CommandId = IsUartEnabled ? "F011" : "F010"
+            });
+        }
+    }
+
+    private void OnHiddenCmdDataReceived(object? sender, HiddenCmdDataDecoder e)
+    {
+        using var suppressor = SuppressChangeNotifications();
+        
+        // F012: Returns UART status as string
+        if (e.Content.Contains("Get -> TRUE"))
+            IsUartEnabled = true;
+        else if (e.Content.Contains("Get -> FALSE"))
+            IsUartEnabled = false;
+        
+        // F010/F011: Confirms UART status change
+        string? uartMsg = null;
+        if (_isInForeground && e.Content.Contains("uart_enable_set") &&
+            e.Content.Contains("TRUE", StringComparison.OrdinalIgnoreCase))
+            uartMsg = Strings.HiddenModeUartOnConfirm;
+        else if (_isInForeground && e.Content.Contains("uart_enable_set") &&
+                 e.Content.Contains("FALSE", StringComparison.OrdinalIgnoreCase))
+            uartMsg = Strings.HiddenModeUartOffConfirm;
+
+        if (uartMsg != null)
+        {
+            Dispatcher.UIThread.Post(() =>
+            {
+                _ = new MessageBox
+                {
+                    Title = Strings.HiddenModeUart,
+                    Description = uartMsg,
+                    ButtonText = Strings.Okay
+                }.ShowAsync();
+            });
+        }
     }
 
     private void OnBaseStatusUpdate(object? sender, IBasicStatusUpdate e)
@@ -57,9 +108,13 @@ public class HiddenModePageViewModel : SubPageViewModelBase
     public override void OnNavigatedTo()
     {
         BluetoothImpl.Instance.Connected += OnConnected;
-        
+
+        _isInForeground = true;
         UpdateTarget();
+        
         SendHiddenMode(1);
+        // Request current UART status
+        _ = BluetoothImpl.Instance.SendAsync(new HiddenCmdDataEncoder { CommandId = "F012" });
         base.OnNavigatedTo();
     }
     
@@ -72,7 +127,8 @@ public class HiddenModePageViewModel : SubPageViewModelBase
     public override void OnNavigatedFrom()
     {
         BluetoothImpl.Instance.Connected -= OnConnected;
-        
+
+        _isInForeground = false;
         SendHiddenMode(0);
         
         // Reconnect

@@ -321,6 +321,8 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="hidden_mode_target">Target device: {0} earbud</sys:String> <!-- {0} = Left or Right -->
     <sys:String x:Key="hidden_mode_target_l_desc">To modify your left earbud, put the right earbud into the case and close it.</sys:String>
     <sys:String x:Key="hidden_mode_target_r_desc">To modify your right earbud, put the left earbud into the case and close it.</sys:String>
+    <sys:String x:Key="hidden_mode_uart_on_confirm">UART has been successfully enabled</sys:String>
+    <sys:String x:Key="hidden_mode_uart_off_confirm">UART has been successfully disabled</sys:String>
     <sys:String x:Key="hidden_mode_uart">Enable UART port</sys:String>
     <sys:String x:Key="hidden_mode_uart_desc">Enables the physical UART port on the PCB of the current target device for debugging purposes</sys:String>
     <sys:String x:Key="hidden_mode_power">Power menu</sys:String>

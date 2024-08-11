@@ -93,7 +93,8 @@
                                              Description="{ext:Translate {x:Static i18N:Keys.HiddenModeTerminalDesc}}"
                                              Symbol="WindowConsole"
                                              IsClickEnabled="True"
-                                             ActionSymbol="ChevronRight" />
+                                             ActionSymbol="ChevronRight"
+                                             Click="OnHiddenTerminalClicked" />
             </controls:SettingsGroup>
         </StackPanel>
     </ScrollViewer>
