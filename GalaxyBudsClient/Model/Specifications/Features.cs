@@ -49,5 +49,6 @@ public enum Features
     Rename,
     SmartThingsFind,
     UsageReport,
-    HotCommandLanguageUpdate
+    HotCommandLanguageUpdate,
+    HiddenAtMode,
 }

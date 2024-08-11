@@ -71,17 +71,6 @@
         <AvaloniaXaml Remove="bin\**" />
         <EmbeddedResource Remove="bin\**" />
         <None Remove="bin\**" />
-        <Compile Remove="Platform\NotificationReaderManager.cs" />
-        <Compile Remove="Interface\ViewModels\Pages\NotificationReaderPageViewModel.cs" />
-        <Compile Remove="Interface\Pages\NotificationReaderPage.axaml.cs" />
-        <Compile Update="Interface\Developer\DevToolsView.axaml.cs">
-          <DependentUpon>DevToolsView.axaml</DependentUpon>
-          <SubType>Code</SubType>
-        </Compile>
-        <Compile Update="Interface\Developer\TranslatorToolsView.axaml.cs">
-          <DependentUpon>TranslatorToolsView.axaml</DependentUpon>
-          <SubType>Code</SubType>
-        </Compile>
     </ItemGroup>
     
     <!-- Dependencies -->

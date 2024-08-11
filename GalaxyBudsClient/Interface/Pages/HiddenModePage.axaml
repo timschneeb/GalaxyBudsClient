@@ -1,0 +1,83 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
+             mc:Ignorable="d" d:DesignWidth="800"
+             x:Class="GalaxyBudsClient.Interface.Pages.HiddenModePage"
+             x:DataType="pages:HiddenModePageViewModel"
+             x:CompileBindings="True">
+
+    <Design.DataContext>
+        <pages:SystemPageViewModel />
+    </Design.DataContext>
+
+    <ScrollViewer>
+        <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
+
+            <controls:CustomInfoBar Title="{ext:Translate {x:Static i18N:Keys.HiddenModeWarning}}"
+                                    Message="{ext:Translate {x:Static i18N:Keys.HiddenModeWarningDesc}}"
+                                    IsClosable="False"
+                                    IsOpen="True"
+                                    Severity="Warning" />
+            
+            <controls:SettingsGroup>
+                <Interaction.Behaviors>
+                    <ext:RequiresConnectedDeviceBehavior />
+                </Interaction.Behaviors>
+                
+            </controls:SettingsGroup>
+            
+            <controls:SettingsGroup>
+                <Interaction.Behaviors>
+                    <ext:RequiresConnectedDeviceBehavior />
+                </Interaction.Behaviors>
+                
+                <controls:SettingsComboBoxItem Content="{ext:Translate {x:Static i18N:Keys.HiddenModeTarget}}"
+                                               Description="{ext:Translate {x:Static i18N:Keys.HiddenModeTargetDesc}}"
+                                               Symbol="TargetArrow"
+                                               ItemsSource="{Binding ., Source={ext:DevicesBindingSource}}"
+                                               SelectedValue="{Binding TargetDevice}">
+                    <Interaction.Behaviors>
+                        <ext:LocalizationAwareComboBoxBehavior />
+                    </Interaction.Behaviors>
+                </controls:SettingsComboBoxItem>
+            </controls:SettingsGroup>
+            
+            <controls:SettingsGroup>
+                <Interaction.Behaviors>
+                    <ext:RequiresConnectedDeviceBehavior />
+                </Interaction.Behaviors>
+                
+                <controls:SettingsSwitchItem Content="{ext:Translate {x:Static i18N:Keys.HiddenModeUart}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.HiddenModeUartDesc}}"
+                                             IsChecked="{Binding IsUartEnabled}"
+                                             Symbol="SerialPort"
+                                             IsClickEnabled="True" />
+                                
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.HiddenModeSerialChange}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.HiddenModeSerialChangeDesc}}"
+                                             Symbol="NumberSymbol"
+                                             IsClickEnabled="True" 
+                                             Click="OnChangeSerialClicked" />
+   
+            </controls:SettingsGroup>
+            
+            <controls:SettingsGroup>
+                <Interaction.Behaviors>
+                    <ext:RequiresConnectedDeviceBehavior />
+                </Interaction.Behaviors>
+                                
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.HiddenModeTerminal}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.HiddenModeTerminalDesc}}"
+                                             Symbol="WindowConsole"
+                                             IsClickEnabled="True"
+                                             Click="OnHiddenTerminalClicked" />
+   
+            </controls:SettingsGroup>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

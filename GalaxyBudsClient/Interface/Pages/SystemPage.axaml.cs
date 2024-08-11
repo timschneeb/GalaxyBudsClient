@@ -18,7 +18,7 @@ namespace GalaxyBudsClient.Interface.Pages;
 
 public partial class SystemPage : BasePage<SystemPageViewModel>
 {
-    private readonly string[] _restrictedItems = ["Firmware", "UsageReport"];
+    private readonly string[] _restrictedItems = ["Firmware", "UsageReport", "HiddenMode"];
     
     public SystemPage()
     {

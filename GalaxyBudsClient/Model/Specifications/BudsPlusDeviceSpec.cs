@@ -26,7 +26,8 @@ public class BudsPlusDeviceSpec : IDeviceSpec
         { Features.AmbientSoundVolume, null },
         { Features.DeviceColor, null },
         { Features.SmartThingsFind, new FeatureRule(12) },
-        { Features.UsageReport, null }
+        { Features.UsageReport, null },
+        { Features.HiddenAtMode, null }
     };
         
     public Models Device => Models.BudsPlus;

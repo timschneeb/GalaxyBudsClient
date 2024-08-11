@@ -254,6 +254,8 @@ If the official Samsung Wearable app is active alongside this app, connection is
     <sys:String x:Key="system_pairing_mode_desc">Disconnect your earbuds from this PC and make it visible to other devices</sys:String>
     <sys:String x:Key="system_trace_core_dump">Download trace and coredumps</sys:String>
     <sys:String x:Key="system_trace_core_dump_desc">Retrieve raw debugging data from your earbuds</sys:String>
+    <sys:String x:Key="system_hidden_at_mode">Hidden system settings</sys:String>
+    <sys:String x:Key="system_hidden_at_mode_desc">Edit hidden settings such as serial numbers and UART state</sys:String>
     <sys:String x:Key="system_info">View system information</sys:String>
     <sys:String x:Key="system_info_desc">Display detailed information about your earbuds</sys:String>
     <sys:String x:Key="system_flasher">Install firmware updates</sys:String>
@@ -313,6 +315,18 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="coredump_dl_save_success">{0} dump(s) were written to '{1}'</sys:String>
     <sys:String x:Key="coredump_dl_save_dialog_title">Select a download directory...</sys:String>
 
+    <!-- Hidden AT modes -->
+    <sys:String x:Key="hidden_mode_warning">Proceed with caution</sys:String>
+    <sys:String x:Key="hidden_mode_warning_desc">Changes made on this page cannot be restored by a factory reset.</sys:String>
+    <sys:String x:Key="hidden_mode_target">Target device</sys:String>
+    <sys:String x:Key="hidden_mode_target_desc">Select the earbud on which changes should be applied</sys:String>
+    <sys:String x:Key="hidden_mode_uart">Enable UART port</sys:String>
+    <sys:String x:Key="hidden_mode_uart_desc">Enables the physical UART port on the PCB of the earbuds for debugging purposes</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change">Change serial number</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change_desc">Changes the serial number of the current target device</sys:String>
+    <sys:String x:Key="hidden_mode_terminal">Hidden command terminal</sys:String>
+    <sys:String x:Key="hidden_mode_terminal_desc">Send custom AT commands to the current target device</sys:String>
+    
     <!-- Usage-/metering reports -->
     <sys:String x:Key="usage_reports_header">Usage reports</sys:String>
     <sys:String x:Key="usage_reports_hint">These reports are collected by the earbuds themselves. The data is displayed as-is and may be inaccurate. The official Wearable app usually resets most counters periodically and then sends the collected data to Samsung unless you haven't consented to data collection in their app. Some counters, such as charging cycles, are not reset.</sys:String>
