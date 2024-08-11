@@ -29,13 +29,6 @@
                     <ext:RequiresConnectedDeviceBehavior />
                 </Interaction.Behaviors>
                 
-            </controls:SettingsGroup>
-            
-            <controls:SettingsGroup>
-                <Interaction.Behaviors>
-                    <ext:RequiresConnectedDeviceBehavior />
-                </Interaction.Behaviors>
-                
                 <controls:SettingsSymbolItem Content="{Binding TargetHeader}"
                                                Description="{Binding TargetDescription}"
                                                Symbol="TargetArrow" />
@@ -67,8 +60,7 @@
                 <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.HiddenModeSerialChange}}"
                                              Description="{ext:Translate {x:Static i18N:Keys.HiddenModeSerialChangeDesc}}"
                                              Symbol="ContactCardRibbon"
-                                             IsClickEnabled="True" 
-                                             Click="OnChangeSerialClicked" />
+                                             IsClickEnabled="True" />
 
                 <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.HiddenModeDidChange}}"
                                              Description="{ext:Translate {x:Static i18N:Keys.HiddenModeDidChangeDesc}}"
@@ -101,8 +93,7 @@
                                              Description="{ext:Translate {x:Static i18N:Keys.HiddenModeTerminalDesc}}"
                                              Symbol="WindowConsole"
                                              IsClickEnabled="True"
-                                             ActionSymbol="ChevronRight"
-                                             Click="OnHiddenTerminalClicked" />
+                                             ActionSymbol="ChevronRight" />
             </controls:SettingsGroup>
         </StackPanel>
     </ScrollViewer>

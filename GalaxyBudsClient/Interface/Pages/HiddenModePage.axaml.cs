@@ -11,11 +11,6 @@ public partial class HiddenModePage : BasePage<HiddenModePageViewModel>
         InitializeComponent();
     }
 
-    private void OnChangeSerialClicked(object? sender, RoutedEventArgs e)
-    {
-        // TODO
-    }
-
     private void OnHiddenTerminalClicked(object? sender, RoutedEventArgs e)
     {
         _ = HiddenModeTerminalDialog.OpenDialogAsync();

@@ -3,8 +3,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:dialogs="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Dialogs"
-             xmlns:ic="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
-             xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
              xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              mc:Ignorable="d"
