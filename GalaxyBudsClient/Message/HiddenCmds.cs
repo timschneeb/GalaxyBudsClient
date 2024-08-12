@@ -158,6 +158,8 @@ public static class HiddenCmds
         {0x7722,"TWU_AT_CMD_ID_TSP_SIDE_DOUBLE_TAP_SET"},
         {0x7733,"TWU_AT_CMD_ID_TSP_SIDE_DOUBLE_TAP_GET"},
         {0x8888,"PLC_COUPLING_START"},
+        {0x88AC,"PLC_CFU_TEST:1"},
+        {0x88AD,"PLC_CFU_TEST:0"},
         {0x88D5,"TWU_AT_CMD_ID_TSP_INDEFFERENCE_SET"},
         {0x88D6,"TWU_AT_CMD_ID_TSP_INDEFFERENCE_GET"},
         {0x88D7,"TWU_AT_CMD_ID_TSP_DEBOUNCE_SET"},
@@ -180,6 +182,10 @@ public static class HiddenCmds
         {0x9912,"TWU_AT_CMD_ID_PLACE_TEST_INCLOSECASE"},
         {0x9913,"TWU_AT_CMD_ID_PLACE_TEST_INOPENCASE"},
         {0x9999,"SWREBOOT"},
+        {0x99F3,"TWU_AT_CMD_ID_BT_LINK_KEY"},
+        {0x99F4,"BTID"},
+        {0x99F5,"TWU_AT_CMD_ID_RESET_SFLASH_FILE_STATE"},
+        {0xAAAA,"TWU_AT_CMD_ID_SET_FACTORY_UART_DISABLE"},
         {0xAC00,"TWU_AT_CMD_ID_AUDIO_ANC_ANC_OFF"},
         {0xAC01,"TWU_AT_CMD_ID_AUDIO_ANC_ANC_ON"},
         {0xAC02,"TWU_AT_CMD_ID_AUDIO_ANC_GET_FB_MIC_SENSITIVITY"},
@@ -229,6 +235,8 @@ public static class HiddenCmds
         {0xBB01,"TWU_AT_CMD_ID_BATT_SOC_CYCLE_RESET"},
         {0xBB02,"TWU_AT_CMD_ID_BATT_SOC_CYCLE_GET"},
         {0xBB04,"TWU_AT_CMD_ID_BATT_SOC_CYCLE_SET"},
+        {0xBB05,"recovery_batt_voltage"},
+        {0xBB07,"recovery_batt_voltage"},
         {0xBBF0,"TWU_AT_CMD_ID_FOTA_PCKT_NUM"},
         {0xC000,"TWU_AT_CMD_ID_SL_DATA_ON"},
         {0xD0FF,"TWU_AT_CMD_ID_SL_DATA_OFF"},
@@ -241,5 +249,6 @@ public static class HiddenCmds
         {0xF010, "TWU_AT_CMD_UNSET_USER_UART_ENABLE"},
         {0xF011, "TWU_AT_CMD_SET_USER_UART_ENABLE"},
         {0xF012, "TWU_AT_CMD_GET_USER_UART_ENABLE"},
+        {0xFFDE, "TWU_AT_CMD_ID_BATT_SOC_READ"}
     };
 }

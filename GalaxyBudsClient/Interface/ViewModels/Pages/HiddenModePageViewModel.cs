@@ -119,9 +119,6 @@ public class HiddenModePageViewModel : SubPageViewModelBase
         SendHiddenMode(1);
         // Request current UART status
         _ = BluetoothImpl.Instance.SendAsync(new HiddenCmdDataEncoder { CommandId = "F012" });
-        
-        // TODO remove
-        HiddenCmdScanner.BeginScan(0x8500);
         base.OnNavigatedTo();
     }
     
@@ -150,8 +147,6 @@ public class HiddenModePageViewModel : SubPageViewModelBase
                     });
                 });
         });
-        
-        // TODO reconnect device here
         base.OnNavigatedFrom();
     }
     
