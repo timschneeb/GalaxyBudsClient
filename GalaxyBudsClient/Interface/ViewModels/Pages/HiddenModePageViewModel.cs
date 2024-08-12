@@ -1,5 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Threading;
@@ -12,6 +15,7 @@ using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
+using GalaxyBudsClient.Utils.Tools;
 using ReactiveUI.Fody.Helpers;
 using Serilog;
 
@@ -115,6 +119,9 @@ public class HiddenModePageViewModel : SubPageViewModelBase
         SendHiddenMode(1);
         // Request current UART status
         _ = BluetoothImpl.Instance.SendAsync(new HiddenCmdDataEncoder { CommandId = "F012" });
+        
+        // TODO remove
+        HiddenCmdScanner.BeginScan(0x8500);
         base.OnNavigatedTo();
     }
     

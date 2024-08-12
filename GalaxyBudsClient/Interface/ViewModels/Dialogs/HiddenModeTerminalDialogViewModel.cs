@@ -14,7 +14,6 @@ public class HiddenModeTerminalDialogViewModel : ViewModelBase
 {
     public HiddenModeTerminalDialogViewModel()
     {
-        PropertyChanged += OnPropertyChanged;
         SppMessageReceiver.Instance.HiddenCmdData += OnHiddenCmdDataReceived;
     }
 
@@ -49,15 +48,6 @@ public class HiddenModeTerminalDialogViewModel : ViewModelBase
     
     private void OnHiddenCmdDataReceived(object? sender, HiddenCmdDataDecoder e)
     {
-        TerminalOutput = e.Content ?? "<null>";
-    }
-    
-    private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
-    {
-        switch (e.PropertyName)
-        {
-            case nameof(CommandId):
-                break;
-        }
+        TerminalOutput = e.Content;
     }
 }

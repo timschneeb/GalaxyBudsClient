@@ -340,6 +340,11 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="hidden_mode_terminal">Hidden command terminal</sys:String>
     <sys:String x:Key="hidden_mode_terminal_desc">Send custom AT commands to the current target device</sys:String>
 
+    <sys:String x:Key="power_menu_hint">Only the current target earbud will be affected.</sys:String>
+    <sys:String x:Key="power_menu_reboot">Reboot</sys:String>
+    <sys:String x:Key="power_menu_shutdown">Shutdown</sys:String>
+    <sys:String x:Key="power_menu_sleep">Factory sleep mode</sys:String>
+    
     <sys:String x:Key="at_terminal_cmd_id">Command id</sys:String>
     <sys:String x:Key="at_terminal_cmd_param">Command parameter (optional)</sys:String>
     <sys:String x:Key="at_terminal_cmd_id_invalid">This command id is invalid. Please enter a 16-bit hexadecimal value, such as 0007 or 004C.</sys:String>

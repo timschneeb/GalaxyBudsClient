@@ -22,7 +22,7 @@ public class HiddenCmdDataEncoder : BaseMessageEncoder
             command.Add(0x00);
         }
 
-        Log.Debug("DoSendCommand: Sending hidden command: {Command}", Convert.ToHexString(command.ToArray()));
+        Log.Verbose("HiddenCmdDataEncoder: encoded command: {Command}", Convert.ToHexString(command.ToArray()));
         return new SppMessage(MsgIds.HIDDEN_CMD_DATA, MsgTypes.Request, command.ToArray());
     }
 }
