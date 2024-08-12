@@ -31,6 +31,8 @@ public class HiddenModePageViewModel : SubPageViewModelBase
     [Reactive] public string TargetDescription { set; get; } = Strings.PleaseWait;
 
     private bool _isInForeground;
+    private bool _ignorePropertyEvents;
+    private DevicesInverted? _previousMainConnection;
     
     public HiddenModePageViewModel()
     {
@@ -42,24 +44,24 @@ public class HiddenModePageViewModel : SubPageViewModelBase
 
     private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if (e.PropertyName == nameof(IsUartEnabled))
+        if (e.PropertyName == nameof(IsUartEnabled) && !_ignorePropertyEvents)
         {
-            _ = BluetoothImpl.Instance.SendAsync(new HiddenCmdDataEncoder
-            {
-                CommandId = IsUartEnabled ? "F011" : "F010"
-            });
+            SendHiddenData(IsUartEnabled ? "F011" : "F010");
         }
     }
 
     private void OnHiddenCmdDataReceived(object? sender, HiddenCmdDataDecoder e)
     {
-        using var suppressor = SuppressChangeNotifications();
+        if(_isInForeground)
+            Log.Debug("OnHiddenCmdDataReceived: {Content}", e.Content.ReplaceLineEndings().Replace("\n", "\\n"));
         
         // F012: Returns UART status as string
+        _ignorePropertyEvents = true;
         if (e.Content.Contains("Get -> TRUE"))
             IsUartEnabled = true;
         else if (e.Content.Contains("Get -> FALSE"))
             IsUartEnabled = false;
+        _ignorePropertyEvents = false;
         
         // F010/F011: Confirms UART status change
         string? uartMsg = null;
@@ -86,10 +88,14 @@ public class HiddenModePageViewModel : SubPageViewModelBase
 
     private void OnBaseStatusUpdate(object? sender, IBasicStatusUpdate e)
     {
-        UpdateTarget();
+        if (_previousMainConnection != e.MainConnection)
+        {
+            UpdateState();
+            _previousMainConnection = e.MainConnection;
+        }
     }
 
-    private void UpdateTarget()
+    private void UpdateState()
     {
         var host = DeviceMessageCache.Instance.BasicStatusUpdate?.MainConnection;
         if (host == DevicesInverted.L)
@@ -102,23 +108,29 @@ public class HiddenModePageViewModel : SubPageViewModelBase
             TargetHeader = string.Format(Strings.HiddenModeTarget, Strings.Right);
             TargetDescription = string.Format(Strings.HiddenModeTargetLDesc);
         }
+        
+        if(!_isInForeground)
+            return;
+        
+        // Request current UART status
+        SendHiddenMode(1);
+        SendHiddenData("F012");
     }
 
     private void OnLanguageUpdated()
     {
-        UpdateTarget();
+        UpdateState();
     }
 
     public override void OnNavigatedTo()
     {
         BluetoothImpl.Instance.Connected += OnConnected;
-
-        _isInForeground = true;
-        UpdateTarget();
         
         SendHiddenMode(1);
-        // Request current UART status
-        _ = BluetoothImpl.Instance.SendAsync(new HiddenCmdDataEncoder { CommandId = "F012" });
+
+        _isInForeground = true;
+        UpdateState();
+        
         base.OnNavigatedTo();
     }
     
@@ -150,6 +162,11 @@ public class HiddenModePageViewModel : SubPageViewModelBase
         base.OnNavigatedFrom();
     }
     
+    private async void SendHiddenData(string cmdId)
+    {
+        await BluetoothImpl.Instance.SendAsync(new HiddenCmdDataEncoder { CommandId = cmdId });
+    }
+
     private async void SendHiddenMode(int mode)
     {
         /*
