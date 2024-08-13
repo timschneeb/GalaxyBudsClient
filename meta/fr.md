@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>58%</td><td>215 missing string(s)</td></tr>
+<tr><td>54%</td><td>252 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -81,6 +81,8 @@ If the official Samsung Wearable app is active alongside this app, connection is
 <tr><td><code>cact_function_param</code></td><td>Function</td></tr>
 <tr><td><code>cact_hotkey_param</code></td><td>Hotkey</td></tr>
 <tr><td><code>cact_path_param</code></td><td>File path</td></tr>
+<tr><td><code>system_hidden_at_mode</code></td><td>Hidden system settings</td></tr>
+<tr><td><code>system_hidden_at_mode_desc</code></td><td>Edit hidden settings such as serial numbers and UART state</td></tr>
 <tr><td><code>system_usage_reports</code></td><td>Usage & metering reports</td></tr>
 <tr><td><code>system_usage_reports_desc</code></td><td>View usage reports provided by the earbuds</td></tr>
 <tr><td><code>system_battery_statistics</code></td><td>Battery statistics</td></tr>
@@ -90,6 +92,39 @@ If the official Samsung Wearable app is active alongside this app, connection is
 <tr><td><code>system_cradle_serial</code></td><td>Case serial number</td></tr>
 <tr><td><code>system_btaddr_template</code></td><td>Local address: {0}, Peer address: {1}</td></tr>
 <tr><td><code>system_sku</code></td><td>Device SKUs</td></tr>
+<tr><td><code>hidden_mode_warning</code></td><td>Proceed with caution</td></tr>
+<tr><td><code>hidden_mode_warning_desc</code></td><td>Some changes made on this page cannot be restored by a factory reset. Not all models support these settings.</td></tr>
+<tr><td><code>hidden_mode_target</code></td><td>Target device: {0} earbud</td></tr>
+<tr><td><code>hidden_mode_target_l_desc</code></td><td>To modify your left earbud, put the right earbud into the case and close it.</td></tr>
+<tr><td><code>hidden_mode_target_r_desc</code></td><td>To modify your right earbud, put the left earbud into the case and close it.</td></tr>
+<tr><td><code>hidden_mode_input_wrong_length</code></td><td>The new value must be exactly {0} characters long.</td></tr>
+<tr><td><code>hidden_mode_uart_on_confirm</code></td><td>UART has been successfully enabled</td></tr>
+<tr><td><code>hidden_mode_uart_off_confirm</code></td><td>UART has been successfully disabled</td></tr>
+<tr><td><code>hidden_mode_uart</code></td><td>Enable UART port</td></tr>
+<tr><td><code>hidden_mode_uart_desc</code></td><td>Enables the physical UART port on the PCB of the current target device for debugging purposes</td></tr>
+<tr><td><code>hidden_mode_power</code></td><td>Power menu</td></tr>
+<tr><td><code>hidden_mode_power_desc</code></td><td>Shutdown, reboot or put the current target device to sleep</td></tr>
+<tr><td><code>hidden_mode_serial_change</code></td><td>Change serial number</td></tr>
+<tr><td><code>hidden_mode_serial_change_desc</code></td><td>Changes the serial number of the current target device</td></tr>
+<tr><td><code>hidden_mode_did_change</code></td><td>Change DID number & color</td></tr>
+<tr><td><code>hidden_mode_did_change_desc</code></td><td>Changes the device model id of the current target device</td></tr>
+<tr><td><code>hidden_mode_sku_change</code></td><td>Change SKU code</td></tr>
+<tr><td><code>hidden_mode_sku_change_desc</code></td><td>Changes the product code of the current target device</td></tr>
+<tr><td><code>hidden_mode_bt_peer_addr_change</code></td><td>Change peer Bluetooth address</td></tr>
+<tr><td><code>hidden_mode_bt_peer_change_desc</code></td><td>Changes the public Bluetooth address of the current target device</td></tr>
+<tr><td><code>hidden_mode_bt_local_addr_change</code></td><td>Change local Bluetooth address</td></tr>
+<tr><td><code>hidden_mode_bt_local_change_desc</code></td><td>Changes the internal Bluetooth address of the current target device</td></tr>
+<tr><td><code>hidden_mode_terminal</code></td><td>Hidden command terminal</td></tr>
+<tr><td><code>hidden_mode_terminal_desc</code></td><td>Send custom AT commands to the current target device</td></tr>
+<tr><td><code>power_menu_hint</code></td><td>Only the current target earbud will be affected.</td></tr>
+<tr><td><code>power_menu_reboot</code></td><td>Reboot</td></tr>
+<tr><td><code>power_menu_shutdown</code></td><td>Shutdown</td></tr>
+<tr><td><code>power_menu_sleep</code></td><td>Factory sleep mode</td></tr>
+<tr><td><code>at_terminal_cmd_id</code></td><td>Command id</td></tr>
+<tr><td><code>at_terminal_cmd_param</code></td><td>Command parameter (optional)</td></tr>
+<tr><td><code>at_terminal_cmd_id_invalid</code></td><td>This command id is invalid. Please enter a 16-bit hexadecimal value, such as 0007 or 004C.</td></tr>
+<tr><td><code>at_terminal_output</code></td><td>Output</td></tr>
+<tr><td><code>at_terminal_send</code></td><td>Send</td></tr>
 <tr><td><code>usage_reports_header</code></td><td>Usage reports</td></tr>
 <tr><td><code>usage_reports_hint</code></td><td>These reports are collected by the earbuds themselves. The data is displayed as-is and may be inaccurate. The official Wearable app usually resets most counters periodically and then sends the collected data to Samsung unless you haven't consented to data collection in their app. Some counters, such as charging cycles, are not reset.</td></tr>
 <tr><td><code>usage_reports_usage</code></td><td>Usage report</td></tr>
@@ -152,6 +187,8 @@ Measure level: Select a vertical span to measure the battery level difference be
 <tr><td><code>settings_localization_description</code></td><td>Change the app language</td></tr>
 <tr><td><code>settings_realistic_earbud_icons</code></td><td>Use realistic earbud images</td></tr>
 <tr><td><code>settings_realistic_earbud_icons_description</code></td><td>Display realistic & color-aware images of your earbuds, if they support it</td></tr>
+<tr><td><code>settings_nav_sidebar</code></td><td>Navigation sidebar</td></tr>
+<tr><td><code>settings_nav_sidebar_description</code></td><td>Show or collapse the navigation buttons on the left hand side</td></tr>
 <tr><td><code>settings_tray_settings</code></td><td>Tray icon & startup</td></tr>
 <tr><td><code>settings_dyn_tray_mode</code></td><td>Dynamic tray icon</td></tr>
 <tr><td><code>settings_dyn_tray_mode_description</code></td><td>Display the battery status in the tray icon</td></tr>
