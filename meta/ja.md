@@ -198,9 +198,9 @@ If the transmission is stuck or the device disconnected prematurely, you need to
 <tr><td><code>hidden_mode_sku_change</code></td><td>Change SKU code</td></tr>
 <tr><td><code>hidden_mode_sku_change_desc</code></td><td>Changes the product code of the current target device</td></tr>
 <tr><td><code>hidden_mode_bt_peer_addr_change</code></td><td>Change peer Bluetooth address</td></tr>
-<tr><td><code>hidden_mode_bt_peer_change_desc</code></td><td>Changes the public Bluetooth address of the current target device</td></tr>
+<tr><td><code>hidden_mode_bt_peer_change_desc</code></td><td>Changes the peer Bluetooth address of the current target device</td></tr>
 <tr><td><code>hidden_mode_bt_local_addr_change</code></td><td>Change local Bluetooth address</td></tr>
-<tr><td><code>hidden_mode_bt_local_change_desc</code></td><td>Changes the internal Bluetooth address of the current target device</td></tr>
+<tr><td><code>hidden_mode_bt_local_change_desc</code></td><td>Changes the local Bluetooth address of the current target device</td></tr>
 <tr><td><code>hidden_mode_terminal</code></td><td>Hidden command terminal</td></tr>
 <tr><td><code>hidden_mode_terminal_desc</code></td><td>Send custom AT commands to the current target device</td></tr>
 <tr><td><code>power_menu_hint</code></td><td>Only the current target earbud will be affected.</td></tr>
