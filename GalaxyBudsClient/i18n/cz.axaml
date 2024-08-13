@@ -388,6 +388,8 @@ Měření úrovně: Výběrem vertikálního rozpětí změříte rozdíl úrovn
     <sys:String x:Key="settings_minimize_tray_description">Ponechat na pozadí místo ukončení aplikace</sys:String>
     <sys:String x:Key="settings_realistic_earbud_icons">Používat realistické obrázky náušníků</sys:String>
     <sys:String x:Key="settings_realistic_earbud_icons_description">Zobrazení realistických &amp; barevných obrázků sluchátek, pokud to podporují</sys:String>
+    <sys:String x:Key="settings_nav_sidebar">Boční panel navigace</sys:String>
+    <sys:String x:Key="settings_nav_sidebar_description">Zobrazit nebo skrýt navigační tlačítka na levé straně</sys:String>
     <sys:String x:Key="settings_tray_settings">Ikona sluchátek při spuštění</sys:String>
     <sys:String x:Key="settings_dyn_tray_mode">Dynamická ikona v oznamovací oblasti</sys:String>
     <sys:String x:Key="settings_dyn_tray_mode_description">Zobrazení stavu baterie na ikoně v oznamovací oblasti</sys:String>

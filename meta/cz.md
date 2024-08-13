@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>93%</td><td>37 missing string(s)</td></tr>
+<tr><td>93%</td><td>35 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -46,8 +46,6 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>at_terminal_cmd_id_invalid</code></td><td>This command id is invalid. Please enter a 16-bit hexadecimal value, such as 0007 or 004C.</td></tr>
 <tr><td><code>at_terminal_output</code></td><td>Output</td></tr>
 <tr><td><code>at_terminal_send</code></td><td>Send</td></tr>
-<tr><td><code>settings_nav_sidebar</code></td><td>Navigation sidebar</td></tr>
-<tr><td><code>settings_nav_sidebar_description</code></td><td>Show or collapse the navigation buttons on the left hand side</td></tr>
 
 </table>
 
