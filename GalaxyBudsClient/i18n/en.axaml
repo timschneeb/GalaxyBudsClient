@@ -335,9 +335,9 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="hidden_mode_sku_change">Change SKU code</sys:String>
     <sys:String x:Key="hidden_mode_sku_change_desc">Changes the product code of the current target device</sys:String>
     <sys:String x:Key="hidden_mode_bt_peer_addr_change">Change peer Bluetooth address</sys:String>
-    <sys:String x:Key="hidden_mode_bt_peer_change_desc">Changes the public Bluetooth address of the current target device</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_change_desc">Changes the peer Bluetooth address of the current target device</sys:String>
     <sys:String x:Key="hidden_mode_bt_local_addr_change">Change local Bluetooth address</sys:String>
-    <sys:String x:Key="hidden_mode_bt_local_change_desc">Changes the internal Bluetooth address of the current target device</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_change_desc">Changes the local Bluetooth address of the current target device</sys:String>
     <sys:String x:Key="hidden_mode_terminal">Hidden command terminal</sys:String>
     <sys:String x:Key="hidden_mode_terminal_desc">Send custom AT commands to the current target device</sys:String>
 
