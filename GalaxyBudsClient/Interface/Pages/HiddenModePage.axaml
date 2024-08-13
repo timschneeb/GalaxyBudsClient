@@ -24,15 +24,21 @@
                                     IsOpen="True"
                                     Severity="Warning" />
             
-            <controls:SettingsGroup>
-                <Interaction.Behaviors>
-                    <ext:RequiresConnectedDeviceBehavior />
-                </Interaction.Behaviors>
+            <Border BorderBrush="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
+                    BorderThickness="1"
+                    CornerRadius="4">
+                <controls:SettingsGroup>
+                    <Interaction.Behaviors>
+                        <ext:RequiresConnectedDeviceBehavior />
+                    </Interaction.Behaviors>
                 
-                <controls:SettingsSymbolItem Content="{Binding TargetHeader}"
-                                               Description="{Binding TargetDescription}"
-                                               Symbol="TargetArrow" />
-            </controls:SettingsGroup>
+                    <controls:SettingsSymbolItem Content="{Binding TargetHeader}"
+                                                 Description="{Binding TargetDescription}"
+                                                 Symbol="TargetArrow" />
+                </controls:SettingsGroup>
+            </Border>
+            
+
             
             <controls:SettingsGroup>
                 <Interaction.Behaviors>
