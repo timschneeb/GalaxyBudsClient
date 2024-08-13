@@ -6,7 +6,7 @@ using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
-[MessageDecoder(MsgIds.UNK_GENERIC_EVENT)]
+[MessageDecoder(MsgIds.DEBUG_EVENT)]
 public class GenericEventDecoder : BaseMessageDecoder
 {
     public Devices Device { get; }
