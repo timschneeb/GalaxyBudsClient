@@ -13,13 +13,18 @@ public class HiddenCmdDataEncoder : BaseMessageEncoder
     public string? Parameter { get; set; }
 
     public override SppMessage Encode()
-    { 
+    {
+        // Special case: DID_SET doesn't use null bytes
+        var shouldAddNull = !string.Equals(CommandId, "00AD", StringComparison.OrdinalIgnoreCase);
+        
         var command = Encoding.ASCII.GetBytes(CommandId).ToList();
         if (!string.IsNullOrEmpty(Parameter))
         {
-            command.Add(0x00);
+            if(shouldAddNull)
+                command.Add(0x00);
             command.AddRange(Encoding.ASCII.GetBytes(Parameter));
-            command.Add(0x00);
+            if(shouldAddNull)
+                command.Add(0x00);
         }
 
         Log.Verbose("HiddenCmdDataEncoder: encoded command: {Command}", Convert.ToHexString(command.ToArray()));

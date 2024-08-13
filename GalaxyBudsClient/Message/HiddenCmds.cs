@@ -1,9 +1,22 @@
 using System.Collections.Generic;
+using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Message;
 
 public static class HiddenCmds
 {
+    public static Dictionary<string, string> GetDeviceIds()
+    {
+        var dict = new Dictionary<string, string>();
+        
+        foreach (var x in DeviceIdsExtensions.GetValues())
+        {
+            dict.Add(((int)x).ToString("X6"), x.ToStringFast());
+        }
+
+        return dict;
+    }
+
     public static Dictionary<ushort, string> Commands { get; } = new()
     {
         {0x0002,"TWU_AT_CMD_ID_VER_HW_SET"},
@@ -32,8 +45,8 @@ public static class HiddenCmds
         {0x0026,"TWU_AT_CMD_ID_CAL_DATE_SET"},
         {0x0027,"TWU_AT_CMD_ID_CAL_DATE_GET"},
         {0x002E,"TWU_AT_CMD_ID_BT_ENABLE"},
-        {0x0030,"TWU_AT_CMD_ID_BT_ADDR_LOCAL_SET"},
-        {0x0031,"TWU_AT_CMD_ID_BT_ADDR_LOCAL_GET"},
+        {0x0030,"TWU_AT_CMD_ID_BT_ADDR_PEER_SET"},
+        {0x0031,"TWU_AT_CMD_ID_BT_ADDR_PEER_GET"},
         {0x0033,"TWU_AT_CMD_ID_ACC_VECTOR_SUM"},
         {0x0034,"TWU_AT_CMD_ID_LE_TX_TEST_CH0"},
         {0x0035,"TWU_AT_CMD_ID_LE_TX_TEST_CH19"},

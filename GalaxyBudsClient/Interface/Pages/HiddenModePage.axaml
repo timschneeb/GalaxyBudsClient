@@ -61,27 +61,32 @@
                 <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.HiddenModeSerialChange}}"
                                              Description="{ext:Translate {x:Static i18N:Keys.HiddenModeSerialChangeDesc}}"
                                              Symbol="ContactCardRibbon"
-                                             IsClickEnabled="True" />
-
+                                             IsClickEnabled="True"
+                                             Click="OnChangeSerialClicked"/>
+                
                 <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.HiddenModeDidChange}}"
                                              Description="{ext:Translate {x:Static i18N:Keys.HiddenModeDidChangeDesc}}"
                                              Symbol="NumberSymbol"
-                                             IsClickEnabled="True"  />
-                
+                                             IsClickEnabled="True"
+                                             Click="OnChangeDidClicked"/>
+
                 <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.HiddenModeSkuChange}}"
                                              Description="{ext:Translate {x:Static i18N:Keys.HiddenModeSkuChangeDesc}}"
                                              Symbol="Cart"
-                                             IsClickEnabled="True"  />
+                                             IsClickEnabled="True"
+                                             Click="OnChangeSkuClicked"/>
 
                 <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.HiddenModeBtPeerAddrChange}}"
                                              Description="{ext:Translate {x:Static i18N:Keys.HiddenModeBtPeerChangeDesc}}"
                                              Symbol="BluetoothSearching"
-                                             IsClickEnabled="True"  />
+                                             IsClickEnabled="True"
+                                             Click="OnChangePeerAddressClicked"/>
 
                 <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.HiddenModeBtLocalAddrChange}}"
                                              Description="{ext:Translate {x:Static i18N:Keys.HiddenModeBtLocalChangeDesc}}"
                                              Symbol="Bluetooth"
-                                             IsClickEnabled="True"  />
+                                             IsClickEnabled="True" 
+                                             Click="OnChangeLocalAddressClicked"/>
 
             </controls:SettingsGroup>
             
