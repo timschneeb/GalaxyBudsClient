@@ -325,7 +325,7 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="hidden_mode_uart_on_confirm">UART has been successfully enabled</sys:String>
     <sys:String x:Key="hidden_mode_uart_off_confirm">UART has been successfully disabled</sys:String>
     <sys:String x:Key="hidden_mode_uart">Enable UART port</sys:String>
-    <sys:String x:Key="hidden_mode_uart_desc">Enables the physical UART port on the PCB of the current target device for debugging purposes</sys:String>
+    <sys:String x:Key="hidden_mode_uart_desc">Temporarily enables the physical UART port on the PCB of the current target device for debugging purposes</sys:String>
     <sys:String x:Key="hidden_mode_power">Power menu</sys:String>
     <sys:String x:Key="hidden_mode_power_desc">Shutdown, reboot or put the current target device to sleep</sys:String>
     <sys:String x:Key="hidden_mode_serial_change">Change serial number</sys:String>
