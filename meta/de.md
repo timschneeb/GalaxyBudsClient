@@ -107,7 +107,7 @@ If the official Samsung Wearable app is active alongside this app, connection is
 <tr><td><code>hidden_mode_uart_on_confirm</code></td><td>UART has been successfully enabled</td></tr>
 <tr><td><code>hidden_mode_uart_off_confirm</code></td><td>UART has been successfully disabled</td></tr>
 <tr><td><code>hidden_mode_uart</code></td><td>Enable UART port</td></tr>
-<tr><td><code>hidden_mode_uart_desc</code></td><td>Enables the physical UART port on the PCB of the current target device for debugging purposes</td></tr>
+<tr><td><code>hidden_mode_uart_desc</code></td><td>Temporarily enables the physical UART port on the PCB of the current target device for debugging purposes</td></tr>
 <tr><td><code>hidden_mode_power</code></td><td>Power menu</td></tr>
 <tr><td><code>hidden_mode_power_desc</code></td><td>Shutdown, reboot or put the current target device to sleep</td></tr>
 <tr><td><code>hidden_mode_serial_change</code></td><td>Change serial number</td></tr>
