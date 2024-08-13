@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>98%</td><td>9 missing string(s)</td></tr>
+<tr><td>97%</td><td>11 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -16,6 +16,8 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>welcome_android_hint_title</code></td><td>Important information for Android users</td></tr>
 <tr><td><code>welcome_android_hint</code></td><td>This app was initially designed for use on desktop computers. Features that need this app to run in the background, such as custom touch actions and battery statistics, are currently unavailable in this version.
 If the official Samsung Wearable app is active alongside this app, connection issues may occur. Please make sure to close the official app properly before using this app.</td></tr>
+<tr><td><code>settings_nav_sidebar</code></td><td>Navigation sidebar</td></tr>
+<tr><td><code>settings_nav_sidebar_description</code></td><td>Show or collapse the navigation buttons on the left hand side</td></tr>
 <tr><td><code>connlost_troubleshoot</code></td><td>Troubleshoot</td></tr>
 <tr><td><code>connlost_troubleshoot_title</code></td><td>How to troubleshoot connection issues</td></tr>
 <tr><td><code>connlost_troubleshoot_content</code></td><td>Please make sure that Samsung's official Wearable app for the Galaxy Buds does not attempt to connect to your earbuds in the background.
