@@ -254,6 +254,8 @@ Pokud je vedle této aplikace aktivní oficiální aplikace Samsung Wearable, m�
     <sys:String x:Key="system_pairing_mode_desc">Odpojit sluchátka od tohoto počítače a zvýšit viditelnost pro ostatní zařízení</sys:String>
     <sys:String x:Key="system_trace_core_dump">Stáhnout výpisy trasování a jádra</sys:String>
     <sys:String x:Key="system_trace_core_dump_desc">Načíst surová ladicí data ze sluchátek</sys:String>
+    <sys:String x:Key="system_hidden_at_mode">Skryté nastavení systému</sys:String>
+    <sys:String x:Key="system_hidden_at_mode_desc">Úprava skrytého nastavení, jako jsou sériová čísla a stav UART</sys:String>
     <sys:String x:Key="system_info">Zobrazit systémové informace</sys:String>
     <sys:String x:Key="system_info_desc">Zobrazit podrobné informace o vašich sluchátkách</sys:String>
     <sys:String x:Key="system_flasher">Instalovat aktualizaci firmwaru</sys:String>
@@ -312,6 +314,44 @@ Je-li přenos zaseklý nebo se zařízení předčasně odpojilo, musíte restar
     <sys:String x:Key="coredump_dl_save_success_title">Výpisy byly úspěšně uloženy</sys:String>
     <sys:String x:Key="coredump_dl_save_success">{0} zápis(y) byly zapsány do '{1}'</sys:String>
     <sys:String x:Key="coredump_dl_save_dialog_title">Vyberte adresář ke stažení ...</sys:String>
+
+    <!-- Hidden AT modes -->
+    <sys:String x:Key="hidden_mode_warning">Postupujte s rozvahou</sys:String>
+    <sys:String x:Key="hidden_mode_warning_desc">Některé změny provedené na této stránce nelze obnovit obnovením továrního nastavení. Ne všechny modely tato nastavení podporují.</sys:String>
+    <sys:String x:Key="hidden_mode_target">Cílové zařízení: {0} sluchátko</sys:String> <!-- {0} = Left or Right -->
+    <sys:String x:Key="hidden_mode_target_l_desc">Chcete-li upravit levé sluchátko, vložte pravé sluchátko do pouzdra a zavřete jej.</sys:String>
+    <sys:String x:Key="hidden_mode_target_r_desc">Chcete-li upravit pravé sluchátko, vložte levé sluchátko do pouzdra a zavřete jej.</sys:String>
+    <sys:String x:Key="hidden_mode_input_wrong_length">Nová hodnota musí být dlouhá přesně {0} znaků.</sys:String>
+    <sys:String x:Key="hidden_mode_uart_on_confirm">UART byl úspěšně zapnut</sys:String>
+    <sys:String x:Key="hidden_mode_uart_off_confirm">UART byl úspěšně vypnut</sys:String>
+    <sys:String x:Key="hidden_mode_uart">Zapnutí portu UART</sys:String>
+    <sys:String x:Key="hidden_mode_uart_desc">Dočasně povolí fyzický port UART na desce plošných spojů aktuálního cílového zařízení pro účely ladění.</sys:String>
+    <sys:String x:Key="hidden_mode_power">Nabídka napájení</sys:String>
+    <sys:String x:Key="hidden_mode_power_desc">Vypnutí, restartování nebo uspání aktuálního cílového zařízení</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change">Změna sériového čísla</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change_desc">Změní sériové číslo aktuálního cílového zařízení</sys:String>
+    <sys:String x:Key="hidden_mode_did_change">Změna čísla DID a barvy</sys:String>
+    <sys:String x:Key="hidden_mode_did_change_desc">Změní id modelu zařízení aktuálního cílového zařízení</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change">Změna kódu SKU</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change_desc">Změní kód produktu aktuálního cílového zařízení</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_addr_change">Změna adresy Bluetooth peera</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_change_desc">Změní partnerskou adresu Bluetooth aktuálního cílového zařízení</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_addr_change">Změna místní adresy Bluetooth</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_change_desc">Změní místní adresu Bluetooth aktuálního cílového zařízení</sys:String>
+    <sys:String x:Key="hidden_mode_terminal">Skrytý příkazový řádek</sys:String>
+    <sys:String x:Key="hidden_mode_terminal_desc">Odesílání vlastních příkazů AT do aktuálního cílového zařízení</sys:String>
+
+    <sys:String x:Key="power_menu_hint">Bude ovlivněno pouze aktuální cílové sluchátko.</sys:String>
+    <sys:String x:Key="power_menu_reboot">Restartovat</sys:String>
+    <sys:String x:Key="power_menu_shutdown">Vypnout</sys:String>
+    <sys:String x:Key="power_menu_sleep">Tovární režim spánku</sys:String>
+
+    <sys:String x:Key="at_terminal_cmd_id">ID příkazu</sys:String>
+    <sys:String x:Key="at_terminal_cmd_param">Příkazový parametr (nepovinný)</sys:String>
+    <sys:String x:Key="at_terminal_cmd_id_invalid">Toto ID příkazu je neplatné. Zadejte 16bitovou hexadecimální hodnotu, například 0007 nebo 004C.</sys:String>
+    <sys:String x:Key="at_terminal_output">Výstup</sys:String>
+    <sys:String x:Key="at_terminal_send">Odeslat</sys:String>
+
 
     <!-- Usage-/metering reports -->
     <sys:String x:Key="usage_reports_header">Přehled o používání</sys:String>
