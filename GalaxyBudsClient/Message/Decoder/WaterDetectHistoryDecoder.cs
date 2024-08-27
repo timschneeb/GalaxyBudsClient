@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using GalaxyBudsClient.Generated.Model.Attributes;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
 [MessageDecoder(MsgIds.READ_WATER_DETECTION_HISTORY)]
-internal class WaterDetectHistoryDecoder : BaseMessageDecoder
+public class WaterDetectHistoryDecoder : BaseMessageDecoder
 {
     public List<(DateTime? Date, bool Detected)>? WaterDetectionHistory { get; }
     
