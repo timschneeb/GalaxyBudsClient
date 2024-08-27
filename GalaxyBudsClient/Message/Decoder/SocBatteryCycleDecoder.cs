@@ -7,18 +7,18 @@ namespace GalaxyBudsClient.Message.Decoder;
 [MessageDecoder(MsgIds.SOC_BATTERY_CYCLE)]
 internal class SocBatteryCycleDecoder : BaseMessageDecoder
 {
-    public ulong LeftCycles { get; }
-    public ulong RightCycles { get; }
+    public long LeftCycles { get; }
+    public long RightCycles { get; }
     
     public bool IsLeftBatteryBad { get; }
     public bool IsRightBatteryBad { get; }
     
     public SocBatteryCycleDecoder(SppMessage msg) : base(msg)
     {
-        LeftCycles = BitConverter.ToUInt64(msg.Payload.Take(8).Reverse().ToArray());
-        RightCycles = BitConverter.ToUInt64(msg.Payload.TakeLast(8).Reverse().ToArray());
+        LeftCycles = BitConverter.ToInt64(msg.Payload.Take(8).Reverse().ToArray()) / 10000;
+        RightCycles = BitConverter.ToInt64(msg.Payload.TakeLast(8).Reverse().ToArray()) / 10000;
         
-        IsLeftBatteryBad = LeftCycles / 10000 >= 150;
-        IsRightBatteryBad = RightCycles / 10000 >= 150;
+        IsLeftBatteryBad = LeftCycles >= 150;
+        IsRightBatteryBad = RightCycles >= 150;
     }
 }
