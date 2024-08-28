@@ -10,6 +10,6 @@
 
     <PropertyGroup>
         <!-- Global dependency versions -->
-        <AvaloniaVersion>11.1.0-rc1</AvaloniaVersion>
+        <AvaloniaVersion>11.2.0-beta1</AvaloniaVersion>
     </PropertyGroup>
 </Project>
