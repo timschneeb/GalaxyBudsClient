@@ -37,7 +37,7 @@ public static class WindowIconRenderer
 
         int? level = Settings.Data.DynamicTrayIconMode switch
         {
-            DynamicTrayIconModes.BatteryMin => Math.Min(batteryLeft, batteryLeft),
+            DynamicTrayIconModes.BatteryMin => Math.Min(batteryLeft, batteryRight),
             DynamicTrayIconModes.BatteryAvg => (batteryLeft + batteryRight) / 2,
             _ => null
         };
