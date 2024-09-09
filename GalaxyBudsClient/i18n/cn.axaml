@@ -27,6 +27,7 @@
     <sys:String x:Key="help">帮助</sys:String>
     <sys:String x:Key="important">重要</sys:String>
     <sys:String x:Key="home">主页</sys:String>
+    <sys:String x:Key="read_failed">读取文件失败，访问被拒绝。</sys:String>
     <sys:String x:Key="please_wait">请等待...</sys:String>
     <sys:String x:Key="value_left_right_inline">左：{0}，右：{1}</sys:String>
     <sys:String x:Key="value_left_right_multiline">左：{0}
@@ -36,9 +37,11 @@
     <sys:String x:Key="not_available">不可用</sys:String>
     <sys:String x:Key="last_updated_at_n">上次更新 {0}</sys:String>
     <sys:String x:Key="file_not_found">文件未找到</sys:String>
-    <sys:String x:Key="nobluetoothdev">找不到蓝牙适配器，请开启蓝牙并再次尝试</sys:String>
+    <sys:String x:Key="nobluetoothdev">找不到蓝牙适配器，请开启蓝牙并再次尝试。</sys:String>
+    <sys:String x:Key="feature_unsupported_platform">这个特性不受当前平台支持。</sys:String>
 
     <sys:String x:Key="anc">主动噪音控制</sys:String>
+    <sys:String x:Key="adaptive">自适应</sys:String>
 
     <!--Dark Mode States-->
     <sys:String x:Key="darkmode_disabled">关闭</sys:String>
@@ -156,6 +159,9 @@
     <sys:String x:Key="welcome_register_desc">选择并注册你的 Galaxy Buds</sys:String>
     <sys:String x:Key="welcome_textblock_p1">此 Galaxy Buds 管理器为非官方软件，与三星没有任何关联。
 该程序目的是提供比三星官方可穿戴设备应用程序更多的功能。某些功能（如 "游戏模式"）仅适用于三星手机，无法在电脑上启用。</sys:String>
+    <sys:String x:Key="welcome_android_hint_title">Android 用户须知</sys:String>
+    <sys:String x:Key="welcome_android_hint">此应用程序最初设计用于台式电脑。此版本目前无法提供需要此应用程序在后台运行的功能，如自定义触摸操作和电池统计。
+如果官方的 Samsung Wearable 应用程序与此应用程序同时运行，可能会出现连接问题。请确保在使用此应用程序之前正确关闭官方应用程序。</sys:String>
 
     <!--Main page-->
     <sys:String x:Key="mainpage_header">主页</sys:String>
@@ -172,9 +178,9 @@
     <!--Device selection page (setup)-->
     <sys:String x:Key="devsel_header">选择你的耳机</sys:String>
     <sys:String x:Key="devsel_manual_pair_title">是否列出了你的设备？</sys:String>
-    <sys:String x:Key="devsel_manual_pair_description">确保您的耳机已经配对。如果仍然无法识别，请尝试使用手动连接选项。</sys:String>
+    <sys:String x:Key="devsel_manual_pair_description">确保你的耳机已经配对。如果仍然无法识别，请尝试使用手动连接选项。</sys:String>
     <sys:String x:Key="devsel_manual_pair">手动连接</sys:String>
-    <sys:String x:Key="devsel_nodevices">请先连接并配对你的 Buds 设备</sys:String>
+    <sys:String x:Key="devsel_nodevices">请先连接并且佩戴好你的耳机</sys:String>
     <sys:String x:Key="devsel_nodevices_title">未找到配对设备</sys:String>
     <sys:String x:Key="devsel_invalid_selection">请选择一个可用的设备</sys:String>
     <sys:String x:Key="devsel_winrt_title">使用另一个蓝牙后端</sys:String>
@@ -188,7 +194,7 @@
     <sys:String x:Key="devices_select_active">已选择</sys:String>
     <sys:String x:Key="devices_delete">删除</sys:String>
     <sys:String x:Key="devices_delete_long">删除设备</sys:String>
-    <sys:String x:Key="devices_delete_confirmation">你确定你想删除这个设备？</sys:String>
+    <sys:String x:Key="devices_delete_confirmation">你确定要删除该设备？</sys:String>
     <sys:String x:Key="devices_settings_link">管理已配对设备</sys:String>
     <sys:String x:Key="devices_settings_link_desc">添加，更改或者选择主要设备</sys:String>
     
@@ -247,6 +253,8 @@
     <sys:String x:Key="system_pairing_mode_desc">断开耳机与该设备的连接并使其对其他设备可见</sys:String>
     <sys:String x:Key="system_trace_core_dump">获取跟踪数据</sys:String>
     <sys:String x:Key="system_trace_core_dump_desc">从耳机下载原始调试数据</sys:String>
+    <sys:String x:Key="system_hidden_at_mode">隐藏系统设置</sys:String>
+    <sys:String x:Key="system_hidden_at_mode_desc">隐藏序列号或者 UART 状态等设置</sys:String>
     <sys:String x:Key="system_info">查看系统信息</sys:String>
     <sys:String x:Key="system_info_desc">显示耳机的详细信息</sys:String>
     <sys:String x:Key="system_flasher">安装固件更新</sys:String>
@@ -256,7 +264,7 @@
     <sys:String x:Key="system_usage_reports">使用情况 &amp; 计量报告</sys:String>
     <sys:String x:Key="system_usage_reports_desc">查看耳机提供的使用报告</sys:String>
     <sys:String x:Key="system_battery_statistics">电池统计</sys:String>
-    <sys:String x:Key="system_battery_statistics_desc">收集 &amp; 数据；查看电池使用统计</sys:String>
+    <sys:String x:Key="system_battery_statistics_desc">收集 &amp; 查看电池使用统计</sys:String>
 
     <sys:String x:Key="system_battery_type_unknown">未指定</sys:String>
     <sys:String x:Key="system_waiting_for_device">等待回应...</sys:String>
@@ -306,6 +314,44 @@
     <sys:String x:Key="coredump_dl_save_success">{0} 项数据保存至 '{1}'</sys:String>
     <sys:String x:Key="coredump_dl_save_dialog_title">选择保存目录...</sys:String>
 
+    <!-- Hidden AT modes -->
+    <sys:String x:Key="hidden_mode_warning">谨慎行事</sys:String>
+    <sys:String x:Key="hidden_mode_warning_desc">出厂重置无法还原本页面上的某些更改。并非所有型号都支持这些设置。</sys:String>
+    <sys:String x:Key="hidden_mode_target">目标设备：{0}侧</sys:String> <!-- {0} = Left or Right -->
+    <sys:String x:Key="hidden_mode_target_l_desc">要更改左侧，请将右侧放入耳机盒并合上。</sys:String>
+    <sys:String x:Key="hidden_mode_target_r_desc">要更改右侧，请将左侧放入耳机盒并合上。</sys:String>
+    <sys:String x:Key="hidden_mode_input_wrong_length">新名字必须正好 {0} 个字符长度。</sys:String>
+    <sys:String x:Key="hidden_mode_uart_on_confirm">UART 被成功开启</sys:String>
+    <sys:String x:Key="hidden_mode_uart_off_confirm">UART 被成功关闭</sys:String>
+    <sys:String x:Key="hidden_mode_uart">启动 UART 端口</sys:String>
+    <sys:String x:Key="hidden_mode_uart_desc">为调试目的临时启用当前目标设备 PCB 上的物理 UART 端口</sys:String>
+    <sys:String x:Key="hidden_mode_power">电源菜单</sys:String>
+    <sys:String x:Key="hidden_mode_power_desc">关闭、重启或休眠当前目标设备</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change">更改序列号</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change_desc">更改当前目标设备的序列号</sys:String>
+    <sys:String x:Key="hidden_mode_did_change">更改 DID 值 &amp; 颜色</sys:String>
+    <sys:String x:Key="hidden_mode_did_change_desc">更改当前目标设备的设备模型标识</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change">更改 SKU 号</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change_desc">更改当前目标设备的产品号</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_addr_change">更改蓝牙 peer 地址</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_change_desc">更改当前目标蓝牙设备的 peer 地址</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_addr_change">更改本地蓝牙地址</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_change_desc">更改当前目标设备的本地蓝牙地址</sys:String>
+    <sys:String x:Key="hidden_mode_terminal">隐藏命令终端</sys:String>
+    <sys:String x:Key="hidden_mode_terminal_desc">向当前目标设备发送自定义 AT 命令</sys:String>
+
+    <sys:String x:Key="power_menu_hint">只有当前目标耳机会受到影响。</sys:String>
+    <sys:String x:Key="power_menu_reboot">重启</sys:String>
+    <sys:String x:Key="power_menu_shutdown">关机</sys:String>
+    <sys:String x:Key="power_menu_sleep">工厂睡眠模式</sys:String>
+    
+    <sys:String x:Key="at_terminal_cmd_id">命令 id</sys:String>
+    <sys:String x:Key="at_terminal_cmd_param">命令参数（可选）</sys:String>
+    <sys:String x:Key="at_terminal_cmd_id_invalid">此命令 id 无效。请输入 16 位十六进制值，如 0007 或 004C。</sys:String>
+    <sys:String x:Key="at_terminal_output">输出</sys:String>
+    <sys:String x:Key="at_terminal_send">发送</sys:String>
+
+    
     <!-- Usage-/metering reports -->
     <sys:String x:Key="usage_reports_header">使用报告</sys:String>
     <sys:String x:Key="usage_reports_hint">这些报告由耳机本身收集。数据是按原样显示的，可能不准确。官方 Wearable 应用程序通常会定期重置大多数计数器，然后将收集到的数据发送给三星，除非你没有同意在其应用程序中收集数据。某些计数器（如充电周期）不会被重置。</sys:String>
@@ -317,7 +363,7 @@
     <sys:String x:Key="metering_esco_time">童话时常（eSCO）</sys:String>
 
     <!-- Battery history -->
-    <sys:String x:Key="batt_hist_hint">此应用程序可收集电池电量和一段时间内的基本使用数据，以便您分析电池消耗情况。只有当此应用程序在后台激活，且您的耳机连接到此设备时，才能收集数据。</sys:String>
+    <sys:String x:Key="batt_hist_hint">此应用程序可收集电池电量和一段时间内的基本使用数据，以便你分析电池消耗情况。只有当此应用程序在后台激活，且你的耳机连接到此设备时，才能收集数据。</sys:String>
     <sys:String x:Key="batt_hist_no_data_title">没有足够数据</sys:String>
     <sys:String x:Key="batt_hist_no_data">请在以后收集到足够的数据后再来查看，或调整显示的时间范围。</sys:String>
     <sys:String x:Key="batt_hist_y_axis">电量（%）</sys:String>
@@ -347,7 +393,7 @@
 
 将鼠标悬停在 X 轴或 Y 轴上，然后滚动以仅水平或垂直缩放。例如，在 X 轴（时间）上滚动可拉伸或缩小 X 轴。</sys:String>
     <sys:String x:Key="batt_hist_overlay_tip_title">叠加</sys:String>
-    <sys:String x:Key="batt_hist_overlay_tip">您可以使用叠加功能为绘图添加更多背景信息。
+    <sys:String x:Key="batt_hist_overlay_tip">你可以使用叠加功能为绘图添加更多背景信息。
 
 噪声控制： 显示启用或禁用了哪些噪音控制。
 
@@ -355,7 +401,7 @@
 
 主设备： 显示哪个耳机与电脑进行蓝牙连接。
         
-在查看较大的时间范围时，叠加数据可能难以理解。将鼠标悬停在 X 轴上并向上滚动，可放大到您要查看的特定时间范围，以获得更好的视觉效果。</sys:String>
+在查看较大的时间范围时，叠加数据可能难以理解。将鼠标悬停在 X 轴上并向上滚动，可放大到你要查看的特定时间范围，以获得更好的视觉效果。</sys:String>
     <sys:String x:Key="batt_hist_tools_tip_title">工具</sys:String>
     <sys:String x:Key="batt_hist_tools_tip">平移 &amp; 放大：默认模式。通过平移和缩放在地块周围导航。
         
@@ -381,6 +427,8 @@
     <sys:String x:Key="settings_minimize_tray_description">在后台保持运行而不是结束程序</sys:String>
     <sys:String x:Key="settings_realistic_earbud_icons">使用真实的耳机图像</sys:String>
     <sys:String x:Key="settings_realistic_earbud_icons_description">更真实的显示 &amp; 如果支持，根据感知自动选择图像</sys:String>
+    <sys:String x:Key="settings_nav_sidebar">导航侧栏</sys:String>
+    <sys:String x:Key="settings_nav_sidebar_description">显示或折叠左侧的导航按钮</sys:String>
     <sys:String x:Key="settings_tray_settings">托盘图标 &amp; 开机启动</sys:String>
     <sys:String x:Key="settings_dyn_tray_mode">动态托盘图标</sys:String>
     <sys:String x:Key="settings_dyn_tray_mode_description">在托盘图标上显示电池状态</sys:String>
@@ -414,7 +462,7 @@
 
     <!--Factory reset-->
     <sys:String x:Key="factory_header">恢复出厂设置</sys:String>
-    <sys:String x:Key="factory_confirmation">您确定要将耳机重置为出厂设置吗？
+    <sys:String x:Key="factory_confirmation">你确定要将耳机重置为出厂设置吗？
 这将删除耳机中的所有数据和设置。
 
 继续之前，请确保两只耳机都已打开。</sys:String>
@@ -539,7 +587,7 @@
     <sys:String x:Key="bixby_remap_action_desc">定义在此设备上激活 Bixby 时应发生的情况</sys:String>
     <sys:String x:Key="bixby_remap_note">说 '嗨 Bixby!' 以执行动作。在不同的语言设置上激活短语可能不同。
 
-重新设定的配置只在本设备上生效。如果你连接到三星手机，语音唤醒会正常启动 Bixby。在非三星手机及本设备外，这个功能不会触发任何行为。</sys:String>
+重新设定的配置只在此设备上生效。如果你连接到三星手机，语音唤醒会正常启动 Bixby。在非三星手机及此设备外，这个功能不会触发任何行为。</sys:String>
 
 
     <!--Credits-->
@@ -558,6 +606,19 @@
     <sys:String x:Key="connlost_header">无法建立连接</sys:String>
     <sys:String x:Key="connlost_connect">连接</sys:String>
     <sys:String x:Key="connlost_connecting">连接中...</sys:String>
+    <sys:String x:Key="connlost_troubleshoot">疑难解答</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_title">如何排除连接故障</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_content">请确保 Galaxy Buds 的三星官方可穿戴设备应用程序不会试图在后台连接到你的耳机。
+否则，你将频繁遇到连接丢失问题，因为他们的应用程序会反复尝试获得对耳机的控制权。
+
+你可以选择以下解决方案之一来解决这个问题：
+
+- 从 Wearable 应用程序中取消耳塞配对。(在 Wearable 应用程序中，打开汉堡菜单，选择 “管理设备”，然后从列表中删除耳机）。
+
+- 彻底卸载三星 Wearable 应用程序的 Galaxy Buds 插件。
+
+- 使用 “Hail” 或 “Ice Box” 等应用程序暂时冻结三星 Wearable 应用程序的 Galaxy Buds 官方插件，防止其运行。
+    </sys:String>
 
     <!-- Pairing mode -->
     <sys:String x:Key="connlost_disconnected">设备取消连接</sys:String>
@@ -565,7 +626,7 @@
 
     <!--Firmware update disclaimer-->
     <sys:String x:Key="fw_disclaimer">免责声明</sys:String>
-    <sys:String x:Key="fw_disclaimer_desc">此固件更新工具是三星官方 Android 应用中更新程序的准确复制品。我已经彻底测试了在各种情况下的实现（正常操作、连接丢失、故意损坏蓝牙包，...）没有发生任何问题。尽管如此，如果出现任何问题，我不会承担任何责任，因为固件更新修改了重要的系统组件，应始终谨慎处理。
+    <sys:String x:Key="fw_disclaimer_desc">此固件更新工具是三星官方 Android 应用中更新程序的准确复制品。我已经彻底测试了在各种情况下的实现（正常操作、连接丢失、故意损坏蓝牙包，...）没有发生任何问题。尽管如此，如果出现任何问题，我不会承担任何责任，因为固件更新更改了重要的系统组件，应始终谨慎处理。
 
 降级：虽然降级到旧的固件版本是可能的，而且我从来没有遇到过这样的问题，但它可能会引起意想不到的问题，只有在必要时才可以进行。建议在降级后进行工厂重置，但通常没有必要。
 自定义固件：你也可以从你的硬盘上加载固件文件。不要把为其他型号设计的固件二进制文件写入到你的设备上。
@@ -591,7 +652,7 @@
     <sys:String x:Key="fw_select_verify_fail">固件验证失败</sys:String>
     <sys:String x:Key="fw_select_verify_model_mismatch_fail">检测到设备型号不匹配！固件传输已取消。
 
-您正试图将 {0} 的固件写入到您的 {1} 上。这会导致耳机永久损坏。</sys:String>
+你正试图将 {0} 的固件写入到你的 {1} 上。这会导致耳机永久损坏。</sys:String>
     <sys:String x:Key="fw_select_confirm">你终止了在你的 '{1}' 上写入 '{0}'</sys:String>
     <sys:String x:Key="fw_select_confirm_desc">确保这些信息是正确的，否则请按 '取消' 并仔细检查你的设置。
 
@@ -658,12 +719,14 @@
     <!--Rename-->
     <sys:String x:Key="rename">重命名耳机</sys:String>
     <sys:String x:Key="rename_desc">这将会在所有设备上重命名耳机</sys:String>
-    <sys:String x:Key="rename_warn">可能无法使用官方应用程序重命名耳机，因为它们仅限于三星手机，这意味着您可能需要使用此应用程序来重置个性化名字。在取消配对并重新配对耳机之前，设备可能无法检测到名字的更改。</sys:String>
+    <sys:String x:Key="rename_warn">可能无法使用官方应用程序重命名耳机，因为它们仅限于三星手机，这意味着你可能需要使用此应用程序来重置个性化名字。在取消配对并重新配对耳机之前，设备可能无法检测到名字的更改。</sys:String>
+    <sys:String x:Key="rename_warn_oneui_title">OneUI 用户须知</sys:String>
+    <sys:String x:Key="rename_warn_oneui">如果你的设备运行的是三星 OneUI，则应使用三星官方方法在系统设置中重新命名耳机。否则，在设置新名称时会出现连接问题。</sys:String>
     <sys:String x:Key="rename_too_short">你输入的名字太短（无字符）或太长（耳机规定的最大限制）。</sys:String>
     <sys:String x:Key="rename_hint">输入新名字...</sys:String>
     <sys:String x:Key="rename_label">新设备名</sys:String>
     <sys:String x:Key="rename_reading_name">读取当前名字...</sys:String>
     <sys:String x:Key="rename_ok_title">耳机已重命名</sys:String>
     <sys:String x:Key="rename_ok">成功为耳机重命名！
-在取消配对并重新配对耳机之前，设备（包括本设备）可能无法检测到名字更改。</sys:String>
+在取消配对并重新配对耳机之前，设备（包括此设备）可能无法检测到名字更改。</sys:String>
 </ResourceDictionary>
