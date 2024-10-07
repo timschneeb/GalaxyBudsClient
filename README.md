@@ -175,6 +175,10 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@domroaft](https://github.com/domroaft) - Hungarian translation
 * [@lampi8426](https://github.com/lampi8426) - Dutch translation
 
+### Services
+
+* [Cloudflare](https://www.cloudflare.com/) - Secures the backend APIs of GalaxyBudsClient and provided a Pro license 
+
 ### Assets
 * Earbud asset used in the Android icon created by [Archival](https://www.flaticon.com/authors/archival) from [Flaticon](https://www.flaticon.com/)
 
