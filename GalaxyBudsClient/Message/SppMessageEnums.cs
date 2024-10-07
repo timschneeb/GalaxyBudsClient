@@ -114,7 +114,7 @@ public enum MsgIds
     UNKNOWN_84 = 84,
     UNKNOWN_85 = 85,
     RFTESTMODE = 86,
-    UNKNOWN_87 = 87,
+    STATUS_ALERT = 87, // Buds3Pro: sent, if water is detected and charging is stopped
     UNKNOWN_88 = 88,
     UNKNOWN_89 = 89,
     UNKNOWN_90 = 90,
