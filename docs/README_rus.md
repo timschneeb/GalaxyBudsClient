@@ -31,7 +31,8 @@
 </p>
 
 <p align="center">
-    <a href="https://ko-fi.com/H2H83E5J3"><img alt="Скриншот" src="https://ko-fi.com/img/githubbutton_sm.svg"></a>
+  <span><a href="https://ko-fi.com/H2H83E5J3"><img alt="Скриншот" src="https://ko-fi.com/img/githubbutton_sm.svg"></a>
+  <a href="#"><img alt="Скриншот" src="https://github.com/timschneeb/GalaxyBudsClient/blob/master/screenshots/app_dark.png"></a></span>
 </p>
 
 <p align="center">
@@ -55,7 +56,7 @@
 
 Доступны несколько пакетов для Linux:
 * [Flatpak (для всех дистрибутивов Linux)](#flatpak)
-* [Пакет AUR (для Arch Linux)](#AUR)
+* [Пакет AUR (для Arch Linux)](#aur)
 
 Загрузите исполняемые файлы для Windows в разделе [релизов](https://github.com/ThePBone/GalaxyBudsClient/releases). Пожалуйста, прочитайте примечания к релизу перед установкой:
 <p align="center">
