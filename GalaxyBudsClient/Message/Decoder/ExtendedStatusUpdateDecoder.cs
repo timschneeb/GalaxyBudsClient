@@ -5,6 +5,7 @@ using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Utils;
+using Serilog;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
@@ -81,14 +82,18 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
     public bool NoiseControlTouchAnc { init; get; }
     [Device(Models.BudsPro, Selector.GreaterEqual)]
     public bool NoiseControlTouchAmbient { init; get; }
+    [Device(Models.Buds3, Selector.GreaterEqual)]
+    public bool NoiseControlTouchAdaptive { init; get; }
+
         
-        
-    [Device(Models.Buds2, Selector.GreaterEqual)]
+    [Device(Models.BudsPro, Selector.GreaterEqual)]
     public bool NoiseControlTouchLeftOff { init; get; }
-    [Device(Models.Buds2, Selector.GreaterEqual)]
+    [Device(Models.BudsPro, Selector.GreaterEqual)]
     public bool NoiseControlTouchLeftAnc { init; get; }
-    [Device(Models.Buds2, Selector.GreaterEqual)]
+    [Device(Models.BudsPro, Selector.GreaterEqual)]
     public bool NoiseControlTouchLeftAmbient { init; get; }
+    [Device(Models.Buds3, Selector.GreaterEqual)]
+    public bool NoiseControlTouchLeftAdaptive { init; get; }
         
         
     [Device(Models.BudsPro, Selector.GreaterEqual)]
@@ -121,6 +126,8 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
     public bool DoubleTapForCallOn { init; get; }
     [Device(Models.Buds2, Selector.GreaterEqual)]
     public bool TouchHoldOnForCallOn { init; get; }
+    [Device(Models.Buds3, Selector.GreaterEqual)]
+    public bool SwipeOn { init; get; }
 
     [Device(Models.Buds2, Selector.GreaterEqual)]
     public byte TouchType { init; get; }
@@ -162,6 +169,26 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
     public bool SpatialAudioHeadTracking { init; get; }
     [Device(Models.Buds2Pro, Selector.GreaterEqual)]
     public bool AutoAdjustSound { init; get; }
+    [Device(Models.Buds3, Selector.GreaterEqual)]
+    public bool AutoPauseResume { init; get; }
+    [Device(Models.Buds3, Selector.GreaterEqual)]
+    public bool HotCommandEnabled { get; init; }
+    [Device(Models.Buds3, Selector.GreaterEqual)]
+    public byte HotCommandLanguage { get; init; }
+    [Device(Models.Buds3, Selector.GreaterEqual)]
+    public string? HotCommandVersion { get; init; }
+    [Device(Models.Buds3, Selector.GreaterEqual)]
+    public byte PeqMod { get; init; }
+    [Device(Models.Buds3, Selector.GreaterEqual)]
+    public bool AdaptiveVolumeEnabled { get; init; }
+    [Device(Models.Buds3, Selector.GreaterEqual)]
+    public bool AdaptSoundEnabled { get; init; }
+    [Device(Models.Buds3Pro, Selector.GreaterEqual)]
+    public byte LightingControl { get; init; }
+    [Device(Models.Buds3Pro, Selector.GreaterEqual)]
+    public byte DoublePinchAndHoldAdvanced { get; init; }
+    [Device(Models.Buds3Pro, Selector.GreaterEqual)]
+    public bool SirenDetect { get; init; }
     
     /// <remarks>
     /// Important: The parameterless constructor must only be used for unit tests
@@ -314,6 +341,11 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                         TouchHoldOnForCallOn = (msg.Payload[10] & (1 << 5)) == 32;
                         DoubleTapForCallOn = (msg.Payload[10] & (1 << 4)) == 16;
                     }
+                    
+                    if (DeviceSpec.Supports(Features.AdvancedTouchLockSwipe))
+                    {
+                        SwipeOn = (msg.Payload[10] & (1 << 6)) == 64;
+                    }
                 }
 
                 TouchpadOptionL = DeviceSpec.TouchMap.FromByte((byte)((msg.Payload[11] & 240) >> 4));
@@ -371,15 +403,30 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                 }
                 else // >= BudsPro
                 {
-                    NoiseControlTouchOff = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 0) == 1;
-                    NoiseControlTouchAmbient = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 1) == 2;
-                    NoiseControlTouchAnc = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 2) == 4;
-
-                    if (DeviceSpec.Supports(Features.NoiseControlModeDualSide)) // >= BudsPro
+                    if(DeviceSpec.Supports(Features.NoiseControlAdaptive))
                     {
-                        NoiseControlTouchLeftOff = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 4) == 16;
-                        NoiseControlTouchLeftAmbient = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 5) == 32;
-                        NoiseControlTouchLeftAnc = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 6) == 64;
+                        // >= Buds3
+                        NoiseControlTouchAmbient = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 0) == 1;
+                        NoiseControlTouchAdaptive = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 1) == 2;
+                        NoiseControlTouchOff = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 2) == 4;
+                        NoiseControlTouchAnc = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 3) == 8;
+                        NoiseControlTouchLeftAmbient = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 4) == 16;
+                        NoiseControlTouchLeftAdaptive = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 5) == 32;
+                        NoiseControlTouchLeftOff = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 6) == 64;
+                        NoiseControlTouchLeftAnc = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 7) == 128;
+                    }
+                    else
+                    {
+                        NoiseControlTouchOff = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 0) == 1;
+                        NoiseControlTouchAmbient = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 1) == 2;
+                        NoiseControlTouchAnc = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 2) == 4;
+
+                        if (DeviceSpec.Supports(Features.NoiseControlModeDualSide)) // >= BudsPro
+                        {
+                            NoiseControlTouchLeftOff = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 4) == 16;
+                            NoiseControlTouchLeftAmbient = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 5) == 32;
+                            NoiseControlTouchLeftAnc = ByteArrayUtils.ValueOfBinaryDigit(msg.Payload[21], 6) == 64;
+                        } 
                     }
                     
                     if (TargetModel == Models.BudsPro && Revision < 3)
@@ -551,7 +598,7 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                                 ExtraHighAmbientEnabled = reader.ReadBoolean();
                         }
                     }
-                    else if (TargetModel == Models.BudsFe)
+                    else // >= BudsFE
                     {
                         HearingEnhancements = msg.Payload[25];
 
@@ -579,23 +626,96 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                         CustomizeNoiseReductionLevel = reader.ReadByte();
                         NeckStretchCalibration = reader.ReadBoolean();
                         BixbyKeyword = reader.ReadByte();
-                        HearingTestValue = reader.ReadByte();
+                        HearingTestValue = reader.ReadByte(); // also called noiseReductionAmplify (Buds3Pro)
                         AutoAdjustSound = HearingTestValue is not (0 or 1);
 
-                        _ = reader.ReadByte(); // Unused amplifyAmbientSound value
-                        SpatialAudioHeadTracking = reader.ReadBoolean();
+                        if (TargetModel == Models.BudsFe)
+                        {
+                            _ = reader.ReadByte(); // Unused amplifyAmbientSound value
+                            SpatialAudioHeadTracking = reader.ReadBoolean();
 
-                        var chargingStatus = reader.ReadByte();
-                        IsLeftCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 4) == 16;
-                        IsRightCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 2) == 4;
-                        IsCaseCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 0) == 1;
+                            var chargingStatus = reader.ReadByte();
+                            IsLeftCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 4) == 16;
+                            IsRightCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 2) == 4;
+                            IsCaseCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 0) == 1;
+                        }
+                        else // >= Buds3
+                        {
+                            SpatialAudioHeadTracking = reader.ReadBoolean();
+                            
+                            var chargingStatus = reader.ReadByte();
+                            IsLeftCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 4) == 16;
+                            IsRightCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 2) == 4;
+                            IsCaseCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 0) == 1;
+
+                            ExtraClearCallSound = reader.ReadBoolean();
+                            if(reader.PeekChar() != -1)
+                                ExtraHighAmbientEnabled = reader.ReadBoolean();
+                            if(reader.PeekChar() != -1)
+                                AutoPauseResume = reader.ReadBoolean();
+                            
+                            try {
+                                HotCommandEnabled = reader.ReadBoolean();
+                                HotCommandLanguage = reader.ReadByte();
+                                PeqMod = reader.ReadByte();
+                                AdaptiveVolumeEnabled = reader.ReadBoolean();
+                            } catch (EndOfStreamException ex) {
+                                Log.Warning(ex, "Revision 1 is only partially supported");
+                            }
+           
+                            if (TargetModel == Models.Buds3)
+                            {
+                                try
+                                {
+                                    AdaptSoundEnabled = reader.ReadBoolean();
+                                }
+                                catch (EndOfStreamException ex)
+                                {
+                                    Log.Warning(ex, "Revision 1 is only partially supported");
+                                }
+
+                                if (DeviceSpec.Supports(Features.HotCommandLanguageUpdate)) 
+                                {
+                                    try 
+                                    {
+                                        HotCommandVersion = $"{reader.ReadByte()}.{reader.ReadByte()}.{reader.ReadByte()}";
+                                    }
+                                    catch (EndOfStreamException ex) {
+                                        Log.Warning(ex, "Failed to read version of hot command");
+                                    }
+                                }
+                            }
+                            else // >= Buds3 Pro
+                            {
+                                try
+                                {
+                                    LightingControl = reader.ReadByte();
+                                    DoublePinchAndHoldAdvanced = reader.ReadByte();
+                                    SirenDetect = reader.ReadBoolean();
+                                    AdaptSoundEnabled = reader.ReadBoolean();
+                                }
+                                catch (EndOfStreamException ex)
+                                {
+                                    Log.Warning(ex, "Revision 1 is only partially supported");
+                                }
+
+                                if (DeviceSpec.Supports(Features.HotCommandLanguageUpdate))
+                                {
+                                    try 
+                                    {
+                                        HotCommandVersion = $"{reader.ReadByte()}.{reader.ReadByte()}.{reader.ReadByte()}";
+                                    } catch (EndOfStreamException ex) {
+                                        Log.Warning(ex, "Failed to read version of hot command");
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
         
-        // TODO Buds3/Buds3 Pro support not yet implemented
-        
+ 
         if (DeviceSpec.Supports(Features.ChargingState, Revision))
         {
             if(IsLeftCharging)

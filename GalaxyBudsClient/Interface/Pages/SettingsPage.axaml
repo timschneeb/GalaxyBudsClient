@@ -22,7 +22,7 @@
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
             <DockPanel>
-                <Image Source="/Resources/icon.ico"
+                <Image Source="{OnPlatform '/Resources/icon.ico', Android='/Resources/Android/Orange/android/res/mipmap-xxxhdpi/ic_launcher.png'}"
                        DockPanel.Dock="Left"
                        Height="78"
                        RenderOptions.BitmapInterpolationMode="HighQuality" />
@@ -72,6 +72,7 @@
                                                ItemsSource="{Binding ., Source={ext:ThemesBindingSource}}"
                                                SelectedValue="{Binding Theme, Source={x:Static config:Settings.Data}}">
                     <Interaction.Behaviors>
+                        <ext:RequiresDesktopBehavior />
                         <ext:LocalizationAwareComboBoxBehavior />
                     </Interaction.Behaviors>
                 </controls:SettingsComboBoxItem>
@@ -83,7 +84,11 @@
                     Symbol="Blur"
                     Maximum="255"
                     IsEnabled="{Binding Theme, Source={x:Static config:Settings.Data}, Converter={x:Static converters:FuncConverters.IsBlurDarkModeSet}}"
-                    Value="{Binding BlurStrength, Source={x:Static config:Settings.Data}}" />
+                    Value="{Binding BlurStrength, Source={x:Static config:Settings.Data}}">
+                    <Interaction.Behaviors>
+                        <ext:RequiresDesktopBehavior />
+                    </Interaction.Behaviors>
+                </controls:SettingsSliderItem>
 
                 <controls:SettingsColorItem Name="AppAccent"
                                             Content="{ext:Translate {x:Static i18N:Keys.SettingsAccent}}"
@@ -102,6 +107,11 @@
                                              Description="{ext:Translate {x:Static i18N:Keys.SettingsRealisticEarbudIconsDescription}}"
                                              Symbol="ImageSparkle"
                                              IsChecked="{Binding RealisticEarbudImages, Source={x:Static config:Settings.Data}}" />
+
+                <controls:SettingsSwitchItem Content="{ext:Translate {x:Static i18N:Keys.SettingsNavSidebar}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.SettingsNavSidebarDescription}}"
+                                             Symbol="LayoutColumnOneThirdLeft"
+                                             IsChecked="{Binding ShowSidebar, Source={x:Static config:Settings.Data}}" />
 
             </ui:SettingsExpander>
 
@@ -147,6 +157,10 @@
                     <ic:SymbolIconSource Symbol="Badge" />
                 </ui:SettingsExpander.IconSource>
 
+                <Interaction.Behaviors>
+                    <ext:RequiresDesktopBehavior />
+                </Interaction.Behaviors>
+                
                 <controls:SettingsSwitchItem
                     Content="{ext:Translate {x:Static i18N:Keys.SettingsCpopupEnable}}"
                     Description="{ext:Translate {x:Static i18N:Keys.SettingsCpopupEnableDescription}}"
@@ -186,11 +200,15 @@
                 <ui:SettingsExpander.IconSource>
                     <ic:SymbolIconSource Symbol="Lightbulb" />
                 </ui:SettingsExpander.IconSource>
-
+                
                 <controls:SettingsSwitchItem
                     Content="{ext:Translate {x:Static i18N:Keys.SettingsCrowdAllow}}"
                     Description="{ext:Translate {x:Static i18N:Keys.SettingsCrowdAllowDescription}}"
-                    IsChecked="{Binding !ExperimentsDisabled, Source={x:Static config:Settings.Data}}" />
+                    IsChecked="{Binding !ExperimentsDisabled, Source={x:Static config:Settings.Data}}">
+                    <Interaction.Behaviors>
+                        <ext:RequiresDesktopBehavior />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
 
                 <controls:SettingsSwitchItem
                     Content="{ext:Translate {x:Static i18N:Keys.SettingsCrowdCrashreport}}"
@@ -228,11 +246,15 @@
                                  Description="{ext:Translate {x:Static i18N:Keys.SettingsDevmodeDescription}}"
                                  ActionIconSource="Open"
                                  IsClickEnabled="True">
+                <Interaction.Behaviors>
+                    <ext:RequiresDesktopBehavior />
+                </Interaction.Behaviors>
+                
                 <ui:SettingsExpander.IconSource>
                     <ic:SymbolIconSource Symbol="Beaker" />
                 </ui:SettingsExpander.IconSource>
             </ui:SettingsExpander>
-
+            
             <ui:SettingsExpander Header="{ext:Translate {x:Static i18N:Keys.CreditsSponsor}}"
                                  Description="{ext:Translate {x:Static i18N:Keys.CreditsKofi}}"
                                  ActionIconSource="Open"

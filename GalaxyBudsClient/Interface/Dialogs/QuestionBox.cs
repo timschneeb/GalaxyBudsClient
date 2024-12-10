@@ -12,7 +12,7 @@ public class QuestionBox
     public string ButtonText { get; init; } = Strings.Okay;
     public string CloseButtonText { get; init; } = Strings.Cancel;
 
-    public async Task<bool> ShowAsync(Window? host = null)
+    public async Task<bool> ShowAsync(TopLevel? host = null)
     {
         var cd = new ContentDialog
         {
@@ -23,7 +23,7 @@ public class QuestionBox
             DefaultButton = ContentDialogButton.Primary
         };
 
-        var result = await cd.ShowAsync(host ?? MainWindow.Instance);
+        var result = await cd.ShowAsync(host ?? TopLevel.GetTopLevel(MainView.Instance));
         return result == ContentDialogResult.Primary;
     }
 }

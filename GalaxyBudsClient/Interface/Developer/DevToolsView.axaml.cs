@@ -1,0 +1,285 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Threading.Tasks;
+using Avalonia.Controls;
+using Avalonia.Interactivity;
+using Avalonia.Media;
+using Avalonia.Platform.Storage;
+using Avalonia.Threading;
+using AvaloniaHex.Document;
+using DynamicData;
+using GalaxyBudsClient.Interface.Dialogs;
+using GalaxyBudsClient.Interface.ViewModels.Developer;
+using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Config;
+using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Utils;
+using GalaxyBudsClient.Utils.Extensions;
+
+namespace GalaxyBudsClient.Interface.Developer;
+
+public partial class DevToolsView : UserControl
+{
+    private readonly List<FilePickerFileType> _filters =
+    [
+        new FilePickerFileType("Hex dump") { Patterns = new List<string> { "*.bin", "*.hex" } },
+        new FilePickerFileType("All files") { Patterns = new List<string> { "*" } }
+    ];
+    
+    private DevToolsViewModel ViewModel => (DevToolsViewModel)DataContext!;
+        
+    public DevToolsView()
+    {
+        InitializeComponent();
+
+        var monoFonts = new FontFamily(null, $"{Program.AvaresUrl}/Resources/Fonts/RobotoMono-Regular.ttf#Roboto Mono,Consolas,Hack,Monospace,monospace");
+        HexEditor.FontFamily = monoFonts;
+        
+        DataContext = new DevToolsViewModel();
+        
+        ViewModel.PropertyChanged += OnPropertyChanged;
+        BluetoothImpl.Instance.NewDataReceived += OnNewDataReceived;
+    }
+
+    private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        switch (e.PropertyName)
+        {
+            case nameof(DevToolsViewModel.UseAlternativeProtocol):
+                SelectProtocol();
+                break;
+        }
+    }
+
+    private void SelectProtocol()
+    {
+        if(ViewModel.UseAlternativeProtocol)
+        {
+            BluetoothImpl.Instance.NewDataReceivedAlternative += OnNewDataReceived;
+            BluetoothImpl.Instance.NewDataReceived -= OnNewDataReceived;
+        }
+        else
+        {
+            BluetoothImpl.Instance.NewDataReceivedAlternative -= OnNewDataReceived;
+            BluetoothImpl.Instance.NewDataReceived += OnNewDataReceived;
+        }
+        
+        HexEditor.Document?.RemoveBytes(0, HexEditor.Document.Length);
+        ViewModel.SelectedMessage = null;
+        ViewModel.HasProperties = false;
+        ViewModel.MsgTableDataSource.Clear();
+        ViewModel.MsgTableDataView.Refresh();
+    }
+
+    private void OnNewDataReceived(object? sender, byte[] raw)
+    {
+        Dispatcher.UIThread.Post(() =>
+        { 
+            try
+            {
+                HexEditor.Document ??= new InMemoryBinaryDocument();
+                HexEditor.Document.InsertBytes(HexEditor.Document.Length, new ReadOnlySpan<byte>(raw));
+                
+                if(ViewModel.IsAutoscrollEnabled)
+                    HexEditor.Caret.Location = new BitLocation(HexEditor.Document.Length - 1);
+                HexEditor.HexView.InvalidateVisualLines();
+
+                var msg = SppMessage.Decode(raw, BluetoothImpl.Instance.CurrentModel,
+                    ViewModel.UseAlternativeProtocol);
+                var holder = ViewModel.UseAlternativeProtocol ? 
+                    new MessageViewHolder(new SppAlternativeMessage(msg)) : new MessageViewHolder(msg);
+                
+                ViewModel.MsgTableDataSource.Add(holder);
+                ViewModel.MsgTableDataView.Refresh();
+                
+                if(ViewModel.IsAutoscrollEnabled)
+                    MsgTable.ScrollIntoView(holder, null);
+            }
+            catch(InvalidPacketException){}
+        });
+    }
+
+    protected override void OnUnloaded(RoutedEventArgs e)
+    {
+        BluetoothImpl.Instance.NewDataReceived -= OnNewDataReceived;
+
+        HexEditor.Document = null;
+        ViewModel.MsgTableDataSource.Clear();
+        ViewModel.MsgTableDataView.Refresh();
+
+        base.OnUnloaded(e);
+    }
+
+    private void CopyPayload_OnClick(object? sender, RoutedEventArgs e)
+    {
+        var item = (MessageViewHolder?)MsgTable.SelectedItem;
+        if (item != null)
+        {
+            TopLevel.GetTopLevel(this)?.Clipboard?.SetTextAsync(item.Payload);
+        }
+    }
+       
+    private void SendMsg_Click(object? sender, RoutedEventArgs e)
+    {
+        if (SendMsgId.SelectedItem == null || SendMsgType.SelectedItem == null)
+        {
+            _ = new MessageBox
+            {
+                Title = "Error", 
+                Description = "Please fill all fields out."
+            }.ShowAsync(this);
+            return;
+        }
+
+        byte[] payload;
+        try
+        {
+            payload = SendMsgPayload.Text.HexStringToByteArray();
+        }
+        catch (Exception)
+        {
+            _ = new MessageBox
+            {
+                Title = "Invalid payload format",
+                Description = "Correct format: 00 01 FF E5 [...]"
+            }.ShowAsync(this);
+            return;
+        }
+
+        if (ViewModel.UseAlternativeProtocol)
+        {
+            var msg = new SppAlternativeMessage((MsgIds?)SendMsgId.SelectedItem ?? MsgIds.UNKNOWN_0,
+                payload,
+                (MsgTypes?)SendMsgType.SelectedItem ?? MsgTypes.Request);
+            _ = BluetoothImpl.Instance.SendAltAsync(msg);
+        }
+        else
+        {
+            var msg = new SppMessage
+            {
+                Id = (MsgIds?)SendMsgId.SelectedItem ?? MsgIds.UNKNOWN_0,
+                Payload = payload,
+                Type = (MsgTypes?)SendMsgType.SelectedItem ?? MsgTypes.Request
+            };
+            _ = BluetoothImpl.Instance.SendAsync(msg);
+        }
+    }
+        
+    private void Clear_OnClick(object? sender, RoutedEventArgs e)
+    {
+        HexEditor.Document?.RemoveBytes(0, HexEditor.Document.Length);
+        ViewModel.MsgTableDataSource.Clear();
+        ViewModel.MsgTableDataView.Refresh();
+    }
+
+    private async void LoadDump_OnClick(object? sender, RoutedEventArgs e)
+    {
+        var topLevel = TopLevel.GetTopLevel(this);
+        if (topLevel == null)
+            return;
+        
+        var file = await topLevel.OpenFilePickerAsync(_filters);
+        if (file == null)
+            return;
+
+        var result = await new DumpImportDialog().OpenDialogAsync(topLevel);
+        if(result == null)
+            return;
+
+        var content = await file.TryReadAllBytes();
+        if (content == null)
+            return;
+        
+        try
+        {
+            HexEditor.Document ??= new InMemoryBinaryDocument();
+            HexEditor.Document.RemoveBytes(0, HexEditor.Document.Length);
+            HexEditor.Document.InsertBytes(HexEditor.Document.Length, new ReadOnlySpan<byte>(content));
+        }
+        catch (Exception ex)
+        {
+            _ = new MessageBox
+            {
+                Title = "Error while reading file",
+                Description = ex.Message
+            }.ShowAsync(this);
+            return;
+        }
+
+        if (result.Replay)
+        {
+            _ = Task.Run(() => { BluetoothImpl.Instance.ProcessDataBlock(content.ToList(), result.Model); });
+        }
+        else
+        {
+            try
+            {
+                ViewModel.MsgTableDataSource.AddRange(
+                    SppMessage.DecodeRawChunk([..content], result.Model, ViewModel.UseAlternativeProtocol)
+                        .Select(m => new MessageViewHolder(m)));
+                ViewModel.MsgTableDataView.Refresh();
+            }
+            catch (InvalidPacketException ex)
+            {
+                _ = new MessageBox
+                {
+                    Title = "Error while decoding message",
+                    Description = $"Error code: {ex.ErrorCode}\n\n{ex.Message}"
+                }.ShowAsync(this);
+            }
+        }
+    }
+
+    private async void SaveDump_OnClick(object? sender, RoutedEventArgs e)
+    {
+        var topLevel = TopLevel.GetTopLevel(this);
+        if (topLevel == null)
+            return;
+        
+        var path = await topLevel.SaveFilePickerAsync(_filters, "*.bin", "dump.bin");
+        if (path == null)
+            return;
+            
+        try
+        {
+            await using var fs = await path.OpenWriteAsync();
+            HexEditor.Document?.WriteAllToStream(fs);
+        }
+        catch (Exception ex)
+        {
+            await new MessageBox
+            {
+                Title = "Error while saving file", 
+                Description = ex.Message
+            }.ShowAsync(this);             
+        }
+    }
+
+    // Workaround for (Fluent)Avalonia issue: MenuItem.IsChecked does not work as two way binding
+    private void OnAutoScrollClicked(object? sender, RoutedEventArgs e)
+    {
+        if (sender is MenuItem item)
+        {
+            ViewModel.IsAutoscrollEnabled = item.IsChecked;
+        }
+    }
+
+    private void OnUseAlternativeProtocolClicked(object? sender, RoutedEventArgs e)
+    {
+        if (sender is MenuItem item)
+        {
+            ViewModel.UseAlternativeProtocol = item.IsChecked;
+        }
+    }
+
+    private void OnOpenOnStartupClicked(object? sender, RoutedEventArgs e)
+    {
+        if (sender is MenuItem item)
+        {
+            Settings.Data.OpenDevToolsOnStartup = item.IsChecked;
+        }
+    }
+}

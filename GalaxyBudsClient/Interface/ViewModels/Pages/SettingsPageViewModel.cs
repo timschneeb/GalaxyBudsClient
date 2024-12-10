@@ -25,17 +25,17 @@ public class SettingsPageViewModel : MainPageViewModelBase
 
     public bool IsAutoStartEnabled
     {
-        get => PlatformImpl.AutoStart.Enabled;
+        get => PlatformImpl.DesktopServices.IsAutoStartEnabled;
         set
         {
-            PlatformImpl.AutoStart.Enabled = value;
+            PlatformImpl.DesktopServices.IsAutoStartEnabled = value;
             this.RaisePropertyChanged();
         }
     }
     
     [Reactive] public object CanManageDevices { set; get; }
     
-    public string CurrentVersion => Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? "Unknown";
+    public string CurrentVersion => Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "Unknown";
     public override Control CreateView() => new SettingsPage { DataContext = this };
 
     public override string TitleKey => Keys.SettingsHeader;

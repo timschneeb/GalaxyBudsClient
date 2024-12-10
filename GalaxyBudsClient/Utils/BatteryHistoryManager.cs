@@ -33,8 +33,8 @@ public class BatteryHistoryManager
         
         Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
         
-        SppMessageReceiver.Instance.StatusUpdate += async (_, _) => await CollectNow();
-        MainWindow.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>()!
+        SppMessageReceiver.Instance.StatusUpdate += async (_, _) => await CollectNow(); 
+        MainView.Instance!.ResolveViewModelByType<NoiseControlPageViewModel>()!
             .PropertyChanged += async (_, _) => await CollectNow();
 
         if(Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime lifetime)
@@ -100,7 +100,7 @@ public class BatteryHistoryManager
     
     private async Task CleanupNow()
     {
-        if (_currentMac == null || !Settings.Data.CollectBatteryHistory)
+        if (!PlatformUtils.IsDesktop || _currentMac == null || !Settings.Data.CollectBatteryHistory)
             return;
         
         if (_lock.WaitOne(500))
@@ -124,14 +124,14 @@ public class BatteryHistoryManager
     
     private async Task CollectNow(bool insertNullFrame = false)
     {
-        if (_currentMac == null || !Settings.Data.CollectBatteryHistory)
+        if (!PlatformUtils.IsDesktop || _currentMac == null || !Settings.Data.CollectBatteryHistory)
         {
             _lastRecord = null;
             return;
         }
 
         var status = !insertNullFrame && BluetoothImpl.Instance.IsConnected ? DeviceMessageCache.Instance.StatusUpdate : null;
-        var noiseControlVm = !insertNullFrame && BluetoothImpl.Instance.IsConnected ? MainWindow.Instance.MainView.ResolveViewModelByType<NoiseControlPageViewModel>() : null;
+        var noiseControlVm = !insertNullFrame && BluetoothImpl.Instance.IsConnected ? MainView.Instance!.ResolveViewModelByType<NoiseControlPageViewModel>() : null;
         var record = new HistoryRecord
         {
             PlacementL = status?.PlacementL ?? PlacementStates.Disconnected,

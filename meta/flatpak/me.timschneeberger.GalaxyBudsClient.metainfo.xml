@@ -16,10 +16,10 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-only</project_license>
 
-  <url type="homepage">https://github.com/ThePBone/GalaxyBudsClient</url>
-  <url type="bugtracker">https://github.com/ThePBone/GalaxyBudsClient/issues/new/choose</url>
+  <url type="homepage">https://github.com/timschneeb/GalaxyBudsClient</url>
+  <url type="bugtracker">https://github.com/timschneeb/GalaxyBudsClient/issues/new/choose</url>
   <url type="donation">https://ko-fi.com/H2H83E5J3</url>
-  <url type="translate">https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations</url>
+  <url type="translate">https://github.com/timschneeb/GalaxyBudsClient/wiki/3.-How-to-help-with-translations</url>
   <url type="contact">https://t.me/thepbone</url>
 
   <description>
@@ -43,14 +43,14 @@
   <launchable type="desktop-id">me.timschneeberger.GalaxyBudsClient.desktop</launchable>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/ThePBone/GalaxyBudsClient/master/screenshots/app_dark.png</image>
+      <image>https://raw.githubusercontent.com/timschneeb/GalaxyBudsClient/master/screenshots/app_dark.png</image>
     </screenshot>
   </screenshots>
   <categories>
     <category>Utility</category>
   </categories>
   <releases>
-    <release version="4.6.0" date="2024-03-13"/>
+    <release version="5.1.0" date="2024-07-17"/>
   </releases>
   <content_rating type="oars-1.1">
     <content_attribute id="social-info">moderate</content_attribute>

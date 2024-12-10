@@ -6,7 +6,6 @@ using GalaxyBudsClient.Model.Specifications.Touch;
 
 namespace GalaxyBudsClient.Model.Specifications;
 
-// TODO: verify once the Buds3 plugin is released
 public class Buds3DeviceSpec : IDeviceSpec
 {
     public Dictionary<Features, FeatureRule?> Rules => new()
@@ -22,24 +21,25 @@ public class Buds3DeviceSpec : IDeviceSpec
         { Features.FragmentedMessages, null },
         { Features.BixbyWakeup, null },
         { Features.GearFitTest, null },
-        { Features.DoubleTapVolume, new FeatureRule(5) },
-        { Features.AdvancedTouchLock, new FeatureRule(4) },
-        { Features.AdvancedTouchLockForCalls, new FeatureRule(7) },
-        { Features.NoiseControlsWithOneEarbud, new FeatureRule(3) },
-        { Features.AmbientCustomize, new FeatureRule(5) },
-        { Features.AmbientSidetone, new FeatureRule(6)  },
-        { Features.FmgRingWhileWearing, new FeatureRule(9) },
+        { Features.DoubleTapVolume, null },
+        { Features.AdvancedTouchLock, null },
+        { Features.AdvancedTouchLockForCalls, null },
+        { Features.NoiseControlsWithOneEarbud, null },
+        { Features.AmbientCustomize, null },
+        { Features.AmbientSidetone, null },
+        { Features.FmgRingWhileWearing, null },
         { Features.DebugSku, null },
-        { Features.CallPathControl, new FeatureRule(7) },
-        { Features.ChargingState, new FeatureRule(10) },
-        { Features.NoiseControlModeDualSide, new FeatureRule(5) },
+        { Features.CallPathControl, null },
+        { Features.ChargingState, null },
+        { Features.NoiseControlModeDualSide, null },
         { Features.PairingMode, null },
         { Features.AmbientSoundVolume, null },
         { Features.DeviceColor, null },
         { Features.Rename, null },
-        { Features.SpatialSensor, new FeatureRule(10) }, // 10 may be inaccurate
+        { Features.SpatialSensor, null  },
         { Features.SmartThingsFind, null },
-        { Features.UsageReport, null }
+        { Features.UsageReport, null },
+        { Features.HotCommandLanguageUpdate, new FeatureRule(2) }
     };
 
     public Models Device => Models.Buds3;

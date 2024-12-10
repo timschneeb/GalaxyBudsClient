@@ -7,6 +7,7 @@
              xmlns:platform="clr-namespace:GalaxyBudsClient.Platform"
              xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
              xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
+             xmlns:platUtils="clr-namespace:GalaxyBudsClient.Platform;assembly=GalaxyBudsClient.Platform"
              mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
              x:Class="GalaxyBudsClient.Interface.MainView"
              x:DataType="vm:MainViewViewModel"
@@ -17,15 +18,19 @@
               ColumnDefinitions="*,Auto"
               Background="Transparent" />
 
-        <ui:NavigationView Grid.Row="0" AlwaysShowHeader="False"
+        <ui:NavigationView Grid.Row="0"
+                           AlwaysShowHeader="False" 
+                           IsPaneOpen="False"
                            PaneDisplayMode="Left"
                            Grid.RowSpan="2"
                            Name="NavView"
                            IsSettingsVisible="False"
                            IsBackEnabled="{Binding #FrameView.CanGoBack}">
-            <Grid RowDefinitions="Auto,Auto,*">
-
-                <ui:InfoBar Title="{ext:Translate {x:Static i18N:Keys.PlacementDisconnected}}"
+            <Grid RowDefinitions="Auto,Auto,*"
+                  Name="ContentContainer">
+                
+                <ui:InfoBar Grid.Row="0"
+                            Title="{ext:Translate {x:Static i18N:Keys.PlacementDisconnected}}"
                             IsClosable="False"
                             Severity="Warning"
                             Message="{Binding LastErrorMessage, Source={x:Static platform:BluetoothImpl.Instance}}"
@@ -38,15 +43,24 @@
                         </MultiBinding>
                     </ui:InfoBar.IsOpen>
                     <ui:InfoBar.ActionButton>
-                        <Button Content="{Binding ConnectButtonText}"
-                                IsEnabled="{Binding IsConnectButtonEnabled}"
-                                HorizontalAlignment="Right">
-                            <Interaction.Behaviors>
-                                <EventTriggerBehavior EventName="Click">
-                                    <ext:EventDispatcherAction Event="Connect" />
-                                </EventTriggerBehavior>
-                            </Interaction.Behaviors>
-                        </Button>
+                        <StackPanel HorizontalAlignment="Right"
+                                    Spacing="8"
+                                    Orientation="Horizontal">
+                            <Button Content="{ext:Translate {x:Static i18N:Keys.ConnlostTroubleshoot}}"
+                                    HorizontalAlignment="Right"
+                                    IsVisible="{Binding !., Source={x:Static platUtils:PlatformUtils.IsDesktop}}"
+                                    Click="OnTroubleshootConnectionClicked"/>
+                            
+                            <Button Content="{Binding ConnectButtonText}"
+                                    IsEnabled="{Binding IsConnectButtonEnabled}"
+                                    HorizontalAlignment="Right">
+                                <Interaction.Behaviors>
+                                    <EventTriggerBehavior EventName="Click">
+                                        <ext:EventDispatcherAction Event="Connect" />
+                                    </EventTriggerBehavior>
+                                </Interaction.Behaviors>
+                            </Button>
+                        </StackPanel>
                     </ui:InfoBar.ActionButton>
                 </ui:InfoBar>
 

@@ -1,0 +1,54 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dialogs="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Dialogs"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             mc:Ignorable="d"
+             Padding="0, 5, 0, 0"
+             x:CompileBindings="True"
+             x:DataType="dialogs:HiddenModeTerminalDialogViewModel"
+             x:Class="GalaxyBudsClient.Interface.Dialogs.HiddenModeTerminalDialog">
+
+    <Design.DataContext>
+        <dialogs:HiddenModeTerminalDialogViewModel />
+    </Design.DataContext>
+
+    <StackPanel MinWidth="400" Spacing="16">
+        <StackPanel Spacing="10">
+            <TextBlock Text="{ext:Translate {x:Static i18N:Keys.AtTerminalCmdId}}" />
+            <AutoCompleteBox
+                Name="CmdId"
+                Watermark="{ext:Translate {x:Static i18N:Keys.AtTerminalCmdId}}" 
+                MaxLength="4"
+                HorizontalAlignment="Stretch"
+                ValueMemberBinding="{Binding CmdId, DataType=ext:HiddenCmdBindingItem}"
+                ItemsSource="{Binding Source={ext:HiddenCmdBindingSource}}"
+                Text="{Binding CommandId}">
+                <AutoCompleteBox.ItemTemplate>
+                    <DataTemplate DataType="ext:HiddenCmdBindingItem">
+                        <TextBlock Text="{Binding Description}" />
+                    </DataTemplate>
+                </AutoCompleteBox.ItemTemplate>
+            </AutoCompleteBox>
+        </StackPanel>
+        
+        <StackPanel Spacing="10">
+            <TextBlock Text="{ext:Translate {x:Static i18N:Keys.AtTerminalCmdParam}}" />
+            <TextBox 
+                Watermark="{ext:Translate {x:Static i18N:Keys.AtTerminalCmdParam}}"
+                Text="{Binding CommandParameter}"
+                HorizontalAlignment="Stretch" />
+        </StackPanel>
+        
+        <StackPanel Spacing="10">
+            <TextBlock Text="{ext:Translate {x:Static i18N:Keys.AtTerminalOutput}}" />
+            <TextBox 
+                MinHeight="100"
+                IsReadOnly="True"
+                Text="{Binding TerminalOutput}"
+                HorizontalAlignment="Stretch" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

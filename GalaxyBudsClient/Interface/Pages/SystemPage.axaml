@@ -85,13 +85,28 @@
                                              Description="{ext:Translate {x:Static i18N:Keys.SystemBatteryStatisticsDesc}}"
                                              Symbol="DataTrending"
                                              ActionSymbol="ChevronRight"
-                                             IsClickEnabled="True" />
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:RequiresDesktopBehavior />
+                    </Interaction.Behaviors>
+                </controls:SettingsSymbolItem>
             </controls:SettingsGroup>
 
             <controls:SettingsGroup>
                 <Interaction.Behaviors>
                     <ext:RequiresConnectedDeviceBehavior />
                 </Interaction.Behaviors>
+                
+                <controls:SettingsSymbolItem Name="HiddenMode"
+                                             Content="{ext:Translate {x:Static i18N:Keys.SystemHiddenAtMode}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.SystemHiddenAtModeDesc}}"
+                                             Symbol="ErrorCircleSettings"
+                                             ActionSymbol="ChevronRight"
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="HiddenAtMode" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSymbolItem>
                 
                 <controls:SettingsSymbolItem Name="Firmware"
                                              Content="{ext:Translate {x:Static i18N:Keys.SystemFlasher}}"

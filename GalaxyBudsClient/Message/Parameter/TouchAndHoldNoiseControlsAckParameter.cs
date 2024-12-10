@@ -14,6 +14,9 @@ public class TouchAndHoldNoiseControlsAckParameter : MessageAsDictionary, IAckPa
     
     public TouchAndHoldNoiseControlsAckParameter(BinaryReader reader)
     {
+        // TODO This doesn't support Buds3 and up. 
+        //      The official app has removed all code related this ACK event.
+        
         if (DeviceSpec.Supports(Features.NoiseControlModeDualSide))
         {
             LeftActiveNoiseCanceling = reader.ReadBoolean();

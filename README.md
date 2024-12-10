@@ -1,13 +1,13 @@
 
 <p align="center">
   English | <a href="/docs/README_chs.md">中文(简体)</a> | <a href="/docs/README_cht.md">中文(繁體)</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_tr.md">Türkçe</a> | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> <br>
-    <sub>Attention: readme files are maintained by translators and may become outdated from time to time. For newest info rely on English version.</sub>
+    <sub>Attention: readme files are maintained by translators and may become outdated from time to time. For the newest info rely on the English version.</sub>
 </p>
 <h1 align="center">
   Galaxy Buds Client
   <br>
 </h1>
-<h4 align="center">An unofficial manager for the Buds, Buds+, Buds Live and Buds Pro</h4>
+<h4 align="center">An unofficial manager for Galaxy Buds devices</h4>
 <p align="center">
   <a href="https://github.com/timschneeb/GalaxyBudsClient/releases">
     <img alt="GitHub downloads count" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
@@ -19,7 +19,7 @@
       <img alt="License" src="https://img.shields.io/github/license/thepbone/galaxybudsclient">
   </a>
   <a href="https://github.com/timschneeb/GalaxyBudsClient/releases">
-    <img alt="Platform" src="https://img.shields.io/badge/platform-Windows/Linux-yellowgreen">
+    <img alt="Platform" src="https://img.shields.io/badge/platform-Windows/macOS/Linux/Android-yellowgreen">
   </a>
 </p>
 <p align="center">
@@ -32,11 +32,8 @@
 </p>
 
 <p align="center">
-    <a href="https://ko-fi.com/H2H83E5J3"><img alt="Screenshot" src="https://ko-fi.com/img/githubbutton_sm.svg"></a>
-</p>
-
-<p align="center">
-    <a href="#"><img alt="Screenshot" src="https://github.com/timschneeb/GalaxyBudsClient/blob/master/screenshots/app_dark.png"></a>
+  <span><a href="https://ko-fi.com/H2H83E5J3"><img alt="Screenshot" src="https://ko-fi.com/img/githubbutton_sm.svg"></a>
+  <a href="#"><img alt="Screenshot" src="https://github.com/timschneeb/GalaxyBudsClient/blob/master/screenshots/app_dark.png"></a></span>
 </p>
 
 ## Key Features
@@ -60,14 +57,23 @@ There are several Linux packages available:
 * [Flatpak (All Linux distros)](#flatpak)
 * [AUR package (Arch Linux)](#aur-package)
 
-Get binaries for Windows in the [release](https://github.com/timschneeb/GalaxyBudsClient/releases) section. Please read the release notes before installation:
+Get binaries for Windows in the [release](https://github.com/timschneeb/GalaxyBudsClient/releases) section. Please read the release notes before installation.
+
+Download the desktop version here:
 <p align="center">
     <a href="https://github.com/timschneeb/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/timschneeb/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
+Download the Android mobile version here (paid):
+<p align="center">
+  <a href='https://play.google.com/store/apps/details?id=me.timschneeberger.galaxybudsclient&utm_source=github&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'> 
+    <img width="300" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/>
+  </a>
+</p>
+
 ### Flatpak
 
-Universal binary packages for all Linux distributions. This is the recommended way of installing GalaxyBudsClient on Linux.
+Universal binary packages for all Linux distributions. The Flatpak version does not support autostart unless it is set up manually. You can use `galaxybudsclient /StartMinimized` to launch the app silently during startup.
 
 Available for download on FlatHub: https://flathub.org/apps/me.timschneeberger.GalaxyBudsClient
 ```
@@ -129,7 +135,7 @@ Feature requests, bug reports, and pull requests of any kind are always welcome.
 
 If you want to report bugs or propose your ideas for this project, you are welcome to [open a new issue](https://github.com/timschneeb/GalaxyBudsClient/issues/new/choose) with a suitable template. [Visit our wiki](https://github.com/timschneeb/GalaxyBudsClient/wiki/2.-How-to-submit-issues) for a detailed explanation.
 
-If you are planning to help us translating this app, [refer to the instructions on our wiki](https://github.com/timschneeb/GalaxyBudsClient/wiki/3.-How-to-help-with-translations). No programming knowledge is required, you can test your custom translations without installing any development tools before submitting a pull request.
+If you are planning to help us translate this app, [refer to the instructions on our wiki](https://github.com/timschneeb/GalaxyBudsClient/wiki/3.-How-to-help-with-translations). No programming knowledge is required, you can test your custom translations without installing any development tools before submitting a pull request.
 You can find auto-generated progress reports for existing translations [here](https://github.com/timschneeb/GalaxyBudsClient/blob/master/meta/translations.md).
 
 If you want to contribute your own code, you can simply submit a plain pull request explaining you changes. For larger and complex contributions it would be nice if you could open an issue (or message me via Telegram [@thepbone](https://t.me/thepbone)) before starting to work on it.
@@ -168,6 +174,13 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@Sigarya](https://github.com/Sigarya) - Hebrew translation
 * [@domroaft](https://github.com/domroaft) - Hungarian translation
 * [@lampi8426](https://github.com/lampi8426) - Dutch translation
+
+### Services
+
+* [Cloudflare](https://www.cloudflare.com/) - Secures the backend APIs of GalaxyBudsClient and provided a Pro license 
+
+### Assets
+* Earbud asset used in the Android icon created by [Archival](https://www.flaticon.com/authors/archival) from [Flaticon](https://www.flaticon.com/)
 
 ## License
 

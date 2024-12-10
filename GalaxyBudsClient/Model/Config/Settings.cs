@@ -43,6 +43,8 @@ public static class Settings
     public static Themes DefaultTheme => PlatformUtils.SupportsMicaTheme ? Themes.DarkMica : 
         PlatformUtils.SupportsBlurTheme ? Themes.DarkBlur : Themes.Dark;
     
+    public static bool DefaultShowSidebar => PlatformUtils.IsDesktop ? true : false;
+
     private static void OnTouchActionPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         Save();
@@ -87,7 +89,7 @@ public static class Settings
         }
         catch (Exception e)
         {
-            if (MainWindow.Instance.IsVisible && e is UnauthorizedAccessException or SecurityException)
+            if ((!PlatformUtils.IsDesktop || MainWindow.Instance.IsVisible) && e is UnauthorizedAccessException or SecurityException)
             {
                 Dispatcher.UIThread.Post(() =>
                 {
@@ -95,7 +97,7 @@ public static class Settings
                     {
                         Title = Strings.Error,
                         Description = string.Format(Strings.SettingsSaveFailNoAccess, Path)
-                    }.ShowAsync(MainWindow.Instance);
+                    }.ShowAsync();
                 });
             }
             

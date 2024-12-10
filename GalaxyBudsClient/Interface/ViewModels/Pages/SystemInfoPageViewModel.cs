@@ -3,6 +3,7 @@ using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
@@ -20,6 +21,7 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
         SppMessageReceiver.Instance.GetAllDataResponse += OnGetAllDataResponse;
         SppMessageReceiver.Instance.BatteryTypeResponse += OnBatteryTypeReceived;
         SppMessageReceiver.Instance.BuildStringResponse += OnDebugBuildInfoReceived;
+        SppMessageReceiver.Instance.VersionInfoResponse += OnVersionInfoResponse;
         SppMessageReceiver.Instance.DebugSkuUpdate += OnDebugSkuReceived;
         SppMessageReceiver.Instance.SerialNumberResponse += OnDebugSerialNumberReceived;
         SppMessageReceiver.Instance.CradleSerialNumberResponse += OnDebugSerialNumberReceived;
@@ -28,10 +30,31 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
         Loc.LanguageUpdated += RequestData;
     }
 
+    private void OnVersionInfoResponse(object? sender, DebugModeVersionDecoder? e)
+    {
+        if (e is not null)
+        {
+            HwVersion =
+                $"{Strings.Left}: {e.LeftHardwareVersion ?? Unknown}, {Strings.Right}: {e.RightHardwareVersion ?? Unknown}";
+            SwVersion =
+                $"{Strings.Left}: {e.LeftSoftwareVersion ?? Unknown}, {Strings.Right}: {e.RightSoftwareVersion ?? Unknown}";
+            TouchSwVersion =
+                $"{Strings.Left}: {e.LeftTouchSoftwareVersion ?? Unknown}, {Strings.Right}: {e.RightTouchSoftwareVersion ?? Unknown}";
+        }
+
+        // Fallback to GET_ALL_DATA if the version info is incomplete
+        if(e is null or { LeftTouchSoftwareVersion: "0", RightTouchSoftwareVersion: "0" })
+            TouchSwVersion = DeviceMessageCache.Instance.DebugGetAllData?.TouchSoftwareVersion ?? Unknown;
+        if(e is null or { LeftHardwareVersion: "rev0.0", RightHardwareVersion: "rev0.0" })
+            HwVersion = DeviceMessageCache.Instance.DebugGetAllData?.HardwareVersion ?? Unknown;
+        if(e is null || (e.LeftSoftwareVersion?.StartsWith('R') != true && e.RightSoftwareVersion?.StartsWith('R') != true))
+            SwVersion = DeviceMessageCache.Instance.DebugGetAllData?.SoftwareVersion ?? Unknown;
+    }
+
     private void OnDebugSerialNumberReceived(object? sender, CradleSerialNumberDecoder e)
     {
-        CradleSerialNumber = e.SoftwareVersion ?? Strings.PlacementDisconnected;
-        CradleSwVersion = e.SerialNumber ?? Strings.PlacementDisconnected;
+        CradleSerialNumber = e.SerialNumber ?? Strings.PlacementDisconnected;
+        CradleSwVersion = e.SoftwareVersion ?? Strings.PlacementDisconnected;
     }
 
     private void OnExtendedStatusUpdateReceived(object? sender, ExtendedStatusUpdateDecoder e)
@@ -67,12 +90,15 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
     
     private void OnGetAllDataResponse(object? sender, DebugGetAllDataDecoder e)
     {
-        HwVersion = e.HardwareVersion ?? Unknown;
-        SwVersion = e.SoftwareVersion ?? Unknown;
-        TouchSwVersion = e.TouchSoftwareVersion ?? Unknown;
         BluetoothAddress = e.LocalBluetoothAddress != null || e.PeerBluetoothAddress != null
             ? string.Format(Strings.SystemBtaddrTemplate, e.LocalBluetoothAddress ?? Unknown, e.PeerBluetoothAddress ?? Unknown)
             : Unknown;
+
+        // Buds3 and up don't respond to VERSION_INFO. Force load the info from GET_ALL_DEBUG by passing a null object
+        if (BluetoothImpl.Instance.CurrentModel >= Models.Buds3)
+        {
+            OnVersionInfoResponse(this, null);
+        }
     }
     
     private static async void RequestData()
@@ -88,6 +114,7 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
         
         await BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_SERIAL_NUMBER);
         await BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_GET_ALL_DATA);
+        await BluetoothImpl.Instance.SendRequestAsync(MsgIds.VERSION_INFO);
     }
     
     public override void OnNavigatedTo() => RequestData();

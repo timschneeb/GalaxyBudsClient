@@ -13,6 +13,7 @@ using GalaxyBudsClient.Model.Config.Legacy;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils;
 using Serilog;
+using Serilog.Core;
 using Serilog.Events;
 using Settings = GalaxyBudsClient.Model.Config.Settings;
 #if !DEBUG
@@ -35,15 +36,12 @@ public static class AsyncErrorHandler
     }
 }
 
-internal static class Program
+public static class Program
 {
-    public static long StartedAt;
+    internal static long StartedAt;
     public static readonly string AvaresUrl = "avares://" + typeof(Program).Assembly.GetName().Name;
-        
-    // Initialization code. Don't use any Avalonia, third-party APIs or any
-    // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
-    // yet and stuff might break.
-    public static void Main(string[] args)
+
+    public static void Startup(bool cliMode, ILogEventSink? additionalLogSink = null)
     {
         StartedAt = Stopwatch.GetTimestamp();
      
@@ -68,11 +66,13 @@ internal static class Program
             .WriteTo.File(logPath)
             .WriteTo.Console();
 
+        if(additionalLogSink != null)
+            config = config.WriteTo.Sink(additionalLogSink, LogEventLevel.Verbose);
+        
         config = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("VERBOSE")) ?
             config.MinimumLevel.Verbose() : config.MinimumLevel.Debug();
             
         // Divert program startup flow if the app was started with arguments (except /StartMinimized)
-        var cliMode = args.Length > 0 && !args.Contains("/StartMinimized");
         if (cliMode)
         {
             // Disable excessive logging in CLI mode
@@ -98,6 +98,15 @@ internal static class Program
         Trace.Listeners.Add(new ConsoleTraceListener());
         
         LegacySettings.BeginMigration();
+    }
+    
+    // Initialization code. Don't use any Avalonia, third-party APIs or any
+    // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
+    // yet and stuff might break.
+    public static void Main(string[] args)
+    {
+        var cliMode = args.Length > 0 && !args.Contains("/StartMinimized");
+        Startup(cliMode);
         
         if (cliMode)
         {

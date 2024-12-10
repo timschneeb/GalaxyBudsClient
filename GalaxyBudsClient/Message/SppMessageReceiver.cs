@@ -38,6 +38,7 @@ public class SppMessageReceiver
     public event EventHandler<bool>? AncEnabledUpdateResponse;
     public event EventHandler<NoiseControlModes>? NoiseControlUpdateResponse;
     public event EventHandler<string>? BuildStringResponse;
+    public event EventHandler<DebugModeVersionDecoder>? VersionInfoResponse;
     public event EventHandler<DebugGetAllDataDecoder>? GetAllDataResponse;
     public event EventHandler<DebugSerialNumberDecoder>? SerialNumberResponse;
     public event EventHandler<CradleSerialNumberDecoder>? CradleSerialNumberResponse;
@@ -50,6 +51,7 @@ public class SppMessageReceiver
     public event EventHandler? FindMyGearStopped;
     public event EventHandler<FitTestDecoder>? FitTestResult;
     public event EventHandler<DebugSkuDecoder>? DebugSkuUpdate;
+    public event EventHandler<HiddenCmdDataDecoder>? HiddenCmdData;
 
     public void MessageReceiver(object? sender, SppMessage e)
     {
@@ -105,6 +107,9 @@ public class SppMessageReceiver
             case AmbientModeUpdateDecoder p:
                 AmbientEnabledUpdateResponse?.Invoke(this, p.Enabled);
                 break;
+            case DebugModeVersionDecoder p:
+                VersionInfoResponse?.Invoke(this, p);
+                break;
             case DebugBuildInfoDecoder p:
                 BuildStringResponse?.Invoke(this, p.BuildString ?? "null");
                 break;
@@ -149,6 +154,9 @@ public class SppMessageReceiver
                 break;
             case DebugSkuDecoder p:
                 DebugSkuUpdate?.Invoke(this, p);
+                break; 
+            case HiddenCmdDataDecoder p:
+                HiddenCmdData?.Invoke(this, p);
                 break;
             case VoiceWakeupEventDecoder p:
                 if (p.ResultCode == 1)

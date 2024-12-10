@@ -1,7 +1,6 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using GalaxyBudsClient.Model.Constants;
-using GalaxyBudsClient.Platform;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
@@ -36,6 +35,7 @@ public class SettingsData : ReactiveObject
     [Reactive] public Locales Locale { set; get; } = Locales.en;
     [Reactive] public TemperatureUnits TemperatureUnit { set; get; } = TemperatureUnits.Celsius;
     [Reactive] public bool RealisticEarbudImages { set; get; } = true;
+    [Reactive] public bool ShowSidebar { set; get; } = Settings.DefaultShowSidebar;
     
     /* Connections */
     [Reactive] public bool UseBluetoothWinRt { set; get; } = true;

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
@@ -98,7 +100,7 @@ public class DebugGetAllDataDecoder : BaseMessageDecoder
             var hw2 = msg.Payload[0] & 15;
 
             HardwareVersion = "rev" + hw1.ToString("X") + "." + hw2.ToString("X");
-            SoftwareVersion = VersionDataToString(msg.Payload, 1);
+            SoftwareVersion = VersionDataToString(msg.Payload, 1, out _);
             TouchSoftwareVersion = $"0x{msg.Payload[4]:X}";
             LocalBluetoothAddress = msg.Payload.BytesToMacString(5);
             PeerBluetoothAddress = msg.Payload.BytesToMacString(11);
@@ -134,60 +136,60 @@ public class DebugGetAllDataDecoder : BaseMessageDecoder
             MsgVersion = msg.Payload[0];
 
             HardwareVersion = "rev" + hw1.ToString("X") + "." + hw2.ToString("X");
-            SoftwareVersion = VersionDataToString(msg.Payload, 2);
-            TouchSoftwareVersion = $"0x{msg.Payload[5]:X}";
-            LocalBluetoothAddress = msg.Payload.BytesToMacString(6);
-            PeerBluetoothAddress = msg.Payload.BytesToMacString(12);
+            SoftwareVersion = VersionDataToString(msg.Payload, 2, out var swLength);
+            TouchSoftwareVersion = $"0x{msg.Payload[swLength + 2]:X}";
+            LocalBluetoothAddress = msg.Payload.BytesToMacString(swLength + 3);
+            PeerBluetoothAddress = msg.Payload.BytesToMacString(swLength + 9);
 
-            LeftAcceleratorX = BitConverter.ToInt16(msg.Payload, 18);
-            LeftAcceleratorY = BitConverter.ToInt16(msg.Payload, 20);
-            LeftAcceleratorZ = BitConverter.ToInt16(msg.Payload, 22);
-            RightAcceleratorX = BitConverter.ToInt16(msg.Payload, 24);
-            RightAcceleratorY = BitConverter.ToInt16(msg.Payload, 26);
-            RightAcceleratorZ = BitConverter.ToInt16(msg.Payload, 28);
+            LeftAcceleratorX = BitConverter.ToInt16(msg.Payload, swLength + 15);
+            LeftAcceleratorY = BitConverter.ToInt16(msg.Payload, swLength + 17);
+            LeftAcceleratorZ = BitConverter.ToInt16(msg.Payload, swLength + 19);
+            RightAcceleratorX = BitConverter.ToInt16(msg.Payload, swLength + 21);
+            RightAcceleratorY = BitConverter.ToInt16(msg.Payload, swLength + 23);
+            RightAcceleratorZ = BitConverter.ToInt16(msg.Payload, swLength + 25);
 
-            LeftProximity = BitConverter.ToInt16(msg.Payload, 30);
-            LeftProximityOffset = BitConverter.ToInt16(msg.Payload, 32);
-            RightProximity = BitConverter.ToInt16(msg.Payload, 34);
-            RightProximityOffset = BitConverter.ToInt16(msg.Payload, 36);
+            LeftProximity = BitConverter.ToInt16(msg.Payload, swLength + 27);
+            LeftProximityOffset = BitConverter.ToInt16(msg.Payload, swLength + 29);
+            RightProximity = BitConverter.ToInt16(msg.Payload, swLength + 31);
+            RightProximityOffset = BitConverter.ToInt16(msg.Payload, swLength + 33);
 
-            LeftThermistor = BitConverter.ToInt16(msg.Payload, 38) * 0.1d;
-            RightThermistor = BitConverter.ToInt16(msg.Payload, 40) * 0.1d;
+            LeftThermistor = BitConverter.ToInt16(msg.Payload, swLength + 35) * 0.1d;
+            RightThermistor = BitConverter.ToInt16(msg.Payload, swLength + 37) * 0.1d;
 
-            LeftAdcSoc = BitConverter.ToInt16(msg.Payload, 42);
-            LeftAdcVCell = BitConverter.ToInt16(msg.Payload, 44) * 0.01d;
-            LeftAdcCurrent = BitConverter.ToInt16(msg.Payload, 46) * -0.1d; //1.0E-4d;
-            RightAdcSoc = BitConverter.ToInt16(msg.Payload, 48);
-            RightAdcVCell = BitConverter.ToInt16(msg.Payload, 50) * 0.01d;
-            RightAdcCurrent = BitConverter.ToInt16(msg.Payload, 52) * -0.1d; //1.0E-4d;
+            LeftAdcSoc = BitConverter.ToInt16(msg.Payload, swLength + 39);
+            LeftAdcVCell = BitConverter.ToInt16(msg.Payload, swLength + 41) * 0.01d;
+            LeftAdcCurrent = BitConverter.ToInt16(msg.Payload, swLength + 43) * -0.1d; //1.0E-4d;
+            RightAdcSoc = BitConverter.ToInt16(msg.Payload, swLength + 45);
+            RightAdcVCell = BitConverter.ToInt16(msg.Payload, swLength + 47) * 0.01d;
+            RightAdcCurrent = BitConverter.ToInt16(msg.Payload, swLength + 49) * -0.1d; //1.0E-4d;
 
-            LeftTspAbs = BitConverter.ToInt16(msg.Payload, 54);
-            RightTspAbs = BitConverter.ToInt16(msg.Payload, 56);
+            LeftTspAbs = BitConverter.ToInt16(msg.Payload, swLength + 51);
+            RightTspAbs = BitConverter.ToInt16(msg.Payload, swLength + 53);
 
-            LeftTspDiff0 = BitConverter.ToInt16(msg.Payload, 58);
-            LeftTspDiff1 = BitConverter.ToInt16(msg.Payload, 60);
-            LeftTspDiff2 = BitConverter.ToInt16(msg.Payload, 62);
-            RightTspDiff0 = BitConverter.ToInt16(msg.Payload, 64);
-            RightTspDiff1 = BitConverter.ToInt16(msg.Payload, 66);
-            RightTspDiff2 = BitConverter.ToInt16(msg.Payload, 68);
+            LeftTspDiff0 = BitConverter.ToInt16(msg.Payload, swLength + 55);
+            LeftTspDiff1 = BitConverter.ToInt16(msg.Payload, swLength + 57);
+            LeftTspDiff2 = BitConverter.ToInt16(msg.Payload, swLength + 59);
+            RightTspDiff0 = BitConverter.ToInt16(msg.Payload, swLength + 61);
+            RightTspDiff1 = BitConverter.ToInt16(msg.Payload, swLength + 63);
+            RightTspDiff2 = BitConverter.ToInt16(msg.Payload, swLength + 65);
 
-            LeftHall = msg.Payload[70].ToString("x");
-            RightHall = msg.Payload[71].ToString("x");
+            LeftHall = msg.Payload[swLength + 67].ToString("x");
+            RightHall = msg.Payload[swLength + 68].ToString("x");
 
-            LeftPr = BitConverter.ToInt16(msg.Payload, 72);
-            RightPr = BitConverter.ToInt16(msg.Payload, 74);
-            LeftWd = BitConverter.ToInt16(msg.Payload, 76);
-            RightWd = BitConverter.ToInt16(msg.Payload, 78);
+            LeftPr = BitConverter.ToInt16(msg.Payload, swLength + 69);
+            RightPr = BitConverter.ToInt16(msg.Payload, swLength + 71);
+            LeftWd = BitConverter.ToInt16(msg.Payload, swLength + 73);
+            RightWd = BitConverter.ToInt16(msg.Payload, swLength + 75);
 
-            LeftCradleFlag = msg.Payload[79];
-            RightCradleFlag = msg.Payload[80];
+            LeftCradleFlag = msg.Payload[swLength + 77];
+            RightCradleFlag = msg.Payload[swLength + 78];
 
-            LeftCradleBatt = msg.Payload[81];
-            RightCradleBatt = msg.Payload[82];
+            LeftCradleBatt = msg.Payload[swLength + 79];
+            RightCradleBatt = msg.Payload[swLength + 80];
         }
     }
 
-    private string VersionDataToString(IReadOnlyList<byte> payload, int startIndex)
+    private string VersionDataToString(IReadOnlyList<byte> payload, int startIndex, out int length)
     {
         var buildPrefix = TargetModel.GetModelMetadataAttribute()?.BuildPrefix ?? "R???";
             
@@ -199,10 +201,13 @@ public class DebugGetAllDataDecoder : BaseMessageDecoder
             var swRelVerIndex = payload[startIndex + 2];
 
             var swRelVarString = swRelVerIndex <= 15 ? (swRelVerIndex & 255).ToString("X") : _swRelVer[swRelVerIndex - 16];
+
+            length = 3;
             return buildPrefix + "XX" + _swVer[swVarIndex] + "0A" + _swYear[swYearIndex] + _swMonth[swMonthIndex] +
                    swRelVarString;
         }
-        else
+        if (TargetModel is Models.BudsPlus or Models.BudsLive or
+            Models.BudsPro or Models.Buds2 or Models.Buds2Pro or Models.BudsFe)
         {
             var swVar = (payload[startIndex] & 1) == 0 ? "E" : "U";
             // var isFotaDm = (payload[startIndex] & 240) >> 4;
@@ -210,9 +215,13 @@ public class DebugGetAllDataDecoder : BaseMessageDecoder
             var swYearIndex = (payload[startIndex + 1] & 240) >> 4;
             var swMonthIndex = payload[startIndex + 1] & 15;
             var swRelVerIndex = payload[startIndex + 2];
-                
-            return buildPrefix + "XX" + swVar + "0A" 
-                   + _swYear[swYearIndex] + _swMonth[swMonthIndex] + _swRelVer[swRelVerIndex];
+
+            length = 3;
+            return buildPrefix + "XX" + swVar + "0A" +
+                   _swYear[swYearIndex] + _swMonth[swMonthIndex] + _swRelVer[swRelVerIndex];
         }
+        // >= Buds 3 have started to include the full FW version string
+        length = 20;
+        return Encoding.ASCII.GetString(payload.Skip(startIndex).Take(20).Where(x => x != 0).ToArray());
     }
 }

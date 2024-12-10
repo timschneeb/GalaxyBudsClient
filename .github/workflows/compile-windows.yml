@@ -73,7 +73,7 @@ jobs:
     - name: Prepare version information (1/3)
       uses: oprypin/find-latest-tag@v1.1.2
       with:
-        repository: ThePBone/GalaxyBudsClient
+        repository: timschneeb/GalaxyBudsClient
         releases-only: true
       id: last_release  
     - name: Prepare version information (2/3)
@@ -82,7 +82,8 @@ jobs:
       with:
         length: 6
     - name: Prepare version information (3/3)
-      run: echo 'version={${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}}' >> $GITHUB_OUTPUT
+      shell: bash
+      run: echo 'version=${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}' >> $GITHUB_OUTPUT
       id: version
       
     # Make x64 installer
@@ -157,7 +158,7 @@ jobs:
     - name: Prepare version information (1/3)
       uses: oprypin/find-latest-tag@v1.1.2
       with:
-        repository: ThePBone/GalaxyBudsClient
+        repository: timschneeb/GalaxyBudsClient
         releases-only: true
       id: last_release  
       
@@ -167,7 +168,8 @@ jobs:
       with:
         length: 6
     - name: Prepare version information (3/3)
-      run: echo 'version={${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}}' >> $GITHUB_OUTPUT
+      shell: bash
+      run: echo 'version=${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}' >> $GITHUB_OUTPUT
       id: version
       
     - name: Download setup artifact (x64)
@@ -189,8 +191,30 @@ jobs:
       with:
         files: '*.exe'
         repo-token: ${{ secrets.GH_TOKEN }}
+
+  release-on-winget:
+    runs-on: windows-latest
+    needs: [attach-to-release]
+    if: github.event_name == 'release'
+
+    steps:
+    - name: Prepare version information (1/2)
+      uses: oprypin/find-latest-tag@v1.1.2
+      with:
+        repository: timschneeb/GalaxyBudsClient
+        releases-only: true
+      id: last_release  
+      
+    - name: Prepare version information (2/2)
+      uses: benjlevesque/short-sha@v3.0
+      id: short-sha
+      with:
+        length: 6
     
-
-
-
+    - name: Release on WinGet
+      uses: vedantmgoyal9/winget-releaser@main
+      with:
+        identifier: timschneeb.GalaxyBudsClient
+        version: '${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}'
+        token: ${{ secrets.WINGET_TOKEN }}
 

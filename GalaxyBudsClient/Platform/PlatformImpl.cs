@@ -22,10 +22,11 @@ public static class PlatformImpl
     [SuppressMessage("ReSharper", "FieldCanBeMadeReadOnly.Global")] 
     public static IPlatformImplCreator Creator = new DummyPlatformImplCreator();
 
-    public static IAutoStartHelper AutoStart { get; }
-    public static IHotkeyBroadcast HotkeyBroadcast { get; }
-    public static IHotkeyReceiver HotkeyReceiver { get; }
-    public static IMediaKeyRemote MediaKeyRemote { get; }
+    public static IDesktopServices DesktopServices { private set; get; }
+    public static IHotkeyBroadcast HotkeyBroadcast { private set; get; }
+    public static IHotkeyReceiver HotkeyReceiver { private set; get; }
+    public static IMediaKeyRemote MediaKeyRemote { private set; get; }
+    public static IOfficialAppDetector OfficialAppDetector { private set; get; }
 
     static PlatformImpl()
     {
@@ -43,12 +44,24 @@ public static class PlatformImpl
         
         EventDispatcher.Instance.EventReceived += OnEventReceived;
         
-        AutoStart = Creator.CreateAutoStartHelper() ?? new DummyAutoStartHelper();
+        DesktopServices = Creator.CreateDesktopServices() ?? new DummyDesktopServices();
         HotkeyBroadcast = Creator.CreateHotkeyBroadcast() ?? new DummyHotkeyBroadcast();
         HotkeyReceiver = Creator.CreateHotkeyReceiver() ?? new DummyHotkeyReceiver();
         MediaKeyRemote = Creator.CreateMediaKeyRemote() ?? new DummyMediaKeyRemote();
+        OfficialAppDetector = Creator.CreateOfficialAppDetector() ?? new DummyOfficialAppDetector();
     }
 
+    public static void InjectExternalBackend(IPlatformImplCreator platformImplCreator)
+    {
+        Creator = platformImplCreator;
+        DesktopServices = Creator.CreateDesktopServices() ?? new DummyDesktopServices();
+        HotkeyBroadcast = Creator.CreateHotkeyBroadcast() ?? new DummyHotkeyBroadcast();
+        HotkeyReceiver = Creator.CreateHotkeyReceiver() ?? new DummyHotkeyReceiver();
+        MediaKeyRemote = Creator.CreateMediaKeyRemote() ?? new DummyMediaKeyRemote();
+        OfficialAppDetector = Creator.CreateOfficialAppDetector() ?? new DummyOfficialAppDetector();
+        BluetoothImpl.Reallocate();
+    }
+    
     public static void SwitchWindowsBackend()
     {
 #if Windows

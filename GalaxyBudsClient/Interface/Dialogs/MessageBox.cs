@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Avalonia;
 using Avalonia.Controls;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Generated.I18N;
@@ -11,7 +12,7 @@ public class MessageBox
     public required string Description { get; init; }
     public string ButtonText { get; init; } = Strings.Okay;
 
-    public async Task ShowAsync(Window? host = null)
+    public async Task ShowAsync(Visual? host = null)
     {
         var cd = new ContentDialog
         {
@@ -21,6 +22,6 @@ public class MessageBox
             DefaultButton = ContentDialogButton.Close
         };
 
-        await cd.ShowAsync(host ?? MainWindow.Instance);
+        await cd.ShowAsync(TopLevel.GetTopLevel(MainView.Instance));
     }
 }

@@ -73,11 +73,19 @@ namespace GalaxyBudsClient.Platform.WindowsRT
                     Log.Debug("WindowsRT.BluetoothService: Device added: {DeviceInfoId}", deviceInfo.Id);
                     if (deviceInfo.Name != string.Empty)
                     {
-                        var device = await global::Windows.Devices.Bluetooth.BluetoothDevice.FromIdAsync(deviceInfo.Id).AsTask();
-                        var services = await device.GetRfcommServicesAsync(BluetoothCacheMode.Cached).AsTask();
-                        var knownServices = services?.Services?.Select(x => x.ServiceId.Uuid);
-                    
-                        _deviceCache.Add(new BluetoothDeviceRt(deviceInfo, knownServices));
+                        try
+                        {
+                            var device = await global::Windows.Devices.Bluetooth.BluetoothDevice
+                                .FromIdAsync(deviceInfo.Id).AsTask();
+                            var services = await device.GetRfcommServicesAsync(BluetoothCacheMode.Cached).AsTask();
+                            var knownServices = services?.Services?.Select(x => x.ServiceId.Uuid);
+
+                            _deviceCache.Add(new BluetoothDeviceRt(deviceInfo, knownServices));
+                        }
+                        catch (ArgumentException ex)
+                        {
+                            Log.Error(ex, "Device info added");
+                        }
                     }
                 };
                
@@ -109,9 +117,17 @@ namespace GalaxyBudsClient.Platform.WindowsRT
                     IEnumerable<Guid>? knownServices = null;
                     if (deviceInfoUpdate != null)
                     {
-                        var device = await global::Windows.Devices.Bluetooth.BluetoothDevice.FromIdAsync(deviceInfoUpdate.Id).AsTask();
-                        var services = await device.GetRfcommServicesAsync(BluetoothCacheMode.Cached).AsTask();
-                        knownServices = services?.Services?.Select(x => x.ServiceId.Uuid);
+                        try
+                        {
+                            var device = await global::Windows.Devices.Bluetooth.BluetoothDevice
+                                .FromIdAsync(deviceInfoUpdate.Id).AsTask();
+                            var services = await device.GetRfcommServicesAsync(BluetoothCacheMode.Cached).AsTask();
+                            knownServices = services?.Services?.Select(x => x.ServiceId.Uuid);
+                        }
+                        catch (ArgumentException ex)
+                        {
+                            Log.Error(ex, "Device info updated");
+                        }
                     }
                     
                     _deviceCache?.Where(x => deviceInfoUpdate?.Id == x?.Id)

@@ -3,7 +3,7 @@
 
     <!-- English name of this language -->
     <sys:String x:Key="language_name_en">English</sys:String>
-    
+
     <!--:::::::: Source code ::::::::-->
 
     <!--General-->
@@ -27,18 +27,21 @@
     <sys:String x:Key="help">Help</sys:String>
     <sys:String x:Key="important">Important</sys:String>
     <sys:String x:Key="home">Home</sys:String>
+    <sys:String x:Key="read_failed">Failed to read file. Access denied.</sys:String>
     <sys:String x:Key="please_wait">Please wait...</sys:String>
     <sys:String x:Key="value_left_right_inline">Left: {0}, Right: {1}</sys:String>
     <sys:String x:Key="value_left_right_multiline">Left: {0}
 Right: {1}</sys:String>
-    <sys:String x:Key="other_x">Other ({0})</sys:String>    
+    <sys:String x:Key="other_x">Other ({0})</sys:String>
     <sys:String x:Key="no_data_stored">No data stored</sys:String>
     <sys:String x:Key="not_available">Not available</sys:String>
     <sys:String x:Key="last_updated_at_n">Last updated at {0}</sys:String>
     <sys:String x:Key="file_not_found">File not found</sys:String>
     <sys:String x:Key="nobluetoothdev">No Bluetooth adapter found. Please enable Bluetooth and try again.</sys:String>
+    <sys:String x:Key="feature_unsupported_platform">This feature is currently not supported on this platform.</sys:String>
 
     <sys:String x:Key="anc">Active noise cancelling</sys:String>
+    <sys:String x:Key="adaptive">Adaptive</sys:String>
 
     <!--Dark Mode States-->
     <sys:String x:Key="darkmode_disabled">Off</sys:String>
@@ -156,6 +159,9 @@ Right: {1}</sys:String>
     <sys:String x:Key="welcome_register_desc">Choose and register your pair of Galaxy Buds</sys:String>
     <sys:String x:Key="welcome_textblock_p1">This Galaxy Buds Manager is unofficial and not affiliated with Samsung in any way.
 This program is designed to provide much more functionality over the official Samsung wearable app. Some features such as 'Game Mode' only work on Samsung phones and cannot be enabled on PCs.</sys:String>
+    <sys:String x:Key="welcome_android_hint_title">Important information for Android users</sys:String>
+    <sys:String x:Key="welcome_android_hint">This app was initially designed for use on desktop computers. Features that need this app to run in the background, such as custom touch actions and battery statistics, are currently unavailable in this version.
+If the official Samsung Wearable app is active alongside this app, connection issues may occur. Please make sure to close the official app properly before using this app.</sys:String>
 
     <!--Main page-->
     <sys:String x:Key="mainpage_header">Home</sys:String>
@@ -191,7 +197,7 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="devices_delete_confirmation">Are you sure you want to remove this device?</sys:String>
     <sys:String x:Key="devices_settings_link">Manage paired devices</sys:String>
     <sys:String x:Key="devices_settings_link_desc">Add, remove, or select a primary device</sys:String>
-    
+
     <!--Touchpad gestures-->
     <sys:String x:Key="touchpad_gesture_header">Enable touchpad gestures</sys:String>
     <sys:String x:Key="touchpad_gesture_single">Single tap</sys:String>
@@ -247,6 +253,8 @@ This program is designed to provide much more functionality over the official Sa
     <sys:String x:Key="system_pairing_mode_desc">Disconnect your earbuds from this PC and make it visible to other devices</sys:String>
     <sys:String x:Key="system_trace_core_dump">Download trace and coredumps</sys:String>
     <sys:String x:Key="system_trace_core_dump_desc">Retrieve raw debugging data from your earbuds</sys:String>
+    <sys:String x:Key="system_hidden_at_mode">Hidden system settings</sys:String>
+    <sys:String x:Key="system_hidden_at_mode_desc">Edit hidden settings such as serial numbers and UART state</sys:String>
     <sys:String x:Key="system_info">View system information</sys:String>
     <sys:String x:Key="system_info_desc">Display detailed information about your earbuds</sys:String>
     <sys:String x:Key="system_flasher">Install firmware updates</sys:String>
@@ -306,6 +314,44 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="coredump_dl_save_success">{0} dump(s) were written to '{1}'</sys:String>
     <sys:String x:Key="coredump_dl_save_dialog_title">Select a download directory...</sys:String>
 
+    <!-- Hidden AT modes -->
+    <sys:String x:Key="hidden_mode_warning">Proceed with caution</sys:String>
+    <sys:String x:Key="hidden_mode_warning_desc">Some changes made on this page cannot be restored by a factory reset. Not all models support these settings.</sys:String>
+    <sys:String x:Key="hidden_mode_target">Target device: {0} earbud</sys:String> <!-- {0} = Left or Right -->
+    <sys:String x:Key="hidden_mode_target_l_desc">To modify your left earbud, put the right earbud into the case and close it.</sys:String>
+    <sys:String x:Key="hidden_mode_target_r_desc">To modify your right earbud, put the left earbud into the case and close it.</sys:String>
+    <sys:String x:Key="hidden_mode_input_wrong_length">The new value must be exactly {0} characters long.</sys:String>
+    <sys:String x:Key="hidden_mode_uart_on_confirm">UART has been successfully enabled</sys:String>
+    <sys:String x:Key="hidden_mode_uart_off_confirm">UART has been successfully disabled</sys:String>
+    <sys:String x:Key="hidden_mode_uart">Enable UART port</sys:String>
+    <sys:String x:Key="hidden_mode_uart_desc">Temporarily enables the physical UART port on the PCB of the current target device for debugging purposes</sys:String>
+    <sys:String x:Key="hidden_mode_power">Power menu</sys:String>
+    <sys:String x:Key="hidden_mode_power_desc">Shutdown, reboot or put the current target device to sleep</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change">Change serial number</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change_desc">Changes the serial number of the current target device</sys:String>
+    <sys:String x:Key="hidden_mode_did_change">Change DID number &amp; color</sys:String>
+    <sys:String x:Key="hidden_mode_did_change_desc">Changes the device model id of the current target device</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change">Change SKU code</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change_desc">Changes the product code of the current target device</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_addr_change">Change peer Bluetooth address</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_change_desc">Changes the peer Bluetooth address of the current target device</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_addr_change">Change local Bluetooth address</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_change_desc">Changes the local Bluetooth address of the current target device</sys:String>
+    <sys:String x:Key="hidden_mode_terminal">Hidden command terminal</sys:String>
+    <sys:String x:Key="hidden_mode_terminal_desc">Send custom AT commands to the current target device</sys:String>
+
+    <sys:String x:Key="power_menu_hint">Only the current target earbud will be affected.</sys:String>
+    <sys:String x:Key="power_menu_reboot">Reboot</sys:String>
+    <sys:String x:Key="power_menu_shutdown">Shutdown</sys:String>
+    <sys:String x:Key="power_menu_sleep">Factory sleep mode</sys:String>
+    
+    <sys:String x:Key="at_terminal_cmd_id">Command id</sys:String>
+    <sys:String x:Key="at_terminal_cmd_param">Command parameter (optional)</sys:String>
+    <sys:String x:Key="at_terminal_cmd_id_invalid">This command id is invalid. Please enter a 16-bit hexadecimal value, such as 0007 or 004C.</sys:String>
+    <sys:String x:Key="at_terminal_output">Output</sys:String>
+    <sys:String x:Key="at_terminal_send">Send</sys:String>
+
+    
     <!-- Usage-/metering reports -->
     <sys:String x:Key="usage_reports_header">Usage reports</sys:String>
     <sys:String x:Key="usage_reports_hint">These reports are collected by the earbuds themselves. The data is displayed as-is and may be inaccurate. The official Wearable app usually resets most counters periodically and then sends the collected data to Samsung unless you haven't consented to data collection in their app. Some counters, such as charging cycles, are not reset.</sys:String>
@@ -342,25 +388,25 @@ If the transmission is stuck or the device disconnected prematurely, you need to
     <sys:String x:Key="batt_hist_time_span_tip_title">Time span</sys:String>
     <sys:String x:Key="batt_hist_control_tip_title">Mouse controls</sys:String>
     <sys:String x:Key="batt_hist_control_tip">Drag the canvas to move around the plot.
-  
-Scroll to zoom horizontally and vertically. 
+
+Scroll to zoom horizontally and vertically.
 
 Hover over the X or Y axis and scroll to zoom only horizontally or vertically. Scrolling over the X-axis (time) would stretch or squash it, for example.</sys:String>
     <sys:String x:Key="batt_hist_overlay_tip_title">Overlays</sys:String>
     <sys:String x:Key="batt_hist_overlay_tip">You can use overlays to add additional context to the plot.
 
-Noise controls: Shows which noise controls were enabled or disabled. 
+Noise controls: Shows which noise controls were enabled or disabled.
 
 Wear state: Shows if the earbuds were worn or not.
 
 Host device: Shows which earbud is hosting the Bluetooth connection to the computer
-        
+
 The overlay data may be hard to understand when viewing large time ranges. Hover over the X-axis and scroll up to zoom into a specific time range you want to inspect for a better overview.</sys:String>
     <sys:String x:Key="batt_hist_tools_tip_title">Tools</sys:String>
     <sys:String x:Key="batt_hist_tools_tip">Pan &amp; zoom: Default mode. Navigate around the plot by panning and zooming.
-        
+
 Measure time: Select a horizontal span to measure the elapsed time between the start and end of the selection.
-        
+
 Measure level: Select a vertical span to measure the battery level difference between the start and end of the selection.</sys:String>
 
     <!--Settings-->
@@ -381,6 +427,8 @@ Measure level: Select a vertical span to measure the battery level difference be
     <sys:String x:Key="settings_minimize_tray_description">Keep in background instead of terminating the app</sys:String>
     <sys:String x:Key="settings_realistic_earbud_icons">Use realistic earbud images</sys:String>
     <sys:String x:Key="settings_realistic_earbud_icons_description">Display realistic &amp; color-aware images of your earbuds, if they support it</sys:String>
+    <sys:String x:Key="settings_nav_sidebar">Navigation sidebar</sys:String>
+    <sys:String x:Key="settings_nav_sidebar_description">Show or collapse the navigation buttons on the left hand side</sys:String>
     <sys:String x:Key="settings_tray_settings">Tray icon &amp; startup</sys:String>
     <sys:String x:Key="settings_dyn_tray_mode">Dynamic tray icon</sys:String>
     <sys:String x:Key="settings_dyn_tray_mode_description">Display the battery status in the tray icon</sys:String>
@@ -433,7 +481,7 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="fmg_smart_things_find_manage_desc">View and manage your SmartThings Find data stored on your earbuds</sys:String>
     <sys:String x:Key="fmg_smart_things_find_open">Open SmartThings Find website</sys:String>
     <sys:String x:Key="fmg_smart_things_find_open_desc">Track your earbuds online. Requires a Samsung account and the official SmartThings Find app to be set-up.</sys:String>
-    
+
     <!--SmartThings data-->
     <sys:String x:Key="smart_things_find">SmartThings</sys:String>
     <sys:String x:Key="smart_things_find_clear">Delete SmartThings Find configuration</sys:String>
@@ -558,6 +606,19 @@ The remap configuration is only active on this device. If you connect your earbu
     <sys:String x:Key="connlost_header">Unable to establish connection</sys:String>
     <sys:String x:Key="connlost_connect">Connect</sys:String>
     <sys:String x:Key="connlost_connecting">Connecting...</sys:String>
+    <sys:String x:Key="connlost_troubleshoot">Troubleshoot</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_title">How to troubleshoot connection issues</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_content">Please make sure that Samsung's official Wearable app for the Galaxy Buds does not attempt to connect to your earbuds in the background.
+Otherwise, you will experience very frequent connection loss issues as their app will repeatedly attempt to gain control over the earbuds.
+
+You can choose one of these solutions to fix this issue:
+
+• Unpair the earbuds from the Wearable app. (In the Wearable app, open the hamburger menu, select 'Manage devices', and delete your earbuds from the list.)
+
+• Uninstall the Galaxy Buds plugin for the Samsung Wearable app althogether.
+
+• Use an app like 'Hail' or 'Ice Box' to temporarily freeze the official Galaxy Buds plugin for the Samsung Wearable app to prevent it from running.
+    </sys:String>
 
     <!-- Pairing mode -->
     <sys:String x:Key="connlost_disconnected">Device disconnected</sys:String>
@@ -645,8 +706,8 @@ Details:</sys:String>
 
     <!--Buds app detected page-->
     <sys:String x:Key="budsapp_header">Bluetooth compatibility info</sys:String>
-    <sys:String x:Key="budsapp_text_p1">The official Galaxy Buds app for Windows 10/11 is installed alongside this application.</sys:String>
-    <sys:String x:Key="budsapp_text_p2">If it is open and connected, GalaxyBudsClient might have issues connecting to your earbuds. Make sure to close it before continuing. Likewise, the official Galaxy Buds app can't connect to your earbuds while Galaxy Buds Manager is active and has opened connections to the earbuds.</sys:String>
+    <sys:String x:Key="budsapp_text_p1">The official Galaxy Buds app is installed alongside this application.</sys:String>
+    <sys:String x:Key="budsapp_text_p2">If it is active in the background, GalaxyBudsClient might have issues connecting to your earbuds. Make sure to unregister your earbuds from the official app or prevent it from running in the background by other means.</sys:String>
     <sys:String x:Key="budsapp_text_p3">Keep in mind that only one application can talk to your Galaxy Buds at a time.</sys:String>
 
     <!--Manual pairing-->
@@ -654,11 +715,13 @@ Details:</sys:String>
     <sys:String x:Key="manualpair_title_dialog">Choose your Galaxy Buds device</sys:String>
     <sys:String x:Key="manualpair_model">Choose the correct model type</sys:String>
     <sys:String x:Key="manualpair_note">You should only manually connect your earbuds if the setup wizard does not recognize them correctly.</sys:String>
-    
+
     <!--Rename-->
     <sys:String x:Key="rename">Rename earbuds</sys:String>
     <sys:String x:Key="rename_desc">This will rename earbuds for all devices.</sys:String>
     <sys:String x:Key="rename_warn">Renaming your earbuds may not be possible using official apps as they restrict it to Samsung smartphones, which means you may need this app to reset the personalized name. The name change may not be detected by devices until you un-pair and re-pair your earbuds.</sys:String>
+    <sys:String x:Key="rename_warn_oneui_title">Important information for OneUI users</sys:String>
+    <sys:String x:Key="rename_warn_oneui">If your device is running Samsung OneUI, you should use Samsung's official method to rename your earbuds in the system settings. Otherwise, there will be connection issues while setting a new name.</sys:String>
     <sys:String x:Key="rename_too_short">The name you entered is too short (no characters) or too long (maximum limit imposed by earbuds).</sys:String>
     <sys:String x:Key="rename_hint">Enter new name...</sys:String>
     <sys:String x:Key="rename_label">New device name</sys:String>

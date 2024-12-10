@@ -66,7 +66,7 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
             CloseButtonText = Strings.Cancel,
             CloseButtonCommand = new MiniCommand(p => _ = BluetoothImpl.Instance.DisconnectAsync())
         };
-        _ = cd.ShowAsync(MainWindow.Instance);
+        _ = cd.ShowAsync();
         
         if(BluetoothImpl.Instance.IsConnected)
             await BluetoothImpl.Instance.DisconnectAsync();
@@ -100,13 +100,13 @@ public class DeviceSelectionDialogViewModel : ViewModelBase
         {
             devices = await BluetoothImpl.Instance.GetDevicesAsync();
         }
-        catch (PlatformNotSupportedException ex)
+        catch (Exception ex)
         {
             await new MessageBox
             {
                 Title = Strings.Error,
                 Description = ex.Message
-            }.ShowAsync(MainWindow.Instance);
+            }.ShowAsync();
             return;
         }
 

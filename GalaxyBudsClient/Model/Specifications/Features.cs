@@ -11,6 +11,7 @@ public enum Features
     Anc,
     NoiseControl,
     NoiseControlModeDualSide,
+    NoiseControlAdaptive,
     ExtraClearCallSound,
     BixbyWakeup,
     DetectConversations,
@@ -30,6 +31,7 @@ public enum Features
     AncNoiseReductionLevels,
     AdvancedTouchLock,
     AdvancedTouchLockForCalls,
+    AdvancedTouchLockSwipe,
     CallPathControl,
     ChargingState,
     FmgRingWhileWearing,
@@ -46,5 +48,7 @@ public enum Features
     DeviceColor,
     Rename,
     SmartThingsFind,
-    UsageReport
+    UsageReport,
+    HotCommandLanguageUpdate,
+    HiddenAtMode,
 }

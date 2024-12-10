@@ -37,7 +37,7 @@ public partial class TouchActionEditorDialog : UserControl
         };
 
         dialog.PrimaryButtonClick += OnPrimaryButtonClick;
-        var result = await dialog.ShowAsync(MainWindow.Instance);
+        var result = await dialog.ShowAsync(TopLevel.GetTopLevel(MainView.Instance));
         dialog.PrimaryButtonClick -= OnPrimaryButtonClick;
             
         return result == ContentDialogResult.None ? null : viewModel.Action;

@@ -35,6 +35,9 @@ public class InMemoryBinaryDocument : IBinaryDocument
     public bool IsReadOnly => false;
     public bool CanInsert => true;
     public bool CanRemove => true;
+    public IReadOnlyBitRangeUnion ValidRanges => 
+        new BitRangeUnion(new List<BitRange>{new (0UL, Length)}.AsReadOnly());
+
 #pragma warning disable CS0067
     public event EventHandler<BinaryDocumentChange>? Changed;
 #pragma warning restore CS0067

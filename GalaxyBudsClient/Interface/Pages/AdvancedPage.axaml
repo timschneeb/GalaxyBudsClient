@@ -29,7 +29,11 @@
                                              Description="{ext:Translate {x:Static i18N:Keys.AdvResumePlaybackDesc}}"
                                              IsChecked="{Binding ResumePlaybackOnSensor, Source={x:Static config:Settings.Data}}"
                                              Symbol="FlashPlay"
-                                             IsClickEnabled="True" />
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:RequiresDesktopBehavior />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
 
                 <controls:SettingsSwitchItem Content="{ext:Translate {x:Static i18N:Keys.AdvSeamless}}"
                                              Description="{ext:Translate {x:Static i18N:Keys.AdvSeamlessDesc}}"
@@ -100,7 +104,7 @@
                                              ActionSymbol="ChevronRight"
                                              IsClickEnabled="True">
                     <Interaction.Behaviors>
-                        <ext:RequiresFeatureBehavior Feature="BixbyWakeup" />
+                        <ext:RequiresFeatureAndDesktopBehavior Feature="BixbyWakeup" />
                         <ext:RequiresConnectedDeviceBehavior />
                     </Interaction.Behaviors>
                 </controls:SettingsSymbolItem>

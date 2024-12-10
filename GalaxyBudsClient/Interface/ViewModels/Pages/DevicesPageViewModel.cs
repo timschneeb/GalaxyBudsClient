@@ -17,8 +17,14 @@ public class DevicesPageViewModel : MainPageViewModelBase
     public override Symbol IconKey => Symbol.BluetoothConnected;
     public override bool ShowsInFooter => true;
     
-    public async void DoNewCommand() => await DeviceSelectionDialog.OpenDialogAsync();
-    
+    public async void DoNewCommand()
+    {
+        if (!await Utils.Interface.Dialogs.RequireFullVersion("Multi-device support not available in demo"))
+            return;
+        
+        await DeviceSelectionDialog.OpenDialogAsync();
+    }
+
     public async void DoConnectCommand(object? param)
     {
         if (param is not Device device)
@@ -34,7 +40,7 @@ public class DevicesPageViewModel : MainPageViewModelBase
             CloseButtonText = Strings.Cancel,
             CloseButtonCommand = new MiniCommand(p => _ = BluetoothImpl.Instance.DisconnectAsync())
         };
-        _ = cd.ShowAsync(MainWindow.Instance);
+        _ = cd.ShowAsync(TopLevel.GetTopLevel(MainView.Instance));
         
         if(BluetoothImpl.Instance.IsConnected)
             await BluetoothImpl.Instance.DisconnectAsync();

@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,18 +18,25 @@ namespace GalaxyBudsClient.Interface.Pages;
 
 public partial class SystemPage : BasePage<SystemPageViewModel>
 {
+    private readonly string[] _restrictedItems = ["Firmware", "UsageReport", "HiddenMode"];
+    
     public SystemPage()
     {
         InitializeComponent();
         AddHandler(SettingsExpanderItem.ClickEvent, OnSettingsItemClicked);
     }
 
-    private void OnSettingsItemClicked(object? sender, RoutedEventArgs e)
+    private async void OnSettingsItemClicked(object? sender, RoutedEventArgs e)
     {
         if (e.Source is not SettingsExpanderItem item)
             return;
         
-        NavigationService.Instance.Navigate(item.Name);
+        
+        if (!_restrictedItems.Contains(item.Name) ||
+            await Utils.Interface.Dialogs.RequireFullVersion())
+        {
+            NavigationService.Instance.Navigate(item.Name);
+        }
     }
 
     private async void OnFactoryResetClicked(object? sender, RoutedEventArgs e)
@@ -44,7 +52,7 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
 
         cd.PrimaryButtonClick += OnFactoryResetConfirmed;
         cd.SecondaryButtonClick += (_, _) => cd.Hide();
-        await cd.ShowAsync(MainWindow.Instance);
+        await cd.ShowAsync(TopLevel.GetTopLevel(MainView.Instance));
         cd.PrimaryButtonClick -= OnFactoryResetConfirmed;
     }
 
@@ -84,7 +92,7 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
                 {
                     Title = Strings.FactoryErrorTitle,
                     Description = Strings.FactoryError.Replace("{0}", info)
-                }.ShowAsync(MainWindow.Instance);
+                }.ShowAsync();
                 return;
             }
 
@@ -94,6 +102,9 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
 
     private async void OnPairingModeClicked(object? sender, RoutedEventArgs e)
     {
+        if (!await Utils.Interface.Dialogs.RequireFullVersion())
+            return;
+        
         await BluetoothImpl.Instance.SendRequestAsync(MsgIds.UNK_PAIRING_MODE);
         await new MessageBox
         {
@@ -104,11 +115,17 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
     
     private async void OnSelfTestClicked(object? sender, RoutedEventArgs e)
     {
+        if (!await Utils.Interface.Dialogs.RequireFullVersion())
+            return;
+        
         await new SelfTestDialog().ExecuteTestAsync();
     }
 
     private async void OnSpatialSensorTestClicked(object? sender, RoutedEventArgs e)
     {
+        if (!await Utils.Interface.Dialogs.RequireFullVersion())
+            return;
+        
         var textBlock = new TextBlock
         {
             Text = Strings.SystemWaitingForDevice,
@@ -127,7 +144,7 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
         sensorManager.NewQuaternionReceived += OnNewQuaternionReceived;
         sensorManager.Attach();
         
-        await cd.ShowAsync(MainWindow.Instance);
+        await cd.ShowAsync(TopLevel.GetTopLevel(MainView.Instance));
         
         sensorManager.NewQuaternionReceived -= OnNewQuaternionReceived;
         sensorManager.Detach();
@@ -145,6 +162,9 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
 
     private async void OnTraceDumpDownloadClicked(object? sender, RoutedEventArgs e)
     {
+        if (!await Utils.Interface.Dialogs.RequireFullVersion())
+            return;
+        
         var result = await new QuestionBox
         {
             Title = Strings.SystemTraceCoreDump,

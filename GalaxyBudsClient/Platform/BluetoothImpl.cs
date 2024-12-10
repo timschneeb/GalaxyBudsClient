@@ -127,7 +127,8 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         _backend.NewDataAvailable += OnNewDataAvailable;
         _backend.RfcommConnected += OnRfcommConnected;
         _backend.Disconnected += OnDisconnected;
-            
+
+        EventDispatcher.Instance.EventReceived += OnEventReceived;
         MessageReceived += SppMessageReceiver.Instance.MessageReceiver;
         InvalidDataReceived += OnInvalidDataReceived;
     }
@@ -166,7 +167,8 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         }
 
         MessageReceived -= SppMessageReceiver.Instance.MessageReceiver;
-            
+        EventDispatcher.Instance.EventReceived -= OnEventReceived;
+        
         await _loopCancelSource.CancelAsync();
         await Task.Delay(50);
 
@@ -178,6 +180,14 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         catch (Exception ex)
         {
             Log.Error(ex, "BluetoothImpl.Dispose: Error while disposing children");
+        }
+    }
+    
+    private async void OnEventReceived(Event e, object? arg)
+    {
+        if (e == Event.Connect && !IsConnected)
+        {
+            await ConnectAsync();
         }
     }
     
@@ -210,22 +220,18 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         DeviceMessageCache.Instance.Clear();
     }
         
+    /// <summary>
+    /// Fetches a list of available Bluetooth devices.
+    /// </summary>
+    /// <exception cref="BluetoothException">Thrown if the Bluetooth is temporarily unavailable</exception>
+    /// <exception cref="PlatformNotSupportedException">Thrown if the Bluetooth is permanently unavailable</exception>
     public async Task<IEnumerable<BluetoothDevice>> GetDevicesAsync()
     {
-        try
+        if (ShowDummyDevices)
         {
-            if (ShowDummyDevices)
-            {
-                return (await _backend.GetDevicesAsync()).Concat(BluetoothDevice.DummyDevices());
-            }
-            return await _backend.GetDevicesAsync();
+            return (await _backend.GetDevicesAsync()).Concat(BluetoothDevice.DummyDevices());
         }
-        catch (BluetoothException ex)
-        {
-            OnBluetoothError(ex);
-        }
-
-        return Array.Empty<BluetoothDevice>();
+        return await _backend.GetDevicesAsync();
     }
 
     private async Task<string> GetDeviceNameAsync()
@@ -424,7 +430,12 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         DeviceMessageCache.Instance.Clear();
         
         Device.Current = Settings.Data.Devices.FirstOrDefault();
-        BatteryHistoryManager.Instance.DeleteDatabaseForDevice(toRemove);
+        if (PlatformUtils.IsDesktop)
+        {
+            BatteryHistoryManager.Instance.DeleteDatabaseForDevice(toRemove);
+            
+            
+        }
     }
     
     private void OnDisconnected(object? sender, string reason)

@@ -182,7 +182,7 @@ public class BatteryHistoryPageViewModel : SubPageViewModelBase
         
         Plot.Axes.Left.TickGenerator = new NumericAutomatic
         {
-            LabelFormatter = value => value is < 0 or > 100 ? string.Empty : NumericAutomatic.DefaultLabelFormatter(value)
+            LabelFormatter = value => value is < 0 or > 100 ? string.Empty : LabelFormatters.Numeric(value)
         };
 
         Plot.Font.Set(font);

@@ -12,7 +12,7 @@ public enum TapTestResult
     OnlyTapOnce = 3
 }
 
-[MessageDecoder(MsgIds.TAP_TEST_MODE_EVENT)]
+[MessageDecoder((MsgIds)LegacyMsgIds.TAP_TEST_MODE_EVENT)]
 public class TapTestModeEventDecoder : BaseMessageDecoder
 {
     public TapTestResult Result { get; }

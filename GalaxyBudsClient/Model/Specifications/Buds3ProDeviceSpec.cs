@@ -6,7 +6,6 @@ using GalaxyBudsClient.Model.Specifications.Touch;
 
 namespace GalaxyBudsClient.Model.Specifications;
 
-// TODO: verify once the Buds3Pro plugin is released
 public class Buds3ProDeviceSpec : IDeviceSpec
 {
     public Dictionary<Features, FeatureRule?> Rules => new()
@@ -24,26 +23,27 @@ public class Buds3ProDeviceSpec : IDeviceSpec
         { Features.SpatialSensor, null },
         { Features.BixbyWakeup, null },
         { Features.GearFitTest, null },
-        { Features.ExtraClearCallSound, new FeatureRule(13) },
-        { Features.AmbientExtraLoud, new FeatureRule(13) },
+        { Features.ExtraClearCallSound, null },
+        { Features.AmbientExtraLoud, null },
         { Features.AmbientSound, null },
         { Features.Anc, null },
-        { Features.AmbientSidetone, new FeatureRule(1) },
+        { Features.AmbientSidetone, null },
         { Features.AmbientCustomize, null },
         { Features.NoiseControlsWithOneEarbud, null },
         { Features.DebugSku, null },
         { Features.AdvancedTouchLock, null },
-        { Features.AdvancedTouchLockForCalls, new FeatureRule(1) },
-        { Features.FmgRingWhileWearing, new FeatureRule(4) },
-        { Features.CallPathControl, new FeatureRule(1) },
-        { Features.ChargingState, new FeatureRule(11, 1) },
-        { Features.AutoAdjustSound, new FeatureRule(3) },
-        { Features.HeadTracking, new FeatureRule(8) },
+        { Features.AdvancedTouchLockForCalls, null },
+        { Features.FmgRingWhileWearing, null },
+        { Features.CallPathControl, null },
+        { Features.ChargingState, null },
+        { Features.AutoAdjustSound, null },
+        { Features.HeadTracking, null },
         { Features.CradleSerialNumber, null },
         { Features.DeviceColor, null },
         { Features.Rename, null },
         { Features.SmartThingsFind, null },
-        { Features.UsageReport, null }
+        { Features.UsageReport, null },
+        { Features.HotCommandLanguageUpdate, new FeatureRule(2) }
     };
         
     public Models Device => Models.Buds3Pro;

@@ -1,16 +1,19 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using FluentAvalonia.UI.Controls;
 using FluentAvalonia.UI.Navigation;
 using FluentAvalonia.UI.Windowing;
+using GalaxyBudsClient.Generated.I18N;
+using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
+using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Utils.Interface;
 using Serilog;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
@@ -19,15 +22,10 @@ namespace GalaxyBudsClient.Interface;
 
 public partial class MainView : UserControl
 {
-    public MainView()
-    {
-        InitializeComponent();
-    }
+    public static MainView? Instance { get; private set; }
 
     private MainViewViewModel? ViewModel => DataContext as MainViewViewModel;
     private PageViewModelBase? CurrentPageViewModel { set; get; }
-
-    private bool _isDesktop;
 
     private readonly MainPageViewModelBase[] _mainPages = [
         new WelcomePageViewModel(),
@@ -53,16 +51,23 @@ public partial class MainView : UserControl
         new RenamePageViewModel(),
         new FmmConfigPageViewModel(),
         new UsageReportPageViewModel(),
-        new BatteryHistoryPageViewModel()
+        new BatteryHistoryPageViewModel(),
+        new HiddenModePageViewModel()
     ];
-
-    protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
+    
+    public MainView()
     {
-        base.OnAttachedToVisualTree(e);
-
-        // Simple check - all desktop versions of this app will have a window as the TopLevel
-        // Mobile and WASM will have something else
-        _isDesktop = TopLevel.GetTopLevel(this) is Window;
+        InitializeComponent();
+        Instance = this;
+        
+        Loc.LanguageUpdated += OnLanguageUpdated;
+        
+        var insetsManager = TopLevel.GetTopLevel(this)?.InsetsManager;
+        if (insetsManager != null)
+        {
+            insetsManager.DisplayEdgeToEdge = true;
+        }
+        
         var vm = new MainViewViewModel
         {
             VmResolver = ResolveViewModelByType
@@ -77,11 +82,26 @@ public partial class MainView : UserControl
         NavigationService.Instance.Frame = FrameView;
 
         InitializeNavigationPages();
-
+        
+        Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
         BreadcrumbBar.ItemClicked += OnBreadcrumbBarItemClicked;
         FrameView.Navigated += OnFrameViewNavigated;
         NavView.ItemInvoked += OnNavigationViewItemInvoked;
         NavView.BackRequested += OnNavigationViewBackRequested;
+    }
+
+    private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(SettingsData.ShowSidebar))
+        {
+            RefreshSidebarState();
+            RefreshSidebarItemStates();
+        }
+    }
+
+    private void OnLanguageUpdated()
+    {
+        FlowDirection = Loc.ResolveFlowDirection();
     }
 
     public T? ResolveViewModelByType<T>() where T : PageViewModelBase
@@ -171,26 +191,42 @@ public partial class MainView : UserControl
         }
     }
     
+    private void RefreshSidebarState()
+    {
+        NavView.Classes.Set("AppNav", Settings.Data.ShowSidebar);
+        NavView.Classes.Set("MobileContentContainer", true);
+        NavView.PaneDisplayMode = Settings.Data.ShowSidebar ? 
+            NavigationViewPaneDisplayMode.Left : NavigationViewPaneDisplayMode.LeftMinimal;
+    }
+
+    private void RefreshSidebarItemStates()
+    {
+        foreach(var nvi in NavView.MenuItemsSource.Cast<NavigationViewItem>()
+                    .Concat(NavView.FooterMenuItemsSource.Cast<NavigationViewItem>()))
+        {
+            nvi.Classes.Set("AppNav", Settings.Data.ShowSidebar);
+        }
+    }
+    
     private void InitializeNavigationPages()
     {
-        var menuItems = new List<NavigationViewItem>(14);
-        var footerItems = new List<NavigationViewItem>(1);
-        
+        RefreshSidebarState();
+            
         Dispatcher.UIThread.Post(() =>
-        {
+        {   
+            var menuItems = new List<NavigationViewItem>(14);
+            var footerItems = new List<NavigationViewItem>(2);
+            
             foreach (var page in _mainPages)
             {
                 var nvi = new NavigationViewItem
                 {
-                    Content = Loc.ResolveOrDefault(page.TitleKey),
+                    Content = Loc.ResolveOrDefault(page.TitleKey) ?? page.FallbackTitle,
                     Tag = page,
                     IconSource = new SymbolIconSource { Symbol = page.IconKey }
                 };
 
-                if (_isDesktop || OperatingSystem.IsBrowser())
-                {
-                    nvi.Classes.Add("AppNav");
-                }
+                nvi.Classes.Set("AppNav", Settings.Data.ShowSidebar);
 
                 if (page.ShowsInFooter)
                     footerItems.Add(nvi);
@@ -201,20 +237,11 @@ public partial class MainView : UserControl
             NavView.MenuItemsSource = menuItems;
             NavView.FooterMenuItemsSource = footerItems;
             CheckSetupWizardState();
-
-            if (_isDesktop || OperatingSystem.IsBrowser())
-            {
-                NavView.Classes.Add("AppNav");
-            }
-            else
-            {
-                NavView.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftMinimal;
-            }
             
             // Go to Home if not in setup mode
             if(ViewModel?.IsInSetupWizard == false)
                 NavigationService.Instance.Navigate(typeof(HomePageViewModel));
-        });
+        }, DispatcherPriority.Render);
     }
 
     private void OnNavigationViewBackRequested(object? sender, NavigationViewBackRequestedEventArgs e)
@@ -320,5 +347,14 @@ public partial class MainView : UserControl
         {
             source.IsFilled = selected;
         }
+    }
+
+    private async void OnTroubleshootConnectionClicked(object? sender, RoutedEventArgs e)
+    {
+        await new MessageBox
+        {
+            Title = Strings.ConnlostTroubleshootTitle,
+            Description = Strings.ConnlostTroubleshootContent
+        }.ShowAsync();
     }
 }

@@ -20,6 +20,8 @@ namespace GalaxyBudsClient.Platform.Model
         
         public Major MajorClass { get; }
 
+        public BluetoothCoD(uint majorClass, uint minorClass) => MajorClass = (Major) majorClass;
+        
         public BluetoothCoD(uint cod)
         {
             var rawMajor = (cod >> 8) & 0x1f;

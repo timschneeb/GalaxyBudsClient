@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
@@ -78,7 +77,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
         Settings.Data.FirmwareWarningAccepted = result;
         if (!result)
         {
-            MainWindow.Instance.MainView.FrameView.GoBack();
+            MainView.Instance!.FrameView.GoBack();
         }
     }
     
@@ -102,7 +101,7 @@ public class FirmwarePageViewModel : SubPageViewModelBase
             Buttons = [],
             IconSource = new SymbolIconSource { Symbol = Symbol.Download },
             SubHeader = Strings.PleaseWait,
-            XamlRoot = MainWindow.Instance,
+            XamlRoot = MainView.Instance,
             ShowProgressBar = true
         };
         downloadDialog.SetProgressBarState(0, TaskDialogProgressState.Indeterminate);
@@ -153,11 +152,22 @@ public class FirmwarePageViewModel : SubPageViewModelBase
             new("All files") { Patterns = new List<string> { "*" } }
         };
                 
-        var file = await MainWindow.Instance.OpenFilePickerAsync(filters);
+        var file = await TopLevel.GetTopLevel(MainView.Instance)!.OpenFilePickerAsync(filters);
         if (file == null)
             return;
-       
-        await PrepareInstallation(await File.ReadAllBytesAsync(file), Path.GetFileName(file));
+
+        var data = await file.TryReadAllBytes();
+        if (data == null)
+        {
+            await new MessageBox
+            {
+                Title = Strings.Error,
+                Description = Strings.ReadFailed
+            }.ShowAsync();
+            return;
+        }
+
+        await PrepareInstallation(data, file.Name);
     }
     
     private async Task PrepareInstallation(byte[] data, string buildName)

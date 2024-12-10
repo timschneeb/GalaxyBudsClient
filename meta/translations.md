@@ -7,25 +7,25 @@ Translation instructions are available [in the wiki](https://github.com/ThePBone
 <table>
 <tr><th>Language</th><th>Progress</th><th>Missing strings</th><th>Details</th></tr>
 <tr><td>cn (China)</td><td>100%</td><td>No missing strings</td><td><a href="cn.md">View details</a></td></tr>
-<tr><td>cz (Czechia)</td><td>83%</td><td>83 missing string(s)</td><td><a href="cz.md">View details</a></td></tr>
-<tr><td>de (Germany)</td><td>48%</td><td>264 missing string(s)</td><td><a href="de.md">View details</a></td></tr>
-<tr><td>es (Spain)</td><td>28%</td><td>364 missing string(s)</td><td><a href="es.md">View details</a></td></tr>
-<tr><td>fr (France)</td><td>59%</td><td>205 missing string(s)</td><td><a href="fr.md">View details</a></td></tr>
-<tr><td>gr (Greece)</td><td>48%</td><td>263 missing string(s)</td><td><a href="gr.md">View details</a></td></tr>
-<tr><td>hu (Hungary)</td><td>66%</td><td>173 missing string(s)</td><td><a href="hu.md">View details</a></td></tr>
-<tr><td>il (Israel)</td><td>66%</td><td>173 missing string(s)</td><td><a href="il.md">View details</a></td></tr>
-<tr><td>in (India)</td><td>29%</td><td>361 missing string(s)</td><td><a href="in.md">View details</a></td></tr>
-<tr><td>it (Italy)</td><td>51%</td><td>249 missing string(s)</td><td><a href="it.md">View details</a></td></tr>
-<tr><td>ja (undefined)</td><td>28%</td><td>364 missing string(s)</td><td><a href="ja.md">View details</a></td></tr>
-<tr><td>ko (undefined)</td><td>67%</td><td>168 missing string(s)</td><td><a href="ko.md">View details</a></td></tr>
-<tr><td>nl (Netherlands)</td><td>67%</td><td>168 missing string(s)</td><td><a href="nl.md">View details</a></td></tr>
-<tr><td>pt (Portugal)</td><td>29%</td><td>361 missing string(s)</td><td><a href="pt.md">View details</a></td></tr>
-<tr><td>ro (Romania)</td><td>59%</td><td>205 missing string(s)</td><td><a href="ro.md">View details</a></td></tr>
-<tr><td>ru (Russian Federation)</td><td>63%</td><td>184 missing string(s)</td><td><a href="ru.md">View details</a></td></tr>
-<tr><td>tr (Turkey)</td><td>83%</td><td>83 missing string(s)</td><td><a href="tr.md">View details</a></td></tr>
-<tr><td>tw (Taiwan, Province of China)</td><td>67%</td><td>168 missing string(s)</td><td><a href="tw.md">View details</a></td></tr>
-<tr><td>ua (Ukraine)</td><td>59%</td><td>205 missing string(s)</td><td><a href="ua.md">View details</a></td></tr>
-<tr><td>vn (Viet Nam)</td><td>55%</td><td>229 missing string(s)</td><td><a href="vn.md">View details</a></td></tr>
+<tr><td>cz (Czechia)</td><td>100%</td><td>No missing strings</td><td><a href="cz.md">View details</a></td></tr>
+<tr><td>de (Germany)</td><td>44%</td><td>311 missing string(s)</td><td><a href="de.md">View details</a></td></tr>
+<tr><td>es (Spain)</td><td>26%</td><td>411 missing string(s)</td><td><a href="es.md">View details</a></td></tr>
+<tr><td>fr (France)</td><td>54%</td><td>252 missing string(s)</td><td><a href="fr.md">View details</a></td></tr>
+<tr><td>gr (Greece)</td><td>44%</td><td>310 missing string(s)</td><td><a href="gr.md">View details</a></td></tr>
+<tr><td>hu (Hungary)</td><td>60%</td><td>220 missing string(s)</td><td><a href="hu.md">View details</a></td></tr>
+<tr><td>il (Israel)</td><td>60%</td><td>220 missing string(s)</td><td><a href="il.md">View details</a></td></tr>
+<tr><td>in (India)</td><td>26%</td><td>408 missing string(s)</td><td><a href="in.md">View details</a></td></tr>
+<tr><td>it (Italy)</td><td>46%</td><td>296 missing string(s)</td><td><a href="it.md">View details</a></td></tr>
+<tr><td>ja (undefined)</td><td>26%</td><td>411 missing string(s)</td><td><a href="ja.md">View details</a></td></tr>
+<tr><td>ko (undefined)</td><td>67%</td><td>180 missing string(s)</td><td><a href="ko.md">View details</a></td></tr>
+<tr><td>nl (Netherlands)</td><td>61%</td><td>215 missing string(s)</td><td><a href="nl.md">View details</a></td></tr>
+<tr><td>pt (Portugal)</td><td>26%</td><td>408 missing string(s)</td><td><a href="pt.md">View details</a></td></tr>
+<tr><td>ro (Romania)</td><td>54%</td><td>252 missing string(s)</td><td><a href="ro.md">View details</a></td></tr>
+<tr><td>ru (Russian Federation)</td><td>58%</td><td>231 missing string(s)</td><td><a href="ru.md">View details</a></td></tr>
+<tr><td>tr (Turkey)</td><td>91%</td><td>46 missing string(s)</td><td><a href="tr.md">View details</a></td></tr>
+<tr><td>tw (Taiwan, Province of China)</td><td>61%</td><td>215 missing string(s)</td><td><a href="tw.md">View details</a></td></tr>
+<tr><td>ua (Ukraine)</td><td>54%</td><td>252 missing string(s)</td><td><a href="ua.md">View details</a></td></tr>
+<tr><td>vn (Viet Nam)</td><td>50%</td><td>276 missing string(s)</td><td><a href="vn.md">View details</a></td></tr>
 
 </table>
 

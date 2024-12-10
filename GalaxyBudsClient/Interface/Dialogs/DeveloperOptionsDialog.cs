@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Avalonia.Controls;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Model;
-using GalaxyBudsClient.Utils.Interface;
 using Symbol = FluentIcons.Common.Symbol;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
@@ -20,19 +20,19 @@ public class DeveloperOptionsDialog : TaskDialog
                 Text = "Bluetooth packet inspector",
                 IconSource = new SymbolIconSource { Symbol = Symbol.BluetoothSearching },
                 Description = "Inspect and send custom messages via Bluetooth",
-                Command = new MiniCommand(_ => { WindowLauncher.ShowDevTools(MainWindow.Instance); })
+                Command = new MiniCommand(_ => { Utils.Interface.Dialogs.ShowDevTools(); })
             },
             new()
             {
                 Text = "Translation utilities",
                 IconSource = new SymbolIconSource { Symbol = Symbol.Translate },
                 Description = "Hot-reload XAML dictionaries. Please refer to the wiki on GitHub for instructions.",
-                Command = new MiniCommand(_ => { WindowLauncher.ShowTranslatorTools(MainWindow.Instance); })
+                Command = new MiniCommand(_ => { Utils.Interface.Dialogs.ShowTranslatorTools(); })
             }
         };
         Buttons = new List<TaskDialogButton> { TaskDialogButton.CloseButton };
         IconSource = new SymbolIconSource { Symbol = Symbol.WindowDevTools };
-        XamlRoot = MainWindow.Instance;
+        XamlRoot = TopLevel.GetTopLevel(MainView.Instance);
     }
 
     protected override Type StyleKeyOverride => typeof(TaskDialog);

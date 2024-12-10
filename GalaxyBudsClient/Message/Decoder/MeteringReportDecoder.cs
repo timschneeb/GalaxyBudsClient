@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using GalaxyBudsClient.Generated.Model.Attributes;
+using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
@@ -20,6 +21,8 @@ public class MeteringReportDecoder : BaseMessageDecoder
     public int? AncOnTimeR { get; }
     public int? AmbientOnTimeL { get; }
     public int? AmbientOnTimeR { get; }
+    public int? AdaptiveOnTimeL { get; }
+    public int? AdaptiveOnTimeR { get; }
     
     public MeteringReportDecoder(SppMessage msg) : base(msg)
     {
@@ -43,6 +46,11 @@ public class MeteringReportDecoder : BaseMessageDecoder
             EscoUsingTimeL = reader.ReadInt32();
             AncOnTimeL = reader.ReadInt32();
             AmbientOnTimeL = reader.ReadInt32();
+
+            if (TargetModel == Models.Buds3Pro)
+            {
+                AdaptiveOnTimeL = reader.ReadInt32();
+            }
         }
 
         if (IsRightConnected)
@@ -52,6 +60,11 @@ public class MeteringReportDecoder : BaseMessageDecoder
             EscoUsingTimeR = reader.ReadInt32();
             AncOnTimeR = reader.ReadInt32();
             AmbientOnTimeR = reader.ReadInt32();
+            
+            if (TargetModel == Models.Buds3Pro)
+            {
+                AdaptiveOnTimeR = reader.ReadInt32();
+            }
         }
     }
 }

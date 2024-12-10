@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../GalaxyBudsClient/Application.props" />
+  
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-android</TargetFramework>
+    <RuntimeIdentifiers>android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
+    
+    <SupportedOSPlatformVersion>24</SupportedOSPlatformVersion>
+    <Nullable>enable</Nullable>
+    <AndroidPackageFormats>apk;aab</AndroidPackageFormats>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    
+    <DefineConstants>$(DefineConstants);Android</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DefineConstants Condition="'$(NotDebuggable)' == true">$(DefineConstants);NotDebuggable</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(NoDemo)' == true">
+    <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(NoDemo)' == false Or '$(NoDemo)' == ''">
+    <DefineConstants>$(DefineConstants);RequestFullVersion</DefineConstants>
+    <ApplicationId>me.timschneeberger.galaxybudsclient.demo</ApplicationId>
+  </PropertyGroup>
+  
+  <ItemGroup Condition="'$(NoDemo)' == true">
+    <AndroidResource Include="Icons/full/**">
+      <Link>Resources/%(RecursiveDir)%(Filename)%(Extension)</Link>
+    </AndroidResource>
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(NoDemo)' == false Or '$(NoDemo)' == ''">
+    <AndroidResource Include="Icons/demo/**">
+      <Link>Resources/%(RecursiveDir)%(Filename)%(Extension)</Link>
+    </AndroidResource>
+  </ItemGroup>
+  
+  <PropertyGroup Condition="'$(NoDemo)' == true">
+    <DefineConstants>$(DefineConstants);RequestFullVersion</DefineConstants>
+  </PropertyGroup>
+          
+  <ItemGroup>
+    <PackageReference Include="Avalonia.Android" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Microsoft.NET.Runtime.MonoAOTCompiler.Task" Version="8.0.7" />
+    <PackageReference Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../GalaxyBudsClient/GalaxyBudsClient.csproj">
+      <Properties>IsAndroid=true</Properties>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

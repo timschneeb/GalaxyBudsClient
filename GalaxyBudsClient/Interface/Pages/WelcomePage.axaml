@@ -18,12 +18,22 @@
 
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
+            <controls:CustomInfoBar Title="{ext:Translate {x:Static i18N:Keys.WelcomeAndroidHintTitle}}"
+                                    Message="{ext:Translate {x:Static i18N:Keys.WelcomeAndroidHint}}"
+                                    IsOpen="True"
+                                    IsClosable="False"
+                                    Severity="Warning">
+                <Interaction.Behaviors>
+                    <ext:RequiresDesktopBehavior Not="True" />
+                </Interaction.Behaviors>
+            </controls:CustomInfoBar>
+            
             <controls:CustomInfoBar Title="{ext:Translate {x:Static i18N:Keys.Hint}}"
                                     Message="{ext:Translate {x:Static i18N:Keys.WelcomeTextblockP1}}"
                                     IsOpen="True"
                                     IsClosable="False"
                                     Severity="Informational" />
-
+                                    
             <controls:SettingsGroup>
                 <controls:SettingsComboBoxItem Name="AppTheme"
                                                Content="{ext:Translate {x:Static i18N:Keys.SettingsDarkmode}}"
@@ -32,6 +42,7 @@
                                                ItemsSource="{Binding ., Source={ext:ThemesBindingSource}}"
                                                SelectedValue="{Binding Theme, Source={x:Static config:Settings.Data}}">
                     <Interaction.Behaviors>
+                        <ext:RequiresDesktopBehavior />
                         <ext:LocalizationAwareComboBoxBehavior />
                     </Interaction.Behaviors>
                 </controls:SettingsComboBoxItem>

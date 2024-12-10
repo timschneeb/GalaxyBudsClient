@@ -14,7 +14,7 @@ using MainWindow = GalaxyBudsClient.Interface.MainWindow;
 [assembly: InternalsVisibleTo(Connection.DynamicAssemblyName)]
 namespace GalaxyBudsClient.Cli.Ipc.Objects;
 
-[DBusInterface("me.timschneeberger.galaxybudsclient.Application")]
+[DBusInterface("me.timschneeberger.GalaxyBudsClient.Application")]
 public interface IApplicationObject : IDBusObject
 {
     Task ActivateAsync();

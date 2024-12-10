@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using FluentAvalonia.UI.Controls;
@@ -18,6 +19,21 @@ public partial class ManualPairDialog : UserControl
     
     public static async Task<(Models model, BluetoothDevice device)?> OpenDialogAsync()
     {
+        IEnumerable<BluetoothDevice> devices;
+        try
+        {
+            devices = await BluetoothImpl.Instance.GetDevicesAsync();
+        }
+        catch (BluetoothException ex)
+        {
+            _ = new MessageBox
+            {
+                Title = Strings.Error,
+                Description = ex.Message
+            }.ShowAsync();
+            return null;
+        }
+
         var dialog = new ContentDialog
         {
             Title = Strings.DevselManualPair,
@@ -28,7 +44,7 @@ public partial class ManualPairDialog : UserControl
 
         var viewModel = new ManualPairDialogViewModel
         {
-            Devices = await BluetoothImpl.Instance.GetDevicesAsync()
+            Devices = devices
         };
         dialog.Content = new ManualPairDialog
         {
@@ -36,7 +52,7 @@ public partial class ManualPairDialog : UserControl
         };
 
         dialog.PrimaryButtonClick += OnPrimaryButtonClick;
-        var result = await dialog.ShowAsync(MainWindow.Instance);
+        var result = await dialog.ShowAsync(TopLevel.GetTopLevel(MainView.Instance));
         dialog.PrimaryButtonClick -= OnPrimaryButtonClick;
             
         return result == ContentDialogResult.None ||

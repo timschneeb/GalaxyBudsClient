@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto">
+	<uses-feature android:name="android.hardware.bluetooth" android:required="true"/>
+
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+	<!-- Request legacy Bluetooth permissions on older devices. -->
+	<uses-permission android:name="android.permission.BLUETOOTH"
+					 android:maxSdkVersion="30" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"
+					 android:maxSdkVersion="30"/>
+
+	<queries>
+		<package android:name="com.samsung.accessory.fridaymgr" />
+		<package android:name="com.samsung.accessory.popcornmgr" />
+		<package android:name="com.samsung.accessory.neobeanmgr" />
+		<package android:name="com.samsung.accessory.berrymgr" />
+		<package android:name="com.samsung.accessory.zenithmgr" />
+		<package android:name="com.samsung.accessory.pearlmgr" />
+		<package android:name="com.samsung.accessory.paranmgr" />
+		<package android:name="com.samsung.accessory.jellymgr" />
+	</queries>
+	
+	<application android:label="Galaxy Buds Manager" android:icon="@mipmap/ic_launcher" />
+</manifest>

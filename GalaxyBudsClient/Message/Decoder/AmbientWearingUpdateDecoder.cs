@@ -7,7 +7,7 @@ namespace GalaxyBudsClient.Message.Decoder;
 /*
  * Mostly unused if (versionOfMR < 2). Refer to ExtendedStatusUpdateDecoder
  */
-[MessageDecoder(MsgIds.AMBIENT_WEARING_STATUS_UPDATED)]
+[MessageDecoder((MsgIds)LegacyMsgIds.AMBIENT_WEARING_STATUS_UPDATED)]
 internal class AmbientWearingUpdateDecoder : BaseMessageDecoder
 {
     public LegacyWearStates WearState { get; }
