@@ -15,7 +15,8 @@
         <dialogs:HiddenModeTerminalDialogViewModel />
     </Design.DataContext>
 
-    <StackPanel MinWidth="400" Spacing="16">
+    <StackPanel MinWidth="{OnPlatform 400, Android=60}" 
+                Spacing="16">
         <StackPanel Spacing="10">
             <TextBlock Text="{ext:Translate {x:Static i18N:Keys.AtTerminalCmdId}}" />
             <AutoCompleteBox
