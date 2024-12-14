@@ -37,8 +37,10 @@
                         Orientation="Horizontal"
                         HorizontalAlignment="Right">
 
-                <TextBlock Text="{Binding LeftBattery, StringFormat={}{0}%}"
+                <TextBlock Name="LeftBatteryText"
+                           Text="{Binding LeftBattery, StringFormat={}{0}%}"
                            FontSize="{StaticResource FontSizePercentage}"
+                           MinWidth=""
                            HorizontalAlignment="Right" />
 
                 <ic:SymbolIcon Symbol="{Binding LeftBattery, Converter={StaticResource BatterySymbolConverter}}"
@@ -129,7 +131,8 @@
                     </ic:SymbolIcon.RenderTransform>
                 </ic:SymbolIcon>
 
-                <TextBlock Text="{Binding RightBattery, StringFormat={}{0}%}"
+                <TextBlock Name="RightBatteryText"
+                           Text="{Binding RightBattery, StringFormat={}{0}%}"
                            FontSize="{StaticResource FontSizePercentage}"
                            HorizontalAlignment="Left" />
             </StackPanel>
