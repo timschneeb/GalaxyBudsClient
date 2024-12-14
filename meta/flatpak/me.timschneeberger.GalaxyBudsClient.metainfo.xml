@@ -1,27 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>me.timschneeberger.GalaxyBudsClient</id>
-
   <name>Earbud manager for Galaxy Buds</name>
   <developer id="me.timschneeberger">
     <name>Tim Schneeberger</name>
   </developer>
   <summary>An unofficial app to manage any Galaxy Buds device manufactured by Samsung</summary>
-
   <branding>
     <color type="primary" scheme_preference="light">#dff1f8</color>
     <color type="primary" scheme_preference="dark">#388ba6</color>
   </branding>
-
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-only</project_license>
-
   <url type="homepage">https://github.com/timschneeb/GalaxyBudsClient</url>
   <url type="bugtracker">https://github.com/timschneeb/GalaxyBudsClient/issues/new/choose</url>
   <url type="donation">https://ko-fi.com/H2H83E5J3</url>
   <url type="translate">https://github.com/timschneeb/GalaxyBudsClient/wiki/3.-How-to-help-with-translations</url>
   <url type="contact">https://t.me/thepbone</url>
-
   <description>
     <p>
       Aside from standard features known from the official Android app, this project helps you to release the full potential of your earbuds and implements new functionality such as:
@@ -35,11 +30,9 @@
       <li>and much more</li>
     </ul>
   </description>
-
   <provides>
     <dbus type="user">me.timschneeberger.galaxybudsclient</dbus>
   </provides>
-
   <launchable type="desktop-id">me.timschneeberger.GalaxyBudsClient.desktop</launchable>
   <screenshots>
     <screenshot type="default">
@@ -50,10 +43,9 @@
     <category>Utility</category>
   </categories>
   <releases>
-    <release version="5.1.0" date="2024-07-17"/>
+    <release version="5.1.0.2" date="2024-12-14"/>
   </releases>
   <content_rating type="oars-1.1">
     <content_attribute id="social-info">moderate</content_attribute>
   </content_rating>
 </component>
-
