@@ -4,6 +4,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0-android</TargetFramework>
+    <TargetFrameworkVersion>v14.0</TargetFrameworkVersion>
     <RuntimeIdentifiers>android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
     
     <SupportedOSPlatformVersion>24</SupportedOSPlatformVersion>

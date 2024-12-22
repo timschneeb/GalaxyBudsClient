@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Threading.Tasks;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Config;
@@ -33,6 +34,13 @@ public class EarbudStatusUnitViewModel : ViewModelBase
         Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
         Loc.LanguageUpdated += LoadFromCache;
         LoadFromCache();
+        
+        _ = Task.Run(() =>
+        {
+            // FIXME: Avalonia bug: After upgrading to Avalonia 11.2.2 from 11.2.0-beta, the label bounds are initially too small 
+            Task.Delay(250);
+            _ = BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_GET_ALL_DATA);
+        });
     }
 
     private void OnBluetoothPropertyChanged(object? sender, PropertyChangedEventArgs e)

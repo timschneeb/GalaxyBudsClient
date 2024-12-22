@@ -1,8 +1,8 @@
 <Project>
     <PropertyGroup>
         <!-- App properties -->
-        <AssemblyVersion>5.1.0.1</AssemblyVersion>
-        <Version>5.1.0.1</Version>
+        <AssemblyVersion>5.1.1.0</AssemblyVersion>
+        <Version>5.1.1.0</Version>
         <!-- ApplicationVersion must be an integer version code required for Android -->
         <ApplicationVersion>$(Version.ToString().Replace('.', ''))</ApplicationVersion>
         <ApplicationDisplayVersion>$(Version)</ApplicationDisplayVersion>
@@ -10,6 +10,6 @@
 
     <PropertyGroup>
         <!-- Global dependency versions -->
-        <AvaloniaVersion>11.2.0-beta1</AvaloniaVersion>
+        <AvaloniaVersion>11.2.2</AvaloniaVersion>
     </PropertyGroup>
 </Project>
