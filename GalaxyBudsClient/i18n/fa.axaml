@@ -2,160 +2,163 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- English name of this language -->
-    <sys:String x:Key="language_name_en">English</sys:String>
+    <sys:String x:Key="language_name_en">Persian(Farsi)</sys:String>
     
     <!--:::::::: Source code ::::::::-->
 
     <!--General-->
-    <sys:String x:Key="okay">Okay</sys:String>
-    <sys:String x:Key="left">Left</sys:String>
-    <sys:String x:Key="right">Right</sys:String>
-    <sys:String x:Key="both">Both</sys:String>
-    <sys:String x:Key="case">Case</sys:String>
-    <sys:String x:Key="error">Error</sys:String>
-    <sys:String x:Key="cancel">Cancel</sys:String>
-    <sys:String x:Key="apply">Apply</sys:String>
-    <sys:String x:Key="select">Select</sys:String>
-    <sys:String x:Key="notset">Not set</sys:String>
-    <sys:String x:Key="unknown">Unknown</sys:String>
-    <sys:String x:Key="back">Back</sys:String>
-    <sys:String x:Key="next">Next</sys:String>
-    <sys:String x:Key="prev">Previous</sys:String>
-    <sys:String x:Key="off">Off</sys:String>
-    <sys:String x:Key="on">On</sys:String>
-    <sys:String x:Key="hint">Hint</sys:String>
-    <sys:String x:Key="help">Help</sys:String>
-    <sys:String x:Key="important">Important</sys:String>
-    <sys:String x:Key="home">Home</sys:String>
-    <sys:String x:Key="please_wait">Please wait...</sys:String>
+    <sys:String x:Key="okay">خب</sys:String>
+    <sys:String x:Key="left">چپ</sys:String>
+    <sys:String x:Key="right">راست</sys:String>
+    <sys:String x:Key="both">هر دو</sys:String>
+    <sys:String x:Key="case">کیس</sys:String>
+    <sys:String x:Key="error">خطا</sys:String>
+    <sys:String x:Key="cancel">لغو</sys:String>
+    <sys:String x:Key="apply">اعمال</sys:String>
+    <sys:String x:Key="select">انتخاب</sys:String>
+    <sys:String x:Key="notset">تنظیم نشده</sys:String>
+    <sys:String x:Key="unknown">ناشناس</sys:String>
+    <sys:String x:Key="back">برگشت</sys:String>
+    <sys:String x:Key="next">بعدی</sys:String>
+    <sys:String x:Key="prev">قبلی</sys:String>
+    <sys:String x:Key="off">خاموش</sys:String>
+    <sys:String x:Key="on">روشن</sys:String>
+    <sys:String x:Key="hint">راهنمایی</sys:String>
+    <sys:String x:Key="help">کمک</sys:String>
+    <sys:String x:Key="important">مهم</sys:String>
+    <sys:String x:Key="home">خانه</sys:String>
+    <sys:String x:Key="please_wait">لطفا صبر کنید...</sys:String>
     <sys:String x:Key="value_left_right_inline">Left: {0}, Right: {1}</sys:String>
     <sys:String x:Key="value_left_right_multiline">Left: {0}
 Right: {1}</sys:String>
-    <sys:String x:Key="other_x">Other ({0})</sys:String>    
-    <sys:String x:Key="no_data_stored">No data stored</sys:String>
-    <sys:String x:Key="not_available">Not available</sys:String>
-    <sys:String x:Key="last_updated_at_n">Last updated at {0}</sys:String>
-    <sys:String x:Key="file_not_found">File not found</sys:String>
-    <sys:String x:Key="nobluetoothdev">No Bluetooth adapter found. Please enable Bluetooth and try again.</sys:String>
+    <sys:String x:Key="other_x">دیگر ({0})</sys:String>    
+    <sys:String x:Key="no_data_stored">داده‌ای ذخیره نشده</sys:String>
+    <sys:String x:Key="not_available">در دسترس نیست</sys:String>
+    <sys:String x:Key="last_updated_at_n">آخرین به روز رسانی در {0}</sys:String>
+    <sys:String x:Key="file_not_found">پرونده پیدا نشد</sys:String>
+    <sys:String x:Key="nobluetoothdev">دستگاه بلوتوث پیدا نشد. لطفا بلوتوث را فعال نموده و دوباره امتحان کنید.</sys:String>
 
-    <sys:String x:Key="anc">Active noise cancelling</sys:String>
+    <sys:String x:Key="anc">حذف نویز فعال</sys:String>
 
     <!--Dark Mode States-->
-    <sys:String x:Key="darkmode_disabled">Off</sys:String>
-    <sys:String x:Key="darkmode_enabled">On</sys:String>
-    <sys:String x:Key="darkmode_blur_enabled">On, with blur effect</sys:String>
-    <sys:String x:Key="darkmode_mica_enabled">On, with mica effect</sys:String>
-    <sys:String x:Key="darkmode_system">Use system setting</sys:String>
+    <sys:String x:Key="darkmode_disabled">خاموش</sys:String>
+    <sys:String x:Key="darkmode_enabled">روشن</sys:String>
+    <sys:String x:Key="darkmode_blur_enabled">روشن به همراه افکت تاری</sys:String>
+    <sys:String x:Key="darkmode_mica_enabled">روشن به همراه افکت میکا</sys:String>
+    <sys:String x:Key="darkmode_system">از تنظیمات سیستم استفاده شود</sys:String>
 
     <!--Connection popup-->
-    <sys:String x:Key="connpopup_placement_tl">Top left</sys:String>
-    <sys:String x:Key="connpopup_placement_tc">Top center</sys:String>
-    <sys:String x:Key="connpopup_placement_tr">Top right</sys:String>
-    <sys:String x:Key="connpopup_placement_bl">Bottom left</sys:String>
-    <sys:String x:Key="connpopup_placement_bc">Bottom center</sys:String>
-    <sys:String x:Key="connpopup_placement_br">Bottom right</sys:String>
+    <sys:String x:Key="connpopup_placement_tl">بالا چپ</sys:String>
+    <sys:String x:Key="connpopup_placement_tc">بالا وسط</sys:String>
+    <sys:String x:Key="connpopup_placement_tr">بالا راست</sys:String>
+    <sys:String x:Key="connpopup_placement_bl">پایین چپ</sys:String>
+    <sys:String x:Key="connpopup_placement_bc">پایین وسط</sys:String>
+    <sys:String x:Key="connpopup_placement_br">پایین راست</sys:String>
     <sys:String x:Key="connpopup_title">{0}'s {1}</sys:String>
     <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
 
     <!--Placement  (Buds+)-->
-    <sys:String x:Key="placement_disconnected">Disconnected</sys:String>
-    <sys:String x:Key="placement_wearing">Wearing</sys:String>
-    <sys:String x:Key="placement_not_wearing">Idle</sys:String>
-    <sys:String x:Key="placement_in_case">Case</sys:String>
-    <sys:String x:Key="placement_charging">Charging</sys:String>
+    <sys:String x:Key="placement_disconnected">متصل نیست</sys:String>
+    <sys:String x:Key="placement_wearing">پوشیده شده</sys:String>
+    <sys:String x:Key="placement_not_wearing">آماده</sys:String>
+    <sys:String x:Key="placement_in_case">کیس</sys:String>
+    <sys:String x:Key="placement_charging">در حال شارژ</sys:String>
 
     <!--Touch options-->
-    <sys:String x:Key="touchoption_voice">Voice assistant</sys:String>
-    <sys:String x:Key="touchoption_quickambientsound">Quick ambient sound</sys:String>
-    <sys:String x:Key="touchoption_volume">Volume</sys:String>
-    <sys:String x:Key="touchoption_volume_up">Volume up</sys:String>
-    <sys:String x:Key="touchoption_volume_down">Volume down</sys:String>
-    <sys:String x:Key="touchoption_ambientsound">Ambient sound</sys:String>
-    <sys:String x:Key="touchoption_switch_noisecontrols">Switch noise controls</sys:String>
-    <sys:String x:Key="touchoption_spotify">Spotify (Android only)</sys:String>
-    <sys:String x:Key="touchoption_custom">Custom action...</sys:String>
-    <sys:String x:Key="touchoption_custom_prefix">Custom action:</sys:String>
+    <sys:String x:Key="touchoption_voice">دستیار صوتی</sys:String>
+    <sys:String x:Key="touchoption_quickambientsound">صدای محیطی سریع</sys:String>
+    <sys:String x:Key="touchoption_volume">حجم صدا</sys:String>
+    <sys:String x:Key="touchoption_volume_up">افزایش</sys:String>
+    <sys:String x:Key="touchoption_volume_down">کاهش</sys:String>
+    <sys:String x:Key="touchoption_ambientsound">صدای محیطی</sys:String>
+    <sys:String x:Key="touchoption_switch_noisecontrols">تغییر حالت حذف نویز</sys:String>
+    <sys:String x:Key="touchoption_spotify">اسپاتیفای (فقط اندروید)</sys:String>
+    <sys:String x:Key="touchoption_custom">اتصال دلخواه...</sys:String>
+    <sys:String x:Key="touchoption_custom_prefix">کاربرد دلخواه:</sys:String>
     <sys:String x:Key="touchoption_custom_trigger_event">Trigger earbud action...</sys:String>
-    <sys:String x:Key="touchoption_custom_trigger_hotkey">Press hotkey...</sys:String>
-    <sys:String x:Key="touchoption_custom_external_app">Run external program...</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_hotkey">کلید شرتکات را فشار دهید...</sys:String>
+    <sys:String x:Key="touchoption_custom_external_app">اجرای برنامه خارجی...</sys:String>
 
     <!--Tray context menu-->
-    <sys:String x:Key="tray_unlock_touchpad">Unlock touchpad</sys:String>
-    <sys:String x:Key="tray_lock_touchpad">Lock touchpad</sys:String>
-    <sys:String x:Key="tray_enable_ambient_sound">Enable ambient sound</sys:String>
-    <sys:String x:Key="tray_disable_ambient_sound">Disable ambient sound</sys:String>
-    <sys:String x:Key="tray_enable_eq">Enable equalizer</sys:String>
-    <sys:String x:Key="tray_disable_eq">Disable equalizer</sys:String>
-    <sys:String x:Key="tray_enable_anc">Enable active noise cancelling</sys:String>
-    <sys:String x:Key="tray_disable_anc">Disable active noise cancelling</sys:String>
-    <sys:String x:Key="tray_switch_noise">Switch noise controls</sys:String>
-    <sys:String x:Key="tray_quit">Quit</sys:String>
+    <sys:String x:Key="tray_unlock_touchpad">فعال کردن لمس</sys:String>
+    <sys:String x:Key="tray_lock_touchpad">غیرفعال کردن لمس</sys:String>
+    <sys:String x:Key="tray_enable_ambient_sound">فعال کردن صدای محیطی</sys:String>
+    <sys:String x:Key="tray_disable_ambient_sound">غیرفعال کردن صدای محیطی</sys:String>
+    <sys:String x:Key="tray_enable_eq">فعال کردن اکولایزر</sys:String>
+    <sys:String x:Key="tray_disable_eq">ِفعال کردن اکولایزر</sys:String>
+    <sys:String x:Key="tray_enable_anc">فعال کردن، حذف نویز فعال</sys:String>
+    <sys:String x:Key="tray_disable_anc">غیر فعال کردن، حذف نویز فعال</sys:String>
+    <sys:String x:Key="tray_switch_noise">تغییر حالت حذف نویز</sys:String>
+    <sys:String x:Key="tray_quit">خروج</sys:String>
 
     <!--:::::::: XAML files (static) ::::::::-->
 
     <!--General-->
-    <sys:String x:Key="continue_button">Continue</sys:String>
+    <sys:String x:Key="continue_button">ادامه</sys:String>
 
     <!--Hotkey Recorder Dialog (Custom action)-->
-    <sys:String x:Key="hotrec_content">Please enter a key-combination (hold down):</sys:String>
-    <sys:String x:Key="hotrec_empty">None</sys:String>
-    <sys:String x:Key="hotrec_note">Note: Due to User Interface Privacy Isolation (UIPI) only applications of the same or lower elevation can properly receive hotkey commands.</sys:String>
+    <sys:String x:Key="hotrec_content">لطفا کلید های میانبر مد نظر را فشار دهید :</sys:String>
+    <sys:String x:Key="hotrec_empty">هیچ کدام</sys:String>
+    <sys:String x:Key="hotrec_note">توجه: بر اساس User Interface Privacy Isolation (UIPI) فقط برنامه هایی با دسترسی های پایین تر یا هم سطح امکان دریافت کلید های میانبر را دارند.</sys:String>
 
     <!--Hotkey Action Builder Dialog-->
-    <sys:String x:Key="hotkey_edit_invalid">Invalid hotkey selection</sys:String>
-    <sys:String x:Key="hotkey_edit_invalid_desc">Please choose at least one key and one modifiers</sys:String>
-    <sys:String x:Key="hotkey_edit_invalid_mod">Modifier missing</sys:String>
-    <sys:String x:Key="hotkey_edit_invalid_action">Invalid action</sys:String>
-    <sys:String x:Key="hotkey_edit_invalid_action_desc">Please choose an action</sys:String>
-    <sys:String x:Key="hotkey_edit_modifier">Modifiers</sys:String>
-    <sys:String x:Key="hotkey_edit_keys">Keys</sys:String>
-    <sys:String x:Key="hotkey_edit_action">Action</sys:String>
-    <sys:String x:Key="hotkey_edit_preview">Shortcut preview:</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid">کلید میانبر اشتباه است</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_desc">لطفا یک کلید به همراه یک عملگر انتخاب کنید</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_mod">عملگر پیدا نشد</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action">عملکرد غیرمجاز</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action_desc">لطفا عملکرد مورد نظر را انتخاب کنید</sys:String>
+    <sys:String x:Key="hotkey_edit_modifier">عملگرها</sys:String>
+    <sys:String x:Key="hotkey_edit_keys">کلید ها</sys:String>
+    <sys:String x:Key="hotkey_edit_action">عملکردها</sys:String>
+    <sys:String x:Key="hotkey_edit_preview">پیش‌نمایش میانبر:</sys:String>
 
     <!--Hotkey page-->
-    <sys:String x:Key="hotkey_header">Keyboard hotkeys</sys:String>
-    <sys:String x:Key="hotkey_add_short">New</sys:String>
-    <sys:String x:Key="hotkey_add">Assign new hotkey</sys:String>
-    <sys:String x:Key="hotkey_empty">No hotkeys assigned</sys:String>
-    <sys:String x:Key="hotkey_empty_desc">Create a new keyboard hotkey by clicking the button above</sys:String>
-    <sys:String x:Key="hotkey_edit">Edit</sys:String>
-    <sys:String x:Key="hotkey_edit_long">Edit existing hotkey</sys:String>
-    <sys:String x:Key="hotkey_delete">Delete</sys:String>
-    <sys:String x:Key="hotkey_add_error">Failed to register/update hotkeys</sys:String>
-    <sys:String x:Key="hotkey_add_error_context">Affected hotkey:</sys:String>
-    <sys:String x:Key="hotkey_add_error_duplicate">Your selected key-combination was already registered as a hotkey by this or another application. Please choose another one.</sys:String>
-    <sys:String x:Key="hotkey_add_error_unknown">Operating system responded with error '{0}'</sys:String>
+    <sys:String x:Key="hotkey_header">میانبر صفحه کلید</sys:String>
+    <sys:String x:Key="hotkey_add_short">جدید</sys:String>
+    <sys:String x:Key="hotkey_add">اختصاص میانبر جدید</sys:String>
+    <sys:String x:Key="hotkey_empty">میانبری اختصاص داده نشده</sys:String>
+    <sys:String x:Key="hotkey_empty_desc">با کلیک روی دکمه بالا یک میانبر جدید برای صفحه کلید ایجاد کنید</sys:String>
+    <sys:String x:Key="hotkey_edit">اصلاح</sys:String>
+    <sys:String x:Key="hotkey_edit_long">اصلا میانبر موجود</sys:String>
+    <sys:String x:Key="hotkey_delete">حذف</sys:String>
+    <sys:String x:Key="hotkey_add_error">خطا در درج یا به روز رسانی میانبر</sys:String>
+    <sys:String x:Key="hotkey_add_error_context">میانبر تغییر یافته:</sys:String>
+    <sys:String x:Key="hotkey_add_error_duplicate">کلید های میانبر شما قبلا برای این مورد یا برنامه های دیگری استفاده شده است. لطفا مورد دیگی انتخاب نمایید.</sys:String>
+    <sys:String x:Key="hotkey_add_error_unknown">سیستم عامل خطای  '{0}' را برگرداند</sys:String>
 
     <!--EventDispatcher module-->
-    <sys:String x:Key="event_none">None</sys:String>
-    <sys:String x:Key="event_ambient_toggle">Toggle ambient sound</sys:String>
-    <sys:String x:Key="event_ambient_volume_up">Ambient volume up</sys:String>
-    <sys:String x:Key="event_ambient_volume_down">Ambient volume down</sys:String>
-    <sys:String x:Key="event_eq_toggle">Toggle equalizer</sys:String>
-    <sys:String x:Key="event_eq_switch">Iterate equalizer presets</sys:String>
-    <sys:String x:Key="event_anc_toggle">Toggle noise cancelling</sys:String>
-    <sys:String x:Key="event_anc_switch_sensitivity">Switch ANC sensitivity</sys:String>
-    <sys:String x:Key="event_nc_switch_one">Switch noise controls with one earbud</sys:String>
-    <sys:String x:Key="event_touch_lock_toggle">Toggle touchpad lock</sys:String>
-    <sys:String x:Key="event_double_edge_touch_toggle">Toggle double-edge touch feature</sys:String>
-    <sys:String x:Key="event_conversation_toggle">Toggle conversation detection</sys:String>
-    <sys:String x:Key="event_start_stop_find">Start/stop find my earbuds</sys:String>
-    <sys:String x:Key="event_start_find">Start find my earbuds</sys:String>
-    <sys:String x:Key="event_stop_find">Stop find my earbuds</sys:String>
-    <sys:String x:Key="event_paring_mode">Pairing mode</sys:String>
-    <sys:String x:Key="event_media_play">Play media</sys:String>
-    <sys:String x:Key="event_media_pause">Pause media</sys:String>
-    <sys:String x:Key="event_media_play_pause">Play/pause media</sys:String>
-    <sys:String x:Key="event_manager_visible">Show/hide manager window</sys:String>
-    <sys:String x:Key="event_display_battery_popup">Display battery popup</sys:String>
-    <sys:String x:Key="event_connect">Connect to device</sys:String>
+    <sys:String x:Key="event_none">هیچ کدام</sys:String>
+    <sys:String x:Key="event_ambient_toggle">انتخاب صدای محیطی</sys:String>
+    <sys:String x:Key="event_ambient_volume_up">افزایش صدای محیطی</sys:String>
+    <sys:String x:Key="event_ambient_volume_down">کاهش صدای محیطی</sys:String>
+    <sys:String x:Key="event_eq_toggle">فعال کردن اکولایزر</sys:String>
+    <sys:String x:Key="event_eq_switch">پیمایش پیش‌تنظیم‌های اکولایزر</sys:String>
+    <sys:String x:Key="event_anc_toggle"> تغییر حالت حذف نویز</sys:String>
+    <sys:String x:Key="event_anc_switch_sensitivity"> تغییر حساسیت حذف نویز فعال</sys:String>
+    <sys:String x:Key="event_nc_switch_one">تغییر حذف نویز با یک هدفون</sys:String>
+    <sys:String x:Key="event_touch_lock_toggle">تغییر حالت فعالیت لمس</sys:String>
+    <sys:String x:Key="event_double_edge_touch_toggle"> تغییر ویژگی لمس دو لبه
+</sys:String>
+    <sys:String x:Key="event_conversation_toggle">تغییر تشخیص مکالمه</sys:String>
+    <sys:String x:Key="event_start_stop_find"> شروع/متوقف کردن پیدا کردن هدفون‌های من
+</sys:String>
+    <sys:String x:Key="event_start_find"> شروع پیدا کردن هدفون‌های من</sys:String>
+    <sys:String x:Key="event_stop_find"> متوقف کردن پیدا کردن هدفون‌های من</sys:String>
+    <sys:String x:Key="event_paring_mode">در حال جفت شدن</sys:String>
+    <sys:String x:Key="event_media_play">پخش رسانه</sys:String>
+    <sys:String x:Key="event_media_pause"> توقف رسانه</sys:String>
+    <sys:String x:Key="event_media_play_pause">پخش/توقف رسانه</sys:String>
+    <sys:String x:Key="event_manager_visible"> نمایش/مخفی کردن پنجره مدیریت</sys:String>
+    <sys:String x:Key="event_display_battery_popup">نمایش پاپ‌آپ باتری</sys:String>
+    <sys:String x:Key="event_connect">اتصال به دستگاه</sys:String>
 
     <!--Welcome page-->
-    <sys:String x:Key="welcome_textblock_header">Welcome!</sys:String>
-    <sys:String x:Key="welcome_register">Set-up your earbuds</sys:String>
-    <sys:String x:Key="welcome_register_desc">Choose and register your pair of Galaxy Buds</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">This Galaxy Buds Manager is unofficial and not affiliated with Samsung in any way.
-This program is designed to provide much more functionality over the official Samsung wearable app. Some features such as 'Game Mode' only work on Samsung phones and cannot be enabled on PCs.</sys:String>
+    <sys:String x:Key="welcome_textblock_header">خوش آمدید!</sys:String>
+    <sys:String x:Key="welcome_register">هدفون های خود را راه اندازی کنید</sys:String>
+    <sys:String x:Key="welcome_register_desc">گلکسی باد خود را انتخاب و ثبت کنید</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">این برنامه کنترل گلکسی باد ها هیچ گونه همکاری با شرکت سامسونگ ندارد.
+این برنامه صرفا جهت افزایش دسترسی ها و امکانات بر پایه برنامه اصلی سامسونگ توسعه داده شده است.
+بعضی از امکانات همچون حالت بازی فقط با گوشی های سامسونگ قابلیت فعال سازی دارند.ث</sys:String>
 
     <!--Main page-->
     <sys:String x:Key="mainpage_header">Home</sys:String>
