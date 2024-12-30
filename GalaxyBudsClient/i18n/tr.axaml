@@ -375,6 +375,8 @@ Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
     <sys:String x:Key="settings_accent">Vurgu rengi</sys:String>
     <sys:String x:Key="settings_realistic_earbud_icons">Kulaklıkların gerçekçi resimlerini kullan</sys:String>
     <sys:String x:Key="settings_realistic_earbud_icons_description">Destekliyorsa, kulaklıklarınızın gerçekçi ve renk uyumlu resimlerini görüntüler</sys:String>
+    <sys:String x:Key="settings_color_override">Kulaklık resminin rengi</sys:String>
+    <sys:String x:Key="settings_color_override_description">Kulaklıklarınızın uygulamada görünen rengini değiştirin.</sys:String>
     <sys:String x:Key="settings_accent_description">Özel bir vurgu rengi seçin</sys:String>
     <sys:String x:Key="settings_transitions_description">Kaydırma geçişlerini etkinleştir</sys:String>
     <sys:String x:Key="settings_localization_disable">Dil</sys:String>
