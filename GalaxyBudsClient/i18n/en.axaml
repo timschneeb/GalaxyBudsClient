@@ -427,6 +427,8 @@ Measure level: Select a vertical span to measure the battery level difference be
     <sys:String x:Key="settings_minimize_tray_description">Keep in background instead of terminating the app</sys:String>
     <sys:String x:Key="settings_realistic_earbud_icons">Use realistic earbud images</sys:String>
     <sys:String x:Key="settings_realistic_earbud_icons_description">Display realistic &amp; color-aware images of your earbuds, if they support it</sys:String>
+    <sys:String x:Key="settings_color_override">Earbud color override</sys:String>
+    <sys:String x:Key="settings_color_override_description">Change the displayed color of your earbuds in the app</sys:String>
     <sys:String x:Key="settings_nav_sidebar">Navigation sidebar</sys:String>
     <sys:String x:Key="settings_nav_sidebar_description">Show or collapse the navigation buttons on the left hand side</sys:String>
     <sys:String x:Key="settings_tray_settings">Tray icon &amp; startup</sys:String>
