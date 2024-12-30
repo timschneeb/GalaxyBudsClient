@@ -24,7 +24,6 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(NoDemo)' == false Or '$(NoDemo)' == ''">
-    <DefineConstants>$(DefineConstants);RequestFullVersion</DefineConstants>
     <ApplicationId>me.timschneeberger.galaxybudsclient.demo</ApplicationId>
   </PropertyGroup>
   
