@@ -25,7 +25,7 @@ public class DeviceColorBindingSource : MarkupExtension
                          DeviceMessageCache.Instance.ExtendedStatusUpdate?.DeviceColor ?? 
                          DeviceIds.Unknown;
 
-        // Get all colors for the current model using the AssociatedModel attribute
+        // Filter DeviceIds based on current model
         var values = Enum.GetValues(typeof(DeviceIds))
             .Cast<DeviceIds>()
             .Where(x => {
