@@ -107,6 +107,7 @@
                                                Content="{ext:Translate {x:Static i18N:Keys.SettingsColorOverride}}"
                                                Description="{ext:Translate {x:Static i18N:Keys.SettingsColorOverrideDescription}}"
                                                Symbol="ColorFill"
+                                               IsEnabled="{Binding RealisticEarbudImages, Source={x:Static config:Settings.Data}}"
                                                ItemsSource="{Binding ., Source={ext:DeviceColorBindingSource}}"
                                                SelectedValue="{Binding ColorOverride, Source={x:Static config:Settings.Data}}" />
 
