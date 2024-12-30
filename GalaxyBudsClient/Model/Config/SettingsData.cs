@@ -36,6 +36,7 @@ public class SettingsData : ReactiveObject
     [Reactive] public TemperatureUnits TemperatureUnit { set; get; } = TemperatureUnits.Celsius;
     [Reactive] public bool RealisticEarbudImages { set; get; } = true;
     [Reactive] public bool ShowSidebar { set; get; } = Settings.DefaultShowSidebar;
+    [Reactive] public DeviceIds? ColorOverride { set; get; }
     
     /* Connections */
     [Reactive] public bool UseBluetoothWinRt { set; get; } = true;

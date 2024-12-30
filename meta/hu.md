@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>60%</td><td>220 missing string(s)</td></tr>
+<tr><td>60%</td><td>222 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -176,6 +176,8 @@ Measure level: Select a vertical span to measure the battery level difference be
 <tr><td><code>settings_localization_description</code></td><td>Change the app language</td></tr>
 <tr><td><code>settings_realistic_earbud_icons</code></td><td>Use realistic earbud images</td></tr>
 <tr><td><code>settings_realistic_earbud_icons_description</code></td><td>Display realistic & color-aware images of your earbuds, if they support it</td></tr>
+<tr><td><code>settings_color_override</code></td><td>Earbud color override</td></tr>
+<tr><td><code>settings_color_override_description</code></td><td>Change the displayed color of your earbuds in the app</td></tr>
 <tr><td><code>settings_nav_sidebar</code></td><td>Navigation sidebar</td></tr>
 <tr><td><code>settings_nav_sidebar_description</code></td><td>Show or collapse the navigation buttons on the left hand side</td></tr>
 <tr><td><code>settings_tray_settings</code></td><td>Tray icon & startup</td></tr>
