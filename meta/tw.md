@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>61%</td><td>217 missing string(s)</td></tr>
+<tr><td>60%</td><td>219 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -219,6 +219,8 @@ Make sure both earbuds are turned on before continuing.</td></tr>
 <tr><td><code>nc_as_custom_description</code></td><td>Customize ambient sound settings</td></tr>
 <tr><td><code>as_header_description</code></td><td>Hear your surroundings</td></tr>
 <tr><td><code>as_voicefocus_description</code></td><td>Make voices stand out more</td></tr>
+<tr><td><code>adv_pause_playback</code></td><td>Pause playback if earbuds are taken off</td></tr>
+<tr><td><code>adv_pause_playback_desc</code></td><td>Sends a global play/pause state change event when both of the proximity sensors are uncovered (Desktop only)</td></tr>
 <tr><td><code>adv_callpath</code></td><td>In-ear detection for calls</td></tr>
 <tr><td><code>adv_callpath_desc</code></td><td>Play calls through your earbuds when they're in your ears and through your computer speaker when they're not</td></tr>
 <tr><td><code>adv_extra_clear_call</code></td><td>Sharpen call sound</td></tr>
