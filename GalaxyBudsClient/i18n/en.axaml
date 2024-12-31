@@ -563,6 +563,8 @@ You might need to manually reconnect your earbuds.</sys:String>
 
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Advanced settings</sys:String>
+    <sys:String x:Key="adv_pause_playback">Pause playback if earbuds are taken off</sys:String>
+    <sys:String x:Key="adv_pause_playback_desc">Sends a global play/pause state change event when at least one of the proximity sensors is uncovered (Desktop only)</sys:String>
     <sys:String x:Key="adv_seamless">Seamless earbud connection</sys:String>
     <sys:String x:Key="adv_seamless_desc">Switch quickly to nearby devices without disconnecting your earbuds or turning on pairing mode</sys:String>
     <sys:String x:Key="adv_resume_playback">Resume playback if the earbuds are worn</sys:String>

@@ -216,6 +216,11 @@ public class App : Application
         {
             PlatformImpl.MediaKeyRemote.Play();
         }
+        else if (_lastWearState != LegacyWearStates.None &&
+            e.WearState == LegacyWearStates.None && Settings.Data.PausePlaybackOnSensor)
+        {
+            PlatformImpl.MediaKeyRemote.Pause();
+        }
             
         // Update dynamic tray icon
         if (e is IBasicStatusUpdate status)
