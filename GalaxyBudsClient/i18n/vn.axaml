@@ -69,7 +69,7 @@ Phải: {1}</sys:String>
 
     <!--Touch options-->
     <sys:String x:Key="touchoption_voice">Trợ lý ảo</sys:String>
-    <sys:String x:Key="touchoption_quickambientsound">Chế độ xuyên âm nhanh</sys:String>
+    <sys:String x:Key="touchoption_quickambientsound">Kích hoạt nhanh xuyên âm</sys:String>
     <sys:String x:Key="touchoption_volume">Âm lượng</sys:String>
     <sys:String x:Key="touchoption_volume_up">Tăng âm lượng</sys:String>
     <sys:String x:Key="touchoption_volume_down">Giảm âm lượng</sys:String>
