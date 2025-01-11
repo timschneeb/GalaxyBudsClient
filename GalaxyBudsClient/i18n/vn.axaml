@@ -635,7 +635,7 @@ Bạn có thể chọn một trong các giải pháp sau để khắc phục s�
 HẠ CẤP: Mặc dù có thể hạ cấp xuống các phiên bản firmware cũ hơn và tôi chưa bao giờ gặp sự cố với nó, nhưng nó có thể gây ra các sự cố không mong muốn và chỉ nên thực hiện nếu cần thiết. Nên khôi phục cài đặt gốc sau khi hạ cấp nhưng thường không cần thiết.
 FLASHING TÙY CHỈNH: Bạn cũng có thể tải các tệp firmware từ ổ cứng của mình. KHÔNG flash các tệp firmware được thiết kế cho các mẫu KHÁC vào thiết bị của bạn.
 
-Ứng dụng này được cấp phép theo GPLv3. Bằng việc sử dụng ứng dụng này, bạn đang chấp nhận giấy phép này và giới hạn trách nhiệm của nó. Nhấn 'Tiếp tục' để chấp nhận.</sys:String>
+Ứng dụng này được cấp phép theo giấy phép GPLv3. Bằng việc sử dụng ứng dụng này, bạn đang chấp nhận giấy phép này và giới hạn trách nhiệm của nó. Nhấn 'Tiếp tục' để chấp nhận.</sys:String>
 
     <!--Firmware selection-->
     <sys:String x:Key="fw_select_header">Cập nhật firmware</sys:String>
