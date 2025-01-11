@@ -228,7 +228,7 @@ Make sure both earbuds are turned on before continuing.</td></tr>
 <tr><td><code>adv_extra_clear_call_desc</code></td><td>Boost call clarity. Most useful when you're somewhere noisy and using earbuds. Uses more battery.</td></tr>
 <tr><td><code>bixby_remap_lang_desc</code></td><td>Change the language used for the activation phrase</td></tr>
 <tr><td><code>bixby_remap_action_desc</code></td><td>Define what should happen when you activate Bixby on this device</td></tr>
-<tr><td><code>credits_kofi</code></td><td>Visit my ko-fi page to support me!</td></tr>
+<tr><td><code>credits_kofi</code></td><td>Visit my Ko-fi page to support me!</td></tr>
 <tr><td><code>credits_github</code></td><td>Visit this project on GitHub</td></tr>
 <tr><td><code>connlost</code></td><td>Connection lost</td></tr>
 <tr><td><code>connlost_troubleshoot</code></td><td>Troubleshoot</td></tr>

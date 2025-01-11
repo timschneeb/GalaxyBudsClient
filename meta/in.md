@@ -44,7 +44,7 @@ Right: {1}</td></tr>
 <tr><td><code>tray_enable_anc</code></td><td>Enable active noise cancelling</td></tr>
 <tr><td><code>tray_disable_anc</code></td><td>Disable active noise cancelling</td></tr>
 <tr><td><code>tray_switch_noise</code></td><td>Switch noise controls</td></tr>
-<tr><td><code>hotrec_note</code></td><td>Note: Due to User Interface Privacy Isolation (UIPI) only applications of the same or lower elevation can properly receive hotkey commands.</td></tr>
+<tr><td><code>hotrec_note</code></td><td>Note: Due to User Interface Privacy Isolation (UIPI), only applications of the same or lower elevation can properly receive hotkey commands.</td></tr>
 <tr><td><code>hotkey_edit_invalid</code></td><td>Invalid hotkey selection</td></tr>
 <tr><td><code>hotkey_edit_invalid_desc</code></td><td>Please choose at least one key and one modifiers</td></tr>
 <tr><td><code>hotkey_edit_invalid_mod</code></td><td>Modifier missing</td></tr>
@@ -371,7 +371,7 @@ Make sure both earbuds are turned on before continuing.</td></tr>
 
 The remap configuration is only active on this device. If you connect your earbuds to a Samsung device, voice wakeup will activate Bixby normally. On other devices than this device and non-Samsung phones, this feature won't trigger any action.</td></tr>
 <tr><td><code>credits_sponsor</code></td><td>Sponsor this project</td></tr>
-<tr><td><code>credits_kofi</code></td><td>Visit my ko-fi page to support me!</td></tr>
+<tr><td><code>credits_kofi</code></td><td>Visit my Ko-fi page to support me!</td></tr>
 <tr><td><code>credits_github</code></td><td>Visit this project on GitHub</td></tr>
 <tr><td><code>connlost</code></td><td>Connection lost</td></tr>
 <tr><td><code>connlost_troubleshoot</code></td><td>Troubleshoot</td></tr>
