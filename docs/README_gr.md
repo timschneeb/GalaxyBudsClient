@@ -118,7 +118,7 @@
 - [@lucasskluser](https://github.com/lucasskluser) - Πορτογαλική μετάφραση
 - [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Ιταλική μετάφραση
 - [@Buashei](https://github.com/Buashei) - Πολωνική μετάφραση
-- [@KatJillianne](https://github.com/KatJillianne) - Βιετναμέζικη μετάφραση
+- [@KatJillianne](https://github.com/KatJillianne) and [@thelegendaryjohn](https://github.com/thelegendaryjohn) - Βιετναμέζικη μετάφραση
 - [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - Τσεχική μετάφραση
 - [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - Γερμανική μετάφραση
 - [@nikossyr](https://github.com/nikossyr) - Ελληνική μετάφραση

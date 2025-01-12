@@ -139,7 +139,7 @@ Se você deseja contribuir com seu próprio código, você pode simplesmente env
 - [@lucasskluser](https://github.com/lucasskluser) - Tradução Portuguesa
 - [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Tradução Italiana
 - [@Buashei](https://github.com/Buashei) - Tradução Polonesa
-- [@KatJillianne](https://github.com/KatJillianne) - Tradução Vietnamita
+- [@KatJillianne](https://github.com/KatJillianne) e [@thelegendaryjohn](https://github.com/thelegendaryjohn) - Tradução Vietnamita
 - [@joskaja](https://github.com/joskaja) e [@Joedmin](https://github.com/Joedmin) - Tradução Tcheca
 - [@Benni0109](https://github.com/Benni0109), [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - Tradução Alemã
 - [@nikossyr](https://github.com/nikossyr) - Tradução Grega

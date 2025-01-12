@@ -122,7 +122,7 @@ Galaxy Buds+を注意深く分析しながら、私はファームウェアで�
 - [@lucasskluser](https://github.com/lucasskluser) - ポルトガル語
 - [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - イタリア語
 - [@Buashei](https://github.com/Buashei) - ポーランド語
-- [@KatJillianne](https://github.com/KatJillianne) - ベトナム語
+- [@KatJillianne](https://github.com/KatJillianne), [@thelegendaryjohn](https://github.com/thelegendaryjohn) - ベトナム語
 - [@joskaja](https://github.com/joskaja), [@Joedmin](https://github.com/Joedmin) - チェコ語
 - [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - ドイツ語
 - [@nikossyr](https://github.com/nikossyr) - ギリシャ語

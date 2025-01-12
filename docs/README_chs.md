@@ -139,7 +139,7 @@ Galaxy Buds 定义了两种蓝牙模式：用于音频流/控制的 A2DP (高级
 - [@lucasskluser](https://github.com/lucasskluser) - 葡萄牙语翻译
 - [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - 意大利语翻译
 - [@Buashei](https://github.com/Buashei) - 波兰语翻译
-- [@KatJillianne](https://github.com/KatJillianne) - 越南语翻译
+- [@KatJillianne](https://github.com/KatJillianne), [@thelegendaryjohn](https://github.com/thelegendaryjohn) - 越南语翻译
 - [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - 捷克语翻译
 - [@TheLastFrame](https://github.com/TheLastFrame) and [@ThePBone](https://github.com/ThePBone) - 德语翻译
 - [@nikossyr](https://github.com/nikossyr) - 希腊语翻译

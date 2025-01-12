@@ -121,7 +121,7 @@ A2DP 프로필이 표준화 및 문서화되더라도, RFCOMM 프로토콜로 �
 - [@lucasskluser](https://github.com/lucasskluser) - 포르투갈어 번역
 - [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - 이탈리아어 번역
 - [@Buashei](https://github.com/Buashei) - 폴란드어 번역
-- [@KatJillianne](https://github.com/KatJillianne) - 베트남어 번역
+- [@KatJillianne](https://github.com/KatJillianne), [@thelegendaryjohn](https://github.com/thelegendaryjohn) - 베트남어 번역
 - [@joskaja](https://github.com/joskaja), [@Joedmin](https://github.com/Joedmin) - 체코어 번역
 - [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - 독일어 번역
 - [@nikossyr](https://github.com/nikossyr) - 그리스어 번역

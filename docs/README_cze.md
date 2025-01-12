@@ -163,7 +163,7 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 - [@lucasskluser](https://github.com/lucasskluser) - portugalský překlad
 - [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - italský překlad
 - [@Buashei](https://github.com/Buashei) - polský překlad
-- [@KatJillianne](https://github.com/KatJillianne) - vietnamský překlad
+- [@KatJillianne](https://github.com/KatJillianne) a [@thelegendaryjohn](https://github.com/thelegendaryjohn) - vietnamský překlad
 - [@joskaja](https://github.com/joskaja) a [@Joedmin](https://github.com/Joedmin) - český překlad
 - [@TheLastFrame](https://github.com/TheLastFrame) a [@ThePBone](https://github.com/ThePBone) - německý překlad
 - [@nikossyr](https://github.com/nikossyr) - řecký překlad

@@ -165,7 +165,7 @@ Nếu bạn muốn đóng góp code của riêng mình, bạn chỉ cần gửi 
 * [@lucasskluser](https://github.com/lucasskluser) - Bản dịch tiếng Bồ Đào Nha
 * [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Bản dịch tiếng Ý
 * [@Buashei](https://github.com/Buashei) - Bản dịch tiếng Ba Lan
-* [@KatJillianne](https://github.com/KatJillianne) - Bản dịch tiếng Việt
+* [@KatJillianne](https://github.com/KatJillianne) và [@thelegendaryjohn](https://github.com/thelegendaryjohn) - Bản dịch tiếng Việt
 * [@joskaja](https://github.com/joskaja) và [@Joedmin](https://github.com/Joedmin) - Bản dịch tiếng Séc
 * [@Benni0109](https://github.com/Benni0109), [@TheLastFrame](https://github.com/TheLastFrame), [@timschneeb](https://github.com/timschneeb) - Bản dịch tiếng Đức
 * [@nikossyr](https://github.com/nikossyr) - Bản dịch tiếng Hy Lạp

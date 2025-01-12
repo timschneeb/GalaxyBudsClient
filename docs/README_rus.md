@@ -154,7 +154,7 @@
 - [@lucasskluser](https://github.com/lucasskluser) - Португальский перевод
 - [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Итальянский перевод
 - [@Buashei](https://github.com/Buashei) - Польский перевод
-- [@KatJillianne](https://github.com/KatJillianne) - Вьетнамский перевод
+- [@KatJillianne](https://github.com/KatJillianne) и [@thelegendaryjohn](https://github.com/thelegendaryjohn) - Вьетнамский перевод
 - [@joskaja](https://github.com/joskaja) и [@Joedmin](https://github.com/Joedmin) - Чешский перевод
 - [@Benni0109](https://github.com/Benni0109), [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - Немецкий перевод
 - [@nikossyr](https://github.com/nikossyr) - Греческий перевод
