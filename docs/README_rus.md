@@ -1,5 +1,5 @@
 <p align="center">
-  English | <a href="/docs/README_chs.md">中文(简体)</a> | <a href="/docs/README_cht.md">中文(繁體)</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> | <a href="/docs/README_vmn.md">Vietnamese</a> <br>
+  English | <a href="/docs/README_chs.md">中文(简体)</a> | <a href="/docs/README_cht.md">中文(繁體)</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> | <a href="/docs/README_vnm.md">Tiếng Việt</a> <br>
     <sub>Внимание: файлы readme поддерживаются переводчиками и могут время от времени устаревать. Для самой актуальной информации ориентируйтесь на английскую версию.</sub>
 </p>
 <h1 align="center">
@@ -44,20 +44,22 @@
 
 Помимо стандартных функций, известных из официального приложения для Android, этот проект помогает раскрыть полный потенциал ваших наушников и внедрить новые функции, такие как:
 
-* Подробная статистика заряда батареи
-* Диагностика и тесты на заводе
-* Множество скрытой отладочной информации
-* Настраиваемые действия при длительном нажатии
-* Прошивка, откат (Buds+, Buds Pro)
-* и многое другое...
+- Подробная статистика заряда батареи
+- Диагностика и тесты на заводе
+- Множество скрытой отладочной информации
+- Настраиваемые действия при длительном нажатии
+- Прошивка, откат (Buds+, Buds Pro)
+- и многое другое...
 
 ## Скачать
 
 Доступны несколько пакетов для Linux:
-* [Flatpak (для всех дистрибутивов Linux)](#flatpak)
-* [Пакет AUR (для Arch Linux)](#AUR)
+
+- [Flatpak (для всех дистрибутивов Linux)](#flatpak)
+- [Пакет AUR (для Arch Linux)](#AUR)
 
 Загрузите исполняемые файлы для Windows в разделе [релизов](https://github.com/ThePBone/GalaxyBudsClient/releases). Пожалуйста, прочитайте примечания к релизу перед установкой:
+
 <p align="center">
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Скачать" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
@@ -68,26 +70,23 @@
 
 Доступно для скачивания на FlatHub: https://flathub.org/apps/me.timschneeberger.GalaxyBudsClient
 
-```flatpak install me.timschneeberger.GalaxyBudsClient```
-
+`flatpak install me.timschneeberger.GalaxyBudsClient`
 
 <a href='https://flathub.org/apps/me.timschneeberger.GalaxyBudsClient'><img width='240' alt='Скачать на Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.png'/></a>
 
 > **Примечание**: Flatpaks работают в изолированной среде. Это приложение может получить доступ только к `~/.var/app/me.timschneeberger.GalaxyBudsClient/` по умолчанию.
 
-### AUR 
+### AUR
 
 Также доступен [пакет AUR](https://aur.archlinux.org/packages/galaxybudsclient-bin/) для Arch Linux, поддерживаемый @joscdk:
 
-```yay -S galaxybudsclient-bin```
-
+`yay -S galaxybudsclient-bin`
 
 ### winget
 
 Пакет для Windows также можно установить с помощью менеджера пакетов Windows (winget)
 
-```winget install ThePBone.GalaxyBudsClient```
-
+`winget install ThePBone.GalaxyBudsClient`
 
 ## Как это работает
 
@@ -135,36 +134,35 @@
 
 ### Участники
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Шаблоны задач, вики и переводы
-* [@AndriesK](https://github.com/AndriesK) - Исправление ошибок Buds Live
-* [@TheLastFrame](https://github.com/TheLastFrame) - Иконки Buds Pro
-* [@githubcatw](https://github.com/githubcatw) - База диалога подключения
-* [@GaryGadget9](https://github.com/GaryGadget9) - Пакет WinGet
-* [@joscdk](https://github.com/joscdk) - Пакет AUR
+- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Шаблоны задач, вики и переводы
+- [@AndriesK](https://github.com/AndriesK) - Исправление ошибок Buds Live
+- [@TheLastFrame](https://github.com/TheLastFrame) - Иконки Buds Pro
+- [@githubcatw](https://github.com/githubcatw) - База диалога подключения
+- [@GaryGadget9](https://github.com/GaryGadget9) - Пакет WinGet
+- [@joscdk](https://github.com/joscdk) - Пакет AUR
 
 ### Переводчики
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Русский и украинский перевод
-* [@PlasticBrain](https://github.com/fhalfkg) - Корейский и японский перевод
-* [@cozyplanes](https://github.com/cozyplanes) - Корейский перевод
-* [@erenbektas](https://github.com/erenbektas) - Турецкий перевод
-* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad), [@pseudor](https://github.com/pseudor) и [@YexuanXiao](https://github.com/YexuanXiao) - Китайский перевод
-* [@YiJhu](https://github.com/YiJhu) - Китайский (традиционный) перевод
-* [@efrenbg1](https://github.com/efrenbg1) и Andrew Gonza - Испанский перевод
-* [@giovankabisano](https://github.com/giovankabisano) - Индонезийский перевод
-* [@lucasskluser](https://github.com/lucasskluser) - Португальский перевод
-* [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Итальянский перевод
-* [@Buashei](https://github.com/Buashei) - Польский перевод
-* [@KatJillianne](https://github.com/KatJillianne) - Вьетнамский перевод
-* [@joskaja](https://github.com/joskaja) и [@Joedmin](https://github.com/Joedmin) - Чешский перевод
-* [@Benni0109](https://github.com/Benni0109), [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - Немецкий перевод
-* [@nikossyr](https://github.com/nikossyr) - Греческий перевод
-* [@grigorem](https://github.com/grigorem) - Румынский перевод
-* [@tretre91](https://github.com/tretre91) - Французский перевод
-* [@Sigarya](https://github.com/Sigarya) - Ивритский перевод
-* [@domroaft](https://github.com/domroaft) - Венгерский перевод
+- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Русский и украинский перевод
+- [@PlasticBrain](https://github.com/fhalfkg) - Корейский и японский перевод
+- [@cozyplanes](https://github.com/cozyplanes) - Корейский перевод
+- [@erenbektas](https://github.com/erenbektas) - Турецкий перевод
+- [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad), [@pseudor](https://github.com/pseudor) и [@YexuanXiao](https://github.com/YexuanXiao) - Китайский перевод
+- [@YiJhu](https://github.com/YiJhu) - Китайский (традиционный) перевод
+- [@efrenbg1](https://github.com/efrenbg1) и Andrew Gonza - Испанский перевод
+- [@giovankabisano](https://github.com/giovankabisano) - Индонезийский перевод
+- [@lucasskluser](https://github.com/lucasskluser) - Португальский перевод
+- [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Итальянский перевод
+- [@Buashei](https://github.com/Buashei) - Польский перевод
+- [@KatJillianne](https://github.com/KatJillianne) и [@thelegendaryjohn](https://github.com/thelegendaryjohn) - Вьетнамский перевод
+- [@joskaja](https://github.com/joskaja) и [@Joedmin](https://github.com/Joedmin) - Чешский перевод
+- [@Benni0109](https://github.com/Benni0109), [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - Немецкий перевод
+- [@nikossyr](https://github.com/nikossyr) - Греческий перевод
+- [@grigorem](https://github.com/grigorem) - Румынский перевод
+- [@tretre91](https://github.com/tretre91) - Французский перевод
+- [@Sigarya](https://github.com/Sigarya) - Ивритский перевод
+- [@domroaft](https://github.com/domroaft) - Венгерский перевод
 
 ## Лицензия
 
 Этот проект лицензирован на условиях [GPLv3](https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE). Он не связан с компанией Samsung и не находится под ее контролем ни в каком виде.
-
