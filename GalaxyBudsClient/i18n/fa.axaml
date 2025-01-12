@@ -163,98 +163,98 @@ Right: {1}</sys:String>
     <!--Main page-->
     <sys:String x:Key="mainpage_header">خانه</sys:String>
     <sys:String x:Key="mainpage_corrupt_data">اطلاعات ناقص دریافت شد. در حال اتصال دوباره...</sys:String>
-    <sys:String x:Key="mainpage_fit_test">بررسی کیپ بودن ایربادها</sys:String>
-    <sys:String x:Key="mainpage_find_my_earbuds">یافتن ایرباد</sys:String>
+    <sys:String x:Key="mainpage_fit_test">بررسی کیپ بودن بادها</sys:String>
+    <sys:String x:Key="mainpage_find_my_earbuds">یافتن باد</sys:String>
     <sys:String x:Key="mainpage_touchpad">لمس</sys:String>
     <sys:String x:Key="mainpage_ambient_sound">صدای محیطی</sys:String>
-    <sys:String x:Key="mainpage_noise">Noise control</sys:String>
-    <sys:String x:Key="mainpage_equalizer">Equalizer</sys:String>
-    <sys:String x:Key="mainpage_advanced">Advanced settings</sys:String>
-    <sys:String x:Key="mainpage_system">System</sys:String>
+    <sys:String x:Key="mainpage_noise">کنترل صدای محیطی</sys:String>
+    <sys:String x:Key="mainpage_equalizer">اکولایزر</sys:String>
+    <sys:String x:Key="mainpage_advanced">تنظیمات پیشرفته</sys:String>
+    <sys:String x:Key="mainpage_system">سیستم</sys:String>
 
     <!--Device selection page (setup)-->
-    <sys:String x:Key="devsel_header">Select your earbuds</sys:String>
-    <sys:String x:Key="devsel_manual_pair_title">Is your device not listed?</sys:String>
+    <sys:String x:Key="devsel_header">باد مورد نظر را انتخاب کنید</sys:String>
+    <sys:String x:Key="devsel_manual_pair_title">دستگاه شما در فهرست نیست?</sys:String>
     <sys:String x:Key="devsel_manual_pair_description">Make sure your earbuds have already been paired. If they are still not recognized, try using the manual connection option.</sys:String>
-    <sys:String x:Key="devsel_manual_pair">Manual connection</sys:String>
-    <sys:String x:Key="devsel_nodevices">Please connect and pair your earbuds first</sys:String>
-    <sys:String x:Key="devsel_nodevices_title">No paired devices found</sys:String>
-    <sys:String x:Key="devsel_invalid_selection">Please select a valid device</sys:String>
+    <sys:String x:Key="devsel_manual_pair">اتصال دستی</sys:String>
+    <sys:String x:Key="devsel_nodevices">لطفا باد خود را ابتدا متصل و جفت نمایید</sys:String>
+    <sys:String x:Key="devsel_nodevices_title">دستگاه جفت شده ای شناسایی نشد</sys:String>
+    <sys:String x:Key="devsel_invalid_selection">لطفا دستگاه معتبری را انتخاب نمایید.</sys:String>
     <sys:String x:Key="devsel_winrt_title">Use alternative Bluetooth backend</sys:String>
     <sys:String x:Key="devsel_winrt">Much better stability, but may not work on all PCs with some Bluetooth adapters (A restart may be required!)</sys:String>
 
     <!--Device page-->
-    <sys:String x:Key="devices_header">Paired devices</sys:String>
-    <sys:String x:Key="devices_new">New</sys:String>
-    <sys:String x:Key="devices_new_long">Pair new device</sys:String>
-    <sys:String x:Key="devices_select_inactive">Select</sys:String>
-    <sys:String x:Key="devices_select_active">Selected</sys:String>
-    <sys:String x:Key="devices_delete">Delete</sys:String>
-    <sys:String x:Key="devices_delete_long">Delete device</sys:String>
-    <sys:String x:Key="devices_delete_confirmation">Are you sure you want to remove this device?</sys:String>
-    <sys:String x:Key="devices_settings_link">Manage paired devices</sys:String>
-    <sys:String x:Key="devices_settings_link_desc">Add, remove, or select a primary device</sys:String>
+    <sys:String x:Key="devices_header">دستگاه های جفت شده</sys:String>
+    <sys:String x:Key="devices_new">جدید</sys:String>
+    <sys:String x:Key="devices_new_long">جفت سازی دستگاه جدید</sys:String>
+    <sys:String x:Key="devices_select_inactive">انتخاب</sys:String>
+    <sys:String x:Key="devices_select_active">انتخاب شده</sys:String>
+    <sys:String x:Key="devices_delete">حذف</sys:String>
+    <sys:String x:Key="devices_delete_long">حذف  دستگاه</sys:String>
+    <sys:String x:Key="devices_delete_confirmation">آیا از حذف دستگاه جفت شده اطمینان دارید؟</sys:String>
+    <sys:String x:Key="devices_settings_link">مدیریت دستگاه های جفت شده</sys:String>
+    <sys:String x:Key="devices_settings_link_desc">اضافه, حذف, یا انتخاب دستگاه اصلی</sys:String>
     
     <!--Touchpad gestures-->
-    <sys:String x:Key="touchpad_gesture_header">Enable touchpad gestures</sys:String>
-    <sys:String x:Key="touchpad_gesture_single">Single tap</sys:String>
-    <sys:String x:Key="touchpad_gesture_single_desc">Play or pause track</sys:String>
-    <sys:String x:Key="touchpad_gesture_double">Double tap</sys:String>
-    <sys:String x:Key="touchpad_gesture_double_desc">Play next track</sys:String>
-    <sys:String x:Key="touchpad_gesture_triple">Triple tap</sys:String>
-    <sys:String x:Key="touchpad_gesture_triple_desc">Play previous track</sys:String>
-    <sys:String x:Key="touchpad_gesture_hold">Touch and hold</sys:String>
-    <sys:String x:Key="touchpad_gesture_hold_desc">Execute custom action</sys:String>
-    <sys:String x:Key="touchpad_gesture_double_for_call">Double tap during call</sys:String>
-    <sys:String x:Key="touchpad_gesture_double_for_call_desc">Answer call or end call</sys:String>
-    <sys:String x:Key="touchpad_gesture_hold_for_call">Touch and hold during call</sys:String>
-    <sys:String x:Key="touchpad_gesture_hold_for_call_desc">Decline call</sys:String>
+    <sys:String x:Key="touchpad_gesture_header">فعال سازی فرمان حرکتی لمسی</sys:String>
+    <sys:String x:Key="touchpad_gesture_single">تک لمس</sys:String>
+    <sys:String x:Key="touchpad_gesture_single_desc">پخش یا توقف فایل</sys:String>
+    <sys:String x:Key="touchpad_gesture_double">دو لمس</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_desc">اجرای فایل بعدی</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple">سه لمس</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple_desc">اجرای فایل قبلی</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold">لمس و نگه داشتن</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_desc">اجرای فرمان دلخواه</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_for_call">دوبار لمس در زمان مکالمه</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_for_call_desc">قبول یا رد تماس</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call">لمس و نگه داشتن در زمان مکالمه</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call_desc">رد تماس</sys:String>
 
     <!--Touchpad page-->
-    <sys:String x:Key="touchpad_header">Touchpad</sys:String>
-    <sys:String x:Key="touchpad_lock">Lock touchpad</sys:String>
-    <sys:String x:Key="touchpad_left_action">Left long-press action</sys:String>
-    <sys:String x:Key="touchpad_right_action">Right long-press action</sys:String>
-    <sys:String x:Key="touchpad_default_action">Built-in touch action</sys:String>
+    <sys:String x:Key="touchpad_header">تاچ پد</sys:String>
+    <sys:String x:Key="touchpad_lock">قفل تاچ پد</sys:String>
+    <sys:String x:Key="touchpad_left_action">عملکرد لمس طولانی گوشی سمت چپ</sys:String>
+    <sys:String x:Key="touchpad_right_action">عملکرد لمس طولانی گوشی سمت راست</sys:String>
+    <sys:String x:Key="touchpad_default_action">عملکرد پیش فرض</sys:String>
 
-    <sys:String x:Key="touchpad_gestures">Advanced touch lock</sys:String>
-    <sys:String x:Key="touchpad_gestures_description">Disable default touch gestures</sys:String>
-    <sys:String x:Key="touchpad_double_tap_volume">Double-tap earbud edge</sys:String>
-    <sys:String x:Key="touchpad_double_tap_volume_description">Double-tap the edge of the left or right earbud to turn the volume down or up</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode">Noise control switching mode</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_l">Noise control switching mode (Left)</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_r">Noise control switching mode (Right)</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_desc">Choose modes to cycle through</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ Ambient sound</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Off</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambient sound ↔ Off</sys:String>
+    <sys:String x:Key="touchpad_gestures">قفل لمس پیشرفته</sys:String>
+    <sys:String x:Key="touchpad_gestures_description">غیرفعال کردن حرکت های لمسی پیش فرض</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume">دوبار لمس حاشیه باد</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">دوباره حاشیه باد را برای کاهش یا افزایش حجم صدا لمس کنید</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode">تغییر حالت حذف صدای محیطی</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_l">تغییر حالت حذف صدای محیطی(چپ)</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_r">تغییر حالت حذف صدای محیطی(راست)</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_desc">انتخاب حالات مختلف جهت تغییر</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ صدای محیط</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ خاموش</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">صدای محیط ↔ خاموش</sys:String>
 
     <!--Custom touchpad action page-->
-    <sys:String x:Key="cact_header">Define a custom long-press action</sys:String>
-    <sys:String x:Key="cact_external_app_dialog_title">Select executable...</sys:String>
-    <sys:String x:Key="cact_action">Custom action</sys:String>
-    <sys:String x:Key="cact_function_param">Function</sys:String>
-    <sys:String x:Key="cact_hotkey_param">Hotkey</sys:String>
-    <sys:String x:Key="cact_path_param">File path</sys:String>
-    <sys:String x:Key="cact_notice_content_p1">Custom actions are only available while this app is active in the background.</sys:String>
-    <sys:String x:Key="cact_notice_content_p2">They have no effect on Android or other devices.</sys:String>
+    <sys:String x:Key="cact_header">ایجاد عملکرد لمس طولانی دلخواه</sys:String>
+    <sys:String x:Key="cact_external_app_dialog_title">انتخاب برنامه اجرایی ...</sys:String>
+    <sys:String x:Key="cact_action">عملکرد دلخواه</sys:String>
+    <sys:String x:Key="cact_function_param">عماکرد</sys:String>
+    <sys:String x:Key="cact_hotkey_param">کلید میانبر</sys:String>
+    <sys:String x:Key="cact_path_param">مسیر فایل</sys:String>
+    <sys:String x:Key="cact_notice_content_p1">عملکرد دلخواه فقط زمانی که برنامه در پس زمینه در حال اجرا باشد در دسترس هستند.</sys:String>
+    <sys:String x:Key="cact_notice_content_p2">هیچ گونه تغییری بر روی اندروید و دستگاه های دیگر ایجاد نمی گردد.</sys:String>
 
     <!--System/Self-Test-->
-    <sys:String x:Key="system_overview_header">System</sys:String>
-    <sys:String x:Key="system_header">System information</sys:String>
-    <sys:String x:Key="system_selftest">Run self test</sys:String>
-    <sys:String x:Key="system_selftest_desc">Verify if all modules of your earbuds are functioning properly</sys:String>
-    <sys:String x:Key="system_factory_reset">Factory reset</sys:String>
-    <sys:String x:Key="system_factory_reset_desc">Restore your earbuds to their factory settings and disconnect</sys:String>
-    <sys:String x:Key="system_pairing_mode">Enter pairing mode</sys:String>
-    <sys:String x:Key="system_pairing_mode_desc">Disconnect your earbuds from this PC and make it visible to other devices</sys:String>
-    <sys:String x:Key="system_trace_core_dump">Download trace and coredumps</sys:String>
-    <sys:String x:Key="system_trace_core_dump_desc">Retrieve raw debugging data from your earbuds</sys:String>
-    <sys:String x:Key="system_info">View system information</sys:String>
-    <sys:String x:Key="system_info_desc">Display detailed information about your earbuds</sys:String>
-    <sys:String x:Key="system_flasher">Install firmware updates</sys:String>
-    <sys:String x:Key="system_flasher_desc">Upgrade, downgrade, or flash custom firmware binaries</sys:String>
-    <sys:String x:Key="system_spatial">Spatial sensor test</sys:String>
+    <sys:String x:Key="system_overview_header">سیستم</sys:String>
+    <sys:String x:Key="system_header">اطلاعات سیستمی</sys:String>
+    <sys:String x:Key="system_selftest">اجرای بررسی سیستمی</sys:String>
+    <sys:String x:Key="system_selftest_desc">صحت کارایی ماژول های بادز خود را کنترل کنید</sys:String>
+    <sys:String x:Key="system_factory_reset">تنظیمات کارخانه</sys:String>
+    <sys:String x:Key="system_factory_reset_desc">برگشت به تنظیمات کارخانه بادز ها و قطع اتصال</sys:String>
+    <sys:String x:Key="system_pairing_mode">شروع فرایند اتصال</sys:String>
+    <sys:String x:Key="system_pairing_mode_desc">اتصال بادز‌های خود را از رایانه قطع و انها قابل نمایش نمایید </sys:String>
+    <sys:String x:Key="system_trace_core_dump">دریافت trace و coredumps</sys:String>
+    <sys:String x:Key="system_trace_core_dump_desc">دریافت اطلاعات خام دیباگ از بادز شما</sys:String>
+    <sys:String x:Key="system_info">نمایش تنظیمات سیستمی</sys:String>
+    <sys:String x:Key="system_info_desc">نمایش اطلاعات جزئی در باره بادز های شما</sys:String>
+    <sys:String x:Key="system_flasher">نصب به روز رسانی فریمور</sys:String>
+    <sys:String x:Key="system_flasher_desc">به روز رسانی, دانگرید, یا نصب نسخه کاستوم فریمور</sys:String>
+    <sys:String x:Key="system_spatial">بررسی سنسور صدای محیطی</sys:String>
     <sys:String x:Key="system_spatial_desc">Read spatial head-tracking data used for 3D audio</sys:String>
     <sys:String x:Key="system_usage_reports">Usage &amp; metering reports</sys:String>
     <sys:String x:Key="system_usage_reports_desc">View usage reports provided by the earbuds</sys:String>
@@ -367,7 +367,7 @@ Measure time: Select a horizontal span to measure the elapsed time between the s
 Measure level: Select a vertical span to measure the battery level difference between the start and end of the selection.</sys:String>
 
     <!--Settings-->
-    <sys:String x:Key="settings_header">Settings</sys:String>
+    <sys:String x:Key="settings_header">تنظیمات</sys:String>
     <sys:String x:Key="settings_save_fail_no_access">Failed to save settings. Access to the configuration file has been denied by the operating system. Please check the file permissions for {0}.</sys:String>
     <sys:String x:Key="settings_appearance">Appearance</sys:String>
     <sys:String x:Key="settings_darkmode">حالت تیره</sys:String>
@@ -382,8 +382,8 @@ Measure level: Select a vertical span to measure the battery level difference be
     <sys:String x:Key="settings_localization_description">تغییر زبان برنامه</sys:String>
     <sys:String x:Key="settings_minimize_tray">کوچک کردن در نوار زمینه</sys:String>
     <sys:String x:Key="settings_minimize_tray_description">در پس زمینه اجرا گردد</sys:String>
-    <sys:String x:Key="settings_realistic_earbud_icons">استفاده از تصاویر واقع گرایانه ایربادها</sys:String>
-    <sys:String x:Key="settings_realistic_earbud_icons_description">نمایش تصویر رنگی واقعی ایرباد در صورت پشتیبانی</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons">استفاده از تصاویر واقع گرایانه بادها</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons_description">نمایش تصویر رنگی واقعی باد در صورت پشتیبانی</sys:String>
     <sys:String x:Key="settings_tray_settings">نماد نواز وظیقه و روشن شدن </sys:String>
     <sys:String x:Key="settings_dyn_tray_mode">نماد دینامیک نوار وظیفه</sys:String>
     <sys:String x:Key="settings_dyn_tray_mode_description">نمایش وظعیت باتری در نماد نوار وظیفه</sys:String>
@@ -396,7 +396,7 @@ Measure level: Select a vertical span to measure the battery level difference be
     <sys:String x:Key="settings_connpopup">بالا پر اتصال</sys:String>
     <sys:String x:Key="settings_devmode">تنظیمات توسعه دهنده</sys:String>
     <sys:String x:Key="settings_devmode_description">تنظیمات بررسی ترافیک بلوتوث و موارد دیگر</sys:String>
-    <sys:String x:Key="settings_crowdsourcing">Crowdsourcing</sys:String>
+    <sys:String x:Key="settings_crowdsourcing">مشارکت مردمی</sys:String>
 
     <!--Settings >>> Connection popup-->
     <sys:String x:Key="settings_cpopup_header">بالا پر اتصال</sys:String>
@@ -433,7 +433,7 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="fmg_warning_both">لطفا هر دو بادز را از گوش های خود خارج کنید.</sys:String>
     <sys:String x:Key="fmg_warning_left">لطفا گوشی سمت چپ را از گوش خود خارج کنید.</sys:String>
     <sys:String x:Key="fmg_warning_right">لطفا گوشی سمت راست را از گوش خود خارج کنید</sys:String>
-    <sys:String x:Key="fmg_header">جستجوی ایربادز ها</sys:String>
+    <sys:String x:Key="fmg_header">جستجوی بادز ها</sys:String>
     <sys:String x:Key="fmg_smart_things_find_manage">Manage SmartThings Find data</sys:String>
     <sys:String x:Key="fmg_smart_things_find_manage_desc">View and manage your SmartThings Find data stored on your earbuds</sys:String>
     <sys:String x:Key="fmg_smart_things_find_open">Open SmartThings Find website</sys:String>
@@ -453,41 +453,41 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="smart_things_find_write_ok_desc">The SmartThings Find configuration data has been removed.</sys:String>
 
     <!-- Fit test-->
-    <sys:String x:Key="gft_warning">Please wear both earbuds.</sys:String>
-    <sys:String x:Key="gft_desc">Check whether your earbuds are seated correctly</sys:String>
-    <sys:String x:Key="gft_bad">Bad fit</sys:String>
-    <sys:String x:Key="gft_good">Good fit</sys:String>
-    <sys:String x:Key="gft_fail">Test failed</sys:String>
+    <sys:String x:Key="gft_warning">لطفا هر دو بادز را در گوش خود قرار دهید.</sys:String>
+    <sys:String x:Key="gft_desc">صحت قرار گیری بادز ها را بررسی کنید</sys:String>
+    <sys:String x:Key="gft_bad">قرار گیری نامناسب</sys:String>
+    <sys:String x:Key="gft_good">قرار گیری مناسب</sys:String>
+    <sys:String x:Key="gft_fail">بررسی ناموفق بود</sys:String>
 
     <!--Equalizer-->
-    <sys:String x:Key="eq_header">Equalizer</sys:String>
-    <sys:String x:Key="eq_enable">Equalizer</sys:String>
-    <sys:String x:Key="eq_enable_description">Apply EQ audio filters</sys:String>
-    <sys:String x:Key="eq_preset">Preset</sys:String>
-    <sys:String x:Key="eq_stereo_balance">Left/right sound balance</sys:String>
-    <sys:String x:Key="eq_stereo_balance_value">{0}% left; {1}% right</sys:String>
-    <sys:String x:Key="eq_stereo_balance_neutral">Neutral</sys:String>
+    <sys:String x:Key="eq_header">اکولایزر</sys:String>
+    <sys:String x:Key="eq_enable">اکولایزر</sys:String>
+    <sys:String x:Key="eq_enable_description">اعمال فیلتر اکولایزر به خروجی صوتی</sys:String>
+    <sys:String x:Key="eq_preset">پیشفرض</sys:String>
+    <sys:String x:Key="eq_stereo_balance">تعادل صوتی چپ / راست</sys:String>
+    <sys:String x:Key="eq_stereo_balance_value">{0}% چپ; {1}% راست</sys:String>
+    <sys:String x:Key="eq_stereo_balance_neutral">میانه</sys:String>
 
-    <sys:String x:Key="eq_bass">Bass Boost</sys:String>
-    <sys:String x:Key="eq_soft">Soft</sys:String>
-    <sys:String x:Key="eq_dynamic">Dynamic</sys:String>
-    <sys:String x:Key="eq_clear">Clear</sys:String>
-    <sys:String x:Key="eq_treble">Treble Boost</sys:String>
+    <sys:String x:Key="eq_bass">افزایش بیس</sys:String>
+    <sys:String x:Key="eq_soft">نرم</sys:String>
+    <sys:String x:Key="eq_dynamic">دینامیک</sys:String>
+    <sys:String x:Key="eq_clear">واضح</sys:String>
+    <sys:String x:Key="eq_treble">افزایش صدای زیر(تریبل)</sys:String>
 
     <!--Noise control-->
-    <sys:String x:Key="nc_header">Noise control</sys:String>
-    <sys:String x:Key="nc_as_anc_description">Reduce background noises</sys:String>
-    <sys:String x:Key="nc_one_earbud">Noise controls with one earbud</sys:String>
-    <sys:String x:Key="nc_one_earbud_description">Noise controls normally require two earbuds to prevent discomfort, enable this to allow it with only one earbud</sys:String>
-    <sys:String x:Key="nc_anc_level">High sensitivity</sys:String>
-    <sys:String x:Key="nc_anc_level_description">Stronger noise cancelling effect</sys:String>
-    <sys:String x:Key="nc_ambient">Customize ambient sound</sys:String>
-    <sys:String x:Key="nc_ambient_description">Configure ambient sound tone and volume (if available)</sys:String>
-    <sys:String x:Key="nc_voicedetect">Conversation detection</sys:String>
-    <sys:String x:Key="nc_voicedetect_description">When your voice is detected, automatically turn on Ambient sound and lower media volume to make conversation easier</sys:String>
+    <sys:String x:Key="nc_header">نویز کنترل</sys:String>
+    <sys:String x:Key="nc_as_anc_description">حذف نویز پس زمینه</sys:String>
+    <sys:String x:Key="nc_one_earbud">حذف صدای مزاحم با یک بادز</sys:String>
+    <sys:String x:Key="nc_one_earbud_description">حذف نویز به صورت طبیعی جهت جلوگیری از ناراحتی شنیداری نیازمند هد دو بادز می باشد، با فعال کردن این قابلیت میتوانید از یک بادز برای این مورد استفاده کنید</sys:String>
+    <sys:String x:Key="nc_anc_level">حساسیت بالا</sys:String>
+    <sys:String x:Key="nc_anc_level_description">اثر حذف نویز قدرتمندتر</sys:String>
+    <sys:String x:Key="nc_ambient">شخصی سازی صدای محیطی</sys:String>
+    <sys:String x:Key="nc_ambient_description">شخصی سازی حجم و نوع صدای محیطی (در صورت در دسترس بودن)</sys:String>
+    <sys:String x:Key="nc_voicedetect">تشخیص مکالمه</sys:String>
+    <sys:String x:Key="nc_voicedetect_description">در صورت تشخیص صدای شما، به صورت خودکار صدای محیطی را فعال و صدای موسیقی در حال پخش را کم می کند</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">Conversation timeout</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_description">Revert settings when your voice is not detected for a certain amount of time</sys:String>
-    <sys:String x:Key="nc_voicedetect_timeout_item">{0} seconds</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout_item">{0} ثانیه</sys:String>
 
     <!--Noise control >>> Ambient sound-->
     <sys:String x:Key="nc_as_header">Ambient sound settings</sys:String>
@@ -549,20 +549,20 @@ The remap configuration is only active on this device. If you connect your earbu
 
     <!--Credits-->
     <sys:String x:Key="credits_header">Credits</sys:String>
-    <sys:String x:Key="credits_developer">Developer</sys:String>
-    <sys:String x:Key="credits_license">License</sys:String>
-    <sys:String x:Key="credits_version">Version</sys:String>
-    <sys:String x:Key="credits_contributor">Contributors</sys:String>
-    <sys:String x:Key="credits_translator">Translators</sys:String>
-    <sys:String x:Key="credits_sponsor">Sponsor this project</sys:String>
+    <sys:String x:Key="credits_developer">توسعه دهنده</sys:String>
+    <sys:String x:Key="credits_license">گواهی</sys:String>
+    <sys:String x:Key="credits_version">نسخه</sys:String>
+    <sys:String x:Key="credits_contributor">کمک کنندگان</sys:String>
+    <sys:String x:Key="credits_translator">مترجمان</sys:String>
+    <sys:String x:Key="credits_sponsor">پشتیبانی از این پروژه</sys:String>
     <sys:String x:Key="credits_kofi">Visit my ko-fi page to support me!</sys:String>
-    <sys:String x:Key="credits_github">Visit this project on GitHub</sys:String>
+    <sys:String x:Key="credits_github">مشاهده گیت هاب پروژه</sys:String>
 
     <!--Connection lost page-->
-    <sys:String x:Key="connlost">Connection lost</sys:String>
-    <sys:String x:Key="connlost_header">Unable to establish connection</sys:String>
-    <sys:String x:Key="connlost_connect">Connect</sys:String>
-    <sys:String x:Key="connlost_connecting">Connecting...</sys:String>
+    <sys:String x:Key="connlost">ارتباط قطع شده</sys:String>
+    <sys:String x:Key="connlost_header">ایجاد ارتباط موفق نبود</sys:String>
+    <sys:String x:Key="connlost_connect">اتصال</sys:String>
+    <sys:String x:Key="connlost_connecting">درحال اتصال...</sys:String>
 
     <!-- Pairing mode -->
     <sys:String x:Key="connlost_disconnected">Device disconnected</sys:String>
