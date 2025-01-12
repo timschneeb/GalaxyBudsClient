@@ -1,6 +1,5 @@
-
 <p align="center">
-    <a href="../README.md">English</a> | <a href="./README_chs.md">中文</a> | <a href="./README_rus.md">Русский</a> | <a href="./README_jpn.md">日本語</a> | <a href="./README_ukr.md">Українська</a> | 한국어 | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> | <a href="/docs/README_vmn.md">Vietnamese</a> <br>
+    <a href="../README.md">English</a> | <a href="./README_chs.md">中文</a> | <a href="./README_rus.md">Русский</a> | <a href="./README_jpn.md">日本語</a> | <a href="./README_ukr.md">Українська</a> | 한국어 | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> | <a href="/docs/README_vnm.md">Vietnamese</a> <br>
     <sub>주의: readme 파일들은 번역자들에 의해 업데이트되며 시간이 지나면 최신 내용이 아니게 될 수 있습니다. 새로운 기능은 가장 먼저 영어 버전에 기재됩니다.</sub>
 </p>
 <h1 align="center">
@@ -45,11 +44,11 @@
 
 알려진 공식 안드로이드 앱의 기본 기능과 별도로, 이 프로젝트는 이어버즈의 모든 잠재 기능들과 새로운 기능들을 사용할 수 있도록 도와줍니다. 예를 들면:
 
-* 자세한 배터리 정보
-* 기능 점검과 공장 자체 테스트
-* 숨겨진 디버깅 정보를 로드
-* 사용자 설정이 가능한 길게 누르기 동작
-* 그 이외 다른 기능들...
+- 자세한 배터리 정보
+- 기능 점검과 공장 자체 테스트
+- 숨겨진 디버깅 정보를 로드
+- 사용자 설정이 가능한 길게 누르기 동작
+- 그 이외 다른 기능들...
 
 ## 다운로드
 
@@ -78,7 +77,7 @@ A2DP 프로필이 표준화 및 문서화되더라도, RFCOMM 프로토콜로 �
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md">갤럭시 버즈 플러스 기록</a>
 </p>
 
-갤럭시 버즈 플러스를 유심히 분석하면서, 저는 펌웨어 디버그 모드와 쓰이지 않은 페어링 모드, Bluetooth 키 덤퍼와 같은 특이한 기능을 찾아냈습니다. 그 기능들에 대한 내용도 아래의 링크에 기록했습니다: 
+갤럭시 버즈 플러스를 유심히 분석하면서, 저는 펌웨어 디버그 모드와 쓰이지 않은 페어링 모드, Bluetooth 키 덤퍼와 같은 특이한 기능을 찾아냈습니다. 그 기능들에 대한 내용도 아래의 링크에 기록했습니다:
 
 <p align="center">
   <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/GalaxyBudsPlus_HiddenDebugFeatures.md">갤럭시 버즈 플러스: 특이한 기능들</a>
@@ -104,39 +103,38 @@ A2DP 프로필이 표준화 및 문서화되더라도, RFCOMM 프로토콜로 �
 
 #### 기여
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue 템플릿, 위키 제작과 번역
-* [@AndriesK](https://github.com/AndriesK) - 버즈 라이브 버그 픽스
-* [@TheLastFrame](https://github.com/TheLastFrame) - 버즈 프로 아이콘
-* [@githubcatw](https://github.com/githubcatw) - 연결 알림 기반 제작
-* [@GaryGadget9](https://github.com/GaryGadget9) - WinGet 패키지
+- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue 템플릿, 위키 제작과 번역
+- [@AndriesK](https://github.com/AndriesK) - 버즈 라이브 버그 픽스
+- [@TheLastFrame](https://github.com/TheLastFrame) - 버즈 프로 아이콘
+- [@githubcatw](https://github.com/githubcatw) - 연결 알림 기반 제작
+- [@GaryGadget9](https://github.com/GaryGadget9) - WinGet 패키지
 
 #### 번역
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - 러시아어, 우크라이나어 번역
-* [@BrainInAVet](https://github.com/fhalfkg) - 한국어, 일본어 번역
-* [@cozyplanes](https://github.com/cozyplanes) - 한국어 번역
-* [@erenbektas](https://github.com/erenbektas) - 터키어 번역
-* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) and [@pseudor](https://github.com/pseudor) - 중국어 번역
-* [@efrenbg1](https://github.com/efrenbg1), Andrew Gonza - 스페인어 번역
-* [@giovankabisano](https://github.com/giovankabisano) - 인도네시아어 번역
-* [@lucasskluser](https://github.com/lucasskluser) - 포르투갈어 번역
-* [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - 이탈리아어 번역
-* [@Buashei](https://github.com/Buashei) - 폴란드어 번역
-* [@KatJillianne](https://github.com/KatJillianne) - 베트남어 번역
-* [@joskaja](https://github.com/joskaja), [@Joedmin](https://github.com/Joedmin) - 체코어 번역
-* [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - 독일어 번역
-* [@nikossyr](https://github.com/nikossyr) - 그리스어 번역
-* [@grigorem](https://github.com/grigorem) - 루마니아어 번역
+- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - 러시아어, 우크라이나어 번역
+- [@BrainInAVet](https://github.com/fhalfkg) - 한국어, 일본어 번역
+- [@cozyplanes](https://github.com/cozyplanes) - 한국어 번역
+- [@erenbektas](https://github.com/erenbektas) - 터키어 번역
+- [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) and [@pseudor](https://github.com/pseudor) - 중국어 번역
+- [@efrenbg1](https://github.com/efrenbg1), Andrew Gonza - 스페인어 번역
+- [@giovankabisano](https://github.com/giovankabisano) - 인도네시아어 번역
+- [@lucasskluser](https://github.com/lucasskluser) - 포르투갈어 번역
+- [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - 이탈리아어 번역
+- [@Buashei](https://github.com/Buashei) - 폴란드어 번역
+- [@KatJillianne](https://github.com/KatJillianne) - 베트남어 번역
+- [@joskaja](https://github.com/joskaja), [@Joedmin](https://github.com/Joedmin) - 체코어 번역
+- [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - 독일어 번역
+- [@nikossyr](https://github.com/nikossyr) - 그리스어 번역
+- [@grigorem](https://github.com/grigorem) - 루마니아어 번역
 
 ## 라이선스
 
 이 프로젝트는 [GPLv3](../LICENSE) 라이선스를 따릅니다. 삼성과 관련되지 않았으며 그 어떤 권고나 제한도 받지 않습니다.
 
 ```
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
-
