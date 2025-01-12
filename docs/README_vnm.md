@@ -45,7 +45,7 @@ Ngoài các tính năng tiêu chuẩn được biết đến từ ứng dụng A
 * Thống kê pin chi tiết
 * Các trình chẩn đoán và tự kiểm
 * Cực nhiều các thông tin gỡ lỗi ẩn
-* Tùy chỉnh các hành động chạm khi nhấn lâu
+* Tùy chỉnh các hành động chạm giữ lâu
 * Flash firmware, hạ cấp (Buds+, Buds Pro)
 * và nhiều hơn nữa...
 
@@ -53,18 +53,18 @@ Nếu bạn đang tìm kiếm các tệp firmware cũ hơn, hãy xem tại đây
 
 ## Tải về
 
-Có một số package khả dụng cho Linux:
+Một số package cho Linux:
 * [Flatpak (Tất cả các bản Linux distro)](#flatpak)
-* [Gói AUR (Arch Linux)](#aur-package)
+* [Package AUR (Arch Linux)](#package-aur)
 
-File cho Windows trong phần [release](https://github.com/timschneeb/GalaxyBudsClient/releases). Vui lòng đọc ghi chú phát hành trước khi cài đặt.
+Tệp cho Windows nằm trong phần [release](https://github.com/timschneeb/GalaxyBudsClient/releases). Vui lòng đọc ghi chú phát hành trước khi cài đặt.
 
 Tải xuống phiên bản dành cho PC tại đây:
 <p align="center">
     <a href="https://github.com/timschneeb/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/timschneeb/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
-Tải xuống phiên bản di động Android tại đây (có trả phí):
+Tải xuống phiên bản Android tại đây (có trả phí):
 <p align="center">
   <a href='https://play.google.com/store/apps/details?id=me.timschneeberger.galaxybudsclient&utm_source=github&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'> 
     <img width="300" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/>
@@ -142,7 +142,7 @@ Nếu bạn muốn đóng góp code của riêng mình, bạn chỉ cần gửi 
 
 ## Credit
 
-### Contributors
+### Người đóng góp
 
 * [@nift4](https://github.com/nift4) - Hỗ trợ cho macOS và sửa bug
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Mẫu cho issue, wiki và phiên dịch
@@ -152,7 +152,7 @@ Nếu bạn muốn đóng góp code của riêng mình, bạn chỉ cần gửi 
 * [@GaryGadget9](https://github.com/GaryGadget9) - Package WinGet
 * [@joscdk](https://github.com/joscdk) - Package AUR
 
-### Translators
+### Người phiên dịch
 
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Bản dịch tiếng Nga và tiếng Ukraina
 * [@PlasticBrain](https://github.com/fhalfkg) - Bản dịch tiếng Hàn và tiếng Nhật
@@ -175,14 +175,14 @@ Nếu bạn muốn đóng góp code của riêng mình, bạn chỉ cần gửi 
 * [@domroaft](https://github.com/domroaft) - Bản dịch tiếng Hungary
 * [@lampi8426](https://github.com/lampi8426) - Bản dịch tiếng Hà Lan
 
-### Services
+### Dịch vụ
 
 * [Cloudflare](https://www.cloudflare.com/) - Bảo mật các API backend của GalaxyBudsClient và cung cấp giấy phép bản Pro
 
-### Assets
+### Asset
 * Asset earbud được sử dụng trong icon của bản Android được tạo bởi [Archival](https://www.flaticon.com/authors/archival) từ [Flaticon](https://www.flaticon.com/)
 
-## License
+## Giấy phép
 
 Dự án này được cấp phép theo giấy phép [GPLv3](https://github.com/timschneeb/GalaxyBudsClient/blob/master/LICENSE). Dự án này không liên kết với Samsung hay được Samsung giám sát dưới bất kỳ hình thức nào.
 
