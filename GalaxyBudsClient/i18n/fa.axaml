@@ -161,12 +161,12 @@ Right: {1}</sys:String>
 بعضی از امکانات همچون حالت بازی فقط با گوشی های سامسونگ قابلیت فعال سازی دارند.ث</sys:String>
 
     <!--Main page-->
-    <sys:String x:Key="mainpage_header">Home</sys:String>
-    <sys:String x:Key="mainpage_corrupt_data">Received corrupted data. Reconnecting...</sys:String>
-    <sys:String x:Key="mainpage_fit_test">Earbud fit test</sys:String>
-    <sys:String x:Key="mainpage_find_my_earbuds">Find my earbuds</sys:String>
-    <sys:String x:Key="mainpage_touchpad">Touchpad</sys:String>
-    <sys:String x:Key="mainpage_ambient_sound">Ambient sound</sys:String>
+    <sys:String x:Key="mainpage_header">خانه</sys:String>
+    <sys:String x:Key="mainpage_corrupt_data">اطلاعات ناقص دریافت شد. در حال اتصال دوباره...</sys:String>
+    <sys:String x:Key="mainpage_fit_test">بررسی کیپ بودن ایربادها</sys:String>
+    <sys:String x:Key="mainpage_find_my_earbuds">یافتن ایرباد</sys:String>
+    <sys:String x:Key="mainpage_touchpad">لمس</sys:String>
+    <sys:String x:Key="mainpage_ambient_sound">صدای محیطی</sys:String>
     <sys:String x:Key="mainpage_noise">Noise control</sys:String>
     <sys:String x:Key="mainpage_equalizer">Equalizer</sys:String>
     <sys:String x:Key="mainpage_advanced">Advanced settings</sys:String>
@@ -370,68 +370,70 @@ Measure level: Select a vertical span to measure the battery level difference be
     <sys:String x:Key="settings_header">Settings</sys:String>
     <sys:String x:Key="settings_save_fail_no_access">Failed to save settings. Access to the configuration file has been denied by the operating system. Please check the file permissions for {0}.</sys:String>
     <sys:String x:Key="settings_appearance">Appearance</sys:String>
-    <sys:String x:Key="settings_darkmode">Dark mode</sys:String>
-    <sys:String x:Key="settings_darkmode_description">Use a darker color scheme</sys:String>
-    <sys:String x:Key="settings_blurstrength">Window blur strength</sys:String>
-    <sys:String x:Key="settings_blurstrength_description">Only compatible with dark mode. Not supported on all systems</sys:String>
-    <sys:String x:Key="settings_accent">Accent color</sys:String>
-    <sys:String x:Key="settings_accent_description">Choose a custom accent color</sys:String>
-    <sys:String x:Key="settings_transitions">Transition</sys:String>
-    <sys:String x:Key="settings_transitions_description">Enable slide transitions</sys:String>
-    <sys:String x:Key="settings_localization_disable">Language</sys:String>
-    <sys:String x:Key="settings_localization_description">Change the app language</sys:String>
-    <sys:String x:Key="settings_minimize_tray">Minimize to tray</sys:String>
-    <sys:String x:Key="settings_minimize_tray_description">Keep in background instead of terminating the app</sys:String>
-    <sys:String x:Key="settings_realistic_earbud_icons">Use realistic earbud images</sys:String>
-    <sys:String x:Key="settings_realistic_earbud_icons_description">Display realistic &amp; color-aware images of your earbuds, if they support it</sys:String>
-    <sys:String x:Key="settings_tray_settings">Tray icon &amp; startup</sys:String>
-    <sys:String x:Key="settings_dyn_tray_mode">Dynamic tray icon</sys:String>
-    <sys:String x:Key="settings_dyn_tray_mode_description">Display the battery status in the tray icon</sys:String>
-    <sys:String x:Key="settings_dyn_tray_mode_off">Off</sys:String>
-    <sys:String x:Key="settings_dyn_tray_mode_battery_min">Show lowest battery level</sys:String>
-    <sys:String x:Key="settings_dyn_tray_mode_battery_avg">Show average battery level</sys:String>
-    <sys:String x:Key="settings_autostart">Launch on boot</sys:String>
-    <sys:String x:Key="settings_autostart_description">Start minimized on system boot</sys:String>
-    <sys:String x:Key="settings_autostart_permission">Cannot update auto-start entry in registry. Registry access (HKCU) was explicitly disabled by your system administrator.</sys:String>
-    <sys:String x:Key="settings_connpopup">Connection popup</sys:String>
-    <sys:String x:Key="settings_devmode">Developer options</sys:String>
-    <sys:String x:Key="settings_devmode_description">Bluetooth traffic inspector and other developer tools</sys:String>
+    <sys:String x:Key="settings_darkmode">حالت تیره</sys:String>
+    <sys:String x:Key="settings_darkmode_description">شمای تاریک مورد نظر را انتخاب نمایید</sys:String>
+    <sys:String x:Key="settings_blurstrength">شدت تاری پنجره برنامه</sys:String>
+    <sys:String x:Key="settings_blurstrength_description">فقط با حالت تیره همگام است. بر روی تمامی سیستم ها پشتیبانی نمی‌گردد</sys:String>
+    <sys:String x:Key="settings_accent">رنگ دلخواه</sys:String>
+    <sys:String x:Key="settings_accent_description">انتخاب رنگ دلخواه پتجره</sys:String>
+    <sys:String x:Key="settings_transitions">حالات</sys:String>
+    <sys:String x:Key="settings_transitions_description">فعال کردن حالت کشویی</sys:String>
+    <sys:String x:Key="settings_localization_disable">زبان</sys:String>
+    <sys:String x:Key="settings_localization_description">تغییر زبان برنامه</sys:String>
+    <sys:String x:Key="settings_minimize_tray">کوچک کردن در نوار زمینه</sys:String>
+    <sys:String x:Key="settings_minimize_tray_description">در پس زمینه اجرا گردد</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons">استفاده از تصاویر واقع گرایانه ایربادها</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons_description">نمایش تصویر رنگی واقعی ایرباد در صورت پشتیبانی</sys:String>
+    <sys:String x:Key="settings_tray_settings">نماد نواز وظیقه و روشن شدن </sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode">نماد دینامیک نوار وظیفه</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_description">نمایش وظعیت باتری در نماد نوار وظیفه</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_off">خاموش</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_min">پایین ترین مرتبه باتری را نشان بده</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_avg">باتری متوسط را نشان بده</sys:String>
+    <sys:String x:Key="settings_autostart">راه‌اندازی خودکار</sys:String>
+    <sys:String x:Key="settings_autostart_description">راه‌اندازی خودکار به صورت پس زمینه</sys:String>
+    <sys:String x:Key="settings_autostart_permission">مقدار اجرا شدن خودکار در رجیستری را نمیتوان تغییر داد. دسترسی به رجیستری توسط مدیر سیستم غیرفعال شده است.</sys:String>
+    <sys:String x:Key="settings_connpopup">بالا پر اتصال</sys:String>
+    <sys:String x:Key="settings_devmode">تنظیمات توسعه دهنده</sys:String>
+    <sys:String x:Key="settings_devmode_description">تنظیمات بررسی ترافیک بلوتوث و موارد دیگر</sys:String>
     <sys:String x:Key="settings_crowdsourcing">Crowdsourcing</sys:String>
 
     <!--Settings >>> Connection popup-->
-    <sys:String x:Key="settings_cpopup_header">Connection popup</sys:String>
-    <sys:String x:Key="settings_cpopup_enable">Enable popup on connection</sys:String>
-    <sys:String x:Key="settings_cpopup_enable_description">Display a small notification popup informing about battery levels when the Buds are connected</sys:String>
-    <sys:String x:Key="settings_cpopup_compact">Compact mode</sys:String>
-    <sys:String x:Key="settings_cpopup_compact_description">Hide the header of the popup to save space</sys:String>
-    <sys:String x:Key="settings_cpopup_position">Position</sys:String>
-    <sys:String x:Key="settings_cpopup_position_description">Select the position of the connection popup</sys:String>
-    <sys:String x:Key="settings_cpopup_demo">Show demo popup</sys:String>
+    <sys:String x:Key="settings_cpopup_header">بالا پر اتصال</sys:String>
+    <sys:String x:Key="settings_cpopup_enable">فعال سازی بالاپر اتصال</sys:String>
+    <sys:String x:Key="settings_cpopup_enable_description">نمایش بالاپر کوچکولویی شامل اظلاعات باتری در زمان اتصال بادز ها</sys:String>
+    <sys:String x:Key="settings_cpopup_compact">نمایش فشرده</sys:String>
+    <sys:String x:Key="settings_cpopup_compact_description">بالانویس بالاپر را برای کاهش فضای مصرفی حذف کنید</sys:String>
+    <sys:String x:Key="settings_cpopup_position">جایگاه</sys:String>
+    <sys:String x:Key="settings_cpopup_position_description">محل نمایش بالاپر اتصال را مشخص کنید</sys:String>
+    <sys:String x:Key="settings_cpopup_demo">نمایش شمای بالاپر</sys:String>
 
     <!--Settings >>> Crowdsourcing settings-->
-    <sys:String x:Key="settings_crowd_header">Crowdsourcing</sys:String>
-    <sys:String x:Key="settings_crowd_allow">Allow crowdsourcing contribution</sys:String>
-    <sys:String x:Key="settings_crowd_allow_description">Collect information about Samsung's proprietary Bluetooth protocol structure and data on demand. This allows me to keep all available Galaxy Buds models supported much more easily without owning them.</sys:String>
-    <sys:String x:Key="settings_crowd_crashreport">Allow app crash reports</sys:String>
-    <sys:String x:Key="settings_crowd_crashreport_description">Send application crash reports automatically in case of crashes or fatal errors using Sentry. This helps me to respond more quickly to problematic and disruptive application bugs.</sys:String>
+    <sys:String x:Key="settings_crowd_header">مشارکت مردمی</sys:String>
+    <sys:String x:Key="settings_crowd_allow">فعال سازی مشارکت مردمی</sys:String>
+    <sys:String x:Key="settings_crowd_allow_description">
+    جمع أوری اطلاعات مورد نیاز ساختار پروتکل اختصاصی سامسونگ بر حسب نیاز. این کار به من کمک می‌کند تا بدون نیاز به داشتن همه مدلهای گلکسی بادز راحت تر از اونها پشتیبانی کنم.</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport">اجازه ارسال گزارش خرابی</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport_description">
+  گزارش خطاها به صورت خودکار توسط سرویس سنتری، این موضوع به من کمک می‌کند تا بتوانم سریعتر مشکلات و باگ های آزار دهنده برنامه را رفع کنم.</sys:String>
 
     <!--Factory reset-->
-    <sys:String x:Key="factory_header">Factory reset</sys:String>
-    <sys:String x:Key="factory_confirmation">Are you sure you want to reset your earbuds to factory settings?
-This will remove all data and settings from your earbuds.
+    <sys:String x:Key="factory_header">تنظیمات کارخانه</sys:String>
+    <sys:String x:Key="factory_confirmation">آیا از برگرداندن تنظیمات کارخانه بادزهای خود اطمینان دارید؟
+این کار به حذف تمامی اطلاعات و تنظیمات بادزهایتان منجر خواهد شد.
 
-Make sure both earbuds are turned on before continuing.</sys:String>
-    <sys:String x:Key="factory_error_title">Factory reset failed</sys:String>
+مطمئن شوید هر دو باز قبل از اجرای این فرایند فعال باشند.</sys:String>
+    <sys:String x:Key="factory_error_title">بازگشت به تنظیمات کارخانه ناموفق بود</sys:String>
     <sys:String x:Key="factory_error">Device returned error code: {0}
 
 Make sure both earbuds are turned on and reachable.
 You might need to manually reconnect your earbuds.</sys:String>
 
     <!--Find my Gear-->
-    <sys:String x:Key="fmg_warning_both">Please remove both earbuds from your ears.</sys:String>
-    <sys:String x:Key="fmg_warning_left">Please remove the left earbud from your ear.</sys:String>
-    <sys:String x:Key="fmg_warning_right">Please remove the right earbud from your ear.</sys:String>
-    <sys:String x:Key="fmg_header">Find my earbuds</sys:String>
+    <sys:String x:Key="fmg_warning_both">لطفا هر دو بادز را از گوش های خود خارج کنید.</sys:String>
+    <sys:String x:Key="fmg_warning_left">لطفا گوشی سمت چپ را از گوش خود خارج کنید.</sys:String>
+    <sys:String x:Key="fmg_warning_right">لطفا گوشی سمت راست را از گوش خود خارج کنید</sys:String>
+    <sys:String x:Key="fmg_header">جستجوی ایربادز ها</sys:String>
     <sys:String x:Key="fmg_smart_things_find_manage">Manage SmartThings Find data</sys:String>
     <sys:String x:Key="fmg_smart_things_find_manage_desc">View and manage your SmartThings Find data stored on your earbuds</sys:String>
     <sys:String x:Key="fmg_smart_things_find_open">Open SmartThings Find website</sys:String>
