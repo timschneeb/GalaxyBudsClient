@@ -273,7 +273,7 @@ Make sure both earbuds are turned on before continuing.</td></tr>
 <tr><td><code>bixby_remap_note</code></td><td>Say 'Hey Bixby!' to activate. The activation phrase may be different with some language settings.
 
 The remap configuration is only active on this device. If you connect your earbuds to a Samsung device, voice wakeup will activate Bixby normally. On other devices than this device and non-Samsung phones, this feature won't trigger any action.</td></tr>
-<tr><td><code>credits_kofi</code></td><td>Visit my ko-fi page to support me!</td></tr>
+<tr><td><code>credits_kofi</code></td><td>Visit my Ko-fi page to support me!</td></tr>
 <tr><td><code>credits_github</code></td><td>Visit this project on GitHub</td></tr>
 <tr><td><code>connlost</code></td><td>Connection lost</td></tr>
 <tr><td><code>connlost_troubleshoot</code></td><td>Troubleshoot</td></tr>
