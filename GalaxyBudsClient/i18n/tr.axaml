@@ -176,6 +176,9 @@
     <sys:String x:Key="welcome_textblock_p3">Bu uygulama hem Buds (2019) hem de Buds+ (2020) cihazlarını destekler.</sys:String>
     <sys:String x:Key="welcome_darkmode">Karanlık Mod</sys:String>
     <sys:String x:Key="welcome_darkmode_content">Gözleriniz yanmaya mı başladı? Daha karanlık renklerden oluşan temamızı deneyin!</sys:String>
+    <sys:String x:Key="welcome_android_hint_title">Android kullanıcıları için önemli bilgiler</sys:String>
+    <sys:String x:Key="welcome_android_hint">Bu uygulama başlangıçta masaüstü bilgisayarlarında kullanılmak üzere tasarlanmıştır. Uygulamanın arka planda çalışmasını gerektiren özellikler, özel dokunma eylemleri ve pil istatistikleri gibi, şu anda bu sürümde mevcut değildir. 
+Eğer resmi Samsung Wearable uygulaması bu uygulama ile birlikte aktifse, bağlantı sorunları oluşabilir. Lütfen bu uygulamayı kullanmadan önce resmi uygulamanın düzgün şekilde kapatıldığından emin olun.</sys:String>
 
     <!--Main page-->
     <sys:String x:Key="mainpage_header">Ana Sayfa</sys:String>
@@ -243,6 +246,8 @@
     <sys:String x:Key="unsupported_feature_description_p1">Galaxy Buds'ınızın yazılımı çok eski ve bu özelliği desteklemiyor.</sys:String>
     <sys:String x:Key="unsupported_feature_description_p2">Lütfen yazılımınızı resmî Windows Galaxy Buds güncelleştiricisiyle ya da Wearable Android uygulamasıyla güncelleştirin.</sys:String>
     <sys:String x:Key="unsupported_feature_description_p3">Windows Galaxy Buds güncelleştiricisini kullanacaksınız bu uygulamayı kapatmayı unutmayın. Aynı anda yalnızca bir uygulama kulaklıklarla iletişime geçebilir.</sys:String>
+
+    <sys:String x:Key="feature_unsupported_platform">Bu özellik şu anda bu platformda desteklenmemektedir.</sys:String>
 
     <!--Device page-->
     <sys:String x:Key="devices_header">Eşleşen cihazlar</sys:String>
@@ -812,4 +817,8 @@ Details:</sys:String>
     <sys:String x:Key="at_terminal_cmd_id_invalid">Bu komut kimliği geçersiz. Lütfen 16 bitlik bir onaltılık değer girin, örneğin 0007 veya 004C.</sys:String>
     <sys:String x:Key="at_terminal_output">Çıktı</sys:String>
     <sys:String x:Key="at_terminal_send">Gönder</sys:String>
+
+    <!--Read-->
+    <sys:String x:Key="read_failed">Dosya okunamadı. Erişim reddedildi.</sys:String>
+
 </ResourceDictionary>
