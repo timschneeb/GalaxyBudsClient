@@ -27,6 +27,12 @@
 
     <sys:String x:Key="anc">Aktif gürültü engelleme</sys:String>
 
+    <!--Power Menu-->
+    <sys:String x:Key="power_menu_hint">Yalnızca mevcut hedef kulaklık etkilenecektir.</sys:String>
+    <sys:String x:Key="power_menu_reboot">Yeniden Başlat</sys:String>
+    <sys:String x:Key="power_menu_shutdown">Kapat</sys:String>
+    <sys:String x:Key="power_menu_sleep">Uyku</sys:String>
+    
     <!--SPP Message Parser-->
     <sys:String x:Key="sppmsg_too_small">Mesaj çok küçük</sys:String>
     <sys:String x:Key="sppmsg_invalid_som">Geçersiz SOM</sys:String>
@@ -334,6 +340,9 @@
     <sys:String x:Key="system_thermo">Termistör Ölçüsü</sys:String>
     <sys:String x:Key="system_hall">Salon Ölçüsü</sys:String>
     <sys:String x:Key="system_accel">Hızlandırma Ölçüsü</sys:String>
+
+    <sys:String x:Key="system_hidden_at_mode">Gizli sistem ayarları</sys:String>
+    <sys:String x:Key="system_hidden_at_mode_desc">Seri numaraları ve UART durumu gibi gizli ayarları düzenleyin</sys:String>
     <!--Note: system_accel only used on the self-test page-->
     <sys:String x:Key="system_adc_soc">ADC SoC</sys:String>
     <!--Context: SoC = State of charge (battery percentage)-->
@@ -398,6 +407,8 @@ Bittiğinde, toplanan tüm veriler için bir dizin seçmeniz istenecektir.
     <sys:String x:Key="settings_connpopup">Bağlantı açılır penceresini ayarla</sys:String>
     <sys:String x:Key="settings_devmode">Geliştirici moduna gir</sys:String>
     <sys:String x:Key="settings_crowdsourcing">Topluluk Gönüllü Katkıları</sys:String>
+    <sys:String x:Key="settings_nav_sidebar">Gezinti kenar çubuğu</sys:String>
+    <sys:String x:Key="settings_nav_sidebar_description">Sol taraftaki gezinme düğmelerini gösterin veya daraltın</sys:String>
 
     <!--Settings >>> Connection popup-->
     <sys:String x:Key="settings_cpopup_header">Bağlantı açılır penceresi</sys:String>
@@ -568,6 +579,17 @@ Yeniden eşleme yapılandırması yalnızca bu cihazda etkindir. Kulaklıkların
     <sys:String x:Key="connlost_connect">Bağla</sys:String>
     <sys:String x:Key="pairingmode_done">Kulaklıklar eşleştirme moduna alındı ​​ve şimdi bu cihazdan bağlantısı kesildi.</sys:String>
     <sys:String x:Key="connlost_connecting">Bağlanılıyor...</sys:String>
+    <sys:String x:Key="connlost_troubleshoot">Sorun gider</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_title">Bağlantı sorunlarını nasıl giderirsiniz</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_content">Lütfen Samsung'un Galaxy Buds için resmi Wearable uygulamasının kulaklıklarınıza arka planda bağlanmaya çalışmadığından emin olun. Aksi takdirde, uygulamaları kulaklıklar üzerinde kontrol sağlamak için sürekli olarak tekrar bağlantı kurmaya çalışacağından bağlantı kaybı sorunları yaşayabilirsiniz.
+
+Bu sorunu çözmek için aşağıdaki çözümlerden birini seçebilirsiniz:
+
+• Wearable uygulamasından kulaklıkları ayırın. (Wearable uygulamasında, hamburger menüsünü açın, 'Cihazları yönet' seçeneğini seçin ve kulaklıklarınızı listeden silin.)
+
+• Galaxy Buds eklentisini Samsung Wearable uygulamasından tamamen kaldırın.
+
+• 'Hail' veya 'Ice Box' gibi bir uygulama kullanarak Samsung Wearable uygulamasının Galaxy Buds eklentisini geçici olarak dondurun, böylece çalışmasını engelleyebilirsiniz.</sys:String>
 
     <!--Firmware update disclaimer-->
     <sys:String x:Key="fw_disclaimer">Sorumluluk Reddi</sys:String>
@@ -754,5 +776,40 @@ Details:</sys:String>
     <sys:String x:Key="rename_reading_name">Mevcut ad okunuyor...</sys:String>
     <sys:String x:Key="rename_ok_title">Kulaklıklar yeniden adlandırıldı</sys:String>
     <sys:String x:Key="rename_ok">Kulaklıklarınız başarıyla yeniden adlandırıldı! Kulaklıklarınızın eşlemesini kaldırıp yeniden eşleştirmeden önce cihazlar (bu cihaz dahil) tarafından ad değişikliği algılanmayabilir.</sys:String>
+    <sys:String x:Key="rename_warn_oneui_title">OneUI kullanıcıları için önemli bilgiler</sys:String>
+    <sys:String x:Key="rename_warn_oneui">Cihazınız Samsung OneUI kullanıyorsa, kulaklıklarınızı sistem ayarlarında resmi yöntemle yeniden adlandırmalısınız. Aksi takdirde, yeni bir ad ayarlarken bağlantı sorunları yaşanabilir.</sys:String>
+    
+    <!--Hidden Mode -->
+    <sys:String x:Key="hidden_mode_warning">Dikkatle ilerleyin</sys:String>
+    <sys:String x:Key="hidden_mode_warning_desc">Bu sayfada yapılan bazı değişiklikler fabrika ayarlarına sıfırlanarak geri alınamaz. Tüm modeller bu ayarları desteklemez.</sys:String>
+    <sys:String x:Key="hidden_mode_target">Hedef cihaz: {0} kulaklık</sys:String>
+    <sys:String x:Key="hidden_mode_target_l_desc">Sol kulaklığınızı değiştirmek için sağ kulaklığı kutuya koyup kapağını kapatın.</sys:String>
+    <sys:String x:Key="hidden_mode_target_r_desc">Sağ kulaklığınızı değiştirmek için sol kulaklığı kutuya koyup kapağını kapatın.</sys:String>
+    <sys:String x:Key="hidden_mode_input_wrong_length">Yeni değer tam olarak {0} karakter uzunluğunda olmalıdır.</sys:String>
+    <sys:String x:Key="hidden_mode_uart_on_confirm">UART başarıyla etkinleştirildi</sys:String>
+    <sys:String x:Key="hidden_mode_uart_off_confirm">UART başarıyla devre dışı bırakıldı</sys:String>
+    <sys:String x:Key="hidden_mode_uart">UART portunu etkinleştir</sys:String>
+    <sys:String x:Key="hidden_mode_uart_desc">Mevcut hedef cihazın PCB'sinde fiziksel UART portunu hata ayıklama amacıyla geçici olarak etkinleştirir</sys:String>
+    <sys:String x:Key="hidden_mode_power">Güç menüsü</sys:String>
+    <sys:String x:Key="hidden_mode_power_desc">Mevcut hedef cihazı kapatma, yeniden başlatma veya uyku moduna alma</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change">Seri numarasını değiştir</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change_desc">Mevcut hedef cihazın seri numarasını değiştirir</sys:String>
+    <sys:String x:Key="hidden_mode_did_change">DID numarası ve rengini değiştir</sys:String>
+    <sys:String x:Key="hidden_mode_did_change_desc">Mevcut hedef cihazın model kimliğini değiştirir</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change">SKU kodunu değiştir</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change_desc">Mevcut hedef cihazın ürün kodunu değiştirir</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_addr_change">Eş Bluetooth adresini değiştir</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_change_desc">Mevcut hedef cihazın eş Bluetooth adresini değiştirir</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_addr_change">Yerel Bluetooth adresini değiştir</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_change_desc">Mevcut hedef cihazın yerel Bluetooth adresini değiştirir</sys:String>
+    <sys:String x:Key="hidden_mode_terminal">Gizli komut terminali</sys:String>
+    <sys:String x:Key="hidden_mode_terminal_desc">Mevcut hedef cihaza özel AT komutları gönderin</sys:String>
 
+
+    <!--Terminal-->
+    <sys:String x:Key="at_terminal_cmd_id">Komut kimliği</sys:String>
+    <sys:String x:Key="at_terminal_cmd_param">Komut parametresi (isteğe bağlı)</sys:String>
+    <sys:String x:Key="at_terminal_cmd_id_invalid">Bu komut kimliği geçersiz. Lütfen 16 bitlik bir onaltılık değer girin, örneğin 0007 veya 004C.</sys:String>
+    <sys:String x:Key="at_terminal_output">Çıktı</sys:String>
+    <sys:String x:Key="at_terminal_send">Gönder</sys:String>
 </ResourceDictionary>
