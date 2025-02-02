@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.Threading.Tasks;
+using Avalonia.Threading;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Config;
@@ -45,16 +46,22 @@ public class EarbudStatusUnitViewModel : ViewModelBase
 
     private void OnBluetoothPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if (e.PropertyName == nameof(BluetoothImpl.Instance.IsConnected) && 
-            DeviceMessageCache.Instance.BasicStatusUpdate != null)
-            OnStatusUpdated(null, DeviceMessageCache.Instance.BasicStatusUpdate);
+        Dispatcher.UIThread.Post(() =>
+        {
+            if (e.PropertyName == nameof(BluetoothImpl.Instance.IsConnected) && 
+                DeviceMessageCache.Instance.BasicStatusUpdate != null)
+                OnStatusUpdated(null, DeviceMessageCache.Instance.BasicStatusUpdate);
+        });
     }
 
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        // Recalculate temperature values when temperature unit changes
-        if (e.PropertyName == nameof(Settings.Data.TemperatureUnit))
-            LoadFromCache();
+        Dispatcher.UIThread.Post(() =>
+        {
+            // Recalculate temperature values when temperature unit changes
+            if (e.PropertyName == nameof(Settings.Data.TemperatureUnit))
+                LoadFromCache();
+        });
     }
     
     private void LoadFromCache()
@@ -69,28 +76,34 @@ public class EarbudStatusUnitViewModel : ViewModelBase
     
     private void OnStatusUpdated(object? sender, IBasicStatusUpdate e)
     {
-        var connected = BluetoothImpl.Instance.IsConnected;
-        LeftBattery = e.BatteryL;
-        RightBattery = e.BatteryR;
-        CaseBattery = e.BatteryCase is <= 0 or > 100 ? null : e.BatteryCase;
-        LeftWearState = e.PlacementL;
-        RightWearState = e.PlacementR;
-        IsLeftOnline = connected && e.BatteryL > 0 && e.PlacementL != PlacementStates.Disconnected;
-        IsRightOnline = connected && e.BatteryR > 0 && e.PlacementR != PlacementStates.Disconnected;
+        Dispatcher.UIThread.Post(() =>
+        {
+            var connected = BluetoothImpl.Instance.IsConnected;
+            LeftBattery = e.BatteryL;
+            RightBattery = e.BatteryR;
+            CaseBattery = e.BatteryCase is <= 0 or > 100 ? null : e.BatteryCase;
+            LeftWearState = e.PlacementL;
+            RightWearState = e.PlacementR;
+            IsLeftOnline = connected && e.BatteryL > 0 && e.PlacementL != PlacementStates.Disconnected;
+            IsRightOnline = connected && e.BatteryR > 0 && e.PlacementR != PlacementStates.Disconnected;
+        });
     }
         
     private void OnGetAllDataResponse(object? sender, DebugGetAllDataDecoder e)
     {
-        // Buds2 Pro seem to send 0 for all values sometimes. Ignore those updates.
-        if(e is { LeftThermistor: <= 0, RightThermistor: <= 0 })
-            return;
-        
-        var useF = Settings.Data.TemperatureUnit == TemperatureUnits.Fahrenheit;
-        LeftVoltage = e.LeftAdcVCell;
-        RightVoltage = e.RightAdcVCell;
-        LeftCurrent = e.LeftAdcCurrent;
-        RightCurrent = e.RightAdcCurrent;
-        LeftTemperature = useF ? 9.0 / 5.0 * e.LeftThermistor + 32 : e.LeftThermistor;
-        RightTemperature = useF ? 9.0 / 5.0 * e.RightThermistor + 32 :  e.RightThermistor;
+        Dispatcher.UIThread.Post(() =>
+        {
+            // Buds2 Pro seem to send 0 for all values sometimes. Ignore those updates.
+            if(e is { LeftThermistor: <= 0, RightThermistor: <= 0 })
+                return;
+            
+            var useF = Settings.Data.TemperatureUnit == TemperatureUnits.Fahrenheit;
+            LeftVoltage = e.LeftAdcVCell;
+            RightVoltage = e.RightAdcVCell;
+            LeftCurrent = e.LeftAdcCurrent;
+            RightCurrent = e.RightAdcCurrent;
+            LeftTemperature = useF ? 9.0 / 5.0 * e.LeftThermistor + 32 : e.LeftThermistor;
+            RightTemperature = useF ? 9.0 / 5.0 * e.RightThermistor + 32 :  e.RightThermistor;
+        });
     }
 }
