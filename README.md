@@ -33,7 +33,7 @@
 
 <p align="center">
   <span><a href="https://ko-fi.com/H2H83E5J3"><img alt="Screenshot" src="https://ko-fi.com/img/githubbutton_sm.svg"></a>
-  <a href="#"><img alt="Screenshot" src="https://github.com/timschneeb/GalaxyBudsClient/blob/master/screenshots/app_dark.png"></a></span>
+  <a href="#"><img alt="Screenshot" src="https://github.com/timschneeb/GalaxyBudsClient/raw/master/screenshots/app_dark.png"></a></span>
 </p>
 
 ## Key Features
@@ -61,12 +61,12 @@ Get binaries for Windows in the [release](https://github.com/timschneeb/GalaxyBu
 
 Download the desktop version here:
 <p align="center">
-    <a href="https://github.com/timschneeb/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/timschneeb/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
+    <a href="https://github.com/timschneeb/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/timschneeb/GalaxyBudsClient/raw/master/screenshots/download.png"></a>
 </p>
 
 Download the Android mobile version here (paid):
 <p align="center">
-  <a href='https://play.google.com/store/apps/details?id=me.timschneeberger.galaxybudsclient&utm_source=github&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'> 
+  <a href='https://play.google.com/store/apps/details?id=me.timschneeberger.galaxybudsclient&utm_source=github&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
     <img width="300" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/>
   </a>
 </p>
@@ -84,7 +84,7 @@ flatpak install me.timschneeberger.GalaxyBudsClient
 
 > **Note**: Flatpaks are sandboxed. This application can only access `~/.var/app/me.timschneeberger.GalaxyBudsClient/` by default.
 
-### AUR package 
+### AUR package
 
 An [AUR package](https://aur.archlinux.org/packages/galaxybudsclient-bin/) for Arch Linux maintained by @joscdk is also available:
 ```
@@ -157,6 +157,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Russian and Ukrainian translation
 * [@PlasticBrain](https://github.com/fhalfkg) - Korean and Japanese translation
 * [@cozyplanes](https://github.com/cozyplanes) - Korean translation
+* [@corydalis10](https://github.com/corydalis10) - Korean translation
 * [@erenbektas](https://github.com/erenbektas) and [@Eta06](https://github.com/Eta06)  - Turkish translation
 * [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad), [@pseudor](https://github.com/pseudor) and [@YexuanXiao](https://github.com/YexuanXiao) - Chinese translation
 * [@YiJhu](https://github.com/YiJhu) - Chinese-Traditional translation
@@ -177,7 +178,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 
 ### Services
 
-* [Cloudflare](https://www.cloudflare.com/) - Secures the backend APIs of GalaxyBudsClient and provided a Pro license 
+* [Cloudflare](https://www.cloudflare.com/) - Secures the backend APIs of GalaxyBudsClient and provided a Pro license
 
 ### Assets
 * Earbud asset used in the Android icon created by [Archival](https://www.flaticon.com/authors/archival) from [Flaticon](https://www.flaticon.com/)
@@ -187,9 +188,9 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 This project is licensed under [GPLv3](https://github.com/timschneeb/GalaxyBudsClient/blob/master/LICENSE). It is not affiliated with Samsung nor supervised by them in any way.
 
 ```
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
