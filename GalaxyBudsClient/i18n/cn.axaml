@@ -272,8 +272,8 @@
 
     <sys:String x:Key="system_hwver">硬件版本</sys:String>
     <sys:String x:Key="system_swver">软件版本</sys:String>
-    <sys:String x:Key="system_cradle_swver">指定软件版本</sys:String>
-    <sys:String x:Key="system_cradle_serial">指定序列号</sys:String>
+    <sys:String x:Key="system_cradle_swver">底座软件版本</sys:String>
+    <sys:String x:Key="system_cradle_serial">底座序列号</sys:String>
     <sys:String x:Key="system_touchver">触摸固件版本</sys:String>
     <sys:String x:Key="system_protover">修订版本</sys:String>
     <sys:String x:Key="system_btaddr">蓝牙地址</sys:String>
@@ -304,8 +304,9 @@
     <sys:String x:Key="coredump_dl_trace_progress">正在下载追踪数据 {0}% ...</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">正在下载核心数据 {0}% ...</sys:String>
     <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytes)</sys:String>
-    <sys:String x:Key="coredump_dl_note">声音播放将会在下载过程中被暂停。你的耳机将会在完成前暂停连接，请在完成后重新连接
-传输完成后，你需要选择一个文件夹以便保存数据
+    <sys:String x:Key="coredump_dl_note">声音播放将会在下载过程中被暂停。你的耳机将会在完成前暂停连接，请在完成后重新连接。
+
+传输完成后，你需要选择一个文件夹以便保存数据。
 
 如果转存过程被断开，则需要重新转存。这项功能十分不稳定！</sys:String>
     <sys:String x:Key="coredump_dl_save_fail_title">转存数据失败</sys:String>
@@ -416,7 +417,7 @@
     <sys:String x:Key="settings_darkmode">深色模式</sys:String>
     <sys:String x:Key="settings_darkmode_description">使用深色模式主题</sys:String>
     <sys:String x:Key="settings_blurstrength">窗口模糊度</sys:String>
-    <sys:String x:Key="settings_blurstrength_description">只支持深色模式。不支持一些系统</sys:String>
+    <sys:String x:Key="settings_blurstrength_description">只支持深色模式，不支持一些系统</sys:String>
     <sys:String x:Key="settings_accent">主题色</sys:String>
     <sys:String x:Key="settings_accent_description">选择主题色</sys:String>
     <sys:String x:Key="settings_transitions">过渡动画</sys:String>
@@ -427,6 +428,8 @@
     <sys:String x:Key="settings_minimize_tray_description">在后台保持运行而不是结束程序</sys:String>
     <sys:String x:Key="settings_realistic_earbud_icons">使用真实的耳机图像</sys:String>
     <sys:String x:Key="settings_realistic_earbud_icons_description">更真实的显示 &amp; 如果支持，根据感知自动选择图像</sys:String>
+    <sys:String x:Key="settings_color_override">耳机颜色覆写</sys:String>
+    <sys:String x:Key="settings_color_override_description">修改软件中显示的你的耳机的颜色</sys:String>
     <sys:String x:Key="settings_nav_sidebar">导航侧栏</sys:String>
     <sys:String x:Key="settings_nav_sidebar_description">显示或折叠左侧的导航按钮</sys:String>
     <sys:String x:Key="settings_tray_settings">托盘图标 &amp; 开机启动</sys:String>
@@ -480,7 +483,7 @@
     <sys:String x:Key="fmg_smart_things_find_manage">管理 SmartThings Find 数据</sys:String>
     <sys:String x:Key="fmg_smart_things_find_manage_desc">查看和管理你的耳机中储存的 SmartThings Find 数据</sys:String>
     <sys:String x:Key="fmg_smart_things_find_open">打开 SmartThings Find 网站</sys:String>
-    <sys:String x:Key="fmg_smart_things_find_open_desc">在线追踪你的耳机。需要三星账户和官方 SmartThings Find 应用程序进行设置。</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open_desc">在线追踪你的耳机，需要三星账户和官方 SmartThings Find 应用程序进行设置</sys:String>
     
     <!--SmartThings data-->
     <sys:String x:Key="smart_things_find">SmartThings</sys:String>
@@ -527,7 +530,7 @@
     <sys:String x:Key="nc_ambient">自定义环境音</sys:String>
     <sys:String x:Key="nc_ambient_description">配置环境音的音量和音色（如果可用）</sys:String>
     <sys:String x:Key="nc_voicedetect">通话状态检测</sys:String>
-    <sys:String x:Key="nc_voicedetect_description">当检测到你的声音时，会自动开启环境音模式，并降低媒体音量，便于通话。</sys:String>
+    <sys:String x:Key="nc_voicedetect_description">当检测到你的声音时自动开启环境音模式，并降低媒体音量，便于通话</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">通话超时</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_description">在一定时间内未检测到你的声音时恢复设置</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} 秒</sys:String>
@@ -561,16 +564,18 @@
 
     <!--Advanced page-->
     <sys:String x:Key="adv_header">高级设置</sys:String>
+    <sys:String x:Key="adv_pause_playback">当耳机被摘下时停止播放</sys:String>
+    <sys:String x:Key="adv_pause_playback_desc">当至少一个接近传感器发现摘下时，发送全局播放/暂停状态变更事件（仅桌面系统）</sys:String>
     <sys:String x:Key="adv_seamless">无缝耳机连接</sys:String>
     <sys:String x:Key="adv_seamless_desc">快速切换到附近的设备，而无需断开耳机或打开配对模式</sys:String>
     <sys:String x:Key="adv_resume_playback">当设备被佩戴/恢复/启动媒体播放</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">当至少一个距离传感器被覆盖时，发送全局播放/暂停状态改变事件（仅桌面程序）</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">当至少一个距离传感器被覆盖时，发送全局播放/暂停状态改变事件（仅桌面系统）</sys:String>
     <sys:String x:Key="adv_sidetone">通话期间使用环境音</sys:String>
     <sys:String x:Key="adv_sidetone_desc">在通话期间更清楚地听到你自己的声音</sys:String>
     <sys:String x:Key="adv_callpath">耳内通话检测</sys:String>
     <sys:String x:Key="adv_callpath_desc">在佩戴时通过耳机通话，不在时通过电脑扬声器通话</sys:String>
     <sys:String x:Key="adv_extra_clear_call">提高通话声音</sys:String>
-    <sys:String x:Key="adv_extra_clear_call_desc">提高通话清晰度。在嘈杂环境中使用耳机时最有用。使用更多电量。</sys:String>
+    <sys:String x:Key="adv_extra_clear_call_desc">提高通话清晰度，在嘈杂环境中使用耳机时最有用，使用更多电量。</sys:String>
     <sys:String x:Key="adv_passthrough">使用环境音模式缓解压力</sys:String>
     <sys:String x:Key="adv_passthrough_desc">此选项可以防止在不适用主动降噪时产生闷热感或压迫感</sys:String>
     <sys:String x:Key="adv_hotkey">键盘快捷键</sys:String>
@@ -598,7 +603,7 @@
     <sys:String x:Key="credits_contributor">构建者</sys:String>
     <sys:String x:Key="credits_translator">翻译者</sys:String>
     <sys:String x:Key="credits_sponsor">捐助本项目</sys:String>
-    <sys:String x:Key="credits_kofi">访问我的 ko-fi 页以支持我！</sys:String>
+    <sys:String x:Key="credits_kofi">访问我的 Ko-fi 页以支持我！</sys:String>
     <sys:String x:Key="credits_github">在 Github 中访问项目</sys:String>
 
     <!--Connection lost page-->
