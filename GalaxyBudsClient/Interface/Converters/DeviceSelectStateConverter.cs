@@ -21,20 +21,27 @@ public class DeviceSelectStateConverter : IMultiValueConverter
 {
     public object? Convert(IList<object?> values, Type targetType, object? parameter, CultureInfo culture)
     {
-        if(values.Count < 2)
-            throw new ArgumentException("Expected 2 values");
+        if (values.Count < 2)
+            return null;
+
+        // If the first value is null, you likely can't compare anything, so pick a fallback:
         if (values[0] is null)
             return null;
-        if(values[0] is not Device device)
-            throw new ArgumentException("Expected Device as first value");
+
+        if (values[0] is not Device device)
+        {
+            // Instead of throwing, return a fallback
+            return null; 
+        }
 
         var lastConnectedMac = values[1] as string;
         var isSelected = device.MacAddress == lastConnectedMac;
-        
+
         return parameter switch
         {
             DeviceStateConverterTarget.Label => isSelected ? Strings.DevicesSelectActive : Strings.DevicesSelectInactive,
-            DeviceStateConverterTarget.Icon => new SymbolIconSource {
+            DeviceStateConverterTarget.Icon => new SymbolIconSource
+            {
                 Symbol = isSelected ? Symbol.CheckboxChecked : Symbol.CheckboxUnchecked,
                 IsFilled = isSelected
             },
