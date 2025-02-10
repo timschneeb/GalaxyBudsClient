@@ -7,7 +7,7 @@
     <!--:::::::: Source code ::::::::-->
 
     <!--General-->
-	<sys:String x:Key="okay">Хорошо</sys:String>
+    <sys:String x:Key="okay">Хорошо</sys:String>
     <sys:String x:Key="left">Левый</sys:String>
     <sys:String x:Key="right">Правый</sys:String>
     <sys:String x:Key="both">Оба</sys:String>
@@ -43,7 +43,7 @@
     <sys:String x:Key="anc">Активное шумоподавление</sys:String>
     <sys:String x:Key="adaptive">Адаптивный</sys:String>
 
-	<!--Dark Mode States-->
+    <!--Dark Mode States-->
     <sys:String x:Key="darkmode_disabled">Выключена</sys:String>
     <sys:String x:Key="darkmode_enabled">Включена</sys:String>
     <sys:String x:Key="darkmode_blur_enabled">Включена, с эффектом размытия</sys:String>
@@ -124,7 +124,7 @@
     <sys:String x:Key="hotkey_edit">Редактировать</sys:String>
     <sys:String x:Key="hotkey_edit_long">Редактировать существующую комбинацию</sys:String>
     <sys:String x:Key="hotkey_delete">Удалить</sys:String>
-    <sys:String x:Key="hotkey_add_error">Не удалось зарегистровать/обновить комбинации</sys:String>
+    <sys:String x:Key="hotkey_add_error">Не удалось зарегистрировать/обновить комбинации</sys:String>
     <sys:String x:Key="hotkey_add_error_context">Затронутая комбинация:</sys:String>
     <sys:String x:Key="hotkey_add_error_duplicate">Выбранная комбинация уже была занята этим или другим приложением. Пожалуйста, выберите другую.</sys:String>
     <sys:String x:Key="hotkey_add_error_unknown">Операционная система ответила ошибкой '{0}'</sys:String>
@@ -198,7 +198,7 @@
     <sys:String x:Key="devices_settings_link">Управление сопряженными устройствами</sys:String>
     <sys:String x:Key="devices_settings_link_desc">Добавьте, удалите или выберите основное устройство</sys:String>
 
-	<!--Touchpad gestures-->
+    <!--Touchpad gestures-->
     <sys:String x:Key="touchpad_gesture_header">Включить жесты сенсорной панели</sys:String>
     <sys:String x:Key="touchpad_gesture_single">Единичное нажатие</sys:String>
     <sys:String x:Key="touchpad_gesture_single_desc">Воспроизведение/Пауза</sys:String>
@@ -312,7 +312,7 @@
     <sys:String x:Key="coredump_dl_save_success">{0} дамп(а/ов) были записаны в '{1}'</sys:String>
     <sys:String x:Key="coredump_dl_save_dialog_title">Выберите место сохранения...</sys:String>
 
-    <!-- Hidden AT modes -->
+    <!--Hidden AT modes-->
     <sys:String x:Key="hidden_mode_warning">Действуйте с осторожностью</sys:String>
     <sys:String x:Key="hidden_mode_warning_desc">Некоторые изменения, внесенные на этой странице, не могут быть восстановлены сбросом к заводским настройкам. Не все модели поддерживают эти настройки.</sys:String>
     <sys:String x:Key="hidden_mode_target">Целевое устройство: наушник {0}</sys:String>
@@ -338,7 +338,7 @@
     <sys:String x:Key="hidden_mode_terminal">Скрытый терминал команд</sys:String>
     <sys:String x:Key="hidden_mode_terminal_desc">Отправка пользовательских AT-команд на текущее целевое устройство</sys:String>
 
-	<sys:String x:Key="power_menu_hint">Будет затронут только текущий целевой наушник.</sys:String>
+    <sys:String x:Key="power_menu_hint">Будет затронут только текущий целевой наушник.</sys:String>
     <sys:String x:Key="power_menu_reboot">Перезагрузка</sys:String>
     <sys:String x:Key="power_menu_shutdown">Выключение</sys:String>
     <sys:String x:Key="power_menu_sleep">Заводской спящий режим</sys:String>
@@ -350,7 +350,7 @@
     <sys:String x:Key="at_terminal_send">Отправить</sys:String>
 
 
-    <!-- Usage-/metering reports -->
+    <!--Usage-/metering reports-->
     <sys:String x:Key="usage_reports_header">Отчеты об использовании</sys:String>
     <sys:String x:Key="usage_reports_hint">Эти отчеты собираются самими наушниками. Данные отображаются без изменений и могут быть неточными. Официальное приложение Wearable обычно периодически сбрасывает большинство счетчиков, а затем отправляет собранные данные компании Samsung, если вы не запретили сбор данных в их приложении. Некоторые счетчики, например количество циклов зарядки, не сбрасываются.</sys:String>
     <sys:String x:Key="usage_reports_usage">Отчет об использовании</sys:String>
@@ -360,7 +360,7 @@
     <sys:String x:Key="metering_a2dp_time">Время использования для воспроизведения музыки (A2DP)</sys:String>
     <sys:String x:Key="metering_esco_time">Время использования для звонков (eSCO)</sys:String>
 
-    <!-- Battery history -->
+    <!--Battery history-->
     <sys:String x:Key="batt_hist_hint">Это приложение может собирать информацию об уровне заряда батареи и базовые данные об использовании с течением времени, позволяя анализировать расход батареи. Данные собираются только когда приложение активно в фоновом режиме, а наушники подключены к этому устройству.</sys:String>
     <sys:String x:Key="batt_hist_no_data_title">Недостаточно данных</sys:String>
     <sys:String x:Key="batt_hist_no_data">Пожалуйста, попробуйте позже, когда соберется достаточно данных, или измените отображаемый промежуток времени.</sys:String>
@@ -482,7 +482,7 @@
     <sys:String x:Key="fmg_smart_things_find_open">Открыть веб-сайт SmartThings Find</sys:String>
     <sys:String x:Key="fmg_smart_things_find_open_desc">Отслеживайте ваши наушники в Интернете. Требуется учетная запись Samsung и приложение SmartThings Find для настройки.</sys:String>
 
-	<!--SmartThings data-->
+    <!--SmartThings data-->
     <sys:String x:Key="smart_things_find">SmartThings</sys:String>
     <sys:String x:Key="smart_things_find_clear">Удалить конфигурацию SmartThings Find</sys:String>
     <sys:String x:Key="smart_things_find_clear_desc">Удалить данные, связанные с аккаунтом Samsung, с ваших наушников</sys:String>
@@ -495,7 +495,7 @@
     <sys:String x:Key="smart_things_find_write_ok">Конфигурация перезаписана</sys:String>
     <sys:String x:Key="smart_things_find_write_ok_desc">Данные конфигурации SmartThings Find были удалены.</sys:String>
 
-    <!-- Fit test-->
+    <!--Fit test-->
     <sys:String x:Key="gft_warning">Пожалуйста, наденьте оба наушника.</sys:String>
     <sys:String x:Key="gft_desc">Проверьте, правильно ли сидят ваши наушники</sys:String>
     <sys:String x:Key="gft_bad">Плохая посадка</sys:String>
@@ -622,7 +622,7 @@
 • Используйте приложение типа «Hail» или «Ice Box», чтобы временно «заморозить» официальный плагин Galaxy Buds в приложении Samsung Wearable и не дать ему запускаться.
     </sys:String>
 
-    <!-- Pairing mode -->
+    <!--Pairing mode -->
     <sys:String x:Key="connlost_disconnected">Устройство отключено</sys:String>
     <sys:String x:Key="pairingmode_done">Наушники переведены в режим сопряжения и теперь отключены от этого устройства.</sys:String>
 
@@ -635,7 +635,7 @@
 
 Это приложение распространяется под лицензией GPLv3. Используя его, вы принимаете лицензию и ограничение ответственности. Нажмите «Продолжить», чтобы принять.</sys:String>
 
-	<!--Firmware selection-->
+    <!--Firmware selection-->
     <sys:String x:Key="fw_select_header">Обновление прошивки</sys:String>
     <sys:String x:Key="fw_select_downgrade">Разрешить даунгрейд</sys:String>
     <sys:String x:Key="fw_select_downgrade_desc">Отключить проверку версий и показать старые прошивки в списке (может привести к непредвиденным ошибкам; только для продвинутых пользователей)</sys:String>
