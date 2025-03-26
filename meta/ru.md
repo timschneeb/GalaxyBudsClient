@@ -11,32 +11,32 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Key</th><th>Original string</th></tr>
-<tr><td><code>both</code></td><td>Both</td></tr>
-<tr><td><code>next</code></td><td>Next</td></tr>
-<tr><td><code>prev</code></td><td>Previous</td></tr>
-<tr><td><code>off</code></td><td>Off</td></tr>
-<tr><td><code>on</code></td><td>On</td></tr>
-<tr><td><code>hint</code></td><td>Hint</td></tr>
-<tr><td><code>help</code></td><td>Help</td></tr>
-<tr><td><code>important</code></td><td>Important</td></tr>
-<tr><td><code>home</code></td><td>Home</td></tr>
-<tr><td><code>read_failed</code></td><td>Failed to read file. Access denied.</td></tr>
-<tr><td><code>please_wait</code></td><td>Please wait...</td></tr>
-<tr><td><code>value_left_right_inline</code></td><td>Left: {0}, Right: {1}</td></tr>
-<tr><td><code>value_left_right_multiline</code></td><td>Left: {0}
-Right: {1}</td></tr>
-<tr><td><code>other_x</code></td><td>Other ({0})</td></tr>
-<tr><td><code>no_data_stored</code></td><td>No data stored</td></tr>
-<tr><td><code>not_available</code></td><td>Not available</td></tr>
-<tr><td><code>last_updated_at_n</code></td><td>Last updated at {0}</td></tr>
-<tr><td><code>file_not_found</code></td><td>File not found</td></tr>
-<tr><td><code>feature_unsupported_platform</code></td><td>This feature is currently not supported on this platform.</td></tr>
-<tr><td><code>adaptive</code></td><td>Adaptive</td></tr>
-<tr><td><code>darkmode_blur_enabled</code></td><td>On, with blur effect</td></tr>
-<tr><td><code>darkmode_mica_enabled</code></td><td>On, with mica effect</td></tr>
-<tr><td><code>placement_charging</code></td><td>Charging</td></tr>
-<tr><td><code>touchoption_custom_trigger_event</code></td><td>Trigger earbud action...</td></tr>
-<tr><td><code>hotkey_add_short</code></td><td>New</td></tr>
+<tr><td><code>both</code></td><td>Оба</td></tr>
+<tr><td><code>next</code></td><td>Следующий</td></tr>
+<tr><td><code>prev</code></td><td>Предыдущий</td></tr>
+<tr><td><code>off</code></td><td>Выкл</td></tr>
+<tr><td><code>on</code></td><td>Вкл</td></tr>
+<tr><td><code>hint</code></td><td>Подсказка</td></tr>
+<tr><td><code>help</code></td><td>Помощь</td></tr>
+<tr><td><code>important</code></td><td>Важно</td></tr>
+<tr><td><code>home</code></td><td>Дом</td></tr>
+<tr><td><code>read_failed</code></td><td>Не удалось прочитать файл. Доступ запрещен.</td></tr>
+<tr><td><code>please_wait</code></td><td>Пожалуйста подождите...</td></tr>
+<tr><td><code>value_left_right_inline</code></td><td>Левый: {0}, Правый: {1}</td></tr>
+<tr><td><code>value_left_right_multiline</code></td><td>Левый: {0}
+Правый: {1}</td></tr>
+<tr><td><code>other_x</code></td><td>Другой ({0})</td></tr>
+<tr><td><code>no_data_stored</code></td><td>Данные не сохранены</td></tr>
+<tr><td><code>not_available</code></td><td>Недоступно</td></tr>
+<tr><td><code>last_updated_at_n</code></td><td>Последнее обновление от {0}</td></tr>
+<tr><td><code>file_not_found</code></td><td>Файл не найден</td></tr>
+<tr><td><code>feature_unsupported_platform</code></td><td>Эта функция не поддерживается на этой платформе.</td></tr>
+<tr><td><code>adaptive</code></td><td>Адаптивный</td></tr>
+<tr><td><code>darkmode_blur_enabled</code></td><td>С эффектом размытия</td></tr>
+<tr><td><code>darkmode_mica_enabled</code></td><td>С эффектом слюды</td></tr>
+<tr><td><code>placement_charging</code></td><td>Зарядка</td></tr>
+<tr><td><code>touchoption_custom_trigger_event</code></td><td>Активируем действие наушников...</td></tr>
+<tr><td><code>hotkey_add_short</code></td><td>Новый</td></tr>
 <tr><td><code>hotkey_edit_long</code></td><td>Edit existing hotkey</td></tr>
 <tr><td><code>event_nc_switch_one</code></td><td>Switch noise controls with one earbud</td></tr>
 <tr><td><code>welcome_register</code></td><td>Set-up your earbuds</td></tr>
@@ -48,21 +48,21 @@ If the official Samsung Wearable app is active alongside this app, connection is
 <tr><td><code>mainpage_fit_test</code></td><td>Earbud fit test</td></tr>
 <tr><td><code>devsel_manual_pair_title</code></td><td>Is your device not listed?</td></tr>
 <tr><td><code>devsel_manual_pair_description</code></td><td>Make sure your earbuds have already been paired. If they are still not recognized, try using the manual connection option.</td></tr>
-<tr><td><code>devsel_manual_pair</code></td><td>Manual connection</td></tr>
-<tr><td><code>devices_header</code></td><td>Paired devices</td></tr>
-<tr><td><code>devices_new</code></td><td>New</td></tr>
-<tr><td><code>devices_new_long</code></td><td>Pair new device</td></tr>
-<tr><td><code>devices_select_inactive</code></td><td>Select</td></tr>
-<tr><td><code>devices_select_active</code></td><td>Selected</td></tr>
-<tr><td><code>devices_delete</code></td><td>Delete</td></tr>
-<tr><td><code>devices_delete_long</code></td><td>Delete device</td></tr>
-<tr><td><code>devices_delete_confirmation</code></td><td>Are you sure you want to remove this device?</td></tr>
-<tr><td><code>devices_settings_link</code></td><td>Manage paired devices</td></tr>
-<tr><td><code>devices_settings_link_desc</code></td><td>Add, remove, or select a primary device</td></tr>
-<tr><td><code>touchpad_gesture_double_for_call</code></td><td>Double tap during call</td></tr>
-<tr><td><code>touchpad_gesture_double_for_call_desc</code></td><td>Answer call or end call</td></tr>
-<tr><td><code>touchpad_gesture_hold_for_call</code></td><td>Touch and hold during call</td></tr>
-<tr><td><code>touchpad_gesture_hold_for_call_desc</code></td><td>Decline call</td></tr>
+<tr><td><code>devsel_manual_pair</code></td><td>Подключение вручную/td></tr>
+<tr><td><code>devices_header</code></td><td>Подключенные устройства</td></tr>
+<tr><td><code>devices_new</code></td><td>Новое</td></tr>
+<tr><td><code>devices_new_long</code></td><td>Подключить новое устройство</td></tr>
+<tr><td><code>devices_select_inactive</code></td><td>Выбрать</td></tr>
+<tr><td><code>devices_select_active</code></td><td>Выбраны</td></tr>
+<tr><td><code>devices_delete</code></td><td>Удалить</td></tr>
+<tr><td><code>devices_delete_long</code></td><td>Удалить устройство</td></tr>
+<tr><td><code>devices_delete_confirmation</code></td><td>Вы уверены, что хотите удалить это устройство?</td></tr>
+<tr><td><code>devices_settings_link</code></td><td>Управление подключенными устройствами</td></tr>
+<tr><td><code>devices_settings_link_desc</code></td><td>Добавить, удалить или выбрать основное устройство</td></tr>
+<tr><td><code>touchpad_gesture_double_for_call</code></td><td>Двойной щипок во время вызова</td></tr>
+<tr><td><code>touchpad_gesture_double_for_call_desc</code></td><td>Ответ или завершение вызова</td></tr>
+<tr><td><code>touchpad_gesture_hold_for_call</code></td><td>Щипок и удержание во время вызова</td></tr>
+<tr><td><code>touchpad_gesture_hold_for_call_desc</code></td><td>Отклонить вызов</td></tr>
 <tr><td><code>touchpad_default_action</code></td><td>Built-in touch action</td></tr>
 <tr><td><code>touchpad_gestures</code></td><td>Advanced touch lock</td></tr>
 <tr><td><code>touchpad_gestures_description</code></td><td>Disable default touch gestures</td></tr>
@@ -127,22 +127,22 @@ If the official Samsung Wearable app is active alongside this app, connection is
 <tr><td><code>batt_hist_hint</code></td><td>This app can collect battery levels and basic usage data over time, allowing you to analyze battery drain. Data can only be collected while this app is active in the background and your earbuds are connected to this device.</td></tr>
 <tr><td><code>batt_hist_no_data_title</code></td><td>Not enough data</td></tr>
 <tr><td><code>batt_hist_no_data</code></td><td>Please come back at a later time when enough data has been collected or adjust the shown time-span.</td></tr>
-<tr><td><code>batt_hist_y_axis</code></td><td>Charge (%)</td></tr>
-<tr><td><code>batt_hist_last_hour</code></td><td>Last hour</td></tr>
-<tr><td><code>batt_hist_last_6_hours</code></td><td>Last 6 hours</td></tr>
-<tr><td><code>batt_hist_last_12_hours</code></td><td>Last 12 hours</td></tr>
-<tr><td><code>batt_hist_last_24_hours</code></td><td>Last 24 hours</td></tr>
-<tr><td><code>batt_hist_last_3_days</code></td><td>Last 3 days</td></tr>
-<tr><td><code>batt_hist_last_7_days</code></td><td>Last 7 days</td></tr>
-<tr><td><code>batt_hist_overlay_none</code></td><td>No overlay</td></tr>
+<tr><td><code>batt_hist_y_axis</code></td><td>Зарядка (%)</td></tr>
+<tr><td><code>batt_hist_last_hour</code></td><td>Последний час</td></tr>
+<tr><td><code>batt_hist_last_6_hours</code></td><td>Последние 6 часов</td></tr>
+<tr><td><code>batt_hist_last_12_hours</code></td><td>Последние 16 часов</td></tr>
+<tr><td><code>batt_hist_last_24_hours</code></td><td>Последние 24 часов</td></tr>
+<tr><td><code>batt_hist_last_3_days</code></td><td>Последние 3 дня</td></tr>
+<tr><td><code>batt_hist_last_7_days</code></td><td>Последние 7 дней</td></tr>
+<tr><td><code>batt_hist_overlay_none</code></td><td>Без наложения</td></tr>
 <tr><td><code>batt_hist_overlay_noise_controls</code></td><td>Noise controls</td></tr>
 <tr><td><code>batt_hist_overlay_wearing</code></td><td>Wear state</td></tr>
 <tr><td><code>batt_hist_overlay_host_device</code></td><td>Host device</td></tr>
-<tr><td><code>batt_hist_overlay_legend</code></td><td>{0} (Overlay)</td></tr>
+<tr><td><code>batt_hist_overlay_legend</code></td><td>{0} (Наложение)</td></tr>
 <tr><td><code>batt_hist_tools_pan_and_zoom</code></td><td>Pan & zoom</td></tr>
 <tr><td><code>batt_hist_tools_measure_time</code></td><td>Measure time</td></tr>
 <tr><td><code>batt_hist_tools_measure_battery</code></td><td>Measure level</td></tr>
-<tr><td><code>batt_hist_show_legend</code></td><td>Show legend</td></tr>
+<tr><td><code>batt_hist_show_legend</code></td><td>Показать легенду</td></tr>
 <tr><td><code>batt_hist_measure_difference_display</code></td><td>Difference: {0}</td></tr>
 <tr><td><code>batt_hist_measure_timespan_display</code></td><td>Time span: {0}</td></tr>
 <tr><td><code>batt_hist_measure_timespan_unit_long</code></td><td>d' day(s), 'hh'h:'mm':'ss</td></tr>
