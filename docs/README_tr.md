@@ -159,7 +159,7 @@ Kendi kodunuzu eklemek istiyorsanız, değişikliklerinizi açıklayan düz bir 
 - [@YiJhu](https://github.com/YiJhu) - Geleneksel Çince çeviri
 - [@efrenbg1](https://github.com/efrenbg1) ve Andrew Gonza - İspanyolca çeviri
 - [@giovankabisano](https://github.com/giovankabisano) - Endonezce çeviri
-- [@lucasskluser](https://github.com/lucasskluser) - Portekizce çeviri
+- [@lucasskluser](https://github.com/lucasskluser) ve [@JuanFariasDev](https://github.com/juanfariasdev) - Portekizce çeviri
 - [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - İtalyanca çeviri
 - [@Buashei](https://github.com/Buashei) - Lehçe çeviri
 - [@KatJillianne](https://github.com/KatJillianne) ve [@thelegendaryjohn](https://github.com/thelegendaryjohn) - Vietnamca çeviri

@@ -160,7 +160,7 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 - [@YiJhu](https://github.com/YiJhu) - čínština-tradiční překlad
 - [@efrenbg1](https://github.com/efrenbg1) a Andrew Gonza - španělský překlad
 - [@giovankabisano](https://github.com/giovankabisano) - indonéský překlad
-- [@lucasskluser](https://github.com/lucasskluser) - portugalský překlad
+- [@lucasskluser](https://github.com/lucasskluser) a [@JuanFariasDev](https://github.com/juanfariasdev) - portugalský překlad
 - [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - italský překlad
 - [@Buashei](https://github.com/Buashei) - polský překlad
 - [@KatJillianne](https://github.com/KatJillianne) a [@thelegendaryjohn](https://github.com/thelegendaryjohn) - vietnamský překlad

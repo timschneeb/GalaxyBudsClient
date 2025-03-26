@@ -135,7 +135,7 @@ Galaxy Buds 定義了兩個藍牙封包文件：用於音頻流/控制的 A2DP�
 - [@YiJhu](https://github.com/YiJhu) - 繁體中文 翻譯
 - [@efrenbg1](https://github.com/efrenbg1) 和 Andrew Gonza - 西班牙語 翻譯
 - [@giovankabisano](https://github.com/giovankabisano) - 印尼語 翻譯
-- [@lucasskluser](https://github.com/lucasskluser) - 葡萄牙語 翻譯
+- [@lucasskluser](https://github.com/lucasskluser) 和 [@JuanFariasDev](https://github.com/juanfariasdev) - 葡萄牙語 翻譯
 - [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - 義大利語 翻譯
 - [@Buashei](https://github.com/Buashei) - 波蘭語 翻譯
 - [@KatJillianne](https://github.com/KatJillianne), [@thelegendaryjohn](https://github.com/thelegendaryjohn) - 越南語 翻譯

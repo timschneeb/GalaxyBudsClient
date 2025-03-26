@@ -136,7 +136,7 @@ Se você deseja contribuir com seu próprio código, você pode simplesmente env
 - [@YiJhu](https://github.com/YiJhu) - Tradução Chines-Tradicional
 - [@efrenbg1](https://github.com/efrenbg1) e Andrew Gonza - Tradução Hispânica
 - [@giovankabisano](https://github.com/giovankabisano) - Tradução Indonésia
-- [@lucasskluser](https://github.com/lucasskluser) - Tradução Portuguesa
+- [@lucasskluser](https://github.com/lucasskluser) e [@JuanFariasDev](https://github.com/juanfariasdev) - Tradução Portuguesa
 - [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Tradução Italiana
 - [@Buashei](https://github.com/Buashei) - Tradução Polonesa
 - [@KatJillianne](https://github.com/KatJillianne) e [@thelegendaryjohn](https://github.com/thelegendaryjohn) - Tradução Vietnamita
