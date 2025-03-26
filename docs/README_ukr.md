@@ -129,7 +129,7 @@ Galaxy Buds визначають два профілі Bluetooth: A2DP (Advanced
 - [@kakkk](https://github.com/kakkk) , [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) и [@pseudor](https://github.com/pseudor) - Китайський переклад
 - [@efrenbg1](https://github.com/efrenbg1) и Andrew Gonza - Іспанський переклад
 - [@giovankabisano](https://github.com/giovankabisano) - Індонезійський переклад
-- [@lucasskluser](https://github.com/lucasskluser) - Португальський переклад
+- [@lucasskluser](https://github.com/lucasskluser) и [@JuanFariasDev](https://github.com/juanfariasdev) - Португальський переклад
 - [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Італійський переклад
 - [@Buashei](https://github.com/Buashei) - Польський переклад
 - [@KatJillianne](https://github.com/KatJillianne) and [@thelegendaryjohn](https://github.com/thelegendaryjohn) - В'єтнамський переклад
