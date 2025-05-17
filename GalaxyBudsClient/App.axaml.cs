@@ -144,7 +144,7 @@ public class App : Application
         switch (e)
         {
             case Event.PairingMode:
-                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.UNK_PAIRING_MODE);
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.PAIRING_MODE);
                 break;
             case Event.ToggleManagerVisibility:
                 if (!PlatformUtils.IsDesktop)
