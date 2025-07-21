@@ -36,6 +36,16 @@
   <a href="#"><img alt="Screenshot" src="https://github.com/timschneeb/GalaxyBudsClient/raw/master/screenshots/app_dark.png"></a></span>
 </p>
 
+
+
+## How to Build
+
+See the complete guide in [HowToBuild.md](./HowToBuild.md).
+
+> Only macOS instructions are currently available. Windows and Linux: TODO.
+
+---
+
 ## Key Features
 
 Configure and control any Samsung Galaxy Buds device and integrate them into your desktop.
