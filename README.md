@@ -19,7 +19,7 @@
       <img alt="License" src="https://img.shields.io/github/license/thepbone/galaxybudsclient">
   </a>
   <a href="https://github.com/timschneeb/GalaxyBudsClient/releases">
-    <img alt="Platform" src="https://img.shields.io/badge/platform-Windows/macOS/Linux/Android-yellowgreen">
+    <img alt="Platform" src="https://img.shields.io/badge/platform-Windows/macOS/Linux/Android/iOS-yellowgreen">
   </a>
 </p>
 <p align="center">
@@ -80,6 +80,11 @@ Download the Android mobile version here (paid):
     <img width="300" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/>
   </a>
 </p>
+
+Experimental support for iOS can be built from source:
+```bash
+dotnet build GalaxyBudsClient.iOS/GalaxyBudsClient.iOS.csproj
+```
 
 ### Flatpak
 
