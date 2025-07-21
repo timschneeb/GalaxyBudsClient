@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyBudsClient.Generators
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyBudsClient.Android", "GalaxyBudsClient.Android\GalaxyBudsClient.Android.csproj", "{05298C77-6944-415C-A91E-4036EFEB52F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyBudsClient.iOS", "GalaxyBudsClient.iOS\GalaxyBudsClient.iOS.csproj", "{D2670375-DA4B-4326-8864-9ABA9701698E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CodeAnalysis|Any CPU = CodeAnalysis|Any CPU
@@ -106,6 +108,12 @@ Global
 		{05298C77-6944-415C-A91E-4036EFEB52F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05298C77-6944-415C-A91E-4036EFEB52F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05298C77-6944-415C-A91E-4036EFEB52F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2670375-DA4B-4326-8864-9ABA9701698E}.CodeAnalysis|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2670375-DA4B-4326-8864-9ABA9701698E}.CodeAnalysis|Any CPU.Build.0 = Debug|Any CPU
+		{D2670375-DA4B-4326-8864-9ABA9701698E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2670375-DA4B-4326-8864-9ABA9701698E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2670375-DA4B-4326-8864-9ABA9701698E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2670375-DA4B-4326-8864-9ABA9701698E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
