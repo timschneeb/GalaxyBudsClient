@@ -33,6 +33,7 @@ using GalaxyBudsClient.Scripting.Experiment;
 #endif
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.Interface;
+using GalaxyBudsClient.Utils.TeamsIntegration;
 using Serilog;
 using Application = Avalonia.Application;
 using MainWindow = GalaxyBudsClient.Interface.MainWindow;
@@ -60,6 +61,7 @@ public class App : Application
     private BudsPopup? _popup;
     private bool _popupShown;
     private LegacyWearStates _lastWearState = LegacyWearStates.Both;
+    private TeamsCallMonitor? _teamsCallMonitor;
     
     public override void Initialize()
     {
@@ -130,6 +132,14 @@ public class App : Application
         SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
         
         DeviceMessageCache.Init();
+        
+        // Inicializar monitor do Teams
+        _teamsCallMonitor = TeamsCallMonitor.Initialize();
+        if (Settings.Data.TeamsIntegrationEnabled)
+        {
+            _teamsCallMonitor.Start();
+            Log.Information("Teams integration monitor started");
+        }
         
         if (Loc.IsTranslatorModeEnabled)
         {

@@ -1,4 +1,4 @@
-﻿<!-- ReSharper disable InconsistentNaming -->
+<!-- ReSharper disable InconsistentNaming -->
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- English name of this language -->
@@ -720,4 +720,8 @@ Detalhes:</sys:String>
     <sys:String x:Key="rename_ok_title">Fones de ouvido renomeados</sys:String>
     <sys:String x:Key="rename_ok">Fones de ouvido renomeados com sucesso!
     A mudança de nome pode não ser detectada por dispositivos (incluindo este) até que você desfaça o pareamento e re-pareie os fones de ouvido.</sys:String>
+    <!--Teams Integration-->
+    <sys:String x:Key="adv_teams_integration">Integração com Teams</sys:String>
+    <sys:String x:Key="adv_teams_integration_desc">Desativar automaticamente a conexão direta durante chamadas do Teams</sys:String>
+
 </ResourceDictionary>

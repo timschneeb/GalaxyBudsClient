@@ -97,6 +97,16 @@
                         <ext:RequiresFeatureBehavior Feature="ExtraClearCallSound" />
                     </Interaction.Behaviors>
                 </controls:SettingsSwitchItem>
+                
+                <controls:SettingsSwitchItem Content="{ext:Translate {x:Static i18N:Keys.AdvTeamsIntegration}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.AdvTeamsIntegrationDesc}}"
+                                             IsChecked="{Binding IsTeamsIntegrationEnabled}"
+                                             Symbol="VideoChat"
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:RequiresDesktopBehavior />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
             </controls:SettingsGroup>
 
             <controls:SettingsGroup>
