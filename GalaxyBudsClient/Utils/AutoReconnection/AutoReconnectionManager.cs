@@ -5,6 +5,7 @@ using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Platform.Model;
 using Serilog;
+using System.Linq;
 
 namespace GalaxyBudsClient.Utils.AutoReconnection;
 
@@ -18,14 +19,18 @@ public class AutoReconnectionManager : IDisposable
     public static AutoReconnectionManager Instance => _instance ??= new AutoReconnectionManager();
     
     private Timer? _reconnectionTimer;
+    private Timer? _availabilityCheckTimer; // Novo timer para verificação periódica
     private bool _disposed;
     private bool _isReconnecting;
     private bool _wasManualDisconnection;
     private int _reconnectionAttempts;
+    private DateTime _lastDisconnectionTime; // Novo campo para rastrear tempo
     
     // Configurações de reconexão
-    private readonly int[] _reconnectionIntervals = { 2, 5, 10, 30, 60 }; // segundos
-    private const int MaxReconnectionAttempts = 5;
+    private readonly int[] _reconnectionIntervals = { 2, 5, 10, 30, 60, 120, 300 }; // segundos (incluindo 2min e 5min)
+    private const int MaxReconnectionAttempts = 10; // Aumentado de 5 para 10
+    private const int AvailabilityCheckIntervalMinutes = 5; // Verificar disponibilidade a cada 5 minutos
+    private const int MaxDisconnectionTimeHours = 24; // Parar tentativas após 24h
     
     private AutoReconnectionManager()
     {
@@ -48,7 +53,10 @@ public class AutoReconnectionManager : IDisposable
             return;
         }
         
-        Log.Information("AutoReconnectionManager started");
+        // Iniciar timer de verificação de disponibilidade
+        StartAvailabilityCheckTimer();
+        
+        Log.Information("AutoReconnectionManager started with availability monitoring");
     }
     
     /// <summary>
@@ -57,6 +65,7 @@ public class AutoReconnectionManager : IDisposable
     public void Stop()
     {
         _reconnectionTimer?.Change(Timeout.Infinite, Timeout.Infinite);
+        _availabilityCheckTimer?.Change(Timeout.Infinite, Timeout.Infinite); // Parar timer de disponibilidade
         _isReconnecting = false;
         _reconnectionAttempts = 0;
         
@@ -71,6 +80,91 @@ public class AutoReconnectionManager : IDisposable
         _wasManualDisconnection = true;
         Stop(); // Para tentativas de reconexão se houver
         Log.Debug("AutoReconnectionManager: Manual disconnection marked");
+    }
+    
+    /// <summary>
+    /// Inicia o timer de verificação periódica de disponibilidade
+    /// </summary>
+    private void StartAvailabilityCheckTimer()
+    {
+        _availabilityCheckTimer?.Dispose();
+        _availabilityCheckTimer = new Timer(CheckDeviceAvailability, null, 
+            TimeSpan.FromMinutes(AvailabilityCheckIntervalMinutes), 
+            TimeSpan.FromMinutes(AvailabilityCheckIntervalMinutes));
+        
+        Log.Information("AutoReconnectionManager: Availability check timer started (every {Interval} minutes)", 
+            AvailabilityCheckIntervalMinutes);
+    }
+    
+    /// <summary>
+    /// Verifica periodicamente se o dispositivo está disponível
+    /// </summary>
+    private async void CheckDeviceAvailability(object? state)
+    {
+        if (_disposed || !Settings.Data.AutoReconnectionEnabled)
+            return;
+            
+        try
+        {
+            // Verificar se o dispositivo está conectado
+            if (BluetoothImpl.Instance.IsConnected)
+            {
+                Log.Debug("AutoReconnectionManager: Device is connected - skipping availability check");
+                return;
+            }
+            
+            // Verificar se foi desconexão manual
+            if (_wasManualDisconnection)
+            {
+                Log.Debug("AutoReconnectionManager: Manual disconnection - skipping availability check");
+                return;
+            }
+            
+            // Verificar se já passou muito tempo desde a desconexão
+            var timeSinceDisconnection = DateTime.Now - _lastDisconnectionTime;
+            if (timeSinceDisconnection.TotalHours > MaxDisconnectionTimeHours)
+            {
+                Log.Information("AutoReconnectionManager: Too much time since disconnection ({Hours:F1}h) - stopping availability checks", 
+                    timeSinceDisconnection.TotalHours);
+                return;
+            }
+            
+            Log.Information("AutoReconnectionManager: Checking device availability...");
+            
+            // Verificar se há um dispositivo válido configurado
+            if (!BluetoothImpl.HasValidDevice)
+            {
+                Log.Warning("AutoReconnectionManager: No valid device configured");
+                return;
+            }
+            
+            // Tentar verificar se o dispositivo está disponível
+            try
+            {
+                var devices = await BluetoothImpl.Instance.GetDevicesAsync();
+                var targetDevice = devices.FirstOrDefault(d => 
+                    d.Address.Equals(BluetoothImpl.Instance.Device.Current?.MacAddress, 
+                        StringComparison.OrdinalIgnoreCase));
+                
+                if (targetDevice != null)
+                {
+                    Log.Information("AutoReconnectionManager: Device found in range - attempting reconnection");
+                    HandleDisconnection("Device availability check");
+                }
+                else
+                {
+                    Log.Debug("AutoReconnectionManager: Device not found in range");
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Debug(ex, "AutoReconnectionManager: Error checking device availability");
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "AutoReconnectionManager: Error in availability check");
+        }
     }
     
     private void OnConnected(object? sender, EventArgs e)
@@ -89,6 +183,7 @@ public class AutoReconnectionManager : IDisposable
     private void OnDisconnected(object? sender, string reason)
     {
         Log.Information("🔍 AutoReconnectionManager: OnDisconnected called - Reason: {Reason}", reason);
+        _lastDisconnectionTime = DateTime.Now; // Registrar tempo da desconexão
         HandleDisconnection(reason);
     }
     
@@ -103,6 +198,7 @@ public class AutoReconnectionManager : IDisposable
             return;
         }
         
+        _lastDisconnectionTime = DateTime.Now; // Registrar tempo da desconexão
         HandleDisconnection($"Bluetooth error: {exception.Message}");
     }
     
@@ -193,12 +289,12 @@ public class AutoReconnectionManager : IDisposable
                 // Conexão iniciada com sucesso (sucesso será confirmado no evento Connected)
                 Log.Information("🚀 AutoReconnectionManager: Reconnection attempt #{Attempt} initiated successfully", _reconnectionAttempts);
                 
-                // Aguardar 10 segundos para confirmar se a conexão foi estabelecida
-                _ = Task.Delay(10000).ContinueWith(async _ =>
+                // Aguardar 15 segundos para confirmar se a conexão foi estabelecida (aumentado de 10s)
+                _ = Task.Delay(15000).ContinueWith(async _ =>
                 {
                     if (_isReconnecting && !BluetoothImpl.Instance.IsConnected)
                     {
-                        Log.Warning("⚠️ AutoReconnectionManager: Connection timeout - device not connected after 10s");
+                        Log.Warning("⚠️ AutoReconnectionManager: Connection timeout - device not connected after 15s");
                         
                         // Tentar próxima tentativa se ainda há tentativas disponíveis
                         if (_reconnectionAttempts < MaxReconnectionAttempts)
@@ -275,9 +371,11 @@ public class AutoReconnectionManager : IDisposable
         BluetoothImpl.Instance.Connected -= OnConnected;
         BluetoothImpl.Instance.Disconnected -= OnDisconnected;
         
-        // Limpar timer
+        // Limpar timers
         _reconnectionTimer?.Dispose();
+        _availabilityCheckTimer?.Dispose(); // Limpar timer de disponibilidade
         _reconnectionTimer = null;
+        _availabilityCheckTimer = null; // Limpar referência
         
         Log.Information("AutoReconnectionManager disposed");
     }
