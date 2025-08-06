@@ -32,6 +32,7 @@ using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Scripting.Experiment;
 #endif
 using GalaxyBudsClient.Utils;
+using GalaxyBudsClient.Utils.AutoReconnection;
 using GalaxyBudsClient.Utils.Interface;
 using GalaxyBudsClient.Utils.TeamsIntegration;
 using Serilog;
@@ -140,6 +141,10 @@ public class App : Application
             _teamsCallMonitor.Start();
             Log.Information("Teams integration monitor started");
         }
+        
+        // Inicializar sistema de reconexão automática
+        AutoReconnectionManager.Instance.Start();
+        Log.Information("Auto reconnection manager initialized");
         
         if (Loc.IsTranslatorModeEnabled)
         {

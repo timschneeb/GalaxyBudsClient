@@ -107,6 +107,12 @@
                         <ext:RequiresDesktopBehavior />
                     </Interaction.Behaviors>
                 </controls:SettingsSwitchItem>
+                
+                <controls:SettingsSwitchItem Content="{ext:Translate {x:Static i18N:Keys.AdvAutoReconnection}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.AdvAutoReconnectionDesc}}"
+                                             IsChecked="{Binding IsAutoReconnectionEnabled}"
+                                             Symbol="ArrowClockwise"
+                                             IsClickEnabled="True" />
             </controls:SettingsGroup>
 
             <controls:SettingsGroup>

@@ -115,7 +115,7 @@ public class TeamsCallMonitor : IDisposable
             var logFiles = Directory.GetFiles(TeamsLogFolder, TeamsLogFilePattern)
                 .Select(f => new FileInfo(f))
                 .OrderByDescending(f => f.LastWriteTime)
-                .Take(3) // Verificar apenas os 3 arquivos mais recentes
+                .Take(1) // Verificar apenas o arquivo mais recente
                 .ToArray();
                 
             if (logFiles.Length == 0)

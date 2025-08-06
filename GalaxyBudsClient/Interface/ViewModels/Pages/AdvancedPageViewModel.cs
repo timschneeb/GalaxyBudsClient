@@ -24,6 +24,9 @@ public class AdvancedPageViewModel : MainPageViewModelBase
         
         // Inicializar configuração do Teams
         IsTeamsIntegrationEnabled = Settings.Data.TeamsIntegrationEnabled;
+        
+        // Inicializar configuração de reconexão automática
+        IsAutoReconnectionEnabled = Settings.Data.AutoReconnectionEnabled;
     }
 
     private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateDecoder e)
@@ -70,6 +73,10 @@ public class AdvancedPageViewModel : MainPageViewModelBase
                     Log.Information("Teams integration disabled - monitor stopped");
                 }
                 break;
+            case nameof(IsAutoReconnectionEnabled):
+                Settings.Data.AutoReconnectionEnabled = IsAutoReconnectionEnabled;
+                Log.Information("Auto reconnection {Status}", IsAutoReconnectionEnabled ? "enabled" : "disabled");
+                break;
         }
     }
 
@@ -79,6 +86,7 @@ public class AdvancedPageViewModel : MainPageViewModelBase
     [Reactive] public bool IsCallpathControlEnabled { set; get; }
     [Reactive] public bool IsExtraClearCallEnabled { set; get; }
     [Reactive] public bool IsTeamsIntegrationEnabled { set; get; }
+    [Reactive] public bool IsAutoReconnectionEnabled { set; get; }
 
     public override string TitleKey => Keys.MainpageAdvanced;
     public override Symbol IconKey => Symbol.WrenchScrewdriver;

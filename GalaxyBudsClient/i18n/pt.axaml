@@ -723,5 +723,9 @@ Detalhes:</sys:String>
     <!--Teams Integration-->
     <sys:String x:Key="adv_teams_integration">Integração com Teams</sys:String>
     <sys:String x:Key="adv_teams_integration_desc">Desativar automaticamente a conexão direta durante chamadas do Teams</sys:String>
+    
+    <!--Auto Reconnection-->
+    <sys:String x:Key="adv_auto_reconnection">Reconexão Automática</sys:String>
+    <sys:String x:Key="adv_auto_reconnection_desc">Tentar reconectar automaticamente quando o fone desconectar</sys:String>
 
 </ResourceDictionary>
