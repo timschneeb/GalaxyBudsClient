@@ -26,8 +26,8 @@ public class CouplingHelperReadDecoder : BaseMessageDecoder
         LocalAddress = reader.ReadBytes(6).BytesToMacString();
         PeerAddress = reader.ReadBytes(6).BytesToMacString();
         
-        HostDevice = (DevicesInverted)reader.ReadByte();
+        HostDevice = (DevicesInverted)SafeReadByte(reader);
         BridgeStatus = reader.ReadBoolean();
-        RcvGrade = reader.ReadByte();
+        RcvGrade = SafeReadByte(reader);
     }
 }

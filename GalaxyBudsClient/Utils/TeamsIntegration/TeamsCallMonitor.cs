@@ -50,7 +50,8 @@ public class TeamsCallMonitor : IDisposable
             return;
             
         _isRunning = true;
-        _monitorTimer?.Change(TimeSpan.FromSeconds(CheckIntervalSeconds), TimeSpan.FromSeconds(CheckIntervalSeconds));
+        // Aguardar mais tempo na inicialização para evitar comando desnecessário
+        _monitorTimer?.Change(TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(CheckIntervalSeconds));
         Log.Information("Teams integration monitor started - checking every {Interval}s", CheckIntervalSeconds);
     }
     

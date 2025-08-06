@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using GalaxyBudsClient.Generated.Model.Attributes;
@@ -24,9 +24,9 @@ public class GenericEventDecoder : BaseMessageDecoder
         
         Device = reader.ReadChar() == 'L' ? Devices.L : Devices.R;
         Timestamp = TimeSpan.FromMilliseconds(reader.ReadUInt32());
-        EventRawId = reader.ReadByte(); 
+        EventRawId = SafeReadByte(reader); 
         EventId = (EventIds)EventRawId;
-        MessageType = (MsgTypes)reader.ReadByte();
+        MessageType = (MsgTypes)SafeReadByte(reader);
         
         try
         {
