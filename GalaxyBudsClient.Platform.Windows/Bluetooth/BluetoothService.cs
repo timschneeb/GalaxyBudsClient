@@ -294,6 +294,8 @@ namespace GalaxyBudsClient.Platform.Windows.Bluetooth
         private void BluetoothServiceLoop()
         {
             Stream? peerStream = null;
+            DateTime lastActivity = DateTime.Now;
+            const int connectionTimeoutMs = 5000; // 5 seconds timeout
 
             while (true)
             {
@@ -309,9 +311,42 @@ namespace GalaxyBudsClient.Platform.Windows.Bluetooth
                     throw;
                 }
                 
+                // Enhanced disconnection detection
                 if (_client is not { Connected: true })
                 {
+                    if (peerStream != null)
+                    {
+                        Log.Debug("Windows.BluetoothService: Client disconnected, triggering disconnection event");
+                        peerStream?.Close();
+                        peerStream = null;
+                        BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, "Connection lost"));
+                    }
                     continue;
+                }
+
+                // Check for connection timeout (no activity for too long)
+                if (peerStream != null && (DateTime.Now - lastActivity).TotalMilliseconds > connectionTimeoutMs)
+                {
+                    try
+                    {
+                        // Try to detect if connection is still alive by checking stream properties
+                        if (!peerStream.CanRead || !peerStream.CanWrite)
+                        {
+                            Log.Debug("Windows.BluetoothService: Stream became unreadable/unwritable, connection lost");
+                            peerStream?.Close();
+                            peerStream = null;
+                            BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, "Stream became unavailable"));
+                            continue;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Debug("Windows.BluetoothService: Exception while checking stream status: {Message}", ex.Message);
+                        peerStream?.Close();
+                        peerStream = null;
+                        BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed, "Stream check failed"));
+                        continue;
+                    }
                 }
 
                 if (peerStream == null)
@@ -338,6 +373,7 @@ namespace GalaxyBudsClient.Platform.Windows.Bluetooth
                     try
                     {
                         peerStream.Read(buffer, 0, available);
+                        lastActivity = DateTime.Now; // Update activity timestamp on successful read
                     }
                     catch (SocketException ex)
                     {
@@ -364,6 +400,7 @@ namespace GalaxyBudsClient.Platform.Windows.Bluetooth
                     try
                     {
                         peerStream.Write(raw, 0, raw.Length);
+                        lastActivity = DateTime.Now; // Update activity timestamp on successful write
                     }
                     catch (SocketException ex)
                     {
