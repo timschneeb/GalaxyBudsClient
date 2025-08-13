@@ -34,6 +34,7 @@ using GalaxyBudsClient.Scripting.Experiment;
 using GalaxyBudsClient.Utils;
 using GalaxyBudsClient.Utils.AutoReconnection;
 using GalaxyBudsClient.Utils.Interface;
+using GalaxyBudsClient.Utils.PendingCommands;
 using GalaxyBudsClient.Utils.TeamsIntegration;
 using Serilog;
 using Application = Avalonia.Application;
@@ -133,6 +134,10 @@ public class App : Application
         SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
         
         DeviceMessageCache.Init();
+        
+        // Inicializar sistema de fila de comandos pendentes
+        _ = PendingCommandsManager.Instance;
+        Log.Information("Pending commands manager initialized");
         
         // Inicializar monitor do Teams
         _teamsCallMonitor = TeamsCallMonitor.Initialize();

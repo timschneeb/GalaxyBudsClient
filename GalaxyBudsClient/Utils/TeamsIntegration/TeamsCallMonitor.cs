@@ -1,10 +1,14 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Platform;
+using GalaxyBudsClient.Message;
+using GalaxyBudsClient.Model.Config;
+using GalaxyBudsClient.Utils.PendingCommands;
 using Serilog;
 
 namespace GalaxyBudsClient.Utils.TeamsIntegration;
@@ -21,6 +25,7 @@ public class TeamsCallMonitor : IDisposable
     private bool _isRunning;
     private bool _disposed;
     private bool? _lastCallState; // null = desconhecido, true = em chamada, false = não em chamada
+    private readonly HashSet<string> _processedEvents = new(); // Cache de eventos já processados
     
     // Configurações do monitor
     private const int CheckIntervalSeconds = 5;
@@ -77,25 +82,23 @@ public class TeamsCallMonitor : IDisposable
             // Verificar se o status mudou para evitar comandos redundantes
             if (isCurrentlyInCall != _lastCallState)
             {
-                Log.Debug("Status da chamada mudou: {Previous} -> {Current}", _lastCallState?.ToString() ?? "desconhecido", isCurrentlyInCall);
+                Log.Information("📞 Teams call status changed: {Previous} -> {Current}", 
+                    _lastCallState?.ToString() ?? "unknown", isCurrentlyInCall);
                 
                 _lastCallState = isCurrentlyInCall;
                 
                 if (isCurrentlyInCall)
                 {
-                    Log.Information("🔴 Chamada do Teams INICIADA - desativando conexão direta");
+                    Log.Information("🔴 Teams call STARTED - disabling seamless connection");
                     await SendSeamlessConnectionCommand(false); // Desativar
                 }
                 else
                 {
-                    Log.Information("🟢 Chamada do Teams FINALIZADA - ativando conexão direta");
+                    Log.Information("🟢 Teams call ENDED - enabling seamless connection");
                     await SendSeamlessConnectionCommand(true); // Ativar
                 }
             }
-            else
-            {
-                Log.Debug("Status da chamada inalterado: {Status} - nenhum comando enviado", isCurrentlyInCall);
-            }
+            // Remover log de debug quando status não muda - evita spam no log
         }
         catch (Exception ex)
         {
@@ -147,16 +150,46 @@ public class TeamsCallMonitor : IDisposable
                         .Where(line => IsLineRecent(line, cutoffTime))
                         .ToList();
                     
-                    Log.Debug("Found {Count} recent call events in {File}", recentCallEvents.Count, logFile.Name);
+                    // Filter out already processed events to avoid spam
+                    var newEvents = recentCallEvents
+                        .Where(line => !_processedEvents.Contains(line.GetHashCode().ToString()))
+                        .ToList();
                     
-                    if (recentCallEvents.Any())
+                    // Only process if there are genuinely new events
+                    if (newEvents.Any())
                     {
-                        // Log todos os eventos encontrados para debug
-                        foreach (var eventLine in recentCallEvents.Take(5)) // Mostrar apenas os 5 mais recentes
+                        Log.Debug("Found {NewCount} new call events (out of {Total} recent) in {File}", 
+                            newEvents.Count, recentCallEvents.Count, logFile.Name);
+                        
+                        // Add new events to processed cache (keep cache size reasonable)
+                        foreach (var eventLine in newEvents)
                         {
-                            Log.Debug("Call event: {Event}", eventLine.Substring(0, Math.Min(200, eventLine.Length)));
+                            _processedEvents.Add(eventLine.GetHashCode().ToString());
                         }
                         
+                        // Limit cache size to prevent memory issues
+                        if (_processedEvents.Count > 100)
+                        {
+                            var oldEvents = _processedEvents.Take(_processedEvents.Count - 50).ToList();
+                            foreach (var oldEvent in oldEvents)
+                            {
+                                _processedEvents.Remove(oldEvent);
+                            }
+                        }
+                        
+                        // Only log events in verbose mode to reduce spam
+                        if (Log.IsEnabled(Serilog.Events.LogEventLevel.Verbose))
+                        {
+                            foreach (var eventLine in newEvents.Take(2)) // Show only top 2 new events
+                            {
+                                Log.Verbose("New Teams call event: {Event}", eventLine.Substring(0, Math.Min(120, eventLine.Length)));
+                            }
+                        }
+                    }
+                    
+                    // Always process all recent events to determine current status (but only log new ones)
+                    if (recentCallEvents.Any())
+                    {
                         // Ordenar eventos por timestamp (mais recente primeiro)
                         var sortedEvents = recentCallEvents
                             .OrderByDescending(line => ExtractTimestamp(line))
@@ -168,12 +201,10 @@ public class TeamsCallMonitor : IDisposable
                         {
                             if (mostRecentEvent.Contains("NotifyCallEnded"))
                             {
-                                Log.Debug("Most recent event: Call ENDED");
                                 return false;
                             }
                             else if (mostRecentEvent.Contains("NotifyCallActive") || mostRecentEvent.Contains("NotifyCallAccepted"))
                             {
-                                Log.Debug("Most recent event: Call ACTIVE/ACCEPTED");
                                 return true;
                             }
                         }
@@ -225,47 +256,38 @@ public class TeamsCallMonitor : IDisposable
     {
         try
         {
-            Log.Information("🔍 Verificando conexão do dispositivo...");
-            Log.Information($"🔍 BluetoothImpl.Instance.IsConnected: {BluetoothImpl.Instance.IsConnected}");
-            
-            if (!BluetoothImpl.Instance.IsConnected)
-            {
-                Log.Warning("⚠️ Dispositivo não conectado - comando não enviado");
-                return;
-            }
-            
             // Usar lógica invertida: false para ativar, true para desativar (conforme protocolo do dispositivo)
             bool commandPayload = !enable;
             
-            Log.Information("📤 Enviando comando SET_SEAMLESS_CONNECTION: payload={Payload} para {Action}", 
-                commandPayload, enable ? "ATIVAR" : "DESATIVAR");
+            string description = $"Teams: {(enable ? "ATIVAR" : "DESATIVAR")} conexão direta";
             
-            Log.Information("🔍 DETALHES DO COMANDO:");
-            Log.Information($"🔍   - MsgId: {MsgIds.SET_SEAMLESS_CONNECTION}");
-            Log.Information($"🔍   - Payload (bool): {commandPayload}");
-            Log.Information($"🔍   - Payload (convertido): {Convert.ToByte(commandPayload)}");
+            Log.Information("📤 Enviando comando via fila de comandos pendentes: {Description}", description);
             
-            Log.Information("🔍 Enviando via BluetoothImpl.Instance.SendRequestAsync...");
+            // Usar o sistema de fila de comandos pendentes
+            bool wasSentImmediately = await PendingCommandsManager.Instance.SendCommandAsync(
+                MsgIds.SET_SEAMLESS_CONNECTION, 
+                commandPayload, 
+                description);
             
-            try
+            if (wasSentImmediately)
             {
-                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_SEAMLESS_CONNECTION, commandPayload);
-                Log.Information("✅ Comando enviado com sucesso para o dispositivo");
-                Log.Information($"🔍 COMANDO ENVIADO - Esperado: Value={Convert.ToByte(commandPayload)}, RawParameters={Convert.ToByte(commandPayload):X2} (para {(enable ? "ativar" : "desativar")})");
+                Log.Information("✅ Comando enviado imediatamente (dispositivo conectado)");
                 
-                // Aguardar um pouco e verificar se o comando teve efeito
+                // Aguardar um pouco e solicitar status atualizado
                 await Task.Delay(1000);
-                Log.Information("🔍 Solicitando status atualizado do dispositivo...");
-                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_GET_ALL_DATA);
+                await PendingCommandsManager.Instance.SendCommandAsync(
+                    MsgIds.DEBUG_GET_ALL_DATA, 
+                    null, 
+                    "Teams: Solicitar status após comando");
             }
-            catch (Exception ex)
+            else
             {
-                Log.Error(ex, "❌ Erro ao enviar comando SET_SEAMLESS_CONNECTION: {Error}", ex.Message);
+                Log.Information("📋 Comando adicionado à fila (dispositivo desconectado) - será enviado automaticamente na reconexão");
             }
         }
         catch (Exception ex)
         {
-            Log.Error(ex, "❌ Erro ao enviar comando SET_SEAMLESS_CONNECTION: {Error}", ex.Message);
+            Log.Error(ex, "❌ Erro ao processar comando SET_SEAMLESS_CONNECTION: {Error}", ex.Message);
         }
     }
     

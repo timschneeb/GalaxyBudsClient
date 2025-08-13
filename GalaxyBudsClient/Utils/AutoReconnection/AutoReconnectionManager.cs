@@ -290,7 +290,7 @@ public class AutoReconnectionManager : IDisposable
                 Log.Information("🚀 AutoReconnectionManager: Reconnection attempt #{Attempt} initiated successfully", _reconnectionAttempts);
                 
                 // Aguardar 15 segundos para confirmar se a conexão foi estabelecida (aumentado de 10s)
-                _ = Task.Delay(15000).ContinueWith(async _ =>
+                _ = Task.Delay(15000).ContinueWith(_ =>
                 {
                     if (_isReconnecting && !BluetoothImpl.Instance.IsConnected)
                     {
