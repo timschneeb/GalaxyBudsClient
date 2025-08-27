@@ -1,0 +1,639 @@
+<!-- ReSharper disable InconsistentNaming -->
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- English name of this language -->
+    <sys:String x:Key="language_name_en">Korean</sys:String>
+
+    <!--:::::::: Source code ::::::::-->
+
+    <!--삼성 한국어 어조/말투를 적용했습니다
+    예1) ~했습니다 (x) ~했어요 (o)
+    예2) ~하세요 (x) ~해 주세요 (o)-->
+	
+    <!--General-->
+    <sys:String x:Key="okay">확인</sys:String>
+    <sys:String x:Key="left">왼쪽</sys:String>
+    <sys:String x:Key="right">오른쪽</sys:String>
+    <sys:String x:Key="case">케이스</sys:String>
+    <sys:String x:Key="error">오류</sys:String>
+    <sys:String x:Key="cancel">취소</sys:String>
+    <sys:String x:Key="apply">적용</sys:String>
+    <sys:String x:Key="select">선택</sys:String>
+	
+    <!--이쪽은 해요체를 적용하지 않았지만, 실제 One UI에서도 해요체가 적용되지 않는 부분입니다.-->
+    <sys:String x:Key="notset">선택되지 않음</sys:String>
+    <sys:String x:Key="unknown">알 수 없음</sys:String>
+    <sys:String x:Key="back">돌아가기</sys:String>
+	
+	
+    <sys:String x:Key="nobluetoothdev">블루투스 어댑터를 찾을 수 없어요. 블루투스를 활성화하고 다시 시도하세요.</sys:String>
+
+    <sys:String x:Key="anc">액티브 노이즈 캔슬링</sys:String>
+
+    <!--SPP Message Parser-->
+    <sys:String x:Key="sppmsg_too_small">패킷 크기가 너무 작음</sys:String>
+    <sys:String x:Key="sppmsg_invalid_som">유효하지 않은 SOM</sys:String>
+    <!--Context: SOM = Start of message-->
+    <sys:String x:Key="sppmsg_invalid_eom">유효하지 않은 EOM</sys:String>
+    <!--Context: EOM = End of message-->
+    <sys:String x:Key="sppmsg_size_mismatch">페이로드 크기 불일치</sys:String>
+    <sys:String x:Key="sppmsg_crc_fail">체크섬 불일치</sys:String>
+    <sys:String x:Key="sppmsg_tl">패킷 크기가 너무 작음</sys:String>
+	 
+    <!--Dark Mode States-->
+    <sys:String x:Key="darkmode_disabled">끄기</sys:String>
+    <sys:String x:Key="darkmode_enabled">켜기</sys:String>
+    <sys:String x:Key="darkmode_system">시스템 설정 사용</sys:String>
+
+    <!--Connection popup-->
+    <sys:String x:Key="connpopup_placement_tl">좌측 상단</sys:String>
+    <sys:String x:Key="connpopup_placement_tc">상단 중앙</sys:String>
+    <sys:String x:Key="connpopup_placement_tr">우측 상단</sys:String>
+    <sys:String x:Key="connpopup_placement_bl">좌측 하단</sys:String>
+    <sys:String x:Key="connpopup_placement_bc">하단 중앙</sys:String>
+    <sys:String x:Key="connpopup_placement_br">우측 하단</sys:String>
+    <sys:String x:Key="connpopup_title">{0}의 {1}</sys:String>
+    <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
+
+    <!--Placement  (Buds+)-->
+    <sys:String x:Key="placement_disconnected">연결 해제됨</sys:String>
+    <sys:String x:Key="placement_wearing">착용 중</sys:String>
+    <sys:String x:Key="placement_not_wearing">착용하지 않음</sys:String>
+    <sys:String x:Key="placement_in_case">케이스</sys:String>
+
+    <!--Touch options-->
+    <sys:String x:Key="touchoption_voice">음성 명령</sys:String>
+    <sys:String x:Key="touchoption_quickambientsound">즉시 주변 소리 듣기</sys:String>
+    <sys:String x:Key="touchoption_volume">음량</sys:String>
+    <sys:String x:Key="touchoption_volume_up">음량 올리기</sys:String>
+    <sys:String x:Key="touchoption_volume_down">음량 내리기</sys:String>
+    <sys:String x:Key="touchoption_ambientsound">주변 소리 듣기</sys:String>
+    <sys:String x:Key="touchoption_switch_noisecontrols">소음 제어 옵션 변경</sys:String>
+    <!--Spotify Korea 측에서도 스포티파이라는 명칭보다 Spotify를 사용하고 있습니다.-->
+    <sys:String x:Key="touchoption_spotify">Spotify (Android 전용)</sys:String>
+    <sys:String x:Key="touchoption_custom">사용자 설정 동작...</sys:String>
+    <sys:String x:Key="touchoption_custom_null">설정되지 않음</sys:String>
+    <sys:String x:Key="touchoption_custom_unknown">알 수 없음</sys:String>
+    <sys:String x:Key="touchoption_custom_prefix">사용자 설정 동작:</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_hotkey">지정된 키 조합을 누르기...</sys:String>
+    <sys:String x:Key="touchoption_custom_external_app">외부 응용 프로그램을 열기...</sys:String>
+
+    <!--최신 버전에서는 빠진 스트링, 차후 호환성을 위해 남겨둠.
+    <sys:String x:Key="touchoption_custom_ambient_up">주변 소리 듣기 음량 올리기</sys:String>
+    <sys:String x:Key="touchoption_custom_ambient_down">주변 소리 듣기 음량 내리기</sys:String>
+    <sys:String x:Key="touchoption_custom_toggle_eq">이퀄라이저 켜기</sys:String>
+    <sys:String x:Key="touchoption_custom_next_eq_preset">다음 이퀄라이저 프리셋</sys:String>-->
+
+    <!--Options menu-->
+    <sys:String x:Key="optionsmenu_title">옵션</sys:String>
+    <sys:String x:Key="optionsmenu_settings">설정</sys:String>
+    <sys:String x:Key="optionsmenu_refresh">대시보드 새로 고침</sys:String>
+    <sys:String x:Key="optionsmenu_deregister">디바이스 등록 해제</sys:String>
+    <sys:String x:Key="optionsmenu_update">업데이트 확인</sys:String>
+    <sys:String x:Key="optionsmenu_credits">크레딧</sys:String>
+
+    <!--Tray context menu-->
+    <sys:String x:Key="tray_unlock_touchpad">터치패드 잠금 해제</sys:String>
+    <sys:String x:Key="tray_lock_touchpad">터치패드 잠금</sys:String>
+    <sys:String x:Key="tray_enable_ambient_sound">주변 소리 듣기 켜기</sys:String>
+    <sys:String x:Key="tray_disable_ambient_sound">주변 소리 듣기 끄기</sys:String>
+    <sys:String x:Key="tray_enable_eq">이퀄라이저 켜기</sys:String>
+    <sys:String x:Key="tray_disable_eq">이퀄라이저 끄기</sys:String>
+    <sys:String x:Key="tray_enable_anc">액티브 노이즈 캔슬링 활성화</sys:String>
+    <sys:String x:Key="tray_disable_anc">액티브 노이즈 캔슬링 비활성화</sys:String>
+    <sys:String x:Key="tray_switch_noise">소음 제어</sys:String>
+    <sys:String x:Key="tray_quit">종료</sys:String>
+
+
+    <!--:::::::: XAML files (static) ::::::::-->
+
+    <!--General-->
+    <sys:String x:Key="continue_button">계속하기</sys:String>
+
+    <!--Hotkey Recorder Dialog (Custom action)-->
+    <sys:String x:Key="hotrec_title">키 지정</sys:String>
+    <sys:String x:Key="hotrec_content">키 조합을 입력해 주세요. (누른 채로 유지하세요.):</sys:String>
+    <sys:String x:Key="hotrec_empty">없음</sys:String>
+    <sys:String x:Key="hotrec_note">참고: 사용자 인터페이스 권한 격리(UIPI)로 인해, 동일한 권한 수준의 앱에서만 키 조합을 수신할 수 있어요.</sys:String>
+
+    <!--Hotkey Action Builder Dialog-->
+    <sys:String x:Key="hotkey_edit_title">단축키 편집기</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid">잘못된 단축키가 선택되었어요.</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_desc">최소 한 개의 키와 수정키를 선택해 주세요.</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_mod">수정키를 찾을 수 없어요.</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action">잘못된 액션</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action_desc">액션을 선택해 주세요.</sys:String>
+    <sys:String x:Key="hotkey_edit_modifier">수정키</sys:String>
+    <sys:String x:Key="hotkey_edit_keys">키</sys:String>
+    <sys:String x:Key="hotkey_edit_action">액션</sys:String>
+    <sys:String x:Key="hotkey_edit_preview">단축키 미리보기:</sys:String>
+    <sys:String x:Key="hotkey_edit_header">키보드 단축키 선택하기</sys:String>
+    
+    <!--Hotkey page-->
+    <sys:String x:Key="hotkey_header">키보드 단축키</sys:String>
+    <sys:String x:Key="hotkey_add">새로운 키보드 단축키 지정하기</sys:String>
+    <sys:String x:Key="hotkey_empty">지정된 단축키가 없어요.</sys:String>
+    <sys:String x:Key="hotkey_empty_desc">위에 있는 버튼을 클릭해 새로운 키보드 단축키를 만들어 보세요.</sys:String>
+    <sys:String x:Key="hotkey_edit">수정</sys:String>
+    <sys:String x:Key="hotkey_delete">삭제</sys:String>
+    <sys:String x:Key="hotkey_add_error">단축키를 등록/업데이트 하는데 실패했어요.</sys:String>
+    <sys:String x:Key="hotkey_add_error_context">오류가 발생한 단축키:</sys:String>
+    <sys:String x:Key="hotkey_add_error_duplicate">방금 등록한 단축키 조합은 Galaxy Buds Manager 또는 다른 프로그램에서 이미 단축키로 사용되고 있어요. 다른 단축키를 선택해 주세요.</sys:String>
+    <sys:String x:Key="hotkey_add_error_unknown">운영체제가 '{0}' (이)라는 오류로 응답했어요.</sys:String>
+
+    <!--EventDispatcher module-->
+    <sys:String x:Key="event_none">없음</sys:String>
+    <sys:String x:Key="event_ambient_toggle">주변 소리 듣기 켜기/끄기</sys:String>
+    <sys:String x:Key="event_ambient_volume_up">주변 소리 듣기 볼륨 크게</sys:String>
+    <sys:String x:Key="event_ambient_volume_down">주변 소리 듣기 볼륨 작게</sys:String>
+    <sys:String x:Key="event_eq_toggle">이퀄라이저 켜기/끄기</sys:String>
+    <sys:String x:Key="event_eq_switch">이퀄라이저 프리셋 반복</sys:String>
+    <sys:String x:Key="event_anc_toggle">액티브 노이즈 캔슬링 켜기/끄기</sys:String>
+    <sys:String x:Key="event_anc_switch_sensitivity">액티브 노이즈 캔슬링 민감도 변경하기</sys:String>
+    <sys:String x:Key="event_touch_lock_toggle">터치패드 잠금 켜기/끄기</sys:String>
+    <sys:String x:Key="event_double_edge_touch_toggle">가장자리 두 번 두드리기 기능 켜기/끄기e</sys:String>
+    <sys:String x:Key="event_conversation_toggle">대화 감지 켜기/끄기</sys:String>
+    <sys:String x:Key="event_start_stop_find">내 버즈 찾기 켜기/끄기</sys:String>
+    <sys:String x:Key="event_start_find">내 버즈 찾기 시작</sys:String>
+    <sys:String x:Key="event_stop_find">내 버즈 찾기 중지</sys:String>
+    <sys:String x:Key="event_paring_mode">페어링 모드</sys:String>
+    <sys:String x:Key="event_media_play">미디어 재생</sys:String>
+    <sys:String x:Key="event_media_pause">미디어 일시중지</sys:String>
+    <sys:String x:Key="event_media_play_pause">미디어 재생/일시중지</sys:String>
+    <sys:String x:Key="event_manager_visible">매니저 창 보기/숨기기</sys:String>
+    <sys:String x:Key="event_display_battery_popup">배터리 팝업 표시하기</sys:String>
+    <sys:String x:Key="event_connect">기기와 연결하기</sys:String>
+   
+    <!--Welcome page-->
+    <sys:String x:Key="welcome_textblock_header">환영합니다!</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">안녕하세요! 이 Galaxy Buds Manager는 비공식 프로그램이며, 삼성과 어떠한 관련이 없어요.
+이 프로그램은 공식 삼성 웨어러블 앱에서 할 수 없는 여러 가지 것들을 할 수 있지만, 기기 보호를 위해 버즈 소프트웨어 무선 OTA 업데이트 기능은 제외되었어요. 만약 업데이트가 필요하시다면, 공식 갤럭시 웨어러블 앱을 사용해 주세요.</sys:String>
+    <sys:String x:Key="welcome_textblock_p2">만약 이 프로그램이 개발되는 과정을 보고 싶으시다면, 저의 리버스 엔지니어링의 성과물들이 있는 GitHub 리포지토리에서 확인이 가능해요. 또한 문제가 생기면 텔레그램에서 @thepbone으로 메시지를 보내실 수 있어요.</sys:String>
+    <sys:String x:Key="welcome_textblock_p3">이 프로그램은 Galaxy Buds 1세대부터 최신 제품인 Galaxy Buds 2까지 모두 지원해요.</sys:String>
+    <sys:String x:Key="welcome_darkmode">다크 모드</sys:String>
+    <sys:String x:Key="welcome_darkmode_content">눈이 아프신가요? 어두운 색상으로 바꿔보세요! (프로그램 재시작 필요)</sys:String>
+
+    <!--Main page-->
+    <sys:String x:Key="mainpage_corrupt_data">손상된 데이터를 수신했어요. 다시 연결 중...</sys:String>
+    <sys:String x:Key="mainpage_find_my_earbuds">내 버즈 찾기</sys:String>
+    <sys:String x:Key="mainpage_touchpad">터치패드</sys:String>
+    <sys:String x:Key="mainpage_ambient_sound">주변 소리 듣기</sys:String>
+    <sys:String x:Key="mainpage_noise">소음 제어</sys:String>
+    <sys:String x:Key="mainpage_equalizer">이퀄라이저</sys:String>
+    <sys:String x:Key="mainpage_advanced">고급 설정</sys:String>
+    <sys:String x:Key="mainpage_system">버즈 정보</sys:String>
+
+    <!--Update page-->
+    <sys:String x:Key="updater_header">매니저 업데이트 가능</sys:String>
+    <sys:String x:Key="updater_message_p1">다운로드는 자동으로 진행되며, 다운로드 완료 후 업데이트 프로그램이 자동으로 실행돼요. 최신 버그 수정 및 새로운 기능을 원하신다면 업데이트를 권장해요.</sys:String>
+    <sys:String x:Key="updater_message_p2">아래 버튼을 눌러 업데이트 내용을 볼 수 있어요. (영어로만 제공됩니다)</sys:String>
+
+    <sys:String x:Key="updater_view_changelog">GitHub에서 모든 업데이트 내용 (영어로 제공됨) 보기</sys:String>
+    <sys:String x:Key="updater_footer_remindmelater">나중에 알림</sys:String>
+    <sys:String x:Key="updater_footer_skipversion">이 버전 건너뛰기</sys:String>
+    <sys:String x:Key="updater_footer_install">지금 설치</sys:String>
+    <sys:String x:Key="updater_appcast_null">새로운 업데이트가 있지만 올바른 AppCast를 찾을 수 없어요. 나중에 시도하세요.</sys:String>
+    <sys:String x:Key="updater_noupdate">최신 버전을 사용하고 있어요. 나중에 다시 확인하거나, GitHub를 구독해 새로운 업데이트를 확인해 보세요.</sys:String>
+    <sys:String x:Key="updater_noupdate_title">업데이트 없음</sys:String>
+    <sys:String x:Key="updater_newrelease">Galaxy Buds Manager 버전 {0} 이(가) 출시되었어요.</sys:String>
+
+    <sys:String x:Key="updater_dl_header">다운로드 중...</sys:String>
+    <sys:String x:Key="updater_dl_manual">GitHub에서 보기</sys:String>
+    <sys:String x:Key="updater_dl_fail_title">다운로드 실패</sys:String>
+    <sys:String x:Key="updater_dl_fail">실패 사유:</sys:String>
+    <sys:String x:Key="updater_dl_progress_prepare">다운로드 준비 중...</sys:String>
+    <sys:String x:Key="updater_dl_progress_cancelled">다운로드 취소됨</sys:String>
+    <sys:String x:Key="updater_dl_progress_finished">다운로드 완료. 설치 프로그램 준비 중...</sys:String>
+    <sys:String x:Key="updater_dl_progress">다운로드 중... {0}%</sys:String>
+    <sys:String x:Key="updater_dl_progress_size">({0}/{1} 메가바이트)</sys:String>
+    <sys:String x:Key="updater_dl_note">다운로드가 끝나면, 앱이 닫히고 별개의 업데이터가 실행돼요. 실행되기까지 몇 초가 걸릴 수 있어요.</sys:String>
+
+	
+    <!--Device selection page (setup)-->
+    <sys:String x:Key="devsel_header">Galaxy Buds 선택하기</sys:String>
+    <sys:String x:Key="devsel_refresh">페어링된 기기 새로 고침</sys:String>
+    <sys:String x:Key="devsel_device_name">디바이스 이름</sys:String>
+    <sys:String x:Key="devsel_btaddr">MAC-주소</sys:String>
+    <sys:String x:Key="devsel_model">모델</sys:String>
+    <sys:String x:Key="devsel_manual_pair">수동 연결</sys:String>																		 
+    <sys:String x:Key="devsel_nodevices">버즈를 우선 연결하고 페어링하세요.</sys:String>
+    <sys:String x:Key="devsel_nodevices_title">페어링된 기기를 찾을 수 없어요.</sys:String>
+    <sys:String x:Key="devsel_noselection">기기가 선택되지 않았어요.</sys:String>
+    <sys:String x:Key="devsel_invalid_selection">올바른 장치를 선택하세요.</sys:String>
+    <sys:String x:Key="devsel_footer_continue">설정 끝내기</sys:String>
+    <sys:String x:Key="devsel_dialog_footer">이어버드를 찾을 수 없다면, 컴퓨터의 블루투스 설정에서 연결된 것을 확인하고, 새로 고침을 클릭하세요.</sys:String>
+    <sys:String x:Key="devsel_winrt_title">다른 블루투스 백엔드 사용하기</sys:String>
+    <sys:String x:Key="devsel_winrt">훨씬 나은 안정성이지만, 일부 PC 블루투스 어댑터에서는 작동하지 않아요.</sys:String>
+
+    <!--Unsupported feature page-->
+    <sys:String x:Key="unsupported_feature_current_fwver">현재 버즈 소프트웨어 버전:</sys:String>
+    <sys:String x:Key="unsupported_feature_required_fwver">요구되는 버즈 소프트웨어 버전:</sys:String>
+
+    <sys:String x:Key="unsupported_feature_header">버즈 펌웨어를 업데이트해 주세요</sys:String>
+    <sys:String x:Key="unsupported_feature_current_fwver_null">현재 버즈 소프트웨어 버전: 알 수 없음</sys:String>
+    <sys:String x:Key="unsupported_feature_required_fwver_null">요구되는 소프트웨어 버전: 지정되지 않음</sys:String>
+
+    <sys:String x:Key="unsupported_feature_description_p1">버즈의 소프트웨어가 너무 오래됐으므로 이 기능을 지원하지 않아요.</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p2">공식 Windows 및 Android 업데이터를 통해 최신 소프트웨어로 업데이트해 주세요.</sys:String>
+    <sys:String x:Key="unsupported_feature_description_p3">Windows 업데이터를 사용할 시, 이 프로그램을 종료하는 것을 잊지 마세요. 한 번에 하나의 프로그램만 버즈와 통신이 가능해요.</sys:String>
+
+    <!--Touchpad gestures-->
+    <sys:String x:Key="touchpad_gesture_header">터치패드 제스쳐 활성화</sys:String>
+    <sys:String x:Key="touchpad_gesture_single">한번 터치</sys:String>
+    <sys:String x:Key="touchpad_gesture_single_desc">트랙 재생 또는 일시정지</sys:String>
+    <sys:String x:Key="touchpad_gesture_double">두번 연속 터치</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_desc">다음 트랙 재생</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple">세번 연속 터치</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple_desc">이전 트랙 재생</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold">길게 누르고 있기 hold</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_desc">커스텀 액션 실행</sys:String>
+
+    <!--Touchpad page-->
+    <sys:String x:Key="touchpad_header">터치패드</sys:String>
+    <sys:String x:Key="touchpad_lock">터치패드 잠금</sys:String>
+    <sys:String x:Key="touchpad_left_action">왼쪽 동작</sys:String>
+    <sys:String x:Key="touchpad_right_action">오른쪽 동작</sys:String>
+
+    <sys:String x:Key="touchpad_gestures">고급 터치 잠금</sys:String>
+    <sys:String x:Key="touchpad_gestures_description">터치 제스처 기본값을 켜고 끌 수 있어요.</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume">버즈 가장자리 두 번 두드리기</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">음량을 낮추려면 왼쪽 버즈의 가장자리를 두 번 두드리고, 음량을 높이려면 오른쪽 버즈의 가장자리를 두 번 두드리세요.</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode">소음 제어 전환 모드</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">액티브 노이즈 캔슬링 ↔ 주변 소리 듣기</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">액티브 노이즈 캔슬링 ↔ 끄기</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">주변 소리 듣기 ↔ 끄기</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_threeway">모드 간 순환 (액티브 노이즈 캔슬링, 주변 소리 듣기, 끄기)</sys:String>
+
+    <!--Custom touchpad action page-->
+    <sys:String x:Key="cact_header">사용자 지정 길게 누르기 동작</sys:String>
+    <sys:String x:Key="cact_external_app_dialog_title">응용 프로그램 선택...</sys:String>
+    <sys:String x:Key="cact_action">사용자 지정 동작</sys:String>
+    <sys:String x:Key="cact_notice">알림</sys:String>
+    <sys:String x:Key="cact_notice_content_p1">사용자 지정 길게 누르기 동작은 프로그램이 백그라운드에서 실행 중일 때만 동작해요.</sys:String>
+    <sys:String x:Key="cact_notice_content_p2">안드로이드 기기나 그 이외 다른 디바이스에서는 동작하지 않아요.</sys:String>
+    <sys:String x:Key="cact_notice_content_p3">이 기능의 지속적인 동작을 위해, 이 프로그램은 부팅 시 자동으로 백그라운드에서 실행돼요.
+설정에서 부팅 시 자동 실행 기능을 끌 수 있어요.</sys:String>
+
+    <!--System/Self-Test-->
+    <sys:String x:Key="system_overview_header">시스템</sys:String>
+    <sys:String x:Key="system_header">시스템 정보</sys:String>
+    <sys:String x:Key="system_selftest">자가 진단 진행하기</sys:String>
+    <sys:String x:Key="system_selftest_desc">나의 버즈의 모든 모듈이 정상적으로 작동하는지 확인할 수 있어요.</sys:String>
+    <sys:String x:Key="system_factory_reset">버즈 초기화</sys:String>
+    <sys:String x:Key="system_factory_reset_desc">버즈를 초기 상태로 초기화되고 연결은 해제돼요.</sys:String>
+    <sys:String x:Key="system_pairing_mode">페어링 모드 진입하기</sys:String>
+    <sys:String x:Key="system_pairing_mode_desc">이 PC와의 연결을 끊어 다른 기기와 연결할 수 있게 돼요.</sys:String>
+    <sys:String x:Key="system_trace_core_dump">트레이스와 코어 덤프 다운로드</sys:String>
+    <sys:String x:Key="system_trace_core_dump_desc">나의 버즈로부터 로우 디버깅 데이터 얻기</sys:String>
+    <sys:String x:Key="system_info">시스템 정보 보기</sys:String>
+    <sys:String x:Key="system_info_desc">나의 버즈에 대한 자세한 정보 살펴보기</sys:String>
+    
+    <sys:String x:Key="system_flasher">펌웨어 업데이트 설치</sys:String>
+    <sys:String x:Key="system_flasher_desc">펌웨어 업그레이드, 다운그레이드, 또는 커스텀 펌웨어 바이너리 설치</sys:String>
+    <sys:String x:Key="system_spatial">360 오디오 센서 측정치 덤프</sys:String>
+    <sys:String x:Key="system_spatial_desc">360 오디오 헤드 트래킹 데이터를 불러와요.</sys:String>
+
+    <sys:String x:Key="system_battery_type_unknown">지정되지 않음</sys:String>
+    <sys:String x:Key="system_waiting_for_device">응답 대기 중...</sys:String>
+
+    <sys:String x:Key="system_hwver">하드웨어 버전</sys:String>
+    <sys:String x:Key="system_swver">소프트웨어 버전</sys:String>
+    <sys:String x:Key="system_touchver">터치 펌웨어 버전</sys:String>
+    <sys:String x:Key="system_protover">프로토콜 리비전</sys:String>
+    <sys:String x:Key="system_btaddr">블루투스 주소</sys:String>
+    <sys:String x:Key="system_serial">시리얼 번호</sys:String>
+    <sys:String x:Key="system_build_info">빌드 정보</sys:String>
+    <sys:String x:Key="system_battery_type">배터리 타입</sys:String>
+    <sys:String x:Key="system_proximity">근접 측정값</sys:String>
+    <sys:String x:Key="system_thermo">서미스터 측정값</sys:String>
+    <sys:String x:Key="system_hall">홀 자기 센서 측정값</sys:String>
+    <sys:String x:Key="system_accel">엑셀러레이터 측정값</sys:String>
+    <!--Note: system_accel only used on the self-test page-->
+    <sys:String x:Key="system_adc_soc">ADC SoC</sys:String>
+    <!--Context: SoC = State of charge (battery percentage)-->
+    <sys:String x:Key="system_adc_voltage">ADC 전압</sys:String>
+    <sys:String x:Key="system_adc_current">ADC 전류</sys:String>
+
+    <sys:String x:Key="selftest_header">자가 진단</sys:String>
+    <!--sys:String x:Key="selftest_header_alt">자가 진단 (디바이스와의 연결이 끊길 수 있음)</sys:String>-->
+
+    <sys:String x:Key="selftest_pass">통과</sys:String>
+    <sys:String x:Key="selftest_fail">실패</sys:String>
+    <sys:String x:Key="selftest_pass_long">모든 진단를 통과했어요.</sys:String>
+    <sys:String x:Key="selftest_fail_long">하나 이상의 진단이 실패했어요.</sys:String>
+
+    <sys:String x:Key="coredump_header">데이터 덤프 중...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_prepare">다운로드 준비 중...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_cancelled">다운로드 취소됨</sys:String>
+    <sys:String x:Key="coredump_dl_progress_finished">다운로드 완료</sys:String>
+    <sys:String x:Key="coredump_dl_trace_progress">트레이스 덤프 다운로드... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_core_progress">코어 덤프 다운로드... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_progress_size">({0}/{1} 바이트)</sys:String>
+    <sys:String x:Key="coredump_dl_note">다운로드하는 동안 오디오 스트림은 일시적으로 중지돼요. 이 버즈는 이 전송이 완료되는 즉시 연결이 끊어질 거예요. 수동으로 다시 연결해 주세요.
+완료되면 수집된 모든 데이터에 대한 저장 경로를 선택하라는 메시지가 표시될 거에요.
+
+전송이 중단되었거나 장치 연결이 너무 일찍 끊어지면 다운로드를 다시 시작해야 해요. 이 기능은 현재 매우 불안정해요.</sys:String>
+    <sys:String x:Key="coredump_dl_save_fail_title">덤프 저장 실패</sys:String>
+    <sys:String x:Key="coredump_dl_save_fail">덤프를 임시 공간에서부터 복사 실패. 사유: {0}</sys:String>
+    <sys:String x:Key="coredump_dl_save_success_title">덤프 저장 성공</sys:String>
+    <sys:String x:Key="coredump_dl_save_success">덤프: {0} 이(가) '{1}'에 저장되었어요.</sys:String>
+    <sys:String x:Key="coredump_dl_save_dialog_title">다운로드 경로를 지정해 주세요...</sys:String>
+
+    <!--Settings-->
+    <sys:String x:Key="settings_header">설정</sys:String>
+
+    <sys:String x:Key="settings_darkmode">다크 모드</sys:String>
+    <sys:String x:Key="settings_darkmode_description">어두운 색상을 사용합니다.</sys:String>
+    <sys:String x:Key="settings_transitions">전환 효과</sys:String>
+    <sys:String x:Key="settings_transitions_description">슬라이드 전환 효과를 켜거나 끕니다.</sys:String>
+    <sys:String x:Key="settings_localization_disable">언어</sys:String>
+    <sys:String x:Key="settings_localization_disable_description">언어를 영어로 강제 설정</sys:String>
+    <sys:String x:Key="settings_minimize_tray">시스템 트레이에 최소화</sys:String>
+    <sys:String x:Key="settings_minimize_tray_description">프로그램을 종료하지 않고 트레이에 최소화합니다.</sys:String>
+    <sys:String x:Key="settings_autostart">부팅 시 자동 실행</sys:String>
+    <sys:String x:Key="settings_autostart_description">컴퓨터 부팅 시 자동으로 최소화된 상태로 시작합니다.</sys:String>
+    <sys:String x:Key="settings_autostart_permission">레지스트리 내 자동 실행 항목을 수정할 수 없어요. 시스템 관리자에 의해 레지스트리 접근 권한이(HKCU) 해제되었어요.</sys:String>
+
+    <sys:String x:Key="settings_connpopup">연결 팝업 설정</sys:String>
+    <sys:String x:Key="settings_devmode">개발자 모드 진입</sys:String>
+    <sys:String x:Key="settings_crowdsourcing">크라우드소싱</sys:String>
+
+    <!--Settings >>> Connection popup-->
+    <sys:String x:Key="settings_cpopup_header">연결 팝업</sys:String>
+    <sys:String x:Key="settings_cpopup_enable">연결 시 팝업 표시</sys:String>
+    <sys:String x:Key="settings_cpopup_enable_description">버즈가 연결되었을 때 남은 배터리 용량을 보여주는 작은 알림 팝업이 표시돼요.</sys:String>
+    <sys:String x:Key="settings_cpopup_compact">간단한 모드</sys:String>
+    <sys:String x:Key="settings_cpopup_compact_description">표시 공간을 줄이기 위해 팝업에서 버즈의 이름이 표시되지 않아요.</sys:String>
+
+    <sys:String x:Key="settings_cpopup_position">표시 위치</sys:String>
+    <sys:String x:Key="settings_cpopup_position_placeholder">알 수 없음</sys:String>
+    <sys:String x:Key="settings_cpopup_demo">연결 팝업 보기</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title">연결 팝업 레이블 변경</sys:String>
+    <sys:String x:Key="settings_cpopup_override_title_dialog">팝업 레이블을 입력해 주세요. 공백으로 둘 시 기본 레이블이 적용돼요.</sys:String>
+    <sys:String x:Key="settings_cpopup_primary_screen">주 화면만</sys:String>
+    <sys:String x:Key="settings_cpopup_primary_screen_description">팝업을 주 화면에서만 보이기</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state">케이스에 보관된 상태일 때 연한 다른 색상 사용</sys:String>
+    <sys:String x:Key="settings_cpopup_wear_state_description">버즈가 케이스에 보관된 상태일 경우 연한 회색으로 표시돼요.</sys:String>
+
+    <!--Settings >>> Crowdsourcing settings-->
+    <sys:String x:Key="settings_crowd_header">크라우드소싱</sys:String>
+    <sys:String x:Key="settings_crowd_allow">크라우드소싱 참가 동의</sys:String>
+    <sys:String x:Key="settings_crowd_allow_description">수시로 삼성의 독자적인 블루투스 프로토콜 구조와 데이터를 수집합니다. 이 정보는 차후에 출시되는 갤럭시 버즈 모델을 실사용 테스트 없이 지원을 할 수 있게 도와줍니다.</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport">앱 충돌 보고서 전송 허용</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport_description">Sentry 서비스를 통해 앱 충돌 또는 오류 발생시 보고서를 개발자에게 자동으로 보냅니다. 이는 문제가 있거나 앱 사용에 방해가 되는 버그를 개발자가 더 빨리 수정할 수 있게 도와줍니다.</sys:String>
+
+    <!--Factory reset-->
+    <sys:String x:Key="factory_header">버즈 초기화</sys:String>
+    <sys:String x:Key="factory_confirm">버즈 초기화하기</sys:String>
+    <sys:String x:Key="factory_error_title">버즈 초기화 실패</sys:String>
+    <sys:String x:Key="factory_error">디바이스가 {0} (이)라는 오류 코드를 반환했어요.
+양쪽 버즈가 서로 가까운 거리에 있고 켜져 있는지 확인해 주세요.
+버즈를 수동으로 다시 연결해야 할 수도 있어요.</sys:String>
+    <sys:String x:Key="factory_text_p1">버즈를 초기화하실 건가요?</sys:String>
+    <sys:String x:Key="factory_text_p2">초기화한 후에는, 컴퓨터와 버즈를 다시 연결해야 돼요.</sys:String>
+    <sys:String x:Key="factory_text_p3">양쪽 버즈가 모두 켜져 있는지 확인하세요!</sys:String>
+
+    <!--Find my Gear-->
+    <sys:String x:Key="fmg_warning_both">양쪽 버즈를 모두 귀에서 빼 주세요.</sys:String>
+    <sys:String x:Key="fmg_warning_left">왼쪽 버즈를 귀에서 빼 주세요.</sys:String>
+    <sys:String x:Key="fmg_warning_right">오른쪽 버즈를 귀에서 빼 주세요.</sys:String>
+    <sys:String x:Key="fmg_header">내 버즈 찾기</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage">SmartThings Find 데이터 관리</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage_desc">버즈에 저장된 SmartThings Find 데이터를 확인하거나 관리할 수 있어요.</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open">SmartThings Find 페이지 열기</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open_desc">버즈를 온라인에서 추적하세요.설정하려면 삼성 계정과 공식 SmartThings Find 앱이 필요해요.</sys:String>
+
+    <!--SmartThings data-->
+    <sys:String x:Key="smart_things_find">SmartThings</sys:String>
+    <sys:String x:Key="smart_things_find_clear">SmartThings Find 설정 지우기</sys:String>
+    <sys:String x:Key="smart_things_find_clear_desc">버즈에서 삼성 계정 관련 데이터 삭제하기</sys:String>
+    <sys:String x:Key="smart_things_find_iv">Initialization vector (IV)</sys:String>
+    <sys:String x:Key="smart_things_find_secret_key">비밀 키</sys:String>
+    <sys:String x:Key="smart_things_find_region">지역</sys:String>
+    <sys:String x:Key="smart_things_find_fmm_token">SmartThings Find 토큰</sys:String>
+    <sys:String x:Key="smart_things_find_no_link">삼성 SmartThings Find 네트워크에 연결되지 않은 버즈에요.</sys:String>
+    <sys:String x:Key="smart_things_find_write_fail">버즈가 새로운 SmartThings Find 구성 데이터를 거부했어요.</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok">설정 덮어쓰기</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok_desc">SmartThings Find 설정값이 삭제되었어요.</sys:String>
+
+    <!-- Fit test-->
+    <sys:String x:Key="gft_warning">버즈를 모두 착용하세요.</sys:String>
+    <sys:String x:Key="gft_desc">버즈를 올바르게 착용했는지 확인하세요.</sys:String>
+    <sys:String x:Key="gft_bad">조정 필요</sys:String>
+    <sys:String x:Key="gft_good">알맞게 착용함</sys:String>
+    <sys:String x:Key="gft_fail">테스트 실패</sys:String>
+
+    <!--Equalizer-->
+    <sys:String x:Key="eq_header">이퀄라이저</sys:String>
+    <sys:String x:Key="eq_enable">이퀄라이저 켜기</sys:String>
+    <sys:String x:Key="eq_preset">프리셋</sys:String>
+    <sys:String x:Key="eq_dolby">Dolby와 함께 사용하도록 최적화</sys:String>
+    <sys:String x:Key="eq_stereo_balance">좌우 소리 균형</sys:String>
+    <sys:String x:Key="eq_stereo_balance_value">왼쪽 {0}%; 오른쪽 {1}%</sys:String>
+    <sys:String x:Key="eq_stereo_balance_neutral">중앙</sys:String>
+	
+    <sys:String x:Key="eq_bass">저음 강조</sys:String>
+    <sys:String x:Key="eq_soft">부드러운</sys:String>
+    <sys:String x:Key="eq_dynamic">풍성한</sys:String>
+    <sys:String x:Key="eq_clear">선명한</sys:String>
+    <sys:String x:Key="eq_treble">고음 강조</sys:String>
+
+    <!--Noise control-->
+    <sys:String x:Key="nc_header">소음 제어</sys:String>
+    <sys:String x:Key="nc_anc_level">높은 민감도</sys:String>
+    <sys:String x:Key="nc_anc_level_description">더 강한 액티브 노이즈 캔슬링 효과</sys:String>
+    <sys:String x:Key="nc_ambient">주변 소리 듣기 맞춤 설정</sys:String>
+    <sys:String x:Key="nc_ambient_description">주변 소리 듣기 음색과와 크기 조절 (사용중인 버즈가 기능을 지원할 경우에 한하여)</sys:String>
+    <sys:String x:Key="nc_voicedetect">대화 감지</sys:String>
+    <sys:String x:Key="nc_voicedetect_description">음성이 감지되면 주변 소리가 자동으로 켜지고 미디어 크기는 줄어들어 대화를 더 편하게 할 수 있어요.</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout">대화 감지 만료 시간</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout_item">{0}초</sys:String>
+
+    <!--Noise control >>> Ambient sound-->
+    <sys:String x:Key="nc_as_header">주변 소리 듣기 설정</sys:String>
+    <sys:String x:Key="nc_as_custom">주변 소리 듣가 맞춤 설정</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_l">주변 소리 크기 (왼쪽)</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_r">주변 소리 크기 (오른쪽)</sys:String>
+    <sys:String x:Key="nc_as_custom_tone">주변 소리 음색</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_clear">또렷하게</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_soft">부드럽게</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_neutral">자연스럽게</sys:String>
+    <sys:String x:Key="nc_as_custom_vol_normal">일반</sys:String>
+
+    <!--Ambient sound-->
+    <sys:String x:Key="as_header">주변 소리 듣기</sys:String>
+    <sys:String x:Key="as_enable">주변 소리 듣기 켜기</sys:String>
+    <sys:String x:Key="as_volume">주변 소리 듣기 음량</sys:String>
+    <sys:String x:Key="as_voicefocus">목소리 강조</sys:String>
+    <sys:String x:Key="as_extrahigh">주변 소리 더 크게 듣기</sys:String>
+    <sys:String x:Key="as_extrahigh_description">이 항목을 켜면 주변 소리 듣기에 매우 크게 단계가 추가돼요.</sys:String>
+    <sys:String x:Key="as_scale_very_low">매우 작게</sys:String>
+    <sys:String x:Key="as_scale_low">작게</sys:String>
+    <sys:String x:Key="as_scale_moderate">보통</sys:String>
+    <sys:String x:Key="as_scale_high">크게</sys:String>
+    <sys:String x:Key="as_scale_extraloud">매우 크게</sys:String>
+    
+
+    <!--Advanced page-->
+    <sys:String x:Key="adv_header">고급 설정</sys:String>
+    <sys:String x:Key="adv_required_firmware_later">{0} 또는 이후 버전</sys:String>
+    <sys:String x:Key="adv_seamless">이어버드 끊김 없이 전환하기</sys:String>
+    <sys:String x:Key="adv_seamless_desc">이어버드 연결을 끊지 않고 다른 디바이스와 연결해 보세요. 삼성 계정에 로그인되어 있거나 (삼성 기기 전용) 이어버드를 등록한 적이 있으면 바로 연결할 수 있습니다. 간혹 원하지 않는 디바이스와 연결될 수도 있으니 유의하세요.</sys:String>
+    <sys:String x:Key="adv_resume_playback">버즈 착용 시 재생 재개/시작하기</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">하나 이상의 거리 센서가 가려졌을 경우 전체 재생/정지 신호를 보냅니다. (데스크탑 전용 기능)</sys:String>
+    <sys:String x:Key="adv_sidetone">통화 중 주변 소리 듣기 허용</sys:String>
+    <sys:String x:Key="adv_sidetone_desc">통화 중에 내 목소리를 더 또렷하게 들어보세요.</sys:String>
+    <sys:String x:Key="adv_passthrough">주변 소리 듣기로 압력을 완화해요.</sys:String>
+    <sys:String x:Key="adv_passthrough_desc">액티브 노이즈 캔슬링을 쓰지 않을 때의 답답함이나 압박감을 해결할 수 있어요.</sys:String>
+    <sys:String x:Key="adv_gaming_mode">게임 모드</sys:String>
+    <sys:String x:Key="adv_gaming_mode_desc">오디오 지연을 최소화하여, 더 생생하고 싱크가 완벽한 게임 사운드를 즐길 수 있어요. (삼성 전용 기능)</sys:String>
+    <sys:String x:Key="adv_hotkey">키보드 단축키</sys:String>
+    <sys:String x:Key="adv_hotkey_desc">사용자 설정된 단축키를 지정하여 버즈를 멀리서 조작하세요.</sys:String>
+    <sys:String x:Key="adv_bixby_remap">빅스비 호출 동작 변경</sys:String>
+    <sys:String x:Key="adv_bixby_remap_desc">'헤이 빅스비!'라고 말하면 무엇을 할지 설정할 수 있어요.</sys:String>
+
+    <!--Remap bixby wakeup-->
+    <sys:String x:Key="bixby_remap_header">빅스비 호출 동작 변경</sys:String>
+    <sys:String x:Key="bixby_remap_enable">빅스비 호출 활성화</sys:String>
+    <sys:String x:Key="bixby_remap_enable_desc">호출 시 삼성 휴대폰에서는 빅스비를 호출하고, 이 PC에서는 지정된 동작을 수행할 수 있어요.</sys:String>
+    <sys:String x:Key="bixby_remap_lang">빅스비 호출 언어</sys:String>
+    <sys:String x:Key="bixby_remap_action">호출 동작 사용자 지정</sys:String>
+    <sys:String x:Key="bixby_remap_note">'헤이 빅스비'를 말해 활성화할 수 있어요. 언어에 따라 호출어가 다를 수 있어요.
+
+지정한 호출 동작은 이 기기에서만 사용할 수 있어요. 삼성 휴대폰에 이어버드를 연결하고 호출하면 정상적으로 빅스비가 활성화돼요. 삼성 외 제조사 휴대폰이나 다른 기기에서는 호출해도 아무 일도 일어나지 않아요.</sys:String>
+
+	
+    <!--Credits-->
+    <sys:String x:Key="credits_header">제작자</sys:String>
+    <sys:String x:Key="credits_developer">개발자</sys:String>
+    <sys:String x:Key="credits_license">라이선스</sys:String>
+    <sys:String x:Key="credits_version">버전</sys:String>
+    <sys:String x:Key="credits_contributor">기여</sys:String>
+    <sys:String x:Key="credits_translator">번역</sys:String>
+    <sys:String x:Key="credits_sponsor">이 프로젝트에 후원하기</sys:String>
+
+    <!--Connection lost page-->
+    <sys:String x:Key="connlost_header">접속에 실패했습니다</sys:String>
+    <sys:String x:Key="connlost_description_p1">버즈와 연결에 실패했습니다.</sys:String>
+    <sys:String x:Key="connlost_description_p2">설정을 확인하고 버즈가 컴퓨터와 페어링되어 있는지 확인하세요.
+필요하면 다시 페어링이 가능합니다. 다시 페어링할 경우, 옵션 &gt; 디바이스 연결 해제를 누르세요.</sys:String>
+    <sys:String x:Key="connlost_description_p3">추가 정보:</sys:String>
+    <sys:String x:Key="connlost_noinfo">오류 정보를 가져오지 못했습니다.</sys:String>
+    <sys:String x:Key="connlost_disconnected">연결 해제됨</sys:String>
+    <sys:String x:Key="connlost_connect">연결</sys:String>
+    <sys:String x:Key="connlost_connecting">연결 중...</sys:String>
+
+    <!--Firmware update disclaimer-->
+    <sys:String x:Key="fw_disclaimer">경고</sys:String>
+    <sys:String x:Key="fw_disclaimer_desc">이 펌웨어는 삼성 공식 앱 내 공식 업데이트 도구의 복제품입니다. 다양한 상황(일반적인 상황, 연결 끊김, 의도적으로 블루투스 패킷 손상, ...) 에서의 테스트를 철저히 진행했고, 아무런 문제가 없었습니다. 그렇지만, 펌웨어 업데이트는 시스템 내 중요 요소를 변경하는 작업이고 신중하게 진행해야 하는 작업이므로 문제가 생기더라도 아무런 책임은 지지 않습니다.
+
+다운그레이드: 이전 펌웨어 버전으로의 다운그레이드가 가능하고 아무런 문제가 없었지만, 예기치 못한 문제를 일으킬 수 있으므로 필요할 때에만 진행하여야 합니다. 다운그레이드 이후 공장 초기화가 권장되지만 대부분 필수적이지는 않습니다.
+커스텀 플래싱: 하드 드라이브에서 펌웨어 파일을 로드하는 것 또한 가능합니다. 다른 모델용 펌웨어를 설치하지 마세요.
+
+이 프로그램에는 GPLv3 라이센스가 적용되며, 프로그램을 사용함으로서 라이센스와 책임의 한계에 동의하는 것으로 간주됩니다. 동의하시면 '계속하기'를 눌러주세요.</sys:String>
+
+    <!--Firmware selection-->
+    <sys:String x:Key="fw_select_header">펌웨어 업데이트</sys:String>
+    <sys:String x:Key="fw_select_instructions">다운로드하고 설치할 바이너리를 선택해 주세요. 또는, '고급..' &gt; '디스크에서 이미지 선택하기'를 선택해 펌웨어 바이너리를 하드 디스크에서 선택할 수도 있어요.</sys:String>
+    <sys:String x:Key="fw_select_no_results">설치할 업데이트가 없어요. 나중에 다시 시도해 주세요.</sys:String>
+    <sys:String x:Key="fw_select_downgrade">펌웨어 다운그레이드 허용</sys:String>
+    <sys:String x:Key="fw_select_downgrade_desc">버전 체크 없이 리스트에 이전 펌웨어를 표시합니다. (예기치 못한 문제를 일으킬 수 있음, 숙련자용)</sys:String>
+    <sys:String x:Key="fw_select_advanced">고급...</sys:String>
+    <sys:String x:Key="fw_select_install">펌웨어 설치</sys:String>
+    <sys:String x:Key="fw_select_install_short">설치</sys:String>
+    <sys:String x:Key="fw_select_refresh">Refresh</sys:String>
+    <sys:String x:Key="fw_select_from_disk">디스크에서 이미지 선택하기...</sys:String>
+    <sys:String x:Key="fw_select_from_disk_short">열기</sys:String>
+    <sys:String x:Key="fw_select_external_note">다른 모델용 펌웨어 바이너리를 설치하지 마세요. Buds Pro용 펌웨어를 Buds Plus에 설치하면 기기에 새로운 기능이 추가되는 대신, 기기가 영구적으로 망가질 수 있어요.
+
+펌웨어 바이너리를 선택하기 위해서는 '계속하기'를 눌러주세요.</sys:String>
+    <sys:String x:Key="fw_select_unsupported_selection">유효하지 않은 선택이에요. 리스트에서 호환되는 항목을 선택해 주세요.</sys:String>
+    <sys:String x:Key="fw_select_downloading">다운로드 중...</sys:String>
+    <sys:String x:Key="fw_select_net_error">서버와의 통신에 실패했어요. 지금은 펌웨어를 다운로드할 수 없어요.</sys:String>
+    <sys:String x:Key="fw_select_net_index_error">서버와의 통신에 실패했어요. 지금은 펌웨어 목록을 다운로드할 수 없어요.</sys:String>
+    <sys:String x:Key="fw_select_http_error">HTTP 에러 코드:</sys:String>
+    <sys:String x:Key="fw_select_unknown_build">빌드 번호 알 수 없음</sys:String>
+    <sys:String x:Key="fw_select_no_results_short">No updates found</sys:String>
+    <sys:String x:Key="fw_select_verify_fail">펌웨어 검증 실패</sys:String>
+    <sys:String x:Key="fw_select_verify_model_mismatch_fail">모델 불일치가 감지됐어요! 펌웨어 전송을 취소할게요.
+{0}의 펌웨어를 {1}에 플래시하려고 했어요. 이러면 이어버드를 영구적으로 벽돌로 만들 수 있어요.</sys:String>
+    <sys:String x:Key="fw_select_confirm">'{0}'을 '{1}'에 설치합니다.</sys:String>
+    <sys:String x:Key="fw_select_confirm_desc">이 정보가 맞는지 확인해 주세요.
+아니라면 '취소'를 누르고 설정을 한 번 더 확인해 주세요.
+
+가능하다면 시작 전에 양쪽 이어버드가 모두 연결되어 있는지 확인해 주세요. 업데이트 전송 도중 연결에 실패해도 아무런 문제가 발생하지는 않을 거예요. 만약 연결에 실패하더라도, 이어버드가 자동으로 전송을 취소하고 펌웨어 업데이트 모드에서 나갈 거예요.
+
+업데이트를 시작하려면 '계속하기'를 눌러주세요.</sys:String>
+  
+    <!--Firmware transfer-->
+    <sys:String x:Key="fw_upload_header">펌웨어 설치 중...</sys:String>
+    <sys:String x:Key="fw_upload_progress_session">새 세션 만드는 중...</sys:String>
+    <sys:String x:Key="fw_upload_progress_prepare">업로드 준비 중...</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished">업로드 완료</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished_desc">업데이트가 성공적으로 전송되었으며, 현재 설치 중이에요. 이 과정에서 이어버드가 약 30초가량 응답하지 않을 것이에요. 대부분의 경우에는 업데이트 프로세스가 완료되면 이어버드가 자동으로 재연결을 시도해요.</sys:String>
+    <sys:String x:Key="fw_upload_progress_error">펌웨어 업로드 실패</sys:String>
+    <sys:String x:Key="fw_upload_progress">펌웨어 업로드 중.. {0}%</sys:String>
+    <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats">정보</sys:String>
+    <sys:String x:Key="fw_upload_note">전송이 완료되면 바로 이어버드의 연결이 해제되고 업로드된 펌웨어의 설치가 시작돼요. 이 과정에서 이어버드가 응답하지 않고 블루투스 연결 요청을 모두 거절할 거예요. 대부분의 경우에는 업데이트 프로세스가 완료되면 이어버드가 자동으로 재연결을 시도해요. 업데이트 중에는 케이스 덮개를 절대로 닫지 마세요.</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_mtu">최대 전송 단위: {0}바이트</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_offset">오프셋 0x{0:X6}에서 0x{1:X6}까지 처리 중</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_segment">세그먼트 #{0} 업로드 중 ({1}바이트, 체크섬 0x{2:X6})</sys:String>
+
+    <!--Firmware parse errors-->
+    <sys:String x:Key="fw_fail_no_magic">유효한 펌웨어 바이너리가 아니에요. 펌웨어 헤더에서 유효하지 않은 매직 값이 발견되었어요.</sys:String>
+    <sys:String x:Key="fw_fail_size_null">펌웨어 바이너리의 크기가 0으로 설정되어 있어 설치에 사용할 수 없어요. 다른 펌웨어를 선택해 주세요.</sys:String>
+    <sys:String x:Key="fw_fail_no_segments">펌웨어 바이너리가 비어있으며, 바이너리 세그먼트를 포함하지 않아요. 다른 펌웨어를 선택해 주세요.</sys:String>
+    <sys:String x:Key="fw_fail_unknown">펌웨어 바이너리를 해독하는 중 예기치 못한 오류가 발생했어요. 이 펌웨어 파일이 손상되었을 수도 있어요.
+
+상세 정보:</sys:String>
+    
+    <!--Firmware transfer errors-->
+    <sys:String x:Key="fw_fail_connection">기기와의 연결이 끊어졌어요. 펌웨어 전송이 취소됐어요.</sys:String>
+    <sys:String x:Key="fw_fail_session">새 세션을 열지 못했어요. 디바이스에서 받은 에러 코드: {0}</sys:String>
+    <sys:String x:Key="fw_fail_copy">펌웨어 바이너리 복사에 실패했어요. 다시 연결한 후에 재시도해 주세요. 디바이스에서 받은 에러 코드: {0}</sys:String>
+    <sys:String x:Key="fw_fail_verify">펌웨어 바이너리를 검증/설치하는 도중 오류가 발생했어요. 다시 연결한 후에 재시도해 주세요. 디바이스에서 받은 에러 코드: {0}</sys:String>
+    <sys:String x:Key="fw_fail_connection_precheck">디바이스가 현재 연결되어 있지 않아요. 블루투스 시스템 설정을 확인하고 다시 연결해 주세요.</sys:String>
+    <sys:String x:Key="fw_fail_pending">이미 다른 펌웨어가 전송되고 있어요. 먼저 취소하고 다시 시도해 주세요.</sys:String>
+    <sys:String x:Key="fw_fail_lowbattery">남은 배터리 용량이 너무 낮아요. 먼저 이어버드를 15% 이상 충전해 주세요.</sys:String>
+    <sys:String x:Key="fw_fail_session_timeout">기기에 새 세션이 열리기를 기다리던 중 시간이 초과되었어요.</sys:String>
+    <sys:String x:Key="fw_fail_control_timeout">기기가 컨트롤 블럭을 반환하기를 기다리던 중 시간이 초과되었어요.</sys:String>
+    <sys:String x:Key="fw_fail_copy_timeout">전송이 끝나기를 기다리던 중 시간이 초과되었어요.</sys:String>
+    
+    <!--Spatial test-->
+    <sys:String x:Key="spatial_header">360 오디오 센서</sys:String>
+    <!--Note: Quaternion = 4-dimensional vector-->
+    <sys:String x:Key="spatial_dump_quaternion">원 쿼터니언 벡터:</sys:String>
+    <!--Note: RPY = Roll, pitch, yaw-->
+    <sys:String x:Key="spatial_dump_rpy">RPY 값:</sys:String>
+
+    <!--Header-->
+    <sys:String x:Key="window_minimize">최소화</sys:String>
+    <sys:String x:Key="window_close">닫기</sys:String>
+
+
+    <!--Buds app detected page-->
+    <sys:String x:Key="budsapp_header">블루투스 호환성 정보</sys:String>
+    <sys:String x:Key="budsapp_text_p1">윈도우 10/11을 위한 공식 윈도우용 갤럭시 버즈 앱이 현재 사용자의 시스템에 보고 계시는 이 버즈 매니저와 같이 설치되어 있습니다.</sys:String>
+    <sys:String x:Key="budsapp_text_p2">공식 윈도우용 갤럭시 버즈 앱이 실행되어 있고 버즈와 연결된 상태라면 현재 보고 계시는 갤럭시 버즈 매니저가 갤럭시 버즈에 연결을 유지하는데 어려움이 있습니다. 현재 보고 계시는 갤럭시 버즈 매니저를 계속 사용하고 싶으시다면 공식 윈도우용 갤럭시 버즈 앱은 닫아주세요. 반대로 공식 윈도우용 갤럭시 버즈 앱을 사용하고 싶으시다면 현재 보고 계시는 갤럭시 버즈 매니저를 닫아주세요.</sys:String>
+    <sys:String x:Key="budsapp_text_p3">동시에 두 개 이상의 앱이 갤럭시 버즈에 연결될 수 없다는 것을 기억하세요.</sys:String>
+
+    <!--Manual pairing-->
+    <sys:String x:Key="manualpair_title">수동으로 기기 선택</sys:String>
+    <sys:String x:Key="manualpair_title_dialog">나의 갤럭시 버즈 기기를 선택하세요.</sys:String>
+    <sys:String x:Key="manualpair_model">알맞은 모델을 선택하세요.</sys:String>
+    <sys:String x:Key="manualpair_note">참고: 연결 마법사가 나의 갤럭시 버즈를 인식하지 못하는 경우에만 수동으로 이어버드를 연결해야 돼요.</sys:String>						   
+
+    <!--Rename-->
+    <sys:String x:Key="rename">이름 번경</sys:String>
+    <sys:String x:Key="rename_desc">모든 기기에 표시되는 버즈 이름을 번경해요.</sys:String>
+    <sys:String x:Key="rename_warn_oneui_title">OneUI 사용자를 위한 중요 정보</sys:String>    
+    <sys:String x:Key="rename_warn_oneui">기기에서 삼성 OneUI를 실행하는 경우 공식 방법을 사용하여 이어버드의 이름을 변경해야 합니다. 그렇지 않으면 새 이름을 설정하는 동안 연결 문제가 발생할 수 있습니다.</sys:String>
+    <sys:String x:Key="rename_too_short">입력한 이름이 너무 짧거나 길어요.</sys:String>
+    <sys:String x:Key="rename_hint">새 이름 입력...</sys:String>
+    <sys:String x:Key="rename_label">이어버드 이름</sys:String>
+    <sys:String x:Key="rename_reading_name">현재 이름 읽는중...</sys:String>
+    <sys:String x:Key="rename_ok_title">번경 완료</sys:String>
+    <sys:String x:Key="rename_ok">이름 번경에 성공했어요.
+이어버드의 페어링을 해제했다가 다시 페어링할 때까지 기기에서 이름 변경을 감지하지 못할 수 있어요.</sys:String>
+</ResourceDictionary>
