@@ -1,0 +1,723 @@
+﻿<!-- ReSharper disable InconsistentNaming -->
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- English name of this language -->
+    <sys:String x:Key="language_name_en">Portuguese Brazil</sys:String>
+    <!--:::::::: Código fonte ::::::::-->
+
+    <!--Geral-->
+    <sys:String x:Key="okay">Ok</sys:String>
+    <sys:String x:Key="left">Esquerda</sys:String>
+    <sys:String x:Key="right">Direita</sys:String>
+    <sys:String x:Key="both">Ambos</sys:String>
+    <sys:String x:Key="case">Case</sys:String>
+    <sys:String x:Key="error">Erro</sys:String>
+    <sys:String x:Key="cancel">Cancelar</sys:String>
+    <sys:String x:Key="apply">Aplicar</sys:String>
+    <sys:String x:Key="select">Selecionar</sys:String>
+    <sys:String x:Key="notset">Não definido</sys:String>
+    <sys:String x:Key="unknown">Desconhecido</sys:String>
+    <sys:String x:Key="back">Voltar</sys:String>
+    <sys:String x:Key="next">Próximo</sys:String>
+    <sys:String x:Key="prev">Anterior</sys:String>
+    <sys:String x:Key="off">Desligado</sys:String>
+    <sys:String x:Key="on">Ligado</sys:String>
+    <sys:String x:Key="hint">Dica</sys:String>
+    <sys:String x:Key="help">Ajuda</sys:String>
+    <sys:String x:Key="important">Importante</sys:String>
+    <sys:String x:Key="home">Início</sys:String>
+    <sys:String x:Key="read_failed">Falha ao ler arquivo. Acesso negado.</sys:String>
+    <sys:String x:Key="please_wait">Por favor, aguarde...</sys:String>
+    <sys:String x:Key="value_left_right_inline">Esquerdo: {0}, Direito: {1}</sys:String>
+    <sys:String x:Key="value_left_right_multiline">Esquerdo: {0}
+Direito: {1}</sys:String>
+    <sys:String x:Key="other_x">Outro ({0})</sys:String>
+    <sys:String x:Key="no_data_stored">Nenhum dado armazenado</sys:String>
+    <sys:String x:Key="not_available">Indisponível</sys:String>
+    <sys:String x:Key="last_updated_at_n">Última atualização às {0}</sys:String>
+    <sys:String x:Key="file_not_found">Arquivo não encontrado</sys:String>
+    <sys:String x:Key="nobluetoothdev">Nenhum adaptador Bluetooth encontrado. Por favor, ative o Bluetooth e tente novamente.</sys:String>
+    <sys:String x:Key="feature_unsupported_platform">Este recurso não é suportado nesta plataforma atualmente.</sys:String>
+
+    <sys:String x:Key="anc">Cancelamento de ruído ativo</sys:String>
+    <sys:String x:Key="adaptive">Adaptativo</sys:String>
+
+    <!--Estados do Modo Escuro-->
+    <sys:String x:Key="darkmode_disabled">Desativado</sys:String>
+    <sys:String x:Key="darkmode_enabled">Ativado</sys:String>
+    <sys:String x:Key="darkmode_blur_enabled">Ativado, com efeito de desfoque</sys:String>
+    <sys:String x:Key="darkmode_mica_enabled">Ativado, com efeito de mica</sys:String>
+    <sys:String x:Key="darkmode_system">Usar configuração do sistema</sys:String>
+
+    <!--Popup de conexão-->
+    <sys:String x:Key="connpopup_placement_tl">Superior esquerdo</sys:String>
+    <sys:String x:Key="connpopup_placement_tc">Superior central</sys:String>
+    <sys:String x:Key="connpopup_placement_tr">Superior direito</sys:String>
+    <sys:String x:Key="connpopup_placement_bl">Inferior esquerdo</sys:String>
+    <sys:String x:Key="connpopup_placement_bc">Inferior central</sys:String>
+    <sys:String x:Key="connpopup_placement_br">Inferior direito</sys:String>
+    <sys:String x:Key="connpopup_title">O {1} de {0}</sys:String>
+
+    <!--Posicionamento (Buds+)-->
+    <sys:String x:Key="placement_disconnected">Desconectado</sys:String>
+    <sys:String x:Key="placement_wearing">No ouvido</sys:String>
+    <sys:String x:Key="placement_not_wearing">Ocioso</sys:String>
+    <sys:String x:Key="placement_in_case">No estojo</sys:String>
+    <sys:String x:Key="placement_charging">Carregando</sys:String>
+
+    <!--Opções de toque-->
+    <sys:String x:Key="touchoption_voice">Assistente de voz</sys:String>
+    <sys:String x:Key="touchoption_quickambientsound">Som ambiente rápido</sys:String>
+    <sys:String x:Key="touchoption_volume">Volume</sys:String>
+    <sys:String x:Key="touchoption_volume_up">Aumentar volume</sys:String>
+    <sys:String x:Key="touchoption_volume_down">Diminuir volume</sys:String>
+    <sys:String x:Key="touchoption_ambientsound">Som ambiente</sys:String>
+    <sys:String x:Key="touchoption_switch_noisecontrols">Alternar controles de ruído</sys:String>
+    <sys:String x:Key="touchoption_spotify">Spotify (somente para Android)</sys:String>
+    <sys:String x:Key="touchoption_custom">Ação personalizada...</sys:String>
+    <sys:String x:Key="touchoption_custom_prefix">Ação personalizada:</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_event">Ativar ação do fone...</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_hotkey">Pressionar atalho...</sys:String>
+    <sys:String x:Key="touchoption_custom_external_app">Executar programa externo...</sys:String>
+
+    <!--Menu de contexto da bandeja-->
+    <sys:String x:Key="tray_unlock_touchpad">Desbloquear touchpad</sys:String>
+    <sys:String x:Key="tray_lock_touchpad">Bloquear touchpad</sys:String>
+    <sys:String x:Key="tray_enable_ambient_sound">Ativar som ambiente</sys:String>
+    <sys:String x:Key="tray_disable_ambient_sound">Desativar som ambiente</sys:String>
+    <sys:String x:Key="tray_enable_eq">Ativar equalizador</sys:String>
+    <sys:String x:Key="tray_disable_eq">Desativar equalizador</sys:String>
+    <sys:String x:Key="tray_enable_anc">Ativar cancelamento de ruído ativo</sys:String>
+    <sys:String x:Key="tray_disable_anc">Desativar cancelamento de ruído ativo</sys:String>
+    <sys:String x:Key="tray_switch_noise">Alternar controles de ruído</sys:String>
+    <sys:String x:Key="tray_quit">Sair</sys:String>
+
+    <!--Arquivos XAML (estáticos)-->
+
+    <!--Geral-->
+    <sys:String x:Key="continue_button">Continuar</sys:String>
+    <!--Hotkey Recorder Dialog (Custom action)-->
+    <sys:String x:Key="hotrec_content">Por favor, insira uma combinação de teclas (segure):</sys:String>
+    <sys:String x:Key="hotrec_empty">Nenhuma</sys:String>
+    <sys:String x:Key="hotrec_note">Nota: Devido ao Isolamento de Privacidade da Interface do Usuário (UIPI), somente aplicativos com mesma ou menor elevação podem receber comandos de atalho corretamente.</sys:String>
+
+    <!--Hotkey Action Builder Dialog-->
+    <sys:String x:Key="hotkey_edit_invalid">Seleção de atalho inválida</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_desc">Por favor, escolha pelo menos uma tecla e um modificador</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_mod">Modificador ausente</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action">Ação inválida</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action_desc">Por favor, escolha uma ação</sys:String>
+    <sys:String x:Key="hotkey_edit_modifier">Modificadores</sys:String>
+    <sys:String x:Key="hotkey_edit_keys">Teclas</sys:String>
+    <sys:String x:Key="hotkey_edit_action">Ação</sys:String>
+    <sys:String x:Key="hotkey_edit_preview">Visualização do atalho:</sys:String>
+
+    <!--Hotkey page-->
+    <sys:String x:Key="hotkey_header">Atalhos de teclado</sys:String>
+    <sys:String x:Key="hotkey_add_short">Novo</sys:String>
+    <sys:String x:Key="hotkey_add">Atribuir novo atalho</sys:String>
+    <sys:String x:Key="hotkey_empty">Nenhum atalho atribuído</sys:String>
+    <sys:String x:Key="hotkey_empty_desc">Crie um novo atalho de teclado clicando no botão acima</sys:String>
+    <sys:String x:Key="hotkey_edit">Editar</sys:String>
+    <sys:String x:Key="hotkey_edit_long">Editar atalho existente</sys:String>
+    <sys:String x:Key="hotkey_delete">Excluir</sys:String>
+    <sys:String x:Key="hotkey_add_error">Falha ao registrar/atualizar atalhos</sys:String>
+    <sys:String x:Key="hotkey_add_error_context">Atalho afetado:</sys:String>
+    <sys:String x:Key="hotkey_add_error_duplicate">A combinação de teclas selecionada já foi registrada como atalho por este ou outro aplicativo. Por favor, escolha outra.</sys:String>
+    <sys:String x:Key="hotkey_add_error_unknown">O sistema operacional respondeu com o erro '{0}'</sys:String>
+
+    <!--EventDispatcher module-->
+    <sys:String x:Key="event_none">Nenhum</sys:String>
+    <sys:String x:Key="event_ambient_toggle">Alternar som ambiente</sys:String>
+    <sys:String x:Key="event_ambient_volume_up">Aumentar volume ambiente</sys:String>
+    <sys:String x:Key="event_ambient_volume_down">Diminuir volume ambiente</sys:String>
+    <sys:String x:Key="event_eq_toggle">Alternar equalizador</sys:String>
+    <sys:String x:Key="event_eq_switch">Alternar entre predefinições do equalizador</sys:String>
+    <sys:String x:Key="event_anc_toggle">Alternar cancelamento de ruído</sys:String>
+    <sys:String x:Key="event_anc_switch_sensitivity">Alterar sensibilidade do ANC</sys:String>
+    <sys:String x:Key="event_nc_switch_one">Alternar controles de ruído com um fone</sys:String>
+    <sys:String x:Key="event_touch_lock_toggle">Alternar bloqueio do touchpad</sys:String>
+    <sys:String x:Key="event_double_edge_touch_toggle">Alternar recurso de toque de borda dupla</sys:String>
+    <sys:String x:Key="event_conversation_toggle">Alternar detecção de conversação</sys:String>
+    <sys:String x:Key="event_start_stop_find">Iniciar/encerrar encontrar meus fones</sys:String>
+    <sys:String x:Key="event_start_find">Iniciar encontrar meus fones</sys:String>
+    <sys:String x:Key="event_stop_find">Parar de encontrar meus fones</sys:String>
+    <sys:String x:Key="event_paring_mode">Modo de emparelhamento</sys:String>
+    <sys:String x:Key="event_media_play">Reproduzir mídia</sys:String>
+    <sys:String x:Key="event_media_pause">Pausar mídia</sys:String>
+    <sys:String x:Key="event_media_play_pause">Reproduzir/pausar mídia</sys:String>
+    <sys:String x:Key="event_manager_visible">Mostrar/ocultar janela do gerenciador</sys:String>
+    <sys:String x:Key="event_display_battery_popup">Exibir popup de bateria</sys:String>
+    <sys:String x:Key="event_connect">Conectar ao dispositivo</sys:String>
+
+    <!--Welcome page-->
+    <sys:String x:Key="welcome_textblock_header">Bem-vindo!</sys:String>
+    <sys:String x:Key="welcome_register">Configurar seus fones</sys:String>
+    <sys:String x:Key="welcome_register_desc">Escolha e registre seu par de Galaxy Buds</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">Este Gerenciador de Galaxy Buds é não oficial e não é afiliado à Samsung de forma alguma.
+Este programa foi projetado para oferecer muito mais funcionalidades do que o aplicativo oficial Samsung Wearable. Alguns recursos, como o 'Game Mode', funcionam apenas em telefones Samsung e não podem ser ativados em PCs.</sys:String>
+    <sys:String x:Key="welcome_android_hint_title">Informações importantes para usuários Android</sys:String>
+    <sys:String x:Key="welcome_android_hint">Este aplicativo foi inicialmente projetado para uso em computadores desktop. Recursos que exigem que o aplicativo seja executado em segundo plano, como ações personalizadas por toque e estatísticas de bateria, atualmente não estão disponíveis nesta versão.
+Se o aplicativo oficial Samsung Wearable estiver ativo junto com este aplicativo, problemas de conexão podem ocorrer. Certifique-se de fechar o aplicativo oficial corretamente antes de usar este aplicativo.</sys:String>
+
+    <!--Main page-->
+    <sys:String x:Key="mainpage_header">Início</sys:String>
+    <sys:String x:Key="mainpage_corrupt_data">Dados corrompidos recebidos. Reconectando...</sys:String>
+    <sys:String x:Key="mainpage_fit_test">Teste de ajuste dos fones</sys:String>
+    <sys:String x:Key="mainpage_find_my_earbuds">Encontrar meus fones</sys:String>
+    <sys:String x:Key="mainpage_touchpad">Touchpad</sys:String>
+    <sys:String x:Key="mainpage_ambient_sound">Som ambiente</sys:String>
+    <sys:String x:Key="mainpage_noise">Controle de ruído</sys:String>
+    <sys:String x:Key="mainpage_equalizer">Equalizador</sys:String>
+    <sys:String x:Key="mainpage_advanced">Configurações avançadas</sys:String>
+    <sys:String x:Key="mainpage_system">Sistema</sys:String>
+
+    <!--Device selection page (setup)-->
+    <sys:String x:Key="devsel_header">Selecione seus fones</sys:String>
+    <sys:String x:Key="devsel_manual_pair_title">Seu dispositivo não está na lista?</sys:String>
+    <sys:String x:Key="devsel_manual_pair_description">Certifique-se de que seus fones já foram emparelhados. Se ainda não forem reconhecidos, tente usar a opção de conexão manual.</sys:String>
+    <sys:String x:Key="devsel_manual_pair">Conexão manual</sys:String>
+    <sys:String x:Key="devsel_nodevices">Por favor, conecte e emparelhe seus fones primeiro</sys:String>
+    <sys:String x:Key="devsel_nodevices_title">Nenhum dispositivo emparelhado encontrado</sys:String>
+    <sys:String x:Key="devsel_invalid_selection">Por favor, selecione um dispositivo válido</sys:String>
+    <sys:String x:Key="devsel_winrt_title">Use o backend Bluetooth alternativo</sys:String>
+    <sys:String x:Key="devsel_winrt">Estabilidade muito melhor, mas pode não funcionar em todos os PCs com alguns adaptadores Bluetooth (pode ser necessário reiniciar!)</sys:String>
+
+    <!--Device page-->
+    <sys:String x:Key="devices_header">Dispositivos emparelhados</sys:String>
+    <sys:String x:Key="devices_new">Novo</sys:String>
+    <sys:String x:Key="devices_new_long">Emparelhar novo dispositivo</sys:String>
+    <sys:String x:Key="devices_select_inactive">Selecionar</sys:String>
+    <sys:String x:Key="devices_select_active">Selecionado</sys:String>
+    <sys:String x:Key="devices_delete">Excluir</sys:String>
+    <sys:String x:Key="devices_delete_long">Excluir dispositivo</sys:String>
+    <sys:String x:Key="devices_delete_confirmation">Tem certeza de que deseja remover este dispositivo?</sys:String>
+    <sys:String x:Key="devices_settings_link">Gerenciar dispositivos emparelhados</sys:String>
+    <sys:String x:Key="devices_settings_link_desc">Adicionar, remover ou selecionar um dispositivo principal</sys:String>
+    <!--Touchpad gestures-->
+    <sys:String x:Key="touchpad_gesture_header">Habilitar gestos do touchpad</sys:String>
+    <sys:String x:Key="touchpad_gesture_single">Toque único</sys:String>
+    <sys:String x:Key="touchpad_gesture_single_desc">Reproduzir ou pausar faixa</sys:String>
+    <sys:String x:Key="touchpad_gesture_double">Toque duplo</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_desc">Reproduzir próxima faixa</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple">Toque triplo</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple_desc">Reproduzir faixa anterior</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold">Toque e segure</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_desc">Executar ação personalizada</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_for_call">Toque duplo durante chamada</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_for_call_desc">Atender ou encerrar chamada</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call">Toque e segure durante chamada</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call_desc">Recusar chamada</sys:String>
+
+    <!--Touchpad page-->
+    <sys:String x:Key="touchpad_header">Touchpad</sys:String>
+    <sys:String x:Key="touchpad_lock">Bloquear touchpad</sys:String>
+    <sys:String x:Key="touchpad_left_action">Ação de pressão longa à esquerda</sys:String>
+    <sys:String x:Key="touchpad_right_action">Ação de pressão longa à direita</sys:String>
+    <sys:String x:Key="touchpad_default_action">Ação tátil embutida</sys:String>
+
+    <sys:String x:Key="touchpad_gestures">Bloqueio de toque avançado</sys:String>
+    <sys:String x:Key="touchpad_gestures_description">Desabilitar gestos de toque padrão</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume">Toque duplo na borda do fone</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">Toque duplo na borda do fone esquerdo ou direito para diminuir ou aumentar o volume</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode">Modo de troca de controle de ruído</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_l">Modo de troca de controle de ruído (Esquerdo)</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_r">Modo de troca de controle de ruído (Direito)</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_desc">Escolha os modos para alternar</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ Som ambiente</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Desligado</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Som ambiente ↔ Desligado</sys:String>
+
+    <!--Custom touchpad action page-->
+    <sys:String x:Key="cact_header">Definir uma ação personalizada de toque longo</sys:String>
+    <sys:String x:Key="cact_external_app_dialog_title">Selecionar executável...</sys:String>
+    <sys:String x:Key="cact_action">Ação personalizada</sys:String>
+    <sys:String x:Key="cact_function_param">Função</sys:String>
+    <sys:String x:Key="cact_hotkey_param">Atalho</sys:String>
+    <sys:String x:Key="cact_path_param">Caminho do arquivo</sys:String>
+    <sys:String x:Key="cact_notice_content_p1">Ações personalizadas estão disponíveis apenas enquanto este aplicativo estiver ativo em segundo plano.</sys:String>
+    <sys:String x:Key="cact_notice_content_p2">Elas não têm efeito no Android ou em outros dispositivos.</sys:String>
+
+    <!--System/Self-Test-->
+    <sys:String x:Key="system_overview_header">Sistema</sys:String>
+    <sys:String x:Key="system_header">Informações do sistema</sys:String>
+    <sys:String x:Key="system_selftest">Executar autoteste</sys:String>
+    <sys:String x:Key="system_selftest_desc">Verifique se todos os módulos dos seus fones estão funcionando corretamente</sys:String>
+    <sys:String x:Key="system_factory_reset">Restaurar configurações de fábrica</sys:String>
+    <sys:String x:Key="system_factory_reset_desc">Restaurar os fones para as configurações de fábrica e desconectar</sys:String>
+    <sys:String x:Key="system_pairing_mode">Entrar no modo de emparelhamento</sys:String>
+    <sys:String x:Key="system_pairing_mode_desc">Desconectar os fones deste PC e torná-los visíveis para outros dispositivos</sys:String>
+    <sys:String x:Key="system_trace_core_dump">Baixar rastreamento e despejos de memória</sys:String>
+    <sys:String x:Key="system_trace_core_dump_desc">Recuperar dados brutos de depuração dos seus fones</sys:String>
+    <sys:String x:Key="system_hidden_at_mode">Configurações ocultas do sistema</sys:String>
+    <sys:String x:Key="system_hidden_at_mode_desc">Editar configurações ocultas como números de série e estado do UART</sys:String>
+    <sys:String x:Key="system_info">Ver informações do sistema</sys:String>
+    <sys:String x:Key="system_info_desc">Exibir informações detalhadas sobre seus fones</sys:String>
+    <sys:String x:Key="system_flasher">Instalar atualizações de firmware</sys:String>
+    <sys:String x:Key="system_flasher_desc">Atualizar, rebaixar ou flashar firmwares personalizados</sys:String>
+    <sys:String x:Key="system_spatial">Teste do sensor espacial</sys:String>
+    <sys:String x:Key="system_spatial_desc">Ler dados de rastreamento espacial utilizados para áudio 3D</sys:String>
+    <sys:String x:Key="system_usage_reports">Relatórios de uso e metering</sys:String>
+    <sys:String x:Key="system_usage_reports_desc">Visualizar relatórios de uso fornecidos pelos fones</sys:String>
+    <sys:String x:Key="system_battery_statistics">Estatísticas da bateria</sys:String>
+    <sys:String x:Key="system_battery_statistics_desc">Coletar e visualizar estatísticas de uso da bateria</sys:String>
+
+    <sys:String x:Key="system_battery_type_unknown">Não especificado</sys:String>
+    <sys:String x:Key="system_waiting_for_device">Aguardando resposta...</sys:String>
+    <sys:String x:Key="system_no_response">Sem resposta dos fones</sys:String>
+
+    <sys:String x:Key="system_hwver">Versão do hardware</sys:String>
+    <sys:String x:Key="system_swver">Versão do software</sys:String>
+    <sys:String x:Key="system_cradle_swver">Versão do software do estojo</sys:String>
+    <sys:String x:Key="system_cradle_serial">Número de série do estojo</sys:String>
+    <sys:String x:Key="system_touchver">Versão do firmware do touch</sys:String>
+    <sys:String x:Key="system_protover">Revisão do protocolo</sys:String>
+    <sys:String x:Key="system_btaddr">Endereços Bluetooth</sys:String>
+    <sys:String x:Key="system_btaddr_template">Endereço local: {0}, Endereço remoto: {1}</sys:String>
+    <sys:String x:Key="system_serial">Números de série</sys:String>
+    <sys:String x:Key="system_build_info">String de compilação</sys:String>
+    <sys:String x:Key="system_battery_type">Tipo de bateria</sys:String>
+    <sys:String x:Key="system_sku">SKU do dispositivo</sys:String>
+    <sys:String x:Key="system_proximity">Medição de proximidade</sys:String>
+    <sys:String x:Key="system_thermo">Medição do termistor</sys:String>
+    <sys:String x:Key="system_hall">Medição do sensor Hall</sys:String>
+    <sys:String x:Key="system_accel">Status do acelerômetro</sys:String>
+    <sys:String x:Key="system_adc_soc">Estado de carga do ADC</sys:String>
+    <sys:String x:Key="system_adc_voltage">Tensão ADC</sys:String>
+    <sys:String x:Key="system_adc_current">Corrente ADC</sys:String>
+
+    <sys:String x:Key="selftest_header">Autoteste</sys:String>
+    <sys:String x:Key="selftest_pass">Aprovado</sys:String>
+    <sys:String x:Key="selftest_fail">Falhou</sys:String>
+    <sys:String x:Key="selftest_pass_long">Todos os testes passaram</sys:String>
+    <sys:String x:Key="selftest_fail_long">Um ou mais testes falharam</sys:String>
+
+    <sys:String x:Key="coredump_header">Exportando dados...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_prepare">Preparando download...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_finished">Download concluído</sys:String>
+    <sys:String x:Key="coredump_dl_trace_progress">Baixando despejo de rastreamento... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_core_progress">Baixando despejo de memória... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytes)</sys:String>
+    <sys:String x:Key="coredump_dl_note">O áudio será pausado temporariamente durante o download. Seus fones serão desconectados assim que a transmissão terminar; reconecte-os manualmente.
+Após o término, será solicitado que você selecione um diretório para salvar os dados coletados.
+
+Se a transmissão travar ou os fones se desconectarem prematuramente, você precisará reiniciar o download. Esse recurso está atualmente muito instável.</sys:String>
+    <sys:String x:Key="coredump_dl_save_fail_title">Falha ao salvar despejo</sys:String>
+    <sys:String x:Key="coredump_dl_save_fail">Não foi possível copiar o despejo da localização temporária. Motivo: {0}</sys:String>
+    <sys:String x:Key="coredump_dl_save_success_title">Despejo salvo com sucesso</sys:String>
+    <sys:String x:Key="coredump_dl_save_success">{0} despejo(s) foram salvos em '{1}'</sys:String>
+    <sys:String x:Key="coredump_dl_save_dialog_title">Selecione um diretório para download...</sys:String>
+
+    <!-- Hidden AT modes -->
+    <sys:String x:Key="hidden_mode_warning">Proceda com cautela</sys:String>
+    <sys:String x:Key="hidden_mode_warning_desc">Algumas alterações feitas nesta página não podem ser restauradas por uma redefinição de fábrica. Nem todos os modelos suportam essas configurações.</sys:String>
+    <sys:String x:Key="hidden_mode_target">Dispositivo alvo: fone {0}</sys:String>
+    <sys:String x:Key="hidden_mode_target_l_desc">Para modificar o fone esquerdo, coloque o fone direito no estojo e feche-o.</sys:String>
+    <sys:String x:Key="hidden_mode_target_r_desc">Para modificar o fone direito, coloque o fone esquerdo no estojo e feche-o.</sys:String>
+    <sys:String x:Key="hidden_mode_input_wrong_length">O novo valor deve ter exatamente {0} caracteres.</sys:String>
+    <sys:String x:Key="hidden_mode_uart_on_confirm">UART habilitado com sucesso</sys:String>
+    <sys:String x:Key="hidden_mode_uart_off_confirm">UART desabilitado com sucesso</sys:String>
+    <sys:String x:Key="hidden_mode_uart">Habilitar porta UART</sys:String>
+    <sys:String x:Key="hidden_mode_uart_desc">Habilita temporariamente a porta UART física na PCB do dispositivo alvo atual para fins de depuração</sys:String>
+    <sys:String x:Key="hidden_mode_power">Menu de energia</sys:String>
+    <sys:String x:Key="hidden_mode_power_desc">Desligar, reiniciar ou colocar o dispositivo alvo atual em modo de espera</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change">Alterar número de série</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change_desc">Altera o número de série do dispositivo alvo atual</sys:String>
+    <sys:String x:Key="hidden_mode_did_change">Alterar número DID &amp; cor</sys:String>
+    <sys:String x:Key="hidden_mode_did_change_desc">Altera o ID do modelo do dispositivo alvo atual</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change">Alterar código SKU</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change_desc">Altera o código do produto do dispositivo alvo atual</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_addr_change">Alterar endereço Bluetooth do par</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_change_desc">Altera o endereço Bluetooth do par do dispositivo alvo atual</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_addr_change">Alterar endereço Bluetooth local</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_change_desc">Altera o endereço Bluetooth local do dispositivo alvo atual</sys:String>
+    <sys:String x:Key="hidden_mode_terminal">Terminal de comandos oculto</sys:String>
+    <sys:String x:Key="hidden_mode_terminal_desc">Enviar comandos AT personalizados para o dispositivo alvo atual</sys:String>
+
+    <sys:String x:Key="power_menu_hint">Apenas o fone alvo atual será afetado.</sys:String>
+    <sys:String x:Key="power_menu_reboot">Reiniciar</sys:String>
+    <sys:String x:Key="power_menu_shutdown">Desligar</sys:String>
+    <sys:String x:Key="power_menu_sleep">Modo de repouso de fábrica</sys:String>
+    
+    <sys:String x:Key="at_terminal_cmd_id">ID do comando</sys:String>
+    <sys:String x:Key="at_terminal_cmd_param">Parâmetro do comando (opcional)</sys:String>
+    <sys:String x:Key="at_terminal_cmd_id_invalid">Este ID de comando é inválido. Por favor, insira um valor hexadecimal de 16 bits, como 0007 ou 004C.</sys:String>
+    <sys:String x:Key="at_terminal_output">Saída</sys:String>
+    <sys:String x:Key="at_terminal_send">Enviar</sys:String>
+
+    
+    <!-- Relatórios de uso / medição -->
+    <sys:String x:Key="usage_reports_header">Relatórios de uso</sys:String>
+    <sys:String x:Key="usage_reports_hint">Esses relatórios são coletados pelos próprios fones. Os dados são exibidos como estão e podem ser imprecisos. O aplicativo oficial Wearable normalmente reseta a maioria dos contadores periodicamente e envia os dados coletados para a Samsung, a menos que você não tenha consentido com a coleta de dados no aplicativo. Alguns contadores, como os ciclos de carregamento, não são resetados.</sys:String>
+    <sys:String x:Key="usage_reports_usage">Relatório de uso</sys:String>
+    <sys:String x:Key="usage_reports_metering">Relatório de medição</sys:String>
+    <sys:String x:Key="milliamp_hours_unit">{0}mAh</sys:String>
+    <sys:String x:Key="metering_total_batt_capacity">Capacidade total da bateria</sys:String>
+    <sys:String x:Key="metering_a2dp_time">Tempo de reprodução de música (A2DP)</sys:String>
+    <sys:String x:Key="metering_esco_time">Tempo de uso em chamada (eSCO)</sys:String>
+
+    <!-- Histórico da bateria -->
+    <sys:String x:Key="batt_hist_hint">Este aplicativo pode coletar níveis de bateria e dados básicos de uso ao longo do tempo, permitindo que você analise a drenagem da bateria. Os dados só podem ser coletados enquanto este aplicativo estiver ativo em segundo plano e seus fones estiverem conectados a este dispositivo.</sys:String>
+    <sys:String x:Key="batt_hist_no_data_title">Dados insuficientes</sys:String>
+    <sys:String x:Key="batt_hist_no_data">Por favor, retorne mais tarde quando dados suficientes tiverem sido coletados ou ajuste o intervalo de tempo exibido.</sys:String>
+    <sys:String x:Key="batt_hist_y_axis">Carga (%)</sys:String>
+    <sys:String x:Key="batt_hist_last_hour">Última hora</sys:String>
+    <sys:String x:Key="batt_hist_last_6_hours">Últimas 6 horas</sys:String>
+    <sys:String x:Key="batt_hist_last_12_hours">Últimas 12 horas</sys:String>
+    <sys:String x:Key="batt_hist_last_24_hours">Últimas 24 horas</sys:String>
+    <sys:String x:Key="batt_hist_last_3_days">Últimos 3 dias</sys:String>
+    <sys:String x:Key="batt_hist_last_7_days">Últimos 7 dias</sys:String>
+    <sys:String x:Key="batt_hist_overlay_none">Sem sobreposição</sys:String>
+    <sys:String x:Key="batt_hist_overlay_noise_controls">Controles de ruído</sys:String>
+    <sys:String x:Key="batt_hist_overlay_wearing">Estado de uso</sys:String>
+    <sys:String x:Key="batt_hist_overlay_host_device">Dispositivo anfitrião</sys:String>
+    <sys:String x:Key="batt_hist_overlay_legend">{0} (Sobreposição)</sys:String>
+    <sys:String x:Key="batt_hist_tools_pan_and_zoom">Arrastar e ampliar</sys:String>
+    <sys:String x:Key="batt_hist_tools_measure_time">Medir tempo</sys:String>
+    <sys:String x:Key="batt_hist_tools_measure_battery">Medir nível</sys:String>
+    <sys:String x:Key="batt_hist_show_legend">Mostrar legenda</sys:String>
+    <sys:String x:Key="batt_hist_measure_difference_display">Diferença: {0}</sys:String>
+    <sys:String x:Key="batt_hist_measure_timespan_display">Intervalo de tempo: {0}</sys:String>
+    <sys:String x:Key="batt_hist_measure_timespan_unit_long">d' dia(s), 'hh'h:'mm':'ss</sys:String> <!-- Exemplo: 2 dia(s), 03h:10:01 -->
+    <sys:String x:Key="batt_hist_time_span_tip_title">Intervalo de tempo</sys:String>
+    <sys:String x:Key="batt_hist_control_tip_title">Controles do mouse</sys:String>
+    <sys:String x:Key="batt_hist_control_tip">Arraste o quadro para se mover pelo gráfico.
+
+Utilize a rolagem para ampliar horizontal e verticalmente.
+
+Passe o cursor sobre o eixo X ou Y e role para ampliar apenas horizontalmente ou verticalmente. Ao rolar sobre o eixo X (tempo), o gráfico pode ser alongado ou comprimido, por exemplo.</sys:String>
+    <sys:String x:Key="batt_hist_overlay_tip_title">Sobreposições</sys:String>
+    <sys:String x:Key="batt_hist_overlay_tip">Você pode usar sobreposições para adicionar contexto adicional ao gráfico.
+
+Controles de ruído: Mostram quais controles de ruído estavam ativados ou desativados.
+
+Estado de uso: Indica se os fones estavam sendo usados ou não.
+
+Dispositivo anfitrião: Mostra qual fone está hospedando a conexão Bluetooth com o computador.
+
+Os dados da sobreposição podem ser difíceis de entender quando visualizados em intervalos grandes. Passe o cursor sobre o eixo X e role para cima para ampliar um intervalo específico que você deseja inspecionar para uma melhor visualização.</sys:String>
+    <sys:String x:Key="batt_hist_tools_tip_title">Ferramentas</sys:String>
+    <sys:String x:Key="batt_hist_tools_tip">Arrastar e ampliar: Modo padrão. Navegue pelo gráfico arrastando e ampliando.
+
+Medir tempo: Selecione um intervalo horizontal para medir o tempo decorrido entre o início e o fim da seleção.
+
+Medir nível: Selecione um intervalo vertical para medir a diferença de nível da bateria entre o início e o fim da seleção.</sys:String>
+
+    <!--Settings-->
+    <sys:String x:Key="settings_header">Configurações</sys:String>
+    <sys:String x:Key="settings_save_fail_no_access">Falha ao salvar configurações. O acesso ao arquivo de configuração foi negado pelo sistema operacional. Por favor, verifique as permissões de arquivo para {0}.</sys:String>
+    <sys:String x:Key="settings_appearance">Aparência</sys:String>
+    <sys:String x:Key="settings_darkmode">Modo escuro</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Use um esquema de cores mais escuro</sys:String>
+    <sys:String x:Key="settings_blurstrength">Força de desfoque da janela</sys:String>
+    <sys:String x:Key="settings_blurstrength_description">Apenas compatível com o modo escuro. Não suportado em todos os sistemas</sys:String>
+    <sys:String x:Key="settings_accent">Cor de destaque</sys:String>
+    <sys:String x:Key="settings_accent_description">Escolha uma cor de destaque personalizada</sys:String>
+    <sys:String x:Key="settings_transitions">Transição</sys:String>
+    <sys:String x:Key="settings_transitions_description">Ativar transições deslizantes</sys:String>
+    <sys:String x:Key="settings_localization_disable">Idioma</sys:String>
+    <sys:String x:Key="settings_localization_description">Mudar o idioma do app</sys:String>
+    <sys:String x:Key="settings_minimize_tray">Minimizar para a bandeja</sys:String>
+    <sys:String x:Key="settings_minimize_tray_description">Manter em segundo plano ao invés de encerrar o app</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons">Usar imagens realistas dos fones</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons_description">Exibir imagens realistas e sensíveis à cor dos seus fones, se suportado</sys:String>
+    <sys:String x:Key="settings_color_override">Substituição de cor dos fones</sys:String>
+    <sys:String x:Key="settings_color_override_description">Alterar a cor exibida dos seus fones no app</sys:String>
+    <sys:String x:Key="settings_nav_sidebar">Barra lateral de navegação</sys:String>
+    <sys:String x:Key="settings_nav_sidebar_description">Mostrar ou recolher os botões de navegação no lado esquerdo</sys:String>
+    <sys:String x:Key="settings_tray_settings">Ícone da bandeja &amp; inicialização</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode">Ícone dinâmico na bandeja</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_description">Exibir o status da bateria no ícone da bandeja</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_off">Desligado</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_min">Mostrar nível mais baixo da bateria</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_avg">Mostrar nível médio da bateria</sys:String>
+    <sys:String x:Key="settings_autostart">Iniciar na inicialização</sys:String>
+    <sys:String x:Key="settings_autostart_description">Iniciar minimizado na inicialização do sistema</sys:String>
+    <sys:String x:Key="settings_autostart_permission">Não foi possível atualizar a entrada de inicialização automática no registro. O acesso ao registro (HKCU) foi explicitamente desativado pelo administrador do sistema.</sys:String>
+    <sys:String x:Key="settings_connpopup">Popup de conexão</sys:String>
+    <sys:String x:Key="settings_devmode">Opções de desenvolvedor</sys:String>
+    <sys:String x:Key="settings_devmode_description">Inspecionador de tráfego Bluetooth e outras ferramentas de desenvolvedor</sys:String>
+    <sys:String x:Key="settings_crowdsourcing">Crowdsourcing</sys:String>
+
+    <!--Settings >>> Connection popup-->
+    <sys:String x:Key="settings_cpopup_header">Popup de conexão</sys:String>
+    <sys:String x:Key="settings_cpopup_enable">Ativar popup na conexão</sys:String>
+    <sys:String x:Key="settings_cpopup_enable_description">Exibir um pequeno popup de notificação informando os níveis de bateria quando os fones estiverem conectados</sys:String>
+    <sys:String x:Key="settings_cpopup_compact">Modo compacto</sys:String>
+    <sys:String x:Key="settings_cpopup_compact_description">Ocultar o cabeçalho do popup para economizar espaço</sys:String>
+    <sys:String x:Key="settings_cpopup_position">Posição</sys:String>
+    <sys:String x:Key="settings_cpopup_position_description">Selecione a posição do popup de conexão</sys:String>
+    <sys:String x:Key="settings_cpopup_demo">Exibir popup de demonstração</sys:String>
+
+    <!--Settings >>> Crowdsourcing settings-->
+    <sys:String x:Key="settings_crowd_header">Crowdsourcing</sys:String>
+    <sys:String x:Key="settings_crowd_allow">Permitir contribuição via crowdsourcing</sys:String>
+    <sys:String x:Key="settings_crowd_allow_description">Coletar informações sobre a estrutura do protocolo Bluetooth proprietário da Samsung e dados sob demanda. Isso me permite manter suporte a todos os modelos disponíveis dos Galaxy Buds de forma mais fácil, sem possuí-los.</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport">Permitir relatórios de falhas do aplicativo</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport_description">Enviar relatórios de falhas do aplicativo automaticamente em caso de crashes ou erros fatais usando o Sentry. Isso me ajuda a responder mais rapidamente a bugs problemáticos e disruptivos.</sys:String>
+
+    <!--Factory reset-->
+    <sys:String x:Key="factory_header">Restaurar configurações de fábrica</sys:String>
+    <sys:String x:Key="factory_confirmation">Tem certeza de que deseja restaurar seus fones para as configurações de fábrica?
+Isso removerá todos os dados e configurações dos seus fones.
+
+Certifique-se de que ambos os fones estejam ligados antes de continuar.</sys:String>
+    <sys:String x:Key="factory_error_title">Falha ao restaurar configurações de fábrica</sys:String>
+    <sys:String x:Key="factory_error">O dispositivo retornou o código de erro: {0}
+
+Certifique-se de que ambos os fones estejam ligados e acessíveis.
+Você pode precisar reconectar os fones manualmente.</sys:String>
+
+    <!--Find my Gear-->
+    <sys:String x:Key="fmg_warning_both">Por favor, remova ambos os fones dos seus ouvidos.</sys:String>
+    <sys:String x:Key="fmg_warning_left">Por favor, remova o fone esquerdo do seu ouvido.</sys:String>
+    <sys:String x:Key="fmg_warning_right">Por favor, remova o fone direito do seu ouvido.</sys:String>
+    <sys:String x:Key="fmg_header">Encontrar meus fones</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage">Gerenciar dados do SmartThings Find</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage_desc">Visualizar e gerenciar seus dados do SmartThings Find armazenados nos seus fones</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open">Abrir site do SmartThings Find</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open_desc">Rastreie seus fones online. Requer uma conta Samsung e que o app oficial SmartThings Find esteja configurado.</sys:String>
+
+    <!--SmartThings data-->
+    <sys:String x:Key="smart_things_find">SmartThings</sys:String>
+    <sys:String x:Key="smart_things_find_clear">Excluir configuração do SmartThings Find</sys:String>
+    <sys:String x:Key="smart_things_find_clear_desc">Remover dados relacionados à conta Samsung dos seus fones</sys:String>
+    <sys:String x:Key="smart_things_find_iv">Vetor de inicialização (IV)</sys:String>
+    <sys:String x:Key="smart_things_find_secret_key">Chave secreta</sys:String>
+    <sys:String x:Key="smart_things_find_region">Região</sys:String>
+    <sys:String x:Key="smart_things_find_fmm_token">Token do SmartThings Find</sys:String>
+    <sys:String x:Key="smart_things_find_no_link">Seus fones não estão vinculados à rede SmartThings Find da Samsung.</sys:String>
+    <sys:String x:Key="smart_things_find_write_fail">Os fones rejeitaram os novos dados de configuração do SmartThings Find.</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok">Configuração sobrescrita</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok_desc">Os dados de configuração do SmartThings Find foram removidos.</sys:String>
+
+    <!-- Fit test-->
+    <sys:String x:Key="gft_warning">Por favor, use ambos os fones.</sys:String>
+    <sys:String x:Key="gft_desc">Verifique se os seus fones estão posicionados corretamente</sys:String>
+    <sys:String x:Key="gft_bad">Mau encaixe</sys:String>
+    <sys:String x:Key="gft_good">Bom encaixe</sys:String>
+    <sys:String x:Key="gft_fail">Teste falhou</sys:String>
+    <!--Equalizer-->
+    <sys:String x:Key="eq_header">Equalizador</sys:String>
+    <sys:String x:Key="eq_enable">Equalizador</sys:String>
+    <sys:String x:Key="eq_enable_description">Aplicar filtros de áudio do equalizador</sys:String>
+    <sys:String x:Key="eq_preset">Predefinição</sys:String>
+    <sys:String x:Key="eq_stereo_balance">Balanço de som esquerdo/direito</sys:String>
+    <sys:String x:Key="eq_stereo_balance_value">{0}% à esquerda; {1}% à direita</sys:String>
+    <sys:String x:Key="eq_stereo_balance_neutral">Neutro</sys:String>
+
+    <sys:String x:Key="eq_bass">Realce de graves</sys:String>
+    <sys:String x:Key="eq_soft">Suave</sys:String>
+    <sys:String x:Key="eq_dynamic">Dinâmico</sys:String>
+    <sys:String x:Key="eq_clear">Claro</sys:String>
+    <sys:String x:Key="eq_treble">Realce de agudos</sys:String>
+
+    <!--Noise control-->
+    <sys:String x:Key="nc_header">Controle de ruído</sys:String>
+    <sys:String x:Key="nc_as_anc_description">Reduzir ruídos de fundo</sys:String>
+    <sys:String x:Key="nc_one_earbud">Controles de ruído com apenas um fone</sys:String>
+    <sys:String x:Key="nc_one_earbud_description">Os controles de ruído normalmente exigem dois fones para evitar desconforto; habilite esta opção para permitir com apenas um fone</sys:String>
+    <sys:String x:Key="nc_anc_level">Alta sensibilidade</sys:String>
+    <sys:String x:Key="nc_anc_level_description">Efeito de cancelamento de ruído mais forte</sys:String>
+    <sys:String x:Key="nc_ambient">Personalizar som ambiente</sys:String>
+    <sys:String x:Key="nc_ambient_description">Configurar o tom e o volume do som ambiente (se disponível)</sys:String>
+    <sys:String x:Key="nc_voicedetect">Detecção de conversação</sys:String>
+    <sys:String x:Key="nc_voicedetect_description">Quando sua voz for detectada, ative automaticamente o som ambiente e diminua o volume da mídia para facilitar a conversação</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout">Tempo limite de conversação</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout_description">Reverter configurações quando sua voz não for detectada por um determinado tempo</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout_item">{0} segundos</sys:String>
+
+    <!--Noise control >>> Ambient sound-->
+    <sys:String x:Key="nc_as_header">Configurações do som ambiente</sys:String>
+    <sys:String x:Key="nc_as_custom">Personalização avançada</sys:String>
+    <sys:String x:Key="nc_as_custom_description">Personalize as configurações do som ambiente</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_l">Volume do som ambiente (esquerdo)</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_r">Volume do som ambiente (direito)</sys:String>
+    <sys:String x:Key="nc_as_custom_tone">Tom do som ambiente</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_clear">Claro</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_soft">Suave</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_neutral">Neutro</sys:String>
+    <sys:String x:Key="nc_as_custom_vol_normal">Normal</sys:String>
+
+    <!--Ambient sound-->
+    <sys:String x:Key="as_header">Som ambiente</sys:String>
+    <sys:String x:Key="as_header_description">Ouça o ambiente ao seu redor</sys:String>
+    <sys:String x:Key="as_enable">Ativar som ambiente</sys:String>
+    <sys:String x:Key="as_volume">Volume do som ambiente</sys:String>
+    <sys:String x:Key="as_voicefocus">Realce de voz</sys:String>
+    <sys:String x:Key="as_voicefocus_description">Fazer as vozes se destacarem mais</sys:String>
+    <sys:String x:Key="as_extrahigh">Volume ambiente extra alto</sys:String>
+    <sys:String x:Key="as_extrahigh_description">Adiciona um nível extra ao controle de volume do som ambiente</sys:String>
+    <sys:String x:Key="as_scale_very_low">Muito baixo</sys:String>
+    <sys:String x:Key="as_scale_low">Baixo</sys:String>
+    <sys:String x:Key="as_scale_moderate">Moderado</sys:String>
+    <sys:String x:Key="as_scale_high">Alto</sys:String>
+    <sys:String x:Key="as_scale_extraloud">Extra alto</sys:String>
+
+    <!--Advanced page-->
+    <sys:String x:Key="adv_header">Configurações avançadas</sys:String>
+    <sys:String x:Key="adv_seamless">Conexão contínua dos fones</sys:String>
+    <sys:String x:Key="adv_seamless_desc">Troque rapidamente para dispositivos próximos sem desconectar seus fones ou ativar o modo de emparelhamento</sys:String>
+    <sys:String x:Key="adv_pause_playback">Pausar reprodução se os fones forem removidos</sys:String>
+    <sys:String x:Key="adv_pause_playback_desc">Envia um evento global de mudança de estado play/pause quando ambos os sensores de proximidade ficam descobertos (apenas para desktop)</sys:String>
+    <sys:String x:Key="adv_resume_playback">Retomar reprodução se os fones forem usados</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Envia um evento global de mudança de estado play/pause quando pelo menos um dos sensores de proximidade está coberto (apenas para desktop)</sys:String>
+    <sys:String x:Key="adv_sidetone">Usar som ambiente durante chamadas</sys:String>
+    <sys:String x:Key="adv_sidetone_desc">Ouça sua própria voz mais claramente durante a chamada</sys:String>
+    <sys:String x:Key="adv_callpath">Detecção in-ear para chamadas</sys:String>
+    <sys:String x:Key="adv_callpath_desc">Direciona chamadas para os fones quando estão no ouvido e para o alto-falante do computador quando não estão</sys:String>
+    <sys:String x:Key="adv_extra_clear_call">Aprimorar som da chamada</sys:String>
+    <sys:String x:Key="adv_extra_clear_call_desc">Melhora a clareza das chamadas. Muito útil em ambientes barulhentos, mas consome mais bateria.</sys:String>
+    <sys:String x:Key="adv_passthrough">Aliviar a pressão com som ambiente</sys:String>
+    <sys:String x:Key="adv_passthrough_desc">Isso pode evitar a sensação de abafamento ou compressão quando o cancelamento ativo de ruído não está ativado</sys:String>
+    <sys:String x:Key="adv_hotkey">Atalhos de teclado</sys:String>
+    <sys:String x:Key="adv_hotkey_desc">Defina atalhos de teclado personalizados para controlar remotamente seus fones</sys:String>
+    <sys:String x:Key="adv_bixby_remap">Remapear ativação do Bixby</sys:String>
+    <sys:String x:Key="adv_bixby_remap_desc">Defina o que deve acontecer quando você disser 'Hey Bixby!'</sys:String>
+
+    <!--Remap bixby wakeup-->
+    <sys:String x:Key="bixby_remap_enable">Ativar despertar do Bixby</sys:String>
+    <sys:String x:Key="bixby_remap_enable_desc">Iniciar o Bixby no seu celular Samsung ou executar uma ação personalizada neste PC ao ser ativado</sys:String>
+    <sys:String x:Key="bixby_remap_lang">Idioma para ativação do Bixby</sys:String>
+    <sys:String x:Key="bixby_remap_lang_desc">Altere o idioma usado na frase de ativação</sys:String>
+    <sys:String x:Key="bixby_remap_action">Ação personalizada de ativação</sys:String>
+    <sys:String x:Key="bixby_remap_action_desc">Defina o que deve acontecer quando você ativar o Bixby neste dispositivo</sys:String>
+    <sys:String x:Key="bixby_remap_note">Digite 'Hey Bixby!' para ativar. A frase de ativação pode ser diferente em alguns idiomas.
+
+A configuração de remapeamento está ativa somente neste dispositivo. Se você conectar seus fones a um dispositivo Samsung, o despertar de voz ativará o Bixby normalmente. Em dispositivos que não sejam este e em telefones que não sejam Samsung, este recurso não acionará nenhuma ação.</sys:String>
+
+    <!--Credits-->
+    <sys:String x:Key="credits_header">Créditos</sys:String>
+    <sys:String x:Key="credits_developer">Desenvolvedor</sys:String>
+    <sys:String x:Key="credits_license">Licença</sys:String>
+    <sys:String x:Key="credits_version">Versão</sys:String>
+    <sys:String x:Key="credits_contributor">Contribuidores</sys:String>
+    <sys:String x:Key="credits_translator">Tradutores</sys:String>
+    <sys:String x:Key="credits_sponsor">Apoiar este projeto</sys:String>
+    <sys:String x:Key="credits_kofi">Visite minha página no Ko-fi para me apoiar!</sys:String>
+    <sys:String x:Key="credits_github">Visite este projeto no GitHub</sys:String>
+    <!--Connection lost page-->
+    <sys:String x:Key="connlost">Conexão perdida</sys:String>
+    <sys:String x:Key="connlost_header">Não foi possível estabelecer conexão</sys:String>
+    <sys:String x:Key="connlost_connect">Conectar</sys:String>
+    <sys:String x:Key="connlost_connecting">Conectando...</sys:String>
+    <sys:String x:Key="connlost_troubleshoot">Solucionar problemas</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_title">Como solucionar problemas de conexão</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_content">Certifique-se de que o aplicativo oficial Samsung Wearable para os Galaxy Buds não tente conectar-se aos seus fones em segundo plano.
+Caso contrário, você enfrentará problemas frequentes de perda de conexão, pois o aplicativo tentará repetidamente assumir o controle dos fones.
+
+Você pode escolher uma das seguintes soluções para corrigir esse problema:
+
+• Desvincule os fones do aplicativo Wearable. (No aplicativo Wearable, abra o menu, selecione 'Gerenciar dispositivos' e exclua seus fones da lista.)
+
+• Desinstale o plugin Galaxy Buds do aplicativo Samsung Wearable completamente.
+
+• Utilize um aplicativo como 'Hail' ou 'Ice Box' para congelar temporariamente o plugin oficial dos Galaxy Buds do aplicativo Samsung Wearable e impedir sua execução.</sys:String>
+
+    <!-- Pairing mode -->
+    <sys:String x:Key="connlost_disconnected">Dispositivo desconectado</sys:String>
+    <sys:String x:Key="pairingmode_done">Os fones foram colocados no modo de emparelhamento e agora estão desconectados deste dispositivo.</sys:String>
+
+    <!--Firmware update disclaimer-->
+    <sys:String x:Key="fw_disclaimer">Aviso Legal</sys:String>
+    <sys:String x:Key="fw_disclaimer_desc">Esta ferramenta de atualização de firmware é uma réplica exata do atualizador oficial encontrado no aplicativo Android da Samsung. Testei minuciosamente esta implementação em várias circunstâncias (operação normal, perda de conexão, pacotes Bluetooth intencionalmente corrompidos, ...) sem enfrentar problemas. Ainda assim, não assumirei responsabilidade se algo der errado, pois as atualizações de firmware modificam componentes vitais do sistema e devem ser tratadas com cautela.
+
+REBAIXO DE VERSÃO: Embora seja possível rebaixar para versões mais antigas de firmware e eu nunca tenha enfrentado problemas com isso, pode ocasionar problemas inesperados e deve ser feito apenas se necessário. Uma restauração de fábrica após o rebaixamento é recomendada, mas geralmente não é obrigatória.
+
+FLASHING PERSONALIZADO: Você também pode carregar arquivos de firmware do seu disco rígido. NÃO realize o flashing de binários de firmware destinados a OUTROS modelos em seu dispositivo.
+
+Este aplicativo é licenciado sob GPLv3. Ao utilizá-lo, você está aceitando a licença e suas limitações de responsabilidade. Pressione 'Continuar' para aceitar.</sys:String>
+
+    <!--Firmware selection-->
+    <sys:String x:Key="fw_select_header">Atualizações de firmware</sys:String>
+    <sys:String x:Key="fw_select_downgrade">Permitir rebaixamento de firmware</sys:String>
+    <sys:String x:Key="fw_select_downgrade_desc">Desabilitar checagens de versão e mostrar firmwares antigos na lista (pode causar problemas inesperados; apenas para usuários avançados)</sys:String>
+    <sys:String x:Key="fw_select_install">Instalar firmware</sys:String>
+    <sys:String x:Key="fw_select_install_short">Instalar</sys:String>
+    <sys:String x:Key="fw_select_from_disk">Selecionar firmware do disco...</sys:String>
+    <sys:String x:Key="fw_select_from_disk_short">Abrir</sys:String>
+    <sys:String x:Key="fw_select_refresh">Atualizar</sys:String>
+    <sys:String x:Key="fw_select_unsupported_selection">Seleção inválida. Por favor, selecione um item compatível da lista.</sys:String>
+    <sys:String x:Key="fw_select_downloading">Baixando...</sys:String>
+    <sys:String x:Key="fw_select_net_error">Falha ao comunicar com o servidor. Não é possível baixar o firmware no momento.</sys:String>
+    <sys:String x:Key="fw_select_net_index_error">Falha ao comunicar com o servidor. Não é possível baixar o índice de firmware no momento.</sys:String>
+    <sys:String x:Key="fw_select_http_error">Código de erro HTTP:</sys:String>
+    <sys:String x:Key="fw_select_unknown_build">Nome de compilação desconhecido</sys:String>
+    <sys:String x:Key="fw_select_no_results_short">Nenhuma atualização encontrada</sys:String>
+    <sys:String x:Key="fw_select_verify_fail">Falha ao verificar o firmware</sys:String>
+    <sys:String x:Key="fw_select_verify_model_mismatch_fail">Detectada incompatibilidade de modelo do dispositivo! A transferência de firmware foi cancelada.
+Você está tentando instalar um firmware para {0} no seu {1}. Isso pode inutilizar permanentemente os seus fones.</sys:String>
+    <sys:String x:Key="fw_select_confirm">Você está prestes a instalar '{0}' no seu dispositivo '{1}'</sys:String>
+    <sys:String x:Key="fw_select_confirm_desc">Certifique-se de que essas informações estão corretas; caso contrário, pressione 'Cancelar' e verifique sua configuração.
+Se possível, certifique-se de que ambos os fones estejam conectados antes de iniciar. Não ocorrerá problemas se a conexão falhar durante a transferência da atualização. Nesse caso, os fones cancelarão automaticamente o processo de transferência e sairão do modo de atualização.
+Pressione 'Continuar' para iniciar a atualização.</sys:String>
+
+    <!--Firmware transfer-->
+    <sys:String x:Key="fw_upload_header">Instalando firmware...</sys:String>
+    <sys:String x:Key="fw_upload_progress_session">Criando nova sessão...</sys:String>
+    <sys:String x:Key="fw_upload_progress_prepare">Preparando envio...</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished">Envio concluído</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished_desc">A atualização foi transferida com sucesso e está sendo instalada no dispositivo. Durante esse processo, os fones ficam inoperantes por cerca de 30 segundos. Na maioria dos casos, os fones tentam reconectar automaticamente após o término do processo de atualização.</sys:String>
+    <sys:String x:Key="fw_upload_progress_error">Falha ao enviar o firmware</sys:String>
+    <sys:String x:Key="fw_upload_progress">Enviando atualização de firmware... {0}%</sys:String>
+    <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_mtu">Unidade máxima de transferência: {0} bytes</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_offset">Processando dados do offset 0x{0:X6} até 0x{1:X6}</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_segment">Enviando segmento #{0} ({1} bytes, checksum 0x{2:X6})</sys:String>
+
+    <!--Firmware parse errors-->
+    <sys:String x:Key="fw_fail_no_magic">Este não é um binário de firmware válido. Valor mágico inválido encontrado no cabeçalho do arquivo.</sys:String>
+    <sys:String x:Key="fw_fail_size_null">Este binário de firmware possui tamanho zero e não pode ser utilizado para flashing. Por favor, escolha outro.</sys:String>
+    <sys:String x:Key="fw_fail_no_segments">Este binário de firmware não contém segmentos binários e está vazio. Por favor, escolha outro.</sys:String>
+    <sys:String x:Key="fw_fail_unknown">Erro inesperado ao decodificar o binário do firmware. Este arquivo de firmware pode estar corrompido.
+Detalhes:</sys:String>
+
+    <!--Firmware transfer errors-->
+    <sys:String x:Key="fw_fail_connection">Perda de conexão com o dispositivo. A transferência de firmware foi cancelada.</sys:String>
+    <sys:String x:Key="fw_fail_session">Falha ao abrir uma nova sessão. O dispositivo retornou o código de erro ({0})</sys:String>
+    <sys:String x:Key="fw_fail_copy">Falha ao copiar o binário de firmware. Por favor, reconecte e tente novamente. Código de erro retornado pelo dispositivo: {0}</sys:String>
+    <sys:String x:Key="fw_fail_verify">Falha ao verificar/instalar o binário de firmware. Por favor, reconecte e tente novamente. Código de erro retornado pelo dispositivo: {0}</sys:String>
+    <sys:String x:Key="fw_fail_connection_precheck">O dispositivo não está conectado no momento. Verifique as configurações do seu sistema Bluetooth e reconecte.</sys:String>
+    <sys:String x:Key="fw_fail_pending">Outra transferência de firmware já está em andamento. Por favor, cancele-a adequadamente primeiro.</sys:String>
+    <sys:String x:Key="fw_fail_lowbattery">Bateria muito baixa. Por favor, carregue seus fones para alcançar mais de 15% primeiro.</sys:String>
+    <sys:String x:Key="fw_fail_session_timeout">Tempo esgotado aguardando o dispositivo abrir uma nova sessão</sys:String>
+    <sys:String x:Key="fw_fail_control_timeout">Tempo esgotado aguardando o dispositivo retornar um bloco de controle</sys:String>
+
+    <!--Spatial test-->
+    <sys:String x:Key="spatial_header">Sensor espacial</sys:String>
+    <!--Note: Quaternion = 4-dimensional vector-->
+    <sys:String x:Key="spatial_dump_quaternion">Vetor quaternário bruto:</sys:String>
+    <!--Note: RPY = Roll, pitch, yaw-->
+    <sys:String x:Key="spatial_dump_rpy">Valores RPY:</sys:String>
+
+    <!--Header-->
+    <sys:String x:Key="window_open">Abrir</sys:String>
+    <sys:String x:Key="window_minimize">Minimizar</sys:String>
+    <sys:String x:Key="window_close">Fechar</sys:String>
+
+    <!--Buds app detected page-->
+    <sys:String x:Key="budsapp_header">Informações de compatibilidade Bluetooth</sys:String>
+    <sys:String x:Key="budsapp_text_p1">O aplicativo oficial Galaxy Buds é instalado junto com este aplicativo.</sys:String>
+    <sys:String x:Key="budsapp_text_p2">Se estiver ativo em segundo plano, o GalaxyBudsClient pode ter problemas para conectar aos seus fones de ouvido. Certifique-se de desregistrar seus fones de ouvido no aplicativo oficial ou evite que ele seja executado em segundo plano de outras maneiras.</sys:String>
+    <sys:String x:Key="budsapp_text_p3">Lembre-se de que apenas um aplicativo pode se comunicar com seus Galaxy Buds por vez.</sys:String>
+
+    <!--Manual pairing-->
+    <sys:String x:Key="manualpair_title">Seleção manual de dispositivo</sys:String>
+    <sys:String x:Key="manualpair_title_dialog">Escolha o seu dispositivo Galaxy Buds</sys:String>
+    <sys:String x:Key="manualpair_model">Escolha o tipo de modelo correto</sys:String>
+    <sys:String x:Key="manualpair_note">Você deve conectar manualmente seus fones de ouvido apenas se o assistente de configuração não reconhecê-los corretamente.</sys:String>
+
+    <!--Rename-->
+    <sys:String x:Key="rename">Renomear fones de ouvido</sys:String>
+    <sys:String x:Key="rename_desc">Isso renomeará os fones de ouvido para todos os dispositivos.</sys:String>
+    <sys:String x:Key="rename_warn">Renomear seus fones de ouvido pode não ser possível usando aplicativos oficiais, pois eles restringem isso a smartphones Samsung, o que significa que você pode precisar deste aplicativo para redefinir o nome personalizado. A mudança de nome pode não ser detectada por dispositivos até que você desfaça o pareamento e re-pareie os fones de ouvido.</sys:String>
+    <sys:String x:Key="rename_warn_oneui_title">Informações importantes para usuários do OneUI</sys:String>
+    <sys:String x:Key="rename_warn_oneui">Se o seu dispositivo estiver executando o Samsung OneUI, você deve usar o método oficial da Samsung para renomear seus fones de ouvido nas configurações do sistema. Caso contrário, haverá problemas de conexão ao definir um novo nome.</sys:String>
+    <sys:String x:Key="rename_too_short">O nome que você inseriu é muito curto (sem caracteres) ou muito longo (limite máximo imposto pelos fones de ouvido).</sys:String>
+    <sys:String x:Key="rename_hint">Digite o novo nome...</sys:String>
+    <sys:String x:Key="rename_label">Novo nome do dispositivo</sys:String>
+    <sys:String x:Key="rename_reading_name">Lendo o nome atual...</sys:String>
+    <sys:String x:Key="rename_ok_title">Fones de ouvido renomeados</sys:String>
+    <sys:String x:Key="rename_ok">Fones de ouvido renomeados com sucesso!
+    A mudança de nome pode não ser detectada por dispositivos (incluindo este) até que você desfaça o pareamento e re-pareie os fones de ouvido.</sys:String>
+</ResourceDictionary>
