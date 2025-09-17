@@ -158,7 +158,7 @@ Nếu bạn muốn đóng góp code của riêng mình, bạn chỉ cần gửi 
 * [@PlasticBrain](https://github.com/fhalfkg) - Bản dịch tiếng Hàn và tiếng Nhật
 * [@cozyplanes](https://github.com/cozyplanes) - Bản dịch tiếng Hàn
 * [@erenbektas](https://github.com/erenbektas) và [@Eta06](https://github.com/Eta06) - Bản dịch tiếng Thổ Nhĩ Kỳ
-* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), * [@JuanFariasDev](https://github.com/juanfariasdev), [@ssenkrad](https://github.com/ssenkrad), [@pseudor](https://github.com/pseudor) và [@YexuanXiao](https://github.com/YexuanXiao) - Bản dịch tiếng Trung
+* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad), [@pseudor](https://github.com/pseudor) và [@YexuanXiao](https://github.com/YexuanXiao) - Bản dịch tiếng Trung
 * [@YiJhu](https://github.com/YiJhu) - Bản dịch tiếng Trung Phồn thể
 * [@efrenbg1](https://github.com/efrenbg1) và Andrew Gonza - Bản dịch tiếng Tây Ban Nha
 * [@giovankabisano](https://github.com/giovankabisano) - Bản dịch tiếng Indonesia
