@@ -16,6 +16,7 @@ public static class PlatformUtils
         Linux,
         OSX,
         Android,
+        IOS,
         Other
     }
 
@@ -23,6 +24,7 @@ public static class PlatformUtils
     public static bool IsLinux => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
     public static bool IsOSX => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
     public static bool IsAndroid => RuntimeInformation.RuntimeIdentifier.Contains("android", StringComparison.OrdinalIgnoreCase);
+    public static bool IsIOS => RuntimeInformation.RuntimeIdentifier.Contains("ios", StringComparison.OrdinalIgnoreCase);
     public static bool IsDesktop => IsWindows || IsLinux || IsOSX;
     public static bool IsRunningInFlatpak => Environment.GetEnvironmentVariable("container") != null;
 
@@ -44,6 +46,8 @@ public static class PlatformUtils
                 return Platforms.Linux;
             if (IsOSX)
                 return Platforms.OSX;
+            if (IsIOS)
+                return Platforms.IOS;
             return IsAndroid ? Platforms.Android : Platforms.Other;
         }
     }

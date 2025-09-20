@@ -3,6 +3,7 @@
         <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
         <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
         <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+        <IsIOS Condition="'$(TargetFramework)' == 'net8.0-ios'">true</IsIOS>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(IsWindows)'=='true'">
@@ -13,5 +14,8 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <DefineConstants>$(DefineConstants);Linux</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsIOS)'=='true'">
+        <DefineConstants>$(DefineConstants);IOS</DefineConstants>
     </PropertyGroup>
 </Project>

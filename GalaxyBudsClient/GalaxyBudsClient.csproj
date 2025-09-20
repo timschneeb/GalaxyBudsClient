@@ -25,6 +25,11 @@
         <OutputType>Library</OutputType>
         <DefineConstants>$(DefineConstants);Android</DefineConstants>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(IsIOS)'=='true'">
+        <TargetFramework>net8.0</TargetFramework>
+        <OutputType>Library</OutputType>
+        <DefineConstants>$(DefineConstants);IOS</DefineConstants>
+    </PropertyGroup>
     
     <Import Project="Application.props" />
     
