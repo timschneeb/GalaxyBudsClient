@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 
@@ -29,8 +29,8 @@ public class MeteringReportDecoder : BaseMessageDecoder
         using var stream = new MemoryStream(msg.Payload);
         using var reader = new BinaryReader(stream);
         
-        Revision = reader.ReadByte();
-        var connectedSide = reader.ReadByte();
+        Revision = SafeReadByte(reader);
+        var connectedSide = SafeReadByte(reader);
         IsLeftConnected = (byte)((connectedSide & 240) >> 4) == 1;
         IsRightConnected = (byte)(connectedSide & 15) == 1;
 
@@ -41,7 +41,7 @@ public class MeteringReportDecoder : BaseMessageDecoder
 
         if (IsLeftConnected)
         {
-            BatteryL = reader.ReadByte();
+            BatteryL = SafeReadByte(reader);
             A2dpUsingTimeL = reader.ReadInt32();
             EscoUsingTimeL = reader.ReadInt32();
             AncOnTimeL = reader.ReadInt32();
@@ -55,7 +55,7 @@ public class MeteringReportDecoder : BaseMessageDecoder
 
         if (IsRightConnected)
         {
-            BatteryR = reader.ReadByte();
+            BatteryR = SafeReadByte(reader);
             A2dpUsingTimeR = reader.ReadInt32();
             EscoUsingTimeR = reader.ReadInt32();
             AncOnTimeR = reader.ReadInt32();

@@ -40,10 +40,10 @@ public class MultipointInfoDecoder : BaseMessageDecoder
         using var stream = new MemoryStream(msg.Payload);
         using var reader = new BinaryReader(stream); 
         
-        Revision = reader.ReadByte();
-        SupportMultipoint = reader.ReadByte() == 1;
-        MultipointState = (MultipointStates)(reader.ReadByte() == 1 ? 1 : 0);
-        AudioFocusState = (AudioFocusStates)(reader.ReadByte() == 1 ? 1 : 0);
-        StreamingMask = (StreamingMaskFlags)reader.ReadByte();
+        Revision = SafeReadByte(reader);
+        SupportMultipoint = SafeReadByte(reader) == 1;
+        MultipointState = (MultipointStates)(SafeReadByte(reader) == 1 ? 1 : 0);
+        AudioFocusState = (AudioFocusStates)(SafeReadByte(reader) == 1 ? 1 : 0);
+        StreamingMask = (StreamingMaskFlags)SafeReadByte(reader);
     }
 }

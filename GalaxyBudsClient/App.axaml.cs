@@ -32,7 +32,10 @@ using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Scripting.Experiment;
 #endif
 using GalaxyBudsClient.Utils;
+using GalaxyBudsClient.Utils.AutoReconnection;
 using GalaxyBudsClient.Utils.Interface;
+using GalaxyBudsClient.Utils.PendingCommands;
+using GalaxyBudsClient.Utils.TeamsIntegration;
 using Serilog;
 using Application = Avalonia.Application;
 using MainWindow = GalaxyBudsClient.Interface.MainWindow;
@@ -60,6 +63,7 @@ public class App : Application
     private BudsPopup? _popup;
     private bool _popupShown;
     private LegacyWearStates _lastWearState = LegacyWearStates.Both;
+    private TeamsCallMonitor? _teamsCallMonitor;
     
     public override void Initialize()
     {
@@ -130,6 +134,22 @@ public class App : Application
         SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
         
         DeviceMessageCache.Init();
+        
+        // Inicializar sistema de fila de comandos pendentes
+        _ = PendingCommandsManager.Instance;
+        Log.Information("Pending commands manager initialized");
+        
+        // Inicializar monitor do Teams
+        _teamsCallMonitor = TeamsCallMonitor.Initialize();
+        if (Settings.Data.TeamsIntegrationEnabled)
+        {
+            _teamsCallMonitor.Start();
+            Log.Information("Teams integration monitor started");
+        }
+        
+        // Inicializar sistema de reconexão automática
+        AutoReconnectionManager.Instance.Start();
+        Log.Information("Auto reconnection manager initialized");
         
         if (Loc.IsTranslatorModeEnabled)
         {

@@ -733,4 +733,12 @@ Details:</sys:String>
     <sys:String x:Key="rename_ok_title">Earbuds renamed</sys:String>
     <sys:String x:Key="rename_ok">Successfully renamed your earbuds!
 The name change may not be detected by devices (including this one) until you un-pair and re-pair your earbuds.</sys:String>
+    <!--Teams Integration-->
+    <sys:String x:Key="adv_teams_integration">Teams Integration</sys:String>
+    <sys:String x:Key="adv_teams_integration_desc">Automatically disable seamless connection during Teams calls</sys:String>
+    
+    <!--Auto Reconnection-->
+    <sys:String x:Key="adv_auto_reconnection">Auto Reconnection</sys:String>
+    <sys:String x:Key="adv_auto_reconnection_desc">Automatically try to reconnect when earbuds disconnect</sys:String>
+
 </ResourceDictionary>

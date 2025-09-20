@@ -312,6 +312,9 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         }
         try
         {
+            // Marcar como desconexão manual para o sistema de reconexão automática
+            Utils.AutoReconnection.AutoReconnectionManager.Instance.MarkManualDisconnection();
+            
             // Cancel the connection attempt if it's still in progress
             try
             {

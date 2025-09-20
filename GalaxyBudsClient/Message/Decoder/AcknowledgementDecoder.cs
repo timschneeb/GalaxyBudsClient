@@ -17,7 +17,7 @@ public class AcknowledgementDecoder : BaseMessageDecoder
         using var stream = new MemoryStream(msg.Payload);
         using var reader = new BinaryReader(stream); 
         
-        Id = (MsgIds)reader.ReadByte();
+        Id = (MsgIds)SafeReadByte(reader);
         try
         {
             RawParameters = msg.Payload[1..];

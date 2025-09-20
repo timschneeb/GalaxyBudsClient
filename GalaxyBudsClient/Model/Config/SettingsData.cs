@@ -71,6 +71,12 @@ public class SettingsData : ReactiveObject
     /* Battery stats */
     [Reactive] public bool CollectBatteryHistory { set; get; } = true;
 
+    /* Teams Integration */
+    [Reactive] public bool TeamsIntegrationEnabled { set; get; } = false;
+
+    /* Auto Reconnection */
+    [Reactive] public bool AutoReconnectionEnabled { set; get; } = true;
+
     /* Other */
     [Reactive] public bool FirmwareWarningAccepted { set; get; }
     [Reactive] public Event BixbyRemapEvent { set; get; }
