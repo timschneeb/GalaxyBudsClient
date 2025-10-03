@@ -1,8 +1,8 @@
 <!-- ReSharper disable InconsistentNaming -->
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- Swedish name of this language -->
-    <sys:String x:Key="language_name_sv">Svenska</sys:String>
+    <!-- English name of this language -->
+    <sys:String x:Key="language_name_en">Swedish</sys:String>
 
     <!--:::::::: Source code ::::::::-->
 
