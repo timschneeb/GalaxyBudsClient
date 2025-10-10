@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Utils;
 
@@ -24,8 +24,9 @@ public class TapTestModeEventDecoder : BaseMessageDecoder
         using var stream = new MemoryStream(msg.Payload);
         using var reader = new BinaryReader(stream);
 
-        Result = (TapTestResult)reader.ReadByte();
-        var side = reader.ReadByte();
+        // Usar métodos seguros da classe base
+        Result = (TapTestResult)SafeReadByte(reader, 0);
+        var side = SafeReadByte(reader, 0);
         IsLeft = ByteArrayUtils.ValueOfLeft(side) == 1;
         IsRight = ByteArrayUtils.ValueOfRight(side) == 1;
     }
