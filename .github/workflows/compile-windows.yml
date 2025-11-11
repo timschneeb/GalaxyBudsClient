@@ -85,7 +85,18 @@ jobs:
       shell: bash
       run: echo 'version=${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}' >> $GITHUB_OUTPUT
       id: version
-      
+
+    # Ensure NSIS is installed so makensis is available
+    - name: Install NSIS (if missing)
+      if: runner.os == 'Windows'
+      run: choco install nsis -y --no-progress
+
+    - name: Verify makensis is available
+      if: runner.os == 'Windows'
+      run: |
+        where makensis
+        makensis -VERSION
+
     # Make x64 installer
     - name: Download artifact (x64)
       uses: actions/download-artifact@v4
@@ -93,13 +104,21 @@ jobs:
         name: GalaxyBudsClient_win64_portable
         
     - name: Rename artifact (x64)
-      run: ren GalaxyBudsClient.exe "Galaxy Buds Client.exe"
+      shell: pwsh
+      run: |
+        # downloaded artifact is extracted into folder named after artifact
+        $src = Join-Path $PWD 'GalaxyBudsClient_win64_portable\GalaxyBudsClient.exe'
+        if (-Not (Test-Path $src)) { Write-Host "Listing current directory for debugging"; Get-ChildItem -Recurse | Select-Object FullName; throw "Expected file not found: $src" }
+        Move-Item -Path $src -Destination 'Galaxy Buds Client.exe'
     
     - name: Create nsis installer (x64)
       uses: joncloud/makensis-action@v4.1
       with:
         script-file: "install.nsi"
         arguments: "-DBASE_DIR=\"D:\\a\\GalaxyBudsClient\\GalaxyBudsClient\" -DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"64bit\""
+      env:
+        # action expects boolean strings in certain env/input fields; ensure it's a proper boolean-string
+        debug: 'false'
 
     #- name: Sign installer
     #  uses: GabrielAcostaEngler/signtool-code-sign@v1.0.2
@@ -126,13 +145,19 @@ jobs:
         name: GalaxyBudsClient_win32_portable
         
     - name: Rename artifact (x86)
-      run: ren GalaxyBudsClient.exe "Galaxy Buds Client.exe"
+      shell: pwsh
+      run: |
+        $src = Join-Path $PWD 'GalaxyBudsClient_win32_portable\GalaxyBudsClient.exe'
+        if (-Not (Test-Path $src)) { Write-Host "Listing current directory for debugging"; Get-ChildItem -Recurse | Select-Object FullName; throw "Expected file not found: $src" }
+        Move-Item -Path $src -Destination 'Galaxy Buds Client.exe'
 
     - name: Create nsis installer (x86)
       uses: joncloud/makensis-action@v4.1
       with:
         script-file: "install.nsi"
         arguments: "-DBASE_DIR=\"D:\\a\\GalaxyBudsClient\\GalaxyBudsClient\" -DPRODUCT_VERSION=\"${{steps.version.outputs.version}}\" -DPRODUCT_ARCH=\"32bit\""
+      env:
+        debug: 'false'
 
     #- name: Sign installer
     #  uses: GabrielAcostaEngler/signtool-code-sign@v1.0.2
@@ -217,4 +242,3 @@ jobs:
         identifier: timschneeb.GalaxyBudsClient
         version: '${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}'
         token: ${{ secrets.WINGET_TOKEN }}
-
