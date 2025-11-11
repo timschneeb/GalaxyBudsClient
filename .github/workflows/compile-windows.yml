@@ -127,8 +127,8 @@ jobs:
     - name: Rename artifact (x64)
       shell: pwsh
       run: |
-        # downloaded artifact is extracted into folder named after artifact
-        $src = Join-Path $PWD 'GalaxyBudsClient_win64_portable\GalaxyBudsClient.exe'
+        # In download-artifact@v4, artifacts are extracted directly into the current directory
+        $src = Join-Path $PWD 'GalaxyBudsClient.exe'
         if (-Not (Test-Path $src)) { Write-Host "Listing current directory for debugging"; Get-ChildItem -Recurse | Select-Object FullName; throw "Expected file not found: $src" }
         Move-Item -Path $src -Destination 'Galaxy Buds Client.exe'
     
@@ -164,7 +164,8 @@ jobs:
     - name: Rename artifact (x86)
       shell: pwsh
       run: |
-        $src = Join-Path $PWD 'GalaxyBudsClient_win32_portable\GalaxyBudsClient.exe'
+        # In download-artifact@v4, artifacts are extracted directly into the current directory
+        $src = Join-Path $PWD 'GalaxyBudsClient.exe'
         if (-Not (Test-Path $src)) { Write-Host "Listing current directory for debugging"; Get-ChildItem -Recurse | Select-Object FullName; throw "Expected file not found: $src" }
         Move-Item -Path $src -Destination 'Galaxy Buds Client.exe'
 
