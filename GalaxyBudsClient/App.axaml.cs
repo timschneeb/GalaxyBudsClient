@@ -190,11 +190,16 @@ public class App : Application
         _popupShown = false;
     }
     
-    private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateDecoder e)
+    private async void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateDecoder e)
     {
         if (Settings.Data.PopupEnabled)
         {
-            ShowPopup();
+            // Delay popup by 2 seconds to avoid showing notifications for very short/transient connections
+            await Task.Delay(2000);
+
+            // Re-check after waiting in case settings/state changed while we were waiting
+            if (Settings.Data.PopupEnabled)
+                ShowPopup();
         }
             
         // Update dynamic tray icon
