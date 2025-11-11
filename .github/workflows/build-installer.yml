@@ -24,7 +24,7 @@ jobs:
       - name: Build installer
         # adjust path/to/your-script.nsi to the actual .nsi file in your repo
         env:
-          NSIS_SCRIPT: installer/installer.nsi
+          NSIS_SCRIPT: install.nsi
         run: |
           echo Building NSIS installer from "$NSIS_SCRIPT"
           makensis "$NSIS_SCRIPT"
