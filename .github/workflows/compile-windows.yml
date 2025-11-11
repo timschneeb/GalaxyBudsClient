@@ -88,14 +88,35 @@ jobs:
 
     # Ensure NSIS is installed so makensis is available
     - name: Install NSIS (if missing)
-      if: runner.os == 'Windows'
       run: choco install nsis -y --no-progress
 
+    # Refresh the process environment so PATH changes from choco are visible
+    - name: Refresh environment (Chocolatey)
+      shell: cmd
+      run: refreshenv
+
     - name: Verify makensis is available
-      if: runner.os == 'Windows'
+      shell: pwsh
       run: |
-        where makensis
-        makensis -VERSION
+        # Try Get-Command / where first (should succeed after refreshenv)
+        if (Get-Command makensis -ErrorAction SilentlyContinue) {
+          makensis -VERSION
+          exit 0
+        }
+        # Fall back to common install locations
+        $possible = @(
+          Join-Path $env:ProgramFiles 'NSIS\makensis.exe'
+          Join-Path $env:'ProgramFiles(x86)' 'NSIS\makensis.exe'
+        )
+        foreach ($p in $possible) {
+          if (Test-Path $p) {
+            & $p -VERSION
+            exit 0
+          }
+        }
+        # Last resort, show PATH and fail with a clear message
+        where makensis || Write-Host "PATH: $env:PATH"
+        throw "makensis not found. Chocolatey may not have installed NSIS or PATH wasn't refreshed."
 
     # Make x64 installer
     - name: Download artifact (x64)
