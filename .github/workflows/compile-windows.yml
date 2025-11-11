@@ -145,10 +145,6 @@ jobs:
     #  uses: GabrielAcostaEngler/signtool-code-sign@v1.0.2
     #  with:
     #    certificate: ${{ secrets.SIGN_CERTIFICATE }}
-    #    cert-password: ${{ secrets.SIGN_PASSWORD }}
-    #    cert-sha1: 048de957759a1837a967e61b8c97c442f7b9ec24
-    #    folder: .
-    #    timestamp-server: http://timestamp.digicert.com
 
     - name: Upload artifact (x64)
       uses: actions/upload-artifact@v4
@@ -207,7 +203,7 @@ jobs:
         repository: timschneeb/GalaxyBudsClient
         releases-only: true
       id: last_release  
-      
+    
     - name: Prepare version information (2/3)
       uses: benjlevesque/short-sha@v3.0
       id: short-sha
@@ -250,7 +246,7 @@ jobs:
         repository: timschneeb/GalaxyBudsClient
         releases-only: true
       id: last_release  
-      
+    
     - name: Prepare version information (2/2)
       uses: benjlevesque/short-sha@v3.0
       id: short-sha
