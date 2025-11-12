@@ -222,6 +222,13 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
             BluetoothErrorAlternative?.Invoke(this, exception);
             return;
         }
+        
+        // Always notify reconnection manager first, before checking SuppressDisconnectionEvents
+        if (!Design.IsDesignMode)
+        {
+            BluetoothReconnectionManager.Instance.OnBluetoothErrorOccurred(exception);
+        }
+        
         if (SuppressDisconnectionEvents) 
             return;
         
@@ -463,8 +470,16 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
             LastErrorMessage = Strings.Connlost;
             IsConnectedAlternative = false;
             DisconnectedAlternative?.Invoke(this, reason);
+            return;
         }
-        else if (!SuppressDisconnectionEvents)
+        
+        // Always notify reconnection manager first, before checking SuppressDisconnectionEvents
+        if (!Design.IsDesignMode)
+        {
+            BluetoothReconnectionManager.Instance.OnDisconnectionOccurred(reason);
+        }
+        
+        if (!SuppressDisconnectionEvents)
         {
             LastErrorMessage = Strings.Connlost;
             IsConnected = false;

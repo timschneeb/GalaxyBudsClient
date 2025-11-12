@@ -42,12 +42,30 @@ public sealed class BluetoothReconnectionManager : IDisposable
     public void Initialize(BluetoothImpl bluetoothImpl)
     {
         if (_bluetoothImpl != null)
+        {
+            Log.Debug("BluetoothReconnectionManager: Already initialized, skipping");
             return; // Already initialized
+        }
             
         _bluetoothImpl = bluetoothImpl;
+        // Still subscribe to events for when they are invoked
         _bluetoothImpl.Disconnected += OnDisconnected;
         _bluetoothImpl.BluetoothError += OnBluetoothError;
         _bluetoothImpl.Connected += OnConnected;
+        
+        Log.Information("BluetoothReconnectionManager: Initialized successfully, auto-reconnect enabled: {Enabled}", 
+            Settings.Data.AutoReconnectEnabled);
+    }
+    
+    // Public methods called directly from BluetoothImpl (bypass event system)
+    public void OnDisconnectionOccurred(string reason)
+    {
+        OnDisconnected(null, reason);
+    }
+    
+    public void OnBluetoothErrorOccurred(BluetoothException exception)
+    {
+        OnBluetoothError(null, exception);
     }
 
     public void Dispose()
@@ -77,6 +95,9 @@ public sealed class BluetoothReconnectionManager : IDisposable
 
     private void OnDisconnected(object? sender, string reason)
     {
+        Log.Debug("BluetoothReconnectionManager.OnDisconnected called: AutoReconnectEnabled={Enabled}, Reason={Reason}, IsManualDisconnect={IsManual}", 
+            Settings.Data.AutoReconnectEnabled, reason, _isManualDisconnect);
+        
         if (!Settings.Data.AutoReconnectEnabled)
         {
             Log.Debug("BluetoothReconnectionManager: Auto-reconnect disabled, ignoring disconnection");
@@ -105,6 +126,9 @@ public sealed class BluetoothReconnectionManager : IDisposable
 
     private void OnBluetoothError(object? sender, BluetoothException exception)
     {
+        Log.Debug("BluetoothReconnectionManager.OnBluetoothError called: AutoReconnectEnabled={Enabled}, ErrorCode={Code}, Message={Message}, IsManual={IsManual}", 
+            Settings.Data.AutoReconnectEnabled, exception.ErrorCode, exception.ErrorMessage ?? exception.Message, _isManualDisconnect);
+        
         if (!Settings.Data.AutoReconnectEnabled)
         {
             Log.Debug("BluetoothReconnectionManager: Auto-reconnect disabled, ignoring error");
