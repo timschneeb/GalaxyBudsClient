@@ -563,6 +563,8 @@ You might need to manually reconnect your earbuds.</sys:String>
 
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Advanced settings</sys:String>
+    <sys:String x:Key="adv_auto_reconnect">Automatic Bluetooth reconnection</sys:String>
+    <sys:String x:Key="adv_auto_reconnect_desc">Automatically reconnect to your earbuds when the connection is lost unexpectedly. Up to 5 retry attempts with smart timeout detection.</sys:String>
     <sys:String x:Key="adv_seamless">Seamless earbud connection</sys:String>
     <sys:String x:Key="adv_seamless_desc">Switch quickly to nearby devices without disconnecting your earbuds or turning on pairing mode</sys:String>
     <sys:String x:Key="adv_pause_playback">Pause playback if earbuds are taken off</sys:String>

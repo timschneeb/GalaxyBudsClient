@@ -391,6 +391,8 @@ Möglicherweise musst du sie manuell neuverbinden.</sys:String>
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Erweiterte Einstellungen</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} oder höher</sys:String>
+    <sys:String x:Key="adv_auto_reconnect">Automatic Bluetooth reconnection</sys:String>
+    <sys:String x:Key="adv_auto_reconnect_desc">Automatically reconnect to your earbuds when the connection is lost unexpectedly. Up to 5 retry attempts with smart timeout detection.</sys:String>
     <sys:String x:Key="adv_seamless">Nahtlose Verbindung</sys:String>
     <sys:String x:Key="adv_seamless_desc">Wechseln Sie schnell zu Geräten in der Nähe, ohne die Ohrhörer zu trennen oder den Pairing-Modus zu aktivieren</sys:String>
     <sys:String x:Key="adv_resume_playback">Setze die Wiedergabe fort, wenn die Buds getragen werden</sys:String>

@@ -271,6 +271,8 @@
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Pengaturan Lebih Lanjut</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} atau terbaru</sys:String>
+    <sys:String x:Key="adv_auto_reconnect">Automatic Bluetooth reconnection</sys:String>
+    <sys:String x:Key="adv_auto_reconnect_desc">Automatically reconnect to your earbuds when the connection is lost unexpectedly. Up to 5 retry attempts with smart timeout detection.</sys:String>
     <sys:String x:Key="adv_seamless">Koneksi Earbud Otomatis</sys:String>
     <sys:String x:Key="adv_seamless_desc">Beralih dengan cepat ke perangkat terdekat tanpa melepaskan earbud atau mengaktifkan mode pairing</sys:String>
     <sys:String x:Key="adv_resume_playback">Lanjutkan pemutaran media kembali saat Earbuds digunakan</sys:String>

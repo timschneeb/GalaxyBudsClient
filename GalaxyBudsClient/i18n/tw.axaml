@@ -435,6 +435,8 @@
     <!--Advanced page-->
     <sys:String x:Key="adv_header">耳機設定</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} 或更新的版本。</sys:String>
+    <sys:String x:Key="adv_auto_reconnect">Automatic Bluetooth reconnection</sys:String>
+    <sys:String x:Key="adv_auto_reconnect_desc">Automatically reconnect to your earbuds when the connection is lost unexpectedly. Up to 5 retry attempts with smart timeout detection.</sys:String>
     <sys:String x:Key="adv_seamless">流暢耳機連接</sys:String>
     <sys:String x:Key="adv_seamless_desc">無須中斷連接耳機或開啟配對模式即可快速切換附近裝置。</sys:String>
     <sys:String x:Key="adv_resume_playback">入耳偵測</sys:String>

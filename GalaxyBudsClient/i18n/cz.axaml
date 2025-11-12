@@ -562,6 +562,8 @@ Možná bude nutné sluchátka do uší znovu připojit ručně.</sys:String>
 
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Pokročilá nastavení</sys:String>
+    <sys:String x:Key="adv_auto_reconnect">Automatic Bluetooth reconnection</sys:String>
+    <sys:String x:Key="adv_auto_reconnect_desc">Automatically reconnect to your earbuds when the connection is lost unexpectedly. Up to 5 retry attempts with smart timeout detection.</sys:String>
     <sys:String x:Key="adv_seamless">Jednoduché připojování sluchátek</sys:String>
     <sys:String x:Key="adv_seamless_desc">Umožňuje rychle připojit sluchátka k dalšímu zařízení bez nutnosti je odpojovat nebo zapínat režim párování</sys:String>
     <sys:String x:Key="adv_resume_playback">Začít přehrávat když jsou sluchátka v uchu</sys:String>

@@ -556,6 +556,8 @@ Você pode precisar reconectar os fones manualmente.</sys:String>
 
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Configurações avançadas</sys:String>
+    <sys:String x:Key="adv_auto_reconnect">Automatic Bluetooth reconnection</sys:String>
+    <sys:String x:Key="adv_auto_reconnect_desc">Automatically reconnect to your earbuds when the connection is lost unexpectedly. Up to 5 retry attempts with smart timeout detection.</sys:String>
     <sys:String x:Key="adv_seamless">Conexão contínua dos fones</sys:String>
     <sys:String x:Key="adv_seamless_desc">Troque rapidamente para dispositivos próximos sem desconectar seus fones ou ativar o modo de emparelhamento</sys:String>
     <sys:String x:Key="adv_pause_playback">Pausar reprodução se os fones forem removidos</sys:String>

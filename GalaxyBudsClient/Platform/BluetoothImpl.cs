@@ -131,6 +131,12 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         EventDispatcher.Instance.EventReceived += OnEventReceived;
         MessageReceived += SppMessageReceiver.Instance.MessageReceiver;
         InvalidDataReceived += OnInvalidDataReceived;
+        
+        // Initialize reconnection manager
+        if (!Design.IsDesignMode)
+        {
+            BluetoothReconnectionManager.Instance.Initialize(this);
+        }
     }
 
     public bool SetAltMode(bool altMode)
@@ -187,6 +193,11 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
     {
         if (e == Event.Connect && !IsConnected)
         {
+            // Reset manual disconnect flag when user initiates connection
+            if (!Design.IsDesignMode)
+            {
+                BluetoothReconnectionManager.Instance.ResetManualDisconnectFlag();
+            }
             await ConnectAsync();
         }
     }
@@ -211,6 +222,13 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
             BluetoothErrorAlternative?.Invoke(this, exception);
             return;
         }
+        
+        // Always notify reconnection manager first, before checking SuppressDisconnectionEvents
+        if (!Design.IsDesignMode)
+        {
+            BluetoothReconnectionManager.Instance.OnBluetoothErrorOccurred(exception);
+        }
+        
         if (SuppressDisconnectionEvents) 
             return;
         
@@ -257,6 +275,13 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
             Log.Error("BluetoothImpl: Connection attempt in wrong mode {Alternative}", alternative);
             return false;
         }
+        
+        // Reset manual disconnect flag when user initiates connection
+        if (!Design.IsDesignMode && !alternative)
+        {
+            BluetoothReconnectionManager.Instance.ResetManualDisconnectFlag();
+        }
+        
         // Create new cancellation token source if the previous one has already been used
         if(_connectCancelSource.IsCancellationRequested)
             _connectCancelSource = new CancellationTokenSource();
@@ -445,8 +470,16 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
             LastErrorMessage = Strings.Connlost;
             IsConnectedAlternative = false;
             DisconnectedAlternative?.Invoke(this, reason);
+            return;
         }
-        else if (!SuppressDisconnectionEvents)
+        
+        // Always notify reconnection manager first, before checking SuppressDisconnectionEvents
+        if (!Design.IsDesignMode)
+        {
+            BluetoothReconnectionManager.Instance.OnDisconnectionOccurred(reason);
+        }
+        
+        if (!SuppressDisconnectionEvents)
         {
             LastErrorMessage = Strings.Connlost;
             IsConnected = false;

@@ -528,6 +528,8 @@ Devam etmeden önce her iki kulaklığın da açık olduğundan emin olun.</sys:
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Gelişmiş Ayarlar</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} veya daha sonrası</sys:String>
+    <sys:String x:Key="adv_auto_reconnect">Automatic Bluetooth reconnection</sys:String>
+    <sys:String x:Key="adv_auto_reconnect_desc">Automatically reconnect to your earbuds when the connection is lost unexpectedly. Up to 5 retry attempts with smart timeout detection.</sys:String>
     <sys:String x:Key="adv_seamless">Kusursuz Kulaklık Bağlantısı</sys:String>
     <sys:String x:Key="adv_seamless_desc">Kulaklığınızın bağlantısını kesmeden veya eşleştirme modunu açmadan yakındaki cihazlara hızlıca geçiş yapın.</sys:String>
     <sys:String x:Key="adv_pause_playback">Kulaklıklar çıkarıldığında durdur</sys:String>

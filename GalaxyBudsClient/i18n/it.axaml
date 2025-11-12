@@ -347,6 +347,8 @@
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Impostazioni avanzate</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} o più recente</sys:String>
+    <sys:String x:Key="adv_auto_reconnect">Automatic Bluetooth reconnection</sys:String>
+    <sys:String x:Key="adv_auto_reconnect_desc">Automatically reconnect to your earbuds when the connection is lost unexpectedly. Up to 5 retry attempts with smart timeout detection.</sys:String>
     <sys:String x:Key="adv_seamless">Connessione senza interruzione</sys:String>
     <sys:String x:Key="adv_seamless_desc">Passa rapidamente ai dispositivi nelle vicinanze senza disconnettere gli auricolari o attivare la modalità di associazione</sys:String>
     <sys:String x:Key="adv_resume_playback">Riprendi/avvia la riproduzione se gli auricolari sono indossati</sys:String>
