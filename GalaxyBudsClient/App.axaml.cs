@@ -98,11 +98,11 @@ public class App : Application
     
     public override void OnFrameworkInitializationCompleted()
     {
-        /*if (BluetoothImpl.HasValidDevice)
+        if (BluetoothImpl.HasValidDevice)
         {
             Task.Run(() => BluetoothImpl.Instance.ConnectAsync());
             _ = TrayManager.Instance.RebuildAsync();
-        }*/
+        }
         
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
