@@ -5,8 +5,8 @@
         xmlns:interface="clr-namespace:GalaxyBudsClient.Interface"
         mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="640"
         x:Class="GalaxyBudsClient.Interface.MainWindow"
-        MinWidth="470"
-        MinHeight="640" Width="700"
+        Width="700" Height="640"
+        CanResize="False"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/icon.ico"
         Title="Galaxy Buds Manager">
