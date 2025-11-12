@@ -222,7 +222,7 @@ public sealed class BluetoothReconnectionManager : IDisposable
                     // Try to disconnect to clean up
                     try
                     {
-                        await _bluetoothImpl.DisconnectAsync();
+                        await _bluetoothImpl.DisconnectAsync(isAutomaticCleanup: true);
                     }
                     catch (Exception ex)
                     {

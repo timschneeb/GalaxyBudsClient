@@ -321,7 +321,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         }
     }
 
-    public async Task DisconnectAsync(bool alternative = false)
+    public async Task DisconnectAsync(bool alternative = false, bool isAutomaticCleanup = false)
     {
         if (!alternative && AlternativeModeEnabled)
         {
@@ -348,15 +348,20 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
             } 
 
             await _backend.DisconnectAsync();
+            
+            var disconnectReason = isAutomaticCleanup 
+                ? "Automatic cleanup disconnect" 
+                : "User requested disconnect";
+            
             if (alternative)
             {
                 IsConnectedAlternative = false;
-                DisconnectedAlternative?.Invoke(this, "User requested disconnect");
+                DisconnectedAlternative?.Invoke(this, disconnectReason);
             }
             else
             {
                 IsConnected = false;
-                Disconnected?.Invoke(this, "User requested disconnect");
+                Disconnected?.Invoke(this, disconnectReason);
             }
             LastErrorMessage = string.Empty;
         }
