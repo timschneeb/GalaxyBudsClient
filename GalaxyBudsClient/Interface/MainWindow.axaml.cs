@@ -134,6 +134,10 @@ public partial class MainWindow : StyledAppWindow
             {
                 WindowState = WindowState.Normal;
             }
+            
+            // Reset window size to fixed dimensions when restoring from tray
+            Width = 700;
+            Height = 640;
                 
             if (PlatformUtils.IsLinux)
             {
