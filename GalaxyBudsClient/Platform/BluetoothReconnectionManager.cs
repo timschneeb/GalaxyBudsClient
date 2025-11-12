@@ -150,8 +150,8 @@ public sealed class BluetoothReconnectionManager : IDisposable
     {
         if (_isReconnecting)
         {
-            Log.Debug("BluetoothReconnectionManager: Reconnection already in progress");
-            return;
+            Log.Debug("BluetoothReconnectionManager: Reconnection already in progress, restarting");
+            // Don't return - we want to restart the reconnection
         }
 
         _isReconnecting = true;
@@ -176,6 +176,8 @@ public sealed class BluetoothReconnectionManager : IDisposable
 
     private async Task ReconnectionLoop(CancellationToken cancellationToken)
     {
+        Log.Information("BluetoothReconnectionManager: Reconnection loop started");
+        
         while (_currentRetryAttempt < MaxRetryAttempts && !cancellationToken.IsCancellationRequested)
         {
             try
@@ -190,7 +192,10 @@ public sealed class BluetoothReconnectionManager : IDisposable
                 await Task.Delay(delayMs, cancellationToken);
                 
                 if (cancellationToken.IsCancellationRequested)
+                {
+                    Log.Debug("BluetoothReconnectionManager: Reconnection cancelled during delay");
                     break;
+                }
 
                 Log.Information("BluetoothReconnectionManager: Attempting to reconnect...");
                 
@@ -269,6 +274,7 @@ public sealed class BluetoothReconnectionManager : IDisposable
         
         _isReconnecting = false;
         _currentRetryAttempt = 0;
+        Log.Information("BluetoothReconnectionManager: Reconnection loop ended");
     }
 
     public void ResetManualDisconnectFlag()
