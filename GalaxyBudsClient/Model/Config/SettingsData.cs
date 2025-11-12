@@ -42,6 +42,7 @@ public class SettingsData : ReactiveObject
     [Reactive] public bool UseBluetoothWinRt { set; get; } = true;
     [ReadOnly(true)] public ObservableCollection<Device> Devices { set; get; } = [];
     [Reactive] public string? LastDeviceMac { set; get; }
+    [Reactive] public bool AutoReconnectEnabled { set; get; } = true;
 
     
     /* Touch actions */

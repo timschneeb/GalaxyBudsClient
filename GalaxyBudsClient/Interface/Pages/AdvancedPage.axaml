@@ -22,6 +22,14 @@
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
 
             <controls:SettingsGroup>
+                <controls:SettingsSwitchItem Content="{ext:Translate {x:Static i18N:Keys.AdvAutoReconnect}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.AdvAutoReconnectDesc}}"
+                                             IsChecked="{Binding AutoReconnectEnabled, Source={x:Static config:Settings.Data}}"
+                                             Symbol="ArrowSync"
+                                             IsClickEnabled="True" />
+            </controls:SettingsGroup>
+
+            <controls:SettingsGroup>
                 <Interaction.Behaviors>
                     <ext:RequiresConnectedDeviceBehavior />
                 </Interaction.Behaviors>
