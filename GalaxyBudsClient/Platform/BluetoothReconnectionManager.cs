@@ -31,20 +31,34 @@ public sealed class BluetoothReconnectionManager : IDisposable
     private CancellationTokenSource? _timeoutCancelSource;
     private bool _isManualDisconnect;
     private bool _isReconnecting;
+    private BluetoothImpl? _bluetoothImpl;
 
     private BluetoothReconnectionManager()
     {
-        BluetoothImpl.Instance.Disconnected += OnDisconnected;
-        BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
-        BluetoothImpl.Instance.Connected += OnConnected;
+        // Don't subscribe to events here to avoid circular dependency
+        // Initialize will be called by BluetoothImpl after construction
+    }
+    
+    public void Initialize(BluetoothImpl bluetoothImpl)
+    {
+        if (_bluetoothImpl != null)
+            return; // Already initialized
+            
+        _bluetoothImpl = bluetoothImpl;
+        _bluetoothImpl.Disconnected += OnDisconnected;
+        _bluetoothImpl.BluetoothError += OnBluetoothError;
+        _bluetoothImpl.Connected += OnConnected;
     }
 
     public void Dispose()
     {
         StopReconnection();
-        BluetoothImpl.Instance.Disconnected -= OnDisconnected;
-        BluetoothImpl.Instance.BluetoothError -= OnBluetoothError;
-        BluetoothImpl.Instance.Connected -= OnConnected;
+        if (_bluetoothImpl != null)
+        {
+            _bluetoothImpl.Disconnected -= OnDisconnected;
+            _bluetoothImpl.BluetoothError -= OnBluetoothError;
+            _bluetoothImpl.Connected -= OnConnected;
+        }
     }
 
     private void OnConnected(object? sender, EventArgs e)
@@ -156,12 +170,18 @@ public sealed class BluetoothReconnectionManager : IDisposable
 
                 Log.Information("BluetoothReconnectionManager: Attempting to reconnect...");
                 
+                if (_bluetoothImpl == null)
+                {
+                    Log.Error("BluetoothReconnectionManager: BluetoothImpl not initialized");
+                    break;
+                }
+                
                 // Start timeout detection for silent failures
                 _timeoutCancelSource?.Dispose();
                 _timeoutCancelSource = new CancellationTokenSource();
                 var timeoutTask = Task.Delay(SilentFailureTimeoutMs, _timeoutCancelSource.Token);
                 
-                var connectTask = BluetoothImpl.Instance.ConnectAsync();
+                var connectTask = _bluetoothImpl.ConnectAsync();
                 var completedTask = await Task.WhenAny(connectTask, timeoutTask);
                 
                 if (completedTask == timeoutTask && !_timeoutCancelSource.Token.IsCancellationRequested)
@@ -173,7 +193,7 @@ public sealed class BluetoothReconnectionManager : IDisposable
                     // Try to disconnect to clean up
                     try
                     {
-                        await BluetoothImpl.Instance.DisconnectAsync();
+                        await _bluetoothImpl.DisconnectAsync();
                     }
                     catch (Exception ex)
                     {

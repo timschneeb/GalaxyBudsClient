@@ -135,7 +135,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
         // Initialize reconnection manager
         if (!Design.IsDesignMode)
         {
-            _ = BluetoothReconnectionManager.Instance;
+            BluetoothReconnectionManager.Instance.Initialize(this);
         }
     }
 
