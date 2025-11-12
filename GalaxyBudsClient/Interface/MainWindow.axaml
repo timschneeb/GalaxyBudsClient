@@ -6,7 +6,7 @@
         mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="640"
         x:Class="GalaxyBudsClient.Interface.MainWindow"
         MinWidth="470"
-        Height="640" Width="700"
+        MinHeight="640" Width="700"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/icon.ico"
         Title="Galaxy Buds Manager">
