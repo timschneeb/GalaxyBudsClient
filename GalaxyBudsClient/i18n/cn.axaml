@@ -566,6 +566,8 @@
     <sys:String x:Key="adv_header">高级设置</sys:String>
     <sys:String x:Key="adv_pause_playback">当耳机被摘下时停止播放</sys:String>
     <sys:String x:Key="adv_pause_playback_desc">当至少一个接近传感器发现摘下时，发送全局播放/暂停状态变更事件（仅桌面系统）</sys:String>
+    <sys:String x:Key="adv_auto_reconnect">Automatic Bluetooth reconnection</sys:String>
+    <sys:String x:Key="adv_auto_reconnect_desc">Automatically reconnect to your earbuds when the connection is lost unexpectedly. Up to 5 retry attempts with smart timeout detection.</sys:String>
     <sys:String x:Key="adv_seamless">无缝耳机连接</sys:String>
     <sys:String x:Key="adv_seamless_desc">快速切换到附近的设备，而无需断开耳机或打开配对模式</sys:String>
     <sys:String x:Key="adv_resume_playback">当设备被佩戴/恢复/启动媒体播放</sys:String>

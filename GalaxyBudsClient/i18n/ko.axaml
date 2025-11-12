@@ -477,6 +477,8 @@
     <!--Advanced page-->
     <sys:String x:Key="adv_header">고급 설정</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} 또는 이후 버전</sys:String>
+    <sys:String x:Key="adv_auto_reconnect">Automatic Bluetooth reconnection</sys:String>
+    <sys:String x:Key="adv_auto_reconnect_desc">Automatically reconnect to your earbuds when the connection is lost unexpectedly. Up to 5 retry attempts with smart timeout detection.</sys:String>
     <sys:String x:Key="adv_seamless">이어버드 끊김 없이 전환하기</sys:String>
     <sys:String x:Key="adv_seamless_desc">이어버드 연결을 끊지 않고 다른 디바이스와 연결해 보세요. 삼성 계정에 로그인되어 있거나 (삼성 기기 전용) 이어버드를 등록한 적이 있으면 바로 연결할 수 있습니다. 간혹 원하지 않는 디바이스와 연결될 수도 있으니 유의하세요.</sys:String>
     <sys:String x:Key="adv_resume_playback">버즈 착용 시 재생 재개/시작하기</sys:String>

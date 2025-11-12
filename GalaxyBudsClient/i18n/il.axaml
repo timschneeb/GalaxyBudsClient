@@ -456,6 +456,8 @@
     <!--Advanced page-->
     <sys:String x:Key="adv_header">מתקדמות הגדרות</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} יותר חדש או</sys:String>
+    <sys:String x:Key="adv_auto_reconnect">Automatic Bluetooth reconnection</sys:String>
+    <sys:String x:Key="adv_auto_reconnect_desc">Automatically reconnect to your earbuds when the connection is lost unexpectedly. Up to 5 retry attempts with smart timeout detection.</sys:String>
     <sys:String x:Key="adv_seamless">קליל אוזניות חיבור</sys:String>
     <sys:String x:Key="adv_seamless_desc">התאמה למצב לעבור או להתנתק מבלי מכשירים בין בקלות החלף</sys:String>
     <sys:String x:Key="adv_resume_playback">מוכנסות האוזניות אם נגינה השהה או הפעל</sys:String>

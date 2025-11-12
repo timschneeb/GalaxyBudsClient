@@ -272,6 +272,8 @@
     <!--Advanced page-->
     <sys:String x:Key="adv_header">고급 설정</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} または以上のバージョン</sys:String>
+    <sys:String x:Key="adv_auto_reconnect">Automatic Bluetooth reconnection</sys:String>
+    <sys:String x:Key="adv_auto_reconnect_desc">Automatically reconnect to your earbuds when the connection is lost unexpectedly. Up to 5 retry attempts with smart timeout detection.</sys:String>
     <sys:String x:Key="adv_seamless">イヤホンをシームレスに接続</sys:String>
     <sys:String x:Key="adv_seamless_desc">イヤホンの接続を解除したりペアリングモードにしたりすることなく素早く近くの他のデバイスに切り替えます。</sys:String>
     <sys:String x:Key="adv_resume_playback">イヤホンを装着時にプレイバック再開/開始</sys:String>

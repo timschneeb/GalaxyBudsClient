@@ -387,6 +387,8 @@
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Ρυθμίσεις για προχωρημένους</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} or later</sys:String>
+    <sys:String x:Key="adv_auto_reconnect">Automatic Bluetooth reconnection</sys:String>
+    <sys:String x:Key="adv_auto_reconnect_desc">Automatically reconnect to your earbuds when the connection is lost unexpectedly. Up to 5 retry attempts with smart timeout detection.</sys:String>
     <sys:String x:Key="adv_seamless">Απρόσκοπτη σύνδεση ακουστικών</sys:String>
     <sys:String x:Key="adv_seamless_desc">Γρήγορη εναλλαγή σε κοντινές συσκευές χωρίς αποσύνδεση των ακουστικών σας ή ενεργοποίηση λειτουργίας σύζευξης</sys:String>
     <sys:String x:Key="adv_resume_playback">Παύση/έναρξη αναπαραγωγής αν τα ακουστικά φορεθούν</sys:String>

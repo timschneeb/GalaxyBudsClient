@@ -433,6 +433,8 @@ Mogelijk moet je je oordopjes handmatig opnieuw aansluiten.</sys:String>
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Geavanceerde instellingen</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} of nieuwer</sys:String>
+    <sys:String x:Key="adv_auto_reconnect">Automatic Bluetooth reconnection</sys:String>
+    <sys:String x:Key="adv_auto_reconnect_desc">Automatically reconnect to your earbuds when the connection is lost unexpectedly. Up to 5 retry attempts with smart timeout detection.</sys:String>
     <sys:String x:Key="adv_seamless">Naadloze aansluiting voor oordopjes</sys:String>
     <sys:String x:Key="adv_seamless_desc">Schakel snel naar apparaten in de buurt zonder je oordopjes los te koppelen of de koppelmodus in te schakelen</sys:String>
     <sys:String x:Key="adv_resume_playback">Afspelen hervatten/starten als Buds worden gedragen</sys:String>

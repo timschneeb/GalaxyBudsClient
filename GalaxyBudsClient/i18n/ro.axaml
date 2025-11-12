@@ -398,6 +398,8 @@ S-ar putea să fie nevoie să vă reconectați manual Buds-urile.</sys:String>
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Setări Avansate</sys:String>
     <sys:String x:Key="adv_required_firmware_later">{0} sau o versiune ulterioară</sys:String>
+    <sys:String x:Key="adv_auto_reconnect">Automatic Bluetooth reconnection</sys:String>
+    <sys:String x:Key="adv_auto_reconnect_desc">Automatically reconnect to your earbuds when the connection is lost unexpectedly. Up to 5 retry attempts with smart timeout detection.</sys:String>
     <sys:String x:Key="adv_seamless">Conexiunea rapidă a Buds-urilor</sys:String>
     <sys:String x:Key="adv_seamless_desc">Comutați rapid la dispozitivele din apropiere fără a vă deconecta Buds-urile sau a activa modul de asociere</sys:String>
     <sys:String x:Key="adv_resume_playback">Reluați/porniți redarea dacă Buds-urile sunt purtate</sys:String>
