@@ -157,6 +157,7 @@ public sealed class BluetoothReconnectionManager : IDisposable
                 Log.Information("BluetoothReconnectionManager: Attempting to reconnect...");
                 
                 // Start timeout detection for silent failures
+                _timeoutCancelSource?.Dispose();
                 _timeoutCancelSource = new CancellationTokenSource();
                 var timeoutTask = Task.Delay(SilentFailureTimeoutMs, _timeoutCancelSource.Token);
                 
@@ -181,6 +182,11 @@ public sealed class BluetoothReconnectionManager : IDisposable
                     
                     continue;
                 }
+                
+                // Cancel and dispose timeout token after connect completes
+                _timeoutCancelSource?.Cancel();
+                _timeoutCancelSource?.Dispose();
+                _timeoutCancelSource = null;
                 
                 var connectResult = await connectTask;
                 
