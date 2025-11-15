@@ -102,6 +102,7 @@
     <sys:String x:Key="tray_enable_anc">Aktif gürültü engellemeyi aç</sys:String>
     <sys:String x:Key="tray_disable_anc">Aktif gürültü engellemeyi kapat</sys:String>
     <sys:String x:Key="tray_switch_noise">Gürültü engelleme geçişi yap</sys:String>
+    <sys:String x:Key="tray_show_battery_details">Show battery details</sys:String>
     <sys:String x:Key="tray_quit">Çık</sys:String>
 
 

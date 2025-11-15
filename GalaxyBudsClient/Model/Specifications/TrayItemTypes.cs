@@ -10,5 +10,6 @@ public enum TrayItemTypes
     Open,
     Connect,
     Quit,
+    ShowBatteryPopup,
     User
 }

@@ -66,6 +66,9 @@ internal class TrayManager
             
         switch (e)
         {
+            case TrayItemTypes.ShowBatteryPopup:
+                EventDispatcher.Instance.Dispatch(Event.ShowBatteryPopup);
+                break;
             case TrayItemTypes.ToggleNoiseControl:
                 var ncVm = MainView.Instance!.ResolveViewModelByType<NoiseControlPageViewModel>();
                 if (ncVm != null)
@@ -120,7 +123,7 @@ internal class TrayManager
         await RebuildAsync();
     }
 
-    private static IEnumerable<NativeMenuItemBase?> RebuildBatteryInfo()
+    private IEnumerable<NativeMenuItemBase?> RebuildBatteryInfo()
     {
         var bsu = DeviceMessageCache.Instance.BasicStatusUpdate!;
         var batteryCase = bsu.BatteryCase;
@@ -141,6 +144,12 @@ internal class TrayManager
                 ? new NativeMenuItem($"{Strings.Case}: {batteryCase}%") { IsEnabled = false }
                 : null,
 
+            new NativeMenuItem(Strings.TrayShowBatteryDetails)
+            {
+                Command = new MiniCommand(OnTrayMenuCommand),
+                CommandParameter = TrayItemTypes.ShowBatteryPopup
+            },
+            
             new NativeMenuItemSeparator()
 
         ];

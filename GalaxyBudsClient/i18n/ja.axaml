@@ -82,6 +82,7 @@
     <sys:String x:Key="tray_disable_ambient_sound">周辺の音OFF</sys:String>
     <sys:String x:Key="tray_enable_eq">イコライザーON</sys:String>
     <sys:String x:Key="tray_disable_eq">イコライザーOFF</sys:String>
+    <sys:String x:Key="tray_show_battery_details">Show battery details</sys:String>
     <sys:String x:Key="tray_quit">終了</sys:String>
 
 

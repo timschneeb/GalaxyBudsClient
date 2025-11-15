@@ -5,9 +5,9 @@
         xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
         mc:Ignorable="d"
         x:Class="GalaxyBudsClient.Interface.Dialogs.BudsPopup"
-        Height="205" 
-        Width="330"
-        MaxWidth="330"
+        Height="220" 
+        Width="380"
+        MaxWidth="380"
         CanResize="False"
         WindowStartupLocation="Manual"
         ExtendClientAreaChromeHints="NoChrome"
@@ -71,7 +71,7 @@
                    Content="Blank's Galaxy Buds"
                    FontSize="18" />
             
-            <controls:EarbudCompactStatusUnit Grid.Row="1" />
+            <controls:EarbudStatusUnit Grid.Row="1" />
         </Grid>
     </Border>
 </Window>

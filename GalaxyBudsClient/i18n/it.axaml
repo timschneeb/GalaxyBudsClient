@@ -91,6 +91,7 @@
     <sys:String x:Key="tray_disable_eq">Disattiva equalizzatore</sys:String>
     <sys:String x:Key="tray_enable_anc">Attiva riduzione attiva del rumore</sys:String>
     <sys:String x:Key="tray_disable_anc">Disattiva riduzione attiva del rumore</sys:String>
+    <sys:String x:Key="tray_show_battery_details">Show battery details</sys:String>
     <sys:String x:Key="tray_quit">Esci</sys:String>
 
 

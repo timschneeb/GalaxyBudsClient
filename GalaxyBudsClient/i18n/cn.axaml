@@ -92,6 +92,7 @@
     <sys:String x:Key="tray_enable_anc">开启降噪</sys:String>
     <sys:String x:Key="tray_disable_anc">关闭降噪</sys:String>
     <sys:String x:Key="tray_switch_noise">切换降噪模式</sys:String>
+    <sys:String x:Key="tray_show_battery_details">Show battery details</sys:String>
     <sys:String x:Key="tray_quit">退出</sys:String>
 
     <!--:::::::: XAML files (static) ::::::::-->

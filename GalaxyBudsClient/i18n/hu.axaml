@@ -88,6 +88,7 @@
     <sys:String x:Key="tray_enable_anc">Aktív zajszűrés engedélyezése</sys:String>
     <sys:String x:Key="tray_disable_anc">Aktív zajszűrés kikapcsolása</sys:String>
     <sys:String x:Key="tray_switch_noise">Kapcsolja be a zajszabályozást</sys:String>
+    <sys:String x:Key="tray_show_battery_details">Show battery details</sys:String>
     <sys:String x:Key="tray_quit">Kilépés</sys:String>
 
 

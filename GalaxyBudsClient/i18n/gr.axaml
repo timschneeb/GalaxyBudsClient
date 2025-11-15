@@ -88,6 +88,7 @@
     <sys:String x:Key="tray_enable_anc">Ενεργοποίηση εξάλειψης θορύβου</sys:String>
     <sys:String x:Key="tray_disable_anc">Απενεργοποίηση εξάλειψης θορύβου</sys:String>
     <sys:String x:Key="tray_switch_noise">Εναλλαγή ελέγχου θορύβου</sys:String>
+    <sys:String x:Key="tray_show_battery_details">Show battery details</sys:String>
     <sys:String x:Key="tray_quit">Έξοδος</sys:String>
 
 

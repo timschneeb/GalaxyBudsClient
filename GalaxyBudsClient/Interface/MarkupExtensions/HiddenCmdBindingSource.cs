@@ -12,8 +12,8 @@ public class HiddenCmdBindingSource : MarkupExtension
         return HiddenCmds.Commands
             .Select(c => new HiddenCmdBindingItem
             {
-                CmdId = Convert.ToHexString(BitConverter.GetBytes(c.Key).Reverse().ToArray()),
-                Description = $"{Convert.ToHexString(BitConverter.GetBytes(c.Key).Reverse().ToArray())} {c.Value}"
+                CmdId = Convert.ToHexString(System.Linq.Enumerable.Reverse(BitConverter.GetBytes(c.Key)).ToArray()),
+                Description = $"{Convert.ToHexString(System.Linq.Enumerable.Reverse(BitConverter.GetBytes(c.Key)).ToArray())} {c.Value}"
             })
             .ToArray();
     }

@@ -25,7 +25,7 @@ public static class HiddenCmdScanner
                          .Select(x => (ushort)x)
                          .Except(HiddenCmds.Commands.Keys))
             {
-                var hexId = Convert.ToHexString(BitConverter.GetBytes(id).Reverse().ToArray());
+                var hexId = Convert.ToHexString(System.Linq.Enumerable.Reverse(BitConverter.GetBytes(id)).ToArray());
                 var cancelSource = new CancellationTokenSource();
                 
                 Log.Debug("Testing command {Id}", hexId);

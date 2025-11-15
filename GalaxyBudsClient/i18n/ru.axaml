@@ -92,6 +92,7 @@
     <sys:String x:Key="tray_enable_anc">Включить активное шумоподавление</sys:String>
     <sys:String x:Key="tray_disable_anc">Выключить активное шумоподавление</sys:String>
     <sys:String x:Key="tray_switch_noise">Поменять режим шумоподавления</sys:String>
+    <sys:String x:Key="tray_show_battery_details">Show battery details</sys:String>
     <sys:String x:Key="tray_quit">Выход</sys:String>
 
     <!--:::::::: XAML files (static) ::::::::-->
