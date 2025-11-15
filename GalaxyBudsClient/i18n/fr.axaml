@@ -88,6 +88,7 @@
     <sys:String x:Key="tray_enable_anc">Activer la réduction de bruit active</sys:String>
     <sys:String x:Key="tray_disable_anc">Désactiver la réduction de bruit active</sys:String>
     <sys:String x:Key="tray_switch_noise">Changer le mode de contrôle du bruit</sys:String>
+    <sys:String x:Key="tray_show_battery_details">Show battery details</sys:String>
     <sys:String x:Key="tray_quit">Quitter</sys:String>
 
 

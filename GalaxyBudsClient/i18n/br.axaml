@@ -90,6 +90,7 @@ Direito: {1}</sys:String>
     <sys:String x:Key="tray_enable_anc">Ativar cancelamento de ruído ativo</sys:String>
     <sys:String x:Key="tray_disable_anc">Desativar cancelamento de ruído ativo</sys:String>
     <sys:String x:Key="tray_switch_noise">Alternar controles de ruído</sys:String>
+    <sys:String x:Key="tray_show_battery_details">Show battery details</sys:String>
     <sys:String x:Key="tray_quit">Sair</sys:String>
 
     <!--Arquivos XAML (estáticos)-->

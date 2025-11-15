@@ -91,6 +91,7 @@
     <sys:String x:Key="tray_enable_anc">הפעל סינון רעשים אקטיבי</sys:String>
     <sys:String x:Key="tray_disable_anc">כבה סינון רעשים אקטיבי</sys:String>
     <sys:String x:Key="tray_switch_noise">שנה שליטה ברעשים</sys:String>
+    <sys:String x:Key="tray_show_battery_details">Show battery details</sys:String>
     <sys:String x:Key="tray_quit">יציאה</sys:String>
 
 

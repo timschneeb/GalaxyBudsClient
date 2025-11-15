@@ -92,6 +92,7 @@ Right: {1}</sys:String>
     <sys:String x:Key="tray_enable_anc">Enable active noise cancelling</sys:String>
     <sys:String x:Key="tray_disable_anc">Disable active noise cancelling</sys:String>
     <sys:String x:Key="tray_switch_noise">Switch noise controls</sys:String>
+    <sys:String x:Key="tray_show_battery_details">Show battery details</sys:String>
     <sys:String x:Key="tray_quit">Quit</sys:String>
 
     <!--:::::::: XAML files (static) ::::::::-->

@@ -83,6 +83,7 @@
     <sys:String x:Key="tray_disable_ambient_sound">Matikan Pendengaran Suara Sekitar</sys:String>
     <sys:String x:Key="tray_enable_eq">Aktifkan Equalizer</sys:String>
     <sys:String x:Key="tray_disable_eq">Matikan Equalizer</sys:String>
+    <sys:String x:Key="tray_show_battery_details">Show battery details</sys:String>
     <sys:String x:Key="tray_quit">Keluar</sys:String>
 
 

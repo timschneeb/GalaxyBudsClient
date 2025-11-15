@@ -144,7 +144,7 @@ internal class TrayManager
                 ? new NativeMenuItem($"{Strings.Case}: {batteryCase}%") { IsEnabled = false }
                 : null,
 
-            new NativeMenuItem("Show Battery Details")
+            new NativeMenuItem(Strings.TrayShowBatteryDetails)
             {
                 Command = new MiniCommand(OnTrayMenuCommand),
                 CommandParameter = TrayItemTypes.ShowBatteryPopup

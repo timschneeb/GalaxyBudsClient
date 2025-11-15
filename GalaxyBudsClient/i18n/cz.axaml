@@ -93,6 +93,7 @@ Pravé: {1}</sys:String>
     <sys:String x:Key="tray_enable_anc">Zapnout aktivní potlačení hluku</sys:String>
     <sys:String x:Key="tray_disable_anc">Vypnout aktivní potlačení hluku</sys:String>
     <sys:String x:Key="tray_switch_noise">Přepnout ovládání šumu</sys:String>
+    <sys:String x:Key="tray_show_battery_details">Show battery details</sys:String>
     <sys:String x:Key="tray_quit">Zavřít</sys:String>
 
     <!--:::::::: XAML files (static) ::::::::-->

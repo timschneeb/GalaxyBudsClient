@@ -92,6 +92,7 @@ Phải: {1}</sys:String>
     <sys:String x:Key="tray_enable_anc">Bật chống ồn chủ động</sys:String>
     <sys:String x:Key="tray_disable_anc">Tắt chống ồn chủ động</sys:String>
     <sys:String x:Key="tray_switch_noise">Chuyển chế độ lọc âm</sys:String>
+    <sys:String x:Key="tray_show_battery_details">Show battery details</sys:String>
     <sys:String x:Key="tray_quit">Thoát ứng dụng</sys:String>
 
     <!--:::::::: XAML files (static) ::::::::-->

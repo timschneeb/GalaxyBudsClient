@@ -88,6 +88,7 @@
     <sys:String x:Key="tray_enable_anc">開啟主動式降噪</sys:String>
     <sys:String x:Key="tray_disable_anc">關閉主動式降噪</sys:String>
     <sys:String x:Key="tray_switch_noise">切換降噪模式</sys:String>
+    <sys:String x:Key="tray_show_battery_details">Show battery details</sys:String>
     <sys:String x:Key="tray_quit">退出</sys:String>
 
 
