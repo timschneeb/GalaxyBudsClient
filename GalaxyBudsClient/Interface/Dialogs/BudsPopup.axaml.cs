@@ -81,13 +81,13 @@ public partial class BudsPopup : Window
         /* Header */
         if (Settings.Data.PopupCompact)
         {
-            MaxHeight = Height = 240 - 35;
+            MaxHeight = Height = 220 - 35;
             Grid.RowDefinitions[0].Height = new GridLength(0);
             Header.IsVisible = false;
         }
         else
         {
-            MaxHeight = Height = 240;
+            MaxHeight = Height = 220;
             Grid.RowDefinitions[0].Height = new GridLength(35);
             Header.IsVisible = true;
         }

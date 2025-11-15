@@ -5,7 +5,7 @@
         xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
         mc:Ignorable="d"
         x:Class="GalaxyBudsClient.Interface.Dialogs.BudsPopup"
-        Height="240" 
+        Height="220" 
         Width="380"
         MaxWidth="380"
         CanResize="False"
