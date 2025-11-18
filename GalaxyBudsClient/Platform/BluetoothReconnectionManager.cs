@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Platform.Model;
 using Serilog;
@@ -24,11 +25,13 @@ public sealed class BluetoothReconnectionManager : IDisposable
 
     private readonly int[] _retryDelaysMs = [2000, 5000, 10000, 30000, 60000]; // Exponential backoff
     private const int SilentFailureTimeoutMs = 10000; // 10 seconds
+    private const int BatteryStatusTimeoutMs = 5000; // 5 seconds to wait for battery status
     private const int MaxRetryAttempts = 5;
 
     private int _currentRetryAttempt;
     private CancellationTokenSource? _reconnectCancelSource;
     private CancellationTokenSource? _timeoutCancelSource;
+    private CancellationTokenSource? _batteryStatusCancelSource;
     private bool _isManualDisconnect;
     private bool _isReconnecting;
     private BluetoothImpl? _bluetoothImpl;
@@ -71,6 +74,12 @@ public sealed class BluetoothReconnectionManager : IDisposable
     public void Dispose()
     {
         StopReconnection();
+        
+        // Cancel battery status check if running
+        _batteryStatusCancelSource?.Cancel();
+        _batteryStatusCancelSource?.Dispose();
+        _batteryStatusCancelSource = null;
+        
         if (_bluetoothImpl != null)
         {
             _bluetoothImpl.Disconnected -= OnDisconnected;
@@ -91,6 +100,65 @@ public sealed class BluetoothReconnectionManager : IDisposable
         _timeoutCancelSource = null;
         
         Log.Debug("BluetoothReconnectionManager: Connection established, reset retry counter");
+        
+        // Start battery status check
+        _ = Task.Run(CheckBatteryStatusAsync);
+    }
+    
+    private async Task CheckBatteryStatusAsync()
+    {
+        if (!Settings.Data.AutoReconnectEnabled)
+        {
+            Log.Debug("BluetoothReconnectionManager: Battery status check skipped, auto-reconnect disabled");
+            return;
+        }
+        
+        // Cancel any existing battery status check
+        _batteryStatusCancelSource?.Cancel();
+        _batteryStatusCancelSource?.Dispose();
+        _batteryStatusCancelSource = new CancellationTokenSource();
+        
+        try
+        {
+            Log.Debug("BluetoothReconnectionManager: Starting battery status check, waiting {Timeout}ms", BatteryStatusTimeoutMs);
+            await Task.Delay(BatteryStatusTimeoutMs, _batteryStatusCancelSource.Token);
+            
+            if (_batteryStatusCancelSource.Token.IsCancellationRequested)
+            {
+                Log.Debug("BluetoothReconnectionManager: Battery status check cancelled");
+                return;
+            }
+            
+            // Check if we have received battery status
+            if (DeviceMessageCache.Instance.BasicStatusUpdate == null)
+            {
+                Log.Warning("BluetoothReconnectionManager: No battery status received after connection, triggering reconnect");
+                
+                if (_bluetoothImpl != null && _bluetoothImpl.IsConnected)
+                {
+                    // Disconnect and reconnect to try again
+                    await _bluetoothImpl.DisconnectAsync(isAutomaticCleanup: true);
+                    // The disconnection will trigger the normal reconnection logic
+                }
+            }
+            else
+            {
+                Log.Debug("BluetoothReconnectionManager: Battery status received successfully");
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            Log.Debug("BluetoothReconnectionManager: Battery status check cancelled");
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "BluetoothReconnectionManager: Error during battery status check");
+        }
+        finally
+        {
+            _batteryStatusCancelSource?.Dispose();
+            _batteryStatusCancelSource = null;
+        }
     }
 
     private void OnDisconnected(object? sender, string reason)
@@ -172,6 +240,10 @@ public sealed class BluetoothReconnectionManager : IDisposable
         _timeoutCancelSource?.Cancel();
         _timeoutCancelSource?.Dispose();
         _timeoutCancelSource = null;
+        
+        _batteryStatusCancelSource?.Cancel();
+        _batteryStatusCancelSource?.Dispose();
+        _batteryStatusCancelSource = null;
     }
 
     private async Task ReconnectionLoop(CancellationToken cancellationToken)
