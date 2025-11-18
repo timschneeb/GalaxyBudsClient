@@ -101,11 +101,16 @@ public sealed class BluetoothReconnectionManager : IDisposable
         
         Log.Debug("BluetoothReconnectionManager: Connection established, reset retry counter");
         
+        // Cancel any existing battery status check before starting a new one
+        _batteryStatusCancelSource?.Cancel();
+        _batteryStatusCancelSource?.Dispose();
+        
         // Start battery status check
-        _ = Task.Run(CheckBatteryStatusAsync);
+        _batteryStatusCancelSource = new CancellationTokenSource();
+        _ = Task.Run(() => CheckBatteryStatusAsync(_batteryStatusCancelSource.Token));
     }
     
-    private async Task CheckBatteryStatusAsync()
+    private async Task CheckBatteryStatusAsync(CancellationToken cancellationToken)
     {
         if (!Settings.Data.AutoReconnectEnabled)
         {
@@ -113,17 +118,12 @@ public sealed class BluetoothReconnectionManager : IDisposable
             return;
         }
         
-        // Cancel any existing battery status check
-        _batteryStatusCancelSource?.Cancel();
-        _batteryStatusCancelSource?.Dispose();
-        _batteryStatusCancelSource = new CancellationTokenSource();
-        
         try
         {
             Log.Debug("BluetoothReconnectionManager: Starting battery status check, waiting {Timeout}ms", BatteryStatusTimeoutMs);
-            await Task.Delay(BatteryStatusTimeoutMs, _batteryStatusCancelSource.Token);
+            await Task.Delay(BatteryStatusTimeoutMs, cancellationToken);
             
-            if (_batteryStatusCancelSource.Token.IsCancellationRequested)
+            if (cancellationToken.IsCancellationRequested)
             {
                 Log.Debug("BluetoothReconnectionManager: Battery status check cancelled");
                 return;
@@ -153,11 +153,6 @@ public sealed class BluetoothReconnectionManager : IDisposable
         catch (Exception ex)
         {
             Log.Error(ex, "BluetoothReconnectionManager: Error during battery status check");
-        }
-        finally
-        {
-            _batteryStatusCancelSource?.Dispose();
-            _batteryStatusCancelSource = null;
         }
     }
 
