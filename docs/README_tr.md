@@ -1,5 +1,5 @@
 <p align="center">
-   <a href="/docs/README.md">English</a> | <a href="/docs/README_chs.md">中文(简体)</a> | <a href="/docs/README_cht.md">中文(繁體)</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | Türkçe | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> <br>
+   <a href="../README.md">English</a> | <a href="/docs/README_chs.md">中文(简体)</a> | <a href="/docs/README_cht.md">中文(繁體)</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | Türkçe | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> | <a href="/docs/README_vnm.md">Tiếng Việt</a> <br>
     <sub>Uyarı: Benioku dosyaları çevirmenler tarafından yönetilmektedir ve zaman zaman güncelliğini yitirebilir. En güncel bilgiler için İngilizce sürüme bakın.</sub>
 </p>
 <h1 align="center">
@@ -44,22 +44,24 @@ Herhangi bir Samsung Galaxy Buds cihazını yapılandırın, kontrol edin ve mas
 
 Resmi Android uygulamasından bilinen standart özelliklerin yanı sıra, bu proje kulaklıklarınızın tüm potansiyelini ortaya çıkarmanıza yardımcı olur ve aşağıdaki gibi yeni işlevler uygular:
 
-* Ayrıntılı pil istatistikleri
-* Teşhis ve fabrika kendi kendini testleri
-* Bir sürü gizli hata ayıklama bilgisi
-* Özelleştirilebilir uzun basma dokunma eylemleri
-* Ürün yazılımı flaş etme, düşürme (Buds+, Buds Pro)
-* ve çok daha fazlası...
+- Ayrıntılı pil istatistikleri
+- Teşhis ve fabrika kendi kendini testleri
+- Bir sürü gizli hata ayıklama bilgisi
+- Özelleştirilebilir uzun basma dokunma eylemleri
+- Ürün yazılımı flaş etme, düşürme (Buds+, Buds Pro)
+- ve çok daha fazlası...
 
 Daha eski ürün yazılımı ikili dosyalarını arıyorsanız, buraya bir göz atın: [https://github.com/timschneeb/galaxy-buds-firmware-archive](https://github.com/timschneeb/galaxy-buds-firmware-archive#galaxy-buds-firmware-archive)
 
 ## Indir
 
 Birkaç Linux paketi mevcuttur:
-* [Flatpak (Tüm Linux dağıtımları)](#flatpak)
-* [AUR paketi (Arch Linux)](#aur-paketi)
+
+- [Flatpak (Tüm Linux dağıtımları)](#flatpak)
+- [AUR paketi (Arch Linux)](#aur-paketi)
 
 [Sürüm](https://github.com/timschneeb/GalaxyBudsClient/releases) bölümünde Windows için ikili dosyaları edinin. Lütfen kurulumdan önce sürüm notlarını okuyun:
+
 <p align="center">
     <a href="https://github.com/timschneeb/GalaxyBudsClient/releases"><img alt="İndir" src="https://github.com/timschneeb/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
@@ -69,6 +71,7 @@ Birkaç Linux paketi mevcuttur:
 Tüm Linux dağıtımları için evrensel ikili paketler. Bu, GalaxyBudsClient'ı Linux'a yüklemenin önerilen yoludur.
 
 FlatHub'dan indirilebilir: https://flathub.org/apps/me.timschneeberger.GalaxyBudsClient
+
 ```
 flatpak install me.timschneeberger.GalaxyBudsClient
 ```
@@ -77,9 +80,10 @@ flatpak install me.timschneeberger.GalaxyBudsClient
 
 > **Not**: Flatpak'ler kum kutuludur. Bu uygulama varsayılan olarak yalnızca `~/.var/app/me.timschneeberger.GalaxyBudsClient/` dizinine erişebilir.
 
-### AUR paketi 
+### AUR paketi
 
 @joscdk tarafından sağlanan Arch Linux için bir [AUR paketi](https://aur.archlinux.org/packages/galaxybudsclient-bin/) de mevcuttur:
+
 ```
 yay -S galaxybudsclient-bin
 ```
@@ -137,45 +141,45 @@ Kendi kodunuzu eklemek istiyorsanız, değişikliklerinizi açıklayan düz bir 
 
 ### Katkıda Bulunanlar
 
-* [@nift4](https://github.com/nift4) - macOS desteği ve hata düzeltmeleri
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Konu şablonları, wiki ve çeviriler
-* [@AndriesK](https://github.com/AndriesK) - Buds Live hata düzeltmesi
-* [@TheLastFrame](https://github.com/TheLastFrame) - Buds Pro simgeleri
-* [@githubcatw](https://github.com/githubcatw) - Bağlantı iletişim kutusu tabanı
-* [@GaryGadget9](https://github.com/GaryGadget9) - WinGet paketi
-* [@joscdk](https://github.com/joscdk) - AUR paketi
+- [@nift4](https://github.com/nift4) - macOS desteği ve hata düzeltmeleri
+- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Konu şablonları, wiki ve çeviriler
+- [@AndriesK](https://github.com/AndriesK) - Buds Live hata düzeltmesi
+- [@TheLastFrame](https://github.com/TheLastFrame) - Buds Pro simgeleri
+- [@githubcatw](https://github.com/githubcatw) - Bağlantı iletişim kutusu tabanı
+- [@GaryGadget9](https://github.com/GaryGadget9) - WinGet paketi
+- [@joscdk](https://github.com/joscdk) - AUR paketi
 
 ### Çevirmenler
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Rusça ve Ukraynaca çeviri
-* [@PlasticBrain](https://github.com/fhalfkg) - Korece ve Japonca çeviri
-* [@cozyplanes](https://github.com/cozyplanes) - Korece çeviri
-* [@erenbektas](https://github.com/erenbektas) ve [@Eta06](https://github.com/Eta06)  - Türkçe çeviri
-* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad), [@pseudor](https://github.com/pseudor) ve [@YexuanXiao](https://github.com/YexuanXiao) - Çince çeviri
-* [@YiJhu](https://github.com/YiJhu) - Geleneksel Çince çeviri
-* [@efrenbg1](https://github.com/efrenbg1) ve Andrew Gonza - İspanyolca çeviri
-* [@giovankabisano](https://github.com/giovankabisano) - Endonezce çeviri
-* [@lucasskluser](https://github.com/lucasskluser) - Portekizce çeviri
-* [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - İtalyanca çeviri
-* [@Buashei](https://github.com/Buashei) - Lehçe çeviri
-* [@KatJillianne](https://github.com/KatJillianne) - Vietnamca çeviri
-* [@joskaja](https://github.com/joskaja) ve [@Joedmin](https://github.com/Joedmin) - Çekçe çeviri
-* [@Benni0109](https://github.com/Benni0109), [@TheLastFrame](https://github.com/TheLastFrame), [@timschneeb](https://github.com/timschneeb) - Almanca çeviri
-* [@nikossyr](https://github.com/nikossyr) - Yunanca çeviri
-* [@grigorem](https://github.com/grigorem) - Rumence çeviri
-* [@tretre91](https://github.com/tretre91) - Fransızca çeviri
-* [@Sigarya](https://github.com/Sigarya) - İbranice çeviri
-* [@domroaft](https://github.com/domroaft) - Macarca çeviri
-* [@lampi8426](https://github.com/lampi8426) - Hollandaca çeviri
+- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Rusça ve Ukraynaca çeviri
+- [@PlasticBrain](https://github.com/fhalfkg) - Korece ve Japonca çeviri
+- [@cozyplanes](https://github.com/cozyplanes) - Korece çeviri
+- [@erenbektas](https://github.com/erenbektas) ve [@Eta06](https://github.com/Eta06) - Türkçe çeviri
+- [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad), [@pseudor](https://github.com/pseudor) ve [@YexuanXiao](https://github.com/YexuanXiao) - Çince çeviri
+- [@YiJhu](https://github.com/YiJhu) - Geleneksel Çince çeviri
+- [@efrenbg1](https://github.com/efrenbg1) ve Andrew Gonza - İspanyolca çeviri
+- [@giovankabisano](https://github.com/giovankabisano) - Endonezce çeviri
+- [@lucasskluser](https://github.com/lucasskluser) ve [@JuanFariasDev](https://github.com/juanfariasdev) - Portekizce çeviri
+- [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - İtalyanca çeviri
+- [@Buashei](https://github.com/Buashei) - Lehçe çeviri
+- [@KatJillianne](https://github.com/KatJillianne) ve [@thelegendaryjohn](https://github.com/thelegendaryjohn) - Vietnamca çeviri
+- [@joskaja](https://github.com/joskaja) ve [@Joedmin](https://github.com/Joedmin) - Çekçe çeviri
+- [@Benni0109](https://github.com/Benni0109), [@TheLastFrame](https://github.com/TheLastFrame), [@timschneeb](https://github.com/timschneeb) - Almanca çeviri
+- [@nikossyr](https://github.com/nikossyr) - Yunanca çeviri
+- [@grigorem](https://github.com/grigorem) - Rumence çeviri
+- [@tretre91](https://github.com/tretre91) - Fransızca çeviri
+- [@Sigarya](https://github.com/Sigarya) - İbranice çeviri
+- [@domroaft](https://github.com/domroaft) - Macarca çeviri
+- [@lampi8426](https://github.com/lampi8426) - Hollandaca çeviri
 
 ## Lisans
 
 Bu proje [GPLv3](https://github.com/timschneeb/GalaxyBudsClient/blob/master/LICENSE) lisansı altında lisanslanmıştır. Samsung'a bağlı değildir ve hiçbir şekilde onlar tarafından denetlenmez.
 
 ```
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```

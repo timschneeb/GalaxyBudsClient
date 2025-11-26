@@ -76,7 +76,7 @@
                         <ext:LocalizationAwareComboBoxBehavior />
                     </Interaction.Behaviors>
                 </controls:SettingsComboBoxItem>
-                
+
                 <controls:SettingsSliderItem
                     Content="{ext:Translate {x:Static i18N:Keys.SettingsBlurstrength}}"
                     Description="{ext:Translate {x:Static i18N:Keys.SettingsBlurstrengthDescription}}"
@@ -102,6 +102,14 @@
                                                Symbol="LocalLanguage"
                                                ItemsSource="{Binding Source={ext:LocalesBindingSource}}"
                                                SelectedValue="{Binding Locale, Source={x:Static config:Settings.Data}}" />
+                
+                <controls:SettingsComboBoxItem Name="ColorOverride"
+                                               Content="{ext:Translate {x:Static i18N:Keys.SettingsColorOverride}}"
+                                               Description="{ext:Translate {x:Static i18N:Keys.SettingsColorOverrideDescription}}"
+                                               Symbol="ColorFill"
+                                               IsEnabled="{Binding RealisticEarbudImages, Source={x:Static config:Settings.Data}}"
+                                               ItemsSource="{Binding ., Source={ext:DeviceColorBindingSource}}"
+                                               SelectedValue="{Binding ColorOverride, Source={x:Static config:Settings.Data}}" />
 
                 <controls:SettingsSwitchItem Content="{ext:Translate {x:Static i18N:Keys.SettingsRealisticEarbudIcons}}"
                                              Description="{ext:Translate {x:Static i18N:Keys.SettingsRealisticEarbudIconsDescription}}"

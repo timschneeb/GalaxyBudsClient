@@ -8,6 +8,7 @@
              xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
              xmlns:config="clr-namespace:GalaxyBudsClient.Model.Config"
              xmlns:platform="clr-namespace:GalaxyBudsClient.Platform;assembly=GalaxyBudsClient.Platform"
+             xmlns:icons="clr-namespace:FluentIcons.Common;assembly=FluentIcons.Common"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="GalaxyBudsClient.Interface.Pages.AdvancedPage"
              x:DataType="pages:AdvancedPageViewModel"
@@ -29,6 +30,16 @@
                                              Description="{ext:Translate {x:Static i18N:Keys.AdvResumePlaybackDesc}}"
                                              IsChecked="{Binding ResumePlaybackOnSensor, Source={x:Static config:Settings.Data}}"
                                              Symbol="FlashPlay"
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:RequiresDesktopBehavior />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
+
+                <controls:SettingsSwitchItem Content="{ext:Translate {x:Static i18N:Keys.AdvPausePlayback}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.AdvPausePlaybackDesc}}"
+                                             IsChecked="{Binding PausePlaybackOnSensor, Source={x:Static config:Settings.Data}}"
+                                             Symbol="{x:Static icons:Symbol.Pause}"
                                              IsClickEnabled="True">
                     <Interaction.Behaviors>
                         <ext:RequiresDesktopBehavior />

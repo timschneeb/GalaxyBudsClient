@@ -58,6 +58,8 @@ namespace GalaxyBudsClient.Model
             de,
             [Description("Spanish")]
             es,
+            [Description("Portuguese Brazil")]
+            br,
             [Description("Portuguese")]
             pt,
             [Description("Italian")]
@@ -94,6 +96,8 @@ namespace GalaxyBudsClient.Model
             hu,
 			[Description("Dutch")]
 			nl,
+            [Description("Swedish")]
+            sv,
             [IgnoreDataMember, Description("custom_language.xaml")]
             custom
         }

@@ -1,5 +1,5 @@
 <p align="center">
-   <a href="../README.md">English</a> | <a href="/docs/README_chs.md">中文(简体)</a> | <a href="/docs/README_cht.md">中文(繁體)</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> | Português <br>
+   <a href="../README.md">English</a> | <a href="/docs/README_chs.md">中文(简体)</a> | <a href="/docs/README_cht.md">中文(繁體)</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> | Português | <a href="/docs/README_vnm.md">Tiếng Việt</a> <br>
     <sub>Atenção: os arquivos "readme" são mantidos por tradutores e podem ficar desatualizados com o tempo. Para ter as informações mais atuais, visite o arquivo em inglês.</sub>
 </p>
 <h1 align="center">
@@ -44,16 +44,16 @@ Configurar e controlar qualquer aparelho da linha Samsung Galaxy Buds e integra-
 
 Além das funções conhecidas do aplicativo oficial de Android esse projeto também ajuda você a desbloquear o potencial máximo de seus earbuds e implementa novas funcionalidades como:
 
-* Estátisticas detalhadas das baterias
-* Diagnósticos e auto-testes de fabrica
-* Diversas informações ocultas de debugging
-* Customização nas ações de toque longo
-* Firmware flashing, downgrading (Buds+, Buds Pro)
-* e muito mais...
+- Estátisticas detalhadas das baterias
+- Diagnósticos e auto-testes de fabrica
+- Diversas informações ocultas de debugging
+- Customização nas ações de toque longo
+- Firmware flashing, downgrading (Buds+, Buds Pro)
+- e muito mais...
 
 ## Download
 
-Para obter os binaries para Windows e Linux na página de [versões](https://github.com/ThePBone/GalaxyBudsClient/releases). Por favor, leia as notas antes de realizar a instação. 
+Para obter os binaries para Windows e Linux na página de [versões](https://github.com/ThePBone/GalaxyBudsClient/releases). Por favor, leia as notas antes de realizar a instação.
 
 <p align="center">
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
@@ -67,13 +67,13 @@ O pacote para Windows também está disponivel para instalação com o Windows P
 winget install ThePBone.GalaxyBudsClient
 ```
 
-### AUR package 
+### AUR package
 
 Um [AUR package](https://aur.archlinux.org/packages/galaxybudsclient-bin/) para Arch Linux mantido por @joscdk também está disponivel:
+
 ```
 yay -S galaxybudsclient-bin
 ```
-
 
 ## Como funciona
 
@@ -107,7 +107,7 @@ Observe o monitoramento de informação em tempo real dos seus Buds Pro usando e
 
 ## Contribuindo
 
-Pedidos de funcionalidades, relatos de bugs ou qualquer tipo de pull requests são sempre bem-vindos. 
+Pedidos de funcionalidades, relatos de bugs ou qualquer tipo de pull requests são sempre bem-vindos.
 
 Se você deseja avisar sobre algum bug ou propor ideias para esse projeto, você é livre para [relatar tudo](https://github.com/ThePBone/GalaxyBudsClient/issues/new/choose) com um template adequado. [Visite a nossa Wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/2.-How-to-submit-issues) para uma explicação detalhada.
 
@@ -119,42 +119,43 @@ Se você deseja contribuir com seu próprio código, você pode simplesmente env
 
 ### Colaboradores
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue templates, wiki and traduções
-* [@AndriesK](https://github.com/AndriesK) - Buds Live bug fix
-* [@TheLastFrame](https://github.com/TheLastFrame) - Icones Buds Pro
-* [@githubcatw](https://github.com/githubcatw) - Conecções baseada em dialogo
-* [@GaryGadget9](https://github.com/GaryGadget9) - Pacotes WinGet 
-* [@joscdk](https://github.com/joscdk) - Pacotes AUR
+- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue templates, wiki and traduções
+- [@AndriesK](https://github.com/AndriesK) - Buds Live bug fix
+- [@TheLastFrame](https://github.com/TheLastFrame) - Icones Buds Pro
+- [@githubcatw](https://github.com/githubcatw) - Conecções baseada em dialogo
+- [@GaryGadget9](https://github.com/GaryGadget9) - Pacotes WinGet
+- [@joscdk](https://github.com/joscdk) - Pacotes AUR
 
 ### Tradutores
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Tradução Russa e Ucraniana
-* [@PlasticBrain](https://github.com/fhalfkg) - Tradução Coreana and Japonesa
-* [@cozyplanes](https://github.com/cozyplanes) - Tradução Coreana
-* [@erenbektas](https://github.com/erenbektas) - Tradução Turca
-* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) e [@pseudor](https://github.com/pseudor) - Tradução Chinesa
-* [@YiJhu](https://github.com/YiJhu) - Tradução Chines-Tradicional
-* [@efrenbg1](https://github.com/efrenbg1) e Andrew Gonza - Tradução Hispânica
-* [@giovankabisano](https://github.com/giovankabisano) - Tradução Indonésia
-* [@lucasskluser](https://github.com/lucasskluser) - Tradução Portuguesa
-* [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Tradução Italiana
-* [@Buashei](https://github.com/Buashei) - Tradução Polonesa
-* [@KatJillianne](https://github.com/KatJillianne) - Tradução Vietnamita
-* [@joskaja](https://github.com/joskaja) e [@Joedmin](https://github.com/Joedmin) - Tradução Tcheca
-* [@Benni0109](https://github.com/Benni0109), [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - Tradução Alemã
-* [@nikossyr](https://github.com/nikossyr) - Tradução Grega
-* [@grigorem](https://github.com/grigorem) - Tradução Romena
-* [@tretre91](https://github.com/tretre91) - Tradução Francesa
-* [@Sigarya](https://github.com/Sigarya) - Tradução Hebraica
-* [@domroaft](https://github.com/domroaft) - Traudução Húngara
+- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Tradução Russa e Ucraniana
+- [@PlasticBrain](https://github.com/fhalfkg) - Tradução Coreana and Japonesa
+- [@cozyplanes](https://github.com/cozyplanes) - Tradução Coreana
+- [@erenbektas](https://github.com/erenbektas) - Tradução Turca
+- [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) e [@pseudor](https://github.com/pseudor) - Tradução Chinesa
+- [@YiJhu](https://github.com/YiJhu) - Tradução Chines-Tradicional
+- [@efrenbg1](https://github.com/efrenbg1) e Andrew Gonza - Tradução Hispânica
+- [@giovankabisano](https://github.com/giovankabisano) - Tradução Indonésia
+- [@lucasskluser](https://github.com/lucasskluser) e [@JuanFariasDev](https://github.com/juanfariasdev) - Tradução Portuguesa
+- [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Tradução Italiana
+- [@Buashei](https://github.com/Buashei) - Tradução Polonesa
+- [@KatJillianne](https://github.com/KatJillianne) e [@thelegendaryjohn](https://github.com/thelegendaryjohn) - Tradução Vietnamita
+- [@joskaja](https://github.com/joskaja) e [@Joedmin](https://github.com/Joedmin) - Tradução Tcheca
+- [@Benni0109](https://github.com/Benni0109), [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - Tradução Alemã
+- [@nikossyr](https://github.com/nikossyr) - Tradução Grega
+- [@grigorem](https://github.com/grigorem) - Tradução Romena
+- [@tretre91](https://github.com/tretre91) - Tradução Francesa
+- [@Sigarya](https://github.com/Sigarya) - Tradução Hebraica
+- [@domroaft](https://github.com/domroaft) - Traudução Húngara
 
 ## Licença
 
 Esse projeto é licenciado sob [GPLv3](https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE). Ele não é afiliado com a Samsung nem supervisionado por eles de alguma maneira.
 
 ```
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
 THE USE OR O
+```

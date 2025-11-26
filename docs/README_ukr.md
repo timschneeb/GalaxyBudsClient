@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="../README.md">English</a> | <a href="./README_chs.md">中文</a> | <a href="./README_rus.md">Русский</a> | <a href="./README_jpn.md">日本語</a> | Українська | <a href="./README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a><br>
+  <a href="../README.md">English</a> | <a href="./README_chs.md">中文</a> | <a href="./README_rus.md">Русский</a> | <a href="./README_jpn.md">日本語</a> | Українська | <a href="./README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> | <a href="/docs/README_vnm.md">Tiếng Việt</a><br>
     <sub>Увага: файли "Про проект" підтримуються перекладачами і можуть час від часу не відповідати поточній версії. Для новішої інформації покладайтеся на англоязичний варіант.</sub>
 </p>
 <h1 align="center">
@@ -43,12 +43,12 @@
 
 Крім стандартних функцій, відомих з офіційного додатку для Android, цей проект допоможе вам розкрити весь потенціал ваших навушників і реалізує нові функції, такі як:
 
-* Детальна статистика батареї
-* Діагностика і заводське самотестування
-* Безліч прихованої налагоджувальної інформації
-* Настроювані дії утримання сенсорної панелі
-* Встановлення прошивки, даунгрейдинг (Buds+, Buds Pro)
-* і багато іншого...
+- Детальна статистика батареї
+- Діагностика і заводське самотестування
+- Безліч прихованої налагоджувальної інформації
+- Настроювані дії утримання сенсорної панелі
+- Встановлення прошивки, даунгрейдинг (Buds+, Buds Pro)
+- і багато іншого...
 
 ## Завантажити
 
@@ -114,37 +114,37 @@ Galaxy Buds визначають два профілі Bluetooth: A2DP (Advanced
 
 #### Співучасники
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Шаблони повідомлень про проблеми, вікі та переклади
-* [@AndriesK](https://github.com/AndriesK) - Виправлення помилок при роботі з Buds Live
-* [@TheLastFrame](https://github.com/TheLastFrame) - Іконки для Buds Pro
-* [@githubcatw](https://github.com/githubcatw) - Програмна база діалогу підключення
-* [@GaryGadget9](https://github.com/GaryGadget9) - Пакет для Менеджера Пакетів Windows (WinGet)
+- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Шаблони повідомлень про проблеми, вікі та переклади
+- [@AndriesK](https://github.com/AndriesK) - Виправлення помилок при роботі з Buds Live
+- [@TheLastFrame](https://github.com/TheLastFrame) - Іконки для Buds Pro
+- [@githubcatw](https://github.com/githubcatw) - Програмна база діалогу підключення
+- [@GaryGadget9](https://github.com/GaryGadget9) - Пакет для Менеджера Пакетів Windows (WinGet)
 
 #### Перекладачі
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Український та Російський переклади
-* [@PlasticBrain](https://github.com/fhalfkg) - Корейський та Японський переклади
-* [@cozyplanes](https://github.com/cozyplanes) - Корейський переклад
-* [@erenbektas](https://github.com/erenbektas) - Турецький переклад
-* [@kakkk](https://github.com/kakkk) , [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) и [@pseudor](https://github.com/pseudor) - Китайський переклад
-* [@efrenbg1](https://github.com/efrenbg1) и Andrew Gonza - Іспанський переклад
-* [@giovankabisano](https://github.com/giovankabisano) - Індонезійський переклад
-* [@lucasskluser](https://github.com/lucasskluser) - Португальський переклад
-* [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Італійський переклад
-* [@Buashei](https://github.com/Buashei) - Польський переклад
-* [@KatJillianne](https://github.com/KatJillianne) - В'єтнамський переклад
-* [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - Чешський переклад
-* [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - Німецький переклад
-* [@nikossyr](https://github.com/nikossyr) - Грецький переклад
-* [@grigorem](https://github.com/grigorem) - Румунський переклад
-* [@tretre91](https://github.com/tretre91) - Французький переклад
+- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Український та Російський переклади
+- [@PlasticBrain](https://github.com/fhalfkg) - Корейський та Японський переклади
+- [@cozyplanes](https://github.com/cozyplanes) - Корейський переклад
+- [@erenbektas](https://github.com/erenbektas) - Турецький переклад
+- [@kakkk](https://github.com/kakkk) , [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) и [@pseudor](https://github.com/pseudor) - Китайський переклад
+- [@efrenbg1](https://github.com/efrenbg1) и Andrew Gonza - Іспанський переклад
+- [@giovankabisano](https://github.com/giovankabisano) - Індонезійський переклад
+- [@lucasskluser](https://github.com/lucasskluser) и [@JuanFariasDev](https://github.com/juanfariasdev) - Португальський переклад
+- [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Італійський переклад
+- [@Buashei](https://github.com/Buashei) - Польський переклад
+- [@KatJillianne](https://github.com/KatJillianne) and [@thelegendaryjohn](https://github.com/thelegendaryjohn) - В'єтнамський переклад
+- [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - Чешський переклад
+- [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - Німецький переклад
+- [@nikossyr](https://github.com/nikossyr) - Грецький переклад
+- [@grigorem](https://github.com/grigorem) - Румунський переклад
+- [@tretre91](https://github.com/tretre91) - Французький переклад
 
 Цей проект розповсюджується за ліцензією [GPLv3](../LICENSE). Він ніяким чином не пов'язаний з Samsung і не контролюється нею.
 
 ```
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```

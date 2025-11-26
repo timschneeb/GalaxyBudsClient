@@ -1,0 +1,731 @@
+<!-- ReSharper disable InconsistentNaming -->
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- English name of this language -->
+    <sys:String x:Key="language_name_en">Swedish</sys:String>
+
+    <!--:::::::: Source code ::::::::-->
+
+    <!--General-->
+    <sys:String x:Key="okay">Okej</sys:String>
+    <sys:String x:Key="left">Vänster</sys:String>
+    <sys:String x:Key="right">Höger</sys:String>
+    <sys:String x:Key="both">Båda</sys:String>
+    <sys:String x:Key="case">Fall</sys:String>
+    <sys:String x:Key="error">Fel</sys:String>
+    <sys:String x:Key="cancel">Avbryt</sys:String>
+    <sys:String x:Key="apply">Verkställ</sys:String>
+    <sys:String x:Key="select">Välj</sys:String>
+    <sys:String x:Key="notset">Ej inställt</sys:String>
+    <sys:String x:Key="unknown">Okänt</sys:String>
+    <sys:String x:Key="back">Tillbaka</sys:String>
+    <sys:String x:Key="next">Nästa</sys:String>
+    <sys:String x:Key="prev">Föregående</sys:String>
+    <sys:String x:Key="off">Av</sys:String>
+    <sys:String x:Key="on">På</sys:String>
+    <sys:String x:Key="hint">Tips</sys:String>
+    <sys:String x:Key="help">Hjälp</sys:String>
+    <sys:String x:Key="important">Viktigt</sys:String>
+    <sys:String x:Key="home">Hem</sys:String>
+    <sys:String x:Key="read_failed">Misslyckades med att läsa filen. Åtkomst nekad.</sys:String>
+    <sys:String x:Key="please_wait">Vänligen vänta...</sys:String>
+    <sys:String x:Key="value_left_right_inline">Vänster: {0}, Höger: {1}</sys:String>
+    <sys:String x:Key="value_left_right_multiline">Vänster: {0}
+Höger: {1}</sys:String>
+    <sys:String x:Key="other_x">Annat ({0})</sys:String>
+    <sys:String x:Key="no_data_stored">Ingen data sparad</sys:String>
+    <sys:String x:Key="not_available">Ej tillgänglig</sys:String>
+    <sys:String x:Key="last_updated_at_n">Senast uppdaterad: {0}</sys:String>
+    <sys:String x:Key="file_not_found">Fil hittades inte</sys:String>
+    <sys:String x:Key="nobluetoothdev">Ingen Bluetooth-adapter hittades. Vänligen aktivera Bluetooth och försök igen.</sys:String>
+    <sys:String x:Key="feature_unsupported_platform">Denna funktion stöds för närvarande inte på denna plattform.</sys:String>
+
+    <sys:String x:Key="anc">Aktiv brusreducering</sys:String>
+    <sys:String x:Key="adaptive">Adaptiv</sys:String>
+
+    <!--Dark Mode States-->
+    <sys:String x:Key="darkmode_disabled">Av</sys:String>
+    <sys:String x:Key="darkmode_enabled">På</sys:String>
+    <sys:String x:Key="darkmode_blur_enabled">På, med suddighetsfilter</sys:String>
+    <sys:String x:Key="darkmode_mica_enabled">På, med mica-effekt</sys:String>
+    <sys:String x:Key="darkmode_system">Använd systeminställning</sys:String>
+
+    <!--Connection popup-->
+    <sys:String x:Key="connpopup_placement_tl">Övre vänster</sys:String>
+    <sys:String x:Key="connpopup_placement_tc">Övre mitten</sys:String>
+    <sys:String x:Key="connpopup_placement_tr">Övre höger</sys:String>
+    <sys:String x:Key="connpopup_placement_bl">Nedre vänster</sys:String>
+    <sys:String x:Key="connpopup_placement_bc">Nedre mitten</sys:String>
+    <sys:String x:Key="connpopup_placement_br">Nedre höger</sys:String>
+    <sys:String x:Key="connpopup_title">{0}'s {1}</sys:String>
+    <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
+
+    <!--Placement  (Buds+)-->
+    <sys:String x:Key="placement_disconnected">Frånkopplad</sys:String>
+    <sys:String x:Key="placement_wearing">Påsatt</sys:String>
+    <sys:String x:Key="placement_not_wearing">Inaktiv</sys:String>
+    <sys:String x:Key="placement_in_case">Etui</sys:String>
+    <sys:String x:Key="placement_charging">Laddar</sys:String>
+
+    <!--Touch options-->
+    <sys:String x:Key="touchoption_voice">Röstassistent</sys:String>
+    <sys:String x:Key="touchoption_quickambientsound">Snabbt omgivningsljud</sys:String>
+    <sys:String x:Key="touchoption_volume">Volym</sys:String>
+    <sys:String x:Key="touchoption_volume_up">Höj volym</sys:String>
+    <sys:String x:Key="touchoption_volume_down">Sänk volym</sys:String>
+    <sys:String x:Key="touchoption_ambientsound">Omgivningsljud</sys:String>
+    <sys:String x:Key="touchoption_switch_noisecontrols">Växla bullerkontroller</sys:String>
+    <sys:String x:Key="touchoption_spotify">Spotify (endast Android)</sys:String>
+    <sys:String x:Key="touchoption_custom">Anpassad åtgärd...</sys:String>
+    <sys:String x:Key="touchoption_custom_prefix">Anpassad åtgärd:</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_event">Starta öronproppsåtgärd...</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_hotkey">Tryck på snabbkommando...</sys:String>
+    <sys:String x:Key="touchoption_custom_external_app">Kör extern programvara...</sys:String>
+
+    <!--Tray context menu-->
+    <sys:String x:Key="tray_unlock_touchpad">Lås upp styrplatta</sys:String>
+    <sys:String x:Key="tray_lock_touchpad">Lås styrplatta</sys:String>
+    <sys:String x:Key="tray_enable_ambient_sound">Aktivera omgivningsljud</sys:String>
+    <sys:String x:Key="tray_disable_ambient_sound">Inaktivera omgivningsljud</sys:String>
+    <sys:String x:Key="tray_enable_eq">Aktivera equalizer</sys:String>
+    <sys:String x:Key="tray_disable_eq">Inaktivera equalizer</sys:String>
+    <sys:String x:Key="tray_enable_anc">Aktivera aktiv brusreducering</sys:String>
+    <sys:String x:Key="tray_disable_anc">Inaktivera aktiv brusreducering</sys:String>
+    <sys:String x:Key="tray_switch_noise">Växla bullerkontroller</sys:String>
+    <sys:String x:Key="tray_quit">Avsluta</sys:String>
+ 
+    <!--:::::::: XAML files (static) ::::::::-->
+
+    <!--General-->
+    <sys:String x:Key="continue_button">Fortsätt</sys:String>
+
+    <!--Hotkey Recorder Dialog (Custom action)-->
+    <sys:String x:Key="hotrec_content">Vänligen ange en tangentkombination (håll ned):</sys:String>
+    <sys:String x:Key="hotrec_empty">Ingen</sys:String>
+    <sys:String x:Key="hotrec_note">Obs: På grund av User Interface Privacy Isolation (UIPI) kan endast applikationer med samma eller lägre behörighet korrekt ta emot snabbkommando.</sys:String>
+
+    <!--Hotkey Action Builder Dialog-->
+    <sys:String x:Key="hotkey_edit_invalid">Ogiltigt snabbkommando</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_desc">Vänligen välj minst en tangent och en modifierare</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_mod">Modifierare saknas</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action">Ogiltig åtgärd</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action_desc">Vänligen välj en åtgärd</sys:String>
+    <sys:String x:Key="hotkey_edit_modifier">Modifierare</sys:String>
+    <sys:String x:Key="hotkey_edit_keys">Tangenter</sys:String>
+    <sys:String x:Key="hotkey_edit_action">Åtgärd</sys:String>
+    <sys:String x:Key="hotkey_edit_preview">Förhandsgranskning av kortkommando:</sys:String>
+
+    <!--Hotkey page-->
+    <sys:String x:Key="hotkey_header">Tangentbordsgenvägar</sys:String>
+    <sys:String x:Key="hotkey_add_short">Ny</sys:String>
+    <sys:String x:Key="hotkey_add">Tilldela ny snabbkommando</sys:String>
+    <sys:String x:Key="hotkey_empty">Inga snabbkommandon tilldelade</sys:String>
+    <sys:String x:Key="hotkey_empty_desc">Skapa ett nytt tangentbordsgenväg genom att klicka på knappen ovan</sys:String>
+    <sys:String x:Key="hotkey_edit">Redigera</sys:String>
+    <sys:String x:Key="hotkey_edit_long">Redigera befintlig snabbkommando</sys:String>
+    <sys:String x:Key="hotkey_delete">Ta bort</sys:String>
+    <sys:String x:Key="hotkey_add_error">Misslyckades med att registrera/uppdatera snabbkommandon</sys:String>
+    <sys:String x:Key="hotkey_add_error_context">Påverkad snabbkommando:</sys:String>
+    <sys:String x:Key="hotkey_add_error_duplicate">Den valda tangentkombinationen är redan registrerad som snabbkommando av denna eller annan applikation. Vänligen välj en annan.</sys:String>
+    <sys:String x:Key="hotkey_add_error_unknown">Operativsystemet svarade med fel '{0}'</sys:String>
+
+    <!--EventDispatcher module-->
+    <sys:String x:Key="event_none">Ingen</sys:String>
+    <sys:String x:Key="event_ambient_toggle">Växla omgivningsljud</sys:String>
+    <sys:String x:Key="event_ambient_volume_up">Öka omgivningsvolym</sys:String>
+    <sys:String x:Key="event_ambient_volume_down">Minska omgivningsvolym</sys:String>
+    <sys:String x:Key="event_eq_toggle">Växla equalizer</sys:String>
+    <sys:String x:Key="event_eq_switch">Ändra equalizerförinställningar</sys:String>
+    <sys:String x:Key="event_anc_toggle">Växla brusreducering</sys:String>
+    <sys:String x:Key="event_anc_switch_sensitivity">Byt ANC-känslighet</sys:String>
+    <sys:String x:Key="event_nc_switch_one">Växla bullerkontroller med en öronpropp</sys:String>
+    <sys:String x:Key="event_touch_lock_toggle">Växla lås på styrplatta</sys:String>
+    <sys:String x:Key="event_double_edge_touch_toggle">Växla dubbelkant-funktion</sys:String>
+    <sys:String x:Key="event_conversation_toggle">Växla samtalsdetektion</sys:String>
+    <sys:String x:Key="event_start_stop_find">Starta/stoppa Hitta mina öronproppar</sys:String>
+    <sys:String x:Key="event_start_find">Starta Hitta mina öronproppar</sys:String>
+    <sys:String x:Key="event_stop_find">Stoppa Hitta mina öronproppar</sys:String>
+    <sys:String x:Key="event_paring_mode">Parningsläge</sys:String>
+    <sys:String x:Key="event_media_play">Spela upp media</sys:String>
+    <sys:String x:Key="event_media_pause">Pausa media</sys:String>
+    <sys:String x:Key="event_media_play_pause">Spela/pausa media</sys:String>
+    <sys:String x:Key="event_manager_visible">Visa/dölj hanteringsfönster</sys:String>
+    <sys:String x:Key="event_display_battery_popup">Visa batteripopup</sys:String>
+    <sys:String x:Key="event_connect">Anslut till enhet</sys:String>
+
+    <!--Welcome page-->
+    <sys:String x:Key="welcome_textblock_header">Välkommen!</sys:String>
+    <sys:String x:Key="welcome_register">Ställ in dina öronproppar</sys:String>
+    <sys:String x:Key="welcome_register_desc">Välj och registrera ditt par Galaxy Buds</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">Denna Galaxy Buds Manager är inofficiell och inte ansluten till Samsung på något sätt.
+    Programmet är utformat för att ge fler funktioner än den officiella Samsung Wearable-appen. Vissa funktioner som 'Spelläget' fungerar endast på Samsung-telefoner och kan inte aktiveras på PC.</sys:String>
+    <sys:String x:Key="welcome_android_hint_title">Viktig information för Android-användare</sys:String>
+    <sys:String x:Key="welcome_android_hint">Denna app är ursprungligen designad för användning på datorer. Funktioner som kräver att appen körs i bakgrunden, såsom anpassade touch-åtgärder och batteristatistik, är för närvarande inte tillgängliga i denna version.
+    Om den officiella Samsung Wearable-appen är aktiv samtidigt som denna app kan anslutningsproblem uppstå. Se till att stänga den officiella appen korrekt innan du använder denna app.</sys:String>
+
+    <!--Main page-->
+    <sys:String x:Key="mainpage_header">Hem</sys:String>
+    <sys:String x:Key="mainpage_corrupt_data">Mottog korrupt data. Återansluter...</sys:String>
+    <sys:String x:Key="mainpage_fit_test">Test av öronproppspassform</sys:String>
+    <sys:String x:Key="mainpage_find_my_earbuds">Hitta mina öronproppar</sys:String>
+    <sys:String x:Key="mainpage_touchpad">Styrplatta</sys:String>
+    <sys:String x:Key="mainpage_ambient_sound">Omgivningsljud</sys:String>
+    <sys:String x:Key="mainpage_noise">Bullerkontroll</sys:String>
+    <sys:String x:Key="mainpage_equalizer">Equalizer</sys:String>
+    <sys:String x:Key="mainpage_advanced">Avancerade inställningar</sys:String>
+    <sys:String x:Key="mainpage_system">System</sys:String>
+
+    <!--Device selection page (setup)-->
+    <sys:String x:Key="devsel_header">Välj dina öronproppar</sys:String>
+    <sys:String x:Key="devsel_manual_pair_title">Finns inte din enhet med?</sys:String>
+    <sys:String x:Key="devsel_manual_pair_description">Se till att dina öronproppar redan har parade. Om de fortfarande inte känns igen, försök med manuell anslutning.</sys:String>
+    <sys:String x:Key="devsel_manual_pair">Manuell anslutning</sys:String>
+    <sys:String x:Key="devsel_nodevices">Anslut och para dina öronproppar först</sys:String>
+    <sys:String x:Key="devsel_nodevices_title">Inga parade enheter hittades</sys:String>
+    <sys:String x:Key="devsel_invalid_selection">Vänligen välj en giltig enhet</sys:String>
+    <sys:String x:Key="devsel_winrt_title">Använd alternativ Bluetooth-backend</sys:String>
+    <sys:String x:Key="devsel_winrt">Mycket bättre stabilitet, men kanske inte fungerar på alla PC med vissa Bluetooth-adaptrar (omstart kan krävas!)</sys:String>
+
+    <!--Device page-->
+    <sys:String x:Key="devices_header">Parade enheter</sys:String>
+    <sys:String x:Key="devices_new">Ny</sys:String>
+    <sys:String x:Key="devices_new_long">Para ny enhet</sys:String>
+    <sys:String x:Key="devices_select_inactive">Välj</sys:String>
+    <sys:String x:Key="devices_select_active">Vald</sys:String>
+    <sys:String x:Key="devices_delete">Ta bort</sys:String>
+    <sys:String x:Key="devices_delete_long">Ta bort enhet</sys:String>
+    <sys:String x:Key="devices_delete_confirmation">Är du säker på att du vill ta bort denna enhet?</sys:String>
+    <sys:String x:Key="devices_settings_link">Hantera parade enheter</sys:String>
+    <sys:String x:Key="devices_settings_link_desc">Lägg till, ta bort eller välj en primär enhet</sys:String>
+
+    <!--Touchpad gestures-->
+    <sys:String x:Key="touchpad_gesture_header">Aktivera styrplatta-gester</sys:String>
+    <sys:String x:Key="touchpad_gesture_single">Enkeltryck</sys:String>
+    <sys:String x:Key="touchpad_gesture_single_desc">Spela upp eller pausa spår</sys:String>
+    <sys:String x:Key="touchpad_gesture_double">Dubbeltryck</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_desc">Spela nästa spår</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple">Trippeltryck</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple_desc">Spela föregående spår</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold">Tryck och håll</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_desc">Utför anpassad åtgärd</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_for_call">Dubbeltryck under samtal</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_for_call_desc">Svara eller avsluta samtal</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call">Tryck och håll under samtal</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call_desc">Avvisa samtal</sys:String>
+ 
+    <!--Touchpad page-->
+    <sys:String x:Key="touchpad_header">Styrplatta</sys:String>
+    <sys:String x:Key="touchpad_lock">Lås styrplatta</sys:String>
+    <sys:String x:Key="touchpad_left_action">Vänster långtrycksaktion</sys:String>
+    <sys:String x:Key="touchpad_right_action">Höger långtrycksaktion</sys:String>
+    <sys:String x:Key="touchpad_default_action">Inbyggd tryckåtgärd</sys:String>
+
+    <sys:String x:Key="touchpad_gestures">Avancerat trycklås</sys:String>
+    <sys:String x:Key="touchpad_gestures_description">Inaktivera standardtryckgester</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume">Dubbeltryck på öronproppskant</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">Dubbeltryck på vänster eller höger öronproppskant för att sänka eller höja volymen</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode">Läge för växling av bullerkontroll</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_l">Läge för växling av bullerkontroll (Vänster)</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_r">Läge för växling av bullerkontroll (Höger)</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_desc">Välj lägen att cykla igenom</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ Omgivningsljud</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Av</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Omgivningsljud ↔ Av</sys:String>
+
+    <!--Custom touchpad action page-->
+    <sys:String x:Key="cact_header">Definiera en anpassad långtrycksaktion</sys:String>
+    <sys:String x:Key="cact_external_app_dialog_title">Välj körbar fil...</sys:String>
+    <sys:String x:Key="cact_action">Anpassad åtgärd</sys:String>
+    <sys:String x:Key="cact_function_param">Funktion</sys:String>
+    <sys:String x:Key="cact_hotkey_param">Snabbkommando</sys:String>
+    <sys:String x:Key="cact_path_param">Filväg</sys:String>
+    <sys:String x:Key="cact_notice_content_p1">Anpassade åtgärder är endast tillgängliga när denna app är aktiv i bakgrunden.</sys:String>
+    <sys:String x:Key="cact_notice_content_p2">De har ingen effekt på Android eller andra enheter.</sys:String>
+
+    <!--System/Self-Test-->
+    <sys:String x:Key="system_overview_header">System</sys:String>
+    <sys:String x:Key="system_header">Systeminformation</sys:String>
+    <sys:String x:Key="system_selftest">Kör självtest</sys:String>
+    <sys:String x:Key="system_selftest_desc">Kontrollera att alla moduler i dina öronproppar fungerar korrekt</sys:String>
+    <sys:String x:Key="system_factory_reset">Återställ fabriksinställningar</sys:String>
+    <sys:String x:Key="system_factory_reset_desc">Återställ dina öronproppar till fabriksinställningarna och koppla från</sys:String>
+    <sys:String x:Key="system_pairing_mode">Aktivera parningsläge</sys:String>
+    <sys:String x:Key="system_pairing_mode_desc">Koppla från dina öronproppar från denna PC och gör dem synliga för andra enheter</sys:String>
+    <sys:String x:Key="system_trace_core_dump">Ladda ner spår- och coredumpar</sys:String>
+    <sys:String x:Key="system_trace_core_dump_desc">Hämta rå felsökningsdata från dina öronproppar</sys:String>
+    <sys:String x:Key="system_hidden_at_mode">Dolda systeminställningar</sys:String>
+    <sys:String x:Key="system_hidden_at_mode_desc">Redigera dolda inställningar såsom serienummer och UART-status</sys:String>
+    <sys:String x:Key="system_info">Visa systeminformation</sys:String>
+    <sys:String x:Key="system_info_desc">Visa detaljerad information om dina öronproppar</sys:String>
+    <sys:String x:Key="system_flasher">Installera firmware-uppdateringar</sys:String>
+    <sys:String x:Key="system_flasher_desc">Uppgradera, nedgradera eller flasha anpassade firmware-filer</sys:String>
+    <sys:String x:Key="system_spatial">Test av rumslig sensor</sys:String>
+    <sys:String x:Key="system_spatial_desc">Läs rumslig huvudspårningsdata som används för 3D-ljud</sys:String>
+    <sys:String x:Key="system_usage_reports">Användning &amp; mätningar</sys:String>
+    <sys:String x:Key="system_usage_reports_desc">Visa användningsrapporter som tillhandahålls av öronpropparna</sys:String>
+    <sys:String x:Key="system_battery_statistics">Batteristatistik</sys:String>
+    <sys:String x:Key="system_battery_statistics_desc">Samla in &amp; visa batterianvändningsstatistik</sys:String>
+
+    <sys:String x:Key="system_battery_type_unknown">Ej specificerat</sys:String>
+    <sys:String x:Key="system_waiting_for_device">Väntar på svar...</sys:String>
+    <sys:String x:Key="system_no_response">Ingen respons från öronpropparna</sys:String>
+
+    <sys:String x:Key="system_hwver">Hårdvaruversion</sys:String>
+    <sys:String x:Key="system_swver">Mjukvaruversion</sys:String>
+    <sys:String x:Key="system_cradle_swver">Etuiversion</sys:String>
+    <sys:String x:Key="system_cradle_serial">Etuis serienummer</sys:String>
+    <sys:String x:Key="system_touchver">Touch-firmwareversion</sys:String>
+    <sys:String x:Key="system_protover">Protokollversion</sys:String>
+    <sys:String x:Key="system_btaddr">Bluetooth-adresser</sys:String>
+    <sys:String x:Key="system_btaddr_template">Lokal adress: {0}, Peer-adress: {1}</sys:String>
+    <sys:String x:Key="system_serial">Serienummer</sys:String>
+    <sys:String x:Key="system_build_info">Build-sträng</sys:String>
+    <sys:String x:Key="system_battery_type">Batterityp</sys:String>
+    <sys:String x:Key="system_sku">Enhets-SKU</sys:String>
+    <sys:String x:Key="system_proximity">Närhetsmätning</sys:String>
+    <sys:String x:Key="system_thermo">Termistormätning</sys:String>
+    <sys:String x:Key="system_hall">Hall-mätning</sys:String>
+    <sys:String x:Key="system_accel">Accelerometerstatus</sys:String>
+    <sys:String x:Key="system_adc_soc">ADC laddningsnivå</sys:String>
+    <sys:String x:Key="system_adc_voltage">ADC spänning</sys:String>
+    <sys:String x:Key="system_adc_current">ADC ström</sys:String>
+
+    <sys:String x:Key="selftest_header">Självtest</sys:String>
+    <sys:String x:Key="selftest_pass">Godkänd</sys:String>
+    <sys:String x:Key="selftest_fail">Underkänd</sys:String>
+    <sys:String x:Key="selftest_pass_long">Alla kontroller har passerat</sys:String>
+    <sys:String x:Key="selftest_fail_long">En eller flera kontroller har misslyckats</sys:String>
+
+    <sys:String x:Key="coredump_header">Dumpar data...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_prepare">Förbereder nedladdning...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_finished">Nedladdning slutförd</sys:String>
+    <sys:String x:Key="coredump_dl_trace_progress">Laddar spårdump... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_core_progress">Laddar core dump... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytes)</sys:String>
+    <sys:String x:Key="coredump_dl_note">Ljudströmmen pausas tillfälligt under nedladdningen. Dina öronproppar kopplas bort när överföringen är klar, vänligen anslut dem manuellt.
+    När nedladdningen är klar uppmanas du att välja en katalog för all insamlad data.
+
+    Om överföringen fastnar eller enheten kopplas bort i förtid måste du starta nedladdningen igen. Denna funktion är för närvarande mycket instabil.</sys:String>
+    <sys:String x:Key="coredump_dl_save_fail_title">Misslyckades med att spara dump</sys:String>
+    <sys:String x:Key="coredump_dl_save_fail">Kunde inte kopiera dump från temporär plats. Orsak: {0}</sys:String>
+    <sys:String x:Key="coredump_dl_save_success_title">Dumpar sparade</sys:String>
+    <sys:String x:Key="coredump_dl_save_success">{0} dump(ar) har skrivits till '{1}'</sys:String>
+    <sys:String x:Key="coredump_dl_save_dialog_title">Välj nedladdningskatalog...</sys:String>
+
+    <!-- Hidden AT modes -->
+    <sys:String x:Key="hidden_mode_warning">Fortsätt med försiktighet</sys:String>
+    <sys:String x:Key="hidden_mode_warning_desc">Vissa ändringar på denna sida kan inte återställas genom en fabriksåterställning. Inte alla modeller stöder dessa inställningar.</sys:String>
+    <sys:String x:Key="hidden_mode_target">Målenhet: {0} öronpropp</sys:String> <!-- {0} = Vänster eller Höger -->
+    <sys:String x:Key="hidden_mode_target_l_desc">För att ändra din vänstra öronpropp, sätt den högra öronproppen i etuiet och stäng det.</sys:String>
+    <sys:String x:Key="hidden_mode_target_r_desc">För att ändra din högra öronpropp, sätt den vänstra öronproppen i etuiet och stäng det.</sys:String>
+    <sys:String x:Key="hidden_mode_input_wrong_length">Det nya värdet måste vara exakt {0} tecken långt.</sys:String>
+    <sys:String x:Key="hidden_mode_uart_on_confirm">UART har aktiverats</sys:String>
+    <sys:String x:Key="hidden_mode_uart_off_confirm">UART har inaktiverats</sys:String>
+    <sys:String x:Key="hidden_mode_uart">Aktivera UART-port</sys:String>
+    <sys:String x:Key="hidden_mode_uart_desc">Aktiverar temporärt den fysiska UART-porten på PCB:n för den aktuella målenheten för felsökning</sys:String>
+    <sys:String x:Key="hidden_mode_power">Strömmeny</sys:String>
+    <sys:String x:Key="hidden_mode_power_desc">Stäng av, starta om eller sätt den aktuella målenheten i viloläge</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change">Ändra serienummer</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change_desc">Ändrar serienumret på den aktuella målenheten</sys:String>
+    <sys:String x:Key="hidden_mode_did_change">Ändra DID-nummer &amp; färg</sys:String>
+    <sys:String x:Key="hidden_mode_did_change_desc">Ändrar enhetsmodell-ID för den aktuella målenheten</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change">Ändra SKU-kod</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change_desc">Ändrar produktkoden för den aktuella målenheten</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_addr_change">Ändra peer Bluetooth-adress</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_change_desc">Ändrar peer Bluetooth-adressen för den aktuella målenheten</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_addr_change">Ändra lokal Bluetooth-adress</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_change_desc">Ändrar den lokala Bluetooth-adressen för den aktuella målenheten</sys:String>
+    <sys:String x:Key="hidden_mode_terminal">Dolt kommandoterminal</sys:String>
+    <sys:String x:Key="hidden_mode_terminal_desc">Skicka anpassade AT-kommandon till den aktuella målenheten</sys:String>
+
+    <sys:String x:Key="power_menu_hint">Endast den aktuella målenheten påverkas.</sys:String>
+    <sys:String x:Key="power_menu_reboot">Starta om</sys:String>
+    <sys:String x:Key="power_menu_shutdown">Stäng av</sys:String>
+    <sys:String x:Key="power_menu_sleep">Fabriksviloläge</sys:String>
+
+    <sys:String x:Key="at_terminal_cmd_id">Kommando-ID</sys:String>
+    <sys:String x:Key="at_terminal_cmd_param">Kommando-parameter (valfri)</sys:String>
+    <sys:String x:Key="at_terminal_cmd_id_invalid">Detta kommando-ID är ogiltigt. Ange ett 16-bitars hexadecimalt värde, t.ex. 0007 eller 004C.</sys:String>
+    <sys:String x:Key="at_terminal_output">Utdata</sys:String>
+    <sys:String x:Key="at_terminal_send">Skicka</sys:String>
+
+    <!-- Usage-/metering reports -->
+    <sys:String x:Key="usage_reports_header">Användningsrapporter</sys:String>
+    <sys:String x:Key="usage_reports_hint">Dessa rapporter samlas in av öronpropparna själva. Data visas som den är och kan vara felaktig. Den officiella Wearable-appen återställer vanligtvis de flesta räknare periodiskt och skickar sedan insamlad data till Samsung, om du inte har gett samtycke till datainsamling i deras app. Vissa räknare, såsom laddningscykler, återställs inte.</sys:String>
+    <sys:String x:Key="usage_reports_usage">Användningsrapport</sys:String>
+    <sys:String x:Key="usage_reports_metering">Mätrapport</sys:String>
+    <sys:String x:Key="milliamp_hours_unit">{0}mAh</sys:String>
+    <sys:String x:Key="metering_total_batt_capacity">Total batterikapacitet</sys:String>
+    <sys:String x:Key="metering_a2dp_time">Musikuppspelningstid (A2DP)</sys:String>
+    <sys:String x:Key="metering_esco_time">Samtalstid (eSCO)</sys:String>
+
+    <!-- Battery history -->
+    <sys:String x:Key="batt_hist_hint">Denna app kan samla in batterinivåer och grundläggande användningsdata över tid, vilket låter dig analysera batteriförbrukning. Data kan endast samlas in när appen är aktiv i bakgrunden och dina öronproppar är anslutna till denna enhet.</sys:String>
+    <sys:String x:Key="batt_hist_no_data_title">Inte tillräckligt med data</sys:String>
+    <sys:String x:Key="batt_hist_no_data">Vänligen återkom senare när tillräckligt med data har samlats in eller justera den visade tidsperioden.</sys:String>
+    <sys:String x:Key="batt_hist_y_axis">Laddning (%)</sys:String>
+    <sys:String x:Key="batt_hist_last_hour">Senaste timmen</sys:String>
+    <sys:String x:Key="batt_hist_last_6_hours">Senaste 6 timmarna</sys:String>
+    <sys:String x:Key="batt_hist_last_12_hours">Senaste 12 timmarna</sys:String>
+    <sys:String x:Key="batt_hist_last_24_hours">Senaste 24 timmarna</sys:String>
+    <sys:String x:Key="batt_hist_last_3_days">Senaste 3 dagarna</sys:String>
+    <sys:String x:Key="batt_hist_last_7_days">Senaste 7 dagarna</sys:String>
+    <sys:String x:Key="batt_hist_overlay_none">Ingen överlagring</sys:String>
+    <sys:String x:Key="batt_hist_overlay_noise_controls">Brusinställningar</sys:String>
+    <sys:String x:Key="batt_hist_overlay_wearing">Bärstatus</sys:String>
+    <sys:String x:Key="batt_hist_overlay_host_device">Värdenhet</sys:String>
+    <sys:String x:Key="batt_hist_overlay_legend">{0} (Överlagring)</sys:String>
+    <sys:String x:Key="batt_hist_tools_pan_and_zoom">Panorera &amp; zooma</sys:String>
+    <sys:String x:Key="batt_hist_tools_measure_time">Mät tid</sys:String>
+    <sys:String x:Key="batt_hist_tools_measure_battery">Mät nivå</sys:String>
+    <sys:String x:Key="batt_hist_show_legend">Visa förklaring</sys:String>
+    <sys:String x:Key="batt_hist_measure_difference_display">Skillnad: {0}</sys:String>
+    <sys:String x:Key="batt_hist_measure_timespan_display">Tidsintervall: {0}</sys:String>
+    <sys:String x:Key="batt_hist_measure_timespan_unit_long">d' dag(ar), 'hh'h:'mm':'ss</sys:String>
+    <sys:String x:Key="batt_hist_time_span_tip_title">Tidsintervall</sys:String>
+    <sys:String x:Key="batt_hist_control_tip_title">Muskontroller</sys:String>
+    <sys:String x:Key="batt_hist_control_tip">Dra i ytan för att flytta diagrammet.
+
+    Rulla för att zooma horisontellt och vertikalt.
+
+    Håll musen över X- eller Y-axeln och rulla för att endast zooma horisontellt eller vertikalt. Rullning över X-axeln (tid) sträcker eller komprimerar den, till exempel.</sys:String>
+    <sys:String x:Key="batt_hist_overlay_tip_title">Överlagringar</sys:String>
+    <sys:String x:Key="batt_hist_overlay_tip">Du kan använda överlagringar för att lägga till ytterligare kontext till diagrammet.
+
+    Brusinställningar: Visar vilka brusinställningar som var aktiverade eller inaktiverade.
+
+    Bärstatus: Visar om öronpropparna bars eller inte.
+
+    Värdenhet: Visar vilken öronpropp som hanterar Bluetooth-anslutningen till datorn.
+
+    Överlagringsdata kan vara svår att tolka vid stora tidsintervall. Håll musen över X-axeln och rulla upp för att zooma in på ett specifikt tidsintervall för bättre översikt.</sys:String>
+    <sys:String x:Key="batt_hist_tools_tip_title">Verktyg</sys:String>
+    <sys:String x:Key="batt_hist_tools_tip">Panorera &amp; zooma: Standardläge. Navigera runt diagrammet genom att panorera och zooma.
+
+    Mät tid: Välj ett horisontellt intervall för att mäta den förflutna tiden mellan start- och slutpunkt.
+
+    Mät nivå: Välj ett vertikalt intervall för att mäta skillnaden i batterinivå mellan start- och slutpunkt.</sys:String>
+
+    <!--Settings-->
+    <sys:String x:Key="settings_header">Inställningar</sys:String>
+    <sys:String x:Key="settings_save_fail_no_access">Misslyckades att spara inställningar. Åtkomst till konfigurationsfilen har nekats av operativsystemet. Kontrollera filbehörigheter för {0}.</sys:String>
+    <sys:String x:Key="settings_appearance">Utseende</sys:String>
+    <sys:String x:Key="settings_darkmode">Mörkt läge</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Använd ett mörkare färgschema</sys:String>
+    <sys:String x:Key="settings_blurstrength">Fönstersuddighetsnivå</sys:String>
+    <sys:String x:Key="settings_blurstrength_description">Endast kompatibelt med mörkt läge. Stöds inte på alla system</sys:String>
+    <sys:String x:Key="settings_accent">Accentfärg</sys:String>
+    <sys:String x:Key="settings_accent_description">Välj en anpassad accentfärg</sys:String>
+    <sys:String x:Key="settings_transitions">Övergångar</sys:String>
+    <sys:String x:Key="settings_transitions_description">Aktivera slide-övergångar</sys:String>
+    <sys:String x:Key="settings_localization_disable">Språk</sys:String>
+    <sys:String x:Key="settings_localization_description">Byt appens språk</sys:String>
+    <sys:String x:Key="settings_minimize_tray">Minimera till systemfältet</sys:String>
+    <sys:String x:Key="settings_minimize_tray_description">Håll appen aktiv i bakgrunden istället för att avsluta den</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons">Använd realistiska öronproppsbilder</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons_description">Visa realistiska och färgkänsliga bilder av dina öronproppar, om de stöds</sys:String>
+    <sys:String x:Key="settings_color_override">Åsidosätt öronproppsfärg</sys:String>
+    <sys:String x:Key="settings_color_override_description">Ändra den visade färgen på dina öronproppar i appen</sys:String>
+    <sys:String x:Key="settings_nav_sidebar">Navigationsfält</sys:String>
+    <sys:String x:Key="settings_nav_sidebar_description">Visa eller kollapsa navigeringsknapparna på vänster sida</sys:String>
+    <sys:String x:Key="settings_tray_settings">Systemfältsikon &amp; uppstart</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode">Dynamisk systemfältsikon</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_description">Visa batteristatus i systemfältsikonen</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_off">Av</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_min">Visa lägsta batterinivå</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_avg">Visa genomsnittlig batterinivå</sys:String>
+    <sys:String x:Key="settings_autostart">Starta vid uppstart</sys:String>
+    <sys:String x:Key="settings_autostart_description">Starta minimerad vid systemstart</sys:String>
+    <sys:String x:Key="settings_autostart_permission">Kan inte uppdatera autostart-post i registret. Registeråtkomst (HKCU) har uttryckligen inaktiverats av systemadministratören.</sys:String>
+    <sys:String x:Key="settings_connpopup">Anslutnings-popup</sys:String>
+    <sys:String x:Key="settings_devmode">Utvecklaralternativ</sys:String>
+    <sys:String x:Key="settings_devmode_description">Bluetooth-trafikinspektör och andra utvecklarverktyg</sys:String>
+    <sys:String x:Key="settings_crowdsourcing">Crowdsourcing</sys:String>
+
+    <!--Settings >>> Connection popup-->
+    <sys:String x:Key="settings_cpopup_header">Anslutnings-popup</sys:String>
+    <sys:String x:Key="settings_cpopup_enable">Aktivera popup vid anslutning</sys:String>
+    <sys:String x:Key="settings_cpopup_enable_description">Visa en liten notifikation som informerar om batterinivåer när Buds är anslutna</sys:String>
+    <sys:String x:Key="settings_cpopup_compact">Kompakt läge</sys:String>
+    <sys:String x:Key="settings_cpopup_compact_description">Dölj rubriken på popup-fönstret för att spara plats</sys:String>
+    <sys:String x:Key="settings_cpopup_position">Position</sys:String>
+    <sys:String x:Key="settings_cpopup_position_description">Välj position för anslutningspopupen</sys:String>
+    <sys:String x:Key="settings_cpopup_demo">Visa demopopup</sys:String>
+
+    <!--Settings >>> Crowdsourcing settings-->
+    <sys:String x:Key="settings_crowd_header">Crowdsourcing</sys:String>
+    <sys:String x:Key="settings_crowd_allow">Tillåt bidrag till crowdsourcing</sys:String>
+    <sys:String x:Key="settings_crowd_allow_description">Samla information om Samsungs proprietära Bluetooth-protokollstruktur och data vid behov. Detta gör att jag kan hålla alla tillgängliga Galaxy Buds-modeller stödda mycket enklare utan att äga dem.</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport">Tillåt appkrascherapporter</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport_description">Skicka automatiskt appkrascherapporter vid krascher eller allvarliga fel med Sentry. Detta hjälper mig att snabbare åtgärda problematiska och störande buggar.</sys:String>
+
+    <!--Factory reset-->
+    <sys:String x:Key="factory_header">Återställning till fabriksinställningar</sys:String>
+    <sys:String x:Key="factory_confirmation">Är du säker på att du vill återställa dina öronproppar till fabriksinställningarna?
+    Detta kommer att ta bort all data och alla inställningar från dina öronproppar.
+
+    Se till att båda öronpropparna är påslagna innan du fortsätter.</sys:String>
+    <sys:String x:Key="factory_error_title">Återställning till fabriksinställningar misslyckades</sys:String>
+    <sys:String x:Key="factory_error">Enheten returnerade felkod: {0}
+
+    Se till att båda öronpropparna är påslagna och nåbara.
+    Du kan behöva ansluta öronpropparna manuellt igen.</sys:String>
+
+    <!--Find my Gear-->
+    <sys:String x:Key="fmg_warning_both">Ta ut båda öronpropparna från öronen.</sys:String>
+    <sys:String x:Key="fmg_warning_left">Ta ut vänster öronpropp från örat.</sys:String>
+    <sys:String x:Key="fmg_warning_right">Ta ut höger öronpropp från örat.</sys:String>
+    <sys:String x:Key="fmg_header">Hitta mina öronproppar</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage">Hantera SmartThings Find-data</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage_desc">Visa och hantera SmartThings Find-data som lagras på dina öronproppar</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open">Öppna SmartThings Find-webbplatsen</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open_desc">Spåra dina öronproppar online. Kräver ett Samsung-konto och den officiella SmartThings Find-appen för att vara konfigurerad.</sys:String>
+
+    <!--SmartThings data-->
+    <sys:String x:Key="smart_things_find">SmartThings</sys:String>
+    <sys:String x:Key="smart_things_find_clear">Ta bort SmartThings Find-konfiguration</sys:String>
+    <sys:String x:Key="smart_things_find_clear_desc">Ta bort Samsung-kontorelaterad data från dina öronproppar</sys:String>
+    <sys:String x:Key="smart_things_find_iv">Initieringsvektor (IV)</sys:String>
+    <sys:String x:Key="smart_things_find_secret_key">Hemlig nyckel</sys:String>
+    <sys:String x:Key="smart_things_find_region">Region</sys:String>
+    <sys:String x:Key="smart_things_find_fmm_token">SmartThings Find-token</sys:String>
+    <sys:String x:Key="smart_things_find_no_link">Dina öronproppar är inte länkade till Samsung SmartThings Find-nätverket.</sys:String>
+    <sys:String x:Key="smart_things_find_write_fail">Öronpropparna avvisade den nya SmartThings Find-konfigurationsdatan.</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok">Konfiguration överskriven</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok_desc">SmartThings Find-konfigurationsdatan har tagits bort.</sys:String>
+
+    <!-- Fit test-->
+    <sys:String x:Key="gft_warning">Vänligen bär båda öronpropparna.</sys:String>
+    <sys:String x:Key="gft_desc">Kontrollera att dina öronproppar sitter korrekt</sys:String>
+    <sys:String x:Key="gft_bad">Dålig passform</sys:String>
+    <sys:String x:Key="gft_good">Bra passform</sys:String>
+    <sys:String x:Key="gft_fail">Test misslyckades</sys:String>
+
+    <!--Equalizer-->
+    <sys:String x:Key="eq_header">Equalizer</sys:String>
+    <sys:String x:Key="eq_enable">Equalizer</sys:String>
+    <sys:String x:Key="eq_enable_description">Applicera EQ-ljudfilter</sys:String>
+    <sys:String x:Key="eq_preset">Förinställning</sys:String>
+    <sys:String x:Key="eq_stereo_balance">Vänster/höger ljudbalans</sys:String>
+    <sys:String x:Key="eq_stereo_balance_value">{0}% vänster; {1}% höger</sys:String>
+    <sys:String x:Key="eq_stereo_balance_neutral">Neutral</sys:String>
+
+    <sys:String x:Key="eq_bass">Bassförstärkning</sys:String>
+    <sys:String x:Key="eq_soft">Mjuk</sys:String>
+    <sys:String x:Key="eq_dynamic">Dynamisk</sys:String>
+    <sys:String x:Key="eq_clear">Klar</sys:String>
+    <sys:String x:Key="eq_treble">Diskantförstärkning</sys:String>
+
+    <!--Noise control-->
+    <sys:String x:Key="nc_header">Bruskontroll</sys:String>
+    <sys:String x:Key="nc_as_anc_description">Minska bakgrundsljud</sys:String>
+    <sys:String x:Key="nc_one_earbud">Bruskontroller med en öronpropp</sys:String>
+    <sys:String x:Key="nc_one_earbud_description">Bruskontroller kräver normalt två öronproppar för att undvika obehag. Aktivera detta för att tillåta med endast en öronpropp</sys:String>
+    <sys:String x:Key="nc_anc_level">Hög känslighet</sys:String>
+    <sys:String x:Key="nc_anc_level_description">Starkare brusreduceringseffekt</sys:String>
+    <sys:String x:Key="nc_ambient">Anpassa omgivningsljud</sys:String>
+    <sys:String x:Key="nc_ambient_description">Konfigurera ton och volym för omgivningsljud (om tillgängligt)</sys:String>
+    <sys:String x:Key="nc_voicedetect">Samtalsdetektion</sys:String>
+    <sys:String x:Key="nc_voicedetect_description">När din röst upptäcks aktiveras Ambient-ljud automatiskt och mediavolymen sänks för enklare konversation</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout">Samtalstidsgräns</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout_description">Återställ inställningar när din röst inte upptäcks under en viss tid</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout_item">{0} sekunder</sys:String>
+
+    <!--Noise control >>> Ambient sound-->
+    <sys:String x:Key="nc_as_header">Inställningar för omgivningsljud</sys:String>
+    <sys:String x:Key="nc_as_custom">Avancerad anpassning</sys:String>
+    <sys:String x:Key="nc_as_custom_description">Anpassa inställningarna för omgivningsljud</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_l">Omgivningsljudvolym (vänster)</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_r">Omgivningsljudvolym (höger)</sys:String>
+    <sys:String x:Key="nc_as_custom_tone">Omgivningsljudston</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_clear">Klar</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_soft">Mjuk</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_neutral">Neutral</sys:String>
+    <sys:String x:Key="nc_as_custom_vol_normal">Normal</sys:String>
+
+    <!--Ambient sound-->
+    <sys:String x:Key="as_header">Omgivningsljud</sys:String>
+    <sys:String x:Key="as_header_description">Hör din omgivning</sys:String>
+    <sys:String x:Key="as_enable">Aktivera omgivningsljud</sys:String>
+    <sys:String x:Key="as_volume">Omgivningsljudvolym</sys:String>
+    <sys:String x:Key="as_voicefocus">Röstfokus</sys:String>
+    <sys:String x:Key="as_voicefocus_description">Låt röster höras tydligare</sys:String>
+    <sys:String x:Key="as_extrahigh">Extra hög omgivningsvolym</sys:String>
+    <sys:String x:Key="as_extrahigh_description">Lägger till en extra volymnivå på reglaget för omgivningsvolym</sys:String>
+    <sys:String x:Key="as_scale_very_low">Mycket låg</sys:String>
+    <sys:String x:Key="as_scale_low">Låg</sys:String>
+    <sys:String x:Key="as_scale_moderate">Måttlig</sys:String>
+    <sys:String x:Key="as_scale_high">Hög</sys:String>
+    <sys:String x:Key="as_scale_extraloud">Extra hög</sys:String>
+
+    <!--Advanced page-->
+    <sys:String x:Key="adv_header">Avancerade inställningar</sys:String>
+    <sys:String x:Key="adv_seamless">Sömlös öronproppsanslutning</sys:String>
+    <sys:String x:Key="adv_seamless_desc">Byt snabbt till närliggande enheter utan att koppla bort dina öronproppar eller aktivera parningsläge</sys:String>
+    <sys:String x:Key="adv_pause_playback">Pausa uppspelning när öronpropparna tas bort</sys:String>
+    <sys:String x:Key="adv_pause_playback_desc">Skickar en global play/pause-händelse när båda närhetssensorerna är täckta (endast Desktop)</sys:String>
+    <sys:String x:Key="adv_resume_playback">Återuppta uppspelning när öronpropparna bärs</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Skickar en global play/pause-händelse när minst en av närhetssensorerna täcks (endast Desktop)</sys:String>
+    <sys:String x:Key="adv_sidetone">Använd omgivningsljud under samtal</sys:String>
+    <sys:String x:Key="adv_sidetone_desc">Hör din egen röst tydligare under telefonsamtal</sys:String>
+    <sys:String x:Key="adv_callpath">In-ear-detektion för samtal</sys:String>
+    <sys:String x:Key="adv_callpath_desc">Spela upp samtal genom öronpropparna när de är i öronen och genom datorns högtalare när de inte är det</sys:String>
+    <sys:String x:Key="adv_extra_clear_call">Förbättra samtalsljud</sys:String>
+    <sys:String x:Key="adv_extra_clear_call_desc">Förbättrar samtalsklarheten. Mest användbart i bullriga miljöer med öronproppar. Förbrukar mer batteri.</sys:String>
+    <sys:String x:Key="adv_passthrough">Minska tryck med omgivningsljud</sys:String>
+    <sys:String x:Key="adv_passthrough_desc">Kan förhindra känsla av instängdhet eller tryck när aktiv brusreducering inte används</sys:String>
+    <sys:String x:Key="adv_hotkey">Tangentbordsgenvägar</sys:String>
+    <sys:String x:Key="adv_hotkey_desc">Definiera egna tangentbordsgenvägar för fjärrstyrning av dina öronproppar</sys:String>
+    <sys:String x:Key="adv_bixby_remap">Omdefiniera Bixby-aktivering</sys:String>
+    <sys:String x:Key="adv_bixby_remap_desc">Definiera vad som ska hända när du säger "Hej Bixby!"</sys:String>
+
+    <!--Remap bixby wakeup-->
+    <sys:String x:Key="bixby_remap_enable">Aktivera Bixby-aktivering</sys:String>
+    <sys:String x:Key="bixby_remap_enable_desc">Starta Bixby på din Samsung-telefon eller utför en anpassad åtgärd på denna PC när den aktiveras</sys:String>
+    <sys:String x:Key="bixby_remap_lang">Bixby aktiveringsspråk</sys:String>
+    <sys:String x:Key="bixby_remap_lang_desc">Byt språk som används för aktiveringsfrasen</sys:String>
+    <sys:String x:Key="bixby_remap_action">Anpassad aktiveringsåtgärd</sys:String>
+    <sys:String x:Key="bixby_remap_action_desc">Definiera vad som ska hända när Bixby aktiveras på denna enhet</sys:String>
+    <sys:String x:Key="bixby_remap_note">Säg "Hej Bixby!" för att aktivera. Aktiveringsfrasen kan variera med vissa språkinställningar.
+
+    Omdefinieringsinställningen är endast aktiv på denna enhet. Om du ansluter öronpropparna till en Samsung-enhet aktiveras röstaktivering Bixby som normalt. På andra enheter än denna enhet och icke-Samsung-telefoner kommer denna funktion inte att trigga någon åtgärd.</sys:String>
+
+    <!--Credits-->
+    <sys:String x:Key="credits_header">Credits</sys:String>
+    <sys:String x:Key="credits_developer">Utvecklare</sys:String>
+    <sys:String x:Key="credits_license">Licens</sys:String>
+    <sys:String x:Key="credits_version">Version</sys:String>
+    <sys:String x:Key="credits_contributor">Bidragsgivare</sys:String>
+    <sys:String x:Key="credits_translator">Översättare</sys:String>
+    <sys:String x:Key="credits_sponsor">Sponsra detta projekt</sys:String>
+    <sys:String x:Key="credits_kofi">Besök min Ko-fi-sida för att stödja mig!</sys:String>
+    <sys:String x:Key="credits_github">Besök detta projekt på GitHub</sys:String>
+
+    <!--Connection lost page-->
+    <sys:String x:Key="connlost">Förlorad anslutning</sys:String>
+    <sys:String x:Key="connlost_header">Kunde inte upprätta anslutning</sys:String>
+    <sys:String x:Key="connlost_connect">Anslut</sys:String>
+    <sys:String x:Key="connlost_connecting">Ansluter...</sys:String>
+    <sys:String x:Key="connlost_troubleshoot">Felsök</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_title">Så här felsöker du anslutningsproblem</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_content">Se till att Samsungs officiella Wearable-app för Galaxy Buds inte försöker ansluta till dina öronproppar i bakgrunden.
+    Annars kan du uppleva frekventa anslutningsproblem eftersom deras app upprepade gånger försöker ta kontroll över öronpropparna.
+
+    Du kan välja en av dessa lösningar för att lösa problemet:
+
+    • Koppla bort öronpropparna från Wearable-appen. (I Wearable-appen, öppna hamburgermenyn, välj 'Hantera enheter' och ta bort dina öronproppar från listan.)
+
+    • Avinstallera Galaxy Buds-pluginen för Samsung Wearable-appen helt och hållet.
+
+    • Använd en app som 'Hail' eller 'Ice Box' för att temporärt frysa den officiella Galaxy Buds-pluginen för Samsung Wearable-appen för att förhindra att den körs.</sys:String>
+
+    <!-- Pairing mode -->
+    <sys:String x:Key="connlost_disconnected">Enheten har kopplats bort</sys:String>
+    <sys:String x:Key="pairingmode_done">Öronpropparna är nu i parningsläge och har kopplats bort från denna enhet.</sys:String>
+
+    <!--Firmware update disclaimer-->
+    <sys:String x:Key="fw_disclaimer">Ansvarsfriskrivning</sys:String>
+    <sys:String x:Key="fw_disclaimer_desc">Detta verktyg för firmware-uppdatering är en exakt kopia av den officiella uppdateraren som finns i Samsungs officiella Android-app. Jag har noggrant testat denna implementation under olika förhållanden (normal drift, förlorad anslutning, medvetet korrupta Bluetooth-paket, ...) utan problem. Jag tar dock inget ansvar om något skulle gå fel eftersom firmware-uppdateringar ändrar viktiga systemkomponenter och alltid bör hanteras med försiktighet.
+
+    NEDGRADERING: Även om det är möjligt att nedgradera till äldre firmware-versioner och jag aldrig stött på problem med detta, kan det orsaka oväntade problem och bör endast göras om det är nödvändigt. En fabriksåterställning efter nedgradering rekommenderas men är vanligtvis inte nödvändig.
+    ANPASSAD FLASHNING: Du kan även ladda firmware-filer från din hårddisk. Flasha INTE firmware-binarier som är avsedda för ANDRA modeller på din enhet.
+
+    Denna applikation är licensierad under GPLv3. Genom att använda den accepterar du licensen och dess begränsning av ansvar. Tryck på 'Fortsätt' för att acceptera.</sys:String>
+
+    <!--Firmware selection-->
+    <sys:String x:Key="fw_select_header">Firmware-uppdateringar</sys:String>
+    <sys:String x:Key="fw_select_downgrade">Tillåt firmware-nedgradering</sys:String>
+    <sys:String x:Key="fw_select_downgrade_desc">Inaktivera versionskontroller och visa äldre firmware i listan (kan orsaka oväntade problem; endast för avancerade användare)</sys:String>
+    <sys:String x:Key="fw_select_install">Installera firmware</sys:String>
+    <sys:String x:Key="fw_select_install_short">Installera</sys:String>
+    <sys:String x:Key="fw_select_from_disk">Välj firmware från hårddisk...</sys:String>
+    <sys:String x:Key="fw_select_from_disk_short">Öppna</sys:String>
+    <sys:String x:Key="fw_select_refresh">Uppdatera</sys:String>
+    <sys:String x:Key="fw_select_unsupported_selection">Ogiltigt val. Välj ett kompatibelt objekt från listan.</sys:String>
+    <sys:String x:Key="fw_select_downloading">Laddar ner...</sys:String>
+    <sys:String x:Key="fw_select_net_error">Misslyckades att kommunicera med servern. Kan inte ladda ner firmware just nu.</sys:String>
+    <sys:String x:Key="fw_select_net_index_error">Misslyckades att kommunicera med servern. Kan inte ladda ner firmware-index just nu.</sys:String>
+    <sys:String x:Key="fw_select_http_error">HTTP-felkod:</sys:String>
+    <sys:String x:Key="fw_select_unknown_build">Okänt build-namn</sys:String>
+    <sys:String x:Key="fw_select_no_results_short">Inga uppdateringar hittades</sys:String>
+    <sys:String x:Key="fw_select_verify_fail">Misslyckades att verifiera firmware</sys:String>
+    <sys:String x:Key="fw_select_verify_model_mismatch_fail">Enhetsmodell matchar inte! Firmware-överföringen har avbrutits.
+
+    Du försöker flasha firmware för {0} på din {1}. Detta kan permanent skada dina öronproppar.</sys:String>
+    <sys:String x:Key="fw_select_confirm">Du är på väg att flasha '{0}' på din '{1}' enhet</sys:String>
+    <sys:String x:Key="fw_select_confirm_desc">Se till att denna information är korrekt, annars tryck på 'Avbryt' och kontrollera inställningarna igen.
+
+    Om möjligt, se till att båda öronpropparna är anslutna innan start. Det orsakar inga problem om anslutningen misslyckas under överföringen. I så fall avbryter öronpropparna automatiskt överföringen och avslutar firmware-läget.
+
+    Tryck på 'Fortsätt' för att starta uppdateringen.</sys:String>
+
+    <!--Firmware transfer-->
+    <sys:String x:Key="fw_upload_header">Installerar firmware...</sys:String>
+    <sys:String x:Key="fw_upload_progress_session">Skapar ny session...</sys:String>
+    <sys:String x:Key="fw_upload_progress_prepare">Förbereder uppladdning...</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished">Uppladdning klar</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished_desc">Uppdateringen har överförts och installeras nu på enheten. Under processen blir dina öronproppar oresponsiva i cirka 30 sekunder. I de flesta fall försöker öronpropparna återansluta automatiskt efter den inbyggda uppdateringen.</sys:String>
+    <sys:String x:Key="fw_upload_progress_error">Misslyckades att ladda upp firmware</sys:String>
+    <sys:String x:Key="fw_upload_progress">Laddar upp firmware-uppdatering... {0}%</sys:String>
+    <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_mtu">Maximal överföringsenhet: {0} bytes</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_offset">Bearbetar data från offset 0x{0:X6} till 0x{1:X6}</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_segment">Laddar upp segment #{0} ({1} bytes, kontrollsumma 0x{2:X6})</sys:String>
+
+    <!--Firmware parse errors-->
+    <sys:String x:Key="fw_fail_no_magic">Detta är inte en giltig firmware-binär. Ogiltigt magic-värde hittades i filhuvudet.</sys:String>
+    <sys:String x:Key="fw_fail_size_null">Denna firmware-binär har storlek noll och kan inte användas för flashing. Välj en annan.</sys:String>
+    <sys:String x:Key="fw_fail_no_segments">Denna firmware-binär innehåller inga segment och är tom. Välj en annan.</sys:String>
+    <sys:String x:Key="fw_fail_unknown">Oväntat fel vid avkodning av firmware-binären. Arkivet kan vara korrupt.
+
+    Detaljer:</sys:String>
+
+    <!--Firmware transfer errors-->
+    <sys:String x:Key="fw_fail_connection">Förlorad anslutning till enheten. Firmware-överföringen har avbrutits.</sys:String>
+    <sys:String x:Key="fw_fail_session">Misslyckades att öppna ny session. Enheten returnerade felkod ({0})</sys:String>
+    <sys:String x:Key="fw_fail_copy">Misslyckades att kopiera firmware-binär. Anslut igen och försök. Felkod från enheten: {0}</sys:String>
+    <sys:String x:Key="fw_fail_verify">Misslyckades att verifiera/installera firmware-binär. Anslut igen och försök. Felkod från enheten: {0}</sys:String>
+    <sys:String x:Key="fw_fail_connection_precheck">Enheten är för närvarande inte ansluten. Kontrollera dina Bluetooth-inställningar och anslut igen.</sys:String>
+    <sys:String x:Key="fw_fail_pending">En annan firmware-överföring pågår redan. Avbryt den korrekt först.</sys:String>
+    <sys:String x:Key="fw_fail_lowbattery">Batteriet är för lågt. Ladda öronpropparna över 15% först.</sys:String>
+    <sys:String x:Key="fw_fail_session_timeout">Tidsgräns vid väntan på att enheten ska öppna ny session</sys:String>
+    <sys:String x:Key="fw_fail_control_timeout">Tidsgräns vid väntan på att enheten ska returnera en kontrollblock</sys:String>
+
+    <!--Spatial test-->
+    <sys:String x:Key="spatial_header">Spatial sensor</sys:String>
+    <!--Note: Quaternion = 4-dimensional vector-->
+    <sys:String x:Key="spatial_dump_quaternion">Rå quaternion-vektor:</sys:String>
+    <!--Note: RPY = Roll, pitch, yaw-->
+    <sys:String x:Key="spatial_dump_rpy">RPY-värden:</sys:String>
+
+    <!--Header-->
+    <sys:String x:Key="window_open">Öppna</sys:String>
+    <sys:String x:Key="window_minimize">Minimera</sys:String>
+    <sys:String x:Key="window_close">Stäng</sys:String>
+
+    <!--Buds app detected page-->
+    <sys:String x:Key="budsapp_header">Bluetooth-kompatibilitetsinformation</sys:String>
+    <sys:String x:Key="budsapp_text_p1">Den officiella Galaxy Buds-appen är installerad tillsammans med denna applikation.</sys:String>
+    <sys:String x:Key="budsapp_text_p2">Om den är aktiv i bakgrunden kan GalaxyBudsClient få problem att ansluta till dina öronproppar. Se till att avregistrera dina öronproppar från den officiella appen eller hindra den från att köra i bakgrunden på annat sätt.</sys:String>
+    <sys:String x:Key="budsapp_text_p3">Tänk på att endast en applikation kan kommunicera med dina Galaxy Buds åt gången.</sys:String>
+
+    <!--Manual pairing-->
+    <sys:String x:Key="manualpair_title">Manuell enhetsval</sys:String>
+    <sys:String x:Key="manualpair_title_dialog">Välj din Galaxy Buds-enhet</sys:String>
+    <sys:String x:Key="manualpair_model">Välj korrekt modelltyp</sys:String>
+    <sys:String x:Key="manualpair_note">Du bör endast ansluta dina öronproppar manuellt om installationsguiden inte känner igen dem korrekt.</sys:String>
+
+    <!--Rename-->
+    <sys:String x:Key="rename">Byt namn på öronproppar</sys:String>
+    <sys:String x:Key="rename_desc">Detta kommer att byta namn på öronpropparna för alla enheter.</sys:String>
+    <sys:String x:Key="rename_warn">Att byta namn på dina öronproppar kan vara omöjligt med officiella appar eftersom de begränsar detta till Samsung-telefoner. Du kan därför behöva denna app för att återställa det personliga namnet. Namnbytet kan inte upptäckas av enheter förrän du kopplar bort och kopplar ihop öronpropparna igen.</sys:String>
+    <sys:String x:Key="rename_warn_oneui_title">Viktig information för OneUI-användare</sys:String>
+    <sys:String x:Key="rename_warn_oneui">Om din enhet kör Samsung OneUI bör du använda Samsungs officiella metod för att byta namn på öronpropparna i systeminställningarna. Annars kan det uppstå anslutningsproblem när du sätter ett nytt namn.</sys:String>
+    <sys:String x:Key="rename_too_short">Namnet du angav är för kort (inga tecken) eller för långt (maxgräns som öronpropparna tillåter).</sys:String>
+    <sys:String x:Key="rename_hint">Ange nytt namn...</sys:String>
+    <sys:String x:Key="rename_label">Nytt enhetsnamn</sys:String>
+    <sys:String x:Key="rename_reading_name">Läser aktuellt namn...</sys:String>
+    <sys:String x:Key="rename_ok_title">Öronproppar namnbytta</sys:String>
+    <sys:String x:Key="rename_ok">Dina öronproppar har bytt namn!
+    Namnet kan inte upptäckas av enheter (inklusive denna) förrän du kopplar bort och kopplar ihop öronpropparna igen.</sys:String>
+</ResourceDictionary>

@@ -105,7 +105,7 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
         if (!await Utils.Interface.Dialogs.RequireFullVersion())
             return;
         
-        await BluetoothImpl.Instance.SendRequestAsync(MsgIds.UNK_PAIRING_MODE);
+        await BluetoothImpl.Instance.SendRequestAsync(MsgIds.PAIRING_MODE);
         await new MessageBox
         {
             Title = Strings.ConnlostDisconnected,

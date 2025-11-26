@@ -1,6 +1,5 @@
-
 <p align="center">
-  <a href="../README.md">English</a> | <a href="/docs/README_chs.md">中文</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | Ελληνικά | <a href="/docs/README_pt.md">Português</a><br>
+  <a href="../README.md">English</a> | <a href="/docs/README_chs.md">中文</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | Ελληνικά | <a href="/docs/README_pt.md">Português</a> | <a href="/docs/README_vnm.md">Tiếng Việt</a> <br>
     <sub>Προσοχή: Τα αρχεία readme συντηρούνται από μεταφραστές και ενδέχεται να καθίστανται απαρχαιωμένα κατά καιρούς. Για τις πιο πρόσφατες πληροφορίες στηριχτείτε στην αγγλική έκδοση.</sub>
 </p>
 <h1 align="center">
@@ -45,11 +44,11 @@
 
 Εκτός από τα κύρια χαρακτηριστικά που προσφέρει η επίσημη εφαρμογή για Android, αυτή η εφαρμογή βοηθά στην απελευθέρωση όλων των δυνατοτήτων των ακουστικών σας και την ενσωμάτωση νέας λειτουργικότητας όπως:
 
-* Λεπτομερή στατιστικά μπαταρίας
-* Διαγνωστικές πληροφορίες και εργοστασιακά τεστ αυτοαξιολόγησης
-* Πολλές κρυμμένες πληροφορίες αποσφαλμάτωσης
-* Προσαρμοσμένες λειτουργίες παρατεταμένου αγγίγματος
-* και πολλά ακόμα...
+- Λεπτομερή στατιστικά μπαταρίας
+- Διαγνωστικές πληροφορίες και εργοστασιακά τεστ αυτοαξιολόγησης
+- Πολλές κρυμμένες πληροφορίες αποσφαλμάτωσης
+- Προσαρμοσμένες λειτουργίες παρατεταμένου αγγίγματος
+- και πολλά ακόμα...
 
 ## Λήψη
 
@@ -102,36 +101,36 @@
 
 #### Συνεργάτες
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Υποδείγματα Issue, wiki και μεταφράσεις
-* [@AndriesK](https://github.com/AndriesK) - Διόρθωση σφάλματος στα Buds Live
-* [@TheLastFrame](https://github.com/TheLastFrame) - Εικονίδια Buds Pro
-* [@githubcatw](https://github.com/githubcatw) - Κορμός διαλόγου σύνδεσης
+- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Υποδείγματα Issue, wiki και μεταφράσεις
+- [@AndriesK](https://github.com/AndriesK) - Διόρθωση σφάλματος στα Buds Live
+- [@TheLastFrame](https://github.com/TheLastFrame) - Εικονίδια Buds Pro
+- [@githubcatw](https://github.com/githubcatw) - Κορμός διαλόγου σύνδεσης
 
 #### Μεταφραστές
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Ρωσική και Ουκρανική μετάφραση
-* [@PlasticBrain](https://github.com/fhalfkg) - Κορεάτικη και Ιαπωνική μετάφραση
-* [@cozyplanes](https://github.com/cozyplanes) - Κορεάτικη μετάφραση
-* [@erenbektas](https://github.com/erenbektas) - Τουρκική μετάφραση
-* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) and [@pseudor](https://github.com/pseudor) - Κινεζική μετάφραση
-* [@efrenbg1](https://github.com/efrenbg1) and Andrew Gonza - Ισπανική μετάφραση
-* [@giovankabisano](https://github.com/giovankabisano) - Ινδονησιακή μετάφραση
-* [@lucasskluser](https://github.com/lucasskluser) - Πορτογαλική μετάφραση
-* [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Ιταλική μετάφραση
-* [@Buashei](https://github.com/Buashei) - Πολωνική μετάφραση
-* [@KatJillianne](https://github.com/KatJillianne) - Βιετναμέζικη μετάφραση
-* [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - Τσεχική μετάφραση
-* [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - Γερμανική μετάφραση
-* [@nikossyr](https://github.com/nikossyr) - Ελληνική μετάφραση
+- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Ρωσική και Ουκρανική μετάφραση
+- [@PlasticBrain](https://github.com/fhalfkg) - Κορεάτικη και Ιαπωνική μετάφραση
+- [@cozyplanes](https://github.com/cozyplanes) - Κορεάτικη μετάφραση
+- [@erenbektas](https://github.com/erenbektas) - Τουρκική μετάφραση
+- [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) and [@pseudor](https://github.com/pseudor) - Κινεζική μετάφραση
+- [@efrenbg1](https://github.com/efrenbg1) and Andrew Gonza - Ισπανική μετάφραση
+- [@giovankabisano](https://github.com/giovankabisano) - Ινδονησιακή μετάφραση
+- [@lucasskluser](https://github.com/lucasskluser) and [@JuanFariasDev](https://github.com/juanfariasdev) - Πορτογαλική μετάφραση
+- [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - Ιταλική μετάφραση
+- [@Buashei](https://github.com/Buashei) - Πολωνική μετάφραση
+- [@KatJillianne](https://github.com/KatJillianne) and [@thelegendaryjohn](https://github.com/thelegendaryjohn) - Βιετναμέζικη μετάφραση
+- [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - Τσεχική μετάφραση
+- [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - Γερμανική μετάφραση
+- [@nikossyr](https://github.com/nikossyr) - Ελληνική μετάφραση
 
 ## Άδεια
 
 Η εφαρμογή αυτή έχει άδεια βάσει [GPLv3](https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE). Δεν συνδέεται με τη Samsung ούτε εποπτεύεται από αυτή με κανένα τρόπο.
 
 ```
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```

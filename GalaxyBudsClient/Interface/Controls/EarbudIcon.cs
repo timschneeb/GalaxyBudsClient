@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.IO;
 using Avalonia;
@@ -30,6 +30,7 @@ public class EarbudIcon : Image
         BluetoothImpl.Instance.Connected += OnConnected;
         Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
         Settings.DevicePropertyChanged += OnDevicePropertyChanged;
+        Settings.Data.PropertyChanged += OnSettingsDataPropertyChanged;
         UpdateEarbudIcons();
     }
 
@@ -76,9 +77,15 @@ public class EarbudIcon : Image
         });
     }
 
+    private void OnSettingsDataPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(Settings.Data.ColorOverride))
+            UpdateEarbudIcons();
+    }
+
     private void UpdateEarbudIcons()
     {
-        var color = BluetoothImpl.Instance.Device.Current?.DeviceColor ?? DeviceMessageCache.Instance.ExtendedStatusUpdate?.DeviceColor;
+        var color = Settings.Data.ColorOverride ?? BluetoothImpl.Instance.Device.Current?.DeviceColor ?? DeviceMessageCache.Instance.ExtendedStatusUpdate?.DeviceColor;
         if (Settings.Data.RealisticEarbudImages && color != null &&
             BluetoothImpl.Instance.DeviceSpec.Supports(Features.DeviceColor))
         {

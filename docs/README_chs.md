@@ -1,6 +1,5 @@
-
 <p align="center">
-  <a href="../README.md">English</a> | 简体中文 | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> <br>
+  <a href="../README.md">English</a> | 简体中文 | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> | <a href="/docs/README_vnm.md">Tiếng Việt</a> <br>
     <sub>注意：该 README 文档由翻译人员维护，可能会过时，以英文版最新版本为准。</sub>
 </p>
 <h1 align="center">
@@ -45,12 +44,12 @@
 
 除了官方 Android 程序中已知的功能外，该项目还可以帮助您释放耳机的全部潜力，并实现了新的功能，例如：
 
-* 详细电池统计
-* 诊断和工厂自检
-* 大量隐藏的调试信息
-* 可定制的长按触摸动作
-* 固件写入，降级 (Buds+, Buds Pro)
-* 以及更多...
+- 详细电池统计
+- 诊断和工厂自检
+- 大量隐藏的调试信息
+- 可定制的长按触摸动作
+- 固件写入，降级 (Buds+, Buds Pro)
+- 以及更多...
 
 ## 下载
 
@@ -121,38 +120,38 @@ Galaxy Buds 定义了两种蓝牙模式：用于音频流/控制的 A2DP (高级
 
 #### 贡献人员
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue 模板、wiki 和翻译
-* [@AndriesK](https://github.com/AndriesK) - Buds Live bug 修正
-* [@TheLastFrame](https://github.com/TheLastFrame) - Buds Pro 的图标设计
-* [@githubcatw](https://github.com/githubcatw) - 基础连接会话
-* [@GaryGadget9](https://github.com/GaryGadget9) - WinGet 包维护
-* [@joscdk](https://github.com/joscdk) - AUR 包维护
+- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue 模板、wiki 和翻译
+- [@AndriesK](https://github.com/AndriesK) - Buds Live bug 修正
+- [@TheLastFrame](https://github.com/TheLastFrame) - Buds Pro 的图标设计
+- [@githubcatw](https://github.com/githubcatw) - 基础连接会话
+- [@GaryGadget9](https://github.com/GaryGadget9) - WinGet 包维护
+- [@joscdk](https://github.com/joscdk) - AUR 包维护
 
 #### 翻译人员
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - 俄语和乌克兰语翻译
-* [@PlasticBrain](https://github.com/fhalfkg) -  韩语和日语翻译
-* [@cozyplanes](https://github.com/cozyplanes) -  韩语翻译
-* [@erenbektas](https://github.com/erenbektas) - 土耳其语翻译
-* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad), [@pseudor](https://github.com/pseudor) and [@YexuanXiao](https://github.com/YexuanXiao) - 中文翻译
-* [@efrenbg1](https://github.com/efrenbg1) and Andrew Gonza - 西班牙语翻译
-* [@giovankabisano](https://github.com/giovankabisano) - 印度尼西亚语翻译
-* [@lucasskluser](https://github.com/lucasskluser) - 葡萄牙语翻译
-* [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - 意大利语翻译
-* [@Buashei](https://github.com/Buashei) - 波兰语翻译
-* [@KatJillianne](https://github.com/KatJillianne) - 越南语翻译
-* [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - 捷克语翻译
-* [@TheLastFrame](https://github.com/TheLastFrame) and [@ThePBone](https://github.com/ThePBone) - 德语翻译
-* [@nikossyr](https://github.com/nikossyr) - 希腊语翻译
+- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - 俄语和乌克兰语翻译
+- [@PlasticBrain](https://github.com/fhalfkg) - 韩语和日语翻译
+- [@cozyplanes](https://github.com/cozyplanes) - 韩语翻译
+- [@erenbektas](https://github.com/erenbektas) - 土耳其语翻译
+- [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad), [@pseudor](https://github.com/pseudor) and [@YexuanXiao](https://github.com/YexuanXiao) - 中文翻译
+- [@efrenbg1](https://github.com/efrenbg1) and Andrew Gonza - 西班牙语翻译
+- [@giovankabisano](https://github.com/giovankabisano) - 印度尼西亚语翻译
+- [@lucasskluser](https://github.com/lucasskluser) and [@JuanFariasDev](https://github.com/juanfariasdev) - 葡萄牙语翻译
+- [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - 意大利语翻译
+- [@Buashei](https://github.com/Buashei) - 波兰语翻译
+- [@KatJillianne](https://github.com/KatJillianne), [@thelegendaryjohn](https://github.com/thelegendaryjohn) - 越南语翻译
+- [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - 捷克语翻译
+- [@TheLastFrame](https://github.com/TheLastFrame) and [@ThePBone](https://github.com/ThePBone) - 德语翻译
+- [@nikossyr](https://github.com/nikossyr) - 希腊语翻译
 
 ## License
 
 本项目使用 [GPLv3](https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE) 许可。它既不属于三星，也不受三星的任何监管。
 
 ```
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```

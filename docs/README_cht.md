@@ -1,6 +1,5 @@
-
 <p align="center">
-    <a href="../README.md">English</a> | <a href="/docs/README_chs.md">中文(简体)</a> | 中文(繁體) | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> <br>
+    <a href="../README.md">English</a> | <a href="/docs/README_chs.md">中文(简体)</a> | 中文(繁體) | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> | <a href="/docs/README_vnm.md">Tiếng Việt</a> <br>
     <sub>注意：此自述文件由翻譯人員維護，可能會與當前的新版本有一定的誤差。 最新信息以英文版為準。</sub>
 </p>
 <h1 align="center">
@@ -46,12 +45,12 @@
 除了官方 Android APP 已知的基本功能外，這項專案還可以幫助您釋放耳機全部的潛力並實現實驗室內的功能。
 如：
 
-* 更詳細的電池資訊
-* 原廠自我檢測與診斷
-* 載入大量被隱藏的測試內容
-* 可自訂的長按與觸碰操控
-* 軟體的寫入、降級 (Buds+, Buds Pro)
-* 以及更多功能...
+- 更詳細的電池資訊
+- 原廠自我檢測與診斷
+- 載入大量被隱藏的測試內容
+- 可自訂的長按與觸碰操控
+- 軟體的寫入、降級 (Buds+, Buds Pro)
+- 以及更多功能...
 
 ## 下載
 
@@ -69,13 +68,13 @@ Windows 用戶也可以透過 封裝管理員 (winget) 的方式來進行安裝
 winget install ThePBone.GalaxyBudsClient
 ```
 
-### AUR package 
+### AUR package
 
 由 @joscdk 所維護的 Arch Linux [AUR package](https://aur.archlinux.org/packages/galaxybudsclient-bin/) 包也是可以使用的:
+
 ```
 yay -S galaxybudsclient-bin
 ```
-
 
 ## 運行原理
 
@@ -119,42 +118,42 @@ Galaxy Buds 定義了兩個藍牙封包文件：用於音頻流/控制的 A2DP�
 
 ### 貢獻者
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue模板、 wiki 和 翻譯
-* [@AndriesK](https://github.com/AndriesK) - Buds Live 的錯誤修復
-* [@TheLastFrame](https://github.com/TheLastFrame) - Buds Pro 的圖示
-* [@githubcatw](https://github.com/githubcatw) - Connection dialog base
-* [@GaryGadget9](https://github.com/GaryGadget9) - WinGet package
-* [@joscdk](https://github.com/joscdk) - AUR package
+- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue 模板、 wiki 和 翻譯
+- [@AndriesK](https://github.com/AndriesK) - Buds Live 的錯誤修復
+- [@TheLastFrame](https://github.com/TheLastFrame) - Buds Pro 的圖示
+- [@githubcatw](https://github.com/githubcatw) - Connection dialog base
+- [@GaryGadget9](https://github.com/GaryGadget9) - WinGet package
+- [@joscdk](https://github.com/joscdk) - AUR package
 
 ### 翻譯人員
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - 俄語 和 烏克蘭語 翻譯
-* [@PlasticBrain](https://github.com/fhalfkg) - 韓語 和 日語 翻譯
-* [@cozyplanes](https://github.com/cozyplanes) - 韓語 翻譯
-* [@erenbektas](https://github.com/erenbektas) - 土耳其語 翻譯
-* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) 和 [@pseudor](https://github.com/pseudor) - 簡體中文 翻譯
-* [@YiJhu](https://github.com/YiJhu) - 繁體中文 翻譯
-* [@efrenbg1](https://github.com/efrenbg1) 和 Andrew Gonza - 西班牙語 翻譯
-* [@giovankabisano](https://github.com/giovankabisano) - 印尼語 翻譯
-* [@lucasskluser](https://github.com/lucasskluser) - 葡萄牙語 翻譯
-* [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - 義大利語 翻譯
-* [@Buashei](https://github.com/Buashei) - 波蘭語 翻譯
-* [@KatJillianne](https://github.com/KatJillianne) - 越南語 翻譯
-* [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - 捷克語 翻譯
-* [@Benni0109](https://github.com/Benni0109), [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - 德語 翻譯
-* [@nikossyr](https://github.com/nikossyr) - 希臘語 翻譯
-* [@grigorem](https://github.com/grigorem) - 羅馬尼亞語 翻譯
-* [@tretre91](https://github.com/tretre91) - 法語 翻譯
-* [@Sigarya](https://github.com/Sigarya) - 希伯來語 翻譯
+- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - 俄語 和 烏克蘭語 翻譯
+- [@PlasticBrain](https://github.com/fhalfkg) - 韓語 和 日語 翻譯
+- [@cozyplanes](https://github.com/cozyplanes) - 韓語 翻譯
+- [@erenbektas](https://github.com/erenbektas) - 土耳其語 翻譯
+- [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) 和 [@pseudor](https://github.com/pseudor) - 簡體中文 翻譯
+- [@YiJhu](https://github.com/YiJhu) - 繁體中文 翻譯
+- [@efrenbg1](https://github.com/efrenbg1) 和 Andrew Gonza - 西班牙語 翻譯
+- [@giovankabisano](https://github.com/giovankabisano) - 印尼語 翻譯
+- [@lucasskluser](https://github.com/lucasskluser) 和 [@JuanFariasDev](https://github.com/juanfariasdev) - 葡萄牙語 翻譯
+- [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - 義大利語 翻譯
+- [@Buashei](https://github.com/Buashei) - 波蘭語 翻譯
+- [@KatJillianne](https://github.com/KatJillianne), [@thelegendaryjohn](https://github.com/thelegendaryjohn) - 越南語 翻譯
+- [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - 捷克語 翻譯
+- [@Benni0109](https://github.com/Benni0109), [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - 德語 翻譯
+- [@nikossyr](https://github.com/nikossyr) - 希臘語 翻譯
+- [@grigorem](https://github.com/grigorem) - 羅馬尼亞語 翻譯
+- [@tretre91](https://github.com/tretre91) - 法語 翻譯
+- [@Sigarya](https://github.com/Sigarya) - 希伯來語 翻譯
 
 ## 協議
 
 本專案使用 [GPLv3](https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE) 授權許可。它不隸屬於三星(Samsung)，也不以任何方式受他們(Samsung)監督。
 
 ```
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```

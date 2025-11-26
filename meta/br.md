@@ -1,4 +1,4 @@
-# vn (Viet Nam)
+# br (Brazil)
 
 This file is auto-generated and automatically updated. Do not modify this file manually.
 

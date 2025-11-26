@@ -1,4 +1,4 @@
-# vn (Viet Nam)
+# sv (El Salvador)
 
 This file is auto-generated and automatically updated. Do not modify this file manually.
 

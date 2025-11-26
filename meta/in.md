@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>26%</td><td>408 missing string(s)</td></tr>
+<tr><td>26%</td><td>412 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -44,7 +44,7 @@ Right: {1}</td></tr>
 <tr><td><code>tray_enable_anc</code></td><td>Enable active noise cancelling</td></tr>
 <tr><td><code>tray_disable_anc</code></td><td>Disable active noise cancelling</td></tr>
 <tr><td><code>tray_switch_noise</code></td><td>Switch noise controls</td></tr>
-<tr><td><code>hotrec_note</code></td><td>Note: Due to User Interface Privacy Isolation (UIPI) only applications of the same or lower elevation can properly receive hotkey commands.</td></tr>
+<tr><td><code>hotrec_note</code></td><td>Note: Due to User Interface Privacy Isolation (UIPI), only applications of the same or lower elevation can properly receive hotkey commands.</td></tr>
 <tr><td><code>hotkey_edit_invalid</code></td><td>Invalid hotkey selection</td></tr>
 <tr><td><code>hotkey_edit_invalid_desc</code></td><td>Please choose at least one key and one modifiers</td></tr>
 <tr><td><code>hotkey_edit_invalid_mod</code></td><td>Modifier missing</td></tr>
@@ -273,6 +273,8 @@ Measure level: Select a vertical span to measure the battery level difference be
 <tr><td><code>settings_localization_description</code></td><td>Change the app language</td></tr>
 <tr><td><code>settings_realistic_earbud_icons</code></td><td>Use realistic earbud images</td></tr>
 <tr><td><code>settings_realistic_earbud_icons_description</code></td><td>Display realistic & color-aware images of your earbuds, if they support it</td></tr>
+<tr><td><code>settings_color_override</code></td><td>Earbud color override</td></tr>
+<tr><td><code>settings_color_override_description</code></td><td>Change the displayed color of your earbuds in the app</td></tr>
 <tr><td><code>settings_nav_sidebar</code></td><td>Navigation sidebar</td></tr>
 <tr><td><code>settings_nav_sidebar_description</code></td><td>Show or collapse the navigation buttons on the left hand side</td></tr>
 <tr><td><code>settings_tray_settings</code></td><td>Tray icon & startup</td></tr>
@@ -349,6 +351,8 @@ Make sure both earbuds are turned on before continuing.</td></tr>
 <tr><td><code>as_scale_moderate</code></td><td>Moderate</td></tr>
 <tr><td><code>as_scale_high</code></td><td>High</td></tr>
 <tr><td><code>as_scale_extraloud</code></td><td>Extra loud</td></tr>
+<tr><td><code>adv_pause_playback</code></td><td>Pause playback if earbuds are taken off</td></tr>
+<tr><td><code>adv_pause_playback_desc</code></td><td>Sends a global play/pause state change event when both of the proximity sensors are uncovered (Desktop only)</td></tr>
 <tr><td><code>adv_callpath</code></td><td>In-ear detection for calls</td></tr>
 <tr><td><code>adv_callpath_desc</code></td><td>Play calls through your earbuds when they're in your ears and through your computer speaker when they're not</td></tr>
 <tr><td><code>adv_extra_clear_call</code></td><td>Sharpen call sound</td></tr>
@@ -367,7 +371,7 @@ Make sure both earbuds are turned on before continuing.</td></tr>
 
 The remap configuration is only active on this device. If you connect your earbuds to a Samsung device, voice wakeup will activate Bixby normally. On other devices than this device and non-Samsung phones, this feature won't trigger any action.</td></tr>
 <tr><td><code>credits_sponsor</code></td><td>Sponsor this project</td></tr>
-<tr><td><code>credits_kofi</code></td><td>Visit my ko-fi page to support me!</td></tr>
+<tr><td><code>credits_kofi</code></td><td>Visit my Ko-fi page to support me!</td></tr>
 <tr><td><code>credits_github</code></td><td>Visit this project on GitHub</td></tr>
 <tr><td><code>connlost</code></td><td>Connection lost</td></tr>
 <tr><td><code>connlost_troubleshoot</code></td><td>Troubleshoot</td></tr>

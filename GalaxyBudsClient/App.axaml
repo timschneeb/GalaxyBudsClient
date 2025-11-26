@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:styling="clr-namespace:FluentAvalonia.Styling;assembly=FluentAvalonia"
              xmlns:galaxyBudsClient="clr-namespace:GalaxyBudsClient"
+             xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
              x:Class="GalaxyBudsClient.App"
              Name="Galaxy Buds Manager">
 
@@ -25,6 +26,7 @@
                 <!-- Resources -->
                 <ResourceInclude Source="/Interface/Styling/Resources.axaml" />
             </ResourceDictionary.MergedDictionaries>
+            <Color x:Key="AccentColor">Orange</Color>
         </ResourceDictionary>
     </Application.Resources>
 
@@ -42,6 +44,26 @@
                 <StyleInclude Source="/Interface/Styling/Overrides/OsxOverrides.axaml" />
             </OnPlatform.macOS>
         </OnPlatform>
+        
+        <Style Selector="Button#CloseButton:inactive:not(:pointerover) controls|FontIcon">
+            <Setter Property="Foreground" Value="{DynamicResource AccentColor}" />
+        </Style>
+
+        <Style Selector="Button#MinimizeButton:pointerover Border">
+            <Setter Property="Background" Value="{DynamicResource AccentColor}" />
+        </Style>
+        
+        <Style Selector="Button#MinimizeButton:inactive:not(:pointerover) controls|FontIcon">
+            <Setter Property="Foreground" Value="{DynamicResource AccentColor}" />
+        </Style>
+        
+        <Style Selector="Button#MaxRestoreButton:pointerover Border">
+            <Setter Property="Background" Value="{DynamicResource AccentColor}" />
+        </Style>
+        
+        <Style Selector="Button#MaxRestoreButton:inactive:not(:pointerover) controls|FontIcon">
+            <Setter Property="Foreground" Value="{DynamicResource AccentColor}" />
+        </Style>
     </Application.Styles>
     <TrayIcon.Icons>
         <TrayIcons>

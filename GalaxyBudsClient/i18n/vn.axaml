@@ -1,6 +1,6 @@
 ﻿<!-- ReSharper disable InconsistentNaming -->
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+
     <!-- English name of this language -->
     <sys:String x:Key="language_name_en">Vietnamese</sys:String>
 
@@ -10,86 +10,89 @@
     <sys:String x:Key="okay">Đồng ý</sys:String>
     <sys:String x:Key="left">Trái</sys:String>
     <sys:String x:Key="right">Phải</sys:String>
+    <sys:String x:Key="both">Cả hai</sys:String>
     <sys:String x:Key="case">Hộp sạc</sys:String>
     <sys:String x:Key="error">Lỗi</sys:String>
     <sys:String x:Key="cancel">Hủy</sys:String>
     <sys:String x:Key="apply">Áp dụng</sys:String>
     <sys:String x:Key="select">Chọn</sys:String>
-    <sys:String x:Key="notset">Chưa thiết lập</sys:String>
+    <sys:String x:Key="notset">Chưa đặt</sys:String>
     <sys:String x:Key="unknown">Không xác định</sys:String>
-    <sys:String x:Key="back">Quay lại</sys:String>
-
+    <sys:String x:Key="back">Quay về</sys:String>
+    <sys:String x:Key="next">Tiếp</sys:String>
+    <sys:String x:Key="prev">Trước</sys:String>
+    <sys:String x:Key="off">Tắt</sys:String>
+    <sys:String x:Key="on">Bật</sys:String>
+    <sys:String x:Key="hint">Gợi ý</sys:String>
+    <sys:String x:Key="help">Giúp đỡ</sys:String>
+    <sys:String x:Key="important">Quan trọng</sys:String>
+    <sys:String x:Key="home">Home</sys:String>
+    <sys:String x:Key="read_failed">Không thể đọc được tệp. Quyền truy cập bị từ chối.</sys:String>
+    <sys:String x:Key="please_wait">Vui lòng chờ...</sys:String>
+    <sys:String x:Key="value_left_right_inline">Trái: {0}, Phải: {1}</sys:String>
+    <sys:String x:Key="value_left_right_multiline">Trái: {0}
+Phải: {1}</sys:String>
+    <sys:String x:Key="other_x">Khác ({0})</sys:String>
+    <sys:String x:Key="no_data_stored">Không có dữ liệu</sys:String>
+    <sys:String x:Key="not_available">Không khả dụng</sys:String>
+    <sys:String x:Key="last_updated_at_n">Cập nhật lần cuối vào {0}</sys:String>
+    <sys:String x:Key="file_not_found">Không tìm thấy tệp</sys:String>
     <sys:String x:Key="nobluetoothdev">Không tìm thấy thiết bị tiếp hợp Bluetooth. Vui lòng kích hoạt Bluetooth và thử lại.</sys:String>
+    <sys:String x:Key="feature_unsupported_platform">Chức năng này hiện không được hỗ trợ trên nền tảng này</sys:String>
 
     <sys:String x:Key="anc">Chống ồn chủ động</sys:String>
-
-    <!--SPP Message Parser-->
-    <sys:String x:Key="sppmsg_too_small">Packet size is too small</sys:String>
-    <sys:String x:Key="sppmsg_invalid_som">Invalid SOM</sys:String>
-    <!--Context: SOM = Start of message-->
-    <sys:String x:Key="sppmsg_invalid_eom">Invalid EOM</sys:String>
-    <!--Context: EOM = End of message-->
-    <sys:String x:Key="sppmsg_size_mismatch">Payload size mismatch</sys:String>
-    <sys:String x:Key="sppmsg_crc_fail">Checksum incorrect</sys:String>
-    <sys:String x:Key="sppmsg_tl">Packet size is too small</sys:String>
+    <sys:String x:Key="adaptive">Tự thích nghi</sys:String>
 
     <!--Dark Mode States-->
     <sys:String x:Key="darkmode_disabled">Tắt</sys:String>
     <sys:String x:Key="darkmode_enabled">Bật</sys:String>
+    <sys:String x:Key="darkmode_blur_enabled">Bật, với hiệu ứng làm mờ</sys:String>
+    <sys:String x:Key="darkmode_mica_enabled">Bật, với hiệu ứng mica</sys:String>
     <sys:String x:Key="darkmode_system">Sử dụng cài đặt hệ thống</sys:String>
 
     <!--Connection popup-->
-    <sys:String x:Key="connpopup_placement_tl">Trên trái</sys:String>
-    <sys:String x:Key="connpopup_placement_tc">Trên giữa</sys:String>
-    <sys:String x:Key="connpopup_placement_tr">Trên phải</sys:String>
-    <sys:String x:Key="connpopup_placement_bl">Dưới trái</sys:String>
-    <sys:String x:Key="connpopup_placement_bc">Dưới giữa</sys:String>
-    <sys:String x:Key="connpopup_placement_br">Dưới phải</sys:String>
+    <sys:String x:Key="connpopup_placement_tl">Góc trái phía trên</sys:String>
+    <sys:String x:Key="connpopup_placement_tc">Chính giữa phía trên</sys:String>
+    <sys:String x:Key="connpopup_placement_tr">Góc phải phía trên</sys:String>
+    <sys:String x:Key="connpopup_placement_bl">Góc trái phía dưới</sys:String>
+    <sys:String x:Key="connpopup_placement_bc">Chính giữa phía dưới</sys:String>
+    <sys:String x:Key="connpopup_placement_br">Góc phải phía dưới</sys:String>
     <sys:String x:Key="connpopup_title">{1} của {0}</sys:String>
     <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
 
     <!--Placement  (Buds+)-->
-    <sys:String x:Key="placement_disconnected">Ngắt kết nối</sys:String>
+    <sys:String x:Key="placement_disconnected">Đã ngắt kết nối</sys:String>
     <sys:String x:Key="placement_wearing">Đang đeo</sys:String>
     <sys:String x:Key="placement_not_wearing">Chờ</sys:String>
-    <sys:String x:Key="placement_in_case">Hộp sạc</sys:String>
+    <sys:String x:Key="placement_in_case">Trong hộp sạc</sys:String>
+    <sys:String x:Key="placement_charging">Đang sạc</sys:String>
 
     <!--Touch options-->
-    <sys:String x:Key="touchoption_voice">Trợ lí ảo</sys:String>
+    <sys:String x:Key="touchoption_voice">Trợ lý ảo</sys:String>
     <sys:String x:Key="touchoption_quickambientsound">Kích hoạt nhanh xuyên âm</sys:String>
     <sys:String x:Key="touchoption_volume">Âm lượng</sys:String>
     <sys:String x:Key="touchoption_volume_up">Tăng âm lượng</sys:String>
     <sys:String x:Key="touchoption_volume_down">Giảm âm lượng</sys:String>
-    <sys:String x:Key="touchoption_ambientsound">Xuyên âm</sys:String>
-    <sys:String x:Key="touchoption_switch_noisecontrols">Chuyển điều khiển tiếng ồn</sys:String>
-    <sys:String x:Key="touchoption_spotify">Spotify (Chỉ Android)</sys:String>
-    <sys:String x:Key="touchoption_custom">Chức năng tự chọn...</sys:String>
-    <sys:String x:Key="touchoption_custom_null">Chưa thiết lập</sys:String>
-    <sys:String x:Key="touchoption_custom_unknown">Không xác định</sys:String>
-    <sys:String x:Key="touchoption_custom_prefix">Chức năng tự chọn:</sys:String>
-    <sys:String x:Key="touchoption_custom_trigger_hotkey">Nhấn phím tắt...</sys:String>
-    <sys:String x:Key="touchoption_custom_external_app">Chạy chương trình ngoài...</sys:String>
-
-    <!--Options menu-->
-    <sys:String x:Key="optionsmenu_title">Tùy chọn</sys:String>
-    <sys:String x:Key="optionsmenu_settings">Cài đặt</sys:String>
-    <sys:String x:Key="optionsmenu_refresh">Làm mới</sys:String>
-    <sys:String x:Key="optionsmenu_deregister">Gỡ ghép đôi thiết bị</sys:String>
-    <sys:String x:Key="optionsmenu_update">Kiểm tra cập nhật</sys:String>
-    <sys:String x:Key="optionsmenu_credits">Công trạng</sys:String>
+    <sys:String x:Key="touchoption_ambientsound">Chế độ xuyên âm</sys:String>
+    <sys:String x:Key="touchoption_switch_noisecontrols">Chuyển chế độ lọc âm</sys:String>
+    <sys:String x:Key="touchoption_spotify">Spotify (Chỉ trên Android)</sys:String>
+    <sys:String x:Key="touchoption_custom">Hành động tùy chọn...</sys:String>
+    <sys:String x:Key="touchoption_custom_prefix">Hành động tùy chọn:</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_event">Kích hoạt hành động tai nghe...</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_hotkey">Bấm phím tắt...</sys:String>
+    <sys:String x:Key="touchoption_custom_external_app">Chạy ứng dụng ngoài...</sys:String>
 
     <!--Tray context menu-->
-    <sys:String x:Key="tray_unlock_touchpad">Mở khóa mặt cảm ứng</sys:String>
-    <sys:String x:Key="tray_lock_touchpad">Khóa mặt cảm ứng</sys:String>
-    <sys:String x:Key="tray_enable_ambient_sound">Bật xuyên âm</sys:String>
-    <sys:String x:Key="tray_disable_ambient_sound">Tắt xuyên âm</sys:String>
-    <sys:String x:Key="tray_enable_eq">Bật bộ cân bằng âm(EQ)</sys:String>
-    <sys:String x:Key="tray_disable_eq">Tắt bộ cân bằng âm(EQ)</sys:String>
+    <sys:String x:Key="tray_unlock_touchpad">Mở khóa nút chạm</sys:String>
+    <sys:String x:Key="tray_lock_touchpad">Khóa nút chạm</sys:String>
+    <sys:String x:Key="tray_enable_ambient_sound">Bật chế dộ xuyên âm</sys:String>
+    <sys:String x:Key="tray_disable_ambient_sound">Tắt chế dộ xuyên âm</sys:String>
+    <sys:String x:Key="tray_enable_eq">Bật cân bằng âm thanh</sys:String>
+    <sys:String x:Key="tray_disable_eq">Tắt cân bằng âm thanh</sys:String>
     <sys:String x:Key="tray_enable_anc">Bật chống ồn chủ động</sys:String>
     <sys:String x:Key="tray_disable_anc">Tắt chống ồn chủ động</sys:String>
-    <sys:String x:Key="tray_switch_noise">Chuyển điều khiển tiếng ồn</sys:String>
-    <sys:String x:Key="tray_quit">Đóng ứng dụng</sys:String>
-
+    <sys:String x:Key="tray_switch_noise">Chuyển chế độ lọc âm</sys:String>
+    <sys:String x:Key="tray_quit">Thoát ứng dụng</sys:String>
 
     <!--:::::::: XAML files (static) ::::::::-->
 
@@ -97,374 +100,637 @@
     <sys:String x:Key="continue_button">Tiếp tục</sys:String>
 
     <!--Hotkey Recorder Dialog (Custom action)-->
-    <sys:String x:Key="hotrec_title">Trình ghi phím tắt</sys:String>
-    <sys:String x:Key="hotrec_content">Vui lòng nhập tổ hợp phím (nhấn giữ):</sys:String>
-    <sys:String x:Key="hotrec_empty">Trống</sys:String>
-    <sys:String x:Key="hotrec_note">Note: Do "cách ly bảo mật giao diện người dùng" (UIPI) chỉ ứng dụng có mức độ truy cập ngang bằng hoặc cao hơn mới có thể nhận chính xác lệnh phím tắt.</sys:String>
+    <sys:String x:Key="hotrec_content">Vui lòng nhập một tổ hợp phím (Nhấn giữ)</sys:String>
+    <sys:String x:Key="hotrec_empty">Không có</sys:String>
+    <sys:String x:Key="hotrec_note">Ghi chú: Bởi vì User Interface Privacy Isolation (UIPI), chỉ những ứng dụng có cùng mức độ truy cập hoặc cao hơn mới có thể tiếp nhận các lệnh phím tắt.</sys:String>
 
     <!--Hotkey Action Builder Dialog-->
-    <sys:String x:Key="hotkey_edit_title">Trình chỉnh sửa phím tắt</sys:String>
     <sys:String x:Key="hotkey_edit_invalid">Phím tắt không hợp lệ</sys:String>
-    <sys:String x:Key="hotkey_edit_invalid_desc">Vui lòng chọn một nút và một phím chỉnh</sys:String>
-    <sys:String x:Key="hotkey_edit_invalid_mod">Thiếu phím chỉnh</sys:String>
-    <sys:String x:Key="hotkey_edit_invalid_action">Thao tác không hợp lệ</sys:String>
-    <sys:String x:Key="hotkey_edit_invalid_action_desc">Vui lòng chọn một thao tác</sys:String>
-    <sys:String x:Key="hotkey_edit_modifier">Phím chỉnh</sys:String>
-    <sys:String x:Key="hotkey_edit_keys">Các phím</sys:String>
-    <sys:String x:Key="hotkey_edit_action">Thao tác</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_desc">Vui lòng chọn ít nhất một phím bổ trợ và một phím khác</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_mod">Thiếu phím bổ trợ</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action">Hành động không hợp lệ</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action_desc">Vui lòng chọn một hành động</sys:String>
+    <sys:String x:Key="hotkey_edit_modifier">Phím bổ trợ</sys:String>
+    <sys:String x:Key="hotkey_edit_keys">Phím</sys:String>
+    <sys:String x:Key="hotkey_edit_action">Hành động</sys:String>
     <sys:String x:Key="hotkey_edit_preview">Xem trước phím tắt:</sys:String>
-    <sys:String x:Key="hotkey_edit_header">Chọn một phím tắt bàn phím</sys:String>
-    
+
     <!--Hotkey page-->
     <sys:String x:Key="hotkey_header">Phím tắt bàn phím</sys:String>
-    <sys:String x:Key="hotkey_add">Gán phím tắt mới</sys:String>
-    <sys:String x:Key="hotkey_empty">Phím tắt chưa gán</sys:String>
-    <sys:String x:Key="hotkey_empty_desc">Nhấn nút trên để tạo phím tắt bàn phím mới</sys:String>
-    <sys:String x:Key="hotkey_edit">Sửa</sys:String>
+    <sys:String x:Key="hotkey_add_short">Mới</sys:String>
+    <sys:String x:Key="hotkey_add">Chọn phím tắt mới</sys:String>
+    <sys:String x:Key="hotkey_empty">Không có phím tắt nào được chọn</sys:String>
+    <sys:String x:Key="hotkey_empty_desc">Tạo một phím tắt bàn phím mới bằng cách bấm vào nút phía trên</sys:String>
+    <sys:String x:Key="hotkey_edit">Điều chỉnh</sys:String>
+    <sys:String x:Key="hotkey_edit_long">Điều chỉnh phím tắt hiện tại</sys:String>
     <sys:String x:Key="hotkey_delete">Xóa</sys:String>
-    <sys:String x:Key="hotkey_add_error">Ghi thất bại/không cập nhật được phím tắt</sys:String>
+    <sys:String x:Key="hotkey_add_error">Không thể nhận/cập nhật phím tắt</sys:String>
     <sys:String x:Key="hotkey_add_error_context">Phím tắt bị ảnh hưởng:</sys:String>
-    <sys:String x:Key="hotkey_add_error_duplicate">Tổ hợp phím đã được sử dụng làm phím tắt bởi ứng dụng này hoặc khác. Vui lòng chọn tổ hợp phím khác.</sys:String>
-    <sys:String x:Key="hotkey_add_error_unknown">Hệ điều hành phản hồi kèm lỗi '{0}'</sys:String>
+    <sys:String x:Key="hotkey_add_error_duplicate">Tổ hợp phím bạn chọn đã được nhận làm phím tắt bởi ứng dụng này hoặc ứng dụng khác. Vui lòng chọn một tổ hợp phím khác.</sys:String>
+    <sys:String x:Key="hotkey_add_error_unknown">Hệ điều hành phản hồi với lỗi '{0}'</sys:String>
 
     <!--EventDispatcher module-->
-    <sys:String x:Key="event_none">Không</sys:String>
-    <sys:String x:Key="event_ambient_toggle">Bật tắt xuyên âm</sys:String>
-    <sys:String x:Key="event_ambient_volume_up">Tăng âm lượng xuyên âm</sys:String>
-    <sys:String x:Key="event_ambient_volume_down">Giảm âm lượng xuyên âm</sys:String>
-    <sys:String x:Key="event_eq_toggle">Bật tắt bộ cân bằng âm(EQ)</sys:String>
-    <sys:String x:Key="event_eq_switch">Chuyển qua lại các preset bộ cân bằng âm(EQ)</sys:String>
-    <sys:String x:Key="event_anc_toggle">Bật tắt chống ồn chủ động</sys:String>
-    <sys:String x:Key="event_anc_switch_sensitivity">Chuyển độ nhạy chống ồn chủ động</sys:String>
-    <sys:String x:Key="event_touch_lock_toggle">Chỉnh khóa mặt cảm ứng</sys:String>
-    <sys:String x:Key="event_double_edge_touch_toggle">Bật tắt tính năng chạm đúp cạnh</sys:String>
-    <sys:String x:Key="event_conversation_toggle">Bật tắt phát hiện cuộc trò chuyện</sys:String>
-    <sys:String x:Key="event_start_stop_find">Bắt đầu/dừng tìm tai nghe</sys:String>
-    <sys:String x:Key="event_start_find">Bắt đầu tìm tai nghe</sys:String>
-    <sys:String x:Key="event_stop_find">Dừng tìm tai nghe</sys:String>
+    <sys:String x:Key="event_none">Không có</sys:String>
+    <sys:String x:Key="event_ambient_toggle">Bật/Tắt chế độ xuyên âm nhanh</sys:String>
+    <sys:String x:Key="event_ambient_volume_up">Tăng cường độ xuyên âm</sys:String>
+    <sys:String x:Key="event_ambient_volume_down">Giảm cường độ xuyên âm</sys:String>
+    <sys:String x:Key="event_eq_toggle">Bật/Tắt cân bằng âm thanh</sys:String>
+    <sys:String x:Key="event_eq_switch">Chuyển giữa các tùy chỉnh cân bằng âm thanh</sys:String>
+    <sys:String x:Key="event_anc_toggle">Bật/Tắt chống ồn chủ động</sys:String>
+    <sys:String x:Key="event_anc_switch_sensitivity">Chuyển độ nhạy ANC</sys:String>
+    <sys:String x:Key="event_nc_switch_one">Chuyển chế độ lọc âm với một tai</sys:String>
+    <sys:String x:Key="event_touch_lock_toggle">Khóa/Mở khóa nút chạm</sys:String>
+    <sys:String x:Key="event_double_edge_touch_toggle">Bật/Tắt tính năng chạm đúp cạnh nút</sys:String>
+    <sys:String x:Key="event_conversation_toggle">Bật/Tắt phát hiện cuộc trò cuyện</sys:String>
+    <sys:String x:Key="event_start_stop_find">Bắt đầu/Dừng tìm kiếm tai nghe</sys:String>
+    <sys:String x:Key="event_start_find">Bắt đầu tìm kiếm tai nghe</sys:String>
+    <sys:String x:Key="event_stop_find">Dừng tìm kiếm tai nghe</sys:String>
     <sys:String x:Key="event_paring_mode">Chế độ ghép đôi</sys:String>
-    <sys:String x:Key="event_media_play">Phát đa phương tiện</sys:String>
-    <sys:String x:Key="event_media_pause">Tạm dừng đa phương tiện</sys:String>
-    <sys:String x:Key="event_media_play_pause">Phát/tạm dừng đa phương tiện</sys:String>
-    <sys:String x:Key="event_manager_visible">Hiện/ẩn cửa sổ quản lí</sys:String>
-    <sys:String x:Key="event_display_battery_popup">Hiển thị cửa sổ thông báo kết nối</sys:String>
+    <sys:String x:Key="event_media_play">Phát media</sys:String>
+    <sys:String x:Key="event_media_pause">Tạm dừng media</sys:String>
+    <sys:String x:Key="event_media_play_pause">Phát/Tạm dừng media</sys:String>
+    <sys:String x:Key="event_manager_visible">Hiện/Ẩn cửa sổ quản lý</sys:String>
+    <sys:String x:Key="event_display_battery_popup">Hiển thị popup thông báo pin</sys:String>
     <sys:String x:Key="event_connect">Kết nối thiết bị</sys:String>
-    
+
     <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Chào mừng!</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">Xin chào! Trình quản lí Galaxy Buds này là phần mềm không chính thức (của bên thứ 3) và không hề có liên kết/hợp tác gì với Samsung dưới mọi hình/cách thức, xin hãy ghi nhớ.
-Tuy chương trình này có rất nhiều chức năng mà ứng dụng nguyên bản/chính thức Samsung Wearable trên Android không có, Tôi vẫn quyết định loại bỏ Trình cập nhật Firmware qua OTA(Firmware Over-the-air Updater) vì nhiều lí do an toàn. Vui lòng sử dụng ứng dụng chính thức khi cần.</sys:String>
-    <sys:String x:Key="welcome_textblock_p2">Nếu quan tâm, bạn có thể ghé thăm GitHub repository của tôi, bao gồm một nhật kí kỹ thuật đảo ngược nho nhỏ. Bạn cũng có thể nhắn tin cho tôi trên GitHub hoặc trên Telegram @thepbone nếu bạn gặp phải bất kì vấn đề gì.</sys:String>
-    <sys:String x:Key="welcome_textblock_p3">Ứng dụng này tương thích với mọi mẫu và đời thiết bị Galaxy Buds.</sys:String>
-    <sys:String x:Key="welcome_darkmode">Chế độ tối</sys:String>
-    <sys:String x:Key="welcome_darkmode_content">Bạn có thấy chói mắt? Dùng tông màu tối hơn! (Ứng dụng sẽ tự khởi chạy lại)</sys:String>
+    <sys:String x:Key="welcome_register">Thiết lập tai nghe của bạn</sys:String>
+    <sys:String x:Key="welcome_register_desc">Chọn và tiếp nhận Galaxy Buds của bạn</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">Galaxy Buds Manager này không chính thức và không có bất kỳ liên kết nào với Samsung.
+Ứng dụng này được thiết kế để cung cấp nhiều chức năng hơn so với ứng dụng Samsung Wearable chính thức của Samsung. Một số tính năng như 'Chế độ chơi game' chỉ hoạt động trên điện thoại Samsung và không thể bật được trên PC.</sys:String>
+    <sys:String x:Key="welcome_android_hint_title">Thông tin quan trọng cho người dùng Android</sys:String>
+    <sys:String x:Key="welcome_android_hint">Ứng dụng này ban đầu được thiết kế để sử dụng trên PC. Các tính năng cần ứng dụng này chạy nền, chẳng hạn như các thao tác chạm tùy chỉnh và số liệu thống kê pin, hiện không khả dụng trong phiên bản này.
+Nếu ứng dụng Samsung Wearable chính thức đang hoạt động cùng với ứng dụng này, có thể xảy ra sự cố kết nối. Vui lòng đảm bảo rằng bạn đã đóng ứng dụng chính thức đúng cách trước khi sử dụng ứng dụng này.</sys:String>
 
     <!--Main page-->
-    <sys:String x:Key="mainpage_corrupt_data">Đã nhận phải dữ liệu hư hỏng. Đang kết nối lại...</sys:String>
-    <sys:String x:Key="mainpage_find_my_earbuds">Tìm tai nghe</sys:String>
-    <sys:String x:Key="mainpage_touchpad">Mặt cảm ứng</sys:String>
-    <sys:String x:Key="mainpage_ambient_sound">Xuyên âm</sys:String>
-    <sys:String x:Key="mainpage_noise">Kiểm soát tiếng ồn</sys:String>
-    <sys:String x:Key="mainpage_equalizer">Bộ cân bằng âm (EQ)</sys:String>
+    <sys:String x:Key="mainpage_header">Màn hình chính</sys:String>
+    <sys:String x:Key="mainpage_corrupt_data">Đã nhận dữ liệu bị hỏng. Đang kết nối lại...</sys:String>
+    <sys:String x:Key="mainpage_fit_test">Kiểm tra độ vừa vặn tai nghe</sys:String>
+    <sys:String x:Key="mainpage_find_my_earbuds">Tìm kiếm tai nghe</sys:String>
+    <sys:String x:Key="mainpage_touchpad">Phím chạm</sys:String>
+    <sys:String x:Key="mainpage_ambient_sound">Chế dộ xuyên âm</sys:String>
+    <sys:String x:Key="mainpage_noise">Chế độ lọc âm</sys:String>
+    <sys:String x:Key="mainpage_equalizer">Cân bằng âm thanh</sys:String>
     <sys:String x:Key="mainpage_advanced">Cài đặt nâng cao</sys:String>
     <sys:String x:Key="mainpage_system">Hệ thống</sys:String>
 
-    <!--Update page-->
-    <sys:String x:Key="updater_header">Có bản cập nhật cho trình quản lí</sys:String>
-    <sys:String x:Key="updater_message_p1">Thao tác tải về được tự động hóa hoàn toàn và trình cập nhật sẽ khởi chạy sau khi quá trình tải xuống được hoàn tất. Khuyến khích cập nhật để được nhận các bản vá lỗi và tính năng mới.</sys:String>
-    <sys:String x:Key="updater_message_p2">Bạn có thể xem changelog bằng cách nhấn vào nút ở dưới.</sys:String>
-
-    <sys:String x:Key="updater_view_changelog">Xem changelog đầy đủ trên GitHub</sys:String>
-    <sys:String x:Key="updater_footer_remindmelater">Nhắc tôi sau</sys:String>
-    <sys:String x:Key="updater_footer_skipversion">Bỏ qua bản này</sys:String>
-    <sys:String x:Key="updater_footer_install">Cài đặt ngay</sys:String>
-    <sys:String x:Key="updater_appcast_null">Có bản cập nhật mới nhưng không tìm thấy dữ liệu appcast hợp lệ. Vui lòng thử lại sau.</sys:String>
-    <sys:String x:Key="updater_noupdate">Hiện tại chưa có bản cập nhật mới. Vui lòng thử lại sau hoặc ghé thăm và đăng kí trang GitHub để xem cập nhật mới.</sys:String>
-    <sys:String x:Key="updater_noupdate_title">không có bản cập nhật</sys:String>
-    <sys:String x:Key="updater_newrelease">Có bản cập nhật {0} dành cho Galaxy Buds Manager</sys:String>
-
-    <sys:String x:Key="updater_dl_header">Đang tải xuống...</sys:String>
-    <sys:String x:Key="updater_dl_manual">Xem trên GitHub</sys:String>
-    <sys:String x:Key="updater_dl_fail_title">Tải về thất bại</sys:String>
-    <sys:String x:Key="updater_dl_fail">Lí do:</sys:String>
-    <sys:String x:Key="updater_dl_progress_prepare">Đang chuẩn bị tải về...</sys:String>
-    <sys:String x:Key="updater_dl_progress_cancelled">Đã hủy tải về</sys:String>
-    <sys:String x:Key="updater_dl_progress_finished">Tải về hoàn tất. Đang khởi chạy trình cài đặt...</sys:String>
-    <sys:String x:Key="updater_dl_progress">Đang tải xuống... {0}%</sys:String>
-    <sys:String x:Key="updater_dl_progress_size">({0}/{1} megabytes)</sys:String>
-    <sys:String x:Key="updater_dl_note">Khi tải về hoàn tất, ứng dụng này sẽ tự đóng và khởi chạy trình cài đặt riêng biệt. Sẽ mất một vài giây để trình cài đặt khởi chạy.</sys:String>
-
     <!--Device selection page (setup)-->
-    <sys:String x:Key="devsel_header">Chọn Galaxy Buds của bạn</sys:String>
-    <sys:String x:Key="devsel_refresh">Làm mới thiết bị đã ghép đôi</sys:String>
-    <sys:String x:Key="devsel_device_name">Tên thiết bị</sys:String>
-    <sys:String x:Key="devsel_btaddr">Địa chỉ MAC</sys:String>
-    <sys:String x:Key="devsel_model">Kiểu mẫu</sys:String>
-    <sys:String x:Key="devsel_nodevices">Trước tiên vui lòng kết nối và ghép đôi tai nghe Buds của bạn</sys:String>
-    <sys:String x:Key="devsel_nodevices_title">Không tìm thấy thiết bị đã ghép đôi</sys:String>
-    <sys:String x:Key="devsel_noselection">Chưa lựa chọn thiết bị</sys:String>
-    <sys:String x:Key="devsel_invalid_selection">Vui lòng chọn thiết bị phù hợp</sys:String>
-    <sys:String x:Key="devsel_footer_continue">Hoàn tất thiết lập</sys:String>
-    <sys:String x:Key="devsel_dialog_footer">Nếu bạn không thấy tai nghe Buds của bạn, hãy đảm bảo rằng chúng đã được ghép đôi và kết nối với máy tính của bạn - kiểm tra trong cài đặt Bluetooth, rồi nhấn Làm mới.</sys:String>
-    <sys:String x:Key="devsel_winrt_title">Dùng Bluetooth backend khác</sys:String>
-    <sys:String x:Key="devsel_winrt">Ổn định hơn rất nhiều, nhưng có thể không hoạt động trên máy tính với một vài thiết bị tiếp hợp Bluetooth</sys:String>
+    <sys:String x:Key="devsel_header">Chọn tai nghe của bạn</sys:String>
+    <sys:String x:Key="devsel_manual_pair_title">Thiết bị của bạn không có trong danh sách?</sys:String>
+    <sys:String x:Key="devsel_manual_pair_description">Đảm bảo tai nghe của bạn đã được ghép nối. Nếu vẫn không nhận được, hãy thử sử dụng tùy chọn kết nối thủ công.</sys:String>
     <sys:String x:Key="devsel_manual_pair">Kết nối thủ công</sys:String>
+    <sys:String x:Key="devsel_nodevices">Vui lòng kết nối và ghép nối tai nghe của bạn trước</sys:String>
+    <sys:String x:Key="devsel_nodevices_title">Không tìm thấy thiết bị được ghép nối nào</sys:String>
+    <sys:String x:Key="devsel_invalid_selection">Vui lòng chọn một thiết bị hợp lệ</sys:String>
+    <sys:String x:Key="devsel_winrt_title">Sử dụng backend Bluetooth thay thế</sys:String>
+    <sys:String x:Key="devsel_winrt">Ổn định hơn nhiều, nhưng có thể không hoạt động trên tất cả các PC với một số bộ tiếp hợp Bluetooth (Có thể cần khởi động lại!)</sys:String>
 
-    <!--Unsupported feature page-->
-    <sys:String x:Key="unsupported_feature_current_fwver">Phiên bản Firmware hiện tại:</sys:String>
-    <sys:String x:Key="unsupported_feature_required_fwver">Phiên bản Firmware cần thiết:</sys:String>
-
-    <sys:String x:Key="unsupported_feature_header">Vui lòng cập nhật firmware</sys:String>
-    <sys:String x:Key="unsupported_feature_current_fwver_null">Phiên bản Firmware hiện tại: Không rõ</sys:String>
-    <sys:String x:Key="unsupported_feature_required_fwver_null">Phiên bản Firmware cần thiết: Không xác định</sys:String>
-
-    <sys:String x:Key="unsupported_feature_description_p1">Firmware tai nghe của bạn quá cũ để hỗ trợ tính năng này.</sys:String>
-    <sys:String x:Key="unsupported_feature_description_p2">Vui lòng cập nhật firmware mới nhất bằng trình cập nhật chính thức dành cho Windows hoặc Android.</sys:String>
-    <sys:String x:Key="unsupported_feature_description_p3">Đảm bảo rằng bạn đã đóng ứng dụng này khi sử dụng trình cập nhật trên Windows. Chỉ một ứng dụng mới có thể liên lạc với tai nghe Buds cùng một lúc.</sys:String>
+    <!--Device page-->
+    <sys:String x:Key="devices_header">Thiết bị đã được ghép nối</sys:String>
+    <sys:String x:Key="devices_new">Mới</sys:String>
+    <sys:String x:Key="devices_new_long">Ghép nối thiết bị mới</sys:String>
+    <sys:String x:Key="devices_select_inactive">Chọn</sys:String>
+    <sys:String x:Key="devices_select_active">Đã chọn</sys:String>
+    <sys:String x:Key="devices_delete">Xóa</sys:String>
+    <sys:String x:Key="devices_delete_long">Xóa thiết bị</sys:String>
+    <sys:String x:Key="devices_delete_confirmation">Bạn có chắc chắn muốn xóa thiết bị này?</sys:String>
+    <sys:String x:Key="devices_settings_link">Quản lý các thiết bị đã được ghép nối</sys:String>
+    <sys:String x:Key="devices_settings_link_desc">Thêm, xóa hoặc chọn một thiết bị chính</sys:String>
 
     <!--Touchpad gestures-->
-    <sys:String x:Key="touchpad_gesture_header">Kích hoạt các thao tác chạm</sys:String>
+    <sys:String x:Key="touchpad_gesture_header">Bật các cử chỉ nút chạm</sys:String>
     <sys:String x:Key="touchpad_gesture_single">Chạm một lần</sys:String>
-    <sys:String x:Key="touchpad_gesture_single_desc">Chơi hoặc dừng nhạc</sys:String>
+    <sys:String x:Key="touchpad_gesture_single_desc">Phát hoặc tạm dừng media</sys:String>
     <sys:String x:Key="touchpad_gesture_double">Chạm đúp</sys:String>
-    <sys:String x:Key="touchpad_gesture_double_desc">Chơi bài tiếp theo</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_desc">Phát bài tiếp theo</sys:String>
     <sys:String x:Key="touchpad_gesture_triple">Chạm ba lần</sys:String>
-    <sys:String x:Key="touchpad_gesture_triple_desc">Chơi bài trước</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple_desc">Phát bài trước</sys:String>
     <sys:String x:Key="touchpad_gesture_hold">Chạm và giữ</sys:String>
-    <sys:String x:Key="touchpad_gesture_hold_desc">Thi hành tác vụ tùy chọn</sys:String>
-   
+    <sys:String x:Key="touchpad_gesture_hold_desc">Thực hiện hành động tùy chỉnh</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_for_call">Chạm đúp trong cuộc gọi</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_for_call_desc">Trả lời hoặc kết thúc cuộc gọi</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call">Chạm và giữ trong cuộc gọi</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call_desc">Từ chối cuộc gọi</sys:String>
+
     <!--Touchpad page-->
-    <sys:String x:Key="touchpad_header">Mặt cảm ứng</sys:String>
-    <sys:String x:Key="touchpad_lock">Khóa mặt cảm ứng</sys:String>
-    <sys:String x:Key="touchpad_left_action">Thao tác trái</sys:String>
-    <sys:String x:Key="touchpad_right_action">Thao tác phải</sys:String>
-   
-    <sys:String x:Key="touchpad_gestures">Khóa chạm nâng cao</sys:String>
-    <sys:String x:Key="touchpad_gestures_description">Kích hoạt hoặc vô hiệu hóa các thao tác chạm mặc định</sys:String>
-    <sys:String x:Key="touchpad_double_tap_volume">Gõ đúp cạnh tai nghe</sys:String>
-    <sys:String x:Key="touchpad_double_tap_volume_description">Gõ đúp cạnh tai nghe bên trái hay phải để giảm hoặc tăng âm lượng</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode">Chuyển đổi chế độ điều chỉnh tiếng ồn</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">Khử tiếng ồn ↔ Xuyên âm</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_anc_off">Khử tiếng ồn ↔ Tắt</sys:String>
+    <sys:String x:Key="touchpad_header">Nút chạm</sys:String>
+    <sys:String x:Key="touchpad_lock">Khóa nút chạm</sys:String>
+    <sys:String x:Key="touchpad_left_action">Chạm giữ lâu bên trái</sys:String>
+    <sys:String x:Key="touchpad_right_action">Chạm giữ lâu bên phải</sys:String>
+    <sys:String x:Key="touchpad_default_action">Chạm được tích hợp</sys:String>
+
+    <sys:String x:Key="touchpad_gestures">Khóa nút chạm nâng cao</sys:String>
+    <sys:String x:Key="touchpad_gestures_description">Tắt các cử chỉ chạm mặc định</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume">Chạm đúp vào cạnh nút</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">Chạm đúp vào cạnh nút trái hoặc phải của tai nghe để giảm hoặc tăng âm lượng</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode">Chế độ chuyển đổi lọc âm</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_l">Chế độ chuyển đổi lọc âm (Trái)</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_r">Chế độ chuyển đổi lọc âm (Phải)</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_desc">Chọn chế độ để chuyển qua lại</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ Xuyên âm</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Tắt</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_amb_off">Xuyên âm ↔ Tắt</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_threeway">Xoay vòng giữa các chế độ (Khử tiếng ồn, Xuyên âm, Tắt)</sys:String>
 
     <!--Custom touchpad action page-->
-    <sys:String x:Key="cact_header">Thiết lập thao tác chạm-giữ</sys:String>
-    <sys:String x:Key="cact_external_app_dialog_title">Chọn executable...</sys:String>
-    <sys:String x:Key="cact_action">Thao tác tùy chọn</sys:String>
-    <sys:String x:Key="cact_notice">Lưu ý</sys:String>
-    <sys:String x:Key="cact_notice_content_p1">Thao tác chạm-giữ tùy chọn chỉ khả dụng khi ứng dụng này được chạy nền.</sys:String>
-    <sys:String x:Key="cact_notice_content_p2">Nó không có tác dụng trên Android hay các thiết bị khác.</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">Để phục vụ cho việc hỗ trợ tính năng này, ứng dụng này sẽ tự khởi chạy và chạy nền khi máy tính khởi động.
-Bạn có thể vô hiệu hóa hành vi này trong mục cài đặt.</sys:String>
+    <sys:String x:Key="cact_header">Định một hành động nhấn lâu tùy chỉnh</sys:String>
+    <sys:String x:Key="cact_external_app_dialog_title">Chọn một tệp thực thi...</sys:String>
+    <sys:String x:Key="cact_action">Hành động tùy chỉnh</sys:String>
+    <sys:String x:Key="cact_function_param">Chức năng</sys:String>
+    <sys:String x:Key="cact_hotkey_param">Phím tắt</sys:String>
+    <sys:String x:Key="cact_path_param">Đường dẫn tệp</sys:String>
+    <sys:String x:Key="cact_notice_content_p1">Các hành động tùy chỉnh chỉ khả dụng khi ứng dụng này đang chạy nền.</sys:String>
+    <sys:String x:Key="cact_notice_content_p2">Chúng không có tác dụng gì đối với Android hoặc các thiết bị khác.</sys:String>
 
     <!--System/Self-Test-->
     <sys:String x:Key="system_overview_header">Hệ thống</sys:String>
     <sys:String x:Key="system_header">Thông tin hệ thống</sys:String>
-    <sys:String x:Key="system_selftest">Chạy tự kiểm tra</sys:String>
-    <sys:String x:Key="system_selftest_desc">Kiểm tra rằng mọi thành phần của tai nghe đều hoạt động tốt</sys:String>
-    <sys:String x:Key="system_factory_reset">Đặt lại thiết lập gốc</sys:String>
-    <sys:String x:Key="system_factory_reset_desc">Thiết lập lại tai nghe về cài đặt gốc của nhà sản xuất và ngắt kết nối</sys:String>
-    <sys:String x:Key="system_pairing_mode">Vào chế độ ghép đôi</sys:String>
-    <sys:String x:Key="system_pairing_mode_desc">Ngắt kết nối tai nghe của bạn khỏi máy tính này và khiến chúng được tìm thấy bởi các thiết bị khác</sys:String>
+    <sys:String x:Key="system_selftest">Chạy trình tự kiểm</sys:String>
+    <sys:String x:Key="system_selftest_desc">Kiểm tra xem tất cả các mô-đun của tai nghe của bạn có hoạt động bình thường không</sys:String>
+    <sys:String x:Key="system_factory_reset">Khôi phục cài đặt gốc</sys:String>
+    <sys:String x:Key="system_factory_reset_desc">Khôi phục tai nghe của bạn về cài đặt gốc và ngắt kết nối</sys:String>
+    <sys:String x:Key="system_pairing_mode">Vào chế độ ghép nối</sys:String>
+    <sys:String x:Key="system_pairing_mode_desc">Ngắt kết nối tai nghe của bạn khỏi máy tính này và cho phép các thiết bị khác có thể nhìn thấy nó</sys:String>
     <sys:String x:Key="system_trace_core_dump">Tải xuống trace và coredumps</sys:String>
-    <sys:String x:Key="system_trace_core_dump_desc">Nhận dữ liệu gỡ lỗi gốc từ tai nghe của bạn</sys:String>
+    <sys:String x:Key="system_trace_core_dump_desc">Lấy dữ liệu gỡ lỗi thô từ tai nghe của bạn</sys:String>
+    <sys:String x:Key="system_hidden_at_mode">Các cài đặt hệ thống ẩn</sys:String>
+    <sys:String x:Key="system_hidden_at_mode_desc">Chỉnh sửa các thiết lập ẩn như số sê-ri và trạng thái UART</sys:String>
     <sys:String x:Key="system_info">Xem thông tin hệ thống</sys:String>
     <sys:String x:Key="system_info_desc">Hiển thị thông tin chi tiết về tai nghe của bạn</sys:String>
-    <sys:String x:Key="system_flasher">Cài đặt các cập nhật firmware</sys:String>
-    <sys:String x:Key="system_flasher_desc">Nâng cấp, hạ cấp, hoặc cài đặt custom firmware</sys:String>
-    <sys:String x:Key="system_spatial">Dump dữ liệu số đo từ cảm biến không gian</sys:String>
-    <sys:String x:Key="system_spatial_desc">Đọc dữ liệu theo dõi đầu không gian sử dụng cho âm thanh 3D</sys:String>
+    <sys:String x:Key="system_flasher">Cài đặt bản cập nhật phần mềm</sys:String>
+    <sys:String x:Key="system_flasher_desc">Nâng cấp, hạ cấp hoặc flash các firmware tùy chỉnh</sys:String>
+    <sys:String x:Key="system_spatial">Kiểm tra cảm biến không gian</sys:String>
+    <sys:String x:Key="system_spatial_desc">Đọc dữ liệu theo dõi chuyển động đầu không gian được sử dụng cho âm thanh vòm</sys:String>
+    <sys:String x:Key="system_usage_reports">Báo cáo sử dụng và đo lường</sys:String>
+    <sys:String x:Key="system_usage_reports_desc">Xem báo cáo sử dụng được cung cấp bởi tai nghe</sys:String>
+    <sys:String x:Key="system_battery_statistics">Dữ liệu thống kê pin</sys:String>
+    <sys:String x:Key="system_battery_statistics_desc">Thu thập và xem dữ liệu thống kê sử dụng pin</sys:String>
 
     <sys:String x:Key="system_battery_type_unknown">Không xác định</sys:String>
     <sys:String x:Key="system_waiting_for_device">Đang chờ phản hồi...</sys:String>
+    <sys:String x:Key="system_no_response">Không có phản hồi từ tai nghe</sys:String>
 
-    <sys:String x:Key="system_hwver">Phiên Bản Phần Cứng</sys:String>
-    <sys:String x:Key="system_swver">Phiên Bản Phần Mềm</sys:String>
-    <sys:String x:Key="system_touchver">Phiên Bản Firmware Cảm Ứng</sys:String>
-    <sys:String x:Key="system_protover">Protocol Revision</sys:String>
-    <sys:String x:Key="system_btaddr">Địa Chỉ Bluetooth</sys:String>
-    <sys:String x:Key="system_serial">Số Sê-ri</sys:String>
-    <sys:String x:Key="system_build_info">Thông Tin Build</sys:String>
-    <sys:String x:Key="system_battery_type">Loại Pin</sys:String>
-    <sys:String x:Key="system_proximity">Cảm Biến Tiệm Cận</sys:String>
-    <sys:String x:Key="system_thermo">Điện Trở Nhiệt</sys:String>
-    <sys:String x:Key="system_hall">Đo Lường Hall</sys:String>
-    <sys:String x:Key="system_accel">Trạng Thái Gia Tốc Kế</sys:String>
+    <sys:String x:Key="system_hwver">Phiên bản phần cứng</sys:String>
+    <sys:String x:Key="system_swver">Phiên bản phần mềm</sys:String>
+    <sys:String x:Key="system_cradle_swver">Phiên bản phần mềm hộp sạc</sys:String>
+    <sys:String x:Key="system_cradle_serial">Số sê-ri hộp sạc</sys:String>
+    <sys:String x:Key="system_touchver">Phiên bản firmware chạm</sys:String>
+    <sys:String x:Key="system_protover">Phiên bản giao thức</sys:String>
+    <sys:String x:Key="system_btaddr">Địa chỉ Bluetooth</sys:String>
+    <sys:String x:Key="system_btaddr_template">Địa chỉ cục bộ: {0}, Địa chỉ ngang hàng: {1}</sys:String>
+    <sys:String x:Key="system_serial">Số sê-ri</sys:String>
+    <sys:String x:Key="system_build_info">Dãy thông tin build</sys:String>
+    <sys:String x:Key="system_battery_type">Loại pin</sys:String>
+    <sys:String x:Key="system_sku">Mã sản phẩm (SKU) thiết bị</sys:String>
+    <sys:String x:Key="system_proximity">Đo khoảng cách</sys:String>
+    <sys:String x:Key="system_thermo">Đo nhiệt điện trở</sys:String>
+    <sys:String x:Key="system_hall">Đo lường Hall</sys:String>
+    <sys:String x:Key="system_accel">Trạng thái gia tốc kế</sys:String>
     <!--Note: system_accel only used on the self-test page-->
-    <sys:String x:Key="system_adc_soc">ADC SoC</sys:String>
+    <sys:String x:Key="system_adc_soc">Trạng thái sạc của ADC</sys:String>
     <!--Context: SoC = State of charge (battery percentage)-->
-    <sys:String x:Key="system_adc_voltage">Hiệu Điện Thế ADC</sys:String>
-    <sys:String x:Key="system_adc_current">Cường Độ Dòng Điện ADC</sys:String>
+    <sys:String x:Key="system_adc_voltage">Điện áp của ADC</sys:String>
+    <sys:String x:Key="system_adc_current">Dòng điện của ADC</sys:String>
 
-    <sys:String x:Key="selftest_header">Tự kiểm tra</sys:String>
+    <sys:String x:Key="selftest_header">Trình tự kiểm</sys:String>
     <sys:String x:Key="selftest_pass">Đạt</sys:String>
     <sys:String x:Key="selftest_fail">Thất bại</sys:String>
-    <sys:String x:Key="selftest_pass_long">Đạt mọi bước kiểm tra</sys:String>
-    <sys:String x:Key="selftest_fail_long">Thất bại một bước hoặc hơn</sys:String>
-    
-    <sys:String x:Key="coredump_header">Dumping data...</sys:String>
-    <sys:String x:Key="coredump_dl_progress_prepare">Preparing download...</sys:String>
-    <sys:String x:Key="coredump_dl_progress_cancelled">Download cancelled</sys:String>
-    <sys:String x:Key="coredump_dl_progress_finished">Download finished</sys:String>
-    <sys:String x:Key="coredump_dl_trace_progress">Downloading trace dump... {0}%</sys:String>
-    <sys:String x:Key="coredump_dl_core_progress">Downloading core dump... {0}%</sys:String>
-    <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytes)</sys:String>
-    <sys:String x:Key="coredump_dl_note">The audio stream is temporarily paused while downloading. Your earbuds will be disconnected as soon as the transmission finishes, please reconnect them manually.
-Once finished, you will be prompted to select a directory for all collected data.
+    <sys:String x:Key="selftest_pass_long">Tất cả các kiểm tra đã đạt</sys:String>
+    <sys:String x:Key="selftest_fail_long">Một hoặc nhiều lần kiểm tra đã thất bại</sys:String>
 
-If the transmission is stuck or the device disconnected prematurely, you need to restart the download. This feature is currently very unstable.</sys:String>
-    <sys:String x:Key="coredump_dl_save_fail_title">Failed to save dump</sys:String>
-    <sys:String x:Key="coredump_dl_save_fail">Unable to copy dump from temporary location. Reason: {0}</sys:String>
-    <sys:String x:Key="coredump_dl_save_success_title">Successfully saved dumps</sys:String>
-    <sys:String x:Key="coredump_dl_save_success">{0} dump(s) were written to '{1}'</sys:String>
-    <sys:String x:Key="coredump_dl_save_dialog_title">Select an download directory...</sys:String>
+    <sys:String x:Key="coredump_header">Đang xuất dữ liệu...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_prepare">Đang chuẩn bị tải xuống...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_finished">Hoàn tất tải xuống</sys:String>
+    <sys:String x:Key="coredump_dl_trace_progress">Đang tải xuống trace dump... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_core_progress">Đang tải xuống core dump... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_progress_size">({0}/{1} byte)</sys:String>
+    <sys:String x:Key="coredump_dl_note">Âm thanh sẽ tạm dừng trong khi tải xuống. Tai nghe của bạn sẽ ngắt kết nối ngay khi quá trình tải xuống kết thúc, vui lòng kết nối lại thủ công.
+Sau khi hoàn tất, bạn sẽ được yêu cầu chọn một thư mục để lưu tất cả dữ liệu đã thu thập.
+
+Nếu quá trình tải xuống bị đứng hoặc thiết bị bị ngắt kết nối giữa chừng, bạn cần khởi động lại quá trình tải xuống. Tính năng này hiện rất không ổn định.</sys:String>
+    <sys:String x:Key="coredump_dl_save_fail_title">Không lưu được bản dump</sys:String>
+    <sys:String x:Key="coredump_dl_save_fail">Không thể sao chép bản dump từ vị trí tạm. Lý do: {0}</sys:String>
+    <sys:String x:Key="coredump_dl_save_success_title">Đã lưu bản dump thành công</sys:String>
+    <sys:String x:Key="coredump_dl_save_success">{0} bản dump đã được lưu vào '{1}'</sys:String>
+    <sys:String x:Key="coredump_dl_save_dialog_title">Chọn thư mục tải xuống...</sys:String>
+
+    <!-- Hidden AT modes -->
+    <sys:String x:Key="hidden_mode_warning">Tiến hành một cách thận trọng</sys:String>
+    <sys:String x:Key="hidden_mode_warning_desc">Một số thay đổi được thực hiện trên trang này không thể được khôi phục bằng cách khôi phục cài đặt gốc. Không phải mẫu thiết bị nào cũng hỗ trợ các cài đặt này.</sys:String>
+    <sys:String x:Key="hidden_mode_target">Thiết bị mục tiêu: Tai {0}</sys:String> <!-- {0} = Left or Right -->
+    <sys:String x:Key="hidden_mode_target_l_desc">Để tùy chỉnh tai nghe bên trái, hãy đặt tai nghe bên phải vào hộp và đóng lại.</sys:String>
+    <sys:String x:Key="hidden_mode_target_r_desc">Để tùy chỉnh tai nghe bên phải, hãy đặt tai nghe bên trái vào hộp và đóng lại.</sys:String>
+    <sys:String x:Key="hidden_mode_input_wrong_length">Giá trị mới phải có độ dài chính xác là {0} ký tự.</sys:String>
+    <sys:String x:Key="hidden_mode_uart_on_confirm">UART đã được kích hoạt thành công</sys:String>
+    <sys:String x:Key="hidden_mode_uart_off_confirm">UART đã bị vô hiệu hóa thành công</sys:String>
+    <sys:String x:Key="hidden_mode_uart">Bật cổng UART</sys:String>
+    <sys:String x:Key="hidden_mode_uart_desc">Tạm thời bật cổng UART vật lý trên PCB của thiết bị mục tiêu hiện tại cho mục đích gỡ lỗi</sys:String>
+    <sys:String x:Key="hidden_mode_power">Menu nguồn</sys:String>
+    <sys:String x:Key="hidden_mode_power_desc">Tắt máy, khởi động lại hoặc đưa thiết bị mục tiêu hiện tại vào chế độ ngủ</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change">Thay đổi số sê-ri</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change_desc">Thay đổi số sê-ri của thiết bị mục tiêu hiện tại</sys:String>
+    <sys:String x:Key="hidden_mode_did_change">Thay đổi DID và màu sắc</sys:String>
+    <sys:String x:Key="hidden_mode_did_change_desc">Thay đổi ID kiểu máy của thiết bị mục tiêu hiện tại</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change">Thay đổi mã SKU</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change_desc">Thay đổi mã sản phẩm của thiết bị mục tiêu hiện tại</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_addr_change">Thay đổi địa chỉ Bluetooth ngang hàng</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_change_desc">Thay đổi địa chỉ Bluetooth ngang hàng của thiết bị mục tiêu hiện tại</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_addr_change">Thay đổi địa chỉ Bluetooth cục bộ</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_change_desc">Thay đổi địa chỉ Bluetooth cục bộ của thiết bị mục tiêu hiện tại</sys:String>
+    <sys:String x:Key="hidden_mode_terminal">Terminal lệnh ẩn</sys:String>
+    <sys:String x:Key="hidden_mode_terminal_desc">Gửi lệnh AT tùy chỉnh đến thiết bị mục tiêu hiện tại</sys:String>
+
+    <sys:String x:Key="power_menu_hint">Chỉ có tai nghe mục tiêu hiện tại mới bị ảnh hưởng.</sys:String>
+    <sys:String x:Key="power_menu_reboot">Khởi động lại</sys:String>
+    <sys:String x:Key="power_menu_shutdown">Tắt nguồn</sys:String>
+    <sys:String x:Key="power_menu_sleep">Chế độ ngủ mặc định</sys:String>
     
+    <sys:String x:Key="at_terminal_cmd_id">ID lệnh</sys:String>
+    <sys:String x:Key="at_terminal_cmd_param">Tham số lệnh (tùy chọn)</sys:String>
+    <sys:String x:Key="at_terminal_cmd_id_invalid">Mã lệnh này không hợp lệ. Vui lòng nhập giá trị thập lục phân 16 bit, chẳng hạn như 0007 hoặc 004C.</sys:String>
+    <sys:String x:Key="at_terminal_output">Đầu ra</sys:String>
+    <sys:String x:Key="at_terminal_send">Gửi</sys:String>
+
+    
+    <!-- Usage-/metering reports -->
+    <sys:String x:Key="usage_reports_header">Báo cáo sử dụng</sys:String>
+    <sys:String x:Key="usage_reports_hint">Các báo cáo này được thu thập bởi chính tai nghe. Dữ liệu được hiển thị nguyên trạng và có thể không chính xác. Ứng dụng Wearable chính thức thường đặt lại hầu hết các bộ đếm theo định kỳ và sau đó gửi dữ liệu đã thu thập được đến Samsung trừ khi bạn chưa đồng ý thu thập dữ liệu trong ứng dụng của họ. Một số bộ đếm, chẳng hạn như chu kỳ sạc, không được đặt lại.</sys:String>
+    <sys:String x:Key="usage_reports_usage">Báo cáo sử dụng</sys:String>
+    <sys:String x:Key="usage_reports_metering">Báo cáo đo lường</sys:String>
+    <sys:String x:Key="milliamp_hours_unit">{0}mAh</sys:String>
+    <sys:String x:Key="metering_total_batt_capacity">Tổng dung lượng pin</sys:String>
+    <sys:String x:Key="metering_a2dp_time">Thời gian sử dụng phát media (A2DP)</sys:String>
+    <sys:String x:Key="metering_esco_time">Thời gian sử dụng cuộc gọi (eSCO)</sys:String>
+
+    <!-- Battery history -->
+    <sys:String x:Key="batt_hist_hint">Ứng dụng này có thể thu thập mức pin và dữ liệu sử dụng cơ bản theo thời gian, cho phép bạn phân tích mức tiêu hao pin. Dữ liệu chỉ có thể được thu thập khi ứng dụng này đang hoạt động ở chế độ nền và tai nghe của bạn được kết nối với thiết bị này.</sys:String>
+    <sys:String x:Key="batt_hist_no_data_title">Không đủ dữ liệu</sys:String>
+    <sys:String x:Key="batt_hist_no_data">Vui lòng quay lại sau khi đã thu thập đủ dữ liệu hoặc điều chỉnh khoảng thời gian được hiển thị.</sys:String>
+    <sys:String x:Key="batt_hist_y_axis">Pin (%)</sys:String>
+    <sys:String x:Key="batt_hist_last_hour">1 tiếng qua</sys:String>
+    <sys:String x:Key="batt_hist_last_6_hours">6 tiếng qua</sys:String>
+    <sys:String x:Key="batt_hist_last_12_hours">12 tiếng qua</sys:String>
+    <sys:String x:Key="batt_hist_last_24_hours">24 tiếng qua</sys:String>
+    <sys:String x:Key="batt_hist_last_3_days">3 ngày qua</sys:String>
+    <sys:String x:Key="batt_hist_last_7_days">7 ngày qua</sys:String>
+    <sys:String x:Key="batt_hist_overlay_none">Không hiển thị overlay</sys:String>
+    <sys:String x:Key="batt_hist_overlay_noise_controls">Chế độ lọc âm</sys:String>
+    <sys:String x:Key="batt_hist_overlay_wearing">Trạng thái đeo</sys:String>
+    <sys:String x:Key="batt_hist_overlay_host_device">Thiết bị chủ</sys:String>
+    <sys:String x:Key="batt_hist_overlay_legend">{0} (Overlay)</sys:String>
+    <sys:String x:Key="batt_hist_tools_pan_and_zoom">Di chuyển và thu phóng</sys:String>
+    <sys:String x:Key="batt_hist_tools_measure_time">Thời gian đo</sys:String>
+    <sys:String x:Key="batt_hist_tools_measure_battery">Mức độ đo</sys:String>
+    <sys:String x:Key="batt_hist_show_legend">Hiển thị chú giải</sys:String>
+    <sys:String x:Key="batt_hist_measure_difference_display">Sự khác nhau: {0}</sys:String>
+    <sys:String x:Key="batt_hist_measure_timespan_display">Khoảng thời gian: {0}</sys:String>
+    <sys:String x:Key="batt_hist_measure_timespan_unit_long">d' ngày, 'hh'h:'mm':'ss</sys:String> <!-- This is a time span format string. It produces a string like: 2 day(s), 03h:10:01 -->
+    <sys:String x:Key="batt_hist_time_span_tip_title">Khoảng thời gian</sys:String>
+    <sys:String x:Key="batt_hist_control_tip_title">Điều khiển chuột</sys:String>
+    <sys:String x:Key="batt_hist_control_tip">Kéo canvas để di chuyển xung quanh sơ đồ.
+
+Cuộn để phóng to theo chiều ngang và chiều dọc.
+
+Di chuột qua trục X hoặc Y và cuộn để chỉ phóng to theo chiều ngang hoặc chiều dọc. Ví dụ, cuộn qua trục X (thời gian) sẽ kéo giãn hoặc thun nó lại.</sys:String>
+    <sys:String x:Key="batt_hist_overlay_tip_title">Overlay</sys:String>
+    <sys:String x:Key="batt_hist_overlay_tip">Bạn có thể sử dụng overlay để thêm ngữ cảnh bổ sung vào sơ đồ.
+
+Chế độ lọc âm: Hiển thị các chế độ lọc âm nào đã được bật hoặc tắt.
+
+Trạng thái đeo: Hiển thị xem tai nghe có được đeo hay không.
+
+Thiết bị phát kết nối: Hiển thị xem tai nghe nào đang phát kết nối Bluetooth với máy tính
+
+Dữ liệu overlay có thể khó hiểu khi xem những phạm vi thời gian lớn. Di chuột qua trục X và cuộn lên để phóng to phạm vi thời gian cụ thể mà bạn muốn kiểm tra để có cái nhìn tổng quan hơn.</sys:String>
+    <sys:String x:Key="batt_hist_tools_tip_title">Các công cụ</sys:String>
+    <sys:String x:Key="batt_hist_tools_tip">Di chuyển và thu phóng: Chế độ mặc định. Di chuyển xung quanh biểu đồ bằng cách di chuyển và thu phóng.
+
+Đo thời gian: Chọn một khoảng ngang để đo thời gian trôi qua giữa điểm bắt đầu và kết thúc của khoảng được lựa chọn.
+
+Đo mức: Chọn một khoảng dọc để đo mức chênh lệch mức pin giữa điểm bắt đầu và kết thúc của khoảng được lựa chọn.</sys:String>
+
     <!--Settings-->
     <sys:String x:Key="settings_header">Cài đặt</sys:String>
-
-    <sys:String x:Key="settings_darkmode">Chế độ tối</sys:String>
-    <sys:String x:Key="settings_darkmode_description">Dùng tông màu tối hơn</sys:String>
+    <sys:String x:Key="settings_save_fail_no_access">Không lưu được cài đặt. Hệ điều hành đã từ chối quyền truy cập vào tệp cấu hình. Vui lòng kiểm tra các quyền truy cập tệp cho {0}.</sys:String>
+    <sys:String x:Key="settings_appearance">Giao diện</sys:String>
+    <sys:String x:Key="settings_darkmode">Chế độ ban đêm</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Sử dụng gam màu tối hơn</sys:String>
+    <sys:String x:Key="settings_blurstrength">Độ mờ của cửa sổ</sys:String>
+    <sys:String x:Key="settings_blurstrength_description">Chỉ tương thích với chế độ ban đêm. Không được hỗ trợ trên tất cả các hệ thống</sys:String>
+    <sys:String x:Key="settings_accent">Màu nhấn</sys:String>
+    <sys:String x:Key="settings_accent_description">Chọn màu nhấn tùy chỉnh</sys:String>
     <sys:String x:Key="settings_transitions">Chuyển tiếp</sys:String>
-    <sys:String x:Key="settings_transitions_description">Enable slide transitions</sys:String>
+    <sys:String x:Key="settings_transitions_description">Bật các chuyển tiếp trượt</sys:String>
     <sys:String x:Key="settings_localization_disable">Ngôn ngữ</sys:String>
-    <sys:String x:Key="settings_localization_disable_description">Buộc dùng tiếng Anh</sys:String>
-    <sys:String x:Key="settings_minimize_tray">Thu nhỏ về khay</sys:String>
-    <sys:String x:Key="settings_minimize_tray_description">Giữ ứng dụng chạy nền thay vì đóng hoàn toàn</sys:String>
-    <sys:String x:Key="settings_autostart">Khởi chạy khi boot</sys:String>
-    <sys:String x:Key="settings_autostart_description">Chạy ở chế độ thu nhỏ khi hệ thống khởi động</sys:String>
-
-    <sys:String x:Key="settings_connpopup">Thiết lập cửa sổ thông báo kết nối</sys:String>
-    <sys:String x:Key="settings_devmode">Tùy chọn lập trình viên</sys:String>
+    <sys:String x:Key="settings_localization_description">Thay đổi ngôn ngữ ứng dụng</sys:String>
+    <sys:String x:Key="settings_minimize_tray">Thu nhỏ vào khay</sys:String>
+    <sys:String x:Key="settings_minimize_tray_description">Giữ ở chế độ nền thay vì đóng ứng dụng</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons">Sử dụng hình ảnh thực tai nghe</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons_description">Hiển thị hình ảnh thực theo màu sắc của tai nghe của bạn, nếu chúng hỗ trợ</sys:String>
+    <sys:String x:Key="settings_color_override">Ghi đè màu tai nghe</sys:String>
+    <sys:String x:Key="settings_color_override_description">Thay đổi màu hiển thị của tai nghe trong ứng dụng</sys:String>
+    <sys:String x:Key="settings_nav_sidebar">Thanh bên điều hướng</sys:String>
+    <sys:String x:Key="settings_nav_sidebar_description">Hiển thị hoặc thu gọn các nút điều hướng ở phía bên trái</sys:String>
+    <sys:String x:Key="settings_tray_settings">Biểu tượng khay &amp; khởi động</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode">Biểu tượng khay động</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_description">Hiển thị trạng thái pin trong biểu tượng khay</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_off">Tắt</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_min">Hiển thị mức pin thấp nhất</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_avg">Hiển thị mức pin trung bình</sys:String>
+    <sys:String x:Key="settings_autostart">Tự khởi chạy khi hệ thống khởi động</sys:String>
+    <sys:String x:Key="settings_autostart_description">Khởi chạy ở trạng thái thu nhỏ khi hệ thống khởi động</sys:String>
+    <sys:String x:Key="settings_autostart_permission">Không thể cập nhật mục tự động khởi động trong registry. Quyền truy cập registry (HKCU) đã bị quản trị viên hệ thống của bạn vô hiệu hóa.</sys:String>
+    <sys:String x:Key="settings_connpopup">Popup khi kết nối</sys:String>
+    <sys:String x:Key="settings_devmode">Tùy chọn nhà phát triển</sys:String>
+    <sys:String x:Key="settings_devmode_description">Trình kiểm tra lưu lượng Bluetooth và các công cụ phát triển khác</sys:String>
+    <sys:String x:Key="settings_crowdsourcing">Crowdsourcing</sys:String>
 
     <!--Settings >>> Connection popup-->
-    <sys:String x:Key="settings_cpopup_header">Cửa sổ kết nối</sys:String>
-    <sys:String x:Key="settings_cpopup_enable">Kích hoạt cửa sổ thông báo nổi khi kết nối</sys:String>
-    <sys:String x:Key="settings_cpopup_enable_description">Hiển thị một cửa sổ nổi nhỏ báo mức pin khi tai nghe Buds được kết nối</sys:String>
-    <sys:String x:Key="settings_cpopup_compact">Chế độ nhỏ gọn</sys:String>
-    <sys:String x:Key="settings_cpopup_compact_description">Ẩn tiêu đề của cửa sổ nổi để tiết kiệm diện tích màn hình</sys:String>
+    <sys:String x:Key="settings_cpopup_header">Popup khi kết nối</sys:String>
+    <sys:String x:Key="settings_cpopup_enable">Bật hiển thị popup khi kết nối</sys:String>
+    <sys:String x:Key="settings_cpopup_enable_description">Hiển thị một cửa sổ thông báo nhỏ thông báo mức pin khi Buds được kết nối</sys:String>
+    <sys:String x:Key="settings_cpopup_compact">Chế độ thu gọn</sys:String>
+    <sys:String x:Key="settings_cpopup_compact_description">Ẩn tiêu đề của popup để tiết kiệm không gian</sys:String>
     <sys:String x:Key="settings_cpopup_position">Vị trí</sys:String>
-    <sys:String x:Key="settings_cpopup_position_placeholder">Không xác định</sys:String>
-    <sys:String x:Key="settings_cpopup_demo">Hiển thị thông báo mẫu</sys:String>
-    <sys:String x:Key="settings_cpopup_override_title">Dùng tiêu đề tùy chọn</sys:String>
-    <sys:String x:Key="settings_cpopup_override_title_dialog">Vui lòng nhập tiêu đề tùy ý. Bạn có thể đặt lại tiêu đề mặc định bằng cách để trống ô nhập liệu này.</sys:String>
-    <sys:String x:Key="settings_cpopup_primary_screen">Chỉ màn hình chính</sys:String>
-    <sys:String x:Key="settings_cpopup_primary_screen_description">Chỉ hiển thị thông báo trên màn hình chính</sys:String>
-    <sys:String x:Key="settings_cpopup_wear_state">Sử dụng màu khác khi nằm trong hộp</sys:String>
-    <sys:String x:Key="settings_cpopup_wear_state_description">Làm xám biểu tượng tai nghe khi đang trong hộp</sys:String>
+    <sys:String x:Key="settings_cpopup_position_description">Chọn vị trí của popup khi kết nối</sys:String>
+    <sys:String x:Key="settings_cpopup_demo">Hiển thị popup demo</sys:String>
 
-     <!--Settings >>> Crowdsourcing settings-->
-    <sys:String x:Key="settings_crowd_header">Nguồn cung ứng cộng đồng</sys:String>
-    <sys:String x:Key="settings_crowd_allow">Cho phép đóng góp bằng nguồn cung ứng cộng đồng</sys:String>
-    <sys:String x:Key="settings_crowd_allow_description">Thu thập thông tin về cấu trúc và dữ liệu giao thức Bluetooth độc quyền của Samsung theo yêu cầu. Điều này cho phép tôi dễ dàng hỗ trợ hơn các dòng Galaxy Buds hiện có mà không cần sở hữu chúng.</sys:String>
-    <sys:String x:Key="settings_crowd_crashreport">Cho phép tạo báo cáo sự cố văng ứng dụng</sys:String>
-    <sys:String x:Key="settings_crowd_crashreport_description">Gửi báo cáo sự cố tự động trong trường hợp bị văng ứng dụng hoặc gặp lỗi nghiêm trọng bằng Sentry. Điều này giúp tôi đáp ứng nhanh hơn với các lỗi gây khó chịu và có thể gây hỏng.</sys:String>
+    <!--Settings >>> Crowdsourcing settings-->
+    <sys:String x:Key="settings_crowd_header">Crowdsourcing</sys:String>
+    <sys:String x:Key="settings_crowd_allow">Cho phép đóng góp bằng crowdsourcing</sys:String>
+    <sys:String x:Key="settings_crowd_allow_description">Thu thập thông tin về cấu trúc giao thức Bluetooth độc quyền của Samsung và dữ liệu theo yêu cầu. Điều này cho phép tôi duy trì hỗ trợ cho tất cả các mẫu Galaxy Buds khả dụng dễ dàng hơn nhiều mà không cần sở hữu chúng.</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport">Cho phép báo cáo sự cố ứng dụng</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport_description">Gửi báo cáo sự cố ứng dụng tự động trong trường hợp sự cố hoặc lỗi nghiêm trọng bằng Sentry. Điều này giúp tôi phản hồi nhanh hơn đối với các lỗi ứng dụng gây rắc rối và gián đoạn.</sys:String>
 
     <!--Factory reset-->
-    <sys:String x:Key="factory_header">Khôi phục thiết lập gốc</sys:String>
-    <sys:String x:Key="factory_confirm">Xác nhận khôi phục thiết lập gốc</sys:String>
-    <sys:String x:Key="factory_error_title">Khôi phục thiết lập gốc thất bại</sys:String>
-    <sys:String x:Key="factory_error">Thiết bị báo lỗi mã: {0}
-Đảm bảo cả hai bên tai nghe đều bật và liên lạc được.
-Bạn có thể cần kết nối thủ công lại tai nghe.</sys:String>
-    <sys:String x:Key="factory_text_p1">Bạn có chắc chắn đặt lại tai nghe?</sys:String>
-    <sys:String x:Key="factory_text_p2">Sau khi thực hiện Khôi phục thiết lập gốc, Bạn sẽ cần phải kết nối thủ công lại tai nghe với máy tính.</sys:String>
-    <sys:String x:Key="factory_text_p3">Đảm bảo cả hai bên tai nghe đều bật trước khi tiếp tục!</sys:String>
+    <sys:String x:Key="factory_header">Khôi phục cài đặt gốc</sys:String>
+    <sys:String x:Key="factory_confirmation">Bạn có chắc chắn muốn khôi phục cài đặt gốc cho tai nghe?
+Thao tác này sẽ xóa mọi dữ liệu và cài đặt khỏi tai nghe của bạn.
+
+Đảm bảo cả hai tai nghe đều được bật trước khi tiếp tục.</sys:String>
+    <sys:String x:Key="factory_error_title">Khôi phục cài đặt gốc thất bại</sys:String>
+    <sys:String x:Key="factory_error">Thiết bị trả về mã lỗi: {0}
+
+Đảm bảo cả hai tai nghe đều được bật và có thể kết nối được.
+Bạn có thể cần phải kết nối lại tai nghe theo cách thủ công.</sys:String>
 
     <!--Find my Gear-->
-    <sys:String x:Key="fmg_warning_both">Vui lòng tháo cả hai bên tai nghe ra khỏi tai.</sys:String>
-    <sys:String x:Key="fmg_warning_left">Vui lòng tháo tai nghe bên trái ra khỏi tai.</sys:String>
-    <sys:String x:Key="fmg_warning_right">Vui lòng tháo tai nghe bên phải ra khỏi tai.</sys:String>
-    <sys:String x:Key="fmg_header">Tìm tai nghe</sys:String>
+    <sys:String x:Key="fmg_warning_both">Vui lòng tháo cả hai tai nghe.</sys:String>
+    <sys:String x:Key="fmg_warning_left">Vui lòng tháo tai nghe bên trái.</sys:String>
+    <sys:String x:Key="fmg_warning_right">Vui lòng tháo tai nghe bên phải.</sys:String>
+    <sys:String x:Key="fmg_header">Tìm kiếm tai nghe</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage">Quản lý dữ liệu SmartThings Find</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage_desc">Xem và quản lý dữ liệu SmartThings Find được lưu trữ trên tai nghe của bạn</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open">Mở trang web SmartThings Find</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open_desc">Theo dõi tai nghe của bạn trực tuyến. Cần có tài khoản Samsung và ứng dụng SmartThings Find chính thức để thiết lập.</sys:String>
+
+    <!--SmartThings data-->
+    <sys:String x:Key="smart_things_find">SmartThings</sys:String>
+    <sys:String x:Key="smart_things_find_clear">Xóa cấu hình SmartThings Find</sys:String>
+    <sys:String x:Key="smart_things_find_clear_desc">Xóa dữ liệu liên quan đến tài khoản Samsung khỏi tai nghe của bạn</sys:String>
+    <sys:String x:Key="smart_things_find_iv">Vectơ khởi tạo (IV)</sys:String>
+    <sys:String x:Key="smart_things_find_secret_key">Key bí mật</sys:String>
+    <sys:String x:Key="smart_things_find_region">Vùng</sys:String>
+    <sys:String x:Key="smart_things_find_fmm_token">Token SmartThings Find</sys:String>
+    <sys:String x:Key="smart_things_find_no_link">Tai nghe của bạn chưa được liên kết với mạng lưới SmartThings Find của Samsung.</sys:String>
+    <sys:String x:Key="smart_things_find_write_fail">Tai nghe từ chối dữ liệu cấu hình SmartThings Find mới.</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok">Cấu hình đã được ghi đè</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok_desc">Dữ liệu cấu hình SmartThings Find đã được xóa.</sys:String>
+
+    <!-- Fit test-->
+    <sys:String x:Key="gft_warning">Vui lòng đeo cả hai tai nghe.</sys:String>
+    <sys:String x:Key="gft_desc">Kiểm tra xem tai nghe của bạn đã được đeo đúng cách chưa</sys:String>
+    <sys:String x:Key="gft_bad">Không vừa vặn</sys:String>
+    <sys:String x:Key="gft_good">Vừa vặn</sys:String>
+    <sys:String x:Key="gft_fail">Kiểm tra thất bại</sys:String>
 
     <!--Equalizer-->
-    <sys:String x:Key="eq_header">Bộ cân bằng âm (EQ)</sys:String>
-    <sys:String x:Key="eq_enable">Kích hoạt bộ cân bằng âm (EQ)</sys:String>
-    <sys:String x:Key="eq_preset">Preset</sys:String>
-    <sys:String x:Key="eq_dolby">Tối ưu hóa để sử dụng với Dolby</sys:String>
-    <sys:String x:Key="eq_stereo_balance">Cân bằng âm trái/phải</sys:String>
-    <sys:String x:Key="eq_stereo_balance_value">{0}% trái; {1}% phải</sys:String>
-    <sys:String x:Key="eq_stereo_balance_neutral">Trung hòa</sys:String>
+    <sys:String x:Key="eq_header">Cân bằng âm thanh</sys:String>
+    <sys:String x:Key="eq_enable">Cân bằng âm thanh</sys:String>
+    <sys:String x:Key="eq_enable_description">Áp dụng bộ lọc âm thanh EQ</sys:String>
+    <sys:String x:Key="eq_preset">Chế độ</sys:String>
+    <sys:String x:Key="eq_stereo_balance">Cân bằng âm thanh trái/phải</sys:String>
+    <sys:String x:Key="eq_stereo_balance_value">Trái {0}%; Phải {1}%</sys:String>
+    <sys:String x:Key="eq_stereo_balance_neutral">Trung lập</sys:String>
 
-    <sys:String x:Key="eq_bass">Tăng âm trầm (Bass Boost)</sys:String>
-    <sys:String x:Key="eq_soft">Nhẹ nhàng (Soft)</sys:String>
-    <sys:String x:Key="eq_dynamic">Sôi nổi (Dynamic)</sys:String>
-    <sys:String x:Key="eq_clear">Rõ ràng (Clear)</sys:String>
-    <sys:String x:Key="eq_treble">Tăng âm bổng (Treble Boost)</sys:String>
+    <sys:String x:Key="eq_bass">Tăng âm trầm</sys:String>
+    <sys:String x:Key="eq_soft">Nhẹ nhàng</sys:String>
+    <sys:String x:Key="eq_dynamic">Động</sys:String>
+    <sys:String x:Key="eq_clear">Trong trẻo</sys:String>
+    <sys:String x:Key="eq_treble">Tăng âm bổng</sys:String>
 
     <!--Noise control-->
-    <sys:String x:Key="nc_header">Kiểm soát tiếng ồn</sys:String>
+    <sys:String x:Key="nc_header">Chế độ lọc âm</sys:String>
+    <sys:String x:Key="nc_as_anc_description">Giảm tiếng ồn môi trường</sys:String>
+    <sys:String x:Key="nc_one_earbud">Sử dụng chế độ lọc âm với một tai nghe</sys:String>
+    <sys:String x:Key="nc_one_earbud_description">Chế độ lọc âm thường yêu cầu đeo cả hai tai nghe để tránh gây khó chịu, bật tính năng này để chỉ cần một tai nghe</sys:String>
     <sys:String x:Key="nc_anc_level">Độ nhạy cao</sys:String>
-    <sys:String x:Key="nc_anc_level_description">Hiệu ứng khử tiếng ồn mạnh hơn</sys:String>
+    <sys:String x:Key="nc_anc_level_description">Hiệu ứng chống ồn mạnh hơn</sys:String>
     <sys:String x:Key="nc_ambient">Tùy chỉnh xuyên âm</sys:String>
-    <sys:String x:Key="nc_ambient_description">Tùy chỉnh âm điệu và âm lượng xuyên âm (nếu khả dụng)</sys:String>
+    <sys:String x:Key="nc_ambient_description">Tùy chỉnh tông và âm lượng xuyên âm (nếu khả dụng)</sys:String>
     <sys:String x:Key="nc_voicedetect">Phát hiện cuộc trò chuyện</sys:String>
-    <sys:String x:Key="nc_voicedetect_description">Khi giọng của bạn được phát hiện, tự động bật xuyên âm và giảm âm lượng đa phương tiện nhằm giúp bạn trò chuyện dễ dàng hơn</sys:String>
-    <sys:String x:Key="nc_voicedetect_timeout">Thời gian chờ hội thoại</sys:String>
+    <sys:String x:Key="nc_voicedetect_description">Khi giọng nói của bạn được phát hiện, tự động bật chế độ xuyên âm và giảm âm lượng media để trò chuyện dễ dàng hơn</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout">Thời gian hết trò chuyện</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout_description">Quay về cài đặt ban đầu khi giọng nói của bạn không được phát hiện trong một khoảng thời gian nhất định</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} giây</sys:String>
-   
+
     <!--Noise control >>> Ambient sound-->
-    <sys:String x:Key="nc_as_header">Cài đặt xuyên âm</sys:String>
+    <sys:String x:Key="nc_as_header">Tùy chỉnh chế độ xuyên âm</sys:String>
     <sys:String x:Key="nc_as_custom">Tùy chỉnh nâng cao</sys:String>
+    <sys:String x:Key="nc_as_custom_description">Tùy chỉnh cài đặt chế độ xuyên âm</sys:String>
     <sys:String x:Key="nc_as_custom_volume_l">Âm lượng xuyên âm (trái)</sys:String>
     <sys:String x:Key="nc_as_custom_volume_r">Âm lượng xuyên âm (phải)</sys:String>
-    <sys:String x:Key="nc_as_custom_tone">Âm điệu xuyên âm</sys:String>
-    <sys:String x:Key="nc_as_custom_tone_clear">Trong</sys:String>
-    <sys:String x:Key="nc_as_custom_tone_soft">Mềm</sys:String>
-    <sys:String x:Key="nc_as_custom_tone_neutral">Trung hòa</sys:String>
+    <sys:String x:Key="nc_as_custom_tone">Tông xuyên âm</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_clear">Trong trẻo</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_soft">Nhẹ nhàng</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_neutral">Trung lập</sys:String>
     <sys:String x:Key="nc_as_custom_vol_normal">Bình thường</sys:String>
-    
+
     <!--Ambient sound-->
-    <sys:String x:Key="as_header">Xuyên âm</sys:String>
-    <sys:String x:Key="as_enable">Kích hoạt xuyên âm</sys:String>
+    <sys:String x:Key="as_header">Chế độ xuyên âm</sys:String>
+    <sys:String x:Key="as_header_description">Nghe âm thanh môi trường xung quanh bạn</sys:String>
+    <sys:String x:Key="as_enable">Bật chế độ xuyên âm</sys:String>
     <sys:String x:Key="as_volume">Âm lượng xuyên âm</sys:String>
-    <sys:String x:Key="as_voicefocus">Tập trung vào giọng nói</sys:String>
-    <sys:String x:Key="as_extrahigh">Âm lượng xuyên âm cao</sys:String>
-    <sys:String x:Key="as_extrahigh_description">Thêm mức âm lượng bổ sung cho thanh trượt xuyên âm</sys:String>
+    <sys:String x:Key="as_voicefocus">Tập trung giọng nói</sys:String>
+    <sys:String x:Key="as_voicefocus_description">Làm cho giọng nói nổi bật hơn</sys:String>
+    <sys:String x:Key="as_extrahigh">Âm lượng môi trường cực cao</sys:String>
+    <sys:String x:Key="as_extrahigh_description">Thêm một mức âm lượng vào thanh trượt "Âm lượng xuyên âm"</sys:String>
     <sys:String x:Key="as_scale_very_low">Rất thấp</sys:String>
     <sys:String x:Key="as_scale_low">Thấp</sys:String>
     <sys:String x:Key="as_scale_moderate">Vừa phải</sys:String>
     <sys:String x:Key="as_scale_high">Cao</sys:String>
     <sys:String x:Key="as_scale_extraloud">Rất cao</sys:String>
-    
+
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Cài đặt nâng cao</sys:String>
-    <sys:String x:Key="adv_required_firmware_later">{0} hoặc thấp hơn</sys:String>
     <sys:String x:Key="adv_seamless">Kết nối tai nghe liền mạch</sys:String>
-    <sys:String x:Key="adv_seamless_desc">Chuyển đổi nhanh chóng sang các thiết bị khác ở gần mà không cần phải ngắt kết nối tai nghe hay bật chế độ ghép đôi</sys:String>
-    <sys:String x:Key="adv_resume_playback">Tiếp tục/Bắt đầu phát khi tai nghe Buds được đeo</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">Gửi lệnh phát/tạm dừng toàn thiết bị khi có ít nhất một cảm biến tiệm cận được che (Chỉ desktop)</sys:String>
-    <sys:String x:Key="adv_sidetone">Dùng xuyên âm khi gọi điện</sys:String>
-    <sys:String x:Key="adv_sidetone_desc">Lắng nghe giọng của bạn rõ ràng hơn khi đang trò chuyện điện thoại</sys:String>
-    <sys:String x:Key="adv_passthrough">Thoát áp suất với xuyên âm</sys:String>
-    <sys:String x:Key="adv_passthrough_desc">Giúp đề phòng cảm giác bí bách hay đè nén khi bạn không sử dụng chống ồn chủ động</sys:String>
-    <sys:String x:Key="adv_gaming_mode">Chế độ chơi game</sys:String>
-    <sys:String x:Key="adv_gaming_mode_desc">Giảm độ trễ và điều chỉnh đồng bộ âm thanh (Chỉ Samsung)</sys:String>
+    <sys:String x:Key="adv_seamless_desc">Chuyển nhanh sang các thiết bị gần đó mà không cần ngắt kết nối tai nghe hoặc bật chế độ ghép nối</sys:String>
+    <sys:String x:Key="adv_pause_playback">Tạm dừng phát âm thanh khi tháo tai nghe ra</sys:String>
+    <sys:String x:Key="adv_pause_playback_desc">Gửi một sự kiện thay đổi trạng thái phát/tạm dừng khi cả hai cảm biến tiệm cận đều không được che (Chỉ dành cho PC)</sys:String>
+    <sys:String x:Key="adv_resume_playback">Tiếp tục phát lại nếu tai nghe được đeo</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Gửi một sự kiện thay đổi trạng thái phát/tạm dừng khi cả hai cảm biến tiệm cận đều được che (Chỉ dành cho PC)</sys:String>
+    <sys:String x:Key="adv_sidetone">Sử dụng xuyên âm trong khi gọi</sys:String>
+    <sys:String x:Key="adv_sidetone_desc">Nghe rõ giọng nói của bạn hơn khi gọi</sys:String>
+    <sys:String x:Key="adv_callpath">Phát hiện đeo tai nghe cho cuộc gọi</sys:String>
+    <sys:String x:Key="adv_callpath_desc">Phát cuộc gọi qua tai nghe khi bạn đang đeo và qua loa máy tính khi bạn không đeo</sys:String>
+    <sys:String x:Key="adv_extra_clear_call">Làm sắc nét âm thanh cuộc gọi</sys:String>
+    <sys:String x:Key="adv_extra_clear_call_desc">Tăng cường độ rõ nét của cuộc gọi. Hữu ích nhất khi bạn ở nơi ồn ào và sử dụng tai nghe. Tốn nhiều pin hơn.</sys:String>
+    <sys:String x:Key="adv_passthrough">Giảm áp lực với chế độ xuyên âm</sys:String>
+    <sys:String x:Key="adv_passthrough_desc">Chức năng này có thể ngăn ngừa cảm giác nghẹt hoặc chèn ép trong tai khi bạn không sử dụng chống ồn chủ động</sys:String>
     <sys:String x:Key="adv_hotkey">Phím tắt bàn phím</sys:String>
-    <sys:String x:Key="adv_hotkey_desc">Thiết lập phím tắt bàn phím để điều khiển tai nghe của bạn từ xa</sys:String>
+    <sys:String x:Key="adv_hotkey_desc">Tùy chỉnh phím tắt trên bàn phím để điều khiển tai nghe</sys:String>
+    <sys:String x:Key="adv_bixby_remap">Gán lại chức năng gọi Bixby</sys:String>
+    <sys:String x:Key="adv_bixby_remap_desc">Tùy chỉnh điều gì sẽ xảy ra khi bạn nói 'Hey Bixby!'</sys:String>
+
+    <!--Remap bixby wakeup-->
+    <sys:String x:Key="bixby_remap_enable">Bật chức năng gọi Bixby</sys:String>
+    <sys:String x:Key="bixby_remap_enable_desc">Gọi Bixby trên điện thoại Samsung của bạn hoặc thực hiện một hành động tùy chỉnh trên PC này khi được gọi</sys:String>
+    <sys:String x:Key="bixby_remap_lang">Ngôn ngữ gọi Bixby</sys:String>
+    <sys:String x:Key="bixby_remap_lang_desc">Thay đổi ngôn ngữ được sử dụng cho cụm từ kích hoạt</sys:String>
+    <sys:String x:Key="bixby_remap_action">Hành động gọi tùy chỉnh</sys:String>
+    <sys:String x:Key="bixby_remap_action_desc">Tùy chỉnh điều gì sẽ xảy ra khi bạn kích hoạt Bixby trên thiết bị này</sys:String>
+    <sys:String x:Key="bixby_remap_note">Gọi 'Hey Bixby!' để kích hoạt. Cụm từ kích hoạt có thể khác nhau tùy theo một số cài đặt ngôn ngữ.
+
+Cấu hình được gán lại chỉ hoạt động trên thiết bị này. Nếu bạn kết nối tai nghe với thiết bị Samsung, tính năng đánh thức bằng giọng nói sẽ kích hoạt Bixby như bình thường. Trên các thiết bị khác và điện thoại không phải của Samsung, tính năng này sẽ không kích hoạt bất kỳ hành động nào.</sys:String>
+
 
     <!--Credits-->
-    <sys:String x:Key="credits_header">Công Trạng</sys:String>
-    <sys:String x:Key="credits_developer">Lập Trình Viên</sys:String>
-    <sys:String x:Key="credits_license">Bản Quyền</sys:String>
-    <sys:String x:Key="credits_version">Phiên Bản</sys:String>
-    <sys:String x:Key="credits_contributor">Góp Viên</sys:String>
-    <sys:String x:Key="credits_translator">Dịch Giả</sys:String>
-    <sys:String x:Key="credits_sponsor">Bảo trợ dự án này</sys:String>
+    <sys:String x:Key="credits_header">Credit</sys:String>
+    <sys:String x:Key="credits_developer">Nhà phát triển</sys:String>
+    <sys:String x:Key="credits_license">Giấy phép</sys:String>
+    <sys:String x:Key="credits_version">Phiên bản</sys:String>
+    <sys:String x:Key="credits_contributor">Người đóng góp</sys:String>
+    <sys:String x:Key="credits_translator">Người phiên dịch</sys:String>
+    <sys:String x:Key="credits_sponsor">Tài trợ cho dự án này</sys:String>
+    <sys:String x:Key="credits_kofi">Hãy ghé thăm trang Ko-fi của tôi để ủng hộ tôi!</sys:String>
+    <sys:String x:Key="credits_github">Truy cập dự án này trên GitHub</sys:String>
 
     <!--Connection lost page-->
+    <sys:String x:Key="connlost">Mất kết nối</sys:String>
     <sys:String x:Key="connlost_header">Không thể thiết lập kết nối</sys:String>
-    <sys:String x:Key="connlost_description_p1">Không thể thiết lập kết nối tới tai nghe của bạn.</sys:String>
-    <sys:String x:Key="connlost_description_p2">Vui lòng kiểm tra cài đặt Bluetooth và đảm bảo tai nghe của bạn được bật và đã ghép đôi với máy tính này.
-Bạn cũng có thể kết nối thiết bị mới nếu cần. Trong trường hợp đó, vui lòng chọn "Tùy chọn &gt; Gỡ ghép đôi thiết bị".</sys:String>
-    <sys:String x:Key="connlost_description_p3">Thông tin thêm:</sys:String>
-    <sys:String x:Key="connlost_noinfo">Thu thập thông tin lỗi thất bại</sys:String>
     <sys:String x:Key="connlost_connect">Kết nối</sys:String>
     <sys:String x:Key="connlost_connecting">Đang kết nối...</sys:String>
-    
+    <sys:String x:Key="connlost_troubleshoot">Khắc phục sự cố</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_title">Cách khắc phục sự cố kết nối</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_content">Vui lòng đảm bảo rằng ứng dụng Wearable chính thức của Samsung dành cho Galaxy Buds không cố gắng kết nối với tai nghe của bạn ở chế độ nền.
+Nếu không, bạn sẽ gặp phải sự cố mất kết nối rất thường xuyên vì ứng dụng của họ sẽ liên tục cố gắng giành quyền kiểm soát tai nghe.
+
+Bạn có thể chọn một trong các giải pháp sau để khắc phục sự cố này:
+
+• Hủy ghép nối tai nghe khỏi ứng dụng Wearable. (Trong ứng dụng Wearable, hãy mở menu hamburger, chọn 'Quản lý thiết bị' và xóa tai nghe của bạn khỏi danh sách.)
+
+• Gỡ cài đặt hoàn toàn plugin Galaxy Buds cho ứng dụng Samsung Wearable.
+
+• Sử dụng một ứng dụng như 'Hail' hoặc 'Ice Box' để tạm thời đóng băng plugin Galaxy Buds chính thức cho ứng dụng Samsung Wearable để ngăn không cho nó chạy.
+    </sys:String>
+
+    <!-- Pairing mode -->
+    <sys:String x:Key="connlost_disconnected">Thiết bị đã ngắt kết nối</sys:String>
+    <sys:String x:Key="pairingmode_done">Tai nghe đã được đưa vào chế độ ghép nối và hiện đã ngắt kết nối khỏi thiết bị này.</sys:String>
+
+    <!--Firmware update disclaimer-->
+    <sys:String x:Key="fw_disclaimer">Miễn trừ trách nhiệm</sys:String>
+    <sys:String x:Key="fw_disclaimer_desc">Công cụ cập nhật firmware này là một bản sao chuẩn xác của trình cập nhật chính thức có trong ứng dụng Android chính thức của Samsung. Tôi đã kiểm tra kỹ lưỡng việc triển khai này trong nhiều trường hợp khác nhau (hoạt động bình thường, mất kết nối, cố ý làm hỏng các packet Bluetooth, ...) mà không gặp bất kỳ sự cố nào. Tuy nhiên, tôi sẽ không chịu bất kỳ trách nhiệm nào nếu có bất kỳ sự cố nào xảy ra vì các bản cập nhật firmware sẽ sửa đổi các thành phần hệ thống quan trọng và luôn phải xử lý thận trọng.
+
+HẠ CẤP: Mặc dù có thể hạ cấp xuống các phiên bản firmware cũ hơn và tôi chưa bao giờ gặp sự cố với nó, nhưng nó có thể gây ra các sự cố không mong muốn và chỉ nên thực hiện nếu cần thiết. Nên khôi phục cài đặt gốc sau khi hạ cấp nhưng thường không cần thiết.
+FLASHING TÙY CHỈNH: Bạn cũng có thể tải các tệp firmware từ ổ cứng của mình. KHÔNG flash các tệp firmware được thiết kế cho các mẫu KHÁC vào thiết bị của bạn.
+
+Ứng dụng này được cấp phép theo giấy phép GPLv3. Bằng việc sử dụng ứng dụng này, bạn đang chấp nhận giấy phép này và giới hạn trách nhiệm của nó. Nhấn 'Tiếp tục' để chấp nhận.</sys:String>
+
+    <!--Firmware selection-->
+    <sys:String x:Key="fw_select_header">Cập nhật firmware</sys:String>
+    <sys:String x:Key="fw_select_downgrade">Cho phép hạ cấp firmware</sys:String>
+    <sys:String x:Key="fw_select_downgrade_desc">Tắt kiểm tra phiên bản và hiển thị các firmware cũ hơn trong danh sách (có thể gây ra sự cố không mong muốn; chỉ dành cho người dùng nâng cao)</sys:String>
+    <sys:String x:Key="fw_select_install">Cài đặt firmware</sys:String>
+    <sys:String x:Key="fw_select_install_short">Cài đặt</sys:String>
+    <sys:String x:Key="fw_select_from_disk">Chọn firmware từ ổ đĩa...</sys:String>
+    <sys:String x:Key="fw_select_from_disk_short">Mở</sys:String>
+    <sys:String x:Key="fw_select_refresh">Làm mới</sys:String>
+    <sys:String x:Key="fw_select_unsupported_selection">Lựa chọn không hợp lệ. Vui lòng chọn một mục tương thích từ danh sách.</sys:String>
+    <sys:String x:Key="fw_select_downloading">Đang tải xuống...</sys:String>
+    <sys:String x:Key="fw_select_net_error">Không thể kết nối với máy chủ. Hiện tại không thể tải firmware xuống.</sys:String>
+    <sys:String x:Key="fw_select_net_index_error">Không thể kết nối với máy chủ. Hiện tại không thể tải chỉ mục firmware xuống.</sys:String>
+    <sys:String x:Key="fw_select_http_error">Mã lỗi HTTP:</sys:String>
+    <sys:String x:Key="fw_select_unknown_build">Tên build không xác định</sys:String>
+    <sys:String x:Key="fw_select_no_results_short">Không tìm thấy bản cập nhật nào</sys:String>
+    <sys:String x:Key="fw_select_verify_fail">Không thể xác minh firmware</sys:String>
+    <sys:String x:Key="fw_select_verify_model_mismatch_fail">Đã phát hiện mẫu thiết bị không khớp! Quá trình chép firmware đã bị hủy.
+
+Bạn đang cố gắng flash firmware cho {0} vào {1} của mình. Điều này có thể làm hỏng tai nghe của bạn vĩnh viễn.</sys:String>
+    <sys:String x:Key="fw_select_confirm">Bạn đang chuẩn bị flash '{0}' vào thiết bị '{1}' của bạn</sys:String>
+    <sys:String x:Key="fw_select_confirm_desc">Hãy đảm bảo thông tin này là chính xác, nếu không thì hãy nhấn 'Hủy' và kiểm tra lại thiết lập của bạn.
+
+Nếu có thể, hãy đảm bảo cả hai tai nghe đều được kết nối trước khi bắt đầu. Sẽ không có vấn đề gì nếu kết nối không thành công trong khi truyền bản cập nhật. Trong trường hợp như vậy, tai nghe sẽ tự động hủy quá trình truyền và thoát khỏi chế độ cập nhật firmware.
+
+Nhấn 'Tiếp tục' để bắt đầu cập nhật.</sys:String>
+
+    <!--Firmware transfer-->
+    <sys:String x:Key="fw_upload_header">Đang cài đặt firmware...</sys:String>
+    <sys:String x:Key="fw_upload_progress_session">Tạo phiên mới...</sys:String>
+    <sys:String x:Key="fw_upload_progress_prepare">Đang chuẩn bị tải lên...</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished">Đã tải lên</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished_desc">Bản cập nhật đã được chép thành công và hiện đang được cài đặt trên thiết bị. Trong quá trình này, tai nghe của bạn sẽ không phản hồi trong khoảng 30 giây. Trong hầu hết các trường hợp, tai nghe sẽ tự động kết nối lại sau khi quá trình cập nhật trên bo mạch hoàn tất.</sys:String>
+    <sys:String x:Key="fw_upload_progress_error">Không tải phần mềm lên được</sys:String>
+    <sys:String x:Key="fw_upload_progress">Đang tải lên bản cập nhật firmware... {0}%</sys:String>
+    <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_mtu">Đơn vị chép tối đa: {0} bytes</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_offset">Xử lý dữ liệu từ offset 0x{0:X6} đến 0x{1:X6}</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_segment">Đang tải lên phân đoạn #{0} ({1} byte, checksum 0x{2:X6})</sys:String>
+
+    <!--Firmware parse errors-->
+    <sys:String x:Key="fw_fail_no_magic">Đây không phải là tệp nhị phân firmware hợp lệ. Tìm thấy magic value không hợp lệ trong header của tệp.</sys:String>
+    <sys:String x:Key="fw_fail_size_null">Kích thước tệp firmware này được đặt thành 0 và không thể sử dụng để flash. Vui lòng chọn tệp khác.</sys:String>
+    <sys:String x:Key="fw_fail_no_segments">Tệp firmware này không chứa bất kỳ phân đoạn nhị phân nào và nó trống. Vui lòng chọn tệp khác.</sys:String>
+    <sys:String x:Key="fw_fail_unknown">Lỗi không mong muốn khi giải mã tệp firmware này. Tệp này có thể đã bị hỏng.
+
+Chi tiết:</sys:String>
+
+    <!--Firmware transfer errors-->
+    <sys:String x:Key="fw_fail_connection">Mất kết nối với thiết bị. Quá trình chép firmware đã bị hủy.</sys:String>
+    <sys:String x:Key="fw_fail_session">Không mở được phiên mới. Thiết bị trả về mã lỗi ({0})</sys:String>
+    <sys:String x:Key="fw_fail_copy">Không thể sao chép tệp firmware. Vui lòng kết nối lại và thử lại. Mã lỗi do thiết bị trả về: {0}</sys:String>
+    <sys:String x:Key="fw_fail_verify">Không thể xác minh/cài đặt file firmware. Vui lòng kết nối lại và thử lại. Mã lỗi do thiết bị trả về: {0}</sys:String>
+    <sys:String x:Key="fw_fail_connection_precheck">Thiết bị hiện không được kết nối. Vui lòng kiểm tra cài đặt hệ thống Bluetooth của bạn và kết nối lại.</sys:String>
+    <sys:String x:Key="fw_fail_pending">Một quá trình chuyển giao phần mềm khác đang diễn ra. Vui lòng hủy đúng cách trước.</sys:String>
+    <sys:String x:Key="fw_fail_lowbattery">Pin quá yếu. Vui lòng sạc tai nghe của bạn trên 15% trước khi chép firmware.</sys:String>
+    <sys:String x:Key="fw_fail_session_timeout">Đã hết thời gian chờ thiết bị mở phiên mới</sys:String>
+    <sys:String x:Key="fw_fail_control_timeout">Đã hết thời gian chờ thiết bị trả về khối điều khiển</sys:String>
+
+    <!--Spatial test-->
+    <sys:String x:Key="spatial_header">Cảm biến không gian</sys:String>
+    <!--Note: Quaternion = 4-dimensional vector-->
+    <sys:String x:Key="spatial_dump_quaternion">Vectơ quaternion thô:</sys:String>
+    <!--Note: RPY = Roll, pitch, yaw-->
+    <sys:String x:Key="spatial_dump_rpy">Giá trị RPY:</sys:String>
+
     <!--Header-->
+    <sys:String x:Key="window_open">Mở</sys:String>
     <sys:String x:Key="window_minimize">Thu nhỏ</sys:String>
     <sys:String x:Key="window_close">Đóng</sys:String>
 
+    <!--Buds app detected page-->
+    <sys:String x:Key="budsapp_header">Thông tin tương thích Bluetooth</sys:String>
+    <sys:String x:Key="budsapp_text_p1">Ứng dụng Galaxy Buds chính thức được cài đặt cùng với ứng dụng này.</sys:String>
+    <sys:String x:Key="budsapp_text_p2">Nếu đang hoạt động ở chế độ nền, GalaxyBudsClient có thể gặp sự cố khi kết nối với tai nghe của bạn. Hãy đảm bảo hủy nhận tai nghe của bạn khỏi ứng dụng chính thức hoặc ngăn không cho nó chạy ở chế độ nền bằng các cách khác.</sys:String>
+    <sys:String x:Key="budsapp_text_p3">Hãy nhớ rằng chỉ có một ứng dụng có thể giao tiếp với Galaxy Buds của bạn tại một thời điểm.</sys:String>
+
+    <!--Manual pairing-->
+    <sys:String x:Key="manualpair_title">Lựa chọn thiết bị thủ công</sys:String>
+    <sys:String x:Key="manualpair_title_dialog">Chọn thiết bị Galaxy Buds của bạn</sys:String>
+    <sys:String x:Key="manualpair_model">Chọn đúng loại mẫu</sys:String>
+    <sys:String x:Key="manualpair_note">Bạn chỉ nên kết nối tai nghe theo cách thủ công nếu trình hướng dẫn thiết lập không nhận dạng đúng tai nghe.</sys:String>
+
+    <!--Rename-->
+    <sys:String x:Key="rename">Đổi tên tai nghe</sys:String>
+    <sys:String x:Key="rename_desc">Thao tác này sẽ đổi tên tai nghe cho tất cả các thiết bị.</sys:String>
+    <sys:String x:Key="rename_warn">Có thể không thể đổi tên tai nghe bằng các ứng dụng chính thức vì chúng chỉ giới hạn ở điện thoại thông minh Samsung, nghĩa là bạn có thể phải cần ứng dụng này để đặt lại tên. Các thiết bị có thể không hiển thị tên đã đổi cho đến khi bạn hủy ghép nối và ghép nối lại tai nghe.</sys:String>
+    <sys:String x:Key="rename_warn_oneui_title">Thông tin quan trọng dành cho người dùng OneUI</sys:String>
+    <sys:String x:Key="rename_warn_oneui">Nếu thiết bị của bạn đang chạy Samsung OneUI, bạn nên sử dụng phương pháp chính thức của Samsung để đổi tên tai nghe trong cài đặt hệ thống. Nếu không, sẽ có sự cố kết nối khi đặt tên mới.</sys:String>
+    <sys:String x:Key="rename_too_short">Tên bạn nhập quá ngắn (không có ký tự) hoặc quá dài (giới hạn tối đa do tai nghe đặt).</sys:String>
+    <sys:String x:Key="rename_hint">Nhập tên mới...</sys:String>
+    <sys:String x:Key="rename_label">Tên thiết bị mới</sys:String>
+    <sys:String x:Key="rename_reading_name">Đang đọc tên hiện tại...</sys:String>
+    <sys:String x:Key="rename_ok_title">Tai nghe được đổi tên</sys:String>
+    <sys:String x:Key="rename_ok">Đã thành công đổi tên tai nghe!
+Các thiết bị (bao gồm cả thiết bị này) có thể không hiển thị tên đã đổi cho đến khi bạn hủy ghép nối và ghép nối lại tai nghe.</sys:String>
 </ResourceDictionary>

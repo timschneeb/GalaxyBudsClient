@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>54%</td><td>252 missing string(s)</td></tr>
+<tr><td>54%</td><td>256 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -187,6 +187,8 @@ Measure level: Select a vertical span to measure the battery level difference be
 <tr><td><code>settings_localization_description</code></td><td>Change the app language</td></tr>
 <tr><td><code>settings_realistic_earbud_icons</code></td><td>Use realistic earbud images</td></tr>
 <tr><td><code>settings_realistic_earbud_icons_description</code></td><td>Display realistic & color-aware images of your earbuds, if they support it</td></tr>
+<tr><td><code>settings_color_override</code></td><td>Earbud color override</td></tr>
+<tr><td><code>settings_color_override_description</code></td><td>Change the displayed color of your earbuds in the app</td></tr>
 <tr><td><code>settings_nav_sidebar</code></td><td>Navigation sidebar</td></tr>
 <tr><td><code>settings_nav_sidebar_description</code></td><td>Show or collapse the navigation buttons on the left hand side</td></tr>
 <tr><td><code>settings_tray_settings</code></td><td>Tray icon & startup</td></tr>
@@ -246,13 +248,15 @@ Make sure both earbuds are turned on before continuing.</td></tr>
 <tr><td><code>nc_as_custom_vol_normal</code></td><td>Normal</td></tr>
 <tr><td><code>as_header_description</code></td><td>Hear your surroundings</td></tr>
 <tr><td><code>as_voicefocus_description</code></td><td>Make voices stand out more</td></tr>
+<tr><td><code>adv_pause_playback</code></td><td>Pause playback if earbuds are taken off</td></tr>
+<tr><td><code>adv_pause_playback_desc</code></td><td>Sends a global play/pause state change event when both of the proximity sensors are uncovered (Desktop only)</td></tr>
 <tr><td><code>adv_callpath</code></td><td>In-ear detection for calls</td></tr>
 <tr><td><code>adv_callpath_desc</code></td><td>Play calls through your earbuds when they're in your ears and through your computer speaker when they're not</td></tr>
 <tr><td><code>adv_extra_clear_call</code></td><td>Sharpen call sound</td></tr>
 <tr><td><code>adv_extra_clear_call_desc</code></td><td>Boost call clarity. Most useful when you're somewhere noisy and using earbuds. Uses more battery.</td></tr>
 <tr><td><code>bixby_remap_lang_desc</code></td><td>Change the language used for the activation phrase</td></tr>
 <tr><td><code>bixby_remap_action_desc</code></td><td>Define what should happen when you activate Bixby on this device</td></tr>
-<tr><td><code>credits_kofi</code></td><td>Visit my ko-fi page to support me!</td></tr>
+<tr><td><code>credits_kofi</code></td><td>Visit my Ko-fi page to support me!</td></tr>
 <tr><td><code>credits_github</code></td><td>Visit this project on GitHub</td></tr>
 <tr><td><code>connlost</code></td><td>Connection lost</td></tr>
 <tr><td><code>connlost_troubleshoot</code></td><td>Troubleshoot</td></tr>

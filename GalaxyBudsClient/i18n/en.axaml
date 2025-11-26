@@ -102,7 +102,7 @@ Right: {1}</sys:String>
     <!--Hotkey Recorder Dialog (Custom action)-->
     <sys:String x:Key="hotrec_content">Please enter a key-combination (hold down):</sys:String>
     <sys:String x:Key="hotrec_empty">None</sys:String>
-    <sys:String x:Key="hotrec_note">Note: Due to User Interface Privacy Isolation (UIPI) only applications of the same or lower elevation can properly receive hotkey commands.</sys:String>
+    <sys:String x:Key="hotrec_note">Note: Due to User Interface Privacy Isolation (UIPI), only applications of the same or lower elevation can properly receive hotkey commands.</sys:String>
 
     <!--Hotkey Action Builder Dialog-->
     <sys:String x:Key="hotkey_edit_invalid">Invalid hotkey selection</sys:String>
@@ -158,7 +158,7 @@ Right: {1}</sys:String>
     <sys:String x:Key="welcome_register">Set-up your earbuds</sys:String>
     <sys:String x:Key="welcome_register_desc">Choose and register your pair of Galaxy Buds</sys:String>
     <sys:String x:Key="welcome_textblock_p1">This Galaxy Buds Manager is unofficial and not affiliated with Samsung in any way.
-This program is designed to provide much more functionality over the official Samsung wearable app. Some features such as 'Game Mode' only work on Samsung phones and cannot be enabled on PCs.</sys:String>
+This program is designed to provide much more functionality over the official Samsung Wearable app. Some features such as 'Game Mode' only work on Samsung phones and cannot be enabled on PCs.</sys:String>
     <sys:String x:Key="welcome_android_hint_title">Important information for Android users</sys:String>
     <sys:String x:Key="welcome_android_hint">This app was initially designed for use on desktop computers. Features that need this app to run in the background, such as custom touch actions and battery statistics, are currently unavailable in this version.
 If the official Samsung Wearable app is active alongside this app, connection issues may occur. Please make sure to close the official app properly before using this app.</sys:String>
@@ -427,6 +427,8 @@ Measure level: Select a vertical span to measure the battery level difference be
     <sys:String x:Key="settings_minimize_tray_description">Keep in background instead of terminating the app</sys:String>
     <sys:String x:Key="settings_realistic_earbud_icons">Use realistic earbud images</sys:String>
     <sys:String x:Key="settings_realistic_earbud_icons_description">Display realistic &amp; color-aware images of your earbuds, if they support it</sys:String>
+    <sys:String x:Key="settings_color_override">Earbud color override</sys:String>
+    <sys:String x:Key="settings_color_override_description">Change the displayed color of your earbuds in the app</sys:String>
     <sys:String x:Key="settings_nav_sidebar">Navigation sidebar</sys:String>
     <sys:String x:Key="settings_nav_sidebar_description">Show or collapse the navigation buttons on the left hand side</sys:String>
     <sys:String x:Key="settings_tray_settings">Tray icon &amp; startup</sys:String>
@@ -563,6 +565,8 @@ You might need to manually reconnect your earbuds.</sys:String>
     <sys:String x:Key="adv_header">Advanced settings</sys:String>
     <sys:String x:Key="adv_seamless">Seamless earbud connection</sys:String>
     <sys:String x:Key="adv_seamless_desc">Switch quickly to nearby devices without disconnecting your earbuds or turning on pairing mode</sys:String>
+    <sys:String x:Key="adv_pause_playback">Pause playback if earbuds are taken off</sys:String>
+    <sys:String x:Key="adv_pause_playback_desc">Sends a global play/pause state change event when both of the proximity sensors are uncovered (Desktop only)</sys:String>
     <sys:String x:Key="adv_resume_playback">Resume playback if the earbuds are worn</sys:String>
     <sys:String x:Key="adv_resume_playback_desc">Sends a global play/pause state change event when at least one of the proximity sensors is covered (Desktop only)</sys:String>
     <sys:String x:Key="adv_sidetone">Use ambient sound during calls</sys:String>
@@ -598,7 +602,7 @@ The remap configuration is only active on this device. If you connect your earbu
     <sys:String x:Key="credits_contributor">Contributors</sys:String>
     <sys:String x:Key="credits_translator">Translators</sys:String>
     <sys:String x:Key="credits_sponsor">Sponsor this project</sys:String>
-    <sys:String x:Key="credits_kofi">Visit my ko-fi page to support me!</sys:String>
+    <sys:String x:Key="credits_kofi">Visit my Ko-fi page to support me!</sys:String>
     <sys:String x:Key="credits_github">Visit this project on GitHub</sys:String>
 
     <!--Connection lost page-->

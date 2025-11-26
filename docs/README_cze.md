@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="../README.md">English</a> | <a href="./README_chs.md">中文</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="./README_jpn.md">日本語</a> | <a href="./README_ukr.md">Українська</a> | <a href="./README_kor.md">한국어</a> | Česky | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> <br>
+  <a href="../README.md">English</a> | <a href="./README_chs.md">中文</a> | <a href="/docs/README_rus.md">Русский</a> | <a href="./README_jpn.md">日本語</a> | <a href="./README_ukr.md">Українська</a> | <a href="./README_kor.md">한국어</a> | Česky | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> | <a href="/docs/README_vnm.md">Tiếng Việt</a> <br>
     <sub>Upozornění: Soubory README jsou spravovány překladateli, a proto mohou být zaostalé. Pro nejnovější informace se spoléhejte na anglickou verzi.</sub>
 </p>
 
@@ -45,22 +45,24 @@ Spravujte a ovládejte jakékoliv zařízení Samsung Galaxy Buds a integrujte j
 
 Kromě standardních funkcí známých z oficiální Androidí aplikace, Vám tento projekt pomáhá uvolnit plný potenciál sluchátek a implementovat nové funkce, jako je:
 
-* Detailní statistiky baterie
-* Diagnostika a tovární auto-testy
-* Spousta skrytých informací o ladění
-* Přizpůsobitelné akce dlouhého dotyku
-* Stahování nových a starých verzí firmwaru (Buds+, Buds Pro)
-* a spousty dalších...
+- Detailní statistiky baterie
+- Diagnostika a tovární auto-testy
+- Spousta skrytých informací o ladění
+- Přizpůsobitelné akce dlouhého dotyku
+- Stahování nových a starých verzí firmwaru (Buds+, Buds Pro)
+- a spousty dalších...
 
 Pokud hledáte starší binární soubory firmwaru, podívejte se sem: https://github.com/ThePBone/galaxy-buds-firmware-archive
 
 ## Stažení
 
 Pro Linux je zde několik dostupných způsobů:
-* [Flatpak (všechny Linuxové distribuce)](#flatpak)
-* [Balíček AUR (Arch Linux)](#balíček-aur)
+
+- [Flatpak (všechny Linuxové distribuce)](#flatpak)
+- [Balíček AUR (Arch Linux)](#balíček-aur)
 
 Získejte binární soubory pro Windows v sekci [release](https://github.com/ThePBone/GalaxyBudsClient/releases). Před instalací si přečtěte poznámky k vydání:
+
 <p align="center">
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
@@ -70,6 +72,7 @@ Získejte binární soubory pro Windows v sekci [release](https://github.com/The
 Univerzální binární balíčky pro všechny distribuce Linuxu. Toto je doporučený způsob instalace GalaxyBudsClient v Linuxu.
 
 K dispozici ke stažení na FlatHubu: https://flathub.org/apps/me.timschneeberger.GalaxyBudsClient
+
 ```
 flatpak install me.timschneeberger.GalaxyBudsClient
 ```
@@ -139,39 +142,40 @@ Chcete-li přispět svým vlastním kódem, můžete jednoduše odeslat prostý 
 
 #### Přispěvatelé
 
-* [@nift4](https://github.com/nift4) - Podpora pro macOS a opravy chyb
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Šablony pro problémy, wiki a překlady
-* [@AndriesK](https://github.com/AndriesK) - Oprava chyby u Buds Live
-* [@TheLastFrame](https://github.com/TheLastFrame) - Ikony pro Buds Pro
-* [@githubcatw](https://github.com/githubcatw) - Základní dialogové okno připojení
-* [@GaryGadget9](https://github.com/GaryGadget9) - Balíček WinGet
-* [@joscdk](https://github.com/joscdk) - AUR balíček
+- [@nift4](https://github.com/nift4) - Podpora pro macOS a opravy chyb
+- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Šablony pro problémy, wiki a překlady
+- [@AndriesK](https://github.com/AndriesK) - Oprava chyby u Buds Live
+- [@TheLastFrame](https://github.com/TheLastFrame) - Ikony pro Buds Pro
+- [@githubcatw](https://github.com/githubcatw) - Základní dialogové okno připojení
+- [@GaryGadget9](https://github.com/GaryGadget9) - Balíček WinGet
+- [@joscdk](https://github.com/joscdk) - AUR balíček
 
 #### Překladatelé
 
-* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - ruský a ukrajinský překlad
-* [@PlasticBrain](https://github.com/fhalfkg) - korejský a japonský překlad
-* [@cozyplanes](https://github.com/cozyplanes) - korejský překlad
-* [@erenbektas](https://github.com/erenbektas) a [@Eta06](https://github.com/Eta06) - turecký překlad
-* [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) a [@pseudor](https://github.com/pseudor) - čínský překlad
-* [@YiJhu](https://github.com/YiJhu) - čínština-tradiční překlad
-* [@efrenbg1](https://github.com/efrenbg1) a Andrew Gonza - španělský překlad
-* [@giovankabisano](https://github.com/giovankabisano) - indonéský překlad
-* [@lucasskluser](https://github.com/lucasskluser) - portugalský překlad
-* [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - italský překlad
-* [@Buashei](https://github.com/Buashei) - polský překlad
-* [@KatJillianne](https://github.com/KatJillianne) - vietnamský překlad
-* [@joskaja](https://github.com/joskaja) a [@Joedmin](https://github.com/Joedmin) - český překlad
-* [@TheLastFrame](https://github.com/TheLastFrame) a [@ThePBone](https://github.com/ThePBone) - německý překlad
-* [@nikossyr](https://github.com/nikossyr) - řecký překlad
-* [@grigorem](https://github.com/grigorem) - rumunský překlad
-* [@tretre91](https://github.com/tretre91) - francouzský překlad
-* [@Sigarya](https://github.com/Sigarya) - hebrejský překlad
-* [@domroaft](https://github.com/domroaft) - maďarský překlad
-* [@lampi8426](https://github.com/lampi8426) - nizozemský překlad
+- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - ruský a ukrajinský překlad
+- [@PlasticBrain](https://github.com/fhalfkg) - korejský a japonský překlad
+- [@cozyplanes](https://github.com/cozyplanes) - korejský překlad
+- [@erenbektas](https://github.com/erenbektas) a [@Eta06](https://github.com/Eta06) - turecký překlad
+- [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) a [@pseudor](https://github.com/pseudor) - čínský překlad
+- [@YiJhu](https://github.com/YiJhu) - čínština-tradiční překlad
+- [@efrenbg1](https://github.com/efrenbg1) a Andrew Gonza - španělský překlad
+- [@giovankabisano](https://github.com/giovankabisano) - indonéský překlad
+- [@lucasskluser](https://github.com/lucasskluser) a [@JuanFariasDev](https://github.com/juanfariasdev) - portugalský překlad
+- [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - italský překlad
+- [@Buashei](https://github.com/Buashei) - polský překlad
+- [@KatJillianne](https://github.com/KatJillianne) a [@thelegendaryjohn](https://github.com/thelegendaryjohn) - vietnamský překlad
+- [@joskaja](https://github.com/joskaja) a [@Joedmin](https://github.com/Joedmin) - český překlad
+- [@TheLastFrame](https://github.com/TheLastFrame) a [@ThePBone](https://github.com/ThePBone) - německý překlad
+- [@nikossyr](https://github.com/nikossyr) - řecký překlad
+- [@grigorem](https://github.com/grigorem) - rumunský překlad
+- [@tretre91](https://github.com/tretre91) - francouzský překlad
+- [@Sigarya](https://github.com/Sigarya) - hebrejský překlad
+- [@domroaft](https://github.com/domroaft) - maďarský překlad
+- [@lampi8426](https://github.com/lampi8426) - nizozemský překlad
 
 ### Assets
-* Použité ikony pro sluchátka v Android ikoně jsou vytvořena [Archival](https://www.flaticon.com/authors/archival) z [Flaticon](https://www.flaticon.com/)
+
+- Použité ikony pro sluchátka v Android ikoně jsou vytvořena [Archival](https://www.flaticon.com/authors/archival) z [Flaticon](https://www.flaticon.com/)
 
 ## Licence
 

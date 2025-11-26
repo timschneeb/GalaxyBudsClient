@@ -1,6 +1,6 @@
 <!-- ReSharper disable InconsistentNaming -->
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+
     <!-- English name of this language -->
     <sys:String x:Key="language_name_en">Russian</sys:String>
 
@@ -10,6 +10,7 @@
     <sys:String x:Key="okay">Хорошо</sys:String>
     <sys:String x:Key="left">Левый</sys:String>
     <sys:String x:Key="right">Правый</sys:String>
+    <sys:String x:Key="both">Оба</sys:String>
     <sys:String x:Key="case">Кейс</sys:String>
     <sys:String x:Key="error">Ошибка</sys:String>
     <sys:String x:Key="cancel">Отмена</sys:String>
@@ -18,24 +19,35 @@
     <sys:String x:Key="notset">Не установлено</sys:String>
     <sys:String x:Key="unknown">Неизвестно</sys:String>
     <sys:String x:Key="back">Назад</sys:String>
-
+    <sys:String x:Key="next">Далее</sys:String>
+    <sys:String x:Key="prev">Предыдущий</sys:String>
+    <sys:String x:Key="off">Выкл.</sys:String>
+    <sys:String x:Key="on">Вкл.</sys:String>
+    <sys:String x:Key="hint">Подсказка</sys:String>
+    <sys:String x:Key="help">Помощь</sys:String>
+    <sys:String x:Key="important">Важно</sys:String>
+    <sys:String x:Key="home">Главная</sys:String>
+    <sys:String x:Key="read_failed">Не удалось прочитать файл. Доступ запрещён.</sys:String>
+    <sys:String x:Key="please_wait">Пожалуйста, подождите...</sys:String>
+    <sys:String x:Key="value_left_right_inline">Левый: {0}, Правый: {1}</sys:String>
+    <sys:String x:Key="value_left_right_multiline">Левый: {0}
+Правый: {1}</sys:String>
+    <sys:String x:Key="other_x">Другое ({0})</sys:String>
+    <sys:String x:Key="no_data_stored">Нет сохранённых данных</sys:String>
+    <sys:String x:Key="not_available">Недоступно</sys:String>
+    <sys:String x:Key="last_updated_at_n">Последнее обновление в {0}</sys:String>
+    <sys:String x:Key="file_not_found">Файл не найден</sys:String>
     <sys:String x:Key="nobluetoothdev">Адаптер Bluetooth не найден. Пожалуйста, включите Bluetooth и попробуйте еще раз.</sys:String>
+    <sys:String x:Key="feature_unsupported_platform">Эта функция в настоящее время не поддерживается на этой платформе.</sys:String>
 
     <sys:String x:Key="anc">Активное шумоподавление</sys:String>
-
-    <!--SPP Message Parser-->
-    <sys:String x:Key="sppmsg_too_small">Размер пакета слишком мал</sys:String>
-    <sys:String x:Key="sppmsg_invalid_som">Плохое начало пакета</sys:String>
-    <!--Context: SOM = Start of message-->
-    <sys:String x:Key="sppmsg_invalid_eom">Плохой конец пакета</sys:String>
-    <!--Context: EOM = End of message-->
-    <sys:String x:Key="sppmsg_size_mismatch">Несоответствие размера пакета</sys:String>
-    <sys:String x:Key="sppmsg_crc_fail">Неверная контрольная сумма</sys:String>
-    <sys:String x:Key="sppmsg_tl">Размер пакета слишком мал</sys:String>
+    <sys:String x:Key="adaptive">Адаптивный</sys:String>
 
     <!--Dark Mode States-->
     <sys:String x:Key="darkmode_disabled">Выключена</sys:String>
     <sys:String x:Key="darkmode_enabled">Включена</sys:String>
+    <sys:String x:Key="darkmode_blur_enabled">Включена, с эффектом размытия</sys:String>
+    <sys:String x:Key="darkmode_mica_enabled">Включена, с эффектом Mica</sys:String>
     <sys:String x:Key="darkmode_system">Использовать настройки системы</sys:String>
 
     <!--Connection popup-->
@@ -45,14 +57,15 @@
     <sys:String x:Key="connpopup_placement_bl">Снизу слева</sys:String>
     <sys:String x:Key="connpopup_placement_bc">Снизу по центру</sys:String>
     <sys:String x:Key="connpopup_placement_br">Снизу справа</sys:String>
-    <sys:String x:Key="connpopup_title">{0}'s {1}</sys:String>
+    <sys:String x:Key="connpopup_title">{0} — {1}</sys:String>
     <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
 
     <!--Placement  (Buds+)-->
-    <sys:String x:Key="placement_disconnected">Отключен</sys:String>
+    <sys:String x:Key="placement_disconnected">Отключены</sys:String>
     <sys:String x:Key="placement_wearing">Надет</sys:String>
     <sys:String x:Key="placement_not_wearing">Снят</sys:String>
     <sys:String x:Key="placement_in_case">В кейсе</sys:String>
+    <sys:String x:Key="placement_charging">Зарядка</sys:String>
 
     <!--Touch options-->
     <sys:String x:Key="touchoption_voice">Голосовой ассистент</sys:String>
@@ -64,19 +77,10 @@
     <sys:String x:Key="touchoption_switch_noisecontrols">Переключаемое шумоподавление</sys:String>
     <sys:String x:Key="touchoption_spotify">Spotify (Только Android)</sys:String>
     <sys:String x:Key="touchoption_custom">Настраиваемое действие...</sys:String>
-    <sys:String x:Key="touchoption_custom_null">Не установлено</sys:String>
-    <sys:String x:Key="touchoption_custom_unknown">Неизвестно</sys:String>
     <sys:String x:Key="touchoption_custom_prefix">Настраиваемое действие:</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_event">Выполнить действие наушников...</sys:String>
     <sys:String x:Key="touchoption_custom_trigger_hotkey">Наберите комбинацию клавиш...</sys:String>
     <sys:String x:Key="touchoption_custom_external_app">Запуск программы...</sys:String>
-
-    <!--Options menu-->
-    <sys:String x:Key="optionsmenu_title">Опции</sys:String>
-    <sys:String x:Key="optionsmenu_settings">Настройки</sys:String>
-    <sys:String x:Key="optionsmenu_refresh">Перезагрузить интерфейс</sys:String>
-    <sys:String x:Key="optionsmenu_deregister">Отменить сопряжение</sys:String>
-    <sys:String x:Key="optionsmenu_update">Проверить обновления</sys:String>
-    <sys:String x:Key="optionsmenu_credits">Авторы</sys:String>
 
     <!--Tray context menu-->
     <sys:String x:Key="tray_unlock_touchpad">Разблокировать сенсорную панель</sys:String>
@@ -90,20 +94,17 @@
     <sys:String x:Key="tray_switch_noise">Поменять режим шумоподавления</sys:String>
     <sys:String x:Key="tray_quit">Выход</sys:String>
 
-
     <!--:::::::: XAML files (static) ::::::::-->
 
     <!--General-->
     <sys:String x:Key="continue_button">Продолжить</sys:String>
 
     <!--Hotkey Recorder Dialog (Custom action)-->
-    <sys:String x:Key="hotrec_title">Запись комбинации клавиш</sys:String>
     <sys:String x:Key="hotrec_content">Пожалуйста, введите комбинацию клавиш:</sys:String>
     <sys:String x:Key="hotrec_empty">Нет комбинации</sys:String>
     <sys:String x:Key="hotrec_note">Заметка: Из-за изоляции конфиденциальности пользовательского интерфейса (ENG: UIPI) только приложения с таким же или более низким уровнем доступа могут правильно получать команды от комбинаций клавиш.</sys:String>
 
     <!--Hotkey Action Builder Dialog-->
-    <sys:String x:Key="hotkey_edit_title">Редактор комбинаций</sys:String>
     <sys:String x:Key="hotkey_edit_invalid">Неверный выбор</sys:String>
     <sys:String x:Key="hotkey_edit_invalid_desc">Пожалуйста, выберите как минимум одну клавишу и один модификатор</sys:String>
     <sys:String x:Key="hotkey_edit_invalid_mod">Модификатор отсутствует</sys:String>
@@ -113,16 +114,17 @@
     <sys:String x:Key="hotkey_edit_keys">Клавиши</sys:String>
     <sys:String x:Key="hotkey_edit_action">Действие</sys:String>
     <sys:String x:Key="hotkey_edit_preview">Просмотр комбинации:</sys:String>
-    <sys:String x:Key="hotkey_edit_header">Выберите клавиатурную комбинацию</sys:String>
-    
+
     <!--Hotkey page-->
     <sys:String x:Key="hotkey_header">Клавиатурные комбинации</sys:String>
+    <sys:String x:Key="hotkey_add_short">Новая</sys:String>
     <sys:String x:Key="hotkey_add">Назначить новую комбинацию</sys:String>
     <sys:String x:Key="hotkey_empty">Нет комбинаций</sys:String>
     <sys:String x:Key="hotkey_empty_desc">Создайте новую клавиатурную комбинацию нажатием на кнопку выше</sys:String>
     <sys:String x:Key="hotkey_edit">Редактировать</sys:String>
+    <sys:String x:Key="hotkey_edit_long">Редактировать существующую комбинацию</sys:String>
     <sys:String x:Key="hotkey_delete">Удалить</sys:String>
-    <sys:String x:Key="hotkey_add_error">Не удалось зарегистировать/обновить комбинации</sys:String>
+    <sys:String x:Key="hotkey_add_error">Не удалось зарегистрировать/обновить комбинации</sys:String>
     <sys:String x:Key="hotkey_add_error_context">Затронутая комбинация:</sys:String>
     <sys:String x:Key="hotkey_add_error_duplicate">Выбранная комбинация уже была занята этим или другим приложением. Пожалуйста, выберите другую.</sys:String>
     <sys:String x:Key="hotkey_add_error_unknown">Операционная система ответила ошибкой '{0}'</sys:String>
@@ -136,6 +138,7 @@
     <sys:String x:Key="event_eq_switch">Чередовать режимы эквалайзера</sys:String>
     <sys:String x:Key="event_anc_toggle">Вкл / выкл шумоподавление</sys:String>
     <sys:String x:Key="event_anc_switch_sensitivity">Поменять чувствительность АШП</sys:String>
+    <sys:String x:Key="event_nc_switch_one">Переключать шумоподавление одним наушником</sys:String>
     <sys:String x:Key="event_touch_lock_toggle">Вкл / выкл блокировку сенсорной панели</sys:String>
     <sys:String x:Key="event_double_edge_touch_toggle">Вкл / выкл двойное касание по корпусу</sys:String>
     <sys:String x:Key="event_conversation_toggle">Вкл / выкл определение разговора</sys:String>
@@ -149,19 +152,21 @@
     <sys:String x:Key="event_manager_visible">Отобразить окно программы</sys:String>
     <sys:String x:Key="event_display_battery_popup">Показать заряд батареи</sys:String>
     <sys:String x:Key="event_connect">Подключиться к устройству</sys:String>
-    
+
     <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">Добро пожаловать!</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">Привет! Этот менеджер для Galaxy Buds не официальный, а потому учитывайте, что он никак не связан с Samsung.
-Несмотря на расширенный по отношению к оригинальному 
-Samsung Wearable на Android функционал этой программы, я все же решил исключить утилиту обновления прошивки ради безопасности. Пожалуйста, используйте официальную утилиту, если она вам понадобится.</sys:String>
-    <sys:String x:Key="welcome_textblock_p2">Если вам интересно, что происходит за кулисами, можете посетить мой репозиторий на GitHub. Также там можно найти небольшой журнал по реверс-инжинирингу. Можете написать мне сообщение на GitHub или в Telegram @thepbone, если у вас возникнут проблемы.</sys:String>
-    <sys:String x:Key="welcome_textblock_p3">Эта программа поддерживает все модели Galaxy Buds.</sys:String>
-    <sys:String x:Key="welcome_darkmode">Темная тема</sys:String>
-    <sys:String x:Key="welcome_darkmode_content">Ваши глаза уже горят? Воспользуйтесь цветами потемнее! (Потребуется перезапуск)</sys:String>
+    <sys:String x:Key="welcome_register">Настройка наушников</sys:String>
+    <sys:String x:Key="welcome_register_desc">Выберите и зарегистрируйте ваши Galaxy Buds</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">Эта программа Galaxy Buds Manager не является официальной и никоим образом не связана с Samsung.
+Она создана с целью предоставить гораздо больше возможностей по сравнению с официальным приложением Samsung Wearable. Некоторые функции, например «Игровой режим», работают только на телефонах Samsung и не могут быть активированы на ПК.</sys:String>
+    <sys:String x:Key="welcome_android_hint_title">Важная информация для пользователей Android</sys:String>
+    <sys:String x:Key="welcome_android_hint">Это приложение изначально разрабатывалось для использования на настольных компьютерах. Возможности, для которых требуется фоновая работа приложения (например, пользовательские сенсорные действия и статистика батареи), в текущей версии недоступны.
+Если официальное приложение Samsung Wearable запущено вместе с этим приложением, могут возникнуть проблемы с подключением. Пожалуйста, убедитесь, что вы полностью закрыли официальное приложение перед использованием данного.</sys:String>
 
     <!--Main page-->
+    <sys:String x:Key="mainpage_header">Главная</sys:String>
     <sys:String x:Key="mainpage_corrupt_data">Получены поврежденные данные. Повторное подключение...</sys:String>
+    <sys:String x:Key="mainpage_fit_test">Проверка посадки наушников</sys:String>
     <sys:String x:Key="mainpage_find_my_earbuds">Поиск наушников</sys:String>
     <sys:String x:Key="mainpage_touchpad">Сенсорная панель</sys:String>
     <sys:String x:Key="mainpage_ambient_sound">Звуковой фон</sys:String>
@@ -170,60 +175,31 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="mainpage_advanced">Дополнительно</sys:String>
     <sys:String x:Key="mainpage_system">О наушниках</sys:String>
 
-    <!--Update page-->
-    <sys:String x:Key="updater_header">Доступно обновление программы</sys:String>
-    <sys:String x:Key="updater_message_p1">Загрузка полностью автоматизирована, установщик будет запущен по завершении загрузки. Я настоятельно рекомендую вам обновиться, чтобы получить последние исправления и функции.</sys:String>
-    <sys:String x:Key="updater_message_p2">Вы можете просмотреть историю изменений нажав на кнопку ниже.</sys:String>
-
-    <sys:String x:Key="updater_view_changelog">Просмотреть историю изменений на GitHub</sys:String>
-    <sys:String x:Key="updater_footer_remindmelater">Позже</sys:String>
-    <sys:String x:Key="updater_footer_skipversion">Пропустить</sys:String>
-    <sys:String x:Key="updater_footer_install">Установить</sys:String>
-    <sys:String x:Key="updater_appcast_null">Ошибка получения данных обновления. Пожалуйста, попробуйте позднее.</sys:String>
-    <sys:String x:Key="updater_noupdate">Сейчас нет доступных обновлений. Пожалуйста, попробуйте позже или подпишитесь на мой GitHub для обновлений.</sys:String>
-    <sys:String x:Key="updater_noupdate_title">Обновлений нет</sys:String>
-    <sys:String x:Key="updater_newrelease">Обновление {0} для Galaxy Buds Manager было опубликовано</sys:String>
-
-    <sys:String x:Key="updater_dl_header">Загрузка...</sys:String>
-    <sys:String x:Key="updater_dl_manual">Просмотреть на GitHub</sys:String>
-    <sys:String x:Key="updater_dl_fail_title">Ошибка загрузки</sys:String>
-    <sys:String x:Key="updater_dl_fail">Причина:</sys:String>
-    <sys:String x:Key="updater_dl_progress_prepare">Подготовка загрузки...</sys:String>
-    <sys:String x:Key="updater_dl_progress_cancelled">Загрузка отменена</sys:String>
-    <sys:String x:Key="updater_dl_progress_finished">Загрузка завершена. Запуск установщика...</sys:String>
-    <sys:String x:Key="updater_dl_progress">Загружаю... {0}%</sys:String>
-    <sys:String x:Key="updater_dl_progress_size">({0}/{1} мегабайт)</sys:String>
-    <sys:String x:Key="updater_dl_note">По завершении загрузки эта программа завершит работу и запустит отдельный установщик. Может потребоватся несколько секунд на запуск.</sys:String>
-
     <!--Device selection page (setup)-->
     <sys:String x:Key="devsel_header">Выберите ваши Galaxy Buds</sys:String>
-    <sys:String x:Key="devsel_refresh">Обновить список устройств</sys:String>
-    <sys:String x:Key="devsel_device_name">Имя устройства</sys:String>
-    <sys:String x:Key="devsel_btaddr">MAC-адрес</sys:String>
-    <sys:String x:Key="devsel_model">Модель</sys:String>
+    <sys:String x:Key="devsel_manual_pair_title">Устройство не отображается?</sys:String>
+    <sys:String x:Key="devsel_manual_pair_description">Убедитесь, что ваши наушники уже были сопряжены. Если они по-прежнему не распознаются, попробуйте использовать вариант ручного подключения.</sys:String>
+    <sys:String x:Key="devsel_manual_pair">Ручное подключение</sys:String>
     <sys:String x:Key="devsel_nodevices">Пожалуйста, сначала подключите ваши Buds</sys:String>
     <sys:String x:Key="devsel_nodevices_title">Сопряженные устройства не обнаружены</sys:String>
-    <sys:String x:Key="devsel_noselection">Устройство не выбрано</sys:String>
     <sys:String x:Key="devsel_invalid_selection">Пожалуйста, сначала выберите поддерживаемое устройство</sys:String>
-    <sys:String x:Key="devsel_footer_continue">Завершить</sys:String>
-    <sys:String x:Key="devsel_dialog_footer">Если вы не видите ваши наушники, убедитесь что вы подключили их в настройках Bluetooth вашего компьютера, а затем нажмите Обновить.</sys:String>
-    <sys:String x:Key="devsel_winrt_title">Использовать другие библиотеки Bluetooth</sys:String>
-    <sys:String x:Key="devsel_winrt">Лучшая стабильность, но может не работать на некоторых компьютерах с некоторыми адаптерами</sys:String>
+    <sys:String x:Key="devsel_winrt_title">Использовать альтернативную платформу Bluetooth</sys:String>
+    <sys:String x:Key="devsel_winrt">Гораздо более стабильная, но может не работать на всех ПК с некоторыми Bluetooth-адаптерами (может потребоваться перезагрузка!).</sys:String>
 
-    <!--Unsupported feature page-->
-    <sys:String x:Key="unsupported_feature_current_fwver">Текущая версия прошивки:</sys:String>
-    <sys:String x:Key="unsupported_feature_required_fwver">Необходимая версия прошивки:</sys:String>
+    <!--Device page-->
+    <sys:String x:Key="devices_header">Сопряженные устройства</sys:String>
+    <sys:String x:Key="devices_new">Новое</sys:String>
+    <sys:String x:Key="devices_new_long">Подключить новое устройство</sys:String>
+    <sys:String x:Key="devices_select_inactive">Выбрать</sys:String>
+    <sys:String x:Key="devices_select_active">Выбрано</sys:String>
+    <sys:String x:Key="devices_delete">Удалить</sys:String>
+    <sys:String x:Key="devices_delete_long">Удалить устройство</sys:String>
+    <sys:String x:Key="devices_delete_confirmation">Вы уверены, что хотите удалить это устройство?</sys:String>
+    <sys:String x:Key="devices_settings_link">Управление сопряженными устройствами</sys:String>
+    <sys:String x:Key="devices_settings_link_desc">Добавьте, удалите или выберите основное устройство</sys:String>
 
-    <sys:String x:Key="unsupported_feature_header">Пожалуйста, обновите прошивку</sys:String>
-    <sys:String x:Key="unsupported_feature_current_fwver_null">Текущая версия прошивки: Неизвестно</sys:String>
-    <sys:String x:Key="unsupported_feature_required_fwver_null">Необходимая версия прошивки: Не указано</sys:String>
-
-    <sys:String x:Key="unsupported_feature_description_p1">Прошивка ваших Galaxy Buds устарела и не поддерживает эту функцию.</sys:String>
-    <sys:String x:Key="unsupported_feature_description_p2">Пожалуйста, обновитесь до последней версии используя официальную утилиту обновлений для Windows или официальное приложение Wearable на Android</sys:String>
-    <sys:String x:Key="unsupported_feature_description_p3">Убедитесь, что вы закрыли эту программу, для использования утилиты обновлений для Windows. Только одно приложение за раз может общаться с устройством Buds.</sys:String>
-
-	<!--Touchpad gestures-->
-    <sys:String x:Key="touchpad_gesture_header">Enable touchpad gestures</sys:String>
+    <!--Touchpad gestures-->
+    <sys:String x:Key="touchpad_gesture_header">Включить жесты сенсорной панели</sys:String>
     <sys:String x:Key="touchpad_gesture_single">Единичное нажатие</sys:String>
     <sys:String x:Key="touchpad_gesture_single_desc">Воспроизведение/Пауза</sys:String>
     <sys:String x:Key="touchpad_gesture_double">Двойное нажатие</sys:String>
@@ -232,30 +208,39 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="touchpad_gesture_triple_desc">Предыдущий</sys:String>
     <sys:String x:Key="touchpad_gesture_hold">Нажатие и удерживание</sys:String>
     <sys:String x:Key="touchpad_gesture_hold_desc">Настраиваемое действие</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_for_call">Двойное нажатие во время звонка</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_for_call_desc">Ответить на звонок или завершить звонок</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call">Нажмите и удерживайте во время звонка</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call_desc">Отклонить звонок</sys:String>
 
     <!--Touchpad page-->
     <sys:String x:Key="touchpad_header">Сенсорная панель</sys:String>
     <sys:String x:Key="touchpad_lock">Блокировка сенсорной панели</sys:String>
     <sys:String x:Key="touchpad_left_action">Действие слева</sys:String>
     <sys:String x:Key="touchpad_right_action">Действие справа</sys:String>
+    <sys:String x:Key="touchpad_default_action">Встроенное действие сенсорной панели</sys:String>
 
-    <sys:String x:Key="touchpad_double_tap_volume">Двойное касание к поверхности наушника</sys:String>
+    <sys:String x:Key="touchpad_gestures">Расширенная блокировка сенсорной панели</sys:String>
+    <sys:String x:Key="touchpad_gestures_description">Отключить жесты по умолчанию</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume">Двойное касание поверхности наушника</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">Дважды коснитесь поверхности левого или правого наушника, чтобы уменьшить или увеличить громкость</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">Настраиваемое шумоподавление</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_l">Режим переключения шумоподавления (Левый)</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_r">Режим переключения шумоподавления (Правый)</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_desc">Выберите режимы для переключения</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_amb">АШП ↔ Звуковой фон</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_off">АШП ↔ Выкл</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_amb_off">Звуковой фон ↔ Выкл</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_threeway">Пролистывать режимы (АШП, Фон, Выкл)</sys:String>
 
     <!--Custom touchpad action page-->
     <sys:String x:Key="cact_header">Выберите настраиваемое действие</sys:String>
     <sys:String x:Key="cact_external_app_dialog_title">Выбрать исполняемый файл...</sys:String>
     <sys:String x:Key="cact_action">Настраиваемое действие</sys:String>
-    <sys:String x:Key="cact_notice">Предупреждение</sys:String>
+    <sys:String x:Key="cact_function_param">Функция</sys:String>
+    <sys:String x:Key="cact_hotkey_param">Комбинация клавиш</sys:String>
+    <sys:String x:Key="cact_path_param">Путь к файлу</sys:String>
     <sys:String x:Key="cact_notice_content_p1">Настраиваемые действия доступны только при условии работы этой программы в фоне.</sys:String>
     <sys:String x:Key="cact_notice_content_p2">Эти настройки невозможно применить к Android или другим устройствам.</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">Для того чтобы обеспечить работу этой функции, программа будет запускатся вместе с операционной системой и работать в фоне.
-Вы можете отключить автоматический запуск в настройках.</sys:String>
 
     <!--System/Self-Test-->
     <sys:String x:Key="system_overview_header">О наушниках</sys:String>
@@ -268,31 +253,40 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="system_pairing_mode_desc">Отключить наушники от этого компьютера и сделать их видимыми для других устройств</sys:String>
     <sys:String x:Key="system_trace_core_dump">Загрузить трассировку и дампы</sys:String>
     <sys:String x:Key="system_trace_core_dump_desc">Получить отладочную информацию с ваших наушников</sys:String>
+    <sys:String x:Key="system_hidden_at_mode">Скрытые системные настройки</sys:String>
+    <sys:String x:Key="system_hidden_at_mode_desc">Изменение скрытых настроек, таких как серийные номера и состояние UART</sys:String>
     <sys:String x:Key="system_info">Просмотреть информацию о системе</sys:String>
     <sys:String x:Key="system_info_desc">Просмотреть расширенные данные о ваших наушниках</sys:String>
     <sys:String x:Key="system_flasher">Установить обновление прошивки</sys:String>
     <sys:String x:Key="system_flasher_desc">Обновить, понизить или загрузить собственную прошивку</sys:String>
     <sys:String x:Key="system_spatial">Скачать данные пространственных измерений</sys:String>
     <sys:String x:Key="system_spatial_desc">Прочитать пространственные данные отслеживания головы, использующиеся для 3D аудио</sys:String>
+    <sys:String x:Key="system_usage_reports">Отчеты об использовании и учете</sys:String>
+    <sys:String x:Key="system_usage_reports_desc">Просмотреть отчеты об использовании, предоставляемые наушниками</sys:String>
+    <sys:String x:Key="system_battery_statistics">Статистика батареи</sys:String>
+    <sys:String x:Key="system_battery_statistics_desc">Сбор и просмотр статистики использования батареи</sys:String>
 
     <sys:String x:Key="system_battery_type_unknown">Не указано</sys:String>
     <sys:String x:Key="system_waiting_for_device">Ожидание ответа...</sys:String>
+    <sys:String x:Key="system_no_response">Нет ответа от наушников</sys:String>
 
     <sys:String x:Key="system_hwver">Аппаратная версия</sys:String>
     <sys:String x:Key="system_swver">Программная версия</sys:String>
+    <sys:String x:Key="system_cradle_swver">Версия ПО кейса</sys:String>
+    <sys:String x:Key="system_cradle_serial">Серийный номер кейса</sys:String>
     <sys:String x:Key="system_touchver">Прошивка сенсорной панели</sys:String>
     <sys:String x:Key="system_protover">Ревизия протокола</sys:String>
     <sys:String x:Key="system_btaddr">Адрес Bluetooth</sys:String>
+    <sys:String x:Key="system_btaddr_template">Локальный адрес: {0}, Адрес напарника: {1}</sys:String>
     <sys:String x:Key="system_serial">Серийный номер</sys:String>
     <sys:String x:Key="system_build_info">Информация о сборке</sys:String>
     <sys:String x:Key="system_battery_type">Тип батареи</sys:String>
+    <sys:String x:Key="system_sku">Идентификаторы устройства (SKU)</sys:String>
     <sys:String x:Key="system_proximity">Показания датчика приближения</sys:String>
     <sys:String x:Key="system_thermo">Показания термистора</sys:String>
     <sys:String x:Key="system_hall">Показания датчика Холла</sys:String>
     <sys:String x:Key="system_accel">Статус акселерометра</sys:String>
-    <!--Note: system_accel only used on the self-test page-->
     <sys:String x:Key="system_adc_soc">АЦП: Батарея</sys:String>
-    <!--Context: SoC = State of charge (battery percentage)-->
     <sys:String x:Key="system_adc_voltage">АЦП: Напряжение</sys:String>
     <sys:String x:Key="system_adc_current">АЦП: Ток</sys:String>
 
@@ -300,11 +294,10 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="selftest_pass">Успешно</sys:String>
     <sys:String x:Key="selftest_fail">Ошибка</sys:String>
     <sys:String x:Key="selftest_pass_long">Все проверки пройдены успешно</sys:String>
-    <sys:String x:Key="selftest_fail_long">Одна или более проверок провалились</sys:String>     
+    <sys:String x:Key="selftest_fail_long">Одна или более проверок провалились</sys:String>
 
     <sys:String x:Key="coredump_header">Сбор данных...</sys:String>
     <sys:String x:Key="coredump_dl_progress_prepare">Подготовка загрузки...</sys:String>
-    <sys:String x:Key="coredump_dl_progress_cancelled">Загрузка отменена</sys:String>
     <sys:String x:Key="coredump_dl_progress_finished">Загрузка завершена</sys:String>
     <sys:String x:Key="coredump_dl_trace_progress">Загружаю трассировку... {0}%</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">Загружаю дампы... {0}%</sys:String>
@@ -319,64 +312,202 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="coredump_dl_save_success">{0} дамп(а/ов) были записаны в '{1}'</sys:String>
     <sys:String x:Key="coredump_dl_save_dialog_title">Выберите место сохранения...</sys:String>
 
+    <!--Hidden AT modes-->
+    <sys:String x:Key="hidden_mode_warning">Действуйте с осторожностью</sys:String>
+    <sys:String x:Key="hidden_mode_warning_desc">Некоторые изменения, внесенные на этой странице, не могут быть восстановлены сбросом к заводским настройкам. Не все модели поддерживают эти настройки.</sys:String>
+    <sys:String x:Key="hidden_mode_target">Целевое устройство: наушник {0}</sys:String>
+    <sys:String x:Key="hidden_mode_target_l_desc">Чтобы изменить левый наушник, поместите правый наушник в кейс и закройте его.</sys:String>
+    <sys:String x:Key="hidden_mode_target_r_desc">Чтобы изменить правый наушник, поместите левый наушник в кейс и закройте его.</sys:String>
+    <sys:String x:Key="hidden_mode_input_wrong_length">Новое значение должно содержать ровно {0} символов.</sys:String>
+    <sys:String x:Key="hidden_mode_uart_on_confirm">UART успешно включен</sys:String>
+    <sys:String x:Key="hidden_mode_uart_off_confirm">UART успешно выключен</sys:String>
+    <sys:String x:Key="hidden_mode_uart">Включить порт UART</sys:String>
+    <sys:String x:Key="hidden_mode_uart_desc">Временно включает физический UART-порт на плате текущего целевого устройства в отладочных целях</sys:String>
+    <sys:String x:Key="hidden_mode_power">Меню питания</sys:String>
+    <sys:String x:Key="hidden_mode_power_desc">Завершение работы, перезагрузка или перевод устройства в спящий режим</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change">Изменить серийный номер</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change_desc">Изменяет серийный номер текущего целевого устройства</sys:String>
+    <sys:String x:Key="hidden_mode_did_change">Изменить номер DID и цвет</sys:String>
+    <sys:String x:Key="hidden_mode_did_change_desc">Изменяет идентификатор модели устройства текущего целевого устройства</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change">Изменить код SKU</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change_desc">Изменяет код продукта текущего целевого устройства</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_addr_change">Изменить Bluetooth-адрес напарника</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_change_desc">Изменяет Bluetooth-адрес напарника текущего целевого устройства</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_addr_change">Изменить локальный Bluetooth-адрес</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_change_desc">Изменяет локальный Bluetooth-адрес текущего целевого устройства</sys:String>
+    <sys:String x:Key="hidden_mode_terminal">Скрытый терминал команд</sys:String>
+    <sys:String x:Key="hidden_mode_terminal_desc">Отправка пользовательских AT-команд на текущее целевое устройство</sys:String>
+
+    <sys:String x:Key="power_menu_hint">Будет затронут только текущий целевой наушник.</sys:String>
+    <sys:String x:Key="power_menu_reboot">Перезагрузка</sys:String>
+    <sys:String x:Key="power_menu_shutdown">Выключение</sys:String>
+    <sys:String x:Key="power_menu_sleep">Заводской спящий режим</sys:String>
+
+    <sys:String x:Key="at_terminal_cmd_id">Идентификатор команды</sys:String>
+    <sys:String x:Key="at_terminal_cmd_param">Параметр команды (необязательно)</sys:String>
+    <sys:String x:Key="at_terminal_cmd_id_invalid">Недопустимый идентификатор команды. Пожалуйста, введите 16-битное шестнадцатеричное значение, например 0007 или 004C.</sys:String>
+    <sys:String x:Key="at_terminal_output">Вывод</sys:String>
+    <sys:String x:Key="at_terminal_send">Отправить</sys:String>
+
+
+    <!--Usage-/metering reports-->
+    <sys:String x:Key="usage_reports_header">Отчеты об использовании</sys:String>
+    <sys:String x:Key="usage_reports_hint">Эти отчеты собираются самими наушниками. Данные отображаются без изменений и могут быть неточными. Официальное приложение Wearable обычно периодически сбрасывает большинство счетчиков, а затем отправляет собранные данные компании Samsung, если вы не запретили сбор данных в их приложении. Некоторые счетчики, например количество циклов зарядки, не сбрасываются.</sys:String>
+    <sys:String x:Key="usage_reports_usage">Отчет об использовании</sys:String>
+    <sys:String x:Key="usage_reports_metering">Отчет о потреблении</sys:String>
+    <sys:String x:Key="milliamp_hours_unit">{0}mAh</sys:String>
+    <sys:String x:Key="metering_total_batt_capacity">Общая емкость батареи</sys:String>
+    <sys:String x:Key="metering_a2dp_time">Время использования для воспроизведения музыки (A2DP)</sys:String>
+    <sys:String x:Key="metering_esco_time">Время использования для звонков (eSCO)</sys:String>
+
+    <!--Battery history-->
+    <sys:String x:Key="batt_hist_hint">Это приложение может собирать информацию об уровне заряда батареи и базовые данные об использовании с течением времени, позволяя анализировать расход батареи. Данные собираются только когда приложение активно в фоновом режиме, а наушники подключены к этому устройству.</sys:String>
+    <sys:String x:Key="batt_hist_no_data_title">Недостаточно данных</sys:String>
+    <sys:String x:Key="batt_hist_no_data">Пожалуйста, попробуйте позже, когда соберется достаточно данных, или измените отображаемый промежуток времени.</sys:String>
+    <sys:String x:Key="batt_hist_y_axis">Уровень заряда (%)</sys:String>
+    <sys:String x:Key="batt_hist_last_hour">Последний час</sys:String>
+    <sys:String x:Key="batt_hist_last_6_hours">Последние 6 часов</sys:String>
+    <sys:String x:Key="batt_hist_last_12_hours">Последние 12 часов</sys:String>
+    <sys:String x:Key="batt_hist_last_24_hours">Последние 24 часа</sys:String>
+    <sys:String x:Key="batt_hist_last_3_days">Последние 3 дня</sys:String>
+    <sys:String x:Key="batt_hist_last_7_days">Последние 7 дней</sys:String>
+    <sys:String x:Key="batt_hist_overlay_none">Без наложения</sys:String>
+    <sys:String x:Key="batt_hist_overlay_noise_controls">Режим шумоподавления</sys:String>
+    <sys:String x:Key="batt_hist_overlay_wearing">Состояние ношения</sys:String>
+    <sys:String x:Key="batt_hist_overlay_host_device">Ведущее устройство</sys:String>
+    <sys:String x:Key="batt_hist_overlay_legend">{0} (наложение)</sys:String>
+    <sys:String x:Key="batt_hist_tools_pan_and_zoom">Панорамирование и масштабирование</sys:String>
+    <sys:String x:Key="batt_hist_tools_measure_time">Измерить время</sys:String>
+    <sys:String x:Key="batt_hist_tools_measure_battery">Измерить уровень</sys:String>
+    <sys:String x:Key="batt_hist_show_legend">Показать легенду</sys:String>
+    <sys:String x:Key="batt_hist_measure_difference_display">Разница: {0}</sys:String>
+    <sys:String x:Key="batt_hist_measure_timespan_display">Временной промежуток: {0}</sys:String>
+    <sys:String x:Key="batt_hist_measure_timespan_unit_long">д' день(дней), 'hh'ч:'mm':'ss</sys:String>
+    <sys:String x:Key="batt_hist_time_span_tip_title">Временной промежуток</sys:String>
+    <sys:String x:Key="batt_hist_control_tip_title">Управление мышью</sys:String>
+    <sys:String x:Key="batt_hist_control_tip">Перетаскивайте область, чтобы перемещаться по графику.
+
+Используйте колесо прокрутки для изменения масштаба по горизонтали и вертикали.
+
+Наведитесь на ось X или Y и прокрутите, чтобы менять масштаб только по горизонтали или только по вертикали. Например, прокрутка над осью X (временем) растягивает или сжимает график.</sys:String>
+    <sys:String x:Key="batt_hist_overlay_tip_title">Наложения</sys:String>
+    <sys:String x:Key="batt_hist_overlay_tip">Вы можете использовать наложения, чтобы добавить дополнительный контекст к графику.
+
+Режим шумоподавления: Показывает, какой уровень шумоподавления был включен или выключен.
+
+Состояние ношения: Отображает, надеты ли наушники.
+
+Ведущее устройство: Показывает, какой наушник является ведущим устройством Bluetooth-соединения с компьютером.
+
+Данные наложения могут быть трудны для восприятия при просмотре больших промежутков времени. Наведитесь на ось X и прокрутите вверх, чтобы увеличить нужный участок для более точного обзора.</sys:String>
+    <sys:String x:Key="batt_hist_tools_tip_title">Инструменты</sys:String>
+    <sys:String x:Key="batt_hist_tools_tip">Панорамирование и масштабирование: режим по умолчанию. Перемещайтесь по графику, прокручивая и меняя масштаб.
+
+Измерить время: Выберите горизонтальный участок, чтобы измерить время между началом и концом выделения.
+
+Измерить уровень: Выберите вертикальный участок, чтобы измерить разницу уровня заряда батареи между началом и концом выделения.</sys:String>
+
     <!--Settings-->
     <sys:String x:Key="settings_header">Настройки</sys:String>
-
+    <sys:String x:Key="settings_save_fail_no_access">Не удалось сохранить настройки. Операционная система запретила доступ к файлу конфигурации. Пожалуйста, проверьте разрешения для файла {0}.</sys:String>
+    <sys:String x:Key="settings_appearance">Оформление</sys:String>
     <sys:String x:Key="settings_darkmode">Темная тема</sys:String>
-    <sys:String x:Key="settings_darkmode_description">Воспользуйтесь цветами потемнее 
-(Потребуется перезапуск)</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Использовать более темную цветовую схему</sys:String>
+    <sys:String x:Key="settings_blurstrength">Интенсивность размытия окна</sys:String>
+    <sys:String x:Key="settings_blurstrength_description">Работает только в темной теме. Поддерживается не на всех системах</sys:String>
+    <sys:String x:Key="settings_accent">Цвет акцента</sys:String>
+    <sys:String x:Key="settings_accent_description">Выберите собственный цвет акцента</sys:String>
     <sys:String x:Key="settings_transitions">Анимации</sys:String>
-    <sys:String x:Key="settings_transitions_description">Включить слайдовую анимацию</sys:String>
+    <sys:String x:Key="settings_transitions_description">Включить анимацию слайда</sys:String>
     <sys:String x:Key="settings_localization_disable">Язык</sys:String>
-    <sys:String x:Key="settings_localization_disable_description">Использовать английский принудительно</sys:String>
+    <sys:String x:Key="settings_localization_description">Изменить язык приложения</sys:String>
     <sys:String x:Key="settings_minimize_tray">Сворачивать в трей</sys:String>
-    <sys:String x:Key="settings_minimize_tray_description">Свернуть вместо завершения работы</sys:String>
-    <sys:String x:Key="settings_autostart">Авто-заупск</sys:String>
-    <sys:String x:Key="settings_autostart_description">Запускать свернутым при запуске системы</sys:String>
-    <sys:String x:Key="settings_autostart_permission">Не удалось обновить данные автозапуска в реестре. Доступ к реестру (HKCU) был отключен вашим системным администратором.</sys:String>
-
+    <sys:String x:Key="settings_minimize_tray_description">Сворачивать вместо завершения работы</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons">Использовать реалистичное отображение наушников</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons_description">Отображать реалистичные изображения ваших наушников с учетом их цвета, если это поддерживается</sys:String>
+    <sys:String x:Key="settings_color_override">Переопределение цвета наушников</sys:String>
+    <sys:String x:Key="settings_color_override_description">Изменить отображаемый цвет ваших наушников в приложении</sys:String>
+    <sys:String x:Key="settings_nav_sidebar">Боковая панель навигации</sys:String>
+    <sys:String x:Key="settings_nav_sidebar_description">Показать или скрыть навигационные кнопки слева</sys:String>
+    <sys:String x:Key="settings_tray_settings">Значок в трее и автозапуск</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode">Динамический значок в трее</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_description">Отображать статус заряда батареи в значке в трее</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_off">Выключено</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_min">Минимальный уровень батареи</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_avg">Средний уровень батареи</sys:String>
+    <sys:String x:Key="settings_autostart">Авто-запуск</sys:String>
+    <sys:String x:Key="settings_autostart_description">Запускать свернутым при старте системы</sys:String>
+    <sys:String x:Key="settings_autostart_permission">Не удалось обновить информацию об автозапуске в реестре. Доступ к реестру (HKCU) был отключен вашим системным администратором.</sys:String>
     <sys:String x:Key="settings_connpopup">Настроить уведомление о подключении</sys:String>
     <sys:String x:Key="settings_devmode">Включить режим разработчика</sys:String>
+    <sys:String x:Key="settings_devmode_description">Просмотр Bluetooth-трафика и другие инструменты разработчика</sys:String>
+    <sys:String x:Key="settings_crowdsourcing">Crowdsourcing</sys:String>
 
     <!--Settings >>> Connection popup-->
     <sys:String x:Key="settings_cpopup_header">Уведомление о подключении</sys:String>
     <sys:String x:Key="settings_cpopup_enable">Включить уведомление о подключении</sys:String>
-    <sys:String x:Key="settings_cpopup_enable_description">Показывать небольшое уведомление со статусом заряда при подключении устройств Buds</sys:String>
+    <sys:String x:Key="settings_cpopup_enable_description">Показывать небольшое уведомление со статусом заряда при подключении Buds</sys:String>
     <sys:String x:Key="settings_cpopup_compact">Компактный режим</sys:String>
-    <sys:String x:Key="settings_cpopup_compact_description">Спрятать заголовок уведомления для экономии места</sys:String>
+    <sys:String x:Key="settings_cpopup_compact_description">Скрыть заголовок уведомления для экономии места</sys:String>
     <sys:String x:Key="settings_cpopup_position">Положение</sys:String>
-    <sys:String x:Key="settings_cpopup_position_placeholder">Неизвестно</sys:String>
+    <sys:String x:Key="settings_cpopup_position_description">Выберите положение всплывающего уведомления о подключении</sys:String>
     <sys:String x:Key="settings_cpopup_demo">Показать демонстрационное уведомление</sys:String>
-    <sys:String x:Key="settings_cpopup_override_title">Заменить заголовок</sys:String>
-    <sys:String x:Key="settings_cpopup_override_title_dialog">Пожалуйста, введите свой заголовок уведомления. Сотрите текст для возврата к стандартному заголовку.</sys:String>
-    <sys:String x:Key="settings_cpopup_primary_screen">Только основной монитор</sys:String>
-    <sys:String x:Key="settings_cpopup_primary_screen_description">Показывать уведомление только на основном мониторе</sys:String>
-    <sys:String x:Key="settings_cpopup_wear_state">Использовать другой цвет пока наушники в кейсе</sys:String>
-    <sys:String x:Key="settings_cpopup_wear_state_description">Затенять иконку наушника если он находится в кейсе</sys:String>
+
+    <!--Settings >>> Crowdsourcing settings-->
+    <sys:String x:Key="settings_crowd_header">Crowdsourcing</sys:String>
+    <sys:String x:Key="settings_crowd_allow">Разрешить участие в crowdsourcing</sys:String>
+    <sys:String x:Key="settings_crowd_allow_description">Собирать информацию о структуре проприетарного Bluetooth-протокола Samsung и дополнительные данные при необходимости. Это позволяет мне гораздо проще поддерживать все модели Galaxy Buds, не владея ими.</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport">Разрешить отчеты о сбоях приложения</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport_description">Автоматически отправлять отчеты о сбоях приложения с помощью Sentry. Это помогает быстрее реагировать на критические ошибки приложения.</sys:String>
 
     <!--Factory reset-->
     <sys:String x:Key="factory_header">Сброс настроек</sys:String>
-    <sys:String x:Key="factory_confirm">Подтвердите сброс настроек</sys:String>
-    <sys:String x:Key="factory_error_title">Сброс настроек не удался</sys:String>
+    <sys:String x:Key="factory_confirmation">Вы уверены, что хотите сбросить наушники до заводских настроек?
+Все данные и настройки наушников будут удалены.
+
+Убедитесь, что оба наушника включены перед продолжением.</sys:String>
+    <sys:String x:Key="factory_error_title">Не удалось выполнить сброс настроек</sys:String>
     <sys:String x:Key="factory_error">Устройство вернуло код ошибки: {0}
-Убедитесь что оба наушника включены и досягаемы.
-Вам может понадобится повторно подключить наушники вручную.</sys:String>
-    <sys:String x:Key="factory_text_p1">Вы уверены что хотите сбросить настройки наушников?</sys:String>
-    <sys:String x:Key="factory_text_p2">После выполнения сброса настроек вам понадобится повторно подключить наушники к компьютеру.</sys:String>
-    <sys:String x:Key="factory_text_p3">Убедитесь что оба наушника включены перед продолжением!</sys:String>
+
+Убедитесь, что оба наушника включены и доступны.
+Возможно, вам придется заново подключить наушники вручную.</sys:String>
 
     <!--Find my Gear-->
     <sys:String x:Key="fmg_warning_both">Пожалуйста, извлеките оба наушника из ушей.</sys:String>
     <sys:String x:Key="fmg_warning_left">Пожалуйста, извлеките левый наушник из уха.</sys:String>
     <sys:String x:Key="fmg_warning_right">Пожалуйста, извлеките правый наушник из уха.</sys:String>
     <sys:String x:Key="fmg_header">Найти мои наушники</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage">Управление SmartThings Find данными</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage_desc">Просмотр и управление данными SmartThings Find, хранящимися на ваших наушниках</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open">Открыть веб-сайт SmartThings Find</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open_desc">Отслеживайте ваши наушники в Интернете. Требуется учетная запись Samsung и приложение SmartThings Find для настройки.</sys:String>
+
+    <!--SmartThings data-->
+    <sys:String x:Key="smart_things_find">SmartThings</sys:String>
+    <sys:String x:Key="smart_things_find_clear">Удалить конфигурацию SmartThings Find</sys:String>
+    <sys:String x:Key="smart_things_find_clear_desc">Удалить данные, связанные с аккаунтом Samsung, с ваших наушников</sys:String>
+    <sys:String x:Key="smart_things_find_iv">Вектор инициализации (IV)</sys:String>
+    <sys:String x:Key="smart_things_find_secret_key">Секретный ключ</sys:String>
+    <sys:String x:Key="smart_things_find_region">Регион</sys:String>
+    <sys:String x:Key="smart_things_find_fmm_token">Токен SmartThings Find</sys:String>
+    <sys:String x:Key="smart_things_find_no_link">Ваши наушники не привязаны к сети Samsung SmartThings Find.</sys:String>
+    <sys:String x:Key="smart_things_find_write_fail">Наушники отклонили новые данные конфигурации SmartThings Find.</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok">Конфигурация перезаписана</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok_desc">Данные конфигурации SmartThings Find были удалены.</sys:String>
+
+    <!--Fit test-->
+    <sys:String x:Key="gft_warning">Пожалуйста, наденьте оба наушника.</sys:String>
+    <sys:String x:Key="gft_desc">Проверьте, правильно ли сидят ваши наушники</sys:String>
+    <sys:String x:Key="gft_bad">Плохая посадка</sys:String>
+    <sys:String x:Key="gft_good">Хорошая посадка</sys:String>
+    <sys:String x:Key="gft_fail">Тест не пройден</sys:String>
 
     <!--Equalizer-->
     <sys:String x:Key="eq_header">Эквалайзер</sys:String>
     <sys:String x:Key="eq_enable">Включить эквалайзер</sys:String>
+    <sys:String x:Key="eq_enable_description">Применить звуковые фильтры эквалайзера</sys:String>
     <sys:String x:Key="eq_preset">Режим:</sys:String>
-    <sys:String x:Key="eq_dolby">Оптимизировать для использования с Dolby</sys:String>
-    <sys:String x:Key="eq_stereo_balance">Левый/правый звуковой балансы</sys:String>
+    <sys:String x:Key="eq_stereo_balance">Левый/правый звуковой баланс</sys:String>
     <sys:String x:Key="eq_stereo_balance_value">{0}% левый; {1}% правый</sys:String>
     <sys:String x:Key="eq_stereo_balance_neutral">Нейтральный</sys:String>
 
@@ -384,20 +515,27 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="eq_soft">Мягкий</sys:String>
     <sys:String x:Key="eq_dynamic">Динамичный</sys:String>
     <sys:String x:Key="eq_clear">Чистый</sys:String>
-    <sys:String x:Key="eq_treble">Больше высоких</sys:String>    
+    <sys:String x:Key="eq_treble">Больше высоких</sys:String>
 
     <!--Noise control-->
     <sys:String x:Key="nc_header">Управление шумоподавлением</sys:String>
+    <sys:String x:Key="nc_as_anc_description">Уменьшение фонового шума</sys:String>
+    <sys:String x:Key="nc_one_earbud">Шумоподавление при одном наушнике</sys:String>
+    <sys:String x:Key="nc_one_earbud_description">Шумоподавление обычно требует двух наушников, чтобы избежать дискомфорта. Включите эту опцию, чтобы использовать шумоподавление только с одним наушником</sys:String>
     <sys:String x:Key="nc_anc_level">Высокая чувствительность</sys:String>
     <sys:String x:Key="nc_anc_level_description">Усилить эффект шумоподавления</sys:String>
+    <sys:String x:Key="nc_ambient">Настройка звукового фона</sys:String>
+    <sys:String x:Key="nc_ambient_description">Настройте тон и громкость звукового фона (если поддерживается)</sys:String>
     <sys:String x:Key="nc_voicedetect">Определение разговора</sys:String>
-    <sys:String x:Key="nc_voicedetect_description">Автоматически включить звуковой фон и приглушить звук медиа, чтобы упростить разговор</sys:String>
+    <sys:String x:Key="nc_voicedetect_description">Автоматически включать звуковой фон и приглушать звук медиа во время разговора</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">Завершение разговора</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout_description">Возвращать настройки в исходное состояние, если ваш голос не обнаруживается в течение заданного времени</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} секунд</sys:String>
-	
+
     <!--Noise control >>> Ambient sound-->
     <sys:String x:Key="nc_as_header">Настройки звукового фона</sys:String>
     <sys:String x:Key="nc_as_custom">Расширенная кастомизация</sys:String>
+    <sys:String x:Key="nc_as_custom_description">Настройка параметров звукового фона</sys:String>
     <sys:String x:Key="nc_as_custom_volume_l">Уровень звукового фона (слева)</sys:String>
     <sys:String x:Key="nc_as_custom_volume_r">Уровень звукового фона (справа)</sys:String>
     <sys:String x:Key="nc_as_custom_tone">Тон звукового фона</sys:String>
@@ -408,11 +546,13 @@ Samsung Wearable на Android функционал этой программы, 
 
     <!--Ambient sound-->
     <sys:String x:Key="as_header">Звуковой фон</sys:String>
+    <sys:String x:Key="as_header_description">Слышать окружение</sys:String>
     <sys:String x:Key="as_enable">Включить звуковой фон</sys:String>
     <sys:String x:Key="as_volume">Уровень звукового фона</sys:String>
     <sys:String x:Key="as_voicefocus">Усиление голоса</sys:String>
-    <sys:String x:Key="as_extrahigh">Усиление звукового фона</sys:String>
-    <sys:String x:Key="as_extrahigh_description">Добавляет дополнительный уровень громкости звукового фона на слайдер</sys:String>
+    <sys:String x:Key="as_voicefocus_description">Сделать голоса более заметными</sys:String>
+    <sys:String x:Key="as_extrahigh">Дополнительное усиление звукового фона</sys:String>
+    <sys:String x:Key="as_extrahigh_description">Добавляет еще один уровень громкости звукового фона на ползунке</sys:String>
     <sys:String x:Key="as_scale_very_low">Очень низкий</sys:String>
     <sys:String x:Key="as_scale_low">Низкий</sys:String>
     <sys:String x:Key="as_scale_moderate">Средний</sys:String>
@@ -421,123 +561,140 @@ Samsung Wearable на Android функционал этой программы, 
 
     <!--Advanced page-->
     <sys:String x:Key="adv_header">Расширенные настройки</sys:String>
-    <sys:String x:Key="adv_required_firmware_later">{0} или позднее</sys:String>
     <sys:String x:Key="adv_seamless">Бесшовное подключение наушников</sys:String>
-    <sys:String x:Key="adv_seamless_desc">Быстро подключайтесь к устройствам поблизости, не отключая наушники и не включая режим сопряжения</sys:String>
-    <sys:String x:Key="adv_resume_playback">Возобновить воспроизведение, если наушники надеты</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">Отправляет общесистемную команду воспроизведение/пауза, пока хотя бы один из датчиков приближения прикрыт (Только ПК)</sys:String>
-    <sys:String x:Key="adv_sidetone">Фоновые звуки во время вызова</sys:String>
-    <sys:String x:Key="adv_sidetone_desc">Улучшение слышимости своего голоса во время разговора по телефону</sys:String>
-    <sys:String x:Key="adv_passthrough">Снимите напряжение с помощью звукового фона</sys:String>
-    <sys:String x:Key="adv_passthrough_desc">Это может помочь с ощущением духоты или давления когда вы не используете активное шумоподавление</sys:String>
-    <sys:String x:Key="adv_gaming_mode">Игровой режим</sys:String>
-    <sys:String x:Key="adv_gaming_mode_desc">Уменьшить задержку звука, и откорректировать синхронизацию аудио (Только Samsung)</sys:String>
+    <sys:String x:Key="adv_seamless_desc">Быстро подключайтесь к другим устройствам поблизости, без отключения наушников и режима сопряжения</sys:String>
+    <sys:String x:Key="adv_pause_playback">Ставить воспроизведение на паузу, если наушники сняты</sys:String>
+    <sys:String x:Key="adv_pause_playback_desc">Отправляет системную команду воспроизведение/пауза, когда оба датчика приближения перестают быть прикрыты (Только ПК)</sys:String>
+    <sys:String x:Key="adv_resume_playback">Возобновлять воспроизведение, если наушники надеты</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Отправляет общесистемную команду воспроизведение/пауза, пока хотя бы один датчик приближения прикрыт (Только ПК)</sys:String>
+    <sys:String x:Key="adv_sidetone">Звуковой фон во время звонка</sys:String>
+    <sys:String x:Key="adv_sidetone_desc">Помогает лучше слышать собственный голос во время телефонного разговора</sys:String>
+    <sys:String x:Key="adv_callpath">Обнаружение наушников для звонков</sys:String>
+    <sys:String x:Key="adv_callpath_desc">Воспроизводить звонки через наушники, если они надеты, и через колонки компьютера, если нет</sys:String>
+    <sys:String x:Key="adv_extra_clear_call">Дополнительная четкость в звонках</sys:String>
+    <sys:String x:Key="adv_extra_clear_call_desc">Повышает четкость звука во время звонков. Особенно полезно в шумных местах при использовании наушников. Требует больше заряда батареи.</sys:String>
+    <sys:String x:Key="adv_passthrough">Снизить ощущение давления с помощью звукового фона</sys:String>
+    <sys:String x:Key="adv_passthrough_desc">Это может помочь избежать эффекта «давления», когда вы не пользуетесь активным шумоподавлением</sys:String>
     <sys:String x:Key="adv_hotkey">Клавиатурные комбинации</sys:String>
-    <sys:String x:Key="adv_hotkey_desc">Настройте собственные клавиатурные комбинации для того, чтобы управлять вашими наушниками удаленно</sys:String>
-    <sys:String x:Key="adv_bixby_remap">Переназначить пробуждение Bixby</sys:String>
-    <sys:String x:Key="adv_bixby_remap_desc">Назначьте, что должно происходить когда вы говорите 'Hey Bixby!'</sys:String>
+    <sys:String x:Key="adv_hotkey_desc">Настройте собственные сочетания клавиш, чтобы управлять наушниками удаленно</sys:String>
+    <sys:String x:Key="adv_bixby_remap">Переназначить команду Bixby</sys:String>
+    <sys:String x:Key="adv_bixby_remap_desc">Определите, что должно произойти, когда вы говорите «Hey Bixby!»</sys:String>
 
     <!--Remap bixby wakeup-->
-    <sys:String x:Key="bixby_remap_header">Переназначьте пробуждение Bixby</sys:String>
     <sys:String x:Key="bixby_remap_enable">Включить пробуждение Bixby</sys:String>
-    <sys:String x:Key="bixby_remap_enable_desc">Запустите Bixby на вашем телефоне Samsung или выполните свое действие на этом ПК когда разбужен</sys:String>
+    <sys:String x:Key="bixby_remap_enable_desc">Запустить Bixby на вашем Samsung-телефоне или выполнить заданное действие на этом ПК при активации</sys:String>
     <sys:String x:Key="bixby_remap_lang">Язык пробуждения Bixby</sys:String>
-    <sys:String x:Key="bixby_remap_action">Свое действие при пробуждении</sys:String>
-    <sys:String x:Key="bixby_remap_note">Скажите 'Hey Bixby!' для активации. Фраза активации может отличаться в зависимости от настроек языка.
+    <sys:String x:Key="bixby_remap_lang_desc">Изменить язык, используемый для активационной фразы</sys:String>
+    <sys:String x:Key="bixby_remap_action">Настраиваемое действие при пробуждении</sys:String>
+    <sys:String x:Key="bixby_remap_action_desc">Определяет, что должно произойти при активации Bixby на этом устройстве</sys:String>
+    <sys:String x:Key="bixby_remap_note">Скажите «Hey Bixby!», чтобы активировать. Фраза активации может отличаться в зависимости от настроек языка.
 
-Переназначение действует только на этом устройстве. Если вы подключите свои наушники к устройству Samsung, голосовое пробуждение будет вызывать Bixby. На других устройствах и телефонах других марок, эта опция не будет ничего выполнять.</sys:String>
+Переназначение работает только на этом устройстве. Если вы подключите наушники к устройству Samsung, голосовое пробуждение будет запускать стандартный Bixby. На других устройствах и телефонах других марок эта опция не будет выполнять никаких действий.</sys:String>
 
 
     <!--Credits-->
     <sys:String x:Key="credits_header">Авторы</sys:String>
     <sys:String x:Key="credits_developer">Разработчик</sys:String>
-    <sys:String x:Key="credits_license">Лицензионное соглашение</sys:String>
+    <sys:String x:Key="credits_license">Лицензия</sys:String>
     <sys:String x:Key="credits_version">Версия</sys:String>
-    <sys:String x:Key="credits_contributor">Соучастники</sys:String>
+    <sys:String x:Key="credits_contributor">Участники</sys:String>
     <sys:String x:Key="credits_translator">Переводчики</sys:String>
     <sys:String x:Key="credits_sponsor">Поддержать проект</sys:String>
+    <sys:String x:Key="credits_kofi">Посетите мою страницу Ko-fi, чтобы поддержать меня!</sys:String>
+    <sys:String x:Key="credits_github">Посетите этот проект на GitHub</sys:String>
 
     <!--Connection lost page-->
+    <sys:String x:Key="connlost">Соединение потеряно</sys:String>
     <sys:String x:Key="connlost_header">Не удалось установить соединение</sys:String>
-    <sys:String x:Key="connlost_description_p1">Не удалось подключиться к вашим наушникам.</sys:String>
-    <sys:String x:Key="connlost_description_p2">Пожалуйста, проверьте настройки Bluetooth и убедитесь, что ваши наушники включены и сопряжены с этим компьютером.
-Вы также можете подключить новую пару наушников. Для этого выберите "Опции &gt; Отменить сопряжение"</sys:String>
-    <sys:String x:Key="connlost_description_p3">Дополнительная информация:</sys:String>
-    <sys:String x:Key="connlost_noinfo">Не удалось собрать дополнительную информацию</sys:String>
-    <sys:String x:Key="connlost_disconnected">Устройство отключено</sys:String>
     <sys:String x:Key="connlost_connect">Подключиться</sys:String>
     <sys:String x:Key="connlost_connecting">Подключение...</sys:String>
+    <sys:String x:Key="connlost_troubleshoot">Диагностика</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_title">Как устранить проблемы со соединением</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_content">Пожалуйста, убедитесь, что официальное приложение Samsung Wearable для Galaxy Buds не пытается подключиться к вашим наушникам в фоновом режиме.
+В противном случае вы будете сталкиваться с повторяющимися сбоями соединения, так как их приложение будет постоянно пытаться перехватить управление наушниками.
+
+Вы можете воспользоваться одним из следующих решений для исправления этой проблемы:
+
+• Удалите наушники из списка в приложении Wearable. (В приложении Wearable откройте боковое меню, выберите «Управление устройствами» и удалите ваши наушники из списка.)
+
+• Полностью удалите плагин Galaxy Buds для приложения Samsung Wearable.
+
+• Используйте приложение типа «Hail» или «Ice Box», чтобы временно «заморозить» официальный плагин Galaxy Buds в приложении Samsung Wearable и не дать ему запускаться.
+    </sys:String>
+
+    <!--Pairing mode -->
+    <sys:String x:Key="connlost_disconnected">Устройство отключено</sys:String>
+    <sys:String x:Key="pairingmode_done">Наушники переведены в режим сопряжения и теперь отключены от этого устройства.</sys:String>
 
     <!--Firmware update disclaimer-->
     <sys:String x:Key="fw_disclaimer">Отказ от ответственности</sys:String>
-    <sys:String x:Key="fw_disclaimer_desc">Этот инструмент обновления прошивки является точной копией официального средства обновления, которое можно найти в официальном приложении Samsung для Android. Я тщательно протестировал эту реализацию в различных обстоятельствах (нормальная работа, потеря соединения, намеренно поврежденные пакеты Bluetooth и т. д.), не испытывая никаких проблем. Тем не менее, я не буду нести никакой ответственности, если что-то пойдет не так, поскольку обновления прошивки изменяют жизненно важные компоненты системы, и с ними всегда следует обращаться с осторожностью. 
+    <sys:String x:Key="fw_disclaimer_desc">Этот инструмент обновления прошивки является точной копией официального средства обновления, которое можно найти в официальном приложении Samsung для Android. Я тщательно протестировал эту реализацию в различных обстоятельствах (нормальная работа, потеря соединения, намеренно поврежденные пакеты Bluetooth и т. д.), не испытывая никаких проблем. Тем не менее, я не буду нести никакой ответственности, если что-то пойдет не так, поскольку обновления прошивки изменяют жизненно важные компоненты системы, и с ними всегда следует обращаться с осторожностью.
 
-ДАУНГРЕЙДИНГ: Несмотря на то что даунгрейдинг до старших версий возможен и я не столкнулся с проблемами, это может вызвать непредвиденные проблемы и должно выполняться только в случае необходимости. Восстановление заводских настроек после перехода на более раннюю версию рекомендуется, но обычно не требуется. 
-ПОЛЬЗОВАТЕЛЬСКАЯ ПРОШИВКА: Вы также можете загружать файлы прошивки с жесткого диска. НЕ прошивайте на ваше устройство бинарные файлы прошивки, предназначенные для ДРУГИХ моделей. 
- 
+ДАУНГРЕЙДИНГ: Несмотря на то что даунгрейдинг до старших версий возможен и я не столкнулся с проблемами, это может вызвать непредвиденные проблемы и должно выполняться только в случае необходимости. Восстановление заводских настроек после перехода на более раннюю версию рекомендуется, но обычно не требуется.
+ПОЛЬЗОВАТЕЛЬСКАЯ ПРОШИВКА: Вы также можете загружать файлы прошивки с жесткого диска. НЕ прошивайте на ваше устройство бинарные файлы прошивки, предназначенные для ДРУГИХ моделей.
+
 Это приложение распространяется под лицензией GPLv3. Используя его, вы принимаете лицензию и ограничение ответственности. Нажмите «Продолжить», чтобы принять.</sys:String>
-    
+
     <!--Firmware selection-->
     <sys:String x:Key="fw_select_header">Обновление прошивки</sys:String>
-    <sys:String x:Key="fw_select_instructions">Пожалуйста, выберите образ прошивки для загрузки и установки. Или как вариант, вы можете выбрать образ прошивки с вашего жесткого диска воспользовавшись 'Расширенные... &gt; Выбрать образ с диска'</sys:String>
-    <sys:String x:Key="fw_select_no_results">На данный момент нет обновлений. Пожалуйста, попробуйте снова позднее.</sys:String>
-    <sys:String x:Key="fw_select_downgrade">Разрешить даунгрейдинг</sys:String>
+    <sys:String x:Key="fw_select_downgrade">Разрешить даунгрейд</sys:String>
     <sys:String x:Key="fw_select_downgrade_desc">Отключить проверку версий и показать старые прошивки в списке (может привести к непредвиденным ошибкам; только для продвинутых пользователей)</sys:String>
-    <sys:String x:Key="fw_select_advanced">Расширенные...</sys:String>
     <sys:String x:Key="fw_select_install">Установить прошивку</sys:String>
+    <sys:String x:Key="fw_select_install_short">Установить</sys:String>
     <sys:String x:Key="fw_select_from_disk">Выбрать образ с диска...</sys:String>
-    <sys:String x:Key="fw_select_external_note">НЕ ПРОШИВАЙТЕ бинарные файлы предназначенные для ДРУГИХ моделей на ваше устройство. Прошивка Buds Pro на Buds Plus не разблокирует дополнительных функций, вместо этого она навсегда сломает ваше устройство.
-
-Нажмите 'Продолжить' чтобы выбрать бинарный файл.</sys:String>
+    <sys:String x:Key="fw_select_from_disk_short">Открыть</sys:String>
+    <sys:String x:Key="fw_select_refresh">Обновить</sys:String>
     <sys:String x:Key="fw_select_unsupported_selection">Неверный выбор. Пожалуйста, выберите совместимую прошивку из списка.</sys:String>
     <sys:String x:Key="fw_select_downloading">Загрузка...</sys:String>
     <sys:String x:Key="fw_select_net_error">Ошибка связи с сервером. Загрузка прошивок сейчас невозможна.</sys:String>
     <sys:String x:Key="fw_select_net_index_error">Ошибка связи с сервером. Список прошивок сейчас недоступен.</sys:String>
     <sys:String x:Key="fw_select_http_error">Код ошибки HTTP:</sys:String>
     <sys:String x:Key="fw_select_unknown_build">Неизвестное имя сборки</sys:String>
+    <sys:String x:Key="fw_select_no_results_short">Обновления не найдены</sys:String>
     <sys:String x:Key="fw_select_verify_fail">Не удалось проверить прошивку</sys:String>
-    <sys:String x:Key="fw_select_confirm">Вы собираетесь прошить '{0}' на ваше '{1}' устройство</sys:String>
-    <sys:String x:Key="fw_select_confirm_desc">Убедитесь, что эта информация правильная, в ином случае нажмите 'Отмена' и проверьте настройки.
+    <sys:String x:Key="fw_select_verify_model_mismatch_fail">Обнаружено несоответствие модели устройства! Передача прошивки была прервана.
 
-По возможности проверьте, что оба наушника подключены перед началом. Это не приведет к проблемам во время передачи. В таком случае наушники автоматически отменят передачу и выйдут из режима обновления.
+Вы пытаетесь установить прошивку для {0} на ваше устройство {1}. Это может навсегда вывести наушники из строя.</sys:String>
+    <sys:String x:Key="fw_select_confirm">Вы собираетесь прошить «{0}» на свое устройство «{1}»</sys:String>
+    <sys:String x:Key="fw_select_confirm_desc">Убедитесь, что эта информация верна, в противном случае нажмите «Отмена» и проверьте настройки.
 
-Нажмите 'Продолжить', чтобы начать обновление.</sys:String>
-  
+По возможности убедитесь, что оба наушника подключены перед началом. Это не вызовет проблем во время передачи. Если это не так, наушники автоматически отменят передачу и выйдут из режима обновления.
+
+Нажмите «Продолжить», чтобы начать обновление.</sys:String>
+
     <!--Firmware transfer-->
     <sys:String x:Key="fw_upload_header">Устанавливаю прошивку...</sys:String>
     <sys:String x:Key="fw_upload_progress_session">Создаю новую сессию...</sys:String>
-    <sys:String x:Key="fw_upload_progress_prepare">Подготавливаю выгрузку...</sys:String>
-    <sys:String x:Key="fw_upload_progress_finished">Выгрузка завершена</sys:String>
-    <sys:String x:Key="fw_upload_progress_finished_desc">Обновление было успешно передано и сейчас устанавливается на устройство. Во время этого процесса ваши наушники перестанут реагировать приблизительно на 30 секунд. Скорее всего наушники восстановят подключение автоматически после завершения процесса обновления.</sys:String>
-    <sys:String x:Key="fw_upload_progress_error">Не удалось выгрузить прошивку</sys:String>
-    <sys:String x:Key="fw_upload_progress">Выгружаю обновление прошивки... {0}%</sys:String>
-    <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>
-    <sys:String x:Key="fw_upload_progress_stats">Статистика</sys:String>
-    <sys:String x:Key="fw_upload_note">Ваши наушники отключатся и начнут установку загруженного обновления прошивки как только передача завершится. Во время этого процесса ваши наушники перестанут реагировать и будут отклонять все попытки подключений Bluetooth. Скорее всего наушники восстановят подключение автоматически после завершения процесса обновления. Пожалуйста, не закрывайте кейс во время обновления.</sys:String>
-    <sys:String x:Key="fw_upload_progress_stats_mtu">Максимальный размер передачи: {0} bytes</sys:String>
-    <sys:String x:Key="fw_upload_progress_stats_offset">Обрабатываю данные сдвига от 0x{0:X6} до 0x{1:X6}</sys:String>
-    <sys:String x:Key="fw_upload_progress_stats_segment">Загружаю блок #{0} ({1} байт(ов), контрольная сумма 0x{2:X6})</sys:String>
+    <sys:String x:Key="fw_upload_progress_prepare">Подготавливаю загрузку...</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished">Загрузка завершена</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished_desc">Обновление было успешно передано и сейчас устанавливается на устройство. Во время этого процесса наушники не будут реагировать примерно 30 секунд. Обычно после завершения процесса обновления наушники автоматически восстановят соединение.</sys:String>
+    <sys:String x:Key="fw_upload_progress_error">Не удалось загрузить прошивку</sys:String>
+    <sys:String x:Key="fw_upload_progress">Загружаю обновление прошивки... {0}%</sys:String>
+    <sys:String x:Key="fw_upload_progress_size">({0}/{1} КБ)</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_mtu">Максимальный размер передачи: {0} байт(а)</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_offset">Обработка данных со сдвигом от 0x{0:X6} до 0x{1:X6}</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_segment">Загружается блок #{0} ({1} байт(а), контрольная сумма 0x{2:X6})</sys:String>
 
     <!--Firmware parse errors-->
-    <sys:String x:Key="fw_fail_no_magic">Это некорректный бинарный файл. Неверное волшебное число обнаружено в заголовке файла.</sys:String>
-    <sys:String x:Key="fw_fail_size_null">Размера этого бинарного файла равен нулю, а значит он не может быть использован для прошивки. Пожалуйста, выберите другой файл.</sys:String>
+    <sys:String x:Key="fw_fail_no_magic">Это некорректный бинарный файл. В заголовке файла обнаружено неверное «магическое число».</sys:String>
+    <sys:String x:Key="fw_fail_size_null">Размер данного бинарного файла равен нулю, поэтому он не подходит для прошивки. Пожалуйста, выберите другой файл.</sys:String>
     <sys:String x:Key="fw_fail_no_segments">Этот бинарный файл не содержит никаких блоков или пуст. Пожалуйста, выберите другой файл.</sys:String>
-    <sys:String x:Key="fw_fail_unknown">Неожиданная ошибка произошла во время расшифровки бинарного файла. Этот файл прошивки может быть поврежден.
+    <sys:String x:Key="fw_fail_unknown">Произошла непредвиденная ошибка при разборе бинарного файла. Возможно, этот файл прошивки поврежден.
 
-Детали:</sys:String>
-    
+Подробности:</sys:String>
+
     <!--Firmware transfer errors-->
-    <sys:String x:Key="fw_fail_connection">Потеряна связь с устройством. Передача обновления отменена.</sys:String>
+    <sys:String x:Key="fw_fail_connection">Потеряно соединение с устройством. Передача обновления отменена.</sys:String>
     <sys:String x:Key="fw_fail_session">Не удалось открыть сессию. Устройство вернуло код ошибки ({0})</sys:String>
-    <sys:String x:Key="fw_fail_copy">Не удалось передать прошивку. Пожалуйста, переподключитесь и попробуйте снова. Устройство вернуло код ошибки: {0}</sys:String>
-    <sys:String x:Key="fw_fail_verify">Не удалось проверить/установить прошивку. Пожалуйста переподключитесь и попробуйте снова. Устройство вернуло код ошибки: {0}</sys:String>
-    <sys:String x:Key="fw_fail_connection_precheck">Устройство сейчас не подключено. Пожалуйста, проверьте настройки Bluetooth в вашей системе и подключитесь повторно.</sys:String>
-    <sys:String x:Key="fw_fail_pending">Другая передача обновления уже в процессе. Пожалйста, правильно отмените ее при необходимости.</sys:String>
-    <sys:String x:Key="fw_fail_lowbattery">Низкий заряд батареи. Пожалуйста, зарядите ваши наушнике более чем на 15%.</sys:String>
-    <sys:String x:Key="fw_fail_session_timeout">Истекло время ожидания на открытие устройством новой сессии</sys:String>
-    <sys:String x:Key="fw_fail_control_timeout">Истекло время ожидания на ответ контрольным блоком от устройства</sys:String>
-    <sys:String x:Key="fw_fail_copy_timeout">Истекло время ожидания во время процесса передачи</sys:String>
-    
+    <sys:String x:Key="fw_fail_copy">Не удалось передать прошивку. Пожалуйста, переподключите наушники и попробуйте снова. Устройство вернуло код ошибки: {0}</sys:String>
+    <sys:String x:Key="fw_fail_verify">Не удалось подтвердить/установить прошивку. Пожалуйста, переподключите наушники и попробуйте снова. Устройство вернуло код ошибки: {0}</sys:String>
+    <sys:String x:Key="fw_fail_connection_precheck">Устройство в данный момент не подключено. Проверьте настройки Bluetooth и переподключите наушники.</sys:String>
+    <sys:String x:Key="fw_fail_pending">Другая передача обновления уже запущена. При необходимости корректно отмените ее.</sys:String>
+    <sys:String x:Key="fw_fail_lowbattery">Низкий заряд батареи. Пожалуйста, зарядите наушники более чем на 15%.</sys:String>
+    <sys:String x:Key="fw_fail_session_timeout">Время ожидания открытия новой сессии на устройстве истекло</sys:String>
+    <sys:String x:Key="fw_fail_control_timeout">Время ожидания ответа контрольного блока от устройства истекло</sys:String>
+    <sys:String x:Key="fw_fail_copy_timeout">Превышено время ожидания во время процесса копирования</sys:String>
+
     <!--Spatial test-->
     <sys:String x:Key="spatial_header">Пространственный сенсор</sys:String>
     <!--Note: Quaternion = 4-dimensional vector-->
@@ -546,12 +703,33 @@ Samsung Wearable на Android функционал этой программы, 
     <sys:String x:Key="spatial_dump_rpy">Значения RPY:</sys:String>
 
     <!--Header-->
+    <sys:String x:Key="window_open">Открыть</sys:String>
     <sys:String x:Key="window_minimize">Свернуть</sys:String>
     <sys:String x:Key="window_close">Закрыть</sys:String>
-	
-    <!--Buds app detected page-->
-    <sys:String x:Key="budsapp_header">Информация о Bluetooth совместимости</sys:String>
-    <sys:String x:Key="budsapp_text_p1">Официальный клиент Galaxy Buds для Windows 10 установлен вместе с данным приложением.</sys:String>
-    <sys:String x:Key="budsapp_text_p3">Имейте в виду, что только одно приложение может общаться с вашими Galaxy Buds одновременно.</sys:String>
 
+    <!--Buds app detected page-->
+    <sys:String x:Key="budsapp_header">Информация о Bluetooth-совместимости</sys:String>
+    <sys:String x:Key="budsapp_text_p1">Официальный клиент Galaxy Buds для Windows 10 установлен вместе с этим приложением.</sys:String>
+    <sys:String x:Key="budsapp_text_p2">Если он активен в фоновом режиме, у GalaxyBudsClient могут возникнуть проблемы с подключением к вашим наушникам. Убедитесь, что вы удалили наушники из списка в официальном приложении или иным образом препятствуете его запуску в фоновом режиме.</sys:String>
+    <sys:String x:Key="budsapp_text_p3">Обратите внимание, что только одно приложение может взаимодействовать с вашими Galaxy Buds в один момент времени.</sys:String>
+
+    <!--Manual pairing-->
+    <sys:String x:Key="manualpair_title">Ручной выбор устройства</sys:String>
+    <sys:String x:Key="manualpair_title_dialog">Выберите ваши наушники Galaxy Buds</sys:String>
+    <sys:String x:Key="manualpair_model">Выберите правильную модель устройства</sys:String>
+    <sys:String x:Key="manualpair_note">Используйте ручное подключение только в том случае, если мастер настройки не распознает наушники корректно.</sys:String>
+
+    <!--Rename-->
+    <sys:String x:Key="rename">Переименовать наушники</sys:String>
+    <sys:String x:Key="rename_desc">Это действие переименует ваши наушники для всех устройств.</sys:String>
+    <sys:String x:Key="rename_warn">Возможно, в официальных приложениях не получится переименовать наушники, поскольку эта функция обычно ограничена смартфонами Samsung. Это означает, что для сброса пользовательского имени может понадобиться это приложение. Новое имя может не отображаться на устройствах, пока вы не удалите наушники из списка сопряженных устройств и не выполните сопряжение заново.</sys:String>
+    <sys:String x:Key="rename_warn_oneui_title">Важная информация для пользователей OneUI</sys:String>
+    <sys:String x:Key="rename_warn_oneui">Если вы используете Samsung OneUI, следует переименовывать наушники через официальный метод в системных настройках. Иначе при установке нового имени могут возникнуть проблемы с подключением.</sys:String>
+    <sys:String x:Key="rename_too_short">Введенное имя слишком короткое (пустое) или слишком длинное (достигнут максимальный лимит, установленный наушниками).</sys:String>
+    <sys:String x:Key="rename_hint">Введите новое имя...</sys:String>
+    <sys:String x:Key="rename_label">Новое имя устройства</sys:String>
+    <sys:String x:Key="rename_reading_name">Чтение текущего имени...</sys:String>
+    <sys:String x:Key="rename_ok_title">Наушники переименованы</sys:String>
+    <sys:String x:Key="rename_ok">Ваши наушники успешно переименованы!
+Новое имя может не определяться устройствами (включая это), пока вы не удалите наушники из списка сопряженных устройств и не выполните сопряжение заново.</sys:String>
 </ResourceDictionary>
