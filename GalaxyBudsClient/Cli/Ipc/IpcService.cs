@@ -82,13 +82,14 @@ public static class IpcService
         if(Design.IsDesignMode)
             return;
         
+        Connection? connection = null;
         try
         {
             var server = new ServerConnectionOptions();
             // On Linux, we use the regular session bus. On other platforms, we host our own d-bus server.
             var useSessionBus = PlatformUtils.IsLinux;
             // Don't use 'using' here - we need the connection to stay alive for the lifetime of the server
-            var connection = useSessionBus ? new Connection(Address.Session) : new Connection(server);
+            connection = useSessionBus ? new Connection(Address.Session) : new Connection(server);
 
             
             string? boundAddress = null;
@@ -130,6 +131,8 @@ public static class IpcService
             Log.Warning("IpcService: Unable to register server: {Message}", e.Message);
             Log.Warning("IpcService: Other instances will not be able to detect this one. " +
                         "This can cause Bluetooth issues since only one app can interact with the earbuds at a time.");
+            // Cleanup connection on failure
+            connection?.Dispose();
         }
     }
     
