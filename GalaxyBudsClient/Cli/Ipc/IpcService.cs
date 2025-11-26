@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.IO.Pipes;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Controls;
@@ -14,10 +16,12 @@ public static class IpcService
 {
     public static string ServiceName => "me.timschneeberger.GalaxyBudsClient";
     private static string TcpAddress => "tcp:host=localhost,port=54533";
+    private static string PipeName => "GalaxyBudsClient_IPC_Pipe";
     // Use Local namespace instead of Global - Global requires admin privileges in some cases
     private static string MutexName => "Local\\GalaxyBudsClient_SingleInstance_Mutex";
     private static DeviceObject? _deviceObject;
     private static Mutex? _singleInstanceMutex;
+    private static CancellationTokenSource? _pipeServerCancellation;
         
     public static async Task<Connection> OpenClientConnectionAsync()
     {
@@ -93,24 +97,48 @@ public static class IpcService
         {
             // Another instance is already running, try to activate it via IPC
             Log.Information("IpcService: Another instance detected via mutex");
+            
+            bool activated = false;
+            
+            // Try D-Bus/TCP first
             try
             {
                 using var client = await OpenClientConnectionAsync();
-                Log.Information("IpcService: Found existing instance, attempting to activate it");
+                Log.Information("IpcService: Found existing instance via D-Bus/TCP, attempting to activate it");
                 try
                 {
                     var proxy = client.CreateProxy<IApplicationObject>(ServiceName, ApplicationObject.Path);
                     await proxy.ActivateAsync();
-                    Log.Information("IpcService: Activation request to other instance sent. Shutting down now");
+                    Log.Information("IpcService: Activation request sent via D-Bus/TCP. Shutting down now");
+                    activated = true;
                 }
                 catch (Exception e)
                 {
-                    Log.Warning("IpcService: Unable to invoke activation method via proxy: {Message}", e.Message);
+                    Log.Warning("IpcService: Unable to invoke activation method via D-Bus proxy: {Message}", e.Message);
                 }
             }
             catch (Exception e)
             {
-                Log.Warning("IpcService: Unable to connect to existing instance for activation: {Message}", e.Message);
+                Log.Debug("IpcService: Unable to connect via D-Bus/TCP: {Message}", e.Message);
+            }
+            
+            // If D-Bus/TCP failed and we're on Windows, try Named Pipe as fallback
+            if (!activated && !PlatformUtils.IsLinux)
+            {
+                try
+                {
+                    await ActivateViaNamedPipeAsync();
+                    Log.Information("IpcService: Activation request sent via Named Pipe. Shutting down now");
+                    activated = true;
+                }
+                catch (Exception e)
+                {
+                    Log.Warning("IpcService: Unable to activate via Named Pipe: {Message}", e.Message);
+                }
+            }
+            
+            if (!activated)
+            {
                 Log.Warning("IpcService: Another instance is running but cannot be activated. Exiting anyway to prevent conflicts.");
             }
             
@@ -186,11 +214,30 @@ public static class IpcService
         }
         catch (Exception e)
         {
-            Log.Warning("IpcService: Unable to register server: {Message}", e.Message);
-            Log.Warning("IpcService: Other instances will not be able to detect this one. " +
-                        "This can cause Bluetooth issues since only one app can interact with the earbuds at a time.");
+            Log.Warning("IpcService: Unable to register D-Bus/TCP server: {Message}", e.Message);
             // Cleanup connection on failure
             connection?.Dispose();
+            
+            // On Windows, start Named Pipe server as fallback (doesn't require network permissions)
+            if (!PlatformUtils.IsLinux)
+            {
+                Log.Information("IpcService: Starting Named Pipe server as fallback");
+                try
+                {
+                    await StartNamedPipeServerAsync();
+                }
+                catch (Exception ex)
+                {
+                    Log.Warning("IpcService: Unable to start Named Pipe server: {Message}", ex.Message);
+                    Log.Warning("IpcService: Other instances will not be able to detect this one. " +
+                                "This can cause Bluetooth issues since only one app can interact with the earbuds at a time.");
+                }
+            }
+            else
+            {
+                Log.Warning("IpcService: Other instances will not be able to detect this one. " +
+                            "This can cause Bluetooth issues since only one app can interact with the earbuds at a time.");
+            }
         }
     }
     
@@ -274,4 +321,97 @@ public static class IpcService
             Log.Warning("IpcService: Unable to invoke activation method via proxy: {Message}", e.Message);
         }
     }
+    
+    /// <summary>
+    /// Start a Named Pipe server as fallback IPC mechanism (Windows only).
+    /// This doesn't require network permissions and works when TCP is blocked.
+    /// </summary>
+    private static async Task StartNamedPipeServerAsync()
+    {
+        _pipeServerCancellation = new CancellationTokenSource();
+        var token = _pipeServerCancellation.Token;
+        
+        Log.Information("IpcService: Named Pipe server starting on pipe: {PipeName}", PipeName);
+        
+        while (!token.IsCancellationRequested)
+        {
+            try
+            {
+                using var server = new NamedPipeServerStream(
+                    PipeName,
+                    PipeDirection.InOut,
+                    NamedPipeServerStream.MaxAllowedServerInstances,
+                    PipeTransmissionMode.Byte,
+                    PipeOptions.Asynchronous);
+                
+                // Wait for a client to connect
+                await server.WaitForConnectionAsync(token);
+                
+                Log.Debug("IpcService: Named Pipe client connected");
+                
+                // Read the command from the client
+                using var reader = new StreamReader(server);
+                var command = await reader.ReadLineAsync();
+                
+                Log.Debug("IpcService: Received command via Named Pipe: {Command}", command);
+                
+                // Execute the command
+                if (command == "ACTIVATE")
+                {
+                    Interface.MainWindow.Instance.BringToFront();
+                    Log.Information("IpcService: Window activated via Named Pipe request");
+                }
+                
+                // Send acknowledgment
+                using var writer = new StreamWriter(server) { AutoFlush = true };
+                await writer.WriteLineAsync("OK");
+            }
+            catch (OperationCanceledException)
+            {
+                // Server is shutting down
+                break;
+            }
+            catch (Exception e)
+            {
+                if (!token.IsCancellationRequested)
+                {
+                    Log.Warning("IpcService: Error in Named Pipe server: {Message}", e.Message);
+                    // Wait a bit before retrying
+                    await Task.Delay(1000, token);
+                }
+            }
+        }
+        
+        Log.Information("IpcService: Named Pipe server stopped");
+    }
+    
+    /// <summary>
+    /// Activate an existing instance via Named Pipe (Windows only).
+    /// </summary>
+    private static async Task ActivateViaNamedPipeAsync()
+    {
+        using var client = new NamedPipeClientStream(
+            ".",
+            PipeName,
+            PipeDirection.InOut,
+            PipeOptions.Asynchronous);
+        
+        // Try to connect with a timeout
+        var cts = new CancellationTokenSource(2000); // 2 second timeout
+        await client.ConnectAsync(cts.Token);
+        
+        // Send activation command
+        using var writer = new StreamWriter(client) { AutoFlush = true };
+        await writer.WriteLineAsync("ACTIVATE");
+        
+        // Wait for acknowledgment
+        using var reader = new StreamReader(client);
+        var response = await reader.ReadLineAsync();
+        
+        if (response != "OK")
+        {
+            throw new Exception($"Unexpected response from Named Pipe server: {response}");
+        }
+    }
+}
 }
