@@ -105,8 +105,7 @@ public static class IpcService
                 Log.Warning("IpcService: Another instance is running but cannot be activated. Exiting anyway to prevent conflicts.");
             }
             
-            // Release the mutex before exiting since we won't be using it
-            _singleInstanceMutex?.ReleaseMutex();
+            // Dispose the mutex - we don't own it, so don't call ReleaseMutex()
             _singleInstanceMutex?.Dispose();
             
             // Exit regardless of whether activation succeeded
