@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using GalaxyBudsClient.Cli.Ipc.Objects;
@@ -13,7 +14,9 @@ public static class IpcService
 {
     public static string ServiceName => "me.timschneeberger.GalaxyBudsClient";
     private static string TcpAddress => "tcp:host=localhost,port=54533";
+    private static string MutexName => "Global\\GalaxyBudsClient_SingleInstance_Mutex";
     private static DeviceObject? _deviceObject;
+    private static Mutex? _singleInstanceMutex;
         
     public static async Task<Connection> OpenClientConnectionAsync()
     {
@@ -37,6 +40,7 @@ public static class IpcService
     /// <summary>
     /// Check if another instance is already running. If so, activate it and exit.
     /// This method should be called synchronously before starting the UI.
+    /// Uses both IPC (for activation) and Mutex (as fallback for detection).
     /// </summary>
     /// <returns>True if this is the first instance and should continue, False if another instance exists (and this instance will exit)</returns>
     public static async Task<bool> CheckSingleInstanceAsync()
@@ -44,33 +48,53 @@ public static class IpcService
         if(Design.IsDesignMode)
             return true;
         
-        // Try to connect to an existing instance first
+        // First, try to acquire the mutex to ensure only one instance can proceed
+        // This works even when IPC/TCP fails due to permissions
+        bool createdNew;
         try
         {
-            using var client = await OpenClientConnectionAsync();
-            // Successfully connected to existing instance, activate it
-            Log.Information("IpcService: Found existing instance, attempting to activate it");
+            _singleInstanceMutex = new Mutex(true, MutexName, out createdNew);
+        }
+        catch (Exception e)
+        {
+            Log.Warning("IpcService: Unable to create mutex: {Message}", e.Message);
+            createdNew = true; // Fall back to allowing this instance if mutex fails
+        }
+        
+        if (!createdNew)
+        {
+            // Another instance is already running, try to activate it via IPC
+            Log.Information("IpcService: Another instance detected via mutex");
             try
             {
-                var proxy = client.CreateProxy<IApplicationObject>(ServiceName, ApplicationObject.Path);
-                await proxy.ActivateAsync();
-                Log.Information("IpcService: Activation request to other instance sent. Shutting down now");
+                using var client = await OpenClientConnectionAsync();
+                Log.Information("IpcService: Found existing instance, attempting to activate it");
+                try
+                {
+                    var proxy = client.CreateProxy<IApplicationObject>(ServiceName, ApplicationObject.Path);
+                    await proxy.ActivateAsync();
+                    Log.Information("IpcService: Activation request to other instance sent. Shutting down now");
+                }
+                catch (Exception e)
+                {
+                    Log.Warning("IpcService: Unable to invoke activation method via proxy: {Message}", e.Message);
+                }
             }
             catch (Exception e)
             {
-                Log.Warning("IpcService: Unable to invoke activation method via proxy: {Message}", e.Message);
+                Log.Warning("IpcService: Unable to connect to existing instance for activation: {Message}", e.Message);
+                Log.Warning("IpcService: Another instance is running but cannot be activated. Exiting anyway to prevent conflicts.");
             }
             
             // Exit regardless of whether activation succeeded
+            // This prevents multiple instances even when IPC server failed to start
             Environment.Exit(0);
             return false; // This line won't be reached, but needed for compiler
         }
-        catch (Exception)
-        {
-            // No existing instance found, this is the first instance
-            Log.Debug("IpcService: No existing instance found, continuing as first instance");
-            return true;
-        }
+        
+        // This is the first instance - mutex was successfully created
+        Log.Debug("IpcService: No existing instance found (mutex acquired), continuing as first instance");
+        return true;
     }
     
     /// <summary>
