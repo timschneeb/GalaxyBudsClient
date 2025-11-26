@@ -47,7 +47,7 @@ public static class IpcService
         // Try to connect to an existing instance first
         try
         {
-            var client = await OpenClientConnectionAsync();
+            using var client = await OpenClientConnectionAsync();
             // Successfully connected to existing instance, activate it
             Log.Information("IpcService: Found existing instance, attempting to activate it");
             try
