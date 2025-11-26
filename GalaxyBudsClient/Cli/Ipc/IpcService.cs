@@ -104,13 +104,15 @@ public static class IpcService
             _deviceObject = new DeviceObject();
             await connection.UpdateDeviceObjectAsync();
             
-            BluetoothImpl.Instance.Connected += (sender, args) => _ = connection.UpdateDeviceObjectAsync();
-            BluetoothImpl.Instance.Disconnected += (sender, args) => _ = connection.UpdateDeviceObjectAsync();
-            
             if(!useSessionBus)
             {
                 boundAddress = await server.StartAsync(TcpAddress);
             }
+            
+            // Only register event handlers after server is successfully started
+            // This prevents ObjectDisposedException if server fails and connection is disposed
+            BluetoothImpl.Instance.Connected += (sender, args) => _ = connection.UpdateDeviceObjectAsync();
+            BluetoothImpl.Instance.Disconnected += (sender, args) => _ = connection.UpdateDeviceObjectAsync();
             
             if (!useSessionBus)
             {
