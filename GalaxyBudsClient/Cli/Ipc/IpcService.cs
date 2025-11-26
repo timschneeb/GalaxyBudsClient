@@ -55,13 +55,18 @@ public static class IpcService
         try
         {
             // Create mutex with initial ownership
+            // IMPORTANT: The mutex object must be kept alive for the entire application lifetime
+            // We store it in a static field to prevent garbage collection
             _singleInstanceMutex = new Mutex(true, MutexName, out bool createdNew);
+            
+            Log.Debug("IpcService: Mutex check - createdNew={CreatedNew}", createdNew);
             
             if (!createdNew)
             {
                 // Mutex already exists, try to acquire it with a timeout to confirm another instance is running
                 // If we can acquire it immediately, the other instance may have terminated
                 isFirstInstance = _singleInstanceMutex.WaitOne(TimeSpan.Zero);
+                Log.Debug("IpcService: Mutex existed, WaitOne result={Result}", isFirstInstance);
                 if (isFirstInstance)
                 {
                     // We got the mutex, so the previous instance must have terminated
@@ -72,7 +77,11 @@ public static class IpcService
             {
                 // We created the mutex, we're the first instance
                 isFirstInstance = true;
+                Log.Debug("IpcService: Created new mutex, we are the first instance");
             }
+            
+            // Keep the mutex alive to prevent garbage collection
+            GC.KeepAlive(_singleInstanceMutex);
         }
         catch (Exception e)
         {
@@ -115,6 +124,7 @@ public static class IpcService
         }
         
         // This is the first instance - mutex was successfully created and owned
+        // Keep the mutex alive for the lifetime of the application
         Log.Debug("IpcService: No existing instance found (mutex acquired), continuing as first instance");
         return true;
     }
