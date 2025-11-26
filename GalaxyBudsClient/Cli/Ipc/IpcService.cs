@@ -34,6 +34,105 @@ public static class IpcService
         }
     }
         
+    /// <summary>
+    /// Check if another instance is already running. If so, activate it and exit.
+    /// This method should be called synchronously before starting the UI.
+    /// </summary>
+    /// <returns>True if this is the first instance and should continue, False if another instance exists (and this instance will exit)</returns>
+    public static async Task<bool> CheckSingleInstanceAsync()
+    {
+        if(Design.IsDesignMode)
+            return true;
+        
+        // Try to connect to an existing instance first
+        try
+        {
+            var client = await OpenClientConnectionAsync();
+            // Successfully connected to existing instance, activate it
+            Log.Information("IpcService: Found existing instance, attempting to activate it");
+            try
+            {
+                var proxy = client.CreateProxy<IApplicationObject>(ServiceName, ApplicationObject.Path);
+                await proxy.ActivateAsync();
+                Log.Information("IpcService: Activation request to other instance sent. Shutting down now");
+            }
+            catch (Exception e)
+            {
+                Log.Warning("IpcService: Unable to invoke activation method via proxy: {Message}", e.Message);
+            }
+            
+            // Exit regardless of whether activation succeeded
+            Environment.Exit(0);
+            return false; // This line won't be reached, but needed for compiler
+        }
+        catch (Exception)
+        {
+            // No existing instance found, this is the first instance
+            Log.Debug("IpcService: No existing instance found, continuing as first instance");
+            return true;
+        }
+    }
+    
+    /// <summary>
+    /// Start the IPC server to allow future instances to detect and activate this one.
+    /// This should be called asynchronously after the UI has started.
+    /// </summary>
+    public static async Task StartServerAsync()
+    {
+        if(Design.IsDesignMode)
+            return;
+        
+        try
+        {
+            var server = new ServerConnectionOptions();
+            // On Linux, we use the regular session bus. On other platforms, we host our own d-bus server.
+            var useSessionBus = PlatformUtils.IsLinux;
+            using var connection = useSessionBus ? new Connection(Address.Session) : new Connection(server);
+
+            
+            string? boundAddress = null;
+            // Linux: connect to existing bus
+            if (useSessionBus)
+            {
+                await connection.ConnectAsync();
+                await connection.RegisterServiceAsync(ServiceName, ServiceRegistrationOptions.None);
+            }
+                
+            await connection.RegisterObjectAsync(new ApplicationObject());
+            _deviceObject = new DeviceObject();
+            await connection.UpdateDeviceObjectAsync();
+            
+            BluetoothImpl.Instance.Connected += (sender, args) => _ = connection.UpdateDeviceObjectAsync();
+            BluetoothImpl.Instance.Disconnected += (sender, args) => _ = connection.UpdateDeviceObjectAsync();
+            
+            if(!useSessionBus)
+            {
+                boundAddress = await server.StartAsync(TcpAddress);
+            }
+            
+            if (!useSessionBus)
+            {
+                Log.Information("IpcService: Server listening at {BoundAddress}", boundAddress);
+            }
+            else
+            {
+                Log.Information("IpcService: Service listening on the session bus");
+            }
+                
+            while (true)
+            {
+                await Task.Delay(int.MaxValue);
+            }
+        }
+        catch (Exception e)
+        {
+            Log.Warning("IpcService: Unable to register server: {Message}", e.Message);
+            Log.Warning("IpcService: Other instances will not be able to detect this one. " +
+                        "This can cause Bluetooth issues since only one app can interact with the earbuds at a time.");
+        }
+    }
+    
+    [Obsolete("Use CheckSingleInstanceAsync and StartServerAsync instead")]
     public static async Task Setup()
     {
         if(Design.IsDesignMode)
