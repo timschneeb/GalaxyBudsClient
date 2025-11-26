@@ -114,15 +114,23 @@ public static class Program
             return;
         }
         
+        // Check for single instance before starting the UI
+        // This prevents multiple instances from running simultaneously
+        var isFirstInstance = IpcService.CheckSingleInstanceAsync().GetAwaiter().GetResult();
+        if (!isFirstInstance)
+        {
+            // CheckSingleInstanceAsync will call Environment.Exit(0) if another instance exists
+            // This return is just a safety fallback
+            return;
+        }
+        
         try
         {
             /* OSX: Graphics must be drawn on the main thread.
-             * Awaiting this call would implicitly cause the next code to run as a async continuation task.
-             *
-             * In general: Don't await this call to shave off about 1000ms of startup time.
-             * The IpcService will terminate the app in time if another instance is already running.
+             * Start the IPC server in background to allow future instances to detect this one.
+             * This call is intentionally not awaited to avoid blocking the main thread.
              */
-            _ = Task.Run(IpcService.Setup);
+            _ = Task.Run(IpcService.StartServerAsync);
                 
             BuildAvaloniaApp().StartWithClassicDesktopLifetime(args, ShutdownMode.OnExplicitShutdown);
         }
