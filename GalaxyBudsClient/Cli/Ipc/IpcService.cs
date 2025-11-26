@@ -14,7 +14,8 @@ public static class IpcService
 {
     public static string ServiceName => "me.timschneeberger.GalaxyBudsClient";
     private static string TcpAddress => "tcp:host=localhost,port=54533";
-    private static string MutexName => "Global\\GalaxyBudsClient_SingleInstance_Mutex";
+    // Use Local namespace instead of Global - Global requires admin privileges in some cases
+    private static string MutexName => "Local\\GalaxyBudsClient_SingleInstance_Mutex";
     private static DeviceObject? _deviceObject;
     private static Mutex? _singleInstanceMutex;
         
@@ -50,18 +51,36 @@ public static class IpcService
         
         // First, try to acquire the mutex to ensure only one instance can proceed
         // This works even when IPC/TCP fails due to permissions
-        bool createdNew;
+        bool isFirstInstance;
         try
         {
-            _singleInstanceMutex = new Mutex(true, MutexName, out createdNew);
+            // Create mutex with initial ownership
+            _singleInstanceMutex = new Mutex(true, MutexName, out bool createdNew);
+            
+            if (!createdNew)
+            {
+                // Mutex already exists, try to acquire it with a timeout to confirm another instance is running
+                // If we can acquire it immediately, the other instance may have terminated
+                isFirstInstance = _singleInstanceMutex.WaitOne(TimeSpan.Zero);
+                if (isFirstInstance)
+                {
+                    // We got the mutex, so the previous instance must have terminated
+                    Log.Debug("IpcService: Mutex existed but was released, acquiring ownership");
+                }
+            }
+            else
+            {
+                // We created the mutex, we're the first instance
+                isFirstInstance = true;
+            }
         }
         catch (Exception e)
         {
             Log.Warning("IpcService: Unable to create mutex: {Message}", e.Message);
-            createdNew = true; // Fall back to allowing this instance if mutex fails
+            isFirstInstance = true; // Fall back to allowing this instance if mutex fails
         }
         
-        if (!createdNew)
+        if (!isFirstInstance)
         {
             // Another instance is already running, try to activate it via IPC
             Log.Information("IpcService: Another instance detected via mutex");
@@ -86,13 +105,17 @@ public static class IpcService
                 Log.Warning("IpcService: Another instance is running but cannot be activated. Exiting anyway to prevent conflicts.");
             }
             
+            // Release the mutex before exiting since we won't be using it
+            _singleInstanceMutex?.ReleaseMutex();
+            _singleInstanceMutex?.Dispose();
+            
             // Exit regardless of whether activation succeeded
             // This prevents multiple instances even when IPC server failed to start
             Environment.Exit(0);
             return false; // This line won't be reached, but needed for compiler
         }
         
-        // This is the first instance - mutex was successfully created
+        // This is the first instance - mutex was successfully created and owned
         Log.Debug("IpcService: No existing instance found (mutex acquired), continuing as first instance");
         return true;
     }
