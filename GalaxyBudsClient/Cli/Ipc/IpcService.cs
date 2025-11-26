@@ -87,7 +87,8 @@ public static class IpcService
             var server = new ServerConnectionOptions();
             // On Linux, we use the regular session bus. On other platforms, we host our own d-bus server.
             var useSessionBus = PlatformUtils.IsLinux;
-            using var connection = useSessionBus ? new Connection(Address.Session) : new Connection(server);
+            // Don't use 'using' here - we need the connection to stay alive for the lifetime of the server
+            var connection = useSessionBus ? new Connection(Address.Session) : new Connection(server);
 
             
             string? boundAddress = null;

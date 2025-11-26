@@ -116,7 +116,7 @@ public static class Program
         
         // Check for single instance before starting the UI
         // This prevents multiple instances from running simultaneously
-        var isFirstInstance = Task.Run(IpcService.CheckSingleInstanceAsync).GetAwaiter().GetResult();
+        var isFirstInstance = IpcService.CheckSingleInstanceAsync().GetAwaiter().GetResult();
         if (!isFirstInstance)
         {
             // CheckSingleInstanceAsync will call Environment.Exit(0) if another instance exists
