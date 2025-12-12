@@ -7,25 +7,24 @@ using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Controls;
 
-public class EarbudStatusUnitViewModel : ViewModelBase
+public partial class EarbudStatusUnitViewModel : ViewModelBase
 {
-    [Reactive] public bool IsLeftOnline { set; get; }
-    [Reactive] public bool IsRightOnline { set; get; }
-    [Reactive] public int LeftBattery { set; get; }
-    [Reactive] public int RightBattery { set; get; }
-    [Reactive] public int? CaseBattery { set; get; }
-    [Reactive] public double LeftVoltage { set; get; }
-    [Reactive] public double RightVoltage { set; get; }
-    [Reactive] public double LeftCurrent { set; get; }
-    [Reactive] public double RightCurrent { set; get; }
-    [Reactive] public double LeftTemperature { set; get; }
-    [Reactive] public double RightTemperature { set; get; }
-    [Reactive] public PlacementStates LeftWearState { set; get; }
-    [Reactive] public PlacementStates RightWearState { set; get; }
+    [Reactive] private bool _isLeftOnline;
+    [Reactive] private bool _isRightOnline;
+    [Reactive] private int _leftBattery;
+    [Reactive] private int _rightBattery;
+    [Reactive] private int? _caseBattery;
+    [Reactive] private double _leftVoltage;
+    [Reactive] private double _rightVoltage;
+    [Reactive] private double _leftCurrent;
+    [Reactive] private double _rightCurrent;
+    [Reactive] private double _leftTemperature;
+    [Reactive] private double _rightTemperature;
+    [Reactive] private PlacementStates _leftWearState;
+    [Reactive] private PlacementStates _rightWearState;
     
     public EarbudStatusUnitViewModel()
     {

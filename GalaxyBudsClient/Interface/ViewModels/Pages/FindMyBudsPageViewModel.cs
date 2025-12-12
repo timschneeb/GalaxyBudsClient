@@ -12,21 +12,20 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
-public class FindMyBudsPageViewModel : MainPageViewModelBase
+public partial class FindMyBudsPageViewModel : MainPageViewModelBase
 {
     public override Control CreateView() => new FindMyBudsPage { DataContext = this };
     public override string TitleKey => Keys.FmgHeader;
     public override Symbol IconKey => Symbol.LocationLive;
     public override bool ShowsInFooter => false;
     
-    [Reactive] public string? WarningText { set; get; }
-    [Reactive] public bool IsSearching { set; get; }
-    [Reactive] public bool IsLeftMuted { set; get; }
-    [Reactive] public bool IsRightMuted { set; get; }
+    [Reactive] private string? _warningText;
+    [Reactive] private bool _isSearching;
+    [Reactive] private bool _isLeftMuted;
+    [Reactive] private bool _isRightMuted;
     
     public FindMyBudsPageViewModel()
     {
@@ -109,5 +108,4 @@ public class FindMyBudsPageViewModel : MainPageViewModelBase
         IsSearching = false;
     }
 }
-
 

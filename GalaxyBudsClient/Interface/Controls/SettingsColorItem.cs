@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
-using FluentAvalonia.UI.Controls;
 using AvColor = Avalonia.Media.Color;
 
 namespace GalaxyBudsClient.Interface.Controls;
@@ -13,29 +14,29 @@ public class SettingsColorItem : SettingsSymbolItem
 {
     public SettingsColorItem()
     {
-        _button = new ColorPickerButton
+        _picker = new ColorPicker
         {
-            IsMoreButtonVisible = true,
-            UseSpectrum = true,
-            UseColorPalette = true,
-            UseColorWheel = true,
-            UseColorTriangle = true,
-            IsCompact = true,
-            ShowAcceptDismissButtons = true, 
-            CustomPaletteColors = Palette,
-            IsAlphaEnabled = false
+            IsAlphaEnabled = false,
+            IsAlphaVisible = false,
+            IsColorSpectrumVisible = true,
+            IsColorSpectrumSliderVisible = true,
+            IsColorPaletteVisible = true,
+            IsColorComponentsVisible = true,
+            IsHexInputVisible = false,
+            PaletteColors = Palette.ToArray(),
+            PaletteColumnCount = 8
         };
-        _button.ColorChanged += OnColorChanged;
-        Footer = _button;
+        _picker.ColorChanged += OnColorChanged;
+        Footer = _picker;
     }
 
-    private readonly ColorPickerButton _button;
+    private readonly ColorPicker _picker;
     
     public static readonly RoutedEvent<RoutedEventArgs> ColorChangedEvent = 
-        RoutedEvent.Register<SettingsSwitchItem, RoutedEventArgs>(nameof(ColorChanged), RoutingStrategies.Bubble);
+        RoutedEvent.Register<SettingsColorItem, RoutedEventArgs>(nameof(ColorChanged), RoutingStrategies.Bubble);
 
     public static readonly StyledProperty<AvColor?> ColorProperty = 
-        ColorPickerButton.ColorProperty.AddOwner<SettingsSwitchItem>();
+        AvaloniaProperty.Register<SettingsColorItem, AvColor?>(nameof(Color));
     
     public event EventHandler<RoutedEventArgs>? ColorChanged
     {
@@ -49,7 +50,7 @@ public class SettingsColorItem : SettingsSymbolItem
         set => SetValue(ColorProperty, value);
     }
     
-    private void OnColorChanged(ColorPickerButton sender, ColorButtonColorChangedEventArgs args)
+    private void OnColorChanged(object? sender, ColorChangedEventArgs args)
     {
         Color = args.NewColor;
         RaiseEvent(new RoutedEventArgs(ColorChangedEvent));
@@ -59,7 +60,8 @@ public class SettingsColorItem : SettingsSymbolItem
     {
         if (change.Property == ColorProperty)
         {
-            _button.Color = Color;
+            if (Color is { } color && _picker.Color != color)
+                _picker.Color = color;
         }
         else
         {

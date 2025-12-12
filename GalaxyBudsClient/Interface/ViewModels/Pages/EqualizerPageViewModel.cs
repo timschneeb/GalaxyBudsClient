@@ -9,11 +9,10 @@ using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
-public class EqualizerPageViewModel : MainPageViewModelBase
+public partial class EqualizerPageViewModel : MainPageViewModelBase
 {
     public EqualizerPageViewModel()
     {
@@ -90,9 +89,9 @@ public class EqualizerPageViewModel : MainPageViewModelBase
 
     public override Control CreateView() => new EqualizerPage { DataContext = this };
     
-    [Reactive] public bool IsEqEnabled { set; get; }
-    [Reactive] public int EqPreset { set; get; }
-    [Reactive] public int StereoBalance { set; get; }
+    [Reactive] private bool _isEqEnabled;
+    [Reactive] private int _eqPreset;
+    [Reactive] private int _stereoBalance;
 
     public int MaximumEqPreset => 4;
     public override string TitleKey => Keys.EqHeader;

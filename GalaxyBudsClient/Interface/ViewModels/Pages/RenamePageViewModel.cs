@@ -12,19 +12,18 @@ using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
 using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
-public class RenamePageViewModel : SubPageViewModelBase
+public partial class RenamePageViewModel : SubPageViewModelBase
 {
     public override Control CreateView() => new RenamePage { DataContext = this };
     public override string TitleKey => Keys.Rename;
     
-    [Reactive] public string? WarningText { set; get; }
-    [Reactive] public bool IsWarningHidden { set; get; }
-    [Reactive] public bool IsActive { set; get; }
+    [Reactive] private string? _warningText;
+    [Reactive] private bool _isWarningHidden;
+    [Reactive] private bool _isActive;
     
     public string Name
     {

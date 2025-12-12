@@ -6,20 +6,19 @@ using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Platform;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Dialogs;
 
-public class HiddenModeTerminalDialogViewModel : ViewModelBase
+public partial class HiddenModeTerminalDialogViewModel : ViewModelBase
 {
     public HiddenModeTerminalDialogViewModel()
     {
         SppMessageReceiver.Instance.HiddenCmdData += OnHiddenCmdDataReceived;
     }
 
-    [Reactive] public string CommandId { set; get; } = string.Empty;
-    [Reactive] public string CommandParameter { set; get; } = string.Empty;
-    [Reactive] public string TerminalOutput { set; get; } = string.Empty;
+    [Reactive] private string _commandId = string.Empty;
+    [Reactive] private string _commandParameter = string.Empty;
+    [Reactive] private string _terminalOutput = string.Empty;
     
     public async void DoSendCommand()
     {

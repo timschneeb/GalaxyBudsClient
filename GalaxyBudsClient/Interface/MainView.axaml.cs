@@ -8,6 +8,7 @@ using Avalonia.Threading;
 using FluentAvalonia.UI.Controls;
 using FluentAvalonia.UI.Navigation;
 using FluentAvalonia.UI.Windowing;
+using FluentIcons.Common;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Services;
@@ -345,7 +346,7 @@ public partial class MainView : UserControl
 
         if (t is ViewModelBase && item?.IconSource is SymbolIconSource source)
         {
-            source.IsFilled = selected;
+            source.IconVariant = selected ? IconVariant.Filled : IconVariant.Regular;
         }
     }
 

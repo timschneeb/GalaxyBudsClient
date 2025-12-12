@@ -4,7 +4,7 @@ using Avalonia.Input;
 using GalaxyBudsClient.Platform.Interfaces;
 using GalaxyBudsClient.Platform.Model;
 using SharpHook;
-using SharpHook.Native;
+using SharpHook.Data;
 
 namespace GalaxyBudsClient.Platform.Linux;
 

@@ -2,12 +2,25 @@
     <Import Project="Platform.props" />
     
     <!-- Framework & platform-dependent properties -->
-    <PropertyGroup Condition="'$(IsWindows)'=='true'">
-        <TargetFramework>net8.0-windows10.0.19041</TargetFramework>
+    <!--
+      IMPORTANT: TargetFrameworks must be stable across all TargetFramework evaluations (NuGet restore requirement).
+      Use host OS detection for selecting the TargetFrameworks set, not the per-TargetFramework IsWindows/IsOSX flags.
+    -->
+    <PropertyGroup Condition="'$(_HostIsWindows)'=='true'">
+        <TargetFrameworks>net10.0-windows10.0.19041;net10.0</TargetFrameworks>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(_HostIsOSX)'=='true'">
+        <TargetFrameworks>net10.0-macos;net10.0</TargetFrameworks>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(_HostIsLinux)'=='true'">
+        <TargetFrameworks>net10.0</TargetFrameworks>
+        <!--<PublishTrimmed>true</PublishTrimmed>-->
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(TargetFramework)'=='net10.0-windows10.0.19041'">
         <OutputType>WinExe</OutputType>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(IsOSX)'=='true'">
-        <TargetFramework>net8.0-macos</TargetFramework>
+    <PropertyGroup Condition="'$(TargetFramework)'=='net10.0-macos'">
         <OutputType>Exe</OutputType>
 
         <RuntimeIdentifiers>osx-x64;osx-arm64</RuntimeIdentifiers>
@@ -15,13 +28,10 @@
         <AssemblyName>Galaxy Buds Manager</AssemblyName>
         <SupportedOSPlatformVersion>12.0</SupportedOSPlatformVersion>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(IsLinux)'=='true'">
-        <TargetFramework>net8.0</TargetFramework>
+    <PropertyGroup Condition="'$(IsLinux)'=='true' And '$(TargetFramework)'=='net10.0'">
         <OutputType>Exe</OutputType>
-        <!--<PublishTrimmed>true</PublishTrimmed>-->
     </PropertyGroup>
-    <PropertyGroup Condition="'$(IsAndroid)'=='true'">
-        <TargetFramework>net8.0</TargetFramework>
+    <PropertyGroup Condition="'$(IsAndroid)'=='true' And '$(TargetFramework)'=='net10.0'">
         <OutputType>Library</OutputType>
         <DefineConstants>$(DefineConstants);Android</DefineConstants>
     </PropertyGroup>
@@ -76,6 +86,7 @@
     <!-- Dependencies -->
     <ItemGroup>
         <PackageReference Include="AsyncErrorHandler.Fody" Version="1.3.0" />
+        <PackageReference Include="Fody" Version="6.9.3" PrivateAssets="all" />
         <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
         <PackageReference Include="Avalonia.Controls.DataGrid" Version="$(AvaloniaVersion)" />
         <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
@@ -83,48 +94,48 @@
         <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
         <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="$(AvaloniaVersion)" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
-        <PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
-        <PackageReference Include="Avalonia.Svg.Skia" Version="11.2.0.2" />
-        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.2.0.1" />
-        <PackageReference Include="AvaloniaHex" Version="0.1.3" />
-        <PackageReference Include="BouncyCastle.Cryptography" Version="2.4.0" />
+        <PackageReference Include="ReactiveUI.Avalonia" Version="11.3.8" />
+        <PackageReference Include="Svg.Controls.Skia.Avalonia" Version="11.3.6.2" />
+        <PackageReference Include="Xaml.Behaviors.Avalonia" Version="11.3.9" />
+        <PackageReference Include="AvaloniaHex" Version="0.1.10" />
+        <PackageReference Include="BouncyCastle.Cryptography" Version="2.6.2" />
         <PackageReference Include="CommandLineParser" Version="2.9.2-ci-210" />
-        <PackageReference Include="Config.Net" Version="5.2.0" />
-        <PackageReference Include="CS-Script" Version="4.8.16" />
-        <PackageReference Include="FluentAvalonia.BreadcrumbBar" Version="2.0.2" />
-        <PackageReference Include="FluentAvaloniaUI" Version="2.1.0-preview2" />
-        <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="1.1.234-exp" />
+        <PackageReference Include="Config.Net" Version="5.2.1" />
+        <PackageReference Include="CS-Script" Version="4.13.0" />
+        <PackageReference Include="FluentAvaloniaUI" Version="2.4.1" />
+        <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="2.0.316.1" />
         <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0-preview.3.24172.4">
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.1">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0-preview.3.24172.4" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.1" />
         <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
-        <PackageReference Include="ReactiveUI.Fody" Version="19.5.41" />
-        <PackageReference Include="ScottPlot.Avalonia" Version="5.0.37" />
-        <PackageReference Include="Sentry" Version="4.2.1" />
-        <PackageReference Include="Sentry.Serilog" Version="4.2.1" />
-        <PackageReference Include="Serilog" Version="3.1.1" />
-        <PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
-        <PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
-        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-        <PackageReference Include="Serilog.Sinks.Trace" Version="3.0.0" />
-        <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
-        <PackageReference Include="Tmds.DBus" Version="0.16.0" />
+        <PackageReference Include="ReactiveUI.SourceGenerators" Version="2.5.1" PrivateAssets="all" />
+        <PackageReference Include="ScottPlot.Avalonia" Version="5.1.57" />
+        <PackageReference Include="Sentry" Version="6.0.0" />
+        <PackageReference Include="Sentry.Serilog" Version="6.0.0" />
+        <PackageReference Include="Serilog" Version="4.3.0" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="6.1.1" />
+        <PackageReference Include="Serilog.Sinks.Debug" Version="3.0.0" />
+        <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
+        <PackageReference Include="Serilog.Sinks.Trace" Version="4.0.0" />
+        <PackageReference Include="System.Text.Encoding.CodePages" Version="10.0.1" />
+        <PackageReference Include="Tmds.DBus" Version="0.21.2" />
     </ItemGroup>
 
+
     <!-- Project references -->
-    <ItemGroup Condition="'$(IsWindows)'=='true'">
+    <ItemGroup Condition="'$(TargetFramework)'=='net10.0-windows10.0.19041'">
         <ProjectReference Include="..\GalaxyBudsClient.Platform.WindowsRT\GalaxyBudsClient.Platform.WindowsRT.csproj" />
         <ProjectReference Include="..\GalaxyBudsClient.Platform.Windows\GalaxyBudsClient.Platform.Windows.csproj" />
     </ItemGroup>
 
-    <ItemGroup Condition="'$(IsLinux)'=='true'">
+    <ItemGroup Condition="'$(IsLinux)'=='true' And '$(TargetFramework)'=='net10.0'">
         <ProjectReference Include="..\GalaxyBudsClient.Platform.Linux\GalaxyBudsClient.Platform.Linux.csproj" />
     </ItemGroup>
     
-    <ItemGroup Condition="'$(IsOSX)'=='true'">
+    <ItemGroup Condition="'$(TargetFramework)'=='net10.0-macos'">
         <ProjectReference Include="..\GalaxyBudsClient.Platform.OSX\GalaxyBudsClient.Platform.OSX.csproj" />
     </ItemGroup>
     

@@ -10,11 +10,10 @@ using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
-public class AmbientCustomizePageViewModel : SubPageViewModelBase
+public partial class AmbientCustomizePageViewModel : SubPageViewModelBase
 {
     public override Control CreateView() => new AmbientCustomizePage { DataContext = this };
     
@@ -148,15 +147,15 @@ public class AmbientCustomizePageViewModel : SubPageViewModelBase
         }
     }
 
-    [Reactive] public int AmbientSoundVolume { set; get; }
-    [Reactive] public bool IsAmbientExtraLoudEnabled { set; get; }
-    [Reactive] public bool IsAmbientVoiceFocusEnabled { set; get; }
-    [Reactive] public bool IsAmbientCustomizationEnabled { set; get; }
-    [Reactive] public int AmbientSoundVolumeLeft { set; get; }
-    [Reactive] public int AmbientSoundVolumeRight { set; get; }
-    [Reactive] public int AmbientSoundTone { set; get; }
-    [Reactive] public int MaximumAmbientSoundVolume { set; get; }
-    [Reactive] public int MaximumLeftRightAmbientSoundVolume { set; get; }
+    [Reactive] private int _ambientSoundVolume;
+    [Reactive] private bool _isAmbientExtraLoudEnabled;
+    [Reactive] private bool _isAmbientVoiceFocusEnabled;
+    [Reactive] private bool _isAmbientCustomizationEnabled;
+    [Reactive] private int _ambientSoundVolumeLeft;
+    [Reactive] private int _ambientSoundVolumeRight;
+    [Reactive] private int _ambientSoundTone;
+    [Reactive] private int _maximumAmbientSoundVolume;
+    [Reactive] private int _maximumLeftRightAmbientSoundVolume;
     
     public override string TitleKey => Keys.NcAsHeader;
 }

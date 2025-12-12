@@ -6,11 +6,10 @@ using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Platform;
 using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
-public class SettingsPageViewModel : MainPageViewModelBase
+public partial class SettingsPageViewModel : MainPageViewModelBase
 {
     public SettingsPageViewModel()
     {
@@ -33,7 +32,7 @@ public class SettingsPageViewModel : MainPageViewModelBase
         }
     }
     
-    [Reactive] public object CanManageDevices { set; get; }
+    [Reactive] private object _canManageDevices = false;
     
     public string CurrentVersion => Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "Unknown";
     public override Control CreateView() => new SettingsPage { DataContext = this };

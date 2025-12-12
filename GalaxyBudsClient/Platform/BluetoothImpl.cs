@@ -19,13 +19,12 @@ using GalaxyBudsClient.Platform.Stubs;
 using GalaxyBudsClient.Scripting;
 using GalaxyBudsClient.Utils;
 using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
 using Serilog;
 using Task = System.Threading.Tasks.Task;
 
 namespace GalaxyBudsClient.Platform;
 
-public sealed class BluetoothImpl : ReactiveObject, IDisposable
+public sealed partial class BluetoothImpl : ReactiveObject, IDisposable
 { 
     private static readonly object Padlock = new();
     private static BluetoothImpl? _instance;
@@ -66,7 +65,7 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
     public event EventHandler<InvalidPacketException>? InvalidDataReceivedAlternative;
     public event EventHandler<byte[]>? NewDataReceivedAlternative;
     public event EventHandler<BluetoothException>? BluetoothErrorAlternative;
-    [Reactive] public bool IsConnectedAlternative { private set; get; }
+    [Reactive(SetModifier = AccessModifier.Private)] private bool _isConnectedAlternative;
 
     
     public Models CurrentModel => Device.Current?.Model ?? Models.NULL;
@@ -74,15 +73,15 @@ public sealed class BluetoothImpl : ReactiveObject, IDisposable
     public static bool HasValidDevice => Settings.Data.Devices.Count > 0 && 
                                          Settings.Data.Devices.Any(x => x.Model != Models.NULL);
     
-    [Reactive] public string DeviceName { private set; get; } = "Galaxy Buds";
-    [Reactive] public bool IsConnected { private set; get; }
-    [Reactive] public string LastErrorMessage { private set; get; } = string.Empty;
-    [Reactive] public bool SuppressDisconnectionEvents { set; get; }
-    [Reactive] public bool ShowDummyDevices { set; get; }
+    [Reactive(SetModifier = AccessModifier.Private)] private string _deviceName = "Galaxy Buds";
+    [Reactive(SetModifier = AccessModifier.Private)] private bool _isConnected;
+    [Reactive(SetModifier = AccessModifier.Private)] private string _lastErrorMessage = string.Empty;
+    [Reactive] private bool _suppressDisconnectionEvents;
+    [Reactive] private bool _showDummyDevices;
 
     public DeviceManager Device { get; } = new();
     
-    [Reactive] public bool AlternativeModeEnabled { private set; get; }
+    [Reactive(SetModifier = AccessModifier.Private)] private bool _alternativeModeEnabled;
     private readonly List<byte> _incomingData = [];
     private static readonly ConcurrentQueue<byte[]> IncomingQueue = new();
     private readonly CancellationTokenSource _loopCancelSource = new();

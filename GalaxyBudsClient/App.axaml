@@ -33,7 +33,6 @@
     <Application.Styles>
         <FluentTheme />
         <styling:FluentAvaloniaTheme PreferSystemTheme="True" CustomAccentColor="Orange" />
-        <StyleInclude Source="avares://FluentAvalonia.BreadcrumbBar/Styling/Styles.axaml" />
         <StyleInclude Source="/Interface/Styling/AppStyles.axaml" />
         
         <OnPlatform>

@@ -11,11 +11,10 @@ using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
-public class NoiseControlPageViewModel : MainPageViewModelBase
+public partial class NoiseControlPageViewModel : MainPageViewModelBase
 {
     public override Control CreateView() => new NoiseControlPage { DataContext = this };
     private int _suppressorCounter;
@@ -192,12 +191,12 @@ public class NoiseControlPageViewModel : MainPageViewModelBase
         });
     }
     
-    [Reactive] public bool IsAmbientSoundEnabled { set; get; }
-    [Reactive] public bool IsAncEnabled { set; get; }
-    [Reactive] public bool IsAncLevelHigh { set; get; }
-    [Reactive] public bool IsNcWithOneEarbudAllowed { set; get; }
-    [Reactive] public bool IsVoiceDetectEnabled { set; get; }
-    [Reactive] public VoiceDetectTimeouts VoiceDetectTimeout { set; get; }
+    [Reactive] private bool _isAmbientSoundEnabled;
+    [Reactive] private bool _isAncEnabled;
+    [Reactive] private bool _isAncLevelHigh;
+    [Reactive] private bool _isNcWithOneEarbudAllowed;
+    [Reactive] private bool _isVoiceDetectEnabled;
+    [Reactive] private VoiceDetectTimeouts _voiceDetectTimeout;
 
     public override string TitleKey => Keys.MainpageNoise;
     public override Symbol IconKey => Symbol.HeadphonesSoundWave;

@@ -9,7 +9,6 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils.Extensions;
 using ScottPlot;
 using ScottPlot.AxisRules;
-using ScottPlot.Control;
 using Strings = GalaxyBudsClient.Generated.I18N.Strings;
 
 namespace GalaxyBudsClient.Interface.Pages;
@@ -20,7 +19,6 @@ public partial class BatteryHistoryPage : BasePage<BatteryHistoryPageViewModel>
     private AxisLimits _axisLimitCache;
     private Coordinates _mouseDownCoordinates;
     private Coordinates _mouseNowCoordinates;
-    private readonly PlotActions _customActions;
     private CoordinateRect MouseSelectionRect => new(_mouseDownCoordinates, _mouseNowCoordinates);
     
     public BatteryHistoryPage()
@@ -28,9 +26,7 @@ public partial class BatteryHistoryPage : BasePage<BatteryHistoryPageViewModel>
         InitializeComponent();
         
         // Disable double-click benchmark action
-        _customActions = PlotActions.Standard();
-        _customActions.ToggleBenchmark = delegate { };
-        PlotControl.Interaction.Enable(_customActions);
+        PlotControl.UserInputProcessor.DoubleLeftClickBenchmark(false);
     }
 
     protected override void OnInitialized()
@@ -123,7 +119,7 @@ public partial class BatteryHistoryPage : BasePage<BatteryHistoryPageViewModel>
         }
         
         _mouseIsDown = true;
-        PlotControl.Interaction.Disable();
+        PlotControl.UserInputProcessor.Disable();
     } 
     
     public void OnPlotPointerReleased(object? sender, PointerReleasedEventArgs e)
@@ -140,6 +136,6 @@ public partial class BatteryHistoryPage : BasePage<BatteryHistoryPageViewModel>
 
         // Update the plot
         PlotControl.Refresh();
-        PlotControl.Interaction.Enable(_customActions);
+        PlotControl.UserInputProcessor.Enable();
     }
 }

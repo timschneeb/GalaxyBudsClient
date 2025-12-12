@@ -11,7 +11,6 @@ using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Utils;
 using Microsoft.EntityFrameworkCore;
-using ReactiveUI.Fody.Helpers;
 using ScottPlot;
 using ScottPlot.AxisRules;
 using ScottPlot.Plottables;
@@ -20,7 +19,7 @@ using SkiaSharp;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
-public class BatteryHistoryPageViewModel : SubPageViewModelBase
+public partial class BatteryHistoryPageViewModel : SubPageViewModelBase
 {
     public override Control CreateView() => new BatteryHistoryPage { DataContext = this };
     public override string TitleKey => Keys.SystemBatteryStatistics;
@@ -29,14 +28,14 @@ public class BatteryHistoryPageViewModel : SubPageViewModelBase
     public Rectangle? SelectionRect { set; get; }
     public Annotation? MeasureAnnotation { set; get; }
     
-    [Reactive] public bool IsPlotLoading { set; get; }
-    [Reactive] public Cursor PlotCursor { set; get; } = new(StandardCursorType.Arrow);
-    [Reactive] public bool IsLegendVisible { set; get; } = true;
-    [Reactive] public bool IsNoDataHintVisible { set; get; }
+    [Reactive] private bool _isPlotLoading;
+    [Reactive] private Avalonia.Input.Cursor _plotCursor = new(StandardCursorType.Arrow);
+    [Reactive] private bool _isLegendVisible = true;
+    [Reactive] private bool _isNoDataHintVisible;
 
-    [Reactive] public BatteryHistoryOverlays SelectedOverlay { set; get; } = BatteryHistoryOverlays.None;
-    [Reactive] public BatteryHistoryTimeSpans SelectedTimeSpan { set; get; } = BatteryHistoryTimeSpans.Last12Hours;
-    [Reactive] public BatteryHistoryTools SelectedTool { set; get; } = BatteryHistoryTools.PanAndZoom;
+    [Reactive] private BatteryHistoryOverlays _selectedOverlay = BatteryHistoryOverlays.None;
+    [Reactive] private BatteryHistoryTimeSpans _selectedTimeSpan = BatteryHistoryTimeSpans.Last12Hours;
+    [Reactive] private BatteryHistoryTools _selectedTool = BatteryHistoryTools.PanAndZoom;
 
     public BatteryHistoryPageViewModel()
     {
@@ -54,9 +53,9 @@ public class BatteryHistoryPageViewModel : SubPageViewModelBase
             case nameof(SelectedTool):
                 PlotCursor = SelectedTool switch
                 {
-                    BatteryHistoryTools.PanAndZoom => new Cursor(StandardCursorType.Arrow),
-                    BatteryHistoryTools.MeasureTime => new Cursor(StandardCursorType.RightSide),
-                    BatteryHistoryTools.MeasureBattery => new Cursor(StandardCursorType.TopSide),
+                    BatteryHistoryTools.PanAndZoom => new Avalonia.Input.Cursor(StandardCursorType.Arrow),
+                    BatteryHistoryTools.MeasureTime => new Avalonia.Input.Cursor(StandardCursorType.RightSide),
+                    BatteryHistoryTools.MeasureBattery => new Avalonia.Input.Cursor(StandardCursorType.TopSide),
                     _ => throw new ArgumentOutOfRangeException()
                 };
                 if (MeasureAnnotation != null) 
@@ -271,5 +270,3 @@ public class BatteryHistoryPageViewModel : SubPageViewModelBase
         public void AddNullFrame(double timestamp);
     }
 }
-
-

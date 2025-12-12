@@ -7,11 +7,10 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
-public class SystemInfoPageViewModel : SubPageViewModelBase
+public partial class SystemInfoPageViewModel : SubPageViewModelBase
 {
     public override Control CreateView() => new SystemInfoPage { DataContext = this };
     public override string TitleKey => Keys.SystemHeader;
@@ -119,20 +118,19 @@ public class SystemInfoPageViewModel : SubPageViewModelBase
     
     public override void OnNavigatedTo() => RequestData();
 
-    [Reactive] public string HwVersion { set; get; } = Placeholder;
-    [Reactive] public string SwVersion { set; get; } = Placeholder;
-    [Reactive] public string TouchSwVersion { set; get; } = Placeholder;
-    [Reactive] public string ProtocolVersion { set; get; } = Placeholder;
-    [Reactive] public string BluetoothAddress { set; get; } = Placeholder;
-    [Reactive] public string SerialNumber { set; get; } = Placeholder;
-    [Reactive] public string CradleSerialNumber { set; get; } = Placeholder;
-    [Reactive] public string CradleSwVersion { set; get; } = Placeholder;
-    [Reactive] public string BuildString { set; get; } = Placeholder;
-    [Reactive] public string DeviceSku { set; get; } = Placeholder;
-    [Reactive] public string BatteryType { set; get; } = Placeholder;
+    [Reactive] private string _hwVersion = Placeholder;
+    [Reactive] private string _swVersion = Placeholder;
+    [Reactive] private string _touchSwVersion = Placeholder;
+    [Reactive] private string _protocolVersion = Placeholder;
+    [Reactive] private string _bluetoothAddress = Placeholder;
+    [Reactive] private string _serialNumber = Placeholder;
+    [Reactive] private string _cradleSerialNumber = Placeholder;
+    [Reactive] private string _cradleSwVersion = Placeholder;
+    [Reactive] private string _buildString = Placeholder;
+    [Reactive] private string _deviceSku = Placeholder;
+    [Reactive] private string _batteryType = Placeholder;
     
     private static string Placeholder => Strings.SystemWaitingForDevice;
     private static string Unknown => Strings.Unknown;
 }
-
 
