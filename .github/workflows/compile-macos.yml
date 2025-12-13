@@ -41,7 +41,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build Universal
-      run: dotnet publish -o bin_osx -c Release --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -f net10.0-macos -o bin_osx -c Release --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v6
@@ -78,7 +78,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore -r osx-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build x64
-      run: dotnet publish -r osx-x64 -o bin_osxx64 -c Release --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -f net10.0-macos -r osx-x64 -o bin_osxx64 -c Release --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v6
@@ -115,7 +115,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore -r osx-arm64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build arm64
-      run: dotnet publish -r osx-arm64 -o bin_osxarm64 -c Release --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -f net10.0-macos -r osx-arm64 -o bin_osxarm64 -c Release --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v6

@@ -25,7 +25,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore -r win-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build x64
-      run: dotnet publish -r win-x64 -o bin_win64 -c Release -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -f net10.0-windows10.0.19041 -r win-x64 -o bin_win64 -c Release -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
     #- name: Sign executable
     #  uses: GabrielAcostaEngler/signtool-code-sign@v1.0.2
@@ -55,7 +55,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore -r win-x86 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build x86
-      run: dotnet publish -r win-x86 -o bin_win32 -c Release -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -f net10.0-windows10.0.19041 -r win-x86 -o bin_win32 -c Release -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
     - name: Upload artifacts
       uses: actions/upload-artifact@v6
