@@ -11,6 +11,11 @@ namespace ThePBone.BlueZNet
     /// </summary>
     public class Device : IDevice1, IDisposable
     {
+        private bool _lastConnectedState;
+        private bool _lastServicesResolvedState;
+        private bool _initialConnectedEventFired;
+        private bool _initialServicesResolvedEventFired;
+        
         ~Device()
         {
             Dispose();
@@ -22,7 +27,20 @@ namespace ThePBone.BlueZNet
             {
                 m_proxy = proxy,
             };
-            device.m_propertyWatcher = await proxy.WatchPropertiesAsync(device.OnPropertyChanges);
+            
+            // Initialize the last known states
+            try
+            {
+                device._lastConnectedState = await proxy.GetAsync<bool>("Connected").ConfigureAwait(false);
+                device._lastServicesResolvedState = await proxy.GetAsync<bool>("ServicesResolved").ConfigureAwait(false);
+            }
+            catch
+            {
+                device._lastConnectedState = false;
+                device._lastServicesResolvedState = false;
+            }
+            
+            device.m_propertyWatcher = await proxy.WatchPropertiesAsync(device.OnPropertyChanges).ConfigureAwait(false);
 
             return device;
         }
@@ -40,7 +58,7 @@ namespace ThePBone.BlueZNet
             add
             {
                 m_connected += value;
-                FireEventIfPropertyAlreadyTrueAsync(m_connected, "Connected");
+                FireEventIfPropertyAlreadyTrueAsync(m_connected, "Connected", "Connected");
             }
             remove
             {
@@ -54,7 +72,7 @@ namespace ThePBone.BlueZNet
             add
             {
                 m_resolved += value;
-                FireEventIfPropertyAlreadyTrueAsync(m_resolved, "ServicesResolved");
+                FireEventIfPropertyAlreadyTrueAsync(m_resolved, "ServicesResolved", "ServicesResolved");
             }
             remove
             {
@@ -114,15 +132,25 @@ namespace ThePBone.BlueZNet
             return m_proxy.WatchPropertiesAsync(handler);
         }
 
-        private async void FireEventIfPropertyAlreadyTrueAsync(DeviceEventHandlerAsync handler, string prop)
+        private async void FireEventIfPropertyAlreadyTrueAsync(DeviceEventHandlerAsync handler, string prop, string eventType)
         {
             try
             {
-                var value = await m_proxy.GetAsync<bool>(prop);
+                var value = await m_proxy.GetAsync<bool>(prop).ConfigureAwait(false);
                 if (value)
                 {
-                    // TODO: Suppress duplicate event from OnPropertyChanges.
-                    handler?.Invoke(this, new BlueZEventArgs(isStateChange: false));
+                    // Check if initial event was already fired
+                    bool shouldFire = eventType switch
+                    {
+                        "Connected" => !_initialConnectedEventFired && (_initialConnectedEventFired = true),
+                        "ServicesResolved" => !_initialServicesResolvedEventFired && (_initialServicesResolvedEventFired = true),
+                        _ => false
+                    };
+                    
+                    if (shouldFire)
+                    {
+                        handler?.Invoke(this, new BlueZEventArgs(isStateChange: false));
+                    }
                 }
             }
             catch (Exception ex)
@@ -138,20 +166,32 @@ namespace ThePBone.BlueZNet
                 switch (pair.Key)
                 {
                     case "Connected":
-                        if (true.Equals(pair.Value))
+                        var connectedValue = true.Equals(pair.Value);
+                        // Only fire event if the state actually changed
+                        if (connectedValue != _lastConnectedState)
                         {
-                            m_connected?.Invoke(this, new BlueZEventArgs());
-                        }
-                        else
-                        {
-                            Disconnected?.Invoke(this, new BlueZEventArgs());
+                            _lastConnectedState = connectedValue;
+                            if (connectedValue)
+                            {
+                                m_connected?.Invoke(this, new BlueZEventArgs());
+                            }
+                            else
+                            {
+                                Disconnected?.Invoke(this, new BlueZEventArgs());
+                            }
                         }
                         break;
 
                     case "ServicesResolved":
-                        if (true.Equals(pair.Value))
+                        var resolvedValue = true.Equals(pair.Value);
+                        // Only fire event if the state actually changed
+                        if (resolvedValue != _lastServicesResolvedState)
                         {
-                            m_resolved?.Invoke(this, new BlueZEventArgs());
+                            _lastServicesResolvedState = resolvedValue;
+                            if (resolvedValue)
+                            {
+                                m_resolved?.Invoke(this, new BlueZEventArgs());
+                            }
                         }
                         break;
                 }

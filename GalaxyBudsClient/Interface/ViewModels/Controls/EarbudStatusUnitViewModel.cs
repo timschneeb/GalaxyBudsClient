@@ -35,12 +35,7 @@ public partial class EarbudStatusUnitViewModel : ViewModelBase
         Loc.LanguageUpdated += LoadFromCache;
         LoadFromCache();
         
-        _ = Task.Run(() =>
-        {
-            // FIXME: Avalonia bug: After upgrading to Avalonia 11.2.2 from 11.2.0-beta, the label bounds are initially too small 
-            Task.Delay(250);
-            _ = BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_GET_ALL_DATA);
-        });
+        _ = BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_GET_ALL_DATA);
     }
 
     private void OnBluetoothPropertyChanged(object? sender, PropertyChangedEventArgs e)

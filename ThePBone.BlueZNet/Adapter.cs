@@ -11,6 +11,9 @@ namespace ThePBone.BlueZNet
     
     public class Adapter : IAdapter1, IDisposable
     {
+        private bool _lastPoweredState;
+        private bool _initialPoweredEventFired;
+        
         ~Adapter()
         {
             Dispose();
@@ -23,9 +26,19 @@ namespace ThePBone.BlueZNet
                 _proxy = proxy,
             };
 
+            // Initialize the last known state
+            try
+            {
+                adapter._lastPoweredState = await proxy.GetAsync<bool>("Powered").ConfigureAwait(false);
+            }
+            catch
+            {
+                adapter._lastPoweredState = false;
+            }
+
             var objectManager = Connection.System.CreateProxy<IObjectManager>(BluezConstants.DbusService, "/");
-            adapter._interfacesWatcher = await objectManager.WatchInterfacesAddedAsync(adapter.OnDeviceAdded);
-            adapter._propertyWatcher = await proxy.WatchPropertiesAsync(adapter.OnPropertyChanges);
+            adapter._interfacesWatcher = await objectManager.WatchInterfacesAddedAsync(adapter.OnDeviceAdded).ConfigureAwait(false);
+            adapter._propertyWatcher = await proxy.WatchPropertiesAsync(adapter.OnPropertyChanges).ConfigureAwait(false);
 
             return adapter;
         }
@@ -137,10 +150,10 @@ namespace ThePBone.BlueZNet
         {
             try
             {
-                var value = await _proxy.GetAsync<bool>(prop);
-                if (value)
+                var value = await _proxy.GetAsync<bool>(prop).ConfigureAwait(false);
+                if (value && !_initialPoweredEventFired)
                 {
-                    // TODO: Suppress duplicate event from OnPropertyChanges.
+                    _initialPoweredEventFired = true;
                     handler?.Invoke(this, new BlueZEventArgs(isStateChange: false));
                 }
             }
@@ -157,13 +170,19 @@ namespace ThePBone.BlueZNet
                 switch (pair.Key)
                 {
                     case "Powered":
-                        if (true.Equals(pair.Value))
+                        var newValue = true.Equals(pair.Value);
+                        // Only fire event if the state actually changed
+                        if (newValue != _lastPoweredState)
                         {
-                            _poweredOn?.Invoke(this, new BlueZEventArgs());
-                        }
-                        else
-                        {
-                            PoweredOff?.Invoke(this, new BlueZEventArgs());
+                            _lastPoweredState = newValue;
+                            if (newValue)
+                            {
+                                _poweredOn?.Invoke(this, new BlueZEventArgs());
+                            }
+                            else
+                            {
+                                PoweredOff?.Invoke(this, new BlueZEventArgs());
+                            }
                         }
                         break;
                 }
