@@ -8,6 +8,10 @@
         <Platforms>AnyCPU</Platforms>
         <LangVersion>latest</LangVersion>
         <EnableWindowsTargeting>true</EnableWindowsTargeting>
+        
+        <!-- Code Analysis -->
+        <AnalysisLevel>latest</AnalysisLevel>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
     </PropertyGroup>
 
     <ItemGroup>

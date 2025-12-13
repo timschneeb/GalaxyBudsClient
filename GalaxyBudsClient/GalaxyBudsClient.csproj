@@ -52,6 +52,10 @@
         <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
         <LangVersion>latest</LangVersion>
         
+        <!-- Code Analysis -->
+        <AnalysisLevel>latest</AnalysisLevel>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        
         <!-- Build configurations -->
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU</Platforms>
@@ -110,7 +114,6 @@
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.1" />
-        <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
         <PackageReference Include="ReactiveUI.SourceGenerators" Version="2.5.1" PrivateAssets="all" />
         <PackageReference Include="ScottPlot.Avalonia" Version="5.1.57" />
         <PackageReference Include="Sentry" Version="6.0.0" />
@@ -120,7 +123,6 @@
         <PackageReference Include="Serilog.Sinks.Debug" Version="3.0.0" />
         <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
         <PackageReference Include="Serilog.Sinks.Trace" Version="4.0.0" />
-        <PackageReference Include="System.Text.Encoding.CodePages" Version="10.0.1" />
         <PackageReference Include="Tmds.DBus" Version="0.21.2" />
     </ItemGroup>
 

@@ -5,6 +5,10 @@
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU</Platforms>
         <LangVersion>latest</LangVersion>
+        
+        <!-- Code Analysis -->
+        <AnalysisLevel>latest</AnalysisLevel>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
     </PropertyGroup>
     
     <PropertyGroup>

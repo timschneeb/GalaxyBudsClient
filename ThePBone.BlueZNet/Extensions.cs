@@ -108,7 +108,7 @@ namespace ThePBone.BlueZNet
             var ret = obj.GenericInvoke<T>("GetAsync", propertyName);
             if (ret is Task<T> task)
             {
-                currentValue = await task;
+                currentValue = await task.ConfigureAwait(false);
             }
             else
             {
@@ -121,13 +121,13 @@ namespace ThePBone.BlueZNet
                 return;
             }
 
-            await Task.WhenAny([watchTask, Task.Delay(timeout, cancelToken)]);
+            await Task.WhenAny([watchTask, Task.Delay(timeout, cancelToken)]).ConfigureAwait(false);
             if (!watchTask.IsCompleted)
             {
                 throw new TimeoutException($"Timed out waiting for '{propertyName}' to change to '{value}'.");
             }
             
-            await watchTask;
+            await watchTask.ConfigureAwait(false);
         }
 
         private static (Task, IDisposable) WatchPropertyValueAsync<T,T2>(T2 obj, string propertyName, T value)
