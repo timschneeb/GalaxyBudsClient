@@ -15,6 +15,7 @@ using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Model.Config;
+using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
 using Serilog;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
@@ -64,9 +65,9 @@ public partial class MainView : UserControl
         Loc.LanguageUpdated += OnLanguageUpdated;
         
         var insetsManager = TopLevel.GetTopLevel(this)?.InsetsManager;
-        if (insetsManager != null)
+        if (insetsManager != null && PlatformUtils.IsAndroid)
         {
-            insetsManager.DisplayEdgeToEdge = true;
+            insetsManager.DisplayEdgeToEdgePreference = true;
         }
         
         var vm = new MainViewViewModel
