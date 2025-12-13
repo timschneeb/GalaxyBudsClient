@@ -2,7 +2,7 @@ name: Compile Windows binaries
 
 on:
   push:
-    branches: [ master, project-upgrade ]
+    branches: [ master, NET10 ]
   pull_request:
     branches: [ master ]
   release:
@@ -20,7 +20,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.101
+        global-json-file: global.json
        
     - name: Restore dependencies
       run: dotnet restore -r win-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
@@ -50,7 +50,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.101
+        global-json-file: global.json
        
     - name: Restore dependencies
       run: dotnet restore -r win-x86 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
