@@ -212,7 +212,7 @@ jobs:
         length: 6
     
     - name: Release on WinGet
-      uses: vedantmgoyal9/winget-releaser@main
+      uses: vedantmgoyal9/winget-releaser@v2
       with:
         identifier: timschneeb.GalaxyBudsClient
         version: '${{steps.last_release.outputs.tag}}-${{steps.short-sha.outputs.sha}}'

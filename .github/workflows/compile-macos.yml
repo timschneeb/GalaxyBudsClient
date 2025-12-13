@@ -28,7 +28,7 @@ jobs:
         global-json-file: global.json
 
     - name: Build NativeInterop.xcodeproj
-      uses: sersoft-gmbh/xcodebuild-action@v3
+      uses: sersoft-gmbh/xcodebuild-action@v4
       with:
         project: GalaxyBudsClient.Platform.OSX/Native/NativeInterop.xcodeproj
         scheme: NativeInterop
@@ -65,7 +65,7 @@ jobs:
         global-json-file: global.json
         
     - name: Build NativeInterop.xcodeproj
-      uses: sersoft-gmbh/xcodebuild-action@v3
+      uses: sersoft-gmbh/xcodebuild-action@v4
       with:
         project: GalaxyBudsClient.Platform.OSX/Native/NativeInterop.xcodeproj
         scheme: NativeInterop
@@ -102,7 +102,7 @@ jobs:
         global-json-file: global.json
         
     - name: Build NativeInterop.xcodeproj
-      uses: sersoft-gmbh/xcodebuild-action@v3
+      uses: sersoft-gmbh/xcodebuild-action@v4
       with:
         project: GalaxyBudsClient.Platform.OSX/Native/NativeInterop.xcodeproj
         scheme: NativeInterop
