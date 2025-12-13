@@ -2,22 +2,39 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using GalaxyBudsClient.Model.Constants;
 using ReactiveUI;
+using System.Text.Json.Serialization;
 
 namespace GalaxyBudsClient.Model.Config;
 
 // FIXME: Replace these classes with records.
 public partial class TouchAction : ReactiveObject
 {
-    [Reactive] private CustomActions _action;
-    [Reactive] private string _parameter = string.Empty;
+    [Reactive]
+    [property: JsonPropertyName("action")]
+    private CustomActions _action;
+    
+    [Reactive]
+    [property: JsonPropertyName("parameter")]
+    private string _parameter = string.Empty;
 }
 
 public partial class Device : ReactiveObject
 {
-    [Reactive] private Models _model = Models.NULL;
-    [Reactive] private string _macAddress = string.Empty;
-    [Reactive] private string _name = string.Empty;
-    [Reactive] private DeviceIds? _deviceColor;
+    [Reactive]
+    [property: JsonPropertyName("model")]
+    private Models _model = Models.NULL;
+    
+    [Reactive]
+    [property: JsonPropertyName("macAddress")]
+    private string _macAddress = string.Empty;
+    
+    [Reactive]
+    [property: JsonPropertyName("name")]
+    private string _name = string.Empty;
+    
+    [Reactive]
+    [property: JsonPropertyName("deviceColor")]
+    private DeviceIds? _deviceColor;
 }
     
 /*
