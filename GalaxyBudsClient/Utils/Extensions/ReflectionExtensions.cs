@@ -15,7 +15,7 @@ public static class ReflectionExtensions
     /// <returns>PropertyValue</returns>
     public static T? GetPropertyValue<T>(this object obj, string propName)
     {
-        if(obj == null) throw new ArgumentNullException(nameof(obj));
+        ArgumentNullException.ThrowIfNull(obj);
         var pi = obj.GetType().GetProperty(propName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
         if (pi == null) throw new ArgumentOutOfRangeException(nameof(propName), $"Property {propName} was not found in Type {obj.GetType().FullName}");
         return (T?)pi.GetValue(obj, null);
@@ -31,7 +31,7 @@ public static class ReflectionExtensions
     /// <returns>PropertyValue</returns>
     public static T? GetFieldValue<T>(this object obj, string propName)
     {
-        if(obj == null) throw new ArgumentNullException(nameof(obj));
+        ArgumentNullException.ThrowIfNull(obj);
         var t = obj.GetType();
         FieldInfo? fi = null;
         while (fi == null && t != null)
