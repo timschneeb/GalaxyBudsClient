@@ -16,14 +16,14 @@ jobs:
     runs-on: macos-14
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Setup Xcode
       uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: latest-stable
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         global-json-file: global.json
 
@@ -44,7 +44,7 @@ jobs:
       run: dotnet publish -o bin_osx -c Release --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: GalaxyBudsClient_osx-universal
         path: bin_osx/Galaxy Buds Manager-*.pkg
@@ -53,14 +53,14 @@ jobs:
     runs-on: macos-14
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Setup Xcode
       uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: latest-stable
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         global-json-file: global.json
         
@@ -81,7 +81,7 @@ jobs:
       run: dotnet publish -r osx-x64 -o bin_osxx64 -c Release --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: GalaxyBudsClient_osx-x64
         path: bin_osxx64/Galaxy Buds Manager-*.pkg
@@ -90,14 +90,14 @@ jobs:
     runs-on: macos-14
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Setup Xcode
       uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: latest-stable
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         global-json-file: global.json
         
@@ -118,7 +118,7 @@ jobs:
       run: dotnet publish -r osx-arm64 -o bin_osxarm64 -c Release --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: GalaxyBudsClient_osx-arm64
         path: bin_osxarm64/Galaxy Buds Manager-*.pkg
@@ -131,7 +131,7 @@ jobs:
      
     steps:
     - name: Download setup artifact (Universal)
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v7
       with:
         name: GalaxyBudsClient_osx-universal
 
@@ -139,7 +139,7 @@ jobs:
       run: mv "Galaxy Buds Manager"-*.pkg GalaxyBudsClient_macOS_universal.pkg
 
     - name: Download setup artifact (x64)
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v7
       with:
         name: GalaxyBudsClient_osx-x64
     
@@ -147,14 +147,14 @@ jobs:
       run: mv "Galaxy Buds Manager"-*.pkg GalaxyBudsClient_macOS_x64.pkg
 
     - name: Download artifact (arm64)
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v7
       with:
         name: GalaxyBudsClient_osx-arm64
 
     - name: Rename (arm64)
       run: mv "Galaxy Buds Manager"-*.pkg GalaxyBudsClient_macOS_arm64.pkg
 
-    - uses: AButler/upload-release-assets@v2.0
+    - uses: AButler/upload-release-assets@v3.0
       with:
         files: '*.pkg'
         repo-token: ${{ secrets.GH_TOKEN }}
