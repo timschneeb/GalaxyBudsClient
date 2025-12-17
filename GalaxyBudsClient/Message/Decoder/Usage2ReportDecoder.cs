@@ -111,6 +111,9 @@ public class Usage2ReportDecoder : BaseMessageDecoder
 
     public Usage2ReportDecoder Merge(Usage2ReportDecoder other)
     {
+        if (other == this)
+            return this;
+        
         foreach (var item in Items)
         {
             var otherItem = other.Items.FirstOrDefault(x => x.Id == item.Id);
