@@ -1,4 +1,4 @@
-﻿// 32feet.NET - Personal Area Networking for .NET
+// 32feet.NET - Personal Area Networking for .NET
 //
 // InTheHand.Net.Widcomm.WidcommSppClient
 // 
@@ -112,10 +112,7 @@ namespace InTheHand.Net.Bluetooth.Widcomm
             IntPtr deviceName, short com_port, SPP_STATE_CODE state)
         {
             try {
-                Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                    "{0} HandleServerStateChange: state: {1} = 0x{2:X}, COM: {3}",
-                    DateTime.Now.TimeOfDay.ToString(),
-                    state, (int)state, com_port));
+                Debug.WriteLine($"{DateTime.Now.TimeOfDay} HandleServerStateChange: state: {state} = 0x{(int)state:X}, COM: {com_port}");
                 WidcommUtils.GetBluetoothCallbackValues(bdAddr, devClass, deviceName,
                     out _statusBda, out _statusDevClass, out _statusName);
                 _statusComPort = com_port;

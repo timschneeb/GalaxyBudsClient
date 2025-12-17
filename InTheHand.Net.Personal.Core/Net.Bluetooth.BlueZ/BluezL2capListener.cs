@@ -64,8 +64,8 @@ namespace InTheHand.Net.Bluetooth.BlueZ
             int used;
             IntPtr rec = NativeMethods.sdp_extract_pdu(sdpRecord, sdpRecord.Length, out used);
             if (used != sdpRecord.Length)
-                throw new InvalidOperationException(string.Format(CultureInfo.InvariantCulture,
-                    "sdp_extract_pdu had {0} but only used {1}", sdpRecord.Length, used));
+                throw new InvalidOperationException(
+                    $"sdp_extract_pdu had {sdpRecord.Length} but only used {used}");
             _sdpSession = AddRecord(rec);
             //???NativeMethods.sdp_free_record(pRec);
             Console.WriteLine("Done SetService");

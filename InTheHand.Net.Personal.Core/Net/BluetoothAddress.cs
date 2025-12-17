@@ -656,17 +656,17 @@ namespace InTheHand.Net
 
         #region ISerializable Members
 #if !NETCF
-        [System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.LinkDemand,
-            SerializationFormatter = true)]
+        // NOTE: ISerializable and binary formatter-based serialization is obsolete in .NET 8+
+        // Keeping for backward compatibility but marked as obsolete
+        [Obsolete("Binary formatter serialization is obsolete. Use XML or JSON serialization instead.")]
         private BluetoothAddress(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {
-            String text = info.GetString("dataString");
+            String text = info.GetString("dataString")!;
             BluetoothAddress tmpAddr = BluetoothAddress.Parse(text);
             this.data = tmpAddr.data;
         }
 
-        [System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.LinkDemand,
-            SerializationFormatter = true)]
+        [Obsolete("Binary formatter serialization is obsolete. Use XML or JSON serialization instead.")]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {
             // Serialize the address -- in text format, to avoid any endian or length 

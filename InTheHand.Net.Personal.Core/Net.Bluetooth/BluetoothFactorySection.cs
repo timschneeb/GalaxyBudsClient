@@ -47,9 +47,7 @@ namespace InTheHand.Net.Bluetooth
             string slConcat = "{" + string.Join(", ", Array.ConvertAll<BluetoothStackConfigElement, string>(arr,
                 delegate(BluetoothStackConfigElement inp) { return (inp == null) ? "(null)" : inp.Name; })) + "}";
             //
-            return string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                "[BluetoothFactorySection: OneStackOnly: {0}, ReportAllErrors: {1}, StackList: {2}, FooBar1: {3}]",
-                this.OneStackOnly, this.ReportAllErrors, slConcat, this.FooBar1);
+            return $"[BluetoothFactorySection: OneStackOnly: {this.OneStackOnly}, ReportAllErrors: {this.ReportAllErrors}, StackList: {slConcat}, FooBar1: {this.FooBar1}]";
         }
 
         //--------

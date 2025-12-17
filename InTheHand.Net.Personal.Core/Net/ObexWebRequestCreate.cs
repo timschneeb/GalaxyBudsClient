@@ -7,14 +7,15 @@
 
 using System;
 using System.Net;
+#pragma warning disable SYSLIB0014
 
 
 namespace InTheHand.Net
 {
-    /// <summary>
-    /// Used to create a new web request for obex uri scheme
     /// </summary>
+#pragma warning disable SYSLIB0014 // Type or member is obsolete
     internal class ObexWebRequestCreate : IWebRequestCreate
+#pragma warning restore SYSLIB0014 // Type or member is obsolete
     {
         #region IWebRequestCreate Members
 

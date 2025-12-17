@@ -52,7 +52,7 @@ namespace InTheHand.Net.Bluetooth.BlueSoleil
         }
 
         #region Serializable
-        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.SerializationFormatter)]
+        [Obsolete("Binary formatter serialization is obsolete.")]
         [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         protected BlueSoleilSocketException(SerializationInfo serializationInfo, StreamingContext streamingContext)
             : base(serializationInfo, streamingContext)
@@ -61,7 +61,7 @@ namespace InTheHand.Net.Bluetooth.BlueSoleil
             Set(iError);
         }
 
-        [SecurityPermission(SecurityAction.Demand, Flags = SecurityPermissionFlag.SerializationFormatter)]
+        [Obsolete("Binary formatter serialization is obsolete.")]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             base.GetObjectData(info, context);
@@ -109,9 +109,7 @@ namespace InTheHand.Net.Bluetooth.BlueSoleil
             get
             {
                 return base.Message
-                + string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                    " (BlueSoleil: {0} (0x{1:X4})).", BlueSoleilErrorCodeEnum,
-                    unchecked((UInt32)BlueSoleilErrorCode));
+                    + $" (BlueSoleil: {BlueSoleilErrorCodeEnum} (0x{unchecked((UInt32)BlueSoleilErrorCode):X4})).";
             }
         }
     }

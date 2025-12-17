@@ -378,8 +378,7 @@ namespace InTheHand.Net.Bluetooth.Widcomm
                 try {
                     status = CheckLibraryDependency(moduleName);
                 } catch (Exception ex) {
-                    string msg1 = string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                        "'{0}' status exception: {1}!", moduleName, ex);
+                    string msg1 = $"'{moduleName}' status exception: {ex}!";
                     Utils.MiscUtils.Trace_WriteLine(msg1);
                     Debug.Fail(msg1);
                     if (wrapException != null)
@@ -388,8 +387,7 @@ namespace InTheHand.Net.Bluetooth.Widcomm
                     Debug.Assert(false, msg1);
                     //return status; Or continue to check next dependency
                 }
-                string msg = string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                        "Dependency DLL '{0}' status: {1}.", moduleName, status);
+                string msg = $"Dependency DLL '{moduleName}' status: {status}.";
                 Utils.MiscUtils.Trace_WriteLine(msg);
                 if (wrapException != null) {
                     if (!IsFound(status))
@@ -771,8 +769,7 @@ namespace InTheHand.Net.Bluetooth.Widcomm
                     ret = BOND_RETURN_CODE.SUCCESS;
                     break;
                 default:
-                    Debug.Fail(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                        "Unknown BOND_RETURN_CODE__WCE code: 0x{1:X}", wce, (int)wce));
+                    Debug.Fail($"Unknown BOND_RETURN_CODE__WCE code: 0x{(int)wce:X}");
                     ret = (BOND_RETURN_CODE)99;
                     break;
             }
@@ -899,9 +896,9 @@ namespace InTheHand.Net.Bluetooth.Widcomm
     /// and:
     /// "Values defined in BtIfClasses.h are:
     /// <code lang="none">
-    /// • DEVST_DOWN — The stack is down and no longer available.
-    /// • DEVST_UNLOADED — The stack is down, but should be available again after DEVST_RELOADED.
-    /// • DEVST_RELOADED — The stack has been successfully reloaded."
+    /// ï¿½ DEVST_DOWN ï¿½ The stack is down and no longer available.
+    /// ï¿½ DEVST_UNLOADED ï¿½ The stack is down, but should be available again after DEVST_RELOADED.
+    /// ï¿½ DEVST_RELOADED ï¿½ The stack has been successfully reloaded."
     /// </code>
     /// </para>
     /// </remarks>

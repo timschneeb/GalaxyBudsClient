@@ -3,7 +3,7 @@
 
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
-        <nullable>enable</nullable>
+        <Nullable>enable</Nullable>
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU</Platforms>
         <LangVersion>latest</LangVersion>

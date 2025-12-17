@@ -443,11 +443,7 @@ typedef struct {
             //
             public override string ToString()
             {
-                return string.Format(CultureInfo.InvariantCulture,
-                    "rfcomm_dev_info id: {0}, flags: {1}, state: {2}, src: {3}, dst: {4}, channel: {5}, ",
-                    id, flags, state, BitConverter.ToString(src),
-                    BitConverter.ToString(dst), channel);
-            }
+                return $"rfcomm_dev_info id: {id}, flags: {flags}, state: {state}, src: {BitConverter.ToString(src)}, dst: {BitConverter.ToString(dst)}, channel: {channel}, ";
         };
 
         [StructLayout(LayoutKind.Sequential, Size = 4)]
@@ -474,9 +470,8 @@ typedef struct {
             {
                 int actual = Marshal.SizeOf(stru);
                 if (actual != expectedSize)
-                    throw new InvalidOperationException(string.Format(CultureInfo.InvariantCulture,
-                        "Wrong STRUCT size {0}, expected {1} but was {2}.",
-                       stru.GetType().Name, expectedSize, actual));
+                    throw new InvalidOperationException(
+                        $"Wrong STRUCT size {stru.GetType().Name}, expected {expectedSize} but was {actual}.");
             }
         }
 

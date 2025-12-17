@@ -22,6 +22,11 @@ namespace Utils
                 format, args));
         }
 
+        internal static void Trace_WriteLine(FormattableString message)
+        {
+            Trace_WriteLine(message.ToString(System.Globalization.CultureInfo.InvariantCulture));
+        }
+
         // (No Trace.Fail on NETCF nor Android)
         internal static void Trace_Fail(string message)
         {

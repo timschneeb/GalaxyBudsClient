@@ -543,11 +543,8 @@ namespace InTheHand.Net.Bluetooth.Factory
         {
             AsyncResultNoResult sacAr; // Call SetAsCompleted outside the lock.
             lock (_lockKey) {
-                Debug.WriteLine(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                    "CONNECTED {0}; m_state: {1}; m_arConnect {2}, IsCompleted: {3}.",
-                    DebugId, m_state_,
-                    (m_arConnect == null) ? "(null)" : "(set)",
-                    (m_arConnect == null) ? "n/a" : m_arConnect.IsCompleted.ToString()));
+                Debug.WriteLine(
+                    $"CONNECTED {DebugId}; m_state: {m_state_}; m_arConnect {((m_arConnect == null) ? "(null)" : "(set)")}, IsCompleted: {((m_arConnect == null) ? "n/a" : m_arConnect.IsCompleted.ToString())}.");
                 if (m_arConnect != null && !m_arConnect.IsCompleted) {
                     // Success!
                     m_state_ = State.Connected;
@@ -618,10 +615,8 @@ namespace InTheHand.Net.Bluetooth.Factory
             ReadAsyncResult[] allRead = null;
             WriteAsyncResult[] allWrite = null;
             lock (_lockKey) {
-                Debug.WriteLine(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                    "CONNECT_ERR {0}, m_state: {1}, m_arConnect {2}",
-                    DebugId, m_state_,
-                    (m_arConnect == null) ? "(null)" : "(set)"));
+                Debug.WriteLine(
+                    $"CONNECT_ERR {DebugId}, m_state: {m_state_}, m_arConnect {((m_arConnect == null) ? "(null)" : "(set)")}");
                 if (m_arConnect != null) {
                     Debug.Assert(m_state_ == State.New, eventId + ": m_state wanted: " + "New" + ", but was: " + m_state_);
                     Utils.MiscUtils.Trace_WriteLine("HandlePortEvent: connect failed.");

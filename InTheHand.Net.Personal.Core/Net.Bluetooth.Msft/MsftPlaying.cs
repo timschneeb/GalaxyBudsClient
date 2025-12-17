@@ -1,4 +1,4 @@
-﻿// 32feet.NET - Personal Area Networking for .NET
+// 32feet.NET - Personal Area Networking for .NET
 //
 // InTheHand.Net.Bluetooth.Msft.BluetoothDeviceInfo
 // 
@@ -56,8 +56,7 @@ namespace InTheHand.Net.Bluetooth.Msft
                     break;
                 }
                 uint ctl = IOCTL_BTH__BASE | offs;
-                Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                    "i: {0,2}, ctl: 0x{1:X}.", i, ctl));
+                Debug.WriteLine($"i: {i,2}, ctl: 0x{ctl:X}.");
                 TryAnIoctl(ctl, handle);
             }
         }
@@ -73,15 +72,12 @@ namespace InTheHand.Net.Bluetooth.Msft
                 buf, buf.Length, out bytesReturned, IntPtr.Zero);
             if (!success) {
                 int gle = Marshal.GetLastWin32Error();
-                Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                    "failure: {0} = 0x{0:X}.", gle));
+                Debug.WriteLine($"failure: {gle} = 0x{gle:X}.");
             } else {
                 const int MaxPrintLen = 32;
                 var tmpOut = new byte[Math.Min(MaxPrintLen, bytesReturned)];
                 Array.Copy(buf, 0, tmpOut, 0, tmpOut.Length);
-                Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                    "success: outLen: {0}, >>{1}{2}<<", bytesReturned,
-                    BitConverter.ToString(tmpOut), bytesReturned > MaxPrintLen ? "..." : ""));
+                Debug.WriteLine($"success: outLen: {bytesReturned}, >>{BitConverter.ToString(tmpOut)}{(bytesReturned > MaxPrintLen ? "..." : "")}<<");
             }
         }
 

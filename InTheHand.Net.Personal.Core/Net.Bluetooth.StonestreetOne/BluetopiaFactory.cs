@@ -1,4 +1,4 @@
-﻿// 32feet.NET - Personal Area Networking for .NET
+// 32feet.NET - Personal Area Networking for .NET
 //
 // Net.Bluetooth.StonestreetOne.BluetopiaFactory
 // 
@@ -397,8 +397,7 @@ namespace InTheHand.Net.Bluetooth.StonestreetOne
                 addrList = _nameQueryList.Keys;
                 _nameQueryList.Clear();
             }
-            Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                "CancelAllQueryNames: {0} devices.", addrList.Count));
+            Debug.WriteLine($"CancelAllQueryNames: {addrList.Count} devices.");
             foreach (var cur in addrList) {
                 var ret = NativeMethods.GAP_Cancel_Query_Remote_Device_Name(
                     this.StackId, BluetopiaUtils.BluetoothAddressAsInteger(cur));
