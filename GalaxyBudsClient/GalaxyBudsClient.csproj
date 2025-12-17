@@ -20,7 +20,7 @@
     <PropertyGroup Condition="'$(TargetFramework)'=='net10.0-windows10.0.19041'">
         <OutputType>WinExe</OutputType>
 
-        <!-- Causes compiler crashes on Windows: https://github.com/dotnet/runtime/issues/121596 -->
+        <!-- Causes crashes on Windows: https://github.com/dotnet/runtime/issues/121596 -->
         <CetCompat>false</CetCompat>
     </PropertyGroup>
     <PropertyGroup Condition="'$(TargetFramework)'=='net10.0-macos'">
