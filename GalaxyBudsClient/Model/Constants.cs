@@ -53,7 +53,9 @@ namespace GalaxyBudsClient.Model
         public enum Locales
         {
             [Description("English")]
-            en,
+            en,            
+			[Description("Farsi(Persian)")]
+            fa,  
             [Description("German")]
             de,
             [Description("Spanish")]
