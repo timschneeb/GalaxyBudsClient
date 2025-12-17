@@ -70,9 +70,7 @@
                       Icon="{OnPlatform '/Resources/icon_white_outlined_multi_tray.ico', Windows='/Resources/icon_white_outlined_single_tray.ico', macOS='/Resources/icon_black_tray.ico'}"
                       MacOSProperties.IsTemplateIcon="true"
                       ToolTipText="Galaxy Buds"
-                      Clicked="TrayIcon_OnClicked"
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Center" />
+                      Clicked="TrayIcon_OnClicked" />
         </TrayIcons>
     </TrayIcon.Icons>
 </Application>
