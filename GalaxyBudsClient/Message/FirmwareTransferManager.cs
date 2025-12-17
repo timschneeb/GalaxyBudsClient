@@ -103,132 +103,140 @@ public class FirmwareTransferManager
 
     private async void OnMessageDecoded(object? sender, BaseMessageDecoder? e)
     {
-        if (_binary == null)
+        try
         {
-            return;
-        }
-            
-        switch (e)
-        {
-            case FotaSessionDecoder session:
+            if (_binary == null)
             {
-                Log.Debug("FirmwareTransferManager.OnMessageReceived: Session result is {Code}", session.ResultCode);
-                
-                _sessionTimeout.Stop();
-                if (session.ResultCode != 0)
-                {
-                    Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.SessionFail, 
-                        string.Format(Strings.FwFailSession, session.ResultCode)));
-                }
-                else
-                {
-                    _controlTimeout.Start();
-                }
-
-                break;
+                return;
             }
-            case FotaControlDecoder control:
-                Log.Debug("FirmwareTransferManager.OnMessageReceived: Control block has CID: {Id}", control.ControlId);
-                switch (control.ControlId)
+            
+            switch (e)
+            {
+                // ... (omitted code logic remains same, just wrapping) ...
+                case FotaSessionDecoder session:
                 {
-                    case FirmwareConstants.ControlIds.SendMtu:
-                        _controlTimeout.Stop();
-                        _mtuSize = control.MtuSize;
-                        MtuChanged?.Invoke(this, control.MtuSize);
-
-                        await BluetoothImpl.Instance.SendAsync(new FotaControlEncoder
-                        {
-                            ControlId = control.ControlId,
-                            Parameter = control.MtuSize
-                        });
-                        Log.Debug("FirmwareTransferManager.OnMessageReceived: MTU size set to {MtuSize}", control.MtuSize);
-                        break;
-                    case FirmwareConstants.ControlIds.ReadyToDownload:
-                        _currentSegment = control.Id;
-                        CurrentSegmentIdChanged?.Invoke(this, control.Id);
-                        
-                        await BluetoothImpl.Instance.SendAsync(new FotaControlEncoder
-                        {
-                            ControlId = control.ControlId,
-                            Parameter = control.Id
-                        });
-                        Log.Debug("FirmwareTransferManager.OnMessageReceived: Ready to download segment {Id}", control.Id);
-                        break;
-                }
-                break;
-            case FotaDownloadDataDecoder download:
-                State = States.Uploading;
-
-                var segment = _binary.GetSegmentById(_currentSegment);
-                CurrentBlockChanged?.Invoke(this, new FirmwareBlockChangedEventArgs(_currentSegment, (int)download.ReceivedOffset, 
-                    (int)download.ReceivedOffset + _mtuSize * download.RequestPacketNumber, download.RequestPacketNumber, (int?)segment?.Size ?? 0, (int?)segment?.Crc32 ?? 0));
-
-                for (byte i2 = 0; i2 < download.RequestPacketNumber; i2++)
-                {   
-                    var downloadEncoder = new FotaDownloadDataEncoder
+                    Log.Debug("FirmwareTransferManager.OnMessageReceived: Session result is {Code}", session.ResultCode);
+                    
+                    _sessionTimeout.Stop();
+                    if (session.ResultCode != 0)
                     {
-                        Binary = _binary,
-                        EntryId = _currentSegment,
-                        Offset = (int)download.ReceivedOffset + _mtuSize * i2,
-                        MtuSize = _mtuSize
-                    };
-                    _lastFragment = downloadEncoder.IsLastFragment();
-                    _lastSegmentOffset = downloadEncoder.Offset;
-                        
-                    await BluetoothImpl.Instance.SendAsync(downloadEncoder);
-                }
-                break;
-            case FotaUpdateDecoder update:
-                switch (update.UpdateId)
-                {
-                    case FirmwareConstants.UpdateIds.Percent:
-                        _currentProgress = update.Percent;
-                        ProgressChanged?.Invoke(this, new FirmwareProgressEventArgs(
-                            _currentProgress, 
-                            (long)Math.Round(_binary.TotalSize * (_currentProgress / 100f)), 
-                            _binary.TotalSize));
-                        Log.Debug("FirmwareTransferManager.OnMessageReceived: Copy progress: {Percent}% ({Done}KB/{TotalSize}KB)", 
-                            update.Percent, 
-                            (long)Math.Round(_binary.TotalSize * (_currentProgress / 100f)) / 1000f, 
-                            _binary.TotalSize / 1000f);
-                        break;
-                    case FirmwareConstants.UpdateIds.StateChange:
-                        await BluetoothImpl.Instance.SendResponseAsync(MsgIds.FOTA_UPDATE, 1);
-                        Log.Debug("FirmwareTransferManager.OnMessageReceived: State changed: {State}, result code: {ResultCode}", 
-                            update.State, update.ResultCode);
+                        Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.SessionFail, 
+                            string.Format(Strings.FwFailSession, session.ResultCode)));
+                    }
+                    else
+                    {
+                        _controlTimeout.Start();
+                    }
 
-                        if (update.State == 0)
-                        {
-                            Log.Debug("FirmwareTransferManager.OnMessageReceived: Transfer complete (FOTA_STATE_CHANGE). The device will now proceed with the flashing process on its own.");
-                            Finished?.Invoke(this, EventArgs.Empty);
-                            Cancel();
-                        }
-                        else
-                        {
-                            Log.Debug("FirmwareTransferManager.OnMessageReceived: Copy failed, result code: {Code}", update.ResultCode);
-                            Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.CopyFail, 
-                                string.Format(Strings.FwFailCopy, update.ResultCode)));
-                        }
-                        break;
+                    break;
                 }
-                break;
-            case FotaResultDecoder result:
-                await BluetoothImpl.Instance.SendResponseAsync(MsgIds.FOTA_RESULT, 1);
-                Log.Debug("FirmwareTransferManager.OnMessageReceived: Finished. Result: {Result}, error code: {Code}", 
-                    result.Result, result.ErrorCode);
+                case FotaControlDecoder control:
+                    Log.Debug("FirmwareTransferManager.OnMessageReceived: Control block has CID: {Id}", control.ControlId);
+                    switch (control.ControlId)
+                    {
+                        case FirmwareConstants.ControlIds.SendMtu:
+                            _controlTimeout.Stop();
+                            _mtuSize = control.MtuSize;
+                            MtuChanged?.Invoke(this, control.MtuSize);
 
-                if (result.Result == 0)
-                {
-                    Log.Debug("FirmwareTransferManager.OnMessageReceived: Transfer complete (FOTA_RESULT). The device will now proceed with the flashing process on its own.");
-                    Finished?.Invoke(this, EventArgs.Empty);
-                    Cancel();
-                }
-                else
-                {
-                    Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.VerifyFail, 
-                        string.Format(Strings.FwFailVerify, result.ErrorCode)));
-                }
-                break;
+                            await BluetoothImpl.Instance.SendAsync(new FotaControlEncoder
+                            {
+                                ControlId = control.ControlId,
+                                Parameter = control.MtuSize
+                            });
+                            Log.Debug("FirmwareTransferManager.OnMessageReceived: MTU size set to {MtuSize}", control.MtuSize);
+                            break;
+                        case FirmwareConstants.ControlIds.ReadyToDownload:
+                            _currentSegment = control.Id;
+                            CurrentSegmentIdChanged?.Invoke(this, control.Id);
+                            
+                            await BluetoothImpl.Instance.SendAsync(new FotaControlEncoder
+                            {
+                                ControlId = control.ControlId,
+                                Parameter = control.Id
+                            });
+                            Log.Debug("FirmwareTransferManager.OnMessageReceived: Ready to download segment {Id}", control.Id);
+                            break;
+                    }
+                    break;
+                case FotaDownloadDataDecoder download:
+                    State = States.Uploading;
+
+                    var segment = _binary.GetSegmentById(_currentSegment);
+                    CurrentBlockChanged?.Invoke(this, new FirmwareBlockChangedEventArgs(_currentSegment, (int)download.ReceivedOffset, 
+                        (int)download.ReceivedOffset + _mtuSize * download.RequestPacketNumber, download.RequestPacketNumber, (int?)segment?.Size ?? 0, (int?)segment?.Crc32 ?? 0));
+
+                    for (byte i2 = 0; i2 < download.RequestPacketNumber; i2++)
+                    {   
+                        var downloadEncoder = new FotaDownloadDataEncoder
+                        {
+                            Binary = _binary,
+                            EntryId = _currentSegment,
+                            Offset = (int)download.ReceivedOffset + _mtuSize * i2,
+                            MtuSize = _mtuSize
+                        };
+                        _lastFragment = downloadEncoder.IsLastFragment();
+                        _lastSegmentOffset = downloadEncoder.Offset;
+                            
+                        await BluetoothImpl.Instance.SendAsync(downloadEncoder);
+                    }
+                    break;
+                case FotaUpdateDecoder update:
+                    switch (update.UpdateId)
+                    {
+                        case FirmwareConstants.UpdateIds.Percent:
+                            _currentProgress = update.Percent;
+                            ProgressChanged?.Invoke(this, new FirmwareProgressEventArgs(
+                                _currentProgress, 
+                                (long)Math.Round(_binary.TotalSize * (_currentProgress / 100f)), 
+                                _binary.TotalSize));
+                            Log.Debug("FirmwareTransferManager.OnMessageReceived: Copy progress: {Percent}% ({Done}KB/{TotalSize}KB)", 
+                                update.Percent, 
+                                (long)Math.Round(_binary.TotalSize * (_currentProgress / 100f)) / 1000f, 
+                                _binary.TotalSize / 1000f);
+                            break;
+                        case FirmwareConstants.UpdateIds.StateChange:
+                            await BluetoothImpl.Instance.SendResponseAsync(MsgIds.FOTA_UPDATE, 1);
+                            Log.Debug("FirmwareTransferManager.OnMessageReceived: State changed: {State}, result code: {ResultCode}", 
+                                update.State, update.ResultCode);
+
+                            if (update.State == 0)
+                            {
+                                Log.Debug("FirmwareTransferManager.OnMessageReceived: Transfer complete (FOTA_STATE_CHANGE). The device will now proceed with the flashing process on its own.");
+                                Finished?.Invoke(this, EventArgs.Empty);
+                                await CancelAsync();
+                            }
+                            else
+                            {
+                                Log.Debug("FirmwareTransferManager.OnMessageReceived: Copy failed, result code: {Code}", update.ResultCode);
+                                Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.CopyFail, 
+                                    string.Format(Strings.FwFailCopy, update.ResultCode)));
+                            }
+                            break;
+                    }
+                    break;
+                case FotaResultDecoder result:
+                    await BluetoothImpl.Instance.SendResponseAsync(MsgIds.FOTA_RESULT, 1);
+                    Log.Debug("FirmwareTransferManager.OnMessageReceived: Finished. Result: {Result}, error code: {Code}", 
+                        result.Result, result.ErrorCode);
+
+                    if (result.Result == 0)
+                    {
+                        Log.Debug("FirmwareTransferManager.OnMessageReceived: Transfer complete (FOTA_RESULT). The device will now proceed with the flashing process on its own.");
+                        Finished?.Invoke(this, EventArgs.Empty);
+                        await CancelAsync();
+                    }
+                    else
+                    {
+                        Error?.Invoke(this, new FirmwareTransferException(FirmwareTransferException.ErrorCodes.VerifyFail, 
+                            string.Format(Strings.FwFailVerify, result.ErrorCode)));
+                    }
+                    break;
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "FirmwareTransferManager.OnMessageDecoded");
         }
     }
 
@@ -255,7 +263,7 @@ public class FirmwareTransferManager
         _binary = binary;
             
         State = States.InitializingSession;
-            
+        
         await BluetoothImpl.Instance.SendRequestAsync(MsgIds.FOTA_OPEN, _binary.SerializeTable());
         _sessionTimeout.Start();
     }
@@ -265,7 +273,7 @@ public class FirmwareTransferManager
         return State != States.Ready;
     }
         
-    public async void Cancel()
+    public async Task CancelAsync()
     {
         _binary = null;
         _mtuSize = 0;

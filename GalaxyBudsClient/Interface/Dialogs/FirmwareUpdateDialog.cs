@@ -61,7 +61,7 @@ public class FirmwareUpdateDialog : TaskDialog
         FirmwareTransferManager.Instance.MtuChanged -= OnMtuChanged;
         FirmwareTransferManager.Instance.CurrentBlockChanged -= OnCurrentBlockChanged;
         
-        FirmwareTransferManager.Instance.Cancel();
+        _ = FirmwareTransferManager.Instance.CancelAsync();
         base.OnClosing(args);
     }
 
