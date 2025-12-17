@@ -9,23 +9,7 @@ namespace ThePBone.MprisClient
 {
     public class MprisClient
     {
-        public IPlayer? Player
-        {
-            private set => _player = value;
-            get
-            {
-                try
-                {
-                    UpdateTarget();
-                }
-                catch(DBusException ex)
-                {                        
-                    Log.Error(ex, "MprisClient: Failed to update player target");
-                    return null;
-                }
-                return _player;
-            }
-        }
+        public IPlayer? Player => _player;
 
         private IPlayer? _player;
         private IDBus _dbus;
@@ -45,23 +29,29 @@ namespace ThePBone.MprisClient
             };
          
             _connection = new Connection(clientOptions);
-            _connection.ConnectAsync();
-         
-            _dbus = _connection.CreateProxy<IDBus>("org.freedesktop.DBus", "/");
+        }
 
-            UpdateTarget();
+        public async Task InitializeAsync()
+        {
+            await _connection.ConnectAsync().ConfigureAwait(false);
+            _dbus = _connection.CreateProxy<IDBus>("org.freedesktop.DBus", "/");
+            await UpdateTargetAsync().ConfigureAwait(false);
         }
         
-        private async void UpdateTarget()
+        public async Task UpdateTargetAsync()
         {
-            var names = await _dbus.ListNamesAsync();
+            if (_dbus == null) return;
+
+            var names = await _dbus.ListNamesAsync().ConfigureAwait(false);
             foreach (var name in names)
             {
                 if (name.StartsWith("org.mpris.MediaPlayer2"))
                 {
                     try
                     {
+                        // TODO: Better logic to select the "best" player if multiple exist?
                         _player = _connection.CreateProxy<IPlayer>(name, "/org/mpris/MediaPlayer2");
+                        return; // Found one, stop searching
                     }
                     catch (DBusException)
                     {
