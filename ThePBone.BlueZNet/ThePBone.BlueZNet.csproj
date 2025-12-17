@@ -1,10 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <RootNamespace>ThePBone.BlueZNet</RootNamespace>
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU</Platforms>
         <LangVersion>latest</LangVersion>
+        
+        <!-- Code Analysis -->
+        <AnalysisLevel>latest</AnalysisLevel>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
     </PropertyGroup>
     
     <PropertyGroup>
@@ -12,7 +16,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Serilog" Version="3.1.1" />
-        <PackageReference Include="Tmds.DBus" Version="0.16.0" />
+        <PackageReference Include="Serilog" Version="4.3.0" />
+        <PackageReference Include="Tmds.DBus" Version="0.21.2" />
     </ItemGroup>
 </Project>

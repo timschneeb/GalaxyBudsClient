@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <Nullable>enable</Nullable>
         <RootNamespace>ThePBone.MprisClient</RootNamespace>
         <Configurations>Debug;Release</Configurations>
@@ -10,7 +10,7 @@
     </PropertyGroup>
     
     <ItemGroup>
-      <PackageReference Include="Serilog" Version="3.1.1" />
-      <PackageReference Include="Tmds.DBus" Version="0.16.0" />
+      <PackageReference Include="Serilog" Version="4.3.0" />
+      <PackageReference Include="Tmds.DBus" Version="0.21.2" />
     </ItemGroup>
 </Project>

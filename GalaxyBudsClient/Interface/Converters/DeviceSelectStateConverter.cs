@@ -43,7 +43,7 @@ public class DeviceSelectStateConverter : IMultiValueConverter
             DeviceStateConverterTarget.Icon => new SymbolIconSource
             {
                 Symbol = isSelected ? Symbol.CheckboxChecked : Symbol.CheckboxUnchecked,
-                IsFilled = isSelected
+                IconVariant = isSelected ? IconVariant.Filled : IconVariant.Regular
             },
             DeviceStateConverterTarget.Bool => isSelected,
             DeviceStateConverterTarget.BoolInverted => !isSelected,

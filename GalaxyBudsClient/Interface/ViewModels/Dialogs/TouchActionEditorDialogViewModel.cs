@@ -10,11 +10,10 @@ using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Extensions;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Dialogs;
 
-public class TouchActionEditorDialogViewModel : ViewModelBase
+public partial class TouchActionEditorDialogViewModel : ViewModelBase
 {
     public TouchActionEditorDialogViewModel() : this(null) {}
 
@@ -39,14 +38,14 @@ public class TouchActionEditorDialogViewModel : ViewModelBase
         }
     }
 
-    [Reactive] public CustomActions ActionMode { set; get; }
-    [Reactive] public Event EventParameter { set; get; } = Event.None;
-    [Reactive] public string PathParameter { set; get; } = string.Empty;
-    [Reactive] public string HotkeyParameter { set; get; } = string.Empty;
+    [Reactive] private CustomActions _actionMode;
+    [Reactive] private Event _eventParameter = Event.None;
+    [Reactive] private string _pathParameter = string.Empty;
+    [Reactive] private string _hotkeyParameter = string.Empty;
 
-    [Reactive] public bool IsEventParameterEditable { set; get; }
-    [Reactive] public bool IsPathParameterEditable { set; get; }
-    [Reactive] public bool IsHotkeyParameterEditable { set; get; }
+    [Reactive] private bool _isEventParameterEditable;
+    [Reactive] private bool _isPathParameterEditable;
+    [Reactive] private bool _isHotkeyParameterEditable;
         
     public IEnumerable<CustomActions> ActionModeSource =>
         CustomActionsExtensions.GetValues()

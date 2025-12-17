@@ -6,19 +6,18 @@ using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Controls;
 
-public class EarbudCompactStatusUnitViewModel : ViewModelBase
+public partial class EarbudCompactStatusUnitViewModel : ViewModelBase
 {
-    [Reactive] public bool IsLeftOnline { set; get; }
-    [Reactive] public bool IsRightOnline { set; get; }
-    [Reactive] public int LeftBattery { set; get; }
-    [Reactive] public int RightBattery { set; get; }
-    [Reactive] public int? CaseBattery { set; get; }
+    [Reactive] private bool _isLeftOnline;
+    [Reactive] private bool _isRightOnline;
+    [Reactive] private int _leftBattery;
+    [Reactive] private int _rightBattery;
+    [Reactive] private int? _caseBattery;
     
-    [Reactive] public GridLength CenterColumnWidth { set; get; } = new(75);
+    [Reactive] private GridLength _centerColumnWidth = new(75);
     
     public EarbudCompactStatusUnitViewModel()
     {

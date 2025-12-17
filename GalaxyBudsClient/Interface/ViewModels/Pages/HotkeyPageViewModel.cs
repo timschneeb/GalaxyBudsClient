@@ -5,16 +5,15 @@ using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Platform;
-using ReactiveUI.Fody.Helpers;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
-public class HotkeyPageViewModel : SubPageViewModelBase
+public partial class HotkeyPageViewModel : SubPageViewModelBase
 {
     public override Control CreateView() => new HotkeyPage { DataContext = this };
     public override string TitleKey => Generated.I18N.Keys.HotkeyHeader;
-    [Reactive] public bool NoHotkeys { private set; get; }
+    [Reactive(SetModifier = AccessModifier.Private)] private bool _noHotkeys;
 
     public HotkeyPageViewModel()
     {

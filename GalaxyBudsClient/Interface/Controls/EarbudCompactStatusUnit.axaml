@@ -91,5 +91,5 @@
 
     <controls:EmptyView IsVisible="{Binding !IsConnected, Source={x:Static platform:BluetoothImpl.Instance}}"
                         Text="{ext:Translate {x:Static i18N:Keys.ConnlostDisconnected}}"
-                        Symbol="WifiOff" />
+                        Symbol="WiFiOff" />
 </Panel>

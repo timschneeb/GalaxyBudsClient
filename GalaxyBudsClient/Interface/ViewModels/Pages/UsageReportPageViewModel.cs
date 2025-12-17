@@ -7,18 +7,17 @@ using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
-public class UsageReportPageViewModel : SubPageViewModelBase
+public partial class UsageReportPageViewModel : SubPageViewModelBase
 {
     public override Control CreateView() => new UsageReportPage { DataContext = this };
     public override string TitleKey => Keys.UsageReportsHeader;
     
-    [Reactive] public string? MeteringDescription { private set; get; } = Strings.NotAvailable;
+    [Reactive(SetModifier = AccessModifier.Private)] private string? _meteringDescription = Strings.NotAvailable;
     public ObservableCollection<ItemViewHolder> MeteringItems { get; } = [];
-    [Reactive] public string? UsageDescription { private set; get; } = Strings.NotAvailable;
+    [Reactive(SetModifier = AccessModifier.Private)] private string? _usageDescription = Strings.NotAvailable;
     public ObservableCollection<ItemViewHolder> UsageItems { get; } = [];
     
     private Usage2ReportDecoder? _usageReport;
@@ -102,5 +101,4 @@ public class UsageReportPageViewModel : SubPageViewModelBase
             formatter(right) ?? Strings.PlacementDisconnected);
     }
 }
-
 

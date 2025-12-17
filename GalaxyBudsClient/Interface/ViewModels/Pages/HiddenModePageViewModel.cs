@@ -15,19 +15,18 @@ using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
-using ReactiveUI.Fody.Helpers;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
-public class HiddenModePageViewModel : SubPageViewModelBase
+public partial class HiddenModePageViewModel : SubPageViewModelBase
 {
     public override Control CreateView() => new HiddenModePage { DataContext = this };
     public override string TitleKey => Keys.SystemHiddenAtMode;
     
-    [Reactive] public bool IsUartEnabled { set; get; }
-    [Reactive] public string TargetHeader { set; get; } = Strings.SystemWaitingForDevice;
-    [Reactive] public string TargetDescription { set; get; } = Strings.PleaseWait;
+    [Reactive] private bool _isUartEnabled;
+    [Reactive] private string _targetHeader = Strings.SystemWaitingForDevice;
+    [Reactive] private string _targetDescription = Strings.PleaseWait;
 
     private bool _isInForeground;
     private bool _ignorePropertyEvents;
@@ -180,5 +179,4 @@ public class HiddenModePageViewModel : SubPageViewModelBase
         await BluetoothImpl.Instance.SendRequestAsync(MsgIds.HIDDEN_CMD_MODE, (byte)mode);
     }
 }
-
 

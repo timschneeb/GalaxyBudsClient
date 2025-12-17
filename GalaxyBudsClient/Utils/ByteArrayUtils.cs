@@ -5,8 +5,10 @@ using System.Text.RegularExpressions;
 
 namespace GalaxyBudsClient.Utils;
 
-public static class ByteArrayUtils
+public static partial class ByteArrayUtils
 {
+    private static readonly Regex WhitespacePattern = new(@"\s+", RegexOptions.Compiled);
+    
     public static byte[] Combine(params byte[][] arrays)
     {
         var rv = new byte[arrays.Sum(a => a.Length)];
@@ -45,34 +47,21 @@ public static class ByteArrayUtils
 
     public static bool IsBufferZeroedOut(IEnumerable<byte>? buffer)
     {
-        if (buffer == null)
-        {
-            return true;
-        }
-            
-        // ReSharper disable once LoopCanBeConvertedToQuery
-        foreach(var value in buffer)
-        {
-            if (value != 0x00)
-            {
-                return false;
-            }
-        }
-
-        return true;
+        return buffer?.All(value => value == 0x00) ?? true;
     }
         
-    /**
-     * Throws ArgumentOutOfRangeException and FormatException in case of bad format
-     **/
+    /// <summary>
+    /// Converts a hex string to a byte array.
+    /// Throws ArgumentOutOfRangeException and FormatException in case of bad format.
+    /// </summary>
     public static byte[] HexStringToByteArray(this string? hex)
     {
-        if (hex == null)
+        if (string.IsNullOrEmpty(hex))
         {
-            return Array.Empty<byte>();
+            return [];
         }
             
-        hex = Regex.Replace(hex, @"\s+", "");
+        hex = WhitespacePattern.Replace(hex, "");
 
         var numberChars = hex.Length;
         var bytes = new byte[numberChars / 2];

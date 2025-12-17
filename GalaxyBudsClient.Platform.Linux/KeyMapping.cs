@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GalaxyBudsClient.Platform.Model;
-using SharpHook.Native;
+using SharpHook.Data;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 
@@ -97,9 +97,6 @@ public static class KeyMapping
         { KeyCode.Vc102, null },
         { KeyCode.VcMisc, null },
         { KeyCode.VcPrintScreen, Keys.PrintScreen },
-        { KeyCode.VcPrint, Keys.Print },
-        { KeyCode.VcSelect, Keys.Select },
-        { KeyCode.VcExecute, Keys.Execute },
         { KeyCode.VcScrollLock, Keys.ScrollLock },
         { KeyCode.VcPause, Keys.Pause },
         { KeyCode.VcCancel, Keys.CancelKey },
@@ -147,8 +144,6 @@ public static class KeyMapping
         { KeyCode.VcChangeInputSource, null },
         { KeyCode.VcPower, null },
         { KeyCode.VcSleep, Keys.Sleep },
-        { KeyCode.VcWake, null },
-        { KeyCode.VcMedia, null },
         { KeyCode.VcMediaPlay, Keys.Play },
         { KeyCode.VcMediaStop, Keys.MediaStop },
         { KeyCode.VcMediaPrevious, Keys.MediaPreviousTrack },
@@ -158,8 +153,6 @@ public static class KeyMapping
         { KeyCode.VcVolumeMute, Keys.VolumeMute },
         { KeyCode.VcVolumeDown, Keys.VolumeDown },
         { KeyCode.VcVolumeUp, Keys.VolumeUp },
-        { KeyCode.VcPlay, Keys.Play },
-        { KeyCode.VcZoom, Keys.Zoom },
         { KeyCode.VcApp1, Keys.LaunchApplication1 },
         { KeyCode.VcApp2, Keys.LaunchApplication2 },
         { KeyCode.VcAppBrowser, null },

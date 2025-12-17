@@ -4,15 +4,14 @@ using GalaxyBudsClient.Platform.Interfaces;
 using GalaxyBudsClient.Platform.Model;
 using GalaxyBudsClient.Utils.Extensions;
 using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Model;
 
-public class Hotkey : ReactiveObject, IHotkey
+public partial class Hotkey : ReactiveObject, IHotkey
 {
-    [Reactive] public IEnumerable<ModifierKeys> Modifier { set; get; } = ArraySegment<ModifierKeys>.Empty; 
-    [Reactive] public IEnumerable<Keys> Keys { set; get; } = ArraySegment<Keys>.Empty;
-    [Reactive] public Event Action { set; get; }
+    [Reactive] private IEnumerable<ModifierKeys> _modifier = ArraySegment<ModifierKeys>.Empty;
+    [Reactive] private IEnumerable<Keys> _keys = ArraySegment<Keys>.Empty;
+    [Reactive] private Event _action;
     
     internal string ActionName => Action.GetLocalizedDescription();
     internal string HotkeyName => Keys.AsHotkeyString(Modifier);

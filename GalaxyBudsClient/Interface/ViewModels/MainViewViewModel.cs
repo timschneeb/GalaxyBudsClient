@@ -6,11 +6,10 @@ using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Platform;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels;
 
-public class MainViewViewModel : ViewModelBase
+public partial class MainViewViewModel : ViewModelBase
 {
     public MainViewViewModel()
     {
@@ -46,9 +45,9 @@ public class MainViewViewModel : ViewModelBase
         IsInSetupWizard = !BluetoothImpl.HasValidDevice;
     }
 
-    [Reactive] public bool IsConnectButtonEnabled { set; get; } = true;
-    [Reactive] public string ConnectButtonText { set; get; } = Strings.ConnlostConnect;
-    [Reactive] public bool IsInSetupWizard { set; get; } = !BluetoothImpl.HasValidDevice;
+    [Reactive] private bool _isConnectButtonEnabled = true;
+    [Reactive] private string _connectButtonText = Strings.ConnlostConnect;
+    [Reactive] private bool _isInSetupWizard = !BluetoothImpl.HasValidDevice;
     public NavigationFactory NavigationFactory { get; }
     public required Func<Type, PageViewModelBase?> VmResolver { get; init; }
     public ObservableCollection<BreadcrumbViewModel> BreadcrumbItems { get; } = [

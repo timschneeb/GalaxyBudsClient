@@ -2,11 +2,15 @@
     <Import Project="../GalaxyBudsClient/Platform.props" />
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <Nullable>enable</Nullable>
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU</Platforms>
         <LangVersion>latest</LangVersion>
+        
+        <!-- Code Analysis -->
+        <AnalysisLevel>latest</AnalysisLevel>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
     </PropertyGroup>
 
     <ItemGroup>
@@ -16,6 +20,6 @@
 
     <ItemGroup>
         <PackageReference Include="InputSimulatorCore" Version="1.0.5" />
-        <PackageReference Include="Serilog" Version="3.1.1" />
+        <PackageReference Include="Serilog" Version="4.3.0" />
     </ItemGroup>
 </Project>

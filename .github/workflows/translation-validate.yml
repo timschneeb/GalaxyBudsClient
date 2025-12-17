@@ -1,6 +1,9 @@
 name: Validate translations
 
-on: [push]
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   generate-translation-report:
@@ -8,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
           
       - name: Run XAML validator
         uses: ThePBone/XamlTranslationValidator@v1.3
@@ -20,7 +23,7 @@ jobs:
           custom-note: 'Translation instructions are available [in the wiki](https://github.com/ThePBone/GalaxyBudsClient/wiki/3.-How-to-help-with-translations).'
     
       - name: Publish changes
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: Update translation statuses
           file_pattern: meta/*.md

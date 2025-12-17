@@ -7,19 +7,18 @@ using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
-public class FitTestPageViewModel : SubPageViewModelBase
+public partial class FitTestPageViewModel : SubPageViewModelBase
 {
     public override Control CreateView() => new FitTestPage { DataContext = this };
     public override string TitleKey => Keys.MainpageFitTest;
     
-    [Reactive] public string? WarningText { set; get; }
-    [Reactive] public bool IsActive { set; get; }
-    [Reactive] public string? LeftStatus { set; get; }
-    [Reactive] public string? RightStatus { set; get; }
+    [Reactive] private string? _warningText;
+    [Reactive] private bool _isActive;
+    [Reactive] private string? _leftStatus;
+    [Reactive] private string? _rightStatus;
 
     public FitTestPageViewModel()
     {
@@ -74,5 +73,4 @@ public class FitTestPageViewModel : SubPageViewModelBase
         _ = BluetoothImpl.Instance.SendRequestAsync(MsgIds.CHECK_THE_FIT_OF_EARBUDS, 0);
     }
 }
-
 

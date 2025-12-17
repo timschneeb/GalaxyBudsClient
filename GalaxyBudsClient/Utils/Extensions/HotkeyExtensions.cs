@@ -16,58 +16,31 @@ public static class HotkeyExtensions
 
     public static string AsAvaloniaHotkeyString(this IEnumerable<Key>? keys)
     {
-        var first = true;
-        var sb = new StringBuilder();
-
         if (keys == null)
             return "null";
 
-        foreach (var key in keys)
-        {
-            if (!first)
-            {
-                sb.Append('+');
-            }
-            sb.Append(key);
-
-            first = false;
-        }
-
-        return sb.ToString();
+        return string.Join('+', keys);
     }
         
     public static string AsHotkeyString(this IEnumerable<Keys>? keys, IEnumerable<ModifierKeys>? modifiers)
     {
-        var first = true;
-        var sb = new StringBuilder();
-
         if (keys == null && modifiers == null)
         {
             return "null";
         }
-            
-        foreach (var modifier in modifiers ?? Array.Empty<ModifierKeys>())
-        {
-            if (!first)
-            {
-                sb.Append('+');
-            }
-            sb.Append(modifier);
 
-            first = false;
+        var parts = new List<string>();
+            
+        foreach (var modifier in modifiers ?? [])
+        {
+            parts.Add(modifier.ToString());
         }
             
-        foreach (var key in keys ?? Array.Empty<Keys>())
+        foreach (var key in keys ?? [])
         {
-            if (!first)
-            {
-                sb.Append('+');
-            }
-            sb.Append(key);
-
-            first = false;
+            parts.Add(key.ToString());
         }
 
-        return sb.ToString();
+        return string.Join('+', parts);
     }
 }

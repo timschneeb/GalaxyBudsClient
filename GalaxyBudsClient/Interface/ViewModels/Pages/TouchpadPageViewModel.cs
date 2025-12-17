@@ -17,11 +17,10 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
-public class TouchpadPageViewModel : MainPageViewModelBase
+public partial class TouchpadPageViewModel : MainPageViewModelBase
 {
     public override Control CreateView() => new TouchpadPage { DataContext = this };
 
@@ -246,30 +245,30 @@ public class TouchpadPageViewModel : MainPageViewModelBase
         }
     }
 
-    [Reactive] public IEnumerable<TouchOptions>? LeftActions { set; get; }
-    [Reactive] public IEnumerable<TouchOptions>? RightActions { set; get; }
-    [Reactive] public TouchOptions LeftAction { set; get; }
-    [Reactive] public TouchOptions RightAction { set; get; }
-    [Reactive] public NoiseControlCycleModes NoiseControlCycleMode { set; get; }
-    [Reactive] public NoiseControlCycleModes NoiseControlCycleModeRight { set; get; }
+    [Reactive] private IEnumerable<TouchOptions>? _leftActions;
+    [Reactive] private IEnumerable<TouchOptions>? _rightActions;
+    [Reactive] private TouchOptions _leftAction;
+    [Reactive] private TouchOptions _rightAction;
+    [Reactive] private NoiseControlCycleModes _noiseControlCycleMode;
+    [Reactive] private NoiseControlCycleModes _noiseControlCycleModeRight;
 
-    [Reactive] public bool IsTouchpadLocked { set; get; }
-    [Reactive] public bool IsDoubleTapVolumeEnabled { set; get; }
-    [Reactive] public bool IsSingleTapGestureEnabled { set; get; }
-    [Reactive] public bool IsDoubleTapGestureEnabled { set; get; }
-    [Reactive] public bool IsTripleTapGestureEnabled { set; get; }
-    [Reactive] public bool IsHoldGestureEnabled { set; get; }
-    [Reactive] public bool IsDoubleTapGestureForCallsEnabled { set; get; }
-    [Reactive] public bool IsHoldGestureForCallsEnabled { set; get; }
+    [Reactive] private bool _isTouchpadLocked;
+    [Reactive] private bool _isDoubleTapVolumeEnabled;
+    [Reactive] private bool _isSingleTapGestureEnabled;
+    [Reactive] private bool _isDoubleTapGestureEnabled;
+    [Reactive] private bool _isTripleTapGestureEnabled;
+    [Reactive] private bool _isHoldGestureEnabled;
+    [Reactive] private bool _isDoubleTapGestureForCallsEnabled;
+    [Reactive] private bool _isHoldGestureForCallsEnabled;
     
-    [Reactive] public bool IsNoiseControlCycleModeEditable { set; get; }
-    [Reactive] public bool IsNoiseControlCycleModeRightEditable { set; get; }
-    [Reactive] public string LeftControlCycleModeLabel { set; get; } = Strings.TouchpadNoiseControlMode;
+    [Reactive] private bool _isNoiseControlCycleModeEditable;
+    [Reactive] private bool _isNoiseControlCycleModeRightEditable;
+    [Reactive] private string _leftControlCycleModeLabel = Strings.TouchpadNoiseControlMode;
 
-    [Reactive] public bool IsLeftCustomActionEditable { set; get; }
-    [Reactive] public bool IsRightCustomActionEditable { set; get; }
-    [Reactive] public string? LeftActionDescription { set; get; }
-    [Reactive] public string? RightActionDescription { set; get; }
+    [Reactive] private bool _isLeftCustomActionEditable;
+    [Reactive] private bool _isRightCustomActionEditable;
+    [Reactive] private string? _leftActionDescription;
+    [Reactive] private string? _rightActionDescription;
 
     public override string TitleKey => Keys.MainpageTouchpad;
     public override Symbol IconKey => Symbol.HandDraw;

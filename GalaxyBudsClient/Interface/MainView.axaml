@@ -65,13 +65,14 @@
                 </ui:InfoBar>
 
                 <ui:BreadcrumbBar Name="BreadcrumbBar"
-                                  MinHeight="39"
+                                  MinHeight="48"
                                   Grid.Row="1"
                                   ItemsSource="{Binding BreadcrumbItems}"
                                   Margin="20,10">
                     <ui:BreadcrumbBar.ItemTemplate>
                         <DataTemplate x:DataType="vm:BreadcrumbViewModel">
-                            <ui:BreadcrumbBarItem Content="{Binding Title}" />
+                            <ui:BreadcrumbBarItem Content="{Binding Title}"
+                                                  MinHeight="48" />
                         </DataTemplate>
                     </ui:BreadcrumbBar.ItemTemplate>
                 </ui:BreadcrumbBar>

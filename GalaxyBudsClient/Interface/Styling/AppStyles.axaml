@@ -1,8 +1,28 @@
 <Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="using:FluentAvalonia.UI.Controls">
 
     <StyleInclude Source="NavigationViewStyles.axaml" />
     <StyleInclude Source="SettingsGroupStyles.axaml" />
+
+    <!-- Workaround: large BreadcrumbBar font clips in FluentAvaloniaUI 2.4.x -->
+    <Style Selector="ui|BreadcrumbBarItem">
+        <Setter Property="Height" Value="NaN" />
+        <Setter Property="MinHeight" Value="48" />
+        <Setter Property="ClipToBounds" Value="False" />
+    </Style>
+    <Style Selector="ui|BreadcrumbBarItem /template/ TextBlock#TextLabel">
+        <Setter Property="Margin" Value="0,2,0,0" />
+    </Style>
+    <Style Selector="ui|BreadcrumbBarItem /template/ TextBlock">
+        <Setter Property="LineHeight" Value="30" />
+    </Style>
+    <Style Selector="ui|BreadcrumbBarItem:ellipsis">
+        <Setter Property="IsVisible" Value="False" />
+    </Style>
+    <Style Selector="ui|BreadcrumbBarItem:ellipsisDropDown">
+        <Setter Property="IsVisible" Value="False" />
+    </Style>
 
     <!-- Cards -->
     <Style Selector="Border.Card">

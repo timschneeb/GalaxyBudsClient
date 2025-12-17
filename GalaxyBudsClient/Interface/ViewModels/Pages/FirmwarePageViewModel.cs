@@ -18,18 +18,17 @@ using GalaxyBudsClient.Model.Firmware;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Extensions;
-using ReactiveUI.Fody.Helpers;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
-public class FirmwarePageViewModel : SubPageViewModelBase
+public partial class FirmwarePageViewModel : SubPageViewModelBase
 {
     public override Control CreateView() => new FirmwarePage { DataContext = this };
     public override string TitleKey => Keys.FwSelectHeader;
     
-    [Reactive] public bool IsDowngradingAllowed { set; get; }
-    [Reactive] public bool NoResults { set; get; } = true;
+    [Reactive] private bool _isDowngradingAllowed;
+    [Reactive] private bool _noResults = true;
     public ObservableCollection<FirmwareRemoteBinary> AvailableFirmware { get; } = [];
     
     private readonly FirmwareRemoteClient _client = new();
