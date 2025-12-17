@@ -13,8 +13,8 @@ on:
 
 jobs:
   build-universal:
-    runs-on: macos-15
-
+    runs-on: macos-26
+    
     steps:
     - uses: actions/checkout@v6
     - name: Setup Xcode
@@ -50,8 +50,8 @@ jobs:
         path: bin_osx/Galaxy Buds Manager-*.pkg
 
   build-x64:
-    runs-on: macos-15
-
+    runs-on: macos-26
+    
     steps:
     - uses: actions/checkout@v6
     - name: Setup Xcode
@@ -87,8 +87,8 @@ jobs:
         path: bin_osxx64/Galaxy Buds Manager-*.pkg
 
   build-arm64:
-    runs-on: macos-15
-
+    runs-on: macos-26
+    
     steps:
     - uses: actions/checkout@v6
     - name: Setup Xcode
