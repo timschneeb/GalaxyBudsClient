@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Data;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using AvColor = Avalonia.Media.Color;
@@ -36,7 +37,7 @@ public class SettingsColorItem : SettingsSymbolItem
         RoutedEvent.Register<SettingsColorItem, RoutedEventArgs>(nameof(ColorChanged), RoutingStrategies.Bubble);
 
     public static readonly StyledProperty<AvColor?> ColorProperty = 
-        AvaloniaProperty.Register<SettingsColorItem, AvColor?>(nameof(Color));
+        AvaloniaProperty.Register<SettingsColorItem, AvColor?>(nameof(Color), defaultBindingMode: BindingMode.TwoWay);
     
     public event EventHandler<RoutedEventArgs>? ColorChanged
     {
@@ -53,6 +54,7 @@ public class SettingsColorItem : SettingsSymbolItem
     private void OnColorChanged(object? sender, ColorChangedEventArgs args)
     {
         Color = args.NewColor;
+        
         RaiseEvent(new RoutedEventArgs(ColorChangedEvent));
     }
     
