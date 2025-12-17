@@ -122,8 +122,10 @@ public partial class MainView : UserControl
             return;
         
         // Ignore the last item, as it's the current page
-        if (args.Item is BreadcrumbViewModel vm && args.Index != ViewModel.BreadcrumbItems.Count - 1)
+        if (args.Index < ViewModel.BreadcrumbItems.Count - 1)
         {
+            var vm = ViewModel.BreadcrumbItems[args.Index];
+            
             // Remove BreadcrumbItems from the end until the clicked item is the last one
             for(var i = ViewModel.BreadcrumbItems.Count - 1; i >= 0; i--)
             {
