@@ -76,7 +76,7 @@ public class FirmwareTransferManager
         Error += (sender, exception) =>
         {
             Log.Error(exception, "FirmwareTransferManager.OnError");
-            Cancel();
+            _ = CancelAsync();
         };
         StateChanged += (sender, state) => Log.Debug("FirmwareTransferManager: Status changed to {State}", state);
             
@@ -94,7 +94,7 @@ public class FirmwareTransferManager
             if (_binary != null)
             {
                 Log.Debug("FirmwareTransferManager: Bluetooth error. Transfer cancelled");
-                Cancel();
+                _ = CancelAsync();
             }
         };
             

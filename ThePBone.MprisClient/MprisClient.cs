@@ -12,7 +12,7 @@ namespace ThePBone.MprisClient
         public IPlayer? Player => _player;
 
         private IPlayer? _player;
-        private IDBus _dbus;
+        private IDBus? _dbus;
         private readonly Connection _connection;
         
         public MprisClient()
