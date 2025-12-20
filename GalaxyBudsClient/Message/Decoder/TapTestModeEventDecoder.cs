@@ -21,11 +21,18 @@ public class TapTestModeEventDecoder : BaseMessageDecoder
 
     public TapTestModeEventDecoder(SppMessage msg) : base(msg)
     {
-        using var stream = new MemoryStream(msg.Payload);
-        using var reader = new BinaryReader(stream);
+        Result = TapTestResult.Success;
+        IsLeft = false;
+        IsRight = false;
 
-        Result = (TapTestResult)reader.ReadByte();
-        var side = reader.ReadByte();
+        if (msg.Payload.Length <= 0)
+            return;
+
+        Result = (TapTestResult)msg.Payload[0];
+        if (msg.Payload.Length <= 1)
+            return;
+
+        var side = msg.Payload[1];
         IsLeft = ByteArrayUtils.ValueOfLeft(side) == 1;
         IsRight = ByteArrayUtils.ValueOfRight(side) == 1;
     }
