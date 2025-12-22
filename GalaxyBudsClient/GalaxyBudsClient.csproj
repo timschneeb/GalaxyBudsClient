@@ -10,7 +10,7 @@
     <PropertyGroup Condition="'$(_HostIsOSX)'=='true'">
         <TargetFramework>net10.0-macos</TargetFramework>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(_HostIsLinux)'=='true'">
+    <PropertyGroup Condition="'$(TargetFramework)'==''">
         <TargetFramework>net10.0</TargetFramework>
     </PropertyGroup>
 
