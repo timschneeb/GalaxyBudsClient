@@ -1,14 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
-        <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
-        <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
-        <LangVersion>latest</LangVersion>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(IsWindows)'=='true'">
+    <Import Project="../GalaxyBudsClient/Host.props"/>
+    <PropertyGroup Condition="'$(_HostIsWindows)'=='true'">
         <TargetFramework>net10.0-windows10.0.19041</TargetFramework>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(IsOSX)'=='true'">
+    <PropertyGroup Condition="'$(_HostIsOSX)'=='true'">
         <ApplicationId>me.timschneeberger.galaxybudsclient.tests</ApplicationId>
         <RuntimeIdentifiers>osx-x64;osx-arm64</RuntimeIdentifiers>
         <OutputType>Exe</OutputType>
@@ -16,14 +11,14 @@
         <LinkMode>None</LinkMode>
         <!-- TODO it cannot find any of the main assembly's dependencies when running -->
     </PropertyGroup>
-    <PropertyGroup Condition="'$(IsLinux)'=='true'">
+    <PropertyGroup Condition="'$(_HostIsLinux)'=='true'">
         <TargetFramework>net10.0</TargetFramework>
     </PropertyGroup>
     
     <PropertyGroup>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-
+        <LangVersion>latest</LangVersion>
         <IsTestProject>true</IsTestProject>
         <IsPackable>false</IsPackable>
     </PropertyGroup>
