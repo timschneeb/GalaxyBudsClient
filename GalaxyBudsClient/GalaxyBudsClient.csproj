@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="Platform.props" />
+    <Import Project="Host.props" />
     
     <!-- Framework & platform-dependent properties -->
     <!--
@@ -7,20 +7,21 @@
       Use host OS detection for selecting the TargetFrameworks set, not the per-TargetFramework IsWindows/IsOSX flags.
     -->
     <PropertyGroup Condition="'$(_HostIsWindows)'=='true'">
-        <TargetFrameworks>net10.0-windows10.0.19041;net10.0</TargetFrameworks>
+        <TargetFramework>net10.0-windows10.0.19041</TargetFramework>
     </PropertyGroup>
     <PropertyGroup Condition="'$(_HostIsOSX)'=='true'">
-        <TargetFrameworks>net10.0-macos;net10.0</TargetFrameworks>
+        <TargetFramework>net10.0-macos</TargetFramework>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(_HostIsLinux)'=='true'">
-        <TargetFrameworks>net10.0</TargetFrameworks>
-        <!--<PublishTrimmed>true</PublishTrimmed>-->
+    <PropertyGroup Condition="'$(_HostIsWindows)'=='false' And '$(_HostIsOSX)'=='false'">
+        <TargetFramework>net10.0</TargetFramework>
     </PropertyGroup>
+
+    <Import Project="Platform.props" />
 
     <PropertyGroup Condition="'$(TargetFramework)'=='net10.0-windows10.0.19041'">
         <OutputType>WinExe</OutputType>
 
-        <!-- Causes crashes on Windows: https://github.com/dotnet/runtime/issues/121596 -->
+        <!-- Causes crashes on Windows 10/11 if not fully updated: https://github.com/dotnet/runtime/issues/121596 -->
         <CetCompat>false</CetCompat>
     </PropertyGroup>
     <PropertyGroup Condition="'$(TargetFramework)'=='net10.0-macos'">
@@ -31,10 +32,10 @@
         <AssemblyName>Galaxy Buds Manager</AssemblyName>
         <SupportedOSPlatformVersion>12.0</SupportedOSPlatformVersion>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(IsLinux)'=='true' And '$(TargetFramework)'=='net10.0'">
+    <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <OutputType>Exe</OutputType>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(IsAndroid)'=='true' And '$(TargetFramework)'=='net10.0'">
+    <PropertyGroup Condition="'$(IsAndroid)'=='true'">
         <OutputType>Library</OutputType>
         <DefineConstants>$(DefineConstants);Android</DefineConstants>
     </PropertyGroup>
@@ -134,16 +135,16 @@
 
 
     <!-- Project references -->
-    <ItemGroup Condition="'$(TargetFramework)'=='net10.0-windows10.0.19041'">
+    <ItemGroup Condition="'$(IsWindows)'=='true'">
         <ProjectReference Include="..\GalaxyBudsClient.Platform.WindowsRT\GalaxyBudsClient.Platform.WindowsRT.csproj" />
         <ProjectReference Include="..\GalaxyBudsClient.Platform.Windows\GalaxyBudsClient.Platform.Windows.csproj" />
     </ItemGroup>
 
-    <ItemGroup Condition="'$(IsLinux)'=='true' And '$(TargetFramework)'=='net10.0'">
+    <ItemGroup Condition="'$(IsLinux)'=='true'">
         <ProjectReference Include="..\GalaxyBudsClient.Platform.Linux\GalaxyBudsClient.Platform.Linux.csproj" />
     </ItemGroup>
     
-    <ItemGroup Condition="'$(TargetFramework)'=='net10.0-macos'">
+    <ItemGroup Condition="'$(IsOSX)'=='true'">
         <ProjectReference Include="..\GalaxyBudsClient.Platform.OSX\GalaxyBudsClient.Platform.OSX.csproj" />
     </ItemGroup>
     

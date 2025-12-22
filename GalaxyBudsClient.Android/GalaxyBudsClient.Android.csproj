@@ -51,7 +51,7 @@
 
   <ItemGroup>
     <ProjectReference Include="../GalaxyBudsClient/GalaxyBudsClient.csproj">
-      <AdditionalProperties>IsAndroid=true;TargetFramework=net10.0</AdditionalProperties>
+      <AdditionalProperties>IsAndroid=true</AdditionalProperties>
     </ProjectReference>
   </ItemGroup>
 </Project>

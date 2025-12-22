@@ -1,26 +1,10 @@
 <Project>
-    <PropertyGroup>
-        <_HostIsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</_HostIsWindows>
-        <_HostIsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</_HostIsOSX>
-        <_HostIsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</_HostIsLinux>
-    </PropertyGroup>
-
-    <!--
-      When multi-targeting, prefer the target framework's platform moniker (e.g. net10.0-windows / net10.0-macos)
-      to determine platform constants, since the host OS may differ from the target.
-    -->
-    <PropertyGroup Condition="'$(TargetFramework)' == ''">
-        <IsWindows>$(_HostIsWindows)</IsWindows>
-        <IsOSX>$(_HostIsOSX)</IsOSX>
-        <IsLinux>$(_HostIsLinux)</IsLinux>
-    </PropertyGroup>
-
     <PropertyGroup Condition="'$(TargetFramework)' != ''">
         <IsWindows Condition="$([System.String]::Copy('$(TargetFramework)').Contains('-windows'))">true</IsWindows>
         <IsOSX Condition="$([System.String]::Copy('$(TargetFramework)').Contains('-macos'))">true</IsOSX>
         <IsLinux Condition="'$(IsWindows)' != 'true' And '$(IsOSX)' != 'true' And '$(IsAndroid)' != 'true'">true</IsLinux>
     </PropertyGroup>
-
+    
     <PropertyGroup Condition="'$(IsWindows)'=='true'">
         <DefineConstants>$(DefineConstants);Windows</DefineConstants>
     </PropertyGroup>
