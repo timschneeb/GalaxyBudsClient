@@ -6,11 +6,10 @@ using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
-public class BixbyRemapPageViewModel : SubPageViewModelBase
+public partial class BixbyRemapPageViewModel : SubPageViewModelBase
 {
     public BixbyRemapPageViewModel()
     {
@@ -39,11 +38,10 @@ public class BixbyRemapPageViewModel : SubPageViewModelBase
         }
     }
     
-    [Reactive] public bool IsBixbyWakeUpEnabled { set; get; }
-    [Reactive] public BixbyLanguages BixbyLanguage { set; get; }
+    [Reactive] private bool _isBixbyWakeUpEnabled;
+    [Reactive] private BixbyLanguages _bixbyLanguage;
 
     public override string TitleKey => Keys.AdvBixbyRemap;
     public override Control CreateView() => new BixbyRemapPage { DataContext = this };
 }
-
 

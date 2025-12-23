@@ -1,16 +1,15 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Avalonia.Collections;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Developer;
 
-public class DevToolsViewModel : ViewModelBase
+public partial class DevToolsViewModel : ViewModelBase
 {
-    [Reactive] public bool HasProperties { set; get; } = true;
-    [Reactive] public bool IsAutoscrollEnabled { set; get; } = true;
-    [Reactive] public bool UseAlternativeProtocol { set; get; }
-    [Reactive] public MessageViewHolder? SelectedMessage { set; get; }
+    [Reactive] private bool _hasProperties = true;
+    [Reactive] private bool _isAutoscrollEnabled = true;
+    [Reactive] private bool _useAlternativeProtocol;
+    [Reactive] private MessageViewHolder? _selectedMessage;
         
     public readonly DataGridCollectionView MsgTableDataView = new(new ObservableCollection<MessageViewHolder>());
     public readonly DataGridCollectionView PropTableDataView = new(new ObservableCollection<PropertyViewModel>());

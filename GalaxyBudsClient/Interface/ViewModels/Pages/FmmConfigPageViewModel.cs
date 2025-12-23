@@ -7,20 +7,19 @@ using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Message.Encoder;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
-public class FmmConfigPageViewModel : SubPageViewModelBase
+public partial class FmmConfigPageViewModel : SubPageViewModelBase
 {
     public override Control CreateView() => new FmmConfigPage { DataContext = this };
     public override string TitleKey => Keys.SmartThingsFind;
     
-    [Reactive] public bool IsLinked { get; set; } = true;
-    [Reactive] public string Iv { get; set; } = Strings.NoDataStored;
-    [Reactive] public string SecretKey { get; set; } = Strings.NoDataStored;
-    [Reactive] public string Token { get; set; } = Strings.NoDataStored;
-    [Reactive] public string Region { get; set; } = Strings.NoDataStored;
+    [Reactive] private bool _isLinked = true;
+    [Reactive] private string _iv = Strings.NoDataStored;
+    [Reactive] private string _secretKey = Strings.NoDataStored;
+    [Reactive] private string _token = Strings.NoDataStored;
+    [Reactive] private string _region = Strings.NoDataStored;
 
     private GetFmmConfigDecoder? _fmmConfig;
     
@@ -101,5 +100,4 @@ public class FmmConfigPageViewModel : SubPageViewModelBase
         }.ShowAsync();
     }
 }
-
 

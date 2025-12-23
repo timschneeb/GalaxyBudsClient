@@ -1,10 +1,10 @@
 <Project>
-    <PropertyGroup>
-        <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
-        <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
-        <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+    <PropertyGroup Condition="'$(TargetFramework)' != ''">
+        <IsWindows Condition="$([System.String]::Copy('$(TargetFramework)').Contains('-windows'))">true</IsWindows>
+        <IsOSX Condition="$([System.String]::Copy('$(TargetFramework)').Contains('-macos'))">true</IsOSX>
+        <IsLinux Condition="'$(IsWindows)' != 'true' And '$(IsOSX)' != 'true' And '$(IsAndroid)' != 'true'">true</IsLinux>
     </PropertyGroup>
-
+    
     <PropertyGroup Condition="'$(IsWindows)'=='true'">
         <DefineConstants>$(DefineConstants);Windows</DefineConstants>
     </PropertyGroup>

@@ -8,12 +8,14 @@ using Avalonia.Threading;
 using FluentAvalonia.UI.Controls;
 using FluentAvalonia.UI.Navigation;
 using FluentAvalonia.UI.Windowing;
+using FluentIcons.Common;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.Services;
 using GalaxyBudsClient.Interface.ViewModels;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Model.Config;
+using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
 using Serilog;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
@@ -63,9 +65,9 @@ public partial class MainView : UserControl
         Loc.LanguageUpdated += OnLanguageUpdated;
         
         var insetsManager = TopLevel.GetTopLevel(this)?.InsetsManager;
-        if (insetsManager != null)
+        if (insetsManager != null && PlatformUtils.IsAndroid)
         {
-            insetsManager.DisplayEdgeToEdge = true;
+            insetsManager.DisplayEdgeToEdgePreference = true;
         }
         
         var vm = new MainViewViewModel
@@ -120,8 +122,10 @@ public partial class MainView : UserControl
             return;
         
         // Ignore the last item, as it's the current page
-        if (args.Item is BreadcrumbViewModel vm && args.Index != ViewModel.BreadcrumbItems.Count - 1)
+        if (args.Index < ViewModel.BreadcrumbItems.Count - 1)
         {
+            var vm = ViewModel.BreadcrumbItems[args.Index];
+            
             // Remove BreadcrumbItems from the end until the clicked item is the last one
             for(var i = ViewModel.BreadcrumbItems.Count - 1; i >= 0; i--)
             {
@@ -345,7 +349,7 @@ public partial class MainView : UserControl
 
         if (t is ViewModelBase && item?.IconSource is SymbolIconSource source)
         {
-            source.IsFilled = selected;
+            source.IconVariant = selected ? IconVariant.Filled : IconVariant.Regular;
         }
     }
 

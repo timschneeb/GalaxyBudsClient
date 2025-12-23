@@ -20,14 +20,14 @@ public static class DataExtensions
     public static string BytesToMacString(this IReadOnlyList<byte> payload, int startIndex = 0)
     {
         var sb = new StringBuilder();
-        for (var i13 = 0; i13 < 6; i13++)
+        for (var i = 0; i < 6; i++)
         {
-            if (i13 != 0)
+            if (i != 0)
             {
                 sb.Append(':');
             }
-            sb.Append(((payload[i13 + startIndex] & 240) >> 4).ToString("X"));
-            sb.Append((payload[i13 + startIndex] & 15).ToString("X"));
+            sb.Append(((payload[i + startIndex] & 240) >> 4).ToString("X"));
+            sb.Append((payload[i + startIndex] & 15).ToString("X"));
         }
         return sb.ToString();
     }
@@ -39,8 +39,7 @@ public readonly struct Finally : IDisposable
 
     public Finally(Action onDispose)
     {
-        _ = onDispose ?? throw new ArgumentNullException(nameof(onDispose));
-
+        ArgumentNullException.ThrowIfNull(onDispose);
         _onDispose = onDispose;
     }
 

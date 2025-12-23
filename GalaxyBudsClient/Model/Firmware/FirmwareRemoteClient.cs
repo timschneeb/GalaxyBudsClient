@@ -33,13 +33,13 @@ public class FirmwareRemoteClient
         try
         {
             FirmwareRemoteBinary[] firmwares;
-            var response = await _client.GetAsync(ApiGetFirmware + $"/{BluetoothImpl.Instance.CurrentModel.ToString()}");
+            var response = await _client.GetAsync(ApiGetFirmware + $"/{BluetoothImpl.Instance.CurrentModel.ToString()}").ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
                 var formatters = new MediaTypeFormatterCollection();
                 formatters.JsonFormatter.SerializerSettings.Converters.Add(new StringEnumConverter());
 
-                firmwares = await response.Content.ReadAsAsync<FirmwareRemoteBinary[]>(formatters);
+                firmwares = await response.Content.ReadAsAsync<FirmwareRemoteBinary[]>(formatters).ConfigureAwait(false);
             }
             else
             {
@@ -77,13 +77,13 @@ public class FirmwareRemoteClient
         try
         {
             byte[] binary;
-            var response = await _client.GetAsync($"{ApiDownloadFirmware}/{target.BuildName}");
+            var response = await _client.GetAsync($"{ApiDownloadFirmware}/{target.BuildName}").ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
                 var formatters = new MediaTypeFormatterCollection();
                 formatters.JsonFormatter.SerializerSettings.Converters.Add(new StringEnumConverter());
 
-                binary = await response.Content.ReadAsByteArrayAsync();
+                binary = await response.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
             }
             else
             {

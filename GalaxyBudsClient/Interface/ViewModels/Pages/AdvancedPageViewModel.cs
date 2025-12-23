@@ -6,11 +6,10 @@ using GalaxyBudsClient.Interface.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Platform;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
-public class AdvancedPageViewModel : MainPageViewModelBase
+public partial class AdvancedPageViewModel : MainPageViewModelBase
 {
     public override Control CreateView() => new AdvancedPage { DataContext = this };
 
@@ -53,15 +52,14 @@ public class AdvancedPageViewModel : MainPageViewModelBase
         }
     }
 
-    [Reactive] public bool IsSeamlessConnectionEnabled { set; get; }
-    [Reactive] public bool IsPassthroughEnabled { set; get; }
-    [Reactive] public bool IsSidetoneEnabled { set; get; }
-    [Reactive] public bool IsCallpathControlEnabled { set; get; }
-    [Reactive] public bool IsExtraClearCallEnabled { set; get; }
+    [Reactive] private bool _isSeamlessConnectionEnabled;
+    [Reactive] private bool _isPassthroughEnabled;
+    [Reactive] private bool _isSidetoneEnabled;
+    [Reactive] private bool _isCallpathControlEnabled;
+    [Reactive] private bool _isExtraClearCallEnabled;
 
     public override string TitleKey => Keys.MainpageAdvanced;
     public override Symbol IconKey => Symbol.WrenchScrewdriver;
     public override bool ShowsInFooter => false;
 }
-
 

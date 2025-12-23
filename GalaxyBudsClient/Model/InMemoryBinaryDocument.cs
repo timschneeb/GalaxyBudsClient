@@ -10,6 +10,14 @@ public class InMemoryBinaryDocument : IBinaryDocument
 {
     private readonly List<byte> _data = [];
     
+    public void Flush()
+    {
+    }
+    
+    public void Dispose()
+    {
+    }
+    
     public void ReadBytes(ulong offset, Span<byte> buffer)
     {
         CollectionsMarshal.AsSpan(_data).Slice((int)offset, buffer.Length).CopyTo(buffer);

@@ -332,12 +332,30 @@ namespace GalaxyBudsClient.Platform.Windows.Bluetooth
 
 
                 var available = _client.Available;
-                if (available > 0 && peerStream.CanRead)
+                var currentStream = peerStream;
+                if (currentStream == null)
+                {
+                    continue;
+                }
+
+                if (available > 0 && currentStream.CanRead)
                 {
                     var buffer = new byte[available];
                     try
                     {
-                        peerStream.Read(buffer, 0, available);
+                        var bytesRead = currentStream.Read(buffer, 0, available);
+                        if (bytesRead <= 0)
+                        {
+                            currentStream.Close();
+                            peerStream = null;
+                            _client?.Close();
+                            continue;
+                        }
+
+                        if (bytesRead != buffer.Length)
+                        {
+                            Array.Resize(ref buffer, bytesRead);
+                        }
                     }
                     catch (SocketException ex)
                     {
@@ -347,7 +365,7 @@ namespace GalaxyBudsClient.Platform.Windows.Bluetooth
                     }
                     catch (IOException ex)
                     {
-                        Log.Error("Windows.BluetoothService: BluetoothServiceLoop: IOException thrown while writing to socket: {ExMessage}. Cancelled", ex.Message);
+                        Log.Error("Windows.BluetoothService: BluetoothServiceLoop: IOException thrown while reading from socket: {ExMessage}. Cancelled", ex.Message);
                         BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.ReceiveFailed, ex.Message));
                     }
 
@@ -363,7 +381,7 @@ namespace GalaxyBudsClient.Platform.Windows.Bluetooth
                     if (!TransmitterQueue.TryDequeue(out var raw)) continue;
                     try
                     {
-                        peerStream.Write(raw, 0, raw.Length);
+                        currentStream.Write(raw, 0, raw.Length);
                     }
                     catch (SocketException ex)
                     {

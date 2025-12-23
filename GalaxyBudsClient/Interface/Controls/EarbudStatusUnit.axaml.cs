@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Specialized;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Threading;
@@ -15,18 +13,7 @@ public partial class EarbudStatusUnit : Panel
     public EarbudStatusUnit()
     {
         InitializeComponent();
-        var vm = new EarbudStatusUnitViewModel();
-        vm.Changed.Subscribe(new Action<object>(_ =>
-        {
-            // FIXME: Avalonia bug: After upgrading to Avalonia 11.2.2 from 11.2.0-beta, the label bounds are initially too small
-            Dispatcher.UIThread.Post(() =>
-            {
-                LeftBatteryText.InvalidateMeasure();
-                RightBatteryText.InvalidateMeasure();
-            });
-        }));
-
-        DataContext = vm;
+        DataContext = new EarbudStatusUnitViewModel();
     }
 
     private void OnTemperaturePointerPressed(object? sender, PointerPressedEventArgs e)

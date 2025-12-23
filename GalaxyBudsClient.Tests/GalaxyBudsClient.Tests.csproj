@@ -1,43 +1,38 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
-        <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
-        <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
-        <LangVersion>latest</LangVersion>
+    <Import Project="../GalaxyBudsClient/Host.props"/>
+    <PropertyGroup Condition="'$(_HostIsWindows)'=='true'">
+        <TargetFramework>net10.0-windows10.0.19041</TargetFramework>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(IsWindows)'=='true'">
-        <TargetFramework>net8.0-windows10.0.19041</TargetFramework>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(IsOSX)'=='true'">
+    <PropertyGroup Condition="'$(_HostIsOSX)'=='true'">
         <ApplicationId>me.timschneeberger.galaxybudsclient.tests</ApplicationId>
         <RuntimeIdentifiers>osx-x64;osx-arm64</RuntimeIdentifiers>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net8.0-macos</TargetFramework>
+        <TargetFramework>net10.0-macos</TargetFramework>
         <LinkMode>None</LinkMode>
         <!-- TODO it cannot find any of the main assembly's dependencies when running -->
     </PropertyGroup>
-    <PropertyGroup Condition="'$(IsLinux)'=='true'">
-        <TargetFramework>net8.0</TargetFramework>
+    <PropertyGroup Condition="'$(_HostIsLinux)'=='true'">
+        <TargetFramework>net10.0</TargetFramework>
     </PropertyGroup>
     
     <PropertyGroup>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-
+        <LangVersion>latest</LangVersion>
         <IsTestProject>true</IsTestProject>
         <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentAssertions" Version="7.0.0-alpha.3" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
-        <PackageReference Include="NUnit" Version="4.1.0" />
-        <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
-        <PackageReference Include="NUnit.Analyzers" Version="4.1.0">
+        <PackageReference Include="FluentAssertions" Version="8.8.0" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
+        <PackageReference Include="NUnit" Version="4.4.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="6.0.0" />
+        <PackageReference Include="NUnit.Analyzers" Version="4.11.2">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="coverlet.collector" Version="6.0.2">
+        <PackageReference Include="coverlet.collector" Version="6.0.4">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>

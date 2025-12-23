@@ -11,6 +11,7 @@ Translation instructions are available [in the wiki](https://github.com/ThePBone
 <tr><td>cz (Czechia)</td><td>99%</td><td>4 missing string(s)</td><td><a href="cz.md">View details</a></td></tr>
 <tr><td>de (Germany)</td><td>43%</td><td>315 missing string(s)</td><td><a href="de.md">View details</a></td></tr>
 <tr><td>es (Spain)</td><td>26%</td><td>415 missing string(s)</td><td><a href="es.md">View details</a></td></tr>
+<tr><td>fa (undefined)</td><td>90%</td><td>51 missing string(s)</td><td><a href="fa.md">View details</a></td></tr>
 <tr><td>fr (France)</td><td>54%</td><td>256 missing string(s)</td><td><a href="fr.md">View details</a></td></tr>
 <tr><td>gr (Greece)</td><td>44%</td><td>314 missing string(s)</td><td><a href="gr.md">View details</a></td></tr>
 <tr><td>hu (Hungary)</td><td>60%</td><td>224 missing string(s)</td><td><a href="hu.md">View details</a></td></tr>

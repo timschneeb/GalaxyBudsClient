@@ -18,7 +18,9 @@ namespace GalaxyBudsClient.Scripting.Experiment;
 
 public class ExperimentClient
 {
+#pragma warning disable CS0067
     public event EventHandler<IReadOnlyList<ExperimentRequest>>? NewResultsFound;
+#pragma warning restore CS0067
 
     private const string ApiBase = "https://crowdsourcing.timschneeberger.me/v2";
     private const string ApiGetExperiments = ApiBase + "/experiments";

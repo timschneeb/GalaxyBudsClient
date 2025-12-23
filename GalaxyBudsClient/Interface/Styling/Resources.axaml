@@ -26,6 +26,8 @@
     <FontWeight x:Key="BreadcrumbBarItemFontWeight">Bold</FontWeight>
     <system:Double x:Key="BreadcrumbBarItemThemeFontSize">24</system:Double>
     <system:Double x:Key="BreadcrumbBarChevronFontSize">16</system:Double>
+    <!-- FluentAvaloniaUI 2.4.x: prevent large BreadcrumbBar font from clipping -->
+    <system:Double x:Key="EllipsisItemPresenterLineHeight">30</system:Double>
 
     <!-- Also use Bold instead of SemiBold here -->
     <ControlTheme TargetType="TextBlock"

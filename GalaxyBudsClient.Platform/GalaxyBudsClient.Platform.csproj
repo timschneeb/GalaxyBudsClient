@@ -2,15 +2,19 @@
     <Import Project="../GalaxyBudsClient/Application.props" />
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <nullable>enable</nullable>
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU</Platforms>
         <LangVersion>latest</LangVersion>
+        
+        <!-- Code Analysis -->
+        <AnalysisLevel>latest</AnalysisLevel>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
     </PropertyGroup>
     
     <ItemGroup>
-        <PackageReference Include="Serilog" Version="3.1.1" />
+        <PackageReference Include="Serilog" Version="4.3.0" />
         <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />  
     </ItemGroup>
     

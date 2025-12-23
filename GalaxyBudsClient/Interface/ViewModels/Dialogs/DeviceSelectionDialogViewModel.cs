@@ -12,18 +12,17 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Platform.Model;
-using ReactiveUI.Fody.Helpers;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Dialogs;
 
-public class DeviceSelectionDialogViewModel : ViewModelBase
+public partial class DeviceSelectionDialogViewModel : ViewModelBase
 {
     public ObservableCollection<BluetoothDevice> Devices { init; get; } = [];
     public bool CanUseAlternativeBackend => PlatformUtils.IsWindowsContractsSdkSupported;
 
-    [Reactive] public BluetoothDevice? SelectedDevice { set; get; }
-    [Reactive] public Models SelectedModel { set; get; }
-    [Reactive] public bool NoDevices { set; get; }
+    [Reactive] private BluetoothDevice? _selectedDevice;
+    [Reactive] private Models _selectedModel;
+    [Reactive] private bool _noDevices;
 
     private readonly ContentDialog _dialog;
 

@@ -5,12 +5,11 @@ using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Platform.Model;
 using GalaxyBudsClient.Utils.Extensions;
-using ReactiveUI.Fody.Helpers;
 using Keys = GalaxyBudsClient.Platform.Model.Keys;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Dialogs;
 
-public class HotkeyEditorDialogViewModel : ViewModelBase
+public partial class HotkeyEditorDialogViewModel : ViewModelBase
 {
     public HotkeyEditorDialogViewModel() : this(null) {}
 
@@ -29,13 +28,13 @@ public class HotkeyEditorDialogViewModel : ViewModelBase
         PropertyChanged += OnPropertyChanged;
     }
         
-    [Reactive] public bool ModifierCtrl { set; get; }
-    [Reactive] public bool ModifierAlt { set; get; }
-    [Reactive] public bool ModifierShift { set; get; }
-    [Reactive] public bool ModifierWin { set; get; }
-    [Reactive] public Keys? Key1 { set; get; }
-    [Reactive] public Event? Action { set; get; }
-    [Reactive] public string HotkeyPreview { set; get; } = Strings.HotkeyEditInvalid;
+    [Reactive] private bool _modifierCtrl;
+    [Reactive] private bool _modifierAlt;
+    [Reactive] private bool _modifierShift;
+    [Reactive] private bool _modifierWin;
+    [Reactive] private Keys? _key1;
+    [Reactive] private Event? _action;
+    [Reactive] private string _hotkeyPreview = Strings.HotkeyEditInvalid;
         
     public static IEnumerable<Event> ActionSource =>
         EventExtensions.GetValues().Where(EventDispatcher.CheckDeviceSupport);
