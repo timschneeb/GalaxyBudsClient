@@ -175,6 +175,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@Sigarya](https://github.com/Sigarya) - Hebrew translation
 * [@domroaft](https://github.com/domroaft) - Hungarian translation
 * [@lampi8426](https://github.com/lampi8426) - Dutch translation
+* [@bluday](https://github.com/bluday) - Swedish translation
 
 ### Services
 
