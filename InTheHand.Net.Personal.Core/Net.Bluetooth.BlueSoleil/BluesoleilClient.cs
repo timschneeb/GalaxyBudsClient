@@ -1,4 +1,4 @@
-﻿// 32feet.NET - Personal Area Networking for .NET
+// 32feet.NET - Personal Area Networking for .NET
 //
 // InTheHand.Net.Bluetooth.Widcomm.WidcommBluetoothFactoryBase
 // 
@@ -112,16 +112,13 @@ namespace InTheHand.Net.Bluetooth.BlueSoleil
             Debug.Assert(comSerialNum != 0, "INFO comSerialNum == 0 wierd maybe???");
             bool success = _factory.Api.Btsdk_PlugInVComm(comSerialNum, out osComPort,
                 UsageTypeConst, flags, Timeout);
-            Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                "Btsdk_GetASerialNum comSerialNum: {0}, Btsdk_PlugInVComm success: {1}, osComPort: {2}",
-                comSerialNum0, success, osComPort));
+            Debug.WriteLine($"Btsdk_GetASerialNum comSerialNum: {comSerialNum0}, Btsdk_PlugInVComm success: {success}, osComPort: {osComPort}");
             if (!success)
                 BluesoleilUtils.CheckAndThrow(BtSdkError.OPERATION_FAILURE, "Btsdk_PlugInVComm");
             comPort = checked((int)osComPort);
             ret = _factory.Api.Btsdk_InitCommObj(checked((byte)osComPort),
                 BTSDK_CLS_SERIAL_PORT);
-            Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                "Btsdk_InitCommObj ret: {0}", ret));
+            Debug.WriteLine($"Btsdk_InitCommObj ret: {ret}");
             BluesoleilUtils.CheckAndThrow(ret, "Btsdk_InitCommObj");
             //
             bool connSuccess = false;
@@ -129,8 +126,7 @@ namespace InTheHand.Net.Bluetooth.BlueSoleil
                 var sppStru = new Structs.BtSdkSPPConnParamStru(osComPort);
                 ret = _factory.Api.Btsdk_ConnectEx(hDev, svcClass16,
                     ref sppStru, out hConn);
-                Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                    "ret: {0}, hConn: 0x{1:X}", ret, hConn));
+                Debug.WriteLine($"ret: {ret}, hConn: 0x{hConn:X}");
                 BluesoleilUtils.CheckAndThrow(ret, "Btsdk_ConnectEx");
                 _hDev = hDev;
                 //
@@ -146,16 +142,13 @@ namespace InTheHand.Net.Bluetooth.BlueSoleil
 
         internal static void FreeComIndex(BluesoleilFactory factory, int comNum, uint comSerialNum)
         {
-            Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                "BluesoleilClient.FreeComIndex IN: comNum: {0}, comSerialNum: {1}",
-                comNum, comSerialNum));
+            Debug.WriteLine($"BluesoleilClient.FreeComIndex IN: comNum: {comNum}, comSerialNum: {comSerialNum}");
             BtSdkError ret;
             var comNum8 = checked((byte)comNum);
             ret = factory.Api.Btsdk_DeinitCommObj(comNum8);
             BluesoleilUtils.Assert(ret, "Btsdk_DeinitCommObj");
             factory.Api.Btsdk_PlugOutVComm(comSerialNum, StackConsts.COMM_SET.Record);
-            Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                "BluesoleilClient.FreeComIndex OUT: Btsdk_DeinitCommObj ret: {0}", ret));
+            Debug.WriteLine($"BluesoleilClient.FreeComIndex OUT: Btsdk_DeinitCommObj ret: {ret}");
         }
 
         //--
@@ -213,8 +206,7 @@ namespace InTheHand.Net.Bluetooth.BlueSoleil
             //
             Debug.WriteLine("Gonna Btsdk_ConnectAppExtSPPService with: " + sppAttr.ToString());
             BtSdkError ret = _factory.Api.Btsdk_ConnectAppExtSPPService(hDev, ref sppAttr, out hConn);
-            Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                "ret: {0}, hConn: 0x{1:X}, with: {2}", ret, hConn, sppAttr.ToString()));
+            Debug.WriteLine($"ret: {ret}, hConn: 0x{hConn:X}, with: {sppAttr}");
             _hDev = hDev;
             BluesoleilUtils.CheckAndThrow(ret, "Btsdk_ConnectAppExtSPPService");
             //
@@ -239,13 +231,10 @@ namespace InTheHand.Net.Bluetooth.BlueSoleil
                 } else {
                     // Highly likely an OPP/etc connection was made, and not a RFCOMM
                     // connection, and thus no COM port we can use. :-(  So fail!
-                    Trace.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                        "BlueSoleil seems no RFCOMM connection made, closing. (channel: {0}, COM: {1})",
-                        sppAttr.rf_svr_chnl, sppAttr.com_index));
+                    Trace.WriteLine($"BlueSoleil seems no RFCOMM connection made, closing. (channel: {sppAttr.rf_svr_chnl}, COM: {sppAttr.com_index})");
                     // (Note: Add a dummy record so RemoveLiveConnection works ok).
                     int liveCountB = _factory.AddConnection(hConn, NullBluesoleilConnection.Instance);
-                    Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                        "BlueSoleilClient.Connect non-RFCOMM LiveConns count: {0}.", liveCountB));
+                    Debug.WriteLine($"BlueSoleilClient.Connect non-RFCOMM LiveConns count: {liveCountB}.");
                     var retD = _factory.Api.Btsdk_Disconnect(hConn);
                     BluesoleilUtils.Assert(retD, "Close non-RFCOMM connection");
                     throw BluesoleilUtils.ErrorConnectIsNonRfcomm();
@@ -316,8 +305,7 @@ namespace InTheHand.Net.Bluetooth.BlueSoleil
             var strm = new BlueSoleilSerialPortNetworkStream(serialPort, hConn, this, _factory);
             _stream = strm;
             int liveCount = _factory.AddConnection(hConn, strm);
-            Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                "BlueSoleilClient.Connect LiveConns count: {0}.", liveCount));
+            Debug.WriteLine($"BlueSoleilClient.Connect LiveConns count: {liveCount}.");
             // TODO who handles closing the connection if opening the port fails
         }
 

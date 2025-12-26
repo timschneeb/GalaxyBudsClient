@@ -480,9 +480,8 @@ namespace InTheHand.Net.Bluetooth
             ElementTypeDescriptor etd = GetEtdForType(elementType);
             if (!(etd == ElementTypeDescriptor.UnsignedInteger
                    || etd == ElementTypeDescriptor.TwosComplementInteger)) {
-                throw new ArgumentException(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                    ErrorMsgFmtCreateNumericalGivenNonNumber, 
-                    etd/*, (int)etd, elementType, (int)elementType*/));
+                throw new ArgumentException(
+                    $"Not a numerical type ({etd}).");
             }
             object valueConverted = ConvertNumericalValue(elementType, value);
             return new ServiceElement(elementType, valueConverted);

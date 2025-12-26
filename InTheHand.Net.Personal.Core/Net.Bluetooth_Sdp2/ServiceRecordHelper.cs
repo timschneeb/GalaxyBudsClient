@@ -124,8 +124,8 @@ namespace InTheHand.Net.Bluetooth
             // -- L2CAP Layer --
             if (!etor.MoveNext()) {
 #if ! WinCE
-                Trace.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                    "Protocol stack truncated before {0}.", "L2CAP"));
+                Trace.WriteLine(
+                    $"Protocol stack truncated before {"L2CAP"}.");
 #endif
                 goto NotFound;
             }
@@ -133,8 +133,8 @@ namespace InTheHand.Net.Bluetooth
             layerContent = layer.GetValueAsElementList();
             if (((ServiceElement)layerContent[0]).GetValueAsUuid() != BluetoothService.L2CapProtocol) {
 #if ! WinCE
-                Trace.WriteLine(String.Format(CultureInfo.InvariantCulture,
-                    "Bad protocol stack, layer {0} is not {1}.", 1, "L2CAP"));
+                Trace.WriteLine(
+                    $"Bad protocol stack, layer {1} is not {"L2CAP"}.");
 #endif
                 goto NotFound;
             }
@@ -155,8 +155,8 @@ namespace InTheHand.Net.Bluetooth
             // -- RFCOMM Layer --
             if (!etor.MoveNext()) {
 #if ! WinCE
-                Trace.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                    "Protocol stack truncated before {0}.", "RFCOMM"));
+                Trace.WriteLine(
+                    $"Protocol stack truncated before {"RFCOMM"}.");
 #endif
                 goto NotFound;
             }
@@ -164,8 +164,8 @@ namespace InTheHand.Net.Bluetooth
             layerContent = layer.GetValueAsElementList();
             if (((ServiceElement)layerContent[0]).GetValueAsUuid() != BluetoothService.RFCommProtocol) {
 #if ! WinCE
-                Trace.WriteLine(String.Format(CultureInfo.InvariantCulture,
-                    "Bad protocol stack, layer {0} is not {1}.", 2, "RFCOMM"));
+                Trace.WriteLine(
+                    $"Bad protocol stack, layer {2} is not {"RFCOMM"}.");
 #endif
                 goto NotFound;
             }

@@ -78,12 +78,7 @@ namespace InTheHand.Net.Bluetooth.Widcomm
         //
         public override string ToString()
         {
-            return string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                "[DEV_VER_INFO: {0}{1}{2}, {3}, {4}, {5}, {6}, {7}]",
-                '{', '}',
-                BitConverter.ToString(bd_addr),
-                hci_version, hci_revision,
-                lmp_version, manufacturer, lmp_sub_version);
+            return $"[DEV_VER_INFO: {{{BitConverter.ToString(bd_addr)}}}, {hci_version}, {hci_revision}, {lmp_version}, {manufacturer}, {lmp_sub_version}]";
         }
     }
 

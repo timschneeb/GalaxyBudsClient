@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace InTheHand
+﻿namespace InTheHand
 {
     /// <summary>
     /// For use on NETCFv2
@@ -30,11 +26,7 @@ namespace InTheHand
         }
 
         static string GetCurrentFolder()
-        {
-            string fullAppName = System.Reflection.Assembly.GetCallingAssembly().GetName().CodeBase;
-            string fullAppPath = System.IO.Path.GetDirectoryName(fullAppName);
-            return fullAppPath;
-        }
+            => System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetCallingAssembly().Location) ?? string.Empty;
 
         protected override void Dispose(bool disposing)
         {

@@ -1,4 +1,4 @@
-﻿// 32feet.NET - Personal Area Networking for .NET
+// 32feet.NET - Personal Area Networking for .NET
 //
 // Net.Bluetooth.StonestreetOne.BluetopiaSdpQuery
 // 
@@ -197,8 +197,7 @@ namespace InTheHand.Net.Bluetooth.StonestreetOne
                 pSDP_Response_Data, typeof(Structs.SDP_Response_Data));
             var type = stru.SDP_Response_Data_Type;
             int? socketError = null;
-            Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                "HandleSDP_Response_Callback2: {0}=0x{1:X}", type, (int)type));
+            Debug.WriteLine($"HandleSDP_Response_Callback2: {type}=0x{(int)type:X}");
             switch (type) {
                 case StackConsts.SDP_Response_Data_Type.Timeout:
                 // Get ConnectionError when connecting to a non-existent device.
@@ -242,9 +241,7 @@ namespace InTheHand.Net.Bluetooth.StonestreetOne
             var svcSrchAttrRsp = (Structs.SDP_Response_Data__SDP_Service_Search_Attribute_Response_Data)
                 Marshal.PtrToStructure(pSSSARD, typeof(Structs.SDP_Response_Data__SDP_Service_Search_Attribute_Response_Data));
             IntPtr pCur = svcSrchAttrRsp.pSDP_Service_Attribute_Response_Data;
-            Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                "BuildRecordList Number_Service_Records: {0}",
-                svcSrchAttrRsp.Number_Service_Records));
+            Debug.WriteLine($"BuildRecordList Number_Service_Records: {svcSrchAttrRsp.Number_Service_Records}");
             for (int i = 0; i < svcSrchAttrRsp.Number_Service_Records; ++i) {
                 var curSR = BuildRecord(pCur);
                 rList.Add(curSR);

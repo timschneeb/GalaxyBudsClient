@@ -15,8 +15,12 @@ using InTheHand.Net.Bluetooth;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
+// SYSLIB0014: WebRequest is obsolete in .NET 6+ but required for OBEX implementation structure.
+#pragma warning disable SYSLIB0014
+
 namespace InTheHand.Net
 {
+#pragma warning disable SYSLIB0014
     /// <summary>
     /// Provides an OBEX implementation of the <see cref="WebRequest"/> class.
     /// </summary>
@@ -89,7 +93,9 @@ namespace InTheHand.Net
     /// See also the ObexPushApplication and ObexPushVB sample programs.
     /// </example>
     [SuppressMessage("Microsoft.Usage", "CA2237:MarkISerializableTypesWithSerializable", Justification = "Are we!?!")]
+#pragma warning disable SYSLIB0014 // Type or member is obsolete
     public class ObexWebRequest : WebRequest
+#pragma warning restore SYSLIB0014 // Type or member is obsolete
     {
         private System.IO.MemoryStream requestStream = new System.IO.MemoryStream();
 

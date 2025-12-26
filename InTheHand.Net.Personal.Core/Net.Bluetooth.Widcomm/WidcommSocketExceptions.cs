@@ -52,7 +52,7 @@ namespace InTheHand.Net.Bluetooth.Widcomm
         {
             return CommonSocketExceptions.Create_NoResultCode(CommonSocketExceptions.SocketError_StartDiscovery_Failed, "StartDiscoverySDP"
                 + ((ee == unchecked((WBtRc)(-1)) /*|| ee == WBtRc.WBT_SUCCESS*/) ? string.Empty
-                    : string.Format(System.Globalization.CultureInfo.InvariantCulture, ", {0} = 0x{1:X}", ee, (uint)ee)));
+                    : $", {ee} = 0x{(uint)ee:X}"));
         }
 #endif
     }
@@ -94,9 +94,7 @@ namespace InTheHand.Net.Bluetooth.Widcomm
         {
             get
             {
-                return string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                    typeof(T).Name // e.g. PORT_RETURN_CODE
-                    + "={0}=0x{1:X}", m_retName, m_ret);
+                return typeof(T).Name + $"={m_retName}=0x{m_ret:X}";
             }
         }
 
@@ -104,6 +102,7 @@ namespace InTheHand.Net.Bluetooth.Widcomm
         #region Serializable
 #if !NETCF
         private const string SzName_ret = "_ret";
+        [Obsolete("Binary formatter serialization is obsolete.")]
         protected GenericReturnCodeWidcommSocketException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
@@ -111,7 +110,7 @@ namespace InTheHand.Net.Bluetooth.Widcomm
             SetEnum();
         }
 
-        [SecurityPermissionAttribute(SecurityAction.Demand, SerializationFormatter = true)]
+        [Obsolete("Binary formatter serialization is obsolete.")]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             base.GetObjectData(info, context);

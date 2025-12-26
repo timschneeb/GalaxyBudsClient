@@ -469,7 +469,7 @@ namespace InTheHand.Net
         /// <list type="table">
         ///    &#x201C;The RFCOMM server channel number is a [five-bit field].
         ///    Server applications registering with an RFCOMM service interface are assigned a
-        ///    Server Channel number in the range 1…30. [0 and 31 should not be used since
+        ///    Server Channel number in the range 1ï¿½30. [0 and 31 should not be used since
         ///    the corresponding DLCIs are reserved in TS 07.10]&#x201D;
         /// </list>
         /// </remarks>
@@ -493,9 +493,7 @@ namespace InTheHand.Net
                     "{0:X2} ", btsa[i]);
             }
             if (bldr.Length > 0) bldr.Length -= 1;
-            var t = string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                "SA @ {0,9}: family: {1} 0x{1:X}, size: {2}, < {3} >",
-                name, btsa.Family, btsa.Size, bldr.ToString());
+            var t = $"SA @ {name,9}: family: {btsa.Family} 0x{btsa.Family:X}, size: {btsa.Size}, < {bldr} >";
             Debug.WriteLine(t);
             MiscUtils.ConsoleDebug_WriteLine(t + ".");
         }

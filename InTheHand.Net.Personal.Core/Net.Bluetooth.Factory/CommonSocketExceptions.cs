@@ -103,13 +103,14 @@ namespace InTheHand.Net.Bluetooth.Widcomm
 #if !NETCF
         private const string SzName_location = "_location";
 
+        [Obsolete("Binary formatter serialization is obsolete.")]
         protected WidcommSocketException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
             m_location = info.GetString(SzName_location);
         }
 
-        [SecurityPermissionAttribute(SecurityAction.Demand, SerializationFormatter = true)]
+        [Obsolete("Binary formatter serialization is obsolete.")]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             base.GetObjectData(info, context);
@@ -137,6 +138,7 @@ namespace InTheHand.Net.Bluetooth.Widcomm
         //----
 #region Serializable
 #if !NETCF
+        [Obsolete("Binary formatter serialization is obsolete.")]
         protected NoResultCodeWidcommSocketException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {

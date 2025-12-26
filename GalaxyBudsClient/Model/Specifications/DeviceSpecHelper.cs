@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Platform.Model;
@@ -35,20 +36,17 @@ public static class DeviceSpecHelper
                 const string deviceIdPrefix = "d908aab5-7a90-4cbe-8641-86a553db";
                 var deviceIdHex = device.ServiceUuids
                     .Select(s => s.ToString("D"))
-                    .FirstOrDefault(s => s.StartsWith(deviceIdPrefix))?
-                    .Replace(deviceIdPrefix, string.Empty);
+                    .FirstOrDefault(s => s.StartsWith(deviceIdPrefix, StringComparison.OrdinalIgnoreCase))?
+                    .Replace(deviceIdPrefix, string.Empty)
+                    .Replace("-", string.Empty);
 
-                if (deviceIdHex != null)
+                if (!string.IsNullOrWhiteSpace(deviceIdHex))
                 {
                     try
                     {
-                        var deviceIdBytes = Enumerable.Range(0, deviceIdHex.Length)
-                            .Where(x => x % 2 == 0)
-                            .Select(x => Convert.ToByte(deviceIdPrefix.Substring(x, 2), 16))
-                            .ToArray();
-
-                        // Check based on DeviceManager.getWearableDeviceFromBudsUUID() from the Wearable container app
-                        if (((DeviceIds)BitConverter.ToInt32(deviceIdBytes)).GetAssociatedModel() is Models model)
+                        if (int.TryParse(deviceIdHex, NumberStyles.HexNumber, CultureInfo.InvariantCulture,
+                                out var deviceIdValue) &&
+                            ((DeviceIds)deviceIdValue).GetAssociatedModel() is Models model)
                         {
                             return FindByModel(model);
                         }

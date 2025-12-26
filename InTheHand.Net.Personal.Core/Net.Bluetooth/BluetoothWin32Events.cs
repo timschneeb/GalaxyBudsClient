@@ -608,9 +608,7 @@ namespace InTheHand.Net.Bluetooth
                 //   BTH_ADDR bthAddress; USHORT psm; UCHAR connected; UCHAR initiated; }
 #if DEBUG
                 var l2capE = Marshal_PtrToStructure<BTH_L2CAP_EVENT_INFO>(pData);
-                Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                    "L2CAP_EVENT: addr: {0:X}, psm: {1}, conn: {2}, init'd: {3}",
-                    l2capE.bthAddress, l2capE.psm, l2capE.connected, l2capE.initiated));
+                Debug.WriteLine($"L2CAP_EVENT: addr: {l2capE.bthAddress:X}, psm: {l2capE.psm}, conn: {l2capE.connected}, init'd: {l2capE.initiated}");
 #endif
             } else if (BluetoothDeviceNotificationEvent.HciEvent == hdrHandle.dbch_eventguid) {
                 text += "GUID_BLUETOOTH_HCI_EVENT";
@@ -618,9 +616,7 @@ namespace InTheHand.Net.Bluetooth
                 //   BTH_ADDR bthAddress; UCHAR connectionType; UCHAR connected; } 
 #if DEBUG
                 var hciE = Marshal_PtrToStructure<BTH_HCI_EVENT_INFO>(pData);
-                Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                    "HCI_EVENT: addr: {0:X}, type: {1}, conn: {2}",
-                    hciE.bthAddress, hciE.connectionType, hciE.connected));
+                Debug.WriteLine($"HCI_EVENT: addr: {hciE.bthAddress:X}, type: {hciE.connectionType}, conn: {hciE.connected}");
 #endif
             }
                 // -- New somewhere after WinXP.
@@ -859,7 +855,7 @@ namespace InTheHand.Net.Bluetooth
             /// <summary>
             /// A custom event has occurred. 
             /// </summary>
-            /// <remarks>Windows NT 4.0 and Windows 95:  This value is not supported.</remarks>
+            /// <remarks>Windowsï¿½NT 4.0 and Windowsï¿½95:ï¿½ï¿½This value is not supported.</remarks>
             CustomEvent = 0x8006,
             /// <summary>
             /// A device or piece of media has been inserted and is now available. 
@@ -888,7 +884,7 @@ namespace InTheHand.Net.Bluetooth
             /// <summary>
             /// A device has been added to or removed from the system. 
             /// </summary>
-            /// <remarks>Windows NT 4.0 and Windows Me/98/95:  This value is not supported.</remarks>
+            /// <remarks>Windowsï¿½NT 4.0 and Windows Me/98/95:ï¿½ï¿½This value is not supported.</remarks>
             DevNodesChanged = 0x0007,
             /// <summary>
             /// Permission is requested to change the current configuration (dock or undock). 

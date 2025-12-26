@@ -82,10 +82,7 @@ namespace InTheHand.Net.Bluetooth
         /// <returns>A string (e.g. contains the device address and name).</returns>
         public override string ToString()
         {
-            string s = string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                "Device: {0} '{1}'",
-                Device.DeviceAddress, Device.DeviceName);
-            return s;
+            return $"Device: {Device.DeviceAddress} '{Device.DeviceName}'";
         }
 
     }
@@ -171,11 +168,7 @@ namespace InTheHand.Net.Bluetooth
         /// <returns>A string (e.g. contains the device address, name and the current and previous flags).</returns>
         public override string ToString()
         {
-            string s = string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                "Device: {0} '{1}', cur flags: '{2}', old: '{3}'",
-                Device.DeviceAddress, Device.DeviceName,
-                _currentFlags, _previousFlags);
-            return s;
+            return $"Device: {Device.DeviceAddress} '{Device.DeviceName}', cur flags: '{_currentFlags}', old: '{_previousFlags}'";
         }
 
     }

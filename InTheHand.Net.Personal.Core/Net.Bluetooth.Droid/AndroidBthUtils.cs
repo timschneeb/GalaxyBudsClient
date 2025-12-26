@@ -1,4 +1,4 @@
-﻿// 32feet.NET - Personal Area Networking for .NET
+// 32feet.NET - Personal Area Networking for .NET
 //
 // Copyright (c) 2013 Alan J McFarlane, All rights reserved.
 // Copyright (c) 2013 In The Hand Ltd, All rights reserved.
@@ -82,10 +82,7 @@ namespace InTheHand.Net.Bluetooth.Droid
         {
             var iwe = (int)serviceClassWe;
             var ian = (int)serviceClassAndroid;
-            Debug.Assert(iwe == ConvertServiceClassAndroidTo32feet(ian),
-                string.Format(CultureInfo.InvariantCulture,
-                    "Not equal {0}=0x{1:X} and {2}=0x{3:X}",
-                    serviceClassWe, iwe, serviceClassAndroid, ian));
+            Debug.Assert(iwe == ConvertServiceClassAndroidTo32feet(ian), $"Not equal {serviceClassWe}=0x{iwe:X} and {serviceClassAndroid}=0x{ian:X}");
         }
         #endregion
 

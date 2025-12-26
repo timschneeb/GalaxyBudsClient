@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>netstandard2.1</TargetFramework>
+        <TargetFramework>net10.0-windows</TargetFramework>
         <RootNamespace>InTheHand</RootNamespace>
         <AssemblyName>InTheHand.Net.Personal</AssemblyName>
         <AssemblyVersion>3.9.0.0</AssemblyVersion>
@@ -12,8 +12,9 @@
         <DefineConstants>$(DefineConstants);NO_WINFORMS;WinXP;V2</DefineConstants>
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU</Platforms>
-        <NoWarn>*</NoWarn>
-        <LangVersion>latest</LangVersion>
+        <NoWarn>$(NoWarn);SYSLIB0014;SYSLIB0051;CS0618;CA1416</NoWarn>
+        <LangVersion>13.0</LangVersion>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
     <ItemGroup>
       <Compile Remove="Windows\**" />
@@ -21,7 +22,6 @@
       <None Remove="Windows\**" />
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
       <PackageReference Include="System.Configuration.ConfigurationManager" Version="10.0.1" />
       <PackageReference Include="System.IO.Ports" Version="10.0.1" />
     </ItemGroup>

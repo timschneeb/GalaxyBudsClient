@@ -9,13 +9,18 @@ using System.Net;
 using System.IO;
 using System.Diagnostics.CodeAnalysis;
 
+// SYSLIB0014: WebResponse is obsolete
+#pragma warning disable SYSLIB0014
+
 namespace InTheHand.Net
 {
     /// <summary>
     /// Provides an OBEX implementation of the <see cref="WebResponse"/> class.
     /// </summary>
     [SuppressMessage("Microsoft.Usage", "CA2237:MarkISerializableTypesWithSerializable", Justification = "Are we!?!")]
+#pragma warning disable SYSLIB0014 // Type or member is obsolete
     public class ObexWebResponse : WebResponse
+#pragma warning restore SYSLIB0014 // Type or member is obsolete
     {
         private MemoryStream responseStream;
         private WebHeaderCollection responseHeaders;

@@ -360,10 +360,7 @@ namespace InTheHand.Net.Bluetooth.Factory
             Debug.WriteLine("Started " + createdNew + " new port(s).");
             Debug.Assert(m_listening.Count + m_accepted.Count == m_backlog
                     || m_listening.Count == RestrictPortCount,
-                string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                "didn't reach backlog (#L + #A = {0} + {1} = {3} != {2})",
-                m_listening.Count, m_accepted.Count, m_backlog,
-                m_listening.Count + m_accepted.Count));
+                $"didn't reach backlog (#L + #A = {m_listening.Count} + {m_accepted.Count} = {m_listening.Count + m_accepted.Count} != {m_backlog})");
         }
 
         void _StartOneNewListenerPort_inLock()
@@ -373,9 +370,8 @@ namespace InTheHand.Net.Bluetooth.Factory
             m_listening.Add(port, port);
             IAsyncResult ar = port.BeginAccept(m_liveLocalEP, null, PortAcceptCallback, port);
             Debug.Assert(ar is AsyncResultNoResult, "assert type");
-            Debug.WriteLine(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                "StartOneNewListenerPort {0}.",
-                port.DebugId));
+            Debug.WriteLine(
+                $"StartOneNewListenerPort {port.DebugId}.");
         }
 
         protected abstract CommonRfcommStream GetNewPort();

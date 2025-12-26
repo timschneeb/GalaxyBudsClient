@@ -44,6 +44,7 @@ namespace InTheHand.Net.Bluetooth.Widcomm
 
         #region Serializable
 #if !NETCF
+        [Obsolete("Binary formatter serialization is obsolete.")]
         protected SPP_STATE_CODE_WidcommSocketException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
@@ -63,6 +64,7 @@ namespace InTheHand.Net.Bluetooth.Widcomm
 
         #region Serializable
 #if !NETCF
+        [Obsolete("Binary formatter serialization is obsolete.")]
         protected SPP_CLIENT_RETURN_CODE_WidcommSocketException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {

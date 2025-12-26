@@ -1,4 +1,4 @@
-﻿// 32feet.NET - Personal Area Networking for .NET
+// 32feet.NET - Personal Area Networking for .NET
 //
 // Net.Bluetooth.StonestreetOne.BluetopiaRfcommStream
 // 
@@ -280,9 +280,7 @@ namespace InTheHand.Net.Bluetooth.StonestreetOne
                 Marshal.PtrToStructure(SPP_Event_Data.pEventData,
                     typeof(Structs.SPP_Open_Port_Confirmation_Data));
             int? socketErrorCode;
-            Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                "EventConnectConf: {0}=0x{1:X}",
-                data.PortOpenStatus, (int)data.PortOpenStatus));
+            Debug.WriteLine($"EventConnectConf: {data.PortOpenStatus}=0x{(int)data.PortOpenStatus:X}");
             switch (data.PortOpenStatus) {
                 case StackConsts.SPP_OPEN_PORT_STATUS.Success:
                     socketErrorCode = null;

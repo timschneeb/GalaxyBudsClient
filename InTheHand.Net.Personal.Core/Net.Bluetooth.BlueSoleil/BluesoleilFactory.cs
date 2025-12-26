@@ -1,4 +1,4 @@
-﻿// 32feet.NET - Personal Area Networking for .NET
+// 32feet.NET - Personal Area Networking for .NET
 //
 // InTheHand.Net.Bluetooth.Widcomm.WidcommBluetoothFactoryBase
 // 
@@ -378,9 +378,7 @@ namespace InTheHand.Net.Bluetooth.BlueSoleil
                 var props = (Structs.BtSdkConnectionPropertyStru)Marshal.PtrToStructure(
                     arg, typeof(Structs.BtSdkConnectionPropertyStru));
 #if !CODE_ANALYSIS
-                var msg = string.Format(CultureInfo.InvariantCulture,
-                    "HandleConnectionEventInd event: {0}, conn_hdl: 0x{1:X}, arg.hDev: 0x{2:X}" + " role_AND_result: 0x{3:X}.",
-                      eventType, conn_hdl, props.device_handle, props.role_AND_result);
+                var msg = $"HandleConnectionEventInd event: {eventType}, conn_hdl: 0x{conn_hdl:X}, arg.hDev: 0x{props.device_handle:X} role_AND_result: 0x{props.role_AND_result:X}.";
                 //Console.WriteLine(msg);
                 Debug.WriteLine(msg);
 #endif
@@ -397,13 +395,11 @@ namespace InTheHand.Net.Bluetooth.BlueSoleil
                         liveCount = RemoveConnection(conn_hdl);
                         break;
                     default:
-                        Debug.Fail(string.Format(CultureInfo.InvariantCulture,
-                            "Unknown ConnectionEventInd: {0}=0x{1:X}", eventType));
+                        Debug.Fail($"Unknown ConnectionEventInd: {eventType}=0x{(int)eventType:X}");
                         liveCount = -1;
                         break;
                 }
-                Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                    "BlueSoleil LiveConns count: {0}.", liveCount));
+                Debug.WriteLine($"BlueSoleil LiveConns count: {liveCount}.");
             }
 
             internal bool Contains(BTCONNHDL conn_hdl)
@@ -477,9 +473,7 @@ namespace InTheHand.Net.Bluetooth.BlueSoleil
                     if (ret == BtSdkError.OK) { ++okCount; }
                 }//for
                 try {
-                    Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                        "BlueSoleil CloseAnyLiveConnections: count: {0}, okCount: {1}",
-                        count, okCount));
+                    Debug.WriteLine($"BlueSoleil CloseAnyLiveConnections: count: {count}, okCount: {okCount}");
                 } catch (ObjectDisposedException) {
                 }
             }

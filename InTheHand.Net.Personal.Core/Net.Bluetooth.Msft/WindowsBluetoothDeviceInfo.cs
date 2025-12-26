@@ -703,13 +703,13 @@ namespace InTheHand.Net.Bluetooth.Msft
             //   #define ERROR_NOT_FOUND                  1168L
             //
             // Seen:
-            // • 0x00000424 = 1060 ----> ERROR_SERVICE_DOES_NOT_EXIST
+            // ï¿½ 0x00000424 = 1060 ----> ERROR_SERVICE_DOES_NOT_EXIST
             // When service not present, or device not present.
             //
-            // • 0x80070002        -/\-> ERROR_FILE_NOT_FOUND
+            // ï¿½ 0x80070002        -/\-> ERROR_FILE_NOT_FOUND
             // PANU on Broadcom peer.  "No driver for service"?
             //
-            // • 0x00000490 = 1168 ----> ERROR_NOT_FOUND
+            // ï¿½ 0x00000490 = 1168 ----> ERROR_NOT_FOUND
             // Setting 'False' on a service not set previously registered.
             const int BLUETOOTH_SERVICE_DISABLE = 0x00;
             const int BLUETOOTH_SERVICE_ENABLE = 0x01;
@@ -1171,9 +1171,7 @@ namespace InTheHand.Net.Bluetooth.Msft
             if (!success) {
                 var gle = Marshal.GetLastWin32Error();
                 var ex = new System.ComponentModel.Win32Exception();
-                Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                    "INFO: IOCTL_BTH_GET_RADIO_INFO failure: {0} = 0x{1:X}.",
-                    (InTheHand.Win32.Win32Error)gle, gle));
+                Debug.WriteLine($"INFO: IOCTL_BTH_GET_RADIO_INFO failure: {(InTheHand.Win32.Win32Error)gle} = 0x{gle:X}.");
                 Debug.Assert(gle == ex.NativeErrorCode);
                 throw ex;
             } else {

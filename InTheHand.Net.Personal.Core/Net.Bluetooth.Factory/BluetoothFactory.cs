@@ -93,8 +93,8 @@ namespace InTheHand.Net.Bluetooth.Factory
             foreach (string factoryName in stacks) {
                 try {
                     Type t = Type.GetType(factoryName, true);
-                    Debug.Assert(t != null, string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                            "Expected GetType to throw when type not found: '{0}'", factoryName));
+                    Debug.Assert(t != null,
+                            $"Expected GetType to throw when type not found: '{factoryName}'");
                     object tmp = Activator.CreateInstance(t);
                     Debug.Assert(tmp != null, "Expect all failures to throw rather than return null.");
                     IBluetoothFactoryFactory ff = tmp as IBluetoothFactoryFactory;
@@ -103,13 +103,12 @@ namespace InTheHand.Net.Bluetooth.Factory
                     } else { // BluetoothFactoryFactory!
                         IList_BluetoothFactory multiple = ff.GetFactories(errors);
                         if (multiple != null) {
-                            Debug.WriteLine(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                                "BluetoothFactoryFactory '{0}' supplied {1} items.",
-                                ff.GetType().AssemblyQualifiedName, multiple.Count));
+                            Debug.WriteLine(
+                                $"BluetoothFactoryFactory '{ff.GetType().AssemblyQualifiedName}' supplied {multiple.Count} items.");
                             list.AddRange(multiple);
                         } else {
-                            Debug.WriteLine(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                                "BluetoothFactoryFactory '{0}' returned null.", ff.GetType().AssemblyQualifiedName));
+                            Debug.WriteLine(
+                                $"BluetoothFactoryFactory '{ff.GetType().AssemblyQualifiedName}' returned null.");
                         }
                     }
                     if (BluetoothFactoryConfig.OneStackOnly) {
@@ -121,8 +120,7 @@ namespace InTheHand.Net.Bluetooth.Factory
                         ex = ex.InnerException;
                     }
                     errors.Add(ex);
-                    string msg = string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                        "Exception creating factory '{0}, ex: {1}", factoryName, ex);
+                    string msg = $"Exception creating factory '{factoryName}, ex: {ex}";
                     if (BluetoothFactoryConfig.ReportAllErrors) {
                         Utils.MiscUtils.Trace_Fail(msg);  // (No Trace.Fail on NETCF).
                     }

@@ -62,8 +62,7 @@ namespace InTheHand.Net.Bluetooth.BlueSoleil
         [SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "ret")]
         public static string BtSdkErrorToString(BtSdkError ret)
         {
-            var txt = string.Format(CultureInfo.InvariantCulture,
-                "{0}=0x{1:X4}", ret, (int)ret);
+            var txt = $"{ret}=0x{(int)ret:X4}";
             return txt;
         }
 

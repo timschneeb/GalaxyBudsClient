@@ -27,11 +27,7 @@ namespace InTheHand.Net.Bluetooth.Msft
 
         public override string ToString()
         {
-            var txt = string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                "BTH_RADIO_INFO {0}, {1}, {2}, {3:X16} '{4}'",
-                _lmpVersion, _lmpSubversion, _mfg,
-                (UInt64)_lmpSupportedFeatures, _lmpSupportedFeatures);
-            return txt;
+            return $"BTH_RADIO_INFO {_lmpVersion}, {_lmpSubversion}, {_mfg}, {(UInt64)_lmpSupportedFeatures:X16} '{_lmpSupportedFeatures}'";
         }
 
         public RadioVersions ConvertToRadioVersions()

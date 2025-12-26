@@ -74,7 +74,7 @@ namespace InTheHand.Net.Bluetooth.StonestreetOne
 
         #region Serializable
 #if !NETCF
-        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.SerializationFormatter)]
+        [Obsolete("Binary formatter serialization is obsolete.")]
         [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         protected BluetopiaSocketException(SerializationInfo serializationInfo, StreamingContext streamingContext)
             : base(serializationInfo, streamingContext)
@@ -83,7 +83,7 @@ namespace InTheHand.Net.Bluetooth.StonestreetOne
             Set(iError);
         }
 
-        [SecurityPermission(SecurityAction.Demand, Flags = SecurityPermissionFlag.SerializationFormatter)]
+        [Obsolete("Binary formatter serialization is obsolete.")]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             base.GetObjectData(info, context);
@@ -132,9 +132,7 @@ namespace InTheHand.Net.Bluetooth.StonestreetOne
             get
             {
                 return base.Message
-                + string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                    " (Bluetopia: {0} ({1})).", BluetopiaErrorCodeEnum,
-                    unchecked((Int32)BluetopiaErrorCode));
+                    + $" (Bluetopia: {BluetopiaErrorCodeEnum} ({unchecked((Int32)BluetopiaErrorCode)})).";
             }
         }
     }

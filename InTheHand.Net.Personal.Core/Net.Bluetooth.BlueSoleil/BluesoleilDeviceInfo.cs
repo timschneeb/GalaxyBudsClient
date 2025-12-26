@@ -1,4 +1,4 @@
-﻿// 32feet.NET - Personal Area Networking for .NET
+// 32feet.NET - Personal Area Networking for .NET
 //
 // InTheHand.Net.Bluetooth.Widcomm.WidcommBluetoothFactoryBase
 // 
@@ -364,8 +364,7 @@ namespace InTheHand.Net.Bluetooth.BlueSoleil
                     // mask==0.  So mask apparently applies to other fields!
                     // So we check these three values for zero
                     // and discard them if so!
-                    Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                        "HID.mask: {0:X}", hidInfo.mask));
+                    Debug.WriteLine($"HID.mask: {hidInfo.mask:X}");
                     var list = new List<ServiceAttribute>();
                     if (hidInfo.deviceReleaseNumber != 0) list.Add(
                         new ServiceAttribute(HidProfileAttributeId.DeviceReleaseNumber,
@@ -388,8 +387,7 @@ namespace InTheHand.Net.Bluetooth.BlueSoleil
                         "Different sizes!  deviceInfo.size: " + deviceInfo.size + ", Marshal.SizeOf: " + Marshal.SizeOf(typeof(Structs.BtSdkRmtDISvcExtAttrStru)));
                     // TO-DO Device Info (PnP) record: Use "mask" field, it's undocumented, check for real life values
                     //Debug.Assert(deviceInfo.mask == 0, "Is mask field in BtSdkRmtDISvcExtAttrStru ever set!!!, is here:" + deviceInfo.mask);
-                    Debug.WriteLine(string.Format(CultureInfo.InvariantCulture,
-                        "PnP/DI.mask: {0:X}", deviceInfo.mask));
+                    Debug.WriteLine($"PnP/DI.mask: {deviceInfo.mask:X}");
                     // Like above (PnP) we see mask==0 for the fields we handle
                     // here (six of).  So we check these values
                     // for zero and discard them if so!

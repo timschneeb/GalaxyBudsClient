@@ -14,11 +14,12 @@ public class MediaKeyRemote : IMediaKeyRemote
 
     public MediaKeyRemote()
     {
-        Task.Run(() =>
+        Task.Run(async () =>
         {
             try
             {
                 _client = new MprisClient();
+                await _client.InitializeAsync();
             }
             catch (PlatformNotSupportedException)
             {

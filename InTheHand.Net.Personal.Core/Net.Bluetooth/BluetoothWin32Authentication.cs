@@ -135,7 +135,7 @@ namespace InTheHand.Net.Bluetooth
     ///        e.Pin = "5276"
     ///    ElseIf (address.Substring(0, 8).Equals("00997788")) Then
     ///        ' send authentication response
-    ///        e.Pin = "ásdfghjkl"
+    ///        e.Pin = "ï¿½sdfghjkl"
     ///    End If
     /// End Sub
     /// </code>
@@ -308,7 +308,7 @@ namespace InTheHand.Net.Bluetooth
         ///        e.Pin = "5276"
         ///    ElseIf (address.Substring(0, 8).Equals("00997788")) Then
         ///        ' send authentication response
-        ///        e.Pin = "ásdfghjkl"
+        ///        e.Pin = "ï¿½sdfghjkl"
         ///    End If
         /// End Sub
         /// </code>
@@ -359,13 +359,7 @@ namespace InTheHand.Net.Bluetooth
         private bool NativeCallback(IntPtr param, ref BLUETOOTH_AUTHENTICATION_CALLBACK_PARAMS pAuthCallbackParams)
         {
             Debug.WriteLine("BtRegForAuthEx Callback:");
-            Debug.WriteLine(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                "authParams: addr: 0x{0:X12},\n  meth: '{1}'\n  capa: '{2}'\n  requ: '{3}'\n  n/pk: 0x{4:X}={4}",
-                pAuthCallbackParams.deviceInfo.Address,
-                pAuthCallbackParams.authenticationMethod,
-                pAuthCallbackParams.ioCapability,
-                pAuthCallbackParams.authenticationRequirements,
-                pAuthCallbackParams.Numeric_Value_Passkey));
+            Debug.WriteLine($"authParams: addr: 0x{pAuthCallbackParams.deviceInfo.Address:X12},\n  meth: '{pAuthCallbackParams.authenticationMethod}'\n  capa: '{pAuthCallbackParams.ioCapability}'\n  requ: '{pAuthCallbackParams.authenticationRequirements}'\n  n/pk: 0x{pAuthCallbackParams.Numeric_Value_Passkey:X}={pAuthCallbackParams.Numeric_Value_Passkey}");
             //if (pAuthCallbackParams.authenticationMethod
             //        == BluetoothAuthenticationMethod.Legacy) {
             BLUETOOTH_DEVICE_INFO bdi = pAuthCallbackParams.deviceInfo;

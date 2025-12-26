@@ -939,8 +939,7 @@ namespace InTheHand.Net.Sockets
                 BluetoothAddress curAddr = cur.DeviceAddress;
                 for (int j = i + 1; j < deviceList.Count; ++j) {
                     if (((IBluetoothDeviceInfo)deviceList[j]).DeviceAddress == curAddr) {
-                        string msg = string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                            "'{0}' duplicate #{1}==#{2}: '{3}' '{4}'", location, i, j, cur, deviceList[j]);
+                        string msg = $"'{location}' duplicate #{i}==#{j}: '{cur}' '{deviceList[j]}'";
                         Debug.Fail(msg);
                     }
                 }

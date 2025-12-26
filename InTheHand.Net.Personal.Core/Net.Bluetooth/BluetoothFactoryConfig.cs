@@ -142,9 +142,7 @@ namespace InTheHand.Net.Bluetooth
 #else
             var ea = System.Reflection.Assembly.GetEntryAssembly();
             if (ea == null) return null;
-            var cb = ea.CodeBase;
-            var u = new Uri(cb);
-            return u.LocalPath;
+            return ea.Location;
 #endif
         }
 
@@ -175,7 +173,7 @@ namespace InTheHand.Net.Bluetooth
                     success = LoadManually(rdr, vs);
                 }
 
-                System.Diagnostics.Debug.WriteLine(string.Format("Successfully read from {0} = {1}", path, success));
+                System.Diagnostics.Debug.WriteLine($"Successfully read from {path} = {success}");
             }
 
             if (!success | !pathExists)
@@ -190,7 +188,7 @@ namespace InTheHand.Net.Bluetooth
                         success = LoadManually(rdr, vs);
                     }
 
-                    System.Diagnostics.Debug.WriteLine(string.Format("Successfully read from {0} = {1}", path, success));
+                    System.Diagnostics.Debug.WriteLine($"Successfully read from {path} = {success}");
                 }
             }
 
@@ -212,17 +210,17 @@ namespace InTheHand.Net.Bluetooth
 #if true || WinCE
         [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses",
             Justification = "Is used on NETCF.")]
-        sealed internal class Values
+        internal sealed class Values
         {
             public bool? oneStackOnly;
             public bool? reportAllErrors;
         }
 
-        static readonly string[] ElementNames = { "configuration", "InTheHand.Net.Personal", "BluetoothFactory" };
+        static readonly string[] ElementNames = ["configuration", "InTheHand.Net.Personal", "BluetoothFactory"];
 
         internal static bool LoadManually(TextReader src, Values v)
         {
-            XmlDocument xd = new XmlDocument();
+            XmlDocument xd = new();
             xd.Load(src);
             return LoadManually(xd, v);
         }
@@ -249,7 +247,7 @@ namespace InTheHand.Net.Bluetooth
         static bool GetBoolOptionalAttribute(XmlElement elem, string name, ref bool? var)
         {
             string str = elem.GetAttribute(name);
-            if (!string.IsNullOrEmpty(str)) {
+            if (str is { Length: > 0 }) {
                 var = XmlConvert.ToBoolean(str);
                 return true;
             }

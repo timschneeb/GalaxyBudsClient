@@ -441,9 +441,7 @@ namespace InTheHand.Net.Bluetooth.Widcomm
             }
             RegistryValueKind kind = rkItem.GetValueKind(name);
             if (kind != expectedKind) {
-                string msg = string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                    "Expected '{0}':'{1}', to be '{2}' but was '{3}'.",
-                    rkItem.Name, name, expectedKind, kind);
+                string msg = $"Expected '{rkItem.Name}':'{name}', to be '{expectedKind}' but was '{kind}'.";
                 throw new FormatException(msg);
             }
         }
