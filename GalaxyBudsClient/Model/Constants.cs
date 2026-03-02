@@ -278,7 +278,7 @@ namespace GalaxyBudsClient.Model
             [AssociatedModel(Models.Buds3Pro)] Buds3ProSilver = 340,
             [AssociatedModel(Models.Buds3Pro)] Buds3ProWhite = 341,
             
-            [AssociatedModel(Models.Buds4Pro)] Buds4ProUnknown = 359 // NOTE: preliminary ID from SPP service UUID suffix (0167h)
+            [AssociatedModel(Models.Buds4Pro)] Buds4ProBlack = 359 // NOTE: preliminary ID from SPP service UUID suffix (0167h)
         }
 
         [CompiledEnum]
