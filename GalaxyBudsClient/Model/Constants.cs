@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
@@ -219,7 +219,9 @@ namespace GalaxyBudsClient.Model
             [ModelMetadata(Name = "Galaxy Buds3", FwPattern = "SM-R530", BuildPrefix = "R530")]
             Buds3 = 8,
             [ModelMetadata(Name = "Galaxy Buds3 Pro", FwPattern = "SM-R630", BuildPrefix = "R630")]
-            Buds3Pro = 9
+            Buds3Pro = 9,
+            [ModelMetadata(Name = "Galaxy Buds4 Pro", FwPattern = "SM-R640", BuildPrefix = "R640")]
+            Buds4Pro = 10
         }
 
         [CompiledEnum]
@@ -274,7 +276,9 @@ namespace GalaxyBudsClient.Model
             [AssociatedModel(Models.Buds3)] Buds3Silver = 333,
             [AssociatedModel(Models.Buds3)] Buds3White = 334,
             [AssociatedModel(Models.Buds3Pro)] Buds3ProSilver = 340,
-            [AssociatedModel(Models.Buds3Pro)] Buds3ProWhite = 341
+            [AssociatedModel(Models.Buds3Pro)] Buds3ProWhite = 341,
+            
+            [AssociatedModel(Models.Buds4Pro)] Buds4ProBlack = 359 // NOTE: preliminary ID from SPP service UUID suffix (0167h)
         }
 
         [CompiledEnum]
