@@ -207,7 +207,7 @@ public class DebugGetAllDataDecoder : BaseMessageDecoder
                    swRelVarString;
         }
         if (TargetModel is Models.BudsPlus or Models.BudsLive or
-            Models.BudsPro or Models.Buds2 or Models.Buds2Pro or Models.BudsFe)
+            Models.BudsPro or Models.Buds2 or Models.Buds2Pro or Models.BudsFe or Models.BudsCore)
         {
             var swVar = (payload[startIndex] & 1) == 0 ? "E" : "U";
             // var isFotaDm = (payload[startIndex] & 240) >> 4;

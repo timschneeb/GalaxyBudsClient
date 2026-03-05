@@ -216,12 +216,18 @@ namespace GalaxyBudsClient.Model
             Buds2Pro = 6,
             [ModelMetadata(Name = "Galaxy Buds FE", FwPattern = "SM-R400N", BuildPrefix = "R400N")]
             BudsFe = 7,
+            [ModelMetadata(Name = "Galaxy Buds Core", FwPattern = "SM-R410", BuildPrefix = "R410")]
+            BudsCore = 8,
             [ModelMetadata(Name = "Galaxy Buds3", FwPattern = "SM-R530", BuildPrefix = "R530")]
-            Buds3 = 8,
+            Buds3 = 9,
             [ModelMetadata(Name = "Galaxy Buds3 Pro", FwPattern = "SM-R630", BuildPrefix = "R630")]
-            Buds3Pro = 9,
+            Buds3Pro = 10,
+            [ModelMetadata(Name = "Galaxy Buds3 FE", FwPattern = "SM-R420", BuildPrefix = "R420")]
+            Buds3Fe = 11,
+            [ModelMetadata(Name = "Galaxy Buds4", FwPattern = "SM-R540", BuildPrefix = "R540")]
+            Buds4 = 12,
             [ModelMetadata(Name = "Galaxy Buds4 Pro", FwPattern = "SM-R640", BuildPrefix = "R640")]
-            Buds4Pro = 10
+            Buds4Pro = 13
         }
 
         [CompiledEnum]
@@ -266,6 +272,10 @@ namespace GalaxyBudsClient.Model
             [AssociatedModel(Models.Buds2)] Buds2Grey = 321,
             [AssociatedModel(Models.Buds2)] Buds2Unknown = 14337, // NOTE: Unknown device id mentioned by Samsung's device API
         
+            [AssociatedModel(Models.BudsCore)] BudsCoreOnyx = 322,
+            [AssociatedModel(Models.BudsCore)] BudsCoreWhite = 323,
+            
+            [AssociatedModel(Models.Buds2Pro)] Buds2ProUnknown = 325, // Unused? Official app handles this as gray implicitly
             [AssociatedModel(Models.Buds2Pro)] Buds2ProGrey = 326,
             [AssociatedModel(Models.Buds2Pro)] Buds2ProWhite = 327,
             [AssociatedModel(Models.Buds2Pro)] Buds2ProViolet = 328,
@@ -278,7 +288,15 @@ namespace GalaxyBudsClient.Model
             [AssociatedModel(Models.Buds3Pro)] Buds3ProSilver = 340,
             [AssociatedModel(Models.Buds3Pro)] Buds3ProWhite = 341,
             
-            [AssociatedModel(Models.Buds4Pro)] Buds4ProBlack = 359 // NOTE: preliminary ID from SPP service UUID suffix (0167h)
+            [AssociatedModel(Models.Buds3Fe)] Buds3FeSilver = 347,
+            [AssociatedModel(Models.Buds3Fe)] Buds3FeWhite = 348,
+  
+            [AssociatedModel(Models.Buds4)] Buds4Black = 355,
+            [AssociatedModel(Models.Buds4)] Buds4White = 356,
+            
+            [AssociatedModel(Models.Buds4Pro)] Buds4ProBlack = 359,
+            [AssociatedModel(Models.Buds4Pro)] Buds4ProWhite = 360,
+            [AssociatedModel(Models.Buds4Pro)] Buds4ProApricot = 361
         }
 
         [CompiledEnum]

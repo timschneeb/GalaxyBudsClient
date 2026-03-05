@@ -22,8 +22,11 @@ public static class DeviceSpecHelper
         Specs.Add(new Buds2DeviceSpec());
         Specs.Add(new BudsFeDeviceSpec());
         Specs.Add(new Buds3ProDeviceSpec()); // important: B3Pro is added before B3 to avoid false positives
+        Specs.Add(new Buds3FeDeviceSpec());
         Specs.Add(new Buds3DeviceSpec());
+        Specs.Add(new BudsCoreDeviceSpec());
         Specs.Add(new Buds4ProDeviceSpec());
+        Specs.Add(new Buds4DeviceSpec());
     }
     
     public static IDeviceSpec? FindByDevice(BluetoothDevice device)

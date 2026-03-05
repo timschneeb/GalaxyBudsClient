@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
+using Serilog;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
@@ -39,32 +40,41 @@ public class MeteringReportDecoder : BaseMessageDecoder
             TotalBatteryCapacity = reader.ReadInt16();
         }
 
-        if (IsLeftConnected)
+        try
         {
-            BatteryL = reader.ReadByte();
-            A2dpUsingTimeL = reader.ReadInt32();
-            EscoUsingTimeL = reader.ReadInt32();
-            AncOnTimeL = reader.ReadInt32();
-            AmbientOnTimeL = reader.ReadInt32();
-
-            if (TargetModel == Models.Buds3Pro)
+            if (IsLeftConnected)
             {
-                AdaptiveOnTimeL = reader.ReadInt32();
+                BatteryL = reader.ReadByte();
+                A2dpUsingTimeL = reader.ReadInt32();
+                EscoUsingTimeL = reader.ReadInt32();
+                AncOnTimeL = reader.ReadInt32();
+                AmbientOnTimeL = reader.ReadInt32();
+
+                if (TargetModel >= Models.Buds3Pro)
+                {
+                    AdaptiveOnTimeL = reader.ReadInt32();
+                }
+            }
+
+            if (IsRightConnected)
+            {
+                BatteryR = reader.ReadByte();
+                A2dpUsingTimeR = reader.ReadInt32();
+                EscoUsingTimeR = reader.ReadInt32();
+                AncOnTimeR = reader.ReadInt32();
+                AmbientOnTimeR = reader.ReadInt32();
+
+                if (TargetModel >= Models.Buds3Pro)
+                {
+                    AdaptiveOnTimeR = reader.ReadInt32();
+                }
             }
         }
-
-        if (IsRightConnected)
+        catch (EndOfStreamException)
         {
-            BatteryR = reader.ReadByte();
-            A2dpUsingTimeR = reader.ReadInt32();
-            EscoUsingTimeR = reader.ReadInt32();
-            AncOnTimeR = reader.ReadInt32();
-            AmbientOnTimeR = reader.ReadInt32();
-            
-            if (TargetModel == Models.Buds3Pro)
-            {
-                AdaptiveOnTimeR = reader.ReadInt32();
-            }
+            // Fail gracefully if the payload is shorter than expected (e.g. due to an older firmware version)
+            // I'm not handling all possible cases correctly, but this is good enough for a non-important packet
+            Log.Debug("Metering report payload was shorter than expected, some fields may be null");
         }
     }
 }

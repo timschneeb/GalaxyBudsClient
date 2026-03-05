@@ -5,6 +5,7 @@ using GalaxyBudsClient.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Utils;
+using Org.BouncyCastle.Asn1.X509;
 using Serilog;
 
 namespace GalaxyBudsClient.Message.Decoder;
@@ -629,8 +630,10 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                         HearingTestValue = reader.ReadByte(); // also called noiseReductionAmplify (Buds3Pro)
                         AutoAdjustSound = HearingTestValue is not (0 or 1);
 
-                        if (TargetModel == Models.BudsFe)
+                        if (TargetModel is Models.BudsFe or Models.BudsCore or Models.Buds3Fe)
                         {
+                            // TODO: Buds Core & Buds3 FE not properly implemented; use BudsFe as it is probably the most similar
+                            
                             _ = reader.ReadByte(); // Unused amplifyAmbientSound value
                             SpatialAudioHeadTracking = reader.ReadBoolean();
 
@@ -708,6 +711,8 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                                         Log.Warning(ex, "Failed to read version of hot command");
                                     }
                                 }
+                                
+                                // TODO: Buds4, Buds4Pro not properly implemented
                             }
                         }
                     }
