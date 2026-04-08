@@ -22,6 +22,6 @@
     <ItemGroup>
         <PackageReference Include="Serilog" Version="4.3.0" />
         <PackageReference Include="SharpHook" Version="7.1.0" />
-        <PackageReference Include="Tmds.DBus.Protocol" Version="0.21.2" />
+        <PackageReference Include="Tmds.DBus.Protocol" Version="0.21.3" />
     </ItemGroup>
 </Project>
