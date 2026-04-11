@@ -67,13 +67,9 @@ public class App : Application
             
 #if OSX
         NSApplication.Init();
-        NSApplication.Notifications.ObserveDidBecomeActive((_, _) =>
-        {
-            Dispatcher.UIThread.InvokeAsync(delegate
-            {
-                MainWindow.Instance.BringToFront();
-            });
-        });
+        // For menu bar applications (LSUIElement=true), hide the dock icon immediately at startup.
+        // The dock icon will only appear when the settings window is explicitly opened.
+        GalaxyBudsClient.Platform.OSX.AppUtils.setHideInDock(true);
 #endif
 
         AvaloniaXamlLoader.Load(this);
@@ -108,8 +104,16 @@ public class App : Application
         {
             // Initialize MainWindow singleton
             var mainWindow = MainWindow.Instance;
+            
+#if OSX
+            // On macOS with LSUIElement=true, always start as a menu bar app (no main window attached initially)
+            // The window will be shown when the user clicks the tray icon
+            desktop.MainWindow = null;
+            mainWindow.IsVisible = false;
+#else
             // Stay initially minimized: don't attach a main window
             desktop.MainWindow = StartMinimized ? null : mainWindow;
+#endif
             
             TrayManager.Init();
             BatteryHistoryManager.Init();

@@ -59,6 +59,23 @@ public partial class MainWindow : StyledAppWindow
 
     protected override async void OnClosing(WindowClosingEventArgs e)
     {
+#if OSX
+        // On macOS with LSUIElement, minimize to tray if setting is enabled
+        if (Settings.Data.MinimizeToTray && e.CloseReason is not (WindowCloseReason.OSShutdown or WindowCloseReason.ApplicationShutdown))
+        {
+            BringToTray();
+            e.Cancel = true;
+            Log.Debug("MainWindow.OnClosing: macOS menu bar app - minimized to tray");
+            base.OnClosing(e);
+            return;
+        }
+        
+        // If MinimizeToTray is off, quit the app when closing the window
+        if (!Settings.Data.MinimizeToTray)
+        {
+            Log.Debug("MainWindow.OnClosing: macOS - MinimizeToTray disabled, closing app");
+        }
+#else
         if (Settings.Data.MinimizeToTray && PlatformUtils.SupportsTrayIcon)
         {
             // check if the cause of the termination is due to shutdown or application close request
@@ -77,6 +94,7 @@ public partial class MainWindow : StyledAppWindow
         {
             Log.Debug("MainWindow.OnClosing: Now closing session");
         }
+#endif
             
         await BluetoothImpl.Instance.SendRequestAsync(MsgIds.FIND_MY_EARBUDS_STOP);
         await BluetoothImpl.Instance.DisconnectAsync();
@@ -124,26 +142,32 @@ public partial class MainWindow : StyledAppWindow
     {
         Dispatcher.UIThread.InvokeAsync(() =>
         {  
+#if OSX
+            // On macOS, show in dock first, then make window visible
+            GalaxyBudsClient.Platform.OSX.AppUtils.setHideInDock(false);
+#endif
+            
             if (App.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop &&
                 desktop.MainWindow == null)
             {
                 desktop.MainWindow = this;
             }
             
-            if (WindowState == WindowState.Minimized)
-            {
-                WindowState = WindowState.Normal;
-            }
+            // Ensure window state is normal before showing
+            WindowState = WindowState.Normal;
                 
             if (PlatformUtils.IsLinux)
             {
                 IsVisible = false; // Workaround for some Linux DMs
             }
 
-#if OSX
-            GalaxyBudsClient.Platform.OSX.AppUtils.setHideInDock(false);
-#endif
             IsVisible = true;
+            
+#if OSX
+            // On macOS, re-apply theme to restore blur/transparency effects
+            // This is needed because effects don't persist when window is hidden/shown
+            (this as IStyledWindow).ApplyTheme(this);
+#endif
                 
             Activate();
             Topmost = true;
@@ -172,11 +196,22 @@ public partial class MainWindow : StyledAppWindow
     private void BringToTray()
     {
 #if OSX
+        // On macOS, we need to hide the window completely without minimizing to dock
+        // First hide visibility, then hide from dock
+        IsVisible = false;
+        ShowInTaskbar = false;
         GalaxyBudsClient.Platform.OSX.AppUtils.setHideInDock(true);
-#endif
+        
+        // Detach the main window so macOS doesn't try to show the app in dock
+        if (App.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            desktop.MainWindow = null;
+        }
+#else
         ShowInTaskbar = false;
         WindowState = WindowState.Minimized;
         IsVisible = false;
+#endif
     }
 
     private void OnBluetoothError(object? sender, BluetoothException e)
