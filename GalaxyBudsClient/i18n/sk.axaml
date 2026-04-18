@@ -1,0 +1,733 @@
+<!-- ReSharper disable InconsistentNaming -->
+<!-- ReSharper disable InconsistentNaming -->
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- English name of this language -->
+    <sys:String x:Key="language_name_en">Slovak</sys:String>
+
+    <!--:::::::: Source code ::::::::-->
+
+    <!--General-->
+    <sys:String x:Key="okay">OK</sys:String>
+    <sys:String x:Key="left">Ľavé</sys:String>
+    <sys:String x:Key="right">Pravé</sys:String>
+    <sys:String x:Key="both">Obe</sys:String>
+    <sys:String x:Key="case">Púzdro</sys:String>
+    <sys:String x:Key="error">Chyba</sys:String>
+    <sys:String x:Key="cancel">Zrušiť</sys:String>
+    <sys:String x:Key="apply">Potvrdiť</sys:String>
+    <sys:String x:Key="select">Zvoliť</sys:String>
+    <sys:String x:Key="notset">Nenastavené</sys:String>
+    <sys:String x:Key="unknown">Neznáme</sys:String>
+    <sys:String x:Key="back">Späť</sys:String>
+    <sys:String x:Key="next">Dalšie</sys:String>
+    <sys:String x:Key="prev">Predchádzajúce</sys:String>
+    <sys:String x:Key="off">Vypnuté</sys:String>
+    <sys:String x:Key="on">Zapnuté</sys:String>
+    <sys:String x:Key="hint">Nápoveda</sys:String>
+    <sys:String x:Key="help">Pomoc</sys:String>
+    <sys:String x:Key="important">Dôležité</sys:String>
+    <sys:String x:Key="home">Domov</sys:String>
+    <sys:String x:Key="read_failed">Súbor se nepodarilo prečítať. Prístup bol zamietnutý.</sys:String>
+    <sys:String x:Key="please_wait">Prosím počkajte...</sys:String>
+    <sys:String x:Key="value_left_right_inline">Ľavé: {0}, Pravé: {1}</sys:String>
+    <sys:String x:Key="value_left_right_multiline">Ľavé: {0}
+Pravé: {1}</sys:String>
+    <sys:String x:Key="other_x">Ostatné ({0})</sys:String>
+    <sys:String x:Key="no_data_stored">Žiadne uložené dáta</sys:String>
+    <sys:String x:Key="not_available">Nedostupné</sys:String>
+    <sys:String x:Key="last_updated_at_n">Naposledy upravené v {0}</sys:String>
+    <sys:String x:Key="file_not_found">Súbor nenájdený</sys:String>
+    <sys:String x:Key="nobluetoothdev">Bluetooth adaptér nebol nájdený. Zapnite Bluetooth a skúste to znovu..</sys:String>
+    <sys:String x:Key="feature_unsupported_platform">Tato funkcia nie je v súčasnej dobe na tejto platforme podporovaná.</sys:String>
+
+    <sys:String x:Key="anc">Aktivné potlačenie hluku</sys:String>
+    <sys:String x:Key="adaptive">Adaptívne</sys:String>
+
+    <!--Dark Mode States-->
+    <sys:String x:Key="darkmode_disabled">Vypnutý</sys:String>
+    <sys:String x:Key="darkmode_enabled">Zapnutý</sys:String>
+    <sys:String x:Key="darkmode_blur_enabled">Zapnutý s rozmazaným efektom</sys:String>
+    <sys:String x:Key="darkmode_mica_enabled">Zapnuto s mica efektom</sys:String>
+    <sys:String x:Key="darkmode_system">Použiť systémové nastavenia</sys:String>
+
+    <!--Connection popup-->
+    <sys:String x:Key="connpopup_placement_tl">Hore vľavo</sys:String>
+    <sys:String x:Key="connpopup_placement_tc">Hore uprostred</sys:String>
+    <sys:String x:Key="connpopup_placement_tr">Hore vpravo</sys:String>
+    <sys:String x:Key="connpopup_placement_bl">Dole vľavo</sys:String>
+    <sys:String x:Key="connpopup_placement_bc">Dole uprostred</sys:String>
+    <sys:String x:Key="connpopup_placement_br">Dole vpravo</sys:String>
+    <sys:String x:Key="connpopup_title">{1} užívateľa {0}</sys:String>
+    <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
+
+    <!--Placement  (Buds+)-->
+    <sys:String x:Key="placement_disconnected">Odpojené</sys:String>
+    <sys:String x:Key="placement_wearing">V uchu</sys:String>
+    <sys:String x:Key="placement_not_wearing">Nečinné</sys:String>
+    <sys:String x:Key="placement_in_case">V púzdre</sys:String>
+    <sys:String x:Key="placement_charging">Nabíja sa</sys:String>
+
+    <!--Touch options-->
+    <sys:String x:Key="touchoption_voice">Hlasový asistent</sys:String>
+    <sys:String x:Key="touchoption_quickambientsound">Rychlé zapnutie ambientného režimu</sys:String>
+    <sys:String x:Key="touchoption_volume">Hlasitosť</sys:String>
+    <sys:String x:Key="touchoption_volume_up">Zvýšiť hlasitosť</sys:String>
+    <sys:String x:Key="touchoption_volume_down">Znížiť hlasitosť</sys:String>
+    <sys:String x:Key="touchoption_ambientsound">Ambientný režim</sys:String>
+    <sys:String x:Key="touchoption_switch_noisecontrols">Prepnúť ovládanie šumu</sys:String>
+    <sys:String x:Key="touchoption_spotify">Spotify (len Android)</sys:String>
+    <sys:String x:Key="touchoption_custom">Vlastná akcia...</sys:String>
+    <sys:String x:Key="touchoption_custom_prefix">Vlastná akcia:</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_event">Spustiť akciu slúchadiel...</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_hotkey">Stlačte skratku...</sys:String>
+    <sys:String x:Key="touchoption_custom_external_app">Spustit program...</sys:String>
+
+    <!--Tray context menu-->
+    <sys:String x:Key="tray_unlock_touchpad">Odomnknúť dotykové ovládanie</sys:String>
+    <sys:String x:Key="tray_lock_touchpad">Zamknúť dotykové ovládanie</sys:String>
+    <sys:String x:Key="tray_enable_ambient_sound">Povoliť ambientný režim</sys:String>
+    <sys:String x:Key="tray_disable_ambient_sound">Zakázať ambientný režim</sys:String>
+    <sys:String x:Key="tray_enable_eq">Povoliť ekvalizér</sys:String>
+    <sys:String x:Key="tray_disable_eq">Zakázať ekvalizér</sys:String>
+    <sys:String x:Key="tray_enable_anc">Zapnúť aktivne potlačenie hluku</sys:String>
+    <sys:String x:Key="tray_disable_anc">Vypnúť aktivne potlačenie hluku</sys:String>
+    <sys:String x:Key="tray_switch_noise">Prepnúť ovládanie šumu</sys:String>
+    <sys:String x:Key="tray_quit">Zavrieť</sys:String>
+
+    <!--:::::::: XAML files (static) ::::::::-->
+
+    <!--General-->
+    <sys:String x:Key="continue_button">Pokračovat</sys:String>
+
+    <!--Hotkey Recorder Dialog (Custom action)-->
+    <sys:String x:Key="hotrec_content">Prosím nastavte klávesovú skratku(podržaním):</sys:String>
+    <sys:String x:Key="hotrec_empty">Žiadna</sys:String>
+    <sys:String x:Key="hotrec_note">Poznámka: Kvôli User Interface Privacy Isolation (UIPI) môžu správne snímať klávesové skratky len aplikácie rovnakej alebo nižšej úrovne.</sys:String>
+
+    <!--Hotkey Action Builder Dialog-->
+    <sys:String x:Key="hotkey_edit_invalid">Nesprávna voľba skratky</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_desc">Vyberte prosím aspoň jedno tlačidlo a jeden modifikátor</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_mod">Chýba modifikátor</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action">Nesprávna akcia</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action_desc">Prosím zvoľte akciu</sys:String>
+    <sys:String x:Key="hotkey_edit_modifier">Modifikátory</sys:String>
+    <sys:String x:Key="hotkey_edit_keys">Tlačidlá</sys:String>
+    <sys:String x:Key="hotkey_edit_action">Akcie</sys:String>
+    <sys:String x:Key="hotkey_edit_preview">Prehľad skratiek:</sys:String>
+
+    <!--Hotkey page-->
+    <sys:String x:Key="hotkey_header">Klávesové skratky</sys:String>
+    <sys:String x:Key="hotkey_add_short">Nová</sys:String>
+    <sys:String x:Key="hotkey_add">Pridať novú skratku</sys:String>
+    <sys:String x:Key="hotkey_empty">Nie sú priradené žiadne klávesové skratky</sys:String>
+    <sys:String x:Key="hotkey_empty_desc">Kliknutím na tlačidlo vyššie vytvoríte novú klávesovú skratku</sys:String>
+    <sys:String x:Key="hotkey_edit">Upraviť</sys:String>
+    <sys:String x:Key="hotkey_edit_long">Upraviť existujícu skratku</sys:String>
+    <sys:String x:Key="hotkey_delete">Vymazať</sys:String>
+    <sys:String x:Key="hotkey_add_error">Nepodarilo sa registrovať/aktualizovať skratku</sys:String>
+    <sys:String x:Key="hotkey_add_error_context">Ovplyvnené skratky:</sys:String>
+    <sys:String x:Key="hotkey_add_error_duplicate">Vybraná kombinácia kláves je už zaregistrovaná touto alebo inou aplikáciou ako klávesová skratka. Vyberte prosím inú.</sys:String>
+    <sys:String x:Key="hotkey_add_error_unknown">Operační systém odpovedal chybou '{0}'</sys:String>
+
+    <!--EventDispatcher module-->
+    <sys:String x:Key="event_none">Žiadny</sys:String>
+    <sys:String x:Key="event_ambient_toggle">Prepnúť ambientný režim</sys:String>
+    <sys:String x:Key="event_ambient_volume_up">Zosíliť ambientný režim</sys:String>
+    <sys:String x:Key="event_ambient_volume_down">Zoslabiť ambientný režim</sys:String>
+    <sys:String x:Key="event_eq_toggle">Prepnúť ekvalizér</sys:String>
+    <sys:String x:Key="event_eq_switch">Iterovať predvoľby ekvalizéru</sys:String>
+    <sys:String x:Key="event_anc_toggle">Prepnúť potlačenie hluku</sys:String>
+    <sys:String x:Key="event_anc_switch_sensitivity">Prepnúť citlivosť potlačenia hluku</sys:String>
+    <sys:String x:Key="event_nc_switch_one">Prepínanie ovládánia hluku pomocou jedného slúchadla</sys:String>
+    <sys:String x:Key="event_touch_lock_toggle">Prepnúť zámok dotykového ovládania</sys:String>
+    <sys:String x:Key="event_double_edge_touch_toggle">Prepnúť dvojité poklepanie na okraj</sys:String>
+    <sys:String x:Key="event_conversation_toggle">Prepnúť detekciu konverzácie</sys:String>
+    <sys:String x:Key="event_start_stop_find">Spustiť/zastaviť hľadanie mojích slúchadiel</sys:String>
+    <sys:String x:Key="event_start_find">Začať hľadať moje slúchadlá</sys:String>
+    <sys:String x:Key="event_stop_find">Prestať hľadať moje slúchadlá</sys:String>
+    <sys:String x:Key="event_paring_mode">Režim párovania</sys:String>
+    <sys:String x:Key="event_media_play">Prehrať médiá</sys:String>
+    <sys:String x:Key="event_media_pause">Pozastaviť médiá</sys:String>
+    <sys:String x:Key="event_media_play_pause">Prehrať/pozastaviť médiá</sys:String>
+    <sys:String x:Key="event_manager_visible">Zobraziť/skryť okno manažéra</sys:String>
+    <sys:String x:Key="event_display_battery_popup">Zobraziť vyskakovacie okno batérie</sys:String>
+    <sys:String x:Key="event_connect">Pripojiť k zariadeniu</sys:String>
+
+    <!--Welcome page-->
+    <sys:String x:Key="welcome_textblock_header">Vitajte!</sys:String>
+    <sys:String x:Key="welcome_register">Nastavte si slúchadlá</sys:String>
+    <sys:String x:Key="welcome_register_desc">Vyberte a zaregistrujte svoj pár slúchadiel Galaxy Buds</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">Tento správca Galaxy Buds je neoficiálny a nie je nijako prepojený so spoločnostou Samsung.
+Tento program je navrhnutý tak, aby poskytoval omnoho viac funkcií ako oficiálna aplikácia pre nositelné slúchadlá spoločnosti Samsung. Niektoré funkcie, ako napríklad "herný režim", fungujú len v telefónoch Samsung a nedajú sa povoliť v počítačoch.</sys:String>
+    <sys:String x:Key="welcome_android_hint_title">Dôležitá informácia pre Android užívateľov</sys:String>
+    <sys:String x:Key="welcome_android_hint">Táto aplikácia bola pôvodne navrhnutá pre použitie na stolných počítačoch. Funkcie, ktoré vyžadujú, aby táto aplikácia bežala na pozadí, ako sú vlastné dotykové akcie a štatistiky batérie, nie sú v tejto verzii v súčasnej dobe k dispozícii.
+Pokiaľ je popri tejto aplikácie aktivna oficiálna aplikácia Samsung Wearable, môže dochádzať k problémom s pripojením. Pred použitím tejto aplikácie sa uistite, že ste oficiálnu aplikáciu riadne ukončili.</sys:String>
+
+    <!--Main page-->
+    <sys:String x:Key="mainpage_header">Domov</sys:String>
+    <sys:String x:Key="mainpage_corrupt_data">Obdržané poškodené dáta. Opakujem pripojenie...</sys:String>
+    <sys:String x:Key="mainpage_fit_test">Test vpasovania slúchadiel do uší</sys:String>
+    <sys:String x:Key="mainpage_find_my_earbuds">Nájsť moje slúchadlá</sys:String>
+    <sys:String x:Key="mainpage_touchpad">Dotykové ovládanie</sys:String>
+    <sys:String x:Key="mainpage_ambient_sound">Ambientný režim</sys:String>
+    <sys:String x:Key="mainpage_noise">Potlačenie šumu</sys:String>
+    <sys:String x:Key="mainpage_equalizer">Ekvalizér</sys:String>
+    <sys:String x:Key="mainpage_advanced">Pokročilé nastavenia</sys:String>
+    <sys:String x:Key="mainpage_system">Systémové informácie</sys:String>
+
+    <!--Device selection page (setup)-->
+    <sys:String x:Key="devsel_header">Vyberte svoje Galaxy Buds</sys:String>
+    <sys:String x:Key="devsel_manual_pair_title">Chýba Vaše zariadenie v zozname?</sys:String>
+    <sys:String x:Key="devsel_manual_pair_description">Uistite sa, že vaše slúchadlá už boli spárované. Pokiaľ stále nie sú rozpoznané, skúste použiť možnosť ručného pripojenia.</sys:String>
+    <sys:String x:Key="devsel_manual_pair">Ručné pripojenie</sys:String>
+    <sys:String x:Key="devsel_nodevices">Prosím, najprv pripojte a spárujte Vaše slúchadlá.</sys:String>
+    <sys:String x:Key="devsel_nodevices_title">Nenájdené žiadne spárované zariadenie</sys:String>
+    <sys:String x:Key="devsel_invalid_selection">Prosím vyberte správné zariadenie</sys:String>
+    <sys:String x:Key="devsel_winrt_title">Použiť alternativné rozhranie Bluetooth</sys:String>
+    <sys:String x:Key="devsel_winrt">Omnoho lepšia stabilita, ale nemusí fungovať na všetkých počítačoch s niektorými Bluetooth adaptérmi</sys:String>
+
+    <!--Device page-->
+    <sys:String x:Key="devices_header">Spárované zariadenia</sys:String>
+    <sys:String x:Key="devices_new">Nové</sys:String>
+    <sys:String x:Key="devices_new_long">Spárovať nové zariadenie...</sys:String>
+    <sys:String x:Key="devices_select_inactive">Zvoliť</sys:String>
+    <sys:String x:Key="devices_select_active">Zvolené</sys:String>
+    <sys:String x:Key="devices_delete">Odstrániť</sys:String>
+    <sys:String x:Key="devices_delete_long">Odstrániť zariadenie</sys:String>
+    <sys:String x:Key="devices_delete_confirmation">Skutočne chcete toto zariadenie odstrániť?</sys:String>
+    <sys:String x:Key="devices_settings_link">Spravovať spárované zariadenia</sys:String>
+    <sys:String x:Key="devices_settings_link_desc">Pridať, odobrať alebo zvoliť primárne zariadenie</sys:String>
+
+    <!--Touchpad gestures-->
+    <sys:String x:Key="touchpad_gesture_header">Povoliť ovládanie dotykom</sys:String>
+    <sys:String x:Key="touchpad_gesture_single">Jednoduchý dotyk</sys:String>
+    <sys:String x:Key="touchpad_gesture_single_desc">Spustiť alebo zastaviť skladbu</sys:String>
+    <sys:String x:Key="touchpad_gesture_double">Dvojitý dotyk</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_desc">Prehrať ďalšiu skladbu</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple">Trojitý dotyk</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple_desc">Prehrať predchádzajúcu skladbu</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold">Dlhý dotyk</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_desc">Spustiť vlastnú akciu</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_for_call">Dvojité klepnutie počas hovoru</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_for_call_desc">Prijať hovor alebo ukončit hovor</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call">Dlhý dotyk počas hovoru</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call_desc">Odmietnúť hovor</sys:String>
+
+    <!--Touchpad page-->
+    <sys:String x:Key="touchpad_header">Dotykové ovládanie</sys:String>
+    <sys:String x:Key="touchpad_lock">zamknúť dotykové ovládanie</sys:String>
+    <sys:String x:Key="touchpad_left_action">Akcia na ľavom slúchadle</sys:String>
+    <sys:String x:Key="touchpad_right_action">Akcia na pravom slúchadle</sys:String>
+    <sys:String x:Key="touchpad_default_action">Predvolená funkcia dotyku</sys:String>
+
+    <sys:String x:Key="touchpad_gestures">Pokročilé uzamknutie dotyku</sys:String>
+    <sys:String x:Key="touchpad_gestures_description">Povoliť alebo zakázať predvolené dotykové gestá</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume">Dvojité klepnutie na hranu slúchadla</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">Dvojité klepnutie na hranu ľavého alebo pravého slúchadla pre zoslabenie alebo zosílenie hlasitosti.</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode">Režim prepínania regulácie šumu</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_l">Režim prepínania ovládania hluku ("ľavé")</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_r">Režim prepínania ovládania hluku ("pravé")</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_desc">Výber režimov pre prepínanie</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ Ambientný zvuk</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Vypnuté</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambientný zvuk ↔ Vypnuté</sys:String>
+
+    <!--Custom touchpad action page-->
+    <sys:String x:Key="cact_header">Definovať vlastnú akciu pri podržaní</sys:String>
+    <sys:String x:Key="cact_external_app_dialog_title">Zvoliť aplikáciu...</sys:String>
+    <sys:String x:Key="cact_action">Vlastná akcia</sys:String>
+    <sys:String x:Key="cact_function_param">Funkcia</sys:String>
+    <sys:String x:Key="cact_hotkey_param">Klávesová skratka</sys:String>
+    <sys:String x:Key="cact_path_param">Cesta k súboru</sys:String>
+    <sys:String x:Key="cact_notice_content_p1">Vlastné akcie pri dlhom stisknutí sú dostupné len pokiaľ je táto aplikácia aktívna na pozadí.</sys:String>
+    <sys:String x:Key="cact_notice_content_p2">Nefunguje na Androide ani na iných zariadeniach.</sys:String>
+
+    <!--System/Self-Test-->
+    <sys:String x:Key="system_overview_header">Systém</sys:String>
+    <sys:String x:Key="system_header">Systémové informácie</sys:String>
+    <sys:String x:Key="system_selftest">Spustiť auto-test</sys:String>
+    <sys:String x:Key="system_selftest_desc">Overí, či všetky moduly slúchadiel fungujú správne</sys:String>
+    <sys:String x:Key="system_factory_reset">Továrne nastavenia</sys:String>
+    <sys:String x:Key="system_factory_reset_desc">Obnoví továrne nastavenia slúchadiel a odpojí ich</sys:String>
+    <sys:String x:Key="system_pairing_mode">Prejsť do režimu párovania</sys:String>
+    <sys:String x:Key="system_pairing_mode_desc">Odpojí slúchadlá od tohto počítača a zapne viditelnosť pre ostatné zariadenia</sys:String>
+    <sys:String x:Key="system_trace_core_dump">Stiahnuť záznamy trasovania a jadra</sys:String>
+    <sys:String x:Key="system_trace_core_dump_desc">Načíta surové ladiace dáta zo slúchadiel</sys:String>
+    <sys:String x:Key="system_hidden_at_mode">Skryté nastavenia systému</sys:String>
+    <sys:String x:Key="system_hidden_at_mode_desc">Úprava skrytých nastavení, ako sú sériové čísla a stav UART</sys:String>
+    <sys:String x:Key="system_info">Zobraziť systémové informácie</sys:String>
+    <sys:String x:Key="system_info_desc">Zobrazí podrobné informácie o Vašich slúchadlách</sys:String>
+    <sys:String x:Key="system_flasher">Nainštalovať aktualizáciu firmwaru</sys:String>
+    <sys:String x:Key="system_flasher_desc">Stiahne novší, starší alebo nahraje vlastný firmware</sys:String>
+    <sys:String x:Key="system_spatial">Vypísať merania priestorových senzorov</sys:String>
+    <sys:String x:Key="system_spatial_desc">Pozrite si priestorové dáta sledovania hlavy použité pre 3D zvuk</sys:String>
+    <sys:String x:Key="system_usage_reports">Metriky používania</sys:String>
+    <sys:String x:Key="system_usage_reports_desc">Zobrazí prehľad používania slúchadiel</sys:String>
+    <sys:String x:Key="system_battery_statistics">Štatistika baterií</sys:String>
+    <sys:String x:Key="system_battery_statistics_desc">Zbiera a zobrazuje štatistiky využitia batérie</sys:String>
+
+    <sys:String x:Key="system_battery_type_unknown">Nešpecifikované</sys:String>
+    <sys:String x:Key="system_waiting_for_device">Čakám na odpoveď...</sys:String>
+    <sys:String x:Key="system_no_response">Slúchadlá nereagujú</sys:String>
+
+    <sys:String x:Key="system_hwver">Hardwarová verzia</sys:String>
+    <sys:String x:Key="system_swver">Softwarová verzia</sys:String>
+    <sys:String x:Key="system_cradle_swver">Verzia softwaru púzdra</sys:String>
+    <sys:String x:Key="system_cradle_serial">Sériové číslo púzdra</sys:String>
+    <sys:String x:Key="system_touchver">Verzia firmwaru dotyku</sys:String>
+    <sys:String x:Key="system_protover">Revízia protokolu</sys:String>
+    <sys:String x:Key="system_btaddr">Adresa bluetooth</sys:String>
+    <sys:String x:Key="system_btaddr_template">Lokálna adresa: {0}, Peer adresa: {1}</sys:String>
+    <sys:String x:Key="system_serial">Sériové číslo</sys:String>
+    <sys:String x:Key="system_build_info">Informácie o zostave</sys:String>
+    <sys:String x:Key="system_battery_type">Typ batérie</sys:String>
+    <sys:String x:Key="system_sku">Údaje o SKU zariadenia</sys:String>
+    <sys:String x:Key="system_proximity">Meranie priblíženia</sys:String>
+    <sys:String x:Key="system_thermo">Meranie termistoru</sys:String>
+    <sys:String x:Key="system_hall">Meranie hallového javu</sys:String>
+    <sys:String x:Key="system_accel">Stav akcelerometra</sys:String>
+    <!--Note: system_accel only used on the self-test page-->
+    <sys:String x:Key="system_adc_soc">ADC SoC</sys:String>
+    <!--Context: SoC = State of charge (battery percentage)-->
+    <sys:String x:Key="system_adc_voltage">Napätie ADC</sys:String>
+    <sys:String x:Key="system_adc_current">Prúd ADC</sys:String>
+
+    <sys:String x:Key="selftest_header">Auto-test</sys:String>
+    <sys:String x:Key="selftest_pass">OK</sys:String>
+    <sys:String x:Key="selftest_fail">Chyba</sys:String>
+    <sys:String x:Key="selftest_pass_long">Všetky testy boli úspešné</sys:String>
+    <sys:String x:Key="selftest_fail_long">Jeden alebo viacero testov zlyhali</sys:String>
+
+    <sys:String x:Key="coredump_header">Zhromažďovanie dát...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_prepare">Príprava sťahovanie...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_finished">Sťahovanie dokončené</sys:String>
+    <sys:String x:Key="coredump_dl_trace_progress">Sťahovanie záznamu trasovania... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_core_progress">Sťahovanie výpisu jadra... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_progress_size">({0}/{1} bytov)</sys:String>
+    <sys:String x:Key="coredump_dl_note">Počas sťahovania je zvukový stream dočasne pozastavený. Vaše slúchadlá sa odpoja, akonáhle prenos skončí, prosím, pripojte ich manuálne naspäť.
+Po dokončení budete vyzvaný k výberu adresára pre všetky zhromaždené údaje.
+
+Pokiaľ sa prenos zasekne alebo sa zariadenie dočasne odpojilo, musíte reštartovať sťahovanie. Táto funkcia je v súčasnej dobe veľmi nestabilná.</sys:String>
+    <sys:String x:Key="coredump_dl_save_fail_title">Uloženie záznamu zlyhalo</sys:String>
+    <sys:String x:Key="coredump_dl_save_fail">Problém pri kopírovaní záznamu z dočasného umiestnenia. Dôvod: {0}</sys:String>
+    <sys:String x:Key="coredump_dl_save_success_title">Záznamy boli úspešne uložené</sys:String>
+    <sys:String x:Key="coredump_dl_save_success">{0} záznam(y) boli zapísané do '{1}'</sys:String>
+    <sys:String x:Key="coredump_dl_save_dialog_title">Zvoľte adresár pre stiahnutie ...</sys:String>
+
+    <!-- Hidden AT modes -->
+    <sys:String x:Key="hidden_mode_warning">Postupujte s rozvahou</sys:String>
+    <sys:String x:Key="hidden_mode_warning_desc">Niektoré zmeny uskutočnené na tejto stránke sa nedajú obnoviť továrenskými nastaveniami. Nie všetky modely tieto nastavenia podporujú.</sys:String>
+    <sys:String x:Key="hidden_mode_target">Cieľové zariadenie: {0} slúchadlo</sys:String> <!-- {0} = Left or Right -->
+    <sys:String x:Key="hidden_mode_target_l_desc">Pokiaľ chcete upravovať ľavé slúchadlo, vložte pravé slúchadlo do púzdra a zavrite ho.</sys:String>
+    <sys:String x:Key="hidden_mode_target_r_desc">Pokiaľ chcete upravovať pravé slúchadlo, vložte ľavé do púzdra a zavrite ho.</sys:String>
+    <sys:String x:Key="hidden_mode_input_wrong_length">Nová hodnota musí mať presne {0} znakov.</sys:String>
+    <sys:String x:Key="hidden_mode_uart_on_confirm">UART bol úspěšne zapnutý</sys:String>
+    <sys:String x:Key="hidden_mode_uart_off_confirm">UART bol úspěšne vypnutý</sys:String>
+    <sys:String x:Key="hidden_mode_uart">Zapnúť UART port</sys:String>
+    <sys:String x:Key="hidden_mode_uart_desc">Dočasne povolí fyzický UART port na doske plošných spojov aktuálneho cieľového zariadenia pre účely ladenia.</sys:String>
+    <sys:String x:Key="hidden_mode_power">Ponuka napájania</sys:String>
+    <sys:String x:Key="hidden_mode_power_desc">Vypnutie, reštartovanie alebo uspanie aktuálneho cieľového zariadenia</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change">Zmeniť sériové číslo</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change_desc">Zmení sériové číslo aktuálneho cieľového zariadenia</sys:String>
+    <sys:String x:Key="hidden_mode_did_change">Zmeniť DID číslo a farbu</sys:String>
+    <sys:String x:Key="hidden_mode_did_change_desc">Zmení id modelu zariadenia aktuálneho cieľového zariadenia</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change">Zmeniť SKU kód</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change_desc">Zmení kód produktu aktuálneho cieľového zariadenia</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_addr_change">Zmeniť peer Bluetooth adresu</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_change_desc">Zmení partnerskú Bluetooth adresu aktuálneho cieľového zariadenia</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_addr_change">Zmeniť miestnu Bluetooth adresu </sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_change_desc">Zmení miestnu Bluetooth adresz aktuálneho cieľového zariadenia</sys:String>
+    <sys:String x:Key="hidden_mode_terminal">Skrytý príkazový riadok</sys:String>
+    <sys:String x:Key="hidden_mode_terminal_desc">Odoslanie vlastných AT príkazov do aktuálneho cielového zariadenia</sys:String>
+
+    <sys:String x:Key="power_menu_hint"> Aktuálne cieľové slúchadlo bude ovplyvnené.</sys:String>
+    <sys:String x:Key="power_menu_reboot">Reštartovať</sys:String>
+    <sys:String x:Key="power_menu_shutdown">Vypnúť</sys:String>
+    <sys:String x:Key="power_menu_sleep">Továrny režim spánku</sys:String>
+
+    <sys:String x:Key="at_terminal_cmd_id">ID príkazu</sys:String>
+    <sys:String x:Key="at_terminal_cmd_param">Príkazový parameter (nepovinný)</sys:String>
+    <sys:String x:Key="at_terminal_cmd_id_invalid">Neplatné ID príkazu. Zadajte 16-bitovú hexadecimálnu hodnotu, napríklad 0007 alebo 004C.</sys:String>
+    <sys:String x:Key="at_terminal_output">Výstup</sys:String>
+    <sys:String x:Key="at_terminal_send">Odoslať</sys:String>
+
+
+    <!-- Usage-/metering reports -->
+    <sys:String x:Key="usage_reports_header">Prehľad o používaní</sys:String>
+    <sys:String x:Key="usage_reports_hint">Tieto hlásenia zhromaždujú samotné slúchadlá. Údaje sú zobrazováne tak ako sú, a môžu byť nepresné. Oficiálna aplikácia Wearable pravidelne resetuje väčšinu počítadiel a odosiela zhromaždené dáta spoločnosti Samsung, pokiaľ ste v ich aplikácii dali súhlas so zberom dát. Niektoré počítadla, napríklad nabíjacie cykly, se neresetujú.</sys:String>
+    <sys:String x:Key="usage_reports_usage">Hlásenie o používaní</sys:String>
+    <sys:String x:Key="usage_reports_metering">Hlásenie o metrikách</sys:String>
+    <sys:String x:Key="milliamp_hours_unit">{0}mAh</sys:String>
+    <sys:String x:Key="metering_total_batt_capacity">Celková kapacita batérie</sys:String>
+    <sys:String x:Key="metering_a2dp_time">Doba prehrávania hudby (A2DP)</sys:String>
+    <sys:String x:Key="metering_esco_time">Doba volania (eSCO)</sys:String>
+
+    <!-- Battery history -->
+    <sys:String x:Key="batt_hist_hint">Táto aplikácia môže zbierať údaje o úrovni nabitia batérie a základné údaje o používaní, čo Vám umožní analyzovať vybíjanie batérie. Dáta je možné zbierať len pokiaľ je táto aplikácia aktívna na pozadí a slúchadlá sú pripojené k tomuto zariadeniu.</sys:String>
+    <sys:String x:Key="batt_hist_no_data_title">Nedostatok dát</sys:String>
+    <sys:String x:Key="batt_hist_no_data">Vráťte sa prosím neskôr, až bude dostatočné množstvo dát, alebo upravte zobrazené časové rozpätie.</sys:String>
+    <sys:String x:Key="batt_hist_y_axis">Nabíjanie (%)</sys:String>
+    <sys:String x:Key="batt_hist_last_hour">Posledná hodina</sys:String>
+    <sys:String x:Key="batt_hist_last_6_hours">Posledných 6 hodin</sys:String>
+    <sys:String x:Key="batt_hist_last_12_hours">Posledných 12 hodin</sys:String>
+    <sys:String x:Key="batt_hist_last_24_hours">Posledných 24 hodin</sys:String>
+    <sys:String x:Key="batt_hist_last_3_days">Posledné 3 dni</sys:String>
+    <sys:String x:Key="batt_hist_last_7_days">Posledných 7 dní</sys:String>
+    <sys:String x:Key="batt_hist_overlay_none">Žiadne prekrytie</sys:String>
+    <sys:String x:Key="batt_hist_overlay_noise_controls">Ovládánie hluku</sys:String>
+    <sys:String x:Key="batt_hist_overlay_wearing">Stav nosenia</sys:String>
+    <sys:String x:Key="batt_hist_overlay_host_device">Hostiteľské zariadenie</sys:String>
+    <sys:String x:Key="batt_hist_overlay_legend">{0} (Prekrytie)</sys:String>
+    <sys:String x:Key="batt_hist_tools_pan_and_zoom">Posun a priblíženie</sys:String>
+    <sys:String x:Key="batt_hist_tools_measure_time">Doba merania</sys:String>
+    <sys:String x:Key="batt_hist_tools_measure_battery">Úroveň batérie</sys:String>
+    <sys:String x:Key="batt_hist_show_legend">Zobraziť nápovedu</sys:String>
+    <sys:String x:Key="batt_hist_measure_difference_display">Rozdiel: {0}</sys:String>
+    <sys:String x:Key="batt_hist_measure_timespan_display">Časové rozpätie: {0}</sys:String>
+    <sys:String x:Key="batt_hist_measure_timespan_unit_long">d' deň(dní), 'hh'h:'mm':'ss</sys:String> <!-- This is a time span format string. It produces a string like: 2 day(s), 03h:10:01 -->
+    <sys:String x:Key="batt_hist_time_span_tip_title">Časové rozpätie</sys:String>
+    <sys:String x:Key="batt_hist_control_tip_title">Ovládánie myšou</sys:String>
+    <sys:String x:Key="batt_hist_control_tip">Potiahnutím plátna sa môžete pohybovať po ploche.
+
+Scrollovaním nad plátnom môžete približovať celý graf.
+
+Scrollovaním priamo nad osou X alebo Y, môžete priblížiť len danú os. Napríklad, scrollovaním nad osou X (čas) zväčšíte/zmenšíte časové intervaly.</sys:String>
+    <sys:String x:Key="batt_hist_overlay_tip_title">Prekrytie</sys:String>
+    <sys:String x:Key="batt_hist_overlay_tip">Pre pridanie ďalšieho kontextu do grafu môžete použiť prekryvné vrstvy.
+
+Ovládánie šumu: Zobrazuje, ktoré typy ANC boly zapnuté alebo vypnuté.
+
+Stav nosenia: Zobrazuje, či boli slúchadlá nasadené, alebo nie.
+
+Hostiteľské zariadenie: Zobrazuje, ktoré slúchadlo bolo hostiteľom Bluetooth pripojenia k počítaču.
+
+Prekryvné údaje môžu byť pri zobrazení veľkých časových rozsahov tažko čitateľné. Scrollovaním priamo nad osou X môžete priblížiť konkrétny časový rozsah pre lepší prehľad.</sys:String>
+    <sys:String x:Key="batt_hist_tools_tip_title">Nástroje</sys:String>
+    <sys:String x:Key="batt_hist_tools_tip">Posun a priblíženie: Predvolený režim. Pohybujte se po ploche posúvaním a přibližovaním.
+
+Doba merania: Výberom horizontálneho rozpätia odmeráte uplynulý čas medzi začiatkom a koncomm výberu.
+
+Úroveň batérie: Výberom vertikálneho rozpätia odmeráte rozdiel úrovne nabitia batérie medzi začiatkem a koncom výberu.</sys:String>
+
+    <!--Settings-->
+    <sys:String x:Key="settings_header">Nastavenia</sys:String>
+    <sys:String x:Key="settings_save_fail_no_access">Nepodarilo sa uložiť nastavenia. Prístup k konfiguračnému súboru bol zamietnutý operačným systémom. Skontrolujte prosím oprávnenia súboru {0}.</sys:String>
+    <sys:String x:Key="settings_appearance">Vzhľad</sys:String>
+    <sys:String x:Key="settings_darkmode">Tmavý režim</sys:String>
+    <sys:String x:Key="settings_darkmode_description">Použije tmavšie farebné schéma</sys:String>
+    <sys:String x:Key="settings_blurstrength">Úroveň rozmazania okna</sys:String>
+    <sys:String x:Key="settings_blurstrength_description">Kompatibilné len s tmavým režimom. Nie je podporované na všetkých systémoch</sys:String>
+    <sys:String x:Key="settings_accent">Farba akcentu</sys:String>
+    <sys:String x:Key="settings_accent_description">Výber vlastnej farvy akcentu</sys:String>
+    <sys:String x:Key="settings_transitions">Prechod</sys:String>
+    <sys:String x:Key="settings_transitions_description">Povoliť prechod medzi snímkami</sys:String>
+    <sys:String x:Key="settings_localization_disable">Jazyk</sys:String>
+    <sys:String x:Key="settings_localization_description">Zmena jazyka aplikácie</sys:String>
+    <sys:String x:Key="settings_minimize_tray">Minimalizovať do lišty</sys:String>
+    <sys:String x:Key="settings_minimize_tray_description">Ponechá aplikáciu na pozadí miesto ukončenia aplikácie</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons">Používať realistické obrázky slúchadiel</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons_description">Zobrazí realistické a farebné obrázky slúchadiel, pokiaľ to podporujú</sys:String>
+    <sys:String x:Key="settings_nav_sidebar">Bočný panel navigácie</sys:String>
+    <sys:String x:Key="settings_nav_sidebar_description">Zobrazí alebo skryje navigačné tlačidlá na ľavej strane</sys:String>
+    <sys:String x:Key="settings_tray_settings">Ikona lišty & Spustenie</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode">Dynamická ikona v oznamovacej oblasti</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_description">Zobrazí stavu batérie na ikone v oznamovacej oblasti</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_off">Vypnuté</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_min">Zobraziť najnižšiu úroveň nabitia batérie</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_avg">Zobraziť priemernú úroveň nabitia batérie</sys:String>
+    <sys:String x:Key="settings_autostart">Spustiť pri štarte systému</sys:String>
+    <sys:String x:Key="settings_autostart_description">Spustiť minimalizované pri štarte systému</sys:String>
+    <sys:String x:Key="settings_autostart_permission">Nepodarilo sa nastaviť položku automatického spustenia v registri. Prístup do registru (HKCU) bol zakázaný správcom systému</sys:String>
+    <sys:String x:Key="settings_connpopup">Vyskakovacie okno pripojenia</sys:String>
+    <sys:String x:Key="settings_devmode">Vývojárske možnosti</sys:String>
+    <sys:String x:Key="settings_devmode_description">Nahliadhnutie na Bluetooth prevádzku a ďalšie vývojárske nástroje</sys:String>
+    <sys:String x:Key="settings_crowdsourcing">Crowdsourcing</sys:String>
+
+    <!--Settings >>> Connection popup-->
+    <sys:String x:Key="settings_cpopup_header">Vyskakovacie okno pripojenia</sys:String>
+    <sys:String x:Key="settings_cpopup_enable">Povoliť vyskakovacie okno pripojenia</sys:String>
+    <sys:String x:Key="settings_cpopup_enable_description">Zobrazí informácie o stave batérie pri pripojení slúchadiel.</sys:String>
+    <sys:String x:Key="settings_cpopup_compact">Kompaktný režim</sys:String>
+    <sys:String x:Key="settings_cpopup_compact_description">Schová hlavičku vyskakovacieho okna pre ušetrenie miesta</sys:String>
+    <sys:String x:Key="settings_cpopup_position">Umiestnenie</sys:String>
+    <sys:String x:Key="settings_cpopup_position_description">Vyberte kde sa má okno zobraziť</sys:String>
+    <sys:String x:Key="settings_cpopup_demo">Zobraziť náhľad vyskakovacieho okna</sys:String>
+
+    <!--Settings >>> Crowdsourcing settings-->
+    <sys:String x:Key="settings_crowd_header">Crowdsourcing</sys:String>
+    <sys:String x:Key="settings_crowd_allow">Povoliť prispievanie do crowdsourcingu</sys:String>
+    <sys:String x:Key="settings_crowd_allow_description">Zbiera informácie o proprietarnéj štruktúre protokolu Bluetooth spoločnosti Samsung a dáta na vyžiadanie. Umožňuje nám to omnoho jednoduchšie podporovať všetky dostupné modely Galaxy Buds, bez potreby ich vlastniť.</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport">Povoliť správy o zlyhaniach aplikácie</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport_description">Automaticky odosiela správy o zlyhaniach aplikácie pomocou Sentry. Pomáha nám to rýchlejšie reagovať na problematické a rušivé chyby v aplikácii.</sys:String>
+
+    <!--Factory reset-->
+    <sys:String x:Key="factory_header">Obnova továrnych nastavení</sys:String>
+    <sys:String x:Key="factory_confirmation">Ste si istý, že chcete obnoviť továrne nastavenia slúchadiel?
+Toto odstráni všetky dáta a nastavenia zo slúchadiel.
+
+Pred pokračovaním sa uistite, že sú obe slúchadlá zapnuté.</sys:String>
+    <sys:String x:Key="factory_error_title">Obnovenie továrnych nastavení sa nepodarilo</sys:String>
+    <sys:String x:Key="factory_error">Zariadenia vrátilo kód chyby: {0}
+
+Skontrolujte, či sú obe slúchadlá zapnuté a dosiahnuteľné.
+Je možné, že ich bude nutné znova manuálne pripojiť.</sys:String>
+
+    <!--Find my Gear-->
+    <sys:String x:Key="fmg_warning_both">Vyberte si prosím obe slúchadlá z uší.</sys:String>
+    <sys:String x:Key="fmg_warning_left">Vyberte si prosím ľavé slúchadlo z ucha.</sys:String>
+    <sys:String x:Key="fmg_warning_right">Vyberte si prosím pravé slúchadlo z ucha.</sys:String>
+    <sys:String x:Key="fmg_header">Nájsť moje slúchadlá</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage">Spravovať dáta SmartThings Find</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage_desc">Zobraziť a spravovať dáta SmartThings Find uložené v slúchadlách</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open">Otvoriť webovú stránku SmartThings Find</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open_desc">Sledujte svoje slúchadlá online. K nastaveniu je potrebné mať účet Samsung a oficiálnu aplikáciu SmartThings Find.</sys:String>
+
+    <!--SmartThings data-->
+    <sys:String x:Key="smart_things_find">SmartThings</sys:String>
+    <sys:String x:Key="smart_things_find_clear">Odstrániť konfiguráciu SmartThings Find</sys:String>
+    <sys:String x:Key="smart_things_find_clear_desc">Odstráni dáta súvisiace s úČtom Samsung zo slúchadiel</sys:String>
+    <sys:String x:Key="smart_things_find_iv">Inicializačný vektor (IV)</sys:String>
+    <sys:String x:Key="smart_things_find_secret_key">Tajný kľúč</sys:String>
+    <sys:String x:Key="smart_things_find_region">Oblasť</sys:String>
+    <sys:String x:Key="smart_things_find_fmm_token">SmartThings Find token</sys:String>
+    <sys:String x:Key="smart_things_find_no_link">Vaše slúchadlá nie sú pripojené k sieti Samsung SmartThings Find.</sys:String>
+    <sys:String x:Key="smart_things_find_write_fail">Slúchadla odmietli nové konfiguračné dáta SmartThings Find.</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok">Konfigurácia prepísaná</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok_desc">Konfiguračné dáta aplikácie SmartThings Find boli odstránené.</sys:String>
+
+    <!-- Fit test-->
+    <sys:String x:Key="gft_warning">Prosím, nasaďte si obe slúchadlá.</sys:String>
+    <sys:String x:Key="gft_desc">Skontrolujte, či sú Vaše slúchadlá správne usadené</sys:String>
+    <sys:String x:Key="gft_bad">Zlé usadenie</sys:String>
+    <sys:String x:Key="gft_good">Dobré usadenie</sys:String>
+    <sys:String x:Key="gft_fail">Test sa nepodaril</sys:String>
+
+    <!--Equalizer-->
+    <sys:String x:Key="eq_header">Ekvalizér</sys:String>
+    <sys:String x:Key="eq_enable">Povoliť ekvalizér</sys:String>
+    <sys:String x:Key="eq_enable_description">Aplikovať zvukové filtre EQ</sys:String>
+    <sys:String x:Key="eq_preset">Predloha</sys:String>
+    <sys:String x:Key="eq_stereo_balance">Vyváženie zvuku vľavo/vpravo</sys:String>
+    <sys:String x:Key="eq_stereo_balance_value">{0}% ľavé; {1}% pravé</sys:String>
+    <sys:String x:Key="eq_stereo_balance_neutral">Vyvážené</sys:String>
+
+    <sys:String x:Key="eq_bass">Zosílenie basy</sys:String>
+    <sys:String x:Key="eq_soft">Mäkké</sys:String>
+    <sys:String x:Key="eq_dynamic">Dynamické</sys:String>
+    <sys:String x:Key="eq_clear">Jasné</sys:String>
+    <sys:String x:Key="eq_treble">Zosílenie výšok</sys:String>
+
+    <!--Noise control-->
+    <sys:String x:Key="nc_header">Ovládánie potlačenia hluku</sys:String>
+    <sys:String x:Key="nc_as_anc_description">Znižuje hluk na pozadí</sys:String>
+    <sys:String x:Key="nc_one_earbud">Potlačenie hluku jedným slúchadlom</sys:String>
+    <sys:String x:Key="nc_one_earbud_description">Pre potlačenie hluku sú obvykle potrebné obe slúchadlá, aby nedochádzalo k nepohodliu, povoľte túto funkciu, aby bolo možné potlačiť hluk len jedným slúchadlom</sys:String>
+    <sys:String x:Key="nc_anc_level">Vysoká citlivosť</sys:String>
+    <sys:String x:Key="nc_anc_level_description">Silnější účinok potlačenia hluku</sys:String>
+    <sys:String x:Key="nc_ambient">Prispôsobenie okolného zvuku</sys:String>
+    <sys:String x:Key="nc_ambient_description">Nakonfiguruje tón a hlasitosť okolného zvuku (ak je k dispozíci)</sys:String>
+    <sys:String x:Key="nc_voicedetect">Detekcia rozhovoru</sys:String>
+    <sys:String x:Key="nc_voicedetect_description">Pokiaľ je rozpoznaný Váš hlas, automaticky zapne okolité zvuky a zníží hlasitosť médií pre uľahčenie konverzácie</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout">Časový limit konverzácie</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout_description">Vráti nastavenia, pokiaľ Váš hlas nie je po určitú dobu detekovaný</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout_item">{0} sekúnd</sys:String>
+
+    <!--Noise control >>> Ambient sound-->
+    <sys:String x:Key="nc_as_header">Nastavenie okolného zvuku</sys:String>
+    <sys:String x:Key="nc_as_custom">Pokročilá konfigurácia</sys:String>
+    <sys:String x:Key="nc_as_custom_description">Prispôsobte si nastavenie okolného zvuku</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_l">Hlasitosť okolného zvuku (ľavé)</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_r">Hlasitosť okolného zvuku (pravé)</sys:String>
+    <sys:String x:Key="nc_as_custom_tone">Tón okolného zvuku</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_clear">Čistý</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_soft">Jemný</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_neutral">Neutrálny</sys:String>
+    <sys:String x:Key="nc_as_custom_vol_normal">Normálny</sys:String>
+
+    <!--Ambient sound-->
+    <sys:String x:Key="as_header">Ambientný režim</sys:String>
+    <sys:String x:Key="as_header_description">Počujte svoje okolie</sys:String>
+    <sys:String x:Key="as_enable">Povoliť ambientný režim</sys:String>
+    <sys:String x:Key="as_volume">Hlasitosť ambientného režimu</sys:String>
+    <sys:String x:Key="as_voicefocus">Hlasové zvýraznenie</sys:String>
+    <sys:String x:Key="as_voicefocus_description">Zvýrazní hlasy, aby viac vynikali</sys:String>
+    <sys:String x:Key="as_extrahigh">Extra vysoká hlasitosť</sys:String>
+    <sys:String x:Key="as_extrahigh_description">Pridáva extra hlasitú voľbu do možností ambientného režimu</sys:String>
+    <sys:String x:Key="as_scale_very_low">Veľmi tichá</sys:String>
+    <sys:String x:Key="as_scale_low">Tichá</sys:String>
+    <sys:String x:Key="as_scale_moderate">Stredná</sys:String>
+    <sys:String x:Key="as_scale_high">Vysoká</sys:String>
+    <sys:String x:Key="as_scale_extraloud">Extra hlasitá</sys:String>
+
+    <!--Advanced page-->
+    <sys:String x:Key="adv_header">Pokročilé nastavenia</sys:String>
+    <sys:String x:Key="adv_seamless">Jednoduché pripájanie slúchadiel</sys:String>
+    <sys:String x:Key="adv_seamless_desc">Umožňuje rýchlo pripojiť slúchadlá k ďalšiemu zariadeniu bez nutnosti ich odpojovať alebo zapínat režim párovania</sys:String>
+    <sys:String x:Key="adv_resume_playback">Začať prehrávať keď sú slúchadlá v uchu</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Pošle globálnu akciu pre prehrávanie/pozastavenia pokiaľ je aspoň jeden senzor priblíženia zakrytý (len Windows)</sys:String>
+    <sys:String x:Key="adv_sidetone">Použiť ambientný režim pri hovoroch</sys:String>
+    <sys:String x:Key="adv_sidetone_desc">Svoj hlas budete počuť jasnejšie pri telefonovaní (obmedzí zbytočné kričanie)</sys:String>
+    <sys:String x:Key="adv_callpath">Detekcia volania v ušiach</sys:String>
+    <sys:String x:Key="adv_callpath_desc">Prehráva hovory cez slúchadlá, ak ich máte v ušiach, a cez reproduktor počítača, ak nie</sys:String>
+    <sys:String x:Key="adv_passthrough">Zmierňiť tlak pri zapnutí ambientního režimu</sys:String>
+    <sys:String x:Key="adv_passthrough_desc">Zmierňuje pocit dusnosti, ak nie je používané aktivné potlačenie hluku</sys:String>
+    <sys:String x:Key="adv_extra_clear_call">Zaostriť zvuk volania</sys:String>
+    <sys:String x:Key="adv_extra_clear_call_desc">Zvýši zretelnosť hovoru. Najužitočnejšie, ak ste na hlučnom mieste a používate slúchadlá. Spotrebúva viac batérie.</sys:String>
+    <sys:String x:Key="adv_hotkey">Klávesové skratky</sys:String>
+    <sys:String x:Key="adv_hotkey_desc">Definovať vlastné klávesové skratky pre ďialkové ovládanie slúchadiel</sys:String>
+    <sys:String x:Key="adv_bixby_remap">Premapovať prebudenie Bixby</sys:String>
+    <sys:String x:Key="adv_bixby_remap_desc">Definujte, čo sa stane, ak poviete 'Hey Bixby!'</sys:String>
+
+    <!--Remap bixby wakeup-->
+    <sys:String x:Key="bixby_remap_enable">Povoliť prebudenie Bixby</sys:String>
+    <sys:String x:Key="bixby_remap_enable_desc">Spustí Bixby na Vašom telefóne Samsung alebo spustí vlastnú akciu na tomto počítači pri prebudení.</sys:String>
+    <sys:String x:Key="bixby_remap_lang">Jazyk prebudenia Bixby</sys:String>
+    <sys:String x:Key="bixby_remap_lang_desc">Zmeňte jazyk použitý pre aktivačnú frázu</sys:String>
+    <sys:String x:Key="bixby_remap_action">Vlastná akcia prebudenia</sys:String>
+    <sys:String x:Key="bixby_remap_action_desc">Definujte, čo sa má stať, ak aktivujete Bixby na tomto zariadení</sys:String>
+    <sys:String x:Key="bixby_remap_note">Povedzte 'Hey Bixby!' pre aktiváciue. Aktivovacia fráza sa môže líšiť v iných jazykových nastaveniach.
+
+Konfigurácia premapovania je aktivna len na tomto zariadení. Pokiaľ pripojíte slúchadlá k zariadení Samsung, hlasové prebudenie normálne aktivuje Bixby. Na iných zariadeniach, ako je toto, a na telefónoch iných výrobcov, táto funkcia nespustí žiadnú akciu.</sys:String>
+
+
+    <!--Credits-->
+    <sys:String x:Key="credits_header">Autori</sys:String>
+    <sys:String x:Key="credits_developer">Vývojar</sys:String>
+    <sys:String x:Key="credits_license">Licencia</sys:String>
+    <sys:String x:Key="credits_version">Verzia</sys:String>
+    <sys:String x:Key="credits_contributor">Prispievatelia</sys:String>
+    <sys:String x:Key="credits_translator">Prekladatelia</sys:String>
+    <sys:String x:Key="credits_sponsor">Zasponzorujte tento projekt</sys:String>
+    <sys:String x:Key="credits_kofi">Navštívte moju ko-fi stránku a podporte ma!</sys:String>
+    <sys:String x:Key="credits_github">Navštívte tento projekt na GitHub-e</sys:String>
+
+    <!--Connection lost page-->
+    <sys:String x:Key="connlost">Spojenie stratené</sys:String>
+    <sys:String x:Key="connlost_header">Nie je možné nadviazať spojenie</sys:String>
+    <sys:String x:Key="connlost_connect">Pripojiť</sys:String>
+    <sys:String x:Key="connlost_connecting">Pripájam...</sys:String>
+    <sys:String x:Key="connlost_troubleshoot">Riešenie problémov</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_title">Ako riešiť problémy s pripojením</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_content">Uistite sa, že sa oficiálna aplikácia Wearable spoločnosti Samsung pre Galaxy Buds nepokúŠa pripojiť ku slúchadlám na pozadí.
+V opačném prípade budete mať veľmi často problémy so stratou pripojenia, pretože sa ich aplikácia bude opakovane pokúšať získať kontrolu nad slúchadlami.
+
+K odstráneniu tohto problému môžete zvoliť jedno z týchto riešení:
+
+• Zrušte párovanie slúchadiel s aplikáciou Wearable. (V aplikácii Wearable otvorte ponuku, vyberte možnosť "Spravovať zariadenie" a odstráňte slúchadlá zo zoznamu).
+
+• Odinštalujte doplnok Galaxy Buds pre aplikáciu Samsung Wearable.
+
+• Pomocou aplikácie, ako je "Hail" alebo "Ice Box", dočasne zamrazte oficiálny doplnok Galaxy Buds pre aplikáciu Samsung Wearable, aby ste mu zabránili v spustení.
+    </sys:String>
+
+    <!-- Pairing mode -->
+    <sys:String x:Key="connlost_disconnected">Zariadenie je odpojené</sys:String>
+    <sys:String x:Key="pairingmode_done">Slúchadlá boli prepnuté do režimu párovania a sú teraz odpojené od tohto zariadenia.</sys:String>
+
+    <!--Firmware update disclaimer-->
+    <sys:String x:Key="fw_disclaimer">Vylúčenie zodpovednosti</sys:String>
+    <sys:String x:Key="fw_disclaimer_desc">Tento nástroj pre aktualizáciu firmwaru je presná replika oficiálneho aktualizátora nájdeného v oficiálnej aplikácii pre Android od spoločnosti Samsung. Túto implementáciu som dôkladne otestoval za rôznych okolností (normálne používanie, strata pripojenia, zámerne poškodené pakety Bluetooth, ...), bez toho aby došlo k akýmkoľvek problémom. Napriek tomu, nebudem viesť žiadnu zodpovednosť pokiaľ sa niečo pokazí, nakoľko aktualizácia firmwaru mení dôležité súčasti systému a malo by sa s nimi zachádzať opatrne.
+
+DOWNGRADE: Pri prechode na staršie verzie firmwaru som nenarazil na problémy, ale napriek tomu môžu nastať a môžu spôsobiť neočakávané problémy. Obnovenie továrnych nastavení po downgrade je odporúčané ale väčšinou nie je nutné.
+VLASTNÉ NAHRÁVANIE: Taktiež je Vám umožnené načitať súbor firmwaru z VaŠeho disku. NENAHRÁVAJTE do svojho zariadenia firmware určený pre INÉ modely.
+
+Táto aplikácia podlieha licencii GPLv3. Jej používaním prijímate licenciu a jej vylúčenia zodpovednosti. Potvrďte stlaČením tlačidla 'Pokračovať'.</sys:String>
+
+    <!--Firmware selection-->
+    <sys:String x:Key="fw_select_header">Aktualizácia firmwaru</sys:String>
+    <sys:String x:Key="fw_select_downgrade">Povoliť downgrade firmwaru</sys:String>
+    <sys:String x:Key="fw_select_downgrade_desc">Vypne kontrolu verzií a zobrazí staršie firmwary v zozname (môže spôsobiť neočakávané problémy; len pre pokročilých užívateľov)</sys:String>
+    <sys:String x:Key="fw_select_install">Inštalácia firmwaru</sys:String>
+    <sys:String x:Key="fw_select_install_short">Inštalovať</sys:String>
+    <sys:String x:Key="fw_select_from_disk">Vybrať firmware z disku...</sys:String>
+    <sys:String x:Key="fw_select_from_disk_short">Vybrať</sys:String>
+    <sys:String x:Key="fw_select_refresh">Obnoviť</sys:String>
+    <sys:String x:Key="fw_select_unsupported_selection">Neplatný výber. Vyberte prosím kompatibilnú položku zo zoznamu.</sys:String>
+    <sys:String x:Key="fw_select_downloading">Sťahovanie...</sys:String>
+    <sys:String x:Key="fw_select_net_error">Nepodarilo sa komunikovať so serverom. V tejto chvíli nie je možné stiahnuť firmware.</sys:String>
+    <sys:String x:Key="fw_select_net_index_error">Nepodarilo sa komunikovať so serverom. V tejto chvíli nie je možné stiahnuť index firmwaru.</sys:String>
+    <sys:String x:Key="fw_select_http_error">Kód chyby HTTP:</sys:String>
+    <sys:String x:Key="fw_select_unknown_build">Neznámy názov zostavy</sys:String>
+    <sys:String x:Key="fw_select_no_results_short">Nenašli sa žiadne aktualizácie</sys:String>
+    <sys:String x:Key="fw_select_verify_fail">Nepodarilo sa overiť firmware</sys:String>
+    <sys:String x:Key="fw_select_verify_model_mismatch_fail">Detekovaná nezhoda modelu zariadenia! Prenos firmwaru bol zrušený.
+
+Pokúšate sa nahrať firmware pre {0} na {1}. To môže slúchadlá natrvalo zablokovať.</sys:String>
+    <sys:String x:Key="fw_select_confirm">Chystáte sa flashnúť '{0}' na Vaše zariadenie '{1}'</sys:String>
+    <sys:String x:Key="fw_select_confirm_desc">Uistite sa, že sú tieto informácie správn, inak stlačte 'Zrušiť' a skontrolujte nastavenia.
+
+Pokiaľ je to možné, uistite sa pred spustením, že sú pripojené obe slúchadlá. Nebude spôsobovať žiadne problémy, pokiaľ pripojenie behom prenosu aktualizácie zlyhá. V takomto prípade slúchadlá automaticky zrušia proces prenosu a ukončia režim aktualizácie firmwaru.
+
+Aktualizáciu spustíte stlačením tlačidla 'Pokračovať'.</sys:String>
+
+    <!--Firmware transfer-->
+    <sys:String x:Key="fw_upload_header">Inštalácia firmwaru...</sys:String>
+    <sys:String x:Key="fw_upload_progress_session">Vytvorenie novej relácie...</sys:String>
+    <sys:String x:Key="fw_upload_progress_prepare">Príprava nahrávania...</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished">Nahrávanie dokončené</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished_desc">Aktualizácia bola úspěšne prenesená a v súčasnej dobe se inštaluje do zariadenia. Behon tohoto procesu prestanú slúchadlá približne na 30 sekúnd reagovať. Vo väčšine prípadov sa slúchadlá pokúsia po dokončení procesu aktualizácie automaticky znovu pripojiť.</sys:String>
+    <sys:String x:Key="fw_upload_progress_error">Nepodarilo sa nahrať firmware</sys:String>
+    <sys:String x:Key="fw_upload_progress">Nahráva sa aktualizácia firmwaru... {0}%</sys:String>
+    <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_mtu">Maximálna prenosová jednotka: {0} bajtov</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_offset">Spracúvanie dát od offsetu 0x{0:X6} do 0x{1:X6}</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_segment">Nahrávanie segmentu #{0} ({1} bajtov, kontrolný súčet 0x{2:X6})</sys:String>
+
+    <!--Firmware parse errors-->
+    <sys:String x:Key="fw_fail_no_magic">Toto nie je platná verzia firmwaru. V záhlaví súboru bola nájdená neplatná magická hodnota.</sys:String>
+    <sys:String x:Key="fw_fail_size_null">Veľkosť tohto firmwaru je nastavená na nulu a nie je možné ho použiť k nahratiu. Vyberte prosím iný.</sys:String>
+    <sys:String x:Key="fw_fail_no_segments">Táto verzia firmwaru neobsahuje žiadne binárne segmenty a je prázdna. Vyberte prosím inú.</sys:String>
+    <sys:String x:Key="fw_fail_unknown">Neočakávaná chyba pri dekódování firmwaru. Tento archiv firmwaru môže byť poškodený.
+
+Detaily:</sys:String>
+
+    <!--Firmware transfer errors-->
+    <sys:String x:Key="fw_fail_connection">Stratené pripojenie k zariadeniu. Prenos firmwaru bol zrušený.</sys:String>
+    <sys:String x:Key="fw_fail_session">Nepodarilo sa otvoriť novú reláciu. Zariadenie vrátilo chybový kód ({0})</sys:String>
+    <sys:String x:Key="fw_fail_copy">Kopírovánie firmwaru sa nepodarilo. Pripojte sa a skúste to znovu. Chybový kód vrátený zariadením: {0}</sys:String>
+    <sys:String x:Key="fw_fail_verify">Overenie/inštalácia firmwaru sa nepodarila. Pripojte sa a skúste to znovu. Chybový kód vrátený zariadením: {0}</sys:String>
+    <sys:String x:Key="fw_fail_connection_precheck">Zariadenie nie je aktuálne pripojené. Skontrolujte nastavenia systému Bluetooth a pripojte sa znovu.</sys:String>
+    <sys:String x:Key="fw_fail_pending">Aktuálne prebieha iný prenos firmwaru. Najprv ho prosím riadne zrušte.</sys:String>
+    <sys:String x:Key="fw_fail_lowbattery">Batéria je príliš slabá. Najprv prosím nabite slúchadlá nad 15%.</sys:String>
+    <sys:String x:Key="fw_fail_session_timeout">Vypršal časový limit pri čakaní, než zariadenie zaháji novú reláciu</sys:String>
+    <sys:String x:Key="fw_fail_control_timeout">Vypršal časový limit pri čakaní, než zariadenie vráti riadiaci blok</sys:String>
+
+    <!--Spatial test-->
+    <sys:String x:Key="spatial_header">Test priestorového senzoru</sys:String>
+    <!--Note: Quaternion = 4-dimensional vector-->
+    <sys:String x:Key="spatial_dump_quaternion">Surový vektor kvaterniónu:</sys:String>
+    <!--Note: RPY = Roll, pitch, yaw-->
+    <sys:String x:Key="spatial_dump_rpy">Hodnoty RPY:</sys:String>
+
+    <!--Header-->
+    <sys:String x:Key="window_open">Otvoriť</sys:String>
+    <sys:String x:Key="window_minimize">Minimalizovať</sys:String>
+    <sys:String x:Key="window_close">Zavrieť</sys:String>
+
+    <!--Buds app detected page-->
+    <sys:String x:Key="budsapp_header">Informácie o Bluetooth kompatibilite</sys:String>
+    <sys:String x:Key="budsapp_text_p1">Spolu s touto aplikáciou je nainštalovaná  aj oficiálna aplikácia Galaxy Buds pre Windows 10.</sys:String>
+    <sys:String x:Key="budsapp_text_p2">Pokiaľ je otvorená a pripojená, GalaxyBudsClient môže mať problémy s pripojením k Vašim slúchadlám. Než budete pokračovať, nezabudnite ju zavrieť. Taktiež sa oficiálna aplikácia Galaxy Buds nemôže pripojiť k Vašim slúchadlám ak je Galaxy Buds Manager aktívny a otvoril pripojenie k slúchadlám.</sys:String>
+    <sys:String x:Key="budsapp_text_p3">Majte na pamäti, že s Vašimi slúchadlami Galaxy Buds môže komunikovať súčasne vždy len jedna aplikácia.</sys:String>
+
+    <!--Manual pairing-->
+    <sys:String x:Key="manualpair_title">Ručný výber zariadenia</sys:String>
+    <sys:String x:Key="manualpair_title_dialog">Zvoľte svoje zariadenie Galaxy Buds</sys:String>
+    <sys:String x:Key="manualpair_model">Zvoľte správny model</sys:String>
+    <sys:String x:Key="manualpair_note">Slúchadlá by ste mali ručne pripojiť len v prípade, že ich sprievodca nastavením nerozpozná správne.</sys:String>
+
+    <!--Rename-->
+    <sys:String x:Key="rename">Premenovať slúchadlá</sys:String>
+    <sys:String x:Key="rename_desc">Premenuje slúchadlá pre všetky zariadenia.</sys:String>
+    <sys:String x:Key="rename_warn">Premenovanie slúchadiel nemusí byť možné pomocou oficiálnych aplikácií, pretože je obmedzené na smartphony Samsung, čo znamená, že k obnoveniu personalizovaného názvu budete možno potrebovať túto aplikáciu. Zmenu názvu nemusí zariadenie rozpoznať, pokiaľ slúchadlá neodpárujete a znovu nespárujete.</sys:String>
+    <sys:String x:Key="rename_warn_oneui_title">Dôležité informácie pre užívateľov OneUI</sys:String>
+    <sys:String x:Key="rename_warn_oneui">Pokiaľ je vo Vašom zariadení použité rozhranie Samsung OneUI, mali by ste použiť oficiálnu metódu spoločnosti Samsung a premenovať slúchadlá v nastaveniach systému. V opačnom prípade by pri nastavovaní nového názvu dochádzalo k problémom s pripojením.</sys:String>
+    <sys:String x:Key="rename_too_short">Zadaný názov je příliš krátky (žiadne znaky) alebo príliš dlhý (maximálny limit ustanovený slúchadlami).</sys:String>
+    <sys:String x:Key="rename_hint">Zadajte nový názov...</sys:String>
+    <sys:String x:Key="rename_label">Nový názov zariadenia</sys:String>
+    <sys:String x:Key="rename_reading_name">Čítanie aktuálneho názvu...</sys:String>
+    <sys:String x:Key="rename_ok_title">Slúchadlá premenované</sys:String>
+    <sys:String x:Key="rename_ok">Úspěšne ste premenovali slúchadlá!
+Zmena názvu nemusí byť zariadeniami (vrátane tohto) rozpoznaná, dokiaľ slúchadlá neodpárujete a znovu     nespárujete.</sys:String>
+</ResourceDictionary>
