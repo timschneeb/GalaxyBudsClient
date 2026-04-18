@@ -102,6 +102,8 @@ namespace GalaxyBudsClient.Model
 			nl,
             [Description("Swedish")]
             sv,
+            [Description("Slovak")]
+            sk,
             [IgnoreDataMember, Description("custom_language.xaml")]
             custom
         }
