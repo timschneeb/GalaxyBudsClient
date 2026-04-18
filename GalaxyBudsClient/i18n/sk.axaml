@@ -566,8 +566,10 @@ Je možné, že ich bude nutné znova manuálne pripojiť.</sys:String>
     <sys:String x:Key="adv_header">Pokročilé nastavenia</sys:String>
     <sys:String x:Key="adv_seamless">Jednoduché pripájanie slúchadiel</sys:String>
     <sys:String x:Key="adv_seamless_desc">Umožňuje rýchlo pripojiť slúchadlá k ďalšiemu zariadeniu bez nutnosti ich odpojovať alebo zapínat režim párovania</sys:String>
+    <sys:String x:Key="adv_pause_playback">Prerušiť skladbu pri zosadení slúchadiel</sys:String>
+    <sys:String x:Key="adv_pause_playback_desc">Pošle globálnu akciu pre prehrávanie/pozastavenie pokiaľ obe senzory priblíženia sú odkryté (len Desktop)</sys:String>
     <sys:String x:Key="adv_resume_playback">Začať prehrávať keď sú slúchadlá v uchu</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">Pošle globálnu akciu pre prehrávanie/pozastavenia pokiaľ je aspoň jeden senzor priblíženia zakrytý (len Windows)</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">Pošle globálnu akciu pre prehrávanie/pozastavenie pokiaľ je aspoň jeden senzor priblíženia zakrytý (len Desktop)</sys:String>
     <sys:String x:Key="adv_sidetone">Použiť ambientný režim pri hovoroch</sys:String>
     <sys:String x:Key="adv_sidetone_desc">Svoj hlas budete počuť jasnejšie pri telefonovaní (obmedzí zbytočné kričanie)</sys:String>
     <sys:String x:Key="adv_callpath">Detekcia volania v ušiach</sys:String>
