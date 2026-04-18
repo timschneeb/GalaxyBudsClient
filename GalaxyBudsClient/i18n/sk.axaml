@@ -428,6 +428,8 @@ Doba merania: Výberom horizontálneho rozpätia odmeráte uplynulý čas medzi 
     <sys:String x:Key="settings_minimize_tray_description">Ponechá aplikáciu na pozadí miesto ukončenia aplikácie</sys:String>
     <sys:String x:Key="settings_realistic_earbud_icons">Používať realistické obrázky slúchadiel</sys:String>
     <sys:String x:Key="settings_realistic_earbud_icons_description">Zobrazí realistické a farebné obrázky slúchadiel, pokiaľ to podporujú</sys:String>
+    <sys:String x:Key="settings_color_override">Prepísať farbu slúchadiel</sys:String>
+    <sys:String x:Key="settings_color_override_description">Zmení zobrazenú farbu slúchadiel v aplikácii</sys:String>
     <sys:String x:Key="settings_nav_sidebar">Bočný panel navigácie</sys:String>
     <sys:String x:Key="settings_nav_sidebar_description">Zobrazí alebo skryje navigačné tlačidlá na ľavej strane</sys:String>
     <sys:String x:Key="settings_tray_settings">Ikona lišty & Spustenie</sys:String>
