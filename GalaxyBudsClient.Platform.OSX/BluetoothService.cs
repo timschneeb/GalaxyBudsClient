@@ -87,6 +87,16 @@ namespace GalaxyBudsClient.Platform.OSX
             Console.WriteLine("OSX.BluetoothService: Channel closed. Disconnected.");
             Disconnected?.Invoke(this, "Device lost connection");
         }
+
+        private static string NativeUtf8ToString(IntPtr ptr)
+        {
+            return ptr == IntPtr.Zero ? string.Empty : Marshal.PtrToStringUTF8(ptr) ?? string.Empty;
+        }
+
+        private static string NativeUtf8ToMacAddress(IntPtr ptr)
+        {
+            return NativeUtf8ToString(ptr).Replace("-", ":");
+        }
         
         public bool IsStreamConnected
         {
@@ -125,8 +135,8 @@ namespace GalaxyBudsClient.Platform.OSX
                         {
                             Device* d = &rawDevices[i];
                             devices[i] = new BluetoothDevice(
-                                Marshal.PtrToStringUTF8(d->device_name) ?? String.Empty,
-                                (Marshal.PtrToStringUTF8(d->mac_address) ?? String.Empty).Replace("-", ":"),
+                                NativeUtf8ToString(d->device_name),
+                                NativeUtf8ToMacAddress(d->mac_address),
                                 d->is_connected,
                                 d->is_paired,
                                 new BluetoothCoD(d->cod),
@@ -159,8 +169,7 @@ namespace GalaxyBudsClient.Platform.OSX
 
         private void OnDisconnected(IntPtr mac)
         {
-            var macAddr = Marshal.PtrToStringAnsi(mac) ?? string.Empty;
-            macAddr = macAddr.Replace("-", ":");
+            var macAddr = NativeUtf8ToMacAddress(mac);
             if (string.Equals(macAddr, _currentMac, StringComparison.CurrentCultureIgnoreCase))
             {
                 Disconnected?.Invoke(this, "Device was disconnected");
@@ -188,8 +197,7 @@ namespace GalaxyBudsClient.Platform.OSX
                     }
                 });
 
-                var macAddr = Marshal.PtrToStringAnsi(mac) ?? string.Empty;
-                macAddr = macAddr.Replace("-", ":");
+                var macAddr = NativeUtf8ToMacAddress(mac);
                 if (string.Equals(macAddr, _currentMac, StringComparison.CurrentCultureIgnoreCase))
                 {
                     Log.Debug("OSX.BluetoothService: Reconnecting to {MacAddr}", macAddr);
