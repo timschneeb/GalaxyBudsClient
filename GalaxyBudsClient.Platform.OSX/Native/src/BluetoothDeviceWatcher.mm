@@ -3,54 +3,12 @@
 // Copyright (c) 2021 Tim Schneeberger. Licensed under GPLv3.
 //
 
-#include <stdlib.h>
-#include <string.h>
-
 #import <IOBluetooth/IOBluetooth.h>
 
 #import "Bluetooth.h"
 #import "BluetoothDeviceWatcher.h"
 #import "Native.h"
-
-static BOOL IsNullOrEmpty(NSString *value) {
-    return value == nil || [value length] == 0;
-}
-
-static NSString *FirstNonEmptyString(NSString *first, NSString *second, NSString *third) {
-    if (!IsNullOrEmpty(first)) {
-        return first;
-    }
-
-    if (!IsNullOrEmpty(second)) {
-        return second;
-    }
-
-    if (!IsNullOrEmpty(third)) {
-        return third;
-    }
-
-    return @"";
-}
-
-static char *CopyNSStringToUtf8CString(NSString *value) {
-    if (value == nil) {
-        return NULL;
-    }
-
-    const char *utf8String = [value UTF8String];
-    if (utf8String == NULL) {
-        return NULL;
-    }
-
-    size_t length = strlen(utf8String);
-    char *copy = (char *)malloc(length + 1);
-    if (copy == NULL) {
-        return NULL;
-    }
-
-    memcpy(copy, utf8String, length + 1);
-    return copy;
-}
+#import "NativeStringUtils.h"
 
 @implementation BluetoothDeviceWatcher {
     BtDev_OnConnected _onConnected;
