@@ -195,27 +195,34 @@ static void FreeEnumerationDevices(EnumerationResult *result, int initializedCou
         NSLog(@"Error - failed to enumerate - out of memory!");
         return BT_ENUM_EUNKNOWN;
     }
-    result->length = deviceCount;
 
-    for (int i = 0; i < result->length; i++) {
-        Device *resultDevice = &result->devices[i];
+    int validCount = 0;
+    for (int i = 0; i < deviceCount; i++) {
         IOBluetoothDevice *device = [inDevices objectAtIndex:i];
-        NSString *addressString = FirstNonEmptyString([device addressString], nil, nil);
+        NSString *addressString = [device addressString];
+        if (IsNullOrEmpty(addressString)) {
+            NSLog(@"Bluetooth::enumerate(): Skipping paired device with missing address: %@", device);
+            continue;
+        }
+
+        Device *resultDevice = &result->devices[validCount];
         NSString *nameString = FirstNonEmptyString([device name], [device nameOrAddress], addressString);
 
         resultDevice->device_name = CopyNSStringToUtf8CString(nameString);
         resultDevice->mac_address = CopyNSStringToUtf8CString(addressString);
         if (resultDevice->device_name == NULL || resultDevice->mac_address == NULL) {
             NSLog(@"Error - failed to enumerate - unable to copy device strings!");
-            FreeEnumerationDevices(result, i + 1);
+            FreeEnumerationDevices(result, validCount + 1);
             return BT_ENUM_EUNKNOWN;
         }
 
         resultDevice->is_connected = device.isConnected;
         resultDevice->is_paired = device.isPaired;
         resultDevice->cod = device.classOfDevice;
+        validCount++;
     }
 
+    result->length = validCount;
     return BT_ENUM_SUCCESS;
 }
 
