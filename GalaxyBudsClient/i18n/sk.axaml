@@ -432,7 +432,7 @@ Doba merania: Výberom horizontálneho rozpätia odmeráte uplynulý čas medzi 
     <sys:String x:Key="settings_color_override_description">Zmení zobrazenú farbu slúchadiel v aplikácii</sys:String>
     <sys:String x:Key="settings_nav_sidebar">Bočný panel navigácie</sys:String>
     <sys:String x:Key="settings_nav_sidebar_description">Zobrazí alebo skryje navigačné tlačidlá na ľavej strane</sys:String>
-    <sys:String x:Key="settings_tray_settings">Ikona lišty & Spustenie</sys:String>
+    <sys:String x:Key="settings_tray_settings">Ikona lišty &amp; Spustenie</sys:String>
     <sys:String x:Key="settings_dyn_tray_mode">Dynamická ikona v oznamovacej oblasti</sys:String>
     <sys:String x:Key="settings_dyn_tray_mode_description">Zobrazí stavu batérie na ikone v oznamovacej oblasti</sys:String>
     <sys:String x:Key="settings_dyn_tray_mode_off">Vypnuté</sys:String>
