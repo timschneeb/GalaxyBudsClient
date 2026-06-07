@@ -4,10 +4,11 @@
 //
 
 #import <IOBluetooth/IOBluetooth.h>
+
 #import "Bluetooth.h"
 #import "BluetoothDeviceWatcher.h"
 #import "Native.h"
-
+#import "NativeStringUtils.h"
 
 @implementation BluetoothDeviceWatcher {
     BtDev_OnConnected _onConnected;
@@ -45,18 +46,44 @@
 
 - (void)onConnected:(IOBluetoothUserNotification *)notification fromDevice:(IOBluetoothDevice *)device {
     if (_onConnected) {
-        char *mac = (char *)malloc([[device addressString] lengthOfBytesUsingEncoding:NSUTF8StringEncoding]+1);
-        char *name = (char *)malloc([[device nameOrAddress] lengthOfBytesUsingEncoding:NSUTF8StringEncoding]+1);
-        strcpy(mac, device.addressString.UTF8String);
-        strcpy(name, device.nameOrAddress.UTF8String);
+        NSString *addressString = [device addressString];
+        if (IsNullOrEmpty(addressString)) {
+            NSLog(@"BluetoothDeviceWatcher: Ignoring connect notification without device address: %@\n", device);
+            return;
+        }
+
+        char *mac = CopyNSStringToUtf8CString(addressString);
+        if (mac == NULL) {
+            NSLog(@"BluetoothDeviceWatcher: Failed to copy connect notification device address: %@\n", addressString);
+            return;
+        }
+
+        NSString *nameString = FirstNonEmptyString([device name], [device nameOrAddress], addressString);
+        char *name = CopyNSStringToUtf8CString(nameString);
+        if (name == NULL) {
+            NSLog(@"BluetoothDeviceWatcher: Failed to copy connect notification device name for %@\n", addressString);
+            free(mac);
+            return;
+        }
+
         _onConnected(mac, name);
     }
 }
 
 - (void)onDisconnected:(IOBluetoothUserNotification *)notification fromDevice:(IOBluetoothDevice *)device {
     if (_onDisconnected) {
-        char *mac = (char *)malloc([[device addressString] lengthOfBytesUsingEncoding:NSUTF8StringEncoding]+1);
-        strcpy(mac, device.addressString.UTF8String);
+        NSString *addressString = [device addressString];
+        if (IsNullOrEmpty(addressString)) {
+            NSLog(@"BluetoothDeviceWatcher: Ignoring disconnect notification without device address: %@\n", device);
+            return;
+        }
+
+        char *mac = CopyNSStringToUtf8CString(addressString);
+        if (mac == NULL) {
+            NSLog(@"BluetoothDeviceWatcher: Failed to copy disconnect notification device address: %@\n", addressString);
+            return;
+        }
+
         _onDisconnected(mac);
     }
 }
