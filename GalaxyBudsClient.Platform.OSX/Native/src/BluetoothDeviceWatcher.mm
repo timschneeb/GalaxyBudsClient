@@ -12,6 +12,7 @@
 @implementation BluetoothDeviceWatcher {
     BtDev_OnConnected _onConnected;
     BtDev_OnDisconnected _onDisconnected;
+    IOBluetoothUserNotification *mDisconnectNotification;
 }
 - (id)init {
     if (self = [super init]) {
@@ -30,8 +31,13 @@
         return FALSE;
     }
 
-    [dev registerForDisconnectNotification:self
-                                  selector:@selector(onDisconnected:fromDevice:)];
+    // Re-registering without unregistering stacks notifications: one physical
+    // disconnect would then fire the managed callback once per stale handle.
+    if (mDisconnectNotification != nil) {
+        [mDisconnectNotification unregister];
+    }
+    mDisconnectNotification = [dev registerForDisconnectNotification:self
+                                                            selector:@selector(onDisconnected:fromDevice:)];
     return TRUE;
 }
 

@@ -93,7 +93,9 @@
     // Open the RFCOMM channel on the new device connection
     IOBluetoothRFCOMMChannel *tempRFCOMMChannel = mRFCOMMChannel;
     status = [device openRFCOMMChannelSync:&tempRFCOMMChannel withChannelID:rfcommChannelID delegate:self];
-    mRFCOMMChannel = tempRFCOMMChannel;
+    @synchronized (self) {
+        mRFCOMMChannel = tempRFCOMMChannel;
+    }
     
     if (mRFCOMMChannel == nil) {
         NSLog(@"Error: %s - unable to open RFCOMM channel.\n", mach_error_string(status) );
@@ -136,15 +138,21 @@
 
 - (BOOL)disconnect
 {
-    if (mRFCOMMChannel != nil) {
-        // This will close the RFCOMM channel and start an inactivity timer to close the baseband connection if no
-        // other channels (L2CAP or RFCOMM) are open.
-        [mRFCOMMChannel setDelegate:nil];
-        [mRFCOMMChannel closeChannel];
-        
+    // mRFCOMMChannel is also read by sendData on another thread; swap it out
+    // under the lock so in-flight sends keep a valid (closed) channel object.
+    IOBluetoothRFCOMMChannel *channel;
+    @synchronized (self) {
+        channel = mRFCOMMChannel;
         mRFCOMMChannel = nil;
     }
-    
+
+    if (channel != nil) {
+        // This will close the RFCOMM channel and start an inactivity timer to close the baseband connection if no
+        // other channels (L2CAP or RFCOMM) are open.
+        [channel setDelegate:nil];
+        [channel closeChannel];
+    }
+
     _macAddress = NULL;
 
     return TRUE;
@@ -183,8 +191,17 @@
 
 - (BT_SEND_RESULT)sendData:(char *)buffer length:(UInt32)length
 {
-    if (mRFCOMMChannel != nil) {
-        if (![mRFCOMMChannel isOpen]) {
+    // Snapshot the channel: the IOBluetooth callback thread can run disconnect
+    // (nilling mRFCOMMChannel) while this loop is mid-write. The local strong
+    // reference keeps the object alive; writeSync on a closed channel just
+    // returns an error and ends the loop.
+    IOBluetoothRFCOMMChannel *channel;
+    @synchronized (self) {
+        channel = mRFCOMMChannel;
+    }
+
+    if (channel != nil) {
+        if (![channel isOpen]) {
             [self disconnect];
             _onChannelClosed();
             return BT_SEND_ENULL;
@@ -198,16 +215,21 @@
 
         // Get the RFCOMM Channel's MTU.  Each write can only contain up to the MTU size
         // number of bytes.
-        rfcommChannelMTU = [mRFCOMMChannel getMTU];
+        rfcommChannelMTU = [channel getMTU];
 
         // Loop through the data until we have no more to send.
         while ( (result == kIOReturnSuccess) && (numBytesRemaining > 0) ) {
+            if (![channel isOpen]) {
+                result = kIOReturnNotOpen;
+                break;
+            }
+
             // finds how many bytes I can send:
             UInt32 numBytesToSend = ( (numBytesRemaining > rfcommChannelMTU) ? rfcommChannelMTU : numBytesRemaining);
 
             // This method won't return until the buffer has been passed to the Bluetooth hardware to be sent to the remote device.
             // Alternatively, the asynchronous version of this method could be used which would queue up the buffer and return immediately.
-            result = [mRFCOMMChannel writeSync:buffer length:static_cast<UInt16>(numBytesToSend)];
+            result = [channel writeSync:buffer length:static_cast<UInt16>(numBytesToSend)];
 
             // Updates the position in the buffer:
             numBytesRemaining -= numBytesToSend;
