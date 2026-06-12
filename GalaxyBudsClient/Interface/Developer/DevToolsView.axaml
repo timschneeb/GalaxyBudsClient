@@ -44,9 +44,21 @@
             </MenuItem>
         </Menu>
 
-        <Grid Margin="3, 0, 3, 3" ColumnDefinitions="Auto,5,*">
+        <Grid Margin="3, 0, 3, 3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" MinWidth="240" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="3*" MinWidth="280" />
+            </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0" RowDefinitions="*,5,*">
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" MinHeight="100" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="*" MinHeight="110" />
+                </Grid.RowDefinitions>
+
 
                 <avaloniaHex:HexEditor Name="HexEditor"
                                        Grid.Column="0" 
@@ -77,12 +89,14 @@
                                         Name="OpenMsgIdList"
                                         Content="&#x25BE;"
                                         Width="30"
+                                        Padding="0"
+                                        HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center"
                                         Margin="2,0,0,0"
                                         VerticalAlignment="Stretch"
                                         Click="OpenMsgIdList_Click" />
                                 <AutoCompleteBox Name="SendMsgId"
                                                  HorizontalAlignment="Stretch"
-                                                 MinWidth="190"
                                                  Watermark="Search message ID"
                                                  FilterMode="Contains"
                                                  MinimumPrefixLength="0"
@@ -109,7 +123,13 @@
 
             <GridSplitter Grid.Column="1" Width="5" ShowsPreview="True" />
 
-            <Grid Grid.Column="2" RowDefinitions="*,5,*">
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" MinHeight="100" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="*" MinHeight="100" />
+                </Grid.RowDefinitions>
+
                 <DataGrid Name="MsgTable" Grid.Row="0" SelectionMode="Single"
                           CanUserSortColumns="False" CanUserReorderColumns="False"
                           CanUserResizeColumns="True"
