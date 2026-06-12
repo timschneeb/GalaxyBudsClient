@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using FluentIcons.Common;
@@ -69,13 +70,27 @@ public partial class EqualizerPageViewModel : MainPageViewModelBase
     {
         switch (args.PropertyName)
         {
-            case nameof(IsEqEnabled) or nameof(EqPreset):
+            case nameof(EqPreset):
                 IsCustomEqEnabled = false;
                 await BluetoothImpl.Instance.SendAsync(new SetEqualizerEncoder
                 {
                     IsEnabled = IsEqEnabled,
                     Preset = EqPreset
                 });
+                EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
+                break;
+            case nameof(IsEqEnabled):
+                if (!IsEqEnabled)
+                    IsCustomEqEnabled = false;
+                // When custom EQ just switched the EQ on, its own handler sends the messages
+                if (!(IsEqEnabled && IsCustomEqEnabled))
+                {
+                    await BluetoothImpl.Instance.SendAsync(new SetEqualizerEncoder
+                    {
+                        IsEnabled = IsEqEnabled,
+                        Preset = EqPreset
+                    });
+                }
                 EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
                 break;
             case nameof(IsCustomEqEnabled):
@@ -96,8 +111,20 @@ public partial class EqualizerPageViewModel : MainPageViewModelBase
             case nameof(Band1) or nameof(Band2) or nameof(Band3) or
                 nameof(Band4) or nameof(Band5) or nameof(Band6) or
                 nameof(Band7) or nameof(Band8) or nameof(Band9):
-                if (IsCustomEqEnabled)
-                    await SendCustomEqAsync();
+                if (!IsCustomEqEnabled)
+                    break;
+                // The vertical sliders update per drag-tick; only send the settled values
+                _bandDebounce?.Cancel();
+                _bandDebounce = new CancellationTokenSource();
+                try
+                {
+                    await Task.Delay(250, _bandDebounce.Token);
+                }
+                catch (TaskCanceledException)
+                {
+                    break;
+                }
+                await SendCustomEqAsync();
                 break;
             case nameof(StereoBalance):
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_HEARING_ENHANCEMENTS, (byte)StereoBalance);
@@ -164,6 +191,8 @@ public partial class EqualizerPageViewModel : MainPageViewModelBase
     [Reactive] private bool _isEqEnabled;
     [Reactive] private int _eqPreset;
     [Reactive] private int _stereoBalance;
+    private CancellationTokenSource? _bandDebounce;
+
     [Reactive] private bool _isCustomEqEnabled;
     [Reactive] private int _band1;
     [Reactive] private int _band2;

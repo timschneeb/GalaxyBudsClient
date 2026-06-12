@@ -31,10 +31,11 @@ public class AmbientStrengthConverter : IntToStringConverter
 
     private static Dictionary<int, string> Scale => new()
     {
-        { 0, Strings.AsScaleLow },
-        { 1, Strings.AsScaleModerate },
-        { 2, Strings.AsScaleHigh },
-        { 3, Strings.AsScaleExtraloud }
+        { 0, "Level 1" },
+        { 1, "Level 2" },
+        { 2, "Level 3" },
+        { 3, "Level 4" },
+        { 4, "Level 5" }
     };
 
     protected override Dictionary<int, string> Mapping => _legacy ? LegacyScale : Scale;
