@@ -39,6 +39,7 @@ public partial class DevToolsView : UserControl
         HexEditor.FontFamily = monoFonts;
         
         DataContext = new DevToolsViewModel();
+        SendMsgId.ItemsSource = Enum.GetValues<MsgIds>().OrderBy(x => x.ToString()).ToList();
         
         ViewModel.PropertyChanged += OnPropertyChanged;
         BluetoothImpl.Instance.NewDataReceived += OnNewDataReceived;
