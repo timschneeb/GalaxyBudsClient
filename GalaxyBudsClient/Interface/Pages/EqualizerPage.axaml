@@ -44,6 +44,100 @@
 
             <controls:SettingsGroup>
                 <Interaction.Behaviors>
+                    <ext:RequiresFeatureBehavior Feature="CustomEqualizer" />
+                </Interaction.Behaviors>
+
+                <controls:SettingsSwitchItem
+                    Content="Custom equalizer"
+                    Description="Set your own 9-band curve instead of a preset (low to high frequency, -10 to +10)"
+                    Symbol="Options"
+                    IsChecked="{Binding IsCustomEqEnabled}" />
+
+                <controls:SettingsSliderItem
+                    Content="Band 1"
+                    Description="{Binding Band1}"
+                    Debounce="True"
+                    IconSource="{StaticResource IconPlaceholder}"
+                    IsEnabled="{Binding IsCustomEqEnabled}"
+                    Minimum="-10"
+                    Maximum="10"
+                    Value="{Binding Band1}" />
+                <controls:SettingsSliderItem
+                    Content="Band 2"
+                    Description="{Binding Band2}"
+                    Debounce="True"
+                    IconSource="{StaticResource IconPlaceholder}"
+                    IsEnabled="{Binding IsCustomEqEnabled}"
+                    Minimum="-10"
+                    Maximum="10"
+                    Value="{Binding Band2}" />
+                <controls:SettingsSliderItem
+                    Content="Band 3"
+                    Description="{Binding Band3}"
+                    Debounce="True"
+                    IconSource="{StaticResource IconPlaceholder}"
+                    IsEnabled="{Binding IsCustomEqEnabled}"
+                    Minimum="-10"
+                    Maximum="10"
+                    Value="{Binding Band3}" />
+                <controls:SettingsSliderItem
+                    Content="Band 4"
+                    Description="{Binding Band4}"
+                    Debounce="True"
+                    IconSource="{StaticResource IconPlaceholder}"
+                    IsEnabled="{Binding IsCustomEqEnabled}"
+                    Minimum="-10"
+                    Maximum="10"
+                    Value="{Binding Band4}" />
+                <controls:SettingsSliderItem
+                    Content="Band 5"
+                    Description="{Binding Band5}"
+                    Debounce="True"
+                    IconSource="{StaticResource IconPlaceholder}"
+                    IsEnabled="{Binding IsCustomEqEnabled}"
+                    Minimum="-10"
+                    Maximum="10"
+                    Value="{Binding Band5}" />
+                <controls:SettingsSliderItem
+                    Content="Band 6"
+                    Description="{Binding Band6}"
+                    Debounce="True"
+                    IconSource="{StaticResource IconPlaceholder}"
+                    IsEnabled="{Binding IsCustomEqEnabled}"
+                    Minimum="-10"
+                    Maximum="10"
+                    Value="{Binding Band6}" />
+                <controls:SettingsSliderItem
+                    Content="Band 7"
+                    Description="{Binding Band7}"
+                    Debounce="True"
+                    IconSource="{StaticResource IconPlaceholder}"
+                    IsEnabled="{Binding IsCustomEqEnabled}"
+                    Minimum="-10"
+                    Maximum="10"
+                    Value="{Binding Band7}" />
+                <controls:SettingsSliderItem
+                    Content="Band 8"
+                    Description="{Binding Band8}"
+                    Debounce="True"
+                    IconSource="{StaticResource IconPlaceholder}"
+                    IsEnabled="{Binding IsCustomEqEnabled}"
+                    Minimum="-10"
+                    Maximum="10"
+                    Value="{Binding Band8}" />
+                <controls:SettingsSliderItem
+                    Content="Band 9"
+                    Description="{Binding Band9}"
+                    Debounce="True"
+                    IconSource="{StaticResource IconPlaceholder}"
+                    IsEnabled="{Binding IsCustomEqEnabled}"
+                    Minimum="-10"
+                    Maximum="10"
+                    Value="{Binding Band9}" />
+            </controls:SettingsGroup>
+
+            <controls:SettingsGroup>
+                <Interaction.Behaviors>
                     <ext:RequiresFeatureBehavior Feature="StereoPan" />
                 </Interaction.Behaviors>
 

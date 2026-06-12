@@ -167,10 +167,12 @@
     for (int i = 0; i < result->length; i++) {
         Device *resultDevice = &result->devices[i];
         IOBluetoothDevice *device = [inDevices objectAtIndex:i];
-        resultDevice->device_name = (char *)malloc([device.name lengthOfBytesUsingEncoding:NSUTF8StringEncoding]+1);
-        resultDevice->mac_address = (char *)malloc([device.addressString lengthOfBytesUsingEncoding:NSUTF8StringEncoding]+1);
-        strcpy(resultDevice->device_name, device.name.UTF8String);
-        strcpy(resultDevice->mac_address, device.addressString.UTF8String);
+        // name/addressString can be nil (e.g. paired device with unresolved
+        // name); a nil NSString yields a NULL UTF8String and strcpy(NULL) crashes.
+        const char *deviceName = device.name.UTF8String;
+        const char *macAddress = device.addressString.UTF8String;
+        resultDevice->device_name = strdup(deviceName ? deviceName : "");
+        resultDevice->mac_address = strdup(macAddress ? macAddress : "");
         resultDevice->is_connected = device.isConnected;
         resultDevice->is_paired = device.isPaired;
         resultDevice->cod = device.classOfDevice;

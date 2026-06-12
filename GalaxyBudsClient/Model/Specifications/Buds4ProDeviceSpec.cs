@@ -26,6 +26,8 @@ public class Buds4ProDeviceSpec : IDeviceSpec
         { Features.ExtraClearCallSound, null },
         { Features.AmbientExtraLoud, null },
         { Features.AmbientSound, null },
+        { Features.AmbientSoundVolume, null },
+        { Features.CustomEqualizer, null },
         { Features.Anc, null },
         { Features.AmbientSidetone, null },
         { Features.AmbientCustomize, null },
@@ -60,7 +62,7 @@ public class Buds4ProDeviceSpec : IDeviceSpec
     );
         
     public string IconResourceKey => "Pro";
-    public int MaximumAmbientVolume => 2;
+    public int MaximumAmbientVolume => 4;
     public byte StartOfMessage => (byte)MsgConstants.Som;
     public byte EndOfMessage => (byte)MsgConstants.Eom;
 }
