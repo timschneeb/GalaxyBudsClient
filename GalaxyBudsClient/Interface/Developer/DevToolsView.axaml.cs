@@ -123,6 +123,13 @@ public partial class DevToolsView : UserControl
         }
     }
        
+    private void OpenMsgIdList_Click(object? sender, RoutedEventArgs e)
+    {
+        SendMsgId.Text ??= string.Empty;
+        SendMsgId.PopulateComplete();
+        SendMsgId.IsDropDownOpen = true;
+    }
+
     private void SendMsg_Click(object? sender, RoutedEventArgs e)
     {
         if (SendMsgId.SelectedItem == null || SendMsgType.SelectedItem == null)
