@@ -15,6 +15,8 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 
+using Serilog;
+
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
 public partial class EqualizerPageViewModel : MainPageViewModelBase
@@ -154,16 +156,19 @@ public partial class EqualizerPageViewModel : MainPageViewModelBase
         }
     }
 
-    private static string[] BuildEqOptions(bool supportsCustom)
+    private static EqOption[] BuildEqOptions(bool supportsCustom)
     {
-        var options = new List<string>
+        var labels = new List<string>
         {
             EqOff, Strings.EqBass, Strings.EqSoft, Strings.EqDynamic, Strings.EqClear, Strings.EqTreble
         };
         if (supportsCustom)
             for (var slot = 1; slot <= CustomSlotCount; slot++)
-                options.Add($"Custom {slot}");
-        return options.ToArray();
+                labels.Add($"Custom {slot}");
+        var options = new EqOption[labels.Count];
+        for (var i = 0; i < labels.Count; i++)
+            options[i] = new EqOption(i, labels[i]);
+        return options;
     }
 
     private static int[][] CreateEmptySlots()
@@ -217,6 +222,9 @@ public partial class EqualizerPageViewModel : MainPageViewModelBase
 
     private async void OnPropertyChanged(object? sender, PropertyChangedEventArgs args)
     {
+        // async void: an unobserved exception from a BT send would crash the app — guard the handler.
+        try
+        {
         switch (args.PropertyName)
         {
             // The EQ dropdown (Off / presets / Custom) is the single user-facing control. Selecting
@@ -225,7 +233,7 @@ public partial class EqualizerPageViewModel : MainPageViewModelBase
             case nameof(SelectedEqOption):
                 if (_isSyncingEqOption)
                     break;
-                await ApplyEqOptionAsync(Array.IndexOf(EqOptions, SelectedEqOption));
+                await ApplyEqOptionAsync(SelectedEqOption?.Index ?? -1);
                 break;
             case nameof(EqPreset):
                 if (_isSyncingEqOption)
@@ -284,6 +292,7 @@ public partial class EqualizerPageViewModel : MainPageViewModelBase
                     break;
                 // The vertical sliders update per drag-tick; only send the settled values
                 _bandDebounce?.Cancel();
+                _bandDebounce?.Dispose();
                 _bandDebounce = new CancellationTokenSource();
                 try
                 {
@@ -298,6 +307,11 @@ public partial class EqualizerPageViewModel : MainPageViewModelBase
             case nameof(StereoBalance):
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_HEARING_ENHANCEMENTS, (byte)StereoBalance);
                 break;
+        }
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Equalizer property-change handler failed");
         }
     }
 
@@ -339,6 +353,7 @@ public partial class EqualizerPageViewModel : MainPageViewModelBase
                 }
 
                 EqPreset = preset;
+                IsCustomEqEnabled = false;
             }
             else
             {
@@ -391,9 +406,17 @@ public partial class EqualizerPageViewModel : MainPageViewModelBase
     private const int FirstCustomOptionIndex = 6;
     private const int CustomSlotCount = 3;
 
-    [Reactive] private string[] _eqOptions = BuildEqOptions(false);
-    [Reactive] private string? _selectedEqOption;
+    [Reactive] private EqOption[] _eqOptions = BuildEqOptions(false);
+    [Reactive] private EqOption? _selectedEqOption;
     private bool _isSyncingEqOption;
+
+    // The dropdown items carry an explicit Index so selection is identified by index, not by the
+    // (possibly duplicated/empty in some locales) display string. Record value-equality makes the
+    // ComboBox's SelectedValue match the right item even if two labels were ever equal.
+    public sealed record EqOption(int Index, string Label)
+    {
+        public override string ToString() => Label;
+    }
     private int _activeCustomSlot;
     private int[][] _customSlots = CreateEmptySlots();
 

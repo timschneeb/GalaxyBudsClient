@@ -107,7 +107,12 @@ public partial class DevToolsView : UserControl
 
     protected override void OnUnloaded(RoutedEventArgs e)
     {
+        // Remove every handler added in the ctor / SelectProtocol — otherwise, if the view is
+        // unloaded while the alternative protocol is active, NewDataReceivedAlternative (and the
+        // VM PropertyChanged) keep this dead view alive on the BluetoothImpl singleton.
         BluetoothImpl.Instance.NewDataReceived -= OnNewDataReceived;
+        BluetoothImpl.Instance.NewDataReceivedAlternative -= OnNewDataReceived;
+        ViewModel.PropertyChanged -= OnPropertyChanged;
 
         HexEditor.Document = null;
         ViewModel.MsgTableDataSource.Clear();

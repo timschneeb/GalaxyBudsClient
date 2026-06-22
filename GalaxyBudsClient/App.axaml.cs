@@ -183,15 +183,19 @@ public class App : Application
         {
             _popup.UpdateSettings();
             _popup.RearmTimer();
+            return;
         }
         
         Dialogs.ShowAsSingleInstanceOnDesktop(ref _popup); 
         _popupShown = true;
     }
     
+    private bool _customEqReapplied;
+
     private void OnConnected(object? sender, EventArgs e)
     {
         _popupShown = false;
+        _customEqReapplied = false;
     }
 
     private void OnBluetoothError(object? sender, BluetoothException e)
@@ -204,6 +208,7 @@ public class App : Application
     {
         WindowIconRenderer.ResetIconToDefault();
         _popupShown = false;
+        _customEqReapplied = false;
     }
     
     private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateDecoder e)
@@ -224,8 +229,15 @@ public class App : Application
         if(BluetoothImpl.Instance.DeviceSpec.Supports(Features.DebugSku))
             _ = BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_SKU);
 
-        // Re-apply the saved custom EQ; the firmware drops the custom band table on power-cycle
-        _ = ReapplyCustomEqualizerAsync();
+        // Re-apply the saved custom EQ ONCE per connection. ExtendedStatusUpdate also arrives on
+        // routine state changes (case open/close, on-head, noise-control switches); re-pushing the
+        // EQ on every one caused an audible mid-session re-application. The firmware drops the
+        // custom table on power-cycle, so a single re-push per connect is enough.
+        if (!_customEqReapplied)
+        {
+            _customEqReapplied = true;
+            _ = ReapplyCustomEqualizerAsync();
+        }
     }
 
     // The custom EQ band table is not retained by the firmware across power cycles, so the values
@@ -254,12 +266,21 @@ public class App : Application
 
     private static void OnDispatcherUnhandledException(object? sender, DispatcherUnhandledExceptionEventArgs e)
     {
-        var trace = e.Exception.StackTrace;
-        if (trace != null && trace.Contains("AutomationPeer"))
+        // Swallow ONLY FluentAvalonia's ItemsRepeaterAutomationPeer.GetChildrenCore() NRE, raised by
+        // the macOS accessibility bridge while walking the automation tree. Match precisely (specific
+        // type + method, unwrapping inner/aggregate exceptions) so genuine bugs still crash/report.
+        for (Exception? ex = e.Exception; ex != null; ex = ex.InnerException)
         {
-            Log.Warning(e.Exception,
-                "Suppressed non-fatal automation-peer exception raised by the accessibility bridge");
-            e.Handled = true;
+            if (ex is NullReferenceException &&
+                ex.StackTrace is { } trace &&
+                trace.Contains("ItemsRepeaterAutomationPeer") &&
+                trace.Contains("GetChildrenCore"))
+            {
+                Log.Warning(e.Exception,
+                    "Suppressed non-fatal automation-peer exception raised by the accessibility bridge");
+                e.Handled = true;
+                return;
+            }
         }
     }
 
