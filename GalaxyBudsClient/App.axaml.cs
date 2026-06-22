@@ -94,6 +94,15 @@ public class App : Application
     
     public override void OnFrameworkInitializationCompleted()
     {
+        // FluentAvalonia 2.4.1's ItemsRepeaterAutomationPeer.GetChildrenCore() can throw an
+        // unguarded NullReferenceException when the macOS accessibility bridge walks the automation
+        // tree while a repeater is mid-virtualization (e.g. during a navigation/relayout triggered
+        // by changing a setting). Upstream never guarded this, and the exception otherwise
+        // propagates out of the dispatcher loop and kills the whole app. Swallow only that specific
+        // accessibility-tree failure — it is benign and affects an assistive-technology query, not
+        // the UI itself — while letting every other exception crash and report as before.
+        Dispatcher.UIThread.UnhandledException += OnDispatcherUnhandledException;
+
         if (BluetoothImpl.HasValidDevice)
         {
             Task.Run(() => BluetoothImpl.Instance.ConnectAsync());
@@ -106,10 +115,13 @@ public class App : Application
             var mainWindow = MainWindow.Instance;
             
 #if OSX
-            // On macOS with LSUIElement=true, always start as a menu bar app (no main window attached initially)
-            // The window will be shown when the user clicks the tray icon
-            desktop.MainWindow = null;
-            mainWindow.IsVisible = false;
+            // Show the main window on launch (unless started with /StartMinimized); the menu bar
+            // icon stays available either way. When we show it, restore the dock icon that
+            // Initialize() hid for the menu-bar-app case.
+            desktop.MainWindow = StartMinimized ? null : mainWindow;
+            mainWindow.IsVisible = !StartMinimized;
+            if (!StartMinimized)
+                GalaxyBudsClient.Platform.OSX.AppUtils.setHideInDock(false);
 #else
             // Stay initially minimized: don't attach a main window
             desktop.MainWindow = StartMinimized ? null : mainWindow;
@@ -211,8 +223,46 @@ public class App : Application
         _ = BluetoothImpl.Instance.SendAsync(new ManagerInfoEncoder());
         if(BluetoothImpl.Instance.DeviceSpec.Supports(Features.DebugSku))
             _ = BluetoothImpl.Instance.SendRequestAsync(MsgIds.DEBUG_SKU);
+
+        // Re-apply the saved custom EQ; the firmware drops the custom band table on power-cycle
+        _ = ReapplyCustomEqualizerAsync();
     }
-    
+
+    // The custom EQ band table is not retained by the firmware across power cycles, so the values
+    // are persisted per-device (see EqualizerPageViewModel.PersistCustomEq) and re-pushed here on
+    // every connect, mirroring what the official Galaxy Wearable app does.
+    private static async Task ReapplyCustomEqualizerAsync()
+    {
+        if (!BluetoothImpl.Instance.DeviceSpec.Supports(Features.CustomEqualizer))
+            return;
+        if (BluetoothImpl.Instance.Device.Current is not { CustomEqualizerEnabled: true } device ||
+            device.CustomEqualizerBands is not { Length: 9 } bands)
+            return;
+
+        await BluetoothImpl.Instance.SendAsync(new SetCustomEqualizerEncoder
+        {
+            BandGains =
+            [
+                (sbyte)bands[0], (sbyte)bands[1], (sbyte)bands[2],
+                (sbyte)bands[3], (sbyte)bands[4], (sbyte)bands[5],
+                (sbyte)bands[6], (sbyte)bands[7], (sbyte)bands[8]
+            ]
+        });
+        // Samsung preset index 6 = custom; the EQUALIZER message carries index + 1 (7)
+        await BluetoothImpl.Instance.SendAsync(new SetEqualizerEncoder { IsEnabled = true, Preset = 6 });
+    }
+
+    private static void OnDispatcherUnhandledException(object? sender, DispatcherUnhandledExceptionEventArgs e)
+    {
+        var trace = e.Exception.StackTrace;
+        if (trace != null && trace.Contains("AutomationPeer"))
+        {
+            Log.Warning(e.Exception,
+                "Suppressed non-fatal automation-peer exception raised by the accessibility bridge");
+            e.Handled = true;
+        }
+    }
+
     private void OnStatusUpdate(object? sender, StatusUpdateDecoder e)
     {
         if (_lastWearState == LegacyWearStates.None &&

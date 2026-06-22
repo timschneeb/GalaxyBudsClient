@@ -18,8 +18,27 @@
 
     <UserControl.Styles>
         <Style Selector="DataGridCell">
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="MinHeight" Value="24" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="MinHeight" Value="19" />
+            <Setter Property="Padding" Value="4,1" />
+        </Style>
+        <Style Selector="DataGridColumnHeader">
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="MinHeight" Value="22" />
+        </Style>
+        <!-- The Fluent AutoCompleteBox template otherwise grows the dropdown to the widest message-ID
+             string. Give the suggestions container a fixed width (the search box itself is far too
+             narrow to bind to) so it's a stable, readable size, with a compact list font and rows. -->
+        <Style Selector="AutoCompleteBox#SendMsgId /template/ Border#PART_SuggestionsContainer">
+            <Setter Property="Width" Value="280" />
+        </Style>
+        <Style Selector="AutoCompleteBox#SendMsgId /template/ ListBox#PART_SelectingItemsControl">
+            <Setter Property="FontSize" Value="11" />
+        </Style>
+        <Style Selector="AutoCompleteBox#SendMsgId /template/ ListBox#PART_SelectingItemsControl ListBoxItem">
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="Padding" Value="8,2" />
+            <Setter Property="MinHeight" Value="0" />
         </Style>
         <StyleInclude Source="avares://AvaloniaHex/Themes/Simple/AvaloniaHex.axaml"/>
     </UserControl.Styles>

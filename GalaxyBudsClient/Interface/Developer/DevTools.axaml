@@ -5,7 +5,7 @@
         xmlns:developer="clr-namespace:GalaxyBudsClient.Interface.Developer"
         mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="625"
         x:Class="GalaxyBudsClient.Interface.Developer.DevTools"
-        Height="625" Width="700"
+        Height="680" Width="940"
         ShowInTaskbar="True"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/icon.ico"

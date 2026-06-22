@@ -22,41 +22,19 @@
             </Interaction.Behaviors>
             
             <controls:SettingsGroup>
-                <controls:SettingsSwitchItem
-                    Content="{ext:Translate {x:Static i18N:Keys.EqEnable}}"
-                    Description="{ext:Translate {x:Static i18N:Keys.EqEnableDescription}}"
+                <controls:SettingsComboBoxItem
+                    Content="{ext:Translate {x:Static i18N:Keys.EqHeader}}"
+                    Description="Choose a preset, Custom for your own 9-band curve, or Off"
                     Symbol="DeviceEq"
-                    IsChecked="{Binding IsEqEnabled}" />
-
-                <controls:SettingsSliderItem
-                    Name="EqPreset"
-                    Content="{ext:Translate {x:Static i18N:Keys.EqPreset}}"
-                    Description="{Binding EqPreset, Converter={StaticResource EqPresetConverter}}"
-                    IconSource="{StaticResource IconPlaceholder}"
-                    Maximum="{Binding MaximumEqPreset}"
-                    Value="{Binding EqPreset}">
-                    <controls:SettingsSliderItem.IsEnabled>
-                        <MultiBinding Converter="{x:Static BoolConverters.And}">
-                            <Binding Path="IsEqEnabled" />
-                            <Binding Path="!IsCustomEqEnabled" />
-                        </MultiBinding>
-                    </controls:SettingsSliderItem.IsEnabled>
-                    <Interaction.Behaviors>
-                        <ext:LocalizationAwareSliderBehavior Converter="{StaticResource EqPresetConverter}" />
-                    </Interaction.Behaviors>
-                </controls:SettingsSliderItem>
+                    ItemsSource="{Binding EqOptions}"
+                    DisplayMemberBinding="{Binding}"
+                    SelectedValue="{Binding SelectedEqOption}" />
             </controls:SettingsGroup>
 
             <controls:SettingsGroup>
                 <Interaction.Behaviors>
                     <ext:RequiresFeatureBehavior Feature="CustomEqualizer" />
                 </Interaction.Behaviors>
-
-                <controls:SettingsSwitchItem
-                    Content="Custom equalizer"
-                    Description="Set your own 9-band curve instead of a preset (low to high frequency, -10 to +10)"
-                    Symbol="Options"
-                    IsChecked="{Binding IsCustomEqEnabled}" />
 
                 <Border IsEnabled="{Binding IsCustomEqEnabled}" Margin="12,8">
                     <Grid ColumnDefinitions="*,*,*,*,*,*,*,*,*">

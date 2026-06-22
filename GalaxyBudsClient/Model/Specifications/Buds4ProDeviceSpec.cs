@@ -12,7 +12,7 @@ public class Buds4ProDeviceSpec : IDeviceSpec
     {
         { Features.SeamlessConnection, null },
         { Features.StereoPan, null },
-        { Features.DoubleTapVolume, null },
+        // DoubleTapVolume ("double-tap earbud edge") confirmed unsupported on Buds4 Pro (2026-06-21)
         { Features.FirmwareUpdates, null },
         { Features.DetectConversations, null },
         { Features.NoiseControl, null },

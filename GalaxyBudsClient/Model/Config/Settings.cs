@@ -38,6 +38,14 @@ public static class Settings
         Data.ExperimentsFinishedIds.CollectionChanged += (_, _) => Save();
         Data.CustomActionLeft.PropertyChanged += OnTouchActionPropertyChanged;
         Data.CustomActionRight.PropertyChanged += OnTouchActionPropertyChanged;
+
+        // CollectionChanged only subscribes devices/hotkeys added AFTER load. Items deserialized
+        // from disk are already in the collection, so without this they never trigger a save when
+        // their properties change — which is why per-device settings (e.g. custom EQ) never persisted.
+        foreach (var device in Data.Devices)
+            device.PropertyChanged += OnDevicePropertyChanged;
+        foreach (var hotkey in Data.Hotkeys)
+            hotkey.PropertyChanged += OnHotkeyPropertyChanged;
     }
     
     public static Themes DefaultTheme => PlatformUtils.SupportsMicaTheme ? Themes.DarkMica : 

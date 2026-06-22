@@ -40,7 +40,9 @@ public partial class DevToolsView : UserControl
         
         DataContext = new DevToolsViewModel();
         SendMsgId.ItemsSource = Enum.GetValues<MsgIds>().OrderBy(x => x.ToString()).ToList();
-        
+        // Default the message-type selector to Request so it doesn't require a pick every time
+        SendMsgType.SelectedItem = MsgTypes.Request;
+
         ViewModel.PropertyChanged += OnPropertyChanged;
         BluetoothImpl.Instance.NewDataReceived += OnNewDataReceived;
     }
