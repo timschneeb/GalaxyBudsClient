@@ -10,6 +10,7 @@
     NSString *_macAddress;
     Bt_OnChannelData _onChannelData;
     Bt_OnChannelClosed _onChannelClosed;
+    BOOL _channelClosedSignalled;
 }
 
 - (id)init {
@@ -74,7 +75,7 @@
     IOBluetoothSDPServiceRecord *serviceRecord = [device getServiceRecordForUUID:parsedUuid];
 
     if (serviceRecord == nil) {
-        NSLog(@"Error - service in selected device. ***This should never happen.***\n", NULL);
+        NSLog(@"Error - service in selected device. ***This should never happen.***");
         return BT_CONN_ESDP;
     }
 
@@ -95,8 +96,9 @@
     status = [device openRFCOMMChannelSync:&tempRFCOMMChannel withChannelID:rfcommChannelID delegate:self];
     @synchronized (self) {
         mRFCOMMChannel = tempRFCOMMChannel;
+        _channelClosedSignalled = NO;
     }
-    
+
     if (mRFCOMMChannel == nil) {
         NSLog(@"Error: %s - unable to open RFCOMM channel.\n", mach_error_string(status) );
         [self disconnect];
@@ -158,6 +160,22 @@
     return TRUE;
 }
 
+// A remote close (rfcommChannelClosed:) can race an in-flight send hitting the closed
+// channel, and both paths would otherwise fire _onChannelClosed -> a duplicate managed
+// Disconnected event. Signal at most once per connection; reset on the next connect.
+- (void)signalChannelClosedOnce {
+    @synchronized (self) {
+        if (_channelClosedSignalled) {
+            return;
+        }
+        _channelClosedSignalled = YES;
+    }
+
+    if (_onChannelClosed) {
+        _onChannelClosed();
+    }
+}
+
 - (BOOL)isConnected {
     return mRFCOMMChannel != nil;
 }
@@ -203,7 +221,7 @@
     if (channel != nil) {
         if (![channel isOpen]) {
             [self disconnect];
-            if (_onChannelClosed) _onChannelClosed();
+            [self signalChannelClosedOnce];
             return BT_SEND_ENULL;
         }
         UInt32 numBytesRemaining;
@@ -278,9 +296,7 @@
 
 - (void)rfcommChannelClosed:(IOBluetoothRFCOMMChannel *)rfcommChannel {
     [self disconnect];
-    if (_onChannelClosed) {
-        _onChannelClosed();
-    }
+    [self signalChannelClosedOnce];
 }
 
 @end
