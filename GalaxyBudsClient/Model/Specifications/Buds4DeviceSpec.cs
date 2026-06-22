@@ -12,6 +12,8 @@ public class Buds4DeviceSpec : IDeviceSpec
     {
         { Features.SeamlessConnection, null },
         { Features.StereoPan, null},
+        // 9-band custom EQ: Buds3-generation feature (research-confirmed via Galaxy Wearable)
+        { Features.CustomEqualizer, null },
         { Features.FirmwareUpdates, null },
         { Features.NoiseControl, null },
         { Features.AmbientSound, null },

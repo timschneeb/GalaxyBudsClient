@@ -38,7 +38,17 @@ one feature flag that the Buds4 Pro does not actually support (see below).
   its custom table on power-cycle). The Buds4 Pro custom-table read-back is unreliable
   (returns flat), so it is intentionally ignored to avoid zeroing the sliders.
 - The dropdown two-way syncs with tray hotkeys and device state via a re-entrancy guard.
-- "Custom" entries only appear on devices whose firmware reports custom-EQ support.
+- "Custom" entries only appear on devices whose spec declares `Features.CustomEqualizer`.
+
+**Custom-EQ model coverage (research-based).** Samsung introduced the 9-band custom EQ
+with the **Buds3 generation** (mid-2024); every pre-Buds3 model is presets-only. Upstream
+GalaxyBudsClient never implemented custom EQ (the `CUSTOM_EQUALIZE_*` message IDs were
+unused placeholders), so the per-model decision is driven by documented Samsung capability.
+`Features.CustomEqualizer` is therefore enabled on: **Buds3, Buds3 Pro, Buds3 FE, Buds4,
+Buds4 Pro**. It is left **off** for all pre-Buds3 models (Buds, Buds+, Buds Live, Buds Pro,
+Buds2, Buds2 Pro, Buds FE) and Buds Core, which expose only the 6 presets. Caveat: only the
+**Buds4 Pro** is hardware-verified; the other four share the same Galaxy Wearable 9-band EQ
+and protocol generation, so support is inferred from documentation, not bench-tested.
 
 ### 3. Settings persistence fix (root cause of per-device settings not saving)
 - `Settings` only subscribed devices/hotkeys **added during a session** to its
