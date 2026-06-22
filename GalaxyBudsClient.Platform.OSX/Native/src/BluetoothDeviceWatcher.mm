@@ -12,15 +12,30 @@
 @implementation BluetoothDeviceWatcher {
     BtDev_OnConnected _onConnected;
     BtDev_OnDisconnected _onDisconnected;
+    IOBluetoothUserNotification *mConnectNotification;
     IOBluetoothUserNotification *mDisconnectNotification;
 }
 - (id)init {
     if (self = [super init]) {
-        [IOBluetoothDevice registerForConnectNotifications:self
+        mConnectNotification = [IOBluetoothDevice registerForConnectNotifications:self
                                                   selector:@selector(onConnected:fromDevice:)];
     }
 
     return self;
+}
+
+// IOBluetooth user-notifications retain their target (self), so they must be
+// explicitly unregistered before the watcher can be released — relying on dealloc
+// would deadlock, since the notification keeps self alive. Called from bt_free.
+- (void)teardown {
+    if (mConnectNotification != nil) {
+        [mConnectNotification unregister];
+        mConnectNotification = nil;
+    }
+    if (mDisconnectNotification != nil) {
+        [mDisconnectNotification unregister];
+        mDisconnectNotification = nil;
+    }
 }
 
 - (BOOL)registerForDisconnectNotification:(NSString *)mac {

@@ -203,7 +203,7 @@
     if (channel != nil) {
         if (![channel isOpen]) {
             [self disconnect];
-            _onChannelClosed();
+            if (_onChannelClosed) _onChannelClosed();
             return BT_SEND_ENULL;
         }
         UInt32 numBytesRemaining;
