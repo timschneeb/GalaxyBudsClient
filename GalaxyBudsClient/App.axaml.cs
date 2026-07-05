@@ -109,6 +109,12 @@ public class App : Application
             _ = TrayManager.Instance.RebuildAsync();
         }
         
+        // Subscribe BEFORE MainWindow (and its page viewmodels) is constructed: handlers fire in
+        // subscription order, and EqualizerPageViewModel's ESU handler persists CustomEqualizerEnabled.
+        // Our one-shot ReapplyCustomEqualizerAsync must read that flag before the VM can overwrite it,
+        // or a post-power-cycle ESU reporting a non-custom mode would silently kill the re-push.
+        SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Initialize MainWindow singleton
@@ -143,8 +149,9 @@ public class App : Application
         BluetoothImpl.Instance.Connected += OnConnected;
         SppMessageReceiver.Instance.StatusUpdate += OnStatusUpdate;
         SppMessageReceiver.Instance.OtherOption += HandleOtherTouchOption;
-        SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
-        
+        // ExtendedStatusUpdate subscribed earlier (before MainWindow) — see comment there
+        SppMessageReceiver.Instance.NoiseControlUpdateResponse += OnNoiseControlUpdate;
+
         DeviceMessageCache.Init();
         
         if (Loc.IsTranslatorModeEnabled)
@@ -238,6 +245,18 @@ public class App : Application
             _customEqReapplied = true;
             _ = ReapplyCustomEqualizerAsync();
         }
+    }
+
+    // The firmware drops the custom EQ band table on every noise-control switch (ANC/Ambient/Off),
+    // not just on power-cycle, so re-push it whenever the buds report a mode change. Listening to the
+    // dedicated NoiseControlUpdate signal avoids the case-open/on-head/battery churn that re-pushing
+    // on every ExtendedStatusUpdate caused.
+    private void OnNoiseControlUpdate(object? sender, NoiseControlModes e)
+    {
+        // Table-drop on NC switch only observed on Buds4 Pro; don't override phone-side
+        // EQ choices on other CustomEqualizer models where the table survives the switch.
+        if (BluetoothImpl.Instance.CurrentModel == Models.Buds4Pro)
+            _ = ReapplyCustomEqualizerAsync();
     }
 
     // The custom EQ band table is not retained by the firmware across power cycles, so the values

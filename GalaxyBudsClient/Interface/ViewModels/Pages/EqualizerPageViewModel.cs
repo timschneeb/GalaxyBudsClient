@@ -14,6 +14,7 @@ using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
+using ReactiveUI;
 
 using Serilog;
 
@@ -115,14 +116,16 @@ public partial class EqualizerPageViewModel : MainPageViewModelBase
         }
         else
         {
+            // Persist BEFORE awaiting the send: a NoiseControlUpdate landing in the await
+            // window would otherwise re-push the still-flagged custom EQ over this preset.
+            // DON'T overwrite the saved slot curves — a non-custom (or transient startup)
+            // selection must never wipe stored custom EQs.
+            PersistCustomDisabled();
             await BluetoothImpl.Instance.SendAsync(new SetEqualizerEncoder
             {
                 IsEnabled = option != OffOptionIndex,
                 Preset = EqPreset
             });
-            // Record that custom is no longer active, but DON'T overwrite the saved slot curves —
-            // a non-custom (or transient startup) selection must never wipe stored custom EQs.
-            PersistCustomDisabled();
         }
 
         EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
@@ -238,7 +241,11 @@ public partial class EqualizerPageViewModel : MainPageViewModelBase
             case nameof(EqPreset):
                 if (_isSyncingEqOption)
                     break;
-                IsCustomEqEnabled = false;
+                // Guard the flip: an unguarded set re-enters this handler and double-sends
+                _isSyncingEqOption = true;
+                try { IsCustomEqEnabled = false; }
+                finally { _isSyncingEqOption = false; }
+                PersistCustomDisabled();
                 await BluetoothImpl.Instance.SendAsync(new SetEqualizerEncoder
                 {
                     IsEnabled = IsEqEnabled,
@@ -251,7 +258,13 @@ public partial class EqualizerPageViewModel : MainPageViewModelBase
                 if (_isSyncingEqOption)
                     break;
                 if (!IsEqEnabled)
-                    IsCustomEqEnabled = false;
+                {
+                    // Guarded flip: unguarded set re-enters this handler and double-sends
+                    _isSyncingEqOption = true;
+                    try { IsCustomEqEnabled = false; }
+                    finally { _isSyncingEqOption = false; }
+                    PersistCustomDisabled();
+                }
                 // When custom EQ just switched the EQ on, its own handler sends the messages
                 if (!(IsEqEnabled && IsCustomEqEnabled))
                 {
@@ -369,6 +382,17 @@ public partial class EqualizerPageViewModel : MainPageViewModelBase
 
             StereoBalance = e.HearingEnhancements;
         }
+
+        // SuppressChangeNotifications drops (not defers) PropertyChanged, so the band-slider
+        // enable state would go stale; re-raise under the sync guard so nothing re-sends.
+        _isSyncingEqOption = true;
+        try { this.RaisePropertyChanged(nameof(IsCustomEqEnabled)); }
+        finally { _isSyncingEqOption = false; }
+
+        // Phone-side preset changes arrive here without going through ApplyEqOptionAsync;
+        // keep the persisted re-push flag in sync so we don't override the phone's choice.
+        if (BluetoothImpl.Instance.Device.Current is { } dev)
+            dev.CustomEqualizerEnabled = IsCustomEqEnabled;
 
         // Load this device's saved custom slots so the dropdown can map to the active one
         LoadCustomSlotsFromDevice();

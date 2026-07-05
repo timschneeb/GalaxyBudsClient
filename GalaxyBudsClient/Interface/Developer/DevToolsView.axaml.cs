@@ -139,7 +139,13 @@ public partial class DevToolsView : UserControl
 
     private void SendMsg_Click(object? sender, RoutedEventArgs e)
     {
-        if (SendMsgId.SelectedItem == null || SendMsgType.SelectedItem == null)
+        // AutoCompleteBox only sets SelectedItem when a dropdown suggestion is committed;
+        // typed or edited text must be parsed from Text to avoid null/stale SelectedItem.
+        MsgIds? msgId = Enum.TryParse<MsgIds>(SendMsgId.Text?.Trim() ?? "", ignoreCase: true, out var parsedMsgId)
+            ? parsedMsgId
+            : SendMsgId.SelectedItem as MsgIds?;
+
+        if (msgId == null || SendMsgType.SelectedItem == null)
         {
             _ = new MessageBox
             {
@@ -166,7 +172,7 @@ public partial class DevToolsView : UserControl
 
         if (ViewModel.UseAlternativeProtocol)
         {
-            var msg = new SppAlternativeMessage((MsgIds?)SendMsgId.SelectedItem ?? MsgIds.UNKNOWN_0,
+            var msg = new SppAlternativeMessage(msgId.Value,
                 payload,
                 (MsgTypes?)SendMsgType.SelectedItem ?? MsgTypes.Request);
             _ = BluetoothImpl.Instance.SendAltAsync(msg);
@@ -175,7 +181,7 @@ public partial class DevToolsView : UserControl
         {
             var msg = new SppMessage
             {
-                Id = (MsgIds?)SendMsgId.SelectedItem ?? MsgIds.UNKNOWN_0,
+                Id = msgId.Value,
                 Payload = payload,
                 Type = (MsgTypes?)SendMsgType.SelectedItem ?? MsgTypes.Request
             };

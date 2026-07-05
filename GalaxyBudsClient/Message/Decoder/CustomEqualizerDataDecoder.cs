@@ -21,6 +21,8 @@ internal class CustomEqualizerDataDecoder : BaseMessageDecoder
         CustomBands = new sbyte[BandCount];
 
         var offset = 2 + (PresetCount - 1) * BandCount;
+        if (PresetCount < 1 || offset < 2 || offset + BandCount > msg.Payload.Length)
+            return;
         for (var i = 0; i < BandCount && offset + i < msg.Payload.Length; i++)
         {
             CustomBands[i] = (sbyte)msg.Payload[offset + i];

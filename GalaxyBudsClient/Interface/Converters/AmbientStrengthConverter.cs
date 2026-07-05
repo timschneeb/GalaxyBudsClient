@@ -7,8 +7,8 @@ namespace GalaxyBudsClient.Interface.Converters;
 
 public class AmbientStrengthConverter : IntToStringConverter
 {
-    private bool _legacy;
-        
+    private Models _model;
+
     public AmbientStrengthConverter()
     {
         SelectScale();
@@ -17,9 +17,9 @@ public class AmbientStrengthConverter : IntToStringConverter
 
     private void SelectScale()
     {
-        _legacy = BluetoothImpl.Instance.CurrentModel == Models.Buds;
+        _model = BluetoothImpl.Instance.CurrentModel;
     }
-    
+
     private static Dictionary<int, string> LegacyScale => new()
     {
         { 0, Strings.AsScaleVeryLow },
@@ -31,6 +31,15 @@ public class AmbientStrengthConverter : IntToStringConverter
 
     private static Dictionary<int, string> Scale => new()
     {
+        { 0, Strings.AsScaleLow },
+        { 1, Strings.AsScaleModerate },
+        { 2, Strings.AsScaleHigh },
+        { 3, Strings.AsScaleExtraloud }
+    };
+
+    // ponytail: Buds4 Pro's 5-step scale has no dedicated i18n keys yet; add Strings entries if upstreamed
+    private static Dictionary<int, string> ExtendedScale => new()
+    {
         { 0, "Level 1" },
         { 1, "Level 2" },
         { 2, "Level 3" },
@@ -38,5 +47,10 @@ public class AmbientStrengthConverter : IntToStringConverter
         { 4, "Level 5" }
     };
 
-    protected override Dictionary<int, string> Mapping => _legacy ? LegacyScale : Scale;
+    protected override Dictionary<int, string> Mapping => _model switch
+    {
+        Models.Buds => LegacyScale,
+        Models.Buds4Pro => ExtendedScale,
+        _ => Scale
+    };
 }

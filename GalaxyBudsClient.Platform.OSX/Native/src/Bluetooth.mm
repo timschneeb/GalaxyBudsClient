@@ -220,8 +220,17 @@
 
     if (channel != nil) {
         if (![channel isOpen]) {
-            [self disconnect];
-            [self signalChannelClosedOnce];
+            // Only tear down if this snapshot is still the current channel; a concurrent
+            // disconnect/reconnect may have already replaced it, and disconnecting here
+            // would kill the fresh connection or re-report an intentional teardown.
+            BOOL isCurrent;
+            @synchronized (self) {
+                isCurrent = (channel == mRFCOMMChannel);
+            }
+            if (isCurrent) {
+                [self disconnect];
+                [self signalChannelClosedOnce];
+            }
             return BT_SEND_ENULL;
         }
         UInt32 numBytesRemaining;
