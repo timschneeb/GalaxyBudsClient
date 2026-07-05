@@ -39,9 +39,9 @@ public static class Settings
         Data.CustomActionLeft.PropertyChanged += OnTouchActionPropertyChanged;
         Data.CustomActionRight.PropertyChanged += OnTouchActionPropertyChanged;
 
-        // CollectionChanged only subscribes devices/hotkeys added AFTER load. Items deserialized
-        // from disk are already in the collection, so without this they never trigger a save when
-        // their properties change — which is why per-device settings (e.g. custom EQ) never persisted.
+        // CollectionChanged only fires for items added/removed after load, so devices and hotkeys
+        // deserialized from disk are never subscribed to their property-change handlers. Without
+        // this, changing a property on an already-saved device or hotkey does not trigger a Save().
         foreach (var device in Data.Devices)
             device.PropertyChanged += OnDevicePropertyChanged;
         foreach (var hotkey in Data.Hotkeys)
