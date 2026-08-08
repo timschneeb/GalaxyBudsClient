@@ -462,6 +462,15 @@ Measure level: Select a vertical span to measure the battery level difference be
     <sys:String x:Key="settings_crowd_crashreport">Allow app crash reports</sys:String>
     <sys:String x:Key="settings_crowd_crashreport_description">Send application crash reports automatically in case of crashes or fatal errors using Sentry. This helps me to respond more quickly to problematic and disruptive application bugs.</sys:String>
 
+    <!--Settings >>> Multipoint-->
+    <sys:String x:Key="settings_multipoint_header">Multipoint</sys:String>
+    <sys:String x:Key="settings_multipoint_auto">Unlock multipoint without a Samsung account</sys:String>
+    <sys:String x:Key="settings_multipoint_auto_description">Your earbuds normally drop your phone as soon as a non-Samsung device connects, unless the Galaxy Wearable app is signed in. Enabling this writes the missing version marker to your earbuds every time they connect, which lets both devices stay connected. The earbuds keep the marker only until they power down, so putting them back in the case clears it.</sys:String>
+    <sys:String x:Key="settings_multipoint_apply">Apply now</sys:String>
+    <sys:String x:Key="settings_multipoint_apply_description">Write the marker again. Your earbuds will briefly disconnect and reconnect.</sys:String>
+    <sys:String x:Key="settings_multipoint_applied">Multipoint unlocked. Connect your phone to test it.</sys:String>
+    <sys:String x:Key="settings_multipoint_failed">Could not unlock multipoint. Make sure your earbuds are connected and try again.</sys:String>
+
     <!--Factory reset-->
     <sys:String x:Key="factory_header">Factory reset</sys:String>
     <sys:String x:Key="factory_confirmation">Are you sure you want to reset your earbuds to factory settings?

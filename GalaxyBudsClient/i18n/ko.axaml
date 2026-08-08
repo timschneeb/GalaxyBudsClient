@@ -382,6 +382,15 @@
     <sys:String x:Key="settings_crowd_crashreport">앱 충돌 보고서 전송 허용</sys:String>
     <sys:String x:Key="settings_crowd_crashreport_description">Sentry 서비스를 통해 앱 충돌 또는 오류 발생시 보고서를 개발자에게 자동으로 보냅니다. 이는 문제가 있거나 앱 사용에 방해가 되는 버그를 개발자가 더 빨리 수정할 수 있게 도와줍니다.</sys:String>
 
+    <!--Settings >>> Multipoint-->
+    <sys:String x:Key="settings_multipoint_header">멀티포인트</sys:String>
+    <sys:String x:Key="settings_multipoint_auto">삼성 계정 없이 멀티포인트 사용</sys:String>
+    <sys:String x:Key="settings_multipoint_auto_description">갤럭시 웨어러블 앱에 로그인하지 않으면, 삼성 기기가 아닌 장치가 연결될 때 버즈가 휴대폰과의 연결을 끊어버립니다. 이 옵션을 켜면 연결할 때마다 버즈에 누락된 버전 표시를 기록해서 두 기기가 동시에 연결된 상태를 유지할 수 있습니다. 이 표시는 버즈의 전원이 꺼질 때까지만 유지되므로, 케이스에 다시 넣으면 지워집니다.</sys:String>
+    <sys:String x:Key="settings_multipoint_apply">지금 적용</sys:String>
+    <sys:String x:Key="settings_multipoint_apply_description">버전 표시를 다시 기록합니다. 버즈가 잠시 연결 해제되었다가 다시 연결됩니다.</sys:String>
+    <sys:String x:Key="settings_multipoint_applied">멀티포인트를 활성화했어요. 휴대폰을 연결해서 확인해 보세요.</sys:String>
+    <sys:String x:Key="settings_multipoint_failed">멀티포인트를 활성화하지 못했어요. 버즈가 연결되어 있는지 확인한 뒤 다시 시도해 주세요.</sys:String>
+
     <!--Factory reset-->
     <sys:String x:Key="factory_header">버즈 초기화</sys:String>
     <sys:String x:Key="factory_confirm">버즈 초기화하기</sys:String>

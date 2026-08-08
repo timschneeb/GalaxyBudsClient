@@ -94,6 +94,9 @@ public class App : Application
     
     public override void OnFrameworkInitializationCompleted()
     {
+        /* Must subscribe before the initial connection attempt to catch its Connected event */
+        MultipointPatcher.Init();
+
         if (BluetoothImpl.HasValidDevice)
         {
             Task.Run(() => BluetoothImpl.Instance.ConnectAsync());

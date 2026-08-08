@@ -204,6 +204,27 @@
             </ui:SettingsExpander>
 
 
+            <ui:SettingsExpander Header="{ext:Translate {x:Static i18N:Keys.SettingsMultipointHeader}}"
+                                 IsVisible="{Binding IsMultipointSupported}">
+                <ui:SettingsExpander.IconSource>
+                    <ic:SymbolIconSource Symbol="LinkMultiple" />
+                </ui:SettingsExpander.IconSource>
+
+                <controls:SettingsSwitchItem
+                    Content="{ext:Translate {x:Static i18N:Keys.SettingsMultipointAuto}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.SettingsMultipointAutoDescription}}"
+                    Symbol="BluetoothConnected"
+                    IsChecked="{Binding AutoEnableMultipoint, Source={x:Static config:Settings.Data}}" />
+
+                <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.SettingsMultipointApply}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.SettingsMultipointApplyDescription}}"
+                                             Symbol="Flash"
+                                             IsClickEnabled="True"
+                                             IsEnabled="{Binding CanApplyMultipoint}"
+                                             Click="OnApplyMultipointClicked" />
+            </ui:SettingsExpander>
+
+
             <ui:SettingsExpander Header="{ext:Translate {x:Static i18N:Keys.SettingsCrowdsourcing}}">
                 <ui:SettingsExpander.IconSource>
                     <ic:SymbolIconSource Symbol="Lightbulb" />
