@@ -10,32 +10,43 @@
     <sys:String x:Key="okay">Ok</sys:String>
     <sys:String x:Key="left">左側</sys:String>
     <sys:String x:Key="right">右側</sys:String>
+    <sys:String x:Key="both">雙耳</sys:String>
     <sys:String x:Key="case">充電盒</sys:String>
     <sys:String x:Key="error">錯誤</sys:String>
     <sys:String x:Key="cancel">取消</sys:String>
     <sys:String x:Key="apply">套用</sys:String>
-    <sys:String x:Key="select">選擇</sys:String>
+    <sys:String x:Key="select">選取</sys:String>
     <sys:String x:Key="notset">未設定</sys:String>
     <sys:String x:Key="unknown">未知</sys:String>
     <sys:String x:Key="back">返回</sys:String>
-
+    <sys:String x:Key="next">下一個</sys:String>
+    <sys:String x:Key="prev">上一個</sys:String>
+    <sys:String x:Key="off">關閉</sys:String>
+    <sys:String x:Key="on">開啟</sys:String>
+    <sys:String x:Key="hint">提醒</sys:String>
+    <sys:String x:Key="help">說明</sys:String>
+    <sys:String x:Key="important">重要</sys:String>
+    <sys:String x:Key="home">首頁</sys:String>
+    <sys:String x:Key="read_failed">讀取檔案失敗，沒有權限。</sys:String>
+    <sys:String x:Key="please_wait">請稍候…</sys:String>
+    <sys:String x:Key="value_left_right_inline">左：{0}，右：{1}</sys:String>
+    <sys:String x:Key="value_left_right_multiline">左：{0}
+右：{1}</sys:String>
+    <sys:String x:Key="other_x">其他（{0}）</sys:String>    
+    <sys:String x:Key="no_data_stored">無任何資料</sys:String>
+    <sys:String x:Key="not_available">無法使用</sys:String>
+    <sys:String x:Key="last_updated_at_n">上次更新：{0}</sys:String>
+    <sys:String x:Key="file_not_found">找不到檔案</sys:String>
     <sys:String x:Key="nobluetoothdev">未開啟藍牙服務，請確認已開啟藍牙後並重試。</sys:String>
-
     <sys:String x:Key="anc">主動式降噪</sys:String>
-
-    <!--SPP Message Parser-->
-    <sys:String x:Key="sppmsg_too_small">資料包太小</sys:String>
-    <sys:String x:Key="sppmsg_invalid_som">SOM 無效</sys:String>
-    <!--Context: SOM = Start of message-->
-    <sys:String x:Key="sppmsg_invalid_eom">EOM 無效</sys:String>
-    <!--Context: EOM = End of message-->
-    <sys:String x:Key="sppmsg_size_mismatch">Payload 大小不符合</sys:String>
-    <sys:String x:Key="sppmsg_crc_fail">驗證碼錯誤</sys:String>
-    <sys:String x:Key="sppmsg_tl">資料包太小</sys:String>
+    <sys:String x:Key="feature_unsupported_platform">此功能不支援目前的平台。</sys:String>
+    <sys:String x:Key="adaptive">自動調整</sys:String>
 
     <!--Dark Mode States-->
     <sys:String x:Key="darkmode_disabled">關閉</sys:String>
     <sys:String x:Key="darkmode_enabled">開啟</sys:String>
+    <sys:String x:Key="darkmode_blur_enabled">開啟，使用模糊效果</sys:String>
+    <sys:String x:Key="darkmode_mica_enabled">開啟，使用 Mica 效果</sys:String>
     <sys:String x:Key="darkmode_system">跟隨系統設定</sys:String>
 
     <!--Connection popup-->
@@ -49,38 +60,32 @@
     <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
 
     <!--Placement  (Buds+)-->
-    <sys:String x:Key="placement_disconnected">中斷連接</sys:String>
-    <sys:String x:Key="placement_wearing">配戴中</sys:String>
-    <sys:String x:Key="placement_not_wearing">閒置</sys:String>
-    <sys:String x:Key="placement_in_case">充電盒</sys:String>
+    <sys:String x:Key="placement_disconnected">已斷開</sys:String>
+    <sys:String x:Key="placement_wearing">佩戴中</sys:String>
+    <sys:String x:Key="placement_not_wearing">未佩戴</sys:String>
+    <sys:String x:Key="placement_in_case">在充電盒中</sys:String>
+    <sys:String x:Key="placement_charging">充電中</sys:String>
 
     <!--Touch options-->
-    <sys:String x:Key="touchoption_voice">語音指令</sys:String>
-    <sys:String x:Key="touchoption_quickambientsound">環境音效</sys:String>
+    <sys:String x:Key="touchoption_voice">語音助理</sys:String>
+    <sys:String x:Key="touchoption_quickambientsound">快速開關環境音</sys:String>
     <sys:String x:Key="touchoption_volume">調整音量</sys:String>
     <sys:String x:Key="touchoption_volume_up">增加音量</sys:String>
     <sys:String x:Key="touchoption_volume_down">降低音量</sys:String>
     <sys:String x:Key="touchoption_ambientsound">環境音效</sys:String>
-    <sys:String x:Key="touchoption_switch_noisecontrols">噪音控制</sys:String>
+    <sys:String x:Key="touchoption_switch_noisecontrols">切換降噪模式</sys:String>
     <sys:String x:Key="touchoption_spotify">Spotify（僅限 Android）</sys:String>
-    <sys:String x:Key="touchoption_custom">更多……</sys:String>
+    <sys:String x:Key="touchoption_custom">自訂</sys:String>
     <sys:String x:Key="touchoption_custom_null">未設定</sys:String>
     <sys:String x:Key="touchoption_custom_unknown">未知</sys:String>
     <sys:String x:Key="touchoption_custom_prefix">自訂動作：</sys:String>
-    <sys:String x:Key="touchoption_custom_trigger_hotkey">按快捷鍵……</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_event">觸發耳機動作…</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_hotkey">按下快速鍵…</sys:String>
     <sys:String x:Key="touchoption_custom_external_app">運行外部程式……</sys:String>
-
-    <!--Options menu-->
-    <sys:String x:Key="optionsmenu_title">應用設定</sys:String>
-    <sys:String x:Key="optionsmenu_settings">設定</sys:String>
-    <sys:String x:Key="optionsmenu_refresh">重新整理儀表板</sys:String>
-    <sys:String x:Key="optionsmenu_deregister">取消配對</sys:String>
-    <sys:String x:Key="optionsmenu_update">檢查更新</sys:String>
-    <sys:String x:Key="optionsmenu_credits">關於</sys:String>
 
     <!--Tray context menu-->
     <sys:String x:Key="tray_unlock_touchpad">允許觸碰動作</sys:String>
-    <sys:String x:Key="tray_lock_touchpad">封鎖觸碰動作</sys:String>
+    <sys:String x:Key="tray_lock_touchpad">禁止觸碰動作</sys:String>
     <sys:String x:Key="tray_enable_ambient_sound">開啟環境音效</sys:String>
     <sys:String x:Key="tray_disable_ambient_sound">關閉環境音效</sys:String>
     <sys:String x:Key="tray_enable_eq">開啟等化器</sys:String>
@@ -103,7 +108,6 @@
     <sys:String x:Key="hotrec_note">注意：由於使用者介面特權隔離（UIPI），只有相同或更低級別的應用程式才能正確接收快捷鍵指令。</sys:String>
 
     <!--Hotkey Action Builder Dialog-->
-    <sys:String x:Key="hotkey_edit_title">快捷鍵編輯器</sys:String>
     <sys:String x:Key="hotkey_edit_invalid">無效的快捷鍵選擇</sys:String>
     <sys:String x:Key="hotkey_edit_invalid_desc">請選擇一個控制項鍵和任一按鍵</sys:String>
     <sys:String x:Key="hotkey_edit_invalid_mod">缺少控制項鍵</sys:String>
@@ -117,10 +121,12 @@
     
     <!--Hotkey page-->
     <sys:String x:Key="hotkey_header">鍵盤快捷鍵</sys:String>
+    <sys:String x:Key="hotkey_add_short">新增</sys:String>
     <sys:String x:Key="hotkey_add">分配新的快捷鍵</sys:String>
     <sys:String x:Key="hotkey_empty">未分配快捷鍵</sys:String>
     <sys:String x:Key="hotkey_empty_desc">通過點擊上面的按鈕建立新的鍵盤快捷鍵</sys:String>
     <sys:String x:Key="hotkey_edit">編輯</sys:String>
+    <sys:String x:Key="hotkey_edit_long">編輯現有快捷鍵</sys:String>
     <sys:String x:Key="hotkey_delete">刪除</sys:String>
     <sys:String x:Key="hotkey_add_error">註冊/更新快捷鍵失敗</sys:String>
     <sys:String x:Key="hotkey_add_error_context">受影響的快捷鍵：</sys:String>
@@ -136,6 +142,7 @@
     <sys:String x:Key="event_eq_switch">切換等化器預設</sys:String>
     <sys:String x:Key="event_anc_toggle">切換降噪</sys:String>
     <sys:String x:Key="event_anc_switch_sensitivity">切換降噪模式</sys:String>
+    <sys:String x:Key="event_nc_switch_one">單耳切換降噪控制</sys:String>
     <sys:String x:Key="event_touch_lock_toggle">切換觸摸板鎖定</sys:String>
     <sys:String x:Key="event_double_edge_touch_toggle">切換測緣觸控功能</sys:String>
     <sys:String x:Key="event_conversation_toggle">切換對話檢測</sys:String>
@@ -152,18 +159,19 @@
     
     <!--Welcome page-->
     <sys:String x:Key="welcome_textblock_header">歡迎使用!</sys:String>
-    <sys:String x:Key="welcome_textblock_p1">Hi！這個 Galaxy Buds Manager 是一個非官方的開源程式，與三星沒有任何關聯，請記住這一點。
-
-本應用程式雖然擁有比官方的 Samsung wearable App 還要多的功能；但是並非所有功能都支援您的型號與裝置。</sys:String>
-    <sys:String x:Key="welcome_textblock_p2">如果您對於協助開發本應用程式有興趣，可以造訪我的 GitHub 專案，其中包含一個小型逆向工程筆記。如果您碰巧遇到任何問題，也可以在 GitHub 提交問題請求或使用 Telegram 的方式 @thepbone 傳送訊息給我。</sys:String>
-    <sys:String x:Key="welcome_textblock_p3">此應用程式支援所有的 Galaxy Buds 型號。</sys:String>
-    <sys:String x:Key="welcome_darkmode">深色模式</sys:String>
-    <sys:String x:Key="welcome_darkmode_content">您的眼睛疲勞了嗎？可以試試我們的深色模式！
-（部分裝置需要重新加載頁面）</sys:String>
+    <sys:String x:Key="welcome_register">設定你的耳機</sys:String>
+    <sys:String x:Key="welcome_register_desc">選擇並註冊你的 Galaxy Buds 耳機</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">此 Galaxy Buds 管理程式為非官方版本，與三星沒有任何關聯。
+本程式旨在提供比官方 Samsung Wearable 應用程式更多的功能。部分功能如「遊戲模式」僅能在三星手機上運作，無法在 PC 上啟用。</sys:String>
+    <sys:String x:Key="welcome_android_hint_title">Android 使用者的重要資訊</sys:String>
+    <sys:String x:Key="welcome_android_hint">本應用程式最初是為電腦設計的。需要讓本應用程式在背景執行的功能，例如自訂觸控動作與電池資訊，目前在此版本中無法使用。
+如果官方 Samsung Wearable 應用程式與本應用程式同時執行，可能會發生連線問題。使用本應用程式前，請務必先正確關閉官方應用程式。</sys:String>
 
     <!--Main page-->
+    <sys:String x:Key="mainpage_header">首頁</sys:String>
     <sys:String x:Key="mainpage_corrupt_data">收到損壞的資料。正在重新連接……</sys:String>
     <sys:String x:Key="mainpage_find_my_earbuds">尋找我的耳機</sys:String>
+    <sys:String x:Key="mainpage_fit_test">耳機貼合度測試</sys:String>
     <sys:String x:Key="mainpage_touchpad">觸碰操控</sys:String>
     <sys:String x:Key="mainpage_ambient_sound">環境音效</sys:String>
     <sys:String x:Key="mainpage_noise">噪音控制</sys:String>
@@ -171,58 +179,28 @@
     <sys:String x:Key="mainpage_advanced">耳機設定</sys:String>
     <sys:String x:Key="mainpage_system">關於耳機</sys:String>
 
-    <!--Update page-->
-    <sys:String x:Key="updater_header">Manager 有可供使用的更新</sys:String>
-    <sys:String x:Key="updater_message_p1">下載是全自動的，下載完成後會啟動更新嚮導。我強烈建議您更新以獲得最新的錯誤修正和功能。</sys:String>
-    <sys:String x:Key="updater_message_p2">您可以通過點擊下面的按鈕查看更新日誌。</sys:String>
-
-    <sys:String x:Key="updater_view_changelog">在 Github 上閱讀完整的發布說明</sys:String>
-    <sys:String x:Key="updater_footer_remindmelater">延遲提醒我</sys:String>
-    <sys:String x:Key="updater_footer_skipversion">跳過這個版本</sys:String>
-    <sys:String x:Key="updater_footer_install">立即更新</sys:String>
-    <sys:String x:Key="updater_appcast_null">有可供使用的新更新，但未找到有效的應用推送資料。請稍後再試。</sys:String>
-    <sys:String x:Key="updater_noupdate">目前沒有可供使用的更新。請稍後再試或查看並訂閱 GitHub 頁面以獲得更新。</sys:String>
-    <sys:String x:Key="updater_noupdate_title">沒有更新</sys:String>
-    <sys:String x:Key="updater_newrelease">Galaxy Buds Manager 的更新 {0} 已發布</sys:String>
-
-    <sys:String x:Key="updater_dl_header">下載中……</sys:String>
-    <sys:String x:Key="updater_dl_manual">在 GitHub 上查看</sys:String>
-    <sys:String x:Key="updater_dl_fail_title">下載失敗</sys:String>
-    <sys:String x:Key="updater_dl_fail">原因：</sys:String>
-    <sys:String x:Key="updater_dl_progress_prepare">正在準備下載……</sys:String>
-    <sys:String x:Key="updater_dl_progress_cancelled">取消下載</sys:String>
-    <sys:String x:Key="updater_dl_progress_finished">下載完成。正在套用更新……</sys:String>
-    <sys:String x:Key="updater_dl_progress">下載中…… {0}%</sys:String>
-    <sys:String x:Key="updater_dl_progress_size">（{0}/{1} MB）</sys:String>
-    <sys:String x:Key="updater_dl_note">下載完成後，此應用程式將自動關閉並啟動單獨的更新安裝程序。它可能需要幾秒鐘才能顯示出來。</sys:String>
-
     <!--Device selection page (setup)-->
     <sys:String x:Key="devsel_header">連接您的 Galaxy Buds</sys:String>
-    <sys:String x:Key="devsel_refresh">重新整理已配對的裝置</sys:String>
-    <sys:String x:Key="devsel_device_name">裝置名稱</sys:String>
-    <sys:String x:Key="devsel_btaddr">MAC-位址</sys:String>
-    <sys:String x:Key="devsel_model">機型編號</sys:String>
+    <sys:String x:Key="devsel_manual_pair_title">你的裝置沒在列表上嗎？</sys:String>
+    <sys:String x:Key="devsel_manual_pair_description">請確認你的耳機已完成配對。如果還是無法辨識，請嘗試使用手動連接選項。</sys:String>
     <sys:String x:Key="devsel_manual_pair">手動連接</sys:String>
-    <sys:String x:Key="devsel_nodevices">請先將您的 Galaxy Buds 與您的電腦透過藍牙進行配對</sys:String>
-    <sys:String x:Key="devsel_nodevices_title">未與任何的 Galaxy Buds 配對</sys:String>
-    <sys:String x:Key="devsel_noselection">未選擇裝置</sys:String>
+    <sys:String x:Key="devsel_nodevices">請先連接並配對耳機</sys:String>
+    <sys:String x:Key="devsel_nodevices_title">找不到已配對的裝置</sys:String>
     <sys:String x:Key="devsel_invalid_selection">請選擇一個有效的裝置</sys:String>
-    <sys:String x:Key="devsel_footer_continue">完成設定</sys:String>
-    <sys:String x:Key="devsel_dialog_footer">如果您沒有看到您的耳機，請確保您已在電腦的藍牙設定中配對並連接它們，然後點擊「重新整理已配對的裝置」。</sys:String>
     <sys:String x:Key="devsel_winrt_title">使用更進階的藍牙後端</sys:String>
     <sys:String x:Key="devsel_winrt">穩定性會提升許多，但某些裝置的藍牙可能會不支援</sys:String>
 
-    <!--Unsupported feature page-->
-    <sys:String x:Key="unsupported_feature_current_fwver">目前軟體版本：</sys:String>
-    <sys:String x:Key="unsupported_feature_required_fwver">所需軟體版本：</sys:String>
-
-    <sys:String x:Key="unsupported_feature_header">請更新您的軟體</sys:String>
-    <sys:String x:Key="unsupported_feature_current_fwver_null">目前軟體版本：未知</sys:String>
-    <sys:String x:Key="unsupported_feature_required_fwver_null">所需軟體版本：未指定</sys:String>
-
-    <sys:String x:Key="unsupported_feature_description_p1">您的耳機軟體太舊，不支援此功能。</sys:String>
-    <sys:String x:Key="unsupported_feature_description_p2">請使用官方 Windows 或 Android 更新程序更新到最新的軟體版本。</sys:String>
-    <sys:String x:Key="unsupported_feature_description_p3">如果您使用 Windows 更新程序，請確保關閉此應用程式。一次只有一個應用程式可以與 Buds 連接。</sys:String>
+    <!--Device page-->
+    <sys:String x:Key="devices_header">已配對裝置</sys:String>
+    <sys:String x:Key="devices_new">新增</sys:String>
+    <sys:String x:Key="devices_new_long">配對新裝置</sys:String>
+    <sys:String x:Key="devices_select_inactive">選取</sys:String>
+    <sys:String x:Key="devices_select_active">已選取</sys:String>
+    <sys:String x:Key="devices_delete">刪除</sys:String>
+    <sys:String x:Key="devices_delete_long">刪除裝置</sys:String>
+    <sys:String x:Key="devices_delete_confirmation">你確定要移除這個裝置嗎？</sys:String>
+    <sys:String x:Key="devices_settings_link">管理已配對裝置</sys:String>
+    <sys:String x:Key="devices_settings_link_desc">新增、移除裝置或選取一個主要裝置</sys:String>
 
     <!--Touchpad gestures-->
     <sys:String x:Key="touchpad_gesture_header">觸摸操控</sys:String>
@@ -234,32 +212,39 @@
     <sys:String x:Key="touchpad_gesture_triple_desc">播放前一首歌曲</sys:String>
     <sys:String x:Key="touchpad_gesture_hold">觸摸並按住</sys:String>
     <sys:String x:Key="touchpad_gesture_hold_desc">執行使用者自訂程式</sys:String>
-    
+    <sys:String x:Key="touchpad_gesture_double_for_call">通話時輕點兩下</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_for_call_desc">接聽或結束通話</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call">通話時觸碰並按住</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call_desc">拒接來電</sys:String>
+
     <!--Touchpad page-->
     <sys:String x:Key="touchpad_header">觸碰操控</sys:String>
     <sys:String x:Key="touchpad_lock">封鎖觸摸操作</sys:String>
     <sys:String x:Key="touchpad_left_action">左側</sys:String>
     <sys:String x:Key="touchpad_right_action">右側</sys:String>
-    
+    <sys:String x:Key="touchpad_default_action">內建觸控動作</sys:String>
     <sys:String x:Key="touchpad_gestures">進階觸控</sys:String>
     <sys:String x:Key="touchpad_gestures_description">開啟或停用預設觸控手勢</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume">輕觸兩下耳機側緣</sys:String>
     <sys:String x:Key="touchpad_double_tap_volume_description">輕觸兩下左側耳機側緣即可調低音量，右側耳機側緣則可以調高音量。</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode">噪音控制</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_l">降噪模式切換（左側）</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_r">降噪模式切換（右側）</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_desc">選擇要循環切換的模式</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_amb">主動式降噪 ↔ 環境音效</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_off">主動式降噪 ↔ 關閉</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_amb_off">環境音效 ↔ 關閉</sys:String>
-    <sys:String x:Key="touchpad_noise_control_mode_threeway">循環模式（主動式降噪、環境音效、關閉）</sys:String>
-    
+
     <!--Custom touchpad action page-->
     <sys:String x:Key="cact_header">自訂觸碰並長按操作</sys:String>
     <sys:String x:Key="cact_external_app_dialog_title">選擇要執行程式……</sys:String>
     <sys:String x:Key="cact_action">自訂操作</sys:String>
-    <sys:String x:Key="cact_notice">注意</sys:String>
+    <sys:String x:Key="cact_function_param">功能</sys:String>
+    <sys:String x:Key="cact_hotkey_param">快捷鍵</sys:String>
+    <sys:String x:Key="cact_path_param">檔案路徑</sys:String>
     <sys:String x:Key="cact_notice_content_p1">僅當此應用程式處於背景運行，自訂長按操作才可供使用。</sys:String>
     <sys:String x:Key="cact_notice_content_p2">它對 Android 或其他裝置沒有效果。</sys:String>
-    <sys:String x:Key="cact_notice_content_p3">為了對該功能提供一致的支援，此應用程式將在啟動時自動啟動並在背景運行。
-您可以在設定部分停用此行為。</sys:String>
+
 
     <!--System/Self-Test-->
     <sys:String x:Key="system_overview_header">關於耳機</sys:String>
@@ -272,6 +257,8 @@
     <sys:String x:Key="system_pairing_mode_desc">中斷您的耳機與這台電腦的連接，使其對其他裝置可見</sys:String>
     <sys:String x:Key="system_trace_core_dump">下載跟蹤和核心轉儲</sys:String>
     <sys:String x:Key="system_trace_core_dump_desc">從您的耳機中檢索原始調試資料</sys:String>
+    <sys:String x:Key="system_hidden_at_mode">隱藏的系統設定</sys:String>
+    <sys:String x:Key="system_hidden_at_mode_desc">編輯隱藏設定，例如序號與 UART 狀態</sys:String>
     <sys:String x:Key="system_info">查看系統資訊</sys:String>
     <sys:String x:Key="system_info_desc">顯示有關您的耳機的詳細資訊</sys:String>
     <sys:String x:Key="system_flasher">安裝軟體更新</sys:String>
@@ -279,17 +266,27 @@
     <sys:String x:Key="system_spatial">轉儲空間感應器測量</sys:String>
     <sys:String x:Key="system_spatial_desc">讀取用於 3D 音訊的空間頭部跟蹤資料</sys:String>
 
+    <sys:String x:Key="system_usage_reports">使用狀況與計量報告</sys:String>
+    <sys:String x:Key="system_usage_reports_desc">檢視耳機提供的使用狀況報告</sys:String>
+    <sys:String x:Key="system_battery_statistics">電池統計資訊</sys:String>
+    <sys:String x:Key="system_battery_statistics_desc">收集並檢視電池使用統計資料</sys:String>
+
     <sys:String x:Key="system_battery_type_unknown">未指定</sys:String>
     <sys:String x:Key="system_waiting_for_device">正在等待回應……</sys:String>
+    <sys:String x:Key="system_no_response">耳機沒有回應</sys:String>
 
     <sys:String x:Key="system_hwver">硬體版本</sys:String>
     <sys:String x:Key="system_swver">軟體版本</sys:String>
+    <sys:String x:Key="system_cradle_swver">充電盒軟體版本</sys:String>
+    <sys:String x:Key="system_cradle_serial">充電盒序號</sys:String>
     <sys:String x:Key="system_touchver">觸控軟體版本</sys:String>
     <sys:String x:Key="system_protover">協議修訂版本</sys:String>
     <sys:String x:Key="system_btaddr">藍牙位址</sys:String>
+    <sys:String x:Key="system_btaddr_template">本機位址：{0}，對端位址：{1}</sys:String>
     <sys:String x:Key="system_serial">序號</sys:String>
     <sys:String x:Key="system_build_info">構建資訊</sys:String>
     <sys:String x:Key="system_battery_type">電池工藝</sys:String>
+    <sys:String x:Key="system_sku">裝置 SKU</sys:String>
     <sys:String x:Key="system_proximity">近距離測量</sys:String>
     <sys:String x:Key="system_thermo">熱敏電阻測量</sys:String>
     <sys:String x:Key="system_hall">空間測量</sys:String>
@@ -308,7 +305,6 @@
     
     <sys:String x:Key="coredump_header">正在轉儲資料……</sys:String>
     <sys:String x:Key="coredump_dl_progress_prepare">正在準備下載……</sys:String>
-    <sys:String x:Key="coredump_dl_progress_cancelled">下載已取消</sys:String>
     <sys:String x:Key="coredump_dl_progress_finished">下載完成</sys:String>
     <sys:String x:Key="coredump_dl_trace_progress">正在下載跟蹤轉儲…… {0}%</sys:String>
     <sys:String x:Key="coredump_dl_core_progress">正在下載核心轉儲…… {0}%</sys:String>
@@ -322,24 +318,138 @@
     <sys:String x:Key="coredump_dl_save_success_title">已成功儲存轉儲</sys:String>
     <sys:String x:Key="coredump_dl_save_success">{0} 個文件已寫入「{1}」</sys:String>
     <sys:String x:Key="coredump_dl_save_dialog_title">選擇下載目錄……</sys:String>
+
+    <!-- Hidden AT modes -->
+    <sys:String x:Key="hidden_mode_warning">請謹慎操作</sys:String>
+    <sys:String x:Key="hidden_mode_warning_desc">本頁面的部分變更無法透過恢復原廠設定還原。並非所有型號都支援這些設定。</sys:String>
+    <sys:String x:Key="hidden_mode_target">目標裝置：{0} 側耳機</sys:String> <!-- {0} = Left or Right -->
+    <sys:String x:Key="hidden_mode_target_l_desc">若要修改左側耳機，請將右側耳機放入充電盒並闔上盒蓋。</sys:String>
+    <sys:String x:Key="hidden_mode_target_r_desc">若要修改右側耳機，請將左側耳機放入充電盒並闔上盒蓋。</sys:String>
+    <sys:String x:Key="hidden_mode_input_wrong_length">新值長度必須恰好為 {0} 個字元。</sys:String>
+    <sys:String x:Key="hidden_mode_uart_on_confirm">UART 已成功啟用</sys:String>
+    <sys:String x:Key="hidden_mode_uart_off_confirm">UART 已成功停用</sys:String>
+    <sys:String x:Key="hidden_mode_uart">啟用 UART 連接埠</sys:String>
+    <sys:String x:Key="hidden_mode_uart_desc">為了除錯用途，暫時啟用目前目標裝置 PCB 上的實體 UART 連接埠</sys:String>
+    <sys:String x:Key="hidden_mode_power">電源選單</sys:String>
+    <sys:String x:Key="hidden_mode_power_desc">將目前目標裝置關機、重新啟動或進入睡眠模式</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change">變更序號</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change_desc">變更目前目標裝置的序號</sys:String>
+    <sys:String x:Key="hidden_mode_did_change">變更 DID 值與顏色</sys:String>
+    <sys:String x:Key="hidden_mode_did_change_desc">變更目前目標裝置的裝置型號識別碼</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change">變更 SKU 代碼</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change_desc">變更目前目標裝置的產品代碼</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_addr_change">變更對端藍牙位址</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_change_desc">變更目前目標裝置的對端藍牙位址</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_addr_change">變更本機藍牙位址</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_change_desc">變更目前目標裝置的本機藍牙位址</sys:String>
+    <sys:String x:Key="hidden_mode_terminal">隱藏命令終端機</sys:String>
+    <sys:String x:Key="hidden_mode_terminal_desc">向目前目標裝置傳送自訂 AT 指令</sys:String>
+
+    <sys:String x:Key="power_menu_hint">只有目前的目標耳機會受到影響。</sys:String>
+    <sys:String x:Key="power_menu_reboot">重新啟動</sys:String>
+    <sys:String x:Key="power_menu_shutdown">關機</sys:String>
+    <sys:String x:Key="power_menu_sleep">原廠睡眠模式</sys:String>
     
+    <sys:String x:Key="at_terminal_cmd_id">指令 ID</sys:String>
+    <sys:String x:Key="at_terminal_cmd_param">指令參數（選填）</sys:String>
+    <sys:String x:Key="at_terminal_cmd_id_invalid">此指令 ID 無效。請輸入 16 位元十六進位值，例如 0007 或 004C。</sys:String>
+    <sys:String x:Key="at_terminal_output">輸出</sys:String>
+    <sys:String x:Key="at_terminal_send">傳送</sys:String>
+
+    
+    <!-- Usage-/metering reports -->
+    <sys:String x:Key="usage_reports_header">使用報告</sys:String>
+    <sys:String x:Key="usage_reports_hint">這些報告由耳機本身收集。資料會以原始形式顯示，因此可能不準確。官方 Wearable 應用程式通常會定期重設大部分計數器，然後將收集到的資料傳送給 Samsung，除非你未在其應用程式中同意資料收集。部分計數器（例如充電循環次數）不會被重設。</sys:String>
+    <sys:String x:Key="usage_reports_usage">使用報告</sys:String>
+    <sys:String x:Key="usage_reports_metering">計量報告</sys:String>
+    <sys:String x:Key="milliamp_hours_unit">{0}mAh</sys:String>
+    <sys:String x:Key="metering_total_batt_capacity">總電池容量</sys:String>
+    <sys:String x:Key="metering_a2dp_time">音樂播放使用時間（A2DP）</sys:String>
+    <sys:String x:Key="metering_esco_time">通話使用時間（eSCO）</sys:String>
+
+    <!-- Battery history -->
+    <sys:String x:Key="batt_hist_hint">此應用程式可以隨時間收集電池電量與基本使用資料，讓你分析電池耗電情況。只有在此應用程式於背景執行，且你的耳機已連線至此裝置時，才能收集資料。</sys:String>
+    <sys:String x:Key="batt_hist_no_data_title">資料不足</sys:String>
+    <sys:String x:Key="batt_hist_no_data">請等到收集到足夠資料之後再來查看，或調整目前顯示的時間範圍。</sys:String>
+    <sys:String x:Key="batt_hist_y_axis">電量（%）</sys:String>
+    <sys:String x:Key="batt_hist_last_hour">最近 1 小時</sys:String>
+    <sys:String x:Key="batt_hist_last_6_hours">最近 6 小時</sys:String>
+    <sys:String x:Key="batt_hist_last_12_hours">最近 12 小時</sys:String>
+    <sys:String x:Key="batt_hist_last_24_hours">最近 24 小時</sys:String>
+    <sys:String x:Key="batt_hist_last_3_days">最近 3 天</sys:String>
+    <sys:String x:Key="batt_hist_last_7_days">最近 7 天</sys:String>
+    <sys:String x:Key="batt_hist_overlay_none">不顯示疊加資訊</sys:String>
+    <sys:String x:Key="batt_hist_overlay_noise_controls">降噪控制</sys:String>
+    <sys:String x:Key="batt_hist_overlay_wearing">佩戴狀態</sys:String>
+    <sys:String x:Key="batt_hist_overlay_host_device">主連線裝置</sys:String>
+    <sys:String x:Key="batt_hist_overlay_legend">{0}（疊加層）</sys:String>
+    <sys:String x:Key="batt_hist_tools_pan_and_zoom">平移與縮放</sys:String>
+    <sys:String x:Key="batt_hist_tools_measure_time">測量時間</sys:String>
+    <sys:String x:Key="batt_hist_tools_measure_battery">測量電量</sys:String>
+    <sys:String x:Key="batt_hist_show_legend">顯示圖例</sys:String>
+    <sys:String x:Key="batt_hist_measure_difference_display">差異：{0}</sys:String>
+    <sys:String x:Key="batt_hist_measure_timespan_display">時間範圍：{0}</sys:String>
+    <sys:String x:Key="batt_hist_measure_timespan_unit_long">d' 天，'hh'時:'mm'分:'ss</sys:String> 
+<!-- This is a time span format string. It produces a string like: 2 day(s), 03h:10:01 -->
+    <sys:String x:Key="batt_hist_time_span_tip_title">時間範圍</sys:String>
+    <sys:String x:Key="batt_hist_control_tip_title">滑鼠操作</sys:String>
+    <sys:String x:Key="batt_hist_control_tip">拖曳畫布即可移動圖表。
+  
+滾動滑鼠滾輪可同時進行水平與垂直縮放。
+
+將滑鼠游標移到 X 軸或 Y 軸上並滾動滾輪，即可只進行水平或垂直縮放。例如，在 X 軸（時間軸）上滾動，可以將時間軸拉長或壓縮。</sys:String>
+    <sys:String x:Key="batt_hist_overlay_tip_title">疊加資訊</sys:String>
+    <sys:String x:Key="batt_hist_overlay_tip">你可以使用疊加資訊，為圖表加入額外的參考資訊。
+
+降噪控制：顯示哪些降噪功能已啟用或停用。
+
+佩戴狀態：顯示耳機目前是否已佩戴。
+
+主連線裝置：顯示目前是哪一側耳機負責與電腦建立藍牙連線。
+
+查看較長的時間範圍時，疊加資訊可能可能不易判讀。將滑鼠游標移到 X 軸上並向上滾動，即可放大至你想檢視的特定時間範圍，以便更清楚地查看資料。</sys:String>
+    <sys:String x:Key="batt_hist_tools_tip_title">工具</sys:String>
+    <sys:String x:Key="batt_hist_tools_tip">平移與縮放：預設模式。透過平移與縮放來瀏覽圖表。
+
+測量時間：選取一段水平範圍，以測量所選範圍起點與終點之間經過的時間。
+
+測量電量：選取一段垂直範圍，以測量所選範圍起點與終點之間的電量差。</sys:String>
+
     <!--Settings-->
     <sys:String x:Key="settings_header">設定</sys:String>
-
+    <sys:String x:Key="settings_save_fail_no_access">儲存設定失敗。作業系統拒絕存取設定檔。請檢查 {0} 的檔案權限。</sys:String>
+    <sys:String x:Key="settings_appearance">外觀</sys:String>
     <sys:String x:Key="settings_darkmode">深色模式</sys:String>
     <sys:String x:Key="settings_darkmode_description">使用較深的主題</sys:String>
+    <sys:String x:Key="settings_blurstrength">視窗模糊強度</sys:String>
+    <sys:String x:Key="settings_blurstrength_description">僅適用於深色模式，且並非所有系統都支援</sys:String>
+    <sys:String x:Key="settings_accent">強調色</sys:String>
+    <sys:String x:Key="settings_accent_description">選擇自訂的強調色</sys:String>
     <sys:String x:Key="settings_transitions">轉換</sys:String>
     <sys:String x:Key="settings_transitions_description">開啟幻燈片轉換</sys:String>
     <sys:String x:Key="settings_localization_disable">選擇語言</sys:String>
     <sys:String x:Key="settings_localization_disable_description">強制英文</sys:String>
     <sys:String x:Key="settings_minimize_tray">最小化到工作列</sys:String>
     <sys:String x:Key="settings_minimize_tray_description">保持在後台運行而不是終止應用程式</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons">使用逼真的耳機圖示</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons_description">如果你的耳機支援此功能，将顯示符合實際外觀及顏色的耳機圖片</sys:String>
+    <sys:String x:Key="settings_color_override">耳機顏色變更</sys:String>
+    <sys:String x:Key="settings_color_override_description">變更應用程式中顯示的耳機顏色</sys:String>
+    <sys:String x:Key="settings_nav_sidebar">導覽側邊欄</sys:String>
+    <sys:String x:Key="settings_nav_sidebar_description">顯示或收合左側的導覽按鈕</sys:String>
+    <sys:String x:Key="settings_tray_settings">系統匣圖示與啟動</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode">動態系統匣圖示</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_description">在系統匣圖示中顯示電池狀態</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_off">關閉</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_min">顯示最低電量</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_avg">顯示平均電量</sys:String>
     <sys:String x:Key="settings_autostart">開機自動執行</sys:String>
     <sys:String x:Key="settings_autostart_description">開機後會以最小化在背景執行</sys:String>
     <sys:String x:Key="settings_autostart_permission">無法更新登錄表中的自動啟動條目。您的系統管理員已明確停用登錄表訪問（HKCU）。</sys:String>
     
     <sys:String x:Key="settings_connpopup">裝置連接彈出視窗</sys:String>
     <sys:String x:Key="settings_devmode">開發人員選項</sys:String>
+    <sys:String x:Key="settings_devmode_description">藍牙流量檢視器及其他開發者工具</sys:String>
     <sys:String x:Key="settings_crowdsourcing">傳送診斷資料</sys:String>
 
     <!--Settings >>> Connection popup-->
@@ -351,13 +461,7 @@
     <sys:String x:Key="settings_cpopup_position">位置</sys:String>
     <sys:String x:Key="settings_cpopup_position_placeholder">未知</sys:String>
     <sys:String x:Key="settings_cpopup_demo">顯示彈出視窗範例</sys:String>
-    <sys:String x:Key="settings_cpopup_override_title">覆寫彈出標題</sys:String>
-    <sys:String x:Key="settings_cpopup_override_title_dialog">請輸入自訂彈出標題。你可以透過將字段留空以恢復預設值。</sys:String>
-    <sys:String x:Key="settings_cpopup_primary_screen">僅限主要螢幕</sys:String>
-    <sys:String x:Key="settings_cpopup_primary_screen_description">僅限在主顯示器上顯示彈出視窗</sys:String>
-    <sys:String x:Key="settings_cpopup_wear_state">放入充電盒時使用不同的顏色顯示</sys:String>
-    <sys:String x:Key="settings_cpopup_wear_state_description">當您的耳機放入充電盒時，耳機圖標將變灰</sys:String>
-    
+
     <!--Settings >>> Crowdsourcing settings-->
     <sys:String x:Key="settings_crowd_header">群聚貢獻</sys:String>
     <sys:String x:Key="settings_crowd_allow">允許群聚貢獻</sys:String>
@@ -367,26 +471,51 @@
 
     <!--Factory reset-->
     <sys:String x:Key="factory_header">重設</sys:String>
-    <sys:String x:Key="factory_confirm">確定重設</sys:String>
+    <sys:String x:Key="factory_confirmation">確定要將耳機恢復原廠設定嗎？
+此操作會移除耳機中的所有資料與設定。
+
+繼續之前，請確認兩側耳機都已開啟。</sys:String>
     <sys:String x:Key="factory_error_title">重設失敗</sys:String>
     <sys:String x:Key="factory_error">裝置返回的錯誤代碼：{0}
-確保兩個耳機均已開啟且可訪問。
+
+請確認兩側耳機均已開啟並處於可連接狀態。
 您可能需要手動重新連接耳機。</sys:String>
-    <sys:String x:Key="factory_text_p1">您確定要重置您的耳機嗎？</sys:String>
-    <sys:String x:Key="factory_text_p2">執行恢復出廠設置後，您必須手動將 Galaxy buds 重新連接到電腦</sys:String>
-    <sys:String x:Key="factory_text_p3">請確保兩個耳機都已打開，然後再繼續！</sys:String>
 
     <!--Find my Gear-->
     <sys:String x:Key="fmg_warning_both">為確保您的聽力，請勿在耳機戴上的情況下使用此功能。</sys:String>
     <sys:String x:Key="fmg_warning_left">請從左耳上取下耳機。</sys:String>
     <sys:String x:Key="fmg_warning_right">請從右耳上取下耳機。</sys:String>
     <sys:String x:Key="fmg_header">尋找我的耳機</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage">管理 SmartThings Find 資料</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage_desc">檢視及管理儲存在耳機中的 SmartThings Find 資料</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open">開啟 SmartThings Find 網站</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open_desc">在線上追蹤你的耳機。需要 Samsung 帳戶，並且必須先完成官方 SmartThings Find 應用程式的設定。</sys:String>
+
+    <!--SmartThings data-->
+    <sys:String x:Key="smart_things_find">SmartThings</sys:String>
+    <sys:String x:Key="smart_things_find_clear">刪除 SmartThings Find 設定</sys:String>
+    <sys:String x:Key="smart_things_find_clear_desc">從耳機中移除與 Samsung 帳戶相關的資料</sys:String>
+    <sys:String x:Key="smart_things_find_iv">初始化向量（IV）</sys:String>
+    <sys:String x:Key="smart_things_find_secret_key">密鑰</sys:String>
+    <sys:String x:Key="smart_things_find_region">地區</sys:String>
+    <sys:String x:Key="smart_things_find_fmm_token">SmartThings Find 權杖</sys:String>
+    <sys:String x:Key="smart_things_find_no_link">你的耳機尚未連結至 Samsung SmartThings Find 網路。</sys:String>
+    <sys:String x:Key="smart_things_find_write_fail">耳機拒絕了新的 SmartThings Find 設定資料。</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok">設定已覆寫</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok_desc">SmartThings Find 設定資料已移除。</sys:String>
+
+    <!-- Fit test-->
+    <sys:String x:Key="gft_warning">請佩戴兩側耳機。</sys:String>
+    <sys:String x:Key="gft_desc">檢查耳機是否正確佩戴</sys:String>
+    <sys:String x:Key="gft_bad">佩戴不佳</sys:String>
+    <sys:String x:Key="gft_good">佩戴良好</sys:String>
+    <sys:String x:Key="gft_fail">測試失敗</sys:String>
 
     <!--Equalizer-->
     <sys:String x:Key="eq_header">等化器</sys:String>
     <sys:String x:Key="eq_enable">等化器</sys:String>
+    <sys:String x:Key="eq_enable_description">套用等化器音效濾鏡</sys:String>
     <sys:String x:Key="eq_preset">預設</sys:String>
-    <sys:String x:Key="eq_dolby">使用 Dolby 音效最佳化</sys:String>
     <sys:String x:Key="eq_stereo_balance">左/右聲道平衡</sys:String>
     <sys:String x:Key="eq_stereo_balance_value">{0}% 左；{1}% 右</sys:String>
     <sys:String x:Key="eq_stereo_balance_neutral">中間值</sys:String>
@@ -399,6 +528,9 @@
 
     <!--Noise control-->
     <sys:String x:Key="nc_header">噪音控制</sys:String>
+    <sys:String x:Key="nc_as_anc_description">降低背景噪音</sys:String>
+    <sys:String x:Key="nc_one_earbud">單側耳機使用降噪控制</sys:String>
+    <sys:String x:Key="nc_one_earbud_description">降噪控制通常需要同時佩戴兩側耳機，以避免造成不適。啟用此選項後，即可僅使用單側耳機進行降噪控制。</sys:String>
     <sys:String x:Key="nc_anc_level">高靈敏度</sys:String>
     <sys:String x:Key="nc_anc_level_description">更強的降噪效果</sys:String>
     <sys:String x:Key="nc_ambient">自訂環境音效</sys:String>
@@ -406,11 +538,13 @@
     <sys:String x:Key="nc_voicedetect">語音檢測</sys:String>
     <sys:String x:Key="nc_voicedetect_description">偵測到您的聲音時，系統將自動開啟環境音效並降低媒體音量以供您輕鬆對話</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout">對話超時</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout_description">在一段時間內未偵測到你的聲音後，恢復原本的設定</sys:String>
     <sys:String x:Key="nc_voicedetect_timeout_item">{0} 秒</sys:String>
     
     <!--Noise control >>> Ambient sound-->
     <sys:String x:Key="nc_as_header">環境音效設定</sys:String>
     <sys:String x:Key="nc_as_custom">進階自訂</sys:String>
+    <sys:String x:Key="nc_as_custom_description">自訂環境音設定</sys:String>
     <sys:String x:Key="nc_as_custom_volume_l">環境音效音量（左側）</sys:String>
     <sys:String x:Key="nc_as_custom_volume_r">環境音效音量（右側）</sys:String>
     <sys:String x:Key="nc_as_custom_tone">環境音效音調</sys:String>
@@ -421,9 +555,11 @@
     
     <!--Ambient sound-->
     <sys:String x:Key="as_header">環境音效</sys:String>
+    <sys:String x:Key="as_header_description">聽見周遭環境聲音</sys:String>
     <sys:String x:Key="as_enable">環境音效</sys:String>
     <sys:String x:Key="as_volume">環境音量</sys:String>
     <sys:String x:Key="as_voicefocus">語音偵測</sys:String>
+    <sys:String x:Key="as_voicefocus_description">讓人聲更加突出</sys:String>
     <sys:String x:Key="as_extrahigh">超高環境音量</sys:String>
     <sys:String x:Key="as_extrahigh_description">設定超大音量，以便您可透過高於標準值的音量播放環境音效。</sys:String>
     <sys:String x:Key="as_scale_very_low">極低</sys:String>
@@ -434,13 +570,16 @@
     
     <!--Advanced page-->
     <sys:String x:Key="adv_header">耳機設定</sys:String>
-    <sys:String x:Key="adv_required_firmware_later">{0} 或更新的版本。</sys:String>
     <sys:String x:Key="adv_seamless">流暢耳機連接</sys:String>
     <sys:String x:Key="adv_seamless_desc">無須中斷連接耳機或開啟配對模式即可快速切換附近裝置。</sys:String>
     <sys:String x:Key="adv_resume_playback">入耳偵測</sys:String>
     <sys:String x:Key="adv_resume_playback_desc">配戴時自動播放/暫停媒體（僅限桌面）</sys:String>
     <sys:String x:Key="adv_sidetone">通話期間使用環境音效</sys:String>
     <sys:String x:Key="adv_sidetone_desc">通話期間清楚聽見自己的聲音。如此可讓長時間通話更加舒適，並有助您避免不慎提高音量。</sys:String>
+    <sys:String x:Key="adv_callpath">通話入耳偵測</sys:String>
+    <sys:String x:Key="adv_callpath_desc">佩戴耳機時，透過耳機播放通話；未佩戴時，則透過電腦喇叭播放</sys:String>
+    <sys:String x:Key="adv_extra_clear_call">增強通話音質</sys:String>
+    <sys:String x:Key="adv_extra_clear_call_desc">提升通話清晰度。在吵雜環境中使用耳機通話時特別有用，但會增加電池耗電量。</sys:String>
     <sys:String x:Key="adv_passthrough">用環境聲緩解壓力</sys:String>
     <sys:String x:Key="adv_passthrough_desc">當您不使用主動降噪時，這可以防止悶熱或壓迫感</sys:String>
     <sys:String x:Key="adv_gaming_mode">遊戲模式</sys:String>
@@ -451,11 +590,12 @@
     <sys:String x:Key="adv_bixby_remap_desc">自訂當您說出「Hay Bixby！」時的動作</sys:String>
 
     <!--Remap bixby wakeup-->
-    <sys:String x:Key="bixby_remap_header">重新定義 Bixby 喚醒</sys:String>
     <sys:String x:Key="bixby_remap_enable">開啟 Bixby 喚醒</sys:String>
     <sys:String x:Key="bixby_remap_enable_desc">在您的三星手機上開啟 Bixby 或在喚醒時在此電腦上執行自訂動作</sys:String>
     <sys:String x:Key="bixby_remap_lang">Bixby 喚醒語言</sys:String>
+    <sys:String x:Key="bixby_remap_lang_desc">變更喚醒語詞所使用的語言</sys:String>
     <sys:String x:Key="bixby_remap_action">自訂喚醒動作</sys:String>
+    <sys:String x:Key="bixby_remap_action_desc">設定在此裝置上喚醒 Bixby 時要執行的動作</sys:String>
     <sys:String x:Key="bixby_remap_note">說出「Hey Bixby！」以開啟此功能。開啟用語可能因某些語言設定而異。
 
 重新定義設定僅在此裝置上有效。如果您將耳機連接到三星裝置，語音喚醒將正常開啟 Bixby。在此裝置和非三星手機的其他裝置上，此功能不會觸發任何動作。</sys:String>
@@ -469,50 +609,67 @@
     <sys:String x:Key="credits_contributor">協助開發人員</sys:String>
     <sys:String x:Key="credits_translator">協助翻譯人員</sys:String>
     <sys:String x:Key="credits_sponsor">捐贈支持</sys:String>
+    <sys:String x:Key="credits_kofi">前往我的 Ko-fi 頁面贊助我！</sys:String>
+    <sys:String x:Key="credits_github">在 GitHub 上查看此專案</sys:String>
 
     <!--Connection lost page-->
-    <sys:String x:Key="connlost_header">無法建立連接</sys:String>
-    <sys:String x:Key="connlost_description_p1">無法與您的耳機建立連接。</sys:String>
-    <sys:String x:Key="connlost_description_p2">請檢查您的藍牙設定，並確保您的耳機已打開與此電腦配對。
-如果需要的話，您也可以配對一個新的耳機。在這種情況下，請選擇「應用設定 &gt; 取消配對」。</sys:String>
-    <sys:String x:Key="connlost_description_p3">額外資訊：</sys:String>
-    <sys:String x:Key="connlost_noinfo">無法收集錯誤資訊</sys:String>
-    <sys:String x:Key="connlost_disconnected">裝置已中斷連接</sys:String>
-    <sys:String x:Key="connlost_connect">連接</sys:String>
-    <sys:String x:Key="connlost_connecting">正在連接……</sys:String>
-    
+    <sys:String x:Key="connlost">連線已中斷</sys:String>
+    <sys:String x:Key="connlost_header">無法建立連線</sys:String>
+    <sys:String x:Key="connlost_connect">連線</sys:String>
+    <sys:String x:Key="connlost_connecting">正在連線……</sys:String>
+    <sys:String x:Key="connlost_troubleshoot">疑難排解</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_title">如何排解連線問題</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_content">請確認 Samsung 官方的 Galaxy Buds Wearable 應用程式沒有在背景中嘗試連線到你的耳機。
+否則，該應用程式會反覆嘗試取得耳機的控制權，導致你頻繁遇到連線中斷的問題。
+
+你可以選擇以下其中一種方式來解決這個問題：
+
+• 解除耳機與 Wearable 應用程式的配對。（在 Wearable 應用程式中開啟漢堡選單，選擇「管理裝置」，再從清單中刪除你的耳機。）
+
+• 徹底解除安裝 Samsung Wearable 應用程式的 Galaxy Buds 外掛程式。
+
+• 使用「Hail」或「Ice Box」等應用程式，暫時凍結 Samsung Wearable 應用程式的官方 Galaxy Buds 外掛程式，防止它執行。
+    </sys:String>
+
+
+    <!-- Pairing mode -->
+    <sys:String x:Key="connlost_disconnected">裝置已斷線</sys:String>
+    <sys:String x:Key="pairingmode_done">耳機已進入配對模式，並已與此裝置中斷連線。</sys:String>
+
     <!--Firmware update disclaimer-->
     <sys:String x:Key="fw_disclaimer">免責聲明</sys:String>
     <sys:String x:Key="fw_disclaimer_desc">此軟體更新工具是三星官方 Android 應用程式中官方更新程序的標準複製品。我已經在各種情況下（正常操作、失去連接、故意破壞的藍牙資料包……）徹底測試了，沒有遇到任何問題。儘管如此，因為軟體更新會修改重要的系統構建，應始終謹慎處理，如果出現任何問題，我不承擔任何責任。
 
 降級：雖然降級到舊的軟體版本是可行的，我從沒遇過問題，但它仍可能會導致意想不到的問題，只有在必要時才需要這樣做。建議在降級後回復出廠設定，但通常不需要。 
-CUSTOM FLASHING：您還可以從硬碟載入軟體檔案。請勿將專為其他型號設計的二進制檔案刷入到您的裝置上。
+自訂刷機：您還可以從硬碟載入軟體檔案。請勿將專為其他型號設計的二進制檔案刷入到您的裝置上。
 
 此應用程序在 GPLv3 下獲得授權。使用它即表示您接受授權及其責任限制。按「繼續」接受。</sys:String>
     
     <!--Firmware selection-->
-    <sys:String x:Key="fw_select_header">軟體更新</sys:String>
-    <sys:String x:Key="fw_select_instructions">請選擇檔案進行下載和安裝。或者您也可以透過瀏覽「進階……&gt; 從硬碟中選擇軟體檔案」</sys:String>
-    <sys:String x:Key="fw_select_no_results">目前沒有可供使用的軟體更新。請稍後再試。</sys:String>
-    <sys:String x:Key="fw_select_downgrade">允許軟體降級</sys:String>
-    <sys:String x:Key="fw_select_downgrade_desc">停用版本檢查並在列表中顯示較舊的軟體（可能會導致意外問題；僅限進階使用者）</sys:String>
-    <sys:String x:Key="fw_select_advanced">進階……</sys:String>
-    <sys:String x:Key="fw_select_install">安裝軟體</sys:String>
-    <sys:String x:Key="fw_select_from_disk">從硬碟中選擇軟體檔案……</sys:String>
-    <sys:String x:Key="fw_select_external_note">請不要將適用於其他型號的軟體刷入您的裝置上。 將 Buds Pro 軟體刷入 Buds Plus 裝置不會解鎖任何新功能，而是會永久損壞您的裝置。
-
-按「繼續」選擇軟體檔案。</sys:String>
-    <sys:String x:Key="fw_select_unsupported_selection">無效的選擇。請從列表中選擇一個相容的項目。</sys:String>
-    <sys:String x:Key="fw_select_downloading">正在下載……</sys:String>
-    <sys:String x:Key="fw_select_net_error">無法與伺服器通訊。暫時無法下載軟體。</sys:String>
-    <sys:String x:Key="fw_select_net_index_error">無法與伺服器通訊。暫時無法下載軟體索引。</sys:String>
+    <sys:String x:Key="fw_select_header">韌體更新</sys:String>
+    <sys:String x:Key="fw_select_downgrade">允許韌體降級</sys:String>
+    <sys:String x:Key="fw_select_downgrade_desc">停用版本檢查，並在清單中顯示較舊的韌體（可能會導致意外問題；僅限進階使用者）</sys:String>
+    <sys:String x:Key="fw_select_install">安裝韌體</sys:String>
+    <sys:String x:Key="fw_select_install_short">安裝</sys:String>
+    <sys:String x:Key="fw_select_from_disk">從硬碟選擇韌體檔案……</sys:String>
+    <sys:String x:Key="fw_select_from_disk_short">開啟</sys:String>
+    <sys:String x:Key="fw_select_refresh">重新整理</sys:String>
+    <sys:String x:Key="fw_select_unsupported_selection">無效的選擇。請從清單中選擇相容的項目。</sys:String>
+    <sys:String x:Key="fw_select_downloading">下載中……</sys:String>
+    <sys:String x:Key="fw_select_net_error">無法與伺服器通訊。目前無法下載韌體。</sys:String>
+    <sys:String x:Key="fw_select_net_index_error">無法與伺服器通訊。目前無法下載韌體索引。</sys:String>
     <sys:String x:Key="fw_select_http_error">HTTP 錯誤代碼：</sys:String>
-    <sys:String x:Key="fw_select_unknown_build">未知的構建名稱：</sys:String>
-    <sys:String x:Key="fw_select_verify_fail">無法驗證軟體</sys:String>
-    <sys:String x:Key="fw_select_confirm">您即將將「{0}」刷入「{1}」裝置</sys:String>
-    <sys:String x:Key="fw_select_confirm_desc">請確保此資訊正確無誤，否則請按「取消」並仔細檢查您的設定。
+    <sys:String x:Key="fw_select_unknown_build">未知的組建名稱：</sys:String>
+    <sys:String x:Key="fw_select_no_results_short">找不到更新</sys:String>
+    <sys:String x:Key="fw_select_verify_fail">無法驗證韌體</sys:String>
+    <sys:String x:Key="fw_select_verify_model_mismatch_fail">偵測到裝置型號不相符！韌體傳輸已取消。
 
-如果可以，請確保在開始之前連接兩個耳機。如果在傳輸更新時中斷連接，它不會導致任何問題。在這種情況下，耳機將自動取消傳輸過程並退出軟體更新模式。
+你正嘗試將適用於 {0} 的韌體刷入你的 {1}。這可能會導致耳機永久損壞而無法使用。</sys:String>
+
+    <sys:String x:Key="fw_select_confirm">你即將將「{0}」刷入「{1}」裝置</sys:String>
+    <sys:String x:Key="fw_select_confirm_desc">請確認以上資訊正確無誤。若有任何不正確，請按「取消」並仔細檢查設定。
+
+如果可以，請確保在開始之前已連接兩側耳機。如果在更新傳輸過程中連線中斷，不會造成任何問題。在這種情況下，耳機會自動取消傳輸程序並退出韌體更新模式。
 
 按「繼續」開始更新。</sys:String>
   
@@ -525,9 +682,7 @@ CUSTOM FLASHING：您還可以從硬碟載入軟體檔案。請勿將專為其�
     <sys:String x:Key="fw_upload_progress_error">上傳軟體失敗</sys:String>
     <sys:String x:Key="fw_upload_progress">正在上傳軟體更新…… {0}%</sys:String>
     <sys:String x:Key="fw_upload_progress_size">（{0}/{1} KB）</sys:String>
-    <sys:String x:Key="fw_upload_progress_stats">統計資料</sys:String>
-    <sys:String x:Key="fw_upload_note">您的耳機將中斷連接，並在傳輸完成後立即開始安裝上傳的軟體更新。在此過程中，您的耳機將沒有回應並拒絕任何藍牙連接請求。在大多數情況下，耳機會在板載更新過程完成後嘗試自動重新連接。請不要在更新時關閉。</sys:String>
-    <sys:String x:Key="fw_upload_progress_stats_mtu">最大傳輸單元：{0} bytes</sys:String>
+   <sys:String x:Key="fw_upload_progress_stats_mtu">最大傳輸單元：{0} bytes</sys:String>
     <sys:String x:Key="fw_upload_progress_stats_offset">處理從偏移 0x{0:X6} 到 0x{1:X6} 的資料</sys:String>
     <sys:String x:Key="fw_upload_progress_stats_segment">上傳段 #{0}（{1} bytes，校驗和 0x{2:X6}）</sys:String>
 
@@ -549,7 +704,6 @@ CUSTOM FLASHING：您還可以從硬碟載入軟體檔案。請勿將專為其�
     <sys:String x:Key="fw_fail_lowbattery">電池電量太低。請先為耳機充電到 15% 以上。</sys:String>
     <sys:String x:Key="fw_fail_session_timeout">等待裝置打開新會話時超時</sys:String>
     <sys:String x:Key="fw_fail_control_timeout">等待裝置返回控制模塊時超時</sys:String>
-    <sys:String x:Key="fw_fail_copy_timeout">等待傳輸過程完成時超時</sys:String>
     
     <!--Spatial test-->
     <sys:String x:Key="spatial_header">空間感應器</sys:String>
@@ -559,13 +713,14 @@ CUSTOM FLASHING：您還可以從硬碟載入軟體檔案。請勿將專為其�
     <sys:String x:Key="spatial_dump_rpy">RPY 值：</sys:String>
     
     <!--Header-->
+    <sys:String x:Key="window_open">開啟</sys:String>
     <sys:String x:Key="window_minimize">最小化</sys:String>
     <sys:String x:Key="window_close">退出</sys:String>
 
     <!--Buds app detected page-->
     <sys:String x:Key="budsapp_header">藍牙相容性資訊</sys:String>
-    <sys:String x:Key="budsapp_text_p1">適用於 Windows 10 的官方 Galaxy Buds 應用程式與此應用程式一起安裝。</sys:String>
-    <sys:String x:Key="budsapp_text_p2">如果它已打開並已連接，則 Galaxy Buds 客戶端可能無法連接到您的耳機。確保在繼續之前將其關閉。同樣，當 Galaxy Buds Manager 處於活動狀態並打開與耳機的連接時，官方的 Galaxy Buds 應用程式無法連接到您的耳機。</sys:String>
+    <sys:String x:Key="budsapp_text_p1">官方的 Galaxy Buds 應用程式與此應用程式一起安了裝。</sys:String>
+    <sys:String x:Key="budsapp_text_p2">如果它已打開並已連接，則此應用程式可能無法連接到您的耳機。確保在繼續之前將其關閉。請務必從官方應用程式中取消註冊您的耳機，或透過其他方式阻止其在背景運行。</sys:String>
     <sys:String x:Key="budsapp_text_p3">請記住，一次只有一個應用程式可以與您的 Galaxy Buds 連接。</sys:String>
     
     <!--Manual pairing-->
@@ -573,4 +728,18 @@ CUSTOM FLASHING：您還可以從硬碟載入軟體檔案。請勿將專為其�
     <sys:String x:Key="manualpair_title_dialog">選擇您的 Galaxy Buds 裝置</sys:String>
     <sys:String x:Key="manualpair_model">選擇正確的型號類型</sys:String>
     <sys:String x:Key="manualpair_note">注意：如果設定嚮導無法正確辨識它們，則將只能手動連接耳機。</sys:String>
+
+    <!--Rename-->
+    <sys:String x:Key="rename">重新命名耳機</sys:String>
+    <sys:String x:Key="rename_desc">這將會在所有裝置上重新命名耳機。</sys:String>
+    <sys:String x:Key="rename_warn">官方應用程式可能無法重新命名你的耳機，因為它們將此功能限制為三星手機專用，這意味著你可能需要本程式來重設自訂名稱。變更名稱後，可能需先取消配對再重新配對耳機，其他裝置才會偵測到名稱變更。</sys:String>
+    <sys:String x:Key="rename_warn_oneui_title">OneUI 使用者的重要資訊</sys:String>
+    <sys:String x:Key="rename_warn_oneui">若你的裝置執行的是 Samsung OneUI，你應使用三星官方方式在系統設定中重新命名耳機。否則，設定新名稱時可能會發生連線問題。</sys:String>
+    <sys:String x:Key="rename_too_short">輸入的名稱太短（無字元）或太長（超過耳機限制長度）。</sys:String>
+    <sys:String x:Key="rename_hint">輸入新名稱…</sys:String>
+    <sys:String x:Key="rename_label">新裝置名稱</sys:String>
+    <sys:String x:Key="rename_reading_name">讀取目前名稱…</sys:String>
+    <sys:String x:Key="rename_ok_title">耳機已重新命名</sys:String>
+    <sys:String x:Key="rename_ok">耳機已成功重新命名！
+變更名稱後，可能需先取消配對再重新配對耳機，其他裝置（包含本裝置）才會偵測到名稱變更。</sys:String>
 </ResourceDictionary>
