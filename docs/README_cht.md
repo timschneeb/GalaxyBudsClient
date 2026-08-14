@@ -1,24 +1,24 @@
 <p align="center">
-    <a href="../README.md">English</a> | <a href="/docs/README_chs.md">中文(简体)</a> | 中文(繁體) | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> | <a href="/docs/README_vnm.md">Tiếng Việt</a> <br>
+    <a href="../README.md">English</a> | <a href="/docs/README_chs.md">中文(简体)</a> | 中文(繁體) | <a href="/docs/README_rus.md">Русский</a> | <a href="/docs/README_jpn.md">日本語</a> | <a href="/docs/README_ukr.md">Українська</a> | <a href="/docs/README_kor.md">한국어</a> | <a href="/docs/README_cze.md">Česky</a> | <a href="/docs/README_tr.md">Türkçe</a> | <a href="/docs/README_gr.md">Ελληνικά</a> | <a href="/docs/README_pt.md">Português</a> | <a href="/docs/README_vnm.md">Tiếng Việt</a> <br>
     <sub>注意：此自述文件由翻譯人員維護，可能會與當前的新版本有一定的誤差。 最新信息以英文版為準。</sub>
 </p>
 <h1 align="center">
   Galaxy Buds Client
   <br>
 </h1>
-<h4 align="center">這是一個非官方的管理程式 支援 Galaxy Buds 、 Buds+ 、 Buds Live 和 Buds Pro</h4>
+<h4 align="center">這是一個非官方的 Galaxy Buds 管理程式</h4>
 <p align="center">
-  <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
+  <a href="https://github.com/timschneeb/GalaxyBudsClient/releases">
     <img alt="GitHub downloads count" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
   </a>
-  <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
+  <a href="https://github.com/timschneeb/GalaxyBudsClient/releases">
    <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
   </a>
-  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE">
+  <a href="https://github.com/timschneeb/GalaxyBudsClient/blob/master/LICENSE">
       <img alt="License" src="https://img.shields.io/github/license/thepbone/galaxybudsclient">
   </a>
-  <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
-    <img alt="Platform" src="https://img.shields.io/badge/platform-Windows/Linux-yellowgreen">
+  <a href="https://github.com/timschneeb/GalaxyBudsClient/releases">
+    <img alt="Platform" src="https://img.shields.io/badge/platform-Windows/macOS/Linux/Android-yellowgreen">
   </a>
 </p>
 <p align="center">
@@ -31,11 +31,8 @@
 </p>
 
 <p align="center">
-    <a href="https://ko-fi.com/H2H83E5J3"><img alt="Screenshot" src="https://ko-fi.com/img/githubbutton_sm.svg"></a>
-</p>
-
-<p align="center">
-    <a href="#"><img alt="Screenshot" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/screencap.gif"></a>
+  <span><a href="https://ko-fi.com/H2H83E5J3"><img alt="Screenshot" src="https://ko-fi.com/img/githubbutton_sm.svg"></a>
+  <a href="#"><img alt="Screenshot" src="https://github.com/timschneeb/GalaxyBudsClient/raw/master/screenshots/app_dark.png"></a></span>
 </p>
 
 ## 主要功能
@@ -54,26 +51,53 @@
 
 ## 下載
 
-在 [release](https://github.com/ThePBone/GalaxyBudsClient/releases) 中獲取適用於 Windows 和 Linux 的二進制文件。 請在安裝前閱讀上方的發行說明。
+目前提供多種 Linux 軟體套件：
+* [Flatpak（所有 Linux 發行版）](#flatpak)
+* [AUR 套件（Arch Linux）](#aur-套件)
 
+在 [release](https://github.com/ThePBone/GalaxyBudsClient/releases) 中獲取適用於 Windows 的二進制文件。 請在安裝前閱讀上方的發行說明。
+
+在此下載桌面版：
 <p align="center">
     <a href="https://github.com/ThePBone/GalaxyBudsClient/releases"><img alt="Download" src="https://github.com/ThePBone/GalaxyBudsClient/blob/master/screenshots/download.png"></a>
 </p>
 
-### winget
+在此下載 Android 版（付費）：
+<p align="center">
+  <a href='https://play.google.com/store/apps/details?id=me.timschneeberger.galaxybudsclient&utm_source=github&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+    <img width="300" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/>
+  </a>
+</p>
 
-Windows 用戶也可以透過 封裝管理員 (winget) 的方式來進行安裝
+### Flatpak
+
+適用於所有 Linux 發行版的通用套件。Flatpak 版本預設不支援開機自動啟動，除非手動進行設定。你可以使用 `galaxybudsclient /StartMinimized`，讓應用程式在系統啟動時以靜默模式啟動。
+
+可從 FlatHub 下載: https://flathub.org/apps/me.timschneeberger.GalaxyBudsClient
 
 ```
-winget install ThePBone.GalaxyBudsClient
+flatpak install me.timschneeberger.GalaxyBudsClient
 ```
 
-### AUR package
+<a href='https://flathub.org/apps/me.timschneeberger.GalaxyBudsClient'><img width='240' alt='Download on Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.png'/></a>
+
+> **注意**: Flatpak 應用程式運作於沙盒環境中。預設情況下，本應用程式只能存取 `~/.var/app/me.timschneeberger.GalaxyBudsClient/` 
+
+
+### AUR 套件
 
 由 @joscdk 所維護的 Arch Linux [AUR package](https://aur.archlinux.org/packages/galaxybudsclient-bin/) 包也是可以使用的:
 
 ```
 yay -S galaxybudsclient-bin
+```
+
+### winget
+
+Windows 用戶也可以透過 Windows Package Manager (winget) 的方式來進行安裝
+
+```
+winget install ThePBone.GalaxyBudsClient
 ```
 
 ## 運行原理
@@ -118,35 +142,39 @@ Galaxy Buds 定義了兩個藍牙封包文件：用於音頻流/控制的 A2DP�
 
 ### 貢獻者
 
-- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue 模板、 wiki 和 翻譯
-- [@AndriesK](https://github.com/AndriesK) - Buds Live 的錯誤修復
-- [@TheLastFrame](https://github.com/TheLastFrame) - Buds Pro 的圖示
-- [@githubcatw](https://github.com/githubcatw) - Connection dialog base
-- [@GaryGadget9](https://github.com/GaryGadget9) - WinGet package
-- [@joscdk](https://github.com/joscdk) - AUR package
+* [@nift4](https://github.com/nift4) - macOS 支援與錯誤修復
+* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - Issue 模板、wiki 和翻譯
+* [@AndriesK](https://github.com/AndriesK) - Buds Live 錯誤修正
+* [@TheLastFrame](https://github.com/TheLastFrame) - Buds Pro 的圖示設計
+* [@githubcatw](https://github.com/githubcatw) - 基礎連線工作階段
+* [@GaryGadget9](https://github.com/GaryGadget9) - WinGet 套件維護
+* [@joscdk](https://github.com/joscdk) - AUR 套件維護
 
-### 翻譯人員
+#### 翻譯人員
 
-- [@ArthurWolfhound](https://github.com/ArthurWolfhound) - 俄語 和 烏克蘭語 翻譯
-- [@PlasticBrain](https://github.com/fhalfkg) - 韓語 和 日語 翻譯
-- [@cozyplanes](https://github.com/cozyplanes) - 韓語 翻譯
-- [@erenbektas](https://github.com/erenbektas) - 土耳其語 翻譯
-- [@kakkk](https://github.com/kakkk), [@KevinZonda](https://github.com/KevinZonda), [@ssenkrad](https://github.com/ssenkrad) 和 [@pseudor](https://github.com/pseudor) - 簡體中文 翻譯
-- [@YiJhu](https://github.com/YiJhu) - 繁體中文 翻譯
-- [@efrenbg1](https://github.com/efrenbg1) 和 Andrew Gonza - 西班牙語 翻譯
-- [@giovankabisano](https://github.com/giovankabisano) - 印尼語 翻譯
-- [@lucasskluser](https://github.com/lucasskluser) 和 [@JuanFariasDev](https://github.com/juanfariasdev) - 葡萄牙語 翻譯
-- [@alb-p](https://github.com/alb-p), [@mario-donnarumma](https://github.com/mario-donnarumma) - 義大利語 翻譯
-- [@Buashei](https://github.com/Buashei) - 波蘭語 翻譯
-- [@KatJillianne](https://github.com/KatJillianne), [@thelegendaryjohn](https://github.com/thelegendaryjohn) - 越南語 翻譯
-- [@joskaja](https://github.com/joskaja) and [@Joedmin](https://github.com/Joedmin) - 捷克語 翻譯
-- [@Benni0109](https://github.com/Benni0109), [@TheLastFrame](https://github.com/TheLastFrame), [@ThePBone](https://github.com/ThePBone) - 德語 翻譯
-- [@nikossyr](https://github.com/nikossyr) - 希臘語 翻譯
-- [@grigorem](https://github.com/grigorem) - 羅馬尼亞語 翻譯
-- [@tretre91](https://github.com/tretre91) - 法語 翻譯
-- [@Sigarya](https://github.com/Sigarya) - 希伯來語 翻譯
+* [@ArthurWolfhound](https://github.com/ArthurWolfhound) - 俄語和烏克蘭語翻譯
+* [@PlasticBrain](https://github.com/fhalfkg) - 韓語和日語翻譯
+* [@cozyplanes](https://github.com/cozyplanes) - 韓語翻譯
+* [@corydalis10](https://github.com/corydalis10) - 韓語翻譯
+* [@erenbektas](https://github.com/erenbektas) 和 [@Eta06](https://github.com/Eta06) - 土耳其語翻譯
+* [@kakkk](https://github.com/kakkk)、[@KevinZonda](https://github.com/KevinZonda)、[@ssenkrad](https://github.com/ssenkrad)、[@pseudor](https://github.com/pseudor) 和 [@YexuanXiao](https://github.com/YexuanXiao) - 簡體中文翻譯
+* [@YiJhu](https://github.com/YiJhu) - 繁體中文翻譯
+* [@efrenbg1](https://github.com/efrenbg1) 和 Andrew Gonza - 西班牙語翻譯
+* [@giovankabisano](https://github.com/giovankabisano) - 印度尼西亞語翻譯
+* [@lucasskluser](https://github.com/lucasskluser) 和 [@JuanFariasDev](https://github.com/juanfariasdev) - 葡萄牙語翻譯
+* [@alb-p](https://github.com/alb-p)、[@mario-donnarumma](https://github.com/mario-donnarumma) - 義大利語翻譯
+* [@Buashei](https://github.com/Buashei) - 波蘭語翻譯
+* [@KatJillianne](https://github.com/KatJillianne) 和 [@thelegendaryjohn](https://github.com/thelegendaryjohn) - 越南語翻譯
+* [@joskaja](https://github.com/joskaja) 和 [@Joedmin](https://github.com/Joedmin) - 捷克語翻譯
+* [@Benni0109](https://github.com/Benni0109)、[@TheLastFrame](https://github.com/TheLastFrame)、[@timschneeb](https://github.com/timschneeb) - 德語翻譯
+* [@nikossyr](https://github.com/nikossyr) - 希臘語翻譯
+* [@grigorem](https://github.com/grigorem) - 羅馬尼亞語翻譯
+* [@tretre91](https://github.com/tretre91) - 法語翻譯
+* [@Sigarya](https://github.com/Sigarya) - 希伯來語翻譯
+* [@domroaft](https://github.com/domroaft) - 匈牙利語翻譯
+* [@lampi8426](https://github.com/lampi8426) - 荷蘭語翻譯
 
-## 協議
+## 授權協議
 
 本專案使用 [GPLv3](https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE) 授權許可。它不隸屬於三星(Samsung)，也不以任何方式受他們(Samsung)監督。
 
