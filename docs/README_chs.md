@@ -9,17 +9,17 @@
 </h1>
 <h4 align="center">一个非官方的 Galaxy Buds 管理工具</h4>
 <p align="center">
-  <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
+  <a href="https://github.com/timschneeb/GalaxyBudsClient/releases">
     <img alt="GitHub downloads count" src="https://img.shields.io/github/downloads/thepbone/galaxybudsclient/total">
   </a>
-  <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
+  <a href="https://github.com/timschneeb/GalaxyBudsClient/releases">
    <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/thepbone/galaxybudsclient">
   </a>
-  <a href="https://github.com/ThePBone/GalaxyBudsClient/blob/master/LICENSE">
+  <a href="https://github.com/timschneeb/GalaxyBudsClient/blob/master/LICENSE">
       <img alt="License" src="https://img.shields.io/github/license/thepbone/galaxybudsclient">
   </a>
-  <a href="https://github.com/ThePBone/GalaxyBudsClient/releases">
-    <img alt="Platform" src="https://img.shields.io/badge/platform-Windows/Linux-yellowgreen">
+  <a href="https://github.com/timschneeb/GalaxyBudsClient/releases">
+    <img alt="Platform" src="https://img.shields.io/badge/platform-Windows/macOS/Linux/Android-yellowgreen">
   </a>
 </p>
 <p align="center">
