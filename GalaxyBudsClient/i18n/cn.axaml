@@ -10,7 +10,7 @@
     <sys:String x:Key="okay">成功</sys:String>
     <sys:String x:Key="left">左</sys:String>
     <sys:String x:Key="right">右</sys:String>
-    <sys:String x:Key="both">两者</sys:String>
+    <sys:String x:Key="both">两只</sys:String>
     <sys:String x:Key="case">充电盒</sys:String>
     <sys:String x:Key="error">错误</sys:String>
     <sys:String x:Key="cancel">取消</sys:String>
@@ -360,8 +360,8 @@
     <sys:String x:Key="usage_reports_metering">测量报告</sys:String>
     <sys:String x:Key="milliamp_hours_unit">{0}mAh</sys:String>
     <sys:String x:Key="metering_total_batt_capacity">总电池容量</sys:String>
-    <sys:String x:Key="metering_a2dp_time">音乐播放时常（A2DP）</sys:String>
-    <sys:String x:Key="metering_esco_time">童话时常（eSCO）</sys:String>
+    <sys:String x:Key="metering_a2dp_time">音乐播放时长（A2DP）</sys:String>
+    <sys:String x:Key="metering_esco_time">通话时长（eSCO）</sys:String>
 
     <!-- Battery history -->
     <sys:String x:Key="batt_hist_hint">此应用程序可收集电池电量和一段时间内的基本使用数据，以便你分析电池消耗情况。只有当此应用程序在后台激活，且你的耳机连接到此设备时，才能收集数据。</sys:String>
@@ -381,34 +381,34 @@
     <sys:String x:Key="batt_hist_overlay_legend">{0}（叠加）</sys:String>
     <sys:String x:Key="batt_hist_tools_pan_and_zoom">平移 &amp; 缩放</sys:String>
     <sys:String x:Key="batt_hist_tools_measure_time">测量时间</sys:String>
-    <sys:String x:Key="batt_hist_tools_measure_battery">测量电平</sys:String>
+    <sys:String x:Key="batt_hist_tools_measure_battery">测量电量</sys:String>
     <sys:String x:Key="batt_hist_show_legend">显示图例</sys:String>
     <sys:String x:Key="batt_hist_measure_difference_display">差异：{0}</sys:String>
     <sys:String x:Key="batt_hist_measure_timespan_display">时间范围：{0}</sys:String>
     <sys:String x:Key="batt_hist_measure_timespan_unit_long">d'天'hh'h:'mm':'ss</sys:String> <!-- This is a time span format string. It produces a string like: 2 day(s), 03h:10:01 -->
     <sys:String x:Key="batt_hist_time_span_tip_title">时间范围</sys:String>
     <sys:String x:Key="batt_hist_control_tip_title">鼠标控制</sys:String>
-    <sys:String x:Key="batt_hist_control_tip">拖动画布可在绘图周围移动。
+    <sys:String x:Key="batt_hist_control_tip">拖动画布即可平移图表视野。
   
-滚动可水平和垂直缩放。
+滚动滚轮可对横纵轴进行双向缩放。
 
-将鼠标悬停在 X 轴或 Y 轴上，然后滚动以仅水平或垂直缩放。例如，在 X 轴（时间）上滚动可拉伸或缩小 X 轴。</sys:String>
+将鼠标悬停在 X 轴或 Y 轴上并滚动，则可仅沿水平方向或仅沿垂直方向单向缩放。例如，在 X 轴（时间轴）上滚动，即可拉伸或压缩时间轴。</sys:String>
     <sys:String x:Key="batt_hist_overlay_tip_title">叠加</sys:String>
-    <sys:String x:Key="batt_hist_overlay_tip">你可以使用叠加功能为绘图添加更多背景信息。
+    <sys:String x:Key="batt_hist_overlay_tip">您可以使用叠加层为图表添加更多参考信息。
 
-噪声控制： 显示启用或禁用了哪些噪音控制。
+噪声控制：显示启用或禁用了哪些噪音控制。
 
-佩戴状态： 显示耳机是否佩戴。
+佩戴状态：显示耳机现在是否被佩戴。
 
-主设备： 显示哪个耳机与电脑进行蓝牙连接。
+主设备： 显示现在是哪只耳机与电脑进行蓝牙连接。
         
-在查看较大的时间范围时，叠加数据可能难以理解。将鼠标悬停在 X 轴上并向上滚动，可放大到你要查看的特定时间范围，以获得更好的视觉效果。</sys:String>
+查看较长时间范围时，叠加层数据可能不易分辨。将鼠标悬停在 X 轴上并向上滚动，可放大至您想查看的特定时间段，从而获得更好更清晰的整体视图。</sys:String>
     <sys:String x:Key="batt_hist_tools_tip_title">工具</sys:String>
-    <sys:String x:Key="batt_hist_tools_tip">平移 &amp; 放大：默认模式。通过平移和缩放在地块周围导航。
+    <sys:String x:Key="batt_hist_tools_tip">平移 &amp; 放大：默认模式。通过平移和缩放操作浏览图表。
         
-测量时间： 选择一个水平跨度，测量选择开始和结束之间的经过时间。
+测量时间： 水平拖动选取区间，计算所选区域始末之间的耗时。
         
-测量电平： 选择垂直跨度，测量选择开始和结束之间的电池电量差。</sys:String>
+测量电量： 垂直拖动选取区间，计算所选区域始末之间的电量差。</sys:String>
 
     <!--Settings-->
     <sys:String x:Key="settings_header">设置</sys:String>
@@ -417,7 +417,7 @@
     <sys:String x:Key="settings_darkmode">深色模式</sys:String>
     <sys:String x:Key="settings_darkmode_description">使用深色模式主题</sys:String>
     <sys:String x:Key="settings_blurstrength">窗口模糊度</sys:String>
-    <sys:String x:Key="settings_blurstrength_description">只支持深色模式，不支持一些系统</sys:String>
+    <sys:String x:Key="settings_blurstrength_description">只支持深色模式，某些系统不支持</sys:String>
     <sys:String x:Key="settings_accent">主题色</sys:String>
     <sys:String x:Key="settings_accent_description">选择主题色</sys:String>
     <sys:String x:Key="settings_transitions">过渡动画</sys:String>
@@ -425,10 +425,10 @@
     <sys:String x:Key="settings_localization_disable">语言</sys:String>
     <sys:String x:Key="settings_localization_description">更改应用语言</sys:String>
     <sys:String x:Key="settings_minimize_tray">最小化到系统托盘</sys:String>
-    <sys:String x:Key="settings_minimize_tray_description">在后台保持运行而不是结束程序</sys:String>
+    <sys:String x:Key="settings_minimize_tray_description">在后台保持运行，而非结束程序</sys:String>
     <sys:String x:Key="settings_realistic_earbud_icons">使用真实的耳机图像</sys:String>
-    <sys:String x:Key="settings_realistic_earbud_icons_description">更真实的显示 &amp; 如果支持，根据感知自动选择图像</sys:String>
-    <sys:String x:Key="settings_color_override">耳机颜色覆写</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons_description">如果耳机支持，将显示与实际颜色一致的逼真耳机图像。</sys:String>
+    <sys:String x:Key="settings_color_override">更改耳机颜色</sys:String>
     <sys:String x:Key="settings_color_override_description">修改软件中显示的你的耳机的颜色</sys:String>
     <sys:String x:Key="settings_nav_sidebar">导航侧栏</sys:String>
     <sys:String x:Key="settings_nav_sidebar_description">显示或折叠左侧的导航按钮</sys:String>
@@ -436,8 +436,8 @@
     <sys:String x:Key="settings_dyn_tray_mode">动态托盘图标</sys:String>
     <sys:String x:Key="settings_dyn_tray_mode_description">在托盘图标上显示电池状态</sys:String>
     <sys:String x:Key="settings_dyn_tray_mode_off">关闭</sys:String>
-    <sys:String x:Key="settings_dyn_tray_mode_battery_min">显示最低电池电平</sys:String>
-    <sys:String x:Key="settings_dyn_tray_mode_battery_avg">显示平均电池电平</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_min">显示最低电池电量</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_avg">显示平均电池电量</sys:String>
     <sys:String x:Key="settings_autostart">开机时启动</sys:String>
     <sys:String x:Key="settings_autostart_description">开机时启动并最小化</sys:String>
     <sys:String x:Key="settings_autostart_permission">不能更新自启动。注册表访问（HKCU） 被你的系统管理员明确禁止。</sys:String>
@@ -448,13 +448,13 @@
 
     <!--Settings >>> Connection popup-->
     <sys:String x:Key="settings_cpopup_header">连接弹窗</sys:String>
-    <sys:String x:Key="settings_cpopup_enable">开启连接弹窗</sys:String>
-    <sys:String x:Key="settings_cpopup_enable_description">显示通知当前电量的弹窗</sys:String>
+    <sys:String x:Key="settings_cpopup_enable">连接时显示弹窗</sys:String>
+    <sys:String x:Key="settings_cpopup_enable_description">显示告知当前电量的弹窗</sys:String>
     <sys:String x:Key="settings_cpopup_compact">紧凑模式</sys:String>
-    <sys:String x:Key="settings_cpopup_compact_description">隐藏弹出窗口的标题以节省空间</sys:String>
+    <sys:String x:Key="settings_cpopup_compact_description">隐藏弹窗的标题以节省空间</sys:String>
     <sys:String x:Key="settings_cpopup_position">位置</sys:String>
     <sys:String x:Key="settings_cpopup_position_description">选择连接弹窗的位置</sys:String>
-    <sys:String x:Key="settings_cpopup_demo">显示测试弹窗</sys:String>
+    <sys:String x:Key="settings_cpopup_demo">测试弹窗</sys:String>
 
     <!--Settings >>> Crowdsourcing settings-->
     <sys:String x:Key="settings_crowd_header">数据收集</sys:String>
@@ -468,7 +468,7 @@
     <sys:String x:Key="factory_confirmation">你确定要将耳机重置为出厂设置吗？
 这将删除耳机中的所有数据和设置。
 
-继续之前，请确保两只耳机都已打开。</sys:String>
+在此之前，请确保两只耳机都已打开。</sys:String>
     <sys:String x:Key="factory_error_title">恢复出厂设置失败</sys:String>
     <sys:String x:Key="factory_error">设备返回错误代码: {0}
     
@@ -476,7 +476,7 @@
 你可能需要手动重新连接你的耳机。</sys:String>
 
     <!--Find my Gear-->
-    <sys:String x:Key="fmg_warning_both">请摘下你的耳机</sys:String>
+    <sys:String x:Key="fmg_warning_both">请摘下你的两只耳机</sys:String>
     <sys:String x:Key="fmg_warning_left">请摘下左耳耳机</sys:String>
     <sys:String x:Key="fmg_warning_right">请摘下右耳耳机</sys:String>
     <sys:String x:Key="fmg_header">查找我的耳机</sys:String>
@@ -565,11 +565,11 @@
     <!--Advanced page-->
     <sys:String x:Key="adv_header">高级设置</sys:String>
     <sys:String x:Key="adv_pause_playback">当耳机被摘下时停止播放</sys:String>
-    <sys:String x:Key="adv_pause_playback_desc">当至少一个接近传感器发现摘下时，发送全局播放/暂停状态变更事件（仅桌面系统）</sys:String>
+    <sys:String x:Key="adv_pause_playback_desc">当至少一个传感器发现摘下时，发送全局播放/暂停状态变更事件（仅桌面系统）</sys:String>
     <sys:String x:Key="adv_seamless">无缝耳机连接</sys:String>
     <sys:String x:Key="adv_seamless_desc">快速切换到附近的设备，而无需断开耳机或打开配对模式</sys:String>
-    <sys:String x:Key="adv_resume_playback">当设备被佩戴/恢复/启动媒体播放</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">当至少一个距离传感器被覆盖时，发送全局播放/暂停状态改变事件（仅桌面系统）</sys:String>
+    <sys:String x:Key="adv_resume_playback">当耳机被佩戴时恢复播放</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">当至少一个传感器发现佩戴时，发送全局播放/暂停状态改变事件（仅桌面系统）</sys:String>
     <sys:String x:Key="adv_sidetone">通话期间使用环境音</sys:String>
     <sys:String x:Key="adv_sidetone_desc">在通话期间更清楚地听到你自己的声音</sys:String>
     <sys:String x:Key="adv_callpath">耳内通话检测</sys:String>
@@ -590,9 +590,9 @@
     <sys:String x:Key="bixby_remap_lang_desc">更改激活短语使用的语言</sys:String>
     <sys:String x:Key="bixby_remap_action">自定义唤醒动作</sys:String>
     <sys:String x:Key="bixby_remap_action_desc">定义在此设备上激活 Bixby 时应发生的情况</sys:String>
-    <sys:String x:Key="bixby_remap_note">说 '嗨 Bixby!' 以执行动作。在不同的语言设置上激活短语可能不同。
+    <sys:String x:Key="bixby_remap_note">说 '嗨 Bixby!' 即可唤醒。在不同的语言设置上激活短语可能不同。
 
-重新设定的配置只在此设备上生效。如果你连接到三星手机，语音唤醒会正常启动 Bixby。在非三星手机及此设备外，这个功能不会触发任何行为。</sys:String>
+重新设定的配置只在此设备上生效。如果您将耳机连接到三星设备，语音唤醒将正常启动 Bixby。在此设备以外的其他设备以及非三星手机上，此功能不会触发任何操作。</sys:String>
 
 
     <!--Credits-->
@@ -614,15 +614,15 @@
     <sys:String x:Key="connlost_troubleshoot">疑难解答</sys:String>
     <sys:String x:Key="connlost_troubleshoot_title">如何排除连接故障</sys:String>
     <sys:String x:Key="connlost_troubleshoot_content">请确保 Galaxy Buds 的三星官方可穿戴设备应用程序不会试图在后台连接到你的耳机。
-否则，你将频繁遇到连接丢失问题，因为他们的应用程序会反复尝试获得对耳机的控制权。
+否则，由于该应用会反复尝试获取耳机的控制权，您将会遇到非常频繁的连接中断问题。
 
 你可以选择以下解决方案之一来解决这个问题：
 
-- 从 Wearable 应用程序中取消耳塞配对。(在 Wearable 应用程序中，打开汉堡菜单，选择 “管理设备”，然后从列表中删除耳机）。
+- 在 Wearable 应用中解除耳机的配对。（在 Wearable 应用中，打开汉堡菜单（三条杠），选择“管理设备”，然后将您的耳机从列表中删除。）
 
-- 彻底卸载三星 Wearable 应用程序的 Galaxy Buds 插件。
+- 直接卸载 Wearable 应用的 Galaxy Buds 插件。
 
-- 使用 “Hail” 或 “Ice Box” 等应用程序暂时冻结三星 Wearable 应用程序的 Galaxy Buds 官方插件，防止其运行。
+- 使用 “Hail” 或 “Ice Box” 等应用程序暂时冻结三星 Wearable 应用程序的 Galaxy Buds 官方插件，阻止其运行。
     </sys:String>
 
     <!-- Pairing mode -->
@@ -631,12 +631,12 @@
 
     <!--Firmware update disclaimer-->
     <sys:String x:Key="fw_disclaimer">免责声明</sys:String>
-    <sys:String x:Key="fw_disclaimer_desc">此固件更新工具是三星官方 Android 应用中更新程序的准确复制品。我已经彻底测试了在各种情况下的实现（正常操作、连接丢失、故意损坏蓝牙包，...）没有发生任何问题。尽管如此，如果出现任何问题，我不会承担任何责任，因为固件更新更改了重要的系统组件，应始终谨慎处理。
+    <sys:String x:Key="fw_disclaimer_desc">本固件更新工具是三星官方 Android 应用程序中官方更新程序的精确复制品。我在各种情况下（正常操作、连接中断、故意损坏的蓝牙数据包等）对该实现进行了充分测试，未发现任何问题。尽管如此，由于固件更新会修改系统关键组件，操作时务必谨慎，若出现任何问题，本人不承担任何责任。
 
-降级：虽然降级到旧的固件版本是可能的，而且我从来没有遇到过这样的问题，但它可能会引起意想不到的问题，只有在必要时才可以进行。建议在降级后进行工厂重置，但通常没有必要。
-自定义固件：你也可以从你的硬盘上加载固件文件。不要把为其他型号设计的固件二进制文件写入到你的设备上。
+降级：虽然可以降级到旧版固件，且我从未遇到过问题，但这可能会引发意外状况，仅在必要时才应进行。降级后建议执行恢复出厂设置，但通常并非必需。
+自定义固件：你也可以从你的硬盘上加载固件文件。请勿将针对其他型号设计的固件刷入您的设备。
 
-这个应用以 GPLv3 许可发表。使用它代表你接受了该许可证和它的责任限制。按 '继续' 接受。</sys:String>
+本应用程序基于 GPLv3 许可证发布。使用本应用程序即表示您接受该许可证及其责任限制。按“继续”即表示接受。</sys:String>
     
     <!--Firmware selection-->
     <sys:String x:Key="fw_select_header">固件更新</sys:String>
@@ -659,18 +659,18 @@
 
 你正试图将 {0} 的固件写入到你的 {1} 上。这会导致耳机永久损坏。</sys:String>
     <sys:String x:Key="fw_select_confirm">你终止了在你的 '{1}' 上写入 '{0}'</sys:String>
-    <sys:String x:Key="fw_select_confirm_desc">确保这些信息是正确的，否则请按 '取消' 并仔细检查你的设置。
+    <sys:String x:Key="fw_select_confirm_desc">确认信息无误，否则点“取消”并重新检查设置。
 
-如果可能的话，在开始之前确保两只耳机都连接好。如果在传输更新时连接失败，也不会造成任何问题。在这种情况下，耳机会自动取消传输过程并退出固件更新模式。
+开始前请确保双耳已连接；传输中断不会造成故障，耳机会自动取消并退出更新模式。
 
-点击 '继续' 以开始更新。</sys:String>
+点击 “继续”开始更新。</sys:String>
   
     <!--Firmware transfer-->
     <sys:String x:Key="fw_upload_header">正在安装固件...</sys:String>
     <sys:String x:Key="fw_upload_progress_session">创建新的会话...</sys:String>
     <sys:String x:Key="fw_upload_progress_prepare">准备上传...</sys:String>
     <sys:String x:Key="fw_upload_progress_finished">上传结束</sys:String>
-    <sys:String x:Key="fw_upload_progress_finished_desc">更新已经成功传输，目前正在设备上安装。在此过程中，你的耳机会在 30 秒内无反应。大多数情况下，板载更新过程结束后，耳机会尝试自动重新连接。</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished_desc">更新已成功传输，当前正在设备上安装。在此过程中，您的耳机将在大约 30 秒内无响应。大多数情况下，耳机在内部更新流程完成后会自动尝试重新连接。</sys:String>
     <sys:String x:Key="fw_upload_progress_error">上传固件错误</sys:String>
     <sys:String x:Key="fw_upload_progress">上传固件 {0}% ...</sys:String>
     <sys:String x:Key="fw_upload_progress_size">({0}/{1} KB)</sys:String>
@@ -700,7 +700,7 @@
     <!--Spatial test-->
     <sys:String x:Key="spatial_header">空间传感器</sys:String>
     <!--Note: Quaternion = 4-dimensional vector-->
-    <sys:String x:Key="spatial_dump_quaternion">原始四维向量：</sys:String>
+    <sys:String x:Key="spatial_dump_quaternion">原始四元数向量：</sys:String>
     <!--Note: RPY = Roll, pitch, yaw-->
     <sys:String x:Key="spatial_dump_rpy">欧拉偏转角 RPY 值：</sys:String>
     
