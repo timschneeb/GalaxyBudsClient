@@ -428,7 +428,7 @@
     <sys:String x:Key="settings_transitions">轉換</sys:String>
     <sys:String x:Key="settings_transitions_description">開啟幻燈片轉換</sys:String>
     <sys:String x:Key="settings_localization_disable">選擇語言</sys:String>
-    <sys:String x:Key="settings_localization_disable_description">強制英文</sys:String>
+    <sys:String x:Key="settings_localization_description">變更應用程式語言</sys:String>
     <sys:String x:Key="settings_minimize_tray">最小化到工作列</sys:String>
     <sys:String x:Key="settings_minimize_tray_description">保持在後台運行而不是終止應用程式</sys:String>
     <sys:String x:Key="settings_realistic_earbud_icons">使用逼真的耳機圖示</sys:String>
@@ -459,7 +459,7 @@
     <sys:String x:Key="settings_cpopup_compact">精簡模式</sys:String>
     <sys:String x:Key="settings_cpopup_compact_description">隱藏彈出視窗的標題以節省空間</sys:String>
     <sys:String x:Key="settings_cpopup_position">位置</sys:String>
-    <sys:String x:Key="settings_cpopup_position_placeholder">未知</sys:String>
+    <sys:String x:Key="settings_cpopup_position_description">選擇連線彈出視窗的位置</sys:String>
     <sys:String x:Key="settings_cpopup_demo">顯示彈出視窗範例</sys:String>
 
     <!--Settings >>> Crowdsourcing settings-->
@@ -572,8 +572,10 @@
     <sys:String x:Key="adv_header">耳機設定</sys:String>
     <sys:String x:Key="adv_seamless">流暢耳機連接</sys:String>
     <sys:String x:Key="adv_seamless_desc">無須中斷連接耳機或開啟配對模式即可快速切換附近裝置。</sys:String>
-    <sys:String x:Key="adv_resume_playback">入耳偵測</sys:String>
-    <sys:String x:Key="adv_resume_playback_desc">配戴時自動播放/暫停媒體（僅限桌面）</sys:String>
+    <sys:String x:Key="adv_pause_playback">取下耳機時暫停播放</sys:String>
+    <sys:String x:Key="adv_pause_playback_desc">當兩側距離感應器皆未遮蔽時，傳送全域播放／暫停事件（僅限桌面版）</sys:String>
+    <sys:String x:Key="adv_resume_playback">戴上耳機時恢復播放</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">當至少一側距離感應器被遮蔽時，傳送全域播放／暫停事件（僅限桌面版）</sys:String>
     <sys:String x:Key="adv_sidetone">通話期間使用環境音效</sys:String>
     <sys:String x:Key="adv_sidetone_desc">通話期間清楚聽見自己的聲音。如此可讓長時間通話更加舒適，並有助您避免不慎提高音量。</sys:String>
     <sys:String x:Key="adv_callpath">通話入耳偵測</sys:String>
