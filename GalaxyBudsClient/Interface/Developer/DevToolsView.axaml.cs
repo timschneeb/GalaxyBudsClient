@@ -39,7 +39,10 @@ public partial class DevToolsView : UserControl
         HexEditor.FontFamily = monoFonts;
         
         DataContext = new DevToolsViewModel();
-        
+        SendMsgId.ItemsSource = Enum.GetValues<MsgIds>().OrderBy(x => x.ToString()).ToList();
+        // Default the message-type selector to Request so it doesn't require a pick every time
+        SendMsgType.SelectedItem = MsgTypes.Request;
+
         ViewModel.PropertyChanged += OnPropertyChanged;
         BluetoothImpl.Instance.NewDataReceived += OnNewDataReceived;
     }
@@ -104,7 +107,12 @@ public partial class DevToolsView : UserControl
 
     protected override void OnUnloaded(RoutedEventArgs e)
     {
+        // Remove every handler added in the ctor / SelectProtocol — otherwise, if the view is
+        // unloaded while the alternative protocol is active, NewDataReceivedAlternative (and the
+        // VM PropertyChanged) keep this dead view alive on the BluetoothImpl singleton.
         BluetoothImpl.Instance.NewDataReceived -= OnNewDataReceived;
+        BluetoothImpl.Instance.NewDataReceivedAlternative -= OnNewDataReceived;
+        ViewModel.PropertyChanged -= OnPropertyChanged;
 
         HexEditor.Document = null;
         ViewModel.MsgTableDataSource.Clear();
@@ -122,9 +130,22 @@ public partial class DevToolsView : UserControl
         }
     }
        
+    private void OpenMsgIdList_Click(object? sender, RoutedEventArgs e)
+    {
+        SendMsgId.Text ??= string.Empty;
+        SendMsgId.PopulateComplete();
+        SendMsgId.IsDropDownOpen = true;
+    }
+
     private void SendMsg_Click(object? sender, RoutedEventArgs e)
     {
-        if (SendMsgId.SelectedItem == null || SendMsgType.SelectedItem == null)
+        // AutoCompleteBox only sets SelectedItem when a dropdown suggestion is committed;
+        // typed or edited text must be parsed from Text to avoid null/stale SelectedItem.
+        MsgIds? msgId = Enum.TryParse<MsgIds>(SendMsgId.Text?.Trim() ?? "", ignoreCase: true, out var parsedMsgId)
+            ? parsedMsgId
+            : SendMsgId.SelectedItem as MsgIds?;
+
+        if (msgId == null || SendMsgType.SelectedItem == null)
         {
             _ = new MessageBox
             {
@@ -151,7 +172,7 @@ public partial class DevToolsView : UserControl
 
         if (ViewModel.UseAlternativeProtocol)
         {
-            var msg = new SppAlternativeMessage((MsgIds?)SendMsgId.SelectedItem ?? MsgIds.UNKNOWN_0,
+            var msg = new SppAlternativeMessage(msgId.Value,
                 payload,
                 (MsgTypes?)SendMsgType.SelectedItem ?? MsgTypes.Request);
             _ = BluetoothImpl.Instance.SendAltAsync(msg);
@@ -160,7 +181,7 @@ public partial class DevToolsView : UserControl
         {
             var msg = new SppMessage
             {
-                Id = (MsgIds?)SendMsgId.SelectedItem ?? MsgIds.UNKNOWN_0,
+                Id = msgId.Value,
                 Payload = payload,
                 Type = (MsgTypes?)SendMsgType.SelectedItem ?? MsgTypes.Request
             };

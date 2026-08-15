@@ -67,6 +67,14 @@ public partial class BudsPopup : Window
         base.OnOpened(e);
     }
 
+    protected override void OnClosed(EventArgs e)
+    {
+        // The popup is recreated each cycle (Hide -> Close), so detach from the static settings
+        // event or every closed instance leaks and keeps receiving settings changes.
+        Settings.MainSettingsPropertyChanged -= OnMainSettingsPropertyChanged;
+        base.OnClosed(e);
+    }
+
     private void Window_OnPointerPressed(object? sender, PointerPressedEventArgs e)
     {
         ClickedEventHandler?.Invoke(this, EventArgs.Empty);

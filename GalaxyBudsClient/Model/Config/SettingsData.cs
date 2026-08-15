@@ -28,6 +28,15 @@ public class Device : ReactiveObject
     [ReactiveUI.Fody.Helpers.Reactive] public string MacAddress { set; get; } = string.Empty;
     [ReactiveUI.Fody.Helpers.Reactive] public string Name { set; get; } = string.Empty;
     [ReactiveUI.Fody.Helpers.Reactive] public DeviceIds? DeviceColor { set; get; }
+
+    // Custom EQ band table is not retained by the firmware across power cycles, so persist it
+    // here and re-apply on connect (see App.OnExtendedStatusUpdate). CustomEqualizerBands holds the
+    // currently-active slot's curve (what gets re-pushed). The firmware has only one custom table,
+    // so multiple "Custom" slots are stored app-side here and the active one is pushed on selection.
+    [ReactiveUI.Fody.Helpers.Reactive] public bool CustomEqualizerEnabled { set; get; }
+    [ReactiveUI.Fody.Helpers.Reactive] public int[]? CustomEqualizerBands { set; get; }
+    [ReactiveUI.Fody.Helpers.Reactive] public int CustomEqualizerActiveSlot { set; get; }
+    [ReactiveUI.Fody.Helpers.Reactive] public int[][]? CustomEqualizerSlots { set; get; }
 }
     
 /*

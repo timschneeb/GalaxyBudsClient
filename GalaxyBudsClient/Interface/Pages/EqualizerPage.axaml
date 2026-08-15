@@ -22,24 +22,87 @@
             </Interaction.Behaviors>
             
             <controls:SettingsGroup>
-                <controls:SettingsSwitchItem
-                    Content="{ext:Translate {x:Static i18N:Keys.EqEnable}}"
-                    Description="{ext:Translate {x:Static i18N:Keys.EqEnableDescription}}"
+                <controls:SettingsComboBoxItem
+                    Content="{ext:Translate {x:Static i18N:Keys.EqHeader}}"
+                    Description="Choose a preset, Custom for your own 9-band curve, or Off"
                     Symbol="DeviceEq"
-                    IsChecked="{Binding IsEqEnabled}" />
+                    ItemsSource="{Binding EqOptions}"
+                    DisplayMemberBinding="{Binding}"
+                    SelectedValue="{Binding SelectedEqOption}" />
+            </controls:SettingsGroup>
 
-                <controls:SettingsSliderItem
-                    Name="EqPreset"
-                    Content="{ext:Translate {x:Static i18N:Keys.EqPreset}}"
-                    Description="{Binding EqPreset, Converter={StaticResource EqPresetConverter}}"
-                    IconSource="{StaticResource IconPlaceholder}"
-                    IsEnabled="{Binding IsEqEnabled}"
-                    Maximum="{Binding MaximumEqPreset}"
-                    Value="{Binding EqPreset}">
-                    <Interaction.Behaviors>
-                        <ext:LocalizationAwareSliderBehavior Converter="{StaticResource EqPresetConverter}" />
-                    </Interaction.Behaviors>
-                </controls:SettingsSliderItem>
+            <controls:SettingsGroup>
+                <Interaction.Behaviors>
+                    <ext:RequiresFeatureBehavior Feature="CustomEqualizer" />
+                </Interaction.Behaviors>
+
+                <Border IsEnabled="{Binding IsCustomEqEnabled}" Margin="12,8">
+                    <Grid ColumnDefinitions="*,*,*,*,*,*,*,*,*">
+                        <StackPanel Grid.Column="0" Spacing="4" HorizontalAlignment="Stretch">
+                            <TextBlock Text="{Binding Band1}" HorizontalAlignment="Center" FontSize="12" />
+                            <Slider Orientation="Vertical" Height="180" HorizontalAlignment="Center"
+                                    Minimum="-10" Maximum="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                    Value="{Binding Band1}" />
+                            <TextBlock Text="63" HorizontalAlignment="Center" FontSize="11" Opacity="0.7" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Spacing="4" HorizontalAlignment="Stretch">
+                            <TextBlock Text="{Binding Band2}" HorizontalAlignment="Center" FontSize="12" />
+                            <Slider Orientation="Vertical" Height="180" HorizontalAlignment="Center"
+                                    Minimum="-10" Maximum="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                    Value="{Binding Band2}" />
+                            <TextBlock Text="125" HorizontalAlignment="Center" FontSize="11" Opacity="0.7" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Spacing="4" HorizontalAlignment="Stretch">
+                            <TextBlock Text="{Binding Band3}" HorizontalAlignment="Center" FontSize="12" />
+                            <Slider Orientation="Vertical" Height="180" HorizontalAlignment="Center"
+                                    Minimum="-10" Maximum="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                    Value="{Binding Band3}" />
+                            <TextBlock Text="250" HorizontalAlignment="Center" FontSize="11" Opacity="0.7" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="3" Spacing="4" HorizontalAlignment="Stretch">
+                            <TextBlock Text="{Binding Band4}" HorizontalAlignment="Center" FontSize="12" />
+                            <Slider Orientation="Vertical" Height="180" HorizontalAlignment="Center"
+                                    Minimum="-10" Maximum="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                    Value="{Binding Band4}" />
+                            <TextBlock Text="500" HorizontalAlignment="Center" FontSize="11" Opacity="0.7" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="4" Spacing="4" HorizontalAlignment="Stretch">
+                            <TextBlock Text="{Binding Band5}" HorizontalAlignment="Center" FontSize="12" />
+                            <Slider Orientation="Vertical" Height="180" HorizontalAlignment="Center"
+                                    Minimum="-10" Maximum="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                    Value="{Binding Band5}" />
+                            <TextBlock Text="1k" HorizontalAlignment="Center" FontSize="11" Opacity="0.7" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="5" Spacing="4" HorizontalAlignment="Stretch">
+                            <TextBlock Text="{Binding Band6}" HorizontalAlignment="Center" FontSize="12" />
+                            <Slider Orientation="Vertical" Height="180" HorizontalAlignment="Center"
+                                    Minimum="-10" Maximum="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                    Value="{Binding Band6}" />
+                            <TextBlock Text="2k" HorizontalAlignment="Center" FontSize="11" Opacity="0.7" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="6" Spacing="4" HorizontalAlignment="Stretch">
+                            <TextBlock Text="{Binding Band7}" HorizontalAlignment="Center" FontSize="12" />
+                            <Slider Orientation="Vertical" Height="180" HorizontalAlignment="Center"
+                                    Minimum="-10" Maximum="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                    Value="{Binding Band7}" />
+                            <TextBlock Text="4k" HorizontalAlignment="Center" FontSize="11" Opacity="0.7" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="7" Spacing="4" HorizontalAlignment="Stretch">
+                            <TextBlock Text="{Binding Band8}" HorizontalAlignment="Center" FontSize="12" />
+                            <Slider Orientation="Vertical" Height="180" HorizontalAlignment="Center"
+                                    Minimum="-10" Maximum="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                    Value="{Binding Band8}" />
+                            <TextBlock Text="8k" HorizontalAlignment="Center" FontSize="11" Opacity="0.7" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="8" Spacing="4" HorizontalAlignment="Stretch">
+                            <TextBlock Text="{Binding Band9}" HorizontalAlignment="Center" FontSize="12" />
+                            <Slider Orientation="Vertical" Height="180" HorizontalAlignment="Center"
+                                    Minimum="-10" Maximum="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                    Value="{Binding Band9}" />
+                            <TextBlock Text="16k" HorizontalAlignment="Center" FontSize="11" Opacity="0.7" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
             </controls:SettingsGroup>
 
             <controls:SettingsGroup>

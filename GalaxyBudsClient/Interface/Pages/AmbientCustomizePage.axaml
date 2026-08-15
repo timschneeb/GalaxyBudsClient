@@ -23,6 +23,7 @@
             
             <controls:SettingsGroup>
                 <controls:SettingsSliderItem
+                    Debounce="True"
                     Content="{ext:Translate {x:Static i18N:Keys.AsVolume}}"
                     Description="{Binding AmbientSoundVolume, Converter={StaticResource AmbientStrengthConverter}}"
                     Symbol="Gauge"
@@ -68,6 +69,7 @@
                     IsChecked="{Binding IsAmbientCustomizationEnabled}" />
 
                 <controls:SettingsSliderItem
+                    Debounce="True"
                     Content="{ext:Translate {x:Static i18N:Keys.NcAsCustomVolumeL}}"
                     Description="{Binding AmbientSoundVolumeLeft, Converter={StaticResource AmbientCustomStrengthConverter}}"
                     Symbol="ArrowStepInLeft"
@@ -80,6 +82,7 @@
                 </controls:SettingsSliderItem>
 
                 <controls:SettingsSliderItem
+                    Debounce="True"
                     Content="{ext:Translate {x:Static i18N:Keys.NcAsCustomVolumeR}}"
                     Description="{Binding AmbientSoundVolumeRight, Converter={StaticResource AmbientCustomStrengthConverter}}"
                     Symbol="ArrowStepInRight"
@@ -92,6 +95,7 @@
                 </controls:SettingsSliderItem>
                 
                 <controls:SettingsSliderItem
+                    Debounce="True"
                     Content="{ext:Translate {x:Static i18N:Keys.NcAsCustomTone}}"
                     Description="{Binding AmbientSoundTone, Converter={StaticResource AmbientToneConverter}}"
                     Symbol="SoundSource"
