@@ -1,0 +1,736 @@
+<!-- ReSharper disable InconsistentNaming -->
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- English name of this language -->
+    <sys:String x:Key="language_name_en">العربية</sys:String>
+
+    <!--:::::::: Source code ::::::::-->
+
+    <!--General-->
+    <sys:String x:Key="okay">حسناً</sys:String>
+    <sys:String x:Key="left">اليسار</sys:String>
+    <sys:String x:Key="right">اليمين</sys:String>
+    <sys:String x:Key="both">كلاهما</sys:String>
+    <sys:String x:Key="case">العلبة</sys:String>
+    <sys:String x:Key="error">خطأ</sys:String>
+    <sys:String x:Key="cancel">إلغاء</sys:String>
+    <sys:String x:Key="apply">تطبيق</sys:String>
+    <sys:String x:Key="select">تحديد</sys:String>
+    <sys:String x:Key="notset">غير محدد</sys:String>
+    <sys:String x:Key="unknown">غير معروف</sys:String>
+    <sys:String x:Key="back">رجوع</sys:String>
+    <sys:String x:Key="next">التالي</sys:String>
+    <sys:String x:Key="prev">السابق</sys:String>
+    <sys:String x:Key="off">إيقاف</sys:String>
+    <sys:String x:Key="on">تشغيل</sys:String>
+    <sys:String x:Key="hint">تلميح</sys:String>
+    <sys:String x:Key="help">مساعدة</sys:String>
+    <sys:String x:Key="important">هام</sys:String>
+    <sys:String x:Key="home">الرئيسية</sys:String>
+    <sys:String x:Key="read_failed">فشل قراءة الملف. تم رفض الوصول.</sys:String>
+    <sys:String x:Key="please_wait">يرجى الانتظار...</sys:String>
+    <sys:String x:Key="value_left_right_inline">اليسار: {0}، اليمين: {1}</sys:String>
+    <sys:String x:Key="value_left_right_multiline">اليسار: {0}
+اليمين: {1}</sys:String>
+    <sys:String x:Key="other_x">آخر ({0})</sys:String>
+    <sys:String x:Key="no_data_stored">لا توجد بيانات مخزنة</sys:String>
+    <sys:String x:Key="not_available">غير متوفر</sys:String>
+    <sys:String x:Key="last_updated_at_n">آخر تحديث في {0}</sys:String>
+    <sys:String x:Key="file_not_found">الملف غير موجود</sys:String>
+    <sys:String x:Key="nobluetoothdev">لم يتم العثور على محول بلوتوث. يرجى تمكين البلوتوث والمحاولة مرة أخرى.</sys:String>
+    <sys:String x:Key="feature_unsupported_platform">هذه الميزة غير مدعومة حاليًا على هذا النظام.</sys:String>
+
+    <sys:String x:Key="anc">إلغاء الضوضاء النشط</sys:String>
+    <sys:String x:Key="adaptive">تكيفي</sys:String>
+
+    <!--Dark Mode States-->
+    <sys:String x:Key="darkmode_disabled">إيقاف</sys:String>
+    <sys:String x:Key="darkmode_enabled">تشغيل</sys:String>
+    <sys:String x:Key="darkmode_blur_enabled">تشغيل، مع تأثير الضبابية (Blur)</sys:String>
+    <sys:String x:Key="darkmode_mica_enabled">تشغيل، مع تأثير ميكا (Mica)</sys:String>
+    <sys:String x:Key="darkmode_system">استخدام إعدادات النظام</sys:String>
+
+    <!--Connection popup-->
+    <sys:String x:Key="connpopup_placement_tl">أعلى اليسار</sys:String>
+    <sys:String x:Key="connpopup_placement_tc">أعلى الوسط</sys:String>
+    <sys:String x:Key="connpopup_placement_tr">أعلى اليمين</sys:String>
+    <sys:String x:Key="connpopup_placement_bl">أسفل اليسار</sys:String>
+    <sys:String x:Key="connpopup_placement_bc">أسفل الوسط</sys:String>
+    <sys:String x:Key="connpopup_placement_br">أسفل اليمين</sys:String>
+    <sys:String x:Key="connpopup_title">{1} الخاصة بـ {0}</sys:String>
+    <!--Note: If a pair of Buds+ is connected then a plus sign will be appended to connpopup_title-->
+
+    <!--Placement  (Buds+)-->
+    <sys:String x:Key="placement_disconnected">غير متصل</sys:String>
+    <sys:String x:Key="placement_wearing">موضوعة في الأذن</sys:String>
+    <sys:String x:Key="placement_not_wearing">خاملة</sys:String>
+    <sys:String x:Key="placement_in_case">في العلبة</sys:String>
+    <sys:String x:Key="placement_charging">جاري الشحن</sys:String>
+
+    <!--Touch options-->
+    <sys:String x:Key="touchoption_voice">المساعد الصوتي</sys:String>
+    <sys:String x:Key="touchoption_quickambientsound">الصوت المحيط السريع</sys:String>
+    <sys:String x:Key="touchoption_volume">مستوى الصوت</sys:String>
+    <sys:String x:Key="touchoption_volume_up">رفع الصوت</sys:String>
+    <sys:String x:Key="touchoption_volume_down">خفض الصوت</sys:String>
+    <sys:String x:Key="touchoption_ambientsound">الصوت المحيط</sys:String>
+    <sys:String x:Key="touchoption_switch_noisecontrols">تبديل عناصر التحكم بالضوضاء</sys:String>
+    <sys:String x:Key="touchoption_spotify">Spotify (أندرويد فقط)</sys:String>
+    <sys:String x:Key="touchoption_custom">إجراء مخصص...</sys:String>
+    <sys:String x:Key="touchoption_custom_prefix">إجراء مخصص:</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_event">تفعيل إجراء السماعة...</sys:String>
+    <sys:String x:Key="touchoption_custom_trigger_hotkey">الضغط على مفتاح اختصار...</sys:String>
+    <sys:String x:Key="touchoption_custom_external_app">تشغيل برنامج خارجي...</sys:String>
+
+    <!--Tray context menu-->
+    <sys:String x:Key="tray_unlock_touchpad">إلغاء قفل لوحة اللمس</sys:String>
+    <sys:String x:Key="tray_lock_touchpad">قفل لوحة اللمس</sys:String>
+    <sys:String x:Key="tray_enable_ambient_sound">تفعيل الصوت المحيط</sys:String>
+    <sys:String x:Key="tray_disable_ambient_sound">تعطيل الصوت المحيط</sys:String>
+    <sys:String x:Key="tray_enable_eq">تفعيل معادل الصوت (EQ)</sys:String>
+    <sys:String x:Key="tray_disable_eq">تعطيل معادل الصوت (EQ)</sys:String>
+    <sys:String x:Key="tray_enable_anc">تفعيل إلغاء الضوضاء النشط</sys:String>
+    <sys:String x:Key="tray_disable_anc">تعطيل إلغاء الضوضاء النشط</sys:String>
+    <sys:String x:Key="tray_switch_noise">تبديل عناصر التحكم بالضوضاء</sys:String>
+    <sys:String x:Key="tray_quit">إغلاق</sys:String>
+
+    <!--:::::::: XAML files (static) ::::::::-->
+
+    <!--General-->
+    <sys:String x:Key="continue_button">متابعة</sys:String>
+
+    <!--Hotkey Recorder Dialog (Custom action)-->
+    <sys:String x:Key="hotrec_content">يرجى إدخال تركيبة المفاتيح (مع الاستمرار في الضغط):</sys:String>
+    <sys:String x:Key="hotrec_empty">لا يوجد</sys:String>
+    <sys:String x:Key="hotrec_note">ملاحظة: بسبب عزل الخصوصية لواجهة المستخدم (UIPI)، فقط التطبيقات ذات مستوى الصلاحيات المماثل أو الأدنى يمكنها استقبال أوامر المفاتيح بشكل صحيح.</sys:String>
+
+    <!--Hotkey Action Builder Dialog-->
+    <sys:String x:Key="hotkey_edit_invalid">تحديد مفتاح اختصار غير صالحة</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_desc">يرجى اختيار مفتاح واحد على الأقل ومعدّل مفتاح (Modifier)</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_mod">المعدّل مفقود</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action">إجراء غير صالحة</sys:String>
+    <sys:String x:Key="hotkey_edit_invalid_action_desc">يرجى اختيار إجراء</sys:String>
+    <sys:String x:Key="hotkey_edit_modifier">المعدّلات (Modifiers)</sys:String>
+    <sys:String x:Key="hotkey_edit_keys">المفاتيح</sys:String>
+    <sys:String x:Key="hotkey_edit_action">الإجراء</sys:String>
+    <sys:String x:Key="hotkey_edit_preview">معاينة الاختصار:</sys:String>
+
+    <!--Hotkey page-->
+    <sys:String x:Key="hotkey_header">اختصارات لوحة المفاتيح</sys:String>
+    <sys:String x:Key="hotkey_add_short">جديد</sys:String>
+    <sys:String x:Key="hotkey_add">تعيين اختصار جديد</sys:String>
+    <sys:String x:Key="hotkey_empty">لا توجد اختصارات معينة</sys:String>
+    <sys:String x:Key="hotkey_empty_desc">أنشئ اختصار لوحة مفاتيح جديد بالضغط على الزر أعلاه</sys:String>
+    <sys:String x:Key="hotkey_edit">تعديل</sys:String>
+    <sys:String x:Key="hotkey_edit_long">تعديل الاختصار الحالي</sys:String>
+    <sys:String x:Key="hotkey_delete">حذف</sys:String>
+    <sys:String x:Key="hotkey_add_error">فشل تسجيل/تحديث المفاتيح الاختصارية</sys:String>
+    <sys:String x:Key="hotkey_add_error_context">الاختصار المتأثر:</sys:String>
+    <sys:String x:Key="hotkey_add_error_duplicate">تركيبة المفاتيح المختارة مسجلة بالفعل كاختصار بواسطة هذا التطبيق أو برنامج آخر. يرجى اختيار تركيبة أخرى.</sys:String>
+    <sys:String x:Key="hotkey_add_error_unknown">استجاب نظام التشغيل بالخطأ '{0}'</sys:String>
+
+    <!--EventDispatcher module-->
+    <sys:String x:Key="event_none">لا يوجد</sys:String>
+    <sys:String x:Key="event_ambient_toggle">تبديل الصوت المحيط</sys:String>
+    <sys:String x:Key="event_ambient_volume_up">رفع مستوى الصوت المحيط</sys:String>
+    <sys:String x:Key="event_ambient_volume_down">خفض مستوى الصوت المحيط</sys:String>
+    <sys:String x:Key="event_eq_toggle">تبديل معادل الصوت</sys:String>
+    <sys:String x:Key="event_eq_switch">التنقل بين الإعدادات المسبقة للمعادل</sys:String>
+    <sys:String x:Key="event_anc_toggle">تبديل إلغاء الضوضاء</sys:String>
+    <sys:String x:Key="event_anc_switch_sensitivity">تبديل حساسية إلغاء الضوضاء (ANC)</sys:String>
+    <sys:String x:Key="event_nc_switch_one">تبديل التحكم بالضوضاء باستخدام سماعة واحدة</sys:String>
+    <sys:String x:Key="event_touch_lock_toggle">تبديل قفل لوحة اللمس</sys:String>
+    <sys:String x:Key="event_double_edge_touch_toggle">تبديل ميزة اللمس المزدوج على الحافة</sys:String>
+    <sys:String x:Key="event_conversation_toggle">تبديل كشف المحادثات</sys:String>
+    <sys:String x:Key="event_start_stop_find">بدء/إيقاف البحث عن السماعات</sys:String>
+    <sys:String x:Key="event_start_find">بدء البحث عن السماعات</sys:String>
+    <sys:String x:Key="event_stop_find">إيقاف البحث عن السماعات</sys:String>
+    <sys:String x:Key="event_paring_mode">وضع الاقتران</sys:String>
+    <sys:String x:Key="event_media_play">تشغيل الوسائط</sys:String>
+    <sys:String x:Key="event_media_pause">إيقاف مؤقت للوسائط</sys:String>
+    <sys:String x:Key="event_media_play_pause">تشغيل/إيقاف مؤقت للوسائط</sys:String>
+    <sys:String x:Key="event_manager_visible">إظهار/إخفاء نافذة المدير</sys:String>
+    <sys:String x:Key="event_display_battery_popup">عرض نافذة البطارية المنبثقة</sys:String>
+    <sys:String x:Key="event_connect">الاتصال بالجهاز</sys:String>
+
+    <!--Welcome page-->
+    <sys:String x:Key="welcome_textblock_header">أهلاً بك!</sys:String>
+    <sys:String x:Key="welcome_register">إعداد سماعاتك</sys:String>
+    <sys:String x:Key="welcome_register_desc">اختر وسجّل سماعات Galaxy Buds الخاصة بك</sys:String>
+    <sys:String x:Key="welcome_textblock_p1">برنامج إدارة Galaxy Buds هذا غير رسمي ولا ينتمي لشركة Samsung بأي شكل من الأشكال.
+تم تصميم هذا البرنامج لتوفير ميزات أكثر بكثير مقارنة بتطبيق Samsung Wearable الرسمي. بعض الميزات مثل 'وضع الألعاب' تعمل فقط على هواتف Samsung ولا يمكن تمكينها على أجهزة الكمبيوتر.</sys:String>
+    <sys:String x:Key="welcome_android_hint_title">معلومات هامة لمستخدمي أندرويد</sys:String>
+    <sys:String x:Key="welcome_android_hint">تم تصميم هذا التطبيق في الأصل للاستخدام على أجهزة الكمبيوتر المكتبي. الميزات التي تتطلب عمل التطبيق في الخلفية، مثل إجراءات اللمس المخصصة وإحصائيات البطارية، غير متوفرة حاليًا في هذا الإصدار.
+إذا كان تطبيق Samsung Wearable الرسمي يعمل جنبًا إلى جنب مع هذا التطبيق، فقد تحدث مشاكل في الاتصال. يرجى التأكد من إغلاق التطبيق الرسمي بشكل صحيح قبل استخدام هذا التطبيق.</sys:String>
+
+    <!--Main page-->
+    <sys:String x:Key="mainpage_header">الرئيسية</sys:String>
+    <sys:String x:Key="mainpage_corrupt_data">تم استلام بيانات تالفة. جاري إعادة الاتصال...</sys:String>
+    <sys:String x:Key="mainpage_fit_test">اختبار ملاءمة السماعة للأذن</sys:String>
+    <sys:String x:Key="mainpage_find_my_earbuds">البحث عن سماعاتي</sys:String>
+    <sys:String x:Key="mainpage_touchpad">لوحة اللمس</sys:String>
+    <sys:String x:Key="mainpage_ambient_sound">الصوت المحيط</sys:String>
+    <sys:String x:Key="mainpage_noise">التحكم بالضوضاء</sys:String>
+    <sys:String x:Key="mainpage_equalizer">معادل الصوت (EQ)</sys:String>
+    <sys:String x:Key="mainpage_advanced">الإعدادات المتقدمة</sys:String>
+    <sys:String x:Key="mainpage_system">النظام</sys:String>
+
+    <!--Device selection page (setup)-->
+    <sys:String x:Key="devsel_header">اختر سماعاتك</sys:String>
+    <sys:String x:Key="devsel_manual_pair_title">هل جهازك غير مدرج بالقائمة؟</sys:String>
+    <sys:String x:Key="devsel_manual_pair_description">تأكد من مقترنة سماعاتك مسبقاً. إذا استمر عدم التعرف عليها، جرب خيار الاتصال اليدوي.</sys:String>
+    <sys:String x:Key="devsel_manual_pair">الاتصال اليدوي</sys:String>
+    <sys:String x:Key="devsel_nodevices">يرجى توصيل واقتران سماعاتك أولاً</sys:String>
+    <sys:String x:Key="devsel_nodevices_title">لم يتم العثور على أجهزة مقترنة</sys:String>
+    <sys:String x:Key="devsel_invalid_selection">يرجى تحديد جهاز صالحة</sys:String>
+    <sys:String x:Key="devsel_winrt_title">استخدام محرك البلوتوث البديل</sys:String>
+    <sys:String x:Key="devsel_winrt">استقرار أفضل بكثير، ولكنه قد لا يعمل على جميع أجهزة الكمبيوتر مع بعض محولات البلوتوث (قد يتطلب إعادة تشغيل!)</sys:String>
+
+    <!--Device page-->
+    <sys:String x:Key="devices_header">الأجهزة المقترنة</sys:String>
+    <sys:String x:Key="devices_new">جديد</sys:String>
+    <sys:String x:Key="devices_new_long">إقران جهاز جديد</sys:String>
+    <sys:String x:Key="devices_select_inactive">تحديد</sys:String>
+    <sys:String x:Key="devices_select_active">محدد</sys:String>
+    <sys:String x:Key="devices_delete">حذف</sys:String>
+    <sys:String x:Key="devices_delete_long">حذف الجهاز</sys:String>
+    <sys:String x:Key="devices_delete_confirmation">هل أنت تأكد من أنك تريد إزالة هذا الجهاز؟</sys:String>
+    <sys:String x:Key="devices_settings_link">إدارة الأجهزة المقترنة</sys:String>
+    <sys:String x:Key="devices_settings_link_desc">إضافة أو إزالة أو تحديد جهاز رئيسي</sys:String>
+
+    <!--Touchpad gestures-->
+    <sys:String x:Key="touchpad_gesture_header">تمكين إيماءات لوحة اللمس</sys:String>
+    <sys:String x:Key="touchpad_gesture_single">نقرة واحدة</sys:String>
+    <sys:String x:Key="touchpad_gesture_single_desc">تشغيل أو إيقاف مؤقت للمسار</sys:String>
+    <sys:String x:Key="touchpad_gesture_double">نقرتان</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_desc">تشغيل المسار التالي</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple">ثلاث نقرات</sys:String>
+    <sys:String x:Key="touchpad_gesture_triple_desc">تشغيل المسار السابق</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold">اللمس مع الاستمرار</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_desc">تنفيذ إجراء مخصص</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_for_call">نقرتان أثناء المكالمة</sys:String>
+    <sys:String x:Key="touchpad_gesture_double_for_call_desc">الرد على المكالمة أو إنهاؤها</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call">اللمس مع الاستمرار أثناء المكالمة</sys:String>
+    <sys:String x:Key="touchpad_gesture_hold_for_call_desc">رفض المكالمة</sys:String>
+
+    <!--Touchpad page-->
+    <sys:String x:Key="touchpad_header">لوحة اللمس</sys:String>
+    <sys:String x:Key="touchpad_lock">قفل لوحة اللمس</sys:String>
+    <sys:String x:Key="touchpad_left_action">إجراء الضغط المطول على اليسار</sys:String>
+    <sys:String x:Key="touchpad_right_action">إجراء الضغط المطول على اليمين</sys:String>
+    <sys:String x:Key="touchpad_default_action">إجراء اللمس المدمج</sys:String>
+
+    <sys:String x:Key="touchpad_gestures">قفل اللمس المتقدم</sys:String>
+    <sys:String x:Key="touchpad_gestures_description">تعطيل إيماءات اللمس الافتراضية</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume">النقر المزدوج على حافة السماعة</sys:String>
+    <sys:String x:Key="touchpad_double_tap_volume_description">انقر مرتين على حافة السماعة اليسرى أو اليمنى لخفض مستوى الصوت أو رفعه</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode">وضع تبديل التحكم بالضوضاء</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_l">وضع تبديل التحكم بالضوضاء (اليسار)</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_r">وضع تبديل التحكم بالضوضاء (اليمين)</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_desc">اختر الأوضاع التي تريد التنقل بينها</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb">إلغاء الضوضاء ↔ الصوت المحيط</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_off">إلغاء الضوضاء ↔ إيقاف</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_off">الصوت المحيط ↔ إيقاف</sys:String>
+
+    <!--Custom touchpad action page-->
+    <sys:String x:Key="cact_header">تحديد إجراء مخصص للضغط المطول</sys:String>
+    <sys:String x:Key="cact_external_app_dialog_title">حدد ملفًا تنفيذيًا...</sys:String>
+    <sys:String x:Key="cact_action">إجراء مخصص</sys:String>
+    <sys:String x:Key="cact_function_param">الوظيفة</sys:String>
+    <sys:String x:Key="cact_hotkey_param">مفتاح الاختصار</sys:String>
+    <sys:String x:Key="cact_path_param">مسار الملف</sys:String>
+    <sys:String x:Key="cact_notice_content_p1">الإجراءات المخصصة متاحة فقط أثناء عمل هذا التطبيق في الخلفية.</sys:String>
+    <sys:String x:Key="cact_notice_content_p2">ليس لها أي تأثير على أجهزة أندرويد أو الأجهزة الأخرى.</sys:String>
+
+    <!--System/Self-Test-->
+    <sys:String x:Key="system_overview_header">النظام</sys:String>
+    <sys:String x:Key="system_header">معلومات النظام</sys:String>
+    <sys:String x:Key="system_selftest">إجراء اختبار ذاتي</sys:String>
+    <sys:String x:Key="system_selftest_desc">التحقق مما إذا كانت جميع وحدات سماعاتك تعمل بشكل صحيح</sys:String>
+    <sys:String x:Key="system_factory_reset">إعادة ضبط المصنع</sys:String>
+    <sys:String x:Key="system_factory_reset_desc">استعادة إعدادات المصنع لسماعاتك وإلغاء الاتصال</sys:String>
+    <sys:String x:Key="system_pairing_mode">الدخول في وضع الاقتران</sys:String>
+    <sys:String x:Key="system_pairing_mode_desc">فصل السماعات عن هذا الكمبيوتر وجعلها مرئية للأجهزة الأخرى</sys:String>
+    <sys:String x:Key="system_trace_core_dump">تنزيل سجلات التتبع وتفريغ الذاكرة (Coredumps)</sys:String>
+    <sys:String x:Key="system_trace_core_dump_desc">استخراج بيانات تصحيح الأخطاء الخام من سماعاتك</sys:String>
+    <sys:String x:Key="system_hidden_at_mode">إعدادات النظام الخفية</sys:String>
+    <sys:String x:Key="system_hidden_at_mode_desc">تعديل الإعدادات المخفية مثل الأرقام التسلسلية وحالة UART</sys:String>
+    <sys:String x:Key="system_info">عرض معلومات النظام</sys:String>
+    <sys:String x:Key="system_info_desc">عرض معلومات تفصيلية عن سماعاتك</sys:String>
+    <sys:String x:Key="system_flasher">تثبيت تحديثات البرامج الثابتة (Firmware)</sys:String>
+    <sys:String x:Key="system_flasher_desc">ترقية، التراجع عن الترقية، أو تثبيت ملفات البرامج الثابتة المخصصة</sys:String>
+    <sys:String x:Key="system_spatial">اختبار المستشعر المكاني</sys:String>
+    <sys:String x:Key="system_spatial_desc">قراءة بيانات تتبع الرأس المكانية المستخدمة للصوت ثلاثي الأبعاد</sys:String>
+    <sys:String x:Key="system_usage_reports">تقارير الاستخدام والقياسات</sys:String>
+    <sys:String x:Key="system_usage_reports_desc">عرض تقارير الاستخدام المقدمة من السماعات</sys:String>
+    <sys:String x:Key="system_battery_statistics">إحصائيات البطارية</sys:String>
+    <sys:String x:Key="system_battery_statistics_desc">جمع وعرض إحصائيات استخدام البطارية</sys:String>
+
+    <sys:String x:Key="system_battery_type_unknown">غير محدد</sys:String>
+    <sys:String x:Key="system_waiting_for_device">في انتظار الاستجابة...</sys:String>
+    <sys:String x:Key="system_no_response">لا توجد استجابة من السماعات</sys:String>
+
+    <sys:String x:Key="system_hwver">إصدار العتاد (Hardware)</sys:String>
+    <sys:String x:Key="system_swver">إصدار البرمجيات (Software)</sys:String>
+    <sys:String x:Key="system_cradle_swver">إصدار برمجيات العلبة</sys:String>
+    <sys:String x:Key="system_cradle_serial">الرقم التسلسلي للعلبة</sys:String>
+    <sys:String x:Key="system_touchver">إصدار برمجيات اللمس</sys:String>
+    <sys:String x:Key="system_protover">مراجعة البروتوكول</sys:String>
+    <sys:String x:Key="system_btaddr">عناوين البلوتوث</sys:String>
+    <sys:String x:Key="system_btaddr_template">العنوان المحلي: {0}، عنوان القرين: {1}</sys:String>
+    <sys:String x:Key="system_serial">الأرقام التسلسلية</sys:String>
+    <sys:String x:Key="system_build_info">سلسلة البناء (Build string)</sys:String>
+    <sys:String x:Key="system_battery_type">نوع البطارية</sys:String>
+    <sys:String x:Key="system_sku">رمز وحدة الاحتفاظ بالمخزون (SKU)</sys:String>
+    <sys:String x:Key="system_proximity">قياس التقارب</sys:String>
+    <sys:String x:Key="system_thermo">قياس المحرار (Thermistor)</sys:String>
+    <sys:String x:Key="system_hall">قياس مستشعر هول (Hall)</sys:String>
+    <sys:String x:Key="system_accel">حالة مقياس التسارع</sys:String>
+    <!--Note: system_accel only used on the self-test page-->
+    <sys:String x:Key="system_adc_soc">حالة شحن ADC</sys:String>
+    <!--Context: SoC = State of charge (battery percentage)-->
+    <sys:String x:Key="system_adc_voltage">جهد ADC</sys:String>
+    <sys:String x:Key="system_adc_current">تيار ADC</sys:String>
+
+    <sys:String x:Key="selftest_header">الاختبار الذاتي</sys:String>
+    <sys:String x:Key="selftest_pass">نجح</sys:String>
+    <sys:String x:Key="selftest_fail">فشل</sys:String>
+    <sys:String x:Key="selftest_pass_long">تم اجتياز جميع الفحوصات بنجاح</sys:String>
+    <sys:String x:Key="selftest_fail_long">فشلت واحدة أو أكثر من الفحوصات</sys:String>
+
+    <sys:String x:Key="coredump_header">جاري تفريغ البيانات...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_prepare">جاري التحضير للتنزيل...</sys:String>
+    <sys:String x:Key="coredump_dl_progress_finished">اكتمل التنزيل</sys:String>
+    <sys:String x:Key="coredump_dl_trace_progress">جاري تنزيل تفريغ التتبع... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_core_progress">جاري تنزيل تفريغ الذاكرة الأساسي... {0}%</sys:String>
+    <sys:String x:Key="coredump_dl_progress_size">({0}/{1} بايت)</sys:String>
+    <sys:String x:Key="coredump_dl_note">يتم إيقاف التدفق الصوتي مؤقتًا أثناء التنزيل. سيتم فصل سماعاتك فور انتهاء النقل، يرجى إعادة توصيلها يدويًا.
+بمجرد الانتهاء، سيُطلب منك تحديد دليل للحفظ لجميع البيانات المجمعة.
+
+إذا علقت عملية النقل أو انفصل الجهاز بشكل مبتسر، فستحتاج إلى إعادة بدء التنزيل. هذه الميزة غير مستقرة حاليًا بشكل كبير.</sys:String>
+    <sys:String x:Key="coredump_dl_save_fail_title">فشل حفظ ملف التفريغ</sys:String>
+    <sys:String x:Key="coredump_dl_save_fail">تعذر نسخ ملف التفريغ من الموقع المؤقت. السبب: {0}</sys:String>
+    <sys:String x:Key="coredump_dl_save_success_title">تم حفظ ملفات التفريغ بنجاح</sys:String>
+    <sys:String x:Key="coredump_dl_save_success">تم كتابة {0} من ملفات التفريغ إلى '{1}'</sys:String>
+    <sys:String x:Key="coredump_dl_save_dialog_title">حدد مجلد التنزيل...</sys:String>
+
+    <!-- Hidden AT modes -->
+    <sys:String x:Key="hidden_mode_warning">توخَّ الحذر</sys:String>
+    <sys:String x:Key="hidden_mode_warning_desc">بعض التغييرات التي يتم إجراؤها على هذه الصفحة لا يمكن استعادتها بواسطة إعادة ضبط المصنع. لا تدعم جميع الطرازات هذه الإعدادات.</sys:String>
+    <sys:String x:Key="hidden_mode_target">الجهاز المستهدف: السماعة {0}</sys:String> <!-- {0} = Left or Right -->
+    <sys:String x:Key="hidden_mode_target_l_desc">لتعديل سماعة الأذن اليسرى، ضع السماعة اليمنى في العلبة وأغلقها.</sys:String>
+    <sys:String x:Key="hidden_mode_target_r_desc">لتعديل سماعة الأذن اليمنى، ضع السماعة اليسرى في العلبة وأغلقها.</sys:String>
+    <sys:String x:Key="hidden_mode_input_wrong_length">يجب أن تكون القيمة الجديدة بطول {0} من الأحرف بالضبط.</sys:String>
+    <sys:String x:Key="hidden_mode_uart_on_confirm">تم تمكين منفذ UART بنجاح</sys:String>
+    <sys:String x:Key="hidden_mode_uart_off_confirm">تم تعطيل منفذ UART بنجاح</sys:String>
+    <sys:String x:Key="hidden_mode_uart">تمكين منفذ UART</sys:String>
+    <sys:String x:Key="hidden_mode_uart_desc">تمكين منفذ UART الفيزيائي مؤقتًا على لوحة الدائرة للسماعة المستهدفة لأغراض تصحيح الأخطاء</sys:String>
+    <sys:String x:Key="hidden_mode_power">قائمة الطاقة</sys:String>
+    <sys:String x:Key="hidden_mode_power_desc">إيقاف التشغيل، إعادة التشغيل أو وضع السماعة المستهدفة في وضع السكون</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change">تغيير الرقم التسلسلي</sys:String>
+    <sys:String x:Key="hidden_mode_serial_change_desc">يغير الرقم التسلسلي للسماعة المستهدفة الحالية</sys:String>
+    <sys:String x:Key="hidden_mode_did_change">تغيير رقم DID واللون</sys:String>
+    <sys:String x:Key="hidden_mode_did_change_desc">يغير معرّف طراز الجهاز للسماعة المستهدفة الحالية</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change">تغيير رمز SKU</sys:String>
+    <sys:String x:Key="hidden_mode_sku_change_desc">يغير رمز المنتج للسماعة المستهدفة الحالية</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_addr_change">تغيير عنوان البلوتوث للقرين</sys:String>
+    <sys:String x:Key="hidden_mode_bt_peer_change_desc">يغير عنوان البلوتوث للقرين بالسماعة المستهدفة الحالية</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_addr_change">تغيير عنوان البلوتوث المحلي</sys:String>
+    <sys:String x:Key="hidden_mode_bt_local_change_desc">يغير عنوان البلوتوث المحلي بالسماعة المستهدفة الحالية</sys:String>
+    <sys:String x:Key="hidden_mode_terminal">طرفية الأوامر المخفية</sys:String>
+    <sys:String x:Key="hidden_mode_terminal_desc">إرسال أوامر AT مخصصة إلى السماعة المستهدفة الحالية</sys:String>
+
+    <sys:String x:Key="power_menu_hint">ستتأثر فقط سماعة الأذن المستهدفة حاليًا.</sys:String>
+    <sys:String x:Key="power_menu_reboot">إعادة التشغيل</sys:String>
+    <sys:String x:Key="power_menu_shutdown">إيقاف التشغيل</sys:String>
+    <sys:String x:Key="power_menu_sleep">وضع السكون للمصنع</sys:String>
+    
+    <sys:String x:Key="at_terminal_cmd_id">معرّف الأمر</sys:String>
+    <sys:String x:Key="at_terminal_cmd_param">معامل الأمر (اختياري)</sys:String>
+    <sys:String x:Key="at_terminal_cmd_id_invalid">معرّف الأمر هذا غير صالحة. يرجى إدخال قيمة ست عشرية 16-bit مثل 0007 أو 004C.</sys:String>
+    <sys:String x:Key="at_terminal_output">المخرجات</sys:String>
+    <sys:String x:Key="at_terminal_send">إرسال</sys:String>
+
+    
+    <!-- Usage-/metering reports -->
+    <sys:String x:Key="usage_reports_header">تقارير الاستخدام</sys:String>
+    <sys:String x:Key="usage_reports_hint">تتم جمع هذه التقارير بواسطة السماعات نفسها. يتم عرض البيانات كما هي وقد تكون غير دقيقة. يقوم تطبيق Wearable الرسمي عادةً بإعادة ضبط معظم العدادات بشكل دوري ثم إرسال البيانات المجمعة إلى Samsung ما لم تكن قد رفضت الموافقة على جمع البيانات في تطبيقهم. بعض العدادات، مثل دورات الشحن، لا يتم إعادة ضبطها.</sys:String>
+    <sys:String x:Key="usage_reports_usage">تقرير الاستخدام</sys:String>
+    <sys:String x:Key="usage_reports_metering">تقرير القياس</sys:String>
+    <sys:String x:Key="milliamp_hours_unit">{0} مللي أمبير/ساعة</sys:String>
+    <sys:String x:Key="metering_total_batt_capacity">إجمالي سعة البطارية</sys:String>
+    <sys:String x:Key="metering_a2dp_time">وقت تشغيل الموسيقى (A2DP)</sys:String>
+    <sys:String x:Key="metering_esco_time">وقت استخدام المكالمات (eSCO)</sys:String>
+
+    <!-- Battery history -->
+    <sys:String x:Key="batt_hist_hint">يمكن لهذا التطبيق جمع مستويات البطارية وبيانات الاستخدام الأساسية بمرور الوقت، مما يتيح لك تحليل استهلاك البطارية. لا يمكن جمع البيانات إلا أثناء عمل هذا التطبيق في الخلفية وتوصيل سماعاتك بهذا الجهاز.</sys:String>
+    <sys:String x:Key="batt_hist_no_data_title">بيانات غير كافية</sys:String>
+    <sys:String x:Key="batt_hist_no_data">يرجى العودة في وقت لاحق عندما يتم جمع بيانات كافية أو اضبط النطاق الزمني المعروض.</sys:String>
+    <sys:String x:Key="batt_hist_y_axis">الشحن (%)</sys:String>
+    <sys:String x:Key="batt_hist_last_hour">الساعة الأخيرة</sys:String>
+    <sys:String x:Key="batt_hist_last_6_hours">آخر 6 ساعات</sys:String>
+    <sys:String x:Key="batt_hist_last_12_hours">آخر 12 ساعة</sys:String>
+    <sys:String x:Key="batt_hist_last_24_hours">آخر 24 ساعة</sys:String>
+    <sys:String x:Key="batt_hist_last_3_days">آخر 3 أيام</sys:String>
+    <sys:String x:Key="batt_hist_last_7_days">آخر 7 أيام</sys:String>
+    <sys:String x:Key="batt_hist_overlay_none">بدون تراكب</sys:String>
+    <sys:String x:Key="batt_hist_overlay_noise_controls">عناصر التحكم بالضوضاء</sys:String>
+    <sys:String x:Key="batt_hist_overlay_wearing">حالة الارتداء</sys:String>
+    <sys:String x:Key="batt_hist_overlay_host_device">الجهاز المضيف</sys:String>
+    <sys:String x:Key="batt_hist_overlay_legend">{0} (تراكب)</sys:String>
+    <sys:String x:Key="batt_hist_tools_pan_and_zoom">السحب والتقريب</sys:String>
+    <sys:String x:Key="batt_hist_tools_measure_time">قياس الوقت</sys:String>
+    <sys:String x:Key="batt_hist_tools_measure_battery">قياس المستوى</sys:String>
+    <sys:String x:Key="batt_hist_show_legend">إظهار مفتاح الرسم البياني</sys:String>
+    <sys:String x:Key="batt_hist_measure_difference_display">الفرق: {0}</sys:String>
+    <sys:String x:Key="batt_hist_measure_timespan_display">النطاق الزمني: {0}</sys:String>
+    <sys:String x:Key="batt_hist_measure_timespan_unit_long">d' يوم (أيام)، 'hh'س:'mm'د:'ss'ث'</sys:String> <!-- This is a time span format string. It produces a string like: 2 day(s), 03h:10:01 -->
+    <sys:String x:Key="batt_hist_time_span_tip_title">النطاق الزمني</sys:String>
+    <sys:String x:Key="batt_hist_control_tip_title">عناصر تحكم الماوس</sys:String>
+    <sys:String x:Key="batt_hist_control_tip">اسحب اللوحة للتحرك حول الرسم البياني.
+
+قم بالتمرير للتقريب/الابتعاد أفقياً ورأسياً.
+
+حرك الماوس فوق المحور X أو Y وقم بالتمرير للتقريب/الابتعاد أفقياً أو رأسياً فقط. التمرير فوق المحور X (الوقت) سيقوم بتوسيعه أو ضغطه، على سبيل المثال.</sys:String>
+    <sys:String x:Key="batt_hist_overlay_tip_title">التراكبات</sys:String>
+    <sys:String x:Key="batt_hist_overlay_tip">يمكنك استخدام التراكبات لإضافة سياق إضافي إلى الرسم البياني.
+
+التحكم بالضوضاء: يوضح ما إذا كانت عناصر التحكم بالضوضاء مفعّلة أم معطلة.
+
+حالة الارتداء: يوضح ما إذا كانت السماعات ملبوسة أم لا.
+
+الجهاز المضيف: يوضح أي من السماعات تستضيف اتصال البلوتوث بجهاز الكمبيوتر.
+
+قد تكون بيانات التراكب صعبة الفهم عند عرض نطاقات زمنية كبيرة. حرك الماوس فوق المحور X وقم بالتمرير للأعلى للتقريب إلى نطاق زمني معين تريد فحصه للحصول على نظرة أفقية أفضل.</sys:String>
+    <sys:String x:Key="batt_hist_tools_tip_title">الأدوات</sys:String>
+    <sys:String x:Key="batt_hist_tools_tip">السحب والتقريب: الوضع الافتراضي. التنسيق والتنقل في الرسم البياني بالسحب والتكبير/التصغير.
+
+قياس الوقت: حدد نطاقًا أفقيًا لقياس الوقت المنقضي بين بداية التحديد ونهايته.
+
+قياس المستوى: حدد نطاقًا رأسيًا لقياس الفرق في مستوى البطارية بين بداية التحديد ونهايته.</sys:String>
+
+    <!--Settings-->
+    <sys:String x:Key="settings_header">الإعدادات</sys:String>
+    <sys:String x:Key="settings_save_fail_no_access">فشل حفظ الإعدادات. تم رفض الوصول إلى ملف التكوين بواسطة نظام التشغيل. يرجى التحقق من أذونات الملف لـ {0}.</sys:String>
+    <sys:String x:Key="settings_appearance">المظهر</sys:String>
+    <sys:String x:Key="settings_darkmode">الوضع الداكن</sys:String>
+    <sys:String x:Key="settings_darkmode_description">استخدام مظهر ذو ألوان أغمق</sys:String>
+    <sys:String x:Key="settings_blurstrength">شدة ضبابية النافذة</sys:String>
+    <sys:String x:Key="settings_blurstrength_description">متوافق فقط مع الوضع الداكن. غير مدعوم في جميع الأنظمة</sys:String>
+    <sys:String x:Key="settings_accent">لون التمييز (Accent)</sys:String>
+    <sys:String x:Key="settings_accent_description">اختر لون تمييز مخصص</sys:String>
+    <sys:String x:Key="settings_transitions">الحركات الانتقالية</sys:String>
+    <sys:String x:Key="settings_transitions_description">تمكين حركات التمرير الانتقالية</sys:String>
+    <sys:String x:Key="settings_localization_disable">اللغة</sys:String>
+    <sys:String x:Key="settings_localization_description">تغيير لغة التطبيق</sys:String>
+    <sys:String x:Key="settings_minimize_tray">التصغير إلى شريط المهام (Tray)</sys:String>
+    <sys:String x:Key="settings_minimize_tray_description">الإبقاء في الخلفية بدلاً من إغلاق التطبيق</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons">استخدام صور واقعية للسماعات</sys:String>
+    <sys:String x:Key="settings_realistic_earbud_icons_description">عرض صور واقعية ومطابقة للون السماعة، إذا كانت تدعم ذلك</sys:String>
+    <sys:String x:Key="settings_color_override">تجاوز لون السماعة</sys:String>
+    <sys:String x:Key="settings_color_override_description">تغيير اللون المعروض لسماعاتك داخل التطبيق</sys:String>
+    <sys:String x:Key="settings_nav_sidebar">شريط التنقل الجانبي</sys:String>
+    <sys:String x:Key="settings_nav_sidebar_description">إظهار أو طي أزرار التنقل على الجانب الأيسر</sys:String>
+    <sys:String x:Key="settings_tray_settings">أيقونة شريط المهام وبدء التشغيل</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode">أيقونة شريط المهام الديناميكية</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_description">عرض حالة البطارية في أيقونة شريط المهام</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_off">إيقاف</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_min">عرض أدنى مستوى للبطارية</sys:String>
+    <sys:String x:Key="settings_dyn_tray_mode_battery_avg">عرض متوسط مستوى البطارية</sys:String>
+    <sys:String x:Key="settings_autostart">التشغيل عند بدء النظام</sys:String>
+    <sys:String x:Key="settings_autostart_description">البدء مصغراً عند بدء تشغيل النظام</sys:String>
+    <sys:String x:Key="settings_autostart_permission">لا يمكن تحديث إدخال التشغيل التلقائي في السجل (Registry). تم تعطيل الوصول للسجل (HKCU) صراحة من قبل مسؤول النظام.</sys:String>
+    <sys:String x:Key="settings_connpopup">نافذة الاتصال المنبثقة</sys:String>
+    <sys:String x:Key="settings_devmode">خيارات المطورين</sys:String>
+    <sys:String x:Key="settings_devmode_description">فاحص حركة بيانات البلوتوث وأدوات تطوير أخرى</sys:String>
+    <sys:String x:Key="settings_crowdsourcing">المصادر الجماعية (Crowdsourcing)</sys:String>
+
+    <!--Settings >>> Connection popup-->
+    <sys:String x:Key="settings_cpopup_header">نافذة الاتصال المنبثقة</sys:String>
+    <sys:String x:Key="settings_cpopup_enable">تمكين النافذة المنبثقة عند الاتصال</sys:String>
+    <sys:String x:Key="settings_cpopup_enable_description">عرض إشعار منبثق صغير يخبر بمستويات البطارية عند توصيل السماعات</sys:String>
+    <sys:String x:Key="settings_cpopup_compact">الوضع المدمج</sys:String>
+    <sys:String x:Key="settings_cpopup_compact_description">إخفاء رأس النافذة المنبثقة لتوفير المساحة</sys:String>
+    <sys:String x:Key="settings_cpopup_position">الموقع</sys:String>
+    <sys:String x:Key="settings_cpopup_position_description">حدد موقع نافذة الاتصال المنبثقة</sys:String>
+    <sys:String x:Key="settings_cpopup_demo">عرض نافذة توضيحية تجريبية</sys:String>
+
+    <!--Settings >>> Crowdsourcing settings-->
+    <sys:String x:Key="settings_crowd_header">المصادر الجماعية (Crowdsourcing)</sys:String>
+    <sys:String x:Key="settings_crowd_allow">السماح بالمساهمة الجماعية</sys:String>
+    <sys:String x:Key="settings_crowd_allow_description">جمع معلومات حول هيكل بروتوكول البلوتوث الخاص بـ Samsung والبيانات عند الطلب. يساعد هذا في إبقاء الدعم لمختلف طرازات Galaxy Buds متاحًا بشكل أسهل دون امتلاكها جميعًا.</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport">السماح بتقارير تعطل التطبيق</sys:String>
+    <sys:String x:Key="settings_crowd_crashreport_description">إرسال تقارير تعطل التطبيق تلقائياً عند حدوث أعطال أو أخطاء جسيمة باستخدام Sentry. يساعدني ذلك على الاستجابة بشكل أسرع لأخطاء التطبيق المزعجة.</sys:String>
+
+    <!--Factory reset-->
+    <sys:String x:Key="factory_header">إعادة ضبط المصنع</sys:String>
+    <sys:String x:Key="factory_confirmation">هل أنت تأكد من أنك تريد إعادة ضبط سماعاتك على إعدادات المصنع؟
+سيؤدي هذا إلى إزالة جميع البيانات والإعدادات من سماعاتك.
+
+تأكد من تشغيل كلا السماعتين قبل المتابعة.</sys:String>
+    <sys:String x:Key="factory_error_title">فشلت إعادة ضبط المصنع</sys:String>
+    <sys:String x:Key="factory_error">أرجع الجهاز رمز الخطأ: {0}
+
+تأكد من تشغيل كلا السماعتين وإمكانية الوصول إليهما.
+قد تحتاج إلى إعادة توصيل السماعات يدويًا.</sys:String>
+
+    <!--Find my Gear-->
+    <sys:String x:Key="fmg_warning_both">يرجى نزع كلا السماعتين من أذنيك.</sys:String>
+    <sys:String x:Key="fmg_warning_left">يرجى نزع السماعة اليسرى من أذنك.</sys:String>
+    <sys:String x:Key="fmg_warning_right">يرجى نزع السماعة اليمنى من أذنك.</sys:String>
+    <sys:String x:Key="fmg_header">البحث عن سماعاتي</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage">إدارة بيانات SmartThings Find</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_manage_desc">عرض وإدارة بيانات SmartThings Find المخزنة على سماعاتك</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open">فتح موقع SmartThings Find الإلكتروني</sys:String>
+    <sys:String x:Key="fmg_smart_things_find_open_desc">تتبع سماعاتك عبر الإنترنت. يتطلب حساب Samsung وإعداد تطبيق SmartThings Find الرسمي.</sys:String>
+
+    <!--SmartThings data-->
+    <sys:String x:Key="smart_things_find">SmartThings</sys:String>
+    <sys:String x:Key="smart_things_find_clear">حذف تكوين SmartThings Find</sys:String>
+    <sys:String x:Key="smart_things_find_clear_desc">إزالة البيانات المتعلقة بحساب Samsung من سماعاتك</sys:String>
+    <sys:String x:Key="smart_things_find_iv">متجه التهيئة (IV)</sys:String>
+    <sys:String x:Key="smart_things_find_secret_key">المفتاح السري</sys:String>
+    <sys:String x:Key="smart_things_find_region">المنطقة</sys:String>
+    <sys:String x:Key="smart_things_find_fmm_token">رمز (Token) SmartThings Find</sys:String>
+    <sys:String x:Key="smart_things_find_no_link">سماعاتك غير مرتبطة بشبكة Samsung SmartThings Find.</sys:String>
+    <sys:String x:Key="smart_things_find_write_fail">رفضت السماعات بيانات تكوين SmartThings Find الجديدة.</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok">تم استبدال التكوين</sys:String>
+    <sys:String x:Key="smart_things_find_write_ok_desc">تمت إزالة بيانات تكوين SmartThings Find.</sys:String>
+
+    <!-- Fit test-->
+    <sys:String x:Key="gft_warning">يرجى ارتداء كلا السماعتين.</sys:String>
+    <sys:String x:Key="gft_desc">تحقق مما إذا كانت السماعات مثبتة في أذنك بشكل صحيح</sys:String>
+    <sys:String x:Key="gft_bad">ملاءمة سيئة</sys:String>
+    <sys:String x:Key="gft_good">ملاءمة جيدة</sys:String>
+    <sys:String x:Key="gft_fail">فشل الاختبار</sys:String>
+
+    <!--Equalizer-->
+    <sys:String x:Key="eq_header">معادل الصوت (EQ)</sys:String>
+    <sys:String x:Key="eq_enable">معادل الصوت</sys:String>
+    <sys:String x:Key="eq_enable_description">تطبيق فلاتر معادل الصوت</sys:String>
+    <sys:String x:Key="eq_preset">الإعداد المسبق</sys:String>
+    <sys:String x:Key="eq_stereo_balance">توازن الصوت يسار/يمين</sys:String>
+    <sys:String x:Key="eq_stereo_balance_value">{0}% يسار؛ {1}% يمين</sys:String>
+    <sys:String x:Key="eq_stereo_balance_neutral">محايد</sys:String>
+
+    <sys:String x:Key="eq_bass">تضخيم الباس (Bass Boost)</sys:String>
+    <sys:String x:Key="eq_soft">سلس (Soft)</sys:String>
+    <sys:String x:Key="eq_dynamic">ديناميكي (Dynamic)</sys:String>
+    <sys:String x:Key="eq_clear">نقي (Clear)</sys:String>
+    <sys:String x:Key="eq_treble">تضخيم التريبل (Treble Boost)</sys:String>
+
+    <!--Noise control-->
+    <sys:String x:Key="nc_header">التحكم بالضوضاء</sys:String>
+    <sys:String x:Key="nc_as_anc_description">تقليل الضوضاء الخلفية</sys:String>
+    <sys:String x:Key="nc_one_earbud">عناصر التحكم بالضوضاء بسماعة واحدة</sys:String>
+    <sys:String x:Key="nc_one_earbud_description">عادةً ما تتطلب عناصر التحكم بالضوضاء وجود سماعتين لمنع عدم الراحة، فعّل هذا الخيار للسماح بها بسماعة واحدة فقط</sys:String>
+    <sys:String x:Key="nc_anc_level">حساسية عالية</sys:String>
+    <sys:String x:Key="nc_anc_level_description">تأثير إلغاء ضوضاء أقوى</sys:String>
+    <sys:String x:Key="nc_ambient">تخصيص الصوت المحيط</sys:String>
+    <sys:String x:Key="nc_ambient_description">تكوين نغمة الصوت المحيط ومستواه (إذا كان متوفراً)</sys:String>
+    <sys:String x:Key="nc_voicedetect">كشف المحادثة</sys:String>
+    <sys:String x:Key="nc_voicedetect_description">عند اكتشاف صوتك، يتم تشغيل الصوت المحيط تلقائيًا وخفض مستوى صوت الوسائط لتسهيل المحادثة</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout">مهلة انتهاء المحادثة</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout_description">استعادة الإعدادات عندما لا يتم الكشف عن صوتك لفترة معينة من الوقت</sys:String>
+    <sys:String x:Key="nc_voicedetect_timeout_item">{0} ثوانٍ</sys:String>
+
+    <!--Noise control >>> Ambient sound-->
+    <sys:String x:Key="nc_as_header">إعدادات الصوت المحيط</sys:String>
+    <sys:String x:Key="nc_as_custom">تخصيص متقدم</sys:String>
+    <sys:String x:Key="nc_as_custom_description">تخصيص إعدادات الصوت المحيط</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_l">مستوى الصوت المحيط (اليسار)</sys:String>
+    <sys:String x:Key="nc_as_custom_volume_r">مستوى الصوت المحيط (اليمين)</sys:String>
+    <sys:String x:Key="nc_as_custom_tone">نغمة الصوت المحيط</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_clear">نقي</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_soft">سلس</sys:String>
+    <sys:String x:Key="nc_as_custom_tone_neutral">محايد</sys:String>
+    <sys:String x:Key="nc_as_custom_vol_normal">عادي</sys:String>
+
+    <!--Ambient sound-->
+    <sys:String x:Key="as_header">الصوت المحيط</sys:String>
+    <sys:String x:Key="as_header_description">استمع إلى ما يدور حولك</sys:String>
+    <sys:String x:Key="as_enable">تمكين الصوت المحيط</sys:String>
+    <sys:String x:Key="as_volume">مستوى الصوت المحيط</sys:String>
+    <sys:String x:Key="as_voicefocus">التركيز على الصوت البشري</sys:String>
+    <sys:String x:Key="as_voicefocus_description">إبراز أصوات الأشخاص بشكل أكبر</sys:String>
+    <sys:String x:Key="as_extrahigh">صوت محيط عالٍ جداً</sys:String>
+    <sys:String x:Key="as_extrahigh_description">إضافة مستوى صوت إضافي إلى شريط التمرير للصوت المحيط</sys:String>
+    <sys:String x:Key="as_scale_very_low">منخفض جداً</sys:String>
+    <sys:String x:Key="as_scale_low">منخفض</sys:String>
+    <sys:String x:Key="as_scale_moderate">معتدل</sys:String>
+    <sys:String x:Key="as_scale_high">عالي</sys:String>
+    <sys:String x:Key="as_scale_extraloud">عالي جداً</sys:String>
+
+    <!--Advanced page-->
+    <sys:String x:Key="adv_header">الإعدادات المتقدمة</sys:String>
+    <sys:String x:Key="adv_seamless">اتصال السماعة السلس</sys:String>
+    <sys:String x:Key="adv_seamless_desc">التبديل بسرعة إلى الأجهزة القريبة دون فصل السماعات أو تفعيل وضع الاقتران</sys:String>
+    <sys:String x:Key="adv_pause_playback">إيقاف التشغيل مؤقتًا عند نزع السماعات</sys:String>
+    <sys:String x:Key="adv_pause_playback_desc">إرسال حدث تغيير حالة التشغيل/الإيقاف المؤقت العام عندما يتم كشف مستشعري التقارب كلاهما (أجهزة الكمبيوتر فقط)</sys:String>
+    <sys:String x:Key="adv_resume_playback">استئناف التشغيل عند ارتداء السماعات</sys:String>
+    <sys:String x:Key="adv_resume_playback_desc">إرسال حدث تغيير حالة التشغيل/الإيقاف المؤقت العام عند تغطية مستشعر تقارب واحد على الأقل (أجهزة الكمبيوتر فقط)</sys:String>
+    <sys:String x:Key="adv_sidetone">استخدام الصوت المحيط أثناء المكالمات</sys:String>
+    <sys:String x:Key="adv_sidetone_desc">سماع صوتك بشكل أكثر وضوحًا أثناء التحدث في الهاتف</sys:String>
+    <sys:String x:Key="adv_callpath">الكشف داخل الأذن للمكالمات</sys:String>
+    <sys:String x:Key="adv_callpath_desc">تشغيل المكالمات عبر السماعات عندما تكون في أذنيك وعبر مكبر صوت الكمبيوتر عندما لا تكونك كذلك</sys:String>
+    <sys:String x:Key="adv_extra_clear_call">توضيح صوت المكالمات</sys:String>
+    <sys:String x:Key="adv_extra_clear_call_desc">تحسين وضوح المكالمات. مفيد جدًا عندما تكون في مكان صاخب وتستخدم السماعات. يستهلك المزيد من البطارية.</sys:String>
+    <sys:String x:Key="adv_passthrough">تخفيف الضغط باستخدام الصوت المحيط</sys:String>
+    <sys:String x:Key="adv_passthrough_desc">يمكن أن يمنع هذا شعور الانكتام أو الضغط عندما لا تكون قيد استخدام إلغاء الضوضاء النشط</sys:String>
+    <sys:String x:Key="adv_hotkey">اختصارات لوحة المفاتيح</sys:String>
+    <sys:String x:Key="adv_hotkey_desc">تعيين مفاتيح اختصار مخصصة للتحكم بسماعاتك عن بُعد</sys:String>
+    <sys:String x:Key="adv_bixby_remap">إعادة تعيين أيقونة الاستيقاظ Bixby</sys:String>
+    <sys:String x:Key="adv_bixby_remap_desc">تحديد ما يجب أن يحدث عندما تقول 'Hey Bixby!'</sys:String>
+
+    <!--Remap bixby wakeup-->
+    <sys:String x:Key="bixby_remap_enable">تمكين الاستيقاظ لـ Bixby</sys:String>
+    <sys:String x:Key="bixby_remap_enable_desc">تشغيل Bixby على هاتف Samsung أو تنفيذ إجراء مخصص على هذا الكمبيوتر عند تفعيله</sys:String>
+    <sys:String x:Key="bixby_remap_lang">لغة الاستيقاظ لـ Bixby</sys:String>
+    <sys:String x:Key="bixby_remap_lang_desc">تغيير اللغة المستخدمة لعبارة التنشيط</sys:String>
+    <sys:String x:Key="bixby_remap_action">إجراء استيقاظ مخصص</sys:String>
+    <sys:String x:Key="bixby_remap_action_desc">تحديد ما يجب أن يحدث عند تنشيط Bixby على هذا الجهاز</sys:String>
+    <sys:String x:Key="bixby_remap_note">قل 'Hey Bixby!' للتنشيط. قد تكون عبارة التنشيط مختلفة مع بعض إعدادات اللغة.
+
+تكوين إعادة التعيين نشط فقط على هذا الجهاز. إذا قمت بتوصيل سماعاتك بجهاز Samsung، فإن التنشيط الصوتي سيفعل Bixby كالمعتاد. على الأجهزة الأخرى غير هذا الجهاز والهواتف التي ليست من Samsung، لن تعمل هذه الميزة على إطلاق أي إجراء.</sys:String>
+
+
+    <!--Credits-->
+    <sys:String x:Key="credits_header">حقوق العمل والإشادات</sys:String>
+    <sys:String x:Key="credits_developer">المطور</sys:String>
+    <sys:String x:Key="credits_license">الترخيص</sys:String>
+    <sys:String x:Key="credits_version">الإصدار</sys:String>
+    <sys:String x:Key="credits_contributor">المساهمون</sys:String>
+    <sys:String x:Key="credits_translator">المترجمون</sys:String>
+    <sys:String x:Key="credits_sponsor">رعاية هذا المشروع</sys:String>
+    <sys:String x:Key="credits_kofi">زر صفحتي على Ko-fi لدعمي!</sys:String>
+    <sys:String x:Key="credits_github">زيارة هذا المشروع على GitHub</sys:String>
+
+    <!--Connection lost page-->
+    <sys:String x:Key="connlost">فقدان الاتصال</sys:String>
+    <sys:String x:Key="connlost_header">تعذر إنشأ الاتصال</sys:String>
+    <sys:String x:Key="connlost_connect">اتصال</sys:String>
+    <sys:String x:Key="connlost_connecting">جاري الاتصال...</sys:String>
+    <sys:String x:Key="connlost_troubleshoot">إصلاح المشكلات</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_title">كيفية استكشاف مشاكل الاتصال وإصلاحها</sys:String>
+    <sys:String x:Key="connlost_troubleshoot_content">يرجى التأكد من أن تطبيق Wearable الرسمي الخاص بـ Samsung لسماعات Galaxy Buds لا يحاول الاتصال بسماعاتك في الخلفية.
+وإلا، ستواجه مشكلات تكرار فقدان الاتصال بشكل كبير لأن تطبيقهم سيحاول مرارًا وتكرارًا فرض السيطرة على السماعات.
+
+يمكنك اختيار أحد هذه الحلول لإصلاح هذه المشكلة:
+
+• إلغاء إقران السماعات من تطبيق Wearable. (في تطبيق Wearable، افتح القائمة الجانبية، واختر 'إدارة الأجهزة'، واحذف سماعاتك من القائمة).
+
+• إلغاء تثبيت إضافة Galaxy Buds الخاصة بتطبيق Samsung Wearable تمامًا.
+
+• استخدام تطبيق مثل 'Hail' أو 'Ice Box' لتجميد إضافة Galaxy Buds الرسمية مؤقتًا لتطبيق Samsung Wearable لمنعها من العمل.
+    </sys:String>
+
+    <!-- Pairing mode -->
+    <sys:String x:Key="connlost_disconnected">تم فصل الجهاز</sys:String>
+    <sys:String x:Key="pairingmode_done">تم وضع السماعات في وضع الاقتران وتم فصلها الآن عن هذا الجهاز.</sys:String>
+
+    <!--Firmware update disclaimer-->
+    <sys:String x:Key="fw_disclaimer">إخلاء مسؤولية</sys:String>
+    <sys:String x:Key="fw_disclaimer_desc">أداة تحديث البرامج الثابتة هذه هي نسخة طبق الأصل من المحدث الرسمي الموجود في تطبيق Android الرسمي من Samsung. لقد اختبرت هذا التطبيق بدقة في ظروف مختلفة (العملية العادية، فقدان الاتصال، حزم البلوتوث التالفة عمداً، ...) دون مواجهة أي مشاكل على الإطلاق. ومع ذلك، لن أتحمل أي مسؤولية إذا حدث أي خطأ حيث أن تحديثات البرامج الثابتة تعدل مكونات النظام الحيوية ويجب التعامل معها دائماً بحذر.
+
+التراجع عن التحديث: في حين أن التراجع إلى إصدارات برمجيات أقدم أمر ممكن ولم أواجه أبدًا مشاكل معه، فقد يتسبب في مشكلات غير متوقعة ويجب إجراؤه فقط عند الضرورة. يوصى بإعادة ضبط المصنع بعد التراجع ولكنه ليس ضروريًا عادةً.
+التثبيت المخصص: يمكنك أيضًا تحميل ملفات البرامج الثابتة من قرصك الصلب. لا تقم بتثبيت ملفات برمجيات مصممة لطرازات أخرى على جهازك.
+
+هذا التطبيق مرخص بموجب GPLv3. باستخدامك له، فإنك تقبل الترخيص وحدود المسؤولية الخاصة به. اضغط على 'متابعة' للقبول.</sys:String>
+
+    <!--Firmware selection-->
+    <sys:String x:Key="fw_select_header">تحديثات البرامج الثابتة</sys:String>
+    <sys:String x:Key="fw_select_downgrade">السماح بالتراجع عن تحديث البرمجيات</sys:String>
+    <sys:String x:Key="fw_select_downgrade_desc">تعطيل فحوصات الإصدار وإظهار البرمجيات الأقدم في القائمة (قد يسبب مشكلات غير متوقعة؛ للمستخدمين المتقدمين فقط)</sys:String>
+    <sys:String x:Key="fw_select_install">تثبيت البرمجيات الثابتة</sys:String>
+    <sys:String x:Key="fw_select_install_short">تثبيت</sys:String>
+    <sys:String x:Key="fw_select_from_disk">تحديد ملف التحديث من القرص الصلب...</sys:String>
+    <sys:String x:Key="fw_select_from_disk_short">فتح</sys:String>
+    <sys:String x:Key="fw_select_refresh">تحديث</sys:String>
+    <sys:String x:Key="fw_select_unsupported_selection">تحديد غير صالحة. يرجى تحديد عنصر متوافق من القائمة.</sys:String>
+    <sys:String x:Key="fw_select_downloading">جاري التنزيل...</sys:String>
+    <sys:String x:Key="fw_select_net_error">فشل الاتصال بالسيرفر. لا يمكن تنزيل البرامج الثابتة في الوقت الحالي.</sys:String>
+    <sys:String x:Key="fw_select_net_index_error">فشل الاتصال بالسيرفر. لا يمكن تنزيل فهرس البرامج الثابتة في الوقت الحالي.</sys:String>
+    <sys:String x:Key="fw_select_http_error">رمز خطأ HTTP:</sys:String>
+    <sys:String x:Key="fw_select_unknown_build">اسم البناء غير معروف</sys:String>
+    <sys:String x:Key="fw_select_no_results_short">لم يتم العثور على تحديثات</sys:String>
+    <sys:String x:Key="fw_select_verify_fail">فشل التحقق من ملف التحديث</sys:String>
+    <sys:String x:Key="fw_select_verify_model_mismatch_fail">تم اكتشاف عدم تطابق في طراز الجهاز! تم إلغاء نقل التحديث.
+
+أنت تحاول تثبيت برمجيات ثابتة خاصة بـ {0} على جهازك {1}. يمكن أن يؤدي ذلك إلى تلف سماعاتك نهائيًا.</sys:String>
+    <sys:String x:Key="fw_select_confirm">أنت على وشك تثبيت '{0}' على جهازك '{1}'</sys:String>
+    <sys:String x:Key="fw_select_confirm_desc">تأكد من صحة هذه المعلومات، وإلا اضغط على 'إلغاء' وتحقق مرة أخرى من التحديد.
+
+إذا أمكن، تأكد من توصيل كلا السماعتين قبل البدء. لن تحدث أي مشاكل إذا فشل الاتصال أثناء نقل التحديث. في مثل هذه الحالة، ستلغي السماعات عملية النقل تلقائيًا وتخرج من وضع تحديث البرمجيات.
+
+اضغط على 'متابعة' للبدء بالتحديث.</sys:String>
+
+    <!--Firmware transfer-->
+    <sys:String x:Key="fw_upload_header">جاري تثبيت البرامج الثابتة...</sys:String>
+    <sys:String x:Key="fw_upload_progress_session">جاري إنشاء جلسة جديدة...</sys:String>
+    <sys:String x:Key="fw_upload_progress_prepare">جاري التحضير للرفع...</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished">انتهى الرفع</sys:String>
+    <sys:String x:Key="fw_upload_progress_finished_desc">تم نقل التحديث بنجاح ويجري تثبيته حاليًا على الجهاز. خلال هذه العملية ستصبح سماعاتك غير مستجيبة لمدة 30 ثانية تقريبًا. في معظم الحالات، تحاول السماعات إعادة الاتصال تلقائيًا بعد انتهاء عملية التحديث الداخلي.</sys:String>
+    <sys:String x:Key="fw_upload_progress_error">فشل رفع البرامج الثابتة</sys:String>
+    <sys:String x:Key="fw_upload_progress">جاري رفع تحديث البرامج الثابتة... {0}%</sys:String>
+    <sys:String x:Key="fw_upload_progress_size">({0}/{1} كيلوبايت)</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_mtu">أقصى وحدة نقل (MTU): {0} بايت</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_offset">معالجة البيانات من الإزاحة 0x{0:X6} إلى 0x{1:X6}</sys:String>
+    <sys:String x:Key="fw_upload_progress_stats_segment">رفع الجزء #{0} ({1} بايت، المجموع التفقدية 0x{2:X6})</sys:String>
+
+    <!--Firmware parse errors-->
+    <sys:String x:Key="fw_fail_no_magic">هذا ليس ملف برمجيات ثابتة صالحة. تم العثور على قيمة Magic غير صالحة في رأس الملف.</sys:String>
+    <sys:String x:Key="fw_fail_size_null">حجم ملف البرمجيات الثابتة هذا محدد على الصفر ولا يمكن استخدامه للتثبيت. يرجى اختيار ملف آخر.</sys:String>
+    <sys:String x:Key="fw_fail_no_segments">لا يحتوي ملف البرمجيات الثابتة هذا على أي أجزاء برمجية وهو فارغ. يرجى اختيار ملف آخر.</sys:String>
+    <sys:String x:Key="fw_fail_unknown">خطأ غير متوقع أثناء فك تشفير ملف البرامج الثابتة. قد يكون أرشيف البرامج الثابتة هذا تالفًا.
+
+التفاصيل:</sys:String>
+
+    <!--Firmware transfer errors-->
+    <sys:String x:Key="fw_fail_connection">تم فقد الاتصال بالجهاز. تم إلغاء نقل التحديث.</sys:String>
+    <sys:String x:Key="fw_fail_session">فشل فتح جلسة جديدة. أرجع الجهاز رمز خطأ ({0})</sys:String>
+    <sys:String x:Key="fw_fail_copy">فشل نسخ ملف البرامج الثابتة. يرجى إعادة الاتصال والمحاولة مرة أخرى. رمز الخطأ المرجع من الجهاز: {0}</sys:String>
+    <sys:String x:Key="fw_fail_verify">فشل التحقق/تثبيت ملف البرامج الثابتة. يرجى إعادة الاتصال والمحاولة مرة أخرى. رمز الخطأ المرجع من الجهاز: {0}</sys:String>
+    <sys:String x:Key="fw_fail_connection_precheck">الجهاز غير متصل حاليًا. يرجى التحقق من إعدادات البلوتوث بالنظام وإعادة الاتصال.</sys:String>
+    <sys:String x:Key="fw_fail_pending">هناك عملية نقل برامج ثابتة أخرى قيد التنفيذ بالفعل. يرجى إلغاؤها بشكل صحيح أولاً.</sys:String>
+    <sys:String x:Key="fw_fail_lowbattery">البطارية منخفضة جدًا. يرجى شحن سماعاتك لأكثر من 15% أولاً.</sys:String>
+    <sys:String x:Key="fw_fail_session_timeout">انتهت المهلة أثناء انتظار الجهاز لفتح جلسة جديدة</sys:String>
+    <sys:String x:Key="fw_fail_control_timeout">انتهت المهلة أثناء انتظار الجهاز لإرجاع كتلة التحكم</sys:String>
+
+    <!--Spatial test-->
+    <sys:String x:Key="spatial_header">المستشعر المكاني</sys:String>
+    <!--Note: Quaternion = 4-dimensional vector-->
+    <sys:String x:Key="spatial_dump_quaternion">متجه الكواترنيون (Quaternion) الخام:</sys:String>
+    <!--Note: RPY = Roll, pitch, yaw-->
+    <sys:String x:Key="spatial_dump_rpy">قيم RPY (التدحرج، الانحراف، الدوران):</sys:String>
+
+    <!--Header-->
+    <sys:String x:Key="window_open">فتح</sys:String>
+    <sys:String x:Key="window_minimize">تصغير</sys:String>
+    <sys:String x:Key="window_close">إغلاق</sys:String>
+
+    <!--Buds app detected page-->
+    <sys:String x:Key="budsapp_header">معلومات توافق البلوتوث</sys:String>
+    <sys:String x:Key="budsapp_text_p1">تطبيق Galaxy Buds الرسمي مثبت إلى جانب هذا التطبيق.</sys:String>
+    <sys:String x:Key="budsapp_text_p2">إذا كان يعمل في الخلفية، فقد يواجه GalaxyBudsClient مشكلات في الاتصال بسماعاتك. تأكد من إلغاء تسجيل سماعاتك من التطبيق الرسمي أو منعه من العمل في الخلفية بوسائل أخرى.</sys:String>
+    <sys:String x:Key="budsapp_text_p3">تذكر أنه يمكن لتطبيق واحد فقط التحدث إلى Galaxy Buds في المرة الواحدة.</sys:String>
+
+    <!--Manual pairing-->
+    <sys:String x:Key="manualpair_title">تحديد الجهاز يدويًا</sys:String>
+    <sys:String x:Key="manualpair_title_dialog">اختر جهاز Galaxy Buds الخاص بك</sys:String>
+    <sys:String x:Key="manualpair_model">اختر نوع الطراز الصحيح</sys:String>
+    <sys:String x:Key="manualpair_note">يجب عليك توصيل سماعاتك يدويًا فقط إذا لم يتذكرها معالج الإعداد بشكل صحيح.</sys:String>
+
+    <!--Rename-->
+    <sys:String x:Key="rename">إعادة تسمية السماعات</sys:String>
+    <sys:String x:Key="rename_desc">سيؤدي هذا إلى إعادة تسمية السماعات بالنسبة لجميع الأجهزة.</sys:String>
+    <sys:String x:Key="rename_warn">قد لا تكون إعادة تسمية سماعاتك ممكنة باستخدام التطبيقات الرسمية لأنها تقيد ذلك على هواتف Samsung الذكية فقط، مما يعني أنك قد تحتاج إلى هذا التطبيق لإعادة ضبط الاسم المخصص. قد لا يتم اكتشاف تغيير الاسم بواسطة الأجهزة حتى تقوم بإلغاء إقران السماعات وإعادة إقرانها.</sys:String>
+    <sys:String x:Key="rename_warn_oneui_title">معلومات هامة لمستخدمي OneUI</sys:String>
+    <sys:String x:Key="rename_warn_oneui">إذا كان جهازك يعمل بنظام Samsung OneUI، فيجب عليك استخدام طريقة Samsung الرسمية لإعادة تسمية سماعاتك في إعدادات النظام. وإلا، ستكون هناك مشكلات في الاتصال أثناء تعيين اسم جديد.</sys:String>
+    <sys:String x:Key="rename_too_short">الاسم الذي أدخلته قصير جدًا (بدون أحرف) أو طويل جدًا (تجاوز الحد الأقصى المفروض بواسطة السماعات).</sys:String>
+    <sys:String x:Key="rename_hint">أدخل الاسم الجديد...</sys:String>
+    <sys:String x:Key="rename_label">اسم الجهاز الجديد</sys:String>
+    <sys:String x:Key="rename_reading_name">جاري قراءة الاسم الحالي...</sys:String>
+    <sys:String x:Key="rename_ok_title">تمت إعادة تسمية السماعات</sys:String>
+    <sys:String x:Key="rename_ok">تمت إعادة تسمية سماعاتك بنجاح!
+قد لا يتم كشف تغيير الاسم بواسطة الأجهزة (بما في ذلك هذا الجهاز) حتى تقوم بإلغاء إقران السماعات وإعادة إقرانها.</sys:String>
+</ResourceDictionary>
