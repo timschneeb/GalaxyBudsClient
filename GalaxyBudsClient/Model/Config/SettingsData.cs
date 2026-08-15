@@ -50,6 +50,7 @@ public class SettingsData : ReactiveObject
     [ReactiveUI.Fody.Helpers.Reactive] public bool UseBluetoothWinRt { set; get; } = true;
     [ReadOnly(true)] public ObservableCollection<Device> Devices { set; get; } = [];
     [ReactiveUI.Fody.Helpers.Reactive] public string? LastDeviceMac { set; get; }
+    [ReactiveUI.Fody.Helpers.Reactive] public bool AutoEnableMultipoint { set; get; }
 
     
     /* Touch actions */
