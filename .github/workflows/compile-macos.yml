@@ -76,7 +76,7 @@ jobs:
     - name: Install macOS workload
       run: dotnet workload install macos --skip-manifest-update
     - name: Restore dependencies
-      run: dotnet restore -p:UseMacOSSDK=true -f net10.0-macos -r osx-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet restore -p:UseMacOSSDK=true -p:TargetFramework=net10.0-macos -r osx-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build x64
       run: dotnet publish -p:UseMacOSSDK=true -f net10.0-macos -r osx-x64 -o bin_osxx64 -c Release --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
 
@@ -113,7 +113,7 @@ jobs:
     - name: Install macOS workload
       run: dotnet workload install macos --skip-manifest-update
     - name: Restore dependencies
-      run: dotnet restore -p:UseMacOSSDK=true -f net10.0-macos -r osx-arm64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet restore -p:UseMacOSSDK=true -p:TargetFramework=net10.0-macos -r osx-arm64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build arm64
       run: dotnet publish -p:UseMacOSSDK=true -f net10.0-macos -r osx-arm64 -o bin_osxarm64 -c Release --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
 
