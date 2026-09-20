@@ -7,7 +7,7 @@
         <ApplicationId>me.timschneeberger.galaxybudsclient.tests</ApplicationId>
         <RuntimeIdentifiers>osx-x64;osx-arm64</RuntimeIdentifiers>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net10.0-macos</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <LinkMode>None</LinkMode>
         <!-- TODO it cannot find any of the main assembly's dependencies when running -->
     </PropertyGroup>

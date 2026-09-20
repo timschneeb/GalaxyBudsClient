@@ -1,4 +1,4 @@
-#if OSX
+#if OSX && MACOS_SDK
 using AppKit;
 #endif
 using System;
@@ -66,7 +66,9 @@ public class App : Application
         DataContext = this;
             
 #if OSX
+#if MACOS_SDK
         NSApplication.Init();
+#endif
         // For menu bar applications (LSUIElement=true), hide the dock icon immediately at startup.
         // The dock icon will only appear when the settings window is explicitly opened.
         GalaxyBudsClient.Platform.OSX.AppUtils.setHideInDock(true);

@@ -1,0 +1,289 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:GalaxyBudsClient.Interface.Controls"
+             xmlns:ext="clr-namespace:GalaxyBudsClient.Interface.MarkupExtensions"
+             xmlns:fluent="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+             xmlns:pages="clr-namespace:GalaxyBudsClient.Interface.ViewModels.Pages"
+             xmlns:i18N="clr-namespace:GalaxyBudsClient.Generated.I18N"
+             mc:Ignorable="d" d:DesignWidth="800"
+             x:Class="GalaxyBudsClient.Interface.Pages.SpatialAudioPage"
+             x:DataType="pages:SpatialAudioPageViewModel"
+             x:CompileBindings="True">
+
+    <Design.DataContext>
+        <pages:SpatialAudioPageViewModel />
+    </Design.DataContext>
+
+    <ScrollViewer>
+        <StackPanel Spacing="12" Margin="{StaticResource AppPageMargin}">
+            <Interaction.Behaviors>
+                <ext:RequiresConnectedDeviceBehavior />
+                <ext:RequiresFeatureBehavior Feature="SpatialSensor" />
+            </Interaction.Behaviors>
+
+            <!-- 3D Head Tracking Visualizer Card -->
+            <Border Classes="Card" ClipToBounds="True" Padding="16">
+                <StackPanel Spacing="14">
+                    <!-- Header with title and status badge -->
+                    <Grid ColumnDefinitions="*,Auto">
+                        <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                            <fluent:SymbolIcon Symbol="SoundWaveCircle" FontSize="20" Foreground="{DynamicResource SystemAccentColor}" />
+                            <TextBlock Text="{ext:Translate {x:Static i18N:Keys.PageSpatialAudio}}"
+                                       FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center" />
+                        </StackPanel>
+
+                        <Border Grid.Column="1"
+                                Background="{DynamicResource CardStrokeColorDefaultBrush}"
+                                CornerRadius="12"
+                                Padding="10,4">
+                            <TextBlock Text="{Binding StatusText}"
+                                       FontSize="12"
+                                       Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                       VerticalAlignment="Center" />
+                        </Border>
+                    </Grid>
+
+                    <!-- Custom 3D Vector Visualizer -->
+                    <controls:HeadVisualizerControl Height="210"
+                                                    Yaw="{Binding Yaw}"
+                                                    Pitch="{Binding Pitch}"
+                                                    Roll="{Binding Roll}"
+                                                    IsActive="{Binding IsTrackingEnabled}"
+                                                    HorizontalAlignment="Stretch" />
+
+                    <!-- Live Euler Angles Pill Readouts -->
+                    <UniformGrid Columns="3" Margin="8,0">
+                        <Border Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                CornerRadius="8" Padding="12,8" Margin="4">
+                            <StackPanel HorizontalAlignment="Center" Spacing="2">
+                                <TextBlock Text="YAW (Giro)" FontSize="11"
+                                           Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                           HorizontalAlignment="Center" />
+                                <TextBlock Text="{Binding Yaw, StringFormat='{}{0:0.0}°'}"
+                                           FontSize="15" FontWeight="Bold"
+                                           HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Border>
+
+                        <Border Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                CornerRadius="8" Padding="12,8" Margin="4">
+                            <StackPanel HorizontalAlignment="Center" Spacing="2">
+                                <TextBlock Text="PITCH (Inclinação)" FontSize="11"
+                                           Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                           HorizontalAlignment="Center" />
+                                <TextBlock Text="{Binding Pitch, StringFormat='{}{0:0.0}°'}"
+                                           FontSize="15" FontWeight="Bold"
+                                           HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Border>
+
+                        <Border Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                CornerRadius="8" Padding="12,8" Margin="4">
+                            <StackPanel HorizontalAlignment="Center" Spacing="2">
+                                <TextBlock Text="ROLL (Tombamento)" FontSize="11"
+                                           Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                           HorizontalAlignment="Center" />
+                                <TextBlock Text="{Binding Roll, StringFormat='{}{0:0.0}°'}"
+                                           FontSize="15" FontWeight="Bold"
+                                           HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Border>
+                    </UniformGrid>
+
+                    <!-- Control Buttons -->
+                    <Grid ColumnDefinitions="*,*" Margin="4,0" ColumnSpacing="12">
+                        <Button Grid.Column="0"
+                                HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Center"
+                                Command="{Binding Recenter}"
+                                IsEnabled="{Binding IsTrackingEnabled}">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <fluent:SymbolIcon Symbol="CompassNorthwest" FontSize="16" />
+                                <TextBlock Text="{ext:Translate {x:Static i18N:Keys.SpatialRecenter}}"
+                                           VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+
+                        <Button Grid.Column="1"
+                                HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Center"
+                                Command="{Binding ToggleDemo}">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <fluent:SymbolIcon Symbol="Play" FontSize="16"
+                                                   IsVisible="{Binding !IsDemoPlaying}" />
+                                <fluent:SymbolIcon Symbol="Pause" FontSize="16"
+                                                   IsVisible="{Binding IsDemoPlaying}" />
+                                <TextBlock Text="{ext:Translate {x:Static i18N:Keys.SpatialDemoPlay}}"
+                                           IsVisible="{Binding !IsDemoPlaying}"
+                                           VerticalAlignment="Center" />
+                                <TextBlock Text="{ext:Translate {x:Static i18N:Keys.SpatialDemoStop}}"
+                                           IsVisible="{Binding IsDemoPlaying}"
+                                           VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!-- Head Tracking Hardware Controls -->
+            <controls:SettingsGroup>
+                <controls:SettingsSwitchItem
+                    Content="{ext:Translate {x:Static i18N:Keys.SpatialEnable}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.SpatialEnableDesc}}"
+                    Symbol="CompassNorthwest"
+                    IsChecked="{Binding IsTrackingEnabled}" />
+            </controls:SettingsGroup>
+
+            <!-- 360 Acoustic Soundstage Configuration -->
+            <controls:SettingsGroup>
+                <controls:SettingsSliderItem
+                    Content="{ext:Translate {x:Static i18N:Keys.SpatialSpeakerAngle}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.SpatialSpeakerAngleDesc}}"
+                    Symbol="Speaker2"
+                    Minimum="15"
+                    Maximum="75"
+                    Value="{Binding SpeakerAngle, Mode=TwoWay}" />
+
+                <controls:SettingsSliderItem
+                    Content="{ext:Translate {x:Static i18N:Keys.SpatialAmbience}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.SpatialAmbienceDesc}}"
+                    Symbol="SoundWaveCircle"
+                    Minimum="0"
+                    Maximum="40"
+                    Value="{Binding AmbiencePercent, Mode=TwoWay}" />
+            </controls:SettingsGroup>
+
+            <!-- External Integrations (OSC / OpenTrack) -->
+            <controls:SettingsGroup>
+                <controls:SettingsSwitchItem
+                    Content="{ext:Translate {x:Static i18N:Keys.SpatialBroadcastOsc}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.SpatialBroadcastOscDesc}}"
+                    Symbol="SoundWaveCircle"
+                    IsChecked="{Binding IsOscBroadcasting}"
+                    IsEnabled="{Binding IsTrackingEnabled}" />
+
+                <controls:SettingsSwitchItem
+                    Content="{ext:Translate {x:Static i18N:Keys.SpatialBroadcastOpentrack}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.SpatialBroadcastOpentrackDesc}}"
+                    Symbol="Navigation"
+                    IsChecked="{Binding IsOpenTrackBroadcasting}"
+                    IsEnabled="{Binding IsTrackingEnabled}" />
+            </controls:SettingsGroup>
+
+            <!-- System-Wide 360 Audio (macOS & Windows) -->
+            <Border Classes="Card" Padding="16">
+                <StackPanel Spacing="12">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <StackPanel Spacing="4">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <fluent:SymbolIcon Symbol="HeadphonesSoundWave" FontSize="18" Foreground="{DynamicResource SystemAccentColor}" />
+                                <TextBlock Text="{ext:Translate {x:Static i18N:Keys.SpatialSystemAudio}}"
+                                           FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <TextBlock Text="{ext:Translate {x:Static i18N:Keys.SpatialSystemAudioDesc}}"
+                                       FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                        </StackPanel>
+
+                        <ToggleSwitch Grid.Column="1"
+                                      IsChecked="{Binding IsSystemAudioActive}"
+                                      Command="{Binding ToggleSystemAudio}"
+                                      VerticalAlignment="Center" />
+                    </Grid>
+
+                    <!-- macOS: BlackHole Driver Detection & Controls -->
+                    <StackPanel Spacing="10" IsVisible="{Binding IsMacOs}">
+                        <Separator Height="1" Background="{DynamicResource CardStrokeColorDefaultBrush}" Margin="0,4" />
+
+                        <!-- Status badge & install button -->
+                        <Grid ColumnDefinitions="*,Auto">
+                            <!-- Case 1: Driver installed AND active in CoreAudio -->
+                            <StackPanel Orientation="Horizontal" Spacing="6" VerticalAlignment="Center"
+                                        IsVisible="{Binding IsBlackHoleLoaded}">
+                                <fluent:SymbolIcon Symbol="CheckmarkCircle" FontSize="16" Foreground="SeaGreen" />
+                                <TextBlock Text="{ext:Translate {x:Static i18N:Keys.SpatialBlackholeStatusOk}}"
+                                           FontWeight="Medium" VerticalAlignment="Center" />
+                            </StackPanel>
+
+                            <!-- Case 2: Driver file installed, but CoreAudio has not loaded it yet -->
+                            <StackPanel Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                                <StackPanel.IsVisible>
+                                    <MultiBinding Converter="{x:Static BoolConverters.And}">
+                                        <Binding Path="IsBlackHoleInstalled" />
+                                        <Binding Path="!IsBlackHoleLoaded" />
+                                    </MultiBinding>
+                                </StackPanel.IsVisible>
+                                <fluent:SymbolIcon Symbol="Warning" FontSize="16" Foreground="Goldenrod" />
+                                <TextBlock Text="{ext:Translate {x:Static i18N:Keys.SpatialBlackholeStatusRestartNeeded}}"
+                                           FontWeight="Medium" VerticalAlignment="Center" />
+                            </StackPanel>
+
+                            <!-- Case 3: Driver completely missing -->
+                            <StackPanel Orientation="Horizontal" Spacing="6" VerticalAlignment="Center"
+                                        IsVisible="{Binding !IsBlackHoleInstalled}">
+                                <fluent:SymbolIcon Symbol="Warning" FontSize="16" Foreground="Goldenrod" />
+                                <TextBlock Text="{ext:Translate {x:Static i18N:Keys.SpatialBlackholeStatusMissing}}"
+                                           FontWeight="Medium" VerticalAlignment="Center" />
+                            </StackPanel>
+
+                            <Button Grid.Column="1"
+                                    Content="{ext:Translate {x:Static i18N:Keys.SpatialBlackholeInstall}}"
+                                    Command="{Binding InstallBlackHoleAsync}"
+                                    IsEnabled="{Binding !IsInstallingBlackHole}"
+                                    IsVisible="{Binding !IsBlackHoleInstalled}"
+                                    Classes="Accent" />
+                        </Grid>
+
+                        <!-- Missing explanation -->
+                        <TextBlock Text="{ext:Translate {x:Static i18N:Keys.SpatialBlackholeMissingDesc}}"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                   TextWrapping="Wrap"
+                                   IsVisible="{Binding !IsBlackHoleInstalled}" />
+
+                        <!-- Ready how-to guide -->
+                        <TextBlock Text="{ext:Translate {x:Static i18N:Keys.SpatialBlackholeHowto}}"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource SystemAccentColor}"
+                                   TextWrapping="Wrap"
+                                   IsVisible="{Binding IsBlackHoleLoaded}" />
+
+                        <!-- Actions when BlackHole is installed -->
+                        <WrapPanel Orientation="Horizontal" Margin="0,4,0,0">
+                            <Button Content="{ext:Translate {x:Static i18N:Keys.SpatialBlackholeRestart}}"
+                                    Command="{Binding RestartCoreAudio}"
+                                    Margin="0,0,8,6" />
+                            <Button Content="{ext:Translate {x:Static i18N:Keys.SpatialOpenAudioMidi}}"
+                                    Command="{Binding OpenAudioMidiSetup}"
+                                    Margin="0,0,8,6" />
+                            <Button Content="{ext:Translate {x:Static i18N:Keys.SpatialOpenSoundPref}}"
+                                    Command="{Binding OpenSoundSettings}"
+                                    Margin="0,0,8,6" />
+                        </WrapPanel>
+                    </StackPanel>
+
+                    <!-- Windows: Native WASAPI Loopback Info -->
+                    <StackPanel Spacing="6" IsVisible="{Binding IsWindows}">
+                        <Separator Height="1" Background="{DynamicResource CardStrokeColorDefaultBrush}" Margin="0,4" />
+                        <StackPanel Orientation="Horizontal" Spacing="6">
+                            <fluent:SymbolIcon Symbol="CheckmarkCircle" FontSize="16" Foreground="SeaGreen" />
+                            <TextBlock Text="WASAPI Loopback Nativo (Windows 10/11)" FontWeight="Medium" />
+                        </StackPanel>
+                        <TextBlock Text="{ext:Translate {x:Static i18N:Keys.SpatialWindowsInfo}}"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Info Bar -->
+            <controls:CustomInfoBar Title="{ext:Translate {x:Static i18N:Keys.PageSpatialAudio}}"
+                                    IsClosable="False"
+                                    IsOpen="True"
+                                    Severity="Informational"
+                                    Message="{ext:Translate {x:Static i18N:Keys.SpatialDemoDesc}}" />
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

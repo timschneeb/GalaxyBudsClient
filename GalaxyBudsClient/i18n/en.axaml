@@ -742,4 +742,37 @@ Details:</sys:String>
     <sys:String x:Key="rename_ok_title">Earbuds renamed</sys:String>
     <sys:String x:Key="rename_ok">Successfully renamed your earbuds!
 The name change may not be detected by devices (including this one) until you un-pair and re-pair your earbuds.</sys:String>
+
+    <!--360 Audio / Spatial Audio-->
+    <sys:String x:Key="page_spatial_audio">360 Audio</sys:String>
+    <sys:String x:Key="spatial_audio_desc">Dynamic head tracking and 360 spatial sound</sys:String>
+    <sys:String x:Key="spatial_enable">Enable Head Tracking</sys:String>
+    <sys:String x:Key="spatial_enable_desc">Activates internal motion sensors to track head orientation</sys:String>
+    <sys:String x:Key="spatial_recenter">Recenter Heading</sys:String>
+    <sys:String x:Key="spatial_recenter_desc">Resets front orientation to where you are currently looking</sys:String>
+    <sys:String x:Key="spatial_demo_play">Play 360 Audio Demo</sys:String>
+    <sys:String x:Key="spatial_demo_stop">Stop 360 Audio Demo</sys:String>
+    <sys:String x:Key="spatial_demo_desc">Plays an interactive spatial chime that moves in 3D around you as you turn your head</sys:String>
+    <sys:String x:Key="spatial_broadcast_osc">Broadcast via OSC (DAWs / Plugins)</sys:String>
+    <sys:String x:Key="spatial_broadcast_osc_desc">Sends real-time yaw, pitch, roll and quaternion to localhost:9000</sys:String>
+    <sys:String x:Key="spatial_broadcast_opentrack">Broadcast to Games (OpenTrack)</sys:String>
+    <sys:String x:Key="spatial_broadcast_opentrack_desc">Sends FreeTrack / OpenTrack UDP packets to localhost:4242 for flight/driving sims</sys:String>
+    <sys:String x:Key="spatial_tracking_active">Tracking active</sys:String>
+    <sys:String x:Key="spatial_tracking_inactive">Tracking stopped</sys:String>
+    <sys:String x:Key="spatial_speaker_angle">Virtual Soundstage Width</sys:String>
+    <sys:String x:Key="spatial_speaker_angle_desc">Adjusts the stereo angle of the virtual front speakers</sys:String>
+    <sys:String x:Key="spatial_ambience">Room Ambience</sys:String>
+    <sys:String x:Key="spatial_ambience_desc">Simulates studio acoustic reflections to externalize sound</sys:String>
+    <sys:String x:Key="spatial_system_audio">System-Wide 360 Audio</sys:String>
+    <sys:String x:Key="spatial_system_audio_desc">Applies 360 head tracking to all system sound (Spotify, YouTube, movies, games)</sys:String>
+    <sys:String x:Key="spatial_blackhole_status_ok">BlackHole 2ch virtual driver ready</sys:String>
+    <sys:String x:Key="spatial_blackhole_status_restart_needed">BlackHole installed, please restart CoreAudio to activate</sys:String>
+    <sys:String x:Key="spatial_blackhole_status_missing">BlackHole 2ch required on macOS</sys:String>
+    <sys:String x:Key="spatial_blackhole_missing_desc">To capture macOS system audio for 360 spatialization, the free open-source BlackHole 2ch driver is required.</sys:String>
+    <sys:String x:Key="spatial_blackhole_howto">How to use: Select 'BlackHole 2ch' as your macOS Sound Output, then turn on the switch above to hear everything in 360.</sys:String>
+    <sys:String x:Key="spatial_blackhole_install">Install BlackHole (Homebrew)</sys:String>
+    <sys:String x:Key="spatial_blackhole_restart">Restart CoreAudio (Activate Driver)</sys:String>
+    <sys:String x:Key="spatial_open_audio_midi">Open Audio MIDI Setup</sys:String>
+    <sys:String x:Key="spatial_open_sound_pref">Open Sound Settings</sys:String>
+    <sys:String x:Key="spatial_windows_info">On Windows, system audio is captured natively via WASAPI Loopback without needing any third-party virtual drivers. Head tracking can also be broadcast to PC games via OpenTrack (port 4242) or VRChat via OSC (port 9000).</sys:String>
 </ResourceDictionary>

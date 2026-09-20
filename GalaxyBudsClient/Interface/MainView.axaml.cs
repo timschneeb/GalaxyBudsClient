@@ -34,6 +34,7 @@ public partial class MainView : UserControl
         new HomePageViewModel(),
         new NoiseControlPageViewModel(),
         new EqualizerPageViewModel(),
+        new SpatialAudioPageViewModel(),
         new FindMyBudsPageViewModel(),
         new TouchpadPageViewModel(),
         new AdvancedPageViewModel(),

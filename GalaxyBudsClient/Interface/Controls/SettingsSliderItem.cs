@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Timers;
 using Avalonia;
 using Avalonia.Controls;
@@ -37,19 +37,19 @@ public class SettingsSliderItem : SettingsSymbolItem
     private readonly Slider _slider;
     
     public static readonly RoutedEvent<RoutedEventArgs> ValueChangedEvent = 
-        RoutedEvent.Register<SettingsSwitchItem, RoutedEventArgs>(nameof(ValueChanged), RoutingStrategies.Bubble);
+        RoutedEvent.Register<SettingsSliderItem, RoutedEventArgs>(nameof(ValueChanged), RoutingStrategies.Bubble);
 
     public static readonly StyledProperty<int> ValueProperty = 
-        AvaloniaProperty.Register<SettingsSwitchItem, int>(nameof(Value), defaultBindingMode: BindingMode.TwoWay);
+        AvaloniaProperty.Register<SettingsSliderItem, int>(nameof(Value), defaultBindingMode: BindingMode.TwoWay);
     
     public static readonly StyledProperty<int> MinimumProperty =
-        AvaloniaProperty.Register<SettingsSwitchItem, int>(nameof(Minimum), defaultBindingMode: BindingMode.TwoWay);
+        AvaloniaProperty.Register<SettingsSliderItem, int>(nameof(Minimum), defaultBindingMode: BindingMode.TwoWay);
     
     public static readonly StyledProperty<int> MaximumProperty = 
-        AvaloniaProperty.Register<SettingsSwitchItem, int>(nameof(Maximum), defaultBindingMode: BindingMode.TwoWay);
+        AvaloniaProperty.Register<SettingsSliderItem, int>(nameof(Maximum), defaultBindingMode: BindingMode.TwoWay);
    
     public static readonly StyledProperty<bool> DebounceProperty = 
-        AvaloniaProperty.Register<SettingsSwitchItem, bool>(nameof(Debounce), defaultBindingMode: BindingMode.OneWay);
+        AvaloniaProperty.Register<SettingsSliderItem, bool>(nameof(Debounce), defaultBindingMode: BindingMode.OneWay);
    
     public static readonly StyledProperty<TickPlacement> TickPlacementProperty = 
         Slider.TickPlacementProperty.AddOwner<SettingsSliderItem>();

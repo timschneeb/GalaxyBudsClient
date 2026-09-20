@@ -1,7 +1,7 @@
 <Project>
     <PropertyGroup Condition="'$(TargetFramework)' != ''">
         <IsWindows Condition="$([System.String]::Copy('$(TargetFramework)').Contains('-windows'))">true</IsWindows>
-        <IsOSX Condition="$([System.String]::Copy('$(TargetFramework)').Contains('-macos'))">true</IsOSX>
+        <IsOSX Condition="$([System.String]::Copy('$(TargetFramework)').Contains('-macos')) Or ('$(_HostIsOSX)'=='true' And '$(IsAndroid)'!='true' And '$(IsWindows)'!='true')">true</IsOSX>
         <IsLinux Condition="'$(IsWindows)' != 'true' And '$(IsOSX)' != 'true' And '$(IsAndroid)' != 'true'">true</IsLinux>
     </PropertyGroup>
     
@@ -10,6 +10,9 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsOSX)'=='true'">
         <DefineConstants>$(DefineConstants);OSX</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition="$([System.String]::Copy('$(TargetFramework)').Contains('-macos'))">
+        <DefineConstants>$(DefineConstants);MACOS_SDK</DefineConstants>
     </PropertyGroup>
     <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <DefineConstants>$(DefineConstants);Linux</DefineConstants>

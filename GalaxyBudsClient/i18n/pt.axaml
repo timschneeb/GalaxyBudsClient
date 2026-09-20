@@ -1,4 +1,4 @@
-﻿<!-- ReSharper disable InconsistentNaming -->
+<!-- ReSharper disable InconsistentNaming -->
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- English name of this language -->
@@ -720,4 +720,37 @@ Detalhes:</sys:String>
     <sys:String x:Key="rename_ok_title">Fones de ouvido renomeados</sys:String>
     <sys:String x:Key="rename_ok">Fones de ouvido renomeados com sucesso!
     A mudança de nome pode não ser detectada por dispositivos (incluindo este) até que você desfaça o pareamento e re-pareie os fones de ouvido.</sys:String>
+
+    <!--360 Audio / Spatial Audio-->
+    <sys:String x:Key="page_spatial_audio">Áudio 360</sys:String>
+    <sys:String x:Key="spatial_audio_desc">Rastreamento dinâmico da cabeça e som espacial 360</sys:String>
+    <sys:String x:Key="spatial_enable">Ativar Rastreamento de Cabeça</sys:String>
+    <sys:String x:Key="spatial_enable_desc">Ativa os sensores de movimento internos para rastrear a orientação da cabeça</sys:String>
+    <sys:String x:Key="spatial_recenter">Recentralizar</sys:String>
+    <sys:String x:Key="spatial_recenter_desc">Redefine a orientação frontal para onde você está olhando agora</sys:String>
+    <sys:String x:Key="spatial_demo_play">Tocar Demonstração Áudio 360</sys:String>
+    <sys:String x:Key="spatial_demo_stop">Parar Demonstração</sys:String>
+    <sys:String x:Key="spatial_demo_desc">Toca sinos binaurais interativos que giram em 3D ao redor de você conforme você move a cabeça</sys:String>
+    <sys:String x:Key="spatial_broadcast_osc">Transmitir via OSC (DAWs / Plugins)</sys:String>
+    <sys:String x:Key="spatial_broadcast_osc_desc">Envia yaw, pitch, roll e quaternion em tempo real para localhost:9000</sys:String>
+    <sys:String x:Key="spatial_broadcast_opentrack">Transmitir para Jogos (OpenTrack)</sys:String>
+    <sys:String x:Key="spatial_broadcast_opentrack_desc">Envia pacotes UDP FreeTrack / OpenTrack para localhost:4242 para simuladores de voo/corrida</sys:String>
+    <sys:String x:Key="spatial_tracking_active">Rastreamento ativo</sys:String>
+    <sys:String x:Key="spatial_tracking_inactive">Rastreamento desativado</sys:String>
+    <sys:String x:Key="spatial_speaker_angle">Largura do Palco Sonoro Virtual</sys:String>
+    <sys:String x:Key="spatial_speaker_angle_desc">Ajusta a abertura estéreo dos alto-falantes frontais virtuais</sys:String>
+    <sys:String x:Key="spatial_ambience">Ambiência de Sala</sys:String>
+    <sys:String x:Key="spatial_ambience_desc">Simula reflexões acústicas de estúdio para projetar o som fora da cabeça</sys:String>
+    <sys:String x:Key="spatial_system_audio">Áudio do Sistema em 360</sys:String>
+    <sys:String x:Key="spatial_system_audio_desc">Aplica o rastreamento 360 a todos os sons do sistema (Spotify, YouTube, filmes e jogos)</sys:String>
+    <sys:String x:Key="spatial_blackhole_status_ok">Driver virtual BlackHole 2ch ativo e pronto</sys:String>
+    <sys:String x:Key="spatial_blackhole_status_restart_needed">BlackHole instalado, reinicie o CoreAudio para ativar</sys:String>
+    <sys:String x:Key="spatial_blackhole_status_missing">BlackHole 2ch necessário no macOS</sys:String>
+    <sys:String x:Key="spatial_blackhole_missing_desc">Para capturar o áudio do macOS e aplicar o Áudio 360, é necessário o driver gratuito de código aberto BlackHole 2ch.</sys:String>
+    <sys:String x:Key="spatial_blackhole_howto">Como usar: Selecione 'BlackHole 2ch' como saída de som do macOS (Ajustes de Som ou barra de menus) e ligue o interruptor acima para ouvir tudo em 360.</sys:String>
+    <sys:String x:Key="spatial_blackhole_install">Instalar BlackHole (Homebrew)</sys:String>
+    <sys:String x:Key="spatial_blackhole_restart">Reiniciar CoreAudio (Ativar Driver)</sys:String>
+    <sys:String x:Key="spatial_open_audio_midi">Abrir Configuração Áudio e MIDI</sys:String>
+    <sys:String x:Key="spatial_open_sound_pref">Abrir Ajustes de Som</sys:String>
+    <sys:String x:Key="spatial_windows_info">No Windows, o áudio do sistema é capturado nativamente via WASAPI Loopback, sem precisar de drivers virtuais adicionais. O rastreamento de cabeça também pode ser enviado para jogos de PC via OpenTrack (porta 4242) ou VRChat via OSC (porta 9000).</sys:String>
 </ResourceDictionary>
