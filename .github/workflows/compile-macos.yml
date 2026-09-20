@@ -20,7 +20,7 @@ jobs:
     - name: Setup Xcode
       uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: "26.5"
+        xcode-version: "26.6"
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v5
@@ -36,12 +36,12 @@ jobs:
         build-settings: CONFIGURATION_BUILD_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/GalaxyBudsClient.Platform.OSX/Native/Build/Release CONFIGURATION_TEMP_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/GalaxyBudsClient.Platform.OSX/Native/Build/Intermediates.noindex
         action: build
 
-    - name: Restore workloads
-      run: dotnet workload restore
+    - name: Install macOS workload
+      run: dotnet workload install macos
     - name: Restore dependencies
-      run: dotnet restore --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet restore -p:UseMacOSSDK=true --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build Universal
-      run: dotnet publish -f net10.0-macos -o bin_osx -c Release --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -p:UseMacOSSDK=true -f net10.0-macos -o bin_osx -c Release --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v6
@@ -57,7 +57,7 @@ jobs:
     - name: Setup Xcode
       uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: "26.5"
+        xcode-version: "26.6"
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v5
@@ -73,12 +73,12 @@ jobs:
         build-settings: ARCHS=x86_64 ONLY_ACTIVE_ARCH=NO CONFIGURATION_BUILD_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/GalaxyBudsClient.Platform.OSX/Native/Build/Release CONFIGURATION_TEMP_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/GalaxyBudsClient.Platform.OSX/Native/Build/Intermediates.noindex
         action: build
        
-    - name: Restore workloads
-      run: dotnet workload restore
+    - name: Install macOS workload
+      run: dotnet workload install macos
     - name: Restore dependencies
-      run: dotnet restore -r osx-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet restore -p:UseMacOSSDK=true -p:TargetFramework=net10.0-macos -r osx-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build x64
-      run: dotnet publish -f net10.0-macos -r osx-x64 -o bin_osxx64 -c Release --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -p:UseMacOSSDK=true -f net10.0-macos -r osx-x64 -o bin_osxx64 -c Release --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v6
@@ -94,7 +94,7 @@ jobs:
     - name: Setup Xcode
       uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: "26.5"
+        xcode-version: "26.6"
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v5
@@ -110,12 +110,12 @@ jobs:
         build-settings: ARCHS=arm64 ONLY_ACTIVE_ARCH=NO CONFIGURATION_BUILD_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/GalaxyBudsClient.Platform.OSX/Native/Build/Release CONFIGURATION_TEMP_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/GalaxyBudsClient.Platform.OSX/Native/Build/Intermediates.noindex
         action: build
 
-    - name: Restore workloads
-      run: dotnet workload restore
+    - name: Install macOS workload
+      run: dotnet workload install macos
     - name: Restore dependencies
-      run: dotnet restore -r osx-arm64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet restore -p:UseMacOSSDK=true -p:TargetFramework=net10.0-macos -r osx-arm64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build arm64
-      run: dotnet publish -f net10.0-macos -r osx-arm64 -o bin_osxarm64 -c Release --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -p:UseMacOSSDK=true -f net10.0-macos -r osx-arm64 -o bin_osxarm64 -c Release --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v6
