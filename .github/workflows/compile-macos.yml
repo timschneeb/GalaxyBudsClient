@@ -36,8 +36,8 @@ jobs:
         build-settings: CONFIGURATION_BUILD_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/GalaxyBudsClient.Platform.OSX/Native/Build/Release CONFIGURATION_TEMP_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/GalaxyBudsClient.Platform.OSX/Native/Build/Intermediates.noindex
         action: build
 
-    - name: Restore workloads
-      run: dotnet workload restore
+    - name: Install macOS workload
+      run: dotnet workload install macos --skip-manifest-update
     - name: Restore dependencies
       run: dotnet restore --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build Universal
@@ -73,8 +73,8 @@ jobs:
         build-settings: ARCHS=x86_64 ONLY_ACTIVE_ARCH=NO CONFIGURATION_BUILD_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/GalaxyBudsClient.Platform.OSX/Native/Build/Release CONFIGURATION_TEMP_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/GalaxyBudsClient.Platform.OSX/Native/Build/Intermediates.noindex
         action: build
        
-    - name: Restore workloads
-      run: dotnet workload restore
+    - name: Install macOS workload
+      run: dotnet workload install macos --skip-manifest-update
     - name: Restore dependencies
       run: dotnet restore -r osx-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build x64
@@ -110,8 +110,8 @@ jobs:
         build-settings: ARCHS=arm64 ONLY_ACTIVE_ARCH=NO CONFIGURATION_BUILD_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/GalaxyBudsClient.Platform.OSX/Native/Build/Release CONFIGURATION_TEMP_DIR=/Users/runner/work/GalaxyBudsClient/GalaxyBudsClient/GalaxyBudsClient.Platform.OSX/Native/Build/Intermediates.noindex
         action: build
 
-    - name: Restore workloads
-      run: dotnet workload restore
+    - name: Install macOS workload
+      run: dotnet workload install macos --skip-manifest-update
     - name: Restore dependencies
       run: dotnet restore -r osx-arm64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build arm64
