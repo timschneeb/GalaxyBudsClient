@@ -18,8 +18,27 @@
 
     <UserControl.Styles>
         <Style Selector="DataGridCell">
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="MinHeight" Value="24" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="MinHeight" Value="19" />
+            <Setter Property="Padding" Value="4,1" />
+        </Style>
+        <Style Selector="DataGridColumnHeader">
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="MinHeight" Value="22" />
+        </Style>
+        <!-- The Fluent AutoCompleteBox template otherwise grows the dropdown to the widest message-ID
+             string. Give the suggestions container a fixed width (the search box itself is far too
+             narrow to bind to) so it's a stable, readable size, with a compact list font and rows. -->
+        <Style Selector="AutoCompleteBox#SendMsgId /template/ Border#PART_SuggestionsContainer">
+            <Setter Property="Width" Value="280" />
+        </Style>
+        <Style Selector="AutoCompleteBox#SendMsgId /template/ ListBox#PART_SelectingItemsControl">
+            <Setter Property="FontSize" Value="11" />
+        </Style>
+        <Style Selector="AutoCompleteBox#SendMsgId /template/ ListBox#PART_SelectingItemsControl ListBoxItem">
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="Padding" Value="8,2" />
+            <Setter Property="MinHeight" Value="0" />
         </Style>
         <StyleInclude Source="avares://AvaloniaHex/Themes/Simple/AvaloniaHex.axaml"/>
     </UserControl.Styles>
@@ -44,9 +63,21 @@
             </MenuItem>
         </Menu>
 
-        <Grid Margin="3, 0, 3, 3" ColumnDefinitions="Auto,5,*">
+        <Grid Margin="3, 0, 3, 3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" MinWidth="240" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="3*" MinWidth="280" />
+            </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0" RowDefinitions="*,5,*">
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" MinHeight="100" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="*" MinHeight="110" />
+                </Grid.RowDefinitions>
+
 
                 <avaloniaHex:HexEditor Name="HexEditor"
                                        Grid.Column="0" 
@@ -72,10 +103,24 @@
                                 <ColumnDefinition Width="*" MaxWidth="100" />
                             </Grid.ColumnDefinitions>
                             
-                            <ComboBox Grid.Column="0" Name="SendMsgId"
-                                      HorizontalAlignment="Stretch"
-                                      Margin="0,0,5,0"
-                                      ItemsSource="{Binding ., Source={ext:MsgIdsBindingSource}}" />
+                            <DockPanel Grid.Column="0" Margin="0,0,5,0">
+                                <Button DockPanel.Dock="Right"
+                                        Name="OpenMsgIdList"
+                                        Content="&#x25BE;"
+                                        Width="30"
+                                        Padding="0"
+                                        HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center"
+                                        Margin="2,0,0,0"
+                                        VerticalAlignment="Stretch"
+                                        Click="OpenMsgIdList_Click" />
+                                <AutoCompleteBox Name="SendMsgId"
+                                                 HorizontalAlignment="Stretch"
+                                                 Watermark="Search message ID"
+                                                 FilterMode="Contains"
+                                                 MinimumPrefixLength="0"
+                                                 MaxDropDownHeight="400" />
+                            </DockPanel>
                             <ComboBox Grid.Column="1" Name="SendMsgType"
                                       Margin="0,0,5,0"
                                       HorizontalAlignment="Stretch"
@@ -97,7 +142,13 @@
 
             <GridSplitter Grid.Column="1" Width="5" ShowsPreview="True" />
 
-            <Grid Grid.Column="2" RowDefinitions="*,5,*">
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" MinHeight="100" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="*" MinHeight="100" />
+                </Grid.RowDefinitions>
+
                 <DataGrid Name="MsgTable" Grid.Row="0" SelectionMode="Single"
                           CanUserSortColumns="False" CanUserReorderColumns="False"
                           CanUserResizeColumns="True"

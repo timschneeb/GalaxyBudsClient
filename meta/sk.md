@@ -1,10 +1,10 @@
-# pl (Poland)
+# sk (Slovakia)
 
 This file is auto-generated and automatically updated. Do not modify this file manually.
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>98%</td><td>11 missing string(s)</td></tr>
+<tr><td>98%</td><td>7 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -18,10 +18,6 @@ This file is auto-generated and automatically updated. Do not modify this file m
 <tr><td><code>settings_multipoint_apply_description</code></td><td>Write the marker again. Your earbuds will briefly disconnect and reconnect.</td></tr>
 <tr><td><code>settings_multipoint_applied</code></td><td>Multipoint unlocked. Connect your phone to test it.</td></tr>
 <tr><td><code>settings_multipoint_failed</code></td><td>Could not unlock multipoint. Make sure your earbuds are connected and try again.</td></tr>
-<tr><td><code>fw_select_net_index_error</code></td><td>Failed to communicate with server. Cannot download firmware index at the moment.</td></tr>
-<tr><td><code>fw_upload_progress_stats_mtu</code></td><td>Maximum transfer unit: {0} bytes</td></tr>
-<tr><td><code>fw_upload_progress_stats_offset</code></td><td>Processing data from offset 0x{0:X6} to 0x{1:X6}</td></tr>
-<tr><td><code>fw_upload_progress_stats_segment</code></td><td>Uploading segment #{0} ({1} bytes, checksum 0x{2:X6})</td></tr>
 
 </table>
 

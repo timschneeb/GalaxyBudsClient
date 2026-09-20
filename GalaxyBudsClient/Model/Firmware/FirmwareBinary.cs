@@ -108,7 +108,7 @@ public class FirmwareBinary
     public static Models? DetectModel(ref readonly byte[] data)
     {
         var fastSearch = new BoyerMoore();
-        foreach (var model in ModelsExtensions.GetValues())
+        foreach (var model in ModelsExtensions.GetValues().Reverse())
         {
             if(model == Models.NULL)
                 continue;

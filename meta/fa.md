@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>90%</td><td>51 missing string(s)</td></tr>
+<tr><td>89%</td><td>58 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -56,6 +56,13 @@ If the official Samsung Wearable app is active alongside this app, connection is
 <tr><td><code>settings_color_override_description</code></td><td>Change the displayed color of your earbuds in the app</td></tr>
 <tr><td><code>settings_nav_sidebar</code></td><td>Navigation sidebar</td></tr>
 <tr><td><code>settings_nav_sidebar_description</code></td><td>Show or collapse the navigation buttons on the left hand side</td></tr>
+<tr><td><code>settings_multipoint_header</code></td><td>Multipoint</td></tr>
+<tr><td><code>settings_multipoint_auto</code></td><td>Unlock multipoint without a Samsung account</td></tr>
+<tr><td><code>settings_multipoint_auto_description</code></td><td>Your earbuds normally drop your phone as soon as a non-Samsung device connects, unless the Galaxy Wearable app is signed in. Enabling this writes the missing version marker to your earbuds every time they connect, which lets both devices stay connected. The earbuds keep the marker only until they power down, so putting them back in the case clears it.</td></tr>
+<tr><td><code>settings_multipoint_apply</code></td><td>Apply now</td></tr>
+<tr><td><code>settings_multipoint_apply_description</code></td><td>Write the marker again. Your earbuds will briefly disconnect and reconnect.</td></tr>
+<tr><td><code>settings_multipoint_applied</code></td><td>Multipoint unlocked. Connect your phone to test it.</td></tr>
+<tr><td><code>settings_multipoint_failed</code></td><td>Could not unlock multipoint. Make sure your earbuds are connected and try again.</td></tr>
 <tr><td><code>adv_pause_playback</code></td><td>Pause playback if earbuds are taken off</td></tr>
 <tr><td><code>adv_pause_playback_desc</code></td><td>Sends a global play/pause state change event when both of the proximity sensors are uncovered (Desktop only)</td></tr>
 <tr><td><code>connlost_troubleshoot</code></td><td>Troubleshoot</td></tr>

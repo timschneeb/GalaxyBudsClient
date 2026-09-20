@@ -51,4 +51,5 @@ public enum Features
     UsageReport,
     HotCommandLanguageUpdate,
     HiddenAtMode,
+    CustomEqualizer,
 }

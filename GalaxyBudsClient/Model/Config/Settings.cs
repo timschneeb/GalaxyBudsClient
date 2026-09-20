@@ -38,6 +38,14 @@ public static class Settings
         Data.ExperimentsFinishedIds.CollectionChanged += (_, _) => Save();
         Data.CustomActionLeft.PropertyChanged += OnTouchActionPropertyChanged;
         Data.CustomActionRight.PropertyChanged += OnTouchActionPropertyChanged;
+
+        // CollectionChanged only fires for items added/removed after load, so devices and hotkeys
+        // deserialized from disk are never subscribed to their property-change handlers. Without
+        // this, changing a property on an already-saved device or hotkey does not trigger a Save().
+        foreach (var device in Data.Devices)
+            device.PropertyChanged += OnDevicePropertyChanged;
+        foreach (var hotkey in Data.Hotkeys)
+            hotkey.PropertyChanged += OnHotkeyPropertyChanged;
     }
     
     public static Themes DefaultTheme => PlatformUtils.SupportsMicaTheme ? Themes.DarkMica : 

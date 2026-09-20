@@ -456,3 +456,6 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+# macOS publish output (installers/bundles)
+bin_osx*/

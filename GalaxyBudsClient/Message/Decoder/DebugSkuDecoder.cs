@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System;
+using System.Linq;
+using System.Text;
 using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Model.Constants;
 
@@ -29,7 +31,7 @@ public class DebugSkuDecoder : BaseMessageDecoder
         if (build == null)
             return null;
             
-        foreach (var model in ModelsExtensions.GetValues())
+        foreach (var model in ModelsExtensions.GetValues().Reverse())
         {
             var pattern = model.GetModelMetadataAttribute()?.FwPattern;
             if(pattern == null)
