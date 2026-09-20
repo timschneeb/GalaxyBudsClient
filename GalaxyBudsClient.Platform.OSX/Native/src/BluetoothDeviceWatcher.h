@@ -13,6 +13,7 @@ typedef void (*BtDev_OnDisconnected)(const char *mac);
 
 @interface BluetoothDeviceWatcher : NSObject
 - (id)init;
+- (void)teardown;
 - (BOOL)registerForDisconnectNotification:(NSString *)mac;
 - (void)setOnConnected:(BtDev_OnConnected)callback;
 - (void)setOnDisconnected:(BtDev_OnDisconnected)callback;

@@ -12,7 +12,7 @@ public class Buds4ProDeviceSpec : IDeviceSpec
     {
         { Features.SeamlessConnection, null },
         { Features.StereoPan, null },
-        { Features.DoubleTapVolume, null },
+        // DoubleTapVolume ("double-tap earbud edge") confirmed unsupported on Buds4 Pro (2026-06-21)
         { Features.FirmwareUpdates, null },
         { Features.DetectConversations, null },
         { Features.NoiseControl, null },
@@ -24,8 +24,9 @@ public class Buds4ProDeviceSpec : IDeviceSpec
         { Features.BixbyWakeup, null },
         { Features.GearFitTest, null },
         { Features.ExtraClearCallSound, null },
-        { Features.AmbientExtraLoud, null },
         { Features.AmbientSound, null },
+        { Features.AmbientSoundVolume, null },
+        { Features.CustomEqualizer, null },
         { Features.Anc, null },
         { Features.AmbientSidetone, null },
         { Features.AmbientCustomize, null },
@@ -60,7 +61,7 @@ public class Buds4ProDeviceSpec : IDeviceSpec
     );
         
     public string IconResourceKey => "Pro";
-    public int MaximumAmbientVolume => 2;
+    public int MaximumAmbientVolume => 4;
     public byte StartOfMessage => (byte)MsgConstants.Som;
     public byte EndOfMessage => (byte)MsgConstants.Eom;
 }

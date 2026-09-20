@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>60%</td><td>224 missing string(s)</td></tr>
+<tr><td>59%</td><td>231 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -188,6 +188,13 @@ Measure level: Select a vertical span to measure the battery level difference be
 <tr><td><code>settings_dyn_tray_mode_battery_avg</code></td><td>Show average battery level</td></tr>
 <tr><td><code>settings_devmode_description</code></td><td>Bluetooth traffic inspector and other developer tools</td></tr>
 <tr><td><code>settings_cpopup_position_description</code></td><td>Select the position of the connection popup</td></tr>
+<tr><td><code>settings_multipoint_header</code></td><td>Multipoint</td></tr>
+<tr><td><code>settings_multipoint_auto</code></td><td>Unlock multipoint without a Samsung account</td></tr>
+<tr><td><code>settings_multipoint_auto_description</code></td><td>Your earbuds normally drop your phone as soon as a non-Samsung device connects, unless the Galaxy Wearable app is signed in. Enabling this writes the missing version marker to your earbuds every time they connect, which lets both devices stay connected. The earbuds keep the marker only until they power down, so putting them back in the case clears it.</td></tr>
+<tr><td><code>settings_multipoint_apply</code></td><td>Apply now</td></tr>
+<tr><td><code>settings_multipoint_apply_description</code></td><td>Write the marker again. Your earbuds will briefly disconnect and reconnect.</td></tr>
+<tr><td><code>settings_multipoint_applied</code></td><td>Multipoint unlocked. Connect your phone to test it.</td></tr>
+<tr><td><code>settings_multipoint_failed</code></td><td>Could not unlock multipoint. Make sure your earbuds are connected and try again.</td></tr>
 <tr><td><code>factory_confirmation</code></td><td>Are you sure you want to reset your earbuds to factory settings?
 This will remove all data and settings from your earbuds.
 

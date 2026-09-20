@@ -12,6 +12,7 @@ namespace GalaxyBudsClient.Platform.OSX
     {
         private static readonly SemaphoreSlim ConnSemaphore = new(1, 1);
         private static readonly SemaphoreSlim SearchSemaphore = new(1, 1);
+        private static readonly SemaphoreSlim SendSemaphore = new(1, 1);
 
         private string _currentMac = string.Empty;
         private string _currentUuid = string.Empty;
@@ -323,12 +324,22 @@ namespace GalaxyBudsClient.Platform.OSX
         public async Task SendAsync(byte[] data)
         {
             BT_SEND_RESULT result;
-            unsafe
+            // Serialize sends: concurrent bt_send calls interleave their MTU-sized
+            // chunks in the RFCOMM stream, corrupting frame boundaries
+            await SendSemaphore.WaitAsync();
+            try
             {
-                fixed (byte* raw = data)
+                unsafe
                 {
-                    result = Bluetooth.bt_send(_nativePtr, raw, (uint)data.Length);
+                    fixed (byte* raw = data)
+                    {
+                        result = Bluetooth.bt_send(_nativePtr, raw, (uint)data.Length);
+                    }
                 }
+            }
+            finally
+            {
+                SendSemaphore.Release();
             }
 
             if (result != BT_SEND_RESULT.BT_SEND_SUCCESS)

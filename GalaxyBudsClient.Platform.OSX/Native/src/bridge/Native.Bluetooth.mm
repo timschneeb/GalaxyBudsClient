@@ -6,17 +6,33 @@
 #import "Native.h"
 
 bool bt_alloc(BluetoothImpl **self) {
-    *self = (BluetoothImpl *)malloc(sizeof(struct BluetoothImpl));
+    // calloc (not malloc): the struct's client/watcher are ARC __strong members, so the slots must
+    // start nil — assigning into uninitialised memory would make ARC release a garbage pointer.
+    *self = (BluetoothImpl *)calloc(1, sizeof(struct BluetoothImpl));
+    if (*self == nullptr) {
+        return false;
+    }
 
     (*self)->client = [[Bluetooth alloc] init];
     (*self)->watcher = [[BluetoothDeviceWatcher alloc] init];
 
-    return (*self) != nullptr &&
-           (*self)->client != nullptr &&
+    return (*self)->client != nullptr &&
            (*self)->watcher != nullptr;
 }
 
 void bt_free(BluetoothImpl *self) {
+    if (self == nullptr) {
+        return;
+    }
+
+    // A raw free() does not run ARC's release of the struct's __strong members, and the watcher's
+    // IOBluetooth notifications retain it. Tear those down and close the channel, then nil the
+    // members so ARC releases the objects, before freeing the struct.
+    [self->watcher teardown];
+    [self->client disconnect];
+    self->client = nil;
+    self->watcher = nil;
+
     free(self);
 }
 
