@@ -79,7 +79,7 @@ public partial class DeviceSelectionDialogViewModel : ViewModelBase
     public void DoConnectCommand(BluetoothDevice device)
     {
         var spec = DeviceSpecHelper.FindByDevice(device);
-        if (spec == null || device.IsConnected == false || device.Address == string.Empty)
+        if (spec == null || !IsSelectable(device) || device.Address == string.Empty)
         {
             _ = new MessageBox
             {
@@ -111,9 +111,14 @@ public partial class DeviceSelectionDialogViewModel : ViewModelBase
 
         Devices.Clear();
         devices
-            .Where(dev => dev.IsConnected)
+            .Where(IsSelectable)
             .Where(dev => DeviceSpecHelper.FindByDevice(dev) != null)
             .ToList()
             .ForEach(x => Devices.Add(x));
     }
+
+    // On macOS 27, IOBluetooth reports paired devices as disconnected even while they are connected.
+    // The macOS backend opens the baseband connection itself before opening the RFCOMM channel,
+    // so it doesn't need the device to be connected beforehand.
+    private static bool IsSelectable(BluetoothDevice device) => device.IsConnected || PlatformUtils.IsOSX;
 }
