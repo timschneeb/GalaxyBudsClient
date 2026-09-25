@@ -148,6 +148,12 @@ public static class Program
                 // https://github.com/AvaloniaUI/Avalonia/issues/14577
                 DisableSetProcessName = true
             })
+            .With(new AvaloniaNativePlatformOptions
+            {
+                // Native popup windows (ComboBox dropdowns, flyouts) don't open or render empty on macOS 27;
+                // render them as overlays inside the owning window instead
+                OverlayPopups = true
+            })
             .UsePlatformDetect()
             .LogToTrace()
             .WithInterFont();

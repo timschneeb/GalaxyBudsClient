@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -161,7 +162,8 @@ namespace GalaxyBudsClient.Platform.OSX
                     throw new BluetoothException(BluetoothException.ErrorCodes.Unknown, "Search failed.");
                 }
 
-                return devices;
+                // IOBluetooth may list the same paired device more than once
+                return devices.DistinctBy(d => d.Address).ToArray();
             } finally
             {
                 SearchSemaphore.Release();
