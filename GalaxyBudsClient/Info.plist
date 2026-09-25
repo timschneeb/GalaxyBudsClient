@@ -4,6 +4,8 @@
     <dict>
         <key>NSBluetoothAlwaysUsageDescription</key>
         <string>Galaxy Buds Manager uses Bluetooth to access Galaxy Buds devices</string>
+        <key>NSMicrophoneUsageDescription</key>
+        <string>Galaxy Buds Manager captures system audio from the BlackHole virtual device to apply 360 spatial audio</string>
         <key>CFBundleName</key>
         <string>Galaxy Buds Manager</string>
         <key>CFBundleDisplayName</key>
