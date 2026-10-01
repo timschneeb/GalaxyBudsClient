@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Media.Imaging;
 using Avalonia.Threading;
+using FluentIcons.Common;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface;
+using GalaxyBudsClient.Interface.Converters;
 using GalaxyBudsClient.Interface.ViewModels.Pages;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Model;
+using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using Serilog;
@@ -40,6 +45,9 @@ internal class TrayManager
         // It's important to trigger a rebuild every time some event happens
         // otherwise tray will show outdated infos
         (Application.Current as App)!.TrayMenu.NeedsUpdate += (sender, args) => _ = RebuildAsync();
+        // Icons are rendered for the current system appearance
+        if (Application.Current?.PlatformSettings is { } platformSettings)
+            platformSettings.ColorValuesChanged += (_, _) => _ = RebuildAsync();
         
         BluetoothImpl.Instance.Connected += (sender, args) => _ = RebuildAsync();
         BluetoothImpl.Instance.Disconnected += (sender, args) => _ = RebuildAsync();
@@ -58,6 +66,13 @@ internal class TrayManager
 
     private async void OnTrayMenuCommand(object? type)
     {
+        if (type is NoiseControlModes mode)
+        {
+            EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, mode);
+            await RebuildAsync();
+            return;
+        }
+        
         if (type is not TrayItemTypes e)
         {
             Log.Error("TrayManager.OnTrayMenuCommand: Unknown item type: {Type}", type);
@@ -66,27 +81,6 @@ internal class TrayManager
             
         switch (e)
         {
-            case TrayItemTypes.ToggleNoiseControl:
-                var ncVm = MainView.Instance!.ResolveViewModelByType<NoiseControlPageViewModel>();
-                if (ncVm != null)
-                {
-                    if (ncVm.IsAmbientSoundEnabled)
-                    {
-                        /* Ambient is on, use ANC toggle */
-                        EventDispatcher.Instance.Dispatch(Event.AncToggle);
-                    }
-                    else if (ncVm.IsAncEnabled)
-                    {
-                        /* ANC is on, use ANC toggle to disable itself */
-                        EventDispatcher.Instance.Dispatch(Event.AncToggle);
-                    }
-                    else
-                    {
-                        /* Nothing is on, use ambient toggle */
-                        EventDispatcher.Instance.Dispatch(Event.AmbientToggle);
-                    }
-                }
-                break;
             case TrayItemTypes.LockTouchpad:
                 EventDispatcher.Instance.Dispatch(Event.LockTouchpadToggle);
                 break;
@@ -129,16 +123,20 @@ internal class TrayManager
             batteryCase = DeviceMessageCache.Instance.BasicStatusUpdateWithValidCase?.BatteryCase ?? bsu.BatteryCase;
         }
             
+        var deviceName = BluetoothImpl.Instance.Device.Current?.Name;
         return
         [
+            PlatformUtils.IsOSX && !string.IsNullOrWhiteSpace(deviceName)
+                ? new NativeMenuItem(deviceName) { IsEnabled = false, Icon = Icon(Symbol.Headphones) }
+                : null,
             bsu.BatteryL > 0
-                ? new NativeMenuItem($"{Strings.Left}: {bsu.BatteryL}%") { IsEnabled = false }
+                ? new NativeMenuItem($"{Strings.Left}: {bsu.BatteryL}%") { IsEnabled = false, Icon = BatteryIcon(bsu.BatteryL) }
                 : null,
             bsu.BatteryR > 0
-                ? new NativeMenuItem($"{Strings.Right}: {bsu.BatteryR}%") { IsEnabled = false }
+                ? new NativeMenuItem($"{Strings.Right}: {bsu.BatteryR}%") { IsEnabled = false, Icon = BatteryIcon(bsu.BatteryR) }
                 : null,
             batteryCase is > 0 and <= 100 && BluetoothImpl.Instance.DeviceSpec.Supports(Features.CaseBattery)
-                ? new NativeMenuItem($"{Strings.Case}: {batteryCase}%") { IsEnabled = false }
+                ? new NativeMenuItem($"{Strings.Case}: {batteryCase}%") { IsEnabled = false, Icon = BatteryIcon(batteryCase) }
                 : null,
 
             new NativeMenuItemSeparator()
@@ -146,31 +144,82 @@ internal class TrayManager
         ];
     }
 
+    // Menu icons are only styled for the macOS menu bar
+    private static Bitmap? Icon(Symbol symbol) => PlatformUtils.IsOSX ? TrayMenuIcons.Glyph(symbol) : null;
+
+    private static readonly BatterySymbolConverter BatterySymbols = new();
+
+    private static Bitmap? BatteryIcon(int level) =>
+        Icon((Symbol)BatterySymbols.Convert(level, typeof(Symbol), null, CultureInfo.CurrentCulture));
+
+    private IEnumerable<NativeMenuItemBase> BuildNoiseControlItems()
+    {
+        var current = MainView.Instance!.ResolveViewModelByType<NoiseControlPageViewModel>()?.NoiseControlMode;
+        var items = new List<NativeMenuItemBase>
+        {
+            new NativeMenuItem(Strings.MainpageNoise) { IsEnabled = false }
+        };
+        foreach (var (mode, label, symbol) in new[]
+                 {
+                     (NoiseControlModes.Off, Strings.Off, Symbol.CircleOff),
+                     (NoiseControlModes.AmbientSound, Strings.MainpageAmbientSound, Symbol.SoundWaveCircle),
+                     (NoiseControlModes.NoiseReduction, Strings.Anc, Symbol.Headphones)
+                 })
+        {
+            var selected = current == mode;
+            items.Add(new NativeMenuItem(label)
+            {
+                // On macOS the filled circle icon marks the active mode instead of a radio bullet
+                ToggleType = PlatformUtils.IsOSX ? NativeMenuItemToggleType.None : NativeMenuItemToggleType.Radio,
+                IsChecked = selected,
+                Icon = PlatformUtils.IsOSX ? TrayMenuIcons.Option(symbol, selected) : null,
+                Command = new MiniCommand(OnTrayMenuCommand),
+                CommandParameter = mode
+            });
+        }
+        items.Add(new NativeMenuItemSeparator());
+        return items;
+    }
+
     private IEnumerable<NativeMenuItemBase> RebuildDynamicActions()
     {
-        return from type in BluetoothImpl.Instance.DeviceSpec.TrayShortcuts
-            let str = type switch
-            {
-                TrayItemTypes.ToggleNoiseControl => Strings.TraySwitchNoise,
-                TrayItemTypes.ToggleEqualizer => MainView.Instance!.ResolveViewModelByType<EqualizerPageViewModel>()?.IsEqEnabled ?? false
-                    ? Strings.TrayDisableEq
-                    : Strings.TrayEnableEq, 
-                TrayItemTypes.ToggleAmbient => MainView.Instance!.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAmbientSoundEnabled ?? false
-                    ? Strings.TrayDisableAmbientSound
-                    : Strings.TrayEnableAmbientSound,
-                TrayItemTypes.ToggleAnc => MainView.Instance!.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAncEnabled ?? false
-                    ? Strings.TrayDisableAnc
-                    : Strings.TrayEnableAnc,
-                TrayItemTypes.LockTouchpad => MainView.Instance!.ResolveViewModelByType<TouchpadPageViewModel>()?.IsTouchpadLocked ?? false
-                    ? Strings.TrayUnlockTouchpad
-                    : Strings.TrayLockTouchpad,
-                _ => Strings.Unknown
-            }
-            select new NativeMenuItem(str)
-            {
-                Command = new MiniCommand(OnTrayMenuCommand),
-                CommandParameter = type
-            };
+        return BluetoothImpl.Instance.DeviceSpec.TrayShortcuts.SelectMany(type =>
+            type == TrayItemTypes.ToggleNoiseControl ? BuildNoiseControlItems() : [BuildToggleItem(type)]);
+    }
+
+    private NativeMenuItem BuildToggleItem(TrayItemTypes type)
+    {
+        var isTouchpadLocked = MainView.Instance!.ResolveViewModelByType<TouchpadPageViewModel>()?.IsTouchpadLocked ?? false;
+        var str = type switch
+        {
+            TrayItemTypes.ToggleEqualizer => MainView.Instance!.ResolveViewModelByType<EqualizerPageViewModel>()?.IsEqEnabled ?? false
+                ? Strings.TrayDisableEq
+                : Strings.TrayEnableEq, 
+            TrayItemTypes.ToggleAmbient => MainView.Instance!.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAmbientSoundEnabled ?? false
+                ? Strings.TrayDisableAmbientSound
+                : Strings.TrayEnableAmbientSound,
+            TrayItemTypes.ToggleAnc => MainView.Instance!.ResolveViewModelByType<NoiseControlPageViewModel>()?.IsAncEnabled ?? false
+                ? Strings.TrayDisableAnc
+                : Strings.TrayEnableAnc,
+            TrayItemTypes.LockTouchpad => isTouchpadLocked
+                ? Strings.TrayUnlockTouchpad
+                : Strings.TrayLockTouchpad,
+            _ => Strings.Unknown
+        };
+        var symbol = type switch
+        {
+            TrayItemTypes.ToggleEqualizer => Symbol.DeviceEq,
+            TrayItemTypes.ToggleAmbient => Symbol.SoundWaveCircle,
+            TrayItemTypes.ToggleAnc => Symbol.Headphones,
+            TrayItemTypes.LockTouchpad => isTouchpadLocked ? Symbol.LockOpen : Symbol.LockClosed,
+            _ => Symbol.QuestionCircle
+        };
+        return new NativeMenuItem(str)
+        {
+            Icon = Icon(symbol),
+            Command = new MiniCommand(OnTrayMenuCommand),
+            CommandParameter = type
+        };
     }
 
     public async Task RebuildAsync()
@@ -188,6 +237,7 @@ internal class TrayManager
             {
                 items.Add(new NativeMenuItem(Strings.WindowOpen)
                 {
+                    Icon = Icon(Symbol.Window),
                     Command = new MiniCommand(OnTrayMenuCommand),
                     CommandParameter = TrayItemTypes.Open
                 });
@@ -203,6 +253,7 @@ internal class TrayManager
             {
                 items.Add(new NativeMenuItem(Strings.ConnlostConnect)
                 {
+                    Icon = Icon(Symbol.Bluetooth),
                     Command = new MiniCommand(OnTrayMenuCommand),
                     CommandParameter = TrayItemTypes.Connect
                 });
@@ -211,6 +262,7 @@ internal class TrayManager
                 
             items.Add(new NativeMenuItem(Strings.TrayQuit)
             {
+                Icon = Icon(Symbol.Power),
                 Command = new MiniCommand(OnTrayMenuCommand),
                 CommandParameter = TrayItemTypes.Quit
             });
