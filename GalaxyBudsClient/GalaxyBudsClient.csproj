@@ -64,6 +64,10 @@
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
 
+    <ItemGroup>
+        <InternalsVisibleTo Include="GalaxyBudsClient.Tests" />
+    </ItemGroup>
+
     <!-- Android: we set the package name in GalaxyBudsClient.Android -->
     <PropertyGroup Condition="'$(IsAndroid)'!='true'">
         <ApplicationId>me.timschneeberger.galaxybudsclient</ApplicationId>

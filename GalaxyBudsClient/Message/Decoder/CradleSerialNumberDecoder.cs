@@ -5,6 +5,10 @@ using Serilog;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
+/// <summary>
+/// Parses case software version (9 bytes) and case serial (11 bytes ASCII) from msg 205.
+/// Base Galaxy Buds4 typically does not answer this command; see docs/Android-RFCOMM-host.md.
+/// </summary>
 [MessageDecoder(MsgIds.CRADLE_SERIAL_NUMBER)]
 public class CradleSerialNumberDecoder : BaseMessageDecoder
 {
