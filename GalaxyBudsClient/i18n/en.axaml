@@ -231,6 +231,14 @@ If the official Samsung Wearable app is active alongside this app, connection is
     <sys:String x:Key="touchpad_noise_control_mode_anc_amb">ANC ↔ Ambient sound</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_anc_off">ANC ↔ Off</sys:String>
     <sys:String x:Key="touchpad_noise_control_mode_amb_off">Ambient sound ↔ Off</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_adaptive">ANC ↔ Adaptive</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_adaptive">Ambient sound ↔ Adaptive</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_adaptive_off">Adaptive ↔ Off</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_amb_off">ANC ↔ Ambient sound ↔ Off</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_adaptive_amb">ANC ↔ Adaptive ↔ Ambient sound</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_anc_adaptive_off">ANC ↔ Adaptive ↔ Off</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_amb_adaptive_off">Ambient sound ↔ Adaptive ↔ Off</sys:String>
+    <sys:String x:Key="touchpad_noise_control_mode_all">All modes</sys:String>
 
     <!--Custom touchpad action page-->
     <sys:String x:Key="cact_header">Define a custom long-press action</sys:String>
@@ -531,6 +539,15 @@ You might need to manually reconnect your earbuds.</sys:String>
     <!--Noise control-->
     <sys:String x:Key="nc_header">Noise control</sys:String>
     <sys:String x:Key="nc_as_anc_description">Reduce background noises</sys:String>
+    <sys:String x:Key="nc_adaptive_description">Automatically blend ANC and ambient sound based on your surroundings</sys:String>
+    <sys:String x:Key="nc_auto_pause">Auto pause and resume</sys:String>
+    <sys:String x:Key="nc_auto_pause_description">Pause media playback when removing an earbud and resume when worn again</sys:String>
+    <sys:String x:Key="nc_adaptive_volume">Adaptive volume</sys:String>
+    <sys:String x:Key="nc_adaptive_volume_description">Automatically adjust the media volume based on your environment</sys:String>
+    <sys:String x:Key="nc_siren_detect">Siren detection</sys:String>
+    <sys:String x:Key="nc_siren_detect_description">Lower the media volume automatically when a siren is detected nearby</sys:String>
+    <sys:String x:Key="eq_adaptive">Adaptive EQ</sys:String>
+    <sys:String x:Key="eq_adaptive_description">Optimize the sound automatically based on the fit of the earbuds</sys:String>
     <sys:String x:Key="nc_one_earbud">Noise controls with one earbud</sys:String>
     <sys:String x:Key="nc_one_earbud_description">Noise controls normally require two earbuds to prevent discomfort, enable this to allow it with only one earbud</sys:String>
     <sys:String x:Key="nc_anc_level">High sensitivity</sys:String>

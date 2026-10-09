@@ -14,6 +14,7 @@ public class Buds2DeviceSpec : IDeviceSpec
         { Features.StereoPan, null},
         { Features.FirmwareUpdates, null },
         { Features.NoiseControl, null },
+        { Features.TouchpadLock, null },
         { Features.AmbientSound, null },
         { Features.Anc, null },
         { Features.GamingMode, null },

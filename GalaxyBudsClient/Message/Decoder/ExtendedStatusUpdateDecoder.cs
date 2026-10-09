@@ -190,6 +190,18 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
     public byte DoublePinchAndHoldAdvanced { get; init; }
     [Device(Models.Buds3Pro, Selector.GreaterEqual)]
     public bool SirenDetect { get; init; }
+    [Device(Models.Buds4, Selector.GreaterEqual)]
+    public bool AdaptiveEqEnabled { get; init; }
+    [Device(Models.Buds4, Selector.GreaterEqual)]
+    public byte QuickLaunchAdvanced { get; init; }
+
+    /// <summary>
+    /// Buds4 only: the "earbuds control" mask bits for gestures without a
+    /// dedicated property (bits 0 and 6 - e.g. the volume swipe). These
+    /// must be echoed back unmodified when sending touch options.
+    /// </summary>
+    [Device(Models.Buds4, Selector.GreaterEqual)]
+    public byte GestureEchoBits { get; init; }
     
     /// <remarks>
     /// Important: The parameterless constructor must only be used for unit tests
@@ -331,21 +343,45 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                 }
                 else // >= Buds2
                 {
-                    TouchHoldOn = (msg.Payload[10] & (1 << 0)) == 1;
-                    TripleTapOn = (msg.Payload[10] & (1 << 1)) == 2;
-                    DoubleTapOn = (msg.Payload[10] & (1 << 2)) == 4;
-                    SingleTapOn = (msg.Payload[10] & (1 << 3)) == 8;
-                    TouchpadLock = (msg.Payload[10] & (1 << 7)) != 128;
+                    if (TargetModel is Models.Buds4 or Models.Buds4Pro)
+                    {
+                        // Buds4 bit layout (verified experimentally):
+                        // bit7 = single tap, bit3 = double tap, bit2 = triple tap,
+                        // bit1 = pinch and hold, bit4/5 = gestures during calls.
+                        // There is no lock flag. Bits 0 and 6 map to additional
+                        // gestures (e.g. volume swipe) and are only echoed back
+                        // when sending.
+                        TouchpadLock = false;
+                        SingleTapOn = (msg.Payload[10] & (1 << 7)) == 128;
+                        DoubleTapOn = (msg.Payload[10] & (1 << 3)) == 8;
+                        TripleTapOn = (msg.Payload[10] & (1 << 2)) == 4;
+                        TouchHoldOn = (msg.Payload[10] & (1 << 1)) == 2;
+                        GestureEchoBits = (byte)(msg.Payload[10] & 0x41);
 
-                    if (DeviceSpec.Supports(Features.AdvancedTouchLockForCalls))
-                    {
-                        TouchHoldOnForCallOn = (msg.Payload[10] & (1 << 5)) == 32;
-                        DoubleTapForCallOn = (msg.Payload[10] & (1 << 4)) == 16;
+                        if (DeviceSpec.Supports(Features.AdvancedTouchLockForCalls))
+                        {
+                            DoubleTapForCallOn = (msg.Payload[10] & (1 << 4)) == 16;
+                            TouchHoldOnForCallOn = (msg.Payload[10] & (1 << 5)) == 32;
+                        }
                     }
-                    
-                    if (DeviceSpec.Supports(Features.AdvancedTouchLockSwipe))
+                    else
                     {
-                        SwipeOn = (msg.Payload[10] & (1 << 6)) == 64;
+                        TouchHoldOn = (msg.Payload[10] & (1 << 0)) == 1;
+                        TripleTapOn = (msg.Payload[10] & (1 << 1)) == 2;
+                        DoubleTapOn = (msg.Payload[10] & (1 << 2)) == 4;
+                        SingleTapOn = (msg.Payload[10] & (1 << 3)) == 8;
+                        TouchpadLock = (msg.Payload[10] & (1 << 7)) != 128;
+
+                        if (DeviceSpec.Supports(Features.AdvancedTouchLockForCalls))
+                        {
+                            TouchHoldOnForCallOn = (msg.Payload[10] & (1 << 5)) == 32;
+                            DoubleTapForCallOn = (msg.Payload[10] & (1 << 4)) == 16;
+                        }
+
+                        if (DeviceSpec.Supports(Features.AdvancedTouchLockSwipe))
+                        {
+                            SwipeOn = (msg.Payload[10] & (1 << 6)) == 64;
+                        }
                     }
                 }
 
@@ -642,6 +678,54 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                             IsRightCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 2) == 4;
                             IsCaseCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 0) == 1;
                         }
+                        else if (TargetModel is Models.Buds4 or Models.Buds4Pro)
+                        {
+                            // Buds4 generation tail (verified against the official
+                            // Galaxy Buds app, kk/yn message parsers). An extra
+                            // autoAdjustSound byte at payload[41] shifts all
+                            // following fields compared to the Buds3 (Pro) layout.
+                            try
+                            {
+                                AutoAdjustSound = reader.ReadBoolean(); // [41]
+
+                                SpatialAudioHeadTracking = reader.ReadBoolean(); // [42]
+
+                                var chargingStatus = reader.ReadByte(); // [43]
+                                IsLeftCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 4) == 16;
+                                IsRightCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 2) == 4;
+                                IsCaseCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 0) == 1;
+
+                                ExtraClearCallSound = reader.ReadBoolean(); // [44]
+                                if (reader.PeekChar() != -1)
+                                    ExtraHighAmbientEnabled = reader.ReadBoolean(); // [45]
+                                if (reader.PeekChar() != -1)
+                                    AutoPauseResume = reader.ReadBoolean(); // [46]
+
+                                HotCommandEnabled = reader.ReadBoolean(); // [47]
+                                HotCommandLanguage = reader.ReadByte(); // [48]
+                                AdaptiveEqEnabled = reader.ReadByte() == 1; // [49]
+                                QuickLaunchAdvanced = reader.ReadByte(); // [50]
+                                AdaptiveVolumeEnabled = reader.ReadBoolean(); // [51]
+                                SirenDetect = reader.ReadBoolean(); // [52]
+                                AdaptSoundEnabled = reader.ReadBoolean(); // [53]
+                            }
+                            catch (EndOfStreamException ex)
+                            {
+                                Log.Warning(ex, "Buds4 ExtendedStatusUpdate is only partially supported");
+                            }
+
+                            if (DeviceSpec.Supports(Features.HotCommandLanguageUpdate))
+                            {
+                                try
+                                {
+                                    HotCommandVersion = $"{reader.ReadByte()}.{reader.ReadByte()}.{reader.ReadByte()}"; // [54-56]
+                                }
+                                catch (EndOfStreamException ex)
+                                {
+                                    Log.Warning(ex, "Failed to read version of hot command");
+                                }
+                            }
+                        }
                         else // >= Buds3
                         {
                             SpatialAudioHeadTracking = reader.ReadBoolean();
@@ -711,8 +795,6 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                                         Log.Warning(ex, "Failed to read version of hot command");
                                     }
                                 }
-                                
-                                // TODO: Buds4, Buds4Pro not properly implemented
                             }
                         }
                     }

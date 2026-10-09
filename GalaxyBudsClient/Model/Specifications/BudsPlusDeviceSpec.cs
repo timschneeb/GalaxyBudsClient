@@ -10,6 +10,7 @@ public class BudsPlusDeviceSpec : IDeviceSpec
 {
     public Dictionary<Features, FeatureRule?> Rules => new()
     {
+        { Features.TouchpadLock, null },
         { Features.AmbientSound, null },
         { Features.AmbientSidetone, new FeatureRule(8)  },
         { Features.AmbientExtraLoud, new FeatureRule(9)  },

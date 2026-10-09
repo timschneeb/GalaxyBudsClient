@@ -16,6 +16,7 @@ public class Buds3DeviceSpec : IDeviceSpec
         { Features.CustomEqualizer, null },
         { Features.FirmwareUpdates, null },
         { Features.NoiseControl, null },
+        { Features.TouchpadLock, null },
         { Features.AmbientSound, null },
         { Features.Anc, null },
         { Features.GamingMode, null },

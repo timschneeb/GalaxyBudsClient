@@ -29,6 +29,16 @@
                     ItemsSource="{Binding EqOptions}"
                     DisplayMemberBinding="{Binding}"
                     SelectedValue="{Binding SelectedEqOption}" />
+
+                <controls:SettingsSwitchItem
+                    Content="{ext:Translate {x:Static i18N:Keys.EqAdaptive}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.EqAdaptiveDescription}}"
+                    Symbol="SparkleCircle"
+                    IsChecked="{Binding IsAdaptiveEqEnabled}">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="AdaptiveEq" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
             </controls:SettingsGroup>
 
             <controls:SettingsGroup>

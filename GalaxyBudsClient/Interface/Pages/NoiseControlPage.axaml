@@ -59,6 +59,16 @@
                     IsChecked="{Binding IsAncEnabled}" />
 
                 <controls:SettingsSwitchItem
+                    Content="{ext:Translate {x:Static i18N:Keys.Adaptive}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.NcAdaptiveDescription}}"
+                    Symbol="SparkleCircle"
+                    IsChecked="{Binding IsAdaptiveEnabled}">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="NoiseControlAdaptive" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
+
+                <controls:SettingsSwitchItem
                     Content="{ext:Translate {x:Static i18N:Keys.NcAncLevel}}"
                     Description="{ext:Translate {x:Static i18N:Keys.NcAncLevelDescription}}"
                     Symbol="AddCircle"
@@ -80,6 +90,16 @@
                     Description="{ext:Translate {x:Static i18N:Keys.NcOneEarbudDescription}}"
                     Symbol="Accessibility"
                     IsChecked="{Binding IsNcWithOneEarbudAllowed}">
+                </controls:SettingsSwitchItem>
+
+                <controls:SettingsSwitchItem
+                    Content="{ext:Translate {x:Static i18N:Keys.NcAutoPause}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.NcAutoPauseDescription}}"
+                    Symbol="PauseCircle"
+                    IsChecked="{Binding IsAutoPauseEnabled}">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="AutoPauseResume" />
+                    </Interaction.Behaviors>
                 </controls:SettingsSwitchItem>
             </controls:SettingsGroup>
             
@@ -107,6 +127,28 @@
                     </Interaction.Behaviors>
                 </controls:SettingsComboBoxItem>
 
+            </controls:SettingsGroup>
+
+            <controls:SettingsGroup>
+                <controls:SettingsSwitchItem
+                    Content="{ext:Translate {x:Static i18N:Keys.NcAdaptiveVolume}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.NcAdaptiveVolumeDescription}}"
+                    Symbol="Speaker0"
+                    IsChecked="{Binding IsAdaptiveVolumeEnabled}">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="AdaptiveVolume" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
+
+                <controls:SettingsSwitchItem
+                    Content="{ext:Translate {x:Static i18N:Keys.NcSirenDetect}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.NcSirenDetectDescription}}"
+                    Symbol="MegaphoneLoud"
+                    IsChecked="{Binding IsSirenDetectEnabled}">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="SirenDetect" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
             </controls:SettingsGroup>
 
         </StackPanel>

@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using GalaxyBudsClient.Generated.Model.Attributes;
 using GalaxyBudsClient.Message.Parameter;
+using Serilog;
 
 namespace GalaxyBudsClient.Message.Decoder;
 
@@ -42,6 +43,9 @@ public class AcknowledgementDecoder : BaseMessageDecoder
                 case MsgIds.SET_SPEAK_SEAMLESSLY:
                 case MsgIds.SET_DETECT_CONVERSATIONS:
                 case MsgIds.SET_DETECT_CONVERSATIONS_DURATION:
+                case MsgIds.ADAPTIVE_EQ_VOLUME_CONTROL:
+                case MsgIds.UASC_SIREN_DETECT:
+                case MsgIds.PAUSE_MEDIA_WHEN_ONE_BUD_REMOVED:
                     // Boolean or byte
                     Parameters = new SimpleAckParameter { Value = RawParameters[0] };
                     break;
@@ -70,6 +74,13 @@ public class AcknowledgementDecoder : BaseMessageDecoder
                     break;
             }
         }
-        catch(IndexOutOfRangeException) {}
+        catch(IndexOutOfRangeException ex)
+        {
+            Log.Warning(ex, "Acknowledgement 0x{Id:X2}: payload shorter than expected", (int)Id);
+        }
+        catch(EndOfStreamException ex)
+        {
+            Log.Warning(ex, "Acknowledgement 0x{Id:X2}: payload shorter than expected", (int)Id);
+        }
     }
 }

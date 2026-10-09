@@ -16,6 +16,11 @@ public class Buds4ProDeviceSpec : IDeviceSpec
         { Features.FirmwareUpdates, null },
         { Features.DetectConversations, null },
         { Features.NoiseControl, null },
+        { Features.NoiseControlAdaptive, null },
+        { Features.AdaptiveVolume, null },
+        { Features.SirenDetect, null },
+        { Features.AutoPauseResume, null },
+        { Features.AdaptiveEq, null },
         { Features.NoiseControlModeDualSide, null },
         { Features.GamingMode, null },
         { Features.CaseBattery, null },
@@ -55,8 +60,7 @@ public class Buds4ProDeviceSpec : IDeviceSpec
     public IEnumerable<TrayItemTypes> TrayShortcuts => Array.AsReadOnly(
         [
             TrayItemTypes.ToggleNoiseControl,
-            TrayItemTypes.ToggleEqualizer,
-            TrayItemTypes.LockTouchpad
+            TrayItemTypes.ToggleEqualizer
         ]
     );
         

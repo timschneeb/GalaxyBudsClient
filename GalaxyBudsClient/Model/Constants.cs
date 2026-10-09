@@ -371,17 +371,39 @@ namespace GalaxyBudsClient.Model
             Adaptive = 3
         }
    
+        /// <summary>
+        /// Noise control modes that are cycled through by the touch-and-hold gesture.
+        /// Values are bitmasks matching the Buds3+ protocol:
+        /// Ambient=1, Adaptive=2, Off=4, ANC=8. Only combinations of two or
+        /// more modes are valid cycle configurations.
+        /// </summary>
         [CompiledEnum]
         public enum NoiseControlCycleModes
         {
-            [LocalizableDescription(Keys.TouchpadNoiseControlModeAncAmb)]
-            AncAmb = 0,
             [LocalizableDescription(Keys.TouchpadNoiseControlModeAncOff)]
-            AncOff = 1,
+            AncOff = 12,
+            [LocalizableDescription(Keys.TouchpadNoiseControlModeAncAmb)]
+            AncAmb = 9,
             [LocalizableDescription(Keys.TouchpadNoiseControlModeAmbOff)]
-            AmbOff = 2,
+            AmbOff = 5,
+            [LocalizableDescription(Keys.TouchpadNoiseControlModeAncAdaptive)]
+            AncAdaptive = 10,
+            [LocalizableDescription(Keys.TouchpadNoiseControlModeAmbAdaptive)]
+            AmbAdaptive = 3,
+            [LocalizableDescription(Keys.TouchpadNoiseControlModeAdaptiveOff)]
+            AdaptiveOff = 6,
+            [LocalizableDescription(Keys.TouchpadNoiseControlModeAncAmbOff)]
+            AncAmbOff = 13,
+            [LocalizableDescription(Keys.TouchpadNoiseControlModeAncAdaptiveAmb)]
+            AncAdaptiveAmb = 11,
+            [LocalizableDescription(Keys.TouchpadNoiseControlModeAncAdaptiveOff)]
+            AncAdaptiveOff = 14,
+            [LocalizableDescription(Keys.TouchpadNoiseControlModeAmbAdaptiveOff)]
+            AmbAdaptiveOff = 7,
+            [LocalizableDescription(Keys.TouchpadNoiseControlModeAll)]
+            All = 15,
             [IgnoreDataMember, LocalizableDescription(Keys.Unknown)]
-            Unknown = 99
+            Unknown = 0
         }
         
         [CompiledEnum]

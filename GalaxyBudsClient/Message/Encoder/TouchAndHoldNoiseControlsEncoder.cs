@@ -13,18 +13,28 @@ public class TouchAndHoldNoiseControls : BaseMessageEncoder
     
     public override SppMessage Encode()
     {
-        var states = DeviceSpec.Supports(Features.NoiseControlModeDualSide) ? 
-            GetValues(CycleMode).Concat(GetValues(CycleModeRight)).ToArray() : 
-            GetValues(CycleMode);
-            
+        if (DeviceSpec.Device >= Models.Buds4)
+        {
+            // Buds4 uses one bitmask byte per side:
+            // Ambient=1, Adaptive=2, Off=4, ANC=8 (see NoiseControlCycleModes)
+            return new SppMessage(MsgIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS, MsgTypes.Request,
+                [(byte)CycleMode, (byte)CycleModeRight]);
+        }
+
+        var states = GetValues(CycleMode);
+        if (DeviceSpec.Supports(Features.NoiseControlModeDualSide))
+        {
+            states = [.. states, .. GetValues(CycleModeRight)];
+        }
+
         return new SppMessage(MsgIds.SET_TOUCH_AND_HOLD_NOISE_CONTROLS, MsgTypes.Request, states);
     }
-    
+
     private byte[] GetValues(NoiseControlCycleModes mode)
     {
         if (DeviceSpec.Device >= Models.Buds3)
         {
-            // New format
+            // Buds3 format: one byte per side, legacy values (no Adaptive bit)
             return mode switch
             {
                 NoiseControlCycleModes.AncOff => [8 + 4],
@@ -32,17 +42,14 @@ public class TouchAndHoldNoiseControls : BaseMessageEncoder
                 NoiseControlCycleModes.AncAmb => [8 + 0],
                 _ => [0, 0]
             };
-            // TODO implement Adaptive mode
         }
-        else
+
+        return mode switch
         {
-            return mode switch
-            {
-                NoiseControlCycleModes.AncOff => [1, 0, 1],
-                NoiseControlCycleModes.AmbOff => [0, 1, 1],
-                NoiseControlCycleModes.AncAmb => [1, 1, 0],
-                _ => [0, 0, 0]
-            };
-        }
+            NoiseControlCycleModes.AncOff => [1, 0, 1],
+            NoiseControlCycleModes.AmbOff => [0, 1, 1],
+            NoiseControlCycleModes.AncAmb => [1, 1, 0],
+            _ => [0, 0, 0]
+        };
     }
 }

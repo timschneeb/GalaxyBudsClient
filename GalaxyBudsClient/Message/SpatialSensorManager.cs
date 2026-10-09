@@ -86,7 +86,16 @@ public class SpatialSensorManager : IDisposable
     // Request earbuds to enter head-tracking mode
     public async void Attach()
     {
-        await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_SPATIAL_AUDIO, 1);
+        // Buds4 expects [360 audio, head tracking]; older models a single byte
+        if (BluetoothImpl.Instance.DeviceSpec.Device >= Model.Constants.Models.Buds4)
+        {
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_SPATIAL_AUDIO, [0x01, 0x01]);
+        }
+        else
+        {
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_SPATIAL_AUDIO, 1);
+        }
+
         await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SPATIAL_AUDIO_CONTROL, (byte)SpatialAudioControl.Attach);
         _keepAliveTimer.Start();
     }
@@ -95,7 +104,17 @@ public class SpatialSensorManager : IDisposable
     public async void Detach()
     {
         await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SPATIAL_AUDIO_CONTROL, (byte)SpatialAudioControl.Detach);
-        await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_SPATIAL_AUDIO, 0);
+
+        // Disable head tracking; keep 360 audio itself on for Buds4
+        if (BluetoothImpl.Instance.DeviceSpec.Device >= Model.Constants.Models.Buds4)
+        {
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_SPATIAL_AUDIO, [0x01, 0x00]);
+        }
+        else
+        {
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_SPATIAL_AUDIO, 0);
+        }
+
         _keepAliveTimer.Stop();
     }
         

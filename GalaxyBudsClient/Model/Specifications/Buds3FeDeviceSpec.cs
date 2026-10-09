@@ -17,6 +17,7 @@ public class Buds3FeDeviceSpec : IDeviceSpec
         { Features.DoubleTapVolume, null },
         { Features.FirmwareUpdates, null },
         { Features.NoiseControl, null },
+        { Features.TouchpadLock, null },
         { Features.GamingMode, null },
         { Features.CaseBattery, null },
         { Features.GearFitTest, null },

@@ -46,17 +46,17 @@ public partial class NoiseControlPageViewModel : MainPageViewModelBase
             switch (ack.Id)
             {
                 case MsgIds.NOISE_CONTROLS:
-                    if(ack.Parameters is SimpleAckParameter param) 
+                    if(ack.Parameters is SimpleAckParameter param)
                         SetNoiseControlMode((NoiseControlModes)param.Value);
                     break;
             }
 
             _suppressorCounter--;
         };
-        
+
         PropertyChanged += OnPropertyChanged;
     }
-    
+
     private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateDecoder e)
     {
         _suppressorCounter++;
@@ -64,16 +64,21 @@ public partial class NoiseControlPageViewModel : MainPageViewModelBase
         {
             IsAmbientSoundEnabled = e.NoiseControlMode == NoiseControlModes.AmbientSound;
             IsAncEnabled = e.NoiseControlMode == NoiseControlModes.NoiseReduction;
+            IsAdaptiveEnabled = e.NoiseControlMode == NoiseControlModes.Adaptive;
         }
         else
         {
             IsAmbientSoundEnabled = e.AmbientSoundEnabled;
             IsAncEnabled = e.NoiseCancelling;
+            IsAdaptiveEnabled = false;
         }
 
         IsAncLevelHigh = e.NoiseReductionLevel == 1;
         IsNcWithOneEarbudAllowed = e.NoiseControlsWithOneEarbud;
         IsVoiceDetectEnabled = e.DetectConversations;
+        IsAdaptiveVolumeEnabled = e.AdaptiveVolumeEnabled;
+        IsSirenDetectEnabled = e.SirenDetect;
+        IsAutoPauseEnabled = e.AutoPauseResume;
         VoiceDetectTimeout = e.DetectConversationsDuration switch
         {
             1 => VoiceDetectTimeouts.Sec10,
@@ -87,9 +92,7 @@ public partial class NoiseControlPageViewModel : MainPageViewModelBase
     {
         if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
         {
-            var mode = IsAmbientSoundEnabled ? NoiseControlModes.AmbientSound : 
-                IsAncEnabled ? NoiseControlModes.NoiseReduction : NoiseControlModes.Off;
-            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.NOISE_CONTROLS, (byte)mode);
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.NOISE_CONTROLS, (byte)NoiseControlMode);
         }
         else
         {
@@ -105,16 +108,17 @@ public partial class NoiseControlPageViewModel : MainPageViewModelBase
     {
         if (_suppressorCounter > 0)
             return;
-        
+
         switch (args.PropertyName)
         {
-            case nameof(IsAmbientSoundEnabled) or nameof(IsAncEnabled):
-                if (IsAmbientSoundEnabled && IsAncEnabled && args.PropertyName == nameof(IsAmbientSoundEnabled))
-                    IsAncEnabled = false;
-                else if (IsAmbientSoundEnabled && IsAncEnabled && args.PropertyName == nameof(IsAncEnabled))
-                    IsAmbientSoundEnabled = false;
-                else
+            case nameof(IsAmbientSoundEnabled) or nameof(IsAncEnabled) or nameof(IsAdaptiveEnabled):
+                // Off / Ambient / ANC / Adaptive are mutually exclusive:
+                // enabling one disables the others, then the new mode is sent.
+                if (!EnsureExclusiveMode(args.PropertyName))
+                {
                     SendNoiseControlState();
+                }
+
                 break;
             case nameof(IsAncLevelHigh):
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.NOISE_REDUCTION_LEVEL, IsAncLevelHigh);
@@ -125,43 +129,82 @@ public partial class NoiseControlPageViewModel : MainPageViewModelBase
             case nameof(IsVoiceDetectEnabled):
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_DETECT_CONVERSATIONS, IsVoiceDetectEnabled);
                 break;
+            case nameof(IsAdaptiveVolumeEnabled):
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.ADAPTIVE_EQ_VOLUME_CONTROL, IsAdaptiveVolumeEnabled);
+                break;
+            case nameof(IsSirenDetectEnabled):
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.UASC_SIREN_DETECT, IsSirenDetectEnabled);
+                break;
+            case nameof(IsAutoPauseEnabled):
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.PAUSE_MEDIA_WHEN_ONE_BUD_REMOVED, IsAutoPauseEnabled);
+                break;
             case nameof(VoiceDetectTimeout):
                 var timeout = VoiceDetectTimeout switch
                 {
                     VoiceDetectTimeouts.Sec5 => 0,
                     VoiceDetectTimeouts.Sec10 => 1,
                     _ => 2
-                };  
+                };
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_DETECT_CONVERSATIONS_DURATION, (byte)timeout);
                 break;
         }
     }
 
-    public NoiseControlModes NoiseControlMode => IsAmbientSoundEnabled
-        ? NoiseControlModes.AmbientSound
-        : IsAncEnabled
-            ? NoiseControlModes.NoiseReduction
-            : NoiseControlModes.Off;
-    
+    public NoiseControlModes NoiseControlMode => IsAdaptiveEnabled
+        ? NoiseControlModes.Adaptive
+        : IsAmbientSoundEnabled
+            ? NoiseControlModes.AmbientSound
+            : IsAncEnabled
+                ? NoiseControlModes.NoiseReduction
+                : NoiseControlModes.Off;
+
     private void SetNoiseControlMode(NoiseControlModes mode)
     {
-        switch (mode)
-        {
-            case NoiseControlModes.Off:
-                IsAmbientSoundEnabled = false;
-                IsAncEnabled = false;
-                break;
-            case NoiseControlModes.AmbientSound:
-                IsAmbientSoundEnabled = true;
-                IsAncEnabled = false;
-                break;
-            case NoiseControlModes.NoiseReduction:
-                IsAncEnabled = true;
-                IsAmbientSoundEnabled = false;
-                break;
-        }
+        IsAmbientSoundEnabled = mode == NoiseControlModes.AmbientSound;
+        IsAncEnabled = mode == NoiseControlModes.NoiseReduction;
+        IsAdaptiveEnabled = mode == NoiseControlModes.Adaptive;
     }
-    
+
+    /// <summary>
+    /// Enforces that at most one of the three noise control modes is enabled.
+    /// Returns true when another mode's property was reset as a consequence
+    /// (its own PropertyChanged handler will send the final state); false when
+    /// the caller should send the state itself.
+    /// </summary>
+    private bool EnsureExclusiveMode(string changedPropertyName)
+    {
+        if (IsAdaptiveEnabled && (IsAmbientSoundEnabled || IsAncEnabled))
+        {
+            if (changedPropertyName == nameof(IsAdaptiveEnabled))
+            {
+                IsAmbientSoundEnabled = false;
+                IsAncEnabled = false;
+            }
+            else
+            {
+                IsAdaptiveEnabled = false;
+            }
+
+            return true;
+        }
+
+        if (IsAmbientSoundEnabled && IsAncEnabled)
+        {
+            if (changedPropertyName == nameof(IsAmbientSoundEnabled))
+            {
+                IsAncEnabled = false;
+            }
+            else
+            {
+                IsAmbientSoundEnabled = false;
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
     protected override void OnEventReceived(Event e, object? arg)
     {
         Dispatcher.UIThread.Post(() =>
@@ -185,17 +228,30 @@ public partial class NoiseControlPageViewModel : MainPageViewModelBase
                     break;
                 case Event.SetNoiseControlState:
                     if(arg is NoiseControlModes mode)
+                    {
+                        // Assignments inside SetNoiseControlMode each fire
+                        // PropertyChanged, which would emit an intermediate
+                        // mode (e.g. Off before Adaptive). Suppress them and
+                        // send the final state exactly once.
+                        _suppressorCounter++;
                         SetNoiseControlMode(mode);
+                        _suppressorCounter--;
+                        SendNoiseControlState();
+                    }
                     break;
             }
         });
     }
-    
+
     [Reactive] private bool _isAmbientSoundEnabled;
     [Reactive] private bool _isAncEnabled;
+    [Reactive] private bool _isAdaptiveEnabled;
     [Reactive] private bool _isAncLevelHigh;
     [Reactive] private bool _isNcWithOneEarbudAllowed;
     [Reactive] private bool _isVoiceDetectEnabled;
+    [Reactive] private bool _isAdaptiveVolumeEnabled;
+    [Reactive] private bool _isSirenDetectEnabled;
+    [Reactive] private bool _isAutoPauseEnabled;
     [Reactive] private VoiceDetectTimeouts _voiceDetectTimeout;
 
     public override string TitleKey => Keys.MainpageNoise;

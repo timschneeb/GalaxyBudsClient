@@ -26,6 +26,10 @@
             </Interaction.Behaviors>
             
             <controls:SettingsGroup>
+                <Interaction.Behaviors>
+                    <ext:RequiresFeatureBehavior Feature="TouchpadLock" />
+                </Interaction.Behaviors>
+
                 <controls:SettingsSwitchItem
                     Content="{ext:Translate {x:Static i18N:Keys.TouchpadLock}}"
                     Description="{ext:Translate {x:Static i18N:Keys.TouchpadGesturesDescription}}"
@@ -80,7 +84,7 @@
                     Description="{ext:Translate {x:Static i18N:Keys.TouchpadNoiseControlModeDesc}}"
                     Symbol="ArrowRepeatAll"
                     IsEnabled="{Binding IsNoiseControlCycleModeEditable}"
-                    ItemsSource="{Binding ., Source={ext:NoiseControlCycleModesBindingSource}}"
+                    ItemsSource="{Binding NoiseControlCycleModeOptions}"
                     SelectedValue="{Binding NoiseControlCycleMode}">
                     <Interaction.Behaviors>
                         <ext:LocalizationAwareComboBoxBehavior /> 
@@ -93,7 +97,7 @@
                     Description="{ext:Translate {x:Static i18N:Keys.TouchpadNoiseControlModeDesc}}"
                     Symbol="ArrowRepeatAll"
                     IsEnabled="{Binding IsNoiseControlCycleModeRightEditable}"
-                    ItemsSource="{Binding ., Source={ext:NoiseControlCycleModesBindingSource}}"
+                    ItemsSource="{Binding NoiseControlCycleModeOptions}"
                     SelectedValue="{Binding NoiseControlCycleModeRight}">
                     <Interaction.Behaviors>
                         <ext:LocalizationAwareComboBoxBehavior /> 
