@@ -87,17 +87,34 @@ namespace ThePBone.BlueZNet
                 }
             }
 
-            var ret = obj.SimpleInvoke("WatchPropertiesAsync", (Action<PropertyChanges>) InnerCallback);
-            if (ret is IDisposable disposable)
-            {
-                watcher = disposable;
-            }
-            else
-            {
-                throw new InvalidCastException("Return value is not IDisposable"); 
-            }
+            watcher = AsSubscription(obj.SimpleInvoke("WatchPropertiesAsync", (Action<PropertyChanges>) InnerCallback));
             
             return watcher;
+        }
+
+        // WatchPropertiesAsync returns Task<IDisposable>, and Task is itself IDisposable, so a plain
+        // `is IDisposable` check accepts the task and disposing it never removes the D-Bus match.
+        private static IDisposable AsSubscription(object ret)
+        {
+            return ret switch
+            {
+                Task<IDisposable> pending => new PendingSubscription(pending),
+                IDisposable disposable => disposable,
+                _ => throw new InvalidCastException("Return value is not IDisposable")
+            };
+        }
+
+        private sealed class PendingSubscription(Task<IDisposable> pending) : IDisposable
+        {
+            private int _disposed;
+
+            public void Dispose()
+            {
+                if (Interlocked.Exchange(ref _disposed, 1) == 1)
+                    return;
+                pending.ContinueWith(t => t.Result.Dispose(), CancellationToken.None,
+                    TaskContinuationOptions.OnlyOnRanToCompletion, TaskScheduler.Default);
+            }
         }
 
         public static async Task WaitForPropertyValueAsync<T,T2>(this T2 obj, string propertyName, T value, TimeSpan timeout, CancellationToken cancelToken)
@@ -124,6 +141,7 @@ namespace ThePBone.BlueZNet
             await Task.WhenAny([watchTask, Task.Delay(timeout, cancelToken)]).ConfigureAwait(false);
             if (!watchTask.IsCompleted)
             {
+                watcher.Dispose();
                 throw new TimeoutException($"Timed out waiting for '{propertyName}' to change to '{value}'.");
             }
             
@@ -144,7 +162,9 @@ namespace ThePBone.BlueZNet
                         var pair = propertyChanges.Changed.Single(kvp => kvp.Key == propertyName);
                         if (pair.Value.Equals(value))
                         {
-                            taskSource.SetResult(true);
+                            // BlueZ can repeat the change before the watcher is gone; a second SetResult
+                            // would throw out of the signal handler and starve the other watchers.
+                            taskSource.TrySetResult(true);
                             watcher?.Dispose();
                         }
                     }
@@ -152,20 +172,12 @@ namespace ThePBone.BlueZNet
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Exception: {ex}");
-                    taskSource.SetException(ex);
+                    taskSource.TrySetException(ex);
                     watcher?.Dispose();
                 }
             };
             
-            var ret = obj.SimpleInvoke("WatchPropertiesAsync", callback);
-            if (ret is IDisposable disposable)
-            {
-                watcher = disposable;
-            }
-            else
-            {
-                throw new InvalidCastException("Return value is not IDisposable"); 
-            }
+            watcher = AsSubscription(obj.SimpleInvoke("WatchPropertiesAsync", callback));
             
             return (taskSource.Task, watcher);
         }
