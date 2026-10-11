@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using Avalonia.Controls;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
@@ -143,6 +144,10 @@ public partial class AmbientCustomizePageViewModel : SubPageViewModelBase
                     }
                 }
                 EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
+                break;
+            case Event.SetAmbientSoundVolume:
+                if (parameter is int level)
+                    AmbientSoundVolume = Math.Clamp(level, 0, MaximumAmbientSoundVolume);
                 break;
         }
     }

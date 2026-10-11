@@ -3,7 +3,10 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
+using GalaxyBudsClient.Message.Parameter;
+using GalaxyBudsClient.Model;
 using GalaxyBudsClient.Model.Constants;
+using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using Tmds.DBus;
 
@@ -21,6 +24,8 @@ public interface IDeviceObject : IDBusObject
     Task<DeviceProperties> GetAllAsync();
     Task SetAsync(string prop, object val);
     Task<IDisposable> WatchPropertiesAsync(Action<PropertyChanges> handler);
+    Task SetNoiseControlModeAsync(string mode);
+    Task SetAmbientSoundVolumeAsync(int volume);
 }
 
 [Dictionary]
@@ -42,6 +47,9 @@ public class DeviceProperties : BaseProperties
     [Property(Access = PropertyAccess.Read)] internal string _HardwareVersion = string.Empty;
     [Property(Access = PropertyAccess.Read)] internal string _SkuLeft = string.Empty;
     [Property(Access = PropertyAccess.Read)] internal string _SkuRight = string.Empty;
+    [Property(Access = PropertyAccess.Read)] internal string _NoiseControlMode = string.Empty;
+    [Property(Access = PropertyAccess.Read)] internal int _AmbientSoundVolume = -1;
+    [Property(Access = PropertyAccess.Read)] internal int _AmbientSoundVolumeMax = -1;
 }
     
 public sealed class DeviceObject : BaseObjectWithProperties<DeviceProperties>, IDeviceObject, IDisposable
@@ -54,8 +62,36 @@ public sealed class DeviceObject : BaseObjectWithProperties<DeviceProperties>, I
         SppMessageReceiver.Instance.BaseUpdate += OnBaseUpdate;
         SppMessageReceiver.Instance.GetAllDataResponse += OnGetAllDataResponse;
         SppMessageReceiver.Instance.DebugSkuUpdate += OnDebugSkuUpdate;
+        SppMessageReceiver.Instance.ExtendedStatusUpdate += OnExtendedStatusUpdate;
+        SppMessageReceiver.Instance.NoiseControlUpdateResponse += OnNoiseControlUpdate;
+        SppMessageReceiver.Instance.AcknowledgementResponse += OnAcknowledgement;
             
         BluetoothImpl.Instance.Connected += OnConnected;
+    }
+
+    public Task SetNoiseControlModeAsync(string mode)
+    {
+        var spec = BluetoothImpl.Instance.DeviceSpec;
+        if (!spec.Supports(Features.NoiseControl))
+            return Task.FromException(new NotSupportedException("Device does not support noise control modes"));
+        if (!Enum.TryParse<NoiseControlModes>(mode, true, out var parsed) || !Enum.IsDefined(parsed) ||
+            (parsed == NoiseControlModes.Adaptive && !spec.Supports(Features.NoiseControlAdaptive)))
+            return Task.FromException(new ArgumentException("Invalid or unsupported noise control mode"));
+
+        EventDispatcher.Instance.Dispatch(Event.SetNoiseControlState, parsed);
+        return Task.CompletedTask;
+    }
+
+    public Task SetAmbientSoundVolumeAsync(int volume)
+    {
+        var spec = BluetoothImpl.Instance.DeviceSpec;
+        if (!spec.Supports(Features.AmbientSoundVolume))
+            return Task.FromException(new NotSupportedException("Device does not support ambient sound volume"));
+        if (volume < 0 || volume > spec.MaximumAmbientVolume)
+            return Task.FromException(new ArgumentOutOfRangeException(nameof(volume)));
+
+        EventDispatcher.Instance.Dispatch(Event.SetAmbientSoundVolume, volume);
+        return Task.CompletedTask;
     }
 
     private void OnConnected(object? sender, EventArgs e)
@@ -63,6 +99,9 @@ public sealed class DeviceObject : BaseObjectWithProperties<DeviceProperties>, I
         Set(nameof(DeviceProperties._Name), BluetoothImpl.Instance.DeviceName);
         Set(nameof(DeviceProperties._Address), BluetoothImpl.Instance.Device.Current?.MacAddress ?? "null");
         Set(nameof(DeviceProperties._Model), BluetoothImpl.Instance.CurrentModel.ToString());
+        Set(nameof(DeviceProperties._AmbientSoundVolumeMax),
+            BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientSoundVolume)
+                ? BluetoothImpl.Instance.DeviceSpec.MaximumAmbientVolume : -1);
 
         if (DeviceMessageCache.Instance.BasicStatusUpdate != null)
             OnBaseUpdate(this, DeviceMessageCache.Instance.BasicStatusUpdate);
@@ -70,6 +109,8 @@ public sealed class DeviceObject : BaseObjectWithProperties<DeviceProperties>, I
             OnGetAllDataResponse(this, DeviceMessageCache.Instance.DebugGetAllData);
         if (DeviceMessageCache.Instance.DebugSku != null)
             OnDebugSkuUpdate(this, DeviceMessageCache.Instance.DebugSku);
+        if (DeviceMessageCache.Instance.ExtendedStatusUpdate != null)
+            OnExtendedStatusUpdate(this, DeviceMessageCache.Instance.ExtendedStatusUpdate);
     }
 
     private void OnBaseUpdate(object? sender, IBasicStatusUpdate update)
@@ -91,6 +132,35 @@ public sealed class DeviceObject : BaseObjectWithProperties<DeviceProperties>, I
         Set(nameof(DeviceProperties._HardwareVersion), decoder.HardwareVersion ?? "null");
     }
         
+    private void OnExtendedStatusUpdate(object? sender, ExtendedStatusUpdateDecoder update)
+    {
+        if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControl))
+            OnNoiseControlUpdate(this, update.NoiseControlMode);
+        if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AmbientSoundVolume))
+            Set(nameof(DeviceProperties._AmbientSoundVolume), update.AmbientSoundVolume);
+    }
+
+    private void OnNoiseControlUpdate(object? sender, NoiseControlModes mode)
+    {
+        Set(nameof(DeviceProperties._NoiseControlMode), mode.ToString());
+    }
+
+    private void OnAcknowledgement(object? sender, AcknowledgementDecoder ack)
+    {
+        if (ack.Parameters is not SimpleAckParameter param)
+            return;
+
+        switch (ack.Id)
+        {
+            case MsgIds.NOISE_CONTROLS:
+                OnNoiseControlUpdate(this, (NoiseControlModes)param.Value);
+                break;
+            case MsgIds.AMBIENT_VOLUME:
+                Set(nameof(DeviceProperties._AmbientSoundVolume), (int)param.Value);
+                break;
+        }
+    }
+
     private void OnDebugSkuUpdate(object? sender, DebugSkuDecoder decoder)
     {
         Set(nameof(DeviceProperties._SkuLeft), decoder.LeftSku ?? "null");
@@ -102,6 +172,9 @@ public sealed class DeviceObject : BaseObjectWithProperties<DeviceProperties>, I
         SppMessageReceiver.Instance.BaseUpdate -= OnBaseUpdate;
         SppMessageReceiver.Instance.GetAllDataResponse -= OnGetAllDataResponse;
         SppMessageReceiver.Instance.DebugSkuUpdate -= OnDebugSkuUpdate;
+        SppMessageReceiver.Instance.ExtendedStatusUpdate -= OnExtendedStatusUpdate;
+        SppMessageReceiver.Instance.NoiseControlUpdateResponse -= OnNoiseControlUpdate;
+        SppMessageReceiver.Instance.AcknowledgementResponse -= OnAcknowledgement;
             
         BluetoothImpl.Instance.Connected -= OnConnected;
     }

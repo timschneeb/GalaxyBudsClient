@@ -49,6 +49,7 @@ public class EventDispatcher
             /* INTERNAL */
             case Event.UpdateTrayIcon:
             case Event.SetNoiseControlState:
+            case Event.SetAmbientSoundVolume:
                 return false;
         }
 
