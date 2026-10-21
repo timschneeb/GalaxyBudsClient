@@ -23,7 +23,6 @@ public class Buds4ProDeviceSpec : IDeviceSpec
         { Features.SpatialSensor, null },
         { Features.BixbyWakeup, null },
         { Features.GearFitTest, null },
-        { Features.ExtraClearCallSound, null },
         { Features.AmbientSound, null },
         { Features.AmbientSoundVolume, null },
         { Features.CustomEqualizer, null },

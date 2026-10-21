@@ -25,7 +25,6 @@ public class Buds3ProDeviceSpec : IDeviceSpec
         { Features.SpatialSensor, null },
         { Features.BixbyWakeup, null },
         { Features.GearFitTest, null },
-        { Features.ExtraClearCallSound, null },
         { Features.AmbientExtraLoud, null },
         { Features.AmbientSound, null },
         { Features.Anc, null },
