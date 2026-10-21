@@ -164,7 +164,7 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
     public byte CustomizeNoiseReductionLevel { init; get; }
     [Device(Models.Buds2Pro, Selector.GreaterEqual)]
     public bool CustomizeConversationBoost { init; get; }
-    [Device(Models.Buds2Pro, Selector.GreaterEqual)]
+    [Device(Models.Buds2Pro)]
     public bool ExtraClearCallSound { init; get; }
     [Device(Models.Buds2Pro, Selector.GreaterEqual)]
     public bool SpatialAudioHeadTracking { init; get; }
@@ -651,7 +651,6 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                             IsRightCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 2) == 4;
                             IsCaseCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 0) == 1;
 
-                            ExtraClearCallSound = reader.ReadBoolean();
                             if(reader.PeekChar() != -1)
                                 ExtraHighAmbientEnabled = reader.ReadBoolean();
                             if(reader.PeekChar() != -1)
