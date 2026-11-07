@@ -295,6 +295,7 @@ internal class TrayManager
         {
             _instance ??= new TrayManager();
         }
+        _ = _instance.RebuildAsync();
     }
     #endregion
 }
