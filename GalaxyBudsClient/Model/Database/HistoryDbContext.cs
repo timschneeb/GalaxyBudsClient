@@ -27,10 +27,25 @@ public class HistoryDbContext(string path) : DbContext
         try
         {
             var connection = Database.GetDbConnection();
-            connection.Open();
-            using var command = connection.CreateCommand();
-            command.CommandText = pragmaCommand;
-            command.ExecuteNonQuery();
+            var shouldClose = connection.State != System.Data.ConnectionState.Open;
+            if (shouldClose)
+            {
+                connection.Open();
+            }
+
+            try
+            {
+                using var command = connection.CreateCommand();
+                command.CommandText = pragmaCommand;
+                command.ExecuteNonQuery();
+            }
+            finally
+            {
+                if (shouldClose)
+                {
+                    connection.Close();
+                }
+            }
         }
         catch (Exception ex)
         {
