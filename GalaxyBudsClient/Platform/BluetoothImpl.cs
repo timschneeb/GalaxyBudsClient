@@ -431,7 +431,7 @@ public sealed partial class BluetoothImpl : ReactiveObject, IDisposable
         Device.Current = Settings.Data.Devices.FirstOrDefault();
         if (PlatformUtils.IsDesktop)
         {
-            BatteryHistoryManager.Instance.DeleteDatabaseForDevice(toRemove);
+            _ = BatteryHistoryManager.Instance.DeleteDatabaseForDeviceAsync(toRemove);
             
             
         }
