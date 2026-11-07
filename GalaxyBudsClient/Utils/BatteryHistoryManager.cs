@@ -21,7 +21,9 @@ namespace GalaxyBudsClient.Utils;
 
 public class BatteryHistoryManager
 {
-    private readonly Mutex _lock = new();
+    // Note: must not be a Mutex. Mutexes are thread-affine and re-entrant, which breaks across 'await'
+    // (ReleaseMutex may run on a different thread, and re-entrant acquisition on the UI thread does not exclude).
+    private readonly SemaphoreSlim _lock = new(1, 1);
     private string? _currentMac;
     private HistoryRecord? _lastRecord;
     
@@ -47,13 +49,13 @@ public class BatteryHistoryManager
         _ = CollectNow(insertNullFrame: true);
     }
 
-    private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    private async void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName == nameof(Settings.Data.CollectBatteryHistory) &&
             Settings.Data.CollectBatteryHistory == false)
         {
             Log.Debug("Battery history disabled. Deleting all databases");
-            DeleteAllDatabases();
+            await DeleteAllDatabasesAsync();
         }
     }
 
@@ -76,22 +78,26 @@ public class BatteryHistoryManager
         }
     }
     
-    public void DeleteDatabaseForDevice(Device device)
+    public async Task DeleteDatabaseForDeviceAsync(Device device)
     {
-        if (device == null || string.IsNullOrWhiteSpace(device.MacAddress))
+        if (string.IsNullOrWhiteSpace(device.MacAddress))
             return;
 
         var mac = device.MacAddress;
         Log.Debug("Deleting battery stats for {Dev}", mac);
 
-        if (_lock.WaitOne(2000))
+        if (await _lock.WaitAsync(2000))
         {
             try
             {
                 if (_currentMac != null && string.Equals(_currentMac, mac, StringComparison.OrdinalIgnoreCase))
                 {
-                    _currentMac = null;
                     _lastRecord = null;
+                    
+                    // Only stop tracking the MAC if the device was actually unregistered.
+                    // If history was merely disabled, keep it so collection resumes once re-enabled.
+                    if (Settings.Data.Devices.All(x => !string.Equals(x.MacAddress, mac, StringComparison.OrdinalIgnoreCase)))
+                        _currentMac = null;
                 }
 
                 // Clear connection pools so that SQLite releases active OS file handles
@@ -119,7 +125,7 @@ public class BatteryHistoryManager
             }
             finally
             {
-                _lock.ReleaseMutex();
+                _lock.Release();
             }
         }
         else
@@ -128,11 +134,11 @@ public class BatteryHistoryManager
         }
     }
 
-    public void DeleteAllDatabases()
+    public async Task DeleteAllDatabasesAsync()
     {
-        foreach (var device in Settings.Data.Devices)
+        foreach (var device in Settings.Data.Devices.ToArray())
         {
-            DeleteDatabaseForDevice(device);
+            await DeleteDatabaseForDeviceAsync(device);
         }
     }
     
@@ -141,7 +147,7 @@ public class BatteryHistoryManager
         if (!PlatformUtils.IsDesktop || _currentMac == null || !Settings.Data.CollectBatteryHistory)
             return;
         
-        if (_lock.WaitOne(500))
+        if (await _lock.WaitAsync(500))
         {
             try
             {
@@ -168,7 +174,7 @@ public class BatteryHistoryManager
             }
             finally
             {
-                _lock.ReleaseMutex();
+                _lock.Release();
             }
         }
     }
@@ -201,7 +207,7 @@ public class BatteryHistoryManager
         if (HistoryRecord.HistoryRecordComparer.Equals(record, _lastRecord))
             return;
         
-        if (_lock.WaitOne(50))
+        if (await _lock.WaitAsync(50))
         {
             try
             {
@@ -222,7 +228,7 @@ public class BatteryHistoryManager
             }
             finally
             {
-                _lock.ReleaseMutex();
+                _lock.Release();
             }
         }
     }
