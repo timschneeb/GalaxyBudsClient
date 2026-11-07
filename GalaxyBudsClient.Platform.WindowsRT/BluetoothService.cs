@@ -33,6 +33,8 @@ namespace GalaxyBudsClient.Platform.WindowsRT
         private DataWriter? _writer;
         private RfcommDeviceService? _service;
         private global::Windows.Devices.Bluetooth.BluetoothDevice? _bluetoothDevice;
+        private string _currentMac = string.Empty;
+        private string _currentServiceUuid = string.Empty;
 
         private Task? _loop; 
         private CancellationTokenSource _readerCancellation = new();
@@ -95,16 +97,23 @@ namespace GalaxyBudsClient.Platform.WindowsRT
 
                     _deviceCache.Where(x => x?.Id == deviceInfoUpdate?.Id).ToList().ForEach(async x =>
                     {
-                        if (string.Equals(x.Address, _bluetoothDevice?.BluetoothAddressAsString(),
-                                StringComparison.CurrentCultureIgnoreCase) &&
+                        var targetMac = _bluetoothDevice?.BluetoothAddressAsString() ?? _currentMac;
+                        if (!string.IsNullOrEmpty(targetMac) &&
+                            string.Equals(x.Address, targetMac, StringComparison.CurrentCultureIgnoreCase) &&
                             (deviceInfoUpdate?.Properties?.ContainsKey("System.Devices.Aep.IsConnected") ?? false))
                         {
                             if ((bool) deviceInfoUpdate.Properties["System.Devices.Aep.IsConnected"])
                             {
                                 Log.Debug($"WindowsRT.BluetoothService: Target device connected");
-                                await ConnectAsync(x.Address,
-                                    _service?.ServiceId?.AsString() ?? "{00001101-0000-1000-8000-00805F9B34FB}",
-                                    CancellationToken.None);
+                                if (!IsStreamConnected && !IsConnecting)
+                                {
+                                    var uuid = _service?.ServiceId?.AsString() ?? _currentServiceUuid;
+                                    if (string.IsNullOrEmpty(uuid))
+                                    {
+                                        uuid = "{2e73a4ad-332d-41fc-90e2-16bef06523f2}";
+                                    }
+                                    await ConnectAsync(x.Address, uuid, CancellationToken.None);
+                                }
                             }
                             else
                             {
@@ -141,8 +150,9 @@ namespace GalaxyBudsClient.Platform.WindowsRT
                     
                     _deviceCache?.Where(x => x?.Id == deviceInfoUpdate?.Id).ToList().ForEach(x =>
                     {
-                        if (string.Equals(x?.Address, _bluetoothDevice?.BluetoothAddressAsString(),
-                            StringComparison.CurrentCultureIgnoreCase))
+                        var targetMac = _bluetoothDevice?.BluetoothAddressAsString() ?? _currentMac;
+                        if (!string.IsNullOrEmpty(targetMac) &&
+                            string.Equals(x?.Address, targetMac, StringComparison.CurrentCultureIgnoreCase))
                         {
                             Log.Debug($"WindowsRT.BluetoothService: Target device removed");
                             Disconnected?.Invoke(this,
@@ -187,6 +197,9 @@ namespace GalaxyBudsClient.Platform.WindowsRT
             
             Connecting?.Invoke(this, EventArgs.Empty);
 
+            _currentMac = macAddress;
+            _currentServiceUuid = serviceUuid;
+
             try
             {
                 var matches = _deviceCache.Where(x =>
@@ -197,6 +210,7 @@ namespace GalaxyBudsClient.Platform.WindowsRT
                     BluetoothErrorAsync?.Invoke(this, new BluetoothException(
                         BluetoothException.ErrorCodes.ConnectFailed,
                         "Device unavailable. No device with the registered MAC address found nearby. If you are certain that your earbuds are connected to this computer, please unregister them and try again."));
+                    return;
                 }
                 else
                 {
@@ -267,8 +281,25 @@ namespace GalaxyBudsClient.Platform.WindowsRT
                     return;
                 }
 
+                if (_loop != null && !_loop.IsCompleted)
+                {
+                    try
+                    {
+                        await _loopCancellation.CancelAsync();
+                        await _loop;
+                    }
+                    catch (Exception ex) when (ex is OperationCanceledException or TaskCanceledException)
+                    {
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Warning(ex, "WindowsRT.BluetoothService: Error waiting for previous BluetoothServiceLoop to exit");
+                    }
+                }
+
                 lock (this)
                 {
+                    _socket?.Dispose();
                     _socket = new StreamSocket();
                 }
 
@@ -319,7 +350,21 @@ namespace GalaxyBudsClient.Platform.WindowsRT
         {
             Log.Debug("WindowsRT.BluetoothService: Closing connection...");
 
-            _loopCancellation?.Cancel();
+            try
+            {
+                await _loopCancellation.CancelAsync();
+                if (_loop != null)
+                {
+                    await _loop;
+                }
+            }
+            catch (Exception ex) when (ex is OperationCanceledException or TaskCanceledException)
+            {
+            }
+            catch (Exception ex)
+            {
+                Log.Warning(ex, "WindowsRT.BluetoothService: Error waiting for BluetoothServiceLoop to exit");
+            }
             
             if (_writer != null)
             {
@@ -404,7 +449,7 @@ namespace GalaxyBudsClient.Platform.WindowsRT
             return _deviceCache.Cast<BluetoothDevice>().ToArray();
         }
 
-        private async void BluetoothServiceLoop()
+        private async Task BluetoothServiceLoop()
         {
             while (true)
             {

@@ -160,12 +160,26 @@ namespace GalaxyBudsClient.Platform.Windows.Bluetooth
                 return;
             }
 
-            SelectAdapter();
-            
             Connecting?.Invoke(this, EventArgs.Empty);
             Log.Debug($"Windows.BluetoothService: Connecting...");
 
-            _cancelSource?.Cancel();
+            if (_loop != null && !_loop.IsCompleted)
+            {
+                try
+                {
+                    await _cancelSource.CancelAsync();
+                    await _loop;
+                }
+                catch (Exception ex) when (ex is OperationCanceledException or TaskCanceledException)
+                {
+                    // Expected cancellation
+                }
+                catch (Exception ex)
+                {
+                    Log.Warning(ex, "Windows.BluetoothService: Error waiting for previous BluetoothServiceLoop to exit");
+                }
+            }
+
             _client?.Close();
             _client = null;
             SelectAdapter();
@@ -211,7 +225,8 @@ namespace GalaxyBudsClient.Platform.Windows.Bluetooth
                 Log.Debug($"Windows.BluetoothService: Connected. Launching BluetoothServiceLoop.");
 
                 _cancelSource = new CancellationTokenSource();
-                _loop = Task.Run(BluetoothServiceLoop, _cancelSource.Token);
+                var loopClient = _client;
+                _loop = Task.Run(() => BluetoothServiceLoop(loopClient, _cancelSource.Token), _cancelSource.Token);
             }
             catch (SocketException e)
             {
@@ -229,14 +244,22 @@ namespace GalaxyBudsClient.Platform.Windows.Bluetooth
         public async Task DisconnectAsync()
         {
             Log.Debug("Windows.BluetoothService: Disconnecting...");
-            if (_loop == null || _loop.Status == TaskStatus.Created)
-            {
-                Log.Debug("Windows.BluetoothService: BluetoothServiceLoop not yet launched. No need to cancel");
-            }
-            else
+            if (_loop != null && !_loop.IsCompleted)
             {
                 Log.Debug("Windows.BluetoothService: Cancelling BluetoothServiceLoop...");
-                _cancelSource.Cancel();
+                try
+                {
+                    await _cancelSource.CancelAsync();
+                    await _loop;
+                }
+                catch (Exception ex) when (ex is OperationCanceledException or TaskCanceledException)
+                {
+                    // Expected cancellation
+                }
+                catch (Exception ex)
+                {
+                    Log.Warning(ex, "Windows.BluetoothService: Error while cancelling BluetoothServiceLoop");
+                }
             }
 
             /* Detach device if not already done... */
@@ -291,25 +314,30 @@ namespace GalaxyBudsClient.Platform.Windows.Bluetooth
         #endregion
 
         #region Service
-        private void BluetoothServiceLoop()
+        private void BluetoothServiceLoop(BluetoothClient? client, CancellationToken cancelToken)
         {
+            if (client == null)
+            {
+                return;
+            }
+
             Stream? peerStream = null;
 
             while (true)
             {
                 try
                 {
-                    _cancelSource.Token.ThrowIfCancellationRequested();
-                    Task.Delay(50).Wait(_cancelSource.Token);
+                    cancelToken.ThrowIfCancellationRequested();
+                    Task.Delay(50).Wait(cancelToken);
                 }
                 catch (OperationCanceledException)
                 {
                     peerStream?.Close();
-                    _client?.Close();
-                    throw;
+                    client.Close();
+                    return;
                 }
                 
-                if (_client is not { Connected: true })
+                if (!client.Connected)
                 {
                     continue;
                 }
@@ -318,20 +346,30 @@ namespace GalaxyBudsClient.Platform.Windows.Bluetooth
                 {
                     lock (_btlock)
                     {
-                        if (!_client.Connected)
+                        if (!client.Connected)
                         {
                             continue;
                         }
 
-                        peerStream = _client.GetStream();
+                        peerStream = client.GetStream();
                     }
 
                     RfcommConnected?.Invoke(this, EventArgs.Empty);
                     continue;
                 }
 
+                int available;
+                try
+                {
+                    available = client.Available;
+                }
+                catch (Exception)
+                {
+                    peerStream.Close();
+                    client.Close();
+                    return;
+                }
 
-                var available = _client.Available;
                 var currentStream = peerStream;
                 if (currentStream == null)
                 {
@@ -347,9 +385,8 @@ namespace GalaxyBudsClient.Platform.Windows.Bluetooth
                         if (bytesRead <= 0)
                         {
                             currentStream.Close();
-                            peerStream = null;
-                            _client?.Close();
-                            continue;
+                            client.Close();
+                            return;
                         }
 
                         if (bytesRead != buffer.Length)
@@ -361,12 +398,17 @@ namespace GalaxyBudsClient.Platform.Windows.Bluetooth
                     {
                         Log.Error("Windows.BluetoothService: BluetoothServiceLoop: SocketException thrown while reading from socket: {ExMessage}. Cancelled", ex.Message);
                         BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.ReceiveFailed, ex.Message));
+                        currentStream.Close();
+                        client.Close();
                         return;
                     }
                     catch (IOException ex)
                     {
                         Log.Error("Windows.BluetoothService: BluetoothServiceLoop: IOException thrown while reading from socket: {ExMessage}. Cancelled", ex.Message);
                         BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.ReceiveFailed, ex.Message));
+                        currentStream.Close();
+                        client.Close();
+                        return;
                     }
 
                     if (buffer.Length > 0)
@@ -387,11 +429,17 @@ namespace GalaxyBudsClient.Platform.Windows.Bluetooth
                     {
                         Log.Error("Windows.BluetoothService: BluetoothServiceLoop: SocketException thrown while writing to socket: {ExMessage}. Cancelled", ex.Message);
                         BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.SendFailed, ex.Message));
+                        currentStream.Close();
+                        client.Close();
+                        return;
                     }
                     catch (IOException ex)
                     {
                         Log.Error("Windows.BluetoothService: BluetoothServiceLoop: IOException thrown while writing to socket: {ExMessage}. Cancelled", ex.Message);
                         BluetoothErrorAsync?.Invoke(this, new BluetoothException(BluetoothException.ErrorCodes.SendFailed, ex.Message));
+                        currentStream.Close();
+                        client.Close();
+                        return;
                     }
                 }
             }
