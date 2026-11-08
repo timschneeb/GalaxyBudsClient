@@ -254,6 +254,13 @@ namespace GalaxyBudsClient.Platform.WindowsRT
                 var rfcommServices = await _bluetoothDevice.GetRfcommServicesForIdAsync(
                     RfcommServiceId.FromUuid(new Guid(serviceUuid)), BluetoothCacheMode.Uncached);
 
+                if (rfcommServices.Services.Count == 0)
+                {
+                    Log.Warning("WindowsRT.BluetoothService: Uncached SPP service discovery returned no services. Falling back to cached services.");
+                    rfcommServices = await _bluetoothDevice.GetRfcommServicesForIdAsync(
+                        RfcommServiceId.FromUuid(new Guid(serviceUuid)), BluetoothCacheMode.Cached);
+                }
+
                 if (rfcommServices.Services.Count > 0)
                 {
                     _service = rfcommServices.Services[0];
@@ -288,13 +295,13 @@ namespace GalaxyBudsClient.Platform.WindowsRT
                     _loopCancellation = new CancellationTokenSource();
                     _loop = Task.Run(BluetoothServiceLoop);
                 }
-                catch (Exception ex) when ((uint) ex.HResult == 0x80070490) // ERROR_ELEMENT_NOT_FOUND
+                catch (Exception ex) when ((uint) ex.HResult is 0x80070490 or 0x8007277C) // ERROR_ELEMENT_NOT_FOUND or WSA_SERVICE_NOT_FOUND
                 {
                     Log.Error(
-                        "WindowsRT.BluetoothService: Error while connecting (HRESULT: ERROR_ELEMENT_NOT_FOUND): {Message}", ex.Message);
+                        "WindowsRT.BluetoothService: Error while connecting (HRESULT: 0x{HResult:X8}): {Message}", (uint) ex.HResult, ex.Message);
                     BluetoothErrorAsync?.Invoke(this,
                         new BluetoothException(BluetoothException.ErrorCodes.ConnectFailed,
-                            "SPP server on remote device unavailable. Please reboot your earbuds by placing both into the case and closing it. (ERROR_ELEMENT_NOT_FOUND)"));
+                            "SPP server on remote device unavailable. Please reboot your earbuds by placing both into the case and closing it."));
                 }
                 catch (Exception ex) when ((uint) ex.HResult == 0x80072740) // WSAEADDRINUSE
                 {
