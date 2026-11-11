@@ -24,10 +24,10 @@ public static class PlatformUtils
     public static bool IsOSX => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
     public static bool IsAndroid => RuntimeInformation.RuntimeIdentifier.Contains("android", StringComparison.OrdinalIgnoreCase);
     public static bool IsDesktop => IsWindows || IsLinux || IsOSX;
-    public static bool IsRunningInFlatpak => Environment.GetEnvironmentVariable("container") != null;
+    public static bool IsRunningInFlatpak => Environment.GetEnvironmentVariable("container") == "flatpak";
 
     public static bool SupportsTrayIcon => IsWindows || IsLinux || IsOSX;
-    public static bool SupportsAutoboot => IsWindows || (IsLinux && !IsRunningInFlatpak) || IsOSX;
+    public static bool SupportsAutoboot => IsWindows || IsLinux || IsOSX;
     public static bool SupportsHotkeys => IsWindows || IsLinux || IsOSX;
     public static bool SupportsHotkeysBroadcast => IsWindows || IsLinux || IsOSX;
     public static bool SupportsNotificationListener => IsLinux;

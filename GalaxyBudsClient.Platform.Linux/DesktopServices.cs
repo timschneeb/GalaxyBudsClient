@@ -17,6 +17,13 @@ public class DesktopServices : BaseDesktopServices
         get => File.Exists(AutostartFile);
         set
         {
+            if (PlatformUtils.IsRunningInFlatpak)
+            {
+                // No access to ~/.config/autostart from within the sandbox; the caller keeps track of the state
+                _ = BackgroundPortal.RequestAutoStartAsync(value);
+                return;
+            }
+
             var directory = Path.GetDirectoryName(AutostartFile);
             if (directory != null && Directory.Exists(directory))
             {
