@@ -11,7 +11,7 @@ public partial class UsageReportPage : BasePage<UsageReportPageViewModel>
         InitializeComponent();
     }
 
-    private void OnHintClosed(InfoBar sender, InfoBarClosedEventArgs args)
+    private void OnHintClosed(FAInfoBar sender, FAInfoBarClosedEventArgs args)
     {
         Settings.Data.IsUsageReportHintHidden = true;
     }

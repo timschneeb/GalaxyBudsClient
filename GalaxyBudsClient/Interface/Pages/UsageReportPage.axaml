@@ -39,23 +39,23 @@
                                     Severity="Informational"
                                     Closed="OnHintClosed" />
             
-            <ui:SettingsExpander Header="{ext:Translate {x:Static i18N:Keys.UsageReportsMetering}}" 
+            <ui:FASettingsExpander Header="{ext:Translate {x:Static i18N:Keys.UsageReportsMetering}}" 
                                  Description="{Binding MeteringDescription}"
                                  ItemsSource="{Binding MeteringItems}"
                                  IsExpanded="True">
-                <ui:SettingsExpander.IconSource>
+                <ui:FASettingsExpander.IconSource>
                     <ic:SymbolIconSource Symbol="Gauge" />
-                </ui:SettingsExpander.IconSource>
-            </ui:SettingsExpander>
+                </ui:FASettingsExpander.IconSource>
+            </ui:FASettingsExpander>
             
-            <ui:SettingsExpander Header="{ext:Translate {x:Static i18N:Keys.UsageReportsUsage}}" 
+            <ui:FASettingsExpander Header="{ext:Translate {x:Static i18N:Keys.UsageReportsUsage}}" 
                                  Description="{Binding UsageDescription}"
                                  ItemsSource="{Binding UsageItems}"
                                  IsExpanded="True">
-                <ui:SettingsExpander.IconSource>
+                <ui:FASettingsExpander.IconSource>
                     <ic:SymbolIconSource Symbol="Timer" />
-                </ui:SettingsExpander.IconSource>
-            </ui:SettingsExpander>
+                </ui:FASettingsExpander.IconSource>
+            </ui:FASettingsExpander>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

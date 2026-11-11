@@ -22,12 +22,12 @@ public partial class HotkeyEditorDialog : UserControl
     
     public static async Task<Hotkey?> OpenEditDialogAsync(Hotkey? hotkey)
     {
-        var dialog = new ContentDialog
+        var dialog = new FAContentDialog
         {
             Title = hotkey == null ? Strings.HotkeyAdd : Strings.HotkeyEditLong,
             PrimaryButtonText = Strings.Okay,
             CloseButtonText = Strings.Cancel,
-            DefaultButton = ContentDialogButton.Primary
+            DefaultButton = FAContentDialogButton.Primary
         };
 
         var viewModel = new HotkeyEditorDialogViewModel(hotkey);
@@ -40,16 +40,16 @@ public partial class HotkeyEditorDialog : UserControl
         var result = await dialog.ShowAsync(TopLevel.GetTopLevel(MainView.Instance));
         dialog.PrimaryButtonClick -= OnPrimaryButtonClick;
             
-        return result == ContentDialogResult.None ? null : viewModel.Hotkey;
+        return result == FAContentDialogResult.None ? null : viewModel.Hotkey;
 
-        void OnPrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        void OnPrimaryButtonClick(FAContentDialog sender, FAContentDialogButtonClickEventArgs args)
         {
             args.Cancel = viewModel.Hotkey == null;
 
             if (!args.Cancel)
                 return;
             
-            var resultHint = new ContentDialog
+            var resultHint = new FAContentDialog
             {
                 Title = Strings.HotkeyEditInvalid,
                 Content = Strings.HotkeyEditInvalidDesc,

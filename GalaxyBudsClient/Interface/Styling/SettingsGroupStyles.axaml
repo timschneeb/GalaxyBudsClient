@@ -6,12 +6,12 @@
     <Design.PreviewWith>
         <Border Padding="20" Width="700" Height="150">
             <controls:SettingsGroup>
-                <ui:SettingsExpanderItem Content="Item A" ActionIconSource="Pin" IsClickEnabled="True" />
-                <ui:SettingsExpanderItem Content="Item B">
-                    <ui:SettingsExpanderItem.Footer>
+                <ui:FASettingsExpanderItem Content="Item A" ActionIconSource="Pin" IsClickEnabled="True" />
+                <ui:FASettingsExpanderItem Content="Item B">
+                    <ui:FASettingsExpanderItem.Footer>
                         <Button Content="FooterButton" />
-                    </ui:SettingsExpanderItem.Footer>
-                </ui:SettingsExpanderItem>
+                    </ui:FASettingsExpanderItem.Footer>
+                </ui:FASettingsExpanderItem>
             </controls:SettingsGroup>
         </Border>
     </Design.PreviewWith>
@@ -53,17 +53,17 @@
 
     <!-- For SettingsGroups we have to set the CornerRadius for the top edges of the first child to match the top of the group -->
     <Style
-        Selector="controls|SettingsGroup > ui|SettingsExpanderItem.First /template/ Border#Root">
+        Selector="controls|SettingsGroup > ui|FASettingsExpanderItem.First /template/ Border#Root">
         <Setter Property="CornerRadius"
                 Value="{Binding Source={StaticResource ControlCornerRadius}, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
     </Style>
     <Style
-        Selector="controls|SettingsGroup > ui|SettingsExpanderItem.Last /template/ Border#Root">
+        Selector="controls|SettingsGroup > ui|FASettingsExpanderItem.Last /template/ Border#Root">
         <Setter Property="CornerRadius"
                 Value="{Binding Source={StaticResource ControlCornerRadius}, Converter={StaticResource BottomCornerRadiusFilterConverter}}" />
     </Style>
     <Style
-        Selector="controls|SettingsGroup > ui|SettingsExpanderItem.SingleItem /template/ Border#Root">
+        Selector="controls|SettingsGroup > ui|FASettingsExpanderItem.SingleItem /template/ Border#Root">
         <Setter Property="CornerRadius" Value="{Binding Source={StaticResource ControlCornerRadius}}" />
     </Style>
 

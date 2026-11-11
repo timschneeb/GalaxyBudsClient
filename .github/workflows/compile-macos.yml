@@ -2,7 +2,7 @@ name: Compile macOS binaries
 
 on:
   push:
-    branches: [ master, NET10 ]
+    branches: [ master, NET11 ]
   pull_request:
     branches: [ master ]
   release:
@@ -13,14 +13,14 @@ on:
 
 jobs:
   build-universal:
-    runs-on: macos-26
+    runs-on: xcode-27
     
     steps:
     - uses: actions/checkout@v6
     - name: Setup Xcode
       uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: "26.6"
+        xcode-version: "27.2"
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v5
@@ -41,7 +41,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore -p:UseMacOSSDK=true --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build Universal
-      run: dotnet publish -p:UseMacOSSDK=true -f net10.0-macos -o bin_osx -c Release --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -p:UseMacOSSDK=true -f net11.0-macos -o bin_osx -c Release --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v6
@@ -50,14 +50,14 @@ jobs:
         path: bin_osx/Galaxy Buds Manager-*.pkg
 
   build-x64:
-    runs-on: macos-26
+    runs-on: xcode-27
     
     steps:
     - uses: actions/checkout@v6
     - name: Setup Xcode
       uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: "26.6"
+        xcode-version: "27.2"
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v5
@@ -78,7 +78,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore -p:UseMacOSSDK=true -r osx-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build x64
-      run: dotnet publish -p:UseMacOSSDK=true -f net10.0-macos -r osx-x64 -o bin_osxx64 -c Release --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -p:UseMacOSSDK=true -f net11.0-macos -r osx-x64 -o bin_osxx64 -c Release --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v6
@@ -87,14 +87,14 @@ jobs:
         path: bin_osxx64/Galaxy Buds Manager-*.pkg
 
   build-arm64:
-    runs-on: macos-26
+    runs-on: xcode-27
     
     steps:
     - uses: actions/checkout@v6
     - name: Setup Xcode
       uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: "26.6"
+        xcode-version: "27.2"
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v5
@@ -115,7 +115,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore -p:UseMacOSSDK=true -r osx-arm64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build arm64
-      run: dotnet publish -p:UseMacOSSDK=true -f net10.0-macos -r osx-arm64 -o bin_osxarm64 -c Release --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -p:UseMacOSSDK=true -f net11.0-macos -r osx-arm64 -o bin_osxarm64 -c Release --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v6

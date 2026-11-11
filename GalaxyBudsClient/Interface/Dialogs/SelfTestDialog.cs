@@ -13,14 +13,14 @@ using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 
-public class SelfTestDialog : TaskDialog
+public class SelfTestDialog : FATaskDialog
 {
     private readonly TextBlock _content;
     private readonly CancellationTokenSource _cancelToken = new();
 
     public SelfTestDialog()
     {
-        var closeButton = new TaskDialogButton(Strings.Cancel, TaskDialogStandardResult.Close);
+        var closeButton = new FATaskDialogButton(Strings.Cancel, FATaskDialogStandardResult.Close);
         
         Header = Strings.SelftestHeader;
         Buttons = [closeButton];
@@ -34,10 +34,10 @@ public class SelfTestDialog : TaskDialog
         XamlRoot = TopLevel.GetTopLevel(MainView.Instance);
         ShowProgressBar = true;
         
-        SetProgressBarState(100, TaskDialogProgressState.Indeterminate);
+        SetProgressBarState(100, FATaskDialogProgressState.Indeterminate);
     }
 
-    protected override Type StyleKeyOverride => typeof(TaskDialog);
+    protected override Type StyleKeyOverride => typeof(FATaskDialog);
 
     public async Task ExecuteTestAsync()
     {
@@ -45,7 +45,7 @@ public class SelfTestDialog : TaskDialog
         {
             _ = ShowAsync(true).ContinueWith(a =>
             {
-                if (a.Result as TaskDialogStandardResult? == TaskDialogStandardResult.Close)
+                if (a.Result as FATaskDialogStandardResult? == FATaskDialogStandardResult.Close)
                     _cancelToken.Cancel();
             }, _cancelToken.Token);
 
@@ -61,15 +61,15 @@ public class SelfTestDialog : TaskDialog
         catch (TaskCanceledException) {}
     }
     
-    protected override void OnClosing(TaskDialogClosingEventArgs args)
+    protected override void OnClosing(FATaskDialogClosingEventArgs args)
     {
         SppMessageReceiver.Instance.SelfTestResponse -= OnSelfTestResponse;
         base.OnClosing(args);
     }
     
-    private static TaskDialogCommand ResultWithSideAsTaskItem(string test, bool lPass, bool rPass)
+    private static FATaskDialogCommand ResultWithSideAsTaskItem(string test, bool lPass, bool rPass)
     {
-        return new TaskDialogCommand
+        return new FATaskDialogCommand
         {
             Text = test,
             IconSource = new SymbolIconSource
@@ -82,9 +82,9 @@ public class SelfTestDialog : TaskDialog
         };
     }
         
-    private static TaskDialogCommand ResultAsTaskItem(string test, bool pass)
+    private static FATaskDialogCommand ResultAsTaskItem(string test, bool pass)
     {
-        return new TaskDialogCommand
+        return new FATaskDialogCommand
         {
             Text = test,
             IconSource = new SymbolIconSource
@@ -103,13 +103,13 @@ public class SelfTestDialog : TaskDialog
 
         if (parser == null)
         {
-            SetProgressBarState(100, TaskDialogProgressState.Error);
+            SetProgressBarState(100, FATaskDialogProgressState.Error);
             _content.Text = Strings.SystemNoResponse;
         }
         else
         {
             // Open a new dialog to display the results because Commands can't be updated after the dialog is shown
-            _ = new TaskDialog
+            _ = new FATaskDialog
             {
                 Header = parser is not { AllChecks: true } ? Strings.SelftestFailLong : Strings.SelftestPassLong,
                 Buttons = Buttons,

@@ -39,7 +39,7 @@ public partial class MainWindow : StyledAppWindow
     public MainWindow()
     {
         InitializeComponent();
-        this.AttachDevTools();
+        Application.Current!.AttachDeveloperTools();
             
         BluetoothImpl.Instance.BluetoothError += OnBluetoothError;
         Loc.LanguageUpdated += OnLanguageUpdated;

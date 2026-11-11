@@ -14,8 +14,8 @@ public static class Dialogs
 {
     private static DevTools? _devTools;
     private static TranslatorTools? _translatorTools;
-    private static ContentDialog? _devToolsViewDialog;
-    private static ContentDialog? _translatorToolsViewDialog;
+    private static FAContentDialog? _devToolsViewDialog;
+    private static FAContentDialog? _translatorToolsViewDialog;
 
     public static void ShowDevTools()
     {
@@ -77,16 +77,16 @@ public static class Dialogs
 #endif
     }
     
-    private static void ShowAsDialogOnMobile<T>(ref ContentDialog? target) where T : Control, new()
+    private static void ShowAsDialogOnMobile<T>(ref FAContentDialog? target) where T : Control, new()
     {
-        // Mobile platforms do not support multiple windows, so we use a ContentDialog instead
+        // Mobile platforms do not support multiple windows, so we use a FAContentDialog instead
         if (target == null)
         {
-            target = new ContentDialog
+            target = new FAContentDialog
             {
                 Content = new T(),
                 PrimaryButtonText = Strings.WindowClose,
-                DefaultButton = ContentDialogButton.Primary
+                DefaultButton = FAContentDialogButton.Primary
             };
 
             target.SecondaryButtonClick += (dialog, _) => dialog.Hide();

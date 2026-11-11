@@ -170,7 +170,7 @@ internal class TrayManager
             items.Add(new NativeMenuItem(label)
             {
                 // On macOS the filled circle icon marks the active mode instead of a radio bullet
-                ToggleType = PlatformUtils.IsOSX ? NativeMenuItemToggleType.None : NativeMenuItemToggleType.Radio,
+                ToggleType = PlatformUtils.IsOSX ? MenuItemToggleType.None : MenuItemToggleType.Radio,
                 IsChecked = selected,
                 Icon = PlatformUtils.IsOSX ? TrayMenuIcons.Option(symbol, selected) : null,
                 Command = new MiniCommand(OnTrayMenuCommand),

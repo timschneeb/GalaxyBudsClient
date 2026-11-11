@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using FluentAvalonia.UI.Controls;
@@ -6,11 +6,11 @@ using FluentAvalonia.UI.Controls;
 namespace GalaxyBudsClient.Interface.Controls;
 
 /// <summary>
-/// Custom InfoBar with smaller text and less opacity
+/// Custom FAInfoBar with smaller text and less opacity
 /// </summary>
-public class CustomInfoBar : InfoBar
+public class CustomInfoBar : FAInfoBar
 {
-    protected override Type StyleKeyOverride => typeof(InfoBar);
+    protected override Type StyleKeyOverride => typeof(FAInfoBar);
 
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {

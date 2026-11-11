@@ -8,7 +8,7 @@ using GalaxyBudsClient.Model.Config;
 
 namespace GalaxyBudsClient.Interface.StyledWindow;
 
-public class StyledAppWindow : AppWindow, IStyledWindow
+public class StyledAppWindow : FAAppWindow, IStyledWindow
 {
     protected StyledAppWindow()
     {

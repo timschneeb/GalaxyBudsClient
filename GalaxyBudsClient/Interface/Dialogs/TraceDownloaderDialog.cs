@@ -16,10 +16,10 @@ using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 
-public class TraceDownloaderDialog : TaskDialog
+public class TraceDownloaderDialog : FATaskDialog
 {
     private readonly TextBlock _content;
-    private readonly TaskDialogButton _closeButton;
+    private readonly FATaskDialogButton _closeButton;
 
     private readonly DeviceLogManager _deviceLogManager = new();
     
@@ -27,7 +27,7 @@ public class TraceDownloaderDialog : TaskDialog
     
     public TraceDownloaderDialog()
     {
-        _closeButton = new TaskDialogButton(Strings.Cancel, TaskDialogStandardResult.Close);
+        _closeButton = new FATaskDialogButton(Strings.Cancel, FATaskDialogStandardResult.Close);
 
         Header = Strings.CoredumpHeader;
         Buttons = [_closeButton];
@@ -42,16 +42,16 @@ public class TraceDownloaderDialog : TaskDialog
             MaxWidth = 600
         };
             
-        SetProgressBarState(0, TaskDialogProgressState.Indeterminate);
+        SetProgressBarState(0, FATaskDialogProgressState.Indeterminate);
 
         _deviceLogManager.ProgressUpdated += OnProgressUpdated;
         _deviceLogManager.Finished += OnFinished;
         BluetoothImpl.Instance.Disconnected += OnDisconnected;
     }
 
-    protected override Type StyleKeyOverride => typeof(TaskDialog);
+    protected override Type StyleKeyOverride => typeof(FATaskDialog);
     
-    protected override async void OnClosing(TaskDialogClosingEventArgs args)
+    protected override async void OnClosing(FATaskDialogClosingEventArgs args)
     {
         BluetoothImpl.Instance.Disconnected -= OnDisconnected;
         _deviceLogManager.Finished -= OnFinished;
@@ -78,7 +78,7 @@ public class TraceDownloaderDialog : TaskDialog
         _ = Dispatcher.UIThread.InvokeAsync(async () =>
         {
             SubHeader = Strings.CoredumpDlProgressFinished;
-            SetProgressBarState(100, TaskDialogProgressState.Normal);
+            SetProgressBarState(100, FATaskDialogProgressState.Normal);
             
             await new MessageBox
             {
@@ -94,7 +94,7 @@ public class TraceDownloaderDialog : TaskDialog
         Dispatcher.UIThread.Post(() =>
         {
             SubHeader = Strings.ConnlostDisconnected;
-            SetProgressBarState(100, TaskDialogProgressState.Error);
+            SetProgressBarState(100, FATaskDialogProgressState.Error);
             _content.Text = string.Empty;
             _closeButton.Text = Strings.WindowClose;
         }, DispatcherPriority.Normal);
@@ -107,7 +107,7 @@ public class TraceDownloaderDialog : TaskDialog
             if (ev.DownloadType == LogDownloadProgressEventArgs.Type.Switching)
             {
                 SubHeader = Strings.CoredumpDlProgressPrepare;
-                SetProgressBarState(0, TaskDialogProgressState.Indeterminate);
+                SetProgressBarState(0, FATaskDialogProgressState.Indeterminate);
                 _content.Text = string.Empty;
             }
             else
@@ -120,7 +120,7 @@ public class TraceDownloaderDialog : TaskDialog
                         ev.TotalByteCount.ToString())
                     .Replace("(", "")
                     .Replace(")", "");
-                SetProgressBarState(Math.Ceiling((double)ev.CurrentByteCount / ev.TotalByteCount * 100), TaskDialogProgressState.Normal);
+                SetProgressBarState(Math.Ceiling((double)ev.CurrentByteCount / ev.TotalByteCount * 100), FATaskDialogProgressState.Normal);
             }
         }, DispatcherPriority.Normal);
     }

@@ -4,12 +4,12 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Avalonia.Controls;
+using Avalonia.Input.Platform;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using Avalonia.Platform.Storage;
 using Avalonia.Threading;
 using AvaloniaHex.Document;
-using DynamicData;
 using GalaxyBudsClient.Interface.Dialogs;
 using GalaxyBudsClient.Interface.ViewModels.Developer;
 using GalaxyBudsClient.Message;
@@ -238,9 +238,8 @@ public partial class DevToolsView : UserControl
         {
             try
             {
-                ViewModel.MsgTableDataSource.AddRange(
-                    SppMessage.DecodeRawChunk([..content], result.Model, ViewModel.UseAlternativeProtocol)
-                        .Select(m => new MessageViewHolder(m)));
+                foreach (var m in SppMessage.DecodeRawChunk([..content], result.Model, ViewModel.UseAlternativeProtocol))
+                    ViewModel.MsgTableDataSource.Add(new MessageViewHolder(m));
                 ViewModel.MsgTableDataView.Refresh();
             }
             catch (InvalidPacketException ex)

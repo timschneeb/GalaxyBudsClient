@@ -37,7 +37,7 @@
                       HorizontalAlignment="Stretch" />
         </StackPanel>
         
-        <ui:InfoBar Title="{ext:Translate {x:Static i18N:Keys.Hint}}"
+        <ui:FAInfoBar Title="{ext:Translate {x:Static i18N:Keys.Hint}}"
                     Message="{ext:Translate {x:Static i18N:Keys.ManualpairNote}}"
                     IsOpen="True"
                     IsClosable="False"

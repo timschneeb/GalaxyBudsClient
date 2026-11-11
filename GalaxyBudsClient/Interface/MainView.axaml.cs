@@ -87,7 +87,7 @@ public partial class MainView : UserControl
         InitializeNavigationPages();
         
         Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
-        BreadcrumbBar.ItemClicked += OnBreadcrumbBarItemClicked;
+        FABreadcrumbBar.ItemClicked += OnBreadcrumbBarItemClicked;
         FrameView.Navigated += OnFrameViewNavigated;
         NavView.ItemInvoked += OnNavigationViewItemInvoked;
         NavView.BackRequested += OnNavigationViewBackRequested;
@@ -117,7 +117,7 @@ public partial class MainView : UserControl
         return _mainPages.Concat<PageViewModelBase>(_subPages).FirstOrDefault(p => p.GetType() == arg);
     }
 
-    private void OnBreadcrumbBarItemClicked(BreadcrumbBar sender, BreadcrumbBarItemClickedEventArgs args)
+    private void OnBreadcrumbBarItemClicked(FABreadcrumbBar sender, FABreadcrumbBarItemClickedEventArgs args)
     {
         if(ViewModel == null)
             return;
@@ -158,9 +158,12 @@ public partial class MainView : UserControl
     {
         base.OnLoaded(e);
 
-        if (VisualRoot is AppWindow aw)
+        if (VisualRoot is FAAppWindow aw)
         {
-            TitleBarHost.ColumnDefinitions[1].Width = new GridLength(aw.TitleBar.RightInset, GridUnitType.Pixel);
+            // FA3 removed TitleBar.RightInset; reserve space for the window caption buttons.
+            // Windows draws min/max/close buttons (~46px each); other platforms place controls on the left.
+            var captionWidth = OperatingSystem.IsWindows() ? 138d : 0d;
+            TitleBarHost.ColumnDefinitions[1].Width = new GridLength(captionWidth, GridUnitType.Pixel);
         }
     }
     
@@ -168,7 +171,7 @@ public partial class MainView : UserControl
     {
         foreach (var item in NavView.MenuItemsSource)
         {
-            if(item is not NavigationViewItem nvi)
+            if(item is not FANavigationViewItem nvi)
                 continue;
 
             if(nvi.Tag is WelcomePageViewModel)
@@ -179,7 +182,7 @@ public partial class MainView : UserControl
         
         foreach (var item in NavView.FooterMenuItemsSource)
         {
-            if(item is not NavigationViewItem nvi)
+            if(item is not FANavigationViewItem nvi)
                 continue;
 
             if (nvi.Tag is not SettingsPageViewModel)
@@ -201,13 +204,13 @@ public partial class MainView : UserControl
         NavView.Classes.Set("AppNav", Settings.Data.ShowSidebar);
         NavView.Classes.Set("MobileContentContainer", true);
         NavView.PaneDisplayMode = Settings.Data.ShowSidebar ? 
-            NavigationViewPaneDisplayMode.Left : NavigationViewPaneDisplayMode.LeftMinimal;
+            FANavigationViewPaneDisplayMode.Left : FANavigationViewPaneDisplayMode.LeftMinimal;
     }
 
     private void RefreshSidebarItemStates()
     {
-        foreach(var nvi in NavView.MenuItemsSource.Cast<NavigationViewItem>()
-                    .Concat(NavView.FooterMenuItemsSource.Cast<NavigationViewItem>()))
+        foreach(var nvi in NavView.MenuItemsSource.Cast<FANavigationViewItem>()
+                    .Concat(NavView.FooterMenuItemsSource.Cast<FANavigationViewItem>()))
         {
             nvi.Classes.Set("AppNav", Settings.Data.ShowSidebar);
         }
@@ -219,12 +222,12 @@ public partial class MainView : UserControl
             
         Dispatcher.UIThread.Post(() =>
         {   
-            var menuItems = new List<NavigationViewItem>(14);
-            var footerItems = new List<NavigationViewItem>(2);
+            var menuItems = new List<FANavigationViewItem>(14);
+            var footerItems = new List<FANavigationViewItem>(2);
             
             foreach (var page in _mainPages)
             {
-                var nvi = new NavigationViewItem
+                var nvi = new FANavigationViewItem
                 {
                     Content = Loc.ResolveOrDefault(page.TitleKey) ?? page.FallbackTitle,
                     Tag = page,
@@ -249,7 +252,7 @@ public partial class MainView : UserControl
         }, DispatcherPriority.Render);
     }
 
-    private void OnNavigationViewBackRequested(object? sender, NavigationViewBackRequestedEventArgs e)
+    private void OnNavigationViewBackRequested(object? sender, FANavigationViewBackRequestedEventArgs e)
     {
         /* Pressing back on a main page: remove all items until a MainPageViewModel is found
            We don't want to return to a sub page. The back button mostly behaves like an up button. */
@@ -269,9 +272,9 @@ public partial class MainView : UserControl
         FrameView.GoBack();
     }
 
-    private void OnNavigationViewItemInvoked(object? sender, NavigationViewItemInvokedEventArgs e)
+    private void OnNavigationViewItemInvoked(object? sender, FANavigationViewItemInvokedEventArgs e)
     {
-        if (e.InvokedItemContainer is not NavigationViewItem nvi) 
+        if (e.InvokedItemContainer is not FANavigationViewItem nvi) 
             return;
 
         if (nvi.Tag == null)
@@ -280,7 +283,7 @@ public partial class MainView : UserControl
         NavigationService.Instance.NavigateFromContext(nvi.Tag, e.RecommendedNavigationTransitionInfo);
     }
     
-    private void OnFrameViewNavigated(object? sender, NavigationEventArgs e)
+    private void OnFrameViewNavigated(object? sender, FANavigationEventArgs e)
     {
         CurrentPageViewModel?.OnNavigatedFrom();
 
@@ -299,13 +302,13 @@ public partial class MainView : UserControl
         
         if (page != null)
         {
-            if (e.NavigationMode == NavigationMode.New || page is MainPageViewModelBase) 
+            if (e.NavigationMode == FANavigationMode.New || page is MainPageViewModelBase) 
                 ViewModel?.BreadcrumbItems.Add(new BreadcrumbViewModel(page.TitleKey, page.GetType()));
-            else if (e.NavigationMode == NavigationMode.Back && ViewModel?.BreadcrumbItems.Count > 0)
+            else if (e.NavigationMode == FANavigationMode.Back && ViewModel?.BreadcrumbItems.Count > 0)
                 ViewModel?.BreadcrumbItems.RemoveAt(ViewModel.BreadcrumbItems.Count - 1);
         }
         
-        foreach (NavigationViewItem nvi in NavView.MenuItemsSource)
+        foreach (FANavigationViewItem nvi in NavView.MenuItemsSource)
         {
             if (nvi.Tag == page)
             {
@@ -318,7 +321,7 @@ public partial class MainView : UserControl
             }
         }
 
-        foreach (NavigationViewItem nvi in NavView.FooterMenuItemsSource)
+        foreach (FANavigationViewItem nvi in NavView.FooterMenuItemsSource)
         {
             if (nvi.Tag == page)
             {
@@ -344,7 +347,7 @@ public partial class MainView : UserControl
         }
     }
 
-    private static void SetNvIcon(NavigationViewItem? item, bool selected)
+    private static void SetNvIcon(FANavigationViewItem? item, bool selected)
     {
         var t = item?.Tag;
 

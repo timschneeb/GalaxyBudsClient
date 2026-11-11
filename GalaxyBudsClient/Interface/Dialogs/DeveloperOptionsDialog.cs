@@ -9,12 +9,12 @@ using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 
-public class DeveloperOptionsDialog : TaskDialog
+public class DeveloperOptionsDialog : FATaskDialog
 {
     public DeveloperOptionsDialog()
     {
         SubHeader = Strings.SettingsDevmode;
-        Commands = new List<TaskDialogCommand> {
+        Commands = new List<FATaskDialogCommand> {
             new()
             {
                 Text = "Bluetooth packet inspector",
@@ -30,10 +30,10 @@ public class DeveloperOptionsDialog : TaskDialog
                 Command = new MiniCommand(_ => { Utils.Interface.Dialogs.ShowTranslatorTools(); })
             }
         };
-        Buttons = new List<TaskDialogButton> { TaskDialogButton.CloseButton };
+        Buttons = new List<FATaskDialogButton> { FATaskDialogButton.CloseButton };
         IconSource = new SymbolIconSource { Symbol = Symbol.WindowDevTools };
         XamlRoot = TopLevel.GetTopLevel(MainView.Instance);
     }
 
-    protected override Type StyleKeyOverride => typeof(TaskDialog);
+    protected override Type StyleKeyOverride => typeof(FATaskDialog);
 }

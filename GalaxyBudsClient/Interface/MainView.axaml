@@ -18,7 +18,7 @@
               ColumnDefinitions="*,Auto"
               Background="Transparent" />
 
-        <ui:NavigationView Grid.Row="0"
+        <ui:FANavigationView Grid.Row="0"
                            AlwaysShowHeader="False" 
                            IsPaneOpen="False"
                            PaneDisplayMode="Left"
@@ -29,20 +29,20 @@
             <Grid RowDefinitions="Auto,Auto,*"
                   Name="ContentContainer">
                 
-                <ui:InfoBar Grid.Row="0"
+                <ui:FAInfoBar Grid.Row="0"
                             Title="{ext:Translate {x:Static i18N:Keys.PlacementDisconnected}}"
                             IsClosable="False"
                             Severity="Warning"
                             Message="{Binding LastErrorMessage, Source={x:Static platform:BluetoothImpl.Instance}}"
                             Margin="20,16,20,0">
-                    <ui:InfoBar.IsOpen>
+                    <ui:FAInfoBar.IsOpen>
                         <MultiBinding Converter="{x:Static BoolConverters.And}">
                             <Binding Path="!IsConnected" Source="{x:Static platform:BluetoothImpl.Instance}" />
                             <Binding Path="!AlternativeModeEnabled" Source="{x:Static platform:BluetoothImpl.Instance}" />
                             <Binding Path="!IsInSetupWizard" />
                         </MultiBinding>
-                    </ui:InfoBar.IsOpen>
-                    <ui:InfoBar.ActionButton>
+                    </ui:FAInfoBar.IsOpen>
+                    <ui:FAInfoBar.ActionButton>
                         <StackPanel HorizontalAlignment="Right"
                                     Spacing="8"
                                     Orientation="Horizontal">
@@ -61,25 +61,25 @@
                                 </Interaction.Behaviors>
                             </Button>
                         </StackPanel>
-                    </ui:InfoBar.ActionButton>
-                </ui:InfoBar>
+                    </ui:FAInfoBar.ActionButton>
+                </ui:FAInfoBar>
 
-                <ui:BreadcrumbBar Name="BreadcrumbBar"
+                <ui:FABreadcrumbBar Name="FABreadcrumbBar"
                                   MinHeight="56"
                                   Grid.Row="1"
                                   ItemsSource="{Binding BreadcrumbItems}"
                                   Margin="20,10">
-                    <ui:BreadcrumbBar.ItemTemplate>
+                    <ui:FABreadcrumbBar.ItemTemplate>
                         <DataTemplate x:DataType="vm:BreadcrumbViewModel">
-                            <ui:BreadcrumbBarItem Content="{Binding Title}"
+                            <ui:FABreadcrumbBarItem Content="{Binding Title}"
                                                   MinHeight="56" />
                         </DataTemplate>
-                    </ui:BreadcrumbBar.ItemTemplate>
-                </ui:BreadcrumbBar>
+                    </ui:FABreadcrumbBar.ItemTemplate>
+                </ui:FABreadcrumbBar>
 
-                <ui:Frame Grid.Row="2" Name="FrameView" />
+                <ui:FAFrame Grid.Row="2" Name="FrameView" />
             </Grid>
-        </ui:NavigationView>
+        </ui:FANavigationView>
 
     </Grid>
 

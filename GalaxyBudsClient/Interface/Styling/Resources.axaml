@@ -21,12 +21,12 @@
     <!-- Dimensions -->
     <Thickness x:Key="AppPageMargin">20 0 20 20</Thickness>
     
-    <!-- Large BreadcrumbBar -->
+    <!-- Large FABreadcrumbBar -->
     <Thickness x:Key="BreadcrumbBarChevronPadding">4,4,4,0</Thickness>
     <FontWeight x:Key="BreadcrumbBarItemFontWeight">Bold</FontWeight>
     <system:Double x:Key="BreadcrumbBarItemThemeFontSize">24</system:Double>
     <system:Double x:Key="BreadcrumbBarChevronFontSize">16</system:Double>
-    <!-- FluentAvaloniaUI 2.4.x: prevent large BreadcrumbBar font from clipping -->
+    <!-- FluentAvaloniaUI 2.4.x: prevent large FABreadcrumbBar font from clipping -->
     <system:Double x:Key="EllipsisItemPresenterLineHeight">30</system:Double>
 
     <!-- Also use Bold instead of SemiBold here -->
@@ -38,7 +38,7 @@
     </ControlTheme>
 
     <!-- Icons -->
-    <controls:PathIconSource x:Key="IconPlaceholder" Data="" />
+    <controls:FAPathIconSource x:Key="IconPlaceholder" Data="" />
     <ic:SymbolIconSource x:Key="InstallIcon" Symbol="ArrowDownload" />
     <ic:SymbolIconSource x:Key="OpenIcon" Symbol="FolderOpen" />
     <ic:SymbolIconSource x:Key="ReloadIcon" Symbol="ArrowClockwise" />
