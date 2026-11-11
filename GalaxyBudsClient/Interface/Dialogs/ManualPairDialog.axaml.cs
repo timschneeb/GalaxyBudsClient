@@ -34,12 +34,12 @@ public partial class ManualPairDialog : UserControl
             return null;
         }
 
-        var dialog = new ContentDialog
+        var dialog = new FAContentDialog
         {
             Title = Strings.DevselManualPair,
             PrimaryButtonText = Strings.Okay,
             CloseButtonText = Strings.Cancel,
-            DefaultButton = ContentDialogButton.Primary
+            DefaultButton = FAContentDialogButton.Primary
         };
 
         var viewModel = new ManualPairDialogViewModel
@@ -55,11 +55,11 @@ public partial class ManualPairDialog : UserControl
         var result = await dialog.ShowAsync(TopLevel.GetTopLevel(MainView.Instance));
         dialog.PrimaryButtonClick -= OnPrimaryButtonClick;
             
-        return result == ContentDialogResult.None ||
+        return result == FAContentDialogResult.None ||
                viewModel.SelectedDevice == null || 
                viewModel.SelectedModel == null ? null : (viewModel.SelectedModel.Value, viewModel.SelectedDevice);
 
-        void OnPrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        void OnPrimaryButtonClick(FAContentDialog sender, FAContentDialogButtonClickEventArgs args)
         {
             args.Cancel = viewModel.SelectedModel == null ||
                           viewModel.SelectedModel == Models.NULL || 

@@ -14,7 +14,7 @@ using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 
-public class FirmwareUpdateDialog : TaskDialog
+public class FirmwareUpdateDialog : FATaskDialog
 {
     private readonly TextBlock _progressSize;
     private readonly TextBlock _offset;
@@ -23,7 +23,7 @@ public class FirmwareUpdateDialog : TaskDialog
 
     public FirmwareUpdateDialog()
     {
-        var closeButton = new TaskDialogButton(Strings.Cancel, TaskDialogStandardResult.Close);
+        var closeButton = new FATaskDialogButton(Strings.Cancel, FATaskDialogStandardResult.Close);
         _progressSize = new TextBlock { Text = Strings.FwUploadProgressPrepare, TextWrapping = TextWrapping.Wrap };
         _offset = new TextBlock { Text = string.Empty, TextWrapping = TextWrapping.Wrap };
         _packet = new TextBlock { Text = string.Empty, TextWrapping = TextWrapping.Wrap };
@@ -38,7 +38,7 @@ public class FirmwareUpdateDialog : TaskDialog
             Spacing = 1, 
             Children = { _progressSize, _offset, _packet, _mtu }
         };
-        FooterVisibility = TaskDialogFooterVisibility.Auto;
+        FooterVisibility = FATaskDialogFooterVisibility.Auto;
         XamlRoot = TopLevel.GetTopLevel(MainView.Instance);
         ShowProgressBar = true;
         
@@ -50,9 +50,9 @@ public class FirmwareUpdateDialog : TaskDialog
         FirmwareTransferManager.Instance.CurrentBlockChanged += OnCurrentBlockChanged;
     }
 
-    protected override Type StyleKeyOverride => typeof(TaskDialog);
+    protected override Type StyleKeyOverride => typeof(FATaskDialog);
 
-    protected override void OnClosing(TaskDialogClosingEventArgs args)
+    protected override void OnClosing(FATaskDialogClosingEventArgs args)
     {
         FirmwareTransferManager.Instance.Finished -= OnFinished;
         FirmwareTransferManager.Instance.Error -= OnError;
@@ -82,14 +82,14 @@ public class FirmwareUpdateDialog : TaskDialog
         {
             case FirmwareTransferManager.States.InitializingSession:
                 SubHeader = Strings.FwUploadProgressSession;
-                SetProgressBarState(0, TaskDialogProgressState.Indeterminate);
+                SetProgressBarState(0, FATaskDialogProgressState.Indeterminate);
                 break;
         }
     }
 
     private void OnProgressChanged(object? sender, FirmwareProgressEventArgs e)
     {
-        SetProgressBarState(e.Percent, TaskDialogProgressState.Normal);
+        SetProgressBarState(e.Percent, FATaskDialogProgressState.Normal);
         
         SubHeader = string.Format(Strings.FwUploadProgress, e.Percent);
         _progressSize.Text = string.Format(Strings.FwUploadProgressSize,

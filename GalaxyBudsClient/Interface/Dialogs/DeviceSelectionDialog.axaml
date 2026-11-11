@@ -21,7 +21,7 @@
     </Design.DataContext>
 
     <UserControl.Resources>
-        <input:XamlUICommand x:Key="ConnectCommand"
+        <input:FAXamlUICommand x:Key="ConnectCommand"
                              Label="{ext:Translate connlost_connect}"
                              IconSource="{StaticResource LinkMultipleIcon}"
                              Description="{ext:Translate connlost_connect}"
@@ -54,7 +54,7 @@
 
                                     <StackPanel Orientation="Horizontal"
                                                 HorizontalAlignment="Right">
-                                        <ui:CommandBarButton HorizontalAlignment="Right"
+                                        <ui:FACommandBarButton HorizontalAlignment="Right"
                                                              Command="{StaticResource ConnectCommand}"
                                                              CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"
                                                              HotKey="{x:Null}" />

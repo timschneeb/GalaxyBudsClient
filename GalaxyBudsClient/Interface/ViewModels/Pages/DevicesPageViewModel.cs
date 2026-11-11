@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using FluentAvalonia.UI.Controls;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Dialogs;
@@ -33,7 +33,7 @@ public class DevicesPageViewModel : MainPageViewModelBase
         if (device.MacAddress == Settings.Data.LastDeviceMac)
             return;
         
-        var cd = new ContentDialog
+        var cd = new FAContentDialog
         {
             Title = Strings.PleaseWait,
             Content = Strings.ConnlostConnecting,

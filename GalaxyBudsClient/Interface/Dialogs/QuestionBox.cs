@@ -14,16 +14,16 @@ public class QuestionBox
 
     public async Task<bool> ShowAsync(TopLevel? host = null)
     {
-        var cd = new ContentDialog
+        var cd = new FAContentDialog
         {
             Title = Title,
             Content = Description,
             PrimaryButtonText = ButtonText,
             CloseButtonText = CloseButtonText,
-            DefaultButton = ContentDialogButton.Primary
+            DefaultButton = FAContentDialogButton.Primary
         };
 
         var result = await cd.ShowAsync(host ?? TopLevel.GetTopLevel(MainView.Instance));
-        return result == ContentDialogResult.Primary;
+        return result == FAContentDialogResult.Primary;
     }
 }

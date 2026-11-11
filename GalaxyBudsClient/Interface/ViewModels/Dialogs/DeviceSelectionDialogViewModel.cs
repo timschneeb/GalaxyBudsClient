@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -24,12 +24,12 @@ public partial class DeviceSelectionDialogViewModel : ViewModelBase
     [Reactive] private Models _selectedModel;
     [Reactive] private bool _noDevices;
 
-    private readonly ContentDialog _dialog;
+    private readonly FAContentDialog _dialog;
 
     // Only used for design-time data
-    public DeviceSelectionDialogViewModel() : this(new ContentDialog()) {}
+    public DeviceSelectionDialogViewModel() : this(new FAContentDialog()) {}
     
-    public DeviceSelectionDialogViewModel(ContentDialog dialog)
+    public DeviceSelectionDialogViewModel(FAContentDialog dialog)
     {
         _dialog = dialog;
         Devices.CollectionChanged += (_, _) => NoDevices = !Devices.Any(); 
@@ -55,10 +55,10 @@ public partial class DeviceSelectionDialogViewModel : ViewModelBase
         Settings.Data.Devices.Add(device);
         
         // Hide this dialog
-        Dispatcher.UIThread.Post(() => _dialog.Hide(ContentDialogResult.Primary));
+        Dispatcher.UIThread.Post(() => _dialog.Hide(FAContentDialogResult.Primary));
 
         // Show connection dialog and begin connection
-        var cd = new ContentDialog
+        var cd = new FAContentDialog
         {
             Title = Strings.PleaseWait,
             Content = Strings.ConnlostConnecting,

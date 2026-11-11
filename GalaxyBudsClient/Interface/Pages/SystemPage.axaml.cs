@@ -23,12 +23,12 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
     public SystemPage()
     {
         InitializeComponent();
-        AddHandler(SettingsExpanderItem.ClickEvent, OnSettingsItemClicked);
+        AddHandler(FASettingsExpanderItem.ClickEvent, OnSettingsItemClicked);
     }
 
     private async void OnSettingsItemClicked(object? sender, RoutedEventArgs e)
     {
-        if (e.Source is not SettingsExpanderItem item)
+        if (e.Source is not FASettingsExpanderItem item)
             return;
         
         
@@ -41,13 +41,13 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
 
     private async void OnFactoryResetClicked(object? sender, RoutedEventArgs e)
     {
-        var cd = new ContentDialog
+        var cd = new FAContentDialog
         {
             Title = Strings.FactoryHeader,
             Content = Strings.FactoryConfirmation,
             PrimaryButtonText = Strings.ContinueButton,
             SecondaryButtonText = Strings.Cancel,
-            DefaultButton = ContentDialogButton.Primary
+            DefaultButton = FAContentDialogButton.Primary
         };
 
         cd.PrimaryButtonClick += OnFactoryResetConfirmed;
@@ -56,7 +56,7 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
         cd.PrimaryButtonClick -= OnFactoryResetConfirmed;
     }
 
-    private async void OnFactoryResetConfirmed(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+    private async void OnFactoryResetConfirmed(FAContentDialog sender, FAContentDialogButtonClickEventArgs args)
     {
         var cancelToken = new CancellationTokenSource();
         sender.Title = Strings.SystemWaitingForDevice;
@@ -133,7 +133,7 @@ public partial class SystemPage : BasePage<SystemPageViewModel>
             MaxWidth = 600
         };
         
-        var cd = new ContentDialog
+        var cd = new FAContentDialog
         {
             Title = Strings.SpatialHeader,
             Content = textBlock,

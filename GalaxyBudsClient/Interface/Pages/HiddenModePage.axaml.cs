@@ -39,11 +39,11 @@ public partial class HiddenModePage : BasePage<HiddenModePageViewModel>
 
     private void OnPowerMenuClicked(object? sender, RoutedEventArgs e)
     {
-        _ = new TaskDialog {
+        _ = new FATaskDialog {
             Header = Strings.HiddenModePower,
             SubHeader = Strings.PowerMenuHint,
                 
-            Commands = new List<TaskDialogCommand> {
+            Commands = new List<FATaskDialogCommand> {
                 new()
                 {
                     Text = Strings.PowerMenuShutdown,
@@ -81,7 +81,7 @@ public partial class HiddenModePage : BasePage<HiddenModePageViewModel>
                     })
                 },
             },
-            Buttons = new List<TaskDialogButton> { TaskDialogButton.CloseButton },
+            Buttons = new List<FATaskDialogButton> { FATaskDialogButton.CloseButton },
             IconSource = new SymbolIconSource { Symbol = Symbol.Power },
             XamlRoot = TopLevel.GetTopLevel(MainView.Instance),
         }.ShowAsync(true);

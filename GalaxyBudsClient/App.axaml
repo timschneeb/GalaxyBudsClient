@@ -44,7 +44,7 @@
             </OnPlatform.macOS>
         </OnPlatform>
         
-        <Style Selector="Button#CloseButton:inactive:not(:pointerover) controls|FontIcon">
+        <Style Selector="Button#CloseButton:inactive:not(:pointerover) controls|FAFontIcon">
             <Setter Property="Foreground" Value="{DynamicResource AccentColor}" />
         </Style>
 
@@ -52,7 +52,7 @@
             <Setter Property="Background" Value="{DynamicResource AccentColor}" />
         </Style>
         
-        <Style Selector="Button#MinimizeButton:inactive:not(:pointerover) controls|FontIcon">
+        <Style Selector="Button#MinimizeButton:inactive:not(:pointerover) controls|FAFontIcon">
             <Setter Property="Foreground" Value="{DynamicResource AccentColor}" />
         </Style>
         
@@ -60,7 +60,7 @@
             <Setter Property="Background" Value="{DynamicResource AccentColor}" />
         </Style>
         
-        <Style Selector="Button#MaxRestoreButton:inactive:not(:pointerover) controls|FontIcon">
+        <Style Selector="Button#MaxRestoreButton:inactive:not(:pointerover) controls|FAFontIcon">
             <Setter Property="Foreground" Value="{DynamicResource AccentColor}" />
         </Style>
     </Application.Styles>

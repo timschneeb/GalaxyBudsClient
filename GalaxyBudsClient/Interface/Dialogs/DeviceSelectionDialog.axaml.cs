@@ -23,7 +23,7 @@ public partial class DeviceSelectionDialog : UserControl
     
     public static async Task<bool> OpenDialogAsync()
     {
-        var dialog = new ContentDialog
+        var dialog = new FAContentDialog
         {
             Title = Strings.DevselHeader,
             CloseButtonText = Strings.Cancel
@@ -39,9 +39,9 @@ public partial class DeviceSelectionDialog : UserControl
         var result = await dialog.ShowAsync(TopLevel.GetTopLevel(MainView.Instance));
         dialog.PrimaryButtonClick -= OnPrimaryButtonClick;
 
-        return result != ContentDialogResult.None;
+        return result != FAContentDialogResult.None;
 
-        void OnPrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        void OnPrimaryButtonClick(FAContentDialog sender, FAContentDialogButtonClickEventArgs args)
         {
             args.Cancel = viewModel.SelectedModel == Models.NULL || viewModel.SelectedDevice == null;
             if (args.Cancel)

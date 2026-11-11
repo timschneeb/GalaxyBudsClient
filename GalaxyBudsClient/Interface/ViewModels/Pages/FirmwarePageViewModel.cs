@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -94,16 +94,16 @@ public partial class FirmwarePageViewModel : SubPageViewModelBase
             return;
         }
         
-        var downloadDialog = new TaskDialog
+        var downloadDialog = new FATaskDialog
         {
             Header = Strings.FwSelectDownloading,
             Buttons = [],
-            IconSource = new SymbolIconSource { Symbol = Symbol.Download },
+            IconSource = new FASymbolIconSource { Symbol = FASymbol.Download },
             SubHeader = Strings.PleaseWait,
             XamlRoot = MainView.Instance,
             ShowProgressBar = true
         };
-        downloadDialog.SetProgressBarState(0, TaskDialogProgressState.Indeterminate);
+        downloadDialog.SetProgressBarState(0, FATaskDialogProgressState.Indeterminate);
         _ = downloadDialog.ShowAsync(true);
         
         byte[] binary;

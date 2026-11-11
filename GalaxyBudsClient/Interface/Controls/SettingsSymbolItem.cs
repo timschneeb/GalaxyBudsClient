@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Avalonia;
 using FluentAvalonia.UI.Controls;
 using Symbol = FluentIcons.Common.Symbol;
@@ -8,9 +8,9 @@ using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 namespace GalaxyBudsClient.Interface.Controls;
 
 
-public class SettingsSymbolItem : SettingsExpanderItem
+public class SettingsSymbolItem : FASettingsExpanderItem
 {
-    protected override Type StyleKeyOverride => typeof(SettingsExpanderItem);
+    protected override Type StyleKeyOverride => typeof(FASettingsExpanderItem);
 
     public static readonly StyledProperty<Symbol> SymbolProperty = 
         SymbolIcon.SymbolProperty.AddOwner<SettingsSymbolItem>();

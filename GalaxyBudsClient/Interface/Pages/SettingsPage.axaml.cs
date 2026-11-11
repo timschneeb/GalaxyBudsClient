@@ -14,7 +14,7 @@ public partial class SettingsPage : BasePage<SettingsPageViewModel>
     public SettingsPage()
     {
         InitializeComponent();
-        DevSettings.AddHandler(SettingsExpander.ClickEvent, OnDevSettingsClicked);
+        DevSettings.AddHandler(FASettingsExpander.ClickEvent, OnDevSettingsClicked);
         TrayIcon.AddHandler(SettingsSwitchItem.IsCheckedChangedEvent, OnIsTrayIconEnabledChanged);
     }
 

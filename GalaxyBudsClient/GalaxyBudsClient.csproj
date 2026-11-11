@@ -97,22 +97,23 @@
         <PackageReference Include="AsyncErrorHandler.Fody" Version="1.3.0" />
         <PackageReference Include="Fody" Version="6.9.3" PrivateAssets="all" />
         <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
-        <PackageReference Include="Avalonia.Controls.DataGrid" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="$(AvaloniaDataGridVersion)" />
         <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
-        <PackageReference Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.3" />
         <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
         <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="$(AvaloniaVersion)" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
-        <PackageReference Include="ReactiveUI.Avalonia" Version="11.3.8" />
-        <PackageReference Include="Svg.Controls.Skia.Avalonia" Version="11.3.9.5" />
-        <PackageReference Include="Xaml.Behaviors.Avalonia" Version="11.3.9.6" />
-        <PackageReference Include="AvaloniaHex" Version="0.1.10" />
+        <PackageReference Include="ReactiveUI.Avalonia" Version="12.1.6" />
+        <PackageReference Include="Svg.Controls.Skia.Avalonia" Version="12.0.0.13" />
+        <PackageReference Include="Xaml.Behaviors.Avalonia" Version="12.1.5" />
+        <PackageReference Include="AvaloniaHex" Version="0.1.13" />
         <PackageReference Include="BouncyCastle.Cryptography" Version="2.7.0" />
         <PackageReference Include="CommandLineParser" Version="2.9.2-ci-210" />
         <PackageReference Include="Config.Net" Version="5.2.1" />
         <PackageReference Include="CS-Script" Version="4.14.14" />
-        <PackageReference Include="FluentAvaloniaUI" Version="2.4.1" />
-        <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="2.0.316.1" />
+        <PackageReference Include="FluentAvaloniaUI" Version="3.1.0" />
+        <PackageReference Include="FluentIcons.Avalonia" Version="2.1.345" />
+        <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="2.1.345" />
         <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
         <!-- Roslyn unification: EF Core Design 11 requires Roslyn 5.9, CS-Script pins 4.14 (NU1107).
              Direct reference wins and upgrades the scripting stack used by CS-Script. -->
@@ -122,9 +123,10 @@
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="11.0.0" />
-        <PackageReference Include="ReactiveUI.Fody" Version="19.5.41" /> <!-- Needed due to workaround in SettingsData.cs -->
-        <PackageReference Include="ReactiveUI.SourceGenerators" Version="2.5.1" PrivateAssets="all" />
-        <PackageReference Include="ScottPlot.Avalonia" Version="5.1.57" />
+        <PackageReference Include="ReactiveUI.SourceGenerators" Version="4.2.0" PrivateAssets="all" />
+        <!-- ReactiveUI 26 dropped its System.Reactive dependency; the app still uses it directly -->
+        <PackageReference Include="System.Reactive" Version="6.1.0" />
+        <PackageReference Include="ScottPlot.Avalonia" Version="5.1.59" />
         <PackageReference Include="Sentry" Version="6.12.1" />
         <PackageReference Include="Sentry.Serilog" Version="6.12.1" />
         <PackageReference Include="Serilog" Version="4.4.0" />
@@ -133,7 +135,7 @@
         <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
         <PackageReference Include="Serilog.Sinks.Trace" Version="4.0.0" />
         <!-- Workaround: force include SkiaSharp 3.x libraries for Linux; this is already implicitly the case for other platforms -->
-        <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="3.119.1" />
+        <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="3.119.4" />
         <PackageReference Include="Tmds.DBus" Version="0.21.2" />
     </ItemGroup>
 

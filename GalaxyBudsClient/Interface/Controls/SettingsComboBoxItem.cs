@@ -59,7 +59,7 @@ public class SettingsComboBoxItem : SettingsSymbolItem
     public static readonly StyledProperty<object?> SelectedValueProperty = 
         SelectingItemsControl.SelectedValueProperty.AddOwner<SettingsComboBoxItem>();
     
-    public static readonly StyledProperty<IBinding?> DisplayMemberBindingProperty = 
+    public static readonly StyledProperty<BindingBase?> DisplayMemberBindingProperty = 
         ItemsControl.DisplayMemberBindingProperty.AddOwner<SettingsComboBoxItem>();
 
     public static readonly StyledProperty<IEnumerable?> ItemsSourceProperty = 
@@ -94,7 +94,7 @@ public class SettingsComboBoxItem : SettingsSymbolItem
     
     [AssignBinding]
     [InheritDataTypeFromItems(nameof(ItemsSource))]
-    public IBinding? DisplayMemberBinding
+    public BindingBase? DisplayMemberBinding
     {
         get => GetValue(DisplayMemberBindingProperty);
         set => SetValue(DisplayMemberBindingProperty, value);

@@ -11,12 +11,12 @@ public partial class HomePage : BasePage<HomePageViewModel>
     {
         InitializeComponent();
         
-        AddHandler(SettingsExpanderItem.ClickEvent, OnSettingsItemClicked);
+        AddHandler(FASettingsExpanderItem.ClickEvent, OnSettingsItemClicked);
     }
 
     private static void OnSettingsItemClicked(object? sender, RoutedEventArgs e)
     {
-        if (e.Source is not SettingsExpanderItem item)
+        if (e.Source is not FASettingsExpanderItem item)
             return;
         
         NavigationService.Instance.Navigate(item.Name);

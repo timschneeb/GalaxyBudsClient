@@ -27,10 +27,10 @@ public partial class TranslatorToolsView : UserControl
 
     private void OnErrorDetected(string title, string content)
     {
-        var td = new TaskDialog
+        var td = new FATaskDialog
         {
             Header = title,
-            Buttons = { TaskDialogButton.CloseButton },
+            Buttons = { FATaskDialogButton.CloseButton },
             IconSource = new SymbolIconSource { Symbol = Symbol.Warning },
             Content = new TextBlock
             {
