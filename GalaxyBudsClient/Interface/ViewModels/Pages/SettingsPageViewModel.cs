@@ -36,10 +36,14 @@ public partial class SettingsPageViewModel : MainPageViewModelBase
 
     public bool IsAutoStartEnabled
     {
-        get => PlatformImpl.DesktopServices.IsAutoStartEnabled;
+        get => PlatformUtils.IsRunningInFlatpak
+            ? Settings.Data.FlatpakAutoStartEnabled
+            : PlatformImpl.DesktopServices.IsAutoStartEnabled;
         set
         {
             PlatformImpl.DesktopServices.IsAutoStartEnabled = value;
+            if (PlatformUtils.IsRunningInFlatpak)
+                Settings.Data.FlatpakAutoStartEnabled = value;
             this.RaisePropertyChanged();
         }
     }

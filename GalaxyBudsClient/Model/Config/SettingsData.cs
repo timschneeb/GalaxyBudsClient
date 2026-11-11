@@ -69,6 +69,8 @@ public class SettingsData : ReactiveObject
     /* Tray icon */
     [ReactiveUI.Fody.Helpers.Reactive] public bool MinimizeToTray { set; get; } = true;
     [ReactiveUI.Fody.Helpers.Reactive] public DynamicTrayIconModes DynamicTrayIconMode { set; get; }
+    /* Only used by the Flatpak build, which cannot read the autostart state back from the system */
+    [ReactiveUI.Fody.Helpers.Reactive] public bool FlatpakAutoStartEnabled { set; get; }
 
     /* Connection popup */
     [ReactiveUI.Fody.Helpers.Reactive] public bool PopupEnabled { set; get; }
