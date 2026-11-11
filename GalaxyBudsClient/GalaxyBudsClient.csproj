@@ -125,7 +125,7 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="11.0.0" />
         <PackageReference Include="ReactiveUI.SourceGenerators" Version="4.2.0" PrivateAssets="all" />
         <!-- ReactiveUI 26 dropped its System.Reactive dependency; the app still uses it directly -->
-        <PackageReference Include="System.Reactive" Version="6.1.0" />
+        <PackageReference Include="System.Reactive" Version="7.0.0" />
         <PackageReference Include="ScottPlot.Avalonia" Version="5.1.59" />
         <PackageReference Include="Sentry" Version="6.12.1" />
         <PackageReference Include="Sentry.Serilog" Version="6.12.1" />
