@@ -106,23 +106,52 @@ public class BinauralDemoAudioPlayer : IDisposable
     {
         try
         {
+            ProcessStartInfo? psi = null;
             if (OperatingSystem.IsMacOS())
             {
-                using var process = Process.Start(new ProcessStartInfo
+                psi = new ProcessStartInfo
                 {
                     FileName = "afplay",
                     Arguments = $"\"{path}\"",
                     CreateNoWindow = true,
                     UseShellExecute = false
-                });
+                };
+            }
+            else if (OperatingSystem.IsLinux())
+            {
+                var player = FindLinuxAudioPlayer();
+                if (player != null)
+                {
+                    psi = new ProcessStartInfo
+                    {
+                        FileName = player,
+                        Arguments = $"\"{path}\"",
+                        CreateNoWindow = true,
+                        UseShellExecute = false
+                    };
+                }
+            }
+            else if (OperatingSystem.IsWindows())
+            {
+                psi = new ProcessStartInfo
+                {
+                    FileName = "powershell",
+                    Arguments = $"-NoProfile -NonInteractive -Command \"(New-Object Media.SoundPlayer '{path}').PlaySync()\"",
+                    CreateNoWindow = true,
+                    UseShellExecute = false
+                };
+            }
 
+            if (psi != null)
+            {
+                using var process = Process.Start(psi);
                 if (process != null)
                 {
                     while (!process.WaitForExit(100))
                     {
                         if (token.IsCancellationRequested)
                         {
-                            process.Kill();
+                            try { process.Kill(); } catch { }
                             break;
                         }
                     }
@@ -131,8 +160,19 @@ public class BinauralDemoAudioPlayer : IDisposable
         }
         catch (Exception ex)
         {
-            Log.Warning(ex, "BinauralDemoAudioPlayer: afplay failed");
+            Log.Warning(ex, "BinauralDemoAudioPlayer: playback failed");
         }
+    }
+
+    private static string? FindLinuxAudioPlayer()
+    {
+        string[] candidates = ["pw-play", "paplay", "aplay"];
+        foreach (var cmd in candidates)
+        {
+            if (File.Exists($"/usr/bin/{cmd}") || File.Exists($"/usr/sbin/{cmd}") || File.Exists($"/bin/{cmd}"))
+                return cmd;
+        }
+        return "pw-play";
     }
 
     private static void GenerateSpatialChimeWav(string filePath, float yawDegrees)

@@ -26,7 +26,7 @@ public sealed class SpatialSystemAudioStreamer : ReactiveObject, IDisposable
 
     private const int SampleRate = 44100;
     private readonly SpatialAudioDspEngine _dspEngine = new(SampleRate);
-    private MacOsSpatialAudioCapture? _capture;
+    private ISpatialAudioCapture? _capture;
     private ISpatialAudioSink? _sink;
     private const int RingBufferSize = 32768;
     private readonly float[] _ringBuffer = new float[RingBufferSize];
@@ -82,14 +82,11 @@ public sealed class SpatialSystemAudioStreamer : ReactiveObject, IDisposable
                 _availableSamples = 0;
             }
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                _sink = SpatialAudioSinkFactory.Create(SampleRate);
-                _sink.Start(OnProvideAudioSamples);
+            _sink = SpatialAudioSinkFactory.Create(SampleRate);
+            _sink.Start(OnProvideAudioSamples);
 
-                _capture = new MacOsSpatialAudioCapture(SampleRate);
-                _capture.Start(OnAudioCaptured);
-            }
+            _capture = SpatialAudioCaptureFactory.Create(SampleRate);
+            _capture?.Start(OnAudioCaptured);
 
             IsActive = true;
         }

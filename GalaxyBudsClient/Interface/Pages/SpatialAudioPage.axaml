@@ -275,6 +275,19 @@
                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                                    TextWrapping="Wrap" />
                     </StackPanel>
+
+                    <!-- Linux: Native PipeWire / PulseAudio Loopback Info -->
+                    <StackPanel Spacing="6" IsVisible="{Binding IsLinux}">
+                        <Separator Height="1" Background="{DynamicResource CardStrokeColorDefaultBrush}" Margin="0,4" />
+                        <StackPanel Orientation="Horizontal" Spacing="6">
+                            <fluent:SymbolIcon Symbol="CheckmarkCircle" FontSize="16" Foreground="SeaGreen" />
+                            <TextBlock Text="PipeWire / PulseAudio Native Loopback (Linux)" FontWeight="Medium" />
+                        </StackPanel>
+                        <TextBlock Text="Native real-time system audio capture via Linux audio monitor."
+                                   FontSize="12"
+                                   Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
                 </StackPanel>
             </Border>
 
