@@ -21,17 +21,17 @@ public class DeviceSelectStateConverter : IMultiValueConverter
 {
     public object? Convert(IList<object?> values, Type targetType, object? parameter, CultureInfo culture)
     {
-        if (values.Count < 2)
-            return null;
-
-        // If the first value is null, you likely can't compare anything, so pick a fallback:
-        if (values[0] is null)
-            return null;
-
-        if (values[0] is not Device device)
+        if (values.Count < 2 || values[0] is not Device device)
         {
-            // Instead of throwing, return a fallback
-            return null; 
+            // FACommandBarButton crashes on a null IconSource (FluentAvalonia 3.1.0),
+            // so the icon target must always receive a concrete icon.
+            return parameter is DeviceStateConverterTarget.Icon
+                ? new SymbolIconSource
+                {
+                    Symbol = Symbol.CheckboxUnchecked,
+                    IconVariant = IconVariant.Regular
+                }
+                : null;
         }
 
         var lastConnectedMac = values[1] as string;
