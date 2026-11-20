@@ -110,7 +110,6 @@ public class App : Application
         if (BluetoothImpl.HasValidDevice)
         {
             Task.Run(() => BluetoothImpl.Instance.ConnectAsync());
-            _ = TrayManager.Instance.RebuildAsync();
         }
         
         // Subscribe BEFORE MainWindow (and its page viewmodels) is constructed: handlers fire in
