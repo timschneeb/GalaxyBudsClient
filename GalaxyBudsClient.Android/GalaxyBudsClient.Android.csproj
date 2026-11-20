@@ -50,6 +50,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- AvaloniaUI.DiagnosticsSupport is pulled in transitively; keep it disabled on Android. -->
+    <RuntimeHostConfigurationOption Remove="Avalonia.Diagnostics.Diagnostic.IsEnabled" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="../GalaxyBudsClient/GalaxyBudsClient.csproj">
       <AdditionalProperties>IsAndroid=true</AdditionalProperties>
     </ProjectReference>

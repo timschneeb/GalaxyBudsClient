@@ -9,6 +9,12 @@ public class NavigationService
 {
     public static NavigationService Instance { get; } = new();
     public FAFrame? Frame { private get; set; }
+
+    internal void ClearFrame(FAFrame frame)
+    {
+        if (ReferenceEquals(Frame, frame))
+            Frame = null;
+    }
     
     /// <summary>
     /// Navigate by type of the view model attached to the page

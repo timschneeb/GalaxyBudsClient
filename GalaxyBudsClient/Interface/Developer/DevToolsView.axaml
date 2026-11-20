@@ -116,7 +116,7 @@
                                         Click="OpenMsgIdList_Click" />
                                 <AutoCompleteBox Name="SendMsgId"
                                                  HorizontalAlignment="Stretch"
-                                                 Watermark="Search message ID"
+                                                 PlaceholderText="Search message ID"
                                                  FilterMode="Contains"
                                                  MinimumPrefixLength="0"
                                                  MaxDropDownHeight="400" />

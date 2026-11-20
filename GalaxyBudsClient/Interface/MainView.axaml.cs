@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
@@ -28,6 +29,7 @@ public partial class MainView : UserControl
 
     private MainViewViewModel? ViewModel => DataContext as MainViewViewModel;
     private PageViewModelBase? CurrentPageViewModel { set; get; }
+    private bool _staticEventsSubscribed;
 
     private readonly MainPageViewModelBase[] _mainPages = [
         new WelcomePageViewModel(),
@@ -63,14 +65,6 @@ public partial class MainView : UserControl
         InitializeComponent();
         Instance = this;
         
-        Loc.LanguageUpdated += OnLanguageUpdated;
-        
-        var insetsManager = TopLevel.GetTopLevel(this)?.InsetsManager;
-        if (insetsManager != null && PlatformUtils.IsAndroid)
-        {
-            insetsManager.DisplayEdgeToEdgePreference = true;
-        }
-        
         var vm = new MainViewViewModel
         {
             VmResolver = ResolveViewModelByType
@@ -82,15 +76,60 @@ public partial class MainView : UserControl
         };
         DataContext = vm;
         FrameView.NavigationPageFactory = vm.NavigationFactory;
-        NavigationService.Instance.Frame = FrameView;
 
         InitializeNavigationPages();
         
-        Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
         FABreadcrumbBar.ItemClicked += OnBreadcrumbBarItemClicked;
         FrameView.Navigated += OnFrameViewNavigated;
         NavView.ItemInvoked += OnNavigationViewItemInvoked;
         NavView.BackRequested += OnNavigationViewBackRequested;
+    }
+
+    protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
+    {
+        base.OnAttachedToVisualTree(e);
+
+        Instance = this;
+        NavigationService.Instance.Frame = FrameView;
+        SubscribeStaticEvents();
+        OnLanguageUpdated();
+
+        var insetsManager = TopLevel.GetTopLevel(this)?.InsetsManager;
+        if (insetsManager != null && PlatformUtils.IsAndroid)
+        {
+            insetsManager.DisplayEdgeToEdgePreference = true;
+        }
+    }
+
+    protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
+    {
+        UnsubscribeStaticEvents();
+        NavigationService.Instance.ClearFrame(FrameView);
+
+        if (ReferenceEquals(Instance, this))
+            Instance = null;
+
+        base.OnDetachedFromVisualTree(e);
+    }
+
+    private void SubscribeStaticEvents()
+    {
+        if (_staticEventsSubscribed)
+            return;
+
+        Loc.LanguageUpdated += OnLanguageUpdated;
+        Settings.MainSettingsPropertyChanged += OnMainSettingsPropertyChanged;
+        _staticEventsSubscribed = true;
+    }
+
+    private void UnsubscribeStaticEvents()
+    {
+        if (!_staticEventsSubscribed)
+            return;
+
+        Loc.LanguageUpdated -= OnLanguageUpdated;
+        Settings.MainSettingsPropertyChanged -= OnMainSettingsPropertyChanged;
+        _staticEventsSubscribed = false;
     }
 
     private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -160,10 +199,10 @@ public partial class MainView : UserControl
 
         if (VisualRoot is FAAppWindow aw)
         {
-            // FA3 removed TitleBar.RightInset; reserve space for the window caption buttons.
-            // Windows draws min/max/close buttons (~46px each); other platforms place controls on the left.
-            var captionWidth = OperatingSystem.IsWindows() ? 138d : 0d;
-            TitleBarHost.ColumnDefinitions[1].Width = new GridLength(captionWidth, GridUnitType.Pixel);
+            // FA3 removed TitleBar.RightInset; use the window decoration margin so the
+            // reserved caption area follows the platform, DPI and current window state.
+            TitleBarHost.ColumnDefinitions[1].Width =
+                new GridLength(aw.WindowDecorationMargin.Right, GridUnitType.Pixel);
         }
     }
     

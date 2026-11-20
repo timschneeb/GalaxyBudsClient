@@ -19,6 +19,8 @@ using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Extensions;
 using Serilog;
+using Symbol = FluentIcons.Common.Symbol;
+using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
@@ -98,7 +100,7 @@ public partial class FirmwarePageViewModel : SubPageViewModelBase
         {
             Header = Strings.FwSelectDownloading,
             Buttons = [],
-            IconSource = new FASymbolIconSource { Symbol = FASymbol.Download },
+            IconSource = new SymbolIconSource { Symbol = Symbol.ArrowDownload },
             SubHeader = Strings.PleaseWait,
             XamlRoot = MainView.Instance,
             ShowProgressBar = true
