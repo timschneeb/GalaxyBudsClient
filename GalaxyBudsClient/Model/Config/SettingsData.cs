@@ -90,6 +90,9 @@ public class SettingsData : ReactiveObject
     public bool MinimizeToTray { get => _minimizeToTray; set => this.RaiseAndSetIfChanged(ref _minimizeToTray, value); }
     private DynamicTrayIconModes _dynamicTrayIconMode;
     public DynamicTrayIconModes DynamicTrayIconMode { get => _dynamicTrayIconMode; set => this.RaiseAndSetIfChanged(ref _dynamicTrayIconMode, value); }
+    /* Only used by the Flatpak build, which cannot read the autostart state back from the system */
+    private bool _flatpakAutoStartEnabled;
+    public bool FlatpakAutoStartEnabled { get => _flatpakAutoStartEnabled; set => this.RaiseAndSetIfChanged(ref _flatpakAutoStartEnabled, value); }
 
     /* Connection popup */
     private bool _popupEnabled;
