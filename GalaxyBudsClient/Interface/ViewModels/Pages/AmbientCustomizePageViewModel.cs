@@ -147,7 +147,16 @@ public partial class AmbientCustomizePageViewModel : SubPageViewModelBase
                 break;
             case Event.SetAmbientSoundVolume:
                 if (parameter is int level)
-                    AmbientSoundVolume = Math.Clamp(level, 0, MaximumAmbientSoundVolume);
+                {
+                    var clamped = Math.Clamp(level, 0, MaximumAmbientSoundVolume);
+                    var alreadySet = AmbientSoundVolume == clamped;
+                    AmbientSoundVolume = clamped;
+
+                    // D-Bus callers wait for an acknowledgement. If the value did not
+                    // change, no command would be sent, so force a refresh here.
+                    if (alreadySet)
+                        _ = BluetoothImpl.Instance.SendRequestAsync(MsgIds.AMBIENT_VOLUME, (byte)clamped);
+                }
                 break;
         }
     }

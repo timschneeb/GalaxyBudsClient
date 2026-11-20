@@ -185,7 +185,15 @@ public partial class NoiseControlPageViewModel : MainPageViewModelBase
                     break;
                 case Event.SetNoiseControlState:
                     if(arg is NoiseControlModes mode)
+                    {
+                        var alreadyInMode = NoiseControlMode == mode;
                         SetNoiseControlMode(mode);
+
+                        // D-Bus callers wait for an acknowledgement. If the flags did not
+                        // change, no command would be sent, so force a refresh here.
+                        if (alreadyInMode)
+                            SendNoiseControlState();
+                    }
                     break;
             }
         });
