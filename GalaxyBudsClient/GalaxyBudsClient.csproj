@@ -53,6 +53,10 @@
         <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <DisableWinExeOutputInference>false</DisableWinExeOutputInference>
+        <!-- Legacy self-extract mode is intentional: CS-Script's Roslyn evaluator (4.14.14) cannot
+             resolve references from in-memory single-file assemblies in self-contained publishes,
+             which would break user scripts/experiments. It also keeps native libraries bundled.
+             Revisit when CS-Script gains proper single-file support. -->
         <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
         <LangVersion>latest</LangVersion>
         
@@ -60,7 +64,8 @@
         <AnalysisLevel>latest</AnalysisLevel>
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
         <!-- WFO2000 is a WinForms designer analyzer; false positives on this Avalonia app with .NET 11 SDK -->
-        <NoWarn>$(NoWarn);WFO2000</NoWarn>
+        <!-- NETSDK1244: IncludeAllContentForSelfExtract legacy-mode warning; the mode is required (see above) -->
+        <NoWarn>$(NoWarn);WFO2000;NETSDK1244</NoWarn>
         
         <!-- Build configurations -->
         <Configurations>Debug;Release</Configurations>
