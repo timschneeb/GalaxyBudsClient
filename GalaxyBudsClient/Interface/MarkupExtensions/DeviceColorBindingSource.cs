@@ -43,8 +43,8 @@ public class DeviceColorBindingSource : MarkupExtension
             values.Insert(0, currentColor);
         }
 
-        // Set the initial value if no override is set
-        if (Settings.Data.ColorOverride == null)
+        // Replace overrides left over from a different model as well.
+        if (Settings.Data.ColorOverride == null || !values.Contains(Settings.Data.ColorOverride.Value))
         {
             Settings.Data.ColorOverride = currentColor;
         }
