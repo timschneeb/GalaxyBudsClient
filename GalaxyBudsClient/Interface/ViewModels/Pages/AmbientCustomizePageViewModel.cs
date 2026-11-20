@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using Avalonia.Controls;
 using GalaxyBudsClient.Generated.I18N;
 using GalaxyBudsClient.Interface.Pages;
@@ -143,6 +144,19 @@ public partial class AmbientCustomizePageViewModel : SubPageViewModelBase
                     }
                 }
                 EventDispatcher.Instance.Dispatch(Event.UpdateTrayIcon);
+                break;
+            case Event.SetAmbientSoundVolume:
+                if (parameter is int level)
+                {
+                    var clamped = Math.Clamp(level, 0, MaximumAmbientSoundVolume);
+                    var alreadySet = AmbientSoundVolume == clamped;
+                    AmbientSoundVolume = clamped;
+
+                    // D-Bus callers wait for an acknowledgement. If the value did not
+                    // change, no command would be sent, so force a refresh here.
+                    if (alreadySet)
+                        _ = BluetoothImpl.Instance.SendRequestAsync(MsgIds.AMBIENT_VOLUME, (byte)clamped);
+                }
                 break;
         }
     }
