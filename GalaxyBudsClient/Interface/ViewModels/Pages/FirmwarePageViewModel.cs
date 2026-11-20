@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -19,6 +19,8 @@ using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Extensions;
 using Serilog;
+using Symbol = FluentIcons.Common.Symbol;
+using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
 
@@ -94,16 +96,16 @@ public partial class FirmwarePageViewModel : SubPageViewModelBase
             return;
         }
         
-        var downloadDialog = new TaskDialog
+        var downloadDialog = new FATaskDialog
         {
             Header = Strings.FwSelectDownloading,
             Buttons = [],
-            IconSource = new SymbolIconSource { Symbol = Symbol.Download },
+            IconSource = new SymbolIconSource { Symbol = Symbol.ArrowDownload },
             SubHeader = Strings.PleaseWait,
             XamlRoot = MainView.Instance,
             ShowProgressBar = true
         };
-        downloadDialog.SetProgressBarState(0, TaskDialogProgressState.Indeterminate);
+        downloadDialog.SetProgressBarState(0, FATaskDialogProgressState.Indeterminate);
         _ = downloadDialog.ShowAsync(true);
         
         byte[] binary;

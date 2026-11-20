@@ -17,12 +17,12 @@ public partial class HiddenModeTerminalDialog : UserControl
     
     public static async Task OpenDialogAsync()
     {
-        var dialog = new ContentDialog
+        var dialog = new FAContentDialog
         {
             Title = Strings.HiddenModeTerminal,
             PrimaryButtonText = Strings.AtTerminalSend,
             CloseButtonText = Strings.WindowClose,
-            DefaultButton = ContentDialogButton.Primary
+            DefaultButton = FAContentDialogButton.Primary
         };
 
         var viewModel = new HiddenModeTerminalDialogViewModel();
@@ -35,7 +35,7 @@ public partial class HiddenModeTerminalDialog : UserControl
         await dialog.ShowAsync(TopLevel.GetTopLevel(MainView.Instance));
         dialog.PrimaryButtonClick -= OnPrimaryButtonClick;
 
-        void OnPrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        void OnPrimaryButtonClick(FAContentDialog sender, FAContentDialogButtonClickEventArgs args)
         {
             viewModel.DoSendCommand();
             args.Cancel = true;

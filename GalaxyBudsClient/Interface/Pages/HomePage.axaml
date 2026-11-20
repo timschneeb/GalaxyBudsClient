@@ -19,9 +19,9 @@
     <ScrollViewer>
         <StackPanel Spacing="8" Margin="{StaticResource AppPageMargin}">
             <controls:SettingsGroup>
-                <ui:SettingsExpanderItem>
+                <ui:FASettingsExpanderItem>
                     <controls:EarbudStatusUnit Margin="0, 30" />
-                </ui:SettingsExpanderItem>
+                </ui:FASettingsExpanderItem>
             </controls:SettingsGroup>
 
             <controls:SettingsGroup>

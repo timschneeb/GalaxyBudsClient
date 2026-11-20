@@ -5,22 +5,22 @@
     <StyleInclude Source="NavigationViewStyles.axaml" />
     <StyleInclude Source="SettingsGroupStyles.axaml" />
 
-    <!-- Workaround: large BreadcrumbBar font clips in FluentAvaloniaUI 2.4.x -->
-    <Style Selector="ui|BreadcrumbBarItem">
+    <!-- Workaround: large FABreadcrumbBar font clips in FluentAvaloniaUI 2.4.x -->
+    <Style Selector="ui|FABreadcrumbBarItem">
         <Setter Property="Height" Value="NaN" />
         <Setter Property="MinHeight" Value="48" />
         <Setter Property="ClipToBounds" Value="False" />
     </Style>
-    <Style Selector="ui|BreadcrumbBarItem /template/ TextBlock#TextLabel">
+    <Style Selector="ui|FABreadcrumbBarItem /template/ TextBlock#TextLabel">
         <Setter Property="Margin" Value="0,2,0,0" />
     </Style>
-    <Style Selector="ui|BreadcrumbBarItem /template/ TextBlock">
+    <Style Selector="ui|FABreadcrumbBarItem /template/ TextBlock">
         <Setter Property="LineHeight" Value="30" />
     </Style>
-    <Style Selector="ui|BreadcrumbBarItem:ellipsis">
+    <Style Selector="ui|FABreadcrumbBarItem:ellipsis">
         <Setter Property="IsVisible" Value="False" />
     </Style>
-    <Style Selector="ui|BreadcrumbBarItem:ellipsisDropDown">
+    <Style Selector="ui|FABreadcrumbBarItem:ellipsisDropDown">
         <Setter Property="IsVisible" Value="False" />
     </Style>
 

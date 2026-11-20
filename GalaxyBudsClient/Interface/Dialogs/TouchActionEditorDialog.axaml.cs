@@ -22,12 +22,12 @@ public partial class TouchActionEditorDialog : UserControl
         
     public static async Task<CustomAction?> OpenEditDialogAsync(CustomAction? action)
     {
-        var dialog = new ContentDialog
+        var dialog = new FAContentDialog
         {
             Title = Strings.CactHeader,
             PrimaryButtonText = Strings.Okay,
             CloseButtonText = Strings.Cancel,
-            DefaultButton = ContentDialogButton.Primary
+            DefaultButton = FAContentDialogButton.Primary
         };
 
         var viewModel = new TouchActionEditorDialogViewModel(action);
@@ -40,9 +40,9 @@ public partial class TouchActionEditorDialog : UserControl
         var result = await dialog.ShowAsync(TopLevel.GetTopLevel(MainView.Instance));
         dialog.PrimaryButtonClick -= OnPrimaryButtonClick;
             
-        return result == ContentDialogResult.None ? null : viewModel.Action;
+        return result == FAContentDialogResult.None ? null : viewModel.Action;
 
-        void OnPrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        void OnPrimaryButtonClick(FAContentDialog sender, FAContentDialogButtonClickEventArgs args)
         {
             args.Cancel = viewModel.Action == null;
         }

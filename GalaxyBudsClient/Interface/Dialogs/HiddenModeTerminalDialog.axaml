@@ -21,7 +21,7 @@
             <TextBlock Text="{ext:Translate {x:Static i18N:Keys.AtTerminalCmdId}}" />
             <AutoCompleteBox
                 Name="CmdId"
-                Watermark="{ext:Translate {x:Static i18N:Keys.AtTerminalCmdId}}" 
+                PlaceholderText="{ext:Translate {x:Static i18N:Keys.AtTerminalCmdId}}" 
                 MaxLength="4"
                 HorizontalAlignment="Stretch"
                 ValueMemberBinding="{Binding CmdId, DataType=ext:HiddenCmdBindingItem}"
@@ -38,7 +38,7 @@
         <StackPanel Spacing="10">
             <TextBlock Text="{ext:Translate {x:Static i18N:Keys.AtTerminalCmdParam}}" />
             <TextBox 
-                Watermark="{ext:Translate {x:Static i18N:Keys.AtTerminalCmdParam}}"
+                PlaceholderText="{ext:Translate {x:Static i18N:Keys.AtTerminalCmdParam}}"
                 Text="{Binding CommandParameter}"
                 HorizontalAlignment="Stretch" />
         </StackPanel>

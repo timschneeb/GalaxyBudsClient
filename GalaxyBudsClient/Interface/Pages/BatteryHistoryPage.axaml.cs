@@ -35,7 +35,7 @@ public partial class BatteryHistoryPage : BasePage<BatteryHistoryPageViewModel>
         base.OnInitialized();
     }
 
-    private void OnHintClosed(InfoBar sender, InfoBarClosedEventArgs args)
+    private void OnHintClosed(FAInfoBar sender, FAInfoBarClosedEventArgs args)
     {
         Settings.Data.IsBatteryHistoryHintHidden = true;
     }

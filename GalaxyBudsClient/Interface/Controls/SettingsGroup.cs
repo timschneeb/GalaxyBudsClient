@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Reactive.Linq;
 using Avalonia;
 using Avalonia.Controls;
 
 namespace GalaxyBudsClient.Interface.Controls;
 
 /// <summary>
-/// Similar to a SettingsExpander, but without the expander control
+/// Similar to a FASettingsExpander, but without the expander control
 /// </summary>
 public class SettingsGroup : ItemsControl
 {
