@@ -7,7 +7,7 @@ namespace GalaxyBudsClient.Platform.SpatialAudio;
 /// <summary>
 /// Low-latency macOS CoreAudio input capture for system audio loopback (e.g. BlackHole 2ch).
 /// </summary>
-public sealed unsafe class MacOsSpatialAudioCapture : IDisposable
+public sealed unsafe class MacOsSpatialAudioCapture : ISpatialAudioCapture
 {
     private const string AudioToolboxLib = "/System/Library/Frameworks/AudioToolbox.framework/AudioToolbox";
 

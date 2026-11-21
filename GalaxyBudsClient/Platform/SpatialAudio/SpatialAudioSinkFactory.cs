@@ -37,7 +37,12 @@ public static class SpatialAudioSinkFactory
             return new MacOsSpatialAudioSink(sampleRate);
         }
 
-        // Windows and Linux fallbacks
+        if (OperatingSystem.IsLinux())
+        {
+            return new LinuxSpatialAudioSink(sampleRate);
+        }
+
+        // Windows fallback
         return new NullSpatialAudioSink(sampleRate);
     }
 }

@@ -35,6 +35,7 @@ public partial class SpatialAudioPageViewModel : MainPageViewModelBase, IDisposa
 
     public bool IsMacOs => System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX);
     public bool IsWindows => System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows);
+    public bool IsLinux => System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux);
 
     public SpatialAudioPageViewModel()
     {
