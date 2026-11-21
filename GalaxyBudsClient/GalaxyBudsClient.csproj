@@ -145,7 +145,7 @@
         <PackageReference Include="Serilog.Sinks.Trace" Version="4.0.0" />
         <!-- Workaround: force include SkiaSharp 3.x libraries for Linux; this is already implicitly the case for other platforms -->
         <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="3.119.4" />
-        <PackageReference Include="Tmds.DBus" Version="0.21.2" />
+        <PackageReference Include="Tmds.DBus" Version="0.95.2" />
     </ItemGroup>
 
 
