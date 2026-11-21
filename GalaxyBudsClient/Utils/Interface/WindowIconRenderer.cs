@@ -81,9 +81,12 @@ public static class WindowIconRenderer
             ctx.PushRenderOptions(new RenderOptions
             {
                 BitmapInterpolationMode = BitmapInterpolationMode.HighQuality,
-                TextRenderingMode = TextRenderingMode.Antialias,
                 EdgeMode = EdgeMode.Antialias,
                 RequiresFullOpacityHandling = true
+            });
+            ctx.PushTextOptions(new TextOptions
+            {
+                TextRenderingMode = TextRenderingMode.Antialias
             });
 
 

@@ -8,7 +8,7 @@ namespace GalaxyBudsClient.Interface.MarkupExtensions;
 
 public class DeviceStateBindingExtension : MarkupExtension
 {
-    public required IBinding DeviceBinding { get; set; }
+    public required BindingBase DeviceBinding { get; set; }
     public required DeviceStateConverterTarget Target { get; set; }
     
     public override object ProvideValue(IServiceProvider serviceProvider)

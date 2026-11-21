@@ -14,12 +14,12 @@ public class MessageBox
 
     public async Task ShowAsync(Visual? host = null)
     {
-        var cd = new ContentDialog
+        var cd = new FAContentDialog
         {
             Title = Title,
             Content = Description,
             CloseButtonText = ButtonText,
-            DefaultButton = ContentDialogButton.Close
+            DefaultButton = FAContentDialogButton.Close
         };
 
         await cd.ShowAsync(TopLevel.GetTopLevel(MainView.Instance));

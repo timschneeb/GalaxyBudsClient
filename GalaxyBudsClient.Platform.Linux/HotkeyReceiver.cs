@@ -7,6 +7,7 @@ using GalaxyBudsClient.Platform.Model;
 using Serilog;
 using SharpHook;
 using SharpHook.Data;
+using SharpHook.Providers;
 
 namespace GalaxyBudsClient.Platform.Linux;
 
@@ -17,22 +18,32 @@ public class HotkeyReceiver : IHotkeyReceiver
     private readonly List<IHotkey> _hotkeys = [];
     private readonly Dictionary<ushort, KeyCode> _pressedKeys = new();
         
-    private readonly Task? _hookTask;
+    private Task? _hookTask;
     private readonly TaskPoolGlobalHook _hook;
         
     public HotkeyReceiver()
     {
-        _hook = new TaskPoolGlobalHook(2, GlobalHookType.All, null, true);
+        // KeyTyped events make libuiohook open and close an X input method (XOpenIM/XCreateIC) for every
+        // key event system-wide, which spikes CPU and leaks memory in IBus. Only press/release are needed here.
+        UioHookProvider.Instance.KeyTypedEnabled = false;
+        
+        _hook = new TaskPoolGlobalHook(2, GlobalHookType.Keyboard, null, true);
         _hook.KeyPressed += OnKeyPressed;
         _hook.KeyReleased += OnKeyReleased;
-            
+    }
+
+    // Only start the global hook once a hotkey is actually registered
+    private void EnsureHookRunning()
+    {
+        if (_hookTask != null)
+            return;
+        
         try
         {
             _hookTask = _hook.RunAsync();
         }
         catch (Exception ex)
         {
-            _hookTask = null;
             Log.Error(ex, "Linux.HotkeyReceiver: Failed to start hook");
         }
     }
@@ -93,6 +104,7 @@ public class HotkeyReceiver : IHotkeyReceiver
     public async Task RegisterHotkeyAsync(IHotkey hotkey)
     {
         _hotkeys.Add(hotkey);
+        EnsureHookRunning();
         Log.Debug("Hotkey successfully registered ({Name})", hotkey);
         await Task.CompletedTask;
     }

@@ -13,7 +13,7 @@ using GalaxyBudsClient.Model.Constants;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 
-public class DumpImportDialog : ContentDialog
+public class DumpImportDialog : FAContentDialog
 {
     private readonly ComboBox _comboBox;
     private readonly CheckBox _replayCheckBox;
@@ -25,12 +25,12 @@ public class DumpImportDialog : ContentDialog
         Title = "Choose model for dump...";
         PrimaryButtonText = Strings.Okay;
         CloseButtonText = Strings.Cancel;
-        DefaultButton = ContentDialogButton.Primary;
+        DefaultButton = FAContentDialogButton.Primary;
         
         _comboBox = new ComboBox
         {
             ItemsSource = (IEnumerable?)new ModelsBindingSource().ProvideValue(null!),
-            DisplayMemberBinding = new CompiledBindingExtension(new CompiledBindingPathBuilder().TypeCast<object>().Build())
+            DisplayMemberBinding = new Avalonia.Data.ReflectionBinding(".")
             {
                 Converter = new ModelNameConverter()
             },
@@ -54,13 +54,13 @@ public class DumpImportDialog : ContentDialog
         };
     }
 
-    protected override Type StyleKeyOverride => typeof(ContentDialog);
+    protected override Type StyleKeyOverride => typeof(FAContentDialog);
     
 
     public async Task<DumpImportDialogResult?> OpenDialogAsync(TopLevel? host = null)
     {
         var result = await ShowAsync(host);
-        return result == ContentDialogResult.None || 
+        return result == FAContentDialogResult.None || 
                _comboBox.SelectedItem is not Models selection || 
                selection == Models.NULL ? null : 
             new DumpImportDialogResult(selection, _replayCheckBox.IsChecked ?? false);

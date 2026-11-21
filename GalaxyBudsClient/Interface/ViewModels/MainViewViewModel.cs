@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using Avalonia.Controls;
 using FluentAvalonia.UI.Controls;
@@ -56,7 +56,7 @@ public partial class MainViewViewModel : ViewModelBase
     ];
 }
 
-public class NavigationFactory(MainViewViewModel owner) : INavigationPageFactory
+public class NavigationFactory(MainViewViewModel owner) : IFANavigationPageFactory
 {
     private MainViewViewModel Owner { get; } = owner;
 

@@ -76,9 +76,16 @@ void deallocHotkeySim(HotkeySimImpl *self) {
 void simulateHotKey(HotkeySimImpl *self, uint keyCode, bool down, bool maskCmd, bool maskOpt, bool maskCtrl, bool maskShft) {
     if ([HotkeyManager submitMediaKeyIfPossibleWithKey:keyCode down:down]) return;
     NSInteger newKc = [HotkeyManager convertWin32KeysToCarbonWithKey:keyCode];
-    if (newKc == 0) {
-        NSLog(@"Invalid keyCode %u converted to 0", keyCode);
+    // Carbon key code 0 is valid (A on a US keyboard).
+    if (newKc < 0) {
+        NSLog(@"Invalid keyCode %u", keyCode);
         return;
+    }
+    if (@available(macOS 10.15, *)) {
+        if (!CGPreflightPostEventAccess() && !CGRequestPostEventAccess()) {
+            NSLog(@"Keyboard shortcuts require Accessibility permission. Enable Galaxy Buds Manager in System Settings > Privacy & Security > Accessibility.");
+            return;
+        }
     }
     CGEventRef event = CGEventCreateKeyboardEvent(self->src, newKc, down);
     CGEventFlags flags = 0;

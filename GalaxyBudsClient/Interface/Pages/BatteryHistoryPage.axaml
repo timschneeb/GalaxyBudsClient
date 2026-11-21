@@ -98,21 +98,21 @@
                 </Button.Flyout>
             </DropDownButton>
 
-            <ui:TeachingTip Name="OverlayTip"
+            <ui:FATeachingTip Name="OverlayTip"
                             IsLightDismissEnabled="True"
                             TailVisibility="Collapsed"
                             Target="{Binding #HelpButton}"
                             Title="{ext:Translate {x:Static i18N:Keys.BattHistOverlayTipTitle}}"
                             Subtitle="{ext:Translate {x:Static i18N:Keys.BattHistOverlayTip}}" />
             
-            <ui:TeachingTip Name="ControlsTip"
+            <ui:FATeachingTip Name="ControlsTip"
                             IsLightDismissEnabled="True"
                             TailVisibility="Collapsed"
                             Target="{Binding #HelpButton}"
                             Title="{ext:Translate {x:Static i18N:Keys.BattHistControlTipTitle}}"
                             Subtitle="{ext:Translate {x:Static i18N:Keys.BattHistControlTip}}" />
             
-            <ui:TeachingTip Name="ToolsTip"
+            <ui:FATeachingTip Name="ToolsTip"
                             IsLightDismissEnabled="True"
                             TailVisibility="Collapsed"
                             Target="{Binding #HelpButton}"
@@ -134,7 +134,7 @@
                      IsIndeterminate="True"
                      IsVisible="{Binding IsPlotLoading}"/>
         <!-- TODO reintroduce progress ring after upgrading FluentAvalonia
-        <ui:ProgressRing IsVisible="{Binding IsPlotLoading}"
+        <ui:FAProgressRing IsVisible="{Binding IsPlotLoading}"
                          Grid.Row="3" />
                          -->
 

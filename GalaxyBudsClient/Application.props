@@ -10,6 +10,8 @@
 
     <PropertyGroup>
         <!-- Global dependency versions -->
-        <AvaloniaVersion>11.3.9</AvaloniaVersion>
+        <AvaloniaVersion>12.1.6</AvaloniaVersion>
+        <!-- DataGrid releases lag behind core Avalonia; pin separately -->
+        <AvaloniaDataGridVersion>12.1.2</AvaloniaDataGridVersion>
     </PropertyGroup>
 </Project>

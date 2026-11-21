@@ -60,10 +60,10 @@
                                              Click="OnManageDevicesClicked" />
             </controls:SettingsGroup>
 
-            <ui:SettingsExpander Header="{ext:Translate {x:Static i18N:Keys.SettingsAppearance}}" IsExpanded="True">
-                <ui:SettingsExpander.IconSource>
+            <ui:FASettingsExpander Header="{ext:Translate {x:Static i18N:Keys.SettingsAppearance}}" IsExpanded="True">
+                <ui:FASettingsExpander.IconSource>
                     <ic:SymbolIconSource Symbol="PaintBrush" />
-                </ui:SettingsExpander.IconSource>
+                </ui:FASettingsExpander.IconSource>
 
                 <controls:SettingsComboBoxItem Name="AppTheme"
                                                Content="{ext:Translate {x:Static i18N:Keys.SettingsDarkmode}}"
@@ -121,14 +121,14 @@
                                              Symbol="LayoutColumnOneThirdLeft"
                                              IsChecked="{Binding ShowSidebar, Source={x:Static config:Settings.Data}}" />
 
-            </ui:SettingsExpander>
+            </ui:FASettingsExpander>
 
-            <ui:SettingsExpander Header="{ext:Translate {x:Static i18N:Keys.SettingsTraySettings}}"
+            <ui:FASettingsExpander Header="{ext:Translate {x:Static i18N:Keys.SettingsTraySettings}}"
                                  IsExpanded="True"
                                  IsVisible="{x:Static platform:PlatformUtils.SupportsTrayIcon}">
-                <ui:SettingsExpander.IconSource>
+                <ui:FASettingsExpander.IconSource>
                     <ic:SymbolIconSource Symbol="ChatSettings" />
-                </ui:SettingsExpander.IconSource>
+                </ui:FASettingsExpander.IconSource>
 
                 <controls:SettingsSwitchItem
                     Name="TrayIcon"
@@ -157,13 +157,13 @@
                     IsChecked="{Binding IsAutoStartEnabled}"
                     IsVisible="{x:Static platform:PlatformUtils.SupportsAutoboot}" />
 
-            </ui:SettingsExpander>
+            </ui:FASettingsExpander>
 
 
-            <ui:SettingsExpander Header="{ext:Translate {x:Static i18N:Keys.SettingsConnpopup}}">
-                <ui:SettingsExpander.IconSource>
+            <ui:FASettingsExpander Header="{ext:Translate {x:Static i18N:Keys.SettingsConnpopup}}">
+                <ui:FASettingsExpander.IconSource>
                     <ic:SymbolIconSource Symbol="Badge" />
-                </ui:SettingsExpander.IconSource>
+                </ui:FASettingsExpander.IconSource>
 
                 <Interaction.Behaviors>
                     <ext:RequiresDesktopBehavior />
@@ -201,14 +201,14 @@
                     </Interaction.Behaviors>
 
                 </controls:SettingsSymbolItem>
-            </ui:SettingsExpander>
+            </ui:FASettingsExpander>
 
 
-            <ui:SettingsExpander Header="{ext:Translate {x:Static i18N:Keys.SettingsMultipointHeader}}"
+            <ui:FASettingsExpander Header="{ext:Translate {x:Static i18N:Keys.SettingsMultipointHeader}}"
                                  IsVisible="{Binding IsMultipointSupported}">
-                <ui:SettingsExpander.IconSource>
+                <ui:FASettingsExpander.IconSource>
                     <ic:SymbolIconSource Symbol="LinkMultiple" />
-                </ui:SettingsExpander.IconSource>
+                </ui:FASettingsExpander.IconSource>
 
                 <controls:SettingsSwitchItem
                     Content="{ext:Translate {x:Static i18N:Keys.SettingsMultipointAuto}}"
@@ -222,13 +222,13 @@
                                              IsClickEnabled="True"
                                              IsEnabled="{Binding CanApplyMultipoint}"
                                              Click="OnApplyMultipointClicked" />
-            </ui:SettingsExpander>
+            </ui:FASettingsExpander>
 
 
-            <ui:SettingsExpander Header="{ext:Translate {x:Static i18N:Keys.SettingsCrowdsourcing}}">
-                <ui:SettingsExpander.IconSource>
+            <ui:FASettingsExpander Header="{ext:Translate {x:Static i18N:Keys.SettingsCrowdsourcing}}">
+                <ui:FASettingsExpander.IconSource>
                     <ic:SymbolIconSource Symbol="Lightbulb" />
-                </ui:SettingsExpander.IconSource>
+                </ui:FASettingsExpander.IconSource>
                 
                 <controls:SettingsSwitchItem
                     Content="{ext:Translate {x:Static i18N:Keys.SettingsCrowdAllow}}"
@@ -244,13 +244,13 @@
                     Description="{ext:Translate {x:Static i18N:Keys.SettingsCrowdCrashreportDescription}}"
                     IsChecked="{Binding !DisableCrashReporting, Source={x:Static config:Settings.Data}}" />
 
-            </ui:SettingsExpander>
+            </ui:FASettingsExpander>
 
 
-            <ui:SettingsExpander Header="{ext:Translate {x:Static i18N:Keys.CreditsHeader}}">
-                <ui:SettingsExpander.IconSource>
+            <ui:FASettingsExpander Header="{ext:Translate {x:Static i18N:Keys.CreditsHeader}}">
+                <ui:FASettingsExpander.IconSource>
                     <ic:SymbolIconSource Symbol="PeopleTeam" />
-                </ui:SettingsExpander.IconSource>
+                </ui:FASettingsExpander.IconSource>
 
                 <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.CreditsGithub}}"
                                              ActionIconSource="Open"
@@ -268,9 +268,9 @@
                                              Description="{StaticResource ContributorCreditsString}" />
                 <controls:SettingsSymbolItem Content="{ext:Translate {x:Static i18N:Keys.CreditsTranslator}}"
                                              Description="{StaticResource TranslatorCreditsString}" />
-            </ui:SettingsExpander>
+            </ui:FASettingsExpander>
 
-            <ui:SettingsExpander Name="DevSettings"
+            <ui:FASettingsExpander Name="DevSettings"
                                  Header="{ext:Translate {x:Static i18N:Keys.SettingsDevmode}}"
                                  Description="{ext:Translate {x:Static i18N:Keys.SettingsDevmodeDescription}}"
                                  ActionIconSource="Open"
@@ -279,12 +279,12 @@
                     <ext:RequiresDesktopBehavior />
                 </Interaction.Behaviors>
                 
-                <ui:SettingsExpander.IconSource>
+                <ui:FASettingsExpander.IconSource>
                     <ic:SymbolIconSource Symbol="Beaker" />
-                </ui:SettingsExpander.IconSource>
-            </ui:SettingsExpander>
+                </ui:FASettingsExpander.IconSource>
+            </ui:FASettingsExpander>
             
-            <ui:SettingsExpander Header="{ext:Translate {x:Static i18N:Keys.CreditsSponsor}}"
+            <ui:FASettingsExpander Header="{ext:Translate {x:Static i18N:Keys.CreditsSponsor}}"
                                  Description="{ext:Translate {x:Static i18N:Keys.CreditsKofi}}"
                                  ActionIconSource="Open"
                                  IsClickEnabled="True">
@@ -295,10 +295,10 @@
                     </EventTriggerBehavior>
                 </Interaction.Behaviors>
 
-                <ui:SettingsExpander.IconSource>
+                <ui:FASettingsExpander.IconSource>
                     <ic:SymbolIconSource Symbol="Heart" />
-                </ui:SettingsExpander.IconSource>
-            </ui:SettingsExpander>
+                </ui:FASettingsExpander.IconSource>
+            </ui:FASettingsExpander>
 
         </StackPanel>
     </ScrollViewer>

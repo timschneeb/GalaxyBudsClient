@@ -232,7 +232,8 @@ public partial class NoiseControlPageViewModel : MainPageViewModelBase
                         // Assignments inside SetNoiseControlMode each fire
                         // PropertyChanged, which would emit an intermediate
                         // mode (e.g. Off before Adaptive). Suppress them and
-                        // send the final state exactly once.
+                        // send the final state exactly once. This also refreshes
+                        // the state for D-Bus callers when nothing changed.
                         _suppressorCounter++;
                         SetNoiseControlMode(mode);
                         _suppressorCounter--;

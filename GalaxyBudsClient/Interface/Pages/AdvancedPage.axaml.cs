@@ -13,12 +13,12 @@ public partial class AdvancedPage : BasePage<AdvancedPageViewModel>
     public AdvancedPage()
     {
         InitializeComponent();
-        AddHandler(SettingsExpanderItem.ClickEvent, OnSettingsItemClicked);
+        AddHandler(FASettingsExpanderItem.ClickEvent, OnSettingsItemClicked);
     }
 
     private async void OnSettingsItemClicked(object? sender, RoutedEventArgs e)
     {
-        if (e.Source is not SettingsExpanderItem item)
+        if (e.Source is not FASettingsExpanderItem item)
             return;
 
         if (!_restrictedItems.Contains(item.Name) ||

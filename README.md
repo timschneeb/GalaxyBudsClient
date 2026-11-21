@@ -73,7 +73,7 @@ Download the Android mobile version here (paid):
 
 ### Flatpak
 
-Universal binary packages for all Linux distributions. The Flatpak version does not support autostart unless it is set up manually. You can use `galaxybudsclient /StartMinimized` to launch the app silently during startup.
+Universal binary packages for all Linux distributions. Autostart can be enabled in the app under Settings > Launch on boot. To set it up manually instead, use `flatpak run me.timschneeberger.GalaxyBudsClient /StartMinimized` to launch the app silently during startup.
 
 Available for download on FlatHub: https://flathub.org/apps/me.timschneeberger.GalaxyBudsClient
 ```
@@ -176,6 +176,7 @@ If you want to contribute your own code, you can simply submit a plain pull requ
 * [@domroaft](https://github.com/domroaft) - Hungarian translation
 * [@lampi8426](https://github.com/lampi8426) - Dutch translation
 * [@bluday](https://github.com/bluday) - Swedish translation
+* [@i3BSKA](https://github.com/i3BSKA) - Arabic translation
 
 ### Services
 

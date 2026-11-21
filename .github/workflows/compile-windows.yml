@@ -2,7 +2,7 @@ name: Compile Windows binaries
 
 on:
   push:
-    branches: [ master, NET10 ]
+    branches: [ master, NET11 ]
   pull_request:
     branches: [ master ]
   release:
@@ -16,16 +16,16 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     - name: Setup .NET
-      uses: actions/setup-dotnet@v5
+      uses: actions/setup-dotnet@v6
       with:
         global-json-file: global.json
        
     - name: Restore dependencies
       run: dotnet restore -r win-x64 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build x64
-      run: dotnet publish -f net10.0-windows10.0.19041 -r win-x64 -o bin_win64 -c Release -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -f net11.0-windows10.0.26100 -r win-x64 -o bin_win64 -c Release -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
     #- name: Sign executable
     #  uses: GabrielAcostaEngler/signtool-code-sign@v1.0.2
@@ -37,7 +37,7 @@ jobs:
     #    timestamp-server: http://timestamp.digicert.com
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: GalaxyBudsClient_win64_portable
         path: bin_win64/
@@ -46,19 +46,19 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     - name: Setup .NET
-      uses: actions/setup-dotnet@v5
+      uses: actions/setup-dotnet@v6
       with:
         global-json-file: global.json
        
     - name: Restore dependencies
       run: dotnet restore -r win-x86 --configfile GalaxyBudsClient/nuget.config GalaxyBudsClient/GalaxyBudsClient.csproj
     - name: Build x86
-      run: dotnet publish -f net10.0-windows10.0.19041 -r win-x86 -o bin_win32 -c Release -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
+      run: dotnet publish -f net11.0-windows10.0.26100 -r win-x86 -o bin_win32 -c Release -p:PublishSingleFile=true --self-contained true --no-restore GalaxyBudsClient/GalaxyBudsClient.csproj
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: GalaxyBudsClient_win32_portable
         path: bin_win32/
@@ -69,19 +69,19 @@ jobs:
     needs: [build-x64, build-x86]
         
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
 
     - name: Install NSIS
       run: choco install nsis -y --no-progress
 
     - name: Prepare version information (1/3)
-      uses: oprypin/find-latest-tag@v1.1.2
+      uses: oprypin/find-latest-tag@v1.1.3
       with:
         repository: timschneeb/GalaxyBudsClient
         releases-only: true
       id: last_release  
     - name: Prepare version information (2/3)
-      uses: benjlevesque/short-sha@v3.0
+      uses: benjlevesque/short-sha@v4.0
       id: short-sha
       with:
         length: 6
@@ -92,7 +92,7 @@ jobs:
       
     # Make x64 installer
     - name: Download artifact (x64)
-      uses: actions/download-artifact@v7
+      uses: actions/download-artifact@v8
       with:
         name: GalaxyBudsClient_win64_portable
         
@@ -115,7 +115,7 @@ jobs:
     #    timestamp-server: http://timestamp.digicert.com
 
     - name: Upload artifact (x64)
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
         path: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
@@ -125,7 +125,7 @@ jobs:
 
     # Make x86 installer
     - name: Download artifact (x86)
-      uses: actions/download-artifact@v7
+      uses: actions/download-artifact@v8
       with:
         name: GalaxyBudsClient_win32_portable
         
@@ -148,7 +148,7 @@ jobs:
     #    timestamp-server: http://timestamp.digicert.com
 
     - name: Upload artifact (x86)
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: GalaxyBudsClient_Setup_32bit_${{steps.version.outputs.version}}.exe
         path: GalaxyBudsClient_Setup_32bit_${{steps.version.outputs.version}}.exe
@@ -160,14 +160,14 @@ jobs:
     
     steps:
     - name: Prepare version information (1/3)
-      uses: oprypin/find-latest-tag@v1.1.2
+      uses: oprypin/find-latest-tag@v1.1.3
       with:
         repository: timschneeb/GalaxyBudsClient
         releases-only: true
       id: last_release  
       
     - name: Prepare version information (2/3)
-      uses: benjlevesque/short-sha@v3.0
+      uses: benjlevesque/short-sha@v4.0
       id: short-sha
       with:
         length: 6
@@ -177,12 +177,12 @@ jobs:
       id: version
       
     - name: Download setup artifact (x64)
-      uses: actions/download-artifact@v7
+      uses: actions/download-artifact@v8
       with:
         name: GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe
 
     - name: Download portable artifact (x64)
-      uses: actions/download-artifact@v7
+      uses: actions/download-artifact@v8
       with:
         name: GalaxyBudsClient_win64_portable
 
@@ -191,7 +191,7 @@ jobs:
         ren GalaxyBudsClient_Setup_64bit_${{steps.version.outputs.version}}.exe GalaxyBudsClient_Windows_64bit_Setup.exe
         ren GalaxyBudsClient.exe GalaxyBudsClient_Windows_64bit_Portable.exe
 
-    - uses: AButler/upload-release-assets@v3.0.1
+    - uses: AButler/upload-release-assets@v4.0.0
       with:
         files: '*.exe'
         repo-token: ${{ secrets.GH_TOKEN }}
@@ -203,14 +203,14 @@ jobs:
 
     steps:
     - name: Prepare version information (1/2)
-      uses: oprypin/find-latest-tag@v1.1.2
+      uses: oprypin/find-latest-tag@v1.1.3
       with:
         repository: timschneeb/GalaxyBudsClient
         releases-only: true
       id: last_release  
       
     - name: Prepare version information (2/2)
-      uses: benjlevesque/short-sha@v3.0
+      uses: benjlevesque/short-sha@v4.0
       id: short-sha
       with:
         length: 6
