@@ -161,6 +161,16 @@
                 </controls:SettingsSwitchItem>
 
                 <controls:SettingsSwitchItem
+                    Content="{ext:Translate {x:Static i18N:Keys.TouchpadGestureSwipe}}"
+                    Description="{ext:Translate {x:Static i18N:Keys.TouchpadGestureSwipeDesc}}"
+                    Symbol="ArrowBidirectionalUpDown"
+                    IsChecked="{Binding IsSwipeGestureEnabled}">
+                    <Interaction.Behaviors>
+                        <ext:RequiresFeatureBehavior Feature="AdvancedTouchLockSwipe" />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
+
+                <controls:SettingsSwitchItem
                     Content="{ext:Translate {x:Static i18N:Keys.TouchpadGestureDoubleForCall}}"
                     Description="{ext:Translate {x:Static i18N:Keys.TouchpadGestureDoubleForCallDesc}}"
                     Symbol="CallInbound"

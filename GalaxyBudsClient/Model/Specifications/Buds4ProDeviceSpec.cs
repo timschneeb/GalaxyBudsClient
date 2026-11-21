@@ -39,6 +39,7 @@ public class Buds4ProDeviceSpec : IDeviceSpec
         { Features.DebugSku, null },
         { Features.AdvancedTouchLock, null },
         { Features.AdvancedTouchLockForCalls, null },
+        { Features.AdvancedTouchLockSwipe, null },
         { Features.FmgRingWhileWearing, null },
         { Features.CallPathControl, null },
         { Features.ChargingState, null },

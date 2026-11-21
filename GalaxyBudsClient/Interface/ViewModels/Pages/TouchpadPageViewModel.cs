@@ -18,6 +18,7 @@ using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Specifications;
 using GalaxyBudsClient.Platform;
 using GalaxyBudsClient.Utils.Interface;
+using ReactiveUI;
 using Serilog;
 
 namespace GalaxyBudsClient.Interface.ViewModels.Pages;
@@ -32,11 +33,20 @@ public partial class TouchpadPageViewModel : MainPageViewModelBase
         SppMessageReceiver.Instance.AcknowledgementResponse += (_, ack) =>
         {
             if (ack.Id == MsgIds.LOCK_TOUCHPAD &&
-                ack.Parameters is LockTouchpadAckParameter { Lighting: not null } param)
+                ack.Parameters is LockTouchpadAckParameter param)
             {
-                // Cache the device-reported lighting style so the trailing
-                // "earbuds control" byte can be echoed back unmodified
-                _lightingStyle = param.Lighting.Value;
+                // Cache the device-reported trailing bytes so they can be
+                // echoed back unmodified. Both are authoritative here; the
+                // ESU does not report the lighting style.
+                if (param.Lighting is { } lighting)
+                {
+                    _lightingStyle = lighting;
+                }
+
+                if (param.QuickLaunchAdvanced is { } quickLaunch)
+                {
+                    _quickLaunchAdvanced = quickLaunch;
+                }
             }
         };
         Settings.TouchActionPropertyChanged += (_, _) => UpdateEditStates();
@@ -51,6 +61,7 @@ public partial class TouchpadPageViewModel : MainPageViewModelBase
     private void OnConnected(object? sender, EventArgs e)
     {
         UpdateTouchActions();
+        this.RaisePropertyChanged(nameof(NoiseControlCycleModeOptions));
     }
 
     private void OnLanguageUpdated()
@@ -71,7 +82,6 @@ public partial class TouchpadPageViewModel : MainPageViewModelBase
         }
         IsDoubleTapVolumeEnabled = e.OutsideDoubleTap;
         _quickLaunchAdvanced = e.QuickLaunchAdvanced;
-        _gestureEchoBits = e.GestureEchoBits;
 
         if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AdvancedTouchLock))
         {
@@ -79,6 +89,11 @@ public partial class TouchpadPageViewModel : MainPageViewModelBase
             IsDoubleTapGestureEnabled = e.DoubleTapOn;
             IsTripleTapGestureEnabled = e.TripleTapOn;
             IsHoldGestureEnabled = e.TouchHoldOn;
+
+            if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AdvancedTouchLockSwipe))
+            {
+                IsSwipeGestureEnabled = e.SwipeOn;
+            }
 
             if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AdvancedTouchLockForCalls))
             {
@@ -119,6 +134,7 @@ public partial class TouchpadPageViewModel : MainPageViewModelBase
             case nameof(IsDoubleTapGestureForCallsEnabled):
             case nameof(IsTripleTapGestureEnabled):
             case nameof(IsHoldGestureEnabled):
+            case nameof(IsSwipeGestureEnabled):
             case nameof(IsHoldGestureForCallsEnabled):
             case nameof(IsTouchpadLocked):
                 if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.AdvancedTouchLock))
@@ -132,7 +148,7 @@ public partial class TouchpadPageViewModel : MainPageViewModelBase
                         HoldTapOn = IsHoldGestureEnabled,
                         DoubleTapCallOn = IsDoubleTapGestureForCallsEnabled,
                         HoldTapCallOn = IsHoldGestureForCallsEnabled,
-                        GestureEchoBits = _gestureEchoBits,
+                        SwipeOn = IsSwipeGestureEnabled,
                         Lighting = _lightingStyle,
                         QuickLaunchAdvanced = _quickLaunchAdvanced
                     });
@@ -148,13 +164,17 @@ public partial class TouchpadPageViewModel : MainPageViewModelBase
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.OUTSIDE_DOUBLE_TAP,
                     IsDoubleTapVolumeEnabled);
                 break;
-            case nameof(NoiseControlCycleMode) or nameof(NoiseControlCycleModeRight):
-                if (!IsValidCycleMode(NoiseControlCycleMode) ||
-                    (BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide) &&
-                     !IsValidCycleMode(NoiseControlCycleModeRight)))
+            case nameof(NoiseControlCycleMode):
+            case nameof(NoiseControlCycleModeRight):
+                // Only reject the side the user just changed. The other side
+                // is echoed back as-is, so a device state we do not offer in
+                // the dropdown must not block an otherwise valid change.
+                var changingRight = args.PropertyName == nameof(NoiseControlCycleModeRight) &&
+                                    BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControlModeDualSide);
+                if (!IsValidCycleMode(changingRight ? NoiseControlCycleModeRight : NoiseControlCycleMode))
                 {
                     Log.Warning("TouchpadPage: Not sending noise control cycle mode, " +
-                                "one or both sides are in an unsupported state " +
+                                "requested side is in an unsupported state " +
                                 "(left={Left}, right={Right})",
                         NoiseControlCycleMode, NoiseControlCycleModeRight);
                     break;
@@ -211,16 +231,14 @@ public partial class TouchpadPageViewModel : MainPageViewModelBase
 
     /// <summary>
     /// Maps the per-side noise control flags reported by the earbuds to a
-    /// <see cref="NoiseControlCycleModes"/> bitmask value. Returns
-    /// <see cref="NoiseControlCycleModes.Unknown"/> for configurations that
-    /// cycle through fewer than two modes.
+    /// <see cref="NoiseControlCycleModes"/> bitmask value. Unknown
+    /// combinations are preserved instead of being zeroed so that editing
+    /// one side does not overwrite the other.
     /// </summary>
     private static NoiseControlCycleModes ToCycleMode(bool anc, bool ambient, bool adaptive, bool off)
     {
         var mask = (anc ? 8 : 0) | (ambient ? 1 : 0) | (adaptive ? 2 : 0) | (off ? 4 : 0);
-        return System.Numerics.BitOperations.PopCount((uint)mask) >= 2
-            ? (NoiseControlCycleModes)mask
-            : NoiseControlCycleModes.Unknown;
+        return (NoiseControlCycleModes)mask;
     }
 
     /// <summary>
@@ -322,13 +340,14 @@ public partial class TouchpadPageViewModel : MainPageViewModelBase
     // Buds4 "earbuds control" trailing bytes; lighting is only reported in
     // acknowledgement responses, so the last known value is cached here.
     // 0x01 is the firmware default; sending 0 gets coerced back to 1 anyway.
+    // Quick launch defaults to enabled in the official app as well.
     private byte _lightingStyle = 0x01;
-    private byte _quickLaunchAdvanced;
-    private byte _gestureEchoBits;
+    private byte _quickLaunchAdvanced = 0x01;
     [Reactive] private bool _isSingleTapGestureEnabled;
     [Reactive] private bool _isDoubleTapGestureEnabled;
     [Reactive] private bool _isTripleTapGestureEnabled;
     [Reactive] private bool _isHoldGestureEnabled;
+    [Reactive] private bool _isSwipeGestureEnabled;
     [Reactive] private bool _isDoubleTapGestureForCallsEnabled;
     [Reactive] private bool _isHoldGestureForCallsEnabled;
     

@@ -194,14 +194,6 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
     public bool AdaptiveEqEnabled { get; init; }
     [Device(Models.Buds4, Selector.GreaterEqual)]
     public byte QuickLaunchAdvanced { get; init; }
-
-    /// <summary>
-    /// Buds4 only: the "earbuds control" mask bits for gestures without a
-    /// dedicated property (bits 0 and 6 - e.g. the volume swipe). These
-    /// must be echoed back unmodified when sending touch options.
-    /// </summary>
-    [Device(Models.Buds4, Selector.GreaterEqual)]
-    public byte GestureEchoBits { get; init; }
     
     /// <remarks>
     /// Important: The parameterless constructor must only be used for unit tests
@@ -345,23 +337,22 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                 {
                     if (TargetModel is Models.Buds4 or Models.Buds4Pro)
                     {
-                        // Buds4 bit layout (verified experimentally):
-                        // bit7 = single tap, bit3 = double tap, bit2 = triple tap,
-                        // bit1 = pinch and hold, bit4/5 = gestures during calls.
-                        // There is no lock flag. Bits 0 and 6 map to additional
-                        // gestures (e.g. volume swipe) and are only echoed back
-                        // when sending.
+                        // Buds4 layout, verified against the official Galaxy
+                        // Buds app: bit3 single tap, bit2 double tap, bit1
+                        // triple tap, bit0 pinch and hold, bit4/5 gestures
+                        // during calls, bit6 volume swipe, bit7 master switch.
+                        // There is no touchpad lock flag.
                         TouchpadLock = false;
-                        SingleTapOn = (msg.Payload[10] & (1 << 7)) == 128;
-                        DoubleTapOn = (msg.Payload[10] & (1 << 3)) == 8;
-                        TripleTapOn = (msg.Payload[10] & (1 << 2)) == 4;
-                        TouchHoldOn = (msg.Payload[10] & (1 << 1)) == 2;
-                        GestureEchoBits = (byte)(msg.Payload[10] & 0x41);
+                        SingleTapOn = (msg.Payload[10] & (1 << 3)) != 0;
+                        DoubleTapOn = (msg.Payload[10] & (1 << 2)) != 0;
+                        TripleTapOn = (msg.Payload[10] & (1 << 1)) != 0;
+                        TouchHoldOn = (msg.Payload[10] & (1 << 0)) != 0;
+                        SwipeOn = (msg.Payload[10] & (1 << 6)) != 0;
 
                         if (DeviceSpec.Supports(Features.AdvancedTouchLockForCalls))
                         {
-                            DoubleTapForCallOn = (msg.Payload[10] & (1 << 4)) == 16;
-                            TouchHoldOnForCallOn = (msg.Payload[10] & (1 << 5)) == 32;
+                            DoubleTapForCallOn = (msg.Payload[10] & (1 << 4)) != 0;
+                            TouchHoldOnForCallOn = (msg.Payload[10] & (1 << 5)) != 0;
                         }
                     }
                     else
@@ -704,8 +695,8 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                                 HotCommandEnabled = reader.ReadBoolean(); // [47]
                                 HotCommandLanguage = reader.ReadByte(); // [48]
                                 AdaptiveEqEnabled = reader.ReadByte() == 1; // [49]
-                                QuickLaunchAdvanced = reader.ReadByte(); // [50]
-                                AdaptiveVolumeEnabled = reader.ReadBoolean(); // [51]
+                                AdaptiveVolumeEnabled = reader.ReadBoolean(); // [50]
+                                QuickLaunchAdvanced = reader.ReadByte(); // [51]
                                 SirenDetect = reader.ReadBoolean(); // [52]
                                 AdaptSoundEnabled = reader.ReadBoolean(); // [53]
                             }

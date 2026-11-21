@@ -208,6 +208,8 @@ If the official Samsung Wearable app is active alongside this app, connection is
     <sys:String x:Key="touchpad_gesture_triple_desc">Play previous track</sys:String>
     <sys:String x:Key="touchpad_gesture_hold">Touch and hold</sys:String>
     <sys:String x:Key="touchpad_gesture_hold_desc">Execute custom action</sys:String>
+    <sys:String x:Key="touchpad_gesture_swipe">Swipe</sys:String>
+    <sys:String x:Key="touchpad_gesture_swipe_desc">Swipe up or down to adjust the volume</sys:String>
     <sys:String x:Key="touchpad_gesture_double_for_call">Double tap during call</sys:String>
     <sys:String x:Key="touchpad_gesture_double_for_call_desc">Answer call or end call</sys:String>
     <sys:String x:Key="touchpad_gesture_hold_for_call">Touch and hold during call</sys:String>

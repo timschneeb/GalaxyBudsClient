@@ -61,7 +61,7 @@ public class AcknowledgementDecoder : BaseMessageDecoder
                     Parameters = new CustomizeSoundAckParameter(reader);
                     break;
                 case MsgIds.LOCK_TOUCHPAD:
-                    Parameters = new LockTouchpadAckParameter(reader);
+                    Parameters = new LockTouchpadAckParameter(reader, msg.TargetModel);
                     break;
                 case MsgIds.SET_TOUCHPAD_OPTION:
                     Parameters = new SetTouchpadOptionAckParameter(reader);

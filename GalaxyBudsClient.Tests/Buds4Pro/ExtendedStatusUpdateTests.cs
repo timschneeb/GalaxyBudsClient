@@ -1,3 +1,5 @@
+using FluentAssertions;
+using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Message.Decoder;
 using GalaxyBudsClient.Model.Constants;
 
@@ -10,6 +12,51 @@ public class ExtendedStatusUpdateTests : MessageTests<ExtendedStatusUpdateDecode
 
     [Test, TestCaseSource(nameof(_testCases)), Description("Decode ExtendedStatusUpdate messages")]
     public void Decode(TestCase testCase) => DecodeAndVerify(testCase);
+
+    [Test]
+    public void Decode_TouchMask_UsesOfficialBuds4BitOrder()
+    {
+        var message = SppMessage.Decode(GetTestData(Models.Buds4Pro, 4), Models.Buds4Pro, false);
+
+        // bit6 swipe, bit3 single, bit0 hold
+        message.Payload[10] = 0b0100_1001;
+        var decoder = (ExtendedStatusUpdateDecoder)message.CreateDecoder()!;
+
+        decoder.SingleTapOn.Should().BeTrue();
+        decoder.DoubleTapOn.Should().BeFalse();
+        decoder.TripleTapOn.Should().BeFalse();
+        decoder.TouchHoldOn.Should().BeTrue();
+        decoder.DoubleTapForCallOn.Should().BeFalse();
+        decoder.TouchHoldOnForCallOn.Should().BeFalse();
+        decoder.SwipeOn.Should().BeTrue();
+
+        // bit5 call hold, bit4 call double, bit2 double, bit1 triple
+        message.Payload[10] = 0b0011_0110;
+        decoder = (ExtendedStatusUpdateDecoder)message.CreateDecoder()!;
+
+        decoder.SingleTapOn.Should().BeFalse();
+        decoder.DoubleTapOn.Should().BeTrue();
+        decoder.TripleTapOn.Should().BeTrue();
+        decoder.TouchHoldOn.Should().BeFalse();
+        decoder.DoubleTapForCallOn.Should().BeTrue();
+        decoder.TouchHoldOnForCallOn.Should().BeTrue();
+        decoder.SwipeOn.Should().BeFalse();
+    }
+
+    [Test]
+    public void Decode_Tail_ReadsAdaptiveVolumeBeforeQuickLaunch()
+    {
+        var message = SppMessage.Decode(GetTestData(Models.Buds4Pro, 4), Models.Buds4Pro, false);
+        message.Payload[49] = 1; // adaptive EQ
+        message.Payload[50] = 1; // adaptive volume
+        message.Payload[51] = 2; // quick launch
+
+        var decoder = (ExtendedStatusUpdateDecoder)message.CreateDecoder()!;
+
+        decoder.AdaptiveEqEnabled.Should().BeTrue();
+        decoder.AdaptiveVolumeEnabled.Should().BeTrue();
+        decoder.QuickLaunchAdvanced.Should().Be(2);
+    }
 
     private static object[] _testCases =
     [
@@ -42,7 +89,7 @@ public class ExtendedStatusUpdateTests : MessageTests<ExtendedStatusUpdateDecode
                 TouchHoldOn = true,
                 DoubleTapForCallOn = true,
                 TouchHoldOnForCallOn = true,
-                GestureEchoBits = 0x41,
+                SwipeOn = true,
                 NoiseControlMode = NoiseControlModes.NoiseReduction,
                 VoiceWakeUp = false,
                 ColorL = DeviceIds.Buds4ProBlack,

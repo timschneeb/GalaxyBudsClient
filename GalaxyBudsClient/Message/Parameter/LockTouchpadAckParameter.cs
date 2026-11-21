@@ -14,6 +14,7 @@ public class LockTouchpadAckParameter : MessageAsDictionary, IAckParameter
     public bool TouchAndHoldOn { get; }
     public bool ForCallDoubleTap { get; }
     public bool ForCallTouchAndHold { get; }
+    public bool SwipeOn { get; }
     
     public bool SupportsAdvancedTouchLock { get; }
 
@@ -27,30 +28,32 @@ public class LockTouchpadAckParameter : MessageAsDictionary, IAckParameter
     [Device(Models.Buds4, Selector.GreaterEqual)]
     public byte? QuickLaunchAdvanced { get; }
 
-    public LockTouchpadAckParameter(BinaryReader reader)
+    public LockTouchpadAckParameter(BinaryReader reader, Models? model = null)
     {
+        TargetModel = model ?? TargetModel;
+
         if (DeviceSpec.Device >= Models.Buds4)
         {
-            // Buds4 echoes the full 12-byte "earbuds control" payload:
-            // [0] reserved, [1] single tap, [2] double tap, [3] triple tap,
-            // [4] pinch and hold, [5..8] additional gestures, [9] duplicate
-            // of [6], [10] lighting style, [11] quick launch advanced.
+            // Buds4 acknowledgement, verified against the official Galaxy
+            // Buds app (mi.i / ly.a / xj.c): exactly 10 bytes.
+            // [0] touch controls master, [1] single tap, [2] double tap,
+            // [3] triple tap, [4] pinch and hold, [5] double tap during call,
+            // [6] pinch and hold during call, [7] volume swipe,
+            // [8] lighting style, [9] quick launch.
             // There is no touchpad lock flag on the Buds4 generation.
             try
             {
-                reader.ReadByte(); // reserved
+                reader.ReadBoolean(); // master switch, not exposed
                 TapOn = reader.ReadBoolean();
                 DoubleTapOn = reader.ReadBoolean();
                 TripleTapOn = reader.ReadBoolean();
                 TouchAndHoldOn = reader.ReadBoolean();
-                SupportsAdvancedTouchLock = true;
-                reader.ReadBoolean(); // echo bits [5]
-                reader.ReadBoolean(); // echo bits [6]
-                reader.ReadBoolean(); // echo bits [7]
-                reader.ReadBoolean(); // echo bits [8]
-                reader.ReadBoolean(); // duplicate of [6]
+                ForCallDoubleTap = reader.ReadBoolean();
+                ForCallTouchAndHold = reader.ReadBoolean();
+                SwipeOn = reader.ReadBoolean();
                 Lighting = reader.ReadByte();
                 QuickLaunchAdvanced = reader.ReadByte();
+                SupportsAdvancedTouchLock = true;
             }
             catch (EndOfStreamException)
             {

@@ -16,6 +16,9 @@ public class LockTouchpadEncoder : BaseMessageEncoder
     public bool DoubleTapCallOn { get; init; }
     public bool HoldTapCallOn { get; init; }
 
+    /// <summary>Buds4 only: volume swipe gesture.</summary>
+    public bool SwipeOn { get; init; }
+
     /// <summary>
     /// Buds4 only: current lighting style byte. It occupies the trailing
     /// "earbuds control" payload and must be echoed back unmodified to
@@ -29,34 +32,28 @@ public class LockTouchpadEncoder : BaseMessageEncoder
     /// </summary>
     public byte QuickLaunchAdvanced { get; init; }
 
-    /// <summary>
-    /// Buds4 only: mask bits of gestures without a dedicated property
-    /// (bits 0 and 6 of the ESU touch mask), echoed back unmodified.
-    /// </summary>
-    public byte GestureEchoBits { get; init; }
-
     public override SppMessage Encode()
     {
         if (DeviceSpec.Device >= Models.Buds4)
         {
             // Buds4 "earbuds control" layout, verified against the official
-            // Galaxy Buds app and experimentally:
-            // [0] reserved, [1] single tap, [2] double tap, [3] triple tap,
-            // [4] pinch and hold, [5] additional gesture (echoed), [6] double
-            // tap during call, [7] pinch and hold during call, [8] additional
-            // gesture (echoed), [9] duplicate of [6], [10] lighting style,
-            // [11] quick launch
+            // Galaxy Buds app (ar.a / nk.a):
+            // [0] reserved, [1] touch controls master, [2] single tap,
+            // [3] double tap, [4] triple tap, [5] pinch and hold,
+            // [6] double tap during call, [7] pinch and hold during call,
+            // [8] volume swipe, [9] duplicate of [6], [10] lighting style,
+            // [11] quick launch.
             return new SppMessage(MsgIds.LOCK_TOUCHPAD, MsgTypes.Request,
             [
                 (byte)0,
+                (byte)1,
                 (byte)(TapOn ? 1 : 0),
                 (byte)(DoubleTapOn ? 1 : 0),
                 (byte)(TripleTapOn ? 1 : 0),
                 (byte)(HoldTapOn ? 1 : 0),
-                (byte)((GestureEchoBits & 0x01) != 0 ? 1 : 0),
                 (byte)(DoubleTapCallOn ? 1 : 0),
                 (byte)(HoldTapCallOn ? 1 : 0),
-                (byte)((GestureEchoBits & 0x40) != 0 ? 1 : 0),
+                (byte)(SwipeOn ? 1 : 0),
                 (byte)(DoubleTapCallOn ? 1 : 0),
                 Lighting,
                 QuickLaunchAdvanced
