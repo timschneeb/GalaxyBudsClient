@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Numerics;
 using System.Text;
 using FluentAssertions;
+using GalaxyBudsClient.Message;
 using GalaxyBudsClient.Platform.SpatialAudio;
 using GalaxyBudsClient.Utils.Extensions;
 using NUnit.Framework;
@@ -196,6 +197,17 @@ public class SpatialAudioTests
 
         // Right ear must receive significantly more energy than left ear (head shadow + ILD)
         energyR.Should().BeGreaterThan(energyL * 1.5f);
+    }
+
+    [TestCase(true, true, 1, 1)]
+    [TestCase(true, false, 1, 0)]
+    [TestCase(false, true, 0, 1)]
+    [TestCase(false, false, 0, 0)]
+    public void SpatialAudioPayload_PreservesCurrent360AudioState(
+        bool spatialAudio360Enabled, bool headTrackingEnabled, byte expected360, byte expectedTracking)
+    {
+        SpatialSensorManager.CreateSpatialAudioPayload(spatialAudio360Enabled, headTrackingEnabled)
+            .Should().Equal(expected360, expectedTracking);
     }
 
     [Test]

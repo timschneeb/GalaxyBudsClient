@@ -22,8 +22,18 @@ public class SpatialSensorManager : IDisposable
     // The earbuds expect a keep-alive package to be sent periodically.
     private readonly Timer _keepAliveTimer = new(2000);
 
+    // Buds4 spatial audio packets carry both the 360 audio state and the
+    // head-tracking state. Track the former so toggling head tracking does
+    // not change it.
+    private bool _spatialAudio360Enabled = true;
+
     public SpatialSensorManager()
     {
+        if (DeviceMessageCache.Instance.ExtendedStatusUpdate is { } status)
+        {
+            _spatialAudio360Enabled = status.SpatialAudio;
+        }
+
         // Setup keep-alive message trigger
         _keepAliveTimer.Elapsed += KeepAliveOnElapsed;
         _keepAliveTimer.AutoReset = true;
@@ -37,6 +47,10 @@ public class SpatialSensorManager : IDisposable
         // Filter incoming SPP messages for Spatial Audio packets
         switch (e)
         {
+            case ExtendedStatusUpdateDecoder status:
+                _spatialAudio360Enabled = status.SpatialAudio;
+                break;
+
             case SpatialAudioControlDecoder control:
                 // Control packet received
                 switch (control.ResultCode)
@@ -89,7 +103,8 @@ public class SpatialSensorManager : IDisposable
         // Buds4 expects [360 audio, head tracking]; older models a single byte
         if (BluetoothImpl.Instance.DeviceSpec.Device >= Model.Constants.Models.Buds4)
         {
-            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_SPATIAL_AUDIO, [0x01, 0x01]);
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_SPATIAL_AUDIO,
+                CreateSpatialAudioPayload(_spatialAudio360Enabled, headTrackingEnabled: true));
         }
         else
         {
@@ -105,10 +120,11 @@ public class SpatialSensorManager : IDisposable
     {
         await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SPATIAL_AUDIO_CONTROL, (byte)SpatialAudioControl.Detach);
 
-        // Disable head tracking; keep 360 audio itself on for Buds4
+        // Disable head tracking but leave the 360 audio setting untouched.
         if (BluetoothImpl.Instance.DeviceSpec.Device >= Model.Constants.Models.Buds4)
         {
-            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_SPATIAL_AUDIO, [0x01, 0x00]);
+            await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_SPATIAL_AUDIO,
+                CreateSpatialAudioPayload(_spatialAudio360Enabled, headTrackingEnabled: false));
         }
         else
         {
@@ -116,6 +132,15 @@ public class SpatialSensorManager : IDisposable
         }
 
         _keepAliveTimer.Stop();
+    }
+
+    internal static byte[] CreateSpatialAudioPayload(bool spatialAudio360Enabled, bool headTrackingEnabled)
+    {
+        return
+        [
+            (byte)(spatialAudio360Enabled ? 1 : 0),
+            (byte)(headTrackingEnabled ? 1 : 0)
+        ];
     }
         
     private static async void KeepAliveOnElapsed(object? sender, ElapsedEventArgs e)
