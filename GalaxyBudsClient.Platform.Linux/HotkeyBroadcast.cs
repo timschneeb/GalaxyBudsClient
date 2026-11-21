@@ -3,8 +3,8 @@ using System.Linq;
 using Avalonia.Input;
 using GalaxyBudsClient.Platform.Interfaces;
 using GalaxyBudsClient.Platform.Model;
-using SharpHook;
 using SharpHook.Data;
+using SharpHook.Simulation;
 
 namespace GalaxyBudsClient.Platform.Linux;
 
@@ -21,7 +21,8 @@ public class HotkeyBroadcast : IHotkeyBroadcast
 
     private static void SendKeysInternal(List<KeyCode> keys)
     {
-        var simulator = new EventSimulator();
+        SharpHookBackend.EnsureInitialized();
+        using var simulator = EventSimulator.Create("GalaxyBudsClient");
         foreach (var key in keys)
         {
             simulator.SimulateKeyPress(key);

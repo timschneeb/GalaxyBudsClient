@@ -23,11 +23,14 @@ public class HotkeyReceiver : IHotkeyReceiver
         
     public HotkeyReceiver()
     {
+        SharpHookBackend.EnsureInitialized();
+
         // KeyTyped events make libuiohook open and close an X input method (XOpenIM/XCreateIC) for every
         // key event system-wide, which spikes CPU and leaks memory in IBus. Only press/release are needed here.
+        // SharpHook 8 disables them by default; keep it explicit so a default change can't bring the issue back.
         UioHookProvider.Instance.KeyTypedEnabled = false;
         
-        _hook = new TaskPoolGlobalHook(2, GlobalHookType.Keyboard, null, true);
+        _hook = new TaskPoolGlobalHook(2);
         _hook.KeyPressed += OnKeyPressed;
         _hook.KeyReleased += OnKeyReleased;
     }
@@ -40,7 +43,7 @@ public class HotkeyReceiver : IHotkeyReceiver
         
         try
         {
-            _hookTask = _hook.RunAsync();
+            _hookTask = _hook.RunAsync(GlobalHookType.Keyboard, useBackgroundThread: true);
         }
         catch (Exception ex)
         {
