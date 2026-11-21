@@ -651,6 +651,9 @@ public class ExtendedStatusUpdateDecoder : BaseMessageDecoder, IBasicStatusUpdat
                             IsRightCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 2) == 4;
                             IsCaseCharging = ByteArrayUtils.ValueOfBinaryDigit(chargingStatus, 0) == 1;
 
+                            // Reported by Buds3/Buds3 Pro/Buds4/Buds4 Pro, but only exposed on Buds2 Pro.
+                            // Consume it to keep the following fields aligned.
+                            ExtraClearCallSound = reader.ReadBoolean();
                             if(reader.PeekChar() != -1)
                                 ExtraHighAmbientEnabled = reader.ReadBoolean();
                             if(reader.PeekChar() != -1)
