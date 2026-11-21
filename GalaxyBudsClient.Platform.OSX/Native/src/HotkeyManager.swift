@@ -220,10 +220,10 @@ import Magnet
             if let out = convertWin32KeysToCarbon(keys: keys) {
                 out
             } else {
-                0
+                -1
             }
         } else {
-            0
+            -1
         }
     }
 

@@ -110,7 +110,6 @@ public class App : Application
         if (BluetoothImpl.HasValidDevice)
         {
             Task.Run(() => BluetoothImpl.Instance.ConnectAsync());
-            _ = TrayManager.Instance.RebuildAsync();
         }
         
         // Subscribe BEFORE MainWindow (and its page viewmodels) is constructed: handlers fire in
@@ -139,6 +138,10 @@ public class App : Application
             
             TrayManager.Init();
             BatteryHistoryManager.Init();
+        }
+        else if (ApplicationLifetime is IActivityApplicationLifetime activityLifetime)
+        {
+            activityLifetime.MainViewFactory = () => new MainView();
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {

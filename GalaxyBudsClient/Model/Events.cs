@@ -57,5 +57,7 @@ public enum Event
     [IgnoreDataMember]
     UpdateTrayIcon,
     [IgnoreDataMember]
-    SetNoiseControlState
+    SetNoiseControlState,
+    [IgnoreDataMember]
+    SetAmbientSoundVolume
 }

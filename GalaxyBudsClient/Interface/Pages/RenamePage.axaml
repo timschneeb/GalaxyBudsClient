@@ -53,7 +53,7 @@
 
                         <TextBox TextWrapping="Wrap"
                                  Text="{Binding Name}"
-                                 Watermark="{ext:Translate {x:Static i18N:Keys.RenameHint}}"
+                                 PlaceholderText="{ext:Translate {x:Static i18N:Keys.RenameHint}}"
                                  BorderBrush="{StaticResource SystemBaseLowColor}" />
 
                         <Button Grid.Column="2"

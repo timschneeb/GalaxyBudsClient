@@ -38,6 +38,11 @@ public abstract class BaseObjectWithProperties<T> where T : BaseProperties, new(
     
     protected void Set(string prop, object val)
     {
+        // D-Bus strings may not contain NUL; the bus disconnects any peer that sends one.
+        // Fixed-width fields from the earbuds (e.g. the SKU of a bud that is asleep) arrive zero-filled.
+        if (val is string str && str.Contains('\0'))
+            val = str.Replace("\0", string.Empty);
+
         var changed = Properties.Set(prop, val);
         if (changed)
         {

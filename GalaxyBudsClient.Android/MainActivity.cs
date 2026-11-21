@@ -1,7 +1,9 @@
-﻿using Android;
+﻿using System;
+using Android;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Runtime;
 using Android.Widget;
 using AndroidX.Core.App;
 using AndroidX.Core.Content;
@@ -12,13 +14,32 @@ using GalaxyBudsClient.Platform;
 using ReactiveUI.Avalonia;
 using AlertDialog = AndroidX.AppCompat.App.AlertDialog;
 
-#if DEBUG && !NotDebuggable
-[assembly: Application(Debuggable=true)]
-#else
-[assembly: Application(Debuggable=false)]
-#endif
-
 namespace GalaxyBudsClient.Android;
+
+// Avalonia 12 moved app initialization from AvaloniaMainActivity<TApp> to a dedicated
+// AvaloniaAndroidApplication<TApp> subclass; the activity is now non-generic.
+#if DEBUG && !NotDebuggable
+[Application(Debuggable = true)]
+#else
+[Application(Debuggable = false)]
+#endif
+public class AndroidApp : AvaloniaAndroidApplication<App>
+{
+    protected AndroidApp(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
+    {
+    }
+
+    protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
+    {
+        Program.Startup(false, new LogcatSink("GbClient"));
+        PlatformImpl.InjectExternalBackend(new AndroidPlatformImplCreator(this));
+
+        return base.CustomizeAppBuilder(builder)
+            .WithInterFont()
+            .LogToTrace()
+            .UseReactiveUI(_ => { });
+    }
+}
 
 [Activity(
     Label = "Galaxy Buds Manager",
@@ -26,21 +47,10 @@ namespace GalaxyBudsClient.Android;
     Icon = "@mipmap/ic_launcher",
     MainLauncher = true,
     ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.UiMode)]
-public class MainActivity : AvaloniaMainActivity<App>
+public class MainActivity : AvaloniaMainActivity
 {
     private const int RequestBluetoothPermission = 1;
-    
-    protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
-    {
-        Program.Startup(false, new LogcatSink("GbClient"));
-        PlatformImpl.InjectExternalBackend(new AndroidPlatformImplCreator(this));
-        
-        return base.CustomizeAppBuilder(builder)
-            .WithInterFont()
-            .LogToTrace()
-            .UseReactiveUI();
-    }
-    
+
     protected override void OnCreate(Bundle? savedInstanceState)
     {
         base.OnCreate(savedInstanceState);
@@ -56,7 +66,7 @@ public class MainActivity : AvaloniaMainActivity<App>
             ActivityCompat.RequestPermissions(this, [Manifest.Permission.AccessFineLocation], RequestBluetoothPermission);
         }
     }
-    
+
     public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
     {
         if (requestCode == RequestBluetoothPermission) 

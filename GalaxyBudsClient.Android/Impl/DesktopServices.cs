@@ -10,6 +10,9 @@ public class DesktopServices(Context context) : BaseDesktopServices
     
     public override void OpenUri(string uri)
     {
-        context.StartActivity(new Intent(Intent.ActionView, Uri.Parse(uri)));
+        var intent = new Intent(Intent.ActionView, Uri.Parse(uri));
+        // The context is the Application, not an Activity, so a new task is required.
+        intent.AddFlags(ActivityFlags.NewTask);
+        context.StartActivity(intent);
     }
 }

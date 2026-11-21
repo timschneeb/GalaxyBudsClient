@@ -83,9 +83,20 @@ public class EarbudIcon : Image
             UpdateEarbudIcons();
     }
 
+    public static DeviceIds? ResolveColor(DeviceIds? colorOverride, DeviceIds? deviceColor, Models model)
+    {
+        // Color overrides are global, but each color ID belongs to a specific model.
+        return colorOverride is { } color && color.GetAssociatedModel() is Models overrideModel && overrideModel == model
+            ? color
+            : deviceColor;
+    }
+
     private void UpdateEarbudIcons()
     {
-        var color = Settings.Data.ColorOverride ?? BluetoothImpl.Instance.Device.Current?.DeviceColor ?? DeviceMessageCache.Instance.ExtendedStatusUpdate?.DeviceColor;
+        var device = BluetoothImpl.Instance.Device.Current;
+        var color = ResolveColor(Settings.Data.ColorOverride,
+            device?.DeviceColor ?? DeviceMessageCache.Instance.ExtendedStatusUpdate?.DeviceColor,
+            device?.Model ?? Models.NULL);
         if (Settings.Data.RealisticEarbudImages && color != null &&
             BluetoothImpl.Instance.DeviceSpec.Supports(Features.DeviceColor))
         {

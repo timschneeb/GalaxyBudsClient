@@ -7,7 +7,7 @@ using GalaxyBudsClient.Generated.I18N;
 
 namespace GalaxyBudsClient.Interface.Dialogs;
 
-public class InputDialog : ContentDialog
+public class InputDialog : FAContentDialog
 {
     private readonly TextBox _textBox;
 
@@ -21,7 +21,7 @@ public class InputDialog : ContentDialog
     {
         PrimaryButtonText = Strings.Okay;
         CloseButtonText = Strings.Cancel;
-        DefaultButton = ContentDialogButton.Primary;
+        DefaultButton = FAContentDialogButton.Primary;
 
         _textBox = new TextBox
         {
@@ -43,11 +43,11 @@ public class InputDialog : ContentDialog
         Content = panel;
     }
 
-    protected override Type StyleKeyOverride => typeof(ContentDialog);
+    protected override Type StyleKeyOverride => typeof(FAContentDialog);
     
     public async Task<string?> OpenDialogAsync(TopLevel? host = null)
     {
         var result = await ShowAsync(host);
-        return result == ContentDialogResult.None ? null : Text;
+        return result == FAContentDialogResult.None ? null : Text;
     }
 }

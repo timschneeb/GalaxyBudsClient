@@ -73,7 +73,7 @@ public partial class HotkeyRecorderDialog : UserControl
         
     public static async Task<List<Key>?> OpenDialogAsync()
     {
-        var dialog = new ContentDialog
+        var dialog = new FAContentDialog
         {
             Title = Strings.HotrecContent,
             PrimaryButtonText = Strings.Okay,
@@ -90,16 +90,16 @@ public partial class HotkeyRecorderDialog : UserControl
         var result = await dialog.ShowAsync(TopLevel.GetTopLevel(MainView.Instance));
         dialog.PrimaryButtonClick -= OnPrimaryButtonClick;
             
-        return result == ContentDialogResult.None ? null : viewModel.Hotkeys.ToList();
+        return result == FAContentDialogResult.None ? null : viewModel.Hotkeys.ToList();
 
-        void OnPrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        void OnPrimaryButtonClick(FAContentDialog sender, FAContentDialogButtonClickEventArgs args)
         {
             var defer = args.GetDeferral();
             args.Cancel = viewModel.Hotkeys.Count == 0;
 
             if (args.Cancel)
             {
-                var resultHint = new ContentDialog
+                var resultHint = new FAContentDialog
                 {
                     Content = Strings.Error,
                     Title = Strings.HotkeyEditInvalid,
