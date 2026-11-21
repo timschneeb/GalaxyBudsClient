@@ -82,9 +82,9 @@ public static class Program
         if (!Settings.Data.DisableCrashReporting)
         {
             CrashReports.SetupCrashHandler();
+            // Sentry 7: the Serilog sink no longer initializes the SDK; SentrySdk.Init above is the only init point
             config = config.WriteTo.Sentry(o =>
             {
-                o.InitializeSdk = false;
                 o.MinimumBreadcrumbLevel = LogEventLevel.Debug;
                 o.MinimumEventLevel = LogEventLevel.Fatal;
             });
