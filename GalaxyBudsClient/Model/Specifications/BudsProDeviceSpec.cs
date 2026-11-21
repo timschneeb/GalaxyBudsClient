@@ -16,6 +16,7 @@ public class BudsProDeviceSpec : IDeviceSpec
         { Features.FirmwareUpdates, null },
         { Features.DetectConversations, null },
         { Features.NoiseControl, null },
+        { Features.TouchpadLock, null },
         { Features.GamingMode, null },
         { Features.CaseBattery, null },
         { Features.FragmentedMessages, null },

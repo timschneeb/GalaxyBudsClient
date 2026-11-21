@@ -320,6 +320,9 @@ public partial class EqualizerPageViewModel : MainPageViewModelBase
             case nameof(StereoBalance):
                 await BluetoothImpl.Instance.SendRequestAsync(MsgIds.SET_HEARING_ENHANCEMENTS, (byte)StereoBalance);
                 break;
+            case nameof(IsAdaptiveEqEnabled):
+                await BluetoothImpl.Instance.SendRequestAsync(MsgIds.ADAPTIVE_EQ_CONTROL, IsAdaptiveEqEnabled);
+                break;
         }
         }
         catch (Exception ex)
@@ -381,6 +384,7 @@ public partial class EqualizerPageViewModel : MainPageViewModelBase
             }
 
             StereoBalance = e.HearingEnhancements;
+            IsAdaptiveEqEnabled = e.AdaptiveEqEnabled;
         }
 
         // SuppressChangeNotifications drops (not defers) PropertyChanged, so the band-slider
@@ -415,6 +419,7 @@ public partial class EqualizerPageViewModel : MainPageViewModelBase
     public override Control CreateView() => new EqualizerPage { DataContext = this };
     
     [Reactive] private bool _isEqEnabled;
+    [Reactive] private bool _isAdaptiveEqEnabled;
     [Reactive] private int _eqPreset;
     [Reactive] private int _stereoBalance;
     private CancellationTokenSource? _bandDebounce;

@@ -159,12 +159,20 @@ internal class TrayManager
         {
             new NativeMenuItem(Strings.MainpageNoise) { IsEnabled = false }
         };
-        foreach (var (mode, label, symbol) in new[]
-                 {
-                     (NoiseControlModes.Off, Strings.Off, Symbol.CircleOff),
-                     (NoiseControlModes.AmbientSound, Strings.MainpageAmbientSound, Symbol.SoundWaveCircle),
-                     (NoiseControlModes.NoiseReduction, Strings.Anc, Symbol.Headphones)
-                 })
+
+        var modes = new List<(NoiseControlModes Mode, string Label, Symbol Symbol)>
+        {
+            (NoiseControlModes.Off, Strings.Off, Symbol.CircleOff),
+            (NoiseControlModes.AmbientSound, Strings.MainpageAmbientSound, Symbol.SoundWaveCircle),
+            (NoiseControlModes.NoiseReduction, Strings.Anc, Symbol.Headphones)
+        };
+
+        if (BluetoothImpl.Instance.DeviceSpec.Supports(Features.NoiseControlAdaptive))
+        {
+            modes.Insert(2, (NoiseControlModes.Adaptive, Strings.Adaptive, Symbol.SparkleCircle));
+        }
+
+        foreach (var (mode, label, symbol) in modes)
         {
             var selected = current == mode;
             items.Add(new NativeMenuItem(label)

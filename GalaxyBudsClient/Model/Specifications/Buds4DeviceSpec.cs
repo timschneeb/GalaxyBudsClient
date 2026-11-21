@@ -16,6 +16,11 @@ public class Buds4DeviceSpec : IDeviceSpec
         { Features.CustomEqualizer, null },
         { Features.FirmwareUpdates, null },
         { Features.NoiseControl, null },
+        { Features.NoiseControlAdaptive, null },
+        { Features.AdaptiveVolume, null },
+        { Features.SirenDetect, null },
+        { Features.AutoPauseResume, null },
+        { Features.AdaptiveEq, null },
         { Features.AmbientSound, null },
         { Features.Anc, null },
         { Features.GamingMode, null },
@@ -26,6 +31,7 @@ public class Buds4DeviceSpec : IDeviceSpec
         { Features.DoubleTapVolume, null },
         { Features.AdvancedTouchLock, null },
         { Features.AdvancedTouchLockForCalls, null },
+        { Features.AdvancedTouchLockSwipe, null },
         { Features.NoiseControlsWithOneEarbud, null },
         { Features.AmbientCustomize, null },
         { Features.AmbientSidetone, null },
@@ -52,8 +58,7 @@ public class Buds4DeviceSpec : IDeviceSpec
     public IEnumerable<TrayItemTypes> TrayShortcuts => Array.AsReadOnly(
         [
             TrayItemTypes.ToggleNoiseControl,
-            TrayItemTypes.ToggleEqualizer,
-            TrayItemTypes.LockTouchpad
+            TrayItemTypes.ToggleEqualizer
         ]
     );
         

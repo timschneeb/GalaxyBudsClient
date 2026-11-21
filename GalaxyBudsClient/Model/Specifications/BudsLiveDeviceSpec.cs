@@ -10,6 +10,7 @@ public class BudsLiveDeviceSpec : IDeviceSpec
 {
     public Dictionary<Features, FeatureRule?> Rules => new()
     {
+        { Features.TouchpadLock, null },
         { Features.SeamlessConnection, new FeatureRule(3)  },
         { Features.AmbientPassthrough, new FeatureRule(5) },
         { Features.Anc, null },

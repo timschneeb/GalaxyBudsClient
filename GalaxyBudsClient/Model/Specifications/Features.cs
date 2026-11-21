@@ -52,4 +52,9 @@ public enum Features
     HotCommandLanguageUpdate,
     HiddenAtMode,
     CustomEqualizer,
+    AdaptiveVolume,
+    SirenDetect,
+    AutoPauseResume,
+    AdaptiveEq,
+    TouchpadLock,
 }

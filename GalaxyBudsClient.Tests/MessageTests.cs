@@ -26,7 +26,7 @@ public abstract class MessageTests<T> where T : BaseMessageDecoder
         message.CreateDecoder().Should().BeEquivalentTo(input.ExpectedResult);
     }
     
-    private byte[] GetTestData(Models model, int revision)
+    protected byte[] GetTestData(Models model, int revision)
     {
         var assembly = Assembly.GetExecutingAssembly();
         var resourceName = $"GalaxyBudsClient.Tests.TestData.{TestDataGroup}.{model}_rev{revision}.bin";

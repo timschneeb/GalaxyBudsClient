@@ -16,6 +16,7 @@ public class Buds2ProDeviceSpec : IDeviceSpec
         { Features.FirmwareUpdates, null },
         { Features.DetectConversations, null },
         { Features.NoiseControl, null },
+        { Features.TouchpadLock, null },
         { Features.NoiseControlModeDualSide, null },
         { Features.GamingMode, null },
         { Features.CaseBattery, null },
