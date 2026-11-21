@@ -136,8 +136,8 @@
         <!-- ReactiveUI 26 dropped its System.Reactive dependency; the app still uses it directly -->
         <PackageReference Include="System.Reactive" Version="7.0.0" />
         <PackageReference Include="ScottPlot.Avalonia" Version="5.1.59" />
-        <PackageReference Include="Sentry" Version="6.12.1" />
-        <PackageReference Include="Sentry.Serilog" Version="6.12.1" />
+        <PackageReference Include="Sentry" Version="7.0.1" />
+        <PackageReference Include="Sentry.Serilog" Version="7.0.1" />
         <PackageReference Include="Serilog" Version="4.4.0" />
         <PackageReference Include="Serilog.Sinks.Console" Version="6.1.1" />
         <PackageReference Include="Serilog.Sinks.Debug" Version="3.0.0" />
