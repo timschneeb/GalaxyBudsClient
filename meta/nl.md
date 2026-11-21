@@ -4,7 +4,7 @@ This file is auto-generated and automatically updated. Do not modify this file m
 
 <table>
 <tr><th>Progress</th><th>Count</th></tr>
-<tr><td>57%</td><td>257 missing string(s)</td></tr>
+<tr><td>55%</td><td>276 missing string(s)</td></tr>
 </table>
 
 ### Missing strings
@@ -58,6 +58,8 @@ If the official Samsung Wearable app is active alongside this app, connection is
 <tr><td><code>devices_delete_confirmation</code></td><td>Are you sure you want to remove this device?</td></tr>
 <tr><td><code>devices_settings_link</code></td><td>Manage paired devices</td></tr>
 <tr><td><code>devices_settings_link_desc</code></td><td>Add, remove, or select a primary device</td></tr>
+<tr><td><code>touchpad_gesture_swipe</code></td><td>Swipe</td></tr>
+<tr><td><code>touchpad_gesture_swipe_desc</code></td><td>Swipe up or down to adjust the volume</td></tr>
 <tr><td><code>touchpad_gesture_double_for_call</code></td><td>Double tap during call</td></tr>
 <tr><td><code>touchpad_gesture_double_for_call_desc</code></td><td>Answer call or end call</td></tr>
 <tr><td><code>touchpad_gesture_hold_for_call</code></td><td>Touch and hold during call</td></tr>
@@ -66,6 +68,14 @@ If the official Samsung Wearable app is active alongside this app, connection is
 <tr><td><code>touchpad_noise_control_mode_l</code></td><td>Noise control switching mode (Left)</td></tr>
 <tr><td><code>touchpad_noise_control_mode_r</code></td><td>Noise control switching mode (Right)</td></tr>
 <tr><td><code>touchpad_noise_control_mode_desc</code></td><td>Choose modes to cycle through</td></tr>
+<tr><td><code>touchpad_noise_control_mode_anc_adaptive</code></td><td>ANC ↔ Adaptive</td></tr>
+<tr><td><code>touchpad_noise_control_mode_amb_adaptive</code></td><td>Ambient sound ↔ Adaptive</td></tr>
+<tr><td><code>touchpad_noise_control_mode_adaptive_off</code></td><td>Adaptive ↔ Off</td></tr>
+<tr><td><code>touchpad_noise_control_mode_anc_amb_off</code></td><td>ANC ↔ Ambient sound ↔ Off</td></tr>
+<tr><td><code>touchpad_noise_control_mode_anc_adaptive_amb</code></td><td>ANC ↔ Adaptive ↔ Ambient sound</td></tr>
+<tr><td><code>touchpad_noise_control_mode_anc_adaptive_off</code></td><td>ANC ↔ Adaptive ↔ Off</td></tr>
+<tr><td><code>touchpad_noise_control_mode_amb_adaptive_off</code></td><td>Ambient sound ↔ Adaptive ↔ Off</td></tr>
+<tr><td><code>touchpad_noise_control_mode_all</code></td><td>All modes</td></tr>
 <tr><td><code>cact_function_param</code></td><td>Function</td></tr>
 <tr><td><code>cact_hotkey_param</code></td><td>Hotkey</td></tr>
 <tr><td><code>cact_path_param</code></td><td>File path</td></tr>
@@ -220,6 +230,15 @@ Make sure both earbuds are turned on before continuing.</td></tr>
 <tr><td><code>gft_fail</code></td><td>Test failed</td></tr>
 <tr><td><code>eq_enable_description</code></td><td>Apply EQ audio filters</td></tr>
 <tr><td><code>nc_as_anc_description</code></td><td>Reduce background noises</td></tr>
+<tr><td><code>nc_adaptive_description</code></td><td>Automatically blend ANC and ambient sound based on your surroundings</td></tr>
+<tr><td><code>nc_auto_pause</code></td><td>Auto pause and resume</td></tr>
+<tr><td><code>nc_auto_pause_description</code></td><td>Pause media playback when removing an earbud and resume when worn again</td></tr>
+<tr><td><code>nc_adaptive_volume</code></td><td>Adaptive volume</td></tr>
+<tr><td><code>nc_adaptive_volume_description</code></td><td>Automatically adjust the media volume based on your environment</td></tr>
+<tr><td><code>nc_siren_detect</code></td><td>Siren detection</td></tr>
+<tr><td><code>nc_siren_detect_description</code></td><td>Lower the media volume automatically when a siren is detected nearby</td></tr>
+<tr><td><code>eq_adaptive</code></td><td>Adaptive EQ</td></tr>
+<tr><td><code>eq_adaptive_description</code></td><td>Optimize the sound automatically based on the fit of the earbuds</td></tr>
 <tr><td><code>nc_one_earbud</code></td><td>Noise controls with one earbud</td></tr>
 <tr><td><code>nc_one_earbud_description</code></td><td>Noise controls normally require two earbuds to prevent discomfort, enable this to allow it with only one earbud</td></tr>
 <tr><td><code>nc_voicedetect_timeout_description</code></td><td>Revert settings when your voice is not detected for a certain amount of time</td></tr>
