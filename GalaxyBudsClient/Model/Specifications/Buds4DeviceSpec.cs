@@ -47,6 +47,7 @@ public class Buds4DeviceSpec : IDeviceSpec
         { Features.SpatialSensor, null  },
         { Features.SmartThingsFind, null },
         { Features.UsageReport, null },
+        { Features.AdjustSoundSync, null },
         { Features.HotCommandLanguageUpdate, new FeatureRule(2) }
     };
 

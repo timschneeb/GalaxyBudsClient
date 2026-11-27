@@ -30,6 +30,7 @@ public class BudsLiveDeviceSpec : IDeviceSpec
         { Features.DeviceColor, null },
         { Features.SmartThingsFind, new FeatureRule(4) },
         { Features.UsageReport, null },
+        { Features.AdjustSoundSync, null },
         { Features.HiddenAtMode, null }
     };
         

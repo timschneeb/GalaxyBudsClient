@@ -1,5 +1,7 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using Tmds.DBus;
 
 namespace ThePBone.BlueZNet
@@ -42,17 +44,77 @@ namespace ThePBone.BlueZNet
             
             device.m_propertyWatcher = await proxy.WatchPropertiesAsync(device.OnPropertyChanges).ConfigureAwait(false);
 
+            var objectManager = Connection.System.CreateProxy<IObjectManager>(BluezConstants.DbusService, "/");
+            device.m_addTransportWatcher = await objectManager.WatchInterfacesAddedAsync(device.OnMediaTransportAdded).ConfigureAwait(false);
+            device.m_removeTransportWatcher = await objectManager.WatchInterfacesRemovedAsync(device.OnMediaTransportRemoved).ConfigureAwait(false);
+            device.m_mediaTransport = await Extensions.GetMediaTransportAsync(proxy);
+            device.WatchTransport();
+
             return device;
+        }
+
+        void OnMediaTransportAdded((ObjectPath objectPath, IDictionary<string, IDictionary<string, object>> interfaces) args)
+        {
+            if (BlueZManager.IsMatch(BluezConstants.MediaTransportInterface, args.objectPath, args.interfaces, m_proxy))
+            {
+                m_transportPropertyWatcher?.Dispose();
+                m_transportPropertyWatcher = null;
+                m_mediaTransport = Connection.System.CreateProxy<IMediaTransport1>(BluezConstants.DbusService, args.objectPath);
+                WatchTransport();
+            }
+        }
+
+        async void OnMediaTransportRemoved((ObjectPath objectPath, string[] interfaces) args)
+        {
+            if (args.interfaces.Contains(BluezConstants.MediaTransportInterface)
+    && m_mediaTransport?.ObjectPath == args.objectPath)
+            {
+                m_transportPropertyWatcher?.Dispose();
+                m_transportPropertyWatcher = null;
+                m_mediaTransport = await Extensions.GetMediaTransportAsync(m_proxy);
+                WatchTransport();
+            }
+        }
+
+        internal async void WatchTransport()
+        {
+            bool newState = false;
+            if (m_mediaTransport != null) {
+                m_transportPropertyWatcher = await m_mediaTransport.WatchPropertiesAsync(OnTransportPropertyChanges).ConfigureAwait(false);
+                newState = await GetCodecFromTransport();
+            }
+            if (IsSsc != newState) {
+                IsSsc = newState;
+                IsSscChanged?.Invoke(this, new BlueZEventArgs());
+            }
+        }
+
+        internal async Task<bool> GetCodecFromTransport()
+        {
+            if (m_mediaTransport == null) {
+                return false;
+            }
+            byte codec = await m_mediaTransport.GetAsync<byte>("Codec").ConfigureAwait(false);
+            byte[] configuration = await m_mediaTransport.GetAsync<byte[]>("Configuration").ConfigureAwait(false);
+            return codec == 255 && configuration.Length >= 6 && configuration[0] == 0x75 && configuration[1] == 0 && configuration[2] == 0 && configuration[3] == 0 && configuration[4] == 0x03 && configuration[5] == 0x01;
         }
 
         public void Dispose()
         {
             m_propertyWatcher?.Dispose();
             m_propertyWatcher = null;
+            m_addTransportWatcher?.Dispose();
+            m_addTransportWatcher = null;
+            m_removeTransportWatcher?.Dispose();
+            m_removeTransportWatcher = null;
+            m_transportPropertyWatcher?.Dispose();
+            m_transportPropertyWatcher = null;
 
             GC.SuppressFinalize(this);
         }
 
+        public bool IsSsc;
+        public event DeviceEventHandlerAsync IsSscChanged;
         public event DeviceEventHandlerAsync Connected
         {
             add
@@ -198,8 +260,32 @@ namespace ThePBone.BlueZNet
             }
         }
 
+        private async void OnTransportPropertyChanges(PropertyChanges changes)
+        {
+            foreach (var pair in changes.Changed)
+            {
+                switch (pair.Key)
+                {
+                    case "Codec":
+                    case "Configuration":
+                        var resolvedValue = await GetCodecFromTransport();
+                        // Only fire event if the state actually changed
+                        if (resolvedValue != IsSsc)
+                        {
+                            IsSsc = resolvedValue;
+                            IsSscChanged?.Invoke(this, new BlueZEventArgs());
+                        }
+                        break;
+                }
+            }
+        }
+
         private IDevice1 m_proxy;
         private IDisposable m_propertyWatcher;
+        private IDisposable m_addTransportWatcher;
+        private IDisposable m_removeTransportWatcher;
+        private IDisposable m_transportPropertyWatcher;
+        private IMediaTransport1 m_mediaTransport;
         private event DeviceEventHandlerAsync m_connected;
         private event DeviceEventHandlerAsync m_resolved;
     }

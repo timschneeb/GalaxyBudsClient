@@ -15,6 +15,13 @@ public interface IBluetoothService
     event EventHandler<byte[]>? NewDataAvailable;
         
     bool IsStreamConnected { get; }
+    bool CanBeSsc => false;
+    bool IsSsc => false;
+    event EventHandler? IsSscChanged
+    {
+        add { }
+        remove { }
+    }
 
     Task ConnectAsync(string macAddress, string serviceUuid, CancellationToken cancelToken);
     Task DisconnectAsync();
