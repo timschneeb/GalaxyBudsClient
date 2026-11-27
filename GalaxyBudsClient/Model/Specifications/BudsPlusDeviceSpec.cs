@@ -28,6 +28,7 @@ public class BudsPlusDeviceSpec : IDeviceSpec
         { Features.DeviceColor, null },
         { Features.SmartThingsFind, new FeatureRule(12) },
         { Features.UsageReport, null },
+        { Features.AdjustSoundSync, null },
         { Features.HiddenAtMode, null }
     };
         

@@ -57,4 +57,5 @@ public enum Features
     AutoPauseResume,
     AdaptiveEq,
     TouchpadLock,
+    AdjustSoundSync,
 }

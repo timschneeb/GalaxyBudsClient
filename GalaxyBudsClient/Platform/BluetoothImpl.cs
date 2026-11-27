@@ -49,6 +49,13 @@ public sealed partial class BluetoothImpl : ReactiveObject, IDisposable
     }
 
     private readonly IBluetoothService _backend;
+    public bool CanBeSsc => _backend.CanBeSsc;
+    public bool IsSsc => _backend.IsSsc;
+    public event EventHandler? IsSscChanged
+    {
+        add => _backend.IsSscChanged += value;
+        remove => _backend.IsSscChanged -= value;
+    }
     
     public event EventHandler? Connected;
     public event EventHandler? Connecting;

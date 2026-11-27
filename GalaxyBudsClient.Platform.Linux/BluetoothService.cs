@@ -25,7 +25,7 @@ namespace GalaxyBudsClient.Platform.Linux
         private Task? _loop;
         
         private IAdapter1? _adapter;
-        private IDevice1? _device;
+        private Device? _device;
 
         private string _currentMac = string.Empty;
         private string _currentUuid = string.Empty;
@@ -43,6 +43,9 @@ namespace GalaxyBudsClient.Platform.Linux
             }
         }
         
+        public bool CanBeSsc => true;
+        public bool IsSsc { get; private set; }
+        public event EventHandler? IsSscChanged;
         public event EventHandler? RfcommConnected;
         public event EventHandler? Connecting;
         public event EventHandler? Connected;
@@ -56,6 +59,12 @@ namespace GalaxyBudsClient.Platform.Linux
         {
             RfcommConnected += (sender, args) => IsStreamConnected = true;
             Disconnected += (sender, args) => IsStreamConnected = false;
+            Disconnected += (sender, args) => {
+                if (IsSsc) {
+                    IsSsc = false;
+                    IsSscChanged?.Invoke(this, EventArgs.Empty);
+                }
+            };
         }
 
         #region Adapter
@@ -134,6 +143,20 @@ namespace GalaxyBudsClient.Platform.Linux
                     $"Bluetooth peripheral with address '{macAddress}' not found. Use `bluetoothctl` or Bluetooth Manager to scan and possibly pair first.");
                 return;
             }
+            _device.Connected += async (sender, eventArgs) => {
+                if (IsSsc != sender.IsSsc) {
+                    IsSsc = sender.IsSsc;
+                    Log.Debug($"Linux.BluetoothService: IsSsc changed and is now {IsSsc}");
+                    IsSscChanged?.Invoke(this, EventArgs.Empty);
+                }
+            };
+            _device.IsSscChanged += async (sender, eventArgs) => {
+                if (IsSsc != sender.IsSsc) {
+                    IsSsc = sender.IsSsc;
+                    Log.Debug($"Linux.BluetoothService: IsSsc changed and is now {IsSsc}");
+                    IsSscChanged?.Invoke(this, EventArgs.Empty);
+                }
+            };
 
             _currentMac = macAddress;
             _currentUuid = uuid;

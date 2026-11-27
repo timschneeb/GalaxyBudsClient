@@ -39,6 +39,7 @@ public class Buds3FeDeviceSpec : IDeviceSpec
         { Features.DeviceColor, null },
         { Features.Rename, null },
         { Features.SmartThingsFind, null },
+        { Features.AdjustSoundSync, null },
         { Features.UsageReport, null }
     };
         

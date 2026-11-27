@@ -44,6 +44,18 @@ namespace ThePBone.BlueZNet
             return null;
         }
 
+        public static async Task<IMediaTransport1> GetMediaTransportAsync(this IDevice1 device)
+        {
+            var transports = await BlueZManager.GetProxiesAsync<IMediaTransport1>(BluezConstants.MediaTransportInterface, device);
+
+            if (transports.Count > 1)
+            {
+                Log.Error("{TransportsCount} media transports found, expected at most 1!", transports.Count);
+            }
+
+            return transports.FirstOrDefault();
+        }
+
         public static Task<IDisposable> WatchDevicesAddedAsync(this IAdapter1 adapter, Action<Device> handler)
         {
             async void OnDeviceAdded((ObjectPath objectPath, IDictionary<string, IDictionary<string, object>> interfaces) args)

@@ -7,5 +7,6 @@ namespace ThePBone.BlueZNet
         public const string DbusService = "org.bluez";
         public const string AdapterInterface = "org.bluez.Adapter1";
         public const string DeviceInterface = "org.bluez.Device1";
+        public const string MediaTransportInterface = "org.bluez.MediaTransport1";
     }
 }

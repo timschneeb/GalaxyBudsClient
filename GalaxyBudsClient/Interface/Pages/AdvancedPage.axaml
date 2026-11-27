@@ -97,6 +97,16 @@
                         <ext:RequiresFeatureBehavior Feature="ExtraClearCallSound" />
                     </Interaction.Behaviors>
                 </controls:SettingsSwitchItem>
+
+                <controls:SettingsSwitchItem Content="{ext:Translate {x:Static i18N:Keys.AdvAdjustSoundSync}}"
+                                             Description="{ext:Translate {x:Static i18N:Keys.AdvAdjustSoundSyncDesc}}"
+                                             IsChecked="{Binding IsAdjustSoundSyncEnabled}"
+                                             Symbol="Games"
+                                             IsClickEnabled="True">
+                    <Interaction.Behaviors>
+                        <ext:GameModeBehavior />
+                    </Interaction.Behaviors>
+                </controls:SettingsSwitchItem>
             </controls:SettingsGroup>
 
             <controls:SettingsGroup>
