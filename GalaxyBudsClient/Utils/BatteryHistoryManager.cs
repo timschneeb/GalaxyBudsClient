@@ -13,6 +13,7 @@ using GalaxyBudsClient.Model.Config;
 using GalaxyBudsClient.Model.Constants;
 using GalaxyBudsClient.Model.Database;
 using GalaxyBudsClient.Platform;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -20,7 +21,7 @@ namespace GalaxyBudsClient.Utils;
 
 public class BatteryHistoryManager
 {
-    private readonly Mutex _lock = new();
+    private readonly SemaphoreSlim _lock = new(1, 1);
     private string? _currentMac;
     private HistoryRecord? _lastRecord;
     
@@ -46,13 +47,13 @@ public class BatteryHistoryManager
         _ = CollectNow(insertNullFrame: true);
     }
 
-    private void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    private async void OnMainSettingsPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName == nameof(Settings.Data.CollectBatteryHistory) &&
             Settings.Data.CollectBatteryHistory == false)
         {
             Log.Debug("Battery history disabled. Deleting all databases");
-            DeleteAllDatabases();
+            await DeleteAllDatabasesAsync();
         }
     }
 
@@ -75,26 +76,48 @@ public class BatteryHistoryManager
         }
     }
     
-    public void DeleteDatabaseForDevice(Device device)
+    public async Task DeleteDatabaseForDeviceAsync(Device device)
     {
-        Log.Debug("Deleting battery stats for {Dev}", _currentMac);
-        var path = GetPathForMac(device.MacAddress);
-        try 
+        var mac = device.MacAddress;
+        if (string.IsNullOrWhiteSpace(mac))
+            return;
+
+        Log.Debug("Deleting battery stats for {Dev}", mac);
+        if (!await _lock.WaitAsync(2000))
         {
-            if(File.Exists(path))
-                File.Delete(path);
+            Log.Warning("Timed out waiting for lock while deleting battery stats for {Dev}", mac);
+            return;
+        }
+
+        try
+        {
+            if (string.Equals(_currentMac, mac, StringComparison.OrdinalIgnoreCase))
+                _lastRecord = null;
+
+            SqliteConnection.ClearAllPools();
+
+            var path = GetPathForMac(mac);
+            foreach (var suffix in (string[])["", "-journal"])
+            {
+                if (File.Exists(path + suffix))
+                    File.Delete(path + suffix);
+            }
         }
         catch (Exception e)
         {
-            Log.Error(e, "Failed to delete battery stats for {Dev}", _currentMac);
+            Log.Error(e, "Failed to delete battery stats for {Dev}", mac);
+        }
+        finally
+        {
+            _lock.Release();
         }
     }
 
-    public void DeleteAllDatabases()
+    public async Task DeleteAllDatabasesAsync()
     {
-        foreach (var device in Settings.Data.Devices)
+        foreach (var device in Settings.Data.Devices.ToArray())
         {
-            DeleteDatabaseForDevice(device);
+            await DeleteDatabaseForDeviceAsync(device);
         }
     }
     
@@ -103,11 +126,18 @@ public class BatteryHistoryManager
         if (!PlatformUtils.IsDesktop || _currentMac == null || !Settings.Data.CollectBatteryHistory)
             return;
         
-        if (_lock.WaitOne(500))
+        if (!await _lock.WaitAsync(500))
+            return;
+
+        var mac = _currentMac;
+        try
         {
-            Log.Debug("Cleaning up old battery stats for {Dev}", _currentMac);
+            if (mac == null || !Settings.Data.CollectBatteryHistory)
+                return;
+
+            Log.Debug("Cleaning up old battery stats for {Dev}", mac);
             
-            await using var db = new HistoryDbContext(GetPathForMac(_currentMac));
+            await using var db = new HistoryDbContext(GetPathForMac(mac));
             await db.Database.MigrateAsync();
             db.ExecutePragmas();
             
@@ -118,7 +148,14 @@ public class BatteryHistoryManager
             }
             
             await db.SaveChangesAsync();
-            _lock.ReleaseMutex();
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Failed to clean up battery stats for {Dev}", mac);
+        }
+        finally
+        {
+            _lock.Release();
         }
     }
     
@@ -150,17 +187,30 @@ public class BatteryHistoryManager
         if(HistoryRecord.HistoryRecordComparer.Equals(record, _lastRecord))
             return;
         
-        if (_lock.WaitOne(50))
+        if (!await _lock.WaitAsync(50))
+            return;
+
+        var mac = _currentMac;
+        try
         {
-            await using var db = new HistoryDbContext(GetPathForMac(_currentMac));
+            if (mac == null || !Settings.Data.CollectBatteryHistory)
+                return;
+
+            await using var db = new HistoryDbContext(GetPathForMac(mac));
             await db.Database.MigrateAsync();
             db.ExecutePragmas();
             
             _lastRecord = record;
             db.Records.Add(record);
             await db.SaveChangesAsync();
-            
-            _lock.ReleaseMutex();
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Failed to collect battery history record for {Dev}", mac);
+        }
+        finally
+        {
+            _lock.Release();
         }
     }
    
